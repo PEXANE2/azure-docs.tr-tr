@@ -4,12 +4,12 @@ description: Farklı Azure bölgelerindeki Azure Container Instances hizmeti iç
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395878"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576623"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -31,29 +31,32 @@ Aşağıdaki bölgeler ve en fazla kaynak, genel dağıtımlar, [Azure sanal ağ
 
 | Region | En Fazla CPU | Maksimum bellek (GB) | VNET Max CPU 'SU | VNET maksimum bellek (GB) | Depolama (GB) | GPU SKU 'Ları (Önizleme) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
-| Doğu Avustralya | 4 | 16 | 4 | 16 | 50 | Yok |
-| Brezilya Güney | 4 | 16 | 2 | 8 | 50 | Yok |
-| Orta Kanada | 4 | 16 | 4 | 16 | 50 | Yok |
+| Doğu Avustralya | 4 | 16 | 4 | 16 | 50 | YOK |
+| Brezilya Güney | 4 | 16 | 2 | 8 | 50 | YOK |
+| Orta Kanada | 4 | 16 | 4 | 16 | 50 | YOK |
 | Orta Hindistan | 4 | 16 | Yok | Yok | 50 | V100 |
-| Central US | 4 | 16 | 4 | 16 | 50 | Yok |
-| Doğu Asya | 4 | 16 | 4 | 16 | 50 | Yok |
+| Central US | 4 | 16 | 4 | 16 | 50 | YOK |
+| Doğu Asya | 4 | 16 | 4 | 16 | 50 | YOK |
 | Doğu ABD | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| Doğu ABD 2 | 4 | 16 | 4 | 16 | 50 | Yok |
-| Orta Fransa | 4 | 16 | 4 | 16 | 50 | Yok |
-| Doğu Japonya | 2 | 8 | 4 | 16 | 50 | Yok |
-| Güney Kore - Orta | 4 | 16 | Yok | Yok | 50 | Yok |
+| Doğu ABD 2 | 4 | 16 | 4 | 16 | 50 | YOK |
+| Orta Fransa | 4 | 16 | 4 | 16 | 50 | YOK |
+| Doğu Japonya | 2 | 8 | 4 | 16 | 50 | YOK |
+| Güney Kore - Orta | 4 | 16 | Yok | Yok | 50 | YOK |
 | Orta Kuzey ABD | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
-| North Europe | 4 | 16 | 4 | 16 | 50 | K80 |
-| Orta Güney ABD | 4 | 16 | 4 | 16 | 50 | Yok |
+| Kuzey Avrupa | 4 | 16 | 4 | 16 | 50 | K80 |
+| Orta Güney ABD | 4 | 16 | 4 | 16 | 50 | YOK |
 | Güneydoğu Asya | 4 | 16 | 4 | 16 | 50 | P100, V100 |
-| Güney Hindistan | 4 | 16 | Yok | Yok | 50 | Yok |
-| Güney Birleşik Krallık | 4 | 16 | 4 | 16 | 50 | Yok |
-| Orta Batı ABD| 4 | 16 | 4 | 16 | 50 | Yok |
+| Güney Hindistan | 4 | 16 | Yok | Yok | 50 | YOK |
+| Güney Birleşik Krallık | 4 | 16 | 4 | 16 | 50 | YOK |
+| Orta Batı ABD| 4 | 16 | 4 | 16 | 50 | YOK |
 | West Europe | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| Batı ABD | 4 | 16 | 4 | 16 | 50 | Yok |
+| Batı ABD | 4 | 16 | 4 | 16 | 50 | YOK |
 | Batı ABD 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
 Aşağıdaki maksimum kaynak, [GPU kaynaklarıyla](container-instances-gpu.md) dağıtılan bir kapsayıcı grubu için kullanılabilir (Önizleme).
+
+> [!IMPORTANT]
+> Şu anda, GPU kaynaklarıyla dağıtımlar Azure sanal ağ dağıtımında desteklenmez ve yalnızca Linux kapsayıcı gruplarında kullanılabilir.
 
 | GPU SKU 'Ları | GPU sayısı | En Fazla CPU | Maksimum bellek (GB) | Depolama (GB) |
 | --- | --- | --- | --- | --- |
@@ -67,6 +70,9 @@ Aşağıdaki maksimum kaynak, [GPU kaynaklarıyla](container-instances-gpu.md) d
 ## <a name="windows-container-groups"></a>Windows kapsayıcı grupları
 
 Aşağıdaki bölgeler ve en fazla kaynaklar, [desteklenen ve önizleme](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server kapsayıcıları olan kapsayıcı grupları için kullanılabilir.
+
+> [!IMPORTANT]
+> Şu anda Windows kapsayıcı gruplarıyla dağıtımlar, bir Azure sanal ağ dağıtımında desteklenmez.
 
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 
@@ -86,7 +92,7 @@ Aşağıdaki bölgeler ve en fazla kaynaklar, [desteklenen ve önizleme](contain
 | Doğu Japonya | 4 | 16 | 4 | 16 | 20 |
 | Güney Kore - Orta | 4 | 16 | 4 | 16 | 20 |
 | Orta Kuzey ABD | 4 | 16 | 4 | 16 | 20 |
-| North Europe | 2 | 3,5 | 2 | 8 | 20 |
+| Kuzey Avrupa | 2 | 3,5 | 2 | 8 | 20 |
 | Orta Güney ABD | 2 | 3,5 | 2 | 3,5 | 20 |
 | Güneydoğu Asya | Yok | Yok | 2 | 3,5 | 20 |
 | Güney Hindistan | 2 | 3,5 | 2 | 3,5 | 20 |
@@ -113,10 +119,10 @@ Aşağıdaki bölgeler ve en fazla kaynaklar, [desteklenen ve önizleme](contain
 | Doğu ABD | 4 | 16 | 4 | 16 | 20 |
 | Doğu ABD 2 | 2 | 3,5 | 2 | 3,5 | 20 |
 | Orta Fransa | 4 | 16 | 4 | 16 | 20 |
-| Doğu Japonya | Yok | Yok | 4 | 16 | 20 |
+| Doğu Japonya | Yok | YOK | 4 | 16 | 20 |
 | Güney Kore - Orta | 4 | 16 | 4 | 16 | 20 |
 | Orta Kuzey ABD | 4 | 16 | 4 | 16 | 20 |
-| North Europe | 4 | 16 | 4 | 16 | 20 |
+| Kuzey Avrupa | 4 | 16 | 4 | 16 | 20 |
 | Orta Güney ABD | 4 | 16 | 4 | 16 | 20 |
 | Güneydoğu Asya | 4 | 16 | 4 | 16 | 20 |
 | Güney Hindistan | 4 | 16 | 4 | 16 | 20 |

@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737081"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565934"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Uygulama yapılandırma depolarını otomatik olarak yedekleme
 
@@ -37,14 +37,17 @@ Uygulama yapılandırma depolarını yedeklemenin arkasındaki mosyon, uygulaman
 
 Bu öğreticide, bölgede `centralus` ve bölgedeki tüm diğer kaynaklarda ikincil bir depo oluşturacaksınız `westus` .
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-- Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/). 
+## <a name="prerequisites"></a>Ön koşullar 
+
 - Azure geliştirme iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
-- [.NET Core SDK](https://dotnet.microsoft.com/download).
-- Azure CLı 'nın en son sürümü (2.3.1 veya üzeri). Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure CLı kullanıyorsanız, önce kullanarak oturum açmanız gerekir `az login` . İsteğe bağlı olarak Azure Cloud Shell kullanabilirsiniz.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- [.NET Core SDK](https://dotnet.microsoft.com/download).
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Bu öğretici, Azure CLı 'nin sürüm 2.3.1 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 

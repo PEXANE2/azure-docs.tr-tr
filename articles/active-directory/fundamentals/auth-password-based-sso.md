@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ile parola tabanlı kimlik doğrulaması
-description: Bu kimlik doğrulama modelini elde etmek için mimari yönergeler
+description: Azure Active Directory ile parola tabanlı kimlik doğrulaması elde etmeye yönelik mimari rehberlik.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f05bf8f5f7ec4907c2cd61ff48e3438dfa1e097a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114363"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576941"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Azure Active Directory ile parola tabanlı kimlik doğrulaması
 
@@ -35,13 +35,13 @@ Bir uygulama, belirteç ve üst bilgiler yerine Kullanıcı adı ve parolayla ki
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı**: uygulamalarım ya da doğrudan siteyi ziyaret ederek oluşturulmuş tabanlı uygulamaya erişir. 
+* **Kullanıcı** : uygulamalarım ya da doğrudan siteyi ziyaret ederek oluşturulmuş tabanlı uygulamaya erişir. 
 
-* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen. Kullanıcı, form tabanlı uygulamaya Uygps uzantısı aracılığıyla erişir. 
+* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen. Kullanıcı, form tabanlı uygulamaya Uygps uzantısı aracılığıyla erişir. 
 
-* **Uygps uzantısı**: yapılandırılan parola tabanlı SSO uygulamasını tanımlar ve oturum açma formuna kimlik bilgilerini sağlar. Uygps uzantısı Web tarayıcısına yüklendi. 
+* **Uygps uzantısı** : yapılandırılan parola tabanlı SSO uygulamasını tanımlar ve oturum açma formuna kimlik bilgilerini sağlar. Uygps uzantısı Web tarayıcısına yüklendi. 
 
-* **Azure AD**: kullanıcının kimliğini doğrular.
+* **Azure AD** : kullanıcının kimliğini doğrular.
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Azure AD ile parola tabanlı SSO uygulama
 

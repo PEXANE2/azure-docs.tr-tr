@@ -1,15 +1,15 @@
 ---
-title: Öğretici-CLı kullanarak Azure 'da DB yedeklemesini SAP HANA
+title: Öğretici-Azure CLı kullanarak Azure 'da DB yedeklemesini SAP HANA
 description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f11e01c6af18cac956d58b9c692d7b57c8fe653a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2cc34ae33ad283c30bbc5ce05a31b5e35a192de
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324969"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566665"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -26,9 +26,9 @@ Bu belgede zaten bir Azure VM 'de yüklü bir SAP HANA veritabanınız olduğunu
 
 [Şu anda SAP HANA için desteklediğimiz senaryolara](./sap-hana-backup-support-matrix.md#scenario-support) göz atın.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm xx. xxx. x veya üstünü çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+ - Bu öğretici, Azure CLı 'nin sürüm xx.xx.xxx veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -42,7 +42,7 @@ Bu öğreticide, aşağıdakileri kullanacağız:
 * *Saphanavm* ADLı bir VM
 * *westus2* konumundaki kaynaklar.
 
-*Saphanavault*adlı bir kasa oluşturacağız.
+*Saphanavault* adlı bir kasa oluşturacağız.
 
 ```azurecli-interactive
 az backup vault create --resource-group saphanaResourceGroup \

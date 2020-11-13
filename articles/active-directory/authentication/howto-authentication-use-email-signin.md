@@ -10,14 +10,17 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964545"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576028"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Alternatif oturum açma KIMLIĞI (Önizleme) olarak e-posta kullanarak Azure Active Directory için oturum açın
+
+> [!NOTE]
+> Diğer bir oturum açma KIMLIĞI olan Azure Active Directory genel önizleme özelliği olduğundan, Azure AD 'de e-posta ile oturum açın. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Birçok kuruluş, kullanıcıların şirket içi dizin ortamıyla aynı kimlik bilgilerini kullanarak Azure Active Directory (Azure AD) üzerinde oturum açmalarına izin vermek ister. Karma kimlik doğrulaması olarak bilinen bu yaklaşım sayesinde, kullanıcıların yalnızca bir kimlik bilgileri kümesini hatırlamaları gerekir.
 
@@ -27,12 +30,12 @@ Bazı kuruluşlar aşağıdaki nedenlerden dolayı karma kimlik doğrulamasına 
 * Azure AD UPN 'nin değiştirilmesi, şirket içi ve Azure AD ortamları arasında, belirli uygulama ve hizmetlerle ilgili sorunlara neden olabilecek bir eşleşmeyen eşleşme oluşturur.
 * İşletme veya uyumluluk nedenlerinden dolayı kuruluş, Azure AD 'de oturum açmak için şirket içi UPN 'yi kullanmak istemiyor.
 
-Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD 'yi yapılandırarak kullanıcıların doğrulanmış etki alanındaki bir e-posta ile farklı bir oturum açma KIMLIĞI olarak oturum açmasını sağlayabilirsiniz. Örneğin, *contoso* , eski UPN ile oturum açmaya devam etmek yerine *fabrikam*'a yeniden markalı ise, `balas@contoso.com` alternatif bir oturum açma kimliği olarak e-posta artık kullanılabilir. Bir uygulamaya veya hizmetlere erişmek için kullanıcılar, atanmış e-postalarını kullanarak Azure AD 'de oturum açabilirler `balas@fabrikam.com` .
+Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD 'yi yapılandırarak kullanıcıların doğrulanmış etki alanındaki bir e-posta ile farklı bir oturum açma KIMLIĞI olarak oturum açmasını sağlayabilirsiniz. Örneğin, *contoso* , eski UPN ile oturum açmaya devam etmek yerine *fabrikam* 'a yeniden markalı ise, `balas@contoso.com` alternatif bir oturum açma kimliği olarak e-posta artık kullanılabilir. Bir uygulamaya veya hizmetlere erişmek için kullanıcılar, atanmış e-postalarını kullanarak Azure AD 'de oturum açabilirler `balas@fabrikam.com` .
 
 Bu makalede, alternatif bir oturum açma KIMLIĞI olarak e-postayı nasıl etkinleştireceğinizi ve kullanacağınız gösterilmektedir. Bu özellik Azure AD Ücretsiz sürümünde ve üzeri sürümlerde kullanılabilir.
 
 > [!NOTE]
-> Diğer bir oturum açma KIMLIĞI olan Azure Active Directory genel önizleme özelliği olduğundan, Azure AD 'de e-posta ile oturum açın. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik yalnızca bulutta kimliği doğrulanmış Azure AD kullanıcılarına yöneliktir.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD oturum açma yaklaşımlarına genel bakış
 
@@ -169,6 +172,72 @@ Daha fazla bilgi için bkz. [Azure AD karma kimlik çözümünüz için doğru k
 
 Kullanıcıların e-posta ile oturum açmasını test etmek için, gibi [https://myprofile.microsoft.com][my-profile] e-posta adreslerine bağlı olarak bir kullanıcı hesabı ile oturum açın, örneğin, `balas@fabrikam.com` UPN 'sini değil `balas@contoso.com` . Oturum açma deneyimi, UPN tabanlı bir oturum açma olayı ile aynı şekilde görünmelidir.
 
+## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>Kullanıcı oturumunu bir e-posta adresiyle test etmek için hazırlanan dağıtımı etkinleştirin  
+
+[Hazırlanan dağıtım][staged-rollout] , kiracı yöneticilerinin belirli gruplar için özellikleri etkinleştirmesine olanak sağlar. Kiracı yöneticilerinin Kullanıcı oturumunu bir e-posta adresiyle test etmek için hazırlanmış dağıtımı kullanması önerilir. Yöneticiler bu özelliği kiracının tamamına dağıtmaya hazırsanız, bir giriş bölgesi bulma ilkesi kullanmalıdır.  
+
+
+Aşağıdaki adımları tamamlayabilmeniz için *Kiracı Yöneticisi* izinlerine sahip olmanız gerekir:
+
+1. Yönetici olarak bir PowerShell oturumu açın ve ardından [Install-Module][Install-Module] cmdlet 'Ini kullanarak *azureadpreview* modülünü yüklersiniz:
+
+    ```powershell
+    Install-Module AzureADPreview
+    ```
+
+    İstenirse, NuGet ' i veya güvenilmeyen bir depodan yüklemek için **Y** ' yi seçin.
+
+2. [Connect-AzureAD][Connect-AzureAD] cmdlet 'Ini kullanarak Azure AD kiracınızda *Kiracı Yöneticisi* olarak oturum açın:
+
+    ```powershell
+    Connect-AzureAD
+    ```
+
+    Komut, hesabınız, ortamınız ve kiracı KIMLIĞINIZ hakkındaki bilgileri döndürür.
+
+3. Aşağıdaki cmdlet 'i kullanarak mevcut tüm hazırlanmış dağıtım ilkelerini listeleyin:
+   
+   ```powershell
+   Get-AzureADMSFeatureRolloutPolicy
+   ``` 
+
+4. Bu özellik için mevcut bir hazırlanmış dağıtım ilkesi yoksa, yeni bir aşamalı dağıtım ilkesi oluşturun ve ilke KIMLIĞINI aklınızda yapın:
+
+   ```powershell
+   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   ```
+
+5. Hazırlanan dağıtım ilkesine eklenecek grubun directoryObject KIMLIĞINI bulun. Bir sonraki adımda kullanılacak olduğundan, *ID* parametresi için döndürülen değeri aklınızda olun.
+   
+   ```powershell
+   Get-AzureADMSGroup -SearchString "Name of group to be added to the staged rollout policy"
+   ```
+
+6. Aşağıdaki örnekte gösterildiği gibi, grubu, hazırlanan dağıtım ilkesine ekleyin. *-ID* parametresindeki değeri, 4. ADıMDAKI ilke kimliği için döndürülen değerle değiştirin ve *-refobjectıd* parametresindeki değeri 5. adımda belirtilen *kimlikle* değiştirin. Gruptaki kullanıcıların oturum açmak için proxy adreslerini kullanabilmesi 1 saate kadar sürebilir.
+
+   ```powershell
+   Add-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -RefObjectId "GROUP_OBJECT_ID"
+   ```
+   
+Gruba eklenen yeni üyeler için, oturum açmak üzere proxy adreslerini kullanabilmeniz 24 saate kadar sürebilir.
+
+### <a name="removing-groups"></a>Grupları kaldırma
+
+Hazırlanmış bir dağıtım ilkesinden bir grubu kaldırmak için aşağıdaki komutu çalıştırın:
+
+```powershell
+Remove-AzureADMSFeatureRolloutPolicyDirectoryObject -Id "ROLLOUT_POLICY_ID" -ObjectId "GROUP_OBJECT_ID" 
+```
+
+### <a name="removing-policies"></a>İlkeleri kaldırma
+
+Hazırlanmış bir dağıtım ilkesini kaldırmak için öncelikle ilkeyi devre dışı bırakın ve ardından sistemden kaldırın:
+
+```powershell
+Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false 
+Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
+```
+
 ## <a name="troubleshoot"></a>Sorun giderme
 
 Kullanıcılar, e-posta adreslerini kullanarak oturum açma olaylarıyla ilgili sorun yaşıyorsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
@@ -202,4 +271,5 @@ Karma kimlik işlemleri hakkında daha fazla bilgi için bkz. [Parola karması e
 [Get-AzureADPolicy]: /powershell/module/azuread/get-azureadpolicy
 [New-AzureADPolicy]: /powershell/module/azuread/new-azureadpolicy
 [Set-AzureADPolicy]: /powershell/module/azuread/set-azureadpolicy
+[staged-rollout]: /powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged-rollout
 [my-profile]: https://myprofile.microsoft.com

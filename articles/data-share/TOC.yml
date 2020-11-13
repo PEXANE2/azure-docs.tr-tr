@@ -8,7 +8,6 @@
     - name: Desteklenen veri depoları
       href: supported-data-stores.md
 - name: Hızlı Başlangıçlar
-  expanded: true
   items:
     - name: Paylaşılan veriler - Azure portal
       href: share-your-data-portal.md
@@ -16,6 +15,7 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Öğreticiler
+  expanded: true
   items:
     - name: Veri paylaşımı
       href: share-your-data.md
@@ -54,7 +54,7 @@
       href: how-to-delete-invitation.md
     - name: Paylaşım aboneliğini iptal etme
       href: how-to-revoke-share-subscription.md
-    - name: İzleyici
+    - name: İzleme
       href: how-to-monitor.md
     - name: Güvenlik
       href: security.md

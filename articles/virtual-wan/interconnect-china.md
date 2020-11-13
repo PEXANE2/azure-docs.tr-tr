@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399117"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566648"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure sanal WAN ve güvenli hub kullanarak Çin ile bağlantı
 
@@ -111,7 +111,7 @@ Hong Kong bağlantısı ile ilgili seçiminize bağlı olarak, genel mimari bira
 
 Bu seçeneklerin tümü, Hong Kong 'da doğrudan Microsoft 365 bağlantısı için Azure sanal WAN güvenli hub 'ını kullanır. Bu mimariler Ayrıca [çok coğrafi Microsoft 365](/microsoft-365/enterprise/microsoft-365-multi-geo) için uyumluluk gereksinimlerini destekler ve bu trafiği sonraki Azure ön kapısının yakınında tutar. Sonuç olarak, Çin 'den Microsoft 365 kullanımı için de bir iyileştirmedir.
 
-Azure sanal WAN 'ı Internet bağlantılarıyla birlikte kullanırken, her bağlantı [Microsoft Azure eşleme Hizmetleri (haritalar)](https://docs.microsoft.com/azure/peering-service/about)gibi ek hizmetlerden yararlanabilir. HARITALAR, üçüncü taraf Internet servis sağlayıcılarından gelen Microsoft Global ağı 'na gelen trafiği iyileştirmek için oluşturulmuştur.
+Azure sanal WAN 'ı Internet bağlantılarıyla birlikte kullanırken, her bağlantı [Microsoft Azure eşleme Hizmetleri (haritalar)](../peering-service/about.md)gibi ek hizmetlerden yararlanabilir. HARITALAR, üçüncü taraf Internet servis sağlayıcılarından gelen Microsoft Global ağı 'na gelen trafiği iyileştirmek için oluşturulmuştur.
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>Seçenek 1: SDWAN veya VPN
 
@@ -151,4 +151,4 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Sanal WAN güvenli hub 'ı yapılandırma](../firewall-manager/secure-cloud-network.md)
 
-* [Azure eşleme hizmeti önizlemesine genel bakış](https://docs.microsoft.com/azure/peering-service/about)
+* [Azure eşleme hizmeti önizlemesine genel bakış](../peering-service/about.md)

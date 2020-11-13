@@ -1,23 +1,23 @@
 ---
 title: SSS-SAP Çözümleri için Azure Izleyicisi | Microsoft Docs
-description: Bu makalede, SAP Çözümleri için Azure izleyici hakkında sık sorulan sorular (SSS) hakkında yanıtları öğrenin.
+description: Bu makalede, SAP Çözümleri için Azure Izleyici hakkında sık sorulan sorular (SSS) hakkında yanıtları öğrenin.
 author: rdeltcheva
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f584601c2dcbea989f1b68d9fbac5a7f53a59d86
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f872264d5f7bdf4abded516412fe55c417a92e1e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994215"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566121"
 ---
-# <a name="azure-monitor-for-sap-solutions-faq-preview"></a>SAP Çözümleri için Azure izleyici SSS (Önizleme)
+# <a name="azure-monitor-for-sap-solutions-faq-preview"></a>SAP Çözümleri için Azure Izleyici SSS (Önizleme)
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-Bu makalede, SAP Çözümleri için Azure izleyici hakkında sık sorulan soruların (SSS) yanıtları sağlanmaktadır.  
+Bu makalede, SAP Çözümleri için Azure Izleyici hakkında sık sorulan soruların (SSS) yanıtları sağlanmaktadır.  
 
  - **SAP Çözümleri için Azure Izleyici için ödeme yapmam gerekir mi?**  
 SAP Çözümleri için Azure Izleyici için lisans ücreti yoktur.  

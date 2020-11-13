@@ -2,14 +2,14 @@
 title: Sık sorulan sorular
 description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487802"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577524"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -229,9 +229,15 @@ NSX-T üzerinde tam yönetici ayrıcalıklarına sahip olacaksınız ve şirket 
 
 Fiyatlandırma hakkında genel sorular için bkz. Azure VMware Çözüm [fiyatlandırma](https://azure.microsoft.com/pricing/details/azure-vmware) sayfası. 
 
+#### <a name="can-azure-vmware-solution-be-purchased-through-a-microsoft-csp"></a>Azure VMware çözümü bir Microsoft CSP aracılığıyla satın alınabilir mi?
+
+Evet, müşteriler Azure VMware çözümünü bir CSP tarafından yönetilen bir Azure aboneliği içinde dağıtabilir.
+
 #### <a name="who-supports-azure-vmware-solution"></a>Azure VMware çözümünü kimler destekler?
 
-Microsoft, Azure VMware çözümü için destek sunar. Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz.
+Microsoft, Azure VMware çözümü için destek sunar. Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz. 
+
+CSP ile yönetilen abonelikler için, ilk destek düzeyi çözüm sağlayıcısı tarafından diğer Azure hizmetleri için CSP ile aynı şekilde sağlanacaktır.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümü özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?
 
@@ -246,6 +252,10 @@ Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yön
 VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
+
+CSP ile yönetilen abonelikler için müşterinin isteği iş ortağı için gerçekleştirmesi gerekir ve iş ortağı ekibi, abonelik için artan kotayı sağlamak üzere Microsoft ile birlikte çalışır. 
+
+EA abonelikleri için, müşterinin bu yordamı izlemesi gerekir.
 
 * Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
 * Azure aboneliğinde bir Azure hesabınızın olması gerekir.
@@ -283,9 +293,12 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizi ayırma
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   `"
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+
+#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+
+Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
 
 
 ## Customer communication

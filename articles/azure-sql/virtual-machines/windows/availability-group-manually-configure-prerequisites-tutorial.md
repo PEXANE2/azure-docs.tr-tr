@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08d3d5bcdace113d3319b5af6375fff21405159a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21562bc17d4bfd4913c9085755d962382d207c79
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790024"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566801"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Öğretici: Azure sanal makinelerinde SQL Server üzerinde kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
@@ -46,7 +46,7 @@ Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **+** Portalda yeni bir nesne oluşturmak için seçin.
 
    ![Yeni nesne](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -186,7 +186,7 @@ Aşağıdaki tabloda bu iki makinenin ayarları gösterilmektedir:
 
 | **Alan** | Değer |
 | --- | --- |
-| **Ad** |İlk etki alanı denetleyicisi: *ad-birincil-DC* .</br>İkinci etki alanı denetleyicisi *ad-ikincil-DC* . |
+| **Ad** |İlk etki alanı denetleyicisi: *ad-birincil-DC*.</br>İkinci etki alanı denetleyicisi *ad-ikincil-DC*. |
 | **VM disk türü** |SSD |
 | **Kullanıcı adı** |DomainAdmin |
 | **Parola** |Contoso! 0000 |
@@ -234,7 +234,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     ![Rol Ekle iletişim kutusu](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. **Onay** bölümüne ulaşana kadar **İleri ' yi** seçin. **Gerekirse hedef sunucuyu otomatik olarak yeniden Başlat** onay kutusunu seçin.
-8. **Yükle** 'yi seçin.
+8. **Yükle** ’yi seçin.
 9. Özelliklerin yüklenmesi bittikten sonra, **Sunucu Yöneticisi** panosuna geri dönün.
 10. Sol bölmedeki yeni **AD DS** seçeneğini belirleyin.
 11. Sarı uyarı çubuğunda **daha fazla** bağlantıyı seçin.
@@ -249,8 +249,8 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     | **Dağıtım Yapılandırması** |**Yeni orman ekle**<br/> **Kök etki alanı adı** = Corp.contoso.com |
     | **Etki Alanı Denetleyicisi Seçenekleri** |**DSRM parolası** = contoso! 0000<br/>**Parolayı onaylayın** = contoso! 0000 |
 
-14. Sihirbazdaki diğer sayfalara gitmek için **İleri ' yi** seçin. **Önkoşul denetimi** sayfasında, aşağıdaki iletiyi görmediğinizi doğrulayın: **tüm önkoşul denetimleri başarıyla geçildi** . Geçerli uyarı iletilerini gözden geçirebilirsiniz, ancak yüklemeye devam etmek mümkündür.
-15. **Yükle** 'yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
+14. Sihirbazdaki diğer sayfalara gitmek için **İleri ' yi** seçin. **Önkoşul denetimi** sayfasında, aşağıdaki iletiyi görmediğinizi doğrulayın: **tüm önkoşul denetimleri başarıyla geçildi**. Geçerli uyarı iletilerini gözden geçirebilirsiniz, ancak yüklemeye devam etmek mümkündür.
+15. **Yükle** ’yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Birincil etki alanı denetleyicisinin IP adresini aklınızda
 
@@ -387,6 +387,10 @@ Devam etmeden önce aşağıdaki tasarım kararlarını göz önünde bulundurun
 * **Üretimde ağ özel IP adresleri**
 
    Bu öğretici, sanal makineler için genel IP adreslerini kullanır. Genel bir IP adresi, internet üzerinden doğrudan sanal makineye uzak bağlantı sağlar ve yapılandırma adımlarını kolaylaştırır. Üretim ortamlarında, Microsoft, SQL Server örneği VM kaynağının güvenlik açığı parmak izini azaltmak için yalnızca özel IP adresleri önerir.
+
+* **Ağ-sunucu başına tek bir NIC önerilir** 
+
+Sunucu başına tek bir NIC (küme düğümü) ve tek bir alt ağ kullanın. Azure ağ iletişimi, Azure sanal makine konuk kümesinde ek NIC 'ler ve alt ağları gereksiz hale getiren fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağda ulaşılabilir olduğunu size bildirir. Bu uyarıyı, Azure sanal makine konuk yük devretme kümelerinde yoksayabilirsiniz.
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>SQL Server VM 'Leri oluşturma ve yapılandırma
 
@@ -531,6 +535,10 @@ Diğer SQL Server VM adımları yineleyin.
   >[!NOTE]
   > Bu adım, SQL Server VM 'Lerin yük devretme kümesine katılmasını sağlar ve artık [Azure SQL VM CLI](./availability-group-az-commandline-configure.md) ve [Azure hızlı başlangıç şablonlarıyla](availability-group-quickstart-template-configure.md)otomatik olarak yapılabilir.
   >
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>Yük devretme kümesi ağ eşiklerini ayarlama
+
+SQL Server AlwaysOn ile Azure VM 'lerinde Windows Yük devretme kümesi düğümlerini çalıştırırken, küme ayarını daha gevşek bir izleme durumuna değiştirme önerilir.  Bu, kümeyi daha kararlı ve güvenilir hale getirir.  Bunun hakkında daha fazla bilgi için, bkz. [IaaS SQL AlwaysOn-ayarlama yük devretme kümesi ağ eşikleri](/windows-server/troubleshoot/iaas-sql-failover-cluser).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Her SQL Server VM Güvenlik duvarını yapılandırma

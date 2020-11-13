@@ -2,13 +2,13 @@
 title: Azure Arc etkin sunucularıyla karma makineyi bağlama
 description: Azure Arc etkin sunucularıyla karma makinenizi bağlamayı ve kaydetmeyi öğrenin.
 ms.topic: quickstart
-ms.date: 09/23/2020
-ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/12/2020
+ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327893"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576844"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama
 
@@ -42,34 +42,40 @@ Azure Arc etkin sunucuları, bu hizmeti kullanabilmeniz için aboneliğinizde a�
 Aşağıdaki komutları kullanarak bunları kaydedin:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 ## <a name="generate-installation-script"></a>Yükleme betiği oluştur
 
 Azure Arc ile indirme, yükleme ve bağlantı kurma işlemlerini otomatik hale getirmeye yönelik betik, Azure portal kullanılabilir. İşlemi gerçekleştirmek için aşağıdakileri yapın:
 
-1. **Tüm hizmetler**' e tıklayarak ve ardından **makineler-Azure yay**' i arayıp seçerek Azure yay hizmetini Azure Portal başlatın.
+1. **Tüm hizmetler** ' e tıklayıp sunucular ' ı arayıp seçin **-Azure arc** ' ı Azure Portal Azure yay hizmetini başlatın.
 
     :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
-1. **Makineler-Azure yay** sayfasında sol üst kısımdaki **Ekle**' yi veya orta bölmenin altındaki **makine-Azure yayı oluştur** seçeneğini belirleyin.
+1. **Sunucular-Azure yay** sayfasında sol üst köşedeki **Ekle** ' yi seçin.
 
-1. **Yöntem seçin** sayfasında, **etkileşimli betiği kullanarak makine Ekle** kutucuğunu seçin ve ardından **betik oluştur**' u seçin.
+1. **Bir yöntem seçin** sayfasında, **etkileşimli betiği kullanarak sunucu Ekle** ' yi seçin ve ardından **betik oluştur** ' u seçin.
 
-1. **Betik oluştur** sayfasında, makinenin Azure 'da yönetilmesini istediğiniz aboneliği ve kaynak grubunu seçin. Makine meta verilerinin depolanacağı Azure konumunu seçin.
+1. **Betik oluştur** sayfasında, makinenin Azure 'da yönetilmesini istediğiniz aboneliği ve kaynak grubunu seçin. Makine meta verilerinin depolanacağı Azure konumunu seçin. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
 
-1. **Betik oluştur** sayfasında, **işletim sistemi** açılan listesinde, betiğin üzerinde çalıştığı işletim sistemini seçin.
+1. **Önkoşullar** sayfasında, bilgileri gözden geçirin ve ardından **İleri: kaynak ayrıntıları** ' nı seçin.
 
-1. Makine Internet 'e bağlanmak için bir proxy sunucusu üzerinden iletişim kurduğundan, Ileri ' yi seçin **: ara sunucu**.
+1. **Kaynak ayrıntıları** sayfasında, aşağıdakileri sağlayın:
 
-1. **Proxy sunucusu** sekmesinde, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde girin `http://<proxyURL>:<proxyport>` .
+    1. **Kaynak grubu** açılan listesinde, makinenin yönetilecek kaynak grubunu seçin.
+    1. **Bölge** açılan listesinde, sunucu meta verilerini depolamak için Azure bölgesini seçin.
+    1. **İşletim sistemi** açılan listesinde, betiğin üzerinde çalışmak üzere yapılandırıldığı işletim sistemini seçin.
+    1. Makine Internet 'e bağlanmak için bir proxy sunucusu üzerinden iletişim kurduklarında, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde girin `http://<proxyURL>:<proxyport>` .
+    1. **Sonraki: Etiketler** ' i seçin.
 
-1. **Gözden geçir + oluştur**' u seçin.
+1. **Etiketler** sayfasında, önerilen varsayılan **fiziksel konum etiketlerini** gözden geçirin ve bir değer girin veya standartlarınızı desteklemek için bir veya daha fazla **özel etiket** belirtin.
 
-1. **Gözden geçir + oluştur** sekmesinde Özet bilgilerini gözden geçirin ve ardından **İndir**' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki**' yi seçin.
+1. **İleri ' yi seçin: betiği indir ve Çalıştır**.
+
+1. **Betiği indir ve Çalıştır** sayfasında, Özet bilgilerini gözden geçirin ve ardından **İndir** ' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki** ' yi seçin.
 
 ## <a name="install-the-agent-using-the-script"></a>Betiği kullanarak aracıyı yükler
 
@@ -99,7 +105,7 @@ Azure Arc ile indirme, yükleme ve bağlantı kurma işlemlerini otomatik hale g
 
 Aracıyı yükledikten ve Azure Arc etkin sunucularına bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. Makinenizde [Azure Portal](https://aka.ms/hybridmachineportal)görüntüleyin.
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Başarılı bir makine bağlantısı" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

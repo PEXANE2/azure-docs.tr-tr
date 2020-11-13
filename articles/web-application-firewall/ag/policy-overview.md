@@ -7,12 +7,12 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 10/14/2020
 ms.author: victorh
-ms.openlocfilehash: 789a60c80d14301c107824d178a3566d358d287f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056404"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566580"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
 
@@ -21,7 +21,7 @@ Web uygulaması güvenlik duvarı Ilkeleri tüm WAF ayarlarını ve yapılandır
 > [!NOTE]
 > Azure Web uygulaması güvenlik duvarı (WAF) URI başına ilkeler genel önizlemede.
 > 
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Oluşturabileceğiniz ilke sayısı için bir sınır yoktur. Bir ilke oluşturduğunuzda, etkili olması için bir uygulama ağ geçidi ile ilişkilendirilmesi gerekir. Uygulama ağ geçitleri, dinleyicileri ve yol tabanlı kuralların herhangi bir birleşimiyle ilişkilendirilebilir.
 
@@ -57,7 +57,7 @@ Bu örnekte, iki site için geçerli olan genel bir ilkeniz vardır. Tek bir sit
 
 ## <a name="existing-waf-configurations"></a>Var olan WAF yapılandırması
 
-Tüm yeni Web uygulaması güvenlik duvarı WAF ayarları (özel kurallar, yönetilen kural kümesi yapılandırması, dışlamaları vb.) bir WAF ilkesinde bulunur. Var olan bir WAF 'niz varsa, bu ayarlar WAF yapılandırmanızda yine de mevcut olabilir. Yeni WAF ilkesine taşıma hakkında daha fazla bilgi için [WAF config dosyasını BIR WAF Ilkesine geçirin](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy). 
+Tüm yeni Web uygulaması güvenlik duvarı WAF ayarları (özel kurallar, yönetilen kural kümesi yapılandırması, dışlamaları vb.) bir WAF ilkesinde bulunur. Var olan bir WAF 'niz varsa, bu ayarlar WAF yapılandırmanızda yine de mevcut olabilir. Yeni WAF ilkesine taşıma hakkında daha fazla bilgi için [WAF config dosyasını BIR WAF Ilkesine geçirin](./migrate-policy.md). 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

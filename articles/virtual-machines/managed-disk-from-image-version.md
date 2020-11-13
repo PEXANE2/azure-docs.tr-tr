@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336070"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576368"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Görüntü sürümünden yönetilen disk oluşturma
 
@@ -23,7 +23,7 @@ Gerekirse, bir görüntü sürümünden işletim sistemini veya tek bir veri dis
 
 ## <a name="cli"></a>CLI
 
-Görüntü sürümlerini [az Sig Image-Version List](/cli/azure/sig/image-version.md#az_sig_image_version_list)kullanarak bir galeride listeleyin. Bu örnekte, *MyImage* görüntü galerisinde *myımagedefinition* görüntü tanımının bir parçası olan tüm görüntü sürümlerini arıyoruz.
+Görüntü sürümlerini [az Sig Image-Version List](/cli/azure/sig/image-version#az_sig_image_version_list)kullanarak bir galeride listeleyin. Bu örnekte, *MyImage* görüntü galerisinde *myımagedefinition* görüntü tanımının bir parçası olan tüm görüntü sürümlerini arıyoruz.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-`source`Değişkeni görüntü sürümünün kimliği olarak ayarlayın, ardından, yönetilen diski oluşturmak için [az disk Create](/cli/azure/disk.md#az_disk_create) kullanın. 
+`source`Değişkeni görüntü sürümünün kimliği olarak ayarlayın, ardından, yönetilen diski oluşturmak için [az disk Create](//cli/azure/disk#az_disk_create) kullanın. 
 
 Bu örnekte, *EastUS* bölgesinde *myresourcegroup* adlı bir kaynak grubunda yer alan *mymanagedosdisk* adlı bir yönetilen disk oluşturmak için görüntü sürümünün işletim sistemi diskini dışarı aktardık. 
 

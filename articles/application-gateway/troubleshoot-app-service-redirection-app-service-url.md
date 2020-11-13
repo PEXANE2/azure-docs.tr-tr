@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396898"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575994"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway App Service sorunlarını giderme
 
@@ -93,7 +93,7 @@ App Service artık uygulama ağ geçidine işaret eden aynı orijinal ana bilgis
 
 Özel bir etki alanına sahip olmanız ve bu işlemi izlemeniz gerekir:
 
-- Etki alanını App Service 'in özel etki alanı listesine kaydedin. Özel etki alanında App Service 'in FQDN 'sine işaret eden bir CNAME 'i olması gerekir. Daha fazla bilgi için bkz. [mevcut bir özel DNS adını Azure App Service eşleme](//azure/app-service/app-service-web-tutorial-custom-domain).
+- Etki alanını App Service 'in özel etki alanı listesine kaydedin. Özel etki alanında App Service 'in FQDN 'sine işaret eden bir CNAME 'i olması gerekir. Daha fazla bilgi için bkz. [mevcut bir özel DNS adını Azure App Service eşleme](/azure/app-service/app-service-web-tutorial-custom-domain).
 
     ![App Service özel etki alanı listesi](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 

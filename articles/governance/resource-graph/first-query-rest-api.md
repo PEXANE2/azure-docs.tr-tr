@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: ilk REST API sorgunuz'
 description: Bu hızlı başlangıçta, REST API için kaynak grafik uç noktasını çağırmak ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057239"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566087"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Hızlı başlangıç: REST API kullanarak ilk kaynak grafik sorgunuzu çalıştırın
 
@@ -76,7 +76,6 @@ Her REST API çağrısının istek gövdesinde, kendi değeri ile değiştirmeni
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5"
-         }
      }
      ```
 
@@ -99,7 +98,6 @@ Her REST API çağrısının istek gövdesinde, kendi değeri ile değiştirmeni
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5 | order by name asc"
-         }
      }
      ```
 
@@ -122,7 +120,6 @@ Her REST API çağrısının istek gövdesinde, kendi değeri ile değiştirmeni
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | order by name asc | limit 5"
-         }
      }
      ```
 

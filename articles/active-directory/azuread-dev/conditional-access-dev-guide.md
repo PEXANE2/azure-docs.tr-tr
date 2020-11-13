@@ -13,16 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116328"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575892"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory Koşullu erişim özelliği için Geliştirici Kılavuzu
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
+
+> [!NOTE]
+> Bu makalenin Microsoft Identity platform sürümü için bkz. [Azure Active Directory Koşullu erişim Için Geliştirici Kılavuzu](/azure/active-directory/develop/v2-conditional-access-dev-guide).
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
@@ -40,7 +43,7 @@ Azure AD için uygulama oluşturan geliştiriciler için, bu makalede Koşullu e
 
 ### <a name="app-types-impacted"></a>Etkilenen uygulama türleri
 
-Çoğu ortak durumda, koşullu erişim bir uygulamanın davranışını değiştirmez veya geliştiriciden herhangi bir değişiklik yapılmasını gerektirmez.Yalnızca bir uygulama bir hizmet için dolaylı olarak veya sessizce sessizce bir belirteç istediğinde, bir uygulama, koşullu erişimi "zorluk" işlemek için kod değişiklikleri gerektirir.Etkileşimli bir oturum açma isteği gerçekleştirmek kadar kolay olabilir.
+Çoğu ortak durumda, koşullu erişim bir uygulamanın davranışını değiştirmez veya geliştiriciden herhangi bir değişiklik yapılmasını gerektirmez. Yalnızca bir uygulama bir hizmet için dolaylı olarak veya sessizce sessizce bir belirteç istediğinde, bir uygulama, koşullu erişimi "zorluk" işlemek için kod değişiklikleri gerektirir. Etkileşimli bir oturum açma isteği gerçekleştirmek kadar kolay olabilir.
 
 Özellikle, aşağıdaki senaryolar koşullu erişimi "zorluk" işleyecek şekilde kod gerektirir:
 

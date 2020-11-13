@@ -1,6 +1,6 @@
 ---
 title: PowerShell kullanarak birden çok tabloyu artımlı olarak kopyalama
-description: Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na Delta verileri yükleyen bir işlem hattı ile bir Azure Data Factory oluşturacaksınız.
+description: Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na Delta verileri yükleyen bir işlem hattı ile Azure Data Factory oluşturursunuz.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634105"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566427"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell kullanarak SQL Server birden çok tablodan Azure SQL veritabanı 'na artımlı olarak veri yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na Delta verileri yükleyen bir işlem hattı ile bir Azure Data Factory oluşturacaksınız.    
+Bu öğreticide, bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na Delta verileri yükleyen bir işlem hattı ile Azure Data Factory oluşturursunuz.    
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -42,11 +42,11 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 ## <a name="overview"></a>Genel Bakış
 Bu çözümü oluşturmak için önemli adımlar şunlardır: 
 
-1. **Eşit sütununu seçin** .
+1. **Eşit sütununu seçin**.
 
     Kaynak veri deposundaki her tablo için, her çalıştırma için yeni veya güncelleştirilmiş kayıtları belirleyebilen bir sütun seçin. Normalde, satırlar oluşturulduğunda veya güncelleştirildiğinde seçilen bu sütundaki veriler (örneğin, last_modify_time veya kimlik) artmaya devam eder. Bu sütundaki en büyük değer eşik olarak kullanılır.
 
-2. **Eşik değerini depolamak için veri deposunu hazırlayın** .
+2. **Eşik değerini depolamak için veri deposunu hazırlayın**.
 
     Bu öğreticide, eşik değerini bir SQL veritabanında depolayacaksınız.
 
@@ -69,8 +69,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **SQL Server** . Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
-* **Azure SQL veritabanı** . Azure SQL veritabanı 'ndaki bir veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . 
+* **SQL Server**. Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
+* **Azure SQL veritabanı**. Azure SQL veritabanı 'ndaki bir veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
@@ -812,7 +812,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. **Foreach etkin
 
 ## <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm hizmetler** ’i seçin, *Veri fabrikaları* anahtar sözcüğüyle arama yapın ve **Veri fabrikaları** seçeneğini belirleyin. 
 

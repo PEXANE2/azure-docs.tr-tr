@@ -4,12 +4,12 @@ description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87497367"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566325"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid ile Azure kuyruk depolama 'ya özel olayları yönlendirme
 
@@ -17,12 +17,11 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Kuyruk depol
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure portal Cloud Shell kullanmak yerine yerel makinenizde Azure CLı veya Azure PowerShell kullanıyorsanız, aşağıdaki Azure CLı ve Azure PowerShell sürümlerine sahip olduğunuzdan emin olun. 
+- Bu makale, Azure CLı 'nin sürüm 2.0.56 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
-- Azure CLı sürüm 2.0.56 veya üstü. Azure CLı 'nın en son sürümünü yükleme yönergeleri için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli). 
-- Sürüm 1.1.0 veya üstünü Azure PowerShell. [Azure İndirmeleri-komut satırı araçlarından](https://azure.microsoft.com/downloads/)Windows makinenize Azure PowerShell en son sürümünü indirin. 
+- Azure portal Cloud Shell kullanmak yerine yerel makinenizde Azure PowerShell kullanıyorsanız, Azure PowerShell sürümü 1.1.0 veya daha büyük olduğundan emin olun. [Azure İndirmeleri-komut satırı araçlarından](https://azure.microsoft.com/downloads/)Windows makinenize Azure PowerShell en son sürümünü indirin. 
 
 Bu makale, Azure CLı kullanmaya yönelik komutlar sağlar. 
 

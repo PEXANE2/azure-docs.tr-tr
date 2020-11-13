@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341966"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566257"
 ---
 # <a name="set-up-web-endpoints"></a>Web uç noktalarını ayarlama
 
@@ -54,12 +54,12 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
     > - Üst bilgi değerinin örnek uç noktada benzersiz olmasını sağlamak için applicationId değerinizin ilk 8 basamağını kullanın
     > - Gerçek dünyada web uç noktası, cihazlarınızı yöneten [IOT hub'ının](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) uç noktası olabilir
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 
 ## <a name="call-web-endpoints"></a>Web uç noktalarını çağırma
 
-1. **TurnOnOff** komutuna gidin, tamamlama kuralının altında **ConfirmationResponse** öğesini ve ardından **Eylem ekle**'yi seçin.
-1. **Yeni eylem türü**'nün altında **Web uç noktasını çağır**'ı seçin
+1. **TurnOnOff** komutuna gidin, tamamlama kuralının altında **ConfirmationResponse** öğesini ve ardından **Eylem ekle** 'yi seçin.
+1. **Yeni eylem türü** 'nün altında **Web uç noktasını çağır** 'ı seçin
 1. **Eylemi Düzenle - Uç Noktaları** bölümünde oluşturduğumuz web uç noktası olan **UpdateDeviceState** girişini seçin.  
 1. **Yapılandırma** alanına aşağıdaki değerleri girin: 
    > [!div class="mx-imgBorder"]
@@ -74,9 +74,9 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
     > [!NOTE]
     > - Önerilen sorgu parametreleri yalnızca örnek uç nokta için gereklidir
 
-1. **Başarılı Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder**'i seçin.
+1. **Başarılı Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder** 'i seçin.
     
-    **Basit düzenleyici**'ye `{SubjectDevice} is {OnOff}` yazın.
+    **Basit düzenleyici** 'ye `{SubjectDevice} is {OnOff}` yazın.
    
    > [!div class="mx-imgBorder"]
    > ![Yürütme için başarı eylemini gösteren ekran görüntüsü.](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -88,9 +88,9 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
    > [!NOTE]
    > - Dilerseniz `{YourWebEndpointName.FieldName}` kullanarak HTTP yanıtındaki alanlara doğrudan erişim sağlayabilirsiniz. Örnek: `{UpdateDeviceState.TV}`
 
-1. **Başarısız Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder**'i seçin
+1. **Başarısız Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder** 'i seçin
 
-    **Basit düzenleyici**'ye `Sorry, {WebEndpointErrorMessage}` yazın.
+    **Basit düzenleyici** 'ye `Sorry, {WebEndpointErrorMessage}` yazın.
 
    > [!div class="mx-imgBorder"]
    > ![Web uç noktası çağırma - Başarısız Olduğunda](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
@@ -122,17 +122,17 @@ Ancak çoğu durumda etkinliği istemci uygulamasına yalnızca web uç noktası
 1. Çağrı web uç noktasını düzenleyin: 
     1. **Yapılandırma** bölümünde **Sorgu Parametreleri** değerinin `item={SubjectDevice}&&value={OnOff}` olduğundan emin olun
     1. **Başarılı Olduğunda** bölümünde **Yürütülecek eylem** değerini **Etkinliği istemciye gönder** olarak değiştirin
-    1. Aşağıdaki JSON kodunu **Etkinlik İçeriği**'ne kopyalayın
+    1. Aşağıdaki JSON kodunu **Etkinlik İçeriği** 'ne kopyalayın
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![Başarılı olduğunda etkinliği gönder](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 Artık yalnızca web uç noktasına yapılan istek başarılı olduğunda istemciye etkinlik gönderiyorsunuz.
 
@@ -207,3 +207,4 @@ Uygulamayı önceki bölümde `turn on tv` ile test ettiyseniz televizyonun "on"
 
 > [!div class="nextstepaction"]
 > [Özel komutlar uygulamasını uzak bir yetenek olarak dışarı aktar](./how-to-custom-commands-integrate-remote-skills.md)
+

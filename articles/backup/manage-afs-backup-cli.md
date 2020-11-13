@@ -3,29 +3,27 @@ title: Azure CLı ile Azure dosya paylaşma yedeklemelerini yönetme
 description: Azure Backup tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için Azure CLı 'yi nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 44c095d58e2da5a74985ce216268aab15922ed1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332755"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566461"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Azure CLı ile Azure dosya paylaşma yedeklemelerini yönetme
 
 Azure CLı, Azure kaynaklarını yönetmek için bir komut satırı deneyimi sağlar. Azure kaynaklarını kullanmak için özel otomasyon oluşturmaya yönelik harika bir araçtır. Bu makalede, [Azure Backup](./backup-overview.md)tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için görevlerin nasıl gerçekleştirileceği açıklanır. Ayrıca [Azure Portal](https://portal.azure.com/)bu adımları uygulayabilirsiniz.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm 2.0.18 veya üstünü çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
-
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, zaten [Azure Backup](./backup-overview.md)tarafından yedeklenen bir Azure dosya paylaşımınız olduğu varsayılır. Bir tane yoksa, dosya paylaşımlarınız için yedeklemeyi yapılandırmak üzere [CLI Ile Azure dosya paylaşımlarını](backup-afs-cli.md) yedekleme bölümüne bakın. Bu makalede aşağıdaki kaynakları kullanırsınız:
-
-* **Kaynak grubu**: *azurefiles*
-* **Recoveryserviceskasası**: *azurefilesvault*
-* **Depolama hesabı**: *afsaccount*
-* **Dosya paylaşma**: *azurefiles*
+   -  **Kaynak grubu** : *azurefiles*
+   -  **Recoveryserviceskasası** : *azurefilesvault*
+   -  **Depolama hesabı** : *afsaccount*
+   -  **Dosya paylaşma** : *azurefiles*
+  
+  [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+   - Bu öğretici, Azure CLı 'nin sürüm 2.0.18 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="monitor-jobs"></a>İşleri izleme
 
@@ -98,9 +96,9 @@ Yedekleme sıklığını veya bekletme aralığını değiştirmek için [az Bac
 
 İlkeyi değiştirmek için aşağıdaki parametreleri tanımlayın:
 
-* **--Container-Name**: dosya paylaşımının barındıracağı depolama hesabının adı. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
-* **--Name**: ilkeyi değiştirmek istediğiniz dosya paylaşımının adı. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
-* **--Policy-Name**: dosya paylaşımınız için ayarlamak istediğiniz yedekleme ilkesinin adı. Kasanıza yönelik tüm ilkeleri görüntülemek için [az Backup Policy List](/cli/azure/backup/policy#az-backup-policy-list) ' i kullanabilirsiniz.
+* **--Container-Name** : dosya paylaşımının barındıracağı depolama hesabının adı. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
+* **--Name** : ilkeyi değiştirmek istediğiniz dosya paylaşımının adı. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
+* **--Policy-Name** : dosya paylaşımınız için ayarlamak istediğiniz yedekleme ilkesinin adı. Kasanıza yönelik tüm ilkeleri görüntülemek için [az Backup Policy List](/cli/azure/backup/policy#az-backup-policy-list) ' i kullanabilirsiniz.
 
 Aşağıdaki örnek, *afsaccount* depolama hesabında bulunan *azurefiles* dosya paylaşımının *schedule2* yedekleme ilkesini ayarlar.
 
@@ -110,8 +108,8 @@ az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name
 
 Ayrıca, aşağıdaki iki ek parametreyi sağlayarak kapsayıcı ve öğe için kolay adları kullanarak önceki komutu çalıştırabilirsiniz:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--iş yükü-tür**: *azurefileshare*
+* **--Backup-Management-Type** : *azurestorage*
+* **--iş yükü-tür** : *azurefileshare*
 
 ```azurecli-interactive
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --name azurefiles --backup-management-type azurestorage --out table
@@ -136,8 +134,8 @@ Azure Backup tarafından oluşturulan temeldeki anlık görüntüler korunduğun
 
 Dosya paylaşımının korumasını durdurmak için aşağıdaki parametreleri tanımlayın:
 
-* **--Container-Name**: dosya paylaşımının barındıracağı depolama hesabının adı. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
-* **--öğe-adı**: korumasını durdurmak istediğiniz dosya paylaşımının adı. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
+* **--Container-Name** : dosya paylaşımının barındıracağı depolama hesabının adı. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
+* **--öğe-adı** : korumasını durdurmak istediğiniz dosya paylaşımının adı. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
 
 ### <a name="stop-protection-and-retain-recovery-points"></a>Korumayı durdurun ve kurtarma noktalarını koruyun
 
@@ -151,8 +149,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 Ayrıca, aşağıdaki iki ek parametreyi sağlayarak kapsayıcı ve öğe için kolay adı kullanarak önceki komutu çalıştırabilirsiniz:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--iş yükü-tür**: *azurefileshare*
+* **--Backup-Management-Type** : *azurestorage*
+* **--iş yükü-tür** : *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --out table
@@ -168,7 +166,7 @@ fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 
 ### <a name="stop-protection-without-retaining-recovery-points"></a>Kurtarma noktalarını korumadan korumayı durdur
 
-Kurtarma noktalarını korumadan korumayı durdurmak için [az Backup Protection Disable](/cli/azure/backup/protection#az-backup-protection-disable) cmdlet 'ini **Delete-Backup-Data** seçeneğini **true**olarak ayarlanmış şekilde kullanın.
+Kurtarma noktalarını korumadan korumayı durdurmak için [az Backup Protection Disable](/cli/azure/backup/protection#az-backup-protection-disable) cmdlet 'ini **Delete-Backup-Data** seçeneğini **true** olarak ayarlanmış şekilde kullanın.
 
 Aşağıdaki örnek, kurtarma noktalarını korumadan *azurefiles* dosya paylaşımının korumasını durduruyor.
 
@@ -178,8 +176,8 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 Ayrıca, aşağıdaki iki ek parametreyi sağlayarak kapsayıcı ve öğe için kolay adı kullanarak önceki komutu çalıştırabilirsiniz:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--iş yükü-tür**: *azurefileshare*
+* **--Backup-Management-Type** : *azurestorage*
+* **--iş yükü-tür** : *azurefileshare*
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --delete-backup-data true --out table
@@ -191,9 +189,9 @@ Azure dosya paylaşımının korumasını durdurduysanız ancak kurtarma noktala
 
 Dosya paylaşımının korumasını sürdürmesini sağlamak için aşağıdaki parametreleri tanımlayın:
 
-* **--Container-Name**: dosya paylaşımının barındıracağı depolama hesabının adı. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
-* **--öğe-adı**: korumayı yeniden başlatmak istediğiniz dosya paylaşımının adı. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
-* **--Policy-Name**: dosya paylaşımının korumasını sürdürmesini sağlamak istediğiniz yedekleme ilkesinin adı.
+* **--Container-Name** : dosya paylaşımının barındıracağı depolama hesabının adı. Kapsayıcının **adını** veya **kolay adını** almak için [az Backup Container List](/cli/azure/backup/container#az-backup-container-list) komutunu kullanın.
+* **--öğe-adı** : korumayı yeniden başlatmak istediğiniz dosya paylaşımının adı. Yedeklenen öğenin **adını** veya **kolay adını** almak için [az Backup Item List](/cli/azure/backup/item#az-backup-item-list) komutunu kullanın.
+* **--Policy-Name** : dosya paylaşımının korumasını sürdürmesini sağlamak istediğiniz yedekleme ilkesinin adı.
 
 Aşağıdaki örnek, *schedule1* yedekleme ilkesini kullanarak *azurefiles* dosya paylaşımının korumasını sürdürmeniz için [az Backup Protection özgeçmişi](/cli/azure/backup/protection#az-backup-protection-resume) cmdlet 'ini kullanır.
 
@@ -203,8 +201,8 @@ az backup protection resume --vault-name azurefilesvault --resource-group azuref
 
 Ayrıca, aşağıdaki iki ek parametreyi sağlayarak kapsayıcı ve öğe için kolay adı kullanarak önceki komutu çalıştırabilirsiniz:
 
-* **--Backup-Management-Type**: *azurestorage*
-* **--iş yükü-tür**: *azurefileshare*
+* **--Backup-Management-Type** : *azurestorage*
+* **--iş yükü-tür** : *azurefileshare*
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --item-name azurefiles --workload-type azurefileshare --backup-management-type Azurestorage --policy-name schedule2 --out table
@@ -232,7 +230,7 @@ az backup container unregister --vault-name azurefilesvault --resource-group azu
 
 Önceki cmdlet 'i, aşağıdaki ek parametreyi sağlayarak kapsayıcının kolay adını kullanarak da çalıştırabilirsiniz:
 
-* **--Backup-Management-Type**: *azurestorage*
+* **--Backup-Management-Type** : *azurestorage*
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --out table

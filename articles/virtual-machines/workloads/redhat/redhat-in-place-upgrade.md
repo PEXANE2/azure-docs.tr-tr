@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 48884e6faa5f26f027c772b44d5f960979a40d1d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: beede74134affeb3ee0d4bdd20d5da3b4c5e6eda
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447905"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566631"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Yerinde yükseltmeleri Red Hat Enterprise Linux
 
@@ -22,10 +22,12 @@ Bu makalede, Azure 'daki ' Leapp ' yardımcı programını kullanarak Red Hat En
 > Red Hat Enterprise Linux tekliflerle SQL Server, Azure 'da yerinde yükseltmeyi desteklemez.
 
 ## <a name="what-to-expect-during-the-upgrade"></a>Yükseltme sırasında beklenmeniz gerekenler
-Sistem, yükseltme sırasında birkaç kez yeniden başlatılır ve normal olur. Son yeniden başlatma işlemi, VM 'yi RHEL 8 en son küçük sürümüne yükseltir.
+Sistem, yükseltme sırasında birkaç kez yeniden başlatılır ve normal olur. Son yeniden başlatma işlemi, VM 'yi RHEL 8 en son küçük sürümüne yükseltir. 
+
+Yükseltme işlemi 20 dakikadan birkaç saate kadar sürebilir. Bu, VM boyutu ve sistemde yüklü paketlerin sayısı gibi çeşitli faktörlere bağlıdır.
 
 ## <a name="preparations-for-the-upgrade"></a>Yükseltme hazırlıkları
-Yerinde yükseltmeler, müşterilerin sisteminizi bir sonraki ana sürüme yükseltmelerini sağlamak için Red Hat ve Azure tarafından önerilen resmi olarak önerilen bir yoldur. Yükseltmenin daha önce gerçekleştirilmesi gereken bazı şeyler aşağıda verilmiştir ve göz önüne almanız gerekir. 
+Yerinde yükseltme, müşterilerin sistemi bir sonraki ana sürüme yükseltmesine olanak tanımak için Red Hat ve Azure 'un resmi olarak önerilmiş yoludur. Yükseltmenin daha önce gerçekleştirilmesi gereken bazı şeyler aşağıda verilmiştir ve göz önüne almanız gerekir. 
 
 >[!Important] 
 > Lütfen yükseltme işlemini gerçekleştirmeden önce görüntünün bir anlık görüntüsünü alın.
@@ -39,6 +41,12 @@ Yerinde yükseltmeler, müşterilerin sisteminizi bir sonraki ana sürüme yüks
     ```bash
     leapp preupgrade --no-rhsm
     ```
+* Yükseltme işlemi sırasında izlemeye izin verdiğinden, seri konsolunun işlevsel olduğundan emin olun.
+
+* ' De SSH kök erişimini etkinleştir `/etc/ssh/sshd_config`
+    1. `/etc/ssh/sshd_config` dosyasını açın
+    1. ' #PermitRootLogin Yes ' araması yapın
+    1. Açıklama eklemek için ' # ' öğesini kaldır
 
 ## <a name="steps-for-performing-the-upgrade"></a>Yükseltmeyi gerçekleştirmeye yönelik adımlar
 
@@ -46,7 +54,7 @@ Bu adımları dikkatle gerçekleştirin. Üretim örneklerinden önce bir test m
 
 1. En son istemci paketlerini getirmek için bir yıum güncelleştirmesi gerçekleştirin.
     ```bash
-    yum update
+    yum update -y
     ```
 
 1. Liapp-Client-Package ' i yükler.
@@ -58,35 +66,66 @@ Bu adımları dikkatle gerçekleştirin. Üretim örneklerinden önce bir test m
     1. Dosyayı indirin.
     1. Aşağıdaki komutu kullanarak içeriği ayıklayın ve dosyayı kaldırın:
     ```bash
-     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
+    tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
-    
-
 
 1. ' Liapp ' için ' yanıtlar ' dosyası ekleyin.
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
-    ```
-    
-1. /Etc/ssh/sshd_config 'da Permitrootlogın 'i etkinleştirme
-    1. /Etc/ssh/sshd_config dosyasını açın
-    1. ' #PermitRootLogin Yes ' araması yapın
-    1. Açıklama eklemek için ' # ' öğesini kaldır
-
-
+    ``` 
 
 1. ' Leapp ' yükseltmesini gerçekleştirin.
     ```bash
     leapp upgrade --no-rhsm
     ```
+1.  `leapp upgrade`Komut başarıyla tamamlandıktan sonra, işlemi gerçekleştirmek için sistemi el ile yeniden başlatın. Sistem, devre dışı bırakılacak şekilde birkaç kez yeniden başlatılacak. Seri konsolunu kullanarak işlemi izleyin.
+
+1.  Yükseltmenin başarıyla tamamlandığını doğrulayın.
+    ```bash
+    uname -a && cat /etc/redhat-release
+    ```
+
+1. Yükseltme tamamlandıktan sonra kök SSH erişimini kaldırın.
+    1. `/etc/ssh/sshd_config` dosyasını açın
+    1. ' #PermitRootLogin Yes ' araması yapın
+    1. Açıklamaya ' # ' ekleyin
+
 1. Değişikliklerin etkili olması için SSHD hizmetini yeniden başlatın
     ```bash
     systemctl restart sshd
     ```
-1. /Etc/ssh/sshd_config için Permitrootlogın 'e açıklama ekleyin
-    1. /Etc/ssh/sshd_config dosyasını açın
-    1. ' #PermitRootLogin Yes ' araması yapın
-    1. Açıklamaya ' # ' ekleyin
+
+## <a name="common-issues"></a>Genel Sorunlar
+Bunlar `leapp preupgrade` veya işlemin başarısız olduğu bazı yaygın örneklerden bazılarıdır `leapp upgrade` .
+
+**Hata: aşağıdaki devre dışı eklenti desenleri için eşleşme bulunamadı**
+```plaintext
+STDERR:
+No matches found for the following disabled plugin patterns: subscription-manager
+Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+```
+**Çözüm**\
+Dosyayı düzenleyerek `/etc/yum/pluginconf.d/subscription-manager.conf` ve etkin olarak ' ye değiştirerek abonelik Yöneticisi eklentisini devre dışı bırakın `enabled=0` .
+
+Bu, PAYG VM 'Leri için kullanılmayan abonelik Yöneticisi 'nin etkinleştirilme eklentisine neden olur.
+
+**Hata: kök kullanılarak uzaktan oturum açmada olası sorunlar** `leapp preupgrade` Şu hatayla başarısız olabilir:
+```structured-text
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+
+Upgrade has been inhibited due to the following problems:
+    1. Inhibitor: Possible problems with remote login using root account
+Consult the pre-upgrade report for details and possible remediation.
+
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+```
+**Çözüm**\
+' De kök erişimi etkinleştirin `/etc/sshd_conf` .
+Bunun nedeni, `/etc/sshd_conf` "[yükseltme hazırlıkları](#preparations-for-the-upgrade)" bölümünde olduğu gibi kök SSH erişiminin etkinleştirilmemesinin nedeni. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure 'Da Red Hat görüntüleri](./redhat-images.md)hakkında daha fazla bilgi edinin.

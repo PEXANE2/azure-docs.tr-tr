@@ -1,6 +1,6 @@
 ---
 title: Azure AD Kullanıcı akışlarında dil özelleştirmesi
-description: Kullanıcı akışlarınızda dil deneyimini özelleştirme hakkında bilgi edinin.
+description: Azure Active Directory Kullanıcı akışlarınızda dil deneyimini özelleştirme hakkında bilgi edinin.
 services: active-directory
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 98ead87ce2bd3b4e3ffc45763aa5151168c72078
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441445"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576521"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory dil özelleştirmesi (Önizleme)
 
@@ -37,13 +37,13 @@ Varsayılan olarak, tutarlı bir kaydolma deneyimi sağlamak üzere kaydolan kul
 Dil özelleştirmesi, Kullanıcı akışındaki herhangi bir dizeyi özelleştirmenize olanak sağlar.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
-3. Sol taraftaki menüden **dış kimlikler**' i seçin.
+2. **Azure hizmetleri** altında **Azure Active Directory** ' yi seçin.
+3. Sol taraftaki menüden **dış kimlikler** ' i seçin.
 4. **Kullanıcı akışları ' nı (Önizleme)** seçin.
 3. Çeviriler için etkinleştirmek istediğiniz kullanıcı akışını seçin.
-4. **Dilleri**seçin.
+4. **Dilleri** seçin.
 5. Kullanıcı akışının **Diller** sayfasında, özelleştirmek istediğiniz dili seçin.
-6. **Öznitelik koleksiyonu sayfasını**genişletin.
+6. **Öznitelik koleksiyonu sayfasını** genişletin.
 7. **Varsayılanları indir** ' i seçin (veya daha önce bu dili düzenlediyseniz, **geçersiz kılmaları indir** ).
 
 Bu adımlar size Dizelerinizin düzenlenmesine başlamak için kullanabileceğiniz bir JSON dosyası sağlar.
@@ -115,9 +115,9 @@ Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir öznitel
 
 1. JSON dosyanızdaki değişiklikleri tamamladıktan sonra kiracınıza geri dönün.
 1. **Kullanıcı akışları** ' nı seçin ve çeviriler için etkinleştirmek istediğiniz kullanıcı akışına tıklayın.
-1. **Dilleri**seçin.
+1. **Dilleri** seçin.
 1. Çevirmek istediğiniz dili seçin.
-1. **Öznitelik koleksiyonu sayfası**seçin.
+1. **Öznitelik koleksiyonu sayfası** seçin.
 1. Klasör simgesini seçin ve karşıya yüklenecek JSON dosyasını seçin.
 
 Değişiklikler Kullanıcı akışınıza otomatik olarak kaydedilir.

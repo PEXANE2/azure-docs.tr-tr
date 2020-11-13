@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 04/01/2020
 ms.topic: sample
-ms.openlocfilehash: e1e91a892a1c8b69b3dc7f6c79109377e13bd7ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3d74dbfde2f65d2d4048f589f160ea3c091bf2b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80804461"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566291"
 ---
 # <a name="unity-showcase-application"></a>Unity gösterim uygulaması
 
@@ -20,9 +20,9 @@ Unity gösterimi uygulaması, Azure uzaktan Işleme özelliklerini göstermek i�
 
 ## <a name="source-repository"></a>Kaynak depo
 
-Derleme/dağıtım yönergeleriyle birlikte bu uygulamanın kaynak kodu [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)bulunabilir.
+Derleme/dağıtım yönergeleriyle birlikte bu uygulamanın kaynak kodu [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase)bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hızlı başlangıç: Unity ile model Işleme](../quickstarts/render-model.md)
-* [Hızlı başlangıç: bir modeli işleme için dönüştürme](../quickstarts/convert-model.md)
+* [Hızlı başlangıç: Modeli işlenmek üzere dönüştürme](../quickstarts/convert-model.md)

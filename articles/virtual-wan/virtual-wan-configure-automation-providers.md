@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208345"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566478"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Sanal WAN iş ortakları için otomasyon yönergeleri
 
@@ -31,11 +31,11 @@ Bir dal aygıtı (bir müşteri şirket içi VPN cihazı veya SDWAN CPE) genelli
   * Şube cihaz bilgilerini Azure sanal WAN 'a yükleme
   * Azure yapılandırmasını indirme ve şube cihazından Azure sanal WAN 'a bağlantı ayarlama
 
-### <a name="additional-information"></a><a name ="additional"></a>Ek bilgiler
+### <a name="additional-information"></a><a name ="additional"></a>Ek bilgi
 
-* Sanal hub oluşturmayı otomatikleştirmek için [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
-* Sanal WAN için Azure VPN ağ geçidini otomatik hale getirmek için [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)
-* Bir VPNSite 'yi bir Azure VPN hub 'ına bağlamak için [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
+* Sanal hub oluşturmayı otomatikleştirmek için [REST API](/rest/api/virtualwan/virtualhubs)
+* Sanal WAN için Azure VPN ağ geçidini otomatik hale getirmek için [REST API](/rest/api/virtualwan/vpngateways)
+* Bir VPNSite 'yi bir Azure VPN hub 'ına bağlamak için [REST API](/rest/api/virtualwan/vpnconnections)
 * [Varsayılan IPSec ilkeleri](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>Müşteri deneyimi
@@ -63,11 +63,11 @@ Müşteriler, cihaz Kullanıcı arabirimindeki sanal WAN için uygun erişim den
 
 ###  <a name="upload-branch-device-information"></a><a name="branch"></a>Şube cihaz bilgilerini karşıya yükle
 
-Şube (Şirket içi site) bilgilerini Azure 'a yüklemek için Kullanıcı deneyimini tasarlamanız gerekir. Sanal WAN 'da site bilgilerini oluşturmak için, VPNSite için [REST API 'lerini](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) kullanabilirsiniz. Tüm dal SDWAN/VPN cihazlarını verebilir veya uygun şekilde cihaz özelleştirmeleri seçebilirsiniz.
+Şube (Şirket içi site) bilgilerini Azure 'a yüklemek için Kullanıcı deneyimini tasarlamanız gerekir. Sanal WAN 'da site bilgilerini oluşturmak için, VPNSite için [REST API 'lerini](/rest/api/virtualwan/vpnsites) kullanabilirsiniz. Tüm dal SDWAN/VPN cihazlarını verebilir veya uygun şekilde cihaz özelleştirmeleri seçebilirsiniz.
 
 ### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>Cihaz yapılandırması indirme ve bağlantı
 
-Bu adım, Azure yapılandırmasını indirmeyi ve şube cihazından Azure sanal WAN 'a bağlantı kurmayı içerir. Bu adımda, sağlayıcı kullanmayan bir müşteri Azure yapılandırmasını el ile indirip şirket içi SDWAN/VPN cihazına uygular. Sağlayıcı olarak, bu adımı otomatikleştirmelisiniz. Ek bilgi için [REST API 'lerini](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) indirin ' i görüntüleyin. Cihaz denetleyicisi, Azure yapılandırmasını indirmek için ' GetVpnConfiguration ' REST API çağırabilir.
+Bu adım, Azure yapılandırmasını indirmeyi ve şube cihazından Azure sanal WAN 'a bağlantı kurmayı içerir. Bu adımda, sağlayıcı kullanmayan bir müşteri Azure yapılandırmasını el ile indirip şirket içi SDWAN/VPN cihazına uygular. Sağlayıcı olarak, bu adımı otomatikleştirmelisiniz. Ek bilgi için [REST API 'lerini](/rest/api/virtualwan/vpnsitesconfiguration/download) indirin ' i görüntüleyin. Cihaz denetleyicisi, Azure yapılandırmasını indirmek için ' GetVpnConfiguration ' REST API çağırabilir.
 
 **Yapılandırma notları**
 

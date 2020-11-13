@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 6f7888e978fd4eb19232c156ce65b6e4967d9c5a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628856"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575977"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -105,7 +105,7 @@ Ardından, Azure AD B2C için SAML onaylama ve yanıt imzalama sertifikasını k
 1. Karşıya yükleme dosyası denetimini kullanarak sertifikanızı karşıya yükleyin.
 1. Sertifikanın parolasını girin.
 1. **Oluştur** ’u seçin.
-1. Anahtarın beklenen şekilde göründüğünü doğrulayın. Örneğin, *B2C_1A_SamlIdpCert* .
+1. Anahtarın beklenen şekilde göründüğünü doğrulayın. Örneğin, *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. ilkenizi hazırlayın
 
@@ -159,7 +159,7 @@ Kiracınız SAML onayları yayınlamadığına göre, SAML bağlı olan taraf il
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 kaydolma veya oturum açma ilkesi oluşturma
 
-1. *SignUpOrSignin.xml* dosyanın bir kopyasını Starter Pack çalışma dizininizde oluşturun ve yeni bir adla kaydedin. Örneğin, *SignUpOrSigninSAML.xml* . Bu, bağlı olan taraf ilke dosyasıdır.
+1. *SignUpOrSignin.xml* dosyanın bir kopyasını Starter Pack çalışma dizininizde oluşturun ve yeni bir adla kaydedin. Örneğin, *SignUpOrSigninSAML.xml*. Bu, bağlı olan taraf ilke dosyasıdır.
 
 1. *SignUpOrSigninSAML.xml* dosyasını tercih ettiğiniz düzenleyicide açın.
 
@@ -260,7 +260,7 @@ Son bağlı olan taraf ilkesi dosyanız aşağıdaki XML kodu gibi görünmelidi
 
 Değişikliklerinizi kaydedin ve yeni ilke dosyasını karşıya yükleyin. Her iki ilkeyi (uzantısı ve bağlı olan taraf dosyalarını) karşıya yükledikten sonra, bir Web tarayıcısı açın ve ilke meta verilerine gidin.
 
-Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandırmasını açığa çıkarmak için SAML protokolünde kullanılan bilgiler. Meta veriler, oturum açma ve oturum kapatma, sertifikalar, oturum açma yöntemi ve daha fazlası gibi hizmetlerin konumunu tanımlar. Azure AD B2C ilkesi meta verileri aşağıdaki URL 'de kullanılabilir. `tenant-name`Azure AD B2C kiracınızın adıyla ve `policy-name` ilkenin adı (kimliği) ile değiştirin:
+Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandırmasını açığa çıkarmak için SAML protokolünde kullanılan bilgiler. Meta veriler, oturum açma ve oturum kapatma, sertifikalar, oturum açma yöntemi ve daha fazlası gibi hizmetlerin konumunu tanımlar. Azure AD B2C ilkesi meta verileri aşağıdaki URL 'de kullanılabilir. `tenant-name`Azure AD B2C kiracınızın adıyla ve `policy-name` ilkenin adı (kimliği) ile değiştirin; Örneğin,.../B2C_1A_SAML2_signup_signin/SAMLP/Metadata:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -270,11 +270,11 @@ Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandır
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 uygulamanızı Azure AD B2C kaydetme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C** ' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt** ' ı seçin.
-1. Uygulama için bir **ad** girin. Örneğin, *SAMLApp1* .
+1. Uygulama için bir **ad** girin. Örneğin, *SAMLApp1*.
 1. **Desteklenen hesap türleri** altında **yalnızca bu kuruluş dizinindeki hesaplar** ' ı seçin
 1. **Yeniden yönlendirme URI 'si** altında **Web** ' i seçin ve ardından girin `https://localhost` . Bu değeri daha sonra uygulama kaydının bildiriminde değiştirirsiniz.
 1. **Kaydet** ’i seçin.
@@ -296,7 +296,7 @@ Bu özellik, hizmet sağlayıcının genel kullanıma açık meta veri URL 'sini
 
 Meta veriler, bir hizmet sağlayıcı gibi bir SAML partisi yapılandırmasını açığa çıkarmak için SAML protokolünde kullanılan bilgiler. Meta veriler, oturum açma ve oturum kapatma, sertifikalar, oturum açma yöntemi ve daha fazlası gibi hizmetlerin konumunu tanımlar. Azure AD B2C, hizmet sağlayıcısı meta verilerini okur ve buna uygun şekilde davranır. Meta veriler gerekli değildir. Yanıt URI 'si ve oturum kapatma URI 'SI gibi özniteliklerin bazılarını doğrudan uygulama bildiriminde de belirtebilirsiniz.
 
-SAML meta veri *URL 'sinde ve* uygulama kaydının bildiriminde belirtilen özellikler varsa, bunlar **birleştirilir** . Meta veri URL 'sinde belirtilen özellikler önce işlenir ve öncelik kazanır.
+SAML meta veri *URL 'sinde ve* uygulama kaydının bildiriminde belirtilen özellikler varsa, bunlar **birleştirilir**. Meta veri URL 'sinde belirtilen özellikler önce işlenir ve öncelik kazanır.
 
 SAML test uygulamasını kullanan Bu öğretici için aşağıdaki değeri kullanın `samlMetadataUrl` :
 
@@ -342,7 +342,7 @@ Aşağıdakilerin bazıları veya tümü genellikle gereklidir:
 * **Meta veriler** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Veren** : SAML istek `issuer` değeri, `identifierUris` uygulama kayıt bildirimi öğesinde yapılandırılan URI 'lerden biriyle eşleşmelidir. SAML istek `issuer` adı `identifierUris` öğesinde yoksa, [uygulamayı uygulama kayıt bildirimine ekleyin](#identifieruris). Örneğin, `https://contoso.onmicrosoft.com/app-name`. 
 * **Oturum açma URL 'si/SAML uç noktası/SAML URL 'si** : XML öğesi IÇIN Azure AD B2C SAML ilkesi meta verileri dosyasındaki değeri denetleyin `<SingleSignOnService>`
-* **Sertifika** : Bu, özel anahtar olmadan *B2C_1A_SamlIdpCert* . Sertifikanın ortak anahtarını almak için:
+* **Sertifika** : Bu, özel anahtar olmadan *B2C_1A_SamlIdpCert*. Sertifikanın ortak anahtarını almak için:
 
     1. Yukarıda belirtilen meta veri URL 'sine gidin.
     1. Öğesindeki değeri kopyalayın `<X509Certificate>` .

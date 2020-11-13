@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d9a7d7db93e00b9fcccab08522b3363935badf26
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203849"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565979"
 ---
 # <a name="tutorial-manipulating-models"></a>Öğretici: modelleri düzenleme
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -24,7 +24,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Uzamsal sorgularla raycast
 > * Uzaktan işlenen nesneler için basit animasyonlar ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici [öğretici: arabirimler ve özel modeller](../custom-models/custom-models.md)üzerinde oluşturulur.
 
@@ -34,7 +34,7 @@ Uzak nesnelerle etkileşim kurmak için, ilk olarak etkileşimde bulunmak üzere
 
 Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCollider.html)modelin (örneğin, x, y, z eksenleri için bir merkezi ve boyutu tanımlanmış olan) tüm modeli içeren kutuya göre tanımlanır. Aslında, uzak modelin sınırlarını göstermek için Unity 'nin **BoxCollider** kullanacağız.
 
-1. **Remoterenderedmodel** ile aynı dizinde yeni bir komut dosyası oluşturun ve bu dosyayı **remotelimitle**adlandırın.
+1. **Remoterenderedmodel** ile aynı dizinde yeni bir komut dosyası oluşturun ve bu dosyayı **remotelimitle** adlandırın.
 1. Komut dosyasının içeriğini aşağıdaki kodla değiştirin:
 
     ```csharp
@@ -109,11 +109,11 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
     ```
 
     > [!NOTE]
-    > Visual Studio 'da bir hata görürseniz *, ' X ' üzerinde talep ediliyor özelliği C# 6 ' da kullanılamaz. Lütfen dil sürümü 7,0 veya üzerini kullanın*, bu hata güvenle yoksayılabilir. Bu, Unity 'nin çözümü ve proje üretimi ile ilgilidir.
+    > Visual Studio 'da bir hata görürseniz *, ' X ' üzerinde talep ediliyor özelliği C# 6 ' da kullanılamaz. Lütfen dil sürümü 7,0 veya üzerini kullanın* , bu hata güvenle yoksayılabilir. Bu, Unity 'nin çözümü ve proje üretimi ile ilgilidir.
 
-    Bu betik,  **Baseremoterenderedmodel**uygulayan komut dosyasıyla aynı gameobject öğesine eklenmelidir. Bu durumda, **Remoterenderedmodel**anlamına gelir. Önceki betiklerle benzer şekilde, bu ilk kod tüm durum değişikliklerini, olayları ve uzak sınırlara ilişkin verileri işleyecektir.
+    Bu betik,  **Baseremoterenderedmodel** uygulayan komut dosyasıyla aynı gameobject öğesine eklenmelidir. Bu durumda, **Remoterenderedmodel** anlamına gelir. Önceki betiklerle benzer şekilde, bu ilk kod tüm durum değişikliklerini, olayları ve uzak sınırlara ilişkin verileri işleyecektir.
 
-    Uygulamak için iki yöntem vardır: **Querylimitlar** ve **processqueryresult**. **Querylimitler** , sınırları getirir ve **processqueryresult** sorgunun sonucunu alır ve bunu yerel **BoxCollider**uygular.
+    Uygulamak için iki yöntem vardır: **Querylimitlar** ve **processqueryresult**. **Querylimitler** , sınırları getirir ve **processqueryresult** sorgunun sonucunu alır ve bunu yerel **BoxCollider** uygular.
 
     **Querysýnýrlılar** yöntemi basittir: Uzaktan işleme oturumuna bir sorgu gönderin ve `Completed` olayı dinleyin.
 
@@ -152,7 +152,7 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
     }
     ```
 
-Artık, **Remotesınır** betiği, **Remoterenderedmodel**ile aynı oyun nesnesine eklendiğinde, gerekirse bir **BoxCollider** eklenir ve model `Loaded` durumuna ulaştığında, sınırlar otomatik olarak sorgulanacaktır ve **BoxCollider**öğesine uygulanır.
+Artık, **Remotesınır** betiği, **Remoterenderedmodel** ile aynı oyun nesnesine eklendiğinde, gerekirse bir **BoxCollider** eklenir ve model `Loaded` durumuna ulaştığında, sınırlar otomatik olarak sorgulanacaktır ve **BoxCollider** öğesine uygulanır.
 
 1. Daha önce oluşturulan **Testmodel** oyunu nesnesini kullanarak **remotelimiti** bileşenini ekleyin.
 1. Betiğin eklendiğini onaylayın.
@@ -167,16 +167,16 @@ Artık Unity nesnesinde doğru sınırlarla yapılandırılmış yerel bir **Box
 
 ## <a name="move-rotate-and-scale"></a>Taşıma, döndürme ve ölçekleme  
 
-Uzaktan işlenen nesneleri taşıma, döndürme ve ölçekleme diğer Unity nesneleriyle aynı şekilde çalışacaktır. Bu yöntemde bulunan **Remoterenderingcoordinator**, `LateUpdate` `Update` Şu anda etkin olan oturumu çağırıyor. `Update`Eşitlenecek yerel model varlığı, uzak karşılıklarıyla birlikte dönüşümler olan bir parçasıdır. Uzaktan işlenmiş bir modeli taşımak, döndürmek veya ölçeklendirmek için, yalnızca uzak modeli temsil eden GameObject dönüşümünü taşımanız, döndürmeniz veya ölçeklendirmeniz gerekir. Burada, bir ana oyun nesnesinin, bu kendisine ekli olan **Remoterenderedmodel** betiğinin dönüşümünü değiştirebiliyoruz.
+Uzaktan işlenen nesneleri taşıma, döndürme ve ölçekleme diğer Unity nesneleriyle aynı şekilde çalışacaktır. Bu yöntemde bulunan **Remoterenderingcoordinator** , `LateUpdate` `Update` Şu anda etkin olan oturumu çağırıyor. `Update`Eşitlenecek yerel model varlığı, uzak karşılıklarıyla birlikte dönüşümler olan bir parçasıdır. Uzaktan işlenmiş bir modeli taşımak, döndürmek veya ölçeklendirmek için, yalnızca uzak modeli temsil eden GameObject dönüşümünü taşımanız, döndürmeniz veya ölçeklendirmeniz gerekir. Burada, bir ana oyun nesnesinin, bu kendisine ekli olan **Remoterenderedmodel** betiğinin dönüşümünü değiştirebiliyoruz.
 
-Bu öğretici, nesne etkileşimi için MRTK kullanıyor. Bir nesnenin taşınması, döndürülmesi ve ölçeklendirilmesi için MRTK 'a özgü uygulamanın çoğu Bu öğreticinin kapsamı dışındadır. **Model araçları** menüsünde **appmenu**içinde önceden yapılandırılmış bir model görünüm denetleyicisi vardır.
+Bu öğretici, nesne etkileşimi için MRTK kullanıyor. Bir nesnenin taşınması, döndürülmesi ve ölçeklendirilmesi için MRTK 'a özgü uygulamanın çoğu Bu öğreticinin kapsamı dışındadır. **Model araçları** menüsünde **appmenu** içinde önceden yapılandırılmış bir model görünüm denetleyicisi vardır.
 
 1. Daha önce oluşturulan **Testmodel** gameobject 'in sahnede bulunduğundan emin olun.
 1. **Appmenu** prefab 'nin sahnede bulunduğundan emin olun.
-1. Sahneyi oynatmak ve **Appmenu**Içindeki **model araçları** menüsünü açmak için Unity 'nin Play düğmesine basın.
+1. Sahneyi oynatmak ve **Appmenu** Içindeki **model araçları** menüsünü açmak için Unity 'nin Play düğmesine basın.
 ![Denetleyiciyi görüntüle](./media/model-with-view-controller.png)
 
-**Appmenu** , modeliyle bağlama için bir görünüm denetleyicisi uygulayan bir alt menü **modeli araçlarına** sahiptir. GameObject bir **Remotesınır** bileşeni içerdiğinde, görünüm denetleyicisi bir **BoxCollider**ile nesne etrafında bir sınırlayıcı kutu oluşturan bir mrtk bileşeni olan bir [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) bileşeni ekler. Bir Nesneel etkileşiminden sorumlu olan [**Objectlıör**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator). Bu komut dosyaları, uzaktan işlenmiş modeli taşımanızı, döndürmemizi ve ölçeklendirmemize olanak sağlayacak.
+**Appmenu** , modeliyle bağlama için bir görünüm denetleyicisi uygulayan bir alt menü **modeli araçlarına** sahiptir. GameObject bir **Remotesınır** bileşeni içerdiğinde, görünüm denetleyicisi bir **BoxCollider** ile nesne etrafında bir sınırlayıcı kutu oluşturan bir mrtk bileşeni olan bir [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) bileşeni ekler. Bir Nesneel etkileşiminden sorumlu olan [**Objectlıör**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator). Bu komut dosyaları, uzaktan işlenmiş modeli taşımanızı, döndürmemizi ve ölçeklendirmemize olanak sağlayacak.
 
 1. Farenizi oyun paneline taşıyın ve odaklanmak için buraya tıklayın.
 1. [Mrtk 'nin el benzetimini](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)kullanarak sol SHIFT tuşuna basın ve basılı tutun.
@@ -308,9 +308,9 @@ Test modeli, sorgulanabilen ve seçilen sayıda alt varlık içerir. Şimdilik, 
 
 Tıklama üzerinde ışın dönüşümü için gönderme istekleri, uzak nesneleri sorgulamak için etkili bir stratejidir. Ancak, imleç modelin kendisini değil, Collider Box ile çakışdığından ideal bir kullanıcı deneyimi değildir.
 
-Ayrıca, Uzak oturumdaki ışınını daha sık oluşturan yeni bir MRTK işaretçisi de oluşturabilirsiniz. Bu daha karmaşık bir yaklaşım olsa da, Kullanıcı deneyimi daha iyi olacaktır. Bu strateji, Bu öğreticinin kapsamı dışındadır, ancak bu yaklaşımın bir örneği, [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)bulunan gösterimi uygulamasında görülebilir.
+Ayrıca, Uzak oturumdaki ışınını daha sık oluşturan yeni bir MRTK işaretçisi de oluşturabilirsiniz. Bu daha karmaşık bir yaklaşım olsa da, Kullanıcı deneyimi daha iyi olacaktır. Bu strateji, Bu öğreticinin kapsamı dışındadır, ancak bu yaklaşımın bir örneği, [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase)bulunan gösterimi uygulamasında görülebilir.
 
-Bir Ray cast, **remoterbir Pointerhandler**öğesinde başarıyla tamamlandığında, bu isabet `Entity` `OnRemoteEntityClicked` Unity olayından yayılır. Bu olaya yanıt vermek için, öğesini kabul eden `Entity` ve üzerinde bir eylem gerçekleştiren bir yardımcı komut dosyası oluşturacağız. Hata ayıklama günlüğüne adını yazdırmak için betiği almaya başlayalım `Entity` .
+Bir Ray cast, **remoterbir Pointerhandler** öğesinde başarıyla tamamlandığında, bu isabet `Entity` `OnRemoteEntityClicked` Unity olayından yayılır. Bu olaya yanıt vermek için, öğesini kabul eden `Entity` ve üzerinde bir eylem gerçekleştiren bir yardımcı komut dosyası oluşturacağız. Hata ayıklama günlüğüne adını yazdırmak için betiği almaya başlayalım `Entity` .
 
 1. **Remoteentityhelper** adlı yeni bir betik oluşturun ve içeriğini aşağıdaki kodla değiştirin:
 

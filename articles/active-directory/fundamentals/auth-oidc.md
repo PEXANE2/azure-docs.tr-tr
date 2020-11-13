@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ile OpenID Connect kimlik doğrulaması
-description: Bu kimlik doğrulama modelini elde etmek için mimari yönergeler
+description: Azure Active Directory ile OpenID Connect kimlik doğrulamasını elde etmeye yönelik mimari rehberlik.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f2ad3b5e86eebfc2d6f1f42f8a2ab0520144b5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114364"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576997"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>Azure Active Directory ile OpenID Connect kimlik doğrulaması
 
@@ -38,13 +38,13 @@ Kullanıcı onayı ve Web oturumu açma için bir gereksinim vardır.
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı**: uygulamadan bir hizmet ister.
+* **Kullanıcı** : uygulamadan bir hizmet ister.
 
-* **Güvenilen aracı**: kullanıcının etkileşime girdiği bileşen. Bu güvenilen aracı genellikle bir web tarayıcısıdır.
+* **Güvenilen aracı** : kullanıcının etkileşime girdiği bileşen. Bu güvenilen aracı genellikle bir web tarayıcısıdır.
 
-* **Uygulama**: uygulama veya kaynak sunucu, kaynak veya verilerin bulunduğu yerdir. Güvenli aracıyı güvenli bir şekilde doğrulamak ve yetkilendirmek için kimlik sağlayıcısına güvenir. 
+* **Uygulama** : uygulama veya kaynak sunucu, kaynak veya verilerin bulunduğu yerdir. Güvenli aracıyı güvenli bir şekilde doğrulamak ve yetkilendirmek için kimlik sağlayıcısına güvenir. 
 
-* **Azure AD**: kimlik sağlayıcısı olarak da bilinen OIDC sağlayıcısı, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkilerini güvenli bir şekilde yönetir. Kullanıcı kimliğinin kimliğini doğrular, kaynaklara erişim izni verir ve erişimi iptal eder ve sorun belirteçleri. 
+* **Azure AD** : kimlik sağlayıcısı olarak da bilinen OIDC sağlayıcısı, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkilerini güvenli bir şekilde yönetir. Kullanıcı kimliğinin kimliğini doğrular, kaynaklara erişim izni verir ve erişimi iptal eder ve sorun belirteçleri. 
 
 ## <a name="implement-oidc-with-azure-ad"></a>Azure AD ile OıDC uygulama
 

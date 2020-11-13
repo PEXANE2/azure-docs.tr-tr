@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e074be91f343e04ba3049aea51f83f7f6364cdb0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564047"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576453"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamalarını ayarlama
 
@@ -179,7 +179,7 @@ Ayrıca, aşağıdakilerden birini yaparak değerleri el ile de ayarlayabilirsin
 App Service planlarla aynı işlevselliğe sahip işlev uygulamaları için de erişim kısıtlamaları vardır. Erişim kısıtlamalarını etkinleştirdiğinizde, izin verilmeyen IP 'Ler için Azure portal kod düzenleyicisini de devre dışı bırakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Işlevleri için erişim kısıtlamaları](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)  
+[Azure Işlevleri için erişim kısıtlamaları](../azure-functions/functions-networking-options.md#inbound-access-restrictions)  
 [Hizmet uç noktaları ile Application Gateway tümleştirme](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->

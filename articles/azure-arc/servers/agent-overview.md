@@ -3,19 +3,19 @@ title: Bağlı makine Windows aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370177"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577592"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
 Azure Arc etkin sunucular bağlı makine Aracısı, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bu makalede Aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
 >[!NOTE]
->Eylül 2020 ' de Azure Arc etkin sunucularının genel sürümünden itibaren, Azure bağlı makine aracısının tüm yayın öncesi sürümleri (1,0 ' den küçük olan aracılar) **2 şubat 2021**tarihinde **kullanımdan kaldırılmıştır** .  Bu zaman dilimi, önceden yayınlanan aracıların Azure Arc etkin sunucular hizmeti ile iletişim kurabilmesi için sürüm 1,0 veya sonraki bir sürüme yükseltmenizi sağlar.
+>Eylül 2020 ' de Azure Arc etkin sunucularının genel sürümünden itibaren, Azure bağlı makine aracısının tüm yayın öncesi sürümleri (1,0 ' den küçük olan aracılar) **2 şubat 2021** tarihinde **kullanımdan kaldırılmıştır** .  Bu zaman dilimi, önceden yayınlanan aracıların Azure Arc etkin sunucular hizmeti ile iletişim kurabilmesi için sürüm 1,0 veya sonraki bir sürüme yükseltmenizi sağlar.
 
 ## <a name="agent-component-details"></a>Aracı bileşeni ayrıntıları
 
@@ -60,7 +60,7 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 
 * Makineleri eklemek için, **Azure bağlı makine ekleme** rolünün bir üyesidir.
 
-* Bir makineyi okumak, değiştirmek, yeniden eklemek ve silmek için, **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz. 
+* Bir makineyi okumak, değiştirmek ve silmek için, **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz. 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 

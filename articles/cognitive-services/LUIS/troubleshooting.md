@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149254"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566274"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
@@ -83,7 +83,7 @@ Ortak çalışanlarla erişim verme hakkında bilgi edinmek için bkz. [Azure Ac
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>Uç Noktası
+## <a name="endpoint"></a>Uç Nokta
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Bir HTTP 403 hata durum kodu aldım. Nasıl düzeltebilirim?
 
@@ -91,11 +91,11 @@ Fiyatlandırma katmanınız için saniye başına işlemleri veya aylık işlem 
 
 Tüm bu ücretsiz 1000 uç nokta sorgularını kullandığınızda veya fiyatlandırma katmanınızın aylık işlem kotasını aşarsanız, bir HTTP 403 hata durum kodu alırsınız.
 
-Bu hatayı onarmak için [fiyatlandırma katmanınızı](luis-how-to-azure-subscription.md#change-pricing-tier) daha yüksek bir katmana değiştirmeniz veya [Yeni bir kaynak oluşturup](get-started-portal-deploy-app.md#create-the-endpoint-resource) [uygulamanıza atamanız](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)gerekir.
+Bu hatayı onarmak için [fiyatlandırma katmanınızı](luis-how-to-azure-subscription.md#change-the-pricing-tier) daha yüksek bir katmana değiştirmeniz veya [Yeni bir kaynak oluşturup](get-started-portal-deploy-app.md#create-the-endpoint-resource) [uygulamanıza atamanız](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)gerekir.
 
 Bu hata için çözümler şunlardır:
 
-* [Azure Portal](https://portal.azure.com), Language Understanding kaynağınızın **kaynak yönetimi-> fiyatlandırma katmanında**, fiyatlandırma katmanınızı daha yüksek bir TPS katmanına değiştirin. Kaynağınız Language Understanding uygulamanıza zaten atanmışsa Language Understanding portalında herhangi bir şey yapmanız gerekmez.
+* [Azure Portal](https://portal.azure.com), Language Understanding kaynağınızın **kaynak yönetimi-> fiyatlandırma katmanında** , fiyatlandırma katmanınızı daha yüksek bir TPS katmanına değiştirin. Kaynağınız Language Understanding uygulamanıza zaten atanmışsa Language Understanding portalında herhangi bir şey yapmanız gerekmez.
 *  Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
 
 ### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Bir HTTP 429 hata durum kodu aldım. Nasıl düzeltebilirim?
@@ -106,7 +106,7 @@ Bu durum kodu, işlemleriniz fiyatlandırma katmanınızı aştığında döndü
 
 Çözümler şunlardır:
 
-* En yüksek katmanda değilseniz [fiyatlandırma katmanınızı artırabilirsiniz](luis-how-to-azure-subscription.md#change-pricing-tier).
+* En yüksek katmanda değilseniz [fiyatlandırma katmanınızı artırabilirsiniz](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 * Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
 * Bu durum kodunu aldığınızda, istemci uygulama isteklerinizi sizin uyguladığınız bir [yeniden deneme ilkesiyle](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) geçit olarak kullanabilirsiniz.
 
@@ -190,7 +190,7 @@ Bkz. [tüm verilerle eğitme](luis-how-to-train.md#train-with-all-data).
 ## <a name="app-publishing"></a>Uygulama yayımlama
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>"Uygulamanıza anahtar ekleme" penceresinde kiracı KIMLIĞI nedir?
-Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. Azure Portal, **dizin kimliği** kutusundaki **Azure Active Directory**  >  **Manage**  >  **özellikleri**Yönet ' i seçerek kiracı kimliğinizi bulun.
+Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. Azure Portal, **dizin kimliği** kutusundaki **Azure Active Directory**  >  **Manage**  >  **özellikleri** Yönet ' i seçerek kiracı kimliğinizi bulun.
 
 ![Azure portal Kiracı KIMLIĞI](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -224,7 +224,7 @@ Yazma [anahtarı deneyimine](luis-migration-authoring.md)geçtikten sonra, yazma
 ## <a name="app-management"></a>Uygulama yönetimi
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Kullanıcı Nasıl yaparım? bir günlüğü indirmek mi istiyorsunuz?
-Varsayılan olarak, LUSıS uygulamanız kullanıcılardan gelen günlükleri günlüğe kaydeder. Kullanıcıların LUSıS uygulamanıza gönderdikleri bir günlük günlüğünü indirmek için **uygulamalarım**' a gidin ve uygulamayı seçin. Bağlam araç çubuğunda, **uç nokta günlüklerini dışarı aktar**' ı seçin. Günlük, virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
+Varsayılan olarak, LUSıS uygulamanız kullanıcılardan gelen günlükleri günlüğe kaydeder. Kullanıcıların LUSıS uygulamanıza gönderdikleri bir günlük günlüğünü indirmek için **uygulamalarım** ' a gidin ve uygulamayı seçin. Bağlam araç çubuğunda, **uç nokta günlüklerini dışarı aktar** ' ı seçin. Günlük, virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Utterslar günlüğünü nasıl devre dışı bırakabilirim?
 `log=false`İstemci UYGULAMANıZıN LUL 'yi sorgulamak için kullandığı uç nokta URL 'si ayarını yaparak Kullanıcı çeşidlerini günlüğe kaydetmeyi devre dışı bırakabilirsiniz. Ancak, günlüğü kapatmak, LUL uygulamanızın, [etkin öğrenmeyi](luis-concept-review-endpoint-utterances.md#what-is-active-learning)temel alan, bir yandan gelen performansı ve performansı iyileştirebilme yeteneğini devre dışı bırakır. `log=false`Veri gizliliği sorunları nedeniyle ayarlarsanız, bu kullanıcı aradıklarından bir KAYDıNı lusıs 'den indiremez veya uygulamanızı geliştirmek için bu söyleyenler kullanabilirsiniz.
@@ -268,17 +268,17 @@ Yazma/başlangıç anahtarınız yalnızca bir ay 1000 uç nokta sorgusuna izin 
 #### <a name="resolve-issue-in-luis"></a>LUSıS 'de sorunu çözme
 [Luo uç noktasındaki](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)Luo 'ya aynı söylenişi geçirin. Bir hata alırsanız, hata artık döndürülünceye kadar lu, sorununu çözün. Yaygın hatalar şunlardır:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` -Bu sorun, yazma anahtarından bir [uç nokta anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz gerektiğini veya [Hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir.
+* `Out of call volume quota. Quota will be replenished in <time>.` -Bu sorun, yazma anahtarından bir [uç nokta anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz gerektiğini veya [Hizmet katmanlarını](luis-how-to-azure-subscription.md#change-the-pricing-tier)değiştirmeniz gerektiğini gösterir.
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure bot hizmetinde sorunu çözme
 
 Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbeti Içindeki testin** dönüşse, `Sorry, my bot code is having an issue` günlüklerinizi kontrol edin:
 
-1. Azure portal, bot için, **bot yönetimi** bölümünde **Oluştur**' u seçin.
+1. Azure portal, bot için, **bot yönetimi** bölümünde **Oluştur** ' u seçin.
 1. Çevrimiçi kod düzenleyicisini açın.
 1. Üstteki, mavi gezinti çubuğunda, bot adını (sağdaki ikinci öğe) seçin.
-1. Sonuç açılan listesinde, **kudu konsolunu aç**' ı seçin.
-1. **Günlük dosyaları**' nı ve ardından **uygulama**' yı seçin. Tüm günlük dosyalarını gözden geçirin. Uygulama klasöründe hatayı görmüyorsanız, **LogFiles**altındaki tüm günlük dosyalarını gözden geçirin.
+1. Sonuç açılan listesinde, **kudu konsolunu aç** ' ı seçin.
+1. **Günlük dosyaları** ' nı ve ardından **uygulama** ' yı seçin. Tüm günlük dosyalarını gözden geçirin. Uygulama klasöründe hatayı görmüyorsanız, **LogFiles** altındaki tüm günlük dosyalarını gözden geçirin.
 1. C# gibi derlenmiş bir dil kullanıyorsanız projenizi yeniden oluşturmayı unutmayın.
 
 > [!Tip]

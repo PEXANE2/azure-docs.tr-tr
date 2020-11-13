@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C dil özelleştirmesi
-description: Kullanıcı akışlarınızda dil deneyimini özelleştirme hakkında bilgi edinin.
+description: Azure Active Directory B2C Kullanıcı akışlarınızda dil deneyimini özelleştirme hakkında bilgi edinin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 08/13/2019
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b3bb3648fff6bc893ea07204fad79d2830a1b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5bfdada12229070568bb9b0556471ea5aab306f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355102"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575960"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
 
@@ -28,9 +28,9 @@ Kullanıcı akışlarınızın hangi dillerde kullanılabilir olduğunu seçmek 
 
 Müşterinizin hangi dillerde gördüğü üzerinde bu denetim düzeyine ihtiyaç duymayabilir. Bir `ui_locales` parametre sağlamazsanız, müşterinin deneyimi tarayıcının ayarları tarafından belirlenir. Desteklenen bir dil olarak ekleyerek, Kullanıcı akışlarınızın hangi dillerde çevrildiğinden de denetleyebilirsiniz. Bir müşterinin tarayıcısı, desteklemek istemediğiniz bir dili gösterecek şekilde ayarlandıysa, desteklenen kültürler için varsayılan olarak seçtiğiniz dil bunun yerine gösterilir.
 
-* **UI-yerel ayarlar belirtilen dil**: dil özelleştirmesini etkinleştirdikten sonra, Kullanıcı akışınız burada belirtilen dile çevrilir.
-* **Tarayıcı tarafından istenen dil**: herhangi bir `ui_locales` parametre belirtilmemişse, *dil destekleniyorsa*Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
-* **İlke varsayılan dili**: tarayıcı bir dil belirtmezse veya desteklenmeyen bir değer belirtiyorsa, Kullanıcı akışı, Kullanıcı akışı varsayılan diline çevrilir.
+* **UI-yerel ayarlar belirtilen dil** : dil özelleştirmesini etkinleştirdikten sonra, Kullanıcı akışınız burada belirtilen dile çevrilir.
+* **Tarayıcı tarafından istenen dil** : herhangi bir `ui_locales` parametre belirtilmemişse, *dil destekleniyorsa* Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
+* **İlke varsayılan dili** : tarayıcı bir dil belirtmezse veya desteklenmeyen bir değer belirtiyorsa, Kullanıcı akışı, Kullanıcı akışı varsayılan diline çevrilir.
 
 > [!NOTE]
 > Özel Kullanıcı özniteliklerini kullanıyorsanız kendi çevirilerinizi sağlamanız gerekir. Daha fazla bilgi için bkz. [dizelerinizi özelleştirme](#customize-your-strings).
@@ -41,10 +41,10 @@ Dil özelleştirmenin genel kullanıma sunulmadan önce oluşturulan ilkelerin �
 
 Bir Kullanıcı akışında dil özelleştirmesini etkinleştirdiğinizde, parametresini ekleyerek Kullanıcı akışının dilini kontrol edebilirsiniz `ui_locales` .
 
-1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
+1. Azure AD B2C kiracınızda **Kullanıcı akışları** ' nı seçin.
 1. Çeviriler için etkinleştirmek istediğiniz kullanıcı akışına tıklayın.
-1. **Dilleri**seçin.
-1. **Dil özelleştirmesini etkinleştir**' i seçin.
+1. **Dilleri** seçin.
+1. **Dil özelleştirmesini etkinleştir** ' i seçin.
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Kullanıcı akışındaki hangi dillerin etkinleştirildiğini seçin
 
@@ -52,7 +52,7 @@ Kullanıcı akışınız için parametresi olmadan tarayıcı tarafından istend
 
 1. Kullanıcı akışınızdan önceki yönergelerden dil özelleştirmesi etkinleştirildiğinden emin olun.
 1. Kullanıcı akışının **Diller** sayfasında, desteklemek istediğiniz bir dil seçin.
-1. Özellikler bölmesinde, **etkin** ' i **Evet**olarak değiştirin.
+1. Özellikler bölmesinde, **etkin** ' i **Evet** olarak değiştirin.
 1. Özellikler bölmesinin en üstünde **Kaydet** ' i seçin.
 
 >[!NOTE]
@@ -65,7 +65,7 @@ Dil özelleştirmesi, Kullanıcı akışındaki herhangi bir dizeyi özelleştir
 
 1. Kullanıcı akışınız, önceki yönergelerden dil özelleştirmesi etkinleştirilmiş olduğundan emin olun.
 1. Kullanıcı akışının **Diller** sayfasında, özelleştirmek istediğiniz dili seçin.
-1. **Sayfa düzeyi-kaynak dosyaları**altında, düzenlemek istediğiniz sayfayı seçin.
+1. **Sayfa düzeyi-kaynak dosyaları** altında, düzenlemek istediğiniz sayfayı seçin.
 1. **Varsayılanları indir** ' i seçin (veya daha önce bu dili düzenlediyseniz, **geçersiz kılmaları indir** ).
 
 Bu adımlar size Dizelerinizin düzenlenmesine başlamak için kullanabileceğiniz bir JSON dosyası sağlar.
@@ -137,7 +137,7 @@ Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir öznitel
 
 1. JSON dosyanızdaki değişiklikleri tamamladıktan sonra B2C kiracınıza geri dönün.
 1. **Kullanıcı akışları** ' nı seçin ve çeviriler için etkinleştirmek istediğiniz kullanıcı akışına tıklayın.
-1. **Dilleri**seçin.
+1. **Dilleri** seçin.
 1. Çevirmek istediğiniz dili seçin.
 1. Çevirileri sağlamak istediğiniz sayfayı seçin.
 1. Klasör simgesini seçin ve karşıya yüklenecek JSON dosyasını seçin.
@@ -164,13 +164,13 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 Ayrıca, Microsoft 'un şu anda çevirisi sağlamayan diller ekleyebilirsiniz. Kullanıcı akışındaki tüm dizeler için çevirileri sağlamanız gerekir. Dil ve yerel ayar kodları ISO 639-1 standardına göre sınırlandırılmıştır.
 
-1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-2. Özel diller eklemek istediğiniz kullanıcı akışına tıklayın ve sonra **Diller**' e tıklayın.
+1. Azure AD B2C kiracınızda **Kullanıcı akışları** ' nı seçin.
+2. Özel diller eklemek istediğiniz kullanıcı akışına tıklayın ve sonra **Diller** ' e tıklayın.
 3. Sayfanın üst kısmından **Özel Dil ekle** ' yi seçin.
 4. Açılan bağlam bölmesinde geçerli bir yerel ayar kodu girerek hangi dilde çeviri sağlayadığınızı belirler.
 5. Her sayfa için, Ingilizce için bir geçersiz kılmalar kümesi indirebilir ve çeviriler üzerinde çalışma yapabilirsiniz.
 6. JSON dosyaları ile işiniz bittiğinde, bunları her bir sayfa için karşıya yükleyebilirsiniz.
-7. **Etkinleştir**' i seçtiğinizde Kullanıcı akışınız artık kullanıcılarınız için bu dili görüntüleyebilir.
+7. **Etkinleştir** ' i seçtiğinizde Kullanıcı akışınız artık kullanıcılarınız için bu dili görüntüleyebilir.
 8. Dili kaydedin.
 
 >[!IMPORTANT]

@@ -2,28 +2,30 @@
 title: Azure VMware Çözüm kaynağınızı etkinleştirme
 description: Azure VMware Çözüm kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla düğüm isteyebilirsiniz.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: dc90a322b5592ca7f400a82deca65ea753711c27
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/12/2020
+ms.openlocfilehash: 7c805e9e622f55593ff1fbb72a355d233b7e3618
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948740"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576407"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Çözüm kaynağını etkinleştirme
-Azure VMware Çözüm kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla düğüm isteyebilirsiniz.
+[Azure VMware Çözüm](introduction.md) kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla düğüm isteyebilirsiniz.
 
 ## <a name="eligibility-criteria"></a>Uygunluk ölçütleri
 
-* Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
-* Azure aboneliğinde bir Azure hesabınızın olması gerekir.
+Azure aboneliğinde bir Azure hesabınızın olması gerekir. Azure aboneliği aşağıdaki ölçütlerden biriyle uyumlu olmalıdır:
+
+* Microsoft ile [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) kapsamındaki bir abonelik.
+* Bir Azure planı kapsamındaki bulut çözümü sağlayıcısı (CSP) tarafından yönetilen bir abonelik.
 
 
-## <a name="enable-azure-vmware-solution-resource"></a>Azure VMware Çözüm kaynağını etkinleştir
+## <a name="enable-azure-vmware-solution-for-ea-customers"></a>EA müşterileri için Azure VMware çözümünü etkinleştirme
 Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
 
 
-1. Azure portal, **Yardım + Destek**altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
+1. Azure portal, **Yardım + Destek** altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
    - **Sorun türü:** Teknik
    - **Abonelik:** Aboneliğinizi seçin
    - **Hizmet:** Tüm hizmetler Azure VMware çözümüne >
@@ -56,3 +58,25 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrıl
    ```
 
    Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
+
+## <a name="enable-azure-vmware-solution-for-csp-customers"></a>CSP müşterileri için Azure VMware çözümünü etkinleştirme 
+
+CSP 'Ler, müşterileri için Azure VMware çözümünü etkinleştirmek üzere [Microsoft Iş ortağı merkezini](https://partner.microsoft.com) kullanmalıdır. 
+
+1. **Iş Ortağı Merkezi** 'Nde, **müşteriler** alanına erişmek için **CSP** 'yi seçin.
+
+   :::image type="content" source="media/enable-azure-vmware-solution/csp-customers-screen.png" alt-text="Microsoft Iş ortağı merkezi müşterileri alanı" lightbox="media/enable-azure-vmware-solution/csp-customers-screen.png":::
+
+1. Müşteriyi seçin ve ardından **Ürün Ekle** ' yi seçin.
+
+   :::image type="content" source="media/enable-azure-vmware-solution/csp-partner-center.png" alt-text="Microsoft İş Ortağı Merkezi" lightbox="media/enable-azure-vmware-solution/csp-partner-center.png":::
+
+1. **Azure planı** ' nı seçin ve ardından **Sepete Ekle** ' yi seçin. 
+
+1. Müşterinizin Azure planı aboneliğini genel olarak ayarlamayı gözden geçirin ve son inceleyin. Daha fazla bilgi için bkz. [Microsoft Iş Ortağı Merkezi belgeleri](https://docs.microsoft.com/partner-center/azure-plan-manage).
+
+Azure planı yapılandırıldıktan ve gerekli RBAC izinleri CSP olarak yer aldıktan sonra, bir Azure plan aboneliğine yönelik kotayı etkinleştirmek için benzer bir yordam kullanarak Microsoft 'u devreye alırsınız. Azure planına eklendikten sonra müşteri veya iş ortağı Yöneticisi Azure portal aracılığıyla bir Azure VMware çözümü özel bulutu dağıtabilir. 
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure VMware Çözüm kaynağınızı etkinleştirdikten ve uygun ağa sahip olduğunuzda [özel bir bulut oluşturabilirsiniz](tutorial-create-private-cloud.md).

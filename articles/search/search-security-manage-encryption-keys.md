@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287155"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575875"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Bilişsel Arama veri şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -41,7 +41,7 @@ Anahtarların tümünün aynı anahtar kasasında olması gerekmez. Tek bir aram
 
 Farklı bir bölge veya 1 Ağustos 'Tan önce oluşturulmuş bir hizmet kullanıyorsanız CMK şifrelemeniz, hizmet tarafından kullanılan geçici diskler hariç yalnızca veri diski ile sınırlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu senaryoda aşağıdaki araçlar ve hizmetler kullanılır.
 
@@ -169,9 +169,11 @@ Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı k
 > [!Important]
 > Azure Bilişsel Arama şifrelenmiş içerik, belirli bir **sürüme** sahip belirli bir Azure Key Vault anahtarı kullanacak şekilde yapılandırılmıştır. Anahtarı veya sürümü değiştirirseniz, önceki key\version. silinmeden **önce** dizin veya eş anlamlı haritanın yeni key\version kullanacak şekilde güncellenmesi gerekir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyecek şekilde dizin veya eş anlamlı haritanın kullanılamamasına neden olur.
 
+<a name="encrypt-content"></a>
+
 ## <a name="5---encrypt-content"></a>5-içerik şifreleyin
 
-Bir dizin veya eş anlamlı eşleme üzerinde müşteri tarafından yönetilen bir anahtar eklemek için, tanımı içeren bir nesne oluşturmak için bir REST API veya SDK kullanın `encryptionKey` .
+Bir dizin, veri kaynağı, Beceri, Dizin Oluşturucu veya eş anlamlı eşleme üzerinde müşteri tarafından yönetilen bir anahtar eklemek için [arama REST API](https://docs.microsoft.com/rest/api/searchservice/) veya SDK 'sını kullanmanız gerekir. Portal, eş anlamlı haritalar veya şifreleme özellikleri sunmaz. Geçerli bir API dizinleri kullandığınızda, veri kaynakları, becerileri, Dizin oluşturucular ve eş anlamlı eşlemeler en üst düzey bir **encryptionKey** özelliğini destekler.
 
 Bu örnek, Azure Key Vault ve Azure Active Directory değerleri ile REST API kullanır:
 
@@ -192,6 +194,12 @@ Bu örnek, Azure Key Vault ve Azure Active Directory değerleri ile REST API kul
 > [!Note]
 > Bu Anahtar Kasası ayrıntılarının hiçbiri gizli kabul edilmez ve Azure portal ' deki ilgili Azure Key Vault anahtarı sayfasına göz atarak kolayca alınabilir.
 
+## <a name="example-index-encryption"></a>Örnek: Dizin şifreleme
+
+[Create INDEX Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)kullanarak şifrelenmiş bir dizin oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+> [!Note]
+> Bu Anahtar Kasası ayrıntılarının hiçbiri gizli kabul edilmez ve Azure portal ' deki ilgili Azure Key Vault anahtarı sayfasına göz atarak kolayca alınabilir.
+
 ## <a name="rest-examples"></a>REST örnekleri
 
 Bu bölümde, şifrelenmiş bir dizin ve eş anlamlı eşleme için tam JSON gösterilmektedir
@@ -202,7 +210,7 @@ Burada tek fark, Dizin tanımının bir parçası olarak şifreleme anahtarı ay
 
 ```json
 {
- "name": "hotels",  
+ "name": "hotels",
  "fields": [
   {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
   {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
@@ -231,19 +239,19 @@ Artık dizin oluşturma isteğini gönderebilir ve sonra dizini normal olarak ku
 
 ### <a name="synonym-map-encryption"></a>Eş anlamlı eşleme şifrelemesi
 
-REST API aracılığıyla yeni bir eş anlamlı eşleme oluşturma ayrıntıları, burada tek fark, eş anlamlı eşleme tanımının bir parçası olarak şifreleme anahtarı ayrıntılarını belirtirken, [eş anlamlı harita oluşturma (REST API)](/rest/api/searchservice/create-synonym-map)yolunda bulunabilir: 
+[Eş anlamlı eşleme oluşturma Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)kullanarak şifrelenmiş bir eş anlamlı eşleme oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
 
 ```json
-{   
-  "name" : "synonymmap1",  
-  "format" : "solr",  
+{
+  "name" : "synonymmap1",
+  "format" : "solr",
   "synonyms" : "United States, United States of America, USA\n
   Washington, Wash. => WA",
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
     "keyVaultKeyName": "myEncryptionKey",
     "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "activeDirectoryAccessCredentials": {
+    "accessCredentials": {
       "applicationId": "00000000-0000-0000-0000-000000000000",
       "applicationSecret": "myApplicationSecret"
     }
@@ -252,6 +260,86 @@ REST API aracılığıyla yeni bir eş anlamlı eşleme oluşturma ayrıntılar�
 ```
 
 Artık eş anlamlı harita oluşturma isteğini gönderebilir ve normal olarak kullanmaya başlayabilirsiniz.
+
+## <a name="example-data-source-encryption"></a>Örnek: veri kaynağı şifrelemesi
+
+[Veri kaynağını oluştur (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source)kullanarak şifrelenmiş bir veri kaynağı oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Artık veri kaynağı oluşturma isteğini gönderebilir ve normal olarak kullanmaya başlayabilirsiniz.
+
+## <a name="example-skillset-encryption"></a>Örnek: beceri şifreleme
+
+[Create beceri Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kullanarak şifrelenmiş bir beceri oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Artık beceri oluşturma isteğini gönderebilir ve normal olarak kullanmaya başlayabilirsiniz.
+
+## <a name="example-indexer-encryption"></a>Örnek: Dizin Oluşturucu şifreleme
+
+[Create Indexer Create Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)kullanarak şifrelenmiş bir Dizin Oluşturucu oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+
+```json
+{
+  "name": "indexer1",
+  "dataSourceName": "datasource1",
+  "skillsetName": "skillset1",
+  "parameters": {
+      "configuration": {
+          "imageAction": "generateNormalizedImages"
+      }
+  },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Artık Dizin Oluşturucu oluşturma isteğini gönderebilir ve normal olarak kullanmaya başlayabilirsiniz.
 
 >[!Important]
 > `encryptionKey`Mevcut arama dizinlerine veya eş anlamlı haritalara eklenemediğinden, üç Anahtar Kasası ayrıntılarının (örneğin, anahtar sürümünü güncelleştirme) her biri için farklı değerler sağlanarak güncelleştirilebilirler. Yeni bir Key Vault anahtarına veya yeni bir anahtar sürümüne geçiş yaparken, önce anahtarı kullanan herhangi bir arama dizini veya eş anlamlı eşleme, önceki key\version. silinmeden **önce** yeni key\version kullanacak şekilde güncellenmelidir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyeceği için dizin veya eş anlamlı haritanın kullanılamaz hale gelmesine neden olur. Anahtar Kasası erişim izinlerinin daha sonraki bir zamanda geri yüklenmesi, içerik erişimini geri yükler.
@@ -265,7 +353,6 @@ Bu yaklaşım, uygulama kaydı ve uygulama gizli dizileri için adımları atlam
 Genel olarak, yönetilen bir kimlik kimlik bilgilerini kodda (ApplicationSecret veya ApplicationSecret) depolamadan Azure Key Vault kimlik doğrulaması yapmasına olanak sağlar. Bu tür yönetilen kimliğin yaşam döngüsü, yalnızca tek bir yönetilen kimliğe sahip olabilen arama hizmetinizin yaşam döngüsüne bağlıdır. Yönetilen kimliklerin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
 1. Arama hizmetinizi güvenilir bir hizmet yapın.
-
    ![Sistem tarafından atanan yönetilen kimliği aç](./media/search-managed-identities/turn-on-system-assigned-identity.png "Sistem tarafından atanan yönetilen kimliği aç")
 
 1. Azure Key Vault bir erişim ilkesi ayarlarken, ilke olarak güvenilir arama hizmetini seçin (AD-kayıtlı uygulama yerine). Erişim anahtarı izinleri verme adımında belirtildiği gibi aynı izinleri (birden fazla alma, SARMALAMA, GERI saral) atayın.

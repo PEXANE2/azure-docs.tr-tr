@@ -1,6 +1,6 @@
 ---
 title: Spark etkinliğini kullanarak verileri dönüştürme
-description: Spark etkinliğini kullanarak bir Azure Data Factory ardışık düzeninde Spark programları çalıştırarak verileri dönüştürmeyi öğrenin.
+description: Spark etkinliğini kullanarak Spark programlarını bir Azure Data Factory işlem hattından çalıştırarak verileri dönüştürmeyi öğrenin.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: d8cc934ebe8b465bc43e37d0d3a3fc58feda8c0a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cac64b17e7aad9aa2bf88386f21d5f82b3013fa3
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637726"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566784"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory Spark etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -61,13 +61,13 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 | Özellik              | Açıklama                              | Gerekli |
 | --------------------- | ---------------------------------------- | -------- |
-| name                  | İşlem hattındaki etkinliğin adı.    | Evet      |
+| name                  | İşlem hattındaki etkinliğin adı.    | Yes      |
 | açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| tür                  | Spark etkinliği için etkinlik türü HDInsightSpark ' dir. | Evet      |
-| linkedServiceName     | Spark programının çalıştığı HDInsight Spark bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
+| tür                  | Spark etkinliği için etkinlik türü HDInsightSpark ' dir. | Yes      |
+| linkedServiceName     | Spark programının çalıştığı HDInsight Spark bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
 | Mini iş Linkedservice | Spark iş dosyasını, bağımlılıklarını ve günlüklerini tutan Azure depolama bağlı hizmeti. Burada yalnızca **[Azure Blob depolama](./connector-azure-blob-storage.md)** ve **[ADLS 2.](./connector-azure-data-lake-storage.md)** bağlı hizmetleri desteklenir. Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. Bu özelliğin değeri yalnızca bir Azure depolama bağlı hizmeti olabilir. | Hayır       |
-| rootPath              | Spark dosyasını içeren Azure Blob kapsayıcısı ve klasörü. Dosya adı büyük/küçük harfe duyarlıdır. Bu klasörün yapısıyla ilgili ayrıntılar için klasör yapısı bölümüne (sonraki bölüm) bakın. | Evet      |
-| entryFilePath         | Spark kodunun/paketinin kök klasörünün göreli yolu. Giriş dosyası bir Python dosyası ya da. jar dosyası olmalıdır. | Evet      |
+| rootPath              | Spark dosyasını içeren Azure Blob kapsayıcısı ve klasörü. Dosya adı büyük/küçük harfe duyarlıdır. Bu klasörün yapısıyla ilgili ayrıntılar için klasör yapısı bölümüne (sonraki bölüm) bakın. | Yes      |
+| entryFilePath         | Spark kodunun/paketinin kök klasörünün göreli yolu. Giriş dosyası bir Python dosyası ya da. jar dosyası olmalıdır. | Yes      |
 | Sınıf             | Uygulamanın Java/Spark ana sınıfı      | Hayır       |
 | değişkenlerinden             | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır       |
 | proxyUser             | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı | Hayır       |
@@ -82,7 +82,7 @@ HDInsight bağlı hizmeti tarafından başvurulan Azure Blob depolama alanında 
 | Yol                  | Açıklama                              | Gerekli | Tür   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` Asıl            | Depolama bağlı hizmetindeki Spark işinin kök yolu | Evet      | Klasör |
-| &lt;Kullanıcı tanımlı &gt; | Spark işinin giriş dosyasını işaret eden yol | Evet      | Dosya   |
+| &lt;Kullanıcı tanımlı &gt; | Spark işinin giriş dosyasını işaret eden yol | Yes      | Dosya   |
 | ./jars                | Bu klasördeki tüm dosyalar, kümenin Java Sınıfyoluna yüklenir ve yerleştirilir | Hayır       | Klasör |
 | ./pyFiles             | Bu klasördeki tüm dosyalar, kümenin PYTHONPATH yüklenir ve bu klasöre yerleştirilir | Hayır       | Klasör |
 | ./Files               | Bu klasördeki tüm dosyalar, yürütücü çalışma dizinine yüklenir ve yerleştirilir | Hayır       | Klasör |

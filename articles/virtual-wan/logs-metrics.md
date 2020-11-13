@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440861"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566376"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure sanal WAN günlükleri ve ölçümleri
 
@@ -60,13 +60,13 @@ Aşağıdaki adımlar ölçümleri bulmanıza ve görüntülemenize yardımcı o
 
 2. Siteden siteye ağ geçidini bulmak için ExpressRoute, bir ExpressRoute ağ geçidini bulmak için **ExpressRoute** veya bir noktadan siteye ağ geçidini bulmak IÇIN **Kullanıcı VPN (siteye işaret)** **seçeneğini belirleyin.** Sayfasında, ağ geçidi bilgilerini görebilirsiniz. Bu bilgileri kopyalayın. Daha sonra, Azure Izleyici 'yi kullanarak tanılamayı görüntülemek için kullanacaksınız.
 
-3. **Ölçümler**’i seçin.
+3. **Ölçümler** ’i seçin.
 
    :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
 
 4. **Ölçümler** sayfasında, ilgilendiğiniz ölçümleri görebilirsiniz.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Kategorileri vurgulanmış olan ' ölçümler ' sayfasını gösteren ekran görüntüsü.":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Tanılama günlükleri
 
@@ -93,19 +93,19 @@ Aşağıdaki adımlar tanılamayı bulmanıza ve görüntülemenize yardımcı o
 
 1. Portalda sanal WAN kaynağınız ' ne gidin. Portalda sanal WAN sayfasının **genel bakış** bölümünde, görünüm ve kaynak grubu bilgilerini almak Için **temel parçalar** ' ı seçin. Kaynak grubu bilgilerini kopyalayın.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="' Kopyala ' düğmesine işaret eden bir ok ile ' genel bakış ' bölümünü gösteren ekran görüntüsü.":::
 
-2. Izleme bölümünde kaynak grubuna gidin. **Tanılama ayarları**' nı seçin ve kaynak bilgilerini girin. Bu makalenin önceki bölümlerinde yer alan [ağ geçidi ölçümlerini görüntüle](#metrics-steps) bölümünde 2. adımda kopyaladığınız kaynak bilgileri.
+2. Izleme bölümünde kaynak grubuna gidin. **Tanılama ayarları** ' nı seçin ve kaynak bilgilerini girin. Bu makalenin önceki bölümlerinde yer alan [ağ geçidi ölçümlerini görüntüle](#metrics-steps) bölümünde 2. adımda kopyaladığınız kaynak bilgileri.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="' Kaynak ' açılan simgesine işaret eden bir ok ile ' Izleme ' bölümünü gösteren ekran görüntüsü.":::
 
-3. Sonuçlar sayfasında **+ Tanılama ayarı Ekle**' yi seçin ve ardından bir seçenek belirleyin. Log Analytics, bir olay hub 'ına ya da yalnızca bir depolama hesabına arşivleme ' ye gönderme seçeneğini belirleyebilirsiniz.
+3. Sonuçlar sayfasında **+ Tanılama ayarı Ekle** ' yi seçin ve ardından bir seçenek belirleyin. Log Analytics, bir olay hub 'ına ya da yalnızca bir depolama hesabına arşivleme ' ye gönderme seçeneğini belirleyebilirsiniz.
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="ölçümler sayfası":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Örnek sorgu Log Analytics
 
-Günlükler **Azure Log Analytics çalışma alanında**bulunur. Log Analytics bir sorgu ayarlayabilirsiniz. Aşağıdaki örnek, siteden siteye yol tanılamayı elde etmek için bir sorgu içerir.
+Günlükler **Azure Log Analytics çalışma alanında** bulunur. Log Analytics bir sorgu ayarlayabilirsiniz. Aşağıdaki örnek, siteden siteye yol tanılamayı elde etmek için bir sorgu içerir.
 
 ```AzureDiagnostics | where Category == "RouteDiagnosticLog"```
 
@@ -119,9 +119,9 @@ Aşağıdaki değerleri, **= =** öğesinden sonra gerektiği şekilde değişti
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>Etkinlik günlükleri
 
-**Etkinlik günlüğü** girdileri varsayılan olarak toplanır ve Azure Portal görüntülenebilir. Azure aboneliğinize gönderilen tüm işlemleri görüntülemek için Azure etkinlik günlüklerini (eski adıyla *İşlemsel Günlükler* ve *Denetim günlükleri*olarak bilinir) kullanabilirsiniz.
+**Etkinlik günlüğü** girdileri varsayılan olarak toplanır ve Azure Portal görüntülenebilir. Azure aboneliğinize gönderilen tüm işlemleri görüntülemek için Azure etkinlik günlüklerini (eski adıyla *İşlemsel Günlükler* ve *Denetim günlükleri* olarak bilinir) kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izlemeyi öğrenmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](../firewall/tutorial-diagnostics.md).
+* Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izlemeyi öğrenmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](../firewall/firewall-diagnostics.md).
 * Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md).

@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ile üst bilgi tabanlı kimlik doğrulaması
-description: Bu kimlik doğrulama modelini elde etmek için mimari yönergeler
+description: Azure Active Directory ile üst bilgi tabanlı kimlik doğrulaması elde etmeye yönelik mimari rehberlik.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f364e4e14dd1b7c60cb81f06051d9dedd94396a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114454"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577167"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Azure Active Directory ile üst bilgi tabanlı kimlik doğrulaması
 
@@ -34,17 +34,17 @@ Uzak kullanıcıların, üst bilgi tabanlı kimlik doğrulaması gerektiren şir
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı**: uygulama proxy 'si tarafından sunulan eski uygulamalara erişir.
+* **Kullanıcı** : uygulama proxy 'si tarafından sunulan eski uygulamalara erişir.
 
-* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
+* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
 
-* **Azure AD**: kullanıcının kimliğini doğrular. 
+* **Azure AD** : kullanıcının kimliğini doğrular. 
 
-* **Uygulama proxy hizmeti**: kullanıcıdan şirket içi uygulamaya istek göndermek için ters proxy işlevi görür. Azure AD 'de bulunur ve tüm koşullu erişim ilkelerini de uygulayabilir.
+* **Uygulama proxy hizmeti** : kullanıcıdan şirket içi uygulamaya istek göndermek için ters proxy işlevi görür. Azure AD 'de bulunur ve tüm koşullu erişim ilkelerini de uygulayabilir.
 
-* **Uygulama proxy Bağlayıcısı**: uygulamalara bağlantı sağlamak için Windows Server 'da şirket içinde yüklü. Yalnızca giden bağlantıları kullanır. Azure AD 'nin yanıtını döndürür.
+* **Uygulama proxy Bağlayıcısı** : uygulamalara bağlantı sağlamak için Windows Server 'da şirket içinde yüklü. Yalnızca giden bağlantıları kullanır. Azure AD 'nin yanıtını döndürür.
 
-* **Eski uygulamalar**: uygulama proxy 'sinden Kullanıcı istekleri alan uygulamalar. Eski uygulama, bir oturum ayarlamak ve bir yanıt döndürmek için gerekli HTTP üstbilgilerini alır. 
+* **Eski uygulamalar** : uygulama proxy 'sinden Kullanıcı istekleri alan uygulamalar. Eski uygulama, bir oturum ayarlamak ve bir yanıt döndürmek için gerekli HTTP üstbilgilerini alır. 
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Azure AD ile üst bilgi tabanlı kimlik doğrulaması uygulama
 

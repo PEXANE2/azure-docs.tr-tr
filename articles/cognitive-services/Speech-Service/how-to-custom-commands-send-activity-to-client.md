@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839223"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566104"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>İstemci uygulamasına özel komutlar etkinliği gönder
 
@@ -36,15 +36,17 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 ## <a name="setup-send-activity-to-client"></a>Etkinliği istemciye Gönder ' i ayarla 
 1. Daha önce oluşturduğunuz özel komutlar uygulamasını açın
 1. **Turnonoff** komutunu seçin, tamamlanma kuralı altında **ConfirmationResponse** öğesini seçin, sonra **Eylem Ekle** ' yi seçin.
-1. **Yeni eylem türü**altında, **etkinliği istemciye gönder** ' i seçin
+1. **Yeni eylem türü** altında, **etkinliği istemciye gönder** ' i seçin
 1. Aşağıdaki JSON 'ı **etkinlik içeriğine** Kopyala
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
 1. Etkinlik Gönder eylemiyle yeni bir kural oluşturmak için **Kaydet** ' e tıklayın, değişikliği **eğitme** ve **yayımlayın**
 
@@ -55,7 +57,7 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 
 [Nasıl yapılır: istemci uygulamasını konuşma SDK 'sı (Önizleme) Ile ayarlama](./how-to-custom-commands-setup-speech-sdk.md)bölümünde, konuşma SDK 'sı ile gibi komutları ele alan bir UWP istemci uygulaması oluşturdunuz `turn on the tv` `turn off the fan` . Bazı görseller eklendikçe, bu komutların sonucunu görebilirsiniz.
 
-**Açık** veya **kapalı**şeklinde metin içeren etiketli kutular eklemek Için, aşağıdaki XML StackPanel bloğunu öğesine ekleyin `MainPage.xaml` .
+**Açık** veya **kapalı** şeklinde metin içeren etiketli kutular eklemek Için, aşağıdaki XML StackPanel bloğunu öğesine ekleyin `MainPage.xaml` .
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -83,8 +85,8 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 Bir JSON yükü oluşturduğunuzdan, seri durumdan çıkarmayı işlemek için [JSON.net](https://www.newtonsoft.com/json) kitaplığına bir başvuru eklemeniz gerekir.
 
 1. Çözümünüz için sağ istemci.
-1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin, **Araştır** ' ı seçin 
-1. **ÜzerindeNewtonsoft.js**zaten yüklüyse sürümünün en az 12.0.3 olduğundan emin olun. Aksi takdirde, **çözüm Için NuGet Paketlerini Yönet-güncelleştirmeler**' e gidin, güncelleştirmek için ** üzerindeNewtonsoft.js** arayın. Bu kılavuz, 12.0.3 sürümünü kullanıyor.
+1. **Çözüm Için NuGet Paketlerini Yönet** ' i seçin, **Araştır** ' ı seçin 
+1. **ÜzerindeNewtonsoft.js** zaten yüklüyse sürümünün en az 12.0.3 olduğundan emin olun. Aksi takdirde, **çözüm Için NuGet Paketlerini Yönet-güncelleştirmeler** ' e gidin, güncelleştirmek için **üzerindeNewtonsoft.js** arayın. Bu kılavuz, 12.0.3 sürümünü kullanıyor.
 
     > [!div class="mx-imgBorder"]
     > ![Etkinlik yükünü gönder](media/custom-commands/send-activity-to-client-json-nuget.png)
@@ -114,8 +116,8 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     if (name.Equals("UpdateDeviceState"))
     {
         Debug.WriteLine("Here");
-        var state = activity?.device != null ? activity.state.ToString() : string.Empty;
-        var device = activity?.device != null ? activity.device.ToString() : string.Empty;
+        var state = activity?.value?.state != null ? activity.value.state.ToString() : string.Empty;
+        var device = activity?.value?.device != null ? activity.value.device.ToString() : string.Empty;
 
         if (state.Equals("on") || state.Equals("off"))
         {

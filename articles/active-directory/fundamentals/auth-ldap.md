@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ile LDAP kimlik doğrulaması
-description: Bu kimlik doğrulama modelini elde etmek için mimari yönergeler
+description: Azure Active Directory ile LDAP kimlik doğrulamasını elde etmeye yönelik mimari rehberlik.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a70cb4754d98f4573670860c510692a7a2d134c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114423"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577065"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>Azure Active Directory ile LDAP kimlik doğrulaması
 
@@ -40,23 +40,23 @@ Bir uygulamanın veya hizmetin LDAP kimlik doğrulamasını kullanması gerekir.
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı**: bir tarayıcı aracılığıyla LDAP bağımlı uygulamalara erişir.
+* **Kullanıcı** : bir tarayıcı aracılığıyla LDAP bağımlı uygulamalara erişir.
 
-* **Web tarayıcısı**: uygulamanın dış URL 'sine erişmek için kullanıcının etkileşimde bulunduğu arabirim.
+* **Web tarayıcısı** : uygulamanın dış URL 'sine erişmek için kullanıcının etkileşimde bulunduğu arabirim.
 
-* **Sanal ağ**: Azure 'da, eskı uygulamanın LDAP hizmetlerini kullanabileceği bir özel ağ. 
+* **Sanal ağ** : Azure 'da, eskı uygulamanın LDAP hizmetlerini kullanabileceği bir özel ağ. 
 
-* **Eski uygulamalar**: Azure 'da bir sanal ağda ya da ağ yönlendirmeleri aracılığıyla örnek ıp 'leri AD DS görünürlüğe sahip LDAP gerektiren uygulamalar veya sunucu iş yükleri. 
+* **Eski uygulamalar** : Azure 'da bir sanal ağda ya da ağ yönlendirmeleri aracılığıyla örnek ıp 'leri AD DS görünürlüğe sahip LDAP gerektiren uygulamalar veya sunucu iş yükleri. 
 
-* **Azure AD**: kimlik bilgilerini kuruluşun şirket içi dizininden Azure AD Connect aracılığıyla eşitler.
+* **Azure AD** : kimlik bilgilerini kuruluşun şirket içi dizininden Azure AD Connect aracılığıyla eşitler.
 
-* **Azure AD Domain Services (AD DS)**: merkezi bir grup kullanıcıya, gruba ve kimlik bilgilerine erişim sağlamak IÇIN Azure AD 'den tek yönlü bir eşitleme gerçekleştirir. AD DS örneği bir sanal ağa atanır. Azure 'daki AD DS atanan sanal ağa bağlanan uygulamalar, hizmetler ve VM 'Ler LDAP, etki alanına ekleme, Grup ilkesi, Kerberos ve NTLM kimlik doğrulaması gibi yaygın AD DS özellikleri kullanabilir.
+* **Azure AD Domain Services (AD DS)** : merkezi bir grup kullanıcıya, gruba ve kimlik bilgilerine erişim sağlamak IÇIN Azure AD 'den tek yönlü bir eşitleme gerçekleştirir. AD DS örneği bir sanal ağa atanır. Azure 'daki AD DS atanan sanal ağa bağlanan uygulamalar, hizmetler ve VM 'Ler LDAP, etki alanına ekleme, Grup ilkesi, Kerberos ve NTLM kimlik doğrulaması gibi yaygın AD DS özellikleri kullanabilir.
    > [!NOTE]
    >  Kuruluşun parola karmalarını eşitleyebileceği veya akıllı kartlar kullanan kullanıcıların oturum açması gereken ortamlarda, AD DS bir kaynak ormanı kullanmanızı öneririz. 
 
-* **Azure AD Connect**: şirket kimliği bilgilerini Microsoft Azure AD ile eşitlemeye yönelik bir araç. Dağıtım Sihirbazı ve kılavuzlu deneyimler, bağlantı için gerekli önkoşulları ve bileşenleri yapılandırmanıza yardımcı olur. Active Directory Azure AD 'ye eşitleme ve oturum açma de dahil olmak üzere. 
+* **Azure AD Connect** : şirket kimliği bilgilerini Microsoft Azure AD ile eşitlemeye yönelik bir araç. Dağıtım Sihirbazı ve kılavuzlu deneyimler, bağlantı için gerekli önkoşulları ve bileşenleri yapılandırmanıza yardımcı olur. Active Directory Azure AD 'ye eşitleme ve oturum açma de dahil olmak üzere. 
 
-* **Active Directory**: [Kullanıcı ve hesap bilgileri gibi şirket içi kimlik bilgilerini](https://www.dnsstuff.com/active-directory-service-accounts)ve parolalar gibi güvenlik bilgilerini depolayan dizin hizmeti.
+* **Active Directory** : [Kullanıcı ve hesap bilgileri gibi şirket içi kimlik bilgilerini](https://www.dnsstuff.com/active-directory-service-accounts)ve parolalar gibi güvenlik bilgilerini depolayan dizin hizmeti.
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>Azure AD ile LDAP kimlik doğrulamasını uygulama
 
