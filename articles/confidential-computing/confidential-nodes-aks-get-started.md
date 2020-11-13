@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95626836afb09ada286cf7e171f97db450167999
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341915"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564353"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Hızlı başlangıç: Azure CLı (Önizleme) kullanarak gizli bilgi işlem düğümleri ile bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -19,7 +19,7 @@ Bu hızlı başlangıç, hızlı bir şekilde bir AKS kümesi oluşturmak ve Azu
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesini nasıl dağıtacağınızı ve bir bir Hello World uygulamasını bir kuşakın içinde çalıştırmayı öğreneceksiniz. AKS, kümeleri hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. [Burada](https://docs.microsoft.com/azure/aks/intro-kubernetes)aks hakkında daha fazla bilgi edinin.
+Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesini nasıl dağıtacağınızı ve bir bir Hello World uygulamasını bir kuşakın içinde çalıştırmayı öğreneceksiniz. AKS, kümeleri hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. [Burada](../aks/intro-kubernetes.md)aks hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Gizli bilgi işlem DCsv2 VM 'Leri, daha yüksek fiyatlandırma ve bölge kullanılabilirliğine tabi olan özel donanımlardan yararlanır. Daha fazla bilgi için bkz. [kullanılabilir SKU 'lar ve desteklenen bölgeler](virtual-machine-solutions.md)için sanal makineler sayfası.
@@ -27,17 +27,17 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (A
 ### <a name="deployment-pre-requisites"></a>Dağıtım ön gereksinimleri
 
 1. Etkin bir Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-1. Azure CLı sürüm 2.0.64 veya sonraki bir sürümü, dağıtım makinenizde yüklü ve yapılandırılmış olmalıdır ( `az --version` sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)
+1. Azure CLı sürüm 2.0.64 veya sonraki bir sürümü, dağıtım makinenizde yüklü ve yapılandırılmış olmalıdır ( `az --version` sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](../container-registry/container-registry-get-started-azure-cli.md)
 1. [aks-önizleme uzantısı](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) en düşük sürüm 0.4.62 
-1. Aboneliğinizde kullanılmak üzere en az altı **DC <x> s-v2** çekirdeği kullanılabilir. Varsayılan olarak, Azure abonelik 8 çekirdekleri başına gizli bilgi işlem için VM çekirdeklerinin kotası. 8 ' den fazla çekirdek gerektiren bir küme sağlamayı planlıyorsanız, kota artışı bileti yükseltmek için [Bu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) yönergeleri izleyin
+1. Aboneliğinizde kullanılmak üzere en az altı **DC <x> s-v2** çekirdeği kullanılabilir. Varsayılan olarak, Azure abonelik 8 çekirdekleri başına gizli bilgi işlem için VM çekirdeklerinin kotası. 8 ' den fazla çekirdek gerektiren bir küme sağlamayı planlıyorsanız, kota artışı bileti yükseltmek için [Bu](../azure-portal/supportability/per-vm-quota-requests.md) yönergeleri izleyin
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>Gizli bilgi işlem düğümü özellikleri (DC <x> s-v2)
 
 1. Yalnızca Linux kapsayıcılarını destekleyen Linux çalışan düğümleri
 1. Ubuntu Generation 2 18,04 sanal makineleri
-1. Şifrelenmiş sayfa önbelleği (EPC) ile Intel SGX tabanlı CPU. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/confidential-computing/faq)
+1. Şifrelenmiş sayfa önbelleği (EPC) ile Intel SGX tabanlı CPU. [Daha fazla bilgi edinin](./faq.md)
 1. Kubernetes sürüm 1.16 +
-1. Önceden yüklenmiş Intel SGX DCAP sürücüsü. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/confidential-computing/faq)
+1. Önceden yüklenmiş Intel SGX DCAP sürücüsü. [Daha fazla bilgi edinin](./faq.md)
 1. Önizleme sırasında dağıtılan CLı tabanlı
 
 
@@ -81,7 +81,7 @@ Yukarıdaki gereksinimleri karşılayan bir AKS kümeniz zaten varsa, yeni bir g
 az group create --name myResourceGroup --location westus2
 ```
 
-Şimdi az aks Create komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek tek bir düğümü olan bir küme oluşturur `Standard_DC2s_v2` . DCsv2 SKU 'ların desteklenen diğer listesini [buradan](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)seçebilirsiniz:
+Şimdi az aks Create komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek tek bir düğümü olan bir küme oluşturur `Standard_DC2s_v2` . DCsv2 SKU 'ların desteklenen diğer listesini [buradan](../virtual-machines/dcv2-series.md)seçebilirsiniz:
 
 ```azurecli-interactive
 az aks create \
@@ -94,7 +94,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-Yukarıdaki komutun **DC <x> s-v2** düğüm havuzlarıyla yeni bir aks kümesi sağlaması ve iki Daemon kümesini otomatik olarak yüklemesi gerekir-([SGX cihaz eklentisi](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX quote Yardımcısı](confidential-nodes-aks-overview.md#sgx-quote))
+Yukarıdaki komutun **DC <x> s-v2** düğüm havuzlarıyla yeni bir aks kümesi sağlaması ve iki Daemon kümesini otomatik olarak yüklemesi gerekir-( [SGX cihaz eklentisi](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX quote Yardımcısı](confidential-nodes-aks-overview.md#sgx-quote))
 
 Az aks Get-Credentials komutunu kullanarak AKS kümeniz için kimlik bilgilerini alın:
 
@@ -244,6 +244,3 @@ az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resou
 Python, düğüm vb. çalıştırma Uygulamalar, gizli [kapsayıcı örneklerini](https://github.com/Azure-Samples/confidential-container-samples)ziyaret ederek gizli kapsayıcılar üzerinden confidentially.
 
 Şifreleme kullanan uygulamaları, [şifreli Azure Container örneklerini](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/)ziyaret ederek çalıştırın.
-
-
-

@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88122103"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565781"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Uygulama yapılandırmasındaki JSON anahtar değerlerini depolamak için içerik türünden yararlanın
 
@@ -25,9 +25,9 @@ Veriler, uygulama yapılandırmasında varsayılan olarak dize türü olarak kab
 ## <a name="overview"></a>Genel Bakış
 
 Uygulama Yapılandırması ' nda JSON medya türünü anahtar değerlerinizin içerik türü olarak kullanabilirsiniz; örneğin:
-- **Daha basit veri yönetimi**: diziler gibi anahtar değerlerini yönetme Azure Portal çok daha kolay olacaktır.
-- **Geliştirilmiş veri dışa aktarma**: temel türler, DIZILER ve JSON nesneleri veri dışa aktarma sırasında korunur.
-- **Uygulama yapılandırma sağlayıcısı Ile yerel destek**: JSON Content-Type ile anahtar değerleri, uygulamalarınızda uygulama yapılandırma sağlayıcısı kitaplıkları tarafından tüketildiği zaman iyi çalışacaktır.
+- **Daha basit veri yönetimi** : diziler gibi anahtar değerlerini yönetme Azure Portal çok daha kolay olacaktır.
+- **Geliştirilmiş veri dışa aktarma** : temel türler, DIZILER ve JSON nesneleri veri dışa aktarma sırasında korunur.
+- **Uygulama yapılandırma sağlayıcısı Ile yerel destek** : JSON Content-Type ile anahtar değerleri, uygulamalarınızda uygulama yapılandırma sağlayıcısı kitaplıkları tarafından tüketildiği zaman iyi çalışacaktır.
 
 #### <a name="valid-json-content-type"></a>Geçerli JSON içerik türü
 
@@ -53,7 +53,7 @@ Geçerli JSON değerlerinin bazı örnekleri şunlardır:
 - {"ObjectSetting": {"hedefleme": {"default": true, "Level": "Information"}}}
 
 > [!NOTE]
-> Bu makalenin geri kalanında, geçerli bir JSON içerik türü ve geçerli bir JSON değeri olan uygulama yapılandırmasındaki anahtar-değer **JSON anahtar değeri**olarak adlandırılır. 
+> Bu makalenin geri kalanında, geçerli bir JSON içerik türü ve geçerli bir JSON değeri olan uygulama yapılandırmasındaki anahtar-değer **JSON anahtar değeri** olarak adlandırılır. 
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
@@ -63,13 +63,11 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Uygulamalarınızda JSON anahtar değerlerini tükettin.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
-- Azure CLı 'nın en son sürümü (2.10.0 veya üzeri). Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure CLı kullanıyorsanız, önce kullanarak oturum açmanız gerekir `az login` . İsteğe bağlı olarak Azure Cloud Shell kullanabilirsiniz.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- Bu öğretici, Azure CLı 'nin sürüm 2.10.0 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
 
@@ -82,7 +80,7 @@ JSON anahtar-değerleri Azure portal, Azure CLı kullanılarak veya bir JSON dos
 
 ### <a name="create-json-key-values-using-azure-portal"></a>Azure portal kullanarak JSON anahtar değerleri oluşturma
 
-Uygulama yapılandırma deponuza gidin ve **Configuration Explorer**  >  **Create**  >  aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini**anahtar değeri** oluştur ' u seçin:
+Uygulama yapılandırma deponuza gidin ve **Configuration Explorer**  >  **Create**  >  aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini **anahtar değeri** oluştur ' u seçin:
 
 | Anahtar | Değer | İçerik Türü |
 |---|---|---|
@@ -94,7 +92,7 @@ Uygulama yapılandırma deponuza gidin ve **Configuration Explorer**  >  **Creat
 | Ayarlar: RolloutPercentage | [25, 50, 75100] | uygulama/json |
 | Ayarlar: günlüğe kaydetme | {"Test": {"Level": "hata ayıklama"}, "üretim": {"Level": "uyarı"}} | uygulama/json |
 
-**Etiketi** boş bırakın ve **Uygula**' yı seçin.
+**Etiketi** boş bırakın ve **Uygula** ' yı seçin.
 
 ### <a name="create-json-key-values-using-azure-cli"></a>Azure CLı kullanarak JSON anahtar değerleri oluşturma
 

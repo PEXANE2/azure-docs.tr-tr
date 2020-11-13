@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db93262a0f5c6bd75f8c5611c7f33de085e05a82
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569072"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564897"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Öğretici: Visual Studio kullanarak veri fabrikası oluşturma
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -31,7 +31,7 @@ ms.locfileid: "91569072"
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory'nin geçerli sürümünü kullanıyorsanız [Hızlı Başlangıç: Azure Data Factory'yi kullanarak veri fabrikası oluşturma](../quickstart-create-data-factory-dot-net.md) konusunu inceleyin.
 
-Bu öğreticide Visual Studio kullanarak bir Azure veri fabrikası oluşturma ve izleme işlemi gösterilmektedir. Data Factory proje şablonunu kullanarak bir Visual Studio projesi oluşturacak, JSON biçiminde Data Factory varlıkları (bağlı hizmetler, veri kümeleri ve işlem hattı) tanımlayacak ve ardından bu varlıkları bulutta yayımlayacak/dağıtacaksınız. 
+Bu öğreticide, Visual Studio kullanarak Azure Data Factory oluşturma gösterilmektedir. Data Factory proje şablonunu kullanarak bir Visual Studio projesi oluşturacak, JSON biçiminde Data Factory varlıkları (bağlı hizmetler, veri kümeleri ve işlem hattı) tanımlayacak ve ardından bu varlıkları bulutta yayımlayacak/dağıtacaksınız. 
 
 Bu öğreticideki işlem hattı bir etkinlik içerir: **HDInsight Hive etkinliği**. Bu etkinlik, Azure HDInsight kümesi üzerinde çıkış verileri üretmek üzere giriş verilerini dönüştüren bir hive betiği çalıştırır. İşlem hattı, belirtilen başlangıç ve bitiş saatleri arasında ayda bir kez çalışacak şekilde zamanlanmıştır. 
 
@@ -56,7 +56,7 @@ Bu izlenecek yolun bir parçası olarak gerçekleştireceğiniz adımlar şunlar
 4. **DataFactoryUsingVS** adlı bir veri fabrikası oluşturun. Veri fabrikasını ve tüm Data Factory varlıklarını (bağlı hizmetler, tablolar ve işlem hattı) dağıtın.
 5. Yayımladıktan sonra, işlem hattını izlemek için Azure portalı dikey pencereleri ile İzleme ve Yönetim Uygulamasını kullanabilirsiniz. 
   
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,17 +64,17 @@ Bu izlenecek yolun bir parçası olarak gerçekleştireceğiniz adımlar şunlar
 2. Data Factory örnekleri oluşturmak için abonelik/kaynak grubu düzeyinde [Data Factory katkıda bulunan](../../role-based-access-control/built-in-roles.md#data-factory-contributor) rolünün bir üyesi olmanız gerekir.  
 3. Bilgisayarınızda şunların yüklü olması gerekir:
    * Visual Studio 2013 veya Visual Studio 2015
-   * Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015**’e tıklayın.
-   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Microsoft Azure Visual Studio Update Data Factory araçları**  ->  **Update**' na tıklayın.
+   * Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015** ’e tıklayın.
+   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Microsoft Azure Visual Studio Update Data Factory araçları**  ->  **Update** ' na tıklayın.
 
-Şimdi bir Azure data factory oluşturmak için Visual Studio kullanalım.
+Şimdi Visual Studio 'Yu bir Azure Data Factory oluşturmak için kullanalım.
 
 ### <a name="create-visual-studio-project"></a>Visual Studio projesi oluşturma
-1. **Visual Studio 2013** veya **Visual Studio 2015**’i başlatın. **Dosya**’ya tıklayın, **Yeni**’nin üzerine gelin ve **Proje**’ye tıklayın. **Yeni Proje** iletişim kutusu görmeniz gerekir.  
-2. **Yeni Proje** iletişim kutusunda **DataFactory** şablonunu seçip **Boş Data Factory Projesi**’ne tıklayın.   
+1. **Visual Studio 2013** veya **Visual Studio 2015** ’i başlatın. **Dosya** ’ya tıklayın, **Yeni** ’nin üzerine gelin ve **Proje** ’ye tıklayın. **Yeni Proje** iletişim kutusu görmeniz gerekir.  
+2. **Yeni Proje** iletişim kutusunda **DataFactory** şablonunu seçip **Boş Data Factory Projesi** ’ne tıklayın.   
 
     ![Yeni proje iletişim kutusu](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
-3. Proje için bir **ad**, **konum** ve **çözüm** için ad girip **Tamam**’a tıklayın.
+3. Proje için bir **ad** , **konum** ve **çözüm** için ad girip **Tamam** ’a tıklayın.
 
     ![Çözüm Gezgini](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
@@ -89,16 +89,16 @@ Azure Depolama bağlı hizmeti, bağlantı bilgilerini sağlayarak Azure Depolam
 > Data Factory çözümünüzü yayımlarken, ad ve ayarlarını belirterek bir veri fabrikası oluşturun.
 
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage bağlı hizmeti oluşturma
-1. Çözüm gezgininde **Bağlı Hizmetler**’e sağ tıklayın, **Ekle**’nin üzerine gelip **Yeni Öğe**’ye tıklayın.      
-2. **Yeni Öğe Ekle** iletişim kutusunda **Azure Storage Bağlı Hizmeti**’ni listeden seçip **Ekle**’ye tıklayın.
+1. Çözüm gezgininde **Bağlı Hizmetler** ’e sağ tıklayın, **Ekle** ’nin üzerine gelip **Yeni Öğe** ’ye tıklayın.      
+2. **Yeni Öğe Ekle** iletişim kutusunda **Azure Storage Bağlı Hizmeti** ’ni listeden seçip **Ekle** ’ye tıklayın.
     ![Listede Azure Storage bağlı hizmetini vurgulayan ekran görüntüsü.](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
 3. `<accountname>` ve `<accountkey>` değerlerini Azure depolama hesabınızın adı ve anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
     ![Azure Storage Bağlı Hizmeti](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. **AzureStorageLinkedService1.json** dosyasını kaydedin.
 
 #### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight bağlı hizmeti oluşturma
-1. **Çözüm Gezgini**’nde **Bağlı Hizmetler**’e sağ tıklayın, **Ekle**’nin üzerine gelip Y**eni Öğe**’ye tıklayın.
-2. **İsteğe Bağlı HDInsight Bağlı Hizmeti**’ni seçin ve **Ekle**’ye tıklayın.
+1. **Çözüm Gezgini** ’nde **Bağlı Hizmetler** ’e sağ tıklayın, **Ekle** ’nin üzerine gelip Y **eni Öğe** ’ye tıklayın.
+2. **İsteğe Bağlı HDInsight Bağlı Hizmeti** ’ni seçin ve **Ekle** ’ye tıklayın.
 3. **JSON** değerini aşağıdaki JSON ile değiştirin:
 
      ```json
@@ -137,8 +137,8 @@ Azure Depolama bağlı hizmeti, bağlantı bilgilerini sağlayarak Azure Depolam
 Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturursunuz. Bu veri kümeleri, bu öğreticide daha önce oluşturduğunuz **AzureStorageLinkedService1** öğesine başvurur. Bağlı hizmet Azure Storage hesabını belirtirken, veri kümeleri de girdi ve çıktı verilerini tutan depolama biriminde kapsayıcı, klasör, dosya adı belirtir.   
 
 #### <a name="create-input-dataset"></a>Girdi veri kümesi oluşturma
-1. **Çözüm Gezgini**, **Tablolar**' a sağ tıklayın, **Ekle**' nin üzerine gelin ve **Yeni öğe**' ye tıklayın.
-2. Listeden **Azure Blob**’u seçin, dosya adını **InputDataSet.json** olarak değiştirin ve **Ekle**’ye tıklayın.
+1. **Çözüm Gezgini** , **Tablolar** ' a sağ tıklayın, **Ekle** ' nin üzerine gelin ve **Yeni öğe** ' ye tıklayın.
+2. Listeden **Azure Blob** ’u seçin, dosya adını **InputDataSet.json** olarak değiştirin ve **Ekle** ’ye tıklayın.
 3. Düzenleyicide **JSON** değerini aşağıdaki JSON kod parçacığıyla değiştirin:
 
     ```json
@@ -182,9 +182,9 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
 #### <a name="create-output-dataset"></a>Çıktı veri kümesi oluşturma
 Şimdi, Azure Blob depolamada depolanan çıkış verilerini göstermek için çıkış veri kümesi oluşturun.
 
-1. **Çözüm Gezgini**’nde **tablolar**’a sağ tıklayın, **Ekle**’nin üzerine gelip **Yeni Öğe**’ye tıklayın.
-2. Listeden **Azure Blob**’u seçin, dosya adını **OutputDataset.json** olarak değiştirin ve **Ekle**’ye tıklayın.
-3. Düzenleyicide **JSON**’u aşağıdaki JSON ile değiştirin:
+1. **Çözüm Gezgini** ’nde **tablolar** ’a sağ tıklayın, **Ekle** ’nin üzerine gelip **Yeni Öğe** ’ye tıklayın.
+2. Listeden **Azure Blob** ’u seçin, dosya adını **OutputDataset.json** olarak değiştirin ve **Ekle** ’ye tıklayın.
+3. Düzenleyicide **JSON** ’u aşağıdaki JSON ile değiştirin:
     
     ```json
     {
@@ -214,10 +214,10 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
 4. **OutputDataset.json** dosyasını kaydedin.
 
 ### <a name="create-pipeline"></a>İşlem hattı oluşturma
-Şimdiye kadar, Azure Depolama bağlı hizmetinin yanı sıra giriş ve çıkış veri kümelerini oluşturdunuz. Şimdi, **HDInsightHive** etkinliğiyle bir işlem hattı oluşturacaksınız. Hive etkinliğinin **input** değeri **AzureBlobInput**, **output** değeri ise **AzureBlobOutput** olarak ayarlanır. Giriş veri kümesinin bir dilimi ayda bir kez kullanılabilir (sıklık: Ay, aralık: 1), çıkış dilimi de ayda bir kez üretilir. 
+Şimdiye kadar, Azure Depolama bağlı hizmetinin yanı sıra giriş ve çıkış veri kümelerini oluşturdunuz. Şimdi, **HDInsightHive** etkinliğiyle bir işlem hattı oluşturacaksınız. Hive etkinliğinin **input** değeri **AzureBlobInput** , **output** değeri ise **AzureBlobOutput** olarak ayarlanır. Giriş veri kümesinin bir dilimi ayda bir kez kullanılabilir (sıklık: Ay, aralık: 1), çıkış dilimi de ayda bir kez üretilir. 
 
-1. **Çözüm Gezgini**’nde **İşlem Hatları**’na sağ tıklayın, **Ekle**’nin üzerine gelip **Yeni Öğe**’ye tıklayın.
-2. Listeden **Hive Dönüşüm İşlem Hattı**’nı seçin ve **Ekle**’ye tıklayın.
+1. **Çözüm Gezgini** ’nde **İşlem Hatları** ’na sağ tıklayın, **Ekle** ’nin üzerine gelip **Yeni Öğe** ’ye tıklayın.
+2. Listeden **Hive Dönüşüm İşlem Hattı** ’nı seçin ve **Ekle** ’ye tıklayın.
 3. **JSON** öğesini şu kod parçacığıyla değiştirin:
 
     > [!IMPORTANT]
@@ -285,16 +285,16 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
 4. **HiveActivity1.json** dosyasını kaydedin.
 
 ### <a name="add-partitionweblogshql-and-inputlog-as-a-dependency"></a>partitionweblogs.hql ve input.log dosyalarını bağımlılık olarak ekleme
-1. **Çözüm Gezgini** penceresinde **Bağımlılıklar**’a sağ tıklayın, **Ekle**’nin üzerine gelip **Mevcut Öğe**’ye tıklayın.  
-2. **C:\ADFGettingStarted** yoluna gidin ve **partitionweblogs.hql**, **input.log** dosyalarını seçip **Ekle**’ye tıklayın. Bu iki dosyayı [Öğreticiye Genel Bakış](data-factory-build-your-first-pipeline.md)’taki ön koşulların bir parçası olarak oluşturmuştunuz.
+1. **Çözüm Gezgini** penceresinde **Bağımlılıklar** ’a sağ tıklayın, **Ekle** ’nin üzerine gelip **Mevcut Öğe** ’ye tıklayın.  
+2. **C:\ADFGettingStarted** yoluna gidin ve **partitionweblogs.hql** , **input.log** dosyalarını seçip **Ekle** ’ye tıklayın. Bu iki dosyayı [Öğreticiye Genel Bakış](data-factory-build-your-first-pipeline.md)’taki ön koşulların bir parçası olarak oluşturmuştunuz.
 
 Sonraki adımda çözümü yayımladığınızda, **partitionweblogs.hql** dosyası `adfgetstarted` blob kapsayıcısındaki **script** klasörüne yüklenir.   
 
 ### <a name="publishdeploy-data-factory-entities"></a>Data Factory varlıklarını yayımlama/dağıtma
 Bu adımda, projenizdeki Data Factory varlıklarını (bağlı hizmetler, veri kümeleri ve işlem hattı) Azure Data Factory hizmetinde yayımlayacaksınız. Yayımlama sürecinde, veri fabrikanızın adını belirtin. 
 
-1. Çözüm Gezgini’nde projeye sağ tıklayın ve ardından **Yayımla**’ya tıklayın.
-2. **Microsoft hesabınızda oturum açın** iletişim kutusunu görmezseniz, Azure aboneliğindeki kimlik bilgilerini hesap için girin ve **oturum aç**’a tıklayın.
+1. Çözüm Gezgini’nde projeye sağ tıklayın ve ardından **Yayımla** ’ya tıklayın.
+2. **Microsoft hesabınızda oturum açın** iletişim kutusunu görmezseniz, Azure aboneliğindeki kimlik bilgilerini hesap için girin ve **oturum aç** ’a tıklayın.
 3. Aşağıdaki iletişim kutusunu göreceksiniz:
 
    ![Yayımla iletişim kutusu](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -309,14 +309,14 @@ Bu adımda, projenizdeki Data Factory varlıklarını (bağlı hizmetler, veri k
         > Herhangi bir abonelik görmüyorsanız aboneliğin yöneticisi veya ortak yöneticisi olan bir hesapla oturum açtığınızdan emin olun.
    4. oluşturulacak data factory için **kaynak grubu** seçin.
    5. Data factory için **bölge** seçin.
-   6. **Öğeleri Yayımla** sayfasına geçmek için **İleri**’ye tıklayın. (Ad alanından çıkmak için, **İleri** düğmesi devre dışıysa **SEKME** tuşuna basın.)
+   6. **Öğeleri Yayımla** sayfasına geçmek için **İleri** ’ye tıklayın. (Ad alanından çıkmak için, **İleri** düğmesi devre dışıysa **SEKME** tuşuna basın.)
 
       > [!IMPORTANT]
       > Yayımladığınızda **“DataFactoryUsingVS” data factory adı yok** hatasını alırsanız adı değiştirin (örneğin, yournameDataFactoryUsingVS). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.   
-1. **Öğeleri Yayımla** sayfasında tüm Data Factory varlıklarının işaretli olmasını sağlayın ve **Özet** sayfasına geçmek için **İleri**’ye tıklayın.
+1. **Öğeleri Yayımla** sayfasında tüm Data Factory varlıklarının işaretli olmasını sağlayın ve **Özet** sayfasına geçmek için **İleri** ’ye tıklayın.
 
     ![Öğe yayımlama sayfası](media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png)     
-2. Özeti gözden geçirin, dağıtım işlemini başlatmak ve **Dağıtım Durumu**’nu görüntülemek için **İleri**’ye tıklayın.
+2. Özeti gözden geçirin, dağıtım işlemini başlatmak ve **Dağıtım Durumu** ’nu görüntülemek için **İleri** ’ye tıklayın.
 
     ![Özet sayfası](media/data-factory-build-your-first-pipeline-using-vs/summary-page.png)
 3. **Dağıtım Durumu** sayfasında dağıtım sürecinin durumunu görmelisiniz. Dağıtımını gerçekleştirdikten sonra Son'a tıklayın.
@@ -345,10 +345,10 @@ Bu adımda, veri fabrikasının Diyagram Görünümünü kullanarak işlem hatt�
    1. **Diğer hizmetler** ve **Data factory’ler** öğesine tıklayın.
        
         ![Data factory’lere göz atma](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
-   2. Veri fabrikası listesinden veri fabrikanızın adını seçin (örneğin: **DataFactoryUsingVS09152016**).
+   2. Veri fabrikası listesinden veri fabrikanızın adını seçin (örneğin: **DataFactoryUsingVS09152016** ).
    
        ![Data factory’nizi seçme](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
-2. Veri fabrikanızın giriş sayfasında penceresinde **Diyagram**’a tıklayın.
+2. Veri fabrikanızın giriş sayfasında penceresinde **Diyagram** ’a tıklayın.
 
     ![Diyagram kutucuğu](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
 3. Diyagram Görünümü’nde, işlem hatlarına ve bu öğreticide kullanılan veri kümelerine bir genel bakış görürsünüz.
@@ -361,12 +361,12 @@ Bu adımda, veri fabrikasının Diyagram Görünümünü kullanarak işlem hatt�
 
     ![İşlem hattı görünümünü açma](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
-    Önceki görünüme dönmek için en üstteki içerik haritası menüsünde **Data factory**’ye tıklayın.
-6. **Diyagram görünümünde**, **azureblobınput**veri kümesine çift tıklayın. Dilimin **Hazır** durumunda olduğunu onaylayın. Dilimin Hazır durumda gösterilmesi birkaç dakika alabilir. Bir süre bekledikten sonra bu gerçekleşmiyorsa, girdi dosyasının (input.log) doğru kapsayıcıda (`adfgetstarted`) ve klasörde (`inputdata`) olup olmadığına bakın. Ayrıca, giriş veri kümesindeki **external** özelliğinin **true** olarak ayarlandığından emin olun. 
+    Önceki görünüme dönmek için en üstteki içerik haritası menüsünde **Data factory** ’ye tıklayın.
+6. **Diyagram görünümünde** , **azureblobınput** veri kümesine çift tıklayın. Dilimin **Hazır** durumunda olduğunu onaylayın. Dilimin Hazır durumda gösterilmesi birkaç dakika alabilir. Bir süre bekledikten sonra bu gerçekleşmiyorsa, girdi dosyasının (input.log) doğru kapsayıcıda (`adfgetstarted`) ve klasörde (`inputdata`) olup olmadığına bakın. Ayrıca, giriş veri kümesindeki **external** özelliğinin **true** olarak ayarlandığından emin olun. 
 
    ![Girdi dilimi hazır durumda](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
 7. **AzureBlobInput** dikey penceresini kapatmak için **X** işaretine tıklayın.
-8. **Diyagram görünümünde**, **AzureBlobOutput**veri kümesine çift tıklayın. Dilimin işlenmekte olduğunu görürsünüz.
+8. **Diyagram görünümünde** , **AzureBlobOutput** veri kümesine çift tıklayın. Dilimin işlenmekte olduğunu görürsünüz.
 
    ![AzureBlobOutput veri kümesini vurgulayan ekran görüntüsü.](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. İşlem tamamlandığında dilimi **Hazır** durumunda görürsünüz.
@@ -395,7 +395,7 @@ Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek i�
 1. İzleme ve Yönetme kutucuğuna tıklayın.
 
     ![İzleme ve Yönetme kutucuğu](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-tile.png)
-2. İzleme ve Yönetme uygulamasını görmeniz gerekir. **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç (04-01-2016 12:00 AM) ve bitiş saatleri (04-02-2016 12:00 AM) ile eşleşecek şekilde değiştirin ve **Uygula**’ya tıklayın.
+2. İzleme ve Yönetme uygulamasını görmeniz gerekir. **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç (04-01-2016 12:00 AM) ve bitiş saatleri (04-02-2016 12:00 AM) ile eşleşecek şekilde değiştirin ve **Uygula** ’ya tıklayın.
 
     ![İzleme ve Yönetme Uygulaması](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-app.png)
 3. Bir etkinlik penceresinin ayrıntılarını görmek için **Etkinlik Pencereleri listesinden** seçim yapın.
@@ -406,7 +406,7 @@ Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek i�
 
 ### <a name="additional-notes"></a>Ek notlar
 - Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattında bir veya daha fazla etkinlik olabilir. Örneğin, bir kaynaktan hedef veri deposuna veri kopyalama amaçlı bir Kopyalama Etkinliği ve giriş verilerini dönüştürmek üzere Hive betiği çalıştırma amaçlı bir HDInsight Hive etkinliği. Kopyalama Etkinliği tarafından desteklenen tüm kaynaklar ve havuzlar için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory tarafından desteklenen işlem hizmetlerinin listesi için bkz. [bağlantılı işlem hizmetleri](data-factory-compute-linked-services.md).
-- Bağlı hizmetler veri depolarını veya işlem hizmetlerini Azure data factory’ye bağlar. Kopyalama Etkinliği tarafından desteklenen tüm kaynaklar ve havuzlar için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory tarafından desteklenen işlem hizmetlerinin listesi ve bunlar üzerinde çalışabilecek [dönüşüm etkinlikleri](data-factory-data-transformation-activities.md) için [işlem bağlı hizmetleri](data-factory-compute-linked-services.md) bölümüne bakın.
+- Bağlı hizmetler veri depolarını veya işlem hizmetlerini bir Azure Data Factory bağlar. Kopyalama Etkinliği tarafından desteklenen tüm kaynaklar ve havuzlar için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory tarafından desteklenen işlem hizmetlerinin listesi ve bunlar üzerinde çalışabilecek [dönüşüm etkinlikleri](data-factory-data-transformation-activities.md) için [işlem bağlı hizmetleri](data-factory-compute-linked-services.md) bölümüne bakın.
 - Azure Depolama bağlı hizmet tanımında kullanılan JSON özellikleri hakkında ayrıntılı bilgi için bkz. [Azure Blob’a/Blob’dan veri taşıma](data-factory-azure-blob-connector.md#azure-storage-linked-service).
 - İsteğe bağlı HDInsight kümesi yerine kendi HDInsight kümenizi kullanabilirsiniz. Ayrıntılar için bkz. [İşlem Bağlı Hizmetleri](data-factory-compute-linked-services.md).
 -  Data Factory, sizin için önceki JSON ile **Linux tabanlı** bir HDInsight kümesi oluşturur. Ayrıntılar için bkz. [İsteğe Bağlı HDInsight Bağlı Hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
@@ -418,20 +418,20 @@ Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek i�
 
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>Data factory’leri görüntülemek için Sunucu Gezgini’ni kullanın
-1. **Visual Studio**’nun menüsünde **Görünüm**’e ve **Sunucu Gezgini**’ne tıklayın.
-2. Sunucu Gezgini penceresinde, **Azure**’ü ve **Data Factory**’yi genişletin. **Visual Studio'da oturum açın**’ı görürseniz Azure aboneliğiyle ilişkili **hesabı** girin ve **Devam**’a tıklayın. **parola** girip **Oturum aç**’a tıklayın. Visual Studio, aboneliğinizdeki tüm Azure data factory’leri hakkında bilgi almaya çalışır. Bu işlemin durumunu **Data Factory Görev Listesi** penceresinde görürsünüz.
+1. **Visual Studio** ’nun menüsünde **Görünüm** ’e ve **Sunucu Gezgini** ’ne tıklayın.
+2. Sunucu Gezgini penceresinde, **Azure** ’ü ve **Data Factory** ’yi genişletin. **Visual Studio'da oturum açın** ’ı görürseniz Azure aboneliğiyle ilişkili **hesabı** girin ve **Devam** ’a tıklayın. **parola** girip **Oturum aç** ’a tıklayın. Visual Studio, aboneliğinizdeki tüm Azure data factory’leri hakkında bilgi almaya çalışır. Bu işlemin durumunu **Data Factory Görev Listesi** penceresinde görürsünüz.
 
     ![Sunucu Gezgini](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
-3. İstediğiniz data factory’ye sağ tıklayıp, mevcut bir data factory’ye dayandırılan Visual Studio projesi oluşturmak için **Data Factory’yi Yeni Projeye Aktar**’ı seçin.
+3. İstediğiniz data factory’ye sağ tıklayıp, mevcut bir data factory’ye dayandırılan Visual Studio projesi oluşturmak için **Data Factory’yi Yeni Projeye Aktar** ’ı seçin.
 
     ![Data factory’yi dışarı aktarma](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>Visual Studio için Data Factory araçlarını güncelleştirme
 Visual Studio için Azure Data Factory araçlarını güncelleştirmek üzere aşağıdaki adımları uygulayın:
 
-1. Menüde **Araçlar**’a tıklayın ve **Uzantılar ve Güncelleştirmeler**’i seçin.
-2. Sol bölmede **Güncelleştirmeler**’i, sonra da **Visual Studio Galerisi**’ni seçin.
-3. **Visual Studio için Azure Data Factory araçları**’nı seçin ve **Güncelleştir**’e tıklayın. Bu girişi görmüyorsanız araçların en son sürümü zaten yüklüdür.
+1. Menüde **Araçlar** ’a tıklayın ve **Uzantılar ve Güncelleştirmeler** ’i seçin.
+2. Sol bölmede **Güncelleştirmeler** ’i, sonra da **Visual Studio Galerisi** ’ni seçin.
+3. **Visual Studio için Azure Data Factory araçları** ’nı seçin ve **Güncelleştir** ’e tıklayın. Bu girişi görmüyorsanız araçların en son sürümü zaten yüklüdür.
 
 ## <a name="use-configuration-files"></a>Yapılandırma dosyalarını kullanma
 Visual Studio'da bağlı hizmetler/tablolar/işlem hatları için her ortamda farklı özellik yapılandırmak amacıyla yapılandırma dosyalarını kullanabilirsiniz.
@@ -454,8 +454,8 @@ Azure Storage bağlı hizmeti için aşağıdaki JSON tanımını dikkate alın.
 ### <a name="add-a-configuration-file"></a>Yapılandırma dosyası ekleme
 Aşağıdaki adımları uygulayarak her ortam için bir yapılandırma dosyası ekleyin:   
 
-1. Visual Studio çözümünüzde Data Factory projenize sağ tıklayın, **Ekle**’nin üzerine gelin ve **Yeni öğe**’ye tıklayın.
-2. Soldaki yüklenmiş şablonlar listesinden **Config**’i ve **Yapılandırma Dosyası**’nı seçin ve yapılandırma dosyası için bir **ad** girip **Ekle**’ye tıklayın.
+1. Visual Studio çözümünüzde Data Factory projenize sağ tıklayın, **Ekle** ’nin üzerine gelin ve **Yeni öğe** ’ye tıklayın.
+2. Soldaki yüklenmiş şablonlar listesinden **Config** ’i ve **Yapılandırma Dosyası** ’nı seçin ve yapılandırma dosyası için bir **ad** girip **Ekle** ’ye tıklayın.
 
     ![Yapılandırma dosyasını ekleme](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. Yapılandırma parametrelerini ve değerlerini aşağıda gösterilen biçimde ekleyin:
@@ -531,14 +531,14 @@ Azure Data Factory varlıklarını VS’de dağıttığınızda, bu yayımlama i
 
 Azure Data Factory projesindeki varlıkları yapılandırma dosyası kullanarak oluşturmak için:   
 
-1. Data Factory projesine sağ tıklayıp, **Öğeleri Yayımla** iletişim kutusunu görüntülemek için **Yayımla**’ya tıklayın.
-2. Mevcut bir data factory seçip ya da **Data factory yapılandır** sayfasında bir data factory oluşturulması için değerleri belirtip **İleri**’ye tıklayın.   
+1. Data Factory projesine sağ tıklayıp, **Öğeleri Yayımla** iletişim kutusunu görüntülemek için **Yayımla** ’ya tıklayın.
+2. Mevcut bir data factory seçip ya da **Data factory yapılandır** sayfasında bir data factory oluşturulması için değerleri belirtip **İleri** ’ye tıklayın.   
 3. **Öğeleri Yayımla** sayfasında: **Dağıtım Yapılandırması seç** alanı için kullanılabilir yapılandırmaların açılan listesini görürsünüz.
 
     ![Yapılandırma dosyası seçme](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. Kullanmak istediğiniz **yapılandırma dosyasını** seçip **İleri**’ye tıklayın.
-5. **Özet** sayfasında JSON dosyasının adını gördüğünüzü doğrulayıp **İleri**’ye tıklayın.
-6. Dağıtım işlemi sona erdikten sonra **Son**’a tıklayın.
+4. Kullanmak istediğiniz **yapılandırma dosyasını** seçip **İleri** ’ye tıklayın.
+5. **Özet** sayfasında JSON dosyasının adını gördüğünüzü doğrulayıp **İleri** ’ye tıklayın.
+6. Dağıtım işlemi sona erdikten sonra **Son** ’a tıklayın.
 
 Dağıtımı yaptığınızda, yapılandırma dosyasındaki değerler, varlıkların Azure Data Factory hizmetine dağıtılmasından önce JSON dosyalarındaki özelliklerin değerlerini ayarlamak için kullanılır.   
 
@@ -546,13 +546,13 @@ Dağıtımı yaptığınızda, yapılandırma dosyasındaki değerler, varlıkla
 Bağlantı dizeleri gibi hassas verilerin kod deposuna işlenmesi önerilmez ve genellikle güvenlik ilkesine aykırıdır. Hassas bilgileri Azure Key Vault’ta depolama ve Data Factory varlıklarını yayımlarken bu bilgileri kullanma hakkında bilgi için, GitHub üzerinde [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFSecurePublish) örneğine bakın. Visual Studio için Secure Publish uzantısı, gizli anahtarların Key Vault’ta depolanmasına olanak tanır ve bağlı hizmetler/ dağıtım yapılandırmalarında bunların yalnızca başvuruları belirtilir. Bu başvurular, Azure’da Data Factory varlıkları yayımladığınızda çözümlenir. Bu dosyalar daha sonra herhangi bir gizli anahtar kullanıma sunulmadan kaynak depoya işlenebilir.
 
 ## <a name="summary"></a>Özet
-Bu öğreticide, HDInsight hadoop kümesindeki Hive betiği çalıştırılarak verileri işlemek için bir Azure data factory oluşturdunuz. Aşağıdaki adımları uygulamak için Azure Portal’da Data Factory Düzenleyici’yi kullandınız:  
+Bu öğreticide, bir HDInsight Hadoop kümesinde Hive betiği çalıştırarak verileri işlemek için bir Azure Data Factory oluşturdunuz. Aşağıdaki adımları uygulamak için Azure Portal’da Data Factory Düzenleyici’yi kullandınız:  
 
 1. Oluşturulan Azure **data factory**.
-2. Oluşturulan iki **bağlı hizmet**:
+2. Oluşturulan iki **bağlı hizmet** :
    1. Girdi/çıktı dosyalarını tutan Azure blob depolamanızı data factory’ye bağlamak için **Azure Storage** bağlı hizmeti.
    2. İsteğe bağlı HDInsight Hadoop kümesini data factory’ye bağlamak için isteğe bağlı **Azure HDInsight** bağlı hizmeti. Azure Data Factory, girdi verilerini işlemek, çıktı verilerini de oluşturmak için tam zamanında HDInsight Hadoop kümesi oluşturur.
-3. İşlem hattındaki HDInsight Hive etkinliğinin giriş ve çıkış verilerini açıklayan iki **veri kümesi**oluşturuldu.
+3. İşlem hattındaki HDInsight Hive etkinliğinin giriş ve çıkış verilerini açıklayan iki **veri kümesi** oluşturuldu.
 4. **HDInsight Hive** etkinliğine sahip oluşturulan bir **işlem hattı**.  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
@@ -563,9 +563,9 @@ Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-| Konu | Açıklama |
+| Konu | Description |
 |:--- |:--- |
-| [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanıza, senaryonuz ya da işletmeniz için veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı öğrenmenize yardımcı olur. |
+| [Pipelines](data-factory-create-pipelines.md) |Bu makale, Azure Data Factory’de işlem hatlarını ve etkinlikleri anlamanıza, senaryonuz ya da işletmeniz için veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı öğrenmenize yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Azure Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |
 | [Veri Dönüştürme Etkinlikleri](data-factory-data-transformation-activities.md) |Bu makalede, Azure Data Factory’nin desteklediği veri dönüştürme etkinliklerinin (bu öğreticide kullandığınız HDInsight Hive dönüştürmesi gibi) bir listesi sağlanmaktadır. |
 | [Zamanlama ve yürütme](data-factory-scheduling-and-execution.md) |Bu makalede Azure Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. |

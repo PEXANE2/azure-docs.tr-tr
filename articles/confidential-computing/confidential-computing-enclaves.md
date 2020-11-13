@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
-ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 565f4971fffde1cbeb2234b43aaad5cce73b5404
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998232"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564387"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure gizli bilgi işlem sanal makineleri (VM) genel bakış
 
@@ -29,7 +29,7 @@ Azure gizli bilgi işlem sanal makinelerinde, CPU 'nun bir parçası, uygulaman�
 
 Azure gizli bilgi işlem altyapısı şu anda çok sayıda sanal makinenin (VM) bir SKU 'sundan oluşur. Bu VM 'Ler Software Guard uzantısı (Intel SGX) ile Intel işlemcilerde çalışır. [INTEL SGX](https://intel.com/sgx) , gizli bilgi işlem ile daha iyi koruma sağlayan bir bileşendir. 
 
-Günümüzde Azure, donanım tabanlı şifreleme oluşturma için Intel SGX teknolojisini temel alan [DCsv2 serisi](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) sunmaktadır. Uygulama verilerinizi ve kullanımda olan kodları korumak için DCsv2 serisi VM 'lerde çalışacak güvenli şifreleme tabanlı uygulamalar oluşturabilirsiniz. 
+Günümüzde Azure, donanım tabanlı şifreleme oluşturma için Intel SGX teknolojisini temel alan [DCsv2 serisi](../virtual-machines/dcv2-series.md) sunmaktadır. Uygulama verilerinizi ve kullanımda olan kodları korumak için DCsv2 serisi VM 'lerde çalışacak güvenli şifreleme tabanlı uygulamalar oluşturabilirsiniz. 
 
 Azure gizli bilgi işlem sanal makinelerini donanım tabanlı güvenilen şifrelerle dağıtma hakkında [daha fazla bilgi edinin](virtual-machine-solutions.md) .
 
@@ -39,7 +39,7 @@ Kuşanın güvenliği, donanımın işlemcisinin ve belleğinin güvenli bir kı
 
 Temelde, güvenli bir kutu olarak bir şifreleme düşünün. Şifrelenmiş kod ve verileri kutuya yerleştirebilirsiniz. Kutunun dışından, hiçbir şey göremezsiniz. Şifreleme, verilerin şifresini çözmek için bir anahtar verirsiniz, daha sonra veriler, kuşdan gönderilmeden önce işlenir ve yeniden şifrelenir.
 
-Her bir kuşın, şifreli sayfa önbelleğinin (EPC), her bir kuşın tutabileceğini belirten bellek miktarını belirleyen bir boyut kümesi vardır. Daha büyük DCsv2 sanal makinelerinde daha fazla EPC belleği vardır. VM boyutu başına en fazla EPC için [DCsv2 belirtimleri](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) sayfasını okuyun.
+Her bir kuşın, şifreli sayfa önbelleğinin (EPC), her bir kuşın tutabileceğini belirten bellek miktarını belirleyen bir boyut kümesi vardır. Daha büyük DCsv2 sanal makinelerinde daha fazla EPC belleği vardır. VM boyutu başına en fazla EPC için [DCsv2 belirtimleri](../virtual-machines/dcv2-series.md) sayfasını okuyun.
 
 
 

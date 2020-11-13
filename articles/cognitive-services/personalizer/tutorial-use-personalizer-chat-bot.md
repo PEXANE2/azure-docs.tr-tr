@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777318"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565730"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Öğretici: .NET Chat bot 'ta kişiselleştirici kullanma
 
@@ -43,7 +43,7 @@ Bu, metin sorguları girmenize izin veren basit bir sohbet bot ' dır.
 |--|--|--|
 |Metin girilmedi-bot konuşmayı başlatır.|`This is a simple chatbot example that illustrates how to use Personalizer. The bot learns what coffee or tea order is preferred by customers given some context information (such as weather, temperature, and day of the week) and information about the user.`<br>`To use the bot, just follow the prompts. To try out a new imaginary context, type “Reset” and a new one will be randomly generated.`<br>`Welcome to the coffee bot, please tell me if you want to see the menu or get a coffee or tea suggestion for today. Once I’ve given you a suggestion, you can reply with ‘like’ or ‘don’t like’. It’s Tuesday today and the weather is Snowy.`|Bot, görüşmeyi eğitici bir metinle başlatır ve içeriğin ne olduğunu, ne olduğunu bilmenizi sağlar: `Tuesday` , `Snowy` .|
 |`Show menu`|`Here is our menu: Coffee: Cappuccino Espresso Latte Macchiato Mocha Tea: GreenTea Rooibos`|Lusıs kullanarak sorgu amacını belirleyin, sonra kahve ve çay öğelerinin menü seçimlerini görüntüleyin. Eylemlerin özellikleri şunlardır |
-|`What do you suggest`|`How about Latte?`|LUSıS kullanarak sorgu amacını belirleyip, **Derecelendirme API 'sini**çağırın ve bir soru olarak en iyi seçimi görüntüleyin `How about {response.RewardActionId}?` . Ayrıca, çizim amaçları için JSON çağrısını ve yanıtını görüntüler.|
+|`What do you suggest`|`How about Latte?`|LUSıS kullanarak sorgu amacını belirleyip, **Derecelendirme API 'sini** çağırın ve bir soru olarak en iyi seçimi görüntüleyin `How about {response.RewardActionId}?` . Ayrıca, çizim amaçları için JSON çağrısını ve yanıtını görüntüler.|
 |`I like it`|`That’s great! I’ll keep learning your preferences over time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|LUSıS kullanarak sorgu amacını belirleme, sonra yeniden **API** 'yi çağırma `1` , çizim amacıyla JSON çağrısını ve yanıtını görüntüler.|
 |`I don't like it`|`Oh well, maybe I’ll guess better next time.`<br>`Would you like to get a new suggestion or reset the simulated context to a new day?`|LUSıS kullanarak sorgu amacını belirleme, sonra yeniden **API** 'yi çağırma `0` , çizim amacıyla JSON çağrısını ve yanıtını görüntüler.|
 |`Reset`|Yönerge metni döndürür.|LUSıS kullanarak sorgu amacını belirleme, ardından yönerge metnini görüntüleme ve bağlamı sıfırlama.|
@@ -105,9 +105,9 @@ Bu sohbet bot 'ta Özellik seçimi rasgeleleştirilmiştir. Gerçek bir bot 'ta,
 ### <a name="design-considerations-for-this-bot"></a>Bu bot için tasarım konuları
 
 Bu konuşmayı öğrenmek için birkaç uyarı vardır:
-* **Bot etkileşimi**: bir basit kullanım durumunda derecelendirme ve yeniden ödül gösteren konuşma çok basittir. Bu, bot Framework SDK 'sının veya öykünücüsünün tüm işlevlerini gösterir.
-* **Kişiselleştirici**: kullanım benzetimi için özellikler rastgele seçilir. Bir üretim kişiselleştirici senaryosunda özellikleri rastgele kullanmayın.
-* **Language Understanding (lusıs)**: lusıs modelinin birkaç örneği yalnızca bu örneğe yöneliktir. Üretim Ludo uygulamanızda daha az sayıda örnek kullanmayın.
+* **Bot etkileşimi** : bir basit kullanım durumunda derecelendirme ve yeniden ödül gösteren konuşma çok basittir. Bu, bot Framework SDK 'sının veya öykünücüsünün tüm işlevlerini gösterir.
+* **Kişiselleştirici** : kullanım benzetimi için özellikler rastgele seçilir. Bir üretim kişiselleştirici senaryosunda özellikleri rastgele kullanmayın.
+* **Language Understanding (lusıs)** : lusıs modelinin birkaç örneği yalnızca bu örneğe yöneliktir. Üretim Ludo uygulamanızda daha az sayıda örnek kullanmayın.
 
 
 ## <a name="install-required-software"></a>Gerekli yazılımları yükler
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 Bu sohbet bot 'ı kullanmak için, kişiselleştirici ve Language Understanding (LUU) için Azure kaynakları oluşturmanız gerekir.
 
-* [Lusıs kaynakları oluşturun](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal). Hem yazma hem de tahmin kaynaklarına ihtiyacınız olduğundan, oluşturma adımında **her ikisini de** seçin.
+* [Lusıs kaynakları oluşturun](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal). Hem yazma hem de tahmin kaynaklarına ihtiyacınız olduğundan, oluşturma adımında **her ikisini de** seçin.
 * Bir [kişiselleştirici kaynağı oluşturun](how-to-create-resource.md) ve sonra anahtarı ve uç noktayı Azure Portal kopyalayın. Bu değerleri `appsettings.json` .net projesinin dosyasında ayarlamanız gerekir.
 
 ### <a name="create-luis-app"></a>LUSıS uygulaması oluşturma
@@ -138,14 +138,14 @@ Bu sohbet bot 'ı kullanmak için, kişiselleştirici ve Language Understanding 
 LUO 'ya yeni giriş yaparsanız, [oturum açmanız](https://www.luis.ai) ve hesabınızı hemen geçirmeniz gerekir. Yeni kaynak oluşturmanız gerekmez, bunun yerine Bu öğreticinin önceki bölümünde oluşturduğunuz kaynakları seçin.
 
 1. Yeni bir Luo uygulaması oluşturmak için, [Luu portalında](https://www.luis.ai), aboneliğinizi ve yazma kaynağınızı seçin.
-1. Yine de aynı sayfada, **konuşma için + yeni uygulama**' yı seçin ve ardından **JSON olarak içeri aktarın**.
+1. Yine de aynı sayfada, **konuşma için + yeni uygulama** ' yı seçin ve ardından **JSON olarak içeri aktarın**.
 1. Açılır iletişim kutusunda **Dosya Seç** ' i seçin ve `/samples/ChatbotExample/CognitiveModels/coffeebot.json` dosyayı seçin. Adı girin `Personalizer Coffee bot` .
 1. LUı portalının sağ üst köşesindeki **eğitme** düğmesini seçin.
 1. Uygulamayı tahmin çalışma zamanı için **Üretim yuvasında** yayımlamak üzere **Yayımla** düğmesini seçin.
-1. **Yönet**' i ve ardından **Ayarlar**' ı seçin. **Uygulama kimliği**değerini kopyalayın. Bu değeri `appsettings.json` .net projesinin dosyasında ayarlamanız gerekir.
-1. Hala **Yönet** bölümünde **Azure kaynakları**' nı seçin. Bu, uygulamadaki ilişkili kaynakları görüntüler.
-1. **Tahmin kaynağı Ekle**' yi seçin. Açılır iletişim kutusunda, aboneliğinizi ve Bu öğreticinin önceki bir bölümünde oluşturulan tahmin kaynağını seçin ve **bitti**' yi seçin.
-1. **Birincil anahtar** ve **uç nokta URL 'si**değerlerini kopyalayın. Bu değerleri `appsettings.json` .net projesinin dosyasında ayarlamanız gerekir.
+1. **Yönet** ' i ve ardından **Ayarlar** ' ı seçin. **Uygulama kimliği** değerini kopyalayın. Bu değeri `appsettings.json` .net projesinin dosyasında ayarlamanız gerekir.
+1. Hala **Yönet** bölümünde **Azure kaynakları** ' nı seçin. Bu, uygulamadaki ilişkili kaynakları görüntüler.
+1. **Tahmin kaynağı Ekle** ' yi seçin. Açılır iletişim kutusunda, aboneliğinizi ve Bu öğreticinin önceki bir bölümünde oluşturulan tahmin kaynağını seçin ve **bitti** ' yi seçin.
+1. **Birincil anahtar** ve **uç nokta URL 'si** değerlerini kopyalayın. Bu değerleri `appsettings.json` .net projesinin dosyasında ayarlamanız gerekir.
 
 ### <a name="configure-bot-with-appsettingsjson-file"></a>Dosya üzerinde appsettings.jsbot 'ı yapılandırma
 
@@ -176,20 +176,20 @@ Web sitesini çalışır durumda tutun çünkü öğretici, bot 'ın ne yaptığ
 
 ## <a name="set-up-the-bot-emulator"></a>Bot öykünücüsünü ayarlama
 
-1. Bot Framework öykünücüsünü açın ve bot 'ı **Aç**' ı seçin.
+1. Bot Framework öykünücüsünü açın ve bot 'ı **Aç** ' ı seçin.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Sohbet Bot Web sitesini görüntüleyen tarayıcının ekran görüntüsü.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Bot öykünücüsü başlangıç ekranının ekran görüntüsü.":::
 
 
-1. Aşağıdaki **bot URL 'si** ile bot 'ı yapılandırın ve **Bağlan**'ı seçin:
+1. Aşağıdaki **bot URL 'si** ile bot 'ı yapılandırın ve **Bağlan** 'ı seçin:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Sohbet Bot Web sitesini görüntüleyen tarayıcının ekran görüntüsü.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Bot öykünücüsü açık bot ayarlarını ekran görüntüsü.":::
 
     Öykünücü, sohbet bot 'a bağlanır ve yerel geliştirme için yardımcı olan günlük ve hata ayıklama bilgileri ile birlikte yönerge metnini görüntüler.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Sohbet Bot Web sitesini görüntüleyen tarayıcının ekran görüntüsü.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="İlk konuşmayı açmak için bot öykünücüsünün ekran görüntüsü.":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Bot öykünücüsünde bot 'ı kullanma
 

@@ -6,22 +6,22 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 08/20/2019
+ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 767b5a6be9c9aaff1bfe82ebc46b3b9179e271e4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2aa589d237a8cfeb8e0dc947896dba82e755631c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736990"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564778"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için planlı bakım bildirimleri
 
 
 Azure, sanal makineler (VM) için konak altyapısının güvenilirliğini, performansını ve güvenliğini geliştirmek üzere düzenli aralıklarla güncelleştirmeler gerçekleştirir. Güncelleştirmeler, barındırma ortamına düzeltme eki uygulama veya donanım yükseltme ve yetkisini alma içerebilir. Çoğu güncelleştirme barındırılan VM 'Leri etkilemez. Ancak, güncelleştirmeler şu senaryolarda VM 'Leri etkiler:
 
-- Bakım için yeniden başlatma gerektirmiyorsa, Azure, konak güncelleştirilirken VM 'yi duraklatmak için yerinde geçiş kullanır. Yeniden başlatma gerektirmeyen bakım işlemleri hata etki alanı hata etki alanına göre uygulanır. Herhangi bir uyarı sistem durumu sinyali alındığında ilerleme durdurulur.
+- Bakım için yeniden başlatma gerekli değilse, Azure, ana bilgisayar güncelleştirilirken VM 'yi birkaç saniye duraklatır. Bu tür bakım işlemleri, hata etki alanına göre hata etki alanına göre uygulanır. Herhangi bir uyarı sistem durumu sinyali alındığında ilerleme durdurulur.
 
 - Bakım için yeniden başlatma gerekiyorsa, bakımın ne zaman planlandığına ilişkin bir uyarı alırsınız. Bu durumlarda, sizin için uygun olduğunda Bakımı kendiniz başlatabileceğiniz 35 gün olan bir zaman penceresi vermiş olursunuz.
 
@@ -72,7 +72,7 @@ Aşağıdaki durumlarda self servis bakımını kullanmak en iyisidir:
 
 Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşan bakım dalgasının etkilediği sanal makine ölçek kümelerinin listesini görüntüleyebilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve ardından **Sanal Makine Ölçek Kümeleri** ' ni seçin.
 3. **Sanal Makine Ölçek Kümeleri** altında, **Sütunları Düzenle** ' yi seçerek kullanılabilir sütunların listesini açın.
 4. **Kullanılabilir sütunlar** bölümünde **self servis bakımı** ' nı seçin ve ardından **Seçili sütunlar** listesine taşıyın. **Apply** (Uygula) seçeneğini belirleyin.  
@@ -91,7 +91,7 @@ Planlı bir bakım dalgası zamanlandığında, Azure portal kullanarak yaklaşa
 
 Azure, abonelik sahibine ve ortak sahipler grubuna bir e-posta göndererek planlı bakım için bir zamanlama iletişim kurar. Etkinlik günlüğü uyarıları oluşturarak bu iletişime alıcılar ve kanallar ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure etkinlik günlüğü ile abonelik izleme etkinliği](../azure-monitor/platform/platform-logs-overview.md).
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **izleyici** ' yi seçin. 
 3. **İzleyici-uyarılar (klasik)** bölmesinde **+ etkinlik günlüğü uyarısı Ekle** ' yi seçin.
 4. **Etkinlik günlüğü uyarısı Ekle** sayfasında istenen bilgileri seçin veya girin. **Ölçütlerde** aşağıdaki değerleri ayarladığınızdan emin olun:
@@ -185,7 +185,7 @@ Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sana
 
 **S: planlı bakım hakkında nasıl bildirim alabilir?**
 
-Y **:** Planlı bir bakım dalgası, bir veya daha fazla Azure bölgesine zamanlama ayarlayarak başlar. Yakında, abonelik sahiplerine bir e-posta bildirimi gönderilir (abonelik başına bir e-posta). Bu bildirim için, etkinlik günlüğü uyarılarını kullanarak kanal ve alıcı ekleyebilirsiniz. Bir VM 'yi planlanmış bakımın zaten zamanlandığı bir bölgeye dağıtırsanız, bildirimi almazsınız. Bunun yerine, VM 'nin bakım durumunu kontrol edin.
+Y **:** Planlı bir bakım dalgası, bir veya daha fazla Azure bölgesine zamanlama ayarlayarak başlar. Yakında, abonelik yöneticileri, ortak yöneticiler, sahipler ve katkıda bulunanlar (abonelik başına bir e-posta) ile bir e-posta bildirimi gönderilir. Bu bildirimin ek kanalları ve alıcıları, etkinlik günlüğü uyarıları kullanılarak yapılandırılabilir. Bir sanal makineyi planlı bakımın zaten zamanlandığı bir bölgeye dağıtırsanız, bildirimi almazsınız. Bunun yerine, VM 'nin bakım durumunu kontrol edin.
 
 **S: Portal, PowerShell veya CLı 'de planlı bakım hakkında herhangi bir gösterge görmüyorum. Ne oldu?**
 

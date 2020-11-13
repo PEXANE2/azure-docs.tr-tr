@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102332"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563741"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -127,7 +127,7 @@ Kullanıcı bir sanal ağ bağlantısını, bir VPN bağlantısını veya Expres
 
 Azure sanal WAN hub 'ları karma ağ genelinde tüm ağ uç noktalarını birbirine iletiyor ve tüm aktarım ağı trafiğini görebilir. Sanal WAN hub 'ları, bulut tabanlı güvenlik, erişim ve ilke denetimini etkinleştirmek için VWAN hub 'larına Azure Güvenlik Duvarı dağıtarak güvenli sanal hub 'lara dönüştürülebilir. Azure Güvenlik duvarlarını sanal WAN hub 'larda düzenleme, Azure Güvenlik Duvarı Yöneticisi tarafından gerçekleştirilebilir.
 
-[Azure Güvenlik Duvarı Yöneticisi](https://go.microsoft.com/fwlink/?linkid=2107683) , küresel aktarım ağları için güvenliği yönetme ve ölçeklendirme olanakları sağlar. Azure Güvenlik Duvarı Yöneticisi, Azure Güvenlik Duvarı ile birlikte yönlendirme, genel ilke yönetimi ve gelişmiş Internet güvenliği hizmetlerini üçüncü taraf aracılığıyla merkezi olarak yönetebilme olanağı sağlar.
+[Azure Güvenlik Duvarı Yöneticisi](../firewall-manager/index.yml) , küresel aktarım ağları için güvenliği yönetme ve ölçeklendirme olanakları sağlar. Azure Güvenlik Duvarı Yöneticisi, Azure Güvenlik Duvarı ile birlikte yönlendirme, genel ilke yönetimi ve gelişmiş Internet güvenliği hizmetlerini üçüncü taraf aracılığıyla merkezi olarak yönetebilme olanağı sağlar.
 
 ![Azure Güvenlik Duvarı ile güvenli sanal hub](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
@@ -177,4 +177,4 @@ Sanal WAN kullanarak bağlantı oluşturun ve Azure Güvenlik duvarını VWAN hu
 
 * [Sanal WAN kullanarak siteden siteye bağlantılar](virtual-wan-site-to-site-portal.md)
 * [Sanal WAN kullanarak ExpressRoute bağlantıları](virtual-wan-expressroute-portal.md)
-* [VWAN 'da Azure ILT dağıtmak için Azure Güvenlik Duvarı Yöneticisi](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [VWAN 'da Azure ILT dağıtmak için Azure Güvenlik Duvarı Yöneticisi](../firewall-manager/index.yml)

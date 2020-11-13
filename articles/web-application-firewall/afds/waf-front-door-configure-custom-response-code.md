@@ -8,28 +8,26 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fc6e71494df36cd6f823661b18e4a3d8ce2938c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005608"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563690"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web uygulaması güvenlik duvarı (WAF) için özel bir yanıt yapılandırma
 
-Varsayılan olarak, WAF eşleşen bir kural nedeniyle isteği engellediğinde, **istek engellendi** iletisiyle 403 durum kodu döndürür. Varsayılan ileti ayrıca, istek için [günlük girişlerine](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor) bağlantı sağlamak üzere kullanılabilecek izleme başvuru dizesini de içerir.  Özel bir yanıt durum kodu ve kullanım durumunuz için başvuru dizesine sahip özel bir ileti yapılandırabilirsiniz. Bu makalede, bir istek WAF tarafından engellendiğinde özel bir yanıt sayfasının nasıl yapılandırılacağı açıklanır.
+Varsayılan olarak, WAF eşleşen bir kural nedeniyle isteği engellediğinde, **istek engellendi** iletisiyle 403 durum kodu döndürür. Varsayılan ileti ayrıca, istek için [günlük girişlerine](./waf-front-door-monitor.md) bağlantı sağlamak üzere kullanılabilecek izleme başvuru dizesini de içerir.  Özel bir yanıt durum kodu ve kullanım durumunuz için başvuru dizesine sahip özel bir ileti yapılandırabilirsiniz. Bu makalede, bir istek WAF tarafından engellendiğinde özel bir yanıt sayfasının nasıl yapılandırılacağı açıklanır.
 
 ## <a name="configure-custom-response-status-code-and-message-use-portal"></a>Özel yanıt durum kodu ve ileti kullanım portalını yapılandırma
 
 WAF portalından "Ilke ayarları" altında özel yanıt durum kodunu ve gövdesini yapılandırabilirsiniz.
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF Ilke ayarları&quot;:::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF Ilke ayarları":::
 
-Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntüde gösterildiği gibi kısa bir &quot;lütfen bize başvurun" iletisi yapılandırdınız:
+Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntüde gösterildiği gibi kısa bir "lütfen bize başvurun" iletisi yapılandırdınız:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="WAF Ilke ayarları&quot;:::
-
-Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntüde gösterildiği gibi kısa bir &quot;lütfen bize başvurun":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Özel yanıt örneği":::
 
 "{{Azure-ref}}", yanıt gövdesine benzersiz başvuru dizesi ekler. Değer, ve günlüklerindeki TrackingReference alanıyla eşleşir `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` .
 
@@ -37,9 +35,9 @@ Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntü
 
 ### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
 
-Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
+Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](../../azure-resource-manager/management/overview.md) modelini kullanan bir dizi cmdlet sunar. 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
+[Azure PowerShell](/powershell/azure/)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli iletişim kutusuyla Azure 'a bağlanma
 

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 229c1d2aaab6029ccec3f8831f42a7ce8de2e31e
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555490"
+ms.locfileid: "94565917"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -103,3 +103,4 @@ Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki öne
   + [& modellerini eğitmek için bir işlem örneğinde Jupyıter not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
   + [& dağıtım modellerini eğitme için otomatik makine öğrenimi kullanma](tutorial-first-experiment-automated-ml.md)  
   + [& modellerini eğitmek için tasarımcıyı kullanma](tutorial-designer-automobile-price-train-score.md)
+  + [Güvenli bir sanal ağda Studio 'yu kullanma](how-to-enable-studio-virtual-network.md)

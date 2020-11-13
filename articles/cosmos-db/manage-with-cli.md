@@ -7,21 +7,21 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: e4b112b93a552ff62b08c102e710cd914265ba5c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b13f5bfffced9afd80663d606e30e028e52643ac
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339334"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563847"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos Core (SQL) API kaynaklarını yönetme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve kapsayıcılarınızı yönetme işleminin Azure CLI kullanılarak otomatikleştirilmesini sağlayan yaygın komutlar açıklanır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Ayrıca, MongoDB, Gremlin, Cassandra ve Tablo API'si için Cosmos DB hesapları, veritabanları ve kapsayıcıları oluşturma ve yönetme dahil olmak üzere [Azure Cosmos DB Için Azure CLI örneklerinde](cli-samples.md)daha fazla örnek bulabilirsiniz.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.12.1 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+- Bu makale, Azure CLı 'nin sürüm 2.12.1 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 Diğer API 'Ler için Azure CLı örnekleri için bkz. [Cassandra Için CLI örnekleri](cli-samples-cassandra.md), [MONGODB API için](cli-samples-mongodb.md)CLI örnekleri, [Gremlin için](cli-samples-gremlin.md)CLI örnekleri, [tablo için CLI](cli-samples-table.md) örnekleri
 
@@ -546,6 +546,6 @@ az lock delete --ids $lockid
 
 Azure CLı hakkında daha fazla bilgi için bkz.
 
-* [Azure CLı 'yı yükler](/cli/azure/install-azure-cli)
+* [Azure CLI'yı yükleme](/cli/azure/install-azure-cli)
 * [Azure CLı başvurusu](/cli/azure/cosmosdb)
 * [Azure Cosmos DB için ek Azure CLı örnekleri](cli-samples.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 6ab3e1e063409832de839da26eba80efd8b3f4d5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344825"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565747"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Özel komutlar uygulamasını uzak bir yetenek olarak dışarı aktar
 
@@ -35,7 +35,7 @@ Bu makalede, özel bir komut uygulamasını uzak bir yetenek olarak dışarı ak
 ## <a name="configure-an-application-to-be-exposed-as-a-remote-skill"></a>Bir uygulamayı uzak bir yetenek olarak sunulacak şekilde yapılandırma
 
 ### <a name="application-level-settings"></a>Uygulama düzeyi ayarları
-1. Sol bölmede **Ayarlar**  >  **uzak beceriler**' ı seçin.
+1. Sol bölmede **Ayarlar**  >  **uzak beceriler** ' ı seçin.
 1. **Uzaktan becerileri etkin yap özelliği** açık olarak ayarlayın.
 
 ### <a name="authentication-to-skills"></a>Becerilerle kimlik doğrulaması
@@ -51,9 +51,9 @@ Bu makalede, özel bir komut uygulamasını uzak bir yetenek olarak dışarı ak
 
 Uzak yetenekler üzerinden hangi komutları dışarı aktarmak istediğinizi seçebilirsiniz.
 
-1. Bir komutu yetenekler üzerinde göstermek için **yetenekler Için etkinleştir komutlarının**altında **Yeni bir komutu etkinleştir** ' i seçin.
+1. Bir komutu yetenekler üzerinde göstermek için **yetenekler Için etkinleştir komutlarının** altında **Yeni bir komutu etkinleştir** ' i seçin.
 1. Açılan menüden, eklemeyi düşündüğünüz komutu seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 ### <a name="configure-triggering-utterances-for-commands"></a>Komutlar için tetikleme tetiklemesini yapılandırma
 Özel komutlar, SÖYLERE tetikleme becerileri oluşturmak için komutlar için yapılandırılan örnek cümleleri kullanır. Bu **tetikleme tetiklenmesi** , **dağıtıcı** bölümü [**yetenek bildirimini**](https://microsoft.github.io/botframework-solutions/skills/handbook/manifest/)oluşturmak için kullanılacaktır.
@@ -64,11 +64,11 @@ Yazar olarak, becerilerin tetiklenmesi için kullanılan **örnek cümlelerinizi
     > [!div class="mx-imgBorder"]
     > ![Yetenek için etkin bir komutu düzenleme](media/custom-commands/skill-edit-enabled-command.png)
 
-1. Ardından, atlamak istediğiniz örnek cümlelerde **right click**  >  **örnek tümceyi devre dışı bırak**' a sağ tıklayın.
+1. Ardından, atlamak istediğiniz örnek cümlelerde **right click**  >  **örnek tümceyi devre dışı bırak** ' a sağ tıklayın.
     > [!div class="mx-imgBorder"]
     > ![Örnekleri devre dışı bırak](media/custom-commands/skill-disable-example-sentences.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 1. Bu pencerede yeni bir örnek ekleyemiyorum fark edeceksiniz. Bunu yapmanız gereken bir sorun varsa, ayarlar bölümünden çık bölümüne ilerleyin ve Accordion **komutlarından** ilgili komutu seçin. Bu noktada, **örnek cümleler** bölümüne yeni giriş ekleyebilirsiniz. Bu değişiklik, komut için uzak beceriler ayarları değerine otomatik olarak yansıtılır.
 
 > [!IMPORTANT]
@@ -82,10 +82,10 @@ Yazar olarak, becerilerin tetiklenmesi için kullanılan **örnek cümlelerinizi
 > Ayrıca, uygulamada **herhangi bir değişiklik** yaptıysanız, en son değişikliklerin bildirim dosyasına yansıtılması için uygulamayı yeniden yayımlamanız gerekir.
 
 > [!NOTE]
-> Uygulamayı yayımlama ile ilgili herhangi bir sorun yaşıyorsanız ve hata, bu becerilerin tetiklenmesine yönelik olarak yeniden yönlendirirse, **beceriler Için etkin komutlar**için yapılandırmayı yeniden kontrol edin. Sunulma komutlarının her birinde en az bir adet geçerli tetikleme olması gerekir.
+> Uygulamayı yayımlama ile ilgili herhangi bir sorun yaşıyorsanız ve hata, bu becerilerin tetiklenmesine yönelik olarak yeniden yönlendirirse, **beceriler Için etkin komutlar** için yapılandırmayı yeniden kontrol edin. Sunulma komutlarının her birinde en az bir adet geçerli tetikleme olması gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özel Komutlar uygulamanız için CI/CD sürecini etkinleştirme](./how-to-custom-commands-deploy-cicd.md)
+> [İstemciden bir komut güncelleştirme](./how-to-custom-commands-update-command-from-client.md)

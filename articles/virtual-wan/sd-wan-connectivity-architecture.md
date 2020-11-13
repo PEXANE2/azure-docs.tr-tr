@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828078"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564710"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-Azure sanal WAN ile WAN bağlantısı mimarisi
 
@@ -44,9 +44,9 @@ Sanal WAN ile kullanıcılar Azure yol seçimini alabilir ve bu, CPE 'ten sanal 
 
 ## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>NVA-ın-VWAN-hub ile doğrudan Interconnect modeli
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Doğrudan Interconnect modeli":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="NVA-ın-VWAN-hub ile doğrudan Interconnect modeli":::
 
-Bu mimari modeli, bir üçüncü taraf ağ sanal gerecinin [(NVA) doğrudan sanal hub 'a](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub)dağıtılmasını destekler. Bu, şubelerlerini sanal hub 'daki aynı marka NVA 'ya bağlamak isteyen müşterilerin, Azure iş yüklerine bağlanırken özel uçtan uca SD-WAN özelliğinden yararlanabilmelerini sağlar. 
+Bu mimari modeli, bir üçüncü taraf ağ sanal gerecinin [(NVA) doğrudan sanal hub 'a](./about-nva-hub.md)dağıtılmasını destekler. Bu, şubelerlerini sanal hub 'daki aynı marka NVA 'ya bağlamak isteyen müşterilerin, Azure iş yüklerine bağlanırken özel uçtan uca SD-WAN özelliğinden yararlanabilmelerini sağlar. 
 
 Çeşitli sanal WAN Iş ortakları, dağıtım sürecinin bir parçası olarak NVA 'yı otomatik olarak yapılandıran bir deneyim sağlamaya çalıştı. NVA sanal hub 'a sağlandıktan sonra, NVA için gerekli olabilecek ek yapılandırma NVA iş ortakları portalı veya yönetim uygulaması aracılığıyla yapılmalıdır. NVA 'ya doğrudan erişim kullanılamıyor. Doğrudan Azure sanal WAN hub 'ına dağıtılabilecek olan NVA 'lar, özellikle sanal hub 'da kullanılmak üzere tasarlanmıştır. VWAN hub 'ında NVA 'yı ve dağıtım kılavuzlarını destekleyen iş ortakları için lütfen [sanal WAN Iş ortakları](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) makalesine bakın.
 
@@ -55,7 +55,7 @@ Bu modelde, sanal WAN bağlantısı hub 'da SD-WAN NVA aracılığıyla olduğun
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Dolaylı Interconnect modeli
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Doğrudan Interconnect modeli":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Dolaylı Interconnect modeli":::
 
 Bu mimari modelinde SD-WAN dalı CPEs, sanal WAN hub 'larına dolaylı olarak bağlanır. Şekilde gösterildiği gibi, bir SD-WAN sanal CPE, bir kurumsal VNet 'te dağıtılır. Bu sanal CPE, IPSec kullanılarak sanal WAN hub 'ına bağlanır. Sanal CPE, Azure 'da SD-WAN ağ geçidi olarak görev yapar. Azure 'da iş yüklerine erişmesi gereken dallar, bu sanal ağ geçidi aracılığıyla bunlara erişebilecek.
 
@@ -63,7 +63,7 @@ Azure 'a yönelik bağlantı, v-CPE ağ geçidi (NVA) ile oluşturulduğundan, A
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>Yönetilen karma WAN modeli
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Doğrudan Interconnect modeli":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Yönetilen karma WAN modeli":::
 
 Bu mimari modelinde, kuruluşlar yönetilen hizmet sağlayıcısı (MSP) iş ortağı tarafından sunulan yönetilen bir SD-WAN hizmetinden faydalanabilir. Bu model, yukarıda açıklanan doğrudan veya dolaylı modellerle benzerdir. Ancak, bu modelde SD-WAN tasarımı, düzenleme ve işlemler SD-WAN sağlayıcısı tarafından dağıtılır.
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7c6640b6634a017819735b9d0f7b906f8dc91d0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075435"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565883"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLı kullanarak Azure Güvenlik Duvarı dağıtma ve yapılandırma
 
@@ -28,8 +28,8 @@ Ağ trafiğinizi güvenlik duvarından alt ağın varsayılan ağ geçidi olarak
 Bu makalede, kolay dağıtım için üç alt ağa sahip Basitleştirilmiş tek bir sanal ağ oluşturacaksınız. Üretim dağıtımları için bir [hub ve bağlı bileşen modeli](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) önerilir. Güvenlik duvarı kendi sanal ağı 'nda. İş yükü sunucuları, bir veya daha fazla alt ağ ile aynı bölgedeki eşlenmiş VNET 'lerde bulunur.
 
 * **AzureFirewallSubnet** - güvenlik duvarı bu alt ağdadır.
-* **Workload-SN**: İş yükü sunucusu bu alt ağda yer alır. Bu alt ağın ağ trafiği güvenlik duvarından geçer.
-* **Jump-SN**: "Atlama" sunucusu bu alt ağda yer alır. Atlama sunucusu, Uzak Masaüstü ile bağlanabileceğiniz genel IP adresine sahiptir. Buradan iş yükü sunucusuna bağlanabilirsiniz (başka bir Uzak Masaüstü oturumuyla).
+* **Workload-SN** : İş yükü sunucusu bu alt ağda yer alır. Bu alt ağın ağ trafiği güvenlik duvarından geçer.
+* **Jump-SN** : "Atlama" sunucusu bu alt ağda yer alır. Atlama sunucusu, Uzak Masaüstü ile bağlanabileceğiniz genel IP adresine sahiptir. Buradan iş yükü sunucusuna bağlanabilirsiniz (başka bir Uzak Masaüstü oturumuyla).
 
 ![Öğretici ağı altyapısı](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
@@ -44,22 +44,11 @@ Bu makalede şunları öğreneceksiniz:
 
 İsterseniz, [Azure Portal](tutorial-firewall-deploy-portal.md) veya [Azure PowerShell](deploy-ps.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
-
-### <a name="azure-cli"></a>Azure CLI
-
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLı sürüm 2.0.4 veya üstünü çalıştırın. Sürümü bulmak için **az--Version**çalıştırın. Yükleme veya yükseltme hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yükleme]( /cli/azure/install-azure-cli).
-
-Azure Güvenlik Duvarı uzantısını yükler:
-
-```azurecli-interactive
-az extension add -n azure-firewall
-```
-
+- Bu makale, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="set-up-the-network"></a>Ağı ayarlama
 
@@ -264,7 +253,7 @@ az network firewall network-rule create \
 
 1. Uzak bir masaüstünü **SRV-atma** sanal makinesine bağlayın ve oturum açın. Buradan, **SRV iş** özel IP adresine bir Uzak Masaüstü bağlantısı açın ve oturum açın.
 
-3. **SRV-iş**sayfasında bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın:
+3. **SRV-iş** sayfasında bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın:
 
    ```
    nslookup www.google.com

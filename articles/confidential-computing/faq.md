@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848917"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564115"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure gizli bilgi Işlem için sık sorulan sorular
 
@@ -32,14 +32,14 @@ Bir DCsv2 VM dağıtımı için bazı yollar şunlardır:
 
 **Tüm işletim sistemi görüntüleri Azure gizli bilgi işlem ile çalışacak mı?**
 
-Hayır. Sanal makineler yalnızca Ubuntu Server 18,04, Ubuntu Server 16,04, Windows Server 2019 Datacenter ve Windows Server 2016 Datacenter ile 2. nesil işletim makinelerine dağıtılabilir. [Linux](../virtual-machines/linux/generation-2.md) ve [Windows](../virtual-machines/windows/generation-2.md) üzerinde gen 2 VM 'ler hakkında daha fazla bilgi edinin
+Hayır. Sanal makineler yalnızca Ubuntu Server 18,04, Ubuntu Server 16,04, Windows Server 2019 Datacenter ve Windows Server 2016 Datacenter ile 2. nesil işletim makinelerine dağıtılabilir. [Linux](../virtual-machines/generation-2.md) ve [Windows](../virtual-machines/generation-2.md) üzerinde gen 2 VM 'ler hakkında daha fazla bilgi edinin
 
 **DCsv2 sanal makineler portalda gri renkte bulunur ve bir tane seçemiyorum**
 
 VM 'nin yanındaki bilgi kabarcığa göre gerçekleştirilecek farklı eylemler vardır:
-   -    **Unsupportedgeneration**: sanal makine görüntüsünün neslini "Gen2" olarak değiştirin.
-   -    **NotAvailableForSubscription**: bölge, aboneliğiniz için henüz kullanılamıyor. Kullanılabilir bir bölge seçin.
-   -    **InsufficientQuota**: [kotayı artırmak için bir destek isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
+   -    **Unsupportedgeneration** : sanal makine görüntüsünün neslini "Gen2" olarak değiştirin.
+   -    **NotAvailableForSubscription** : bölge, aboneliğiniz için henüz kullanılamıyor. Kullanılabilir bir bölge seçin.
+   -    **InsufficientQuota** : [kotayı artırmak için bir destek isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
 
 **DCsv2 sanal makineler, Portal boyut Seçicisi 'nde arama yapmayı denediğimde gösterilmez**
 

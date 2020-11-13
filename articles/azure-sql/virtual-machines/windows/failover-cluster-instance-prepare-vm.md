@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 901c090d26959950d0ffd6a96253bdc36c9331c5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556344"
+ms.locfileid: "94564489"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Bir FCı için sanal makineleri hazırlama (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ Amaçlanan küme yapılandırmanızla eşleşen VM kullanılabilirlik seçeneği
 
 VM kullanılabilirliğini yapılandırdıktan sonra, sanal makinelerinizi oluşturmaya hazırsınız demektir. Üzerinde SQL Server zaten yüklü olmayan veya olmayan bir Azure Marketi görüntüsü kullanmayı seçebilirsiniz. Ancak, Azure VM 'lerinde SQL Server için bir görüntü seçerseniz, yük devretme kümesi örneğini yapılandırmadan önce sanal makineden SQL Server kaldırmanız gerekir. 
 
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
+Azure IaaS VM konuk yük devretme kümesinde sunucu başına (küme düğümü) tek bir NIC ve tek bir alt ağ kullanılması önerilir. Azure ağ iletişimi, Azure IaaS VM Konuk kümesinde ek NIC 'Lerin ve alt ağların gereksiz olmasını sağlayan fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağ üzerinde erişilebilir durumda olduğuna dair bir uyarı gösterse de bu uyarı Azure IaaS VM konuk yük devretme kümelerinde güvenli bir şekilde yoksayılabilir.
 
 Her iki sanal makineyi de Yerleştir:
 

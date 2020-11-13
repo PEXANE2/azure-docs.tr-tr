@@ -6,12 +6,12 @@ author: agowdamsft
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 90b74e51dce994c3041c15feec729ff1fae2bb00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91001074"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564166"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>SGX quote yardımcı Daemon kümesi ile platform yazılım yönetimi
 
@@ -20,9 +20,9 @@ Uzaktan kanıtlama gerçekleştiren [uygulamalar](confidential-computing-enclave
 ## <a name="overview"></a>Genel Bakış
  
 Intel, teklif üretimini çalıştırmak için iki kanıtlama modunu destekler:
-- işlem **içi**: şifreleme uygulama işleminin içinde güvenilir yazılım bileşenlerini barındırır
+- işlem **içi** : şifreleme uygulama işleminin içinde güvenilir yazılım bileşenlerini barındırır
 
-- **proc dışı**: güvenilir yazılım bileşenlerini, şifreleme uygulamasının dışında barındırır.
+- **proc dışı** : güvenilir yazılım bileşenlerini, şifreleme uygulamasının dışında barındırır.
  
 Open Enclave SDK kullanılarak oluşturulan SGX uygulamaları varsayılan olarak proc kanıtlama modunu kullanır. SGX tabanlı uygulamalar işlem dışı çalışmasına izin verir ve daha fazla barındırma gerektirir ve mimari şifreleme Service Manager (AESD) gibi gerekli bileşenleri uygulamanın dışında kullanıma sunacaktı.
 
@@ -126,10 +126,10 @@ spec:
 
 [Hızlı başlangıç örnekleri gizli kapsayıcıları](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU listesi](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[DCsv2 SKU listesi](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

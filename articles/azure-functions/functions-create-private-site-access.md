@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 38bc0ec546526cd0c6631b7cd5b70753c3235d18
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423037"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563996"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Öğretici: Azure Işlevleri özel site erişimi oluşturma
 
@@ -67,7 +67,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     | _Abonelik_ | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. |
     | [_Kaynak grubu_](../azure-resource-manager/management/overview.md) | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  Aynı kaynak grubunu kullanmak, bu öğreticiyi tamamladığınızda kaynakları temizlemeyi kolaylaştırır. |
     | _Sanal makine adı_ | myVM | VM adının kaynak grubunda benzersiz olması gerekir |
-    | [_Region_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
+    | [_Geli_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
     | _Genel gelen bağlantı noktaları_ | Hiçbiri | İnternet 'ten sanal makineye gelen bağlantı olmadığından emin olmak için **hiçbiri** ' ni seçin. SANAL makineye uzaktan erişim, Azure savunma hizmeti aracılığıyla yapılandırılır. |
 
 1. Yeni bir sanal ağ yapılandırmak için _ağ_ sekmesini seçin ve **Yeni oluştur** ' u seçin.
@@ -172,7 +172,7 @@ Bir sonraki adım, yalnızca sanal ağ üzerindeki kaynakların işlevi çağır
 1. _Erişim kısıtlamaları_ sayfası artık yeni bir kısıtlama olduğunu gösterir. _Bitiş noktası durumunun_ , sağlama özelliği etkin olarak devre dışı olarak değiştirilmesi birkaç saniye sürebilir.
 
     >[!IMPORTANT]
-    > Her işlev uygulaması, işlev uygulaması dağıtımlarını yönetmek için kullanılan bir [Gelişmiş araç (kudu) sitesine](../app-service/app-service-ip-restrictions.md#scm-site) sahiptir. Bu siteye şu şekilde bir URL 'den erişilir: `<FUNCTION_APP_NAME>.scm.azurewebsites.net` . Kudu sitesinde erişim kısıtlamalarını etkinleştirmek, proje kodunun yerel bir geliştirici iş istasyonundan dağıtılmasını önler ve sonra dağıtımı gerçekleştirmek için sanal ağ içinde bir aracı gerekir.
+    > Her işlev uygulaması, işlev uygulaması dağıtımlarını yönetmek için kullanılan bir [Gelişmiş araç (kudu) sitesine](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site) sahiptir. Bu siteye şu şekilde bir URL 'den erişilir: `<FUNCTION_APP_NAME>.scm.azurewebsites.net` . Kudu sitesinde erişim kısıtlamalarını etkinleştirmek, proje kodunun yerel bir geliştirici iş istasyonundan dağıtılmasını önler ve sonra dağıtımı gerçekleştirmek için sanal ağ içinde bir aracı gerekir.
 
 ## <a name="access-the-functions-app"></a>İşlevler uygulamasına erişme
 

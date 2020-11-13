@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: e459f654aa6824bc13b880f042d168b5b7cbafc0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cdd886bfcfb02aa46e440d2574b241f9b1cf3134
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368426"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564149"
 ---
 # <a name="enclave-aware-containers"></a>Şifreleme kullanan kapsayıcılar
 
@@ -61,9 +61,9 @@ Edgeless RT, açık bir Kuşve SDK 'Yı oluşturan açık kaynaklı bir projem. 
 [AKS üzerinde şifreleme kullanan kapsayıcılar için Azure örnekleri](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
 <!-- LINKS - external -->
-[Azure kanıtlama](../attestation/overview.md)
+[Azure Doğrulama](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[DC sanal makinesi](/azure/confidential-computing/virtual-machine-solutions) 
- [Gizli kapsayıcılar](/azure/confidential-computing/confidential-containers)
+[DC sanal makinesi](./virtual-machine-solutions.md) 
+ [Gizli kapsayıcılar](./confidential-containers.md)

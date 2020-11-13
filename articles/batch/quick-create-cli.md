@@ -4,12 +4,12 @@ description: Bir Batch hesabı oluşturmayı ve Azure CLı ile Batch işi çalı
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb5bb4a627ff26250519651f5e6d47ddd6f5a776
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213107"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562313"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Hızlı başlangıç: Azure CLI ile ilk Batch işinizi çalıştırma
 
@@ -17,13 +17,11 @@ Batch hesabı, bir işlem düğümleri Havuzu (sanal makineler) ve havuzdaki gö
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.20 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- Bu hızlı başlangıç, Azure CLı 'nin sürüm 2.0.20 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -53,7 +51,7 @@ az storage account create \
 
 [az batch account create](/cli/azure/batch/account#az-batch-account-create) komutuyla bir Batch hesabı oluşturun. İşlem kaynakları (işlem düğümleri havuzları) ve Batch işleri oluşturmak için bir hesaba sahip olmanız gerekir.
 
-Aşağıdaki örnek, *Quickstartbatch-RG*içinde *mybatchaccount* adlı bir Batch hesabı oluşturur ve oluşturduğunuz depolama hesabını bağlar.  
+Aşağıdaki örnek, *Quickstartbatch-RG* içinde *mybatchaccount* adlı bir Batch hesabı oluşturur ve oluşturduğunuz depolama hesabını bağlar.  
 
 ```azurecli-interactive
 az batch account create \
@@ -93,7 +91,7 @@ az batch pool show --pool-id mypool \
 
 Havuzun durumu değişirken iş ve görevleri oluşturmak için aşağıdaki adımlarla devam edin. Ayırma durumu `steady` olduğunda ve düğümler çalıştığında havuz tamamen görev çalıştırmaya hazır olur.
 
-## <a name="create-a-job"></a>Bir iş oluşturma
+## <a name="create-a-job"></a>İş oluşturma
 
 Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. Batch işi bir veya daha fazla görevin mantıksal grubudur. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. [az toplu işlem işi oluşturma](/cli/azure/batch/job#az-batch-job-create) komutunu kullanarak Batch işi oluşturma. Aşağıdaki örnek, *mypool* havuzunda *myjob* adlı işi oluşturur. Başlangıçta iş hiçbir görev içermez.
 
@@ -107,7 +105,7 @@ az batch job create \
 
 Şimdi ise [az batch task create](/cli/azure/batch/task#az-batch-task-create) komutunu kullanarak işin içinde çalıştırılacak bazı görevler oluşturun. Bu örnekte, dört türdeş görev oluşturursunuz. Her görev, bir işlem düğümündeki Batch ortam değişkenlerini görüntülemek için bir `command-line` çalıştırır ve 90 saniye bekler. Batch kullandığınızda bu komut satırı, uygulamanızı veya betiğinizi belirttiğiniz yerdir. Batch, işlem düğümlerine uygulama ve betik dağıtmanın birkaç yolunu sağlar.
 
-Aşağıdaki Bash betiği, 4 paralel görev (*mytask1* ile *mytask4* arasında) oluşturur.
+Aşağıdaki Bash betiği, 4 paralel görev ( *mytask1* ile *mytask4* arasında) oluşturur.
 
 ```azurecli-interactive
 for i in {1..4}

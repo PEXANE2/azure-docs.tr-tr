@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367565"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565798"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
 
@@ -24,7 +24,7 @@ ms.locfileid: "94367565"
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
 > Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
-Özel bir arama örneği, arama deneyimini yalnızca kullanıcılarınızın ilgilenme Web sitelerinden içerik içerecek şekilde uyarlamanızı sağlar. Bing, web genelinde bir arama gerçekleştirmek yerine yalnızca sizi ilgilendiren Web Slice 'ları arar. Size özel web görünümünü oluşturmak için Bing Özel Arama [portalını](https://customsearch.ai) kullanın.
+Özel bir arama örneği, arama deneyimini yalnızca kullanıcılarınızın ilgilenme Web sitelerinden içerik içerecek şekilde uyarlamanızı sağlar. Bing, web genelinde bir arama gerçekleştirmek yerine yalnızca sizi ilgilendiren Web Slice 'ları arar. Size özel web görünümünü oluşturmak için Bing Özel Arama [portalını](https://www.customsearch.ai) kullanın.
 
 Portal, Web 'in (etki alanları, alt sayfalar ve Web sayfaları), Bing 'in aramasını ve aramasını istemediğiniz olanları belirten bir arama örneği oluşturmanızı sağlar. Portal, dahil etmek isteyebileceğiniz içerikleri de önerebilir.
 

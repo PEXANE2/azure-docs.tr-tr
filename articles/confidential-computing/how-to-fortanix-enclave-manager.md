@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2c266d31a3aacc5bc97434de2246bfb1285a1ee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462437"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565713"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Nasıl yapılır: Fortanx Enclave Manager ile uygulama çalıştırma 
 
@@ -60,39 +60,39 @@ Bu öğreticide, uygulama görüntünüzü gizli işlem korumalı bir görüntü
 
 6. Bu öğreticide, örnek uygulama için Fortanx ' in Docker kayıt defterini kullanacağız. Aşağıdaki bilgilerden ayrıntıları girin. Çıkış görüntüsünü tutmak için özel Docker kayıt defterinizi kullanın. 
  
-    - **Uygulama adı**: Python uygulama sunucusu
-    - **Açıklama**: Python Flask sunucusu
-    - **Giriş resmi adı**: fortanx/Python-Flask
-    - **Çıkış görüntüsü adı**: fortanx-Private/Python-Flask-SGX
-    - **ISVPRODID**: 1
-    - **Ivsvm**: 1
-    - **Bellek boyutu**: 1 GB
-    - **Iş parçacığı sayısı**: 128
+    - **Uygulama adı** : Python uygulama sunucusu
+    - **Açıklama** : Python Flask sunucusu
+    - **Giriş resmi adı** : fortanx/Python-Flask
+    - **Çıkış görüntüsü adı** : fortanx-Private/Python-Flask-SGX
+    - **ISVPRODID** : 1
+    - **Ivsvm** : 1
+    - **Bellek boyutu** : 1 GB
+    - **Iş parçacığı sayısı** : 128
 
-    *Isteğe bağlı*: uygulamayı çalıştırın.
-    - **Docker Hub**: [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
-    - **Uygulama**: fortanix/Python-Flask
+    *Isteğe bağlı* : uygulamayı çalıştırın.
+    - **Docker Hub** : [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
+    - **Uygulama** : fortanix/Python-Flask
 
         Şu komutu çalıştırın:
          ```bash
             sudo docker run fortanix/python-flask
          ```
 
-1. Sertifika ekleyin. Aşağıdaki ayrıntıları kullanarak bilgileri girin ve ardından **İleri**' yi seçin:
-    - **Etki alanı**: MyApp. domain. Dom
-    - **Tür**: sertifika veren yönetici tarafından verilen sertifika 
-    - **Anahtar yolu**:/appkey.exe
-    - **Anahtar türü**: RSA
-    - **Sertifika yolu**:/appcert.exe
-    - **RSA anahtar boyutu**: 2048 bit
+1. Sertifika ekleyin. Aşağıdaki ayrıntıları kullanarak bilgileri girin ve ardından **İleri** ' yi seçin:
+    - **Etki alanı** : MyApp. domain. Dom
+    - **Tür** : sertifika veren yönetici tarafından verilen sertifika 
+    - **Anahtar yolu** :/appkey.exe
+    - **Anahtar türü** : RSA
+    - **Sertifika yolu** :/appcert.exe
+    - **RSA anahtar boyutu** : 2048 bit
     
 
 ## <a name="create-an-image"></a>Görüntü oluşturma
 Bir Fortanx EM görüntüsü, bir uygulamanın yazılım sürümüdür veya sürümüdür. Her görüntü, bir şifreleme karması (MRENCLAVE) ile ilişkilendirilir. 
-1. **Görüntü ekle** sayfasında, **Çıkış görüntüsü adı**IÇIN **kayıt defteri kimlik bilgilerini** girin. Bu kimlik bilgileri, görüntünün gönderildiği özel Docker kayıt defterine erişmek için kullanılır. 
+1. **Görüntü ekle** sayfasında, **Çıkış görüntüsü adı** IÇIN **kayıt defteri kimlik bilgilerini** girin. Bu kimlik bilgileri, görüntünün gönderildiği özel Docker kayıt defterine erişmek için kullanılır. 
 
     ![görüntü oluştur](media/how-to-fortanix-enclave-manager/create-image.png)
-1. Resim etiketini girip **Oluştur**' u seçin.
+1. Resim etiketini girip **Oluştur** ' u seçin.
 
     ![etiket ekle](media/how-to-fortanix-enclave-manager/add-tag.png)
 
@@ -113,14 +113,14 @@ Fortanx Enclave Manager 'da bir belirteç oluşturacaksınız. Bu belirteç, Azu
 Bir Fortanx düğüm Aracısı oluşturmak, Azure Kaynak grubunuza bir sanal makine, ağ arabirimi, sanal ağ, ağ güvenlik grubu ve genel IP adresi dağıtır. Azure aboneliğiniz, sanal makine için saatlik olarak faturalandırılır. Bir Fortanx düğüm Aracısı oluşturmadan önce DCsv2 serisi için Azure [sanal makine fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) gözden geçirin. Kullanımda olmadığında Azure kaynaklarını silin. 
 
 1. [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/) ' ne gidin ve Azure kimlik bilgilerinizle oturum açın.
-1. Arama çubuğuna **Fortanix gizli bilgi Işlem düğüm Aracısı**yazın. Teklifin giriş sayfasına gitmek için **Fortanix gizli bilgi Işlem düğüm Aracısı** adlı arama kutusunda görünen uygulamayı seçin. 
+1. Arama çubuğuna **Fortanix gizli bilgi Işlem düğüm Aracısı** yazın. Teklifin giriş sayfasına gitmek için **Fortanix gizli bilgi Işlem düğüm Aracısı** adlı arama kutusunda görünen uygulamayı seçin. 
      ![Market 'te ara](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
-1. **Şimdi al**' ı seçin, gerekirse bilgilerinizi girin ve **devam**' ı seçin. Azure portal yönlendirilirsiniz. 
+1. **Şimdi al** ' ı seçin, gerekirse bilgilerinizi girin ve **devam** ' ı seçin. Azure portal yönlendirilirsiniz. 
 1. Fortanix gizli bilgi Işlem düğüm Aracısı dağıtım sayfasını girmek için **Oluştur** ' u seçin.
 1. Bu sayfada, bir sanal makineyi dağıtmak için bilgi girersiniz. Özellikle, bu VM, Azure 'dan Fortanx düğüm Aracısı yazılımının yüklü olduğu DCsv2-Series Intel SGX özellikli bir sanal makinedir. Düğüm Aracısı, dönüştürülmüş resminizin Azure 'da Intel SGX düğümlerinde güvenli şekilde çalışmasına izin verir.  Sanal makineyi ve ilişkili kaynakları dağıtmak istediğiniz **aboneliği** ve **kaynak grubunu** seçin. 
  
     > [!NOTE]
-    > Azure 'da DCsv2-Series sanal makineler dağıtımı sırasında kısıtlamalar vardır. Ek çekirdek için kota istemeniz gerekebilir. Daha fazla bilgi için [Azure VM 'lerinde gizli bilgi işlem çözümleri](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) hakkında bilgi edinin. 
+    > Azure 'da DCsv2-Series sanal makineler dağıtımı sırasında kısıtlamalar vardır. Ek çekirdek için kota istemeniz gerekebilir. Daha fazla bilgi için [Azure VM 'lerinde gizli bilgi işlem çözümleri](./virtual-machine-solutions.md) hakkında bilgi edinin. 
 
 1. Kullanılabilir bir bölge seçin.
 1. **Düğüm adı** alanına sanal makineniz için bir ad girin. 
@@ -130,7 +130,7 @@ Bir Fortanx düğüm Aracısı oluşturmak, Azure Kaynak grubunuza bir sanal mak
 
      ![kaynağı dağıt](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. **Gözden geçir + oluştur**' u seçin. Doğrulamanın başarılı olduğundan emin olun ve ardından **Oluştur**' u seçin. Tüm kaynaklar dağıtıladıktan sonra, işlem düğümü şimdi şifreleme Yöneticisi 'ne kaydedilir. 
+1. **Gözden geçir + oluştur** ' u seçin. Doğrulamanın başarılı olduğundan emin olun ve ardından **Oluştur** ' u seçin. Tüm kaynaklar dağıtıladıktan sonra, işlem düğümü şimdi şifreleme Yöneticisi 'ne kaydedilir. 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>Uygulama görüntüsünü işlem düğümünde Çalıştır
 Aşağıdaki komutu yürüterek uygulamayı çalıştırın. Düğüm IP 'sini, bağlantı noktasını ve dönüştürülmüş görüntü adını, belirli uygulamanıza giriş olarak değiştirdiğinizden emin olun. 
@@ -162,9 +162,9 @@ olmadığı
 
 Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve ilişkili kaynakları silebilirsiniz. Kaynak grubunun silinmesi, dönüştürülmüş görüntünüz ile ilişkili düğümlerin kaydını kaldırır. 
 
-Sanal makine için kaynak grubunu seçin ve **Sil**' i seçin. Kaynakları silmeyi tamamlayacak kaynak grubunun adını onaylayın.
+Sanal makine için kaynak grubunu seçin ve **Sil** ' i seçin. Kaynakları silmeyi tamamlayacak kaynak grubunun adını onaylayın.
 
-Oluşturduğunuz Fortanix Enclave Manager hesabını silmek için, şifreleme Yöneticisi ' nde [hesaplar sayfasına](https://em.fortanix.com/accounts) gidin. Silmek istediğiniz hesabın üzerine gelin. Sağ üst köşedeki dikey siyah noktaları seçin ve **Hesabı Sil**' i seçin.
+Oluşturduğunuz Fortanix Enclave Manager hesabını silmek için, şifreleme Yöneticisi ' nde [hesaplar sayfasına](https://em.fortanix.com/accounts) gidin. Silmek istediğiniz hesabın üzerine gelin. Sağ üst köşedeki dikey siyah noktaları seçin ve **Hesabı Sil** ' i seçin.
 
   ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
@@ -174,4 +174,4 @@ Bu hızlı başlangıçta, uygulama görüntünüzü gizli bir bilgi işlem sana
 
 Azure 'un gizli bilgi işlem teklifleri hakkında daha fazla bilgi edinmek için bkz. [Azure gizli bilgi Işlem Özeti](overview.md)
 
- Azure 'da [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) ve [skoni](https://sconedocs.github.io)gibi diğer üçüncü taraf teklifleri kullanarak benzer görevleri tamamlamayı öğrenin.  
+ Azure 'da [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) ve [skoni](https://sconedocs.github.io)gibi diğer üçüncü taraf teklifleri kullanarak benzer görevleri tamamlamayı öğrenin.

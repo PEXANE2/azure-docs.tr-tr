@@ -1,6 +1,6 @@
 ---
 title: Azure Veri Kopyalama aracını kullanarak veri kopyalama
-description: Azure Blob depolama alanındaki bir konumda bulunan verileri başka bir konuma kopyalamak için bir Azure veri fabrikası oluşturun ve Veri Kopyalama aracını kullanın.
+description: Azure Data Factory oluşturun ve ardından Veri Kopyalama aracını kullanarak verileri Azure Blob depolama alanındaki bir konumdan başka bir konuma kopyalayın.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 24ebd9a89f94d062672ec7246163abb93396813f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 282917a6bbf7edb962a87ad87810adde56206d97
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555970"
+ms.locfileid: "94564727"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Hızlı başlangıç: Veri Kopyalama aracını kullanarak veri kopyalama
 
@@ -43,7 +43,7 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 
 1. **Yeni veri fabrikası** sayfasında **Ad** için **ADFTutorialDataFactory** girin. 
  
-   Azure veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, **&lt; adınız &gt; ADFTutorialDataFactory** ) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
+   Azure Data Factory adı *genel olarak benzersiz* olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, **&lt; adınız &gt; ADFTutorialDataFactory** ) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
   
    ![Bir ad kullanılamadığında alınan hata](./media/doc-common-process/name-not-available-error.png)
 1. **Abonelik** için, veri fabrikasını oluşturmak istediğiniz Azure aboneliğini seçin. 

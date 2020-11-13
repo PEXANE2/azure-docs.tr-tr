@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 70a17aacde67744eae74ca263200f2c65fbd300a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86856d1f66b5b7d723c907c17d7179ffcd2b82ab
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998230"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565679"
 ---
 # <a name="attesting-sgx-enclaves"></a>Attesting SGX Enclaven
 
@@ -30,11 +30,11 @@ Kanıtlama, bağlı olan tarafın yazılımın (1) bir kuşsa ve (2) tarafından
 
 Kanıtlama, sistem yazılımıyla ve Silicon ile uyumlu olan güvenli bir kanıtlama hizmeti kullanılarak uygulanmalıdır. Kullanabileceğiniz bazı hizmetlere örnek olarak şunlar gösterilebilir
 
-- [Microsoft Azure kanıtlama (Önizleme)](https://docs.microsoft.com/azure/attestation/overview) veya
+- [Microsoft Azure kanıtlama (Önizleme)](../attestation/overview.md) veya
 - [Intel 'in kanıtlama ve sağlama hizmetleri](https://software.intel.com/sgx/attestation-services)
 
 
 Azure gizli bilgi işlem Intel SGX altyapısı ile uyumlu olan. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Şifreleme kullanan uygulamalar için Microsoft Azure kanıtlama örneklerini](https://docs.microsoft.com/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)deneyin.
+[Şifreleme kullanan uygulamalar için Microsoft Azure kanıtlama örneklerini](/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)deneyin.

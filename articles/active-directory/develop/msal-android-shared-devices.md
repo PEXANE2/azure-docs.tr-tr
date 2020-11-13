@@ -13,19 +13,17 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: c1bf6b33176bf7942fbd76fa86ecd61b4f24e154
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366012"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562177"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android cihazlar için paylaşılan cihaz modu
 
-> [!NOTE]
-> Bu özellik genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Bu özellik [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 Retail Associates, uçuş ekibi üyeleri ve alan hizmeti çalışanları gibi Firstline çalışanları genellikle işlerini yapmak için paylaşılan bir mobil cihaz kullanır. Bu, paylaşılan cihazdaki müşteri ve iş verilerine erişmek üzere parolaları paylaşmaya veya PIN numaralarını açtıklarında sorunlu hale gelir.
 
@@ -36,7 +34,7 @@ Paylaşılan cihaz modu, cihazın Microsoft tarafından desteklenen yönetimini 
 Bir paylaşılan cihaz modu uygulaması oluşturmak için, geliştiriciler ve bulut cihaz yöneticileri birlikte çalışır:
 
 - Geliştiriciler tek hesap uygulaması yazar (çoklu hesap uygulamaları paylaşılan cihaz modunda desteklenmez), `"shared_device_mode_supported": true` uygulamanın yapılandırmasına ekler ve paylaşılan cihaz oturumu kapatma gibi şeyleri işlemek için kod yazar.
-- Cihaz yöneticileri, kimlik doğrulayıcı uygulamasını yükleyerek cihazı paylaşıma hazırlayın ve kimlik doğrulayıcı uygulamasını kullanarak cihazı paylaşılan moda ayarlar. Yalnızca [bulut aygıtı yönetici](../roles/permissions-reference.md#cloud-device-administrator-permissions) rolünde olan kullanıcılar, [kimlik doğrulayıcı uygulamasını](../user-help/user-help-auth-app-overview.md)kullanarak bir cihazı paylaşılan moda yerleştirebilir. Azure Portal kurumsal rollerinizin üyeliğini: **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **bulut Cihaz Yöneticisi**aracılığıyla yapılandırabilirsiniz.
+- Cihaz yöneticileri, kimlik doğrulayıcı uygulamasını yükleyerek cihazı paylaşıma hazırlayın ve kimlik doğrulayıcı uygulamasını kullanarak cihazı paylaşılan moda ayarlar. Yalnızca [bulut aygıtı yönetici](../roles/permissions-reference.md#cloud-device-administrator-permissions) rolünde olan kullanıcılar, [kimlik doğrulayıcı uygulamasını](../user-help/user-help-auth-app-overview.md)kullanarak bir cihazı paylaşılan moda yerleştirebilir. Azure Portal kurumsal rollerinizin üyeliğini: **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **bulut Cihaz Yöneticisi** aracılığıyla yapılandırabilirsiniz.
 
  Bu makalede öncelikle geliştiricilerin ne düşündüklerini ele alınmaktadır.
 

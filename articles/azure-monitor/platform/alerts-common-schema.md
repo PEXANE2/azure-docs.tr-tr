@@ -1,15 +1,15 @@
 ---
-title: Azure izleyici uyarıları için ortak uyarı şeması
+title: Azure Izleyici uyarıları için ortak uyarı şeması
 description: Ortak uyarı şemasını anlama, neden kullanılması gerekir ve nasıl etkinleştirilir?
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108839"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565611"
 ---
 # <a name="common-alert-schema"></a>Ortak uyarı şeması
 
@@ -19,9 +19,9 @@ Bu makalede ortak uyarı şemasının ne olduğu, kullanmanın avantajları ve n
 
 Ortak uyarı şeması, bugün Azure 'daki uyarı bildirimleri için tüketim deneyimini standartlaştırır. Geçmişte, bugün Azure 'daki üç uyarı türü (ölçüm, günlük ve etkinlik günlüğü) kendi e-posta şablonlarına, Web kancası şemalarına vb. sahip. Ortak uyarı şeması ile, artık tutarlı bir şema ile uyarı bildirimleri alabilirsiniz.
 
-Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini**açıklar ve bu örnekler aşağıdaki bölümlerde ortak şemada açıklanmıştır:
-* **Temel bilgiler**: uyarının diğer yaygın uyarı meta verileri (örneğin, önem derecesi veya açıklama) ile birlikte **hangi kaynakla** ilgili olduğunu açıklayan tüm uyarı türlerinde ortak olan **standartlaştırılmış alanlar**kümesi. 
-* **Uyarı bağlamı**: Uyarı **türüne göre**değişen alanlarla, **uyarının nedenini**açıklayan bir alan kümesi. Örneğin, bir ölçüm uyarısında, uyarı bağlamındaki ölçüm adı ve ölçüm değeri gibi alanlar olabilir, ancak bir etkinlik günlüğü uyarısı uyarıyı oluşturan olay hakkında bilgi sahibi olur. 
+Herhangi bir uyarı örneği, **etkilenen kaynağı** ve **uyarının nedenini** açıklar ve bu örnekler aşağıdaki bölümlerde ortak şemada açıklanmıştır:
+* **Temel bilgiler** : uyarının diğer yaygın uyarı meta verileri (örneğin, önem derecesi veya açıklama) ile birlikte **hangi kaynakla** ilgili olduğunu açıklayan tüm uyarı türlerinde ortak olan **standartlaştırılmış alanlar** kümesi. 
+* **Uyarı bağlamı** : Uyarı **türüne göre** değişen alanlarla, **uyarının nedenini** açıklayan bir alan kümesi. Örneğin, bir ölçüm uyarısında, uyarı bağlamındaki ölçüm adı ve ölçüm değeri gibi alanlar olabilir, ancak bir etkinlik günlüğü uyarısı uyarıyı oluşturan olay hakkında bilgi sahibi olur. 
 
 Müşterilerden aldığımız tipik tümleştirme senaryoları, uyarı örneğinin, sorumlu ekibin üzerinde çalışmaya başladığı bir Özet (örneğin, kaynak grubu) temelinde ilgili takıma yönlendirilmesini içerir. Ortak uyarı şeması sayesinde, önemli alanları kullanarak uyarı türlerinde standartlaştırılmış yönlendirme mantığınızı kullanabilirsiniz ve bağlam alanlarını ilgili takımların daha fazla araştırmasını sağlar.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786437"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564574"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi yöntemleri (Azure VM'leri üzerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,10 @@ Bu makalede, Azure VM 'lerinde SQL Server kullandığınızda hem [Yük devretme
 ## <a name="networking"></a>Ağ
 
 Sunucu başına tek bir NIC (küme düğümü) ve tek bir alt ağ kullanın. Azure ağ iletişimi, Azure sanal makine konuk kümesinde ek NIC 'ler ve alt ağları gereksiz hale getiren fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağda ulaşılabilir olduğunu size bildirir. Bu uyarıyı, Azure sanal makine konuk yük devretme kümelerinde yoksayabilirsiniz.
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>Yük devretme kümesi ağ eşiklerini ayarlama
+
+SQL Server AlwaysOn ile Azure VM 'lerinde Windows Yük devretme kümesi düğümlerini çalıştırırken, küme ayarını daha gevşek bir izleme durumuna değiştirme önerilir.  Bu, kümeyi daha kararlı ve güvenilir hale getirir.  Bunun hakkında daha fazla bilgi için, bkz. [IaaS SQL AlwaysOn-ayarlama yük devretme kümesi ağ eşikleri](/windows-server/troubleshoot/iaas-sql-failover-cluser).
 
 ## <a name="quorum"></a>Çekirdeğin
 

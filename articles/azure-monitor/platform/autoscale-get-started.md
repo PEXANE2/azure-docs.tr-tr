@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377029"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565645"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -127,7 +127,7 @@ Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir
 
 #### <a name="security"></a>Güvenlik 
 
-Büyük kuruluşlarda bulunan geliştirme ekipleri, genellikle sunulan API 'Ler için güvenlik gereksinimlerine bağlı kalmalıdır. Healthcheck uç noktasının güvenliğini sağlamak için öncelikle, uygulamaya erişimi kısıtlamak üzere [IP kısıtlamaları](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [istemci sertifikaları](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)veya bir sanal ağ gibi özellikleri kullanmanız gerekir. Gelen isteğin eşleşmesini isteyerek healthcheck uç noktasının kendisini güvenli hale getirebilirsiniz `User-Agent` `ReadyForRequest/1.0` . İstek önceki güvenlik özellikleri tarafından zaten güvenli hale getirildiğinden User-Agent taklit edilemez.
+Büyük kuruluşlarda bulunan geliştirme ekipleri, genellikle sunulan API 'Ler için güvenlik gereksinimlerine bağlı kalmalıdır. Healthcheck uç noktasının güvenliğini sağlamak için öncelikle, uygulamaya erişimi kısıtlamak üzere [IP kısıtlamaları](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule), [istemci sertifikaları](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)veya bir sanal ağ gibi özellikleri kullanmanız gerekir. Gelen isteğin eşleşmesini isteyerek healthcheck uç noktasının kendisini güvenli hale getirebilirsiniz `User-Agent` `ReadyForRequest/1.0` . İstek önceki güvenlik özellikleri tarafından zaten güvenli hale getirildiğinden User-Agent taklit edilemez.
 
 ### <a name="behavior"></a>Davranış
 

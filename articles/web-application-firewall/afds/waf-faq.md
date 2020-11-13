@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413080"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563656"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
@@ -55,7 +55,7 @@ Arka uçınızdan IP Access Control listesini, yalnızca ön kapı giden IP adre
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Hangi Azure WAF seçeneklerini seçmem gerekir?
 
-Azure 'da WAF İlkeleri uygulanırken iki seçenek vardır. Azure ön kapısına sahip WAF, küresel olarak dağıtılmış bir uç güvenlik çözümüdür. Application Gateway ile WAF, bölgesel ve adanmış bir çözümdür. Genel performans ve güvenlik gereksinimlerinize göre bir çözüm seçmenizi öneririz. Daha fazla bilgi için bkz. [Azure 'un uygulama teslim paketiyle Yük Dengeleme](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
+Azure 'da WAF İlkeleri uygulanırken iki seçenek vardır. Azure ön kapısına sahip WAF, küresel olarak dağıtılmış bir uç güvenlik çözümüdür. Application Gateway ile WAF, bölgesel ve adanmış bir çözümdür. Genel performans ve güvenlik gereksinimlerinize göre bir çözüm seçmenizi öneririz. Daha fazla bilgi için bkz. [Azure 'un uygulama teslim paketiyle Yük Dengeleme](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md).
 
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Tümleştirilen tüm platformlarda aynı WAF özelliklerini destekliyor musunuz?
