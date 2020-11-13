@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02a08cc0400b4d65577c13282ca4c23cac1d21dc
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120958"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578935"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL özel durumlarını ve hatalarını işleme
 
@@ -50,7 +50,7 @@ Aşağıda, ortaya çıkabilecek ve bazı olası azaltmalar bulunan yaygın öze
 | --- | --- | --- |
 | [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: Kullanıcı veya yönetici ' {appName} ' adlı ' {AppID} ' KIMLIĞIYLE uygulamayı kullanmak üzere onay vermedi. Bu Kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin.| Önce kullanıcı onayı almanız gerekir. .NET Core kullanmıyorsanız (herhangi bir Web Kullanıcı arabirimine sahip olmayan), çağırın (yalnızca bir kez) `AcquireTokeninteractive` . .NET Core kullanıyorsanız veya bir yapmak istemiyorsanız `AcquireTokenInteractive` , Kullanıcı onay vermek için BIR URL 'ye gidebilir: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . Şunu çağırmak için `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [Msaluırequiredexception](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: kullanıcının [Multi-Factor Authentication 'ı (MFA)](../authentication/concept-mfa-howitworks.md)kullanması gerekir.| Risk azaltma yoktur. Kiracınız için MFA yapılandırıldıysa ve Azure Active Directory (AAD) uygulamayı zorlamaya karar verirse, veya gibi etkileşimli bir akışa geri dönebilmeniz gerekir `AcquireTokenInteractive` `AcquireTokenByDeviceCode` .|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: izin türü *sık karşılaşılan* veya */tüketiciler* uç noktaları üzerinden desteklenmiyor. */Kuruluşlar* veya kiracıya özgü uç noktayı kullanın. *Sık karşılaşılan*kullandınız.| Azure AD 'nin iletisinde açıklandığı gibi, yetkilinin bir kiracıya ya da aksi takdirde */kuruluşlara*sahip olması gerekir.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: izin türü *sık karşılaşılan* veya */tüketiciler* uç noktaları üzerinden desteklenmiyor. */Kuruluşlar* veya kiracıya özgü uç noktayı kullanın. *Sık karşılaşılan* kullandınız.| Azure AD 'nin iletisinde açıklandığı gibi, yetkilinin bir kiracıya ya da aksi takdirde */kuruluşlara* sahip olması gerekir.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: istek gövdesi şu parametreyi içermelidir: `client_secret or client_assertion` .| Bu özel durum, uygulamanız Azure AD 'de ortak bir istemci uygulaması olarak kaydettirilmemişse oluşturulabilir. Azure portal, uygulamanızın bildirimini düzenleyin ve `allowPublicClient` olarak ayarlayın `true` . |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: Oturum açmış kullanıcı tanımlanamadı| Kitaplık, geçerli Windows oturum açmış kullanıcıyı sorgulayamadı veya bu kullanıcı AD veya AAD 'ye katılmış değil (iş yeri katılmış kullanıcıları desteklenmez). Hafifletme 1: UWP 'de, uygulamanın şu yeteneklere sahip olup olmadığını denetleyin: kurumsal kimlik doğrulaması, özel ağlar (Istemci ve sunucu), Kullanıcı hesabı bilgileri. Hafifletme 2: Kullanıcı adını (örneğin,) getirmek için kendi mantığınızı uygulayın john@contoso.com ve `AcquireTokenByIntegratedWindowsAuth` Kullanıcı adında alan formu kullanın.|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Bu yöntem, Active Directory (AD) tarafından sunulan bir protokolü kullanır. Kullanıcı, AD ("yönetilen" Kullanıcı) olmadan Azure Active Directory oluşturulduysa, bu yöntem başarısız olur. AD 'de oluşturulan ve AAD tarafından desteklenen kullanıcılar ("federe" kullanıcılar), etkileşimli olmayan bu kimlik doğrulama yönteminden yararlanabilir. Risk azaltma: etkileşimli kimlik doğrulaması kullanın.|
@@ -262,7 +262,7 @@ Bu hatayla sonuçlanan bazı koşullar, kullanıcıların çözebilmesi için ko
 
 MSAL `reason` , daha iyi bir kullanıcı deneyimi sağlamak için kullanabileceğiniz bir alan sunar. Örneğin, `reason` alanı kullanıcıya parolasının dolduğunu veya bazı kaynakları kullanmak için onay sağlamaları gerektiğini söyleyecektir. Desteklenen değerler numaralandırmanın bir parçasıdır  `InteractionRequiredExceptionReason` :
 
-| Neden | Anlamı | Önerilen Işleme |
+| Nedeni | Anlamı | Önerilen Işleme |
 |---------|-----------|-----------------------------|
 | `BasicAction` | Durum etkileşimli kimlik doğrulama akışı sırasında Kullanıcı etkileşimi tarafından çözülebilir | `acquireToken`Etkileşimli parametrelerle çağrı |
 | `AdditionalAction` | Koşul, etkileşimli kimlik doğrulama akışı dışındaki sistemle ek düzeltme etkileşimi tarafından çözülebilir. | `acquireToken`Gerçekleştirilecek düzeltici eylemi açıklayan bir ileti göstermek için etkileşimli parametrelerle çağırın. Çağıran uygulama, Kullanıcı düzeltici eylemi tamamlayamamasının olası olması beklenmez, ek eylem gerektiren akışları gizlemeyi tercih edebilir. |
@@ -576,18 +576,18 @@ Bir özellik olarak [Msalserviceexception](/dotnet/api/microsoft.identity.client
 İstemci kimlik bilgileri akışını kullanan bir Daemon uygulaması için bir örnek aşağıda verilmiştir. Bunu, belirteç alma yöntemlerinden herhangi birine uyarlayabilirsiniz.
 
 ```csharp
+
+bool retry = false;
 do
 {
-    retry = false;
     TimeSpan? delay;
     try
     {
-         result = await publicClientApplication.AcquireTokenForClient(scopes, account)
-                                           .ExecuteAsync();
+         result = await publicClientApplication.AcquireTokenForClient(scopes, account).ExecuteAsync();
     }
     catch (MsalServiceException serviceException)
     {
-         if (ex.ErrorCode == "temporarily_unavailable")
+         if (serviceException.ErrorCode == "temporarily_unavailable")
          {
              RetryConditionHeaderValue retryAfter = serviceException.Headers.RetryAfter;
              if (retryAfter.Delta.HasValue)

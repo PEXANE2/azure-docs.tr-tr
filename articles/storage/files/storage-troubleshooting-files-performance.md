@@ -1,20 +1,20 @@
 ---
-title: Azure dosya paylaşma performansı sorun giderme kılavuzu
-description: Azure dosyaları ile ilgili bilinen performans sorunlarını giderin. Bu sorunlarla karşılaşıldığında olası nedenleri ve ilgili geçici çözümleri bulun.
+title: Azure dosya paylaşımları performans sorunlarını giderme kılavuzu
+description: Azure dosya paylaşımlarında bilinen performans sorunlarını giderin. Bu sorunlarla karşılaşıldığında olası nedenleri ve ilgili geçici çözümleri bulun.
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 52376cabfd837ad7435c8e9c992fe000e0521247
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 4d89fb4bcedb58aa156e75aaefc87479797dcd37
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561123"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577981"
 ---
-# <a name="troubleshoot-azure-file-share-performance-issues"></a>Azure dosya paylaşımında performans sorunlarını giderme
+# <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
 Bu makalede, Azure dosya paylaşımlarıyla ilgili bazı yaygın sorunlar listelenmektedir. Bu sorunlarla karşılaştığınızda olası nedenleri ve geçici çözümleri sağlar.
 

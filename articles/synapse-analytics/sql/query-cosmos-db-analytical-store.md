@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310310"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579394"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te sunucusuz SQL havuzu ile Azure Cosmos DB verileri sorgulama (Önizleme)
 
@@ -42,7 +42,9 @@ OPENROWSET(
 Azure Cosmos DB bağlantı dizesi, çalışacak Azure Cosmos DB hesap adı, veritabanı adı, veritabanı hesabı ana anahtarı ve isteğe bağlı bir bölge adı belirtir `OPENROWSET` . 
 
 > [!IMPORTANT]
-> Sonra diğer adı kullandığınızdan emin olun `OPENROWSET` . İşlevden sonra diğer adı belirtmezseniz, SYNAPSE sunucusuz SQL uç noktasına bağlantı sorunu oluşmasına neden olan [bilinen bir sorun](#known-issues) vardır `OPENROWSET` .
+> `Latin1_General_100_CI_AS_SC_UTF8`Cosmos DB analitik depodaki dize DEĞERLERI UTF-8 metin olarak kodlandığından, bazı UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun.
+> Dosyadaki metin kodlaması arasında uyuşmazlık var ve harmanlama beklenmeyen metin dönüştürme hatalarına neden olabilir.
+> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 Bağlantı dizesi aşağıdaki biçimdedir:
 ```sql
@@ -338,8 +340,8 @@ Bu örnekte, her bir `int32` `int64` `float64` ülke için servis talebi sayıs�
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-- Diğer **ad** , işlevinden sonra belirtilmelidir `OPENROWSET` (örneğin, `OPENROWSET (...) AS function_alias` ). Takma ad atlama bağlantı sorununa neden olabilir ve SYNAPSE sunucusuz SQL uç noktası geçici olarak kullanılamıyor olabilir. Bu sorun, Kasım 2020 ' de çözümlenir.
 - Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranıştır. Not `OPENROWSET` `WITH` WITH yan tümcesi, sorgu deneyimi müşteri geri bildirimlerine göre iyi tanımlanmış şemayla hizalanabileceğinden, genel önizleme sırasında sağladığı şemaya güvenmeyin. Geri bildirimde bulunmak için [SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) başvurun.
+- `OPENROSET`Sütun HARMANLAMASıNDA UTF-8 kodlaması yoksa sunucusuz SQL havuzu derleme zamanı hatası döndürmez. `OPENROWSET`Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanında çalışan tüm işlevler için Varsayılan harmanlamayı kolayca değiştirebilirsiniz:`alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir:
 

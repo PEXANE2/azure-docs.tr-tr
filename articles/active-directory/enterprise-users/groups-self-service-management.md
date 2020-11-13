@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4651d15fb765182c788733c0542480805387871
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f1730507c022d57495efa56c98215ff72d07e180
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376745"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578187"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Azure Active Directory içinde Self Servis Grup yönetimini ayarlama 
 
@@ -33,7 +33,7 @@ Azure portal veya Azure AD PowerShell kullanılarak güvenlik grupları oluştur
 İçinde oluşturulan gruplar | Güvenlik grubu varsayılan davranışı | Microsoft 365 grubu varsayılan davranışı
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](../enterprise-users/groups-settings-cmdlets.md) | Üyeler yalnızca sahipler tarafından eklenebilir<br>Görünür ancak erişim paneli 'ne katılması için kullanılamaz | Tüm kullanıcılara katılması için aç
-[Azure Portal](https://portal.azure.com) | Üyeler yalnızca sahipler tarafından eklenebilir<br>Görünür ancak erişim paneli 'ne katılması için kullanılamaz<br>Grup oluşturma sırasında otomatik olarak sahip atanmadı | Tüm kullanıcılara katılması için aç
+[Azure portalı](https://portal.azure.com) | Üyeler yalnızca sahipler tarafından eklenebilir<br>Görünür ancak erişim paneli 'ne katılması için kullanılamaz<br>Grup oluşturma sırasında otomatik olarak sahip atanmadı | Tüm kullanıcılara katılması için aç
 [Erişim paneli](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Tüm kullanıcılara katılması için aç<br>Grup oluşturulduğunda üyelik seçenekleri değiştirilebilir | Tüm kullanıcılara katılması için aç<br>Grup oluşturulduğunda üyelik seçenekleri değiştirilebilir
 
 ## <a name="self-service-group-management-scenarios"></a>Self Servis Grup yönetimi senaryoları
@@ -44,15 +44,15 @@ Azure portal veya Azure AD PowerShell kullanılarak güvenlik grupları oluştur
 ## <a name="make-a-group-available-for-user-self-service"></a>Bir grubu kullanıcı self servisi için kullanıma sunma
 
 1. Dizin için genel yönetici olan bir hesapla [Azure AD yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Grupları**seçin ve ardından **genel** ayarlar ' ı seçin.
-1. Set **Owners, erişim panelinde grup üyeliği Isteklerini** **Evet**olarak yönetebilir.
-1. **Erişim panelindeki gruplara erişimi kısıtla '** yı **Hayır**olarak ayarlayın.
+1. **Grupları** seçin ve ardından **genel** ayarlar ' ı seçin.
+1. Set **Owners, erişim panelinde grup üyeliği Isteklerini** **Evet** olarak yönetebilir.
+1. **Erişim panelindeki gruplara erişimi kısıtla '** yı **Hayır** olarak ayarlayın.
 1. **Kullanıcıları, Azure portalları 'nda güvenlik grupları oluşturabilir** veya **Kullanıcılar azure portalları 'nda Microsoft 365 grupları oluşturabilir**
 
-    - **Evet**: Azure AD kuruluşunuzdaki tüm kullanıcılara yeni güvenlik grupları oluşturma ve bu gruplara üye ekleme izni verilir. Bu yeni gruplar ayrıca diğer tüm kullanıcılar Erişim Paneli’nde gösterilir. Gruptaki ilke ayarı izin veriyorsa, diğer kullanıcılar bu gruplara katılması için istek oluşturabilir
-    - **Hayır**: kullanıcılar grup oluşturamaz ve sahibi oldukları mevcut grupları değiştiremez. Ancak, bu grupların üyeliklerini yönetmeye ve diğer kullanıcıların gruplara katılma isteklerini onaylamaya devam edebilirler.
+    - **Evet** : Azure AD kuruluşunuzdaki tüm kullanıcılara yeni güvenlik grupları oluşturma ve bu gruplara üye ekleme izni verilir. Bu yeni gruplar ayrıca diğer tüm kullanıcılar Erişim Paneli’nde gösterilir. Gruptaki ilke ayarı izin veriyorsa, diğer kullanıcılar bu gruplara katılması için istek oluşturabilir
+    - **Hayır** : kullanıcılar grup oluşturamaz ve sahibi oldukları mevcut grupları değiştiremez. Ancak, bu grupların üyeliklerini yönetmeye ve diğer kullanıcıların gruplara katılma isteklerini onaylamaya devam edebilirler.
 
-Ayrıca, kullanıcılarınız için Self Servis Grup yönetimi üzerinde daha ayrıntılı erişim denetimi elde **etmek üzere Azure** portalları ' nda Grup sahipleri olarak üye atayabilecek **sahipler** ' i de kullanabilirsiniz.
+Kullanıcılarınız için Self Servis Grup yönetimi üzerinde daha ayrıntılı erişim denetimi elde etmek üzere **Azure Portal üyeleri Grup sahipleri olarak atayabilecek sahipler** de kullanabilirsiniz.
 
 Kullanıcılar grupları oluştur, kuruluşunuzdaki tüm kullanıcıların yeni gruplar oluşturmasına ve sonra varsayılan sahip olarak bu gruplara üye eklemesine izin verilir. Kendi gruplarını oluşturabileceğiniz bireyler belirtemezsiniz. Yalnızca başka bir grup üyesini Grup sahibi yapmak için bireyler belirtebilirsiniz.
 

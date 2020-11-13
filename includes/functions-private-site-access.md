@@ -4,19 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 5e0cff7bde6e80a776d694820ca7b69dafa7c0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d66e7f497f85141de172c59b67676e1bb93955e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83648833"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578838"
 ---
-Özel site erişimi, uygulamanızı yalnızca bir Azure sanal ağı gibi özel bir ağdan erişilebilir hale getirme anlamına gelir.
+[Azure Özel Uç Nokta](../articles/private-link/private-endpoint-overview.md), Azure Özel Bağlantı destekli bir hizmete özel ve güvenli bir şekilde bağlanmanızı sağlayan ağ arabirimidir.  Özel Uç Nokta, sanal ağınızdaki bir özel IP adresini kullanır ve bu sayede hizmeti sanal ağınıza getirir.
 
-* Özel site erişimi, hizmet uç noktaları yapılandırıldığında [Premium](../articles/azure-functions/functions-premium-plan.md), [Tüketim](../articles/azure-functions/functions-scale.md#consumption-plan)ve [App Service](../articles/azure-functions/functions-scale.md#app-service-plan) planlarında kullanılabilir.
-    * Hizmet uç noktaları, **platform özellikleri**  >  **ağ oluşturma**  >  **erişim kısıtlamalarını yapılandırma**  >  **Kural Ekle**' nin altında uygulama temelinde yapılandırılabilir. Sanal ağlar artık bir kural türü olarak seçilebilir.
-    * Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../articles/virtual-network/virtual-network-service-endpoints-overview.md).
-    * Hizmet uç noktalarında, işlevinizin hala internet 'e yönelik sanal ağ tümleştirmesiyle birlikte tam giden erişimi olduğunu aklınızda bulundurun.
-* Özel site erişimi, iç yük dengeleyici (ıLB) ile yapılandırılmış bir App Service Ortamı içinde de kullanılabilir. Daha fazla bilgi için bkz. [bir App Service ortamı iç yük dengeleyici oluşturma ve kullanma](../articles/app-service/environment/create-ilb-ase.md).
+[Premium](../articles/azure-functions/functions-premium-plan.md) ve [App Service](../articles/azure-functions/functions-scale.md#app-service-plan) planlarında barındırılan Işlevleriniz için özel uç nokta kullanabilirsiniz.
 
-Özel site erişimini ayarlamayı öğrenmek için bkz. [Azure işlevleri özel site erişimi oluşturma](../articles/azure-functions/functions-create-private-site-access.md).
+İşlevler için gelen özel uç nokta bağlantısı oluştururken, özel adresi çözümlemek için bir DNS kaydına de ihtiyacınız olacaktır.  Varsayılan olarak, Azure portal kullanarak özel bir uç nokta oluştururken sizin için özel bir DNS kaydı oluşturulur.
+
+Daha fazla bilgi için bkz. [Web Apps Için özel uç noktaları kullanma](../articles/app-service/networking/private-endpoint.md).

@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: fe4b2925a34ae7c06bb0b597f0bcdcc3f4d80896
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5219e1c87221ade8da68c21209f41b4d6139be2
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363230"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579088"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Birimin hizmet düzeyini dinamik olarak değiştirme
 
 > [!IMPORTANT] 
-> Bu özellik için genel önizleme kaydı, daha fazla bildirimde bulununcaya kadar tutuluyor. 
+> * Bu özellik için genel önizleme kaydı, daha fazla bildirimde bulununcaya kadar tutuluyor. 
+> * Bir çoğaltma hedef biriminin hizmet düzeyini dinamik olarak değiştirme işlemi şu anda desteklenmiyor.
 
 Birimi, birimi için istediğiniz [hizmet düzeyini](azure-netapp-files-service-levels.md) kullanan başka bir kapasite havuzuna taşıyarak mevcut bir birimin hizmet düzeyini değiştirebilirsiniz. Birime yönelik bu yerinde hizmet düzeyi değişikliği, veri geçişini gerektirmez. Ayrıca, birime erişimi etkilemez.  
 
@@ -68,7 +69,7 @@ You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view
 
     ![Havuzu Değiştir](../media/azure-netapp-files/change-pool.png)
 
-3.  **Tamam** ’a tıklayın.
+3.  **Tamam** düğmesine tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar  

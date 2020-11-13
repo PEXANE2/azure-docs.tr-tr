@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cc2c40dd0b61f917da86d67188f4b503ca9b9298
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306861"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579360"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulama
 
@@ -36,6 +36,11 @@ from openrowset(
 ```
 
 Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel Azure kimliğiyle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
+
+> [!IMPORTANT]
+> `Latin1_General_100_CI_AS_SC_UTF8`PARQUET dosyalarındaki dize DEĞERLERI UTF-8 kodlaması kullanılarak kodlandığından, bazı UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun.
+> PARQUET dosyasında metin kodlama arasında uyuşmazlık ve harmanlama beklenmeyen dönüştürme hatalarına neden olabilir.
+> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 
@@ -68,9 +73,15 @@ from openrowset(
     ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
 ```
 
+> [!IMPORTANT]
+> `Latin1_General_100_CI_AS_SC_UTF8`Yan tümce içindeki tüm dize sütunları için BIR UTF-8 harmanlaması (örneğin) `WITH` veya veritabanı DÜZEYINDE bir UTF-8 harmanlamasını belirtdiğinizden emin olun.
+> Dosya ve dize sütunu harmanlamasında metin kodlama arasında uyuşmazlık beklenmeyen dönüştürme hatalarına neden olabilir.
+> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Aşağıdaki tanımı kullanarak Sütu türlerinde harmanlamayı kolayca ayarlayabilirsiniz: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
+
 Aşağıdaki bölümlerde, çeşitli türlerdeki PARQUET dosyalarını sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adımınız, bir veri kaynağı ile [NYC sarı TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) depolama hesabına başvuran **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

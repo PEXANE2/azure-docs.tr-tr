@@ -11,15 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358346"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579581"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini sürüm ve izleme
-
 
 Bu makalede, reproducibility için Azure Machine Learning veri kümelerini nasıl kullanacağınızı ve izleyeceğinizi öğreneceksiniz. Veri kümesi sürümü oluşturma, gelecekteki denemeleri için veri kümesinin belirli bir sürümünü uygulayabilmeniz için verilerinizin durumuna yer işaretinin bir yoludur.
 
@@ -28,7 +27,7 @@ Tipik sürüm oluşturma senaryoları:
 * Yeniden eğitim için yeni veriler kullanılabilir olduğunda
 * Farklı veri hazırlama veya özellik Mühendisliği yaklaşımları uygularken
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici için şunlar gerekir:
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>İşlem hattı çıkış veri kümesi sürümü
+## <a name="version-an-ml-pipeline-output-dataset"></a>Bir ML işlem hattı çıkış veri kümesi sürümü
 
-Bir veri kümesini her bir Machine Learning ardışık düzen adımının girişi ve çıktısı olarak kullanabilirsiniz. İşlem hatlarını yeniden çalıştırdığınızda, her bir ardışık düzen adımının çıktısı yeni bir veri kümesi sürümü olarak kaydedilir.
+Her [ml ardışık düzen](concept-ml-pipelines.md) adımının giriş ve çıkış olarak bir veri kümesi kullanabilirsiniz. İşlem hatlarını yeniden çalıştırdığınızda, her bir ardışık düzen adımının çıktısı yeni bir veri kümesi sürümü olarak kaydedilir.
 
-Machine Learning işlem hatları, işlem hattı her yeniden çalıştırıldığında her adımın çıkışını yeni bir klasöre doldurduğundan, sürümlü çıkış veri kümeleri tekrarlanabilir. İşlem hatlarında [veri kümeleri](how-to-create-your-first-pipeline.md#steps)hakkında daha fazla bilgi edinin.
+ML işlem hatları, her adımın çıkışını ardışık düzen yeniden her yeniden çalıştırıldığında yeni bir klasöre doldurur. Bu davranış, sürümlü çıktı veri kümelerinin tekrarlanabilir olmasını sağlar. İşlem hatlarında [veri kümeleri](how-to-create-your-first-pipeline.md#steps)hakkında daha fazla bilgi edinin.
 
 ```Python
 from azureml.core import Dataset
@@ -154,9 +153,36 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini izleme
+## <a name="track-datas-in-your-experiments"></a>Denemeleri 'inizdeki verileri izleyin
 
-Her Machine Learning denemesi için, giriş olarak kullanılan veri kümelerini deneme nesnesi aracılığıyla kolayca izleyebilirsiniz `Run` .
+Azure Machine Learning, denemenizin tamamında giriş ve çıkış veri kümeleri olarak verilerinizi izler.  
+
+Aşağıda, verilerinizin **giriş veri kümesi** olarak izlendiği senaryolar verilmiştir. 
+
+* `DatasetConsumptionConfig` `inputs` `arguments` `ScriptRunConfig` Deneme çalıştırmasının gönderilmesi sırasında nesnenizin veya parametresi aracılığıyla nesne olarak. 
+
+* Get_by_name () veya get_by_id () gibi yöntemler betikte çağrıldığında. Bu senaryo için, çalışma alanına kaydettiğinizde veri kümesine atanan ad, görüntülenecek addır. 
+
+Aşağıda, verilerinizin **Çıkış veri kümesi** olarak izlendiği senaryolar verilmiştir.  
+
+* `OutputFileDatasetConfig` `outputs` Deneme çalıştırması gönderirken bir nesneyi veya parametresi aracılığıyla geçirin `arguments` . `OutputFileDatasetConfig` nesneler, ardışık düzen adımları arasında veri kalıcı hale getirmek için de kullanılabilir. Bkz [. ml ardışık düzen adımları arasında verileri taşıma.](how-to-move-data-in-out-of-pipelines.md)
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) , herhangi bir zamanda değişebilir, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) Önizleme özelliklerini içeren genel bir önizleme sınıfıdır.
+
+* Betiğe bir veri kümesi kaydettirin. Bu senaryo için, çalışma alanına kaydettiğinizde veri kümesine atanan ad, görüntülenecek addır. Aşağıdaki örnekte, `training_ds` görüntülenecek addır.
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* Betikte kaydedilmemiş bir veri kümesiyle alt çalıştırma gönder. Bu, anonim olarak kaydedilmiş bir veri kümesine neden olur.
+
+### <a name="trace-datasets-in-experiment-runs"></a>Deneme çalıştırmaları 'nda veri kümelerini izleme
+
+Her Machine Learning deneme için, deneme nesnesiyle giriş olarak kullanılan veri kümelerini kolayca izleyebilirsiniz `Run` .
 
 Aşağıdaki kod, [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) deneme çalıştırması ile hangi giriş veri kümelerinin kullanıldığını izlemek için yöntemini kullanır:
 
@@ -169,7 +195,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Ayrıca, `input_datasets` kullanarak denemeleri adresinden bulabilirsiniz https://ml.azure.com/ . 
+Ayrıca, `input_datasets` [Azure Machine Learning Studio 'yu]()kullanarak denemeleri adresinden bulabilirsiniz. 
 
 Aşağıdaki görüntüde Azure Machine Learning Studio 'da bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmektedir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **Özellikler** sekmesini açın `keras-mnist` .
 
@@ -183,7 +209,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Kayıt sonrasında, Python veya şuraya git kullanılarak veri kümesiyle kaydedilen modellerin listesini görebilirsiniz https://ml.azure.com/ .
+Kayıt sonrasında, Python kullanarak veri kümesiyle kaydedilmiş modellerin listesini görebilir veya [Studio](https://ml.azure.com/)'ya gidebilirsiniz.
 
 Aşağıdaki görünüm, **varlıklar** altındaki **veri kümeleri** bölmesinden yapılır. Veri kümesini seçin ve ardından veri kümesine kayıtlı modellerin listesi için **modeller** sekmesini seçin. 
 

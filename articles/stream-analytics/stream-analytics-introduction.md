@@ -1,23 +1,23 @@
 ---
-title: Azure Stream Analytics’e Genel Bakış
-description: Nesnelerin İnterneti (IoT) ile gerçek zamanlı akış verilerini çözümlemenize yardımcı olan Stream Analytics yönetilen bir hizmet hakkında bilgi edinin.
+title: Azure Stream Analytics giriş
+description: Nesnelerin İnterneti (IoT) ile gerçek zamanlı akış verilerini çözümlemenize yardımcı olan Azure Stream Analytics yönetilen bir hizmet hakkında bilgi edinin.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperfq2
-ms.date: 11/03/2020
-ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/12/2020
+ms.openlocfilehash: 0022e19e23b7808cd78da988fd3fdef2d537acf5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342241"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579445"
 ---
-# <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics nedir?
+# <a name="welcome-to-azure-stream-analytics"></a>Azure Stream Analytics hoş geldiniz
 
-Azure Stream Analytics, birden fazla kaynaktan aynı anda yüksek hacimli hızlı akış verilerini çözümlemek ve işlemek için tasarlanan gerçek zamanlı analiz ve karmaşık olay işleme altyapısıdır. Desenler ve ilişkiler cihazlar, sensörler, tıklama akışları, sosyal medya akışları ve uygulamalar dahil olmak üzere çeşitli giriş kaynaklarından ayıklanan bilgiler içinde tanımlanabilir. Bu desenler eylemleri tetiklemek ve uyarı oluşturma, bir raporlama aracına bilgi akışı veya dönüştürülen verileri daha sonra kullanmak üzere depolama gibi iş akışlarını başlatmak için kullanılabilir. Ayrıca, Stream Analytics Azure IoT Edge çalışma zamanında kullanılabilir ve IoT cihazlarındaki verilerin işlemesini etkinleştirir. 
+Azure Stream Analytics, birden fazla kaynaktan aynı anda yüksek hacimli hızlı akış verilerini çözümlemek ve işlemek için tasarlanan gerçek zamanlı analiz ve karmaşık olay işleme altyapısıdır. Desenler ve ilişkiler cihazlar, sensörler, tıklama akışları, sosyal medya akışları ve uygulamalar dahil olmak üzere çeşitli giriş kaynaklarından ayıklanan bilgiler içinde tanımlanabilir. Bu desenler eylemleri tetiklemek ve uyarı oluşturma, bir raporlama aracına bilgi akışı veya dönüştürülen verileri daha sonra kullanmak üzere depolama gibi iş akışlarını başlatmak için kullanılabilir. Ayrıca, Stream Analytics Azure IoT Edge çalışma zamanında kullanılabilir ve IoT cihazlarındaki verilerin işlemesini etkinleştirir.
 
 Aşağıdaki senaryolar Azure Stream Analytics kullanabileceğiniz örnekler örneğidir:
 
@@ -26,6 +26,11 @@ Aşağıdaki senaryolar Azure Stream Analytics kullanabileceğiniz örnekler ör
 * Filo yönetimi ve sürücüsüz araçlar için jeo-uzamsal analiz
 * Yüksek değerli varlıkların uzaktan izlenmesi ve tahmine dayalı Bakımı
 * Envanter denetimi ve anomali algılama için Satış Noktasında gerçek zamanlı analizler
+
+Ücretsiz bir Azure aboneliğiyle Azure Stream Analytics deneyebilirsiniz.
+
+> [!div class="nextstepaction"]
+> [Azure Stream Analytics deneyin](https://azure.microsoft.com/services/stream-analytics/)
 
 ## <a name="how-does-stream-analytics-work"></a>Stream Analytics nasıl çalışır?
 
@@ -102,7 +107,7 @@ Stream Analytics her saniye milyonlarca olayı işleyebilir ve çok fazla gecikm
 
 Azure Stream Analytics’e genel bakışı gördünüz. Bundan sonra derinlere inerek ilk Stream Analytics işinizi oluşturabilirsiniz:
 
-* [Azure portalını kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-portal.md).
-* [Azure PowerShell kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-powershell.md).
-* [Visual Studio 'yu kullanarak bir Stream Analytics Işi oluşturun](stream-analytics-quick-create-vs.md).
-* [Visual Studio Code kullanarak Stream Analytics bir Iş oluşturun](quick-create-visual-studio-code.md).
+* [Azure portal kullanarak Stream Analytics işi oluşturun](stream-analytics-quick-create-portal.md)
+* [Azure PowerShell kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-powershell.md)
+* [Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
+* [Visual Studio Code kullanarak Stream Analytics işi oluşturma](quick-create-visual-studio-code.md)

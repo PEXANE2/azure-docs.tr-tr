@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100078"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579320"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirin
 
@@ -80,9 +80,22 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 1. Kuralınızın koşullarını ayarlamak için **temel blob 'ları** seçin. Aşağıdaki örnekte, Bloblar 30 gün boyunca değiştirilmediyse seyrek erişimli depolamaya taşınır.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Yaşam döngüsü yönetimi Azure portal bir kural ayrıntıları ekleme sayfası" ile başlayan bloblarda filtre uygular.
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure portal 'de yaşam döngüsü yönetimi temel blob 'ları sayfası":::
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Yaşam döngüsü yönetimi Azure portal bir kural ayrıntıları ekleme sayfası":::
+   **Son erişilen** seçenek, önizleme aşamasında aşağıdaki bölgelerde kullanılabilir:
+
+    - Orta Fransa
+    - Doğu Kanada
+    - Orta Kanada
+
+   > [!IMPORTANT]
+   > Son erişim zamanı izleme önizlemesi yalnızca üretim dışı kullanım için geçerlidir. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
+   
+   **Son erişme** seçeneğini kullanmak Için Azure Portal **yaşam döngüsü yönetimi** sayfasında **erişim izleme etkin** ' i seçin. **Son erişilen** seçenek hakkında daha fazla bilgi için bkz. [son erişme tarihine göre verileri taşıma (Önizleme)](#move-data-based-on-last-accessed-date-preview).
+
+1. **Ayrıntılar** sayfasındaki **filtrelerle blob 'ları sınırla** ' yı seçtiyseniz, isteğe bağlı bir filtre eklemek için **filtre ayarla** ' yı seçin. Aşağıdaki örnek, *mylifecyclecontainer* kapsayıcısında "log" ile başlayan bloblarda filtre uygular.
+
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure portal yaşam döngüsü yönetimi filtre kümesi sayfası":::
 
 1. Yeni ilkeyi eklemek için **Ekle** ' yi seçin.
 
@@ -329,7 +342,7 @@ Yaşam döngüsü yönetimi, Blobları, önceki blob sürümlerini ve BLOB anlı
 
 Çalışma koşulları yaşa göre yapılır. Temel blob 'lar son değiştirme süresini kullanır, blob sürümleri sürüm oluşturma süresini kullanır ve BLOB anlık görüntüleri, yaşı izlemek için anlık görüntü oluşturma süresi kullanır.
 
-| Eylem çalıştırma koşulu               | Koşul değeri                          | Açıklama                                                                      |
+| Eylem çalıştırma koşulu               | Koşul değeri                          | Description                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Yaşı gün olarak gösteren tamsayı değeri | Temel blob eylemleri için koşul                                              |
 | daysAfterCreationGreaterThan       | Yaşı gün olarak gösteren tamsayı değeri | Blob sürümü ve BLOB anlık görüntü eylemleri için koşul                         |
@@ -426,7 +439,7 @@ Son erişim zamanı izleme, aşağıdaki depolama hesabı türleri için kullan�
 
 Depolama Hesabınız genel amaçlı bir v1 hesabıdır, genel amaçlı v2 hesabına yükseltmek için Azure portal kullanın.
 
-Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları henüz desteklenmiyor.
+Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları artık desteklenmektedir.
 
 #### <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 

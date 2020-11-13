@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 78a8ae7724c9ede06b24649d3b19ea90b791ae08
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: db77df29d1b9b0adf07c7da377c028dee5312617
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541326"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579207"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -311,7 +311,7 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
 
 1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -324,7 +324,7 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
 
 1. Ortam değişkenleri sekmesinde, aşağıdaki ortam değişkeni adı-değer çiftini girin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -482,7 +482,7 @@ Buluttan iş yüklerini **alt katman** cihazlarınıza dağıtmak için hem Azur
 
 1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -585,25 +585,35 @@ Notice that the image URI that we used for the simulated temperature sensor modu
 
 On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
 
-You can also watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+## View generated data
 
-## Clean up resources
+The **Simulated Temperature Sensor** module that you pushed generates sample environment data. It sends messages that include ambient temperature and humidity, machine temperature and pressure, and a timestamp.
 
-You can delete the local configurations and the Azure resources that you created in this article to avoid charges.
+You can watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
-To delete the resources:
+You can also view these messages through the [Azure Cloud Shell](https://shell.azure.com/):
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and select **Resource groups**.
+   ```azurecli-interactive
+   az iot hub monitor-events -n <iothub_name> -d <lower-layer-device-name>
+   ```
 
-2. Select the name of the resource group that contains your IoT Edge test resources. 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-3. Review the list of resources contained in your resource group. If you want to delete all of them, you can select **Delete resource group**. If you want to delete only some of them, you can click into each resource to delete them individually. 
+Ücretlerden kaçınmak için bu makalede oluşturduğunuz yerel konfigürasyonları ve Azure kaynaklarını silebilirsiniz.
 
-## Next steps
+Kaynakları silmek için:
 
-In this tutorial, you configured two IoT Edge devices as gateways and set one as the parent device of the other. Then, you demonstrated pulling a container image onto the child device through a gateway. You can also try out this scenario by following the scripted [Azure IoT Edge for Industrial IoT sample](https://aka.ms/iotedge-nested-sample), which deploys Azure virtual machines as preconfigured devices to simulate a factory environment.
+1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’nı seçin.
 
-To see how Azure IoT Edge can create more solutions for your business, continue on to the other tutorials.
+2. IoT Edge test kaynaklarınızı içeren kaynak grubunun adını seçin. 
+
+3. Kaynak grubunuzda bulunan kaynak listesini gözden geçirin. Tümünü silmek isterseniz **Kaynak grubunu sil** 'i seçebilirsiniz. Kaynakların yalnızca bazılarını silmek istiyorsanız tek tek tıklayarak silebilirsiniz. 
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu öğreticide, iki IoT Edge cihazı ağ geçidi olarak yapılandırdığınıza ve bir tane diğerinin üst aygıtı olarak ayarlayaöğreneceksiniz. Daha sonra, bir ağ geçidi üzerinden bir kapsayıcı görüntüsünü alt cihaza çekiniz. Ayrıca, bir fabrika ortamının benzetimini yapmak için Azure sanal makinelerini önceden yapılandırılmış cihazlar olarak dağıtan [endüstriyel IoT örneği için](https://aka.ms/iotedge-nested-sample)komut dosyalı Azure IoT Edge ' yi izleyerek bu senaryoyu deneyebilirsiniz.
+
+Azure IoT Edge sisteminin işletmeniz için oluşturabileceği ek çözümleri görmek için diğer öğreticilere geçin.
 
 > [!div class="nextstepaction"]
-> [Deploy an Azure Machine Learning model as a module](tutorial-deploy-machine-learning.md)
+> [Bir Azure Machine Learning modelini modül olarak dağıtma](tutorial-deploy-machine-learning.md)

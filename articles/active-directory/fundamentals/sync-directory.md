@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ile dizin eşitleme
-description: Bu eşitleme modelini elde etmek için mimari yönergeler
+description: Azure Active Directory ile dizin eşitlemeyi elde etmeye yönelik mimari rehberlik.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862d17948cb09c18f9372f8b8b981e5efa6be71b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114316"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578918"
 ---
 # <a name="directory-synchronization"></a>Dizin eşitlemesi
 
@@ -40,17 +40,17 @@ Eşitleme, şu işlemdir
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı**: Azure ad kullanarak bir uygulamaya erişir.
+* **Kullanıcı** : Azure ad kullanarak bir uygulamaya erişir.
 
-* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
+* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
 
-* **Uygulama**: kimlik doğrulaması ve yetkilendirme AMACıYLA Azure AD 'nin kullanımına dayalı Web uygulaması.
+* **Uygulama** : kimlik doğrulaması ve yetkilendirme AMACıYLA Azure AD 'nin kullanımına dayalı Web uygulaması.
 
-* **Azure AD**: kimlik bilgilerini kuruluşun şirket içi dizininden Azure AD Connect aracılığıyla eşitler. 
+* **Azure AD** : kimlik bilgilerini kuruluşun şirket içi dizininden Azure AD Connect aracılığıyla eşitler. 
 
-* **Azure AD Connect**: şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araç. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gerekli olan önkoşulları ve bileşenleri dağıtmanıza ve yapılandırmanıza yardımcı olur ve Active Directory 'den Azure AD 'ye oturum açın. 
+* **Azure AD Connect** : şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araç. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gerekli olan önkoşulları ve bileşenleri dağıtmanıza ve yapılandırmanıza yardımcı olur ve Active Directory 'den Azure AD 'ye oturum açın. 
 
-* **Active Directory**: Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Domain Services çalıştıran sunuculara (AD DS) etki alanı denetleyicileri denir. Bunlar, etki alanındaki tüm kullanıcıları ve bilgisayarları doğrular ve yetkilendirirler.
+* **Active Directory** : Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Domain Services çalıştıran sunuculara (AD DS) etki alanı denetleyicileri denir. Bunlar, etki alanındaki tüm kullanıcıları ve bilgisayarları doğrular ve yetkilendirirler.
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Azure AD ile dizin eşitlemeyi uygulama
 

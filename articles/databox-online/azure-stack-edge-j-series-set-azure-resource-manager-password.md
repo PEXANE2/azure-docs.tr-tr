@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Edge Pro GPU cihazınızda Azure Resource Manager parola ayarlama
-description: Azure PowerShell kullanarak Azure Stack Edge Pro GPU 'unuzda çalışan Azure Resource Manager nasıl bağlanabileceğinizi açıklar.
+description: Azure PowerShell kullanarak Azure Stack Edge Pro GPU 'unuzda Azure Resource Manager parolayı ayarlamayı açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904481"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578799"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazında Azure Resource Manager parola ayarlama
 
@@ -21,18 +21,18 @@ ms.locfileid: "90904481"
 
 Bu makalede Azure Resource Manager parolanızın nasıl ayarlanacağı açıklanır. Azure Resource Manager aracılığıyla cihaz yerel API 'Lerine bağlanırken bu parolayı ayarlamanız gerekir.
 
-Azure portal veya PowerShell cmdlet 'lerini kullanmanıza bağlı olarak parolayı ayarlama yordamı farklı olabilir. Bu yordamların her biri aşağıdaki bölümlerde açıklanmıştır.
+Azure portalını veya PowerShell cmdlet'lerini kullanma durumunuza göre parola ayarlama yordamı farklı olabilir. Bu yordamların her biri aşağıdaki bölümlerde açıklanmıştır.
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Azure portal aracılığıyla parolayı sıfırlama
 
 1. Azure portal, cihazınızı yönetmek için oluşturduğunuz Azure Stack Edge kaynağına gidin. **Edge compute >** başlayın ' a gidin.
 
-2. Sağ bölmede, komut çubuğundan **Edge ARM parolasını sıfırla**' yı seçin. 
+2. Sağ taraftaki bölmede komut çubuğundan **Edge ARM parolasını sıfırla** 'yı seçin. 
 
     ![EdgeARM Kullanıcı parolasını sıfırla 1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. **EdgeArm Kullanıcı parolasını sıfırla** dikey penceresinde, Azure Resource Manager aracılığıyla cihaz yerel API 'nize bağlanmak için bir parola girin. Parolayı onaylayın ve **Sıfırla**' yı seçin.
+3. **EdgeArm Kullanıcı parolasını sıfırla** dikey penceresinde, Azure Resource Manager aracılığıyla cihaz yerel API 'nize bağlanmak için bir parola girin. Parolayı onaylayın ve **Sıfırla** ' yı seçin.
 
     ![EdgeARM Kullanıcı parolasını sıfırla 2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
@@ -45,10 +45,10 @@ Azure portal veya PowerShell cmdlet 'lerini kullanmanıza bağlı olarak parolay
     - Azure Stack Edge kaynak adı
     - Abonelik Kimliği
 
-2. **Ayarlar > Özellikler**' e gidin. **Özellikler** sayfasında aşağıdaki parametreleri bir yere getirin.
+2. **Ayarlar > Özellikler** ' e gidin. **Özellikler** sayfasında aşağıdaki parametreleri bir yere getirin.
 
     - Kaynak grubu
-    - CıK şifreleme anahtarı: Görünüm ' ü seçin ve ardından **şifreleme anahtarını**kopyalayın.
+    - CıK şifreleme anahtarı: Görünüm ' ü seçin ve ardından **şifreleme anahtarını** kopyalayın.
 
     ![CıK şifreleme anahtarı al](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  

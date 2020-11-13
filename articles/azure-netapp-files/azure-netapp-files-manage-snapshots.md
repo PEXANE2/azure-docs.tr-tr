@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491656"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591759"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -144,6 +144,17 @@ Artık saklamak istemediğiniz bir anlık görüntü ilkesini silebilirsiniz.
 
     ![Anlık görüntü ilkesi silme onayı](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
 
+## <a name="edit-the-hide-snapshot-path-option"></a>Anlık görüntü yolunu gizle seçeneğini düzenleme
+Anlık görüntü yolunu Gizle seçeneği, bir birimin anlık görüntü yolunun görünür olup olmadığını denetler. Bir [NFS](azure-netapp-files-create-volumes.md#create-an-nfs-volume) veya [SMB](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) birimi oluşturulurken, anlık görüntü yolunun gizlenip gizlenmeyeceğini belirtme seçeneğiniz vardır. Daha sonra gerektiğinde anlık görüntü yolunu gizle seçeneğini düzenleyebilirsiniz.  
+
+> [!NOTE]
+> Çapraz bölge çoğaltmasında bir [hedef birim](cross-region-replication-create-peering.md#create-the-data-replication-volume-the-destination-volume) Için, anlık görüntü yolunu Gizle seçeneği varsayılan olarak etkindir ve ayar değiştirilemez. 
+
+1. Bir birimin anlık görüntü yolunu Gizle seçenek ayarını görüntülemek için birimi seçin. **Anlık görüntü yolunu Gizle** alanı, seçeneğinin etkin olup olmadığını gösterir.   
+    ![Anlık görüntü yolunu Gizle alanını açıklayan ekran görüntüsü.](../media/azure-netapp-files/hide-snapshot-path-field.png) 
+2. Anlık görüntü yolunu gizle seçeneğini düzenlemek için, birim sayfasında **Düzenle** ' ye tıklayın ve ardından **anlık görüntü yolunu Gizle** seçeneğini gerektiği gibi değiştirin.   
+    ![Birim anlık görüntüsünü Düzenle seçeneğini açıklayan ekran görüntüsü.](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Bir anlık görüntüyü yeni bir birime geri yükleme
 
 Şu anda, bir anlık görüntüyü yalnızca yeni bir birime geri yükleyebilirsiniz. 
@@ -173,17 +184,13 @@ Artık saklamak istemediğiniz bir anlık görüntü ilkesini silebilirsiniz.
 
 Takılan birim,  `.snapshot` istemci tarafından erişilebilen (NFS istemcileri 'nde) veya `~snapshot` (SMB istemcilerinde) adlı bir anlık görüntü dizini içerir. Snapshot dizini birimin anlık görüntülerine karşılık gelen alt dizinleri içerir. Her alt dizin, anlık görüntünün dosyalarını içerir. Yanlışlıkla bir dosyayı silerseniz veya üzerine yazarsanız, dosyayı bir anlık görüntü alt dizininden oku-yaz dizinine kopyalayarak dosyayı üst okuma-yazma dizinine geri yükleyebilirsiniz. 
 
-Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, anlık görüntü dizini gizlenir. Birimi seçerek birimin anlık görüntü yolunu Gizle durumunu görüntüleyebilirsiniz. Birimin sayfasında **Düzenle** ' ye tıklayarak anlık görüntü yolunu gizle seçeneğini düzenleyebilirsiniz.  
-
-Çapraz bölge çoğaltmasında bir hedef birim için, anlık görüntü yolunu Gizle varsayılan olarak etkindir ve ayar değiştirilemez.
-
-![Birim anlık görüntü seçeneklerini düzenleme](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+Anlık görüntü dizinini görmüyorsanız, anlık görüntü yolunu Gizle seçeneği etkin durumda olduğundan bu gizli olabilir. [Anlık görüntü yolunu gizle seçeneğini](#edit-the-hide-snapshot-path-option) devre dışı bırakmak için düzenleyebilirsiniz.  
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS istemcisi kullanarak bir dosyayı geri yükleme 
 
 1. `ls`Dizinden geri yüklemek istediğiniz dosyayı listelemek için Linux komutunu kullanın `.snapshot` . 
 
-    Örneğin:
+    Örnek:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -198,7 +205,7 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
 2. `cp`Dosyayı üst dizine kopyalamak için komutunu kullanın.  
 
-    Örneğin: 
+    Örnek: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 

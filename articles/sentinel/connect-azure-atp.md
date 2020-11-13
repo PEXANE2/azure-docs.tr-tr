@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 64c1a7155d0cc4e80f97db138a0626d6e9fdc9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 319e0d29ef297f2a675128d498820a2d5b8ac42e
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657816"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579530"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Kimlik için Microsoft Defender 'daki verileri bağlama (eski adıyla Azure Gelişmiş tehdit koruması)
 
 > [!IMPORTANT]
 > Azure Sentinel 'de Identity Data Connector için Microsoft Defender Şu anda genel önizleme aşamasındadır.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Kimlik Için Microsoft Defender](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) 'Daki günlükleri Azure Sentinel 'e tek bir tıklama ile akışla aktarabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Genel yönetici veya Güvenlik Yöneticisi izinlerine sahip Kullanıcı
-- Kimlik için Microsoft Defender 'ın önizleme müşterisi olmanız ve kimlik ve Microsoft Cloud App Security için Microsoft Defender arasında tümleştirmeyi etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [kimlik tümleştirmesi Için Microsoft Defender](https://docs.microsoft.com/cloud-app-security/aatp-integration).
+- Kimlik için Microsoft Defender 'ın önizleme müşterisi olmanız ve kimlik ve Microsoft Cloud App Security için Microsoft Defender arasında tümleştirmeyi etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [kimlik tümleştirmesi Için Microsoft Defender](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection).
 
 ## <a name="connect-to-microsoft-defender-for-identity"></a>Kimlik için Microsoft Defender 'a bağlanma
 
@@ -40,15 +40,15 @@ Ağınızda kimlik önizleme sürümünün Microsoft Defender 'ın [etkinleştir
 Kimlik için Microsoft Defender dağıtılırsa ve verileriniz geri alıyorsa şüpheli uyarılar Azure Sentinel 'e kolayca akışını sağlayabilir. Uyarıların Azure Sentinel 'e akışını başlatması 24 saate kadar sürebilir.
 
 
-1. Kimlik için Microsoft Defender 'ı Azure Sentinel 'e bağlamak için öncelikle kimlik ve Microsoft Cloud App Security Microsoft Defender arasındaki tümleştirmeyi etkinleştirmeniz gerekir. Bunun nasıl yapılacağı hakkında bilgi için bkz. [kimlik tümleştirmesi Için Microsoft Defender](https://docs.microsoft.com/cloud-app-security/aatp-integration).
+1. Kimlik için Microsoft Defender 'ı Azure Sentinel 'e bağlamak için öncelikle kimlik ve Microsoft Cloud App Security Microsoft Defender arasındaki tümleştirmeyi etkinleştirmeniz gerekir. Bunun nasıl yapılacağı hakkında bilgi için bkz. [kimlik tümleştirmesi Için Microsoft Defender](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection).
 
 1. Azure Sentinel 'de **veri bağlayıcıları** ' nı seçin ve ardından **Microsoft Defender for Identity (Önizleme)** kutucuğuna tıklayın.
 
-1. Kimlik için Microsoft Defender 'daki uyarıların otomatik olarak Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
+1. Kimlik için Microsoft Defender 'daki uyarıların otomatik olarak Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar** altında düzenleyebilirsiniz.
 
-1. **Bağlan**'a tıklayın.
+1. **Bağlan** 'a tıklayın.
 
-1. Kimlik uyarıları için Microsoft Defender Log Analytics ' de ilgili şemayı kullanmak için, **Securityalert**aratın.
+1. Kimlik uyarıları için Microsoft Defender Log Analytics ' de ilgili şemayı kullanmak için, **Securityalert** aratın.
 
 > [!NOTE]
 > Uyarılar 30 KB 'tan büyükse Azure Sentinel, uyarılarda varlıklar alanını görüntülemeyi durduruyor.

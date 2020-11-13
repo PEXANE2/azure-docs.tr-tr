@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554725"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591997"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısına veri aktarma
 
@@ -53,6 +53,8 @@ Modül çıkış verileri tablosal biçimindeyse, çıktıyı bir **dosya veri k
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma
 
 Kayıtlı veri kümeleriniz, **veri kümeleri** altında modül paletinde bulunabilir. Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını tuvaldeki diğer modüllere bağlayın. 
+
+Bir dosya veri kümesini kaydettiğinizde, veri kümesinin çıkış bağlantı noktası türü **Anydirectory** olur. Tablosal veri kümesini kaydettiğinizde **Dataframedirectory** ise veri kümesinin çıkış bağlantı noktası türüdür. Veri kümesinin çıkış bağlantı noktasını tasarımcıda diğer modüllere bağladığınızda, veri kümelerinin ve modüllerin bağlantı noktası türünün hizalı olması gerektiğini unutmayın.
 
 ![Tasarımcı paletindeki kaydedilen veri kümelerinin konumunu gösteren ekran görüntüsü](media/how-to-designer-import-data/use-datasets-designer.png)
 

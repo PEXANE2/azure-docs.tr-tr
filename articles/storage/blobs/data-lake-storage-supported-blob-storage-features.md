@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8ab001636cc6fac921f552070b9b064d9c53a8d7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8f73f2a86e97dad1d6a0b0f05c54f3f896b4b49d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042074"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579224"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri
 
@@ -45,7 +45,7 @@ Aşağıdaki tabloda, her bir BLOB depolama özelliğinin Data Lake Storage 2. i
 |Sabit depolama|Önizleme|Önizleme|[Sabit depolamayla iş açısından kritik blob verilerini depolayın](storage-blob-immutable-storage.md)|
 |Kapsayıcı geçici silme|Önizleme|Önizleme|[Kapsayıcılar için geçici silme (Önizleme)](soft-delete-container-overview.md)|
 |Blob geçici silme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Bloblar için geçici silme](storage-blob-soft-delete.md)|
-|Blobsigortası|Önizleme|Önizleme|[Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama](storage-how-to-mount-container-linux.md)|
+|Blobsigortası|Genel kullanıma sunuldu|Genel kullanıma sunuldu|[Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama](storage-how-to-mount-container-linux.md)|
 |Hesap yük devretmesi|Henüz desteklenmiyor|Henüz desteklenmiyor|[Olağanüstü durum kurtarma ve hesap yük devretme](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob kapsayıcı ACL 'SI|Desteklenmez<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Desteklenmez<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Bu tablonun altındaki ilgili nota bakın.|
 |Müşteri tarafından sunulan anahtarlar|Henüz desteklenmiyor|Henüz desteklenmiyor|[BLOB depolama için istekte bir şifreleme anahtarı sağlayın](encryption-customer-provided-keys.md)|

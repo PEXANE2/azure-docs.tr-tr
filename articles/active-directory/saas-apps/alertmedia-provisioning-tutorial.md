@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9a7c19e30c6c26d7bf7f11d6f03a0acaee160c9a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358982"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578663"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için AlertMedia yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem AlertM
 > * AlertMedia 'te grupları ve grup üyeliklerini sağlama
 > * Alertmedyada [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/alertmedia-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -95,9 +95,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, AlertMedia **kiracı URL** 'nizi aşağıdakilerden biri olarak girin.
-      * (özel etki alanı yok) https://dashboard.alertmedia.com/api/scim/v3
+      * (özel etki alanı yok) `https://dashboard.alertmedia.com/api/scim/v3`
 
-      * (özel etki alanı) https://subdomain.alertmedia.com/api/scim/v3
+      * (özel etki alanı) `https://subdomain.alertmedia.com/api/scim/v3`
 
       **Gizli anahtarı** adım 2 ' de daha önce alındı olarak girin. Azure AD 'nin AlertMedia 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, AlertMedia hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 

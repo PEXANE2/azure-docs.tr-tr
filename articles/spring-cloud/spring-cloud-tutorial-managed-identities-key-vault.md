@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b3505f8bf31c2e700ce1cc57e106c33a13e0aa9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737181"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579513"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Öğretici: Azure Spring Cloud uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
@@ -77,6 +77,8 @@ Döndürülen `url` "https://<-app-name>. azuremicroservices.io" biçiminde olac
 ```azurecli
 az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY} --secret-permissions set get list
 ```
+> [!NOTE]
+> `az keyvault delete-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY}`Sistem tarafından atanan yönetilen kimlik devre dışı bırakıldıktan sonra uygulamanıza erişimi kaldırmak için kullanın.
 
 ## <a name="build-a-sample-spring-boot-app-with-spring-boot-starter"></a>Spring Boot Starter ile örnek Spring Boot uygulaması oluşturma
 Bu uygulamanın Azure Key Vault parolaları almak için erişimi olacak. Başlangıç uygulaması: [Azure Key Vault gizlilikler Spring Boot Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets)' i kullanın.  Azure Key Vault yay **PropertySource** örneği olarak eklenir.  Azure Key Vault depolanan gizli dizileri kolay bir şekilde erişilebilir ve dosyalardaki özellikler gibi herhangi bir externalized yapılandırma özelliği gibi kullanılabilir. 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
-ms.openlocfilehash: 10e98cd2f0ad4793aa43f9bb3316c522b44f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303548"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579300"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>Kişiselleştirici öğrenme davranışını yapılandırma
 
@@ -22,7 +22,7 @@ ms.locfileid: "91303548"
 
 1. Kişiselleştirici kaynağınız için [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde, ana **hat eylemi Döndür ' ü seçin, bir apprenlet olarak öğrenin ve** ardından **Kaydet**' i seçin.
+1. **Yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde, ana **hat eylemi Döndür ' ü seçin, bir apprenlet olarak öğrenin ve** ardından **Kaydet** ' i seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Azure portal 'de apprence modu öğrenme davranışını yapılandırma ekran görüntüsü](media/settings/configure-learning-behavior-azure-portal.png)
@@ -37,35 +37,31 @@ Uygulamanıza kişiselleştirici eklemek için, derecelendirme ve yeniden dengel
 
 1. Mevcut uygulama mantığınızdaki noktadan sonra, eylem ve bunların özelliklerinin listesini belirlediğiniz noktadan sonra [derece API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) çağrısını ekleyin. Eylemler listesindeki ilk eylemin, mevcut mantığınızın seçtiği eylem olması gerekir.
 
-1. Sıralama API 'SI yanıtının **Reward eylem kimliğiyle**ilişkili eylemi görüntüleyecek şekilde kodunuzu yapılandırın.
+1. Sıralama API 'SI yanıtının **Reward eylem kimliğiyle** ilişkili eylemi görüntüleyecek şekilde kodunuzu yapılandırın.
 
 ### <a name="configure-your-application-to-call-reward-api"></a>Uygulamanızı, Reward API çağrısı için yapılandırma
 
 1. Mevcut iş mantığınızı kullanarak, görüntülenmiş eylemin **yeniden** nasıl hesaplanacağını hesaplayabilirsiniz. Değerin 0-100 aralığında olması gerekir. [Ödül API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)kullanarak bu yeniden kişiselleştiriciye gönderin. Ödül değeri hemen beklenmez ve iş mantığınıza bağlı olarak bir zaman diliminde geciktirilebilir.
 
-1. Yapılandırılan **yeniden bekleme süresi**içinde geri dönmezseniz, bunun yerine varsayılan geri dönme kullanılacaktır.
+1. Yapılandırılan **yeniden bekleme süresi** içinde geri dönmezseniz, bunun yerine varsayılan geri dönme kullanılacaktır.
 
 ## <a name="evaluate-apprentice-mode"></a>Apprenlet modunu değerlendir
 
-Azure portal, kişiselleştirici kaynağınız için **değerlendirmeler** sayfasında, **geçerli öğrenme davranışı performansını**gözden geçirin.
+Azure portal, kişiselleştirici kaynağınız için **değerlendirmeler** sayfasında, **geçerli öğrenme davranışı performansını** gözden geçirin.
 
 > [!div class="mx-imgBorder"]
 > ![Azure portal 'de apprence modu öğrenme davranışının değerlendirilmesine yönelik ekran görüntüsü](media/settings/evaluate-apprentice-mode.png)
 
-Apprenlet modu aşağıdaki **değerlendirme ölçümlerini**sağlar:
-* **Taban çizgisi – ortalama ödül**: uygulamanın varsayılan (taban çizgisi) ortalama yeniden sürümleri.
-* **Kişiselleştirici – ortalama ödül**: Toplam Rede kişiselleştiriciye ait ortalama, potansiyel olarak gelmiş olabilir.
-* **En son 1000 olay sayısı için başarı oranı**: en son 1000 olay üzerinden normalleştirilmeli ve kişiselleştirici bir şekilde değerlendiriliyor.
-
-## <a name="evaluate-apprentice-mode-features"></a>Apprence modu özelliklerini değerlendir
-
-[Çevrimdışı bir değerlendirme](how-to-offline-evaluation.md)kullanarak özellikleri değerlendirin.
+Apprenlet modu aşağıdaki **değerlendirme ölçümlerini** sağlar:
+* **Taban çizgisi – ortalama ödül** : uygulamanın varsayılan (taban çizgisi) ortalama yeniden sürümleri.
+* **Kişiselleştirici – ortalama ödül** : Toplam Rede kişiselleştiriciye ait ortalama, potansiyel olarak gelmiş olabilir.
+* **En son 1000 olay sayısı için başarı oranı** : en son 1000 olay üzerinden normalleştirilmeli ve kişiselleştirici bir şekilde değerlendiriliyor.
 
 ## <a name="switch-behavior-to-online-mode"></a>Davranışı çevrimiçi moda geçir
 
 Kişiselleştirmeye yönelik bir ortalama% 75-85 yuvarlanan ortalama ile eğitilen, model çevrimiçi moda geçmeye hazırlanıyor.
 
-Kişiselleştirici kaynağınız için Azure portal, **yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde **en iyi eylemi Döndür** ' ü seçin ve ardından **Kaydet**' i seçin.
+Kişiselleştirici kaynağınız için Azure portal, **yapılandırma** sayfasında, **öğrenme davranışı** sekmesinde **en iyi eylemi Döndür** ' ü seçin ve ardından **Kaydet** ' i seçin.
 
 Derecelendirme ve yeniden iletme API çağrılarında herhangi bir değişiklik yapmanız gerekmez.
 

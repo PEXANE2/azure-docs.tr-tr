@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9896b62ab347ec3b4751eb517c00222f00ddb1c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321452"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579411"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgulama
 
@@ -45,6 +45,11 @@ from openrowset(
 ```
 
 `firstrow`Bu durumda üstbilgiyi temsil eden CSV dosyasındaki ilk satırı atlamak için seçeneği kullanılır. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
+
+> [!IMPORTANT]
+> CSV dosyanız UTF-8 karakterleri içeriyorsa, bazı UTF-8 veritabanı harmanlaması kullandığınızdan emin olun (örneğin `Latin1_General_100_CI_AS_SC_UTF8` ).
+> Dosyadaki metin kodlaması arasında uyuşmazlık var ve harmanlama beklenmeyen dönüştürme hatalarına neden olabilir.
+> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 
@@ -91,9 +96,15 @@ from openrowset(
 
 Tümce içindeki bir veri türünden sonraki sayılar `WITH` CSV dosyasındaki sütun dizinini temsil eder.
 
+> [!IMPORTANT]
+> CSV dosyanız UTF-8 karakterleri içeriyorsa, `Latin1_General_100_CI_AS_SC_UTF8` yan tümcedeki tüm sütunlar IÇIN UTF-8 harmanlaması (örneğin) `WITH` veya veritabanı DÜZEYINDE bazı UTF-8 harmanlamasını belirtdiğinizden emin olun.
+> Dosyadaki metin kodlaması arasında uyuşmazlık var ve harmanlama beklenmeyen dönüştürme hatalarına neden olabilir.
+> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Aşağıdaki tanımı kullanarak Sütu türlerinde harmanlamayı kolayca ayarlayabilirsiniz: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8 8`
+
 Aşağıdaki bölümlerde, çeşitli CSV dosyası türlerini sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adımınız tabloların oluşturulacağı **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

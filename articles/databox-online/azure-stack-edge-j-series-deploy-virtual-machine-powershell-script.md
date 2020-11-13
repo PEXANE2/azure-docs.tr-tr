@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
-description: Azure PowerShell kullanarak bir Azure Stack Edge Pro cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
+title: Azure PowerShell betiği aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
+description: Bir Azure PowerShell betiği kullanarak bir Azure Stack Edge Pro cihazında sanal makinelerin (VM 'Ler) nasıl oluşturulacağını ve yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890647"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578765"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell betiği aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
 
@@ -31,7 +31,7 @@ Bu betiği kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve 
 
 2. İşlem için bir ağ arabirimi etkinleştirildi. Bu ağ arabirimi IP 'si, VM dağıtımı için bir sanal anahtar oluşturmak üzere kullanılır. Aşağıdaki adımlar süreç boyunca size yol gösterir:
 
-    1. **İşlem ayarları**' na gidin. Sanal anahtar oluşturmak için kullanacağınız ağ arabirimini seçin.
+    1. **İşlem ayarları** ' na gidin. Sanal anahtar oluşturmak için kullanacağınız ağ arabirimini seçin.
 
         > [!IMPORTANT] 
         > İşlem için yalnızca bir bağlantı noktası yapılandırabilirsiniz.

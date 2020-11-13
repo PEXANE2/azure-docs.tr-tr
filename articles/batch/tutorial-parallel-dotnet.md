@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 2ea68b8a6cf26db2e4ba440140cfa900cebbb4aa
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335664"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578306"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Öğretici: .NET API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -29,13 +29,13 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) .
 
 * Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın.
 
-* [FFmpeg 4.3.1 (. zip) Windows 64 bit sürümü](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) . Zip dosyasını yerel bilgisayarınıza indirin. Bu öğretici için yalnızca ZIP dosyasına ihtiyacınız vardır. Dosyanın sıkıştırmasını açmanız veya yerel olarak yüklemeniz gerekmez.
+* [FFmpeg 4.3.1 (. zip) Windows 64 bit sürümü](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) . Zip dosyasını yerel bilgisayarınıza indirin. Bu öğretici için yalnızca ZIP dosyasına ihtiyacınız vardır. Dosyanın sıkıştırmasını açmanız veya yerel olarak yüklemeniz gerekmez.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

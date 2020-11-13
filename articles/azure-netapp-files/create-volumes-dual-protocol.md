@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963525"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591657"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -33,7 +33,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 * Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
     [Azure NetApp Files için bir alt ağ temsilcisine](azure-netapp-files-delegate-subnet.md)bakın.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * [Active Directory bağlantıları Için gereksinimleri](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)karşıladığınızdan emin olun. 
 * DNS sunucusunda bir geriye doğru arama bölgesi oluşturun ve ardından bu geriye doğru arama bölgesine AD ana makinesi için bir işaretçi (PTR) kaydı ekleyin. Aksi halde, çift protokol birimi oluşturma işlemi başarısız olur.
@@ -54,11 +54,11 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
 ## <a name="create-a-dual-protocol-volume"></a>Çift protokollü birim oluşturma
 
-1.  Kapasite havuzları dikey penceresinden **birimler** dikey penceresine tıklayın. Birim oluşturmak için **+ Birim ekle**'ye tıklayın. 
+1.  Kapasite havuzları dikey penceresinden **birimler** dikey penceresine tıklayın. Birim oluşturmak için **+ Birim ekle** 'ye tıklayın. 
 
     ![Birimlere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  Birim Oluştur penceresinde **Oluştur**' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
+2.  Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
     * **Birim adı**      
         Oluşturmakta olduğunuz birim için ad belirtin.   
 
@@ -100,7 +100,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
         ![Gelişmiş seçimi göster](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
+3. **Protokol** ' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
     * Birimin protokol türü olarak **çift protokol (NFSv3 ve SMB)** seçeneğini belirleyin.   
 
     * Açılan listeden **Active Directory** bağlantıyı seçin.  
@@ -135,7 +135,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
     ![Sertifika Dışarı Aktarma Sihirbazı](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. Çift protokol biriminin NetApp hesabına gidin, **Active Directory bağlantılar**' a tıklayın ve **Active Directory Birleştir** penceresini kullanarak kök CA sertifikasını karşıya yükleyin:  
+4. Çift protokol biriminin NetApp hesabına gidin, **Active Directory bağlantılar** ' a tıklayın ve **Active Directory Birleştir** penceresini kullanarak kök CA sertifikasını karşıya yükleyin:  
 
     ![Sunucu kök CA sertifikası](../media/azure-netapp-files/server-root-ca-certificate.png)
 
@@ -161,5 +161,5 @@ NFS istemcisini yapılandırmak için [Azure NetApp FILES NFS Istemcisi yapılan
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-* [Çift protokol SSS](azure-netapp-files-faqs.md#dual-protocol-faqs)
 * [Azure NetApp Files için NFS istemcisini yapılandırma](configure-nfs-clients.md)
+* [Çift protokol birimlerinde sorunları giderme](troubleshoot-dual-protocol-volumes.md)

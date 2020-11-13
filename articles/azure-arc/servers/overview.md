@@ -2,14 +2,14 @@
 title: Azure Arc etkin sunucularına genel bakış
 description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gibi yönetmek için Azure Arc etkin sunucularını nasıl kullanacağınızı öğrenin.
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360590"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578731"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
@@ -45,6 +45,15 @@ Karma makineden bir Log Analytics çalışma alanında toplanan ve depolanan gü
 Azure Arc etkin sunucularıyla desteklenen bölgelerin kesin bir listesi için bkz. [bölgeye göre Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) sayfası.
 
 Çoğu durumda, yükleme betiğini oluştururken seçtiğiniz konum coğrafi olarak makinenizin konumuna en yakın olan Azure bölgesi olmalıdır. Bekleyen veriler, belirttiğiniz bölgeyi içeren Azure Coğrafya içinde depolanır ve bu da veri yerleşimi gereksinimleriniz varsa bölge seçiminizi de etkileyebilir. Makinenizin bağlandığı Azure bölgesi bir kesinti nedeniyle etkileniyorsa, bağlı makine etkilenmez, ancak Azure 'u kullanan yönetim işlemleri tamamlanmayabilir. Bölgesel bir kesinti durumunda, coğrafi olarak yedekli bir hizmeti destekleyen birden çok konumunuz varsa, her konumdaki makineleri farklı bir Azure bölgesine bağlamak en iyisidir.
+
+Bağlı makineyle ilgili aşağıdaki meta veri bilgileri, Azure Arc makine kaynağının yapılandırıldığı bölgede toplanır ve depolanır:
+
+- İşletim sistemi adı ve sürümü
+- Bilgisayar adı
+- Bilgisayar tam etki alanı adı (FQDN)
+- Bağlı makine Aracısı sürümü
+
+Örneğin, makine Doğu ABD bölgesinde Azure Arc ile kayıtlıysa, bu veriler ABD bölgesinde saklanır.
 
 ### <a name="agent-status"></a>Aracı durumu
 

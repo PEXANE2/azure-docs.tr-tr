@@ -6,16 +6,16 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 38bc0ec546526cd0c6631b7cd5b70753c3235d18
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563996"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579139"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Öğretici: Azure Işlevleri özel site erişimi oluşturma
 
-Bu öğreticide, Azure Işlevleri ile [özel site erişiminin](./functions-networking-options.md#private-site-access) nasıl etkinleştirileceği gösterilmektedir. Özel site erişimini kullanarak, işlev kodunuzun yalnızca belirli bir sanal ağdan tetiklenmesi zorunlu kılabilirsiniz.
+Bu öğreticide, Azure Işlevleri ile [özel site erişiminin](./functions-networking-options.md#private-endpoint-connections) nasıl etkinleştirileceği gösterilmektedir. Özel site erişimini kullanarak, işlev kodunuzun yalnızca belirli bir sanal ağdan tetiklenmesi zorunlu kılabilirsiniz.
 
 Özel site erişimi, işlev uygulamasına erişimin belirli bir sanal ağla sınırlı olması gerektiğinde senaryolar için faydalıdır. Örneğin, işlev uygulaması yalnızca belirli bir kuruluşun çalışanları veya belirtilen sanal ağ içinde (başka bir Azure Işlevi, Azure sanal makinesi veya AKS kümesi gibi) bulunan hizmetler için geçerli olabilir.
 
@@ -159,7 +159,7 @@ Sonraki adım, [Tüketim planını](functions-scale.md#consumption-plan)kullanar
 
 Bir sonraki adım, yalnızca sanal ağ üzerindeki kaynakların işlevi çağırabilmesini sağlamak için [erişim kısıtlamalarını](../app-service/app-service-ip-restrictions.md) yapılandırmaktır.
 
-[Özel site](functions-networking-options.md#private-site-access) erişimi, işlev uygulaması ve belirtilen sanal ağ arasında bir Azure sanal ağ [hizmeti uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) oluşturularak etkinleştirilir. Erişim kısıtlamaları, hizmet uç noktaları aracılığıyla uygulanır. Hizmet uç noktaları, yalnızca belirtilen sanal ağ içinden gelen trafiğin belirlenen kaynağa erişebildiğinden emin olun. Bu durumda, belirlenen kaynak Azure Işlevidir.
+[Özel site](functions-networking-options.md#private-endpoint-connections) erişimi, işlev uygulaması ve belirtilen sanal ağ arasında bir Azure sanal ağ [hizmeti uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) oluşturularak etkinleştirilir. Erişim kısıtlamaları, hizmet uç noktaları aracılığıyla uygulanır. Hizmet uç noktaları, yalnızca belirtilen sanal ağ içinden gelen trafiğin belirlenen kaynağa erişebildiğinden emin olun. Bu durumda, belirlenen kaynak Azure Işlevidir.
 
 1. İşlev uygulaması içinde, _Ayarlar_ bölüm üst bilgisi altında **ağ** bağlantısı ' nı seçin.
 1. _Ağ_ sayfası, Azure ön kapısını, Azure CDN ve ayrıca erişim kısıtlamalarını yapılandırmak için başlangıç noktasıdır.

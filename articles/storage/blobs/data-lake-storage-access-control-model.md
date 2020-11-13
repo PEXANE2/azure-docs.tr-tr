@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 099d79e63795a88a66ef1ec65aa1bfd97037191e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134248"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578657"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetimi modeli
 
@@ -43,11 +43,11 @@ Aşağıdaki roller, bir güvenlik sorumlusunun bir depolama hesabındaki verile
 | [Depolama Blob Verileri Katkıda Bulunanı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | BLOB depolama kapsayıcıları ve Blobları için okuma, yazma ve silme erişimi. Bu erişim, güvenlik sorumlusunun bir öğenin sahipliğini ayarlamaya izin vermez, ancak güvenlik sorumlusu tarafından sahip olunan öğelerin ACL 'sini değiştirebilir. |
 | [Depolama Blob Verileri Okuyucusu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | BLOB depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. |
 
-[Sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [katkıda bulunan](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)ve [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) gibi roller, bir güvenlik sorumlusunun bir depolama hesabını yönetmesine izin verir, ancak bu hesap içindeki verilere erişim sağlamaz. Ancak, bu roller ( **okuyucu**hariç), verilere erişmek için çeşitli istemci araçlarında kullanılabilecek depolama anahtarlarına erişim elde edebilir.
+[Sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [katkıda bulunan](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)ve [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) gibi roller, bir güvenlik sorumlusunun bir depolama hesabını yönetmesine izin verir, ancak bu hesap içindeki verilere erişim sağlamaz. Ancak, bu roller ( **okuyucu** hariç), verilere erişmek için çeşitli istemci araçlarında kullanılabilecek depolama anahtarlarına erişim elde edebilir.
 
 ## <a name="access-control-lists-acls"></a>Erişim denetim listeleri (ACL’ler)
 
-ACL 'Ler, dizinlere ve dosyalara "daha hassas" bir erişim düzeyi uygulamanıza olanak sağlar. *ACL* , bir dizi *ACL girişi*içeren bir izin yapısıdır. Her ACL girişi güvenlik sorumlusunu bir erişim düzeyiyle ilişkilendirir.  Daha fazla bilgi için, bkz. [Azure Data Lake Storage 2. erişim denetim listeleri (ACL 'ler)](data-lake-storage-access-control.md).
+ACL 'Ler, dizinlere ve dosyalara "daha hassas" bir erişim düzeyi uygulamanıza olanak sağlar. *ACL* , bir dizi *ACL girişi* içeren bir izin yapısıdır. Her ACL girişi güvenlik sorumlusunu bir erişim düzeyiyle ilişkilendirir.  Daha fazla bilgi için, bkz. [Azure Data Lake Storage 2. erişim denetim listeleri (ACL 'ler)](data-lake-storage-access-control.md).
 
 ## <a name="how-permissions-are-evaluated"></a>İzinler nasıl değerlendirilir
 
@@ -71,38 +71,38 @@ Aşağıdaki diyagramda, üç yaygın işlem için izin akışı gösterilmekted
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>İzinler tablosu: Azure RBAC ve ACL 'yi birleştirme
 
-Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelenen işlemleri gerçekleştirebilmesi IÇIN Azure RBAC ROLLERINI ve ACL girdilerini nasıl birleştirebileceğiniz gösterilmektedir. Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `/` , **Oregon**adlı bir alt dizin, **İstanbul**adlı MARI dizininin bir alt dizini ve **Data.txt**adlı Portland dizinindeki bir metin dosyası. Bu sütunlarda görünen, izin vermek için gereken ACL girişinin [kısa biçimli](data-lake-storage-access-control.md#short-forms-for-permissions) temsilleridir. İşlemi gerçekleştirmek **için BIR ACL** girişi gerekmiyorsa yok (_uygulanamaz_) sütununda görüntülenir.
+Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelenen işlemleri gerçekleştirebilmesi IÇIN Azure RBAC ROLLERINI ve ACL girdilerini nasıl birleştirebileceğiniz gösterilmektedir. Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `/` , **Oregon** adlı bir alt dizin, **İstanbul** adlı MARI dizininin bir alt dizini ve **Data.txt** adlı Portland dizinindeki bir metin dosyası. Bu sütunlarda görünen, izin vermek için gereken ACL girişinin [kısa biçimli](data-lake-storage-access-control.md#short-forms-for-permissions) temsilleridir. İşlemi gerçekleştirmek **için BIR ACL** girişi gerekmiyorsa yok ( _uygulanamaz_ ) sütununda görüntülenir.
 
 |    İşlem             | Atanmış RBAC rolü               |    /        | 'Daki     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
 | Data.txt oku            |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |  
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | Yok      | Yok      | Yok       | Yok    |
-|                          |   Hiçbiri                           | `--X`    | `--X`    | `--X`     | `R--`  |
+|                          |   Yok                           | `--X`    | `--X`    | `--X`     | `R--`  |
 | Data.txt sonuna ekle       |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | `--X`    | `--X`    | `--X`     | `-W-`  |
-|                          |   Hiçbiri                           | `--X`    | `--X`    | `--X`     | `RW-`  |
+|                          |   Yok                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Data.txt Sil          |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | `--X`    | `--X`    | `-WX`     | YOK    |
-|                          |   Hiçbiri                           | `--X`    | `--X`    | `-WX`     | YOK    |
+|                          |   Yok                           | `--X`    | `--X`    | `-WX`     | YOK    |
 | Data.txt oluştur          |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | `--X`    | `--X`    | `-WX`     | YOK    |
-|                          |   Hiçbiri                           | `--X`    | `--X`    | `-WX`     | YOK    |
+|                          |   Yok                           | `--X`    | `--X`    | `-WX`     | YOK    |
 | Listele                   |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | Yok      | Yok      | Yok       | Yok    |
-|                          |   Hiçbiri                           | `R-X`    | Yok      | Yok       | Yok    |
+|                          |   Yok                           | `R-X`    | Yok      | Yok       | Yok    |
 | Liste/Oregon/            |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | Yok      | Yok      | Yok       | Yok    |
-|                          |   Hiçbiri                           | `--X`    | `R-X`    | Yok       | Yok    |
+|                          |   Yok                           | `--X`    | `R-X`    | Yok       | Yok    |
 | Liste/Oregon/Portland/   |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
 |                          |   Depolama Blob Verileri Okuyucusu       | Yok      | Yok      | Yok       | Yok    |
-|                          |   Hiçbiri                           | `--X`    | `--X`    | `R-X`     | YOK    |
+|                          |   Yok                           | `--X`    | `--X`    | `R-X`     | YOK    |
 
 
 > [!NOTE] 
@@ -114,7 +114,7 @@ Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelene
 
 ## <a name="limits-on-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC rol atamaları ve ACL girdileri sınırları
 
-Grupları kullanarak, abonelik başına maksimum rol ataması sayısını ve dosya veya dizin başına en fazla ACl girişi sayısını aşmanız daha düşüktür. Aşağıdaki tabloda bu sınırlar açıklanmaktadır.
+Grupları kullanarak, abonelik başına maksimum rol ataması sayısını ve dosya veya dizin başına en fazla ACL girişi sayısını aşmanız daha düşüktür. Aşağıdaki tabloda bu sınırlar açıklanmaktadır.
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

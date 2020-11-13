@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs en son Azure. Messaging. EventHubs pa
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4949d68750e95e5b62b8387f03c77c082fbaf7f4
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 1c0f5a5fb45ee45cb9b7e399dc39ad29406b15dc
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329330"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579003"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs-.NET (Azure. Messaging. EventHubs) ile olayları gönderme ve olayları alma 
 Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
@@ -34,12 +34,12 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
 1. Visual Studio 2019’u başlatın. 
-1. **Yeni proje oluştur**' u seçin. 
-1. **Yeni proje oluştur** iletişim kutusunda, aşağıdaki adımları uygulayın: Bu iletişim kutusunu görmüyorsanız menüdeki **Dosya** ' yı seçin, **Yeni**' yi seçin ve ardından **Proje**' yi seçin. 
+1. **Yeni proje oluştur** ' u seçin. 
+1. **Yeni proje oluştur** iletişim kutusunda, aşağıdaki adımları uygulayın: Bu iletişim kutusunu görmüyorsanız menüdeki **Dosya** ' yı seçin, **Yeni** ' yi seçin ve ardından **Proje** ' yi seçin. 
     1. Programlama dili için **C#** ' ı seçin.
     1. Uygulamanın türü için **konsol** ' ı seçin. 
     1. Sonuçlar listesinden **konsol uygulaması (.NET Core)** seçeneğini belirleyin. 
-    1. Ardından **İleri**' yi seçin. 
+    1. Ardından **İleri** ' yi seçin. 
 
         ![Yeni proje iletişim kutusu](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
 1. Proje adı için **Eventhubssender** yazın, çözüm adı olarak **Eventhubsquickstart** yazın ve ardından projeyi oluşturmak için **Tamam** ' ı seçin. 
@@ -104,7 +104,7 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol
     [![Olay Hub 'ının iletileri aldığını doğrulama](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > Daha bilgilendirici açıklamalarla tüm kaynak kodu için [GitHub 'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs) bakın
+    > Daha bilgilendirici açıklamalarla tüm kaynak kodu için [GitHub 'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample04_PublishingEvents.md) bakın
 
 ## <a name="receive-events"></a>Olayları alma
 Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .NET Core konsol uygulamasının nasıl yazılacağı gösterilmektedir. Olay işlemcisi, bu olay hub 'larından kalıcı kontrol noktaları ve paralel alım seçenekleri yöneterek Olay Hub 'larından olay almayı basitleştirir. Olay işlemcisi, belirli bir olay hub 'ı ve bir tüketici grubuyla ilişkilendirilir. Olay Hub 'ında birden çok bölümden gelen olayları alır ve bunları, sağladığınız kodu kullanarak işlemeye yönelik bir işleyici temsilcisine geçirme. 
@@ -128,9 +128,9 @@ Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kull
 
 ### <a name="create-a-project-for-the-receiver"></a>Alıcı için proje oluşturma
 
-1. Çözüm Gezgini penceresinde **Eventhubquickstart** çözümüne sağ tıklayın, **Ekle**' nin üzerine gelin ve **Yeni proje**' yi seçin. 
-1. **Konsol uygulaması (.NET Core)** seçeneğini belirleyin ve **İleri**' yi seçin. 
-1. **Proje adı**olarak **Eventhubsalıcı** girin ve **Oluştur**' u seçin. 
+1. Çözüm Gezgini penceresinde **Eventhubquickstart** çözümüne sağ tıklayın, **Ekle** ' nin üzerine gelin ve **Yeni proje** ' yi seçin. 
+1. **Konsol uygulaması (.NET Core)** seçeneğini belirleyin ve **İleri** ' yi seçin. 
+1. **Proje adı** olarak **Eventhubsalıcı** girin ve **Oluştur** ' u seçin. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet paketini ekleme
 

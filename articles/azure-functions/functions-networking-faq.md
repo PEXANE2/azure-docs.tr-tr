@@ -4,12 +4,12 @@ description: Azure Işlevleri ile ağ iletişimi için en yaygın soruların ve 
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538067"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578238"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Işlevlerinde ağ hakkında sık sorulan sorular
 
@@ -31,11 +31,9 @@ Azure portal düzenleyicisinin çalışan işlevinize doğrudan erişim gerektir
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>İşlev uygulamamı bir sanal ağ ile kısıtlıyor Nasıl yaparım??
 
-[Hizmet uç noktalarını](./functions-networking-options.md#private-site-access)kullanarak bir işlev uygulaması için **gelen** trafiği bir sanal ağ ile kısıtlayabileceksiniz. Bu yapılandırma, işlev uygulamasının internet 'e giden çağrılar yapmasına hala izin verir.
+[Hizmet uç noktalarını](./functions-networking-options.md#use-service-endpoints)kullanarak bir işlev uygulaması için **gelen** trafiği bir sanal ağ ile kısıtlayabileceksiniz. Bu yapılandırma, işlev uygulamasının internet 'e giden çağrılar yapmasına hala izin verir.
 
-Bir işlevi tamamen kısıtlamak için bir sanal ağ üzerinden akan tüm trafik, dahili yük dengeli bir App Service Ortamı kullanmaktır. Bu seçenek, sitenizi bir sanal ağ içindeki adanmış bir altyapıya dağıtır ve tüm Tetikleyicileri ve trafiği sanal ağ üzerinden gönderir. 
-
-App Service Ortamı kullanma hakkında ayrıntılı bilgi için, bir [App Service ortamı ile iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md)makalesini başlatın.
+Tüm trafiğin bir sanal ağ üzerinden akmasını sağlayan bir işlevi tamamen kısıtlamak için, giden sanal ağ tümleştirmesiyle veya bir App Service Ortamı [Özel uç noktalar](./functions-networking-options.md#private-endpoint-connections) kullanabilirsiniz.
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Bir işlev uygulamasından bir sanal ağdaki kaynaklara nasıl erişebilirim?
 
@@ -47,7 +45,7 @@ Sanal ağ tümleştirmesini kullanarak, çalışan bir işlevden hizmet uç nokt
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Sanal ağdaki bir kaynaktan bir işlevi nasıl tetikleyebilirim?
 
-[Hizmet uç noktaları](./functions-networking-options.md#private-site-access)kullanılarak sanal BIR ağdan http tetikleyicilerinin çağrılmasına izin verebilirsiniz. 
+[Hizmet uç noktaları](./functions-networking-options.md#use-service-endpoints) veya [Özel uç nokta bağlantıları](./functions-networking-options.md#private-endpoint-connections)KULLANıLARAK sanal bir ağdan http tetikleyicilerinin çağrılmasına izin verebilirsiniz. 
 
 Ayrıca, işlev uygulamanızı bir Premium plana, App Service plana veya App Service Ortamı dağıtarak bir sanal ağdaki diğer tüm kaynaklardaki bir işlevi tetikleyebilirsiniz. Daha fazla bilgi için bkz. [http olmayan sanal ağ Tetikleyicileri](./functions-networking-options.md#virtual-network-triggers-non-http)
 

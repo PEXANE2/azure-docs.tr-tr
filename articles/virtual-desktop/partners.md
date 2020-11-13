@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcbcaab7b5cd050e072aaded3e2c09a94a451072
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056454"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578544"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -350,7 +350,7 @@ SSH2 PUBLıC, BT ekiplerinizi Azure 'daki Windows Sanal Masaüstü ' ne güncel 
 App, son kullanıcının uygulamalarını etkileyebilecek tüm noktaların anlaşıldığından emin olmak için, çalışan uygulamalardan uygulama ayrıntılarını yakalar. ardından, bunları güncelleştirir ve yeni Windows sanal masaüstünüze dağıtır. AppGet, geçerli ortamınızdaki tüm uygulama tümleştirme noktalarını yakalayarak, BT kaynaklarını iyileştirme ve geçişlerinizi daha hızlı ve daha hızlı bir şekilde planlamak, böylece kuruluşların üretime daha hızlı bir şekilde yararlanmasını sağlama hızını sağlar.
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
-- [İş ortağı sayfasına gidin](https://www.ssh2.xyz/windows-virtual-desktop/).
+- [İş ortağı sayfasına gidin](/azure/virtual-desktop/partners#ssh2).
 
 ## <a name="thinprint"></a>Ölçülü yazdırma
 

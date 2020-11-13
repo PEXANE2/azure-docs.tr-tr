@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: aed96bab233a815091009278349627343cc5efd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aeda148f52669d947d2e4fae0e664313ee747487
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099955"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592099"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>Hızlı başlangıç: Bing Resim Arama API'si ve Java ile görüntü arama 
 
@@ -30,9 +30,9 @@ Azure bilişsel hizmetler 'deki Bing Resim Arama API'si arama istekleri gönderm
 
 Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * [Gson kitaplığı](https://github.com/google/gson)
 
@@ -166,8 +166,8 @@ Bing Resim Arama API'sinden yanıtlar JSON olarak döndürülür. Bu örnek yan�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bing Resim Arama API’si nedir?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Resim Arama API’si nedir?](../overview.md)  
 * [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Bing Arama API'leri için fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-* [Azure bilişsel hizmetler belgeleri](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Resim Arama API’si başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure bilişsel hizmetler belgeleri](../../index.yml)
+* [Bing Resim Arama API’si başvurusu](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

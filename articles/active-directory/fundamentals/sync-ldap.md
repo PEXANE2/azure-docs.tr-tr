@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ile LDAP eşitlemesi
-description: Bu eşitleme modelini elde etmek için mimari yönergeler
+description: Azure Active Directory ile LDAP eşitlemesini elde etmeye yönelik mimari rehberlik.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a14149551c0fb33906ab7d1a00b387026d827911
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114304"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578901"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory ile LDAP eşitlemesi
 
@@ -34,21 +34,21 @@ Azure Active Directory (Azure AD), LDAP eşitlemesini Azure AD Connect ile deği
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı**: kullanıcıları ve parolaları SıRALAMAK için LDAP v3 dizinini kullanan bir uygulamaya erişir.
+* **Kullanıcı** : kullanıcıları ve parolaları SıRALAMAK için LDAP v3 dizinini kullanan bir uygulamaya erişir.
 
-* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmesi için etkileşimde bulunduğu bileşen
+* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmesi için etkileşimde bulunduğu bileşen
 
-* **Web uygulaması**: LDAP v3 dizinlerinde bağımlılıklara sahip uygulama.
+* **Web uygulaması** : LDAP v3 dizinlerinde bağımlılıklara sahip uygulama.
 
-* **Azure AD**: Azure ad, Azure AD Connect aracılığıyla kuruluşun ŞIRKET içi LDAP dizinlerindeki kimlik bilgilerini (kullanıcılar, gruplar, parolalar) eşitler. 
+* **Azure AD** : Azure ad, Azure AD Connect aracılığıyla kuruluşun ŞIRKET içi LDAP dizinlerindeki kimlik bilgilerini (kullanıcılar, gruplar, parolalar) eşitler. 
 
-* **Azure AD Connect**: şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araçtır. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gereken önkoşulları ve bileşenleri dağıtmaya ve yapılandırmaya yardımcı olur. 
+* **Azure AD Connect** : şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araçtır. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gereken önkoşulları ve bileşenleri dağıtmaya ve yapılandırmaya yardımcı olur. 
 
-* **Özel bağlayıcı**: genel bir LDAP bağlayıcısı, Azure AD Connect eşitleme HIZMETINI bir LDAP v3 sunucusuyla tümleştirmenize olanak sağlar. Azure AD Connect üzerinde bulunur.
+* **Özel bağlayıcı** : genel bir LDAP bağlayıcısı, Azure AD Connect eşitleme HIZMETINI bir LDAP v3 sunucusuyla tümleştirmenize olanak sağlar. Azure AD Connect üzerinde bulunur.
 
-* **Active Directory**: Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Dizin Hizmetleri çalıştıran sunuculara etki alanı denetleyicileri denir ve Windows etki alanındaki tüm Kullanıcı ve bilgisayarların kimliklerini doğrular ve yetkilendirirler.
+* **Active Directory** : Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Dizin Hizmetleri çalıştıran sunuculara etki alanı denetleyicileri denir ve Windows etki alanındaki tüm Kullanıcı ve bilgisayarların kimliklerini doğrular ve yetkilendirirler.
 
-* **LDAP v3 sunucusu**: Dizin Hizmetleri kimlik doğrulaması için kullanılan, şirket kullanıcılarını ve parolaları depolayan LDAP protokolü ile uyumlu dizin.
+* **LDAP v3 sunucusu** : Dizin Hizmetleri kimlik doğrulaması için kullanılan, şirket kullanıcılarını ve parolaları depolayan LDAP protokolü ile uyumlu dizin.
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>Azure AD ile LDAP eşitlemesini uygulama
 

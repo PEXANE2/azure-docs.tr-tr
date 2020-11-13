@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7f9a72084cc9dd138eed58e395e009e1161c9382
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9bff35a88539241f909597df00661d7076b5bbd4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099904"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591963"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Hızlı başlangıç: Bing Resim Arama REST API ve PHP kullanarak görüntü arama
 
@@ -32,7 +32,7 @@ Bu uygulama PHP 'de yazılmış olsa da, API, HTTP istekleri yapıp JSON 'u ayr�
 
 Bu örneğe ilişkin kaynak kodu [GitHub '](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php)da kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [PHP 5.6. x veya üzeri](https://php.net/downloads.php)
 
@@ -143,8 +143,8 @@ Bing Resim Arama API'sinden yanıtlar JSON olarak döndürülür. Bu örnek yan�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bing Resim Arama API’si nedir?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Resim Arama API’si nedir?](../overview.md)  
 * [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
 * [Bing Arama API'leri için fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
-* [Azure bilişsel hizmetler belgeleri](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Resim Arama API’si başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure bilişsel hizmetler belgeleri](../../index.yml)
+* [Bing Resim Arama API’si başvurusu](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

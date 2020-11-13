@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089324"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591555"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -150,7 +150,7 @@ Evet, bir SMB birimini dağıtabilmeniz için önce bir Active Directory bağlan
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kaç Active Directory bağlantı destekleniyor?
 
-Azure NetApp Files, AD bağlantıları farklı NetApp hesaplarında olsa bile, tek bir *bölgede*birden çok ACTIVE DIRECTORY (ad) bağlantısını desteklemez. Ancak, AD bağlantıları farklı bölgelerde olduğu sürece, tek bir *abonelikte*bırden fazla ad bağlantısına sahip olabilirsiniz. Tek bir bölgede birden çok AD bağlantısına ihtiyacınız varsa, bunu yapmak için ayrı abonelikler kullanabilirsiniz. 
+Azure NetApp Files, AD bağlantıları farklı NetApp hesaplarında olsa bile, tek bir *bölgede* birden çok ACTIVE DIRECTORY (ad) bağlantısını desteklemez. Ancak, AD bağlantıları farklı bölgelerde olduğu sürece, tek bir *abonelikte* bırden fazla ad bağlantısına sahip olabilirsiniz. Tek bir bölgede birden çok AD bağlantısına ihtiyacınız varsa, bunu yapmak için ayrı abonelikler kullanabilirsiniz. 
 
 NetApp hesabı başına bir AD bağlantısı yapılandırılır; AD bağlantısı yalnızca içinde oluşturulduğu NetApp hesabı aracılığıyla görülebilir.
 
@@ -173,16 +173,6 @@ SMB istemcisi tarafından bildirilen birim boyutu, Azure NetApp Files biriminin 
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
-
-## <a name="dual-protocol-faqs"></a>Çift protokol SSS
-
-### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Bir UNIX sisteminde NTFS güvenlik stiliyle bir çift protokol birimine erişmek için ' root ' ve yerel kullanıcıları kullanmaya çalıştım. Neden "Izin reddedildi" hatasıyla karşılaştım?   
-
-Bkz. çözümler için [çift protokol birimlerinde sorun giderme](troubleshoot-dual-protocol-volumes.md) .
-
-### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Bir çift protokol birimi oluşturmayı denediğimde, oluşturma işlemi neden "LDAP yapılandırması doğrulanamadı, LDAP yapılandırmasını düzelttikten sonra yeniden dene" hatasıyla başarısız olur.  
-
-Bkz. çözümler için [çift protokol birimlerinde sorun giderme](troubleshoot-dual-protocol-volumes.md) .
 
 ## <a name="capacity-management-faqs"></a>Kapasite Yönetimi SSS
 

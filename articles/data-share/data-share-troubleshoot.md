@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220467"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579156"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Veri Paylaşımı'nda sık karşılaşılan sorunları giderme 
 
@@ -30,9 +30,9 @@ Bunun nedeni şunlar olabilir:
 
     1. Azure portalda **Abonelikler** sayfasına gidin
     1. Azure Veri Paylaşımı kaynağını oluştururken kullanmak istediğiniz aboneliği seçin
-    1. **Kaynak Sağlayıcıları**’na tıklayın
+    1. **Kaynak Sağlayıcıları** ’na tıklayın
     1. **Microsoft.DataShare** araması yapın
-    1. **Kaydet**'e tıklayın 
+    1. **Kaydet** 'e tıklayın 
 
     Bu adımları tamamlayabilmeniz için Azure aboneliği için [Azure katılımcısı rolüne](../role-based-access-control/built-in-roles.md#contributor) sahip olmanız gerekir. 
 
@@ -52,11 +52,11 @@ Bunun nedeni şunlar olabilir:
 
 "Azure veri paylaşma hesabı için bir veya daha fazla seçili kaynaklarınızdan yazma izinleri eklenemedi"
 
-Yeni bir paylaşma veya veri kümeleri eşleme oluştururken yukarıdaki hatalardan birini alırsanız, bu, Azure veri deposuna yetersiz izinler nedeniyle olabilir. Gerekli izinler için [rol ve gereksinimlere](concepts-roles-permissions.md) bakın. 
+Yeni bir paylaşma oluştururken, veri kümeleri veya eşleme veri kümelerini eklerken yukarıdaki hatalardan herhangi birini alıyorsanız, bu, Azure veri deposuna yetersiz izinler nedeniyle olabilir. Gerekli izinler için [rol ve gereksinimlere](concepts-roles-permissions.md) bakın. 
 
-Genellikle katkıda bulunan rolünde bulunan bir Azure veri deposundaki verileri paylaştırmak veya almak için yazma izninizin olması gerekir. 
+Genellikle **katkıda bulunan** rolünde bulunan bir Azure veri deposundaki verileri paylaştırmak veya almak için yazma izninizin olması gerekir. 
 
-Azure veri deposundan ilk kez veri paylaşıyorsanız veya alıyorsanız, genellikle sahip rolünde bulunan *Microsoft. Authorization/role atama/yazma* iznine de ihtiyacınız vardır. Azure veri deposu kaynağını oluşturmuş olsanız bile, kaynak sahibini otomatik olarak yapmaz. Uygun izne sahip olan Azure veri paylaşma hizmeti, veri deposu kaynağının yönetilen kimlik erişimini otomatik olarak verir. Bu işlemin etkili olması birkaç dakika sürebilir. Bu gecikme nedeniyle hata yaşarsanız birkaç dakika sonra yeniden deneyin.
+Azure veri deposundan ilk kez veri paylaşıyorsanız veya alıyorsanız, genellikle **sahip** rolünde bulunan *Microsoft. Authorization/role atama/yazma* iznine de ihtiyacınız vardır. Azure veri deposu kaynağını oluşturmuş olsanız bile, kaynak sahibini otomatik olarak yapmaz. Uygun izne sahip olan Azure veri paylaşma hizmeti, veri deposu kaynağının yönetilen kimlik erişimini otomatik olarak verir. Bu işlemin etkili olması birkaç dakika sürebilir. Bu gecikme nedeniyle hata yaşarsanız birkaç dakika sonra yeniden deneyin.
 
 SQL tabanlı paylaşım ek izinler gerektirir. Ayrıntılı önkoşul listesi için bkz. [SQL kaynaklarından paylaşma](how-to-share-from-sql.md) .
 
@@ -69,7 +69,7 @@ SQL tabanlı paylaşım ek izinler gerektirir. Ayrıntılı önkoşul listesi i�
 
 SQL kaynakları için, anlık görüntü hatalarının ek nedenleri aşağıda verilmiştir. 
 
-* Veri paylaşma izni verilecek kaynak veya hedef SQL betiği çalışmıyor veya Azure Active Directory kimlik doğrulaması yerine SQL kimlik doğrulaması kullanılarak çalıştırıldı.  
+* Veri paylaşma izni verilecek kaynak veya hedef SQL betiği çalıştırılmadı. Ya da Azure SQL veritabanı veya Azure SYNAPSE Analytics (eskiden Azure SQL DW) için, Azure Active Directory kimlik doğrulaması yerine SQL kimlik doğrulaması kullanılarak çalıştırılır.  
 * Kaynak veya hedef SQL veri deposu duraklatıldı.
 * SQL veri türleri anlık görüntü işlemi veya hedef veri deposu tarafından desteklenmiyor. Ayrıntılar için [SQL kaynaklarından paylaşma](how-to-share-from-sql.md#supported-data-types) bölümüne bakın.
 * Kaynak veya hedef SQL veri deposu diğer süreçler tarafından kilitlidir. Azure veri paylaşımında, kaynak ve hedef SQL veri deposuna kilit uygulanmaz. Ancak, kaynak ve hedef SQL veri deposundaki mevcut kilitler anlık görüntü hatasına neden olur.

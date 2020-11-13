@@ -5,35 +5,41 @@ description: .NET istemci kitaplığını kullanarak Azure depolama hesabı tür
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/06/2019
+ms.date: 11/12/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17f18f84ac1c1738f8c248bb0071c748e15dacf3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090939"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579343"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET ile depolama hesabı türü ve SKU adı alın
 
 Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage)'nı kullanarak bir blob Için Azure depolama hesabı türü ve SKU adının nasıl alınacağı gösterilmektedir.
 
-Hesap bilgileri, sürüm 2018-03-28 ' den başlayarak hizmet sürümlerinde kullanılabilir.
-
 ## <a name="about-account-type-and-sku-name"></a>Hesap türü ve SKU adı hakkında
 
-**Hesap türü**: geçerli hesap türleri,,, `BlobStorage` `BlockBlobStorage` ve içerir `FileStorage` `Storage` `StorageV2` . [Azure depolama hesabına genel bakış](storage-account-overview.md) , çeşitli depolama hesaplarının açıklamaları dahil olmak üzere daha fazla bilgi içerir.
+**Hesap türü** : geçerli hesap türleri,,, `BlobStorage` `BlockBlobStorage` ve içerir `FileStorage` `Storage` `StorageV2` . [Azure depolama hesabına genel bakış](storage-account-overview.md) , çeşitli depolama hesaplarının açıklamaları dahil olmak üzere daha fazla bilgi içerir.
 
-**SKU adı**: geçerli SKU adları,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` , `Standard_RAGZRS` , ve içerir `Standard_ZRS` . SKU adları büyük/küçük harfe duyarlıdır ve [Skuname sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname)dize alanlarıdır.
+**SKU adı** : geçerli SKU adları,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` , `Standard_RAGZRS` , ve içerir `Standard_ZRS` . SKU adları büyük/küçük harfe duyarlıdır ve [Skuname sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname)dize alanlarıdır.
 
 ## <a name="retrieve-account-information"></a>Hesap bilgilerini al
 
-Depolama hesabı türünü ve bir blob ile ilişkili SKU adını almak için, [Getaccountproperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) veya [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) yöntemini çağırın.
-
 Aşağıdaki kod örneği, salt okunurdur hesap özelliklerini alır ve görüntüler.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Depolama hesabı türünü ve bir blob ile ilişkili SKU adını almak için, [Getaccountınfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) veya [Getaccounınfoasync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) yöntemini çağırın.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Account.cs" id="Snippet_GetAccountInfo":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Depolama hesabı türünü ve bir blob ile ilişkili SKU adını almak için, [Getaccountproperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) veya [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) yöntemini çağırın.
 
 ```csharp
 private static async Task GetAccountInfoAsync(CloudBlob blob)
@@ -58,6 +64,8 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
     }
 }
 ```
+
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

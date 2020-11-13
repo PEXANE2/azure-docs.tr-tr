@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413097"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578839"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -30,18 +30,36 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>Gelen IP kısıtlamaları
+## <a name="inbound-access-restrictions"></a>Gelen erişim kısıtlamaları
 
-Uygulamanıza erişim izni verilen veya reddedilen IP adreslerinin öncelik sırasına sahip bir listesini tanımlamak için IP kısıtlamalarını kullanabilirsiniz. Liste, IPv4 ve IPv6 adreslerini içerebilir. Bir veya daha fazla giriş olduğunda, listenin sonunda örtülü bir "Tümünü Reddet" bulunur. IP kısıtlamaları tüm işlev barındırma seçenekleriyle çalışır.
+Uygulamanıza erişim izni verilen veya reddedilen IP adreslerinin öncelik sırasına sahip bir listesini tanımlamak için erişim kısıtlamalarını kullanabilirsiniz. Liste, IPv4 ve IPv6 adreslerini veya [hizmet uç noktaları](#use-service-endpoints)kullanan belirli sanal ağ alt ağlarını içerebilir. Bir veya daha fazla giriş olduğunda, listenin sonunda örtülü bir "Tümünü Reddet" bulunur. IP kısıtlamaları tüm işlev barındırma seçenekleriyle çalışır.
+
+Erişim kısıtlamaları [Premium](functions-premium-plan.md), [Tüketim](functions-scale.md#consumption-plan)ve [App Service](functions-scale.md#app-service-plan)kullanılabilir.
 
 > [!NOTE]
-> Ağ kısıtlamalarına sahip olmak üzere, Portal düzenleyicisini yalnızca sanal ağınızdan veya Güvenli Alıcılar listesindeki Azure portal erişmek için kullandığınız makinenin IP adresini girdiğinizde kullanabilirsiniz. Ancak, herhangi bir makineden **platform özellikleri** sekmesindeki herhangi bir özelliğe erişmeye devam edebilirsiniz.
+> Ağ kısıtlamalarına sahip olmak için, yalnızca sanal ağınızdan veya kullandığınız makinenin IP adresini, Güvenli Alıcılar listesindeki Azure portal erişmek için girdiğinizde dağıtabilirsiniz. Ancak, portalı kullanarak işlevi yine de yönetebilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure App Service statik erişim kısıtlamaları](../app-service/app-service-ip-restrictions.md).
 
-## <a name="private-site-access"></a>Özel site erişimi
+### <a name="use-service-endpoints"></a>Hizmet uç noktası kullanma
+
+Hizmet uç noktalarını kullanarak, seçili Azure sanal ağ alt ağlarına erişimi kısıtlayabilirsiniz. Belirli bir alt ağa erişimi kısıtlamak için, **sanal ağ** türüyle bir kısıtlama kuralı oluşturun. Daha sonra izin vermek veya erişimi reddetmek istediğiniz abonelik, sanal ağ ve alt ağı seçebilirsiniz. 
+
+Hizmet uç noktaları, seçtiğiniz alt ağ için Microsoft. Web ile zaten etkin değilse, **eksik Microsoft. Web hizmeti uç noktalarını yoksay** onay kutusunu seçmediğiniz takdirde bunlar otomatik olarak etkinleştirilir. Uygulama üzerinde hizmet uç noktalarını etkinleştirmek isteyebileceğiniz, ancak alt ağda olmayan bir senaryo, temel olarak bunları alt ağda etkinleştirme izinlerine sahip olmanıza bağlı olarak değişir. 
+
+Alt ağda hizmet uç noktalarını etkinleştirmek için başka bir kişiye ihtiyacınız varsa, **yok sayma Microsoft. Web hizmeti uç noktaları** onay kutusunu seçin. Uygulamanız, olasılığına ' deki hizmet uç noktaları için, alt ağda daha sonra etkinleştirilmesini sağlayacak şekilde yapılandırılır. 
+
+![Sanal ağ türü seçili olan "IP kısıtlaması Ekle" bölmesinin ekran görüntüsü.](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+App Service Ortamı çalıştıran uygulamalara erişimi kısıtlamak için hizmet uç noktalarını kullanamazsınız. Uygulamanız bir App Service Ortamı olduğunda, IP erişim kuralları uygulayarak bu erişime erişimi denetleyebilirsiniz. 
+
+Hizmet uç noktalarını ayarlamayı öğrenmek için bkz. [Azure işlevleri özel site erişimi oluşturma](functions-create-private-site-access.md).
+
+## <a name="private-endpoint-connections"></a>Özel uç nokta bağlantıları
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+Depolama veya hizmet veri yolu gibi özel bir uç nokta bağlantısına sahip diğer hizmetleri çağırmak için, uygulamanızı [Özel uç noktalara giden çağrılar](#private-endpoints)yapmak üzere yapılandırmayı unutmayın.
 
 ## <a name="virtual-network-integration"></a>Sanal ağ tümleştirmesi
 
@@ -69,7 +87,7 @@ Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-networ
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Depolama hesabınızı bir sanal ağla sınırlayın (Önizleme)
 
-Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir.  Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz.  Bu önizleme özelliği şu anda yalnızca Batı Avrupa Windows Premium planlarıyla birlikte çalışıyor.  Bir işlevi özel bir ağla sınırlı bir depolama hesabıyla ayarlamak için:
+Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir.  Bu depolama hesabını hizmet uç noktaları veya özel uç nokta ile güvenli bir şekilde değiştirebilirsiniz.  Bu önizleme özelliği şu anda yalnızca Batı Avrupa Windows Premium planlarıyla birlikte çalışıyor.  Özel bir ağla sınırlı bir depolama hesabı ile bir işlev ayarlamak için:
 
 > [!NOTE]
 > Depolama hesabını kısıtlamak yalnızca Batı Avrupa Windows kullanan Premium işlevlerde çalışır
@@ -80,7 +98,7 @@ Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı des
 1. Güvenli depolama hesabında [bir dosya paylaşma oluşturun](../storage/files/storage-how-to-create-file-share.md#create-file-share) .
 1. Depolama hesabı için hizmet uç noktalarını veya özel uç noktayı etkinleştirin.  
     * Hizmet uç noktası kullanılıyorsa, işlev uygulamalarınıza adanmış alt ağı etkinleştirdiğinizden emin olun.
-    * Özel uç nokta kullanılıyorsa, bir DNS kaydı oluşturmayı ve uygulamanızı [Özel uç nokta uç noktalarıyla çalışacak](#azure-dns-private-zones) şekilde yapılandırmayı unutmayın.  Depolama hesabının `file` ve alt kaynaklar için özel bir uç noktası olması gerekir `blob` .  Dayanıklı İşlevler gibi belirli yetenekler kullanılıyorsa, Ayrıca, `queue` `table` özel bir uç nokta bağlantısı aracılığıyla da ihtiyacınız ve erişilebilir.
+    * Özel uç nokta kullanılıyorsa, bir DNS kaydı oluşturmayı ve uygulamanızı [Özel uç nokta uç noktalarıyla çalışacak](#azure-dns-private-zones) şekilde yapılandırmayı unutmayın.  Depolama hesabının `file` ve alt kaynaklar için özel bir uç noktası olması gerekir `blob` .  Dayanıklı İşlevler gibi belirli yetenekler kullanılıyorsa, Ayrıca, `queue` `table` özel bir uç nokta bağlantısı aracılığıyla da ihtiyacınız ve erişilebilir olur.
 1. Seçim Dosya ve BLOB içeriğini işlev uygulama depolama hesabından güvenli depolama hesabına ve dosya paylaşımıyla kopyalayın.
 1. Bu depolama hesabı için bağlantı dizesini kopyalayın.
 1. İşlev uygulaması **yapılandırması** altındaki **uygulama ayarlarını** aşağıdakilere göre güncelleştirin:
@@ -159,7 +177,7 @@ Bir Premium planda veya bir sanal ağla App Service bir planda bir işlev uygula
 ## <a name="automation"></a>Otomasyon
 Aşağıdaki API 'Ler, bölgesel sanal ağ tümleştirmelerini programlı bir şekilde yönetmenizi sağlar:
 
-+ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) Bölgesel bir sanal ağ tümleştirmeleri eklemek, listelemek veya kaldırmak için komutları kullanın.  
++ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) Bölgesel bir sanal ağ tümleştirmesi eklemek, listelemek veya kaldırmak için komutları kullanın.  
 + **ARM şablonları** : bölgesel sanal ağ tümleştirmesi, bir Azure Resource Manager şablonu kullanılarak etkinleştirilebilir. Tam bir örnek için, [Bu işlevlere hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)' na bakın.
 
 ## <a name="troubleshooting"></a>Sorun giderme

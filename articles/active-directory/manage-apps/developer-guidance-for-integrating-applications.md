@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1b56e3818d2d9701ecb0252328746dc39bb260
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605099"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578323"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory için iş kolu uygulamaları geliştirin
 Bu kılavuz, Azure Active Directory (AD) için iş kolu (LoB) uygulamaları geliştirmeye genel bir bakış sağlar. Hedef kitle Active Directory/Microsoft 365 genel yöneticilerdir.
@@ -27,7 +27,7 @@ Azure AD ile tümleştirilmiş uygulamalar oluşturmak, kuruluşunuzdaki kullan�
 
 Azure Active Directory kullanmak için uygulamanızı kaydedin. Uygulamanın kaydedilmesi, geliştiricilerinizin kullanıcıların kimliğini doğrulamak ve e-posta, takvim ve belgeler gibi Kullanıcı kaynaklarına erişim istemek için Azure AD 'yi kullanabileceği anlamına gelir.
 
-Dizininizdeki herhangi bir üye (konuknot), *uygulama nesnesi oluşturma*olarak da bilinen bir uygulamayı kaydedebilir.
+Dizininizdeki herhangi bir üye (konuknot), *uygulama nesnesi oluşturma* olarak da bilinen bir uygulamayı kaydedebilir. Bir uygulamayı kaydedemeyeceğiniz takdirde, dizininizin genel Yöneticisi bu işlevselliği kısıtlamıştır ve [uygun hakların elde](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#assign-built-in-application-admin-roles) edilmesi için uygulamaya başvurmanız gerekebilir. Kullanıcının [Azure Active Directory içindeki uygulama kayıt izinlerini](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#restrict-who-can-create-applications)kullanma hakkında daha fazla bilgi için bkz..
 
 Bir uygulamayı kaydetmek, herhangi bir kullanıcının şunları yapmasına izin verir:
 

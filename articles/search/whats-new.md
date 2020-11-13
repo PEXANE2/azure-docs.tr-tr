@@ -6,23 +6,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422680"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579479"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
+## <a name="november-2020"></a>Kasım 2020
+
+|Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
+|------------------------------|----------|-------------|---------------|
+|[Dizin oluşturucular, veri kaynakları ve becerileri üzerinde müşteri tarafından yönetilen anahtar şifrelemesi](search-security-manage-encryption-keys.md) | Güvenlik | Bu ek, müşteri tarafından yönetilen şifrelemeyi, bir arama hizmeti tarafından oluşturulan ve yönetilen tüm varlık aralığı üzerinde genişletir. CMK desteğinin Microsoft tarafından gerçekleştirilen ve yönetilen temel şifrelemenin üzerine ek bir şifreleme katmanı ekleyeceğini unutmayın. | REST API 'si kullanılarak genel kullanıma sunuldu-sürüm = 2020-06-30 |  
+
 ## <a name="september-2020"></a>Eylül 2020
 
 Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun, ardından Azure RBAC izinlerini kullanarak Azure veri kaynaklarına yönelik salt okuma izinleri verin. İsteğe bağlı olarak, IP kuralları bir seçenek değilse, [Güvenilen hizmet özel durum](search-indexer-howto-access-trusted-service-exception.md) özelliğini seçin.
-
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |------------------------------|----------|-------------|---------------|

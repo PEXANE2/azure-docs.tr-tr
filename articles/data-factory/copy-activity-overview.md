@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995336"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592065"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Etkinliği Azure Data Factory Kopyala
 
@@ -250,7 +250,7 @@ Program aracılığıyla yapılandırmak için `additionalColumns` kopyalama etk
 
 Verileri SQL Database/Azure SYNAPSE Analytics 'e kopyalarken, hedef tablo yoksa, kopyalama etkinliği kaynak verilere göre otomatik olarak oluşturulmasını destekler. Verileri yüklemeye ve SQL Database/Azure SYNAPSE Analytics 'i değerlendirmenize hızlı bir şekilde başlamanıza yardımcı olacak. Veri alındıktan sonra havuz tablosu şemasını gereksinimlerinize göre gözden geçirebilir ve ayarlayabilirsiniz.
 
-Bu özellik, herhangi bir kaynaktaki verileri aşağıdaki havuz veri depolarına kopyalarken desteklenir. *ADF yazma Kullanıcı arabirimi* – > *kopyalama etkinliği havuzu* – > *Tablo seçeneği* – > *otomatik olarak tablo oluştur*veya `tableOption` kopyalama etkinliği havuz yükünde özellik aracılığıyla) seçeneğini bulabilirsiniz.
+Bu özellik, herhangi bir kaynaktaki verileri aşağıdaki havuz veri depolarına kopyalarken desteklenir. *ADF yazma Kullanıcı arabirimi* – > *kopyalama etkinliği havuzu* – > *Tablo seçeneği* – > *otomatik olarak tablo oluştur* veya `tableOption` kopyalama etkinliği havuz yükünde özellik aracılığıyla) seçeneğini bulabilirsiniz.
 
 - [Azure SQL Veritabanı](connector-azure-sql-database.md)
 - [Azure SQL Veritabanı Yönetilen Örneği](connector-azure-sql-managed-instance.md)
@@ -262,6 +262,13 @@ Bu özellik, herhangi bir kaynaktaki verileri aşağıdaki havuz veri depoların
 ## <a name="fault-tolerance"></a>Hataya dayanıklılık
 
 Varsayılan olarak, kopyalama etkinliği verileri kopyalamayı ve kaynak veri satırları havuz Veri satırlarıyla uyumsuz olduğunda bir hata döndürür. Kopyalamanın başarılı olması için kopyalama etkinliğini, uyumsuz satırları atlayıp günlüğe kaydetmek ve yalnızca uyumlu verileri kopyalamak üzere yapılandırabilirsiniz. Ayrıntılar için bkz. [kopyalama etkinliği hata toleransı](copy-activity-fault-tolerance.md) .
+
+## <a name="data-consistency-verification"></a>Veri tutarlılığı doğrulama
+
+Verileri kaynaktan hedef depoya taşıdığınızda, Azure Data Factory kopyalama etkinliği, verilerin kaynaktan yalnızca kaynak ve hedef depo arasında tutarlı bir şekilde kopyalanmadığından emin olmak için ek veri tutarlılığı doğrulaması yapmanız için bir seçenek sunar. Veri taşıma sırasında tutarsız dosyalar bulunduğunda, kopyalama etkinliğini durdurabilir veya geri kalanı kopyalamaya devam ederek hata toleransı ayarını tutarsız dosyaları atlayacak şekilde ayarlayabilirsiniz. Kopyalama etkinliğinde oturum günlüğü ayarını etkinleştirerek Atlanan dosya adlarını alabilirsiniz. Ayrıntılar için [kopyalama etkinliğinde veri tutarlılığı doğrulaması '](copy-activity-data-consistency.md) na bakın.
+
+## <a name="session-log"></a>Oturum günlüğü
+Kopyalanmış dosya adlarınızı günlüğe kaydedebilir ve bu sayede, verilerin kaynaktan hedef depoya başarıyla kopyalanmadığından ve ayrıca kopyalama etkinliği oturum günlüklerini inceleyerek kaynak ve hedef depo arasında tutarlı olmasını sağlamanıza yardımcı olabilirsiniz. Ayrıntılar için bkz. [kopyalama etkinliğinde oturum günlüğü](copy-activity-log.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki hızlı başlangıçlara, öğreticilere ve örneklere bakın:

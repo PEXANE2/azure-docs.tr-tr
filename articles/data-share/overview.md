@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 07/30/2020
-ms.openlocfilehash: e80ea37409f7b5beb48ba7b8e96aeeda9a5836e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89433441"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578136"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Veri Paylaşımı nedir?
 
@@ -45,7 +45,7 @@ Veri sağlayıcıları, veri tüketicilerini bir anlık görüntü zamanlaması 
 
 ![veri paylaşma akışı](media/data-share-flow.png)
 
-Bir veri tüketicisi bir veri paylaşımının kabul ettiğinde, verileri seçtikleri bir veri deposunda alabilecektir. Örneğin, veri sağlayıcısı verileri Azure Blob depolama kullanarak paylaşıyorsa veri tüketicisi bu verileri Azure Data Lake Store alabilir. Benzer şekilde, veri sağlayıcısı bir Azure SYNAPSE Analytics 'ten (eski adıyla SQL veri ambarı) veri paylaşıyorsa veri tüketicisi, verileri bir Azure Data Lake Store, Azure SQL veritabanı veya Azure SYNAPSE analiziyle almak isteyip istemediğinizi seçebilir. SQL tabanlı kaynaklardan paylaşım durumunda veri tüketicisi Ayrıca, Parquet veya CSV 'de veri alıp almamasını da seçebilir. 
+Bir veri tüketicisi bir veri paylaşımının kabul ettiğinde, verileri seçtikleri bir veri deposunda alabilecektir. Örneğin, veri sağlayıcısı verileri Azure Blob depolama kullanarak paylaşıyorsa veri tüketicisi bu verileri Azure Data Lake Store alabilir. Benzer şekilde, veri sağlayıcısı bir Azure SYNAPSE analizinden veri paylaşıyorsa veri tüketicisi, verileri bir Azure Data Lake Store, Azure SQL veritabanı veya Azure SYNAPSE analiziyle almak isteyip istemediğinizi seçebilirler. SQL tabanlı kaynaklardan paylaşım durumunda veri tüketicisi Ayrıca, Parquet veya CSV 'de veri alıp almamasını da seçebilir. 
 
 Yerinde paylaşım sayesinde veri sağlayıcıları verileri kopyalamadan verileri paylaşabilir. İlişki paylaşımı, davet akışı aracılığıyla kurulduktan sonra, veri sağlayıcının kaynak veri deposu ve veri tüketicisinin hedef veri deposu arasında bir sembolik bağlantı oluşturulur. Veri tüketicisi, kendi veri deposunu kullanarak verileri gerçek zamanlı olarak okuyup sorgulayabilir. Kaynak veri deposunda yapılan değişiklikler veri TÜKETİCİSİNDE hemen kullanılabilir. Yerinde paylaşım Şu anda Azure Veri Gezgini için önizleme aşamasındadır.
 
@@ -73,9 +73,7 @@ Azure veri paylaşma, veri tüketicilerinin şunları yapmasını sağlar:
 
 * Sizinle paylaşılan verileri [desteklenen bir veri deposuna](supported-data-stores.md)kabul edin.
 
-* Bir kuruluşun sizinle paylaştığı bir veri paylaşımının tam veya artımlı anlık görüntüsünü tetikleyin
-
-* Artımlı anlık görüntü aracılığıyla verilerin en son kopyasını almak için bir veri paylaşımında abone olun
+* Verilere yerinde erişin veya paylaşılan verilerin tam veya artımlı anlık görüntüsünü tetikleyin
 
 Yukarıda listelenen tüm temel yetenekler Azure portal veya REST API 'Leri aracılığıyla desteklenir. REST API 'Leri aracılığıyla Azure veri paylaşımının kullanımı hakkında daha fazla bilgi için başvuru belgelerimize göz atın. 
 

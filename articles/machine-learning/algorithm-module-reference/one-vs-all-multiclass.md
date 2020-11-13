@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376341"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591878"
 ---
 # <a name="one-vs-all-multiclass"></a>Bire Karşı Hepsi Çoklu Sınıf
 
@@ -31,6 +31,8 @@ Bu modül, birden fazla çıktı sınıfının her biri için bir ikili modelin 
 Temelde, modül tek tek modellerin bir kopyasını oluşturur ve ardından sonuçları birleştirir ve tüm sınıfları tahmin eden tek bir model oluşturur. Herhangi bir ikili sınıflandırıcı, tek başına bir modelin temeli olarak kullanılabilir.  
 
 Örneğin, [Iki sınıflı bir destek vektör makine](two-class-support-vector-machine.md) modeli yapılandırıp bire karşı hepsi çoklu sınıf modüle giriş olarak sağlayadığınızı varsayalım. Modül, çıkış sınıfının tüm üyeleri için iki sınıf destek vektör makine modeli oluşturur. Ardından, tüm sınıfların sonuçlarını birleştirmek için tek-ve-All yöntemini uygular.  
+
+Modül, sköğrenin Onevsrestsınıflandırıcısını kullanır ve [burada](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html)daha fazla ayrıntı öğrenebilirsiniz.
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Bire Karşı Hepsi Çoklu Sınıf sınıflandırıcısını yapılandırma  
 
