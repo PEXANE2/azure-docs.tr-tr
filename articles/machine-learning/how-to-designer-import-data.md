@@ -1,7 +1,7 @@
 ---
 title: Verileri tasarımcıya aktarma
 titleSuffix: Azure Machine Learning
-description: Çeşitli veri kaynaklarından verileri Azure Machine Learning tasarımcısına aktarmayı öğrenin.
+description: Azure Machine Learning veri kümeleri ve veri Içeri aktarma modülünü kullanarak Azure Machine Learning tasarımcısına verileri nasıl içeri aktaracağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce0bb2a30ec4092d0053adf2de711547595c900
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985600"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554725"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısına veri aktarma
 
@@ -38,11 +38,11 @@ Ayrıca, herhangi bir tasarımcı modülünün çıkışını bir veri kümesi o
 
 1. Kaydetmek istediğiniz verilerin çıkışı olan modülü seçin.
 
-1. Özellikler bölmesinde, **çıktılar + Günlükler**  >  **kayıt veri kümesi**' ni seçin.
+1. Özellikler bölmesinde, **çıktılar + Günlükler**  >  **kayıt veri kümesi** ' ni seçin.
 
     ![Register DataSet seçeneğine nasıl gidebileceğiniz gösteren ekran görüntüsü](media/how-to-designer-import-data/register-dataset-designer.png)
 
-Modül çıkış verileri tablosal biçimindeyse, çıktıyı bir **dosya veri kümesi** veya **tablo veri kümesi**olarak kaydetmeyi seçmeniz gerekir.
+Modül çıkış verileri tablosal biçimindeyse, çıktıyı bir **dosya veri kümesi** veya **tablo veri kümesi** olarak kaydetmeyi seçmeniz gerekir.
 
  - **Dosya veri kümesi** , modülün çıkış klasörünü dosya veri kümesi olarak kaydeder. Çıktı klasörü, tasarımcı 'nın dahili olarak kullandığı bir veri dosyası ve meta dosyaları içerir. Tasarımcıda kayıtlı veri kümesini kullanmaya devam etmek istiyorsanız bu seçeneği belirleyin. 
 
@@ -52,7 +52,7 @@ Modül çıkış verileri tablosal biçimindeyse, çıktıyı bir **dosya veri k
 
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma
 
-Kayıtlı veri kümeleriniz, **veri kümeleri**altında modül paletinde bulunabilir. Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını tuvaldeki diğer modüllere bağlayın. 
+Kayıtlı veri kümeleriniz, **veri kümeleri** altında modül paletinde bulunabilir. Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını tuvaldeki diğer modüllere bağlayın. 
 
 ![Tasarımcı paletindeki kaydedilen veri kümelerinin konumunu gösteren ekran görüntüsü](media/how-to-designer-import-data/use-datasets-designer.png)
 

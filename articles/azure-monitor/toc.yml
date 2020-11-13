@@ -180,6 +180,21 @@
               href: app/pricing.md
             - name: Veri kullanımı ve maliyetlerini günlüğe kaydetme
               href: platform/manage-cost-storage.md
+    - name: Azure İzleyici Ölçümleri
+      items:
+        - name: Genel Bakış
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: Ölçüm gezgini
+          items:
+            - name: Ölçüm Gezgini’ni kullanmaya başlama
+              href: platform/metrics-getting-started.md
+            - name: Ölçüm Gezgini’nin gelişmiş özellikleri
+              href: platform/metrics-charts.md
+            - name: Ölçüm grafiği örnekleri
+              href: platform/metric-chart-samples.md
+            - name: Ölçüm grafikleri için sorun çözümü
+              href: platform/metrics-troubleshoot.md
     - name: Azure İzleyici Günlükleri
       items:
         - name: Genel Bakış
@@ -262,21 +277,10 @@
               href: platform/logs-export-logic-app.md
             - name: Dışarı aktarılan verileri Veri Gezgini ile sorgulama
               href: platform/azure-data-explorer-query-storage.md
-    - name: Azure İzleyici Ölçümleri
-      items:
-        - name: Genel Bakış
-          displayname: Metrics
-          href: platform/data-platform-metrics.md
-        - name: Ölçüm gezgini
-          items:
-            - name: Ölçüm Gezgini’ni kullanmaya başlama
-              href: platform/metrics-getting-started.md
-            - name: Ölçüm Gezgini’nin gelişmiş özellikleri
-              href: platform/metrics-charts.md
-            - name: Ölçüm grafiği örnekleri
-              href: platform/metric-chart-samples.md
-            - name: Ölçüm grafikleri için sorun çözümü
-              href: platform/metrics-troubleshoot.md
+            - name: Excel’e gönder
+              href: log-query/log-excel.md
+            - name: Power BI’a gönder
+              href: log-query/log-powerbi.md
     - name: Platform günlükleri
       items:
         - name: Genel Bakış
@@ -575,12 +579,16 @@
                   displayname: 'ilogger, logging, log'
                   href: app/ilogger.md
             - name: ASP.NET
-              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-              href: app/asp-net.md
+              items:
+                - name: ASP.NET Uygulama İzleme
+                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                  href: app/asp-net.md
+                - name: ASP.NET sorunlarını giderme
+                  href: app/asp-net-troubleshoot-no-data.md
             - name: HTTP olmayan uygulamalar/Arka plan uygulamaları
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET Konsolu
+            - name: ASP.NET Konsolu
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -590,18 +598,10 @@
                   href: app/java-get-started.md
                 - name: Günlük izlemeleri
                   href: app/java-trace-logs.md
-                - name: UNIX ölçümleri
-                  href: app/java-collectd.md
                 - name: Bağımlılıklar
                   href: app/java-agent.md
                 - name: Telemetri filtreleme
                   href: app/java-filter-telemetry.md
-                - name: Micrometer ölçümleri
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot uygulaması
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                 - name: Sorun giderme
                   href: app/java-troubleshoot.md
             - name: Node.js
@@ -637,8 +637,6 @@
             - name: Application Insights API özeti
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
-            - name: ASP.NET sorunlarını giderme
-              href: app/asp-net-troubleshoot-no-data.md
             - name: Application Insights’ı kaldırma
               href: app/remove-application-insights.md
         - name: Kodsuz izleme
@@ -1241,6 +1239,8 @@
               href: app/release-notes.md
             - name: Web uygulaması uzantısı
               href: app/web-app-extension-release-notes.md
+            - name: Anlık Görüntü Hata Ayıklayıcı
+              href: app/snapshot-collector-release-notes.md
         - name: Veri modeli
           items:
             - name: Genel Bakış
@@ -1323,6 +1323,11 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault Analytics (kullanım dışı)
           href: insights/azure-key-vault-deprecated.md
+        - name: UNIX ölçümleri
+          href: app/java-collectd.md
+        - name: Micrometer ölçümleri
+          displayname: java
+          href: app/micrometer-java.md
         - name: Görünümler
           items:
             - name: Görünüm Tasarımcısı

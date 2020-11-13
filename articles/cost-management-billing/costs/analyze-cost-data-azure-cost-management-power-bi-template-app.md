@@ -3,17 +3,17 @@ title: Power BI uygulamasıyla Azure maliyetlerini analiz etme
 description: Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yükleme ve kullanma adımları gösterilmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 7282ef9269c1168214fe57d3faa5488e531af8da
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131131"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413250"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Kurumsal Anlaşmalar (EA) için Azure Maliyet Yönetimi Power BI uygulamasıyla maliyet analizi
 
@@ -204,8 +204,8 @@ Aşağıdaki bilgiler, uygulama aracılığıyla kullanılabilen verileri özetl
 | [**Bütçeler**](/rest/api/consumption/budgets/get#definitions) | Mevcut bütçe hedeflerine göre gerçek maliyetleri veya kullanımı görüntülemek için bütçe ayrıntıları. |
 | [**Fiyat listeleri**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | Belirtilen faturalama profili veya EA kaydı için geçerli ölçüm ücretleri. |
 | [**RI ücretleri**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | Son 24 ay içindeki ayrılmış örneklerinize ilişkin ücretler. |
-| [**RI önerileri (paylaşılan)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Son 7, 30 veya 60 güne ait tüm abonelik kullanım eğilimlerinize göre ayrılmış örnek satın alma önerileri. |
-| [**RI önerileri (tek)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Son 7, 30 veya 60 güne ait tek abonelik kullanım eğilimlerinize göre ayrılmış örnek satın alma önerileri. |
+| [**RI önerileri (paylaşılan)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Son 7 güne ait tüm abonelik kullanım eğilimlerinize göre ayrılmış örnek satın alma önerileri. |
+| [**RI önerileri (tek)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Son 7 güne ait tek abonelik kullanım eğilimlerinize göre ayrılmış örnek satın alma önerileri. |
 | [**RI kullanım ayrıntıları**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | Mevcut ayrılmış örnekleriniz için önceki aya ait tüketim ayrıntıları. |
 | [**RI kullanım özeti**](/rest/api/consumption/reservationssummaries/list) | Günlük Azure rezervasyonu kullanım yüzdesi. |
 | [**Kullanım ayrıntıları**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | EA kaydındaki belirtilen faturalama profili için tüketilen miktarların ve tahmini ücretlerin dökümü. |

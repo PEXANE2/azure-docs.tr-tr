@@ -76,6 +76,8 @@
       href: concepts/pricing.md
     - name: Gizlilik
       href: concepts/privacy.md
+    - name: Kimlik modeli
+      href: concepts/identity-model.md
     - name: Kimlik Doğrulaması
       href: concepts/authentication.md
     - name: Olay işleme

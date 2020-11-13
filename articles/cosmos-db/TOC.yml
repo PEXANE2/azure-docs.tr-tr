@@ -703,6 +703,8 @@
               href: migrate-java-v4-sdk.md
             - name: .NET V3 SDK’ya geçiş
               href: migrate-dotnet-v3.md
+            - name: .NET V2 SDK’ya geçiş
+              href: migrate-dotnet-v2.md
         - name: Sorun giderme
           items:
             - name: Sık karşılaşılan hatalar

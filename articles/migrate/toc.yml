@@ -68,7 +68,7 @@
           href: tutorial-migrate-gcp-virtual-machines.md
 - name: Kavramlar
   items:
-    - name: Azure Geçişi ile geçiş planı oluşturma
+    - name: Geçiş planı oluşturma
       href: concepts-migration-planning.md
     - name: Destek matrisleri
       items:

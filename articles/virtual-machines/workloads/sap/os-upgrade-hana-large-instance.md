@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a9c8fce87b48b47f4bf82e5fd25fda12a25758
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192425"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553514"
 ---
 # <a name="operating-system-upgrade"></a>İşletim sistemi yükseltme
 Bu belgede, HANA büyük örneklerinde işletim sistemi yükseltmeleriyle ilgili ayrıntılar açıklanmaktadır.
@@ -38,11 +38,9 @@ Biletini ekleyin:
 * Uygulanmasını planladığınız düzeltme eki düzeyi.
 * Bu değişikliği planlamanızın tarihi. 
 
-Bu bileti, Işlem ekibinin, sunucu dikey penceresinde bellenim yükseltmesinin gerekli olup olmadığını denetlemesi nedeniyle, istenen yükseltme tarihinden önce en az bir hafta önce açmanız önerilir.
-
+Bu bileti, istenen yükseltmeden önce en az bir hafta önce açmanız önerilir. Bu, takımın istenen bellenim sürümü hakkında bilgi sahibi olduğunu bilmesini sağlar.
 
 Farklı Linux sürümlerindeki farklı SAP HANA sürümlerinin destek matrisi için bkz. [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
-
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -55,16 +53,17 @@ Yükseltme sırasında yaygın olarak karşılaşılan birkaç sorun aşağıda 
 Düzeltme eki uygulama, sistem yükseltmeleri ve müşteriler tarafından yapılan değişiklikler nedeniyle, işletim sistemi yapılandırması zaman içinde Önerilen ayarlardan fazla olabilir. Ayrıca, Microsoft, mevcut sistemler için gereken güncelleştirmeleri tanımlar ve en iyi performans ve dayanıklılık için en iyi şekilde yapılandırılmasını sağlar. Aşağıdaki yönergeler ağ performansını, sistem kararlılığını ve en iyi HANA performansını ele alan önerilerin ana hatlarıyla yapılır.
 
 ### <a name="compatible-enicfnic-driver-versions"></a>Uyumlu eNIC/Fnıc sürücü sürümleri
-  Doğru ağ performansına ve sistem kararlılığını sağlamak için, aşağıdaki uyumluluk tablosunda belirtilen eNIC ve Fnıc sürücülerinin işletim sistemine özgü sürümünün yüklendiğinden emin olmanız önerilir. Sunucular, uyumlu sürümlere sahip müşterilere dağıtılır. Bazı durumlarda, işletim sistemi/çekirdek düzeltme eki uygulama sırasında sürücülerin varsayılan sürücü sürümlerine geri alınacağını unutmayın. Uygun sürücü sürümünün işletim sistemi/çekirdek düzeltme eki uygulama işlemlerini çalıştırdığından emin olun.
+  Doğru ağ performansına ve sistem kararlılığını sağlamak için, aşağıdaki uyumluluk tablosunda belirtilen eNIC ve Fnıc sürücülerinin işletim sistemine özgü sürümünün yüklü olduğundan emin olmanız önerilir. Sunucular, uyumlu sürümlere sahip müşterilere dağıtılır. Bazı durumlarda, işletim sistemi/çekirdek düzeltme eki uygulama sırasında sürücüler varsayılan sürücü sürümlerine geri alınabilir. İşletim sistemi/çekirdek düzeltme eki uygulama sonrasında uygun sürücü sürümünün çalıştığından emin olun.
        
       
   |  İşletim sistemi satıcısı    |  İşletim sistemi paketi sürümü     |  Üretici Yazılımı Sürümü  |  eNIC sürücüsü |  Fnıc sürücüsü | 
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3 ı           |  2.3.0.47    |   2.0.0.54   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3 ı           |  4.0.0.6     |   2.0.0.60   |
   |   SuSE        |  SLES 12 SP2            |   3.2.3 ı           |  2.3.0.45    |   1.6.0.37   |
-  |   SuSE        |  SLES 12 SP3            |   3.2.3 ı           |  2.3.0.45    |   1.6.0.37   |
+  |   SuSE        |  SLES 12 SP3            |   3.2.3 ı           |  2.3.0.43    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP5            |   3.2.3 ı           |  4.0.0.8     |   2.0.0.60   |
   |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
  
 
@@ -88,6 +87,15 @@ rpm -ivh <enic/fnic.rpm>
 modinfo enic
 modinfo fnic
 ```
+
+#### <a name="steps-for-enicfnic-drivers-installation-during-os-upgrade"></a>İşletim sistemi yükseltmesi sırasında eNIC/Fnıc sürücüleri yükleme adımları
+
+* İşletim sistemi sürümünü yükselt
+* Eski RPM paketlerini kaldır
+* Yüklü işletim sistemi sürümüne göre uyumlu eNIC/Fnıc sürücüleri yükleme
+* Sistemi yeniden Başlat
+* Yeniden başlatmadan sonra, eNIC/Fnıc sürümünü denetleyin
+
 
 ### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB güncelleştirme hatası
 Azure HANA büyük örneklerinde (tür ı) SAP, yükseltmeden sonra önyüklenebilir olmayan bir durumda olabilir. Aşağıdaki yordam bu sorunu düzeltir.
@@ -117,7 +125,6 @@ blacklist edac_core
 ```
 Değişikliklerin yerine gelmesi için yeniden başlatma gerekiyor. `lsmod`Komutunu yürütün ve modülün çıkışta mevcut olmadığını doğrulayın.
 
-
 ### <a name="kernel-parameters"></a>Çekirdek parametreleri
    ,, Ve için doğru ayarların `transparent_hugepage` uygulandığından emin olun `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` .
 
@@ -126,7 +133,6 @@ Değişikliklerin yerine gelmesi için yeniden başlatma gerekiyor. `lsmod`Komut
 * transparent_hugepage = hiçbir bir
 * numa_balancing = devre dışı bırak
 * MCE = ignore_ce
-
 
 #### <a name="execution-steps"></a>Yürütme adımları
 

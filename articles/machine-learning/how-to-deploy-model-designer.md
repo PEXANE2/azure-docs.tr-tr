@@ -1,7 +1,7 @@
 ---
 title: Tasarımcı 'da eğitilen modelleri dağıtmak için Studio 'yu kullanma
 titleSuffix: Azure Machine Learning
-description: Tasarımcıda eğitilen modelleri dağıtmak için Azure Machine Learning Studio 'yu kullanın.
+description: Tek bir kod satırı yazmadan makine öğrenimi modellerini dağıtmak için Azure Machine Learning Studio kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927592"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554691"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Tasarımcı 'da eğitilen modelleri dağıtmak için Studio 'yu kullanma
 
@@ -33,7 +33,7 @@ Model kaydı ve dosya indirme adımlarını atlamak için modelleri doğrudan ta
 
 Tasarımcıda eğitilen modeller ayrıca SDK veya komut satırı arabirimi (CLı) aracılığıyla da dağıtılabilir. Daha fazla bilgi için bkz. [mevcut modelinizi Azure Machine Learning dağıtma](how-to-deploy-existing-model.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
 
@@ -300,7 +300,7 @@ score_params = dict(
 
 * [Tasarımcıda bir modeli eğitme](tutorial-designer-automobile-price-train-score.md)
 * [Azure Machine Learning SDK ile modelleri dağıtma](how-to-deploy-and-where.md)
-* [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
+* [Başarısız bir dağıtımın sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)

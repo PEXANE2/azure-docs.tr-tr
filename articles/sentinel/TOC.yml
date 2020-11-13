@@ -178,6 +178,8 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM’lerini bağlama
           href: connect-azure-stack.md
+        - name: Veri bağlayıcısının sistem durumunu izleme
+          href: monitor-data-connector-health.md
     - name: Kullanıcı ve Varlık Davranışları Analizini etkinleştirme
       href: enable-entity-behavior-analytics.md
     - name: Birden çok kiracıyı yönetme (MSSP)

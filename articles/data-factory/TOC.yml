@@ -451,6 +451,8 @@
           href: copy-activity-fault-tolerance.md
         - name: Veri tutarlılığı doğrulama
           href: copy-activity-data-consistency.md
+        - name: Etkinlik günlüğünü kopyalama
+          href: copy-activity-log.md
         - name: Biçimlendirme ve sıkıştırma desteği (eski)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Verileri dönüştürme

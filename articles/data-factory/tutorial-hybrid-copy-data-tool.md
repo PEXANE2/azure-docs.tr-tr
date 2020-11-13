@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 3237ff37e4314459a9e9a7a255b0ad10b3958509
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 7d10eec3fb200d2ef9e583c012cc522888f3c65b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636961"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553599"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -109,7 +109,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Soldaki menüden **+ kaynak**  >  **Analizi**  >  **Data Factory** oluştur ' u seçin.
+1. Soldaki menüde, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin.
 
    ![Yeni veri fabrikası oluşturma](./media/doc-common-process/new-azure-data-factory-menu.png)
 

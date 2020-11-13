@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074456"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554832"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 .NET Core Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET Core yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET Core yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-8. **Operations**  >  **Feature Manager**  >  **Ekle** ' yi seçerek *Beta*adlı bir özellik bayrağı ekleyin.
+8. **Operations**  >  **Feature Manager**  >  **Ekle** ' yi seçerek *Beta* adlı bir özellik bayrağı ekleyin.
 
     > [!div class="mx-imgBorder"]
     > ![Beta adlı özellik bayrağını etkinleştir](media/add-beta-feature-flag.png)
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     .NET Core Yapılandırma API 'sini kullanarak bu gizli dizi ile erişin. İki nokta üst üste ( `:` ) yapılandırma adında desteklenen tüm platformlarda Yapılandırma API 'si ile birlikte kullanılır. Daha fazla bilgi için bkz. [yapılandırma anahtarları ve değerleri](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. *Program.cs*içinde `CreateWebHostBuilder` yöntemini çağırarak uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin `AddAzureAppConfiguration` .
+1. *Program.cs* içinde `CreateWebHostBuilder` yöntemini çağırarak uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin `AddAzureAppConfiguration` .
 
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`.NET Core 3. x içindeki yerini alır. Ortamınıza göre doğru söz dizimini seçin.
@@ -106,9 +106,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    Önceki değişiklikten sonra, [uygulama yapılandırması için yapılandırma sağlayıcısı](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) .NET Core Yapılandırma API 'sine kaydedilir.
+    Önceki değişiklikten sonra, [uygulama yapılandırması için yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664) .NET Core Yapılandırma API 'sine kaydedilir.
 
-1. *Startup.cs*' de .NET Core Özellik Yöneticisi 'ne bir başvuru ekleyin:
+1. *Startup.cs* ' de .NET Core Özellik Yöneticisi 'ne bir başvuru ekleyin:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -173,7 +173,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. *Görünümler/_ViewImports. cshtml*'de, bir yönergesi kullanarak Feature Manager etiketi yardımcısını kaydedin `@addTagHelper` :
+1. *Görünümler/_ViewImports. cshtml* 'de, bir yönergesi kullanarak Feature Manager etiketi yardımcısını kaydedin `@addTagHelper` :
 
     ```cshtml
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
@@ -181,36 +181,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Yukarıdaki kod, `<feature>` etiket Yardımcısı 'nın projenin *. cshtml* dosyalarında kullanılmasına izin verir.
 
-1. *Views/Shared/_Layout. cshtml*' de, `<nav>` `<body>`  >  `<header>` aşağıdaki işaretle altındaki barkodu değiştirin:
+1. *Görünümler* paylaşılan dizininde *_Layout. cshtml* dosyasını açın \\ *Shared* . `<nav>`Altındaki barkodu bulun `<body>`  >  `<header>` . `<feature>`Aşağıdaki Vurgulanan satırlarda gösterildiği gibi, *giriş* ve *Gizlilik* gezinti çubuğu öğeleri arasına yeni bir etiket ekleyin.
 
-    ```cshtml
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <feature name="Beta">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
-                    </li>
-                    </feature>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    ```
-
-    Önceki biçimlendirmede, `<feature>` *Beta* liste öğesini çevreleyen etiket Yardımcısı ' na dikkat edin.
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
 1. Aşağıdaki biçimlendirmeyi içeren bir *views/Beta* dizini ve *Index. cshtml* dosyası oluşturun:
 
@@ -236,7 +209,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     dotnet run
     ```
 
-1. Bir tarayıcı penceresi açın ve `http://localhost:5000` yerel olarak barındırılan Web uygulaması için varsayılan URL olan öğesine gidin. Azure Cloud Shell çalışıyorsanız, **Web önizleme** düğmesini ve ardından **Yapılandır**' ı seçin. İstendiğinde, 5000 numaralı bağlantı noktasını seçin.
+1. Bir tarayıcı penceresi açın ve `http://localhost:5000` yerel olarak barındırılan Web uygulaması için varsayılan URL olan öğesine gidin. Azure Cloud Shell çalışıyorsanız, **Web önizleme** düğmesini ve ardından **Yapılandır** ' ı seçin. İstendiğinde, 5000 numaralı bağlantı noktasını seçin.
 
     ![Web önizlemesi düğmesini bulun](./media/quickstarts/cloud-shell-web-preview.png)
 
@@ -244,15 +217,17 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Değişiklikten önce yerel hızlı başlangıç uygulaması" border="true":::
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar** ' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
-1. **Özellik Yöneticisi**' ni seçin ve *Beta* anahtarının durumunu **Açık**olarak değiştirin.
+1. **Özellik Yöneticisi** ' ni seçin. 
+
+1. **Etkin** ' in altındaki onay kutusunu seçerek *Beta* bayrağını etkinleştirin.
 
 1. Komut kabuğuna geri dönün. `dotnet` <kbd>CTRL + C</kbd>tuşlarına basarak çalışan işlemi iptal edin. Uygulamasını kullanarak uygulamanızı yeniden başlatın `dotnet run` .
 
 1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
 
-    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="Değişiklikten önce yerel hızlı başlangıç uygulaması" border="true":::
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="Değişiklikten sonra yerel hızlı başlangıç uygulaması" border="true":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -260,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)aracılığıyla bir ASP.NET Core Web uygulamasındaki özellikleri yönetmek için kullandınız.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir ASP.NET Core Web uygulamasındaki özellikleri yönetmek için kullandınız.
 
 * [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
 * [Özellik bayraklarını yönetin](./manage-feature-flags.md).

@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 131deabfbd29e4d55a3f34252e3ba68261872ca0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785502"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553565"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM Azure Site Recovery Azure içindeki başka bir bölgeye taşıma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -73,7 +73,7 @@ Taşıma için hem kaynak SQL Server VM hem de hedef bölgeyi hazırlayın.
 
 Aşağıdaki adımlarda, verileri hedef bölgeye kopyalamak için Azure Site Recovery nasıl kullanılacağı gösterilmektedir. Kurtarma Hizmetleri kasasını kaynak bölgesi dışında herhangi bir bölgede oluşturun. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. Gezinti bölmesinin sol üst köşesinden **bir kaynak oluşturmayı** seçin. 
 1. **Yönetim araçları &** seçin ve ardından **Yedekle ve Site Recovery '** ı seçin. 
 1. **Temel bilgiler** sekmesinde, **proje ayrıntıları** ' nın altında, hedef bölgede yeni bir kaynak grubu oluşturun veya hedef bölgede var olan bir kaynak grubunu seçin. 
@@ -114,7 +114,7 @@ Aşağıdaki adımlarda, taşıma işlemini test etmek için Azure Site Recovery
    ![Yük devretme testi ilerlemesini izleme](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
 1. Test tamamlandıktan sonra portalda **sanal makineler** ' e gidin ve yeni oluşturulan sanal makineyi gözden geçirin. SQL Server VM çalıştığından ve uygun ağa bağlı olduğundan emin olun. 
-1. Yük devretme testi kaynakları temizlenene kadar **Yük devretme** seçeneği gri olacağı için testin bir parçası olarak oluşturulan VM 'yi silin. Kasaya geri dönün, **çoğaltılan öğeler** ' i seçin, SQL Server VM seçin ve sonra **Test yük devretmesini temizle** ' yi seçin. **Notlar** bölümündeki sınamalarla ilişkili tüm gözlemlerinizi kaydedin ve kaydedin ve test et ' in yanındaki onay kutusunu seçin **. Yük devretme testi sanal makinelerini silin** . Testten sonra kaynakları temizlemek için **Tamam ' ı** seçin. 
+1. Yük devretme testi kaynakları temizlenene kadar **Yük devretme** seçeneği gri olacağı için testin bir parçası olarak oluşturulan VM 'yi silin. Kasaya geri dönün, **çoğaltılan öğeler** ' i seçin, SQL Server VM seçin ve sonra **Test yük devretmesini temizle** ' yi seçin. **Notlar** bölümündeki sınamalarla ilişkili tüm gözlemlerinizi kaydedin ve kaydedin ve test et ' in yanındaki onay kutusunu seçin **. Yük devretme testi sanal makinelerini silin**. Testten sonra kaynakları temizlemek için **Tamam ' ı** seçin. 
 
    ![Yük devretme testinin ardından öğeleri Temizle](./media/move-sql-vm-different-region/cleanup-test-items.png)
 
@@ -131,7 +131,7 @@ Aşağıdaki adımlarda SQL Server VM kaynak bölgeinizden hedef bölgenize nas�
 1. Önceki bölümde yük devretme testini izlerken görüntülenen aynı **Site Recovery işleri** sayfasından yük devretme sürecini izleyebilirsiniz. 
 1. İş tamamlandıktan sonra, SQL Server VM hedef bölgede beklenen şekilde göründüğünden emin olun. 
 1. Kasaya geri dönün, **çoğaltılan öğeler** ' i seçin, SQL Server VM seçin ve **Kaydet** ' i seçerek hedef bölgeye taşıma işlemini tamamlayın. Tamamlama işi bitene kadar bekleyin. 
-1. Kaynak sağlayıcısıyla ilişkili Azure portal ve özelliklerde **SQL sanal makine** yönetilebilirliği sağlamak IÇIN SQL Server VM SQL VM kaynak sağlayıcısı ile kaydedin. Daha fazla bilgi için bkz. [SQL VM kaynak sağlayıcısı ile SQL Server VM kaydetme](sql-vm-resource-provider-register.md). 
+1. Uzantı ile ilişkili Azure portal ve özelliklerde **SQL sanal makine** yönetilebilirliği sağlamak IÇIN SQL Server VM SQL IaaS Aracısı Uzantısı ile kaydedin. Daha fazla bilgi için bkz. [SQL IaaS Aracısı Uzantısı ile SQL Server VM kaydetme](sql-agent-extension-manually-register-single-vm.md). 
 
   > [!WARNING]
   > SQL Server veri tutarlılığı yalnızca uygulamayla tutarlı anlık görüntülerle garanti edilir. Kilitlenme kurtarma anlık görüntüsü SQL Server veri tutarlılığını garanti edemediğinden, **en son işlenen** anlık görüntü SQL Server yük devretme için kullanılamaz. 

@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784873"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553542"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,9 +45,9 @@ Azure Marketi aracılığıyla dağıtılan görüntüler SQL IaaS uzantısı ö
 ## <a name="licensing"></a>Lisanslama
 Kullandıkça Öde SQL Server 2008 R2 dağıtımları [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)'e dönüştürülebilir.
 
-Yazılım Güvencesi (SA) tabanlı bir lisansı Kullandıkça Öde 'ye dönüştürmek için, müşterilerin SQL VM [kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kaydolması gerekir. Bu kayıt sonrasında, SQL lisans türü Azure Hibrit Avantajı ve kullandıkça öde arasında çapraz bir şekilde yapılır.
+Yazılım Güvencesi (SA) tabanlı bir lisansı Kullandıkça Öde 'ye dönüştürmek için, müşteriler [SQL IaaS Aracısı uzantısına](sql-agent-extension-manually-register-single-vm.md)kaydolmalıdır. Bu kayıt sonrasında, SQL lisans türü Azure Hibrit Avantajı ve kullandıkça öde arasında çapraz bir şekilde yapılır.
 
-Bir Azure VM 'de kendi kendine yüklenmiş SQL Server 2008 veya SQL Server 2008 R2 örnekleri, SQL VM kaynak sağlayıcısına kaydolabilir ve lisans türlerini Kullandıkça Öde olarak dönüştürebilir.
+Azure VM 'de kendi kendine yüklenmiş SQL Server 2008 veya SQL Server 2008 R2 örnekleri, SQL IaaS aracı uzantısına kaydolmanızı ve lisans türlerini Kullandıkça Öde 'ye dönüştürmenize olanak sağlar.
 
 ## <a name="migration"></a>Geçiş
 El ile yedekleme/geri yükleme yöntemleriyle EOS SQL Server örneklerini bir Azure VM 'ye geçirebilirsiniz. Bu, Şirket içinden bir Azure VM 'ye en sık kullanılan geçiş yöntemidir.
@@ -71,7 +71,8 @@ Azure VM 'de EOS SQL Server için olağanüstü durum kurtarma çözümleri şun
 - **Azure Site Recovery** : sanal makinenizin Azure Site Recovery çoğaltma aracılığıyla bölgeler ve bölgeler arasında çoğaltılmasını sağlayabilirsiniz. SQL Server, olağanüstü bir durum oluşması durumunda kurtarma sağlamak için uygulamayla tutarlı anlık görüntüler gerektirir. Azure Site Recovery, EOS SQL Server olağanüstü durum kurtarma için en az 1 saatlik RPO ve 2 saat (artı SQL Server kurtarma süresi) sağlar.
 
 ## <a name="security-patching"></a>Güvenlik Düzeltme eki uygulama
-SQL Server VM 'Ler için genişletilmiş güvenlik güncelleştirmeleri, SQL Server VM SQL VM [kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kaydedildikten sonra Microsoft Update kanalları aracılığıyla dağıtılır. Düzeltme ekleri el ile veya otomatik olarak indirilebilir.
+
+SQL Server VM 'Ler için genişletilmiş güvenlik güncelleştirmeleri, SQL Server VM [SQL IaaS Aracısı uzantısına](sql-agent-extension-manually-register-single-vm.md)kaydedildikten sonra Microsoft Update kanalları aracılığıyla dağıtılır. Düzeltme ekleri el ile veya otomatik olarak indirilebilir.
 
 *Otomatik düzeltme eki uygulama* varsayılan olarak etkindir. Otomatik düzeltme eki uygulama Azure’un SQL Server’a ve işletim sistemine otomatik olarak düzeltme eki uygulamasını sağlar. SQL Server IaaS uzantısı yüklüyse, bakım penceresi için haftanın gününü, saatini ve süreyi belirtebilirsiniz. Azure düzeltme eki uygulamayı bu bakım penceresinde gerçekleştirir. Bakım penceresi zamanlaması saat için VM yerel saatini kullanır. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama](automated-patching.md).
 

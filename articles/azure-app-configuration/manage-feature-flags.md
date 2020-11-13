@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e35c408d2e0ec2954ffdcbbce47f98ac49b16b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209944"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554708"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Öğretici: Azure Uygulama yapılandırmasındaki Özellik bayraklarını yönetme
 
@@ -46,16 +46,17 @@ Yeni bir özellik bayrağı eklemek için:
 
 1. İsterseniz, özellik bayrağına bir açıklama verin.
 
-1. Özellik bayrağının başlangıç durumunu ayarlayın. Bu durum genellikle *kapalı* veya *Açık*durumdadır. Özellik bayrağına bir filtre eklerseniz, *on* durumu *koşullu* olarak değişir.
+1. Özellik bayrağının başlangıç durumunu ayarlayın. Bu durum genellikle *kapalı* veya *Açık* durumdadır. Özellik bayrağına bir filtre eklerseniz, *on* durumu *koşullu* olarak değişir.
 
     ![Özellik bayrağı oluşturma](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Durum *Açık*olduğunda, durumu nitelemek üzere ek koşullar belirtmek için **+ Filtre Ekle** ' yi seçin. Yerleşik veya özel bir filtre anahtarı girin ve ardından filtre ile bir veya daha fazla parametreyi ilişkilendirmek için **+ parametre Ekle** ' yi seçin. Yerleşik Filtreler şunları içerir:
+1. Durum *Açık* olduğunda, durumu nitelemek üzere ek koşullar belirtmek için **+ Filtre Ekle** ' yi seçin. Yerleşik veya özel bir filtre anahtarı girin ve ardından filtre ile bir veya daha fazla parametreyi ilişkilendirmek için **+ parametre Ekle** ' yi seçin. Yerleşik Filtreler şunları içerir:
 
     | Anahtar | JSON parametreleri |
     |---|---|
     | Microsoft. Percentage | {"Value":% 0-100} |
     | Microsoft. TimeWindow | {"Başlangıç": UTC saati, "bitiş": UTC saati} |
+    | Microsoft. hedefleme | {"Hedef kitle": kullanıcıları, grupları ve dağıtım yüzdelerini tanımlayan JSON blobu. `EnabledFor` [Bu ayarlar dosyasının](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json) öğesi altında bir örnek görüntüleyin}
 
     ![Özellik bayrağı filtresi](./media/azure-app-configuration-feature-flag-filter.png)
 
@@ -63,9 +64,9 @@ Yeni bir özellik bayrağı eklemek için:
 
 Bir özellik bayrağının durum değerini değiştirmek için:
 
-1. **Özellik Yöneticisi**' ni seçin.
+1. **Özellik Yöneticisi** ' ni seçin.
 
-1. Değiştirmek istediğiniz bir özellik bayrağının sağında, üç nokta (**...**) simgesini seçin ve ardından **Düzenle**' yi seçin.
+1. Değiştirmek istediğiniz bir özellik bayrağının sağında, üç nokta ( **...** ) simgesini seçin ve ardından **Düzenle** ' yi seçin.
 
 1. Özellik bayrağı için yeni bir durum belirleyin.
 

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 424d5a7ade04c2b72a0bc8ec379a6fad09216f39
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/09/2020
+ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042683"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554143"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory ile Azure Data Lake Storage 2. verileri yükleme
 
@@ -34,7 +34,7 @@ Bu makalede _Amazon Web Services S3 hizmetinden_ _Azure Data Lake Storage 2._ 'a
 >[!TIP]
 >Azure Data Lake Storage 1. verileri Gen2 'e kopyalamak için [Bu özel izlenecek yolu](load-azure-data-lake-storage-gen2-from-gen1.md)inceleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Data Lake Storage 2. etkin Azure depolama hesabı: depolama hesabınız yoksa [bir hesap oluşturun](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
@@ -42,7 +42,7 @@ Bu makalede _Amazon Web Services S3 hizmetinden_ _Azure Data Lake Storage 2._ 'a
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol taraftaki menüden veri ve analiz **kaynak oluştur** ' u seçin  >  **Data + Analytics**  >  **Data Factory** :
+1. Sol menüde, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin:
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426248"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334678"
 ---
 ::: zone target="docs"
 
@@ -103,7 +103,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
     
     ![Dosya Gezgini’nde gösterilen paylaşımlar](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın** . Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
+    **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
     
 Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşağıdaki komutu kullanın. Aşağıdaki "vers" parametresi, Linux ana bilgisayarınızın desteklediği SMB sürümüdür. Aşağıdaki komutta verilen uygun sürümü takın. Data Box’ın desteklediği SMB sürümleri için bkz. [Linux istemcileri için desteklenen dosya sistemleri](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
 
@@ -229,11 +229,11 @@ Kopyalama işlemi sırasında hatalarla karşılaşırsanız bir bildirim görü
 
 **Sorun listesini indir** ’i seçin.
 
-![Bağlan ve kopyala adımındaki hataları indirip görüntüleme 2](media/data-box-deploy-copy-data/view-errors-2.png)
+![Bağlanma ve kopyalama, Sorun listesini indirme](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Hatanın ayrıntılarını görüntülemek için listeyi açın ve önerilen çözümü görüntülemek için çözüm URL’sini seçin.
 
-![Bağlan ve kopyala adımındaki hataları indirip görüntüleme 3](media/data-box-deploy-copy-data/view-errors-3.png)
+![Bağlanma ve kopyalama, hataları indirme ve görüntüleme](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 

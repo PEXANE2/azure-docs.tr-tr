@@ -13,12 +13,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fcb6d4da3d9b044cf722c6333f61a0f8d38f1956
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4c8f0c636e254c4afc2d6cd83a744939096233a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598010"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553633"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Windows sanal makinesinde SQL Server oluşturma
 
@@ -150,9 +150,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="register-with-sql-vm-rp"></a>SQL VM RP ile kaydolma 
 
-Portal tümleştirmesi ve SQL VM özellikleri almak için, [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kaydolmanız gerekir.
+Portal tümleştirmesi ve SQL VM özelliklerini almak için [SQL IaaS Aracısı uzantısına](sql-agent-extension-manually-register-single-vm.md)kaydolmanız gerekir.
 
-Tam işlevselliği almak için kaynak sağlayıcısına tam modda kaydolmanız gerekir. Ancak bunu yapmak SQL Server hizmetini yeniden başlatır, bu nedenle önerilen yaklaşım basit modda kaydolmalıdır ve bakım penceresi sırasında tam olarak yükseltilir. 
+Tam işlevselliği almak için, uzantıya tam modda kaydolmanız gerekir. Ancak bunu yapmak SQL Server hizmetini yeniden başlatır, bu nedenle önerilen yaklaşım basit modda kaydolmalıdır ve bakım penceresi sırasında tam olarak yükseltilir. 
 
 İlk olarak, SQL Server VM basit modda kaydedin: 
 
@@ -171,7 +171,7 @@ Ardından, bir bakım penceresi sırasında tam moda yükseltin:
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
+# Register with SQL IaaS Agent extension in full mode
 Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 
@@ -197,7 +197,7 @@ Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManag
 
 1. Uzak Masaüstü oturumunda oturum açtıktan sonra Başlat menüsünden **SQL Server Management Studio 2017** ' u başlatın.
 
-1. **Sunucuya Bağlan** iletişim kutusunda, Varsayılanları koruyun. Sunucu adı, VM'nin adıdır. Kimlik doğrulaması, **Windows Kimlik Doğrulaması** olarak ayarlanmıştır. **Bağlan**'ı seçin.
+1. **Sunucuya Bağlan** iletişim kutusunda, Varsayılanları koruyun. Sunucu adı, VM'nin adıdır. Kimlik doğrulaması, **Windows Kimlik Doğrulaması** olarak ayarlanmıştır. **Bağlan** ’ı seçin.
 
 Artık SQL Server yerel olarak bağlı olursunuz. Uzaktan bağlanmak istiyorsanız Azure portal bağlantıyı veya el ile [yapılandırmanız](ways-to-connect-to-sql.md) gerekir.
 

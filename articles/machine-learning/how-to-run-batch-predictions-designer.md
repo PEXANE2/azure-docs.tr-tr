@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 titleSuffix: Azure Machine Learning
-description: Tasarımcıyı kullanarak bir modeli eğitme ve Batch tahmini işlem hattı ayarlama hakkında bilgi edinin. İşlem hattını, herhangi bir HTTP kitaplığından tetiklenebilecek parametreli bir Web hizmeti olarak dağıtın.
+description: Batch tahmin işlem hattı oluşturmayı öğrenin. İşlem hattını parametreli bir Web hizmeti olarak dağıtın ve herhangi bir HTTP kitaplığından tetikleyin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325445"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553955"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 
@@ -31,7 +31,7 @@ Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 
 SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](./tutorial-pipeline-batch-scoring-classification.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 

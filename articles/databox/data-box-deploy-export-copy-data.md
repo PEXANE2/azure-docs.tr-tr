@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123917"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335222"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Öğretici: SMB aracılığıyla Azure Data Box’tan veri kopyalama (Önizleme)
 
@@ -48,15 +48,15 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için aşağıdaki adımları izleyin.
 
-1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al**’ı seçin. 
+1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala** 'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al** ’ı seçin. 
 
     ![Paylaşım kimlik bilgilerini alma](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
-2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam**’ı seçin.
+2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam** ’ı seçin.
     
-    ![Paylaşım kimlik bilgilerini alma 2](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![Paylaşım kimlik bilgilerini alma, verilere erişme bunları paylaşma ve kopyalama](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
-3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *exportbvtdataset2*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
+3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *exportbvtdataset2* ) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -73,13 +73,13 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
     The command completed successfully.
     ```
 
-4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam**’ı seçin.
+5. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam** ’ı seçin.
     
-    ![Dosya Gezgini aracılığıyla paylaşıma bağlanma](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Dosya Gezgini aracılığıyla paylaşıma bağlanma, cihaz IP’si girme](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Artık paylaşımları klasörler olarak görebilirsiniz.
     
-    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![Dosya Gezgini aracılığıyla paylaşıma bağlanma, paylaşımları görüntüleme](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
 Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşağıdaki komutu kullanın. Aşağıdaki "vers" parametresi, Linux ana bilgisayarınızın desteklediği SMB sürümüdür. Aşağıdaki komutta verilen uygun sürümü takın. Data Box’ın desteklediği SMB sürümleri için bkz. [Linux istemcileri için desteklenen dosya sistemleri](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
@@ -100,7 +100,7 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 
 Robocopy komutu hakkında daha fazla bilgi için bkz. [Robocopy ve birkaç örnek](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx).
 
-Kopyalama tamamlandıktan sonra **Pano**’ya giderek cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
+Kopyalama tamamlandıktan sonra **Pano** ’ya giderek cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
 
 Şimdi işleme devam edip Data Box’ınızı Microsoft’a gönderebilirsiniz.
 

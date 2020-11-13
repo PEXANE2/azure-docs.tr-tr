@@ -18,7 +18,7 @@ ms.locfileid: "92913425"
 
 PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız, yönetilen bir hizmettir. Bu hızlı başlangıçta, tek bir PostgreSQL sunucusu için Azure veritabanı oluşturma ve buna bağlanma işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bir Azure aboneliği gereklidir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure Veritabanı sunucusu oluşturma
@@ -32,12 +32,12 @@ PostgreSQL için Azure veritabanı tek sunuculu veritabanı oluşturmak için [A
 2. PostgreSQL için Azure veritabanı oluşturma sayfasında,  **tek sunucu** ' yı seçin.
 
     >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-database-portal/select-single-server.png" alt-text="PostgreSQL için Azure veritabanı 'nı bulun.":::
+    > :::image type="content" source="./media/quickstart-create-database-portal/select-single-server.png" alt-text="Tek sunucu seçin":::
 
 3. Şimdi aşağıdaki bilgilerle **temel bilgiler** formunu girin.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="PostgreSQL için Azure veritabanı 'nı bulun.":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Tek bir sunucu oluşturmaya yönelik temel bilgiler sekmesini gösteren ekran görüntüsü.":::
 
    |Ayar|Önerilen değer|Açıklama|
    |:---|:---|:---|
@@ -45,7 +45,7 @@ PostgreSQL için Azure veritabanı tek sunuculu veritabanı oluşturmak için [A
    |Kaynak grubu|*myresourcegroup*| Aboneliğinizden yeni veya var olan bir kaynak grubu.|
    |Sunucu adı |*mydemoserver*|PostgreSQL için Azure Veritabanı sunucunuzu tanıtan benzersiz bir ad. *Postgres.Database.Azure.com* etki alanı adı, sağladığınız sunucu adına eklenir. Sunucunuz yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.|
    |Veri kaynağı | Yok | Sıfırdan yeni bir sunucu oluşturmak için **Yok** 'u seçin. Yalnızca var olan bir sunucunun coğrafi yedeklemesinden geri yükleme yaptıysanız **yedekleme** ' yi seçin.|
-   |Yönetici kullanıcı adı |*myadmin*| Sunucu Yöneticisi Kullanıcı adınızı girin. **PG_** ile başlayamaz ve bu değerlere izin verilmez: **azure_superuser** , **azure_pg_admin** , **yönetici** , **yönetici** , **kök** , **Konuk** veya **genel** .|
+   |Yönetici kullanıcı adı |*myadmin*| Sunucu Yöneticisi Kullanıcı adınızı girin. **PG_** ile başlayamaz ve bu değerlere izin verilmez: **azure_superuser** , **azure_pg_admin** , **yönetici** , **yönetici** , **kök** , **Konuk** veya **genel**.|
    |Parola |parolanız| Sunucu Yöneticisi kullanıcısı için yeni bir parola. Aşağıdaki kategorilerden üçünden 8 ila 128 karakter içermesi gerekir: Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (örneğin,!, $, #,%).|
    |Konum|istediğiniz konum| Açılan listeden bir konum seçin.|
    |Sürüm|En son ana sürüm| Belirli gereksinimleriniz olmadığı sürece, en son PostgreSQL ana sürümü.|
@@ -60,7 +60,7 @@ PostgreSQL için Azure veritabanı tek sunuculu veritabanı oluşturmak için [A
     > Boş bir veritabanı, **Postgres** oluşturulur. Ayrıca, yönetilen hizmet işlemlerini Kullanıcı eylemlerinden ayırmak için kullanılan bir **azure_maintenance** veritabanı bulacaksınız. **Azure_maintenance** veritabanına erişemezsiniz.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-database-portal/deployment-success.png" alt-text="PostgreSQL için Azure veritabanı 'nı bulun.":::
+> :::image type="content" source="./media/quickstart-create-database-portal/deployment-success.png" alt-text="başarılı dağıtım.":::
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/postgres-doc-feedback)
 
@@ -68,7 +68,7 @@ PostgreSQL için Azure veritabanı tek sunuculu veritabanı oluşturmak için [A
 Varsayılan olarak, oluşturduğunuz sunucuya herkese açık bir şekilde erişilebilir. IP adresiniz için izinler vermeniz gerekir. Azure portal sunucu kaynağınız ' ne gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin. Kaynağınızın nasıl bulunacağını bilmiyorsanız bkz. [kaynakları açma](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="PostgreSQL için Azure veritabanı 'nı bulun.":::
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Bağlantı güvenliği için güvenlik duvarı kurallarını gösteren ekran görüntüsü.":::
 
 **Geçerli ISTEMCI IP adresi ekle** ' yi seçin ve ardından **Kaydet** ' i seçin. Daha fazla IP adresi ekleyebilir veya bu IP adreslerinden sunucunuza bağlanmak için bir IP aralığı sağlayabilirsiniz. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'Nda güvenlik duvarı kuralları](./concepts-firewall-rules.md).
 
@@ -83,7 +83,7 @@ Popüler PostgreSQL istemcileri olan [psql](http://postgresguide.com/utilities/p
 
 1. Sunucunuzun **genel bakış** bölümünden yeni oluşturduğunuz sunucu için sunucu adı, Sunucu Yöneticisi oturum açma adı, parola ve abonelik kimliğini bir yere göz atın.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-database-portal/overview-new.png" alt-text="PostgreSQL için Azure veritabanı 'nı bulun.":::
+    > :::image type="content" source="./media/quickstart-create-database-portal/overview-new.png" alt-text="bağlantı bilgilerini alın.":::
 
 
 2. Sol üst taraftaki simgeyi seçerek portalda Azure Cloud Shell açın.
@@ -92,7 +92,7 @@ Popüler PostgreSQL istemcileri olan [psql](http://postgresguide.com/utilities/p
    > Cloud Shell ilk kez açarsanız, bir kaynak grubu ve depolama hesabı oluşturmak için bir istem görürsünüz. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="PostgreSQL için Azure veritabanı 'nı bulun.":::
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Azure Cloud Shell açma için sunucu bilgilerini ve simgesini gösteren ekran görüntüsü.":::
 
 3. Azure Cloud Shell terminalinde aşağıdaki komutu çalıştırın. Değerleri gerçek sunucu adı ve Yönetici Kullanıcı oturum açma adınızla değiştirin. Yönetici kullanıcıyla boş veritabanı **Postgres** 'yi şu biçimde kullanın: `<admin-username>@<servername>` .
 
@@ -147,7 +147,7 @@ Kaynak grubunu silmek için:
 Sunucuyu silmek için, sunucunuzun **genel bakış** sayfasında **Sil** düğmesini seçin:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="PostgreSQL için Azure veritabanı 'nı bulun.":::
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Sunucu silme düğmesini gösteren ekran görüntüsü.":::
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/postgres-doc-feedback)
 

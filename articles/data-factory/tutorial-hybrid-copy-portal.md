@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 19a0446cc0e69b860d6238ef7d7823cfa0afbb7c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 172ebb5f5b7896b6b642c1fe6c5d01afb1dbf479
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636230"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553616"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
 
@@ -110,7 +110,7 @@ Bu bölümde, Blob depolama alanınızda **adftutorial** adlı bir blob kapsayı
 Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory kullanıcı arabirimini başlatacaksınız.
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory** oluştur ' u seçin:
+1. Sol menüde, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -178,9 +178,9 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
     d. **Kimlik doğrulaması türü** bölümünde, Data Factory’nin SQL Server veritabanınıza bağlanmak için kullanması gereken uygun kimlik doğrulaması türünü seçin.
 
-    e. **Kullanıcı adı** ve **Parola** bölümlerine kullanıcı adını ve parolasını girin. Kullanıcı hesabınızda veya sunucu adında ters eğik çizgi karakteri (\\) kullanmanız gerekirse önüne kaçış karakterini (\\) koyun. Örneğin, *etkialanım \\ \\ \ Kullanıcı* ' yı kullanın.
+    e. **Kullanıcı adı** ve **Parola** bölümlerine kullanıcı adını ve parolasını girin. Gerekirse Kullanıcı adı olarak *etkialanım \\ MyUser* kullanın.
 
-    f. **Bağlantıyı sına** ’yı seçin. Bu adım, Data Factory oluşturduğunuz şirket içinde barındırılan tümleştirme çalışma zamanını kullanarak SQL Server veritabanınıza bağlanabildiğini doğrulamadır.
+    f. **Bağlantıyı Sına** ' yı seçin. Bu adım, Data Factory oluşturduğunuz şirket içinde barındırılan tümleştirme çalışma zamanını kullanarak SQL Server veritabanınıza bağlanabildiğini doğrulamadır.
 
     örneğin: Bağlı hizmeti kaydetmek için **Oluştur** ' u seçin.
  
@@ -190,7 +190,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
     a. **Bağlı hizmet** bölümünde **SqlServerLinkedService** ’i gördüğünüzü onaylayın.
 
-    b. **Tablo adı** bölümünde **[dbo] öğesini seçin. [ i]** .
+    b. **Tablo adı** bölümünde **[dbo] öğesini seçin. [ i]**.
     
     c. **Tamam** ’ı seçin.
 

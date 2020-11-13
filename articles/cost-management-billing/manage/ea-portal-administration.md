@@ -3,21 +3,191 @@ title: Azure EA portalı yönetimi
 description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdiği genel görevler açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 33a53fa46d7d07183b77f2608d44f8ea5d0d2804
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.custom: contperfq1
+ms.openlocfilehash: e83af5baa4ca38a8e81dffa8bb81ab3da64e1e95
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132270"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411081"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
 Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdiği genel görevler açıklanmaktadır (https://ea.azure.com). Azure EA portalı, müşterilerin Azure EA hizmetlerinin maliyetini yönetmesine yardımcı olan bir çevrimiçi yönetim portalıdır. Azure EA portalı hakkında giriş bilgileri için [Azure EA portalı ile çalışmaya başlama](ea-portal-get-started.md) makalesini okuyun.
+
+## <a name="activate-your-enrollment"></a>Kaydınızı etkinleştirme
+
+Hizmetinizi etkinleştirmek için başlangıçtaki kuruluş yöneticisi [Azure Enterprise Portal](https://ea.azure.com)'ı açar ve davet e-postasındaki e-posta adresini kullanarak oturum açar.
+
+Kuruluş yöneticisi olarak belirlendiyseniz etkinleştirme e-postasını almanız gerekmez. [Azure Enterprise Portal](https://ea.azure.com)'a giderek iş, okul veya Microsoft hesabı e-posta adresinizle ve parolanızla oturum açabilirsiniz.
+
+Birden fazla kaydınız varsa etkinleştirilecek bir kayıt seçin. Varsayılan olarak, yalnızca etkin kayıtlar gösterilir. Kayıt geçmişini görüntülemek için, Azure Enterprise Portal'ın sağ üst köşesindeki **Etkin** seçeneğinin işaretini kaldırın.
+
+**Kayıt** altında, durum **Etkin** olarak gösterilir.
+
+![Etkin kaydı gösteren örnek](./media/ea-portal-administration/ea-enrollment-status.png)
+
+Yalnızca mevcut Azure kuruluş yöneticileri, diğer kuruluş yöneticilerini oluşturabilir.
+
+### <a name="create-another-enterprise-administrator"></a>Başka bir kuruluş yöneticisi oluşturma
+
+Başka bir kuruluş yöneticisi eklemek için:
+
+1. [Azure Enterprise Portal](https://ea.azure.com)'da oturum açın.
+1. **Yönet** > **Kayıt Ayrıntıları** 'na gidin.
+1. Sağ üstten **+ Yönetici Ekle** 'yi seçin.
+
+Kullanıcının e-posta adresine ve iş, okul veya Microsoft hesabı gibi tercih edilen kimlik doğrulama yöntemine sahip olduğunuzdan emin olun.
+
+Kuruluş yöneticisi değilseniz, sizi bir kayda eklemesini istemek için bir kuruluş yöneticisiyle iletişime geçin. Bir kayda eklendikten sonra etkinleştirme e-postası alırsınız.
+
+Kuruluş yöneticiniz size yardımcı olamıyorsa bir [Azure Enterprise Portal destek isteği](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c) oluşturun. Şu bilgileri belirtin:
+
+- Kayıt numarası
+- Eklenecek e-posta adresi ve kimlik doğrulama türü (iş, okul veya Microsoft hesabı)
+- Mevcut bir kuruluş yöneticisinden e-posta onayı
+  - Mevcut kuruluş yöneticisine ulaşılamıyorsa, Toplu Lisanslama Hizmeti Merkezi (VLSC) aracı üzerinden iletişim ayrıntılarını değiştirmesini istemek için iş ortağınız veya yazılım danışmanınızla iletişime geçin.
+
+## <a name="create-an-azure-enterprise-department"></a>Azure Kurumsal departmanı oluşturma
+
+Kuruluş yöneticileri ve departman yöneticileri, kurumsal Azure hizmetlerini ve kullanımı departman ve maliyet merkezine göre düzenleyip raporlamak için departmanları kullanır. Kuruluş yöneticisi şunları yapabilir:
+
+- Departman ekleme veya kaldırma.
+- Bir hesabı bir departmanla ilişkilendirme.
+- Departman yöneticileri oluşturma.
+- Departman yöneticilerinin fiyat ve maliyetleri görüntülemesine izin verme.
+
+Departman yöneticisi, departmanına yeni hesaplar ekleyebilir. Departmanlarından hesapları kaldırabilir, ancak kayıttan kaldıramaz.
+
+Bir departman eklemek için:
+
+1. Azure Enterprise Portal'da oturum açın.
+1. Sol bölmede **Yönet** ’i seçin.
+1. **Departman** sekmesinde **+ Departman Ekle** 'yi seçin.
+1. Bilgileri girin.
+   Tek gerekli alan departman adıdır. En az 3 karakter uzunluğunda olmalıdır.
+1. Bittiğinde **Ekle** ’yi seçin.
+
+## <a name="add-a-department-administrator"></a>Departman yöneticisi ekleme
+
+Bir departman oluşturulduktan sonra, kuruluş yöneticisi departman yöneticileri ekleyebilir ve her birini bir departmanla ilişkilendirebilir. Departman yöneticileri, kendi departmanlarında aşağıdaki eylemleri gerçekleştirebilir:
+
+- Diğer departman yöneticilerini oluşturma
+- Ad veya maliyet merkezi gibi departman özelliklerini görüntüleme ve düzenleme
+- Hesap ekleme
+- Hesapları kaldırma
+- Kullanım ayrıntılarını indirme
+- Aylık kullanımı ve ücretleri görüntüleme <sup>1</sup>
+
+> <sup>1</sup> Kuruluş yöneticisi bu izinleri vermiş olmalıdır. Departmanın aylık kullanım ve ücretlerini görüntülemenize izin verilmesine rağmen görüntüleyemiyorsanız iş ortağınızla iletişime geçin.
+
+### <a name="to-add-a-department-administrator"></a>Departman yöneticisi eklemek için
+
+Kuruluş yöneticisi olarak:
+
+1. Azure Enterprise Portal'da oturum açın.
+1. Sol bölmede **Yönet** ’i seçin.
+1. **Departman** sekmesini ve ardından istediğiniz departmanı seçin.
+1. **+ Yönetici Ekle** ’yi seçip gerekli bilgileri ekleyin.
+1. Salt okuma erişimi için **Salt Okuma** seçeneğini **Evet** yapıp **Ekle** ’yi seçin.
+
+![Departman Yöneticisi Ekle iletişim kutusunu gösteren örnek](./media/ea-portal-administration/ea-create-add-department-admin.png)
+
+### <a name="to-set-read-only-access"></a>Salt okuma erişimini ayarlamak için
+
+Departman yöneticilerine salt okuma erişimi verebilirsiniz.
+
+- Yeni bir departman yöneticisi oluşturduğunuzda salt okuma seçeneğini **Evet** olarak ayarlayın.
+
+- Mevcut bir departman yöneticisini düzenlemek için:
+   1. Bir departman seçin ve ardından düzenlemek istediğiniz **Departman Yöneticisinin** yanındaki kalem simgesini seçin.
+   1. Salt okuma değerini **Evet** olarak ayarlayıp **Kaydet** 'i seçin.
+
+Kuruluş yöneticileri, departman yöneticisi izinlerini otomatik olarak alır.
+
+## <a name="add-an-account"></a>Hesap ekleme
+
+Hesapların ve aboneliklerin yapısı, bunların nasıl yönetildiğini ve faturalarınızda ve raporlarınızda nasıl göründüğünü etkiler. İşletme bölümlerine, görev ekiplerine ve coğrafi konumlara göre yapılandırma, tipik organizasyon örnekleridir.
+
+Hesap eklemek için:
+
+1. Azure Enterprise Portal'ın sol tarafındaki gezinti alanında **Yönet** 'i seçin.
+1. **Hesap** sekmesini seçin. **Hesap** sayfasında **+Hesap Ekle** 'yi seçin.
+1. Bir departman seçin veya atanmamış olarak bırakın ve sonra istediğiniz kimlik doğrulaması türünü seçin.
+1. Raporlama sırasında hesabı tanımlamak için kullanılacak kolay bir ad girin.
+1. Yeni hesapla ilişkilendirilecek **Hesap Sahibi E-posta** adresini girin.
+1. E-posta adresini onaylayın ve **Ekle** 'yi seçin.
+
+![Hesapların listesini ve +Hesap Ekle seçeneğini gösteren örnek](./media/ea-portal-administration/create-ea-add-an-account.png)
+
+**Başka Bir Hesap Ekle** ’yi seçerek başka bir hesap ekleyebilir ya da soldaki araç çubuğunun sağ alt köşesindeki **Ekle** ’yi seçebilirsiniz.
+
+Hesap sahipliğini onaylamak için:
+
+1. Azure Enterprise Portal'da oturum açın.
+1. Durumu görüntüleyin.
+
+   **Beklemede** olan durum **Başlangıç/Bitiş tarihi** olarak değişmelidir. Başlangıç/Bitiş tarihi, kullanıcının ilk kez oturum açtığı tarih ve anlaşma bitiş tarihidir.
+1. Hesap sahibi Azure Enterprise Portal'da ilk kez oturum açtığında açılan **Uyarı** iletisinde **Devam** 'ı seçerek hesabı etkinleştirmesi gerekir.
+
+## <a name="change-account-owner"></a>Hesap sahibini değiştirme
+
+Kuruluş yöneticileri bir kayıttaki abonelik hesap sahipliğini aktarmak için Azure Enterprise Portal'ı kullanabilir. Bu eylem, bir kaynak kullanıcı hesabındaki tüm abonelikleri hedef kullanıcı hesabına taşır.
+
+Hesapları aktarırken şu önemli bilgileri unutmayın:
+
+- Şu aktarımları yapabilirsiniz:
+  - Bir iş veya okul hesabından başka bir iş veya okul hesabına.
+  - Bir Microsoft hesabından bir iş veya okul hesabına.
+  - Bir Microsoft hesabından başka bir Microsoft hesabına.
+
+    Hedef hesabın aktarımlara yönelik geçerli bir hedef olması için geçerli bir Azure Ticari hesabı olması gerekir. Yeni hesaplar için, Azure Enterprise Portal'da oturum açarken bir Azure Ticari hesabı oluşturmanız istenir. Mevcut hesaplar için, hesabın uygun olabilmesi için yeni bir Azure aboneliği oluşturmanız gerekir.
+
+- İş veya okul hesabından Microsoft hesabına aktarım yapamazsınız.
+
+- Abonelik aktarımını tamamladığınızda, Microsoft hesap sahibini güncelleştirir.
+
+Şu rol tabanlı erişim denetimi (RBAC) ilkelerini kavrayın:
+
+- Aynı kiracıdaki iki kuruluş kimliği arasında abonelik aktarımları gerçekleştirdiğinizde, RBAC ilkeleri ve mevcut hizmet yöneticisi ile eş yönetici rolleri korunur.
+- Diğer abonelik aktarımları, RBAC ilkelerinizin ve rol atamalarınızın kaybedilmesiyle sonuçlanır.
+- İlkeler ve yönetici rolleri farklı dizinler arasında aktarılmaz. Hizmet yöneticileri hedef hesabın sahibiyle güncelleştirilir.
+
+Hesap sahibini değiştirmeden önce:
+
+1. Azure Enterprise Portal'da **Hesap** sekmesini görüntüleyin ve kaynak hesabı belirleyin. Kaynak hesap etkin olmalıdır.
+1. Hedef hesabı belirleyin ve etkin olduğundan emin olun.
+
+Tüm aboneliklerin hesap sahipliğini aktarmak için:
+
+1. Azure Enterprise Portal'da oturum açın.
+1. Sol gezinti alanında **Yönet** ’i seçin.
+1. **Hesap** sekmesini seçin ve bir hesabın üzerine gelin.
+1. Sağ taraftaki hesap sahibini değiştir simgesini seçin. Simge bir kişi gibi görünür.
+1. Uygun bir hesap seçin ve ardından **İleri** 'yi seçin.
+1. Aktarımı onaylayın ve **Gönder** 'i seçin.
+
+![Hesap Sahibini Değiştir simgesini gösteren görüntü](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
+
+Tek bir aboneliğin hesap sahipliğini aktarmak için:
+
+1. Azure Enterprise Portal'da oturum açın.
+1. Sol gezinti alanında **Yönet** ’i seçin.
+1. **Hesap** sekmesini seçin ve bir hesabın üzerine gelin.
+1. Sağdaki abonelikleri aktar simgesini seçin. Simge bir sayfa gibi görünür.
+1. Uygun bir abonelik seçin ve ardından **İleri** 'yi seçin.
+1. Aktarımı onaylayın ve sonra **Gönder** 'i seçin.
+
+![Abonelikleri Aktar simgesini gösteren görüntü](./media/ea-portal-administration/ea-transfer-subscriptions.png)
+
+Azure Enterprise Portal kullanıcı yönetimini görmek için şu videoyu izleyin:
+
+> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="associate-an-account-to-a-department"></a>Bir hesabı bir departmanla ilişkilendirme
 
@@ -26,11 +196,61 @@ Kuruluş Yöneticileri, mevcut hesapları kayıt kapsamındaki Bölümlerle ili�
 ### <a name="to-associate-an-account-to-a-department"></a>Bir hesabı bir departmanla ilişkilendirmek için
 
 1. Azure EA Portal'da kuruluş yöneticisi olarak oturum açın.
-1. Sol gezinti panelinde **Yönet**’i seçin.
-1. **Bölüm**'ü seçin.
+1. Sol gezinti panelinde **Yönet** ’i seçin.
+1. **Bölüm** 'ü seçin.
 1. Hesabın bulunduğu satırın üzerine gelin ve sağ taraftaki kalem simgesini seçin.
 1. Açılan menüden bölümü seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
+
+## <a name="associate-an-existing-account-with-your-pay-as-you-go-subscription"></a>Mevcut bir hesabı Kullandıkça Öde aboneliğiyle ilişkilendirme
+
+Azure portalında bir Microsoft Azure hesabınız varsa bunu Kurumsal Anlaşma kaydınızla ilişkilendirmek için ilgili okul, iş veya Microsoft hesabını girin.
+
+### <a name="associate-an-existing-account"></a>Mevcut bir hesabı ilişkilendirme
+
+1. Azure Enterprise Portal'da **Yönet** 'i seçin.
+1. **Hesap** sekmesini seçin.
+1. **+Hesap ekle** 'yi seçin.
+1. Mevcut Azure hesabıyla ilişkilendirilmiş olan iş, okul veya Microsoft hesabını girin.
+1. Mevcut Azure hesabıyla ilişkilendirilmiş olan hesabı onaylayın.
+1. Bu hesabı raporlarda tanımlayabilmek için kullanmak istediğiniz adı yazın.
+1. **Add (Ekle)** seçeneğini belirleyin.
+1. **+Hesap Ekle** seçeneğini yeniden seçerek başka bir hesap ekleyebilir veya **Yönetim** düğmesini seçerek giriş sayfasına dönebilirsiniz.
+1. **Hesap** sayfasını görüntülediğinizde yeni hesabın **Beklemede** olduğunu görürsünüz.
+
+### <a name="confirm-account-ownership"></a>Hesap sahipliğini onaylama
+
+1. Girdiğiniz iş, okul veya Microsoft hesabıyla ilişkilendirilmiş olan e-posta hesabında oturum açın.
+1. _"Microsoft Toplu Lisanslama'dan Microsoft Azure Hizmeti Hesabınızı Etkinleştime Daveti"_ başlıklı e-posta bildirimini açın.
+1. Davetin içindeki **Microsoft Azure Enterprise Portal'da oturum aç** bağlantısını seçin.
+1. **Oturum aç** 'ı seçin.
+1. Oturum açmak ve hesabın sahibi olduğunuzu doğrulamak için iş, okul veya Microsoft hesabınızı ve parolanızı girin.
+
+### <a name="azure-marketplace"></a>Azure Market
+
+Çoğu abonelik Kullandıkça Öde ortamından Azure Kurumsal Anlaşma'ya dönüştürülebilir ancak Azure Market bunlardan biri değildir. Tüm abonelikleri ve ücretleri tek bir yerden görüntülemek için Azure Market hizmetlerini Azure Enterprise Portal'a eklemenizi öneririz.
+
+1. Azure Enterprise Portal'da oturum açın.
+1. Sol gezinti panelinde **Yönet** ’i seçin.
+1. **Kayıt** sekmesini seçin.
+1. **Kayıt Ayrıntıları** bölümünü görüntüleyin.
+1. Azure Market alanının sağ tarafında yer alan kalem simgesini seçerek hizmeti etkinleştirin. **Kaydet** ’i seçin.
+
+Hesap sahibi artık daha önce Kullandıkça Öde aboneliğiyle sahip olduğu Azure Market hizmetlerini satın alabilir.
+
+Yeni Azure Market abonelikleri Azure EA kaydınızda etkinleştirildikten sonra Kullandıkça Öde ortamında oluşturulan Azure Market aboneliklerini iptal edin. Kullandıkça Öde ortamındaki ödeme aracınızın süresi dolduğunda Azure Market aboneliklerinizin kullanım dışı kalmaması için bu adım kritik öneme sahiptir.
+
+### <a name="msdn"></a>MSDN
+
+MSDN abonelikleri otomatik olarak MSDN Geliştirme ve Test aboneliğine dönüştürülür ve Azure EA teklifindeki mevcut parasal kredi silinir.
+
+### <a name="azure-in-open"></a>Open ile Azure
+
+Bir Open ile Azure aboneliğini bir Kurumsal Anlaşma ile ilişkilendirmek, tüketilmemiş tüm Open ile Azure kredilerinin kaybedilmesine yol açar. Bu nedenle Kurumsal Anlaşma'ya eklemeden önce Open ile Azure aboneliğinizdeki tüm krediyi kullanmanız önerilir.  
+
+### <a name="accounts-with-support-subscriptions"></a>Destek aboneliğine sahip hesaplar
+
+Kurumsal Anlaşma hesabınızda destek aboneliği yoksa ve Azure Enterprise Portal'a destek aboneliğine sahip bir hesap eklerseniz, MOSA destek aboneliğiniz otomatik olarak aktarılmaz. Kullanım süresi içinde (takip eden ayın sonuna kadar) Azure EA'da yeniden destek aboneliği satın almanız gerekir.
 
 ## <a name="department-spending-quotas"></a>Departman harcama kotaları
 
@@ -41,13 +261,13 @@ Bölüm yöneticisi, harcama kotasını görüntüleyebilir ancak kota miktarı 
 ### <a name="enterprise-administrator-to-set-the-quota"></a>Kuruluş yöneticisi olarak kotayı belirlemek için:
 
  1. Azure EA Portal'ı açın.
- 1. Sol gezinti panelinde **Yönet**’i seçin.
+ 1. Sol gezinti panelinde **Yönet** ’i seçin.
  1. **Bölüm** sekmesini seçin.
  1. Bölümü seçin.
  1. Bölüm Ayrıntıları bölümündeki kalem simgesini seçin veya yeni bir bölüm ve harcama kotası eklemek için **+ Bölüm Ekle** simgesini seçin.
  1. Bölüm Ayrıntıları’nın altındaki Harcama Kotası $ kutusuna kaydın para birimini kullanarak bir harcama kotası girin (değer 0'dan büyük olmalıdır).
     - Bu adımda Bölüm Adı ve Maliyet Merkezi bilgilerini de düzenleyebilirsiniz.
- 1. **Kaydet**’i seçin.
+ 1. **Kaydet** ’i seçin.
 
 Bölüm harcama kotası, Bölüm sekmesindeki Bölüm Listesi görünümünde görünür duruma gelir. Azure EA Portal, geçerli Ön Ödeme döneminin sonunda harcama kotalarını bir sonraki Ön Ödeme dönemine aktarır.
 
@@ -56,7 +276,7 @@ Bölüm kotası tutarı, mevcut Azure Ön Ödemesinden bağımsızdır ve kota m
 ### <a name="department-administrator-to-view-the-quota"></a>Bölüm yöneticisi olarak kotayı görüntülemek için:
 
 1. Azure EA Portal'ı açın.
-1. Sol gezinti panelinde **Yönet**’i seçin.
+1. Sol gezinti panelinde **Yönet** ’i seçin.
 1. **Bölüm** sekmesini seçin ve harcama kotalarının yer aldığı Bölüm Listesi görünümünü açın.
 
 Dolaylı müşteriyseniz ücret özelliklerinin kanal iş ortağınız tarafından etkinleştirilmesi gerekir.
@@ -71,13 +291,13 @@ Azure EA portalı, Azure EA maliyetlerinizi ve kullanımınızı yönetmenize ya
 
 Her rolün farklı bir erişim düzeyi ve yetkisi vardır.
 
-Kullanıcı rolleri hakkında daha fazla bilgi için bkz. [Kurumsal kullanıcı rolleri](./ea-portal-get-started.md#enterprise-user-roles).
+Kullanıcı rolleri hakkında daha fazla bilgi için bkz. [Kurumsal kullanıcı rolleri](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA hesabı ekleme
 
 Azure EA hesabı, Azure EA portalındaki bir kuruluş birimidir. Hem abonelikleri yönetmek için hem de raporlama amacıyla kullanılır. Azure hizmetlerine erişmek için bir hesap oluşturmanız ve sizin için oluşturulmuş bir hesap olması gerekir.
 
-Azure hesapları hakkında daha fazla bilgi için bkz. [Hesap ekleme](./ea-portal-get-started.md#add-an-account).
+Azure hesapları hakkında daha fazla bilgi için bkz. [Hesap ekleme](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Kurumsal Geliştirme ve Test Teklifi
 
@@ -90,24 +310,62 @@ Bu teklif Visual Studio aboneleri, geliştirme ve test iş yüklerini Azure'da �
 ### <a name="to-set-up-the-enterprise-devtest-offer"></a>Kurumsal Geliştirme ve Test teklifini ayarlamak için:
 
 1. Kuruluş yöneticisi olarak oturum açın.
-1. Sol gezinti panelinde **Yönet**’i seçin.
+1. Sol gezinti panelinde **Yönet** ’i seçin.
 1. **Hesap** sekmesini seçin.
 1. Geliştirme ve Test erişimini etkinleştirmek istediğiniz hesabın yer aldığı satırı seçin.
 1. Satırın sağ tarafındaki kalem simgesini seçin.
 1. Geliştirme ve Test onay kutusunu seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 Bir kullanıcı Azure EA Portal aracılığıyla hesap sahibi olarak eklendiğinde hesap sahibiyle ilişkilendirilmiş olan kullandıkça öde Geliştirme ve Test teklifini Visual Studio için aylık kredi tekliflerini temel alan abonelerle ilişkilendirilmiş olan Azure abonelikleri, EA Geliştirme ve Test teklifine dönüştürülür. Kullandıkça öde gibi Hesap Sahibiyle ilişkilendirilmiş olan diğer teklif türlerini temel alan abonelikler, Microsoft Azure Kurumsal tekliflerine dönüştürülür.
 
 Geliştirme ve Test Teklifi şu an için Azure Kamu müşterilerinin kullanımına açık değildir.
+
+## <a name="create-a-subscription"></a>Abonelik oluşturma
+
+Hesap sahipleri, abonelikleri görüntüleyebilir ve yönetebilir. Kuruluşunuzdaki takımlara geliştirme ortamları ve projelere yönelik erişim izni vermek için abonelikleri kullanabilirsiniz. Örneğin: test, üretim, geliştirme ve hazırlama.
+
+Her uygulama ortamı için farklı abonelikler oluşturduğunuzda her bir ortamın güvenliğini sağlamaya yardımcı olursunuz.
+
+- Ayrıca, her abonelik için farklı bir hizmet yöneticisi hesabı da atayabilirsiniz.
+- Abonelikleri dilediğiniz sayıda hizmet ile ilişkilendirebilirsiniz.
+- Hesap sahibi, abonelikler oluşturur ve hesaplarındaki her aboneliğe bir hizmet yöneticisi hesabı atar.
+
+### <a name="add-a-subscription"></a>Abonelik ekleme
+
+Bir abonelik eklemek için aşağıdaki bilgileri kullanın.
+
+Hesabınıza ilk kez bir abonelik eklediğinizde, Microsoft Çevrimiçi Abonelik Sözleşmesi'ni (MOSA) ve bir ücret planını kabul etmeniz istenir. Kurumsal Anlaşma müşterileri için geçerli olmasa da, aboneliğinizin oluşturulması için MOSA ve ücret planı gereklidir. Microsoft Azure Kurumsal Anlaşma Kaydı Değişikliği, yukarıdaki öğelerin yerini alır ve sözleşme ilişkiniz değişmez. Sorulduğunda, koşulları kabul ettiğinizi belirten kutuyu seçin.
+
+_Microsoft Azure Enterprise_ , oluşturulan abonelikler için seçilen varsayılan addır. Kaydınızdaki diğer aboneliklerden ayırmak ve kuruluş düzeyindeki raporlarda ayırt edilebilmesini sağlamak için abonelik adını değiştirebilirsiniz.
+
+Abonelik eklemek için:
+
+1. Azure Enterprise Portal'da hesap oturumu açın.
+1. **Yönetici** sekmesini ve sonra sayfanın üst kısmındaki **Abonelik** girişini seçin.
+1. Hesabın hesap sahibi olarak oturum açtığınızı doğrulayın.
+1. **+Abonelik Ekle** ve ardından **Satın Al** ’ı seçin.
+
+   Bir hesaba ilk kez abonelik eklediğinizde iletişim bilgilerinizi sağlamanız gerekir. Başka abonelikler eklerken, iletişim bilgileriniz sizin için eklenir.
+
+1. **Abonelikler** 'i ve ardından oluşturduğunuz aboneliği seçin.
+1. **Abonelik Ayrıntılarını Düzenle** 'yi seçin.
+1. **Abonelik Adı** ve **Hizmet Yöneticisi** ’ni düzenleyip onay işaretini seçin.
+
+   Abonelik adı raporlarda görünür. Geliştirme portalındaki abonelikle ilişkili projenin adıdır.
+
+Yeni aboneliklerin abonelikler listesinde görünmesi 24 saate kadar sürebilir. Bir abonelik oluşturduktan sonra şunları yapabilirsiniz:
+
+- [Abonelik ayrıntılarını düzenleme](https://account.azure.com/Subscriptions)
+- [Abonelik hizmetlerini yönetme](https://portal.azure.com/#home)
 
 ## <a name="delete-subscription"></a>Aboneliği silme
 
 Hesap sahibi olduğunuz bir aboneliği silmek için:
 
 1. Hesabınızla ilişkilendirilmiş kimlik bilgileriyle Azure portalında oturum açın.
-1. Hub menüsünde **Abonelikler**'i seçin.
-1. Sayfanın sol üst köşesindeki abonelikler sekmesinde iptal etmek istediğiniz aboneliği seçin ve iptal sekmesini açmak için **Aboneliği iptal et**'i seçin.
+1. Hub menüsünde **Abonelikler** 'i seçin.
+1. Sayfanın sol üst köşesindeki abonelikler sekmesinde iptal etmek istediğiniz aboneliği seçin ve iptal sekmesini açmak için **Aboneliği iptal et** 'i seçin.
 1. Abonelik adını girip iptal için bir neden seçin ve ardından **Aboneliği iptal et** düğmesini seçin.
 
 Abonelikleri yalnızca hesap yöneticileri iptal edebilir.
@@ -118,11 +376,11 @@ Daha fazla bilgi için bkz. [Aboneliğimi iptal edersem ne olur?](cancel-azure-s
 
 Hesap kaldırma işlemi yalnızca etkin aboneliği bulunmayan etkin hesaplarda gerçekleştirilebilir.
 
-1. Enterprise Portal'ın sol tarafındaki gezintisinde **Yönet**'i seçin.
+1. Enterprise Portal'ın sol tarafındaki gezintisinde **Yönet** 'i seçin.
 1. **Hesap** sekmesini seçin.
 1. Hesaplar tablosundan silmek istediğiniz hesabı seçin.
 1. Hesap satırının sağ tarafındaki X simgesini seçin.
-1. Hesabın altında etkin abonelik kalmadığında Hesap satırının altındaki **Evet**’i seçerek Hesap kaldırma işlemini onaylayın.
+1. Hesabın altında etkin abonelik kalmadığında Hesap satırının altındaki **Evet** ’i seçerek Hesap kaldırma işlemini onaylayın.
 
 ## <a name="update-notification-settings"></a>Bildirim ayarlarını güncelleştirme
 
@@ -132,17 +390,17 @@ Bildirim kişileri, Azure EA portalındaki **Bildirim Kişisi** bölümünde gö
 
 Geçerli bildirim ayarlarını görüntülemek için:
 
-1. Azure EA portalında **Yönet** > **Bildirim Kişisi**’ne gidin.
+1. Azure EA portalında **Yönet** > **Bildirim Kişisi** ’ne gidin.
 2. E-posta Adresi – Kuruluş Yöneticisinin bildirimleri alan Microsoft Hesabı, İş veya Okul Hesabı ile ilişkili e-posta adresi.
 3. Faturalandırılmamış Bakiye Bildirimi Sıklığı – Bildirimlerin her bir Kuruluş Yöneticisine gönderilmek üzere ayarlandığı sıklık.
 
 Kişi eklemek için:
 
-1. **+Kişi Ekle**’yi seçin.
+1. **+Kişi Ekle** ’yi seçin.
 2. E-posta adresini girin ve sonra onaylayın.
-3. **Kaydet**’i seçin.
+3. **Kaydet** ’i seçin.
 
-Yeni bildirim kişisi **Bildirim Kişisi** bölümünde gösterilir. Bildirim sıklığını değiştirmek için, bildirim kişisini seçin ve seçili satırın sağ tarafındaki kalem simgesini seçin. Sıklığı **günlük**, **haftalık**, **aylık** veya **hiçbiri** olarak ayarlayın.
+Yeni bildirim kişisi **Bildirim Kişisi** bölümünde gösterilir. Bildirim sıklığını değiştirmek için, bildirim kişisini seçin ve seçili satırın sağ tarafındaki kalem simgesini seçin. Sıklığı **günlük** , **haftalık** , **aylık** veya **hiçbiri** olarak ayarlayın.
 
 _Yaklaşan kapsama dönemi bitiş tarihi_ ve _yaklaşan tarih_ yaşam döngüsü bildirimlerini devre dışı bırakıp sağlamayı bırakabilirsiniz. Yaşam döngüsü bildirimlerini devre dışı bırakmak, kapsama dönemi ve anlaşma bitiş tarihi hakkındaki bildirimleri gizler.
 
@@ -154,7 +412,7 @@ Daha fazla bilgi için [sponsorluğu etkinleştirme amacıyla bir destek isteği
 
 ## <a name="conversion-to-work-or-school-account-authentication"></a>İş veya okul hesabı kimlik doğrulamasına dönüştürme
 
-Azure Kurumsal kullanıcıları, Microsoft hesabı (MSA veya Live Kimliği) yerine iş veya okul hesabı (Azure Active Directory kullanan) kullanmayı tercih edebilir.
+Azure Kurumsal kullanıcıları, Microsoft hesabı (MSA veya Live Kimliği) yerine iş veya okul hesabı (Azure Active Directory kullanan) kimlik doğrulaması kullanmayı tercih edebilir.
 
 Başlamak için:
 
@@ -173,9 +431,22 @@ Başlamak için:
 
 Bu belgede hesap aboneliği sahipliğiyle ilgili sık sorulan sorular ve yanıtları yer almaktadır.
 
+### <a name="can-i-associate-my-existing-azure-account-to-azure-ea-enrollment"></a>Mevcut Azure hesabımı Azure EA kaydıyla ilişkilendirebilir miyim?
+
+Evet. Hesap sahibi olduğunuz tüm Azure aboneliklerinin Kurumsal Anlaşmanıza dönüştürülecek olmasıdır. Visual Studio, AzurePass, MPN ve BizSpark gibi aylık kredi kullanan abonelikler dahildir. Bu tür abonelikler dönüştürülürken aylık krediyi kaybedersiniz.
+
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Bir abonelikte kaç Azure hesabı sahibi olabilir?
 
-Her abonelikte yalnızca bir tane hesap sahibi bulunabilir.  Azure rol tabanlı erişim denetimi (Azure RBAC) işlevlerini kullanarak daha fazla rol ekleyebilirsiniz. Bunun için [Azure portalı](https://portal.azure.com) sayfasının sol üst köşesindeki abonelik sekmesini kullanın.
+Her abonelikte yalnızca bir tane hesap sahibi bulunabilir.  Rol Tabanlı Erişim veya Erişim Denetimi (IAM) işlevlerini kullanarak daha fazla rol ekleyebilirsiniz. Bunun için [Azure portalı](https://portal.azure.com) sayfasının sol üst köşesindeki abonelik sekmesini kullanın.
+
+### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Aboneliğin sahipliği başka bir hesaba aktarılabilir mi?
+
+Evet, aboneliğin sahipliğini başka bir hesaba aktarabilirsiniz. Örneğin A hesabında üç abonelik varsa kuruluş yöneticisi bu aboneliklerden birini B hesabına, birini C hesabına, diğerini de D hesabına veya tüm abonelikleri birden E hesabına aktarabilir.
+
+Abonelikleri aktarmak için:
+
+1. Azure Enterprise Portal'da **Yönet** > **Hesap** yolunu izleyin.
+1. En sağdaki **Hesap** girişinin üzerine gelerek **Sahipliği Aktar** (kişi simgesi) ve **Aboneliği Aktar** (liste simgesi) seçeneklerini görüntüleyin. Bu seçenekler yalnızca etkin hesaplar için görünür.
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Bir Azure hesabı sahibi birden fazla bölümde listelenebilir mi?
 
@@ -183,7 +454,7 @@ Hayır, hesap sahibi yalnızca bir bölümle ilişkilendirilebilir. Bu ilke böl
 
 ### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Bir Azure hesabı sahibi güvenlik grubu olarak listelenebilir mi?
 
-Hayır, abonelik sahibi benzersiz bir Microsoft hesabı (MSA) veya Azure Active Directory (AAD) kimlik doğrulamasına sahip olmalıdır. Kuruluşunuzdaki kullanıcı değişikliklerinden etkilenmemek için genel hesaplar oluşturup abonelik erişimini AAD ile yönetebilirsiniz.
+Hayır, abonelik sahibi benzersiz bir Microsoft hesabı (MSA) veya Azure Active Directory (Azure AD) kimlik doğrulamasına sahip olmalıdır. Kuruluşunuzdaki kullanıcı değişikliklerinden etkilenmemek için genel hesaplar oluşturup abonelik erişimini Azure AD ile yönetebilirsiniz.
 
 ### <a name="can-an-individual-user-own-multiple-subscriptions"></a>Bir kullanıcı birden fazla aboneliğe sahip olabilir mi?
 
@@ -191,7 +462,7 @@ Bir Azure hesabı sahibi sınırsız sayıda abonelik oluşturup yönetebilir.
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Kuruluşumun tüm aboneliklerine erişmek ve onları görüntülemek için ne yapabilirim?
 
-Şu an için bu işlevin ilke yoluyla sağlanması gerekir. Başka bir deyişle hesabınızın oluşturulan her abonelikte Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak bir abonelik rolüne eklenmesini sağlamanız gerekir.
+Şu an için bu işlevin ilke yoluyla sağlanması gerekir. Başka bir deyişle hesabınızın oluşturulan her abonelikte rol tabanlı erişim kullanılarak bir abonelik rolüne eklenmesini sağlamanız gerekir.
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Nereden abonelik oluşturabilirim?
 
@@ -200,6 +471,43 @@ Kurumsal Azure (EA) teklifi aboneliği oluşturabilmeniz için hesabınızın Az
 ### <a name="who-can-create-a-subscription"></a>Kimler abonelik oluşturabilir?
 
 Kurumsal Azure teklifi türünde bir abonelik oluşturabilmek için [EA Portal](https://ea.azure.com)'da hesap sahibi rolüne sahip olmanız gerekir.
+
+## <a name="azure-ea-term-glossary"></a>Azure EA terimleri sözlüğü
+
+- **Hesap** : Azure Enterprise Portal'daki kuruluş birimleridir. Abonelikleri yönetmek ve raporlama için kullanılır.
+- **Hesap sahibi** : Azure'da abonelikleri ve hizmet yöneticilerini yöneten kişidir. Bu kullanıcılar hesapla ve ilişkilendirilmiş aboneliklerle ilgili kullanım verilerini görüntüleyebilir.
+- **Değişiklik aboneliği** : Kayıt değişikliği kapsamında bir yıllık veya uyuşan dönem boyunca devam eden aboneliktir.
+- **Ön Ödeme** : Azure hizmetlerinin ön ödeme karşılığında kullanılması için önceden ödenmiş indirimli ücretlerden karşılanması amacıyla gerçekleştirilen yıllık parasal tutar ön ödemedir.
+- **Bölüm yöneticisi** : Bölümleri yöneten, yeni hesap ve hesap sahibi oluşturan, yönetilen bölümlerle ilgili kullanım ayrıntılarını görüntüleyen ve izin verildiğinde maliyetleri görüntüleyebilen kişidir.
+- **Kayıt numarası** : Microsoft tarafından Kurumsal Anlaşma ile ilişkilendirilmiş olan kaydı tanımlamak için verilen benzersiz tanıtıcıdır.
+- **Kuruluş yöneticisi** : Azure'daki departmanları, departman sahiplerini, hesapları ve hesap sahiplerini yöneten kişidir. Kuruluş yöneticileri, diğer kuruluş yöneticilerini de yönetmenin yanı sıra kurumsal kayıtla ilişkilendirilmiş olan tüm hesaplara ve aboneliklere ait olan kullanım verilerini, faturalandırılan miktarları ve faturalandırılmamış ücretleri görüntüleyebilir.
+- **Kurumsal anlaşma** : Kuruluşlarının tamamında Microsoft teknolojilerini standart hale getirmek ve Microsoft yazılım standardını temel alan bir bilgi teknolojisi altyapısı kurmak isteyen, merkezi satın alma sistemine sahip olan müşterilere yönelik bir Microsoft lisans sözleşmesidir.
+- **Kurumsal anlaşma kaydı** : Microsoft ürünlerini toplu olarak ve indirimli fiyatlarla sunan Kurumsal Anlaşma programı kaydıdır.
+- **Microsoft hesabı** : Katılan sitelerin kullanıcının kimliğini tek bir kimlik bilgisi ile doğrulamasını sağlayan Web tabanlı bir hizmettir.
+- **Microsoft Azure Kurumsal Kayıt Değişikliği (kayıt değişikliği)** : Bir kuruluş tarafından imzalanan ve kurumsal kayıt çerçevesinde Azure erişimi sağlayan değişikliktir.
+- **Azure Enterprise Portal** : Kurumsal müşterilerimizin Azure hesaplarını ve ilişkili aboneliklerini yönetmek için kullandığı portaldır.
+- **Kullanılan kaynak miktarı** : Bir ay içinde kullanılan tek bir Azure hizmetinin miktarıdır.
+- **Hizmet yöneticisi** : Azure Enterprise Portal'daki aboneliklere ve geliştirme projelerine erişebilen ve bunları yönetebilen kişidir.
+- **Abonelik** : Bir Azure Enterprise Portal aboneliğini temsil eder ve aynı hizmet yöneticisi tarafından yönetilen Azure hizmetlerini içeren bir kapsayıcıdır.
+- **İş veya okul hesabı** : Buluta federasyon ile Azure Active Directory ayarlamış olan ve tüm hesapları tek bir kiracıda bulunan kuruluşlara yöneliktir.
+
+### <a name="enrollment-statuses"></a>Kayıt durumları
+
+- **Yeni** : Bu durum, 24 saat içinde oluşturulan bir kayda atanır ve 24 saat içinde Beklemede durumuna güncelleştirilir.
+- **Beklemede** : Kayıt yöneticisinin Azure Enterprise Portal'da oturum açması gerekir. Oturum açıldıktan sonra kayıt "Etkin" duruma geçer.
+- **Etkin** : Kayıt "Etkin" durumdadır, Azure Enterprise Portal'da hesaplar ve abonelikler oluşturulabilir. Kurumsal Anlaşma'nın bitiş tarihine kadar kayıt etkin durumda kalır.
+- **Süresiz uzatılan süre** : Süresiz uzatılan süre durumu, Kurumsal Anlaşma bitiş tarihi geçtikten sonra gerçekleşir. Uzatılan süreyi kabul eden Azure EA müşterilerinin Azure hizmetlerini Kurumsal Anlaşmaları bitene kadar sınırsız bir şekilde kullanmalarını sağlar.
+
+   Azure EA kaydı Kurumsal Anlaşma bitiş tarihine ulaşana kadar layıt yöneticisinin aşağıdaki seçeneklerden birini belirlemesi gerekir:
+
+  - Azure Ön Ödemesi ekleyerek kaydı yenileyin.
+  - Yeni bir kayda aktarma.
+  - Microsoft Çevrimiçi Abonelik Programı'na (MOSP) geçme.
+  - Kayıtla ilişkili tüm hizmetleri devre dışı bırakmayı onaylama.
+- **Süresi Doldu** : Azure EA müşterisi uzatılan süreyi kabul etmemiş ve Azure EA kaydı Kurumsal Anlaşma bitiş tarihine gelmiştir. Kaydın süresi dolacak ve ilgili tüm hizmetler devre dışı bırakılacaktır.
+- **Aktarıldı** : İlişkilendirilmiş hesapların ve hizmetlerin yeni bir kayda aktarıldığı kayıtların durumu "Aktarıldı" olarak görünür.
+  >[!NOTE]
+  > Yenileme sırasında yeni bir kayıt numarası oluşturulduysa kayıtlar otomatik olarak aktarılmaz. Otomatik aktarım için yenileme belgelerinize önceki kayıt numaranızı eklemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

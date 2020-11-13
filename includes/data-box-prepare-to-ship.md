@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 07/01/2020
 ms.author: alkohli
-ms.openlocfilehash: d099e33e7b35381f5404c9f8964d3ea90d4f3908
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a78bce9f6e714aa5564791f6bb63996554beabf1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959485"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375937"
 ---
 Son adım cihazı göndermeye hazırlamaktır. Bu adımda tüm cihaz paylaşımları çevrimdışı duruma getirilir. Bu işlem başlatıldıktan sonra paylaşımlara erişilemez.
 
@@ -32,7 +32,7 @@ Son adım cihazı göndermeye hazırlamaktır. Bu adımda tüm cihaz paylaşıml
 
     Bu adımda hatalar varsa durum *Tarama hatalarla tamamlandı* olarak güncelleştirilir. Cihazın kilidini açıp **Bağlan ve kopyala** sayfasına gidin, sorunlar listesini indirin ve hataları çözün.
 
-    ![Göndermeye hazırlama 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
+    ![Göndermeye hazırlama 4](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
     Hatalar çözümlendikten sonra **Göndermeye hazırlama** işlemini çalıştırın.
 
@@ -41,7 +41,7 @@ Son adım cihazı göndermeye hazırlamaktır. Bu adımda tüm cihaz paylaşıml
     1. Tamamlanma başvuru numarasını not alın. Bulunduğunuz ülkeye bağlı olarak bu numara farklı işlemler için gerekebilir.
     2. Bu işlem sırasında kopyalanan dosyaların (bildirim olarak da bilinir) listesini indirin. Daha sonra bu listeyi kullanarak Azure'a yüklenen dosyaları doğrulayabilirsiniz. Daha fazla bilgi için bkz. [Göndermeye hazırlama sırasında BOM dosyalarını inceleme](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
         
-        ![Göndermeye hazırlama 1](media/data-box-prepare-to-ship/prepare-to-ship5.png)
+        ![Göndermeye hazırlama 5](media/data-box-prepare-to-ship/prepare-to-ship5.png)
     3. Cihazın gönderim yönergelerini seçip indirin. Gönderim yönergeleri, bulunduğunuz ülkeye bağlı olarak farklı olabilir.
     4. E-mürekkep gönderim etiketini göstermiyorsa ters gönderim etiketini buradan indirebilirsiniz. 
 

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: ce3174516d8046df53b5290bcfeea03756937129
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201537"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555116"
 ---
 # <a name="color-materials"></a>Renk malzemeleri
 
@@ -22,7 +22,7 @@ Renk malzemeleri, daha basit gölgeleme modeli nedeniyle [PBR malzemelerinden](p
 
 Bu özellikler tüm malzemelerde ortaktır:
 
-* **Albedocolor:** Bu renk, *Albedomap* veya * :::no-loc text="vertex"::: renkler*gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, `1` tam donuk ve anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır `0` . Varsayılan değer beyazdır.
+* **Albedocolor:** Bu renk, *Albedomap* veya *:::no-loc text="vertex"::: renkler* gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, `1` tam donuk ve anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır `0` . Varsayılan değer beyazdır.
 
   > [!NOTE]
   > Renk malzemeleri ortamı yansıtmadığı için tamamen saydam bir renk malzemesi görünmez hale gelir. Bu, [PBR malzemeleri](pbr-materials.md)için farklıdır.
@@ -33,11 +33,17 @@ Bu özellikler tüm malzemelerde ortaktır:
 
 * **textureCoordinateScale** ve **TEXTURECOORDINATEOFFSET:** ölçek UV doku koordinatlarına çarpılır, bu da ona eklenir. Dokuları uzatmak ve kaydırmak için kullanılabilir. Varsayılan ölçek (1, 1) ve konum (0, 0).
 
-* **Usevertexcolor:** Kafes :::no-loc text="vertex"::: renkler içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin :::no-loc text="vertex"::: rengi *Albedocolor* ve *albedomap*ile çarpılır. Varsayılan olarak *UI, Texcolor* devre dışıdır.
+* **Usevertexcolor:** Kafes :::no-loc text="vertex"::: renkler içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin :::no-loc text="vertex"::: rengi *Albedocolor* ve *albedomap* ile çarpılır. Varsayılan olarak *UI, Texcolor* devre dışıdır.
 
 * **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [ :::no-loc text="Single-sided"::: işleme](single-sided-rendering.md).
 
 * **TransparencyWritesDepth:** TransparencyWritesDepth bayrağı malzeme üzerinde ayarlandıysa ve malzeme saydamsa, bu malzemeyi kullanan nesneler Ayrıca son derinlik arabelleğine katkıda bulunur. Sonraki bölümde bkz. Color malzemesi özelliği *transparencyMode* . Kullanım betiğini tamamen saydam sahneler için daha fazla sayıda daha uygun bir [geç doldurma](late-stage-reprojection.md) gerekirse bu özelliğin etkinleştirilmesi önerilir. Karışık donuk/saydam sahneler için, bu ayar, kesin yansıtma davranışı veya yeniden projeksiyon yapıtları ortaya çıkarabilir. Bu nedenle, genel kullanım durumu için varsayılan ve önerilen ayar bu bayrağı devre dışı bırakktır. Yazılı derinlik değerleri, kameraya en yakın nesnenin piksel başına derinlik katmanından alınır.
+
+* **FresnelEffect:** Bu malzeme bayrağı, ilgili malzemeden [adfresnel düşüşünü efektini](../../overview/features/fresnel-effect.md) sunar. Efektin görünümü, aşağıda açıklanan diğer Fresnel düşüşünü parametrelerine tabidir. 
+
+* **FresnelEffectColor:** Bu malzeme için kullanılan Fresnel düşüşünü rengi. Yalnızca bu malzeme üzerinde Fresnel düşüşünü etkisi biti ayarlandığında önemlidir (yukarıya bakın). Bu özellik Fresnel düşüşünü görünün taban rengini denetler (tam açıklama için bkz. [Fresnel düşüşünü etkisi](../../overview/features/fresnel-effect.md) ). Şu anda yalnızca RGB kanalı değerleri önemlidir ve alfa değeri yok sayılır.
+
+* **FresnelEffectExponent:** Bu malzeme için kullanılan Fresnel düşüşünü üs. Yalnızca bu malzeme üzerinde Fresnel düşüşünü etkisi biti ayarlandığında önemlidir (yukarıya bakın). Bu özellik Fresnel düşüşünü görünün yayılmasını denetler. Minimum 0,01 değeri nesnenin tamamına yayılmasına neden olur. 10,0 en büyük değeri, yalnızca en fazla kullanılan kenarları görünür olarak aydınlatır.
 
 ## <a name="color-material-properties"></a>Renk malzemesi özellikleri
 

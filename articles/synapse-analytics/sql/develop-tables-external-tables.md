@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314916"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553684"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
@@ -22,7 +22,7 @@ Dış tablo, Hadoop, Azure Depolama Blobu veya Azure Data Lake Storage bulunan v
 
 ## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Adanmış SQL havuzunda ve sunucusuz SQL havuzundaki dış tablolar
 
-### <a name="dedicated-sql-pool"></a>[Adanmış SQL havuzu](#tab/sql-pool) 
+### <a name="dedicated-sql-pool"></a>[Ayrılmış SQL havuzu](#tab/sql-pool) 
 
 Adanmış SQL havuzunda, bir dış tablo kullanarak şunları yapabilirsiniz:
 
@@ -64,7 +64,7 @@ Dış veri kaynakları, depolama hesaplarına bağlanmak için kullanılır. Tü
 
 ### <a name="syntax-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma söz dizimi
 
-#### <a name="dedicated-sql-pool"></a>[Adanmış SQL havuzu](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Ayrılmış SQL havuzu](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -119,7 +119,7 @@ TYPE = `HADOOP` ADANMıŞ SQL havuzunda zorunlu seçenektir ve temel alınan dos
 
 ### <a name="example-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma örneği
 
-#### <a name="dedicated-sql-pool"></a>[Adanmış SQL havuzu](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Ayrılmış SQL havuzu](#tab/sql-pool)
 
 Aşağıdaki örnek, New York veri kümesine işaret eden Azure Data Lake Gen2 için bir dış veri kaynağı oluşturur:
 
@@ -383,13 +383,11 @@ SELECT TOP 1 * FROM census_external_table
 
 Data Lake keşif yeteneklerini kullanarak artık özel SQL havuzunu veya sunucusuz SQL havuzunu kullanarak bir dış tablo oluşturabilir ve sorgulayabilirsiniz ve bu dosya üzerinde basit bir sağ tıklamayı kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı ARM erişim rolüyle çalışma alanına erişiminizin olması gerekir
 
 - SQL havuzunda veya SQL OD üzerinde dış tablo oluşturmak ve sorgulamak için en azından [izinleriniz](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) olmalıdır
-
-- ADLS 2. hesabıyla ilişkili bağlı hizmetin **dosyaya erişimi olması gerekir**. Örneğin, bağlantılı hizmet kimlik doğrulama mekanizması yönetilen kimlik ise, çalışma alanı yönetilen kimliği, depolama hesabında en az Depolama Blobu okuyucusu iznine sahip olmalıdır
 
 Veri panelinden, dış tabloyu oluşturmak istediğiniz dosyayı seçin:
 > [!div class="mx-imgBorder"]

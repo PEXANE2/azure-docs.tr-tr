@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning tasarımcısını kullanarak modelleri yeniden eğitme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatlarına sahip modelleri yeniden eğitme hakkında bilgi edinin.
+description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatları ile makine öğrenimi modellerini yeniden eğitme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905678"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554810"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile modelleri yeniden eğitme
 
@@ -62,14 +62,14 @@ Bu makalede kullanılan işlem hattı, tasarımcı giriş hattının örnek bir 
 
     ![İşlem hattı parametresinin nasıl oluşturulacağını gösteren ekran görüntüsü](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. **Ardışık düzen parametresine Ekle**' yi seçin.
+1. **Ardışık düzen parametresine Ekle** ' yi seçin.
 
 1. Bir parametre adı ve varsayılan değer sağlayın.
 
    > [!NOTE]
    > İşlem hattı taslağınız başlığının yanındaki **Ayarlar** dişli simgesini seçerek işlem hattı parametrelerinizi inceleyebilir ve düzenleyebilirsiniz. 
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 1. İşlem hattı çalıştırmasını gönder.
 
@@ -79,7 +79,7 @@ Tasarımcı, eğitilen modeller dahil olmak üzere tüm işlem hattı çıkışl
 
 1. İşlem hattının çalışmayı bitirmesini bekleyin.
 1. **Model eğitme** modülünü seçin.
-1. Modülün sağ tarafındaki modül ayrıntıları bölmesinde **çıktılar + Günlükler**' i seçin.
+1. Modülün sağ tarafındaki modül ayrıntıları bölmesinde **çıktılar + Günlükler** ' i seçin.
 1. Modelinizi **diğer çıkışlara** , çalışma günlükleri ile birlikte bulabilirsiniz.
 1. Alternatif olarak, **çıktıyı görüntüle** simgesini seçin. Buradan, doğrudan veri deposuna gitmek için iletişim kutusundaki yönergeyi izleyebilirsiniz. 
 
@@ -96,7 +96,7 @@ Tasarımcı, eğitilen modeller dahil olmak üzere tüm işlem hattı çıkışl
    > [!NOTE]
    > Tek bir uç noktada birden çok işlem hattı yayımlayabilirsiniz. Belirli bir uç noktadaki her işlem hattına, ardışık düzen uç noktasını çağırdığınızda belirtebileceğiniz bir sürüm numarası verilir.
 
-1. **Yayımla**’yı seçin.
+1. **Yayımla** ’yı seçin.
 
 ## <a name="retrain-your-model"></a>Modelinizi yeniden eğitme
 
@@ -109,7 +109,7 @@ Studio portalından parametreli bir işlem hattı çalıştırması göndermek i
 1. Studio çalışma alanınızdaki **uç noktalar** sayfasına gidin.
 1. **Ardışık düzen uç noktaları** sekmesini seçin. Ardından, işlem hattı uç noktanızı seçin.
 1. Yayınlanan işlem **hatları** sekmesini seçin. Sonra, çalıştırmak istediğiniz işlem hattı sürümünü seçin.
-1. **Gönder**’i seçin.
+1. **Gönder** ’i seçin.
 1. Kurulum iletişim kutusunda, çalıştırma için parametre değerlerini belirtebilirsiniz. Bu örnekte, modelinizi ABD olmayan bir veri kümesi kullanarak eğitebilmeniz için veri yolunu güncelleştirin.
 
 ![Tasarımcıda parametreli bir işlem hattı çalıştırmasının nasıl ayarlanacağını gösteren ekran görüntüsü](./media/how-to-retrain-designer/published-pipeline-run.png)

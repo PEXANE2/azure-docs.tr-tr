@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: de93d96085269c2cc8fcf6c18d7e6643facfcaa4
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043288"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372719"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>En son API’lerle program aracılığıyla Azure abonelikleri oluşturma
 
@@ -798,7 +798,15 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-Abonelikleri oluşturmak için bir fatura bölümünde sahip, katkıda bulunan veya Azure abonelik oluşturucu rolünüz ya da faturalama profili veya faturalama hesabında sahip veya katkıda bulunan rolünüz olmalıdır. Daha fazla bilgi için bkz. [Abonelik faturalama rolleri ve görevleri](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Abonelik oluşturmak için aşağıdaki rollerden birine sahip olmanız gerekir: 
+
+- Fatura Bölümündeki Azure Abonelik Sahibi
+- Fatura Bölümündeki Azure Abonelik Katkıda Bulunanı
+- Fatura Bölümündeki Azure Abonelik Oluşturucusu rolü
+- Faturalama Profili veya Faturalama Hesabındaki Azure Abonelik Sahibi
+- Faturalama Profili veya Faturalama Hesabındaki Azure Abonelik Katkıda Bulunanı Rolü
+
+ Daha fazla bilgi için bkz. [Abonelik faturalama rolleri ve görevleri](understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
 Ayrıca, ARM şablon dağıtımı yaptığınızdan kök nesnesinde yazma izinlerine sahip olmanız gerekir. Bu nedenle, bir yönetim grubu kapsamında ARM dağıtımı oluşturuyorsanız yönetim grubunda yazma izinlerine sahip olmanız gerekir. Eylemin yalnızca ARM dağıtımı oluşturmaya yaradığını, bir abonelik oluşturulduysa bunun yalnızca ARM şablonunda belirtilen yönetim grubunda oluşturulduğunu unutmayın.
 

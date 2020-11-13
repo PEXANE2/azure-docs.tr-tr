@@ -1,30 +1,31 @@
 ---
-title: Kullanıcıların bir alt kümesi için bir özelliği etkinleştirmek üzere özellik filtrelerini kullanma
+title: Koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini kullanın
 titleSuffix: Azure App Configuration
-description: Kullanıcıların bir alt kümesi için bir özelliği etkinleştirmek üzere özellik filtrelerini nasıl kullanacağınızı öğrenin
+description: Koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini nasıl kullanacağınızı öğrenin
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 5b2eb942581f6e4163012b0f767d04c02689bb7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206771"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554765"
 ---
-# <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Kullanıcıların bir alt kümesi için bir özelliği etkinleştirmek üzere özellik filtrelerini kullanma
+# <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini kullanın
 
 Özellik bayrakları, uygulamanızdaki işlevselliği etkinleştirmenizi veya devre dışı bırakabilmeniz için izin verir. Basit bir özellik bayrağı açık veya kapalı olmalıdır. Uygulama her zaman aynı şekilde davranır. Örneğin, bir özellik bayrağının arkasında yeni bir özellik alabilirsiniz. Özellik bayrağı etkinleştirildiğinde, tüm kullanıcılar yeni özelliği görür. Özellik bayrağını devre dışı bırakmak yeni özelliği gizler.
 
 Buna karşılık, _koşullu Özellik bayrağı_ Özellik bayrağının dinamik olarak etkinleştirilmesini veya devre dışı bırakılbilmesini sağlar. Uygulama, özellik bayrağı ölçütlerine bağlı olarak farklı şekilde davranmayabilir. Yeni özelliğinizi ilk başta kullanıcıların küçük bir alt kümesine göstermek istediğinizi varsayalım. Koşullu Özellik bayrağı, bazı kullanıcılar için özellik bayrağını diğerleri için devre dışı bırakarak etkinleştirmenizi sağlar. _Özellik filtreleri_ her değerlendirildiğinde Özellik bayrağının durumunu tespit edin.
 
-`Microsoft.FeatureManagement`Kitaplık iki özellik filtresi içerir:
+`Microsoft.FeatureManagement`Kitaplık üç özellik filtresi içerir:
 
 - `PercentageFilter` Özellik bayrağını bir yüzdeye göre izin vermez.
 - `TimeWindowFilter` belirli bir zaman penceresi sırasında özellik bayrağını sunar.
+- `TargetingFilter` Belirtilen kullanıcılar ve gruplar için özellik bayrağını sunar.
 
 Ayrıca, [Microsoft. FeatureManagement. IFeatureFilter arabirimini](/dotnet/api/microsoft.featuremanagement.ifeaturefilter)uygulayan kendi özellik filtreinizi de oluşturabilirsiniz.
 
@@ -48,21 +49,21 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
 
 1. Bir özellik bayrağıyla Web uygulaması oluşturmak için [hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme](./quickstart-feature-flag-aspnet-core.md) ' deki yönergeleri izleyin.
 
-1. Azure portal, yapılandırma deponuza gidin ve **Feature Manager**' a tıklayın.
+1. Azure portal, yapılandırma deponuza gidin ve **Feature Manager** ' a tıklayın.
 
-1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsüne tıklayın. **Düzenle**’ye tıklayın.
+1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsüne tıklayın. **Düzenle** ’ye tıklayın.
 
     > [!div class="mx-imgBorder"]
     > ![Beta Özellik bayrağını Düzenle](./media/edit-beta-feature-flag.png)
 
-1. **Düzenleme** **ekranında, zaten seçili değilse radyo düğmesini** seçin. Sonra **Filtre Ekle** düğmesine tıklayın. (Radyo **düğmesinin** etiketi, **koşullu**okunacak şekilde değiştirilir.)
+1. **Düzenleme** **ekranında, zaten seçili değilse radyo düğmesini** seçin. Sonra **Filtre Ekle** düğmesine tıklayın. (Radyo **düğmesinin** etiketi, **koşullu** okunacak şekilde değiştirilir.)
 
-1. **Anahtar** alanına *Microsoft. Percentage*yazın.
+1. **Anahtar** alanına *Microsoft. Percentage* yazın.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi ekle](./media/feature-flag-add-filter.png)
 
-1. Özellik filtresi anahtarının yanındaki bağlam menüsüne tıklayın. **Parametreleri Düzenle**' ye tıklayın.
+1. Özellik filtresi anahtarının yanındaki bağlam menüsüne tıklayın. **Parametreleri Düzenle** ' ye tıklayın.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi parametrelerini Düzenle](./media/feature-flag-edit-filter-parameters.png)
@@ -74,7 +75,7 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
 
 1. **Özellik düzenleme bayrağı** ekranına dönmek için **Uygula** ' ya tıklayın. Ardından, özellik bayrağı ayarlarını kaydetmek için yeniden **Uygula** ' ya tıklayın.
 
-1. Özellik bayrağının **durumu** artık *koşullu*olarak görünüyor. Bu durum, özellik filtresi tarafından zorlanan ölçütlere göre, özellik bayrağının istek başına temelinde etkinleştirileceğini veya devre dışı bırakılacağını gösterir.
+1. Özellik bayrağının **durumu** artık *koşullu* olarak görünüyor. Bu durum, özellik filtresi tarafından zorlanan ölçütlere göre, özellik bayrağının istek başına temelinde etkinleştirileceğini veya devre dışı bırakılacağını gösterir.
 
     > [!div class="mx-imgBorder"]
     > ![Koşullu Özellik bayrağı](./media/feature-flag-filter-enabled.png)
@@ -84,9 +85,9 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
 Bu özellik bayrağının etkilerini görmek için uygulamayı başlatın ve tarayıcınızdaki **yenileme** düğmesine birden çok kez basın. *Beta* öğesinin araç çubuğunda yaklaşık %50 ile göründüğünü görürsünüz. `PercentageFilter`Bir istek alt kümesi Için *Beta* özelliğini devre dışı bıraktığında, bu süre geri kalanı gizlidir. Aşağıdaki videoda bu davranış eylemi gösterilmektedir.
 
 > [!div class="mx-imgBorder"]
-> ![PercentageFilter](./media/feature-flags-percentagefilter.gif)
+> ![TargetingFilter eylemi](./media/feature-flags-percentagefilter.gif)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özellik yönetimine genel bakış](./concept-feature-management.md)
+> [Hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etkinleştir](./howto-targetingfilter-aspnet-core.md)

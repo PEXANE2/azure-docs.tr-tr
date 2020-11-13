@@ -48,6 +48,22 @@
           href: tutorial-dr-drill-azure.md
         - name: Azure'a yük devretme
           href: vmware-azure-tutorial-failover-failback.md
+    - name: Azure VMware Çözümü ile Azure’a olağanüstü durum kurtarma
+      items:
+        - name: Azure’u hazırlama
+          href: avs-tutorial-prepare-azure.md
+        - name: Azure VMware Çözümü hazırlama
+          href: avs-tutorial-prepare-avs.md
+        - name: Çoğaltmayı ayarlama
+          href: avs-tutorial-replication.md
+        - name: Olağanüstü durum kurtarma tatbikatı çalıştırma
+          href: avs-tutorial-dr-drill-azure.md
+        - name: Azure'a yük devretme
+          href: avs-tutorial-failover.md
+        - name: Sanal makineleri yeniden koruma
+          href: avs-tutorial-reprotect.md
+        - name: Azure’dan yeniden çalışma
+          href: avs-tutorial-failback.md
     - name: Azure'a Hyper-V VM olağanüstü durum kurtarma
       items:
         - name: Azure’u hazırlama

@@ -11,14 +11,28 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2586b3aab9d1fb8e7ae12aea540df19ff6c37556
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356697"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553667"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
+
+## <a name="text-to-speech-2020-october-release"></a>Metin okuma 2020-Ekim yayını
+
+**Yeni özellikler**
+- Jenny yeni bir `newscast` stili destekler. Bkz. [SSML 'de konuşma stillerini kullanma](speech-synthesis-markup.md#adjust-speaking-styles).
+- **Sinir sescifinet vocoder 'e yükseltilmiş ve daha yüksek ses uygunluğu ve daha hızlı senişme hızı**. Bu, senaryosu video Dubbing, ses kitapları veya çevrimiçi eğitim malzemeleri dahil olmak üzere Hi-Fi seslerine veya uzun etkileşimlere bağlı olan müşteriler için yararlanır. [Öykü hakkında daha fazla bilgi edinin ve teknik topluluk blogumuzda sesli örnekleri dinleyin](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)
+- **[Özel ses](https://speech.microsoft.com/customvoice)  &  [ses içeriği oluşturma Studio](https://speech.microsoft.com/audiocontentcreation) , 17 yerel ayara yereldir**. Kullanıcılar, daha kolay bir deneyim için Kullanıcı arabirimini kolayca yerel bir dile değiştirebilir.   
+- **Ses Içeriği oluşturma** : XiaoxiaoNeural için stil derecesi denetimi eklendi; Artan 50 MS 'nin artımlı sonlarını içerecek şekilde özelleştirilmiş kesme özelliği. 
+
+**Genel TTS ses kalitesi geliştirmeleri**
+- İçinde gelişmiş sözcük düzeyi Okunuş doğruluğu `pl-PL` (hata oranı azaltma: %51) ve `fi-FI` (hata oranı azaltma: %58)
+- `ja-JP`Sözlük senaryosu için geliştirilmiş tek sözcük okuma. %80 oranında azaltılmış telaffuz hatası.
+- `zh-CN-XiaoxiaoNeural`: Geliştirilmiş yaklaşım/CustomerService/Newscast/kimerli/angın stili ses kalitesi.
+- `zh-CN`: Geliştirilmiş Erhua telaffuz ve açık ton ve iyileştirilmiş alan Prosody, intelligibility büyük ölçüde geliştirilmiştir. 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>Konuşma SDK 1.14.0:2020-Ekim yayını
 
@@ -78,6 +92,18 @@ SPX, Azure konuşma hizmetini kod yazmadan kullanmak için komut satırı arabir
 - `spx * --http header A=B` – özel üst bilgileri destekleme (özel kimlik doğrulaması için Office 'e eklendi). 
 - `spx help` – Geliştirilmiş metin ve arka onay metin rengi (mavi).
 
+## <a name="text-to-speech-2020-september-release"></a>Metinden konuşmaya 2020-Eylül yayını
+
+### <a name="new-features"></a>Yeni özellikler
+
+* **Sinir TTS** 
+    * **18 yeni dil/yerel ayarı destekleyecek şekilde genişletildi.** Bunlar Bulgarca, Çekçe, Almanca (Avusturya), Almanca (Isviçre), Yunanca, Ingilizce (Irlanda), Fransızca (Isviçre), Ibranice, Hırvatça, Macarca, Endonezya, Malay, Rumence, Slovakça, Slovence, Tamil dili, Telugu ve Vietnam. 
+    * **Mevcut dillerdeki çeşitlerinizi zenginleştirmek için 14 yeni ses yayınlandı.** Bkz. [tam dil ve ses listesi](language-support.md#neural-voices).
+    * **`en-US`Ve seslerdeki yeni konuşma stilleri `zh-CN` .** Ingilizce (ABD) içindeki yeni ses, sohbet botu, müşteri hizmeti ve yardımcı stillerini destekler. 10 yeni konuşma stili, zh-CN Voice, Xiaoxıao ile kullanılabilir. Ayrıca, Xiaoxıao sinir Voice `StyleDegree` ayarlamayı destekler. Bkz. [SSML 'de konuşma stillerini kullanma](speech-synthesis-markup.md#adjust-speaking-styles).
+
+* **Kapsayıcılar: sinir TTS kapsayıcısı, 14 dilde kullanılabilen 16 sesle genel önizlemede kullanıma sunulmuştur.** [Sınır TTS Için konuşma kapsayıcıları dağıtma](speech-container-howto.md) hakkında daha fazla bilgi edinin  
+
+[Ignite 2020 IÇIN TTS güncelleştirmelerinin tam duyurusunu](https://techcommunity.microsoft.com/t5/azure-ai/ignite-2020-neural-tts-updates-new-language-support-more-voices/ba-p/1698544) okuyun 
 
 ## <a name="text-to-speech-2020-august-release"></a>Metinden konuşmaya 2020-Ağustos yayını
 

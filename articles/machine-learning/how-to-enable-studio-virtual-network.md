@@ -1,7 +1,7 @@
 ---
 title: Sanal ağda Azure Machine Learning Studio 'yu etkinleştirme
 titleSuffix: Azure Machine Learning
-description: Bir sanal ağ içinde depolanan verilere erişmek için Azure Machine Learning Studio kullanın.
+description: Bir sanal ağ içinde depolanan verilere erişmek için Azure Machine Learning Studio 'yu nasıl yapılandıracağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393005"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554674"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
