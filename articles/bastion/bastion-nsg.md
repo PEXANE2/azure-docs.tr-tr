@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5bff5b341dcbdaa7ccae2b02e62e3e6bd4d115f9
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 822a90aa2bd3a19cf3459924e6b577cc416aa3a5
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594275"
+ms.locfileid: "94616833"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimiyle ve Azure ile çalışma
 
@@ -40,7 +40,7 @@ _ Giriş **trafiği:**
 
    * **Genel İnternet 'ten gelen trafik:** Azure savunma, giriş trafiği için genel IP üzerinde bağlantı noktası 443 ' ün etkin olmasını gerektiren bir genel IP oluşturur. 3389/22 numaralı bağlantı noktası, AzureBastionSubnet açık olması gerekmez.
    * **Azure savunma denetim düzleminin giriş trafiği:** Denetim düzlemi bağlantısı için **Gatewaymanager** hizmet etiketinden gelen bağlantı noktası 443 ' yı etkinleştirin. Bu, denetim düzlemi, diğer bir deyişle, ağ geçidi yöneticisinin Azure ile iletişim kurabilmesine olanak sağlar.
-   * **Azure loadbalancer 'tan giriş trafiği:** Sistem durumu araştırmaları için **AzureLoadBalancer** Service etiketinden gelen bağlantı noktası 443 ' yı etkinleştirin. Bu, Azure Yük dengeleyicinin arka uca bağlantı sorunlarını algılamasını sağlar.
+   * **Azure Load Balancer giriş trafiği:** Sistem durumu araştırmaları için **AzureLoadBalancer** hizmet etiketinden gelen bağlantı noktası 443 ' yı etkinleştirin. Bu, Azure Load Balancer bağlantıyı algılamasını sağlar 
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Ekran görüntüsü, Azure savunma bağlantısı için gelen güvenlik kurallarını gösterir.":::
