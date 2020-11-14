@@ -122,6 +122,10 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: Azure EA portalını kullanmaya başlama
           href: manage/ea-portal-get-started.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Maliyet Yönetimi ve Faturalandırma’yı yapılandırma

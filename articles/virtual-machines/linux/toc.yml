@@ -4,7 +4,7 @@
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: VM Oluşturma - Azure CLI
       href: quick-create-cli.md
@@ -45,7 +45,7 @@
     - name: 13 - VM’leri izleme
       href: tutorial-monitor.md
     - name: 14 - VM güvenliğini yönetme
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15a - Jenkins ile derleme
       href: /azure/developer/jenkins/pipeline-with-github-and-docker
     - name: 15b - Jenkins’i Azure DevOps ile tümleştirme
@@ -687,7 +687,15 @@
         - name: Zaman eşitleme
           href: time-sync.md
         - name: Bir VM’yi etiketleme
-          href: tag.md
+          items:
+            - name: CLI
+              href: ../tag-cli.md
+            - name: Portal
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: Şablon
+              href: ../tag-template.md
         - name: Bir VM üzerinde betikleri çalıştırma
           href: run-scripts-in-vm.md
           items:

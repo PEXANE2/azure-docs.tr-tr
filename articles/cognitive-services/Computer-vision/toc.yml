@@ -85,12 +85,14 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: Kavramlar
   items:
-    - name: İçerik etiketleri
-      href: concept-tagging-images.md
+    - name: Optik Karakter Tanıma (OCR)
+      href: concept-recognizing-text.md
     - name: Nesne algılama
       href: concept-object-detection.md
     - name: Marka algılama
       href: concept-brand-detection.md
+    - name: İçerik etiketleri
+      href: concept-tagging-images.md
     - name: Görüntü kategorilendirmesi
       href: concept-categorizing-images.md
     - name: Görüntü açıklamaları
@@ -105,8 +107,6 @@
       href: concept-detecting-color-schemes.md
     - name: Akıllı kırpılan küçük resimler
       href: concept-generating-thumbnails.md
-    - name: Optik Karakter Tanıma (OCR)
-      href: concept-recognizing-text.md
     - name: Yetişkinlere yönelik içeriği algılama
       href: concept-detecting-adult-content.md
 - name: Sorumlu AI

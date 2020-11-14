@@ -36,6 +36,10 @@
       href: front-door-quickstart-template-samples.md
 - name: Kavramlar
   items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Arka uçlar ve arka uç havuzları
       href: front-door-backend-pool.md
     - name: Front Door ile önbelleğe alma

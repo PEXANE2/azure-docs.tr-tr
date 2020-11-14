@@ -4,7 +4,7 @@
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: VM Oluşturma - Portal
       href: quick-create-portal.md
@@ -46,7 +46,7 @@
     - name: 13 - VM’leri izleme
       href: tutorial-monitor.md
     - name: 14 - VM güvenliğini yönetme
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15 - SQL\IIS\.NET yığını yükleme
       href: tutorial-iis-sql.md
     - name: 16 - SSL ile web sunucusunun güvenliğini sağlama
@@ -648,8 +648,16 @@
         - name: İşletim sistemi diskini değiştirme
           href: os-disk-swap.md
         - name: Bir VM’yi etiketleme
-          href: tag.md
-        - name: Zaman eşitleme
+          items:
+            - name: Portal
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: CLI
+              href: ../tag-cli.md
+            - name: Şablon
+              href: ../tag-template.md
+            - name: Zaman eşitleme
           href: time-sync.md
         - name: Bir VM üzerinde betikleri çalıştırma
           href: run-scripts-in-vm.md
@@ -950,7 +958,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Bağlantı noktalarını VM’ye açma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md
