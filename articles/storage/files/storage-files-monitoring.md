@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f37fc8e19025b78475f706ff96c502cc6094d54f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8dc99cda4128635e619afec5ed725da16bbd81ed
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358431"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629895"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -28,7 +28,7 @@ Her Azure dosya kaynağı için Azure portal **genel bakış** sayfası, istekle
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 Azure dosyaları, Azure 'da tam yığın izleme hizmeti olan [Azure izleyici](../../azure-monitor/overview.md)'yi kullanarak izleme verileri oluşturur. Azure Izleyici, diğer bulutlardaki ve Şirket içindeki Azure kaynaklarınızı ve kaynaklarınızı izlemek için tam bir özellik kümesi sağlar. 
 
-Azure [izleyici Ile Azure kaynaklarını izleme](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)makalesini izleyerek şunları açıklar:
+Azure [izleyici Ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md)makalesini izleyerek şunları açıklar:
 
 - Azure İzleyici nedir?
 - İzleme ile ilişkili maliyetler
@@ -44,7 +44,7 @@ Azure dosyaları, [Azure kaynaklarından gelen verileri izleme](../../azure-moni
 
 Azure dosyaları tarafından oluşturulan ölçümler ve günlük ölçümleri hakkında ayrıntılı bilgi için bkz. [Azure dosya izleme veri başvurusu](storage-files-monitoring-reference.md) .
 
-Azure Izleyici 'de ölçümler ve Günlükler yalnızca depolama hesaplarını Azure Resource Manager destekler. Azure Izleyici, klasik depolama hesaplarını desteklemez. Klasik bir depolama hesabında ölçümleri veya günlükleri kullanmak istiyorsanız bir Azure Resource Manager depolama hesabına geçiş yapmanız gerekir. Bkz. [Azure Resource Manager 'ye geçirme](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
+Azure Izleyici 'de ölçümler ve Günlükler yalnızca depolama hesaplarını Azure Resource Manager destekler. Azure Izleyici, klasik depolama hesaplarını desteklemez. Klasik bir depolama hesabında ölçümleri veya günlükleri kullanmak istiyorsanız bir Azure Resource Manager depolama hesabına geçiş yapmanız gerekir. Bkz. [Azure Resource Manager 'ye geçirme](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ## <a name="collection-and-routing"></a>Toplama ve yönlendirme
 
@@ -58,7 +58,7 @@ Kaynak günlüklerini toplamak için bir tanılama ayarı oluşturmanız gerekir
 | StorageWrite | Nesneler üzerinde yazma işlemleri. |
 | StorageDelete | Nesneler üzerinde silme işlemleri. |
 
-Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
+Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 ## <a name="creating-a-diagnostic-setting"></a>Tanılama ayarı oluşturma
 
@@ -69,7 +69,7 @@ Azure portal, PowerShell, Azure CLı veya bir Azure Resource Manager şablonunu 
 
 Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+### <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
 1. Azure portalında oturum açın.
 
@@ -104,7 +104,7 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 2. **Depolama hesabı** açılan listesinde, günlüklerinizi arşivlemek istediğiniz depolama hesabını seçin, **Tamam** düğmesine tıklayın ve ardından **Kaydet** düğmesine tıklayın.
 
    > [!NOTE]
-   > Verme hedefi olarak bir depolama hesabı seçmeden önce, depolama hesabındaki önkoşulları anlamak için bkz. [Azure Kaynak günlüklerini arşivleme](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) .
+   > Verme hedefi olarak bir depolama hesabı seçmeden önce, depolama hesabındaki önkoşulları anlamak için bkz. [Azure Kaynak günlüklerini arşivleme](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) .
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Günlükleri Azure Event Hubs akış
 
@@ -140,7 +140,7 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 
 #### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
 
-[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle birlikte kullanarak günlükleri etkinleştirin `StorageAccountId` .
+[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle birlikte kullanarak günlükleri etkinleştirin `StorageAccountId` .
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -150,43 +150,43 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 
 `StorageRead` `StorageWrite` `StorageDelete` **Kategori** parametresinin değeri için, ve kullanabilirsiniz.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Her parametrenin açıklaması için bkz. [Azure PowerShell aracılığıyla Azure Kaynak günlüklerini arşivleme](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell).
+Her parametrenin açıklaması için bkz. [Azure PowerShell aracılığıyla Azure Kaynak günlüklerini arşivleme](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
 
-[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle kullanarak günlükleri etkinleştirin `EventHubAuthorizationRuleId` .
+[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle kullanarak günlükleri etkinleştirin `EventHubAuthorizationRuleId` .
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-Her parametrenin açıklaması için bkz. [PowerShell cmdlet 'leri aracılığıyla Event Hubs Için akış verileri](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets).
+Her parametrenin açıklaması için bkz. [PowerShell cmdlet 'leri aracılığıyla Event Hubs Için akış verileri](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Günlükleri Log Analytics’e gönderme
 
-[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle kullanarak günlükleri etkinleştirin `WorkspaceId` .
+[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle kullanarak günlükleri etkinleştirin `WorkspaceId` .
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanına Azure Kaynak günlüklerini akış](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanına Azure Kaynak günlüklerini akış](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. İlk olarak, [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli) , Windows PowerShell gibi bir komut konsol uygulaması açın.
+1. İlk olarak, [Azure Cloud Shell](../../cloud-shell/overview.md)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](/cli/azure/install-azure-cli) , Windows PowerShell gibi bir komut konsol uygulaması açın.
 
 2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi günlüklerini etkinleştirmek istediğiniz depolama hesabının aboneliğine ayarlayın.
 
@@ -198,7 +198,7 @@ Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanın
 
 #### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
 
-[Az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
+[Az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -208,43 +208,43 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 `StorageRead` `StorageWrite` `StorageDelete` **Kategori** parametresinin değeri için, ve kullanabilirsiniz.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-Her parametrenin açıklaması için bkz. [Azure CLI aracılığıyla arşiv kaynak günlükleri](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli).
+Her parametrenin açıklaması için bkz. [Azure CLI aracılığıyla arşiv kaynak günlükleri](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
 
-[Az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
+[Az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-Her parametrenin açıklaması için bkz. [Azure CLI aracılığıyla Event Hubs Için akış verileri](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli).
+Her parametrenin açıklaması için bkz. [Azure CLI aracılığıyla Event Hubs Için akış verileri](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Günlükleri Log Analytics’e gönderme
 
-[Az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
+[Az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanına Azure Kaynak günlüklerini akış](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+ Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanına Azure Kaynak günlüklerini akış](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="template"></a>[Şablon](#tab/template)
 
-Bir tanılama ayarı oluşturan Azure Resource Manager şablonunu görüntülemek için bkz. [Azure Storage Için tanılama ayarı](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
+Bir tanılama ayarı oluşturan Azure Resource Manager şablonunu görüntülemek için bkz. [Azure Storage Için tanılama ayarı](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
 
 ---
 
@@ -257,7 +257,7 @@ Boyutları destekleyen ölçümler için, ölçüyü istenen boyut değeriyle fi
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/fileServices
 
-Azure dosyalarını içeren tüm Azure Izleyici destek ölçümlerinin bir listesi için bkz. [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices).
+Azure dosyalarını içeren tüm Azure Izleyici destek ölçümlerinin bir listesi için bkz. [Azure izleyici desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices).
 
 ### <a name="accessing-metrics"></a>Ölçümlere erişme
 
@@ -268,7 +268,7 @@ Azure dosyalarını içeren tüm Azure Izleyici destek ölçümlerinin bir liste
 
 #### <a name="list-the-metric-definition"></a>Ölçüm tanımını listeleyin
 
-Depolama hesabınızın veya Azure dosyaları hizmetinin ölçüm tanımını listeleyebilirsiniz. [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) cmdlet 'ini kullanın.
+Depolama hesabınızın veya Azure dosyaları hizmetinin ölçüm tanımını listeleyebilirsiniz. [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) cmdlet 'ini kullanın.
 
 Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimliği veya Azure dosyaları hizmetinin kaynak kimliği ile değiştirin.  Bu kaynak kimliklerini, Azure portal depolama hesabınızın **Özellikler** sayfalarında bulabilirsiniz.
 
@@ -279,7 +279,7 @@ Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimli
 
 #### <a name="reading-metric-values"></a>Ölçüm değerlerini okuma
 
-Depolama hesabınızın veya Azure dosyaları hizmetinin hesap düzeyi ölçüm değerlerini okuyabilirsiniz. [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) cmdlet 'ini kullanın.
+Depolama hesabınızın veya Azure dosyaları hizmetinin hesap düzeyi ölçüm değerlerini okuyabilirsiniz. [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) cmdlet 'ini kullanın.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -290,7 +290,7 @@ Depolama hesabınızın veya Azure dosyaları hizmetinin hesap düzeyi ölçüm 
 
 #### <a name="list-the-account-level-metric-definition"></a>Hesap düzeyi ölçüm tanımını listeleyin
 
-Depolama hesabınızın veya Azure dosyaları hizmetinin ölçüm tanımını listeleyebilirsiniz. [Az Monitor ölçümleri List-Definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) komutunu kullanın.
+Depolama hesabınızın veya Azure dosyaları hizmetinin ölçüm tanımını listeleyebilirsiniz. [Az Monitor ölçümleri List-Definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) komutunu kullanın.
  
 Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimliği veya Azure dosyaları hizmetinin kaynak kimliği ile değiştirin. Bu kaynak kimliklerini, Azure portal depolama hesabınızın **Özellikler** sayfalarında bulabilirsiniz.
 
@@ -300,7 +300,7 @@ Bu örnekte, `<resource-ID>` yer tutucuyu tüm depolama hesabının kaynak kimli
 
 #### <a name="read-account-level-metric-values"></a>Hesap düzeyindeki ölçüm değerlerini oku
 
-Depolama hesabınızın veya Azure dosyaları hizmetinin ölçüm değerlerini okuyabilirsiniz. [Az Monitor ölçümleri List](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) komutunu kullanın.
+Depolama hesabınızın veya Azure dosyaları hizmetinin ölçüm değerlerini okuyabilirsiniz. [Az Monitor ölçümleri List](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutunu kullanın.
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -312,7 +312,7 @@ Azure Izleyici, ölçüm tanımını ve değerlerini okumak için [.NET SDK](htt
  
 Bu örneklerde, `<resource-ID>` yer tutucuyu depolama hesabının tamamının veya Azure dosyaları hizmetinin kaynak kimliği ile değiştirin. Bu kaynak kimliklerini, Azure portal depolama hesabınızın **Özellikler** sayfalarında bulabilirsiniz.
 
-Değişkeni, `<subscription-ID>` ABONELIĞINIZIN kimliğiyle değiştirin. , Ve değerlerini elde etme konusunda rehberlik için `<tenant-ID>` `<application-ID>` `<AccessKey>` bkz. [Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/). 
+Değişkeni, `<subscription-ID>` ABONELIĞINIZIN kimliğiyle değiştirin. , Ve değerlerini elde etme konusunda rehberlik için `<tenant-ID>` `<application-ID>` `<AccessKey>` bkz. [Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md). 
 
 #### <a name="list-the-account-level-metric-definition"></a>Hesap düzeyi ölçüm tanımını listeleyin
 
@@ -456,7 +456,7 @@ Yok.
 
 Kaynak günlüklerine bir depolama hesabında blob olarak, olay verileri olarak veya log analitik sorguları aracılığıyla erişebilirsiniz.
 
-Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
+Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, genel amaçlı v1 için Premium Depolama hesapları ve genel amaçlı v2 depolama hesapları için günlük Günlükler sunar. Klasik depolama hesapları desteklenmez.
@@ -472,7 +472,7 @@ Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa olu
 - Başarısız ve başarılı istekler dahil, paylaşılan erişim imzası (SAS) veya OAuth kullanan istekler
 - Analiz verilerine yönelik istekler ( **$logs** kapsayıcısı içindeki klasik günlük verileri ve **$Metric** tablolarındaki sınıf ölçüm verileri)
 
-Azure dosyaları hizmeti tarafından yapılan, günlük oluşturma veya silme gibi bir istek günlüğe kaydedilmez. Günlüğe kaydedilen SMB ve REST isteklerinin tam listesi için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
+Azure dosyaları hizmeti tarafından yapılan, günlük oluşturma veya silme gibi bir istek günlüğe kaydedilmez. Günlüğe kaydedilen SMB ve REST isteklerinin tam listesi için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 ### <a name="log-anonymous-requests"></a>Anonim istekleri günlüğe kaydet
 
@@ -491,7 +491,7 @@ Günlükler, hedef depolama hesabındaki bir kapsayıcıya depolanan BLOB olarak
 
 `https://<destination-storage-account>.blob.core.windows.net/insights-logs-<storage-operation>/resourceId=/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<source-storage-account>/fileServices/default/y=<year>/m=<month>/d=<day>/h=<hour>/m=<minute>/PT1H.json`
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
@@ -501,20 +501,20 @@ Bir olay hub 'ına gönderilen Günlükler dosya olarak depolanmaz, ancak olay h
 
 ![Denetim günlükleri](media/storage-files-monitoring/event-hub-log.png)
 
-Güvenlik bilgileri ve olay yönetimi ve izleme araçlarını kullanarak, Olay Hub 'ınıza gönderilen günlük verilerine erişebilir ve bu verileri okuyabilirsiniz. Daha fazla bilgi için bkz. [Olay Hub 'ma gönderilen izleme verileriyle ne yapabilirim?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
+Güvenlik bilgileri ve olay yönetimi ve izleme araçlarını kullanarak, Olay Hub 'ınıza gönderilen günlük verilerine erişebilir ve bu verileri okuyabilirsiniz. Daha fazla bilgi için bkz. [Olay Hub 'ma gönderilen izleme verileriyle ne yapabilirim?](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki günlüklere erişme
 
 Azure Izleyici günlük sorgularını kullanarak, bir Log Analytics çalışma alanına gönderilen günlüklere erişebilirsiniz. Veriler **Storagefilelogs** tablosunda depolanır. 
 
-Daha fazla bilgi için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+Daha fazla bilgi için bkz. [Log Analytics öğreticisi](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 #### <a name="sample-kusto-queries"></a>Örnek kusto sorguları
 
-Azure dosyalarınızı izlemenize yardımcı olması için **günlük araması** çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorgular [Yeni dille](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)çalışır.
+Azure dosyalarınızı izlemenize yardımcı olması için **günlük araması** çubuğuna girebileceğiniz bazı sorgular aşağıda verilmiştir. Bu sorgular [Yeni dille](../../azure-monitor/log-query/log-query-overview.md)çalışır.
 
 > [!IMPORTANT]
-> Depolama hesabı kaynak grubu menüsünden **Günlükler** ' i seçtiğinizde Log Analytics, geçerli kaynak grubu için ayarlanan sorgu kapsamıyla açılır. Bu, günlük sorgularının yalnızca söz konusu kaynak grubundaki verileri dahil edecek anlamına gelir. Diğer kaynaklardan veya diğer Azure hizmetlerinden verileri içeren bir sorgu çalıştırmak istiyorsanız, **Azure izleyici** menüsünden **Günlükler** ' i seçin. Ayrıntılar için bkz. [Azure izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics](/azure/azure-monitor/log-query/scope/) .
+> Depolama hesabı kaynak grubu menüsünden **Günlükler** ' i seçtiğinizde Log Analytics, geçerli kaynak grubu için ayarlanan sorgu kapsamıyla açılır. Bu, günlük sorgularının yalnızca söz konusu kaynak grubundaki verileri dahil edecek anlamına gelir. Diğer kaynaklardan veya diğer Azure hizmetlerinden verileri içeren bir sorgu çalıştırmak istiyorsanız, **Azure izleyici** menüsünden **Günlükler** ' i seçin. Ayrıntılar için bkz. [Azure izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics](../../azure-monitor/log-query/scope.md) .
 
 Azure dosya paylaşımlarınızı izlemenize yardımcı olması için bu sorguları kullanın:
 
@@ -553,13 +553,13 @@ StorageFileLogs
 | render piechart
 ```
 
-Azure dosyaları için sütun adları ve açıklamaları listesini görüntülemek için bkz. [Storagefilelogs](https://docs.microsoft.com/azure/azure-monitor/reference/tables/storagefilelogs).
+Azure dosyaları için sütun adları ve açıklamaları listesini görüntülemek için bkz. [Storagefilelogs](/azure/azure-monitor/reference/tables/storagefilelogs).
 
-Sorguları yazma hakkında daha fazla bilgi için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+Sorguları yazma hakkında daha fazla bilgi için bkz. [Log Analytics öğreticisi](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 ## <a name="alerts"></a>Uyarılar
 
-İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](/azure/azure-monitor/platform/alerts-metric-overview), [Günlükler](/azure/azure-monitor/platform/alerts-unified-log)ve [etkinlik günlüğü](/azure/azure-monitor/platform/activity-log-alerts)hakkında uyarı ayarlayabilirsiniz. 
+İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](../../azure-monitor/platform/alerts-metric-overview.md), [Günlükler](../../azure-monitor/platform/alerts-unified-log.md)ve [etkinlik günlüğü](../../azure-monitor/platform/activity-log-alerts.md)hakkında uyarı ayarlayabilirsiniz. 
 
 Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kullanılacak uygun ölçüm listelenmektedir:
 
@@ -664,7 +664,7 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 - [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md)
 - [Azure Izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure depolama ölçümleri geçişi](../common/storage-metrics-migration.md)
-- [Azure Dosyalar dağıtımını planlama](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
-- [Azure Dosyaları’nı dağıtma](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
-- [Windows’ta Azure Dosyaları Sorunlarını Giderme](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)
-- [Linux’ta Azure Dosyaları Sorunlarını Giderme](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-linux-file-connection-problems)
+- [Azure Dosyalar dağıtımını planlama](./storage-files-planning.md)
+- [Azure Dosyaları’nı dağıtma](./storage-files-deployment-guide.md)
+- [Windows’ta Azure Dosyaları Sorunlarını Giderme](./storage-troubleshoot-windows-file-connection-problems.md)
+- [Linux’ta Azure Dosyaları Sorunlarını Giderme](./storage-troubleshoot-linux-file-connection-problems.md)

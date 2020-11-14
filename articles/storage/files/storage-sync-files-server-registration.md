@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85509515"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630592"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Kayıtlı sunucuları Azure Dosya Eşitleme yönetme
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -20,9 +20,9 @@ Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı
 Aşağıdaki makalede, bir sunucunun depolama eşitleme hizmeti ile nasıl kaydedileceği ve yönetileceği gösterilmektedir. Azure Dosya Eşitleme uçtan uca dağıtma hakkında bilgi için bkz. [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md) .
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Depolama eşitleme hizmeti ile bir sunucuyu kaydetme/kaydını kaldırma
-Bir sunucuyu Azure Dosya Eşitleme kaydetme, Windows Server ile Azure arasında bir güven ilişkisi kurar. Bu ilişki daha sonra sunucuda *sunucu uç noktaları* oluşturmak için kullanılabilir. Bu, bir Azure dosya paylaşımıyla ( *bulut uç noktası*olarak da bilinir) eşitlenmesi gereken belirli klasörleri temsil eder. 
+Bir sunucuyu Azure Dosya Eşitleme kaydetme, Windows Server ile Azure arasında bir güven ilişkisi kurar. Bu ilişki daha sonra sunucuda *sunucu uç noktaları* oluşturmak için kullanılabilir. Bu, bir Azure dosya paylaşımıyla ( *bulut uç noktası* olarak da bilinir) eşitlenmesi gereken belirli klasörleri temsil eder. 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bir sunucuyu depolama eşitleme hizmeti ile kaydetmek için öncelikle sunucunuzu gerekli önkoşullara hazırlamanız gerekir:
 
 * Sunucunuz Windows Server 'ın desteklenen bir sürümünü çalıştırıyor olmalıdır. Daha fazla bilgi için bkz. [sistem gereksinimleri ve birlikte çalışabilirlik Azure dosya eşitleme](storage-sync-files-planning.md#windows-file-server-considerations).
@@ -32,7 +32,7 @@ Bir sunucuyu depolama eşitleme hizmeti ile kaydetmek için öncelikle sunucunuz
     
     ![IE artırılmış güvenlik yapılandırması vurgulanmış şekilde Kullanıcı arabirimi Sunucu Yöneticisi](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Azure PowerShell modülünün sunucunuzda yüklü olduğundan emin olun. Sunucunuz bir yük devretme kümesinin üyesiyse, kümedeki her düğüm az modül gerektirir. Az modülün nasıl yükleneceğine ilişkin daha fazla ayrıntı [Azure PowerShell yüklemek ve yapılandırmak](https://docs.microsoft.com/powershell/azure/install-Az-ps)için bulunabilir.
+* Azure PowerShell modülünün sunucunuzda yüklü olduğundan emin olun. Sunucunuz bir yük devretme kümesinin üyesiyse, kümedeki her düğüm az modül gerektirir. Az modülün nasıl yükleneceğine ilişkin daha fazla ayrıntı [Azure PowerShell yüklemek ve yapılandırmak](/powershell/azure/install-Az-ps)için bulunabilir.
 
     > [!Note]  
     > Bir sunucuyu kaydetmek/kaydını silmek için az PowerShell modülünün en yeni sürümünü kullanmanızı öneririz. Az Package bu sunucuya daha önce yüklenmişse (ve bu sunucudaki PowerShell sürümü 5. * veya daha büyükse), `Update-Module` Bu paketi güncelleştirmek için cmdlet 'ini kullanabilirsiniz. 
@@ -58,7 +58,7 @@ Bir sunucuyu depolama eşitleme hizmeti ile kaydetmek için öncelikle sunucunuz
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>Depolama eşitleme hizmeti ile bir sunucu kaydetme
-Bir sunucunun bir Azure Dosya Eşitleme *eşitleme grubunda* *sunucu uç noktası* olarak kullanılabilmesi Için, bir *depolama eşitleme hizmeti*ile kaydedilmesi gerekir. Bir sunucu, tek seferde yalnızca bir depolama eşitleme hizmeti ile kaydedilebilir.
+Bir sunucunun bir Azure Dosya Eşitleme *eşitleme grubunda* *sunucu uç noktası* olarak kullanılabilmesi Için, bir *depolama eşitleme hizmeti* ile kaydedilmesi gerekir. Bir sunucu, tek seferde yalnızca bir depolama eşitleme hizmeti ile kaydedilebilir.
 
 #### <a name="install-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısını yükleme
 1. [Azure dosya eşitleme aracısını indirin](https://go.microsoft.com/fwlink/?linkid=858257).
@@ -180,7 +180,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ```
 
 ### <a name="use-windows-server-storage-qos"></a>Windows Server Depolama QoS kullanma 
-Azure Dosya Eşitleme, Windows Server Sanallaştırma Ana bilgisayarı üzerinde çalışan bir sanal makinede barındırıldığı zaman, depolama ıO kullanımını düzenlemek için Depolama QoS (hizmet kalitesi) kullanabilirsiniz. Depolama QoS ilkesi, en yüksek (ya da StorageSyncNetwork sınırının üzerinde nasıl zorlandığından) veya minimum (veya rezervasyon) olarak ayarlanabilir. En yüksek yerine en düşük değeri ayarlamak Azure Dosya Eşitleme, diğer iş yükleri bunu kullanmadığı takdirde kullanılabilir depolama bant genişliğini kullanmak için veri bloğu kullanmasına izin verir. Daha fazla bilgi için bkz. [depolama hizmet kalitesi](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
+Azure Dosya Eşitleme, Windows Server Sanallaştırma Ana bilgisayarı üzerinde çalışan bir sanal makinede barındırıldığı zaman, depolama ıO kullanımını düzenlemek için Depolama QoS (hizmet kalitesi) kullanabilirsiniz. Depolama QoS ilkesi, en yüksek (ya da StorageSyncNetwork sınırının üzerinde nasıl zorlandığından) veya minimum (veya rezervasyon) olarak ayarlanabilir. En yüksek yerine en düşük değeri ayarlamak Azure Dosya Eşitleme, diğer iş yükleri bunu kullanmadığı takdirde kullanılabilir depolama bant genişliğini kullanmak için veri bloğu kullanmasına izin verir. Daha fazla bilgi için bkz. [depolama hizmet kalitesi](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 - [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)

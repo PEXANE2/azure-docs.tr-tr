@@ -1,7 +1,7 @@
 ---
 title: Hata ayıklama & ML işlem hatları sorunlarını giderme
 titleSuffix: Azure Machine Learning
-description: Python 'da Azure Machine Learning işlem hatlarınızı hata ayıklayın. İşlem hatları geliştirmek için ortak olan ve uzaktan yürütme sırasında ve betiklerinizde hata ayıklamanıza yardımcı olan ipuçları hakkında bilgi edinin.
+description: Python 'da Azure Machine Learning işlem hatlarınızı hata ayıklayın. Uzaktan yürütmeden önce ve sırasında betiklerinizde hata ayıklamanıza yardımcı olacak genel ve ipuçları hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python, contperfq2
-ms.openlocfilehash: 80bc5034e6e192c1b493a65e61b94ae1b785a430
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 13897f9881a8f505f0053443a218cf744d8edf8b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325607"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630116"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 

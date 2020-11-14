@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592932"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630269"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -66,7 +66,7 @@ Videoları karşıya yüklemek ve bir URL 'ye göre dizinlemek için [video yük
 
 ### <a name="configurations-and-params"></a>Yapılandırmalar ve parametreler
 
-Bu bölümde, isteğe bağlı parametrelerin bazıları ve ayarlanmalarının ne zaman gerekeceği açıklanmaktadır.
+Bu bölümde, isteğe bağlı parametrelerin bazıları ve ayarlanmalarının ne zaman gerekeceği açıklanmaktadır. En güncel params bilgileri için [karşıya yükleme videosu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 'sine bakın.
 
 #### <a name="externalid"></a>externalID 
 
@@ -337,7 +337,7 @@ public class AccountContractSlim
 
 Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 
-|Durum kodu|ErrorType (yanıt gövdesinde)|Description|
+|Durum kodu|ErrorType (yanıt gövdesinde)|Açıklama|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
 |400|VIDEO_ALREADY_FAILED|Bu videonun işlenmesi 2 saatten daha kısa bir süre önce aynı hesapta başarısız oldu. API istemcilerin videoyu yeniden yüklemek için en az 2 saat beklemesi gerekir.|

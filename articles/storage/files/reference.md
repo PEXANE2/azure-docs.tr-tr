@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014693"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629844"
 ---
 # <a name="azure-files-reference"></a>Azure Dosyalar başvurusu
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda, Azure dosyaları .NET API 'Leri için başvuru ve örnek b
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [.NET için Azure dosyaları istemci kitaplığı V12](/dotnet/api/overview/azure/storage.files.shares-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
-| 11. x | [Microsoft. Azure. Storage. File ad alanı](/dotnet/api/microsoft.azure.storage.file) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-dotnet-how-to-use-files) |
+| 11. x | [Microsoft. Azure. Storage. File ad alanı](/dotnet/api/microsoft.azure.storage.file) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET ile Azure Dosyaları için geliştirme](./storage-dotnet-how-to-use-files.md) |
 
 ### <a name="storage-management"></a>Depolama yönetimi
 
@@ -50,7 +50,7 @@ Aşağıdaki tabloda, Azure dosyaları Java API 'Leri için başvuru ve örnek b
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Java için Azure dosyaları istemci kitaplığı](/java/api/overview/azure/storage-file-share-readme) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
-| 8.x | [com. Microsoft. Azure. Storage. File](/java/api/com.microsoft.azure.storage.file) | [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-java-how-to-use-file-storage) |
+| 8.x | [com. Microsoft. Azure. Storage. File](/java/api/com.microsoft.azure.storage.file) | [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java ile Azure Dosyaları için geliştirme](./storage-java-how-to-use-file-storage.md) |
 
 ### <a name="storage-management"></a>Depolama yönetimi
 
@@ -67,7 +67,7 @@ Aşağıdaki tabloda, Azure dosyaları Python API 'Leri için başvuru ve örnek
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Örnekler](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python ile Azure Dosyaları için geliştirme](./storage-python-how-to-use-file-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript istemci kitaplıkları
 

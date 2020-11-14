@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 93dd73b5a9149474be771537f47b448c5c4d7d8f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486398"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629334"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,11 +26,11 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD etki alanı hizmet kim
 
 -   **Kerberos kimlik doğrulaması**
 
-    Kerberos, bir kullanıcının veya ana bilgisayarın kimliğini doğrulamak için kullanılan bir kimlik doğrulama protokolüdür. Kerberos hakkında daha fazla bilgi için bkz. [Kerberos kimlik doğrulamasına genel bakış](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview).
+    Kerberos, bir kullanıcının veya ana bilgisayarın kimliğini doğrulamak için kullanılan bir kimlik doğrulama protokolüdür. Kerberos hakkında daha fazla bilgi için bkz. [Kerberos kimlik doğrulamasına genel bakış](/windows-server/security/kerberos/kerberos-authentication-overview).
 
 -  **Sunucu Ileti bloğu (SMB) protokolü**
 
-    SMB, sektör standardı bir ağ dosya paylaşım protokolüdür. SMB, ortak Internet dosya sistemi veya CIFS olarak da bilinir. SMB hakkında daha fazla bilgi için bkz. [MICROSOFT SMB protokolü ve CIFS protokolüne genel bakış](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
+    SMB, sektör standardı bir ağ dosya paylaşım protokolüdür. SMB, ortak Internet dosya sistemi veya CIFS olarak da bilinir. SMB hakkında daha fazla bilgi için bkz. [MICROSOFT SMB protokolü ve CIFS protokolüne genel bakış](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
 
 -   **Azure Active Directory (Azure AD)**
 
@@ -42,7 +42,7 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD etki alanı hizmet kim
 
 - **Şirket içi Active Directory Domain Services (AD DS)**
 
-    Azure dosyaları ile şirket içi Active Directory Domain Services (AD DS) tümleştirmesi, ağ kullanıcıları ve yöneticiler tarafından kullanılabilir hale getirilmesi sırasında dizin verilerinin depolanması için yöntemler sağlar. Güvenlik, oturum açma kimlik doğrulaması ve dizindeki nesnelere erişim denetimi aracılığıyla AD DS tümleşiktir. Tek bir ağ oturumu açma ile yöneticiler, ağ genelinde dizin verilerini ve organizasyonu yönetebilir ve yetkili ağ kullanıcıları ağ üzerinde herhangi bir yerde kaynaklara erişebilir. AD DS genellikle şirket içi ortamlarda kuruluşlar tarafından benimsenmiştir ve erişim denetimi kimliği olarak AD DS kimlik bilgileri kullanılır. Daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+    Azure dosyaları ile şirket içi Active Directory Domain Services (AD DS) tümleştirmesi, ağ kullanıcıları ve yöneticiler tarafından kullanılabilir hale getirilmesi sırasında dizin verilerinin depolanması için yöntemler sağlar. Güvenlik, oturum açma kimlik doğrulaması ve dizindeki nesnelere erişim denetimi aracılığıyla AD DS tümleşiktir. Tek bir ağ oturumu açma ile yöneticiler, ağ genelinde dizin verilerini ve organizasyonu yönetebilir ve yetkili ağ kullanıcıları ağ üzerinde herhangi bir yerde kaynaklara erişebilir. AD DS genellikle şirket içi ortamlarda kuruluşlar tarafından benimsenmiştir ve erişim denetimi kimliği olarak AD DS kimlik bilgileri kullanılır. Daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 -   **Azure rol tabanlı erişim denetimi (Azure RBAC)**
 
@@ -116,7 +116,7 @@ Aşağıdaki diyagram, Azure AD DS kimlik doğrulaması için SMB üzerinden Azu
 
 - İkinci olarak, Azure AD 'de mevcut olan tüm kullanıcıların kimliği doğrulanabilir ve yetkilendirilenebilir. Kullanıcı yalnızca bulutta veya hibrit olabilir. Azure AD 'den Azure AD DS eşitleme, Kullanıcı yapılandırmasına gerek duymadan platform tarafından yönetilir. Ancak, istemcinin Azure AD DS etki alanına katılmış olması gerekir; Azure AD 'ye katılmış veya kayıtlı olamaz. 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="SMB üzerinden Azure dosya paylaşımlarına yönelik şirket içi AD DS kimlik doğrulamasını gösteren diyagram.":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diyagram":::
 
 ### <a name="enable-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulamasını etkinleştir
 
@@ -128,7 +128,7 @@ Azure AD DS veya şirket içi AD DS kimlik doğrulaması etkinleştirildikten so
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Azure dosyaları için dizin veya dosya düzeyi izinlerini yapılandırma
 
-Azure dosya paylaşımları, kök dizin dahil olmak üzere hem dizin hem de dosya düzeyinde standart Windows dosya izinlerini uygular. Dizin veya dosya düzeyi izinlerinin yapılandırılması hem SMB hem de REST üzerinde desteklenir. Hedef dosya paylaşımından sanal makineden bağlama yapın ve Windows Dosya Gezgini, Windows [ıacl 'leri](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) komutunu kullanarak izinleri yapılandırın.
+Azure dosya paylaşımları, kök dizin dahil olmak üzere hem dizin hem de dosya düzeyinde standart Windows dosya izinlerini uygular. Dizin veya dosya düzeyi izinlerinin yapılandırılması hem SMB hem de REST üzerinde desteklenir. Hedef dosya paylaşımından sanal makineden bağlama yapın ve Windows Dosya Gezgini, Windows [ıacl 'leri](/windows-server/administration/windows-commands/icacls)veya [set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) komutunu kullanarak izinleri yapılandırın.
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Süper Kullanıcı izinleri için depolama hesabı anahtarını kullan
 
@@ -139,7 +139,7 @@ Depolama hesabı anahtarına sahip bir Kullanıcı, Azure dosya paylaşımların
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Azure dosya paylaşımlarına veri aktarırken dizin ve dosya ACL 'Lerini koruma
 
-Azure dosyaları, verileri Azure dosya paylaşımlarına kopyalarken dizin veya dosya düzeyi ACL 'Lerinin korunması destekler. Bir dizin veya dosyadaki ACL 'Leri, Azure Dosya Eşitleme veya ortak dosya taşıma araç kümelerinden birini kullanarak Azure dosya paylaşımlarına kopyalayabilirsiniz. Örneğin, [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) `/copy:s` bir Azure dosya paylaşımındaki ACL 'leri ve verileri kopyalamak için, Robocopy 'yi bayrağıyla birlikte kullanabilirsiniz. ACL 'ler varsayılan olarak korunur, ACL 'Leri korumak için depolama hesabınızda kimlik tabanlı kimlik doğrulamasını etkinleştirmeniz gerekmez.
+Azure dosyaları, verileri Azure dosya paylaşımlarına kopyalarken dizin veya dosya düzeyi ACL 'Lerinin korunması destekler. Bir dizin veya dosyadaki ACL 'Leri, Azure Dosya Eşitleme veya ortak dosya taşıma araç kümelerinden birini kullanarak Azure dosya paylaşımlarına kopyalayabilirsiniz. Örneğin, [robocopy](/windows-server/administration/windows-commands/robocopy) `/copy:s` bir Azure dosya paylaşımındaki ACL 'leri ve verileri kopyalamak için, Robocopy 'yi bayrağıyla birlikte kullanabilirsiniz. ACL 'ler varsayılan olarak korunur, ACL 'Leri korumak için depolama hesabınızda kimlik tabanlı kimlik doğrulamasını etkinleştirmeniz gerekmez.
 
 ## <a name="pricing"></a>Fiyatlandırma
 Depolama hesabınızda SMB üzerinden kimlik tabanlı kimlik doğrulamasını etkinleştirmek için başka bir hizmet ücreti yoktur. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure dosyaları fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/files/) ve [Azure AD Domain Services fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-ds/).

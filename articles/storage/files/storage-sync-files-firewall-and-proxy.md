@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 95139c862b82a85dbf7f50aef021ad71c5c8210f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675788"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629453"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -109,14 +109,14 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
 İş sürekliliği ve olağanüstü durum kurtarma (BCDR) nedenleriyle Azure dosya paylaşımlarınızı küresel olarak yedekli (GRS) depolama hesabında belirtmiş olabilirsiniz. Böyle bir durum söz konusu ise, Azure dosya paylaşımlarınız, coğrafi bölge kesintisi durumunda eşleştirilmiş bölgeye yük devreder. Azure Dosya Eşitleme depolama ile aynı bölgesel eşleştirmeleri kullanır. Bu nedenle, GRS depolama hesapları kullanıyorsanız, sunucunuzun Azure Dosya Eşitleme eşleştirilmiş bölge ile iletişim kurmasına izin vermek için ek URL 'Ler etkinleştirmeniz gerekir. Aşağıdaki tablo bu "eşleştirilmiş bölgeyi" çağırır. Ayrıca, aynı zamanda etkinleştirilmesi gereken bir Traffic Manager profil URL 'SI vardır. Bu, ağ trafiğinin yük devretme olayında eşleştirilmiş bölgeye sorunsuz bir şekilde yeniden yönlendirilmesini ve aşağıdaki tabloda "keşif URL 'SI" olarak adlandırılmasına olanak sağlar.
 
-| Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
+| Bulut  | Region | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
 |--------|--------|----------------------|---------------|---------------|
 | Genel |Doğu Avustralya | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.Microsoft.com | Avustralya Güneydoğu | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.Microsoft.com |
 | Genel |Avustralya Güneydoğu | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-aus.One.Microsoft.com | Doğu Avustralya | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-aus.One.Microsoft.com |
 | Genel | Brezilya Güney | https: \/ /brazilsouth01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-brazilsouth01.AFS.Azure.net |
 | Genel | Orta Kanada | https: \/ /canadacentral01.AFS.Azure.net<br>https: \/ /Kailani-CAC.One.Microsoft.com | Doğu Kanada | https: \/ /TM-canadacentral01.AFS.Azure.net<br>https: \/ /TM-Kailani-CAC.One.Microsoft.com |
 | Genel | Doğu Kanada | https: \/ /canadaeast01.AFS.Azure.net<br>https: \/ /Kailani-CAE.One.Microsoft.com | Orta Kanada | https: \/ /TM-canadaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani.CAE.One.Microsoft.com |
-| Genel | Orta Hindistan | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.Microsoft.com | Güney Hindistan | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.Microsoft.com |
+| Genel | Central India | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.Microsoft.com | Güney Hindistan | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.Microsoft.com |
 | Genel | Central US | https: \/ /centralus01.AFS.Azure.net<br>https: \/ /Kailani-cus.One.Microsoft.com | Doğu ABD 2 | https: \/ /TM-centralus01.AFS.Azure.net<br>https: \/ /TM-Kailani-cus.One.Microsoft.com |
 | Genel | Doğu Asya | https: \/ /eastasia01.AFS.Azure.net<br>https: \/ /kailani11.One.Microsoft.com | Güneydoğu Asya | https: \/ /TM-eastasia01.AFS.Azure.net<br>https: \/ /TM-kailani11.One.Microsoft.com |
 | Genel | Doğu ABD | https: \/ /eastus01.AFS.Azure.net<br>https: \/ /kailani1.One.Microsoft.com | Batı ABD | https: \/ /TM-eastus01.AFS.Azure.net<br>https: \/ /TM-kailani1.One.Microsoft.com |
@@ -130,7 +130,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | Genel | Orta Kuzey ABD | https: \/ /northcentralus01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-northcentralus01.AFS.Azure.net |
 | Genel | Kuzey Avrupa | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.Microsoft.com | West Europe | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.Microsoft.com |
 | Genel | Orta Güney ABD | https: \/ /southcentralus01.AFS.Azure.net | Orta Kuzey ABD | https: \/ /TM-southcentralus01.AFS.Azure.net |
-| Genel | Güney Hindistan | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Orta Hindistan | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
+| Genel | Güney Hindistan | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Central India | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
 | Genel | Güneydoğu Asya | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.Microsoft.com | Doğu Asya | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.Microsoft.com |
 | Genel | Güney Birleşik Krallık | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKS.One.Microsoft.com | Batı Birleşik Krallık | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKS.One.Microsoft.com |
 | Genel | Batı Birleşik Krallık | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-UKW.One.Microsoft.com | Güney Birleşik Krallık | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKW.One.Microsoft.com |
@@ -154,7 +154,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure Dosya Eşitleme IP adresleri listesine izin ver
 Azure Dosya Eşitleme, belirli bir Azure hizmeti için bir IP adresi önekleri grubunu temsil eden [hizmet etiketlerinin](../../virtual-network/service-tags-overview.md)kullanımını destekler. Hizmet etiketlerini, Azure Dosya Eşitleme hizmetiyle iletişimi etkinleştiren güvenlik duvarı kuralları oluşturmak için kullanabilirsiniz. Azure Dosya Eşitleme için hizmet etiketi `StorageSyncService` .
 
-Azure içinde Azure Dosya Eşitleme kullanıyorsanız, trafiğe izin vermek için hizmet etiketinin adını doğrudan ağ güvenlik grubunuzda kullanabilirsiniz. Bunun nasıl yapılacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../../virtual-network/security-overview.md).
+Azure içinde Azure Dosya Eşitleme kullanıyorsanız, trafiğe izin vermek için hizmet etiketinin adını doğrudan ağ güvenlik grubunuzda kullanabilirsiniz. Bunun nasıl yapılacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../../virtual-network/network-security-groups-overview.md).
 
 Şirket içi Azure Dosya Eşitleme kullanıyorsanız, güvenlik duvarınızın izin verilenler listenize belirli IP adresi aralıklarını almak için hizmet etiketi API 'sini kullanabilirsiniz. Bu bilgileri almak için iki yöntem vardır:
 
@@ -164,9 +164,9 @@ Azure içinde Azure Dosya Eşitleme kullanıyorsanız, trafiğe izin vermek içi
     - [Azure Çin](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Almanya](https://www.microsoft.com/download/details.aspx?id=57064)
 - Hizmet etiketi bulma API 'SI (Önizleme), geçerli hizmet etiketleri listesinin programlı olarak alınmasına izin verir. Önizleme aşamasında hizmet etiketi bulma API 'SI, Microsoft Indirme Merkezi ' nde yayınlanan JSON belgelerinden daha az güncel bilgiler döndürebilir. Otomasyon tercihinizi temel alarak API yüzeyini kullanabilirsiniz:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 Hizmet etiketi bulma API 'SI, Microsoft Indirme merkezi 'nde yayınlanan JSON belgeleri kadar sık güncelleştirilemediğinden, şirket içi güvenlik duvarınızın izin verilenler listesini güncelleştirmek için JSON belgesini kullanmanızı öneririz. Bu, aşağıdaki gibi yapılabilir:
 

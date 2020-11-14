@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 14fd5378f37ebfc20b2d7084c08f15ea8f7a00b2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394263"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630541"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Tanılama ayarları aracılığıyla FHIR için Azure IoT Bağlayıcısı (önizleme) Ölçümlerini dışarı aktarma
 
-Bu makalede, FHıR * ölçüm günlükleri için Azure IoT bağlayıcısını nasıl dışarı aktaracağınızı öğreneceksiniz. Ölçüm günlüğünü etkinleştirme özelliği, Azure portal [**Tanılama ayarlarınızdaki**](../azure-monitor/platform/diagnostic-settings.md) bir özelliktir. 
+Bu makalede, hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR&#174;) * ölçüm günlükleri için Azure IoT bağlayıcısını dışarı aktarmayı öğreneceksiniz. Ölçüm günlüğünü etkinleştirme özelliği, Azure portal [**Tanılama ayarlarınızdaki**](../azure-monitor/platform/diagnostic-settings.md) bir özelliktir. 
 
 > [!TIP]
 > Denetim günlüğünü ayarlamak için [fhır Için Azure API ve FHıR Için Azure IoT Bağlayıcısı ' nda tanılama günlüğünü etkinleştirme](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) ' deki yönergeleri izleyin.
@@ -41,7 +41,7 @@ Bu makalede, FHıR * ölçüm günlükleri için Azure IoT bağlayıcısını na
 
 6. FHıR için Azure IoT Bağlayıcısı için **hataları, trafiği ve gecikmeyi** seçin.  FHıR için Azure API 'SI için yakalamak istediğiniz ek ölçüm kategorilerini seçin.
 
-7. **Kaydet** 'i seçin
+7. **Kaydet** ’i seçin
 
    :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
 
@@ -60,6 +60,4 @@ FHıR için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın
 >[!div class="nextstepaction"]
 >[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md)
 
-* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
-
-FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır. FHıR, HL7 'in tescilli ticari markasıdır ve HL7 izniyle kullanılır.

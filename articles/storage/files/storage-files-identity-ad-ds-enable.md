@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 6251894018ceeb2a99ebb62939b6e446fea825a2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220729"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630405"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Birinci kısım: Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirme 
 
@@ -28,20 +28,20 @@ AzFilesHybrid PowerShell modülündeki cmdlet 'ler gerekli değişiklikleri yapa
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid modülünü indir
 
-- [AzFilesHybrid modülünü indir ve sıkıştırmayı aç (GA modülü: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) AES 256 Kerberos şifrelemesi 'nin v 0.2.2 veya üzeri sürümlerde desteklendiğini unutmayın. Özelliği v 0.2.2 'nin altında bir AzFilesHybrid sürümü ile etkinleştirdiyseniz ve AES 256 Kerberos şifrelemesini destekleyecek şekilde güncelleştirmek istiyorsanız lütfen [Bu makaleye](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)başvurun. 
+- [AzFilesHybrid modülünü indir ve sıkıştırmayı aç (GA modülü: v 0.2.0 +)](https://github.com/Azure-Samples/azure-files-samples/releases) AES 256 Kerberos şifrelemesi 'nin v 0.2.2 veya üzeri sürümlerde desteklendiğini unutmayın. Özelliği v 0.2.2 'nin altında bir AzFilesHybrid sürümü ile etkinleştirdiyseniz ve AES 256 Kerberos şifrelemesini destekleyecek şekilde güncelleştirmek istiyorsanız lütfen [Bu makaleye](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)başvurun. 
 - Bir hizmet oturum açma hesabı veya hedef AD 'de bilgisayar hesabı oluşturma izinlerine sahip AD DS kimlik bilgileri ile şirket içi AD DS etki alanına katılmış bir cihaza modül yükleyip yürütün.
 -  Azure AD 'niz ile eşitlenen şirket içi AD DS kimlik bilgilerini kullanarak betiği çalıştırın. Şirket içi AD DS kimlik bilgisinin depolama hesabı sahibi ya da katkıda bulunan Azure rolü izinleri olmalıdır.
 
 ### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth Çalıştır
 
-`Join-AzStorageAccountForAuth`Cmdlet 'i, belirtilen depolama hesabı adına bir çevrimdışı etki alanına birleştirmenin eşdeğerini gerçekleştirir. Betik, AD etki alanında bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) oluşturmak için cmdlet 'ini kullanır. Herhangi bir nedenle bir bilgisayar hesabını kullanmıyorsanız, bunun yerine bir [hizmet oturum açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) oluşturmak için betiği değiştirebilirsiniz. Komutu el ile çalıştırmayı seçerseniz, ortamınız için en uygun hesabı seçmeniz gerekir.
+`Join-AzStorageAccountForAuth`Cmdlet 'i, belirtilen depolama hesabı adına bir çevrimdışı etki alanına birleştirmenin eşdeğerini gerçekleştirir. Betik, AD etki alanında bir [bilgisayar hesabı](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) oluşturmak için cmdlet 'ini kullanır. Herhangi bir nedenle bir bilgisayar hesabını kullanmıyorsanız, bunun yerine bir [hizmet oturum açma hesabı](/windows/win32/ad/about-service-logon-accounts) oluşturmak için betiği değiştirebilirsiniz. Komutu el ile çalıştırmayı seçerseniz, ortamınız için en uygun hesabı seçmeniz gerekir.
 
 Cmdlet tarafından oluşturulan AD DS hesabı depolama hesabını temsil eder. AD DS hesabı parola süre sonunu zorlayan bir kuruluş birimi (OU) altında oluşturulduysa, en fazla parola geçerlilik süresi dolmadan parolayı güncelleştirmeniz gerekir. Bu tarihten önce hesap parolasının güncelleştirilmesi, Azure dosya paylaşımlarına erişirken kimlik doğrulama hatalarıyla sonuçlanır. Parolayı güncelleştirme hakkında bilgi edinmek için bkz. [AD DS hesabı parolasını güncelleştirme](storage-files-identity-ad-ds-update-password.md).
 
 Yer tutucu değerlerini, PowerShell 'de yürütmeden önce aşağıdaki parametrelerinizle değiştirin.
 > [!IMPORTANT]
-> Etki alanı JOIN cmdlet 'i, AD 'de depolama hesabını (dosya paylaşma) temsil edecek bir AD hesabı oluşturur. Bilgisayar hesabı veya hizmet oturum açma hesabı olarak kaydetmeyi seçebilirsiniz, Ayrıntılar için bkz. [SSS](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control) . Bilgisayar hesapları için, en az 30 gün içinde AD 'de ayarlanmış bir varsayılan parola süre sonu yaşı vardır. Benzer şekilde, hizmet oturum açma hesabının, AD etki alanı veya kuruluş birimi (OU) için varsayılan parola süre sonu yaşı ayarlanmış olabilir.
-> Her iki hesap türü için, AD ortamınızda yapılandırılan parola süre sonu yaşını kontrol etmenizi ve en fazla parola geçerlilik süresinden önce AD hesabının [depolama hesabı kimliğinin parolasını güncelleştirmeyi](storage-files-identity-ad-ds-update-password.md) planlamanız önerilir. [Ad 'de yeni BIR ad kuruluş birimi (OU) oluşturmayı](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ve [bilgisayar hesaplarında](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) veya hizmet oturum açma hesaplarının parola süre sonu ilkesini buna uygun olarak devre dışı bırakmayı düşünebilirsiniz. 
+> Etki alanı JOIN cmdlet 'i, AD 'de depolama hesabını (dosya paylaşma) temsil edecek bir AD hesabı oluşturur. Bilgisayar hesabı veya hizmet oturum açma hesabı olarak kaydetmeyi seçebilirsiniz, Ayrıntılar için bkz. [SSS](./storage-files-faq.md#security-authentication-and-access-control) . Bilgisayar hesapları için, en az 30 gün içinde AD 'de ayarlanmış bir varsayılan parola süre sonu yaşı vardır. Benzer şekilde, hizmet oturum açma hesabının, AD etki alanı veya kuruluş birimi (OU) için varsayılan parola süre sonu yaşı ayarlanmış olabilir.
+> Her iki hesap türü için, AD ortamınızda yapılandırılan parola süre sonu yaşını kontrol etmenizi ve en fazla parola geçerlilik süresinden önce AD hesabının [depolama hesabı kimliğinin parolasını güncelleştirmeyi](storage-files-identity-ad-ds-update-password.md) planlamanız önerilir. [Ad 'de yeni BIR ad kuruluş birimi (OU) oluşturmayı](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ve [bilgisayar hesaplarında](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) veya hizmet oturum açma hesaplarının parola süre sonu ilkesini buna uygun olarak devre dışı bırakmayı düşünebilirsiniz. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>Ortam denetleniyor
 
-İlk olarak, ortamınızın durumunu denetlemeniz gerekir. Özellikle, [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) 'in yüklenip yüklenmediğini ve kabuğun yönetici ayrıcalıklarıyla yürütülüp yürütüldüğünden emin olmalısınız. Daha sonra [Az.Storage 2.0 modülünün](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) yüklenip yüklenmediğine bakın ve yüklü değilse yükleyin. Bu denetimleri tamamladıktan sonra, SPN/UPN ile "CIFS/sizin-depolama hesabı-adı-burada. File. Core. Windows. net" olarak zaten oluşturulmuş bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) olup olmadığını görmek için AD DS denetleyin. Hesap yoksa, aşağıdaki bölümde açıklandığı gibi bir tane oluşturun.
+İlk olarak, ortamınızın durumunu denetlemeniz gerekir. Özellikle, [Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) 'in yüklenip yüklenmediğini ve kabuğun yönetici ayrıcalıklarıyla yürütülüp yürütüldüğünden emin olmalısınız. Daha sonra [Az.Storage 2.0 modülünün](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) yüklenip yüklenmediğine bakın ve yüklü değilse yükleyin. Bu denetimleri tamamladıktan sonra, SPN/UPN ile "CIFS/sizin-depolama hesabı-adı-burada. File. Core. Windows. net" olarak zaten oluşturulmuş bir [bilgisayar hesabı](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabı](/windows/win32/ad/about-service-logon-accounts) olup olmadığını görmek için AD DS denetleyin. Hesap yoksa, aşağıdaki bölümde açıklandığı gibi bir tane oluşturun.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD içinde depolama hesabını el ile temsil eden bir kimlik oluşturma
 

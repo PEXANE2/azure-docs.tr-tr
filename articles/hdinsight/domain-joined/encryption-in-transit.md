@@ -7,19 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628992"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630371"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight için iletim sırasında IPSec şifrelemesi
 
 Bu makalede, Azure HDInsight küme düğümleri arasındaki iletişim için iletim sırasında Şifrelemenin uygulanması ele alınmaktadır.
-
-> [!Note]
-> Şu bölgeler için aktarım sırasında şifreleme Şu anda etkin: Doğu ABD, Orta Güney ABD, Batı ABD2.
 
 ## <a name="background"></a>Arka Plan
 
@@ -42,7 +39,7 @@ Azure portal kullanarak geçiş özelliği etkinken şifreleme ile yeni bir küm
 
 1. **Güvenlik + ağ** sekmesinde, **Transit şifrelemeyi etkinleştir** onay kutusunu seçin.
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Küme oluşturma-güvenlik ve ağ sekmesi.":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Küme oluşturma-geçiş sırasında şifrelemeyi etkinleştirin.":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Azure CLı aracılığıyla etkinleştirilen geçişte şifreleme ile küme oluşturma
 

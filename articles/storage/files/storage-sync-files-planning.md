@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b29565e18b2da2087cc15966b30b433a42fb603
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441108"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629810"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -30,22 +30,22 @@ ms.locfileid: "89441108"
 
 Dosyalar [Azure dosya paylaşımlarında](storage-files-introduction.md)bulutta depolanır. Azure dosya paylaşımları iki şekilde kullanılabilir: Bu sunucusuz Azure dosya paylaşımlarını (SMB) doğrudan bağlayarak veya Azure Dosya Eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için plan yaparken göz önünde bulundurmanız gereken yönleri değiştirir. 
 
-- **Azure dosya paylaşımının doğrudan bağlanması**: Azure dosyaları SMB erişimi sağladığından, Windows, MacOS ve Linux 'ta bulunan standart SMB istemcisini kullanarak şirket içinde veya bulutta Azure dosya paylaşımlarını bağlayabilirsiniz. Azure dosya paylaşımları sunucusuz olduğundan, üretim senaryolarına yönelik dağıtım, bir dosya sunucusu veya NAS cihazının yönetilmesini gerektirmez. Bu, yazılım düzeltme ekleri uygulamanız veya fiziksel diskleri takas etmeniz gerekmediği anlamına gelir. 
+- **Azure dosya paylaşımının doğrudan bağlanması** : Azure dosyaları SMB erişimi sağladığından, Windows, MacOS ve Linux 'ta bulunan standart SMB istemcisini kullanarak şirket içinde veya bulutta Azure dosya paylaşımlarını bağlayabilirsiniz. Azure dosya paylaşımları sunucusuz olduğundan, üretim senaryolarına yönelik dağıtım, bir dosya sunucusu veya NAS cihazının yönetilmesini gerektirmez. Bu, yazılım düzeltme ekleri uygulamanız veya fiziksel diskleri takas etmeniz gerekmediği anlamına gelir. 
 
-- **Şirket Içi Azure dosya paylaşımını Azure dosya eşitleme Ile önbelleğe alma**: Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu mümkün tutmaya olanak sağlar. Azure Dosya Eşitleme, şirket içi (veya bulut) Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. 
+- **Şirket Içi Azure dosya paylaşımını Azure dosya eşitleme Ile önbelleğe alma** : Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu mümkün tutmaya olanak sağlar. Azure Dosya Eşitleme, şirket içi (veya bulut) Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelleğine dönüştürür. 
 
 ## <a name="management-concepts"></a>Yönetim kavramları
 Azure Dosya Eşitleme dağıtımı üç temel Yönetim nesnesine sahiptir:
 
-- **Azure dosya paylaşma**: bir Azure dosya paylaşma, bir Azure dosya eşitleme eşitleme ilişkisinin *bulut uç noktasını* sağlayan sunucusuz bir bulut dosyası paylaşımıdır. Azure dosya paylaşımında bulunan dosyalara doğrudan SMB veya FileREST protokolüyle erişilebilir, ancak Azure dosya paylaşımının Azure Dosya Eşitleme ile kullanıldığı durumlarda dosyalara Windows Server önbelleği üzerinden erişmenizi öneririz. Bunun nedeni, bugün Azure dosyalarının Windows Server gibi etkili bir değişiklik algılama mekanizmasına sahip olmadığı için, Azure dosya paylaşımında doğrudan değişikliklerin sunucu uç noktalarına geri yayılması zaman alır.
-- **Sunucu uç noktası**: bir Azure dosya paylaşımıyla eşitlenen Windows Server 'ın yolu. Bu bir birimde veya birimin kökünde belirli bir klasör olabilir. Aynı birimde, ad alanları çakışmazsa birden çok sunucu uç noktası bulunabilir.
-- **Eşitleme grubu**: bir **bulut uç noktası**veya Azure dosya paylaşımıyla bir sunucu uç noktası arasındaki eşitleme ilişkisini tanımlayan nesne. Bir eşitleme grubu içindeki uç noktalar, birbiriyle eşitlenmiş durumda tutulur. Örneğin, Azure Dosya Eşitleme ile yönetmek istediğiniz iki farklı dosya kümesine sahipseniz, iki eşitleme grubu oluşturur ve her bir eşitleme grubuna farklı uç noktalar eklersiniz.
+- **Azure dosya paylaşma** : bir Azure dosya paylaşma, bir Azure dosya eşitleme eşitleme ilişkisinin *bulut uç noktasını* sağlayan sunucusuz bir bulut dosyası paylaşımıdır. Azure dosya paylaşımında bulunan dosyalara doğrudan SMB veya FileREST protokolüyle erişilebilir, ancak Azure dosya paylaşımının Azure Dosya Eşitleme ile kullanıldığı durumlarda dosyalara Windows Server önbelleği üzerinden erişmenizi öneririz. Bunun nedeni, bugün Azure dosyalarının Windows Server gibi etkili bir değişiklik algılama mekanizmasına sahip olmadığı için, Azure dosya paylaşımında doğrudan değişikliklerin sunucu uç noktalarına geri yayılması zaman alır.
+- **Sunucu uç noktası** : bir Azure dosya paylaşımıyla eşitlenen Windows Server 'ın yolu. Bu bir birimde veya birimin kökünde belirli bir klasör olabilir. Aynı birimde, ad alanları çakışmazsa birden çok sunucu uç noktası bulunabilir.
+- **Eşitleme grubu** : bir **bulut uç noktası** veya Azure dosya paylaşımıyla bir sunucu uç noktası arasındaki eşitleme ilişkisini tanımlayan nesne. Bir eşitleme grubu içindeki uç noktalar, birbiriyle eşitlenmiş durumda tutulur. Örneğin, Azure Dosya Eşitleme ile yönetmek istediğiniz iki farklı dosya kümesine sahipseniz, iki eşitleme grubu oluşturur ve her bir eşitleme grubuna farklı uç noktalar eklersiniz.
 
 ### <a name="azure-file-share-management-concepts"></a>Azure dosya paylaşma yönetim kavramları
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
 ### <a name="azure-file-sync-management-concepts"></a>Azure Dosya Eşitleme yönetim kavramları
-Eşitleme grupları, Azure Dosya Eşitleme ile kullanım için sunucuları kaydeden ve eşitleme grubu ilişkilerini içeren en üst düzey nesneler olan **depolama Eşitleme Hizmetleri**' ne dağıtılır. Depolama eşitleme hizmeti kaynağı, depolama hesabı kaynağının bir eşledir ve benzer şekilde Azure Kaynak gruplarına dağıtılabilir. Depolama eşitleme hizmeti, birden çok depolama hesabı ve birden çok kayıtlı Windows sunucusu arasında Azure dosya paylaşımları içeren eşitleme grupları oluşturabilir.
+Eşitleme grupları, Azure Dosya Eşitleme ile kullanım için sunucuları kaydeden ve eşitleme grubu ilişkilerini içeren en üst düzey nesneler olan **depolama Eşitleme Hizmetleri** ' ne dağıtılır. Depolama eşitleme hizmeti kaynağı, depolama hesabı kaynağının bir eşledir ve benzer şekilde Azure Kaynak gruplarına dağıtılabilir. Depolama eşitleme hizmeti, birden çok depolama hesabı ve birden çok kayıtlı Windows sunucusu arasında Azure dosya paylaşımları içeren eşitleme grupları oluşturabilir.
 
 Bir depolama eşitleme hizmetinde bir eşitleme grubu oluşturabilmeniz için önce depolama eşitleme hizmeti ile bir Windows Server kaydetmelisiniz. Bu, sunucunuz veya kümeniz ile depolama eşitleme hizmeti arasındaki bir güven ilişkisini temsil eden **kayıtlı bir sunucu** nesnesi oluşturur. Bir depolama eşitleme hizmeti kaydetmek için öncelikle sunucuya Azure Dosya Eşitleme aracısını yüklemeniz gerekir. Tek bir sunucu veya küme, aynı anda yalnızca bir depolama eşitleme hizmeti ile kaydedilebilir.
 
@@ -115,7 +115,7 @@ Aşağıdaki tabloda, ortalama dosya boyutu 512 KiB olduğunda, ad alanının bo
 ### <a name="evaluation-cmdlet"></a>Değerlendirme cmdlet 'i
 Azure Dosya Eşitleme dağıtılmadan önce, Azure Dosya Eşitleme değerlendirme cmdlet 'ini kullanarak sistem ile uyumlu olup olmadığını değerlendirmelisiniz. Bu cmdlet, dosya sisteminiz ve veri kümeniz ile desteklenmeyen karakterler veya desteklenmeyen bir işletim sistemi sürümü gibi olası sorunları denetler. Denetimleri, aşağıda bahsedilen özelliklerinin çoğunu kapsar; dağıtımınızın sorunsuz bir şekilde çalışmasını sağlamak için bu bölümün geri kalanını dikkatle okumanız önerilir. 
 
-Değerlendirme cmdlet 'i, buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülünün yüklenerek yüklenebilir: [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+Değerlendirme cmdlet 'i, buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülünün yüklenerek yüklenebilir: [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/install-Az-ps).
 
 #### <a name="usage"></a>Kullanım  
 Değerlendirme aracını birkaç farklı şekilde çağırabilirsiniz: sistem denetimleri, veri kümesi denetimleri veya her ikisini de yapabilirsiniz. Hem sistem hem de veri kümesi denetimleri gerçekleştirmek için: 
@@ -147,7 +147,7 @@ Yalnızca NTFS birimleri desteklenir; ReFS, FAT, FAT32 ve diğer dosya sistemler
 
 Aşağıdaki tabloda NTFS dosya sistemi özelliklerinin birlikte çalışma durumu gösterilmektedir: 
 
-| Özellik | Destek durumu | Notlar |
+| Öne çıkan özelliği | Destek durumu | Notlar |
 |---------|----------------|-------|
 | Erişim denetim listeleri (ACL’ler) | Tam olarak destekleniyor | Windows stili isteğe bağlı erişim denetim listeleri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Azure dosya paylaşımının doğrudan bağlanması sırasında ACL 'Ler de zorlanabilir, ancak bunun için ek yapılandırma gerekir. Daha fazla bilgi için [kimlik bölümüne](#identity) bakın. |
 | Sabit bağlantılar | Atlandı | |
@@ -200,7 +200,7 @@ Azure Dosya Eşitleme, Windows Server 2012 R2 'deki aynı birimde yinelenen veri
 - Bulut katmanlaması etkinleştirildikten sonra bir birimde yinelenen verileri kaldırma etkinleştirilmişse, ilk yinelenenleri kaldırma iyileştirme işi, zaten katmanlı olmayan ve bulut katmanlaması üzerinde aşağıdaki etkiye sahip olan dosyaları en iyi duruma getirir:
     - Boş alan ilkesi, heatmap kullanarak birimdeki boş alana göre dosyaları katmana devam edecektir.
     - Tarih ilkesi, dosyalara erişirken yinelenenleri kaldırma iyileştirme işi nedeniyle katmanlama için uygun olabilecek dosyaların katmanlamasını atlar.
-- Devam eden yinelenenleri kaldırma iyileştirme işleri için, dosya zaten katmanlı değilse, tarih ilkesiyle bulut katmanlaması, yinelenen verileri kaldırma [Minimumfileagedays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) ayarı tarafından gecikilir. 
+- Devam eden yinelenenleri kaldırma iyileştirme işleri için, dosya zaten katmanlı değilse, tarih ilkesiyle bulut katmanlaması, yinelenen verileri kaldırma [Minimumfileagedays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps) ayarı tarafından gecikilir. 
     - Örnek: MinimumFileAgeDays ayarı yedi gün, bulut katmanlama tarihi ilkesi ise 30 gün ise, tarih ilkesi dosyaları 37 gün sonra katman olarak alır.
     - Note: bir dosya Azure Dosya Eşitleme göre katmanlandıktan sonra, yinelenenleri kaldırma iyileştirme işi dosyayı atlar.
 - Azure Dosya Eşitleme Aracısı yüklü Windows Server 2012 R2 çalıştıran bir sunucu Windows Server 2016 veya Windows Server 2019 ' ye yükseltilirse, yinelenen verileri kaldırma ve bulut katmanlaması desteği için aşağıdaki adımlar gerçekleştirilmelidir:  
@@ -213,9 +213,9 @@ Azure Dosya Eşitleme, Windows Server 2012 R2 'deki aynı birimde yinelenen veri
 ### <a name="distributed-file-system-dfs"></a>Dağıtılmış Dosya Sistemi (DFS)
 Azure Dosya Eşitleme, DFS ad alanları (DFS-N) ve DFS Çoğaltma (DFS-R) ile birlikte çalışabilirliği destekler.
 
-**DFS ad alanları (DFS-n)**: Azure dosya EŞITLEME, DFS-N sunucularında tam olarak desteklenir. Sunucu uç noktaları ve bulut uç noktası arasında veri eşitlemek için Azure Dosya Eşitleme aracısını bir veya daha fazla DFS-N üyesine yükleyebilirsiniz. Daha fazla bilgi için bkz. [DFS ad alanlarına genel bakış](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**DFS ad alanları (DFS-n)** : Azure dosya EŞITLEME, DFS-N sunucularında tam olarak desteklenir. Sunucu uç noktaları ve bulut uç noktası arasında veri eşitlemek için Azure Dosya Eşitleme aracısını bir veya daha fazla DFS-N üyesine yükleyebilirsiniz. Daha fazla bilgi için bkz. [DFS ad alanlarına genel bakış](/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**DFS çoğaltma (DFS-r)**: DFS-r ve Azure dosya eşitleme her ikisi de çoğaltma çözümleri olduğundan, çoğu durumda DFS-r 'yi Azure dosya eşitleme değiştirmeniz önerilir. DFS-R ve Azure Dosya Eşitleme kullanmak istediğiniz birkaç senaryo vardır:
+**DFS çoğaltma (DFS-r)** : DFS-r ve Azure dosya eşitleme her ikisi de çoğaltma çözümleri olduğundan, çoğu durumda DFS-r 'yi Azure dosya eşitleme değiştirmeniz önerilir. DFS-R ve Azure Dosya Eşitleme kullanmak istediğiniz birkaç senaryo vardır:
 
 - Bir DFS-R dağıtımından Azure Dosya Eşitleme dağıtımına geçiriyoruz. Daha fazla bilgi için, [DFS çoğaltma (DFS-R) dağıtımını Azure dosya eşitleme geçirme](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync)konusuna bakın.
 - Dosya verilerinizin bir kopyasına ihtiyaç duymayan her şirket içi sunucu, doğrudan internet 'e bağlanabilir.
@@ -226,7 +226,7 @@ Azure Dosya Eşitleme ve DFS-R 'nin yan yana çalışması için:
 1. Azure Dosya Eşitleme bulut katmanlaması, DFS-R çoğaltılan klasörlerine sahip birimlerde devre dışı bırakılmalıdır.
 2. Sunucu uç noktaları, DFS-R salt okuma çoğaltma klasörlerinde yapılandırılmamalıdır.
 
-Daha fazla bilgi için bkz. [DFS çoğaltma genel bakış](https://technet.microsoft.com/library/jj127250).
+Daha fazla bilgi için bkz. [DFS çoğaltma genel bakış](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj127250(v=ws.11)).
 
 ### <a name="sysprep"></a>Sysprep
 Azure Dosya Eşitleme aracısının yüklü olduğu bir sunucuda Sysprep kullanılması desteklenmez ve beklenmeyen sonuçlara yol açabilir. Aracı yüklemesi ve sunucu kaydı, sunucu görüntüsünü dağıttıktan ve Sysprep Mini Kurulumu tamamlandıktan sonra gerçekleşmelidir.
@@ -263,7 +263,7 @@ Azure Dosya Eşitleme kullanırken göz önünde bulundurmanız gereken üç far
 ### <a name="windows-server-encryption-at-rest"></a>Bekleyen Windows Server şifrelemesi 
 Windows Server 'daki verileri şifrelemek için genellikle Azure Dosya Eşitleme: dosya sistemi ve dosyaya yazılan tüm verilerin şifrelenme ve dosya biçimi içinde şifreleme gibi dosya sisteminin altında şifreleme olmak üzere iki strateji vardır. Bu yöntemler birbirini dışlamalı değildir; şifreleme amacı farklı olduğundan, istenirse birlikte kullanılabilir.
 
-Dosya sisteminin altında şifreleme sağlamak için, Windows Server, BitLocker gelen kutusu sağlar. BitLocker Azure Dosya Eşitleme için tamamen saydamdır. BitLocker gibi bir şifreleme mekanizması kullanmanın birincil nedeni, diskleri çalmaya ve yetkisiz bir işletim sisteminin verilerinize yetkisiz okuma/yazma işlemleri gerçekleştirmesini önlemek için, şirket içi veri merkezinizden verileri fiziksel olarak alma işlemini önlemektir. BitLocker hakkında daha fazla bilgi edinmek için bkz. [BitLocker genel bakış](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview).
+Dosya sisteminin altında şifreleme sağlamak için, Windows Server, BitLocker gelen kutusu sağlar. BitLocker Azure Dosya Eşitleme için tamamen saydamdır. BitLocker gibi bir şifreleme mekanizması kullanmanın birincil nedeni, diskleri çalmaya ve yetkisiz bir işletim sisteminin verilerinize yetkisiz okuma/yazma işlemleri gerçekleştirmesini önlemek için, şirket içi veri merkezinizden verileri fiziksel olarak alma işlemini önlemektir. BitLocker hakkında daha fazla bilgi edinmek için bkz. [BitLocker genel bakış](/windows/security/information-protection/bitlocker/bitlocker-overview).
 
 BitLocker 'a benzer şekilde çalışan üçüncü taraf ürünleri, NTFS biriminin altına oturduklarında, benzer şekilde Azure Dosya Eşitleme ile tamamen saydam şekilde çalışır. 
 
@@ -303,37 +303,37 @@ Azure Dosya Eşitleme, aşağıdaki bölgelerde kullanılabilir:
 
 | Azure bulut | Coğrafi bölge | Azure bölgesi | Bölge kodu |
 |-------------|-------------------|--------------|-------------|
-| Ortak | Asya | Doğu Asya | `eastasia` |
-| Ortak | Asya | Güneydoğu Asya | `southeastasia` |
-| Ortak | Avustralya | Doğu Avustralya | `australiaeast` |
-| Ortak | Avustralya | Avustralya Güneydoğu | `australiasoutheast` |
-| Ortak | Brezilya | Brezilya Güney | `brazilsouth` |
-| Ortak | Kanada | Orta Kanada | `canadacentral` |
-| Ortak | Kanada | Doğu Kanada | `canadaeast` |
-| Ortak | Avrupa | Kuzey Avrupa | `northeurope` |
-| Ortak | Avrupa | West Europe | `westeurope` |
-| Ortak | Fransa | Orta Fransa | `francecentral` |
-| Ortak | Fransa | Fransa Güney * | `francesouth` |
-| Ortak | Hindistan | Orta Hindistan | `centralindia` |
-| Ortak | Hindistan | Güney Hindistan | `southindia` |
-| Ortak | Japonya | Doğu Japonya | `japaneast` |
-| Ortak | Japonya | Batı Japonya | `japanwest` |
-| Ortak | Güney Kore | Güney Kore - Orta | `koreacentral` |
-| Ortak | Güney Kore | Güney Kore - Güney | `koreasouth` |
-| Ortak | Güney Afrika | Güney Afrika Kuzey | `southafricanorth` |
-| Ortak | Güney Afrika | Güney Afrika Batı * | `southafricawest` |
-| Ortak | BAE | BAE Orta * | `uaecentral` |
-| Ortak | BAE | BAE Kuzey | `uaenorth` |
-| Ortak | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
-| Ortak | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
-| Ortak | ABD | Central US | `centralus` |
-| Ortak | ABD | Doğu ABD | `eastus` |
-| Ortak | ABD | Doğu ABD 2 | `eastus2` |
-| Ortak | ABD | Orta Kuzey ABD | `northcentralus` |
-| Ortak | ABD | Orta Güney ABD | `southcentralus` |
-| Ortak | ABD | Orta Batı ABD | `westcentralus` |
-| Ortak | ABD | Batı ABD | `westus` |
-| Ortak | ABD | Batı ABD 2 | `westus2` |
+| Genel | Asya | Doğu Asya | `eastasia` |
+| Genel | Asya | Güneydoğu Asya | `southeastasia` |
+| Genel | Avustralya | Doğu Avustralya | `australiaeast` |
+| Genel | Avustralya | Avustralya Güneydoğu | `australiasoutheast` |
+| Genel | Brezilya | Brezilya Güney | `brazilsouth` |
+| Genel | Kanada | Orta Kanada | `canadacentral` |
+| Genel | Kanada | Doğu Kanada | `canadaeast` |
+| Genel | Avrupa | Kuzey Avrupa | `northeurope` |
+| Genel | Avrupa | West Europe | `westeurope` |
+| Genel | Fransa | Orta Fransa | `francecentral` |
+| Genel | Fransa | Fransa Güney * | `francesouth` |
+| Genel | Hindistan | Central India | `centralindia` |
+| Genel | Hindistan | Güney Hindistan | `southindia` |
+| Genel | Japonya | Doğu Japonya | `japaneast` |
+| Genel | Japonya | Batı Japonya | `japanwest` |
+| Genel | Güney Kore | Güney Kore - Orta | `koreacentral` |
+| Genel | Güney Kore | Güney Kore - Güney | `koreasouth` |
+| Genel | Güney Afrika | Güney Afrika - Kuzey | `southafricanorth` |
+| Genel | Güney Afrika | Güney Afrika Batı * | `southafricawest` |
+| Genel | BAE | BAE Orta * | `uaecentral` |
+| Genel | BAE | BAE Kuzey | `uaenorth` |
+| Genel | Birleşik Krallık | Güney Birleşik Krallık | `uksouth` |
+| Genel | Birleşik Krallık | Batı Birleşik Krallık | `ukwest` |
+| Genel | ABD | Central US | `centralus` |
+| Genel | ABD | Doğu ABD | `eastus` |
+| Genel | ABD | Doğu ABD 2 | `eastus2` |
+| Genel | ABD | Orta Kuzey ABD | `northcentralus` |
+| Genel | ABD | Orta Güney ABD | `southcentralus` |
+| Genel | ABD | Orta Batı ABD | `westcentralus` |
+| Genel | ABD | Batı ABD | `westus` |
+| Genel | ABD | Batı ABD 2 | `westus2` |
 | US Gov | ABD | US Gov Arizona | `usgovarizona` |
 | US Gov | ABD | US Gov Texas | `usgovtexas` |
 | US Gov | ABD | US Gov Virginia | `usgovvirginia` |
@@ -368,7 +368,7 @@ Microsoft 'un Şirket içi virüsten koruma çözümleri, Windows Defender ve Sy
 > Virüsten koruma satıcıları, Microsoft Indirme Merkezi ' nde indirileceği [Azure dosya eşitleme virüsten koruma Uyumluluk testi paketini](https://www.microsoft.com/download/details.aspx?id=58322)kullanarak ürün ve Azure dosya eşitleme arasındaki uyumluluğun denetlemesini denetleyebilir.
 
 ## <a name="backup"></a>Backup 
-Bulut katmanlaması etkinleştirilirse, sunucu uç noktasını veya sunucu uç noktasının bulunduğu VM 'yi doğrudan yedekleyen çözümler kullanılmamalıdır. Bulut katmanlaması, Azure dosya paylaşımınızda bulunan tam veri kümesi ile sunucu uç noktasında yalnızca verilerinizin bir alt kümesinin depolanmasına neden olur. Kullanılan yedekleme çözümüne bağlı olarak, katmanlı dosyalar atlanır ve yedeklenmez (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği ayarlanmış olduklarından) veya diske geri çekilir ve bu da yüksek çıkış ücretlerine yol açar. Azure dosya paylaşımının doğrudan yedeklenmesi için bir bulut yedekleme çözümü kullanmanızı öneririz. Daha fazla bilgi için bkz. [Azure dosya paylaşımı yedeklemesi hakkında](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) veya Azure dosya paylaşımlarının yedeklenmesini desteklediğini öğrenmek için yedekleme sağlayıcınızla iletişim kurun.
+Bulut katmanlaması etkinleştirilirse, sunucu uç noktasını veya sunucu uç noktasının bulunduğu VM 'yi doğrudan yedekleyen çözümler kullanılmamalıdır. Bulut katmanlaması, Azure dosya paylaşımınızda bulunan tam veri kümesi ile sunucu uç noktasında yalnızca verilerinizin bir alt kümesinin depolanmasına neden olur. Kullanılan yedekleme çözümüne bağlı olarak, katmanlı dosyalar atlanır ve yedeklenmez (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği ayarlanmış olduklarından) veya diske geri çekilir ve bu da yüksek çıkış ücretlerine yol açar. Azure dosya paylaşımının doğrudan yedeklenmesi için bir bulut yedekleme çözümü kullanmanızı öneririz. Daha fazla bilgi için bkz. [Azure dosya paylaşımı yedeklemesi hakkında](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) veya Azure dosya paylaşımlarının yedeklenmesini desteklediğini öğrenmek için yedekleme sağlayıcınızla iletişim kurun.
 
 Şirket içi yedekleme çözümünü kullanmayı tercih ediyorsanız, yedeklemelerin bulut katmanlaması devre dışı bırakılmış olan eşitleme grubundaki bir sunucuda gerçekleştirilmesi gerekir. Geri yükleme gerçekleştirirken birim düzeyinde veya dosya düzeyinde geri yükleme seçeneklerini kullanın. Dosya düzeyi geri yükleme seçeneği kullanılarak geri yüklenen dosyalar, eşitleme grubundaki tüm uç noktalarla eşitlenir ve mevcut dosyalar yedekten geri yüklenen sürümle birlikte değişir.  Birim düzeyinde geri yüklemeler, Azure dosya paylaşımındaki veya diğer sunucu uç noktalarında yeni dosya sürümlerinin yerini olmayacaktır.
 

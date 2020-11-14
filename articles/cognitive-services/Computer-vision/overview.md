@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 11/13/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: bilgisayar görme, görüntü işleme uygulamaları, görüntü işleme hizmeti
-ms.openlocfilehash: 851470971335f144ebe0f9b602a8adc7d5ee06cf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536226"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629759"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -27,19 +27,19 @@ ms.locfileid: "94536226"
 
 Azure Görüntü İşleme Hizmeti, resimleri işleyen ve ilgilendiğiniz görsel özelliklere göre bilgileri döndüren gelişmiş algoritmalara erişmenizi sağlar. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik içerik içerip içermediğini, belirli marka veya nesne bulmasını veya insan yüzlerini bulmanızı sağlayabilir.
 
-İstemci kitaplığı SDK 'Sı aracılığıyla veya REST API doğrudan çağırarak Görüntü İşleme uygulamalar oluşturabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
+[İstemci kitaplığı SDK 'sı](./quickstarts-sdk/client-library.md) aracılığıyla veya [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) doğrudan çağırarak görüntü işleme uygulamalar oluşturabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
+
+## <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
+
+Görüntü İşleme, [optik karakter tanıma (OCR)](concept-recognizing-text.md) özelliklerini içerir. Görüntü ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamak için yeni okuma API 'sini kullanabilirsiniz. En son modelleri kullanır ve çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte kullanılır. Bunlar arasında alış irsaliyeleri, posterleri, kartvizitler, mektuplar ve beyaz tahtalar bulunur. İki OCR API 'si, yazdırılmış metnin [birkaç dilde](./language-support.md)ayıklanarak desteklenir. Başlamak için [hızlı](./quickstarts-sdk/client-library.md) başlangıcı izleyin.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Dijital varlık yönetimi için Görüntü İşleme
 
 Görüntü İşleme, birçok dijital varlık yönetimi (DAM) senaryosunu güçlendirin. DAM, zengin medya varlıklarını düzenleme, depolama ve alma ve dijital hakları ve izinleri yönetme iş sürecleridir. Örneğin, bir şirket görünür logo, yüz, nesne, renk vb. temel alarak görüntüleri gruplamak ve tanımlamak isteyebilir. Ya da [görüntüler için otomatik olarak açıklamalı alt yazılar oluşturmak](./Tutorials/storage-lab-tutorial.md) ve anahtar sözcükler eklemek isteyebilirsiniz. Bilişsel hizmetler, Azure Bilişsel Arama ve akıllı Raporlama kullanan hepsi bir arada DAM çözümü için GitHub 'da [bilgi araştırma Çözüm Hızlandırıcısı kılavuzuna](https://github.com/Azure-Samples/azure-search-knowledge-mining) bakın. Diğer DAM örnekleri için [görüntü işleme çözüm şablonları](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) deposuna bakın.
 
-## <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
-
-Görüntü İşleme, [optik karakter tanıma (OCR)](concept-recognizing-text.md) özelliklerini içerir. Görüntü ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamak için yeni okuma API 'sini kullanabilirsiniz. En son modelleri kullanır ve çeşitli yüzeyler ve arka planlar üzerinde metinle birlikte kullanılır. Bunlar arasında alış irsaliyeleri, posterleri, kartvizitler, mektuplar ve beyaz tahtalar bulunur. İki OCR API 'si, yazdırılmış metnin [birkaç dilde](./language-support.md)ayıklanarak desteklenir. Başlamak için [hızlı](#next-steps) başlangıcı izleyin.
-
 ## <a name="analyze-images-for-insight"></a>İçgörü edinmek için görüntüleri analiz etme
 
-Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 'si tarafından sağlanır. Başlamak için [hızlı](#next-steps) başlangıcı izleyin.
+Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 'si tarafından sağlanır. Başlamak için [hızlı](./quickstarts-sdk/client-library.md) başlangıcı izleyin.
 
 
 ### <a name="tag-visual-features"></a>Görsel özellikleri etiketleme
@@ -113,8 +113,6 @@ Tüm bilişsel hizmetlerde olduğu gibi, Görüntü İşleme hizmetini kullanan 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hızlı Başlangıç kılavuzunu izleyerek Görüntü İşleme kullanmaya başlayın:
+Tercih ettiğiniz geliştirme dilindeki hızlı başlangıç kılavuzunu izleyerek Görüntü İşleme kullanmaya başlayın:
 
-- [Hızlı başlangıç: Görüntü İşleme .NET istemci kitaplığı](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [Hızlı başlangıç: Python istemci kitaplığı Görüntü İşleme](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
-- [Hızlı başlangıç: Java istemci kitaplığı Görüntü İşleme](./quickstarts-sdk/client-library.md?pivots=programming-language-java)
+- [Hızlı başlangıç: Görüntü İşleme istemci kitaplığı](./quickstarts-sdk/client-library.md)

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85511978"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629691"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure dosya paylaşımı – Azure dosya paylaşımından dosyalar silinemedi
 
@@ -34,7 +34,7 @@ Bu komutu işlemek için yeterli kota yok
 
 ## <a name="cause"></a>Nedeni
 
-Dosya paylaşımının takılabileceği bilgisayarda bir dosya için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 oluşur. Daha fazla bilgi için bkz. [Azure depolama performansı ve ölçeklenebilirlik denetim listesi](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist).
+Dosya paylaşımının takılabileceği bilgisayarda bir dosya için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 oluşur. Daha fazla bilgi için bkz. [Azure depolama performansı ve ölçeklenebilirlik denetim listesi](../blobs/storage-performance-checklist.md).
 
 ## <a name="resolution"></a>Çözüm
 
@@ -44,7 +44,7 @@ Bazı tutamaçları kapatarak eşzamanlı açma tanıtıcılarının sayısını
 
 ### <a name="install-the-latest-azure-powershell-module"></a>En son Azure PowerShell modülünü yükler
 
-* [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>Azure 'a Bağlan:
 

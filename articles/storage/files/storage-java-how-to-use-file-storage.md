@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462607"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629776"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java ile Azure Dosyaları için geliştirme
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -29,7 +29,7 @@ Bu öğretici, dosya verilerini depolamak için Azure dosyaları kullanan uygula
 * Dosya yükleme, indirme ve silme
 
 > [!Note]  
-> Azure dosyalarına SMB üzerinden erişilebildiğinden, standart Java g/ç sınıflarını kullanarak Azure dosya paylaşımında erişim sağlayan uygulamalar yazmak mümkündür. Bu makalede, Azure dosyaları ile iletişim sağlamak için [REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) Azure Storage Java SDK 'sını kullanan uygulamaların nasıl yazılacağı açıklanır.
+> Azure dosyalarına SMB üzerinden erişilebildiğinden, standart Java g/ç sınıflarını kullanarak Azure dosya paylaşımında erişim sağlayan uygulamalar yazmak mümkündür. Bu makalede, Azure dosyaları ile iletişim sağlamak için [REST API](/rest/api/storageservices/file-service-rest-api) Azure Storage Java SDK 'sını kullanan uygulamaların nasıl yazılacağı açıklanır.
 
 ## <a name="create-a-java-application"></a>Java uygulaması oluşturma
 Örnekleri derlemek için Java Geliştirme Seti (JDK) ve [Java Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-java)gerekir. Ayrıca bir Azure depolama hesabı oluşturmuş olmanız gerekir.
@@ -74,7 +74,7 @@ try {
 **Cloudstorageaccount. Parse** bir ınvalidkeyexception oluşturur, bu nedenle bunu bir try/catch bloğunun içine koymanız gerekir.
 
 ## <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
-Azure dosyalarındaki tüm dosyalar ve dizinler, **Share**adlı bir kapsayıcıda bulunur. Depolama hesabınızda, hesap kapasiteniz izin verdiğinden çok sayıda paylaşım olabilir. Bir paylaşıma ve içeriğine erişim sağlamak için bir Azure dosyaları istemcisi kullanmanız gerekir.
+Azure dosyalarındaki tüm dosyalar ve dizinler, **Share** adlı bir kapsayıcıda bulunur. Depolama hesabınızda, hesap kapasiteniz izin verdiğinden çok sayıda paylaşım olabilir. Bir paylaşıma ve içeriğine erişim sağlamak için bir Azure dosyaları istemcisi kullanmanız gerekir.
 
 ```java
 // Create the Azure Files client.
@@ -96,7 +96,7 @@ if (share.createIfNotExists()) {
 }
 ```
 
-Bu noktada, **Share** **sampleshare**adlı bir paylaşımın başvurusunu barındırır.
+Bu noktada, **Share** **sampleshare** adlı bir paylaşımın başvurusunu barındırır.
 
 ## <a name="delete-an-azure-file-share"></a>Azure dosya paylaşımından silme
 Bir paylaşımın silinmesi, CloudFileShare nesnesinde **Deleteifexists** yöntemi çağrılarak yapılır. Örnek kod aşağıda verilmiştir.
@@ -204,7 +204,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Dosyayı silme
-Başka bir yaygın Azure dosyaları işlemi dosya silme işlemidir. Aşağıdaki kod, **sampledir**adlı bir dizinin içinde depolanan SampleFile.txt adlı bir dosyayı siler.
+Başka bir yaygın Azure dosyaları işlemi dosya silme işlemidir. Aşağıdaki kod, **sampledir** adlı bir dizinin içinde depolanan SampleFile.txt adlı bir dosyayı siler.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -229,7 +229,7 @@ Diğer Azure depolama API 'Leri hakkında daha fazla bilgi edinmek istiyorsanız
 * [Java için Azure Depolama SDK'sı](https://github.com/azure/azure-storage-java)
 * [Android için Azure depolama SDK 'Sı](https://github.com/azure/azure-storage-android)
 * [Azure Depolama İstemcisi SDK Başvurusu](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Azure Storage Hizmetleri REST API’si](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure Depolama Ekibi Blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [AzCopy Command-Line yardımcı programıyla veri aktarma](../common/storage-use-azcopy.md)
+* [Azure Storage Hizmetleri REST API’si](/rest/api/storageservices/)
+* [Azure Depolama Ekibi Blogu](/archive/blogs/windowsazurestorage/)
+* [AzCopy Command-Line yardımcı programıyla veri aktarma](../common/storage-use-azcopy-v10.md)
 * [Azure Dosyaları sorunlarını giderme - Windows](storage-troubleshoot-windows-file-connection-problems.md)

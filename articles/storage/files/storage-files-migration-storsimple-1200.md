@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85510336"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630490"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 geçişi Azure Dosya Eşitleme
 
@@ -32,7 +32,7 @@ Azure Dosya Eşitleme, iki ana bileşeni temel alan bir Microsoft bulut hizmetid
 
 Bu makalede geçiş adımları ele alınmaktadır. Azure Dosya Eşitleme hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makaleleri öneririz:
 
-* [Azure Dosya Eşitleme-genel bakış](https://aka.ms/AFS "Genel Bakış")
+* [Azure Dosya Eşitleme-genel bakış](./storage-sync-files-planning.md "Genel Bakış")
 * [Azure Dosya Eşitleme dağıtım kılavuzu](storage-sync-files-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Geçiş hedefleri
@@ -155,7 +155,7 @@ Arka plan
       /MıR
    :::column-end:::
    :::column span="1":::
-      Aynı hedefte/hedefte sırayla bu RoboCopy komutunu birkaç kez çalıştırmaya izin verir. Ne önce kopyalanmış olduğunu tanımlar ve onu atlar. Yalnızca değişiklikler, ekler ve "*silmeler*" işlenir. Bu, son çalıştırmasından bu yana yapılır. Komut daha önce çalıştırılmadıysa hiçbir şey atlanamaz. Bu, hala etkin olarak kullanılan ve değişen kaynak konumları için mükemmel bir seçenektir.
+      Aynı hedefte/hedefte sırayla bu RoboCopy komutunu birkaç kez çalıştırmaya izin verir. Ne önce kopyalanmış olduğunu tanımlar ve onu atlar. Yalnızca değişiklikler, ekler ve " *silmeler* " işlenir. Bu, son çalıştırmasından bu yana yapılır. Komut daha önce çalıştırılmadıysa hiçbir şey atlanamaz. Bu, hala etkin olarak kullanılan ve değişen kaynak konumları için mükemmel bir seçenektir.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -210,20 +210,20 @@ Paylaşımı/paylaşım gruplarını ortak bir köke veya birime geçirmeyi tama
 Bu kopyaların birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. Tek seferde bir Azure dosya paylaşımının kapsamını işlemeyi öneririz.
 
 > [!WARNING]
-> StorSimple 'tan tüm verileri Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal ***Tüm***  eşitleme gruplarına geri dönün ve bulut katmanlaması birimi boş alan yüzdesi değerini önbellek kullanımına daha uygun bir şekilde ayarlayın, %20 deyin. 
+> StorSimple 'tan tüm verileri Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal * **Tüm** _ eşitleme gruplarına dönün ve bulut katmanlama birimi boş alan yüzdesi değerini önbellek kullanımı için daha uygun bir değere ayarlayın, %20 deyin. 
 
 Bulut katmanlama birimi boş alan ilkesi, büyük olasılıkla birden çok sunucu uç noktası ile eşitlenmesi olan bir birim düzeyinde çalışır. Tek bir sunucu uç noktasında boş alanı ayarlamayı unutursanız, eşitleme en kısıtlayıcı kuralı uygulamaya devam eder ve %99 boş disk alanı tutmaya çalışır ve bu da, yerel önbelleğin bekleneceği gibi yapılmadığından bu işlemi gerçekleştirmeyecektir. Amacınız yalnızca nadiren erişilen, arşiv verileri içeren bir birimin ad alanına sahip olmadığı müddetçe.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-' De çalıştırabileceğiniz en olası sorun, RoboCopy komutunun Windows Server tarafında *"Volume Full"* ile başarısız olmasına neden olur. Bu durumda, yükleme hızlarınız büyük olasılıkla karşıya yükleme hızınıza göre daha iyidir. Bulut katmanlaması, eşitlenen yerel Windows Server diskinden içerik boşaltmak için saatte bir kez davranır.
+' De çalıştırabileceğiniz en olası sorun, RoboCopy komutunun Windows Server tarafında _ "Volume Full" * ile başarısız olmasına neden olur. Bu durumda, yükleme hızlarınız büyük olasılıkla karşıya yükleme hızınıza göre daha iyidir. Bulut katmanlaması, eşitlenen yerel Windows Server diskinden içerik boşaltmak için saatte bir kez davranır.
 
 Eşitleme ilerleme durumu ve bulut katmanlaması için disk alanının serbest olmasına izin verin. Bunu, Windows sunucunuzdaki dosya Gezgini ' nde gözlemleyebilirsiniz.
 
 Windows Server 'da yeterli kullanılabilir kapasite varsa, komutun yeniden çalıştırılması sorunu çözmeyecektir. Bu durumla karşılaşdığınızda hiçbir şey kesilmez ve güvenle ilerlemebilirsiniz. Komutu yeniden çalıştırmanın bir nedeni tek sonucudur.
 
 Ayrıca, diğer Azure Dosya Eşitleme sorunlarıyla de çalıştırabilirsiniz.
-Bu durumda olacakları gibi, **bağlantı Azure dosya eşitleme sorun giderme kılavuzuna**göz atın.
+Bu durumda olacakları gibi, **bağlantı Azure dosya eşitleme sorun giderme kılavuzuna** göz atın.
 
 ## <a name="relevant-links"></a>İlgili bağlantılar
 
@@ -233,6 +233,6 @@ Geçiş içeriği:
 
 Azure Dosya Eşitleme içerik:
 
-* [AFS genel bakış](https://aka.ms/AFS)
+* [AFS genel bakış](./storage-sync-files-planning.md)
 * [AFS dağıtım kılavuzu](storage-files-deployment-guide.md)
 * [AFS sorunlarını giderme](storage-sync-files-troubleshoot.md)

@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 11/09/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 403b6656a47f56508682dcda2438a85d513fbfb1
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540952"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630507"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzu
 
-Bu makalede, FHıR * hata iletileri ve koşulları için genel Azure IoT Bağlayıcısı sorunlarını gidermeye yönelik adımlar sağlanmaktadır.  
+Bu makalede, hızlı sağlık birlikte çalışabilirlik kaynakları için genel Azure IoT Bağlayıcısı sorunlarını giderme adımları sağlanır (FHıR&#174;) * hata iletileri ve koşulları.  
 
 Ayrıca, FHıR dönüştürme eşlemeleri JSON (örneğin: cihaz ve FHıR) için Azure IoT bağlayıcısının kopyalarını oluşturmayı öğreneceksiniz.  
 
@@ -191,6 +191,4 @@ FHıR için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın
 >[!div class="nextstepaction"]
 >[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md)
 
-* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
-
-FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır. FHıR, HL7 'in tescilli ticari markasıdır ve HL7 izniyle kullanılır.

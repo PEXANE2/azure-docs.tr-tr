@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515321"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629266"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Azure dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma
 Azure dosya paylaşımlarınızı, 445 numaralı bağlantı noktasını açmadan Azure dışından SMB 'ye bağlamak için Noktadan siteye (P2S) VPN bağlantısı kullanabilirsiniz. Noktadan siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure dosyaları ile P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınızın bağlanması gereken çok sayıda istemciniz varsa, her istemci için Noktadan siteye bağlantı yerine siteden siteye (S2S) VPN bağlantısı kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları ile kullanmak Için siteden sıteye VPN yapılandırma](storage-files-configure-s2s-vpn.md).
@@ -21,8 +21,8 @@ Azure dosyaları için kullanılabilir ağ seçenekleri hakkında ayrıntılı b
 
 Makalede, Windows 'da (Windows istemcisi ve Windows Server) Noktadan siteye VPN 'yi yapılandırmaya yönelik adımlar, Azure dosya paylaşımlarını doğrudan şirket içine bağlamak için ayrıntılı olarak açıklanır. VPN üzerinden Azure Dosya Eşitleme trafiği yönlendirmek istiyorsanız lütfen bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md).
 
-## <a name="prerequisites"></a>Önkoşullar
-- Azure PowerShell modülünün en son sürümü. Azure PowerShell nasıl yükleneceğine ilişkin daha fazla bilgi için, bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps) ve işletim sisteminizi seçmek. Windows 'da Azure CLı 'yı kullanmayı tercih ediyorsanız, aşağıdaki yönergeler Azure PowerShell için sunulmuştur.
+## <a name="prerequisites"></a>Ön koşullar
+- Azure PowerShell modülünün en son sürümü. Azure PowerShell nasıl yükleneceğine ilişkin daha fazla bilgi için, bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps) ve işletim sisteminizi seçmek. Windows 'da Azure CLı 'yı kullanmayı tercih ediyorsanız, aşağıdaki yönergeler Azure PowerShell için sunulmuştur.
 
 - Şirket içinde bağlamak istediğiniz bir Azure dosya paylaşımıdır. Azure dosya paylaşımları, birden çok dosya paylaşımı dağıtabileceğiniz ve BLOB kapsayıcıları ya da kuyrukları gibi diğer depolama kaynaklarına ek olarak, bir paylaşılan depolama havuzunu temsil eden yönetim yapıları içindeki depolama hesaplarında dağıtılır. Azure dosya paylaşımları ve depolama hesaplarını [Azure dosya paylaşımı oluşturma](storage-how-to-create-file-share.md)bölümünde dağıtma hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -212,7 +212,7 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>VPN istemcisini yapılandırma
-Azure sanal ağ geçidi, şirket içi Windows makinenizde VPN bağlantısını başlatmak için gereken yapılandırma dosyaları içeren indirilebilir bir paket oluşturur. VPN bağlantısını, Windows 10/Windows Server 2016 + [' nın Always on VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) özelliğini kullanarak yapılandıracağız. Bu paket, istenirse, eski Windows VPN istemcisini yapılandıracak yürütülebilir paketleri de içerir. Bu kılavuz, her zaman VPN istemcisi, son kullanıcıların makine üzerinde yönetici izinlerine sahip olmadan Azure VPN 'ye bağlanmasına/bağlantıyı kesmeye izin verdiği için, eski Windows VPN istemcisi yerine her zaman VPN 'Yi kullanır. 
+Azure sanal ağ geçidi, şirket içi Windows makinenizde VPN bağlantısını başlatmak için gereken yapılandırma dosyaları içeren indirilebilir bir paket oluşturur. VPN bağlantısını, Windows 10/Windows Server 2016 + [' nın Always on VPN](/windows-server/remote/remote-access/vpn/always-on-vpn/) özelliğini kullanarak yapılandıracağız. Bu paket, istenirse, eski Windows VPN istemcisini yapılandıracak yürütülebilir paketleri de içerir. Bu kılavuz, her zaman VPN istemcisi, son kullanıcıların makine üzerinde yönetici izinlerine sahip olmadan Azure VPN 'ye bağlanmasına/bağlantıyı kesmeye izin verdiği için, eski Windows VPN istemcisi yerine her zaman VPN 'Yi kullanır. 
 
 Aşağıdaki betik, sanal ağ geçidine yönelik kimlik doğrulaması için gereken istemci sertifikasını yükler, indir ve VPN paketini yükler. `<computer1>`Ve ' nin `<computer2>` istenen bilgisayarlarla değiştirilmesini unutmayın. Bu betiği, diziye daha fazla PowerShell oturumu ekleyerek istediğiniz sayıda makine üzerinde çalıştırabilirsiniz `$sessions` . Kullanım hesabınız, bu makinelerin her birinde bir yönetici olmalıdır. Bu makinelerden biri içinden betiği çalıştırdığınız yerel makinedir, betiği yükseltilmiş bir PowerShell oturumundan çalıştırmanız gerekir. 
 

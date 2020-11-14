@@ -7,20 +7,20 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746833"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629504"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
-[Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
+[Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
 
 Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak üzere Azure dosyaları özellikleri ve işlevleri hakkında sık sorulan sorular yanıtlanmaktadır. Sorunuzun yanıtını görmüyorsanız, aşağıdaki kanallarla (yürüyen sırada) bizimle iletişim kurmanız gerekir:
 
 1. Bu makalenin açıklamalar bölümü.
-2. [Microsoft Q&Azure depolama Için bir soru sayfası](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
+2. [Microsoft Q&Azure depolama Için bir soru sayfası](/answers/topics/azure-file-storage.html).
 3. [Azure dosyaları UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. Microsoft Desteği. Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği** ' ni seçin.
 
@@ -80,7 +80,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="file-locking"></a>
   **Azure dosyaları dosya kilitlemeyi destekliyor mu?**  
-    Evet, Azure dosyaları SMB/Windows stili dosya kilitlemeyi tam olarak destekler, [bkz. Ayrıntılar](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+    Evet, Azure dosyaları SMB/Windows stili dosya kilitlemeyi tam olarak destekler, [bkz. Ayrıntılar](/rest/api/storageservices/managing-file-locks).
 
 * <a id="give-us-feedback"></a>
   **Gerçekten Azure dosyalarına eklenen belirli bir özelliği görmek istiyorum. Eklenebilir mi?**  
@@ -158,7 +158,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     
 * <a id="afs-resource-move"></a>
   **Depolama eşitleme hizmetini ve/veya depolama hesabını farklı bir kaynak grubuna, aboneliğe veya Azure AD kiracısına taşıyabilir miyim?**  
-   Evet, depolama eşitleme hizmeti ve/veya depolama hesabı farklı bir kaynak grubuna, aboneliğe veya Azure AD kiracısına taşınabilir. Depolama eşitleme hizmeti veya depolama hesabı taşındıktan sonra, Microsoft. Storagessync uygulamasına depolama hesabına erişim sağlamanız gerekir (bkz. [Azure dosya eşitleme depolama hesabına erişimi olduğundan emin olun](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+   Evet, depolama eşitleme hizmeti ve/veya depolama hesabı farklı bir kaynak grubuna, aboneliğe veya Azure AD kiracısına taşınabilir. Depolama eşitleme hizmeti veya depolama hesabı taşındıktan sonra, Microsoft. Storagessync uygulamasına depolama hesabına erişim sağlamanız gerekir (bkz. [Azure dosya eşitleme depolama hesabına erişimi olduğundan emin olun](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Bulut uç noktası oluşturulurken, depolama eşitleme hizmeti ve depolama hesabı aynı Azure AD kiracısında olmalıdır. Bulut uç noktası oluşturulduktan sonra, depolama eşitleme hizmeti ve depolama hesabı farklı Azure AD kiracılarına taşınabilir.
@@ -184,7 +184,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
     - Azure Dosya Eşitleme tüm isteğe bağlı ACL 'Leri veya DACL 'Leri (Active Directory tabanlı veya yerel), eşitlediği tüm sunucu uç noktalarına korur ve çoğaltır. 
     
-    Azure Storage hizmetlerinde desteklenen tüm protokollerin kapsamlı bir gösterimi için [Azure depolama 'ya erişimi yetkilendirme](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) konusuna başvurabilirsiniz. 
+    Azure Storage hizmetlerinde desteklenen tüm protokollerin kapsamlı bir gösterimi için [Azure depolama 'ya erişimi yetkilendirme](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) konusuna başvurabilirsiniz. 
     
 * <a id="encryption-at-rest"></a>
 **Azure dosya paylaşımımın bekleyen bir şekilde şifrelenmesini nasıl sağlayabilirim?**  
@@ -209,14 +209,14 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="data-compliance-policies"></a>
 **Azure dosyaları hangi veri uyumluluk ilkelerini destekler?**  
 
-   Azure dosyaları, Azure depolama 'daki diğer depolama hizmetlerinde kullanılan depolama mimarisinin üstünde çalışır. Azure dosyaları, diğer Azure Storage hizmetlerinde kullanılan aynı veri uyumluluk ilkelerini uygular. Azure depolama veri uyumluluğu hakkında daha fazla bilgi için [Azure depolama uyumluluk teklifleri](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)' ne başvurabilirsiniz ve [Microsoft Güven Merkezi](https://microsoft.com/trustcenter/default.aspx)' ne gidebilirsiniz.
+   Azure dosyaları, Azure depolama 'daki diğer depolama hizmetlerinde kullanılan depolama mimarisinin üstünde çalışır. Azure dosyaları, diğer Azure Storage hizmetlerinde kullanılan aynı veri uyumluluk ilkelerini uygular. Azure depolama veri uyumluluğu hakkında daha fazla bilgi için [Azure depolama uyumluluk teklifleri](../common/storage-compliance-offerings.md)' ne başvurabilirsiniz ve [Microsoft Güven Merkezi](https://microsoft.com/trustcenter/default.aspx)' ne gidebilirsiniz.
 
 * <a id="file-auditing"></a>
 **Azure dosyalarındaki dosya erişimini ve değişiklikleri nasıl denetleyeceğinizi?**
 
   Azure dosyaları için denetim işlevlerini sağlayan iki seçenek vardır:
-  - Kullanıcılar Azure dosya paylaşımıyla doğrudan erişiyorsa, dosya değişikliklerini ve Kullanıcı erişimini izlemek için [Azure depolama günlükleri (Önizleme)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) kullanılabilir. Bu Günlükler, sorun giderme amacıyla kullanılabilir ve istekler en iyi çaba temelinde günlüğe kaydedilir.
-  - Kullanıcılar, Azure Dosya Eşitleme aracısının yüklü olduğu bir Windows Server aracılığıyla Azure dosya paylaşımıyla erişiyorsa, Windows Server 'da dosya değişikliklerini ve Kullanıcı erişimini izlemek için bir [Denetim ilkesi](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) veya üçüncü taraf ürün kullanın. 
+  - Kullanıcılar Azure dosya paylaşımıyla doğrudan erişiyorsa, dosya değişikliklerini ve Kullanıcı erişimini izlemek için [Azure depolama günlükleri (Önizleme)](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) kullanılabilir. Bu Günlükler, sorun giderme amacıyla kullanılabilir ve istekler en iyi çaba temelinde günlüğe kaydedilir.
+  - Kullanıcılar, Azure Dosya Eşitleme aracısının yüklü olduğu bir Windows Server aracılığıyla Azure dosya paylaşımıyla erişiyorsa, Windows Server 'da dosya değişikliklerini ve Kullanıcı erişimini izlemek için bir [Denetim ilkesi](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) veya üçüncü taraf ürün kullanın. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS kimlik doğrulaması
 * <a id="ad-support-devices"></a>
@@ -247,7 +247,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="ad-aad-smb-files"></a>
 **Depolama hesabımın AD DS kimlik doğrulamasını seçip etkinleştirdiğimde ve etki alanı bilgilerini nasıl denetlerim?**
 
-    Yönergeler için [buraya](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)bakın.
+    Yönergeler için [buraya](./storage-files-identity-ad-ds-enable.md#confirm-the-feature-is-enabled)bakın.
 
 * <a id=""></a>
 **Azure dosyaları Azure AD kimlik doğrulaması, Linux VM 'lerini destekliyor mu?**
@@ -288,19 +288,14 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     Evet, Azure dosya eşitleme tarafından yönetilen bir dosya paylaşımında AD kimlik doğrulamasını etkinleştirebilirsiniz. Yerel dosya sunucularındaki dizin/dosya NTFS ACL 'lerinde yapılan değişiklikler Azure dosyaları ile katmanlanacaktır ve tam tersi de geçerlidir.
 
 * <a id="ad-aad-smb-files"></a>
-**Depolama hesabımın ve AD etki alanı bilgilerinin AD kimlik doğrulamasını etkinleştirdiğimde nasıl emin olabilirim?**
-
-    Depolama hesabınızda Azure dosyaları AD kimlik doğrulamasının etkin olup olmadığını doğrulamak ve AD etki alanı bilgilerini almak için [burada](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) sağlanan yönergelere başvurabilirsiniz.
-
-* <a id="ad-aad-smb-files"></a>
 **AD 'de depolama hesabımı temsil etmek üzere bir bilgisayar hesabı veya hizmet oturum açma hesabı oluşturmak için herhangi bir farklılık var mı?**
 
-    [Bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabının](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) oluşturulması, kimlik doğrulamasının Azure dosyaları ile nasıl çalıştığı konusunda farklılık içermez. Bir depolama hesabını AD ortamınızda kimlik olarak temsil etmek için kendi seçiminizi yapabilirsiniz. Join-AzStorageAccountForAuth cmdlet 'inde varsayılan DomainAccountType kümesi bilgisayar hesabıdır. Ancak, AD ortamınızda yapılandırılan parola süre sonu yaşı bilgisayar veya hizmet oturum açma hesabı için farklı olabilir ve [ad 'de depolama hesabı Kimliğinizin parolasını güncelleştirme](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)konusunda dikkate almanız gerekir.
+    [Bilgisayar hesabı](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya [hizmet oturum açma hesabının](/windows/win32/ad/about-service-logon-accounts) oluşturulması, kimlik doğrulamasının Azure dosyaları ile nasıl çalıştığı konusunda farklılık içermez. Bir depolama hesabını AD ortamınızda kimlik olarak temsil etmek için kendi seçiminizi yapabilirsiniz. Join-AzStorageAccountForAuth cmdlet 'inde varsayılan DomainAccountType kümesi bilgisayar hesabıdır. Ancak, AD ortamınızda yapılandırılan parola süre sonu yaşı bilgisayar veya hizmet oturum açma hesabı için farklı olabilir ve [ad 'de depolama hesabı Kimliğinizin parolasını güncelleştirme](./storage-files-identity-ad-ds-update-password.md)konusunda dikkate almanız gerekir.
  
 * <a id="ad-support-rest-apis"></a>
 **Dizin/dosya Windows ACL 'Lerini al/ayarla/Kopyala desteği için REST API 'Ler var mı?**
 
-    Evet, [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz. Ayrıca REST tabanlı araçlarda kalıcı Windows ACL 'Leri de destekliyoruz: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+    Evet, [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (veya üzeri) REST API kullanılırken dizinler veya dosyalar Için NTFS ACL 'LERINI alan REST API 'leri destekliyoruz. Ayrıca REST tabanlı araçlarda kalıcı Windows ACL 'Leri de destekliyoruz: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
 
 ## <a name="network-file-system"></a>Ağ dosya sistemi
 
@@ -324,7 +319,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="port-445-blocked"></a>
 **ISS sunucum veya Azure dosyaları bağlama başarısız olan bağlantı noktası 445 ' i engelliyor. Ne yapmam gerekir?**
 
-    [Geçici çözüm 445 bağlantı noktası ' i engelleyen çeşitli yollar](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)hakkında bilgi edinebilirsiniz. Azure dosyaları, yalnızca bölge veya veri merkezi dışından SMB 3,0 (şifreleme desteği ile) kullanan bağlantılara izin verir. SMB 3,0 protokolü, internet üzerinden kullanılması çok güvenli olan kanal şifreleme dahil pek çok güvenlik özelliği sunmuştur. Ancak, daha düşük SMB sürümlerinde bulunan güvenlik açıklarının geçmiş nedenlerinden dolayı 445 numaralı bağlantı noktası engellenmiş olabilir. İdeal durumda, bağlantı noktasının yalnızca SMB 1,0 trafiği için engellenmesi ve SMB 1,0 ' nin tüm istemcilerde kapalı olması gerekir.
+    [Geçici çözüm 445 bağlantı noktası ' i engelleyen çeşitli yollar](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)hakkında bilgi edinebilirsiniz. Azure dosyaları, yalnızca bölge veya veri merkezi dışından SMB 3,0 (şifreleme desteği ile) kullanan bağlantılara izin verir. SMB 3,0 protokolü, internet üzerinden kullanılması çok güvenli olan kanal şifreleme dahil pek çok güvenlik özelliği sunmuştur. Ancak, daha düşük SMB sürümlerinde bulunan güvenlik açıklarının geçmiş nedenlerinden dolayı 445 numaralı bağlantı noktası engellenmiş olabilir. İdeal durumda, bağlantı noktasının yalnızca SMB 1,0 trafiği için engellenmesi ve SMB 1,0 ' nin tüm istemcilerde kapalı olması gerekir.
 
 * <a id="expressroute-not-required"></a>
 **Azure dosyaları 'na bağlanmak veya şirket içi Azure Dosya Eşitleme kullanmak için Azure ExpressRoute 'u kullanmak zorunda mıyım?**  
@@ -339,7 +334,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Azure dosya paylaşımımı Nasıl yaparım? yedeklerim?**  
-    Yanlışlıkla silinmelere karşı koruma için düzenli aralıklarla [paylaşma anlık görüntülerini](storage-snapshots-files.md) kullanabilirsiniz. Ayrıca, bağlı bir dosya paylaşımının yedekleyebilen AzCopy, Robocopy veya bir üçüncü taraf yedekleme aracını da kullanabilirsiniz. Azure Backup Azure dosyalarının yedeklemesini sunmaktadır. [Azure Backup göre Azure dosya paylaşımlarını yedekleme](https://docs.microsoft.com/azure/backup/backup-azure-files)hakkında daha fazla bilgi edinin.
+    Yanlışlıkla silinmelere karşı koruma için düzenli aralıklarla [paylaşma anlık görüntülerini](storage-snapshots-files.md) kullanabilirsiniz. Ayrıca, bağlı bir dosya paylaşımının yedekleyebilen AzCopy, Robocopy veya bir üçüncü taraf yedekleme aracını da kullanabilirsiniz. Azure Backup Azure dosyalarının yedeklemesini sunmaktadır. [Azure Backup göre Azure dosya paylaşımlarını yedekleme](../../backup/backup-afs.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="share-snapshots"></a>Anlık görüntü paylaşma
 
@@ -450,11 +445,11 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 ## <a name="features-and-interoperability-with-other-services"></a>Diğer hizmetlerle Özellikler ve birlikte çalışabilirlik
 * <a id="cluster-witness"></a>
 **Azure dosya paylaşımımı, Windows Server yük devretme Kümemdeki *dosya paylaşma tanığı* olarak kullanabilir miyim?**  
-    Şu anda bu yapılandırma bir Azure dosya paylaşımında desteklenmez. Bunu Azure Blob depolama için ayarlama hakkında daha fazla bilgi için bkz. [Yük devretme kümesi Için bulut tanığı dağıtma](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
+    Şu anda bu yapılandırma bir Azure dosya paylaşımında desteklenmez. Bunu Azure Blob depolama için ayarlama hakkında daha fazla bilgi için bkz. [Yük devretme kümesi Için bulut tanığı dağıtma](/windows-server/failover-clustering/deploy-cloud-witness).
 
 * <a id="containers"></a>
 **Azure Container Instance üzerinde bir Azure dosya paylaşımından bağlanabilir miyim?**  
-    Evet, Azure dosya paylaşımları, bir kapsayıcı örneğinin kullanım ömrünün ötesinde bilgileri kalıcı hale getirmek istediğinizde iyi bir seçenektir. Daha fazla bilgi için bkz. Azure [Container Instances Ile Azure dosya paylaşma bağlama](../../container-instances/container-instances-mounting-azure-files-volume.md).
+    Evet, Azure dosya paylaşımları, bir kapsayıcı örneğinin kullanım ömrünün ötesinde bilgileri kalıcı hale getirmek istediğinizde iyi bir seçenektir. Daha fazla bilgi için bkz. Azure [Container Instances Ile Azure dosya paylaşma bağlama](../../container-instances/container-instances-volume-azure-files.md).
 
 * <a id="rest-rename"></a>
 **REST API bir yeniden adlandırma işlemi var mı?**  

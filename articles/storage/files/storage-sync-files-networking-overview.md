@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267797"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629368"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure Dosya Eşitleme ağ değerlendirmeleri
 Bir Azure dosya paylaşımının bağlantısını iki şekilde yapabilirsiniz:
@@ -55,7 +55,7 @@ Azure Dosya Eşitleme, hizmet etiketlerinin tanımlandığı şekilde aşağıda
 | Azure Resource Manager | Azure Resource Manager, Azure Yönetim arabirimidir. Azure Dosya Eşitleme sunucu kaydı ve devam eden eşitleme sunucusu görevleri dahil olmak üzere tüm yönetim çağrıları, Azure Resource Manager üzerinden yapılır. | `AzureResourceManager` |
 | Azure Active Directory | Azure Active Directory veya Azure AD, bir depolama Eşitleme hizmetine göre sunucu kaydını yetkilendirmek için gereken kullanıcı sorumlularını ve Azure Dosya Eşitleme bulut kaynaklarınıza erişim yetkisi sağlamak için gereken hizmet sorumlularını içerir. | `AzureActiveDirectory` |
 
-Farklı bir bölgese bile Azure 'da Azure Dosya Eşitleme kullanıyorsanız, bu hizmete giden trafiğe izin vermek için hizmet etiketinin adını doğrudan ağ güvenlik grubunuzda kullanabilirsiniz. Bunun nasıl yapılacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../../virtual-network/security-overview.md). 
+Farklı bir bölgese bile Azure 'da Azure Dosya Eşitleme kullanıyorsanız, bu hizmete giden trafiğe izin vermek için hizmet etiketinin adını doğrudan ağ güvenlik grubunuzda kullanabilirsiniz. Bunun nasıl yapılacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../../virtual-network/network-security-groups-overview.md). 
 
 Şirket içi Azure Dosya Eşitleme kullanıyorsanız, güvenlik duvarınızın izin verilenler listenize belirli IP adresi aralıklarını almak için hizmet etiketi API 'sini kullanabilirsiniz. Bu bilgileri almak için iki yöntem vardır:
 
@@ -65,9 +65,9 @@ Farklı bir bölgese bile Azure 'da Azure Dosya Eşitleme kullanıyorsanız, bu 
     - [Azure Çin](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Almanya](https://www.microsoft.com/download/details.aspx?id=57064)
 - Hizmet etiketi bulma API 'SI (Önizleme), geçerli hizmet etiketleri listesinin programlı olarak alınmasına izin verir. Önizleme aşamasında hizmet etiketi bulma API 'SI, Microsoft Indirme Merkezi ' nde yayınlanan JSON belgelerinden daha az güncel bilgiler döndürebilir. Otomasyon tercihinizi temel alarak API yüzeyini kullanabilirsiniz:
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 Hizmetlerinizin adreslerini almak için hizmet etiketi API 'sinin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için bkz. [Azure dosya EŞITLEME IP adresleri Için Izin verme listesi](storage-sync-files-firewall-and-proxy.md#allow-list-for-azure-file-sync-ip-addresses).
 

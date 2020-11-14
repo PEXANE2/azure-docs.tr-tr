@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dea88bf93000422ce1d832be4a0f60474ff27938
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75431816"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629793"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Hızlı Başlangıç: Azure Depolama Gezgini ile Azure dosya paylaşımları oluşturma ve yönetme
 Bu kılavuzda, Azure Depolama Gezgini'ni kullanarak [Azure dosya paylaşımlarında](storage-files-introduction.md) çalışmanın temelleri gösterilir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
@@ -32,11 +32,11 @@ Depolama Gezgini’ni yeni kaynaklar oluşturmak için kullanamazsınız. Bu tan
 ## <a name="connect-storage-explorer-to-azure-resources"></a>Depolama Gezgini'ni Azure kaynaklarına bağlama
 Depolama Gezgini’ni ilk kez başlattığınızda **Microsoft Azure Depolama Gezgini - Bağlan** penceresi görüntülenir. Depolama Gezgini depolama hesaplarına bağlamak için birçok yol sağlar: 
 
-- **Azure hesabınızı kullanarak oturum açma**: Kuruluşunuzun kimlik bilgilerini veya Microsoft hesabınızı kullanarak oturum açabilirsiniz. 
-- **Bir bağlantı dizesi veya SAS belirteci kullanarak belirli bir depolama hesabına bağlanma**: Bağlantı dizesi, depolama hesabı adını ve depolama hesabı anahtarını/SAS belirtecini içeren özel bir dizedir. Depolama Gezgini, belirteci kullanarak doğrudan depolama hesabına erişir (bir Azure hesabındaki tüm depolama hesaplarını görmek yerine). Bağlantı dizeleri hakkında daha fazla bilgi edinmek için bkz. [Azure depolama bağlantı dizelerini yapılandırma](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Depolama hesabı adı ve anahtarı kullanarak belirli bir depolama hesabına bağlanma**: Azure depolamaya bağlanmak için depolama hesabınızın depolama hesabı adını ve anahtarını kullanın.
+- **Azure hesabınızı kullanarak oturum açma** : Kuruluşunuzun kimlik bilgilerini veya Microsoft hesabınızı kullanarak oturum açabilirsiniz. 
+- **Bir bağlantı dizesi veya SAS belirteci kullanarak belirli bir depolama hesabına bağlanma** : Bağlantı dizesi, depolama hesabı adını ve depolama hesabı anahtarını/SAS belirtecini içeren özel bir dizedir. Depolama Gezgini, belirteci kullanarak doğrudan depolama hesabına erişir (bir Azure hesabındaki tüm depolama hesaplarını görmek yerine). Bağlantı dizeleri hakkında daha fazla bilgi edinmek için bkz. [Azure depolama bağlantı dizelerini yapılandırma](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Depolama hesabı adı ve anahtarı kullanarak belirli bir depolama hesabına bağlanma** : Azure depolamaya bağlanmak için depolama hesabınızın depolama hesabı adını ve anahtarını kullanın.
 
-Bu hızlı başlangıç için, Azure hesabınızı kullanarak oturum açın. **Azure Hesabı Ekle**’yi ve sonra **Oturum Aç**’ı seçin. Azure hesabınızda oturum açmak için yönergeleri izleyin.
+Bu hızlı başlangıç için, Azure hesabınızı kullanarak oturum açın. **Azure Hesabı Ekle** ’yi ve sonra **Oturum Aç** ’ı seçin. Azure hesabınızda oturum açmak için yönergeleri izleyin.
 
 ![Microsoft Azure Depolama Gezgini - Bağlan penceresinin ekran görüntüsü](./media/storage-how-to-use-files-storage-explorer/connect-to-azure-storage-1.png)
 
@@ -44,12 +44,12 @@ Bu hızlı başlangıç için, Azure hesabınızı kullanarak oturum açın. **A
 `storageacct<random number>` depolama hesabı içinde ilk Azure dosya paylaşımınızı oluşturmak için:
 
 1. Oluşturduğunuz depolama hesabını genişletin.
-2. **Dosya Paylaşımları**'na sağ tıklayın ve sonra **Dosya Paylaşımı Oluştur**'u seçin.  
+2. **Dosya Paylaşımları** 'na sağ tıklayın ve sonra **Dosya Paylaşımı Oluştur** 'u seçin.  
     ![Dosya paylaşımları klasörünün ve bağlama uygun bağlam menüsünün ekran görüntüsü](media/storage-how-to-use-files-storage-explorer/create-file-share-1.png)
 
 3. Dosya paylaşımı için *myshare* yazın ve sonra Enter tuşuna basın.
 
-Paylaşım adları yalnızca küçük harf, sayı ve tek kısa çizgi içerebilir (ancak kısa çizgiyle başlayamaz). Dosya paylaşımlarının ve dosyaların adlandırılması hakkında tüm ayrıntılara ulaşmak için bkz. [Paylaşım, dizin, dosya ve meta verileri adlandırma ve bunlara başvuruda bulunma](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Paylaşım adları yalnızca küçük harf, sayı ve tek kısa çizgi içerebilir (ancak kısa çizgiyle başlayamaz). Dosya paylaşımlarının ve dosyaların adlandırılması hakkında tüm ayrıntılara ulaşmak için bkz. [Paylaşım, dizin, dosya ve meta verileri adlandırma ve bunlara başvuruda bulunma](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 Dosya paylaşımı oluşturulduktan sonra sağ bölmede dosya paylaşımınız için bir sekme açılır. 
 
@@ -62,21 +62,21 @@ Dizin eklemek, dosya paylaşımınızın yönetimi için hiyerarşik bir yapı s
 1. Dosya paylaşımının sekmesinde, en üstteki menüden **Yeni Klasör** düğmesini seçin. **Yeni Dizin Oluştur** bölmesi açılır.
     ![Bağlamda Yeni Klasör düğmesinin ekran görüntüsü](media/storage-how-to-use-files-storage-explorer/create-directory-1.png)
 
-2. Dizin adı olarak *myDirectory* yazın ve ardından **Tamam**’ı seçin. 
+2. Dizin adı olarak *myDirectory* yazın ve ardından **Tamam** ’ı seçin. 
 
 *myDirectory* dizini, *myshare* dosya paylaşımının sekmesinde listelenir.
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme 
 Yerel makinenizden bir dosyayı dosya paylaşımınızdaki yeni dizine yükleyebilirsiniz. Klasörün tamamını veya tek bir dosyayı karşıya yükleyebilirsiniz.
 
-1. Üst menüden **Karşıya Yükle**’yi seçin. Bu işlemi kullanarak klasör veya dosyayı karşıya yükleyebilirsiniz.
-2. **Dosyayı Karşıya Yükle**'yi seçin ve sonra yerel makinenizden karşıya yüklenecek dosyayı seçin.
-3. **Dizine yükle** alanına *myDirectory* yazın ve sonra **Karşıya Yükle**'yi seçin. 
+1. Üst menüden **Karşıya Yükle** ’yi seçin. Bu işlemi kullanarak klasör veya dosyayı karşıya yükleyebilirsiniz.
+2. **Dosyayı Karşıya Yükle** 'yi seçin ve sonra yerel makinenizden karşıya yüklenecek dosyayı seçin.
+3. **Dizine yükle** alanına *myDirectory* yazın ve sonra **Karşıya Yükle** 'yi seçin. 
 
 İşiniz bittiğinde, dosya *myDirectory* bölmesindeki listede görünür.
 
 ### <a name="download-a-file"></a>Dosya indirme
-Dosya paylaşımınızdan bir dosyanın kopyasını indirmek için dosyaya sağ tıklayın ve ardından **İndir**’i seçin. Dosyanın yerel makinenizde nereye konmasını istediğinizi seçin ve ardından **Kaydet**'i seçin.
+Dosya paylaşımınızdan bir dosyanın kopyasını indirmek için dosyaya sağ tıklayın ve ardından **İndir** ’i seçin. Dosyanın yerel makinenizde nereye konmasını istediğinizi seçin ve ardından **Kaydet** 'i seçin.
 
 Pencerenin en altındaki **Etkinlikler** bölmesinde indirme işleminin ilerleme durumu görünür.
 

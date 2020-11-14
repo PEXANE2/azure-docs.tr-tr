@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329372"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629419"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
 Azure dosyaları ve Azure Dosya Eşitleme, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
@@ -33,15 +33,15 @@ Bu makalede şu şekilde varsayılmaktadır:
 - Zaten bir depolama eşitleme hizmeti oluşturdunuz ve Windows dosya sunucunuzu bununla kaydettiniz. Azure Dosya Eşitleme dağıtmayı öğrenmek için bkz. [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md).
 
 Ek olarak:
-- Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](/powershell/azure/install-az-ps).
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-the-private-endpoints"></a>Özel uç noktaları oluşturma
 Bir Azure kaynağı için özel bir uç nokta oluştururken aşağıdaki kaynaklar dağıtılır:
 
-- **Özel uç nokta**: depolama hesabı ya da depolama eşitleme hizmeti için özel uç noktasını temsil eden bir Azure kaynağı. Bunu, Azure kaynağınızı ve bir ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
-- **Ağ arabirimi (NIC)**: belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
-- **Özel BIR DNS bölgesi**: daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. Bu DNS bölgesinde Azure kaynağı için bir DNS A kaydı da oluşturulacak. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, mevcut DNS bölgesine Azure kaynağı için yeni bir kayıt eklenecektir. DNS bölgesinin dağıtımı isteğe bağlıdır, ancak DNS yönetiminin gerekli olduğu basitleştirilmesi önerilir.
+- **Özel uç nokta** : depolama hesabı ya da depolama eşitleme hizmeti için özel uç noktasını temsil eden bir Azure kaynağı. Bunu, Azure kaynağınızı ve bir ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
+- **Ağ arabirimi (NIC)** : belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
+- **Özel BIR DNS bölgesi** : daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. Bu DNS bölgesinde Azure kaynağı için bir DNS A kaydı da oluşturulacak. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, mevcut DNS bölgesine Azure kaynağı için yeni bir kayıt eklenecektir. DNS bölgesinin dağıtımı isteğe bağlıdır, ancak DNS yönetiminin gerekli olduğu basitleştirilmesi önerilir.
 
 > [!Note]  
 > Bu makalede, `core.windows.net` depolama hesapları ve depolama Eşitleme Hizmetleri Için Azure genel BÖLGELERININ DNS sonekleri kullanılmaktadır `afs.azure.net` . Bu yorum, Azure US kamu bulutu gibi Azure Sogeign bulutları için de geçerlidir; ortamınız için uygun son ekleri yerine koyun.
@@ -130,7 +130,7 @@ Address: 192.168.0.5
 > Depolama eşitleme hizmeti kaynağında özel uç noktaları kullanmak için, Azure Dosya Eşitleme Aracısı sürüm 10,1 veya üstünü kullanmanız gerekir. 10,1 ' dan önceki Aracı sürümleri, depolama eşitleme hizmeti 'ndeki özel uç noktaları desteklemez. Tüm önceki Aracı sürümleri, depolama hesabı kaynağında özel uç noktaları destekler.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Azure portal en üstündeki arama çubuğuna *özel bağlantı* yazarak **özel bağlantı merkezine** gidin. Özel bağlantı Merkezi içindekiler tablosunda **Özel uç noktalar**' ı seçin ve ardından yeni bir özel uç nokta oluşturmak Için **+ Ekle** ' yi seçin.
+Azure portal en üstündeki arama çubuğuna *özel bağlantı* yazarak **özel bağlantı merkezine** gidin. Özel bağlantı Merkezi içindekiler tablosunda **Özel uç noktalar** ' ı seçin ve ardından yeni bir özel uç nokta oluşturmak Için **+ Ekle** ' yi seçin.
 
 [![Özel bağlantı merkezinin ekran görüntüsü](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png)](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png#lightbox)
 
@@ -140,7 +140,7 @@ Ortaya çıkan sihirbazda, tamamlanacak birden çok sayfa vardır.
 
 ![Özel uç nokta oluştur bölümünün temel bilgiler bölümünün ekran görüntüsü](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-1.png)
 
-**Kaynak** dikey penceresinde, **Dizinimde bir Azure kaynağına bağlanmak**için radyo düğmesini seçin. **Kaynak**türü altında, kaynak türü için **Microsoft. storagessync/storageSyncServices** öğesini seçin. 
+**Kaynak** dikey penceresinde, **Dizinimde bir Azure kaynağına bağlanmak** için radyo düğmesini seçin. **Kaynak** türü altında, kaynak türü için **Microsoft. storagessync/storageSyncServices** öğesini seçin. 
 
 **Yapılandırma** dikey penceresi, Özel uç noktanızı eklemek istediğiniz belirli sanal ağı ve alt ağı seçmenize olanak sağlar. Yukarıdaki depolama hesabı için kullandığınız sanal ağı seçin. Yapılandırma dikey penceresi ayrıca özel DNS bölgesi oluşturma/güncelleştirme bilgilerini içerir.
 
@@ -554,7 +554,7 @@ Hem depolama hesabının hem de depolama eşitleme hizmetlerinin genel uç nokta
 Genel uç noktaya erişim kısıtlaması, depolama hesabı güvenlik duvarı ayarları kullanılarak yapılır. Genel olarak, bir depolama hesabı için çoğu güvenlik duvarı ilkesi, ağ erişimini bir veya daha fazla sanal ağa kısıtlar. Bir depolama hesabına erişimi bir sanal ağla kısıtlamak için iki yaklaşım vardır:
 
 - [Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun](#create-the-storage-account-private-endpoint) ve genel uç noktaya erişimi devre dışı bırakın. Bu, yalnızca istenen sanal ağlardan gelen trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişebilmesini sağlar.
-- Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişmeye devam edersiniz.
+- Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın. Bu, *hizmet uç noktaları* adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişmeye devam edersiniz.
 
 #### <a name="disable-access-to-the-storage-account-public-endpoint"></a>Depolama hesabı genel uç noktasına erişimi devre dışı bırak
 Genel uç noktaya erişim devre dışı bırakıldığında, depolama hesabına hala özel uç noktalar aracılığıyla erişilebilir. Aksi takdirde, depolama hesabının genel uç noktasına yönelik geçerli istekler reddedilir. 
@@ -571,7 +571,7 @@ Genel uç noktaya erişim devre dışı bırakıldığında, depolama hesabına 
 ---
 
 #### <a name="restrict-access-to-the-storage-account-public-endpoint-to-specific-virtual-networks"></a>Depolama hesabı genel uç noktasına erişimi belirli sanal ağlara kısıtlama
-Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sanal ağların içinden genel uç noktaya yönelik isteklere izin vermiş olursunuz. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bu, Özel uç noktalarla veya olmadan kullanılabilir.
+Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sanal ağların içinden genel uç noktaya yönelik isteklere izin vermiş olursunuz. Bu, *hizmet uç noktaları* adlı sanal ağın bir özelliği kullanılarak işe yarar. Bu, Özel uç noktalarla veya olmadan kullanılabilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-restrict-portal](../../../includes/storage-files-networking-endpoints-public-restrict-portal.md)]

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785621"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628926"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -134,7 +134,7 @@ Bu bölümde, geçişleri planlayıp çalıştırmanıza yardımcı olan araçla
 
 #### <a name="robocopy-from-microsoft-corporation"></a>Microsoft Corporation 'ın RoboCopy
 
-RoboCopy, dosya geçişleri için en uygun araçlardan biridir. Windows 'un bir parçası olarak gelir. Ana [Robocopy belgeleri](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) , bu aracın birçok seçeneği için yararlı bir kaynaktır.
+RoboCopy, dosya geçişleri için en uygun araçlardan biridir. Windows 'un bir parçası olarak gelir. Ana [Robocopy belgeleri](/windows-server/administration/windows-commands/robocopy) , bu aracın birçok seçeneği için yararlı bir kaynaktır.
 
 #### <a name="treesize-from-jam-software-gmbh"></a>SıKıŞTı Software GmbH TreeSize
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075135"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630167"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
@@ -30,14 +30,14 @@ Bir dosya payını bağlamaya çalıştığınızda, şu hatayı alabilirsiniz:
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Neden 1: şifrelenmemiş iletişim kanalı
 
-Güvenlik nedeniyle, iletişim kanalı şifrelenmemişse ve bağlantı girişimi Azure dosya paylaşımlarının bulunduğu veri merkezinden yapılmıyorsa Azure dosya paylaşımlarına bağlantılar engellenir. Depolama hesabında [Güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarı etkinleştirildiyse aynı veri merkezi içinde şifrelenmemiş bağlantılar da engellenebilir. Şifrelenmiş bir iletişim kanalının sağlanabilmesi için kullanıcının istemcisi SMB şifrelemesini desteklemelidir.
+Güvenlik nedeniyle, iletişim kanalı şifrelenmemişse ve bağlantı girişimi Azure dosya paylaşımlarının bulunduğu veri merkezinden yapılmıyorsa Azure dosya paylaşımlarına bağlantılar engellenir. Depolama hesabında [Güvenli aktarım gerekli](../common/storage-require-secure-transfer.md) ayarı etkinleştirildiyse aynı veri merkezi içinde şifrelenmemiş bağlantılar da engellenebilir. Şifrelenmiş bir iletişim kanalının sağlanabilmesi için kullanıcının istemcisi SMB şifrelemesini desteklemelidir.
 
 Her sistemin Windows 8, Windows Server 2012 ve üstü sürümleri şifrelemeyi destekleyen SMB 3.0 içeren isteklerle anlaşır.
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
 1. SMB şifrelemesini (Windows 8, Windows Server 2012 veya üzeri) destekleyen bir istemciden bağlanın veya aynı veri merkezindeki bir sanal makineden Azure dosya paylaşımında kullanılan Azure depolama hesabıyla bağlanın.
-2. İstemci SMB şifrelemesini desteklemiyorsa, depolama hesabında [Güvenli aktarım gerekli](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarının devre dışı olduğunu doğrulayın.
+2. İstemci SMB şifrelemesini desteklemiyorsa, depolama hesabında [Güvenli aktarım gerekli](../common/storage-require-secure-transfer.md) ayarının devre dışı olduğunu doğrulayın.
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Neden 2: depolama hesabında sanal ağ veya güvenlik duvarı kuralları etkin 
 
@@ -45,7 +45,7 @@ Depolama hesabında sanal ağ (VNET) ve güvenlik duvarı kuralları yapılandı
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
-Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapılandırıldığını doğrulayın. Sanal ağ veya güvenlik duvarı kurallarının soruna neden olup olmadığını test etmek için depolama hesabında **Tüm ağlardan erişime izin ver** ayarını geçici olarak değiştirin. Daha fazla bilgi edinmek için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapılandırıldığını doğrulayın. Sanal ağ veya güvenlik duvarı kurallarının soruna neden olup olmadığını test etmek için depolama hesabında **Tüm ağlardan erişime izin ver** ayarını geçici olarak değiştirin. Daha fazla bilgi edinmek için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md).
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Neden 3: kimlik tabanlı kimlik doğrulaması kullanılırken, paylaşma düzeyi izinleri yanlış
 
@@ -55,10 +55,10 @@ Kullanıcılar Active Directory (AD) veya Azure Active Directory Domain Services
 
 İzinlerin doğru şekilde yapılandırıldığını doğrulayın:
 
-- **Active Directory (ad)** bkz. [bir kimliğe paylaşma düzeyi izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions).
+- **Active Directory (ad)** bkz. [bir kimliğe paylaşma düzeyi izinleri atama](./storage-files-identity-ad-ds-assign-permissions.md).
 
     Paylaşma düzeyi izin atamaları, Active Directory (AD) ile Azure Active Directory (Azure AD) arasında eşitlenmiş olan gruplar ve kullanıcılar için Azure AD Connect kullanılarak desteklenir.  Paylaşma düzeyi izinlerinin atandığı gruplara ve kullanıcılara desteklenmeyen "salt bulut" grupları olmadığından emin olun.
-- **Azure Active Directory Domain Services (Azure AD DS)** bkz. [bir kimliğe erişim izinleri atama](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity).
+- **Azure Active Directory Domain Services (Azure AD DS)** bkz. [bir kimliğe erişim izinleri atama](./storage-files-identity-auth-active-directory-domain-service-enable.md?tabs=azure-portal#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Bir Azure dosya paylaşımını bağladığınızda veya kaldırdığınızda hata 53, hata 67 veya hata 87
@@ -111,7 +111,7 @@ TcpTestSucceeded : True
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
 #### <a name="solution-1---use-azure-file-sync"></a>Çözüm 1 - Azure Dosya Eşitleme'yi kullanın
-Azure Dosya Eşitleme, şirket içi Windows Server 'larınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürebilir. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Azure Dosya Eşitleme, 443 numaralı bağlantı noktası üzerinden çalıştığından 445 numaralı bağlantı noktası engellenmiş olan istemcilerden Azure Dosyalar'a erişmek için geçici çözüm olarak kullanılabilir. [Azure dosya eşitleme ayarlamayı öğrenin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure Dosya Eşitleme, şirket içi Windows Server 'larınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürebilir. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Azure Dosya Eşitleme, 443 numaralı bağlantı noktası üzerinden çalıştığından 445 numaralı bağlantı noktası engellenmiş olan istemcilerden Azure Dosyalar'a erişmek için geçici çözüm olarak kullanılabilir. [Azure dosya eşitleme ayarlamayı öğrenin](./storage-sync-files-extend-servers.md).
 
 #### <a name="solution-2---use-vpn"></a>Çözüm 2 - VPN kullanın
 Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden değil, güvenli bir tünelden geçer. Azure Dosyalar'a Windows'dan erişmek için [VPN kurulum yönergelerini](storage-files-configure-p2s-vpn-windows.md) izleyin.
@@ -120,7 +120,7 @@ Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden de
 [Azure IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)giden 445 numaralı bağlantı noktasını açmak için BT departmanınızla veya ISS 'niz ile çalışın.
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>Çözüm 4 - Depolama Gezgini/Powershell gibi REST API tabanlı araçları kullanın
-Azure dosyaları da SMB 'ye ek olarak REST 'i destekler. REST erişimi, 443 numaralı bağlantı noktası üzerinden (standart TCP) çalışır. REST API kullanarak yazılmış olan ve zengin bir kullanıcı arabirimi deneyimi sunan birçok araç vardır. [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) bunlardan biridir. [Depolama Gezgini'ni indirip yükleyerek](https://azure.microsoft.com/features/storage-explorer/) Azure Dosyalar destekli dosya paylaşımınıza bağlanın. Ayrıca, Kullanıcı REST API de [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) kullanabilirsiniz.
+Azure dosyaları da SMB 'ye ek olarak REST 'i destekler. REST erişimi, 443 numaralı bağlantı noktası üzerinden (standart TCP) çalışır. REST API kullanarak yazılmış olan ve zengin bir kullanıcı arabirimi deneyimi sunan birçok araç vardır. [Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) bunlardan biridir. [Depolama Gezgini'ni indirip yükleyerek](https://azure.microsoft.com/features/storage-explorer/) Azure Dosyalar destekli dosya paylaşımınıza bağlanın. Ayrıca, Kullanıcı REST API de [PowerShell](./storage-how-to-use-files-powershell.md) kullanabilirsiniz.
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>Neden 2: NTLMv1 etkin
 
@@ -130,7 +130,7 @@ Hatanın nedeninin bu olup olmadığını saptamak için aşağıdaki kayıt def
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
-Daha fazla bilgi için TechNet'te [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) konusuna bakın.
+Daha fazla bilgi için TechNet'te [LmCompatibilityLevel](/previous-versions/windows/it-pro/windows-2000-server/cc960646(v=technet.10)) konusuna bakın.
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
@@ -143,18 +143,18 @@ Aşağıdaki kayıt defteri alt anahtarında **LmCompatibilityLevel** değerini 
 
 ### <a name="cause"></a>Nedeni
 
-Azure dosya paylaşımında bir dosya veya dizin için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 olur. Daha fazla bilgi için bkz. [Azure Dosyaları ölçeklendirme hedefleri](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets).
+Azure dosya paylaşımında bir dosya veya dizin için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 olur. Daha fazla bilgi için bkz. [Azure Dosyaları ölçeklendirme hedefleri](./storage-files-scale-targets.md#azure-files-scale-targets).
 
 ### <a name="solution"></a>Çözüm
 
-Bazı tutamaçları kapatarak eşzamanlı açık tanıtıcı sayısını azaltın ve yeniden deneyin. Daha fazla bilgi için bkz. [performans ve ölçeklenebilirlik denetim listesi Microsoft Azure depolama](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+Bazı tutamaçları kapatarak eşzamanlı açık tanıtıcı sayısını azaltın ve yeniden deneyin. Daha fazla bilgi için bkz. [performans ve ölçeklenebilirlik denetim listesi Microsoft Azure depolama](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
-Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.  
+Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını görüntülemek için [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.  
 
-Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını kapatmak için, [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.
+Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını kapatmak için, [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.
 
 > [!Note]  
-> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps).
 
 <a id="noaaccessfailureportal"></a>
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Bir Azure dosya paylaşımından erişmeye veya silmeye çalıştığınızda "erişim yok" hatası  
@@ -167,13 +167,13 @@ Hata kodu: 403
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
-Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapılandırıldığını doğrulayın. Sanal ağ veya güvenlik duvarı kurallarının soruna neden olup olmadığını test etmek için depolama hesabında **Tüm ağlardan erişime izin ver** ayarını geçici olarak değiştirin. Daha fazla bilgi edinmek için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapılandırıldığını doğrulayın. Sanal ağ veya güvenlik duvarı kurallarının soruna neden olup olmadığını test etmek için depolama hesabında **Tüm ağlardan erişime izin ver** ayarını geçici olarak değiştirin. Daha fazla bilgi edinmek için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md).
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Neden 2: Kullanıcı hesabınızın depolama hesabına erişimi yok
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
-Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) ile depolama hesabınızın güvenliğini sağlama](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) ile depolama hesabınızın güvenliğini sağlama](../blobs/security-recommendations.md#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure dosya paylaşımında dosya veya dizin silinemiyor
@@ -199,15 +199,15 @@ Dosya tanıtıcıları ve kiralamalar önemli bir amaca uygun olsa da, bazen Dos
 Bu soruna yönelik çözüm, bunun neden yalnız bırakılmış bir dosya tanıtıcısı veya kira nedeniyle kaynaklandığına bağlıdır. 
 
 ### <a name="cause-1"></a>1\. Neden
-Dosya tanıtıcısı, bir dosyanın/dizinin değiştirilmesini veya silinmesini engellemektedir. Açık tutamaçları görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanabilirsiniz. 
+Dosya tanıtıcısı, bir dosyanın/dizinin değiştirilmesini veya silinmesini engellemektedir. Açık tutamaçları görüntülemek için [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanabilirsiniz. 
 
 Tüm SMB istemcileri bir dosya/dizinde açık tutamaçlarını kapatmışsa ve sorun oluşmaya devam ederse, bir dosya tanıtıcısını kapatmaya zorlayabilirsiniz.
 
 ### <a name="solution-1"></a>1\. Çözüm
-Bir dosya tanıtıcısının kapatılmasını zorlamak için, [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın. 
+Bir dosya tanıtıcısının kapatılmasını zorlamak için, [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın. 
 
 > [!Note]  
-> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+> Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps).
 
 ### <a name="cause-2"></a>2\. Neden
 Dosya kirası, bir dosyanın değiştirilmesini veya silinmesini engeller. Aşağıdaki PowerShell ile bir dosyanın bir dosya kirası olup olmadığını kontrol edebilirsiniz,,, `<resource-group>` `<storage-account>` `<file-share>` ve `<path-to-file>` ile ortamınız için uygun değerler ile değiştirin:
@@ -262,8 +262,8 @@ Azure dosya hizmetine dosya aktarmaya çalıştığınızda yavaş performans g�
 - Belirli bir en düşük g/ç boyutu gereksiniminize sahip değilseniz en iyi performans için g/ç boyutu olarak 1 MIB kullanmanızı öneririz.
 -   Yazmalar ile genişletilen bir dosyanın son boyutunu biliyorsanız ve bu dosyada, yazılı olmayan kuyruk sıfır içerdiğinde yazılım uyumluluk sorunlarıyla karşılaşırsanız, her yazma için bir genişletme yazma yapmak yerine dosya boyutunu önceden ayarlayın.
 -   Doğru kopyalama yöntemini kullanın:
-    -   İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
-    -   Şirket içi bilgisayardaki dosya paylaşımları arasında [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) kullanın.
+    -   İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) kullanın.
+    -   Şirket içi bilgisayardaki dosya paylaşımları arasında [Robocopy](./storage-files-deployment-guide.md#robocopy) kullanın.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 veya Windows Server 2012 R2 ile ilgili konular
 
@@ -290,7 +290,7 @@ Bir Azure dosya paylaşımından, net use kullanarak yönetici olarak eşleme ya
 Varsayılan olarak, Windows Dosya Gezgini yönetici olarak çalışmaz. Net use komutunu bir yönetim komut isteminden çalıştırırsanız, ağ sürücüsünü yönetici olarak eşlersiniz. Eşlenen sürücüler Kullanıcı merkezli olduğundan, oturum açmış olan kullanıcı hesabı, farklı bir kullanıcı hesabı altına bağlandıklarında sürücüleri görüntülemez.
 
 ### <a name="solution"></a>Çözüm
-Paylaşımdan yönetici olmayan bir komut satırından bağlayın. Alternatif olarak, **EnableLinkedConnections** kayıt defteri değerini yapılandırmak Için [Bu TechNet konusunu](https://technet.microsoft.com/library/ee844140.aspx) da izleyebilirsiniz.
+Paylaşımdan yönetici olmayan bir komut satırından bağlayın. Alternatif olarak, **EnableLinkedConnections** kayıt defteri değerini yapılandırmak Için [Bu TechNet konusunu](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10)) da izleyebilirsiniz.
 
 <a id="netuse"></a>
 ## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>Depolama hesabı eğik çizgi içeriyorsa net use komutu başarısız olur
@@ -376,20 +376,20 @@ Bu sorunu çözmek için **DirectoryCacheEntrySizeMax** kayıt defteri değerini
 
 ### <a name="cause"></a>Nedeni
 
-Azure [ad etki alanı hizmeti 'nin (azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) Ilişkili ABONELIĞIN Azure AD kiracısında oluşturulabileceği bir depolama hesabındaki [Azure Active Directory Domain Services (Azure AD DS) kimlik doğrulamasını etkinleştirmeye](storage-files-identity-auth-active-directory-domain-service-enable.md) çalıştığınızda hata AadDsTenantNotFound oluşur.  
+Azure [ad etki alanı hizmeti 'nin (azure AD DS)](../../active-directory-domain-services/overview.md) Ilişkili ABONELIĞIN Azure AD kiracısında oluşturulabileceği bir depolama hesabındaki [Azure Active Directory Domain Services (Azure AD DS) kimlik doğrulamasını etkinleştirmeye](storage-files-identity-auth-active-directory-domain-service-enable.md) çalıştığınızda hata AadDsTenantNotFound oluşur.  
 
 ### <a name="solution"></a>Çözüm
 
-Depolama hesabınızın dağıtıldığı aboneliğin Azure AD kiracısında Azure AD DS 'yi etkinleştirin. Yönetilen bir etki alanı oluşturmak için Azure AD kiracısının yönetici ayrıcalıklarına sahip olmanız gerekir. Azure AD kiracısı yöneticisi değilseniz, yöneticiye başvurun ve [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirmek](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)için adım adım yönergeleri izleyin.
+Depolama hesabınızın dağıtıldığı aboneliğin Azure AD kiracısında Azure AD DS 'yi etkinleştirin. Yönetilen bir etki alanı oluşturmak için Azure AD kiracısının yönetici ayrıcalıklarına sahip olmanız gerekir. Azure AD kiracısı yöneticisi değilseniz, yöneticiye başvurun ve [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturmak ve yapılandırmak](../../active-directory-domain-services/tutorial-create-instance.md)için adım adım yönergeleri izleyin.
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Azure dosyaları AD kimlik bilgileriyle bağlanamıyor 
 
 ### <a name="self-diagnostics-steps"></a>Kendi kendine Tanılama adımları
-İlk olarak, [Azure dosyaları ad kimlik doğrulamasını etkinleştirmek](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)için tüm dört adımı izlediğinizden emin olun.
+İlk olarak, [Azure dosyaları ad kimlik doğrulamasını etkinleştirmek](./storage-files-identity-auth-active-directory-enable.md)için tüm dört adımı izlediğinizden emin olun.
 
-İkinci olarak, [depolama hesabı anahtarıyla Azure dosya paylaşımının bağlanmasını](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)deneyin. Bağlama işlemi başarısız olursa, istemciyi çalıştıran istemciyi doğrulamanıza yardımcı olmak üzere [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) Indirin, Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını tespit edin, kendi kendine düzeltmeyle ilgili yönergeler verir ve tanılama izlemelerini toplayın.
+İkinci olarak, [depolama hesabı anahtarıyla Azure dosya paylaşımının bağlanmasını](./storage-how-to-use-files-windows.md)deneyin. Bağlama işlemi başarısız olursa, istemciyi çalıştıran istemciyi doğrulamanıza yardımcı olmak üzere [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) Indirin, Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını tespit edin, kendi kendine düzeltmeyle ilgili yönergeler verir ve tanılama izlemelerini toplayın.
 
 Üçüncü olarak, oturum açmış AD kullanıcısı ile AD yapılandırmanızda basit denetimler kümesi yürütmek için Debug-AzStorageAccountAuth cmdlet 'ini çalıştırabilirsiniz. Bu cmdlet, [AzFilesHybrid v0.1.2+ sürümünde](https://github.com/Azure-Samples/azure-files-samples/releases) desteklenir. Bu cmdlet'i hedef depolama hesabında sahip izinlerine sahip bir AD kullanıcısıyla çalıştırmanız gerekir.  
 ```PowerShell
@@ -399,13 +399,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik sağlar:
-1. Checkadobjectpassworno: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı kerb1 veya kerb2 anahtarı ile aynı olduğundan emin olun. Parola yanlışsa, parolayı sıfırlamak için [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) komutunu çalıştırabilirsiniz. 
+1. Checkadobjectpassworno: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı kerb1 veya kerb2 anahtarı ile aynı olduğundan emin olun. Parola yanlışsa, parolayı sıfırlamak için [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) komutunu çalıştırabilirsiniz. 
 2. CheckADObject: depolama hesabını temsil eden ve doğru SPN 'ye (hizmet asıl adı) sahip Active Directory bir nesne olduğunu onaylayın. SPN doğru kurulum gerçekleştirmemişse, SPN 'yi yapılandırmak için lütfen hata ayıklama cmdlet 'inde döndürülen set-AD cmdlet 'ini çalıştırın.
-3. Checkdomainkatılmış: istemci makinenin AD 'ye katılmış olduğunu doğrulayın. Makinenize etki alanına katılmış değilse, etki alanına katılma yönergesi için lütfen bu [makaleye](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) bakın.
+3. Checkdomainkatılmış: istemci makinenin AD 'ye katılmış olduğunu doğrulayın. Makinenize etki alanına katılmış değilse, etki alanına katılma yönergesi için lütfen bu [makaleye](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) bakın.
 4. CheckPort445Connectivity: bağlantı noktası 445 ' nin SMB bağlantısı için açıldığını denetleyin. Gerekli bağlantı noktası açık değilse, Azure dosyaları ile ilgili bağlantı sorunları için lütfen sorun giderme aracına bakın [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) .
 5. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz. 
 6. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin. Geçerli bir Kerberos belirteci yoksa, Klist Get CIFS/Storage-Account-Name. File. Core. Windows. net cmdlet 'ini çalıştırın ve hata kodunu, bilet alma hatasının köke neden olacak şekilde inceleyin.
-7. Checkstorageaccountdomainkatılmış: AD kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini ve hesabın AD özelliklerinin doldurulup doldurulmadığını denetleyin. Aksi takdirde, Azure dosyalarında AD DS kimlik doğrulamasını etkinleştirmek için [buradaki](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) yönergeye başvurun. 
+7. Checkstorageaccountdomainkatılmış: AD kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini ve hesabın AD özelliklerinin doldurulup doldurulmadığını denetleyin. Aksi takdirde, Azure dosyalarında AD DS kimlik doğrulamasını etkinleştirmek için [buradaki](./storage-files-identity-ad-ds-enable.md) yönergeye başvurun. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile dizin/dosya düzeyi izinleri (Windows ACL 'Leri) yapılandırılamıyor
 
@@ -417,7 +417,7 @@ Windows ACL 'Leri bağlı bir dosya paylaşımında dosya Gezgini ile yapıland�
 
 ### <a name="solution"></a>Çözüm
 
-Geçici bir çözüm olarak dizin/dosya düzeyi izinlerini yapılandırmak için [ıacl 'ler aracını](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) kullanmanızı öneririz. 
+Geçici bir çözüm olarak dizin/dosya düzeyi izinlerini yapılandırmak için [ıacl 'ler aracını](/windows-server/administration/windows-commands/icacls) kullanmanızı öneririz. 
 
 ## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Join-AzStorageAccountForAuth cmdlet 'ini çalıştırırken hatalar oluştu
 
@@ -431,7 +431,7 @@ Bu hata büyük olasılıkla Join-AzStorageAccountforAuth komutundaki bir söz d
 
 ## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>AES 256 Kerberos şifrelemesi için Azure dosyaları şirket içi AD DS kimlik doğrulama desteği
 
-Azure dosyaları için [AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases)ile şirket içi AD DS kimlik doğrulaması için AES 256 Kerberos şifreleme desteği tanıtıldık. V 0.2.2 'den daha düşük bir modül sürümü ile AD DS kimlik doğrulamasını etkinleştirdiyseniz, en son AzFilesHybrid modülünü (v 0.2.2 +) indirmeniz ve aşağıdaki PowerShell 'i çalıştırmanız gerekir. Depolama hesabınızda AD DS kimlik doğrulamasını henüz etkinleştirmediyseniz, etkinleştirme için bu [Kılavuzu](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module) izleyebilirsiniz. 
+Azure dosyaları için [AzFilesHybrid Module v 0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases)ile şirket içi AD DS kimlik doğrulaması için AES 256 Kerberos şifreleme desteği tanıtıldık. V 0.2.2 'den daha düşük bir modül sürümü ile AD DS kimlik doğrulamasını etkinleştirdiyseniz, en son AzFilesHybrid modülünü (v 0.2.2 +) indirmeniz ve aşağıdaki PowerShell 'i çalıştırmanız gerekir. Depolama hesabınızda AD DS kimlik doğrulamasını henüz etkinleştirmediyseniz, etkinleştirme için bu [Kılavuzu](./storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module) izleyebilirsiniz. 
 
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"

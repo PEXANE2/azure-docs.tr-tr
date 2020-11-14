@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb74ab16e51fbb3a157757353d5743e889f993dd
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515394"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629708"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ ile Azure dosyaları için geliştirme
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure dosyalarında temel işlemleri gerçekleştirmeyi öğren
 * Paylaşımda tanımlı bir paylaşılan erişim ilkesi kullanan bir dosya için paylaşılan erişim imzası (SAS anahtarı) oluşturma.
 
 > [!Note]  
-> Azure dosyalarına SMB üzerinden erişilebildiğinden, standart C++ g/ç sınıfları ve işlevleri kullanılarak Azure dosya paylaşımında erişim sağlayan basit uygulamalar yazmak mümkündür. Bu makalede, Azure dosyaları ile konuşmak için [REST API dosya](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) kullanan Azure Storage C++ SDK 'sını kullanan uygulamaların nasıl yazılacağı açıklanır.
+> Azure dosyalarına SMB üzerinden erişilebildiğinden, standart C++ g/ç sınıfları ve işlevleri kullanılarak Azure dosya paylaşımında erişim sağlayan basit uygulamalar yazmak mümkündür. Bu makalede, Azure dosyaları ile konuşmak için [REST API dosya](/rest/api/storageservices/file-service-rest-api) kullanan Azure Storage C++ SDK 'sını kullanan uygulamaların nasıl yazılacağı açıklanır.
 
 ## <a name="create-a-c-application"></a>C++ uygulaması oluşturma
 
@@ -41,7 +41,7 @@ Bu öğreticide, Azure dosyalarında temel işlemleri gerçekleştirmeyi öğren
 C++ için Azure Storage Client 2.4.0 'ı yüklemek için aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
 * **Linux:** [C++ Için Azure depolama Istemci kitaplığı Benioku dosyası](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) sayfasında verilen yönergeleri izleyin.
-* **Windows:** Visual Studio 'da **Araçlar &gt; NuGet Paket Yöneticisi &gt; Paket Yöneticisi konsolu**' na tıklayın. [NuGet Paket Yöneticisi konsoluna](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) aşağıdaki komutu yazın ve **ENTER**tuşuna basın.
+* **Windows:** Visual Studio 'da **Araçlar &gt; NuGet Paket Yöneticisi &gt; Paket Yöneticisi konsolu** ' na tıklayın. [NuGet Paket Yöneticisi konsoluna](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) aşağıdaki komutu yazın ve **ENTER** tuşuna basın.
   
 
 ```powershell
@@ -79,7 +79,7 @@ azure::storage::cloud_storage_account storage_account =
 
 ## <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 
-Bir Azure dosya paylaşımındaki tüm dosyalar ve dizinler, **Share**adlı bir kapsayıcıda bulunur. Depolama hesabınızda, hesap kapasiteniz izin verdiğinden çok sayıda paylaşım olabilir. Bir paylaşıma ve içeriğine erişim sağlamak için bir Azure dosyaları istemcisi kullanmanız gerekir.
+Bir Azure dosya paylaşımındaki tüm dosyalar ve dizinler, **Share** adlı bir kapsayıcıda bulunur. Depolama hesabınızda, hesap kapasiteniz izin verdiğinden çok sayıda paylaşım olabilir. Bir paylaşıma ve içeriğine erişim sağlamak için bir Azure dosyaları istemcisi kullanmanız gerekir.
 
 ```cpp
 // Create the Azure Files client.
@@ -103,7 +103,7 @@ if (share.create_if_not_exists()) {
 }
 ```
 
-Bu noktada **Share** , **My-Sample-Share**adlı bir paylaşımın başvurusunu tutar.
+Bu noktada **Share** , **My-Sample-Share** adlı bir paylaşımın başvurusunu tutar.
 
 ## <a name="delete-an-azure-file-share"></a>Azure dosya paylaşımından silme
 
@@ -120,7 +120,7 @@ share.delete_share_if_exists();
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-Dosya dizinlerini kök dizinde kullanmak yerine alt dizinlere yerleştirerek depolamayı düzenleyebilirsiniz. Azure dosyaları, hesabınızın izin verdiği sayıda dizin oluşturmanıza olanak sağlar. Aşağıdaki kod, kök dizin altında **My-Sample-Directory** adlı bir dizin ve **My-Sample-altdizinim**adlı bir alt dizin oluşturacak.
+Dosya dizinlerini kök dizinde kullanmak yerine alt dizinlere yerleştirerek depolamayı düzenleyebilirsiniz. Azure dosyaları, hesabınızın izin verdiği sayıda dizin oluşturmanıza olanak sağlar. Aşağıdaki kod, kök dizin altında **My-Sample-Directory** adlı bir dizin ve **My-Sample-altdizinim** adlı bir alt dizin oluşturacak.
 
 ```cpp
 // Retrieve a reference to a directory
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Azure dosya paylaşımındaki dosyaları ve dizinleri listeleme
 
-Bir paylaşımın içindeki dosya ve dizinlerin bir listesini almak, **cloud_file_directory** bir başvuruya **list_files_and_directories** çağırarak kolayca yapılır. Döndürülen bir **list_file_and_directory_item**için zengin özellik ve Yöntem kümesine erişmek için, bir **cloud_file** nesnesi almak üzere **list_file_and_directory_item. as** _directory metodunu veya bir **cloud_file_directory** nesnesi almak için **list_file_and_directory_item. as _directory** yöntemini çağırmanız gerekir.
+Bir paylaşımın içindeki dosya ve dizinlerin bir listesini almak, **cloud_file_directory** bir başvuruya **list_files_and_directories** çağırarak kolayca yapılır. Döndürülen bir **list_file_and_directory_item** için zengin özellik ve Yöntem kümesine erişmek için, bir **cloud_file** nesnesi almak üzere **list_file_and_directory_item. as** _directory metodunu veya bir **cloud_file_directory** nesnesi almak için **list_file_and_directory_item. as _directory** yöntemini çağırmanız gerekir.
 
 Aşağıdaki kod, paylaşımın kök dizinindeki her bir öğenin URI 'sini alma ve çıkışın nasıl yapılacağını gösterir.
 

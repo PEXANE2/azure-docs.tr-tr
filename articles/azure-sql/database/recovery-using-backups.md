@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
-ms.date: 09/26/2019
-ms.openlocfilehash: 334495eeef410c42fb45445c400a86ff1b777061
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/13/2020
+ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790347"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629198"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -108,6 +108,9 @@ Silinen bir veritabanını, aynı sunucuda veya aynı yönetilen örnek üzerind
 
 Silinen veritabanlarını sunucudan veya yönetilen örnek kaynağından Azure portal geri yükleyebilirsiniz.
 
+> [!TIP]
+> Son silinen veritabanlarının Azure portal **silinen veritabanları** sayfasında görünmesi veya silinen veritabanlarının [programlı olarak](#programmatic-recovery-using-automated-backups)görüntülenmesi birkaç dakika sürebilir.
+
 #### <a name="sql-database"></a>SQL Veritabanı
 
 Silinen bir veritabanını Azure portal kullanarak silme zamanına kurtarmak için, sunucuya genel bakış sayfasını açın ve **silinen veritabanları** ' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
@@ -165,7 +168,7 @@ Yedeklemeden yeni bir veritabanı oluşturma işlemini tamamlar. Azure SQL verit
 
 #### <a name="sql-managed-instance"></a>SQL Yönetilen Örnek
 
-Yönetilen bir örnek veritabanını Azure portal tercih ettiğiniz bir bölgede varolan bir yönetilen örneğe coğrafi olarak geri yüklemek için veritabanının geri yüklenmesini istediğiniz yönetilen örneği seçin. Şu adımları uygulayın:
+Yönetilen bir örnek veritabanını Azure portal tercih ettiğiniz bir bölgede varolan bir yönetilen örneğe coğrafi olarak geri yüklemek için veritabanının geri yüklenmesini istediğiniz yönetilen örneği seçin. Şu adımları izleyin:
 
 1. **Yeni veritabanı** ' nı seçin.
 2. İstenen bir veritabanı adı yazın.

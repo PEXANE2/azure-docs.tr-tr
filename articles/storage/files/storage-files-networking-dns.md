@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320277"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630201"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Dosyalar için DNS iletmeyi yapılandırma
 Azure dosyaları, dosya paylaşımlarınızı içeren depolama hesapları için özel uç noktalar oluşturmanıza olanak sağlar. Birçok farklı uygulama için yararlı olsa da, Özel uç noktalar özellikle özel eşleme kullanarak bir VPN veya ExpressRoute bağlantısı kullanarak şirket içi ağınızdan Azure dosya paylaşımlarınıza bağlanmak için yararlıdır. 
@@ -43,7 +43,7 @@ Azure dosyalarına DNS iletmeyi ayarlayabilmeniz için önce aşağıdaki adıml
 
 - Bağlamak istediğiniz bir Azure dosya paylaşımının bulunduğu depolama hesabı. Depolama hesabı ve Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
 - Depolama hesabı için özel bir uç nokta. Azure dosyaları için özel bir uç nokta oluşturmayı öğrenmek için bkz. [Özel uç nokta oluşturma](storage-files-networking-endpoints.md#create-a-private-endpoint).
-- Azure PowerShell modülünün [en son sürümü](https://docs.microsoft.com/powershell/azure/install-az-ps) .
+- Azure PowerShell modülünün [en son sürümü](/powershell/azure/install-az-ps) .
 
 > [!Important]  
 > Bu kılavuzda, şirket içi ortamınızda Windows Server 'da DNS sunucusunu kullandığınız varsayılır. Bu kılavuzda açıklanan adımların tümü yalnızca Windows DNS sunucusu değil, herhangi bir DNS sunucusu ile yapılabilir.

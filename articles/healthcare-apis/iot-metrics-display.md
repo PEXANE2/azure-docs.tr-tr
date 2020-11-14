@@ -1,21 +1,21 @@
 ---
-title: FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma
+title: FHIR için Azure IoT Bağlayıcısı (önizleme) ölçümlerini görüntüleme ve yapılandırma
 description: Bu makalede, FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma açıklanmaktadır.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 79a7b18986f4bed503cd5493a7d74325a13fe535
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381227"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630524"
 ---
-# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>FHIR için Azure IoT Bağlayıcısı (önizleme) ölçümlerini görüntüleme ve yapılandırma 
 
 Bu makalede, hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR&#174;) * ölçümleri için Azure IoT bağlayıcısını görüntülemeyi ve yapılandırmayı öğreneceksiniz.
 
@@ -41,6 +41,9 @@ Bu makalede, hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR&#174
    :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="' Bağlayıcı 1 ' için bir ' 1 saat ' zaman aralığı çizgi grafiği görüntüleyen ' IoT Bağlayıcısı ' bölmesinin ekran görüntüsü." lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
 ## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı için ölçüm türleri (Önizleme) 
+
+> [!TIP]
+> FHıR için Azure IoT Bağlayıcısı 'nda veri akışı hakkında bilgi edinmek için, hata iletileri ve düzeltmeler hakkında daha fazla bilgi edinmek üzere [FHıR Için Azure IoT bağlayıcısını (Önizleme) veri akışını](./iot-data-flow.md) ve [Fhır Için Azure IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzunu](./iot-troubleshoot-guide.md) görüntüleyin.
 
 Görüntülenebilecek IoT Bağlayıcısı ölçümleri aşağıdaki tabloda listelenmiştir:
 

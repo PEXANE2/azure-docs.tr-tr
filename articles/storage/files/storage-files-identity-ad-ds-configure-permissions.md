@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761150"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629181"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
 
@@ -44,7 +44,7 @@ Aşağıdaki tabloda bu yapılandırmayla ilgili Azure RBAC izinleri yer almakta
 
 ## <a name="supported-permissions"></a>Desteklenen izinler
 
-Azure dosyaları, temel ve gelişmiş Windows ACL 'lerinin tam kümesini destekler. Windows ACL 'lerini, bir Azure dosya paylaşımındaki dizinler ve dosyalar üzerinde, Windows Dosya Gezgini 'ni kullanarak, Windows [ıacl](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) komutunu veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) komutunu çalıştırarak bir Azure dosya paylaşımında görüntüleyebilir ve yapılandırabilirsiniz. 
+Azure dosyaları, temel ve gelişmiş Windows ACL 'lerinin tam kümesini destekler. Windows ACL 'lerini, bir Azure dosya paylaşımındaki dizinler ve dosyalar üzerinde, Windows Dosya Gezgini 'ni kullanarak, Windows [ıacl](/windows-server/administration/windows-commands/icacls) komutunu veya [set-ACL](/powershell/module/microsoft.powershell.security/set-acl) komutunu çalıştırarak bir Azure dosya paylaşımında görüntüleyebilir ve yapılandırabilirsiniz. 
 
 ACL 'Leri üst Kullanıcı izinleriyle yapılandırmak için, etki alanına katılmış VM 'nizden depolama hesabı anahtarınızı kullanarak paylaşıma bağlamanız gerekir. Bir sonraki bölümdeki yönergeleri izleyerek bir Azure dosya paylaşımından komut isteminden bağlama yapın ve Windows ACL 'Lerini yapılandırın.
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
+Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](./storage-files-faq.md#on-premises-access) sunuyoruz. 
 
 ## <a name="configure-windows-acls"></a>Windows ACL 'Lerini yapılandırma
 
@@ -97,14 +97,14 @@ AD DS kimliklerine göre yapılandırılmış Windows DACL 'Leri olan şirket i�
 
 Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalara tam izin vermek için Windows Dosya Gezgini 'ni kullanın.
 
-1. Windows Dosya Gezgini 'ni açın ve dosya/dizine sağ tıklayıp **Özellikler**' i seçin.
+1. Windows Dosya Gezgini 'ni açın ve dosya/dizine sağ tıklayıp **Özellikler** ' i seçin.
 1. **Güvenlik** sekmesini seçin.
 1. Düzenle 'yi seçin **.** izinleri değiştirmek için.
 1. Mevcut kullanıcıların izinlerini değiştirebilir veya yeni kullanıcılara izin vermek için **Ekle..** . seçeneğini belirleyebilirsiniz.
 1. Yeni Kullanıcı eklemek için istem penceresinde, **Seçilecek nesne adlarını girin** kutusuna izin vermek istediğiniz hedef Kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
-1.    **Tamam**’ı seçin.
+1.    **Tamam** ’ı seçin.
 1.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
-1.    **Uygula**’yı seçin.
+1.    **Apply** (Uygula) seçeneğini belirleyin.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Windows ACL 'lerini Icacls ile yapılandırma
 
@@ -114,7 +114,7 @@ Kök dizin dahil olmak üzere, dosya paylaşımındaki tüm dizin ve dosyalara t
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-Windows ACL 'lerini ve farklı türlerdeki desteklenen izinleri ayarlamak için ıacl 'leri kullanma hakkında daha fazla bilgi için bkz. [ıacl 'ler için komut satırı başvurusu](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
+Windows ACL 'lerini ve farklı türlerdeki desteklenen izinleri ayarlamak için ıacl 'leri kullanma hakkında daha fazla bilgi için bkz. [ıacl 'ler için komut satırı başvurusu](/windows-server/administration/windows-commands/icacls).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

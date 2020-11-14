@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322207"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630286"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -45,7 +45,7 @@ StorSimple Veri Yöneticisi bir kaynaktaki veri dönüştürme hizmeti işleri a
 
 Azure dosya paylaşımları, dosya hizmetleri dağıtımınızı yapılandırmak için yepyeni bir fırsat dünyasını açar. Azure dosya paylaşımında yalnızca, kullanıcılar yerel olarak çalışan tanıdık Kerberos kimlik doğrulaması ve var olan NTFS izinleri (dosya ve klasör ACL 'Leri) ile SMB protokolü üzerinden doğrudan erişim sağlamak üzere ayarlayabildiğiniz bir SMB paylaşımıdır. [Azure dosya paylaşımlarına kimlik tabanlı erişim](storage-files-active-directory-overview.md)hakkında daha fazla bilgi edinin.
 
-Doğrudan erişim için bir alternatif [Azure dosya eşitleme](https://aka.ms/AFS). Azure Dosya Eşitleme, StorSimple 'ın şirket içinde sık kullanılan dosyaları önbelleğe alma yeteneğine yönelik doğrudan bir örneksel işlemdir.
+Doğrudan erişim için bir alternatif [Azure dosya eşitleme](./storage-sync-files-planning.md). Azure Dosya Eşitleme, StorSimple 'ın şirket içinde sık kullanılan dosyaları önbelleğe alma yeteneğine yönelik doğrudan bir örneksel işlemdir.
 
 Azure Dosya Eşitleme, iki ana bileşeni temel alan bir Microsoft bulut hizmetidir:
 
@@ -56,7 +56,7 @@ Azure dosya paylaşımları, öznitelikler, izinler ve zaman damgaları gibi dep
 
 Bu makalede geçiş adımları ele alınmaktadır. Geçirmeden önce Azure Dosya Eşitleme hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makalelere bakın:
 
-* [Azure Dosya Eşitleme genel bakış](https://aka.ms/AFS "Genel Bakış")
+* [Azure Dosya Eşitleme genel bakış](./storage-sync-files-planning.md "Genel Bakış")
 * [Azure Dosya Eşitleme dağıtım kılavuzu](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple hizmeti veri şifreleme anahtarı
@@ -385,7 +385,7 @@ Kayıtlı şirket içi Windows Server Örneğiniz, bu işlem için önceden haz�
 * [Windows P2S VPN 'yi yapılandırma](storage-files-configure-p2s-vpn-windows.md)
 * [Linux P2S VPN yapılandırma](storage-files-configure-p2s-vpn-linux.md)
 * [DNS iletmeyi yapılandırma](storage-files-networking-dns.md)
-* [DFS 'yi yapılandırma-N](https://aka.ms/AzureFiles/Namespaces)
+* [DFS 'yi yapılandırma-N](/windows-server/storage/dfs-namespaces/dfs-overview)
    :::column-end:::
 :::row-end:::
 
@@ -535,7 +535,7 @@ Azure Dosya Eşitleme kullanıyorsanız, büyük olasılıkla Azure Dosya Eşitl
 
 Bir DFS-N dağıtımınız varsa, DFN-Namespaces yeni sunucu klasörü konumlarına işaret edebilirsiniz. Bir DFS-N dağıtımınız yoksa ve 8100 veya 8600 gerecinizi bir Windows Server örneğiyle yerel olarak aldıysanız, bu sunucuyu etki alanı dışına alabilirsiniz. Daha sonra etki alanına yeni Azure Dosya Eşitleme özellikli Windows Server örneğinizi ekleyin. Bu işlem sırasında, kesme, kullanıcılarınız, Grup ilkeniz ve betikleriniz için aynı sunucu adı ve paylaşma adlarını eski sunucuyla aynı şekilde sağlayın.
 
-[DFS-N](https://aka.ms/AzureFiles/Namespaces)hakkında daha fazla bilgi edinin.
+[DFS-N](/windows-server/storage/dfs-namespaces/dfs-overview)hakkında daha fazla bilgi edinin.
 
 ## <a name="deprovision"></a>Sağlamayı kaldırma
 
@@ -561,7 +561,7 @@ Geçişiniz tamamlanmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Dosya Eşitleme hakkında daha fazla bilgi edinin [: aka.MS/AFS](https://aka.ms/AFS).
+* Azure Dosya Eşitleme hakkında daha fazla bilgi edinin [: aka.MS/AFS](./storage-sync-files-planning.md).
 * [Bulut katmanlama](storage-sync-cloud-tiering.md) ilkelerinin esnekliğini anlayın.
 * Anlık görüntüleri zamanlamak ve yedekleme bekletme zamanlamalarını tanımlamak için Azure dosya paylaşımlarınız üzerinde [Azure Backup etkinleştirin](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) .
 * Bazı dosyaların kalıcı olarak eşitlenmediğinden Azure portal görürseniz, bu sorunları gidermeye yönelik adımlar için [sorun giderme kılavuzunu](storage-sync-files-troubleshoot.md) gözden geçirin.

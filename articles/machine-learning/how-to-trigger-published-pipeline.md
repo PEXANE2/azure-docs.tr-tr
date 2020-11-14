@@ -1,7 +1,7 @@
 ---
 title: Yeni veriler için ML işlem hattını Tetikle
 titleSuffix: Azure Machine Learning
-description: Azure Logic Apps kullanarak ML işlem hattının çalıştırılmasını nasıl tetikleyeceğinizi öğrenin.
+description: Yeni verilere yanıt vermek için Azure Logic Apps kullanarak Azure Machine Learning işlem hattının çalıştırılmasını nasıl tetikleyeceğinizi öğrenin.
 services: machine-learning
 author: NilsPohlmann
 ms.author: nilsp
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: dabcf30488e45fbe6c7c5b9e5aa0c8bd57f28fd8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 119436cbe03e619b0d09df30ab2c5dc34126b0ce
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443509"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629402"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Bir mantıksal uygulamadan Machine Learning işlem hattının çalıştırılmasını tetikleme
 
 Yeni veriler göründüğünde Azure Machine Learning işlem hattının çalıştırılmasını tetikleyin. Örneğin, BLOB depolama hesabında yeni veriler göründüğünde yeni bir modeli eğitemak üzere işlem hattını tetiklemek isteyebilirsiniz. Tetikleyiciyi [Azure Logic Apps](../logic-apps/logic-apps-overview.md)ayarlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 

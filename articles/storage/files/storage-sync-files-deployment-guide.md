@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 128a974c41b1c09196ecab2070136d9568b08f5d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331796"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629487"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
 
 Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağıtımı Için planlamayı](storage-files-planning.md) ve [bir Azure dosya eşitleme dağıtımı planlamayı](storage-sync-files-planning.md) kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -48,7 +48,7 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
     > [!Important]  
     > Doğrudan PowerShell 'den kaydolmak yerine sunucu kaydı kullanıcı arabirimini kullanmayı planlıyorsanız, PowerShell 5,1 ' i kullanmanız gerekir.
 
-1. PowerShell 5,1 kullanmayı tercih ettiyseniz, en az .NET 4.7.2 'ın yüklü olduğundan emin olun. Sisteminizde [.NET Framework sürümleri ve bağımlılıklar](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) hakkında daha fazla bilgi edinin.
+1. PowerShell 5,1 kullanmayı tercih ettiyseniz, en az .NET 4.7.2 'ın yüklü olduğundan emin olun. Sisteminizde [.NET Framework sürümleri ve bağımlılıklar](/dotnet/framework/migration-guide/versions-and-dependencies) hakkında daha fazla bilgi edinin.
 
     > [!Important]  
     > Windows Server Core üzerinde .NET 4.7.2 + yüklüyorsanız, ve bayraklarıyla yüklemeniz gerekir, `quiet` `norestart` Aksi takdirde yükleme başarısız olur. Örneğin, .NET 4,8 ' i yüklüyorsanız, komut aşağıdaki gibi görünür:
@@ -56,7 +56,7 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-1. Buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülü: [Azure PowerShell yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. Buradaki yönergeleri izleyerek yüklenebilen az PowerShell modülü: [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > Az. Storagessync modülü artık az PowerShell modülünü yüklediğinizde otomatik olarak yüklenir.
@@ -573,7 +573,7 @@ Ancak, zamanlamayı, uyumlu günler değerinden daha eski olan birimde kullanıl
 
 Birim başına varsayılan en fazla VSS anlık görüntüsü sayısı (64) ve bu işlem için varsayılan zamanlama, bir bilgi çalışanının, biriminizde depolayabileceği VSS anlık görüntülerine göre geri yüklenebildiği en fazla 45 gün içinde sonuçlanır.
 
-Max. 64 VSS anlık görüntüsü, birim başına doğru ayar değilse, [Bu değeri bir kayıt defteri anahtarı aracılığıyla değiştirebilirsiniz](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Max. 64 VSS anlık görüntüsü, birim başına doğru ayar değilse, [Bu değeri bir kayıt defteri anahtarı aracılığıyla değiştirebilirsiniz](/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Yeni sınırın etkin olması için, daha önce etkinleştirildiği her birimde önceki sürüm uyumluluğunu etkinleştirmek üzere cmdlet 'i yeniden çalıştırmanız gerekir. Bu, en fazla birim başına en fazla VSS anlık görüntüsü sayısını hesaba koymak için-zorlama bayrağını kullanın. Bu, yeni hesaplanan gün sayısına neden olur. Bu değişikliğin yalnızca yeni katmanlı dosyalar üzerinde etkili olacağını ve yapmış olabileceğiniz VSS zamanlamasıyla ilgili tüm özelleştirmelerin üzerine yazılmasını lütfen unutmayın.
 
 <a id="proactive-recall"></a>
@@ -599,7 +599,7 @@ Küresel olarak dağıtılan bir şirkette ABD 'de ve Hindistan 'daki şube ofis
 
 # <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
 
-PowerShell 'de sunucu uç noktası özelliklerini [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) cmdlet 'i aracılığıyla değiştirebilirsiniz.
+PowerShell 'de sunucu uç noktası özelliklerini [set-AzStorageSyncServerEndpoint](/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) cmdlet 'i aracılığıyla değiştirebilirsiniz.
 
 ```powershell
 # Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"

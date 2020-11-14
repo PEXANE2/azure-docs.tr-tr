@@ -8,18 +8,48 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/07/2020
-ms.openlocfilehash: d8b36676c9b95992bdcf382c1f474b56e30ad3fb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3973e32fdc724bd3c0894d6aaf2eb06ad3ba3adc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535561"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629946"
 ---
 # <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
 ## <a name="summary"></a>Özet
 
 Azure HDInsight, Azure üzerinde açık kaynaklı Apache Hadoop ve Apache Spark analizlere yönelik kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
+
+## <a name="release-date-10082020"></a>Yayın tarihi: 10/08/2020
+
+Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
+
+### <a name="new-features"></a>Yeni özellikler
+#### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>Ortak IP ve özel bağlantısı olmayan HDInsight özel kümeleri (Önizleme)
+HDInsight artık önizleme aşamasında kümelere genel IP ve özel bağlantı erişimi olmayan kümeler oluşturmayı desteklemektedir. Müşteriler, genel IP olmadan tamamen yalıtılmış bir küme oluşturmak için yeni gelişmiş ağ ayarlarını kullanabilir ve kümeye erişmek için kendi özel uç noktalarını kullanabilir. 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
+
+### <a name="deprecation"></a>Kullanımdan kaldırma
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
+HDInsight 3,6 ML Hizmetleri küme türü, destek 'in ara 31 2020 ' de sona bitecektir. Müşteriler bundan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
+
+### <a name="behavior-changes"></a>Davranış değişiklikleri
+Bu yayın için davranış değişikliği yok.
+
+### <a name="upcoming-changes"></a>Yaklaşan değişiklikler
+Gelecek sürümlerde aşağıdaki değişiklikler olur.
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark, Hadoop ve ML Hizmetleri için farklı Zookeeper sanal makine boyutları seçme olanağı
+HDInsight, Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper düğüm boyutunu özelleştirmeyi desteklemez. Bu, ücretsiz olarak sunulan A2_v2/a2 sanal makine boyutlarını varsayılan olarak alır. Yaklaşan sürümde, senaryonuza en uygun Zookeeper sanal makine boyutunu seçebilirsiniz. Sanal makine boyutu A2_v2/a2 dışındaki Zookeeper düğümleri ücretlendirilecektir. A2_v2 ve a2 sanal makineler ücretsiz olarak sunulur.
+
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
+
+### <a name="component-version-change"></a>Bileşen sürümü değişikliği
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
 
 ## <a name="release-date-09282020"></a>Yayın tarihi: 09/28/2020
 
@@ -1787,11 +1817,11 @@ Düzeltilen sorunlar, daha önce Hortonsupport desteğiyle günlüğe kaydedilen
 
 |**Apache bileşeni**|**Apache JIRA**|**Özet**|**Ayrıntılar**|
 |--|--|--|--|
-|**Spark 2,3** |**yok** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır. https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**YOK** |**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |-"Kullanımdan kaldırma" belgesi ve "davranış değişikliği" kılavuzu vardır. https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-SQL bölümü için başka bir ayrıntılı "geçiş" Kılavuzu (2,2 ' den 2,3 ' e kadar) vardır. https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark işi başarıyla tamamlandı, ancak bir bu işlem için bir sürücü kotası dolu hatası var |**Senaryo:** Komutu çalıştıran kullanıcının çöp kutusu klasöründe bir kota ayarlandığında **Insert üzerine yazma** işlemi çalıştırılıyor.<br /><br />**Önceki davranış:** İş, verileri çöp kutusu 'na taşıyamasa bile başarılı oldu. Sonuç, tabloda daha önce varolan bazı verileri yanlışlıkla içerebilir.<br /><br />**Yeni davranış:** Çöp kutusu klasörüne taşıma başarısız olduğunda, dosyalar kalıcı olarak silinir.|
-|**Kafka 1,0**|**yok**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1,0**|**YOK**|**Apache Spark sürüm notlarında belgelendiği gibi değişiklikler** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |EKLEME ÜZERINE yazma için gereken ek Ranger Hive ilkeleri |**Senaryo:** **Ekleme ÜZERINE yazma** için gereken ek Ranger Hive ilkeleri<br /><br />**Önceki davranış:** Hive **ekleme ÜZERINE yazma** sorguları her zamanki gibi başarılı olur.<br /><br />**Yeni davranış:** VP-2.6. x sürümüne yükselttikten sonra Hive **ekleme ÜZERINE yazma** sorguları hata vererek beklenmedik şekilde başarısız oluyor:<br /><br />Bildiri derlenirken hata: başarısız oldu: HiveAccessControlException Izni reddedildi: Kullanıcı jtikan,/tmp/ \* (State = 42000, Code = 40000) ÜZERINDE yazma ayrıcalığına sahip değil<br /><br />HDP-2.6.0 itibariyle, Hive **ekleme üzerine** yazma sorguları, kullanıcının,, bir kullanıcı adına, bu, bir kullanıcı adına, bu da bir SAYGER ilkesi aracılığıyla verilen yazma ayrıcalığına sahip olsa bile,<br /><br />**Geçici çözüm/beklenen müşteri eylemi:**<br /><br />1. Hive deposu altında yeni bir ilke oluşturun.<br />2. veritabanını gördüğünüz açılan menüde URI 'yi seçin.<br />3. yolu güncelleştirin (örnek:/tmp/*)<br />4. kullanıcıları ve grubu ekleyin ve kaydedin.<br />5. ekleme sorgusunu yeniden deneyin.|
-|**HDFS**|**yok** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
+|**HDFS**|**YOK** |Birden çok KMS URI 'si için bir destek gerekir |**Önceki davranış:** KMS sağlayıcısı yolunu yapılandırmak için DFS. ENCRYPTION. Key. Provider. Uri özelliği kullanılmıştır.<br /><br />**Yeni davranış:** DFS. encryption. Key. Provider. Uri artık, KMS sağlayıcısı yolunu yapılandırmak için Hadoop. Security. Key. Provider. Path için kullanım dışı bırakılmıştır.|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Zamanlayıcıyı devre dışı bırakma seçeneği |**Etkilenen bileşen:** Zeppelin-Server<br /><br />**Önceki davranış:** Zeppelin önceki sürümlerinde, Scheduler 'ı devre dışı bırakma seçeneği yoktu.<br /><br />**Yeni davranış:** Varsayılan olarak, varsayılan olarak devre dışı bırakıldığı için kullanıcılar artık Zamanlayıcı 'yı görmez.<br /><br />**Geçici çözüm/beklenen müşteri eylemi:** Zamanlayıcı 'yı etkinleştirmek istiyorsanız,, ambarı 'ndan Zeppelin ayarlarındaki özel Zeppelin sitesi altında, azeppelin. Not defteri. cron. Enable değerini true değeriyle eklemeniz gerekir.|
 
 ### <a name="known-issues"></a>Bilinen sorunlar

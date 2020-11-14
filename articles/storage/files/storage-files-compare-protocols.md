@@ -8,20 +8,20 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568480"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629317"
 ---
 # <a name="azure-file-share-protocols"></a>Azure dosya paylaşma protokolleri
 
-Azure dosyaları, Azure dosya paylaşımlarınızı bağlamaya ve bağlamaya yönelik iki protokol sunar. [Sunucu Ileti bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme). Azure dosyaları şu anda çoklu protokol erişimini desteklemez, bu nedenle bir paylaşımın yalnızca bir NFS paylaşımında veya bir SMB paylaşımında olabilir. Bu nedenle, Azure dosya paylaşımları oluşturmadan önce gereksinimlerinize en uygun protokolü belirlemeyi öneririz.
+Azure dosyaları, Azure dosya paylaşımlarınızı bağlamaya ve bağlamaya yönelik iki protokol sunar. [Sunucu Ileti bloğu (SMB) protokolü](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme). Azure dosyaları şu anda çoklu protokol erişimini desteklemez, bu nedenle bir paylaşımın yalnızca bir NFS paylaşımında veya bir SMB paylaşımında olabilir. Bu nedenle, Azure dosya paylaşımları oluşturmadan önce gereksinimlerinize en uygun protokolü belirlemeyi öneririz.
 
 ## <a name="differences-at-a-glance"></a>Bir bakışta farklılıklar
 
-|Özellik  |NFS (Önizleme)  |SMB  |
+|Öne çıkan özelliği  |NFS (Önizleme)  |SMB  |
 |---------|---------|---------|
 |Erişim protokolleri     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Desteklenen işletim sistemi     |Linux çekirdek sürümü 4.3 +         |Windows 2008 R2 +, Linux çekirdek sürümü 4.11 +         |
@@ -64,7 +64,7 @@ Tüm Azure dosyaları verileri bekleyen bir şekilde şifrelenir. Azure, aktarı
 - [Özel bir uç nokta](storage-files-networking-overview.md#private-endpoints)
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
     - [Noktadan siteye (P2S) VPN](../../vpn-gateway/point-to-site-about.md)
-    - [Siteden siteye](https://docs.microsoft.com/azure/vpn-gateway/design#s2smulti)
+    - [Siteden siteye](../../vpn-gateway/design.md#s2smulti)
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)
 - [Kısıtlanmış bir genel uç nokta](storage-files-networking-overview.md#storage-account-firewall-settings)
 

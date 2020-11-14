@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880eeb87d8727d65b2aaecdad8b0ed9ccaacea7a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612838"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629861"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure dosyaları ağ uç noktalarını yapılandırma
 
@@ -31,7 +31,7 @@ Bu nasıl yapılır kılavuzu okumadan önce [Azure dosyaları ağ oluşturma ko
 
 - Bu makalede, zaten bir Azure aboneliği oluşturmuş olduğunuz varsayılmaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Bu makalede, Şirket içinden bağlamak istediğiniz bir depolama hesabında bir Azure dosya paylaşımının zaten oluşturulduğunu varsaymış olursunuz. Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
-- Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](/powershell/azure/install-az-ps).
 - Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli).
 
 ## <a name="endpoint-configurations"></a>Uç nokta yapılandırması
@@ -39,15 +39,15 @@ Bu nasıl yapılır kılavuzu okumadan önce [Azure dosyaları ağ oluşturma ko
 Uç noktalarınızı, depolama hesabınıza yönelik ağ erişimini kısıtlamak için yapılandırabilirsiniz. Bir depolama hesabına erişimi bir sanal ağla kısıtlamak için iki yaklaşım vardır:
 
 - [Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun](#create-a-private-endpoint)  ve tüm erişimi genel uç noktaya sınırlayın. Bu, yalnızca istenen sanal ağlardan gelen trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişebilmesini sağlar.
-- [Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın](#restrict-public-endpoint-access). Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişiyorsunuz, ancak erişim yalnızca yapılandırmanızda belirttiğiniz konumlardan alınabilir.
+- [Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın](#restrict-public-endpoint-access). Bu, *hizmet uç noktaları* adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişiyorsunuz, ancak erişim yalnızca yapılandırmanızda belirttiğiniz konumlardan alınabilir.
 
 ### <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
 
 Depolama hesabınız için özel bir uç nokta oluşturulması, aşağıdaki Azure kaynaklarının dağıtılmasının oluşmasına neden olur:
 
-- **Özel uç nokta**: depolama hesabının özel uç noktasını temsil eden bir Azure kaynağı. Bunu, depolama hesabını ve ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
-- **Ağ arabirimi (NIC)**: belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
-- **Özel BIR DNS bölgesi**: daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. DNS A kaydı, bu DNS bölgesindeki depolama hesabı için de oluşturulacaktır. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, var olan DNS bölgesine depolama hesabı için yeni bir kayıt eklenecektir. Bir DNS bölgesinin dağıtımı isteğe bağlıdır, ancak Azure dosya paylaşımlarınızı bir AD hizmet sorumlusu ile veya FileREST API 'sini kullanarak oluşturursanız gereklidir.
+- **Özel uç nokta** : depolama hesabının özel uç noktasını temsil eden bir Azure kaynağı. Bunu, depolama hesabını ve ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
+- **Ağ arabirimi (NIC)** : belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
+- **Özel BIR DNS bölgesi** : daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. DNS A kaydı, bu DNS bölgesindeki depolama hesabı için de oluşturulacaktır. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, var olan DNS bölgesine depolama hesabı için yeni bir kayıt eklenecektir. Bir DNS bölgesinin dağıtımı isteğe bağlıdır, ancak Azure dosya paylaşımlarınızı bir AD hizmet sorumlusu ile veya FileREST API 'sini kullanarak oluşturursanız gereklidir.
 
 > [!Note]  
 > Bu makalede, Azure ortak bölgeleri için depolama hesabı DNS son eki kullanılmaktadır `core.windows.net` . Bu yorum, Azure ABD kamu bulutu ve Azure Çin bulutu gibi Azure Sogeign bulutları için de geçerlidir. ortamınız için uygun son ekleri yerine koyun. 
@@ -151,7 +151,7 @@ Genel uç noktaya erişim devre dışı bırakıldığında, depolama hesabına 
 
 #### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Genel uç noktaya erişimi belirli sanal ağlara kısıtlama
 
-Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sanal ağların içinden genel uç noktaya yönelik isteklere izin vermiş olursunuz. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bu, Özel uç noktalarla veya olmadan kullanılabilir.
+Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sanal ağların içinden genel uç noktaya yönelik isteklere izin vermiş olursunuz. Bu, *hizmet uç noktaları* adlı sanal ağın bir özelliği kullanılarak işe yarar. Bu, Özel uç noktalarla veya olmadan kullanılabilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-restrict-portal](../../../includes/storage-files-networking-endpoints-public-restrict-portal.md)]

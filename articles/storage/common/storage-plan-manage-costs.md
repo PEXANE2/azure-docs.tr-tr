@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a30fe70943c5329b36cbe10b75d47cc0ee3827fc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781847"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630422"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure Blob depolama için maliyetleri planlayın ve yönetin
 
@@ -39,6 +39,9 @@ Azure depolama hesabına veri aktarmaya başlamadan önce maliyetleri tahmin etm
    **Tür** açılır listesinin değerini değiştirirken, bu çalışma sayfasında görünen diğer seçenekler de değişir. Her bir seçeneğin ne olduğu ve bu seçeneklerin depolama ile ilgili işlemlerin fiyatını nasıl etkilediği hakkında daha fazla bilgi edinmek için **daha fazla bilgi** bölümündeki bağlantıları kullanın. 
 
 4. Tahmine göre etkilerini görmek için kalan seçenekleri değiştirin.
+
+   > [!NOTE]
+   > Azure Kurumsal Anlaşma parasal taahhüt krediniz ile Azure Blob Depolama ücretleri için ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere parasal taahhüt kredisi kullanamazsınız.
 
 ## <a name="optimize-costs"></a>Maliyetleri iyileştirin
 
@@ -99,11 +102,15 @@ Azure depolama maliyetlerini maliyet analizi 'nde görüntülemek için:
 
 Önceki örnekte, hizmet için geçerli maliyeti görürsünüz. Azure bölgeleri (konumlar) ve kaynak grubuna göre maliyetler de görüntülenir. Diğer filtreleri de ekleyebilirsiniz (örneğin: belirli depolama hesaplarının maliyetlerini görmek için bir filtre).
 
+## <a name="export-cost-data"></a>Maliyet verilerini dışarı aktarma
+
+Ayrıca, maliyet verilerinizi bir depolama hesabına [dışarı aktarabilirsiniz](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Bu, maliyetler için ek veri analizi yapmanız gerektiğinde veya başkalarının yararlı olması durumunda faydalıdır. Örneğin, bir finans ekipleri, Excel veya Power BI kullanarak verileri analiz edebilir. Maliyetlerinizi günlük, haftalık veya aylık bir zamanlamaya göre dışa aktarabilir ve özel bir tarih aralığı ayarlayabilirsiniz. Maliyet verilerini dışarı aktarmak, maliyet veri kümelerini almak için önerilen yoldur.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Maliyet Analizi](../../cost-management-billing/costs/quick-acm-cost-analysis.md)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
-
-Fiyatlandırma 'nın Azure depolama ile nasıl çalıştığı hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-
-- [Azure depolama genel bakış fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/)
-- [Ayrılmış kapasite ile Blob depolama maliyetlerini iyileştirme](../blobs/storage-blob-reserved-capacity.md)
+- Fiyatlandırma ile Azure depolama ile nasıl çalıştığı hakkında daha fazla bilgi edinin. Bkz. [Azure Storage genel bakış fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
+- [Ayrılmış kapasiteye sahip blob depolaması için maliyetleri iyileştirin](../blobs/storage-blob-reserved-capacity.md).
+- [Azure maliyet yönetimi ile bulut yatırımınızın nasıl iyileştirileceği hakkında](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bilgi edinin.
+- [Maliyet Analizi](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
+- [Beklenmeyen maliyetlerin nasıl önleneceği](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.
+- [Maliyet yönetimi](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın.
