@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/13/2020
 ms.author: jlian
-ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006049"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628807"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT Hub 'de TLS desteği
 
@@ -94,11 +94,11 @@ IoT Hub istemci SDK 'lerinde TLS 1,2 ve izin verilen şifrelemeleri yapılandır
 
 | Dil | TLS 1,2 destekleyen sürümler | Belgeler |
 |----------|------------------------------------|---------------|
-| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantısının](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantısının](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ## <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge kurulumunda TLS 1,2 kullanma
@@ -107,4 +107,4 @@ IoT Edge cihazlar, IoT Hub iletişim kurarken TLS 1,2 kullanacak şekilde yapıl
 
 ## <a name="device-authentication"></a>Cihaz kimlik doğrulaması
 
-Başarılı bir TLS el sıkışması sonrasında, IoT Hub simetrik anahtar veya X. 509.440 sertifikası kullanarak bir cihazın kimliğini doğrulayabilirler. Sertifika tabanlı kimlik doğrulaması için, bu, ECC dahil olmak üzere herhangi bir X. 509.952 sertifikası olabilir. IoT Hub sertifikayı, sağladığınız parmak izine veya sertifika yetkilisine (CA) göre doğrular. IoT Hub, henüz X. 509.440 tabanlı karşılıklı kimlik doğrulamasını desteklemez (mTLS). Daha fazla bilgi için bkz. [desteklenen X. 509.440 sertifikaları](iot-hub-devguide-security.md#supported-x509-certificates).
+Başarılı bir TLS el sıkışması sonrasında, IoT Hub simetrik anahtar veya X. 509.440 sertifikası kullanarak bir cihazın kimliğini doğrulayabilirler. Sertifika tabanlı kimlik doğrulaması için, bu, ECC dahil olmak üzere herhangi bir X. 509.952 sertifikası olabilir. IoT Hub sertifikayı, sağladığınız parmak izine veya sertifika yetkilisine (CA) göre doğrular. Daha fazla bilgi için bkz. [desteklenen X. 509.440 sertifikaları](iot-hub-devguide-security.md#supported-x509-certificates).

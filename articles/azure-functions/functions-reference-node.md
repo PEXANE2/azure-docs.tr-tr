@@ -3,14 +3,14 @@ title: Azure Işlevleri için JavaScript geliştirici başvurusu
 description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422561"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628841"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -508,12 +508,20 @@ Aşağıdaki tabloda, işletim sistemine göre Işlevler çalışma zamanının 
 | İşlevler sürümü | Düğüm sürümü (Windows) | Düğüm sürümü (Linux) |
 |---|---| --- |
 | 'in | 6.11.2 (çalışma zamanı tarafından kilitlendi) | yok |
-| 2.x  | ~ 8<br/>~ 10 (önerilir)<br/>~ 12<sup>*</sup> | ~ 8 (önerilir)<br/>~ 10  |
-| 3.x | ~ 10<br/>~ 12 (önerilir)  | ~ 10<br/>~ 12 (önerilir) |
+| 2.x  | `~8`<br/>`~10` Önerilen<br/>`~12` | `node|8`<br/>`node|10` Önerilen  |
+| 3.x | `~10`<br/>`~12` Önerilen<br/>`~14` Önizle  | `node|10`<br/>`node|12` Önerilen<br/>`node|14` Önizle |
 
-<sup>*</sup>Node ~ 12 ' de Işlevler çalışma zamanının 2. x sürümünde izin veriliyor. Bununla birlikte, en iyi performans için, Işlev çalışma zamanı sürüm 3. x, Node ~ 12 ' yi kullanmanızı öneririz. 
+Çalışma zamanının herhangi bir işlevden günlüğe kaydederek kullandığı geçerli sürümü görebilirsiniz `process.version` .
 
-Yukarıdaki uygulama ayarını veya herhangi bir işlevden yazdırarak çalışma zamanının kullandığı geçerli sürümü görebilirsiniz `process.version` . WEBSITE_NODE_DEFAULT_VERSION [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) desteklenen bir LTS sürümüne (gibi) ayarlayarak Azure 'daki sürümü hedefleyin `~10` .
+### <a name="setting-the-node-version"></a>Düğüm sürümü ayarlanıyor
+
+Windows işlev uygulamaları için `WEBSITE_NODE_DEFAULT_VERSION` [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) desteklenen bir LTS sürümüne ayarlayarak Azure 'daki sürümü hedefleyin `~12` .
+
+Linux işlev uygulamaları için, düğüm sürümünü güncelleştirmek için aşağıdaki Azure CLı komutunu çalıştırın.
+
+```bash
+az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+```
 
 ## <a name="dependency-management"></a>Bağımlılık yönetimi
 Aşağıdaki örnekte gösterildiği gibi, JavaScript kodunuzda topluluk kitaplıklarını kullanmak için tüm bağımlılıkların Azure 'daki İşlev Uygulaması yüklendiğinden emin olmanız gerekir.

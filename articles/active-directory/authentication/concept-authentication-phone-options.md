@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 65c8baa101df5e24780e5e68b5a21b86985608a6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593085"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628127"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-telefon seçeneklerinde kimlik doğrulama yöntemleri
 
@@ -56,6 +56,8 @@ SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrul
 
 Azure AD için telefon kimlik doğrulamasıyla ilgili sorunlar yaşıyorsanız, aşağıdaki sorun giderme adımlarını gözden geçirin:
 
+* "Doğrulama çağrılarında limitimize ulaştınız" veya "oturum açma sırasında" metin Doğrulama kodlarıyla sınırımız "hata iletileriyle karşılaştık
+   * Kimlik doğrulamasını gerçekleştirmek için Micrsoft Authenticator uygulamasını veya doğrulama kodunu kullanın veya daha sonra yeniden deneyin.
 * Tek bir cihazda engellenen arayan KIMLIĞI.
    * Cihazda yapılandırılan tüm engellenen numaraları gözden geçirin.
 * Yanlış telefon numarası veya yanlış ülke/bölge kodu ya da kişisel telefon numarası ile iş telefonu numarası arasında karışıklık.

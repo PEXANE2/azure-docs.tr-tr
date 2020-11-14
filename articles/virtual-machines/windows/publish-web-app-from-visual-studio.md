@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "87088402"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio 'dan bir Azure VM 'de ASP.NET Web uygulaması yayımlama
 
 Bu belgede, Visual Studio 2019 ' de **Microsoft Azure sanal makineler** yayımlama özelliğini kullanarak bir Azure sanal MAKINESINE (VM) bir ASP.NET Web uygulamasının nasıl yayımlanacağı açıklanmaktadır.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bir ASP.NET projesini bir Azure sanal makinesine yayımlamak için Visual Studio 'yu kullanabilmek üzere VM 'nin doğru şekilde ayarlanması gerekir.
 
 - Makinenin bir ASP.NET Web uygulaması çalıştıracak şekilde yapılandırılması ve WebDeploy 'nin yüklü olması gerekir. Daha fazla bilgi için bkz. [WebDeploy ile ASP.net VM oluşturma](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md).

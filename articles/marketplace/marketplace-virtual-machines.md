@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129601"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628297"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Bir sanal makine teklifini planlayın
 
@@ -100,7 +100,7 @@ Aşağıdaki örnekte, Azure Marketi 'nde kullanım tabanlı fiyatlandırmaya sa
 
 Görüntüyü ve fiyatlandırmayı özel bir plan olarak yayımlayarak, sanal makinenizin bulma ve dağıtımını belirli bir müşteri kümesiyle kısıtlayabilirsiniz. Özel planlar, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve hüküm sunma imkanını açar. Özelleştirilmiş terimler, özel fiyatlandırma ve koşullara sahip alan ve sınırlı yayın yazılımına erken erişim dahil olmak üzere çeşitli senaryolar vurgulamanızı sağlar. Özel planlar, belirli fiyatları veya ürünleri sınırlı bir müşteri kümesine vermenizi sağlar.
 
-Daha fazla bilgi için bkz. [Azure Marketi 'nde](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace) [ticari Market teklifleri ve özel teklifler için planlar ve fiyatlandırma](plans-pricing.md) .
+Daha fazla bilgi için bkz. [Microsoft ticari marketi 'nde](private-offers.md) [ticari Market teklifleri ve özel teklifler için planlar ve fiyatlandırma](plans-pricing.md) .
 
 ## <a name="test-drives"></a>Test sürüşleri
 

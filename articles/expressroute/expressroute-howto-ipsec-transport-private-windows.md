@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92208252"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için IPSec aktarım modunu yapılandırma
@@ -43,7 +43,7 @@ Bu diyagramda, ExpressRoute özel eşlemesindeki iletimde IPSec tünelleri göst
 ### <a name="working-with-ipsec-policy"></a>IPSec ilkesiyle çalışma
 
 Windows 'ta şifreleme, IPSec ilkesiyle ilişkilendirilir. IPSec ilkesi, hangi IP trafiğinin güvenli olduğunu ve IP paketlerine uygulanan güvenlik mekanizmasını belirler.
-**IPSec ilkeleri** şu öğelerden oluşur: **filtre listeleri** , **filtre eylemleri** ve **güvenlik kuralları** .
+**IPSec ilkeleri** şu öğelerden oluşur: **filtre listeleri** , **filtre eylemleri** ve **güvenlik kuralları**.
 
 IPSec ilkesini yapılandırırken, aşağıdaki IPSec ilkesi terminolojisini anlamanız önemlidir:
 
@@ -158,7 +158,7 @@ Hedef bağlantı noktası 8080 ile şifrelenmiş HTTP trafiği belirten bir filt
 1. Hangi trafik türlerinin şifrelendiğini nitelemek için bir **IP filtre listesi** kullanın. **IP filtresi listelerini yönet** sekmesinde **Ekle** ' ye tıklayarak yeni bir IP filtresi listesi ekleyin.
 
    [![24]][24]
-2. **Ad:** ALANıNA, IP filtresi listeniz için bir ad yazın. Örneğin, **Azure-OnPremises-HTTP8080** . Ardından **Ekle** ' ye tıklayın.
+2. **Ad:** ALANıNA, IP filtresi listeniz için bir ad yazın. Örneğin, **Azure-OnPremises-HTTP8080**. Ardından **Ekle** ' ye tıklayın.
 
    [![25]][25]
 3. **IP filtresi açıklaması ve yansıtmalı Özellik** sayfasında, **yansıtılmış** ' ı seçin. Yansıtılmış ayar, iki yönlü iletişime olanak sağlayan paketlerle her iki yönde de eşleşir. Ardından **İleri** 'ye tıklayın.
@@ -214,7 +214,7 @@ Güvenlik kuralları ile bir IPSec ilkesi oluşturun.
 1. OU ile ilişkili **Active Directory 'de IPI ilkelerini** seçin. Sağ tıklayın ve **IP Güvenlik Ilkesi oluştur** ' u seçin.
 
    [![37]][37]
-2. Güvenlik ilkesini adlandırın. Örneğin, **ilke-Azure-OnPremises** . Ardından **İleri** ' ye tıklayın.
+2. Güvenlik ilkesini adlandırın. Örneğin, **ilke-Azure-OnPremises**. Ardından **İleri** ' ye tıklayın.
 
    [![38]][38]
 3. Onay kutusunu seçmeden **İleri** ' ye tıklayın.
@@ -255,7 +255,7 @@ IPSec ilkesine, daha önce yapılandırdığınız **IP filtre listesi** ve **fi
 7. Windows dört farklı kimlik doğrulaması türünü destekler: Kerberos, sertifikalar, NTLMv2 ve önceden paylaşılan anahtar. Etki alanına katılmış konaklarla çalıştıyoruz, **Active Directory varsayılan (Kerberos V5 protokolü)** öğesini seçin ve ardından **İleri** ' ye tıklayın.
 
    [![47]][47]
-8. Yeni ilke güvenlik kuralını oluşturur: **Azure-OnPremises-HTTP8080** . **Tamam** ’a tıklayın.
+8. Yeni ilke güvenlik kuralını oluşturur: **Azure-OnPremises-HTTP8080**. **Tamam** düğmesine tıklayın.
 
    [![48]][48]
 

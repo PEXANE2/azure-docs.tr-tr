@@ -1,6 +1,6 @@
 ---
 title: Microsoft Identity platform için uygulama türleri | Mavisi
-description: Microsoft Identity platform (v 2.0) uç noktası tarafından desteklenen uygulama ve senaryoların türleri.
+description: Microsoft Identity platform uç noktası tarafından desteklenen uygulama ve senaryoların türleri.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: aaddev, fasttrack-edit, contperfq2
+ms.openlocfilehash: 4c72d1b4b78c0b7ca9e7fa1f6468beb6fdd4b247
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103161"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628093"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
-Microsoft Identity platform (v 2.0) uç noktası, çeşitli modern uygulama mimarilerinin kimlik doğrulamasını destekler. Bu, endüstri standardı protokoller [OAuth 2,0 veya OpenID Connect](active-directory-v2-protocols.md)' i temel alır. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak Microsoft Identity platform kullanarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Bilgiler, [kodla çalışmaya](v2-overview.md#getting-started)başlamadan önce üst düzey senaryoları anlamanıza yardımcı olmak için tasarlanmıştır.
+Microsoft Identity platform uç noktası, çeşitli modern uygulama mimarilerinin kimlik doğrulamasını destekler. Bu, tüm bunlar, sektör standardı protokoller [OAuth 2,0 veya OpenID Connect](active-directory-v2-protocols.md)' i temel alır. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak Microsoft Identity platform kullanarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Bilgiler, [uygulama senaryolarında](authentication-flows-app-scenarios.md#application-scenarios)kodla çalışmaya başlamadan önce üst düzey senaryoları anlamanıza yardımcı olmak için tasarlanmıştır.
 
 ## <a name="the-basics"></a>Temel bilgiler
 
@@ -81,10 +81,9 @@ Web sunucusu uygulamalarında, oturum açma kimlik doğrulama akışı şu üst 
 
 KIMLIK belirtecini Microsoft Identity platform uç noktasından alınan bir ortak imzalama anahtarıyla doğrulayarak kullanıcının kimliğini sağlayabilirsiniz. Sonraki sayfa isteklerinde kullanıcıyı tanımlamak için kullanılabilen bir oturum tanımlama bilgisi ayarlanır.
 
-Bu senaryoyu eylemde görmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki Web uygulaması oturum açma kodu örneklerinden birini deneyin.
+Bu senaryoyu eylemde görmek için, [Kullanıcılar senaryosunda oturum açan Web](scenario-web-app-sign-user-overview.md)uygulamasındaki kod örneklerini deneyin.
 
 Basit oturum açma 'ya ek olarak, bir Web sunucusu uygulamasının bir REST API gibi başka bir Web hizmetine erişmesi gerekebilir. Bu durumda, Web sunucusu uygulaması, [oauth 2,0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanarak birleştirilmiş bir OpenID Connect ve OAuth 2,0 akışında yer geçirir. Bu senaryo hakkında daha fazla bilgi için [Web uygulamaları ve Web API 'leri ile çalışmaya başlama](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)konusunu okuyun.
-
 
 ## <a name="web-apis"></a>Web API'leri
 
@@ -106,7 +105,7 @@ Web API 'SI, Web sunucusu uygulamaları, masaüstü ve mobil uygulamalar, tek sa
 
 ![Web API kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-OAuth2 erişim belirteçlerini kullanarak bir Web API 'sinin güvenliğini sağlama hakkında bilgi edinmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki Web API 'si kod örneklerine bakın.
+OAuth2 erişim belirteçlerini kullanarak bir Web API 'sinin güvenliğini sağlama hakkında bilgi edinmek için, [korumalı Web API 'si senaryosundaki](scenario-protected-web-api-overview.md)Web API kodu örneklerine bakın.
 
 Çoğu durumda, Web API 'Lerinin Microsoft Identity platform tarafından güvenliği sağlanmış diğer aşağı akış Web API 'Lerine giden istekler de yapması gerekir. Bunu yapmak için Web API 'Leri, Web API 'sinin giden isteklerde kullanılacak başka bir erişim belirtecinin gelen erişim belirtecini değiş tokuş etmesine olanak **tanıyan akışdan** faydalanabilir. Daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0-adına akışı](v2-oauth2-on-behalf-of-flow.md).
 

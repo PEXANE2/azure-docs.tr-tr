@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 122e44da7bbf4229f932eefdae4c70dc49f43bfe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 247aea49d60c2d953d8b6dff37d22188a5442a1f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371298"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625193"
 ---
 Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. 
 
@@ -44,9 +44,9 @@ Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azur
 1. Visual Studio 'da *Bingimagesearch* adlı yeni bir konsol çözümü oluşturun.
     
 1. Bilişsel [resim arama NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch) ekleme
-    1. **Çözüm Gezgini**' de projenize sağ tıklayın.
-    1. **NuGet Paketlerini Yönet**' i seçin.
-    1. *Microsoft. Azure. Biliveservices. Search. ımagesearch*için arama yapın ve seçin ve ardından paketi yükler.
+    1. **Çözüm Gezgini** ' de projenize sağ tıklayın.
+    1. **NuGet Paketlerini Yönet** ' i seçin.
+    1. *Microsoft. Azure. Biliveservices. Search. ımagesearch* için arama yapın ve seçin ve ardından paketi yükler.
     
 # <a name="vs-code"></a>[VS Code](#tab/vscode)
 
@@ -129,12 +129,12 @@ if (imageResults != null)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Resim Arama tek sayfalı uygulama öğreticisi](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Bing Resim Arama tek sayfalı uygulama öğreticisi](../../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bing Resim Arama nedir?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Resim Arama nedir?](../../overview.md)  
 * [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Azure Bilişsel Hizmetler SDK’sı için .NET örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
-* [Azure bilişsel hizmetler belgeleri](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Resim Arama API’si başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure Bilişsel Hizmetler Belgeleri](../../../index.yml)
+* [Bing Resim Arama API’si başvurusu](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

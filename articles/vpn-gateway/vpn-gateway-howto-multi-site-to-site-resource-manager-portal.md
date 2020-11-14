@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92890177"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>VNet 'e ek S2S bağlantısı ekleme: Azure portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure portalı](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasik)](vpn-gateway-multi-site.md)
 >
 
@@ -26,7 +26,7 @@ Bu makale, var olan bağlantısı olan bir VPN ağ geçidine siteden siteye (S2S
 
 Bu makale, RouteBased VPN ağ geçidi olan Kaynak Yöneticisi sanal ağlar için geçerlidir. Bu adımlar, yeni ExpressRoute/siteden siteye birlikte var olan bağlantı yapılandırmalarına yönelik olarak geçerli değildir. Ancak, zaten var olan bir birlikte bulunan yapılandırmaya yalnızca yeni bir VPN bağlantısı ekliyorsanız, bu adımları kullanabilirsiniz. Birlikte var olan bağlantılar hakkında bilgi için bkz. [ExpressRoute/S2S birlikte var bağlantıları](../expressroute/expressroute-howto-coexist-resource-manager.md) .
 
-## <a name="prerequisites"></a><a name="before"></a>Önkoşullar
+## <a name="prerequisites"></a><a name="before"></a>Ön koşullar
 
 Aşağıdaki öğeleri doğrulayın:
 
@@ -47,7 +47,7 @@ Aşağıdaki öğeleri doğrulayın:
 1. **Bağlantılar** sayfasında **+ Ekle** ' yi seçin.
 1. Bu, **bağlantı ekle** sayfasını açar.
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="VPN Gateway bağlantıları":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="Bağlantı sayfası ekle":::
 1. **Bağlantı ekle** sayfasında, aşağıdaki alanları doldurun:
 
    * **Ad:** Bağlantısını oluşturmakta olduğunuz siteye vermek istediğiniz ad.
@@ -58,7 +58,7 @@ Aşağıdaki öğeleri doğrulayın:
 1. **Yerel ağ geçidi** alanı için **_yerel ağ geçidi seçin_ _ ' i seçin *. Bu, _* yerel ağ geçidi Seç sayfasını açar** .
 1. **+ Yeni oluştur** ' u seçerek **yerel ağ geçidi oluştur** sayfasını açın.
 
-   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="VPN Gateway bağlantıları":::
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="Yerel ağ geçidi Oluştur sayfası":::
 1. **Yerel ağ geçidi oluştur** sayfasında, aşağıdaki alanları doldurun:
 
    * **Ad:** Yerel ağ geçidi kaynağına vermek istediğiniz ad.

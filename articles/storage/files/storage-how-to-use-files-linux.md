@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004791"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626765"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `mount` ' de bir giriş oluşturarak, komut ve önyükleme ile isteğe bağlı `/etc/fstab` .
@@ -47,19 +47,19 @@ uname -r
     sudo apt install cifs-utils
     ```
 
-    **Fedora**, **Red Hat Enterprise Linux 8 +** ve **CentOS 8 +**' da `dnf` paket yöneticisini kullanın:
+    **Fedora** , **Red Hat Enterprise Linux 8 +** ve **CentOS 8 +** ' da `dnf` paket yöneticisini kullanın:
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    **Red Hat Enterprise Linux** ve **CentOS**'ın eski sürümlerinde Paket Yöneticisi ' ni kullanın `yum` :
+    **Red Hat Enterprise Linux** ve **CentOS** 'ın eski sürümlerinde Paket Yöneticisi ' ni kullanın `yum` :
 
     ```bash
     sudo yum install cifs-utils 
     ```
 
-    **OpenSUSE**'de `zypper` paket yöneticisini kullanın:
+    **OpenSUSE** 'de `zypper` paket yöneticisini kullanın:
 
     ```bash
     sudo zypper install cifs-utils
@@ -67,9 +67,9 @@ uname -r
 
     Diğer dağıtımlarda, uygun paket yöneticisini veya [kaynaktan derlemeyi](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download) kullanın
 
-* **Azure komut satırı arabirimi 'nin (CLı) en son sürümü.** Azure CLı 'nın nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve işletim sisteminizi seçmek. PowerShell 6 + ' da Azure PowerShell modülünü kullanmayı tercih ederseniz, Azure CLı için aşağıdaki yönergeler sunulmaktadır.
+* **Azure komut satırı arabirimi 'nin (CLı) en son sürümü.** Azure CLı 'nın nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latest) ve işletim sisteminizi seçmek. PowerShell 6 + ' da Azure PowerShell modülünü kullanmayı tercih ederseniz, Azure CLı için aşağıdaki yönergeler sunulmaktadır.
 
-* **Bağlantı noktası 445 ' ün açık olduğundan emin olun**: SMB, TCP bağlantı noktası 445 üzerinden iletişim kurar. güvenlik duvarınızın istemci MAKINESINDEN gelen TCP 445 bağlantı noktalarını engelleyip engellemediğini denetleyin.  `<your-resource-group>`Öğesini değiştirin ve `<your-storage-account>` sonra aşağıdaki betiği çalıştırın:
+* **Bağlantı noktası 445 ' ün açık olduğundan emin olun** : SMB, TCP bağlantı noktası 445 üzerinden iletişim kurar. güvenlik duvarınızın istemci MAKINESINDEN gelen TCP 445 bağlantı noktalarını engelleyip engellemediğini denetleyin.  `<your-resource-group>`Öğesini değiştirin ve `<your-storage-account>` sonra aşağıdaki betiği çalıştırın:
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -99,7 +99,7 @@ Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için
 İsterseniz aynı Azure dosya paylaşımının birden çok bağlama noktasına bağlayabilirsiniz.
 
 ### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Azure dosya paylaşımından isteğe bağlı olarak bağlama `mount`
-1. **Bağlama noktası için bir klasör oluşturun**: `<your-resource-group>` , `<your-storage-account>` , ve ile `<your-file-share>` ortamınıza uygun bilgileri değiştirin:
+1. **Bağlama noktası için bir klasör oluşturun** : `<your-resource-group>` , `<your-storage-account>` , ve ile `<your-file-share>` ortamınıza uygun bilgileri değiştirin:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -135,7 +135,7 @@ Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için
 Azure dosya paylaşımını kullanarak işiniz bittiğinde, `sudo umount $mntPath` paylaşımını çıkarmak için kullanabilirsiniz.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>İle Azure dosya paylaşımının kalıcı bir bağlama noktası oluşturun `/etc/fstab`
-1. **Bağlama noktası için bir klasör oluşturun**: bir bağlama noktası klasörü dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu/mntın altında oluşturmak yaygın bir kuraldır. Örneğin, aşağıdaki komut yeni bir dizin oluşturur,, ve ile `<your-resource-group>` `<your-storage-account>` `<your-file-share>` ortamınıza uygun bilgileri alır:
+1. **Bağlama noktası için bir klasör oluşturun** : bir bağlama noktası klasörü dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu/mntın altında oluşturmak yaygın bir kuraldır. Örneğin, aşağıdaki komut yeni bir dizin oluşturur,, ve ile `<your-resource-group>` `<your-storage-account>` `<your-file-share>` ortamınıza uygun bilgileri alır:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -174,7 +174,7 @@ Azure dosya paylaşımını kullanarak işiniz bittiğinde, `sudo umount $mntPat
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. Aşağıdaki **satırı ' ye `/etc/fstab` eklemek için aşağıdaki komutu kullanın **: aşağıdaki örnekte, yerel Linux dosyası ve klasörü izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), sahip grubundaki kullanıcılar için okuma ve yürütme ve sistemdeki diğerleri için okuma ve yürütme anlamına gelir. `uid` `gid` Bağlama IÇIN Kullanıcı kimliğini ve grup kimliğini ayarlamak için ve bağlama seçeneklerini kullanabilirsiniz. Ayrıca, `dir_mode` `file_mode` istediğiniz gibi özel izinleri ayarlamak için ve kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) .
+1. Aşağıdaki **satırı ' ye `/etc/fstab` eklemek için aşağıdaki komutu kullanın** : aşağıdaki örnekte, yerel Linux dosyası ve klasörü izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), sahip grubundaki kullanıcılar için okuma ve yürütme ve sistemdeki diğerleri için okuma ve yürütme anlamına gelir. `uid` `gid` Bağlama IÇIN Kullanıcı kimliğini ve grup kimliğini ayarlamak için ve bağlama seçeneklerini kullanabilirsiniz. Ayrıca, `dir_mode` `file_mode` istediğiniz gibi özel izinleri ayarlamak için ve kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) .
 
     ```bash
     # This command assumes you have logged in with az login
@@ -207,19 +207,19 @@ Azure dosya paylaşımını kullanarak işiniz bittiğinde, `sudo umount $mntPat
     sudo apt update
     sudo apt install autofs
     ```
-    **Fedora**, **Red Hat Enterprise Linux 8 +** ve **CentOS 8 +**' da `dnf` paket yöneticisini kullanın:
+    **Fedora** , **Red Hat Enterprise Linux 8 +** ve **CentOS 8 +** ' da `dnf` paket yöneticisini kullanın:
     ```bash
     sudo dnf install autofs
     ```
-    **Red Hat Enterprise Linux** ve **CentOS**'ın eski sürümlerinde Paket Yöneticisi ' ni kullanın `yum` :
+    **Red Hat Enterprise Linux** ve **CentOS** 'ın eski sürümlerinde Paket Yöneticisi ' ni kullanın `yum` :
     ```bash
     sudo yum install autofs 
     ```
-    **OpenSUSE**'de `zypper` paket yöneticisini kullanın:
+    **OpenSUSE** 'de `zypper` paket yöneticisini kullanın:
     ```bash
     sudo zypper install autofs
     ```
-2. **Paylaşımlar için bağlama noktası oluştur**:
+2. **Paylaşımlar için bağlama noktası oluştur** :
    ```bash
     sudo mkdir /fileshares
     ```
@@ -326,5 +326,5 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 Azure Dosyaları hakkında daha fazla bilgi edinmek için şu bağlantılara göz atın:
 
 * [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
-* [SSS](../storage-files-faq.md)
+* [SSS](./storage-files-faq.md)
 * [Sorun giderme](storage-troubleshoot-linux-file-connection-problems.md)

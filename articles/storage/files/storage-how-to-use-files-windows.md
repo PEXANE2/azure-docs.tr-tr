@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329355"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626903"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -46,7 +46,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 445 numaralı bağlantı noktasının açık olduğundan emin olun: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. Güvenlik duvarınızın, cmdlet ile 445 bağlantı noktasını engelleyip engellemediğini kontrol edebilirsiniz `Test-NetConnection` . Engellenen 445 bağlantı noktasına geçici çözüm yolları hakkında bilgi edinmek için, Windows sorun giderme kılavuzumuzdan [1: bağlantı noktası 445 engellendi](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) bölümüne bakın.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
-Bir Azure dosya paylaşımını Windows'da kullanmak için bağlayarak bir sürücü harfi veya bağlama noktası yolu atamanız veya [UNC adı](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) aracılığıyla erişmeniz gerekir. 
+Bir Azure dosya paylaşımını Windows'da kullanmak için bağlayarak bir sürücü harfi veya bağlama noktası yolu atamanız veya [UNC adı](/windows/win32/fileio/naming-a-file) aracılığıyla erişmeniz gerekir. 
 
 Bu makale, dosya paylaşımıyla erişmek için depolama hesabı anahtarını kullanır. Depolama hesabı anahtarı, eriştiğiniz dosya paylaşımındaki tüm dosya ve klasörlere yönelik yönetici izinleri ve depolama hesabınızda bulunan tüm dosya paylaşımları ve diğer depolama kaynakları (blob 'lar, kuyruklar, tablolar vb.) dahil olmak üzere bir depolama hesabı için yönetici anahtarıdır. İş yükünüz için yeterli değilse, [Azure dosya eşitleme](storage-sync-files-planning.md) KULLANILABILIR veya [SMB üzerinden kimlik tabanlı kimlik doğrulaması](storage-files-active-directory-overview.md)kullanabilirsiniz.
 
@@ -60,19 +60,19 @@ Bu betiği almak için:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Bağlamak istediğiniz dosya paylaşımının bulunduğu depolama hesabına gidin.
-1. **Dosya paylaşımları**’nı seçin.
+1. **Dosya paylaşımları** ’nı seçin.
 1. Bağlamak istediğiniz dosya payını seçin.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="örneğinde":::
 
-1. **Bağlan**'ı seçin.
+1. **Bağlan** ’ı seçin.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="örneğinde":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Dosya paylaşımınız için Bağlan simgesinin ekran görüntüsü.":::
 
 1. Paylaşımın bağlanması için sürücü harfini seçin.
 1. Belirtilen betiği kopyalayın.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="örneğinde":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Örnek metin":::
 
 1. Betiği, dosya paylaşımının üzerine bağlamak istediğiniz konaktaki bir kabuğa yapıştırın ve çalıştırın.
 
@@ -84,7 +84,7 @@ Azure dosya paylaşımınızı artık taktıysanız.
 
 1. Dosya Gezgini'ni açın. Başlat Menüsünden veya Win+E kısayoluna basarak açılabilir.
 
-1. Pencerenin sol tarafındaki **Bu bilgisayara** gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
+1. Pencerenin sol tarafındaki **Bu bilgisayara** gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde, **Ağ Sürücüsüne Bağlan** ' ı seçin.
     
     ![“Ağ sürücüsüne bağlan” açılan menüsünün ekran görüntüsü](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
@@ -100,26 +100,26 @@ Azure dosya paylaşımınızı artık taktıysanız.
     
     ![Azure dosya paylaşımı artık bağlanmıştır](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-1. Azure Dosya paylaşımını çıkarmaya hazır olduğunuzda, Dosya Gezgini’ndeki **Ağ konumları**'nın altında bulunan girdiye sağ tıklayıp **Bağlantıyı kes**'i seçerek bunu yapabilirsiniz.
+1. Azure Dosya paylaşımını çıkarmaya hazır olduğunuzda, Dosya Gezgini’ndeki **Ağ konumları** 'nın altında bulunan girdiye sağ tıklayıp **Bağlantıyı kes** 'i seçerek bunu yapabilirsiniz.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows'dan paylaşım anlık görüntülerine erişme
 El ile veya betik ya da Azure Backup gibi bir hizmet aracılığıyla otomatik olarak paylaşım anlık görüntüsü aldıysanız Windows'da dosya paylaşımından bir paylaşımın, dizinin veya belirli bir dosyanın önceki sürümlerini görüntüleyebilirsiniz. [Azure PowerShell](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md)veya [Azure Portal](storage-how-to-use-files-portal.md)kullanarak bir paylaşma anlık görüntüsü alabilirsiniz.
 
 #### <a name="list-previous-versions"></a>Önceki sürümleri listeleme
-Geri yüklemek istediğiniz öğeye veya üst öğeye gidin. Çift tıklayarak istenen dizine gidin. Sağ tıklayın ve açılan menüden **Özellikler**'i seçin.
+Geri yüklemek istediğiniz öğeye veya üst öğeye gidin. Çift tıklayarak istenen dizine gidin. Sağ tıklayın ve açılan menüden **Özellikler** 'i seçin.
 
 ![Seçilen dizin için sağ tıklama menüsü](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
 
-Bu dizine ait paylaşım anlık görüntülerinin listesini görmek için **Önceki Sürümler**'i seçin. Ağ hızına ve dizindeki paylaşım anlık görüntüsü sayısına bağlı olarak listenin yüklenmesi birkaç saniye sürebilir.
+Bu dizine ait paylaşım anlık görüntülerinin listesini görmek için **Önceki Sürümler** 'i seçin. Ağ hızına ve dizindeki paylaşım anlık görüntüsü sayısına bağlı olarak listenin yüklenmesi birkaç saniye sürebilir.
 
 ![Önceki Sürümler sekmesi](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
 
-Belirli bir anlık görüntüyü açmak için **Aç**'ı seçebilirsiniz. 
+Belirli bir anlık görüntüyü açmak için **Aç** 'ı seçebilirsiniz. 
 
 ![Açılan anlık görüntü](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>Önceki sürümü geri yükleme
-Anlık görüntü oluşturma zamanındaki dizin içeriğinin tamamını özgün konuma yinelemeli bir şekilde kopyalamak için **Geri yükle**'yi seçin.
+Anlık görüntü oluşturma zamanındaki dizin içeriğinin tamamını özgün konuma yinelemeli bir şekilde kopyalamak için **Geri yükle** 'yi seçin.
 
  ![Uyarı iletisindeki geri yükleme düğmesi](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
@@ -196,11 +196,11 @@ Bu kayıt defteri anahtarını oluşturduktan sonra SMB 1'i devre dışı bırak
 ### <a name="smb-resources"></a>SMB kaynakları
 - [SMB 1'i kullanmayı durdurma](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)
 - [SMB 1 Product Clearinghouse](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)
-- [DSCEA ile ortamınızda SMB 1'i keşfetme](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
-- [SMB 1'i Grup İlkesi ile devre dışı bırakma](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
+- [DSCEA ile ortamınızda SMB 1'i keşfetme](/archive/blogs/ralphkyttle/discover-smb1-in-your-environment-with-dscea)
+- [SMB 1'i Grup İlkesi ile devre dışı bırakma](/archive/blogs/secguide/disabling-smbv1-through-group-policy)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Dosyaları hakkında daha fazla bilgi edinmek için şu bağlantılara göz atın:
 - [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
-- [SSS](../storage-files-faq.md)
-- [Windows’da sorun giderme](storage-troubleshoot-windows-file-connection-problems.md)      
+- [SSS](./storage-files-faq.md)
+- [Windows’da sorun giderme](storage-troubleshoot-windows-file-connection-problems.md)

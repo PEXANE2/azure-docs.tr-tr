@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 56bcc4e4936371b58d78f6de5ce4c2d25fbf614d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 465544f1d861fc09d4b843270c6f3527036ee6a8
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442812"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628015"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma
 
@@ -25,7 +25,7 @@ Bir istemci uygulama nesnesi oluşturduktan sonra, bir Web API 'sini çağırmak
 
 ## <a name="code-in-the-controller"></a>Denetleyicideki kod
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 *Microsoft. Identity. Web* , Microsoft Graph veya bir aşağı akış Web API 'sine çağrı yapmak için kullanışlı hizmetler sağlayan uzantı yöntemleri ekler. Bu yöntemler, [Web API 'lerini çağıran bir Web API](scenario-web-api-call-api-call-api.md)'sinde ayrıntılı olarak AÇıKLANMıŞTıR: API çağrısı. Bu yardımcı yöntemlerle el ile belirteç almanız gerekmez.
 
@@ -63,7 +63,8 @@ public class MyApiController : Controller
 
 Yöntemi hakkında daha fazla bilgi için `callTodoListService` bkz.  [Web API 'Leri çağıran BIR Web API 'SI: API çağırma](scenario-web-api-call-api-call-api.md).
 
-# <a name="java"></a>[Java](#tab/java)
+### <a name="java"></a>[Java](#tab/java)
+
 API denetleyicilerinin eylemlerinde çağrılan kod örneği aşağıda verilmiştir. Aşağı akış API 'sini Microsoft Graph çağırır.
 
 ```java
@@ -84,9 +85,13 @@ public class ApiController {
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Python Web API 'SI, istemciden alınan taşıyıcı belirtecini doğrulamak için ara yazılım kullanılmasını gerektirir. Web API 'si daha sonra yöntemi çağırarak MSAL Python kitaplığını kullanarak bir aşağı akış API 'sine ait erişim belirtecini alabilir [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+
+## <a name="advanced-accessing-the-signed-in-users-token-cache-from-background-apps-apis-and-services"></a>Ileri Arka plan uygulamaları, API 'Ler ve hizmetlerden oturum açmış kullanıcının belirteç önbelleğine erişme
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ---
 

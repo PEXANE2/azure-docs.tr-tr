@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 08/27/2020
-ms.openlocfilehash: 9f58d03e2cfa7e1ab9c359cdb6600c42c8970a9a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/02/2020
+ms.openlocfilehash: a9d2c10d665af6899ec79312353676467a623735
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125810"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628892"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -40,13 +40,13 @@ Daha önce yapmadıysanız, sizin (veya kuruluşunuzun Yöneticisi) Iş Ortağı
 
 ### <a name="open-developer-settings"></a>Geliştirici ayarlarını aç
 
-**Hesap ayarları** , Iş Ortağı Merkezi ' nde [ticari Market panonuzun](https://partner.microsoft.com/dashboard/commercial-marketplace) sağ üst köşesinde bulunur. Dişli simgesini (panonun sağ üst köşesinin yakınında) seçin ve ardından **Geliştirici ayarları** ' nı seçin.
+Iş Ortağı Merkezi 'ndeki [ticari Market panonuzda](https://partner.microsoft.com/dashboard/commercial-marketplace) sağ üst köşedeki **Ayarlar** (dişli simgesi) ve ardından **Geliştirici ayarları** ' nı seçin.
 
 ![Iş Ortağı Merkezi 'nde hesap ayarları menüsü](./media/dashboard-developer-settings.png)
 
-**Hesap ayarları** içinde şunları görüntüleyebileceksiniz:
+**Hesap ayarları** ' nda, şunları görüntüleyebilirsiniz:
 - **Hesap ayrıntıları** : hesap türü ve hesap durumu
-- **Yayımcı kimlikleri** : satıcı kimliği, Kullanıcı kimliği, Yayımcı kimliği, Azure AD kiracılar vb.
+- **Yayımcı kimlikleri** : satıcı kimliği, Kullanıcı kimliği, Yayımcı kimliği, Azure AD kiracılar, vb.
 - **İletişim bilgisi** : yayımcı görünen adı, satıcı iletişim adı, e-posta, telefon ve adres
 - **Izleme GUID 'leri** : tüm Izleme GUID 'leri hesabınızla ilişkilendirin
 
@@ -292,7 +292,7 @@ Azure AD uygulamanız Microsoft Azure AD verileri okuyup yazıyorsa, anahtar ger
 
 - **Sahibi**
   - "Bu, tüm hesap kullanıcılarını oluşturma ve düzenleme ve tüm finansal ve hesap ayarlarını değiştirme özelliği de dahil olmak üzere, ilk olarak hesabı oluşturan ve ona tamamen erişim sağlayan kişidir. Hesap genellikle yalnızca bir sahibe sahiptir. "
-- **Manager**
+- **Yönetici**
   - Vergi ve ödeme ayarları hariç tüm Microsoft hesabı özelliklerine erişebilir
   - Kullanıcıları, rolleri ve iş hesaplarını (kiracılar) yönetebilir
 - **Geliştirici**

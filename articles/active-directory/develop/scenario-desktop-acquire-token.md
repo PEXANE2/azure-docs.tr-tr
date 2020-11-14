@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443237"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628110"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -183,7 +183,7 @@ Android 'de, ayrıca gösterildiği gibi ana etkinliği de belirtmeniz gerekir. 
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Etkileşimli olduğundan, Kullanıcı arabirimi önemlidir. `AcquireTokenInteractive` , kendisini destekleyen platformlar için üst Kullanıcı arabirimini belirten belirli bir isteğe bağlı parametreye sahiptir. Bir masaüstü uygulamasında kullanıldığında, `.WithParentActivityOrWindow` platforma bağlı olan farklı bir türü vardır. Alternatif olarak, oturum açma iletişim kutusunun ekranda nerede göründüğünü denetlemek istemediğiniz bir pencere oluşturmak için isteğe bağlı üst pencere parametresini atlayabilirsiniz. Bu durum, komut satırı tabanlı uygulamalar için geçerli olur, başka bir arka uç hizmetine çağrı geçirmek için kullanılır ve herhangi bir Windows for User etkileşimi gerekmez. 
+Etkileşimli olduğundan, Kullanıcı arabirimi önemlidir. `AcquireTokenInteractive` , kendisini destekleyen platformlar için üst Kullanıcı arabirimini belirten belirli bir isteğe bağlı parametreye sahiptir. Bir masaüstü uygulamasında kullanıldığında, `.WithParentActivityOrWindow` platforma bağlı olan farklı bir türü vardır. Alternatif olarak, oturum açma iletişim kutusunun ekranda nerede göründüğünü denetlemek istemediğiniz bir pencere oluşturmak için isteğe bağlı üst pencere parametresini atlayabilirsiniz. Bu durum, komut satırı tabanlı uygulamalar için geçerli olur, başka bir arka uç hizmetine çağrı geçirmek için kullanılır ve herhangi bir Windows for User etkileşimi gerekmez.
 
 ```csharp
 // net45
@@ -278,7 +278,7 @@ MSAL.NET ekibi, bu genişletilebilirlik mekanizmasını kullanmak için UI testl
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>SystemWebViewOptions ile harika bir deneyim sağlayın
 
-MSAL.NET 4,1 ' den şunları [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) belirtebilirsiniz:
+MSAL.NET 4,1 ' den şunları [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions) belirtebilirsiniz:
 
 - `BrowserRedirectError` `HtmlMessageError` Sistem Web tarayıcısında oturum açma veya onay hataları durumunda görüntülenecek URI () veya HTML parçası ().
 - `BrowserRedirectSuccess` `HtmlMessageSuccess` Başarılı oturum açma veya onay durumunda görüntülenecek URI () veya HTML parçası ().
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Diğer isteğe bağlı parametreler
 
-İçin diğer tüm isteğe bağlı parametreler hakkında daha fazla bilgi edinmek için `AcquireTokenInteractive` bkz. [Acquiretokenınteractiveparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+İçin diğer tüm isteğe bağlı parametreler hakkında daha fazla bilgi edinmek için `AcquireTokenInteractive` bkz. [Acquiretokenınteractiveparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-AcquireTokenByIntegratedWindowsAuthentication üzerindeki olası değiştiricilerin listesi için bkz. [Acquiretokenbyıntegratedwindowsauthparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods).
+AcquireTokenByIntegratedWindowsAuthentication üzerindeki olası değiştiricilerin listesi için bkz. [Acquiretokenbyıntegratedwindowsauthparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Uygulanabilecek tüm değiştiriciler hakkında daha fazla bilgi için `AcquireTokenByUsernamePassword` bkz. [Acquiretokenbyusernamepasswordparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
+Uygulanabilecek tüm değiştiriciler hakkında daha fazla bilgi için `AcquireTokenByUsernamePassword` bkz. [Acquiretokenbyusernamepasswordparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1387,6 +1387,10 @@ namespace CommonCacheMsalV3
  }
 }
 ```
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>Ileri Arka plan uygulamaları ve hizmetlerinde kullanıcının önbelleğe alınmış belirteçlerine erişme
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

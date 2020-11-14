@@ -8,16 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873192"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628042"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Blazor Server uygulaması oluşturma
 
-Blazor Server, Razor bileşenlerini bir ASP.NET Core uygulamasındaki sunucuda barındırmak için destek sağlar. Bu öğreticide, Microsoft Identity platformu ile Blazor sunucu uygulamasındaki Microsoft Graph kimlik doğrulamanın nasıl uygulanacağını ve verilerin nasıl alınacağını öğreneceksiniz.
+Blazor Server, Razor bileşenlerini bir ASP.NET Core uygulamasındaki sunucuda barındırmak için destek sağlar. Bu öğreticide, Microsoft Identity platformunu kullanarak ve uygulamanızı Azure Active Directory (Azure AD) ile kaydederek bir Blazor sunucu uygulamasındaki Microsoft Graph kimlik doğrulaması ve verileri alma hakkında bilgi edineceksiniz.
+
+Ayrıca, [Blazor](tutorial-blazor-webassembly.md)te için bir öğretici sunuyoruz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -35,14 +37,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Kimlik doğrulaması için Azure Active Directory (Azure AD) kullanan her uygulamanın Azure AD 'ye kayıtlı olması gerekir. Bu eklemeleri kullanarak [bir uygulamayı kaydetme](quickstart-register-app.md) bölümündeki yönergeleri izleyin:
 
-- **Desteklenen hesap türleri**için **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
+- **Desteklenen hesap türleri** için **yalnızca bu kuruluş dizinindeki hesaplar** ' ı seçin.
 - **Yeniden yönlendirme URI 'si** açılan öğesini **Web** olarak ayarlayın ve girin `https://localhost:5001/signin-oidc` . Kestrel üzerinde çalışan bir uygulamanın varsayılan bağlantı noktası 5001 ' dir. Uygulama farklı bir bağlantı noktasında kullanılabiliyorsa, yerine bu bağlantı noktası numarasını belirtin `5001` .
 
-**Kimlik doğrulama**  >  **örtük izni**' nda, **erişim belirteçleri** ve **Kimlik belirteçleri**onay kutularını işaretleyin ve ardından **Kaydet** düğmesini seçin.
+**Kimlik doğrulama**  >  **örtük izni** ' nda, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını işaretleyin ve ardından **Kaydet** düğmesini seçin.
 
 Son olarak, uygulama korumalı bir API 'yi çağırdığı için (Bu durumda Microsoft Graph), bu API 'yi çağırmak için bir erişim belirteci istediğinde kimliğini doğrulamak için bir istemci parolası gerekir.
 
-1. Aynı uygulama kaydı içinde, **Yönet**altında **Sertifikalar & gizlilikler**' ı seçin.
+1. Aynı uygulama kaydı içinde, **Yönet** altında **Sertifikalar & gizlilikler** ' ı seçin.
 2. Süresi dolmasın **Yeni bir istemci gizli anahtarı** oluşturun.
 3. Bir sonraki adımda kullanacağınız için gizli dizi **değerini** unutmayın. Bu bölmeden ayrıldığınızda bu sayfaya yeniden erişemezsiniz. Ancak, gerektiğinde yeniden oluşturabilirsiniz.
 
@@ -90,11 +92,11 @@ Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygula
 
 Şimdi, bir kullanıcının e-postasını çekmek ve iletileri uygulama içinde göstermek için uygulamanızın kaydını ve kodunu güncelleştiğinizde. Bunu başarmak için, önce e-posta verilerine erişimi etkinleştirmek üzere Azure AD 'de uygulama kayıt izinleri ' ni genişletin. Ardından, Blazor uygulamasına kod ekleyerek bu verileri sayfalardan birinde alıp görüntüleyin.
 
-1. Azure portal, **uygulama kayıtları**' de Uygulamanızı seçin.
-1. **Yönet**altında **API izinleri**' ni seçin.
-1. Microsoft Graph **izin Ekle**' yi seçin  >  **Microsoft Graph**.
-1. **Temsilci izinleri**' ni seçin, sonra **posta. Read** iznini arayıp seçin.
-1. **Izin Ekle**' yi seçin.
+1. Azure portal, **uygulama kayıtları** ' de Uygulamanızı seçin.
+1. **Yönet** altında **API izinleri** ' ni seçin.
+1. Microsoft Graph **izin Ekle** ' yi seçin  >  **Microsoft Graph**.
+1. **Temsilci izinleri** ' ni seçin, sonra **posta. Read** iznini arayıp seçin.
+1. **Izin Ekle** ' yi seçin.
 
 Dosyadaki *appsettings.js* , doğru izinlerle uygun belirteci getirmemesi için kodunuzu güncelleştirin. "DownstreamAPI" altındaki "User. Read" kapsamından sonra "mail. Read" ekleyin. Bu, uygulamanın hangi kapsamları (veya izinleri) erişim isteyeceğini belirtmektir.
 

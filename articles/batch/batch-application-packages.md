@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91277708"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
@@ -77,7 +77,7 @@ Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Az
 
 Batch hesabınızdaki uygulamaları görüntülemek için sol gezinti menüsünde **uygulamalar** ' ı seçin.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Azure portal uygulamalar menü öğesinin ekran görüntüsü.":::
 
 Bu menü seçeneği belirlendiğinde **uygulamalar** penceresi açılır. Bu pencere, hesabınızdaki her uygulamanın KIMLIĞINI ve aşağıdaki özellikleri görüntüler:
 
@@ -101,7 +101,7 @@ Yeni bir uygulama oluşturmak için, bir uygulama paketi ekleyin ve benzersiz bi
 
 Batch hesabınızda, **uygulamalar** ' ı seçin ve ardından **Ekle** ' yi seçin.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Azure portal yeni uygulama oluşturma işleminin ekran görüntüsü.":::
 
 Aşağıdaki bilgileri girin:
 
@@ -128,7 +128,7 @@ Yeni uygulama için yaptığınız gibi, yeni paketinizin **sürümünü** belir
 
 Var olan bir uygulama paketini güncelleştirmek veya silmek için Batch hesabınızın **uygulamalar** bölümünde uygulamayı seçin. Değiştirmek istediğiniz uygulama paketinin satırındaki üç noktayı seçin ve ardından gerçekleştirmek istediğiniz eylemi seçin.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Azure portal uygulama paketleri için güncelleştirme ve silme seçeneklerini gösteren ekran görüntüsü.":::
 
 **Güncelleştir** ' i seçerseniz, yeni bir. zip dosyasını karşıya yükleyebilirsiniz. Bu, bu sürüm için karşıya yüklediğiniz önceki. zip dosyasının yerini alır.
 
@@ -202,7 +202,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
 
 ```
 Linux:

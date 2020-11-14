@@ -3,17 +3,17 @@ title: Ticari Market iş ortağı ve müşteri kullanımı attributıon
 description: Azure Marketi çözümleri için müşteri kullanımını izlemeye genel bir bakış alın.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337908"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628416"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -74,9 +74,9 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
    * İş ortakları birden çok GUID kaydedebilir.
    * İş ortakları, Market olmayan çözüm şablonları ve teklifleri için GUID 'Leri kaydedebilir.
 
-1. Sağ üst köşede, ayarlar dişli simgesini seçin ve ardından **Geliştirici ayarları** ' nı seçin.
+1. Sağ üst köşedeki **ayarları** (dişli simgesi) > **Hesap ayarları** ' nı seçin.
 
-1. **Hesap ayarları sayfasında** , **Izleme GUID 'si Ekle** ' yi seçin.
+1. **Kuruluş profili**  >  **tanımlayıcıları** ' nı, **izleme GUID 'si Ekle** ' yi seçin.
 
 1. **GUID** kutusuna izleme GUID 'nizi girin. Ön ek olmadan yalnızca GUID girin `pid-` . **Açıklama** kutusuna teklif adınızı veya açıklamasını girin.
 
@@ -150,7 +150,7 @@ Müşteri kullanımı atısyonu 'nı etkinleştirmek için, API aramalarınızı
 
 #### <a name="example-the-python-sdk"></a>Örnek: Python SDK 'Sı
 
-Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. İşte bir örnek:
+Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. Aşağıda bir örnek verilmiştir:
 
 ![Özniteliği bir kullanıcı aracısına ekleyin](media/marketplace-publishers-guide/python-for-lu.PNG)
 
@@ -183,9 +183,10 @@ Kaynakları Azure PowerShell aracılığıyla dağıtırsanız, aşağıdaki yö
 
 GUID 'nizi eklemek için Azure CLı kullandığınızda **AZURE_HTTP_USER_AGENT** ortam değişkenini ayarlayın. Bu değişkeni bir komut dosyasının kapsamı içinde ayarlayabilirsiniz. Değişkeni kabuk kapsamı için de genel olarak ayarlayabilirsiniz:
 
-```
+```powershell
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
 Daha fazla bilgi için bkz. [Go için Azure SDK](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Terrayform kullanma
@@ -206,7 +207,6 @@ Müşteri kullanımı attributıon tarafından izlenen Terrayform aracılığıy
 
 * GUID oluşturma (her teklif veya SKU için GUID eklenmelidir)
 * *Partner_id* değerini GUID olarak ayarlamak Için Azure sağlayıcısını GÜNCELLEŞTIRIN (GUID 'yi "pid-" ile ön düzelmeyin, bunu gerçek GUID olarak ayarlamanız yeterlidir)
-
 
 ## <a name="verify-the-guid-deployment"></a>GUID dağıtımını doğrulama
 
@@ -263,11 +263,11 @@ Raporu görmek için Iş ortağı Ilişki türü açılan listesinde Izlenen şa
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Kaynak Yöneticisi Şablon dağıtımları için bildirim
 
-Bu şablonu dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
+Bu şablonu dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK veya API dağıtımları için bildirim
 
-\<PARTNER>Yazılım dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
+\<PARTNER>Yazılım dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir [https://www.microsoft.com/trustcenter](https://www.microsoft.com/trustcenter) .
 
 ## <a name="get-support"></a>Destek alma
 
@@ -282,6 +282,7 @@ Ticari Market 'teki destek seçenekleri hakkında bilgi edinmek [Için Iş Orta�
     * İletişim bilgilerini doldurun/gözden geçirin.
     * Danışmanın ayrıntıları önceden doldurulmuş veya açılan kutudan seçim olabilir.
     * Sorun için bir başlık ve açıklama girin (mümkün olduğunca fazla ayrıntı sağlayın).
+
 1. Gönder’e tıklayın
 
 [Teknik satış ve dağıtım hizmetlerini kullanırken](https://aka.ms/TechConsultInstructions)ekran görüntüleriyle birlikte adım adım yönergeleri görüntüleyin.

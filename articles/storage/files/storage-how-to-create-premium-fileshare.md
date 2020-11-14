@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ec8e4a945f8b8277d05c11bf3673d2e4ab15f9a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564194"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626801"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Azure Premium dosya paylaşma oluşturma
 
@@ -24,8 +24,8 @@ Bu makalede, [Azure Portal](https://portal.azure.com/), Azure PowerShell modül�
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Azure PowerShell modülünü kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Azure PowerShell modülünü kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="create-a-filestorage-storage-account"></a>FileStorage depolama hesabı oluşturma
 
@@ -43,23 +43,23 @@ Artık depolama hesabınızı oluşturmaya hazır olursunuz.
 
     ![Ana sayfa Azure portal depolama hesabı seçin](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-1. Açılan **Depolama Hesapları** penceresinde **Ekle**'yi seçin.
+1. Açılan **Depolama Hesapları** penceresinde **Ekle** 'yi seçin.
 1. Depolama hesabının oluşturulacağı aboneliği seçin.
-1. **Kaynak grubu** alanı altında **Yeni oluştur**’u seçin. Aşağıdaki görüntüde gösterildiği gibi yeni kaynak grubunuz için bir ad girin.
+1. **Kaynak grubu** alanı altında **Yeni oluştur** ’u seçin. Aşağıdaki görüntüde gösterildiği gibi yeni kaynak grubunuz için bir ad girin.
 
 1. Ardından, depolama hesabınız için bir ad girin. Seçtiğiniz ad Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 - 24 karakter uzunluğunda olmalıdır ve yalnızca rakam ve küçük harf içerebilir.
 1. Depolama hesabınız için bir konum seçin veya varsayılan konumu kullanın.
-1. **Performans** için **Premium**seçin.
+1. **Performans** için **Premium** seçin.
 
     **Dosya depolama** için **Premium** ' u seçerek **Hesap türü** açılan listesinde kullanılabilir bir seçenek olması gerekir.
 
-1. **Hesap türü** ' nü seçin ve **FileStorage**' ı seçin.
+1. **Hesap türü** ' nü seçin ve **FileStorage** ' ı seçin.
 1. **Çoğaltmayı** **yerel olarak yedekli depolama (LRS)** varsayılan değerine ayarlı bırakın.
 
     ![Premium dosya paylaşımında depolama hesabı oluşturma](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
-1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
-1. **Oluştur**’u seçin.
+1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur** ’u seçin.
+1. **Oluştur** ’u seçin.
 
 Depolama hesabı kaynağınız oluşturulduktan sonra şuraya gidin.
 
@@ -144,9 +144,9 @@ Artık bir dosya depolama hesabı oluşturduğunuza göre, bu depolama hesabı i
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Depolama hesabının sol menüsünde **Dosya hizmeti** bölümüne kaydırın ve ardından **dosyalar**' ı seçin.
+1. Depolama hesabının sol menüsünde **Dosya hizmeti** bölümüne kaydırın ve ardından **dosyalar** ' ı seçin.
 1. Premium dosya paylaşma oluşturmak için **dosya paylaşma** ' yı seçin.
-1. Dosya paylaşımınız için bir ad ve istediğiniz kotayı girip **Oluştur**' u seçin.
+1. Dosya paylaşımınız için bir ad ve istediğiniz kotayı girip **Oluştur** ' u seçin.
 
 > [!NOTE]
 > Sağlanan paylaşım boyutları paylaşım kotası ile belirtilir, dosya paylaşımları sağlanan boyutta faturalandırılır. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/files/).

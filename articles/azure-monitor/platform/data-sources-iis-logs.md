@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 11/13/2020
+ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461201"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628756"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics Agent ile IIS günlükleri toplama
 Internet Information Services (IIS), Log Analytics Aracısı tarafından toplanabilecek ve [Azure Izleyici günlüklerinde](data-platform.md)depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
@@ -26,12 +26,14 @@ Azure Izleyici, IIS tarafından oluşturulan günlük dosyalarından girişler t
 
 Azure Izleyici yalnızca W3C biçiminde depolanan IIS günlük dosyalarını destekler ve özel alanları veya IIS gelişmiş günlüğe kaydetmeyi desteklemez. NCSA veya IIS yerel biçiminde Günlükler toplanmaz.
 
-Log Analytics aracısının [Gelişmiş ayarlar menüsünden](agent-data-sources.md#configuring-data-sources) Azure IZLEYICI 'de IIS günlüklerini yapılandırın.  **W3C BIÇIM IIS günlük dosyalarını topla**seçeneğinin belirlenmesi dışında bir yapılandırma gerekmez.
+Log Analytics aracısının [Gelişmiş ayarlar menüsünden](agent-data-sources.md#configuring-data-sources) Azure IZLEYICI 'de IIS günlüklerini yapılandırın.  **W3C BIÇIM IIS günlük dosyalarını topla** seçeneğinin belirlenmesi dışında bir yapılandırma gerekmez.
 
 
 ## <a name="data-collection"></a>Veri toplama
-Azure Izleyici, günlük zaman damgasının her değiştirilişinde her bir aracıdan IIS günlük girişleri toplar. Günlük her **5 dakikada**bir okunurdur. Herhangi bir nedenden dolayı IIS, yeni bir dosya oluşturulduğunda geçiş zamanından önce zaman damgasını güncelleştirmezse, yeni dosya oluşturulduktan sonra girdiler toplanır. Yeni dosya oluşturma sıklığı, varsayılan olarak günde bir kez olan IIS sitesi için **günlük dosyası aktarma zamanlaması** ayarıyla denetlenir. Ayar **saatlik**ise, Azure İzleyici günlüğü her saat toplar. Ayar **günlük**Ise Azure izleyici, günlüğü her 24 saatte bir toplar.
+Azure Izleyici, günlük zaman damgasının her değiştirilişinde her bir aracıdan IIS günlük girişleri toplar. Günlük her **5 dakikada** bir okunurdur. Herhangi bir nedenden dolayı IIS, yeni bir dosya oluşturulduğunda geçiş zamanından önce zaman damgasını güncelleştirmezse, yeni dosya oluşturulduktan sonra girdiler toplanır. Yeni dosya oluşturma sıklığı, varsayılan olarak günde bir kez olan IIS sitesi için **günlük dosyası aktarma zamanlaması** ayarıyla denetlenir. Ayar **saatlik** ise, Azure İzleyici günlüğü her saat toplar. Ayar **günlük** Ise Azure izleyici, günlüğü her 24 saatte bir toplar.
 
+> [!IMPORTANT]
+> **Günlük dosyası geçiş zamanlamasını** **saatlik** olarak ayarlamanız önerilir. **Günlük** olarak ayarlandıysa, verilerinizde yalnızca bir kez toplandığından bu yana verilerinize ilişkin ani artışlar yaşayabilirsiniz.
 
 ## <a name="iis-log-record-properties"></a>IIS günlük kaydı özellikleri
 IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan özelliklere sahiptir:
@@ -63,7 +65,7 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 ## <a name="log-queries-with-iis-logs"></a>IIS günlükleri ile sorguları günlüğe kaydet
 Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:--- |:--- |
 | W3CIISLog |Tüm IIS günlük kayıtları. |
 | W3CIISLog &#124; burada scStatus = = 500 |Tüm IIS günlük kayıtları 500 dönüş durumuna sahiptir. |

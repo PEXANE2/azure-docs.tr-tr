@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: bb408c762c33e4d146a2f0ef36f32e525b3859bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc6433170144635ad05033d110f448cf314179b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758277"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628858"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
-[Azure dosyaları](storage-files-introduction.md)   iki tür etki alanı hizmeti arasında sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler: şirket içi Active Directory Domain Services (AD DS) ve Azure Active Directory Domain Services (Azure AD DS). Kimlik doğrulaması için doğru etki alanı hizmetini seçmek üzere [nasıl çalıştığını](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) incelemenizi önemle öneririz. Kurulum, seçtiğiniz etki alanı hizmetine göre farklılık açmış. Bu makale dizisi, Azure dosya paylaşımlarında kimlik doğrulaması için şirket içi AD DS etkinleştirmeye ve yapılandırmaya odaklanmaktadır.
+[Azure dosyaları](storage-files-introduction.md)   iki tür etki alanı hizmeti arasında sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı kimlik doğrulamasını destekler: şirket içi Active Directory Domain Services (AD DS) ve Azure Active Directory Domain Services (Azure AD DS). Kimlik doğrulaması için doğru etki alanı hizmetini seçmek üzere [nasıl çalıştığını](./storage-files-active-directory-overview.md#how-it-works) incelemenizi önemle öneririz. Kurulum, seçtiğiniz etki alanı hizmetine göre farklılık açmış. Bu makale dizisi, Azure dosya paylaşımlarında kimlik doğrulaması için şirket içi AD DS etkinleştirmeye ve yapılandırmaya odaklanmaktadır.
 
 Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale serisini okumadan önce [planlama kılavuzumuzu](storage-files-planning.md) okumanızı öneririz.
 
@@ -24,7 +24,7 @@ Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale 
 
 - Azure dosyaları için kullanılan AD DS kimlikleri şirket içi AD DS kimlik doğrulaması Azure AD ile eşitlenmelidir. Parola karması eşitleme isteğe bağlıdır. 
 - Azure Dosya Eşitleme tarafından yönetilen Azure dosya paylaşımlarını destekler.
-- , RC4-HMAC ve [AES 256 şifrelemesi](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)ile ad ile Kerberos kimlik doğrulamasını destekler. AES 128 Kerberos şifrelemesi henüz desteklenmiyor.
+- , RC4-HMAC ve [AES 256 şifrelemesi](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)ile ad ile Kerberos kimlik doğrulamasını destekler. AES 128 Kerberos şifrelemesi henüz desteklenmiyor.
 - Çoklu oturum açma deneyimini destekler.
 - Yalnızca Windows 7 veya Windows Server 2008 R2 'den daha yeni işletim sistemi sürümlerinde çalıştırılan istemcilerde desteklenir.
 - Yalnızca depolama hesabının kaydedildiği AD ormanına göre desteklenir. Azure dosya paylaşımlarına yalnızca AD DS kimlik bilgileriyle, varsayılan olarak tek bir ormandaki erişebilirsiniz. Azure dosya paylaşımınıza farklı bir ormandan erişmeniz gerekiyorsa, uygun orman güveninin yapılandırıldığından emin olun, Ayrıntılar için [SSS](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) bölümüne bakın.
@@ -42,11 +42,11 @@ SMB üzerinden Azure dosya paylaşımları için AD DS etkinleştirdiğinizde, A
 
 Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmeden önce, aşağıdaki önkoşulları tamamladığınızdan emin olun: 
 
-- [AD DS ortamınızı](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) seçin veya oluşturun ve Azure AD Connect [Azure AD ile eşitleyin](../../active-directory/hybrid/how-to-connect-install-roadmap.md) . 
+- [AD DS ortamınızı](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) seçin veya oluşturun ve Azure AD Connect [Azure AD ile eşitleyin](../../active-directory/hybrid/how-to-connect-install-roadmap.md) . 
 
     Özelliği yeni veya mevcut bir şirket içi AD DS ortamında etkinleştirebilirsiniz. Erişim için kullanılan kimlikler Azure AD ile eşitlenmelidir. Azure AD kiracısı ve eriştiğiniz dosya paylaşımının aynı abonelikle ilişkilendirilmesi gerekir.
 
-- Etki alanı-şirket içi bir makineye veya bir Azure VM 'ye şirket içi AD DS ekleyin. Etki alanına ekleme hakkında daha fazla bilgi için, bkz. [bir bilgisayarı etki alanına ekleme](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
+- Etki alanı-şirket içi bir makineye veya bir Azure VM 'ye şirket içi AD DS ekleyin. Etki alanına ekleme hakkında daha fazla bilgi için, bkz. [bir bilgisayarı etki alanına ekleme](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
 
     Makinenizin bir AD DS etki alanına katılmış olmaması durumunda, makinenizde AD etki alanı denetleyicisi varsa, kimlik doğrulama için AD kimlik bilgilerini kullanmaya devam edebilirsiniz.
 
@@ -55,7 +55,7 @@ Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmede
     Dosya paylaşımlarınızı içeren depolama hesabının Azure AD DS kimlik doğrulaması için önceden yapılandırılmadığından emin olun. Azure dosyaları Azure AD DS kimlik doğrulaması, depolama hesabında etkinleştirilmişse, şirket içi AD DS kullanacak şekilde değiştirilmeden önce devre dışı bırakılmalıdır. Bu, Azure AD DS ortamında yapılandırılan mevcut ACL 'Lerin uygun izin zorlaması için yeniden yapılandırılması gerektiğini gösterir.
 
 
-    Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
+    Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](./storage-files-faq.md#on-premises-access) sunuyoruz. 
 
 
 - Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirmeden ve yapılandırmadan önce ilgili ağ yapılandırmalarını yapın. Daha fazla bilgi için bkz. [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md) .
@@ -66,7 +66,7 @@ AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure ortak ve gov bölge
 
 ## <a name="overview"></a>Genel Bakış
 
-Dosya paylaşımınızda herhangi bir ağ yapılandırmasını etkinleştirmeyi planlıyorsanız, [ağ dikkat edilecek noktalar](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview) makalesini okuyup AD DS kimlik doğrulamasını etkinleştirmeden önce ilgili yapılandırmayı tamamlamanızı öneririz.
+Dosya paylaşımınızda herhangi bir ağ yapılandırmasını etkinleştirmeyi planlıyorsanız, [ağ dikkat edilecek noktalar](./storage-files-networking-overview.md) makalesini okuyup AD DS kimlik doğrulamasını etkinleştirmeden önce ilgili yapılandırmayı tamamlamanızı öneririz.
 
 Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirmek, Azure dosya paylaşımlarınız üzerinde şirket içi AD DS kimlik bilgilerinizle kimlik doğrulaması yapmanıza olanak sağlar. Ayrıca, ayrıntılı erişim denetimine izin vermek için izinlerinizi daha iyi yönetmenizi sağlar. Bunun yapılması, şirket içi AD DS kimlik ve AD Connect ile Azure AD arasında eşitleme yapılmasını gerektirir. Şirket içi AD DS kimlik bilgileriyle dosya/paylaşma düzeyinde erişimi yönetirken Azure AD 'ye eşitlenen kimliklerle paylaşma düzeyi erişimini kontrol edersiniz.
 
@@ -86,7 +86,7 @@ Aşağıdaki diyagramda Azure dosya paylaşımları için SMB üzerinden Azure A
 
 ![Dosyalar AD iş akışı diyagramı](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-Azure dosya paylaşımlarına erişmek için kullanılan kimlikler, Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) modeli aracılığıyla paylaşım düzeyi dosya izinlerini zorlamak IÇIN Azure AD ile eşitlenmelidir. Mevcut dosya sunucularından taşınan dosyalarda/dizinlerde bulunan [Windows stili DACL 'ler](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) korunur ve zorlanır. Bu, kurumsal AD DS ortamınızla sorunsuz tümleştirme sunar. Şirket içi dosya sunucularını Azure dosya paylaşımlarıyla değiştirirken, mevcut kullanıcılar, kullanımdaki kimlik bilgileriyle hiçbir değişiklik yapmadan mevcut istemcilerinden Azure dosya paylaşımlarına tek bir oturum açma deneyimiyle erişebilirler.  
+Azure dosya paylaşımlarına erişmek için kullanılan kimlikler, Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) modeli aracılığıyla paylaşım düzeyi dosya izinlerini zorlamak IÇIN Azure AD ile eşitlenmelidir. Mevcut dosya sunucularından taşınan dosyalarda/dizinlerde bulunan [Windows stili DACL 'ler](/previous-versions/technet-magazine/cc161041(v=msdn.10)) korunur ve zorlanır. Bu, kurumsal AD DS ortamınızla sorunsuz tümleştirme sunar. Şirket içi dosya sunucularını Azure dosya paylaşımlarıyla değiştirirken, mevcut kullanıcılar, kullanımdaki kimlik bilgileriyle hiçbir değişiklik yapmadan mevcut istemcilerinden Azure dosya paylaşımlarına tek bir oturum açma deneyimiyle erişebilirler.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

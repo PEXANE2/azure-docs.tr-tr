@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91761842"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
@@ -25,12 +25,12 @@ ms.locfileid: "91761842"
 
 Bu öğretici, önceden var olan VNet için bir sanal ağ geçidi ekleme adımlarında size yol gösterir. Bu makalede, önceden var olan VNet için bir sanal ağ (VNet) ağ geçidi ekleme, yeniden boyutlandırma ve kaldırma adımlarında adım adım gösterilmektedir. Bu yapılandırmaya yönelik adımlar, bir ExpressRoute yapılandırmasında kullanılacak Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan sanal ağlar içindir. ExpressRoute için sanal ağ geçitleri ve ağ geçidi yapılandırma ayarları hakkında daha fazla bilgi için bkz. [ExpressRoute için sanal ağ geçitleri hakkında](expressroute-about-virtual-network-gateways.md). 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Ağ geçidi alt ağı oluşturun.
 > - Sanal Ağ Geçidi oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değerleri temel alarak bir sanal ağ kullanır. Bu listeyi örnek adımlarımızda kullanırız. Bir başvuru olarak kullanmak için listeyi kopyalayabilir ve değerleri kendi değerlerinizle değiştirin.
 
@@ -60,7 +60,7 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
 
 1. Alt ağınız için **Ad** alanı otomatik olarak ‘GatewaySubnet’ değeriyle doldurulur. Alt ağın Azure tarafından ağ geçidi alt ağı olarak tanınması için bu değer gereklidir. Yapılandırma gereksinimlerinize uyacak şekilde, oto doldurulmuş **adres aralığı** değerlerini ayarlayın. /27 veya daha büyük (/26,/25 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz. Ardından, değerleri kaydetmek ve ağ geçidi alt ağını oluşturmak için **Tamam** ' ı seçin.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Ağ geçidi alt ağı ekleme":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Alt ağ ekleme":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Sanal ağ geçidini oluşturma
 
@@ -81,13 +81,13 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
 
 1. Ağ geçidini oluşturmaya başlamak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Ayarlar doğrulanır ve ağ geçidi dağıtılır. Sanal ağ geçidi oluşturma işleminin tamamlanması 45 dakika sürebilir.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Ağ geçidi alt ağı ekleme":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Sanal ağ geçidi sayfası alanı oluştur":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 ExpressRoute ağ geçidine artık ihtiyacınız yoksa, sanal ağ kaynak grubundaki ağ geçidini bulun ve **Sil** ' i seçin. Ağ geçidinin bir devreye bağlantı içermediğinden emin olun.
 
-:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Ağ geçidi alt ağı ekleme":::
+:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Sanal ağ geçidini Sil":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 VNet ağ geçidini oluşturduktan sonra sanal ortamınızı bir ExpressRoute devresine bağlayabilirsiniz. 
