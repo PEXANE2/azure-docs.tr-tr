@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341969"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636716"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Azure Cosmos DB kaynakların silinmesini veya değiştirilmesini engelle
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ Yönetici olarak, kuruluşunuzdaki diğer kullanıcıların yanlışlıkla önem
 
 Üst kapsamda bir kilit uyguladığınızda, bu kapsamdaki tüm kaynaklar aynı kilidi alır. Daha sonra eklediğiniz kaynaklar bile kilidi üst öğeden alır. Devralmada en kısıtlayıcı kilit öncelik kazanır.
 
-Rol tabanlı erişim denetiminin aksine, yönetim kilitlerini tüm kullanıcılar ve rollere kısıtlama getirmek için kullanırsınız. Azure Cosmos DB için RBAC hakkında bilgi edinmek için [Azure Cosmos DB Içindeki rol tabanlı erişim denetimi](role-based-access-control.md)konusuna bakın.
+Azure rol tabanlı erişim denetiminden farklı olarak, tüm kullanıcılar ve roller arasında bir kısıtlama uygulamak için yönetim kilitlerini kullanırsınız. Azure Cosmos DB için Azure RBAC hakkında bilgi edinmek için [Azure Cosmos DB Azure rol tabanlı erişim denetimi](role-based-access-control.md)bölümüne bakın.
 
 Resource Manager kilitleri yalnızca yönetim düzleminde gerçekleşen ve https://management.azure.com adresine gönderilen işlemlere uygulanır. Kilitler kaynakların kendi işlevlerini gerçekleştirmesine bir kısıtlama getirmez. Kaynak değişiklikleri kısıtlanır ama kaynak işlemleri kısıtlanmaz. Örneğin, bir Azure Cosmos kapsayıcısındaki bir salt okunur kilit, kapsayıcıyı silmenizi veya değiştirmenizi önler. Bu, kapsayıcıda veri oluşturmanızı, güncelleştirmenizi veya silmenizi engellemez. Bu işlemler https://management.azure.com hedefine gönderilmediğinden veri işlemlerine izin verilir.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372566"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636393"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -33,7 +33,7 @@ Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanm
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Server (Microsoft desteği kapsamında tüm sürümler)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Makinelerde SQL Server 'lar için Azure Defender 'ı ayarlama
@@ -48,7 +48,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Adım 1. SQL sunucunuzun ana bilgisayarında Log Analytics aracısını sağlayın:
 
-- **Azure VM 'de SQL Server** -SQL makineniz BIR Azure VM üzerinde barındırılıyorsa, [otomatik olarak Log Analytics aracısını](security-center-enable-data-collection.md#workspace-configuration)sağlayabilirsiniz. Alternatif olarak, [Azure Stack sanal makinelerinizi](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)eklemek için el ile gerçekleştirilen prosedürü izleyebilirsiniz.
+- **Azure VM 'de SQL Server** -SQL makineniz BIR Azure VM üzerinde barındırılıyorsa, [Log Analytics aracısının <a name="auto-provision-mma"></a> Otomatik](security-center-enable-data-collection.md#auto-provision-mma)sağlanmasını sağlayabilirsiniz. Alternatif olarak, [Azure Stack sanal makinelerinizi](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)eklemek için el ile gerçekleştirilen prosedürü izleyebilirsiniz.
 - **Azure arc SQL Server** -SQL Server [Azure Arc](../azure-arc/index.yml) etkin sunucuları tarafından yönetiliyorsa, güvenlik merkezi önerisi "Log Analytics Aracısı Windows tabanlı Azure yay makinelerinize (önizleme) yüklenmelidir" Log Analytics aracıyı dağıtabilirsiniz. Alternatif olarak, [Azure Arc belgelerinde](../azure-arc/servers/manage-vm-extensions.md)açıklanan yükleme yöntemlerini de izleyebilirsiniz.
 
 - **Şirket içi SQL Server** -SQL Server Azure Arc olmadan şirket Içi bir Windows makinesinde barındırılıyorsa, Azure 'a bağlamak için iki seçeneğiniz vardır:

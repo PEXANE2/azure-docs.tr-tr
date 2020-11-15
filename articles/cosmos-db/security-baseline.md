@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e69cf8d90f004d397778c2eeb6b5f774196574
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 99cad2a4218995ad10488d97ce19eeef36b642ae
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098748"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637005"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB için Azure Güvenlik temeli
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -138,7 +138,7 @@ Hizmet etiketlerini kullanma hakkında daha fazla bilgi için: https://docs.micr
 
 - Cosmos DB bir sanal ağ hizmeti uç noktası kullanmalıdır
 
-Ayrıca, Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
+Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
 
 Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -285,15 +285,15 @@ Azure Izleyici 'yi kullanarak günlük uyarıları oluşturun, görüntüleyin v
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-**Rehberlik** : rol tabanlı erişim denetimi 'NI (RBAC) yapılandırmak ve Azure Cosmos DB kaynaklarında stoku sürdürmek Için Azure Portal kimlik ve erişim denetımı (IAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
+**Kılavuz** : Azure rol tabanlı erişim denetimi 'Ni (Azure RBAC) yapılandırmak ve Azure Cosmos DB kaynaklarında stoku sürdürmek Için Azure Portal kimlik ve erişim denetımı (IAM) bölmesini kullanabilirsiniz. Roller, kullanıcılar, gruplar, hizmet sorumluları ve Active Directory içindeki yönetilen kimliklere uygulanır. Bireyler ve gruplar için yerleşik roller veya özel roller kullanabilirsiniz.
 
-Azure Cosmos DB, Azure Cosmos DB ortak yönetim senaryoları için yerleşik RBAC sağlar. Azure Active Directory (AD) içinde bir profili olan bir kişi, Azure Cosmos DB kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu Azure rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir.
+Azure Cosmos DB, Azure Cosmos DB ortak yönetim senaryoları için yerleşik Azure RBAC sağlar. Azure Active Directory (AD) içinde bir profili olan bir kişi, Azure Cosmos DB kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu Azure rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir.
 
 Ayrıca, yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü de kullanabilirsiniz. 
 
 Ayrıca, Azure Cosmos DB bazı eylemler Azure Active Directory ve hesaba özgü birincil anahtarlarla denetlenebilir.  Anahtar erişimini denetlemek için ' disableKeyBasedMetadataWriteAccess ' hesap ayarını kullanın.
 
-Azure Cosmos DB içinde rol tabanlı erişim denetimini anlayın: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Azure Cosmos DB 'de Azure rol tabanlı erişim denetimini anlayın: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 Azure Cosmos DB eylemleri (Microsoft.DocumentDB ad alanı) kullanarak kendi özel rollerinizi oluşturun: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
@@ -529,9 +529,9 @@ Azure 'da müşteri veri korumasını anlayın: https://docs.microsoft.com/azure
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik** : Azure Cosmos DB Azure Cosmos DB ortak yönetim senaryoları için yerleşik rol tabanlı erişim denetımı (RBAC) sağlar. Azure Active Directory bir profili olan bir kişi, Azure Cosmos DB kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu Azure rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir. Rol atamaları yalnızca, Azure Cosmos hesaplarına, veritabanlarına, kapsayıcılarına ve tekliflere (verimlilik) erişimi de içeren denetim düzlemi erişimini kapsar.
+**Rehberlik** : Azure Cosmos DB Azure Cosmos DB genel yönetim senaryoları Için yerleşik Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar. Azure Active Directory bir profili olan bir kişi, Azure Cosmos DB kaynaklardaki kaynaklara ve işlemlere erişim vermek veya erişimi reddetmek için bu Azure rollerini kullanıcılara, gruplara, hizmet sorumlularına veya yönetilen kimliklere atayabilir. Rol atamaları yalnızca, Azure Cosmos hesaplarına, veritabanlarına, kapsayıcılarına ve tekliflere (verimlilik) erişimi de içeren denetim düzlemi erişimini kapsar.
 
-Azure Cosmos DB ' de RBAC 'yi uygulama: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Azure Cosmos DB 'de Azure RBAC 'yi uygulama: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 **Azure Güvenlik Merkezi izleme** : uygulanamaz
 

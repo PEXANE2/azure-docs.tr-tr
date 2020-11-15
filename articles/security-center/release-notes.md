@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: c0333f9faeae99ee83beda381f77f4f95b0a9192
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372360"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636129"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -37,7 +37,8 @@ Kasım 'daki güncelleştirmeler şunlardır:
 
 - [Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [NıST SP 800 171 R2, güvenlik merkezi 'nin mevzuat uyumluluk panosuna eklendi](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
-
+- [Öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)
+- [Otomatik sağlama deneyimi geliştirildi ve genişletildi](#auto-provisioning-experience-improved-and-expanded)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir
 
@@ -78,6 +79,30 @@ Standart aboneliğinizi aboneliklerinize uygulamak ve uyumluluk durumunuzu süre
 Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [NıST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final).
 
 
+### <a name="recommendations-list-now-includes-filters"></a>Öneriler listesi şimdi filtreler içeriyor
+
+Artık güvenlik önerileri listesini bir dizi ölçüte göre filtreleyebilirsiniz. Aşağıdaki örnekte, öneriler listesi şu önerileri gösterecek şekilde filtrelenmiştir:
+
+- **genel kullanıma sunulmuştur** (örn. Önizleme)
+- **depolama hesapları** içindir
+- **hızlı düzeltme** düzeltmesini destekleme
+
+:::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="Öneriler listesi için filtreler":::
+
+
+### <a name="auto-provisioning-experience-improved-and-expanded"></a>Otomatik sağlama deneyimi geliştirildi ve genişletildi
+
+Otomatik sağlama özelliği, güvenlik merkezi 'nin korumalarının avantajlarından faydalanabilmesi için gerekli uzantıları yeni ve mevcut Azure VM 'lerine yükleyerek yönetim yükünü azaltmaya yardımcı olur. 
+
+Azure Güvenlik Merkezi arttıkça, daha fazla uzantı geliştirilmiştir ve Güvenlik Merkezi, kaynak türlerinin daha büyük bir listesini izleyebilir. Otomatik sağlama araçları artık Azure Ilkesinin yeteneklerini kullanarak ek uzantıları ve kaynak türlerini destekleyecek şekilde genişletilmiştir.
+
+Artık otomatik sağlamayı yapılandırabilirsiniz:
+
+- Log Analytics aracısı
+- Yeni Kubernetes için Azure Ilke eklentisi
+- Yeni Microsoft bağımlılık Aracısı
+
+[Azure Güvenlik Merkezi 'Nden otomatik sağlama aracıları ve uzantıları](security-center-enable-data-collection.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="october-2020"></a>Ekim 2020
 

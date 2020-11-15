@@ -1,7 +1,7 @@
 ---
 title: Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme | Mavisi
 titleSuffix: Microsoft identity platform
-description: Çoklu oturum açma ve uygulama koruma ilkelerini destekleyen mobil uygulamalar oluşturmaya yönelik açıklama ve genel bakış
+description: Microsoft Identity platformunu kullanarak çoklu oturum açma ve uygulama koruma ilkelerini destekleyen ve Azure Active Directory ile tümleştirerek mobil uygulamalar oluşturmaya yönelik açıklama ve genel bakış.
 services: active-directory
 author: knicholasa
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331615"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634863"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme
 
-Çoklu oturum açma (SSO), uygulamanızın kullanıcıları için kolay ve güvenli oturumlar sağlar. Uygulama koruma ilkeleri (uygulama), Kullanıcı verilerini güvende tutan anahtar güvenlik ilkelerinin desteğini etkinleştirir. Birlikte, bu özellikler, uygulamanızın verilerinin güvenli kullanıcı oturumlarını ve yönetimini etkinleştirir.
+Çoklu oturum açma (SSO), uygulamanızın kullanıcıları için kolay ve güvenli oturum açmaları sağlayan Microsoft Identity platform ve Azure Active Directory temel bir tekliftir. Ayrıca, uygulama koruma ilkeleri (uygulama), kullanıcılarınızın verilerini güvende tutan anahtar güvenlik ilkelerinin desteğini etkinleştirir. Birlikte, bu özellikler, uygulamanızın verilerinin güvenli kullanıcı oturumlarını ve yönetimini etkinleştirir.
 
 Bu makalede, SSO ve UYGULAMANıN neden önemli olduğunu ve bu özellikleri destekleyen mobil uygulamalar oluşturmaya yönelik üst düzey kılavuz sağladığını açıklamaktadır. Bu, hem telefon hem de tablet uygulamaları için geçerlidir. Kuruluşunuzun Azure Active Directory kiracısında SSO dağıtmak isteyen bir BT yöneticisiyseniz, [Çoklu oturum açma dağıtımı planlama yönergemizi](../manage-apps/plan-sso-deployment.md) inceleyin
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro cihazında Kubernetes rol tabanlı Access Control anlayın | Microsoft Docs
-description: Kubernetes rol tabanlı Access Control Azure Stack Edge Pro cihazında nasıl oluştuğunu açıklar.
+title: Azure Stack Edge Pro cihazında Kubernetes rol tabanlı erişim denetimini anlayın | Microsoft Docs
+description: Azure Stack Edge Pro cihazında Kubernetes rol tabanlı erişim denetiminin nasıl oluştuğunu açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320821"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635849"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes rol tabanlı Access Control Azure Stack Edge Pro GPU cihazınıza
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes rol tabanlı erişim denetimi
 
 
-Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes rol tabanlı erişim denetimi 'ni (RBAC), cihazınızdaki küme kaynaklarıyla erişimi sınırlandırmak için kullanabilirsiniz.
+Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Cihazınızdaki küme kaynaklarıyla erişimi sınırlandırmak için Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanabilirsiniz.
 
-Bu makaleler, Kubernetes tarafından sağlanan RBAC sistemine genel bir bakış sağlar ve Azure Stack Edge Pro cihazınızda Kubernetes RBAC 'in nasıl uygulandığı. 
+Bu makaleler, Kubernetes tarafından sağlanan Kubernetes RBAC sistemi için bir genel bakış sağlar ve Azure Stack Edge Pro cihazınızda Kubernetes RBAC 'in nasıl uygulandığı. 
 
-## <a name="rbac-for-kubernetes"></a>Kubernetes için RBAC
+## <a name="kubernetes-rbac"></a>Kubernetes RBAC
 
 Kubernetes RBAC kullanıcıları veya Kullanıcı gruplarını atamanıza izin verir, kaynak oluşturma veya değiştirme gibi işlemleri yapma veya çalışan uygulama iş yüklerinden günlükleri görüntüleme izni verir. Bu izinler tek bir ad alanı kapsamına alınmış olabilir veya tüm küme genelinde verilebilir. 
 
@@ -61,21 +61,21 @@ Azure Stack Edge Pro cihazınız aşağıdaki ad alanlarına sahiptir:
 
 Gerçek dünyada, kümeyi birden çok ad alanına bölmek önemlidir. 
 
-- **Birden çok Kullanıcı**: birden fazla kullanıcınız varsa, birden çok ad alanı, bu kullanıcıların her biri kendi belirli ad alanlarındaki uygulama ve hizmetlerini birbirinden yalıtımına dağıtmalarına olanak sağlar. 
-- **Tek Kullanıcı**: tek bir Kullanıcı olsa bile, birden çok ad alanı söz konusu kullanıcının aynı Kubernetes kümesinde uygulamaların birden çok sürümünü çalıştırmasına izin verir.
+- **Birden çok Kullanıcı** : birden fazla kullanıcınız varsa, birden çok ad alanı, bu kullanıcıların her biri kendi belirli ad alanlarındaki uygulama ve hizmetlerini birbirinden yalıtımına dağıtmalarına olanak sağlar. 
+- **Tek Kullanıcı** : tek bir Kullanıcı olsa bile, birden çok ad alanı söz konusu kullanıcının aynı Kubernetes kümesinde uygulamaların birden çok sürümünü çalıştırmasına izin verir.
 
 ### <a name="roles-and-rolebindings"></a>Roller ve RoleBindings
 
 Kubernetes, bir ad alanı düzeyinde ve bir küme düzeyinde Kullanıcı veya kaynaklara izin vermenizi sağlayan rol ve rol bağlama kavramıdır. 
 
-- **Roller**: kullanıcılar için Izinleri bir **rol** olarak tanımlayabilir ve ardından **Roller** kullanarak bir ad alanı içinde izinler verebilirsiniz. 
-- **Rolebindings**: rolleri tanımladıktan sonra, belirli bir ad alanı için rol atamak üzere **rolebindings** kullanabilirsiniz. 
+- **Roller** : kullanıcılar için Izinleri bir **rol** olarak tanımlayabilir ve ardından **Roller** kullanarak bir ad alanı içinde izinler verebilirsiniz. 
+- **Rolebindings** : rolleri tanımladıktan sonra, belirli bir ad alanı için rol atamak üzere **rolebindings** kullanabilirsiniz. 
 
 Bu yaklaşım, tek bir Kubernetes kümesini mantıksal olarak ayırt etmenizi sağlar, böylece kullanıcılar yalnızca atanan ad alanındaki uygulama kaynaklarına erişebilir. 
 
-## <a name="rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro üzerinde RBAC
+## <a name="kubernetes-rbac-on-azure-stack-edge-pro"></a>Kubernetes Azure Stack Edge Pro 'da RBAC
 
-RBAC 'in geçerli uygulamada Azure Stack Edge Pro, kısıtlanmış bir PowerShell çalışma alanından aşağıdaki eylemleri almanıza olanak sağlar:
+Kubernetes RBAC 'in geçerli uygulamasında Azure Stack Edge Pro, kısıtlanmış bir PowerShell çalışma alanından aşağıdaki eylemleri almanıza olanak sağlar:
 
 - Ad alanları oluşturun.  
 - Ek kullanıcılar oluşturun.
@@ -85,9 +85,9 @@ RBAC 'in geçerli uygulamada Azure Stack Edge Pro, kısıtlanmış bir PowerShel
 
 Azure Stack Edge Pro cihazında birden çok sistem ad alanı vardır ve `kubeconfig` Bu ad alanlarına erişmek için dosyalarla birlikte Kullanıcı ad alanları oluşturabilirsiniz. Kullanıcılar bu ad alanları üzerinde tam denetime sahiptir ve Kullanıcı oluşturabilir veya değiştirebilir veya kullanıcılara erişim izni verebilir. Yalnızca küme yöneticisinin sistem ad alanları ve küme genelinde kaynaklara tam erişimi vardır. `aseuser`, Sistem ad alanlarına salt okuma erişimi vardır.
 
-İşte Azure Stack Edge Pro cihazında RBAC uygulamasını gösteren bir diyagram.
+İşte Azure Stack Edge Pro cihazında Kubernetes RBAC uygulamasını gösteren bir diyagram.
 
-![Azure Stack Edge Pro cihazında RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Kubernetes Azure Stack Edge Pro cihazındaki RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 Bu diyagramda, Gamze, Bob ve Chuck yalnızca atanan kullanıcı ad alanlarına erişebilir, bu durumda, `ns1` `ns2` ve `ns3` sırasıyla. Bu ad alanlarında yönetici erişimi vardır. Diğer yandan küme yöneticisinin sistem ad alanları ve küme genelinde kaynaklara yönetici erişimi vardır.
 

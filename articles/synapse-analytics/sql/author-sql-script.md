@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3618ba28403882ee1f949a2bbc97e586674b3772
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317507"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635318"
 ---
 # <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>Azure SYNAPSE Studio 'da SQL betikleri kullanma (Önizleme)
 
@@ -73,6 +73,18 @@ Veriler ' in altındaki **Eylemler** menüsünü seçerek, şöyle çeşitli eyl
 SQL veritabanlarının düğümlerine sağ tıklayarak kullanılabilir hareketi keşfedebilirsiniz.
  
 ![Yeni betik veritabanı](media/author-sql-script/new-script-database.png)
+
+## <a name="create-folders-and-move-sql-scripts-into-a-folder"></a>Klasörler oluşturma ve SQL betiklerini bir klasöre taşıma
+
+SQL betikleri geliştirme altındaki Eylemler menüsünde, SQL betikleri geliştirme altında "eylemler" menüsünden "yeni klasör" seçeneğini belirleyin. Ve açılır penceredeki yeni klasörün adını yazın. 
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+
+Bir SQL betiğini bir klasöre taşımak için, SQL betiğini seçip Eylemler menüsünden "taşı" seçeneğini belirleyebilirsiniz. Ardından, yeni pencerede hedef klasörünü bulun ve SQL betiğini seçili klasöre taşıyın. Ayrıca, SQL betiğini hızlıca sürükleyip bir klasöre bırakabilirsiniz.  
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/new-sql-script-move-folder.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

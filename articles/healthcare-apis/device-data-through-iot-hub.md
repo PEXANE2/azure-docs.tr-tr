@@ -6,20 +6,20 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6c364cf84bada2a951ef3f224ea836885f0e3c1e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398156"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636325"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Öğretici: Azure IoT Hub aracılığıyla cihaz verileri alma
 
-FHIR için Azure IoT Bağlayıcısı *, tıbbi nesnelerin Interneti (IoMT) cihazları için Azure API 'ye veri alma olanağı sağlar. Azure portal hızlı başlangıçta Azure [IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md) , IoT Central Azure tarafından yönetilen bir cihaz örneği olduğunu ve fhır Için Azure IoT Bağlayıcısı 'na [telemetri göndermeyi](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) gösterdi. FHıR için Azure IoT Bağlayıcısı, Azure IoT Hub aracılığıyla sağlanan ve yönetilen cihazlarla da çalışabilir. Bu öğreticide, Azure IoT Hub cihaz verilerini, FHıR için Azure IoT bağlayıcısına bağlama ve yönlendirme yordamı sağlanmaktadır.
+Hızlı sağlık ile birlikte çalışabilirlik kaynakları için Azure IoT Bağlayıcısı (FHıR&#174;) *, tıp 'leri Internet 'ten, FHAR için Azure API 'sine veri alma olanağı sağlar. Azure portal hızlı başlangıçta Azure [IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md) , IoT Central Azure tarafından yönetilen bir cihaz örneği olduğunu ve fhır Için Azure IoT Bağlayıcısı 'na [telemetri göndermeyi](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) gösterdi. FHıR için Azure IoT Bağlayıcısı, Azure IoT Hub aracılığıyla sağlanan ve yönetilen cihazlarla da çalışabilir. Bu öğreticide, Azure IoT Hub cihaz verilerini, FHıR için Azure IoT bağlayıcısına bağlama ve yönlendirme yordamı sağlanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Fhır için en az bir Azure IoT Bağlayıcısı içeren FHıR kaynağı için Azure API- [Azure Portal kullanarak fhir Için Azure IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md)
@@ -51,7 +51,7 @@ Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak par
 |PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|resource-group|IoT Hub kaynağınızın kaynak grubu adı.|
-|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
+|Name|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Oluşturulan uç noktaya atamak istediğiniz bir ad kullanın.|
 |EndpointType|uç nokta türü|IoT Hub bağlantı kurmak için gereken uç nokta türü. PowerShell için "EventHub" ve CLı için "eventhub" değerlerini kullanın.|
 |EndpointResourceGroup|uç nokta-kaynak grubu|FHıR 'nin FHıR kaynağı için Azure API 'SI için Azure IoT bağlayıcınızın kaynak grubu adı. Bu değeri, FHıR için Azure API 'nin Genel Bakış sayfasından edinebilirsiniz.|
@@ -66,7 +66,7 @@ Bu adım, yukarıda oluşturulan uç noktayı kullanarak bir ileti yolunu tanım
 |PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|g|IoT Hub kaynağınızın kaynak grubu adı.|
-|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
+|Name|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Yukarıda oluşturduğunuz bitiş noktasının adı.|
 |Routetablename|yol adı|Oluşturulan ileti yoluna atamak istediğiniz ad.|
 |Kaynak|Kaynak türü|Uç noktaya gönderilen veri türü. PowerShell için "DeviceMessages" değeri ve CLı için "devicemessages" değerlerini kullanın.|
@@ -113,6 +113,4 @@ Cihaz ve FHıR eşleme şablonlarını kullanarak IoT bağlayıcısını nasıl 
 >[!div class="nextstepaction"]
 >[FHıR eşleme şablonları için Azure IoT Bağlayıcısı](iot-mapping-templates.md)
 
-* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
-
-FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır. FHıR, HL7 'in tescilli ticari markasıdır ve HL7 izniyle kullanılır.

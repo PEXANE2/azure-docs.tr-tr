@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73318d1ee14894f5d22f7c4d2e61418e3b1038c1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604079"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636886"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -37,7 +37,12 @@ Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için b
 >[!NOTE]
 >Azure AD Connect yeni bir sürümünü serbest bırakmak, hizmetin işlem işlevlerini sağlamak için çeşitli kalite denetimi adımı gerektiren bir işlemdir ve bu işlemden sonra yeni bir yayının sürüm numarası ve yayın durumu en son durumu yansıtacak şekilde güncelleştirilir.
 Bu işlemden sonra, yayının sürüm numarası, "1.3. X. 0" içinde olduğu gibi küçük Yayın numarası konumunda bir "X" ile gösterilir. bu belgedeki sürüm notlarının, "1,3." ile başlayan tüm sürümler için geçerli olduğunu gösterir. Yayın işlemini sonuçlandırdıktan hemen sonra yayın sürümü numarası en son yayınlanan sürüme güncelleştirilir ve yayın durumu "indirme ve otomatik yükseltme için yayımlandı" olarak güncelleştirilir.
-Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir hale getirilmeyecektir. Sürüm durumu, bir yayının otomatik yükseltme veya yalnızca indirme için kullanılabilir duruma getirilmeyeceğini gösterir. Azure AD Connect sunucunuzda otomatik yükseltme etkinleştirildiyse, bu sunucu otomatik olarak yükseltme için yayınlanan en son Azure AD Connect sürümüne yükseltilir. Azure AD Connect yapılandırmalarının tümünün otomatik yükseltme için uygun olmadığına unutmayın. [Otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) hakkında daha fazla bilgi için lütfen bu bağlantıyı izleyin
+Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir hale getirilmeyecektir. Sürüm durumu, bir yayının otomatik yükseltme veya yalnızca indirme için kullanılabilir duruma getirilmeyeceğini gösterir. Azure AD Connect sunucunuzda otomatik yükseltme etkinleştirildiyse, bu sunucu otomatik olarak yükseltme için yayınlanan en son Azure AD Connect sürümüne yükseltilir. Azure AD Connect yapılandırmalarının tümünün otomatik yükseltme için uygun olmadığına unutmayın. 
+
+Otomatik yükseltmenin kullanımını netleştirmek için, tüm önemli güncelleştirmeleri ve kritik düzeltmeleri size göndermek amacıyla tasarlanmıştır. Tüm sürümlerin kritik güvenlik sorununa yönelik bir düzeltme gerektirmediğinden/içermediği için bu en son sürüm olması gerekir (yalnızca bir örnek vardır). Bu şekilde, otomatik yükseltme ile sunulan yeni bir sürüm ile ilgilenilecek bir sorun. Böyle bir sorun yoksa, otomatik yükseltme kullanılarak gönderilen hiçbir güncelleştirme yoktur ve genel olarak en son otomatik yükseltme sürümünü kullanıyorsanız, iyi durumda olmanız gerekir.
+Bununla birlikte, tüm en son özellikleri ve güncelleştirmeleri beğenmezseniz, bu sayfayı kontrol etmenin en iyi yolu, uygun gördüğünüz gibi bunları yüklemektir. 
+
+[Otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) hakkında daha fazla bilgi için lütfen bu bağlantıyı izleyin
 
 >[!IMPORTANT]
 > 1 Kasım 2020 tarihinden itibaren, 18 aydan daha önce yayınlanan Azure AD Connect sürümlerinin kullanım dışı bırakıldığı bir kullanımdan kaldırma işlemi uygulamaya başlayacağız. Bu sırada, sürüm 1.3.20.0 (4/24/2019 ' de yayımlanmıştır) ve daha eski sürümleri içeren tüm Azure AD Connect sürümlerini kullanımdan kaldırarak bu işleme başlayacağız ve yeni bir sürüm yayımlandığında Azure AD Connect eski sürümlerinin kullanımdan kalkmayı değerlendirmeye devam edeceğiz.
@@ -123,7 +128,7 @@ Bu düzeltme derlemesi, **' ın ad-grup birleşimi** kuralından klonlanmış ve
 
 > [!IMPORTANT]
 > **' Yı ad grubu Ile Birleştir** eşitleme kuralından klondıysanız ve ' ı **ad-grup ortak** eşitleme kuralıyla klonlamadıysanız ve yükseltmeyi planlarsanız, yükseltmenin bir parçası olarak aşağıdaki adımları izleyin:
-> 1. Yükseltme sırasında, **yapılandırma tamamlandığında eşitleme Işlemini Başlat**seçeneğinin işaretini kaldırın.
+> 1. Yükseltme sırasında, **yapılandırma tamamlandığında eşitleme Işlemini Başlat** seçeneğinin işaretini kaldırın.
 > 2. Kopyalanmış JOIN eşitleme kuralını düzenleyin ve aşağıdaki iki dönüşümü ekleyin:
 >     - Doğrudan akışı `objectGUID` olarak ayarlayın `sourceAnchorBinary` .
 >     - İfade akışını `ConvertToBase64([objectGUID])` olarak ayarlayın `sourceAnchor` .     

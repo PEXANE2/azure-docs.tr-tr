@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 6b082801a89450e34056be8be88a96fe26b7eeec
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578839"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636478"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -97,8 +97,8 @@ Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı des
 1. Farklı bir depolama hesabı oluşturun veya yapılandırın.  Bu, hizmet uç noktalarıyla güvenli hale yaptığımız depolama hesabıdır ve işlevimizi bağlayacağız.
 1. Güvenli depolama hesabında [bir dosya paylaşma oluşturun](../storage/files/storage-how-to-create-file-share.md#create-file-share) .
 1. Depolama hesabı için hizmet uç noktalarını veya özel uç noktayı etkinleştirin.  
-    * Hizmet uç noktası kullanılıyorsa, işlev uygulamalarınıza adanmış alt ağı etkinleştirdiğinizden emin olun.
-    * Özel uç nokta kullanılıyorsa, bir DNS kaydı oluşturmayı ve uygulamanızı [Özel uç nokta uç noktalarıyla çalışacak](#azure-dns-private-zones) şekilde yapılandırmayı unutmayın.  Depolama hesabının `file` ve alt kaynaklar için özel bir uç noktası olması gerekir `blob` .  Dayanıklı İşlevler gibi belirli yetenekler kullanılıyorsa, Ayrıca, `queue` `table` özel bir uç nokta bağlantısı aracılığıyla da ihtiyacınız ve erişilebilir olur.
+    * Özel uç nokta bağlantıları kullanıyorsanız, depolama hesabının `file` ve alt kaynaklar için özel bir uç noktası olması gerekir `blob` .  Dayanıklı İşlevler gibi belirli yetenekler kullanılıyorsa, Ayrıca, `queue` `table` özel bir uç nokta bağlantısı aracılığıyla da ihtiyacınız ve erişilebilir olur.
+    * Hizmet uç noktaları kullanılıyorsa, depolama hesapları için işlev uygulamalarınıza adanmış alt ağı etkinleştirin.
 1. Seçim Dosya ve BLOB içeriğini işlev uygulama depolama hesabından güvenli depolama hesabına ve dosya paylaşımıyla kopyalayın.
 1. Bu depolama hesabı için bağlantı dizesini kopyalayın.
 1. İşlev uygulaması **yapılandırması** altındaki **uygulama ayarlarını** aşağıdakilere göre güncelleştirin:
@@ -106,6 +106,9 @@ Bir işlev uygulaması oluşturduğunuzda, blob, kuyruk ve tablo depolamayı des
     - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` güvenli depolama hesabı için bağlantı dizesine.
     - `WEBSITE_CONTENTSHARE` güvenli depolama hesabında oluşturulan dosya paylaşımının adı.
     - Adı ve değeri olan yeni bir ayar oluşturun `WEBSITE_CONTENTOVERVNET` `1` .
+    - Depolama hesabı özel uç nokta bağlantıları kullanıyorsa, aşağıdaki ayarları doğrulayın veya ekleyin
+        - `WEBSITE_VNET_ROUTE_ALL` değeri ile `1` .
+        - `WEBSITE_DNS_SERVER` değeri ile `168.63.129.16` 
 1. Uygulama ayarlarını kaydedin.  
 
 İşlev uygulaması yeniden başlatılır ve artık güvenli bir depolama hesabına bağlanacak.

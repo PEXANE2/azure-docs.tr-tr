@@ -5,14 +5,14 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: overview
-ms.date: 04/24/2020
+ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dbc0f34e57297b9879a865511f6e7b4ed7ca2a3c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82628529"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636903"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -33,6 +33,10 @@ Gelişmiş güvenlik ve yönetim için Azure Red Hat OpenShift, Azure Active Dir
 ## <a name="cluster-and-node"></a>Küme ve düğüm
 
 Azure Red Hat OpenShift düğümleri Azure sanal makinelerinde çalışır. Depolama alanı düğümlerine ve yığınlara bağlanabilir ve küme bileşenlerini yükseltebilirsiniz.
+
+## <a name="service-level-agreement"></a>Hizmet Düzeyi Sözleşmesi
+
+Azure Red Hat OpenShift, hizmetin zaman% 99,95 kullanılabilir olacağını garanti etmek için bir Hizmet Düzeyi Sözleşmesi sunar. SLA hakkında daha fazla bilgi için bkz. [Azure Red Hat OpenShift SLA](https://azure.microsoft.com/en-au/support/legal/sla/openshift/v1_0/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

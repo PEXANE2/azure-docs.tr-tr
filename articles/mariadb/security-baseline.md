@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6071a3675b1ad6aa5d49395fb9050c941af9be0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 043a2481647076abb5a6e242ffa2ea8b3f282c4d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532756"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637175"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı Azure Güvenlik temeli
 
@@ -818,9 +818,9 @@ Azure Ilke efektlerini anlayın: https://docs.microsoft.com/azure/governance/pol
 
 **Rehberlik** : MariaDB sunucuları ve ilgili kaynaklar Için Azure veritabanınız Için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-Azure DevOps 'da kod depolama: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
+[Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true
+[Azure Repos belgeleri](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure Güvenlik Merkezi izleme** : uygulanamaz
 

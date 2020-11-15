@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999114"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635714"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>İşletim sistemi başlatma sorunlarını giderme – Windows Update yükleme kapasitesi
 
@@ -62,8 +62,6 @@ Sorunu gidermek için:
 
 1. Diskin dolu olup olmadığını denetleyin. Disk boyutu 1 TB altındaysa, [PowerShell kullanarak](../windows/expand-os-disk.md)en fazla 1 TB 'a kadar genişletin.
 1. Disk zaten 1 TB ise disk temizleme gerçekleştirmeniz gerekecektir.
-   1. Veri diskini [bozuk VM 'den](../windows/detach-disk.md)ayırın.
-   1. Veri diskini [çalışan BIR VM 'ye](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)bağlayın.
    1. Boş alan boşaltmak için [Disk Temizleme aracını](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) kullanın.
 1. Yeniden boyutlandırma ve Temizleme işlemi tamamlandıktan sonra, aşağıdaki komutu kullanarak sürücüyü serbest bırakma:
 
@@ -75,12 +73,12 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>Seri konsol ve bellek dökümü toplamayı etkinleştirme
 
-**Önerilir**: VM 'yi yeniden oluşturmadan önce, aşağıdaki betiği çalıştırarak seri konsol ve bellek dökümü toplamasını etkinleştirin:
+**Önerilir** : VM 'yi yeniden oluşturmadan önce, aşağıdaki betiği çalıştırarak seri konsol ve bellek dökümü toplamasını etkinleştirin:
 
 1. Yükseltilmiş bir komut istemi oturumunu yönetici olarak açın.
 1. Aşağıdaki komutları çalıştırın:
 
-   **Seri konsolunu etkinleştirin**:
+   **Seri konsolunu etkinleştirin** :
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -99,7 +97,7 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **ControlSet001 üzerinde etkinleştir**:
+   **ControlSet001 üzerinde etkinleştir** :
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -107,7 +105,7 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **ControlSet002 üzerinde etkinleştir**:
+   **ControlSet002 üzerinde etkinleştir** :
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -115,7 +113,7 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Bozuk işletim sistemi diskini kaldır**:
+   **Bozuk işletim sistemi diskini kaldır** :
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

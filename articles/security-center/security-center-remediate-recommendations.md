@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 4bad3227e08c0fbe0d280967e45bbef9d477e1b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569144"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637097"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde düzeltme önerileri
 
@@ -38,7 +38,14 @@ Tüm önerileri inceledikten sonra, hangisi önce düzeltileceğine karar verin.
 
 ## <a name="quick-fix-remediation"></a>Hızlı düzeltme düzeltme<a name="one-click"></a>
 
-Hızlı düzeltme, birden fazla kaynak üzerinde bir öneriyi hızlıca düzeltmenizi sağlar. Yalnızca belirli öneriler için kullanılabilir. Hızlı düzeltme, düzeltmeyi basitleştirir ve ortamınızın güvenliğini iyileştirmek için güvenli puanınızı hızla artırmanıza olanak sağlar.
+Hızlı düzeltme, düzeltmeyi basitleştirir ve ortamınızın güvenliğini iyileştirmek için güvenli puanınızı hızla artırmanıza olanak sağlar.
+
+Hızlı düzeltme, birden fazla kaynak üzerinde bir öneriyi hızlıca düzeltmenizi sağlar. 
+
+> [!TIP]
+> Hızlı düzelme yalnızca belirli öneriler için kullanılabilir. Hızlı düzelme seçeneğine sahip önerileri bulmak için öneriler listesinin en üstünde adanmış filtreyi kullanın:
+> 
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="Hızlı düzelme seçeneğine sahip önerileri bulmak için öneriler listesinin üzerindeki filtreleri kullanın":::
 
 Hızlı düzeltme düzeltmesini uygulamak için:
 
@@ -46,7 +53,7 @@ Hızlı düzeltme düzeltmesini uygulamak için:
 
     [![Hızlı düzelme 'yi seçin!](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. **Sağlıksız kaynaklar** sekmesinden, öneriyi uygulamak istediğiniz kaynakları seçin ve **Düzelt**' e tıklayın.
+1. **Sağlıksız kaynaklar** sekmesinden, öneriyi uygulamak istediğiniz kaynakları seçin ve **Düzelt** ' e tıklayın.
 
     > [!NOTE]
     > Listelenen bazı kaynaklar devre dışı bırakılabilir, çünkü bunları değiştirmek için uygun izinlere sahip değilsiniz.
@@ -56,7 +63,7 @@ Hızlı düzeltme düzeltmesini uygulamak için:
     ![Hızlı çözüm](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
     > [!NOTE]
-    > Bu etkiler, **Düzelt**' i tıkladıktan sonra açılan **kaynakları Düzelt** penceresindeki gri kutusunda listelenir. Hızlı düzeltme düzeltmesine devam eden değişikliklerin ne olduğunu listeler.
+    > Bu etkiler, **Düzelt** ' i tıkladıktan sonra açılan **kaynakları Düzelt** penceresindeki gri kutusunda listelenir. Hızlı düzeltme düzeltmesine devam eden değişikliklerin ne olduğunu listeler.
 
 1. Gerekirse ilgili parametreleri ekleyin ve düzeltmeyi onaylayın.
 

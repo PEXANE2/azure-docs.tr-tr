@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: 036629bd72f8219c2d7b1877dd1672291ed3d98a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425231"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637158"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından C# işlevi oluşturma
 
@@ -28,6 +28,8 @@ Bu makalenin [Visual Studio Code tabanlı bir sürümü](create-first-function-v
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
++ [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) sürüm 3. x.
 
@@ -49,6 +51,8 @@ Azure CLı veya Azure kaynakları oluşturmak için Azure PowerShell kullanıp k
 
 + `az login`Azure 'da oturum açmak ve etkin bir aboneliği doğrulamak için ' i çalıştırın.
 
++ `dotnet --list-sdks`.NET Core SDK 3.1. x sürümünün yüklü olduğunu denetlemek için çalıştırın
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 + Bir Terminal veya komut penceresinde, `func --version` Azure Functions Core Tools sürüm 3. x olduğunu denetlemek için komutunu çalıştırın.
@@ -56,6 +60,8 @@ Azure CLı veya Azure kaynakları oluşturmak için Azure PowerShell kullanıp k
 + `(Get-Module -ListAvailable Az).Version`Sürüm 5,0 veya üstünü çalıştırın ve doğrulayın. 
 
 + `Connect-AzAccount`Azure 'da oturum açmak ve etkin bir aboneliği doğrulamak için ' i çalıştırın.
+
++ `dotnet --list-sdks`.NET Core SDK 3.1. x sürümünün yüklü olduğunu denetlemek için çalıştırın
 
 ---
 

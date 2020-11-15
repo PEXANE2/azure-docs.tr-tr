@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 852589e7ba1896ad493c5b8c300240490a516b64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 51f02d9f059ef87f7c1627102508b8b2aa7f537a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518252"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636308"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -122,6 +122,14 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --priority 200
 ```
 
+## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
+
+Bu bölümde şunları oluşturursunuz:
+
+* Arka uç sunucuları için ağ arabirimleri.
+* Sunucu yapılandırması için **cloud-init.txt** adlı bir bulut yapılandırma dosyası.
+* Yük Dengeleyici için arka uç sunucular olarak kullanılacak iki sanal makine.
+
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>Sanal makineler için ağ arabirimleri oluşturma
 
 [Az Network Nic Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)ile iki ağ arabirimi oluşturun:
@@ -158,13 +166,6 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-
-## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
-
-Bu bölümde şunları oluşturursunuz:
-
-* Sunucu yapılandırması için **cloud-init.txt** adlı bir bulut yapılandırma dosyası.
-* Yük Dengeleyici için arka uç sunucular olarak kullanılacak iki sanal makine.
 
 ### <a name="create-cloud-init-configuration-file"></a>Cloud-init yapılandırma dosyası oluşturma
 

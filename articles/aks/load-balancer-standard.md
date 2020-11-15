@@ -7,20 +7,20 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070512"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634880"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde ortak Standart Load Balancer kullanma
 
-Azure Load Balancer, hem gelen hem de giden senaryoları destekleyen açık sistemler arası bağlantı (OSı) modelinin bir L4 'dir. Yük dengeleyicinin ön ucuna gelen akışları, arka uç havuzu örneklerine dağıtır.
+Azure Load Balancer, hem gelen hem de giden senaryoları destekleyen açık sistemler arası bağlantı (OSı) modelinin L4 üzerinde bulunur. Yük dengeleyicinin ön ucuna gelen akışları, arka uç havuzu örneklerine dağıtır.
 
 AKS ile tümleştirilen **ortak** Load Balancer iki amaca hizmet eder:
 
-1. AKS sanal ağı içindeki küme düğümlerine giden bağlantılar sağlamak için. Bu amaca, düğümlerin özel IP adresini, *giden havuzunun*bir parçası olan genel bir IP adresine çevirerek bu amaca erişir.
+1. AKS sanal ağı içindeki küme düğümlerine giden bağlantılar sağlamak için. Bu amaca, düğümlerin özel IP adresini, *giden havuzunun* bir parçası olan genel bir IP adresine çevirerek bu amaca erişir.
 2. Türündeki Kubernetes Hizmetleri aracılığıyla uygulamalara erişim sağlamak için `LoadBalancer` . Bununla birlikte, uygulamalarınızı kolayca ölçeklendirebilir ve yüksek oranda kullanılabilir hizmetler oluşturabilirsiniz.
 
 Ön uç olarak yalnızca özel IP 'Lere izin verilen bir **iç (veya özel)** yük dengeleyici kullanılır. İç yük dengeleyiciler, bir sanal ağ içindeki trafiğin yükünü dengelemek için kullanılır. Yük dengeleyici ön uca karma senaryodaki bir şirket içi ağdan de erişilebilir.
@@ -29,7 +29,7 @@ Bu belge, ortak yük dengeleyici ile tümleştirmeyi içerir. İç Load Balancer
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure Load Balancer, *temel* ve *Standart*olmak üzere iki SKU 'da kullanılabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda *Standart* SKU kullanılır. Daha büyük bir arka uç havuzu, [**birden çok düğüm havuzu**](use-multiple-node-pools.md)ve [**kullanılabilirlik alanları**](availability-zones.md)gibi ek işlevlere erişebilmek için *Standart* SKU 'yu kullanın. AKS için önerilen Load Balancer SKU 'SU.
+Azure Load Balancer, *temel* ve *Standart* olmak üzere iki SKU 'da kullanılabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda *Standart* SKU kullanılır. Daha büyük bir arka uç havuzu, [**birden çok düğüm havuzu**](use-multiple-node-pools.md)ve [**kullanılabilirlik alanları**](availability-zones.md)gibi ek işlevlere erişebilmek için *Standart* SKU 'yu kullanın. AKS için önerilen Load Balancer SKU 'SU.
 
 *Temel* ve *Standart* SKU 'lar hakkında daha fazla bilgi için bkz. [Azure yük dengeleyici SKU karşılaştırması][azure-lb-comparison].
 
@@ -93,13 +93,13 @@ Azure Load Balancer, gelen öğesine ek olarak bir sanal ağdan giden bağlantı
 
 Tüm Load Balancer kuralları gibi giden kurallar da yük dengeleme ve gelen NAT kuralları ile aynı tanıdık sözdizimini izler:
 
-***ön uç IP + parametreler + arka uç havuzu***
+***ön uç IP + parametreler + arka uç havuzu** _
 
 Giden bir kural, arka uç havuzu tarafından belirtilen tüm sanal makineler için giden NAT 'yi ön uca çevrilecek şekilde yapılandırır. Ve parametreler giden NAT algoritması üzerinde ek ayrıntılı denetim sağlar.
 
 Giden kuralı yalnızca tek bir genel IP adresiyle kullanılabilir ancak giden kuralları, giden NAT ölçeklendirme için yapılandırma yükünü kolaylaştırır. Büyük ölçekli senaryoları planlamak için birden çok IP adresi kullanabilir ve giden kurallarını, SNAT tükenmesi açısından yüksek desenleri azaltmak için kullanabilirsiniz. Ön uç tarafından sağlanan her ek IP adresi, Load Balancer SNAT bağlantı noktası olarak kullanılacak 64K kısa ömürlü bağlantı noktaları sağlar. 
 
-Varsayılan olarak oluşturulan, yönetilen giden genel IP 'Ler ile *Standart* SKU yük dengeleyicisi kullanılırken, parametresini kullanarak yönetilen giden genel IP sayısını ölçeklendirebilirsiniz **`load-balancer-managed-ip-count`** .
+Varsayılan olarak oluşturulan, yönetilen giden genel IP 'Leri olan bir _Standard * SKU yük dengeleyicisi kullanırken, yönetilen giden genel IP sayısını parametresini kullanarak ölçeklendirebilirsiniz **`load-balancer-managed-ip-count`** .
 
 Var olan bir kümeyi güncelleştirmek için aşağıdaki komutu çalıştırın. Bu parametre, birden çok yönetilen giden genel IP 'si olması için küme oluşturma zamanında de ayarlanabilir.
 
@@ -110,7 +110,7 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-Yukarıdaki örnek, *Myresourcegroup*Içindeki *Myakscluster* kümesi Için yönetilen giden genel IP sayısını *2* ' ye ayarlar. 
+Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* kümesi Için yönetilen giden genel IP sayısını *2* ' ye ayarlar. 
 
 Ayrıca, parametreyi **`load-balancer-managed-ip-count`** ekleyerek **`--load-balancer-managed-outbound-ip-count`** ve istediğiniz değere ayarlayarak kümenizi oluştururken yönetilen giden genel IP 'lerin başlangıç sayısını ayarlamak için parametresini de kullanabilirsiniz. Varsayılan yönetilen giden genel IP sayısı 1 ' dir.
 
@@ -221,7 +221,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı noktası ve 7 IP, *düğüm başına 4000 bağlantı noktasına sahip olur * 100 düğümleri = 400k toplam bağlantı noktası < = 448k toplam bağlantı noktası = 7 IP * IP başına 64K bağlantı*noktası. Bu, 100 düğüme güvenle ölçeklenebilme ve varsayılan bir yükseltme işlemi yapmanıza olanak sağlar. Yükseltme ve diğer işlemler için gereken ek düğümler için yeterli bağlantı noktası ayrılması kritik öneme sahiptir. AKS, yükseltme için bir arabellek düğümüne varsayılan olarak, bu örnekte belirli bir zamanda 4000 boş bağlantı noktası gerekir. [Maxdalgalanma değerleri](upgrade-cluster.md#customize-node-surge-upgrade-preview)kullanılıyorsa, düğüm başına giden bağlantı noktalarını maxdalgalanma değerinizdeki değerle çarpın.
+Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı noktası ve 7 IP, *düğüm başına 4000 bağlantı noktasına sahip olur * 100 düğümleri = 400k toplam bağlantı noktası < = 448k toplam bağlantı noktası = 7 IP * IP başına 64K bağlantı* noktası. Bu, 100 düğüme güvenle ölçeklenebilme ve varsayılan bir yükseltme işlemi yapmanıza olanak sağlar. Yükseltme ve diğer işlemler için gereken ek düğümler için yeterli bağlantı noktası ayrılması kritik öneme sahiptir. AKS, yükseltme için bir arabellek düğümüne varsayılan olarak, bu örnekte belirli bir zamanda 4000 boş bağlantı noktası gerekir. [Maxdalgalanma değerleri](upgrade-cluster.md#customize-node-surge-upgrade-preview)kullanılıyorsa, düğüm başına giden bağlantı noktalarını maxdalgalanma değerinizdeki değerle çarpın.
 
 100 düğümüne güvenle gitmek için daha fazla IP eklemeniz gerekir.
 
@@ -266,7 +266,7 @@ az aks update \
  
 *Outboundıps* \* 64.000 \> *nodevms* \* *desiredAllocatedOutboundPorts*.
  
-Örneğin, 3 *Nodevms*ve 50.000 *desiredAllocatedOutboundPorts*varsa, en az 3 *outboundıps*gerekir. İhtiyaç duyduğunuz süreden daha fazla giden IP kapasitesi eklemeniz önerilir. Ayrıca, giden IP kapasitesini hesaplarken küme otomatik Scaler ve düğüm havuzu yükseltmeleri olasılığa yönelik hesaba sahip olmanız gerekir. Küme otomatik yüklemesi için geçerli düğüm sayısını ve en fazla düğüm sayısını gözden geçirin ve daha yüksek değeri kullanın. Yükseltme için, yükseltmeye izin veren her düğüm havuzu için ek bir düğüm VM 'si hesabı.
+Örneğin, 3 *Nodevms* ve 50.000 *desiredAllocatedOutboundPorts* varsa, en az 3 *outboundıps* gerekir. İhtiyaç duyduğunuz süreden daha fazla giden IP kapasitesi eklemeniz önerilir. Ayrıca, giden IP kapasitesini hesaplarken küme otomatik Scaler ve düğüm havuzu yükseltmeleri olasılığa yönelik hesaba sahip olmanız gerekir. Küme otomatik yüklemesi için geçerli düğüm sayısını ve en fazla düğüm sayısını gözden geçirin ve daha yüksek değeri kullanın. Yükseltme için, yükseltmeye izin veren her düğüm havuzu için ek bir düğüm VM 'si hesabı.
 
 - *Idletimeoutınminutes* değerini varsayılan değer olan 30 dakikadan farklı bir değere ayarlarken, iş yüklerinizin giden bir bağlantıya ne kadar süreyle ihtiyacı olacağını düşünün. Ayrıca, AKS dışında kullanılan *Standart* SKU yük dengeleyici için varsayılan zaman aşımı değerini 4 dakikadır. Belirli AKS iş yükünüzü daha doğru bir şekilde yansıtan bir *ıdletimeoutınminutes* değeri, artık kullanılmayan bağlantıların AYıKLANMASıNDAN kaynaklanan SNAT tükenmesi azalmasına yardımcı olabilir.
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504518"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634897"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -193,6 +193,10 @@ Hesap oluşturma işleminin otomatik hale getirmek için iki adımdan oluşan bi
 
     [Media Services hesap oluşturma şablonuna](https://github.com/Azure-Samples/media-services-v3-arm-templates)bir örnek bakın.
 1. [Media Services ve Azure AD uygulamasıyla oluşturma-hesabını](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)çağırın.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu Öğreticiyi tamamladıktan sonra, kullanmayı planlamadığını planladığınız kaynakları silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

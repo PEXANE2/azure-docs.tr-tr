@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555648"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636750"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure İzleyici iş ortağı tümleştirmeleri
 
@@ -46,6 +46,16 @@ AppDynamics uygulama performansı yönetimi (APM), uygulama sahiplerinin perform
 Azure Izleyici uyarıları üzerinde JıRA bileti oluşturabilirsiniz.
 
 [Azure Izleyici için atlasme belgeleri](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
+
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix logosu](./media/partners/BMCHelix.png)
+
+BMC Helix, özerk bir kurumsal hizmet ve Operations SaaS platformudur. 360 derecelik zeka tümleştirilerek, işletmeler BT ve iş kolu için OMNI kanal deneyimlerini önceden ve tahmin etmeye, izlemeye, hizmete, düzeltmeye, iyileştirmenize ve sunmaya olanak sağlıyor.
+Ayrıca, ıTSM ve BT operasyon yönetimi 'ni (ıTOM) sorunsuz bir şekilde tümleştirerek, BMC Helix BT ve iş kullanıcılarının BT silolarını ortadan kaldırabilmesini, veri odaklı iş kararları almasını ve sektör lideri müşteri deneyimlerini sunmalarını sağlar.
+Müşteriler, BMC Helix platformunu tercih ettikleri, Private veya hibrit bulut dağıtımıyla dağıtabilir. Ayrıca, müşterilerin sektör lideri sağlayıcılardan yararlanmak için bir AI/ML çözümleri seçeneği vardır.
+
+[BMC Helix hakkında daha fazla bilgi](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="botmetric"></a>Botmetric
 
@@ -151,7 +161,7 @@ Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı ba
 
 Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama veya hizmet tüm karma BT kaynaklarını otomatik olarak izler ve nerede çalıştığı ve tüm veri türlerine aıops uygular – olaylar, ölçümler, Günlükler ve bağımlılıklar. Bu, kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet kalitesi izlemenin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
 
-Daha fazlasını öğrenin
+Daha fazla bilgi edinin
 - [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.
@@ -301,15 +311,6 @@ Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olar
 
 [Turbonomic tanıtımı](https://turbonomic.com/)
 
-## <a name="bmc-helix"></a>BMC Helix
-
-![BMC Helix logosu](./media/partners/BMCHelix.png)
-
-BMC Helix, özerk bir kurumsal hizmet ve Operations SaaS platformudur. 360 derecelik zeka tümleştirilerek, işletmeler BT ve iş kolu için OMNI kanal deneyimlerini önceden ve tahmin etmeye, izlemeye, hizmete, düzeltmeye, iyileştirmenize ve sunmaya olanak sağlıyor.
-Ayrıca, ıTSM ve BT operasyon yönetimi 'ni (ıTOM) sorunsuz bir şekilde tümleştirerek, BMC Helix BT ve iş kullanıcılarının BT silolarını ortadan kaldırabilmesini, veri odaklı iş kararları almasını ve sektör lideri müşteri deneyimlerini sunmalarını sağlar.
-Müşteriler, BMC Helix platformunu tercih ettikleri, Private veya hibrit bulut dağıtımıyla dağıtabilir. Ayrıca, müşterilerin sektör lideri sağlayıcılardan yararlanmak için bir AI/ML çözümleri seçeneği vardır.
-
-[BMC Helix hakkında daha fazla bilgi](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

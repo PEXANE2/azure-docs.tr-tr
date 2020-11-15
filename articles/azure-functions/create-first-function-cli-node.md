@@ -4,12 +4,12 @@ description: Komut satırından bir JavaScript işlevi oluşturmayı ve ardında
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a77ae054191c4a96026ac74bd9da226542de838
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4a178cb0e69a6e2b666247bcb8e76ab2c7e272e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425189"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635679"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir JavaScript işlevi oluşturma
 
@@ -123,7 +123,7 @@ Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisini
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     
     ```azurepowershell
-    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -FunctionsVersion 3 -Location 'West Europe'
+    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -RuntimeVersion 12 -FunctionsVersion 3 -Location 'West Europe'
     ```
     
     [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) cmdlet 'i Azure 'da işlev uygulaması oluşturur. Node.js 10 kullanıyorsanız, ' `-RuntimeVersion` ye geçin `10` .

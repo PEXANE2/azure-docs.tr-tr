@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745796"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636989"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) içindeki Azure dosya kapsayıcısı depolama arabirimi (CSı) sürücülerini kullanma (Önizleme)
 
@@ -229,7 +229,7 @@ az provider register --namespace Microsoft.Storage
 [Oluşturma `Premium_LRS` ](../storage/files/storage-how-to-create-premium-fileshare.md) NFS paylaşımlarını desteklemek için aşağıdaki yapılandırmalara sahip Azure depolama hesabı:
 - hesap türü: dosya depolama
 - güvenli aktarım gerekli (yalnızca HTTPS trafiğini etkinleştir): false
-- Güvenlik duvarları ve sanal ağlarda aracı düğümlerinizin sanal ağını seçin
+- Güvenlik duvarları ve sanal ağlarda aracı düğümlerinizin sanal ağını seçin. bu nedenle MC_ kaynak grubunda depolama hesabını oluşturmayı tercih edebilirsiniz.
 
 ### <a name="create-nfs-file-share-storage-class"></a>NFS dosya paylaşma depolama sınıfı oluştur
 
@@ -239,7 +239,7 @@ az provider register --namespace Microsoft.Storage
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azurefile-csi
+  name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
   resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
@@ -275,6 +275,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
 ...
 ```
+
+>[!NOTE]
+> NFS dosya paylaşımının Premium hesabında olduğundan, en düşük dosya paylaşma boyutunun 100 GB olduğunu unutmayın. Küçük depolama boyutu olan bir PVC oluşturursanız, "dosya paylaşma oluşturulamadı... Boyut (5)... ".
+
 
 ## <a name="windows-containers"></a>Windows kapsayıcıları
 

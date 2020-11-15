@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: eb2212d618d45187779b328c7ba164bbacc980a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088701"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637022"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,7 +55,7 @@ Her uygulama için iş sürekliliği,% 99,999 kullanılabilirlik ve kurumsal dü
 - Azure Cosmos DB, dünyanın her yerindeki endüstri lideri kullanılabilirliği dahil kapsamlı bir [SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) paketi sunar.
 - Otomatik veri çoğaltmasıyla, verileri herhangi bir Azure bölgesine kolayca dağıtın. Güçlü tutarlılık kullanılırken, çok bölgeli yazma veya RPO 0 ile sıfır kapalı kalma süresinden yararlanın.
 - Şirket içinde, kendinden yönetilen anahtarlarla Rest 'ten yararlanın.
-- Rol tabanlı erişim denetimi, verilerinizi güvende tutar ve ince ayarlanmış denetim sağlar.
+- Azure rol tabanlı erişim denetimi, verilerinizi güvende tutar ve ince ayarlanmış denetim sunar.
 
 ### <a name="fully-managed-and-cost-effective"></a>Tam olarak yönetilen ve ekonomik
 

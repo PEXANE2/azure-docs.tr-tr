@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899259"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636928"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes
 
@@ -67,7 +67,7 @@ Yeni Kubernetes sürümleri kullanılabilir hale geldiğinde, kümeniz Azure Sta
 
 ## <a name="access-monitoring"></a>Erişim, izleme
 
-Azure Stack Edge Pro cihazınızdaki Kubernetes kümesi rol tabanlı erişim denetimine (RBAC) izin verir. Daha fazla bilgi için, [Azure Stack Edge Pro cihazınızda Kubernetes kümesi Için rol tabanlı erişim denetimi](azure-stack-edge-gpu-kubernetes-rbac.md)konusuna bakın.
+Azure Stack Edge Pro cihazınızdaki Kubernetes kümesi, Kubernetes rol tabanlı erişim denetimine (Kubernetes RBAC) izin verir. Daha fazla bilgi için [Azure Stack Edge Pro GPU cihazınızda Kubernetes rol tabanlı erişim denetimi](azure-stack-edge-gpu-kubernetes-rbac.md)bölümüne bakın.
 
 Ayrıca, Kubernetes panosu aracılığıyla kümenizin ve kaynaklarınızın durumunu izleyebilirsiniz. Kapsayıcı günlükleri de kullanılabilir. Daha fazla bilgi için bkz. [Azure Stack Edge Pro cihazınızda Kubernetes kümesi sistem durumunu izlemek Için Kubernetes panosunu kullanma](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
 

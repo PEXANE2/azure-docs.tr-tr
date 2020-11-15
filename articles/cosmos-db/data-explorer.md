@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: d5958ea947f6b786e9fbc6c44ab914ea895d6e08
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096810"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637124"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos gezginini kullanarak verilerle çalışma 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,7 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
 ## <a name="access-azure-cosmos-db-explorer"></a>Azure Cosmos DB Gezgini 'ne erişin
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın. 
+1. [Azure Portal](https://portal.azure.com/)oturum açın. 
 
 2. **Tüm kaynaklardan** Azure Cosmos DB hesabınıza gidin, anahtarlar ' ı seçin ve **birincil bağlantı dizesini** kopyalayın.  
 
@@ -34,7 +34,7 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
    Diğer kullanıcıların Azure Cosmos DB hesabınıza geçici olarak erişmesini sağlamak istiyorsanız, okuma-yazma ve okuma erişimi URL 'Lerini kullanarak bunu yapabilirsiniz. 
 
-4. **Veri Gezgini** dikey penceresini açın, **tam ekran aç** ' ı seçin. Açılır iletişim kutusunda, iki erişim URL 'sini görüntüleyebilirsiniz – **okuma-yazma** ve **okuma** . Bu URL 'Ler Azure Cosmos DB hesabınızı diğer kullanıcılarla geçici olarak paylaşmanızı sağlar. Hesap erişimi, yeni bir erişim URL 'SI veya bağlantı dizesi kullanarak yeniden bağlanabildikten sonra 24 saat sonra sona erer. 
+4. **Veri Gezgini** dikey penceresini açın, **tam ekran aç** ' ı seçin. Açılır iletişim kutusunda, iki erişim URL 'sini görüntüleyebilirsiniz – **okuma-yazma** ve **okuma**. Bu URL 'Ler Azure Cosmos DB hesabınızı diğer kullanıcılarla geçici olarak paylaşmanızı sağlar. Hesap erişimi, yeni bir erişim URL 'SI veya bağlantı dizesi kullanarak yeniden bağlanabildikten sonra 24 saat sonra sona erer. 
 
    **Okuma-yazma** : URL 'yi diğer kullanıcılarla Read-Write paylaştığınızda, bu ilgili hesapla ilişkili veritabanlarını, koleksiyonları, sorguları ve diğer kaynakları görüntüleyebilir ve değiştirebilirler.
 
@@ -50,7 +50,7 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
 Şu anda, bir UUID içeren belgeleri görüntülemek Veri Gezgini desteklenmez. Bu, yalnızca bu belgeleri içeren tek tek belgeleri veya sorguları görüntülemek için koleksiyonları yüklemeyi etkilemez. Bu belgeleri görüntülemek ve yönetmek için, kullanıcılar başlangıçta bu belgeleri oluşturmak için kullanılan aracı kullanmaya devam etmelidir.
 
-HTTP-401 hataları alan müşteriler, özellikle de hesabın özel bir RBAC rolüne sahip olması durumunda, müşterinin Azure hesabı için yeterli RBAC izinlerinden kaynaklanıyor olabilir. Herhangi bir özel rol `Microsoft.DocumentDB/databaseAccounts/listKeys/*` Azure Active Directory kimlik bilgilerini kullanarak oturum açıyorsanız Veri Gezgini kullanmak için eyleme sahip olmalıdır.
+HTTP-401 hataları alan müşteriler, özellikle de hesabın özel bir rolü varsa, müşterinin Azure hesabı için Azure RBAC izinlerinin yetersiz olması nedeniyle olabilir. Herhangi bir özel rol `Microsoft.DocumentDB/databaseAccounts/listKeys/*` Azure Active Directory kimlik bilgilerini kullanarak oturum açıyorsanız Veri Gezgini kullanmak için eyleme sahip olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

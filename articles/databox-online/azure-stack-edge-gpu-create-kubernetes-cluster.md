@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903207"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635917"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızdan kubectl aracılığıyla bir Kubernetes kümesine bağlanma ve bunları yönetme
 
-Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra, *kubectl*gibi yerel bir araç aracılığıyla bir istemci makinesinden kümeye bağlanabilir ve yerel olarak yönetim sağlayabilirsiniz.
+Azure Stack Edge Pro cihazınızda, işlem rolünü yapılandırırken bir Kubernetes kümesi oluşturulur. Kubernetes kümesi oluşturulduktan sonra, *kubectl* gibi yerel bir araç aracılığıyla bir istemci makinesinden kümeye bağlanabilir ve yerel olarak yönetim sağlayabilirsiniz.
 
-Bu makalede, Azure Stack Edge Pro cihazınızda bir Kubernetes kümesine bağlanmayı ve sonra da *kubectl*kullanarak yönetmeyi açıklanmaktadır. 
+Bu makalede, Azure Stack Edge Pro cihazınızda bir Kubernetes kümesine bağlanmayı ve sonra da *kubectl* kullanarak yönetmeyi açıklanmaktadır. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -44,7 +44,7 @@ Kubernetes kümesi oluşturulduktan sonra, ad alanları ve kullanıcılar oluşt
 [!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 
-## <a name="configure-cluster-access-via-rbac"></a>RBAC aracılığıyla küme erişimini yapılandırma
+## <a name="configure-cluster-access-via-kubernetes-rbac"></a>Kubernetes RBAC aracılığıyla küme erişimini yapılandırma
 
 Kubernetes kümesi oluşturulduktan sonra, kümeye erişmek için komut satırı aracılığıyla *kubectl* 'yi kullanabilirsiniz. 
 
@@ -125,7 +125,7 @@ Bu yaklaşımda bir ad alanı ve Kullanıcı oluşturursunuz. Daha sonra kullan�
     Örneğin, Kubernetes ana düğümü v 1.15.2 çalıştırıyorsa, istemciye v 1.15.2 ' yi yükler.
 
     > [!IMPORTANT]
-    > Ana bilgisayardan birden fazla alt sürüm olmayan bir istemciyi indirin. İstemci sürümü, ancak ana öğeyi bir alt sürüme kadar gösterebilir. Örneğin, bir v 1.3 yöneticisinin v 1.1, v 1.2 ve v 1.3 düğümleri ile çalışması ve v 1.2, v 1.3 ve v 1.4 istemcileri ile çalışması gerekir. Kubernetes istemci sürümü hakkında daha fazla bilgi için bkz. [Kubernetes sürümü ve sürüm eğriltme destek ilkesi](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Azure Stack Edge Pro 'da Kubernetes sunucu sürümü hakkında daha fazla bilgi için, Kubernetes sunucu sürümünü al bölümüne gidin.<!-- insert link-->
+    > Ana sürümden en fazla bir alt sürüm uzakta olan bir istemci indirin. İstemci sürümü, ancak ana öğeyi bir alt sürüme kadar gösterebilir. Örneğin, bir v 1.3 yöneticisinin v 1.1, v 1.2 ve v 1.3 düğümleri ile çalışması ve v 1.2, v 1.3 ve v 1.4 istemcileri ile çalışması gerekir. Kubernetes istemci sürümü hakkında daha fazla bilgi için bkz. [Kubernetes sürümü ve sürüm eğriltme destek ilkesi](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew). Azure Stack Edge Pro 'da Kubernetes sunucu sürümü hakkında daha fazla bilgi için, Kubernetes sunucu sürümünü al bölümüne gidin.<!-- insert link-->
     > Bazen `kubectl` Docker for Windows veya başka araçlar çalıştırıyorsanız sisteminize önceden yüklenir. Bu `kubectl` bölümde belirtilen bu Kubernetes kümesiyle çalışmak için belirli sürümünü indirmek önemlidir. 
 
     Yükleme birkaç dakika sürer.

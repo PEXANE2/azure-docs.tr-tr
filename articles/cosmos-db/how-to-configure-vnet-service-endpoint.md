@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101740"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637192"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB erişimi yapılandırma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -50,7 +50,7 @@ Aşağıdaki bölümlerde, bir Azure Cosmos DB hesabı için sanal ağ hizmeti u
 
 1. Azure Cosmos DB hesabı bir sanal ağdan erişim için etkinleştirildikten sonra, yalnızca bu seçili alt ağdan gelen trafiğe izin verir. Eklediğiniz sanal ağ ve alt ağ aşağıdaki ekran görüntüsünde gösterildiği gibi görünmelidir:
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Sanal ağ ve alt ağ seçin":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Sanal ağ ve alt ağ başarıyla yapılandırıldı":::
 
 > [!NOTE]
 > Sanal ağ hizmet uç noktalarını etkinleştirmek için aşağıdaki Abonelik izinlerine sahip olmanız gerekir:
@@ -70,7 +70,7 @@ Aboneliği kaynak sağlayıcısına kaydetme yönergeleri aşağıda verilmişti
 
 1. Yeni bir sanal ağ oluşturmak için gereken ayrıntıları girip **Oluştur** ' u seçin. Alt ağ "Microsoft. Azu, Smosdb" etkin bir hizmet uç noktası ile oluşturulur.
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Sanal ağ ve alt ağ seçin":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Yeni bir sanal ağ için bir sanal ağ ve alt ağ seçin":::
 
 Azure Cosmos DB hesabınız Azure Bilişsel Arama gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et** ' i seçerek erişime izin verebilirsiniz.
 
@@ -84,7 +84,7 @@ Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak i�
 
 1. Bir sanal ağ veya alt ağ kuralını kaldırmak için, sanal ağ veya alt ağın yanındaki **...** öğesini seçin ve **Kaldır** ' ı seçin.
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Sanal ağ ve alt ağ seçin":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Sanal ağı kaldır":::
 
 1. Değişikliklerinizi uygulamak için **Kaydet** ’i seçin.
 
@@ -322,7 +322,7 @@ Aşağıda, sanal ağlardan erişimi yapılandırma hakkında sık sorulan bazı
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Azure Cosmos hesabında hem sanal ağ hizmeti uç noktası hem de IP erişim denetim ilkesi belirtebilir miyim? 
 
-Azure Cosmos hesabınızda hem sanal ağ hizmeti uç noktasını hem de bir IP erişim denetimi ilkesini (aka güvenlik duvarı) etkinleştirebilirsiniz. Bu iki özellik tamamlayıcı ve Azure Cosmos hesabınızın yalıtımı ve güvenliğini topluca garanti altına alınır. IP güvenlik duvarının kullanılması, statik IP 'Lerin hesabınıza erişmesini sağlar. 
+Azure Cosmos hesabınızda hem sanal ağ hizmeti uç noktasını hem de bir IP erişim denetimi ilkesini (güvenlik duvarı olarak da bilinir) etkinleştirebilirsiniz. Bu iki özellik tamamlayıcı ve Azure Cosmos hesabınızın yalıtımı ve güvenliğini topluca garanti altına alınır. IP güvenlik duvarının kullanılması, statik IP 'Lerin hesabınıza erişmesini sağlar. 
 
 ### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Nasıl yaparım? bir sanal ağ içindeki alt ağa erişimi mi sınırlayın? 
 
@@ -336,7 +336,7 @@ IP güvenlik duvarı veya sanal ağ erişim kuralları eklendiğinde, yalnızca 
 
 Bir alt ağda Azure Cosmos DB için hizmet uç noktası etkinleştirildikten sonra, hesap anahtarlarına genel IP 'den sanal ağa ve alt ağa ulaşan trafik kaynağıdır. Azure Cosmos hesabınızda yalnızca IP tabanlı güvenlik duvarı varsa, hizmet etkin alt ağdan gelen trafik artık IP güvenlik duvarı kurallarıyla eşleşmez ve bu nedenle reddedilir. IP tabanlı güvenlik duvarından sanal ağ tabanlı erişim denetimine sorunsuz bir şekilde geçiş yapmak için adımlara gidin.
 
-### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>VNET hizmet uç noktaları olan Azure Cosmos hesapları için ek RBAC izinleri gerekiyor mu?
+### <a name="are-additional-azure-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>VNET hizmet uç noktaları olan Azure Cosmos hesapları için ek Azure RBAC izinleri gerekiyor mu?
 
 VNet hizmet uç noktalarını bir Azure Cosmos hesabına ekledikten sonra, hesap ayarlarında herhangi bir değişiklik yapmak için `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` Azure Cosmos hesabınızda yapılandırılan tüm sanal ağlar için eyleme erişmeniz gerekir. Bu izin, yetkilendirme işlemi herhangi bir özelliği değerlendirmeden önce kaynaklara erişimi (veritabanı ve sanal ağ kaynakları gibi) doğruladığından gereklidir.
  
