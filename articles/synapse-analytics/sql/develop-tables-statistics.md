@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cf85b0ea658ae6459644dd710630a30f78ad99aa
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339402"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638861"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
@@ -173,7 +173,7 @@ CREATE STATISTICS [statistics_name]
     ON [schema_name].[table_name]([column_name]);
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -190,7 +190,7 @@ CREATE STATISTICS [statistics_name]
     WITH FULLSCAN;
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -403,7 +403,7 @@ Belirli bir istatistik nesnesini güncelleştirmek için aşağıdaki sözdizimi
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -419,7 +419,7 @@ Bir tablodaki tüm istatistik nesnelerini güncelleştirmek için basit bir yön
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -522,7 +522,7 @@ Bu basit örnek, bir istatistik nesnesinin üç parçasını gösterir:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -537,7 +537,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
     WITH stat_header, histogram, density_vector
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
@@ -812,6 +812,74 @@ Ve istatistik oluştur:
 CREATE STATISTICS sState
     on census_external_table (STATENAME)
     WITH FULLSCAN, NORECOMPUTE
+```
+
+### <a name="statistics-metadata"></a>İstatistik meta verileri
+
+İstatistikler hakkında bilgi edinmek için kullanabileceğiniz çeşitli sistem görünümleri ve işlevleri vardır. Örneğin, STATS_DATE () işlevini kullanarak bir istatistik nesnesinin güncel olup olmadığını görebilirsiniz. STATS_DATE (), istatistiklerin en son ne zaman oluşturulduğunu veya güncelleştirildiğini görmenizi sağlar.
+
+> [!NOTE]
+> İstatistik meta verileri yalnızca dış tablo sütunları için kullanılabilir. İstatistik meta verileri OPENROWSET sütunları için kullanılamaz.
+
+#### <a name="catalog-views-for-statistics"></a>İstatistikler için katalog görünümleri
+
+Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
+
+| Katalog görünümü                                                 | Açıklama                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Her sütun için bir satır.                                     |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Veritabanındaki her nesne için bir satır.                     |
+| [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Veritabanındaki her şema için bir satır.                     |
+| [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Her istatistik nesnesi için bir satır.                          |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | İstatistikler nesnesindeki her sütun için bir satır. Sys. Columns öğesine geri bağlantı. |
+| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Her tablo için bir satır (dış tabloları içerir).           |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Her veri türü için bir satır.                                  |
+
+#### <a name="system-functions-for-statistics"></a>İstatistikler için sistem işlevleri
+
+Bu sistem işlevleri, istatistiklerle çalışmak için faydalıdır:
+
+| Sistem işlevi                                              | Açıklama                                  |
+| :----------------------------------------------------------- | :------------------------------------------- |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | İstatistik nesnesinin son güncelleştirilme tarihi. |
+
+#### <a name="combine-statistics-columns-and-functions-into-one-view"></a>İstatistik sütunları ve işlevleri tek bir görünümde birleştirin
+
+Bu görünüm, STATS_DATE () işlevinin birlikte istatistikleriyle ve sonuçlarıyla ilgili sütunları getirir.
+
+```sql
+CREATE VIEW dbo.vstats_columns
+AS
+SELECT
+        sm.[name]                           AS [schema_name]
+,       tb.[name]                           AS [table_name]
+,       st.[name]                           AS [stats_name]
+,       st.[filter_definition]              AS [stats_filter_definition]
+,       st.[has_filter]                     AS [stats_is_filtered]
+,       STATS_DATE(st.[object_id],st.[stats_id])
+                                            AS [stats_last_updated_date]
+,       co.[name]                           AS [stats_column_name]
+,       ty.[name]                           AS [column_type]
+,       co.[max_length]                     AS [column_max_length]
+,       co.[precision]                      AS [column_precision]
+,       co.[scale]                          AS [column_scale]
+,       co.[is_nullable]                    AS [column_is_nullable]
+,       co.[collation_name]                 AS [column_collation_name]
+,       QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS two_part_name
+,       QUOTENAME(DB_NAME())+'.'+QUOTENAME(sm.[name])+'.'+QUOTENAME(tb.[name])
+                                            AS three_part_name
+FROM    sys.objects                         AS ob
+JOIN    sys.stats           AS st ON    ob.[object_id]      = st.[object_id]
+JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
+                            AND         st.[object_id]      = sc.[object_id]
+JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
+                            AND         sc.[object_id]      = co.[object_id]
+JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
+WHERE   st.[user_created] = 1
+;
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

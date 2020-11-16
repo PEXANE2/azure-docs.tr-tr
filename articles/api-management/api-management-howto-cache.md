@@ -11,18 +11,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86250490"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638742"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Azure API Management performansını artırmak için önbelleğe alma ekleme
 
-API Management işlemleri yanıt önbelleğe alma için yapılandırılabilir. Yanıt önbelleğe alma, çok sık değişmeyen veriler için API gecikmesi, bant genişliği kullanımı ve web hizmeti yükünü önemli ölçüde azaltabilir.
+API Management içindeki API 'Ler ve işlemler, yanıt önbelleğe alma ile yapılandırılabilir. Yanıt önbelleği, API arayanlara ve API sağlayıcıları için arka uç yüküne yönelik gecikmeyi önemli ölçüde azaltabilir.
+
+> [!IMPORTANT]
+> Yerleşik önbellek geçici ve aynı API Management hizmetindeki aynı bölgedeki tüm birimler tarafından paylaşılır.
 
 Önbelleğe alma hakkında daha ayrıntılı bilgi için bkz. [API Management önbelleğe alma ilkeleri](api-management-caching-policies.md) ve [Azure API Management'te özel önbelleğe alma](api-management-sample-cache-by-key.md).
 
@@ -54,7 +57,7 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
 2. APIM örneğinize göz atın.
 3. **API** sekmesini seçin.
 4. API listenizden **Tanıtım Konferansı API’sine** tıklayın.
-5. **GetSpeakers**’ı seçin.
+5. **GetSpeakers** ’ı seçin.
 6. Ekranın üst kısmında **Tasarım** sekmesini seçin.
 7. **Gelen işleme** bölümünde **</>** simgesine tıklayın.
 
@@ -89,7 +92,7 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
 3. Önbelleğe alma ilkelerini eklediğiniz API’leri seçin.
 4. **GetSpeakers** işlemini seçin.
 5. Sağ üst menüdeki **Test** sekmesine tıklayın.
-6. **Gönder**’e basın.
+6. **Gönder** ’e basın.
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>Sonraki adımlar
 * Önbelleğe alma ilkeleri hakkında daha fazla bilgi için bkz. [API Management ilke başvurusu][API Management policy reference]’nda [Önbelleğe alma ilkeleri][Caching policies].

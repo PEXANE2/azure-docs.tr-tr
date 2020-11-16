@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/12/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: e25b8af3dd56078a3febe436b74af8f94cdcc485
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636059"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638776"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden aracıları ve uzantıları otomatik sağlama
 
@@ -24,7 +24,7 @@ Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, 
 Şu kullanılarak toplanan veriler:
 
 - Makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan **Log Analytics Aracısı**. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı.
-- [Kubernetes Için Azure Ilke eklentisi](../governance/policy/concepts/policy-for-kubernetes.md)gibi **sanal makine uzantıları** , özel kaynak türleriyle ilgili olarak güvenlik merkezi 'ne veri de sunabilir.
+- [Kubernetes Için Azure Ilke eklentisi](../governance/policy/concepts/policy-for-kubernetes.md)gibi **güvenlik uzantıları** , özel kaynak türleriyle ilgili olarak güvenlik merkezi 'ne veri de sunabilir.
 
 > [!TIP]
 > Güvenlik Merkezi artmıştır, izlenebilecek kaynak türleri de artmıştır. Uzantı sayısı da artmıştır. Otomatik sağlama, Azure Ilkesinin yeteneklerini kullanarak ek kaynak türlerini desteklemek için genişletilmiştir.

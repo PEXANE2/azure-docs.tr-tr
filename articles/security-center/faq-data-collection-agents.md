@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341847"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638827"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
@@ -91,7 +91,7 @@ Varsayılan çalışma alanının konumu, Azure bölgenize bağlıdır:
 Aracı tarafından izlenen uygulamaların ve hizmetlerin tam listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../azure-monitor/monitor-reference.md#azure-services).
 
 > [!IMPORTANT]
-> Azure Güvenlik Duvarı gibi bazı hizmetlerde günlüğe kaydetmeyi etkinleştirdiyseniz ve günlüğe kaydedilecek bir geveze kaynağı seçtiyseniz (örneğin, günlüğü *verbose*olarak ayarlamak), Log Analytics çalışma alanı depolama gereksinimlerinizin önemli etkilerini görebilirsiniz. 
+> Azure Güvenlik Duvarı gibi bazı hizmetlerde günlüğe kaydetmeyi etkinleştirdiyseniz ve günlüğe kaydedilecek bir geveze kaynağı seçtiyseniz (örneğin, günlüğü *verbose* olarak ayarlamak), Log Analytics çalışma alanı depolama gereksinimlerinizin önemli etkilerini görebilirsiniz. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını silebilir miyim?
@@ -109,24 +109,28 @@ Güvenlik Merkezi tarafından toplanan verileri depolamak için mevcut bir Log A
 
 Mevcut bir Log Analytics çalışma alanını seçmek için:
 
-1. **Güvenlik ilkesi – veri koleksiyonu**altında **başka bir çalışma alanı kullan**' ı seçin.
+1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları** ' nı seçin.
+1. Uygun aboneliği seçin.
+1. **Otomatik sağlama** sayfasını açın, s
+1. Log Analytics Aracısı için **yapılandırmayı Düzenle** ' yi seçin. 
 
-    ![Başka bir çalışma alanı kullan][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="Otomatik dağıtım kullanılırken kullanılacak Log Analytics aracısının yapılandırması" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. Açılan menüden, toplanan verileri depolamak için bir çalışma alanı seçin.
+1. **Azure VM 'lerini farklı bir çalışma alanına bağla** ' yı seçin ve mevcut çalışma alanınızı seçin.
+
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="Log Analytics aracınızın raporlamak için varsayılan olmayan bir çalışma alanı seçme" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+
+    > [!TIP]
+    > Liste yalnızca erişiminiz olan ve Azure aboneliğinizde olan çalışma alanlarını içerir.
+
+1. **Kaydet** ’i seçin. İzlenen VM 'Leri yeniden yapılandırmak isteyip istemediğiniz sorulur.
+
+    - Yeni çalışma alanı ayarlarının **yalnızca yeni VM 'lere uygulanmasını** istiyorsanız **Hayır** ' ı seçin. Yeni çalışma alanı ayarları yalnızca yeni aracı yüklemeleri için geçerlidir; Log Analytics Aracısı yüklü olmayan yeni bulunan VM 'Ler.
+    - Yeni çalışma alanı ayarlarının **Tüm VM 'lere uygulanmasını** istiyorsanız **Evet** ' i seçin. Ayrıca, bir güvenlik merkezi tarafından oluşturulan çalışma alanına bağlı her VM yeni hedef çalışma alanına yeniden bağlanır.
 
     > [!NOTE]
-    > Aşağı açılan menüde, yalnızca erişiminiz olan ve Azure aboneliğinizde bulunan çalışma alanları gösterilir.
+    > **Evet** ' i seçerseniz, tüm VM 'ler yeni hedef çalışma alanına yeniden bağlanana kadar Güvenlik Merkezi tarafından oluşturulan çalışma alanlarını silmeyin. Çalışma alanı çok erken silinirse bu işlem başarısız olur.
 
-1. **Kaydet**’i seçin. İzlenen VM 'Leri yeniden yapılandırmak isteyip istemediğiniz sorulur.
-
-    - Yeni çalışma alanı ayarlarının **yalnızca yeni VM 'lere uygulanmasını**istiyorsanız **Hayır** ' ı seçin. Yeni çalışma alanı ayarları yalnızca yeni aracı yüklemeleri için geçerlidir; Log Analytics Aracısı yüklü olmayan yeni bulunan VM 'Ler.
-    - Yeni çalışma alanı ayarlarının **Tüm VM 'lere uygulanmasını**istiyorsanız **Evet** ' i seçin. Ayrıca, bir güvenlik merkezi tarafından oluşturulan çalışma alanına bağlı her VM yeni hedef çalışma alanına yeniden bağlanır.
-
-    > [!NOTE]
-    > **Evet**' i seçerseniz, tüm VM 'ler yeni hedef çalışma alanına yeniden bağlanana kadar Güvenlik Merkezi tarafından oluşturulan çalışma alanlarını silmeyin. Çalışma alanı çok erken silinirse bu işlem başarısız olur.
-
-    - İşlemi iptal etmek için **Iptal 'i**seçin.
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Log Analytics Aracısı VM üzerinde zaten bir uzantı olarak yüklendiyse ne olacak?<a name="mmaextensioninstalled"></a>
 
@@ -164,12 +168,17 @@ Microsoft Monitoring uzantısını kaldırırsanız, güvenlik merkezi VM 'den g
 
 Güvenlik ilkesinde abonelikleriniz için otomatik sağlamayı devre dışı bırakabilirsiniz, ancak bu önerilmez. Otomatik sağlama devre dışı bırakmak, güvenlik merkezi önerilerini ve uyarılarını kısıtlar. Otomatik sağlamayı devre dışı bırakmak için:
 
-1. Aboneliğiniz Azure Defender 'ı etkinleştirmişse, bu abonelik için güvenlik ilkesini açın ve **Azure Defender kapalı**' yı seçin.
+1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları** ' nı seçin.
+1. Uygun aboneliği seçin.
+1. Aboneliğiniz Azure Defender 'ı etkinleştirmişse **Azure Defender planlarını** açın ve **Azure Defender kapalı** ' yı seçin.
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender 'ı etkinleştirme veya devre dışı bırakma":::
 
-1. Sonra, **güvenlik ilkesi – veri toplama** sayfasında **kapalı** ' yı seçerek otomatik sağlamayı devre dışı bırakın.
-   ![Veri toplama][2]
+1. **Otomatik sağlama** sayfasında, kalem ' i seçin ve **güvenlik ilkesi – veri toplama** sayfasında otomatik sağlamayı Kapat ' ı seçin.
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Log Analytics Aracısı için otomatik dağıtımı etkinleştirme":::
+
+1. **Kaydet** ’i seçin.
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Otomatik aracı yüklemesi ve çalışma alanı oluşturmayı kabul etmem gerekir mi?
@@ -214,11 +223,11 @@ Log Analytics aracısını el ile kaldırabilirsiniz. Bu, güvenlik merkezi öne
 
 Aracıyı el ile kaldırmak için:
 
-1.    Portalda **Log Analytics**açın.
+1.    Portalda **Log Analytics** açın.
 
 1.    Log Analytics sayfasında bir çalışma alanı seçin:
 
-1.    İzlemek istemediğiniz VM 'Leri seçin ve **bağlantıyı kes**' i seçin.
+1.    İzlemek istemediğiniz VM 'Leri seçin ve **bağlantıyı kes** ' i seçin.
 
    ![Aracıyı Kaldırma][3]
 
@@ -232,18 +241,16 @@ Sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları ve uç nokta
 
 Onu etkinleştirdiyseniz, ancak şimdi devre dışı bırakmak istiyorsam:
 
-1. [Azure Portal](https://portal.azure.com), **Güvenlik Merkezi** 'ni açın ve **güvenlik ilkesi**' ni seçin.
+1. [Azure Portal](https://portal.azure.com), **Güvenlik Merkezi** 'ni açın ve **fiyatlandırma ve ayarlar** ' ı seçin.
 
 1. Otomatik sağlamayı devre dışı bırakmak istediğiniz aboneliği seçin.
 
-    **Güvenlik ilkesi-veri toplama** açılır.
-
-1. **Otomatik sağlama**altında **kapalı**' yı seçin.
+1. **Otomatik sağlama** altında, Log Analytics aracısına yönelik geçişi devre dışı bırakın.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Veri toplamayı etkinleştirmek Nasıl yaparım? mı?
 
-Azure aboneliğiniz için veri toplamayı güvenlik ilkesinde etkinleştirebilirsiniz. Veri toplamayı etkinleştirmek için. [Azure Portal oturum açın](https://portal.azure.com), **Araştır**' ı seçin, **Güvenlik Merkezi**' ni seçin ve **güvenlik ilkesi**' ni seçin. Otomatik sağlamayı etkinleştirmek istediğiniz aboneliği seçin. Bir abonelik **güvenlik ilkesi seçtiğinizde, veri toplama** açılır. **Otomatik sağlama**altında **Açık**' ı seçin.
+Azure aboneliğiniz için veri toplamayı güvenlik ilkesinde etkinleştirebilirsiniz. Veri toplamayı etkinleştirmek için. [Azure Portal oturum açın](https://portal.azure.com), **Araştır** ' ı seçin, **Güvenlik Merkezi** ' ni seçin ve **güvenlik ilkesi** ' ni seçin. Otomatik sağlamayı etkinleştirmek istediğiniz aboneliği seçin. Bir abonelik **güvenlik ilkesi seçtiğinizde, veri toplama** açılır. **Otomatik sağlama** altında **Açık** ' ı seçin.
 
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Veri toplama etkinleştirildiğinde ne olur?

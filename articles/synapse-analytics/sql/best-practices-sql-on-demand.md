@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317424"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638878"
 ---
 # <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) için en iyi yöntemler
 
@@ -127,13 +127,17 @@ Depolanan verileriniz bölümlenmemişse, Bölümlendirmeyi düşünün. Bu şek
 
 CSV dosyalarını sorguladığınızda performans için iyileştirilmiş bir Ayrıştırıcı kullanabilirsiniz. Ayrıntılar için bkz. [PARSER_VERSION](develop-openrowset.md).
 
+## <a name="manually-create-statistics-for-csv-files"></a>CSV dosyaları için el ile istatistikleri oluşturma
+
+Sunucusuz SQL havuzu, en iyi sorgu yürütme planlarını oluşturmak için istatistiklere bağımlıdır. İstatistikler, gerektiğinde Parquet dosyalarındaki sütunlar için otomatik olarak oluşturulur. Şu anda, otomatik olarak CSV dosyalarındaki sütunlar için istatistikler oluşturulmaz ve sorgularda kullandığınız sütunlar, özellikle de DISTINCT, JOIN, WHERE, ORDER BY ve GROUP BY olarak kullanılanlar için el ile istatistikler oluşturmalısınız. Ayrıntılar için [sunucusuz SQL havuzundaki istatistikleri](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) kontrol edin.
+
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Sorgu performansını ve birleştirmeleri geliştirmek için CETAS kullanın
 
 [Cetas](develop-tables-cetas.md) , SUNUCUSUZ SQL havuzunda bulunan en önemli özelliklerden biridir. CETAS, dış tablo meta verileri oluşturan ve SELECT sorgu sonuçlarını Depolama hesabınızdaki bir dosya kümesine dışarı aktaran paralel bir işlemdir.
 
 Birleşik başvuru tabloları gibi sorguların sık kullanılan parçalarını yeni bir dosya kümesine depolamak için CETAS kullanabilirsiniz. Daha sonra birden çok sorgu içinde ortak birleştirmeleri yinelemek yerine bu tek bir dış tabloya katılabilir.
 
-CETAS, Parquet dosyalarını oluşturduğunda, ilk sorgu bu dış tabloyu hedeflediğinde istatistikler otomatik olarak oluşturulur ve bu da gelişmiş performansa neden olur.
+CETAS, Parquet dosyalarını oluşturduğunda, ilk sorgu bu dış tabloyu hedeflediğinde istatistikler otomatik olarak oluşturulur ve bu da CETAS ile oluşturulan tablo hedefleme adlı sonraki sorgular için iyileştirilmiş performansa neden olur.
 
 ## <a name="azure-ad-pass-through-performance"></a>Azure AD geçiş performansı
 
