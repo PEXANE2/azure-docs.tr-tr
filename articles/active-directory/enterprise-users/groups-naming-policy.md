@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e404b3eeadd8eef45e413eea2bd753d08cc505ca
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489463"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650640"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 Gruplar üzerinde bir adlandırma ilkesi zorlama
 
@@ -85,26 +85,26 @@ Seçili Yöneticiler, tüm grup iş yükleri ve uç noktalarında bu ilkelerden 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal adlandırma ilkesini yapılandırma
 
 1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) bir grup yönetici hesabıyla oturum açın.
-1. **Gruplar** ' ı seçin ve adlandırma ilkesi sayfasını açmak için **adlandırma ilkesi** ' ni seçin.
+1. **Gruplar**' ı seçin ve adlandırma ilkesi sayfasını açmak için **adlandırma ilkesi** ' ni seçin.
 
     ![Yönetim merkezinde adlandırma ilkesi sayfasını açın](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Ön ek adlandırma ilkesini görüntüleme veya düzenleme
 
-1. **Adlandırma ilkesi** sayfasında **grup adlandırma ilkesi** ' ni seçin.
+1. **Adlandırma ilkesi** sayfasında **grup adlandırma ilkesi**' ni seçin.
 1. Adlandırma ilkesinin bir parçası olarak zorlamak istediğiniz öznitelikleri veya dizeleri seçerek geçerli ön eki veya sonek adlandırma ilkelerini tek tek görüntüleyebilir veya düzenleyebilirsiniz.
-1. Listeden bir ön eki veya soneki kaldırmak için ön eki veya soneki seçin, sonra **Sil** ' i seçin. Aynı anda birden çok öğe silinebilir.
-1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet** ' i seçerek devreye geçin.
+1. Listeden bir ön eki veya soneki kaldırmak için ön eki veya soneki seçin, sonra **Sil**' i seçin. Aynı anda birden çok öğe silinebilir.
+1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet**' i seçerek devreye geçin.
 
 ### <a name="edit-custom-blocked-words"></a>Özel engellenen sözcükleri Düzenle
 
-1. **Adlandırma ilkesi** sayfasında, **Engellenen sözcükler** ' i seçin.
+1. **Adlandırma ilkesi** sayfasında, **Engellenen sözcükler**' i seçin.
 
     ![adlandırma ilkesi için engellenen sözcükler listesini düzenle ve karşıya yükle](./media/groups-naming-policy/blockedwords.png)
 
-1. **İndir** ' i seçerek özel engellenen sözcüklerin geçerli listesini görüntüleyin veya düzenleyin.
+1. **İndir**' i seçerek özel engellenen sözcüklerin geçerli listesini görüntüleyin veya düzenleyin.
 1. Dosya simgesini seçerek özel engellenen sözcüklerin yeni listesini karşıya yükleyin.
-1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet** ' i seçerek devreye geçin.
+1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet**' i seçerek devreye geçin.
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell cmdlet'lerini yükleme
 
@@ -136,7 +136,7 @@ PowerShell komutlarını çalıştırmadan önce Windows PowerShell Graph için 
    Connect-AzureAD
    ```
 
-   Açılan **Hesabınızda oturum açın** ekranında hizmetinizle bağlantı kurmak için yönetici hesabınızın adını ve parolasını girin **Oturum aç** 'ı seçin.
+   Açılan **Hesabınızda oturum açın** ekranında hizmetinizle bağlantı kurmak için yönetici hesabınızın adını ve parolasını girin **Oturum aç**'ı seçin.
 
 1. Bu kuruluşun grup ayarlarını oluşturmak için [Grup ayarlarını yapılandırmak üzere Azure Active Directory cmdlet 'lerinde](../enterprise-users/groups-settings-cmdlets.md) adımları izleyin.
 
@@ -206,7 +206,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>Azure portal kullanarak adlandırma ilkesini kaldırma
 
-1. **Adlandırma ilkesi** sayfasında **ilkeyi Sil** ' i seçin.
+1. **Adlandırma ilkesi** sayfasında **ilkeyi Sil**' i seçin.
 1. Silme işlemini doğruladıktan sonra, tüm önek-sonek adlandırma ilkesi ve özel engellenen sözcükler dahil olmak üzere, adlandırma ilkesi kaldırılır.
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak adlandırma ilkesini kaldırma

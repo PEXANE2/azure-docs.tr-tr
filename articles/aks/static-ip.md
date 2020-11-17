@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir IP adresi oluşturmayı ve kullanmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 03/09/2020
-ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/14/2020
+ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243945"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651898"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) yük dengeleyicisiyle statik bir genel IP adresi ve DNS etiketi kullanın
 
@@ -22,7 +22,7 @@ Bu makalede, statik bir genel IP adresi oluşturma ve Kubernetes hizmetinize ata
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 Bu makalede *Standart* SKU 'su yük dengeleyiciye sahip *Standart* SKU IP 'si kullanımı ele alınmaktadır. Daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri][ip-sku].
 
@@ -74,7 +74,10 @@ az role assignment create \
 
 Alternatif olarak, sistem tarafından atanmış yönetilen kimliği, hizmet sorumlusu yerine izinler için kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md).
 
-Statik genel IP adresi ile bir *LoadBalancer* hizmeti oluşturmak için, `loadBalancerIP` özelliği ve statik genel IP adresinin değerini YAML bildirimine ekleyin. `load-balancer-service.yaml`Aşağıdaki YAML 'de adlı bir dosya oluşturun ve kopyalayın. Önceki adımda oluşturulan kendi genel IP adresinizi sağlayın. Aşağıdaki örnek, ek açıklamayı *Myresourcegroup*adlı kaynak grubuna da ayarlar. Kendi kaynak grubunuzun adını sağlayın.
+> [!IMPORTANT]
+> Giden IP 'nizi özelleştirdiyseniz, küme kimliğinizin hem giden genel IP 'nin hem de bu gelen genel IP 'si için izinlere sahip olduğundan emin olun.
+
+Statik genel IP adresi ile bir *LoadBalancer* hizmeti oluşturmak için, `loadBalancerIP` özelliği ve statik genel IP adresinin değerini YAML bildirimine ekleyin. `load-balancer-service.yaml`Aşağıdaki YAML 'de adlı bir dosya oluşturun ve kopyalayın. Önceki adımda oluşturulan kendi genel IP adresinizi sağlayın. Aşağıdaki örnek, ek açıklamayı *Myresourcegroup* adlı kaynak grubuna da ayarlar. Kendi kaynak grubunuzun adını sağlayın.
 
 ```yaml
 apiVersion: v1
@@ -130,7 +133,7 @@ Kubernetes hizmet bildiriminin *Loadbalancerıp* özelliğinde tanımlanan stati
 kubectl describe service azure-load-balancer
 ```
 
-Kubernetes hizmet kaynağı hakkında bilgi görüntülenir. Aşağıdaki örnek çıktının sonundaki *Olaylar* , *Kullanıcı tarafından sağlanan IP adresinin bulunamadığını*gösterir. Bu senaryolarda, düğüm kaynak grubunda statik genel IP adresi oluşturdunuz ve Kubernetes hizmet bildiriminde belirtilen IP adresinin doğru olduğundan emin olun.
+Kubernetes hizmet kaynağı hakkında bilgi görüntülenir. Aşağıdaki örnek çıktının sonundaki *Olaylar* , *Kullanıcı tarafından sağlanan IP adresinin bulunamadığını* gösterir. Bu senaryolarda, düğüm kaynak grubunda statik genel IP adresi oluşturdunuz ve Kubernetes hizmet bildiriminde belirtilen IP adresinin doğru olduğundan emin olun.
 
 ```
 Name:                     azure-load-balancer

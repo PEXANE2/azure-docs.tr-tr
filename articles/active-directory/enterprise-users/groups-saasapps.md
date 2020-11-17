@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c78b61798e72d87ec245082a5822bcfc58a1b61
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 58d5cc64b21207efbdefdafe020248212eed7efe
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377116"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650572"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>SaaS uygulamalarına erişimi yönetmek için grup kullanma
 
@@ -35,7 +35,7 @@ Azure AD Premium lisans planıyla Azure Active Directory (Azure AD) kullanarak, 
 1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) **Kurumsal uygulamalar**' ı seçin.
 2. Uygulama galerisinden eklediğiniz bir uygulamayı açmak için seçin.
 3. **Kullanıcılar ve gruplar**' ı seçin ve ardından **Kullanıcı Ekle**' yi seçin.
-4. **Atama Ekle**sayfasında kullanıcılar **ve** gruplar ' ı seçerek kullanıcılar ve **gruplar** seçim listesini açın.
+4. **Atama Ekle** sayfasında kullanıcılar **ve** gruplar ' ı seçerek kullanıcılar ve **gruplar** seçim listesini açın.
 6. İstediğiniz sayıda grup veya Kullanıcı seçin, sonra **atama Ekle** listesine eklemek için **Seç** ' e tıklayın veya dokunun. Ayrıca, bu aşamada bir kullanıcıya bir rol atayabilirsiniz.
 7. Kullanıcıları veya grupları seçili kurumsal uygulamaya atamak için **ata** ' yı seçin.
 

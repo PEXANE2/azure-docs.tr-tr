@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: troubleshooting
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d114896319929a0506f0201905d72d081b6408a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376696"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650536"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Sorun giderme ve grup sorunlarını çözme
 
@@ -43,7 +43,7 @@ PowerShell 'de yönetici olmayan kullanıcılar için Grup oluşturmayı devre d
    ```
 
 <br/>**PowerShell 'de dinamik bir grup oluşturmaya çalışırken izin verilen en fazla grup hatasını aldım**<br/>
-PowerShell 'de, _dinamik grup ilkelerinin izin verilen en fazla grup sayısına ulaşıldığını_belirten bir ileti alırsanız, bu, kuruluşunuzdaki dinamik gruplar için maksimum sınıra ulaştığınız anlamına gelir. Kuruluş başına en fazla dinamik grup sayısı 5.000 ' dir.
+PowerShell 'de, _dinamik grup ilkelerinin izin verilen en fazla grup sayısına ulaşıldığını_ belirten bir ileti alırsanız, bu, kuruluşunuzdaki dinamik gruplar için maksimum sınıra ulaştığınız anlamına gelir. Kuruluş başına en fazla dinamik grup sayısı 5.000 ' dir.
 
 Yeni dinamik gruplar oluşturmak için önce var olan bazı dinamik grupları silmeniz gerekir. Sınırı artırmanın bir yolu yoktur.
 

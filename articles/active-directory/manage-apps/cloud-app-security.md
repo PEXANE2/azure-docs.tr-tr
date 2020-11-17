@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e3e0c10a7ec6b42420db30955ae4911bca27cc0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763661"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651235"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Bulut uygulama görünürlüğü ve denetimi
 
@@ -34,10 +34,10 @@ Hangi uygulamaların kullanıldığını bulmak, bu uygulamaların riskini araş
 - Gelişmiş gölge BT bulma raporlaması
 - Tasdikli uygulamaları denetleme
  
-### <a name="learn-more"></a>Daha fazlasını öğrenin
+### <a name="learn-more"></a>Daha fazla bilgi edinin
 
-- [Ağınızda gölge BT 'yi bulma ve yönetme ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Cloud App Security ile bulunan uygulamalar ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [Ağınızda gölge BT 'yi bulma ve yönetme ](/cloud-app-security/tutorial-shadow-it)
+- [Cloud App Security ile bulunan uygulamalar ](/cloud-app-security/discovered-apps)
  
 ## <a name="user-session-visibility-and-control"></a>Kullanıcı oturumu görünürlüğü ve denetimi 
 
@@ -51,21 +51,21 @@ Bu denetimle şunları yapabilirsiniz:
 - Dosyalara erişimi denetleme  
 - İndirme sırasında belgeleri koruma  
  
-### <a name="learn-more"></a>Daha fazlasını öğrenin
+### <a name="learn-more"></a>Daha fazla bilgi edinin
 
-- [Cloud App Security oturum denetimi ile uygulamaları koruma ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Cloud App Security oturum denetimi ile uygulamaları koruma ](/cloud-app-security/proxy-intro-aad)
  
 ## <a name="advanced-app-visibility-and-controls"></a>Gelişmiş uygulama görünürlüğü ve denetimleri 
 
 Uygulama bağlayıcıları, bağlandığınız uygulamalar üzerinde Microsoft Cloud App Security daha fazla görünürlük ve denetim sağlamak için uygulama sağlayıcılarının API 'Lerini kullanır. Cloud App Security, bulut sağlayıcısı tarafından sunulan API 'lerden yararlanır. Her hizmetin kendi çerçevesi ve daraltma, API sınırları, dinamik süre değiştirme API pencereleri ve diğerleri gibi API sınırlamaları vardır. Cloud App Security ürün ekibi, API 'lerin kullanımını iyileştirmek ve en iyi performansı sağlamak için bu hizmetlerle birlikte çalışmıştır. Farklı sınırlamalar Hizmetleri API 'lerine göre hesaba katılarak, Cloud App Security motorları izin verilen en büyük kapasiteyi kullanır. Kiracıdaki tüm dosyaları tarama gibi bazı işlemler, daha uzun bir süre içinde yayılmaları için çok sayıda API çağrısı gerektirir. Bazı ilkelerin birkaç saat veya gün boyunca çalışmasını bekliyor. 
  
-### <a name="learn-more"></a>Daha fazlasını öğrenin  
+### <a name="learn-more"></a>Daha fazla bilgi edinin  
 
-- [Cloud App Security uygulamaları bağlama ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Cloud App Security uygulamaları bağlama ](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ağınızda gölge BT 'yi bulma ve yönetme ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Cloud App Security ile bulunan uygulamalar ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
-- [Cloud App Security oturum denetimi ile uygulamaları koruma ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Cloud App Security uygulamaları bağlama ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Ağınızda gölge BT 'yi bulma ve yönetme ](/cloud-app-security/tutorial-shadow-it)
+- [Cloud App Security ile bulunan uygulamalar ](/cloud-app-security/discovered-apps)
+- [Cloud App Security oturum denetimi ile uygulamaları koruma ](/cloud-app-security/proxy-intro-aad)
+- [Cloud App Security uygulamaları bağlama ](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

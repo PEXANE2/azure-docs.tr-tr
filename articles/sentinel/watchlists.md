@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: 1267f040b13184f50c9d98fe0fb13fb24db0f4f7
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026845"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651375"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel Watchlists kullanma
 
@@ -27,23 +27,23 @@ Watchlists kullanmaya yönelik yaygın senaryolar şunlardır:
 
 - **İş verilerini** bir Watchlists olarak içeri aktarma. Örneğin, ayrıcalıklı sistem erişimi veya sonlandırılmış çalışanlar içeren kullanıcı listelerini içeri aktarın ve ardından bu kullanıcıların ağda oturum açmasını algılamak veya engellemek için kullanılan izin verme ve reddetme listeleri oluşturmak için listem kullanın.
 
-- **Uyarı durumunu azaltma** . Normalde uyarıyı tetikleyen görevleri gerçekleştiren yetkili IP adreslerinden kullanıcılar gibi kullanıcı grubundan gelen uyarıları bastırmak için izin verilenler listeleri oluşturun ve zararsız olayların uyarı haline gelmesini önler.
+- **Uyarı durumunu azaltma**. Normalde uyarıyı tetikleyen görevleri gerçekleştiren yetkili IP adreslerinden kullanıcılar gibi kullanıcı grubundan gelen uyarıları bastırmak için izin verilenler listeleri oluşturun ve zararsız olayların uyarı haline gelmesini önler.
 
-- **Olay verilerini zenginleştirme** . Dış veri kaynaklarından türetilmiş ad-değer birleşimleriyle olay verilerinizi zenginleştirmek için Watchlists kullanın.
+- **Olay verilerini zenginleştirme**. Dış veri kaynaklarından türetilmiş ad-değer birleşimleriyle olay verilerinizi zenginleştirmek için Watchlists kullanın.
 
 ## <a name="create-a-new-watchlist"></a>Yeni bir listem oluşturma
 
-1. Azure Portal **Azure Sentinel**  >  **Configuration**  >  **listem** ' e gidin ve **Yeni Ekle** ' yi seçin.
+1. Azure Portal **Azure Sentinel**  >  **Configuration**  >  **listem** ' e gidin ve **Yeni Ekle**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Yeni listem](./media/watchlists/sentinel-watchlist-new.png)
 
-1. **Genel** sayfasında, listem için ad, açıklama ve diğer ad belirtin ve ardından **İleri** ' yi seçin.
+1. **Genel** sayfasında, listem için ad, açıklama ve diğer ad belirtin ve ardından **İleri**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![listem genel sayfası](./media/watchlists/sentinel-watchlist-general.png)
 
-1. **Kaynak** sayfasında, veri kümesi türünü seçin, bir dosyayı karşıya yükleyin ve ardından **İleri** ' yi seçin.
+1. **Kaynak** sayfasında, veri kümesi türünü seçin, bir dosyayı karşıya yükleyin ve ardından **İleri**' yi seçin.
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-source.png" alt-text="listem kaynak sayfası" lightbox="./media/watchlists/sentinel-watchlist-source.png":::
 
@@ -51,37 +51,37 @@ Watchlists kullanmaya yönelik yaygın senaryolar şunlardır:
     >
     > Dosya yüklemeleri şu anda boyut olarak 3,8 MB 'a kadar olan dosyalarla sınırlıdır.
 
-1. Bilgileri gözden geçirin, doğru olduğunu doğrulayın ve ardından **Oluştur** ' u seçin.
+1. Bilgileri gözden geçirin, doğru olduğunu doğrulayın ve ardından **Oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![listem İnceleme sayfası](./media/watchlists/sentinel-watchlist-review.png)
 
     Listem oluşturulduktan sonra bir bildirim görüntülenir.
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="listem kaynak sayfası" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="listem başarılı oluşturma bildirimi" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
 
 ## <a name="use-watchlists-in-queries"></a>Sorgularda Watchlists kullanma
 
-1. Azure Portal **Azure Sentinel**  >  **Configuration**  >  **listem** ' e gidin, kullanmak istediğiniz listem seçin ve sonra **Log Analytics görüntüle** ' yi seçin.
+1. Azure Portal **Azure Sentinel**  >  **Configuration**  >  **listem**' e gidin, kullanmak istediğiniz listem seçin ve sonra **Log Analytics görüntüle**' yi seçin.
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="listem kaynak sayfası" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="sorgularda Watchlists kullanma" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
 
 1. Listem içindeki öğeler, sorgunuz için otomatik olarak ayıklanır ve **sonuçlar** sekmesinde görüntülenir. Aşağıdaki örnekte, **ServerName** ve **IPAddress** alanlarının ayıklanmasına ilişkin sonuçlar gösterilmektedir.
 
     > [!NOTE]
     > Sorgularınızdaki zaman damgası hem sorgu Kullanıcı arabiriminde hem de zamanlanmış uyarılarda yok sayılır.
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="listem kaynak sayfası" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="listem alanları olan sorgular" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
 ## <a name="use-watchlists-in-analytics-rules"></a>Analiz kurallarında Watchlists kullanma
 
-Watchlists 'i analiz kurallarında kullanmak için Azure Portal **Azure Sentinel**  >  **yapılandırma**  >  **Analizi** ' ne gidin ve sorgudaki işlevi kullanarak bir kural oluşturun `_GetWatchlist('<watchlist>')` .
+Watchlists 'i analiz kurallarında kullanmak için Azure Portal **Azure Sentinel**  >  **yapılandırma**  >  **Analizi**' ne gidin ve sorgudaki işlevi kullanarak bir kural oluşturun `_GetWatchlist('<watchlist>')` .
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="listem kaynak sayfası" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="analiz kurallarında Watchlists kullanma" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>Watchlists diğer ad listesini görüntüle
 
-Listem diğer adların bir listesini almak için Azure Portal **Azure Sentinel**  >  **genel**  >  **Günlükler** ' e gidin ve aşağıdaki sorguyu çalıştırın: `_GetWatchlistAlias` . Diğer adların listesini **sonuçlar** sekmesinde görebilirsiniz.
+Listem diğer adların bir listesini almak için Azure Portal **Azure Sentinel**  >  **genel**  >  **Günlükler**' e gidin ve aşağıdaki sorguyu çalıştırın: `_GetWatchlistAlias` . Diğer adların listesini **sonuçlar** sekmesinde görebilirsiniz.
 
 > [!div class="mx-imgBorder"]
 > ![Watchlists Listele](./media/watchlists/sentinel-watchlist-alias.png)
@@ -89,6 +89,5 @@ Listem diğer adların bir listesini almak için Azure Portal **Azure Sentinel**
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure Sentinel 'de Watchlists kullanarak verileri zenginleştirme ve araştırmamaları geliştirme hakkında öğrenirsiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
-

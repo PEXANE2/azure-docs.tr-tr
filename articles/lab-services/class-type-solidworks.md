@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87290723"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651813"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>SOLIDÇALıŞMALAR kullanarak mühendislik sınıfları için laboratuvar ayarlama
 
@@ -24,18 +24,18 @@ Bu makalede, KESINTISDÇALıŞMALARı 2019 ve ağ lisansı kullanan bir sınıf�
 
 SOLIDÇALıŞMALAR ağ lisansı, lisans sunucunuzda SolidNetWork Lisans Yöneticisi 'nin yüklü ve etkinleştirilmiş olmasını gerektirir.  Bu lisans sunucusu, genellikle şirket içi ağınızda veya Azure 'daki özel bir ağda bulunur.  Sunucuda SolidNetWork Lisans yöneticisini ayarlama hakkında daha fazla bilgi için, bkz. SOLIDÇALıŞMALAR yükleme kılavuzunda [lisans yöneticisini yükleme ve etkinleştirme](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) .  Bu ayarı yaparken, sonraki adımlarda gereksinim duyadıklarından bu yana kullanılan **bağlantı noktası numarasını** ve [**seri numarasını**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) unutmayın.
 
-Lisans sunucunuz kurulduktan sonra, [sanal ağı (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) [Laboratuvar hesabınıza](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)eşetmeniz gerekir.  Laboratuvar sanal makinelerinin lisans sunucusuna ve diğer bir yönteme erişebilmeleri için laboratuvar oluşturmadan önce ağ eşlemesinin tamamlanması gerekir.
+Lisans sunucunuz kurulduktan sonra, [sanal ağı (VNet)](./how-to-connect-peer-virtual-network.md) [Laboratuvar hesabınıza](./tutorial-setup-lab-account.md)eşetmeniz gerekir.  Laboratuvar sanal makinelerinin lisans sunucusuna ve diğer bir yönteme erişebilmeleri için laboratuvar oluşturmadan önce ağ eşlemesinin tamamlanması gerekir.
 
 > [!NOTE]
-> Laboratuvar sanal makineleri ve lisans sunucusu arasında iletişime izin vermek için güvenlik duvarınızda uygun bağlantı noktalarının açıldığını doğrulamanız gerekir.  Örneğin, lisans sunucusunun güvenlik duvarına gelen ve giden kuralların nasıl ekleneceğini gösteren [Windows Güvenlik Duvarı Için Lisans Yöneticisi bilgisayar bağlantı noktalarını değiştirme](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) yönergelerine bakın.  Ayrıca, laboratuvar sanal makinelerinin bağlantı noktalarını açmanız gerekebilir.  Laboratuvarın genel IP adresini alma da dahil olmak üzere, bu konuda daha fazla bilgi edinmek için [Labs için güvenlik duvarı ayarları](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) makalesindeki adımları izleyin.
+> Laboratuvar sanal makineleri ve lisans sunucusu arasında iletişime izin vermek için güvenlik duvarınızda uygun bağlantı noktalarının açıldığını doğrulamanız gerekir.  Örneğin, lisans sunucusunun güvenlik duvarına gelen ve giden kuralların nasıl ekleneceğini gösteren [Windows Güvenlik Duvarı Için Lisans Yöneticisi bilgisayar bağlantı noktalarını değiştirme](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) yönergelerine bakın.  Ayrıca, laboratuvar sanal makinelerinin bağlantı noktalarını açmanız gerekebilir.  Laboratuvarın genel IP adresini alma da dahil olmak üzere, bu konuda daha fazla bilgi edinmek için [Labs için güvenlik duvarı ayarları](./how-to-configure-firewall-settings.md) makalesindeki adımları izleyin.
 
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
 
-Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve laboratuvar hesabına sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni bir laboratuar hesabı oluşturma hakkında daha fazla bilgi için [Laboratuvar hesabı ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)hakkında öğreticiye bakın. Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
+Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve laboratuvar hesabına sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni bir laboratuar hesabı oluşturma hakkında daha fazla bilgi için [Laboratuvar hesabı ayarlama](./tutorial-setup-lab-account.md)hakkında öğreticiye bakın. Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
 
 ### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
 
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için, [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerinin nasıl belirtilme](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)hakkındaki makaleye bakın.
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için, [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerinin nasıl belirtilme](./specify-marketplace-images.md)hakkındaki makaleye bakın.
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |

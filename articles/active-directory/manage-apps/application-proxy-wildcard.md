@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367742"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651949"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory uygulama proxy 'sinde joker uygulamalar
 
@@ -72,7 +72,7 @@ Güvenlik nedenleriyle bu bir sabit gereksinimdir ve dış URL için özel bir e
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-CNAME 'nizi doğru şekilde yapılandırdığınızdan emin olmak için, hedef uç noktalardan birinde [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) ' ı kullanabilirsiniz (örneğin,) `expenses.adventure-works.com` .  Yanıtınız zaten belirtilen diğer adı ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ) içermelidir.
+CNAME 'nizi doğru şekilde yapılandırdığınızdan emin olmak için, hedef uç noktalardan birinde [nslookup](/windows-server/administration/windows-commands/nslookup) ' ı kullanabilirsiniz (örneğin,) `expenses.adventure-works.com` .  Yanıtınız zaten belirtilen diğer adı ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ) içermelidir.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
@@ -84,7 +84,7 @@ Joker uygulamalar için **Iç URL** 'nin olarak biçimlendirilmesi gerekir `http
 
 ![İç URL için http (s)://* biçimini kullanın. \< etki alanı>](./media/application-proxy-wildcard/22.png)
 
-Bir **dış URL**yapılandırdığınızda, aşağıdaki biçimi kullanmanız gerekir: `https://*.<custom domain>`
+Bir **dış URL** yapılandırdığınızda, aşağıdaki biçimi kullanmanız gerekir: `https://*.<custom domain>`
 
 ![Dış URL için https://* biçimini kullanın. \< Özel etki alanı>](./media/application-proxy-wildcard/21.png)
 
@@ -156,7 +156,7 @@ Yapılandırma aşağıdaki yapıyı uygular:
 
 ![Örnek yapılandırma tarafından uygulanan yapıyı gösterir](./media/application-proxy-wildcard/05.png)
 
-| Color | Açıklama |
+| Renk | Açıklama |
 | ---   | ---         |
 | Mavi  | Azure portal açıkça yayımlanmış ve görünür uygulamalar. |
 | Tonlamalı  | Üst uygulama aracılığıyla erişilebilen uygulamalar. |
@@ -191,5 +191,5 @@ Finans için yayımlanmış birden fazla uygulamanız varsa ve `finance.adventur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- **Özel etki alanları**hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md).
-- **Uygulama yayımlama**hakkında daha fazla bilgi edinmek için bkz. [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](application-proxy-add-on-premises-application.md)
+- **Özel etki alanları** hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md).
+- **Uygulama yayımlama** hakkında daha fazla bilgi edinmek için bkz. [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](application-proxy-add-on-premises-application.md)

@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 779286a43f8b20ce9a9a528e14eaa930763d82b4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759547"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651592"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Bir uygulama sayfası, Kullanıcı oturum açtıktan sonra bir hata iletisi gösterir
 
@@ -29,7 +29,7 @@ Bu senaryoda, Azure Active Directory (Azure AD) kullanıcıyı ' de imzalar. Anc
 
 Uygulamanın Azure AD 'den gelen yanıtı kabul etmemesinin birkaç olası nedeni vardır. Hata iletisi yanıtta eksik olanları açıkça tanımmazsa, aşağıdakileri deneyin:
 
--   Uygulama Azure AD Galerisi ise, [Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)bölümündeki adımları izlemediğinizi doğrulayın.
+-   Uygulama Azure AD Galerisi ise, [Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](./debug-saml-sso-issues.md)bölümündeki adımları izlemediğinizi doğrulayın.
 
 -   SAML isteği, yanıtı ve belirtecini yakalamak için [Fiddler](https://www.telerik.com/fiddler) gibi bir araç kullanın.
 
@@ -50,7 +50,7 @@ Azure AD yapılandırmasında Azure AD yanıtında gönderilecek bir öznitelik 
 5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
 
 6. Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 
@@ -60,7 +60,7 @@ Azure AD yapılandırmasında Azure AD yanıtında gönderilecek bir öznitelik 
 
    Bir öznitelik eklemek için:
 
-   1. **Öznitelik Ekle**' yi seçin. **Adı**girin ve açılan listeden **değeri** seçin.
+   1. **Öznitelik Ekle**' yi seçin. **Adı** girin ve açılan listeden **değeri** seçin.
 
    1.  **Kaydet**’i seçin. Tabloda yeni özniteliğini görürsünüz.
 
@@ -72,7 +72,7 @@ Azure AD yapılandırmasında Azure AD yanıtında gönderilecek bir öznitelik 
 
 SAML yanıtında rol gibi bir öznitelik eksik olduğundan uygulamada oturum açma başarısız olur. Ya da uygulama, **NameID** (Kullanıcı tanımlayıcısı) özniteliği için farklı bir biçim veya değer beklediği için başarısız oldu.
 
-Uygulamada kullanıcıları oluşturmak, sürdürmek ve kaldırmak için [Azure AD otomatik Kullanıcı sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) kullanıyorsanız, kullanıcının SaaS uygulamasına sağlandığını doğrulayın. Daha fazla bilgi için bkz. [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
+Uygulamada kullanıcıları oluşturmak, sürdürmek ve kaldırmak için [Azure AD otomatik Kullanıcı sağlama](../app-provisioning/user-provisioning.md) kullanıyorsanız, kullanıcının SaaS uygulamasına sağlandığını doğrulayın. Daha fazla bilgi için bkz. [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Azure AD uygulama yapılandırmasına öznitelik ekleme
 
@@ -89,19 +89,19 @@ Kullanıcı tanımlayıcısı değerini değiştirmek için şu adımları izley
 5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
 
 6. SSO için yapılandırmak istediğiniz uygulamayı seçin.
 
 7. Uygulama yüklendikten sonra, gezinti bölmesinde **Çoklu oturum açma** seçeneğini belirleyin.
 
-8. Kullanıcı **öznitelikleri**altında Kullanıcı **tanımlayıcısı** açılan listesinden kullanıcının benzersiz tanımlayıcısını seçin.
+8. Kullanıcı **öznitelikleri** altında Kullanıcı **tanımlayıcısı** açılan listesinden kullanıcının benzersiz tanımlayıcısını seçin.
 
 ## <a name="change-the-nameid-format"></a>NameID biçimini değiştirme
 
-Uygulama, **NameID** (Kullanıcı tanımlayıcısı) özniteliği için başka bir biçim beklediğinde, NameID biçimini değiştirmek Için [NameID 'yi düzenlemeyle](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) bölümüne bakın.
+Uygulama, **NameID** (Kullanıcı tanımlayıcısı) özniteliği için başka bir biçim beklediğinde, NameID biçimini değiştirmek Için [NameID 'yi düzenlemeyle](../develop/active-directory-saml-claims-customization.md#editing-nameid) bölümüne bakın.
 
-Azure AD, seçilen değere göre **NameID** özniteliği (Kullanıcı tanımlayıcısı) BIÇIMINI veya SAML authrequest içinde uygulama tarafından istenen biçimi seçer. Daha fazla bilgi için [Çoklu oturum açma SAML protokolünün](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)"Nameıdpolicy" bölümüne bakın.
+Azure AD, seçilen değere göre **NameID** özniteliği (Kullanıcı tanımlayıcısı) BIÇIMINI veya SAML authrequest içinde uygulama tarafından istenen biçimi seçer. Daha fazla bilgi için [Çoklu oturum açma SAML protokolünün](../develop/single-sign-on-saml-protocol.md#nameidpolicy)"Nameıdpolicy" bölümüne bakın.
 
 ## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Uygulama, SAML yanıtı için farklı bir imza yöntemi bekliyor
 
@@ -118,7 +118,7 @@ SAML belirtecinin hangi bölümlerinin Azure AD tarafından dijital olarak imzal
 5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
 
 6. Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 
@@ -151,7 +151,7 @@ Varsayılan olarak, Azure AD, SAML belirtecini en güvenli algoritmayı kullanar
 5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
 
 6. Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 
@@ -159,9 +159,9 @@ Varsayılan olarak, Azure AD, SAML belirtecini en güvenli algoritmayı kullanar
 
 8. **SAML Imzalama sertifikası**' nın altında, **Gelişmiş sertifika imzalama ayarlarını göster**' i seçin.
 
-9. **Imzalama algoritması**olarak **SHA-1** ' i seçin.
+9. **Imzalama algoritması** olarak **SHA-1** ' i seçin.
 
    Kullanıcı uygulamada bir sonraki sefer oturum açtığında, Azure AD, SAML belirtecini SHA-1 algoritmasını kullanarak imzalayacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+[Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](./debug-saml-sso-issues.md).

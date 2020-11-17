@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbe37938249ee02c7deb4081a96aa1be2d8b7cb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1ccd17dc4112bd286257a6ed95ecc55dd13af428
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377236"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650759"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Azure Active Directory bir dinamik grup üyeliği kuralını (Önizleme) doğrulama
 
@@ -35,11 +35,11 @@ Başlamak için **Azure Active Directory**  >  **gruplar**'a gidin. Var olan bir
 
 ![Mevcut kuralı doğrulamak için kullanıcıları ekleyin](./media/groups-dynamic-rule-validation/validate-tab-add-users.png)
 
-Seçicideki kullanıcıları veya aygıtları seçtikten **sonra, doğrulama**otomatik olarak başlatılır ve doğrulama sonuçları görüntülenir.
+Seçicideki kullanıcıları veya aygıtları seçtikten **sonra, doğrulama** otomatik olarak başlatılır ve doğrulama sonuçları görüntülenir.
 
 ![Kural doğrulamanın sonuçlarını görüntüleme](./media/groups-dynamic-rule-validation/validate-tab-results.png)
 
-Sonuçlar, bir kullanıcının grubun üyesi olup olmadığını belirtir. Kural geçerli değilse veya bir ağ sorunu varsa, sonuç **bilinmiyor**olarak görünür. **Bilinmeyen**bir durumda, ayrıntılı hata iletisi, gereken sorunu ve eylemleri anlatmaktadır.
+Sonuçlar, bir kullanıcının grubun üyesi olup olmadığını belirtir. Kural geçerli değilse veya bir ağ sorunu varsa, sonuç **bilinmiyor** olarak görünür. **Bilinmeyen** bir durumda, ayrıntılı hata iletisi, gereken sorunu ve eylemleri anlatmaktadır.
 
 ![Kural doğrulama sonuçlarının ayrıntılarını görüntüleme](./media/groups-dynamic-rule-validation/validate-tab-view-details.png)
 

@@ -7,19 +7,19 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86b3b44e480ccdc823853b5c790cad02a0821795
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 046a19d41364f7e4db3edcb011c8c65519924b3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377093"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650334"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
 
@@ -402,7 +402,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Bu komut dosyası, bu işlevleri kuruluştaki her bir kullanıcı için yürütür. Bu örnekte, kuruluşumuzdaki *contoso: EMS*kimliği ile temsil edildiği *Enterprise Mobility + Security*için lisans ile ilgileniyoruz:
+Bu komut dosyası, bu işlevleri kuruluştaki her bir kullanıcı için yürütür. Bu örnekte, kuruluşumuzdaki *contoso: EMS* kimliği ile temsil edildiği *Enterprise Mobility + Security* için lisans ile ilgileniyoruz:
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization

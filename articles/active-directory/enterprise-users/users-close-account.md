@@ -3,22 +3,22 @@ title: Yönetilmeyen bir Azure AD kuruluşunda iş veya okul hesabını kapatma
 description: Yönetilmeyen bir Azure Active Directory iş veya okul hesabınızı kapatma.
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/20/2019
+ms.date: 11/20/2020
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 142143f96314539051ea44c00c6ff95cb2650566
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376409"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650215"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Yönetilmeyen bir Azure AD kuruluşunda iş veya okul hesabınızı kapatın
 
@@ -45,7 +45,7 @@ Yönetilmeyen bir iş veya okul hesabını kapatmak için şu adımları izleyin
 
 1. Kapatmak istediğiniz hesabı kullanarak [hesabınızı kapatmak](https://go.microsoft.com/fwlink/?linkid=873123)için oturum açın.
 
-1. **Veri isteklerim**sayfasında **Hesabı kapat**' ı seçin.
+1. **Veri isteklerim** sayfasında **Hesabı kapat**' ı seçin.
 
     ![Veri isteklerim-hesabı kapat](./media/users-close-account/close-account.png)
 

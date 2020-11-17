@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 668976e9777b35e514746070f0f4039a12b4e02b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707416"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651728"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim
 
@@ -36,7 +36,7 @@ Uygulama proxy 'Si, kullanıcıların uzak bir istemciden şirket içi Web uygul
 Uygulama proxy 'Si ile birlikte kullanılabilir:
 
 * Kimlik doğrulaması için [Tümleşik Windows kimlik doğrulaması](application-proxy-configure-single-sign-on-with-kcd.md) kullanan Web uygulamaları
-* Form tabanlı veya [üst bilgi tabanlı](application-proxy-configure-single-sign-on-with-ping-access.md) erişim kullanan Web uygulamaları
+* Form tabanlı veya [üst bilgi tabanlı](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers) erişim kullanan Web uygulamaları
 * Farklı cihazlarda zengin uygulamalarda kullanıma sunmak istediğiniz Web API 'Leri
 * [Uzak Masaüstü Ağ Geçidi](application-proxy-integrate-with-remote-desktop-services.md) arkasında barındırılan uygulamalar
 * Microsoft kimlik doğrulama kitaplığı (MSAL) ile tümleştirilmiş zengin istemci uygulamaları
@@ -65,7 +65,7 @@ Aşağıdaki diyagramda, şirket içi uygulamalarda çoklu oturum açma sağlama
 
 | Bileşen | Açıklama |
 | --------- | ----------- |
-| Uç Noktası  | Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
+| Uç Nokta  | Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
 | Azure AD | Azure AD, bulutta depolanan kiracı dizinini kullanarak kimlik doğrulamasını gerçekleştirir. |
 | Uygulama proxy hizmeti | Bu uygulama proxy hizmeti, Azure AD 'nin bir parçası olarak bulutta çalışır. Kullanıcının oturum açma belirtecini, uygulama proxy Bağlayıcısı 'na geçirir. Uygulama proxy 'Si, istekteki tüm erişilebilir üstbilgileri iletir ve üst bilgileri protokol başına, istemci IP adresine ayarlar. Ara sunucuya gelen istek zaten bu üstbilgiye sahipse, istemci IP adresi üst bilginin değeri olan virgülle ayrılmış listenin sonuna eklenir.|
 | Uygulama proxy Bağlayıcısı | Bağlayıcı, ağınız içindeki bir Windows Server üzerinde çalışan hafif bir aracıdır. Bağlayıcı, bulutta ve şirket içi uygulamada bulunan uygulama proxy hizmeti arasındaki iletişimi yönetir. Bağlayıcı yalnızca giden bağlantıları kullanır, bu nedenle herhangi bir gelen bağlantı noktasını açmanız veya DMZ 'e herhangi bir şey yerleştirmeniz gerekmez. Bağlayıcılar, gereken şekilde durum bilgisiz ve buluttan tanıtım bilgileri. Yük Dengeleme ve kimlik doğrulama gibi bağlayıcılar hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](application-proxy-connectors.md).|
@@ -74,4 +74,3 @@ Aşağıdaki diyagramda, şirket içi uygulamalarda çoklu oturum açma sağlama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uygulama proxy 'Sini kullanmaya başlamak için bkz. [öğretici: uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md).
-

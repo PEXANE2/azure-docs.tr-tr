@@ -9,43 +9,59 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 996f138a14923319381738e7a55cd7ba4e8c4320
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517776"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651252"
 ---
 # <a name="identity-model"></a>Kimlik modeli
 
-Azure Iletişim Hizmetleri, Identity-nostic hizmetidir. Bu tasarımın birden çok avantajı vardır:
-- Kimlik yönetimi sisteminizden mevcut kimlikleri yeniden kullanma
-- Tümleştirme senaryoları için esneklik
-- Kimliklerinizi Azure Iletişim Hizmetleri için özel tutar
+Azure Iletişim Hizmetleri, kimlik belirsiz bir hizmettir. Bu tasarım birden fazla avantaj sunar:
 
-Sisteminizdeki mevcut bilgileri çoğaltmak yerine, iş çalışmanıza özgü eşleme ilişkisini korursunuz. Örneğin, 1:1, 1: N, N:1, N:M. kimliklerini eşleme Dış tanımlayıcılar (telefon numaraları, kullanıcılar, cihazlar, uygulamalar, GUID gibi) Azure Iletişim kimliği olarak kullanılamaz. Azure Iletişim hizmeti kimliği için oluşturulan erişim belirteçleri, sohbet veya çağırma gibi temel elemanlarına erişmek için kullanılır. 
+- Kimlik yönetimi sisteminizden mevcut kimlikleri yeniden kullanır
+- Tümleştirme senaryoları için esneklik sağlar
+- Azure Iletişim hizmetlerinde kimliklerinizi gizli tutar
+
+Sisteminizdeki bilgileri çoğaltmak yerine, iş kasalarınızın gerektirdiği eşleme ilişkisini korursunuz. Örneğin, 1:1, 1: N, N:1, N:M. kimliklerini eşleyebilirsiniz. Telefon numaraları, kullanıcılar, cihazlar, uygulamalar ve GUID 'Ler gibi dış tanımlayıcılar, Azure Iletişim hizmetlerindeki kimlik için kullanılamaz. Azure Iletişim Hizmetleri kimliği için oluşturulan erişim belirteçleri, sohbet veya çağırma gibi temel elemanlarına erişmek için kullanılır.
 
 ## <a name="identity"></a>Kimlik
 
-Kimlikler, Azure Communication Service Yönetim Kitaplığı ile oluşturulur. Kimlik, konuşmalardaki tanımlayıcı olarak işlev görür ve erişim belirteçleri oluşturmak için kullanılır. Aynı kimlik birden çok cihazda birden çok eş zamanlı oturuma katılabilir. Kimliğin aynı anda birden çok etkin erişim belirteci olabilir. Kimlik, kaynak veya aboneliğin silinmesi, tüm erişim belirteçlerinin ve bu kimlik için depolanan tüm verilerin silinmesinin iptal edilmesine neden olur. Silinen kimlik yeni erişim belirteçleri veremez, daha önce depolanan verilere (örneğin, sohbet iletileri) erişemez. 
+Azure Iletişim Hizmetleri Yönetim Kitaplığı 'nı kullanarak kimlikler oluşturabilirsiniz. Bir kimlik, konuşmalardaki bir tanımlayıcı işlevi görür. Erişim belirteçleri oluşturmak için kullanılır. Aynı kimlik birden çok cihazda birden çok eş zamanlı oturuma katılabilir. Bir kimlik aynı anda birden fazla etkin erişim belirtece sahip olabilir. 
 
-Sahip olduğunuz kimlik sayısına, ancak temel elemanların kullanımına göre ücretlendirilmez. Kimlik sayısının kısıtlamak zorunda olmadığı, uygulamanızın kimliklerini Azure Iletişim Hizmetleri kimlikleriyle eşleme. Eşleme özgürlüğü sayesinde, gizlilik koşullarına göre sorumluluğu gelir. Uygulamanızın kullanıcısı sisteminizden silinmesi istediğinde, bu kullanıcıyla ilişkili tüm kimlikleri silmeniz gerekir.
+Bir kimlik, kaynak veya aboneliğin silinmesi, tüm erişim belirteçlerini geçersiz kılar. Bu eylem, kimlik için depolanan tüm verileri de siler. Silinen bir kimlik yeni erişim belirteçleri oluşturamaz veya önceden depolanmış verilere erişemez (örneğin, sohbet iletileri). 
 
-Azure Iletişim Hizmetleri anonim kullanıcılar için özel kimlikler sağlamıyor. Kullanıcılar ve kimlikler arasındaki eşlemeyi etkilemez, kimliğin anonim olup olmadığını anlamayabilir. Kavramı gereksinimlerinize uyacak şekilde tasarlayabilirsiniz. Önerimiz, her uygulamanın anonim kullanıcısı için yeni kimlik oluşturmaktır. Geçerli erişim belirtecinin elinde bulunan herkes, kimliğin silinmemiş içeriğe erişim alabilir. Örneğin, Kullanıcı tarafından gönderilen sohbet iletileri. Erişim yalnızca erişim belirtecinin parçası olan kapsamlarla kısıtlıdır. Kapsamlar hakkında daha fazla ayrıntı, bölüm *erişim belirtecinde* bulunur.
+Sahip olduğunuz kimlik sayısı için ücret ödemeniz gerekmez. Bunun yerine, temel elemanların kullanımı için ücretlendirilirsiniz. Kimliklerinizin sayısı, uygulamanızın kimliklerini Azure Iletişim Hizmetleri kimlikleriyle nasıl eşlekullanabileceğinizi kısıtlamak zorunda değildir. 
 
-### <a name="mapping-of-identities"></a>Kimlikleri eşleme
+Eşleme özgürlüğü, gizlilik sorumluluğunu sunar. Bir Kullanıcı sisteminizden silmek isterse, bu kullanıcıyla ilişkili tüm kimlikleri silmeniz gerekir.
 
-Azure Iletişim Hizmetleri, ıMS işlevlerini çoğaltmıyor. Müşterilerin müşteriye özgü kimlikleri kullanması için bir yol sağlamaz. Örneğin, telefon numarası veya e-posta adresi. Bunun yerine, uygulamanızın kimliklerine atayabilmeniz için benzersiz tanımlayıcılar sağlar. Azure Iletişim Hizmetleri, kullanıcılarınızın gerçek kimliğini açığa çıkarması gerekebilecek herhangi bir tür bilgiyi depolamaz.
+Azure Iletişim Hizmetleri anonim kullanıcılar için özel kimlikler sağlamıyor. Kullanıcılar ve kimlikler arasındaki eşlemeyi yapmaz ve bir kimliğin anonim olup olmadığını belirleyemez. Kimlik kavramını gereksinimlerinize uyacak şekilde tasarlayabilirsiniz. Her uygulama üzerinde her anonim kullanıcı için yeni bir kimlik oluşturmak bizim önerimiz. 
 
-Yineleme yerine, kimlik etki alanındaki kullanıcıların Azure Iletişim hizmeti kimliklerine nasıl eşleneceğini tasarlayacaksınız. 1:1, 1: N, N:1 veya m:ntip düzenlerini izleyebilirsiniz. Tek bir kullanıcının tek bir kimlikle mi, yoksa birden çok kimliğe mi eşlendiğine karar verebilirsiniz. Yeni kimlik oluşturulduğunda, bu kimliğin eşlemesini uygulamanızın kullanıcısına veya kullanıcılarına depolamanız önerilir. Kimlikler, temel nesnelerin kullanımı için erişim belirteçleri gerektirdiğinden, kimliğin uygulamanızın kullanıcısı veya kullanıcıları için bilinmesi gerekir.
+Geçerli bir erişim belirtecine sahip olan herkes, geçerli kimlik içeriğine erişebilir. Örneğin, kullanıcılar gönderdikleri sohbet iletilerine erişebilir. Erişim yalnızca erişim belirtecinin parçası olan kapsamlarla kısıtlıdır. Daha fazla bilgi için bu makaledeki [erişim belirteçleri](#access-tokens) bölümüne bakın.
 
-Kullanıcı depolaması için ilişkisel veritabanı kullanıyorsanız, uygulama, eşleme senaryonuza göre farklılık gösterebilir. 1:1 veya N:1 eşleyen senaryolar için, Azure Communication Services kimliğinizi depolamak üzere tabloya bir *Communicationservicesıd* sütunu ekleyebilirsiniz. İlişki 1: N veya N:D senaryolarında, ilişkisel veritabanında ayrı bir tablo oluşturmayı düşünebilirsiniz.
+### <a name="identity-mapping"></a>Kimlik eşleme
 
-## <a name="access-token"></a>Erişim belirteci
+Azure Iletişim Hizmetleri, Azure Identity Management sisteminin işlevlerini çoğaltmaz. Müşterilerin müşteriye özgü kimlikleri kullanması için bir yol sağlamaz. Örneğin, müşteriler telefon numarası veya e-posta adresi kullanamaz. Bunun yerine, Azure Iletişim Hizmetleri benzersiz tanımlayıcılar sağlar. Bu benzersiz tanımlayıcıları uygulamanızın kimliklerine atayabilirsiniz. Azure Iletişim Hizmetleri, kullanıcılarınızın gerçek kimliğini açığa çıkarması gerekebilecek herhangi bir türde bilgiyi depolamaz.
 
-Erişim belirteci, Azure Iletişim hizmeti temel elemanlarına erişim sağlamak için kullanılabilen bir JWT belirtecidir. Verilen erişim belirtecinin bütünlük koruması vardır ve talepleri, verildikten sonra değiştirilemez. Diğer bir deyişle, kimlik, süre sonu veya kapsamlar gibi özelliklerin el ile değiştirilmesi, erişim belirtecini geçersiz hale getirir. Geçersiz kılınabilme belirteçleri olan temel elemanlar kullanımı, temel erişim reddine neden olur. 
+Sisteminizdeki bilgilerin yinelenmesinden kaçınmak için, kimlik etki alanındaki kullanıcıların Azure Iletişim Hizmetleri kimliklerine nasıl eşlendiğini planlayın. Herhangi bir tür kalıbı izleyebilirsiniz. Örneğin, 1:1, 1: N, N:1 veya m:nkullanabilirsiniz. Tek bir kullanıcının tek bir kimlikle mi, yoksa birden çok kimliğe mi eşlenmiş olduğuna karar verin. 
 
-Erişim belirtecinin özellikleri şunlardır: *kimlik, süre sonu* ve *kapsamlar*. Erişim belirteci her zaman 24 saat için geçerlidir. Bu zaman erişim belirteci geçersiz kılındıktan sonra herhangi bir temel erişim için kullanılamaz. Kimliğin, sunucu tarafı hizmetinden yeni erişim belirteci isteme yöntemi vardır. Parametre *kapsamı* , kullanılabilecek boş olmayan bir temel kümesi tanımlar. Azure Iletişim Hizmetleri, erişim belirteçleri için aşağıdaki kapsamları destekler:
+Yeni bir kimlik oluşturulduğunda, eşlemesini uygulamanızın kullanıcısına veya kullanıcılarına saklayın. Kimlikler, temelleri kullanmak için erişim belirteçleri gerektirdiğinden, kimliğin uygulamanızın kullanıcısı veya kullanıcıları tarafından bilinmesi gerekir.
+
+Kullanıcı bilgilerini depolamak için ilişkisel bir veritabanı kullanırsanız, tasarımınızı eşleme senaryonuz temelinde ayarlayabilirsiniz. 1:1 veya N:1 eşleyen senaryolar için, `CommunicationServicesId` Azure Iletişim Hizmetleri kimliğinizi depolamak üzere tabloya bir sütun eklemek isteyebilirsiniz. 1: N veya N:D ilişki kullanan senaryolarda, ilişkisel veritabanında ayrı bir tablo oluşturmayı düşünebilirsiniz.
+
+## <a name="access-tokens"></a>Erişim belirteçleri
+
+Erişim belirteci, Azure Iletişim hizmeti temel elemanlarına erişim sağlamak için kullanılabilen bir JSON Web Token (JWT). Verilen erişim belirtecinin bütünlük koruması vardır. Diğer bir deyişle, talepleri verildikten sonra değiştirilemez. Bu nedenle, kimlik, süre sonu veya kapsamlar gibi özelliklerin el ile değiştirilmesi erişim belirtecini geçersiz kılar. Temel elemanlar geçersiz kılınan belirteçlerle birlikte kullanılırsa, bu temel elemanların erişimi reddedilir. 
+
+Erişim belirtecinin özellikleri şunlardır:
+* IDENTITY.
+* Dolmadan.
+* Kapsamları.
+
+Erişim belirteci her zaman 24 saat için geçerlidir. Süresi dolduktan sonra, erişim belirteci geçersiz kılınır ve herhangi bir temel erişim için kullanılamaz. 
+
+Bir kimlik, sunucu tarafı hizmetinden yeni bir erişim belirteci istemek için bir yönteme ihtiyaç duyuyor. *Kapsam* parametresi, kullanılabilecek, boş olmayan bir temel öğeler kümesi tanımlar. Azure Iletişim Hizmetleri, erişim belirteçleri için aşağıdaki kapsamları destekler.
 
 |Ad|Açıklama|
 |---|---|
@@ -53,15 +69,20 @@ Erişim belirtecinin özellikleri şunlardır: *kimlik, süre sonu* ve *kapsamla
 |Hizmetinin|  Kimlikleri ve telefon numaralarını çağırma olanağı verir|
 
 
-Erişim belirtecini sona ermeden önce iptal etmek isterseniz, Azure Communication Service Yönetim Kitaplığı 'nı kullanarak bunu yapabilirsiniz. Belirtecin iptali anında iptal değildir ve yayılması 15 dakikaya kadar sürer. Kimlik, kaynak veya aboneliğin kaldırılması, tüm erişim belirteçlerinin iptalinden oluşmasına neden olur. Bir kullanıcının belirli işlevlere erişme yeteneğini kaldırmak istiyorsanız, tüm erişim belirteçlerini iptal edin. Daha sonra, daha sınırlı bir kapsam kümesiyle yeni bir erişim belirteci yayınlayın.
-Azure Iletişim hizmeti 'nin erişim anahtarlarının dönmesi, eski erişim anahtarıyla oluşturulmuş tüm etkin erişim belirteçlerinin iptalinden oluşmasına neden olur. Tüm kimlikler Azure Iletişim hizmetine erişimi kaybedecektir ve yeni erişim belirteçleri vermek için gereklidir. 
+Bir erişim belirtecini sona erme zamanından önce iptal etmek için, Azure Iletişim Hizmetleri yönetim kitaplığını kullanın. Belirteç iptali anında değil. Yayılması 15 dakikaya kadar sürer. Bir kimlik, kaynak veya aboneliğin kaldırılması tüm erişim belirteçlerini iptal eder. 
 
-İstemci uygulamasında değil, sunucu tarafı hizmetinize erişim belirteçleri verilmesini öneririz. Bu, verme işlemi için erişim anahtarı veya yönetilen kimlik olması gerekir. Erişim anahtarlarının istemci uygulamasıyla paylaşılması için güvenlik nedenleriyle önerilmez. İstemci uygulaması, istemcilerinizin kimliğini doğrulayabilecek ve adına erişim belirteci veren güvenilir hizmet uç noktasını kullanmalıdır. Mimari hakkında daha fazla ayrıntıyı [burada](./client-and-server-architecture.md)bulabilirsiniz.
+Bir kullanıcının belirli işlevlere erişme yeteneğini kaldırmak istiyorsanız, tüm erişim belirteçlerini iptal edin. Daha sonra daha sınırlı bir kapsam kümesine sahip yeni bir erişim belirteci yayınlayın.
 
-Erişim belirteçlerini bir yedekleme deposuna önbellekliyorsanız, şifrelemeyi kullanmanızı öneririz. Erişim belirteci hassas verilere sahiptir ve korunmadığı takdirde kötü amaçlı etkinlik için kullanılabilir. Erişim belirtecine sahip ile SDK 'yı başlatabilir ve API 'ye erişim sağlayabilirsiniz. Erişilebilir API yalnızca erişim belirtecinin sahip olduğu kapsamlar temelinde kısıtlanır. Erişim belirteçlerinin yalnızca kapsamlarla verilmesini öneririz, bu gereklidir.
+Azure Iletişim hizmetlerinde, erişim anahtarlarının bir dönüşü eski erişim anahtarı kullanılarak oluşturulmuş tüm etkin erişim belirteçlerini iptal eder. Tüm kimlikler Azure Iletişim hizmetlerine erişimi kaybeder ve yeni erişim belirteçleri yayınmaları gerekir. 
+
+İstemci uygulamasında değil, sunucu tarafı hizmetinize erişim belirteçleri verilmesini öneririz. Bunun nedeni, verme işlemi için bir erişim anahtarı veya yönetilen kimlik gerektirir. Güvenlik nedenleriyle, erişim anahtarlarının istemci uygulamasıyla paylaşılması önerilmez. 
+
+İstemci uygulaması, istemcilerinizin kimliğini doğrulayabilecek bir güvenilir hizmet uç noktası kullanmalıdır. Uç noktanın, kendi adına erişim belirteçleri vermesi gerekir. Daha fazla bilgi için bkz. [istemci ve sunucu mimarisi](./client-and-server-architecture.md).
+
+Erişim belirteçlerini bir yedekleme deposuna önbellekliyorsanız, şifrelemeyi kullanmanızı öneririz. Erişim belirteci hassas verilere sahiptir. Korumalı değilse, kötü amaçlı etkinlik için kullanılabilir. Erişim belirtecine sahip olan birisi SDK başlatabilir ve API 'ye erişebilir. Erişilebilir API yalnızca erişim belirtecinin sahip olduğu kapsamlara göre kısıtlanır. Yalnızca gerekli kapsamları olan erişim belirteçleri vermeyi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Belirteç yönetimine erişim tanıtımı için bkz. [erişim belirteçleri oluşturma ve yönetme](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)
-* Kimlik doğrulamaya giriş için bkz. [Azure Iletişim hizmetlerinde kimlik doğrulama](https://docs.microsoft.com/azure/communication-services/concepts/authentication)
-* Veri yerleşimi ve gizliliği 'ne giriş için bkz. [bölge kullanılabilirliği ve veri](https://docs.microsoft.com/azure/communication-services/concepts/privacy) yerleşimi
+* Belirteç yönetimine erişim tanıtımı için bkz. [erişim belirteçleri oluşturma ve yönetme](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+* Kimlik doğrulamaya giriş için bkz. [Azure Iletişim hizmetlerinde kimlik doğrulama](https://docs.microsoft.com/azure/communication-services/concepts/authentication).
+* Veri yerleşimi ve gizliliği 'ne giriş için bkz. [bölge kullanılabilirliği ve veri](https://docs.microsoft.com/azure/communication-services/concepts/privacy)yerleşimi.

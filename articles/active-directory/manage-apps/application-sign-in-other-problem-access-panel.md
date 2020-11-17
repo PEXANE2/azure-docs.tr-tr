@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: e03598ab53a9061a59e18041b2f3f4dc04e1b110
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424532"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651627"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme
 
@@ -42,7 +42,7 @@ Uygulamanın görünmemiş veya görünmediğinden emin olmak için bazı şeyle
 ## <a name="general-issues-to-check-first"></a>Önce denetlenecek genel sorunlar
 
 -   Web tarayıcısının gereksinimleri karşıladığından emin olun, bkz. [uygulamalarımın desteklediği tarayıcılar](../user-help/my-apps-portal-end-user-access.md).
--   Kullanıcının tarayıcısının uygulamanın URL 'sini **Güvenilen sitelerine**eklediğinizden emin olun.
+-   Kullanıcının tarayıcısının uygulamanın URL 'sini **Güvenilen sitelerine** eklediğinizden emin olun.
 -   Uygulamanın doğru şekilde **yapılandırıldığını** kontrol ettiğinizden emin olun.
 -   Oturum açma işlemlerinin Kullanıcı hesabının **etkinleştirildiğinden** emin olun.
 -   Kullanıcı hesabının **kilitlenmediğinden** emin olun.
@@ -83,7 +83,7 @@ Kullanıcının hesap durumunu denetlemek için şu adımları izleyin:
 5.  **Tüm kullanıcılar**' ı seçin.
 6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçilecek **satırı seçin** .
 7.  **Profil**' i seçin.
-8.  **Ayarlar** ' ın altında, **blok oturum açma** seçeneğinin **Hayır**olarak ayarlandığından emin olun.
+8.  **Ayarlar** ' ın altında, **blok oturum açma** seçeneğinin **Hayır** olarak ayarlandığından emin olun.
 
 ### <a name="reset-a-users-password"></a>Kullanıcının parolasını sıfırlama
 Bir kullanıcının parolasını sıfırlamak için şu adımları izleyin:
@@ -100,8 +100,8 @@ Bir kullanıcının parolasını sıfırlamak için şu adımları izleyin:
 
 ### <a name="enable-self-service-password-reset"></a>Kendi kendine parola sıfırlamayı etkinleştirme
 Self servis parola sıfırlamayı etkinleştirmek için şu dağıtım adımlarını izleyin:
--   [Kullanıcıların Azure Active Directory parolalarını sıfırlamalarını sağlama](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
--   [Kullanıcıların şirket içi parolalarını Active Directory sıfırlamalarını veya değiştirmesini sağlama](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Kullanıcıların Azure Active Directory parolalarını sıfırlamalarını sağlama](../authentication/tutorial-enable-sspr.md)
+-   [Kullanıcıların şirket içi parolalarını Active Directory sıfırlamalarını veya değiştirmesini sağlama](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Kullanıcının Multi-Factor Authentication durumunu denetleme
 Kullanıcının Multi-Factor Authentication durumunu denetlemek için şu adımları izleyin:
@@ -113,7 +113,7 @@ Kullanıcının Multi-Factor Authentication durumunu denetlemek için şu adıml
 6. Bölmenin üst kısmındaki **Multi-Factor Authentication** düğmesini seçin.
 7. **Multi-Factor Authentication yönetim portalı** yüklendikten sonra, **Kullanıcılar** sekmesinde olduğunuzdan emin olun.
 8. Kullanıcıları arayarak, filtreleyerek veya sıralayarak Kullanıcı listesinde bulun.
-9. Kullanıcı listesinden kullanıcıyı seçin, istediğiniz şekilde Multi-Factor Authentication 'ı **etkinleştirin**, **devre dışı bırakın**veya **zorlayın** .
+9. Kullanıcı listesinden kullanıcıyı seçin, istediğiniz şekilde Multi-Factor Authentication 'ı **etkinleştirin**, **devre dışı bırakın** veya **zorlayın** .
    >[!NOTE]
    >Bir Kullanıcı **zorlanan** durumdaysa, hesaplarına geri dönmek için onları geçici olarak **devre dışı** olarak ayarlayabilirsiniz. Yeniden **etkinleştikten** sonra, bir sonraki oturum açma sırasında iletişim bilgilerinin yeniden kaydolmasını gerektirmek için durumlarını tekrar etkin olarak değiştirebilirsiniz. Alternatif olarak, bu verileri doğrulamak veya ayarlamak için [kullanıcının kimlik doğrulaması iletişim bilgilerini denetleme](#check-a-users-authentication-contact-info) bölümündeki adımları izleyebilirsiniz.
 
@@ -126,7 +126,7 @@ Kullanıcının Multi-Factor Authentication, koşullu erişim, kimlik koruması 
 5.  **Tüm kullanıcılar**' ı seçin.
 6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçilecek **satırı seçin** .
 7.  **Profil**' i seçin.
-8.  Aşağı kaydırarak **kimlik doğrulama iletişim bilgilerine**gidin.
+8.  Aşağı kaydırarak **kimlik doğrulama iletişim bilgilerine** gidin.
 9.  Kullanıcı için kaydedilen verileri **gözden geçirin** ve gerektiğinde güncelleştirin.
 
 ### <a name="check-a-users-group-memberships"></a>Kullanıcının grup üyeliklerini denetleme
@@ -182,7 +182,7 @@ Doğru derin bağlantısına sahip olup olmadığınızı denetlemek için şu a
 10. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
     * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 11. Ayrıntılı bağlantısını kontrol etmek istediğiniz uygulamayı seçin.
-12. **Kullanıcı erişim URL 'si**etiketini bulun. Derin bağlantınız Bu URL ile eşleşmelidir.
+12. **Kullanıcı erişim URL 'si** etiketini bulun. Derin bağlantınız Bu URL ile eşleşmelidir.
 
 ## <a name="contact-support"></a>Desteğe başvurun
 Varsa, aşağıdaki bilgilerle bir destek bileti açın:

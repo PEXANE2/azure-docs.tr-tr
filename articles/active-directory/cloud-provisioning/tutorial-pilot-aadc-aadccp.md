@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a8e6948b9912061801fefaa63d2f49611014aa
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266505"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651711"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
@@ -122,17 +122,17 @@ Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup
 2. [Burada](how-to-install.md#install-the-agent)özetlenen adımları kullanarak Azure AD Connect bulutu sağlama aracısını indirin.
 3. Azure AD Connect bulut sağlamasını çalıştırın (AADConnectProvisioningAgent. Installer)
 3. Giriş ekranında, lisans koşullarını **kabul edin** ve **yükler**' e tıklayın.</br>
-!["D Connect sağlama aracısını Microsoft Azure" Giriş ekranını gösteren ekran görüntüsü.](media/how-to-install/install1.png)</br>
+!["D Connect sağlama aracısını Microsoft Azure" Giriş ekranını gösteren ekran görüntüsü.](media/how-to-install/install-1.png)</br>
 
 4. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır.  Azure AD Genel Yönetici hesabınızla oturum açın.
 5. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve Active Directory Yönetici hesabınızla oturum açın.  Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.</br>
-![Bir dizin değeri girilmiş "Connect Active Directory" ekranını gösteren ekran görüntüsü.](media/how-to-install/install3.png)</br>
+![Bir dizin değeri girilmiş "Connect Active Directory" ekranını gösteren ekran görüntüsü.](media/how-to-install/install-3.png)</br>
 
 6. **Yapılandırma Tamam** ekranında **Onayla**' ya tıklayın.  Bu işlem aracıyı kaydedip yeniden başlatacak.</br>
-!["Onayla" düğmesinin seçili olduğu "Yapılandırma Tamam" ekranını gösteren ekran görüntüsü.](media/how-to-install/install4.png)</br>
+!["Onayla" düğmesinin seçili olduğu "Yapılandırma Tamam" ekranını gösteren ekran görüntüsü.](media/how-to-install/install-4a.png)</br>
 
 7. Bu işlem tamamlandıktan sonra, **başarıyla doğrulandığına** ilişkin bir uyarı görmeniz gerekir.  **Çıkış**' a tıklayabilirsiniz.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install5.png)</br>
+![Hoş Geldiniz ekranı](media/how-to-install/install-5.png)</br>
 8. İlk giriş ekranını hala görüyorsanız **Kapat**' a tıklayın.
 
 ## <a name="verify-agent-installation"></a>Aracı yüklemesini doğrulama
@@ -141,22 +141,22 @@ Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzer
 ### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
 Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları izleyin:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
-![Azure portalda](media/how-to-install/install6.png)</br>
+![Azure portalda](media/how-to-install/install-6.png)</br>
 
 3.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' e tıklayın.
-![Azure AD sağlama](media/how-to-install/install7.png)</br>
+![Azure AD sağlama](media/how-to-install/install-7.png)</br>
  
-4. **Şirket içi sağlama aracıları ekranında** , yüklediğiniz aracıları görürsünüz.  Söz konusu aracının orada olduğunu ve **devre dışı**olarak işaretlendiğinden emin olun.  Aracı varsayılan sağlama aracıları tarafından devre dışı bırakıldı ![](media/how-to-install/verify1.png)</br>
+4. **Şirket içi sağlama aracıları ekranında** , yüklediğiniz aracıları görürsünüz.  Söz konusu aracının orada olduğunu ve **devre dışı** olarak işaretlendiğinden emin olun.  Aracı varsayılan sağlama aracıları tarafından devre dışı bırakıldı ![](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>Yerel sunucuda
 Aracının çalıştığını doğrulamak için şu adımları izleyin:
 
 1.  Yönetici hesabıyla sunucuda oturum açma
 2.  Hizmetlere giderek veya Start/Run/Services. msc ' ye giderek **Hizmetleri** açın.
-3.  **Hizmetler** ' in altında **Microsoft Azure AD aracı Güncelleştirici** ' ı bağlama ve **Microsoft Azure AD Connect sağlama aracısının** aynı ve **çalışır**durumda olduğundan emin olun.
-![Hizmetler](media/how-to-troubleshoot/troubleshoot1.png)
+3.  **Hizmetler** ' in altında **Microsoft Azure AD aracı Güncelleştirici** ' ı bağlama ve **Microsoft Azure AD Connect sağlama aracısının** aynı ve **çalışır** durumda olduğundan emin olun.
+![Hizmetler](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlamasını yapılandırma
 Sağlamayı yapılandırmak için aşağıdaki adımları kullanın:
@@ -168,7 +168,7 @@ Sağlamayı yapılandırmak için aşağıdaki adımları kullanın:
   ![ "Sağlamayı yönetme (Önizleme)" bağlantısını gösteren sağlamayı Yönet (Önizleme) ekran görüntüsünü seçin.](media/how-to-configure/manage1.png)</br>
  5.  **New Configuration** 
   ![ "Yeni yapılandırma" bağlantısı vurgulanmış şekilde Azure AD sağlama (Önizleme) ekranının yeni yapılandırma ekran görüntüsü ' ne tıklayın.](media/tutorial-single-forest/configure1.png)</br>
- 6.  Yapılandırma ekranında bir **bildirim e-postası**girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
+ 6.  Yapılandırma ekranında bir **bildirim e-postası** girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
  ![Bildirim e-postasına sahip ekranı Yapılandır ekranının ekran görüntüsü doldurulmuş ve seçili şekilde etkin.](media/tutorial-single-forest/configure2.png)</br>
  7. **Yapılandır**' ın altında, yapılandırma kuralının kapsamını değiştirmek için **tüm kullanıcılar** ' ı seçin.
  !["Kapsam kullanıcıları" öğesinin yanında "tüm kullanıcılar" vurgulanmış şekilde yapılandırma ekranının ekran görüntüsü.](media/how-to-configure/scope2.png)</br>

@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d70676e117a71fbd194e921b4755ba5d196871c7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377468"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650317"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory LinkedIn hesabı bağlantılarını tümleştirin
 
@@ -42,7 +42,7 @@ Tüm kuruluşunuzdan yalnızca kuruluşunuzdaki seçili kullanıcılara kadar, y
 1. Azure AD kuruluş için genel yönetici olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com/) oturum açın.
 1. **Kullanıcılar**’ı seçin.
 1. **Kullanıcılar** sayfasında, **Kullanıcı ayarları**' nı seçin.
-1. **LinkedIn hesap bağlantıları**altında, kullanıcıların bazı Microsoft uygulamalarında LinkedIn bağlantılarına erişmek için hesaplarını bağlanmasına izin verin. Kullanıcılar hesaplarını bağlamaya izin verene kadar veri paylaşılmaz.
+1. **LinkedIn hesap bağlantıları** altında, kullanıcıların bazı Microsoft uygulamalarında LinkedIn bağlantılarına erişmek için hesaplarını bağlanmasına izin verin. Kullanıcılar hesaplarını bağlamaya izin verene kadar veri paylaşılmaz.
 
     * Kuruluşunuzdaki tüm kullanıcılar için hizmeti etkinleştirmek üzere **Evet** ' i seçin
     * Hizmeti yalnızca kuruluşunuzdaki seçili kullanıcı grubu için etkinleştirmek üzere **Seçili grup** ' u seçin
@@ -92,7 +92,7 @@ Grubu Azure AD Yönetim Merkezi 'ndeki LinkedIn hesap bağlantıları ayarında 
 1. **ADMX** dosyalarını ayıklayın ve bunları merkezi deponuza kopyalayın.
 1. Açık Grup İlkesi Yönetimi.
 1. Aşağıdaki ayarla bir Grup İlkesi nesnesi oluşturun: **Kullanıcı Yapılandırması**  >  **Yönetim Şablonları**  >  **Microsoft Office 2016**  >  **çeşitli**  >  **Office uygulamalarında LinkedIn özelliklerini gösterir**.
-1. **Etkin** veya **devre dışı**seçeneğini belirleyin.
+1. **Etkin** veya **devre dışı** seçeneğini belirleyin.
   
    Durum | Etki
    ------ | ------

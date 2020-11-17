@@ -12,20 +12,20 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357921"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651558"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML tabanlı çoklu oturum açma yapılandırılmış uygulamalarda oturum açma sorunları
 Aşağıdaki oturum açma sorunlarını gidermek için, çözümü daha iyi tanılayıp otomatik hale getirmek için aşağıdaki işlemleri yapmanızı öneririz:
 
-- Azure portal Test deneyimini kullanırken daha iyi tanılama ve çözümler sağlamak üzere Azure Active Directory (Azure AD) yardımcı olmak için [uygulamalarım güvenli tarayıcı uzantısını](access-panel-extension-problem-installing.md) yüklemek.
-- Azure portal, uygulama yapılandırma sayfasında Test deneyimini kullanarak hatayı yeniden oluşturun. [SAML tabanlı çoklu oturum açma uygulamalarında hata ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md) hakkında daha fazla bilgi edinin
+- Azure portal Test deneyimini kullanırken daha iyi tanılama ve çözümler sağlamak üzere Azure Active Directory (Azure AD) yardımcı olmak için [uygulamalarım güvenli tarayıcı uzantısını](./access-panel-deployment-plan.md) yüklemek.
+- Azure portal, uygulama yapılandırma sayfasında Test deneyimini kullanarak hatayı yeniden oluşturun. [SAML tabanlı çoklu oturum açma uygulamalarında hata ayıklama](./debug-saml-sso-issues.md) hakkında daha fazla bilgi edinin
 
-Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) KULLANıYORSANıZ, SAML tabanlı çoklu oturum açma yapılandırması sayfasını açmak için aşağıdaki adımları el ile izlemeniz gerekmez.
+Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](./debug-saml-sso-issues.md) KULLANıYORSANıZ, SAML tabanlı çoklu oturum açma yapılandırması sayfasını açmak için aşağıdaki adımları el ile izlemeniz gerekmez.
 
 SAML tabanlı çoklu oturum açma yapılandırma sayfasını açmak için:
 1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **coadmin** olarak oturum açın.
@@ -88,7 +88,7 @@ Azure AD, uygulama tarafından çoklu oturum açma için gönderilen SAML isteğ
 
 **Çözünürlük**
 
-1. SAML isteğini yakalayın. SAML isteğini nasıl yakalayacağınızı öğrenmek için [Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md) öğreticisini izleyin.
+1. SAML isteğini yakalayın. SAML isteğini nasıl yakalayacağınızı öğrenmek için [Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](./debug-saml-sso-issues.md) öğreticisini izleyin.
 1. Uygulama satıcısıyla iletişim kurun ve onlarla aşağıdaki bilgileri paylaşın:
     - SAML isteği
     - [Azure AD çoklu oturum açma SAML protokolü gereksinimleri](../develop/single-sign-on-saml-protocol.md)
@@ -119,8 +119,8 @@ Uygulama nesnesi bozuk ve Azure AD uygulama için yapılandırılan sertifikayı
 
 Yeni bir sertifika silmek ve oluşturmak için aşağıdaki adımları izleyin:
 1. SAML tabanlı SSO yapılandırma ekranında, **SAML Imzalama sertifikası** bölümünde **Yeni sertifika oluştur** ' u seçin.
-1. Sona erme tarihi ' ni seçin ve **Kaydet** ' e tıklayın.
-1. Etkin sertifikayı geçersiz kılmak için **Yeni sertifika etkin hale getirin** ' i işaretleyin. Ardından bölmenin üstündeki **Kaydet** ’e tıklayın ve geçiş sertifikasını etkinleştirmeyi kabul edin.
+1. Sona erme tarihi ' ni seçin ve **Kaydet**' e tıklayın.
+1. Etkin sertifikayı geçersiz kılmak için **Yeni sertifika etkin hale getirin** ' i işaretleyin. Ardından bölmenin üstündeki **Kaydet**’e tıklayın ve geçiş sertifikasını etkinleştirmeyi kabul edin.
 1. **Kullanılmayan** sertifikayı kaldırmak Için **SAML imzalama sertifikası** bölümünde **Kaldır** ' ı tıklatın.
 
 ## <a name="saml-request-not-present-in-the-request"></a>İstekte SAML Isteği yok
@@ -174,5 +174,5 @@ Yalnızca yapılandırdığınız kaynakları istediğinizden emin olmak için, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Uygulama yönetiminde hızlı başlangıç serisi](add-application-portal-assign-users.md)
-- [Azure AD 'de uygulamalar için SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
-- [Azure AD çoklu oturum açma SAML protokolü gereksinimleri](../develop/active-directory-single-sign-on-protocol-reference.md)
+- [Azure AD 'de uygulamalar için SAML tabanlı çoklu oturum açma hatalarını ayıklama](./debug-saml-sso-issues.md)
+- [Azure AD çoklu oturum açma SAML protokolü gereksinimleri](../develop/single-sign-on-saml-protocol.md)

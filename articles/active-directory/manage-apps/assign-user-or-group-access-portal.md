@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604350"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651286"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Azure Active Directory bir uygulama için Kullanıcı atamasını yönetme
 
@@ -40,16 +40,16 @@ Aşağıdaki uygulama türleri ile, kullanıcıların uygulamaya erişebilmesi i
 
 Kullanıcı Ataması gerekli olduğunda, yalnızca uygulamaya açıkça atadığınız kullanıcılar (doğrudan kullanıcı ataması veya grup üyeliğine göre) oturum açabiliyor. Uygulamalar uygulamalarım sayfasında veya doğrudan bağlantı kullanarak uygulamalara erişebilirler. 
 
-Atama *gerekli*olmadığında, bu seçeneği **Hayır** olarak ayarlamış olmanız ya da uygulamanın başka bir SSO modu kullanması nedeniyle, uygulamanın doğrudan bir bağlantısı veya uygulamanın **Özellikler** sayfasında **Kullanıcı erişimi URL 'si** varsa, herhangi bir Kullanıcı uygulamaya erişebilecektir. 
+Atama *gerekli* olmadığında, bu seçeneği **Hayır** olarak ayarlamış olmanız ya da uygulamanın başka bir SSO modu kullanması nedeniyle, uygulamanın doğrudan bir bağlantısı veya uygulamanın **Özellikler** sayfasında **Kullanıcı erişimi URL 'si** varsa, herhangi bir Kullanıcı uygulamaya erişebilecektir. 
 
 Bu ayar, uygulamamda bir uygulamanın görüntülenip görüntülenmeyeceğini etkilemez. Uygulamaya bir kullanıcı veya grup atadıktan sonra, uygulamalar kullanıcıların uygulama erişim panellerinde görüntülenir. Arka plan için bkz. [uygulamalara erişimi yönetme](what-is-access-management.md).
 
 Bir uygulama için Kullanıcı Ataması gerektirmek için:
 1. [Azure Portal](https://portal.azure.com) bir yönetici hesabıyla veya uygulamanın sahibi olarak oturum açın.
-2. **Azure Active Directory**seçin. Sol gezinti menüsünde **Kurumsal uygulamalar**' ı seçin.
+2. **Azure Active Directory** seçin. Sol gezinti menüsünde **Kurumsal uygulamalar**' ı seçin.
 3. Listeden uygulamayı seçin. Uygulamayı görmüyorsanız, arama kutusuna adını yazmaya başlayın. Ya da uygulama türünü, durumunu veya görünürlüğünü seçmek için filtre denetimlerini kullanın ve ardından **Uygula**' yı seçin.
 4. Sol gezinti menüsünde **Özellikler**' i seçin.
-5. **Kullanıcı atamasının gerekli** olduğundan emin olun. iki durumlu düğme **Evet**olarak ayarlanmıştır.
+5. **Kullanıcı atamasının gerekli** olduğundan emin olun. iki durumlu düğme **Evet** olarak ayarlanmıştır.
    > [!NOTE]
    > **Kullanıcı Ataması gerekli değil mi?** geçiş kullanılamıyor, hizmet sorumlusu üzerinde Approleatamamentrequired özelliğini ayarlamak için PowerShell kullanabilirsiniz.
 6. Ekranın üst kısmındaki **Kaydet** düğmesini seçin.
@@ -58,7 +58,7 @@ Bir uygulama için Kullanıcı Ataması gerektirmek için:
 Azure portal kullanarak bir kullanıcı veya grup atamayı veya atamayı öğrenmek için, [uygulama yönetiminde hızlı başlangıç serisi](add-application-portal-assign-users.md)' ne bakın.
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>Graph API kullanarak bir uygulama için kullanıcılar ve gruplar atama veya atamasını kaldırma
-Bir uygulama için kullanıcıları ve grupları atamak veya atamasını kaldırmak için Graph API kullanabilirsiniz. Daha fazla bilgi için bkz. [uygulama rolü atamaları](https://docs.microsoft.com/graph/api/resources/approleassignment).
+Bir uygulama için kullanıcıları ve grupları atamak veya atamasını kaldırmak için Graph API kullanabilirsiniz. Daha fazla bilgi için bkz. [uygulama rolü atamaları](/graph/api/resources/approleassignment).
 
 ## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>PowerShell kullanarak bir uygulamaya kullanıcılar ve gruplar atama
 1. Yükseltilmiş bir Windows PowerShell komut istemi açın.
@@ -81,11 +81,11 @@ Bir uygulama için kullanıcıları ve grupları atamak veya atamasını kaldır
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-Bir kullanıcıyı bir uygulama rolüne atama hakkında daha fazla bilgi için, [New-Azureaduserapprotaatama](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)belgelerine bakın.
+Bir kullanıcıyı bir uygulama rolüne atama hakkında daha fazla bilgi için, [New-Azureaduserapprotaatama](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)belgelerine bakın.
 
 Bir kurumsal uygulamaya bir grup atamak için `Get-AzureADUser` ile değiştirmeniz ve ile değiştirmeniz gerekir `Get-AzureADGroup` `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
 
-Bir uygulama rolüne Grup atama hakkında daha fazla bilgi için, [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)belgelerine bakın.
+Bir uygulama rolüne Grup atama hakkında daha fazla bilgi için, [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)belgelerine bakın.
 
 ### <a name="example"></a>Örnek
 
@@ -154,6 +154,6 @@ Bu örnek, PowerShell kullanarak [Microsoft çalışma alanı analizi](https://p
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Tüm gruplarımı gör](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Bir kurumsal uygulamadan Kullanıcı veya grup atamasını kaldırma](remove-user-or-group-access-portal.md)
+- [Bir kurumsal uygulamadan Kullanıcı veya grup atamasını kaldırma]()
 - [Kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma](disable-user-sign-in-portal.md)
-- [Kurumsal uygulamanın adını veya logosunu değiştirme](change-name-or-logo-portal.md)
+- [Kurumsal uygulamanın adını veya logosunu değiştirme](./add-application-portal-configure.md)

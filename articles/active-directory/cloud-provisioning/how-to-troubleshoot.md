@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226956"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650126"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Bulut sağlama sorunlarını giderme
 
@@ -43,15 +43,15 @@ Bu öğeler Azure portal ve aracıyı çalıştıran yerel sunucu üzerinde doğ
 
 Aracının Azure tarafından görüleceği ve sağlıklı olduğundan emin olmak için aşağıdaki adımları izleyin.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. Sol tarafta **Azure Active Directory**  >  **Azure AD Connect**' yı seçin. Merkezinde **Yönet sağlama (Önizleme)** öğesini seçin.
 1. **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' i seçin.
 
-   ![Tüm aracıları gözden geçir](media/how-to-install/install7.png)</br>
+   ![Tüm aracıları gözden geçir](media/how-to-install/install-7.png)</br>
  
-1. **Şirket içi sağlama aracıları** ekranında, yüklediğiniz aracıları görürsünüz. Söz konusu aracının orada olduğunu ve *sağlıklı*olarak işaretlendiğinden emin olun.
+1. **Şirket içi sağlama aracıları** ekranında, yüklediğiniz aracıları görürsünüz. Söz konusu aracının orada olduğunu ve *sağlıklı* olarak işaretlendiğinden emin olun.
 
-   ![Şirket içi sağlama aracıları ekranı](media/how-to-install/install8.png)</br>
+   ![Şirket içi sağlama aracıları ekranı](media/how-to-install/install-8.png)</br>
 
 ### <a name="verify-the-port"></a>Bağlantı noktasını doğrulama
 
@@ -59,14 +59,14 @@ Azure 'un 443 numaralı bağlantı noktasını dinlediğini ve aracınızın onu
 
 Bu test, aracılarınızın 443 numaralı bağlantı noktası üzerinden Azure ile iletişim kurabildiğini doğrular. Bir tarayıcı açın ve aracının yüklendiği sunucudan önceki URL 'ye gidin.
 
-![Bağlantı noktası erişilebilirliği doğrulaması](media/how-to-install/verify2.png)
+![Bağlantı noktası erişilebilirliği doğrulaması](media/how-to-install/verify-2.png)
 
 ### <a name="on-the-local-server"></a>Yerel sunucuda
 
 Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
 1. Aracının yüklü olduğu sunucuda, bu hizmete giderek veya **Services** **Start**  >  **Run**  >  **Hizmetleri Çalıştır. msc**' yi Başlat ' a giderek hizmetler ' i açın.
-1. **Hizmetler**' in altında **Microsoft Azure AD aracı güncelleştiricisi bağlama** ve **Microsoft Azure AD Connect sağlama aracısının** aynı olduğundan ve durumlarının *çalıştığından*emin olun.
+1. **Hizmetler**' in altında **Microsoft Azure AD aracı güncelleştiricisi bağlama** ve **Microsoft Azure AD Connect sağlama aracısının** aynı olduğundan ve durumlarının *çalıştığından* emin olun.
 
    ![Hizmetler ekranı](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -99,7 +99,7 @@ Aracıyı kaydetmeye çalıştığınızda aşağıdaki hata iletisini alabilirs
 
 Bu sorun genellikle aracının Karma Kimlik Hizmetine bağlanamamasından kaynaklanır ve bir HTTP ara sunucusu yapılandırmanız gerekir. Bu sorunu çözmek için giden bir ara sunucu yapılandırın. 
 
-Sağlama Aracısı bir giden proxy 'nin kullanımını destekler. Bunu, *C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config*aracı yapılandırma dosyasını düzenleyerek yapılandırabilirsiniz. Aşağıdaki satırları, kapanış etiketinden hemen öncesine dosyanın sonuna doğru ekleyin `</configuration>` .
+Sağlama Aracısı bir giden proxy 'nin kullanımını destekler. Bunu, *C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config* aracı yapılandırma dosyasını düzenleyerek yapılandırabilirsiniz. Aşağıdaki satırları, kapanış etiketinden hemen öncesine dosyanın sonuna doğru ekleyin `</configuration>` .
 Değişkenleri `[proxy-server]` ve `[proxy-port]` proxy sunucu adı ve bağlantı noktası değerlerinizle değiştirin.
 
 ```xml
@@ -120,17 +120,17 @@ Bulut sağlama aracısını yüklerken bir hata iletisi alabilirsiniz.
 
 Bu sorun genellikle aracının yerel PowerShell yürütme ilkeleri nedeniyle PowerShell kayıt betikleri yürütmesine neden olur.
 
-Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve kullanıcı ilkelerinin *tanımsız* veya *RemoteSigned*olarak ayarlanmış olması gerekir. *Kısıtlamasız*olarak ayarlandıklarında bu hatayı görürsünüz. Daha fazla bilgi için bkz. [PowerShell yürütme ilkeleri](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve kullanıcı ilkelerinin *tanımsız* veya *RemoteSigned* olarak ayarlanmış olması gerekir. *Kısıtlamasız* olarak ayarlandıklarında bu hatayı görürsünüz. Daha fazla bilgi için bkz. [PowerShell yürütme ilkeleri](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
 ### <a name="log-files"></a>Günlük dosyaları
 
-Varsayılan olarak aracı mümkün olduğunca az hata iletisi ve yığın izleme bilgisi yarar. Bu izleme günlüklerini *C:\programdata\microsoft\azure AD Connect sağlama programı \ Trace*klasöründe bulabilirsiniz.
+Varsayılan olarak aracı mümkün olduğunca az hata iletisi ve yığın izleme bilgisi yarar. Bu izleme günlüklerini *C:\programdata\microsoft\azure AD Connect sağlama programı \ Trace* klasöründe bulabilirsiniz.
 
 Aracıyla ilgili sorunları gidermeye yönelik ek ayrıntılar toplamak için aşağıdaki adımları izleyin.
 
 1. Hizmeti durdurma **Microsoft Azure AD sağlama aracısını bağlama**.
 1. Özgün yapılandırma dosyasının bir kopyasını oluşturun: *C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config*.
-1. Var olan `<system.diagnostics>` bölümü aşağıdaki ile değiştirin ve tüm izleme Iletileri *ProvAgentTrace. log*dosyasına gider.
+1. Var olan `<system.diagnostics>` bölümü aşağıdaki ile değiştirin ve tüm izleme Iletileri *ProvAgentTrace. log* dosyasına gider.
 
    ```xml
      <system.diagnostics>

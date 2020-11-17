@@ -4,21 +4,21 @@ description: Azure Yönetim merkezinde toplu işlemlerde grup üyelerini kaldır
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da3da152fa8d0f568ee0f4075dafb8da8c3bf8a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 83b905faa892cc338b5bdf4f998ad95f7b8a484e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376828"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650869"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu kaldırma
 
@@ -59,8 +59,8 @@ Azure AD grup üyelerini toplu olarak başarıyla eklemek için toplu karşıya 
 
     :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV dosyası, kaldırılacak Grup üyelerinin adlarını ve kimliklerini içerir":::
 
-1. **Grup üyelerini toplu kaldırma** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçtiğinizde, CSV dosyasının doğrulanması başlar.
-1. Dosya içeriği doğrulandığında, toplu içeri aktarma sayfası **dosyayı başarıyla karşıya yüklendi**olarak görüntüler. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+1. **Grup üyelerini toplu kaldırma** sayfasında, **CSV dosyanızı karşıya yükleyin** bölümünde dosyaya gidin. Dosyayı seçtiğinizde, CSV dosyasının doğrulanması başlar.
+1. Dosya içeriği doğrulandığında, toplu içeri aktarma sayfası **dosyayı başarıyla karşıya yüklendi** olarak görüntüler. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
 1. Dosyanız doğrulamayı geçtiğinde, grup üyelerini gruptan kaldıran Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
 1. Kaldırma işlemi tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
 
@@ -70,7 +70,7 @@ Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfas�
 
 [![Toplu Işlemler sonuçları sayfasındaki durumu denetleyin](./media/groups-bulk-remove-members/bulk-center.png)](./media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-Toplu işlemdeki her bir satır öğesi hakkında ayrıntılar için **# Success**, **# Failure**veya **Total Requests** sütunlarının altındaki değerleri seçin. Hatalar oluştuysa, başarısızlık nedenleri listelenecektir.
+Toplu işlemdeki her bir satır öğesi hakkında ayrıntılar için **# Success**, **# Failure** veya **Total Requests** sütunlarının altındaki değerleri seçin. Hatalar oluştuysa, başarısızlık nedenleri listelenecektir.
 
 ## <a name="bulk-removal-service-limits"></a>Toplu kaldırma hizmeti sınırları
 

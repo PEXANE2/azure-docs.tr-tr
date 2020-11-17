@@ -4,8 +4,8 @@ description: Azure Active Directory Azure Yönetim merkezinde toplu olarak kulla
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4146fb6bfe6c06e699df1f563e1f26e0716b023
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b312ef8735477e0921bcb9cdec541f97ba3003eb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376517"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650283"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu silme
 
@@ -53,12 +53,12 @@ Azure AD kullanıcılarını toplu olarak başarıyla silmenizi sağlamak için 
 
    ![Silmek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-delete/bulk-delete.png)
 
-1. CSV dosyasını açın ve silmek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **Kullanıcı asıl adı**değeri gereklidir. Ardından dosyayı kaydedin.
+1. CSV dosyasını açın ve silmek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **Kullanıcı asıl adı** değeri gereklidir. Ardından dosyayı kaydedin.
 
    ![CSV dosyası, silinecek kullanıcıların adlarını ve kimliklerini içerir](./media/users-bulk-delete/delete-csv-file.png)
 
-1. **Toplu Kullanıcı silme** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçip Gönder ' e tıkladığınızda, CSV dosyasının doğrulanması başlar.
-1. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+1. **Toplu Kullanıcı silme** sayfasında, **CSV dosyanızı karşıya yükleyin** bölümünde dosyaya gidin. Dosyayı seçip Gönder ' e tıkladığınızda, CSV dosyasının doğrulanması başlar.
+1. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini** görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
 1. Dosyanız doğrulamayı geçtiğinde, kullanıcıları silen Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
 1. Silme işlemi tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
 
@@ -77,7 +77,7 @@ Bundan sonra, sildiğiniz kullanıcıların Azure AD kuruluşunda Azure portal v
 1. Kuruluşta Kullanıcı Yöneticisi olan bir hesapla Azure portal oturum açın.
 1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
-1. **Göster**altında yalnızca **tüm kullanıcılar** ' ı seçin ve sildiğiniz kullanıcıların artık listelenmediğini doğrulayın.
+1. **Göster** altında yalnızca **tüm kullanıcılar** ' ı seçin ve sildiğiniz kullanıcıların artık listelenmediğini doğrulayın.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Silinen kullanıcıları PowerShell ile doğrulama
 
