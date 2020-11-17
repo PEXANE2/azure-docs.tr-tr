@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3e6ea6692a81a06bbf3180904dfb465a88b105d1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413012"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653428"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı hakkında SSS
 
@@ -40,9 +40,9 @@ Azure Güvenlik Duvarı, kuralları ve kural koleksiyonlarını destekler. Kural
 
 Üç tür kural koleksiyonu vardır:
 
-* *Uygulama kuralları* : bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) yapılandırın.
-* *Ağ kuralları* : kaynak adreslerini, protokolleri, hedef bağlantı noktalarını ve hedef adreslerini içeren kuralları yapılandırın.
-* *NAT kuralları* : gelen Internet bağlantılarına izin vermek için DNAT kurallarını yapılandırın.
+* *Uygulama kuralları*: bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) yapılandırın.
+* *Ağ kuralları*: kaynak adreslerini, protokolleri, hedef bağlantı noktalarını ve hedef adreslerini içeren kuralları yapılandırın.
+* *NAT kuralları*: gelen Internet bağlantılarına izin vermek için DNAT kurallarını yapılandırın.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Güvenlik Duvarı gelen trafik filtrelemeyi destekliyor mu?
 
@@ -50,7 +50,7 @@ Azure Güvenlik Duvarı gelen ve giden filtrelemeyi destekler. Gelen koruma gene
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Hangi günlük ve analiz hizmetleri Azure Güvenlik Duvarı tarafından destekleniyor?
 
-Azure Güvenlik Duvarı, güvenlik duvarı günlüklerini görüntülemek ve analiz etmek için Azure Izleyici ile tümleşiktir. Günlükler Log Analytics, Azure depolama veya Event Hubs gönderilebilir. Log Analytics veya Excel ve Power BI gibi farklı araçlarla analiz edilebilir. Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](tutorial-diagnostics.md).
+Azure Güvenlik Duvarı, güvenlik duvarı günlüklerini görüntülemek ve analiz etmek için Azure Izleyici ile tümleşiktir. Günlükler Log Analytics, Azure depolama veya Event Hubs gönderilebilir. Log Analytics veya Excel ve Power BI gibi farklı araçlarla analiz edilebilir. Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](./firewall-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure Güvenlik Duvarı Market 'teki NVA 'lar gibi mevcut hizmetlerden farklı şekilde nasıl çalışır?
 
@@ -115,7 +115,7 @@ Evet, iki bağlı bileşen sanal ağı arasındaki trafiği yönlendirmek ve fil
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Güvenlik Duvarı aynı sanal ağdaki veya eşlenen sanal ağlardaki alt ağlar arasında ağ trafiğini iletebilir ve filtreleyebilir mi?
 
-Evet. Ancak, aynı VNET 'teki alt ağlar arasında trafiği yeniden yönlendirmek üzere UDRs 'yi yapılandırmak için ek dikkat gerekir. VNET adres aralığının UDR için hedef ön ek olarak kullanılması yeterli olduğundan, bu, tüm trafiği Azure Güvenlik Duvarı örneği aracılığıyla aynı alt ağdaki başka bir makineye de yönlendirir. Bunu önlemek için, **sanal VNET** 'in bir sonraki atlama türü ile UDR 'de alt ağ için bir yol ekleyin. Bu yolların yönetilmesi, bir miktar ve hataya açık olabilir. İç ağ kesimlenmesi için önerilen yöntem, UDRs gerektirmeyen ağ güvenlik gruplarını kullanmaktır.
+Evet. Ancak, aynı VNET 'teki alt ağlar arasında trafiği yeniden yönlendirmek üzere UDRs 'yi yapılandırmak için ek dikkat gerekir. VNET adres aralığının UDR için hedef ön ek olarak kullanılması yeterli olduğundan, bu, tüm trafiği Azure Güvenlik Duvarı örneği aracılığıyla aynı alt ağdaki başka bir makineye de yönlendirir. Bunu önlemek için, **sanal VNET**'in bir sonraki atlama türü ile UDR 'de alt ağ için bir yol ekleyin. Bu yolların yönetilmesi, bir miktar ve hataya açık olabilir. İç ağ kesimlenmesi için önerilen yöntem, UDRs gerektirmeyen ağ güvenlik gruplarını kullanmaktır.
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Güvenlik Duvarı, özel ağlar arasında SNAT 'ye giden bir mıdır?
 
@@ -139,9 +139,9 @@ Hayır. NAT kuralları, çevrilen trafiğe izin vermek için, karşılık gelen 
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Uygulama kuralı hedef FQDN 'de joker karakterler nasıl çalışır?
 
-Joker karakterler şu anda yalnızca FQDN 'nin sol tarafında kullanılabilir. Örneğin, * *_. contoso.com_* ve * *_contoso.com_*.
+Joker karakterler şu anda yalnızca FQDN 'nin sol tarafında kullanılabilir. Örneğin, **_. contoso.com_* ve **_contoso.com_*.
 
-* *_. Contoso.com_* yapılandırırsanız, *anyvalue*. contoso.com, ancak contoso.com (etki alanı tepesinde) izin verir. Etki alanı tepesinde izin vermek istiyorsanız, onu hedef FQDN olarak açıkça yapılandırmanız gerekir.
+**_. Contoso.com_* yapılandırırsanız, *anyvalue*. contoso.com, ancak contoso.com (etki alanı tepesinde) izin verir. Etki alanı tepesinde izin vermek istiyorsanız, onu hedef FQDN olarak açıkça yapılandırmanız gerekir.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>*Sağlama durumu* ne anlama geliyor?
 
@@ -217,7 +217,7 @@ Hayır, bir IP grubunu başka bir kaynak grubuna taşımak Şu anda desteklenmiy
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure Güvenlik Duvarı için TCP boşta kalma zaman aşımı nedir?
 
-Ağ güvenlik duvarının standart bir davranışı, TCP bağlantılarının etkin tutulmasını ve etkinlik olmaması durumunda bunları hemen kapatmalarını sağlamaktır. Azure Güvenlik Duvarı TCP boşta kalma zaman aşımı dört dakikadır. Bu ayar yapılandırılabilir değildir. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun korunduğundan emin olmaz. Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için bkz. [.NET örnekleri](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
+Ağ güvenlik duvarının standart bir davranışı, TCP bağlantılarının etkin tutulmasını ve etkinlik olmaması durumunda bunları hemen kapatmalarını sağlamaktır. Azure Güvenlik Duvarı TCP boşta kalma zaman aşımı dört dakikadır. Bu ayar yapılandırılabilir değildir. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun korunduğundan emin olmaz. Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için bkz. [.NET örnekleri](/dotnet/api/system.net.servicepoint.settcpkeepalive?view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Azure Güvenlik duvarını genel bir IP adresi olmadan dağıtabilir miyim?
 

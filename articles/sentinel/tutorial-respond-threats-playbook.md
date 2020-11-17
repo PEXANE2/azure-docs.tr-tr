@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: 0e7d790fa9c5d4052ddb1e20defed1d1cc457a2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6fd26b4965b92f5f06a008d67e2d585fd1b41b7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840209"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652085"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Öğretici: Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama
 
@@ -39,7 +39,7 @@ Bu öğretici, Azure Sentinel tarafından algılanan güvenlikle ilgili sorunlar
 
 ## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Azure Sentinel 'de güvenlik PlayBook nedir?
 
-Bir güvenlik PlayBook, bir uyarıya yanıt olarak Azure Sentinel 'den çalıştırılabilecek bir yordamlar koleksiyonudur. Bir güvenlik PlayBook, yanıtınızı otomatikleştirmeye ve düzenlemeye yardımcı olabilir ve el ile çalıştırılabilir veya belirli uyarılar tetiklendiğinde otomatik olarak çalışacak şekilde ayarlanabilir. Azure Sentinel 'deki güvenlik PlayBook 'ları [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)tabanlıdır, bu da tüm güç, özelleştirme ve yerleşik şablonları Logic Apps alır. Her bir PlayBook, seçtiğiniz belirli bir abonelik için oluşturulur, ancak PlayBook 'ları sayfasına baktığınızda, tüm PlayBook 'ları seçili abonelikler arasında görürsünüz.
+Bir güvenlik PlayBook, bir uyarıya yanıt olarak Azure Sentinel 'den çalıştırılabilecek bir yordamlar koleksiyonudur. Bir güvenlik PlayBook, yanıtınızı otomatikleştirmeye ve düzenlemeye yardımcı olabilir ve el ile çalıştırılabilir veya belirli uyarılar tetiklendiğinde otomatik olarak çalışacak şekilde ayarlanabilir. Azure Sentinel 'deki güvenlik PlayBook 'ları [Azure Logic Apps](../logic-apps/logic-apps-overview.md)tabanlıdır, bu da tüm güç, özelleştirme ve yerleşik şablonları Logic Apps alır. Her bir PlayBook, seçtiğiniz belirli bir abonelik için oluşturulur, ancak PlayBook 'ları sayfasına baktığınızda, tüm PlayBook 'ları seçili abonelikler arasında görürsünüz.
 
 > [!NOTE]
 > PlayBook 'lar Azure Logic Apps yararlanır, bu nedenle ücretler geçerlidir. Ayrıntılı bilgi için [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) fiyatlandırma sayfasını ziyaret edin.
@@ -49,8 +49,8 @@ Bir güvenlik PlayBook, bir uyarıya yanıt olarak Azure Sentinel 'den çalışt
 2. Güvenlik analistlerinizin olaydan haberdar olduğundan emin olmak için Microsoft ekiplerinde veya bolluk 'de güvenlik işlemleri kanalınıza bir ileti gönderin.
 3. Uyarı içindeki tüm bilgileri, üst düzey ağ yöneticinize ve güvenlik yöneticinize gönderin. E-posta iletisi ayrıca iki Kullanıcı seçeneği düğmesini **engeller** veya **yoksayar**.
 4. Yöneticilerden bir yanıt alındıktan sonra PlayBook çalışmaya devam eder.
-5. Yöneticiler **Engelle**seçeneğini BELIRLERSENIZ, IP adresi güvenlik duvarında engellenir ve Kullanıcı Azure AD 'de devre dışı bırakılır.
-6. Yöneticiler **yoksayma**seçeneğini belirlerseniz, uyarı Azure Sentinel 'de kapatılır ve olay ServiceNow 'da kapatılır.
+5. Yöneticiler **Engelle** seçeneğini BELIRLERSENIZ, IP adresi güvenlik duvarında engellenir ve Kullanıcı Azure AD 'de devre dışı bırakılır.
+6. Yöneticiler **yoksayma** seçeneğini belirlerseniz, uyarı Azure Sentinel 'de kapatılır ve olay ServiceNow 'da kapatılır.
 
 Güvenlik PlayBook 'ları el ile ya da otomatik olarak çalıştırılabilir. Bunları el ile çalıştırmak, bir uyarı aldığınızda, seçili uyarıya yanıt olarak isteğe bağlı bir PlayBook çalıştırmayı tercih edebilirsiniz. Otomatik olarak çalıştırmak, bağıntı kuralını yazarken, uyarı tetiklendiğinde otomatik olarak bir veya daha fazla PlayBook çalıştıracak şekilde ayarlamanız anlamına gelir.
 
@@ -60,7 +60,7 @@ Güvenlik PlayBook 'ları el ile ya da otomatik olarak çalıştırılabilir. Bu
 Azure Sentinel 'de yeni bir güvenlik PlayBook oluşturmak için aşağıdaki adımları izleyin:
 
 1. **Azure Sentinel** panosunu açın.
-2. **Yapılandırma**altında **playbooks**' ı seçin.
+2. **Yapılandırma** altında **playbooks**' ı seçin.
 
    ![Logic App](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
@@ -76,7 +76,7 @@ Azure Sentinel 'de yeni bir güvenlik PlayBook oluşturmak için aşağıdaki ad
 
 6. Yeni oluşturabileceğiniz veya şablonu düzenleyebileceğiniz Logic App Designer 'a yönlendirilirsiniz. [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md)ile bir PlayBook oluşturma hakkında daha fazla bilgi için.
 
-7. Boş bir PlayBook oluşturuyorsanız, **tüm bağlayıcılar ve Tetikleyiciler ara** alanında *Azure Sentinel*' i yazın ve bir **Azure Sentinel uyarısı yanıtı tetiklendiğinde**öğesini seçin. <br>Oluşturulduktan sonra, **playbooks** listesinde yeni PlayBook görüntülenir. Görünmüyorsa **Yenile**' ye tıklayın.
+7. Boş bir PlayBook oluşturuyorsanız, **tüm bağlayıcılar ve Tetikleyiciler ara** alanında *Azure Sentinel*' i yazın ve bir **Azure Sentinel uyarısı yanıtı tetiklendiğinde** öğesini seçin. <br>Oluşturulduktan sonra, **playbooks** listesinde yeni PlayBook görüntülenir. Görünmüyorsa **Yenile**' ye tıklayın.
 
 1. Hesaplar, IP adresleri ve konaklar gibi **varlıklar** listesinin içinden ilgili varlıkları almanızı sağlayan **varlıkları al** işlevlerini kullanın. Bu, belirli varlıklarda eylemleri çalıştırmanızı sağlar.
 
@@ -105,7 +105,7 @@ SıEM/SOC ekipleri, düzenli olarak güvenlik uyarılarını açığa kaldırmam
 Yanıtları otomatikleştirmek için:
 
 1. Yanıtı otomatik hale getirmek istediğiniz uyarıyı seçin.
-1. **Uyarı kuralını Düzenle** sayfasında, **gerçek zamanlı Otomasyon**altında, bu uyarı kuralı eşleştiğinde çalıştırmak istediğiniz **tetiklenen PlayBook** ' u seçin.
+1. **Uyarı kuralını Düzenle** sayfasında, **gerçek zamanlı Otomasyon** altında, bu uyarı kuralı eşleştiğinde çalıştırmak istediğiniz **tetiklenen PlayBook** ' u seçin.
 1. **Kaydet**’i seçin.
 
    ![gerçek zamanlı Otomasyon](./media/tutorial-detect-threats/rt-configuration.png)
@@ -118,5 +118,3 @@ Yanıtları otomatikleştirmek için:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, Azure Sentinel 'de bir PlayBook 'u nasıl çalıştıracağınızı öğrendiniz. Azure Sentinel 'i kullanarak [tehditler için nasıl](hunting.md) proaktif olarak bir çözüm araya geçin.
-
-

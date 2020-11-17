@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741202"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652527"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
@@ -83,7 +83,7 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 
 ![Azure Active Directory Yönetim Merkezi-oturum açma işlemleri raporu](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-**Azure Active Directory**  ->  [Azure Active Directory Yönetim Merkezi](https://aad.portal.azure.com/) 'nde Azure Active Directory**oturum açma** bölümüne gidin ve belirli bir kullanıcının oturum açma etkinliğine tıklayın. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
+**Azure Active Directory**  ->  [Azure Active Directory Yönetim Merkezi](https://aad.portal.azure.com/) 'nde Azure Active Directory **oturum açma** bölümüne gidin ve belirli bir kullanıcının oturum açma etkinliğine tıklayın. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
 
 |Oturum açma hata kodu|Oturum açma hatası nedeni|Çözüm
 | --- | --- | ---
@@ -149,7 +149,7 @@ Sahip olduğunuz sorunun türüne bağlı olarak, geçişli kimlik doğrulama Ar
 
 ### <a name="azure-ad-connect-logs"></a>Azure AD Connect günlükleri
 
-Yüklemeyle ilgili hatalar için **%ProgramData%\aadconnect\trace- \* . log**konumundaki Azure AD Connect günlüklerine bakın.
+Yüklemeyle ilgili hatalar için **%ProgramData%\aadconnect\trace- \* . log** konumundaki Azure AD Connect günlüklerine bakın.
 
 ### <a name="authentication-agent-event-logs"></a>Kimlik doğrulama Aracısı olay günlükleri
 
@@ -157,9 +157,11 @@ Kimlik doğrulama aracısıyla ilgili hatalar için, sunucuda Olay Görüntüley
 
 Ayrıntılı analiz için, "oturum" günlüğünü etkinleştirin (Bu seçeneği bulmak için Olay Görüntüleyicisi uygulamasının içine sağ tıklayın). Kimlik Doğrulama aracısını normal işlemler sırasında bu günlük etkin olarak çalıştırmayın; yalnızca sorun giderme için kullanın. Günlük içeriği yalnızca günlük yeniden devre dışı bırakıldıktan sonra görünür.
 
+PTA Aracısı olay bildirimi [burada](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster)bulunabilir.
+
 ### <a name="detailed-trace-logs"></a>Ayrıntılı izleme günlükleri
 
-Kullanıcı oturum açma hatalarıyla ilgili sorunları gidermek için **%ProgramData%\microsoft\azure AD Connect Authentication \\ **me \ izleme konumundaki izleme günlüklerini arayın. Bu Günlükler, belirli bir Kullanıcı oturum açma özelliğinin doğrudan kimlik doğrulama özelliğini kullanarak başarısız olma nedenlerini içerir. Bu hatalar, yukarıdaki oturum açma hatası nedenleri tablosunda gösterilen oturum açma hatası nedenlerinden de eşleştirilir. Aşağıda örnek bir günlük girişi verilmiştir:
+Kullanıcı oturum açma hatalarıyla ilgili sorunları gidermek için **%ProgramData%\microsoft\azure AD Connect Authentication \\** me \ izleme konumundaki izleme günlüklerini arayın. Bu Günlükler, belirli bir Kullanıcı oturum açma özelliğinin doğrudan kimlik doğrulama özelliğini kullanarak başarısız olma nedenlerini içerir. Bu hatalar, yukarıdaki oturum açma hatası nedenleri tablosunda gösterilen oturum açma hatası nedenlerinden de eşleştirilir. Aşağıda örnek bir günlük girişi verilmiştir:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
