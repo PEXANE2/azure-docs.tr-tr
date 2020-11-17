@@ -129,12 +129,12 @@ Bir kopyalama etkinliğinin aşağıdaki şablonu desteklenen özelliklerin kaps
 
 | Özellik | Açıklama | Gerekli mi? |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği için, `Copy` | Yes |
-| girişi | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Yes |
-| çıkışı | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Yes |
-| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Yes |
-| kaynak | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
-| Ev | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Yes |
+| tür | Kopyalama etkinliği için, `Copy` | Evet |
+| girişi | Kaynak verilere işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir girişi destekler. | Evet |
+| çıkışı | Havuz verilerine işaret eden oluşturduğunuz veri kümesini belirtin. Kopyalama etkinliği yalnızca tek bir çıktıyı destekler. | Evet |
+| typeProperties | Kopyalama etkinliğini yapılandırmak için özellikleri belirtin. | Evet |
+| kaynak | Kopyalama kaynağı türünü ve verileri almak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
+| Ev | Kopyalama havuz türünü ve verileri yazmak için karşılık gelen özellikleri belirtin.<br/>Daha fazla bilgi için [desteklenen veri depoları ve biçimleri](#supported-data-stores-and-formats)bölümünde listelenen bağlayıcı makalesindeki "etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
 | çevirmen | Kaynaktan havuza açık sütun eşlemeleri belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamıyorsa geçerlidir.<br/>Daha fazla bilgi için bkz. [kopyalama etkinliğinde şema eşleme](copy-activity-schema-and-type-mapping.md). | Hayır |
 | Veri tümleştirme birimleri | [Azure Integration Runtime](concepts-integration-runtime.md) 'ın veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler daha önce bulut veri taşıma birimi (DMU) olarak bilinirdi. <br/>Daha fazla bilgi için bkz. [veri tümleştirme birimleri](copy-activity-performance-features.md#data-integration-units). | Hayır |
 | Paralellkopyalar | Kaynaktan veri okurken ve havuza veri yazarken kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirleyin.<br/>Daha fazla bilgi için bkz. [paralel kopya](copy-activity-performance-features.md#parallel-copy). | Hayır |

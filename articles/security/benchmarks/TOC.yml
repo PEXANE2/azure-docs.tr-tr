@@ -93,6 +93,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Azure Güvenlik Duvarı güvenlik temeli
       href: ../../firewall/security-baseline.md
+    - name: Azure Front Door güvenlik temeli
+      href: ../../frontdoor/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
       href: ../../azure-functions/security-baseline.md
     - name: Azure IoT Hub güvenlik temeli
@@ -139,6 +141,8 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB güvenlik temeli
       href: ../../cosmos-db/security-baseline.md
+    - name: Maliyet Yönetimi güvenlik temeli
+      href: ../../cost-management-billing/security-baseline.md
     - name: Müşteri Kasası güvenlik temeli
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Data Lake Analytics güvenlik temeli

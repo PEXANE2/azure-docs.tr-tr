@@ -19,6 +19,8 @@
       href: virtual-machines-custom-preferences.md
     - name: Azure İlkesi aracılığıyla VM’lerde etkinleştirme
       href: virtual-machines-policy-enable.md
+    - name: Bozuk bir Automanage hesabını onarma
+      href: repair-automanage-account.md
 - name: Kaynaklar
   expanded: true
   items:

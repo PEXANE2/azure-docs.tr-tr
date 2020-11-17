@@ -275,7 +275,7 @@
               href: platform/logs-data-export.md
             - name: Logic Apps ile dışarı aktarma
               href: platform/logs-export-logic-app.md
-            - name: Dışarı aktarılan verileri Veri Gezgini ile sorgulama
+            - name: Azure Veri Gezgini kullanarak verileri sorgulama
               href: platform/azure-data-explorer-query-storage.md
             - name: Excel’e gönder
               href: log-query/log-excel.md

@@ -106,8 +106,10 @@
           href: concept-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Belirli bir kullanıcı alt kümesi için özelliği etkinleştirme
+    - name: Bir özelliği belirli bir orandaki kullanıcılar için etkinleştirme
       href: howto-feature-filters-aspnet-core.md
+    - name: Bir özelliği belirli kullanıcılar/gruplar için etkinleştirme
+      href: howto-targetingfilter-aspnet-core.md
     - name: Ortam başına yapılandırma için etiketleri kullanma
       href: howto-labels-aspnet-core.md
     - name: Yapılandırma verilerini içeri veya dışarı aktarma

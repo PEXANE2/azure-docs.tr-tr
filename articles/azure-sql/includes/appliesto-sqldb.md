@@ -6,4 +6,4 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "90533166"
 ---
-<Token>**Uygulama hedefi:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure SQL veritabanı </Token> 
+<Token>**Uygulama hedefi:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure SQL veritabanı</Token> 

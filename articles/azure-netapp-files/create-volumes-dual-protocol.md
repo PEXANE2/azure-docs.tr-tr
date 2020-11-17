@@ -54,11 +54,11 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
 ## <a name="create-a-dual-protocol-volume"></a>Çift protokollü birim oluşturma
 
-1.  Kapasite havuzları dikey penceresinden **birimler** dikey penceresine tıklayın. Birim oluşturmak için **+ Birim ekle** 'ye tıklayın. 
+1.  Kapasite havuzları dikey penceresinden **birimler** dikey penceresine tıklayın. Birim oluşturmak için **+ Birim ekle**'ye tıklayın. 
 
     ![Birimlere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
+2.  Birim Oluştur penceresinde **Oluştur**' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
     * **Birim adı**      
         Oluşturmakta olduğunuz birim için ad belirtin.   
 
@@ -100,7 +100,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
         ![Gelişmiş seçimi göster](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. **Protokol** ' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
+3. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
     * Birimin protokol türü olarak **çift protokol (NFSv3 ve SMB)** seçeneğini belirleyin.   
 
     * Açılan listeden **Active Directory** bağlantıyı seçin.  
@@ -135,7 +135,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
     ![Sertifika Dışarı Aktarma Sihirbazı](../media/azure-netapp-files/certificate-export-wizard.png)
 
-4. Çift protokol biriminin NetApp hesabına gidin, **Active Directory bağlantılar** ' a tıklayın ve **Active Directory Birleştir** penceresini kullanarak kök CA sertifikasını karşıya yükleyin:  
+4. Çift protokol biriminin NetApp hesabına gidin, **Active Directory bağlantılar**' a tıklayın ve **Active Directory Birleştir** penceresini kullanarak kök CA sertifikasını karşıya yükleyin:  
 
     ![Sunucu kök CA sertifikası](../media/azure-netapp-files/server-root-ca-certificate.png)
 

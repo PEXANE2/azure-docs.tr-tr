@@ -2,6 +2,8 @@
   href: cut-planes.md
 - name: İşleme Hatalarını Ayıklama
   href: debug-rendering.md
+- name: Fresnel etkisi
+  href: fresnel-effect.md
 - name: Hiyerarşik durumu geçersiz kılma
   href: override-hierarchical-state.md
 - name: Kamera

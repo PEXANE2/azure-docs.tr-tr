@@ -143,10 +143,12 @@
               href: azure-vm-create-properties.md
             - name: VM teklifi girişini yapılandırma
               href: azure-vm-create-listing.md
-            - name: VM planları oluşturma
-              href: azure-vm-create-plans.md
             - name: Önizleme hedef kitlesi ekleme
               href: azure-vm-create-preview.md
+            - name: VM planları oluşturma
+              href: azure-vm-create-plans.md
+            - name: CSP’ler aracılığıyla satış
+              href: azure-vm-create-resell-csp.md
             - name: VM teknik varlıkları oluşturma
               items:
                 - name: Onaylanan bir temelden VM oluşturma

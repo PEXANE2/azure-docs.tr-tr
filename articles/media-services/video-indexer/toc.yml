@@ -47,8 +47,6 @@
           href: customize-person-model-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure'a Bağlanma
-      href: connect-to-azure.md
     - name: Azure’a bağlı hesabı yönetme
       href: manage-account-connected-to-azure.md
     - name: Videoları karşıya yükleme ve dizinleme

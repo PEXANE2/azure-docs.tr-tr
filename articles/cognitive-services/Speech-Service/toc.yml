@@ -28,8 +28,6 @@
       items:
         - name: Konuşmayı tanıma için kaynak dili değiştirme
           href: how-to-specify-source-language.md
-        - name: Özel Konuşma ile doğruluğu geliştirme
-          href: how-to-custom-speech.md
         - name: Sıkıştırılmış ses giriş biçimlerini kullanma
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
@@ -45,20 +43,18 @@
           href: tutorial-tenant-model.md
     - name: Özelleştirme
       items:
+        - name: Özel Konuşma Tanıma nedir?
+          href: custom-speech-overview.md
         - name: Speech Studio’da ses dosyalarını kullanarak model test etme
           href: quickstarts/speech-studio-test-model.md
         - name: Özel Konuşma için verileri hazırlama
           href: how-to-custom-speech-test-and-train.md
         - name: Özel Konuşma verilerini inceleme
           href: how-to-custom-speech-inspect-data.md
-        - name: Özel Konuşma doğruluğunu değerlendirme
+        - name: Özel Konuşma Tanıma’nın doğruluğunu değerlendime ve iyileştirme
           href: how-to-custom-speech-evaluate-data.md
-        - name: Özel Konuşma doğruluğunu iyileştirme
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: Özel Konuşma için modeli eğitme
+        - name: Özel Konuşma Tanıma modeli eğitme ve dağıtma
           href: how-to-custom-speech-train-model.md
-        - name: Özel bir modeli dağıtma
-          href: how-to-custom-speech-deploy-model.md
         - name: Özel Konuşma Tanıma için CI/CD
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: İnsan etiketli transkripsiyonlar oluşturma
@@ -391,6 +387,10 @@
                       href: how-to-custom-commands-setup-web-endpoints.md
                     - name: Özel Komutlar uygulamanızı beceri olarak dışarı aktarma
                       href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: İstemci uygulamasından bir komutu güncelleştirme
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: Web uç noktasından bir komutu güncelleştirme
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
                 - name: Dağıtma
                   items:
                     - name: Azure DevOps ile Sürekli Dağıtım

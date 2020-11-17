@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: Veri koruma
           href: protection-customer-data.md
+    - name: Platform bütünlüğü ve güvenliği
+      href: platform.md
+      items:
+        - name: Üretici yazılımı güvenliği
+          href: firmware.md
+        - name: Güvenli Önyükleme
+          href: secure-boot.md
+        - name: Ölçülen önyükleme ve konak kanıtlama
+          href: measured-boot-host-attestation.md
+        - name: Project Cerberus
+          href: project-cerberus.md
+        - name: Bekleme sırasında şifreleme
+          href: encryption-atrest.md
+        - name: Hiper yönetici güvenliği
+          href: hypervisor.md
     - name: Azure bulutta yalıtım
       href: isolation-choices.md
 - name: Kimlik yönetimi
