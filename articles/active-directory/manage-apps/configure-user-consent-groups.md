@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: df50231b03f71008f967c4f09ce09c5b5890802f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d5c42675b182fbc34354c75778214463adfe491f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427652"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648149"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Grup verilerine erişen uygulamalar için Grup sahibi onayını yapılandırma
 
-Grup ve takım sahipleri, üçüncü taraf satıcılar tarafından yayımlanan uygulamalar gibi, kuruluşunuzun bir grupla ilişkili verilerinize erişebilmesi için uygulamalara yetki verebilir. Örneğin, Microsoft ekipteki bir takım sahibi, bir uygulamanın ekipteki tüm ekip iletilerini okumasına veya bir grubun üyelerinin temel profilini listeliğine izin verebilir. Daha fazla bilgi için bkz. [Microsoft ekiplerde kaynağa özel izin](https://docs.microsoft.com/microsoftteams/resource-specific-consent) .
+Grup ve takım sahipleri, üçüncü taraf satıcılar tarafından yayımlanan uygulamalar gibi, kuruluşunuzun bir grupla ilişkili verilerinize erişebilmesi için uygulamalara yetki verebilir. Örneğin, Microsoft ekipteki bir takım sahibi, bir uygulamanın ekipteki tüm ekip iletilerini okumasına veya bir grubun üyelerinin temel profilini listeliğine izin verebilir. Daha fazla bilgi için bkz. [Microsoft ekiplerde kaynağa özel izin](/microsoftteams/resource-specific-consent) .
 
 ## <a name="manage-group-owner-consent-to-apps"></a>Grup sahibi onayını uygulamalarla yönetme
 
@@ -42,9 +42,9 @@ Bu örnekte, tüm Grup sahiplerinin grupların verilerine erişen uygulamalara i
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine erişen uygulamalara izin verme özelliğini etkinleştirmek veya devre dışı bırakmak için Azure AD PowerShell önizleme modülünü ( [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)) kullanabilirsiniz.
+Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine erişen uygulamalara izin verme özelliğini etkinleştirmek veya devre dışı bırakmak için Azure AD PowerShell önizleme modülünü ( [Azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)) kullanabilirsiniz.
 
-1. [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü kullandığınızdan emin olun. Hem [Azuread](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modülünü hem de [azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü yüklediyseniz bu adım önemlidir.
+1. [Azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modülünü kullandığınızdan emin olun. Hem [Azuread](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) modülünü hem de [azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modülünü yüklediyseniz bu adım önemlidir.
 
     ```powershell
     Remove-Module AzureAD
@@ -74,7 +74,7 @@ Grup sahiplerini, sahip oldukları gruplar için kuruluşunuzun verilerine eriş
 
 1. Ayar değerlerini anlayın. Bir uygulamanın grubun verilerine erişmesine izin veren kullanıcıları tanımlayan iki ayar değeri vardır:
 
-    | Ayar       | Tür         | Description  |
+    | Ayar       | Tür         | Açıklama  |
     | ------------- | ------------ | ------------ |
     | _Enablegroupspecificonayı_   | Boole | Grup sahiplerinin gruba özel izinler verip vermeyeceğini belirten bayrak. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | _Enablegroupspecificonay_ değeri "true" olarak ayarlanırsa ve bu değer bir grubun nesne kimliği olarak ayarlandıysa, tanımlı grubun üyelerinin sahip oldukları gruplara gruba özel izinler verme yetkisine sahip olur. |
@@ -121,7 +121,7 @@ Daha fazlasını öğrenin:
 * [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 * [Uygulama onayını yönetmeyi ve izin isteklerini değerlendirmeyi öğrenin](manage-consent-requests.md)
 * [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
-* [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
+* [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
 Yardım almak veya sorularınıza yanıt bulmak için:
 * [StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309369"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649152"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -792,7 +792,7 @@ Azure hizmeti: klasik dağıtım modeli sanal ağı
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](../bastion/index.yml)savunma, [azure DDoS koruması](../virtual-network/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Güvenlik duvarı](../firewall/index.yml), [Azure ön kapı hizmeti](../frontdoor/index.yml), [Azure özel bağlantısı](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Ağ İzleyicisi](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [sanal ağ](../virtual-network/index.yml), [sanal WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
+Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](../bastion/index.yml)savunma, [azure DDoS koruması](../ddos-protection/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Güvenlik duvarı](../firewall/index.yml), [Azure ön kapı hizmeti](../frontdoor/index.yml), [Azure özel bağlantısı](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Ağ İzleyicisi](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [sanal ağ](../virtual-network/index.yml), [sanal WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -3850,7 +3850,7 @@ Azure hizmeti: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure SQL yönetilen örneği](../azure-sql/managed-instance/index.yml), [Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)](../sql-data-warehouse/index.yml)
+Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure SQL yönetilen örneği](../azure-sql/managed-instance/index.yml), [Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)](../synapse-analytics/sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -4331,7 +4331,7 @@ Azure hizmeti: [Azure Analysis Services](../analysis-services/index.yml)
 
 ### <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
-Azure hizmeti: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
+Azure hizmeti: [Azure Databricks](/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -4619,7 +4619,7 @@ Azure hizmeti: [azure Veri Gezgini](/azure/data-explorer/)
 
 ### <a name="microsoftpowerbidedicated"></a>Microsoft. Powerbiadanmış
 
-Azure hizmeti: [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
+Azure hizmeti: [Power BI Embedded](/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -4712,7 +4712,7 @@ Azure hizmeti: [Azure blok zinciri hizmeti](../blockchain/workbench/index.yml)
 
 ### <a name="microsoftbotservice"></a>Microsoft. BotService
 
-Azure hizmeti: [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/)
+Azure hizmeti: [Azure bot hizmeti](/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -6187,7 +6187,7 @@ Azure hizmeti: [Logic Apps](../logic-apps/index.yml)
 
 ### <a name="microsoftrelay"></a>Microsoft. Relay
 
-Azure hizmeti: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
+Azure hizmeti: [Azure Relay](../azure-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -6257,7 +6257,7 @@ Azure hizmeti: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 ### <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-Azure hizmeti: [Service Bus](../service-bus/index.md)
+Azure hizmeti: [Service Bus](../service-bus-messaging/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -6957,7 +6957,7 @@ Azure hizmeti: [Azure Lab Services](../lab-services/index.yml)
 
 ### <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
-Azure hizmeti: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
+Azure hizmeti: [Azure DevOps](/azure/devops/)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -8924,7 +8924,7 @@ Azure hizmeti: [Azure Arc](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
-Azure hizmeti: [Azure Arc etkin Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+Azure hizmeti: [Azure Arc etkin Kubernetes](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -9677,7 +9677,7 @@ Azure hizmeti: Microsoft Monitoring Insights
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
-Azure hizmeti: [Bing Haritalar](https://docs.microsoft.com/BingMaps/)
+Azure hizmeti: [Bing Haritalar](/BingMaps/)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |

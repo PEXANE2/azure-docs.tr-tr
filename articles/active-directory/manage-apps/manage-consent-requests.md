@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4664bdd515c815dbd742c0d4e05f1e5c03978526
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420464"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649203"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Uygulamalara onayı yönetme ve izin isteklerini değerlendirme
 
-Microsoft, uygulamalara son kullanıcı onayını devre dışı [bırakmanızı öneriyor](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#restrict-user-consent-operations) . Bu, karar verme sürecini kuruluşunuzun güvenlik ve kimlik yöneticisi ekibi ile merkezileştirmek için kullanılır.
+Microsoft, uygulamalara son kullanıcı onayını devre dışı [bırakmanızı öneriyor](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations) . Bu, karar verme sürecini kuruluşunuzun güvenlik ve kimlik yöneticisi ekibi ile merkezileştirmek için kullanılır.
 
 Son Kullanıcı izni devre dışı bırakıldıktan veya kısıtlandıktan sonra, iş açısından kritik uygulamaların kullanılmasına hala izin verirken kuruluşunuzun güvende kalmasını sağlamaya yönelik birkaç önemli nokta vardır. Bu adımlar, kuruluşunuzun destek ekibi ve BT yöneticileri üzerindeki etkiyi en aza indirmek için önemlidir, ancak üçüncü taraf uygulamalarda yönetilmeyen hesapların kullanılmasını önler.
 
@@ -35,13 +35,13 @@ Son Kullanıcı izni devre dışı bırakıldıktan veya kısıtlandıktan sonra
 
 ## <a name="auditing-and-monitoring"></a>Denetim ve izleme
 
-1. Daha önce verilere erişim izni verilmemesini sağlamak için [uygulamaları denetleyin ve kuruluşunuzdaki izinleri](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) kabul edin.
+1. Daha önce verilere erişim izni verilmemesini sağlamak için [uygulamaları denetleyin ve kuruluşunuzdaki izinleri](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) kabul edin.
 
-2. Ek en iyi uygulamalar ve OAuth onayı isteyen şüpheli uygulamalara karşı koruma için, [Office 365 ' de Illicit onay Izin verdiği Izinleri algılayın ve düzeltin](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) .
+2. Ek en iyi uygulamalar ve OAuth onayı isteyen şüpheli uygulamalara karşı koruma için, [Office 365 ' de Illicit onay Izin verdiği Izinleri algılayın ve düzeltin](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) .
 
 3. Kuruluşunuzun uygun lisansı varsa:
 
-    * Microsoft Cloud App Security ek [OAuth uygulama denetimi özellikleri](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)kullanın.
+    * Microsoft Cloud App Security ek [OAuth uygulama denetimi özellikleri](/cloud-app-security/investigate-risky-oauth)kullanın.
     * [İzinleri ve onayı ilgili etkinlikleri izlemek Için Azure Izleyici çalışma kitaplarını](../reports-monitoring/howto-use-azure-monitor-workbooks.md) kullanın. *Onay öngörüleri* çalışma kitabı, başarısız izin istekleri sayısına göre uygulamaların bir görünümünü sağlar. Bu, yöneticilerin Yöneticiler için izin vermesini ve BT yöneticilerine yönetici izni verip vermeyeceğine karar vermesini sağlamak için yararlı olabilir.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Uçuşmayı azaltmaya yönelik ek konular
@@ -75,7 +75,7 @@ Aşağıdaki listede, yönetici onayı verme isteği değerlendirilirken göz ö
 
 * **İstenen izinleri anlayın.**
 
-   Uygulama tarafından istenen izinler [onay isteminde](../develop/application-consent-experience.md)listelenir. İzin başlığını genişleterek izin açıklaması görüntülenir. Uygulama izinlerinin açıklaması genellikle "oturum açmış kullanıcı olmadan" ile sona acaktır. Temsilci izinleri için açıklama genellikle "oturum açmış kullanıcı adına" ile sona acaktır. Microsoft Graph API izinleri [Microsoft Graph Izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference) ' nda açıklanmaktadır-sergiledikleri izinleri anlamak Için diğer API 'lerin belgelerine bakın.
+   Uygulama tarafından istenen izinler [onay isteminde](../develop/application-consent-experience.md)listelenir. İzin başlığını genişleterek izin açıklaması görüntülenir. Uygulama izinlerinin açıklaması genellikle "oturum açmış kullanıcı olmadan" ile sona acaktır. Temsilci izinleri için açıklama genellikle "oturum açmış kullanıcı adına" ile sona acaktır. Microsoft Graph API izinleri [Microsoft Graph Izinleri başvurusu](/graph/permissions-reference) ' nda açıklanmaktadır-sergiledikleri izinleri anlamak Için diğer API 'lerin belgelerine bakın.
 
    İstenmekte olan bir izni anladıysanız izin *vermeyin*.
 
@@ -97,15 +97,15 @@ Aşağıdaki listede, yönetici onayı verme isteği değerlendirilirken göz ö
 Bkz. Azure AD PowerShell kullanarak veya onay isteminin kendisinden Azure portal Kiracı genelinde yönetici onayı verme konusunda adım adım yönergeler için bkz. [bir uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md) .
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Belirli bir kullanıcı adına izin verme
-Yönetici, tüm kuruluş için izin vermek yerine, tek bir kullanıcı adına temsilci izinleri izni vermek için [MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api) 'sini de kullanabilir. Daha fazla bilgi için bkz. [Kullanıcı adına erişim edinme](https://docs.microsoft.com/graph/auth-v2-user).
+Yönetici, tüm kuruluş için izin vermek yerine, tek bir kullanıcı adına temsilci izinleri izni vermek için [MICROSOFT Graph API](/graph/use-the-api) 'sini de kullanabilir. Daha fazla bilgi için bkz. [Kullanıcı adına erişim edinme](/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Kullanıcıların uygulamalara erişimini sınırlandırma
-Kullanıcıların uygulamalara erişimi, kiracı genelinde yönetici izni verildiğinde bile hala sınırlı olabilir. Bir uygulamaya Kullanıcı Ataması gerektirme hakkında daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](methods-for-assigning-users-and-groups.md).
+Kullanıcıların uygulamalara erişimi, kiracı genelinde yönetici izni verildiğinde bile hala sınırlı olabilir. Bir uygulamaya Kullanıcı Ataması gerektirme hakkında daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](./assign-user-or-group-access-portal.md).
 
 Ek karmaşık senaryoların nasıl işleneceği hakkında daha geniş bir genel bakış için bkz. [uygulama erişim yönetimi Için Azure ad kullanma](what-is-access-management.md).
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>Tüm gelecek Kullanıcı onay işlemlerini herhangi bir uygulamaya devre dışı bırak
-Tüm dizininiz için Kullanıcı onayını devre dışı bırakmak, son kullanıcıların herhangi bir uygulamaya yarışmasını önler. Yöneticiler kullanıcı adına yine de izin verebilir. Uygulama onayı hakkında daha fazla bilgi edinmek ve izin vermek istememeyi öğrenmek için [Kullanıcı ve yönetici onayını anlama](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)konusunu okuyun.
+Tüm dizininiz için Kullanıcı onayını devre dışı bırakmak, son kullanıcıların herhangi bir uygulamaya yarışmasını önler. Yöneticiler kullanıcı adına yine de izin verebilir. Uygulama onayı hakkında daha fazla bilgi edinmek ve izin vermek istememeyi öğrenmek için [Kullanıcı ve yönetici onayını anlama](../develop/howto-convert-app-to-be-multi-tenant.md)konusunu okuyun.
 
 Tüm dizininizde tüm gelecek Kullanıcı onay işlemlerini devre dışı bırakmak için şu adımları izleyin:
 1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
@@ -116,7 +116,7 @@ Tüm dizininizde tüm gelecek Kullanıcı onay işlemlerini devre dışı bırak
 6.  **Kullanıcıların, uygulamaların verilerine erişmesine izin verebilmeleri** **için tüm** gelecek Kullanıcı onay işlemlerini devre dışı bırakın ve **Kaydet** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
 * [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 * [Son kullanıcıların uygulamalara onay verme şeklini yapılandırma](configure-user-consent.md)
-* [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
+* [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)

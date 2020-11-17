@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0339e9f7688555b4d99c2d3255461b5675f642ff
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88690281"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649560"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Uygulama proxy 'Si uygulaması kullanılırken "Bu kurumsal uygulamaya erişilemiyor" hatası
 
@@ -64,7 +64,7 @@ Kullanıcının Azure 'da uygulamaya atandığını onaylamanız durumunda, arka
 
 ## <a name="check-the-applications-internal-url"></a>Uygulamanın iç URL 'sini denetleyin
 
-İlk hızlı adım olarak, uygulamayı **Kurumsal uygulamalar**aracılığıyla açıp ardından **uygulama proxy 'si** menüsünü seçerek iç URL 'yi iki kez kontrol edin ve onarın. Uygulamaya erişmek için şirket içi ağınızdan kullanılan dahili URL 'nin olduğunu doğrulayın.
+İlk hızlı adım olarak, uygulamayı **Kurumsal uygulamalar** aracılığıyla açıp ardından **uygulama proxy 'si** menüsünü seçerek iç URL 'yi iki kez kontrol edin ve onarın. Uygulamaya erişmek için şirket içi ağınızdan kullanılan dahili URL 'nin olduğunu doğrulayın.
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Uygulamanın çalışan bir bağlayıcı grubuna atandığını denetleyin
 
@@ -87,7 +87,7 @@ Tüm gerekli bağlantı noktalarının açık olduğunu doğrulayın. Gerekli ba
 
 ## <a name="check-for-other-connector-errors"></a>Diğer bağlayıcı hatalarını denetle
 
-Yukarıdaki adımlardan hiçbiri sorunu çözmezse, bir sonraki adım bağlayıcının kendisiyle ilgili sorunları veya hataları aramaya yöneliktir. [Sorun giderme belgesinde](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)bazı yaygın hataları görebilirsiniz.
+Yukarıdaki adımlardan hiçbiri sorunu çözmezse, bir sonraki adım bağlayıcının kendisiyle ilgili sorunları veya hataları aramaya yöneliktir. [Sorun giderme belgesinde](./application-proxy-troubleshoot.md#connector-errors)bazı yaygın hataları görebilirsiniz.
 
 Ayrıca, hataları belirlemek için doğrudan bağlayıcı günlüklerine bakabilirsiniz. Hata iletilerinin birçoğu düzeltmeler için belirli öneriler paylaşır. Günlükleri görüntülemek için [Bağlayıcılar belgelerine](application-proxy-connectors.md#under-the-hood)bakın.
 

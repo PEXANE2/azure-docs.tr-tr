@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055129"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648234"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -243,7 +243,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |QuorumLossWaitDuration | Saniye cinsinden süre, varsayılan değer MaxValue |Statik|Zaman aralığı değerini saniye cinsinden belirtin. FaultAnalysisService için QuorumLossWaitDuration. |
 |ReplicaDropWaitDurationInSeconds|int, varsayılan değer 600 ' dir|Statik|Bu parametre, veri kaybı API 'si çağrıldığında kullanılır. Çoğaltmayı kaldırma işlemi dahili olarak yapıldıktan sonra sistemin bir çoğaltmanın ne kadar süreyle beklediğini denetler. |
 |ReplicaRestartWaitDuration |Saniye cinsinden süre, varsayılan değer 60 dakikadır|Statik|Zaman aralığı değerini saniye cinsinden belirtin. FaultAnalysisService için ReplicaRestartWaitDuration. |
-|StandByReplicaKeepDuration| Saniye cinsinden süre, varsayılan değer (60*24*7) dakikadır |Statik|Zaman aralığı değerini saniye cinsinden belirtin. FaultAnalysisService için StandByReplicaKeepDuration. |
+|StandByReplicaKeepDuration| Saniye cinsinden süre, varsayılan değer (60 *24* 7) dakikadır |Statik|Zaman aralığı değerini saniye cinsinden belirtin. FaultAnalysisService için StandByReplicaKeepDuration. |
 |Storekactioncleanupıntervalınseconds | Int, varsayılan değer 3600 ' dir |Statik|Bu, deponun ne sıklıkta temizlenecektir. Yalnızca bir Terminal durumundaki eylemler; en az CompletedActionKeepDurationInSeconds önce tamamlanan ve bu işlem kaldırılacak. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, varsayılan değer 3600 ' dir |Statik|Bu, deponun Temizleme işlemi için ne sıklıkta denetleneceğini; olay sayısı 30000 ' den büyükse; Temizleme açılır. |
 |TargetReplicaSetSize |Int, varsayılan değer 0 ' dır |Statik|FaultAnalysisService için TargetReplicaSetSize NOT_PLATFORM_UNIX_START. |
@@ -423,14 +423,14 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Azurestoraymagemaxconnections | Int, varsayılan değer 5000 ' dir |Dinamik|Azure depolama 'ya yönelik eşzamanlı bağlantı sayısı üst sınırı. |
 |Azurestomingemaxworkerthreads | Int, varsayılan değer 25 ' tir |Dinamik|Paralel olarak en fazla çalışan iş parçacığı sayısı. |
 |Azurestooygeoperationtimeout | Saniye cinsinden süre, varsayılan değer 6000 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. XSTORE işleminin tamamlanabilmesi için zaman aşımı. |
-|CleanupApplicationPackageOnProvisionSuccess|bool, varsayılan değer FALSE |Dinamik|Başarılı bir sağlama sırasında uygulama paketi otomatik temizlemeyi etkinleştirilir veya devre dışı bırakır.
-
-*En iyi yöntem kullanmaktır `true` .* | | CleanupUnusedApplicationTypes | Bool, varsayılan değer FALSE | Dinamik | Bu yapılandırma etkinleştirilirse, kullanılmamış olan en son üç sürümü atlayarak kullanılmayan uygulama türü sürümlerinin kaydını otomatik olarak kaldırmak için izin verir. Otomatik Temizleme, bu belirli uygulama türü için başarılı sağlama sonunda tetiklenir ve ayrıca tüm uygulama türleri için günde bir kez düzenli olarak çalışır. Atlanacak kullanılmayan sürüm sayısı "MaxUnusedAppTypeVersionsToKeep" parametresi kullanılarak yapılandırılabilir. 
-
-*En iyi yöntem kullanmaktır `true` .*
-| | DisableChecksumValidation | Bool, varsayılan değer false | Statik | Bu yapılandırma, uygulama sağlama sırasında sağlama toplamı doğrulamasını etkinleştirmemizi veya devre dışı bırakmanızı sağlar. | | DisableServerSideCopy | Bool, varsayılan değer false | Statik | Bu yapılandırma, uygulama sağlama sırasında Imate uygulama paketinin sunucu tarafı kopyasını etkinleştirilir veya devre dışı bırakır. | | Imagecachingenabled | Bool, varsayılan değer true | Statik | Bu yapılandırma, önbelleğe almayı etkinleştirmemizi veya devre dışı bırakmanızı sağlar. | | Imatoreconnectionstring | SecureString | Statik | Imabir için köke yönelik bağlantı dizesi. | | Imaitotoanımsat | Int, varsayılan değer 1024 | Dinamik | Küme ve ımafer arasındaki en düşük aktarım hızı. Bu değer, dış ımatikten erişirken zaman aşımını belirlemede kullanılır. Bu değeri yalnızca küme ve ımaver arasındaki gecikme süresi yüksekse, kümenin dış ımak'ten indirilmesi için daha fazla zaman tanımak istiyorsanız değiştirin. | | MaxUnusedAppTypeVersionsToKeep | Int, varsayılan 3 ' dir | Dinamik | Bu yapılandırma, temizleme için atlanacak kullanılmayan uygulama türü sürümlerinin sayısını tanımlar. Bu parametre yalnızca CleanupUnusedApplicationTypes parametresi etkinse geçerlidir.
-
-*En iyi genel uygulama varsayılan ( `3` ) kullanmaktır.*|
+|CleanupApplicationPackageOnProvisionSuccess|bool, varsayılan değer FALSE |Dinamik|Başarılı bir sağlama sırasında uygulama paketi otomatik temizlemeyi etkinleştirilir veya devre dışı bırakır.<br/> *En iyi yöntem kullanmaktır `true` .*
+|CleanupUnusedApplicationTypes|Bool, varsayılan değer FALSE |Dinamik|Bu yapılandırma etkinleştirilirse, kullanılmamış olan en son üç sürümü atlayarak kullanılmayan uygulama türü sürümlerinin kaydını otomatik olarak kaldırmak için izin verir. Otomatik Temizleme, bu belirli uygulama türü için başarılı sağlama sonunda tetiklenir ve ayrıca tüm uygulama türleri için günde bir kez düzenli olarak çalışır. Atlanacak kullanılmayan sürüm sayısı "MaxUnusedAppTypeVersionsToKeep" parametresi kullanılarak yapılandırılabilir. <br/> *En iyi yöntem kullanmaktır `true` .*
+|DisableChecksumValidation | Bool, varsayılan değer false |Statik| Bu yapılandırma, uygulama sağlama sırasında sağlama toplamı doğrulamasını etkinleştirmemizi veya devre dışı bırakmanızı sağlar. |
+|DisableServerSideCopy | Bool, varsayılan değer false |Statik|Bu yapılandırma, uygulama sağlama sırasında Imate uygulama paketinin sunucu tarafı kopyasını etkinleştirilir veya devre dışı bırakır. |
+|Imagecachingenabled | Bool, varsayılan değer doğru |Statik|Bu yapılandırma, önbelleğe almayı etkinleştirmemizi veya devre dışı bırakmanızı sağlar. |
+|Imagestoreconnectionstring |SecureString |Statik|Imabir için köke yönelik bağlantı dizesi. |
+|Imatoanımsat ımumtransferbps | Int, varsayılan değer 1024 ' dir |Dinamik|Küme ve ımafer arasındaki en düşük aktarım hızı. Bu değer, dış ımatikten erişirken zaman aşımını belirlemede kullanılır. Bu değeri yalnızca küme ve ımaver arasındaki gecikme süresi yüksekse, kümenin dış ımak'ten indirilmesi için daha fazla zaman tanımak istiyorsanız değiştirin. |
+|MaxUnusedAppTypeVersionsToKeep | Int, varsayılan 3 ' dir |Dinamik|Bu yapılandırma, temizleme için atlanacak kullanılmayan uygulama türü sürümlerinin sayısını tanımlar. Bu parametre yalnızca CleanupUnusedApplicationTypes parametresi etkinse geçerlidir. <br/>*En iyi genel uygulama varsayılan ( `3` ) kullanmaktır. 1 ' den küçük değerler geçerli değildir.*|
 
 
 ## <a name="metricactivitythresholds"></a>Metricactivityeşikleri
@@ -585,8 +585,8 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |GracefulReplicaShutdownMaxDuration|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (120)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Sistemin kapalı durumda kalmış çoğaltmaları olan hizmet konaklarını sonlandırmadan önce bekleyeceği süre. Bu değer 0 olarak ayarlanırsa çoğaltmalar kapanmaz.|
 |NodeDeactivationMaxReplicaCloseDuration | Saniye cinsinden süre, varsayılan değer 900 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Düğümün devre dışı bırakılması sırasında kapanmakta olan çoğaltmaları olan hizmet konaklarını sonlandırmadan önce sistemin bekleyeceği süre. |
 |Dönemsiz Apislowtraceınterval | Saniye cinsinden süre, varsayılan değer 5 dakikadır |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. Dönemapislowtraceınterval, API izleyicisinin yavaş API çağrılarının geri yükleneceği aralığı tanımlar. |
-|ReplicaChangeRoleFailureRestartThreshold|int, varsayılan değer 10 ' dur|Dinamik| Gir. Birincil yükseltme sırasında, otomatik risk azaltma eyleminden (çoğaltma yeniden başlatma) uygulanacak API hatalarının sayısını belirtin. |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, varsayılan değer 2147483647 ' dir|Dinamik| Gir. Birincil yükseltme sırasında, uyarı durumu raporunun oluşturulmadan önce API hatası sayısını belirtin.|
+|ReplicaChangeRoleFailureRestartThreshold|int, varsayılan değer 10 ' dur|Dinamik| Tamsayı. Birincil yükseltme sırasında, otomatik risk azaltma eyleminden (çoğaltma yeniden başlatma) uygulanacak API hatalarının sayısını belirtin. |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, varsayılan değer 2147483647 ' dir|Dinamik| Tamsayı. Birincil yükseltme sırasında, uyarı durumu raporunun oluşturulmadan önce API hatası sayısını belirtin.|
 |ServiceApiHealthDuration | Saniye cinsinden süre, varsayılan değer 30 dakikadır |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. ServiceApiHealthDuration, hizmet API 'sinin sağlıksız bir şekilde raporlamamız için ne kadar süre bekleyeceğini tanımlar. |
 |ServiceReconfigurationApiHealthDuration | Saniye cinsinden süre, varsayılan değer 30 ' dur |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. ServiceReconfigurationApiHealthDuration, sağlıksız bir şekilde raporlamamız için bir hizmet API 'sinin ne kadar süre bekletireceğinizi tanımlar. Bu, kullanılabilirliği etkileyen API çağrıları için geçerlidir.|
 
@@ -890,7 +890,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Placementkýsýtlamalarý | dize, varsayılan değer "" |Statik| UpgradeOrchestrationService için Placementkýsýtlamalarý. |
 |QuorumLossWaitDuration | Saniye cinsinden süre, varsayılan değer MaxValue |Statik| Zaman aralığı değerini saniye cinsinden belirtin. UpgradeOrchestrationService için QuorumLossWaitDuration. |
 |ReplicaRestartWaitDuration | Saniye cinsinden süre, varsayılan değer 60 dakikadır|Statik| Zaman aralığı değerini saniye cinsinden belirtin. UpgradeOrchestrationService için ReplicaRestartWaitDuration. |
-|StandByReplicaKeepDuration | Saniye cinsinden süre, varsayılan değer 60*24*7 dakikadır |Statik| Zaman aralığı değerini saniye cinsinden belirtin. UpgradeOrchestrationService için StandByReplicaKeepDuration. |
+|StandByReplicaKeepDuration | Saniye cinsinden süre, varsayılan değer 60 *24* 7 dakikadır |Statik| Zaman aralığı değerini saniye cinsinden belirtin. UpgradeOrchestrationService için StandByReplicaKeepDuration. |
 |TargetReplicaSetSize |Int, varsayılan değer 0 ' dır |Statik |UpgradeOrchestrationService için TargetReplicaSetSize. |
 |UpgradeApprovalRequired | Bool, varsayılan değer false | Statik|Kod yükseltmesini yapmak için ayarlama devam etmeden önce yönetici onayı gerektirir. |
 

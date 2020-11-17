@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8fc26b00214106aa08e0e6e4c41f9f05aca9344d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073980"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648047"
 ---
 # <a name="understand-linked-sign-on"></a>Bağlantılı oturum açmayı anlama
 
@@ -29,7 +29,7 @@ Bağlantı seçeneğinin değerli olduğu bazı yaygın senaryolar şunlardır:
 - Belirli SharePoint sayfalarına veya yalnızca kullanıcının erişim panellerinde görünmesini istediğiniz diğer Web sayfalarına derin bağlantılar ekleyin.
 - Kimlik doğrulaması gerektirmeyen bir uygulamaya bağlantı ekleyin. 
  
- **Bağlantılı** seçenek, Azure AD kimlik bilgileri aracılığıyla oturum açma işlevleri sağlamaz. Ancak, bazı **Kurumsal uygulama**özelliklerini kullanmaya devam edebilirsiniz. Örneğin, Denetim günlüklerini kullanabilir ve özel bir logo ve uygulama adı ekleyebilirsiniz.
+ **Bağlantılı** seçenek, Azure AD kimlik bilgileri aracılığıyla oturum açma işlevleri sağlamaz. Ancak, bazı **Kurumsal uygulama** özelliklerini kullanmaya devam edebilirsiniz. Örneğin, Denetim günlüklerini kullanabilir ve özel bir logo ve uygulama adı ekleyebilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -38,9 +38,9 @@ Bilgi almak için uygulama yönetiminde [hızlı başlangıç serisini](view-app
 **Bağlantılı** seçenek, Azure AD aracılığıyla oturum açma işlevleri sağlamaz. Bu seçenek yalnızca kullanıcıların [uygulamamda](https://myapps.microsoft.com/) Microsoft 365 veya uygulama başlatıcısında uygulamayı seçerken gönderileceği konumu ayarlar.  Oturum açma işlemi Azure AD aracılığıyla oturum açma işlevselliği sağlamadığından, bağlantılı çoklu oturum açma ile yapılandırılan uygulamalar için koşullu erişim kullanılamaz.
 
 > [!IMPORTANT] 
-> **Çoklu oturum açma** seçeneğinin **Kurumsal uygulamalarda**bir uygulama için gezinmede olmadığı bazı senaryolar vardır. 
+> **Çoklu oturum açma** seçeneğinin **Kurumsal uygulamalarda** bir uygulama için gezinmede olmadığı bazı senaryolar vardır. 
 >
-> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth 'ı kullanacak şekilde ayarlanır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar**altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
+> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth 'ı kullanacak şekilde ayarlanır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar** altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](../develop/reference-app-manifest.md). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform). 
 >
 > Bir uygulamanın başka bir kiracıda barındırıldığı veya hesabınızın gerekli izinleri (genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi) yoksa, **Çoklu oturum açma** 'nın gezinmede eksik olduğu diğer senaryolar. İzinler Ayrıca **Çoklu oturum** açmayı açabiliyor ancak kaydedemeyeceksiniz bir senaryoya neden olabilir. Azure AD Yönetim rolleri hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . (.
 
@@ -52,5 +52,5 @@ Bir uygulamayı yapılandırdıktan sonra, bu uygulamaya Kullanıcı ve grup ata
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uygulamaya Kullanıcı veya Grup atama](methods-for-assigning-users-and-groups.md)
+- [Uygulamaya Kullanıcı veya Grup atama](./assign-user-or-group-access-portal.md)
 - [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)

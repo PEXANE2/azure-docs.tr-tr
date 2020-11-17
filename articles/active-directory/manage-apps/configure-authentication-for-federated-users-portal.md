@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 873a87ed2c75d41e0a249bde4b6a29921b7e5ce5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763593"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648064"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma
 
@@ -207,7 +207,7 @@ Bunu oluşturduktan sonra HRD ilkesini uygulamak için, birden çok uygulama hiz
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2. Adım: ilkenin atanacağı hizmet sorumlusunu bulma  
 İlkeyi atamak istediğiniz hizmet sorumlularının **ObjectID** 'ye ihtiyacınız vardır. Hizmet sorumluları **ObjectID** 'yi bulmanın birkaç yolu vardır.    
 
-Portalı kullanabilir veya [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)sorgulayabilirsiniz. Ayrıca, tüm kuruluşunuzun hizmet sorumlularını görmek için [Graph Explorer aracına](https://developer.microsoft.com/graph/graph-explorer) gidebilir ve Azure AD hesabınızda oturum açabilirsiniz. 
+Portalı kullanabilir veya [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta)sorgulayabilirsiniz. Ayrıca, tüm kuruluşunuzun hizmet sorumlularını görmek için [Graph Explorer aracına](https://developer.microsoft.com/graph/graph-explorer) gidebilir ve Azure AD hesabınızda oturum açabilirsiniz. 
 
 PowerShell 'i kullandığınız için, hizmet sorumlularını ve kimliklerini listelemek üzere aşağıdaki cmdlet 'i kullanabilirsiniz.
 
@@ -267,6 +267,6 @@ Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -P
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure AD 'de kimlik doğrulamanın nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-scenarios.md).
+- Azure AD 'de kimlik doğrulamanın nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-vs-authorization.md).
 - Kullanıcı çoklu oturum açma hakkında daha fazla bilgi için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](what-is-single-sign-on.md).
 - Geliştiriciyle ilgili tüm içeriklere genel bakış için [Microsoft Identity platformu](../develop/v2-overview.md) ' nu ziyaret edin.

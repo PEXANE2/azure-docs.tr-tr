@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38d8261bf141248fd143f27c74e0761e54f73f9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371227"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649339"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile şirket içi API 'lere güvenli erişim
 
-Şirket içinde çalışan veya bulutta sanal makinelerde barındırılan iş mantığı API 'Leri olabilir. Yerel Android, iOS, Mac veya Windows uygulamalarınızın, verileri kullanmak veya Kullanıcı etkileşimi sağlamak için API uç noktalarıyla etkileşimde olması gerekir. Azure AD Uygulama Ara Sunucusu ve [Microsoft kimlik doğrulama kitaplığı (msal)](/azure/active-directory/develop/active-directory-authentication-libraries) , yerel uygulamalarınızın şirket içi API 'lerinize güvenli bir şekilde erişmesini sağlar. Azure Active Directory Uygulama Ara Sunucusu, güvenlik duvarı bağlantı noktalarını açan ve uygulama katmanında kimlik doğrulama ve yetkilendirmeyi denetleyen daha hızlı ve daha güvenli bir çözümdür.
+Şirket içinde çalışan veya bulutta sanal makinelerde barındırılan iş mantığı API 'Leri olabilir. Yerel Android, iOS, Mac veya Windows uygulamalarınızın, verileri kullanmak veya Kullanıcı etkileşimi sağlamak için API uç noktalarıyla etkileşimde olması gerekir. Azure AD Uygulama Ara Sunucusu ve [Microsoft kimlik doğrulama kitaplığı (msal)](../azuread-dev/active-directory-authentication-libraries.md) , yerel uygulamalarınızın şirket içi API 'lerinize güvenli bir şekilde erişmesini sağlar. Azure Active Directory Uygulama Ara Sunucusu, güvenlik duvarı bağlantı noktalarını açan ve uygulama katmanında kimlik doğrulama ve yetkilendirmeyi denetleyen daha hızlı ve daha güvenli bir çözümdür.
 
 Bu makalede, yerel uygulamaların erişebileceği bir Web API hizmetini barındırmak için bir Azure AD Uygulama Ara Sunucusu çözümü ayarlama işlemi adım adım açıklanmaktadır.
 
@@ -34,11 +34,11 @@ Aşağıdaki diyagramda, herhangi bir gelen bağlantı noktasını açmadan API 
 
 ![Azure AD Uygulama Ara Sunucusu API erişimi](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD Uygulama Ara Sunucusu, API erişimi için genel bir uç nokta olarak çalışarak ve kimlik doğrulama ve yetkilendirme sağlayarak çözümün omurgasını oluşturur. [Microsoft kimlik doğrulama kitaplığı (msal)](/azure/active-directory/develop/active-directory-authentication-libraries) kitaplıklarını kullanarak çok sayıda platformda API 'lerinize erişebilirsiniz.
+Azure AD Uygulama Ara Sunucusu, API erişimi için genel bir uç nokta olarak çalışarak ve kimlik doğrulama ve yetkilendirme sağlayarak çözümün omurgasını oluşturur. [Microsoft kimlik doğrulama kitaplığı (msal)](../azuread-dev/active-directory-authentication-libraries.md) kitaplıklarını kullanarak çok sayıda platformda API 'lerinize erişebilirsiniz.
 
-Azure AD Uygulama Ara Sunucusu kimlik doğrulaması ve yetkilendirme, Azure AD 'de oluşturulduğundan, yalnızca güvenilen cihazların uygulama proxy 'Si aracılığıyla yayınlanan API 'Lere erişebildiğinden emin olmak için Azure AD koşullu erişim 'i kullanabilirsiniz. Azure AD JOIN veya masaüstleri için Azure AD hibrit ve cihazlar için Intune ile yönetilen ' i kullanın. Ayrıca Azure Multi-Factor Authentication gibi Azure Active Directory Premium özelliklerden ve [Azure kimlik koruması](/azure/active-directory/active-directory-identityprotection)'nın makine öğrenimi ile desteklenen güvenliğinin avantajlarından yararlanabilirsiniz.
+Azure AD Uygulama Ara Sunucusu kimlik doğrulaması ve yetkilendirme, Azure AD 'de oluşturulduğundan, yalnızca güvenilen cihazların uygulama proxy 'Si aracılığıyla yayınlanan API 'Lere erişebildiğinden emin olmak için Azure AD koşullu erişim 'i kullanabilirsiniz. Azure AD JOIN veya masaüstleri için Azure AD hibrit ve cihazlar için Intune ile yönetilen ' i kullanın. Ayrıca Azure Multi-Factor Authentication gibi Azure Active Directory Premium özelliklerden ve [Azure kimlik koruması](../identity-protection/overview-identity-protection.md)'nın makine öğrenimi ile desteklenen güvenliğinin avantajlarından yararlanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yönergeyi izlemek için şunlar gerekir:
 
@@ -53,7 +53,7 @@ SecretAPI Web API 'sini uygulama proxy 'Si aracılığıyla yayımlamak için:
 
 1. Örnek SecretAPI projesini yerel bilgisayarınızda veya intranette bir ASP.NET Web uygulaması olarak derleyin ve yayımlayın. Web uygulamasına yerel olarak erişebildiğinizden emin olun.
 
-1. [Azure portalda](https://portal.azure.com) **Azure Active Directory**'yi seçin. Ardından **Kurumsal uygulamalar**' ı seçin.
+1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin. Ardından **Kurumsal uygulamalar**' ı seçin.
 
 1. **Kurumsal uygulamalar-tüm uygulamalar** sayfasının en üstünde **Yeni uygulama**' yı seçin.
 
@@ -63,11 +63,11 @@ SecretAPI Web API 'sini uygulama proxy 'Si aracılığıyla yayımlamak için:
 
 1. Uygulama proxy bağlayıcısını yükledikten sonra, **kendi şirket içi uygulamanızı ekleyin** sayfasında:
 
-   1. **Ad**' ın yanındaki *secretapi*yazın.
+   1. **Ad**' ın yanındaki *secretapi* yazın.
 
    1. **Iç URL**'nin yanına, INTRANETINIZDEKI API 'ye erişmek için kullandığınız URL 'yi girin.
 
-   1. **Ön kimlik doğrulamanın** **Azure Active Directory**olarak ayarlandığından emin olun.
+   1. **Ön kimlik doğrulamanın** **Azure Active Directory** olarak ayarlandığından emin olun.
 
    1. Sayfanın üst kısmında **Ekle** ' yi seçin ve uygulamanın oluşturulmasını bekleyin.
 
@@ -96,7 +96,7 @@ Web API 'nizi Azure AD Uygulama Ara Sunucusu ile yayımladınız. Şimdi, uygula
 1. **Atama Ekle** sayfasında, **ata**' yı seçin.
 
 > [!NOTE]
-> Tümleşik Windows kimlik doğrulaması kullanan API 'Ler için [ek adımlar](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)gerekebilir.
+> Tümleşik Windows kimlik doğrulaması kullanan API 'Ler için [ek adımlar](./application-proxy-configure-single-sign-on-with-kcd.md)gerekebilir.
 
 ## <a name="register-the-native-app-and-grant-access-to-the-api"></a>Yerel uygulamayı kaydetme ve API 'ye erişim izni verme
 
@@ -108,11 +108,11 @@ AppProxyNativeAppSample yerel uygulamasını kaydetmek için:
 
 1. **Uygulama kaydetme** sayfasında:
 
-   1. **Ad**alanına *Appproxynativeappsample*yazın.
+   1. **Ad** alanına *Appproxynativeappsample* yazın.
 
-   1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+   1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 
-   1. **Yeniden yönlendirme URL 'si**altında, açılır istemci ' ı **(mobil & Masaüstü)** seçin ve ardından girin *https://login.microsoftonline.com/common/oauth2/nativeclient* .
+   1. **Yeniden yönlendirme URL 'si** altında, açılır istemci ' ı **(mobil & Masaüstü)** seçin ve ardından girin *https://login.microsoftonline.com/common/oauth2/nativeclient* .
 
    1. **Kaydet**' i seçin ve uygulamanın başarıyla kaydedilmesini bekleyin.
 

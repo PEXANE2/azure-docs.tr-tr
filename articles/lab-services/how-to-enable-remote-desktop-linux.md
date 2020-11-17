@@ -3,12 +3,12 @@ title: Azure Lab Services 'de Linux için grafik uzak masaüstünü etkinleştir
 description: Azure Lab Services 'deki bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'nü etkinleştirmeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251618"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647962"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Azure Lab Services 'da Linux sanal makineleri için grafik uzak masaüstü 'nü etkinleştirme
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -19,7 +19,7 @@ Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 ## <a name="set-up-graphical-remote-desktop-solution"></a>Grafik uzak masaüstü çözümünü ayarlama
 Bir **Linux** görüntüsünden laboratuvar oluşturulduğunda, eğitmenin SSH kullanarak komut SATıRıNDAN şablon VM 'ye bağlanabilmesi için **SSH** (Secure Shell) erişimi otomatik olarak yapılandırılır.  Benzer şekilde, şablon VM yayımlandığında, öğrenciler SSH kullanarak VM 'lerine da bağlanabilir.
 
-Bir **GUI** (grafik kullanıcı arabirimi) kullanarak BIR Linux VM 'sine bağlanmak Için, **RDP** veya **X2Go**kullanmanızı öneririz.  Bu seçeneklerin her ikisi de, bir eğitmenin şablon VM üzerinde bazı ek kurulum yapması için gereklidir:
+Bir **GUI** (grafik kullanıcı arabirimi) kullanarak BIR Linux VM 'sine bağlanmak Için, **RDP** veya **X2Go** kullanmanızı öneririz.  Bu seçeneklerin her ikisi de, bir eğitmenin şablon VM üzerinde bazı ek kurulum yapması için gereklidir:
 
 ### <a name="rdp-setup"></a>RDP kurulumu
 RDP kullanmak için, eğitmenin şunları yapmanız gerekir:
@@ -38,13 +38,13 @@ X2Go, SSH için zaten etkinleştirilmiş olan bağlantı noktasını kullanır. 
 > Ubuntu LTS 18,04 gibi bazı durumlarda, X2Go daha iyi performans sağlar.  Grafik Masaüstü ortamıyla etkileşim kurarken RDP ve uyarı gecikme süresi kullanırsanız, performansı iyileştirebilecek olduğundan X2Go kullanmayı deneyin.
 
 > [!IMPORTANT]
->  Bazı Market görüntülerinin zaten bir grafik masaüstü ortamı ve uzak masaüstü sunucusu yüklü.  Örneğin, [Linux için veri bilimi sanal makinesi (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) zaten [Xfce ve X2Go sunucusu yüklenmiş ve istemci bağlantılarını kabul edecek şekilde yapılandırılmış](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go).
+>  Bazı Market görüntülerinin zaten bir grafik masaüstü ortamı ve uzak masaüstü sunucusu yüklü.  Örneğin, [Linux için veri bilimi sanal makinesi (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) zaten [Xfce ve X2Go sunucusu yüklenmiş ve istemci bağlantılarını kabul edecek şekilde yapılandırılmış](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go).
 
 ## <a name="enable-remote-desktop-connection-for-rdp"></a>RDP için Uzak Masaüstü bağlantısı 'nı etkinleştir
 
 Bu adım yalnızca RDP kullanarak bağlanmak için gereklidir.  Bunun yerine X2Go kullanmayı planlıyorsanız, X2Go SSH bağlantı noktasını kullandığından sonraki bölüme atlayabilirsiniz.
 
-1.  Laboratuvar oluşturma sırasında, eğitmenin **Uzak Masaüstü bağlantısı etkinleştirme**seçeneği vardır.  Eğitmen, Linux VM üzerinde bir RDP uzak masaüstü oturumu için gereken bağlantı noktasını açmak için bu seçeneği **etkinleştirmelidir** .  Aksi takdirde, bu seçenek **devre dışı**BıRAKıLıRSA yalnızca SSH bağlantı noktası açılır.
+1.  Laboratuvar oluşturma sırasında, eğitmenin **Uzak Masaüstü bağlantısı etkinleştirme** seçeneği vardır.  Eğitmen, Linux VM üzerinde bir RDP uzak masaüstü oturumu için gereken bağlantı noktasını açmak için bu seçeneği **etkinleştirmelidir** .  Aksi takdirde, bu seçenek **devre dışı** BıRAKıLıRSA yalnızca SSH bağlantı noktası açılır.
   
     !["Uzak Masaüstü Bağlantısı etkinleştir" seçeneği ile "yeni laboratuvar" penceresini gösteren ekran görüntüsü.](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
@@ -73,7 +73,7 @@ Bu ayarlandıktan sonra, eğitmen, **Microsoft Uzak Masaüstü (RDP)** Istemcisi
     ![SSH bağlantı dizesi](./media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
 4. Tercih ettiğiniz grafik masaüstü ortamı ile birlikte RDP veya X2Go 'i de yükleyebilir.  Aşağıdaki yönergelere bakın:
-    - [RDP 'yi yükleyip yapılandırma](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)
+    - [RDP 'yi yükleyip yapılandırma](../virtual-machines/linux/use-remote-desktop.md)
     - [X2Go 'yi yükleyip yapılandırın](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
 
 ## <a name="connect-to-the-template-vm-via-the-gui"></a>GUI aracılığıyla şablon VM 'sine bağlanma
@@ -82,7 +82,7 @@ Bu ayarlandıktan sonra, eğitmen, **Microsoft Uzak Masaüstü (RDP)** Istemcisi
 
 ### <a name="microsoft-remote-desktop-rdp-client"></a>Microsoft Uzak Masaüstü (RDP) istemcisi
 
-Microsoft Uzak Masaüstü (RDP) istemcisi, RDP yapılandırılmış bir şablon sanal makinesine bağlanmak için kullanılır.  Uzak Masaüstü istemcisi Windows, Bermebook, Mac ve daha fazlası üzerinde kullanılabilir.  Daha fazla ayrıntı için [Uzak Masaüstü istemcileri](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) makalesine başvurun.
+Microsoft Uzak Masaüstü (RDP) istemcisi, RDP yapılandırılmış bir şablon sanal makinesine bağlanmak için kullanılır.  Uzak Masaüstü istemcisi Windows, Bermebook, Mac ve daha fazlası üzerinde kullanılabilir.  Daha fazla ayrıntı için [Uzak Masaüstü istemcileri](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) makalesine başvurun.
 
 Şablon sanal makinesine bağlanmak için kullanılan bilgisayar türüne göre aşağıdaki adımları izleyin:
 
@@ -106,5 +106,5 @@ X2Go istemcisi, X2Go yapılandırılmış bir şablon sanal makinesine bağlanma
 ## <a name="next-steps"></a>Sonraki adımlar
 Bir eğitmen, şablon sanal makinelerinde ve yayınladığında RDP veya X2Go ayarladıktan sonra, sanal makinelere GUI uzak masaüstü veya SSH aracılığıyla bağlanabilir.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
  - [Linux VM'ye bağlanma](how-to-use-remote-desktop-linux-student.md)

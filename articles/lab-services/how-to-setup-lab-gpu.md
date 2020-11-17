@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404791"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647945"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU sanal makinelerle laboratuvar kurma
 
@@ -30,14 +30,14 @@ Aşağıdaki tabloda açıklandığı gibi, bilgi *işlem* GPU boyutu yoğun iş
 
 | Boyut | Çekirdekler | RAM | Açıklama | 
 | ---- | ----- | --- | ----------- | 
-| Küçük GPU (Işlem) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut, yapay zeka (AI) ve derin öğrenme gibi yoğun işlem gücü olan uygulamalar için idealdir. |
+| Küçük GPU (Işlem) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](../virtual-machines/nc-series.md) |Bu boyut, yapay zeka (AI) ve derin öğrenme gibi yoğun işlem gücü olan uygulamalar için idealdir. |
 
 *Görselleştirme* GPU boyutları grafik yoğun uygulamalar için tasarlanmıştır.  Örneğin, [Solidçalışmamühendisliği sınıf türü](./class-type-solidworks.md) **küçük GPU (görselleştirme)** boyutunu kullanmayı gösterir.  Öğrenciler, düz nesnelerin modellenmesi ve görselleştirilmesi için SOLIDÇALıŞıYOR 3D bilgisayar destekli tasarım (CAD) ortamıyla etkileşimde bulunduğundan, bu tür bir sınıf için görselleştirme GPU 'SU uygundur.
 
 | Boyut | Çekirdekler | RAM | Açıklama | 
 | ---- | ----- | --- | ----------- | 
-| Küçük GPU (görselleştirme) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
-| Orta ölçekli GPU (görselleştirme) | -&nbsp;12 &nbsp; çekirdek<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
+| Küçük GPU (görselleştirme) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
+| Orta ölçekli GPU (görselleştirme) | -&nbsp;12 &nbsp; çekirdek<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 
 > [!NOTE]
 > Bir sınıf Laboratuvarı oluştururken listede bu sanal makine boyutlarından bazılarını görmeyebilirsiniz. Liste, laboratuvarın konumunun geçerli kapasitesine göre doldurulur. Laboratuvar hesabı Oluşturucusu laboratuvar [oluşturucularının laboratuvar için bir konum seçmesine izin veriyorsa](allow-lab-creator-pick-lab-location.md), laboratuvar için farklı bir konum seçmeyi DENEYEBILIR ve VM boyutunun kullanılabilir olup olmadığını görebilirsiniz. VM 'lerin kullanılabilirliği için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services/?products=virtual-machines).
@@ -65,8 +65,8 @@ En son sürümden farklı bir sürücü sürümü yüklemeniz gerekebilir.  Bu b
    ![NVıDıA sürücü Indirmeleri sayfasının ekran görüntüsü](./media/how-to-setup-gpu/nvidia-driver-download.png) 
 
    a. Bir tarayıcıda, [NVIDIA sürücü indirmeleri sayfasına](https://www.nvidia.com/Download/index.aspx)gidin.  
-   b. **Ürün türünü** **Tesla**olarak ayarlayın.  
-   c. **Ürün serisini** **K serisi**olarak ayarlayın.  
+   b. **Ürün türünü** **Tesla** olarak ayarlayın.  
+   c. **Ürün serisini** **K serisi** olarak ayarlayın.  
    d. Laboratuvarınızı oluştururken seçtiğiniz temel görüntünün türüne göre **Işletim sistemini** ayarlayın.  
    e. **CUDA araç takımını** , ihtiyacınız olan CUDA sürücüsünün sürümüne ayarlayın.  
    f. Sürücülerinizi aramak için **Ara** ' yı seçin.  
@@ -76,7 +76,7 @@ En son sürümden farklı bir sürücü sürümü yüklemeniz gerekebilir.  Bu b
 1. Sınıfınız için gereken sürücüleri ve diğer yazılımları yükledikten sonra öğrencilerinizi sanal makinelerinizi oluşturmak için **Yayımla** ' yı seçin.
 
 > [!NOTE]
-> Linux görüntüsü kullanıyorsanız, yükleyiciyi indirdikten sonra [Linux üzerinde CUDA sürücülerini yükleme](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#install-cuda-drivers-on-n-series-vms)bölümündeki yönergeleri izleyerek sürücüleri yükleyebilirsiniz.
+> Linux görüntüsü kullanıyorsanız, yükleyiciyi indirdikten sonra [Linux üzerinde CUDA sürücülerini yükleme](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms)bölümündeki yönergeleri izleyerek sürücüleri yükleyebilirsiniz.
 
 #### <a name="install-the-visualization-gpu-drivers"></a>Görselleştirme GPU sürücülerini yükler
 
@@ -85,8 +85,8 @@ Görselleştirme GPU boyutu için sürücüleri el ile yüklemek için aşağıd
 1. Laboratuvar oluşturma sihirbazında, [laboratuvarınızı oluştururken](./how-to-manage-classroom-labs.md) **GPU sürücülerini yükler** ayarını devre dışı bırakın.
 1. Laboratuvarınız oluşturulduktan sonra, uygun sürücüleri yüklemek için şablon VM 'ye bağlanın.
 1. İşletim sisteminiz için yönergeleri izleyerek, Microsoft tarafından şablon VM üzerinde sunulan KıLAVUZ sürücülerini yükler:
-   -  [Windows NVıDıA KıLAVUZ sürücüleri](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)
-   -  [Linux NVıDıA KıLAVUZ sürücüleri](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#nvidia-grid-drivers)
+   -  [Windows NVıDıA KıLAVUZ sürücüleri](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
+   -  [Linux NVıDıA KıLAVUZ sürücüleri](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
   
 1. Şablon VM 'yi yeniden başlatın.
 1. [Yüklü sürücüleri doğrulama](how-to-setup-lab-gpu.md#validate-the-installed-drivers) bölümünde yer alan yönergeleri izleyerek sürücülerin doğru şekilde yüklendiğini doğrulayın.
@@ -96,13 +96,13 @@ Görselleştirme GPU boyutu için sürücüleri el ile yüklemek için aşağıd
 Bu bölümde, GPU sürücülerinizin düzgün şekilde yüklendiği nasıl doğrulanacağı açıklanmaktadır.
 
 #### <a name="windows-images"></a>Windows görüntüleri
-1.  [Windows çalıştıran N serisi VM 'LERE NVıDıA GPU sürücülerini yükleme](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)konusunun "Sürücü yüklemesini doğrulama" bölümünde yer alan yönergeleri izleyin.
+1.  [Windows çalıştıran N serisi VM 'LERE NVıDıA GPU sürücülerini yükleme](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation)konusunun "Sürücü yüklemesini doğrulama" bölümünde yer alan yönergeleri izleyin.
 1.  Bir *görselleştirme* GPU kullanıyorsanız, şunları da yapabilirsiniz:
     - NVıDıA denetim masasında GPU ayarlarınızı görüntüleyin ve ayarlayın. Bunu yapmak için, **Windows Denetim Masası**'nda **donanım**' ı seçin ve ardından **NVIDIA Denetim Masası**' nı seçin.
 
       ![NVıDıA denetim masası bağlantısını gösteren Windows Denetim Masası 'nın ekran görüntüsü](./media/how-to-setup-gpu/control-panel-nvidia-settings.png) 
 
-     - **Görev Yöneticisi 'ni**kullanarak GPU performansınızı görüntüleyin.  Bunu yapmak için, **performans** sekmesini seçin ve ardından **GPU** seçeneğini belirleyin.
+     - **Görev Yöneticisi 'ni** kullanarak GPU performansınızı görüntüleyin.  Bunu yapmak için, **performans** sekmesini seçin ve ardından **GPU** seçeneğini belirleyin.
 
        ![Görev Yöneticisi GPU performansı sekmesini gösteren ekran görüntüsü](./media/how-to-setup-gpu/task-manager-gpu.png) 
 
@@ -110,7 +110,7 @@ Bu bölümde, GPU sürücülerinizin düzgün şekilde yüklendiği nasıl doğr
       > NVıDıA Denetim Masası ayarlarına yalnızca *görselleştirme* GPU 'ları için erişilebilir.  Bir işlem GPU 'SU için NVıDıA denetim masasını açmaya çalışırsanız, şu hatayı alırsınız: "NVıDıA görüntüleme ayarları kullanılamıyor.  Şu anda bir NVıDıA GPU 'ya bağlı olan bir görüntü kullanmamaktadır. "  Benzer şekilde, Görev Yöneticisi 'ndeki GPU performans bilgileri yalnızca görselleştirme GPU 'ları için sağlanır.
 
 #### <a name="linux-images"></a>Linux görüntüleri
-[Linux çalıştıran N serisi VM 'LERE NVıDıA GPU sürücülerini yükleme](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation)konusunun "Sürücü yüklemesini doğrulama" bölümünde yer alan yönergeleri izleyin.
+[Linux çalıştıran N serisi VM 'LERE NVıDıA GPU sürücülerini yükleme](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation)konusunun "Sürücü yüklemesini doğrulama" bölümünde yer alan yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
@@ -118,6 +118,3 @@ Aşağıdaki makalelere bakın:
 - [Sınıf laboratuvarları oluşturma ve yönetme](how-to-manage-classroom-labs.md)
 - [SOLIDÇALıŞMALAR bilgisayar destekli tasarım (CAD) sınıfı türü](class-type-solidworks.md)
 - [MATLAB (matris Laboratuvarı) sınıf türü](class-type-matlab.md)
-
-
-

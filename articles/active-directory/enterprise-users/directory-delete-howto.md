@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377286"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647724"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory kiracı silme
 
@@ -38,7 +38,7 @@ Birkaç denetim geçirene kadar Azure AD 'de bir kuruluşu silemezsiniz. Bu dene
 
 1. Kuruluşunuzun genel yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 
-2. **Azure Active Directory**seçin.
+2. **Azure Active Directory** seçin.
 
 3. Silmek istediğiniz kuruluşa geçiş yapın.
   
@@ -56,7 +56,7 @@ Azure AD kuruluşunuzu yapılandırdığınızda, kuruluşunuz için Azure AD Pr
 
 Deneme Microsoft 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değil) bekleneceği için aşağıdaki tabloya bakın. Microsoft 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. My [Data ve Access for Business aboneliğMicrosoft 365 im sona erdiğinde ne olur?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
-Abonelik durumu | Veriler | Verilere erişim
+Abonelik durumu | Veriler | Veri erişimi
 ----- | ----- | -----
 Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Microsoft 365 dosyalara veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır 
 Zaman aşımına uğradı (30 gün) | Tüm veriler erişilebilir| Kullanıcıların Microsoft 365 dosyalara veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
@@ -81,7 +81,7 @@ Microsoft 365 Yönetim merkezini kullanarak, üç gün içinde silinmek üzere, 
 
    ![Abonelik önizlemede iptal komutu](./media/directory-delete-howto/cancel-command.png)
 
-5. Artık aboneliği silebilirsiniz. Silmek istediğiniz abonelik için **Sil** ' i seçin. **Ürünleri & Hizmetleri** sayfasında bulamazsanız, **abonelik durumunun** **Tümü**olarak ayarlanmış olduğundan emin olun.
+5. Artık aboneliği silebilirsiniz. Silmek istediğiniz abonelik için **Sil** ' i seçin. **Ürünleri & Hizmetleri** sayfasında bulamazsanız, **abonelik durumunun** **Tümü** olarak ayarlanmış olduğundan emin olun.
 
    ![Aboneliği silmek için bağlantıyı Sil](./media/directory-delete-howto/delete-command.png)
 
@@ -110,7 +110,7 @@ Mevcut olan Self Servis kaydolma ürünleri ve hizmetleri hakkında daha fazla b
 
 Deneme Microsoft 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değil) bekleneceği için aşağıdaki tabloya bakın. Microsoft 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. My [Data ve Access for Business aboneliğMicrosoft 365 im sona erdiğinde ne olur?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
-Ürün durumu | Veriler | Verilere erişim
+Ürün durumu | Veriler | Veri erişimi
 ------------- | ---- | --------------
 Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Self Servis kaydolma ürününe, dosyalarına veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
 Silindi | Silinen veriler | Kullanıcılar self servis kaydolma ürününe, dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir
@@ -133,7 +133,7 @@ Azure AD portalında hemen silinmek üzere Microsoft Power BI veya Azure Rights 
 
     !["Devam eden silme" bildiriminin gösterildiği "lisanslar-self servis kaydolma ürünleri" sayfasını gösteren ekran görüntüsü.](./media/directory-delete-howto/progress-message.png)
 
-5. Şimdi self servis kaydolma ürün durumu **silindi**olarak değiştirilmiştir. Sayfayı yenilediğinizde, ürün **self servis kaydolma ürünleri** sayfasından kaldırılmalıdır.  
+5. Şimdi self servis kaydolma ürün durumu **silindi** olarak değiştirilmiştir. Sayfayı yenilediğinizde, ürün **self servis kaydolma ürünleri** sayfasından kaldırılmalıdır.  
 
     ![Sağ taraftaki "self servis kaydolma ürünü silindi" bölmesine sahip "lisanslar-self servis kaydolma ürünleri" sayfasını gösteren ekran görüntüsü.](./media/directory-delete-howto/product-deleted.png)
 

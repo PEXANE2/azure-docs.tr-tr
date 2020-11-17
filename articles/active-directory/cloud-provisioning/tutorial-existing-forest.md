@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 803663f845272c6b1573fceed8025cc23483ec09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cef5c60b8b06a7bedbf65312c3210d5eb746880d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628749"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649808"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirme
 
@@ -45,32 +45,33 @@ Bu senaryoda, bir Azure AD kiracısına Azure AD Connect eşitleme kullanılarak
      | --- | --- |
      | **80** | TLS/SSL sertifikası doğrulanırken sertifika iptal listelerini (CRL 'Ler) indirir |
      | **443** | Hizmetle tüm giden iletişimi işler |
+     | **8082**| Yükleme için gereklidir.|
      | **8080** (isteğe bağlı) | Aracılar 443, 8080 numaralı bağlantı noktası kullanılamıyorsa, her 10 dakikada bir bu durumu bağlantı noktası üzerinden raporlar. Bu durum Azure AD portalında görüntülenir. |
      
      Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
-   - Güvenlik duvarınız veya ara sunucunuz güvenli sonekler belirtmenize izin veriyorsa, ** \* . msappproxy.net** ve ** \* . ServiceBus.Windows.net**öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
+   - Güvenlik duvarınız veya ara sunucunuz güvenli sonekler belirtmenize izin veriyorsa, **\* . msappproxy.net** ve **\* . ServiceBus.Windows.net** öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
    - Aracılarınızın ilk kayıt için **login.Windows.net** ve **login.microsoftonline.com** 'e erişmesi gerekir. Bu URL 'Ler için güvenlik duvarınızı da açın.
-   - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**ve **www \. Microsoft.com:80**. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanıldığından, bu URL 'Lerin engeli kaldırılmış olabilir.
+   - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80** ve **www \. Microsoft.com:80**. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanıldığından, bu URL 'Lerin engeli kaldırılmış olabilir.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect sağlama aracısını yükler
 1. Etki alanına katılmış sunucuda oturum açın.  [Temel ad ve Azure ortamı](tutorial-basic-ad-azure.md) ÖĞRETICISINI kullanıyorsanız DC1 olur.
 2. Yalnızca bulutta bulunan genel yönetici kimlik bilgilerini kullanarak Azure portal oturum açın.
 3. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
-![Azure portalda](media/how-to-install/install6.png)</br>
+![Azure portalda](media/how-to-install/install-6.png)</br>
 4. "Aracıyı Indir" e tıklayın
 5. Azure AD Connect sağlama aracısını çalıştırma
 6. Giriş ekranında, lisans koşullarını **kabul edin** ve **yükler**' e tıklayın.</br>
-!["Microsoft Azure AD Connect sağlama Aracısı paketi" Giriş ekranını gösteren ekran görüntüsü.](media/how-to-install/install1.png)</br>
+!["Microsoft Azure AD Connect sağlama Aracısı paketi" Giriş ekranını gösteren ekran görüntüsü.](media/how-to-install/install-1.png)</br>
 
 7. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır.  Azure AD Genel Yönetici hesabınızla oturum açın.  IE artırılmış güvenlik etkinse, bu, oturum açma 'nın engellenmesini unutmayın.  Bu durumda, yükleme işlemini kapatın, Sunucu Yöneticisi IE artırılmış güvenliği devre dışı bırakın ve **AAD Connect sağlama Aracısı sihirbazına** tıklayarak yüklemeyi yeniden başlatın.
-8. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve ardından Active Directory etki alanı Yönetici hesabınızla oturum açın.  Not: etki alanı yönetici hesabında parola değiştirme gereksinimleri olmamalıdır. Parolanın süresi dolarsa veya değişirse, aracıyı yeni kimlik bilgileriyle yeniden yapılandırmanız gerekecektir. Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.</br>
-!["Connect Active Directory" ekranını gösteren ekran görüntüsü.](media/how-to-install/install3.png)</br>
+8. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve ardından Active Directory etki alanı Yönetici hesabınızla oturum açın. Etki alanı yöneticisi hesabı parola değiştirme gereksinimlerine sahip olmamalıdır. Parolanın süresi dolarsa veya değişirse, aracıyı yeni kimlik bilgileriyle yeniden yapılandırmanız gerekecektir. Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.</br>
+!["Connect Active Directory" ekranını gösteren ekran görüntüsü.](media/how-to-install/install-3.png)</br>
 
 9. **Yapılandırma Tamam** ekranında **Onayla**' ya tıklayın.  Bu işlem aracıyı kaydedip yeniden başlatacak.</br>
-!["Yapılandırma Tamam" ekranını gösteren ekran görüntüsü.](media/how-to-install/install4.png)</br>
+!["Yapılandırma Tamam" ekranını gösteren ekran görüntüsü.](media/how-to-install/install-4a.png)</br>
 
 10. Bu işlem tamamlandıktan sonra, bir uyarı görmeniz gerekir: **Aracı yapılandırmanız başarıyla doğrulandı.**  **Çıkış**' a tıklayabilirsiniz.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install5.png)</br>
+![Hoş Geldiniz ekranı](media/how-to-install/install-5.png)</br>
 11. İlk giriş ekranını hala görüyorsanız **Kapat**' a tıklayın.
 
 
@@ -80,23 +81,23 @@ Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzer
 ### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
 Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları izleyin:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
-![Azure portalda](media/how-to-install/install6.png)</br>
+![Azure portalda](media/how-to-install/install-6.png)</br>
 
 3.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' e tıklayın.
-![Azure AD sağlama](media/how-to-install/install7.png)</br>
+![Azure AD sağlama](media/how-to-install/install-7.png)</br>
  
-4. **Şirket içi sağlama aracıları ekranında** , yüklediğiniz aracıları görürsünüz.  Söz konusu aracının orada olduğunu ve **etkin**olarak işaretlendiğinden emin olun.
-![Aracıları sağlama](media/how-to-install/verify1.png)</br>
+4. **Şirket içi sağlama aracıları ekranında** , yüklediğiniz aracıları görürsünüz.  Söz konusu aracının orada olduğunu ve **etkin** olarak işaretlendiğinden emin olun.
+![Aracıları sağlama](media/how-to-install/verify-1.png)</br>
 
 ### <a name="on-the-local-server"></a>Yerel sunucuda
 Aracının çalıştığını doğrulamak için şu adımları izleyin:
 
 1.  Yönetici hesabıyla sunucuda oturum açma
 2.  Hizmetlere giderek veya Start/Run/Services. msc ' ye giderek **Hizmetleri** açın.
-3.  **Hizmetler**' in altında **Microsoft Azure AD aracı güncelleştiricisi Connect** ve **Microsoft Azure AD Connect sağlama aracısının** mevcut olduğundan ve durumun **çalıştığından**emin olun.
-![Hizmetler](media/how-to-troubleshoot/troubleshoot1.png)
+3.  **Hizmetler**' in altında **Microsoft Azure AD aracı güncelleştiricisi Connect** ve **Microsoft Azure AD Connect sağlama aracısının** mevcut olduğundan ve durumun **çalıştığından** emin olun.
+![Hizmetler](media/how-to-install/troubleshoot-1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlamasını yapılandırma
  Sağlamayı yapılandırmak için aşağıdaki adımları kullanın
@@ -108,9 +109,9 @@ Aracının çalıştığını doğrulamak için şu adımları izleyin:
  ![ "Sağlamayı yönetme (Önizleme)" bağlantısını gösteren sağlamayı Yönet (Önizleme) ekran görüntüsünü seçin.](media/how-to-configure/manage1.png)
 5.  **New Configuration** 
  ![ "Yeni yapılandırma" bağlantısı vurgulanmış şekilde Azure AD sağlama (Önizleme) ekranının yeni yapılandırma ekran görüntüsü ' ne tıklayın.](media/tutorial-single-forest/configure1.png)
-7.  Yapılandırma ekranında bir **bildirim e-postası**girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
+7.  Yapılandırma ekranında bir **bildirim e-postası** girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
 ![Bildirim e-postasına sahip ekranı Yapılandır ekranının ekran görüntüsü doldurulmuş ve seçili şekilde etkin.](media/how-to-configure/configure2.png)
-1.  Yapılandırma durumu artık **sağlıklı**olmalıdır.
+1.  Yapılandırma durumu artık **sağlıklı** olmalıdır.
 ![Sağlıklı durumu gösteren Azure AD sağlama (Önizleme) ekranının ekran görüntüsü.](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Kullanıcıların oluşturulduğunu ve eşitlemenin gerçekleştiğini doğrula
@@ -121,13 +122,12 @@ Artık şirket içi dizinimizde bulunan kullanıcıların Azure AD kiracımızda
 2. Sol tarafta **Azure Active Directory** ' yi seçin.
 3. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 4. Kiracımızda yeni kullanıcıları gördiğinizi doğrulayın</br>
-![Tablosunun](media/tutorial-single-forest/synchronize1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testi
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) adresine gidin
 2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.</br>
-   ![Doğrulama](media/tutorial-single-forest/verify1.png)</br>
+   ![Doğru](media/tutorial-single-forest/verify-1.png)</br>
 
 Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanımak için kullanabileceğiniz bir karma kimlik ortamı oluşturdunuz.
 

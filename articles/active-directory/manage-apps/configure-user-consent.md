@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1617015d6d4a026d5dadda667dcd03447a20c288
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427628"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649509"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara onay verme şeklini yapılandırma
 
@@ -50,14 +50,14 @@ Azure portal aracılığıyla Kullanıcı izin ayarlarını yapılandırmak içi
 
 1. [Azure Portal](https://portal.azure.com) [genel yönetici](../roles/permissions-reference.md#global-administrator--company-administrator)olarak oturum açın.
 1. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **onay ve izinler**  >  **Kullanıcı izin ayarları**' nı seçin.
-1. **Uygulamalar Için kullanıcı onayı**altında, tüm kullanıcılar için yapılandırmak istediğiniz izin ayarını seçin.
+1. **Uygulamalar Için kullanıcı onayı** altında, tüm kullanıcılar için yapılandırmak istediğiniz izin ayarını seçin.
 1. Ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
 
 :::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Kullanıcı izin ayarları":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Uygulamalar için Kullanıcı onayını hangi uygulama onay ilkesinin yöneteceğini seçmek için, [Azureadpreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)' ı en son Azure AD PowerShell önizleme modülünü kullanabilirsiniz.
+Uygulamalar için Kullanıcı onayını hangi uygulama onay ilkesinin yöneteceğini seçmek için, [Azureadpreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview)' ı en son Azure AD PowerShell önizleme modülünü kullanabilirsiniz.
 
 #### <a name="disable-user-consent"></a>Kullanıcı onayını devre dışı bırak
 
@@ -81,7 +81,7 @@ Kullanıcı onaylamasına izin vermek için, uygulamalara izin vermek üzere kul
 
 `{consent-policy-id}`Uygulamak istediğiniz ILKENIN kimliğiyle değiştirin. Oluşturduğunuz [özel bir uygulama onay ilkesini](manage-app-consent-policies.md#create-a-custom-app-consent-policy) seçebilir veya aşağıdaki yerleşik ilkelerden seçebilirsiniz:
 
-| ID | Description |
+| ID | Açıklama |
 |:---|:------------|
 | Microsoft-Kullanıcı-varsayılan-düşük | **Seçili izinler için doğrulanan yayımcıların uygulamalara yönelik Kullanıcı onaylamasına izin ver**<br /> Yalnızca, kiracınızda kayıtlı Yayımcılar ve uygulamalar için sınırlı kullanıcı onayı ve yalnızca "düşük etki" olarak sınıflandırdığınız izinler için izin verin. (Kullanıcıların izin verdiği izinleri seçmek için [izinleri sınıflandırmaya](configure-permission-classifications.md) unutmayın.) |
 | Microsoft-Kullanıcı-varsayılan-eski | **Uygulamalar için Kullanıcı onaylamasına izin ver**<br /> Bu seçenek, tüm kullanıcıların herhangi bir uygulama için yönetici onayı gerektirmeyen tüm izinlere izin vermesini sağlar |
@@ -101,7 +101,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>Risk tabanlı adım adım onayı
 
-Risk tabanlı adım adım onayı, Kullanıcı tarafından [izin istekleri](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)yapan kötü amaçlı uygulamalara yönelik pozlandırmayı azaltmaya yardımcı olur. Microsoft riskli bir Son Kullanıcı onay isteği algılarsa, isteğin yerine yönetici onayı için "adım adım" gerekir. Bu özellik varsayılan olarak etkindir, ancak son kullanıcı onayı etkinleştirildiğinde yalnızca bir davranış değişikliğine neden olur.
+Risk tabanlı adım adım onayı, Kullanıcı tarafından [izin istekleri](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)yapan kötü amaçlı uygulamalara yönelik pozlandırmayı azaltmaya yardımcı olur. Microsoft riskli bir Son Kullanıcı onay isteği algılarsa, isteğin yerine yönetici onayı için "adım adım" gerekir. Bu özellik varsayılan olarak etkindir, ancak son kullanıcı onayı etkinleştirildiğinde yalnızca bir davranış değişikliğine neden olur.
 
 Riskli onay isteği algılandığında, onay istemi yönetici onayının gerekli olduğunu belirten bir ileti görüntüler. [Yönetici onayı isteği iş akışı](configure-admin-consent-workflow.md) etkinleştirilirse, Kullanıcı doğrudan onay isteminden daha fazla gözden geçirmek için isteği bir yöneticiye gönderebilir. Etkin değilse, aşağıdaki ileti görüntülenir:
 
@@ -114,9 +114,9 @@ Bu durumda, bir denetim olayı "ApplicationManagement" kategorisiyle, etkinlik t
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>PowerShell kullanarak risk tabanlı adım onayını devre dışı bırakma veya yeniden etkinleştirme
 
-Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışsa yeniden etkinleştirebileceği durumlarda yönetici onayını gerekli hale getirebilirsiniz. Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)' ı kullanarak devre dışı bırakabilirsiniz.
+Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışsa yeniden etkinleştirebileceği durumlarda yönetici onayını gerekli hale getirebilirsiniz. Azure AD PowerShell önizleme modülünü [Azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)' ı kullanarak devre dışı bırakabilirsiniz.
 
-1. [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü kullandığınızdan emin olun. Hem [Azuread](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modülünü hem de [azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü yüklediyseniz bu adım önemlidir.
+1. [Azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modülünü kullandığınızdan emin olun. Hem [Azuread](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) modülünü hem de [azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modülünü yüklediyseniz bu adım önemlidir.
 
     ```powershell
     Remove-Module AzureAD
@@ -145,7 +145,7 @@ Microsoft 'un riski algıladığı veya daha önce devre dışı bırakılmışs
 
 1. Ayarlar değerini anlayın:
 
-    | Ayar       | Tür         | Description  |
+    | Ayar       | Tür         | Açıklama  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Boole |  Riskli bir istek algılandığında Kullanıcı izninin engellenip engellenmediğini belirten bayrak. |
 
@@ -182,7 +182,7 @@ Daha fazlasını öğrenin:
 * [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 * [Uygulama onayını yönetmeyi ve izin isteklerini değerlendirmeyi öğrenin](manage-consent-requests.md)
 * [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
-* [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
+* [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
 Yardım almak veya sorularınıza yanıt bulmak için:
 * [StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

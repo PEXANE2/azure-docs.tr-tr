@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604415"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648285"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Rol ataması ekleme adımları
 
@@ -22,18 +22,18 @@ ms.locfileid: "91604415"
 
 ## <a name="step-1-determine-who-needs-access"></a>1. Adım: kimlerin erişime ihtiyacı olduğunu belirleme
 
-Önce kimin erişmesi gerektiğini belirlemeniz gerekir. Bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliğe bir rol atayabilirsiniz. Buna *güvenlik sorumlusu*da denir.
+Önce kimin erişmesi gerektiğini belirlemeniz gerekir. Bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliğe bir rol atayabilirsiniz. Buna *güvenlik sorumlusu* da denir.
 
 ![Rol ataması için güvenlik sorumlusu](./media/shared/rbac-security-principal.png)
 
-- Kullanıcı: Azure Active Directory'de bir profile sahip olan kişidir. Diğer kiracılardaki kullanıcılara da rol atayabilirsiniz. Diğer kuruluşlardaki kullanıcılar hakkında bilgi almak için bkz. [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
+- Kullanıcı: Azure Active Directory'de bir profile sahip olan kişidir. Diğer kiracılardaki kullanıcılara da rol atayabilirsiniz. Diğer kuruluşlardaki kullanıcılar hakkında bilgi almak için bkz. [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md).
 - Grup: Azure Active Directory'de oluşturulan kullanıcı kümesidir. Bir gruba rol atadığınızda ilgili gruptaki tüm kullanıcılar o role sahip olur. 
 - Hizmet sorumlusu: Uygulamalar veya hizmetler tarafından belirli Azure kaynaklarına erişmek için kullanılan güvenlik kimliğidir. Bunu bir uygulamanın *kullanıcı kimliği* (kullanıcı adı ve parola veya sertifika) olarak düşünebilirsiniz.
 - Yönetilen kimlik-Azure tarafından otomatik olarak yönetilen Azure Active Directory bir kimlik. Azure hizmetlerinde kimlik doğrulaması için kimlik bilgilerini yönetmek üzere bulut uygulamaları geliştirirken genellikle [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) kullanırsınız.
 
 ## <a name="step-2-find-the-appropriate-role"></a>2. Adım: uygun rolü bulun
 
-İzinler bir *rol tanımında*birlikte gruplandırılır. Genellikle bir *rol*olarak adlandırılır. Birkaç yerleşik rol listesinden seçim yapabilirsiniz. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa kendi özel rollerinizi oluşturabilirsiniz.
+İzinler bir *rol tanımında* birlikte gruplandırılır. Genellikle bir *rol* olarak adlandırılır. Birkaç yerleşik rol listesinden seçim yapabilirsiniz. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa kendi özel rollerinizi oluşturabilirsiniz.
 
 ![Rol ataması için rol tanımı](./media/shared/rbac-role-definition.png)
 

@@ -10,33 +10,33 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 5229b123986149903d562bc0b3d6902c0136f647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83b69ea7c2a4459d30c4ceb90f62ab6a1a10cc2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707892"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648183"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Kimlik yönetimi için Azure AD kiracınızı kullanarak uygulamaları görüntüleme
 [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md) size temel bilgileri gösterir. Bu durumda, kimlik yönetimi için Azure AD kiracınızı kullanarak tüm uygulamaları görüntülemeyi öğreneceksiniz. Bu makale, bulacağınız uygulama türlerinin biraz daha ayrıntılı bir şekilde bir bölümünü ele alır.
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Tüm uygulamalar listesinde neden belirli bir uygulama görünüyor?
-**Tüm uygulamalara**filtre uygulandığında **tüm uygulamalar** **listesi** kiracınızdaki tüm hizmet sorumlusu nesnelerini gösterir. Hizmet sorumlusu nesneleri, bu listede çeşitli yollarla görünebilir:
+**Tüm uygulamalara** filtre uygulandığında **tüm uygulamalar** **listesi** kiracınızdaki tüm hizmet sorumlusu nesnelerini gösterir. Hizmet sorumlusu nesneleri, bu listede çeşitli yollarla görünebilir:
 - Uygulama galerisinden herhangi bir uygulamayı eklediğinizde şunlar da dahildir:
    - **Azure AD-kurumsal uygulamalar** – Azure AD portalındaki **Kurumsal uygulamalar** seçeneği kullanılarak kiracınıza eklenen uygulamalar. Genellikle SAML standardı kullanılarak tümleştirilmiş uygulamalar.
    - **Azure AD-uygulama kayıtları** : Azure ad portalındaki **uygulama kayıtları** seçeneği kullanılarak kiracınıza eklenen uygulamalar. Genellikle açık KIMLIK Connect ve OAuth standartlarını kullanan özel geliştirmiş uygulamalar.
    - **Uygulama proxy 'Si uygulamaları** – dışarıdan güvenli çoklu oturum açma sağlamak istediğiniz şirket içi ortamınızda çalışan bir uygulamadır
 - İçin kaydolurken veya ' de oturum açarken, Azure Active Directory ile tümleştirilmiş üçüncü taraf bir uygulama. [Smartsheet](https://app.smartsheet.com/b/home) veya [Docusign](https://www.docusign.net/member/MemberLogin.aspx)bir örnektir.
 - Microsoft 365 gibi Microsoft uygulamaları.
-- [Uygulama kayıt defteri](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration) 'ni kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
-- [V 2.0 uygulama kayıt portalını](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration) kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
+- [Uygulama kayıt defteri](../develop/quickstart-register-app.md) 'ni kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
+- [V 2.0 uygulama kayıt portalını](../develop/quickstart-register-app.md) kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
 - Bir uygulama eklediğinizde, Visual Studio 'nun [ASP.NET kimlik doğrulama yöntemlerini](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) veya [bağlı hizmetleri](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) kullanarak geliştirdiğinizi
 - [Azure AD PowerShell modülünü](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) kullanarak bir hizmet sorumlusu nesnesi oluşturduğunuzda
-- [Bir uygulamayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) kiracınızdaki verileri kullanmak üzere yönetici olarak kabul ettiğinizde
-- Bir Kullanıcı kiracınızdaki verileri kullanmak üzere [bir uygulamaya onay verirse](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
+- [Bir uygulamayı](../develop/howto-convert-app-to-be-multi-tenant.md) kiracınızdaki verileri kullanmak üzere yönetici olarak kabul ettiğinizde
+- Bir Kullanıcı kiracınızdaki verileri kullanmak üzere [bir uygulamaya onay verirse](../develop/howto-convert-app-to-be-multi-tenant.md)
 - Kiracınızda veri depolayan belirli hizmetleri etkinleştirdiğinizde. Parola sıfırlama ilkenizi güvenli bir şekilde depolamak için bir hizmet sorumlusu olarak modellenen parola sıfırlama bir örnektir.
 
-Uygulamaların nasıl ve neden eklenediğine ilişkin daha fazla bilgi edinin, bkz. [uygulamalar Azure AD 'ye nasıl eklenir](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added).
+Uygulamaların nasıl ve neden eklenediğine ilişkin daha fazla bilgi edinin, bkz. [uygulamalar Azure AD 'ye nasıl eklenir](../develop/active-directory-how-applications-are-added.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Uygulamaları Azure Active Directory ile yönetme](what-is-application-management.md)

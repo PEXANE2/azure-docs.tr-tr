@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd6ddf58b3a6e8eb8c618ded335c699fc93328c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfa7530617830de99d752edcf4545300525ddbe8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362374"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649220"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Self Servis uygulama atamasını yapılandırma
 
-Kullanıcılarınızın uygulamalarımı kendi uygulamalarından kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasına ve erişim istemesine izin vermek istediğiniz uygulamalara **self servis uygulama erişimini** etkinleştirmeniz gerekir. Bu işlev, [Azure AD Galerisi](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)'nden eklenen, [Azure AD uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) veya [Kullanıcı ya da yönetici izni](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience)aracılığıyla eklenen uygulamalar için kullanılabilir. 
+Kullanıcılarınızın uygulamalarımı kendi uygulamalarından kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasına ve erişim istemesine izin vermek istediğiniz uygulamalara **self servis uygulama erişimini** etkinleştirmeniz gerekir. Bu işlev, [Azure AD Galerisi](./add-application-portal.md)'nden eklenen, [Azure AD uygulama ara sunucusu](./application-proxy.md) veya [Kullanıcı ya da yönetici izni](../develop/application-consent-experience.md)aracılığıyla eklenen uygulamalar için kullanılabilir. 
 
 Bu özellik, bir BT grubu olarak zaman ve para tasarrufu yapmanız için harika bir yoldur ve Azure Active Directory ile modern uygulamalar dağıtımının bir parçası olarak önemle önerilir.
 
@@ -53,7 +53,7 @@ Bir uygulamaya Self Servis uygulama erişimini etkinleştirmek için aşağıdak
 
 1. [Azure Portal](https://portal.azure.com) genel yönetici olarak oturum açın.
 
-2. **Azure Active Directory**seçin. Sol gezinti menüsünde **Kurumsal uygulamalar**' ı seçin.
+2. **Azure Active Directory** seçin. Sol gezinti menüsünde **Kurumsal uygulamalar**' ı seçin.
 
 3. Listeden uygulamayı seçin. Uygulamayı görmüyorsanız, arama kutusuna adını yazmaya başlayın. Ya da uygulama türünü, durumunu veya görünürlüğünü seçmek için filtre denetimlerini kullanın ve ardından **Uygula**' yı seçin.
 
@@ -70,12 +70,12 @@ Bir uygulamaya Self Servis uygulama erişimini etkinleştirmek için aşağıdak
 
 8. **Isteğe bağlı: yalnızca parola çoklu oturum açma kullanan uygulamalar için,** iş onaylayanlara onaylanan kullanıcılar için bu uygulamaya gönderilen parolaları belirtmesini sağlamak için, **onaylayanlara bu uygulama için Kullanıcı parolalarını ayarlama izni ver** ' i ayarlayın. **Evet**' e geçin.
 
-9. **Isteğe bağlı:** Bu uygulamaya erişimi onaylamaya izin verilen iş onaylayanlarını belirtmek için, **Bu uygulamaya erişimi onaylamaya izin verilen kişiler ' in**yanında, **onaylayanları Seç**' e tıklayın ve ardından 10 bireysel iş onaylayanlarını seçin. Ardından **Seç**'e tıklayın.
+9. **Isteğe bağlı:** Bu uygulamaya erişimi onaylamaya izin verilen iş onaylayanlarını belirtmek için, **Bu uygulamaya erişimi onaylamaya izin verilen kişiler ' in** yanında, **onaylayanları Seç**' e tıklayın ve ardından 10 bireysel iş onaylayanlarını seçin. Ardından **Seç**'e tıklayın.
 
     >[!NOTE]
     >Gruplar desteklenmiyor. En fazla 10 bireysel iş onaylayı seçebilirsiniz. Birden çok onaylayan belirtirseniz, tek bir onaylayan bir erişim isteğini onaylayabilir.
 
-10. **Isteğe bağlı:** **rolleri kullanıma sunan uygulamalar için**, bir role self servis onaylı kullanıcılar atama, **Bu uygulamada hangi rolün atanması gerekir? ' in**yanında, **Rol Seç**' e tıklayın ve ardından bu kullanıcıların atanması gereken rolü seçin. Ardından **Seç**'e tıklayın.
+10. **Isteğe bağlı:** **rolleri kullanıma sunan uygulamalar için**, bir role self servis onaylı kullanıcılar atama, **Bu uygulamada hangi rolün atanması gerekir? ' in** yanında, **Rol Seç**' e tıklayın ve ardından bu kullanıcıların atanması gereken rolü seçin. Ardından **Seç**'e tıklayın.
 
 11. Son olarak bölmenin en üstündeki **Kaydet** düğmesine tıklayın.
 

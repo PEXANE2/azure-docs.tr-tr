@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545353"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648251"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -64,21 +64,21 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 
 | Hizmet veya kaynak | Etkilendiğini | Gider | Etkilensin mi? | Yapabilecekleriniz |
 | --------- | --------- | --------- | --------- | --------- |
-| Rol atamaları | Evet | Evet | [Rol atamalarını listeleme](#save-all-role-assignments) | Tüm rol atamaları kalıcı olarak silinir. Kullanıcıları, grupları ve hizmet sorumlularını hedef dizindeki ilgili nesnelerle eşlemeniz gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
-| Özel roller | Evet | Evet | [Özel rolleri listeleme](#save-custom-roles) | Tüm özel roller kalıcı olarak silinir. Özel rolleri ve tüm rol atamalarını yeniden oluşturmanız gerekir. |
-| Sistem tarafından atanan Yönetilen kimlikler | Evet | Evet | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
-| Kullanıcı tarafından atanan Yönetilen kimlikler | Evet | Evet | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri silmeniz, yeniden oluşturmanız ve uygun kaynağa bağlamanız gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
-| Azure Key Vault | Evet | Evet | [Key Vault erişim ilkelerini listeleme](#list-key-vaults) | Anahtar kasaları ile ilişkili kiracı KIMLIĞINI güncelleştirmeniz gerekir. Yeni erişim ilkelerini kaldırmalı ve eklemeniz gerekir. |
-| Azure AD kimlik doğrulaması tümleştirmesinin etkinleştirildiği Azure SQL veritabanları | Evet | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
-| Azure depolama ve Azure Data Lake Storage 2. | Evet | Evet |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
-| Azure Data Lake Storage 1. Nesil | Evet | Evet |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
-| Azure Dosyaları | Evet | Evet |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
-| Azure Dosya Eşitleme | Evet | Evet |  |  |
-| Azure Yönetilen Diskleri | Evet | Evet |  |  Yönetilen diskleri müşteri tarafından yönetilen anahtarlarla şifrelemek için disk şifreleme kümeleri kullanıyorsanız, disk şifreleme kümeleriyle ilişkili sistem tarafından atanan kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Ve rol atamalarını yeniden oluşturmanız gerekir, yani anahtar kasalarındaki disk şifreleme kümelerine gerekli izinleri verin. |
-| Azure Kubernetes Service | Evet | Evet |  |  |
-| Azure İlkesi | Evet | Hayır | Özel tanımlar, Atamalar, muafiyetler ve uyumluluk verileri dahil olmak üzere tüm Azure Ilke nesneleri. | Tanımları [dışarı](../governance/policy/how-to/export-resources.md)ve içeri aktarmanız gerekir. Ardından, yeni ilke atamaları ve gerekli [ilke muafiyetleri](../governance/policy/concepts/exemption-structure.md)oluşturun. |
-| Azure Active Directory Domain Services | Evet | Hayır |  |  |
-| Uygulama kayıtları | Evet | Evet |  |  |
+| Rol atamaları | Yes | Yes | [Rol atamalarını listeleme](#save-all-role-assignments) | Tüm rol atamaları kalıcı olarak silinir. Kullanıcıları, grupları ve hizmet sorumlularını hedef dizindeki ilgili nesnelerle eşlemeniz gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
+| Özel roller | Yes | Yes | [Özel rolleri listeleme](#save-custom-roles) | Tüm özel roller kalıcı olarak silinir. Özel rolleri ve tüm rol atamalarını yeniden oluşturmanız gerekir. |
+| Sistem tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
+| Kullanıcı tarafından atanan Yönetilen kimlikler | Yes | Yes | [Yönetilen kimlikleri listeleme](#list-role-assignments-for-managed-identities) | Yönetilen kimlikleri silmeniz, yeniden oluşturmanız ve uygun kaynağa bağlamanız gerekir. Rol atamalarını yeniden oluşturmanız gerekir. |
+| Azure Key Vault | Yes | Yes | [Key Vault erişim ilkelerini listeleme](#list-key-vaults) | Anahtar kasaları ile ilişkili kiracı KIMLIĞINI güncelleştirmeniz gerekir. Yeni erişim ilkelerini kaldırmalı ve eklemeniz gerekir. |
+| Azure AD kimlik doğrulaması tümleştirmesinin etkinleştirildiği Azure SQL veritabanları | Yes | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure depolama ve Azure Data Lake Storage 2. | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
+| Azure Data Lake Storage 1. Nesil | Evet | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
+| Azure Dosyaları | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
+| Azure Dosya Eşitleme | Yes | Yes |  |  |
+| Azure Yönetilen Diskleri | Yes | Yes |  |  Yönetilen diskleri müşteri tarafından yönetilen anahtarlarla şifrelemek için disk şifreleme kümeleri kullanıyorsanız, disk şifreleme kümeleriyle ilişkili sistem tarafından atanan kimlikleri devre dışı bırakıp yeniden etkinleştirmeniz gerekir. Ve rol atamalarını yeniden oluşturmanız gerekir, yani anahtar kasalarındaki disk şifreleme kümelerine gerekli izinleri verin. |
+| Azure Kubernetes Service | Yes | Yes |  |  |
+| Azure İlkesi | Yes | Hayır | Özel tanımlar, Atamalar, muafiyetler ve uyumluluk verileri dahil olmak üzere tüm Azure Ilke nesneleri. | Tanımları [dışarı](../governance/policy/how-to/export-resources.md)ve içeri aktarmanız gerekir. Ardından, yeni ilke atamaları ve gerekli [ilke muafiyetleri](../governance/policy/concepts/exemption-structure.md)oluşturun. |
+| Azure Active Directory Domain Services | Yes | Hayır |  |  |
+| Uygulama kayıtları | Yes | Yes |  |  |
 
 > [!WARNING]
 > Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
@@ -87,7 +87,7 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
-- Azure Cloud Shell veya [Azure CLI](/cli/azure) ['da Bash](/azure/cloud-shell/overview)
+- Azure Cloud Shell veya [Azure CLI](/cli/azure) ['da Bash](../cloud-shell/overview.md)
 - Kaynak dizinde aktarmak istediğiniz aboneliğin Hesap Yöneticisi
 - Hedef dizinde [sahip](built-in-roles.md#owner) rolü
 

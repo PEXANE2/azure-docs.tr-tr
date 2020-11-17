@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776451"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647979"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Azure Lab Services paylaşılan kaynakla Laboratuvar oluşturma
 
@@ -38,12 +38,12 @@ Daha yaygın olarak kullanılan paylaşılan kaynaklardan biri lisans sunucusudu
 Lisans sunucusunun laboratuvar hesabıyla aynı bölgede bulunması gerekir, bu nedenle, lisans sunucusunun laboratuvar hesabıyla aynı bölgede olması gerekir.
 
 #### <a name="static-private-ip-and-mac-address"></a>Statik özel IP ve MAC adresi
-Varsayılan olarak, sanal makinelerin dinamik bir özel IP 'si vardır ve [herhangi bir yazılım ayarlamadan önce özel IP 'yi statik olarak ayarlayın](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal). Bu, özel IP ve MAC adresini statik olacak şekilde ayarlar.  
+Varsayılan olarak, sanal makinelerin dinamik bir özel IP 'si vardır ve [herhangi bir yazılım ayarlamadan önce özel IP 'yi statik olarak ayarlayın](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Bu, özel IP ve MAC adresini statik olacak şekilde ayarlar.  
 
 #### <a name="control-access"></a>Erişim Denetleme
 Lisans sunucusuna erişimin denetlenmesi anahtardır.  VM kurulumu yapıldıktan sonra bakım, sorun giderme ve güncelleştirme için erişim gerekecektir.  Bunu yapmak için birkaç farklı yol aşağıda verilmiştir.
-- [Azure Güvenlik Merkezi 'nde tam zamanında (JıT) erişimi ayarlama.](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
-- [Erişimi kısıtlamak için bir ağ güvenlik grubu ayarlama.](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [Azure Güvenlik Merkezi 'nde tam zamanında (JıT) erişimi ayarlama.](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Erişimi kısıtlamak için bir ağ güvenlik grubu ayarlama.](../virtual-network/network-security-groups-overview.md)
 - [Lisans sunucusuna güvenli erişim sağlamak için Kurulum programı.](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Laboratuvar hesabı

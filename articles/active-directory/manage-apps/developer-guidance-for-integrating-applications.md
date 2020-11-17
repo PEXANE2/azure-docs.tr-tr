@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1b56e3818d2d9701ecb0252328746dc39bb260
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578323"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649169"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory için iş kolu uygulamaları geliştirin
 Bu kılavuz, Azure Active Directory (AD) için iş kolu (LoB) uygulamaları geliştirmeye genel bir bakış sağlar. Hedef kitle Active Directory/Microsoft 365 genel yöneticilerdir.
 
 ## <a name="overview"></a>Genel Bakış
-Azure AD ile tümleştirilmiş uygulamalar oluşturmak, kuruluşunuzdaki kullanıcıların Microsoft 365 ile çoklu oturum açma olanağı sunar. Uygulamanın Azure AD 'de olması, uygulamanın kimlik doğrulama ilkesi üzerinde denetim sahibi olmanızı sağlar. Koşullu erişim ve çok faktörlü kimlik doğrulamasıyla (MFA) uygulamaları koruma hakkında daha fazla bilgi edinmek için bkz. [erişim kurallarını yapılandırma](../conditional-access/app-based-mfa.md).
+Azure AD ile tümleştirilmiş uygulamalar oluşturmak, kuruluşunuzdaki kullanıcıların Microsoft 365 ile çoklu oturum açma olanağı sunar. Uygulamanın Azure AD 'de olması, uygulamanın kimlik doğrulama ilkesi üzerinde denetim sahibi olmanızı sağlar. Koşullu erişim ve çok faktörlü kimlik doğrulamasıyla (MFA) uygulamaları koruma hakkında daha fazla bilgi edinmek için bkz. [erişim kurallarını yapılandırma](../authentication/tutorial-enable-azure-mfa.md).
 
 Azure Active Directory kullanmak için uygulamanızı kaydedin. Uygulamanın kaydedilmesi, geliştiricilerinizin kullanıcıların kimliğini doğrulamak ve e-posta, takvim ve belgeler gibi Kullanıcı kaynaklarına erişim istemek için Azure AD 'yi kullanabileceği anlamına gelir.
 
-Dizininizdeki herhangi bir üye (konuknot), *uygulama nesnesi oluşturma* olarak da bilinen bir uygulamayı kaydedebilir. Bir uygulamayı kaydedemeyeceğiniz takdirde, dizininizin genel Yöneticisi bu işlevselliği kısıtlamıştır ve [uygun hakların elde](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#assign-built-in-application-admin-roles) edilmesi için uygulamaya başvurmanız gerekebilir. Kullanıcının [Azure Active Directory içindeki uygulama kayıt izinlerini](https://docs.microsoft.com/azure/active-directory/roles/delegate-app-roles#restrict-who-can-create-applications)kullanma hakkında daha fazla bilgi için bkz..
+Dizininizdeki herhangi bir üye (konuknot), *uygulama nesnesi oluşturma* olarak da bilinen bir uygulamayı kaydedebilir. Bir uygulamayı kaydedemeyeceğiniz takdirde, dizininizin genel Yöneticisi bu işlevselliği kısıtlamıştır ve [uygun hakların elde](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) edilmesi için uygulamaya başvurmanız gerekebilir. Kullanıcının [Azure Active Directory içindeki uygulama kayıt izinlerini](../roles/delegate-app-roles.md#restrict-who-can-create-applications)kullanma hakkında daha fazla bilgi için bkz..
 
 Bir uygulamayı kaydetmek, herhangi bir kullanıcının şunları yapmasına izin verir:
 
@@ -55,14 +55,14 @@ Geliştiricilerin uygulamayı üretime hazır hale getirmenize yardımcı olmak 
 * Varsayılan Kullanıcı onay deneyimini gösterme
 
 ## <a name="configure-access-rules"></a>Erişim kurallarını yapılandırma
-SaaS uygulamalarınıza uygulama başına erişim kuralları yapılandırın. Örneğin, MFA gerektirebilir veya yalnızca güvenilen ağlardaki kullanıcılara erişime izin verebilirsiniz. Bu belgenin ayrıntıları, [erişim kurallarını yapılandırma](../conditional-access/app-based-mfa.md)belgesinde mevcuttur.
+SaaS uygulamalarınıza uygulama başına erişim kuralları yapılandırın. Örneğin, MFA gerektirebilir veya yalnızca güvenilen ağlardaki kullanıcılara erişime izin verebilirsiniz. Bu belgenin ayrıntıları, [erişim kurallarını yapılandırma](../authentication/tutorial-enable-azure-mfa.md)belgesinde mevcuttur.
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Uygulamayı kullanıcı ataması ve kullanıcı atama gerektirecek şekilde yapılandırma
 Varsayılan olarak, kullanıcılar atanana gerek kalmadan uygulamalara erişebilir. Ancak, uygulama rolleri açığa alıyorsa veya uygulamanın bir kullanıcının uygulamamda görünmesini istiyorsanız, Kullanıcı ataması yapmanız gerekir.
 
 Azure AD Premium veya Enterprise Mobility Suite (EMS) abonesiyseniz, grupların kullanılması önemle önerilir. Uygulamaya grupları atamak, devam eden erişim yönetimini grubun sahibine atamanıza olanak tanır. Grup Yönetimi özelliğinizi kullanarak grubu oluşturabilir veya kuruluşunuzdaki sorumlu tarafın grubu oluşturmasını isteyebilirsiniz.
 
-[Bir uygulamaya Kullanıcı ve Grup atama](methods-for-assigning-users-and-groups.md)  
+[Bir uygulamaya Kullanıcı ve Grup atama](./assign-user-or-group-access-portal.md)  
 
 
 ## <a name="suppress-user-consent"></a>Kullanıcı onayını gösterme
@@ -70,9 +70,8 @@ Varsayılan olarak, her kullanıcı oturum açmak için bir onay deneyiminden ge
 
 Güvendiğiniz uygulamalar için, kuruluşunuz adına uygulamaya yarışarak Kullanıcı deneyimini basitleştirebilirsiniz.
 
-Azure 'daki Kullanıcı onayı ve onay deneyimi hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+Azure 'daki Kullanıcı onayı ve onay deneyimi hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-register-app.md).
 
 ## <a name="related-articles"></a>İlgili Makaleler
 * [Azure AD Uygulama Ara Sunucusu ile şirket içi uygulamalara güvenli uzaktan erişimi etkinleştirme](application-proxy.md)
 * [Azure AD ile uygulamalara erişimi yönetme](what-is-access-management.md)
-

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: ad92862c78260e7385168faf794c013e85f66b82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8135e11fb7b7ddb588ab3a8ed01227712072fd2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445738"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647928"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Azure Lab Services bir şablon sanal makinesinde el ile iç içe sanallaştırmayı etkinleştirin
 
@@ -70,7 +70,7 @@ Oluşturulan Hyper-V istemci sanal makinelerinin, NAT ağında bir IP adresi olm
 2. **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
 3. **Yükleme türünü seçin** sayfasında, **rol tabanlı veya özellik tabanlı yükleme** ' yi seçin ve ardından **İleri**' ye tıklayın.
 4. **Hedef sunucuyu seçin** sayfasında, Sunucu havuzundan geçerli sunucuyu seçin ve ardından **İleri**' ye tıklayın.
-5. **Sunucu rollerini Seç** sayfasında, **Uzaktan erişim**' i seçin. **Tamam**'a tıklayın.
+5. **Sunucu rollerini Seç** sayfasında, **Uzaktan erişim**' i seçin. **Tamam** düğmesine tıklayın.
 6. **Özellikleri Seç** sayfasında **İleri**' ye tıklayın.
 7. **Uzaktan erişim** sayfasında, **İleri**' ye tıklayın.
 8. **Rol hizmetleri** sayfasında, **yönlendirme**' yi seçin.
@@ -90,16 +90,16 @@ Tüm gerekli rollerin yüklenmiş olduğuna göre, artık NAT ağını oluşturm
 
 1. Windows Yönetim Araçları 'ndan **Hyper-V Yöneticisi 'ni** açın.
 2. Sol taraftaki gezinti menüsünde geçerli sunucuyu seçin.
-3. **Sanal anahtar Yöneticisi ' ne tıklayın...** **Hyper-V yöneticisinin**sağ tarafındaki **Eylemler** menüsünde.
+3. **Sanal anahtar Yöneticisi ' ne tıklayın...** **Hyper-V yöneticisinin** sağ tarafındaki **Eylemler** menüsünde.
 4. **Sanal anahtar Yöneticisi** açılır penceresinde, oluşturulacak anahtar türü için **dahili** ' ı seçin.  **Sanal anahtar oluştur**' a tıklayın.
-5. Yeni oluşturulan sanal anahtar için, adı daha kolay bir şekilde ayarlayın.  Bu örnekte, ' LabServicesSwitch ' kullanacağız.  **Tamam**'a tıklayın.
+5. Yeni oluşturulan sanal anahtar için, adı daha kolay bir şekilde ayarlayın.  Bu örnekte, ' LabServicesSwitch ' kullanacağız.  **Tamam** düğmesine tıklayın.
 6. Yeni bir ağ bağdaştırıcısı oluşturulacak.  Ad ' vEthernet (LabServicesSwitch) ' ile benzerdir.  **Denetim Masası**'nı açın, **Ağ ve Internet**' e tıklayın, **ağ durumunu ve görevlerini görüntüle**' ye tıklayın.  Sol tarafta **Bağdaştırıcı ayarlarını değiştir**' e tıklayın.
 
 ### <a name="create-a-nat-network"></a>NAT ağı oluşturma
 
 1. Windows Yönetim Araçları 'ndan **Yönlendirme ve uzaktan erişim** aracını açın.
 2. Sol Gezinti sayfasında yerel sunucuyu seçin.
-3. **İşlem**  ->  **yapılandırma ve Yönlendirme ve uzaktan erişim 'i etkinleştir ' i**seçin.
+3. **İşlem**  ->  **yapılandırma ve Yönlendirme ve uzaktan erişim 'i etkinleştir ' i** seçin.
 4. **Yönlendirme ve uzaktan erişim sunucusu Kurulum Sihirbazı** göründüğünde, **İleri**' ye tıklayın.
 5. **Yapılandırma** sayfasında **ağ adresı çevirisi (NAT)** yapılandırması ' nı seçin.  **İleri**’ye tıklayın.
 
@@ -156,7 +156,7 @@ Aşağıdaki adımlar DHCP kapsamı ekleme yönergesidir.  Bu makalede, NAT ağ�
 
 ## <a name="conclusion"></a>Sonuç
 
-Şablon makineniz artık Hyper-V sanal makineleri oluşturmak için hazırdır.   Hyper-V sanal makinelerinin nasıl oluşturulacağı hakkında yönergeler için bkz. [Hyper-v ' d e sanal makine oluşturma](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) .  Ayrıca, kullanılabilir işletim sistemlerini ve yazılımlarını kullanıma almak için [Microsoft değerlendirme merkezi](https://www.microsoft.com/evalcenter/) ' ne bakın.
+Şablon makineniz artık Hyper-V sanal makineleri oluşturmak için hazırdır.   Hyper-V sanal makinelerinin nasıl oluşturulacağı hakkında yönergeler için bkz. [Hyper-v ' d e sanal makine oluşturma](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) .  Ayrıca, kullanılabilir işletim sistemlerini ve yazılımlarını kullanıma almak için [Microsoft değerlendirme merkezi](https://www.microsoft.com/evalcenter/) ' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

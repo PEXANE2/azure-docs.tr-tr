@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605133"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649237"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalar için son kullanıcı deneyimleri
 
@@ -37,13 +37,13 @@ Varsayılan olarak, tüm uygulamalar tek bir sayfada birlikte listelenir. Ancak,
 
 Uygulamalarım Azure portal ayrıdır ve kullanıcıların bir Azure aboneliğine veya Microsoft 365 aboneliğine sahip olmasını gerektirmez.
 
-Azure AD My Apps hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/active-directory-saas-access-panel-introduction.md).
+Azure AD My Apps hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="microsoft-365-application-launcher"></a>Uygulama başlatıcısı Microsoft 365
 
 Microsoft 365 dağıtılan kuruluşlar için, Azure AD aracılığıyla kullanıcılara atanan uygulamalar, konumundaki Office 365 portalında da görünür [https://portal.office.com/myapps](https://portal.office.com/myapps) . Bu, bir kuruluştaki kullanıcıların ikinci bir portal kullanmak zorunda kalmadan uygulamalarını başlatmasını kolaylaştırır ve Microsoft 365 kullanan kuruluşlar için önerilen uygulama başlatma çözümüdür.
 
-Office 365 uygulama Başlatıcısı hakkında daha fazla bilgi için bkz. [uygulamanızın Office 365 uygulama başlatıcısı 'nda görünmesini sağlamak](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
+Office 365 uygulama Başlatıcısı hakkında daha fazla bilgi için bkz. [uygulamanızın Office 365 uygulama başlatıcısı 'nda görünmesini sağlamak](/previous-versions/office/office-365-api/).
 
 ## <a name="direct-sign-on-to-federated-apps"></a>Birleştirilmiş uygulamalarda doğrudan oturum açma
 
@@ -53,7 +53,7 @@ SAML 2,0, WS-Federation veya OpenID Connect 'i destekleyen çoğu Federasyon uyg
 
 Azure AD Ayrıca, parola tabanlı çoklu oturum açma, bağlantılı çoklu oturum açma ve herhangi bir Federasyon çoklu oturum açma biçimini destekleyen tek tek uygulamalara doğrudan çoklu oturum açma bağlantılarını destekler.
 
-Bu bağlantılar, kullanıcının Azure AD My Apps veya Microsoft 365 tarafından başlatılmasını gerektirmeden belirli bir uygulama için Azure AD oturum açma işlemi aracılığıyla bir Kullanıcı gönderen özel olarak hazırlanmış URL 'lardır. Bu **Kullanıcı erişimi URL 'leri** , kullanılabilir kurumsal uygulamaların özellikleri altında bulunabilir. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
+Bu bağlantılar, kullanıcının Azure AD My Apps veya Microsoft 365 tarafından başlatılmasını gerektirmeden belirli bir uygulama için Azure AD oturum açma işlemi aracılığıyla bir Kullanıcı gönderen özel olarak hazırlanmış URL 'lardır. Bu **Kullanıcı erişimi URL 'leri** , kullanılabilir kurumsal uygulamaların özellikleri altında bulunabilir. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar** Azure Active Directory ' i seçin. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
 
 ![Twitter özelliklerindeki Kullanıcı erişimi URL 'SI örneği](media/end-user-experiences/direct-sign-on-link.png)
 

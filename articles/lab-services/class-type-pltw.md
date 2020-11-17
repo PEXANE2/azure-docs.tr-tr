@@ -3,12 +3,12 @@ title: Proje lideri, Azure Lab Services ile laboratuvarları ayarlama
 description: Proje lideri sınıfları öğretmek için laboratuvarları ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: 8585d09759319eef04da5ed68fec603cfa390093
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e3783ae4fa07bf783841022903c4bcf3ab6fbe23
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497274"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648013"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Proje için laboratuvarları ayarlama sınıfları
 
@@ -53,12 +53,12 @@ ms.locfileid: "94497274"
 Her sınıf için [yazılımın tam listesi](https://www.pltw.org/pltw-software) için pltw 'ın sitesine bakın.
 
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
-PLTW için Labs 'i kurmak üzere başlamak için bir Azure aboneliğiniz ve laboratuvar hesabınızın olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni bir laboratuar hesabı oluşturma hakkında daha fazla bilgi için [Laboratuvar hesabı ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)hakkında öğreticiye bakın. Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
+PLTW için Labs 'i kurmak üzere başlamak için bir Azure aboneliğiniz ve laboratuvar hesabınızın olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni bir laboratuar hesabı oluşturma hakkında daha fazla bilgi için [Laboratuvar hesabı ayarlama](./tutorial-setup-lab-account.md)hakkında öğreticiye bakın. Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
 
 Bir laboratuar hesabınız olduğunda, okulunuzun sunduğu bir PLTW sınıfının her oturumunda ayrı Labs oluşturmalısınız.  Ayrıca, her PLTW sınıfı türü için ayrı görüntüler oluşturmanızı öneririz.  Laboratuvarlarınızı ve görüntülerinizi nasıl yapılandıracağınıza ilişkin daha fazla ayrıntı için blog gönderisini okuyun: [fiziksel laboratuvardan Azure Lab Services taşıma](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931).
 
 ### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için, [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerinin nasıl belirtilme](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)hakkındaki makaleye bakın.
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için, [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerinin nasıl belirtilme](./specify-marketplace-images.md)hakkındaki makaleye bakın.
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | -------------------- | ----- |
@@ -73,26 +73,26 @@ PLTW sınıfları için kullanmayı önerdiğimiz sanal makinenin boyutu, öğre
 |Sanal makine boyutu| **Büyük**.  Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir.  Aşağıdaki PLTW sınıfları için bu boyutu kullanmanızı öneririz: mühendislik tasarımına, mühendislik Ilkelerine, bilgisayar bilimi esalarına, bilgisayar bilimi Ilkelerine ve bilgisayar bilimi ilkelerine giriş.
 
 ### <a name="licensing-server"></a>Lisanslama sunucusu
-Yukarıdaki PLTW sınıflarında kullanılan çoğu yazılım, bir lisanslama sunucusuna erişim gerektirir. *_not_*  Ancak, aşağıdaki yazılımlar için Autodesk 'nin ağ lisanslama modelini kullanmayı planlıyorsanız bir lisanslama sunucusuna erişmeniz gerekir:
+Yukarıdaki PLTW sınıflarında kullanılan çoğu yazılım, bir lisanslama sunucusuna erişim gerektirir.*_not_*  Ancak, aşağıdaki yazılımlar için Autodesk 'nin ağ lisanslama modelini kullanmayı planlıyorsanız bir lisanslama sunucusuna erişmeniz gerekir:
 -   Uyant
 -   Inventor
 -   Inventor CAM
 
 Autodesk 'in yazılımıyla ağ lisansını kullanmak için, Pltw, Autodesk 'in lisans yöneticisini lisans sunucunuza yüklemek için [ayrıntılı adımlar sağlar](https://www.pltw.org/pltw-software) .  Bu lisans sunucusu, genellikle şirket içi ağınızda bulunur veya Azure sanal ağ (VNet) içindeki bir Azure sanal makinesinde (VM) barındırılır.
 
-Lisans sunucunuz kurulduktan sonra, VNet 'i [Laboratuvar hesabınıza](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account) [eşetmeniz](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) gerekir. Laboratuvar sanal makinelerinin lisans sunucusuna ve diğer bir yönteme erişebilmeleri için Laboratuvar oluşturma _before * ağ eşlemesi yapılmalıdır.
+Lisans sunucunuz kurulduktan sonra, VNet 'i [Laboratuvar hesabınıza](./tutorial-setup-lab-account.md) [eşetmeniz](./how-to-connect-peer-virtual-network.md) gerekir. Laboratuvar sanal makinelerinin lisans sunucusuna ve diğer bir yönteme erişebilmeleri için Laboratuvar oluşturma _before * ağ eşlemesi yapılmalıdır.
 
 Autodesk tarafından oluşturulan lisans dosyaları lisanslama sunucusunun MAC adresini gömer.  Lisanslama sunucunuzu bir Azure VM kullanarak barındırmaya karar verirseniz, lisanslama sunucunuzun MAC adresinin değişmediğinden emin olmak önemlidir.   Aksi halde, MAC adresi değiştiğinde, lisanslama dosyalarınızın yeniden oluşturulması gerekir.  MAC adresinizin değiştirilmesini engellemek için şu ipuçlarını izleyin:
 
-- Lisanslama sunucunuzu barındıran Azure VM için [statik bir özel IP ve MAC adresi ayarlayın](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource#static-private-ip-and-mac-address) .
+- Lisanslama sunucunuzu barındıran Azure VM için [statik bir özel IP ve MAC adresi ayarlayın](./how-to-create-a-lab-with-shared-resource.md#static-private-ip-and-mac-address) .
 - Bu kaynakları yeni bir region\location öğesine taşımaya gerek kalmaması için, hem laboratuvar hesabınızı hem de lisanslama sunucusunun sanal ağ sürümünü yeterli VM kapasitesi olan bir region\location içinde ayarladığınızdan emin olun.
 
-Ayrıca, daha fazla bilgi için [bir lisanslama sunucusunu paylaşılan kaynak olarak ayarlama](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource) makalesini okuyun.
+Ayrıca, daha fazla bilgi için [bir lisanslama sunucusunu paylaşılan kaynak olarak ayarlama](./how-to-create-a-lab-with-shared-resource.md) makalesini okuyun.
 
 ### <a name="template-machine"></a>Şablon makinesi
 PLTW için ihtiyacınız olan yükleme dosyalarından bazıları büyük ve bunları bir laboratuvarın şablon makinesine indirdiğinizde kopyalanması uzun sürer.
 
-Yükleme dosyalarını şablon makinesine indirmek ve her şeyi yüklemek yerine, fiziksel ortamınızda PLTW görüntülerini oluşturmanız önerilir.  Daha sonra, Laboratuvarlarınızı oluşturmak için bu özel görüntüleri kullanabilmeniz için resimleri paylaşılan görüntü galerisine aktarabilirsiniz.  Ayrıntılar için aşağıdaki makaleyi okuyun: [paylaşılan görüntü galerisine özel bir görüntü yükleyin](https://docs.microsoft.com/azure/lab-services/upload-custom-image-shared-image-gallery).
+Yükleme dosyalarını şablon makinesine indirmek ve her şeyi yüklemek yerine, fiziksel ortamınızda PLTW görüntülerini oluşturmanız önerilir.  Daha sonra, Laboratuvarlarınızı oluşturmak için bu özel görüntüleri kullanabilmeniz için resimleri paylaşılan görüntü galerisine aktarabilirsiniz.  Ayrıntılar için aşağıdaki makaleyi okuyun: [paylaşılan görüntü galerisine özel bir görüntü yükleyin](./upload-custom-image-shared-image-gallery.md).
 
 Bu öneriyi izleyerek laboratuvar ayarlamaya yönelik başlıca görevler şunlardır:
 
@@ -103,11 +103,11 @@ Bu öneriyi izleyerek laboratuvar ayarlamaya yönelik başlıca görevler şunla
     > [!NOTE]    
     > Autodesk 'nin uygulamalarını yüklediğinizde, Autodesk 'yi yüklemekte olduğunuz bilgisayarın lisanslama sunucusuyla iletişim kurabilmesi gerekir (Autodesk 'nin Yükleme Sihirbazı, lisans sunucusunun barındırıldığı makinenin bilgisayar adını belirtmenizi ister).  Lisanslama sunucunuzu bir Azure VM 'de barındırıyorsanız, Autodesk 'nin Install sihirbazının lisanslama sunucunuza erişebilmesi için, laboratuvarın şablon makinesine Autodesk 'yi yüklemeyi beklemeniz gerekebilir
 
-    b.  OneDrive 'ı (veya okulunuzun kullanabileceği diğer yedekleme seçeneklerini) [yükleyin ve yapılandırın](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-onedrive) .
+    b.  OneDrive 'ı (veya okulunuzun kullanabileceği diğer yedekleme seçeneklerini) [yükleyin ve yapılandırın](./how-to-prepare-windows-template.md#install-and-configure-onedrive) .
     
-    c.  [Windows güncelleştirmelerini yükleyip yapılandırın](https://docs.microsoft.com/azure/lab-services/how-to-prepare-windows-template#install-and-configure-updates).
+    c.  [Windows güncelleştirmelerini yükleyip yapılandırın](./how-to-prepare-windows-template.md#install-and-configure-updates).
 
-1.  Özel görüntüyü [Laboratuvar hesabınıza ekli paylaşılan görüntü galerisine](https://docs.microsoft.com/azure/lab-services/how-to-attach-detach-shared-image-gallery)yükleyin.
+1.  Özel görüntüyü [Laboratuvar hesabınıza ekli paylaşılan görüntü galerisine](./how-to-attach-detach-shared-image-gallery.md)yükleyin.
 
 1.  Bir laboratuvar oluşturun ve önceki adımda karşıya yüklediğiniz özel görüntüyü seçin.
 
@@ -118,9 +118,9 @@ Bu öneriyi izleyerek laboratuvar ayarlamaya yönelik başlıca görevler şunla
 ## <a name="student-devices"></a>Öğrenci cihazları
 Öğrencileriniz, Windows\Mac bilgisayarlardan ve Kmebook 'tan laboratuvar VM 'lerine bağlanabilir.  Bu seçeneklerin her biri için yönergelerin bağlantıları aşağıda verilmiştir:
 
-- [Windows 'dan Bağlan](https://docs.microsoft.com/azure/lab-services/how-to-use-classroom-lab#connect-to-the-vm)
-- [Mac 'ten Bağlan](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-mac-remote-desktop)
-- [Kmebook 'tan Bağlan](https://docs.microsoft.com/azure/lab-services/connect-virtual-machine-chromebook-remote-desktop)
+- [Windows 'dan Bağlan](./how-to-use-classroom-lab.md#connect-to-the-vm)
+- [Mac 'ten Bağlan](./connect-virtual-machine-mac-remote-desktop.md)
+- [Kmebook 'tan Bağlan](./connect-virtual-machine-chromebook-remote-desktop.md)
 
 ## <a name="cost"></a>Maliyet
 Yukarıdaki PLTW sınıfları için olası bir maliyet tahminini kapsayalım.  Bu tahmin, bir lisans sunucusu çalıştırmanın veya paylaşılan görüntü galerisinin kullanımı maliyetini içermez.  25 öğrencilerden oluşan bir sınıf kullanacağız.  20 saatlik zamanlanan sınıf zamanı vardır.  Ayrıca, her öğrenci, zamanlanan sınıf süresi dışında ev ödevleri veya atamaları için 10 saatlik kota alır.  Hem **büyük** hem de **küçük GPU (görselleştirme)** boyutları için aşağıdaki maliyet tahminlerine bakın.
@@ -145,4 +145,4 @@ Sonraki adımlar herhangi bir laboratuvarı ayarlamak için ortaktır:
 - [Kullanıcı ekle](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Öğrenciler Için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [Öğrenciler Için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users).

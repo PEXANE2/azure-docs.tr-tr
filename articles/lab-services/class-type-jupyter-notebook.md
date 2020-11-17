@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533529"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648030"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python ve Jupyıter Not defterleri ile veri bilimi öğretmek için laboratuvar ayarlama
 Bu makalede, öğrencilerin [jupi not defterlerini](http://jupyter-notebook.readthedocs.io/)nasıl kullanacağınızı ve öğrencilerin sanal makinelerinde (VM) kendi not defterlerine nasıl bağlanabilmelerini öğretmek için gereken araçlarla laboratuvar hizmetlerinde bir şablon sanal MAKINESINI (VM) nasıl ayarlayabileceğiniz özetlenmektedir.
@@ -86,7 +86,7 @@ Linux VM 'Leri olan öğrenciler sağladıysanız, öğrencilerin VM 'lerdeki Ju
 Aşağıdaki bölümlerde, jupi not defterlerine bağlanmanın bu yolları hakkında ayrıntılı bilgi sağlanmaktadır. 
 
 #### <a name="ssh-to-virtual-machine"></a>SSH 'den sanal makineye
-Öğrenciler, bir Terminal oturumundan Linux sanal makinelerine SSH aracılığıyla bağlanabilir. Ayrıntılı adımlar için bkz. [sınıf laboratuvarına erişme](how-to-use-classroom-lab.md). Windows istemci makinesini kullanıyorsa, [Putty](https://www.putty.org/) 'i Indirerek veya [Windows 'da OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse) 'yi komut isteminden SSH 'ye etkinleştirerek bir SSH istemcisini etkinleştirmeleri gerekir. 
+Öğrenciler, bir Terminal oturumundan Linux sanal makinelerine SSH aracılığıyla bağlanabilir. Ayrıntılı adımlar için bkz. [sınıf laboratuvarına erişme](how-to-use-classroom-lab.md). Windows istemci makinesini kullanıyorsa, [Putty](https://www.putty.org/) 'i Indirerek veya [Windows 'da OpenSSH](/windows-server/administration/openssh/openssh_install_firstuse) 'yi komut isteminden SSH 'ye etkinleştirerek bir SSH istemcisini etkinleştirmeleri gerekir. 
 
 1.  VM’yi başlatın.
 2.  VM çalışmaya başladıktan sonra **Bağlan**' a tıklayın, bu, aşağıdaki örnekte olduğu gibi SSH komut dizesini sağlayan bir iletişim kutusu açılır:
@@ -94,7 +94,7 @@ Aşağıdaki bölümlerde, jupi not defterlerine bağlanmanın bu yolları hakk�
      ```shell
     ssh -p 12345 student@ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com
      ```
-3.  Komut isteminize veya terminale gidin ve bu komutu yapıştırın ve **ENTER**tuşuna basın.
+3.  Komut isteminize veya terminale gidin ve bu komutu yapıştırın ve **ENTER** tuşuna basın.
 4.  VM 'de oturum açmak için parolayı girin. 
 
 Öğrenciler VM 'lere bağlandıktan sonra, jupi not defterlerini yerel olarak erişebilir ve çalıştırabilir.

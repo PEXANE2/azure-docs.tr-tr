@@ -3,22 +3,22 @@ title: Azure Active Directory bir acil durumda Kullanıcı erişimini iptal etme
 description: Azure Active Directory bir kullanıcının tüm erişimini iptal etme
 services: active-directory
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
 author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 07/15/2020
+ms.date: 11/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16577c3509c9d3d9b02ead5e69832bacc7d083bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e12d08acdd9fc869ed766a1bbd78f35eb371cc8a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92376397"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649696"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory Kullanıcı erişimini iptal etme
 
@@ -113,9 +113,9 @@ Azure Active Directory yönetici olarak PowerShell ' i açın, çalıştırın `
 
 Yöneticiler yukarıdaki adımları gerçekleştirdikten sonra, Azure Active Directory bağlı herhangi bir uygulama için Kullanıcı yeni belirteçler elde edebilir. İptal ve Kullanıcı erişimini kaybetme arasındaki geçen süre, uygulamanın erişim verme yöntemine bağlıdır:
 
-- Erişim **belirteçleri kullanan uygulamalar**için, erişim belirtecinin süresi dolarsa Kullanıcı erişimi kaybeder.
+- Erişim **belirteçleri kullanan uygulamalar** için, erişim belirtecinin süresi dolarsa Kullanıcı erişimi kaybeder.
 
-- **Oturum belirteçleri kullanan uygulamalar**için, mevcut oturumların belirtecin süresi dolduktan hemen sonra sona erer. Kullanıcının devre dışı durumu uygulamayla eşitlenirse, uygulama bunu yapmak üzere yapılandırılmışsa, kullanıcının mevcut oturumlarını otomatik olarak iptal edebilir.  Bu süre, uygulama ile Azure AD arasındaki eşitlemenin sıklığına bağlıdır.
+- **Oturum belirteçleri kullanan uygulamalar** için, mevcut oturumların belirtecin süresi dolduktan hemen sonra sona erer. Kullanıcının devre dışı durumu uygulamayla eşitlenirse, uygulama bunu yapmak üzere yapılandırılmışsa, kullanıcının mevcut oturumlarını otomatik olarak iptal edebilir.  Bu süre, uygulama ile Azure AD arasındaki eşitlemenin sıklığına bağlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

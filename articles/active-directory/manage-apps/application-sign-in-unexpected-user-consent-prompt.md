@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9559e22a8396de93bbe46f20b76855d9ff00f753
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa74424dddd7577eb942f72f038f5bd56854abac
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763729"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648200"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Bir uygulamada oturum açarken beklenmeyen onay istemi
 
@@ -39,7 +39,7 @@ Bu, genellikle tek seferlik bir işlem olan bir uygulama ilk kez kullanıldığ�
 
 * Uygulamayı ilk olarak uygulamaya veren kullanıcı bir yöneticiydi, ancak kuruluşun tamamı adına izin vermedi.
 
-* Uygulama, izin ilk kez verildikten sonra ek izinler istemek için [artımlı ve dinamik onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) kullanıyor. Bu, genellikle bir uygulamanın isteğe bağlı özelliklerinin temel işlevselliği için gerekenlerden daha fazla izin gerektirmesi durumunda kullanılır.
+* Uygulama, izin ilk kez verildikten sonra ek izinler istemek için [artımlı ve dinamik onay](../azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) kullanıyor. Bu, genellikle bir uygulamanın isteğe bağlı özelliklerinin temel işlevselliği için gerekenlerden daha fazla izin gerektirmesi durumunda kullanılır.
 
 * Onay, başlangıçta verildikten sonra iptal edildi.
 
@@ -47,8 +47,6 @@ Bu, genellikle tek seferlik bir işlem olan bir uygulama ilk kez kullanıldığ�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--   [Azure Active Directory uygulamalar, izinler ve onay (v 1.0 uç noktası)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Azure Active Directory uygulamalar, izinler ve onay (v 1.0 uç noktası)](../develop/quickstart-register-app.md)
 
--   [Azure Active Directory (v 2.0 uç noktası) kapsamlar, izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+-   [Azure Active Directory (v 2.0 uç noktası) kapsamlar, izinler ve onay](../develop/v2-permissions-and-consent.md)

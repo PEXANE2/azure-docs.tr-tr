@@ -10,23 +10,23 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2eb90e2418b57e5e0a358fbd6282b20ddc9e7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597658"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648370"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Bu makalede, Azure CLı kullanarak rollerin nasıl atanacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 - `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi izinler
-- Azure Cloud Shell veya [Azure CLI](/cli/azure) ['da Bash](/azure/cloud-shell/overview)
+- Azure Cloud Shell veya [Azure CLI](/cli/azure) ['da Bash](../cloud-shell/overview.md)
 
 ## <a name="steps-to-add-a-role-assignment"></a>Rol ataması ekleme adımları
 
@@ -185,7 +185,7 @@ Aşağıda, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-con
 
 ### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Belirli bir blob kapsayıcısı kaynak kapsamı için rol ataması Ekle
 
-*BLOB-Container-01*adlı bir blob kapsayıcısının kaynak kapsamındaki *55555555-5555-5555-5555-555555555555* nesne kimliğine sahip bir hizmet sorumlusuna [Depolama Blobu veri katılımcısı](built-in-roles.md#storage-blob-data-contributor) rolünü atar.
+*BLOB-Container-01* adlı bir blob kapsayıcısının kaynak kapsamındaki *55555555-5555-5555-5555-555555555555* nesne kimliğine sahip bir hizmet sorumlusuna [Depolama Blobu veri katılımcısı](built-in-roles.md#storage-blob-data-contributor) rolünü atar.
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -195,7 +195,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 
 ### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Bir depolama hesabı kaynak kapsamındaki tüm blob kapsayıcıları için rol ataması ekleme
 
-*Storage12345*adlı bir depolama hesabının kaynak kapsamındaki *55555555-5555-5555-5555-555555555555* nesne kimliğine sahip bir hizmet sorumlusuna [Depolama Blobu veri katılımcısı](built-in-roles.md#storage-blob-data-contributor) rolünü atar.
+*Storage12345* adlı bir depolama hesabının kaynak kapsamındaki *55555555-5555-5555-5555-555555555555* nesne kimliğine sahip bir hizmet sorumlusuna [Depolama Blobu veri katılımcısı](built-in-roles.md#storage-blob-data-contributor) rolünü atar.
 
 ```azurecli
 az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
@@ -205,7 +205,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 
 ### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Belirli bir sanal ağ kaynak kapsamındaki bir grup için rol ataması ekleme
 
-[Sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü, kimlik 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubuna, *sahte ma-Sales-Project-Network*adlı bir sanal ağ için kaynak kapsamında atar.
+[Sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü, kimlik 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubuna, *sahte ma-Sales-Project-Network* adlı bir sanal ağ için kaynak kapsamında atar.
 
 ```azurecli
 az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
@@ -362,4 +362,4 @@ az role assignment delete --assignee "alain@example.com" \
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure CLı kullanarak Azure rol atamalarını listeleme](role-assignments-list-cli.md)
-- [Azure CLı 'yı kullanarak Azure kaynaklarını ve kaynak gruplarını yönetme](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Azure CLı 'yı kullanarak Azure kaynaklarını ve kaynak gruplarını yönetme](../azure-resource-manager/management/manage-resources-cli.md)

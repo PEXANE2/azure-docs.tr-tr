@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392659"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649271"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN veya VNet-VNet bağlantıları için IPsec/IKE ilkesi yapılandırma
 
@@ -34,9 +34,8 @@ Bu makalede bir IPSec/ıKE İlkesi oluşturup yapılandırma ve yeni veya mevcut
 
 > [!IMPORTANT]
 > 1. IPSec/ıKE ilkesinin yalnızca aşağıdaki ağ geçidi SKU 'Larında çalışmadığını unutmayın:
->    * ***VpnGw1, VpnGw2, VpnGw3*** (rota tabanlı)
->    * ***Standart*** ve ***HighPerformance*** (rota tabanlı)
-> 2. Belirli bir bağlantı için yalnızca ***bir*** ilke birleşimi belirtebilirsiniz.
+>    * ***VpnGw1, VpnGw2, VpnGw3** _ (rota tabanlı) _ ***Standart** _ ve _*_HighPerformance_*_ (rota tabanlı)
+> 2. Belirli bir bağlantı için yalnızca _*_bir_*_ ilke birleşimi belirtebilirsiniz.
 > 3. IKE (ana mod) ve IPSec (hızlı mod) için tüm algoritmaları ve parametreleri belirtmeniz gerekir. Kısmi ilke belirtimine izin verilmez.
 > 4. İlkenin şirket içi VPN cihazlarınızda desteklendiğinden emin olmak için, VPN cihazınızın satıcı belirtimlerinize başvurun. İlkeler uyumsuz ise, S2S veya VNet-VNet bağlantıları kurulamaz.
 
@@ -56,7 +55,7 @@ Bu makaledeki yönergeler, diyagramda gösterildiği gibi IPSec/ıKE ilkelerini 
 
 Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilen desteklenen şifreleme algoritmaları ve anahtar güçleri listelenmektedir:
 
-| **IPsec/IKEv2**  | **Seçenekler**    |
+| _ *IPSec/Ikev2**  | **Seçenekler**    |
 | ---  | --- 
 | IKEv2 Şifrelemesi | AES256, AES192, AES128, DES3, DES  
 | IKEv2 Bütünlüğü  | SHA384, SHA256, SHA1, MD5  |
@@ -153,7 +152,7 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. aboneliğinize bağlanın ve yeni bir kaynak grubu oluşturun
 
-Resource Manager cmdlet’lerini kullanmak için PowerShell moduna geçtiğinizden emin olun. Daha fazla bilgi için [Windows PowerShell’i Resource Manager ile kullanma](../powershell-azure-resource-manager.md) konusuna bakın.
+Resource Manager cmdlet’lerini kullanmak için PowerShell moduna geçtiğinizden emin olun. Daha fazla bilgi için [Windows PowerShell’i Resource Manager ile kullanma](../azure-resource-manager/management/manage-resources-powershell.md) konusuna bakın.
 
 PowerShell konsolunuzu açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 

@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 216dc843b31eac355e1d818014f3d70b2ef83132
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396697"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647911"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services bir Windows şablon makinesi ayarlamaya yönelik kılavuz
 
@@ -47,7 +47,7 @@ Write-Host "Installing OneDrive..."
 
 ### <a name="onedrive-customizations"></a>OneDrive özelleştirmeleri
 
-[OneDrive 'da yapılabilecek birçok özelleştirme](https://docs.microsoft.com/onedrive/use-group-policy)vardır. Daha yaygın özelleştirmelerin bazılarını ele alalım.
+[OneDrive 'da yapılabilecek birçok özelleştirme](/onedrive/use-group-policy)vardır. Daha yaygın özelleştirmelerin bazılarını ele alalım.
 
 #### <a name="silently-move-windows-known-folders-to-onedrive"></a>Windows bilinen klasörlerini sessizce OneDrive 'a taşıyın
 
@@ -61,7 +61,7 @@ Active Directory kullanmayan bir makineniz varsa, kullanıcılar OneDrive 'a kim
 
 Sanal makineniz Active Directory bağlıysa, şablon makinesini öğrencilerinizi, bilinen klasörleri OneDrive 'a taşımasını otomatik olarak isteyecek şekilde ayarlayabilirsiniz.  
 
-Önce kuruluş KIMLIĞINIZI almanız gerekir.  Daha fazla yönerge için bkz. [Microsoft 365 kuruluş kimliğinizi bulma](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  Ayrıca, aşağıdaki PowerShell 'i kullanarak kuruluş KIMLIĞINI de alabilirsiniz.
+Önce kuruluş KIMLIĞINIZI almanız gerekir.  Daha fazla yönerge için bkz. [Microsoft 365 kuruluş kimliğinizi bulma](/onedrive/find-your-office-365-tenant-id).  Ayrıca, aşağıdaki PowerShell 'i kullanarak kuruluş KIMLIĞINI de alabilirsiniz.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -137,7 +137,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="change-the-microsoft-365-update-channel"></a>Microsoft 365 güncelleştirme kanalını değiştirme
 
-Office yapılandırma aracını kullanarak, Office 'in güncelleştirmeleri ne sıklıkta alacağını ayarlayabilirsiniz. Ancak, yüklemeden sonra Office 'in güncelleştirmeleri hangi sıklıkta alacağını değiştirmeniz gerekiyorsa, güncelleştirme kanalı URL 'sini değiştirebilirsiniz. Güncelleştirme kanalı URL adresleri [, kuruluşunuzdaki cihazlar için Microsoft 365 Apps Update kanalını değiştirme](https://docs.microsoft.com/deployoffice/change-update-channels)bölümünde bulunabilir. Aşağıdaki örnekte, Microsoft 365 aylık güncelleştirme kanalını kullanacak şekilde nasıl ayarlanacağı gösterilmektedir.
+Office yapılandırma aracını kullanarak, Office 'in güncelleştirmeleri ne sıklıkta alacağını ayarlayabilirsiniz. Ancak, yüklemeden sonra Office 'in güncelleştirmeleri hangi sıklıkta alacağını değiştirmeniz gerekiyorsa, güncelleştirme kanalı URL 'sini değiştirebilirsiniz. Güncelleştirme kanalı URL adresleri [, kuruluşunuzdaki cihazlar için Microsoft 365 Apps Update kanalını değiştirme](/deployoffice/change-update-channels)bölümünde bulunabilir. Aşağıdaki örnekte, Microsoft 365 aylık güncelleştirme kanalını kullanacak şekilde nasıl ayarlanacağı gösterilmektedir.
 
 ```powershell
 # Update to the Microsoft 365 Monthly Channel
@@ -188,7 +188,7 @@ Ayrıca, zaten yüklü olan Microsoft Store uygulamaları güncelleştirmek içi
 
 ### <a name="stop-automatic-windows-updates"></a>Otomatik Windows güncelleştirmelerini durdur
 
-Windows 'u en son sürüme güncelleştirdikten sonra, Windows güncelleştirmelerini durdurmayı düşünebilirsiniz.  Otomatik Güncelleştirmeler, zamanlanan sınıf zamanına engel olabilir.  Kurağınız daha uzun bir süredir çalışıyorsa, öğrenciler için el ile güncelleştirmeleri denetlemesini veya zamanlanan sınıf saatleri dışında bir süre için otomatik güncelleştirmeleri ayarlamayı düşünün.  Windows Update özelleştirme seçenekleri hakkında daha fazla bilgi için bkz. [ek Windows Update ayarlarını yönetme](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings).
+Windows 'u en son sürüme güncelleştirdikten sonra, Windows güncelleştirmelerini durdurmayı düşünebilirsiniz.  Otomatik Güncelleştirmeler, zamanlanan sınıf zamanına engel olabilir.  Kurağınız daha uzun bir süredir çalışıyorsa, öğrenciler için el ile güncelleştirmeleri denetlemesini veya zamanlanan sınıf saatleri dışında bir süre için otomatik güncelleştirmeleri ayarlamayı düşünün.  Windows Update özelleştirme seçenekleri hakkında daha fazla bilgi için bkz. [ek Windows Update ayarlarını yönetme](/windows/deployment/update/waas-wu-settings).
 
 Otomatik Windows güncelleştirmeleri aşağıdaki PowerShell betiği kullanılarak durdurulmuş olabilir.
 

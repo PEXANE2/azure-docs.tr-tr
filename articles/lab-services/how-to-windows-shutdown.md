@@ -3,19 +3,19 @@ title: Azure Lab Services | Windows 'un kapatılma davranışını denetleme Kı
 description: Boşta bir Windows sanal makinesini otomatik olarak kapanmaya yönelik adımlar ve Windows kapatılırken komutunu kaldırma adımları.
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248bbeabaf704ba636e2f82c7a93d0ee90a09f22
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541569"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647707"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Windows kapanıyor davranışını denetleme Kılavuzu
 
 Azure Lab Services, Windows sanal makinelerinin (VM 'Ler) beklenmedik şekilde çalışmadığını sağlamak için çeşitli ücret denetimleri sağlar:
- - [Zamanlama ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
- - [Kullanıcılar için kota ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
- - [Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+ - [Zamanlama ayarlama](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+ - [Kullanıcılar için kota ayarlama](./how-to-configure-student-usage.md#set-quotas-for-users)
+ - [Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme](./how-to-enable-shutdown-disconnect.md)
 
 Bu maliyet denetimlerinde bile, bir Windows VM 'sinin beklenmedik şekilde çalışmaya devam edebildiği durumlar vardır; Sonuç olarak, öğrencinin kotasından düşün:
 
@@ -25,7 +25,7 @@ Bu maliyet denetimlerinde bile, bir Windows VM 'sinin beklenmedik şekilde çal�
 
 - **Windows kapatma komutu VM 'yi kapatmak için kullanılır**
   
-    Bir öğrenci Windows kapatma komutunu veya Windows içinde sunulan diğer kapatma mekanizmalarını, [Azure Lab Services ' Durdur düğmesini](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm)kullanmak yerıne, VM 'yi kapatmak için kullanabilir.  Bu durumda, Azure Lab Services perspektifinden VM hala kullanılmaktadır.
+    Bir öğrenci Windows kapatma komutunu veya Windows içinde sunulan diğer kapatma mekanizmalarını, [Azure Lab Services ' Durdur düğmesini](./how-to-use-classroom-lab.md#start-or-stop-the-vm)kullanmak yerıne, VM 'yi kapatmak için kullanabilir.  Bu durumda, Azure Lab Services perspektifinden VM hala kullanılmaktadır.
     
 Bu durumların oluşmasını önlemenize yardımcı olması için bu kılavuzda, boşta olan bir Windows sanal makinesini otomatik olarak kapanmaya yönelik adımlar ve **Başlat** menüsünden Windows oturumu kapatılıyor komutunu kaldırma adımları sunulmaktadır.  
 
@@ -44,13 +44,13 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 Ya da, şablon VM 'yi kullanarak bu adımları el ile izlemeyi tercih edebilirsiniz:
 
-1. Windows tuşuna basın, **gpedit**yazın ve ardından **Grup Ilkesini Düzenle (Denetim Masası)** seçeneğini belirleyin.
+1. Windows tuşuna basın, **gpedit** yazın ve ardından **Grup Ilkesini Düzenle (Denetim Masası)** seçeneğini belirleyin.
 
 1. **> > Başlat menüsü ve görev çubuğu Yönetim Şablonları bilgisayar yapılandırması '** na gidin.  
 
     ![Yerel grup ilkesi düzenleyicisi](./media/how-to-windows-shutdown/group-policy-shutdown.png)
 
-1. Kaldır ' a sağ tıklayın **ve kapatma, yeniden başlatma, uyku ve hazırda beklet komutlarına erişimi önleyin**ve **Düzenle**' ye tıklayın.
+1. Kaldır ' a sağ tıklayın **ve kapatma, yeniden başlatma, uyku ve hazırda beklet komutlarına erişimi önleyin** ve **Düzenle**' ye tıklayın.
 
 1. **Etkin** ayarı seçin ve ardından **Tamam**' a tıklayın:
  
