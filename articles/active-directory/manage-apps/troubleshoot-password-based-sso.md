@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460363"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646245"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD 'de parola tabanlı çoklu oturum açma sorunlarını giderme
 
@@ -36,7 +36,7 @@ Bu sorun genellikle uygulama satıcısı oturum açma sayfasını son zamanlarda
 
 Microsoft, tümleştirmelerin ne zaman otomatik olarak algılanması için teknolojiler sağlarken, sorunları hemen bulmak mümkün olmayabilir veya sorunların düzeltilmesi biraz zaman alabilir. Bu tümleştirmelerin bir örneği doğru şekilde çalışmazsa, mümkün olduğunca çabuk düzeltibilmeleri için bir destek talebi açın.
 
-**Bu uygulamanın satıcısıyla iletişim kursunsam, Microsoft 'un** kendi uygulamasını Azure Active Directory ile yerel olarak tümleştirmeleri için onlarla birlikte çalışmasına yol açabilir. Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../azuread-dev/howto-app-gallery-listing.md) gönderebilirsiniz.
+**Bu uygulamanın satıcısıyla iletişim kursunsam, Microsoft 'un** kendi uygulamasını Azure Active Directory ile yerel olarak tümleştirmeleri için onlarla birlikte çalışmasına yol açabilir. Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/v2-howto-app-gallery-listing.md) gönderebilirsiniz.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Kimlik bilgileri doldurulmuştur ve gönderilir, ancak sayfa kimlik bilgilerinin yanlış olduğunu belirtiyor
 
@@ -62,7 +62,7 @@ Bu sorunu çözmek için öncelikle şunları deneyin:
 
 Microsoft, uygulama tümleştirmeleri sırasında otomatik olarak algılamaya yönelik teknolojiler sağlarken, sorunları hemen bulmak mümkün olmayabilir veya sorunların düzeltilmesi biraz zaman alabilir. Bir tümleştirme düzgün çalışmazsa, mümkün olduğunca hızlı bir şekilde düzeltilmesi için bir destek talebi açabilirsiniz. 
 
-Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../azuread-dev/howto-app-gallery-listing.md) gönderebilirsiniz.
+Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/v2-howto-app-gallery-listing.md) gönderebilirsiniz.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Uygulamanın oturum açma sayfasının yakın zamanda değişip değişmediğini ve ek bir alan gerektirip gerektirmediğini denetleyin
 
@@ -70,7 +70,7 @@ Uygulamanın oturum açma sayfası büyük ölçüde değiştirilmişse, bazı d
 
 Microsoft, uygulama tümleştirmeleri sırasında otomatik olarak algılamaya yönelik teknolojiler sağlarken, sorunları hemen bulmak mümkün olmayabilir veya sorunların düzeltilmesi biraz zaman alabilir. Bir tümleştirme düzgün çalışmazsa, mümkün olduğunca hızlı bir şekilde düzeltilmesi için bir destek talebi açabilirsiniz. 
 
-Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../azuread-dev/howto-app-gallery-listing.md) gönderebilirsiniz.
+Buna ek olarak, **Bu uygulamanın satıcısıyla iletişim** kursunuz, uygulamaları Azure Active Directory ile yerel olarak tümleştirmek üzere bunlarla çalışabilmemiz için sizinle birlikte çalışmamız **gerekir.** Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/v2-howto-app-gallery-listing.md) gönderebilirsiniz.
 
 ## <a name="capture-sign-in-fields-for-an-app"></a>Uygulama için oturum açma alanlarını yakalama
 
@@ -80,7 +80,7 @@ Oturum açma alanı yakalama yalnızca HTML özellikli oturum açma sayfaları i
 
 - **Otomatik oturum açma alanı yakalama** , Kullanıcı adı ve parola alanları için *Iyi bilinen DIV kimliklerini kullanıyorsa* , en fazla HTML etkin oturum açma sayfası ile iyi çalışacaktır. Sayfadaki HTML, belirli ölçütlerle eşleşen DIV kimliklerini bulmak için korlanır. Bu meta veriler, daha sonra uygulamaya yeniden oynatılabilecek şekilde kaydedilir.
 
-- Uygulama satıcısı *oturum açma giriş alanlarını etiketleyip*, **el ile oturum açma alanı yakalama** kullanılır. Satıcı *otomatik olarak algılanamayan birden çok alan işliyorsa*el ile yakalama da kullanılır. Azure Active Directory (Azure AD), oturum açma sayfasında, bu alanların sayfada olduğu yerde olduğunu söylemiş kadar çok sayıda alan için veri depolayabilirler.
+- Uygulama satıcısı *oturum açma giriş alanlarını etiketleyip*, **el ile oturum açma alanı yakalama** kullanılır. Satıcı *otomatik olarak algılanamayan birden çok alan işliyorsa* el ile yakalama da kullanılır. Azure Active Directory (Azure AD), oturum açma sayfasında, bu alanların sayfada olduğu yerde olduğunu söylemiş kadar çok sayıda alan için veri depolayabilirler.
 
 Genel olarak, otomatik oturum açma alanı yakalama işe yaramazsa, el ile seçeneğini deneyin.
 
@@ -103,7 +103,7 @@ Parola tabanlı SSO 'yu otomatik oturum açma alanı yakalamayı kullanarak yap�
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>Bir uygulama için oturum açma alanlarını el ile yakalama
 
-Oturum açma alanlarını el ile yakalamak için uygulamalarım tarayıcı uzantınızın yüklü olması gerekir. Ayrıca, tarayıcınız *InPrivate*, *ınbilito*veya *özel* modda çalıştırılabilir.
+Oturum açma alanlarını el ile yakalamak için uygulamalarım tarayıcı uzantınızın yüklü olması gerekir. Ayrıca, tarayıcınız *InPrivate*, *ınbilito* veya *özel* modda çalıştırılabilir.
 
 El ile oturum açma alanı yakalamayı kullanarak bir uygulama için parola tabanlı SSO yapılandırmak için aşağıdaki adımları izleyin:
 1. [Azure portalını](https://portal.azure.com/) açın. Genel yönetici veya ortak yönetici olarak oturum açın.
@@ -116,8 +116,8 @@ El ile oturum açma alanı yakalamayı kullanarak bir uygulama için parola taba
 6. SSO için yapılandırmak istediğiniz uygulamayı seçin.
 7. Uygulama yüklendikten sonra, sol taraftaki Gezinti bölmesinde **Çoklu oturum açma** seçeneğini belirleyin.
 8. **Parola tabanlı oturum açma** modunu seçin.
-9. Kullanıcıların oturum açmak için Kullanıcı adını ve parolasını girmesi gereken sayfa olan **oturum açma URL 'sini**girin. *SAĞLADıĞıNıZ URL 'nin sayfada oturum açma alanlarının göründüğünden emin olun*.
-10. ** * &lt; Appname &gt; * parolasını tek oturum açma ayarlarını yapılandır '** ı seçin.
+9. Kullanıcıların oturum açmak için Kullanıcı adını ve parolasını girmesi gereken sayfa olan **oturum açma URL 'sini** girin. *SAĞLADıĞıNıZ URL 'nin sayfada oturum açma alanlarının göründüğünden emin olun*.
+10. ***&lt; Appname &gt;* parolasını tek oturum açma ayarlarını yapılandır '** ı seçin.
 11. **Oturum açma alanlarını el ile Algıla**' yı seçin.
 14. **Tamam**'ı seçin.
 15. **Kaydet**’i seçin.
@@ -145,11 +145,11 @@ El ile algılama çalışmadığı zaman aşağıdaki davranışları gözlemley
 - El ile yakalama çalışır, ancak kullanıcılar uygulamalarım ' dan uygulamaya gitiyorsa SSO gerçekleşmez.
 
 Bu sorunlardan herhangi biriyle karşılaşırsanız şunları yapın:
-- Uygulamalarım tarayıcı uzantısının en son sürümünün *yüklü ve etkin*olduğundan emin olun.
-- Yakalama işlemi sırasında tarayıcınızın, *InPrivate*veya *özel* *modda olmadığından emin*olun. Uygulamalarım uzantısı bu modlarda desteklenmez.
-- Kullanıcılarınızın uygulamalarımın uygulamada oturum açmaya çalışmalarından *,* *InPrivate*veya *özel moddayken*emin olun.
+- Uygulamalarım tarayıcı uzantısının en son sürümünün *yüklü ve etkin* olduğundan emin olun.
+- Yakalama işlemi sırasında tarayıcınızın, *InPrivate* veya *özel* *modda olmadığından emin* olun. Uygulamalarım uzantısı bu modlarda desteklenmez.
+- Kullanıcılarınızın uygulamalarımın uygulamada oturum açmaya çalışmalarından *,* *InPrivate* veya *özel moddayken* emin olun.
 - El ile yakalama işlemini yeniden deneyin. Kırmızı işaretçilerin doğru alanların üzerinde olduğundan emin olun.
-- El ile yakalama işlemi yanıt vermeyi durdurmuş gibi görünüyorsa veya oturum açma sayfası yanıt vermezse, el ile yakalama işlemini yeniden deneyin. Ancak, bu kez işlemi tamamladıktan sonra gözatıcının geliştirici konsolunu açmak için F12 tuşuna basın. **Konsol** sekmesini seçin. **Window. Location = "yazın ve* &lt; &gt; Uygulamayı yapılandırırken belirttiğiniz oturum açma URL 'si*"** yazın ve ENTER tuşuna basın. Bu, yakalama işlemini sonlandıran ve yakalanan alanları depolayan bir sayfa yeniden yönlendirmeyi zorlar.
+- El ile yakalama işlemi yanıt vermeyi durdurmuş gibi görünüyorsa veya oturum açma sayfası yanıt vermezse, el ile yakalama işlemini yeniden deneyin. Ancak, bu kez işlemi tamamladıktan sonra gözatıcının geliştirici konsolunu açmak için F12 tuşuna basın. **Konsol** sekmesini seçin. **Window. Location = "yazın ve *&lt; &gt; Uygulamayı yapılandırırken belirttiğiniz oturum açma URL 'si*"** yazın ve ENTER tuşuna basın. Bu, yakalama işlemini sonlandıran ve yakalanan alanları depolayan bir sayfa yeniden yönlendirmeyi zorlar.
 
 ## <a name="request-support"></a>Destek iste 
 SSO 'yu ayarlarken ve kullanıcıları atarken bir hata mesajı alırsanız, bir destek bileti açın. Mümkün olduğunca aşağıdaki bilgilerin çoğunu ekleyin:

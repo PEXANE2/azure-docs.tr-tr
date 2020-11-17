@@ -4,21 +4,21 @@ description: Azure Active Directory 'de Azure AD Yönetim Merkezi 'nde toplu ola
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 08/11/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8e6ab8fd726eaba309f0949020139901dd3712f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 42e26e9b1e3548d3caeff58079ec489c2d282a63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376529"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646891"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
@@ -51,7 +51,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
 - Önce gerekli sütunlar listelenir.
 - Şablona yeni sütun eklenmesini önermiyoruz. Eklediğiniz tüm ek sütunlar yoksayılır ve işlenmez.
 - CSV şablonunun en son sürümünü mümkün olduğunca sık indirmeniz önerilir.
-- Herhangi bir alandan önce/sonra hiçbir istenmeyen boşluk olmadığından emin olun. **Kullanıcı asıl adı**için, bu tür boşluklar içeri aktarma hatasına neden olur.
+- Herhangi bir alandan önce/sonra hiçbir istenmeyen boşluk olmadığından emin olun. **Kullanıcı asıl adı** için, bu tür boşluklar içeri aktarma hatasına neden olur.
 
 ## <a name="to-create-users-in-bulk"></a>Toplu olarak Kullanıcı oluşturmak için
 
@@ -66,7 +66,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı
    [![CSV dosyası oluşturulacak kullanıcıların adlarını ve kimliklerini içerir](./media/users-bulk-add/add-csv-file.png)](./media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. **Toplu kullanıcı oluştur** SAYFASıNDA, CSV dosyanızı karşıya yükleyin bölümünde dosyaya gidin. Dosyayı seçip **Gönder**' e TıKLADıĞıNıZDA, CSV dosyasının doğrulanması başlar.
-1. Dosya içeriği doğrulandıktan sonra, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+1. Dosya içeriği doğrulandıktan sonra, **dosyanın başarıyla karşıya yüklendiğini** görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
 1. Dosyanız doğrulamayı geçtiğinde, yeni kullanıcıları içeri aktaran Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
 1. İçeri aktarma işlemi tamamlandığında, toplu işlem iş durumunun bir bildirimini görürsünüz.
 
@@ -85,7 +85,7 @@ Daha sonra, oluşturduğunuz kullanıcıların Azure portal veya PowerShell kull
 1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde oturum açın](https://aad.portal.azure.com) .
 1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
-1. **Göster**altında, **tüm kullanıcılar** ' ı seçin ve oluşturduğunuz kullanıcıların listelendiğini doğrulayın.
+1. **Göster** altında, **tüm kullanıcılar** ' ı seçin ve oluşturduğunuz kullanıcıların listelendiğini doğrulayın.
 
 ### <a name="verify-users-with-powershell"></a>Kullanıcıları PowerShell ile doğrulama
 

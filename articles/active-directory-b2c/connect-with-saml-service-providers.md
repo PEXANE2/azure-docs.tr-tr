@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f7888e978fd4eb19232c156ce65b6e4967d9c5a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 80ecd02f9aebbca66169d64d6c6d0302d58ca439
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575977"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647673"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -41,7 +41,7 @@ SAML ile iki özel olmayan temel senaryoyu özetleme:
 | Uygulamam bir kimlik doğrulamasını tamamlamaya yönelik bir SAML onayı bekliyor. | **Azure AD B2C, kimlik sağlayıcısı (IDP) olarak davranır**<br />Azure AD B2C, uygulamalar için SAML IDP işlevi görür. | Bu makale. |
 | Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs2016-custom.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
 * Security Assertion Markup Language (SAML) protokolünü temel olarak anlama.
@@ -99,12 +99,12 @@ Henüz bir sertifikanız yoksa, bu öğretici için otomatik olarak imzalanan bi
 Ardından, Azure AD B2C için SAML onaylama ve yanıt imzalama sertifikasını karşıya yükleyin.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınıza gidin.
-1. **İlkeler** altında **kimlik deneyimi çerçevesi** ' ni ve ardından **ilke anahtarları** ' nı seçin.
-1. **Ekle** ' yi seçin ve sonra **Seçenekler**  >  **karşıya yükle** ' yi seçin.
+1. **İlkeler** altında **kimlik deneyimi çerçevesi** ' ni ve ardından **ilke anahtarları**' nı seçin.
+1. **Ekle**' yi seçin ve sonra **Seçenekler**  >  **karşıya yükle**' yi seçin.
 1. Örneğin, *Samlidpcert* gibi bir **ad** girin. Önek *B2C_1A_* , anahtarınızın adına otomatik olarak eklenir.
 1. Karşıya yükleme dosyası denetimini kullanarak sertifikanızı karşıya yükleyin.
 1. Sertifikanın parolasını girin.
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 1. Anahtarın beklenen şekilde göründüğünü doğrulayın. Örneğin, *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. ilkenizi hazırlayın
@@ -131,7 +131,7 @@ Bölümünü bulun `<ClaimsProviders>` ve AŞAĞıDAKI XML kod parçacığını 
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <!-- The issuer contains the policy name; it should be the same name as configured in the relying party application. B2C_1A_signup_signin_SAML is used below. -->
-        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>-->
+        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml</Item>-->
       </Metadata>
       <CryptographicKeys>
         <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -260,7 +260,7 @@ Son bağlı olan taraf ilkesi dosyanız aşağıdaki XML kodu gibi görünmelidi
 
 Değişikliklerinizi kaydedin ve yeni ilke dosyasını karşıya yükleyin. Her iki ilkeyi (uzantısı ve bağlı olan taraf dosyalarını) karşıya yükledikten sonra, bir Web tarayıcısı açın ve ilke meta verilerine gidin.
 
-Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandırmasını açığa çıkarmak için SAML protokolünde kullanılan bilgiler. Meta veriler, oturum açma ve oturum kapatma, sertifikalar, oturum açma yöntemi ve daha fazlası gibi hizmetlerin konumunu tanımlar. Azure AD B2C ilkesi meta verileri aşağıdaki URL 'de kullanılabilir. `tenant-name`Azure AD B2C kiracınızın adıyla ve `policy-name` ilkenin adı (kimliği) ile değiştirin; Örneğin,.../B2C_1A_SAML2_signup_signin/SAMLP/Metadata:
+Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandırmasını açığa çıkarmak için SAML protokolünde kullanılan bilgiler. Meta veriler, oturum açma ve oturum kapatma, sertifikalar, oturum açma yöntemi ve daha fazlası gibi hizmetlerin konumunu tanımlar. Azure AD B2C ilkesi meta verileri aşağıdaki URL 'de kullanılabilir. `tenant-name`Azure AD B2C kiracınızın adıyla ve `policy-name` ilkenin adı (kimliği) ile değiştirin; Örneğin,.../B2C_1A_signup_signin_saml/SAMLP/Metadata:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -270,14 +270,14 @@ Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandır
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 uygulamanızı Azure AD B2C kaydetme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C** ' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
-1. **Uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt** ' ı seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. **Uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *SAMLApp1*.
 1. **Desteklenen hesap türleri** altında **yalnızca bu kuruluş dizinindeki hesaplar** ' ı seçin
-1. **Yeniden yönlendirme URI 'si** altında **Web** ' i seçin ve ardından girin `https://localhost` . Bu değeri daha sonra uygulama kaydının bildiriminde değiştirirsiniz.
-1. **Kaydet** ’i seçin.
+1. **Yeniden yönlendirme URI 'si** altında **Web**' i seçin ve ardından girin `https://localhost` . Bu değeri daha sonra uygulama kaydının bildiriminde değiştirirsiniz.
+1. **Kaydet**’i seçin.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 uygulama bildirimini güncelleştirme
 
@@ -339,10 +339,10 @@ Meta veriler, hizmet sağlayıcınızda "statik meta veriler" veya "dinamik meta
 
 Aşağıdakilerin bazıları veya tümü genellikle gereklidir:
 
-* **Meta veriler** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Veren** : SAML istek `issuer` değeri, `identifierUris` uygulama kayıt bildirimi öğesinde yapılandırılan URI 'lerden biriyle eşleşmelidir. SAML istek `issuer` adı `identifierUris` öğesinde yoksa, [uygulamayı uygulama kayıt bildirimine ekleyin](#identifieruris). Örneğin, `https://contoso.onmicrosoft.com/app-name`. 
-* **Oturum açma URL 'si/SAML uç noktası/SAML URL 'si** : XML öğesi IÇIN Azure AD B2C SAML ilkesi meta verileri dosyasındaki değeri denetleyin `<SingleSignOnService>`
-* **Sertifika** : Bu, özel anahtar olmadan *B2C_1A_SamlIdpCert*. Sertifikanın ortak anahtarını almak için:
+* **Meta veriler**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Veren**: SAML istek `issuer` değeri, `identifierUris` uygulama kayıt bildirimi öğesinde yapılandırılan URI 'lerden biriyle eşleşmelidir. SAML istek `issuer` adı `identifierUris` öğesinde yoksa, [uygulamayı uygulama kayıt bildirimine ekleyin](#identifieruris). Örneğin, `https://contoso.onmicrosoft.com/app-name`. 
+* **Oturum açma URL 'si/SAML uç noktası/SAML URL 'si**: XML öğesi IÇIN Azure AD B2C SAML ilkesi meta verileri dosyasındaki değeri denetleyin `<SingleSignOnService>`
+* **Sertifika**: Bu, özel anahtar olmadan *B2C_1A_SamlIdpCert*. Sertifikanın ortak anahtarını almak için:
 
     1. Yukarıda belirtilen meta veri URL 'sine gidin.
     1. Öğesindeki değeri kopyalayın `<X509Certificate>` .
@@ -428,7 +428,7 @@ SAML test uygulaması ile test etmek için kullanabileceğiniz, örnek bir ilke 
 
 1. [SAML-SP tarafından başlatılan oturum açma örnek ilkesini](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated) indirin
 1. `TenantId`Kiracı adınızla eşleşecek şekilde güncelleştirin, örneğin, *contoso.b2clogin.com*
-1. *B2C_1A_SAML2_signup_signin* ilke adını tut
+1. *B2C_1A_signup_signin_saml* ilke adını tut
 
 ## <a name="supported-and-unsupported-saml-modalities"></a>Desteklenen ve desteklenmeyen SAML modalities
 

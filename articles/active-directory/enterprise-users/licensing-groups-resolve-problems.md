@@ -7,20 +7,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7529d72c3d94e3c7bef58c6a26af62b97ac92d9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd61a33bdcc0d18dee7dba651f097f7cd49e7149
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376553"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647044"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -58,9 +58,9 @@ Aşağıdaki bölümlerde olası her bir sorunun açıklaması ve bunu çözme y
 
 Kaç lisans kullanılabildiğini görmek için, **Azure Active Directory**  >  **Lisansları**  >  **Tüm ürünler**' e gidin.
 
-Hangi kullanıcıların ve grupların lisans tükettiğini görmek için bir ürün seçin. **Lisanslı kullanıcılar**altında, lisanslarına doğrudan veya bir veya daha fazla grup aracılığıyla atanmış olan tüm kullanıcıların listesini görürsünüz. **Lisanslı gruplar**altında, bu ürünlerin atandığı tüm grupları görürsünüz.
+Hangi kullanıcıların ve grupların lisans tükettiğini görmek için bir ürün seçin. **Lisanslı kullanıcılar** altında, lisanslarına doğrudan veya bir veya daha fazla grup aracılığıyla atanmış olan tüm kullanıcıların listesini görürsünüz. **Lisanslı gruplar** altında, bu ürünlerin atandığı tüm grupları görürsünüz.
 
-**PowerShell:** PowerShell cmdlet 'leri bu hatayı _Countihlale_bildirir.
+**PowerShell:** PowerShell cmdlet 'leri bu hatayı _Countihlale_ bildirir.
 
 ## <a name="conflicting-service-plans"></a>Çakışan hizmet planları
 
@@ -75,7 +75,7 @@ Bu çakışmayı gidermek için planları iki adet devre dışı bırakmanız ge
 
 Çakışan Ürün lisanslarını çözme kararı, her zaman yöneticiye aittir. Azure AD, lisans çakışmalarını otomatik olarak çözer.
 
-**PowerShell:** PowerShell cmdlet 'leri bu hatayı _değişken Uıallyexclusiveihlale_bildirir.
+**PowerShell:** PowerShell cmdlet 'leri bu hatayı _değişken Uıallyexclusiveihlale_ bildirir.
 
 ## <a name="other-products-depend-on-this-license"></a>Diğer ürünler bu lisansa bağımlıdır
 
@@ -83,7 +83,7 @@ Bu çakışmayı gidermek için planları iki adet devre dışı bırakmanız ge
 
 Bu sorunu çözmek için, gerekli planın başka bir yöntem aracılığıyla kullanıcılara atanmış olduğundan veya bağımlı hizmetlerin bu kullanıcılar için devre dışı bırakıldığından emin olmanız gerekir. Bunu yaptıktan sonra, Grup lisansını bu kullanıcılardan düzgün bir şekilde kaldırabilirsiniz.
 
-**PowerShell:** PowerShell cmdlet 'leri bu hatayı _Dependencyihlale_bildirir.
+**PowerShell:** PowerShell cmdlet 'leri bu hatayı _Dependencyihlale_ bildirir.
 
 ## <a name="usage-location-isnt-allowed"></a>Kullanım konumuna izin verilmiyor
 
@@ -93,7 +93,7 @@ Azure AD, kullanım konumu desteklenmeyen bir kullanıcıya bir grup lisansı at
 
 Bu sorunu çözmek için, Kullanıcı tarafından desteklenmeyen konumlardan lisanslı gruptan kullanıcıları kaldırın. Alternatif olarak, geçerli kullanım konumu değerleri gerçek Kullanıcı konumunu temsil ediyorsa, lisansları bir sonraki sefer doğru şekilde atanacak şekilde (yeni konum destekleniyorsa) bu şekilde değişiklik yapabilirsiniz.
 
-**PowerShell:** PowerShell cmdlet 'leri bu hatayı _ProhibitedInUsageLocationViolation_olarak bildirir.
+**PowerShell:** PowerShell cmdlet 'leri bu hatayı _ProhibitedInUsageLocationViolation_ olarak bildirir.
 
 > [!NOTE]
 > Azure AD grup lisansları atarken, belirtilen kullanım konumu olmayan tüm kullanıcılar dizinin konumunu alır. Yöneticiler, yerel yasalar ve yönetmeliklerle uyumlu olması için grup tabanlı lisanslama kullanmadan önce kullanıcılar üzerinde doğru kullanım konumu değerlerini ayarlamanızı öneririz.

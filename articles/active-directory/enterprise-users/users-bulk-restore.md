@@ -5,20 +5,20 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4031356c3a2ff51f6f3da8b53dd0dcc9fd5a426
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d141637286ed931701e82d29088186de32ff9f9c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376433"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646789"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory silinen kullanıcıları toplu geri yükleme
 
@@ -53,12 +53,12 @@ Azure AD kullanıcılarını toplu olarak başarıyla geri yüklemenize yardımc
 
     ![Silinen kullanıcılar sayfasında toplu geri yükleme komutunu seçin](./media/users-bulk-restore/bulk-restore.png)
 
-1. CSV şablonunu açın ve geri yüklemek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ObjectID**değeri gereklidir. Ardından dosyayı kaydedin.
+1. CSV şablonunu açın ve geri yüklemek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ObjectID** değeri gereklidir. Ardından dosyayı kaydedin.
 
     :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="İçinde eklemek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin":::
 
-1. **Toplu geri yükleme** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçip **Gönder**' e TıKLADıĞıNıZDA, CSV dosyasının doğrulanması başlar.
-1. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+1. **Toplu geri yükleme** sayfasında, **CSV dosyanızı karşıya yükleyin** bölümünde dosyaya gidin. Dosyayı seçip **Gönder**' e TıKLADıĞıNıZDA, CSV dosyasının doğrulanması başlar.
+1. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini** görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
 1. Dosyanız doğrulamayı geçtiğinde, kullanıcıları geri yükleyen Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
 1. Geri yükleme işlemi tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
 
@@ -77,7 +77,7 @@ Daha sonra, geri yüklediğiniz kullanıcıların Azure portal veya PowerShell k
 1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde oturum açın](https://aad.portal.azure.com) .
 1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
-1. **Göster**altında, **tüm kullanıcılar** ' ı seçin ve geri yüklediğiniz kullanıcıların listelendiğini doğrulayın.
+1. **Göster** altında, **tüm kullanıcılar** ' ı seçin ve geri yüklediğiniz kullanıcıların listelendiğini doğrulayın.
 
 ### <a name="view-users-with-powershell"></a>PowerShell ile kullanıcıları görüntüleme
 

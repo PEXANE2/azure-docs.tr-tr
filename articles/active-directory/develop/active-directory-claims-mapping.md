@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275800"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647605"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -239,6 +239,9 @@ Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepl
 
 Hangi taleplerin yayıldığını ve verilerin nereden geldiğini denetlemek için, bir talep eşleme ilkesinin özelliklerini kullanın. Bir ilke ayarlanmamışsa sistem, çekirdek talep kümesi, temel talep kümesi ve uygulamanın almak üzere seçtiği tüm [isteğe bağlı talepler](active-directory-optional-claims.md) içeren belirteçler yayınlar.
 
+> [!NOTE]
+> Çekirdek talep kümesindeki talepler, bu özelliğin ne şekilde ayarlandığına bakılmaksızın her belirteçte mevcuttur.
+
 ### <a name="include-basic-claim-set"></a>Temel talep kümesini dahil et
 
 **Dize:** Includebasicclaimset
@@ -250,8 +253,7 @@ Hangi taleplerin yayıldığını ve verilerin nereden geldiğini denetlemek iç
 - True olarak ayarlanırsa, temel talep kümesindeki tüm talepler, ilkeden etkilenen belirteçlerde dağıtılır.
 - False olarak ayarlanırsa, temel talep kümesindeki talepler, aynı ilkenin talep şeması özelliğine tek eklenmedikleri takdirde, belirteçlerde değildir.
 
-> [!NOTE]
-> Çekirdek talep kümesindeki talepler, bu özelliğin ne şekilde ayarlandığına bakılmaksızın her belirteçte mevcuttur.
+
 
 ### <a name="claims-schema"></a>Talep şeması
 
@@ -260,7 +262,7 @@ Hangi taleplerin yayıldığını ve verilerin nereden geldiğini denetlemek iç
 **Veri türü:** Bir veya daha fazla talep şeması girişi içeren JSON blobu
 
 **Özet:** Bu özellik, temel talep kümesine ve çekirdek talep kümesine ek olarak, ilkeden etkilenen belirteçlerde hangi taleplerin mevcut olduğunu tanımlar.
-Bu özellikte tanımlanan her talep şeması girişi için bazı bilgiler gereklidir. Verilerin (**değer**, **kaynak/kimlik çiftinin**veya **kaynak/extensionID çiftinin**) nereye geldiğini ve verilerin hangi talebe göre (**talep türü**) yayınlandığını belirtin.
+Bu özellikte tanımlanan her talep şeması girişi için bazı bilgiler gereklidir. Verilerin (**değer**, **kaynak/kimlik çiftinin** veya **kaynak/extensionID çiftinin**) nereye geldiğini ve verilerin hangi talebe göre (**talep türü**) yayınlandığını belirtin.
 
 ### <a name="claim-schema-entry-elements"></a>Talep şeması giriş öğeleri
 
@@ -329,7 +331,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | atanan | kullanıcıya atanan uygulama rollerinin listesi|
 | uygulama, kaynak, hedef kitle | DisplayName | Görünen Ad |
 | uygulama, kaynak, hedef kitle | uzantının | ObjectID |
-| uygulama, kaynak, hedef kitle | etiketler | Hizmet sorumlusu etiketi |
+| uygulama, kaynak, hedef kitle | tags | Hizmet sorumlusu etiketi |
 | Şirket | tenantcountry | Kiracının ülkesi/bölgesi |
 
 **Dönüştürme kimliği:** Dönüşümtionıd öğesi yalnızca kaynak öğe "dönüşüm" olarak ayarlandıysa sağlanmalıdır.
@@ -439,10 +441,9 @@ Talep eşleme ilkeleri, yalnızca hizmet sorumlusu nesnelerine atanabilir.
 
 Azure AD 'de, belirli hizmet sorumluları için belirteçlerde yayılan talepleri özelleştirebilmeniz için birçok senaryo mümkündür. Bu bölümde, talep eşleme ilkesi türünü nasıl kullanacağınızı belirlemenize yardımcı olabilecek birkaç yaygın senaryoya kılavuzluk ederiz.
 
-> [!NOTE]
-> Bir talep eşleme ilkesi oluştururken, belirteçlerdeki Dizin şeması uzantısı özniteliğinden bir talep da oluşturabilirsiniz. Öğesinde *ID* yerine Extension özniteliği Için *extensionID* kullanın `ClaimsSchema` .  Uzantı öznitelikleri hakkında daha fazla bilgi için bkz. [Dizin şeması uzantısı özniteliklerini kullanma](active-directory-schema-extensions.md).
+Bir talep eşleme ilkesi oluştururken, belirteçlerdeki Dizin şeması uzantısı özniteliğinden bir talep da oluşturabilirsiniz. Öğesinde *ID* yerine Extension özniteliği Için *extensionID* kullanın `ClaimsSchema` .  Uzantı öznitelikleri hakkında daha fazla bilgi için bkz. [Dizin şeması uzantısı özniteliklerini kullanma](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki örneklerde, hizmet sorumluları için ilkeleri oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma hakkında bilgi](quickstart-create-new-tenant.md) almanızı öneririz.
 

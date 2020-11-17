@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7208b068bee4b0a4cc30adfd98d2422718bbcc
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628909"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646585"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -33,7 +33,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
@@ -73,7 +73,7 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
 - Yöneticiler, güvenlik gruplarını kullanarak bulut kimlik doğrulamasını alabilir. Şirket içi Active Directory güvenlik grupları kullanırken eşitleme gecikmesini önlemek için, bulut güvenlik grupları kullanmanızı öneririz. Aşağıdaki koşullar geçerlidir:
 
-    - Her özellik için en fazla 10 grup kullanabilirsiniz. Diğer bir deyişle, *Parola karması eşitleme* , *geçişli kimlik doğrulama* ve *sorunsuz SSO* için 10 grup kullanabilirsiniz.
+    - Her özellik için en fazla 10 grup kullanabilirsiniz. Diğer bir deyişle, *Parola karması eşitleme*, *geçişli kimlik doğrulama* ve *sorunsuz SSO* için 10 grup kullanabilirsiniz.
     - İç içe gruplar *desteklenmiyor*. Bu kapsam, genel önizleme için de geçerlidir.
     - Dinamik Gruplar, hazırlanan dağıtım için *desteklenmez* .
     - Grup içindeki kişi nesneleri grubun eklenmesini engeller.
@@ -117,7 +117,7 @@ Aşamalı dağıtım kullanarak *doğrudan kimlik doğrulaması* oturum açma 'y
 
 1. [Akıllı kilitleme ayarlarınızı](../authentication/howto-password-smart-lockout.md) uygun şekilde yapılandırdığınızdan emin olun. Bunun yapılması, kullanıcılarınızın şirket içi Active Directory hesaplarının kötü aktör tarafından kilitlenmemesini sağlamaya yardımcı olur.
 
-Hazırlanan dağıtım için seçtiğiniz oturum açma yönteminden ( *Parola karması eşitlemesi* veya *geçişli kimlik doğrulaması* ) bağımsız olarak *sorunsuz SSO* etkinleştirmenizi öneririz. *Sorunsuz SSO* 'yu etkinleştirmek için sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
+Hazırlanan dağıtım için seçtiğiniz oturum açma yönteminden (*Parola karması eşitlemesi* veya *geçişli kimlik doğrulaması*) bağımsız olarak *sorunsuz SSO* etkinleştirmenizi öneririz. *Sorunsuz SSO*'yu etkinleştirmek için sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
 
 ## <a name="pre-work-for-seamless-sso"></a>Sorunsuz SSO için önceden çalışma
 
@@ -149,7 +149,7 @@ Aşağıdakileri yaparak *sorunsuz SSO* 'yu etkinleştirin:
 
 ## <a name="enable-staged-rollout"></a>Hazırlanan dağıtımı etkinleştir
 
-Belirli bir özelliği ( *doğrudan kimlik doğrulama* , *Parola karması EŞITLEME* veya *sorunsuz SSO* ) bir gruptaki bir grup kullanıcı kümesine aktarmak için, sonraki bölümlerdeki yönergeleri izleyin.
+Belirli bir özelliği (*doğrudan kimlik doğrulama*, *Parola karması EŞITLEME* veya *sorunsuz SSO*) bir gruptaki bir grup kullanıcı kümesine aktarmak için, sonraki bölümlerdeki yönergeleri izleyin.
 
 ### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Kiracınızda belirli bir özelliğin hazırlanmış bir dağıtımını etkinleştirin
 
@@ -165,25 +165,26 @@ Aşağıdaki seçeneklerden birini kullanabilirsiniz:
 
 2. **Yönetilen Kullanıcı oturum açma (Önizleme) bağlantısı için hazırlanan dağıtımı etkinleştir** ' i seçin.
 
-   Örneğin, *seçenek A* 'yı etkinleştirmek istiyorsanız, aşağıdaki görüntülerde gösterildiği gibi **parola karma eşitlemesini** ve **kesintisiz çoklu oturum açma** denetimlerini **üzerine** kaydırın.
+   Örneğin, *seçenek A*'yı etkinleştirmek istiyorsanız, aşağıdaki görüntülerde gösterildiği gibi **parola karma eşitlemesini** ve **kesintisiz çoklu oturum açma** denetimlerini **üzerine** kaydırın.
 
    ![Azure AD Connect sayfası](./media/how-to-connect-staged-rollout/sr4.png)
 
    !["Hazırlanan dağıtım özelliklerini etkinleştir (Önizleme)" sayfası](./media/how-to-connect-staged-rollout/sr5.png)
 
-3. *Doğrudan kimlik doğrulamayı* ve *sorunsuz SSO* 'yu etkinleştirmek için grupları özelliğe ekleyin. Bir UX zaman aşımını önlemek için, güvenlik gruplarının başlangıçta 200 ' den fazla üye içermediğinden emin olun.
+3. *Doğrudan kimlik doğrulamayı* ve *sorunsuz SSO*'yu etkinleştirmek için grupları özelliğe ekleyin. Bir UX zaman aşımını önlemek için, güvenlik gruplarının başlangıçta 200 ' den fazla üye içermediğinden emin olun.
 
    !["Parola karması eşitleme (Önizleme) için grupları yönet" sayfası](./media/how-to-connect-staged-rollout/sr6.png)
 
    >[!NOTE]
    >Bir gruptaki üyeler, hazırlanan dağıtım için otomatik olarak etkinleştirilir. İç içe ve dinamik gruplar, hazırlanan dağıtım için desteklenmez.
    >Yeni bir grup eklenirken, gruptaki kullanıcılar (yeni bir grup için en çok 200 kullanıcıya kadar) yönetilen kimlik doğrulama imsedily kullanacak şekilde güncelleştirilir. Bir grubu (Kullanıcı ekleme veya kaldırma) düzenlemeyle, değişikliklerin etkili olması 24 saate kadar sürebilir.
+   >Sorunsuz SSO yalnızca, kullanıcılar sorunsuz SSO grubsunlar ve ayrıca bir PTA veya PHS grubunda ise geçerlidir.
 
 ## <a name="auditing"></a>Denetim
 
 Hazırlanan dağıtım için gerçekleştirdiğimiz çeşitli eylemler için denetim olaylarını etkinleştirdik:
 
-- *Parola karması eşitleme* , *geçişli kimlik doğrulama* veya *sorunsuz SSO* için hazırlanmış bir dağıtımı etkinleştirdiğinizde olay denetimi.
+- *Parola karması eşitleme*, *geçişli kimlik doğrulama* veya *sorunsuz SSO* için hazırlanmış bir dağıtımı etkinleştirdiğinizde olay denetimi.
 
   >[!NOTE]
   >Hazırlanmış dağıtım kullanılarak *sorunsuz SSO* açık olduğunda bir denetim olayı günlüğe kaydedilir.
@@ -192,7 +193,7 @@ Hazırlanan dağıtım için gerçekleştirdiğimiz çeşitli eylemler için den
 
   !["Özellik için dağıtım ilkesi oluşturma" bölmesi-değiştirilen özellikler sekmesi](./media/how-to-connect-staged-rollout/sr8.png)
 
-- *Parola karması eşitleme* , *geçişli kimlik doğrulama* veya *sorunsuz SSO* 'ya bir grup eklendiğinde olay denetimi.
+- *Parola karması eşitleme*, *geçişli kimlik doğrulama* veya *sorunsuz SSO*'ya bir grup eklendiğinde olay denetimi.
 
   >[!NOTE]
   >Hazırlanmış dağıtım için *Parola karması eşitlemesine* bir grup eklendiğinde bir denetim olayı günlüğe kaydedilir.
@@ -239,7 +240,7 @@ Y: Evet, bu özelliği üretim kiracınızda kullanabilirsiniz, ancak ilk olarak
 
 **S: Bu özellik, bazı kullanıcıların federal kimlik doğrulaması kullandığı ve diğer kullanıcıların bulut kimlik doğrulamasını kullandığı kalıcı bir "ortak varlığı" korumak için kullanılabilir mi?**
 
-Y: Hayır, bu özellik, Federasyon 'dan bulut kimlik doğrulamasına geçiş yapmak ve sonunda bulut kimlik doğrulamasına geçmek için tasarlanmıştır. Kalıcı bir karma durum kullanılması önerilmez, çünkü bu yaklaşım beklenmedik kimlik doğrulama akışlarına yol açabilir.
+Y: Hayır, bu özellik bulut kimlik doğrulamasını test etmek için tasarlanmıştır. Birkaç kullanıcı grubunu başarıyla test ettikten sonra, bulut kimlik doğrulamasına kadar kesmeniz gerekir. Kalıcı bir karma durum kullanılması önerilmez, çünkü bu yaklaşım beklenmedik kimlik doğrulama akışlarına yol açabilir.
 
 **S: PowerShell 'i, hazırlanan dağıtım gerçekleştirmek için kullanabilir miyim?**
 

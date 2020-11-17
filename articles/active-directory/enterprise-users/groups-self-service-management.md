@@ -4,7 +4,7 @@ description: Güvenlik grupları veya Microsoft 365 grupları oluşturma ve yön
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1730507c022d57495efa56c98215ff72d07e180
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 6425809cfa6dde20b8ef2b1f6d4cfaf04cbef6e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578187"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647095"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Azure Active Directory içinde Self Servis Grup yönetimini ayarlama 
 
@@ -49,8 +49,8 @@ Azure portal veya Azure AD PowerShell kullanılarak güvenlik grupları oluştur
 1. **Erişim panelindeki gruplara erişimi kısıtla '** yı **Hayır** olarak ayarlayın.
 1. **Kullanıcıları, Azure portalları 'nda güvenlik grupları oluşturabilir** veya **Kullanıcılar azure portalları 'nda Microsoft 365 grupları oluşturabilir**
 
-    - **Evet** : Azure AD kuruluşunuzdaki tüm kullanıcılara yeni güvenlik grupları oluşturma ve bu gruplara üye ekleme izni verilir. Bu yeni gruplar ayrıca diğer tüm kullanıcılar Erişim Paneli’nde gösterilir. Gruptaki ilke ayarı izin veriyorsa, diğer kullanıcılar bu gruplara katılması için istek oluşturabilir
-    - **Hayır** : kullanıcılar grup oluşturamaz ve sahibi oldukları mevcut grupları değiştiremez. Ancak, bu grupların üyeliklerini yönetmeye ve diğer kullanıcıların gruplara katılma isteklerini onaylamaya devam edebilirler.
+    - **Evet**: Azure AD kuruluşunuzdaki tüm kullanıcılara yeni güvenlik grupları oluşturma ve bu gruplara üye ekleme izni verilir. Bu yeni gruplar ayrıca diğer tüm kullanıcılar Erişim Paneli’nde gösterilir. Gruptaki ilke ayarı izin veriyorsa, diğer kullanıcılar bu gruplara katılması için istek oluşturabilir
+    - **Hayır**: kullanıcılar grup oluşturamaz ve sahibi oldukları mevcut grupları değiştiremez. Ancak, bu grupların üyeliklerini yönetmeye ve diğer kullanıcıların gruplara katılma isteklerini onaylamaya devam edebilirler.
 
 Kullanıcılarınız için Self Servis Grup yönetimi üzerinde daha ayrıntılı erişim denetimi elde etmek üzere **Azure Portal üyeleri Grup sahipleri olarak atayabilecek sahipler** de kullanabilirsiniz.
 

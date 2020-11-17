@@ -7,25 +7,25 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: tutorial
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba6ba2bccf45f7f18e26fb073a2b992167a5c9be
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379073"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647333"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Öğretici: Grup üyelerini otomatik olarak ekleme veya kaldırma
 
 Azure Active Directory (Azure AD) içinde, otomatik olarak güvenlik gruplarına veya Microsoft 365 gruplara kullanıcı ekleyebilir veya kaldırabilirsiniz. böylece, her zaman el ile yapmanız gerekmez. Bir kullanıcının veya cihazın herhangi bir özelliği değiştiğinde Azure AD, değişikliğin üye eklemesi veya kaldırılması gerekip gerekmediğini görmek için Azure AD kuruluşunuzdaki tüm dinamik grup kurallarını değerlendirir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir iş ortağı şirketten otomatik olarak doldurulmuş bir konuk kullanıcıları grubu oluşturma
 > * Gruba konuk kullanıcıların erişmesi için iş ortağına özgü özelliklere yönelik lisans atama
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özellik, kuruluşun genel yöneticisi olarak sizin için bir Azure AD Premium lisansı gerektirir. Bir tane yoksa, Azure AD 'de **Lisans**  >  **ürünlerini**  >  **dene/satın al**' ı seçin.
 
@@ -59,12 +59,12 @@ Dinamik gruplara üye olarak ekleyeceğiniz kullanıcılara lisans atamanıza ge
 
    * **Özellik** alanında, var olan değere tıklayın ve **UserType**' ı seçin. 
    * **İşleç** alanında **eşittir** seçili olduğunu doğrulayın.  
-   * **Değer** alanını seçin ve **Konuk**yazın. 
+   * **Değer** alanını seçin ve **Konuk** yazın. 
    * Başka bir satır eklemek için **Ifade Ekle** Köprüsü ' ne tıklayın.
    * **Ve/veya** alanında, **ve**' ı seçin.
    * **Özellik** alanında **CompanyName**' i seçin.
    * **İşleç** alanında **eşittir** seçili olduğunu doğrulayın.
-   * **Değer** alanına **contoso**girin.
+   * **Değer** alanına **contoso** girin.
    * **Dinamik üyelik kuralları** dikey penceresini kapatmak için **Kaydet** ' e tıklayın.
    
 8. **Grup** dikey penceresinde **Oluştur**'u seçerek grubu oluşturun.

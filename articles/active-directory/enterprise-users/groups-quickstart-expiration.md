@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 842cd92e451b8d959dcf04135da504d7cf85a16e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379246"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647214"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory Microsoft 365 grupları sona ermek üzere ayarla
 
@@ -55,7 +55,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="set-group-expiration"></a>Grup süre sonunu ayarlama
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, süre sonu **Azure Active Directory**  >  **Groups**  >  ayarlarını açmak için Azure Active Directory grupları**süre sonu** ' nu seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, süre sonu **Azure Active Directory**  >  **Groups**  >  ayarlarını açmak için Azure Active Directory grupları **süre sonu** ' nu seçin.
   
    ![Grup için süre sonu ayarları sayfası](./media/groups-quickstart-expiration/expiration-settings.png)
 
@@ -75,7 +75,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 1. Azure AD kuruluşunuzun genel yöneticisi olan bir hesapla [Azure Portal](https://portal.azure.com) oturum açtığınızdan emin olun.
 2. **Azure Active Directory**  >  **grupları**  >  **süre sonu**' nu seçin.
-3. **Bu Microsoft 365 grupları için süre sonunu etkinleştir** ' i **hiçbiri**olarak ayarlayın.
+3. **Bu Microsoft 365 grupları için süre sonunu etkinleştir** ' i **hiçbiri** olarak ayarlayın.
 
 ### <a name="to-turn-off-user-creation-for-groups"></a>Kullanıcılar için grup oluşturma özelliğini kapatmak için
 

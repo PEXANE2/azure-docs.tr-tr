@@ -14,4 +14,4 @@ ms.locfileid: "93124849"
 ---
 Bu makalede kullanılan tüm kaynakların kimliğini doğrulamak için bir [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) **uygulama kaydı** ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](../articles/digital-twins/how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
 
-Uygulama kaydınız olduktan sonra kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** ( [Azure Portal bul](../articles/digital-twins/how-to-create-app-registration.md#collect-client-id-and-tenant-id)) gerekir. Azure dijital TWINS API 'Lerine erişim izni vermek için bu değerleri daha sonra kullanmak üzere bir yere göz atın.
+Uygulama kaydınız olduktan sonra kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** ([Azure Portal bul](../articles/digital-twins/how-to-create-app-registration.md#collect-client-id-and-tenant-id)) gerekir. Azure dijital TWINS API 'Lerine erişim izni vermek için bu değerleri daha sonra kullanmak üzere bir yere göz atın.

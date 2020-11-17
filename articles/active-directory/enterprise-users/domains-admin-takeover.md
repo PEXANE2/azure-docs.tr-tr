@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11708aeb434f3b258377c02f15214f1ac9ae4295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d0472b2adb3213338b9fbc4e3a17a2c3444eb113
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393634"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647588"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma
 
@@ -38,7 +38,7 @@ Microsoft 365 gibi SharePoint ve OneDrive içeren bazı ürünler dışarıdan d
 
 1. Power BI için kaydolup yönetilmeyen kuruluşta bir kullanıcı bağlamı oluşturun. Örneğin, bu adımlar bu yolu kabul eder.
 
-2. [Power BI sitesini](https://powerbi.com) açın ve **ücretsiz Başlat** ' ı seçin. Kuruluşun etki alanı adını kullanan bir kullanıcı hesabı girin; Örneğin, `admin@fourthcoffee.xyz` . Doğrulama kodunu girdikten sonra, onay kodu için e-postanızı kontrol edin.
+2. [Power BI sitesini](https://powerbi.com) açın ve **ücretsiz Başlat**' ı seçin. Kuruluşun etki alanı adını kullanan bir kullanıcı hesabı girin; Örneğin, `admin@fourthcoffee.xyz` . Doğrulama kodunu girdikten sonra, onay kodu için e-postanızı kontrol edin.
 
 3. Power BI 'den onay e-postasında, **Evet '** i seçin.
 
@@ -59,7 +59,7 @@ Yukarıdaki adımları tamamladığınızda, artık Microsoft 365 dördüncü ka
 1. [Microsoft 365 Yönetim merkezini](https://admin.microsoft.com)açın.
 2. **Kullanıcılar** sekmesini seçin ve özel etki alanı adı kullanmayan *user \@ fourthcoffeexyz.onmicrosoft.com* gibi bir ada sahip yeni bir kullanıcı hesabı oluşturun. 
 3. Yeni Kullanıcı hesabının Azure AD kuruluşu için genel yönetici ayrıcalıklarına sahip olduğundan emin olun.
-4. Microsoft 365 Yönetim merkezinde **etki alanları** sekmesini açın, etki alanı adını seçin ve **Kaldır** ' ı seçin. 
+4. Microsoft 365 Yönetim merkezinde **etki alanları** sekmesini açın, etki alanı adını seçin ve **Kaldır**' ı seçin. 
   
    ![Microsoft 365 etki alanı adını kaldır](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
@@ -67,7 +67,7 @@ Yukarıdaki adımları tamamladığınızda, artık Microsoft 365 dördüncü ka
   
 6. Azure AD [Yönetim merkezinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) Azure AD kuruluşu için genel yönetici olan bir hesapla oturum açın.
   
-7. **Özel etki alanı adları** ' nı seçin ve ardından etki alanı adını ekleyin. Etki alanı adının sahipliğini doğrulamak için DNS TXT kayıtlarını girmeniz gerekir. 
+7. **Özel etki alanı adları**' nı seçin ve ardından etki alanı adını ekleyin. Etki alanı adının sahipliğini doğrulamak için DNS TXT kayıtlarını girmeniz gerekir. 
   
    ![Azure AD 'ye eklenen etki alanı doğrulandı](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
@@ -144,12 +144,12 @@ cmdlet | Kullanım
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    Örnek:
+    Örneğin:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Bu komuttan döndürülen değeri (zorluk) kopyalayın. Örnek:
+4. Bu komuttan döndürülen değeri (zorluk) kopyalayın. Örneğin:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -160,7 +160,7 @@ cmdlet | Kullanım
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Örnek:
+   Örneğin:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force

@@ -87,7 +87,7 @@
       href: security-center-powershell-onboarding.md
     - name: Yönetim grubu için Güvenlik Merkezi'ni etkinleştirme
       href: onboard-management-group.md
-    - name: Veri toplamayı yapılandırma
+    - name: Otomatik sağlamayı yapılandırma
       href: security-center-enable-data-collection.md
     - name: E-posta bildirimlerini ayarlama
       href: security-center-provide-security-contact-details.md

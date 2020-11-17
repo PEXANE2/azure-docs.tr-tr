@@ -10,22 +10,22 @@ editor: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 04/27/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: kakern
 ms.reviewer: kakern
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7b74fe368e10a0cd6ee63196d4330c456d56ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: db07f18b97936389d9b2360f7d4476c67d9f284a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377485"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646908"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Lisanslama için ürün adları ve hizmet planı tanımlayıcıları
 
-[Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) veya [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)lisansları yönetirken, *Office 365 E3*gibi görünen ürün adlarını görürsünüz. PowerShell v 1.0 cmdlet 'lerini kullandığınızda, aynı ürün belirli bir ancak daha az kolay ad kullanılarak tanımlanır: *Enterprisepack*. PowerShell v 2.0 cmdlet 'leri veya Microsoft Graph kullanılırken, aynı ürün bir GUID değeri kullanılarak tanımlanır: *6fd2c87f-b296-42f0-b197-1e91e994b900*. Aşağıdaki tabloda, en yaygın olarak kullanılan Microsoft çevrimiçi hizmet ürünleri listelenmekte ve çeşitli KIMLIK değerleri sağlanmaktadır. Bu tablolar başvuru amaçlıdır ve yalnızca bu makalenin son güncelleştirilme tarihine göre doğru olur. Microsoft, bunları yeni eklenen hizmetler için düzenli aralıklarla güncelleştirmeyi planlamaz.
+[Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) veya [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)lisansları yönetirken, *Office 365 E3* gibi görünen ürün adlarını görürsünüz. PowerShell v 1.0 cmdlet 'lerini kullandığınızda, aynı ürün belirli bir ancak daha az kolay ad kullanılarak tanımlanır: *Enterprisepack*. PowerShell v 2.0 cmdlet 'leri veya Microsoft Graph kullanılırken, aynı ürün bir GUID değeri kullanılarak tanımlanır: *6fd2c87f-b296-42f0-b197-1e91e994b900*. Aşağıdaki tabloda, en yaygın olarak kullanılan Microsoft çevrimiçi hizmet ürünleri listelenmekte ve çeşitli KIMLIK değerleri sağlanmaktadır. Bu tablolar başvuru amaçlıdır ve yalnızca bu makalenin son güncelleştirilme tarihine göre doğru olur. Microsoft, bunları yeni eklenen hizmetler için düzenli aralıklarla güncelleştirmeyi planlamaz.
 
 - **Ürün adı**: yönetim portalları 'nda kullanılır
 - **DIZE kimliği**: lisanslar üzerinde Işlemler gerçekleştirirken PowerShell v 1.0 cmdlet 'leri tarafından kullanılır

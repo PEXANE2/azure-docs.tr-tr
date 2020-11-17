@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 08/13/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f16dea1f81f7f6a35409d8481550fd000864b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4f298cf7487e00f6ee6a8aa8913fd32f8c6beee
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376697"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647112"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) grup tabanlı lisanslama hakkında daha geliş
 
 ## <a name="usage-location"></a>Kullanım konumu
 
-Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için önce yönetici kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmelidir. [Azure Portal](https://portal.azure.com), **Kullanıcı** &gt; **profili** &gt; **ayarlarında**kullanım konumu belirtebilirsiniz.
+Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için önce yönetici kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmelidir. [Azure Portal](https://portal.azure.com), **Kullanıcı** &gt; **profili** &gt; **ayarlarında** kullanım konumu belirtebilirsiniz.
 
 Grup lisansı ataması için, kullanım konumu belirtilmemiş tüm kullanıcılar dizinin konumunu alır. Birden çok konumdaki kullanıcılarınız varsa, lisanslarına Kullanıcı eklemeden önce Kullanıcı kaynaklarınıza doğru şekilde yansıtıdığınızdan emin olun.
 
@@ -108,7 +108,7 @@ Bu işlemin nasıl görünebileceklerini aşağıda görebilirsiniz:
 
 1. İlk olarak, *Office 365 Enterprise E5* ürününü birkaç gruba atamış olursunuz. *O365 E5-Exchange* olarak adlandırılan gruplardan biri yalnızca üyeleri Için *Exchange Online (plan 2)* hizmetini etkinleştirmek üzere tasarlanmıştır.
 
-2. Microsoft 'un, E5 ürününün yeni bir hizmet *Microsoft Stream*uzatılmayacak bir bildirim aldınız. Hizmet kuruluşunuzda kullanılabilir olduğunda şunları yapabilirsiniz:
+2. Microsoft 'un, E5 ürününün yeni bir hizmet *Microsoft Stream* uzatılmayacak bir bildirim aldınız. Hizmet kuruluşunuzda kullanılabilir olduğunda şunları yapabilirsiniz:
 
 3. [**Tüm ürünler dikey penceresinde Azure Active Directory > > lisanslar**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ' a gidin ve *Office 365 Kurumsal E5*' i seçin, sonra da bu ürüne sahip tüm grupların bir listesini görüntülemek için **lisanslı gruplar** ' ı seçin.
 
@@ -163,11 +163,11 @@ Ayrıntıları içeren son grup lisansı değişikliklerinin bir örneği aşağ
 
 Bir grup üzerinde bir lisans değiştiğinde Azure AD, değişiklikleri tüm kullanıcılara uygulamaya başlayacaktır.
 
-1. Grupların işlemeye ne zaman başlatıldığını görmek için, **etkinlik** filtresini *kullanıcılara grup tabanlı lisans uygulamaya başlayacak*şekilde ayarlayın. İşlemin aktörün *Microsoft Azure AD Group-Based lisanslama* -tüm grup lisansı değişikliklerini yürütmek için kullanılan bir sistem hesabı olduğunu unutmayın.
+1. Grupların işlemeye ne zaman başlatıldığını görmek için, **etkinlik** filtresini *kullanıcılara grup tabanlı lisans uygulamaya başlayacak* şekilde ayarlayın. İşlemin aktörün *Microsoft Azure AD Group-Based lisanslama* -tüm grup lisansı değişikliklerini yürütmek için kullanılan bir sistem hesabı olduğunu unutmayın.
    >[!TIP]
    > *Değiştirilen özellikler* alanını görmek için listedeki bir öğeye tıklayın-işlenmek üzere çekilen lisans değişikliklerini gösterir. Bu, bir grupta birden fazla değişiklik yaptıysanız ve hangisinin işlendiğinden emin değilseniz yararlıdır.
 
-2. Benzer şekilde, grupların işlemenin ne zaman tamamlandığını görmek için, *kullanıcılara grup tabanlı lisans uygulamayı tamamlama*filtre değerini kullanın.
+2. Benzer şekilde, grupların işlemenin ne zaman tamamlandığını görmek için, *kullanıcılara grup tabanlı lisans uygulamayı tamamlama* filtre değerini kullanın.
    > [!TIP]
    > Bu durumda, *değiştirilen özellikler* alanı sonuçların bir özetini içerir. işlemin hatalara neden olup olmadığını hızlı bir şekilde denetlemek için kullanışlıdır. Örnek çıktı:
    > ```

@@ -112,12 +112,22 @@
   items:
     - name: Kimlik Doğrulaması
       href: authentication.md
-    - name: Güvenli URL listesi
-      href: safe-url-list.md
     - name: Windows Sanal Masaüstü ortamı
       href: environment-setup.md
-    - name: Kullanıcı bağlantı gecikmesini belirleme
-      href: connection-latency.md
+    - name: Ağ bağlantısı
+      items:
+        - name: Ağ bağlantısını anlama
+          href: network-connectivity.md
+        - name: RDP Kısayolu
+          href: shortpath.md
+        - name: Hizmet Kalitesi (QoS) uygulama
+          href: rdp-quality-of-service-qos.md
+        - name: Güvenli URL listesi
+          href: safe-url-list.md
+        - name: Bant genişliği ile ilgili dikkat edilmesi gerekenler
+          href: rdp-bandwidth.md
+        - name: Kullanıcı bağlantı gecikmesini belirleme
+          href: connection-latency.md
     - name: Windows Sanal Masaüstü'ne temsilci erişimi
       href: delegated-access-virtual-desktop.md
     - name: Ana bilgisayar havuzu yük dengeleme yöntemleri
@@ -168,8 +178,6 @@
       href: linux-overview.md
     - name: Desteklenen RDP dosyası ayarları
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
-    - name: Ağ kılavuzu
-      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: Sanal makine boyutlandırma kılavuzu
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure komut satırı arabirimi (CLI)

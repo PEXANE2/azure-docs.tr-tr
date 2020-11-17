@@ -8,19 +8,19 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d0136f7677aa722e578ac54c4f7d34338e47b0f7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517184"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646619"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 'de Kullanıcı yönetimi geliştirmeleri (Önizleme)
 
@@ -88,7 +88,7 @@ Bazı sütunlar varsayılan olarak görüntülenir. Diğer sütunları eklemek i
 Herhangi bir kullanıcı için **kimlik veren** sütununda, oturum açma türünü ve veren tarafından atanan kimliği de dahil olmak üzere, veren hakkında ek ayrıntıları görüntülemek için bir giriş seçin. **Kimlik veren** sütunundaki girişler çok değerli olabilir. Kullanıcının kimliğini birden çok veren varsa, **tüm kullanıcılar** ve **silinen kullanıcılar** sayfalarındaki **kimlik veren** sütununda birden çok sözcüğü görürsünüz ve Ayrıntılar bölmesinde tüm verenler listeleyin.
 
 > [!NOTE]
-> **Kaynak** sütun, daha ayrıntılı filtreleme için **oluşturma türü**, **eşitlenen Dizin**ve **kimlik veren** gibi birden çok sütunla değiştirilmiştir.
+> **Kaynak** sütun, daha ayrıntılı filtreleme için **oluşturma türü**, **eşitlenen Dizin** ve **kimlik veren** gibi birden çok sütunla değiştirilmiştir.
 
 ## <a name="user-list-search"></a>Kullanıcı listesi arama
 
@@ -138,9 +138,9 @@ Artık **tüm kullanıcılar** ve **silinen kullanıcılar** sayfalarındaki ada
 Soru | Yanıt
 -------- | ------
 Kalıcı silme tarihi geçtiğinde silinen kullanıcı neden hala görüntüleniyor? | Kalıcı silme tarihi UTC saat diliminde görüntülenir, bu nedenle bu durum geçerli saat diliminize eşleşmeyebilir. Ayrıca, bu tarih, kullanıcının kuruluştan kalıcı olarak silineceği en erken tarihtir, bu yüzden hala işleme devam edebilir. Kalıcı olarak silinen kullanıcılar otomatik olarak listeden kaldırılacak.
-Kullanıcılar ve konuklar için toplu yeteneklere ne olacak? | Toplu işlemler, toplu oluşturma, toplu davet etme, toplu silme ve Kullanıcı indirme dahil olmak üzere kullanıcılar ve konuklar için hala kullanılabilir. Onları **toplu işlemler**adlı bir menüde birleştirdik. **Toplu işlemler** seçeneklerini **tüm kullanıcılar** sayfasının en üstünde bulabilirsiniz.
-Kaynak sütununa ne oldu? | **Kaynak** sütunu benzer bilgiler sağlayan diğer sütunlarla değiştirilmiştir ve bu değerleri bağımsız olarak filtrelemenize izin verir. **Oluşturma türü**, **Dizin eşitlenmiş** ve **kimlik veren**örnekleri sayılabilir.
-Kullanıcı adı sütununa ne oldu? | **Kullanıcı adı** sütunu hala orada bulunur, ancak **Kullanıcı asıl adı**olarak yeniden adlandırılmıştır. Bu, söz konusu sütunda yer alan bilgileri daha iyi yansıtır. Ayrıca, tam Kullanıcı asıl adının artık B2B konukları için görüntülendiğini fark edersiniz. Bu, MS grafiğinde alacağınız ile eşleşir.  
+Kullanıcılar ve konuklar için toplu yeteneklere ne olacak? | Toplu işlemler, toplu oluşturma, toplu davet etme, toplu silme ve Kullanıcı indirme dahil olmak üzere kullanıcılar ve konuklar için hala kullanılabilir. Onları **toplu işlemler** adlı bir menüde birleştirdik. **Toplu işlemler** seçeneklerini **tüm kullanıcılar** sayfasının en üstünde bulabilirsiniz.
+Kaynak sütununa ne oldu? | **Kaynak** sütunu benzer bilgiler sağlayan diğer sütunlarla değiştirilmiştir ve bu değerleri bağımsız olarak filtrelemenize izin verir. **Oluşturma türü**, **Dizin eşitlenmiş** ve **kimlik veren** örnekleri sayılabilir.
+Kullanıcı adı sütununa ne oldu? | **Kullanıcı adı** sütunu hala orada bulunur, ancak **Kullanıcı asıl adı** olarak yeniden adlandırılmıştır. Bu, söz konusu sütunda yer alan bilgileri daha iyi yansıtır. Ayrıca, tam Kullanıcı asıl adının artık B2B konukları için görüntülendiğini fark edersiniz. Bu, MS grafiğinde alacağınız ile eşleşir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b8ed75a87d1ac638e5ca55058a3d1ad7fcdffa
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: eaf033f7da7a5bd4882d0c78a2321640aa64d8ac
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135389"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646568"
 ---
 # <a name="what-is-hr-driven-provisioning"></a>HR odaklı sağlama nedir?
 
@@ -45,5 +45,4 @@ Microsoft Identity Manager ve desteklediği sistemler hakkında bilgi için [Mic
 - [Kimlik yaşam döngüsü yönetimi nedir?](what-is-identity-lifecycle-management.md)
 - [Sağlama nedir?](what-is-provisioning.md)
 - [Uygulama sağlama nedir?](what-is-app-provisioning.md)
-- [Dizin içi sağlama nedir?](what-is-inter-directory-provisioning.md)
-- [Dizin sağlama nedir?](what-is-inter-directory-provisioning.md)
+- [Dizinler arası sağlama nedir?](what-is-inter-directory-provisioning.md)

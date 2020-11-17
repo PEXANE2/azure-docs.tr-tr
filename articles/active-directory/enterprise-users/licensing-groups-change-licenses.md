@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 07/07/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50915aebc9cb76c7bb67235e40564ff32ce656b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ec9a215d25ce1177b015b392c4f36d7547be521
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376673"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647035"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory bir kullanıcı veya grup için lisans atamalarını değiştirme
 
@@ -47,7 +47,7 @@ Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların
 
 1. Azure AD kuruluşunuzda bir lisans yöneticisi hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure Active Directory**  >  **Kullanıcılar**' ı seçin ve ardından bir kullanıcının **profil** sayfasını açın.
-1. **Lisansları**seçin.
+1. **Lisansları** seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** ' ı seçin. **Atamalar** sayfası, lisans atama çakışmalarını çözebileceğiniz yerdir.
 1. Office 365 E3 onay kutusunu işaretleyin ve kullanıcıya atanmış tüm E1 hizmetlerinin en azından seçili olduğundan emin olun.
 1. Office 365 E1 için onay kutusunu temizleyin.
@@ -62,7 +62,7 @@ Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için 
 
 1. Azure AD kuruluşunuzda bir lisans yöneticisi hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure Active Directory**  >  **grupları**' nı seçin ve ardından bir grup için **genel bakış** sayfasını açın.
-1. **Lisansları**seçin.
+1. **Lisansları** seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** komutunu seçin.
 1. Office 365 E3 onay kutusunu seçin. Hizmetin sürekliliği devam etmek için, kullanıcıya zaten atanmış olan E1 hizmetlerini seçtiğinizden emin olun.
 1. Office 365 E1 için onay kutusunu temizleyin.
