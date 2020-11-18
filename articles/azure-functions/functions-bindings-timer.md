@@ -4,15 +4,15 @@ description: Azure Işlevleri 'nde Zamanlayıcı Tetikleyicileri kullanmayı anl
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
-ms.date: 09/08/2018
+ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6baebdab06a72d3a4af05b4d2e04bc9eee6acb60
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d9852659801040d64fe4143f024fd52ffec16ee
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833019"
+ms.locfileid: "94874092"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi
 
@@ -299,11 +299,11 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 |Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
-|Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|ss: 05:00, SS her saat (saat)|
-|Tüm değerler ( `*` )|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (belirtilen saat içinde 60 kez)|
-|Bir Aralık ( `-` işleç)|<nobr>"5-7 * * * * *"</nobr>|ss: DD: 05, ss: DD: 06, ve hh: mm: 07 saat|
-|Bir değerler kümesi ( `,` işleç)|<nobr>"5, 8, 10 * * * * *"</nobr>|ss: DD: 05, ss: DD: 08 ve hh: mm: 10 burada ss: DD her saatin dakikada bir (3 kez bir dakika)|
-|Bir Aralık değeri ( `/` işleç)|<nobr>"0 */5 * * * *"</nobr>|ss: 00:00, ss: 05:00, ss: 10:00 ve bu şekilde ss: 00|
+|Belirli bir değer |<nobr>`0 5 * * * *`</nobr>| Her saatin dakikada 5 ' te günde bir kez |
+|Tüm değerler ( `*` )|<nobr>`0 * 5 * * *`</nobr>| Saatin her dakikada, saat 5 ' ten başlayarak |
+|Bir Aralık ( `-` işleç)|<nobr>`5-7 * * * * *`</nobr>| Her bir günün her bir dakikası için dakikada üç kez, 5 ila 7 |
+|Bir değerler kümesi ( `,` işleç)|<nobr>`5,8,10 * * * * *`</nobr>| Her bir günün her bir dakikası için dakikada üç kez 5, 8 ve 10 saniye |
+|Bir Aralık değeri ( `/` işleç)|<nobr>`0 */5 * * * *`</nobr>| Her gün 12 kez, her günün her bir saat için her 5 dakikada bir, ikinci 0 |
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -311,18 +311,18 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
 Azure Işlevlerinde süreölçer tetikleyicisi için kullanabileceğiniz bazı NCRONTAB ifadeleri örnekleri aşağıda verilmiştir.
 
-|Örnek|Tetiklendiğinde  |
-|---------|---------|
-|`"0 */5 * * * *"`|Beş dakikada bir|
-|`"0 0 * * * *"`|her saatin üstünde bir kez|
-|`"0 0 */2 * * *"`|Her iki saatte bir|
-|`"0 0 9-17 * * *"`|her saat 9 ' dan 5 ' e kadar|
-|`"0 30 9 * * *"`|Her gün 9:30 saat|
-|`"0 30 9 * * 1-5"`|Her gün 9:30 saat|
-|`"0 30 9 * Jan Mon"`|Ocak 9:30 ' de her Pazartesi|
+| Örnek            | Tetiklendiğinde                     |
+|--------------------|------------------------------------|
+| `0 */5 * * * *`    | Beş dakikada bir            |
+| `0 0 * * * *`      | her saatin üstünde bir kez      |
+| `0 0 */2 * * *`    | Her iki saatte bir               |
+| `0 0 9-17 * * *`   | her saat 9 ' dan 5 ' e kadar  |
+| `0 30 9 * * *`     | Her gün 9:30 saat               |
+| `0 30 9 * * 1-5`   | Her gün 9:30 saat           |
+| `0 30 9 * Jan Mon` | Ocak 9:30 ' de her Pazartesi |
 
 > [!NOTE]
-> NCRONTAB ifadesi **altı alan** biçimi gerektirir. Azure 'da beş alan cron ifadesi desteklenmez.
+> NCRONTAB ifadesi **altı alan** biçimi gerektirir. Altıncı alan konumu, ifadenin başına yerleştirilmiş saniyeler için bir değerdir. Azure 'da beş alan cron ifadesi desteklenmez.
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB saat dilimleri
 

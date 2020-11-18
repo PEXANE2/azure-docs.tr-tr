@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561327"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873905"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik ve idare
 
@@ -30,8 +30,8 @@ Bir bulut hizmeti kullandığınızda, erişimi yalnızca ihtiyacı olan kullan�
 
 Azure Machine Learning kaynakların çoğu kimlik doğrulaması için Azure Active Directory (Azure AD) ve yetkilendirme için rol tabanlı erişim denetimi (Azure RBAC) kullanır. Bunun özel durumları şunlardır:
 
-* __SSH__ : Azure Machine Learning işlem örneği gibi bazı Işlem kaynaklarına SSH erişimini etkinleştirebilirsiniz. SSH erişimi anahtar tabanlı kimlik doğrulaması kullanır. SSH anahtarları oluşturma hakkında daha fazla bilgi için bkz. [SSH anahtarları oluşturma ve yönetme](../virtual-machines/linux/create-ssh-keys-detailed.md). SSH erişimini etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md).
-* __Web Hizmetleri olarak dağıtılan modeller__ : Web hizmeti dağıtımları, __anahtar__ veya __belirteç__ tabanlı erişim denetimi kullanabilir. Anahtarlar statik dizelerdir. Belirteçler, bir Azure AD hesabı kullanılarak alınır. Daha fazla bilgi için bkz. [Web hizmeti olarak dağıtılan modeller için kimlik doğrulamasını yapılandırma](how-to-authenticate-web-service.md).
+* __SSH__: Azure Machine Learning işlem örneği gibi bazı Işlem kaynaklarına SSH erişimini etkinleştirebilirsiniz. SSH erişimi anahtar tabanlı kimlik doğrulaması kullanır. SSH anahtarları oluşturma hakkında daha fazla bilgi için bkz. [SSH anahtarları oluşturma ve yönetme](../virtual-machines/linux/create-ssh-keys-detailed.md). SSH erişimini etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md).
+* __Web Hizmetleri olarak dağıtılan modeller__: Web hizmeti dağıtımları, __anahtar__ veya __belirteç__ tabanlı erişim denetimi kullanabilir. Anahtarlar statik dizelerdir. Belirteçler, bir Azure AD hesabı kullanılarak alınır. Daha fazla bilgi için bkz. [Web hizmeti olarak dağıtılan modeller için kimlik doğrulamasını yapılandırma](how-to-authenticate-web-service.md).
 
 Azure veri depolama hizmetleri gibi Azure Machine Learning bağımlı olan belirli hizmetler kendi kimlik doğrulama ve yetkilendirme yöntemlerine sahiptir. Depolama Hizmetleri kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Storage Services 'A bağlanma](how-to-access-data.md).
 
@@ -75,6 +75,8 @@ Aşağıdaki tabloda, bazı önemli Azure Machine Learning işlemleri ve bunlar�
 | Web hizmetini çağır | ✓ | ✓ | ✓ |
 
 Yerleşik roller ihtiyaçlarınızı karşılamıyorsa, özel roller oluşturabilirsiniz. Özel Roller bir çalışma alanı içindeki tüm işlemleri, örneğin işlem oluşturma, çalıştırma gönderme, bir veri deposunu kaydetme veya model dağıtma gibi tüm işlemleri denetler. Özel rollerin kümeler, veri depoları, modeller ve uç noktalar gibi bir çalışma alanının çeşitli kaynakları üzerinde okuma, yazma veya silme izinleri olabilir. Rolü belirli bir çalışma alanı düzeyinde, belirli bir kaynak grubu düzeyinde veya belirli bir abonelik düzeyinde kullanılabilir hale getirebilirsiniz. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanında kullanıcıları ve rolleri yönetme](how-to-assign-roles.md).
+
+Kubernetes ile RBAC kullanma hakkında daha fazla bilgi için bkz. [Kubernetes yetkilendirmesi Için Azure Role-Based Access Control](../aks/manage-azure-rbac.md).
 
 > [!IMPORTANT]
 > Azure Machine Learning, Azure Blob depolama ve Azure Kubernetes hizmetleri gibi diğer Azure hizmetlerine bağımlıdır. Her Azure hizmetinin kendi Azure RBAC yapılandırması vardır. İstediğiniz erişim denetimi düzeyine ulaşmak için, Azure Machine Learning için hem Azure RBAC yapılandırması 'nı hem de Azure Machine Learning kullanılan Hizmetleri için uygulamanız gerekebilir.
@@ -129,7 +131,7 @@ Microsoft, otomatik Machine Learning gibi hizmetleri kullanırken, birden çok m
 
 Role ve izlenmekte göre Azure Machine Learning birkaç izleme senaryosu vardır.
 
-| Rol | Kullanım için izleme | Description |
+| Rol | Kullanım için izleme | Açıklama |
 | ---- | ----- | ----- |
 | Yönetici, DevOps, MLOps | [Azure izleyici ölçümleri](#azure-monitor), [etkinlik günlüğü](#activity-log), [güvenlik açığı taraması](#vulnerability-scanning) | Hizmet düzeyi bilgileri |
 | Veri bilimcisi, MLOps | [İzleme çalıştırmaları](#monitor-runs) | Eğitim çalıştırmaları sırasında günlüğe kaydedilen bilgiler |
@@ -137,7 +139,7 @@ Role ve izlenmekte göre Azure Machine Learning birkaç izleme senaryosu vardır
 
 ### <a name="monitor-runs"></a>İzleme çalıştırmaları
 
-Eğitim betiklerinizin içinden günlük kaydı bilgileri de dahil olmak üzere Azure Machine Learning deneme çalıştırmalarını izleyebilirsiniz. Bu bilgiler SDK, Azure CLı ve Studio aracılığıyla görüntülenebilir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Eğitim betiklerinizin içinden günlük kaydı bilgileri de dahil olmak üzere Azure Machine Learning deneme çalıştırmalarını izleyebilirsiniz. Bu bilgiler SDK, Azure CLı ve Studio aracılığıyla görüntülenebilir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Eğitim çalıştırmalarını başlatın, izleyin ve iptal edin](how-to-manage-runs.md)
 * [Günlükleri etkinleştirme](how-to-track-experiments.md)
@@ -146,7 +148,7 @@ Eğitim betiklerinizin içinden günlük kaydı bilgileri de dahil olmak üzere 
 
 ### <a name="azure-monitor"></a>Azure İzleyici
 
-Azure Machine Learning çalışma alanınızın ölçümlerini görüntülemek ve izlemek için Azure Izleyici ölçümlerini kullanabilirsiniz. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve ardından **ölçümler** ' i seçin:
+Azure Machine Learning çalışma alanınızın ölçümlerini görüntülemek ve izlemek için Azure Izleyici ölçümlerini kullanabilirsiniz. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve ardından **ölçümler**' i seçin:
 
 [![Bir çalışma alanı için örnek ölçümleri gösteren ekran görüntüsü](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
@@ -185,8 +187,8 @@ Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik
 
 [Azure ilkesi](../governance/policy/index.yml) , Azure kaynaklarının ilkelerinizle uyumlu olduğundan emin olmanızı sağlayan bir idare aracıdır. Azure Machine Learning, aşağıdaki ilkeleri atayabilirsiniz:
 
-* **Müşteri tarafından yönetilen anahtar** : çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
-* **Özel bağlantı** : çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin.
+* **Müşteri tarafından yönetilen anahtar**: çalışma alanlarının müşteri tarafından yönetilen anahtar kullanması gerekip gerekmediğini denetleyin veya zorlayın.
+* **Özel bağlantı**: çalışma alanlarının bir sanal ağla iletişim kurmak için özel uç nokta kullanıp kullanmadığını denetleyin.
 
 Azure Ilkesi hakkında daha fazla bilgi için bkz. [Azure ilkesi belgeleri](../governance/policy/overview.md).
 

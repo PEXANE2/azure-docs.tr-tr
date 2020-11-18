@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151004"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873514"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Hızlı başlangıç: SignalR hizmetini kullanarak sohbet odası oluşturma
 
@@ -27,18 +27,18 @@ Bu öğreticinin kodu [AzureSignalR-samples GitHub deposundan](https://github.co
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
 * [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) GitHub deposunu indirin veya kopyalayın. 
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR kaynağı oluşturma
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core web uygulaması oluşturma
 
@@ -52,13 +52,13 @@ Bu bölümde, bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.N
     dotnet new mvc
     ```
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="add-secret-manager-to-the-project"></a>Projeye Gizli Dizi Yöneticisi ekleme
 
 Bu bölümde, projenize [gizli yönetici aracını](/aspnet/core/security/app-secrets) ekleyeceksiniz. Gizli dizi Yöneticisi Aracı, geliştirme çalışması için hassas verileri proje ağacınızdaki dışında depolar. Bu yaklaşım, kaynak kodundaki uygulama gizli anahtarlarının yanlışlıkla paylaşılmasını önlemeye yardımcı olur.
 
-1. *.csproj* dosyanızı açın. *Microsoft.Extensions.SecretManager.Tools* öğesini dahil etmek için bir `DotNetCliToolReference` öğesi ekleyin. Ayrıca `UserSecretsId` , *chattest. csproj*için aşağıdaki kodda gösterildiği gibi bir öğesi ekleyin ve dosyayı kaydedin.
+1. *.csproj* dosyanızı açın. *Microsoft.Extensions.SecretManager.Tools* öğesini dahil etmek için bir `DotNetCliToolReference` öğesi ekleyin. Ayrıca `UserSecretsId` , *chattest. csproj* için aşağıdaki kodda gösterildiği gibi bir öğesi ekleyin ve dosyayı kaydedin.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -76,7 +76,7 @@ Bu bölümde, projenize [gizli yönetici aracını](/aspnet/core/security/app-se
     </Project>
     ```
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Web uygulamasına Azure SignalR ekleme
 
@@ -174,7 +174,7 @@ Bu sohbet odası uygulamasının istemci kullanıcı arabirimi, *Wwwroot* dizini
 
 *index.html*'nin ana kodu aşağıda verilmiştir:
 
-*Wwwroot* dizininde *index.html*adlı yeni bir dosya oluşturun, kopyalayın ve aşağıdaki HTML 'yi yeni oluşturulan dosyaya yapıştırın:
+*Wwwroot* dizininde *index.html* adlı yeni bir dosya oluşturun, kopyalayın ve aşağıdaki HTML 'yi yeni oluşturulan dosyaya yapıştırın:
 
 ```html
 <!DOCTYPE html>
@@ -347,7 +347,7 @@ Bu bölümde, ASP.NET Core için bir geliştirme çalışma zamanı ortamı ekle
     }
     ```
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
@@ -382,7 +382,7 @@ Bu bölümde, ASP.NET Core için bir geliştirme çalışma zamanı ortamı ekle
 
     ![Azure SignalR grup sohbeti örneği](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -403,7 +403,7 @@ Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunu
 
 Birkaç dakika sonra kaynak grubu ve bu gruptaki kaynakların tümü silinir.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -411,5 +411,3 @@ Bu hızlı başlangıçta yeni bir Azure SignalR hizmeti kaynağı oluşturdunuz
 
 > [!div class="nextstepaction"]
 > [Azure SignalR hizmeti kimlik doğrulaması](./signalr-concept-authenticate-oauth.md)
-
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnetcore)

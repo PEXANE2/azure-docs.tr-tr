@@ -4,12 +4,12 @@ description: Azure Application Insights verileriyle özel günlük/haftalık/ayl
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f35b7cbde7b719a91b23b19481ab704c445485cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827731"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873719"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
@@ -31,7 +31,7 @@ Her kuruluşun benzersiz raporlama ihtiyaçları vardır, örneğin:
 
 Bir zamanlamaya göre özel raporlar oluşturmak için [programlı olarak Application Insights verileri sorgulayabilirsiniz](https://dev.applicationinsights.io/) . Aşağıdaki seçenekler hızla başlamanıza yardımcı olabilir:
 
-* [Raporları Microsoft Flow otomatikleştirin](../platform/logicapp-flow-connector.md)
+* [Power otomatikleştirmede raporları otomatikleştirin](../platform/logicapp-flow-connector.md)
 * [Raporları Logic Apps otomatikleştirin](automate-with-logic-apps.md)
 * Izleme senaryosundaki "Application Insights zamanlanmış Özet" [Azure işlev](../../azure-functions/functions-create-first-azure-function.md) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid kullanır. 
 
@@ -91,7 +91,7 @@ availabilityResults
 
    ![İşlev ayarları ekran görüntüsü](./media/automate-custom-reports/scheduled-digest.png)
 
-6. **İşlev uygulaması**  >  **platform özellikleri**  >  **yapılandırmanızı**seçin.
+6. **İşlev uygulaması**  >  **platform özellikleri**  >  **yapılandırmanızı** seçin.
 
     ![Azure Işlevi uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/config.png)
 
@@ -99,7 +99,7 @@ availabilityResults
 
      ![İşlev tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/app-settings.png)
     
-    (AI_ değerleri, raporlamak istediğiniz Application Insights kaynak için API erişimi altında bulunabilir. Application Insights API anahtarınız yoksa, **API anahtarı oluşturma**seçeneği vardır.)
+    (AI_ değerleri, raporlamak istediğiniz Application Insights kaynak için API erişimi altında bulunabilir. Application Insights API anahtarınız yoksa, **API anahtarı oluşturma** seçeneği vardır.)
     
    * AI_APP_ID = uygulama KIMLIĞI
    * AI_APP_KEY = API anahtarı
@@ -112,7 +112,7 @@ availabilityResults
 
      ![Çıkış ekran görüntüsü](./media/automate-custom-reports/integrate.png)
 
-9. **SendGridAPI anahtar uygulaması ayarı**altında, **SendGridAPI**Için yeni oluşturduğunuz uygulama ayarınızı seçin.
+9. **SendGridAPI anahtar uygulaması ayarı** altında, **SendGridAPI** Için yeni oluşturduğunuz uygulama ayarınızı seçin.
 
      ![İşlev Uygulaması ekran görüntüsü Çalıştır](./media/automate-custom-reports/sendgrid-output.png)
 

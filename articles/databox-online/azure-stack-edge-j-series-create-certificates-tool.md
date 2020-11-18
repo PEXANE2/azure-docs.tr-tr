@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891088"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874483"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub hazırlık Denetleyicisi aracını kullanarak Azure Stack Edge Pro için sertifikalar oluşturma 
 
@@ -42,7 +42,7 @@ Aşağıdaki sertifikaları istemek için Azure Stack hub hazırlık Denetleyici
 Azure Stack Edge Pro cihaz dağıtımı için CSR 'Ler oluşturmak üzere şunları yaptığınızdan emin olun: 
 
 - Windows 10 veya Windows Server 2016 veya sonraki bir sürümünü çalıştıran bir istemcdiniz. 
-- Microsoft Azure Stack hub hazırlık Denetleyicisi Aracı 1.2002.1133.85 Bu sistemdeki [PowerShell Galerisi](https://aka.ms/AzsReadinessChecker) indirdiniz. Bu paketi aramanız gerekebilir. Aracın yalnızca bu sürümü Azure Stack Edge Pro cihazları için sertifika oluşturabilir.
+- Microsoft Azure Stack hub hazırlık Denetleyicisi aracını bu sistemdeki [PowerShell Galerisi](https://aka.ms/AzsReadinessChecker) indirdiniz.
 - Sertifikalar için aşağıdaki bilgilere sahipsiniz:
   - Cihaz adı
   - Düğüm seri numarası
@@ -56,7 +56,7 @@ Azure Stack Edge Pro cihaz sertifikalarını hazırlamak için aşağıdaki adı
 2. Azure Stack hub hazırlık Denetleyicisi aracını yükler. PowerShell isteminde şunu yazın: 
 
     ```azurepowershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2002.1133.85 -Force
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
     Yüklü sürümü doğrulamak için şunu yazın:  

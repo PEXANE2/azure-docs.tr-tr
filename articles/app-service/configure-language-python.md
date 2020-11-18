@@ -2,19 +2,19 @@
 title: Linux Python uygulamalarını yapılandırma
 description: Hem Azure portal hem de Azure CLı kullanarak Web uygulamalarının çalıştırıldığı Python kapsayıcısını nasıl yapılandıracağınızı öğrenin.
 ms.topic: quickstart
-ms.date: 11/06/2020
+ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425924"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873854"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
-Bu makalede, [Azure App Service](overview.md) Python uygulamalarının nasıl çalıştığı ve gerektiğinde App Service davranışının nasıl özelleştirileceği açıklanır. Python uygulamalarının tüm gerekli [PIP](https://pypi.org/project/pip/) modülleri ile dağıtılması gerekir.
+Bu makalede, [Azure App Service](overview.md) Python uygulamalarının nasıl çalıştığı, mevcut uygulamaları Azure 'a nasıl geçirebileceğiniz ve gerektiğinde App Service davranışının nasıl özelleştirileceği açıklanır. Python uygulamalarının tüm gerekli [PIP](https://pypi.org/project/pip/) modülleri ile dağıtılması gerekir.
 
 App Service dağıtım altyapısı bir sanal ortamı otomatik olarak etkinleştirir ve `pip install -r requirements.txt` bir [Git deposu](deploy-local-git.md)veya bir [ZIP paketi](deploy-zip.md)dağıttığınızda sizin için çalışır.
 
@@ -22,9 +22,9 @@ Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Pyt
 
 Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'yi kullanabilirsiniz:
 
-- **Azure Portal** , **Settings**  >  [Azure Portal App Service uygulama yapılandırma](configure-common.md)sayfasında açıklandığı şekilde uygulamanın Ayarlar **yapılandırma** sayfasını kullanın.
+- **Azure Portal**, **Settings**  >  [Azure Portal App Service uygulama yapılandırma](configure-common.md)sayfasında açıklandığı şekilde uygulamanın Ayarlar **yapılandırma** sayfasını kullanın.
 
-- **Azure CLI** : iki seçeneğiniz vardır.
+- **Azure CLI**: iki seçeneğiniz vardır.
 
     - [Azure Cloud Shell](../cloud-shell/overview.md)komutları çalıştırın.
     - [Azure CLI](/cli/azure/install-azure-cli)'nın en son sürümünü yükleyerek komutları yerel olarak çalıştırın ve [az Login](/cli/azure/reference-index#az-login)komutunu kullanarak Azure 'da oturum açın.
@@ -34,9 +34,9 @@ Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'y
 
 ## <a name="configure-python-version"></a>Python sürümünü Yapılandır
 
-- **Azure Portal** : **yapılandırma** sayfasında, Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) bölümünde açıklandığı gibi **Genel ayarlar** sekmesini kullanın.
+- **Azure Portal**: **yapılandırma** sayfasında, Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) bölümünde açıklandığı gibi **Genel ayarlar** sekmesini kullanın.
 
-- **Azure CLI** :
+- **Azure CLI**:
 
     -  [Az WebApp config Show](/cli/azure/webapp/config#az_webapp_config_show)komutuyla geçerli Python sürümünü göster:
     
@@ -94,7 +94,31 @@ App Service çalışma ve Linux 'ta Python uygulamaları oluşturma hakkında da
 > [!NOTE]
 > Oryx 'in çalıştığı yapı kapsayıcısı uygulamanın çalıştığı çalışma zamanı kapsayıcısından farklı olduğundan, her zaman tüm ön ve derleme sonrası betiklerdeki göreli yolları kullanın. Uygulama Projesi klasörünüzün kapsayıcı içinde tam olarak yerleştirilme (örneğin, *site/Wwwroot* altına yerleştirilmiş olması) hiçbir şekilde güvenmeyin.
 
-## <a name="production-settings-for-django-apps"></a>Docgo uygulamaları için üretim ayarları
+## <a name="migrate-existing-applications-to-azure"></a>Mevcut uygulamaları Azure 'a geçirme
+
+Mevcut Web uygulamaları Azure 'a aşağıdaki şekilde yeniden dağıtılabilir:
+
+1. **Kaynak deposu**: kaynak kodunuzu GitHub gibi uygun bir depoda saklayın ve bu işlemin ilerleyen kısımlarında sürekli dağıtım ayarlamanıza olanak sağlar.
+    1. Gerekli paketleri otomatik olarak yüklemek için *requirements.txt* dosyanız, App Service deponuzın kökünde olmalıdır.    
+
+1. **Veritabanı**: uygulama bir veritabanına bağımlıysa, Azure 'da gerekli kaynakları da sağlayın. Bkz. [öğretici: PostgreSQL Ile Docgo Web uygulaması dağıtma-örnek için veritabanı oluşturma](tutorial-python-postgresql-app.md#create-postgres-database-in-azure) .
+
+1. **App Service kaynakları**: uygulamanızı barındırmak için bir kaynak grubu, App Service planı ve App Service Web uygulaması oluşturun. Öğreticide gösterildiği gibi Azure CLı komutu aracılığıyla kodunuzun ilk dağıtımını yaparak bu işlemi kolayca yapabilirsiniz `az webapp up` [: PostgreSQL Ile Docgo Web uygulaması dağıtma-kodu dağıtma](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service). Uygulamanız için daha uygun olacak kaynak grubu, App Service planı ve Web uygulaması adlarını değiştirin.
+
+1. **Ortam değişkenleri**: uygulamanız herhangi bir ortam değişkeni gerektiriyorsa, eşdeğer [App Service uygulama ayarları](configure-common.md#configure-app-settings)oluşturun. Bu App Service ayarları, [erişim ortamı değişkenlerinde](#access-app-settings-as-environment-variables)açıklandığı şekilde kodunuzda ortam değişkenleri olarak görünür.
+    - Örneğin, veritabanı bağlantıları genellikle [öğretici: PostgreSQL Ile Docgo Web uygulaması dağıtma-veritabanını bağlamak için değişkenleri Yapılandırma](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database).
+    - Tipik Docgo uygulamalarına yönelik belirli ayarlar için bkz. [Docgo uygulamaları Için üretim ayarları](#production-settings-for-django-apps) .
+
+1. **Uygulama başlatma**: App Service uygulamanızı nasıl çalıştırmayı denediğinize anlamak için bu makalenin ilerleyen kısımlarında yer alarak [kapsayıcı başlangıç sürecini](#container-startup-process) inceleyin. App Service, varsayılan olarak, uygulama nesneniz veya *wsgi.py* klasörünüzü bulabilmeleri gereken gunicbir Web sunucusunu kullanır. Gerekirse, [Başlangıç komutunu özelleştirebilirsiniz](#customize-startup-command).
+
+1. **Sürekli dağıtım**: Azure Pipelines veya kudu dağıtımı kullanılıyorsa [Azure App Service için sürekli dağıtımda](deploy-continuous-deployment.md) açıklandığı gibi sürekli dağıtım ayarlayın veya GitHub eylemleri kullanılıyorsa [GitHub eylemlerini kullanarak App Service 'e dağıtın](deploy-github-actions.md) .
+
+1. **Özel eylemler**: uygulamanızı barındıran App Service kapsayıcısı Içinde, Docgo veritabanı geçişleri gibi eylemler gerçekleştirmek IÇIN [kapsayıcıya SSH aracılığıyla bağlanabilirsiniz](configure-linux-open-ssh-session.md). Docgo veritabanı geçişlerini çalıştırmaya ilişkin bir örnek için bkz. [öğretici: PostgreSQL Ile docgo Web uygulaması dağıtma-veritabanı geçişlerini çalıştırma](tutorial-python-postgresql-app.md#run-django-database-migrations).
+    - Sürekli dağıtım kullanırken, [derleme Otomasyonu 'Nu özelleştirme](#customize-build-automation)altında açıklandığı gibi oluşturma sonrası komutları kullanarak bu eylemleri gerçekleştirebilirsiniz.
+
+Bu adımlar tamamlandığında, değişiklikleri kaynak deponuza kaydedebilir ve bu güncelleştirmelerin App Service otomatik olarak dağıtılmasını sağlayabilirsiniz.
+
+### <a name="production-settings-for-django-apps"></a>Docgo uygulamaları için üretim ayarları
 
 Azure App Service gibi bir üretim ortamında, Docgo uygulamaları Docgo 'nun [dağıtım denetim listesini](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) (djangoproject.com) izlemelidir.
 
@@ -178,15 +202,15 @@ Yine, varsayılan uygulama yerine dağıtılan bir uygulamayı görmeyi düşün
 
 Bu makalede daha önce belirtildiği gibi, guniclerconfiguration ['a genel bakış](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)bölümünde açıklandığı gibi, proje kökündeki bir *Gunicorn.conf.py* dosyası aracılığıyla gunicyasaları için yapılandırma ayarları sağlayabilirsiniz.
 
-Bu yapılandırma yeterli değilse, bir başlangıç komut dosyasında özel bir başlangıç komutu veya birden çok komut sağlayarak kapsayıcının başlangıç davranışını kontrol edebilirsiniz. Bir başlangıç komut dosyası, seçtiğiniz adı (örneğin, *Startup.sh* , *Startup. cmd* , *startup.txt* vb.) kullanabilir.
+Bu yapılandırma yeterli değilse, bir başlangıç komut dosyasında özel bir başlangıç komutu veya birden çok komut sağlayarak kapsayıcının başlangıç davranışını kontrol edebilirsiniz. Bir başlangıç komut dosyası, seçtiğiniz adı (örneğin, *Startup.sh*, *Startup. cmd*, *startup.txt* vb.) kullanabilir.
 
 Tüm komutların, proje kök klasörü için göreli yollar kullanması gerekir.
 
 Başlangıç komutunu veya komut dosyasını belirtmek için:
 
-- **Azure Portal** : uygulamanın **yapılandırma** sayfasını seçin ve ardından **Genel ayarlar** ' ı seçin. **Başlangıç komutu** alanında, başlangıç komutunuz tam metnini veya başlangıç komut dosyanızın adını yerleştirin. Sonra değişiklikleri uygulamak için **Kaydet** ' i seçin. Bkz. Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) .
+- **Azure Portal**: uygulamanın **yapılandırma** sayfasını seçin ve ardından **Genel ayarlar**' ı seçin. **Başlangıç komutu** alanında, başlangıç komutunuz tam metnini veya başlangıç komut dosyanızın adını yerleştirin. Sonra değişiklikleri uygulamak için **Kaydet** ' i seçin. Bkz. Linux kapsayıcıları için [genel ayarları yapılandırma](configure-common.md#configure-general-settings) .
 
-- **Azure CLI** : başlangıç komutunu veya dosyayı ayarlamak için [az WebApp config Set](/cli/azure/webapp/config#az_webapp_config_set) komutunu parametresiyle birlikte kullanın `--startup-file` :
+- **Azure CLI**: başlangıç komutunu veya dosyayı ayarlamak için [az WebApp config Set](/cli/azure/webapp/config#az_webapp_config_set) komutunu parametresiyle birlikte kullanın `--startup-file` :
 
     ```azurecli
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -198,7 +222,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
 
 ### <a name="example-startup-commands"></a>Örnek başlangıç komutları
 
-- **Gunicbir bağımsız değişken eklendi** : Aşağıdaki örnek, `--workers=4` bir dmongo uygulamasını başlatmak için gunicbir komut satırına ekler: 
+- **Gunicbir bağımsız değişken eklendi**: Aşağıdaki örnek, `--workers=4` bir dmongo uygulamasını başlatmak için gunicbir komut satırına ekler: 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -208,7 +232,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
 
     Daha fazla bilgi için bkz. [Gunicorn'u Çalıştırma](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-- **Docgo için üretim günlüğünü etkinleştir** : `--access-logfile '-'` `--error-logfile '-'` komut satırına ve bağımsız değişkenlerini ekleyin:
+- **Docgo için üretim günlüğünü etkinleştir**: `--access-logfile '-'` `--error-logfile '-'` komut satırına ve bağımsız değişkenlerini ekleyin:
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -219,7 +243,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
 
     Daha fazla bilgi için bkz. [Gunicgınlogging](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org).
     
-- **Özel Flask ana modülü** : varsayılan olarak, App Service bir Flask uygulamasının ana modülünün *Application.py* veya *app.py* olduğunu varsayar. Ana modülünüzün farklı bir ad kullanması durumunda başlangıç komutunu özelleştirmeniz gerekir. Örneğin, YF, ana modülü *Hello.py* olan bir Flask uygulaması ve bu dosyadaki Flask uygulaması nesnesi olarak adlandırılmışsa `myapp` , komut aşağıdaki gibidir:
+- **Özel Flask ana modülü**: varsayılan olarak, App Service bir Flask uygulamasının ana modülünün *Application.py* veya *app.py* olduğunu varsayar. Ana modülünüzün farklı bir ad kullanması durumunda başlangıç komutunu özelleştirmeniz gerekir. Örneğin, YF, ana modülü *Hello.py* olan bir Flask uygulaması ve bu dosyadaki Flask uygulaması nesnesi olarak adlandırılmışsa `myapp` , komut aşağıdaki gibidir:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -231,7 +255,7 @@ App Service, özel bir başlangıç komutunu veya dosyasını işlerken meydana 
     gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
     ```
     
-- **Gunicıse sunucusu kullanın** : [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi farklı bir Web sunucusu kullanmak için, başlangıç komutu olarak veya başlangıç komut dosyasında uygun komutu kullanın:
+- **Gunicıse sunucusu kullanın**: [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi farklı bir Web sunucusu kullanmak için, başlangıç komutu olarak veya başlangıç komut dosyasında uygun komutu kullanın:
 
     ```bash
     python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -288,7 +312,7 @@ Genel olarak, sorun gidermenin ilk adımı App Service tanılamayı kullanmaktı
 
 1. Web uygulamanız için Azure portal, sol menüden **Tanıla ve sorunları çöz** ' ü seçin.
 1. **Kullanılabilirlik ve performans ' ı** seçin.
-1. **Uygulama günlükleri** , **kapsayıcı kilitlenme** ve **kapsayıcı sorunları** seçeneklerinde, en yaygın sorunların görüneceği bilgileri inceleyin.
+1. **Uygulama günlükleri**, **kapsayıcı kilitlenme** ve **kapsayıcı sorunları** seçeneklerinde, en yaygın sorunların görüneceği bilgileri inceleyin.
 
 Ardından, tüm hata iletileri için [dağıtım günlüklerini](#access-deployment-logs) ve [uygulama günlüklerini](#access-diagnostic-logs) inceleyin. Bu Günlükler genellikle uygulama dağıtımını veya uygulama başlangıcını engelleyebilen belirli sorunları belirler. Örneğin, *requirements.txt* dosyanızda yanlış dosya adı varsa veya proje kök klasörünüzde mevcut değilse, derleme başarısız olabilir.
 
@@ -326,19 +350,19 @@ Aşağıdaki bölümler, belirli sorunlar için ek rehberlik sağlar.
 
 #### <a name="could-not-find-setuppy-or-requirementstxt"></a>Setup.py veya requirements.txt bulunamadı
 
-- **Günlük akışında "Setup.py bulunamadı veya requirements.txt; Pyx Install çalışmıyor. "** : Oryx derleme işlemi *requirements.txt* dosyanızı bulamadı.
+- **Günlük akışında "Setup.py bulunamadı veya requirements.txt; Pyx Install çalışmıyor. "**: Oryx derleme işlemi *requirements.txt* dosyanızı bulamadı.
 
     - [SSH](#open-ssh-session-in-browser) aracılığıyla Web uygulamasının kapsayıcısına bağlanın ve *requirements.txt* doğru şekilde adlandırıldığını ve doğrudan *site/Wwwroot* altında mevcut olduğunu doğrulayın. Mevcut değilse, siteyi deponuzda mevcut yapın ve dağıtımınıza dahil edin. Ayrı bir klasörde varsa, onu köke taşıyın.
 
 #### <a name="other-issues"></a>Diğer sorunlar
 
-- **Girilen parolalar SSH oturumunda görünmez** : güvenlik nedenleriyle, sız yazarken SSH oturumu parolanızı gizli tutar. Ancak karakterler kaydediliyor, bu nedenle parolanızı her zamanki gibi yazın ve bitince **ENTER** tuşuna basın.
+- **Girilen parolalar SSH oturumunda görünmez**: güvenlik nedenleriyle, sız yazarken SSH oturumu parolanızı gizli tutar. Ancak karakterler kaydediliyor, bu nedenle parolanızı her zamanki gibi yazın ve bitince **ENTER** tuşuna basın.
 
-- **SSH oturumundaki komutlar kesilmiyor** : Düzenleyici sözcük kaydırma komutları olmayabilir, ancak yine de düzgün çalışmalıdır.
+- **SSH oturumundaki komutlar kesilmiyor**: Düzenleyici sözcük kaydırma komutları olmayabilir, ancak yine de düzgün çalışmalıdır.
 
-- **Statik varlıklar bir Docgo uygulamasında görünmüyor** : [whitenoıse modülünü](http://whitenoise.evans.io/en/stable/django.html) etkinleştirdiğinizden emin olun
+- **Statik varlıklar bir Docgo uygulamasında görünmüyor**: [whitenoıse modülünü](http://whitenoise.evans.io/en/stable/django.html) etkinleştirdiğinizden emin olun
 
-- **"ÖNEMLI SSL bağlantısı gerekiyor" iletisini görürsünüz** : uygulamanın içinden kaynaklara (veritabanları gibi) erişmek için kullanılan tüm Kullanıcı adlarını ve parolaları denetleyin.
+- **"ÖNEMLI SSL bağlantısı gerekiyor" iletisini görürsünüz**: uygulamanın içinden kaynaklara (veritabanları gibi) erişmek için kullanılan tüm Kullanıcı adlarını ve parolaları denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

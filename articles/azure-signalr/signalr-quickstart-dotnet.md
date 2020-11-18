@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: da91a5a7c077eb14d12a711b8b308d7045c88f4a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151001"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874551"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Hızlı başlangıç: ASP.NET ve SignalR hizmeti ile sohbet odası oluşturma
 
@@ -32,13 +32,13 @@ Bu hızlı başlangıçta, benzer bir [sohbet odası uygulaması](./signalr-quic
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnet)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnet).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure hesabınızla [Azure portalında](https://portal.azure.com/) oturum açın.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnet)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnet).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -46,7 +46,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com/) oturum açın
 
 Bu hızlı başlangıçta, [bir SignalR Hizmet betiği oluştur](scripts/signalr-cli-create-service.md)Ile kullanılan Azure kaynakları da oluşturabilirsiniz.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnet)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnet).
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
@@ -60,7 +60,7 @@ Hizmet dağıtılırken kod ile çalışmaya geçiş yapalım. [GitHub'dan örne
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnet)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnet).
 
 ## <a name="configure-and-run-chat-room-web-app"></a>Sohbet odası Web uygulamasını yapılandırma ve çalıştırma
 
@@ -106,7 +106,7 @@ Hizmet dağıtılırken kod ile çalışmaya geçiş yapalım. [GitHub'dan örne
 
 1. Projeyi hata ayıklama modunda çalıştırmak için <kbd>F5</kbd> tuşuna basın. Uygulamanın yerel olarak çalıştığını görebilirsiniz. Bir SignalR çalışma zamanını uygulamanın kendisi için barındırmak yerine artık Azure SignalR hizmetine bağlanır.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnet)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnet).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -121,7 +121,7 @@ Hizmet dağıtılırken kod ile çalışmaya geçiş yapalım. [GitHub'dan örne
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnet)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qsnet).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -129,5 +129,3 @@ Bu hızlı başlangıçta yeni bir Azure SignalR hizmeti kaynağı oluşturdunuz
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core ile Azure SignalR hizmeti](./signalr-quickstart-dotnet-core.md)
-
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsnet)

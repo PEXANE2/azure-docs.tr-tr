@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695110"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874721"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -253,12 +253,12 @@ VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* i
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 
-CSP ile yönetilen abonelikler için müşterinin isteği iş ortağı için gerçekleştirmesi gerekir ve iş ortağı ekibi, abonelik için artan kotayı sağlamak üzere Microsoft ile birlikte çalışır. Daha fazla bilgi için, Ayrıntılar için bkz. [Azure VMware Çözüm kaynağını etkinleştirme makalesi](enable-azure-vmware-solution.md) . 
+CSP ile yönetilen abonelikler için müşterinin isteği iş ortağına göndermesi gerekir. Daha sonra iş ortağı ekibi, abonelik için artan kota artışı sağlamak üzere Microsoft ile ilgilenir. Ayrıntılar için bkz. [Azure VMware Çözüm kaynağını etkinleştirme makalesi](enable-azure-vmware-solution.md) . 
 
-EA abonelikleri için, müşterinin bu yordamı izlemesi gerekir.
+EA abonelikleri için aşağıdaki yordamı kullanın. Öncelikle şunları yapmanız gerekir:
 
-* Microsoft ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
-* Azure aboneliğinde bir Azure hesabınızın olması gerekir.
+* Microsoft ile [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) .
+* Azure aboneliğindeki bir Azure hesabı.
 
 Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizi ayırmak için bir destek bileti göndermeniz gerekir. İsteğinizi doğrulamak ve düğümlerinizi ayırmak için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
 
@@ -298,11 +298,15 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizi ayırma
 
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
-Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
 
 #### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
 
-No. Currently Azure VMware Solution does not offer multi-tenancy.
+No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+
+#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+
+Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
 
 
 ## Customer communication

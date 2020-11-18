@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1f28058a766144ada3326b3ee4ce09ca503d1896
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91369136"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873888"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Hızlı başlangıç: C kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma\#
 
 Azure SignalR hizmeti uygulamanıza kolayca gerçek zamanlı işlevsellik eklemenizi sağlar. Azure İşlevleri, herhangi bir altyapı yönetimine gerek kalmadan kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR Hizmeti ve İşlevlerini sunucusuz ve gerçek zamanlı bir sohbet uygulaması oluşturmak için kullanmayı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 
@@ -27,21 +27,21 @@ Bu öğreticiyi bir komut satırında (macOS, Windows veya Linux) [Azure Functio
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet) .
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qscsharp).
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
 Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında oturum açın.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qscsharp).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qscsharp).
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qscsharp).
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure İşlev Uygulamasını yapılandırıp çalıştırma
 
@@ -55,7 +55,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. Birincil bağlantı dizesini seçerek kopyalayın.
 
-1. Visual Studio- **Çözüm Gezgini**geri dönüp *local.settings.sample.js* üzerinde *local.settings.js*olarak yeniden adlandırın.
+1. Visual Studio- **Çözüm Gezgini** geri dönüp *local.settings.sample.js* üzerinde *local.settings.js* olarak yeniden adlandırın.
 
 1. *local.settings.json* dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
 
@@ -75,15 +75,15 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
         ```bash
         func start
         ```
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qscsharp).
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qscsharp).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qscsharp)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -92,4 +92,3 @@ Bu hızlı başlangıçta, Visual Studio 'da gerçek zamanlı sunucusuz bir uygu
 > [!div class="nextstepaction"]
 > [Visual Studio ile Azure İşlevleri geliştirme](../azure-functions/functions-develop-vs.md)
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)

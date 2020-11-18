@@ -3,12 +3,12 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 11/23/2020
-ms.openlocfilehash: 5ee5390ef45e71baf3843cadc815de2f7e06bdac
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35cc87d7f3f1345972a7f27cecaeb96c6fa687dc
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842373"
+ms.locfileid: "94873922"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -88,9 +88,7 @@ Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağla
 
 1. **Yönetim**  >  **sistemi güncelleştirmeleri** ' ni seçin ve ardından **indirme bağlantısı iste**' yi seçin.
 
-1. VMware HCX bağlayıcı OVA dosyasını indirmek istediğiniz seçeneği belirleyin.
-
-   :::image type="content" source="media/tutorial-vmware-hcx/vmware-hcx-download-link.png" alt-text="indirme bağlantısı iste" lightbox="media/tutorial-vmware-hcx/vmware-hcx-download-link.png":::
+1. VMware HCX bağlayıcı OVA dosyasını indirmek için tercih ettiğiniz seçeneği belirleyin.
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>VMware HCX bağlayıcı OVA 'yı şirket içinde dağıtma
 
@@ -162,7 +160,7 @@ VMware HCX bağlayıcısını şirket içinde dağıttıktan sonra gereci başla
    > [!NOTE]
    > Sonraki adımda uyarılmadan önce yeniden başlattıktan sonra bir gecikme yaşarsınız.
 
-Hizmetler yeniden başlatıldıktan sonra, görünen ekranda, vCenter ' u yeşil olarak göstermek zorundasınız. Hem vCenter hem de SSO, önceki ekranla aynı olması gereken uygun yapılandırma parametrelerine sahip olmalıdır.
+Hizmetler yeniden başlatıldıktan sonra, vCenter görüntülenen ekranda yeşil olarak gösterilir. Hem vCenter hem de SSO, önceki ekranla aynı olması gereken uygun yapılandırma parametrelerine sahip olmalıdır.
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Yeşil vCenter durumu içeren panonun ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
@@ -179,11 +177,7 @@ Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki V
 
 1. Şirket içi vCenter oturumunuzu açın ve **giriş** bölümünde **HCX**' i seçin.
 
-   :::image type="content" source="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png" alt-text="Kısayollar arasında HCX seçiliyken vCenter Istemcisinin ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png":::
-
 1. **Altyapı** altında **site eşleştirme**' yi seçin ve ardından **uzak siteye Bağlan** seçeneğini belirleyin (ekranın ortasında). 
-
-   :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="Uzak site oluşturmaya yönelik seçimlerin ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
 1. Daha önce not ettiğiniz Azure VMware Solution HCX URL 'sini veya IP adresini, Azure VMware çözümü cloudadmin \@ vSphere. Local Kullanıcı adı ve parolayı girin. Ardından **Bağlan**'ı seçin.
 
@@ -224,7 +218,7 @@ Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX ağ prof
 
 ### <a name="create-a-compute-profile"></a>İşlem profili oluşturma
 
-1. **İşlem profilleri**  >  **işlem profili oluştur**' u seçin.
+1. **Altyapı** altında, **Interconnect**  >  **işlem profilleri**  >  **işlem profili oluştur**' u seçin.
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="Bir işlem profili oluşturmaya başlamak için seçimleri gösteren ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
 
@@ -347,7 +341,7 @@ Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: hizmet ağı
 
 Şirket içi ortamınızdan herhangi bir ağı Azure VMware çözümüne genişletmek istiyorsanız aşağıdaki adımları izleyin:
 
-1. **Hizmetler**' ın altında **ağ uzantısı**' nı seçin ve ardından **ağ uzantısı oluştur**' u seçin.
+1. **Hizmetler**' in altında ağ **Uzantısı**  >  **ağ uzantısı oluştur**' u seçin.
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="Bir ağ uzantısı oluşturmaya başlamak için seçimleri gösteren ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
 

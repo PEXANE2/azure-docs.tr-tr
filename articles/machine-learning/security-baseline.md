@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2468bde9dd969ad604f96835a3dc0bfad06c1cd2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8f2498dbb3a555db262c591c9badacbe0e4e2548
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844668"
+ms.locfileid: "94874670"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik temeli
 
@@ -529,6 +529,7 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
 **Rehberlik**: Azure Machine Learning, istekleri Machine Learning kaynaklara yetkilendirmek için Azure Active Directory (Azure AD) kullanmayı destekler. Azure AD ile Azure rol tabanlı erişim denetimi 'ni (RBAC), bir kullanıcı veya bir uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz.
 
 - [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md)
+- [Kubernetes yetkilendirmesi için Azure RBAC kullanma](../aks/manage-azure-rbac.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -911,6 +912,8 @@ Azure Machine Learning işi izlemek için Git depolarını tamamen destekler; de
 - [Azure RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [Paylaşılan görüntü galerisine genel bakış](../virtual-machines/windows/shared-image-galleries.md)
+
+- [Kubernetes yetkilendirmesi için Azure RBAC kullanma](../aks/manage-azure-rbac.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

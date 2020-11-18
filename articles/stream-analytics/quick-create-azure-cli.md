@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4e50560d2f090c99d1f354ebbc11ab2357dd61e8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646636"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874738"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Stream Analytics işi oluşturma
 
@@ -155,7 +155,7 @@ Yerel makinenizde `serialization.json` adlı bir dosya oluşturun ve içine aşa
 Ardından, `az stream-analytics input create` cmdlet'ini çalıştırın. Değişkenin değerini, `datasource` iş giriş tanımı json dosyasını depoladığınız yol ile ve `serialization` değişken DEĞERI serileştirme json dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -191,7 +191,7 @@ Yerel makinenizde `datasink.json` adlı bir dosya oluşturun ve içine aşağıd
 Ardından, `az stream-analytics output` cmdlet'ini çalıştırın. `datasource`Değişkenin değerini iş çıkış tanımı json dosyasını depoladığınız yol ile ve `serialization` değişken DEĞERI serileştirme json dosyasını depoladığınız yolla değiştirdiğinizden emin olun.
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -206,7 +206,7 @@ az stream-analytics output create
 `az stream-analytics transformation create`Cmdlet 'ini çalıştırın.
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -230,7 +230,7 @@ az stream-analytics transformation create
 Aşağıdaki cmdlet’i çalıştırdıktan sonra iş başlarsa çıktı olarak `True` değeri döndürülür. Depolama kapsayıcısında, dönüştürülmüş verilerle birlikte bir çıktı klasörü oluşturulur.
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime

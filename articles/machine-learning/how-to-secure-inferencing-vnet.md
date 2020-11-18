@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361174"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873820"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çıkarım ortamının güvenliğini sağlama
 
@@ -36,7 +36,7 @@ Bu makalede, bir sanal ağda aşağıdaki ınırm kaynaklarını güvenli hale g
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -115,6 +115,8 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Oluşturma işlemi tamamlandığında, bir sanal ağın arkasındaki AKS kümesinde çıkarım veya model Puanlama çalıştırabilirsiniz. Daha fazla bilgi için bkz. [AKS 'e dağıtma](how-to-deploy-and-where.md).
 
+Kubernetes ile Role-Based Access Control kullanma hakkında daha fazla bilgi için bkz. [Kubernetes yetkilendirmesi Için Azure RBAC kullanma](../aks/manage-azure-rbac.md).
+
 ## <a name="network-contributor-role"></a>Ağ katılımcısı rolü
 
 > [!IMPORTANT]
@@ -151,8 +153,8 @@ AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [A
 
 AKS kümesinden ve sanal ağa giden trafiği yalıtmak için iki yaklaşım vardır:
 
-* __Özel AKS kümesi__ : Bu yaklaşım, dağıtım/yönetim işlemleri için kümeyle iletişimin güvenliğini sağlamak üzere Azure özel bağlantısını kullanır.
-* __Iç aks yük dengeleyici__ : Bu yaklaşım, sanal ağ içinde özel bir IP kullanmak üzere dağıtımlarınız için uç noktayı yapılandırır.
+* __Özel AKS kümesi__: Bu yaklaşım, dağıtım/yönetim işlemleri için kümeyle iletişimin güvenliğini sağlamak üzere Azure özel bağlantısını kullanır.
+* __Iç aks yük dengeleyici__: Bu yaklaşım, sanal ağ içinde özel bir IP kullanmak üzere dağıtımlarınız için uç noktayı yapılandırır.
 
 > [!WARNING]
 > İç yük dengeleyici, kubenet kullanan bir AKS kümesiyle çalışmaz. Aynı anda bir iç yük dengeleyici ve özel bir AKS kümesi kullanmak istiyorsanız, özel AKS kümenizi Azure Container Networking Interface (CNı) ile yapılandırın. Daha fazla bilgi için bkz. Azure [Kubernetes hizmetinde Azure CNI ağını yapılandırma](../aks/configure-azure-cni.md).

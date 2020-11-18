@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c2679be2ca1db9017cbc37219402fa4e1c0666a5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130043"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874432"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS API sürüm 2
 
@@ -28,7 +28,7 @@ SaaS aboneliğinin durumları ve geçerli eylemler gösterilir.
 
 ![Market 'teki SaaS aboneliğinin yaşam döngüsü](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Satın alındı ancak henüz etkinleştirilmedi ( *PendingFulfillmentStart* )
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Satın alındı ancak henüz etkinleştirilmedi (*PendingFulfillmentStart*)
 
 Bir son müşteri (veya CSP) Market 'te bir SaaS teklifi satın aldıktan sonra, Yayımcı, Yayımcı tarafında son müşteri için yeni bir SaaS hesabının oluşturulup yapılandırılması için satın alma hakkında bildirim almalıdır.
 
@@ -82,11 +82,14 @@ Yalnızca etkin bir abonelik güncelleştirilebilen olabilir. Abonelik güncelle
 
 ##### <a name="update-initiated-from-the-marketplace"></a>Market 'ten başlatılan güncelleştirme
 
-Bu akışta müşteri, M365 yönetim merkezinden abonelik planı veya bilgisayar lisansı sayısını değiştirir.  
+Bu akışta müşteri, Azure portal veya M365 yönetim merkezinden abonelik planı veya bilgisayar lisansı sayısını değiştirir.  
 
 1. Güncelleştirme girildikten sonra, Microsoft, Iş Ortağı Merkezi 'ndeki **bağlantı Web kancası** ' nda yapılandırılan Web kancası URL 'sini, *eylem* için uygun bir değerle ve diğer ilgili parametrelere göre çağırır.  
 1. Yayımcı tarafı, SaaS hizmetinde gerekli değişiklikleri yapması ve [Işlem API 'Sinin güncelleştirme durumunu](#update-the-status-of-an-operation)çağırarak Microsoft 'un değişiklik tamamlandığında Microsoft 'u bilgilendirmesini sağlar.
 1. Düzeltme Eki başarısız durumla gönderilirse, güncelleştirme işlemi Microsoft tarafında tamamlanmayacak.  SaaS aboneliği, mevcut bir plan ve lisans miktarı ile kalacak.
+
+> [!NOTE]
+> Yayımcı, Web kancası bildirimini aldıktan sonra *10 saniyelik bir zaman penceresinde* bir hata/başarı YANıTıYLA [işlem API 'sinin durumunu güncelleştirmek](#update-the-status-of-an-operation) için düzeltme ekini çağırmalıdır. İşlem durumunun düzeltme eki 10 saniye içinde alınmıyorsa, değişiklik planı *otomatik olarak başarılı olarak düzeltme eki* yapılır. 
 
 Market tarafından başlatılan güncelleştirme senaryosuna yönelik API çağrılarının sırası aşağıda gösterilmiştir.
 
@@ -106,7 +109,7 @@ Yayımcı tarafında başlatılan güncelleştirme senaryosuna yönelik API ça�
 
 ![Yayımcı tarafında başlatılan güncelleştirme için API çağrıları](./media/saas-update-status-api-v2-calls-publisher-side.png)
 
-#### <a name="suspended-suspended"></a>Askıya alındı ( *askıya alındı* )
+#### <a name="suspended-suspended"></a>Askıya alındı (*askıya alındı*)
 
 Bu durum müşterinin SaaS hizmeti için ödeme alındığını gösterir. Yayımcı, Microsoft tarafından SaaS Abonelik durumundaki bu değişiklik hakkında bilgilendirilir. Bildirim, *eylem* parametresi *askıya alındı* olarak ayarlanmış bir Web kancası çağrısıyla yapılır.
 
@@ -119,7 +122,7 @@ Microsoft, aboneliği otomatik olarak iptal etmeden önce müşteriye 30 günlü
 
 Yayımcı herhangi bir işlem yapmadan önce, Microsoft tarafında abonelik durumu askıya alındı olarak değiştirilir. Yalnızca etkin abonelikler askıya alınabilir.
 
-#### <a name="reinstated-suspended"></a>Tekrar belirtilen ( *askıya alındı* )
+#### <a name="reinstated-suspended"></a>Tekrar belirtilen (*askıya alındı*)
 
 Abonelik tekrar belirtilmiyor.
 
@@ -135,7 +138,7 @@ Düzeltme Eki başarısız durumla gönderildiyse, Microsoft tarafında bir i if
 
 Yalnızca askıya alınmış bir abonelik tekrar belirtilebilir.  SaaS aboneliği tekrar belirtilmeye devam ederken, durumu askıya alınır.  Bu işlem tamamlandıktan sonra aboneliğin durumu etkin olur.
 
-#### <a name="renewed-subscribed"></a>Yenilendi ( *abone olunan* )
+#### <a name="renewed-subscribed"></a>Yenilendi (*abone olunan*)
 
 Abonelik döneminin sonunda (bir aydan veya yıldan sonra) SaaS aboneliği Microsoft tarafından otomatik olarak yenilenir.  Otomatik yenileme ayarı için varsayılan değer tüm SaaS abonelikleri için *geçerlidir* . Etkin SaaS abonelikleri, normal temposunda ile yenilenmeye devam edecektir. Microsoft, bir abonelik yenilendiğinde yayımcıyı bildirmez. Müşteri, M365 yönetim portalı aracılığıyla veya Azure portal aracılığıyla bir SaaS aboneliği için otomatik yenilemeyi kapatabilir.  Bu durumda, SaaS aboneliği geçerli fatura döneminin sonunda otomatik olarak iptal edilir.  Müşteriler her zaman bir noktada SaaS aboneliğini iptal edebilir.
 
@@ -143,7 +146,7 @@ Yalnızca etkin abonelikler otomatik olarak yenilenir.  Abonelikler, yenileme i�
 
 Ödeme ile ilgili bir sorun nedeniyle otomatik yenileme başarısız olursa, abonelik askıya alınır.  Yayımcı bilgilendirilir.
 
-#### <a name="canceled-unsubscribed"></a>İptal edildi ( *aboneliği kaldırma* ) 
+#### <a name="canceled-unsubscribed"></a>İptal edildi (*aboneliği kaldırma*) 
 
 Abonelikler, yayımcı sitesinden, Azure portal veya M365 yönetim merkezinden bir aboneliğin iptalinden, açık bir müşteri veya CSP eylemine yanıt olarak bu duruma ulaşabilirler.  Abonelik, 30 gün boyunca askıya alınanlardan sonra, Dues 'nin faturalandırılmasıyla ilgili olarak örtük olarak da iptal edilebilir.
 
@@ -788,7 +791,7 @@ Kod: 500 Iç sunucu hatası. API çağrısını yeniden deneyin.  Hata devam ede
 
 #### <a name="get-operation-status"></a>İşlem durumunu al
 
-Yayımcının belirtilen zaman uyumsuz işlemin durumunu izlemesini sağlar:  **abonelik kaldırma** , **değişiklik planı** veya **değişiklik miktarı** .
+Yayımcının belirtilen zaman uyumsuz işlemin durumunu izlemesini sağlar:  **abonelik kaldırma**, **değişiklik planı** veya **değişiklik miktarı**.
 
 `operationId`Bu API çağrısı için, **işlem konumu** tarafından döndürülen değerden, bekleyen işlemler API çağrısı veya `<id>` bir Web kancası çağrısında alınan parametre değeri alınabilir.
 
@@ -962,7 +965,7 @@ Yayımcı uçtan uca teste hazırsanız:
 
 Teklifin nerede yayımlandığına bağlı olarak, Azure portal veya Microsoft AppSource sitelerinden bir satın alma akışı tetiklenebilir.
 
-*Değişiklik planı* , *değişiklik miktarı* ve *abonelik kaldırma* eylemleri Yayımcı tarafında test edilir.  Microsoft yan bilgisayardan *abonelik kaldırma* , hem Azure Portal hem de yönetim merkezinden (Microsoft AppSource satın alımlarınızın yönetildiği portal) tetiklenebilir.  *Değişiklik miktarı ve plan* yalnızca yönetim merkezinden tetiklenebilir.
+*Değişiklik planı*, *değişiklik miktarı* ve *abonelik kaldırma* eylemleri Yayımcı tarafında test edilir.  Microsoft yan bilgisayardan *abonelik kaldırma* , hem Azure Portal hem de yönetim merkezinden (Microsoft AppSource satın alımlarınızın yönetildiği portal) tetiklenebilir.  *Değişiklik miktarı ve plan* yalnızca yönetim merkezinden tetiklenebilir.
 
 ## <a name="get-support"></a>Destek alma
 

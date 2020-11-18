@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662148"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873276"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect ve Azure AD Connect Health yükleme yol haritası
 
@@ -79,7 +79,7 @@ Azure AD Connect, isteğe bağlı olarak açabileceğiniz veya varsayılan olara
 | --- | --- |
 |Filtrelemeyi yapılandırma | [Azure AD Connect eşitleme: Filtrelemeyi yapılandırma](how-to-connect-sync-configure-filtering.md)|
 |Parola karması eşitleme | [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)|
-|Doğrudan Kimlik Doğrulama | [Doğrudan kimlik doğrulama](how-to-connect-pta.md)
+|Doğrudan Kimlik Doğrulama | [Doğrudan kimlik doğrulaması](how-to-connect-pta.md)
 |Parola geri yazma | [Parola yönetimine Başlarken](../authentication/tutorial-enable-sspr.md)|
 |Cihaz geri yazma | [Azure AD Connect’te cihaz geri yazma özelliğini etkinleştirme](how-to-connect-device-writeback.md)|
 |Yanlışlıkla silmeleri engelleme | [Azure AD Connect eşitleme: Yanlışlıkla Silmeleri Engelleme](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
@@ -143,12 +143,12 @@ Azure AD Connect Health ile çalışmaya başlamak için aşağıdaki adımları
 * Azure AD Connect Health [gereksinimlerini yerine getirdiğinizden](how-to-connect-health-agent-install.md#requirements) emin olun.
 * AD FS için Azure AD Connect Health kullanmaya başlama
     * [AD FS için Azure AD Connect Health Aracısını indirin.](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [Yükleme talimatlarına bakın](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
+    * [Yükleme talimatlarına bakın](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs).
 * Eşitleme için Azure AD Connect Health kullanmaya başlama
     * [Azure AD Connect'in en son sürümünü indirip yükleyin](https://go.microsoft.com/fwlink/?linkid=615771). Eşitleme için Durum Aracısı, Azure AD Connect yüklemesinin bir parçası olarak yüklenir (sürüm 1.0.9125.0 veya daha yeni bir sürüm).
 * AD DS için Azure AD Connect Health kullanmaya başlama
     * [AD DS için Azure AD Connect Health Aracısını indirin](https://go.microsoft.com/fwlink/?LinkID=820540).
-    * [Yükleme talimatlarına bakın](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
+    * [Yükleme talimatlarına bakın](how-to-connect-health-agent-install.md#install-the-agent-for-azure-ad-ds).
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health portalı
@@ -175,7 +175,7 @@ Azure AD Connect Health portalı; uyarıları, performans izlemeyi ve kullanım 
 - [Hızlı ayarlar](how-to-connect-install-express.md)
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
 - [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)|
-- [Doğrudan kimlik doğrulama](how-to-connect-pta.md)
+- [Doğrudan kimlik doğrulaması](how-to-connect-pta.md)
 - [Azure AD Connect ve Federasyon](how-to-connect-fed-whatis.md)
 - [Azure AD Connect Health aracılarını yükleme](how-to-connect-health-agent-install.md) 
 - [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)

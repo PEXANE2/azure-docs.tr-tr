@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18e90bcfe7238ae998ac677a9d7eebef0ffa8939
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568361"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874262"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Sertifika hatalarını giderme
 
@@ -46,6 +46,7 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 | CertificateManagement_MissingServerOid | Konu adı olan sertifikada {0} sunucu kimlik doğrulaması OID 'si yok. Sertifika özelliklerinizi denetleyin ve gerekirse yeni bir sertifika alın.|
 | CertificateManagement_NameMismatch | Sertifika türü uyumsuzluğu. Beklenen kapsam: {0} , bulunan {1} . Uygun sertifikayı karşıya yükleyin.|
 | CertificateManagement_NoPrivateKeyPresent | Konu adı olan sertifikada {0} özel anahtar yok. Özel anahtarla bir. pfx sertifikasını karşıya yükleyin.|
+| CertificateManagement_NoRSACryptoPrivateKey | Konu adına sahip sertifika için özel anahtara {0} erişilemiyor. Desteklenen bir sertifika kullandığınızdan emin olun. Yalnızca Microsoft RSA/SChannel Şifreleme sağlayıcısı desteklenir. |
 | CertificateManagement_NotSelfSignedCertificate | Konu adına sahip sertifika {0} kendinden imzalı değildir. Kök sertifikalar kendinden imzalı olmalıdır |
 | CertificateManagement_NotSupportedOnVirtualAppliance | Bu işlem sanal cihazda desteklenmiyor. Bu hata, imzalama işleminin yalnızca, politik bulut gerecinde çalışan Data Box Gateway olduğunu gösterir. Bu hata, cihaz Windows PowerShell aracılığıyla yönetirken oluşur.|
 | CertificateManagement_SelfSignedCertificate | Konu adına sahip sertifika {0} kendinden imzalı. Doğru imzalı bir sertifikayı karşıya yükleyin.|
@@ -57,6 +58,8 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 | Certificateımportfailure | Parmak izine sahip sertifika {0} düğümde içeri aktarılmadı {1} . Sorun devam ederse Microsoft Desteği başvurun. |
 | CertificateApplyFailure | Parmak izine sahip sertifika {0} düğümde uygulanmadı {1} . Sorun devam ederse Microsoft Desteği başvurun.|
 | Nonominal olarak erişilebilir | Üzerindeki sertifika doğrulanamadı {0} . Sistem donanımını ve yazılım sistem durumunu denetleyin.|
+| HATA KODUNU AL | Bu sertifika için özel anahtara erişilemiyor. Desteklenen bir sertifika kullandığınızdan emin olun. Yalnızca Microsoft RSA/SChannel Şifreleme sağlayıcısı desteklenir. |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

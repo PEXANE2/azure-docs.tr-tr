@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 57dfec33beef6a9b5a6a3cd8edc43cae32d62e33
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123020"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873568"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Su tüketimi izleme referans mimarisi 
 
@@ -41,10 +41,10 @@ Azure IoT Central, IoT çözümünüzde hızla çalışmaya başlamanızı sağl
 Akıllı su cihazlarınızı IoT Central 'e bağladığınızda, cihaz komutu ve denetim, izleme ve uyarma, yerleşik RBAC, yapılandırılabilir Öngörüler panoları ve genişletilebilirlik seçenekleriyle kullanıcı arabirimi elde edersiniz. 
 
 
-## <a name="extensibility-and-integrations"></a>Genişletilebilirlik ve tümleştirmeler 
+## <a name="extensibility-and-integrations"></a>Genişletilebilirlik ve tümleştirmeler
 IoT uygulamanızı IoT Central ve isteğe bağlı olarak genişletebilirsiniz:
 * IoT Central uygulamadan sürekli veri dışarı aktarma aracılığıyla eğitim makinesi öğrenimi modelleri gibi gelişmiş analizler için IoT verilerinizi dönüştürün ve tümleştirin
-* IoT Central uygulamadan Microsoft Flow veya Web kancalarını kullanarak eylemleri tetikleyerek diğer sistemlerdeki iş akışlarını otomatikleştirin
+* IoT Central uygulamadan Power otomatikleştir veya Web kancaları kullanarak eylemleri tetikleyerek diğer sistemlerdeki iş akışlarını otomatikleştirin
 * Program aracılığıyla API 'Leri aracılığıyla IoT Central IoT uygulamanıza erişin IoT Central
 
 ## <a name="business-applications"></a>İş Uygulamaları 

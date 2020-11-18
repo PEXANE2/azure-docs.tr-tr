@@ -3,12 +3,12 @@ title: Azure VMware Solution (AVS) iş yüklerini dengelemek için Traffic Manag
 description: Farklı bölgelerde birden fazla uç nokta arasında uygulama iş yüklerini dengelemek için Traffic Manager Azure VMware çözümü (AVS) ile tümleştirmeyi öğrenin.
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ed74bb0dfc533abadd50af32afc06c9cb4106193
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593180"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874315"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Azure VMware Solution (AVS) iş yüklerini dengelemek için Traffic Manager dağıtma
 
@@ -30,7 +30,7 @@ Azure Traffic Manager, aşağıdaki şekilde gösterildiği gibi, bölgesel uç 
 
 İki AVS özel bulut bölgesi, Batı ABD ve Batı Avrupa ve Doğu ABD içindeki şirket içi sunucu arasında sanal ağ bağlantısı, bir ExpressRoute ağ geçidi kullanır.   
 
-![Azure VMware çözümüyle Traffic Manager tümleştirme mimarisinin diyagramı](media/traffic-manager/traffic-manager-topology.png)
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Azure VMware çözümüyle Traffic Manager tümleştirme mimarisinin diyagramı" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
  
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -75,7 +75,7 @@ Senaryolarımızda, bir NSX-T segmenti, arka uç havuzu üyesi sanal makinenin e
 
 1. Yapılandırılmış segmentlerinizi görüntülemek için **segmentleri** seçin. Bu durumda, contoso-SEGMENT1 ' nin bir katman 1 esnek yönlendirici olan contoso-T01 ağ geçidine bağlı olduğunu görüyoruz.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="NSX-T Manager 'daki segment profillerini gösteren ekran görüntüsü.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="NSX-T Manager 'daki segment profillerini gösteren ekran görüntüsü." lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
 
 2. Katman 1 ağ geçitlerinizin bir listesini, bağlantılı parçaların sayısıyla birlikte görmek için **Katman 1 ağ geçitleri** ' ni seçin. Contoso-T01 ile bağlantılı segmenti seçin. Katman-01 yönlendiricisinde yapılandırılan mantıksal arabirimi gösteren bir pencere açılır. Bu, kesime bağlı arka uç havuzu üye sanal makinesinin ağ geçidi olarak görev yapar.
 
@@ -83,27 +83,27 @@ Senaryolarımızda, bir NSX-T segmenti, arka uç havuzu üyesi sanal makinenin e
 
 3. VM vSphere istemcisinde, ayrıntılarını görüntülemek için sanal makineyi seçin. IP adresi, yukarıdaki bölümün 3. adımında gördük ile eşleşir: 172.29.1.10.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="VSphere Istemcisinde VM ayrıntılarını gösteren ekran görüntüsü.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="VSphere Istemcisinde VM ayrıntılarını gösteren ekran görüntüsü." lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
 
 4. Sanal makineyi seçin ve ardından NSX-T segmentiyle bağlantıyı doğrulamak için **eylemler > Ayarları Düzenle** ' ye tıklayın.
 
 ## <a name="create-your-traffic-manager-profile"></a>Traffic Manager profilinizi oluşturma
 
-1. [Azure Portal](https://rc.portal.azure.com/#home)oturum açın. **Azure hizmetleri > ağ** altında **Traffic Manager profiller** ' i seçin.
+1. [Azure Portal](https://rc.portal.azure.com/#home)oturum açın. **Azure hizmetleri > ağ** altında **Traffic Manager profiller**' i seçin.
 
 2. Yeni bir Traffic Manager profili oluşturmak için **+ Ekle** ' yi seçin.
  
-3. Profil adı, yönlendirme yöntemi belirtin (Bu senaryoda ağırlıklı olarak kullanacağız; [Traffic Manager yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)), abonelik ve kaynak grubu ' na bakın ve **Oluştur** ' u seçin.
+3. Profil adı, yönlendirme yöntemi belirtin (Bu senaryoda ağırlıklı olarak kullanacağız; [Traffic Manager yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)), abonelik ve kaynak grubu ' na bakın ve **Oluştur**' u seçin.
 
 ## <a name="add-external-endpoints-into-the-traffic-manager-profile"></a>Traffic Manager profiline dış uç noktalar ekleme
 
-1. Arama sonuçları bölmesinden Traffic Manager profilini seçin, **uç noktalar** ' ı ve sonra **+ Ekle** ' yi seçin.
+1. Arama sonuçları bölmesinden Traffic Manager profilini seçin, **uç noktalar** ' ı ve sonra **+ Ekle**' yi seçin.
 
-2. Gerekli ayrıntıları girin: tür, ad, tam etki alanı adı (FQDN) veya IP ve ağırlık (Bu senaryoda, her bir uç noktaya 1 ağırlık atacağız). **Ekle** ’yi seçin. Bu, dış uç noktayı oluşturur. İzleyici durumu **çevrimiçi** olmalıdır. Biri farklı bir bölgede ve diğer şirket içi olmak üzere iki farklı dış uç nokta oluşturmak için aynı adımları yineleyin. Oluşturulduktan sonra üçü Traffic Manager profilinde görüntülenir ve üçünün durumu **çevrimiçi** olmalıdır.
+2. Gerekli ayrıntıları girin: tür, ad, tam etki alanı adı (FQDN) veya IP ve ağırlık (Bu senaryoda, her bir uç noktaya 1 ağırlık atacağız). **Ekle**’yi seçin. Bu, dış uç noktayı oluşturur. İzleyici durumu **çevrimiçi** olmalıdır. Biri farklı bir bölgede ve diğer şirket içi olmak üzere iki farklı dış uç nokta oluşturmak için aynı adımları yineleyin. Oluşturulduktan sonra üçü Traffic Manager profilinde görüntülenir ve üçünün durumu **çevrimiçi** olmalıdır.
 
-3. **Genel bakış** 'ı seçin. **DNS adı** altında URL 'yi kopyalayın.
+3. **Genel bakış**'ı seçin. **DNS adı** altında URL 'yi kopyalayın.
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="DNS adı vurgulanmış bir Traffic Manager uç noktaya genel bakış gösteren ekran görüntüsü."::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="DNS adı vurgulanmış bir Traffic Manager uç noktaya genel bakış gösteren ekran görüntüsü." lightbox="media/traffic-manager/traffic-manager-endpoints.png"::: 
 
 4. DNS adı URL 'sini bir tarayıcıya yapıştırın. Aşağıdaki ekran görüntüsünde Batı Avrupa bölgesine yönlendiren trafik gösterilmektedir.
 

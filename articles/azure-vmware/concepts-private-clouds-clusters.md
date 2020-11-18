@@ -3,12 +3,12 @@ title: Kavramlar-özel bulutlar ve kümeler
 description: Azure VMware çözümü yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337330"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874024"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü özel bulutu ve küme kavramları
 
@@ -59,7 +59,7 @@ Azure VMware çözümü özel bulut kümelerinde kullanılan VMware yazılımın
 
 Özel buluttaki herhangi bir yeni küme için, yazılım sürümü şu anda çalışmakta olan yenilikle eşleşir. Bir abonelikteki tüm yeni özel bulutta, yazılım yığınının en son sürümü yüklenir.
 
-[Yükseltmeler kavramları](concepts-upgrades.md) makalesinde açıklanan Azure VMware çözüm platformu yazılımının genel yükseltme ilkelerini ve işlemlerini bulabilirsiniz.
+[Özel bulut güncelleştirmelerinde ve güncelleştirmelerinde](concepts-upgrades.md)açıklanan Azure VMware çözüm platformu yazılımının genel yükseltme ilkelerini ve işlemlerini bulabilirsiniz.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Konak bakımı ve yaşam döngüsü yönetimi
 

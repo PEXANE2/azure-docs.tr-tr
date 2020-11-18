@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1a7204fea1a77dbca57ffc7d512f81e46c4d3b5f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540136"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873402"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
@@ -113,7 +113,7 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
 
 1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
-1. Azure portal sol üst köşesinde **+ kaynak oluştur** ' u seçin.
+1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 
       ![Yeni kaynak oluşturma](./media/how-to-manage-workspace/create-workspace.gif)
 
@@ -131,19 +131,23 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML** kullanılır. Mevcut bir kaynak grubunu kullanmak için *katkıda bulunan* veya *sahip* rolünün olması gerekir.  Erişim hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md).
    Region | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
+   | Depolama hesabı | Çalışma alanı için varsayılan depolama hesabı. Varsayılan olarak, yeni bir tane oluşturulur. |
+   | Key Vault | Çalışma alanı tarafından kullanılan Azure Key Vault. Varsayılan olarak, yeni bir tane oluşturulur. |
+   | Application Insights | Çalışma alanı için Application Insights örneği. Varsayılan olarak, yeni bir tane oluşturulur. |
+   | Container Registry | Çalışma alanı için Azure Container Registry. Varsayılan olarak, çalışma alanı _için başlangıçta yeni bir tane oluşturulmaz._ Bunun yerine, eğitim veya dağıtım sırasında bir Docker görüntüsü oluştururken ihtiyacınız olduğunda oluşturulur. |
 
-    ![Çalışma alanınızı yapılandırma](./media/how-to-manage-workspace/create-workspace-form.png)
+   :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="Çalışma alanınızı yapılandırın.":::
 
-1. Çalışma alanını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur** ' u seçin. İsteğe bağlı olarak, çalışma alanı için daha fazla ayar yapılandırmak üzere [ağ](#networking) ve [Gelişmiş](#advanced) bölümleri kullanın.
+1. Çalışma alanını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin. İsteğe bağlı olarak, çalışma alanı için daha fazla ayar yapılandırmak üzere [ağ](#networking) ve [Gelişmiş](#advanced) bölümleri kullanın.
 
-1. Ayarları gözden geçirin ve ek değişiklik veya düzeltme yapın. Ayarları tatmin ediyorsanız **Oluştur** ' u seçin.
+1. Ayarları gözden geçirin ve ek değişiklik veya düzeltme yapın. Ayarları tatmin ediyorsanız **Oluştur**' u seçin.
 
    > [!Warning] 
    > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
 
    İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. 
  
- 1. Yeni çalışma alanını görüntülemek için **Kaynağa Git** ' i seçin.
+ 1. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
  
 ---
 
@@ -167,7 +171,7 @@ Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma a
 
    :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Özel uç nokta oluşturma":::   
 
-1. Ağı yapılandırmayı bitirdiğinizde, __gözden geçir + oluştur__ ' u seçebilir veya Isteğe bağlı __Gelişmiş__ yapılandırmaya ilerleyebilirsiniz.
+1. Ağı yapılandırmayı bitirdiğinizde, __gözden geçir + oluştur__' u seçebilir veya Isteğe bağlı __Gelişmiş__ yapılandırmaya ilerleyebilirsiniz.
 
 ---
 
@@ -180,8 +184,8 @@ Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma a
 Özel bir uç nokta oluşturduğunuzda, __Privatelink.api.azureml.MS__ adlı yeni bir özel DNS bölgesi oluşturulur. Bu, sanal ağın bağlantısını içerir. Aynı kaynak grubunda özel uç noktaları olan birden çok çalışma alanı oluşturursanız, DNS bölgesine yalnızca ilk özel uç nokta için sanal ağ eklenebilir. Ek çalışma alanları/özel uç noktalar tarafından kullanılan sanal ağların girdilerini eklemek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com), çalışma alanını içeren kaynak grubunu seçin. Sonra __Privatelink.api.azureml.MS__ adlı özel DNS bölgesi kaynağını seçin.
-2. __Ayarlar__ ' da, __sanal ağ bağlantıları__ ' nı seçin.
-3. __Ekle__ ’yi seçin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__ girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.
+2. __Ayarlar__' da, __sanal ağ bağlantıları__' nı seçin.
+3. __Ekle__’yi seçin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__ girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.
 
 Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md).
 
@@ -238,7 +242,7 @@ from azureml.core import Workspace
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. __Müşteri tarafından yönetilen anahtarlar__ ' ı seçin ve ardından __anahtar seçmek Için tıklayın ' ı__ seçin.
+1. __Müşteri tarafından yönetilen anahtarlar__' ı seçin ve ardından __anahtar seçmek Için tıklayın ' ı__ seçin.
 
     :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Müşteri tarafından yönetilen anahtarlar":::
 

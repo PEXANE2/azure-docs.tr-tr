@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ed4e47cf946827e2e4b9aaeb14d9668e96aeaa5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311626"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873786"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -200,25 +200,46 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunxiNeural` Önizle
+* `zh-CN-XiaohanNeural` Önizle
+* `zh-CN-XiaomoNeural` Önizle
+* `zh-CN-XiaoxuanNeural` Önizle
+* `zh-CN-XiaoruiNeural` Önizle
 
-Değişiklikler tümce düzeyinde uygulanır ve stiller sese göre farklılık gösterir. Bir stil desteklenmiyorsa, hizmet konuşmayı varsayılan nötr konuşma stilinde döndürür. [Ses listesi API 'si](rest-text-to-speech.md#get-a-list-of-voices)aracılığıyla her bir ses için desteklenen stilleri sorgulayabilirsiniz.
+Konuşma stilinin yoğunluğu, kullanım örneğine daha iyi uyum sağlamak için daha fazla değiştirilebilir. `styledegree`Konuşmayı daha anlamlı veya daha fazla ifade etmek için ile daha güçlü veya Softer stili belirtebilirsiniz. 
 
-Çince ses XiaoxiaoNeural için, konuşma stili yoğunluğu, kullanım örneğine daha iyi uyacak şekilde daha da değiştirilebilir. `styledegree`Konuşmayı daha anlamlı veya daha fazla ifade etmek için ile daha güçlü veya Softer stili belirtebilirsiniz.
+Şu anda, bu sinir sesleri için konuşma stil ayarlamaları desteklenir:
+* `zh-CN-XiaoxiaoNeural`
+
+Konuşma stillerini ve stil derecesini ayarlamayı birbirinden ayrı olarak, `role` sesin farklı bir yaş ve cinsiyet olarak taklit edebilmesi için parametresini de ayarlayabilirsiniz. Örneğin, erkek bir ses, bir kadın sesi taklit etmek için aralığı oluşturabilir ve intonation 'ı değiştirebilir.
+
+Şu anda, bu sinir seslerinde rol yürütme ayarlamaları desteklenir:
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
+
+Yukarıdaki değişiklikler tümce düzeyinde uygulanır ve stiller ve rol oynatılır seslere göre farklılık gösterir. Bir stil veya rol yürütme desteklenmiyorsa, hizmet konuşmayı varsayılan nötr konuşma şeklinde döndürür. [Ses listesi API 'si](rest-text-to-speech.md#get-a-list-of-voices) aracılığıyla veya kod Içermeyen [ses içeriği oluşturma](https://aka.ms/audiocontentcreation) platformu aracılığıyla her bir ses için hangi stillerin ve rol yürütdiklerin desteklendiğini görebilirsiniz.
 
 **Syntax**
 
 ```xml
+<mstts:express-as style="string"></mstts:express-as>
+```
+```xml
 <mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+```xml
+<mstts:express-as role="string" style="string"></mstts:express-as>
+```
 > [!NOTE]
-> Şu anda `styledegree` yalnızca XiaoxiaoNeural destekler. 
+> Şu anda `styledegree` yalnızca zh-cn-XiaoxiaoNeural desteklenir. `role` yalnızca zh-CN-XiaomoNeural ve zh-CN-XiaoxuanNeural destekler.
 
 **Öznitelikler**
 
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `style` | Konuşma stilini belirtir. Şu anda konuşma stilleri sese özgüdür. | Sinir Voice için konuşma stilini ayarlarken gereklidir. Kullanıyorsanız `mstts:express-as` stilin sağlanması gerekir. Geçersiz bir değer sağlanmışsa, bu öğe yok sayılır. |
-| `styledegree` | Konuşma stilinin yoğunluğunu belirtir. **Kabul edilen değerler** : 0,01 ile 2 arasında. Varsayılan değer 1 ' dir ve önceden tanımlanmış stil yoğunluğu anlamına gelir. En küçük birim, hedef stili için biraz daha fazla sonuç olarak 0,01 ' dir. 2 değeri, varsayılan stil yoğunluğu kattılmasına neden olur.  | İsteğe bağlı (Şu anda `styledegree` yalnızca XiaoxiaoNeural destekler.)|
+| `styledegree` | Konuşma stilinin yoğunluğunu belirtir. **Kabul edilen değerler**: 0,01 ile 2 arasında. Varsayılan değer 1 ' dir ve önceden tanımlanmış stil yoğunluğu anlamına gelir. En küçük birim, hedef stili için biraz daha fazla sonuç olarak 0,01 ' dir. 2 değeri, varsayılan stil yoğunluğu kattılmasına neden olur.  | İsteğe bağlı (Şu anda `styledegree` yalnızca zh-cn-XiaoxiaoNeural destekler.)|
+| `role` | Konuşan rol-yürütme ' yı belirtir. Ses, farklı bir yaş ve cinsiyeti olarak görev görür.  | İsteğe bağlı (Şu anda `role` yalnızca zh-cn-XiaomoNeural ve zh-cn-XiaoxuanNeural destekler.)|
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
@@ -250,6 +271,52 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
 |                         | `style="lyrical"`         | Bir Melodic ve sentisel şekilde ifade eder         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  | 
+| `zh-CN-YunxiNeural`    | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
+|                         | `style="sad"`             | Daha yüksek bir sıklık, daha az yoğunluk ve daha düşük Vocal enerji ile bir sorun şiddetini ifade eder. Bu duygu tanıma 'un genel göstergeleri, konuşma sırasında göz çıkarıcılar veya eğitme olabilir.            |
+|                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
+|                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
+|                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
+|                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.    |
+|                         | `style="depressed"`       | Daha düşük sıklık ve enerji ile bir melanlik ve değişimleri giderilmiş bir ton ifade eder    |
+|                         | `style="embarrassed"`     | Konuşmacı rahatsız edildiğinde belirsiz ve önemli bir tonu ifade eder   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
+|                         | `style="sad"`             | Daha yüksek bir sıklık, daha az yoğunluk ve daha düşük Vocal enerji ile bir sorun şiddetini ifade eder. Bu duygu tanıma 'un genel göstergeleri, konuşma sırasında göz çıkarıcılar veya eğitme olabilir.            |
+|                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
+|                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
+|                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
+|                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.    |
+|                         | `style="embarrassed"`     | Konuşmacı rahatsız edildiğinde belirsiz ve önemli bir tonu ifade eder   |
+|                         | `style="affectionate"`    | Daha yüksek aralıklı ve Vocal enerji ile bir sıcak ve affectionate tonu ifade eder. Konuşmacı, dinleyicinin dikkatini platformunuza çekmenin tutmanın durumundadır. Konuşmacı "Kişilik", genellikle Endearing ' dir.          |     
+|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
+|                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
+|                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
+|                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
+|                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.    |
+|                         | `style="depressed"`       | Daha düşük sıklık ve enerji ile bir melanlik ve değişimleri giderilmiş bir ton ifade eder    |
+|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |  
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
+|                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
+|                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
+|                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
+|                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.    |
+|                         | `style="depressed"`       | Daha düşük sıklık ve enerji ile bir melanlik ve değişimleri giderilmiş bir ton ifade eder    |
+|                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Daha yüksek bir sıklık, daha az yoğunluk ve daha düşük Vocal enerji ile bir sorun şiddetini ifade eder. Bu duygu tanıma 'un genel göstergeleri, konuşma sırasında göz çıkarıcılar veya eğitme olabilir.            |
+|                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
+|                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
+
+Her sinir sesi için hangi rollerin desteklendiğini öğrenmek için bu tabloyu kullanın.
+
+| Ses                   | Rol                       | Açıklama                                                 |
+|-------------------------|----------------------------|-------------------------------------------------------------|
+| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | Ses, Başak yetişkin kadın olarak hazırlanmıştır.                 |
+|                         | `role="OlderAdultMale"`    | Ses, daha eski bir yetişkin erkek ile taklit.                   |
+|                         | `role="Girl"`              | Ses, bir kız.                               |
+|                         | `role="Boy"`               | Ses, bir erkek olarak taklit.                                |
+| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | Ses, Başak yetişkin kadın olarak hazırlanmıştır.                 |
+|                         | `role="OlderAdultFemale"`  | Ses, daha eski bir yetişkin kadın olarak hazırlanmıştır.                 |
+|                         | `role="OlderAdultMale"`    | Ses, daha eski bir yetişkin erkek ile taklit.                   |
 
 **Örnek**
 
@@ -278,6 +345,23 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
 </speak>
 ```
 
+Bu SSML kod parçacığı, `role` XiaomoNeural için rol oynamasını değiştirmek için özniteliğinin nasıl kullanıldığını gösterir.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaomoNeural">
+        女儿看见父亲走了进来，问道：
+        <mstts:express-as role="YoungAdultFemale" style="calm">
+            “您来的挺快的，怎么过来的？”
+        </mstts:express-as>
+        父亲放下手提包，说：
+        <mstts:express-as role="OlderAdultMale" style="calm">
+            “刚打车过来的，路上还挺顺畅。”
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
 ## <a name="add-or-remove-a-breakpause"></a>Kesme/duraklatma ekleme veya kaldırma
 
 `break`Sözcükler arasına duraklamalar (veya kesintiler) eklemek için öğesini kullanın veya otomatik olarak metin okuma hizmeti tarafından duraklamaları önleyin.
@@ -297,7 +381,7 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `strength` | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>lemenize</li><li>x-Strong</li></ul> | İsteğe Bağlı |
-| `time` | Saniye veya milisaniye cinsinden bir duraklama 'nin mutlak süresini belirtir. Geçerli değerler örnekleri `2s` ve `500` | İsteğe Bağlı |
+| `time` | Saniye veya milisaniye cinsinden duraklamanın mutlak süresini belirtir, bu değer 5 000ms 'den az ayarlanmalıdır. Geçerli değerler örnekleri `2s` ve `500ms` | İsteğe Bağlı |
 
 | Gücüyle                      | Açıklama |
 |-------------------------------|-------------|
@@ -316,6 +400,37 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
+```
+## <a name="add-silence"></a>Sessizlik Ekle
+
+`mstts:silence`Metinden önce veya sonra veya 2 bitişik cümleden sonra duraklar eklemek için öğesini kullanın. 
+
+> [!NOTE]
+>Ve arasındaki fark `mstts:silence` , `break` `break` metinde yer alan herhangi bir yere eklenebilir, ancak sessizlik yalnızca giriş metninin başlangıcında veya sonunda veya 2 bitişik cümlede sınırında kullanılabilir.  
+
+
+**Syntax**
+
+```xml
+<mstts:silence  type="string"  value="string"/>
+```
+
+**Öznitelikler**
+
+| Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
+|-----------|-------------|---------------------|
+| `type` | Sessizlik konumunun ekleneceğini belirtir: <ul><li>Baştaki – metnin başlangıcında </li><li>Takenme – metnin sonunda </li><li>Sentenceboundary – bitişik cümleler arasında </li></ul> | Gerekli |
+| `Value` | Saniye veya milisaniye cinsinden duraklamanın mutlak süresini belirtir, bu değer 5 000ms 'den az ayarlanmalıdır. Geçerli değerler örnekleri `2s` ve `500ms` | Gerekli |
+
+**Örnek** Bu örnekte, `mtts:silence` iki cümle arasında 200 MS sessizlik eklemek için kullanılır.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
+<voice name="en-US-AriaNeural"> 
+<mstts:silence  type="Sentenceboundary" value="200ms"/> 
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
+</voice> 
+</speak> 
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Paragrafları ve tümceleri belirtme
@@ -355,6 +470,9 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
 `ph`Öğesi SSML belgelerindeki fonetik telaffuz için kullanılır. `ph`Öğesi yalnızca metin içerebilir, başka öğe içeremez. Her zaman bir geri dönüş olarak insan tarafından okunabilen konuşmayı sağlayın.
 
 Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üzerinde oluşan telefonlardan oluşur. Her telefonda benzersiz bir konuşma sesi açıklanır. Bu Latin alfabesinden farklıdır, burada herhangi bir harf birden çok konuşulan sesi temsil edebilir. "Candy" ve "işten" kelimelerdeki "c" harfinin farklı söylenmelerini veya "şeyler" ve "Bunlar" kelimelerinde "TH" harf birleşiminin farklı söylenmelerini göz önünde bulundurun.
+
+> [!NOTE]
+> Phonemes etiketi, bu 5 seste (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural ve MT-MT-GarceNeural) Şu anda desteklenmez.
 
 **Syntax**
 
@@ -402,6 +520,10 @@ Bazen metinden konuşmaya hizmeti bir sözcüğe doğru pronounce. Örneğin, bi
 > [!NOTE]
 > Özel sözlük Şu anda UTF-8 kodlamasını desteklemektedir. 
 
+> [!NOTE]
+> Bu 5 Ses için özel sözlük (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural ve MT-MT-GarceNeural) Şu anda desteklenmez.
+
+
 **Syntax**
 
 ```XML
@@ -439,7 +561,7 @@ Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls
 
 `lexicon`Öğesi en az bir öğe içeriyor `lexeme` . Her `lexeme` öğe en az bir `grapheme` öğe ve bir veya daha fazla `grapheme` , `alias` , ve `phoneme` öğesi içerir. `grapheme`Öğesi, <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">dikgrafi <span class="docon docon-navigate-external x-hidden-focus"></span> </a>tanımlayan metni içerir. `alias`Öğeler, bir kısaltın veya kısaltılmış bir terimin telaffuz olduğunu göstermek için kullanılır. `phoneme`Öğesi, nasıl bir açıklama ekleneceğini açıklayan metin sağlar `lexeme` .
 
-Özel sözlüğü kullanarak bir ifadenin söylenişini doğrudan ayarlayamayacağınızı aklınızda olmak önemlidir. Kısaltma veya kısaltılmış bir terim için telaffuz ayarlamanız gerekiyorsa, önce bir belirtin ve `alias` ardından `phoneme` ile ilişkilendirin `alias` . Örneğin:
+Özel sözlüğü kullanarak bir ifadenin söylenişini doğrudan ayarlayamayacağınızı aklınızda olmak önemlidir. Kısaltma veya kısaltılmış bir terim için telaffuz ayarlamanız gerekiyorsa, önce bir belirtin ve `alias` ardından `phoneme` ile ilişkilendirin `alias` . Örnek:
 
 ```xml
   <lexeme>
@@ -452,7 +574,7 @@ Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls
   </lexeme>
 ```
 
-Ayrıca, kısaltmasının veya kısaltılmış dönemin doğrudan bekleninizi de sağlayabilirsiniz `alias` . Örneğin:
+Ayrıca, kısaltmasının veya kısaltılmış dönemin doğrudan bekleninizi de sağlayabilirsiniz `alias` . Örnek:
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -536,11 +658,11 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `pitch` | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, `<prosody pitch="600Hz">some text</prosody>`.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: `<prosody pitch="+80Hz">some text</prosody>` veya `<prosody pitch="-2st">some text</prosody>` . "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>orta</li><li>yüksek</li><li>x-yüksek</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
-| `contour` |Artık kontur hem sinir hem de standart sesleri desteklemektedir. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch` .). | İsteğe Bağlı |
+| `contour` |Artık kontur hem sinir hem de standart sesleri desteklemektedir. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örnek: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch` .). | İsteğe Bağlı |
 | `range` | Metin için sıklık aralığını temsil eden bir değer. `range`' I betimleyen mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak ifade edebilirsiniz `pitch` . | İsteğe Bağlı |
 | `rate` | Metnin konuşma oranını gösterir. Şöyle ifade edebilirsiniz `rate` :<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *0,5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>orta</li><li>Hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
 | `duration` | Konuşma birleştirme (TTS) hizmeti, metni saniye veya milisaniye olarak okurken geçmesi gereken süre. Örneğin, *2s* veya *1800ms*. Süre yalnızca standart sesleri destekler.| İsteğe Bağlı |
-| `volume` | Konuşma sesinizin birim düzeyini gösterir. Birimi şu şekilde ifade edebilirsiniz:<ul><li>*Deetest* 'den *loudest* 'e kadar 0,0 ile 100,0 arasında bir sayı olarak ifade edilen mutlak bir değer. Örneğin, 75. Varsayılan değer 100,0 ' dir.</li><li>Birimin değiştirileceği miktarı belirten, "+" veya "-" işaretinden önce gelen sayı olarak ifade edilen göreli bir değer. Örneğin, + 10 veya-5,5.</li><li>Sabit değer:<ul><li>katılımı</li><li>x-Soft</li><li>yumuşatılmış</li><li>orta</li><li>DIN</li><li>x-yüksek</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
+| `volume` | Konuşma sesinizin birim düzeyini gösterir. Birimi şu şekilde ifade edebilirsiniz:<ul><li>*Deetest* 'den *loudest*'e kadar 0,0 ile 100,0 arasında bir sayı olarak ifade edilen mutlak bir değer. Örneğin, 75. Varsayılan değer 100,0 ' dir.</li><li>Birimin değiştirileceği miktarı belirten, "+" veya "-" işaretinden önce gelen sayı olarak ifade edilen göreli bir değer. Örneğin, + 10 veya-5,5.</li><li>Sabit değer:<ul><li>katılımı</li><li>x-Soft</li><li>yumuşatılmış</li><li>orta</li><li>DIN</li><li>x-yüksek</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
 
 ### <a name="change-speaking-rate"></a>Konuşma hızını değiştir
 
@@ -631,7 +753,7 @@ Ve öznitelikleri için desteklenen içerik türleri aşağıda verilmiştir `in
 | `address` | | Metin bir adres olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Yani "150th mahkeme, Kuzey Doğu Redmond Washington." |
 | `cardinal`, `number` | | Metin bir Kardinal sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"Üç alternatif vardır." |
 | `characters`, `spell-out` | | Metin, tek tek harfler (yazılmış) olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T" olarak. |
-| `date` | DMY, mdy, yımd, yıdm, YM, My, MD, DM, d, m, y | Metin bir tarih olarak konuşulur. `format`Öznitelik, tarihin biçimini ( *d = Day, m = month ve y = Year* ) belirtir. Konuşma birleştirme motoru pronounces:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Bugün Ekim, 2016. |
+| `date` | DMY, mdy, yımd, yıdm, YM, My, MD, DM, d, m, y | Metin bir tarih olarak konuşulur. `format`Öznitelik, tarihin biçimini (*d = Day, m = month ve y = Year*) belirtir. Konuşma birleştirme motoru pronounces:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Bugün Ekim, 2016. |
 | `digits`, `number_digit` | | Metin, tek basamaklı bir dizi olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9" olarak |
 | `fraction` | | Metin kesirli bir sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"Bir inç üç sekizde biri." |
 | `ordinal` | | Metin bir sıra numarası olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />As "üçüncü seçeneği belirleyin". |
@@ -717,9 +839,9 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `src` | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
-| `volume` | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler** : `0` `100` dahil. `1` varsayılan değerdir. | İsteğe Bağlı |
-| `fadein` | Arka plan sesinin "belirme süresi" süresini milisaniye olarak belirtir. Varsayılan değer `0` , belirme olmaması ile eşdeğerdir. **Kabul edilen değerler** : `0` `10000` dahil.  | İsteğe Bağlı |
-| `fadeout` | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0` , soluklaştırma eşdeğeri olan ' tir. **Kabul edilen değerler** : `0` `10000` dahil.  | İsteğe Bağlı |
+| `volume` | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler**: `0` `100` dahil. `1` varsayılan değerdir. | İsteğe Bağlı |
+| `fadein` | Arka plan sesinin "belirme süresi" süresini milisaniye olarak belirtir. Varsayılan değer `0` , belirme olmaması ile eşdeğerdir. **Kabul edilen değerler**: `0` `10000` dahil.  | İsteğe Bağlı |
+| `fadeout` | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0` , soluklaştırma eşdeğeri olan ' tir. **Kabul edilen değerler**: `0` `10000` dahil.  | İsteğe Bağlı |
 
 **Örnek**
 

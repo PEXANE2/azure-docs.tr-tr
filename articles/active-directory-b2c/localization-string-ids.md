@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7819c934ab97d597d52d4809c11e5c59fb87c89a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840677"
+ms.locfileid: "94873378"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -64,7 +64,7 @@ KIMLIĞI `api.signuporsignin` ve [kendini onaylanan teknik profiliyle](self-asse
 
 Aşağıdaki örnek, kayıt veya oturum açma sayfasında bazı Kullanıcı arabirimi öğelerinin kullanımını gösterir:
 
-![Kaydolma veya oturum açma sayfası UX öğeleri](./media/localization-string-ids/localization-susi-2.png)
+:::image type="content" source="./media/localization-string-ids/localization-susi-2.png" alt-text="Kaydolma veya oturum açma sayfası U X öğelerini gösteren ekran görüntüsü.":::
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>Kaydolma veya oturum açma kimlik sağlayıcıları
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de41bd030ea73ac68bfac5fbfbd03ae14cf7980f
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891385"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874245"
 ---
 # <a name="certificate-requirements"></a>Sertifika gereksinimleri
 
@@ -30,12 +30,13 @@ Sertifika verme gereksinimleri aşağıdaki gibidir:
 * Sertifikanın *verilen:* alanı, kök CA sertifikaları hariç, şunun *tarafından verilen: alanı ile* aynı olmamalıdır.
 
 
-
 ## <a name="certificate-algorithms"></a>Sertifika algoritmaları
 
 Sertifika algoritmaları aşağıdaki gereksinimlere sahip olmalıdır:
 
 * Sertifikaların RSA anahtar algoritmasını kullanması gerekir.
+
+* Yalnızca Microsoft RSA/SChannel Şifreleme sağlayıcısı olan RSA sertifikaları desteklenir.
 
 * Sertifika imza algoritması SHA1 olamaz.
 
@@ -81,6 +82,8 @@ Azure Stack Edge Pro cihazınıza yüklü PFX sertifikaları aşağıdaki gereks
 * Azure Stack hazırlık Denetleyicisi aracını kullanıyorsanız, tüm sertifika PFX dosyalarının parolalarının dağıtım sırasında aynı olması gerekir. Daha fazla bilgi için bkz. [Azure Stack hub hazırlık Denetleyicisi aracı kullanarak Azure Stack Edge Pro için sertifika oluşturma](azure-stack-edge-j-series-create-certificates-tool.md).
 
 * Sertifika PFX parolasının parolası karmaşık bir parola olmalıdır. Dağıtım parametresi olarak kullanıldığı için bu parolayı bir yere unutmayın.
+
+* Yalnızca Microsoft RSA/SChannel Şifreleme sağlayıcısı ile RSA sertifikalarını kullanın.
 
 Daha fazla bilgi için bkz. [özel ANAHTARLA PFX sertifikalarını dışarı aktarma](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 
