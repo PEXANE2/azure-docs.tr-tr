@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: a1166874ed743efa599743fa6db8341e94c0fe1f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 969ae6dc1e3667bc360890c292371a0a9b1ba2dc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747663"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844600"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Hızlı başlangıç: IoT Hub 'ına bağlı bir cihazı denetleme (Android)
 
@@ -41,15 +41,7 @@ Bu hızlı başlangıçta, Azure IoT Hub bağlı sanal cihazı denetlemek için 
 
 * Bağlantı noktası 8883 güvenlik duvarınızda açık. Bu hızlı başlangıçta bulunan cihaz örneği, 8883 bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Azure IoT uzantısı ekleme
-
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT Uzantısı belirli IoT Hub, IoT Edge ve IoT Cihaz Sağlama Hizmeti (DPS) komutlarını Azure CLI’ya ekler.
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -67,9 +59,9 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-   **Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Myandroıddevice** : Bu, kaydetmekte olduğunuz cihazın adıdır. **Myandroıddevice** 'ın gösterildiği gibi kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
+   **Myandroıddevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. **Myandroıddevice** 'ın gösterildiği gibi kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -78,7 +70,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 
-   **Youriothubname** : Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -97,7 +89,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 Ayrıca, arka uç hizmet uygulamalarının, yöntemleri yürütmek ve iletileri almak üzere IoT Hub 'ınıza bağlanmasını sağlamak için bir _hizmet bağlantı dizesi_ gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
-**Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+**Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -115,7 +107,7 @@ Bu hızlı başlangıçta örneklerin her ikisi de GitHub 'daki Azure-IoT-Sample
 
 Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öykünücüsünde çalıştırılabilir. Örnek, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağlanır, sanal telemetri gönderir ve merkezinizden doğrudan Yöntem çağrılarını dinler. Bu hızlı başlangıçta, hub’dan gelen doğrudan yöntem çağrısı, telemetri gönderme aralığını değiştirmesini cihaza bildirir. Sanal cihaz, doğrudan yöntemini yürütmeden sonra hub 'ınıza bir bildirim gönderir.
 
-1. Android Studio 'de GitHub örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun şu dizininde bulunur: *\azure-iot-Samples-java\iot-hub\Samples\device\AndroidSample* .
+1. Android Studio 'de GitHub örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun şu dizininde bulunur: *\azure-iot-Samples-java\iot-hub\Samples\device\AndroidSample*.
 
 2. Android Studio, örnek proje için *Gradle. Properties* ' i açın ve **Device_Connection_String** yer tutucusunu, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin.
 
@@ -123,7 +115,7 @@ Cihaz SDK örnek uygulaması, fiziksel bir Android cihazda veya bir Android öyk
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio ' de, **File**  >  **Gradle dosyaları ile dosya eşitleme projesi** ' ne tıklayın. Oluşturma işlemini doğrulayın.
+3. Android Studio ' de, **File**  >  **Gradle dosyaları ile dosya eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
 
    > [!NOTE]
    > Proje eşitleme başarısız olursa, aşağıdaki nedenlerden biri olabilir:
@@ -145,7 +137,7 @@ Bu bölümde, Android cihazı tarafından gönderilen iletileri izlemek için [I
 
 1. Azure Cloud Shell'i kullanarak, IoT hub’ınızdan gelen iletilere bağlanmak ve bu iletileri okumak için aşağıdaki komutu çalıştırın:
 
-   **Youriothubname** : Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name {YourIoTHubName} --output table
@@ -165,7 +157,7 @@ Bu uygulamayı ayrı bir fiziksel Android cihazında veya Android öykünücüs�
 
 Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada, bir IoT Hub tüm cihazları denetleyen hassas bağlantı dizesiyle ilişkili riskleri azaltmak daha kolay olur. Bu örnekte, bunu yalnızca tanıtım amacıyla bir Android uygulaması olarak çalıştırdık. Bu hızlı başlangıçta diğer dil sürümleri, tipik bir arka uç hizmet uygulamasıyla daha yakından hizalanacak örnekler sağlar.
 
-1. Android Studio 'de GitHub hizmeti örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun şu dizininde bulunur: *\azure-iot-Samples-java\iot-hub\Samples\service\AndroidSample* .
+1. Android Studio 'de GitHub hizmeti örnek Android projesini açın. Proje, kopyalanmış veya indirilen [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) deposunun şu dizininde bulunur: *\azure-iot-Samples-java\iot-hub\Samples\service\AndroidSample*.
 
 2. Android Studio, örnek proje için *Gradle. Properties* ' i açın. **ConnectionString** ve **DeviceID** özelliklerinin değerlerini, daha önce not ettiğiniz hizmet bağlantı dizesiyle ve kaydettiğiniz Android cihaz kimliğiyle güncelleştirin.
 
@@ -174,7 +166,7 @@ Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada,
     DeviceId=MyAndroidDevice
     ```
 
-3. Android Studio ' de, **File**  >  **Gradle dosyaları ile dosya eşitleme projesi** ' ne tıklayın. Oluşturma işlemini doğrulayın.
+3. Android Studio ' de, **File**  >  **Gradle dosyaları ile dosya eşitleme projesi**' ne tıklayın. Oluşturma işlemini doğrulayın.
 
    > [!NOTE]
    > Proje eşitleme başarısız olursa, aşağıdaki nedenlerden biri olabilir:
@@ -184,7 +176,7 @@ Bir IoT Hub arka uç hizmeti uygulaması genellikle bulutta çalışır, burada,
 
 4. Oluşturma işlemi tamamlandıktan sonra, **Run**  >  **' uygulama '** çalıştırmasını Çalıştır ' a tıklayın. Uygulamayı ayrı bir fiziksel Android cihazında veya Android öykünücüsünde çalışacak şekilde yapılandırın. Bir Android uygulamasını fiziksel bir cihazda veya Öykünücüde çalıştırma hakkında daha fazla bilgi için bkz. [uygulamanızı çalıştırma](https://developer.android.com/training/basics/firstapp/running-app).
 
-5. Uygulama yüklendikten sonra, **set Messaging Interval** değerini **1000** olarak güncelleştirin ve **çağır** ' a tıklayın.
+5. Uygulama yüklendikten sonra, **set Messaging Interval** değerini **1000** olarak güncelleştirin ve **çağır**' a tıklayın.
 
     Yani telemetri mesajlaşma aralığı milisaniyedir. Cihaz örneğinin varsayılan telemetri aralığı 5 saniye olarak ayarlanır. Bu değişiklik Android IoT cihazını, her saniye Telemetriyi güncelleştirecek şekilde güncelleştirecek.
 

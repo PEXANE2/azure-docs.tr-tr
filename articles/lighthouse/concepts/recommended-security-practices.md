@@ -3,12 +3,12 @@ title: Önerilen güvenlik uygulamaları
 description: Azure ışıklı kullanımı kullanılırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399389"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843732"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
 
@@ -17,18 +17,18 @@ ms.locfileid: "91399389"
 > [!TIP]
 > Bu öneriler, Azure açık Thouse ile [birden çok kiracıyı yöneten kuruluşlar](enterprise.md) için de geçerlidir.
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication’ı gerektirme
+## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication gerektir
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (iki adımlı doğrulama olarak da bilinir), saldırganların birden çok kimlik doğrulama adımı gerektirerek bir hesaba erişim sağlamasını önlemeye yardımcı olur. Temsilcili müşteri kaynaklarına erişimi olacak kullanıcılar da dahil olmak üzere, yönettiğiniz kiracınızdaki tüm kullanıcılar için Multi-Factor Authentication gerekir.
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (iki adımlı doğrulama olarak da bilinir), saldırganların birden çok kimlik doğrulama adımı gerektirerek bir hesaba erişim sağlamasını önlemeye yardımcı olur. Temsilcili müşteri kaynaklarına erişimi olacak kullanıcılar da dahil olmak üzere, yönettiğiniz kiracınızdaki tüm kullanıcılar için Multi-Factor Authentication gerekir.
 
-Müşterilerinizin kiracılarında Azure Multi-Factor Authentication uygulamasını da sağlamasını öneririz.
+Müşterilerinizin kiracılarında Azure AD Multi-Factor Authentication uygulamasını da sağlamasını öneririz.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>En az ayrıcalık ilkesini kullanarak gruplara izin atama
 
 Yönetimi kolaylaştırmak için müşterilerinizin kaynaklarını yönetmek için gereken her bir rol için Azure Active Directory (Azure AD) gruplarını kullanın. Bu, her bir kullanıcıya izinleri doğrudan atamak yerine, her kullanıcıyı gerektiği gibi eklemenize veya kaldırmanıza olanak sağlar.
 
 > [!IMPORTANT]
-> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik**olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik** olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 İzin yapınızı oluştururken, kullanıcıların yalnızca işini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun, böylece yanlışlıkla oluşan hatalara karşı daha fazla hata olasılığını azaltır.
 
@@ -47,5 +47,5 @@ Bu grupları oluşturduktan sonra, gerektiğinde kullanıcıları atayabilirsini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Multi-Factor Authentication 'Yi dağıtın](../../active-directory/authentication/howto-mfa-getstarted.md).
+- [Azure AD Multi-Factor Authentication dağıtın](../../active-directory/authentication/howto-mfa-getstarted.md).
 - [Çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.

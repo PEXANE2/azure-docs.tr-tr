@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 882df9d0dcb01d6321455b845fed087a5e14ccc6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002326"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843086"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -21,7 +21,7 @@ Azure 'daki Linux sanal makinelerinin (VM) güvenliğini artırmak için Azure A
 
 > [!IMPORTANT]
 > Azure Active Directory kimlik doğrulaması şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > Bu özelliği, sınama sonrasında atmayı beklediğinizi bir test sanal makinesinde kullanın.
 >
 
@@ -134,11 +134,11 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmiyorsa,--atane *-nesnesi-kimliği*ile Kullanıcı HESABıNıZıN nesne kimliğini belirtmeniz *gerekir.* Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
+> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmiyorsa,--atane *-nesnesi-kimliği* ile Kullanıcı HESABıNıZıN nesne kimliğini belirtmeniz *gerekir.* Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
 
 Azure RBAC kaynaklarına erişimi yönetmek için Azure RBAC kullanma hakkında daha fazla bilgi için bkz. [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)veya [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanma.
 
-Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması için çok faktörlü kimlik doğrulaması gerektirecek şekilde Azure AD 'yi yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Bulutta Azure Multi-Factor Authentication kullanmaya başlama](../../active-directory/authentication/howto-mfa-getstarted.md).
+Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması için çok faktörlü kimlik doğrulaması gerektirecek şekilde Azure AD 'yi yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Bulutta Azure AD Multi-Factor Authentication kullanmaya başlama](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Linux sanal makinesinde oturum açma
 
@@ -162,7 +162,7 @@ Kimliği başarıyla doğrulandığında, Web tarayıcısında aşağıdaki ilet
 
 Tarayıcı penceresini kapatın, SSH istemine geri dönün ve **ENTER** tuşuna basın. 
 
-Azure Linux sanal makinesinde, atanan *VM kullanıcısı* veya *VM Yöneticisi*gibi rol izinleriyle oturum açtınız. Kullanıcı hesabınıza *Sanal Makine Yöneticisi oturum açma* rolü atanırsa, `sudo` kök ayrıcalıkları gerektiren komutları çalıştırmak için kullanabilirsiniz.
+Azure Linux sanal makinesinde, atanan *VM kullanıcısı* veya *VM Yöneticisi* gibi rol izinleriyle oturum açtınız. Kullanıcı hesabınıza *Sanal Makine Yöneticisi oturum açma* rolü atanırsa, `sudo` kök ayrıcalıkları gerektiren komutları çalıştırmak için kullanabilirsiniz.
 
 ## <a name="sudo-and-aad-login"></a>Sudo ve AAD oturumu açma
 
@@ -200,7 +200,7 @@ Access denied
 
 Bir Web tarayıcısında kimlik doğrulama adımını başarıyla tamamlayadıysanız, yeni bir kodla hemen oturum açmanız istenebilir. Bu hata genellikle, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında bir uyumsuzluk oluşur. Bu sorunu düzeltmek için:
 
-- SSH isteminde belirttiğiniz oturum açma adının doğru olduğunu doğrulayın. Oturum açma adındaki bir yazım hatası, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında uyuşmazlık oluşmasına neden olabilir. Örneğin, *azureuser \@ contoso.onmicrosoft.com*yerine *azuresuer \@ contoso.onmicrosoft.com* yazdınız.
+- SSH isteminde belirttiğiniz oturum açma adının doğru olduğunu doğrulayın. Oturum açma adındaki bir yazım hatası, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında uyuşmazlık oluşmasına neden olabilir. Örneğin, *azureuser \@ contoso.onmicrosoft.com* yerine *azuresuer \@ contoso.onmicrosoft.com* yazdınız.
 - Birden çok Kullanıcı hesabınız varsa, Azure AD 'de oturum açarken tarayıcı penceresinde farklı bir kullanıcı hesabı sağlamadığınızdan emin olun.
 - Linux, büyük/küçük harfe duyarlı bir işletim sistemidir. ' Azureuser@contoso.onmicrosoft.com ' Ve ' ' arasında bir farklılık var ve azureuser@contoso.onmicrosoft.com Bu bir uyumsuzluğa neden olabilir. SSH isteminde doğru büyük/küçük harf duyarlılığı ile UPN 'yi belirttiğinizden emin olun.
 

@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js
-ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250037"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844821"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için uygulama ayarlarını yapılandırma
 
@@ -96,7 +96,7 @@ Azure portal, uygulama ayarlarını oluşturmak, güncelleştirmek ve silmek iç
 
 1. [Azure Portal](https://portal.azure.com)gidin.
 
-1. Arama çubuğunda **statik Web Apps**bulun ve seçin.
+1. Arama çubuğunda **statik Web Apps** bulun ve seçin.
 
 1. Kenar çubuğundaki **yapılandırma** seçeneğine tıklayın.
 
@@ -106,9 +106,9 @@ Azure portal, uygulama ayarlarını oluşturmak, güncelleştirmek ve silmek iç
 
     :::image type="content" source="media/application-settings/configuration.png" alt-text="Azure statik Web Apps yapılandırma görünümü":::
 
-1. Bir **ad** ve **değer**girin.
+1. Bir **ad** ve **değer** girin.
 
-1. **Tamam**'a tıklayın.
+1. **Tamam** düğmesine tıklayın.
 
 1. **Kaydet**’e tıklayın.
 
@@ -124,7 +124,7 @@ Uygun değerlerle bir JSON dosyası oluşturmanın en kolay yolu, dosyasında _l
    local.settings*.json
    ```
 
-2. Sonra, _local.settings.js_ dosyanın bir kopyasını oluşturun ve _local.settings.properties.jsüzerine_adlandırın.
+2. Sonra, _local.settings.js_ dosyanın bir kopyasını oluşturun ve _local.settings.properties.jsüzerine_ adlandırın.
 
 3. Yeni dosya içinde, uygulama ayarları hariç diğer tüm verileri dosyadan kaldırın ve olarak yeniden adlandırın `Values` `properties` .
 
@@ -144,7 +144,7 @@ Azure CLı komutu, karşıya yüklemeyi çalıştırmak için hesabınıza özg�
 2. Kaynak grubu adı
 3. Abonelik Kimliği
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure statik Web Apps yapılandırma görünümü":::
+:::image type="content" source="media/application-settings/overview.png" alt-text="Azure statik Web Apps genel bakış":::
 
 4. Terminal veya komut satırından aşağıdaki komutu yürütün. , Ve ' nin yer tutucuları, `<YOUR_STATIC_SITE_NAME>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_SUBSCRIPTION_ID>` _genel bakış_ penceresindeki değerlerinizle değiştirdiğinizden emin olun.
 

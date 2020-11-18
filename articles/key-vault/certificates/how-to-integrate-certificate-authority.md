@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 50f2515cee92ead8018ffaaf4b4574905f8007d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289549"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844514"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 
@@ -31,9 +31,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir.
 * Bir Anahtar Kasası. Mevcut bir anahtar kasasını kullanabilir veya şu hızlı başlangıçlardan birindeki adımları izleyerek yeni bir tane oluşturabilirsiniz:
-   - [Azure CLı ile Anahtar Kasası oluşturma](../secrets/quick-create-cli.md)
-   - [Azure PowerShell ile bir Anahtar Kasası oluşturma](../secrets/quick-create-powershell.md)
-   - [Azure Portal bir Anahtar Kasası oluşturun](../secrets/quick-create-portal.md).
+   - [Azure CLı ile Anahtar Kasası oluşturma](../general/quick-create-cli.md)
+   - [Azure PowerShell ile bir Anahtar Kasası oluşturma](../general/quick-create-powershell.md)
+   - [Azure Portal bir Anahtar Kasası oluşturun](../general/quick-create-portal.md).
 *   DigiCert CertCentral hesabını etkinleştirmeniz gerekir. CertCentral hesabınız için [kaydolun](https://www.digicert.com/account/signup/) .
 *   Hesaplarınızdaki yönetici düzeyi izinleri.
 
@@ -48,20 +48,20 @@ DigiCert CertCentral hesabınızdan aşağıdaki bilgilere sahip olduğunuzdan e
 ## <a name="adding-certificate-authority-in-key-vault"></a>Key Vault sertifika yetkilisi ekleniyor 
 DigiCert CertCentral hesabından bilgi topladıktan sonra artık anahtar kasasındaki sertifika yetkilisi listesine DigiCert ekleyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1.  DigiCert sertifika yetkilisi eklemek için, DigiCert eklemek istediğiniz anahtar kasasına gidin. 
-2.  Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
+2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
 3.  **Sertifika yetkilileri** sekmesini seçin. ![ sertifika yetkililerini seçin](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  **Ekle** seçeneğini belirleyin.
  ![Sertifika Yetkilisi Ekle](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  **Sertifika yetkilisi oluştur** ekranında aşağıdaki değerleri seçin:
-    -   **Ad** : tanımlayıcı veren bir ad ekleyin. Örnek Digiccertca
-    -   **Sağlayıcı** : menüden DigiCert öğesini seçin.
-    -   **Hesap kimliği** : DigiCert Certcentral hesap kimliğinizi girin
-    -   **Hesap parolası** : DigiCert certcentral HESABıNıZDA oluşturduğunuz API anahtarını girin
-    -   **Kuruluş kimliği** : DigiCert Certcentral hesabından toplanan OrgID girin 
-    -   **Oluştur** 'a tıklayın.
+    -   **Ad**: tanımlayıcı veren bir ad ekleyin. Örnek Digiccertca
+    -   **Sağlayıcı**: menüden DigiCert öğesini seçin.
+    -   **Hesap kimliği**: DigiCert Certcentral hesap kimliğinizi girin
+    -   **Hesap parolası**: DigiCert certcentral HESABıNıZDA oluşturduğunuz API anahtarını girin
+    -   **Kuruluş kimliği**: DigiCert Certcentral hesabından toplanan OrgID girin 
+    -   **Oluştur**'a tıklayın.
    
 6.  Digiccertca 'Nın artık sertifika yetkilileri listesine eklendiğini görürsünüz.
 

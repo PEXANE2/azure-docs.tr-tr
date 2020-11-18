@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632218"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844191"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS tümleştirme çalışma zamanı 'nda paket yürütmeye sorun giderme
 
@@ -121,10 +121,10 @@ Bu hata, SSIS tümleştirme çalışma zamanı özel kurulum için yapılandır�
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Hata iletisi: "Microsoft OLE DB sağlayıcısı Analysis Services. ' HRESULT: 0x80004005 Description: ' COM hatası: COM hatası: mscorlib; Bir çağrının hedefi tarafından özel durum oluşturuldu "
 
-Olası bir neden, Azure Multi-Factor Authentication etkinleştirilen kullanıcı adının veya parolanın Azure Analysis Services kimlik doğrulaması için yapılandırılmış olması olabilir. Bu kimlik doğrulaması, SSIS tümleştirme çalışma zamanı 'nda desteklenmez. Azure Analysis Services kimlik doğrulaması için bir hizmet sorumlusu kullanmayı deneyin:
+Olası bir neden, Azure AD Multi-Factor Authentication etkinleştirilmiş kullanıcı adının veya parolanın Azure Analysis Services kimlik doğrulaması için yapılandırılmış olması olabilir. Bu kimlik doğrulaması, SSIS tümleştirme çalışma zamanı 'nda desteklenmez. Azure Analysis Services kimlik doğrulaması için bir hizmet sorumlusu kullanmayı deneyin:
 
 1. Hizmet sorumlusu [Ile Otomasyon](../analysis-services/analysis-services-service-principal.md)bölümünde açıklandığı gibi bir hizmet sorumlusu hazırlayın.
-2. Bağlantı Yöneticisi 'nde **belirli bir Kullanıcı adı ve parola kullan** : **AppID** 'yi parola olarak Kullanıcı adı ve **ClientSecret** olarak ayarlayın.
+2. Bağlantı Yöneticisi 'nde **belirli bir Kullanıcı adı ve parola kullan**: **AppID** 'yi parola olarak Kullanıcı adı ve **ClientSecret** olarak ayarlayın.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Hata iletisi: "ADONET Source şu hata iletisiyle {GUID} bağlantısını alamadı: yönetilen bir kimlik kullanırken Kullanıcı ' NT AUTHORıTY\ANONYMOUS LOGON ' için oturum açma başarısız oldu
 

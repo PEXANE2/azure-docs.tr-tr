@@ -3,12 +3,12 @@ title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 41b010315adaf5a0eca2939b1d42fe4d7c159628
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909718"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843052"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -59,10 +59,10 @@ Event Hubs kaynaklarınızın durumunu [Azure izleyici](../azure-monitor/overvie
 Azure Event Hubs, müşteri verilerini depolar. Bu veriler, tek bir bölgede Event Hubs tarafından otomatik olarak depolanır. bu nedenle, bu hizmet [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
-Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile birlikte kullanabilirsiniz:
+Olayları göndermek ve almak için Azure Event Hubs ile aşağıdaki protokolleri kullanabilirsiniz:
 
-- AMQP
-- HTTP
+- Gelişmiş İleti Sıraya Alma Protokolü 1,0 (AMQP)
+- TLS ile Köprü Metni Aktarım Protokolü 1,1 (HTTPS)
 - Apache Kafka
 
 Azure Event Hubs ile iletişim kurmak için bu protokolleri kullanmak üzere açmanız gereken giden bağlantı noktaları için aşağıdaki tabloya bakın. 
@@ -70,8 +70,21 @@ Azure Event Hubs ile iletişim kurmak için bu protokolleri kullanmak üzere aç
 | Protokol | Bağlantı noktaları | Ayrıntılar | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 ve 5672 | Bkz. [AMQP protokol Kılavuzu](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTP, HTTPS | 80, 443 |  |
+| HTTPS | 443 | Bu bağlantı noktası HTTP/REST API ve AMQP-Over-WebSockets için kullanılır. |
 | Kafka | 9093 | Bkz. [Kafka uygulamalardan Event Hubs kullanma](event-hubs-for-kafka-ecosystem-overview.md)
+
+İstemci SDK 'Ları tarafından gerçekleştirilen çeşitli yönetim işlemleri ve Azure Active Directory (kullanıldığında) ' dan belirteçleri alma HTTPS üzerinden çalıştırıldığında, giden iletişim için HTTPS bağlantı noktası 5671 bağlantı noktası üzerinden de gereklidir. 
+
+Resmi Azure SDK 'Ları genellikle Event Hubs olayları göndermek ve almak için AMQP protokolünü kullanır. AMQP-Over-WebSockets protokol seçeneği, HTTP API gibi bağlantı noktası TCP 443 üzerinden çalışır, ancak başka bir şekilde düz AMQP ile aynı şekilde çalışır. Bu seçenek, ek el sıkışma gidiş dönüşleri ve HTTPS bağlantı noktasını paylaşmak için zorunluluğunu getirir kadar çok daha fazla ek yük nedeniyle ilk bağlantı gecikmesini daha yüksektir. Bu mod seçilirse, TCP bağlantı noktası 443 iletişim için yeterlidir. Aşağıdaki seçenekler, düz AMQP veya AMQP WebSockets modunun seçilmesine izin verir:
+
+| Dil | Seçenek   |
+| -------- | ----- |
+| .NET     | [Eventhubstransporttype. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) veya [Eventhubstransporttype. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) Ile [Eventhubconnectionoptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) özelliği |
+| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) , [Amqptransporttype. amqp](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) veya [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
+| Node  | [Eventhubconsumerclientoptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) bir `webSocketOptions` özelliğe sahip. |
+| Python | [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) veya [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) ile [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) |
+
+
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Hangi IP adreslerine izin vermem gerekir?
 Bağlantılarınızın izin verilen listesine eklenecek doğru IP adreslerini bulmak için şu adımları izleyin:
@@ -194,8 +207,8 @@ Azure portal temel veya Standart katman ad alanı oluştururken ad alanı için 
 1. **Olay veri yolu ad alanı** sayfasında, sol taraftaki menüden **Yeni destek isteği** ' ni seçin. 
 1. **Yeni destek isteği** sayfasında, aşağıdaki adımları izleyin:
     1. **Özet** için, sorunu birkaç sözcükten açıklama. 
-    1. **Sorun türü** için **Kota** ' i seçin. 
-    1. **Sorun alt türü** için, **Aktarım hızı birimi artışı veya azaltma isteği** ' ni seçin. 
+    1. **Sorun türü** için **Kota**' i seçin. 
+    1. **Sorun alt türü** için, **Aktarım hızı birimi artışı veya azaltma isteği**' ni seçin. 
     
         :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="Destek isteği sayfası":::
 
@@ -230,10 +243,10 @@ Bir destek isteği göndererek bölüm sayısının 40 ' e (tam) yükseldiğini 
 1. **Olay veri yolu ad alanı** sayfasında, sol taraftaki menüden **Yeni destek isteği** ' ni seçin. 
 1. **Yeni destek isteği** sayfasında, aşağıdaki adımları izleyin:
     1. **Özet** için, sorunu birkaç sözcükten açıklama. 
-    1. **Sorun türü** için **Kota** ' i seçin. 
-    1. **Sorun alt türü** için, **bölüm değişikliği isteği** ' ni seçin. 
+    1. **Sorun türü** için **Kota**' i seçin. 
+    1. **Sorun alt türü** için, **bölüm değişikliği isteği**' ni seçin. 
     
-        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Destek isteği sayfası":::
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Bölüm sayısını artır":::
 
 Bölüm sayısı tam olarak 40 yükseltilebilir. Bu durumda, Ayrıca, 40 sayısının de arttığı bir artış vardır. Daha sonra TU limitini <= 20 ' ye düşürürseniz, en yüksek bölüm sayısı da 32 olarak azaltılır. 
 
@@ -257,7 +270,7 @@ Tüm kayıtlı olayların, olay üst bilgileri veya tüm olay hub 'larında disk
 
 Bir olay hub 'ına gönderilen her olay faturalandırılabilir ileti olarak sayılır. Giriş *olayı* , 64 KB 'tan küçük veya buna eşit bir veri birimi olarak tanımlanır. Boyutu 64 KB 'tan küçük veya buna eşit olan herhangi bir olay, faturalandırılabilir bir olay olarak kabul edilir. Olay 64 KB 'tan büyükse, faturalanabilir olay sayısı, 128 KB 64 'ın katları halinde olay boyutuna göre hesaplanır. Örneğin, Olay Hub 'ına gönderilen 8 KB 'lik bir olay bir olay olarak faturalandırılır, ancak olay hub 'ına gönderilen 96 KB 'lik bir ileti iki olay olarak faturalandırılır.
 
-Bir olay hub 'ından tüketilen olayların yanı sıra yönetim işlemleri ve kontrol noktaları gibi denetim çağrıları faturalandırılabilir giriş olayları olarak sayılmaz, ancak üretilen iş birimi tahsisatlarına tahakkuk etmez.
+Bir olay hub 'ından tüketilen olaylar ve kontrol noktaları gibi yönetim işlemleri ve denetim görüşmeleri, faturalandırılabilir giriş olayları olarak sayılmaz, ancak üretilen iş birimi tahsisatlarına tahakkuk edilmez.
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Aracılı bağlantı ücretleri Event Hubs için geçerlidir mi?
 
@@ -301,7 +314,7 @@ SLA 'umuz hakkında daha fazla bilgi edinmek için bkz. [hizmet düzeyi anlaşma
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Azure Blob depolamayı bir denetim noktası deposu olarak kullanırken Azure Storage SDK 'sının belirli bir sürümünü nasıl hedefleyebilirsiniz?
 Bu kodu Azure Stack hub 'da çalıştırırsanız, belirli bir depolama API sürümünü hedefetmediğiniz takdirde çalışma zamanı hatalarıyla karşılaşırsınız. Bunun nedeni, Event Hubs SDK 'sının Azure 'da kullanılabilen ve Azure Stack hub platformunda kullanılamayan en son Azure Storage API 'sini kullanması nedeniyle oluşur. Azure Stack hub, Azure 'da genel kullanıma sunulan farklı bir Depolama Blobu SDK sürümü destekleyebilir. Azure blog depolamayı bir denetim noktası deposu olarak kullanıyorsanız, [Azure Stack hub derlemesi için desteklenen Azure depolama API sürümünü](/azure-stack/user/azure-stack-acs-differences?#api-version) denetleyin ve bu sürümü kodunuzda hedefleyin. 
 
-Örneğin, Azure Stack hub sürüm 2005 ' de çalışıyorsanız, depolama hizmeti için en yüksek sürüm 2019-02-02 ' dir. Event Hubs SDK istemci kitaplığı, varsayılan olarak Azure 'da kullanılabilen en yüksek sürümü (SDK 'nın sürümü sırasında 2019-07-07) kullanır. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2019-02-02 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için C#, Java, Python ve JavaScript/TypeScript için aşağıdaki örneklere bakın.  
+Örneğin, Azure Stack hub sürüm 2005 ' de çalışıyorsanız, depolama hizmeti için en yüksek sürüm 2019-02-02 ' dir. Event Hubs SDK istemci kitaplığı, varsayılan olarak Azure 'da kullanılabilen en yüksek sürümü (SDK 'nın sürümü sırasında 2019-07-07) kullanır. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2019-02-02 ' i hedeflemek için de kod eklemeniz gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için C#, Java, Python ve JavaScript/TypeScript için aşağıdaki örneklere bakın.  
 
 Kodunuzda belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da aşağıdaki örneklere bakın: 
 

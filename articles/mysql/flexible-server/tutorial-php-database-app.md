@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537941"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844446"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Öğretici: Azure App Service bir PHP (Laray) ve MySQL esnek sunucusu (Önizleme) uygulaması derleme
 
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [Azure aboneliğiniz](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -134,7 +134,7 @@ php artisan serve
 
 Bir tarayıcıda `http://localhost:8000` sayfasına gidin. Sayfaya birkaç görev ekleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP başarıyla MySQL’e bağlanır":::
 
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
 
@@ -257,7 +257,7 @@ php artisan serve --env=production
 
 Sayfaya birkaç görev ekleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP, MySQL için Azure Veritabanı’na başarıyla bağlanır":::
 
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` listesine göz atın ve listeye birkaç görev ekleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 'da PHP Web uygulaması":::
 
 Tebrikler, Azure App Service'te veri temelli bir PHP uygulaması çalıştırıyorsunuz.
 
@@ -466,7 +466,7 @@ Yerel terminal penceresinde, Laravel veritabanı geçişlerini çalıştırarak 
 php artisan migrate
 ```
 
-[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_ ) varsayılan olarak `tasks` tablosu ile eşlenir.
+[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_) varsayılan olarak `tasks` tablosu ile eşlenir.
 
 ### <a name="update-application-logic"></a>Uygulama mantığını güncelleştirme
 
@@ -534,7 +534,7 @@ php artisan serve
 
 Görev durumu değişikliğini görmek için `http://localhost:8000` öğesine gidip onay kutusunu işaretleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Göreve eklenen onay kutusu":::
 
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
 
@@ -556,7 +556,7 @@ git push azure master
 
 Tamamlandıktan sonra `git push` Azure uygulamasına gidin ve yeni işlevleri test edin.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure’da yayımlanan model ve veritabanı değişiklikleri":::
 
 Herhangi bir görevi eklediyseniz veritabanında tutulur. Veri şemasında yapılan güncelleştirmeler var olan verileri olduğu gibi bırakır.
 

@@ -6,18 +6,19 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 6c93408bce8da9f8cd0e4a0d0bab615e2bd362dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 743fe146042c7b52394cc4ee8ced49a0f540e79c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267335"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844293"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Media Encoder Standard birlikte bir kaplama oluşturma
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Media Encoder Standard, görüntünün var olan bir videonun üzerinde yer almasına olanak tanır. Şu anda şu biçimler desteklenir: PNG, jpg, GIF ve BMP.
+Media Encoder Standard resim, ses dosyası veya başka bir videonun başka bir video üzerinde yer kaplamasını sağlar. Girişin tam olarak bir dosya belirtmesi gerekir. JPG, PNG, GIF veya BMP biçiminde bir görüntü dosyası veya bir ses dosyası (örneğin, bir WAV, MP3, WMA veya M4A dosyası) veya bir video dosyası belirtebilirsiniz.
+
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,7 +33,7 @@ Media Encoder Standard, görüntünün var olan bir videonun üzerinde yer almas
     "AccountName": "",
     "ArmAadAudience": "https://management.core.windows.net/",
     "ArmEndpoint": "https://management.azure.com/",
-    "Region": "",
+    "Location": "",
     "ResourceGroup": "",
     "SubscriptionId": ""
     }

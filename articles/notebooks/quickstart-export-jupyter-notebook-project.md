@@ -3,12 +3,12 @@ title: Azure Notebooks önizlemesinden bir Jupyter Notebook projesi dışarı ak
 description: Jupyter Notebook projesini hızlıca dışarı aktarın.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea16bd61b542217fb6f2d5ba1d926a0bc19d4cce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90030455"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844429"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede Jupyter Notebook projesi dışarı aktarma
 
@@ -16,7 +16,7 @@ ms.locfileid: "90030455"
 
 Bu hızlı başlangıçta, diğer Jupyter Notebook çözümlerinde kullanmak üzere bir Azure Notebooks projesi indirirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Mevcut bir Azure Notebooks projesi.
 
@@ -79,7 +79,7 @@ Azure Machine Learning, kullanıcıların Azure 'da modelleri daha hızlı oluş
 1. Sol taraftaki Gezinti çubuğunu kullanarak **Not defterleri**' ni seçin.
 1. **Dosyaları karşıya yükle** düğmesine tıklayın ve Azure Notebooks indirdiğiniz proje dosyalarını karşıya yükleyin.
 
-Azure ML ve Jupimter not defterlerini çalıştırma hakkında ek bilgi için [belgeleri](../machine-learning/how-to-run-jupyter-notebooks.md) gözden geçirebilir veya Microsoft Learn [Machine Learning modüle yönelik girişi](https://docs.microsoft.com/learn/modules/intro-to-azure-machine-learning-service/) deneyebilirsiniz.
+Azure ML ve Jupimter not defterlerini çalıştırma hakkında ek bilgi için [belgeleri](../machine-learning/how-to-run-jupyter-notebooks.md) gözden geçirebilir veya Microsoft Learn [Machine Learning modüle yönelik girişi](/learn/modules/intro-to-azure-machine-learning-service/) deneyebilirsiniz.
 
 
 ## <a name="use-azure-lab-services"></a>Azure Lab Services kullan

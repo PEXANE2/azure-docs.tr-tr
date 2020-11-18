@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: cdd5a8b518a374340af35d5f866d51d016e5ac79
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: cb6680482466018f86779d9c0318bbfe4e749be1
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745193"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843154"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Azure Blob depolamayı izleme
 
@@ -74,7 +74,7 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, Bloblar (Azure Data Lake Storage 2.), dosyalar, kuyruklar ve tablolar için Günlükler sunar. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+### <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
 1. Azure portalında oturum açın.
 
@@ -87,7 +87,7 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 
 4. Günlüklerini etkinleştirmek istediğiniz depolama türü olarak **BLOB** ' u seçin.
 
-5. **Tanılama ayarı Ekle** ' ye tıklayın.
+5. **Tanılama ayarı Ekle**' ye tıklayın.
 
    > [!div class="mx-imgBorder"]
    > ![Portal-kaynak günlükleri-tanılama ayarı ekleme](media/monitor-blob-storage/diagnostic-logs-settings-pane-2.png)

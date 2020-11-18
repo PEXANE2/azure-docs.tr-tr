@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 48d0483247f610a1e8c7491e13ea86883bf8f341
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410377"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843698"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure Identity Management güvenliğine genel bakış
 
@@ -79,13 +79,13 @@ Daha fazla bilgi edinin:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication, birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik bir ikinci güvenlik katmanı ekler. Multi-Factor Authentication, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi korumaya yardımcı olur. Bir dizi doğrulama seçeneği aracılığıyla güçlü kimlik doğrulaması sağlar: telefon görüşmeleri, SMS iletileri veya mobil uygulama bildirimleri veya doğrulama kodları ve üçüncü taraf OAuth belirteçleri.
+Azure AD Multi-Factor Authentication, birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. Multi-Factor Authentication, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi korumaya yardımcı olur. Bir dizi doğrulama seçeneği aracılığıyla güçlü kimlik doğrulaması sağlar: telefon görüşmeleri, SMS iletileri veya mobil uygulama bildirimleri veya doğrulama kodları ve üçüncü taraf OAuth belirteçleri.
 
 Daha fazla bilgi edinin:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Azure Multi-Factor Authentication nasıl çalışır?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication nasıl çalışacaktır?](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
@@ -107,11 +107,11 @@ Tutarsız erişim düzenlerini tanımlayan güvenlik izleme, uyarılar ve makine
 
 Azure portal, raporlar aşağıdaki kategorilere ayrılır:
 
-* **Anomali raporları** : anormal olmak üzere bulduğumuz oturum açma olaylarını içerir. Amacınız, bu etkinlikleri haberdar etmek ve bir olayın şüpheli olup olmadığını belirlemenizi sağlamaktır.
-* **Tümleşik uygulama raporları** : bulut uygulamalarının kuruluşunuzda nasıl kullanıldığına ilişkin öngörüler sağlar. Azure AD, binlerce bulut uygulaması ile tümleştirme sunar.
-* **Hata raporları** : dış uygulamalara hesap sağladığınızda oluşabilecek hataları belirtin.
-* **Kullanıcıya özel raporlar** : belirli bir kullanıcı için cihaz oturum açma etkinlik verilerini görüntüler.
-* **Etkinlik günlükleri** : son 24 saat, son 7 gün veya son 30 gün içinde denetlenen tüm olayların bir kaydını içerir ve etkinlik değişikliklerini ve parola sıfırlama ve kayıt etkinliğini gruplandırın.
+* **Anomali raporları**: anormal olmak üzere bulduğumuz oturum açma olaylarını içerir. Amacınız, bu etkinlikleri haberdar etmek ve bir olayın şüpheli olup olmadığını belirlemenizi sağlamaktır.
+* **Tümleşik uygulama raporları**: bulut uygulamalarının kuruluşunuzda nasıl kullanıldığına ilişkin öngörüler sağlar. Azure AD, binlerce bulut uygulaması ile tümleştirme sunar.
+* **Hata raporları**: dış uygulamalara hesap sağladığınızda oluşabilecek hataları belirtin.
+* **Kullanıcıya özel raporlar**: belirli bir kullanıcı için cihaz oturum açma etkinlik verilerini görüntüler.
+* **Etkinlik günlükleri**: son 24 saat, son 7 gün veya son 30 gün içinde denetlenen tüm olayların bir kaydını içerir ve etkinlik değişikliklerini ve parola sıfırlama ve kayıt etkinliğini gruplandırın.
 
 Daha fazla bilgi edinin:
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207300"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843205"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -62,7 +62,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 **Sorumluluk:** Müşterisi
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
-***Rehberlik:** Azure Izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure DevTest Labs örneklerinizin ilişkilendirildiği Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
+**_Rehberlik:_* Azure Izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure DevTest Labs örneklerinizin ilişkilendirildiği Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
 Daha fazla bilgi için şu makaleye bakın: [günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -175,9 +175,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 - [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](../security-center/security-center-identity-access.md)
 
-**Azure Güvenlik Merkezi izleme:*** Evet
+**Azure Güvenlik Merkezi izleme:** _ Evet
 
-**Sorumluluk:** Müşterisi
+_ *Sorumluluğu:** müşteri
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
@@ -387,7 +387,7 @@ Microsoft, Azure DevTest Labs destekleyen temel kaynaklarda güvenlik açığı 
 **Sorumluluk:** Müşterisi
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: otomatik üçüncü taraf yazılım düzeltme eki yönetimi çözümünü dağıtma
-***Rehberlik:*** Laboratuvar Yöneticisi olarak, güvenlik düzeltme ekleri ve diğer güncelleştirmeler de dahil olmak üzere laboratuar özel görüntülerinin güncelleştirmelerini otomatikleştirmek için [DevTest Labs yapılarını](add-artifact-vm.md) kullanabilirsiniz. 
+**_Rehberlik:_* _ laboratuvar yöneticisi olarak, güvenlik düzeltme ekleri ve diğer güncelleştirmeler de dahil olmak üzere laboratuvar özel görüntülerine yönelik güncelleştirmeleri otomatikleştirmek Için [DevTest Labs yapılarını](add-artifact-vm.md) kullanabilirsiniz. 
 
 Tüm istenen yapılandırmalara göre düzenli olarak görüntü oluşturup dağıtan bir yapılandırma olarak yapılandırma çözümü olan [DevTest Labs görüntü fabrikası](image-factory-create.md)hakkında daha fazla bilgi edinin. 
 
@@ -396,7 +396,7 @@ Abonelik Yöneticisi olarak, DevTest Labs VM 'Leri için güncelleştirmeleri ve
 - [Azure 'da Güncelleştirme Yönetimi çözümü](../automation/update-management/update-mgmt-overview.md)
 - [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../automation/update-management/update-mgmt-overview.md)
 
-**Azure Güvenlik Merkezi izleme:** Uygulanamaz
+_ *Azure Güvenlik Merkezi izleme:** uygulanamaz
 
 **Sorumluluk:** Müşterisi
 
@@ -534,7 +534,7 @@ Aşağıdaki makalelere bakın:
 **Sorumluluk:** Müşterisi
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: kullanıcıların Azure Resource Manager etkileşime geçme yeteneğini sınırlayın
-**Rehberlik:** **Microsoft Azure Yönetim** uygulaması için "* *" **blok erişimini**yapılandırarak kullanıcıların Azure Resource Manager etkileşim kurmasına Izin vermek için Azure koşullu erişimi kullanın.
+**Rehberlik:** **Microsoft Azure Yönetim** uygulaması için "* *" **blok erişimini** yapılandırarak kullanıcıların Azure Resource Manager etkileşim kurmasına Izin vermek için Azure koşullu erişimi kullanın.
 
 - [Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -692,7 +692,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 
 - [DevTest Labs 'de Azure Resource Manager ortamları dağıtmak için yönetilen kimlik yapılandırma](use-managed-identities-environments.md)
 - [DevTest Labs 'de sanal makineleri dağıtmak için yönetilen kimlik yapılandırma](enable-managed-identities-lab-vms.md)
-- [Anahtar Kasası oluşturma](../key-vault/secrets/quick-create-portal.md)
+- [Anahtar Kasası oluşturma](../key-vault/general/quick-create-portal.md)
 - [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
 - [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 

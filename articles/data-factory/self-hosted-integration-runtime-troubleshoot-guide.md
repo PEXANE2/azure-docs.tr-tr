@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: ca8d359638d97f77377f02d47d824fa216acdcc8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928119"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844145"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -48,11 +48,26 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 
 ## <a name="self-hosted-ir-general-failure-or-error"></a>Şirket içinde barındırılan IR genel başarısızlığı veya hatası
 
+### <a name="out-of-memory-issue"></a>Bellek yetersiz sorunu
+
+#### <a name="symptoms"></a>Belirtiler
+
+"OutOfMemoryException" sorunu, bağlı IR veya şirket içinde barındırılan IR ile arama etkinliğini çalıştırmaya çalışırken oluşur.
+
+#### <a name="cause"></a>Nedeni
+
+IR makinesi şu anda yüksek bellek kullanımına sahipse yeni etkinlik OOM (OutOfMemory) sorunuyla karşılayabilir. Bu sorun, büyük bir eşzamanlı Etkinlik yürütme ölçeğinden kaynaklanabilir ve hata tasarıma göre yapılır.
+
+#### <a name="resolution"></a>Çözüm
+
+Lütfen IR düğümünde kaynak kullanımını ve eşzamanlı etkinlik yürütmesini denetleyin. Aynı IR düğümünde aynı anda çok fazla yürütmeyi önlemek için etkinlik çalıştırmalarının dahili ve tetikleme süresini ayarlayın.
+
+
 ### <a name="tlsssl-certificate-issue"></a>TLS/SSL sertifikası sorunu
 
 #### <a name="symptoms"></a>Belirtiler
 
-TLS/SSL sertifikası seçildikten sonra **Şirket içinde barındırılan IR Configuration Manager** -> **İntranete uzaktan erişim** 'den TLS/SSL sertifikasını (gelişmiş) etkinleştirmeye çalışırken aşağıdaki hata gösteriliyor:
+TLS/SSL sertifikası seçildikten sonra **Şirket içinde barındırılan IR Configuration Manager** -> **İntranete uzaktan erişim**'den TLS/SSL sertifikasını (gelişmiş) etkinleştirmeye çalışırken aşağıdaki hata gösteriliyor:
 
 `Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
 
@@ -102,7 +117,7 @@ SSL/TLS el sıkışmasıyla ilgili olayları işlerken, sertifika zinciri doğru
 
 - X. 509.440 sertifika zinciri derleme hatası sorunlarını gidermek için hızlı ve sezgisel bir yol aşağıda verilmiştir.
  
-    1. Doğrulanması gereken sertifikayı dışarı aktarın. Bilgisayar sertifikasını yönetme bölümüne gidin, denetlemek istediğiniz sertifikayı bulun ve **Tüm görevler** -> **Dışarı aktar** 'a sağ tıklayın.
+    1. Doğrulanması gereken sertifikayı dışarı aktarın. Bilgisayar sertifikasını yönetme bölümüne gidin, denetlemek istediğiniz sertifikayı bulun ve **Tüm görevler** -> **Dışarı aktar**'a sağ tıklayın.
     
         ![Görevleri dışarı aktar](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
@@ -152,7 +167,7 @@ SSL/TLS el sıkışmasıyla ilgili olayları işlerken, sertifika zinciri doğru
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Örneğin: 
+Örnek: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -210,7 +225,7 @@ Yukarıdaki nedenlerin hiçbiri geçerli değilse, şu klasöre gidebilirsiniz: 
 
 #### <a name="symptoms"></a>Belirtiler
 
-Hem kaynak hem de hedef veri deposunda Şirket içinde barındırılan IR'ler oluşturulduktan sonra bir kopyalamayı bitirmek için iki IR'yi birbirine bağlamak istiyorsunuz. Veri depoları farklı VNET 'lerde yapılandırılmışsa veya ağ geçidi mekanizmasını anlamadıklarında, şunun gibi hatalarla karşılaşmanız gerekir: *kaynak sürücüsü hedef IR 'de bulunamıyor* ; *hedef IR tarafından kaynağa erişilemiyor* .
+Hem kaynak hem de hedef veri deposunda Şirket içinde barındırılan IR'ler oluşturulduktan sonra bir kopyalamayı bitirmek için iki IR'yi birbirine bağlamak istiyorsunuz. Veri depoları farklı VNET 'lerde yapılandırılmışsa veya ağ geçidi mekanizmasını anlamadıklarında, şunun gibi hatalarla karşılaşmanız gerekir: *kaynak sürücüsü hedef IR 'de bulunamıyor*; *hedef IR tarafından kaynağa erişilemiyor*.
  
 #### <a name="cause"></a>Nedeni
 
@@ -288,14 +303,14 @@ Hatayı denetlemek için Integration Runtime olay günlüğüne gidin.
 
 ![IR olay günlüğü](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-Hata, *UnauthorizedAccessException* ' dan sonra gösteriyorsa, aşağıdaki yönergeleri izleyin:
+Hata, *UnauthorizedAccessException*' dan sonra gösteriyorsa, aşağıdaki yönergeleri izleyin:
 
 
 1. Windows hizmeti panelinde *Diahostservice* oturum açma hizmeti hesabını denetleyin.
 
     ![Oturum açma hizmeti hesabı](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. Oturum açma hizmeti hesabının şu klasör üzerinde R/W iznine sahip olup olmadığını denetleyin: *%ProgramData%\microsoft\datatransfer\datamanagementgateway* .
+2. Oturum açma hizmeti hesabının şu klasör üzerinde R/W iznine sahip olup olmadığını denetleyin: *%ProgramData%\microsoft\datatransfer\datamanagementgateway*.
 
     - Varsayılan olarak, hizmet oturum açma hesabı değiştirilmediyseniz, R/W iznine sahip olmalıdır.
 
@@ -305,7 +320,7 @@ Hata, *UnauthorizedAccessException* ' dan sonra gösteriyorsa, aşağıdaki yön
         1. Temizle geçerli şirket içinde barındırılan IR 'yi kaldırın.
         1. Şirket içinde barındırılan IR bitlerini yükler.
         1. Hizmet hesabını değiştirmek için aşağıdaki yönergeleri izleyin: 
-            1. Selfhosted IR yükleme klasörüne gidin, klasöre geçin: *Microsoft Integration Runtime\4.0\Shared* .
+            1. Selfhosted IR yükleme klasörüne gidin, klasöre geçin: *Microsoft Integration Runtime\4.0\Shared*.
             1. Yükseltilmiş ayrıcalık kullanarak bir komut satırı başlatın. *\<user>* Ve *\<password>* kendi Kullanıcı adınızı ve parolanızı değiştirin ve ardından aşağıdaki komutu çalıştırın:
                        
                 ```
@@ -325,7 +340,7 @@ Hata, *UnauthorizedAccessException* ' dan sonra gösteriyorsa, aşağıdaki yön
             1. IR hizmeti oturum açma hesabı için yerel/etki alanı kullanıcısı ' nı kullanabilirsiniz.            
         1. Integration Runtime kaydedin.
 
-Hata şöyle görünüyorsa: *' Integration Runtime Service ' (DIAHostService) hizmeti başlatılamadı. Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın* , aşağıdaki yönergeleri izleyin:
+Hata şöyle görünüyorsa: *' Integration Runtime Service ' (DIAHostService) hizmeti başlatılamadı. Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın*, aşağıdaki yönergeleri izleyin:
 
 1. Windows hizmeti panelinde *Diahostservice* oturum açma hizmeti hesabını denetleyin.
    
@@ -351,7 +366,7 @@ Büyük/küçük bir çözünürlükte iki desenden hiçbiri uygulamanızda yoks
 
 #### <a name="cause"></a>Nedeni
 
-*Integration Runtime 3,0* ' nin yayımlanmasından sonra, bir temizleyici ve daha güvenli bir ortamı etkinleştirmek için mevcut bir Integration Runtime düğümündeki **Kaydet** düğmesi kaldırılmıştır. Herhangi bir Integration Runtime'a (çevrimiçi veya değil) düğüm kaydedildiyse, bu düğümü başka bir Integration Runtime'a yeniden kaydetmek için önceki düğümün yüklemesini kaldırmalı ve sonra düğümü yükleyip kaydetmelisiniz.
+*Integration Runtime 3,0*' nin yayımlanmasından sonra, bir temizleyici ve daha güvenli bir ortamı etkinleştirmek için mevcut bir Integration Runtime düğümündeki **Kaydet** düğmesi kaldırılmıştır. Herhangi bir Integration Runtime'a (çevrimiçi veya değil) düğüm kaydedildiyse, bu düğümü başka bir Integration Runtime'a yeniden kaydetmek için önceki düğümün yüklemesini kaldırmalı ve sonra düğümü yükleyip kaydetmelisiniz.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -402,6 +417,47 @@ Yükleme Windows Installer hizmetine bağlıdır. Yükleme sorununa neden olabil
 - CPU kullanımı çok yüksek
 - MSI dosyası yavaş bir ağ konumunda barındırılıyor
 - Bazı sistem dosyalarına veya kayıt defterlerine istem dışı olarak dokunulmadı
+
+
+### <a name="ir-service-account-failed-to-fetch-certificate-access"></a>IR hizmeti hesabı sertifika erişimini getiremedi
+
+#### <a name="symptoms"></a>Belirtiler
+
+Microsoft Integration Runtime Configuration Manager aracılığıyla şirket içinde barındırılan IR 'yi yüklerken, güvenilir bir CA 'ya sahip bir sertifika oluşturulur. İki düğüm arasındaki iletişimi şifrelemek için sertifika uygulanamadı. 
+
+Hata bilgileri aşağıda gösterildiği gibi gösterilmektedir: 
+
+`Failed to change Intranet communication encryption mode: Failed to grant Integration Runtime service account the access of to the certificate 'XXXXXXXXXX'. Error code 103`
+
+![IR hizmeti hesap sertifikası erişimi verilemedi](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+
+#### <a name="cause"></a>Nedeni
+
+Sertifika, henüz desteklenmeyen KSP 'yi (anahtar depolama sağlayıcısı) kullanıyor. SHıR şu ana kadar yalnızca CSP (şifreleme hizmeti sağlayıcısı) sertifikasını destekler.
+
+#### <a name="resolution"></a>Çözüm
+
+Bu durum için CSP sertifikası önerilir.
+
+**Çözüm 1:** Sertifikayı içeri aktarmak için aşağıdaki komutu kullanın:
+
+```
+Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx 
+```
+
+![Certutil kullanma](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+
+**Çözüm 2:** Sertifikaların dönüştürülmesi:
+
+OpenSSL PKCS12-.\xxxx. pfx-out. \ xxxx_new. pek-parola geçişi:*\<EnterPassword>*
+
+OpenSSL PKCS12-Export-in. \ xxxx_new. pek-Out xxxx_new. pfx
+
+Dönüştürmeden önce ve sonra:
+
+![Sertifika değişikliğinden önce](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+
+![Sertifika değişikliğinden sonra](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>Şirket içinde barındırılan IR bağlantı sorunları
@@ -484,7 +540,7 @@ Bu davranış, düğümler birbirleriyle iletişim kuramıyorsa oluşur.
 
 #### <a name="resolution"></a>Çözüm
 
-1. Düğüm tarafından barındırılan VM 'de oturum açın. **Uygulama ve hizmet günlükleri** altında  >  **Integration Runtime** , Olay Görüntüleyicisi açın ve tüm hata günlüklerini filtreleyin.
+1. Düğüm tarafından barındırılan VM 'de oturum açın. **Uygulama ve hizmet günlükleri** altında  >  **Integration Runtime**, Olay Görüntüleyicisi açın ve tüm hata günlüklerini filtreleyin.
 
 1. Hata günlüğünde aşağıdaki hatayı içerip içermediğini kontrol edin: 
     
@@ -569,7 +625,7 @@ Netmon izlemesini alın ve daha fazla analiz edin.
  
     *Linux sistem A 'dan TTL 64 ile ağ paketi-> B TTL 64 eksi 1 = 63-> C TTL 63, eksi 1 = 62-> TTL 62 eksi 1 = 61 kendinden konak IR*
 
-- İdeal durumda, TTL 128 olur, bu da Windows sisteminin Data Factory çalıştırdığı anlamına gelir. Aşağıdaki örnekte gösterildiği gibi, *128 – 107 = 21 atlamaları* , TCP 3 el sıkışması sırasında paketin Data Factory 21 ' den kendınden konak IR 'ye gönderildiği anlamına gelir.
+- İdeal durumda, TTL 128 olur, bu da Windows sisteminin Data Factory çalıştırdığı anlamına gelir. Aşağıdaki örnekte gösterildiği gibi, *128 – 107 = 21 atlamaları*, TCP 3 el sıkışması sırasında paketin Data Factory 21 ' den kendınden konak IR 'ye gönderildiği anlamına gelir.
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -590,8 +646,8 @@ Netmon Trace ile Telnet **8.8.8.8 888** ' i topladığınızda, izlemeyi aşağ�
 Bu, **888** numaralı bağlantı noktasına bağlı olarak **8.8.8.8** sunucu tarafında TCP bağlantısı yapamayacağı anlamına gelir; bu nedenle, burada iki **synyeniden aktarım** ek paketi görürsünüz. Kaynak **self-konak2** , ilk pakette **8.8.8.8** ile bağlantı kuramadı, çünkü bağlantı kurmak için devam edecektir.
 
 > [!TIP]
-> - **Yükleme filtresi**  ->  **Standart filtre**  ->  **adresleri**  ->  **IPv4 adresleri** ' ne tıklayabilirsiniz.
-> - Giriş **IPv4. Address = = 8.8.8.8** as Filter ve **Uygula** ' ya tıklayın. Bundan sonra, yalnızca yerel makineden hedef **8.8.8.8** iletişimi görürsünüz.
+> - **Yükleme filtresi**  ->  **Standart filtre**  ->  **adresleri**  ->  **IPv4 adresleri**' ne tıklayabilirsiniz.
+> - Giriş **IPv4. Address = = 8.8.8.8** as Filter ve **Uygula**' ya tıklayın. Bundan sonra, yalnızca yerel makineden hedef **8.8.8.8** iletişimi görürsünüz.
 
 ![adresleri filtrele 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         

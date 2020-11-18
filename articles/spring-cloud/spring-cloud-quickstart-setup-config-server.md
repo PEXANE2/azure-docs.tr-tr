@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 906aeaf87bfd71202064fae856a86985637985eb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0802f09cfb03f837fb7080620da776e79b37c9ed
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659548"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845093"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Hızlı başlangıç: Azure yay bulut yapılandırması sunucusunu ayarlama
 
@@ -21,7 +21,7 @@ Azure Spring Cloud config Server, dağıtılmış sistemler için merkezi bir ya
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu serideki önceki hızlı başlangıcı doldurun: [Azure Spring Cloud Service sağla](spring-cloud-quickstart-provision-service-instance.md).
 
@@ -40,7 +40,7 @@ Bu komut yapılandırma sunucusuna, örnek uygulama deposunun [steeltoe-Sample/c
 ::: zone pivot="programming-language-java"
 Azure Spring Cloud config Server, dağıtılmış sistemler için merkezi bir yapılandırma hizmetidir. Şu anda yerel depolama, git ve alt sürümü destekleyen bir takılabilir depo katmanı kullanır.  Mikro hizmet uygulamalarını Azure Spring Cloud 'a dağıtmak için yapılandırma sunucusunu ayarlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [JDK 8 ' i yükler](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)

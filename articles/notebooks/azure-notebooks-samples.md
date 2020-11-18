@@ -3,12 +3,12 @@ title: Azure Notebooks önizlemesi için örnek Jupyıter Not defterleri
 description: Örnekler, ücretsiz Azure Notebooks bulut hizmetlerinde çalışan Jupyıter not defterlerini deneyimetmenin harika bir yoludur.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8282a4047ede7d1344551a052ccf1b0143dae66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85834004"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845066"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede örnek not defterlerini bulma ve kullanma
 
@@ -36,4 +36,4 @@ Araştırmak istediğiniz bir not defterini tanımladıktan sonra, anlamak isted
 - [Nasıl yapılır: projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
 - [Nasıl yapılır: veri dosyalarıyla çalışma](work-with-project-data-files.md)
 - [Nasıl yapılır: veri kaynaklarına erişme](access-data-resources-jupyter-notebooks.md)
-- [Nasıl yapılır: Azure Machine Learning kullanma](use-machine-learning-services-jupyter-notebooks.md)
+- [Nasıl yapılır: Azure Machine Learning kullanma](../machine-learning/samples-notebooks.md)

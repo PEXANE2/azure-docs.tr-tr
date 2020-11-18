@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977757"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843562"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure'daki sanal makinelerde ilkeleri güvenli hale getirme ve kullanma
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) hizmetindeki Azure kaynakları yönetilen hizm
 
 [Azure ilkeleri](../governance/policy/overview.md) , kuruluşunuzun [Windows VM](./windows/policy.md) 'Leri ve [Linux VM 'leri](./linux/policy.md)için istenen davranışı tanımlamak üzere kullanılabilir. Bir kuruluş, ilkeleri kullanarak kuruluş genelinde çeşitli kuralları ve kuralları zorunlu kılabilir. İstenen davranışın uygulanması, kuruluşun başarısına katkıda bulunmaya karşın riski azaltmaya yardımcı olabilir.
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
 [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)kullanarak, ekiplerinizi takımınızın içinde ayırabilirsiniz ve yalnızca VM 'nizin işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. SANAL makinede herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. [Azure CLI](/cli/azure/role)veya[Azure POWERSHELL](../role-based-access-control/role-assignments-powershell.md)kullanarak [Azure Portal](../role-based-access-control/role-assignments-portal.md)VM için erişim denetimi yapılandırabilirsiniz.
 

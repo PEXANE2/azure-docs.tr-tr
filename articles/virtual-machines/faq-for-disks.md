@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684517"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844004"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ile yönetilen ve yönetilmeyen premium diskler hakkında sık sorulan sorular
 
@@ -76,7 +76,7 @@ Yönetilen diskleri kullanan kullanılabilirlik kümesinin bulunduğu bölgeye b
 
 VM Tanılama için bir özel depolama hesabı ayarlarsınız.
 
-**Yönetilen diskler için ne tür Role-Based Access Control desteği vardır?**
+**Yönetilen diskler için ne tür bir Azure rol tabanlı erişim denetimi desteği vardır?**
 
 Yönetilen diskler üç temel varsayılan rolü destekler:
 

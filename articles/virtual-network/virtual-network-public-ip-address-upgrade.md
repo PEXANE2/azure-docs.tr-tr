@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
-ms.custom: references_regions
-ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353365"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843749"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Genel IP adreslerini yükseltme
 
@@ -148,24 +148,14 @@ Azure Resource Manager ' deki yeni bir kaynak grubu, geçirilen Ayrılmış IP a
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Bu özellik şu anda yalnızca şu bölgelerde kullanılabilir:<br>
-Orta Batı ABD<br>
-Orta Kuzey ABD<br>
-Batı ABD<br>
-Batı ABD 2<br>
-Norveç Doğu<br>
-Güney Afrika - Kuzey<br>
-Doğu ABD<br>
-North Europe<br>
-Güney Kore - Orta<br>
-Hindistan Orta<br>
-Doğu ABD 2<br>
-İsviçre Kuzey<br>
-Hindistan Batı<br>
-Almanya Kuzey<br>
-Orta Kanada<br>
-Güney Fransa<br>
-Hindistan Batı
+* Bu özellik şu anda şu bölgelerde kullanılamıyor:<br>
+US Gov Virginia<br>
+Doğu US DoD<br>
+Orta US DoD<br>
+Doğu Çin<br>
+Çin Doğu 2<br>
+Kuzey Çin<br>
+Çin Kuzey 2
 
 * Temel bir genel IP 'yi yükseltmek için, herhangi bir Azure kaynağıyla ilişkilendirilemez.  Genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) gözden geçirin.  Benzer şekilde, bir Ayrılmış IP geçirmek için herhangi bir bulut hizmeti ile ilişkilendirilemez.  Ayrılmış IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) gözden geçirin.  
 * Temel ve standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) alanına sahip olmaya devam eder ve bu nedenle bölge yedekli veya zonal olan bir Azure kaynağıyla ilişkilendirilemez.  Bu, yalnızca kullanılabilirlik alanları sunan bölgeler için geçerlidir.

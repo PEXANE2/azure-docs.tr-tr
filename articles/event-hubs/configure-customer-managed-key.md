@@ -3,12 +3,12 @@ title: Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kendi
 description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f073c42373e75fc1cb34d1c752350f9d2c61872
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537267"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843222"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -23,7 +23,7 @@ BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurul
 
 Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 
-Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../key-vault/secrets/quick-create-portal.md).
+Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault oluşturma](../key-vault/general/quick-create-portal.md).
 
 > [!IMPORTANT]
 > Azure Event Hubs ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmış olmasını gerektirir. Bunlar:  **geçici silme** ve **Temizleme**. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
@@ -53,7 +53,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. Aşağıdaki adımları izleyerek anahtarlar oluşturun:
-    1. Yeni bir anahtar oluşturmak için **Ayarlar**altındaki **anahtarlar** menüsünden **Oluştur/içeri aktar** ' ı seçin.
+    1. Yeni bir anahtar oluşturmak için **Ayarlar** altındaki **anahtarlar** menüsünden **Oluştur/içeri aktar** ' ı seçin.
         
         ![Oluştur/Içeri Aktar düğmesini seçin](./media/configure-customer-managed-key/select-generate-import.png)
     1. Oluşturma **seçeneklerini** belirleyin **Generate** ve anahtara bir ad verin.
@@ -80,7 +80,7 @@ BYOK etkinleştirilmiş ad alanları için tanılama günlüklerini ayarlama, bi
 Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek üzere bu adımları izleyin.
 
 1. Azure portal, BYOK etkinleştirilmiş olan ad alanına gidin.
-1. Izleme altında **Tanılama ayarları** ' **nı**seçin.
+1. Izleme altında **Tanılama ayarları** ' **nı** seçin.
 
     ![Tanılama ayarlarını seçin](./media/configure-customer-managed-key/select-diagnostic-settings.png)
 1. **+ Tanılama ayarı Ekle**' yi seçin. 
@@ -140,7 +140,7 @@ Müşteri tarafından yönetilen anahtar için günlüğe bir örnek aşağıda 
 ```
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Şifrelemeyi etkinleştirmek için Kaynak Yöneticisi şablonu kullanma
-Bu bölümde **Azure Resource Manager şablonlar**kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir. 
+Bu bölümde **Azure Resource Manager şablonlar** kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir. 
 
 1. Yönetilen hizmet kimliğiyle bir **Event Hubs ad alanı** oluşturun.
 2. **Anahtar Kasası** oluşturun ve anahtar kasasına hizmet kimliği erişimi verin. 
@@ -219,7 +219,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
        }
     }
     ```
-2. **ÜzerindeCreateEventHubClusterAndNamespaceParams.js**adlı bir şablon parametre dosyası oluşturun. 
+2. **ÜzerindeCreateEventHubClusterAndNamespaceParams.js** adlı bir şablon parametre dosyası oluşturun. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
@@ -263,7 +263,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
     
     VEYA    
     
-    **Mevcut bir anahtar kasasını**güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve Anahtar Kasası adları için değerler belirtin. 
+    **Mevcut bir anahtar kasasını** güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve Anahtar Kasası adları için değerler belirtin. 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
@@ -356,7 +356,7 @@ Bu adımda, Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleirsini
     }
     ``` 
 
-2. Şablon parametre dosyası oluşturma: ** üzerindeUpdateEventHubClusterAndNamespaceParams.js**. 
+2. Şablon parametre dosyası oluşturma: **üzerindeUpdateEventHubClusterAndNamespaceParams.js**. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 

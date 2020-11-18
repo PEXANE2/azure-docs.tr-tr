@@ -3,12 +3,12 @@ title: Bekleyen verileri şifrelemek için kendi anahtarınızı yapılandırın
 description: Bu makalede, Azure Service Bus veri kalanını şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32fcdad28b06df1763ab1efb1740d87d0b247b0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400594"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843409"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Service Bus Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Service Bus Premium, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -25,7 +25,7 @@ BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurul
 
 Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 
-Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../key-vault/secrets/quick-create-portal.md).
+Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault oluşturma](../key-vault/general/quick-create-portal.md).
 
 > [!IMPORTANT]
 > Azure Service Bus ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmış olmasını gerektirir. Bunlar:  **geçici silme** ve **Temizleme**. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
@@ -56,7 +56,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
     az keyvault update --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. Aşağıdaki adımları izleyerek anahtarlar oluşturun:
-    1. Yeni bir anahtar oluşturmak için **Ayarlar**altındaki **anahtarlar** menüsünden **Oluştur/içeri aktar** ' ı seçin.
+    1. Yeni bir anahtar oluşturmak için **Ayarlar** altındaki **anahtarlar** menüsünden **Oluştur/içeri aktar** ' ı seçin.
         
         ![Oluştur/Içeri Aktar düğmesini seçin](./media/configure-customer-managed-key/select-generate-import.png)
 
@@ -102,7 +102,7 @@ Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını ku
 Şifreleme anahtarı iptal edildiğinde, şifrelenen ad alanındaki Service Bus hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilirse veya silinen anahtar geri yüklenirse, şifrelenmiş Service Bus ad alanındaki verilere erişebilmek için Service Bus hizmet anahtarı seçer.
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Şifrelemeyi etkinleştirmek için Kaynak Yöneticisi şablonu kullanma
-Bu bölümde **Azure Resource Manager şablonlar**kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir. 
+Bu bölümde **Azure Resource Manager şablonlar** kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir. 
 
 1. **Yönetilen hizmet kimliğiyle** **Premium** Service Bus ad alanı oluşturun.
 2. **Anahtar Kasası** oluşturun ve anahtar kasasına hizmet kimliği erişimi verin. 
@@ -160,7 +160,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
        }
     }
     ```
-2. **ÜzerindeCreateServiceBusPremiumNamespaceParams.js**adlı bir şablon parametre dosyası oluşturun. 
+2. **ÜzerindeCreateServiceBusPremiumNamespaceParams.js** adlı bir şablon parametre dosyası oluşturun. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
@@ -199,7 +199,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
     
     VEYA
     
-    **Mevcut bir anahtar kasasını**güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve Anahtar Kasası adları için değerler belirtin. 
+    **Mevcut bir anahtar kasasını** güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve Anahtar Kasası adları için değerler belirtin. 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
@@ -283,7 +283,7 @@ Bu adımda, Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleirsin
     }
     ``` 
 
-2. Şablon parametre dosyası oluşturma: ** üzerindeUpdateServiceBusNamespaceWithEncryptionParams.js**.
+2. Şablon parametre dosyası oluşturma: **üzerindeUpdateServiceBusNamespaceWithEncryptionParams.js**.
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 32e79e12eae9997df8163401d2abc5f06bc02fc0
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 739245a8a17c97f3a8081cfee7e7bb31e4135952
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993490"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843987"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -110,10 +110,6 @@ Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu neden
 
 Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
 
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle gerçek uygulama kümesi (Oracle RAC)
-
-Oracle gerçek uygulama kümesi (Oracle RAC), şirket içi çok düğümlü küme yapılandırmasındaki tek bir düğümün başarısızlığını azaltmak için tasarlanmıştır. Hiper ölçekli genel bulut ortamlarında yerel olmayan iki şirket içi teknolojiyi kullanır: ağ çoklu yayın ve paylaşılan disk. Veritabanı Çözümünüz Azure 'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü taraf yazılımlara ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için bkz. [Flashgrid ufuk kümesi sayfası](https://www.flashgrid.io/oracle-rac-in-azure/).
-
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma konuları
 
 Azure 'da Oracle veritabanları kullanırken, herhangi bir kesinti yaşanmasını önlemek için yüksek kullanılabilirlik ve olağanüstü durum kurtarma çözümü uygulamaktan siz sorumlusunuz.
@@ -140,7 +136,7 @@ Oracle ve Microsoft, Web Logic Server 'ı Azure Uygulama tekliflerine yönelik b
 
 - **Kümeleme yalnızca Enterprise Edition 'da desteklenir.** Yalnızca Oracle WebLogic Server Enterprise sürümü kullanılırken WebLogic kümeleme kullanma lisansına sahip olursunuz. Oracle WebLogic Server Standard sürümüyle kümeleme kullanmayın.
 - **UDP çok noktaya yayını desteklenmez.** Azure, çok noktaya yayın veya yayın olmadan UDP tek noktaya yayını destekler. Oracle WebLogic Server, Azure UDP tek noktaya yayın özelliklerine güveniyor. UDP tek noktaya yayın için en iyi sonuçlar için, WebLogic Cluster boyutunun statik tutulmasını veya 10 ' dan fazla yönetilen sunucu olmadan tutulmasını öneririz.
-- **Oracle WebLogic Server, T3 erişimi için genel ve özel bağlantı noktalarının aynı olmasını bekler (örneğin, kurumsal Javabeller kullanılırken).** Bir hizmet katmanı (EJB) uygulamasının, *Slwls*adlı bir sanal ağda iki veya daha fazla VM 'den oluşan bir Oracle WebLogic Server kümesinde çalıştığı çok katmanlı bir senaryoyu göz önünde bulundurun. İstemci katmanı, hizmet katmanında EJB çağrısına çalışan basit bir Java programı çalıştıran aynı sanal ağdaki farklı bir alt ağda bulunur. Hizmet katmanının yük dengelenmesi gerektiğinden, Oracle WebLogic Server kümesindeki sanal makineler için ortak yük dengeli bir uç noktanın oluşturulması gerekir. Belirttiğiniz özel bağlantı noktası genel bağlantı noktasından farklıysa (örneğin, 7006:7008), aşağıdaki gibi bir hata oluşur:
+- **Oracle WebLogic Server, T3 erişimi için genel ve özel bağlantı noktalarının aynı olmasını bekler (örneğin, kurumsal Javabeller kullanılırken).** Bir hizmet katmanı (EJB) uygulamasının, *Slwls* adlı bir sanal ağda iki veya daha fazla VM 'den oluşan bir Oracle WebLogic Server kümesinde çalıştığı çok katmanlı bir senaryoyu göz önünde bulundurun. İstemci katmanı, hizmet katmanında EJB çağrısına çalışan basit bir Java programı çalıştıran aynı sanal ağdaki farklı bir alt ağda bulunur. Hizmet katmanının yük dengelenmesi gerektiğinden, Oracle WebLogic Server kümesindeki sanal makineler için ortak yük dengeli bir uç noktanın oluşturulması gerekir. Belirttiğiniz özel bağlantı noktası genel bağlantı noktasından farklıysa (örneğin, 7006:7008), aşağıdaki gibi bir hata oluşur:
 
 ```bash
    [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4362b579b7f01570a2b5fd072bf53ad495797cd8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fb91a490083629101470565a630b659c090e071b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783785"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843375"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın
 
@@ -33,7 +33,7 @@ Başlamadan önce şunlardan emin olun:
     - [Dosyalar için bir içeri aktarma Işi oluşturun](storage-import-export-data-to-files.md).
     - [Blob 'lar için dışarı aktarma işi oluşturma](storage-import-export-data-from-blobs.md)
 
-2. İçinde, BitLocker anahtarınızı korumak için kullanabileceğiniz bir anahtara sahip mevcut bir Azure Key Vault vardır. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-portal.md).
+2. İçinde, BitLocker anahtarınızı korumak için kullanabileceğiniz bir anahtara sahip mevcut bir Azure Key Vault vardır. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault oluşturma](../../key-vault/general/quick-create-portal.md).
 
     - **Geçici silme** ve **temizleme** , mevcut Key Vault ayarlanır. Bu özellikler varsayılan olarak etkinleştirilmemiştir. Bu özellikleri etkinleştirmek için, aşağıdaki makalelerden birinde **geçici silme özelliğini etkinleştirme** ve **Temizleme korumasını etkinleştirme** başlıklı bölümlere bakın:
 
@@ -56,7 +56,7 @@ Içeri/dışarı aktarma hizmetiniz için müşteri tarafından yönetilen anaht
 
     ![BitLocker anahtarını görüntüle](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. Müşteri tarafından yönetilen anahtar belirtme seçeneğiniz vardır. Müşteri tarafından yönetilen anahtarı seçtikten sonra **Anahtar Kasası ve bir anahtar seçin** .
+4. Müşteri tarafından yönetilen anahtar belirtme seçeneğiniz vardır. Müşteri tarafından yönetilen anahtarı seçtikten sonra **Anahtar Kasası ve bir anahtar seçin**.
 
     ![Müşteri tarafından yönetilen anahtar seçin](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 
@@ -64,15 +64,15 @@ Içeri/dışarı aktarma hizmetiniz için müşteri tarafından yönetilen anaht
 
     ![Azure Key Vault seçin veya oluşturun](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. Yeni bir Anahtar Kasası oluşturmak için **Yeni oluştur** ' u de seçebilirsiniz. **Anahtar Kasası oluştur dikey** penceresinde, kaynak grubunu ve Anahtar Kasası adını girin. Diğer tüm varsayılanları kabul edin. **Gözden geçir + oluştur** ' u seçin.
+6. Yeni bir Anahtar Kasası oluşturmak için **Yeni oluştur** ' u de seçebilirsiniz. **Anahtar Kasası oluştur dikey** penceresinde, kaynak grubunu ve Anahtar Kasası adını girin. Diğer tüm varsayılanları kabul edin. **Gözden geçir + oluştur**' u seçin.
 
     ![Yeni Azure Key Vault oluştur](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 
-7. Anahtar kasanız ile ilişkili bilgileri gözden geçirin ve **Oluştur** ' u seçin. Anahtar Kasası oluşturma işleminin tamamlanabilmesi için birkaç dakika bekleyin.
+7. Anahtar kasanız ile ilişkili bilgileri gözden geçirin ve **Oluştur**' u seçin. Anahtar Kasası oluşturma işleminin tamamlanabilmesi için birkaç dakika bekleyin.
 
     ![Azure Key Vault oluştur](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
 
-8. **Azure Key Vault anahtarı seç** ' de, varolan anahtar kasasında bir anahtar seçebilirsiniz.
+8. **Azure Key Vault anahtarı seç**' de, varolan anahtar kasasında bir anahtar seçebilirsiniz.
 
 9. Yeni bir Anahtar Kasası oluşturduysanız, anahtar oluşturmak için **Yeni oluştur** ' u seçin. RSA anahtar boyutu 2048 veya daha büyük olabilir.
 
@@ -80,11 +80,11 @@ Içeri/dışarı aktarma hizmetiniz için müşteri tarafından yönetilen anaht
 
     Anahtar kasasını oluştururken geçici silme ve Temizleme koruması etkinleştirilmemişse, Anahtar Kasası, geçici silme ve Temizleme koruması etkin olacak şekilde güncelleştirilir.
 
-10. Anahtarınız için ad belirtin, diğer varsayılanları kabul edin ve **Oluştur** ' u seçin.
+10. Anahtarınız için ad belirtin, diğer varsayılanları kabul edin ve **Oluştur**' u seçin.
 
     ![Yeni anahtar oluştur](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
 
-11. **Sürümü** seçin ve ardından **Seç** ' i seçin. Anahtar Kasanızda bir anahtarın oluşturulduğunu size bildirirsiniz.
+11. **Sürümü** seçin ve ardından **Seç**' i seçin. Anahtar Kasanızda bir anahtarın oluşturulduğunu size bildirirsiniz.
 
     ![Anahtar Kasası 'nda yeni anahtar oluşturuldu](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
 

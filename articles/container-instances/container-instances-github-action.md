@@ -3,13 +3,13 @@ title: GitHub eylemine göre kapsayıcı örneği dağıt
 description: Azure Container Instances bir kapsayıcı görüntüsü oluşturma, gönderme ve dağıtma adımlarını otomatikleştiren bir GitHub eylemi yapılandırın
 ms.topic: article
 ms.date: 08/20/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: c01075bcb64aa9b91869daba2e995957da74daf4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019197"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843664"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
 
@@ -112,7 +112,7 @@ az role assignment create \
 
 ### <a name="save-credentials-to-github-repo"></a>Kimlik bilgilerini GitHub deposuna Kaydet
 
-1. GitHub Kullanıcı arabiriminde, gizli deponuza gidin ve **Ayarlar**gizli dizileri ' ni seçin  >  **Secrets**. 
+1. GitHub Kullanıcı arabiriminde, gizli deponuza gidin ve **Ayarlar** gizli dizileri ' ni seçin  >  **Secrets**. 
 
 1. Aşağıdaki gizli dizileri eklemek için **Yeni bir parola Ekle** ' yi seçin:
 
@@ -127,7 +127,7 @@ az role assignment create \
 ### <a name="create-workflow-file"></a>İş akışı dosyası oluştur
 
 1. GitHub Kullanıcı arabiriminde **Eylemler**  >  **yeni iş akışı**' nı seçin.
-1. **Bir iş akışını kendiniz ayarlayın**öğesini seçin.
+1. **Bir iş akışını kendiniz ayarlayın** öğesini seçin.
 1. **Yeni dosyayı Düzenle**' de, örnek kodun üzerine yazmak için aşağıdaki YAML içeriğini yapıştırın. Varsayılan dosya adını kabul edin `main.yml` veya seçtiğiniz bir dosya adı sağlayın.
 1. **Yürütmeyi Başlat**' ı seçin, isteğe bağlı olarak işlemeniz için kısa ve genişletilmiş açıklamaları sağlayın ve **Yeni Dosya Yürüt**' ü seçin
 
@@ -262,7 +262,7 @@ GitHub Kullanıcı arabirimindeki her adımın iş akışı durumunu ve sonuçla
 
 ### <a name="validate-workflow"></a>İş akışını doğrula
 
-İş akışı, bu örnekte *ACR-Build-HelloWorld-node*adlı GitHub deponuzun temel adıyla bir Azure Container örneği dağıtır. İş akışı başarıyla tamamlandığında, [az Container Show][az-container-show] komutunu çalıştırarak *ACR-Build-HelloWorld-node* adlı kapsayıcı örneği hakkında bilgi alın. Kaynak grubunuzun adını değiştirin: 
+İş akışı, bu örnekte *ACR-Build-HelloWorld-node* adlı GitHub deponuzun temel adıyla bir Azure Container örneği dağıtır. İş akışı başarıyla tamamlandığında, [az Container Show][az-container-show] komutunu çalıştırarak *ACR-Build-HelloWorld-node* adlı kapsayıcı örneği hakkında bilgi alın. Kaynak grubunuzun adını değiştirin: 
 
 ```azurecli
 az container show \

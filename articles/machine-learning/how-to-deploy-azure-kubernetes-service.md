@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1, deploy
+ms.custom: how-to, contperfq1, deploy, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f2ac565b8c6dfce52daeadd20cf3357bc22cd281
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325199"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843817"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -38,7 +38,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__ bir
 >
 > Azure Machine Learning - [Yerel Not Defterine Dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) konusuna da bakabilirsiniz
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -152,7 +152,7 @@ VS Code kullanımı hakkında bilgi için bkz. [vs Code uzantısı aracılığı
 Azure ML model dağıtımları için otomatik ölçeklendirmeyi işleyen bileşen, bir akıllı istek yönlendiricisi olan azureml-Fe ' dir. Tüm çıkarım istekleri üzerinden gezindiğinden, dağıtılan modelleri otomatik olarak ölçeklendirmek için gerekli veriler vardır.
 
 > [!IMPORTANT]
-> * **Model dağıtımları Için Kubernetes yatay Pod otomatik Scaler (HPA)** ' i etkinleştirmeyin. Bunun yapılması, iki otomatik ölçeklendirme bileşeninin birbirleriyle yarışmasına neden olur. Azureml-Fe, Azure ML tarafından dağıtılan modelleri otomatik ölçeklendirmek üzere tasarlanmıştır. burada HPA, CPU kullanımı veya özel ölçüm yapılandırması gibi genel bir ölçüden model kullanımını tahmin etmek veya yaklaşık olarak tahmin etmek zorunda olacaktır.
+> * **Model dağıtımları Için Kubernetes yatay Pod otomatik Scaler (HPA)**' i etkinleştirmeyin. Bunun yapılması, iki otomatik ölçeklendirme bileşeninin birbirleriyle yarışmasına neden olur. Azureml-Fe, Azure ML tarafından dağıtılan modelleri otomatik ölçeklendirmek üzere tasarlanmıştır. burada HPA, CPU kullanımı veya özel ölçüm yapılandırması gibi genel bir ölçüden model kullanımını tahmin etmek veya yaklaşık olarak tahmin etmek zorunda olacaktır.
 > 
 > * **Azureml-Fe, BIR AKS kümesindeki düğümlerin sayısını ölçeklendirmez** çünkü bu, beklenmeyen maliyet artışına yol açabilir. Bunun yerine, fiziksel küme sınırları içindeki **modelin çoğaltma sayısını ölçeklendirir** . Küme içindeki düğüm sayısını ölçeklendirmeniz gerekiyorsa, kümeyi el ile ölçeklendirebilir veya [aks kümesi otomatik Scaler 'ı yapılandırabilirsiniz](../aks/cluster-autoscaler.md).
 

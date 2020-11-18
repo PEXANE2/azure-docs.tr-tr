@@ -12,14 +12,14 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Konuşmacı Tanıma, ses Biyometri
-ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397268"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844583"
 ---
-# <a name="what-is-speaker-recognition"></a>Konuşmacı Tanıma nedir?
+# <a name="what-is-speaker-recognition-preview"></a>Konuşmacı Tanıma (Önizleme) nedir?
 
 Konuşmacı Tanıma hizmeti, ses biyometri kullanarak hoparlörleri benzersiz ses özelliklerine göre doğrulayan ve belirleyen algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. Konuşmacı sesinin benzersiz özelliklerine göre bir kayıt profili oluşturan tek konuşmacı için ses eğitimi verileri sağlarsınız. Daha sonra konuşmacının aynı kişiye (konuşmacı doğrulaması) sahip olduğunu doğrulamak veya kayıtlı bir konuşmacı profili *grubuna* karşı ses seslerinizi çapraz olarak denetlemek için, gruptaki herhangi bir profille eşleşip eşleşmediğini öğrenmek için bu profile karşı ses ses örnekleri arasında çapraz denetim yapabilirsiniz. Buna karşılık, [Konuşmacı](batch-transcription.md#speaker-separation-diarization) , bir Batch işleminde konuşmacı tarafından sesin segmentlerini gruplandırır.
 

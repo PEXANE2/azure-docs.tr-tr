@@ -3,12 +3,12 @@ title: Azure Notebooks önizlemeye genel bakış
 description: Kurulum veya yapılandırma gerektirmeyen ücretsiz Azure Notebooks önizleme hizmetini kullanarak bulutta Jupyıter not defterlerini çalıştırın.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85831412"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845144"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks önizlemeye genel bakış
 
@@ -111,4 +111,4 @@ Azure Notebooks hakkındaki sorularınızı tartışmak için [GitHub deposunda]
   - [Slayt gösterisi yapma](present-jupyter-notebooks-slideshow.md)
   - [Veri dosyalarıyla çalışma](work-with-project-data-files.md)
   - [Veri kaynaklarına erişme](access-data-resources-jupyter-notebooks.md)
-  - [Azure Machine Learning’i kullanma](use-machine-learning-services-jupyter-notebooks.md)
+  - [Azure Machine Learning’i kullanma](../machine-learning/samples-notebooks.md)

@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548039"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844753"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure HDInsight çift şifrelemesi
 
@@ -71,17 +71,17 @@ Bkz. belirli adımlar için [Kullanıcı tarafından atanan yönetilen kimlik ol
 
 ### <a name="create-azure-key-vault"></a>Azure Key Vault oluştur
 
-Anahtar kasası oluşturma. Bkz. belirli adımlar için [Azure Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md) .
+Anahtar kasası oluşturma. Bkz. belirli adımlar için [Azure Key Vault oluşturma](../key-vault/general/quick-create-portal.md) .
 
 HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseniz, anahtarlarınızı Azure Key Vault içine aktarabilirsiniz. Anahtar kasasının **geçici silme** özelliğinin etkin olması gerektiğini unutmayın. Mevcut anahtarları içeri aktarma hakkında daha fazla bilgi için [anahtarlar, gizli diziler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md)bölümünü ziyaret edin.
 
 ### <a name="create-key"></a>Anahtar oluştur
 
-1. Yeni anahtar kasasından **Ayarlar**  >  **anahtarlar**  >  **+ Oluştur/içeri aktar** ' a gidin.
+1. Yeni anahtar kasasından **Ayarlar**  >  **anahtarlar**  >  **+ Oluştur/içeri aktar**' a gidin.
 
     ![Azure Key Vault yeni bir anahtar oluştur](./media/disk-encryption/create-new-key.png "Azure Key Vault yeni bir anahtar oluştur")
 
-1. Bir ad girin ve **Oluştur** ' u seçin. **RSA** varsayılan **anahtar türünü** koruyun.
+1. Bir ad girin ve **Oluştur**' u seçin. **RSA** varsayılan **anahtar türünü** koruyun.
 
     ![anahtar adı oluşturur](./media/disk-encryption/create-key.png "Anahtar adı oluştur")
 
@@ -95,7 +95,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 ### <a name="create-access-policy"></a>Erişim İlkesi Oluştur
 
-1. Yeni anahtar kasasından **Ayarlar**  >  **erişim ilkeleri**  >  **+ erişim ilkesi Ekle** ' ye gidin.
+1. Yeni anahtar kasasından **Ayarlar**  >  **erişim ilkeleri**  >  **+ erişim ilkesi Ekle**' ye gidin.
 
     ![Yeni Azure Key Vault erişim ilkesi oluştur](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -103,15 +103,15 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
     |Özellik |Açıklama|
     |---|---|
-    |Anahtar Izinleri|**Al** , **sarmalama tuşunu kaldır** ve **tuşu sarmala** seçeneğini belirleyin.|
-    |Gizli dizi Izinleri|**Al** , **Ayarla** ve **Sil** ' i seçin.|
+    |Anahtar Izinleri|**Al**, **sarmalama tuşunu kaldır** ve **tuşu sarmala** seçeneğini belirleyin.|
+    |Gizli dizi Izinleri|**Al**, **Ayarla** ve **Sil**' i seçin.|
     |Sorumlu seçin|Daha önce oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliği seçin.|
 
     ![Azure Key Vault erişim ilkesi için sorumlusu seçin](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. **Ekle** ’yi seçin.
+1. **Ekle**’yi seçin.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
     ![Azure Key Vault erişim ilkesini Kaydet](./media/disk-encryption/add-key-vault-access-policy-save.png)
 

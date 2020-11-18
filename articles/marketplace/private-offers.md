@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 0bb5dccfc99a693ec89ed08ac31b77eb16442f73
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5396845e13e94b4d957f42618baaf19c408f559d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129975"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843783"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
@@ -51,6 +51,9 @@ Kurumsal müşteriler, bulut çözümlerini bulmak, denemek ve satın almak içi
 Yayımcılar, hem yeni hem de mevcut özel teklifleriniz için abonelik tanımlayıcılarını kullanarak müşterileri hedefleyebilir. Bir sanal makine veya Azure Uygulama teklifi kullanan yayımcılar, özel bir planın kullanılabilirliğini tek bir Azure abonelik kimliğiyle kısıtlayabilir veya en fazla 20.000 Azure abonelik kimliği olan bir CSV 'yi karşıya yükleyebilir. SaaS uygulaması özel teklifi kullanılırken, yayımcılar, el ile veya CSV karşıya yükleme yaklaşımını kullanarak bir özel planın kullanılabilirliğini kısıtlamak için bir kiracı KIMLIĞINI ilişkilendirebilir.
 
 Bir teklif sertifikalandırıldıktan ve yayımlandıktan sonra, müşteriler eşitleme özel abonelikleri özelliği kullanılarak dakika içinde plana göre güncelleştirilebilirler. Bu özellik, yayımcıların özel planı sertifikalamadan veya teklifi yayımlamadan sunulan müşterilerin listesini hızlı ve kolay bir şekilde güncelleştirmesine olanak sağlar.
+
+>[!NOTE]
+>Azure devleti Uygulanabilirlik: özel teklifler (veya daha doğru: özel planlar), devleti bulutu için başka bir teklif gibi kullanılabilir. Bir plan ayrıca, durumu özel 'ten herkese ve tam tersi yönde de değişebilir. Teklifin hangi bulutta kullanılabilir olacağını gösteren denetim, ortağın karşığıdır ve Iş Ortağı Merkezi aracılığıyla yapılandırılabilir. 
 
 ## <a name="deploying-private-offers"></a>Özel teklifleri dağıtma
 

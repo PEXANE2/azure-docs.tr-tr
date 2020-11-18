@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.custom: devx-track-java
-ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: d06a6eb8b504f2c5dd09de70d79f50a3ed5d89a3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088763"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844736"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
 
@@ -22,7 +22,7 @@ Etki alanı adı hizmeti (DNS), ağ düğümü adlarını ağ genelinde depolama
 
 Sertifikalar Web trafiğini şifreler. Bu TLS/SSL sertifikaları, Azure Key Vault depolanabilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure yay bulutuna dağıtılan bir uygulama (bkz. [hızlı başlangıç: Azure Portal kullanarak mevcut bir Azure Spring Cloud uygulamasını başlatma](spring-cloud-quickstart.md)veya mevcut bir uygulamayı kullanma).
 * GoDaddy gibi etki alanı sağlayıcısı için DNS kayıt defterine erişimi olan bir etki alanı adı.
 * Bir üçüncü taraf sağlayıcıdan özel bir sertifika (otomatik olarak imzalanan sertifikanız). Sertifika, etki alanıyla aynı olmalıdır.
@@ -62,7 +62,7 @@ Birleştirilmiş sertifika için _mergedcertificate.crt_ adlı bir dosya oluştu
 
 Birleştirilmiş TLS/SSL sertifikanızı, Sertifika isteğinizin oluşturulduğu özel anahtarla dışarı aktarın.
 
-Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. _ &lt; Özel anahtar dosyası>_ ve _ &lt; birleştirilmiş-sertifika-dosya>_ yer tutucuları özel anahtarınıza ve birleştirilmiş sertifika dosyanıza yönelik yollarla değiştirin.
+Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. _&lt; Özel anahtar dosyası>_ ve _&lt; birleştirilmiş-sertifika-dosya>_ yer tutucuları özel anahtarınıza ve birleştirilmiş sertifika dosyanıza yönelik yollarla değiştirin.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
@@ -79,10 +79,10 @@ Sertifikanızı anahtar kasasına yüklemek için:
 1. Anahtar Kasası örneğinize gidin.
 1. Sol gezinti bölmesinde, **Sertifikalar**' a tıklayın.
 1. Üstteki menüde **Oluştur/içeri aktar**' a tıklayın.
-1. **Sertifika oluşturma yönteminin**altında **sertifika oluştur** iletişim kutusunda öğesini seçin `Import` .
-1. **Sertifika dosyasını karşıya yükle**altında, sertifika konumuna gidin ve seçin.
-1. **Parola**altında, sertifikanız için özel anahtarı girin.
-1. **Oluştur**’a tıklayın.
+1. **Sertifika oluşturma yönteminin** altında **sertifika oluştur** iletişim kutusunda öğesini seçin `Import` .
+1. **Sertifika dosyasını karşıya yükle** altında, sertifika konumuna gidin ve seçin.
+1. **Parola** altında, sertifikanız için özel anahtarı girin.
+1. **Oluştur**'a tıklayın.
 
     ![Sertifikayı içeri aktar 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -124,7 +124,7 @@ az keyvault set-policy -g <key vault resource group> -n <key vault name>  --obje
 
     ![Sertifikayı içeri aktarma](./media/custom-dns-tutorial/import-certificate.png)
 
-1. Sertifikanızı başarıyla içeri aktardığınızda, **özel anahtar sertifikaları**listesinde bunu görürsünüz.
+1. Sertifikanızı başarıyla içeri aktardığınızda, **özel anahtar sertifikaları** listesinde bunu görürsünüz.
 
     ![Özel anahtar sertifikası](./media/custom-dns-tutorial/key-certificates.png)
 
@@ -212,7 +212,7 @@ SSL bağlamasını başarıyla ekledikten sonra, etki alanı durumu güvenli olu
 ## <a name="enforce-https"></a>HTTPS'yi zorunlu tutma
 Varsayılan olarak, HTTP kullanarak uygulamanıza erişmeye devam edebilir, ancak tüm HTTP isteklerini HTTPS bağlantı noktasına yeniden yönlendirebilirsiniz.
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
-Uygulama sayfanızda, sol gezinti bölmesinde **özel etki alanı**' nı seçin. Ardından, **yalnızca https**'Yi, *true*olarak ayarlayın.
+Uygulama sayfanızda, sol gezinti bölmesinde **özel etki alanı**' nı seçin. Ardından, **yalnızca https**'Yi, *true* olarak ayarlayın.
 
 ![SSL bağlaması Ekle 3](./media/custom-dns-tutorial/enforce-http.png)
 

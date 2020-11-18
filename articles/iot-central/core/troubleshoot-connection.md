@@ -7,13 +7,13 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.custom: device-developer
-ms.openlocfilehash: 6438b938dc007e8d157f6549b3ed164cd2a723e8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: device-developer, devx-track-azurecli
+ms.openlocfilehash: f4f35aed10465fb06460f2818a876444bf989e01
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424468"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843970"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdan gelen verilerin Azure IoT Central'da gösterilmemesi sorununu giderme
 
@@ -130,9 +130,9 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Cihaz sağlama durumu | Description | Olası risk azaltma |
+| Cihaz sağlama durumu | Açıklama | Olası risk azaltma |
 | - | - | - |
-| Sağlanan | Anında tanınabilir sorun yoktur. | Yok |
+| Sağlanan | Anında tanınabilir sorun yoktur. | YOK |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
 | Engellendi | Cihazın IoT Central 'e bağlanması engellendi. | Cihazın IoT Central uygulamasına bağlanması engellendi. IoT Central cihaz engelini kaldırın ve yeniden deneyin. Daha fazla bilgi için bkz. [Cihazları engelleme](concepts-get-connected.md#device-status-values). |
 | Durumdaki | Cihaz onaylanmadı. | Cihaz IoT Central uygulamasına bağlanacak şekilde onaylanmadı. IoT Central cihazı onaylayın ve yeniden deneyin. Daha fazla bilgi için bkz. [cihazları onaylama](concepts-get-connected.md#connect-without-registering-devices) |
@@ -150,7 +150,7 @@ Aşağıdaki tablolarda, genel hata kodları ve hafifletmek için olası eylemle
 
 Kimlik doğrulama akışla ilgili sorunlar görüyorsanız:
 
-| Hata kodu | Description | Olası risk azaltma |
+| Hata kodu | Açıklama | Olası risk azaltma |
 | - | - | - |
 | 400 | İsteğin gövdesi geçerli değil. Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor. | Kanıtlama akışının bir parçası olarak doğru istek gövdesini gönderdiğinizden emin olun veya bir cihaz SDK 'Sı kullanın. |
 | 401 | Yetkilendirme belirteci doğrulanamıyor. Örneğin, süresi sona ermiştir veya isteğin URI 'sine uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | Cihazınızın doğru kimlik bilgilerine sahip olduğundan emin olun. |

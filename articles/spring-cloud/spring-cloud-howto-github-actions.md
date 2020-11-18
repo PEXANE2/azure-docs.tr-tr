@@ -6,20 +6,20 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b2ab22cff7a008cb55c7e3d2170113a2504ff697
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093982"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843681"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
 GitHub eylemleri otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Spring Cloud için GitHub eylemleri sayesinde deponuzda oluşturmak, test etmek, paketlemek, yayınlamak ve Azure 'a dağıtmak için iş akışları oluşturabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu örnek, [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)gerektirir.
 
 ::: zone pivot="programming-language-csharp"
@@ -53,7 +53,7 @@ Bu örnek, [GitHub 'daki steeltoe örneğini](https://github.com/Azure-Samples/A
 
  ![Yeni gizli dizi Ekle](./media/github-actions/actions1.png)
 
-Gizli adını `AZURE_CREDENTIALS` ve değerini, *GitHub deponuzu ayarlama ve kimlik doğrulama*altında bulduğunuz JSON dizesine ayarlayın.
+Gizli adını `AZURE_CREDENTIALS` ve değerini, *GitHub deponuzu ayarlama ve kimlik doğrulama* altında bulduğunuz JSON dizesine ayarlayın.
 
  ![Gizli verileri ayarlama](./media/github-actions/actions2.png)
 
@@ -171,7 +171,7 @@ Bu örnek, GitHub 'da [Pımetrimetrik](https://github.com/Azure-Samples/piggymet
 
  ![Yeni gizli dizi Ekle](./media/github-actions/actions1.png)
 
-Gizli adını `AZURE_CREDENTIALS` ve değerini, *GitHub deponuzu ayarlama ve kimlik doğrulama*altında bulduğunuz JSON dizesine ayarlayın.
+Gizli adını `AZURE_CREDENTIALS` ve değerini, *GitHub deponuzu ayarlama ve kimlik doğrulama* altında bulduğunuz JSON dizesine ayarlayın.
 
  ![Gizli verileri ayarlama](./media/github-actions/actions2.png)
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e9476b7278cbe64bf90911c3b85a09922a1afbf1
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970019"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843953"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış
 
@@ -48,7 +48,7 @@ Geçişe başlamadan önce:
 * Geçiş sırasında gerçekleşebilecek beklenmeyen hataları göz önünde bulundurarak geçişinizi çalışma saatleri dışına gerçekleşecek şekilde planlayın.
 * Hazırlama adımı tamamlandıktan sonra doğrulamayı kolaylaştırmak için PowerShell’i, komut satırı arabirimi (CLI) komutlarını veya REST API’leri kullanarak VM’lerinizin geçerli yapılandırmasını indirin.
 * Geçişe başlamadan önce Kaynak Yöneticisi dağıtım modelini işlemek için Otomasyon ve işlemleştirme betikleri güncelleştirin. İsteğe bağlı olarak, kaynaklar hazırlanmış durumdayken GET işlemleri gerçekleştirebilirsiniz.
-* Klasik dağıtım modelindeki IaaS kaynaklarında yapılandırılan Role-Based Access Control (RBAC) ilkelerini değerlendirin ve geçiş tamamlandıktan sonra için plan yapın.
+* Klasik dağıtım modelindeki IaaS kaynaklarında yapılandırılan Azure rol tabanlı erişim denetimi (Azure RBAC) ilkelerini değerlendirin ve geçiş tamamlandıktan sonra için plan yapın.
 
 Geçiş iş akışı aşağıdaki gibidir:
 

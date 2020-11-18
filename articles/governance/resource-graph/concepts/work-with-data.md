@@ -3,13 +3,13 @@ title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 6054d2cd2cf012c21f451ece87db672897fa0398
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578504"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843358"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -22,9 +22,9 @@ Yüksek bir sıklıkta sorgularla çalışmaya ilişkin yönergeler için bkz. [
 Varsayılan olarak, kaynak Graph tüm sorgular yalnızca **100** kayıt döndürüyor şekilde kısıtlar. Bu denetim, büyük veri kümelerine yol açacak istemeden yapılan sorgulardan hem kullanıcıyı hem de hizmeti korur. Bu olay çoğu zaman bir müşteri, kaynakları belirli ihtiyaçlarına uygun şekilde bulmak ve filtrelemek için sorguları deneydiğinde oluşur. Bu denetim, sonuçları sınırlamak için [üst](/azure/kusto/query/topoperator) veya Azure Veri Gezgini Dil işleçlerini [sınırlandırtan](/azure/kusto/query/limitoperator) farklıdır.
 
 > [!NOTE]
-> **Ilk kez**kullanıldığında, veya içeren en az bir sütundan sonuçları sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **Ilk kez** kullanıldığında, veya içeren en az bir sütundan sonuçları sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
 
-Varsayılan sınır, kaynak Graph ile etkileşimde bulunmak için tüm yöntemler aracılığıyla geçersiz kılınabilir. Aşağıdaki örneklerde veri kümesi boyut sınırının _200_olarak nasıl değiştirileceği gösterilmektedir:
+Varsayılan sınır, kaynak Graph ile etkileşimde bulunmak için tüm yöntemler aracılığıyla geçersiz kılınabilir. Aşağıdaki örneklerde veri kümesi boyut sınırının _200_ olarak nasıl değiştirileceği gösterilmektedir:
 
 ```azurecli-interactive
 az graph query -q "Resources | project name | order by name asc" --first 200 --output table
@@ -36,9 +36,9 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 
 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources), Denetim **$top** ve **queryrequestoptions**'ın bir parçasıdır.
 
-_En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** veya **limit** işleçlerini kullanıyorsa ve **ilk**olarak daha fazla kayıt ile sonuçlanacaksa, döndürülen en fazla kayıt sayısı **birincisine**eşittir. Benzer şekilde, **top** veya **limit** **birinciden**küçükse, döndürülen kayıt kümesi **top** veya **limit**tarafından yapılandırılan daha küçük bir değer olacaktır.
+_En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** veya **limit** işleçlerini kullanıyorsa ve **ilk** olarak daha fazla kayıt ile sonuçlanacaksa, döndürülen en fazla kayıt sayısı **birincisine** eşittir. Benzer şekilde, **top** veya **limit** **birinciden** küçükse, döndürülen kayıt kümesi **top** veya **limit** tarafından yapılandırılan daha küçük bir değer olacaktır.
 
-**İlk** olarak, en fazla izin verilen _5000_değerine sahiptir ve aynı anda [disk belleği sonuçları](#paging-results) _1000_ kayıtları elde eder.
+**İlk** olarak, en fazla izin verilen _5000_ değerine sahiptir ve aynı anda [disk belleği sonuçları](#paging-results) _1000_ kayıtları elde eder.
 
 > [!IMPORTANT]
 > **İlk** olarak _1000_ kayıtlardan daha büyük olacak şekilde yapılandırıldığında, sayfalama 'nin çalışması için sorgunun **ID** alanını **projesi** gerekir. Sorguda eksik ise, yanıt [disk belleğine](#paging-results) almaz ve sonuçlar _1000_ kayıtla sınırlıdır.
@@ -48,7 +48,7 @@ _En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** vey
 Büyük veri kümeleriyle çalışma için sonraki seçenek, **atlama** denetimidir. Bu denetim, sorgunuzun sonuçları döndürmeden önce tanımlanan kayıt sayısını atlamasını veya atlamasını sağlar. **Skip** , sonuçları, sonuç kümesinin ortasında bir yerde bir yere alacağınız anlamlı bir şekilde sıralayan sorgular için yararlıdır. Gereken sonuçlar döndürülen veri kümesinin sonunda ise, farklı bir sıralama yapılandırması kullanmak ve bunun yerine veri kümesinin en üstünden sonuçları almak daha etkilidir.
 
 > [!NOTE]
-> **Atla**kullanırken, sonuçları veya ile en az bir sütuna göre sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir. `limit`Ya da `take` sorgusunda kullanılıyorsa, **Atla** yok sayılır.
+> **Atla** kullanırken, sonuçları veya ile en az bir sütuna göre sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir. `limit`Ya da `take` sorgusunda kullanılıyorsa, **Atla** yok sayılır.
 
 Aşağıdaki örneklerde, bir sorgunun neden olacağı ilk _10_ kaydın nasıl atlanacağını, bunun yerine 11. kayıt ile döndürülen sonuç kümesini başlatmak gösterilmektedir:
 
@@ -67,7 +67,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek gerektiğinde veya bir sonuç kümesi, döndürülen en fazla _1000_ kayıt değerini aşacağından, sayfalama kullanın. [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
  **queryresponse** , bir sonuç kümesinin parçalanmış olduğunu belirten değerler sağlar: **resultkesildi** ve **$skipToken**. **Resultkesildi** , yanıtta ek kayıtlar döndürülmediğinde tüketiciyi bildiren bir Boole değeridir. **Count** özelliği **totalRecords** özelliğinden daha az olduğunda bu durum da tanımlanabilir. **totalRecords** sorguyla eşleşen kaç kayıt olduğunu tanımlar.
 
- hiçbir sütun ya da bir sorgunun istediği daha az kaynak olduğunda, sayfalama devre dışı bırakıldığında veya mümkün olmadığında **Resultkesilecek** değeri **true** 'dur `id` . **Resultkesilecek** **değeri true**olduğunda **$skipToken** özelliği ayarlı değildir.
+ hiçbir sütun ya da bir sorgunun istediği daha az kaynak olduğunda, sayfalama devre dışı bırakıldığında veya mümkün olmadığında **Resultkesilecek** değeri **true** 'dur `id` . **Resultkesilecek** **değeri true** olduğunda **$skipToken** özelliği ayarlı değildir.
 
 Aşağıdaki örneklerde, ilk 3000 kaydın nasıl atlanması ve bu kayıtlar Azure CLı ile atlandıktan sonra **ilk** 1000 kayıtlarının nasıl **döndürüleceği** ve Azure PowerShell gösterilmektedir:
 
@@ -80,13 +80,13 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 ```
 
 > [!IMPORTANT]
-> Sayfalama 'un çalışması için sorgunun **ID** alanını **projesi** gerekir. Sorguda eksik ise, yanıt **$skipToken**içermez.
+> Sayfalama 'un çalışması için sorgunun **ID** alanını **projesi** gerekir. Sorguda eksik ise, yanıt **$skipToken** içermez.
 
 Bir örnek için, REST API belgeleri içindeki [Sonraki sayfa sorgusuna](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#next-page-query) bakın.
 
 ## <a name="formatting-results"></a>Biçimlendirme sonuçları
 
-Kaynak Grafiği sorgusunun sonuçları iki biçimde, _tablo_ ve _objectarray_olarak sağlanır. Biçim, istek seçeneklerinin bir parçası olarak **RESULTFORMAT** parametresi ile yapılandırılır. _Tablo_ biçimi, **RESULTFORMAT**için varsayılan değerdir.
+Kaynak Grafiği sorgusunun sonuçları iki biçimde, _tablo_ ve _objectarray_ olarak sağlanır. Biçim, istek seçeneklerinin bir parçası olarak **RESULTFORMAT** parametresi ile yapılandırılır. _Tablo_ biçimi, **RESULTFORMAT** için varsayılan değerdir.
 
 Azure CLı sonuçları JSON 'da varsayılan olarak sağlanır. Azure PowerShell sonuçları, varsayılan olarak bir **PSCustomObject** ' dir, ancak cmdlet 'i kullanılarak hızlı BIR şekilde JSON 'a dönüştürülebilirler `ConvertTo-Json` . Diğer SDK 'lar için, sorgu sonuçları _Objectarray_ biçiminin çıktısı olacak şekilde yapılandırılabilir.
 

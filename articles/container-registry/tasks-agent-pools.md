@@ -3,13 +3,13 @@ title: Görevi çalıştırmak için adanmış havuzu kullan-görevler
 description: Azure Container Registry bir görevi çalıştırmak için kayıt defterinizde adanmış bir işlem havuzu (aracı havuzu) ayarlayın.
 ms.topic: article
 ms.date: 10/12/2020
-ms.custom: references_regions
-ms.openlocfilehash: 86c539c3b34ca0e54d65f15c4d9d01a99f9b31c6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 94956af14aad2b62e6455f443329bcd3232095c0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997367"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844923"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Adanmış bir aracı havuzunda ACR görevi çalıştırma
 
@@ -35,7 +35,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 - Her kayıt defteri için, varsayılan toplam vCPU (çekirdek) kotası tüm standart aracı havuzları için 16, yalıtılmış aracı havuzları için ise 0 ' dır. Ek ayırma için bir [destek isteği][open-support-ticket] açın.
 - Şu anda aracı havuzunda çalıştırılan bir görevi iptal edemezsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.3.1 veya üzeri gereklidir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir önizleme bölgesinde (Premium katman gereklidir) [bir tane oluşturun][create-reg-cli] .
@@ -93,13 +93,13 @@ az acr agentpool update \
 
 Görev Aracısı havuzlarının aşağıdaki Azure hizmetlerine erişmesi gerekir. Aşağıdaki güvenlik duvarı kuralları var olan ağ güvenlik gruplarına veya Kullanıcı tanımlı yollara eklenmelidir.
 
-| Yön | Protokol | Kaynak         | Kaynak Bağlantı Noktası | Hedef          | Hedef bağlantı noktası | Kullanılamıyor    |
+| Yön | Protokol | Kaynak         | Kaynak Bağlantı Noktası | Hedef          | Hedef bağlantı noktası | Kullanılan    |
 |-----------|----------|----------------|-------------|----------------------|-----------|---------|
-| Outbound  | TCP      | VirtualNetwork | Herhangi biri         | AzureKeyVault        | 443       | Varsayılan |
-| Outbound  | TCP      | VirtualNetwork | Herhangi biri         | Depolama              | 443       | Varsayılan |
-| Outbound  | TCP      | VirtualNetwork | Herhangi biri         | EventHub             | 443       | Varsayılan |
-| Outbound  | TCP      | VirtualNetwork | Herhangi biri         | AzureActiveDirectory | 443       | Varsayılan |
-| Outbound  | TCP      | VirtualNetwork | Herhangi biri         | AzureMonitor         | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi bir         | AzureKeyVault        | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi bir         | Depolama              | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi bir         | EventHub             | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi bir         | AzureActiveDirectory | 443       | Varsayılan |
+| Giden  | TCP      | VirtualNetwork | Herhangi bir         | AzureMonitor         | 443       | Varsayılan |
 
 > [!NOTE]
 > Görevleriniz ortak internet 'ten ek kaynaklar gerektiriyorsa, karşılık gelen kuralları ekleyin. Örneğin, Docker Hub 'ından temel görüntüleri çeken bir Docker Build görevi çalıştırmak için ek kurallar gerekir veya bir NuGet paketini geri yükler.

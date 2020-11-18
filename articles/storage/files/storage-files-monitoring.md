@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8dc99cda4128635e619afec5ed725da16bbd81ed
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 5357a1f2d1f042f9dab01edf205926992e4225d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629895"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843834"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -82,7 +82,7 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 
 4. Günlüklerini etkinleştirmek istediğiniz depolama türü olarak **Dosya** ' yı seçin.
 
-5. **Tanılama ayarı Ekle** ' ye tıklayın.
+5. **Tanılama ayarı Ekle**' ye tıklayın.
 
    > [!div class="mx-imgBorder"]
    > ![Portal-kaynak günlükleri-tanılama ayarı ekleme](media/storage-files-monitoring/diagnostic-logs-settings-pane-2.png)
@@ -573,9 +573,9 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 
 1. **Azure Portal** **depolama hesabınıza** gidin. 
 
-2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
+2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
 
-3. **Kaynağı Düzenle** ' ye tıklayın, **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. 
+3. **Kaynağı Düzenle**' ye tıklayın, **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. 
 
 4. **Koşul Seç** ' e tıklayın ve uyarı için aşağıdaki bilgileri sağlayın: 
 
@@ -585,7 +585,7 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 
 5. **Eylem grubunu Seç** ' e tıklayın ve var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) ekleyin.
 
-6. Uyarı **kuralının adı** , **açıklaması** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
+6. Uyarı **kuralının adı**, **açıklaması** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 
 7. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
@@ -595,68 +595,68 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 ### <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Dosya paylaşma kısıtlandığında uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. **İzleme** bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
-3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
+2. **İzleme** bölümünde **Uyarılar**' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **işlem** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılan düğmesine tıklayın ve **yanıt türü** ' nü seçin.
+6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılan düğmesine tıklayın ve **yanıt türü**' nü seçin.
 7. **Boyut değerleri** açılan listesi ' ne tıklayın ve **başarılı olarak daraltma** (SMB Için) veya **CLIENTKıSıTLAR lingerror** (REST için) öğesini seçin.
 
    > [!NOTE]
    > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için **boyut değerleri** açılan listesi ' nin yanına **özel değer Ekle** ' ye tıklayın, başarılı ' i **daraltma** veya **clientkısıtınror** yazın, **Tamam** ' a tıklayın ve ardından #7 adımını tekrarlayın.
 
-8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
+8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
 9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
    > [!NOTE]
    > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
-10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti** ' ye tıklayın.
+10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
 
     > [!TIP]
     > Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşik değeri belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
 
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
-12. Uyarı **kuralı adı** , * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
+12. Uyarı **kuralı adı**, * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Azure dosya paylaşımının boyutu kapasitenin %80 ise uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. **İzleme** bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
-3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
+2. **İzleme** bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı ise `contoso` `contoso/file` kaynağı seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **dosya kapasitesi** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
+6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
 7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
    > [!NOTE]
    > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
 8. **Eşik değerini** bayt cinsinden girin. Örneğin, dosya paylaşımının boyutu 100 TiB ise ve dosya paylaşımının boyutu kapasitenin %80 olduğunda bir uyarı almak istiyorsanız, bayt cinsinden eşik değeri 87960930222080.
-9. **Uyarı parametrelerinin** geri kalanını tanımlayın (toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti** ' ye tıklayın.
+9. **Uyarı parametrelerinin** geri kalanını tanımlayın (toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
 10. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için eylem grubunu Seç ' e tıklayın.
-11. Uyarı **kuralı adı** , * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
+11. Uyarı **kuralı adı**, * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 12. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Azure dosya paylaşımının çıkışı günde 500 GiB 'yi aşarsa uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
-3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
+2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **Çıkış** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
+6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılır düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
 7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
    > [!NOTE]
    > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Standart dosya paylaşımları için uyarılar, depolama hesabındaki tüm dosya paylaşımlarını temel alır. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
 8. Eşik değeri için **536870912000** bayt girin. 
-9. **Toplama ayrıntı düzeyi** açılan düğmesine tıklayın ve **24 saat** ' i seçin.
+9. **Toplama ayrıntı düzeyi** açılan düğmesine tıklayın ve **24 saat**' i seçin.
 10. **Değerlendirme sıklığını** seçin ve **bitti ' ye tıklayın**.
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
-12. Uyarı **kuralı adı** , * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
+12. Uyarı **kuralı adı**, * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

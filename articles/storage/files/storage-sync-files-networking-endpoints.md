@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629419"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844685"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
 Azure dosyaları ve Azure Dosya Eşitleme, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
@@ -39,9 +39,9 @@ Ek olarak:
 ## <a name="create-the-private-endpoints"></a>Özel uç noktaları oluşturma
 Bir Azure kaynağı için özel bir uç nokta oluştururken aşağıdaki kaynaklar dağıtılır:
 
-- **Özel uç nokta** : depolama hesabı ya da depolama eşitleme hizmeti için özel uç noktasını temsil eden bir Azure kaynağı. Bunu, Azure kaynağınızı ve bir ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
-- **Ağ arabirimi (NIC)** : belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
-- **Özel BIR DNS bölgesi** : daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. Bu DNS bölgesinde Azure kaynağı için bir DNS A kaydı da oluşturulacak. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, mevcut DNS bölgesine Azure kaynağı için yeni bir kayıt eklenecektir. DNS bölgesinin dağıtımı isteğe bağlıdır, ancak DNS yönetiminin gerekli olduğu basitleştirilmesi önerilir.
+- **Özel uç nokta**: depolama hesabı ya da depolama eşitleme hizmeti için özel uç noktasını temsil eden bir Azure kaynağı. Bunu, Azure kaynağınızı ve bir ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
+- **Ağ arabirimi (NIC)**: belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
+- **Özel BIR DNS bölgesi**: daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. Bu DNS bölgesinde Azure kaynağı için bir DNS A kaydı da oluşturulacak. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, mevcut DNS bölgesine Azure kaynağı için yeni bir kayıt eklenecektir. DNS bölgesinin dağıtımı isteğe bağlıdır, ancak DNS yönetiminin gerekli olduğu basitleştirilmesi önerilir.
 
 > [!Note]  
 > Bu makalede, `core.windows.net` depolama hesapları ve depolama Eşitleme Hizmetleri Için Azure genel BÖLGELERININ DNS sonekleri kullanılmaktadır `afs.azure.net` . Bu yorum, Azure US kamu bulutu gibi Azure Sogeign bulutları için de geçerlidir; ortamınız için uygun son ekleri yerine koyun.
@@ -130,7 +130,7 @@ Address: 192.168.0.5
 > Depolama eşitleme hizmeti kaynağında özel uç noktaları kullanmak için, Azure Dosya Eşitleme Aracısı sürüm 10,1 veya üstünü kullanmanız gerekir. 10,1 ' dan önceki Aracı sürümleri, depolama eşitleme hizmeti 'ndeki özel uç noktaları desteklemez. Tüm önceki Aracı sürümleri, depolama hesabı kaynağında özel uç noktaları destekler.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Azure portal en üstündeki arama çubuğuna *özel bağlantı* yazarak **özel bağlantı merkezine** gidin. Özel bağlantı Merkezi içindekiler tablosunda **Özel uç noktalar** ' ı seçin ve ardından yeni bir özel uç nokta oluşturmak Için **+ Ekle** ' yi seçin.
+Azure portal en üstündeki arama çubuğuna *özel bağlantı* yazarak **özel bağlantı merkezine** gidin. Özel bağlantı Merkezi içindekiler tablosunda **Özel uç noktalar**' ı seçin ve ardından yeni bir özel uç nokta oluşturmak Için **+ Ekle** ' yi seçin.
 
 [![Özel bağlantı merkezinin ekran görüntüsü](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png)](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png#lightbox)
 

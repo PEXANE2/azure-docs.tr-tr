@@ -11,28 +11,28 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: adc0547e36e9cf996a87c2683b4830541b8cd360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442115"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843936"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
 
 Azure Machine Learning çalışma alanınıza nasıl kimlik doğrulaması ayarlayacağınızı öğrenin. Azure Machine Learning çalışma alanınıza yönelik kimlik doğrulaması, çoğu şey için __Azure Active Directory__ (Azure AD) temel alır. Genel olarak, çalışma alanına bağlanırken kullanabileceğiniz üç kimlik doğrulama iş akışı vardır:
 
-* __Etkileşimli__ : hesabınızı doğrudan kimlik doğrulamak veya kimlik doğrulama için kullanılan bir belirteç almak üzere Azure Active Directory ' de kullanırsınız. Etkileşimli kimlik doğrulaması _deneme ve yinelemeli geliştirme_ sırasında kullanılır. Etkileşimli kimlik doğrulaması, kaynaklara erişimi (örneğin, bir Web hizmeti) Kullanıcı başına temelinde denetlemenize olanak sağlar.
+* __Etkileşimli__: hesabınızı doğrudan kimlik doğrulamak veya kimlik doğrulama için kullanılan bir belirteç almak üzere Azure Active Directory ' de kullanırsınız. Etkileşimli kimlik doğrulaması _deneme ve yinelemeli geliştirme_ sırasında kullanılır. Etkileşimli kimlik doğrulaması, kaynaklara erişimi (örneğin, bir Web hizmeti) Kullanıcı başına temelinde denetlemenize olanak sağlar.
 
-* __Hizmet sorumlusu__ : Azure Active Directory ' de bir hizmet sorumlusu hesabı oluşturur ve bir belirteç almak veya bir belirteci almak için kullanın. Hizmet sorumlusu, Kullanıcı etkileşimi gerektirmeden hizmette _kimlik doğrulaması yapmak için otomatik bir işlem_ gerektiğinde kullanılır. Örneğin, eğitim kodu her değiştiğinde bir modeli gösteren ve test eden bir sürekli tümleştirme ve dağıtım betiği.
+* __Hizmet sorumlusu__: Azure Active Directory ' de bir hizmet sorumlusu hesabı oluşturur ve bir belirteç almak veya bir belirteci almak için kullanın. Hizmet sorumlusu, Kullanıcı etkileşimi gerektirmeden hizmette _kimlik doğrulaması yapmak için otomatik bir işlem_ gerektiğinde kullanılır. Örneğin, eğitim kodu her değiştiğinde bir modeli gösteren ve test eden bir sürekli tümleştirme ve dağıtım betiği.
 
-* __Yönetilen kimlik__ : _bir azure sanal makinesinde_ Azure Machine Learning SDK kullanırken Azure için yönetilen bir kimlik kullanabilirsiniz. Bu iş akışı, kimlik bilgilerini Python kodunda depolamadan veya kullanıcıdan kimlik doğrulaması yapmasını istemeden, VM 'nin yönetilen kimliği kullanarak çalışma alanına bağlanmasına izin verir. Azure Machine Learning işlem kümeleri, _eğitim modelleri_ sırasında çalışma alanına erişmek için yönetilen bir kimlik kullanmak üzere de yapılandırılabilir.
+* __Yönetilen kimlik__: _bir azure sanal makinesinde_ Azure Machine Learning SDK kullanırken Azure için yönetilen bir kimlik kullanabilirsiniz. Bu iş akışı, kimlik bilgilerini Python kodunda depolamadan veya kullanıcıdan kimlik doğrulaması yapmasını istemeden, VM 'nin yönetilen kimliği kullanarak çalışma alanına bağlanmasına izin verir. Azure Machine Learning işlem kümeleri, _eğitim modelleri_ sırasında çalışma alanına erişmek için yönetilen bir kimlik kullanmak üzere de yapılandırılabilir.
 
 > [!IMPORTANT]
 > Kullanılan kimlik doğrulama iş akışından bağımsız olarak, kaynaklara izin verilen erişim düzeyini (yetkilendirme) kapsamı için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılır. Örneğin, bir yönetici veya Otomasyon işleminin bir işlem örneği oluşturmak için erişimi olabilir, ancak bunu kullanmayabilir, bir veri bilimconu onu kullanabilir ancak silemez veya oluşturamaz. Daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)oluşturun.
 * Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure Machine Learning işlem örneği](concept-azure-machine-learning-architecture.md#compute-instance) kullanın.
@@ -141,7 +141,7 @@ SP oluşturmanın en kolay yolu [Azure CLI](/cli/azure/install-azure-cli?preserv
 
 1. [VM 'de Azure kaynakları için sistem tarafından atanan yönetilen kimliği](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)etkinleştirin.
 
-1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve sonra da __Access Control (IAM)__ , __rol ataması Ekle__ ' yi seçin __ve açılan menüden__ __sanal makine__ ' yi seçin. Son olarak, sanal makinenizin kimliğini seçin.
+1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve sonra da __Access Control (IAM)__, __rol ataması Ekle__' yi seçin __ve açılan menüden__ __sanal makine__ ' yi seçin. Son olarak, sanal makinenizin kimliğini seçin.
 
 1. Bu kimliğe atanacak rolü seçin. Örneğin, katkıda bulunan veya özel bir rol. Daha fazla bilgi için bkz. [kaynaklara erişimi denetleme](how-to-assign-roles.md).
 
@@ -154,7 +154,7 @@ Daha fazla bilgi için bkz. [işlem kümesi için yönetilen kimlik ayarlama](ho
 ## <a name="use-interactive-authentication"></a>Etkileşimli kimlik doğrulaması kullan
 
 > [!IMPORTANT]
-> Etkileşimli kimlik doğrulaması tarayıcınızı kullanır ve tanımlama bilgileri gerektirir (3. taraf tanımlama bilgileri dahil). Tanımlama bilgilerini devre dışı bırakırsanız, "oturum açılamadı" gibi bir hata alabilirsiniz. Bu hata, [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)'ı etkinleştirdiyseniz da oluşabilir.
+> Etkileşimli kimlik doğrulaması tarayıcınızı kullanır ve tanımlama bilgileri gerektirir (3. taraf tanımlama bilgileri dahil). Tanımlama bilgilerini devre dışı bırakırsanız, "oturum açılamadı" gibi bir hata alabilirsiniz. Bu hata, [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)etkinleştirdiyseniz da oluşabilir.
 
 Belgelerde ve örneklerde birçok örnek etkileşimli kimlik doğrulaması kullanır. Örneğin, SDK kullanırken, otomatik olarak Kullanıcı arabirimi tabanlı kimlik doğrulama akışı isteyen iki işlev çağrısı vardır:
 
@@ -403,4 +403,4 @@ ws = Workspace(subscription_id="your-sub-id",
 
 * [Eğitiminde gizli dizileri kullanma](how-to-use-secrets-in-runs.md).
 * [Web hizmeti olarak dağıtılan modeller için kimlik doğrulamasını yapılandırma](how-to-authenticate-web-service.md).
-* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli](how-to-consume-web-service.md)kullanın.
+* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma](how-to-consume-web-service.md).

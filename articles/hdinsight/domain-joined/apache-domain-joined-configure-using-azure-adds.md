@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
-ms.openlocfilehash: ed2ce13ab10c09dc738e522566742078819e8341
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148397"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845212"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Active Directory tümleştirme için HDInsight kümelerini yapılandırma
 
@@ -22,14 +22,14 @@ Bu makalede, Kurumsal Güvenlik Paketi (ESP), Azure Active Directory Domain Serv
 
 Azure 'da bir etki alanı ayarlamaya ve yapılandırmaya yönelik bir öğretici ve bir ESP etkin küme oluşturma hakkında bilgi için bkz. [Azure HDInsight 'ta kurumsal güvenlik paketi kümeleri oluşturma ve yapılandırma](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 Kurumsal Güvenlik Paketi (ESP), Azure HDInsight için Active Directory tümleştirme sağlar. Bu tümleştirme, etki alanı kullanıcılarının, HDInsight kümelerinde kimlik doğrulamak ve büyük veri işleri çalıştırmak için etki alanı kimlik bilgilerini kullanmasına olanak tanır.
 
 > [!NOTE]  
 > ESP, şu küme türleri için HDInsight 3,6 ve 4,0 ' de genel kullanıma sunulmuştur: Apache Spark, Interactive, Hadoop ve HBase. Apache Kafka küme türü için ESP yalnızca en iyi çaba desteğiyle önizlemededir. ESP GA tarihi (1 Ekim 2018) öncesinde oluşturulan ESP kümeleri desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir ESP etkin HDInsight kümesi oluşturabilmeniz için birkaç önkoşul vardır:
 
@@ -62,7 +62,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ```
 
 > [!NOTE]  
-> Yalnızca kiracı yöneticileri Azure AD DS etkinleştirme ayrıcalıklarına sahiptir. Küme depolama alanı Azure Data Lake Storage 1. veya Gen2 ise, yalnızca temel Kerberos kimlik doğrulamasını kullanarak kümeye erişmesi gereken kullanıcılar için Azure Multi-Factor Authentication 'yi devre dışı bırakmanız gerekir.
+> Yalnızca kiracı yöneticileri Azure AD DS etkinleştirme ayrıcalıklarına sahiptir. Küme depolama alanı Azure Data Lake Storage 1. veya Gen2 ise, yalnızca temel Kerberos kimlik doğrulamasını kullanarak kümeye erişmesi gereken kullanıcılar için Azure AD Multi-Factor Authentication devre dışı bırakmanız gerekir.
 >
 > Belirli kullanıcılar için Multi-Factor Authentication devre dışı bırakmak için [Güvenilen IP](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) veya [koşullu erişimi](../../active-directory/conditional-access/overview.md) , *yalnızca* HDInsight kümesinin sanal ağı için IP aralığına erişirken kullanabilirsiniz. Koşullu erişim kullanıyorsanız, HDInsight sanal ağında Active Directory Hizmeti uç noktasının etkinleştirildiğinden emin olun.
 >
@@ -103,7 +103,7 @@ Azure AD DS 'yi etkinleştirin. Ardından, yerel bir etki alanı adı sistemi (D
 
 ![Yerel DNS sunucularının IP adreslerini bulma](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
-Azure AD DS sanal ağındaki DNS sunucularının yapılandırmasını değiştirin. Bu özel IP 'Leri kullanmak için **Ayarlar** kategorisinde **DNS sunucuları** ' nı seçin. Ardından **özel** seçeneğini belirleyin, metin kutusuna ilk IP adresini girin ve **Kaydet** ' i seçin. Aynı adımları kullanarak daha fazla IP adresi ekleyin.
+Azure AD DS sanal ağındaki DNS sunucularının yapılandırmasını değiştirin. Bu özel IP 'Leri kullanmak için **Ayarlar** kategorisinde **DNS sunucuları** ' nı seçin. Ardından **özel** seçeneğini belirleyin, metin kutusuna ilk IP adresini girin ve **Kaydet**' i seçin. Aynı adımları kullanarak daha fazla IP adresi ekleyin.
 
 ![Sanal ağ DNS yapılandırması güncelleştiriliyor](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 
@@ -136,11 +136,11 @@ ESP 'yi etkinleştirdikten sonra, Azure AD DS ile ilgili ortak yapılandırma ha
 
 ESP ile bir HDInsight kümesi oluşturduğunuzda, aşağıdaki parametreleri sağlamanız gerekir:
 
-* **Küme Yöneticisi kullanıcısı** : eşitlenmiş Azure AD DS örneğinden kümeniz için bir yönetici seçin. Bu etki alanı hesabı zaten eşitlenmiş ve Azure AD DS kullanılabilir olmalıdır.
+* **Küme Yöneticisi kullanıcısı**: eşitlenmiş Azure AD DS örneğinden kümeniz için bir yönetici seçin. Bu etki alanı hesabı zaten eşitlenmiş ve Azure AD DS kullanılabilir olmalıdır.
 
-* **Küme erişim grupları** : kullanıcılarını eşitlemek istediğiniz ve kümeye erişebilen güvenlik grupları Azure AD DS 'da kullanılabilir olmalıdır. HiveUsers grubu bir örnektir. Daha fazla bilgi için bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+* **Küme erişim grupları**: kullanıcılarını eşitlemek istediğiniz ve kümeye erişebilen güvenlik grupları Azure AD DS 'da kullanılabilir olmalıdır. HiveUsers grubu bir örnektir. Daha fazla bilgi için bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* **LDAPS URL 'si** : bir örnektir `ldaps://contoso.com:636` .
+* **LDAPS URL 'si**: bir örnektir `ldaps://contoso.com:636` .
 
 Oluşturduğunuz yönetilen kimlik, yeni bir küme oluştururken, **Kullanıcı tarafından atanan yönetilen kimlik** listesinden seçilebilir.
 

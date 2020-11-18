@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: dab065f4d2b025fa15966d81b66b41acb12c54b3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/17/2020
+ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027151"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845015"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Eşleme veri akışında sütun düzenlerini kullanma
 
@@ -23,7 +23,7 @@ Birçok eşleme veri akışı dönüştürmesi, sabit kodlanmış sütun adları
 * Gelen kaynak alanları, metin dosyalarındaki veya NoSQL veritabanlarındaki sütunları değiştirme durumu gibi genellikle değiştirilirse. Bu senaryo, [şema dradı](concepts-data-flow-schema-drift.md)olarak bilinir.
 * Büyük bir sütun grubu üzerinde ortak bir işlem yapmak istiyorsanız. Örneğin, sütun adında ' Total ' olan her sütunu Double olarak atama.
 
-Sütun desenleri Şu anda türetilmiş sütunda, toplama, seçme ve havuz dönüşümlerinde kullanılabilir.
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4Iui1]
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>Türetilmiş sütunda ve toplamada sütun desenleri
 
@@ -43,11 +43,17 @@ Eşleştirme koşullarınızın doğru olduğunu doğrulamak için **İnceleme**
 
 ![Ekran görüntüsü çıktı şeması sekmesini gösterir.](media/data-flow/columnpattern3.png "Sütun Desenleri")
 
+### <a name="hierarchical-pattern-matching"></a>Hiyerarşik desenler eşleştirme
+
+Karmaşık hiyerarşik yapıların içinde model eşleştirme de oluşturabilirsiniz. `Each MoviesStruct that matches`Veri akışdaki her bir hiyerarşi için sorulacak olan bölümü genişletin. Daha sonra bu seçili hiyerarşinin içindeki özellikler için eşleşen desenler oluşturabilirsiniz.
+
+![Ekran görüntüsü hiyerarşik sütun modelini gösterir.](media/data-flow/patterns-hierarchy.png "Hiyerarşilerdeki sütun desenleri")
+
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Select ve Sink içinde kural tabanlı eşleme
 
 Kaynaktaki sütunları eşlerken ve dönüşümleri seçtiğinizde, sabit eşleme veya kural tabanlı eşlemeler ekleyebilirsiniz. ,,,, `name` `type` `stream` `origin` Ve sütunlarını temel alarak eşleştirin `position` . Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
 
-Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme** ' yi seçin.
+Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
 
 ![Ekran görüntüsünde, eşleme Ekle ' den seçilen kural tabanlı eşleme gösterilmektedir.](media/data-flow/rule2.png "Kural tabanlı eşleme")
 
@@ -77,7 +83,7 @@ Yukarıdaki örnek, karmaşık sütunun tüm alt sütunlarında eşleşir `a` . 
 
 ## <a name="pattern-matching-expression-values"></a>Model eşleştirme ifadesi değerleri.
 
-* `$$` çalışma zamanında her eşleşmenin adına veya değerine çevirir
+* `$$` çalışma zamanında her eşleşmenin adına veya değerine çevirir. `$$`Eşdeğer olarak düşünün `this` .
 * `name` Her gelen sütunun adını temsil eder
 * `type` Her gelen sütunun veri türünü temsil eder
 * `stream` akışdaki her bir akışla veya dönüşümle ilişkilendirilen adı temsil eder

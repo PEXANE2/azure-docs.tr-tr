@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31219fda04095d48b55165f59c27f3dee85485a9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009265"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843647"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstünde kiracı ve konak havuzu oluşturma (klasik)
 
@@ -26,7 +26,7 @@ Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle ta
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise çoklu oturum görüntüsünü edinme
 
-Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **Get Started**  >  [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)başlangıç**Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
+Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **Get Started**  >  [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)başlangıç **Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Sanal masaüstleri için Windows 10 Enterprise, sürüm 1809 ' ı seçme ekran görüntüsü.](../media/AzureMarketPlace.png)
@@ -168,7 +168,7 @@ Ham hata örneği:
 
 **2. Çözüm:** Bkz. [hata: etki alanı adı](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve) , [oturum ana makinesi yapılandırmasında](troubleshoot-vm-configuration-2019.md)çözümlenmiyor.
 
-**Neden 3:** Sanal ağ (VNET) DNS yapılandırmanız **varsayılan**olarak ayarlanır.
+**Neden 3:** Sanal ağ (VNET) DNS yapılandırmanız **varsayılan** olarak ayarlanır.
 
 Bunu yapmak için aşağıdaki işlemleri yapın:
 
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hata: Kullanıcıya Azure Multi-factor Authentication (MFA) gerekiyor
+### <a name="error-user-requires-azure-ad-multi-factor-authentication-mfa"></a>Hata: Kullanıcı Azure AD Multi-Factor Authentication gerektiriyor (MFA)
 
 > [!div class="mx-imgBorder"]
 > ![Multi-Factor Authentication olmaması nedeniyle dağıtımınızın ekran görüntüsü başarısız oldu (MFA)](../media/MFARequiredError.png)
@@ -386,7 +386,7 @@ Ham hata örneği:
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**Neden:** Belirtilen Windows sanal masaüstü kiracı yöneticisi, oturum açmak için Azure Multi-Factor Authentication (MFA) gerektirir.
+**Neden:** Belirtilen Windows sanal masaüstü kiracı yöneticisi, oturum açmak için Azure AD Multi-Factor Authentication (MFA) gerektirir.
 
 **Çözüm:** [Öğretici: PowerShell ile hizmet sorumluları ve rol atamaları oluşturma](create-service-principal-role-powershell.md)' daki adımları izleyerek bir hizmet sorumlusu oluşturun ve Windows sanal masaüstü kiracınız için bir rol atayın. Hizmet sorumlusu ile Windows sanal masaüstü 'nde oturum açadığınızı doğruladıktan sonra, kullandığınız yönteme bağlı olarak Azure Marketi teklifini veya GitHub Azure Resource Manager şablonunu yeniden çalıştırın. Yönteminizin doğru parametrelerini girmek için aşağıdaki yönergeleri izleyin.
 

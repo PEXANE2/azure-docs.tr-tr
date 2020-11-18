@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297408"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844328"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
@@ -43,18 +43,22 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 
 Bu konudaki örnek uygulama, hedefler `netcoreapp2.0` . Kod, C# 7,1 ile başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](/archive/blogs/benwilli/async-main-is-available-but-hidden) bakın.
 
-## <a name="add-required-nuget-packages"></a>Gerekli NuGet paketlerini ekleyin
+## <a name="add-required-nuget-packagesassemblies"></a>Gerekli NuGet paketlerini/derlemelerini ekleyin
 
 1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **NuGet Yönetici Konsolu**' nu seçin.
 2. **Paket Yöneticisi konsolu** penceresinde, `Install-Package` aşağıdaki NuGet paketlerini eklemek için komutunu kullanın. Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
 
-|Paket|Açıklama|
+|Paket|Description|
 |---|---|
 |`Microsoft.Azure.Management.Media`|SDK Azure Media Services. <br/>En son Azure Media Services paketini kullandığınızdan emin olmak için [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)' i kontrol edin.|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|NET için Azure SDK için ADAL kimlik doğrulaması kitaplığı|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Ortam değişkenleri ve yerel JSON dosyalarından yapılandırma değerlerini oku|
-|`Microsoft.Extensions.Configuration.Json`|Ortam değişkenleri ve yerel JSON dosyalarından yapılandırma değerlerini oku
-|`WindowsAzure.Storage`|Depolama SDK 'Sı|
+
+### <a name="other-required-assemblies"></a>Diğer gerekli derlemeler
+
+- Azure. Storage. blob 'Ları
+- Microsoft.Extensions.Configurlama
+- Microsoft.Extensions.Configurlama. EnvironmentVariables
+- Üzerinde Microsoft.Extensions.Configuration.Js
+- Microsoft. Rest. ClientRuntime. Azure. Authentication
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Uygulama ayarları dosyası oluşturma ve yapılandırma
 
@@ -136,9 +140,9 @@ namespace ConsoleApp1
             get { return new Uri(_config["ArmEndpoint"]); }
         }
 
-        public string Region
+        public string Location
         {
-            get { return _config["Region"]; }
+            get { return _config["Location"]; }
         }
     }
 }
@@ -245,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [.NET başvurusu](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET başvurusu](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
 * Daha fazla kod örneği için bkz. [.NET SDK örnek](https://github.com/Azure-Samples/media-services-v3-dotnet) deposu.

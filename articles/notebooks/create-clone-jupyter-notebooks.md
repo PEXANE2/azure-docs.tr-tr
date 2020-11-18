@@ -3,18 +3,18 @@ title: Jupyıter not defterlerini oluşturma ve kopyalama-Azure Notebooks önizl
 description: Azure Notebooks Preview projeleri, başka bir kaynaktan yeni veya kopya oluşturabileceğiniz bir not defteri ve ilgili dosya koleksiyonunu yönetir.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e5930178b7951ff5f701228cee4ea7cb5f0e6da
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181514"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844395"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede proje oluşturma ve kopyalama
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks Jupyıter not defterlerinizi ve ilgili dosyaları *Projeler*adlı mantıksal gruplar halinde düzenler. Önce bir kapsayıcı olarak bir proje oluşturun, ardından diğer proje dosyalarının yanı sıra bir klasör içinde bir veya daha fazla not defteri oluşturun veya kopyalayın. (Bu işlem [öğreticide](tutorial-create-run-jupyter-notebook.md)gösterilmiştir.)
+Azure Notebooks Jupyıter not defterlerinizi ve ilgili dosyaları *Projeler* adlı mantıksal gruplar halinde düzenler. Önce bir kapsayıcı olarak bir proje oluşturun, ardından diğer proje dosyalarının yanı sıra bir klasör içinde bir veya daha fazla not defteri oluşturun veya kopyalayın. (Bu işlem [öğreticide](tutorial-create-run-jupyter-notebook.md)gösterilmiştir.)
 
 Proje ayrıca, özel kurulum adımları ve paket yüklemesi dahil olmak üzere dizüstü bilgisayarların çalıştığı sunucuyu etkileyen meta verileri ve diğer yapılandırma ayarlarını da korur. Daha fazla bilgi için bkz. [projeleri yönetme ve yapılandırma](configure-manage-azure-notebooks-projects.md).
 
@@ -28,7 +28,7 @@ Panoda yapabilecekleriniz, Kullanıcı KIMLIĞININ sahibi olan hesapla oturum a�
 
 | Komut | Kullanılabilir | Açıklama |
 | --- | --- | --- |
-| **Çalışmaz** | Sahip | Proje sunucusunu başlatır ve proje klasörünü Jupyıter içinde açar. (Daha yaygın olarak, önce bir proje klasörüne giderek sonra buradan bir not defteri başlatabilirsiniz.) |
+| **Çalıştır** | Sahip | Proje sunucusunu başlatır ve proje klasörünü Jupyıter içinde açar. (Daha yaygın olarak, önce bir proje klasörüne giderek sonra buradan bir not defteri başlatabilirsiniz.) |
 | **İndir** | Herkes | Seçili projenin bir kopyasını ZIP dosyası olarak indirir. |
 | **Paylaşım** | Herkes | Seçilen bir projenin URL 'sini elde edebilir, sosyal medya paylaşabilir, URL ile bir e-posta gönderebilir ve bir "başlatma Not defteri" rozeti (bkz. [bir başlatma rozet alma](#obtain-a-launch-badge)) ile birlikte IÇIN hem HTML hem de markı kodu elde edebilirsiniz. |
 | **Silme** | Sahip | Seçilen projeyi siler. Bu işlem geri alınamaz. |
@@ -61,7 +61,7 @@ Azure Notebooks projeniz yoksa, aşağıdaki şablonları kullanarak doğrudan G
 | --- | --- |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. Örneğin, "Not Defterim projem". |
 | Proje Kimliği | Bir projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı (form olur `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
-| Ortak | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
+| Genel | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
 | Bu projeyi bir BENIOKU ile Başlat | Ayarlanırsa, projede varsayılan bir *README.MD* dosyası oluşturur. İsterseniz, projeniz için belgeler sağladığınız bir *README.MD* dosyası. |
 
 ### <a name="reserved-project-ids"></a>Ayrılmış proje kimlikleri
@@ -110,7 +110,7 @@ Tüm genel GitHub deposunu, herhangi bir veri ve *README.MD* dosyası dahil olma
 | Yinelemeli olarak Kopyala | GitHub depoları birden çok alt depo içerebilir. Üst depoyu ve tüm alt öğelerini kopyalamak istiyorsanız bu seçeneği ayarlayın. Bir deponun çok sayıda alt öğesi olması mümkün olduğundan, ihtiyacınız olduğunu bilmiyorsanız bu seçeneği açık bırakın. |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. |
 | Proje Kimliği | Bir projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı (form olur `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
-| Ortak | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
+| Genel | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
 
 Bir depoyu GitHub 'dan içeri aktarmak Ayrıca geçmişini içeri aktarır. Yeni değişiklikleri yürütmek, GitHub 'dan değişiklikleri çekmek vb. için terminaldeki standart git komutlarını kullanabilirsiniz.
 
@@ -138,4 +138,4 @@ Bir projeyi kopyalamak için:
 - [Nasıl yapılır: bir slayt gösterisi sunma](present-jupyter-notebooks-slideshow.md)
 - [Nasıl yapılır: veri dosyalarıyla çalışma](work-with-project-data-files.md)
 - [Nasıl yapılır: veri kaynaklarına erişme](access-data-resources-jupyter-notebooks.md)
-- [Nasıl yapılır: Azure Machine Learning kullanma](use-machine-learning-services-jupyter-notebooks.md)
+- [Nasıl yapılır: Azure Machine Learning kullanma](../machine-learning/samples-notebooks.md)

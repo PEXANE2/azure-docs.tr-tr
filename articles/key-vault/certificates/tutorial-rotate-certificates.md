@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 2d981e902f829eb0fa8283b6a38ae376a780bcc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 591d71e8cd6af2801540f5a1a41ad88b1f538e81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289749"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844497"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Öğretici: Key Vault içinde sertifika otomatik döndürmeyi yapılandırma
 
@@ -41,7 +41,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-İşlem gerçekleştirmek için bir Anahtar Kasası oluşturun veya mevcut kasalarınızı seçin (bkz. [Anahtar Kasası oluşturma adımları](../secrets/quick-create-portal.md)). Örnekte, Anahtar Kasası adı **örnek kasadır**.
+[Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)veya [Azure PowerShell](../general/quick-create-powershell.md)kullanarak Azure Key Vault oluşturun. Örnekte, Anahtar Kasası adı **örnek kasadır**.
 
 ![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](../media/certificates/tutorial-import-cert/vault-properties.png)
 
@@ -73,25 +73,25 @@ Key Vault CAs ile belirlenen ortaklıklar aracılığıyla sertifikaları otomat
 
 ### <a name="update-certificate-lifecycle-attributes-at-the-time-of-creation"></a>Sertifika yaşam döngüsü özniteliklerini oluşturma sırasında Güncelleştir
 
-1. Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
-1. **Oluştur/Içeri aktar** ' ı seçin.
+1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
+1. **Oluştur/Içeri aktar**' ı seçin.
 1. **Sertifika oluştur** ekranında, aşağıdaki değerleri güncelleştirin:
 
-   - **Geçerlilik süresi** : değeri girin (ay). Kısa süreli sertifikaların oluşturulması önerilen bir güvenlik uygulamasıdır. Varsayılan olarak, yeni oluşturulan sertifikanın geçerlilik değeri 12 aydan oluşur.
-   - **Ömür eylemi türü** : sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından **yüzde ömrü** veya **süre sonu öncesindeki gün sayısını** güncelleştirin. Varsayılan olarak, bir sertifikanın otomatik yenilenmesi, yaşam süresinin yüzde 80 ' sinden belirlenir. Aşağı açılan menüden, aşağıdaki seçeneklerden birini seçin.
+   - **Geçerlilik süresi**: değeri girin (ay). Kısa süreli sertifikaların oluşturulması önerilen bir güvenlik uygulamasıdır. Varsayılan olarak, yeni oluşturulan sertifikanın geçerlilik değeri 12 aydan oluşur.
+   - **Ömür eylemi türü**: sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından **yüzde ömrü** veya **süre sonu öncesindeki gün sayısını** güncelleştirin. Varsayılan olarak, bir sertifikanın otomatik yenilenmesi, yaşam süresinin yüzde 80 ' sinden belirlenir. Aşağı açılan menüden, aşağıdaki seçeneklerden birini seçin.
 
         |  Belirli bir zamanda otomatik olarak Yenile| Belirli bir zamanda tüm kişileri e-postayla gönder |
         |-----------|------|
         |Bu seçeneğin belirlenmesi, oto dönüşü *etkinleştirebilir* . | Bu seçeneğin *belirlenmesi otomatik olarak döndürülmez, ancak* yalnızca ilgili kişileri uyarır.|
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 ![Sertifika yaşam döngüsü](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
 
 ### <a name="update-lifecycle-attributes-of-a-stored-certificate"></a>Depolanan bir sertifikanın yaşam döngüsü özniteliklerini güncelleştirme
 
 1. Anahtar kasasını seçin.
-1. Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
+1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
 1. Güncelleştirmek istediğiniz sertifikayı seçin. Bu durumda, **examplecertificate** adlı bir sertifika üzerinde çalışacaksınız.
 1. Üst menü çubuğundan **verme ilkesi** ' ni seçin.
 
@@ -99,12 +99,12 @@ Key Vault CAs ile belirlenen ortaklıklar aracılığıyla sertifikaları otomat
 
 1. **Verme ilkesi** ekranında, aşağıdaki değerleri güncelleştirin:
 
-   - **Geçerlilik süresi** : değeri güncelleştirin (ay).
-   - **Ömür eylemi türü** : sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından sürenin dolması için gereken **ömrü** veya **gün sayısını** güncelleştirin.
+   - **Geçerlilik süresi**: değeri güncelleştirin (ay).
+   - **Ömür eylemi türü**: sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından sürenin dolması için gereken **ömrü** veya **gün sayısını** güncelleştirin.
 
    ![Sertifika Özellikleri](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 > [!IMPORTANT]
 > Bir sertifikanın ömür eylemi türünü değiştirmek, mevcut sertifikalara yönelik değişiklikleri hemen kaydeder.
@@ -144,8 +144,8 @@ Artık ihtiyacınız kalmadığında, anahtar kasasını ve ilgili kaynakları s
 Portalı kullanarak kaynak grubunu silmek için:
 
 1. Portalın üst kısmındaki **arama** kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubu arama sonuçlarında göründüğünde, bunu seçin.
-1. **Kaynak grubunu sil** 'i seçin.
-1. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını yazın ve **Sil** ' i seçin.
+1. **Kaynak grubunu sil**'i seçin.
+1. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını yazın ve **Sil**' i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

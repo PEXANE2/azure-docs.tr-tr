@@ -9,16 +9,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84987050"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844948"
 ---
-# <a name="copy-data-from-hive-using-azure-data-factory"></a>Azure Data Factory kullanarak Hive 'den veri kopyalama 
+# <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Azure Data Factory kullanarak Hive 'den veri kopyalama ve dönüştürme 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Hive 'den veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
@@ -34,7 +34,7 @@ Verileri Hive 'dan desteklenen herhangi bir havuz veri deposuna kopyalayabilirsi
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -50,24 +50,25 @@ Hive bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Hive** olarak ayarlanmalıdır | Evet |
-| konak | Birden çok konak için '; ' ile ayrılmış Hive sunucusunun IP adresi veya ana bilgisayar adı (yalnızca serviceDiscoveryMode etkinleştirildiğinde).  | Evet |
-| port | Hive sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Azure Hdınsights 'e bağlanıyorsanız, bağlantı noktasını 443 olarak belirtin. | Evet |
-| serverType | Hive sunucusunun türü. <br/>İzin verilen değerler: **HiveServer1**, **HiveServer2**, **hivethriftserver** | Hayır |
-| thriftTransportProtocol | Thrift katmanında kullanılacak Aktarım Protokolü. <br/>İzin verilen değerler şunlardır: **binary**, **SASL**, **http** | Hayır |
-| authenticationType | Hive sunucusuna erişmek için kullanılan kimlik doğrulama yöntemi. <br/>İzin verilen değerler: **anonim**, **Kullanıcı adı**, **userNameAndPassWord**, **WindowsAzureHDInsightService**. Kerberos kimlik doğrulaması şu anda desteklenmiyor. | Evet |
-| serviceDiscoveryMode | ZooKeeper hizmetinin kullanılması gerektiğini belirtmek için true, false değil.  | Hayır |
-| zooKeeperNameSpace | Hive sunucu 2 düğümlerinin eklendiği ZooKeeper üzerindeki ad alanı.  | Hayır |
-| useNativeQuery | Sürücünün yerel HiveQL sorguları kullanıp kullanmadığını veya onları HiveQL 'teki eşdeğer bir biçime dönüştürmeyeceğini belirtir.  | Hayır |
-| username | Hive sunucusuna erişmek için kullandığınız Kullanıcı adı.  | Hayır |
-| password | Kullanıcıya karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
-| httpPath | Hive sunucusuna karşılık gelen kısmi URL.  | Hayır |
-| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | Hayır |
-| useSystemTrustStore | Sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | Hayır |
-| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| tür | Type özelliği: **Hive** olarak ayarlanmalıdır | Yes |
+| konak | Birden çok konak için '; ' ile ayrılmış Hive sunucusunun IP adresi veya ana bilgisayar adı (yalnızca serviceDiscoveryMode etkinleştirildiğinde).  | Yes |
+| port | Hive sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Azure Hdınsights 'e bağlanıyorsanız, bağlantı noktasını 443 olarak belirtin. | Yes |
+| serverType | Hive sunucusunun türü. <br/>İzin verilen değerler: **HiveServer1**, **HiveServer2**, **hivethriftserver** | No |
+| thriftTransportProtocol | Thrift katmanında kullanılacak Aktarım Protokolü. <br/>İzin verilen değerler şunlardır: **binary**, **SASL**, **http** | No |
+| authenticationType | Hive sunucusuna erişmek için kullanılan kimlik doğrulama yöntemi. <br/>İzin verilen değerler: **anonim**, **Kullanıcı adı**, **userNameAndPassWord**, **WindowsAzureHDInsightService**. Kerberos kimlik doğrulaması şu anda desteklenmiyor. | Yes |
+| serviceDiscoveryMode | ZooKeeper hizmetinin kullanılması gerektiğini belirtmek için true, false değil.  | No |
+| zooKeeperNameSpace | Hive sunucu 2 düğümlerinin eklendiği ZooKeeper üzerindeki ad alanı.  | No |
+| useNativeQuery | Sürücünün yerel HiveQL sorguları kullanıp kullanmadığını veya onları HiveQL 'teki eşdeğer bir biçime dönüştürmeyeceğini belirtir.  | No |
+| username | Hive sunucusuna erişmek için kullandığınız Kullanıcı adı.  | No |
+| password | Kullanıcıya karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
+| httpPath | Hive sunucusuna karşılık gelen kısmi URL.  | No |
+| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | No |
+| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | No |
+| useSystemTrustStore | Sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | No |
+| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | No |
+| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | No |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
+| storageReference | Eşleme veri akışındaki hazırlama verileri için kullanılan depolama hesabının bağlı hizmetine bir başvuru. Bu yalnızca, eşleme veri akışında Hive bağlantılı hizmeti kullanılırken gereklidir | No |
 
 **Örnek:**
 
@@ -94,13 +95,13 @@ Hive bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Hive veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Hive 'den veri kopyalamak için, veri kümesinin Type özelliğini **Hiveobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Hive 'den veri kopyalamak için, veri kümesinin Type özelliğini **Hiveobject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Hiveobject** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **Hiveobject** olarak ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şema bölümü dahil olmak üzere tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -126,11 +127,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="hivesource-as-source"></a>Kaynak olarak HiveSource
 
-Hive 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Hivesource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Hive 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Hivesource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Hivesource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Hivesource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**
@@ -164,6 +165,53 @@ Hive 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Hiv
     }
 ]
 ```
+
+## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
+
+Hive Bağlayıcısı, veri akışlarında eşleşen bir [satır içi veri kümesi](data-flow-source.md#inline-datasets) kaynağı olarak desteklenir. Bir sorgu kullanarak veya doğrudan HDInsight 'taki Hive tablosundan okuyabilirsiniz. Hive verileri, bir veri akışının parçası olarak dönüştürülmeden önce, bir depolama hesabında, Parquet dosyaları olarak hazırlanır. 
+
+### <a name="source-properties"></a>Kaynak özellikleri
+
+Aşağıdaki tabloda, bir Hive kaynağı tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **kaynak seçenekleri** sekmesinde düzenleyebilirsiniz.
+
+| Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Depolama | Deponun olması gerekir `hive` | yes |  `hive` | mağaza | 
+| Biçimlendir | Bir tablo veya sorgudan okuma yapıp etmeksizin | yes | `table` veya `query` | biçim |
+| Şema adı | Bir tablodan okurken, kaynak tablonun şeması |  Evet, biçim ise `table` | Dize | schemaName |
+| Tablo adı | Bir tablodan okurken tablo adı |   Evet, biçim ise `table` | Dize | tableName |
+| Sorgu | Biçim ise `query` , Hive bağlı hizmetindeki kaynak sorgusu | Evet, biçim ise `query` | Dize | sorgu |
+| Hazırlanmış | Hive tablosu her zaman hazırlanacaktır. | yes | `true` | hazırlanmış |
+| Depolama kapsayıcısı | Hive 'dan okumadan veya Hive 'e yazmadan önce verileri hazırlamak için kullanılan depolama kapsayıcısı. Hive kümesinin bu kapsayıcıya erişimi olması gerekir. | yes | Dize | storageContainer |
+| Hazırlama veritabanı | Bağlı hizmette belirtilen kullanıcı hesabının erişimi olduğu şema/veritabanı. Hazırlama sırasında dış tablolar oluşturmak için kullanılır ve daha sonra bırakılır | hayır | `true` veya `false` | stagingDatabaseName |
+| SQL betikleri öncesi | Verileri okumadan önce Hive tablosunda çalıştırılacak SQL kodu | hayır | Dize | preSQLs |
+
+#### <a name="source-example"></a>Kaynak örneği
+
+Hive kaynak yapılandırmasına bir örnek aşağıda verilmiştir:
+
+![Hive kaynağı örneği](media/data-flow/hive-source.png "[Hive kaynak örneği")
+
+Bu ayarlar aşağıdaki veri akışı betiğine çeviri yapar:
+
+```
+source(
+    allowSchemaDrift: true,
+    validateSchema: false,
+    ignoreNoFilesFound: false,
+    format: 'table',
+    store: 'hive',
+    schemaName: 'default',
+    tableName: 'hivesampletable',
+    staged: true,
+    storageContainer: 'khive',
+    storageFolderPath: '',
+    stagingDatabaseName: 'default') ~> hivesource
+```
+### <a name="known-limitations"></a>Bilinen sınırlamalar
+
+* Diziler, Haritalar, yapılar ve birleşimler gibi karmaşık türler okuma için desteklenmez. 
+* Hive Bağlayıcısı yalnızca sürüm 4,0 veya üzeri Azure HDInsight 'ta Hive tablolarını destekler (Apache Hive 3.1.0)
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 

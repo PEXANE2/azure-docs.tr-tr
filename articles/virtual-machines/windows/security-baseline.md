@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e52c09e6fc3d5e3d4210e213e0eb6af4e473559
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 385f747999bbdb408dd1c5d2f5f12717834e94da
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205039"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844225"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Sanal Makineleri için Azure Güvenlik temeli
 
@@ -596,7 +596,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 * [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
 
-* [Azure Depolama analizi günlüğü](../../storage/common/storage-analytics-logging.md)
+* [Azure Depolama analizini günlüğe kaydetme](../../storage/common/storage-analytics-logging.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 
@@ -971,7 +971,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 
 * [Azure-Managed kimliklerle tümleştirme](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [Key Vault oluşturma](../../key-vault/secrets/quick-create-portal.md)
+* [Key Vault oluşturma](../../key-vault/general/quick-create-portal.md)
 
 * [Key Vault kimlik doğrulaması yapma](../../key-vault/general/authentication.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9630919b71afd0219a2e82a86e0f89106e8a0ac2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ccfc290df64417bf0504849a83dbe68efcbddefe
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424065"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843715"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps için Azure Güvenlik temeli
 
@@ -384,7 +384,7 @@ Kod olarak altyapı kullanıyorsanız, parolaları kodda depolamaktan kaçının
 
 - [Logic Apps verileri güvenli hale getirme ve verilere erişme](logic-apps-securing-a-logic-app.md)
 
-- [Azure Key Vault bir gizli dizi ayarlama ve alma](../key-vault/secrets/quick-create-portal.md)
+- [Azure Key Vault bir gizli dizi ayarlama ve alma](../key-vault/general/quick-create-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -486,7 +486,7 @@ Ayrıca, bir mantıksal uygulamadaki her istek uç noktası, uç noktanın URL '
 
 Logic Apps desteklendiği yerlerde, Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve kimlik bilgileri veya gizli dizileri yerine oturum açmadan kimliğinizi doğrulamak için yönetilen bir kimlik kullanın. Azure bu kimliği sizin için yönetir ve gizli dizi sağlamak veya döndürmek zorunda olmadığınızdan kimlik bilgilerinizin güvenliğinin sağlanmasına yardımcı olur.
 
-Azure Logic Apps hem sistem tarafından atanan hem de Kullanıcı tarafından atanan yönetilen kimlikleri destekler. Mantıksal uygulamanız, sistem tarafından atanan kimliği veya tek bir kullanıcı tarafından atanan kimliği kullanabilir ve bunu aynı gruptaki mantıksal uygulamalar arasında paylaşabilirsiniz (ikisini birden paylaşmak mümkün değildir). Şu anda yalnızca belirli yerleşik Tetikleyiciler ve Eylemler, yönetilmeyen bağlayıcılar veya bağlantılar değil, yönetilen kimlikleri destekler, örneğin:
+Azure Logic Apps, hem sistem tarafından atanan hem de kullanıcı tarafından atanan kimlikleri destekler. Mantıksal uygulamanız, sistem tarafından atanan kimliği veya tek bir kullanıcı tarafından atanan kimliği kullanabilir ve bunu aynı gruptaki mantıksal uygulamalar arasında paylaşabilirsiniz (ikisini birden paylaşmak mümkün değildir). Yönetilen kimlikler şu an için yalnızca belirli yerleşik tetikleyiciler ve eylemler tarafından desteklenir, yönetilen bağlayıcılar veya bağlantılar tarafından desteklenmez; örneğin:
 
 -  HTTP
 
@@ -1057,7 +1057,7 @@ Logic Apps 'i barındırmak için bir tümleştirme hizmeti ortamı (ıSE) oluş
 
 **Kılavuz**: Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve oturum açmadan kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri veya gizli dizileri yerine yönetilen bir kimlik (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizi sağlamak veya döndürmek zorunda olmadığınızdan kimlik bilgilerinizin güvenliğinin sağlanmasına yardımcı olur.
 
-Şu anda yalnızca belirli yerleşik Tetikleyiciler ve Eylemler, yönetilmeyen bağlayıcılar veya bağlantılar değil, yönetilen kimlikleri destekler, örneğin:
+Yönetilen kimlikler şu an için yalnızca belirli yerleşik tetikleyiciler ve eylemler tarafından desteklenir, yönetilen bağlayıcılar veya bağlantılar tarafından desteklenmez; örneğin:
 
 - HTTP
 - Azure İşlevleri

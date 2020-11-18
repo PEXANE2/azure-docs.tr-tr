@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: a33b702209bf2724098b7a0db907b1b7237ceccf
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 07537e26b169414e3f8ec35cc32945c20f7eb7ce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592626"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843290"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -23,9 +23,9 @@ ms.locfileid: "94592626"
 
 Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz etmek için temel adımları öğreneceksiniz.
 
-1. **Veri** hub 'ında **Yeni Kaynak Ekle** ' ye tıklayın (Ayrıca, **bağlı** düğme)  >> **örneklere gözatamazsınız**. 
+1. **Veri** hub 'ında **Yeni Kaynak Ekle**' ye tıklayın (Ayrıca, **bağlı** düğme)  >> **örneklere gözatamazsınız**. 
 1. **NYC taxı & Limousine Komisyonu bulun-sarı TAXI seyahat kayıtları** bulun ve üzerine tıklayın. 
-1. Sayfanın alt kısmındaki **devam** ' a ve ardından **veri kümesi Ekle** ' ye basın. 
+1. Sayfanın alt kısmındaki **devam** ' a ve ardından **veri kümesi Ekle**' ye basın. 
 1. Artık **veri** hub 'ında **bağlı** sağ ' ye tıklayın **>> örnek veri kümeleri >> nyc_tlc_yellow** ve **Yeni Not defteri** ' ni seçin.
 1. Bu, aşağıdaki kod ile yeni bir not defteri oluşturur:
     ```
@@ -44,7 +44,7 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>NYC TAXI verilerini Spark nyctaxi veritabanına yükleme
 
-**SQLPOOL1** ' deki bir tabloda veri mevcuttur. **Nyctaxi** adlı bir Spark veritabanına yükleyin.
+**SQLPOOL1**' deki bir tabloda veri mevcuttur. **Nyctaxi** adlı bir Spark veritabanına yükleyin.
 
 1. SYNAPSE Studio 'da **geliştirme** merkezine gidin.
 1. **+**  >  **Not defteri** seçin.
@@ -58,10 +58,10 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
-1. **Veri** merkezine gidin, **veritabanları** ' na sağ tıklayın ve ardından **Yenile** ' yi seçin. Şu veritabanlarını görmeniz gerekir:
+1. **Veri** merkezine gidin, **veritabanları**' na sağ tıklayın ve ardından **Yenile**' yi seçin. Şu veritabanlarını görmeniz gerekir:
 
-    - **SQLPOOL1** (adanmış SQL havuzu)
-    - **nyctaxi** (sunucusuz Apache Spark havuzu)
+    - **SQLPOOL1 (SQL)**
+    - **nyctaxi (Spark)**
 
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark ve not defterlerini kullanarak NYC TAXI verilerini çözümleme
 

@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d65a39c1a1d302e565b59db1644af2c08befb6b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85830324"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843171"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerini kullanma
 
@@ -24,7 +24,7 @@ Varsayılan olarak, projeler **ücretsiz işlem** katmanında çalışır, bu da
 
 ## <a name="create-a-dsvm-instance"></a>DSVM örneği oluşturma
 
-Yeni bir DSVM örneği oluşturmak için [Ubuntu veri bilimi VM'si oluşturma](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)yönergelerini izleyin. Fiyatlandırma ayrıntıları dahil daha fazla bilgi için bkz. [veri bilimi sanal makineleri](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+Yeni bir DSVM örneği oluşturmak için [Ubuntu veri bilimi VM'si oluşturma](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md)yönergelerini izleyin. Fiyatlandırma ayrıntıları dahil daha fazla bilgi için bkz. [veri bilimi sanal makineleri](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 ## <a name="connect-to-the-dsvm"></a>DSVM 'ye bağlanma
 
@@ -63,9 +63,9 @@ Birden çok kullanıcı bir DSVM 'yi paylaşıyorsa, her bir not defteri kullan�
 
 1. [Azure Portal](https://portal.azure.com)sanal makinenize gidin.
 1. Sol kenar boşluğunda **destek + sorun giderme** ' nin altında, **Parolayı Sıfırla**' yı seçin.
-1. Yeni bir **Kullanıcı adı**girin. Kullanıcı adının jupi Terhub ile kullanılması için küçük harfli olması gerekir. Bir parola girin. Ardından **Güncelleştir**' i seçin. (Mevcut kullanıcı adları etkilenmez.)
+1. Yeni bir **Kullanıcı adı** girin. Kullanıcı adının jupi Terhub ile kullanılması için küçük harfli olması gerekir. Bir parola girin. Ardından **Güncelleştir**' i seçin. (Mevcut kullanıcı adları etkilenmez.)
 1. Ek kullanıcılar için önceki adımı yineleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure veri bilimi sanal makinelerine giriş](/azure/machine-learning/data-science-virtual-machine/overview)hakkında daha fazla bilgi edinin.
+[Azure veri bilimi sanal makinelerine giriş](../machine-learning/data-science-virtual-machine/overview.md)hakkında daha fazla bilgi edinin.

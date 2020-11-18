@@ -5,15 +5,15 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0cc31c26a71775dfdf3e9ee94852fda8af2c0cfc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289279"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844548"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Hızlı başlangıç: FHıR için Azure API 'yi dağıtmak üzere ARM şablonu kullanma
 
@@ -25,7 +25,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure portal bir ARM şablonu kullanarak FHıR hizmeti için Azure API 'sine dağıtım yapın.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -75,7 +75,7 @@ Azure portal 'de ARM şablonunu kullanarak FHıR için Azure API 'sini dağıtma
 
 1. İsterseniz, **aboneliği** varsayılan değerinden farklı bir aboneliğe değiştirin.
 
-2. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam** ' ı seçin.
+2. **Kaynak grubu** Için **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam**' ı seçin.
 
 3. Yeni bir kaynak grubu oluşturduysanız, kaynak grubu için bir **bölge** seçin.
 
@@ -83,9 +83,9 @@ Azure portal 'de ARM şablonunu kullanarak FHıR için Azure API 'sini dağıtma
 
     :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Azure portal ARM şablonunu kullanarak FHıR için Azure API 'sini dağıtın.":::
 
-5. **Gözden geçir + oluştur** ’u seçin.
+5. **Gözden geçir + oluştur**’u seçin.
 
-6. Hüküm ve koşulları okuyun ve ardından **Oluştur** ' u seçin.
+6. Hüküm ve koşulları okuyun ve ardından **Oluştur**' u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -200,9 +200,9 @@ Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu
 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
 
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
 
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

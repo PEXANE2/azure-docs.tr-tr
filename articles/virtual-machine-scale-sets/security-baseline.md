@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a015c3881e2fa51ecfaaba57e6bb6262194012d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3932a1dee0eee16e7d64ff4c6085919d85b431ab
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367882"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843273"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure Güvenlik temeli
 
@@ -612,7 +612,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 * [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Azure Depolama analizi günlüğü](../storage/common/storage-analytics-logging.md)
+* [Azure Depolama analizini günlüğe kaydetme](../storage/common/storage-analytics-logging.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -974,7 +974,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 * [Azure yönetilen kimliklerle tümleştirme](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [Key Vault oluşturma](../key-vault/secrets/quick-create-portal.md)
+* [Key Vault oluşturma](../key-vault/general/quick-create-portal.md)
 
 * [Key Vault kimlik doğrulaması yapma](../key-vault/general/authentication.md)
 
