@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63505f470410234f720dd28c29e87c4a2a6d123f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082061"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661146"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>PowerShell kullanarak farklı dağıtım modellerindeki sanal ağları birbirine bağlama
 
@@ -35,7 +35,7 @@ Aşağıdaki adımlarda, her VNet için dinamik veya yol tabanlı bir ağ geçid
 
 ### <a name="prerequisites"></a><a name="pre"></a>Önkoşullar
 
-* Her iki sanal ağ zaten oluşturulmuş. Resource Manager sanal ağı oluşturmanız gerekiyorsa bkz. [kaynak grubu ve sanal ağ oluşturma](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Klasik bir sanal ağ oluşturmak için bkz. [Klasik VNET oluşturma](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
+* Her iki sanal ağ zaten oluşturulmuş. Resource Manager sanal ağı oluşturmanız gerekiyorsa bkz. [kaynak grubu ve sanal ağ oluşturma](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Klasik bir sanal ağ oluşturmak için bkz. [Klasik VNET oluşturma](/previous-versions/azure/virtual-network/create-virtual-network-classic).
 * VNET 'lerin adres aralıkları birbirleriyle örtüşmez veya ağ geçitlerinin bağlı olabileceği diğer bağlantılar için aralıklardan herhangi biriyle çakışmaz.
 * En son PowerShell cmdlet 'lerini yüklediniz. Daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/) . Hem hizmet yönetimi (SM) hem de Kaynak Yöneticisi (RM) cmdlet 'lerini yüklediğinizden emin olun. 
 
@@ -90,7 +90,7 @@ Ağ geçidi IP adresleme yapılandırması = gwipconfig
    ```azurepowershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-3. Düzenlemek için indirdiğiniz. xml dosyasını açın. Ağ yapılandırma dosyasına bir örnek için, bkz. [ağ yapılandırması şeması](https://msdn.microsoft.com/library/jj157100.aspx).
+3. Düzenlemek için indirdiğiniz. xml dosyasını açın. Ağ yapılandırma dosyasına bir örnek için, bkz. [ağ yapılandırması şeması](/previous-versions/azure/reference/jj157100(v=azure.100)).
 
 ### <a name="2-verify-the-gateway-subnet"></a>2. ağ geçidi alt ağını doğrulayın
 **Virtualnetworksites** öğesinde, zaten oluşturulmadıysa sanal ağınıza bir ağ geçidi alt ağı ekleyin. Ağ yapılandırma dosyası ile çalışırken, ağ geçidi alt ağının "GatewaySubnet" olarak adlandırılması ve Azure tarafından tanınıp bir ağ geçidi alt ağı olarak kullanılması gerekır.
@@ -217,7 +217,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -AllocationMethod Dynamic
    ```
 
-4. Sanal ağınızın bir ağ geçidi alt ağına sahip olduğunu doğrulayın. Ağ geçidi alt ağı yoksa, bir tane ekleyin. Ağ geçidi alt ağının *gatewaysubnet*olarak adlandırıldığından emin olun.
+4. Sanal ağınızın bir ağ geçidi alt ağına sahip olduğunu doğrulayın. Ağ geçidi alt ağı yoksa, bir tane ekleyin. Ağ geçidi alt ağının *gatewaysubnet* olarak adlandırıldığından emin olun.
 5. Aşağıdaki komutu çalıştırarak ağ geçidi için kullanılan alt ağı alın. Bu adımda, bir sonraki adımda kullanılacak bir değişken de ayarlayacağız.
    
    **-Ad** Kaynak Yöneticisi sanal ağınızın adıdır.<br>
@@ -237,7 +237,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -Name gwipconfig -SubnetId $subnet.id `
    -PublicIpAddressId $ipaddress.id
    ```
-7. Aşağıdaki komutu çalıştırarak Kaynak Yöneticisi sanal ağ geçidini oluşturun. , `-VpnType` *Routebased*olmalıdır. Ağ geçidinin oluşturulması 45 dakika veya daha uzun sürebilir.
+7. Aşağıdaki komutu çalıştırarak Kaynak Yöneticisi sanal ağ geçidini oluşturun. , `-VpnType` *Routebased* olmalıdır. Ağ geçidinin oluşturulması 45 dakika veya daha uzun sürebilir.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `
@@ -245,7 +245,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    -IpConfigurations $gwipconfig `
    -EnableBgp $false -VpnType RouteBased
    ```
-8. VPN ağ geçidi oluşturulduktan sonra genel IP adresini kopyalayın. Bu ayarı, klasik VNet 'iniz için yerel ağ ayarlarını yapılandırırken kullanırsınız. Genel IP adresini almak için aşağıdaki cmdlet 'i kullanabilirsiniz. Genel IP adresi *, IP 'nin*geri dönüş bölümünde listelenir.
+8. VPN ağ geçidi oluşturulduktan sonra genel IP adresini kopyalayın. Bu ayarı, klasik VNet 'iniz için yerel ağ ayarlarını yapılandırırken kullanırsınız. Genel IP adresini almak için aşağıdaki cmdlet 'i kullanabilirsiniz. Genel IP adresi *, IP 'nin* geri dönüş bölümünde listelenir.
 
    ```azurepowershell-interactive
    Get-AzPublicIpAddress -Name gwpip -ResourceGroupName RG1
@@ -272,7 +272,7 @@ Bu bölümde, klasik VNet ile çalışırsınız. Kaynak Yöneticisi VNet ağ ge
    ```
 
 ## <a name="section-4---create-a-connection-between-the-gateways"></a><a name="connect"></a>Bölüm 4-ağ geçitleri arasında bağlantı oluşturma
-Ağ geçitleri arasında bağlantı oluşturmak PowerShell gerektirir. PowerShell cmdlet 'lerinin klasik sürümünü kullanmak için Azure hesabınızı eklemeniz gerekebilir. Bunu yapmak için **Add-AzureAccount**kullanın.
+Ağ geçitleri arasında bağlantı oluşturmak PowerShell gerektirir. PowerShell cmdlet 'lerinin klasik sürümünü kullanmak için Azure hesabınızı eklemeniz gerekebilir. Bunu yapmak için **Add-AzureAccount** kullanın.
 
 1. PowerShell konsolunda, paylaşılan anahtarınızı ayarlayın. Cmdlet 'leri çalıştırmadan önce, Azure 'un görmeyi beklediği tam adlar için indirdiğiniz ağ yapılandırma dosyasına bakın. Boşluk içeren bir sanal ağın adını belirtirken, değerin etrafında tek tırnak işaretleri kullanın.<br><br>Aşağıdaki örnekte **-vağ** adı klasik VNET 'in adı ve **-localnetworksitename** , yerel ağ sitesi için belirttiğiniz addır. **-Sharedkey** , oluşturduğunuz ve belirlediğiniz bir değerdir. Örnekte, ' abc123 ' kullandık, ancak daha karmaşık bir şeyler oluşturup kullanabilirsiniz. Önemli şey, burada belirttiğiniz değerin, bağlantınızı oluştururken bir sonraki adımda belirttiğiniz değer olması gerekir. Döndürülen **durum: başarılı**' i göstermelidir.
 
@@ -306,7 +306,7 @@ Ağ geçitleri arasında bağlantı oluşturmak PowerShell gerektirir. PowerShel
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -317,7 +317,7 @@ Ağ geçitleri arasında bağlantı oluşturmak PowerShell gerektirir. PowerShel
 
 [!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

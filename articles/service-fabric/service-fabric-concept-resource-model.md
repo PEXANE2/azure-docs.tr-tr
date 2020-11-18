@@ -4,12 +4,12 @@ description: Bu makalede, Azure Resource Manager kullanarak bir Azure Service Fa
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258743"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681695"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli
 
@@ -50,12 +50,12 @@ Mevcut bir depolama hesabını yeniden kullanabilir veya uygulamalarınızı haz
 
 ### <a name="configure-your-storage-account"></a>Depolama hesabınızı yapılandırma
 
-Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturursunuz. Azure portal, uygulamalarınızı depolamak istediğiniz Azure depolama hesabına gidin. **Bloblar**  >  **Ekle kapsayıcı**seçin. 
+Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturursunuz. Azure portal, uygulamalarınızı depolamak istediğiniz Azure depolama hesabına gidin. **Bloblar**  >  **Ekle kapsayıcı** seçin. 
 
-Kümenizin içindeki kaynaklara genel erişim düzeyi **özel**olarak ayarlanarak güvenli hale getirebilirsiniz. Birden çok şekilde erişim verebilirsiniz:
+Kümenizin içindeki kaynaklara genel erişim düzeyi **özel** olarak ayarlanarak güvenli hale getirebilirsiniz. Birden çok şekilde erişim verebilirsiniz:
 
 * [Azure Active Directory](../storage/common/storage-auth-aad-app.md)kullanarak bloblara ve kuyruklara erişim yetkisi verin.
-* [Azure Portal RBAC](../storage/common/storage-auth-aad-rbac-portal.md)kullanarak Azure Blob ve kuyruk verilerine erişim izni verin.
+* [Azure Portal Azure RBAC](../storage/common/storage-auth-aad-rbac-portal.md)kullanarak Azure Blob ve kuyruk verilerine erişim izni verin.
 * [Paylaşılan erişim imzasını](/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak erişim yetkisi verin.
 
 Aşağıdaki ekran görüntüsündeki örnek, Bloblar için anonim okuma erişimi kullanır.
@@ -71,10 +71,10 @@ Bu öğreticide, [Oylama örnek uygulamasını](https://github.com/Azure-Samples
 1. Visual Studio 'da, **Oylama** projesine sağ tıklayın ve ardından **paket**' i seçin.
 
    ![Paket uygulaması][PackageApplication]  
-1. *.\Service-Fabric-DotNet-quickstart\Voting\pkg\Debug* dizinine gidin. İçeriği *Voting.zip*adlı bir dosyaya ZIP. *ApplicationManifest.xml* dosyası ZIP dosyasının kökünde olmalıdır.
+1. *.\Service-Fabric-DotNet-quickstart\Voting\pkg\Debug* dizinine gidin. İçeriği *Voting.zip* adlı bir dosyaya ZIP. *ApplicationManifest.xml* dosyası ZIP dosyasının kökünde olmalıdır.
 
    ![ZIP uygulaması][ZipApplication]  
-1. . Zip uzantısını *. sfpkg*olarak değiştirmek için dosyayı yeniden adlandırın.
+1. . Zip uzantısını *. sfpkg* olarak değiştirmek için dosyayı yeniden adlandırın.
 
 1. Azure portal, depolama hesabınızın **uygulamalar** kapsayıcısında **karşıya yükle**' yi seçin ve ardından **Oylama. sfpkg**' i karşıya yükleyin. 
 

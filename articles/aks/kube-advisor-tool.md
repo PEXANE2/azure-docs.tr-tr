@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7730146f30487eb5d20f0d3138e9e5ba799daa99
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86255260"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681535"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kümenizdeki Kubernetes en iyi yöntemlerini denetleme
 
@@ -29,7 +29,7 @@ Kumak-Advisor Aracı, Windows Uygulamaları ve Linux uygulamaları için pod öz
 
 ## <a name="running-kube-advisor"></a>Kuto Danışmanı çalıştırma
 
-Aracı, [rol tabanlı erişim denetimi (RBAC)](./azure-ad-integration-cli.md)için yapılandırılmış bir kümede çalıştırmak için aşağıdaki komutları kullanarak. İlk komut bir Kubernetes hizmet hesabı oluşturur. İkinci komut, aracı bu hizmet hesabını kullanarak bir pod içinde çalıştırır ve kaldırıldıktan sonra Pod 'yi silinmek üzere yapılandırır. 
+Aracı, aşağıdaki komutları kullanarak [Kubernetes rol tabanlı erişim denetimi (KUBERNETES RBAC)](./azure-ad-integration-cli.md)için yapılandırılmış bir kümede çalıştırmak için. İlk komut bir Kubernetes hizmet hesabı oluşturur. İkinci komut, aracı bu hizmet hesabını kullanarak bir pod içinde çalıştırır ve kaldırıldıktan sonra Pod 'yi silinmek üzere yapılandırır. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,7 +37,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
-RBAC kullanmıyorsanız, komutu aşağıdaki gibi çalıştırabilirsiniz:
+Kubernetes RBAC kullanmıyorsanız, komutu aşağıdaki gibi çalıştırabilirsiniz:
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
@@ -59,13 +59,13 @@ Varsayılan olarak, Pod belirtimlerinde hiçbir istek veya sınır ayarlanır. B
 
 ## <a name="cleaning-up"></a>Temizleme
 
-Kümenizin RBAC etkinse, `ClusterRoleBinding` aşağıdaki komutu kullanarak aracı çalıştırdıktan sonra ' yi temizleyebilirsiniz:
+Kümenizde Kubernetes RBAC etkinse, `ClusterRoleBinding` aşağıdaki komutu kullanarak aracı çalıştırdıktan sonra ' yi temizleyebilirsiniz:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Aracı RBAC etkin olmayan bir kümeye karşı çalıştırıyorsanız, temizlik gerekmez.
+Aracı, Kubernetes RBAC özellikli olmayan bir kümeye karşı çalıştırıyorsanız, temizlik gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

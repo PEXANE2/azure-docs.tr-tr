@@ -3,12 +3,12 @@ title: Azure Service Fabric hakkında daha fazla bilgi
 description: Azure Service Fabric 'nin temel kavramları ve ana alanlarıyla ilgili bilgi edinin. Service Fabric genişletilmiş bir genel bakış sağlar ve mikro hizmetlerin nasıl oluşturulacağını açıklar.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 6cbc99b56df18448add47a70b42742aa8dabbeb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461507"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681746"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric hakkında bilgi edinmek istiyor musunuz?
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur.  Service Fabric, ancak büyük bir yüzey alanına sahiptir ve öğrenilmesi çok önemlidir.  Bu makalede bir Service Fabric Özeti ve temel kavramlar, programlama modelleri, uygulama yaşam döngüsü, test, kümeler ve sistem durumu izleme açıklanmaktadır. Bir giriş ve mikro hizmetler oluşturmak için Service Fabric nasıl kullanılabileceği hakkında [genel bakış](service-fabric-overview.md) ve [mikro hizmetler nelerdir?](service-fabric-overview-microservices.md) makalesini okuyun. Bu makale kapsamlı bir içerik listesi içermez, ancak Service Fabric her alanı için genel bakış ve başlangıç makalelerine bağlantı sağlar. 
@@ -34,7 +34,7 @@ Uygulama paketi dizinindeki dosyalar Service Fabric kümesinin görüntü deposu
 
 Bir kümenin parçası olan makine veya VM’lere düğüm denir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin yerleşim özellikleri gibi özellikleri vardır. Her makine veya VM, `FabricHost.exe` önyükleme sonrasında çalışmaya başlayan ve ardından iki yürütülebilir dosya Başlatan bir otomatik başlatma Windows hizmetine sahiptir: `Fabric.exe` ve `FabricGateway.exe` . Bu iki yürütülebilir dosya düğümü yapar. Geliştirme veya test senaryoları için, birden fazla ve birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz `Fabric.exe` `FabricGateway.exe` .
 
-Adlandırılmış bir uygulama, belirli bir işlevi veya işlevleri gerçekleştiren adlandırılmış hizmetlerden oluşan bir koleksiyondur. Bir hizmet, bir bütün ve tek başına işlevi gerçekleştirir (diğer hizmetlerden bağımsız olarak başlatılabilir ve çalıştırılabilir) ve kod, yapılandırma ve verilerden oluşur. Bir uygulama paketi görüntü deposuna kopyalandıktan sonra, uygulama paketinin uygulama türünü (adını/sürümünü kullanarak) belirterek küme içinde uygulamanın bir örneğini oluşturursunuz. Her uygulama türü örneğine *doku:/MyNamedApp*gibi görünen bir URI adı atanır. Bir küme içinde, tek bir uygulama türünden birden çok adlandırılmış uygulama oluşturabilirsiniz. Farklı uygulama türlerinden adlandırılmış uygulamalar da oluşturabilirsiniz. Adlandırılmış her uygulama bağımsız olarak yönetilir ve sürümü oluşturulur.
+Adlandırılmış bir uygulama, belirli bir işlevi veya işlevleri gerçekleştiren adlandırılmış hizmetlerden oluşan bir koleksiyondur. Bir hizmet, bir bütün ve tek başına işlevi gerçekleştirir (diğer hizmetlerden bağımsız olarak başlatılabilir ve çalıştırılabilir) ve kod, yapılandırma ve verilerden oluşur. Bir uygulama paketi görüntü deposuna kopyalandıktan sonra, uygulama paketinin uygulama türünü (adını/sürümünü kullanarak) belirterek küme içinde uygulamanın bir örneğini oluşturursunuz. Her uygulama türü örneğine *doku:/MyNamedApp* gibi görünen bir URI adı atanır. Bir küme içinde, tek bir uygulama türünden birden çok adlandırılmış uygulama oluşturabilirsiniz. Farklı uygulama türlerinden adlandırılmış uygulamalar da oluşturabilirsiniz. Adlandırılmış her uygulama bağımsız olarak yönetilir ve sürümü oluşturulur.
 
 Adlandırılmış bir uygulama oluşturduktan sonra hizmet türünü belirterek (adını/sürümünü kullanarak) küme içinde hizmet türlerinden birinin (adlandırılmış bir hizmet) bir örneğini oluşturabilirsiniz. Her hizmet türü örneğine, adlandırılmış uygulamasının URI 'sinin kapsamında bir URI adı atanır. Örneğin, "MyNamedApp" adlı uygulama içinde bir "MyDatabase" hizmeti oluşturursanız, URI şöyle görünür: *Fabric:/MyNamedApp/MyDatabase*. Adlandırılmış bir uygulama içinde, bir veya daha fazla adlandırılmış hizmet oluşturabilirsiniz. Her bir adlandırılmış hizmet kendi bölüm düzenine ve örnek/çoğaltma sayısına sahip olabilir. 
 
@@ -131,7 +131,7 @@ Linux tek başına kümeleri henüz desteklenmiyor.
 Küme güvenliği senaryoları şunlardır:
 * Düğümden düğüme güvenlik
 * İstemciden düğüme güvenlik
-* Rol tabanlı erişim denetimi (RBAC)
+* Rol tabanlı erişim denetimi Service Fabric
 
 Daha fazla bilgi için [bir kümeyi güvenli bir](service-fabric-cluster-security.md)şekilde okuyun.
 

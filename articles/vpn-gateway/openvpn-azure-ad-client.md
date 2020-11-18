@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: alzam
-ms.openlocfilehash: 09d39acc867124acfd5c3c38d5c26053218972e7
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7c2c1930b8f801db7f70baa5b713a641606be644
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109111"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661180"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory kimlik doğrulaması: P2S OpenVPN Protokolü bağlantıları için VPN istemcisi yapılandırma
 
@@ -30,7 +30,7 @@ Azure VPN Istemcisini indirmek için bu [bağlantıyı](https://go.microsoft.com
 
 1. Başlat ' a gidin, ardından ayarlar > gizlilik > arka plan uygulamaları ' nı seçin.
 2. Arka plan uygulamaları altında, **arka planda uygulamaların çalışmasına Izin ver** ' in açık olduğundan emin olun.
-3. Arka planda hangi uygulamaların çalışabileceğini seçin altında, Azure VPN Istemcisi ayarlarını **Açık**olarak açın.
+3. Arka planda hangi uygulamaların çalışabileceğini seçin altında, Azure VPN Istemcisi ayarlarını **Açık** olarak açın.
 
   ![yetkisi](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -78,7 +78,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
     ![VPN ve "Bağlan" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. Bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
+5. Bağlandıktan sonra simge yeşil ve **bağlı** olarak görünür.
 
     ![içeri aktar](./media/openvpn-azure-ad-client/import/import5.jpg)
 
@@ -110,7 +110,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
     ![Vurgulanmış örnek kimlik bilgilerini ve "devam" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
-5. Başarılı bir şekilde bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
+5. Başarılı bir şekilde bağlandıktan sonra simge yeşil ve **bağlı** olarak görünür.
 
     ![bağlantı](./media/openvpn-azure-ad-client/create/create5.jpg)
 
@@ -160,7 +160,7 @@ Evet, [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-k
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine DNS sonekleri eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -178,7 +178,7 @@ Evet, [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-k
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel DNS sunucuları eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -194,12 +194,12 @@ Evet, [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-k
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) bölümüne başvurun.
+> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?preserve-view=true&view=win10-ps) bölümüne başvurun.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -217,7 +217,7 @@ Evet, [KB4577063](https://support.microsoft.com/help/4577063/windows-10-update-k
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN istemcisinden gelen yollar engellensin mi (hariç) Nasıl yaparım??
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> ** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve **\<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes>** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>

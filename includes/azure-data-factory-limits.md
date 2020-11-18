@@ -5,15 +5,15 @@ services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92909057"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94680908"
 ---
 Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğundan emin olmak için aşağıdaki varsayılan sınırlara sahip çok kiracılı bir hizmettir. Sınırlandırmaları aboneliğinizin en büyük sınırına yükseltmek için desteğe başvurun.
 
@@ -40,6 +40,7 @@ Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğu
 | İşlem hattı etkinlik çalıştırmaları için maksimum zaman aşımı | 7 gün | 7 gün |
 | İşlem hattı nesneleri için nesne başına bayt sayısı<sup>3</sup> | 200 KB | 200 KB |
 | Veri kümesi ve bağlı hizmet nesneleri için nesne başına bayt sayısı<sup>3</sup> | 100 KB | 2.000 KB |
+| Her etkinlik çalışması için yük başına bayt sayısı<sup>4</sup> | 896 KB | 896 KB |
 | Kopyalama etkinliği başına veri tümleştirme birimleri<sup>1</sup> çalışma | 256 | 256 |
 | API çağrıları yazma | 1200/h | 1200/h<br/><br/> Bu sınır, Azure Data Factory değil Azure Resource Manager tarafından belirlenir. |
 | API çağrılarını oku | 12500/h | 12500/h<br/><br/> Bu sınır, Azure Data Factory değil Azure Resource Manager tarafından belirlenir. |
@@ -60,6 +61,8 @@ Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğu
 | Bölge grubu 3 | Kanada Orta, Doğu Asya, Fransa Orta, Kore Orta, UK Güney |
 
 <sup>3</sup> işlem hattı, veri kümesi ve bağlı hizmet nesneleri, iş yükünüzün mantıksal bir gruplandırmasını temsil eder. Bu nesnelere yönelik sınırlar, Azure Data Factory taşıyacağınız ve işleyebilmeniz için veri miktarıyla ilişkili değildir. Data Factory, verilerin petabaytlarca işlemek için ölçeklendirilecek şekilde tasarlanmıştır.
+
+<sup>4</sup> her etkinlik çalışması için yük, etkinlik yapılandırmasını, ilişkili veri kümelerini ve bağlı hizmet yapılandırmalarını ve etkinlik türü başına oluşturulan sistem özelliklerinin küçük bir bölümünü içerir. Bu yük boyutu için sınır Azure Data Factory taşıyacağınız ve işleyebilmeniz için veri miktarıyla ilişkili değildir. Bu sınıra ulaşırsanız, [Belirtiler ve öneriler](../articles/data-factory/data-factory-troubleshoot-guide.md#payload-is-too-large) hakkında bilgi edinin.
 
 ### <a name="version-1"></a>Sürüm 1
 

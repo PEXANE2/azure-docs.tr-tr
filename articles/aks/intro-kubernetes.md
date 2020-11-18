@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: ee709868cd7e78afbcc480913c4e4c8fd2acf832
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167194"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681559"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
 
@@ -26,11 +26,11 @@ Başlamak için, [Azure portalda][aks-portal] veya [ Azure CLI][aks-cli] ile AKS
 
 ## <a name="access-security-and-monitoring"></a>Erişim, güvenlik ve izleme
 
-Gelişmiş güvenlik ve yönetim için AKS, Azure Active Directory tümleştirmenize ve Kubernetes rol tabanlı erişim denetimi 'ni (RBAC) kullanmanıza olanak tanır. Ayrıca, kümelerinizin ve kaynaklarınızın sistem durumunu da izleyebilirsiniz.
+Gelişmiş güvenlik ve yönetim için AKS, Azure Active Directory tümleştirmenize ve Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanmanıza olanak tanır. Ayrıca, kümelerinizin ve kaynaklarınızın sistem durumunu da izleyebilirsiniz.
 
 ### <a name="identity-and-security-management"></a>Kimlik ve güvenlik yönetimi
 
-AKS, küme kaynaklarına erişimi sınırlandırmak içi [Kubernetes rol tabanlı erişim denetimini (RBAC)][kubernetes-rbac] desteklemektedir. RBAC, Kubernetes kaynaklarına ve ad alanlarına erişimi ve bu kaynakların izinlerini denetlemenizi sağlar. Bir AKS kümesini Azure Active Directory (AD) ile tümleştirilecek şekilde de yapılandırabilirsiniz. Azure AD tümleştirmesiyle, Kubernetes erişimi var olan kimlik ve grup üyeliklerine göre yapılandırılabilir. Var olan Azure AD kullanıcılarınıza ve gruplarınıza, AKS kaynaklarına erişim hakkı ve tümleşik oturum açma deneyimi sağlanabilir.
+Küme kaynaklarına erişimi sınırlandırmak için AKS, [Kubernetes rol tabanlı erişim denetimini (KUBERNETES RBAC)][kubernetes-rbac]destekler. Kubernetes RBAC, Kubernetes kaynaklarına ve ad alanlarına erişimi ve bu kaynaklarla ilgili izinleri denetlemenize olanak tanır. Bir AKS kümesini Azure Active Directory (AD) ile tümleştirilecek şekilde de yapılandırabilirsiniz. Azure AD tümleştirmesiyle, Kubernetes erişimi var olan kimlik ve grup üyeliklerine göre yapılandırılabilir. Var olan Azure AD kullanıcılarınıza ve gruplarınıza, AKS kaynaklarına erişim hakkı ve tümleşik oturum açma deneyimi sağlanabilir.
 
 Kimlik hakkında daha fazla bilgi için bkz. [AKS Için erişim ve kimlik seçenekleri][concepts-identity].
 
@@ -146,7 +146,7 @@ Azure CLI hızlı başlangıçları ile AKS dağıtma ve yönetme hakkında daha
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 8df913234be1f3e07677520e41b699fe6d503204
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314515"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681627"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
@@ -30,7 +30,7 @@ Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panos
 
 Bu belgede açıklanan adımlarda, bir AKS kümesi oluşturduğunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılmaktadır `kubectl` . AKS kümesi oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure CLI kullanarak Azure Kubernetes hizmet kümesi dağıtma][aks-quickstart].
 
-Ayrıca Azure CLı sürüm 2.6.0 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.6.0 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 ## <a name="disable-the-kubernetes-dashboard"></a>Kubernetes panosunu devre dışı bırakma
 
@@ -44,7 +44,7 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 
 Bir kümede Kubernetes panosunu başlatmak için [az aks zat][az-aks-browse] komutunu kullanın. Bu komut, Kubernetes 1,18 ' den eski herhangi bir sürümü çalıştıran kümeler üzerinde varsayılan olarak bulunan kuin-Dashboard eklenti yüklemesini gerektirir.
 
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı küme için panoyu açar:
+Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *Myakscluster* adlı küme için panoyu açar:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
@@ -71,7 +71,7 @@ You have the following options to sign in to your cluster's dashboard:
 > 
 > When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If you do choose to use the default dashboard service account and your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
@@ -79,16 +79,16 @@ You have the following options to sign in to your cluster's dashboard:
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
+> You can now access the Kubernetes dashboard in your Kubernetes RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
+> If your cluster does not use Kubernetes RBAC, it is not recommended to create a *ClusterRoleBinding*.
 > 
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 
 After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
 
 > [!IMPORTANT]
-> If your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
+> If your AKS cluster uses Kubernetes RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays Kubernetes RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 > 
 > To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command. The following example shows how to create a sample binding, however, this sample binding does not apply any additional authentication components and may lead to insecure use. The Kubernetes dashboard is open to anyone with access to the URL. Do not expose the Kubernetes dashboard publicly.
 >
@@ -124,7 +124,7 @@ Hem Azure AD hem de Azure dışı AD özellikli kümeler için bir kubeconfig il
 
 **Belirteç kullanma**
 
-1. **Azure DıŞı ad özellikli küme**için, `kubectl config view` kümenizin kullanıcı hesabıyla ilişkili belirteci çalıştırın ve kopyalayın.
+1. **Azure DıŞı ad özellikli küme** için, `kubectl config view` kümenizin kullanıcı hesabıyla ilişkili belirteci çalıştırın ve kopyalayın.
 1. Oturum açma sırasında belirteç seçeneğine yapıştırın.    
 1. Şuna tıklayın: `Sign In`
 
@@ -149,15 +149,15 @@ Kubernetes panosunun yönetim görevlerinin karmaşıklığını ne şekilde aza
 Bir uygulama oluşturmak için aşağıdaki adımları izleyin:
 
 1. Sağ üst penceredeki **Oluştur** düğmesini seçin.
-1. Grafik Sihirbazı 'nı kullanmak için, **bir uygulama oluşturmayı**seçin.
+1. Grafik Sihirbazı 'nı kullanmak için, **bir uygulama oluşturmayı** seçin.
 1. Dağıtım için *NGINX* gibi bir ad sağlayın
 1. Kullanılacak kapsayıcı resminin adını girin, örneğin *NGINX: 1.15.5*
-1. Web trafiği için 80 bağlantı noktasını kullanıma sunmak üzere bir Kubernetes hizmeti oluşturursunuz. **Hizmet**altında, **dış**' i seçin ve hem bağlantı noktası hem de hedef bağlantı noktası için **80** girin.
+1. Web trafiği için 80 bağlantı noktasını kullanıma sunmak üzere bir Kubernetes hizmeti oluşturursunuz. **Hizmet** altında, **dış**' i seçin ve hem bağlantı noktası hem de hedef bağlantı noktası için **80** girin.
 1. Hazırlandığınızda, uygulamayı oluşturmak için **Dağıt** ' ı seçin.
 
 ![Kubernetes Web panosunda uygulama dağıtma](./media/kubernetes-dashboard/create-app.png)
 
-Kubernetes hizmetine genel bir dış IP adresinin atanması için bir dakika veya iki zaman alır. Sol boyuttaki **bulma ve yük dengeleme** altında **Hizmetler**' i seçin. Aşağıdaki örnekte gösterildiği gibi, uygulamanızın hizmeti *dış uç noktalar*dahil olmak üzere listelenir:
+Kubernetes hizmetine genel bir dış IP adresinin atanması için bir dakika veya iki zaman alır. Sol boyuttaki **bulma ve yük dengeleme** altında **Hizmetler**' i seçin. Aşağıdaki örnekte gösterildiği gibi, uygulamanızın hizmeti *dış uç noktalar* dahil olmak üzere listelenir:
 
 ![Hizmet ve uç noktaların listesini görüntüle](./media/kubernetes-dashboard/view-services.png)
 

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: a89ff56eb9e0f0a29b5b1fed7543c5f718425e51
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a56922c972efeb21c188413522bd05f83b74ca12
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326089"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681831"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services ile kendi anahtarınızı getirin (müşteri tarafından yönetilen anahtarlar)
 
@@ -37,9 +37,11 @@ Anahtar adı ve anahtar sürümü ya da yalnızca anahtar adı belirtebilirsiniz
 > [!WARNING]
 > Media Services müşteri anahtarına erişimi izler. Müşteri anahtarı erişilemez hale gelirse (örneğin, anahtar silinmişse veya Key Vault silinmişse veya erişim izni kaldırılmışsa), Media Services hesabı müşteri anahtarına erişilemez duruma geçirecek (hesabı etkin bir şekilde devre dışı bırakır). Ancak, hesap bu durumda silinebilir. Yalnızca hesap al, LISTELE ve SIL işlemleri desteklenir; Hesap anahtarına erişim geri yüklenene kadar diğer tüm istekler (kodlama, akış vb.) başarısız olur.
 
-## <a name="tutorial"></a>Öğretici
-Postman ve Azure REST API ile müşteri tarafından yönetilen anahtarları ayarlama ve kullanma hakkında bilgi edinmek için [Media Services ile müşteri tarafından yönetilen anahtarları kullanın veya kendi anahtarınızı (BYOK) alın](tutorial-byok.md) .
+## <a name="tutorials"></a>Öğreticiler
+
+- [Azure portal, müşteri tarafından yönetilen anahtarları veya BYOK 'u Media Services ile birlikte kullanmak için kullanın](tutorial-byok-portal.md)
+- [Media Services REST API ile müşteri tarafından yönetilen anahtarları veya BYOK kullanın](tutorial-byok-postman.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: müşteri tarafından yönetilen anahtarları kullanın veya Media Services ile kendi anahtarınızı (BYOK) getirin](tutorial-byok.md)
+[Media Services dinamik şifreleme ile içeriğinizi koruyun](content-protection-overview.md)

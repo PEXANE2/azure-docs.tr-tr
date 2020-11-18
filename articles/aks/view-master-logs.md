@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de Kubernetes ana düğümü için
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 82570606aee294aafe7da5ffaf581b11b6775073
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a0e58174c38ec19d42f524b9bc94247e05296467
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899927"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682239"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme
 
@@ -17,7 +17,7 @@ Azure Kubernetes hizmeti (AKS) ile, *kuas-apiserver* ve *kuin-Controller-Manager
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, Azure hesabınızda çalışan mevcut bir AKS kümesi gerekir. Zaten bir AKS kümeniz yoksa, [Azure CLI][cli-quickstart] veya [Azure Portal][portal-quickstart]kullanarak bir tane oluşturun. Azure Izleyici günlükleri hem RBAC hem de RBAC olmayan AKS kümeleriyle birlikte kullanılabilir.
+Bu makalede, Azure hesabınızda çalışan mevcut bir AKS kümesi gerekir. Zaten bir AKS kümeniz yoksa, [Azure CLI][cli-quickstart] veya [Azure Portal][portal-quickstart]kullanarak bir tane oluşturun. Azure Izleyici günlükleri hem Kubernetes RBAC, Azure RBAC hem de RBAC özellikli olmayan AKS kümeleriyle birlikte çalışmaktadır.
 
 ## <a name="enable-resource-logs"></a>Kaynak günlüklerini etkinleştirme
 
@@ -26,20 +26,20 @@ Azure Izleyici günlükleri, birden fazla kaynaktaki verileri toplayıp gözden 
 Azure Izleyici günlükleri Azure portal etkinleştirilir ve yönetilir. AKS kümenizdeki Kubernetes ana bileşenleri için günlük toplamayı etkinleştirmek üzere, Azure portal bir Web tarayıcısında açın ve aşağıdaki adımları uygulayın:
 
 1. AıKS kümeniz için kaynak grubunu ( *Myresourcegroup* gibi) seçin. *MC_myResourceGroup_myAKSCluster_eastus* gibi bireysel aks kümesi kaynaklarınızı içeren kaynak grubunu seçmeyin.
-1. Sol taraftaki **Tanılama ayarları** ' nı seçin.
+1. Sol taraftaki **Tanılama ayarları**' nı seçin.
 1. *Myakscluster* gibi aks kümenizi seçin ve ardından **Tanılama ayarı eklemeyi** seçin.
 1. *Myaksclusterlogs* gibi bir ad girin ve **Log Analytics gönder** seçeneğini belirleyin.
 1. Mevcut bir çalışma alanını seçin veya yenisini oluşturun. Bir çalışma alanı oluşturursanız, bir çalışma alanı adı, bir kaynak grubu ve bir konum sağlayın.
-1. Kullanılabilir Günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Bu örnekte, *kuin-Audit* ve *Kuto-Audit-admin* günlüklerini etkinleştirin. Ortak Günlükler *kuin-apiserver* , *kuin-Controller-Manager* ve *kuin-Scheduler* ' ı kapsar. Toplama Log Analytics çalışma alanları etkinleştirildikten sonra, toplanan günlükleri döndürebilir ve değiştirebilirsiniz.
+1. Kullanılabilir Günlükler listesinde, etkinleştirmek istediğiniz günlükleri seçin. Bu örnekte, *kuin-Audit* ve *Kuto-Audit-admin* günlüklerini etkinleştirin. Ortak Günlükler *kuin-apiserver*, *kuin-Controller-Manager* ve *kuin-Scheduler*' ı kapsar. Toplama Log Analytics çalışma alanları etkinleştirildikten sonra, toplanan günlükleri döndürebilir ve değiştirebilirsiniz.
 1. Hazırsanız, seçili günlüklerin toplanmasını etkinleştirmek için **Kaydet** ' i seçin.
 
 ## <a name="log-categories"></a>Günlük kategorileri
 
 Kubernetes tarafından yazılan girdilerin yanı sıra, projenizin denetim günlükleri de AKS girdilerini de içermelidir.
 
-Denetim günlükleri üç kategoriye kaydedilir: *kual-Audit* , *kuin-Audit-admin* ve *Guard* .
+Denetim günlükleri üç kategoriye kaydedilir: *kual-Audit*, *kuin-Audit-admin* ve *Guard*.
 
-- *Kuin-Audit* kategorisi, *Get* , *list* , *Create* , *Update* , *Delete* , *Patch* ve *Post* gibi her denetim olayının tüm denetim günlüğü verilerini içerir.
+- *Kuin-Audit* kategorisi, *Get*, *list*, *Create*, *Update*, *Delete*, *Patch* ve *Post* gibi her denetim olayının tüm denetim günlüğü verilerini içerir.
 - *Kuin-Audit-admin* kategorisi, *kuin-Audit* günlük kategorisinin bir alt kümesidir. *Kuto-Audit-admin* , günlükteki *Get* ve *list* denetim olaylarını dışlayarak günlük sayısını önemli ölçüde azaltır.
 - *Koruma* kategorisi, Azure AD ve Azure RBAC denetimleri ile yönetilir. Yönetilen Azure AD için: içindeki belirteci, Kullanıcı bilgilerini dışarı. Azure RBAC için: içindeki ve giden erişim gözden geçirmeleri.
 
@@ -84,7 +84,7 @@ Tanılama günlüklerinin etkinleştirilmesi ve görünmesi 10 dakikaya kadar s�
 
 Azure portal, AKS kümenize gidin ve sol taraftaki **Günlükler** ' i seçin. Görüntülenirse, *örnek sorgular* penceresini kapatın.
 
-Sol taraftaki **Günlükler** ' i seçin. *Kuin-denetim* günlüklerini görüntülemek için metin kutusuna aşağıdaki sorguyu girin:
+Sol taraftaki **Günlükler**' i seçin. *Kuin-denetim* günlüklerini görüntülemek için metin kutusuna aşağıdaki sorguyu girin:
 
 ```
 AzureDiagnostics

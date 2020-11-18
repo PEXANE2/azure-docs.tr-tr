@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7c6de17e4ed4f5666554908e9b13fb9e299b027a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311755"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682069"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
@@ -64,7 +64,7 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 
 1. [ **Azure SYNAPSE Web Kullanıcı arabirimine** gidin](https://web.azuresynapse.net)
 2. **Manage**   >  **Güvenlik**  >  **erişimi denetimini** Yönet 'e gidin
-3. **Yönetici Ekle** ' yi seçin ve`Synapse_WORKSPACENAME_Admins`
+3. **Yönetici Ekle**' yi seçin ve`Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. Adım: çalışma alanı için SQL yönetici erişimini yapılandırma
 
@@ -74,7 +74,7 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 4. **Yönetici ayarla** ' yı seçin
 5. `Synapse_WORKSPACENAME_Admins` seçeneğini belirleyin
 6. **Seç ' i** seçin
-7. **Kaydet** 'i seçin
+7. **Kaydet**’i seçin
 
 > [!NOTE]
 > ÇALıŞMAALANıADı-bu bölümü gerçek çalışma alanı adınızla değiştirmelisiniz.
@@ -147,7 +147,7 @@ CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="dedicated-sql-pool"></a>Adanmış SQL havuzu
+### <a name="dedicated-sql-pool"></a>Ayrılmış SQL havuzu
 
 Bir kullanıcıya **tek** bir SQL veritabanına erişim izni vermek için şu adımları izleyin:
 

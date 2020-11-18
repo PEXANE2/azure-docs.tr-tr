@@ -1,6 +1,6 @@
 ---
 title: Bozuk bir Azure oto Yönet hesabını onarma
-description: Bozuk bir oto Yönet hesabını nasıl düzelteceğinizi öğrenin
+description: Kısa süre önce yeni bir kiracıya bir oto Yönet hesabı içeren bir abonelik taşıdıysanız, yeniden yapılandırmanız gerekir. Bu makalede, nasıl yapılacağını öğreneceksiniz.
 author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -8,24 +8,24 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: ad54b37da8a4945162b507232f33083890ec1fff
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558014"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681848"
 ---
-# <a name="repair-a-broken-automanage-account"></a>Bozuk bir oto Yönet hesabını onarın
-[Otomatikmanage hesabı](./automanage-virtual-machines.md#automanage-account) , güvenlik bağlamına veya otomatik işlemlerin oluştuğu kimliğe sahiptir. Kısa bir süre önce yeni bir kiracıya bir oto Yönet hesabı içeren bir abonelik taşıdıysanız, bu hesabınızı yeniden yapılandırmanız gerekir. Oto Yönet hesabınızı yeniden yapılandırmak için kimlik türünü sıfırlamanız ve hesap için uygun rolleri atamanız gerekir.
+# <a name="repair-an-automanage-account"></a>Bir oto Yönet hesabını onarma
+[Azure otomatik Yönet hesabınız](./automanage-virtual-machines.md#automanage-account) , otomatik işlemlerin oluştuğu güvenlik bağlamına veya kimliğe sahiptir. Kısa süre önce yeni bir kiracıya bir oto Yönet hesabı içeren bir abonelik taşıdıysanız, hesabı yeniden yapılandırmanız gerekir. Yeniden yapılandırmak için kimlik türünü sıfırlamanız ve hesap için uygun rolleri atamanız gerekir.
 
-## <a name="step-1-reset-automanage-account-identity-type"></a>Adım 1: sıfırlama hesabı kimlik türünü Sıfırla
-Aşağıdaki Azure Resource Manager (ARM) şablonuyla, hesap kimliği türünü oto Yönet ' i sıfırlayın. Dosyayı yerel olarak `armdeploy.json` veya benzer şekilde kaydedin. Hesap adı ve konumunuzu, ARM şablonunda gerekli parametreler olduğundan, bu adı göz önüne alın.
+## <a name="step-1-reset-the-automanage-account-identity-type"></a>1. Adım: oto Yönet hesabı kimlik türünü sıfırlayın
+Aşağıdaki Azure Resource Manager (ARM) şablonunu kullanarak, hesap kimliği türünü, oto Yönet ' i sıfırlayın. Dosyayı armdeploy.jsolarak yerel olarak veya benzer bir adla kaydedin. ARM şablonunda gerekli parametreler olduklarından, hesap adını ve konumunu, sizin için bir daha göz önüne alın.
 
-1. Aşağıdaki şablonla yeni bir ARM dağıtımı oluşturun ve bunu kullanın `identityType = None`
-    * Bunu kullanarak Azure CLı ile yapabilirsiniz `az deployment sub create` . Buradaki komutu hakkında daha fazla bilgi edinin `az deployment sub` . [here](https://docs.microsoft.com/cli/azure/deployment/sub)
-    * Bunu ayrıca modülünü kullanarak PowerShell ile de yapabilirsiniz `New-AzDeployment` . Modül hakkında buradan daha fazla bilgi edinin `New AzDeployment` . [here](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)
+1. Aşağıdaki şablonu kullanarak bir Kaynak Yöneticisi dağıtımı oluşturun. `identityType = None` komutunu kullanın.
+    * Kullanarak Azure CLı 'de dağıtımı oluşturabilirsiniz `az deployment sub create` . Daha fazla bilgi için bkz. [az Deployment Sub](https://docs.microsoft.com/cli/azure/deployment/sub).
+    * PowerShell 'de, modülünü kullanarak dağıtım oluşturabilirsiniz `New-AzDeployment` . Daha fazla bilgi için bkz. [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment).
 
-1. Aynı ARM şablonunu bir kez daha çalıştırın `identityType = SystemAssigned`
+1. Aynı ARM şablonunu ile yeniden çalıştırın `identityType = SystemAssigned` .
 
 ```json
 {
@@ -59,24 +59,24 @@ Aşağıdaki Azure Resource Manager (ARM) şablonuyla, hesap kimliği türünü 
 ```
 
 ## <a name="step-2-assign-appropriate-roles-for-the-automanage-account"></a>2. Adım: oto Yönet hesabı için uygun rolleri atama
-Oto Yönet hesabı, sizin için, oto tarafından yönetilecek VM 'Leri içeren abonelikte katkıda bulunan ve kaynak Ilkesi katılımcısı rollerinin yapılmasını gerektirir. Azure portal, ARM şablonları veya Azure CLı kullanarak bu rolleri atayabilirsiniz.
+Oto Yönet hesabı, bir abonelik üzerinde, oto tarafından yönetilecek VM 'Leri içeren katkıda bulunan ve kaynak Ilkesi katılımcısı rollerinin yapılmasını gerektirir. Azure portal, ARM şablonları veya Azure CLı kullanarak bu rolleri atayabilirsiniz.
 
-ARM şablonu veya Azure CLı kullanıyorsanız, oto Yönet hesabınızın asıl KIMLIĞI (nesne KIMLIĞI olarak da bilinir) gerekir (Azure portal kullanıyorsanız bu gerekli değildir). Aşağıdaki yöntemleri kullanarak, sizin için, sizin, sizin için bir sonraki
+ARM şablonu veya Azure CLı kullanıyorsanız, oto Yönet hesabınızın asıl KIMLIĞI (nesne KIMLIĞI olarak da bilinir) gerekir. (Azure portal kullanıyorsanız KIMLIĞE ihtiyacınız yoktur.) Aşağıdaki yöntemleri kullanarak bu KIMLIĞI bulabilirsiniz:
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp): komutunu kullanın `az ad sp list --display-name <name of your Automanage Account>` .
 
-- Azure portal: **Azure Active Directory** gidin ve hesap adına göre oto Yönet hesabınızı arayın. **Kurumsal uygulamalar** altında, görüntülendiğinde, hesap adını oto Yönet ' i seçin.
+- Azure portal: **Azure Active Directory** gidin ve hesap adına göre oto Yönet hesabınızı arayın. **Kurumsal uygulamalar**' ın altında, görüntülendiğinde, hesap adını oto Yönet ' i seçin.
 
-### <a name="azure-portal"></a>Azure portal
-1. **Abonelikler** ' in altında, oto tarafından yönetilen sanal makinelerinizi içeren aboneliğe gidin.
+### <a name="azure-portal"></a>Azure portalı
+1. **Abonelikler**' in altında, oto tarafından yönetilen sanal makinelerinizi içeren aboneliğe gidin.
 1. **Access Control (IAM)** sayfasına gidin.
-1. **Rol atamaları Ekle** ' ye tıklayın.
-1. **Katkıda bulunan** rolünü seçin ve oto Yönet hesabınızın adını yazın.
-1. **Kaydet** ’e basın.
-1. Bu kez **kaynak Ilkesi katılımcısı** rolüyle 3-5 arasındaki adımları yineleyin.
+1. **Rol atamaları Ekle**' yi seçin.
+1. **Katkıda bulunan** rolünü seçin ve tekrar Yönet hesabınızın adını girin.
+1. **Kaydet**’i seçin.
+1. Bu kez **kaynak Ilkesi katılımcısı** rolüyle 3 ile 5 arasındaki adımları yineleyin.
 
 ### <a name="arm-template"></a>ARM şablonu
-Aşağıdaki ARM şablonunu çalıştırın. Ana KIMLIĞI almak için, kendi hesabınızın asıl KIMLIĞINE sahip olmanız gerekir. İstendiğinde girin.
+Aşağıdaki ARM şablonunu çalıştırın. Oto Yönet hesabınızın asıl KIMLIĞI gerekir. Bu bölümün başlangıcında yer alır. İstendiğinde KIMLIĞI girin.
 
 ```json
 {
@@ -117,14 +117,14 @@ Aşağıdaki ARM şablonunu çalıştırın. Ana KIMLIĞI almak için, kendi hes
 }
 ```
 
-### <a name="azure-cli"></a>Azure CLI
-Aşağıdaki komutları çalıştırın:
+### <a name="azure-cli"></a>Azure CLI’si
+Şu komutları çalıştırın:
 
 ```azurecli
-az role assignment create --assignee-object-id <your Automanage Account's object id> --role "Contributor" --scope /subscriptions/<your subscription id>
+az role assignment create --assignee-object-id <your Automanage Account Object ID> --role "Contributor" --scope /subscriptions/<your subscription ID>
 
-az role assignment create --assignee-object-id <your Automanage Account's object id> --role "Resource Policy Contributor" --scope /subscriptions/<your subscription id>
+az role assignment create --assignee-object-id <your Automanage Account Object ID> --role "Resource Policy Contributor" --scope /subscriptions/<your subscription ID>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure oto yönetimi hakkında [buradan](./automanage-virtual-machines.md)daha fazla bilgi edinin.
+[Azure oto yönetimi hakkında daha fazla bilgi edinin](./automanage-virtual-machines.md)

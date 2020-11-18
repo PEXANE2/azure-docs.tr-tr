@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a0903a1da02b1f187e6f12e35fcb4bc05cd82939
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4da232569a0f490b7fd6c2e50b81be6508ac5933
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516790"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682103"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak sanal makinelerin yük dengelemesi için genel yük dengeleyici oluşturma
 
@@ -467,7 +467,7 @@ Giden bağlantı için tek bir IP oluşturmak için [az Network public-ip Create
 
 Giden bağlantı için genel bir IP öneki oluşturmak için [az Network public-ip Create oluştur](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) kullanın.
 
-Giden NAT ve giden bağlantıların ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [birden çok IP adresi Ile genişleme gıden NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scale).
+Giden NAT ve giden bağlantıların ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [birden çok IP adresi Ile genişleme gıden NAT](load-balancer-outbound-connections.md).
 
 #### <a name="public-ip"></a>Genel IP
 
@@ -571,7 +571,7 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
 * Yük dengeleyici **Myloadbalancer** ile ilişkili
 * Ön uç **myFrontEndOutbound** ile ilişkili.
 * **Tüm** protokol.
-* **15** ' in boşta kalma süresi.
+* **15**' in boşta kalma süresi.
 * **10000** giden bağlantı noktası.
 * Arka uç havuzuyla ilişkili **Mybackendpooloutbound**.
 
