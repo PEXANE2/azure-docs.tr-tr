@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3113216b2d8a7572bcb864819a379de6823ee444
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 90aafad2a17b9535bde29f811e630112ccbd02e3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409884"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696107"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -156,9 +156,9 @@ Güvenlik odaklı şirketler, çalışanların ihtiyaç duydukları tam izinleri
 
 ![Güvenli kaynak erişimi](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz. Azure aboneliğinizde veya kaynaklarında herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. Örneğin, bir çalışanın bir abonelikteki sanal makineleri yönetmesine izin vermek için RBAC kullanın, diğer bir deyişle SQL veritabanlarını aynı abonelik içinde yönetebilir.
+Azure RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz. Azure aboneliğinizde veya kaynaklarında herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz. Örneğin, bir çalışanın bir abonelikteki sanal makineleri yönetmesine izin vermek için Azure RBAC kullanın, diğer bir deyişle SQL veritabanlarını aynı abonelik içinde yönetebilir.
 
-![Azure 'da güvenli kaynak erişimi (RBAC)](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
+![Azure RBAC kullanarak güvenli kaynak erişimi](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
 ## <a name="data-security-and-encryption"></a>Veri güvenliği ve şifreleme
 
@@ -386,13 +386,13 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 Şunları izler:
 
-- **İstek oranları, yanıt süreleri ve hata oranları** : Hangi sayfaların günün hangi saatlerinde popüler olduğunu ve kullanıcılarınızın konumunu öğrenin. En iyi performansı hangi sayfaların gösterdiğini görün. Daha fazla istek olduğunda yanıt süreleriniz ve hata oranlarınız yükseliyorsa bir kaynak atama sorununuz olabilir.
+- **İstek oranları, yanıt süreleri ve hata oranları**: Hangi sayfaların günün hangi saatlerinde popüler olduğunu ve kullanıcılarınızın konumunu öğrenin. En iyi performansı hangi sayfaların gösterdiğini görün. Daha fazla istek olduğunda yanıt süreleriniz ve hata oranlarınız yükseliyorsa bir kaynak atama sorununuz olabilir.
 
-- **Bağımlılık oranları, yanıt süreleri ve hata oranları** : Dış hizmetlerin sizi yavaşlatıp yavaşlatmadığını öğrenin.
+- **Bağımlılık oranları, yanıt süreleri ve hata oranları**: Dış hizmetlerin sizi yavaşlatıp yavaşlatmadığını öğrenin.
 
 - **Özel durumlar** -toplu istatistikleri analiz edin veya belirli örnekleri seçip yığın izlemenin ve ilgili isteklerin detayına gidin. Hem sunucu hem de tarayıcı özel durumları raporlanır.
 
-- **Sayfa görüntüleme sayısı ve yükleme performansı** : Kullanıcılarınızın tarayıcıları tarafından gerçekleştirilir.
+- **Sayfa görüntüleme sayısı ve yükleme performansı**: Kullanıcılarınızın tarayıcıları tarafından gerçekleştirilir.
 
 - **Web sayfalarından alınan Ajax çağrıları** -ücretler, yanıt süreleri ve hata oranları.
 
@@ -402,7 +402,7 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 - Docker veya Azure’dan **konak tanılama**.
 
-- Uygulamanızdan **tanılama izleme günlükleri** : İzleme olayları ile istekler arasında bağıntı kurmanıza imkan tanır.
+- Uygulamanızdan **tanılama izleme günlükleri**: İzleme olayları ile istekler arasında bağıntı kurmanıza imkan tanır.
 
 - Satılan öğeler veya oyun kazanıldı gibi iş olaylarını izlemek için istemci veya sunucu kodunda yazdığınız **özel olaylar ve ölçümler** .
 
@@ -422,7 +422,7 @@ Resource Manager çeşitli avantajlar sunar:
 
 - Kaynaklar arasında bağımlılıkları tanımlayabilir, bu nedenle doğru sırada dağıtılır.
 
-- Rol Tabanlı Erişim Denetimi (RBAC) yönetim platformuyla doğrudan tümleşik olduğu için kaynak grubunuzdaki tüm hizmetlere erişim denetimi uygulayabilirsiniz.
+- Azure rol tabanlı erişim denetimi (Azure RBAC), yönetim platformuyla yerel olarak tümleştirildiği için, kaynak grubunuzdaki tüm hizmetlere erişim denetimi uygulayabilirsiniz.
 
 - Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklarınıza etiketler ekleyebilirsiniz.
 

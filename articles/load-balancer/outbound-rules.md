@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 645be03df3c8ee2a1451b4bfea0327542c29aa38
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 98bc962c0c57716cee9339056b0793bfe4bcb0ea
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683123"
+ms.locfileid: "94694737"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Giden kuralları Azure Load Balancer
 
@@ -60,7 +60,7 @@ Bir ön uç tarafından sağlanan her ek IP adresi, yük dengeleyici için SNAT 
 
 Büyük ölçekli senaryolar planlamak için birden çok IP adresi kullanın. [SNAT tükenmesi](troubleshoot-outbound-connection.md#snatexhaust)azaltmak için giden kurallarını kullanın. 
 
-[Genel BIR IP önekini](https://aka.ms/lbpublicipprefix) doğrudan giden bir kuralla de kullanabilirsiniz. 
+[Genel BIR IP önekini](./load-balancer-outbound-connections.md#outboundrules) doğrudan giden bir kuralla de kullanabilirsiniz. 
 
 Genel bir IP öneki, dağıtımınızın ölçeklendirilmesini arttırır. Ön ek, Azure kaynaklarınızdan kaynaklanan akışların izin verilenler listesine eklenebilir. Yük dengeleyicide bir ön uç IP yapılandırması genel IP adresi ön ekine başvuracak şekilde yapılandırılabilir.  
 
@@ -74,7 +74,7 @@ Giden kuralları, giden akış boşta kalma zaman aşımını denetlemek ve uygu
 
 Yük dengeleyicinin varsayılan davranışı, giden boşta kalma zaman aşımına ulaşıldığında akışı sessizce düşürülemiyor. `enableTCPReset`Parametresi, öngörülebilir bir uygulama davranışı ve denetimi sunar. Parametresi, giden boşta kalma zaman aşımı süresi dolduğunda çift yönlü TCP sıfırlaması (TCP RST) gönderilmesini belirler. 
 
-Bölge kullanılabilirliği dahil Ayrıntılar için [boşta kalma zaman aşımı durumunda TCP sıfırlamayı](https://aka.ms/lbtcpreset) gözden geçirin.
+Bölge kullanılabilirliği dahil Ayrıntılar için [boşta kalma zaman aşımı durumunda TCP sıfırlamayı](./load-balancer-tcp-reset.md) gözden geçirin.
 
 ## <a name="securing-and-controlling-outbound-connectivity-explicitly"></a><a name="preventoutbound"></a>Giden bağlantıyı açıkça güvenli hale getirme ve denetleme
 
@@ -91,9 +91,9 @@ Gelen için kullanılan bir IP adresini yeniden tanımlamayı denerseniz, giden 
 >[!IMPORTANT]
 > Bu parametreyi true olarak ayarlarsanız ve giden bağlantıyı tanımlamak için bir giden kuralı yoksa, sanal makinenizin giden bağlantısı olmayacaktır.  VM 'nizin veya uygulamanızın bazı işlemleri giden bağlantıya sahip olmaya bağlı olabilir. Senaryonuzun bağımlılıklarını anladığınızdan ve bu değişikliği yapmanın etkileri olduğuna emin olun.
 
-Bazen bir VM 'nin giden akış oluşturması istenmeyen bir şekilde yapılır. Hangi hedeflerin giden akışları alacağını veya hangi hedeflerin gelen akışlara başlayacağını yönetmek için bir gereksinim olabilir. VM 'nin ulaştığı hedefleri yönetmek için [ağ güvenlik gruplarını](../virtual-network/security-overview.md) kullanın. Hangi ortak hedeflerin gelen akışları başlattığını yönetmek için NSG 'leri kullanın.
+Bazen bir VM 'nin giden akış oluşturması istenmeyen bir şekilde yapılır. Hangi hedeflerin giden akışları alacağını veya hangi hedeflerin gelen akışlara başlayacağını yönetmek için bir gereksinim olabilir. VM 'nin ulaştığı hedefleri yönetmek için [ağ güvenlik gruplarını](../virtual-network/network-security-groups-overview.md) kullanın. Hangi ortak hedeflerin gelen akışları başlattığını yönetmek için NSG 'leri kullanın.
 
-Yük dengeli bir VM 'ye NSG uyguladığınızda, [hizmet etiketlerine](../virtual-network/security-overview.md#service-tags) ve [varsayılan güvenlik kurallarına](../virtual-network/security-overview.md#default-security-rules)dikkat edin. 
+Yük dengeli bir VM 'ye NSG uyguladığınızda, [hizmet etiketlerine](../virtual-network/network-security-groups-overview.md#service-tags) ve [varsayılan güvenlik kurallarına](../virtual-network/network-security-groups-overview.md#default-security-rules)dikkat edin. 
 
 VM 'nin Azure Load Balancer durum araştırma isteklerini almasına emin olun.
 
@@ -159,7 +159,7 @@ Yük dengeleyici, [SNAT](load-balancer-outbound-connections.md)bağlantı noktal
 Genel IP adresi sayısına göre kullanılabilir olandan daha fazla [SNAT](load-balancer-outbound-connections.md)bağlantı noktası vermenizi denerseniz, yapılandırma işlemi reddedilir. Örneğin, VM başına 10.000 bağlantı noktası verirseniz ve arka uç havuzundaki yedi VM tek bir genel IP paylaşıyorsa, yapılandırma reddedilir. 10.000 ile çarpılan yedi, 64.000 bağlantı noktası sınırını aşıyor. Senaryoyu etkinleştirmek için giden kuralının ön ucunda daha fazla genel IP adresi ekleyin. 
 
 
-Bağlantı noktası sayısı için 0 belirterek [varsayılan bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) dönün. İlk 50 VM örnekleri 1024 bağlantı noktalarını alacak, 51-100 sanal makine örnekleri en fazla örneğe kadar 512. Varsayılan SNAT bağlantı noktası ayırma hakkında daha fazla bilgi için bkz. [SNAT bağlantı noktaları ayırma tablosu](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Bağlantı noktası sayısı için 0 belirterek [varsayılan bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) dönün. İlk 50 VM örnekleri 1024 bağlantı noktalarını alacak, 51-100 sanal makine örnekleri en fazla örneğe kadar 512. Varsayılan SNAT bağlantı noktası ayırma hakkında daha fazla bilgi için bkz. [SNAT bağlantı noktaları ayırma tablosu](./load-balancer-outbound-connections.md#preallocatedports).
 
 
 ### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>Senaryo 3: yalnızca giden trafiği etkinleştir
@@ -211,7 +211,7 @@ Bu senaryo için: Azure Load Balancer giden kuralları ve sanal ağ NAT, bir san
 İç standart yük dengeleyici, örnek düzeyi genel IP 'Ler veya sanal ağ NAT aracılığıyla açıkça bildirildiği veya arka uç havuz üyelerini yalnızca giden bir yük dengeleyici yapılandırmasıyla ilişkilendirerek, giden bağlantı kullanılamıyor. 
 
 
-Daha fazla bilgi için bkz. [yalnızca giden yük dengeleyici yapılandırması](https://docs.microsoft.com/azure/load-balancer/egress-only).
+Daha fazla bilgi için bkz. [yalnızca giden yük dengeleyici yapılandırması](./egress-only.md).
 
 
 
@@ -253,4 +253,3 @@ Yalnızca gelen NAT kuralları kullanıldığında, giden NAT sağlanmaz.
 
 - [Azure Standart Load Balancer](load-balancer-overview.md) hakkında daha fazla bilgi
 - [Azure Load Balancer hakkında sık sorulan sorularımızı](load-balancer-faqs.md) inceleyin
-

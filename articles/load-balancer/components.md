@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: d2cd05251e7bf1a0b0ebcd24e6d3d0202f277969
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf7a35e8cedbe62aafb29aa6d9dc8fcb42e90b2e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685520"
+ms.locfileid: "94693775"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer bileşenleri
 
@@ -130,7 +130,7 @@ Temel yük dengeleyici giden kuralları desteklemez.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Load Balancer [sınırları](https://aka.ms/lblimits) hakkında bilgi edinin 
+- Load Balancer [sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md) hakkında bilgi edinin 
 - Yük dengeleyici, belirli TCP veya UDP protokolleri için yük dengeleme ve bağlantı noktası iletme sağlar. Yük Dengeleme kuralları ve gelen NAT kuralları TCP ve UDP 'yi destekler, ancak ıCMP dahil diğer IP protokollerini desteklemez.
 - Bir arka uç VM 'den bir iç Load Balancer ön uca giden akış başarısız olur.
 - Yük dengeleyici kuralı iki sanal ağı yayılamaz.  Ön uçların ve arka uç örneklerinin aynı sanal ağda bulunması gerekir.  
@@ -140,12 +140,12 @@ Temel yük dengeleyici giden kuralları desteklemez.
 
 - Load Balancer kullanmaya başlamak için bkz. [genel standart Load Balancer oluşturma](quickstart-load-balancer-standard-public-portal.md) .
 - [Azure Load Balancer](load-balancer-overview.md)hakkında daha fazla bilgi edinin.
-- [Genel IP adresi](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address) hakkında bilgi edinin
+- [Genel IP adresi](../virtual-network/virtual-network-public-ip-address.md) hakkında bilgi edinin
 - [Özel IP adresi](../virtual-network/private-ip-addresses.md) hakkında bilgi edinin
 - [Standart Load Balancer ve kullanılabilirlik alanları](load-balancer-standard-availability-zones.md)kullanma hakkında bilgi edinin.
 - [Standart Load Balancer tanılama](load-balancer-standard-diagnostics.md)hakkında bilgi edinin.
 - [Boşta durumunda TCP sıfırlaması](load-balancer-tcp-reset.md)hakkında bilgi edinin.
 - [Ha bağlantı noktaları Yük Dengeleme kurallarıyla standart Load Balancer](load-balancer-ha-ports-overview.md)hakkında bilgi edinin.
-- [Ağ güvenlik grupları](../virtual-network/security-overview.md)hakkında daha fazla bilgi edinin.
-- [Yük dengeleyici sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)hakkında daha fazla bilgi edinin.
-- [Bağlantı noktası iletmeyi](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)kullanma hakkında bilgi edinin.
+- [Ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md)hakkında daha fazla bilgi edinin.
+- [Yük dengeleyici sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)hakkında daha fazla bilgi edinin.
+- [Bağlantı noktası iletmeyi](./tutorial-load-balancer-port-forwarding-portal.md)kullanma hakkında bilgi edinin.

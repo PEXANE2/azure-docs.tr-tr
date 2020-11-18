@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f91c9c0f401a455543b12af81eed48bd1a3349bd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044964"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696447"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Standard Load Balancer ile bir kullanılabilirlik alanındaki sanal makinelerde yük dengeleme
 
@@ -37,7 +37,7 @@ Bu öğreticide Azure portal kullanılarak genel IP standart adresine sahip bir 
 
 Standard Load Balancer ile kullanılabilirlik alanlarını kullanma hakkında daha fazla bilgi için [Standard Load Balancer ve Kullanılabilirlik Alanları](load-balancer-standard-availability-zones.md).
 
-İsterseniz bu öğreticiyi tamamlamak için [Azure CLI](load-balancer-standard-public-zonal-cli.md) kullanabilirsiniz.
+İsterseniz bu öğreticiyi tamamlamak için [Azure CLI](./quickstart-load-balancer-standard-public-cli.md) kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -59,7 +59,7 @@ Standard Load Balancer yalnızca standart genel IP adresini destekler. Yük deng
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegroupzlb* yazın.|
     | Ad                   | *myLoadBalancer*                                   |
-    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
+    | Region         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
@@ -172,7 +172,7 @@ Bu bölümde, arka uç adres havuzu ve durum araştırması için yük dengeleyi
 
 ### <a name="create-a-backend-address-pool"></a>Arka uç adres havuzu oluşturma
 
-Trafiği sanal makinelere dağıtmak için bir arka uç adres havuzu, yük dengeleyiciye bağlı sanal ağ arabirimi kartlarının IP adreslerini içerir. **VM1** ve **VM2**dahil olmak üzere **mybackendpool** arka uç adres havuzunu oluşturun.
+Trafiği sanal makinelere dağıtmak için bir arka uç adres havuzu, yük dengeleyiciye bağlı sanal ağ arabirimi kartlarının IP adreslerini içerir. **VM1** ve **VM2** dahil olmak üzere **mybackendpool** arka uç adres havuzunu oluşturun.
 
 1. Sol taraftaki menüden **Tüm kaynaklar**’ı seçin. Ardından kaynaklar listesinden **myLoadBalancer**’ı seçin.
 2. **Ayarlar**’ın altında **Arka Uç Havuzları**’nı seçin. Ardından **Ekle**'yi seçin.

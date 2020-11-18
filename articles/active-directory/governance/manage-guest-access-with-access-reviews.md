@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb9bc252c733f3445cbf8b27281c2f455d5f2f36
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783204"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696974"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle konuk erişimini yönetme
 
@@ -41,7 +41,12 @@ Daha fazla bilgi için [Lisans gereksinimleri](access-reviews-overview.md#licens
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Konuklar için erişim gözden geçirmesi oluşturma ve gerçekleştirme
 
-İlk olarak, genel yönetici veya Kullanıcı Yöneticisi olarak, erişim gözden geçirmeleri kuruluşunuza hazırlanmaya devam etmek için [Identity idare sayfasına](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) gidin.
+İlk olarak, aşağıdaki rollerden birine atanmış olmanız gerekir:
+- Genel yönetici
+- Kullanıcı yöneticisi
+- Önizle Gözden geçirilecek grubun M365 veya AAD güvenlik grubu sahibi
+
+Daha sonra, erişim incelerinin kuruluşunuz için hazırlanmaya devam etmek için [Identity idare sayfasına](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) gidin.
 
 Azure AD, Konuk kullanıcıları gözden geçirmeye yönelik çeşitli senaryolar sunar.
 

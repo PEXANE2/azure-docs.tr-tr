@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c69f528328d5ff983c7de9d7fad052a7c41285
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078762"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696260"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekli
-[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/skus#skus). Standart dahili Load Balancer giden bağlantı sağlamadığından, bunun yerine standart bir genel Load Balancer oluşturmak için bir çözüm sağlıyoruz.
+[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](./skus.md#skus). Standart dahili Load Balancer giden bağlantı sağlamadığından, bunun yerine standart bir genel Load Balancer oluşturmak için bir çözüm sağlıyoruz.
 
 Yükseltmenin dört aşaması vardır:
 
@@ -109,16 +109,16 @@ Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzl
     >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
 
 * **Yeni oluşturulan Standart genel Load Balancer arka uç havuzlarına eklemek için yeni VM 'Ler oluşturma**.
-    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)bulunabilir.
+    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)bulunabilir.
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Giden bağlantı için giden bir kural oluşturma
 
-Bir giden kuralı oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) izleyin, böylece
+Bir giden kuralı oluşturmak için [yönergeleri](./quickstart-load-balancer-standard-public-powershell.md#create-outbound-rule-configuration) izleyin, böylece
 * Giden NAT 'yi sıfırdan tanımlayın.
 * Varolan giden NAT 'nin davranışını ölçeklendirin ve ayarlayın.
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>Internet 'ten veya internetten gelen iletişimi belirten sanal makineler için NSG kuralları oluşturma
-Internet trafiğinin sanal makinelerinize ulaşmasını istiyorsanız, VM 'lerin ağ arabiriminde bir [NSG kuralı](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) oluşturabilirsiniz.
+Internet trafiğinin sanal makinelerinize ulaşmasını istiyorsanız, VM 'lerin ağ arabiriminde bir [NSG kuralı](../virtual-network/manage-network-security-group.md) oluşturabilirsiniz.
 
 ## <a name="common-questions"></a>Sık sorulan sorular
 

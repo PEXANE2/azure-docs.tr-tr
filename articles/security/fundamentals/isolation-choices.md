@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410596"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696226"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 
@@ -38,7 +38,7 @@ Her Azure AD dizini, diğer Azure AD dizinlerinden farklı ve ayrıdır. Kurumsa
 
 ### <a name="azure-tenancy"></a>Azure Kiralama
 
-Azure Kiralama (Azure aboneliği), [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)bir "müşteri/Faturalandırma" ilişkisine ve benzersiz bir [kiracıya](../../active-directory/develop/quickstart-create-new-tenant.md) başvurur. Microsoft Azure kiracı düzeyi yalıtımı, BT tarafından sunulan Azure Active Directory ve [rol tabanlı denetimler](../../role-based-access-control/overview.md) kullanılarak elde edilir. Her Azure aboneliği bir Azure Active Directory (AD) diziniyle ilişkilendirilir.
+Azure Kiralama (Azure aboneliği), [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)bir "müşteri/Faturalandırma" ilişkisine ve benzersiz bir [kiracıya](../../active-directory/develop/quickstart-create-new-tenant.md) başvurur. Microsoft Azure 'de kiracı düzeyi yalıtımı, BT tarafından sunulan Azure Active Directory ve [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) kullanılarak elde edilir. Her Azure aboneliği bir Azure Active Directory (AD) diziniyle ilişkilendirilir.
 
 Bu dizindeki kullanıcılar, gruplar ve uygulamalar, Azure aboneliğindeki kaynakları yönetebilir. Azure portal, Azure komut satırı araçları ve Azure Yönetim API 'Lerini kullanarak bu erişim haklarını atayabilirsiniz. Bir Azure AD kiracısı güvenlik sınırları kullanılarak mantıksal olarak yalıtılmıştır; böylece hiçbir müşteri kötü amaçlı olarak veya yanlışlıkla, ortak kiracılara erişemez veya bunları tehlikeye atabilir. Azure AD, ana bilgisayar düzeyindeki paket filtrelemesinin ve Windows güvenlik duvarının istenmeyen bağlantıları ve trafiği engelleyebildiği, ayrılmış bir ağ segmentinde yalıtılmış olan "çıplak" sunucularda çalışır.
 
@@ -52,7 +52,7 @@ Bu dizindeki kullanıcılar, gruplar ve uygulamalar, Azure aboneliğindeki kayna
 
 - Azure AD hizmetini oluşturan sunuculara fiziksel erişim ve Azure AD 'nin arka uç sistemlerine doğrudan erişim kısıtlanmıştır.
 
-- Azure AD kullanıcılarının fiziksel varlıklar veya konumlara erişimi yoktur ve bu nedenle, aşağıda belirtilen mantıksal RBAC ilke denetimlerini atlamak mümkün değildir.
+- Azure AD kullanıcılarının fiziksel varlıklara veya konumlara erişimi yoktur ve bu nedenle, aşağıda belirtilen mantıksal Azure RBAC ilke denetimlerini atlaması mümkün değildir.
 
 Tanılama ve bakım ihtiyaçları için, tam zamanında ayrıcalık yükseltme sistemini kullanan bir işlem modeli gereklidir ve kullanılır. Azure AD Privileged Identity Management (PıM) uygun bir yönetici kavramını tanıtır. [uygun yöneticiler](../../active-directory/privileged-identity-management/pim-configure.md) , her gün değil, daha önce ayrıcalıklı erişime ihtiyacı olan kullanıcılar olmalıdır. Bu rol, kullanıcı erişime ihtiyaç duyana kadar devre dışıdır ancak kullanıcı bir etkinleştirme işlemini tamamladıktan sonra önceden belirlenen süre boyunca etkin bir yönetici olur.
 
@@ -80,7 +80,7 @@ Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
 Azure 'daki Azure rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin Sanal Makine Katılımcısı rolü, kullanıcının sanal makine oluşturmasını ve yönetmesini sağlar. Azure sanal ağına veya sanal makinenin bağlandığı alt ağa erişim vermez.
 
-[RBAC yerleşik rolleri](../../role-based-access-control/built-in-roles.md) , Azure 'da kullanılabilen rolleri listeler. Her yerleşik rolün kullanıcılara verdiği işlemleri ve kapsamı belirtir. Daha da fazla denetim için kendi rollerinizi tanımlamak istiyorsanız bkz. [Azure RBAC 'de özel roller](../../role-based-access-control/custom-roles.md)oluşturma.
+Azure [yerleşik rolleri](../../role-based-access-control/built-in-roles.md) , Azure 'da kullanılabilen rolleri listeler. Her yerleşik rolün kullanıcılara verdiği işlemleri ve kapsamı belirtir. Daha da fazla denetim için kendi rollerinizi tanımlamak istiyorsanız bkz. [Azure RBAC 'de özel roller](../../role-based-access-control/custom-roles.md)oluşturma.
 
 Azure Active Directory için bazı diğer yetenekler şunlardır:
 

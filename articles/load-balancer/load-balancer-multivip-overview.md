@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448107"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696889"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer için birden çok ön uç
 
 Azure Load Balancer, birden fazla bağlantı noktası, birden çok IP adresi veya her ikisine birden Yük Dengeleme hizmeti sağlar. Ortak ve iç yük dengeleyici tanımlarını, bir VM kümesinde Yük Dengeleme akışları için kullanabilirsiniz.
 
-Bu makalede, bu özellik, önemli kavramlar ve kısıtlamaların temelleri açıklanmaktadır. Yalnızca hizmetleri tek bir IP adresinde açığa çıkarmak istiyorsanız, [genel](load-balancer-get-started-internet-portal.md) veya [iç](load-balancer-get-started-ilb-arm-portal.md) yük dengeleyici yapılandırmalarına yönelik Basitleştirilmiş yönergeler bulabilirsiniz. Birden çok ön uçların eklenmesi tek bir ön uç yapılandırmasına artımlı yapılır. Bu makaledeki kavramları kullanarak, Basitleştirilmiş bir yapılandırmayı dilediğiniz zaman genişletebilirsiniz.
+Bu makalede, bu özellik, önemli kavramlar ve kısıtlamaların temelleri açıklanmaktadır. Yalnızca hizmetleri tek bir IP adresinde açığa çıkarmak istiyorsanız, [genel](./quickstart-load-balancer-standard-public-portal.md) veya [iç](./quickstart-load-balancer-standard-internal-portal.md) yük dengeleyici yapılandırmalarına yönelik Basitleştirilmiş yönergeler bulabilirsiniz. Birden çok ön uçların eklenmesi tek bir ön uç yapılandırmasına artımlı yapılır. Bu makaledeki kavramları kullanarak, Basitleştirilmiş bir yapılandırmayı dilediğiniz zaman genişletebilirsiniz.
 
 Bir Azure Load Balancer tanımladığınızda, ön uç ve arka uç havuzu yapılandırması kurallarla bağlanır. Kural tarafından başvurulan sistem durumu araştırması, yeni akışların arka uç havuzundaki bir düğüme nasıl gönderileceğini belirlemekte kullanılır. Ön uç (diğer adıyla VIP), bir IP adresi (genel veya iç), bir Aktarım Protokolü (UDP veya TCP) ve yük dengeleme kuralındaki bir bağlantı noktası numarasından oluşan 3 tanımlama grubu tarafından tanımlanır. Arka uç havuzu, Load Balancer arka uç havuzuna başvuran sanal makine IP yapılandırmalarının (NIC kaynağının bir parçası) koleksiyonudur.
 
 Aşağıdaki tabloda bazı örnek ön uç yapılandırması yer almaktadır:
 
-| Ön uç | IP adresi | protokol | port |
+| Ön uç | IP Adresi | protokol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -53,7 +53,7 @@ Varsayılan davranışla başlayarak bu senaryoları daha ayrıntılı bir şeki
 
 Bu senaryoda ön uçlar aşağıdaki gibi yapılandırılır:
 
-| Ön uç | IP adresi | protokol | port |
+| Ön uç | IP Adresi | protokol | port |
 | --- | --- | --- | --- |
 | ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -134,7 +134,7 @@ netsh interface ipv4 set interface “interfacename” weakhostsend=enabled
 
 Önceki senaryodaki ile aynı ön uç yapılandırmasını varsayalım:
 
-| Ön uç | IP adresi | protokol | port |
+| Ön uç | IP Adresi | protokol | port |
 | --- | --- | --- | --- |
 | ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |

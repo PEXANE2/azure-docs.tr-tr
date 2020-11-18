@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 605692d15a08246dd574b0724a550b4543a237a3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241829"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695529"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
@@ -121,7 +121,7 @@ Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırm
 ### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a>Http/https araştırması
 
 >[!NOTE]
->HTTPS araştırması yalnızca [Standart Load Balancer](load-balancer-standard-overview.md)için kullanılabilir.
+>HTTPS araştırması yalnızca [Standart Load Balancer](./load-balancer-overview.md)için kullanılabilir.
 
 HTTP ve HTTPS araştırmaları TCP araştırmasına dayanır ve belirtilen yola sahip bir HTTP GET oluşturur. Bu yoklamaların her ikisi de HTTP GET için göreli yolları destekler. HTTPS araştırmaları, bir Aktarım Katmanı Güvenliği (TLS, eskiden SSL olarak bilinen) sarmalayıcı ekleme ile HTTP araştırmaları ile aynıdır. Durum araştırması, örnek zaman aşımı süresi içinde bir HTTP durumu 200 ile yanıt verdiğinde yapılır.  Sistem durumu araştırması, varsayılan olarak her 15 saniyede bir yapılandırılan durum araştırma bağlantı noktasını denetlemeye çalışır. En düşük araştırma aralığı 5 saniyedir. Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
 
@@ -169,7 +169,7 @@ Bulut hizmeti rolleri (çalışan rolleri ve Web rolleri) varsayılan olarak ara
 
 Konuk Aracısı araştırması, VM 'nin içindeki Konuk aracısının bir denetsıdır. Daha sonra bir HTTP 200 OK yanıtıyla dinler ve yanıt verir ancak örneğin, örnek zaten Ready durumundaysa. (Diğer durumlar meşgul, geri dönüşüm veya durduruluyor.)
 
-Daha fazla bilgi için bkz. [sistem durumu araştırmaları için hizmet tanım dosyasını (csdef) yapılandırma](https://msdn.microsoft.com/library/azure/ee758710.aspx) veya [bulut hizmetleri için bir genel yük dengeleyici oluşturma ile çalışmaya başlama](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
+Daha fazla bilgi için bkz. [sistem durumu araştırmaları için hizmet tanım dosyasını (csdef) yapılandırma](/previous-versions/azure/reference/ee758710(v=azure.100)) veya [bulut hizmetleri için bir genel yük dengeleyici oluşturma ile çalışmaya başlama](/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
 
 Konuk Aracısı HTTP 200 Tamam ile yanıt veremezse, yük dengeleyici örneği yanıt vermiyor olarak işaretler. Daha sonra bu örneğe akış göndermeyi bırakır. Yük dengeleyici örneği denetlemeye devam eder. 
 
@@ -215,7 +215,7 @@ Arka uç havuzundaki tüm örneklere yönelik tüm yoklamalar başarısız olurs
 
 Load Balancer, iç sistem durumu modeli için dağıtılmış bir yoklama hizmeti kullanır. Yoklama hizmeti, sanal makinelerin bulunduğu her bir konakta bulunur ve müşterinin yapılandırmasına göre sistem durumu araştırmaları oluşturmak için isteğe bağlı olarak programlanabilir. Durum araştırma trafiği, sistem durumu araştırması ve müşteri VM 'si üreten araştırma hizmeti arasında doğrudan yapılır. Tüm Load Balancer sistem durumu araştırmaları, kaynak olarak 168.63.129.16 IP adresinden itibaren yapılır.  RFC1918 alanı olmayan bir VNet 'in içindeki IP adres alanını kullanabilirsiniz.  Küresel olarak ayrılmış, Microsoft 'un sahip olduğu IP adresi, VNet içinde kullandığınız IP adresi alanıyla bir IP adresi çakışması olasılığını azaltır.  Bu IP adresi tüm bölgelerde aynıdır ve değişmez ve yalnızca iç Azure platformu bileşeni bu IP adresinden bir paket kaynak sağladığından bir güvenlik riski değildir. 
 
-AzureLoadBalancer Service etiketi, [ağ güvenlik gruplarınızı](../virtual-network/security-overview.md) bu kaynak IP adresini tanımlar ve varsayılan olarak sistem durumu araştırma trafiğine izin verir.
+AzureLoadBalancer Service etiketi, [ağ güvenlik gruplarınızı](../virtual-network/network-security-groups-overview.md) bu kaynak IP adresini tanımlar ve varsayılan olarak sistem durumu araştırma trafiğine izin verir.
 
 Load Balancer sistem durumu araştırmalarının yanı sıra [aşağıdaki işlemler bu IP adresini kullanır](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
@@ -233,15 +233,15 @@ Bazen uygulamanızın sistem durumunu algılamaması için bir sistem durumu ara
 
 UDP yük dengelemesi için, arka uç uç noktasından özel bir sistem durumu araştırma sinyali oluşturmanız ve UDP uygulamanızın sistem durumunu yansıtmak için karşılık gelen dinleyiciyi hedefleyen bir TCP, HTTP veya HTTPS sistem durumu araştırması kullanmanız gerekir.
 
-[Standart Load Balancer](load-balancer-standard-overview.md)Ile [ha bağlantı noktaları Yük Dengeleme kuralları](load-balancer-ha-ports-overview.md) kullanırken, tüm bağlantı noktaları yük dengedir ve tek bir sistem durumu araştırma yanıtı, tüm örneğin durumunu yansıtmalıdır.
+[Standart Load Balancer](./load-balancer-overview.md)Ile [ha bağlantı noktaları Yük Dengeleme kuralları](load-balancer-ha-ports-overview.md) kullanırken, tüm bağlantı noktaları yük dengedir ve tek bir sistem durumu araştırma yanıtı, tüm örneğin durumunu yansıtmalıdır.
 
 Bu yapılandırma, senaryomunuzdan oluşan basamaklı hatalara yol açacağından, sistem durumu araştırmasını VNet 'teki başka bir örneğe alan örnek aracılığıyla bir sistem durumu araştırmasını veya proxy 'yi çevirmeyin.  Aşağıdaki senaryoyu göz önünde bulundurun: üçüncü taraf gereçlerin bir kümesi, gereçlere yönelik ölçek ve artıklık sağlamak üzere bir Load Balancer kaynağın arka uç havuzunda dağıtılır ve sistem durumu araştırması, üçüncü taraf gereç proxy 'lerinin bir bağlantı noktasını yoklamak veya gereç arkasındaki diğer sanal makinelere çevirilmesi için yapılandırılır.  Gerecin arkasındaki diğer sanal makinelere veya ara sunucu isteklerini çevirmek için kullandığınız bağlantı noktasını araştırdıysanız, gerecin arkasındaki tek bir sanal makineden gelen yoklama yanıtları, gerecin kendisini ölü olarak işaretler. Bu yapılandırma, gerecin arkasındaki tek bir arka uç uç noktasının sonucu olarak tüm uygulama senaryosunun basamaklı bir hatasına neden olabilir.  Tetikleyici, Load Balancer özgün hedefi (gereç örneği) işaretlemesine neden olacak ve sonra tüm uygulama senaryonuzu devre dışı bırakabilmesi için aralıklı bir araştırma hatası olabilir. Bunun yerine gereç durumunu araştırma. Sistem durumu sinyalinin belirlenmesi için araştırmanın seçimi, ağ sanal gereçleri (NVA) senaryolarında önemli bir noktadır ve bu senaryolar için uygun sistem durumu sinyalinin ne olduğunu öğrenmek için uygulama satıcınıza başvurmanız gerekir.
 
 Güvenlik Duvarı ilkeleriniz için araştırmanın [kaynak IP 'si](#probesource) izin vermezseniz, örneğinize ulaşamadığından sistem durumu araştırması başarısız olur.  Sırasıyla, durum araştırma hatası nedeniyle Load Balancer örneğinizi işaretleyecek.  Bu yanlış yapılandırma, yük dengeli uygulama senaryonuzun başarısız olmasına neden olabilir.
 
-Örneğinizi işaretlemek için Load Balancer sistem durumu araştırması için, tüm Azure [ağ güvenlik gruplarında](../virtual-network/security-overview.md) ve yerel güvenlik duvarı ILKELERINDE bu IP adresine izin vermeniz **gerekir** .  Varsayılan olarak, her ağ güvenlik grubu, durum araştırma trafiğine izin vermek için AzureLoadBalancer [hizmet etiketini](../virtual-network/security-overview.md#service-tags) içerir.
+Örneğinizi işaretlemek için Load Balancer sistem durumu araştırması için, tüm Azure [ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md) ve yerel güvenlik duvarı ILKELERINDE bu IP adresine izin vermeniz **gerekir** .  Varsayılan olarak, her ağ güvenlik grubu, durum araştırma trafiğine izin vermek için AzureLoadBalancer [hizmet etiketini](../virtual-network/network-security-groups-overview.md#service-tags) içerir.
 
-Bir sistem durumu araştırma hatasını test etmek veya tek bir örneği işaretlemek isterseniz, sistem durumu araştırmasını (hedef bağlantı noktası veya [kaynak IP](#probesource)) açıkça engellemek ve bir araştırmanın başarısızlığının benzetimini yapmak için bir [ağ güvenlik grubu](../virtual-network/security-overview.md) kullanabilirsiniz.
+Bir sistem durumu araştırma hatasını test etmek veya tek bir örneği işaretlemek isterseniz, sistem durumu araştırmasını (hedef bağlantı noktası veya [kaynak IP](#probesource)) açıkça engellemek ve bir araştırmanın başarısızlığının benzetimini yapmak için bir [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md) kullanabilirsiniz.
 
 VNet 'i 168.63.129.16 içeren, Microsoft 'un sahip olduğu IP adresi aralığıyla yapılandırmayın.  Bu tür yapılandırmalarda sistem durumu araştırmasının IP adresi ile çakışacaktır ve senaryonuzun sürmesine neden olabilir.
 
@@ -251,7 +251,7 @@ VM 'niz üzerinde birden fazla arabiriminiz varsa, bunu aldığınız arabirimde
 
 ## <a name="monitoring"></a>İzleme
 
-Hem genel hem de dahili [Standart Load Balancer](load-balancer-standard-overview.md) , Azure izleyici aracılığıyla çok boyutlu ölçümler olarak uç nokta ve arka uç uç nokta durumu araştırma durumunu kullanıma sunar. Bu ölçümler diğer Azure hizmetleri veya iş ortağı uygulamaları tarafından tüketilebilir. 
+Hem genel hem de dahili [Standart Load Balancer](./load-balancer-overview.md) , Azure izleyici aracılığıyla çok boyutlu ölçümler olarak uç nokta ve arka uç uç nokta durumu araştırma durumunu kullanıma sunar. Bu ölçümler diğer Azure hizmetleri veya iş ortağı uygulamaları tarafından tüketilebilir. 
 
 Temel genel Load Balancer, Azure Izleyici günlükleri aracılığıyla arka uç havuzu başına özetlenen durum araştırma durumunu gösterir.  Azure Izleyici günlükleri, iç temel yük dengeleyiciler için kullanılamaz.  [Azure izleyici günlüklerini](load-balancer-monitor-log.md) kullanarak genel yük dengeleyici araştırma sistem durumunu ve araştırma sayısını denetleyebilirsiniz. Günlüğe kaydetme, yük dengeleyici sistem durumu hakkında istatistikler sağlamak için Power BI veya Azure operasyonel içgörüler ile kullanılabilir.
 
@@ -262,7 +262,7 @@ Temel genel Load Balancer, Azure Izleyici günlükleri aracılığıyla arka uç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Standart Load Balancer](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin
+- [Standart Load Balancer](./load-balancer-overview.md) hakkında daha fazla bilgi edinin
 - [PowerShell kullanarak Kaynak Yöneticisi bir genel yük dengeleyici oluşturmaya başlama](quickstart-load-balancer-standard-public-powershell.md)
-- [Sistem durumu araştırmaları için REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [Sistem durumu araştırmaları için REST API](/rest/api/load-balancer/loadbalancerprobes/)
 - [Load Balancer UserVoice](https://aka.ms/lbuservoice) ile yeni durum araştırma becerileri isteyin

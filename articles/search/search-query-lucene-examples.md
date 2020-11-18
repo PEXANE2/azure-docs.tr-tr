@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 3d2172f76faecfc8347d7e0ca13fb506817f25de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4dd8b82e40b46da52a1b1f396569fda1dfea2b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740709"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694635"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"Full" Lucene arama sözdizimini kullanın (Azure Bilişsel Arama Gelişmiş sorgular)
 
@@ -30,13 +30,13 @@ Lucene ayrıştırıcısı alan kapsamlı sorgular, belirsiz arama, indüzeltilm
 
 Aşağıdaki örnekler, [New York OpenData girişiminin City](https://opendata.cityofnewyork.us/) tarafından sağlanan bir veri kümesine dayalı olarak bulunan işleri içeren bir NYC işleri arama dizininden yararlanır. Bu verilerin geçerli veya tamamlanmış olarak kabul edilmemelidir. Dizin, Microsoft tarafından sağlanmış bir korumalı alan hizmetidir ve bu sorguları denemek için bir Azure aboneliğine veya Azure Bilişsel Arama ihtiyaç duymayın.
 
-Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz. [rest Istemcilerinde araştırma](search-get-started-postman.md).
+Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz. [rest Istemcilerinde araştırma](search-get-started-rest.md).
 
 ### <a name="set-the-request-header"></a>İstek üst bilgisini ayarlama
 
 1. İstek üstbilgisinde, **Içerik türünü** olarak ayarlayın `application/json` .
 
-2. Bir **API anahtarı**ekleyin ve bu dizeye ayarlayın: `252044BE3886FE4A8E3BAA4F595114BB` . Bu, NYC Işleri dizinini barındıran korumalı alan arama hizmeti için bir sorgu anahtarıdır.
+2. Bir **API anahtarı** ekleyin ve bu dizeye ayarlayın: `252044BE3886FE4A8E3BAA4F595114BB` . Bu, NYC Işleri dizinini barındıran korumalı alan arama hizmeti için bir sorgu anahtarıdır.
 
 İstek üst bilgisini belirttikten sonra, bu makaledeki tüm sorgular için onu yeniden kullanabilirsiniz ve yalnızca **Search =** dizesini takas edebilirsiniz. 
 
@@ -46,7 +46,7 @@ Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bi
 
 İstek, Azure Bilişsel Arama uç noktası ve arama dizesini içeren bir URL ile eşleştirilmiş bir GET komutu.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman istek üst bilgisi al" border="false":::
 
 URL kompozisyonu aşağıdaki öğelere sahiptir:
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Postman örnek yanıtı arama ifadesi" border="false":::
 
 **FieldName: SearchExpression** söz dizimi ile bir ara değer arama işlemi tanımlayabilirsiniz. burada, arama ifadesi tek bir sözcük veya tümcecik ya da parantez içinde daha karmaşık bir ifade olabilir ve isteğe bağlı olarak Boolean işleçleriyle. Bazı örnekler şunlardır:
 
@@ -199,7 +199,7 @@ Bu sorguda, "kıdemli analist" terimine sahip işler için birden fazla sözcük
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
-  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Yakınlık sorgusu" border="false":::
 
 "Baş analist" terimi arasındaki sözcükleri kaldırmayı yeniden deneyin. Bu sorgu için, önceki sorgu için 10 ' dan farklı olarak 8 belge döndürüldüğünden emin olun.
 
@@ -212,12 +212,12 @@ Terim artırma, bir belgeyi, süresi içermeyen belgelere göre, daha yüksek bi
 
 ### <a name="full-urls"></a>Tam URL 'Ler
 
-Bu "önce" sorgusunda, *bilgisayar analistine* sahip işleri arayın ve hem *bilgisayar* hem de *analist*ile bir sonuç olmadığını, ancak *bilgisayar* işlerinin sonuçların en üstünde olduğunu unutmayın.
+Bu "önce" sorgusunda, *bilgisayar analistine* sahip işleri arayın ve hem *bilgisayar* hem de *analist* ile bir sonuç olmadığını, ancak *bilgisayar* işlerinin sonuçların en üstünde olduğunu unutmayın.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
-  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Önce dönem artırma" border="false":::
 
 "Sonra" sorgusunda, bu kez, her iki kelime de yoksa, aramayı tekrarlayarak *bilgisayar* terimi üzerinde *analist* terimini elde edin. 
 
@@ -226,7 +226,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 Yukarıdaki sorgunun daha okunabilir bir sürümü `search=business_title:computer analyst^2` . Çalışılabilir bir sorgu için, daha `^2` `%5E2` zor olan olarak kodlanır.
 
-  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Sonrasında dönem artırma" border="false":::
 
 Kullanım süresi, Puanlama profillerindeki Puanlama profillerinden farklıdır ve belirli koşullar yerine belirli alanları artırır. Aşağıdaki örnek, farkları göstermeye yardımcı olur.
 
@@ -253,7 +253,7 @@ Bu sorguda, kıdemli veya Junior veya: terimiyle iş arayın `search=business_ti
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
-  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Regex sorgusu" border="false":::
 
 > [!Note]
 > Regex sorguları [çözümlenmez](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
@@ -275,7 +275,7 @@ Bu sorguda, programlama ve programlayıcı koşullarına sahip iş başlıkları
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
-  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Joker karakter sorgusu" border="false":::
 
 > [!Note]
 > Joker karakter sorguları [çözümlenmez](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.

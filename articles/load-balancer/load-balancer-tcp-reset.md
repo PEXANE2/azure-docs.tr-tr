@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823220"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696753"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP sıfırlaması ve boşta kalma zaman aşımı
 
-Belirli bir kural için boşta üzerinde TCP sıfırlamayı etkinleştirerek, senaryolarınız için daha öngörülebilir bir uygulama davranışı oluşturmak üzere [Standart Load Balancer](load-balancer-standard-overview.md) kullanabilirsiniz. Bir akışın boşta kalma zaman aşımı süresine ulaşıldığında Load Balancer varsayılan davranış sessizce bir şekilde düşürülemiyor.  Bu özelliği etkinleştirmek Load Balancer boşta kalma zaman aşımı durumunda çift yönlü TCP sıfırlama (TCP RST paketi) gönderilmesine neden olur.  Bu, uygulamanın uç noktalarını bağlantının zaman aşımına uğradığını ve artık kullanılamaz olduğunu bildirir.  Uç noktalar gerektiğinde hemen yeni bir bağlantı kurabilir.
+Belirli bir kural için boşta üzerinde TCP sıfırlamayı etkinleştirerek, senaryolarınız için daha öngörülebilir bir uygulama davranışı oluşturmak üzere [Standart Load Balancer](./load-balancer-overview.md) kullanabilirsiniz. Bir akışın boşta kalma zaman aşımı süresine ulaşıldığında Load Balancer varsayılan davranış sessizce bir şekilde düşürülemiyor.  Bu özelliği etkinleştirmek Load Balancer boşta kalma zaman aşımı durumunda çift yönlü TCP sıfırlama (TCP RST paketi) gönderilmesine neden olur.  Bu, uygulamanın uç noktalarını bağlantının zaman aşımına uğradığını ve artık kullanılamaz olduğunu bildirir.  Uç noktalar gerektiğinde hemen yeni bir bağlantı kurabilir.
 
 ![TCP sıfırlaması Load Balancer](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
 ## <a name="tcp-reset"></a>TCP sıfırlaması
 
-Bu varsayılan davranışı değiştirir ve gelen NAT kurallarında, Yük Dengeleme kurallarında ve [giden kurallarda](https://aka.ms/lboutboundrules)boş zaman AŞıMı durumunda TCP sıfırlamaları göndermeyi etkinleştirin.  Kural başına etkinleştirildiğinde Load Balancer, tüm eşleşen akışlar için boşta kalma zaman aşımı durumunda hem istemci hem de sunucu uç noktalarına çift yönlü TCP sıfırlaması (TCP RST paketleri) gönderir.
+Bu varsayılan davranışı değiştirir ve gelen NAT kurallarında, Yük Dengeleme kurallarında ve [giden kurallarda](./load-balancer-outbound-connections.md#outboundrules)boş zaman AŞıMı durumunda TCP sıfırlamaları göndermeyi etkinleştirin.  Kural başına etkinleştirildiğinde Load Balancer, tüm eşleşen akışlar için boşta kalma zaman aşımı durumunda hem istemci hem de sunucu uç noktalarına çift yönlü TCP sıfırlaması (TCP RST paketleri) gönderir.
 
 TCP RST paketleri alan uç noktalar ilgili yuvayı hemen kapatır. Bu, bağlantı sürümünün gerçekleştiği uç noktalara anında bildirim sağlar ve ileride aynı TCP bağlantısıyla iletişim kurmak başarısız olur.  Uygulamalar, TCP bağlantısının son zaman aşımına ermesi gerekmeden, bağlantı gerektiğinde bağlantıları temizler ve yeniden yeniden kuracak.
 
@@ -48,7 +48,7 @@ Varsayılan olarak, 4 dakikaya ayarlanır. İşlem yapılmayan bir süre, zaman 
 
 Bağlantı kapalıyken, istemci uygulamanız şu hata iletisini alabilir: "temel alınan bağlantı kapatıldı: etkin tutulması beklenen bir bağlantı sunucu tarafından kapatıldı."
 
-Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için, bkz. bu [.NET örnekleri](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Etkin tut özelliği etkinken, paketler bağlantı üzerinde işlem yapılmayan dönemler sırasında gönderilir. Canlı tut paketleri boştaki zaman aşımı değerine ulaşılmadığını ve bağlantının uzun bir süre boyunca korunmasını güvence altına aldığından emin olun.
+Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için, bkz. bu [.NET örnekleri](/dotnet/api/system.net.servicepoint.settcpkeepalive). Etkin tut özelliği etkinken, paketler bağlantı üzerinde işlem yapılmayan dönemler sırasında gönderilir. Canlı tut paketleri boştaki zaman aşımı değerine ulaşılmadığını ve bağlantının uzun bir süre boyunca korunmasını güvence altına aldığından emin olun.
 
 Bu ayar yalnızca gelen bağlantılar için geçerlidir. Bağlantıyı kaybetmekten kaçınmak için, boşta kalma zaman aşımı ayarından daha az bir aralığa sahip TCP etkin tutmayı yapılandırın veya boşta kalma zaman aşımı değerini artırın. Bu senaryoları desteklemek için yapılandırılabilir bir boşta kalma zaman aşımı desteği eklenmiştir.
 
@@ -63,6 +63,6 @@ TCP etkin tutma, pil ömrünün kısıtlama olmadığı senaryolar için geçerl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Standart Load Balancer](load-balancer-standard-overview.md)hakkında bilgi edinin.
-- [Giden kuralları](load-balancer-outbound-rules-overview.md)hakkında bilgi edinin.
+- [Standart Load Balancer](./load-balancer-overview.md)hakkında bilgi edinin.
+- [Giden kuralları](./load-balancer-outbound-connections.md#outboundrules)hakkında bilgi edinin.
 - [Boştaki zaman aşımında TCP RST 'yi yapılandırma](load-balancer-tcp-idle-timeout.md)

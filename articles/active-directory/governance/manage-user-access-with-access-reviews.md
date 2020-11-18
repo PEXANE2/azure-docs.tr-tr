@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 001adaff1fed901638276e548ac1d5fdb41bdc53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc12b4cb7e97a0808405baebc64ca83cdb742bf1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798316"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696957"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle kullanıcı erişimini yönetme
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) sayesinde kullanıcıların uygun erişime sah
 > [!NOTE]
 > Tüm kullanıcı türlerinin erişimini yerine yalnızca konuk kullanıcıların erişimini gözden geçirmek istiyorsanız [Erişim gözden geçirmeleriyle konuk kullanıcı erişimini yönetme](manage-guest-access-with-access-reviews.md) konusunu inceleyin. Genel yönetici gibi yönetim rollerindeki kullanıcı üyeliklerini gözden geçirmek istiyorsanız [Azure AD Privileged Identity Management’ta erişim gözden geçirmesi başlatma](../privileged-identity-management/pim-how-to-start-security-review.md) konusunu inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Premium P2
 
@@ -44,7 +44,7 @@ Bir erişim gözden geçirmesinde bir veya daha çok kullanıcı gözden geçire
 
 2. Her kullanıcının kendi erişimini mi gözden geçireceğine yoksa bir veya daha fazla kullanıcının tüm kullanıcıların erişimini mi gözden geçireceğine karar verin.
 
-3. Genel yönetici veya Kullanıcı Yöneticisi olarak, [Identity idare sayfasına](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)gidin.
+3. Aşağıdaki rollerden birinde: bir genel yönetici, Kullanıcı Yöneticisi veya gözden geçirilecek grubun bir M365 veya AAD güvenlik grubu sahibi, [Identity idare sayfasına](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)gidin.
 
 4. Erişim gözden geçirmesini oluşturun. Daha fazla bilgi için bkz. [gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma](create-access-review.md).
 

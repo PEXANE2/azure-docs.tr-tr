@@ -1,22 +1,22 @@
 ---
 title: PostgreSQL için Azure veritabanı için Azure Ilke mevzuat uyumluluk denetimleri
 description: PostgreSQL için Azure veritabanı 'nda kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f17ff4d2bb1e52456cf22fc99e2b4a0a5807dd2d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8d52f7b79de657b083680136bff4379326df0325
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312844"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695927"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için Azure Ilke mevzuat uyumluluk denetimleri
 
-[Azure Ilkesinde mevzuata uyumluluğu](../governance/policy/concepts/regulatory-compliance.md) , farklı uyumluluk standartlarıyla ilgili **Uyumluluk etki alanları** ve **güvenlik denetimleri** için yerleşik olarak bilinen Microsoft _tarafından_oluşturulan ve yönetilen girişim tanımlarını sağlar. Bu sayfa, PostgreSQL için Azure veritabanı **Uyumluluk etki alanlarını** ve **güvenlik denetimlerini** listeler.
+[Azure Ilkesinde mevzuata uyumluluğu](../governance/policy/concepts/regulatory-compliance.md) , farklı uyumluluk standartlarıyla ilgili **Uyumluluk etki alanları** ve **güvenlik denetimleri** için yerleşik olarak bilinen Microsoft _tarafından_ oluşturulan ve yönetilen girişim tanımlarını sağlar. Bu sayfa, PostgreSQL için Azure veritabanı **Uyumluluk etki alanlarını** ve **güvenlik denetimlerini** listeler.
 Azure kaynaklarınızı belirli bir standarda uygun hale getirmenize yardımcı olmak için, bir **güvenlik denetimi** için yerleşik bileşenleri atayabilirsiniz.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398020"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695070"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -66,7 +66,7 @@ Bir istemciden başlatılan trafik, en yakın bölge dağıtımına ulaşmak iç
 Örneğin, Azure bölgelerindeki standart yük dengeleyiciler içeren bir çapraz bölge yük dengeleyiciye sahipsiniz:
 
 * Batı ABD
-* North Europe
+* Kuzey Avrupa
 
 Bir akış Seattle 'dan başlatılırsa trafik Batı ABD girer. Bu bölge Seattle 'dan en yakın katılımcı bölgesidir. Trafik, Batı ABD olan en yakın bölge yük dengeleyicisine yönlendirilir.
 
@@ -74,7 +74,7 @@ Azure bölgeler arası yük dengeleyici, yönlendirme kararı için coğrafi yak
 
 Bölgesel yük dengeleyiciler için yapılandırılmış yük dağıtım modu, coğrafi yakınlık için birden çok bölgesel yük dengeleyici kullanıldığında son yönlendirme kararı oluşturmak için kullanılır.
 
-Daha fazla bilgi için bkz. [Azure Load Balancer Dağıtım modunu yapılandırma](https://docs.microsoft.com/azure/load-balancer/load-balancer-distribution-mode).
+Daha fazla bilgi için bkz. [Azure Load Balancer Dağıtım modunu yapılandırma](./load-balancer-distribution-mode.md).
 
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Tek bir uç noktanın arkasında ölçeği artırma/azaltma yeteneği
@@ -84,7 +84,7 @@ Bir çapraz bölge yük dengeleyicinin küresel uç noktasını müşterilere ku
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>Statik IP
-Çapraz bölge yük dengeleyici statik bir genel IP ile gelir ve IP adresinin aynı kalmasını sağlar. Statik IP hakkında daha fazla bilgi edinmek için [buradan](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#allocation-method) okuyun
+Çapraz bölge yük dengeleyici statik bir genel IP ile gelir ve IP adresinin aynı kalmasını sağlar. Statik IP hakkında daha fazla bilgi edinmek için [buradan](../virtual-network/public-ip-addresses.md#allocation-method) okuyun
 
 ### <a name="client-ip-preservation"></a>İstemci IP koruması
 Çapraz bölge yük dengeleyici, katman 4 geçişli bir ağ yükü dengeleyicidir. Bu geçişli, paketin orijinal IP 'sini korur.  Özgün IP, sanal makinede çalışan kod tarafından kullanılabilir. Bu koruma, bir IP adresine özgü mantığı uygulamanıza olanak tanır.
@@ -102,7 +102,7 @@ Yüksek oranda kullanılabilir ve çapraz bölge dağıtımı için mevcut yük 
 * West Europe
 * Güneydoğu Asya
 * Central US
-* North Europe
+* Kuzey Avrupa
 * Doğu Asya
 
 > [!NOTE]
@@ -120,7 +120,7 @@ Bölgeler arası yük dengeleyici, trafiği uygun bölgesel yük dengeleyiciye y
 * Orta ABD 
 * Doğu ABD 2 
 * Batı ABD 
-* North Europe 
+* Kuzey Avrupa 
 * Orta Güney ABD 
 * Batı ABD 2 
 * Güney Birleşik Krallık 

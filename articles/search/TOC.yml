@@ -35,7 +35,7 @@
     - name: JavaScript
       href: search-get-started-javascript.md
     - name: REST
-      href: search-get-started-postman.md
+      href: search-get-started-rest.md
     - name: PowerShell
       href: search-get-started-powershell.md
     - name: Python
@@ -81,13 +81,13 @@
 - name: Örnekler
   items:
     - name: C# örnekleri
-      href: /samples/browse/?languages=csharp&products=azure-cognitive-search
+      href: samples-dotnet.md
     - name: Java örnekleri
-      href: /samples/browse/?languages=java&products=azure-cognitive-search
+      href: samples-java.md
     - name: JavaScript örnekleri
-      href: /samples/browse/?languages=javascript&products=azure-cognitive-search
+      href: samples-javascript.md
     - name: Python örnekleri
-      href: /samples/browse/?languages=python&products=azure-cognitive-search
+      href: samples-python.md
     - name: REST örnekleri
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
 - name: Kavramlar
@@ -404,7 +404,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

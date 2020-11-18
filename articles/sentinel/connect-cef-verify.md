@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 8bdc9d588e89f498b973db7d1de299b0b26a3d02
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 974418a1b3c1e7fe93b2f6839c16169e5bd5abc5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655740"
+ms.locfileid: "94697008"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
@@ -44,7 +44,7 @@ Günlüklerinizin **Log Analytics** görünmeye başlaması için 20 dakika sür
 1. Güvenlik çözümünüz, günlük ileticisi ve Azure Sentinel arasındaki bağlantıyı denetlemek için günlük ileticisinde (yer tutucunun yerine çalışma alanı KIMLIĞINI uygulama) aşağıdaki betiği çalıştırın. Bu betik, arka plan programının doğru şekilde yapılandırıldığını ve arka plan programı ile Log Analytics Aracısı arasındaki iletişimi engellemediğini kontrol eder. Ayrıca, uçtan uca bağlantıyı denetlemek için ' TestCommonEventFormat ' adlı sahte iletiler gönderir. <br>
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
     ```
 
    - ***Bilgisayar* alanının eşlemesiyle** bir sorunu düzeltmek için bir komut çalıştırmanızı yönlendiren bir ileti alabilirsiniz. Ayrıntılar için [doğrulama betiğinin](#mapping-command) açıklamasına bakın.
@@ -245,6 +245,7 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.

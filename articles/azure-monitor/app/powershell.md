@@ -3,12 +3,12 @@ title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft D
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dabb29abe4530307ef5204659297f4675376605
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760912"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694616"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
@@ -431,7 +431,6 @@ Herhangi bir türdeki başka bir kaynağı oluşturmayı otomatikleştirin, bir 
    
     Her Web testinin ilişkili bir uyarı kuralı vardır, bu nedenle her ikisini de kopyalamanız gerekir.
    
-    Ölçümlere uyarıları da dahil edebilirsiniz. [Ölçüm adları](powershell-alerts.md#metric-names).
 5. Her kaynağa bu satırı ekleyin:
    
     `"apiVersion": "2015-05-01",`
@@ -470,7 +469,6 @@ Azure, kaynakları katı sırayla ayarlamalıdır. Bir kurulumun bir sonraki ba�
 Diğer otomasyon makaleleri:
 
 * Şablon kullanmadan hızlı Yöntem [Application Insights oluşturun](./create-new-resource.md#creating-a-resource-automatically) .
-* [Uyarıları ayarlama](powershell-alerts.md)
 * [Web testleri oluşturma](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure Tanılama verilerini Application Insights’a gönderme](powershell-azure-diagnostics.md)
 * [Sürüm ek açıklamaları oluştur](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

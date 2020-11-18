@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 01f6d5b5ef816127fe5f0c689132326f6157731d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6f089af71e4d32023e9cebd6613872f7db0eed7a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684419"
+ms.locfileid: "94694968"
 ---
 # <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktalarına genel bakış
 
@@ -54,7 +54,7 @@ Aşağıdaki diyagramda bir hub ve bağlı bileşen sanal ağ dağıtımı sunul
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Yük Dengelemesi çok fazla sayıda bağlantı noktası
 
-Ayrıca, çok sayıda bağlantı noktasının yük dengelenmesini gerektiren uygulamalar için HA bağlantı noktalarını kullanabilirsiniz. Bu senaryoları, HA bağlantı noktalarıyla bir iç [Standart Load Balancer](load-balancer-standard-overview.md) kullanarak basitleştirebilirsiniz. Tek bir yük dengeleme kuralı, her bağlantı noktası için bir tane olmak üzere birden çok ayrı Yük Dengeleme kuralını değiştirir.
+Ayrıca, çok sayıda bağlantı noktasının yük dengelenmesini gerektiren uygulamalar için HA bağlantı noktalarını kullanabilirsiniz. Bu senaryoları, HA bağlantı noktalarıyla bir iç [Standart Load Balancer](./load-balancer-overview.md) kullanarak basitleştirebilirsiniz. Tek bir yük dengeleme kuralı, her bağlantı noktası için bir tane olmak üzere birden çok ayrı Yük Dengeleme kuralını değiştirir.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 

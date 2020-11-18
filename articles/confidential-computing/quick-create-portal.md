@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 7d952608a4850b840759e05a99bdd14cbe2a3a81
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1e417563b463d7033072b27bec505d10ef1adb47
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560970"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695750"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure gizli bilgi işlem VM 'si dağıtma
 
@@ -22,7 +22,7 @@ Intel SGX tarafından desteklenen bir sanal makine (VM) oluşturmak için Azure 
 Özel yapılandırmayla gizli bir işlem sanal makinesi dağıtmaya ilgileniyorsanız, bu öğretici sizin için önerilir. Aksi takdirde, [Microsoft ticari Market için gizli bilgi işlem sanal makine dağıtım adımlarını](quick-create-marketplace.md)takip etmenizi öneririz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) .
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. En üstte **kaynak oluştur** ' u seçin.
+1. En üstte **kaynak oluştur**' u seçin.
 
 1. **Market** bölmesinde, sol taraftaki **işlem** ' ı seçin.
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
     ![VM'yi dağıtma](media/quick-create-portal/compute-virtual-machine.png)
 
-1. Sanal makine giriş sayfasında **Oluştur** ' u seçin.
+1. Sanal makine giriş sayfasında **Oluştur**' u seçin.
 
 
 ## <a name="configure-a-confidential-computing-virtual-machine"></a>Gizli bilgi işlem sanal makinesi yapılandırma
@@ -53,16 +53,16 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 1. Aşağıdaki değerleri yazın veya seçin:
 
-   * **Bölge** : sizin Için doğru Azure bölgesini seçin.
+   * **Bölge**: sizin Için doğru Azure bölgesini seçin.
 
         > [!NOTE]
         > Gizli işlem sanal makineleri yalnızca belirli bölgelerde bulunan özel donanımlar üzerinde çalışır. DCsv2-Series VM 'Ler için kullanılabilir olan en son bölgeler için bkz. [kullanılabilir bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 1. Sanal makineniz için kullanmak istediğiniz işletim sistemi görüntüsünü yapılandırın.
 
-    * **Görüntü seçin** : Bu öğretici Için Ubuntu 18,04 LTS ' yi seçin. Windows Server 2019, Windows Server 2016 veya ve Ubuntu 16,04 LTS ' yi de seçebilirsiniz. Bunu tercih ederseniz Bu öğreticiye uygun şekilde yönlendirilirsiniz.
+    * **Görüntü seçin**: Bu öğretici Için Ubuntu 18,04 LTS ' yi seçin. Windows Server 2019, Windows Server 2016 veya ve Ubuntu 16,04 LTS ' yi de seçebilirsiniz. Bunu tercih ederseniz Bu öğreticiye uygun şekilde yönlendirilirsiniz.
     
-    * **Gen 2 için görüntüyü değiştirin** : gizli işlem sanal makineleri yalnızca [2. nesil](../virtual-machines/generation-2.md) görüntülerde çalışır. Seçtiğiniz görüntünün Gen 2 görüntüsü olduğundan emin olun. Sanal makineyi yapılandırmakta olduğunuz **Gelişmiş** sekmesine tıklayın. "VM oluşturma" etiketli bölümü buluncaya kadar aşağı kaydırın. Gen 2 ' yi seçin ve ardından **temel bilgiler** sekmesine dönün.
+    * **Gen 2 için görüntüyü değiştirin**: gizli işlem sanal makineleri yalnızca [2. nesil](../virtual-machines/generation-2.md) görüntülerde çalışır. Seçtiğiniz görüntünün Gen 2 görüntüsü olduğundan emin olun. Sanal makineyi yapılandırmakta olduğunuz **Gelişmiş** sekmesine tıklayın. "VM oluşturma" etiketli bölümü buluncaya kadar aşağı kaydırın. Gen 2 ' yi seçin ve ardından **temel bilgiler** sekmesine dönün.
     
 
         ![Gelişmiş sekmesi](media/quick-create-portal/advanced-tab-virtual-machine.png)
@@ -70,36 +70,36 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
         ![VM Oluşturma](media/quick-create-portal/gen2-virtual-machine.png)
 
-    * **Temel yapılandırmaya dön** : üstteki gezinmeyi kullanarak temel **bilgiler** sekmesine geri dönün.
+    * **Temel yapılandırmaya dön**: üstteki gezinmeyi kullanarak temel **bilgiler** sekmesine geri dönün.
 
-1. Boyut seçicideki gizli işlem özelliklerine sahip bir sanal makineyi, boyutu **Değiştir** ' i seçerek seçin. Sanal makine boyutu seçicisinde **tüm filtreleri temizle** ' ye tıklayın. **Filtre Ekle** ' yi seçin, filtre türü için **Aile** ' yi seçin ve yalnızca **gizli işlem** ' i seçin.
+1. Boyut seçicideki gizli işlem özelliklerine sahip bir sanal makineyi, boyutu **Değiştir**' i seçerek seçin. Sanal makine boyutu seçicisinde **tüm filtreleri temizle**' ye tıklayın. **Filtre Ekle**' yi seçin, filtre türü için **Aile** ' yi seçin ve yalnızca **gizli işlem**' i seçin.
 
     ![DCsv2-Series VM 'Ler](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Boyutları **DC1s_v2** , **DC2s_v2** , **DC4s_V2** ve **DC8_v2** görmeniz gerekir. Bunlar şu anda gizli bilgi işlem desteği olan tek sanal makine boyutlarıdır. [Daha fazla bilgi edinin](virtual-machine-solutions.md).
+    > Boyutları **DC1s_v2**, **DC2s_v2**, **DC4s_V2** ve **DC8_v2** görmeniz gerekir. Bunlar şu anda gizli bilgi işlem desteği olan tek sanal makine boyutlarıdır. [Daha fazla bilgi edinin](virtual-machine-solutions.md).
 
 1. Aşağıdaki bilgileri girin:
 
-   * **Kimlik doğrulama türü** : bir Linux sanal makinesi oluşturuyorsanız **SSH ortak anahtarını** seçin. 
+   * **Kimlik doğrulama türü**: bir Linux sanal makinesi oluşturuyorsanız **SSH ortak anahtarını** seçin. 
 
         > [!NOTE]
         > Kimlik doğrulaması için SSH ortak anahtarı veya Parola kullanabilirsiniz. SSH daha güvenlidir. SSH anahtarı oluşturma talimatları için bkz. [Azure'daki Linux VM için Linux ve Mac üzerinde SSH anahtarı oluşturma](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-    * **Kullanıcı adı** : VM için yönetici adını girin.
+    * **Kullanıcı adı**: VM için yönetici adını girin.
 
-    * **SSH ortak anahtarı** : varsa, RSA ortak anahtarınızı girin.
+    * **SSH ortak anahtarı**: varsa, RSA ortak anahtarınızı girin.
     
-    * **Parola** : uygunsa, kimlik doğrulaması için parolanızı girin.
+    * **Parola**: uygunsa, kimlik doğrulaması için parolanızı girin.
 
-    * **Ortak gelen bağlantı noktaları** : **Seçili bağlantı noktalarına izin ver** ' i seçin ve **ortak gelen bağlantı noktalarını seçin** listesinde **SSH (22)** ve **http (80)** seçeneğini belirleyin. Bir Windows VM dağıtıyorsanız, **http (80)** ve **RDP (3389)** öğesini seçin. Bu hızlı başlangıçta, sanal makineye bağlanmak ve açık şifreleme SDK yapılandırmasını gerçekleştirmek için bu adım gereklidir. 
+    * **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver** ' i seçin ve **ortak gelen bağlantı noktalarını seçin** listesinde **SSH (22)** ve **http (80)** seçeneğini belirleyin. Bir Windows VM dağıtıyorsanız, **http (80)** ve **RDP (3389)** öğesini seçin. Bu hızlı başlangıçta, sanal makineye bağlanmak ve açık şifreleme SDK yapılandırmasını gerçekleştirmek için bu adım gereklidir. 
 
      ![Gelen bağlantı noktaları](media/quick-create-portal/inbound-port-virtual-machine.png)
 
 
 1. **Diskler** sekmesinde değişiklik yapın.
 
-   * **DC1s_v2** , **DC2s_v2** **DC4s_V2** sanal makine seçerseniz, **Standart SSD** veya **Premium SSD** bir disk türü seçin. 
+   * **DC1s_v2**, **DC2s_v2** **DC4s_V2** sanal makine seçerseniz, **Standart SSD** veya **Premium SSD** bir disk türü seçin. 
    * **DC8_v2** bir sanal makine seçerseniz, disk türü olarak **Standart SSD** ' i seçin.
 
 1. Aşağıdaki sekmelerdeki ayarlarda istediğiniz değişiklikleri yapın veya varsayılan ayarları koruyun.
@@ -109,9 +109,9 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
     * **Konuk yapılandırması**
     * **Etiketler**
 
-1. **Gözden geçir + oluştur** ’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
-1. **Gözden geçir + oluştur** bölmesinde **Oluştur** ' u seçin.
+1. **Gözden geçir + oluştur** bölmesinde **Oluştur**' u seçin.
 
 > [!NOTE]
 > Bir sonraki bölüme ilerleyin ve bir Linux VM dağıttıysanız Bu öğreticiye devam edin. Bir Windows VM dağıttıysanız, Windows sanal makinenize bağlanmak ve ardından [OE SDK 'Yı Windows 'a yüklemek](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md) [için aşağıdaki adımları izleyin](../virtual-machines/windows/connect-logon.md) .
@@ -142,7 +142,7 @@ Windows üzerinde çalıştırıyorsanız ve BASH kabuğu yoksa, PuTTY gibi bir 
 Linux VM'lerinize bağlanma hakkında daha fazla bilgi için bkz. [Portal kullanarak Azure’da bir Linux VM oluşturma](../virtual-machines/linux/quick-create-portal.md).
 
 > [!NOTE]
-> Sunucunun ana bilgisayar anahtarı hakkında kayıt defterinde önbelleğe alınmamış bir PuTTY güvenlik uyarısı görürseniz, aşağıdaki seçeneklerden birini belirleyin. Bu konağa güveniyorsanız, anahtarı PuTTy 'in önbelleğine eklemek ve bağlanmaya devam etmek için **Evet** ' i seçin. Yalnızca bir kez bağlanmak istiyorsanız, anahtarı önbelleğe eklemeden, **Hayır** ' ı seçin. Bu konağa güvenmiyorsanız bağlantıyı bırakmak için **iptal** ' i seçin.
+> Sunucunun ana bilgisayar anahtarı hakkında kayıt defterinde önbelleğe alınmamış bir PuTTY güvenlik uyarısı görürseniz, aşağıdaki seçeneklerden birini belirleyin. Bu konağa güveniyorsanız, anahtarı PuTTy 'in önbelleğine eklemek ve bağlanmaya devam etmek için **Evet** ' i seçin. Yalnızca bir kez bağlanmak istiyorsanız, anahtarı önbelleğe eklemeden, **Hayır**' ı seçin. Bu konağa güvenmiyorsanız bağlantıyı bırakmak için **iptal** ' i seçin.
 
 ## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Açık Enclave SDK 'sını yükleme (OE SDK) <a id="Install"></a>
 
@@ -168,7 +168,7 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.4/linux/distro/ubuntuServer18.04/sgx_linux_x64_driver_1.21.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -193,7 +193,7 @@ Yüklü SDK 'Yı doğrulamak ve kullanmak için bkz. GitHub 'da [Open Enclave SD
 
 Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilişkili kaynakları silebilirsiniz. 
 
-Sanal makine için kaynak grubunu seçin ve **Sil** ' i seçin. Kaynakları silmeyi tamamlayacak kaynak grubunun adını onaylayın.
+Sanal makine için kaynak grubunu seçin ve **Sil**' i seçin. Kaynakları silmeyi tamamlayacak kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

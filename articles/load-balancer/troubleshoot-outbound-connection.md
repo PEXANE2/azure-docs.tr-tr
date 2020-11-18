@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: b75c85b85674def84d9fcee62549a6458abf9174
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 516576f4e005cc9fe2303945ecb1a13489908a5d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684857"
+ms.locfileid: "94696362"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Giden bağlantı hatalarıyla ilgili sorunları giderme
 
 Bu makale, bir Azure Load Balancer giden bağlantılarla ilgili sık karşılaşılan sorunlara yönelik çözümler sağlanması amacını taşımaktadır. Müşterilerin deneyimlerine giden bağlantı ile ilgili çoğu sorun, SNAT bağlantı noktası tükenmesi ve bırakılan paketlere yönelik bağlantı zaman aşımları nedeniyle yapılır. Bu makalede, bu sorunların her birini azaltmaya yönelik adımlar sağlanmaktadır.
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> SNAT (PAT) bağlantı noktası tükenmesi yönetimi
-[Pat](load-balancer-outbound-connections.md) Için kullanılan [kısa ömürlü bağlantı noktaları](load-balancer-outbound-connections.md) , genel IP [adresi olmayan tek BAŞıNA VM](load-balancer-outbound-connections.md) 'de ve [genel IP adresi olmayan yük dengeli VM](load-balancer-outbound-connections.md)'de açıklandığı gibi, tüketilmeyen bir kaynaktır. [Bu](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) Kılavuzu kullanarak, daha kısa ömürlü bağlantı noktaları kullanımınızı izleyebilir ve geçerli ayırınızla karşılaştırabilir.
+[Pat](load-balancer-outbound-connections.md) Için kullanılan [kısa ömürlü bağlantı noktaları](load-balancer-outbound-connections.md) , genel IP [adresi olmayan tek BAŞıNA VM](load-balancer-outbound-connections.md) 'de ve [genel IP adresi olmayan yük dengeli VM](load-balancer-outbound-connections.md)'de açıklandığı gibi, tüketilmeyen bir kaynaktır. [Bu](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) Kılavuzu kullanarak, daha kısa ömürlü bağlantı noktaları kullanımınızı izleyebilir ve geçerli ayırınızla karşılaştırabilir.
 
 Aynı hedef IP adresine ve bağlantı noktasına giden çok sayıda giden TCP veya UDP bağlantısı başlattığdığınızı ve başarısız olmuş bağlantıları gözlemlebildiğinizi veya SNAT bağlantı noktalarını ( [Pat](load-balancer-outbound-connections.md)tarafından kullanılan önceden ayrılan [kısa ömürlü bağlantı noktaları](load-balancer-outbound-connections.md#preallocatedports) ) tüketmenin bir şekilde önerdiğini biliyorsanız, çeşitli genel risk azaltma seçenekleriniz vardır. Bu seçenekleri gözden geçirin ve senaryonuz için nelerin kullanılabilir ve en iyisi olduğuna karar verin. Bir veya daha fazla bu senaryonun yönetilmesine yardımcı olabilir.
 

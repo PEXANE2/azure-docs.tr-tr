@@ -3,12 +3,12 @@ title: Kapsayıcı görüntülerini içeri aktarma
 description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API 'Lerini kullanarak kapsayıcı görüntülerini bir Azure Container Registry 'ye aktarın.
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541586"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695614"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini kapsayıcı kayıt defterine aktarma
 
@@ -36,7 +36,7 @@ Kapsayıcı görüntülerini içeri aktarmak için bu makale, Azure CLı 'yı Az
 > Aynı kapsayıcı görüntülerini birden çok Azure bölgesinde dağıtmanız gerekiyorsa Azure Container Registry [Coğrafi çoğaltmayı](container-registry-geo-replication.md)da destekler. Bir kayıt defteri coğrafi olarak çoğaltılırken (Premium hizmet katmanı gereklidir), tek bir kayıt defterinden aynı görüntü ve etiket adları ile birden çok bölgeye hizmet verebilirsiniz.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Zaten bir Azure Container kayıt defteriniz yoksa bir kayıt defteri oluşturun. Adımlar için bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md).
 
@@ -46,7 +46,7 @@ Bir görüntüyü Azure Container Registry 'ye aktarmak için, kimliğinizin hed
 
 ### <a name="import-from-docker-hub"></a>Docker Hub 'dan içeri aktar
 
-Örneğin, [az acr import][az-acr-import] `hello-world:latest` Docker Hub 'ından Multi-Architecture görüntüsünü *myregistry*adlı bir kayıt defterine aktarmak için az ACR Import komutunu kullanın. `hello-world`, Docker Hub 'ından resmi bir görüntü olduğundan, bu görüntü varsayılan `library` depodadır. Depo adını ve isteğe bağlı olarak Image parametresinin değerine bir etiketi ekleyin `--source` . (Bir görüntüyü, bir görüntünün belirli bir sürümünü garanti eden etiketi yerine, bildirim özetine göre belirleyebilirsiniz.)
+Örneğin, [az acr import][az-acr-import] `hello-world:latest` Docker Hub 'ından Multi-Architecture görüntüsünü *myregistry* adlı bir kayıt defterine aktarmak için az ACR Import komutunu kullanın. `hello-world`, Docker Hub 'ından resmi bir görüntü olduğundan, bu görüntü varsayılan `library` depodadır. Depo adını ve isteğe bağlı olarak Image parametresinin değerine bir etiketi ekleyin `--source` . (Bir görüntüyü, bir görüntünün belirli bir sürümünü garanti eden etiketi yerine, bildirim özetine göre belirleyebilirsiniz.)
  
 ```azurecli
 az acr import \
@@ -144,7 +144,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Farklı bir AD kiracısındaki Azure Container Registry 'den içeri aktarma
@@ -157,7 +157,7 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Azure olmayan özel kapsayıcı kayıt defterinden içeri aktarma

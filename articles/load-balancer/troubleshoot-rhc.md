@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855260"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696328"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Kaynak durumu, ön uç ve arka uç kullanılabilirliği sorunlarını giderme 
 
@@ -52,7 +52,7 @@ Durum araştırma durumumuzu denetliyoruz ve tüm örneklerin sağlıksız olara
   * Bu NSG sorununu bulursanız, mevcut Izin verme kuralını taşıyın veya AzureLoadBalancer trafiğe izin vermek için yeni bir yüksek öncelikli kural oluşturun
 * İşletim sistemini kontrol edin. Sanal makinelerinizin araştırma bağlantı noktasında dinleme yaptığı ve IP adresinden kaynaklanan araştırma trafiğini engellemediğinden emin olmak için işletim sistemi güvenlik duvarı kurallarını gözden geçirdiklerinden emin olun. 168.63.129.16
   * Bir Linux terminalinde netstat-a Windows komut istemi veya netstat-l komutunu çalıştırarak dinleme bağlantı noktalarını kontrol edebilirsiniz
-* Yük dengeleyicinin arka uç havuzunda bir güvenlik duvarı NVA VM yerleştirmeyin, güvenlik duvarı üzerinden trafiği arka uç örneklerine yönlendirmek için [Kullanıcı tanımlı yolları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) kullanın
+* Yük dengeleyicinin arka uç havuzunda bir güvenlik duvarı NVA VM yerleştirmeyin, güvenlik duvarı üzerinden trafiği arka uç örneklerine yönlendirmek için [Kullanıcı tanımlı yolları](../virtual-network/virtual-networks-udr-overview.md#user-defined) kullanın
 * Http olmayan bir uygulamayı dinleyen bir bağlantı noktasını yoklamek için HTTP kullanıyorsanız, doğru protokolü kullandığınızdan emin olun. araştırma başarısız olur
 
 Bu denetim noktasından geçmiş ve hala durum araştırma hataları buldıysanız, örneklerinizin araştırma hizmetini etkileyen çok nadir platform sorunları olabilir. Bu durumda, Azure geri ve tüm platform sorunlarını hızlı bir şekilde çözmek için ekibimize otomatik bir uyarı gönderilir.
@@ -61,5 +61,3 @@ Bu denetim noktasından geçmiş ve hala durum araştırma hataları buldıysan�
 
 * [Azure Load Balancer sistem durumu araştırması hakkında daha fazla bilgi edinin](load-balancer-custom-probe-overview.md)
 * [Azure Load Balancer ölçümleri hakkında daha fazla bilgi edinin](load-balancer-standard-diagnostics.md)
-
-

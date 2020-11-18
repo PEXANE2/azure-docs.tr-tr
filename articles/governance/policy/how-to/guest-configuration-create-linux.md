@@ -4,12 +4,12 @@ description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı 
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346885"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694251"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkelerini oluşturma
 
@@ -163,10 +163,10 @@ Destekleyici dosyaların birlikte paketlenmesi gerekir. Tamamlanmış paket, Azu
 
 `New-GuestConfigurationPackage`Cmdlet 'i paketi oluşturur. `New-GuestConfigurationPackage`Linux içeriği oluşturulurken cmdlet 'in parametreleri:
 
-- **Ad** : Konuk yapılandırma paketi adı.
-- **Yapılandırma** : derlenen yapılandırma belgesi tam yolu.
-- **Yol** : çıkış klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmezse, paket geçerli dizinde oluşturulur.
-- **Chefinspecprofilepath** : InSpec profiline yönelik tam yol. Bu parametre yalnızca Linux 'u denetlemek için içerik oluşturulurken desteklenir.
+- **Ad**: Konuk yapılandırma paketi adı.
+- **Yapılandırma**: derlenen yapılandırma belgesi tam yolu.
+- **Yol**: çıkış klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmezse, paket geçerli dizinde oluşturulur.
+- **Chefinspecprofilepath**: InSpec profiline yönelik tam yol. Bu parametre yalnızca Linux 'u denetlemek için içerik oluşturulurken desteklenir.
 
 Önceki adımda verilen yapılandırmayı kullanarak bir paket oluşturmak için aşağıdaki komutu çalıştırın:
 
@@ -183,9 +183,9 @@ Aracı gerçekten yerel ortamı değerlendirdiğinden, çoğu durumda test-cmdle
 
 `Test-GuestConfigurationPackage`Cmdlet parametreleri:
 
-- **Ad** : Konuk yapılandırma ilkesi adı.
-- **Parametre** : Hashtable biçiminde belirtilen ilke parametreleri.
-- **Yol** : Konuk yapılandırma paketinin tam yolu.
+- **Ad**: Konuk yapılandırma ilkesi adı.
+- **Parametre**: Hashtable biçiminde belirtilen ilke parametreleri.
+- **Yol**: Konuk yapılandırma paketinin tam yolu.
 
 Önceki adım tarafından oluşturulan paketi test etmek için aşağıdaki komutu çalıştırın:
 
@@ -210,13 +210,13 @@ Konuk yapılandırması özel ilke paketi oluşturulduktan ve karşıya yüklend
 
 `New-GuestConfigurationPolicy`Cmdlet parametreleri:
 
-- **ContentUri** : Konuk yapılandırması içerik paketinin genel HTTP URI 'si.
-- **DisplayName** : ilke görünen adı.
-- **Açıklama** : ilke açıklaması.
-- **Parametre** : Hashtable biçiminde belirtilen ilke parametreleri.
-- **Sürüm** : ilke sürümü.
-- **Yol** : ilke tanımlarının oluşturulduğu hedef yol.
-- **Platform** : Konuk yapılandırma ilkesi ve içerik paketi için hedef platform (Windows/Linux).
+- **ContentUri**: Konuk yapılandırması içerik paketinin genel HTTP URI 'si.
+- **DisplayName**: ilke görünen adı.
+- **Açıklama**: ilke açıklaması.
+- **Parametre**: Hashtable biçiminde belirtilen ilke parametreleri.
+- **Sürüm**: ilke sürümü.
+- **Yol**: ilke tanımlarının oluşturulduğu hedef yol.
+- **Platform**: Konuk yapılandırma ilkesi ve içerik paketi için hedef platform (Windows/Linux).
 - **Etiket** , ilke tanımına bir veya daha fazla etiket filtresi ekler
 - **Kategori** , ilke tanımındaki kategori meta verileri alanını ayarlar
 
@@ -241,7 +241,7 @@ Cmdlet çıktısı, ilke dosyalarının girişim görünen adını ve yolunu iç
 
 Son olarak, cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` . Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` .
 
-Yayımla komutunu çalıştırmak için Azure 'da Ilke oluşturma erişiminizin olması gerekir. Belirli yetkilendirme gereksinimleri, [Azure Ilkesine genel bakış](../overview.md) sayfasında belgelenmiştir. En iyi yerleşik rol, **kaynak Ilkesi katılımcısı** ' dir.
+Yayımla komutunu çalıştırmak için Azure 'da Ilke oluşturma erişiminizin olması gerekir. Belirli yetkilendirme gereksinimleri, [Azure Ilkesine genel bakış](../overview.md) sayfasında belgelenmiştir. En iyi yerleşik rol, **kaynak Ilkesi katılımcısı**' dir.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
@@ -330,9 +330,9 @@ Configuration AuditFilePathExists
 > [!NOTE]
 > `version`Konuk yapılandırma atamasının özelliği yalnızca Microsoft tarafından barındırılan etkiler. Özel içerik sürümü oluşturma için en iyi yöntem, dosyanın dosya adına dahil edileceğini içerir.
 
-- **Sürüm** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir.
-- **contentUri** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, PAKETIN konumuna bir URI belirtmeniz gerekir. Dosya adında bir paket sürümü de dahil olmak üzere, bu özelliğin değeri her sürümde değişir.
-- **contentHash** : Bu özellik, cmdlet 'i tarafından otomatik olarak güncelleştirilir `New-GuestConfigurationPolicy` . Tarafından oluşturulan paketin karma değeridir `New-GuestConfigurationPackage` . Özelliği, yayımladığınız dosya için doğru olmalıdır `.zip` . Yalnızca **contentUri** özelliği güncelleştirilirse, uzantı içerik paketini kabul etmez.
+- **Sürüm**: `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir.
+- **contentUri**: `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, PAKETIN konumuna bir URI belirtmeniz gerekir. Dosya adında bir paket sürümü de dahil olmak üzere, bu özelliğin değeri her sürümde değişir.
+- **contentHash**: Bu özellik, cmdlet 'i tarafından otomatik olarak güncelleştirilir `New-GuestConfigurationPolicy` . Tarafından oluşturulan paketin karma değeridir `New-GuestConfigurationPackage` . Özelliği, yayımladığınız dosya için doğru olmalıdır `.zip` . Yalnızca **contentUri** özelliği güncelleştirilirse, uzantı içerik paketini kabul etmez.
 
 Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır. Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin garanti eder.
 
@@ -375,8 +375,8 @@ Imza doğrulama özelliğini kullanmak için, `Protect-GuestConfigurationPackage
 
 `Protect-GuestConfigurationPackage`Cmdlet parametreleri:
 
-- **Yol** : Konuk yapılandırma paketinin tam yolu.
-- **Publicgpgkeypath** : genel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
+- **Yol**: Konuk yapılandırma paketinin tam yolu.
+- **Publicgpgkeypath**: genel GPG anahtar yolu. Bu parametre yalnızca Linux için içerik imzalanırken desteklenir.
 
 Linux makinelerle kullanılmak üzere GPG anahtarları oluşturmaya yönelik iyi bir başvuru, GitHub 'daki bir makale tarafından sağlanır ve [Yeni BIR gpg anahtarı](https://help.github.com/en/articles/generating-a-new-gpg-key)oluşturur.
 
@@ -384,12 +384,6 @@ GuestConfiguration Aracısı, Linux makinelerdeki yolda sertifika ortak anahtar�
 Key Vault erişim ilkesi, dağıtım sırasında Işlem Kaynak sağlayıcısının sertifikalara erişmesine izin vermelidir. Ayrıntılı adımlar için bkz. [Azure Resource Manager sanal makineler için Key Vault ayarlama](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 İçeriğiniz yayımlandıktan sonra, `GuestConfigPolicyCertificateValidation` `enabled` kod imzasının gerekli olması gereken tüm sanal makinelere ad ve değer içeren bir etiket ekleyin. Etiketlerin Azure Ilkesi kullanılarak nasıl ölçeklenebilmesini için [etiket örneklerine](../samples/built-in-policies.md#tags) bakın. Bu etiket oluşturulduktan sonra cmdlet kullanılarak oluşturulan ilke tanımı, `New-GuestConfigurationPolicy` Konuk yapılandırma uzantısı aracılığıyla gereksinimi mümkün bir şekilde sunar.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Konuk yapılandırma ilkesi atamaları sorunlarını giderme (Önizleme)
-
-Azure Ilke Konuk yapılandırması atamaları sorunlarını gidermeye yardımcı olmak için Önizleme sürümünde bir araç sunulmaktadır. Araç önizlemededir ve modül adı [Konuk yapılandırması sorun giderici](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)olarak PowerShell Galerisi yayımlandı.
-
-Bu araçtaki cmdlet 'ler hakkında daha fazla bilgi için, yerleşik Kılavuzu göstermek üzere PowerShell 'deki Get-Help komutunu kullanın. Araç sık sık güncelleştirmeler alırken bu, en son bilgileri almanın en iyi yoludur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

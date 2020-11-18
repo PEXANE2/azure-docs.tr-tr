@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 99e9e53693e42f907250331894f55ed0160f9e30
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577524"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695110"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -253,7 +253,7 @@ VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* i
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 
-CSP ile yönetilen abonelikler için müşterinin isteği iş ortağı için gerçekleştirmesi gerekir ve iş ortağı ekibi, abonelik için artan kotayı sağlamak üzere Microsoft ile birlikte çalışır. 
+CSP ile yönetilen abonelikler için müşterinin isteği iş ortağı için gerçekleştirmesi gerekir ve iş ortağı ekibi, abonelik için artan kotayı sağlamak üzere Microsoft ile birlikte çalışır. Daha fazla bilgi için, Ayrıntılar için bkz. [Azure VMware Çözüm kaynağını etkinleştirme makalesi](enable-azure-vmware-solution.md) . 
 
 EA abonelikleri için, müşterinin bu yordamı izlemesi gerekir.
 
@@ -299,6 +299,10 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizi ayırma
 #### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
 
 Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+
+#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+
+No. Currently Azure VMware Solution does not offer multi-tenancy.
 
 
 ## Customer communication

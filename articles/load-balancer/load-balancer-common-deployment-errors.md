@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84221003"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695563"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer ile yaygın Azure dağıtım hatalarını giderme
 
@@ -35,11 +35,11 @@ Bu makalede bazı yaygın Azure Load Balancer dağıtım hataları açıklanmakt
 |Cannotuseinactivehealtharaştırması| Sanal makine ölçek kümesi sistem durumu için yapılandırılmış herhangi bir kural tarafından kullanılmayan bir araştırmanız yok. Ayarlanan araştırmanın etkin bir şekilde kullanıldığından emin olun. |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Aynı türde (iç, genel) birden fazla yük dengeleyicileri olamaz. En fazla bir adet iç ve bir ortak Load Balancer olabilir. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Temel Load Balancer, birden çok yerleştirme grubu sanal makine ölçek kümeleri veya çapraz kullanılabilirlik Bölgesi sanal makine ölçek kümesi için desteklenmez. Bunun yerine Standart Load Balancer kullanın. |
-|MarketplacePurchaseEligibilityFailed | Aboneliğin EA aboneliği olması nedeniyle satın alma işlemlerini etkinleştirmek için doğru yönetici hesabına geçin. [Buradan](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase) daha fazla bilgi edinebilirsiniz. |
-|ResourceDeploymentFailure| Yük dengeleyiciniz başarısız durumdaysa, başarısız durumundan geri getirmek için şu adımları izleyin:<ol><li>Adresine gidin https://resources.azure.com ve Azure Portal kimlik bilgilerinizle oturum açın.</li><li>**Oku/yaz**seçeneğini belirleyin.</li><li>Sol tarafta, **abonelikler**' i genişletin ve ardından güncelleştirilecek Load Balancer aboneliği genişletin.</li><li>**ResourceGroups**' ı genişletin ve sonra güncelleştirmek için Load Balancer kaynak grubunu genişletin.</li><li>**Microsoft. Network**  >  **LoadBalancers**' ı seçin ve sonra güncelleştirmek Load Balancer **LoadBalancer_1**seçin.</li><li>**LoadBalancer_1**için görüntüleme sayfasında düzenleme **Al**' ı seçin  >  **Edit**.</li><li>**Provisioningstate** değeri **başarıyla** **güncelleştirilemedi.**</li><li>**PUT**'u seçin.</li></ol>|
+|MarketplacePurchaseEligibilityFailed | Aboneliğin EA aboneliği olması nedeniyle satın alma işlemlerini etkinleştirmek için doğru yönetici hesabına geçin. [Buradan](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase) daha fazla bilgi edinebilirsiniz. |
+|ResourceDeploymentFailure| Yük dengeleyiciniz başarısız durumdaysa, başarısız durumundan geri getirmek için şu adımları izleyin:<ol><li>Adresine gidin https://resources.azure.com ve Azure Portal kimlik bilgilerinizle oturum açın.</li><li>**Oku/yaz** seçeneğini belirleyin.</li><li>Sol tarafta, **abonelikler**' i genişletin ve ardından güncelleştirilecek Load Balancer aboneliği genişletin.</li><li>**ResourceGroups**' ı genişletin ve sonra güncelleştirmek için Load Balancer kaynak grubunu genişletin.</li><li>**Microsoft. Network**  >  **LoadBalancers**' ı seçin ve sonra güncelleştirmek Load Balancer **LoadBalancer_1** seçin.</li><li>**LoadBalancer_1** için görüntüleme sayfasında düzenleme **Al**' ı seçin  >  **Edit**.</li><li>**Provisioningstate** değeri **başarıyla** **güncelleştirilemedi.**</li><li>**PUT**'u seçin.</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Load Balancer [SKU karşılaştırma tablosuna](./skus.md) bakın
-* [Azure Load Balancer sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) hakkında bilgi edinin
+* [Azure Load Balancer sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer) hakkında bilgi edinin

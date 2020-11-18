@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: d57dfd0a496e71c1f0e6ddea839723da35bc5f76
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686251"
+ms.locfileid: "94694890"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer izlemek ve yapılandırmak için öngörüleri kullanma
 
@@ -26,7 +26,7 @@ Ağlarda Azure Izleyici aracılığıyla, yük dengeleyiciler için işlevsel ba
 >Bu özelliğin önizlemededir ve işlev bağımlılığı görünümü ve önceden yapılandırılmış Pano bu deneyimi geliştirmek için değişebilir
 
 >[!IMPORTANT]
->Önceden yapılandırılmış ölçümler panosundaki Load Balancer ad alanındaki ölçümleri görmek için Standart Load Balancer gereklidir. Yine de VM, sanal makine ölçek kümesi ve bağlantı Izleyicisi ad alanlarından ölçümleri görebileceksiniz, ancak güçlü Load Balancer ölçümlerinin avantajlarından yararlanmak için herhangi bir üretim iş yükleri için [Standart sürümüne yükseltmeniz](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard) önerilir.
+>Önceden yapılandırılmış ölçümler panosundaki Load Balancer ad alanındaki ölçümleri görmek için Standart Load Balancer gereklidir. Yine de VM, sanal makine ölçek kümesi ve bağlantı Izleyicisi ad alanlarından ölçümleri görebileceksiniz, ancak güçlü Load Balancer ölçümlerinin avantajlarından yararlanmak için herhangi bir üretim iş yükleri için [Standart sürümüne yükseltmeniz](./upgrade-basic-standard.md) önerilir.
 
 ## <a name="functional-dependency-view"></a>İşlevsel bağımlılık görünümü
 
@@ -40,7 +40,7 @@ Standart yük dengeleyiciler için, arka uç havuzu kaynaklarınız, arka uç ha
 
 ## <a name="metrics-dashboard"></a>Ölçümler panosu
 
-Load Balancer Öngörüler dikey penceresinde, Load Balancer belirli yönleriyle ilgili ölçüm görselleri içeren önceden yapılandırılmış bir [Azure Izleyici çalışma kitabını](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) görüntülemek Için daha ayrıntılı ölçümler ' i seçebilirsiniz. Bu panoda, sayfanın üst kısmında Load Balancer durum ve ilgili belgelerin bağlantıları gösterilir.
+Load Balancer Öngörüler dikey penceresinde, Load Balancer belirli yönleriyle ilgili ölçüm görselleri içeren önceden yapılandırılmış bir [Azure Izleyici çalışma kitabını](../azure-monitor/platform/workbooks-overview.md) görüntülemek Için daha ayrıntılı ölçümler ' i seçebilirsiniz. Bu panoda, sayfanın üst kısmında Load Balancer durum ve ilgili belgelerin bağlantıları gösterilir.
 
 İlk olarak genel bakış sekmesi görüntülenir. Her birinde, Load Balancer belirli bir yönüyle ilgili görseller içeren kullanılabilir sekmelerde gezinebilirsiniz. Her birinin açık Kılavuzu, panoda her sekmenin en altında bulunur.
 
@@ -68,16 +68,16 @@ Veri Işleme sekmesi, trafik desenlerinizin beklenen şekilde olup olmadığın�
 ### <a name="flow-distribution"></a>Akış Dağıtımı
 Akış dağıtımı sekmesi, arka uç örneklerinizin aldığı ve üreteceği akış sayısını görselleştirmenize ve yönetmenize yardımcı olur. Gelen ve giden trafik için akış oluşturma hızını ve akış sayısını, her VM ve sanal makine ölçek kümesi örneğinin aldığı ağ trafiğini gösterir. 
 
-Bu görünümler, Load Balancer yapılandırmanızın veya trafik desenlerinizin imdenen dengeli trafiğe göre önde olup olmadığı hakkında geri bildirim verebilir. Örneğin, oturum benzeşiminin yapılandırılmış olması ve tek bir istemcinin orantısız sayıda istek yapmasını istiyorsanız. Ayrıca, makine boyutunuz için [VM başına akış sınırına](https://docs.microsoft.com/azure/virtual-network/virtual-machine-network-throughput#flow-limits-and-recommendations) yaklaşıp yaklaşmayacağını da öğrenirsiniz.
+Bu görünümler, Load Balancer yapılandırmanızın veya trafik desenlerinizin imdenen dengeli trafiğe göre önde olup olmadığı hakkında geri bildirim verebilir. Örneğin, oturum benzeşiminin yapılandırılmış olması ve tek bir istemcinin orantısız sayıda istek yapmasını istiyorsanız. Ayrıca, makine boyutunuz için [VM başına akış sınırına](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) yaklaşıp yaklaşmayacağını da öğrenirsiniz.
 
 ### <a name="connection-monitors"></a>Bağlantı İzleyicileri
-Bağlantı Izleyicileri sekmesi, yapılandırdığınız tüm [bağlantı izlemeleri](https://docs.microsoft.com/azure/network-watcher/connection-monitor)  için bir genel haritada gidiş dönüş gecikme süresini gösterir. Bu görseller, katı gecikme gereksinimlerine sahip hizmetler için yararlı bilgiler sağlar. Gereksinimlerinizi karşılamak için, ek bölgesel dağıtımlar eklemeniz veya bir [çapraz bölgesel yük dengeleme](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) modeline taşımanız gerekebilir
+Bağlantı Izleyicileri sekmesi, yapılandırdığınız tüm [bağlantı izlemeleri](../network-watcher/connection-monitor.md)  için bir genel haritada gidiş dönüş gecikme süresini gösterir. Bu görseller, katı gecikme gereksinimlerine sahip hizmetler için yararlı bilgiler sağlar. Gereksinimlerinizi karşılamak için, ek bölgesel dağıtımlar eklemeniz veya bir [çapraz bölgesel yük dengeleme](./cross-region-overview.md) modeline taşımanız gerekebilir
 
 ### <a name="metric-definitions"></a>Ölçüm Tanımları
-Ölçüm tanımları sekmesi, [çok boyutlu ölçümler makalesinde](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)gösterilen tüm bilgileri içerir.
+Ölçüm tanımları sekmesi, [çok boyutlu ölçümler makalesinde](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)gösterilen tüm bilgileri içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Daha sonra iyileştirilen bir şey varsa panoyu gözden geçirin ve aşağıdaki bağlantıyı kullanarak geri bildirim sağlayın
-* [Her ölçümün nasıl hesaplanacağını anladığınızdan emin olmak için ölçüm belgelerini gözden geçirin](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)
-* [Load Balancer için bağlantı Izleyicileri oluşturun](https://docs.microsoft.com/azure/network-watcher/connection-monitor)
-* [Kendi çalışma kitaplarınızı oluşturun](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview), ayrıntılı ölçüm panonuzdaki Düzenle düğmesine tıklayarak ilham alma yapabilirsiniz
+* [Her ölçümün nasıl hesaplanacağını anladığınızdan emin olmak için ölçüm belgelerini gözden geçirin](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
+* [Load Balancer için bağlantı Izleyicileri oluşturun](../network-watcher/connection-monitor.md)
+* [Kendi çalışma kitaplarınızı oluşturun](../azure-monitor/platform/workbooks-overview.md), ayrıntılı ölçüm panonuzdaki Düzenle düğmesine tıklayarak ilham alma yapabilirsiniz

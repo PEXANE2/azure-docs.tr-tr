@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f165064ed5b0583ebb469c47426a2b6403307971
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4e07285eca0fd10b73b386fcf139cdad5b94ddc2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048364"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696413"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak Standart Yük Dengeleyici ile kullanılabilirlik alanları arasındaki sanal makinelerde yük dengeleme
 
@@ -37,7 +37,7 @@ Yük dengeleme, gelen istekleri birden çok sanal makineye dağıtarak yüksek d
 
 Standart Load Balancer ile kullanılabilirlik bölgelerini kullanma hakkında daha fazla bilgi için bkz. [Standart Load Balancer ve kullanılabilirlik alanları](load-balancer-standard-availability-zones.md).
 
-Tercih ederseniz, [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) kullanarak bu öğreticiyi tamamlayabilirsiniz.
+Tercih ederseniz, [Azure CLI](./quickstart-load-balancer-standard-public-cli.md) kullanarak bu öğreticiyi tamamlayabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
@@ -53,7 +53,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Standart Yük Dengeleyici yalnızca Standart Genel IP adresini destekler. Yük dengeleyiciyi oluştururken yeni bir genel IP oluşturduğunuzda, bir Standart SKU sürümü halinde otomatik olarak yapılandırılır ve ayrıca otomatik olarak alanlar arası yedeklidir.
 
-1. Ekranın sol üst kısmında **kaynak**  >  **ağ**  >  **Load Balancer**oluştur ' a tıklayın.
+1. Ekranın sol üst kısmında **kaynak**  >  **ağ**  >  **Load Balancer** oluştur ' a tıklayın.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
     | Ayar                 | Değer                                              |
@@ -61,12 +61,12 @@ Standart Yük Dengeleyici yalnızca Standart Genel IP adresini destekler. Yük d
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *MyResourceGroupLBAZ* yazın.|
     | Ad                   | *myLoadBalancer*                                   |
-    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
+    | Region         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
     | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   |
-    |Kullanılabilirlik alanı| **Bölge yedekli**seçeneğini belirleyin.    |
+    |Kullanılabilirlik alanı| **Bölge yedekli** seçeneğini belirleyin.    |
    
 
 ## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
@@ -114,7 +114,7 @@ Bu bölümde, Azure portalı ile HTTP ve RDP kullanarak gelen bağlantılara izi
     - **Öncelik** için *100*
     - *myHTTPRule* - Yük dengeleyici kuralının adı.
     - *HTTP’ye izin ver* - Yük dengeleyici kuralının açıklaması.
-4. **Tamam**'a tıklayın.
+4. **Tamam** düğmesine tıklayın.
  
    ![Ekran görüntüsü, gelen güvenlik kuralı ekle bölmesini gösterir.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 2 - 4 arası adımları yineleyerek, aşağıdaki değerlerle 3389 numaralı bağlantı noktasını kullanarak gelen RDP bağlantısına izin vermek için *myRDPRule* adlı başka bir kural oluşturun:
@@ -135,7 +135,7 @@ Yük dengeleyicinin arka uç sunucuları olarak hareket edebilen bölge için fa
     - Sanal makinenin adı için *myVM1*.        
     - Yönetici kullanıcı adı için *azureuser*.    
     - *myResourceGroupLBAZ* - **Kaynak grubu** için **Var olanı kullan**’ı seçin ve sonra *myResourceGroupLBAZ* seçeneğini belirleyin.
-2. **Tamam**'a tıklayın.
+2. **Tamam** düğmesine tıklayın.
 3. Sanal makinenin boyutu için **DS1_V2** seçeneğini belirleyin ve **Seç**’e tıklayın.
 4. Sanal makine ayarları için şu değerleri girin:
     - *bölge 1* - VM’yi yerleştirdiğiniz bölge.
@@ -179,7 +179,7 @@ Trafiği VM’lere dağıtmak için, bir arka uç adres havuzunda yük dengeleyi
 1. Sol menüden **Tüm kaynaklar**’a tıklayın ve sonra kaynak listesinden **myLoadBalancer** seçeneğine tıklayın.
 2. **Ayarlar** bölümünde **Arka uç havuzları**’na ve sonra **Ekle**’ye tıklayın.
 3. **Arka uç havuzu ekle** sayfasında aşağıdakileri yapın:
-    - Ad için, arka uç havuzunuzun adı olarak *Mybackendpool*yazın.
+    - Ad için, arka uç havuzunuzun adı olarak *Mybackendpool* yazın.
     - **Sanal ağ** için açılır menüde **myVNet** öğesine tıklayın
     - **Sanal makine** için açılır menüde **myVM1** öğesine tıklayın.
     - **IP adresi** için açılır menüde myVM1’in IP adresine tıklayın.
@@ -202,7 +202,7 @@ Yük dengeleyicinin uygulamanızın durumunu izlemesine izin vermek için durum 
     - Bağlantı noktası numarası için *80*.
     - Araştırma denemeleri arasındaki saniye cinsinden **Aralık** için *15*.
     - Bir sanal makinenin sağlıksız olduğu kanısına varılmadan önce gerçekleşmesi gereken ardışık araştırma hatası veya **Sağlıksız eşik** sayısı için *2*.
-4. **Tamam**'a tıklayın.
+4. **Tamam** düğmesine tıklayın.
 
    ![Araştırma ekleme](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
 
@@ -219,7 +219,7 @@ Trafiğin VM’lere dağıtımını tanımlamak için bir yük dengeleyici kural
     - Arka uç bağlantı noktası için *80*.
     - Arka uç havuzunun adı için *myBackendPool*.
     - Durum araştırmasının adı için *myHealthProbe*.
-4. **Tamam**'a tıklayın.
+4. **Tamam** düğmesine tıklayın.
     
     
     ![Yük dengeleme kuralı ekleme](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)

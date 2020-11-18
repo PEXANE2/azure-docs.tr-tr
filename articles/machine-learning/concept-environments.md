@@ -1,23 +1,22 @@
 ---
 title: Azure Machine Learning ortamları hakkında
 titleSuffix: Azure Machine Learning
-description: Bu makalede, çeşitli bilgi işlem hedefleri genelinde tekrarlanabilir, denetlenebilir ve taşınabilir makine öğrenimi bağımlılık tanımlarını etkinleştiren makine öğrenimi ortamlarının avantajlarını öğrenin.
+description: Çeşitli işlem hedeflerine yönelik tekrarlanabilir, denetlenebilir & taşınabilir makine öğrenimi bağımlılık tanımlarını etkinleştiren makine öğrenimi ortamları hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
-ms.date: 07/08/2020
-ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322188"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695393"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning ortamları nelerdir?
-
 
 Azure Machine Learning ortamlar, Machine Learning eğitiminin gerçekleştiği ortamın kapsüllenmesi. Bunlar, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, ortam değişkenlerini ve yazılım ayarlarını belirler. Bunlar ayrıca çalışma zamanlarını belirtir (Python, Spark veya Docker). Ortamlar, Machine Learning çalışma alanınızda, çeşitli bilgi işlem hedefleri genelinde tekrarlanabilir, denetlenebilir ve taşınabilir makine öğrenimi iş akışlarını etkinleştiren yönetilen ve sürümlü varlıklardır.
 
@@ -35,7 +34,7 @@ Ortam, işlem hedefi ve eğitim betiği çalıştırma yapılandırması: bir e�
 
 ## <a name="types-of-environments"></a>Ortam türleri
 
-Ortamlar, yaygın olarak üç kategoriye ayrılabilir: *seçkin* , *Kullanıcı tarafından yönetilen* ve *sistem tarafından yönetilen*.
+Ortamlar, yaygın olarak üç kategoriye ayrılabilir: *seçkin*, *Kullanıcı tarafından yönetilen* ve *sistem tarafından yönetilen*.
 
 Seçkin ortamlar Azure Machine Learning tarafından sağlanır ve varsayılan olarak çalışma alanınızda kullanılabilir. Olduğu gibi kullanılması amaçlanan, çeşitli makine öğrenimi çerçeveleri ile çalışmaya başlamanıza yardımcı olacak Python paketleri ve ayarları koleksiyonlarını içerir. Bu önceden oluşturulmuş ortamlar, daha hızlı dağıtım süresine de olanak tanır. Tam liste için bkz. [seçkin ortamlar makalesi](resource-curated-environments.md).
 

@@ -4,17 +4,17 @@ description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanara
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: a9f6ead7edea7a3a6240e116d3073ea01fa9f6bb
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900105"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696005"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
 > [!WARNING]
-> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme) kullanımdan kaldırma için ayarlanmıştır ve bu durumda,** [aks için Azure Ilkesi](use-pod-security-on-azure-policy.md)'nin 1 Şubat 2021 ' den sonra sunulmayacaktır. Kullanımdan kaldırma tarihi, 15 Ekim 2020 ' in önceki tarihinden itibaren genişletilmiştir.
+> **Bu belgede açıklanan özellik, Pod güvenlik ilkesi (Önizleme) kullanımdan kaldırma için ayarlanmıştır ve** ücretsiz olarak, [aks için Azure Ilkesi](use-pod-security-on-azure-policy.md)'nin 31 Mayıs 2021 ' den sonra kullanılamayacak. Kullanımdan kaldırma tarihi, 15 Ekim 2020 ' in önceki tarihinden itibaren genişletilmiştir.
 >
 > Pod güvenlik ilkesi (Önizleme) kullanım dışı olduktan sonra, gelecekteki küme yükseltmelerini gerçekleştirmek ve Azure desteği içinde kalmak için kullanımdan kaldırılan özelliği kullanarak mevcut kümelerin özelliğini devre dışı bırakmanız gerekir.
 >
@@ -375,7 +375,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Pod başarıyla zamanlandı. [Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'un durumunu denetlediğinizde, Pod *çalışır* :
+Pod başarıyla zamanlandı. [Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'un durumunu denetlediğinizde, Pod *çalışır*:
 
 ```
 $ kubectl-nonadminuser get pods

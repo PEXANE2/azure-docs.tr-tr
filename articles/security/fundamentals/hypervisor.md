@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 1f81285e869bd2c65cce29766de0b2bd39a627f6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 766266edd663b75b893a5883e30bb48eed7bbfdf
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558047"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696125"
 ---
 # <a name="hypervisor-security-on-the-azure-fleet"></a>Azure filo 'de hiper yönetici güvenliği
 
@@ -26,7 +26,7 @@ Azure Hiper Yöneticisi, aşağıdaki güvenlik hedeflerini göz önünde bulund
 | Yalıtım | Bir güvenlik ilkesi, VM 'Ler arasında hiçbir bilgi aktarımı yok. Bu kısıtlama, belleğin, cihazların, ağın ve kalıcı veriler gibi yönetilen kaynakların yalıtımına yönelik Virtual Machine Manager (VMM) ve donanımda yetenek gerektirir. |
 | VMM bütünlüğü | Genel sistem bütünlüğünü sağlamak için, tek tek hiper yönetici bileşenlerinin bütünlüğü oluşturulur ve korunur. |
 | Platform bütünlüğü | Hiper yöneticinin bütünlüğü, temel aldığı donanım ve yazılımların bütünlüğüyle farklılık gösterir. Hiper yönetici platformun bütünlüğü üzerinde doğrudan denetime sahip olmasa da, Azure temel platform bütünlüğünü korumak ve algılamak için [Cerberus](project-cerberus.md) yonga gibi donanım ve bellenim mekanizmalarını kullanır. Platform bütünlüğü tehlikeye girerse VMM ve konukların çalışması engellenir. |
-| Kısıtlı erişim | Yönetim işlevleri yalnızca güvenli bağlantılar üzerinden bağlanmış yetkili yöneticiler tarafından uygulanır. Rol tabanlı erişim denetimi (RBAC) mekanizmaları, en az ayrıcalık ilkesi tarafından zorlanır. |
+| Kısıtlı erişim | Yönetim işlevleri yalnızca güvenli bağlantılar üzerinden bağlanmış yetkili yöneticiler tarafından uygulanır. En az ayrıcalık ilkesi, Azure rol tabanlı erişim denetimi (Azure RBAC) mekanizmaları tarafından zorlanır. |
 | Denetim | Azure, daha sonra incelenebilmesi için bir sistemde ne olacağı hakkında verileri yakalamak ve korumak için denetim yeteneği sağlar. |
 
 Microsoft 'un Azure Hiper Yöneticisi 'ni sağlamlaştırma yaklaşımı ve sanallaştırma alt sistemi aşağıdaki üç kategoriye ayrılabilir.
@@ -68,8 +68,8 @@ Tüm VM saldırı yüzeyleri tehdit modellenir, kod incelenir, belirsizlik ve g�
 ## <a name="next-steps"></a>Sonraki adımlar
 Platform bütünlüğünü ve güvenliğini sağlamak için yaptığımız hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Bellenim güvenliği](firmware.md)
+- [Üretici yazılımı güvenliği](firmware.md)
 - [Güvenli önyükleme](secure-boot.md)
 - [Ölçülen önyükleme ve konak kanıtlama](measured-boot-host-attestation.md)
-- [Proje Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Bekleme sırasında şifreleme](encryption-atrest.md)

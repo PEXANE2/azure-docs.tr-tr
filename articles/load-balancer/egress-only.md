@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038307"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695002"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Yalnızca giden yük dengeleyici yapılandırması
 
@@ -71,10 +71,10 @@ Yeni Sanal ağda bir sanal makine oluşturun.
     |------------------|-----------------------------------------------------------------|
     | **Proje ayrıntıları**  |                                                                 |
     | Abonelik     | Azure aboneliğinizi seçin                                  |
-    | Kaynak Grubu   | **Yeni oluştur**’u seçin. </br> **Myresourcegrouplb**girin. </br> **Tamam**’ı seçin. |
+    | Kaynak Grubu   | **Yeni oluştur**’u seçin. </br> **Myresourcegrouplb** girin. </br> **Tamam**’ı seçin. |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Doğu ABD 2** seçin |
+    | Region           | **Doğu ABD 2** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -84,7 +84,7 @@ Yeni Sanal ağda bir sanal makine oluşturun.
     |--------------------|----------------------------|
     | IPv4 adres alanı | **10.1.0.0/16** girin |
 
-5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
+5. **Alt ağ adı** altında, **varsayılan** sözcük ' ı seçin.
 
 6. **Alt ağı Düzenle**' de şu bilgileri girin:
 
@@ -97,13 +97,13 @@ Yeni Sanal ağda bir sanal makine oluşturun.
 
 8. **Güvenlik** sekmesini seçin.
 
-9. **Bastionhost**altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+9. **Bastionhost** altında **Etkinleştir**' i seçin. Bu bilgileri girin:
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
     | Savunma adı | **Mybastionhost** girin |
     | AzureBastionSubnet adres alanı | **10.1.1.0/24** girin |
-    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad**Için **Mybastionıp**girin. </br> **Tamam**’ı seçin. |
+    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad** Için **Mybastionıp** girin. </br> **Tamam**’ı seçin. |
 
 
 8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
@@ -123,7 +123,7 @@ Yeni Sanal ağda bir sanal makine oluşturun.
     | Kaynak Grubu | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Bölge | **Doğu ABD 2** seçin |
+    | Region | **Doğu ABD 2** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -158,7 +158,7 @@ Yeni Sanal ağda bir sanal makine oluşturun.
     | **İzleme** |  |
     | Önyükleme tanılaması | Seçme **kapalı** |
    
-7. **Gözden geçir ve oluştur**’u seçin. 
+7. **Gözden geçir + oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -181,8 +181,8 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Myresourcegrouplb** öğesini seçin.|
-    | Adı                   | **Myınternalloadbalancer** girin                                   |
-    | Bölge         | **Doğu ABD 2**’yi seçin.                                        |
+    | Ad                   | **Myınternalloadbalancer** girin                                   |
+    | Region         | **Doğu ABD 2**’yi seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
     | Sanal ağ | Önceki adımda oluşturulan **Myvnet** öğesini seçin. |
@@ -203,8 +203,8 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Myresourcegrouplb** yazın.|
-    | Adı                   | **Mypublicloadbalancer** girin                                   |
-    | Bölge         | **Doğu ABD 2**’yi seçin.                                        |
+    | Ad                   | **Mypublicloadbalancer** girin                                   |
+    | Region         | **Doğu ABD 2**’yi seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart** seçin |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
@@ -218,33 +218,33 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
    
 ### <a name="create-internal-backend-address-pool"></a>İç arka uç adres havuzu oluştur
 
-**Myınternalbackendpool**arka uç adres havuzunu oluşturun:
+**Myınternalbackendpool** arka uç adres havuzunu oluşturun:
 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myınternalloadbalancer** ' yi seçin.
 
-2. **Ayarlar**altında **arka uç havuzları**' nı seçin ve ardından **Ekle**' yi seçin.
+2. **Ayarlar** altında **arka uç havuzları**' nı seçin ve ardından **Ekle**' yi seçin.
 
-3. **Arka uç Havuzu Ekle** sayfasında, ad için, arka uç havuzunuzun adı olarak **Myınternalbackendpool**yazın.
+3. **Arka uç Havuzu Ekle** sayfasında, ad için, arka uç havuzunuzun adı olarak **Myınternalbackendpool** yazın.
  
 4. **Sanal ağ**' da, **myvnet**' i seçin.
 
-5. **Sanal makineler**altında **Ekle** ' yi seçin ve **myvm**' yi seçin.
+5. **Sanal makineler** altında **Ekle** ' yi seçin ve **myvm**' yi seçin.
  
 6. **Ekle**' yi seçin.
 
 ### <a name="create-public-backend-address-pool"></a>Genel arka uç adres havuzu oluştur
 
-**Mypublicbackendpool**arka uç adres havuzunu oluşturun:
+**Mypublicbackendpool** arka uç adres havuzunu oluşturun:
 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **mypublicloadbalancer** ' ı seçin.
 
-2. **Ayarlar**altında **arka uç havuzları**' nı seçin ve ardından **Ekle**' yi seçin.
+2. **Ayarlar** altında **arka uç havuzları**' nı seçin ve ardından **Ekle**' yi seçin.
 
-3. Arka uç havuzu **Ekle** sayfasında, ad için, arka uç havuzunuzun adı olarak **Mypublicbackendpool**yazın.
+3. Arka uç havuzu **Ekle** sayfasında, ad için, arka uç havuzunuzun adı olarak **Mypublicbackendpool** yazın.
 
 4. **Sanal ağ**' da, **myvnet**' i seçin.
  
-5. **Sanal makineler**altında **Ekle** ' yi seçin ve **myvm**' yi seçin.
+5. **Sanal makineler** altında **Ekle** ' yi seçin ve **myvm**' yi seçin.
  
 6. **Ekle**' yi seçin.
 
@@ -252,15 +252,15 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myresourcegrouplb** kaynak grubunda bulunan **myvm** ' yi seçin.
 
-2. **Genel bakış** sayfasında **Bağlan** **' ı ve**sonra da ' yi seçin.
+2. **Genel bakış** sayfasında **Bağlan** **' ı ve** sonra da ' yi seçin.
 
 4. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
-5. **Bağlan**'ı seçin.
+5. **Bağlan**’ı seçin.
 
 6. Internet Explorer'ı açın.
 
-7. **https://whatsmyip.org**Adres çubuğuna yazın.
+7. **https://whatsmyip.org** Adres çubuğuna yazın.
 
 8. Bağlantı başarısız olmalıdır. Varsayılan olarak, standart genel yük dengeleyici [tanımlı bir giden kuralı olmadan giden trafiğe izin](load-balancer-overview.md#securebydefault)vermez.
  
@@ -268,17 +268,17 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **mypublicloadbalancer** ' ı seçin.
 
-2. **Ayarlar**altında **giden kuralları**' nı ve ardından **Ekle**' yi seçin.
+2. **Ayarlar** altında **giden kuralları**' nı ve ardından **Ekle**' yi seçin.
 
 3. Giden kuralları yapılandırmak için şu değerleri kullanın:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Mbir Boundrule**girin. |
-    | Ön uç IP adresi | **Loadbalancerön uç**öğesini seçin.|
-    | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15 dakikaya**taşıyın.|
+    | Ad | **Mbir Boundrule** girin. |
+    | Ön uç IP adresi | **Loadbalancerön uç** öğesini seçin.|
+    | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15 dakikaya** taşıyın.|
     | TCP sıfırlaması | **Etkin**'i seçin.|
-    | Arka uç havuzu | **Mypublicbackendpool**öğesini seçin.| |
+    | Arka uç havuzu | **Mypublicbackendpool** öğesini seçin.| |
     | Bağlantı noktası ayırma-> bağlantı noktası ayırma | **Varsayılan giden bağlantı noktası sayısını kullan** ' ı seçin |
 
 4. **Ekle**’yi seçin.
@@ -287,19 +287,19 @@ Oluşturulan VM 'nizi her birinin arka uç havuzuna ekleyin.  Daha sonra yalnız
 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myresourcegrouplb** kaynak grubunda bulunan **myvm** ' yi seçin.
 
-2. **Genel bakış** sayfasında **Bağlan** **' ı ve**sonra da ' yi seçin.
+2. **Genel bakış** sayfasında **Bağlan** **' ı ve** sonra da ' yi seçin.
 
 4. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
-5. **Bağlan**'ı seçin.
+5. **Bağlan**’ı seçin.
 
 6. Internet Explorer'ı açın.
 
-7. **https://whatsmyip.org**Adres çubuğuna yazın.
+7. **https://whatsmyip.org** Adres çubuğuna yazın.
 
 8. Bağlantı başarılı olmalıdır.
 
-9. Görüntülenecek IP adresi **Mypublicloadbalancer**ön uç IP adresi olmalıdır.
+9. Görüntülenecek IP adresi **Mypublicloadbalancer** ön uç IP adresi olmalıdır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -316,4 +316,4 @@ Bu yapılandırma, genel gelen tüm bağlantıları engellemeye devam ederken, a
 - [Azure Load Balancer](load-balancer-overview.md)hakkında bilgi edinin.
 - [Azure 'da giden bağlantılar](load-balancer-outbound-connections.md)hakkında bilgi edinin.
 - Yük dengeleyici [SSS](load-balancer-faqs.md).
-- [Azure](https://docs.microsoft.com/azure/bastion/bastion-overview) savunma hakkında bilgi edinin
+- [Azure](../bastion/bastion-overview.md) savunma hakkında bilgi edinin

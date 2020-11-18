@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 12190a50579bf5b87685fc4b19ec7b2907e5ee9c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e1fa97fb8a3dcae3a78ba0bc85cf59db2c167dea
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547053"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696804"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -44,7 +44,7 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun:
 
-* Adlandırılmış **Createıntlbqs-RG** .
+* Adlandırılmış **Createıntlbqs-RG**.
 * **Eastus** konumunda.
 
 ```azurepowershell-interactive
@@ -59,7 +59,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku"></a>[**Standart SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
->Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)** .
+>Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
 ## <a name="configure-virtual-network"></a>Sanal ağ yapılandırma
 
@@ -73,9 +73,9 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Mybackendsubnet** adlı alt ağ.
 * **10.0.0.0/16** sanal ağı.
-* Alt ağ **10.0.0.0/24** .
+* Alt ağ **10.0.0.0/24**.
 * **AzureBastionSubnet** adlı alt ağ.
-* Alt ağ **10.0.1.0/24** .
+* Alt ağ **10.0.1.0/24**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -109,7 +109,7 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 * Adlandırılmış **Mypubliciption**
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Eastus** konumunda.
-* Ayırma yöntemi **statik** .
+* Ayırma yöntemi **statik**.
 * **Standart** SKU.
 
 ```azurepowershell-interactive
@@ -128,7 +128,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 
 Bir savunma konağı oluşturmak için [New-aztion](/powershell/module/az.network/new-azbastion) kullanın:
 
-* Adlandırılmış **Myeltion** .
+* Adlandırılmış **Myeltion**.
 * **Createıntlbqs-RG** kaynak grubunda.
 * Sanal ağ **\** sanal ağı 'nda.
 * Genel IP adresi **Mypubliciption** ile ilişkilendirildi.
@@ -154,13 +154,13 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 * **Mynsgrutahttp** adında.
 * HTTP 'ye **Izin ver** açıklaması.
 * **Allow** erişimi.
-* Protokol **(*)** .
-* Yön **gelen** .
-* Öncelik **2000** .
+* Protokol **(*)**.
+* Yön **gelen**.
+* Öncelik **2000**.
 * **Internet** kaynağı.
-* Kaynak bağlantı noktası aralığı **(*)** .
-* Hedef adres ön eki **(*)** .
-* Hedef **bağlantı noktası 80** .
+* Kaynak bağlantı noktası aralığı **(*)**.
+* Hedef adres ön eki **(*)**.
+* Hedef **bağlantı noktası 80**.
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -250,9 +250,9 @@ Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden k
 [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig)ile bir sistem durumu araştırması oluşturun:
 
 * Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma** .
-* Protokol **TCP** .
-* İzleme **bağlantı noktası 80** .
+* Adlandırılmış **Myhealtharaştırma**.
+* Protokol **TCP**.
+* İzleme **bağlantı noktası 80**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -280,7 +280,7 @@ Yük dengeleyici kuralı şunları tanımlar:
 * Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
 * **80 numaralı bağlantı noktasını** kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
 * Sistem durumu araştırması **Myhealtharaştırması** kullanılıyor.
-* Protokol **TCP** .
+* Protokol **TCP**.
 * **15 dakikalık** boşta zaman aşımı.
 * TCP sıfırlamayı etkinleştirin.
 
@@ -297,7 +297,7 @@ $rule =
 New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT -IdleTimeoutInMinutes $idl -EnableTcpReset
 ```
 >[!NOTE]
->Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz. </br> **[Azure’da giden bağlantılar](load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](egress-only.md)** </br> **[Sanal ağ NAT nedir?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+>Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz. </br> **[Azure’da giden bağlantılar](load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](egress-only.md)** </br> **[Sanal ağ NAT nedir?](../virtual-network/nat-overview.md)**
 
 
 ### <a name="create-load-balancer-resource"></a>Yük dengeleyici kaynağı oluştur
@@ -331,8 +331,8 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Eastus** konumunda.
 * Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet** .
-* Ağ güvenlik grubu ' nda, **Mynsg** .
+* Alt ağda **Mybackendsubnet**.
+* Ağ güvenlik grubu ' nda, **Mynsg**.
 * **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurepowershell-interactive
@@ -367,8 +367,8 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Eastus** konumunda.
 * Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet** .
-* Ağ güvenlik grubu ' nda, **Mynsg** .
+* Alt ağda **Mybackendsubnet**.
+* Ağ güvenlik grubu ' nda, **Mynsg**.
 * **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurepowershell-interactive
@@ -399,7 +399,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-VM’ler için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+VM’ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -418,9 +418,9 @@ Sanal makineleri şu şekilde oluşturun:
 
 * **MyVM1** adlı.
 * **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM1** .
-* Yük dengeleyici **Myloadbalancer** 'a eklendi.
-* **Bölge 1** .
+* Ağ arabirimine bağlı **myNicVM1**.
+* Yük dengeleyici **Myloadbalancer**'a eklendi.
+* **Bölge 1**.
 * **Eastus** konumunda.
 
 ```azurepowershell-interactive
@@ -449,9 +449,9 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 * **MyVM2** adlı.
 * **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM2** .
-* Yük dengeleyici **Myloadbalancer** 'a eklendi.
-* **Bölge 2** .
+* Ağ arabirimine bağlı **myNicVM2**.
+* Yük dengeleyici **Myloadbalancer**'a eklendi.
+* **Bölge 2**.
 * **Eastus** konumunda.
 
 ```azurepowershell-interactive
@@ -478,7 +478,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 # <a name="basic-sku"></a>[**Temel SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
->Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)** .
+>Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
 ## <a name="configure-virtual-network"></a>Sanal ağ yapılandırma
 
@@ -492,9 +492,9 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Mybackendsubnet** adlı alt ağ.
 * **10.0.0.0/16** sanal ağı.
-* Alt ağ **10.0.0.0/24** .
+* Alt ağ **10.0.0.0/24**.
 * **AzureBastionSubnet** adlı alt ağ.
-* Alt ağ **10.0.1.0/24** .
+* Alt ağ **10.0.1.0/24**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -528,7 +528,7 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 * Adlandırılmış **Mypubliciption**
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Eastus** konumunda.
-* Ayırma yöntemi **statik** .
+* Ayırma yöntemi **statik**.
 * **Standart** SKU.
 
 ```azurepowershell-interactive
@@ -547,7 +547,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 
 Bir savunma konağı oluşturmak için [New-aztion](/powershell/module/az.network/new-azbastion) kullanın:
 
-* Adlandırılmış **Myeltion** .
+* Adlandırılmış **Myeltion**.
 * **Createıntlbqs-RG** kaynak grubunda.
 * Sanal ağ **\** sanal ağı 'nda.
 * Genel IP adresi **Mypubliciption** ile ilişkilendirildi.
@@ -574,13 +574,13 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
 * **Mynsgrutahttp** adında.
 * HTTP 'ye **Izin ver** açıklaması.
 * **Allow** erişimi.
-* Protokol **(*)** .
-* Yön **gelen** .
-* Öncelik **2000** .
+* Protokol **(*)**.
+* Yön **gelen**.
+* Öncelik **2000**.
 * **Internet** kaynağı.
-* Kaynak bağlantı noktası aralığı **(*)** .
-* Hedef adres ön eki **(*)** .
-* Hedef **bağlantı noktası 80** .
+* Kaynak bağlantı noktası aralığı **(*)**.
+* Hedef adres ön eki **(*)**.
+* Hedef **bağlantı noktası 80**.
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -670,9 +670,9 @@ Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden k
 [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig)ile bir sistem durumu araştırması oluşturun:
 
 * Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma** .
-* Protokol **TCP** .
-* İzleme **bağlantı noktası 80** .
+* Adlandırılmış **Myhealtharaştırma**.
+* Protokol **TCP**.
+* İzleme **bağlantı noktası 80**.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -700,7 +700,7 @@ Yük dengeleyici kuralı şunları tanımlar:
 * Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
 * **80 numaralı bağlantı noktasını** kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
 * Sistem durumu araştırması **Myhealtharaştırması** kullanılıyor.
-* Protokol **TCP** .
+* Protokol **TCP**.
 * **15 dakikalık** boşta zaman aşımı.
 
 ```azurepowershell-interactive
@@ -747,8 +747,8 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Eastus** konumunda.
 * Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet** .
-* Ağ güvenlik grubu ' nda, **Mynsg** .
+* Alt ağda **Mybackendsubnet**.
+* Ağ güvenlik grubu ' nda, **Mynsg**.
 * **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurepowershell-interactive
@@ -783,8 +783,8 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Eastus** konumunda.
 * Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet** .
-* Ağ güvenlik grubu ' nda, **Mynsg** .
+* Alt ağda **Mybackendsubnet**.
+* Ağ güvenlik grubu ' nda, **Mynsg**.
 * **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
 
 ```azurepowershell-interactive
@@ -832,7 +832,7 @@ New-AzAvailabilitySet -ResourceGroupName $rg -Name $avs -Location $loc
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-VM’ler için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+VM’ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -851,8 +851,8 @@ Sanal makineleri şu şekilde oluşturun:
 
 * **MyVM1** adlı.
 * **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM1** .
-* Yük dengeleyici **Myloadbalancer** 'a eklendi.
+* Ağ arabirimine bağlı **myNicVM1**.
+* Yük dengeleyici **Myloadbalancer**'a eklendi.
 * **Eastus** konumunda.
 * **MyAvSet** kullanılabilirlik kümesinde.
 
@@ -882,8 +882,8 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 * **MyVM2** adlı.
 * **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM2** .
-* Yük dengeleyici **Myloadbalancer** 'a eklendi.
+* Ağ arabirimine bağlı **myNicVM2**.
+* Yük dengeleyici **Myloadbalancer**'a eklendi.
 * **Eastus** konumunda.
 * **MyAvSet** kullanılabilirlik kümesinde.
 
@@ -914,7 +914,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ## <a name="install-iis"></a>IIS yükleme
 
-Özel Betik uzantısını yüklemek için [set-Azvmexgerkomutunu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) kullanın. 
+Özel Betik uzantısını yüklemek için [set-Azvmexgerkomutunu](/powershell/module/az.compute/set-azvmextension?view=latest) kullanın. 
 
 Uzantı, IIS Web sunucusunu yüklemek için PowerShell Add-WindowsFeature Web-Server çalıştırır ve ardından VM 'nin ana bilgisayar adını göstermek için Default.htm sayfasını güncelleştirir:
 
@@ -960,8 +960,8 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 * **Createıntlbqs-RG** kaynak grubunda.
 * **Eastus** konumunda.
 * Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet** .
-* Ağ güvenlik grubu ' nda, **Mynsg** .
+* Alt ağda **Mybackendsubnet**.
+* Ağ güvenlik grubu ' nda, **Mynsg**.
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -986,7 +986,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -Networ
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -1033,17 +1033,17 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 
 1. Azure portalında [oturum açın](https://portal.azure.com).
 
-1. **Genel bakış** ekranında yük DENGELEYICININ özel IP adresini bulun. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar** ' ı seçin ve ardından **myloadbalancer** ' ı seçin.
+1. **Genel bakış** ekranında yük DENGELEYICININ özel IP adresini bulun. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından **myloadbalancer**' ı seçin.
 
 2. **Myloadbalancer** **genel** görünümünde, **özel IP adresi** ' nin yanındaki bir yere göz atın veya adresi kopyalayın.
 
-3. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar** ' ı seçin ve ardından kaynaklar listesinden **createıntlbqs-RG** kaynak grubunda bulunan **mytestvm** ' yi seçin.
+3. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **createıntlbqs-RG** kaynak grubunda bulunan **mytestvm** ' yi seçin.
 
 4. **Genel bakış** sayfasında **Bağlan** **' ı ve** sonra da ' yi seçin.
 
 6. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
-7. **Mytestvm** 'de **Internet Explorer** 'ı açın.
+7. **Mytestvm**'de **Internet Explorer** 'ı açın.
 
 8. Önceki adımdan, tarayıcının adres çubuğuna IP adresini girin. IIS Web sunucusunun varsayılan sayfası, tarayıcıda görüntülenir.
 
@@ -1074,5 +1074,3 @@ Bu hızlı başlangıçta
 Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin..
 > [!div class="nextstepaction"]
 > [Azure Load Balancer nedir?](load-balancer-overview.md)
-
-

@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 66c56ae6730043022a0d8bf3c94f7c6ce14d9852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809350"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696192"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
-[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/skus#skus).
+[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](./skus.md#skus).
 
 Bir yükseltmede üç aşama vardır:
 
@@ -34,7 +34,7 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Betik yalnızca ortak Load Balancer yükseltmesini destekler. Iç temel Load Balancer yükseltme için, yönergeler için [Bu sayfaya](https://docs.microsoft.com/azure/load-balancer/upgrade-basicinternal-standard) bakın.
+* Betik yalnızca ortak Load Balancer yükseltmesini destekler. Iç temel Load Balancer yükseltme için, yönergeler için [Bu sayfaya](./upgrade-basicinternal-standard.md) bakın.
 * Standart Load Balancer yeni bir ortak adrese sahiptir. Farklı SKU 'Lara sahip olduklarından, var olan temel Load Balancer ilişkili IP adreslerini Standart Load Balancer sorunsuzca taşımak olanaksızdır.
 * Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
 * Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız. Lütfen boş olmadıklarından emin olun.
@@ -108,11 +108,11 @@ Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzl
     >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
 
 * **Yeni oluşturulan Standart genel Load Balancer arka uç havuzlarına eklemek için yeni VM 'Ler oluşturma**.
-    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)bulunabilir.
+    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)bulunabilir.
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Giden bağlantı için giden bir kural oluşturma
 
-Bir giden kuralı oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) izleyin, böylece
+Bir giden kuralı oluşturmak için [yönergeleri](./quickstart-load-balancer-standard-public-powershell.md#create-outbound-rule-configuration) izleyin, böylece
 * Giden NAT 'yi sıfırdan tanımlayın.
 * Varolan giden NAT 'nin davranışını ölçeklendirin ve ayarlayın.
 
