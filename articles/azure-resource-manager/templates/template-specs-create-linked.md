@@ -2,13 +2,13 @@
 title: Bağlantılı şablonlarla şablon belirtimi oluşturma
 description: Bağlantılı şablonlar içeren bir şablon spec oluşturmayı öğrenin.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: d86b46a88dde7ebffea81cdeb8dc184dd275c0da
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321602"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747443"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Öğretici: bağlı şablonlar ile şablon belirtimi oluşturma (Önizleme)
 
@@ -19,7 +19,7 @@ Ana şablon ve [bağlantılı şablon](linked-templates.md#linked-template)ile [
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için, [Önizleme için kaydolmanız](https://aka.ms/templateSpecOnboarding)gerekir.
+> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için PowerShell veya Azure CLı 'nin en son sürümünü yüklemelisiniz. Azure PowerShell için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)kullanın. Azure CLı için [sürüm 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
 
 ## <a name="create-linked-templates"></a>Bağlı şablonlar oluşturma
 
@@ -162,7 +162,7 @@ Bağlantılı şablon **üzerindelinkedTemplate.js** çağrılır ve ana şablon
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 
-Şablon Özellikleri, kaynak gruplarında depolanır.  Bir kaynak grubu oluşturun ve ardından aşağıdaki betiği kullanarak bir şablon belirtimi oluşturun. Şablon belirtiminin adı **Webspec** ' dir.
+Şablon Özellikleri, kaynak gruplarında depolanır.  Bir kaynak grubu oluşturun ve ardından aşağıdaki betiği kullanarak bir şablon belirtimi oluşturun. Şablon belirtiminin adı **Webspec**' dir.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

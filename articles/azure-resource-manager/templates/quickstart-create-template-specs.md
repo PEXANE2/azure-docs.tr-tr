@@ -2,28 +2,26 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 11/10/2020
+ms.date: 11/17/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506371"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747511"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
 Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) bir [şablon](template-specs.md) belirtimine paketlemeyi ve ardından bu şablon belirtimini dağıtmayı gösterir. Şablon spec, depolama hesabı dağıtan bir ARM şablonu içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için, [bekleme listesine kaydolmanız](https://aka.ms/templateSpecOnboarding)gerekir.
->
-> Bekleme listesinden onay aldıktan sonra, Preview PowerShell modülünü ve önizleme CLı modülünü yükleme yönergelerini alacaksınız.
+> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için PowerShell veya Azure CLı 'nin en son sürümünü yüklemelisiniz. Azure PowerShell için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)kullanın. Azure CLı için [sürüm 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9a1afd1d998fcb3ba715c890cc4deac1f0a7da5
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ee4dd70faab9ed44b1aa6ca8ca0ec517c7746f66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517725"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832539"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Güvenlik çerçevesi: kimlik doğrulaması | Karşı
 
@@ -30,7 +30,7 @@ ms.locfileid: "94517725"
 | **Web uygulaması**    | <ul><li>[Web uygulamasının kimliğini doğrulamak için standart bir kimlik doğrulama mekanizması kullanmayı düşünün](#standard-authn-web-app)</li><li>[Uygulamalar başarısız kimlik doğrulama senaryolarını güvenli bir şekilde işlemelidir](#handle-failed-authn)</li><li>[Adım artırma veya Uyarlamalı kimlik doğrulamayı etkinleştirme](#step-up-adaptive-authn)</li><li>[Yönetim arabirimlerinin uygun şekilde kilitlendiğinden emin olun](#admin-interface-lockdown)</li><li>[Unutulan parola işlevlerini güvenli bir şekilde uygulayın](#forgot-pword-fxn)</li><li>[Parola ve hesap ilkesinin uygulandığından emin olun](#pword-account-policy)</li><li>[Kullanıcı adı numaralandırmasını engellemek için denetimler uygulama](#controls-username-enum)</li></ul> |
 | **Veritabanı** | <ul><li>[Mümkün olduğunda, SQL Server bağlanmak için Windows kimlik doğrulamasını kullanın](#win-authn-sql)</li><li>[Mümkün olduğunda SQL veritabanına bağlanmak için Azure Active Directory kimlik doğrulaması kullanın](#aad-authn-sql)</li><li>[SQL kimlik doğrulama modu kullanıldığında, hesap ve parola ilkesinin SQL Server 'da zorlandığından emin olun](#authn-account-pword)</li><li>[Kapsanan veritabanlarında SQL kimlik doğrulaması kullanma](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[SaS belirteçlerini kullanarak cihaz başına kimlik doğrulama kimlik bilgileri kullanma](#authn-sas-tokens)</li></ul> |
-| **Azure Güven sınırı** | <ul><li>[Azure yöneticileri için Azure Multi-Factor Authentication etkinleştirme](#multi-factor-azure-admin)</li></ul> |
+| **Azure Güven sınırı** | <ul><li>[Azure yöneticileri için Azure AD Multi-Factor Authentication etkinleştirme](#multi-factor-azure-admin)</li></ul> |
 | **Service Fabric güven sınırı** | <ul><li>[Service Fabric kümesine anonim erişimi kısıtla](#anon-access-cluster)</li><li>[İstemci-düğüm sertifikasının Service Fabric düğümden düğüme sertifikasından farklı olduğundan emin olun](#fabric-cn-nn)</li><li>[Service Fabric kümelerine yönelik istemcilerin kimliğini doğrulamak için AAD kullanma](#aad-client-fabric)</li><li>[Service Fabric sertifikalarının onaylanan bir sertifika yetkilisinden (CA) alındığından emin olun](#fabric-cert-ca)</li></ul> |
 | **Kimlik Sunucusu** | <ul><li>[Kimlik sunucusu tarafından desteklenen standart kimlik doğrulama senaryolarını kullanma](#standard-authn-id)</li><li>[Varsayılan kimlik sunucusu belirteç önbelleğini ölçeklenebilir bir alternatifi ile geçersiz kılın](#override-token)</li></ul> |
 | **Makine güven sınırı** | <ul><li>[Dağıtılan uygulamanın ikili dosyalarının dijital olarak imzalandığından emin olun](#binaries-signed)</li></ul> |
@@ -173,7 +173,7 @@ ms.locfileid: "94517725"
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Adımlar** | <p>Event Hubs güvenlik modeli, paylaşılan erişim Imzası (SAS) belirteçlerinin ve olay yayımcılarının birleşimini temel alır. Yayımcı adı, belirteci alan DeviceID 'yi temsil eder. Bu, ilgili cihazlarla oluşturulan belirteçlerin ilişkilendirilmesine yardımcı olur.</p><p>Tüm iletiler, hizmet tarafında oluşturanın bulunduğu, yük içi kaynak sızdırma girişimlerini algılamaya izin vererek etiketlenir. Cihazların kimliği doğrulanırken, benzersiz bir yayımcının kapsamına alınmış cihaz başına SaS belirtecini oluşturun.</p>|
 
-## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Azure yöneticileri için Azure Multi-Factor Authentication etkinleştirme
+## <a name="enable-azure-ad-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Azure yöneticileri için Azure AD Multi-Factor Authentication etkinleştirme
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
@@ -181,7 +181,7 @@ ms.locfileid: "94517725"
 | **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [Azure Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md) |
+| **Başvurular**              | [Azure AD Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md) |
 | **Adımlar** | <p>Multi-Factor Authentication (MFA), birden fazla doğrulama yöntemi gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. Aşağıdaki doğrulama yöntemlerinin iki veya daha fazlasını gerektirerek işe yarar:</p><ul><li>Bildiğiniz bir şey (genellikle bir parola)</li><li>Sahip olduğunuz bir şey (telefon gibi kolayca çoğaltılmayan güvenilir bir cihaz)</li><li>Bir şeyler (Biyometri)</li><ul>|
 
 ## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>Service Fabric kümesine anonim erişimi kısıtla

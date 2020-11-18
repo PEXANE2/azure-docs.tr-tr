@@ -3,12 +3,12 @@ title: Azure Işlevleri 1. x için başvuru host.js
 description: Azure Işlevleri için başvuru belgeleri v1 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167738"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832832"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için başvuru host.js
 
@@ -93,7 +93,8 @@ Dosyalarda aşağıdaki örnek *host.js* tüm olası seçenekler belirtilmiştir
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -136,7 +137,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
@@ -162,7 +163,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır. Bir App Service planında, genel bir sınır yoktur ve varsayılan değer, zaman aşımı olmadığını gösteren _null_olur.
+Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır. Bir App Service planında, genel bir sınır yoktur ve varsayılan değer, zaman aşımı olmadığını gösteren _null_ olur.
 
 ```json
 {
@@ -186,7 +187,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
@@ -209,7 +210,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|yanlış|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının bağlantılar/iş parçacıkları/işlemler/bellek/CPU/vb gibi sistem performans sayaçlarını düzenli olarak denetlemesini sağlar. bu sayaçlardan herhangi biri yerleşik yüksek eşikten (%80%) olursa, sayaçlar normal düzeylere dönene kadar istekler 429 "çok meşgul" yanıtıyla reddedilir.|
 |maxConcurrentRequests|Sınırsız ( `-1` )|Paralel olarak yürütülecek HTTP işlevlerinin maksimum sayısı. Bu, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından, çok fazla sistem kaynağı (bellek/CPU/yuva) kullanan bir HTTP işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir.|
@@ -247,11 +248,11 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
 |defaultLevel|Bilgi|Dizide belirtilmeyen hiçbir kategori için `categoryLevels` , günlükleri bu düzeyde ve yukarıya Application Insights için gönderin.| 
-|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Yukarıdaki örnekhost.jsdosya * üzerinde* , "Host. toplayıcısı" ile başlayan tüm kategoriler düzeyinde günlüğe kaydedilir `Information` . "Ana bilgisayar" (örneğin, "Host.Executor") ile başlayan tüm diğer kategoriler düzeyinde oturum açın `Error` .| 
+|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Yukarıdaki örnekhost.jsdosya *üzerinde* , "Host. toplayıcısı" ile başlayan tüm kategoriler düzeyinde günlüğe kaydedilir `Information` . "Ana bilgisayar" (örneğin, "Host.Executor") ile başlayan tüm diğer kategoriler düzeyinde oturum açın `Error` .| 
 
 ## <a name="queues"></a>klarında
 
@@ -269,7 +270,7 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Maxpollingınterval|60000|Sıra yoklamaları arasındaki milisaniye olarak en fazla Aralık.| 
 |visibilityTimeout|0|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur.| 
@@ -286,9 +287,10 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
     "sendGrid": {
         "from": "Contoso Group <admin@contoso.com>"
     }
+}    
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
@@ -301,16 +303,18 @@ Bir [ILogger](functions-dotnet-class-library.md#ilogger) nesnesi veya [Context. 
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
+      "autoRenewTimeout": "00:05:00",
+      "autoComplete": true
     }
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Maxconcurrentçağrıları|16|İleti göndericisinin başlatması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` 1 olarak ayarlayın. | 
 |prefetchCount|yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
-|autoRenewTimeout|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.| 
+|autoRenewTimeout|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.|
+|'Nın|true|True olduğunda tetikleyici, işlemin başarıyla yürütülmesi sırasında ileti işlemeyi otomatik olarak tamamlar. Yanlış olduğunda, döndürmeden önce iletiyi tamamlamaya yönelik işlev sorumluluğundadır.|
 
 ## <a name="singleton"></a>adet
 
@@ -328,7 +332,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
@@ -351,7 +355,7 @@ Bir nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |consoleLevel|bilgiler|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off` , `error` , `warning` , `info` , ve `verbose` .|
 |fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. Seçenekler `never` , `always` , `debugOnly` .| 

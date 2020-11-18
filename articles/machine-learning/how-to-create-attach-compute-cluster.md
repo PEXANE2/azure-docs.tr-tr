@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318217"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832696"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning işlem kümesi oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 * İşlem kümesi maliyetinizi düşürün
 * Küme için [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) ayarlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -58,9 +58,9 @@ Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir iş
 > Gereken çekirdek sayısı için yeterli kotanın olması koşuluyla, kümeler genellikle 100 düğüme kadar ölçeklendirebilir. Varsayılan olarak kümeler, MPı işlerini desteklemek üzere küme düğümleri arasında etkinleştirilen düğümler arası iletişim ile ayarlanır. Ancak, [bir destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturarak ve abonelik veya çalışma alanınızı ya da düğümler arası iletişimi devre dışı bırakmaya yönelik belirli bir kümeyi listelemek istiyorsanız kümelerinizi 1000 ' e ölçeklendirebilirsiniz. 
 
 
-## <a name="create"></a>Oluştur
+## <a name="create"></a>Oluşturma
 
-**Tahmini süre** : yaklaşık 5 dakika.
+**Tahmini süre**: yaklaşık 5 dakika.
 
 Azure Machine Learning Işlem, çalıştırmalar arasında yeniden kullanılabilir. İşlem, çalışma alanındaki diğer kullanıcılarla paylaşılabilir ve çalıştırmalar arasında korunur, gönderilen çalışma sayısına ve kümenizde ayarlanan max_nodes göre otomatik olarak düğümleri yukarı veya aşağı ölçeklendirin. Min_nodes ayarı kullanılabilir en düşük düğümleri denetler.
 
@@ -74,8 +74,8 @@ VM ailesi kotası başına bölge başına adanmış çekirdekler ve hesaplama k
 
 Python 'da kalıcı bir Azure Machine Learning Işlem kaynağı oluşturmak için **vm_size** ve **max_nodes** özelliklerini belirtin. Azure Machine Learning daha sonra diğer özellikler için akıllı Varsayılanları kullanır. 
     
-* **vm_size** : Azure Machine Learning işlem tarafından oluşturulan düğümlerin VM ailesi.
-* **max_nodes** : Azure Machine Learning işlem sırasında bir işi çalıştırdığınızda otomatik olarak en fazla düğüm sayısı.
+* **vm_size**: Azure Machine Learning işlem tarafından oluşturulan düğümlerin VM ailesi.
+* **max_nodes**: Azure Machine Learning işlem sırasında bir işi çalıştırdığınızda otomatik olarak en fazla düğüm sayısı.
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]

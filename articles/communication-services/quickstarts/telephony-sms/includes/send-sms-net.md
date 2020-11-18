@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c8bce6afd914a22be80a57ae234e39161d182b7f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a084295aec2cafadd07d47e85a0116a89d37c985
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499137"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816722"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri C# SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 
 [API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-net-pr/tree/feature/communication/sdk/communication/Azure.Communication.Sms#todo-update-to-public) | [Package (NuGet)](#todo-nuget) | [Samples](#todo-samples)-->
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - İşletim sisteminiz için en son sürüm [.NET Core istemci kitaplığı](https://dotnet.microsoft.com/download/dotnet-core) .
@@ -59,7 +59,7 @@ dotnet build
 Hala uygulama dizininde, komutunu kullanarak .NET için Azure Iletişim Hizmetleri SMS istemci Kitaplığı ' nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.2
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.3
 ```
 
 `using`Ad alanını eklemek için **program.cs** üst kısmına bir yönerge ekleyin `Azure.Communication` .
@@ -95,7 +95,7 @@ SmsClient smsClient = new SmsClient(connectionString);
 
 ## <a name="send-an-sms-message"></a>SMS iletisi gönderme
 
-Send yöntemini çağırarak SMS iletisi gönderin. Bu kodu `Main` **program.cs**içindeki End yöntemine ekleyin:
+Send yöntemini çağırarak SMS iletisi gönderin. Bu kodu `Main` **program.cs** içindeki End yöntemine ekleyin:
 
 ```csharp
 smsClient.Send(

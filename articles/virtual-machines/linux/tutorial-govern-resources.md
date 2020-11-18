@@ -1,6 +1,6 @@
 ---
 title: Öğretici-CLı ile sanal makineleri yönetme
-description: Bu öğreticide, Azure CLı kullanarak RBAC, ilkeler, kilitler ve Etiketler uygulayarak Azure sanal makinelerini yönetme hakkında bilgi edineceksiniz.
+description: Bu öğreticide Azure RBAC, ilkeler, kilitler ve Etiketler uygulayarak Azure sanal makinelerini yönetmek için Azure CLı 'yı nasıl kullanacağınızı öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 867349a321f2909d8e568be7e482a5517ddb50b9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 565315ad78a2994f44973c4fdcd4519ab9e03ea8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517963"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831795"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Öğretici: Azure CLı ile Linux sanal makine yönetimi hakkında bilgi edinin
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location "East US"
 
 Kaynak grubu şu anda boştur.
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
 Kuruluşunuzdaki kullanıcıların bu kaynaklara erişmek için doğru düzeyde erişime sahip olduğundan emin olmak istersiniz. Kullanıcılara sınırsız erişim vermek istemezsiniz ancak işlerini halledebildiklerinden de emin olmanız gerekir. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , hangi kullanıcıların bir kapsamda belirli eylemleri tamamlamanıza izin olduğunu yönetmenizi sağlar.
 
@@ -75,7 +75,7 @@ Genellikle, kullanıcıların dağıtılmış kaynakları yönetmek için atand�
 az policy definition list --query "[].[displayName, policyType, name]" --output table
 ```
 
-Mevcut ilke tanımlarını göreceksiniz. İlke türü **Yerleşik** veya **Özel** ’dir. Atamak istediğiniz bir koşulu açıklayan ilke türlerinin tanımlarına bakın. Bu makalede, aşağıdakileri gerçekleştiren ilkeler atayacaksınız:
+Mevcut ilke tanımlarını göreceksiniz. İlke türü **Yerleşik** veya **Özel**’dir. Atamak istediğiniz bir koşulu açıklayan ilke türlerinin tanımlarına bakın. Bu makalede, aşağıdakileri gerçekleştiren ilkeler atayacaksınız:
 
 * Tüm kaynaklar için konumları sınırlama.
 * Sanal makineler için SKU'ları sınırlama.

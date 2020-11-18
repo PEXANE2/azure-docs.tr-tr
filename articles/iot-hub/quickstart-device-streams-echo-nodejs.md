@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: ef362b34fe99212ee6648830ac442e507515719f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747520"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832016"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla Node.js bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -30,13 +30,17 @@ Bu hızlı başlangıçta, bir hizmet tarafı uygulaması çalıştırır ve cih
 
 * [Node.js 10 +](https://nodejs.org).
 
+    Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [Örnek bir Node.js projesi](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
-Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```cmd/sh
-node --version
-```
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)olarak desteklemektedir.
 
@@ -47,18 +51,6 @@ Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](htt
 > * EUAP Orta ABD
 > * Kuzey Avrupa
 > * Güneydoğu Asya
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Azure IoT uzantısı ekleme
-
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti (DPS) komutları ekler.
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -74,9 +66,9 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-   **Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Mydevice** : Bu, kaydetmekte olduğunuz cihazın adıdır. Aşağıda gösterildiği gibi **Mydevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
+   **Mydevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. Aşağıda gösterildiği gibi **Mydevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
@@ -84,7 +76,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 2. Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına olanak sağlamak için bir *hizmet bağlantı dizesi* de gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
-    **Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table

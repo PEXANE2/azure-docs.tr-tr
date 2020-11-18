@@ -2,15 +2,15 @@
 title: Şablon özelliklerine genel bakış
 description: Şablon özelliklerinin nasıl oluşturulduğunu ve kuruluşunuzdaki diğer kullanıcılarla nasıl paylaşılacağını açıklar.
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d5a210a5af538173ad0ca5e4c718363639c40a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728480"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747409"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager şablonu özellikleri (Önizleme)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91728480"
 Şablon belirtimini dağıtmak için PowerShell, Azure CLı, Azure portal, REST ve diğer desteklenen SDK 'lar ve istemciler gibi standart Azure araçlarını kullanırsınız. Şablonla aynı komutları kullanın.
 
 > [!NOTE]
-> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için, [bekleme listesine kaydolmanız](https://aka.ms/templateSpecOnboarding)gerekir.
+> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için PowerShell veya Azure CLı 'nin en son sürümünü yüklemelisiniz. Azure PowerShell için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)kullanın. Azure CLı için [sürüm 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
 
 ## <a name="why-use-template-specs"></a>Şablon özellikleri neden kullanılmalıdır?
 
@@ -294,7 +294,7 @@ Daha fazla bilgi için bkz. [öğretici: bağlantılı şablonlarla şablon beli
 
 Örneğin, ağ kaynaklarını dağıtan bir şablon belirtimi ve depolama kaynaklarını dağıtan başka bir şablon özelliği oluşturabilirsiniz. ARM şablonlarında, her zaman ağ veya depolama kaynaklarını yapılandırmak için bu iki şablon özelliklerine bağlantı oluşturmanız gerekir.
 
-Aşağıdaki örnek, önceki örneğe benzerdir, ancak `id` özelliğini kullanarak bir `relativePath` Yerel şablona bağlanacak özelliği yerine bir şablon belirtimine bağlayabilirsiniz. `2020-06-01`Dağıtımlar kaynağı IÇIN API sürümü için kullanın. Örnekte, şablon özellikleri **Templatespecsrg**adlı bir kaynak grubunda bulunur.
+Aşağıdaki örnek, önceki örneğe benzerdir, ancak `id` özelliğini kullanarak bir `relativePath` Yerel şablona bağlanacak özelliği yerine bir şablon belirtimine bağlayabilirsiniz. `2020-06-01`Dağıtımlar kaynağı IÇIN API sürümü için kullanın. Örnekte, şablon özellikleri **Templatespecsrg** adlı bir kaynak grubunda bulunur.
 
 ```json
 {

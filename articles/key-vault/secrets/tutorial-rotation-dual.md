@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a061cf493fba99c518448acd9c4bf4bd5949eb98
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843286"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831820"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>İki kimlik doğrulama kimlik kümesi içeren kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
@@ -35,7 +35,7 @@ Yukarıdaki çözümde, Azure Key Vault depolama hesabı ayrı erişim anahtarla
 1. İşlev uygulaması alternatif anahtarı (en son dışında) tanımlar ve depolama hesabı 'nı yeniden oluşturmak için çağırır
 1. İşlev uygulaması, yeni bir parola Azure Key Vault için yeni bir anahtar ekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
 * İki Azure depolama hesabı
@@ -44,7 +44,7 @@ Mevcut anahtar kasası ve depolama hesaplarınız yoksa, aşağıdaki dağıtım
 
 [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. **Kaynak grubu**altında **Yeni oluştur**' u seçin. Grubu **akvdönüşü** olarak adlandırın ve **Tamam**' a tıklayın.
+1. **Kaynak grubu** altında **Yeni oluştur**' u seçin. Grubu **akvdönüşü** olarak adlandırın ve **Tamam**' a tıklayın.
 1. **Gözden geçir + oluştur**' u seçin.
 1. **Oluştur**’u seçin
 
@@ -67,8 +67,6 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>Depolama hesabı anahtar döndürme işlevi oluşturma ve dağıtma
-> [!IMPORTANT]
-> Aşağıdaki şablon Key Vault, Azure depolama hesabı ve Azure Işlevinin aynı kaynak grubunda olması gerekir
 
 Daha sonra, diğer gerekli bileşenlere ek olarak, sistem tarafından yönetilen kimliğe sahip bir işlev uygulaması oluşturun ve depolama hesabı anahtar döndürme işlevlerini dağıtın
 
@@ -85,13 +83,15 @@ Daha sonra, diğer gerekli bileşenlere ek olarak, sistem tarafından yönetilen
    [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. **Kaynak grubu** listesinde, **akvdönüşü**' ni seçin.
-1. **Depolama hesabı adı**alanına, döndürme için erişim anahtarlarına sahip depolama hesabı adını yazın
-1. **Key Vault adına**, Anahtar Kasası adını yazın
-1. **İşlev uygulaması adına**, işlev uygulama adını yazın
-1. **Gizli adı**alanına erişim anahtarlarının depolanacağı gizli adı yazın
-1. **Depo URL 'si**içinde, Işlev kodu GitHub Location () yazın **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git**
+1. **Depolama HESABı RG**' de depolama hesabınızın bulunduğu kaynak grubu adını girin. Depolama hesabınız, anahtar döndürme işlevini dağıttığınız kaynak grubunda zaten mevcutsa, **[resourceGroup (). Name]** varsayılan değerini koruyun.
+1. **Depolama hesabı adı**' nda, döndürülecek erişim anahtarlarıyla depolama hesabı adını girin.
+1. **Key Vault RG**'de, anahtar kasanızın bulunduğu kaynak grubu adını girin. Anahtar kasanızın anahtar döndürme işlevini dağıttığınız kaynak grubunda zaten mevcut olması durumunda **[resourceGroup (). Name]** varsayılan değerini koruyun.
+1. **Key Vault ad** alanına Anahtar Kasası adını girin.
+1. **İşlev uygulaması adı**' nda, app name işlevini girin.
+1. **Gizli ad** alanına erişim anahtarlarının depolanacağı gizli bir ad girin.
+1. **Depo URL 'si**' nde GitHub Location () işlev kodunu girin **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
 1. **Gözden geçir + oluştur**' u seçin.
-1. **Oluştur**’u seçin
+1. **Oluştur**’u seçin.
 
    ![İlk depolama hesabını gözden geçirin ve oluşturun](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -159,10 +159,10 @@ Mevcut işleve dönme için ek depolama hesabı anahtarları eklenmesi şunları
    [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. **Kaynak grubu** listesinde, **akvdönüşü**' ni seçin.
-1. **Depolama hesabı adı**alanına, döndürme için erişim anahtarlarına sahip depolama hesabı adını yazın
+1. **Depolama hesabı adı** alanına, döndürme için erişim anahtarlarına sahip depolama hesabı adını yazın
 1. **Key Vault adına**, Anahtar Kasası adını yazın
 1. **İşlev uygulaması adına**, işlev uygulama adını yazın
-1. **Gizli adı**alanına erişim anahtarlarının depolanacağı gizli adı yazın
+1. **Gizli adı** alanına erişim anahtarlarının depolanacağı gizli adı yazın
 1. **Gözden geçir + oluştur**' u seçin.
 1. **Oluştur**’u seçin
 
@@ -205,7 +205,7 @@ az storage account keys list -n akvrotationstorage
 - [Depolama hesabı](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 - Genel Bakış: [Azure Event Grid Key Vault izleme](../general/event-grid-overview.md)
 - Nasıl yapılır: [Azure Portal ilk işlevinizi oluşturma](../../azure-functions/functions-create-first-azure-function.md)
 - Nasıl yapılır: [Anahtar Kasası gizli anahtarı değiştiğinde e-posta alma](../general/event-grid-logicapps.md)

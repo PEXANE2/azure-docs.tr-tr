@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d825d2e4daee5778c7f8e3ef216c3e72d89b1c4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8a8e6f12a8709935a6fa9551261c56fc8f2aabbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747474"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832084"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla C# içindeki bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -24,9 +24,7 @@ Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure
 
 [Cihaz akışları IoT Hub](./iot-hub-device-streams-overview.md) hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kolay bir şekilde iletişim kurmasına olanak tanır. Bu hızlı başlangıç, veri göndermek için cihaz akışlarından faydalanan iki C# uygulaması içerir (yankı).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -37,22 +35,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
   * Güneydoğu Asya
 
 * Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama C# dilinde yazılmıştır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm gerekir.
-  * [.Net 'ten birden çok platform için .NET Core SDK](https://www.microsoft.com/net/download/all)indirin.
-  * Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli C# sürümünü doğrulayın:
 
-   ```
-   dotnet --version
-   ```
+    [.Net 'ten birden çok platform için .NET Core SDK](https://www.microsoft.com/net/download/all)indirin.
 
-* Aşağıdaki komutu çalıştırarak Azure CLı için Azure IoT uzantısını Cloud Shell örneğine ekleyin. IOT uzantısı, Azure CLı için IoT Hub, IoT Edge ve IoT cihazı sağlama hizmeti 'ne (DPS) özgü komutlar ekler.
+    Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli C# sürümünü doğrulayın:
 
-    ```azurecli-interactive
-    az extension add --name azure-iot
+    ```
+    dotnet --version
     ```
 
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 * [Azure IoT C# örneklerini indirin](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) ve ZIP arşivini ayıklayın. Hem cihaz tarafında hem de hizmet tarafında ihtiyacınız vardır.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 

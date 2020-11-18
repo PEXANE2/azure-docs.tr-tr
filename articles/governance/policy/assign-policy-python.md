@@ -3,21 +3,21 @@ title: 'Hızlı başlangıç: Python ile yeni ilke ataması'
 description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Python 'u kullanırsınız.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: b2bbe38ce979dd12694908240a6adab317332a35
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074099"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832212"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Hızlı başlangıç: Python kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
-Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, _uyumlu olmayan_sanal makineleri tanımlayacaksınız.
+Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, _uyumlu olmayan_ sanal makineleri tanımlayacaksınız.
 
 Python kitaplığı, Azure kaynaklarını komut satırından veya betiklerden yönetmek için kullanılır. Bu kılavuzda, bir ilke ataması oluşturmak için Python kitaplığı 'nın nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -92,7 +92,7 @@ print(policyAssignment)
 Yukarıdaki komutlarda aşağıdaki bilgiler kullanılmaktadır:
 
 Atama ayrıntıları:
-- **display_name** -ilke ataması için görünen ad. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_kullanıyorsunuz demektir.
+- **display_name** -ilke ataması için görünen ad. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_ kullanıyorsunuz demektir.
 - **policy_definition_id** : atamayı oluşturmak için kullandığınız ilke tanımı yolu. Bu durumda, _yönetilen diskleri kullanmayan ilke tanımı denetim VM_'lerinin kimliğidir. Bu örnekte, ilke tanımı yerleşik bir örnektir ve yol yönetim grubu veya abonelik bilgileri içermez.
 - **kapsam** -bir kapsam, ilke atamasının hangi kaynaklarda veya gruplandırmaya uygulanacağını belirler. Bir yönetim grubundan tek bir kaynağa kadar değişebilir. `{scope}`Aşağıdaki desenlerden biriyle değiştirdiğinizden emin olun:
   - Yönetim grubu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`

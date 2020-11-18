@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: 896254a5577dad1bdcf474b963b9544029a4c81a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/16/2020
+ms.openlocfilehash: 8f0d10b6ed69cd31249447b59114c590bdbeb078
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040111"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832379"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>Eşleme veri akışında pencere dönüştürme
 
@@ -22,6 +22,8 @@ ms.locfileid: "93040111"
 Pencere dönüştürmesi, veri akışlarınızın pencere tabanlı toplamalarını tanımlayacaksınız. Ifade Oluşturucu 'da, müşteri adayı, öteleme, NTILE, CUMEDIST, derece, vb. gibi veri veya zaman pencerelerini (SQL OVER yan tümcesi) temel alan farklı toplamalar türlerini tanımlayabilirsiniz. Çıktındaki bu toplamaları içeren yeni bir alan oluşturulacaktır. İsteğe bağlı group by alanlarını da dahil edebilirsiniz.
 
 ![Ekran görüntüsü menüden Pencereleme seçili olarak gösterilir.](media/data-flow/windows1.png "Windows 1")
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IAVu]
 
 ## <a name="over"></a>Avantajları
 Pencere dönüştürmelerinizin sütun verilerinin bölümlenmesini ayarlayın. SQL eşdeğeri, ```Partition By``` SQL 'Deki Over yan tümcesinde bulunur. Bölümleme için kullanmak üzere bir hesaplama oluşturmak veya bir ifade oluşturmak isterseniz, bunu sütun adının üzerine gelerek ve "hesaplanan sütun" seçeneğini belirleyerek yapabilirsiniz.

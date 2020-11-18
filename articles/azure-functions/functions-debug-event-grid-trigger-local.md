@@ -1,16 +1,16 @@
 ---
 title: Yerel hata ayıklama Event Grid Azure Işlevleri
-description: Event Grid bir olay tarafından tetiklenen Azure işlevlerini yerel olarak hata ayıklamanın nasıl yapılacağını öğrenin
+description: Event Grid bir olay tarafından tetiklenen Azure Işlevlerini yerel olarak hata ayıklamanın nasıl yapılacağını öğrenin
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530553"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833070"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle
 
@@ -70,7 +70,7 @@ Uç nokta türü yapılandırıldıktan sonra uç nokta değerini yapılandırma
 
 ![Uç nokta türünü seçin](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-*Abone uç noktası* değeri üç farklı değerden oluşur. Ön ek, *ngrok*tarafından oluşturulan https URL 'sidir. URL 'nin geri kalanı işlev kodu dosyasında bulunan URL 'den gelir ve işlev adı sona eklenir. İşlev kodu dosyasındaki URL 'den başlayarak, *ngrok* URL 'sinin yerini alır `http://localhost:7071` ve işlev adı değiştirilir `{functionname}` .
+*Abone uç noktası* değeri üç farklı değerden oluşur. Ön ek, *ngrok* tarafından oluşturulan https URL 'sidir. URL 'nin geri kalanı işlev kodu dosyasında bulunan URL 'den gelir ve işlev adı sona eklenir. İşlev kodu dosyasındaki URL 'den başlayarak, *ngrok* URL 'sinin yerini alır `http://localhost:7071` ve işlev adı değiştirilir `{functionname}` .
 
 Aşağıdaki ekran görüntüsünde, son URL 'nin nasıl aranacağı gösterilmektedir:
 
@@ -79,7 +79,7 @@ Aşağıdaki ekran görüntüsünde, son URL 'nin nasıl aranacağı gösterilme
 Uygun değeri girdikten sonra **Seçimi Onayla**' ya tıklayın.
 
 > [!IMPORTANT]
-> *Ngrok*'yi her BAŞLATTıĞıNıZDA, https URL 'si yeniden oluşturulur ve değer değişir. Bu nedenle, *ngrok*aracılığıyla Işlevinizi Azure 'a her kullanıma sunışınızda yeni bir olay aboneliği oluşturmanız gerekir.
+> *Ngrok*'yi her BAŞLATTıĞıNıZDA, https URL 'si yeniden oluşturulur ve değer değişir. Bu nedenle, *ngrok* aracılığıyla Işlevinizi Azure 'a her kullanıma sunışınızda yeni bir olay aboneliği oluşturmanız gerekir.
 
 ## <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 

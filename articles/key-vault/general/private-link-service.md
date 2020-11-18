@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a41eb5b38b741f8bdde59f8a4f1e8de2b4767903
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286534"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832781"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
@@ -23,7 +23,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şunlar gerekir:
 
@@ -44,7 +44,7 @@ Daha sonra yeni bir Anahtar Kasası oluşturabilir veya var olan bir anahtar kas
 
 ### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Yeni bir Anahtar Kasası oluşturma ve özel bağlantı bağlantısı kurma
 
-[Azure Key Vault Azure Portal kullanarak bir gizli anahtarı ayarlama ve alma](../secrets/quick-create-portal.md) bölümündeki adımları izleyerek yeni bir Anahtar Kasası oluşturabilirsiniz
+[Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)veya [Azure PowerShell](../general/quick-create-powershell.md)kullanarak Azure Key Vault oluşturabilirsiniz.
 
 Anahtar Kasası temel bilgilerini yapılandırdıktan sonra, ağ sekmesini seçin ve şu adımları izleyin:
 
@@ -270,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > Abonelik başına etkin olan özel uç noktaları olan anahtar kasalarının sayısı, ayarlanabilir bir kısıtlamadır. Aşağıda gösterilen sınır varsayılan sınırdır. Hizmetiniz için sınır artışı istemek istiyorsanız lütfen adresine bir e-posta gönderin akv-privatelink@microsoft.com . Bu istekleri durum temelinde onaylayacağız.
 
-**Fiyatlandırma** : fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
+**Fiyatlandırma**: fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Sınırlamalar** : Azure Key Vault Için özel uç nokta yalnızca Azure genel bölgelerinde kullanılabilir.
+**Sınırlamalar**: Azure Key Vault Için özel uç nokta yalnızca Azure genel bölgelerinde kullanılabilir.
 
-**Key Vault başına en fazla özel uç nokta sayısı** : 64.
+**Key Vault başına en fazla özel uç nokta sayısı**: 64.
 
-**Abonelik başına özel uç noktalara sahip anahtar kasalarının varsayılan sayısı** : 400.
+**Abonelik başına özel uç noktalara sahip anahtar kasalarının varsayılan sayısı**: 400.
 
 Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../../private-link/private-link-service-overview.md#limitations)
 

@@ -4,12 +4,12 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377811"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832907"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -36,7 +36,7 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
 ## <a name="enable-agent-based-monitoring"></a>Aracı tabanlı izlemeyi etkinleştir
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="aspnet"></a>[ASP.NET](#tab/net)
 
 > [!NOTE]
 > APPINSIGHTS_JAVASCRIPT_ENABLED ve urlCompression birleşimi desteklenmez. Daha fazla bilgi için bkz. [sorun giderme bölümündeki](#troubleshooting)açıklama.
@@ -59,7 +59,7 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
  
  Her yol için toplanan verilerin bir özeti aşağıda verilmiştir:
         
-| Veriler | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
+| Veriler | ASP.NET temel koleksiyonu | ASP.NET önerilen koleksiyon |
 | --- | --- | --- |
 | CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
 | Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
@@ -73,11 +73,11 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
     * Desteklenen Uyarlamalı örnekleme telemetri işlemcisi ayarlarının listesi için [koda](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) ve [ilişkili belgelere](./sampling.md)başvurabilirsiniz.
 
-# <a name="net-core"></a>[.NET Core](#tab/netcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0 ASP.NET Core 3,1
+Aşağıdaki ASP.NET Core sürümleri desteklenir: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
 
-.NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan tam Framework 'ü hedeflemek, aracı/uzantı tabanlı izleme ile Şu anda **desteklenmemektedir** . (Kod aracılığıyla[el ile izleme](./asp-net-core.md) , önceki senaryolardan tümünde çalışır.)
+ASP.NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan tam Framework 'ü hedeflemek, aracı/uzantısı tabanlı izleme ile Şu anda **desteklenmemektedir** . (Kod aracılığıyla[el ile izleme](./asp-net-core.md) , önceki senaryolardan tümünde çalışır.)
 
 1. App Service için Azure Denetim Masası 'nda Application Insights ' yi **seçin** .
 
@@ -90,13 +90,13 @@ Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,1, ASP.NET Core 2
 
      ![Web uygulamanızı izleme](./media/azure-web-apps/create-resource-01.png)
 
-2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. .NET Core, ASP.NET Core 2,1, 2,2, 3,0 ve 3,1 için **Önerilen koleksiyon** veya **devre dışı** bırakma olanakları sunmaktadır.
+2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. ASP.NET Core, ASP.NET Core 2,1, 2,2, 3,0 ve 3,1 için **Önerilen koleksiyon** veya **devre dışı** bırakma olanakları sunmaktadır.
 
     ![Platform başına seçenekleri belirleyin](./media/azure-web-apps/choose-options-new-net-core.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-App Service Web uygulamanızın içinden **Ayarlar** bölümünden  >  Application Insights etkinleştir ' **i seçin**  >  **Enable**. Node.js aracı tabanlı izleme şu anda önizleme aşamasındadır.
+App Service Web uygulamanızın içinden **Ayarlar** bölümünden  >  Application Insights etkinleştir '**i seçin**  >  **Enable**. Node.js aracı tabanlı izleme şu anda önizleme aşamasındadır.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -111,7 +111,7 @@ Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı 
 
 ## <a name="enable-client-side-monitoring"></a>İstemci tarafı izlemeyi etkinleştir
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="aspnet"></a>[ASP.NET](#tab/net)
 
 İstemci tarafı izleme, ASP.NET için kabul edilir. İstemci tarafı izlemeyi etkinleştirmek için:
 
@@ -126,9 +126,9 @@ Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı 
 
 İstemci tarafı izlemeyi devre dışı bırakmak için, uygulama ayarlarından ilişkili anahtar değer çiftini kaldırın ya da değeri false olarak ayarlayın.
 
-# <a name="net-core"></a>[.NET Core](#tab/netcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-İstemci tarafı izleme, ' APPINSIGHTS_JAVASCRIPT_ENABLED ' uygulama ayarının mevcut olup olmamasına bakılmaksızın **Önerilen koleksiyonla** birlikte .NET Core uygulamaları için **Varsayılan olarak etkindir** .
+İstemci tarafı izleme, ' APPINSIGHTS_JAVASCRIPT_ENABLED ' uygulama ayarının mevcut olup olmamasına bakılmaksızın **Önerilen koleksiyona** sahip ASP.NET Core uygulamaları için **Varsayılan olarak etkindir** .
 
 Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
 
@@ -348,7 +348,7 @@ Yükseltme, 2.5.1 ' den önceki bir sürümden yapılamıyorsa, uygulama bin kla
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar için uzantı/aracı tabanlı izlemeye yönelik adım adım sorun giderme kılavuzumuz aşağıda verilmiştir.
+Azure Uygulama Hizmetleri 'nde çalışan ASP.NET ve ASP.NET Core tabanlı uygulamalar için uzantı/aracı tabanlı izlemeye yönelik adım adım sorun giderme kılavuzumuz aşağıda verilmiştir.
 
 > [!NOTE]
 > Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)için yönergeleri izleyin.
@@ -372,16 +372,31 @@ Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar
 
     * , Ve için girdi olmadığını doğrulayın `AppAlreadyInstrumented` `AppContainsDiagnosticSourceAssembly` `AppContainsAspNetTelemetryCorrelationAssembly` .
         * Bu girdilerden herhangi biri mevcutsa, aşağıdaki paketleri uygulamanızdan kaldırın: `Microsoft.ApplicationInsights` , `System.Diagnostics.DiagnosticSource` ve `Microsoft.AspNet.TelemetryCorrelation` .
+        * Yalnızca ASP.NET Core uygulamalar için: uygulamanızın herhangi bir Application Insights paketine başvurması durumunda, örneğin uygulamanızı [ASP.NET Core SDK 'sı](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)ile daha önce (veya işaretleme girişiminde bulunursa), App Service tümleştirmenin etkin olmaması ve veriler Application Insights görünmeyebilir. Sorunu onarmak için Portal 'da "Application Insights SDK ile birlikte çalışma" seçeneğini açın ve verileri Application Insights görmeye başlayabilirsiniz 
+        > [!IMPORTANT]
+        > Bu işlevsellik önizlemededir 
+
+        ![Mevcut uygulama ayarını etkinleştirin](./media/azure-web-apps/netcore-sdk-interop.png)
+
+        Veriler artık Application Insights SDK 'nın ilk kullanılma veya kullanılmaya çalışsa bile kodsuz kullanacaksınız yaklaşımı kullanılarak gönderilecek.
+
+        > [!IMPORTANT]
+        > Uygulama herhangi bir telemetri göndermek için SDK Application Insights kullanıyorsa, bu tür Telemetri devre dışı bırakılır; örneğin, herhangi bir Izleme * () yöntemi gibi özel tüm ayarlar ve örnekleme gibi özel ayarlar devre dışı bırakılır. 
+
+
+### <a name="php-and-wordpress-are-not-supported"></a>PHP ve WordPress desteklenmez
+
+PHP ve WordPress siteleri desteklenmez. Şu anda bu iş yüklerinin sunucu tarafında izlenmesi için resmi olarak desteklenen bir SDK/aracı yoktur. Ancak, Web sayfalarınıza istemci tarafı JavaScript ekleyerek bir PHP veya WordPress sitesinde istemci tarafı işlemlerini el ile, [JavaScript SDK 'sı](./javascript.md)kullanılarak gerçekleştirebilirsiniz.
 
 Aşağıdaki tabloda, bu değerlerin ne anlama geldiğini, temeldeki nedenleri ve önerilen düzeltmeleri verilmiştir:
 
 |Sorun değeri|Açıklama|Düzeltme
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Bu değer, uzantının bir SDK 'nın bazı yönlerinin uygulamada zaten bulunduğunu algıladı ve geri dönecek. Bunun nedeni `System.Diagnostics.DiagnosticSource` , veya başvurusu olabilir `Microsoft.AspNet.TelemetryCorrelation``Microsoft.ApplicationInsights`  | Başvuruları kaldırın. Bu başvurulardan bazıları varsayılan olarak belirli Visual Studio şablonlarından eklenir ve Visual Studio 'nun eski sürümleri öğesine başvurular ekleyebilir `Microsoft.ApplicationInsights` .
-|`AppAlreadyInstrumented:true` | Uygulama .NET Core 2,1 veya 2,2 ' i hedefliyorsanız ve [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta Package öğesine başvuruyorsa, Application Insights ve uzantı geri açılır. | .NET Core 2.1, 2.2 ' deki müşterilerin yerine Microsoft. AspNetCore. app meta paketini kullanması [önerilir](https://github.com/aspnet/Announcements/issues/287) .|
+|`AppAlreadyInstrumented:true` | Uygulama ASP.NET Core 2,1 veya 2,2 ' i hedefliyorsanız, bu değer uzantının bazı SDK yönlerinin uygulamada zaten bulunduğunu ve geri dönecek olduğunu belirtir | .NET Core 2.1, 2.2 ' deki müşterilerin yerine Microsoft. AspNetCore. app meta paketini kullanması [önerilir](https://github.com/aspnet/Announcements/issues/287) . Ayrıca, portalda "Application Insights SDK ile birlikte çalışabilirlik" seçeneğini açın (yukarıdaki yönergelere bakın).|
 |`AppAlreadyInstrumented:true` | Bu değere, önceki bir dağıtımdan uygulama klasöründeki yukarıdaki dll 'lerin varlığı da neden olabilir. | Bu dll 'lerin kaldırıldığından emin olmak için uygulama klasörünü temizleyin. Hem yerel uygulamanızın bin dizinini hem de App Service Wwwroot dizinini denetleyin. (App Service Web uygulamanızın Wwwroot dizinini denetlemek için: Gelişmiş araçlar (kudu) > hata ayıklama konsolu > CMD > home\wwwroot).
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Bu değer, uzantının uygulamada başvuru algıladığını `Microsoft.AspNet.TelemetryCorrelation` ve geri dönecek olduğunu gösterir. | Başvuruyu kaldırın.
-|`AppContainsDiagnosticSourceAssembly**:true`|Bu değer, uzantının uygulamada başvuru algıladığını `System.Diagnostics.DiagnosticSource` ve geri dönecek olduğunu gösterir.| Başvuruyu kaldırın.
+|`AppContainsDiagnosticSourceAssembly**:true`|Bu değer, uzantının uygulamada başvuru algıladığını `System.Diagnostics.DiagnosticSource` ve geri dönecek olduğunu gösterir.| ASP.NET için başvuruyu kaldırın. 
 |`IKeyExists:false`|Bu değer, izleme anahtarının AppSetting 'de mevcut olmadığını gösterir `APPINSIGHTS_INSTRUMENTATIONKEY` . Olası nedenler: değerler yanlışlıkla kaldırılmış olabilir, Otomasyon betikindeki değerleri ayarlamayı unuttu, vb. | Ayarın App Service uygulama ayarlarında bulunduğundan emin olun.
 
 ### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED ve urlCompression desteklenmez
@@ -397,13 +412,9 @@ Application Insights Aracısı/uzantısıyla ilgili en son bilgiler için, [sür
 
 ### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Web Apps ile dağıtılan varsayılan Web sitesi otomatik istemci tarafı izlemeyi desteklemez
 
-Azure Uygulama hizmetlerinde veya çalışma zamanları ile bir Web uygulaması oluşturduğunuzda, `ASP.NET` `.NET Core` tek BIR statik HTML sayfasını Başlatıcı Web sitesi olarak dağıtır. Statik Web sayfası, IIS 'de .NET tarafından yönetilen bir Web bölümü de yükler. Bu, kodsuz kullanacaksınız sunucu tarafı izlemenin test edilmesine olanak tanır, ancak otomatik istemci tarafı izlemeyi desteklemez.
+Azure Uygulama hizmetlerinde veya çalışma zamanları ile bir Web uygulaması oluşturduğunuzda, `ASP.NET` `ASP.NET Core` tek BIR statik HTML sayfasını Başlatıcı Web sitesi olarak dağıtır. Statik Web sayfası, IIS 'de ASP.NET yönetilen bir Web bölümü de yükler. Bu, kodsuz kullanacaksınız sunucu tarafı izlemenin test edilmesine olanak tanır, ancak otomatik istemci tarafı izlemeyi desteklemez.
 
 Azure App Services Web uygulamasında ASP.NET veya ASP.NET Core için kodsuz kullanacaksınız sunucusunu ve istemci tarafı izlemeyi test etmek istiyorsanız, [bir ASP.NET Core Web uygulaması oluşturmak](../../app-service/quickstart-dotnetcore.md) ve [bir ASP.NET Framework Web uygulaması](../../app-service/quickstart-dotnet-framework.md) oluşturmak için resmi kılavuzlarınızın yanı sıra, izlemeyi etkinleştirmek için geçerli makaledeki yönergeleri kullanmanız önerilir.
-
-### <a name="php-and-wordpress-are-not-supported"></a>PHP ve WordPress desteklenmez
-
-PHP ve WordPress siteleri desteklenmez. Şu anda bu iş yüklerinin sunucu tarafında izlenmesi için resmi olarak desteklenen bir SDK/aracı yoktur. Ancak, Web sayfalarınıza istemci tarafı JavaScript ekleyerek bir PHP veya WordPress sitesinde istemci tarafı işlemlerini el ile, [JavaScript SDK 'sı](./javascript.md)kullanılarak gerçekleştirebilirsiniz.
 
 ### <a name="connection-string-and-instrumentation-key"></a>Bağlantı dizesi ve izleme anahtarı
 

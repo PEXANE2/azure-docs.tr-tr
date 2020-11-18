@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 3e53937122b8721aff5db435ac447b686ea16643
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748686"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831931"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: bir C# proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -43,9 +43,7 @@ Aşağıdaki şekilde, bu örnekteki cihaz yerel ve hizmet yerel proxy uygulamal
 > [!NOTE]
 > Bir cihaz akışı üzerinden gönderilen SSH trafiği, doğrudan hizmet ve cihaz arasında gönderilmek yerine IoT Hub 'ının akış uç noktası aracılığıyla tünel oluşturulur. Daha fazla bilgi için bkz. [IoT Hub cihaz akışlarını kullanmanın avantajları](iot-hub-device-streams-overview.md#benefits).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -58,28 +56,21 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama C# dilinde yazılmıştır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm gerekir.
 
-  [.NET Core SDK .net 'ten birden çok platform için](https://www.microsoft.com/net/download/all)indirebilirsiniz.
+    [.NET Core SDK .net 'ten birden çok platform için](https://www.microsoft.com/net/download/all)indirebilirsiniz.
 
-* Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli C# sürümünü doğrulayın:
+    Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli C# sürümünü doğrulayın:
 
     ```
     dotnet --version
     ```
 
-* Azure CLı için Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı için IoT Hub, IoT Edge ve IoT cihazı sağlama hizmeti 'ne (DPS) özgü komutlar ekler.
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 * [Azure IoT C# örneklerini indirin](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)ve ZIP arşivini ayıklayın.
 
 * Kullanıcının kimliğini doğrulamak için kullanılan cihazdaki geçerli bir kullanıcı hesabı ve kimlik bilgisi (Windows veya Linux).
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -195,7 +186,7 @@ Hizmet tarafındaki konsol çıkışı (hizmet yerel proxy uygulaması 2222 numa
 
 ![Hizmet-yerel proxy uygulama çıkışı](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-*IP_address: 22* ' de ssh daemon 'a bağlanan cihaz yerel proxy uygulamasında konsol çıktısı:
+*IP_address: 22*' de ssh daemon 'a bağlanan cihaz yerel proxy uygulamasında konsol çıktısı:
 
 ![Cihaz-yerel proxy uygulama çıkışı](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 

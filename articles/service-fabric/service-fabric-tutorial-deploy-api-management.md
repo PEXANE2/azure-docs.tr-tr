@@ -3,13 +3,13 @@ title: Azure 'da Service Fabric API Management tümleştirme
 description: Azure API Management ile hızlı bir şekilde çalışmaya başlama ve trafiği Service Fabric bir arka uç hizmetine yönlendirme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 61a13d80fd67751d77bc77199fa433143ad92048
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260259"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831727"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure 'da Service Fabric API Management tümleştirme
 
@@ -32,7 +32,7 @@ Başlamadan önce:
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
 * [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yı yükler.
 * Bir ağ güvenlik grubunda güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturun.
-* Windows kümesi dağıtıyorsanız, bir Windows dağıtım ortamı ayarlayın. [Visual Studio 2019](https://www.visualstudio.com) ve **Azure geliştirme**, **ASP.net ve Web geliştirme**ve **.NET Core platformlar arası geliştirme** iş yüklerini yükler.  Ardından bir [.NET dağıtım ortamı](service-fabric-get-started.md) ayarlayın.
+* Windows kümesi dağıtıyorsanız, bir Windows dağıtım ortamı ayarlayın. [Visual Studio 2019](https://www.visualstudio.com) ve **Azure geliştirme**, **ASP.net ve Web geliştirme** ve **.NET Core platformlar arası geliştirme** iş yüklerini yükler.  Ardından bir [.NET dağıtım ortamı](service-fabric-get-started.md) ayarlayın.
 
 ## <a name="network-topology"></a>Ağ topolojisi
 
@@ -136,7 +136,7 @@ Service Fabric arka uçları için, belirli bir Service Fabric hizmeti yerine Se
 * **name**, API için "service-fabric-app" gibi benzersiz ve açıklayıcı bir ad sağlar. Geliştirici ve yayımcı portallarında görüntülenir.
 * **serviceUrl**, API'yi gerçekleştiren HTTP hizmetine başvurur. API Management istekleri bu adrese iletir. Service Fabric arka uçları için bu URL değeri kullanılmaz. Buraya herhangi bir değer koyabilirsiniz. Bu makalede, örneğin "http: \/ /servicefabric".
 * **path**, API Management hizmeti için temel URL'nin sonuna eklenir. Temel URL, bir API Management hizmet örneği tarafından barındırılan tüm API'lerde ortaktır. API Management API'leri soneklerine bakarak ayırt eder; dolayısıyla belirli bir yayımcıdaki her API için sonekin benzersiz olması gerekir.
-* **protocols**, API'ye erişmek için hangi protokollerin kullanılacağını belirler. Bu makalede, **http** ve **https**listeleyin.
+* **protocols**, API'ye erişmek için hangi protokollerin kullanılacağını belirler. Bu makalede, **http** ve **https** listeleyin.
 * **path**, API için bir sonektir. Bu makalede, "MyApp" kullanın.
 
 ### <a name="microsoftapimanagementserviceapisoperations"></a>Microsoft.ApiManagement/service/apis/operations

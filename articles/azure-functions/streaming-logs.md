@@ -3,13 +3,13 @@ title: Azure Işlevlerinde akış yürütme günlükleri
 description: boşluk dahil 115-145 karakter. Bu özet, arama sonucunda görüntülenir.
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 61756afb5111da3d5573e967a6ca13f25354aef5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: 68b9d567fe0f2959c809a25c3669b9529cf093b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216105"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832888"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Azure Işlevlerinde akış yürütme günlüklerini etkinleştirme
 
@@ -29,19 +29,19 @@ Portalda her iki tür günlük akışı görüntüleyebilirsiniz.
 
 ### <a name="built-in-log-streaming"></a>Yerleşik günlük akışı
 
-Portalda akış günlüklerini görüntülemek için, işlev uygulamanızda **platform özellikleri** sekmesini seçin. Ardından, **izleme**altında **günlük akışı**' nı seçin.
+Portalda akış günlüklerini görüntülemek için, işlev uygulamanızda **platform özellikleri** sekmesini seçin. Ardından, **izleme** altında **günlük akışı**' nı seçin.
 
 ![Portalda akış günlüklerini etkinleştirme](./media/functions-monitoring/enable-streaming-logs-portal.png)
 
-Bu, uygulamanızı günlük akış hizmetine bağlar ve uygulama günlükleri pencerede görüntülenir. **Uygulama günlükleri** ve **Web sunucusu günlükleri**arasında geçiş yapabilirsiniz.  
+Bu, uygulamanızı günlük akış hizmetine bağlar ve uygulama günlükleri pencerede görüntülenir. **Uygulama günlükleri** ve **Web sunucusu günlükleri** arasında geçiş yapabilirsiniz.  
 
 ![Portalda akış günlüklerini görüntüleme](./media/functions-monitoring/streaming-logs-window.png)
 
 ### <a name="live-metrics-stream"></a>Canlı Ölçüm Akışı
 
-Uygulamanızın Canlı Ölçüm Akışı görüntülemek için, işlev uygulamanızın **genel bakış** sekmesini seçin. Application Insights etkinleştirdiğinizde, **yapılandırılmış özellikler**altında bir **Application Insights** bağlantısı görürsünüz. Bu bağlantı sizi uygulamanızın Application Insights sayfasına götürür.
+Uygulamanızın Canlı Ölçüm Akışı görüntülemek için, işlev uygulamanızın **genel bakış** sekmesini seçin. Application Insights etkinleştirdiğinizde, **yapılandırılmış özellikler** altında bir **Application Insights** bağlantısı görürsünüz. Bu bağlantı sizi uygulamanızın Application Insights sayfasına götürür.
 
-Application Insights ' de **canlı ölçüm akışı**' ı seçin. [Örneklenir günlük girişleri](configure-monitoring.md#configure-sampling) **örnek telemetri**altında görüntülenir.
+Application Insights ' de **canlı ölçüm akışı**' ı seçin. [Örneklenir günlük girişleri](configure-monitoring.md#configure-sampling) **örnek telemetri** altında görüntülenir.
 
 ![Portalda Canlı Ölçüm Akışı görüntüleme](./media/functions-monitoring/live-metrics-stream.png) 
 
@@ -53,7 +53,7 @@ Application Insights ' de **canlı ölçüm akışı**' ı seçin. [Örneklenir 
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 [Azure CLI](/cli/azure/install-azure-cli)kullanarak akış günlüklerini etkinleştirebilirsiniz. Oturum açmak için aşağıdaki komutları kullanın, aboneliğinizi seçin ve günlük dosyalarını akışla açın:
 

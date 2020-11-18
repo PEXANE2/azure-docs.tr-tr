@@ -8,18 +8,18 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050871"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831575"
 ---
 # <a name="examine-the-video-indexer-output"></a>Video Indexer çıkışını inceleyin
 
-Bir video dizine eklendiğinde, belirtilen video öngörülerinin ayrıntılarını içeren JSON içeriğini Video Indexer. Öngörüler şunlardır: transcripts, OCRs, yüzler, konular, bloklar, vb. Her bir öngörü türü, videodaki Öngörüler ne zaman göründüğünü gösteren zaman aralıklarının örneklerini içerir. 
+Bir video dizine eklendiğinde Video Indexer, belirtilen video öngörülerinin ayrıntılarını içeren JSON içeriğini üretir. Öngörüler şunlardır: transcripts, OCRs, yüzler, konular, bloklar, vb. Her bir öngörü türü, videodaki Öngörüler ne zaman göründüğünü gösteren zaman aralıklarının örneklerini içerir. 
 
 Videonun özetlenen öngörülerini, [video Indexer](https://www.videoindexer.ai/) Web sitesindeki videonun **oynat** düğmesine basarak görsel olarak inceleyebilirsiniz. 
 
@@ -187,6 +187,7 @@ Bir yüz KIMLIĞI, bir ad, küçük resim, diğer meta veriler ve bunun zamana b
 |Textualcontentdenetlemesi|[Textualcontentdenetlemesi](#textualcontentmoderation) öngörüleri.|
 |duyguları| Bu [bilgiler.](#emotions)|
 |konuları|[Konular](#topics) öngörüleri.|
+|hoparlörler|[Konuşmacı](#speakers) öngörüleri.|
 
 Örnek:
 
@@ -222,36 +223,45 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 |---|---|
 |kimlik|Satır KIMLIĞI.|
 |metin|Dökümü.|
+|güvenilirlik|Döküm doğruluğu güveni.|
+|Hoparlörlü kimliği|Konuşmacı KIMLIĞI.|
 |language|Döküm dili. Her satırın farklı bir dile sahip olduğu yazılı betiği desteklemeye yöneliktir.|
 |larında|Bu satırın göründüğü zaman aralıklarının listesi. Örnek TRANSCRIPT ise, yalnızca 1 örneğe sahip olur.|
 
 Örnek:
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>OCR
@@ -520,7 +530,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 |Referenceıd | Vikipedi URL 'sinin son eki. Örneğin, "Target_Corporation" öğesinin sonekidir [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |referenceUrl | Varsa, markasının Vikipi URL 'si. Örneğin, [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |açıklama|Markalar açıklaması.|
-|etiketler|Bu markala ilişkili önceden tanımlanmış etiketlerin listesi.|
+|tags|Bu markala ilişkili önceden tanımlanmış etiketlerin listesi.|
 |güvenilirlik|Video Indexer marka algılayıcısının güvenirlik değeri (0-1).|
 |larında|Bu marka için zaman aralıklarının listesi. Her örnek bir brandType içerir ve bu marka, bu markın döküm dosyasında mi yoksa OCR 'de mi görünmediğini belirtir.|
 
@@ -827,6 +837,42 @@ Video Indexer, döküm dosyalarından Ana konuların çıkarımını yapar. Müm
 . . .
 ```
 
+#### <a name="speakers"></a>hoparlörler
+
+|Ad|Açıklama|
+|---|---|
+|kimlik|Konuşmacı KIMLIĞI.|
+|name|"Konuşmacı #" biçimindeki konuşmacı adı, *<number>* Örneğin: "konuşmacı #1".|
+|larında |Bu konuşmacının göründüğü zaman aralıklarının listesi.|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Video Indexer geliştirici portalı](https://api-portal.videoindexer.ai)

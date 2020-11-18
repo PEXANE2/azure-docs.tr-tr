@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 65f7af56e7f0042b8d4c312d17641a537f5fd908
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924999"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816880"
 ---
 Go için yüz istemci kitaplığını kullanarak yüz tanıma ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -27,7 +27,7 @@ Git için yüz hizmeti istemci kitaplığını kullan:
 
 [Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [SDK indirmesi](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * En son [Go](https://golang.org/dl/) sürümü
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
@@ -92,7 +92,7 @@ Aşağıdaki sınıflar ve arabirimler, yüz hizmeti git istemci kitaplığı 'n
 |Ad|Açıklama|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
-|[İstemcilerinin](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
+|[İstemci](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
 |[DetectedFace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#DetectedFace)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
 |[ListClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#ListClient)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
 |[PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
@@ -193,6 +193,9 @@ Aşağıdaki kod, görüntüleri ön ekine göre sıralar, yüzleri algılar ve 
 Yüzleri atadıktan sonra, kişi nesnelerinden her biriyle ilişkili görsel özelliklerini tanımlayabilmesi için **sorumlu** **grubunu** eğitebilirsiniz. Aşağıdaki kod, zaman uyumsuz **eğitme** yöntemini çağırır ve sonucu, durumu konsola yazdırarak tarar.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_train)]
+
+> [!TIP]
+> Yüz Tanıma API'si, doğası gereği statik olan önceden oluşturulmuş modeller kümesi üzerinde çalışır (modelin performansı, hizmet çalıştırıldığı sürece bu şekilde çalışmaz veya geliştirilecektir). Modelin ürettiği sonuçlar, Microsoft modelin arka ucunu tamamen yeni bir model sürümüne geçirmeden güncelleştirse de değişiklik gösterebilir. Bir modelin daha yeni bir sürümünden yararlanmak için, daha yeni modeli aynı kayıt görüntülerine sahip bir parametre olarak belirterek, **Personal grubunuzu** yeniden eğitebilirsiniz.
 
 ## <a name="identify-a-face"></a>Yüz tanıma
 

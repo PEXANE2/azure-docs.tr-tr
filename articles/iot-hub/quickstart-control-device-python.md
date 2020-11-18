@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: edbce93036652b338f192df237e8c5b09017ad33
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5db51e78a6770a642728cc058f425baf7c7e095b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747488"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832169"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme (Python)
 
@@ -37,15 +37,7 @@ Bu hızlı başlangıçta, Azure IoT Hub bağlı sanal cihazı denetlemek için 
 
 * Bağlantı noktası 8883 güvenlik duvarınızda açık. Bu hızlı başlangıçta bulunan cihaz örneği, 8883 bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Azure IoT uzantısı ekleme
-
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IoT Uzantısı belirli IoT Hub, IoT Edge ve IoT Cihaz Sağlama Hizmeti (DPS) komutlarını Azure CLI’ya ekler.
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -63,9 +55,9 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-    **Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-    **Mypythondevice** : Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterilen şekilde **Mypyıthondevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
+    **Mypythondevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterilen şekilde **Mypyıthondevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
@@ -73,7 +65,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 
-    **Youriothubname** : aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
@@ -87,7 +79,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 3. Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına olanak sağlamak için bir _hizmet bağlantı dizesi_ de gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
-    **Youriothubname** : Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+    **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -110,7 +102,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 1. **SimulatedDevice.py** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    Değişkenin değerini, `CONNECTION_STRING` daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.py** ' ye yaptığınız değişiklikleri kaydedin.
+    Değişkenin değerini, `CONNECTION_STRING` daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.py**' ye yaptığınız değişiklikleri kaydedin.
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli kitaplıkları yükleyin:
 
@@ -136,7 +128,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 1. **BackEndApplication.py** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    Değişkenin değerini, `CONNECTION_STRING` daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.py** ' ye yaptığınız değişiklikleri kaydedin.
+    Değişkenin değerini, `CONNECTION_STRING` daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.py**' ye yaptığınız değişiklikleri kaydedin.
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli kitaplıkları yükleyin:
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: cf7b82ec1da660ac68c6031434c0e0748ee67b3d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7141ebe4e7894c975ba2ee6fb39d5bfd4483ed41
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94523785"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816619"
 ---
 Python için yüz istemci kitaplığını kullanarak yüz tanıma ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -164,6 +164,9 @@ Aşağıdaki kod, görüntülerinizi ön ekine göre sıralar, yüzeyleri algıl
 Yüzleri atadıktan sonra, **kişi** nesnelerinin her biriyle ilişkili görsel özelliklerini tanımlayabilmesi Için **persongroup** 'u eğitmeniz gerekir. Aşağıdaki kod, zaman uyumsuz **eğitme** yöntemini çağırır ve sonucu, durumu konsola yazdırarak tarar.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_train)]
+
+> [!TIP]
+> Yüz Tanıma API'si, doğası gereği statik olan önceden oluşturulmuş modeller kümesi üzerinde çalışır (modelin performansı, hizmet çalıştırıldığı sürece bu şekilde çalışmaz veya geliştirilecektir). Modelin ürettiği sonuçlar, Microsoft modelin arka ucunu tamamen yeni bir model sürümüne geçirmeden güncelleştirse de değişiklik gösterebilir. Bir modelin daha yeni bir sürümünden yararlanmak için, daha yeni modeli aynı kayıt görüntülerine sahip bir parametre olarak belirterek, **Personal grubunuzu** yeniden eğitebilirsiniz.
 
 ## <a name="identify-a-face"></a>Yüz tanıma
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 39514f8a34e85525e2a8900a8e6e3cc8656fb84a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e7a8c5552165324ef154767d1605e12b0c9ad22
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329304"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747897"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Azure CLı kullanarak genel IP adresi için yönlendirme tercihini yapılandırma
 
@@ -36,12 +36,13 @@ Varsayılan olarak, genel IP adresi için yönlendirme tercihi tüm Azure hizmet
 
 > [!IMPORTANT]
 > Yönlendirme tercihi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.49 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Bu makale, Azure CLı 'nin sürüm 2.0.49 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="register-the-feature-for-your-subscription"></a>Aboneliğiniz için özelliği kaydedin
 Yönlendirme tercihi özelliği şu anda önizlemededir. Aboneliğiniz için özelliği aşağıdaki şekilde kaydedin:

@@ -10,18 +10,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.custom: how-to, devx-track-python, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: fa1b19ef4ece3011c97c3158d54edd1d39efc09d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441996"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832645"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma
 
 
-Bir Azure Machine Learning modelini Web hizmeti olarak dağıtmak bir REST API uç noktası oluşturur. Bu uç noktaya veri gönderebilir ve model tarafından döndürülen tahmini alabilirsiniz. Bu belgede, C#, Go, Java ve Python kullanarak Web hizmeti için istemci oluşturma hakkında bilgi edinin.
+Web hizmeti olarak Azure Machine Learning modeli dağıtma işlemi bir REST API uç noktası oluşturur. Bu uç noktaya veri gönderebilir ve model tarafından döndürülen tahmini alabilirsiniz. Bu belgede, C#, Go, Java ve Python kullanarak Web hizmeti için istemci oluşturma hakkında bilgi edinin.
 
 Yerel ortamınıza bir model dağıtırken, Azure Container Instances, Azure Kubernetes hizmeti veya alanı programlanabilir kapı dizileri (FPGA) için bir Web hizmeti oluşturursunuz. Web hizmetine erişmek için kullanılan URI 'yi [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)kullanarak alırsınız. Kimlik doğrulaması etkinleştirilirse, kimlik doğrulama anahtarlarını veya belirteçlerini almak için SDK 'Yı da kullanabilirsiniz.
 
@@ -85,7 +85,7 @@ az ml service show -n <service-name>
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure Machine Learning Studio 'dan __uç noktalar__ , __gerçek zamanlı uç noktalar__ ve sonra uç nokta adı ' nı seçin. Uç nokta için Ayrıntılar bölümünde, __REST uç noktası__ alanı Puanlama URI 'sini içerir. __Swagger URI__ 'SI Swagger URI 'sini içerir.
+Azure Machine Learning Studio 'dan __uç noktalar__, __gerçek zamanlı uç noktalar__ ve sonra uç nokta adı ' nı seçin. Uç nokta için Ayrıntılar bölümünde, __REST uç noktası__ alanı Puanlama URI 'sini içerir. __Swagger URI__ 'SI Swagger URI 'sini içerir.
 
 ---
 

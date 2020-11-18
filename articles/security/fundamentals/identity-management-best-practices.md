@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 886597e5490acb94f43d840dc5a3d22092e45849
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698776"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832611"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -157,7 +157,7 @@ Birden çok kiracı varsa veya kullanıcıların [kendi parolalarını sıfırla
 
 Tüm kullanıcılarınız için iki aşamalı doğrulama gerektirmenizi öneririz. Bu, kuruluşunuzda daha fazla etkisi olan yöneticiler ve diğer kullanıcıları (örneğin, finans Officers) içerir.
 
-İki adımlı doğrulama gerektirmek için birden çok seçenek vardır. Sizin için en iyi seçenek, hedeflerinize, çalıştırmakta olduğunuz Azure AD sürümüne ve lisanslama programınıza bağlıdır. Bir kullanıcının sizin için en iyi seçeneği belirlemesi için [iki adımlı doğrulama gerektirme](../../active-directory/authentication/howto-mfa-userstates.md) bölümüne bakın. Lisanslar ve fiyatlandırma hakkında daha fazla bilgi için [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) ve [Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) fiyatlandırma sayfalarına bakın.
+İki adımlı doğrulama gerektirmek için birden çok seçenek vardır. Sizin için en iyi seçenek, hedeflerinize, çalıştırmakta olduğunuz Azure AD sürümüne ve lisanslama programınıza bağlıdır. Bir kullanıcının sizin için en iyi seçeneği belirlemesi için [iki adımlı doğrulama gerektirme](../../active-directory/authentication/howto-mfa-userstates.md) bölümüne bakın. Lisanslar ve fiyatlandırma hakkında daha fazla bilgi için [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) ve [Azure AD Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) fiyatlandırma sayfalarına bakın.
 
 İki aşamalı doğrulamayı etkinleştirmenin seçenekleri ve avantajları aşağıda verilmiştir:
 
@@ -170,14 +170,14 @@ Tüm kullanıcılarınız için iki aşamalı doğrulama gerektirmenizi öneriri
 Bu yöntem tüm lisanslama katmanlarında kullanılabilir ancak mevcut koşullu erişim ilkeleriyle karıştırılamaz. [Azure AD güvenlik Varsayılanları](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) ' nda daha fazla bilgi edinebilirsiniz
 
 **2. seçenek**: [kullanıcı durumunu değiştirerek Multi-Factor Authentication etkinleştirin](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Avantaj**: Bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir. Hem bulutta hem de [azure Multi-Factor Authentication sunucusu birlikte çalışarak azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md). Bu yöntemin kullanılması, kullanıcıların her oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
+**Avantaj**: Bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir. [Azure AD Multi-Factor Authentication hem bulutta hem de azure Multi-Factor Authentication sunucusu](../../active-directory/authentication/concept-mfa-howitworks.md)birlikte çalışarak. Bu yöntemin kullanılması, kullanıcıların her oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
 
-Multi-Factor Authentication etkinleştirilmesi gerektiğini öğrenmek için, [Kuruluşum Için hangi Azure MFA sürümünün doğru olduğunu](../../active-directory/authentication/concept-mfa-howitworks.md)görün.
+Multi-Factor Authentication etkinleştirilmesi gerektiğini öğrenmek için, [Kuruluşum Için hangi Azure AD MFA sürümünün doğru olduğunu](../../active-directory/authentication/concept-mfa-howitworks.md)öğrenin.
 
 **Seçenek 3**: [koşullu erişim ilkesiyle Multi-Factor Authentication etkinleştirin](../../active-directory/authentication/howto-mfa-getstarted.md).
 **Avantaj**: Bu seçenek, [koşullu erişim](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)kullanarak belirli koşullarda iki adımlı doğrulama isteyip istememe olanak tanır. Belirli koşullar, farklı konumlardan, güvenilmeyen cihazlardan veya riskli olarak düşündüğünüz uygulamalardan Kullanıcı oturumu açabilir. İki adımlı doğrulamanın gerekli olduğu belirli koşulları tanımlama, kullanıcılarınız için sabit istem yapmaktan kaçınmanızı sağlar; Bu, bir saldırgan Kullanıcı deneyimi olabilir.
 
-Bu, kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmenin en esnek yoludur. Koşullu erişim ilkesinin etkinleştirilmesi yalnızca Bulutta Azure Multi-Factor Authentication için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntemle [bulut tabanlı Azure Multi-Factor Authentication dağıtma](../../active-directory/authentication/howto-mfa-getstarted.md)bölümünde daha fazla bilgi edinebilirsiniz.
+Bu, kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmenin en esnek yoludur. Koşullu erişim ilkesinin etkinleştirilmesi yalnızca Bulutta Azure AD Multi-Factor Authentication için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntemle, [bulut tabanlı Azure AD Multi-Factor Authentication dağıtma](../../active-directory/authentication/howto-mfa-getstarted.md)bölümünde daha fazla bilgi bulabilirsiniz.
 
 **4. seçenek**: [risk tabanlı koşullu erişim Ilkelerini](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)değerlendirerek koşullu erişim ilkeleriyle Multi-Factor Authentication etkinleştirin.   
 **Avantaj**: Bu seçenek şunları yapmanızı sağlar:
@@ -269,7 +269,7 @@ Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. `*
 **En iyi yöntem**: tüm kritik yönetici hesaplarının parola-daha az (tercih edilen) olmasını veya Multi-Factor Authentication gerektirmesini gerektirir.
 **Ayrıntı**: herhangi BIR Azure AD hesabında parola kullanmadan oturum açmak için [Microsoft Authenticator uygulamasını](../../active-directory/authentication/howto-authentication-passwordless-phone.md) kullanın. [İş Için Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)gibi Microsoft Authenticator, bir cihaza bağlı bir kullanıcı kimlik bilgisini etkinleştirmek ve biyometrik kimlik doğrulaması veya PIN 'i kullanması için anahtar tabanlı kimlik doğrulaması kullanır.
 
-Azure AD yönetici rollerine bir veya daha fazla kalıcı olarak atanan her bireysel kullanıcı için oturum açma sırasında Azure Multi-Factor Authentication gerektir: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız için Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md) etkinleştirin ve yönetici hesabı kullanıcılarının kayıtlı olduğundan emin olun.
+Azure AD yönetici rollerine bir veya daha fazla kalıcı olarak atanan her bireysel kullanıcı için oturum açma sırasında Azure AD Multi-Factor Authentication gerektir: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız için Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-userstates.md) etkinleştirin ve yönetici hesabı kullanıcılarının kayıtlı olduğundan emin olun.
 
 **En iyi yöntem**: kritik yönetici hesapları için, üretim görevlerine izin verilmeyen bir yönetim iş istasyonuna (örneğin, göz atma ve e-posta) sahiptir. Bu, yönetici hesaplarınızı göz atma ve e-posta kullanan saldırı vektörlerinden korur ve önemli bir olay riskini önemli ölçüde azaltır.
 **Ayrıntı**: yönetici iş istasyonu kullanın. Bir iş istasyonu güvenliği düzeyi seçin:

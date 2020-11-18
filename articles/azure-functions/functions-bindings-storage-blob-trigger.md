@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213949"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833002"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
 
@@ -20,6 +20,16 @@ BLOB depolama tetikleyicisi, yeni veya güncelleştirilmiş bir blob algılandı
 Azure Blob depolama tetikleyicisi, genel amaçlı bir depolama hesabı gerektirir. [Hiyerarşik ad alanları](../storage/blobs/data-lake-storage-namespace.md) olan Storage v2 hesapları da desteklenir. Yalnızca blob hesabı kullanmak için veya uygulamanızda özelleştirilmiş gereksinimler varsa, bu tetikleyiciyi kullanmaya yönelik alternatifleri gözden geçirin.
 
 Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](./functions-bindings-storage-blob.md).
+
+## <a name="polling"></a>Yoklama
+
+Yoklama, günlükleri İnceleme ve düzenli kapsayıcı taramaları çalıştırma arasında karma olarak çalışır. Blob 'lar, aralıklar arasında kullanılan devamlılık belirtecine sahip bir zamanda 10.000 gruplarında taranır.
+
+> [!WARNING]
+> Ayrıca, [depolama günlükleri "en iyi çaba" temelinde oluşturulur](/rest/api/storageservices/About-Storage-Analytics-Logging) . Tüm olayların yakalandığı garanti yoktur. Bazı koşullarda Günlükler eksik olabilir.
+> 
+> Daha hızlı veya daha güvenilir bir blob işleme ihtiyacınız varsa, blobu oluştururken bir [kuyruk iletisi](../storage/queues/storage-dotnet-how-to-use-queues.md) oluşturmayı düşünün. Sonra blobu işlemek için blob tetikleyicisi yerine bir [kuyruk tetikleyicisi](functions-bindings-storage-queue.md) kullanın. Başka bir seçenek Event Grid kullanmaktır; [Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md)öğreticisine bakın.
+>
 
 ## <a name="alternatives"></a>Alternatifler
 
@@ -59,7 +69,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, birfunction.jsdosya ve bağlamayı kullanan kod * üzerindeki* bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Aşağıdaki örnek, birfunction.jsdosya ve bağlamayı kullanan kod *üzerindeki* bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
@@ -297,7 +307,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`context.bindings.<NAME>` `<NAME>` *Üzerindefunction.js*tanımlanan değerle eşleşen blob verilerine erişin.
+`context.bindings.<NAME>` `<NAME>` *Üzerindefunction.js* tanımlanan değerle eşleşen blob verilerine erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -321,7 +331,7 @@ Aşağıdaki örnek, blob dosya adına ve uzantısına ayrı olarak nasıl bağl
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Blob *original-Blob1.txt*adlandırılmış ise, `blobname` ve `blobextension` işlev kodundaki değişkenlerin değerleri *özgün-Blob1* ve *txt*' dir.
+Blob *original-Blob1.txt* adlandırılmış ise, `blobname` ve `blobextension` işlev kodundaki değişkenlerin değerleri *özgün-Blob1* ve *txt*' dir.
 
 ### <a name="filter-on-blob-name"></a>Blob adını filtrele
 
@@ -331,7 +341,7 @@ Aşağıdaki örnek yalnızca `input` kapsayıcıda "özgün-" dizesiyle başlay
 "path": "input/original-{name}",
 ```
 
-Blob adı *original-Blob1.txt*ise, `name` işlev kodundaki değişkenin değeri olur `Blob1.txt` .
+Blob adı *original-Blob1.txt* ise, `name` işlev kodundaki değişkenin değeri olur `Blob1.txt` .
 
 ### <a name="filter-on-file-type"></a>Dosya türünü filtrele
 
@@ -349,9 +359,9 @@ Dosya adlarında küme ayraçları aramak için, iki küme ayracı kullanarak k�
 "path": "images/{{20140101}}-{name}",
 ```
 
-Blob * {20140101}-soundfile.mp3*adlandırılmışsa, `name` işlev kodundaki değişken değeri *soundfile.mp3*.
+Blob *{20140101}-soundfile.mp3* adlandırılmışsa, `name` işlev kodundaki değişken değeri *soundfile.mp3*.
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -382,11 +392,11 @@ Java 'da meta veriler kullanılamıyor.
 
 ## <a name="blob-receipts"></a>Blob alındıları
 
-Azure Işlevleri çalışma zamanı, aynı yeni veya güncelleştirilmiş blob için bir blob tetikleyici işlevinin birden çok kez çağrılmamasını sağlar. Belirli bir blob sürümünün işlenip işlenmeyeceğini anlamak için, *BLOB alındıları*saklar.
+Azure Işlevleri çalışma zamanı, aynı yeni veya güncelleştirilmiş blob için bir blob tetikleyici işlevinin birden çok kez çağrılmamasını sağlar. Belirli bir blob sürümünün işlenip işlenmeyeceğini anlamak için, *BLOB alındıları* saklar.
 
 Azure Işlevleri, blob bilgilerini, işlev uygulamanız için Azure depolama hesabındaki *Azure-WebJobs-Konakları* adlı bir kapsayıcıda depolar (uygulama ayarı tarafından tanımlanır `AzureWebJobsStorage` ). Blob alındı bilgisi aşağıdaki bilgilere sahiptir:
 
-* Tetiklenen işlev ("* &lt; işlev uygulaması adı>*. Lerdir. * &lt; işlev adı>*", örneğin:" myfunctionapp. Functions. copyblob ")
+* Tetiklenen işlev ("*&lt; işlev uygulaması adı>*. Lerdir. *&lt; işlev adı>*", örneğin:" myfunctionapp. Functions. copyblob ")
 * Kapsayıcı adı
 * Blob türü ("BlockBlob" veya "PageBlob")
 * Blob adı
@@ -398,9 +408,9 @@ Bir Blobun yeniden işlenmesini zorlamak için, bu Blobun blob alındığını *
 
 Belirli bir blob için bir blob tetikleme işlevi başarısız olduğunda, Azure Işlevleri varsayılan olarak toplam 5 kez çalışır.
 
-5 ' in tamamı başarısız olursa, Azure Işlevleri *WebJobs-blobtrigger-zeadlı*bir depolama kuyruğuna bir ileti ekler. En fazla yeniden deneme sayısı yapılandırılabilir. Aynı MaxDequeueCount ayarı, zarar blobu işleme ve zarar sırası ileti işleme için kullanılır. Zarar Blobları için kuyruk iletisi aşağıdaki özellikleri içeren bir JSON nesnesidir:
+5 ' in tamamı başarısız olursa, Azure Işlevleri *WebJobs-blobtrigger-zeadlı* bir depolama kuyruğuna bir ileti ekler. En fazla yeniden deneme sayısı yapılandırılabilir. Aynı MaxDequeueCount ayarı, zarar blobu işleme ve zarar sırası ileti işleme için kullanılır. Zarar Blobları için kuyruk iletisi aşağıdaki özellikleri içeren bir JSON nesnesidir:
 
-* FunctionID ( * &lt; app name işlev işlevi>*. Lerdir. * &lt; işlev adı>*)
+* FunctionID ( *&lt; app name işlev işlevi>*. Lerdir. *&lt; işlev adı>*)
 * BlobType ("BlockBlob" veya "PageBlob")
 * ContainerName
 * BlobName
@@ -413,16 +423,6 @@ Blob tetikleyicisi bir kuyruğu dahili olarak kullanır, bu nedenle eşzamanlı 
 [Tüketim planı](functions-scale.md#how-the-consumption-and-premium-plans-work) bir sanal MAKINEDE (VM) bir işlev UYGULAMASıNı 1,5 GB bellek ile sınırlandırır. Bellek, her eşzamanlı çalıştırılan işlev örneği ve Işlevler çalışma zamanının kendisi tarafından kullanılır. Blob ile tetiklenen bir işlev tüm blobu belleğe yüklerse, bu işlev tarafından yalnızca blob 'lar için kullanılan en fazla bellek 24 * en yüksek blob boyutudur. Örneğin, üç blob ile tetiklenen işlevlere sahip bir işlev uygulaması ve varsayılan ayarlar en fazla VM başına eşzamanlılık 3 * 24 = 72 işlev etkinleştirmeleri olacaktır.
 
 JavaScript ve Java işlevleri tüm Blobun belleğe yüklenmesini sağlar ve C# işlevleri `string` , veya ' a bağlarsanız, veya `Byte[]` .
-
-## <a name="polling"></a>Yoklama
-
-Yoklama, günlükleri İnceleme ve düzenli kapsayıcı taramaları çalıştırma arasında karma olarak çalışır. Blob 'lar, aralıklar arasında kullanılan devamlılık belirtecine sahip bir zamanda 10.000 gruplarında taranır.
-
-> [!WARNING]
-> Ayrıca, [depolama günlükleri "en iyi çaba" temelinde oluşturulur](/rest/api/storageservices/About-Storage-Analytics-Logging) . Tüm olayların yakalandığı garanti yoktur. Bazı koşullarda Günlükler eksik olabilir.
-> 
-> Daha hızlı veya daha güvenilir bir blob işleme ihtiyacınız varsa, blobu oluştururken bir [kuyruk iletisi](../storage/queues/storage-dotnet-how-to-use-queues.md) oluşturmayı düşünün. Sonra blobu işlemek için blob tetikleyicisi yerine bir [kuyruk tetikleyicisi](functions-bindings-storage-queue.md) kullanın. Başka bir seçenek Event Grid kullanmaktır; [Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md)öğreticisine bakın.
->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

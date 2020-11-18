@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 86b5c1dc396a755d898f0c3c332ab59933236afe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d98f3c61191d5d5b333072682abe740761901f0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747451"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831897"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Hızlı başlangıç: Node.js proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -30,13 +30,15 @@ Bu hızlı başlangıçta, cihaza bir cihaz akışı üzerinden gönderilmek üz
 
 * [Node.js 10 +](https://nodejs.org).
 
+    Aşağıdaki komutu kullanarak, geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [Örnek bir Node.js projesi](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
-Aşağıdaki komutu kullanarak, geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
-
-```cmd/sh
-node --version
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)olarak desteklemektedir.
 
@@ -47,8 +49,6 @@ Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](htt
 > * EUAP Orta ABD
 > * Kuzey Avrupa
 > * Güneydoğu Asya
-  
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT uzantısı ekleme
 

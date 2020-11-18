@@ -2,13 +2,13 @@
 title: Şablon belirtimini bağlantılı şablon olarak dağıtma
 description: Bağlı bir dağıtımda var olan bir şablon belirtimini dağıtmayı öğrenin.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: 9755774f79ee4901c8aa691054da749f37756742
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: 65ad5767817457133d0fbc34c7735cf52ff2c3f3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321584"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747477"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Öğretici: bir şablon belirtimini bağlantılı şablon olarak dağıtma (Önizleme)
 
@@ -19,7 +19,7 @@ ms.locfileid: "93321584"
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için, [Önizleme için kaydolmanız](https://aka.ms/templateSpecOnboarding)gerekir.
+> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için PowerShell veya Azure CLı 'nin en son sürümünü yüklemelisiniz. Azure PowerShell için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)kullanın. Azure CLı için [sürüm 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
 
 ## <a name="create-a-template-spec"></a>Şablon belirtimi oluşturma
 

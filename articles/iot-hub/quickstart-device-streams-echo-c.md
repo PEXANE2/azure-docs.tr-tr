@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: ad31eb04f53197c4c3ccdd173cd57564c65d5a35
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: de310846ad0449a0dac7eccd60d82d4c68ef519b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747459"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832220"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla C 'deki bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -36,9 +36,7 @@ Bu hızlı başlangıçta cihaz tarafı C uygulaması aşağıdaki işlevlere sa
 
 Kod, bir cihaz akışının başlatma sürecini ve veri göndermek ve almak için nasıl kullanılacağını gösterir.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -48,13 +46,9 @@ Aşağıdaki önkoşulların olması gerekir:
 
 * En son [Git](https://git-scm.com/download/) sürümünü yükleyin.
 
-* Azure CLı için Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı için IoT Hub, IoT Edge ve IoT cihazı sağlama hizmeti 'ne (DPS) özgü komutlar ekler.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
 

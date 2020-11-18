@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 35c120b6d7715ac6fefe0e8712040108568ee8de
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747430"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831999"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: C proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -46,9 +46,7 @@ Aşağıdaki şekilde, cihaz ve hizmet yerel proxy programlarının SSH istemcis
 > [!NOTE]
 > Bir cihaz akışı üzerinden gönderilen SSH trafiği, doğrudan hizmet ve cihaz arasında gönderilmek yerine IoT Hub 'ının akış uç noktası aracılığıyla tünel oluşturulur. Daha fazla bilgi için bkz. [IoT Hub cihaz akışlarını kullanmanın avantajları](iot-hub-device-streams-overview.md#benefits). Ayrıca, şekil, cihaz yerel ara sunucusu ile aynı cihazda (veya makinede) çalışan SSH cinini gösterir. Bu hızlı başlangıçta, SSH Daemon IP adresini sağlamak, cihazın yerel ara sunucusunun ve arka plan programının farklı makinelerde da çalışmasına izin verir.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -62,11 +60,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 * C++ iş yükü etkinken [Masaüstü geliştirmeyle](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) [Visual Studio 2019](https://www.visualstudio.com/vs/) ' i yükler.
 * En son [Git](https://git-scm.com/download/) sürümünü yükleyin.
 
-* Azure CLı için Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı için IoT Hub, IoT Edge ve IoT cihazı sağlama hizmeti 'ne (DPS) özgü komutlar ekler.
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

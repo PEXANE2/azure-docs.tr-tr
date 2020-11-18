@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: a8890db90fa9f76b676a5fb944f74a773b00c8cd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 80280702748040e12d1d3d048644e6a16c926256
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737510"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832390"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Eşleme veri akışında kaynak dönüştürme
 
@@ -50,6 +50,7 @@ Veri akışı eşleme, ayıklama, yükleme ve dönüştürme (ELT) yaklaşımın
 | [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL yönetilen örneği (Önizleme)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ | 
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
 Bu bağlayıcılara özgü ayarlar, **kaynak seçenekleri** sekmesinde bulunur. Bu ayarlara ilişkin bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur.
@@ -64,11 +65,11 @@ Veri kümesi parametrelerinin geliştirme değerleri [hata ayıklama ayarlarınd
 
 ![Kaynak ayarları sekmesini gösteren ekran görüntüsü.](media/data-flow/source1.png "Kaynak ayarları sekmesini gösteren ekran görüntüsü.")
 
-**Çıkış akışı adı** : kaynak dönüşümünün adı.
+**Çıkış akışı adı**: kaynak dönüşümünün adı.
 
-**Kaynak türü** : satır içi veri kümesi mi yoksa mevcut bir veri kümesi nesnesi mi kullanacağınızı seçin.
+**Kaynak türü**: satır içi veri kümesi mi yoksa mevcut bir veri kümesi nesnesi mi kullanacağınızı seçin.
 
-**Test bağlantısı** : veri akışının Spark hizmetinin kaynak veri kümenizde kullanılan bağlantılı hizmete başarıyla bağlanıp bağlanamamadığını test edin. Bu özelliğin etkinleştirilmesi için hata ayıklama modunun açık olması gerekir.
+**Test bağlantısı**: veri akışının Spark hizmetinin kaynak veri kümenizde kullanılan bağlantılı hizmete başarıyla bağlanıp bağlanamamadığını test edin. Bu özelliğin etkinleştirilmesi için hata ayıklama modunun açık olması gerekir.
 
 **Şema** kayması: [şema DRFT](concepts-data-flow-schema-drift.md) , sütun değişikliklerini açıkça tanımlamaya gerek kalmadan veri akışlarınızda esnek şemaları yerel olarak işleme Data Factory yeteneğidir.
 
@@ -78,9 +79,9 @@ Veri kümesi parametrelerinin geliştirme değerleri [hata ayıklama ayarlarınd
 
 **Şemayı doğrula:** **Şemayı doğrula** seçilirse, gelen kaynak verileri veri kümesinin tanımlı şemasıyla eşleşmiyorsa veri akışı çalıştırılamaz.
 
-**Satır sayısını atla** : **satır sayısını atla** alanı, veri kümesinin başlangıcında yok sayılacak satır sayısını belirtir.
+**Satır sayısını atla**: **satır sayısını atla** alanı, veri kümesinin başlangıcında yok sayılacak satır sayısını belirtir.
 
-**Örnekleme** : kaynağınızdan satır sayısını sınırlamak için **örneklemesi** etkinleştirin. Hata ayıklama amacıyla kaynağınızdan verileri test ettiğinizde veya örnekleyebilirsiniz bu ayarı kullanın.
+**Örnekleme**: kaynağınızdan satır sayısını sınırlamak için **örneklemesi** etkinleştirin. Hata ayıklama amacıyla kaynağınızdan verileri test ettiğinizde veya örnekleyebilirsiniz bu ayarı kullanın.
 
 Kaynağınızın doğru yapılandırıldığını doğrulamak için hata ayıklama modunu açın ve bir veri önizlemesi getirin. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 

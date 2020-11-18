@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-communication-services
 author: chrwhit
 manager: nimag
@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 76aae596c145c736ae75e65f7f72fdbdcead5919
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 2daed8edbc433003b72e80de4f5fbfe3539edb31
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779184"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816602"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri Java SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -58,7 +58,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.2</version>
+    <version>1.0.0-beta.3</version>
 </dependency>
 ```
 

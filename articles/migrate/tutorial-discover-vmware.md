@@ -4,12 +4,12 @@ description: Azure geçişi sunucu değerlendirmesi aracı ile şirket içi VMwa
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: f3e8f61c898b08cc0638597e77fd3260cb4593b2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8a09f4583bd5cdae977b927be9649897a2d24ee6
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311296"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832662"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile VMware VM 'lerini bulma
 
@@ -17,7 +17,7 @@ Azure 'a geçiş sürecinizin bir parçası olarak şirket içi envanterinizi ve
 
 Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile şirket içi VMware sanal makinelerini (VM) nasıl keşfedebileceğiniz gösterilmektedir. Gereci bir VMware VM olarak dağıtırsınız; VM ve performans meta verilerini sürekli olarak bulur, VM 'lerde çalışan uygulamalar ve VM bağımlılıkları.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Azure hesabı ayarlayın.
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığını kontrol edin.
 
@@ -52,7 +52,7 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
 Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
-1. Azure portal, "abonelikler" araması yapın ve **Hizmetler**altında **abonelikler**' i seçin.
+1. Azure portal, "abonelikler" araması yapın ve **Hizmetler** altında **abonelikler**' i seçin.
 
     ![Azure aboneliğini aramak için arama kutusu](./media/tutorial-discover-vmware/search-subscription.png)
 
@@ -67,7 +67,7 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
     ![Hesaba rol atamak için rol ataması Ekle sayfasını açar](./media/tutorial-discover-vmware/assign-role.png)
 
-7. Portalda, kullanıcılar için arama yapın ve **Hizmetler**altında **Kullanıcılar**' ı seçin.
+7. Portalda, kullanıcılar için arama yapın ve **Hizmetler** altında **Kullanıcılar**' ı seçin.
 8. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
 
     ![Kullanıcıların Active Directory uygulamalar kaydedebildiğini Kullanıcı ayarlarında doğrula](./media/tutorial-discover-vmware/register-apps.png)
@@ -87,7 +87,7 @@ VSphere Web Istemcisinde bir hesabı aşağıdaki şekilde ayarlayın:
 3. **Kullanıcılar**' da yeni bir kullanıcı ekleyin.
 4. **Yeni Kullanıcı**' da hesap ayrıntılarını yazın. Daha sonra, **Tamam**'a tıklayın.
 5. **Genel izinler**' de, Kullanıcı hesabını seçin ve hesaba **salt okunurdur** rolünü atayın. Daha sonra, **Tamam**'a tıklayın.
-6. **Roller** ' de > **salt oku** rolünü seçin ve **ayrıcalıklar**bölümünde **Konuk işlemler**' i seçin. Bu ayrıcalıklar, VM 'lerde çalışan uygulamaları keşfetmesi ve VM bağımlılıklarını analiz etmek için gereklidir.
+6. **Roller** ' de > **salt oku** rolünü seçin ve **ayrıcalıklar** bölümünde **Konuk işlemler**' i seçin. Bu ayrıcalıklar, VM 'lerde çalışan uygulamaları keşfetmesi ve VM bağımlılıklarını analiz etmek için gereklidir.
  
     ![Salt okuma rolünde Konuk işlemlere izin vermek için onay kutusu](./media/tutorial-discover-vmware/guest-operations.png)
 
@@ -109,7 +109,7 @@ Yeni bir Azure geçişi projesi ayarlayın.
 
 1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
 2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
-3. **Genel bakış**bölümünde **proje oluştur**' u seçin.
+3. **Genel bakış** bölümünde **proje oluştur**' u seçin.
 5. **Proje oluştur**' da Azure aboneliğinizi ve kaynak grubunuzu seçin. Yoksa, bir kaynak grubu oluşturun.
 6. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
 
@@ -174,7 +174,7 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
     
         **Algoritma** | **İndir** | **SHA256**
         --- | --- | ---
-        VMware (11,9 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140333) | bd5c19eec93a62d52cc507a6b7b408d07f33f92b7d39b8a1e3dfec4ec62830d7
+        VMware (11,9 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
     - Azure Kamu için:
     
@@ -190,10 +190,10 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
 İndirilen dosyayı içeri aktarın ve bir VM oluşturun.
 
 1. VSphere istemci konsolunda, **File**  >  **ovf şablonu dosya dağıt**' a tıklayın.
-2. OVF şablonu Dağıtma Sihirbazı > **kaynak**bölümünde ova dosyasının konumunu belirtin.
-3. **Ad** ve **konum**bölümünde VM için bir kolay ad belirtin. VM 'nin barındırıldığı envanter nesnesini seçin.
+2. OVF şablonu Dağıtma Sihirbazı > **kaynak** bölümünde ova dosyasının konumunu belirtin.
+3. **Ad** ve **konum** bölümünde VM için bir kolay ad belirtin. VM 'nin barındırıldığı envanter nesnesini seçin.
 5. **Konakta/kümede**, sanal makinenin çalıştırılacağı konağı veya kümeyi belirtin.
-6. **Depolama**alanında VM için depolama hedefini belirtin.
+6. **Depolama** alanında VM için depolama hedefini belirtin.
 7. **Disk Biçimi**’nde disk türünü ve boyutunu belirtin.
 8. **Ağ eşlemesinde**, sanal makinenin bağlanacağı ağı belirtin. Ağ, Azure geçişi sunucu değerlendirmesi 'ne meta veri göndermek için internet bağlantısı gerektirir.
 9. Ayarları gözden geçirip onayladıktan sonra **Son**’a tıklayın.
@@ -216,7 +216,7 @@ Gereci ilk kez ayarlayın.
 3. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
    Alternatif olarak, uygulama kısayolunu seçerek uygulamayı gereç masaüstünden açabilirsiniz.
-1. **Lisans koşullarını**kabul edin ve üçüncü taraf bilgilerini okuyun.
+1. **Lisans koşullarını** kabul edin ve üçüncü taraf bilgilerini okuyun.
 1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
    - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
      - Proxy adresini belirtmek için **proxy ayarla** ' ya tıklayın (formdaki http://ProxyIPAddress veya http://ProxyFQDN) dinleme bağlantı noktasında).
@@ -225,7 +225,7 @@ Gereci ilk kez ayarlayın.
      - Proxy ayrıntıları eklediyseniz veya proxy ve/veya kimlik doğrulamasını devre dışı bırakırsanız, bağlantıyı tetiklemek için **Kaydet** 'e tıklayarak bağlantı denetimini yeniden başlatın.
    - **Zaman eşitleme**: bulmanın düzgün çalışması için gereç üzerindeki zaman internet ile eşitlenmiş olmalıdır.
    - **Güncelleştirmeleri yükleme**: gereç en son güncelleştirmelerin yüklü olmasını sağlar. Denetim tamamlandıktan sonra gereç **hizmetlerini görüntüle** ' ye tıklayarak gereç üzerinde çalışan bileşenlerin durumunu ve sürümlerini görebilirsiniz.
-   - **VDDK 'Yi yükleme**: gereç, VMware vSphere sanal disk geliştirme seti 'nın (VDDK) yüklü olduğunu denetler. Yüklü değilse, VMware 'den VDDK 6,7 ' i indirin ve indirilen ZIP içeriğini **yükleme yönergelerindeki**belirtilen konuma ayıklayın.
+   - **VDDK 'Yi yükleme**: gereç, VMware vSphere sanal disk geliştirme seti 'nın (VDDK) yüklü olduğunu denetler. Yüklü değilse, VMware 'den VDDK 6,7 ' i indirin ve indirilen ZIP içeriğini **yükleme yönergelerindeki** belirtilen konuma ayıklayın.
 
      Azure geçişi sunucu geçişi, Azure 'a geçiş sırasında makineleri çoğaltmak için VDDK 'yi kullanır. 
 1. İsterseniz, gerecin tüm önkoşulları karşılayıp karşılamadığını denetlemek için gereç yapılandırması sırasında dilediğiniz zaman **Önkoşulları yeniden çalıştırabilirsiniz** .
@@ -233,7 +233,7 @@ Gereci ilk kez ayarlayın.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
 1. Portaldan kopyalanmış **Azure geçişi proje anahtarını** yapıştırın. Anahtarınız yoksa, sunucu değerlendirmesi ' ne gidin **> var olan gereçlerini keşfet> yönetin**, anahtar oluşturma sırasında verdiğiniz gereç adını seçin ve ilgili anahtarı kopyalayın.
-1. **Oturum**aç ' a tıklayın. Yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açar. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
+1. **Oturum** aç ' a tıklayın. Yeni bir tarayıcı sekmesinde bir Azure oturum açma istemi açar. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
 1. Yeni sekmesinde, Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
    
    PIN ile oturum açma desteklenmez.
@@ -247,13 +247,13 @@ Gereci ilk kez ayarlayın.
 
 Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCenter Server 'e bağlanması gerekir.
 
-1. **1. Adım: vCenter Server kimlik**bilgilerini belirtin bölümünde kimlik bilgileri için kolay bir ad belirtmek üzere **kimlik bilgileri ekle** ' ye tıklayın, gerecin vCenter Server örneğindeki VM 'leri bulması için kullanacağı vCenter Server hesabı Için **Kullanıcı adı** ve **parola** ekleyin.
+1. **1. Adım: vCenter Server kimlik** bilgilerini belirtin bölümünde kimlik bilgileri için kolay bir ad belirtmek üzere **kimlik bilgileri ekle** ' ye tıklayın, gerecin vCenter Server örneğindeki VM 'leri bulması için kullanacağı vCenter Server hesabı Için **Kullanıcı adı** ve **parola** ekleyin.
     - Önceki öğreticide gerekli izinlere sahip bir hesap ayarlamış olmanız gerekir.
     - Bulma işlemini belirli VMware nesneleri (vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, bir konaklar klasörü veya ayrı VM 'Ler) olarak atamak istiyorsanız, Azure geçişi tarafından kullanılan hesabı kısıtlamak için [Bu makaledeki](set-discovery-scope.md) yönergeleri gözden geçirin.
-1. **2. Adım: vCenter Server ayrıntıları belirtin**bölümünde, açılan listeden kimlik bilgileri için kolay ad seçmek üzere **bulma kaynağı Ekle** ' ye tıklayın, vCenter Server ÖRNEĞININ **IP adresini/FQDN** 'sini belirtin. **Bağlantı noktasını** varsayılan (443) olarak bırakabilir veya vCenter Server dinlediği ve **Kaydet**' e tıklayarak özel bir bağlantı noktası belirtebilirsiniz.
+1. **2. Adım: vCenter Server ayrıntıları belirtin** bölümünde, açılan listeden kimlik bilgileri için kolay ad seçmek üzere **bulma kaynağı Ekle** ' ye tıklayın, vCenter Server ÖRNEĞININ **IP adresini/FQDN** 'sini belirtin. **Bağlantı noktasını** varsayılan (443) olarak bırakabilir veya vCenter Server dinlediği ve **Kaydet**' e tıklayarak özel bir bağlantı noktası belirtebilirsiniz.
 1. Kaydet 'e tıklanınca, Gereç vCenter Server bağlantısını doğrulamayı dener ve tablodaki **doğrulama durumunu** vCenter Server IP ADRESINE/FQDN 'ye göre gösterir.
 1. Bulmayı başlatmadan önce vCenter Server bağlantıyı **yeniden doğrulayabilirsiniz** .
-1. **3. Adım: yüklü uygulamaları bulmaya ve aracısız bağımlılık eşlemesi gerçekleştirmeye YÖNELIK VM kimlik bilgilerini sağlayın**, kimlik bilgileri **Ekle**' ye tıklayın ve kimlik bilgilerinin sağlandığı işletim sistemini, kimlik bilgileri Için kolay adı ve **Kullanıcı** adını ve **parolayı**belirtin. Ardından **Kaydet**' e tıklayın.
+1. **3. Adım: yüklü uygulamaları bulmaya ve aracısız bağımlılık eşlemesi gerçekleştirmeye YÖNELIK VM kimlik bilgilerini sağlayın**, kimlik bilgileri **Ekle**' ye tıklayın ve kimlik bilgilerinin sağlandığı işletim sistemini, kimlik bilgileri Için kolay adı ve **Kullanıcı** adını ve **parolayı** belirtin. Ardından **Kaydet**' e tıklayın.
 
     - [Uygulama bulma özelliği](how-to-discover-applications.md)veya [aracısız bağımlılık Analizi özelliği](how-to-create-group-machine-dependencies-agentless.md)için kullanmak üzere bir hesap oluşturduysanız, isteğe bağlı olarak burada kimlik bilgileri eklersiniz.
     - Bu özellikleri kullanmak istemiyorsanız, adımı atlamak için kaydırıcıya tıklayabilirsiniz. Amacınızı daha sonra dilediğiniz zaman tersine çevirebilirsiniz.

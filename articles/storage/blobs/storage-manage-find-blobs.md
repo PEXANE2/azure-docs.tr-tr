@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 8f1ea67605be3aee6257c293aea3db617d885645
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370262"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832441"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)
 
@@ -44,7 +44,7 @@ Depolama hesabınızda aşağıdaki beş blobu göz önünde bulundurun:
 - *günlük/2020/01/01/logfile.txt*
 
 
-Bu Bloblar *kapsayıcı/sanal klasör/blob adı*öneki kullanılarak ayrılır. Bu beş blobda bir dizin etiketi özniteliğini, `Project = Contoso` geçerli ön ek kuruluşlarını koruyarak birlikte kategorilere ayırmak için ayarlayabilirsiniz. Dizin etiketlerini eklemek, dizini kullanarak verileri filtreleme ve bulma özelliğini ortaya çıkaran verileri taşıma gereksinimini ortadan kaldırır.
+Bu Bloblar *kapsayıcı/sanal klasör/blob adı* öneki kullanılarak ayrılır. Bu beş blobda bir dizin etiketi özniteliğini, `Project = Contoso` geçerli ön ek kuruluşlarını koruyarak birlikte kategorilere ayırmak için ayarlayabilirsiniz. Dizin etiketlerini eklemek, dizini kullanarak verileri filtreleme ve bulma özelliğini ortaya çıkaran verileri taşıma gereksinimini ortadan kaldırır.
 
 ## <a name="setting-blob-index-tags"></a>Blob dizini etiketlerini ayarlama
 
@@ -164,7 +164,7 @@ Blob dizin etiketleri yalnızca BLOB verilerinizi sınıflandırmanız, yönetme
 
 Etiketli verilere yönelik eylemler uygulamak için yaşam döngüsü kuralında bağımsız bir filtre kümesi olarak bir blob dizini eşleşmesi ayarlayabilirsiniz. Ya da daha belirli veri kümeleriyle eşleştirmek için hem ön eki hem de bir blob dizinini birleştirebilirsiniz. Yaşam döngüsü kuralında birden çok filtre belirtilmesi, mantıksal bir ve işlemi uygular. Eylem yalnızca *Tüm* filtre ölçütleri eşleşiyorsa geçerlidir.
 
-Aşağıdaki örnek yaşam döngüsü yönetim kuralı, *videofler*adlı bir kapsayıcıda blok Blobları için geçerlidir. Kural, yalnızca veriler blob Dizin etiketi ölçütleriyle eşleşiyorsa depolamayı arşivlemek için Bloblar `"Status" == 'Processed' AND "Source" == 'RAW'` .
+Aşağıdaki örnek yaşam döngüsü yönetim kuralı, *videofler* adlı bir kapsayıcıda blok Blobları için geçerlidir. Kural, yalnızca veriler blob Dizin etiketi ölçütleriyle eşleşiyorsa depolamayı arşivlemek için Bloblar `"Status" == 'Processed' AND "Source" == 'RAW'` .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -327,6 +327,7 @@ Bu bölümde, blob Dizin etiketlerinin genel önizlemede bilinen sorunlar ve ko�
 - Filtreleme tek bir kapsayıcının kapsamına eklendiğinde, `@container` yalnızca filtre ifadesindeki tüm dizin etiketleri eşitlik denetimleri ise (anahtar = değer) geçirilebilir.
 - Aralık işlecini koşulla birlikte kullanırken `AND` , yalnızca aynı dizin etiketi anahtar adını ( `"Age" > '013' AND "Age" < '100'` ) belirtebilirsiniz.
 - Sürüm oluşturma ve blob dizini desteklenmiyor. Blob dizin etiketleri sürümler için korunur ancak blob dizin altyapısına aktarılmaz.
+- Dizin etiketlerinin dizine alınmış olup olmadığı saptanmayan bir API yok.
 - Hesap yük devretmesi desteklenmez. Blob dizini yük devretmeden sonra düzgün şekilde güncelleştirilemez.
 - Yaşam döngüsü yönetimi yalnızca blob dizini eşleşmesi olan eşitlik denetimlerini destekler.
 - `Copy Blob` Kaynak blobundan yeni hedef Blobun blob dizini etiketlerini kopyalamaz. Kopyalama işlemi sırasında hedef bloba uygulanmasını istediğiniz etiketleri belirtebilirsiniz.

@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506303"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747698"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma
 VM'ler için Azure İzleyici, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM'ler için Azure İzleyici için yapılandırılacak.
@@ -38,7 +38,7 @@ Tek bir abonelik, gereksinimlerinize bağlı olarak herhangi bir sayıda çalı�
 Aşağıdaki yöntemlerden herhangi birini kullanarak yeni bir Log Analytics çalışma alanı oluşturabilirsiniz. Ortamınızda kullanmanız gereken çalışma alanı sayısını ve erişim stratejisini nasıl tasarlayacağınızı belirlemek için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../platform/design-logs-deployment.md) .
 
 
-* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure portalı](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
@@ -77,10 +77,10 @@ Bir Log Analytics çalışma alanının VM'ler için Azure İzleyici ile kullan�
 > [!NOTE]
 > *Vminsıghts* çözümünü çalışma alanına eklediğinizde, çalışma alanına bağlı olan tüm mevcut sanal makineler, verileri ınsightsölçümlerini gönderecek şekilde başlayacaktır. Diğer veri türleri için veriler, çalışma alanına bağlı mevcut sanal makinelere Dependency Agent ekleyene kadar toplanmaz.
 
-### <a name="azure-portal"></a>Azure portal
-Azure portal var olan bir çalışma alanını yapılandırmak için üç seçenek vardır.
+### <a name="azure-portal"></a>Azure portalı
+Azure portal kullanarak var olan bir çalışma alanını yapılandırmak için üç seçenek vardır. Her biri aşağıda açıklanmıştır.
 
-Tek bir çalışma alanını yapılandırmak için **diğer ekleme seçeneklerini** belirleyin ve ardından **bir çalışma alanı yapılandırın**. Bir abonelik ve çalışma alanı seçin ve ardından **Yapılandır** ' a tıklayın.
+Tek bir çalışma alanını yapılandırmak için **diğer ekleme seçeneklerini** belirleyin ve ardından **bir çalışma alanı yapılandırın**. Bir abonelik ve çalışma alanı seçin ve ardından **Yapılandır**' a tıklayın.
 
 [![Çalışma alanını yapılandırma](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

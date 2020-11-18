@@ -9,18 +9,18 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202965"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832815"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Iletişim hizmetlerinde kimlik doğrulama
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Bu makalede, *erişim anahtarları* ve *Kullanıcı erişimi belirteçleri*kullanılarak Azure iletişim hizmetleri ile istemcilerin kimlik doğrulaması hakkında bilgi sağlanır. Azure Iletişim Hizmetleri ile her istemci etkileşiminin kimliğinin doğrulanması gerekir.
+Bu makalede, *erişim anahtarları* ve *Kullanıcı erişimi belirteçleri* kullanılarak Azure iletişim hizmetleri ile istemcilerin kimlik doğrulaması hakkında bilgi sağlanır. Azure Iletişim Hizmetleri ile her istemci etkileşiminin kimliğinin doğrulanması gerekir.
 
 Aşağıdaki tabloda, Azure Iletişim Hizmetleri istemci kitaplıkları tarafından desteklenen kimlik doğrulama seçenekleri açıklanmaktadır:
 
@@ -72,11 +72,11 @@ Azure Iletişim Hizmetleri REST API 'Lerine HTTP istekleri yapmak için bir iste
 
 Kullanıcı erişim belirteçleri, istemci uygulamalarınızın doğrudan Azure Iletişim hizmetlerinde kimlik doğrulamasını sağlar. Bunu başarmak için, uygulama kullanıcılarınızın kimliğini doğrulayan ve yönetim istemci kitaplığı ile Kullanıcı erişim belirteçleri veren bir güvenilen hizmet ayarlamanız gerekir. Mimari önemli konuları hakkında daha fazla bilgi edinmek için [istemci ve sunucu mimarisi](./client-and-server-architecture.md) kavramsal belgelerini ziyaret edin.
 
-`CommunicationClientCredential`Sınıfı, istemci kitaplıklarına Kullanıcı erişim belirteci kimlik bilgileri sağlamaya ve yaşam döngüsünü yönetmeye yönelik mantığı içerir.
+`CommunicationUserCredential`Sınıfı, istemci kitaplıklarına Kullanıcı erişim belirteci kimlik bilgileri sağlamaya ve yaşam döngüsünü yönetmeye yönelik mantığı içerir.
 
 ### <a name="initialize-the-client-libraries"></a>İstemci kitaplıklarını başlatma
 
-Kullanıcı erişim belirteci kimlik doğrulaması gerektiren Azure Iletişim Hizmetleri istemci kitaplıklarını başlatmak için önce sınıfın bir örneğini oluşturun `CommunicationClientCredential` ve ardından API istemcisini başlatmak için bunu kullanın.
+Kullanıcı erişim belirteci kimlik doğrulaması gerektiren Azure Iletişim Hizmetleri istemci kitaplıklarını başlatmak için önce sınıfın bir örneğini oluşturun `CommunicationUserCredential` ve ardından API istemcisini başlatmak için bunu kullanın.
 
 Aşağıdaki kod parçacıkları, bir Kullanıcı erişim belirteci ile sohbet istemci kitaplığını nasıl başlatakullanacağınızı gösterir:
 

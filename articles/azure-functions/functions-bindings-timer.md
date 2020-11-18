@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6423ec481c65155b511e398885b4954522bbb376
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 6baebdab06a72d3a4af05b4d2e04bc9eee6acb60
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025910"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833019"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi
 
@@ -163,7 +163,7 @@ Write-Host "PowerShell timer trigger function ran! TIME: $currentU
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, yapılandırması *function.jsdosya üzerinde* açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md) *__init__ . Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar.
+Aşağıdaki örnek, yapılandırması *function.jsdosya üzerinde* açıklanan bir Zamanlayıcı tetikleyicisi bağlamayı kullanır. Bağlamayı kullanan gerçek [Python işlevi](functions-reference-python.md) *__init__. Kopyala* dosyasında açıklanmıştır. İşleve geçirilen nesne, [Azure. Functions. TimerRequest nesnesi](/python/api/azure-functions/azure.functions.timerrequest)türündedir. İşlev mantığı, geçerli çağrının kaçırılmış bir zamanlama oluşumunda olup olmadığını gösteren günlüklere yazar.
 
 Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
@@ -256,11 +256,11 @@ public void keepAlive(
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `TimerTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**name** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
+|**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
 |**çizelgesini**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. `TimeSpan`Yalnızca, App Service planında çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği **%** Şu örnekte gösterildiği gibi, işaretlere kaydırılmış uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|İse `true` , çalışma zamanı başlatıldığında işlev çağrılır. Örneğin, çalışma zamanı, işlev uygulaması eylemsizlik nedeniyle boşta kaldıktan sonra uyandığında başlatılır. işlev değişiklikleri nedeniyle uygulama yeniden başlatıldığında ve işlev uygulaması ölçeklenirken. Bu nedenle **runOnStartup** `true` , özellikle üretimde olarak ayarlandıysa nadiren gerekir. |
 |**useMonitor**|**UseMonitor**|`true` `false` Zamanlamanın izlenmesi gerekip gerekmediğini belirtmek için veya olarak ayarlayın. Zamanlamayı zamanla, işlev uygulama örnekleri yeniden başlatıldığında bile zamanlamanın doğru bir şekilde tutulmasını sağlamaya yardımcı olmak için zamanlama oluşumları devam ettirir. Açıkça ayarlanmamışsa varsayılan değer `true` 1 dakikadan büyük veya ona eşit bir yinelenme aralığına sahip zamanlamalara yöneliktir. Dakikada birden çok kez tetikleyen zamanlamalar için varsayılan olarak ' dir `false` .
@@ -300,7 +300,7 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 |Tür  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
 |Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|ss: 05:00, SS her saat (saat)|
-|Tüm değerler ( `*` )|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (günde 60 kez)|
+|Tüm değerler ( `*` )|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (belirtilen saat içinde 60 kez)|
 |Bir Aralık ( `-` işleç)|<nobr>"5-7 * * * * *"</nobr>|ss: DD: 05, ss: DD: 06, ve hh: mm: 07 saat|
 |Bir değerler kümesi ( `,` işleç)|<nobr>"5, 8, 10 * * * * *"</nobr>|ss: DD: 05, ss: DD: 08 ve hh: mm: 10 burada ss: DD her saatin dakikada bir (3 kez bir dakika)|
 |Bir Aralık değeri ( `/` işleç)|<nobr>"0 */5 * * * *"</nobr>|ss: 00:00, ss: 05:00, ss: 10:00 ve bu şekilde ss: 00|

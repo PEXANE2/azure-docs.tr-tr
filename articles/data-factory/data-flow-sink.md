@@ -4,17 +4,16 @@ description: Eşleme veri akışında bir havuz dönüştürmeyi yapılandırmay
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 2e26028c47e8c96f8c1adabc468ee6f03e3cb19c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 11/17/2020
+ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427318"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832543"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -67,11 +66,7 @@ Aşağıdaki videoda, metin ile ayrılmış dosya türleri için birçok farklı
 
 **Şema** kayması: [şema DRFT](concepts-data-flow-schema-drift.md) , sütun değişikliklerini açıkça tanımlamaya gerek kalmadan veri akışlarınızda esnek şemaları yerel olarak işleme Data Factory yeteneğidir. Havuz veri şemasında tanımlandıklarınızın üzerine ek sütunlar yazmak için **şema bitsede Izin ver** ' i etkinleştirin.
 
-**Şemayı doğrula** : şemayı doğrula seçilirse, gelen kaynak şemasının herhangi bir sütunu kaynak projeksiyonda bulunamazsa veya veri türleri eşleşmiyorsa veri akışı başarısız olur. Kaynak verilerin tanımlı projeksiyonun sözleşmesini karşıladığından zorlamak için bu ayarı kullanın. Bu, sütun adlarının veya türlerin değiştiğini bildirmek için veritabanı kaynak senaryolarında yararlı olur.
-
-**Tempdb kullan:** Varsayılan olarak Data Factory, verileri yükleme işleminin bir parçası olarak depolamak için genel geçici bir tablo kullanacaktır. Alternatif olarak, "TempDB kullan" seçeneğinin işaretini kaldırın ve bunun yerine, geçici saklama tablosunu bu havuz için kullanılmakta olan veritabanında bulunan bir kullanıcı veritabanında depolamasını Data Factory isteyebilirsiniz.
-
-![Geçici VERITABANıNı kullan](media/data-flow/tempdb.png "Geçici VERITABANıNı kullan")
+**Şemayı doğrula**: şemayı doğrula seçilirse, gelen kaynak şemasının herhangi bir sütunu kaynak projeksiyonda bulunamazsa veya veri türleri eşleşmiyorsa veri akışı başarısız olur. Kaynak verilerin tanımlı projeksiyonun sözleşmesini karşıladığından zorlamak için bu ayarı kullanın. Bu, sütun adlarının veya türlerin değiştiğini bildirmek için veritabanı kaynak senaryolarında yararlı olur.
 
 ## <a name="cache-sink"></a>Önbellek havuzu
 
@@ -109,9 +104,14 @@ Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza y
 
 ![Özel havuz sıralaması](media/data-flow/cache-2.png "Özel havuz sıralaması")
 
+## <a name="error-row-handling"></a>Hata satırı işleme
+
+Veritabanlarına yazarken, hedef tarafından ayarlanan kısıtlamalar nedeniyle belirli veri satırları başarısız olabilir. Varsayılan olarak, bir veri akışı çalıştırması aldığı ilk hatada başarısız olur. Belirli bağlayıcılarda, tek tek satırlarda bile veri akışının tamamlanmasını sağlayan **hata durumunda devam** etmeyi tercih edebilirsiniz. Şu anda bu özellik yalnızca Azure SQL veritabanı 'nda kullanılabilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda hata satırı işleme](connector-azure-sql-database.md#error-row-handling).
+
 ## <a name="data-preview-in-sink"></a>Havuzda veri önizleme
 
 Bir hata ayıklama kümesinde veri önizlemesi getirilirken, havuzunuzu hiçbir veri yazılmaz. Verilerin nasıl görüneceğine ilişkin bir anlık görüntü döndürülür, ancak hedefe hiçbir şey yazılmayacak. Havuzunuzu veri yazmayı test etmek için işlem hattı tuvalinden bir işlem hattı hata ayıklaması çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Veri akışınızı oluşturduğunuza göre, işlem [hattınızı bir veri akışı etkinliği](concepts-data-flow-overview.md)ekleyin.
