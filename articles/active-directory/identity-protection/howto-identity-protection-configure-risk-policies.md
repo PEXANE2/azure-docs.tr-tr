@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f3e082969b7483601088cd976d8cc30d500017
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 366d68be1a7f115980973015e363da6095876754
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367474"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835926"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme
 
@@ -33,13 +33,13 @@ Her iki ilke de ortamınızda risk algılamalarını otomatik hale getirmek ve r
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-Kuruluşunuz, risk algılandığında kullanıcıların kendi kendini düzeltmesine izin vermek isterse, kullanıcıların hem self servis parola sıfırlama hem de Azure Multi-Factor Authentication için kayıtlı olmaları gerekir. En iyi deneyim için [Birleşik güvenlik bilgileri kayıt deneyiminin etkinleştirilmesini](../authentication/howto-registration-mfa-sspr-combined.md) öneririz. Kullanıcıların kendi kendini düzeltmesine izin vermek, yönetici müdahalesine gerek kalmadan onları daha hızlı bir şekilde daha hızlı bir şekilde geri alır. Yöneticiler bu olayları görmeye devam edebilir ve bunu bulduktan sonra araştırabilir. 
+Kuruluşunuz, risk algılandığında kullanıcıların kendi kendini düzeltmesine izin vermek isterse, kullanıcıların hem self servis parola sıfırlama hem de Azure AD Multi-Factor Authentication için kayıtlı olmaları gerekir. En iyi deneyim için [Birleşik güvenlik bilgileri kayıt deneyiminin etkinleştirilmesini](../authentication/howto-registration-mfa-sspr-combined.md) öneririz. Kullanıcıların kendi kendini düzeltmesine izin vermek, yönetici müdahalesine gerek kalmadan onları daha hızlı bir şekilde daha hızlı bir şekilde geri alır. Yöneticiler bu olayları görmeye devam edebilir ve bunu bulduktan sonra araştırabilir. 
 
 ## <a name="choosing-acceptable-risk-levels"></a>Kabul edilebilir risk düzeylerini seçme
 
 Kuruluşlar, Kullanıcı deneyimini ve güvenlik duruşunu kabul etmek isteyen risk düzeyine karar vermelidir. 
 
-Microsoft 'un önerisi, Kullanıcı risk ilkesi eşiğini **yüksek** olarak ve oturum açma riski ilkesini **Orta ve üst düzeyde**ayarlamak.
+Microsoft 'un önerisi, Kullanıcı risk ilkesi eşiğini **yüksek** olarak ve oturum açma riski ilkesini **Orta ve üst düzeyde** ayarlamak.
 
 **Yüksek** bir eşik seçilmesi, bir ilkenin tetiklenme sayısını azaltır ve kullanıcılara etkiyi en aza indirir. Ancak, ilkeden **düşük** ve **Orta ölçekli** risk algılamalarını dışarıda bırakır, bu da bir saldırganın güvenliği aşılmış bir kimlik kötüye yararlanmasıyla engelleyemeyebilir. **Düşük** eşiğin seçilmesi ek Kullanıcı kesintileri tanıtır, ancak güvenlik sonrası artar.
 
@@ -54,12 +54,12 @@ Yapılandırılan güvenilir [ağ konumları](../conditional-access/location-con
 Kullanıcı riskini ve oturum açma risk ilkelerini etkinleştirmek için aşağıdaki adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com)gidin.
-1. **Azure Active Directory**  >  **güvenlik**  >  **kimlik korumasına**  >  **genel bakış konusuna**göz atın.
-1. **Kullanıcı risk ilkesini**seçin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **kimlik korumasına**  >  **genel bakış konusuna** göz atın.
+1. **Kullanıcı risk ilkesini** seçin.
    1. **Atamalar** altında
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar**  -  **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneği **yüksek**olarak ayarlamanıza olanak sağlar.
+      1. **Koşullar**  -  **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneği **yüksek** olarak ayarlamanıza olanak sağlar.
    1. **Denetimler** altında
       1. **Erişim** -Microsoft 'un önerisi **erişime izin vermek** ve **parola değişikliğine gerek duyar**.
    1. **Ilkeyi zorla**  -  **Üzerinde**
@@ -68,7 +68,7 @@ Kullanıcı riskini ve oturum açma risk ilkelerini etkinleştirmek için aşağ
    1. **Atamalar** altında
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar**  -  **Oturum açma riski** Microsoft 'un önerisi, bu seçeneği **Orta ve üst düzeyde**ayarlamaya yönelik bir seçenektir.
+      1. **Koşullar**  -  **Oturum açma riski** Microsoft 'un önerisi, bu seçeneği **Orta ve üst düzeyde** ayarlamaya yönelik bir seçenektir.
    1. **Denetimler** altında
       1. **Erişim** -Microsoft 'un önerisi, **erişime izin vermek** ve **Multi-Factor Authentication gerektirir**.
    1. **Ilkeyi zorla**  -  **Üzerinde**
@@ -76,7 +76,7 @@ Kullanıcı riskini ve oturum açma risk ilkelerini etkinleştirmek için aşağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
+- [Azure AD Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
 
 - [Risk nedir?](concept-identity-protection-risks.md)
 

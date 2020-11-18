@@ -11,27 +11,27 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84464343"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835875"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Nasıl yapılır: Azure Multi-Factor Authentication kayıt ilkesini yapılandırma
+# <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>Nasıl yapılır: Azure AD Multi-Factor Authentication kayıt ilkesini yapılandırma
 
-Azure AD Kimlik Koruması, bir koşullu erişim ilkesini, oturum açmak istediğiniz modern kimlik doğrulama uygulamasına bakılmaksızın MFA kaydı gerektirecek şekilde yapılandırarak Azure Multi-Factor Authentication (MFA) kaydını yönetmenize yardımcı olur.
+Azure AD Kimlik Koruması, bir koşullu erişim ilkesini, oturum açmak istediğiniz modern kimlik doğrulama uygulamasına bakılmaksızın MFA kaydı gerektirecek şekilde yapılandırarak Azure AD Multi-Factor Authentication (MFA) kaydını yönetmenize yardımcı olur.
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Azure Multi-Factor Authentication kayıt ilkesi nedir?
+## <a name="what-is-the-azure-ad-multi-factor-authentication-registration-policy"></a>Azure AD Multi-Factor Authentication kayıt ilkesi nedir?
 
-Azure Multi-Factor Authentication, yalnızca bir Kullanıcı adı ve paroladan fazlasını kullandığınızı doğrulamak için bir yol sağlar. Kullanıcı oturum açma işlemlerinin ikinci bir güvenlik katmanını sağlar. Kullanıcıların MFA istemlerine yanıt verebilmeleri için önce Azure Multi-Factor Authentication 'e kaydolmaları gerekir.
+Azure AD Multi-Factor Authentication, yalnızca bir Kullanıcı adı ve paroladan fazlasını kullandığınızı doğrulamak için bir yol sağlar. Kullanıcı oturum açma işlemlerinin ikinci bir güvenlik katmanını sağlar. Kullanıcıların MFA istemlerine yanıt verebilmeleri için önce Azure AD Multi-Factor Authentication kaydolmaları gerekir.
 
-Kullanıcı oturum açma işlemleri için Azure Multi-Factor Authentication gerektirmenizi öneririz, çünkü:
+Kullanıcı oturum açma işlemleri için Azure AD Multi-Factor Authentication gerektirmenizi öneririz, çünkü:
 
 - Bir dizi doğrulama seçeneği aracılığıyla güçlü kimlik doğrulaması sunar.
 - Kuruluşunuzun kimlik korumasında risk algılamalarını kendi kendine düzeltmesini sağlamak için temel bir rol oynar.
 
-Azure Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication nedir?](../authentication/howto-mfa-getstarted.md)
+Azure AD Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [Azure ad Multi-Factor Authentication nedir?](../authentication/howto-mfa-getstarted.md)
 
 ## <a name="policy-configuration"></a>İlke yapılandırması
 
@@ -41,7 +41,7 @@ Azure Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [azure M
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
    1. **Denetimler** altında
-      1. CheckBox 'ın **Azure MFA kaydının** seçili olduğundan emin olun ve **Seç ' i**seçin.
+      1. CheckBox 'ın **Azure AD MFA kaydının** seçili olduğundan emin olun ve **Seç**' i seçin.
    1. **Ilkeyi zorla**  -  **Üzerinde**
    1. **Kaydet**
 
@@ -59,4 +59,4 @@ Azure Active Directory Kimlik Koruması, kullanıcılarınıza etkileşimli olar
 
 - [Azure AD self servis parola sıfırlamayı etkinleştirme](../authentication/howto-sspr-deployment.md)
 
-- [Azure Multi-Factor Authentication’ı etkinleştirme](../authentication/howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication etkinleştirme](../authentication/howto-mfa-getstarted.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd918aef85deefc23771413c3eb7b92f1189d39
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776111"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835807"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Riskleri düzeltin ve kullanıcıların engellemesini kaldırın
 
@@ -37,7 +37,7 @@ Yöneticiler aşağıdaki seçeneklere sahiptir:
 
 ### <a name="self-remediation-with-risk-policy"></a>Risk ilkesiyle kendi kendini düzeltme
 
-Kullanıcıların, risk ilkelerinizde Azure Multi-Factor Authentication (MFA) ve self servis parola sıfırlama (SSPR) ile kendi kendini düzelmesine izin verirseniz, risk algılandığında kendi engellemesini kaldırabilir. Bu algılamalar daha sonra kapalı olarak değerlendirilir. Risk algılandığında kullanabilmeniz için kullanıcıların daha önce Azure MFA ve SSPR için kayıtlı olmaları gerekir.
+Kullanıcıların, risk ilkelerinizde Azure AD Multi-Factor Authentication (MFA) ve self servis parola sıfırlama (SSPR) ile kendi kendini düzelmesine izin verirseniz, risk algılandığında kendi engellemesini kaldırabilir. Bu algılamalar daha sonra kapalı olarak değerlendirilir. Risk algılandığında kullanabilmeniz için kullanıcıların daha önce Azure AD MFA ve SSPR için kayıtlı olmaları gerekir.
 
 Bazı algılamalar, Kullanıcı Kendini düzeltmenin gerekli olduğu, ancak yöneticilerin bu algılamaları yine de değerlendirmesi gereken düzeye kadar risk oluşturmaz. Yöneticiler, [konumlardan erişimi engellemeyi](../conditional-access/howto-conditional-access-policy-location.md) veya ilkelerine karşı kabul edilebilir riski azaltmak gibi ek ölçülerin gerekli olduğunu belirleyebilir.
 
@@ -49,7 +49,7 @@ Yöneticiler, kullanıcıları için bir parola sıfırlanırken iki seçenek su
 
 - **Geçici parola oluşturma** -geçici bir parola oluşturarak, bir kimliği hemen güvenli bir duruma getirebilirsiniz. Bu yöntem, geçici parolanın ne olduğunu bilmeleri gerektiğinden etkilenen kullanıcılara başvurmayı gerektirir. Parola geçici olduğundan, kullanıcıdan bir sonraki oturum açma işlemi sırasında parolayı yeni bir kullanıcı olarak değiştirmesi istenir.
 
-- **Kullanıcının parolayı sıfırlamasını gerektir** -kullanıcıların parola sıfırlamasını sağlamak, yardım masası veya yönetici ile iletişim kurmadan kendinden kurtarmaya olanak sağlar. Bu yöntem yalnızca Azure MFA ve SSPR için kayıtlı kullanıcılar için geçerlidir. Kayıtlı olmayan kullanıcılar için bu seçenek kullanılamaz.
+- **Kullanıcının parolayı sıfırlamasını gerektir** -kullanıcıların parola sıfırlamasını sağlamak, yardım masası veya yönetici ile iletişim kurmadan kendinden kurtarmaya olanak sağlar. Bu yöntem yalnızca Azure AD MFA ve SSPR için kayıtlı kullanıcılar için geçerlidir. Kayıtlı olmayan kullanıcılar için bu seçenek kullanılamaz.
 
 ### <a name="dismiss-user-risk"></a>Kullanıcı riskini kapat
 

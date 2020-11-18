@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463765"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835909"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Kimlik korumasında risk algılamaları benzetimi yapma
 
@@ -40,7 +40,7 @@ Her risk algılaması hakkında daha fazla bilgi makalesinde, [risk nedir?](conc
 Aşağıdaki yordamı tamamlamak için şunları kullanmanız gerekir:
 
 - Anonim IP adreslerinin benzetimini yapmak için [Tor tarayıcısı](https://www.torproject.org/projects/torbrowser.html.en) . Kuruluşunuz Tor tarayıcısı kullanılarak sınırlandırdıysanız bir sanal makine kullanmanız gerekebilir.
-- Henüz Azure Multi-Factor Authentication için kaydedilmemiş bir test hesabı.
+- Azure AD Multi-Factor Authentication için henüz kaydedilmemiş bir test hesabı.
 
 **Anonım IP 'den bir oturum açma benzetimi yapmak için aşağıdaki adımları uygulayın**:
 
@@ -61,7 +61,7 @@ Aşağıdaki yordam yeni oluşturulan bir kullanır:
 Aşağıdaki yordamı tamamlamak için şunları içeren bir kullanıcı hesabı kullanmanız gerekir:
 
 - En az 30 günlük bir oturum açma geçmişi.
-- Azure Multi-Factor Authentication etkinleştirildi.
+- Azure AD Multi-Factor Authentication etkinleştirildi.
 
 **Bilmediğiniz bir konumdan bir oturum açma benzetimi yapmak için aşağıdaki adımları uygulayın**:
 
@@ -93,12 +93,12 @@ Bu bölüm, makalede oluşturulan kullanıcı ve oturum açma risk ilkelerinin t
 Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure Portal](https://portal.azure.com)gidin.
-1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a**göz atın.
+1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a** göz atın.
 1. **Kullanıcı risk Ilkesini Yapılandır**' ı seçin.
    1. **Atamalar** altında
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar**  -  **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneği **yüksek**olarak ayarlamanıza olanak sağlar.
+      1. **Koşullar**  -  **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneği **yüksek** olarak ayarlamanıza olanak sağlar.
    1. **Denetimler** altında
       1. **Erişim** -Microsoft 'un önerisi **erişime izin vermek** ve **parola değişikliğine gerek duyar**.
    1. **Ilkeyi zorla**  -  **Kapalı**
@@ -113,12 +113,12 @@ Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları
 Bir oturum açma risk ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure Portal](https://portal.azure.com)gidin.
-1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a**göz atın.
+1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a** göz atın.
 1. **Oturum açma risk Ilkesini Yapılandır**' ı seçin.
    1. **Atamalar** altında
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar**  -  **Oturum açma riski** Microsoft 'un önerisi, bu seçeneği **Orta ve üst düzeyde**ayarlamaya yönelik bir seçenektir.
+      1. **Koşullar**  -  **Oturum açma riski** Microsoft 'un önerisi, bu seçeneği **Orta ve üst düzeyde** ayarlamaya yönelik bir seçenektir.
    1. **Denetimler** altında
       1. **Erişim** -Microsoft 'un önerisi, **erişime izin vermek** ve **Multi-Factor Authentication gerektirir**.
    1. **Ilkeyi zorla**  -  **Üzerinde**

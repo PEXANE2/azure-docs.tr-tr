@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8776ad915ff215eef143f62aaa9e242ff0354f3e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368800"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835977"
 ---
 # <a name="identity-protection-policies"></a>Kimlik Koruması ilkeleri
 
@@ -24,11 +24,11 @@ Azure Active Directory Kimlik Koruması, yöneticilerin etkinleştirmek için se
 
 ![Kimlik Koruması ilkeleri](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
-## <a name="azure-mfa-registration-policy"></a>Azure MFA kayıt ilkesi
+## <a name="azure-ad-mfa-registration-policy"></a>Azure AD MFA kayıt ilkesi
 
-Kimlik koruması, kuruluşların oturum açma sırasında kayıt gerektiren bir koşullu erişim ilkesi kullanarak Azure Multi-Factor Authentication (MFA) kullanıma sunmasına yardımcı olabilir. Bu ilkeyi etkinleştirmek, kuruluşunuzdaki yeni kullanıcıların ilk gününde MFA için kaydolmalarına emin olmanın harika bir yoludur. Multi-Factor Authentication, kimlik koruması kapsamındaki risk olayları için kendi kendine düzeltme yöntemlerinden biridir. Kendi kendini düzeltme, kullanıcılarınızın yardım masası çağrı birimini azaltmak için kendi başına işlem yapmasına olanak sağlar.
+Kimlik koruması, kuruluşların oturum açma sırasında kayıt gerektiren bir koşullu erişim ilkesi kullanarak Azure AD Multi-Factor Authentication (MFA) kullanıma sunmasına yardımcı olabilir. Bu ilkeyi etkinleştirmek, kuruluşunuzdaki yeni kullanıcıların ilk gününde MFA için kaydolmalarına emin olmanın harika bir yoludur. Multi-Factor Authentication, kimlik koruması kapsamındaki risk olayları için kendi kendine düzeltme yöntemlerinden biridir. Kendi kendini düzeltme, kullanıcılarınızın yardım masası çağrı birimini azaltmak için kendi başına işlem yapmasına olanak sağlar.
 
-Azure Multi-Factor Authentication hakkında daha fazla bilgi makalesinde, nasıl çalıştığı hakkında daha fazla bilgi bulabilirsiniz [: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
+Azure AD Multi-Factor Authentication hakkında daha fazla bilgi makalesinde, nasıl çalıştığı hakkında daha fazla bilgi bulabilirsiniz [: Azure ad Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
 
 ## <a name="sign-in-risk-policy"></a>Oturum açma riski ilkesi
 
@@ -37,7 +37,7 @@ Kimlik koruması, hem gerçek zamanlı hem de çevrimdışı olan her oturum aç
 Risk algılanırsa, kullanıcılar, yöneticilerin gereksiz gürültüsünü engellemek için riskli oturum açma olayını kendi kendine düzeltebileceği ve kapatan çok faktörlü kimlik doğrulaması gerçekleştirebilir.
 
 > [!NOTE] 
-> Kullanıcılar, oturum açma risk ilkesini tetiklemeden önce Azure Multi-Factor Authentication için önceden kaydolmalıdır.
+> Kullanıcılar, oturum açma risk ilkesini tetiklemeden önce Azure AD Multi-Factor Authentication için önceden kaydolmalıdır.
 
 ### <a name="custom-conditional-access-policy"></a>Özel koşullu erişim ilkesi
 
@@ -58,8 +58,8 @@ Risk algılanırsa, kullanıcılar self servis parola sıfırlama işlemini kend
 
 - [Azure AD self servis parola sıfırlamayı etkinleştirme](../authentication/howto-sspr-deployment.md)
 
-- [Azure Multi-Factor Authentication’ı etkinleştirme](../authentication/howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication etkinleştirme](../authentication/howto-mfa-getstarted.md)
 
-- [Azure Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
+- [Azure AD Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
 
 - [Oturum açma ve Kullanıcı risk ilkelerini etkinleştir](howto-identity-protection-configure-risk-policies.md)

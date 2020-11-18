@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656743"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835671"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory uygulamalarımın dağıtımını planlayın
 
@@ -26,7 +26,7 @@ Azure AD My Apps 'i kullanarak şunları yapabilirsiniz:
 * Tüm şirketlerinden uygulamalar gibi Azure AD bağlantılı kaynaklarına keşif ve erişme
 * Yeni uygulamalara ve gruplara erişim isteme
 * Başkaları için bu kaynaklara erişimi yönetin
-* Self servis parola sıfırlama ve Azure Multi-Factor Authentication ayarlarını yönetme
+* Self servis parola sıfırlama ve Azure AD Multi-Factor Authentication ayarlarını yönetme
 * Cihazlarını yönetme
 
 Ayrıca yöneticilerin yönetmesine izin verir:
@@ -54,7 +54,7 @@ Azure AD My Apps, işletmelerden aşağıdaki yollarla faydalanır:
 
 Uygulamalarım ücretsizdir ve temel düzeyde kullanılacak bir lisans gerektirmez. Ancak, dizininizdeki nesne sayısı ve dağıtmak istediğiniz ek özellikler ek lisanslar gerektirebilir. Lisanslama gereksinimlerine sahip bazı yaygın Azure AD senaryoları aşağıdaki güvenlik özelliklerini içerir:
 
-* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [Grup tabanlı üyelik](../fundamentals/active-directory-manage-groups.md)
 * [Self servis parola sıfırlama](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Kimlik Koruması](../identity-protection/overview-identity-protection.md)
@@ -312,4 +312,4 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek için [Privileged Identity Management](../privileged-identity-management/pim-configure.md) kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Multi-Factor Authentication dağıtımını planlayın](../authentication/howto-mfa-getstarted.md)
+[Azure AD Multi-Factor Authentication dağıtımını planlayın](../authentication/howto-mfa-getstarted.md)

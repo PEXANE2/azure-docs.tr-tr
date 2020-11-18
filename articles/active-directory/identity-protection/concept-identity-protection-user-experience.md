@@ -11,25 +11,25 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4897b9187caab50be4db75bbc0af03e3d35aa4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950213"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835994"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Kimlik Koruması kullanıcı deneyimleri
 
 Azure Active Directory Kimlik Koruması, şunları yapabilirsiniz:
 
-* Kullanıcıların Azure Multi-Factor Authentication (MFA) kaydolmanızı gerektir
+* Kullanıcıların Azure AD Multi-Factor Authentication (MFA) kaydolmanızı gerektir
 * Riskli oturum açma işlemlerinin ve güvenliği aşılmış kullanıcıların düzeltmesini otomatikleştirin
 
-Tüm kimlik koruması ilkelerinin, kullanıcılar için oturum açma deneyimine etkisi vardır. Kullanıcıların Azure MFA ve self servis parola sıfırlama gibi araçları kaydolmalarına ve kullanmasına izin vermek etkiyi olumsuz etkileyebilir. Uygun ilke seçimleriyle birlikte bu araçlar kullanıcılara ihtiyaç duydukları bir kendi kendini düzeltme seçeneği sağlar.
+Tüm kimlik koruması ilkelerinin, kullanıcılar için oturum açma deneyimine etkisi vardır. Kullanıcıların Azure AD MFA ve self servis parola sıfırlama gibi araçları kaydolmalarına ve kullanmasına izin vermek etkiyi olumsuz etkileyebilir. Uygun ilke seçimleriyle birlikte bu araçlar kullanıcılara ihtiyaç duydukları bir kendi kendini düzeltme seçeneği sağlar.
 
 ## <a name="multi-factor-authentication-registration"></a>Multi-Factor Authentication kaydı
 
-Multi-Factor Authentication kaydı gerektiren kimlik koruma ilkesini etkinleştirmek ve tüm kullanıcılarınızı hedeflemek için, gelecekte kendi kendini düzeltmek üzere Azure MFA 'yı kullanma imkanına sahip olduklarından emin olur. Bu ilkeyi yapılandırmak, kullanıcılarınıza kaydolmak üzere seçebilecekleri 14 günlük bir süre sağlar ve sona kaydolmaya zorlanır. Kullanıcılar için deneyim aşağıda özetlenmiştir. Makalenin son kullanıcı belgelerinde daha fazla bilgi bulunabilir, [iki öğeli doğrulama ve iş veya okul hesabınız Için genel bakış](../user-help/multi-factor-authentication-end-user-first-time.md).
+Multi-Factor Authentication kaydı gerektiren kimlik koruma ilkesini etkinleştirmek ve tüm kullanıcılarınızı hedeflemek için Azure AD MFA 'yı kullanarak gelecekte kendini düzeltemedi. Bu ilkeyi yapılandırmak, kullanıcılarınıza kaydolmak üzere seçebilecekleri 14 günlük bir süre sağlar ve sona kaydolmaya zorlanır. Kullanıcılar için deneyim aşağıda özetlenmiştir. Makalenin son kullanıcı belgelerinde daha fazla bilgi bulunabilir, [iki öğeli doğrulama ve iş veya okul hesabınız Için genel bakış](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 ### <a name="registration-interrupt"></a>Kayıt kesmesi
 
@@ -37,7 +37,7 @@ Multi-Factor Authentication kaydı gerektiren kimlik koruma ilkesini etkinleşti
    
     ![Daha fazla bilgi gerekiyor](./media/concept-identity-protection-user-experience/identity-protection-experience-more-info-mfa.png)
 
-1. Azure Multi-Factor Authentication için kaydolmak üzere Kılavuzlu adımları doldurun ve oturum açma bilgilerinizi doldurun.
+1. Azure AD Multi-Factor Authentication için kaydolmak üzere Kılavuzlu adımları doldurun ve oturum açma bilgilerinizi doldurun.
 
 ## <a name="risky-sign-in-remediation"></a>Riskli oturum açma düzeltmesi
 
@@ -49,7 +49,7 @@ Yönetici oturum açma riskleri için bir ilke yapılandırmışsa, etkilenen ku
    
     ![Bir olağan dışı istem](./media/concept-identity-protection-user-experience/120.png)
 
-1. Kullanıcının, önceden kaydedilmiş yöntemlerinden biriyle Azure MFA 'yı tamamlayarak kimliklerini kanıtlamaları gerekir. 
+1. Kullanıcının, önceden kaydedilmiş yöntemlerinden biriyle Azure AD MFA 'yı tamamlayarak kimliklerini kanıtlamaları gerekir. 
 
 ### <a name="risky-sign-in-administrator-unblock"></a>Riskli oturum açma Yöneticisi engellemeyi kaldır
 
@@ -69,7 +69,7 @@ Bir Kullanıcı risk ilkesi yapılandırıldığında, Kullanıcı risk düzeyi 
    
     ![Düzeltme](./media/concept-identity-protection-user-experience/101.png)
 
-1. Kullanıcının, önceden kaydedilmiş yöntemlerinden biriyle Azure MFA 'yı tamamlayarak kimliklerini kanıtlamaları gerekir. 
+1. Kullanıcının, önceden kaydedilmiş yöntemlerinden biriyle Azure AD MFA 'yı tamamlayarak kimliklerini kanıtlamaları gerekir. 
 1. Son olarak, başka birinin hesabına erişimi olduğundan, Kullanıcı self servis parola sıfırlama kullanarak parolalarını değiştirmeye zorlanır.
 
 ## <a name="risky-sign-in-administrator-unblock"></a>Riskli oturum açma Yöneticisi engellemeyi kaldır

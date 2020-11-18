@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74cc5bb2b434e757e090bac45202704eb934a522
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783190"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835756"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
 
@@ -39,9 +39,9 @@ Microsoft 'un kimlik güvenliği ve koruma ekibine bakmakta olan Ekim 2018 Alex 
 >
 > En son yılda, kimlik sistemlerimiz üzerinde en iyi 3 saldırıları hakkında konuşdum. Bu saldırıların son hacmi aşağıda verilmiştir
 >   
->   - **İhlal yeniden yürütme** : Mayıs 2018 ' de 4.6 milyar TL saldırıları algılandı
->   - **Parola spreyi** : 2018 Nisan 'da 350k
->   - **Sızdırma** : Bu, tam olarak niceleştik, ancak her biri de ilgili olan 2018 Mart 'Ta 23m risk olaylarını gördük.
+>   - **İhlal yeniden yürütme**: Mayıs 2018 ' de 4.6 milyar TL saldırıları algılandı
+>   - **Parola spreyi**: 2018 Nisan 'da 350k
+>   - **Sızdırma**: Bu, tam olarak niceleştik, ancak her biri de ilgili olan 2018 Mart 'Ta 23m risk olaylarını gördük.
 
 ## <a name="risk-detection-and-remediation"></a>Risk algılama ve düzeltme
 
@@ -59,7 +59,7 @@ Kimlik koruması, riskleri aşağıdaki sınıflandırmalarla tanımlar:
 
 Bu riskler hakkında daha fazla ayrıntı ve bunların hesaplanmaları, makalede [risk](concept-identity-protection-risks.md)altında bulunabilir.
 
-Risk sinyalleri, kullanıcıların şunları yapmasını isteme gibi düzeltme çabalarını tetikleyebilirler: Azure Multi-Factor Authentication gerçekleştirme, kendi kendine parola sıfırlama kullanarak parolalarını sıfırlama veya bir yönetici işlem yapana kadar engelleme.
+Risk sinyalleri, kullanıcıların şunları yapmasını isteme gibi düzeltme çalışmalarını tetikleyebilir: Azure AD Multi-Factor Authentication gerçekleştirme, self servis parola sıfırlama kullanarak parolalarını sıfırlama veya bir yönetici tarafından işlem yapana kadar engelleme.
 
 ## <a name="risk-investigation"></a>Risk Araştırması
 
@@ -102,17 +102,17 @@ Koşullu erişim yöneticileri, bir koşul olarak oturum açma riskini gösteren
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Yetenek | Ayrıntılar  | Azure AD Ücretsiz/Microsoft 365 uygulamalar | Azure AD Premium P1|Azure AD Premium P2 |
+| Özellik | Ayrıntılar  | Azure AD Ücretsiz/Microsoft 365 uygulamalar | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla)  | Hayır | Hayır |Evet | 
-| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla)  | Hayır |  Hayır |Evet |
-| Güvenlik raporları | Genel Bakış |  Hayır | Hayır |Evet |
+| Risk ilkeleri | Kullanıcı risk ilkesi (kimlik koruması aracılığıyla)  | Hayır | Hayır |Yes | 
+| Risk ilkeleri | Oturum açma risk ilkesi (kimlik koruması veya koşullu erişim aracılığıyla)  | Hayır |  Hayır |Yes |
+| Güvenlik raporları | Genel Bakış |  Hayır | Hayır |Yes |
 | Güvenlik raporları | Riskli kullanıcılar  | Sınırlı bilgi. Yalnızca orta ve yüksek riskli kullanıcılar gösterilir. Ayrıntılı çekmece veya risk geçmişi yoktur. | Sınırlı bilgi. Yalnızca orta ve yüksek riskli kullanıcılar gösterilir. Ayrıntılı çekmece veya risk geçmişi yoktur. | Tam erişim|
 | Güvenlik raporları | Riskli oturum açma işlemleri  | Sınırlı bilgi. Risk ayrıntısı veya risk düzeyi gösterilmez. | Sınırlı bilgi. Risk ayrıntısı veya risk düzeyi gösterilmez. | Tam erişim|
-| Güvenlik raporları | Risk algılamaları   | Hayır | Sınırlı bilgi. Ayrıntı çekmecesi yok.| Tam erişim|
-| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Evet |
-| Bildirimler | Haftalık Özet| Hayır | Hayır | Evet | 
-| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Evet |
+| Güvenlik raporları | Risk algılamaları   | No | Sınırlı bilgi. Ayrıntı çekmecesi yok.| Tam erişim|
+| Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Yes |
+| Bildirimler | Haftalık Özet| Hayır | Hayır | Yes | 
+| | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Yes |
 
 Bu zengin raporlarla ilgili daha fazla bilgiyi makalesinde bulabilirsiniz [: riski araştırma](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

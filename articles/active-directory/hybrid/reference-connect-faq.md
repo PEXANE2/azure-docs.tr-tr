@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014642"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836079"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -65,7 +65,7 @@ Hayır, aynı AD etki alanı için birden fazla bağlayıcı desteklenmez.
 **S: Azure AD Connect veritabanını yerel veritabanından uzak SQL Server örneğine taşıyabilir miyim?**   
 Evet, aşağıdaki adımlar bunu nasıl yapabileceğine ilişkin genel yönergeler sağlar. Şu anda daha ayrıntılı bir belge üzerinde çalışıyoruz.
 1. LocalDB ADSync veritabanını yedekleyin.
-Bunu yapmanın en kolay yolu, Azure AD Connect aynı makinede yüklü SQL Server Management Studio kullanmaktır. *(LocalDB) .\ADSync*öğesine bağlanın ve ardından ADSync veritabanını yedekleyin.
+Bunu yapmanın en kolay yolu, Azure AD Connect aynı makinede yüklü SQL Server Management Studio kullanmaktır. *(LocalDB) .\ADSync* öğesine bağlanın ve ardından ADSync veritabanını yedekleyin.
 
 2. ADSync veritabanını uzak SQL Server örneğine geri yükleyin.
 
@@ -218,7 +218,7 @@ Evet, hala sürüm 1.1.750.0 veya sonraki sürüme yükseltmeniz gerekir. PowerS
 Azure AD Connect yükseltmek için başlangıçta kullanılan Kullanıcı adını ve parolayı bilmeniz gerekmez. Genel yönetici rolüne sahip herhangi bir Azure AD hesabını kullanın.
 
 **S: hangi Azure AD Connect sürümünü kullandığım hakkında nasıl öğrenebilirim?**  
-Sunucunuza hangi Azure AD Connect sürümünün yüklendiğini doğrulamak için, Denetim Masası ' na gidin ve **Programs**  >  aşağıda gösterildiği gibi programlar**Programlar ve Özellikler**' i seçerek Microsoft Azure AD Connect ' in yüklü sürümünü bulun:
+Sunucunuza hangi Azure AD Connect sürümünün yüklendiğini doğrulamak için, Denetim Masası ' na gidin ve **Programs**  >  aşağıda gösterildiği gibi programlar **Programlar ve Özellikler**' i seçerek Microsoft Azure AD Connect ' in yüklü sürümünü bulun:
 
 ![Denetim Masası 'nda Azure AD Connect sürümü](./media/reference-connect-faq/faq1.png)
 
@@ -261,7 +261,7 @@ Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız 
 ## <a name="operational-best-practice"></a>İşletimsel en iyi uygulama    
 Windows Server Active Directory ve Azure Active Directory arasında eşitleme yaparken uygulamanız gereken bazı en iyi uygulamalar aşağıda verilmiştir.
 
-**Eşitlenmiş tüm hesaplar için Multi-Factor Authentication Uygula** Azure Multi-Factor Authentication, kullanıcılar için basitlik sağlarken veri ve uygulamalara erişimin korunmasına yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay kimlik doğrulama yöntemi aracılığıyla güçlü kimlik doğrulaması sunar. Kullanıcılar, bir yöneticinin yaptığı yapılandırma kararlarından dolayı MFA 'ya yönelik olarak istenebilir veya olmayabilir. MFA hakkında daha fazla bilgi için buradan okuyabilirsiniz: https://www.microsoft.com/security/business/identity/mfa?rtc=1
+**Eşitlenmiş tüm hesaplar için Multi-Factor Authentication Uygula** Azure AD Multi-Factor Authentication, kullanıcılara kolaylık sağlarken verilere ve uygulamalara erişimin korunmasına yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay kimlik doğrulama yöntemi aracılığıyla güçlü kimlik doğrulaması sunar. Kullanıcılar, bir yöneticinin yaptığı yapılandırma kararlarından dolayı MFA 'ya yönelik olarak istenebilir veya olmayabilir. MFA hakkında daha fazla bilgi için buradan okuyabilirsiniz: https://www.microsoft.com/security/business/identity/mfa?rtc=1
 
 **Azure AD Connect sunucusu güvenlik yönergelerini izleyin** Azure AD Connect sunucusu kritik kimlik verileri içerir ve [Active Directory Yönetim Katmanı modelinde](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir. Lütfen [AADConnect sunucunuzun güvenliğini sağlamaya yönelik kılavuzlarımızı](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)inceleyin.
 

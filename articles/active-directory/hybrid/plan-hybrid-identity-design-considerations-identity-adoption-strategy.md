@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f52e46ff9cab7d3d150af9fd7b4f1c432bec74b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294877"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836198"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Karma kimlik benimseme stratejisi tanımlama
 Bu görevde, ' de açıklanan iş gereksinimlerini karşılamak üzere hibrit kimlik çözümü için karma kimlik benimseme stratejisini tanımlarsınız:
@@ -176,7 +176,7 @@ Aşağıdakiler desteklenmez ve bir uygulama olarak seçilmemelidir:
 > 
 
 ## <a name="define-multi-factor-authentication-strategy"></a>Multi-Factor Authentication stratejisini tanımlama
-Bu görevde, kullanılacak Multi-Factor Authentication stratejisini tanımlayacaksınız.  Azure Multi-Factor Authentication iki farklı sürümde sunulur.  Bunlardan biri, bulut tabanlıdır ve diğeri de Azure MFA sunucusu kullanılarak şirket içinde yer alır.  Yukarıdaki değerlendirmeye bağlı olarak, stratejiniz için doğru bir çözüm olduğunu belirleyebilirsiniz.  Şirketinizin güvenlik gereksinimini en iyi şekilde karşılayan tasarım seçeneğinin hangisi olduğunu öğrenmek için aşağıdaki tabloyu kullanın:
+Bu görevde, kullanılacak Multi-Factor Authentication stratejisini tanımlayacaksınız.  Azure AD Multi-Factor Authentication iki farklı sürümde sunulur.  Bunlardan biri, bulut tabanlıdır ve diğeri de Azure MFA sunucusu kullanılarak şirket içinde yer alır.  Yukarıdaki değerlendirmeye bağlı olarak, stratejiniz için doğru bir çözüm olduğunu belirleyebilirsiniz.  Şirketinizin güvenlik gereksinimini en iyi şekilde karşılayan tasarım seçeneğinin hangisi olduğunu öğrenmek için aşağıdaki tabloyu kullanın:
 
 Multi-Factor tasarım seçenekleri:
 
