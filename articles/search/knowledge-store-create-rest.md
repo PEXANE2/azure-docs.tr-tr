@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/02/2020
-ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 49b7b855a7608b6426d0bda50330dbe1a3b5ced7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924274"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741578"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST ve Postman kullanarak bilgi deposu oluşturma
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıç, AI için Azure Bilişsel Arama, Azure Blob depolama ve 
 
    **StorageV2 (genel amaçlı v2)** hesap türünü seçin.
 
-1. Blob Hizmetleri sayfalarını açın ve *otel-incelemeler*adlı bir kapsayıcı oluşturun.
+1. Blob Hizmetleri sayfalarını açın ve *otel-incelemeler* adlı bir kapsayıcı oluşturun.
 
 1. **Karşıya Yükle**'ye tıklayın.
 
@@ -61,7 +61,7 @@ Postman yükleme ve ayarlama.
 ### <a name="download-and-install-postman"></a>Postman indirme ve yükleme
 
 1. [Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)indirin.
-1. **File**  >  Kaynak kodu Postman içine aktarmak için dosya**içeri aktarma** ' yı seçin.
+1. **File**  >  Kaynak kodu Postman içine aktarmak için dosya **içeri aktarma** ' yı seçin.
 1. **Koleksiyonlar** sekmesini seçin ve ardından **...** (üç nokta) düğmesini seçin.
 1. **Düzenle**’yi seçin. 
    
@@ -78,15 +78,15 @@ Değerini almak için `admin-key` Azure bilişsel arama hizmetine gidin ve **ana
 | Değişken    | Nereden edinilir: |
 |-------------|-----------------|
 | `admin-key` | Azure Bilişsel Arama hizmetinin **anahtarlar** sayfasında.  |
-| `api-version` | **2020-06-30**olarak bırakın. |
-| `datasource-name` | Otel, **incelemeler-DS**olarak bırakın. | 
-| `indexer-name` | Otel- **incelemeler-ixR**olarak bırakın. | 
-| `index-name` | Otel-, **-x**olarak bırakın. | 
+| `api-version` | **2020-06-30** olarak bırakın. |
+| `datasource-name` | Otel, **incelemeler-DS** olarak bırakın. | 
+| `indexer-name` | Otel- **incelemeler-ixR** olarak bırakın. | 
+| `index-name` | Otel-, **-x** olarak bırakın. | 
 | `search-service-name` | Azure Bilişsel Arama hizmetinin adı. URL `https://{{search-service-name}}.search.windows.net` . | 
-| `skillset-name` | Otel- **İnceleme**olarak bırakın. | 
+| `skillset-name` | Otel- **İnceleme** olarak bırakın. | 
 | `storage-account-name` | Depolama hesabı adı. | 
 | `storage-connection-string` | Depolama hesabında, **erişim anahtarları** sekmesinde **KEY1**  >  **bağlantı dizesi**' ni seçin. | 
-| `storage-container-name` | **Otel-incelemeler**olarak bırakın. | 
+| `storage-container-name` | **Otel-incelemeler** olarak bırakın. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Postman 'da istek koleksiyonunu gözden geçirin
 

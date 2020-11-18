@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709171"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745692"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Bölgeler arası çoğaltma sorunlarını giderme
 
@@ -50,6 +50,7 @@ Bu makalede, Azure NetApp Files için çapraz bölge çoğaltma sorunlarını gi
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     Çoğaltmanın kesildiğini veya başlatılmamış olduğunu veya boşta olduğunu (başlatılamadı) doğrulayın.    |
 |     `Cannot delete   source replication`    |     Kaynak taraftan çoğaltma silinmesine izin verilmiyor. Hedef taraftan çoğaltmayı sildiğinizden emin olun.    |
+| `Volume with replication cannot be deleted`  |  Birimi silmeden önce çoğaltmayı silin. Bkz. [çoğaltmaları silme](cross-region-replication-delete.md). Bu işlem, birimin çoğaltmasını silmeden önce eşlemeyi kesmeniz gerekir. 
 
 ## <a name="errors-resyncing-volume"></a>Birim yeniden eşitleniyor hata
 

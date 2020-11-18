@@ -1,103 +1,156 @@
 ---
-title: Yayımlama seçeneğinizi belirleme-Microsoft ticari Market
-description: Bu makalede, Microsoft AppSource ve Azure Market 'Te teklifler yayımlamaya yönelik uygunluk ölçütleri ve gereksinimleri açıklanmaktadır.
+title: Listeleme seçeneklerine giriş-Microsoft ticari Market
+description: Bu makalede Microsoft AppSource ve Azure Marketi 'Nde yayınlanan tekliflere yönelik liste seçenekleri açıklanmaktadır.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 09/04/2020
-ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/16/2020
+ms.openlocfilehash: 38f65253791f28d9ae9806bea1264e594b769b19
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94492115"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741918"
 ---
-# <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
+# <a name="introduction-to-listing-options"></a>Listeleme seçeneklerine giriş
 
-Teklifiniz için seçtiğiniz yayımlama seçeneği, doğrudan uygunluk gereksinimlerine ve ticari Market GTM avantajlarına yöneliktir. Daha önemlisi, yayımlama seçeneği ve teklif türü seçimi, kullanıcıların ticari Market teklifinizle nasıl etkileşime gireceğini tanımlar.
+Potansiyel müşterilerle çeşitli yollarla etkileşim kurmak için ticari Market 'teki kullanılabilir _Liste seçeneklerini_ kullanabilirsiniz. Teklifiniz yayımlandıktan sonra teklifiniz için seçtiğiniz listeleme seçenekleri, teklifinizin, çevrimiçi mağazalarınızın liste sayfasının sol üst köşesinde bir düğme olarak görünür. Örneğin, aşağıdaki ekran görüntüsünde, **benimle iletişim** ve **Test sürücüsü** düğmeleriyle Microsoft AppSource çevrimiçi mağazadaki bir teklif listesi sayfası gösterilmektedir.
 
-Teklifinizi yapılandırmak için aşağıdaki temel ticari Market kavramlarını anlamanız gerekir: Yayımlama seçenekleri, teklif türleri ve yapılandırma ve teklifinizin ticari Market online mağazalarında nasıl ve nerede sunulduğunu belirleyen listeleme seçenekleri.
+:::image type="content" source="./media/listing-options.png" alt-text="Bir teklifin listeleme sayfasını gösterir. Benimle Iletişim kurun ve test sürücüsü düğmeleri gösterilir.":::
 
-Bu makalede aşağıdakileri öğreneceksiniz:
+## <a name="available-listing-options-by-offer-type"></a>Teklif türüne göre kullanılabilir liste seçenekleri
 
-- Çözümünüz için uygun çevrimiçi mağazayı belirleme.
-- Her çevrimiçi mağazada hangi yayımlama seçenekleri ve listeleme seçenekleri bulunur.
-- Her yayımlama seçeneği için hangi teklif türleri kullanılabilir.
+Bir teklif türü oluşturduğunuzda bir veya daha fazla listeleme seçeneği belirleyin. Bu seçenekler, müşterilerin çevrimiçi mağazalardaki teklif listesi sayfasında göreceği düğmeleri tespit ediyor. Liste seçenekleri _ücretsiz deneme_, _test sürücüsü_, _benimle iletişim kurun_ ve _Şimdi alın_.
 
-## <a name="commercial-marketplace-publishing-options"></a>Ticari Market Yayımlama seçenekleri
+Bu tabloda, her teklif türü için hangi liste seçeneklerinin kullanılabildiği gösterilmektedir.
 
-Aşağıdaki tabloda, Microsoft AppSource ve Azure Marketi 'nde teklif türleri için yayımlama seçenekleri gösterilmektedir.
+| Teklif türü | Ücretsiz Deneme | Test Sürüşü | Benimle iletişim kurun | Şimdi al (transactable) |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Azure uygulaması (yönetilen uygulama) |   | &#10004; |   | &#10004; |
+| Azure uygulaması (çözüm şablonu) |  |  |  |  |
+| Danışmanlık hizmeti |  |  | &#10004; |  |
+| Azure kapsayıcısı |  |  |  |  |
+| Dynamics 365 İş Merkezi | &#10004; | &#10004; | &#10004; |  |
+| Dynamics 365 müşteri katılımı & PowerApps | &#10004; | &#10004; | &#10004; |  |
+| İşlemler için Dynamics 365 | &#10004; | &#10004; | &#10004; |  |
+| IoT Edge modülü |  |  |  |  |
+| Yönetilen hizmet |  |  |  |  |
+| Power BI App |  |  |  |  |
+| Azure Sanal Makinesi | &#10004; | &#10004; |  | &#10004; |
+| Hizmet olarak yazılım | &#10004; | &#10004; | &#10004; | &#10004; |
+||||||
 
-|   | **Liste (kişi)**  | **Liste (deneme)**  | **Ücretsiz** | **KLG** | **İşlem**|
-| :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **Sanal Makine** |  |  |  | Azure Market |  Azure Market |
-| **Azure uygulamaları (çoklu VM)** |  |  | Azure Market | Azure Market | Azure Market  |
-| **Kapsayıcı görüntüsü** |  |  | Azure Market | Azure Market |   |
-| **IoT Edge modülü** |  |  | Azure Market | Azure Market |   |
-| **Yönetilen hizmetler** |  |  |  | Azure Market |   |
-| **Danışmanlık hizmetleri** | Her iki çevrimiçi mağaza |  |  |  |   |
-| **SaaS uygulaması** | Her iki çevrimiçi mağaza | Her iki çevrimiçi mağaza | Her iki çevrimiçi mağaza |  | Her iki çevrimiçi mağaza * |
-| **Microsoft 365 uygulaması** | AppSource | AppSource |  |  | AppSource * *  |
-| **Dynamics 365 eklentisi** |  AppSource | AppSource |  |  |   |
-| **PowerApps** | AppSource |AppSource  |  |  |   |
+### <a name="free-trial"></a>Ücretsiz Deneme
 
-Microsoft AppSource SaaS uygulaması Transact tekliflerinin &#42; Şu anda yalnızca kredi kartınlardır.
+Keşfedilebilirlik artırmak ve çözümünüzün deneme deneyiminizin sağlamasını otomatik hale getirmek için ticari marketi kullanın. Bu, teklif türüne bağlı olarak, olası müşterilerin hizmet olarak yazılım (SaaS), IaaS veya Microsoft uygulama içi deneyimi için 30 günden altı aya kadar ücretsiz olarak kullanılmasını sağlar.
 
-&#42;&#42; Microsoft 365 teklifleri yüklenmeye ücretsizdir ve bir lisans hizmeti olarak SaaS teklifi aracılığıyla oluşturulabilir. Daha fazla bilgi için bkz. [Microsoft Commercial Market aracılığıyla Microsoft 365 eklentilerinizi Moneleştirme](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Müşteriler teklifinizi denemek için teklifinizin liste sayfasındaki _ücretsiz deneme_ düğmesini kullanır. Aynı teklif dahilinde birden fazla plana ücretsiz bir deneme sağlarsanız, müşteriler başka bir plandaki ücretsiz bir denemeye geçebilir, ancak deneme süresi yeniden başlatmaz.
 
-## <a name="choose-a-listing-option"></a>Listeleme seçeneği seçin
+Sanal makine teklifleri için müşteriler, deneme süresi boyunca teklifin kullanımı için Azure altyapı maliyetlerinden ücretlendirilir. Deneme süresi sona erdiğinde, müşteriler deneme süresi sona ermeden önce iptal etmedikleri takdirde standart oranlar temelinde denedikleri son plana göre otomatik olarak ücretlendirilir.
 
-Mevcut olan liste seçenekleri, müşteri adayı paylaşma ve [ticari Market avantajlarına](./gtm-your-marketplace-benefits.md)erişmenizi sağlarken farklılaştırılan müşteri katılımını sunmaktadır. Yayımlama seçeneğiyle karşılık gelen listeleme seçeneklerini unutmayın:
+### <a name="test-drive"></a>Test Sürüşü
 
-| **Yayımlama seçeneği**    | **Açıklama**  |
-| :------------------- | :-------------------|
-| **Liste** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** listeleme seçenekleri aracılığıyla müşteriye bağlanmanızı istemesini sağlayan basit listesi. |
-| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan liste seçenekleri, **ücretsiz deneme** veya **Test sürüşdir**. |
-| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Listeleme seçeneği **Şimdi alınır**.
-| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Listeleme seçeneği **Şimdi alınır**.|
+Müşteriler, önceden yapılandırılmış bir ortama sabit sayıda saat boyunca erişim sağlamak için teklifinizin listeleme sayfasındaki _test sürücüsü_ düğmesini kullanır. Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md)
 
-> [!Note]
-> Transact Publishing seçeneğini kullanırken, bir teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md)makalesine bakın.
+> [!TIP]
+> Bir test sürücüsü, ücretsiz deneme sürümünden farklıdır. Bir sınama sürücüsü, ücretsiz deneme veya her ikisini birden sağlayabilirsiniz. Bunlar her ikisi de müşterilerinizi sabit bir süre için sağlar. Ancak bir sınama sürücüsü Ayrıca, ürününüzün temel özelliklerine ve avantajlarına yönelik uygulamalı, kendinden kılavuzlu bir tura, gerçek hayatta bir uygulama senaryosunda gösterilmekte olan avantajlardan de sahiptir.
 
-## <a name="selecting-an-online-store"></a>Çevrimiçi mağaza seçme
+### <a name="contact-me"></a>Benimle iletişim kurun
 
-Her çevrimiçi mağaza, iş ve BT çözümleri için farklı müşteri gereksinimlerine hizmet eder. Teklif türü, Transact özellikleri ve kategorili, teklifinizin nerede yayımlanacağını saptacaktır. Kategoriler ve alt kategoriler, yayımladığınız çözüm türüne göre her bir çevrimiçi mağazaya eşlenir:
+Uygulamanızın veya hizmetinizin basit listesi. Müşteriler teklifiniz hakkında sizinle bağlantı kurmak istemeniz için teklifinizin liste sayfasında _benimle Iletişim kurun_ düğmesini kullanır.
 
-**Microsoft AppSource** , Dynamics 365, Microsoft 365 ve güç platformu için sektör çözümleri ve danışmanlık hizmetleri gibi iş çözümleri sunar.
+### <a name="get-it-now"></a>Hemen alın
 
-Azure **marketi** , Azure 'Da veya Azure 'DA oluşturulan BT çözümlerini ve müşterilerinizin Azure kullanımını hızlandıran danışmanlık hizmetlerini sunar.
+Bu liste seçeneği, transactable tekliflerini (abonelikler ve Kullanıcı tabanlı fiyatlandırma), kendi lisans tekliflerinizi getir ve şimdi al (ücretsiz) bilgilerini içerir. Transactable teklifler, ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Müşteriler teklifi almak için _Şimdi Al düğmesini_ kullanır.
 
-Çözüm türü ile en uygun kategoriyi ve alt kategorisini seçin. Örneğin, bir Web uygulaması güvenlik duvarı, güvenlik kategorisi altında Azure Marketi 'ne yayımlanması gereken bir BT çözümüdür. Bir sözleşme yönetimi uygulaması, satış kategorisi altında AppSource 'a yayımlanması gereken bir iş çözümüdür. Yanlış kategori veya alt kategori seçilmesi, teklifinizin yanlış çevrimiçi mağazaya yayımlanmasına neden olabilir.
+Şimdi al listesini al seçeneği, teklif türüne bağlı olarak aşağıdaki fiyatlandırma seçeneklerini içerebilir:
 
-### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Çevrimiçi mağazalara yayımlama (yalnızca SaaS teklifleri)
+- Şimdi alın (ücretsiz)
+- Kendi lisansını getir (KLG)
+- Abonelik
+- Kullanım tabanlı fiyatlandırma
 
-SaaS teklifleri, Azure Market veya AppSource 'ta yayımlanabilir. SaaS teklifiniz hem BT çözümü (Azure Marketi) hem *de* bir iş çözümü (appsource) ise, her çevrimiçi mağaza için geçerli bir kategori ve/veya alt kategori seçin. Her iki çevrimiçi mağaza için yayımlanan teklifler, BT çözümü *ve* iş çözümü olarak bir değer teklifi içermelidir.
+Bu tabloda, şimdi al listesini Al seçeneğinin içerdiği ek fiyatlandırma seçeneklerini hangi teklif türlerinin desteklediği gösterilmektedir.
 
-> [!IMPORTANT]
-> [Tarifeli faturalandırma](partner-center-portal/saas-metered-billing.md) ile SaaS teklifleri, Azure marketi ve Azure Portal aracılığıyla kullanılabilir. Yalnızca özel planlara sahip SaaS teklifleri Azure portal aracılığıyla kullanılabilir.
+| Teklif türü | Şimdi alın (ücretsiz) | KLG | Abonelik | Kullanım tabanlı fiyatlandırma |
+| ------------ | ------------- | ------------- | ------------- | ------------- |
+| Azure uygulaması (yönetilen uygulama) |   |   | &#10004; | &#10004; |
+| Azure uygulaması (çözüm şablonu) | &#10004; |   |   |   |
+| Danışmanlık hizmeti |   |   |   |   |
+| Azure kapsayıcısı | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| Dynamics 365 İş Merkezi | &#10004; |   |   |   |
+| Dynamics 365 müşteri katılımı & PowerApps | &#10004; |   |   |   |
+| İşlemler için Dynamics 365 | &#10004; |   |   |   |
+| IoT Edge modülü | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
+| Yönetilen hizmet |   | &#10004; |   |   |
+| Power BI App | &#10004; |   |   |   |
+| Azure Sanal Makinesi |   | &#10004; |   | &#10004;<sup>2</sup> |
+| Hizmet olarak yazılım | &#10004; |   | &#10004; | &#10004; |
+||||||
 
-| Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
-|---|---|---|---|
-| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
-| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
-| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
+**Gösterge**
 
-&#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
+<sup>1</sup> **plana genel bakış** sekmesinin **fiyatlandırma modeli** sütununda _ücretsiz_ veya _KLG_ gösterilir ancak seçilebilir değildir.
 
-Örneğin, tarifeli faturalandırma ve yalnızca özel planı (genel plan olmadan) içeren bir teklif, Azure portal müşteriler tarafından satın alınacaktır. [Microsoft ticari Market 'Teki özel teklifler](private-offers.md)hakkında daha fazla bilgi edinin.
+<sup>2</sup> saat başına fiyatlandırılır ve aylık olarak faturalandırılır.
 
-### <a name="categories"></a>Kategoriler
+#### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
 
-Kategoriler ve alt kategoriler, çözüm türüne göre her bir çevrimiçi mağazaya eşlenir. Çözümünüze en iyi şekilde uyum sağlayan kategorileri ve alt kategorileri seçin. Şunları seçebilirsiniz:
+Uygulamanızı ücretsiz olarak sunmak için bu liste seçeneğini kullanın. Müşteriler ücretsiz teklifinizi almak için _Şimdi al_ düğmesini kullanır.
 
-- En az bir ve en fazla iki kategori. Birincil ve ikincil bir kategori seçebilirsiniz.
-- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Herhangi bir alt kategori seçmezseniz, teklifiniz seçili kategori altında keşfedilebilir olmaya devam eder.
+#### <a name="byol"></a>KLG
 
-[!INCLUDE [categories and subcategories](./includes/categories.md)]
+Keşfedilebilirliğini geliştirmek, çözümünüzün sağlamasını otomatik hale getirmek ve Market 'ten ayrı mali işlemleri gerçekleştirmek için ticari marketi kullanın. Kendi lisansını getir (KLG) listeleme seçeneği, şirket içi ve bulut geçişleri için idealdir. Müşteriler, sizin için önceden satın alınan bir lisans kullanarak teklifinizin satın almasını sağlamak için _Şimdi al_ düğmesini kullanır.
+
+#### <a name="subscription"></a>Abonelik
+
+Bu teklif türleri için bir sabit ücret ücreti alabilirsiniz:
+
+- Azure uygulaması (yönetilen uygulama), aylık abonelikleri destekler.
+- SaaS, hem aylık hem de yıllık abonelikleri destekler.
+
+#### <a name="usage-based-pricing"></a>Kullanım tabanlı fiyatlandırma
+
+Aşağıdaki teklif türleri kullanım tabanlı fiyatlandırmayı destekler:
+
+- Azure uygulaması (yönetilen uygulama), tarifeli faturalandırmayı destekler. Daha ayrıntılı bilgi için bkz. [yönetilen uygulama ölçümlü faturalandırma](./partner-center-portal/azure-app-metered-billing.md).
+- SaaS teklifleri, tarifeli faturalandırma ve Kullanıcı başına (bilgisayar başına) fiyatlandırmayı destekler. Tarifeli faturalandırma hakkında daha fazla bilgi için bkz. [ticari Market ölçüm hizmeti kullanılarak SaaS Için ölçülen faturalandırma](./partner-center-portal/saas-metered-billing.md).
+- Azure sanal makinesi, çekirdek başına, çekirdek başına boyut ve her Pazar ve çekirdek boyut fiyatlandırması için destek sunar. Bu fiyatlandırma seçenekleri, saat başına fiyatlandırılır ve aylık olarak faturalandırılır.
+
+Bir transactable teklifi oluştururken, teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için bkz. [ticari Market çevrimiçi mağazaları](overview.md#commercial-marketplace-online-stores).
+
+## <a name="listing-and-pricing-options-by-online-store"></a>Çevrimiçi mağazaya göre listeleme ve fiyatlandırma seçenekleri
+
+Çeşitli ölçütlere göre, teklifinizin Azure Marketi, Microsoft AppSource veya her iki çevrimiçi mağaza üzerinde listelenip listelenmediğini belirliyoruz. İki çevrimiçi mağaza arasındaki farklar hakkında daha fazla bilgi için bkz. [ticari Market çevrimiçi mağazaları](overview.md#commercial-marketplace-online-stores).
+
+Aşağıdaki tabloda, farklı teklif türleri ve eklentileri için kullanılabilen seçenekler ve teklifinizin hangi çevrimiçi depolarınızın listelenbileceği gösterilmektedir.
+
+| Teklif türleri ve eklentileri | Benimle iletişim kurun | Ücretsiz Deneme | Şimdi alın (ücretsiz) | KLG | Şimdi al (Transact) |
+| ------------ | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Azure Sanal Makinesi |   |   |   | Azure Market | Azure Market |
+| Azure Uygulaması |   |   | Azure Market | Azure Market | Azure Market |
+| Azure kapsayıcısı  |   |   | Azure Market | Azure Market |   |
+| IoT Edge modülü |   |   | Azure Market | Azure Market |   |
+| Yönetilen hizmet |   |   |   | Azure Market |   |
+| Danışmanlık hizmeti | Her iki çevrimiçi mağaza |   |   |   |   |
+| SaaS  | Her iki çevrimiçi mağaza | Her iki çevrimiçi mağaza | Her iki çevrimiçi mağaza |   | Çevrimiçi mağazaların her ikisi de &#42; |
+| Microsoft 365 uygulaması | AppSource | AppSource |   |   | AppSource &#42;&#42; |
+| Dynamics 365 İş Merkezi | AppSource | AppSource |   |   |   |
+| PowerApps & müşteri görevlendirmeleri için Dynamics 365 | AppSource | AppSource |   |   |   |
+| İşlemler için Dynamics 365 | AppSource | AppSource |   |   |   |
+| Power BI App |   |   | AppSource |   |   |
+|||||||
+
+AppSource 'ta &#42; SaaS transactable teklifleri yalnızca kredi kartınlardır.
+
+&#42;&#42; Microsoft 365 eklentilerin yüklenmesi ücretsizdir ve SaaS teklifi kullanılarak Monaya eklenebilir. Daha fazla bilgi için bkz. [Microsoft Commercial Market aracılığıyla Office 365 eklentilerinizi Moneleştirme](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace.md).
+
+## <a name="marketplace-rewards"></a>Market 'teki ödüller
+
+Market Remarlarınız, seçtiğiniz listeleme seçeneğine göre farklılaştırılır. Daha fazla bilgi edinmek için [ticari Market avantajlarınıza](gtm-your-marketplace-benefits.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir yayımlama seçeneğine karar verdikten sonra, [teklif türüne göre yayımlama kılavuzunu](./publisher-guide-by-offer-type.md)gözden geçirin.
+- Oluşturulacak teklif türünü seçmek için, bkz. [teklif türüne göre Kılavuzu yayımlama](./publisher-guide-by-offer-type.md).

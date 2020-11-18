@@ -1,18 +1,18 @@
 ---
 title: MariaDB için Azure veritabanı için yerleşik ilke tanımları
 description: MariaDB için Azure veritabanı 'nda Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0e094e71e6c972fc96530c947093670f87585d7f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 59a3ac75cb80d1548e38f53994ac45f820d05db7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537042"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746601"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Azure Ilkesi yerleşik tanımları
 

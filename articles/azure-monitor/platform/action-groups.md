@@ -1,50 +1,50 @@
 ---
-title: Azure portalında eylem grupları oluşturma ve yönetme
+title: Azure portal eylem grupları oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a5d685e49d941d7b6febbc220cdbfbcb631c4496
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336128"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746372"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem grupları oluşturma ve yönetme
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
 
 Bu makalede Azure portal eylem gruplarının nasıl oluşturulacağı ve yönetileceği gösterilmektedir.
 
 Her eylem aşağıdaki özelliklerden oluşur:
 
-* **Yazın** : bildirim veya eylem gerçekleştirildi. Bir sesli çağrı, SMS, e-posta gönderme örnekleri aşağıda verilmiştir. veya çeşitli otomatikleştirilmiş eylem türlerini tetikleyerek. Bu makalenin ilerleyen kısımlarında bulunan türlere bakın.
-* **Ad** : eylem grubu içindeki benzersiz bir tanımlayıcı.
-* **Ayrıntılar** : *türe* göre farklılık gösteren ilgili ayrıntılar.
+* **Yazın**: bildirim veya eylem gerçekleştirildi. Bir sesli çağrı, SMS, e-posta gönderme örnekleri aşağıda verilmiştir. veya çeşitli otomatikleştirilmiş eylem türlerini tetikleyerek. Bu makalenin ilerleyen kısımlarında bulunan türlere bakın.
+* **Ad**: eylem grubu içindeki benzersiz bir tanımlayıcı.
+* **Ayrıntılar**: *türe* göre farklılık gösteren ilgili ayrıntılar.
 
 Eylem gruplarını yapılandırmak için Azure Resource Manager şablonlarını kullanma hakkında daha fazla bilgi için bkz. [eylem grubu Kaynak Yöneticisi şablonları](./action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Azure portal kullanarak bir eylem grubu oluşturun
 
-1. [Azure Portal](https://portal.azure.com), **izleme** ' yi arayıp seçin. **İzleyici** bölmesi tüm izleme ayarlarınızı ve verilerinizi tek bir görünümde birleştirir.
+1. [Azure Portal](https://portal.azure.com), **izleme**' yi arayıp seçin. **İzleyici** bölmesi tüm izleme ayarlarınızı ve verilerinizi tek bir görünümde birleştirir.
 
-1. **Uyarılar** ' ı seçin ve ardından **eylemleri Yönet** ' i seçin.
+1. **Uyarılar**' ı seçin ve ardından **eylemleri Yönet**' i seçin.
 
     ![Eylemleri Yönet düğmesi](./media/action-groups/manage-action-groups.png)
     
-1. **Eylem grubu Ekle** ' yi seçin ve sihirbaz deneyiminde ilgili alanları girin.
+1. **Eylem grubu Ekle**' yi seçin ve sihirbaz deneyiminde ilgili alanları girin.
 
     !["Eylem grubu Ekle" komutu](./media/action-groups/add-action-group.PNG)
 
 ### <a name="configure-basic-action-group-settings"></a>Temel eylem grubu ayarlarını yapılandırma
 
-**Proje ayrıntıları** :
+**Proje ayrıntıları**:
 
 Eylem grubunun kaydedildiği **aboneliği** ve **kaynak grubunu** seçin.
 
-**Örnek ayrıntıları** :
+**Örnek ayrıntıları**:
 
 1. Bir **eylem grubu adı** girin.
 
@@ -59,15 +59,15 @@ Eylem grubunun kaydedildiği **aboneliği** ve **kaynak grubunu** seçin.
 
 1. Bir uyarı tetiklendiğinde gönderilecek bildirimlerin listesini tanımlayın. Her bildirim için aşağıdakileri sağlayın:
 
-    a. **Bildirim türü** : göndermek istediğiniz bildirim türünü seçin. Şu seçenekler sağlanır:
+    a. **Bildirim türü**: göndermek istediğiniz bildirim türünü seçin. Şu seçenekler sağlanır:
       * E-posta Azure Resource Manager rolü-belirli bir abonelik düzeyi ARM rolüne atanan kullanıcılara bir e-posta gönderin.
       * E-posta/SMS/Push/Voice-bu bildirim türlerini belirli alıcılara gönderir.
     
-    b. **Ad** : bildirim için benzersiz bir ad girin.
+    b. **Ad**: bildirim için benzersiz bir ad girin.
 
-    c. **Ayrıntılar** : seçili bildirim türüne göre bir e-posta adresi, telefon numarası vb. girin.
+    c. **Ayrıntılar**: seçili bildirim türüne göre bir e-posta adresi, telefon numarası vb. girin.
     
-    d. **Ortak uyarı şeması** : Azure izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](./alerts-common-schema.md)etkinleştirmeyi seçebilirsiniz.
+    d. **Ortak uyarı şeması**: Azure izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](./alerts-common-schema.md)etkinleştirmeyi seçebilirsiniz.
 
     ![Bildirimler sekmesi](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ Eylem grubunun kaydedildiği **aboneliği** ve **kaynak grubunu** seçin.
 
 1. Bir uyarı tetiklendiğinde tetiklenecek eylemlerin listesini tanımlayın. Her eylem için aşağıdakileri sağlayın:
 
-    a. **Eylem türü** : Otomasyon Runbook 'U, Azure IşLEVI, ITSM, mantıksal uygulama, güvenli Web kancası, Web kancası 'yi seçin.
+    a. **Eylem türü**: Otomasyon Runbook 'U, Azure IşLEVI, ITSM, mantıksal uygulama, güvenli Web kancası, Web kancası 'yi seçin.
     
-    b. **Ad** : eylem için benzersiz bir ad girin.
+    b. **Ad**: eylem için benzersiz bir ad girin.
 
-    c. **Ayrıntılar** : eylem türüne bağlı olarak, bir Web kancası URI 'Si, Azure UYGULAMASı, ITSM bağlantısı veya Otomasyon Runbook 'u girin. ITSM eylemi için, ayrıca ıTSM araclarınızın gerektirdiği **Iş öğesini** ve diğer alanları belirtin.
+    c. **Ayrıntılar**: eylem türüne bağlı olarak, bir Web kancası URI 'Si, Azure UYGULAMASı, ITSM bağlantısı veya Otomasyon Runbook 'u girin. ITSM eylemi için, ayrıca ıTSM araclarınızın gerektirdiği **Iş öğesini** ve diğer alanları belirtin.
     
-    d. **Ortak uyarı şeması** : Azure izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](./alerts-common-schema.md)etkinleştirmeyi seçebilirsiniz.
+    d. **Ortak uyarı şeması**: Azure izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajını sağlayan [ortak uyarı şemasını](./alerts-common-schema.md)etkinleştirmeyi seçebilirsiniz.
     
     ![Eylemler sekmesi](./media/action-groups/action-group-3-actions.png)
 
@@ -93,7 +93,7 @@ Eylem grubunun kaydedildiği **aboneliği** ve **kaynak grubunu** seçin.
 
     ![Etiketler sekmesi](./media/action-groups/action-group-4-tags.png)
     
-1. Ayarları gözden geçirmek için **Gözden geçir + oluştur** 'a tıklayın. Bu, tüm gerekli alanların seçili olduğundan emin olmak için girişlerinizin hızlı bir şekilde doğrulanmasını sağlar. Sorun varsa burada bildirilir. Ayarları inceledikten sonra, eylem grubunu sağlamak için **Oluştur** ' a tıklayın.
+1. Ayarları gözden geçirmek için **Gözden geçir + oluştur**'a tıklayın. Bu, tüm gerekli alanların seçili olduğundan emin olmak için girişlerinizin hızlı bir şekilde doğrulanmasını sağlar. Sorun varsa burada bildirilir. Ayarları inceledikten sonra, eylem grubunu sağlamak için **Oluştur** ' a tıklayın.
     
     ![Gözden geçir + Oluştur sekmesi](./media/action-groups/action-group-5-review.png)
 
@@ -266,22 +266,108 @@ Web kancaları aşağıdaki kurallar kullanılarak işlenir
 - İkinci ve üçüncü denemeler, yanıt için 30 saniye bekler.
 - Web kancasını çağırma 3 girişimi başarısız olduysa, hiçbir eylem grubu 15 dakika boyunca bitiş noktasını çağırmaz.
 
-Kaynak IP adresi aralıkları
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
+Kaynak IP adresi aralıkları:
+
+ - 13.66.60.119/32
+ - 13.66.143.220/30
+ - 13.66.202.14/32
+ - 13.66.248.225/32
+ - 13.66.249.211/32
+ - 13.67.10.124/30
+ - 13.69.109.132/30
+ - 13.71.199.112/30
+ - 13.77.53.216/30
+ - 13.77.172.102/32
+ - 13.77.183.209/32
+ - 13.78.109.156/30
+ - 13.84.49.247/32
+ - 13.84.51.172/32
+ - 13.84.52.58/32
+ - 13.86.221.220/30
+ - 13.106.38.142/32
+ - 13.106.38.148/32
+ - 13.106.54.3/32
+ - 13.106.54.19/32
+ - 13.106.57.181/32
+ - 13.106.57.196/31
+ - 20.38.149.132/30
+ - 20.42.64.36/30
+ - 20.43.121.124/30
+ - 20.44.17.220/30
+ - 20.45.123.236/30
+ - 20.72.27.152/30
+ - 20.150.172.228/30
+ - 20.192.238.124/30
+ - 20.193.202.4/30
+ - 40.68.195.137/32
+ - 40.68.201.58/32
+ - 40.68.201.65/32
+ - 40.68.201.206/32
+ - 40.68.201.211/32
+ - 40.68.204.18/32
+ - 40.115.37.106/32
+ - 40.121.219.215/32
+ - 40.121.221.62/32
+ - 40.121.222.201/32
+ - 40.121.223.186/32
+ - 51.104.9.100/30
+ - 52.183.20.244/32
+ - 52.183.31.0/32
+ - 52.183.94.59/32
+ - 52.184.145.166/32
+ - 191.233.50.4/30
+ - 191.233.207.64/26
+ - 2603:1000:4:402::178/125
+ - 2603:1000:104:402::178/125
+ - 2603:1010:6:402::178/125
+ - 2603:1010:101:402::178/125
+ - 2603:1010:304:402::178/125
+ - 2603:1010:404:402::178/125
+ - 2603:1020:5:402::178/125
+ - 2603:1020:206:402::178/125
+ - 2603:1020:305:402::178/125
+ - 2603:1020:405:402::178/125
+ - 2603:1020:605:402::178/125
+ - 2603:1020:705:402::178/125
+ - 2603:1020:805:402::178/125
+ - 2603:1020:905:402::178/125
+ - 2603:1020: A04:402:: 178/125
+ - 2603:1020: B04:402:: 178/125
+ - 2603:1020: C04:402:: 178/125
+ - 2603:1020: D04:402:: 178/125
+ - 2603:1020: E04:402:: 178/125
+ - 2603:1020: F04:402:: 178/125
+ - 2603:1020:1004:800:: F8/125
+ - 2603:1020:1104:400::178/125
+ - 2603:1030: f:400:: 978/125
+ - 2603:1030:10:402::178/125
+ - 2603:1030:104:402::178/125
+ - 2603:1030:107:400:: F0/125
+ - 2603:1030:210:402::178/125
+ - 2603:1030:40B: 400:: 978/125
+ - 2603:1030:40C: 402:: 178/125
+ - 2603:1030:504:802:: F8/125
+ - 2603:1030:608:402::178/125
+ - 2603:1030:807:402::178/125
+ - 2603:1030: A07:402:: 8f8/125
+ - 2603:1030: B04:402:: 178/125
+ - 2603:1030: C06:400:: 978/125
+ - 2603:1030: F05:402:: 178/125
+ - 2603:1030:1005:402::178/125
+ - 2603:1040:5:402::178/125
+ - 2603:1040:207:402::178/125
+ - 2603:1040:407:402::178/125
+ - 2603:1040:606:402::178/125
+ - 2603:1040:806:402::178/125
+ - 2603:1040:904:402::178/125
+ - 2603:1040: A06:402:: 178/125
+ - 2603:1040: B04:402:: 178/125
+ - 2603:1040: C06:402:: 178/125
+ - 2603:1040: D04:800:: F8/125
+ - 2603:1040: F05:402:: 178/125
+ - 2603:1040:1104:400::178/125
+ - 2603:1050:6:402::178/125
+ - 2603:1050:403:400:: 1F8/125
 
 Bu IP adreslerindeki değişikliklerle ilgili güncelleştirmeleri almak için, eylem grupları hizmeti hakkında bilgilendirici bildirimleri izleyen bir hizmet sistem durumu uyarısı yapılandırmanız önerilir.
 
@@ -296,21 +382,21 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 2. **Ekle** ' ye tıklayın ve ağ güvenlik grubu oluşturun.
 
    1. Kaynak grubu adını ekleyin ve ardından *örnek ayrıntılarını* girin.
-   1. **Gözden geçir + oluştur** ' a ve ardından *Oluştur* ' a tıklayın.
+   1. **Gözden geçir + oluştur** ' a ve ardından *Oluştur*' a tıklayın.
    
    :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Ağ güvenlik grubu oluşturma hakkında örnek."border="true":::
 
 3. Kaynak grubu ' na gidin ve ardından oluşturduğunuz *ağ güvenlik grubu* ' na tıklayın.
 
-    1. *Gelen güvenlik kuralları* ' nı seçin.
-    1. **Ekle** 'ye tıklayın.
+    1. *Gelen güvenlik kuralları*' nı seçin.
+    1. **Ekle**'ye tıklayın.
     
     :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
 
 4. Sağ bölmede yeni bir pencere açılır.
     1.  Kaynak seçin: **hizmet etiketi**
     1.  Kaynak hizmet etiketi: **ActionGroup**
-    1.  **Ekle** 'ye tıklayın.
+    1.  **Ekle**'ye tıklayın.
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Hizmet etiketi ekleme hakkında örnek."border="true":::
 

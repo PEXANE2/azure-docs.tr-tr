@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333129"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744544"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
@@ -68,7 +68,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **ARM şablonunda bir abonelik oluşturabilir miyim?**
 
-  Henüz değil, ancak üzerinde çalışıyoruz.
+  Evet, daha fazla bilgi için bkz. [Azure aboneliklerini en son API 'Lerle program aracılığıyla oluşturma](../../cost-management-billing/manage/programmatically-create-subscription.md).
 
 * **Uygulamamı dağıtımdan önce nasıl test edebilirim?**
 
@@ -104,9 +104,9 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 ## <a name="template-specs"></a>Şablon Belirtimleri
 
-* **Şablon özelliklerinin önizleme sürümüne nasıl dahil olabilirim?**
+* **Şablon özelliklerinin önizleme sürümüne nasıl başlamalıyım?**
 
-  Şablon özellikleri için [bekleme listesine katın](https://aka.ms/templateSpecsWaitlist) .
+  PowerShell veya Azure CLı 'nin en son sürümünü yükler. Azure PowerShell için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)kullanın. Azure CLı için [sürüm 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
 
 * **Şablon özellikleri ve Azure şemaları ile ilgili nasıl yapılır?**
 

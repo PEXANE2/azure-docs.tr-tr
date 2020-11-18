@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 5ca225f136b0c3a6fc8b47d00ff64064fe17d4ee
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d9344d8b97d9a6ba361a337e0c6165438c04897
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281755"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745097"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Özel içerik göstermek için Azure panolarında markaşağı kutucuğu kullanın
 
@@ -27,13 +27,13 @@ ms.locfileid: "92281755"
 
    ![Portal kenar çubuğunu gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Herhangi bir özel Pano oluşturduysanız, pano görünümünde, özel markı kutucuğunun görünmesi gereken panoyu seçmek için açılan eklentiyi kullanın. **Kutucuk galerisini**açmak için Düzenle simgesini seçin.
+1. Herhangi bir özel Pano oluşturduysanız, pano görünümünde, özel markı kutucuğunun görünmesi gereken panoyu seçmek için açılan eklentiyi kullanın. **Kutucuk galerisini** açmak için Düzenle simgesini seçin.
 
    ![Pano düzenleme görünümünü gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
 1. **Kutucuk galerisinde** **Marku** adlı kutucuğu bulun ve **Ekle**' yi seçin. Kutucuk panoya eklenir ve **Markaşağı Düzenle** bölmesi açılır.
 
-1. Başka bir alana taşıdıktan sonra kutucukta görüntülenecek olan **başlık** ve alt **başlık**değerlerini girin.
+1. Başka bir alana taşıdıktan sonra kutucukta görüntülenecek olan **başlık** ve alt **başlık** değerlerini girin.
 
    ![Başlık ve alt başlık girme sonuçlarını gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "92281755"
       ![URL girmeyi gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > Ek güvenlik için bir markaşağı dosyası oluşturabilir ve bu dosyayı [şifrelemenin etkin olduğu bir Azure Storage hesabı blobuna](../storage/common/storage-service-encryption.md)depolayıp URL seçeneğini kullanarak dosyayı işaret edebilirsiniz. Markaşağı içeriği, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izinlerine sahip kullanıcılar Pano üzerinde markaşağı içeriğini görebilir. Azure portal ( _https://portal.azure.com/_ ), blob 'daki markın dosyasına erişebilmeleri için depolama hesabında bir çapraz çıkış kaynak paylaşımı (CORS) kuralı ayarlayın.
+      > Ek güvenlik için bir markaşağı dosyası oluşturabilir ve bu dosyayı [şifrelemenin etkin olduğu bir Azure Storage hesabı blobuna](../storage/common/storage-service-encryption.md)depolayıp URL seçeneğini kullanarak dosyayı işaret edebilirsiniz. Markaşağı içeriği, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izinlerine sahip kullanıcılar Pano üzerinde markaşağı içeriğini görebilir. Azure portal (), blob 'daki markın dosyasına erişebilmeleri için depolama hesabında bir [Cross-Origin kaynak paylaşımı (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) kuralı ayarlamanız gerekebilir _https://portal.azure.com/_ .
 
 1. **Markı düzenleme** bölmesini kapatmak için **bitti** ' yi seçin. İçeriğiniz Markaşağı kutucuğunda görünür, bu da sağ alt köşedeki tutamacı sürükleyerek yeniden boyutlandırabilirsiniz.
 

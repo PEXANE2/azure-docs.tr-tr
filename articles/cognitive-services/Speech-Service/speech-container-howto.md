@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: f91d96732c872c6f93ee2de4c5c3eba5fe5ffbc4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ad3f73276a2a965032fd2acf368bce4a0c146632
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412247"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744189"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
@@ -31,11 +31,11 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 > * Standart konuşmayı metne dönüştürme
 > * Özel Konuşma Tanıma metin
 > * Standart metin okuma
-> 
+> * Sinir metin okuma
+>
 > Aşağıdaki konuşma kapsayıcıları geçitli önizlemededir.
 > * Özel metin okuma
 > * Konuşma Dil Algılama 
-> * Sinir metin okuma
 >
 > Konuşma kapsayıcılarını kullanmak için bir çevrimiçi istek göndermeniz ve onaylanmış olması gerekir. Daha fazla bilgi için aşağıdaki **kapsayıcıyı çalıştırın** bölümüne bakın.
 
@@ -45,8 +45,8 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 | Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.6.0 |
 | Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.8.0 |
 | Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.8.0 |
-| Konuşma Dil Algılama | Ses dosyalarında konuşulan dili algılayın. | 1.0 |
-| Sinir metin okuma | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. | 1.2.0 |
+| Konuşma Dil Algılama | Ses dosyalarında konuşulan dili algılayın. | 1,0 |
+| Sinir metin okuma | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. | 1.3.0 |
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
@@ -58,7 +58,7 @@ Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 |--|--|
 | Docker altyapısı | Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da** Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br> |
 | Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` . |
-| Konuşma kaynağı | Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure _konuşma_ kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcının başlatılması için her ikisi de gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası |
+| Konuşma kaynağı | Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure _konuşma_ kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcının başlatılması için her ikisi de gereklidir.<br><br>**{API_KEY}**: **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}**: **genel bakış** sayfasında belirtilen bitiş noktası |
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -244,13 +244,13 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçük harfe duyarlıdır:
 
 ```
-<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>
 ```
 
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-1.2.0-amd64-en-us-arianeural-preview
+1.3.0-amd64-en-us-arianeural
 ```
 
 Desteklenen tüm yerel ayarlar ve **sinir metin okuma** kapsayıcısının bunlara karşılık gelen sesler için bkz. [sinir Text-to-Speech Image Tags](../containers/container-image-tags.md#neural-text-to-speech).
@@ -322,7 +322,7 @@ Konuşmadan metne kapsayıcının v 2.6.0 'den başlayarak, önizleme yerine Tex
 > [!NOTE]
 > Metin Analizi `v3.0` API 'si metin analizi ile geriye dönük olarak uyumlu değildir `v3.0-preview.1` . En son yaklaşım özelliği desteğini almak için, `v2.6.0` konuşmadan metne kapsayıcı görüntüsünü ve metin analizi kullanın `v3.0` .
 
-Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örneğin: 
+Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örnek: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -351,7 +351,7 @@ Konuşma-metin kapsayıcısının 2.6.0 ' den başlayarak, kendi tümceciklerini
 
 * "Bu bir cümle, **Bu,** başka bir tümcedir."
 
-Bir tümcecik listesi yapılandırmak için, çağrıyı yaparken kendi tümceciklerinizi eklemeniz gerekir. Örneğin:
+Bir tümcecik listesi yapılandırmak için, çağrıyı yaparken kendi tümceciklerinizi eklemeniz gerekir. Örnek:
 
 ```python
     phrase="the tall man"
@@ -420,7 +420,7 @@ ApiKey={API_KEY}
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Özel konuşmaya metin kapsayıcısına temel model indirme  
-Özel konuşma-metin kapsayıcısının sanal 2.6.0 ' den başlayarak, kullanılabilir temel model bilgilerini seçeneğini kullanarak edinebilirsiniz `BaseModelLocale=<locale>` . Bu seçenek, size faturalandırma hesabınız kapsamındaki bu yerel ayar üzerinde bulunan temel modellerin bir listesini sağlar. Örneğin:
+Özel konuşma-metin kapsayıcısının sanal 2.6.0 ' den başlayarak, kullanılabilir temel model bilgilerini seçeneğini kullanarak edinebilirsiniz `BaseModelLocale=<locale>` . Bu seçenek, size faturalandırma hesabınız kapsamındaki bu yerel ayar üzerinde bulunan temel modellerin bir listesini sağlar. Örnek:
 
 ```bash
 docker run --rm -it \
@@ -436,7 +436,7 @@ ApiKey={API_KEY}
 * Kapsayıcı görüntüsünden *özel konuşma tanıma metin* kapsayıcısı çalıştırır.
 * Hedef yerel ayarın kullanılabilir temel modellerini denetleyin ve geri döndürün.
 
-Çıktı, bilgi yerel ayarları, model kimliği ve oluşturulma tarihi saati ile birlikte temel modellerin bir listesini sağlar. Tercih ettiğiniz belirli temel modeli indirmek ve kullanmak için model kimliğini kullanabilirsiniz. Örneğin:
+Çıktı, bilgi yerel ayarları, model kimliği ve oluşturulma tarihi saati ile birlikte temel modellerin bir listesini sağlar. Tercih ettiğiniz belirli temel modeli indirmek ve kullanmak için model kimliğini kullanabilirsiniz. Örnek:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us

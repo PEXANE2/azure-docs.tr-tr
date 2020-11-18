@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 0efb278c217ede94f67b47250633622501a24414
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ba51776942ad28fc8d4b0db7dd2d0e162e5322b5
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412553"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743346"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları
 
@@ -574,6 +574,39 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 
 Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca [, MCR üzerinde etiketlerin](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/neural-text-to-speech/tags/list)tam listesini de bulabilirsiniz.
 
+
+# <a name="latest-version"></a>[En son sürüm](#tab/current)
+
+İçin sürüm notları `v1.3.0` :
+* Sinir metin okuma kapsayıcısı artık genel kullanıma sunulmuştur. 
+
+| Resim etiketleri                                  | Notlar                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
+| `1.3.0-amd64-<locale-and-voice>`    | `<locale>`Aşağıda listelenen kullanılabilir yerel ayarlardan biriyle değiştirin. Örneğin, `1.3.0-amd64-en-us-arianeural`. |
+
+
+| v 1.3.0 yerel ayarları ve sesler           | Notlar                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-katjaneural`                 | `de-DE`Yerel ayar ve `de-DE-KatjaNeural` sesle kapsayıcı görüntüsü.     |
+| `en-au-natashaneural`               | `en-AU`Yerel ayar ve `en-AU-NatashaNeural` sesle kapsayıcı görüntüsü.   |
+| `en-ca-claraneural`                 | `en-CA`Yerel ayar ve `en-CA-ClaraNeural` sesle kapsayıcı görüntüsü.     |
+| `en-gb-libbyneural`                 | `en-GB`Yerel ayar ve `en-GB-LibbyNeural` sesle kapsayıcı görüntüsü.     |
+| `en-gb-mianeural`                   | `en-GB`Yerel ayar ve `en-GB-MiaNeural` sesle kapsayıcı görüntüsü.       |
+| `en-us-arianeural`                  | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
+| `en-us-guyneural`                   | `en-US`Yerel ayar ve `en-US-GuyNeural` sesle kapsayıcı görüntüsü.       |
+| `es-es-elviraneural`                | `es-ES`Yerel ayar ve `es-ES-ElviraNeural` sesle kapsayıcı görüntüsü.    |
+| `es-mx-dalianeural`                 | `es-MX`Yerel ayar ve `es-MX-DaliaNeural` sesle kapsayıcı görüntüsü.     |
+| `fr-ca-sylvieneural`                | `fr-CA`Yerel ayar ve `fr-CA-SylvieNeural` sesle kapsayıcı görüntüsü.    |
+| `fr-fr-deniseneural`                | `fr-FR`Yerel ayar ve `fr-FR-DeniseNeural` sesle kapsayıcı görüntüsü.    |
+| `it-it-elsaneural`                  | `it-IT`Yerel ayar ve `it-IT-ElsaNeural` sesle kapsayıcı görüntüsü.      |
+| `ja-jp-nanamineural`                | `ja-JP`Yerel ayar ve `ja-JP-NanamiNeural` sesle kapsayıcı görüntüsü.    |
+| `ko-kr-sunhineural`                 | `ko-KR`Yerel ayar ve `ko-KR-SunHiNeural` sesle kapsayıcı görüntüsü.     |
+| `pt-br-franciscaneural`             | `pt-BR`Yerel ayar ve `pt-BR-FranciscaNeural` sesle kapsayıcı görüntüsü. |
+| `zh-cn-xiaoxiaoneural`              | `zh-CN`Yerel ayar ve `zh-CN-XiaoxiaoNeural` sesle kapsayıcı görüntüsü.  |
+
+# <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
+
 | Resim etiketleri                                  | Notlar                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
@@ -599,6 +632,8 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 | `ko-kr-sunhineural-preview`                 | `ko-KR`Yerel ayar ve `ko-KR-SunHiNeural` sesle kapsayıcı görüntüsü.     |
 | `pt-br-franciscaneural-preview`             | `pt-BR`Yerel ayar ve `pt-BR-FranciscaNeural` sesle kapsayıcı görüntüsü. |
 | `zh-cn-xiaoxiaoneural-preview`              | `zh-CN`Yerel ayar ve `zh-CN-XiaoxiaoNeural` sesle kapsayıcı görüntüsü.  |
+
+---
 
 ## <a name="speech-language-detection"></a>Konuşma dili algılama
 

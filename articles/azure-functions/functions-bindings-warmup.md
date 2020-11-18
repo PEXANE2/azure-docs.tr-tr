@@ -10,12 +10,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f3aa2d727805d3843e07c524bc36878df55eebb
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206581"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743568"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
@@ -96,8 +96,6 @@ Dosyada *function.js* :
 ```
 
 [Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
-
-Buraya bağlanan C# betik kodu aşağıda verilmiştir `HttpRequest` :
 
 ```cs
 public static void Run(ILogger log)
@@ -227,7 +225,7 @@ Isınma tetikleyicisi, Java 'da bir öznitelik olarak desteklenmez.
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `WarmupTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 | **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `warmupTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |

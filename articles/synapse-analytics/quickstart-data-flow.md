@@ -1,6 +1,6 @@
 ---
-title: Eşleme veri akışı kullanarak verileri dönüştürmek için hızlı başlangıç
-description: Bu öğretici, veri akışı eşleme ile verileri dönüştürmek için Azure SYNAPSE Analytics 'i kullanmaya ilişkin adım adım yönergeler sağlar
+title: 'Hızlı başlangıç: eşleme veri akışı kullanarak veri dönüştürme'
+description: Bu öğretici, veri akışı eşleme ile verileri dönüştürmek için Azure SYNAPSE Analytics 'i kullanmaya yönelik adım adım yönergeler sağlar.
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 0bf1611dee2b3f7f9a3059e3118ddbf08c00f886
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 207679ad5b508b687c9cad372d144839fcaa501d
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343133"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743856"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Hızlı başlangıç: veri akışlarını eşleme kullanarak verileri dönüştürme
 
-Bu hızlı başlangıçta, veri akışını eşleme kullanarak bir Azure Data Lake Storage (ADLS) Gen2 kaynağından ADLS 2. havuzuna veri dönüştüren bir işlem hattı oluşturmak için Azure SYNAPSE Analytics 'i kullanacaksınız. Bu hızlı başlangıçta yapılandırma deseninin verileri, eşleme veri akışı kullanılarak dönüştürülürken Genişletilebilir
+Bu hızlı başlangıçta, verileri bir Azure Data Lake Storage 2. (ADLS 2.) kaynağından eşleme veri akışını kullanarak bir ADLS 2. havuzuna dönüştüren bir işlem hattı oluşturmak için Azure SYNAPSE Analytics 'i kullanacaksınız. Bu hızlı başlangıçta yapılandırma deseninin verileri, eşleme veri akışı kullanılarak dönüştürülürken Genişletilebilir
 
 Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 
@@ -27,11 +27,11 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Azure SYNAPSE çalışma alanı** : [hızlı başlangıç: bir Synapse çalışma alanı oluşturma](quickstart-create-workspace.md)yönergelerini takip eden Azure Portal kullanarak bir Synapse çalışma alanı oluşturun.
-* **Azure depolama hesabı** : ADLS depolamayı *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
+* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* **Azure SYNAPSE çalışma alanı**: [hızlı başlangıç: bir Synapse çalışma alanı oluşturma](quickstart-create-workspace.md)yönergelerini takip eden Azure Portal kullanarak bir Synapse çalışma alanı oluşturun.
+* **Azure depolama hesabı**: ADLS depolamayı *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
     Bu öğreticide dönüştürtiğimiz dosya MoviesDB.csv, [burada](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)bulunabilir. Dosyayı GitHub 'dan almak için, bir. csv dosyası olarak yerel olarak kaydetmek üzere içeriği istediğiniz bir metin düzenleyicisine kopyalayın. Dosyayı depolama hesabınıza yüklemek için bkz. [Azure Portal Blobları karşıya yükleme](../storage/blobs/storage-quickstart-blobs-portal.md). Örnekler ' Sample-Data ' adlı bir kapsayıcıya başvuracaktır.
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta aşağıdaki adımları uygulayın:
 
 Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak için iki yol vardır:
 
-* [Azure Portal](https://ms.portal.azure.com/#home)SYNAPSE çalışma alanınızı açın. Genel Bakış bölümünün üst kısmında, **SYNAPSE Studio 'Yu Başlat** ' ı seçin.
+* [Azure Portal](https://ms.portal.azure.com/#home)SYNAPSE çalışma alanınızı açın. Başlarken ' in altındaki Open SYNAPSE Studio kartını **Aç** ' ı seçin.
 * [Azure SYNAPSE Analytics](https://web.azuresynapse.net/) 'i açın ve çalışma alanınızda oturum açın.
 
 Bu hızlı başlangıçta, örnek olarak "adftest2020" adlı çalışma alanını kullanırız. SYNAPSE Studio giriş sayfasına otomatik olarak gidecektir.
@@ -84,7 +84,7 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 
 1. **Delimitedtext** öğesini seçin. Devam’a tıklayın.
 
-1. Veri kümenizi **MoviesDB** olarak adlandırın. Bağlı hizmet açılan menüsünde **Yeni** ' yi seçin.
+1. Veri kümenizi **MoviesDB** olarak adlandırın. Bağlı hizmet açılan menüsünde **Yeni**' yi seçin.
 
 1. Bağlı hizmet oluşturma ekranında, ADLS 2. bağlı hizmetinizi **ADLSGen2** olarak adlandırın ve kimlik doğrulama yönteminizi belirtin. Ardından bağlantı kimlik bilgilerinizi girin. Bu hızlı başlangıçta, depolama hesabımızla bağlantı kurmak için hesap anahtarı 'nı kullanıyoruz. Kimlik bilgilerinizin doğru girildiğini doğrulamak için **Bağlantıyı Sına** ' ya tıklayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
 

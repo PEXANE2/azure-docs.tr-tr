@@ -3,14 +3,14 @@ title: Azure Işlevleri için JavaScript geliştirici başvurusu
 description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b920dc8a31967c9d8e1f05a6101fdfcc7a1304e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628841"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743329"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -138,7 +138,7 @@ Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici gir
 
 Çıkış bağlamalarına aşağıdaki yöntemlerden birini uygulayarak veri atayabilirsiniz (Bu yöntemleri birleştirmeyin):
 
-- **_[Birden çok çıkış Için önerilir]_ Bir nesne döndürülüyor.** Zaman uyumsuz/Promise döndüren bir işlev kullanıyorsanız, atanmış çıkış verileri olan bir nesne döndürebilirsiniz. Aşağıdaki örnekte, çıkış bağlamaları *üzerindefunction.js* "HttpResponse" ve "queueoutput" olarak adlandırılmıştır.
+- **_[Birden çok çıkış Için önerilir]_ Bir nesne döndürülüyor.** Zaman uyumsuz/Promise döndüren bir işlev kullanıyorsanız, atanmış çıkış verileri olan bir nesne döndürebilirsiniz. Aşağıdaki örnekte, çıkış bağlamaları *üzerindefunction.js*"HttpResponse" ve "queueoutput" olarak adlandırılmıştır.
 
   ```javascript
   module.exports = async function(context) {
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
 
-| Özellik adı  | Tür  | Açıklama |
+| Özellik adı  | Tür  | Description |
 |---------|---------|---------|
 | `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
 | `functionName` | Dize | Çalışan işlevin adını sağlar |
@@ -325,10 +325,10 @@ Varsayılan düzeyin yanı sıra, belirli izleme düzeylerinde işlev günlükle
 
 | Yöntem                 | Açıklama                                |
 | ---------------------- | ------------------------------------------ |
-| **hata ( _ileti_ )**   | Günlüklere hata düzeyi bir olay yazar.   |
-| **uyar ( _ileti_ )**    | Günlüklere uyarı düzeyi bir olay yazar. |
-| **bilgi ( _ileti_ )**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
-| **ayrıntılı ( _ileti_ )** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
+| **hata (_ileti_)**   | Günlüklere hata düzeyi bir olay yazar.   |
+| **uyar (_ileti_)**    | Günlüklere uyarı düzeyi bir olay yazar. |
+| **bilgi (_ileti_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
+| **ayrıntılı (_ileti_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
 
 Aşağıdaki örnek, bilgi düzeyi yerine uyarı izleme düzeyinde aynı günlüğü Yazar:
 
@@ -553,7 +553,7 @@ Kaynak denetiminden Işlev uygulamaları dağıttığınızda, deponuzda bulunan
 ### <a name="using-kudu"></a>Kudu kullanma
 1. `https://<function_app_name>.scm.azurewebsites.net` öğesine gidin.
 
-2. **Hata ayıklama konsolu**  >  **cmd** ' ye tıklayın.
+2. **Hata ayıklama konsolu**  >  **cmd**' ye tıklayın.
 
 3. `D:\home\site\wwwroot`' A gidin ve ardından package.jsdosyayı sayfanın üst yarısında **Wwwroot** klasörüne sürükleyin.  
     Dosyaları işlev uygulamanıza başka yollarla da yükleyebilirsiniz. Daha fazla bilgi için bkz. [işlev uygulama dosyalarını güncelleştirme](functions-reference.md#fileupdate). 
@@ -563,21 +563,42 @@ Kaynak denetiminden Işlev uygulamaları dağıttığınızda, deponuzda bulunan
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Bu ayarlara `process.env` , aşağıda gösterildiği gibi, `context.log()` `AzureWebJobsStorage` ve ortam değişkenlerini günlüğe kaydetme yaptığımız ikinci ve üçüncü çağrılar ile erişebilirsiniz `WEBSITE_SITE_NAME` :
+Hem yerel hem de bulut ortamlarınızdaki işlemsel gizlilikler (bağlantı dizeleri, anahtarlar ve uç noktalar) veya ortam ayarları (örneğin profil oluşturma değişkenleri) gibi bir işlev uygulamasına kendi ortam değişkenlerinizi ekleyin. İşlev kodunuzda kullanarak bu ayarlara erişin `process.env` .
+
+### <a name="in-local-development-environment"></a>Yerel geliştirme ortamında
+
+Yerel olarak çalışırken, işlevleriniz, ortam değişkenlerinizi nesnesinde depoladığınız bir [ `local.settings.json` Dosya](/functions-run-local.md?tabs=node#local-settings-file)içerir `Values` . 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "translatorTextEndPoint": "https://api.cognitive.microsofttranslator.com/",
+    "translatorTextKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "languageWorkers__node__arguments": "--prof"
+  }
+}
+```
+
+### <a name="in-azure-cloud-environment"></a>Azure bulut ortamında
+
+İşlev uygulaması, Azure 'da çalışırken, hizmet bağlantı dizeleri gibi [uygulama ayarlarını](functions-app-settings.md)kullanarak ayarlamanıza ve yürütme sırasında bu ayarları ortam değişkenleri olarak kullanıma sunar. 
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="access-environment-variables-in-code"></a>Koddaki ortam değişkenlerine erişin
+
+Uygulama ayarlarına, burada gösterildiği gibi ortam değişkenleri olarak erişin ve bu `process.env` `context.log()` , `AzureWebJobsStorage` ve ortam değişkenlerini günlüğe verdiğimiz üçüncü çağrılarsa `WEBSITE_SITE_NAME` :
 
 ```javascript
 module.exports = async function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
 ```
-
-[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
-
-Yerel olarak çalışırken, uygulama ayarları proje dosyasındaki [local.settings.js](functions-run-local.md#local-settings-file) okur.
 
 ## <a name="configure-function-entry-point"></a>İşlev giriş noktasını yapılandır
 

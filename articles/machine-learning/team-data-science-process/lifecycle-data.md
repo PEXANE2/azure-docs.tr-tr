@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f7770e929e51ee51b09060e4247c5f92b27d1035
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fffb52e333bea1b2be11b127a9eab6656dc1d1f5
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311867"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740337"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Işleminin veri alımı ve anlama aşaması
 
@@ -48,9 +48,7 @@ Bu aşamada listelenen üç ana görev vardır:
 Verileri kaynak konumlarından eğitim ve tahmin gibi analiz işlemlerini çalıştırdığınız hedef konumlara taşımak için işlemi ayarlayın. Verilerin çeşitli Azure veri hizmetleriyle nasıl taşınacağı hakkında teknik ayrıntılar ve seçenekler için bkz. [analiz için depolama ortamlarına veri yükleme](ingest-data.md). 
 
 ### <a name="explore-the-data"></a>Verileri keşfetme
-Modellerinizi eğitmeden önce, verileri bir ses olarak öğrenmeniz gerekir. Gerçek dünyada veri kümeleri genellikle gürültülü, eksik değerlerdir veya diğer tutarsızlıklardan oluşan bir konağa sahiptir. Veri özetlemesini ve görselleştirmeyi kullanarak verilerinizin kalitesini denetleyebilir ve verileri modellemeye hazırlanmadan önce işlemek için gereken bilgileri sağlayabilirsiniz. Bu işlem genellikle yinelemelidir.
-
-TDSP, verileri görselleştirmeye ve veri özeti raporlarının hazırlanmasına yardımcı olmak için [ıdear](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils)adlı otomatik bir yardımcı program sağlar. İlk verilerin bir kodlama olmadan etkileşimli olarak anlaşılmasına yardımcı olacak verileri araştırmak için önce ıDEAR ile başlamanız önerilir. Daha sonra veri keşif ve görselleştirme için özel kod yazabilirsiniz. Verileri temizleme hakkında yönergeler için bkz. [Gelişmiş makine öğrenimi için veri hazırlama görevleri](prepare-data.md).  
+Modellerinizi eğitmeden önce, verileri bir ses olarak öğrenmeniz gerekir. Gerçek dünyada veri kümeleri genellikle gürültülü, eksik değerlerdir veya diğer tutarsızlıklardan oluşan bir konağa sahiptir. Veri özetlemesini ve görselleştirmeyi kullanarak verilerinizin kalitesini denetleyebilir ve verileri modellemeye hazırlanmadan önce işlemek için gereken bilgileri sağlayabilirsiniz. Bu işlem genellikle yinelemelidir. Verileri temizleme hakkında yönergeler için bkz. [Gelişmiş makine öğrenimi için veri hazırlama görevleri](prepare-data.md).  
 
 Temizleme verilerinin kalitesinden memnun kaldıktan sonra, bir sonraki adım veride bulunan desenleri daha iyi anlamak için kullanılır. Bu veri analizi, hedef için uygun bir tahmine dayalı model seçmenize ve geliştirmenize yardımcı olur. Verilerin hedefe ne kadar iyi bağlandığını bulun. Ardından, sonraki modelleme adımlarıyla ileri doğru hareket etmek için yeterli veri olup olmadığını saptayın. Bu işlem, genellikle yinelemeli bir işlemdir. Başlangıçta önceki aşamada tanımlanan veri kümesini genişletmek için daha doğru veya daha fazla ilgili veriye sahip yeni veri kaynakları bulmanız gerekebilir. 
 
@@ -66,9 +64,9 @@ Bu aşamada, veri işlem hattının çözüm mimarisini geliştirirsiniz. Veri b
 ## <a name="artifacts"></a>Artifacts
 Bu aşamada teslim edilebilirler aşağıda verilmiştir:
 
-   * [Veri kalitesi raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Bu rapor, veri özetlerini, her öznitelik ve hedef, değişken derecelendirmesi ve daha fazlasını içeren ilişkileri içerir. TDSP 'nin bir parçası olarak sunulan [ıdear](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) Aracı, bu raporu bir CSV dosyası veya ilişkisel tablo gibi tablosal veri kümesi üzerinde hızlı bir şekilde oluşturabilir. 
-   * **Çözüm mimarisi** : çözüm mimarisi, bir model oluşturduktan sonra yeni verilerde Puanlama veya tahmin çalıştırmak için kullandığınız veri işlem hattının bir diyagramı veya açıklaması olabilir. Ayrıca, yeni verilere göre modelinizi yeniden eğitme işlem hattını de içerir. TDSP dizin yapısı şablonunu kullandığınızda belgeyi [Proje](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) dizininde depolayın.
-   * **Kontrol noktası kararı** : tam özellik Mühendisliği ve model oluşturmaya başlamadan önce, beklenen değerin, söz konusu değeri uygulamaya devam etmek için yeterli olup olmadığını tespit etmek üzere projeyi yeniden değerlendirmeye başlayabilirsiniz. Örneğin, işleme hazırsanız, daha fazla veri toplamanız veya bu soruyu yanıtlamak için veriler mevcut olmadığından projeyi iptal etmeye de devam edebilirsiniz.
+   * [Veri kalitesi raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Bu rapor, veri özetlerini, her öznitelik ve hedef, değişken derecelendirmesi ve daha fazlasını içeren ilişkileri içerir. 
+   * **Çözüm mimarisi**: çözüm mimarisi, bir model oluşturduktan sonra yeni verilerde Puanlama veya tahmin çalıştırmak için kullandığınız veri işlem hattının bir diyagramı veya açıklaması olabilir. Ayrıca, yeni verilere göre modelinizi yeniden eğitme işlem hattını de içerir. TDSP dizin yapısı şablonunu kullandığınızda belgeyi [Proje](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) dizininde depolayın.
+   * **Kontrol noktası kararı**: tam özellik Mühendisliği ve model oluşturmaya başlamadan önce, beklenen değerin, söz konusu değeri uygulamaya devam etmek için yeterli olup olmadığını tespit etmek üzere projeyi yeniden değerlendirmeye başlayabilirsiniz. Örneğin, işleme hazırsanız, daha fazla veri toplamanız veya bu soruyu yanıtlamak için veriler mevcut olmadığından projeyi iptal etmeye de devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

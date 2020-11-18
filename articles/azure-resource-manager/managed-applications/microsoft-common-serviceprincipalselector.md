@@ -1,30 +1,42 @@
 ---
 title: ServicePrincipalSelector Kullanıcı arabirimi öğesi
-description: Azure portal için Microsoft. Common. Servicesprincipalselector Kullanıcı arabirimi öğesini açıklar. Bir parola veya sertifika parmak izi girmek için bir uygulama tanımlayıcısı ve metin kutusu seçmek üzere bir açılan liste sağlar.
+description: Azure portal için Microsoft. Common. Servicesprincipalselector Kullanıcı arabirimi öğesini açıklar. Bir parola veya sertifika parmak izi girmek için bir uygulama ve metin kutusu seçmek üzere bir denetim sağlar.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 73b242754bfae53b6df5abd9c2c8dee33b973dad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d41e41f110e927f436b38d6291719c138defa53
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576005"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745823"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft. Common. Servicesprincipalselector Kullanıcı arabirimi öğesi
 
-Kullanıcıların mevcut bir hizmet sorumlusunu seçmesini veya yenisini kaydetmesini sağlayan bir denetim. **Yeni oluştur**' u seçtiğinizde, yeni bir uygulama kaydetme adımlarını izleyebilirsiniz. Mevcut bir uygulamayı seçtiğinizde, denetim bir parola veya sertifika parmak izi girişi için bir metin kutusu sağlar.
+Kullanıcıların mevcut bir [hizmet sorumlusunu](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) seçmesini veya yeni bir uygulamayı kaydetmesini sağlayan bir denetim. **Yeni oluştur**' u seçtiğinizde, yeni bir uygulama kaydetmek için aşağıdaki adımları izleyin. Mevcut bir uygulamayı seçtiğinizde, denetim bir parola veya sertifika parmak izi girişi için bir metin kutusu sağlar.
 
-## <a name="ui-sample"></a>UI örneği
+## <a name="ui-samples"></a>UI örnekleri
 
-Varsayılan görünüm, özelliğindeki değerlere göre belirlenir `defaultValue` . `principalId`Özellik geçerli bir genel benzersiz tanımlayıcı (GUID) içeriyorsa, Denetim uygulamanın nesne kimliğini arar. Kullanıcı açılan listeden seçim yapmazsa varsayılan değer geçerlidir.
+Varsayılan bir uygulama kullanabilir, yeni bir uygulama oluşturabilir veya var olan bir uygulamayı kullanabilirsiniz.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-initial.png" alt-text="Microsoft. Common. Servicesprincipalselector ilk görünüm":::
+### <a name="use-default-application-or-create-new"></a>Varsayılan uygulamayı kullan veya yeni oluştur
 
-Açılan listeden yeni veya var olan bir uygulama tanımlayıcı **Oluştur** ' u seçtiğinizde, metin kutusuna bir parola veya sertifika parmak izi girmek Için **kimlik doğrulaması türü** görüntülenir.
+Varsayılan görünüm, özelliğindeki değerler tarafından belirlenir `defaultValue` ve **hizmet sorumlusu türü** **Yeni oluştur** olarak ayarlanır. `principalId`Özellik geçerli bir genel benzersiz tanımlayıcı (GUID) içeriyorsa, denetim uygulama için arama yapar `objectId` . Kullanıcı denetimden seçim yapmazsa varsayılan değer geçerlidir.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-selection.png" alt-text="Microsoft. Common. Servicesprincipalselector ilk görünüm":::
+Yeni bir uygulama kaydetmek istiyorsanız **Seçimi Değiştir** ' i seçin ve **bir uygulamayı kaydet** iletişim kutusu görüntülenir. **Ad**, **Desteklenen hesap türünü** girin ve **Kaydet** düğmesini seçin.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-default.png" alt-text="Microsoft. Common. Servicesprincipalselector ilk görünümü.":::
+
+Yeni bir uygulamayı kaydettikten sonra, bir parola veya sertifika parmak izi girmek için **kimlik doğrulama türünü** kullanın.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-authenticate.png" alt-text="Microsoft. Common. Servicesprincipalselector kimlik doğrulaması.":::
+
+### <a name="use-existing-application"></a>Mevcut uygulamayı kullan
+
+Mevcut bir uygulamayı kullanmak için **Varolanı Seç** ' i seçin ve sonra **seçim yap**' ı seçin. Uygulamanın adını aramak için **bir uygulama Seç** iletişim kutusunu kullanın. Sonuçlardan uygulamayı ve ardından **Seç** düğmesini seçin. Bir uygulamayı seçtikten sonra Denetim, **kimlik doğrulama türünü** bir parola veya sertifika parmak izi girmek üzere görüntüler.
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-existing.png" alt-text="Microsoft. Common. Servicesprincipalselector var olan uygulamayı seçin.":::
 
 ## <a name="schema"></a>Şema
 
@@ -33,14 +45,12 @@ Açılan listeden yeni veya var olan bir uygulama tanımlayıcı **Oluştur** ' 
   "name": "ServicePrincipal",
   "type": "Microsoft.Common.ServicePrincipalSelector",
   "label": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type",
     "sectionHeader": "Service Principal"
   },
   "toolTip": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type"
@@ -63,13 +73,13 @@ Açılan listeden yeni veya var olan bir uygulama tanımlayıcı **Oluştur** ' 
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Gerekli özellikler şunlardır:
+- Gerekli özellikler aşağıdaki gibidir:
   - `name`
   - `type`
   - `label`
   - `defaultValue`: Varsayılan ve belirtir `principalId` `name` .
 
-- İsteğe bağlı özellikler şunlardır:
+- İsteğe bağlı özellikler aşağıdaki gibidir:
   - `toolTip`: Her etikete bir araç ipucu ekler `infoBalloon` .
   - `visible`: Denetimi gizleyin veya görüntüleyin.
   - `options`: Sertifika parmak izi seçeneğinin kullanılabilir yapılıp yapılmayacağını belirtir.
@@ -95,14 +105,12 @@ Aşağıda, denetimin bir örneği verilmiştir `Microsoft.Common.ServicePrincip
             "name": "ServicePrincipal",
             "type": "Microsoft.Common.ServicePrincipalSelector",
             "label": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type",
               "sectionHeader": "Service Principal"
             },
             "toolTip": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type"
@@ -138,9 +146,9 @@ Aşağıda, denetimin bir örneği verilmiştir `Microsoft.Common.ServicePrincip
 
 ## <a name="example-output"></a>Örnek çıkış
 
-, `appId` Seçtiğiniz veya oluşturduğunuz uygulama kaydının kimliğidir. , `objectId` Seçilen uygulama kaydı için yapılandırılmış hizmet sorumluları Için ObjectIDs dizisidir.
+, `appId` Seçtiğiniz veya oluşturduğunuz uygulama kaydının kimliğidir. , `objectId` Seçilen uygulama kaydı için yapılandırılmış hizmet sorumluları için bir nesne kimlikleri dizisidir.
 
-Açılan listeden seçim yapılmadığınızda, `newOrExisting` özellik değeri **yenidir**:
+Denetimden hiçbir seçim yapılkalmadığında, `newOrExisting` özellik değeri **yenidir**:
 
 ```json
 {
@@ -165,7 +173,7 @@ Açılan listeden seçim yapılmadığınızda, `newOrExisting` özellik değeri
 }
 ```
 
-**Yeni oluştur** veya var olan bir uygulama tanımlayıcısı açılan menüden seçildiğinde, `newOrExisting` özellik değeri **mevcut**olur:
+**Yeni oluştur** veya var olan bir uygulama denetimden seçiliyse, `newOrExisting` özellik değeri **mevcut** olur:
 
 ```json
 {

@@ -7,15 +7,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc4262d0190084064103aeabe48bec806213ea7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7ab6d6511d1e2cec82b321003c9d663249ddcf49
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321213"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740235"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Işlem Grubu Yöneticisi görevleri
 
@@ -43,17 +43,17 @@ Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir
    
    ![Microsoft hesabı oturum açın](./media/group-manager-tasks/signinvs.png)
    
-   Microsoft hesabı yoksa, **Şimdi kaydol** ' u seçin, bir Microsoft hesabı oluşturun ve bu hesabı kullanarak oturum açın. Kuruluşunuzun bir Visual Studio aboneliği varsa, bu aboneliğin kimlik bilgileriyle oturum açın.
+   Microsoft hesabı yoksa, **Şimdi kaydol**' u seçin, bir Microsoft hesabı oluşturun ve bu hesabı kullanarak oturum açın. Kuruluşunuzun bir Visual Studio aboneliği varsa, bu aboneliğin kimlik bilgileriyle oturum açın.
    
-1. Oturum açtıktan sonra, Azure DevOps sayfasında sağ üst köşedeki **yeni kuruluş oluştur** ' u seçin.
+1. Oturum açtıktan sonra, Azure DevOps sayfasında sağ üst köşedeki **yeni kuruluş oluştur**' u seçin.
    
    ![Yeni kuruluş oluştur](./media/group-manager-tasks/create-organization.png)
    
-1. Hizmet koşulları, gizlilik bildirimi ve kullanım kuralları 'nı kabul etmeniz istenirse **devam** ' ı seçin.
+1. Hizmet koşulları, gizlilik bildirimi ve kullanım kuralları 'nı kabul etmeniz istenirse **devam**' ı seçin.
    
 1. Kaydolma iletişim kutusunda Azure DevOps kuruluşunuzu adlandırın ve konak bölgesi atamasını kabul edin veya aşağı açılır ve farklı bir bölge seçin. Daha sonra **Devam** seçeneğini belirleyin. 
 
-1. Başlamak **için bir proje oluşturun** altında *groupcommon* ' i girin ve ardından **proje oluştur** ' u seçin. 
+1. Başlamak **için bir proje oluşturun** altında *groupcommon*' i girin ve ardından **proje oluştur**' u seçin. 
    
    ![Proje oluşturma](./media/group-manager-tasks/create-project.png)
 
@@ -65,9 +65,9 @@ Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir
 
 Azure Repos grubunuz için aşağıdaki depo türlerini barındırır:
 
-- **Ortak depoları gruplandırma** : genel amaçlı depolar, bir veri bilimi birimi içindeki birden çok ekibin birçok veri bilimi projesi için benimseyebileceği depolardır. 
-- **Ekip depoları** : bir veri bilimi birimi içindeki belirli takımlar için depolar. Bu depolar bir ekibin ihtiyaçlarına özgüdür ve bu takım dahilinde birden fazla proje için kullanılabilir, ancak bir veri bilimi birimi içindeki birden çok takım genelinde kullanılmak üzere yeterince genel değildir.
-- **Proje depoları** : belirli projeler için depolar. Bu depolar, bir takım içindeki birden fazla proje için veya bir veri bilimi birimindeki diğer takımlar için yeterince genel olmayabilir.
+- **Ortak depoları gruplandırma**: genel amaçlı depolar, bir veri bilimi birimi içindeki birden çok ekibin birçok veri bilimi projesi için benimseyebileceği depolardır. 
+- **Ekip depoları**: bir veri bilimi birimi içindeki belirli takımlar için depolar. Bu depolar bir ekibin ihtiyaçlarına özgüdür ve bu takım dahilinde birden fazla proje için kullanılabilir, ancak bir veri bilimi birimi içindeki birden çok takım genelinde kullanılmak üzere yeterince genel değildir.
+- **Proje depoları**: belirli projeler için depolar. Bu depolar, bir takım içindeki birden fazla proje için veya bir veri bilimi birimindeki diğer takımlar için yeterince genel olmayabilir.
 
 Projenizde grup ortak depoları ayarlamak için şunları yapın: 
 - Varsayılan **Groupcommon** deposunu **groupprojecttemplate** olarak yeniden adlandırın
@@ -77,17 +77,17 @@ Projenizde grup ortak depoları ayarlamak için şunları yapın:
 
 Varsayılan **Groupcommon** proje deposunu **groupprojecttemplate** olarak yeniden adlandırmak için:
 
-1. **Groupcommon** proje **Özeti** sayfasında, **Depo** ' yı seçin. Bu eylem, şu anda boş olan GroupCommon projesinin varsayılan **groupcommon** deposuna götürür.
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin. Bu eylem, şu anda boş olan GroupCommon projesinin varsayılan **groupcommon** deposuna götürür.
    
-1. Sayfanın üst kısmında, **Groupcommon** öğesinin yanındaki oku aşağı kaydırın ve **depoları Yönet** ' i seçin.
+1. Sayfanın üst kısmında, **Groupcommon** öğesinin yanındaki oku aşağı kaydırın ve **depoları Yönet**' i seçin.
    
    ![Depoları yönetme](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
    
-1. **Proje ayarları** sayfasında, **groupcommon** ' ın yanındaki **...** öğesini seçin ve ardından **Depoyu yeniden adlandır** ' ı seçin. 
+1. **Proje ayarları** sayfasında, **groupcommon**' ın yanındaki **...** öğesini seçin ve ardından **Depoyu yeniden adlandır**' ı seçin. 
    
    ![Seç... sonra depoyu yeniden adlandır ' ı seçin.](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
    
-1. **GroupCommon deposunu yeniden adlandır** açılan penceresinde *groupprojecttemplate* girin ve **Yeniden Adlandır** ' ı seçin. 
+1. **GroupCommon deposunu yeniden adlandır** açılan penceresinde *groupprojecttemplate* girin ve **Yeniden Adlandır**' ı seçin. 
    
    ![Depoyu yeniden adlandır](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
@@ -95,13 +95,13 @@ Varsayılan **Groupcommon** proje deposunu **groupprojecttemplate** olarak yenid
 
 **Grouputilities** deposunu oluşturmak için:
 
-1. **Groupcommon** proje **Özeti** sayfasında, **Depo** ' yı seçin. 
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin. 
    
-1. Sayfanın üst kısmında **Groupprojecttemplate** ' in yanındaki oku ve **yeni depo** ' ı seçin.
+1. Sayfanın üst kısmında **Groupprojecttemplate** ' in yanındaki oku ve **yeni depo**' ı seçin.
    
    ![Yeni depo Seç](./media/group-manager-tasks/create-grouputilities-repo-1.png)
    
-1. **Yeni depo oluştur** Iletişim kutusunda **tür** olarak **Git** ' i seçin, **Depo adı** olarak *grouputilities* ' i girin ve ardından **Oluştur** ' u seçin.
+1. **Yeni depo oluştur** Iletişim kutusunda **tür** olarak **Git** ' i seçin, **Depo adı** olarak *grouputilities* ' i girin ve ardından **Oluştur**' u seçin.
    
    ![GroupUtilities deposu oluşturma](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
@@ -117,17 +117,15 @@ TDSP ekip depolarını içeri aktarmak için:
 
 1. **Grouportak** proje giriş sayfasından sol **Gezinti bölmesinde yer ' i** seçin. Varsayılan **Groupprojecttemplate** deposu açılır. 
    
-1. **Groupprojecttemplate boş** sayfasında **içeri aktar** ' ı seçin. 
+1. **Groupprojecttemplate boş** sayfasında **içeri aktar**' ı seçin. 
    
    ![Içeri aktar 'ı seçin](./media/group-manager-tasks/import-repo.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü** olarak **Git** ' i seçin ve **kopya URL 'si** için *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* girin. Ardından **Içeri aktar** ' ı seçin. Microsoft TDSP Team ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü** olarak **Git** ' i seçin ve **kopya URL 'si** için *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* girin. Ardından **Içeri aktar**' ı seçin. Microsoft TDSP Team ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
    
    ![Microsoft TDSP ekip deposunu içeri aktar](./media/group-manager-tasks/import-repo-2.png)
    
 1. **Depo** sayfasının en üstünde aşağı açılır ve **grouputilities** deposunu seçin.
-   
-1. Microsoft TDSP Team **Utilities** deposunun ( *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.git* ) içeriğini **grouputilities** deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
    
 Her iki grup deponuz artık, Microsoft TDSP ekibinin karşılık gelen deposundan *. git* diziniyle hariç tüm dosyaları içerir. 
 
@@ -139,25 +137,25 @@ Grubunuzun belirli ihtiyaçlarını karşılamak üzere Grup depolarınızın i�
 
 Depo içeriğini özelleştirmek için:
 
-1. **Groupcommon** proje **Özeti** sayfasında, **Depo** ' yı seçin. 
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin. 
    
 1. Sayfanın üst kısmında, özelleştirmek istediğiniz depoyu seçin.
 
 1. Depo dizin yapısında, değiştirmek istediğiniz klasöre veya dosyaya gidin. 
    
-   - Yeni klasör veya dosya oluşturmak için **Yeni** ' nin yanındaki oku seçin. 
+   - Yeni klasör veya dosya oluşturmak için **Yeni**' nin yanındaki oku seçin. 
      
      ![Yeni dosya oluştur](./media/group-manager-tasks/new-file.png)
      
-   - Dosyaları karşıya yüklemek için, **karşıya dosya yükle** ' yi seçin. 
+   - Dosyaları karşıya yüklemek için, **karşıya dosya yükle**' yi seçin. 
      
      ![Dosyaları karşıya yükleme](./media/group-manager-tasks/upload-files.png)
      
-   - Varolan dosyaları düzenlemek için dosyasına gidin ve ardından **Düzenle** ' yi seçin. 
+   - Varolan dosyaları düzenlemek için dosyasına gidin ve ardından **Düzenle**' yi seçin. 
      
      ![Bir dosyayı düzenleme](./media/group-manager-tasks/edit-file.png)
      
-1. Dosya ekledikten veya düzenledikten sonra, **Yürüt** ' ü seçin.
+1. Dosya ekledikten veya düzenledikten sonra, **Yürüt**' ü seçin.
    
    ![Değişiklikleri Kaydet](./media/group-manager-tasks/commit.png)
 
@@ -173,7 +171,7 @@ Yerel makinenizi veya DSVM 'yi kullanarak değişiklik yapmak ve değişiklikler
 
 İlk olarak, depoyu yerel makinenize *kopyalayın veya kopyalayın* . 
    
-1. **Groupcommon** proje **Özeti** sayfasında, **Depo** ' yı seçin ve sayfanın en üstünde, kopyalamak istediğiniz depoyu seçin.
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin ve sayfanın en üstünde, kopyalamak istediğiniz depoyu seçin.
    
 1. Depo sayfasında sağ üstteki **kopya** ' ı seçin.
    
@@ -229,28 +227,28 @@ Gruba üye eklemek için:
 
 1. Azure DevOps 'da, **Groupcommon** Project giriş sayfasından sol gezinti ' den **proje ayarları** ' nı seçin. 
    
-1. **Proje ayarları** sol gezinti listesinden **takımlar** ' ı seçin, ardından **takımlar** sayfasında, **groupcommon ekibini** seçin. 
+1. **Proje ayarları** sol gezinti listesinden **takımlar**' ı seçin, ardından **takımlar** sayfasında, **groupcommon ekibini** seçin. 
    
    ![Takımları yapılandırma](./media/group-manager-tasks/teams.png)
    
-1. **Takım profili** sayfasında **Ekle** ' yi seçin.
+1. **Takım profili** sayfasında **Ekle**' yi seçin.
    
    ![GroupCommon ekibine Ekle](./media/group-manager-tasks/add-to-team.png)
    
-1. **Kullanıcı ve Grup Ekle** iletişim kutusunda, gruba eklenecek üyeleri arayıp seçin ve ardından **Değişiklikleri Kaydet** ' i seçin. 
+1. **Kullanıcı ve Grup Ekle** iletişim kutusunda, gruba eklenecek üyeleri arayıp seçin ve ardından **Değişiklikleri Kaydet**' i seçin. 
    
    ![Kullanıcı ve Grup Ekle](./media/group-manager-tasks/add-users.png)
    
 
 Üyeler için izinleri yapılandırmak için:
 
-1. **Proje ayarları** sol gezinti listesinden **izinler** ' i seçin. 
+1. **Proje ayarları** sol gezinti listesinden **izinler**' i seçin. 
    
 1. **İzinler** sayfasında, üye eklemek istediğiniz grubu seçin. 
    
-1. Bu grubun sayfasında, **Üyeler** ' i seçin ve ardından **Ekle** ' yi seçin. 
+1. Bu grubun sayfasında, **Üyeler**' i seçin ve ardından **Ekle**' yi seçin. 
    
-1. **Üyeleri davet et** açılan penceresinde, gruba eklenecek üyeleri arayıp seçin ve ardından **Kaydet** ' i seçin. 
+1. **Üyeleri davet et** açılan penceresinde, gruba eklenecek üyeleri arayıp seçin ve ardından **Kaydet**' i seçin. 
    
    ![Üyelere izin verme](./media/group-manager-tasks/grant-permissions.png)
 

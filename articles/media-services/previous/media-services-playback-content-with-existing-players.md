@@ -3,7 +3,7 @@ title: İçeriğinizi kayıttan yürütmek için mevcut oyuncuları kullanın-Az
 description: Bu makalede, içeriğinizi kayıttan yürütmek için kullanabileceğiniz mevcut oynatıcılar listelenmektedir.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: d2036fa056932f9bbd2f14b4005fa54321b1a382
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/17/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6085f34c46ab39012500cd42cd8392e65776f773
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095722"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739825"
 ---
 # <a name="playing-your-content-with-existing-players"></a>İçeriğinizi mevcut oynatıcılarda oynatma
 
@@ -27,7 +27,8 @@ ms.locfileid: "93095722"
 
 Azure Media Services, Kesintisiz Akış, HTTP Canlı Akışı ve MPEG-Dash gibi birçok popüler akış biçimini destekler. Bu konu, akışlarınızı test etmek için kullanabileceğiniz mevcut oyunculara işaret eder.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure portal Media Services içerik yürütücüsü
+## <a name="the-azure-portal-media-services-content-player"></a>Azure portal Media Services içerik yürütücüsü
+
 **Azure** Portal, videonuzu test etmek için kullanabileceğiniz bir içerik oynatıcı sağlar.
 
 İstediğiniz videoya tıklayın ( [yayımlanmış](media-services-portal-publish.md)olduğundan emin olun) ve portalın altındaki **oynat** düğmesine tıklayın.
@@ -35,8 +36,6 @@ Azure Media Services, Kesintisiz Akış, HTTP Canlı Akışı ve MPEG-Dash gibi 
 Bazı dikkate alınması gereken noktalar vardır:
 
 * **MEDYA HİZMETLERİ İÇERİK OYNATICISI** varsayılan akış uç noktasından oynatır. Varsayılan dışı bir akış uç noktasından oynatmak istiyorsanız başka bir oynatıcı kullanın. Örneğin, [Azure Media Player](https://aka.ms/azuremediaplayer).
-
-![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
 
@@ -55,20 +54,21 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="dash-players"></a>DASH çalarlar
 
-"https://dashplayer.azurewebsites.net"
+[kesik çizgi oynatıcı](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Diğer
+
 HLS URL 'Leri test etmek için aşağıdakileri de kullanabilirsiniz:
 
 * İOS cihazında **Safari** veya
 * Windows üzerinde **3ivx HLS oynatıcı** .
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-[AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
+[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

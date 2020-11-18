@@ -1,5 +1,5 @@
 ---
-title: Microsoft ticari Market nedir?
+title: Microsoft ticari market nedir?
 description: Microsoft ticari Market 'teki çözümleri listelayan Microsoft iş ortakları için avantajlara ve seçeneklere genel bakış.
 author: mingshen-ms
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a559c8613af97251ea6e85ef2a16121a89ffb6ad
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107054"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739777"
 ---
-# <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market nedir?
+# <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft ticari market nedir?
 
 Microsoft ticari Market, bağımsız yazılım satıcısı (ISV) iş ortaklarımızın çözümlerinin bir kataloğudur. Microsoft İş Ortağı Ağı ISV üyesi olarak, Iş Ortağı Merkezi 'nde ticari Market tekliflerinizi oluşturabilir, yayımlayabilir ve yönetebilirsiniz. Çözümleriniz, Microsoft çözümlerimizin yanı sıra dünyanın dört bir yanındaki işletmeler, kuruluşlar ve kamu kurumları ile bağlantı kurarak çevrimiçi mağazalarımızda listelenmiştir.
 
@@ -24,7 +24,7 @@ Ticari Market 100 ' den fazla ülkede ve bölgede kullanılabilir ve vergi ödem
 
 Microsoft ticari marketi 'nin iki çevrimiçi mağazası vardır: [Microsoft AppSource](https://appsource.microsoft.com/) ve [Azure Marketi](https://azuremarketplace.microsoft.com/). Microsoft AppSource iş çözümlerini ve Azure Marketi BT çözümlerini içerir. Ticari Market yazılım ve Hizmetleri Microsoft 365, Dynamics 365, Microsoft Power platform ve Azure gibi Microsoft ürünlerinde de bulunabilir. Çevrimiçi Mağazalarımız ve ürün içi deneyimlerimiz, her ay milyonlarca potansiyel müşteri çizer. Her çevrimiçi mağaza çözümünüzün veya hizmetinizin doğru müşteriler tarafından kullanılabilir olduğundan emin olmak için farklı senaryolar sunar.
 
-Iş Ortağı Merkezi 'nde ticari bir market teklifi oluşturduğunuzda, teklif türü, Kategoriler ve seçtiğiniz diğer seçeneklere göre her iki çevrimiçi mağaza üzerinde de listelenmiş olabilir. Teklifin her iki çevrimiçi mağazadaki kullanıcılarla ilgili olduğu nadir durumlarda, her ikisinde de görünebilir. Daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi için](https://aka.ms/MarketplaceBuyerGuide)bir [çevrimiçi mağaza](determine-your-listing-type.md#selecting-an-online-store) ve alıcının kılavuzunu seçme.
+Iş Ortağı Merkezi 'nde ticari bir market teklifi oluşturduğunuzda, teklif türü, Kategoriler ve seçtiğiniz diğer seçeneklere göre her iki çevrimiçi mağaza üzerinde de listelenmiş olabilir. Teklifin her iki çevrimiçi mağazadaki kullanıcılarla ilgili olduğu nadir durumlarda, her ikisinde de görünebilir. Daha fazla bilgi için bkz. [çevrimiçi mağazaya göre listeleme ve fiyatlandırma seçenekleri](determine-your-listing-type.md#listing-and-pricing-options-by-online-store) ve [Microsoft AppSource ve Azure Marketi Için bir alıcının Kılavuzu](https://aka.ms/MarketplaceBuyerGuide).
 
 ### <a name="microsoft-appsource"></a>Microsoft AppSource
 
@@ -38,11 +38,11 @@ AppSource 'ta teklif listeleme sayfasına bir örnek aşağıda verilmiştir:
 
 Müşteriler ayrıca Microsoft 365, Dynamics 365, güç platformu ve Azure aracılığıyla AppSource tekliflerinizi de erişebilirler. Aşağıdaki örnek, Power BI **Dosya** menüsünden appsource eklentilerinin nasıl erişebileceğini gösterir.
 
-:::image type="content" source="media/overview/power-bi.png" alt-text="Microsoft AppSource bir teklif listesi sayfasını gösterir."::: 
+:::image type="content" source="media/overview/power-bi.png" alt-text="Power BI Dosya menüsünden AppSource 'daki Power BI görsellere nasıl erişebilirim gösterir."::: 
 
 Bu seçenek, müşterinin Power BI eklentileri ada veya kategoriye göre araygeçirebileceği bir pencere açar. 
 
-:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Microsoft AppSource bir teklif listesi sayfasını gösterir."::: 
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Power BI içinden AppSource eklentilerinin listesini gösterir."::: 
 
 ### <a name="azure-marketplace"></a>Azure Market
 
@@ -50,17 +50,17 @@ Bu seçenek, müşterinin Power BI eklentileri ada veya kategoriye göre arayge�
 
 Azure Marketi 'nde teklif listesi sayfasına bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/overview/example-marketplace.png" alt-text="Microsoft AppSource bir teklif listesi sayfasını gösterir."::: 
+:::image type="content" source="media/overview/example-marketplace.png" alt-text="Azure Marketi 'nde bir teklif listesi sayfasını gösterir."::: 
 
 #### <a name="azure-marketplace-in-the-azure-portal"></a>Azure portal Azure Marketi
 
 Azure müşterileri, [Azure Portal](https://portal.azure.com/) **kaynak oluşturma** seçeneği aracılığıyla Azure Marketi çözümlerini bulabilir ve dağıtabilir.
 
-:::image type="content" source="media/overview/create-resource.png" alt-text="Microsoft AppSource bir teklif listesi sayfasını gösterir."::: 
+:::image type="content" source="media/overview/create-resource.png" alt-text="Azure portal kaynak oluştur seçeneğini gösterir"::: 
 
 Bu seçenek, Azure Marketi 'ni Azure portal içinde açar, burada ad veya kategoriye göre çözümler arayabilir.
 
-:::image type="content" source="media/overview/search-portal.png" alt-text="Microsoft AppSource bir teklif listesi sayfasını gösterir."::: 
+:::image type="content" source="media/overview/search-portal.png" alt-text="Azure portal içindeki Azure Marketi arama seçeneklerini gösterir"::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>Microsoft ile satma avantajları
 

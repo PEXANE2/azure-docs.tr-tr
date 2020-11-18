@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368291"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746576"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -26,7 +26,7 @@ Market Retatminileri, ilk müşterilerinizi almanıza yardımcı olmak üzere ta
 
 Program olumlu bir geri bildirim döngüsü oluşturur: her büyüme aşamasında avantajlar, sizi bir sonraki aşamada ilerlemek için tasarlanmıştır. böylece, işletmenizin Microsoft 'un alanıyla, Microsoft 'un alanı ve ticari Market 'ten yararlanarak Microsoft 'un kanalıyla de yararlanmanızı sağlayabilirsiniz.
 
-Avantajlarınız, teklifinizin [liste, deneme veya Transact](determine-your-listing-type.md#choose-a-listing-option)olduğundan farklılaştırılır.
+Avantajlarınız, teklifinizin [liste, deneme veya Transact](determine-your-listing-type.md#available-listing-options-by-offer-type)olduğundan farklılaştırılır.
 
 Teklifinizin, uygunluğunuzu temel alarak canlı kaldığında, bu ekibin bir üyesi tarafından iletişim kurulacaksınız.
 
@@ -44,7 +44,7 @@ Kullanmaya başlamak kolaydır:
 2. Iş Ortağı Merkezi ' nde [Market](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) 'e gidin ve **Market yeniden oluşturma programı '** nı seçin.
 3. Satış ve pazarlama avantajlarını etkinleştirmek için bir şirket pazarlama kişisi atayın. Bu kişi Marketplace Rewards avantajınız hakkında izleme amaçlı iletişimleri alacaktır.
 4. Pazarlama iletişim bilgilerinizi eklemek veya güncelleştirmek için Market depoları sayfasında satış ve pazarlama avantajları sekmesinin en üstüne gidin ve **Ekle, Güncelleştir veya Değiştir**' i seçin.  Sonra, şunları yapın:
-    1. Listeden bir kullanıcı seçin. Atamak istediğiniz Kullanıcı listede yoksa, **Hesap ayarlarına**yeni kullanıcı ekleyebilirsiniz.
+    1. Listeden bir kullanıcı seçin. Atamak istediğiniz Kullanıcı listede yoksa, **Hesap ayarlarına** yeni kullanıcı ekleyebilirsiniz.
     1. Kullanıcı için şirketinizin Iş Ortağı Merkezi hesabıyla ilişkili e-posta adresinden farklı bir e-posta adresi sağlayın. Marketplace Rewards avantajınızı kullanma yönergelerini, belirlenen pazarlama ilgili kişisinin e-posta adresine e-postayla göndeririz.
     1. Bu pazarlama ilgili kişisi için telefon numarasını ve tercih edilen dilini belirtin. Bu bilgileri girmeyi tamamladığınızda **Kullanıcı ata**’yı seçin.
     1. Pazarlama ilgili kişisini güncelleştirdikten sonra, kullanmaya başlamak istediğiniz avantaj için **Etkinleştir** ' i seçin. Siz avantajı etkinleştirdikten sonra, bir hafta içinde Rewards ekibinin bir üyesi pazarlama ilgili kişinizle iletişim kurar.
