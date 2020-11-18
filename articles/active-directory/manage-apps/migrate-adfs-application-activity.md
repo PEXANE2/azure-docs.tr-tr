@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659206"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835518"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu (Önizleme) kullanın
 
@@ -32,7 +32,7 @@ Azure portal AD FS uygulama etkinliği raporu (Önizleme), uygulamalarınızın 
 
 AD FS uygulama etkinliği verileri şu yönetici rollerinden herhangi biri atanmış kullanıcılar tarafından kullanılabilir: genel yönetici, rapor okuyucu, güvenlik okuyucusu, uygulama Yöneticisi veya bulut uygulama Yöneticisi.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kuruluşunuzun uygulamalara erişmek için şu anda AD FS kullanıyor olması gerekir.
 * Azure AD Connect Health Azure AD kiracınızda etkinleştirilmelidir.
@@ -76,7 +76,7 @@ Aşağıdaki tabloda AD FS uygulamalarda gerçekleştirilen tüm yapılandırma 
 
 |Sonuç  |Geçiş/uyarı/başarısız  |Açıklama  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> AdditionalAuthentication için en az bir geçirilip geçirilemeyeceğini denetleyin olmayan kural algılandı.       | Geçiş/uyarı          | Bağlı olan taraf, Multi-Factor Authentication (MFA) için sorulacak kurallara sahiptir. Azure AD 'ye geçmek için bu kuralları koşullu erişim ilkelerine çevirin. Şirket içi MFA kullanıyorsanız Azure MFA ' ya geçmeniz önerilir. [Koşullu erişim hakkında daha fazla bilgi edinin](../authentication/concept-mfa-howitworks.md).        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> AdditionalAuthentication için en az bir geçirilip geçirilemeyeceğini denetleyin olmayan kural algılandı.       | Geçiş/uyarı          | Bağlı olan taraf, Multi-Factor Authentication (MFA) için sorulacak kurallara sahiptir. Azure AD 'ye geçmek için bu kuralları koşullu erişim ilkelerine çevirin. Şirket içi MFA kullanıyorsanız Azure AD MFA 'ya geçmeniz önerilir. [Koşullu erişim hakkında daha fazla bilgi edinin](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Bağlı olan tarafın AdditionalWSFedEndpoint değeri true olarak ayarlanmıştır.       | Başarılı/Başarısız          | AD FS bağlı olan taraf, birden çok WS-Fed onay uç noktasına izin verir.Şu anda Azure AD yalnızca bir tane destekler.Bu sonucun geçişi engellediği bir senaryonuz varsa [bize bilgi verin](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
 |Test-ADFSRPAllowedAuthenticationClassReferences <br> Bağlı olan taraf, Allowedaduthenticationclassreferences olarak ayarlanmıştır.       | Başarılı/Başarısız          | AD FS Bu ayar, uygulamanın yalnızca belirli kimlik doğrulama türlerine izin vermek üzere yapılandırılıp yapılandırılmadığını belirtmenize olanak tanır. Bu özelliği başarmak için Koşullu erişimin kullanılması önerilir. Bu sonucun geçişi engellediği bir senaryonuz varsa [bize bilgi verin](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).  [Koşullu erişim hakkında daha fazla bilgi edinin](../authentication/concept-mfa-howitworks.md).          |
 |Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | Başarılı/Başarısız          | AD FS Bu ayar, uygulamanın SSO tanımlama bilgilerini yoksayacak şekilde yapılandırılıp yapılandırılmadığını belirtmenizi sağlar ve **her zaman kimlik doğrulaması Için istem** yapın. Azure AD 'de, benzer davranışa ulaşmak için koşullu erişim ilkelerini kullanarak kimlik doğrulama oturumunu yönetebilirsiniz. [Kimlik doğrulama oturumu yönetimini koşullu erişimle yapılandırma hakkında daha fazla bilgi edinin](../conditional-access/howto-conditional-access-session-lifetime.md).          |

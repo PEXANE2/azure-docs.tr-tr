@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123957"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833988"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Uygulamalarım portalındaki sorunları giderme
 
@@ -51,7 +51,7 @@ Uygulamalarım güvenli oturum açma uzantısını yüklerken sorun yaşıyorsan
 
 - Parolanızın doğru olduğundan ve süresinin dolmadığından emin olun. Daha fazla bilgi için bkz. [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md).
 
-- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication benim Için ne anlama geliyor?](./multi-factor-authentication-end-user-first-time.md) veya [güvenlik bilgileri yöntemlerinizi ile bilgilerinizi değiştirme](./security-info-setup-auth-app.md).
+- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için bkz. [Azure AD Multi-Factor Authentication bana ne anlama geliyor?](./multi-factor-authentication-end-user-first-time.md) ya da [güvenlik bilgileri yöntemlerinizi ve bilgilerinizi değiştirme](./security-info-setup-auth-app.md).
 
 - **Uygulama** portalı URL 'Sini **Internet özellikleri > güvenlik > güvenilen siteler** ayarına ekleyin.
 
@@ -75,7 +75,7 @@ Kendi parolanızı sıfırlayabilmeniz için, yöneticinizin öncelikle kuruluş
 
 - Parolanızın doğru olduğundan ve süresinin dolmadığından emin olun. Daha fazla bilgi için bkz. [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md).
 
-- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication benim Için ne anlama geliyor?](./multi-factor-authentication-end-user-first-time.md) veya [güvenlik bilgileri yöntemlerinizi ile bilgilerinizi değiştirme](./security-info-setup-auth-app.md).
+- Doğrulama bilgilerinizin güncel ve doğru olduğundan emin olun. Daha fazla bilgi için bkz. [Azure AD Multi-Factor Authentication bana ne anlama geliyor?](./multi-factor-authentication-end-user-first-time.md) ya da [güvenlik bilgileri yöntemlerinizi ve bilgilerinizi değiştirme](./security-info-setup-auth-app.md).
 
 - Tarayıcınızın önbelleğini temizleyin ve yeniden oturum açmayı deneyin.
 

@@ -6,13 +6,13 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 1e6bace9652ff68bb4cc28d482016b7e7510154b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150189"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833563"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -23,7 +23,7 @@ App Service Ortamı (Ao), bir müşterinin Azure sanal ağ örneğindeki bir alt
 - **Veritabanı**: ortamı tanımlayan bilgileri barındırır
 - **Depolama**: müşteri tarafından yayımlanan uygulamaları barındırmak için kullanılır
 
-Uygulama erişimi için bir dış veya iç sanal IP (VIP) ile Ao 'ı dağıtabilirsiniz. Dış VIP içeren bir dağıtıma genellikle *dış Ao*denir. İç VIP ile bir dağıtım iç yük dengeleyici (ıLB) kullandığından *ıLB Ao* adı verilir. ILB Ao hakkında daha fazla bilgi edinmek için bkz. [ILB Ai oluşturma ve kullanma][MakeILBASE].
+Uygulama erişimi için bir dış veya iç sanal IP (VIP) ile Ao 'ı dağıtabilirsiniz. Dış VIP içeren bir dağıtıma genellikle *dış Ao* denir. İç VIP ile bir dağıtım iç yük dengeleyici (ıLB) kullandığından *ıLB Ao* adı verilir. ILB Ao hakkında daha fazla bilgi edinmek için bkz. [ILB Ai oluşturma ve kullanma][MakeILBASE].
 
 ## <a name="create-an-app-in-an-ase"></a>AS 'de uygulama oluşturma
 
@@ -36,7 +36,7 @@ Ao 'a sahip değilseniz, [App Service ortamı oluşturma][MakeExternalASE]bölü
 
 AS 'de bir uygulama oluşturmak için:
 
-1. **Create a resource**  >  **Web + Mobile**  >  **Web uygulaması**Web ve mobil kaynak oluştur ' u seçin.
+1. **Create a resource**  >  **Web + Mobile**  >  **Web uygulaması** Web ve mobil kaynak oluştur ' u seçin.
 
 1. Uygulama için bir ad girin. Ao 'da zaten bir App Service planı seçtiyseniz, uygulamanın etki alanı adı Ao 'nun etki alanı adını yansıtır:
 
@@ -58,7 +58,7 @@ AS 'de bir uygulama oluşturmak için:
 
     d. Web uygulamanızın adını girin.
 
-    e. **Kod** veya **dockercontainer**seçin.
+    e. **Kod** veya **dockercontainer** seçin.
 
     f. Çalışma zamanı yığını seçin.
 
@@ -139,7 +139,7 @@ Azure DNS özel bölgelerde DNS 'yi yapılandırmak için:
 1. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
 1. Bu bölgede, ıLB IP adresine *. SCM 'yi işaret eden bir kayıt oluşturun
 
-Ao varsayılan etki alanı son ekinin DNS ayarları, uygulamalarınızı yalnızca bu adlar tarafından erişilebilir olarak kısıtlayamaz. Bir ıLB Ao 'da uygulamalarınızda herhangi bir doğrulama yapmadan özel bir etki alanı adı ayarlayabilirsiniz. Daha sonra *contoso.net*adlı bir bölge oluşturmak istiyorsanız bunu yapabilirsiniz ve ıLB IP adresine işaret edebilirsiniz. Özel etki alanı adı, uygulama istekleri için geçerlidir ancak SCM sitesi için değildir. SCM sitesi yalnızca * &lt; appname. SCM adresinde kullanılabilir &gt; . &lt; asename &gt; . appserviceenvironment.net*. 
+Ao varsayılan etki alanı son ekinin DNS ayarları, uygulamalarınızı yalnızca bu adlar tarafından erişilebilir olarak kısıtlayamaz. Bir ıLB Ao 'da uygulamalarınızda herhangi bir doğrulama yapmadan özel bir etki alanı adı ayarlayabilirsiniz. Daha sonra *contoso.net* adlı bir bölge oluşturmak istiyorsanız bunu yapabilirsiniz ve ıLB IP adresine işaret edebilirsiniz. Özel etki alanı adı, uygulama istekleri için geçerlidir ancak SCM sitesi için değildir. SCM sitesi yalnızca *&lt; appname. SCM adresinde kullanılabilir &gt; . &lt; asename &gt; . appserviceenvironment.net*. 
 
 Adlı bölge *. &lt; asename &gt; . appserviceenvironment.net* , genel olarak benzersizdir. 2019 tarihinden önce, müşteriler ıLB Ao 'nun etki alanı sonekini belirleyebildi. Etki alanı soneki için *. contoso.com* kullanmak istiyorsanız, bunu yapabilir ve SCM sitesini de kapsayabileceksiniz. Bu modelde olduğu gibi sorunlar oluştu; varsayılan SSL sertifikasını yönetme, SCM sitesiyle çoklu oturum açma olmaması ve bir joker karakter sertifikası kullanma gereksinimi. ILB ATıCı varsayılan sertifika yükseltme işlemi de karışıklığa ve uygulamanın yeniden başlatılmasına neden oldu. Bu sorunları gidermek için ıLB Ao davranışı, Ao 'nun adına ve Microsoft 'un sonekine sahip olan bir etki alanı sonekini kullanacak şekilde değiştirilmiştir. ILB ASE davranışında yapılan değişiklik yalnızca 2019 ' den sonra gerçekleştirilen ıLB ASE 'yi etkiler. Önceden var olan ıLB 'ler, ASE 'nin varsayılan sertifikasını ve DNS yapılandırmalarını yine de yönetmelidir.
 
@@ -185,7 +185,7 @@ Aşirinizi Azure depolama, Azure Event Hubs veya Log Analytics ile ilgili günl�
 AŞIRDE günlüğe kaydetmeyi etkinleştirmek için:
 
 1. Portalda **Tanılama ayarları**' na gidin.
-1. **Tanılama ayarı Ekle**' yi seçin.
+1. **Tanılama ayarı ekle**’yi seçin.
 1. Günlük tümleştirmesi için bir ad sağlayın.
 1. İstediğiniz günlük hedeflerini seçin ve yapılandırın.
 1. **Appserviceenvironmentplatformlogs**' u seçin.
@@ -207,9 +207,9 @@ Günlüklerinizi karşılaştırarak bir uyarı oluşturmak için [Azure izleyic
 
 ## <a name="upgrade-preference"></a>Yükseltme tercihi
 
-Birden çok ASE varsa, bazı ASE 'lerin başkalarından önce yükseltilmesini isteyebilirsiniz. ATıCı **HostingEnvironment Kaynak Yöneticisi** nesnesi Içinde, **upgradepreference**için bir değer ayarlayabilirsiniz. **Upgradepreference** ayarı bir şablon, ARMClient veya kullanılarak yapılandırılabilir https://resources.azure.com . Olası üç değer şunlardır:
+Birden çok ASE varsa, bazı ASE 'lerin başkalarından önce yükseltilmesini isteyebilirsiniz. ATıCı **HostingEnvironment Kaynak Yöneticisi** nesnesi Içinde, **upgradepreference** için bir değer ayarlayabilirsiniz. **Upgradepreference** ayarı bir şablon, ARMClient veya kullanılarak yapılandırılabilir https://resources.azure.com . Olası üç değer şunlardır:
 
-- **Hiçbiri**: Azure, Ao 'nizi belirli bir toplu iş olmadan yükseltecektir. Bu değer varsayılandır.
+- **Hiçbiri**: Azure, Ao 'nizi belirli bir toplu iş olmadan yükseltecektir. Bu varsayılan değerdir.
 - **Erken**: Ao 'niz App Service yükseltmelerin ilk yarısında yükseltilir.
 - **Geç**: Ao 'niz App Service yükseltmelerinin ikinci yarısında yükseltilir.
 
@@ -220,7 +220,7 @@ Kullanıyorsanız https://resources.azure.com , **upgradepreferences** değerini
 1. Üstteki **oku/yaz** seçeneğini belirleyin.
 1. **Düzenle**’yi seçin.
 1. **Yükseltme tercihini** , istediğiniz üç değerden hangisinin hangisi olduğuna göre ayarlayın.
-1. **Düzeltme Eki**seçin.
+1. **Düzeltme Eki** seçin.
 
 ![Kaynak Azure com görüntülemesi][5]
 

@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393464"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834719"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD deposu verileri ne kadar süreyle bildiriyor?
 
@@ -65,7 +65,7 @@ Güvenlik sinyalleri için, **kimlik koruma merkezini** kullanmayı tercih etti�
 | :--                    | :--           | :--                 | :--                 |
 | Denetim günlükleri             | 7 gün        | 30 gün             | 30 gün             |
 | Oturum açma işlemleri               | 7 gün        | 30 gün             | 30 gün             |
-| Azure MFA kullanımı        | 30 gün       | 30 gün             | 30 gün             |
+| Azure AD MFA kullanımı        | 30 gün       | 30 gün             | 30 gün             |
 
 Azure Izleyici 'yi kullanarak bir Azure depolama hesabına yönlendirerek, yukarıda özetlenen varsayılan saklama süresinden daha uzun bir süre için denetim ve oturum açma etkinlik verilerini koruyabilirsiniz. Daha fazla bilgi için bkz. Azure [ad günlüklerini bir Azure depolama hesabına arşivleme](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
@@ -80,6 +80,6 @@ Azure Izleyici 'yi kullanarak bir Azure depolama hesabına yönlendirerek, yukar
 
 ### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Bir Azure AD Premium lisansı aldıktan sonra geçen aya ait verileri görebilir miyim?
 
-**Hayır** , bunu yapamazsınız. Azure, ücretsiz sürüm için yedi güne kadar etkinlik verisi depolar. Bu, ücretsiz ' dan bir Premium sürümüne geçiş yaptığınızda en fazla 7 günlük veriyi görebileceğiniz anlamına gelir.
+**Hayır**, bunu yapamazsınız. Azure, ücretsiz sürüm için yedi güne kadar etkinlik verisi depolar. Bu, ücretsiz ' dan bir Premium sürümüne geçiş yaptığınızda en fazla 7 günlük veriyi görebileceğiniz anlamına gelir.
 
 ---

@@ -14,19 +14,19 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fba46ee5632f7411c433e4bba29201c59c552f21
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009571"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835212"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>Privileged Identity Management erişim yetkisi verme
 
 Privileged Identity Management (PıM) erişimi sağlamak için bir genel yönetici, ayrıcalıklı rol yöneticisi rolüne diğer kullanıcıları atayabilir. Varsayılan olarak, güvenlik yöneticileri ve güvenlik okuyucuları Privileged Identity Management için salt okuma erişimine sahiptir. Privileged Identity Management erişim izni vermek için, ilk Kullanıcı diğerlerini **ayrıcalıklı rol yöneticisi** rolüne atayabilir. Ayrıcalıklı rol yöneticisi rolü yalnızca Azure AD rollerinin yönetilmesi için gereklidir. Ayrıcalıklı rol Yöneticisi izinleri, Azure kaynakları ayarlarını yönetmek için gerekli değildir.
 
 > [!NOTE]
-> Privileged Identity Management yönetimi için Azure Multi-Factor Authentication gerekir. Microsoft hesapları Azure Multi-Factor Authentication için kaydettirilemediğinden, bir Microsoft hesabı ile oturum açan bir Kullanıcı Privileged Identity Management erişemez.
+> Privileged Identity Management yönetimi için Azure AD Multi-Factor Authentication gerekir. Microsoft hesapları Azure AD Multi-Factor Authentication için kayıt yaptıramadığı için, bir Microsoft hesabı ile oturum açan bir Kullanıcı Privileged Identity Management erişemez.
 
 Bir kullanıcının kilitli olması veya hesaplarının silinmesi durumunda, ayrıcalıklı rol yöneticisi rolünde her zaman en az iki kullanıcı bulunduğundan emin olun.
 
@@ -34,11 +34,11 @@ Bir kullanıcının kilitli olması veya hesaplarının silinmesi durumunda, ayr
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Azure AD 'de **Privileged Identity Management**açın.
+1. Azure AD 'de **Privileged Identity Management** açın.
 
 1. **Azure AD rolleri**' ni seçin.
 
-1. **Rolleri**seçin.
+1. **Rolleri** seçin.
 
     ![Azure AD rollerini Privileged Identity Management-roller](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
@@ -72,11 +72,11 @@ Ayrıcalıklı rol Yöneticisi rolünden birini kaldırmadan önce, en az iki ku
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure AD rolleri**' ni seçin.
 
-1. **Rolleri**seçin.
+1. **Rolleri** seçin.
 
 1. Üyeler sayfasını açmak için **ayrıcalıklı rol yöneticisi** rolünü seçin.
 

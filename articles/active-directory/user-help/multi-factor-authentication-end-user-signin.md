@@ -13,17 +13,17 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f27dd7daf310e425b09db7905ad2f7c37fcff81
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056037"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834175"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>İki öğeli doğrulama yönteminizi kullanarak iş veya okul hesabınızda oturum açın
 
 > [!NOTE]
-> Bu makalenin amacı, tipik bir oturum açma deneyiminde izlenecek bir deneyimdir. Oturum açmaya yönelik yardım veya sorunları gidermek için bkz. [Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md)sorun giderme.
+> Bu makalenin amacı, tipik bir oturum açma deneyiminde izlenecek bir deneyimdir. Oturum açmaya yönelik yardım veya sorunları gidermek için bkz. [Azure AD Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md)sorun giderme.
 
 ## <a name="what-will-your-sign-in-experience-be"></a>Oturum açma deneyiminiz ne olacak?
 Oturum açma deneyiminiz, bir telefon araması, kimlik doğrulama uygulaması veya metinler için seçtiğiniz seçeneğe bağlı olarak farklılık gösterir. Yaptığınız işlemleri en iyi şekilde açıklayan seçeneği belirleyin:
@@ -83,7 +83,7 @@ Bazen tercih ettiğiniz doğrulama yöntemi olarak ayarladığınız telefonun v
    ![Alternatif yöntemi kullan](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- İki aşamalı doğrulama ile oturum açma sorunlarıyla karşılaşırsanız, [Azure Multi-Factor Authentication sorun yaşamadan](multi-factor-authentication-end-user-troubleshoot.md)daha fazla bilgi alın.
+- İki aşamalı doğrulama ile oturum açma sorunları yaşıyorsanız, [Azure AD Multi-Factor Authentication ile ilgili sorun yaşamakta](multi-factor-authentication-end-user-troubleshoot.md)daha fazla bilgi alın.
 
 - [İki adımlı doğrulama ayarlarınızı yönetme](multi-factor-authentication-end-user-manage-settings.md)hakkında bilgi edinin.
 

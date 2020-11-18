@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798134"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834158"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Oturum açma etkinliklerim sayfasından son oturum açma etkinliğinizi görüntüleyin ve arayın
 
@@ -46,7 +46,7 @@ Bir şeyin yanlış olduğunu belirlemediğinizden önce, yanlış pozitif bir d
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Başarısız bir oturum açma görürseniz
 
-Başarısız bir oturum açma görürseniz, kimlik bilgilerinizi yanlış yazmış olursunuz. Bu, bir saldırganın parolanızı tahmin etmeye çalıştığı anlamına da gelebilir. Bu riske yanıt vermek için parolanızı değiştirmeniz gerekmez, ancak Azure Multi-Factor Authentication (MFA) için kaydolmanızı öneririz. Multi-Factor Authentication sayesinde, korsanın parolanızı tahmin etse bile, hesaba erişmek için yeterli olmaz.
+Başarısız bir oturum açma görürseniz, kimlik bilgilerinizi yanlış yazmış olursunuz. Bu, bir saldırganın parolanızı tahmin etmeye çalıştığı anlamına da gelebilir. Bu riske yanıt vermek için parolanızı değiştirmeniz gerekmez, ancak Azure AD Multi-Factor Authentication (MFA) için kaydolmanızı öneririz. Multi-Factor Authentication sayesinde, korsanın parolanızı tahmin etse bile, hesaba erişmek için yeterli olmaz.
 
 ![Başarısız oturum açma kutucuğu](media/my-account-portal-sign-ins-page/unsuccessful.png)
 

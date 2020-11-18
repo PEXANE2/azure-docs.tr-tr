@@ -5,13 +5,13 @@ keywords: Azure App Service, Web uygulaması, uygulama ayarları, ortam değişk
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 86f9f227c0ea92b7b52a3037759426cc87f6d937
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 1ab6f5e9c7b602ce124116c02584c5a48a3f597f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152044"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833665"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -29,7 +29,7 @@ Uygulamanın sol menüsünde **yapılandırma**  >  **uygulama ayarları**' nı 
 
 ![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için App Service uygulama ayarlarını `<appSettings>` *Web.config* veya * üzerindeappsettings.js*olarak ayarlama gibidir, ancak App Service içindeki değerler *Web.config* veya *appsettings.jsüzerinde*olanları geçersiz kılar. *Web.config* veya *appsettings.js*' de (örneğin, Azure MySQL veritabanı parolası) geliştirme ayarlarını (örneğin, yerel mysql parolası), App Service güvenli bir şekilde koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için App Service uygulama ayarlarını `<appSettings>` *Web.config* veya *üzerindeappsettings.js* olarak ayarlama gibidir, ancak App Service içindeki değerler *Web.config* veya *appsettings.jsüzerinde* olanları geçersiz kılar. *Web.config* veya *appsettings.js*' de (örneğin, Azure MySQL veritabanı parolası) geliştirme ayarlarını (örneğin, yerel mysql parolası), App Service güvenli bir şekilde koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
 Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişkenleri olarak uygulama ayarlarını alır. Dil yığınına özgü adımlar için bkz.:
 
@@ -116,7 +116,7 @@ Komut satırından ayarları oluşturmak ve yönetmek için Azure CLı ' yı kul
 
 ![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için, App Service bağlantı dizeleriniWeb.config' de ayarlama gibidir `<connectionStrings>` , ancak App Service * *' de ayarladığınız değerler *Web.config*geçersiz kılar. *Web.config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) içinde App Service güvenli bir şekilde geliştirme ayarlarını (örneğin, bir veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için, App Service bağlantı dizeleriniWeb.config' de ayarlama gibidir `<connectionStrings>` , ancak App Service **' de ayarladığınız değerler *Web.config* geçersiz kılar. *Web.config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) içinde App Service güvenli bir şekilde geliştirme ayarlarını (örneğin, bir veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
 Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-app-settings) kullanılması daha iyidir, çünkü bağlantı dizeleri değerlere erişmek için değişken anahtarlarında özel biçimlendirme gerektirir. Ancak bir özel durum aşağıda verilmiştir: uygulamanızda bağlantı dizelerini yapılandırırsanız, belirli Azure veritabanı türleri uygulamayla birlikte yedeklenir. Daha fazla bilgi için bkz. [nelerin yedeklenebileceği](manage-backup.md#what-gets-backed-up). Bu otomatik yedeklemeye ihtiyacınız yoksa uygulama ayarları ' nı kullanın.
 
@@ -236,7 +236,7 @@ Windows uygulamaları için IIS İşleyici eşlemelerini ve sanal uygulamaları 
 
 İşleyici eşlemeleri belirli dosya uzantılarına yönelik istekleri işlemek için özel betik işlemcileri eklemenize olanak sağlar. Özel bir işleyici eklemek için **yeni işleyici**' ye tıklayın. İşleyiciyi şu şekilde yapılandırın:
 
-- **Uzantı**. İşlemek istediğiniz * \* . php* veya *Handler. FCGI*gibi dosya uzantısı.
+- **Uzantı**. İşlemek istediğiniz *\* . php* veya *Handler. FCGI* gibi dosya uzantısı.
 - **Betik işlemcisi**. Betik işlemcisinin size mutlak yolu. Dosya uzantısıyla eşleşen dosya istekleri betik işlemcisi tarafından işlenir. `D:\home\site\wwwroot`Uygulamanın kök dizinine başvurmak için yolu kullanın.
 - **Bağımsız değişkenler**. Betik işlemcisi için isteğe bağlı komut satırı bağımsız değişkenleri.
 
@@ -289,7 +289,7 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalı]: https://portal.azure.com/
 [Azure App Service'te özel etki alanı adını yapılandırma]: ./app-service-web-tutorial-custom-domain.md
 [Azure App Service’ta hazırlık ortamları ayarlama]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: ./web-sites-monitor.md

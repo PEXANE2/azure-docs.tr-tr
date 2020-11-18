@@ -3,13 +3,13 @@ title: Azure Işlevleri için izlemeyi yapılandırma
 description: İzleme için işlev uygulamanızı Application Insights bağlama ve veri toplamayı yapılandırma hakkında bilgi edinin.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217193"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833087"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Işlevleri için izlemeyi yapılandırma
 
@@ -140,7 +140,7 @@ Aşağıdaki örnek, günlüğü aşağıdaki kurallara göre tanımlar:
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  İşte bir örnek:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 ```json
 {
@@ -153,7 +153,7 @@ Aşağıdaki örnek, günlüğü aşağıdaki kurallara göre tanımlar:
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  İşte bir örnek:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -228,7 +228,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 ## <a name="enable-application-insights-integration"></a>Application Insights tümleştirmesini etkinleştirme
 
-Bir işlev uygulamasının Application Insights verileri gönderebilmesi için, bir Application Insights kaynağının izleme anahtarını bilmeleri gerekir. Anahtar, **APPINSIGHTS_INSTRUMENTATIONKEY**adlı bir uygulama ayarında olmalıdır.
+Bir işlev uygulamasının Application Insights verileri gönderebilmesi için, bir Application Insights kaynağının izleme anahtarını bilmeleri gerekir. Anahtar, **APPINSIGHTS_INSTRUMENTATIONKEY** adlı bir uygulama ayarında olmalıdır.
 
 İşlev uygulamanızı [Azure Portal](functions-create-first-azure-function.md)oluşturduğunuzda, komut satırından [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md)veya [Visual Studio Code](functions-create-first-function-vs-code.md)kullanarak Application Insights tümleştirme varsayılan olarak etkinleştirilir. Application Insights kaynak, işlev uygulamanızla aynı ada sahiptir ve aynı bölgede ya da en yakın bölgede oluşturulur.
 
@@ -245,7 +245,7 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
 
 İşlev uygulamanızla bir Application Insights kaynakları oluşturulmadıysa, kaynağı oluşturmak için aşağıdaki adımları kullanın. Daha sonra bu kaynaktaki izleme anahtarını, işlev uygulamanızda bir [uygulama ayarı](functions-how-to-use-azure-function-app-settings.md#settings) olarak ekleyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com), **işlev uygulamasını**arayıp seçin, sonra işlev uygulamanızı seçin. 
+1. [Azure Portal](https://portal.azure.com), **işlev uygulamasını** arayıp seçin, sonra işlev uygulamanızı seçin. 
 
 1. Pencerenin üst kısmında **Application Insights yapılandırılmamış** başlık ' ı seçin. Bu başlığı görmüyorsanız, uygulamanız zaten Application Insights etkinleştirilmiş olabilir.
 
@@ -258,7 +258,7 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
     | **Yeni kaynak adı** | Benzersiz uygulama adı | Kendi aboneliğinizde benzersiz olması gereken işlev uygulamanız ile aynı adı kullanmak en kolay yoldur. | 
     | **Konum** | West Europe | Mümkünse, işlev uygulamanız ile aynı [bölgeyi](https://azure.microsoft.com/regions/) veya bu bölgeye yakın olanı kullanın. |
 
-    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Portaldan Application Insights etkinleştirme":::
+    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Application Insights kaynağı oluşturma":::
 
 1. **Apply** (Uygula) seçeneğini belirleyin. 
 

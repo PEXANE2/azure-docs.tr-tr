@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356833"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835093"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Gevteri yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Gevşe
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -53,7 +53,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı hazırlama için gevyleop 'ı yapılandırmadan önce, bazı sağlama bilgilerini gevyleden almanız gerekir.
 
-1. [Gevpop yönetim konsolunuza](https://app.looop.co/#/login) oturum açın ve **Hesap** ' ı seçin. **Hesap ayarları** altında **kimlik doğrulaması** ' nı seçin.
+1. [Gevpop yönetim konsolunuza](https://app.looop.co/#/login) oturum açın ve **Hesap**' ı seçin. **Hesap ayarları** altında **kimlik doğrulaması**' nı seçin.
 
     :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Gevpop yönetim konsolunun ekran görüntüsü. Hesap sekmesi vurgulanır ve açıktır. Hesap ayarları altında kimlik doğrulaması vurgulanır." border="false":::
 
@@ -69,11 +69,11 @@ Azure AD ile otomatik Kullanıcı hazırlama için gevyleop 'ı yapılandırmada
 
 Azure AD ile otomatik Kullanıcı sağlaması için Gevfiop 'yi yapılandırmak için Azure AD uygulama galerisindeki bir Gevteri yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -85,11 +85,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için Gevfiop 'yi yapılandırmak 
 
     ![Sonuçlar listesinde gevteri](common/search-new-app.png)
 
-5. Sizi gevrme 'nin oturum açma sayfasına yönlendiren, **Gevrop Için kaydolun** düğmesini seçin. 
+5. Sizi gevrme 'nin oturum açma sayfasına yönlendiren, **Gevrop Için kaydolma** düğmesini seçin. 
 
     ![Gevşop OıDC Add](media/looop-provisioning-tutorial/signup.png)
 
-6. Gevteri bir Openıdconnect uygulaması olduğu için Microsoft iş hesabınızı kullanarak Gevşekilde oturum açmayı seçin.
+6. Gevteri bir Openıdconnect uygulaması olduğu için Microsoft iş hesabınızı kullanarak Gevşekilde oturum açmak için seçin.
 
     ![Gevşop OıDC oturumu](media/looop-provisioning-tutorial/msftlogin.png)
 
@@ -103,11 +103,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
 ### <a name="to-configure-automatic-user-provisioning-for-looop-in-azure-ad"></a>Azure AD 'de Gevteri 'in otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Gevteri** ' ı seçin.
+2. Uygulamalar listesinde, **Gevteri**' ı seçin.
 
     ![Uygulamalar listesindeki Gevteri bağlantısı](common/all-applications.png)
 
@@ -115,7 +115,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -123,27 +123,48 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları gevşekilde zamanla** ' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları gevşekilde zamanla**' yı seçin.
 
     ![Gevteri Kullanıcı eşlemeleri](media/looop-provisioning-tutorial/usermappings.png)
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den yedekop 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için, Gevvop 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Gevteri Kullanıcı öznitelikleri](media/looop-provisioning-tutorial/userattributes.png)
+   |Öznitelik|Tür|Filtreleme için destekleniyor|
+   |---|---|---|
+   |userName|Dize|&check;|
+   |active|Boole|
+   |emails[type eq "work"].value|Dize|
+   |name.givenName|Dize|
+   |name.familyName|Dize|
+   |externalId|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: alan|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: custom_1|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: custom_2|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: custom_3|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: departman|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: employee_id|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: location|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: konum|Dize|
+   |urn: IETF: params: SCIM: schemas: Extension: Gevop: 2.0: Kullanıcı: startAt|Dize|
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını meta Networks Bağlayıcısı olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını meta Networks Bağlayıcısı olarak eşitler**' ı seçin.
 
     ![GEVME grubu eşlemeleri](media/looop-provisioning-tutorial/groupmappings.png)
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den meta Networks bağlayıcısına eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için meta ağlar bağlayıcısında grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![GEVME grubu öznitelikleri](media/looop-provisioning-tutorial/groupattributes.png)
+    |Öznitelik|Tür|Filtreleme için destekleniyor|
+    |---|---|---|
+    |displayName|Dize|&check;|
+    |üyeler|Başvuru|
+    |externalId|Dize|
+
 
 10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
@@ -155,7 +176,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

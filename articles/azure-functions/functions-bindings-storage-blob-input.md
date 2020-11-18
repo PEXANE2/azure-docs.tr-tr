@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5a01724bfefd50297182f998b46f99eacca5843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325785"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833121"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama girişi bağlama
 
@@ -40,7 +40,7 @@ public static void Run(
 
 <!--Same example for input and output. -->
 
-Aşağıdaki örnekte, bağlamaları kullanan dosya ve [C# betiği (. CSX)](functions-reference-csharp.md) kodundaki *function.js* blob giriş ve çıkış bağlamaları gösterilmektedir. İşlevi, bir metin blobunun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
+Aşağıdaki örnekte, bağlamaları kullanan dosya ve [C# betiği (. CSX)](functions-reference-csharp.md) kodundaki *function.js* blob giriş ve çıkış bağlamaları gösterilmektedir. İşlevi, bir metin blobunun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy* olarak adlandırılmıştır.
 
 Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
 
@@ -89,7 +89,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-Aşağıdaki örnek, dosya ve bağlamaları kullanan [JavaScript kodundaki](functions-reference-node.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
+Aşağıdaki örnek, dosya ve bağlamaları kullanan [JavaScript kodundaki](functions-reference-node.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy* olarak adlandırılmıştır.
 
 Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
 
@@ -138,7 +138,7 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-Aşağıdaki örnek, dosya ve bağlamaları kullanan [Python kodundaki](functions-reference-python.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
+Aşağıdaki örnek, dosya ve bağlamaları kullanan [Python kodundaki](functions-reference-python.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy* olarak adlandırılmıştır.
 
 Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
 
@@ -174,6 +174,15 @@ Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek i�
 ```
 
 [Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+
+`dataType`Özelliği hangi bağlamanın kullanıldığını belirler. Farklı bağlama stratejilerini desteklemek için aşağıdaki değerler mevcuttur:
+
+| Bağlama değeri | Varsayılan | Açıklama | Örnek |
+| --- | --- | --- | --- |
+| `undefined` | Y | Zengin bağlamayı kullanır | `def main(input: func.InputStream)` |
+| `string` | N | Genel bağlamayı kullanır ve giriş türünü `string` | `def main(input: str)` |
+| `binary` | N | Genel bağlamayı kullanır ve giriş blobunu `bytes` Python nesnesi olarak yayınlar | `def main(input: bytes)` |
+
 
 Python kodu aşağıda verilmiştir:
 
@@ -309,6 +318,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**ada** | yok | İşlev kodundaki blobu temsil eden değişkenin adı.|
 |**Yolun** |**Blobpath değerini adıyla** | Blobun yolu. |
 |**bağlanma** |**Bağlantı**| Bu bağlama için kullanılacak [depolama bağlantı dizesini](../storage/common/storage-configure-connection-string.md) içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .<br><br>Bağlantı dizesi, [yalnızca BLOB depolama hesabı](../storage/common/storage-account-overview.md#types-of-storage-accounts)değil, genel amaçlı bir depolama hesabı için olmalıdır.|
+|**x**| yok | Dinamik olarak belirlenmiş diller için, temel alınan veri türünü belirtir. Olası değerler `string` , `binary` , veya `stream` . Daha fazla ayrıntı için [Tetikleyiciler ve bağlamalar kavramlarını](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions)inceleyin. |
 |yok | **Erişim** | Okuma veya yazma yapılıp yapılmayacağını belirtir. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -325,7 +335,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`context.bindings.<NAME>` `<NAME>` *Üzerindefunction.js*tanımlanan değerle eşleşen blob verilerine erişin.
+`context.bindings.<NAME>` `<NAME>` *Üzerindefunction.js* tanımlanan değerle eşleşen blob verilerine erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 

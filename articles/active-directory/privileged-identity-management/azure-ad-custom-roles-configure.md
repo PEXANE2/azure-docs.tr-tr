@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e483c5cdb7e5acc0677b0d0cf2b41c390eef0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371571"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835331"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD özel rollerini yapılandırma
 
@@ -62,11 +62,11 @@ Bu *uygun* atama süresi seçeneklerinden birini belirleyebilirsiniz.
 Ayrıca, şu *etkin* atama süresi seçeneklerinden birini belirleyebilirsiniz:
 
 - **Kalıcı etkin atamaya Izin ver**: Yöneticiler kalıcı etkin üyelik atayabilir.
-- **Etkin atamanın sona erme**tarihi: Yöneticiler, tüm etkin atamaların belirtilen başlangıç ve bitiş tarihine sahip olmasını gerektirebilir.
+- **Etkin atamanın sona erme** tarihi: Yöneticiler, tüm etkin atamaların belirtilen başlangıç ve bitiş tarihine sahip olmasını gerektirebilir.
 
-### <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication’ı gerektirme
+### <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication gerektir
 
-Privileged Identity Management, iki ayrı senaryo için isteğe bağlı Azure Multi-Factor Authentication zorlaması sağlar.
+Privileged Identity Management, iki ayrı senaryo için isteğe bağlı Azure AD Multi-Factor Authentication zorlaması sağlar.
 
 - **Etkin atama üzerinde Multi-Factor Authentication gerektir**
 
@@ -74,7 +74,7 @@ Privileged Identity Management, iki ayrı senaryo için isteğe bağlı Azure Mu
 
 - **Etkinleştirme üzerinde Multi-Factor Authentication gerektir**
 
-  Bir role atanmış kullanıcıların etkinleştirebilmeleri için Azure Multi-Factor Authentication 'a kaydolmasını zorunlu kılabilirsiniz. Bu işlem, etkinleştirme isteyen kullanıcının makul belirsizlik sağlar. Bu seçeneğin zorunlu kılınması, Kullanıcı hesabının tehlikeye girdiği durumlarda kritik rolleri korur. Etkinleştirmeden önce uygun bir üyenin Azure Multi-Factor Authentication çalıştırmasını gerektirmek için, **etkinleştirme üzerinde Multi-Factor Authentication gerektir** kutusunu seçin.
+  Bir role atanmış kullanıcıların etkinleştirebilmeleri için Azure AD Multi-Factor Authentication 'a kaydolmasını zorunlu kılabilirsiniz. Bu işlem, etkinleştirme isteyen kullanıcının makul belirsizlik sağlar. Bu seçeneğin zorunlu kılınması, Kullanıcı hesabının tehlikeye girdiği durumlarda kritik rolleri korur. Etkinleştirmeden önce uygun bir üyenin Azure AD Multi-Factor Authentication çalıştırmasını gerektirmek için, **etkinleştirme üzerinde Multi-Factor Authentication gerektir** kutusunu seçin.
 
 Daha fazla bilgi için bkz. [Multi-Factor Authentication ve Privileged Identity Management](pim-how-to-require-mfa.md).
 

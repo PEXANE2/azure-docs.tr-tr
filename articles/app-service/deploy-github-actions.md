@@ -6,19 +6,19 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: e2432ca4cecb3c36d2fae19907c1ad17d9ef2505
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095569"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833512"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
 İş akışınızı otomatik hale getirmek ve GitHub 'dan [Azure App Service](overview.md) dağıtmak Için [GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) ile çalışmaya başlayın. 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
@@ -71,7 +71,7 @@ Yayımlama profili, uygulama düzeyinde bir kimlik bilgileridir. Yayımlama prof
 
 1. Azure portal App Service 'e gidin. 
 
-1. **Genel bakış** sayfasında, **Yayımlama profili al** ' ı seçin.
+1. **Genel bakış** sayfasında, **Yayımlama profili al**' ı seçin.
 
 1. İndirdiğiniz dosyayı kaydedin. Dosyanın içeriğini bir GitHub parolası oluşturmak için kullanacaksınız.
 
@@ -110,11 +110,11 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve 
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/applevel)
 
-[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin** .
+[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -124,11 +124,11 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 # <a name="service-principal"></a>[Hizmet sorumlusu](#tab/userlevel)
 
-[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin** .
+[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
 ```yaml
 - uses: azure/login@v1

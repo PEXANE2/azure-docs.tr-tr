@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961899"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833818"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
@@ -121,13 +121,13 @@ Hata ayıklama hakkında daha fazla bilgi için [Windows 'Ta hata ayıklama node
 
 Birçok uygulama, normal işleminin bir parçası olarak giden bağlantılar yapmak istiyor. Örneğin, bir istek geldiğinde, düğüm uygulamanız başka bir REST API ile iletişim kurmak ve isteği işlemek için bazı bilgiler almak istiyor. Http veya https çağrıları yaparken canlı tut aracısını kullanmak istersiniz. Agentkeepalive modülünü, bu giden çağrıları yaparken canlı tut aracılarınız olarak kullanabilirsiniz.
 
-Agentkeepalive modülü, Azure WebApp sanal makinenizde yuvaların yeniden kullanılmasını sağlar. Her giden istek üzerinde yeni bir yuva oluşturmak uygulamanıza ek yük ekler. Uygulamanızın çıkış istekleri için yuvaları yeniden kullanımını, uygulamanızın VM başına ayrılan maxSockets değerini aşmamasını sağlar. Azure App Service öneri, agentKeepAlive maxSockets değerini sanal makine başına 160 yuva olan toplam (4 örnek node.exe \* 40 maxsockets/Instance) olarak ayarlamadır.
+Agentkeepalive modülü, Azure WebApp sanal makinenizde yuvaların yeniden kullanılmasını sağlar. Her giden istek üzerinde yeni bir yuva oluşturmak uygulamanıza ek yük ekler. Uygulamanızın çıkış istekleri için yuvaları yeniden kullanımını, uygulamanızın VM başına ayrılan maxSockets değerini aşmamasını sağlar. Azure App Service öneri, agentKeepAlive maxSockets değerini sanal makine başına 128 yuva olan toplam (4 örnek node.exe \* 32 maxsockets/Instance) olarak ayarlamadır.
 
 Örnek [Agentkeepalive](https://www.npmjs.com/package/agentkeepalive) yapılandırması:
 
 ```nodejs
 let keepaliveAgent = new Agent({
-    maxSockets: 40,
+    maxSockets: 32,
     maxFreeSockets: 10,
     timeout: 60000,
     keepAliveTimeout: 300000

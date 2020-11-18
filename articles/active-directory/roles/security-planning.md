@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378644"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834464"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -114,7 +114,7 @@ Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. . 
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Multi-Factor Authentication 'ı açın ve diğer tüm yüksek ayrıcalıklı tek kullanıcılı yönetici hesaplarını kaydedin
 
-Azure AD Yönetici rollerinin bir veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Multi-Factor Authentication (MFA) iste: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Yöneticisi ve SharePoint Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication 'ı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve tüm bu kullanıcıların kaydoldiğinden emin olmak için kılavuzu kullanın [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Daha fazla bilgi için adım 2 ' nin altında, [Microsoft 365 veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)Kılavuzu ' nun adım 3 ' ün altında bulabilirsiniz. 
+Bir veya daha fazla Azure AD yönetici rolüne kalıcı olarak atanan her bireysel kullanıcı için oturum açma sırasında Azure AD Multi-Factor Authentication (MFA) gerektir: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Yöneticisi ve SharePoint Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication 'ı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve tüm bu kullanıcıların kaydoldiğinden emin olmak için kılavuzu kullanın [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Daha fazla bilgi için adım 2 ' nin altında, [Microsoft 365 veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)Kılavuzu ' nun adım 3 ' ün altında bulabilirsiniz. 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>2. Aşama: sık kullanılan saldırıları azaltma
 
@@ -135,7 +135,7 @@ Yol haritası 'nın 2. aşaması, kimlik bilgilerinin hırsızlık ve kötüye k
 * Yönetim amaçlarıyla kullanılan hesaplarınızın olduğundan emin olun:
 
   * Kendisine bağlı çalışma e-posta adresleri var
-  * Azure Multi-Factor Authentication kaydoldu veya şirket içi MFA 'yı kullanın
+  * Azure AD Multi-Factor Authentication kaydoldu veya şirket içi MFA 'yı kullanma
 * Kullanıcılara yönetim erişimi için iş gerekçesini sorun.
 * İhtiyaç duymayacak kişiler ve hizmetler için yönetici erişimini kaldırın.
 
@@ -240,7 +240,7 @@ Kuruluşunuz, tüm çalışanların olağan iş işlemlerini ayrıcalıksız kul
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Tüm kullanıcılar için daha güçlü kimlik doğrulaması dağıtımına devam et
 
-Yüksek oranda sunulan kullanıcıların, Azure MFA veya Windows Hello gibi modern, güçlü kimlik doğrulamasına sahip olmasını gerektirir. Yüksek düzeyde açığa çıkarılan kullanıcıların örnekleri şunlardır:
+Yüksek oranda kullanıma sunulan kullanıcıların Azure AD MFA veya Windows Hello gibi modern, güçlü kimlik doğrulamasına sahip olmasını gerektirir. Yüksek düzeyde açığa çıkarılan kullanıcıların örnekleri şunlardır:
 
 * C paketi yöneticileri
 * Üst düzey yöneticiler
@@ -359,7 +359,7 @@ Yol haritasının 4. aşaması altı ayda ve daha fazla uygulanmalıdır. Günü
 Ayrıcalıklı erişimin güvenliğini sağlamak, iş varlıklarınız için güvenlik hakkı sağlamak açısından önemlidir. Bununla birlikte, sürekli güvenlik kesintileri sağlayan bir bütün güvenlik programının parçası olmalıdır. Bu program şöyle bir öğe içermelidir:
 
 * İlke
-* İşlemler
+* Operations
 * Bilgi güvenliği
 * Sunucular
 * Uygulamalar

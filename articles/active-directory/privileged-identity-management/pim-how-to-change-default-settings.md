@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 391d4d6cb925eec0ea7be19eb6fa6849aa38985e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369752"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835246"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rol ayarlarını yapılandırma
 
@@ -30,7 +30,7 @@ Ayrıcalıklı bir rol yöneticisi, uygun rol atamasını etkinleştiren bir kul
 2019 Kasım 'Dan başlayarak Privileged Identity Management Azure AD rolleri bölümü, Azure Kaynak rolleri deneyimleriyle eşleşen yeni bir sürüme güncelleştiriliyor. Bu, ek özellikleri [ve var olan API üzerinde yapılan değişiklikleri](azure-ad-roles-features.md#api-changes)de oluşturur. Yeni sürüm kullanıma sunulurken, bu makalede izlediğiniz yordamlar Şu anda sahip olduğunuz Privileged Identity Management sürümüne bağlıdır. Hangi Privileged Identity Management sürümünü istediğinizi öğrenmek için bu bölümdeki adımları izleyin. Privileged Identity Management Sürümünüzü öğrendikten sonra bu makaledeki sürümle eşleşen yordamları seçebilirsiniz.
 
 1. [Ayrıcalıklı rol yöneticisi](../roles/permissions-reference.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
-1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
+1. **Azure AD Privileged Identity Management** açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
   [![Azure AD > Privileged Identity Management seçin.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
@@ -44,7 +44,7 @@ Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin
 
 1. [Ayrıcalıklı rol yöneticisi](../roles/permissions-reference.md#privileged-role-administrator) rolündeki bir kullanıcıyla [Azure Portal](https://portal.azure.com/) için oturum açın.
 gt
-1. **Azure AD Privileged Identity Management** &gt; **Azure AD rolleri** &gt; **rol ayarlarını**Azure AD Privileged Identity Management açın.
+1. **Azure AD Privileged Identity Management** &gt; **Azure AD rolleri** &gt; **rol ayarlarını** Azure AD Privileged Identity Management açın.
 
     ![Rol ayarları sayfası Azure AD rollerini listeleme](./media/pim-how-to-change-default-settings/role-settings.png)
 
@@ -81,7 +81,7 @@ Ve bu **etkin** atama süresi seçeneklerinden birini belirleyebilirsiniz:
 
 ## <a name="require-multi-factor-authentication"></a>Multi-Factor Authentication gerektir
 
-Privileged Identity Management, iki ayrı senaryo için isteğe bağlı Azure Multi-Factor Authentication zorlaması sağlar.
+Privileged Identity Management, iki ayrı senaryo için isteğe bağlı Azure AD Multi-Factor Authentication zorlaması sağlar.
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Etkin atama üzerinde Multi-Factor Authentication gerektir
 
@@ -91,9 +91,9 @@ Atamayı karşılayan yöneticinin bunları söyledikleri kim olduğundan emin o
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Etkinleştirme üzerinde Multi-Factor Authentication gerektir
 
-Bir rol için uygun olan kullanıcıların etkinleştirebilmeleri için Azure Multi-Factor Authentication kimin kullandığını kanıtlamasını zorunlu kılabilirsiniz. Multi-Factor Authentication, kullanıcının makul bir belirsizlik olduğunu söylediklerini sağlar. Bu seçeneğin zorunlu kılınması, Kullanıcı hesabının tehlikeye girdiği durumlarda kritik kaynakları korur.
+Bir rol için uygun olan kullanıcıların etkinleştirebilmeleri için Azure AD Multi-Factor Authentication kimin kullandığını kanıtlamasını zorunlu kılabilirsiniz. Multi-Factor Authentication, kullanıcının makul bir belirsizlik olduğunu söylediklerini sağlar. Bu seçeneğin zorunlu kılınması, Kullanıcı hesabının tehlikeye girdiği durumlarda kritik kaynakları korur.
 
-Etkinleştirmeden önce çok faktörlü kimlik doğrulaması gerektirmek için, **rol Düzenle ayarının**atama sekmesinde **etkinleştirme Multi-Factor Authentication gerektir** kutusunu işaretleyin.
+Etkinleştirmeden önce çok faktörlü kimlik doğrulaması gerektirmek için, **rol Düzenle ayarının** atama sekmesinde **etkinleştirme Multi-Factor Authentication gerektir** kutusunu işaretleyin.
 
 Daha fazla bilgi için bkz. [Multi-Factor Authentication ve Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -127,7 +127,7 @@ Birden çok onaylayan ayarlarsanız onay, bunlardan biri onaylar veya reddeder b
 
 Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure AD rolleri**' ni seçin.
 
@@ -135,7 +135,7 @@ Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin
 
     ![Azure AD rolleri-ayarlar](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
-1. **Rolleri**seçin.
+1. **Rolleri** seçin.
 
 1. Ayarlarını yapılandırmak istediğiniz rolü seçin.
 
@@ -151,7 +151,7 @@ Rolün süresi dolmadan önce etkin kalacak en uzun süreyi saat cinsinden ayarl
 
 Roller etkinleştirildiğinde yöneticilerin e-posta bildirimleri alıp almamayacağını belirtmek için **Bildirimler** anahtarını kullanın. Bu bildirim, yetkisiz veya ılyasal etkinleştirmeleri saptamak için yararlı olabilir.
 
-**Etkin**olarak ayarlandığında, bildirimlerin gönderileceği yer:
+**Etkin** olarak ayarlandığında, bildirimlerin gönderileceği yer:
 
 - Ayrıcalıklı rol yöneticisi
 - Güvenlik yöneticisi
@@ -167,8 +167,8 @@ Uygun yöneticilerin rolünü etkinleştirdiklerinde bilet numarası içermesini
 
 Kullanıcıların rollerini etkinleştirebilmeleri için önce MFA ile kimliklerini doğrulamaları gerekip gerekmediğini belirtmek için **Multi-Factor Authentication** anahtarını kullanın. Her bir rolü etkinleştirdiklerinde değil, her oturum için kimliklerini yalnızca bir kez doğrulamalıdır. MFA 'yı etkinleştirdiğinizde göz önünde bulundurmanız gereken iki ipucu vardır:
 
-- Kendi e-posta adresleri (genellikle @outlook.com , ancak her zaman değil) Için Microsoft hesabı olan kullanıcılar Azure Multi-Factor Authentication için kayıt olamaz. Kullanıcılara Microsoft hesaplarıyla roller atamak istiyorsanız, bu rol için kalıcı Yöneticiler yapmanız veya Multi-Factor Authentication 'ı devre dışı bırakmanız gerekir.
-- Azure AD ve Microsoft 365 için yüksek ayrıcalıklı roller için Azure Multi-Factor Authentication 'yi devre dışı bırakamezsiniz. Bu güvenlik özelliği aşağıdaki rollerin korunmasına yardımcı olur:  
+- Kendi e-posta adresleri (genellikle @outlook.com , ancak her zaman değil) Için Microsoft hesabı olan kullanıcılar, Azure AD Multi-Factor Authentication için kayıt yaptıramaz. Kullanıcılara Microsoft hesaplarıyla roller atamak istiyorsanız, bu rol için kalıcı Yöneticiler yapmanız veya Multi-Factor Authentication 'ı devre dışı bırakmanız gerekir.
+- Azure AD ve Microsoft 365 için yüksek ayrıcalıklı roller için Azure AD Multi-Factor Authentication devre dışı bırakılamaz. Bu güvenlik özelliği aşağıdaki rollerin korunmasına yardımcı olur:  
   
   - Azure Information Protection Yöneticisi
   - Faturalama yöneticisi
@@ -194,7 +194,7 @@ Daha fazla bilgi için bkz. [Multi-Factor Authentication ve Privileged Identity 
 
 Bir rolü etkinleştirmek için gerekli onayı atamak istiyorsanız, bu adımları izleyin.
 
-1. **Onay gerektir** anahtarını **etkin**olarak ayarlayın. Bölme, onaylayanları seçmek için seçeneklerle birlikte genişletilir.
+1. **Onay gerektir** anahtarını **etkin** olarak ayarlayın. Bölme, onaylayanları seçmek için seçeneklerle birlikte genişletilir.
 
     !["Onay ıste" anahtarını "etkinleştir" seçiliyken gösteren ekran görüntüsü.](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 

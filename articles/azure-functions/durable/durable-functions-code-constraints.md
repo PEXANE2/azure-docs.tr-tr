@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee1561e85e769bf8a82ce96d5ce010eece92a0fa
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392625"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833104"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator işlev kodu kısıtlamaları
 
@@ -30,8 +30,8 @@ Aşağıdaki tabloda, oluşmaması gereken API 'Ler örnekleri gösterilmektedir
 
 | API kategorisi | Nedeni | Geçici çözüm |
 | ------------ | ------ | ---------- |
-| Tarihler ve saatler  | Döndürülen değer her yeniden yürütme için farklı olduğundan geçerli tarih veya saati döndüren API 'Ler belirleyici değildir. | .NET ' te API 'yi `CurrentUtcDateTime` , JavaScript 'teki API 'yi veya Python 'da API 'yi kullanarak yeniden `currentUtcDateTime` `current_utc_datetime` oynatma için güvenli bir şekilde kullanın. |
-| GUID 'Ler ve UUID 'ler  | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele bir GUID veya UUID döndüren API 'Ler belirleyici değildir. | `NewGuid` `newGuid` Rastgele GUID 'leri güvenle oluşturmak için .NET veya JavaScript içinde kullanın. |
+| Tarihler ve saatler  | Döndürülen değer her yeniden yürütme için farklı olduğundan geçerli tarih veya saati döndüren API 'Ler belirleyici değildir. | .NET 'teki [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) özelliğini, `currentUtcDateTime` JavaScript 'teki API 'yi veya `current_utc_datetime` Python 'da API 'yi kullanarak yeniden yürütme için güvenli olan bir API 'yi kullanın. |
+| GUID 'Ler ve UUID 'ler  | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele bir GUID veya UUID döndüren API 'Ler belirleyici değildir. | Rastgele GUID 'Leri güvenle oluşturmak için .NET veya JavaScript 'te [NEWGUID](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) kullanın `newGuid` . |
 | Rastgele sayılar | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele sayılar döndüren API 'Ler belirleyici değildir. | Bir düzenleme için rastgele sayılar döndürmek üzere bir etkinlik işlevi kullanın. Etkinlik işlevlerinin dönüş değerleri her zaman yeniden yürütme için güvenlidir. |
 | Bağlamalar | Giriş ve çıkış bağlamaları genellikle g/ç ve belirleyici olmayan bir şekilde yapılır. Orchestrator işlevinin [düzenleme istemcisi](durable-functions-bindings.md#orchestration-client) ve [varlık istemci](durable-functions-bindings.md#entity-client) bağlamaları bile doğrudan kullanılması gerekir. | İstemci veya etkinlik işlevleri içindeki giriş ve çıkış bağlamalarını kullanın. |
 | Ağ | Ağ çağrıları dış sistemler içerir ve belirleyici değildir. | Ağ çağrıları yapmak için etkinlik işlevlerini kullanın. Orchestrator işlevinizden bir HTTP çağrısı yapmanız gerekiyorsa, [DAYANıKLı HTTP API 'lerini](durable-functions-http-features.md#consuming-http-apis)de kullanabilirsiniz. |
@@ -57,7 +57,7 @@ Sürekli bir düzenleme, günler, aylar, yıllar [veya hatta önemli](durable-fu
 > [!NOTE]
 > Bu bölümde, dayanıklı görev çerçevesinin iç uygulama ayrıntıları açıklanmaktadır. Bu bilgileri bilmeden dayanıklı işlevleri kullanabilirsiniz. Yalnızca yeniden yürütme davranışını anlamanıza yardımcı olmak için tasarlanmıştır.
 
-Orchestrator işlevlerinde güvenle beklemeleri gereken görevler bazen *dayanıklı görevler* olarak adlandırılır. Dayanıklı görev çerçevesi bu görevleri oluşturur ve yönetir. .NET Orchestrator işlevlerinde **CallActivityAsync** , **WaitForExternalEvent** ve **CreateTimer** tarafından döndürülen görevler örnektir.
+Orchestrator işlevlerinde güvenle beklemeleri gereken görevler bazen *dayanıklı görevler* olarak adlandırılır. Dayanıklı görev çerçevesi bu görevleri oluşturur ve yönetir. .NET Orchestrator işlevlerinde **CallActivityAsync**, **WaitForExternalEvent** ve **CreateTimer** tarafından döndürülen görevler örnektir.
 
 Bu dayanıklı görevler, .NET 'teki bir nesne listesi tarafından dahili olarak yönetilir `TaskCompletionSource` . Yeniden yürütme sırasında, bu görevler Orchestrator Code Execution 'ın bir parçası olarak oluşturulur. Dağıtıcı karşılık gelen geçmiş olaylarını numaralandırdığından tamamlanırlar.
 

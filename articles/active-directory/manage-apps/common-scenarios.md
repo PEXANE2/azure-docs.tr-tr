@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9699f425b296f1c88162c78b8f86de74303747be
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658341"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835501"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD ile uygulama yönetimini merkezileştirme
 
@@ -62,7 +62,7 @@ Kimlik, güvenlik için linchpın 'dir. Bir kimlik tehlikeye atılırsa, çok ge
 
 |Özellik  |Açıklama| Öneri |
 |---------|---------| ---------|
-|Azure MFA|Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Azure MFA, yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur.| Kullanıcılarınız için [MFA 'Yı etkinleştirin](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) .  |
+|Azure AD MFA|Azure AD Multi-Factor Authentication (MFA), Microsoft 'un iki adımlı doğrulama çözümüdür. Yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, Azure AD MFA, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur.| Kullanıcılarınız için [MFA 'Yı etkinleştirin](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) .  |
 |Koşullu Erişim|Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz.| Müşterilerin kullandığı [güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md) ve [ortak ilkeleri](../conditional-access/concept-conditional-access-policy-common.md) gözden geçirin. | 
 |Kimlik Koruması|Kimlik koruması, Microsoft 'un kuruluşların konumlarından Azure AD, Microsoft hesaplarıyla tüketici alanı ve Xbox ile oyun oynarken kullanıcılarınızı koruduğu dersleri kullanır. Microsoft analizler 6.500.000.000.000 sinyalleri, müşterileri tespit etmek ve tehditlere karşı korumak için günde.|Hizmetimizin tarafından sunulan [varsayılan kimlik koruması ilkelerini](../identity-protection/concept-identity-protection-policies.md) etkinleştirin. | 
 

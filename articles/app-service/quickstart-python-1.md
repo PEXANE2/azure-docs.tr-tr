@@ -3,15 +3,15 @@ title: 'Hızlı başlangıç: Linux için Python uygulaması oluşturma'
 description: App Service bir Linux kapsayıcısına Python uygulaması dağıtarak Azure App Service kullanmaya başlayın.
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 8fa349d719f93c8efda14556280da9d9b438f630
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: dc4c67437d6cc6d5eea87bf414058a676d7cd8a4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579122"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833699"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Hızlı başlangıç: Linux için Azure App Service bir Python uygulaması oluşturma
 
@@ -100,7 +100,7 @@ cd python-docs-hello-django
 
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
 
-Şu komutu kullanarak kodu yerel klasörünüzde ( *Python-docs-Hello-World* ) dağıtın `az webapp up` :
+Şu komutu kullanarak kodu yerel klasörünüzde (*Python-docs-Hello-World*) dağıtın `az webapp up` :
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -108,7 +108,7 @@ az webapp up --sku F1 --name <app-name>
 
 - `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
 - `webapp`Azure CLI sürümünüz 2.0.80 veya üzeri olduğundan, komut tanınmazsa. Aksi takdirde, [en son sürümü yükler](/cli/azure/install-azure-cli).
-- `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin ( *geçerli karakterler `a-z` , `0-9` ve `-`* ). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
+- `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin (*geçerli karakterler `a-z` , `0-9` ve `-`*). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 - `--sku F1`Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
 - İsteğe bağlı olarak `--location <location-name>` `<location_name>` , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - "Uygulamanızın çalışma zamanı yığınını otomatik olarak algılamamız" hatasını görürseniz, bu komutu *requirements.txt* dosyasını içeren *Python-docs-Hello-World* klasöründe (Flask) veya *Python-docs-Hello-Docgo* klasöründe (docgo) çalıştırdığınızdan emin olun. (Bkz. [az WebApp up (GitHub) ile otomatik algılama sorunlarını giderme](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
@@ -261,7 +261,7 @@ Günlük akışını istediğiniz zaman durdurmak için terminalde **CTRL** + **
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
-Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri** ' ni arayıp seçin.
+Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri**' ni arayıp seçin.
 
 ![Azure portal uygulama hizmetleri 'ne gidin](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 

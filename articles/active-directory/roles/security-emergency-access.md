@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378763"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834447"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
 
@@ -33,7 +33,7 @@ Bu makalede, Azure AD 'de acil durum erişim hesaplarının yönetilmesine yöne
 Bir kuruluşun bir acil durum erişim hesabını aşağıdaki durumlarda kullanması gerekebilir:
 
 - Kullanıcı hesapları federe ve bir hücre ağ sonu veya kimlik sağlayıcı kesintisi nedeniyle Federasyon Şu anda kullanılamıyor. Örneğin, ortamınızdaki kimlik sağlayıcısı ana bilgisayarı kapalıysa, Azure AD kimlik sağlayıcısına yeniden yönlendirirse kullanıcılar oturum açamıyor olabilir.
-- Yöneticiler Azure Multi-Factor Authentication üzerinden kaydedilir ve tek tek cihazları kullanılamaz veya hizmet kullanılamaz. Kullanıcılar bir rolü etkinleştirmek için Multi-Factor Authentication tamamlayamayabilir. Örneğin, bir hücre ağ kesintisi, cihazları için kaydoldukları tek iki kimlik doğrulama mekanizması olan telefon çağrılarını veya alma metin iletilerini yanıtlamayı engellemektedir.
+- Yöneticiler Azure AD Multi-Factor Authentication üzerinden kaydedilir ve tek tek cihazları kullanılamaz veya hizmet kullanılamaz. Kullanıcılar bir rolü etkinleştirmek için Multi-Factor Authentication tamamlayamayabilir. Örneğin, bir hücre ağ kesintisi, cihazları için kaydoldukları tek iki kimlik doğrulama mekanizması olan telefon çağrılarını veya alma metin iletilerini yanıtlamayı engellemektedir.
 - En son genel yönetici erişimine sahip kişi kuruluştan ayrıldı. Azure AD, son genel yönetici hesabının silinmesini önler, ancak hesabın şirket içinde silinmesini veya devre dışı bırakılmasını engellemez. Her iki durum da kuruluşun hesabı kurtaramıyor olabilir.
 - Bir mobil telefonun veya başka ağların kullanılamadığı, doğal olağanüstü durum acil durum acil durumları. 
 
@@ -44,7 +44,7 @@ Bir kuruluşun bir acil durum erişim hesabını aşağıdaki durumlarda kullanm
 Bu hesapları yapılandırırken, aşağıdaki gereksinimlerin karşılanması gerekir:
 
 - Acil durum erişim hesapları, kuruluştaki herhangi bir kullanıcıyla ilişkilendirilmemelidir. Hesaplarınızın çalışanların sağladığı herhangi bir cep telefonlarıyla, bireysel çalışanlarla veya çalışanlara özgü diğer kimlik bilgileriyle birlikte seyahat eden donanım belirteçlerine bağlı olmadığından emin olun. Bu önlem, kimlik bilgileri gerektiğinde tek bir çalışanın ulaşılamaz olduğu örnekleri ele alır. Kayıtlı tüm cihazların Azure AD ile iletişim kurmak için birden çok yolu olan bilinen, güvenli bir konumda tutulduğundan emin olmanız önemlidir.
-- Bir acil durum erişim hesabı için kullanılan kimlik doğrulama mekanizması, diğer acil erişim hesapları da dahil olmak üzere diğer yönetim hesaplarınız tarafından kullanılan verilerden farklı olmalıdır.  Örneğin, normal yönetici oturum açma işlemi şirket içi MFA aracılığıyla kullanılıyorsa, Azure MFA farklı bir mekanizmadır.  Ancak, Azure MFA, yönetim hesaplarınız için kimlik doğrulamanın birincil parçasıysa, özel denetimler aracılığıyla bir üçüncü taraf MFA sağlayıcısıyla koşullu erişim kullanma gibi, bunlar için farklı bir yaklaşım düşünün.
+- Bir acil durum erişim hesabı için kullanılan kimlik doğrulama mekanizması, diğer acil erişim hesapları da dahil olmak üzere diğer yönetim hesaplarınız tarafından kullanılan verilerden farklı olmalıdır.  Örneğin, normal yönetici oturum açma işlemi şirket içi MFA aracılığıyla kullanılıyorsa, Azure AD MFA farklı bir mekanizma olacaktır.  Ancak, Azure AD MFA, yönetim hesaplarınız için kimlik doğrulamanın birincil parçasıysa, özel denetimler aracılığıyla bir üçüncü taraf MFA sağlayıcısıyla koşullu erişim kullanma gibi, bunlar için farklı bir yaklaşım düşünün.
 - Cihazın veya kimlik bilgisinin süresi dolmaz veya kullanım olmaması nedeniyle otomatik temizleme kapsamında olmaması gerekir.  
 - Acil durum erişim hesaplarınız için genel yönetici rolü atamasını kalıcı hale getirin. 
 
@@ -79,7 +79,7 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Kesme camı hesaplarının nesne kimliklerini alma
 
 1. Kullanıcı Yöneticisi rolüne atanan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**  >  **kullanıcıları** ' nı seçin.
+1. **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
 1. Kesme camı hesabını arayın ve kullanıcının adını seçin.
 1. Daha sonra kullanabilmeniz için nesne KIMLIĞI özniteliğini kopyalayın ve kaydedin.
 1. İkinci kesme camı hesabı için önceki adımları tekrarlayın.
@@ -87,11 +87,11 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 ### <a name="create-an-alert-rule"></a>Uyarı kuralı oluşturma
 
 1. Azure Izleyici 'de Izleme katılımcısı rolüne atanan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Tüm hizmetler** ' i seçin, ara ' ya "Log Analytics" yazın ve **Log Analytics çalışma alanları** ' nı seçin.
+1. **Tüm hizmetler**' i seçin, ara ' ya "Log Analytics" yazın ve **Log Analytics çalışma alanları**' nı seçin.
 1. Bir çalışma alanı seçin.
-1. Çalışma alanınızda **Uyarılar**  >  **Yeni uyarı kuralı** ' nı seçin.
+1. Çalışma alanınızda **Uyarılar**  >  **Yeni uyarı kuralı**' nı seçin.
     1. **Kaynak** altında, aboneliğin uyarı kuralını ilişkilendirmek istediğiniz bir tane olduğunu doğrulayın.
-    1. **Koşul** altında **Ekle** ' yi seçin.
+    1. **Koşul** altında **Ekle**' yi seçin.
     1. **Sinyal adı** altında **özel günlük araması** ' nı seçin.
     1. **Arama sorgusu** altında, iki kesme camı hesabının nesne kimliklerini ekleyerek aşağıdaki sorguyu girin.
         > [!NOTE]
@@ -105,33 +105,33 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
         - İşleç: büyüktür
         - Eşik değeri: 0
 
-    1. **Temelinde değerlendirilen** ' ın altında, sorgunun ne kadar süre içinde çalışmasını Istediğinize ilişkin **süreyi (dakika cinsinden)** ve sorgunun ne sıklıkta çalıştırılmasını istediğinizi gösteren **sıklığı (dakika cinsinden** ) seçin. Sıklık, dönemden küçük veya bu değere eşit olmalıdır.
+    1. **Temelinde değerlendirilen**' ın altında, sorgunun ne kadar süre içinde çalışmasını Istediğinize ilişkin **süreyi (dakika cinsinden)** ve sorgunun ne sıklıkta çalıştırılmasını istediğinizi gösteren **sıklığı (dakika cinsinden** ) seçin. Sıklık, dönemden küçük veya bu değere eşit olmalıdır.
 
         ![Uyarı mantığı](./media/security-emergency-access/alert-image2.png)
 
-    1. **Bitti** ’yi seçin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
+    1. **Bitti**'yi seçin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
 1. Uyarı tarafından bildirilecek Kullanıcı bir eylem grubu seçin. Bir tane oluşturmak isterseniz, bkz. [eylem grubu oluşturma](#create-an-action-group).
 1. Eylem grubunun üyelerine gönderilen e-posta bildirimini özelleştirmek için, **eylemleri Özelleştir** altında Eylemler ' i seçin.
-1. **Uyarı ayrıntıları** ' nın altında, uyarı kuralı adını belirtin ve isteğe bağlı bir açıklama ekleyin.
+1. **Uyarı ayrıntıları**' nın altında, uyarı kuralı adını belirtin ve isteğe bağlı bir açıklama ekleyin.
 1. Etkinliğin **önem derecesi düzeyini** ayarlayın. Bunu **kritik (sev 0)** olarak ayarlamanızı öneririz.
 1. **Oluşturma sonrasında kuralı etkinleştir** altında, **Evet** olarak ayarlayın.
-1. Uyarıları bir süredir devre dışı bırakmak için **uyarıları bastır** onay kutusunu seçin ve uyarı vermeden önce bekleme süresini girip **Kaydet** ' i seçin.
-1. **Uyarı kuralı oluştur** ’a tıklayın.
+1. Uyarıları bir süredir devre dışı bırakmak için **uyarıları bastır** onay kutusunu seçin ve uyarı vermeden önce bekleme süresini girip **Kaydet**' i seçin.
+1. **Uyarı kuralı oluştur**’a tıklayın.
 
 ### <a name="create-an-action-group"></a>Bir eylem grubu oluşturun
 
-1. **Eylem grubu oluştur** ' u seçin.
+1. **Eylem grubu oluştur**' u seçin.
 
     ![bildirim eylemleri için bir eylem grubu oluşturma](./media/security-emergency-access/action-group-image3.png)
 
 1. Eylem grubu adını ve kısa bir ad girin.
 1. Aboneliği ve kaynak grubunu doğrulayın.
-1. Eylem türü altında **e-posta/SMS/Push/Voice** ' ı seçin.
+1. Eylem türü altında **e-posta/SMS/Push/Voice**' ı seçin.
 1. **Genel yönetici bildirimi** gibi bir eylem adı girin.
 1. **Eylem türünü** **e-posta/SMS/Push/Voice** olarak seçin.
 1. Yapılandırmak istediğiniz bildirim yöntemlerini seçmek için **Ayrıntıları Düzenle** ' yi seçin ve gerekli iletişim bilgilerini girin ve ardından **Tamam** ' ı seçerek ayrıntıları kaydedin.
 1. Tetiklemek istediğiniz herhangi bir ek eylem ekleyin.
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 
 ## <a name="validate-accounts-regularly"></a>Hesapları düzenli olarak doğrula
 

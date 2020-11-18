@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014911"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833801"
 ---
 # <a name="authentication-and-user-permissions"></a>Kimlik doğrulaması ve kullanıcı izinleri
 
@@ -32,7 +32,7 @@ Excel ve Power BI Desktop gibi istemci uygulamaları ve Visual Studio için SSMS
 
 Kullandığınız istemci uygulamasına veya araca bağlı olarak, kimlik doğrulama türü ve oturum açma farklı olabilir. Her uygulama, Azure Analysis Services gibi bulut hizmetlerine bağlanmak için farklı özellikleri destekleyebilir.
 
-Power BI Desktop, Visual Studio ve SSMS desteği, Azure Multi-Factor Authentication (MFA) de destekleyen etkileşimli bir yöntem olan evrensel kimlik doğrulaması Active Directory. Azure MFA, basit bir oturum açma işlemi sağlarken verilere ve uygulamalara erişimi korumaya yardımcı olur. Çeşitli doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi) güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir. **Evrensel kimlik doğrulaması önerilir**.
+Power BI Desktop, Visual Studio ve SSMS desteği, Azure AD Multi-Factor Authentication (MFA) de destekleyen etkileşimli bir yöntem olan evrensel kimlik doğrulaması Active Directory. Azure AD MFA, basit bir oturum açma işlemi sağlarken verilere ve uygulamalara erişimi korumaya yardımcı olur. Çeşitli doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi) güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir. **Evrensel kimlik doğrulaması önerilir**.
 
 Azure 'da bir Windows hesabı kullanarak oturum açıyorsanız ve evrensel kimlik doğrulaması seçilmemiş ya da kullanılabilir (Excel), [Active Directory Federasyon Hizmetleri (AD FS) (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) gerekir. Federasyon ile Azure AD ve Microsoft 365 kullanıcıların kimliği, şirket içi kimlik bilgileri kullanılarak doğrulanır ve Azure kaynaklarına erişebilir.
 
@@ -44,7 +44,7 @@ Azure Analysis Services sunucular, Windows kimlik doğrulaması, Active Director
 
 *  Azure 'a kiracı olarak davet edilen Azure B2B Konuk kullanıcılarını destekler. Bir sunucuya bağlanırken, konuk kullanıcıların sunucuya bağlanırken Active Directory evrensel kimlik doğrulaması ' nı seçmeniz gerekir.
 
-*  Multi-Factor Authentication (MFA) destekler. Azure MFA; telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi ile veri ve uygulamalara erişimi korumaya yardımcı olur. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
+*  Multi-Factor Authentication (MFA) destekler. Azure AD MFA; telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi ile veri ve uygulamalara erişimi korumaya yardımcı olur. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
 
 ### <a name="visual-studio"></a>Visual Studio
 
