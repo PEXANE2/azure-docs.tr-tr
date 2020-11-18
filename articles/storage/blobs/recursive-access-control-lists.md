@@ -9,18 +9,18 @@ ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff86b95f9d6a02c9ea24837b782ce729cdcacded
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2ab554f45de30bb676d2933a4a1268b6831ae4f5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577150"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659929"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'Ler) yinelemeli olarak ayarlama
 
 ACL devralma, bir üst dizin altında oluşturulan yeni alt öğeler için zaten kullanılabilir. Ayrıca, bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğeleri için de, ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz.
 
-[Kitaplıklar](#libraries)  |  [Örnekler](#code-samples)  |  [En iyi uygulamalar](#best-practice-guidelines)  |  [Geri bildirimde](#provide-feedback) bulunun
+[Kitaplıklar](#libraries)  |  [Örnekler](#code-samples)  |  [En iyi uygulamalar](#best-practice-guidelines)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -1152,12 +1152,6 @@ Gecikme süresini azaltmak için, özyinelemeli ACL işlemini depolama hesabın�
 #### <a name="acl-limits"></a>ACL sınırları
 
 Bir dizin veya dosyaya uygulayabileceğiniz en fazla ACL sayısı 32 erişim ACL 'Lerine ve 32 varsayılan ACL 'Lerine sahiptir. Daha fazla bilgi için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)bölümüne bakın.
-
-<a id="provide-feedback"></a>
-
-### <a name="provide-feedback-or-report-issues"></a>Geri bildirim veya rapor sorunları sağlama
-
-Görüşlerinizi verebilir veya hakkında bir sorun bildirebilirsiniz  [recursiveACLfeedback@microsoft.com](mailto:recursiveACLfeedback@microsoft.com) .
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

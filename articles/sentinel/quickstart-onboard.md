@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: b33f3e58f82d52e77437c29f7e5219926b2578c3
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 21e0cfd56a37304d1ec333f8713894504282541f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106986"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660670"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanıma alma
 
@@ -32,7 +32,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
 - Etkin Azure aboneliği, yoksa, başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- Log Analytics çalışma alanı. [Log Analytics çalışma alanı oluşturmayı](../log-analytics/log-analytics-quick-create-workspace.md)öğrenin. Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../azure-monitor/platform/design-logs-deployment.md).
+- Log Analytics çalışma alanı. [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin. Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../azure-monitor/platform/design-logs-deployment.md).
 
 - Azure Sentinel 'i etkinleştirmek için, Azure Sentinel çalışma alanının bulunduğu abonelik için katkıda bulunan izinlerinizin olması gerekir. 
 - Azure Sentinel 'i kullanmak için, çalışma alanının ait olduğu kaynak grubunda katkıda bulunan ya da okuyucu izinlerinizin olması gerekir.
@@ -47,7 +47,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
     | Çalışma alanı Coğrafya | Azure Sentinel-üretilen veri Coğrafya |
     | --- | --- |
-    | Amerika Birleşik Devletleri<br>Hindistan<br>Brezilya<br>Afrika<br>Güney Kore | Amerika Birleşik Devletleri |
+    | Birleşik Devletler<br>Hindistan<br>Brezilya<br>Afrika<br>Güney Kore | Birleşik Devletler |
     | Avrupa<br>Fransa<br>İsviçre | Avrupa |
     | Avustralya | Avustralya |
     | Birleşik Krallık | Birleşik Krallık |
@@ -57,13 +57,13 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel 'i etkinleştirme <a name="enable"></a>
 
-1. Azure Portal’da oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
+1. Azure portalında oturum açın. Azure Sentinel 'in oluşturulduğu aboneliğin seçildiğinden emin olun.
 
 1. **Azure Sentinel**' i arayıp seçin.
 
    ![Hizmet arama](./media/quickstart-onboard/search-product.png)
 
-1. **Ekle**’yi seçin.
+1. **Ekle**'yi seçin.
 
 1. Kullanmak istediğiniz çalışma alanını seçin veya yeni bir tane oluşturun. Azure Sentinel 'i birden fazla çalışma alanında çalıştırabilirsiniz, ancak veriler tek bir çalışma alanına yalıtılmış olur.
 

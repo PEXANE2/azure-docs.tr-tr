@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3be01f6d8e1fb1f6ba541f8d1cb0c92d2a43b0da
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073113"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661044"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>VPN ağ geçitleri için paket yakalamayı yapılandırma
 
@@ -318,7 +318,7 @@ Aşağıdaki JSON ve bir JSON şeması örnekleri her bir özelliğin açıklama
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>PowerShell kullanarak paket yakalamayı ayarlama
 
-Aşağıdaki örneklerde, paket yakalamalarını başlatan ve durduran PowerShell komutları gösterilmektedir. Parametre seçenekleri hakkında daha fazla bilgi için bkz. [Start-AzVirtualnetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+Aşağıdaki örneklerde, paket yakalamalarını başlatan ve durduran PowerShell komutları gösterilmektedir. Parametre seçenekleri hakkında daha fazla bilgi için bkz. [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı Başlat
 
@@ -354,7 +354,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - Önerilen minimum paket yakalama süresi 600 saniyedir. Yoldaki birden çok bileşen arasındaki eşitleme sorunları nedeniyle, daha kısa bir paket yakalama, verilerin tamamını sağlamayabilir.
 - Paket yakalama veri dosyaları PCAP biçiminde oluşturulur. PCAP dosyalarını açmak için Wireshark veya diğer yaygın olarak kullanılabilir uygulamaları kullanın.
 - Paket yakalamaları, ilke tabanlı ağ geçitlerinde desteklenmez.
-- `SASurl`Parametre doğru yapılandırılmamışsa, Izleme depolama hatalarıyla başarısız olabilir. Bir parametrenin doğru şekilde nasıl üretiladığının örnekleri için `SASurl` bkz. [stop-AzVirtualNetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture).
+- `SASurl`Parametre doğru yapılandırılmamışsa, Izleme depolama hatalarıyla başarısız olabilir. Bir parametrenin doğru şekilde nasıl üretiladığının örnekleri için `SASurl` bkz. [stop-AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture).
 
 
 

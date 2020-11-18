@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e0fc50647e926ea919f70b888f3efc303713fe1e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 43b28c9f2efc8ffe17e0bf21b1c395d64e89b6a8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631198"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660024"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
 
@@ -26,8 +26,8 @@ Dağıtım şunları sunar:
 * Azure Spring, şirket içi veri merkezlerinde ve/veya diğer sanal ağlardaki Azure hizmetlerindeki sistemlerle bulut etkileşimi
 * Azure Spring Cloud için gelen ve giden ağ iletişimlerini denetlemek için müşterilerin güçleme
 
-## <a name="prerequisites"></a>Ön koşullar
-`Microsoft.AppPlatform` [Azure Portal kaynak sağlayıcısını kaydetme](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) yönergelerine göre veya şu az CLI komutunu çalıştırarak Azure yay bulut kaynak sağlayıcısını kaydetmeniz gerekir:
+## <a name="prerequisites"></a>Önkoşullar
+Azure portal veya şu az CLı komutunu çalıştırarak, [kaynak sağlayıcısını kaydetme](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) yönergelerine göre *Microsoft. Appplatform* ve *Microsoft. Containerservice* Azure Spring Cloud kaynak sağlayıcısı 'nı kaydetmeniz gerekir:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
@@ -35,21 +35,21 @@ az provider register --namespace Microsoft.AppPlatform
 ## <a name="virtual-network-requirements"></a>Sanal ağ gereksinimleri
 Azure yay bulut hizmeti örneğinizi dağıttığınız sanal ağın aşağıdaki gereksinimleri karşılaması gerekir:
 
-* **Konum** : sanal ağın Azure yay bulut hizmeti örneğiyle aynı konumda bulunması gerekir.
-* **Abonelik** : sanal ağın Azure yay bulut hizmeti örneğiyle aynı abonelikte olması gerekir.
-* **Alt ağlar** : sanal ağ, bir Azure yay bulut hizmeti örneğine adanmış iki alt ağ içermelidir: 
+* **Konum**: sanal ağın Azure yay bulut hizmeti örneğiyle aynı konumda bulunması gerekir.
+* **Abonelik**: sanal ağın Azure yay bulut hizmeti örneğiyle aynı abonelikte olması gerekir.
+* **Alt ağlar**: sanal ağ, bir Azure yay bulut hizmeti örneğine adanmış iki alt ağ içermelidir: 
     * Biri hizmet çalışma zamanı için
     * Bir tane, Spring Boot mikro hizmet uygulamalarınız için. 
     * Bu alt ağlar ve bir Azure yay bulut hizmeti örneği arasında bire bir ilişki vardır. Dağıttığınız her bir hizmet örneği için yeni bir alt ağ kullanmanız gerekir ve her alt ağ yalnızca tek bir hizmet örneği içerebilir.
-* **Adres alanı** : hizmet çalışma zamanı alt ağı için en fazla/28 blok ve diğer CIDR, Spring Boot mikro hizmet uygulamaları alt ağı için/24 ' e kadar bir CIDR bloğu.
-* **Yol tablosu** : alt ağlarda ilişkili mevcut bir rota tablosu olmalıdır.
+* **Adres alanı**: hizmet çalışma zamanı alt ağı için en fazla/28 blok ve diğer CIDR, Spring Boot mikro hizmet uygulamaları alt ağı için/24 ' e kadar bir CIDR bloğu.
+* **Yol tablosu**: alt ağlarda ilişkili mevcut bir rota tablosu olmalıdır.
 
 Aşağıdaki yordamlarda, sanal ağın Azure Spring Cloud örneğini içerecek şekilde kurulumu açıklanır.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten varsa, 1. Adım 2 ve 3 ' ü atlayın. Sanal ağ için alt ağları hazırlamak üzere 4. adımdan başlayabilirsiniz.
 
-1. Azure portalı menüsünden **Kaynak oluştur** 'u seçin. Azure Marketi ' nden **ağ**  >  **sanal ağı** ' nı seçin.
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Azure Marketi ' nden **ağ**  >  **sanal ağı**' nı seçin.
 
 1. **Sanal ağ oluştur** iletişim kutusunda aşağıdaki bilgileri girin veya seçin:
 
@@ -60,15 +60,15 @@ Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten vars
     |Ad             |*Azure-Spring-Cloud-VNET* girin                   |
     |Konum         |**Doğu ABD** seçin                                |
 
-1. Ileri ' ye tıklayın **: IP adresleri >** . 
+1. Ileri ' ye tıklayın **: IP adresleri >**. 
  
 1. IPv4 adres alanı için 10.1.0.0/16 girin.
 
-1. Alt ağ **Ekle** ' yi seçin ve alt ağ **adı** için 10.1.0.0/24 alt ağ **adres aralığı** için *hizmet-çalışma zamanı-alt ağını* girin. Daha sonra **Ekle** 'ye tıklayın.
+1. Alt ağ **Ekle**' yi seçin ve alt ağ **adı** için 10.1.0.0/24 alt ağ **adres aralığı** için *hizmet-çalışma zamanı-alt ağını* girin. Daha sonra **Ekle**'ye tıklayın.
 
-1. **Alt ağ ekle** ' yi tekrar seçin, sonra **alt ağ adı** ve **alt ağ adres aralığı** (örneğin, *uygulamalar-alt ağ* ve 10.1.1.0/24) girin.  **Ekle** 'ye tıklayın.
+1. **Alt ağ ekle** ' yi tekrar seçin, sonra **alt ağ adı** ve **alt ağ adres aralığı**(örneğin, *uygulamalar-alt ağ* ve 10.1.1.0/24) girin.  **Ekle**'ye tıklayın.
 
-1. **Gözden geçir ve oluştur** ’a tıklayın. Rest 'i varsayılan olarak bırakın ve **Oluştur** ' a tıklayın.
+1. **Gözden geçir ve oluştur**’a tıklayın. Rest 'i varsayılan olarak bırakın ve **Oluştur**' a tıklayın.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Sanal ağ için hizmet izni verme
 
@@ -85,7 +85,7 @@ Daha önce oluşturduğunuz sanal ağı *Azure-Spring-Cloud-VNET* ' i seçin.
     |Rol     |**Sahip** seçin                                  |
     |Şunu seçin:   |*Azure Spring Cloud kaynak sağlayıcısı* 'nı girin      |
 
-    Ardından *Azure yay bulut kaynak sağlayıcısı* ' nı seçin ve **Kaydet** ' e tıklayın.
+    Ardından *Azure yay bulut kaynak sağlayıcısı*' nı seçin ve **Kaydet**' e tıklayın.
 
     ![Azure Spring Cloud kaynak sağlayıcısı 'nı v-net 'e verme](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
 
@@ -108,30 +108,30 @@ az role assignment create \
 
 1. ' İ kullanarak Azure portal açın https://ms.portal.azure.com .
 
-1. Üst arama kutusundan **Azure yay bulutu** ' nı arayın ve sonuçtan **Azure yay bulutu** ' nı seçin.
+1. Üst arama kutusundan **Azure yay bulutu**' nı arayın ve sonuçtan **Azure yay bulutu** ' nı seçin.
 
-1. **Azure yay bulutu** sayfasında **+ Ekle** ' yi seçin.
+1. **Azure yay bulutu** sayfasında **+ Ekle**' yi seçin.
 
 1. Azure yay bulutu **Oluştur** sayfasında formu doldurun. 
 
 1. Sanal ağla aynı kaynak grubunu ve bölgeyi seçin.
 
-1. **Hizmet Ayrıntıları** altındaki **ad** için *Azure-Spring-Cloud-VNET* ' i seçin.
+1. **Hizmet Ayrıntıları** altındaki **ad** için *Azure-Spring-Cloud-VNET*' i seçin.
 
 1. **Ağ** sekmesini seçin ve aşağıdakileri seçin:
 
     |Ayar                                |Değer                                             |
     |---------------------------------------|--------------------------------------------------|
-    |Kendi sanal ağınıza dağıtın     |**Evet** ’i seçin                                    |
+    |Kendi sanal ağınıza dağıtın     |**Evet**’i seçin                                    |
     |Sanal ağ                        |*Azure-Spring-Cloud-VNET* seçin                  |
     |Hizmet çalışma zamanı alt ağı                 |*Hizmet-çalışma zamanı-alt ağ* seçin                   |
     |Spring Boot mikro hizmet uygulamaları alt ağı   |*Uygulamaları seçin-alt ağ*                              |
 
     ![Oluşturma Ağ sekmesi](./media/spring-cloud-v-net-injection/creation-blade-networking-tab.png)
 
-1. **Gözden geçir ve oluştur** ’a tıklayın.
+1. **Gözden geçir ve oluştur**’a tıklayın.
 
-1. Belirtimlerinizi doğrulayıp **Oluştur** ' a tıklayın.
+1. Belirtimlerinizi doğrulayıp **Oluştur**' a tıklayın.
 
 Dağıtımdan sonra, Azure yay bulut hizmeti örneği için ağ kaynaklarını barındırmak üzere aboneliğinizde iki ek kaynak grubu oluşturulur.  Aşağıdaki yeni kaynak gruplarını bulmak için **Home** ' a gidip üstteki menü öğelerinden **kaynak grupları** ' nı seçin.
 

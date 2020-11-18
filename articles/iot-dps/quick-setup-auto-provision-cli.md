@@ -8,24 +8,24 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 157bd0a0a40ce6a935d13bb10a84c814ba1018bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 611068fa020321be88be6e1d6da663266029c658
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330256"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660194"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile IoT Hub cihaz sağlama hizmetini ayarlama
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıç, bir IoT Hub 'ı ve bir IoT Hub cihaz sağlama hizmeti oluşturmak ve iki hizmeti birbirine bağlamak için Azure CLı kullanarak ayrıntıları sağlar. 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
 > Bu hızlı başlangıçta oluşturduğunuz IoT Hub ve sağlama hizmeti, DNS uç noktaları olarak herkese açık bir şekilde keşfedilir. Bu kaynaklar için kullanılan adları değiştirmeye karar verirseniz, hassas bilgiler kullanmaktan kaçının.
 >
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -43,7 +43,7 @@ az group create --name my-sample-resource-group --location westus
 >
 >
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) komutuyla bir IoT hub oluşturun.
 
@@ -88,14 +88,14 @@ echo $hubConnectionString
 > 
 > Yerel bir Windows/CMD kabuğu veya bir PowerShell ana bilgisayarı kullanıyorsanız, komutları bu ortam için doğru söz dizimini kullanacak şekilde değiştirin.
 >
-> Azure Cloud Shell kullanıyorsanız, kabuk penceresinin sol tarafındaki ortam açılır penceresinin **Bash**olduğunu kontrol edin.
+> Azure Cloud Shell kullanıyorsanız, kabuk penceresinin sol tarafındaki ortam açılır penceresinin **Bash** olduğunu kontrol edin.
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>IoT hub ile cihaz sağlama hizmetini bağlama
 
 IoT hub ile sağlama hizmetinizi bağlamak için [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) komutunu kullanın. 
 
-Aşağıdaki örnek, *westus* konumunda *My-Sample-hub* adlı bir IoT Hub 'ını ve *My-Sample-DPS*adlı bir cihaz sağlama hizmetini bağlar. Bu adları, daha önce seçtiğiniz benzersiz IoT Hub ve cihaz sağlama hizmeti adları için ticari olarak yapın. Bu komut, önceki adımda *Hubconnectionstring* değişkeninde depolanan IoT Hub 'ınız için bağlantı dizesini kullanır.
+Aşağıdaki örnek, *westus* konumunda *My-Sample-hub* adlı bir IoT Hub 'ını ve *My-Sample-DPS* adlı bir cihaz sağlama hizmetini bağlar. Bu adları, daha önce seçtiğiniz benzersiz IoT Hub ve cihaz sağlama hizmeti adları için ticari olarak yapın. Bu komut, önceki adımda *Hubconnectionstring* değişkeninde depolanan IoT Hub 'ınız için bağlantı dizesini kullanır.
 
 ```azurecli-interactive 
 az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus

@@ -11,16 +11,20 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 52cec861ba81a804081c4b879ab73333a3281e61
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360301"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659701"
 ---
 # <a name="quickstart-send-an-sms-message"></a>Hızlı başlangıç: SMS iletisi gönder
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> SMS iletileri Birleşik Devletler telefon numaralarına gönderilebilir ve buradan alınabilir. Diğer coğrafi bölgelerde bulunan telefon numaraları henüz Iletişim Hizmetleri SMS tarafından desteklenmemektedir.
+> Daha fazla bilgi için bkz. **[telefon ve SMS çözümünüzü planlayın](../../concepts/telephony-sms/plan-solution.md)**.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b2f25eec3a8a992e9fce0191700775968854a0c2
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 7dabf94c711972f9fe543edac0d7b95469fc2d35
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939167"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661112"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
 
@@ -26,14 +26,11 @@ Bu hızlı başlangıçta, Web uygulamanız için yüksek kullanılabilirlik sun
 
 Bu hızlı başlangıçta, bir Web uygulamasının iki örneğini oluşturacaksınız. Bunların her biri farklı bir Azure bölgesinde çalışmaktadır. [Uç nokta önceliğine](traffic-manager-routing-methods.md#priority-traffic-routing-method)göre bir Traffic Manager profili oluşturacaksınız. Profil, Kullanıcı trafiğini Web uygulamasını çalıştıran birincil siteye yönlendirir. Traffic Manager Web uygulamasını sürekli izler. Birincil site kullanılamıyorsa, yedekleme sitesine otomatik yük devretme sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Azure CLı yerel olarak veya Azure Cloud Shell yüklendi
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.28 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+- Bu makale, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 [az group create](https://docs.microsoft.com/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
@@ -96,7 +93,7 @@ az appservice plan create \
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>App Service planında bir Web uygulaması oluşturma
 *Doğu ABD* ve Azure bölgelerindeki *Batı Avrupa* App Service planlarında [az WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) kullanarak Web uygulaması için iki örnek oluşturun.
 
-Aşağıdaki örnekte, **<app1name_eastus>** ve **<app2name_westeurope **>benzersiz bir uygulama adıyla değiştirin ve **<** appspname_eastus>ve **<** appspname_westeurope>, önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin.
+Aşağıdaki örnekte, **<app1name_eastus>** ve **<app2name_westeurope**>benzersiz bir uygulama adıyla değiştirin ve **<** appspname_eastus>ve **<** appspname_westeurope>, önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin.
 
 ```azurecli-interactive
 
@@ -198,7 +195,7 @@ az network traffic-manager profile show \
 1. Web tarayıcısında, Web uygulamanızın varsayılan Web sitesini görüntülemek için Traffic Manager profilinizin DNS adını (*http://<* relativednsname *>. trafficmanager.net*) girin.
 
     > [!NOTE]
-    > Bu hızlı başlangıç senaryosunda, tüm istekler birincil uç noktaya yönlendirir. **Öncelik 1**olarak ayarlanır.
+    > Bu hızlı başlangıç senaryosunda, tüm istekler birincil uç noktaya yönlendirir. **Öncelik 1** olarak ayarlanır.
 2. Traffic Manager yük devretmeyi eylemde görüntülemek için [az Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)kullanarak birincil sitenizi devre dışı bırakın.
 
    ```azurecli-interactive

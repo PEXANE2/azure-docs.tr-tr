@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: bce381ba4916bc58d2c7acf8d69b323dbdf972aa
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64a4eb1b473c8944dadea4e1ee4323dfe4e9bcde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544792"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661129"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS kimlik doğrulaması kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma: PowerShell
 
@@ -77,7 +77,7 @@ Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MS
   * **Alt ağ adres aralığı: 192.168.1.0/24**
 * **Alt ağ adı: BackEnd**
   * **Alt ağ adres aralığı: 10.254.1.0/24**
-* **Alt ağ adı: GatewaySubnet**<br>VPN ağ geçidinin çalışması için Alt Ağ adı olarak *GatewaySubnet* 'in kullanılması zorunludur.
+* **Alt ağ adı: GatewaySubnet**<br>VPN ağ geçidinin çalışması için Alt Ağ adı olarak *GatewaySubnet*'in kullanılması zorunludur.
   * **Ağ Geçidi Alt Ağ adres aralığı: 192.168.200.0/24** 
 * **VPN istemcisi adres havuzu: 172.16.201.0/24**<br>Sanal ağa, bu Noktadan Siteye bağlantıyı kullanarak bağlanan VPN istemcileri, VPN istemci adresi havuzundan bir IP adresi alır.
 * **Abonelik:** Birden fazla aboneliğiniz varsa doğru aboneliği kullandığınızdan emin olun.
@@ -119,7 +119,7 @@ Aşağıdaki adımlar kaynak grubunda üç alt ağa sahip bir kaynak grubu ve bi
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
    ```
-2. Sanal ağ için alt ağ yapılandırmalarını oluşturup *FrontEnd* , *BackEnd* ve *GatewaySubnet* olarak adlandırın. Bu ön ekler bildirdiğiniz sanal adres alanının parçası olmalıdır.
+2. Sanal ağ için alt ağ yapılandırmalarını oluşturup *FrontEnd*, *BackEnd* ve *GatewaySubnet* olarak adlandırın. Bu ön ekler bildirdiğiniz sanal adres alanının parçası olmalıdır.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
@@ -152,7 +152,7 @@ Sanal ağ geçidini oluşturmadan ve yapılandırmadan önce, RADIUS sunucunuz k
 2. VPN ağ geçidini YARıÇAP üzerinde bir RADIUS istemcisi olarak yapılandırın. Bu RADIUS istemcisini eklerken, oluşturduğunuz sanal ağ GatewaySubnet 'i belirtin. 
 3. RADIUS sunucusu kurulduktan sonra, RADIUS sunucusunun IP adresini ve RADIUS istemcilerinin RADIUS sunucusuyla konuşmak için kullanması gereken paylaşılan gizliliği alın. RADIUS sunucusu Azure sanal ağı 'nda ise, RADIUS sunucusu sanal makinesinin CA IP 'sini kullanın.
 
-[Ağ Ilkesi sunucusu (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) MAKALESI, ad etki alanı kimlik doğrulaması Için BIR Windows RADIUS sunucusu (NPS) yapılandırma hakkında rehberlik sağlar.
+[Ağ Ilkesi sunucusu (NPS)](/windows-server/networking/technologies/nps/nps-top) MAKALESI, ad etki alanı kimlik doğrulaması Için BIR Windows RADIUS sunucusu (NPS) yapılandırma hakkında rehberlik sağlar.
 
 ## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> VPN Gateway oluşturma
 
@@ -252,7 +252,7 @@ VPN istemci yapılandırması, cihazların bir P2S bağlantısı üzerinden bir 
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Mac VPN istemcisinden Bağlan
 
-Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulup **Bağlan** ’a tıklayın.
+Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulup **Bağlan**’a tıklayın.
 
   ![Mac bağlantısı](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -292,4 +292,4 @@ Bu SSS, RADIUS kimlik doğrulaması kullanılarak P2S için geçerlidir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](https://docs.microsoft.com/azure/). Ağ ve sanal makineler hakkında daha fazla bilgi edinmek için, bkz. [Azure ve Linux VM ağına genel bakış](../virtual-machines/linux/azure-vm-network-overview.md).
+Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](../index.yml). Ağ ve sanal makineler hakkında daha fazla bilgi edinmek için, bkz. [Azure ve Linux VM ağına genel bakış](../virtual-machines/network-overview.md).

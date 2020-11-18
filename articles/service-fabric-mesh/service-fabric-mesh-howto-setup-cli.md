@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb059fe5dc4e64df104e026983e51f799236f916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4a7764cf1ede1cfaf53b1097034c5894660376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842810"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660687"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama
 Service Fabric ağ komut satırı arabirimi (CLı), kaynakları yerel olarak ve Azure Service Fabric ağı 'nda dağıtmak ve yönetmek için gereklidir. Nasıl ayarlanacağı aşağıda verilmiştir.
@@ -25,22 +25,23 @@ Kullanılabilecek üç tür CLı bulunur ve bunlar aşağıdaki tabloda özetlen
 
 Önizleme için, Azure Fabric Mesh CLI Azure CLI’nin uzantısı olarak yazılır. Azure Cloud Shell’de veya Azure CLI’nin yerel kurulumunda bunu yükleyebilirsiniz. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Bu makale, Azure CLı 'nin sürüm 2.0.67 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>Azure Service Fabric Kafesclı 'yi yükler
-1. Azure CLı sürüm 2.0.67 veya üstünü yüklemelisiniz. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’nin en son sürümünü yüklemek veya en son sürümüne yükseltmek için bkz. [Azure CLI yükleme][azure-cli-install].
 
-2. Aşağıdaki komutu kullanarak Azure Service Fabric kafes CLı uzantısı modülünü yükler. 
+Daha önce yapmadıysanız, aşağıdaki komutu kullanarak Azure Service Fabric ağı CLı uzantısı modülünü yükleyebilirsiniz: 
+ 
+```azurecli-interactive
+az extension add --name mesh
+```
 
-    ```azurecli-interactive
-    az extension add --name mesh
-    ```
+Zaten yüklüyse, mevcut Azure Service Fabric kafesi CLı modülünüzü aşağıdaki komutu kullanarak güncelleştirin:
 
-3. Aşağıdaki komutu kullanarak mevcut bir Azure Service Fabric kafesi CLı modülünü güncelleştirin.
-
-    ```azurecli-interactive
-    az extension update --name mesh
-    ```
+```azurecli-interactive
+az extension update --name mesh
+```
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLı 'yi (sfctl) yükler 
 

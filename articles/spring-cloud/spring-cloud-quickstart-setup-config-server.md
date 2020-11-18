@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 906aeaf87bfd71202064fae856a86985637985eb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337828"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659548"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Hızlı başlangıç: Azure yay bulut yapılandırması sunucusunu ayarlama
 
@@ -53,13 +53,23 @@ Azure Spring Cloud config Server, dağıtılmış sistemler için merkezi bir ya
 
 Aşağıdaki yordam, [Pılem ölçümleri örneğini](spring-cloud-quickstart-sample-app-introduction.md)dağıtmak için Azure Portal kullanarak yapılandırma sunucusunu ayarlar.
 
-1. Hizmete **genel bakış** sayfasına gidin ve **yapılandırma sunucusu** ' nu seçin.
+1. Hizmete **genel bakış** sayfasına gidin ve **yapılandırma sunucusu**' nu seçin.
 
 2. **Varsayılan depo** bölümünde, **URI** 'yi "" olarak ayarlayın https://github.com/Azure-Samples/piggymetrics-config .
 
-3. Yaptığınız değişiklikleri kaydetmek için **Apply** 'ı (Uygula) seçin.
+3. **Doğrula**' ya tıklayın.
 
-    ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Yapılandırma sunucusuna git](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+
+4. Doğrulama tamamlandığında, değişikliklerinizi kaydetmek için **Uygula** ' ya tıklayın.
+
+    ![Yapılandırma sunucusu doğrulanıyor](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+
+5. Yapılandırmanın güncelleştirilmesi birkaç dakika sürebilir.
+ 
+    ![Yapılandırma sunucusu güncelleştiriliyor](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+6. Yapılandırma tamamlandığında bir bildirim almanız gerekir.
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
@@ -77,20 +87,20 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 Aşağıdaki yordamda, yapılandırma sunucusu ayarlarının nasıl giderileceği açıklanmaktadır.
 
-1. Azure portal, hizmete **genel bakış** sayfasına gidin ve **Günlükler** ' i seçin. 
+1. Azure portal, hizmete **genel bakış** sayfasına gidin ve **Günlükler**' i seçin. 
 1. **Sorgular** ' ı seçin ve **"hata" veya "özel durum" koşullarını Içeren uygulama günlüklerini görüntüleyin**. 
-1. **Çalıştır** 'a tıklayın. 
+1. **Çalıştır**'a tıklayın. 
 1. Günlüklerde **Java. lang. illegalStateException** hatası bulursanız, bu, Spring Cloud Service 'in yapılandırma sunucusundan özellikleri bulamadığı anlamına gelir.
 
     [![ASC portalı çalıştırma sorgusu ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
 1. Hizmete **genel bakış** sayfasına gidin.
-1. **Sorunları tanılama ve çözme** ’yi seçin. 
+1. **Sorunları tanılama ve çözme**’yi seçin. 
 1. **Yapılandırma sunucusu** algılayıcısı ' nı seçin.
 
     [![ASC portalı sorunları ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) Tanılama](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
 
-3. **Yapılandırma sunucusu sistem durumu denetimi** ' ne tıklayın.
+3. **Yapılandırma sunucusu sistem durumu denetimi**' ne tıklayın.
 
     [![ASC portalı Genie ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
 

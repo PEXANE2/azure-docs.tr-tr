@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb59674d678ed9c61c9ee0b425da7032794ca64
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595368"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660619"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Uzaktan çalışma: uzak çalışma için ağ sanal gereci (NVA) konuları
 
@@ -30,7 +30,7 @@ Azure Marketi 'ndeki tüm büyük NVA satıcıları, çözümlerini dağıttığ
 
 - **Eş zamanlı kullanıcıların kapasitesi ve sayısı** -bu sayı özellikle Noktadan siteye VPN kullanıcıları için, her bağlantılı Kullanıcı bir şifrelenmiş (ıPSEC veya SSL VPN) tüneli oluşturacak şekilde önemlidir.  
 - **Toplam aktarım hızı** -uzaktan erişim sağlamanız gereken kullanıcı sayısını karşılamak için gereken toplam bant genişliğidir.
-- **İhtiyaç duyduğunuz VM boyutu** -NVA satıcısı tarafından önerilen VM boyutlarını her zaman kullanmanız gerekir.  Noktadan siteye VPN için, çok sayıda eşzamanlı kullanıcı bağlantınız varsa, [dv2 ve DSv2 serisi](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series "Dv2 ve Dsv2 serisi") VM 'ler gibi daha büyük VM boyutlarını kullanmanız gerekir. Bu VM 'Ler daha fazla vCPU 'ya sahip olmaya eğilimlidir ve daha fazla eşzamanlı VPN oturumu işleyebilir.  Daha fazla sanal çekirdeğe sahip olmanın yanı sıra, Azure 'da daha büyük VM boyutları daha küçük VM boyutundan daha fazla toplam bant genişliği kapasitesine sahiptir.
+- **İhtiyaç duyduğunuz VM boyutu** -NVA satıcısı tarafından önerilen VM boyutlarını her zaman kullanmanız gerekir.  Noktadan siteye VPN için, çok sayıda eşzamanlı kullanıcı bağlantınız varsa, [dv2 ve DSv2 serisi](../virtual-machines/dv2-dsv2-series.md "Dv2 ve Dsv2 serisi") VM 'ler gibi daha büyük VM boyutlarını kullanmanız gerekir. Bu VM 'Ler daha fazla vCPU 'ya sahip olmaya eğilimlidir ve daha fazla eşzamanlı VPN oturumu işleyebilir.  Daha fazla sanal çekirdeğe sahip olmanın yanı sıra, Azure 'da daha büyük VM boyutları daha küçük VM boyutundan daha fazla toplam bant genişliği kapasitesine sahiptir.
     > **Önemli:** Her satıcı, kaynakları farklı kullanır.  Tahmin edilen Kullanıcı yüküne uyum sağlamak için kullanmanız gereken örnek boyutları net değilse, yazılım satıcısıyla doğrudan iletişim kurmanız ve önerisine danışmanız gerekir.
 - **Örnek sayısı** -çok sayıda kullanıcı ve bağlantınız olması beklendiğinde, NVA örnek boyutlarınızın ne kadar ölçeklendirdiğini elde etmeniz için sınırlamalar vardır.  Birden çok VM örneği dağıtmak isteyebilirsiniz.
 - **IPSEC VPN vs SSL VPN** -genel IPSec VPN UYGULAMALARıNDA, SSL VPN uygulamalarından daha iyi bir uygulama gerçekleştirir.  

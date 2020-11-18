@@ -3,12 +3,12 @@ title: Azure Lab Services için hızlandırılmış laboratuvar Kurulum Kılavuz
 description: Bu kılavuz, laboratuar oluşturucularının okulda kullanım için hızlı bir şekilde laboratuvar hesabı oluşturmasına yardımcı olur.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f7423a76fd3ceb238c8c5c1a4ea794ff83b28b4a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 8ef168aefb69df32f57b623bb488adbb97cbd411
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491673"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659684"
 ---
 # <a name="lab-setup-guide"></a>Laboratuvar Kurulum Kılavuzu
 
@@ -22,11 +22,11 @@ Yeni bir laboratuvar ayarlamadan önce aşağıdaki soruları göz önünde bulu
 
 Sınıfınızın öğrenme hedeflerine göre, laboratuvarın VM 'lerine hangi işletim sistemi, uygulama ve araçların yüklenmesi gerektiğine karar verin. Laboratuvar VM 'Leri ayarlamak için üç seçeneğiniz vardır:
 
-- **Azure Marketi görüntüsünü kullanma** : Azure Marketi, bir laboratuvar oluştururken kullanabileceğiniz yüzlerce görüntü sağlar. Bazı sınıflarda, bu görüntülerden biri sınıfınız için ihtiyaç duyduğunuz her şeyi zaten içeriyor olabilir.
+- **Azure Marketi görüntüsünü kullanma**: Azure Marketi, bir laboratuvar oluştururken kullanabileceğiniz yüzlerce görüntü sağlar. Bazı sınıflarda, bu görüntülerden biri sınıfınız için ihtiyaç duyduğunuz her şeyi zaten içeriyor olabilir.
 
-- **Yeni bir özel görüntü oluşturma** : bir Azure Marketi görüntüsünü başlangıç noktası olarak kullanarak kendi özel görüntünüzü oluşturabilir ve ek yazılım yükleyerek ve yapılandırma değişiklikleri yaparak özelleştirebilirsiniz.
+- **Yeni bir özel görüntü oluşturma**: bir Azure Marketi görüntüsünü başlangıç noktası olarak kullanarak kendi özel görüntünüzü oluşturabilir ve ek yazılım yükleyerek ve yapılandırma değişiklikleri yaparak özelleştirebilirsiniz.
 
-- **Mevcut bir özel görüntü kullan** : daha önce oluşturduğunuz veya okulunuzdaki diğer yöneticiler veya fakülte oluşturulmuş özel görüntüleri yeniden kullanabilirsiniz. Özel görüntüleri kullanmak için, yöneticileriniz paylaşılan bir görüntü Galerisi ayarlaması gerekir.  Paylaşılan görüntü Galerisi, özel görüntüleri kaydetmek için kullanılan bir depodur.
+- **Mevcut bir özel görüntü kullan**: daha önce oluşturduğunuz veya okulunuzdaki diğer yöneticiler veya fakülte oluşturulmuş özel görüntüleri yeniden kullanabilirsiniz. Özel görüntüleri kullanmak için, yöneticileriniz paylaşılan bir görüntü Galerisi ayarlaması gerekir.  Paylaşılan görüntü Galerisi, özel görüntüleri kaydetmek için kullanılan bir depodur.
 
 > [!NOTE]
 > Yöneticileriniz, Azure Marketi görüntülerini ve özel görüntüleri, bunları kullanabilmeniz için etkinleştirmekten sorumludur. İhtiyacınız olan görüntülerin etkinleştirildiğinden emin olmak için BT departmanınızla koordine edin. Oluşturduğunuz özel görüntüler, sahip olduğunuz laboratuvarlarda kullanılmak üzere otomatik olarak etkinleştirilir.
@@ -40,7 +40,7 @@ Aralarından seçim yapabileceğiniz farklı işlem boyutları vardır:
 - GPU boyutları, öğrencilerinizin bilgisayar açısından yoğun uygulamalar türlerini kullanabilmesi için. Örneğin, bu seçenek genellikle yapay zeka ve makine öğrenimi ile kullanılır.
 
 Uygun VM boyutunu seçme kılavuzu için aşağıdaki makaleleri okuyun:
-- [VM boyutlandırma](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing)
+- [VM boyutlandırma](./administrator-guide.md#vm-sizing)
 - [Fiziksel laboratuvardan Azure Lab Services taşıma](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)
 
 > [!NOTE]
@@ -55,13 +55,13 @@ Laboratuvar sanal makinelerinizin, bir veritabanına, dosya paylaşımıyla veya
 ### <a name="how-will-costs-be-controlled"></a>Maliyetler nasıl kontrol edilir?
 Laboratuvar Hizmetleri bir Kullandıkça Öde fiyatlandırma modeli kullanır. Bu, yalnızca bir laboratuvar VM 'sinin çalıştığı zaman için ödeme yaptığınız anlamına gelir. Maliyetleri denetlemek için genellikle birlikte kullanılan üç seçeneğiniz vardır:
 
-- **Zamanlama** : bir zamanlama, laboratuvarlarınızın VM 'lerinin ne zaman başlatıldığını ve kapatıldığını otomatik olarak denetlemenize olanak tanır.
-- **Kota** : kota, öğrencilerin zamanlanan saatler dışında bir VM 'ye erişiminin olacağı saat sayısını denetler.  Bir öğrenci VM 'sini kullanırken ve kotasına ulaşıldığında, VM otomatik olarak kapanır.  Kota arttırılmadığı takdirde öğrenci sanal makineyi yeniden başlatabilir.
-- **Otomatik kapatma** : etkinleştirildiğinde, otomatik kapatma ayarı, bir öğrencinin Uzak Masaüstü Protokolü (RDP) oturumundan bağlantısı kesildikten sonra Windows VM 'lerinin otomatik olarak kapatılmasını sağlar. Bu ayar varsayılan olarak devre dışıdır.
+- **Zamanlama**: bir zamanlama, laboratuvarlarınızın VM 'lerinin ne zaman başlatıldığını ve kapatıldığını otomatik olarak denetlemenize olanak tanır.
+- **Kota**: kota, öğrencilerin zamanlanan saatler dışında bir VM 'ye erişiminin olacağı saat sayısını denetler.  Bir öğrenci VM 'sini kullanırken ve kotasına ulaşıldığında, VM otomatik olarak kapanır.  Kota arttırılmadığı takdirde öğrenci sanal makineyi yeniden başlatabilir.
+- **Otomatik kapatma**: etkinleştirildiğinde, otomatik kapatma ayarı, bir öğrencinin Uzak Masaüstü Protokolü (RDP) oturumundan bağlantısı kesildikten sonra Windows VM 'lerinin otomatik olarak kapatılmasını sağlar. Bu ayar varsayılan olarak devre dışıdır.
 
 Daha fazla bilgi için aşağıdaki makaleleri okuyun:
-- [Maliyetleri tahmin etme](https://docs.microsoft.com/azure/lab-services/cost-management-guide#estimate-the-lab-costs)
-- [Maliyetleri yönetme](https://docs.microsoft.com/azure/lab-services/cost-management-guide#manage-costs)
+- [Maliyetleri tahmin etme](./cost-management-guide.md#estimate-the-lab-costs)
+- [Maliyetleri yönetme](./cost-management-guide.md#manage-costs)
 
 ### <a name="how-will-students-save-their-work"></a>Öğrenciler işlerini nasıl kaydeder?
 Öğrencilerin her biri kendi VM 'sine atanır ve bu, laboratuvarın ömrü boyunca kendilerine atanır. Şunları seçebilecekleri:
@@ -75,7 +75,7 @@ OneDrive 'ı laboratuvar VM 'lerinde öğrenciler için otomatik olarak yapılan
 > Öğrencilerinizin, kendi kayıtlı işlerine laboratuvar dışında devam ettiğinden emin olmak için ve sınıfı bittikten sonra, öğrencilerin çalışmalarını bir dış depoya kaydetmelerini öneririz.
 
 ### <a name="how-will-students-connect-to-their-vm"></a>Öğrenciler, VM 'lerine nasıl bağlanır?
-Windows VM 'lerine RDP için, öğrencilerin [Microsoft Uzak masaüstü istemcisini](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)kullanmasını öneririz. Uzak Masaüstü istemcisi, Mac, Kmebook ve Windows 'u destekler.
+Windows VM 'lerine RDP için, öğrencilerin [Microsoft Uzak masaüstü istemcisini](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)kullanmasını öneririz. Uzak Masaüstü istemcisi, Mac, Kmebook ve Windows 'u destekler.
 
 Linux VM 'Ler için, öğrenciler SSH veya RDP kullanabilir. Öğrencilerin RDP kullanarak bağlanmasını sağlamak için gerekli RDP ve GUI paketlerini yükleyip yapılandırmanız gerekir.
 
@@ -83,47 +83,47 @@ Linux VM 'Ler için, öğrenciler SSH veya RDP kullanabilir. Öğrencilerin RDP 
 Azure Lab Services, Microsoft ekipleri ile tümleşir, böylece fakülte laboratuvarları takımlar içinde oluşturabilir ve yönetebilir.  Benzer şekilde, öğrenciler takımlar dahilinde laboratuvara erişebilir.
 
 Daha fazla bilgi için aşağıdaki makaleyi inceleyin:
-- [Microsoft ekipleri dahilinde Azure Lab Services](https://docs.microsoft.com/azure/lab-services/lab-services-within-teams-overview)
+- [Microsoft ekipleri dahilinde Azure Lab Services](./lab-services-within-teams-overview.md)
 
 ## <a name="set-up-your-lab"></a>Laboratuvarınızı kurma
 
 Sınıfınızın laboratuvarınızın gereksinimlerini anladıktan sonra, ayarlamaya hazırsınız demektir. Laboratuvarınızı ayarlamayı öğrenmek için bu bölümdeki bağlantıları izleyin.  Ekipler içinde laboratuvarları kullanıyorsanız, farklı adımların sağlandığını unutmayın.
 
 1. **Laboratuvar oluşturun.** Laboratuvar oluşturma hakkında öğreticilere bakın:
-    - Yönergeler için [bir derslik Laboratuvarı oluşturun](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) .
-    - [Teams'den laboratuvar oluşturma](https://docs.microsoft.com/azure/lab-services/how-to-get-started-create-lab-within-teams)
+    - Yönergeler için [bir derslik Laboratuvarı oluşturun](./tutorial-setup-classroom-lab.md#create-a-classroom-lab) .
+    - [Teams'den laboratuvar oluşturma](./how-to-get-started-create-lab-within-teams.md)
 
     > [!NOTE]
-    > Sınıfınız iç içe sanallaştırma gerektiriyorsa, [iç içe sanallaştırmayı etkinleştirme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)içindeki adımlara bakın.
+    > Sınıfınız iç içe sanallaştırma gerektiriyorsa, [iç içe sanallaştırmayı etkinleştirme](./how-to-enable-nested-virtualization-template-vm.md)içindeki adımlara bakın.
 
 1. **Görüntüleri özelleştirin ve laboratuvar VM 'Leri yayımlayın.** Şablon VM adlı özel bir VM 'ye bağlanın. Aşağıdaki kılavuzlarda bulunan adımlara bakın:
-    - [Şablon VM 'si oluşturma ve yönetme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
-    - [Paylaşılan görüntü galerisi kullanma](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-shared-image-gallery)
+    - [Şablon VM 'si oluşturma ve yönetme](./tutorial-setup-classroom-lab.md#publish-the-template-vm)
+    - [Paylaşılan görüntü galerisi kullanma](./how-to-use-shared-image-gallery.md)
 
     > [!NOTE]
-    > Windows kullanıyorsanız, [bir Windows şablon sanal makinesi hazırlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template)bölümündeki yönergeleri de görmeniz gerekir. Bu yönergeler, öğrencilerinizin kullanması için OneDrive ve Office ayarlama adımlarını içerir.
+    > Windows kullanıyorsanız, [bir Windows şablon sanal makinesi hazırlama](./how-to-prepare-windows-template.md)bölümündeki yönergeleri de görmeniz gerekir. Bu yönergeler, öğrencilerinizin kullanması için OneDrive ve Office ayarlama adımlarını içerir.
 
 1. **VM havuzunu ve kapasitesini yönetin.** Sınıfınızın gerektirdiği şekilde, sanal makine kapasitesini kolayca ölçeklendirebilir veya azaltabilirsiniz. Yeni VM 'Lerin ayarlanmakta olması nedeniyle VM kapasitesini artırmanın birkaç saat sürebileceğini aklınızda bulundurun. Aşağıdaki makalelerde bulunan adımlara bakın:
-    - [Bir VM havuzunu ayarlama ve yönetme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)
-    - [Ekiplerden laboratuvar hizmetlerinde bir VM havuzunu yönetme](https://docs.microsoft.com/azure/lab-services/how-to-manage-vm-pool-within-teams)
+    - [Bir VM havuzunu ayarlama ve yönetme](./how-to-set-virtual-machine-passwords.md)
+    - [Ekiplerden laboratuvar hizmetlerinde bir VM havuzunu yönetme](./how-to-manage-vm-pool-within-teams.md)
 
 1. **Laboratuvar kullanıcıları ekleyin ve yönetin.** Laboratuvarınızı Kullanıcı eklemek için aşağıdaki öğreticilerde yer alarak bulunan adımlara bakın:
-   - [Laboratuvara Kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
-   - [Kullanıcılara davet gönder](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
-   - [Ekiplerden Laboratuvar Hizmetleri Kullanıcı listelerini yönetme](https://docs.microsoft.com/azure/lab-services/how-to-manage-user-lists-within-teams)
+   - [Laboratuvara Kullanıcı ekleme](./tutorial-setup-classroom-lab.md#add-users-to-the-lab)
+   - [Kullanıcılara davet gönder](./tutorial-setup-classroom-lab.md#send-invitation-emails-to-users)
+   - [Ekiplerden Laboratuvar Hizmetleri Kullanıcı listelerini yönetme](./how-to-manage-user-lists-within-teams.md)
 
-    Öğrencilerin kullanabileceği hesap türleri hakkında bilgi için bkz. [öğrenci hesapları](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts).
+    Öğrencilerin kullanabileceği hesap türleri hakkında bilgi için bkz. [öğrenci hesapları](./how-to-configure-student-usage.md#student-accounts).
   
 1. **Maliyet denetimlerini ayarlayın.** Laboratuvarınızın maliyetlerini denetlemek için zamanlamalar, Kotalar ve oto kapatma ayarlayın. Aşağıdaki öğreticilere bakın:
 
-   - [Zamanlama ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
+   - [Zamanlama ayarlama](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
 
         > [!NOTE]
         > Yüklediğiniz işletim sisteminin türüne bağlı olarak, bir VM 'nin başlatılması birkaç dakika sürebilir. Bir laboratuvar VM 'sinin zamanlanan saatleriniz sırasında kullanıma hazırlandığından emin olmak için, VM 'Leri 30 dakika önce başlatmanız önerilir.
 
-   - [Kullanıcılar için kotalar ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) ve [belirli bir kullanıcı için ek kota ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
+   - [Kullanıcılar için kotalar ayarlama](./how-to-configure-student-usage.md#set-quotas-for-users) ve [belirli bir kullanıcı için ek kota ayarlama](./how-to-configure-student-usage.md#set-additional-quotas-for-specific-users)
   
-   - [Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+   - [Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme](./how-to-enable-shutdown-disconnect.md)
 
         > [!NOTE]
         > Zamanlamalar ve kotalar, şablon VM 'ye uygulanmaz, ancak otomatik kapatılma ayarları uygulanır. 
@@ -132,9 +132,9 @@ Sınıfınızın laboratuvarınızın gereksinimlerini anladıktan sonra, ayarla
         > 
         > Şablon VM 'Leri çalışırken **Maliyet** doğurur, bu nedenle çalışıyor olması GEREKMIYORSA şablon VM 'nin kapatıldığından emin olun.
 
-    - [Takımlar içinde Laboratuvar Hizmetleri zamanlamaları oluşturma ve yönetme](https://docs.microsoft.com/azure/lab-services/how-to-create-schedules-within-teams) 
+    - [Takımlar içinde Laboratuvar Hizmetleri zamanlamaları oluşturma ve yönetme](./how-to-create-schedules-within-teams.md) 
 
-1. **Panoyu kullanın.** Yönergeler için bkz. [Laboratuvar panosunu kullanma](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
+1. **Panoyu kullanın.** Yönergeler için bkz. [Laboratuvar panosunu kullanma](./use-dashboard.md).
 
     > [!NOTE]
     > Panoda gösterilen tahmini maliyet, laboratuvarın öğrencilerinin kullanımı için tahmin edebileceğiniz maksimum maliyettir. Örneğin, öğrencileriniz tarafından *not* kullanılmayan kota saatleri için ücretlendirilmeyecektir. Tahmini maliyetler, şablon VM 'si, paylaşılan görüntü Galerisi veya laboratuvar Oluşturucu bir Kullanıcı makinesini başlattığında herhangi bir ücret *yansıtmazlar* .

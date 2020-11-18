@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 908602dff3be2f392bc595f0074db7f95b8936a9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035969"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660993"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorun giderme: Azure Noktadan siteye bağlantı sorunları
 
@@ -35,7 +35,7 @@ Bu sorun, istemci sertifikası sertifikalarda yoksa oluşur **-geçerli User\per
 
 Bu sorunu çözmek için şu adımları izleyin:
 
-1. Sertifika Yöneticisi 'Ni açın: **Başlat**' a tıklayın, **bilgisayar sertifikalarını Yönet**yazın ve ardından arama sonucunda **bilgisayar sertifikalarını Yönet** ' e tıklayın.
+1. Sertifika Yöneticisi 'Ni açın: **Başlat**' a tıklayın, **bilgisayar sertifikalarını Yönet** yazın ve ardından arama sonucunda **bilgisayar sertifikalarını Yönet** ' e tıklayın.
 
 2. Aşağıdaki sertifikaların doğru konumda olduğundan emin olun:
 
@@ -137,7 +137,7 @@ Bu sorun, yanlış bir ağ geçidi türü nedeniyle oluşur.
 
 ### <a name="solution"></a>Çözüm
 
-VPN ağ geçidi türü **VPN**OLMALıDıR ve VPN türü **routebased**olmalıdır.
+VPN ağ geçidi türü **VPN** OLMALıDıR ve VPN türü **routebased** olmalıdır.
 
 ## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN istemci hatası: Azure VPN özel betiği başarısız oldu 
 
@@ -178,7 +178,7 @@ VPN istemcisi yapılandırma paketini ayıklayın ve. cer dosyasını bulun. Ser
 
 VPN ağ geçidi değişikliklerini Azure portal kaydetmeye çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Sanal ağ geçidi &lt; *ağ geçidi adı*kaydedilemedi &gt; . Sertifika &lt; *sertifikası kimliği* için veriler &gt; geçersiz.**
+**Sanal ağ geçidi &lt; *ağ geçidi adı* kaydedilemedi &gt; . Sertifika &lt; *sertifikası kimliği* için veriler &gt; geçersiz.**
 
 ### <a name="cause"></a>Nedeni 
 
@@ -215,7 +215,7 @@ e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
 
 VPN ağ geçidi değişikliklerini Azure portal kaydetmeye çalıştığınızda aşağıdaki hata iletisini alırsınız: 
 
-**Sanal ağ geçidi &lt; *ağ geçidi adı*kaydedilemedi &gt; . Karşıya yüklemeye çalıştığınız kaynak adı &lt; *sertifikası adı* &gt; geçersiz**.
+**Sanal ağ geçidi &lt; *ağ geçidi adı* kaydedilemedi &gt; . Karşıya yüklemeye çalıştığınız kaynak adı &lt; *sertifikası adı* &gt; geçersiz**.
 
 ### <a name="cause"></a>Nedeni
 
@@ -274,7 +274,7 @@ Noktadan siteye VPN bağlantısını kaldırır ve ardından VPN istemcisini yen
 
 ### <a name="solution"></a>Çözüm
 
-Sorunu çözmek için, eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> **adresinden SILIN ve ardından VPN istemci yükleyicisini yeniden çalıştırın.
+Sorunu çözmek için, eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId>** adresinden SILIN ve ardından VPN istemci yükleyicisini yeniden çalıştırın.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Noktadan siteye VPN istemcisi, yerel etki alanındaki kaynakların FQDN 'sini çözümleyemiyor
 
@@ -298,7 +298,7 @@ VPN istemcisi Azure VPN Gateway 'ten yolları alamazsanız bu sorun oluşabilir.
 
 ### <a name="solution"></a>Çözüm
 
-Bu sorunu çözmek için [Azure VPN Gateway 'i sıfırlayın](vpn-gateway-resetgw-classic.md). Yeni yolların kullanıldığından emin olmak için, sanal ağ eşlemesi başarıyla yapılandırıldıktan sonra Noktadan siteye VPN istemcileri yeniden indirilmelidir.
+Bu sorunu çözmek için [Azure VPN Gateway 'i sıfırlayın](./reset-gateway.md). Yeni yolların kullanıldığından emin olmak için, sanal ağ eşlemesi başarıyla yapılandırıldıktan sonra Noktadan siteye VPN istemcileri yeniden indirilmelidir.
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hata: "iptal sunucusu çevrimdışı olduğu için iptal işlevi iptali kontrol edemedi. (Hata 0x80092013) "
 
@@ -335,7 +335,7 @@ NIC sürücüsü güncel değil.
 
 NIC sürücüsünü güncelleştirin:
 
-1. **Başlat**' a tıklayın, **Aygıt Yöneticisi**yazın ve sonuç listesinden seçin. Yönetici parolası veya onay istenirse parolayı yazın ya da onay sağlayın.
+1. **Başlat**' a tıklayın, **Aygıt Yöneticisi** yazın ve sonuç listesinden seçin. Yönetici parolası veya onay istenirse parolayı yazın ya da onay sağlayın.
 2. **Ağ bağdaştırıcıları** kategorilerinde, GÜNCELLEŞTIRMEK istediğiniz NIC 'i bulun.  
 3. Cihaz adına çift tıklayın, **Sürücüyü Güncelleştir**' i seçin, **güncelleştirilmiş sürücü yazılımı Için otomatik olarak ara**' yı seçin.
 4.  Windows yeni bir sürücü bulmazsa, cihaz üreticisinin Web sitesinde bir sürücü arayıp yükleme yönergelerini izleyebilirsiniz.
@@ -362,7 +362,7 @@ Bunun nedeni yanlış bir ağ geçidi türü yapılandırılmıştır.
 
 ### <a name="solution"></a>Çözüm
 
-Azure VPN ağ geçidi türü VPN olmalıdır ve VPN türü **Routebased**olmalıdır.
+Azure VPN ağ geçidi türü VPN olmalıdır ve VPN türü **Routebased** olmalıdır.
 
 ## <a name="vpn-package-installer-doesnt-complete"></a>VPN paketi yükleyicisi tamamlanmamış
 
@@ -372,7 +372,7 @@ Bu sorun, önceki VPN istemci yüklemelerinden kaynaklanabilir.
 
 ### <a name="solution"></a>Çözüm
 
-Eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> ** adresınden silin ve VPN istemci yükleyicisini yeniden çalıştırın. 
+Eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId>** adresınden silin ve VPN istemci yükleyicisini yeniden çalıştırın. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN istemcisi, bir süre sonra hazırda bekleme veya uyku moduna geçme
 

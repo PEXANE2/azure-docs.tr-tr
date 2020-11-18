@@ -8,19 +8,19 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 93916bb1eb92447da45ebae7ccb2e61c5af1dd9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441587"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660704"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Mevcut bir VPN Ağ Geçidi bağlantısı ile bir VNet 'e siteden siteye bağlantı ekleme (klasik)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure portalı](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasik)](vpn-gateway-multi-site.md)
 >
 >
@@ -71,8 +71,8 @@ Dinamik yönlendirme ağ geçidi ile siteden siteye VPN zaten varsa harika! [San
 2. Yeni ağ geçidinizi yapılandırın ve VPN tünelinizi oluşturun. Yönergeler için, yönergeler Için bkz. [SKU ve VPN türünü belirtme](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Yönlendirme türünü ' Dynamic ' olarak belirttiğinizden emin olun.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Siteden siteye sanal ağınız yoksa:
-1. Aşağıdaki yönergeleri kullanarak siteden siteye sanal ağınızı oluşturun: [siteden sıteye VPN bağlantısı olan bir sanal ağ oluşturun](vpn-gateway-site-to-site-create.md).  
-2. Şu yönergeleri kullanarak dinamik yönlendirme ağ geçidi yapılandırın: [bir VPN Gateway yapılandırın](vpn-gateway-configure-vpn-gateway-mp.md). Ağ Geçidi türü için **dinamik yönlendirme** ' yi seçtiğinizden emin olun.
+1. Aşağıdaki yönergeleri kullanarak siteden siteye sanal ağınızı oluşturun: [siteden sıteye VPN bağlantısı olan bir sanal ağ oluşturun](./vpn-gateway-howto-site-to-site-classic-portal.md).  
+2. Şu yönergeleri kullanarak dinamik yönlendirme ağ geçidi yapılandırın: [bir VPN Gateway yapılandırın](./vpn-gateway-howto-site-to-site-classic-portal.md). Ağ Geçidi türü için **dinamik yönlendirme** ' yi seçtiğinizden emin olun.
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. ağ yapılandırma dosyasını dışarı aktarma
 

@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: bd87f15ff63edf1da447faf986cad2f9591610dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 201318a5a5680f248b831bb480888f106286fbe1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502979"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660058"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLı 'dan IoT Central yönetme
 
@@ -22,24 +22,11 @@ ms.locfileid: "87502979"
 
 [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) web sitesinde IoT Central uygulamaları oluşturup yönetmek yerine uygulamalarınızı yönetmek IÇIN [Azure CLI](/cli/azure/) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Azure CLı 'yi yerel makinenizde çalıştırmayı tercih ediyorsanız bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırdığınızda, bu makaledeki komutları denemeden önce Azure 'da oturum açmak için **az Login** komutunu kullanın.
-
-> [!TIP]
-> CLı komutlarınızı farklı bir Azure aboneliğinde çalıştırmanız gerekiyorsa bkz. [etkin aboneliği değiştirme](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription).
-
-## <a name="install-the-extension"></a>Uzantıyı yükleme
-
-Bu makaledeki komutlar, **Azure-IoT** CLI uzantısının bir parçasıdır. Uzantıyı yüklemek için şu komutu çalıştırın:
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+ - CLı komutlarınızı farklı bir Azure aboneliğinde çalıştırmanız gerekiyorsa bkz. [etkin aboneliği değiştirme](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription).
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
@@ -65,10 +52,10 @@ Bu komutlar öncelikle uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluş
 | Parametre         | Açıklama |
 | ----------------- | ----------- |
 | resource-group    | Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
-| location          | Varsayılan olarak, bu komut kaynak grubundaki konumu kullanır. Şu anda **Avustralya**, **Asya Pasifik**, **Avrupa**, **Birleşik Devletler**, **Birleşik Krallık**ve **Japonya** coğrafi graflarını IoT Central bir uygulama oluşturabilirsiniz. |
+| location          | Varsayılan olarak, bu komut kaynak grubundaki konumu kullanır. Şu anda **Avustralya**, **Asya Pasifik**, **Avrupa**, **Birleşik Devletler**, **Birleşik Krallık** ve **Japonya** coğrafi graflarını IoT Central bir uygulama oluşturabilirsiniz. |
 | name              | Azure portal uygulamanın adı. |
 | alanınızın         | Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI `https://mysubdomain.azureiotcentral.com` . |
-| isteyin               | Şu anda, **ST1** ya da **ST2**kullanabilirsiniz. Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
+| isteyin               | Şu anda, **ST1** ya da **ST2** kullanabilirsiniz. Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
 | şablon          | Kullanılacak uygulama şablonu. Daha fazla bilgi için aşağıdaki tabloya bakın. |
 | görünen ad      | Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
 

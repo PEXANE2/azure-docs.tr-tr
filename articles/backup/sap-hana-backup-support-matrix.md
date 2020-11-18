@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 641bba6b947731e0f55bc79828101f84d5b780fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 181d006d0d1f0e5c2f099507be493ced2ce9280b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515789"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659752"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM’leri üzerinde SAP HANA veritabanlarının yedeklerine yönelik destek matrisi
 
@@ -30,7 +30,7 @@ Azure Backup, SAP HANA veritabanlarının Azure 'a yedeklenmesini destekler. Bu 
 | **HANA örnekleri**         | Tek bir Azure VM üzerinde tek bir SAP HANA örneği – yalnızca ölçeği büyütme | Tek bir VM 'de birden çok SAP HANA örneği                  |
 | **HANA veritabanı türleri**    | 2. x üzerinde 1. x, çok veritabanı kapsayıcısı (MDC) ÜZERINDE Tek Veritabanı kapsayıcı (SDC) | HANA 1. x içinde MDC                                              |
 | **HANA veritabanı boyutu**     | <= 2 TB boyutundaki HANA veritabanları (Bu, HANA sisteminin bellek boyutu değildir)               |                                                              |
-| **Yedekleme türleri**           | Tam, değişiklik ve günlük yedeklemeleri                          | Artımlı, anlık görüntüler                                       |
+| **Yedekleme türleri**           | Tam, fark, artımlı (Önizleme) ve günlük yedeklemeleri                          |  Anlık Görüntüler                                       |
 | **Geri yükleme türleri**          | Desteklenen geri yükleme türleri hakkında bilgi edinmek için SAP HANA [1642148](https://launchpad.support.sap.com/#/notes/1642148) notuna bakın |                                                              |
 | **Yedekleme limitleri**          | SAP HANA örneği başına 2 TB 'a kadar tam yedekleme boyutu (geçici sınır)         |                                                              |
 | **Özel yapılandırma** |                                                              | SAP HANA + dinamik katmanlama <br>  , Geçişli aracılığıyla kopyalama        |

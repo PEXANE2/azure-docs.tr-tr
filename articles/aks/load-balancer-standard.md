@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) ile hizmetlerinizi kullanıma sunmak için standart SKU ile genel yük dengeleyiciyi nasıl kullanacağınızı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 06/14/2020
+ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 51cb79e942b9d92876bd4d0e2cc27bb5ee0337bf
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634880"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660364"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde ortak Standart Load Balancer kullanma
 
@@ -87,6 +87,9 @@ Standart SKU ortak yük dengeleyiciyi kullanırken, oluşturma zamanında özell
 * Kümenin her bir düğümüne ayrılan giden bağlantı noktası sayısını özelleştirin
 * Boştaki bağlantılar için zaman aşımı ayarını yapılandırın
 
+> [!IMPORTANT]
+> Belirli bir zamanda yalnızca bir giden IP seçeneği (yönetilen IP 'Ler, kendi IP 'nizi getir veya IP öneki) kullanılabilir.
+
 ### <a name="scale-the-number-of-managed-outbound-public-ips"></a>Yönetilen giden genel IP sayısını ölçeklendirin
 
 Azure Load Balancer, gelen öğesine ek olarak bir sanal ağdan giden bağlantı sağlar. Giden kuralları, Genel Standart Load Balancer giden ağ adresi çevirisini yapılandırmayı basitleştirir.
@@ -120,10 +123,11 @@ Ayrıca, parametreyi **`load-balancer-managed-ip-count`** ekleyerek **`--load-ba
 
 AKS tarafından oluşturulan genel IP, AKS yönetilen kaynağı olarak kabul edilir. Bu, genel IP yaşam döngüsünün AKS tarafından yönetilmek üzere amaçlandığı ve doğrudan genel IP kaynağında Kullanıcı eylemi gerektirmeyeceği anlamına gelir. Alternatif olarak, küme oluşturma sırasında kendi özel genel IP veya genel IP ön ekini atayabilirsiniz. Özel IP 'niz Ayrıca var olan bir kümenin yük dengeleyici özellikleri üzerinde de güncelleştirilir.
 
-> [!NOTE]
-> Özel genel IP adreslerinin Kullanıcı tarafından oluşturulması ve sahibi olması gerekir. AKS tarafından oluşturulan yönetilen genel IP adresleri, yönetim çakışmalarına neden olabileceği için kendi özel IP 'nizi getir olarak yeniden kullanılamaz.
+Kendi genel IP 'nizi veya ön ekini kullanma gereksinimleri:
 
-Bu işlemi gerçekleştirmeden önce, giden IP 'Leri veya giden IP öneklerini yapılandırmak için gerekli önkoşulları [ve kısıtlamaları](../virtual-network/public-ip-address-prefix.md#constraints) karşıladığınızdan emin olun.
+- Özel genel IP adreslerinin Kullanıcı tarafından oluşturulması ve sahibi olması gerekir. AKS tarafından oluşturulan yönetilen genel IP adresleri, yönetim çakışmalarına neden olabileceği için kendi özel IP 'nizi getir olarak yeniden kullanılamaz.
+- AKS kümesi kimliğinin (hizmet sorumlusu veya yönetilen kimlik) giden IP 'ye erişme izinlerine sahip olduğundan emin olmanız gerekir. [Gerekli genel IP izinleri listesine](kubernetes-service-principal.md#networking)göre.
+- Giden IP 'Leri veya giden IP öneklerini yapılandırmak için gerekli önkoşulları [ve kısıtlamaları](../virtual-network/public-ip-address-prefix.md#constraints) karşıladığınızdan emin olun.
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>Kümeyi kendi giden genel IP 'niz ile güncelleştirme
 
@@ -229,7 +233,7 @@ Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı 
 > [!IMPORTANT]
 > Bağlantı veya ölçeklendirme sorunlarından kaçınmak için, [gerekli kotayı hesaplamanız ve][requirements] *allocatedOutboundPorts* özelleştirmeden önce gereksinimleri denetlemeniz gerekir.
 
-Ayrıca **`load-balancer-outbound-ports`** , bir küme oluştururken parametreleri de kullanabilirsiniz, ancak aynı zamanda, veya ' ı da belirtmeniz gerekir **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** **`load-balancer-outbound-ip-prefixes`** .  Örnek:
+Ayrıca **`load-balancer-outbound-ports`** , bir küme oluştururken parametreleri de kullanabilirsiniz, ancak aynı zamanda, veya ' ı da belirtmeniz gerekir **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** **`load-balancer-outbound-ip-prefixes`** .  Örneğin:
 
 ```azurecli-interactive
 az aks create \

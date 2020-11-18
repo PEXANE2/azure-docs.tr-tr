@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
-ms.openlocfilehash: ca60b9350171cee55462c9df28915c811e1cfd25
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cd52f22004bf72f3328d1e6a0d1ec988c2406317
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377708"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660857"
 ---
 # <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>REST API kullanarak Azure Sentinel 'de hunme ve canlı akış sorgularını yönetme
 
 Azure 'da yerleşik olarak oluşturulan Azure Sentinel Log Analytics, arama ve canlı akışı sorgularını yönetmek için Log Analytics ' REST API kullanmanıza olanak sağlar. Bu belgede, REST API kullanarak sorguları nasıl oluşturacağınız ve yöneteceğiniz gösterilmektedir.  Bu şekilde oluşturulan sorgular, Azure Sentinel Kullanıcı arabiriminde görüntülenir.
 
-[Kayıtlı aramalar API 'si](https://docs.microsoft.com/rest/api/loganalytics/savedsearches)hakkında daha fazla bilgi için kesin REST API başvurusuna bakın.
+[Kayıtlı aramalar API 'si](/rest/api/loganalytics/savedsearches)hakkında daha fazla bilgi için kesin REST API başvurusuna bakın.
 
 ## <a name="api-examples"></a>API örnekleri
 
@@ -46,7 +46,7 @@ Aşağıdaki örneklerde, bu yer tutucuları aşağıdaki tabloda önceden tanı
 
 ### <a name="example-1"></a>Örnek 1
 
-Bu örnekte, belirli bir Azure Sentinel çalışma alanı için bir arama sorgusu oluşturma veya güncelleştirme işlemlerinin nasıl yapılacağı gösterilmektedir.  Bir canlı akışı sorgusu için, *"Category": "sorguları ara"* öğesini **istek gövdesinde** " *Category": "canlı akışı Queries* " ile değiştirin: 
+Bu örnekte, belirli bir Azure Sentinel çalışma alanı için bir arama sorgusu oluşturma veya güncelleştirme işlemlerinin nasıl yapılacağı gösterilmektedir.  Bir canlı akışı sorgusu için, *"Category": "sorguları ara"* öğesini **istek gövdesinde**" *Category": "canlı akışı Queries* " ile değiştirin: 
 
 #### <a name="request-header"></a>İstek üst bilgisi
 

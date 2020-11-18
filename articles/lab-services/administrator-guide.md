@@ -3,12 +3,12 @@ title: Yönetici Kılavuzu Azure Lab Services | Microsoft Docs
 description: Bu kılavuz, Azure Lab Services kullanarak laboratuvar hesapları oluşturan ve yöneten yöneticilere yardımcı olur.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 8670a9d56575dbfb6d3e565ec97191581dc612a8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b1fadc58926b00c75ab888dad86e45b181059a38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491044"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659854"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
 Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, genellikle okulunuzun laboratuvar hesabını ayarlamaktan sorumludur. Laboratuvar hesabı kurulduktan sonra Yöneticiler veya eğitimciler laboratuvar hesabı içinde bulunan laboratuvarlar oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
@@ -19,7 +19,7 @@ Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yönetic
 - Laboratuvar hesapları, paylaşılan görüntü Galerisi ve görüntü sürümleri aboneliğiniz dahilinde barındırılır.
 - Laboratuvar hesabınıza ve paylaşılan görüntü galerinize aynı kaynak grubunda sahip olabilirsiniz. Bu diyagramda, farklı kaynak gruplarında yer alırlar.
 
-Mimari hakkında daha fazla bilgi için şu makaleye bakın: [Labs mimari temelleri](https://docs.microsoft.com/azure/lab-services/classroom-labs-fundamentals)
+Mimari hakkında daha fazla bilgi için şu makaleye bakın: [Labs mimari temelleri](./classroom-labs-fundamentals.md)
 
 ## <a name="subscription"></a>Abonelik
 Üniversiteniz bir veya daha fazla Azure aboneliğine sahip. Laboratuvar hesapları da dahil olmak üzere, içinde kullanılan tüm Azure resources\services için faturalandırma ve güvenliği yönetmek üzere bir abonelik kullanılır.
@@ -58,7 +58,7 @@ Aşağıdaki listede birden çok laboratuvar hesabının faydalı olabileceği s
 
 - **Laboratuvar hesabına göre bütçeyi ayır**
   
-    Tek bir laboratuar hesabı aracılığıyla tüm Laboratuvar maliyetlerini raporlamak yerine, daha net bir şekilde ayrılmış bütçe gerekebilir. Örneğin, bir bütçeyi Departmanlar arasında ayırmak için University 'in Math departmanı, bilgisayar bilimi departmanı ve benzeri laboratuvar hesapları oluşturabilirsiniz.  Daha sonra [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)'ni kullanarak her bir laboratuvar hesabının maliyetini görüntüleyebilirsiniz.
+    Tek bir laboratuar hesabı aracılığıyla tüm Laboratuvar maliyetlerini raporlamak yerine, daha net bir şekilde ayrılmış bütçe gerekebilir. Örneğin, bir bütçeyi Departmanlar arasında ayırmak için University 'in Math departmanı, bilgisayar bilimi departmanı ve benzeri laboratuvar hesapları oluşturabilirsiniz.  Daha sonra [Azure maliyet yönetimi](../cost-management-billing/cost-management-billing-overview.md)'ni kullanarak her bir laboratuvar hesabının maliyetini görüntüleyebilirsiniz.
 
 - **Active\production Labs 'den pilot Labs 'i yalıtma**
   
@@ -141,18 +141,18 @@ Laboratuvarın bulunduğu konum aşağıdaki faktörlere göre farklılık göst
 
   - **Laboratuvar hesabı bir sanal ağa (VNet) eşlenmez**
   
-    Laboratuvar hesabı aynı bölgedeyse [VNET ile](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) eşlenebilir.  Laboratuvar hesabı VNet ile eşlenirse, laboratuvarlar hem laboratuvar hesabı hem de VNet ile aynı bölgede otomatik olarak oluşturulur.
+    Laboratuvar hesabı aynı bölgedeyse [VNET ile](./how-to-connect-peer-virtual-network.md) eşlenebilir.  Laboratuvar hesabı VNet ile eşlenirse, laboratuvarlar hem laboratuvar hesabı hem de VNet ile aynı bölgede otomatik olarak oluşturulur.
 
     > [!NOTE]
-    > Laboratuvar hesabı VNet ile eşlenirse, laboratuvar **oluşturucusunun laboratuvar konumunu seçmesine Izin ver** ayarı devre dışıdır. Makalede bu ayar hakkında daha fazla bilgi bulunabilir: [Laboratuvar oluşturucunun laboratuvar için konum seçmesine Izin ver](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
+    > Laboratuvar hesabı VNet ile eşlenirse, laboratuvar **oluşturucusunun laboratuvar konumunu seçmesine Izin ver** ayarı devre dışıdır. Makalede bu ayar hakkında daha fazla bilgi bulunabilir: [Laboratuvar oluşturucunun laboratuvar için konum seçmesine Izin ver](./allow-lab-creator-pick-lab-location.md).
     
-  - * * VNet yok * *_ve_* _ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
+  - * * VNet yok **_ve_* _ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
   
-    Laboratuvar hesabıyla eşlenen **VNET olmadığında** *ve* [Laboratuvar oluşturucularının laboratuvar konumunu seçmesini izin verilmiyorsa, **not**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)laboratuvarlar, kullanılabilir VM kapasitesi olan bir bölgede otomatik olarak oluşturulur.  Özellikle Azure Lab Services, [Laboratuvar hesabıyla aynı coğrafya içinde olan bölgelerde](https://azure.microsoft.com/global-infrastructure/regions)kullanılabilirliği arar.
+    Laboratuvar hesabıyla eşlenen **VNET olmadığında** *ve* [Laboratuvar oluşturucularının laboratuvar konumunu seçmesini izin verilmiyorsa, **not**](./allow-lab-creator-pick-lab-location.md)laboratuvarlar, kullanılabilir VM kapasitesi olan bir bölgede otomatik olarak oluşturulur.  Özellikle Azure Lab Services, [Laboratuvar hesabıyla aynı coğrafya içinde olan bölgelerde](https://azure.microsoft.com/global-infrastructure/regions)kullanılabilirliği arar.
 
-  - * * VNet eşlenmez * *_ve_* _ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
+  - * * VNet eşlenmez **_ve_* _ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
        
-    VNET **eşlenmez** ve laboratuvar [oluşturucuları laboratuvar konumunu seçmelerine izin verildiğinde](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), laboratuvar Oluşturucu tarafından seçilebilecek konumlar kullanılabilir kapasiteyi temel alır.
+    VNET **eşlenmez** ve laboratuvar [oluşturucuları laboratuvar konumunu seçmelerine izin verildiğinde](./allow-lab-creator-pick-lab-location.md), laboratuvar Oluşturucu tarafından seçilebilecek konumlar kullanılabilir kapasiteyi temel alır.
 
 > [!NOTE]
 > Bir bölge için yeterli VM kapasitesi olduğundan emin olmak için, ilk olarak laboratuvar hesabı aracılığıyla veya laboratuvar oluştururken kapasite istemeniz önemlidir.
@@ -169,18 +169,18 @@ Yöneticiler veya laboratuvar oluşturucuları bir laboratuvar oluşturdukların
 
 | Boyut | Özellikler | Seriler | Önerilen kullanım |
 | ---- | ----- | ------ | ------------- |
-| Küçük| <ul><li>2 Çekirdek</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
-| Orta | <ul><li>4 çekirdek</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. |
-| Orta (Iç Içe sanallaştırma) | <ul><li>4 çekirdek</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.
-| Büyük | <ul><li>8 Çekirdek</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir.  Bu boyut, iç içe sanallaştırmayı da destekler. |
-| Büyük (Iç Içe sanallaştırma) | <ul><li>8 Çekirdek</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. |
-| Küçük GPU (görselleştirme) | <ul><li>6 çekirdek</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
-| Küçük GPU (Işlem) | <ul><li>6 çekirdek</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut, yapay zeka ve derin öğrenme gibi bilgisayar yoğunluklu uygulamalar için idealdir. |
-| Orta ölçekli GPU (görselleştirme) | <ul><li>12 çekirdek</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
+| Küçük| <ul><li>2 Çekirdek</li><li>3,5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Bu boyut, komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
+| Orta | <ul><li>4 çekirdek</li><li>7 GB RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. |
+| Orta (Iç Içe sanallaştırma) | <ul><li>4 çekirdek</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.
+| Büyük | <ul><li>8 Çekirdek</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir.  Bu boyut, iç içe sanallaştırmayı da destekler. |
+| Büyük (Iç Içe sanallaştırma) | <ul><li>8 Çekirdek</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. |
+| Küçük GPU (görselleştirme) | <ul><li>6 çekirdek</li><li>56 GB RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
+| Küçük GPU (Işlem) | <ul><li>6 çekirdek</li><li>56 GB RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |Bu boyut, yapay zeka ve derin öğrenme gibi bilgisayar yoğunluklu uygulamalar için idealdir. |
+| Orta ölçekli GPU (görselleştirme) | <ul><li>12 çekirdek</li><li>112 GB RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 
 ## <a name="manage-identity"></a>Kimliği Yönet
 
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve laboratuvarlara erişim sağlamak için aşağıdaki roller atanabilir:
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)kullanarak, laboratuvar hesaplarına ve laboratuvarlara erişim sağlamak için aşağıdaki roller atanabilir:
 
 - **Laboratuvar hesap sahibi**
 
@@ -200,7 +200,7 @@ Yöneticiler veya laboratuvar oluşturucuları bir laboratuvar oluşturdukların
 
 - **Laboratuvar oluşturucu**
 
-    Laboratuvar hesabı içinde Labs oluşturmak için, bir eğitimci, **Laboratuvar Oluşturucu** rolünün bir üyesi olmalıdır.  Bir eğitimci bir laboratuvar oluşturduğunda, otomatik olarak laboratuvarın sahibi olarak eklenir.  [ **Laboratuvar Oluşturucu** rolüne kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)hakkında öğreticiye bakın. 
+    Laboratuvar hesabı içinde Labs oluşturmak için, bir eğitimci, **Laboratuvar Oluşturucu** rolünün bir üyesi olmalıdır.  Bir eğitimci bir laboratuvar oluşturduğunda, otomatik olarak laboratuvarın sahibi olarak eklenir.  [ **Laboratuvar Oluşturucu** rolüne kullanıcı ekleme](./tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)hakkında öğreticiye bakın. 
 
 - **Laboratuvar sahip\katkıda bulunan**
   
@@ -217,7 +217,7 @@ Yöneticiler veya laboratuvar oluşturucuları bir laboratuvar oluşturdukların
 Rol atamaya yardımcı olacak bazı ipuçları aşağıda verilmiştir:
    - Genellikle, yalnızca Yöneticiler laboratuvar hesabının **sahibi** veya **katkıda bulunan** rollerinin üyesi olmalıdır; birden fazla owner\contributor. olabilir
    - Bir eğitimcinin yeni Labs oluşturma ve oluşturdukları laboratuvarları yönetme olanağı sunmak için; yalnızca **Laboratuvar Oluşturucu** rolüne erişim atamanız gerekir.
-   - Bir eğitimcinin belirli laboratuvarları yönetme yeteneğini, ancak yeni laboratuvarlar oluşturma yeteneğini *değil* ; yöneteceği laboratuvarların her biri için **sahip** veya **katkıda bulunan** rolüne erişim atamanız gerekir.  Örneğin, hem professlı hem de bir eğitim Yardımcısı 'nın laboratuvara sahip olmasını sağlamak isteyebilirsiniz.  [Kullanıcıyı bir laboratuvara sahip olarak ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)hakkında rehberlik bölümüne bakın.
+   - Bir eğitimcinin belirli laboratuvarları yönetme yeteneğini, ancak yeni laboratuvarlar oluşturma yeteneğini *değil* ; yöneteceği laboratuvarların her biri için **sahip** veya **katkıda bulunan** rolüne erişim atamanız gerekir.  Örneğin, hem professlı hem de bir eğitim Yardımcısı 'nın laboratuvara sahip olmasını sağlamak isteyebilirsiniz.  [Kullanıcıyı bir laboratuvara sahip olarak ekleme](./how-to-add-user-lab-owner.md)hakkında rehberlik bölümüne bakın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -274,4 +274,3 @@ Laboratuvar ortamının kurulması için ortak olan sonraki adımlar.
 - [Laboratuvar Kurulum Kılavuzu](setup-guide.md)
 - [Laboratuvarlar için maliyet yönetimi](cost-management-guide.md)
 - [Takımlar içinde Azure Lab Services kullanma](lab-services-within-teams-overview.md)
-

@@ -4,15 +4,15 @@ description: Azure dosya paylaşımlarında bilinen performans sorunlarını gid
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/15/2020
+ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 3e6490babb5a4e68c1ecd931251ea4eb99d6c3f5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630150"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660296"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
@@ -28,15 +28,15 @@ Paylaşımınızın kısıtlanıp kısıtlanmadığını doğrulamak için porta
 
 1. Azure portal depolama hesabınıza gidin.
 
-1. Sol bölmede, **izleme** altında **ölçümler** ' i seçin.
+1. Sol bölmede, **izleme** altında **ölçümler**' i seçin.
 
 1. Depolama hesabı kapsamınız için ölçüm ad alanı olarak **Dosya** ' yı seçin.
 
 1. Ölçüm olarak **işlemler** ' i seçin.
 
 1. **Yanıt türü** için bir filtre ekleyin ve ardından herhangi bir istekte aşağıdaki yanıt kodlarından birine sahip olup olmadığını kontrol edin:
-   * **Başarılı bir kısıtlama** : sunucu ileti bloğu (SMB) için
-   * **Clientkısıtlar Lingerror** : Rest için
+   * **Başarılı bir kısıtlama**: sunucu ileti bloğu (SMB) için
+   * **Clientkısıtlar Lingerror**: Rest için
 
    !["Yanıt türü" özellik filtresini gösteren Premium dosya paylaşımları için ölçüm seçeneklerinin ekran görüntüsü.](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -83,10 +83,11 @@ Kullandığınız uygulama tek iş parçacıklı ise, bu kurulum, sağlanan payl
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>İstemci ağ tarafından desteklenen maksimum üretilen iş elde edemedi
 
 ### <a name="cause"></a>Nedeni
-Olası bir neden, çok kanallı SMB desteğinin olmamasından kaynaklanır. Şu anda Azure dosyaları yalnızca tek kanalı destekler, bu nedenle istemci sanal makineden sunucuya yalnızca bir bağlantı vardır. Bu tek bağlantı, istemci sanal makinesinde tek bir çekirdeğe gereğinden, bu nedenle bir VM 'den en fazla üretilen iş ulaşılabilir, tek bir çekirdekle bağlanır.
+Olası bir neden, standart dosya paylaşımları için çok kanallı SMB desteğinin olmamasıdır. Şu anda Azure dosyaları yalnızca tek kanalı destekler, bu nedenle istemci sanal makineden sunucuya yalnızca bir bağlantı vardır. Bu tek bağlantı, istemci sanal makinesinde tek bir çekirdeğe gereğinden, bu nedenle bir VM 'den en fazla üretilen iş ulaşılabilir, tek bir çekirdekle bağlanır.
 
 ### <a name="workaround"></a>Geçici çözüm
 
+- Premium dosya paylaşımları için, [bir FileStorage hesabında çok KANALLı SMB 'Yi etkinleştirin](storage-files-enable-smb-multichannel.md).
 - Daha büyük bir çekirdekli VM 'nin alınması, aktarım hızını artırmaya yardımcı olur.
 - İstemci uygulamasını birden çok VM 'den çalıştırmak, aktarım hızını artırır.
 - Mümkün olduğunda REST API 'Leri kullanın.
@@ -101,7 +102,7 @@ Bu, Linux üzerinde SMB istemcisinin uygulanmasıyla ilgili bilinen bir sorundur
 
 - Yükü birden çok VM arasında yayın.
 - Aynı VM 'de, bir **nosharesock** seçeneğiyle birden çok bağlama noktası kullanın ve yükü bu bağlama noktalarında yayın.
-- Linux 'ta, her **fsync** ÇAĞRıSıNDA bir SMB temizlemeyi zormaktan kaçınmak için bir **nostrictsync** seçeneği ile bağlama yapmayı deneyin. Azure dosyaları için bu seçenek veri tutarlılığını engellemez, ancak dizin listelerinde eski dosya meta verileri ( **ls-l** komutu) ile sonuçlanabilir. **Stat** komutunu kullanarak dosya meta verilerinin doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
+- Linux 'ta, her **fsync** ÇAĞRıSıNDA bir SMB temizlemeyi zormaktan kaçınmak için bir **nostrictsync** seçeneği ile bağlama yapmayı deneyin. Azure dosyaları için bu seçenek veri tutarlılığını engellemez, ancak dizin listelerinde eski dosya meta verileri (**ls-l** komutu) ile sonuçlanabilir. **Stat** komutunu kullanarak dosya meta verilerinin doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Kapsamlı açık/kapalı işlemleri içeren yoğun iş yükleri için yüksek gecikme süreleri
 
@@ -170,32 +171,79 @@ G/ç yoğunluklu iş yükleri için Azure dosya paylaşımlarına erişirken bek
 
 - Kullanılabilir [düzeltmeyi](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)yükler.
 
+## <a name="smb-multichannel-option-not-visible-under-file-share-settings"></a>SMB çok kanallı seçeneği dosya paylaşma ayarları altında görünmez. 
+
+### <a name="cause"></a>Nedeni
+
+Abonelik özellik için kaydedilmemiş ya da bölge ve hesap türü desteklenmiyor.
+
+### <a name="solution"></a>Çözüm
+
+Aboneliğinizin çok kanallı SMB özelliği için kayıtlı olduğundan emin olun. Bkz [. Başlarken hesap](storage-files-enable-smb-multichannel.md#getting-started) türünün, hesap Genel Bakış sayfasında dosya depolama (Premium dosya hesabı) olduğundan emin olun. 
+
+## <a name="smb-multichannel-is-not-being-triggered"></a>Çok kanallı SMB tetiklenemez.
+
+### <a name="cause"></a>Nedeni
+
+SMB çok kanallı yapılandırma ayarları için bir uzaktan yeniden bağlama olmadan yapılan son değişiklikler.
+
+### <a name="solution"></a>Çözüm
+ 
+-   Windows SMB istemcisi veya hesap SMB çok kanallı yapılandırma ayarları üzerinde yapılan herhangi bir değişiklik yaptıktan sonra, paylaşımın bağlantısını kesmeniz, 60 saniye beklemeniz ve çok kanallı bir şekilde tetiklemek için paylaşıma yeniden izin etmeniz gerekir.
+-   Windows istemci işletim sistemi için, yüksek sıra derinliği ile GÇ yükü oluşturun. Örneğin, SMB çok kanallı SMB tetiklenecek bir dosyayı kopyalama.  Sunucu işletim sistemi için çok kanallı SMB QD = 1 ile tetiklenir, bu da paylaşıma herhangi bir GÇ başlattığınızda her zaman gelir.
+
+## <a name="high-latency-on-web-sites-hosted-on-file-shares"></a>Dosya paylaşımlarında barındırılan Web sitelerinde yüksek gecikme 
+
+### <a name="cause"></a>Nedeni  
+
+Dosya paylaşımlarında yüksek sayıdaki dosya değişikliği bildirimi, önemli ölçüde yüksek gecikme süreleriyle sonuçlanabilir. Bu genellikle derin iç içe Dizin yapısıyla dosya paylaşımlarında barındırılan Web sitelerinde oluşur. Tipik bir senaryo, varsayılan yapılandırmadaki her bir dizin için dosya değişiklik bildiriminin ayarlandığı IIS tarafından barındırılan Web uygulamasıdır. SMB istemcisinin kaydedildiği paylaşımdaki her değişiklik (ReadDirectoryChangesW), sistem kaynaklarını alan ve değişiklik sayısıyla worsens veren dosya hizmetinden istemciye bir değişiklik bildirimi gönderir. Bu, paylaşımın azaltılmasına neden olabilir ve bu nedenle daha yüksek istemci tarafı gecikme süresine neden olur. 
+
+Doğrulamak için, portalda Azure ölçümlerini kullanabilirsiniz. 
+
+1. Azure portal depolama hesabınıza gidin. 
+1. Sol taraftaki menüde, Izleme altında ölçümler ' i seçin. 
+1. Depolama hesabı kapsamınız için ölçüm ad alanı olarak dosya ' yı seçin. 
+1. Ölçüm olarak Işlemler ' i seçin. 
+1. ResponseType için bir filtre ekleyin ve herhangi bir isteğin bir yanıt kodu (SMB için) veya Clientkısıtıngerror (REST için) yanıt koduna sahip olup olmadığını denetleyin.
+
+### <a name="solution"></a>Çözüm 
+
+- Dosya değişiklik bildirimi kullanılmıyorsa, dosya değişikliği bildirimini devre dışı bırak (tercih edilen).
+    - FCNMode 'ı güncelleştirerek [dosya değişiklik bildirimini devre dışı bırakın](https://support.microsoft.com/help/911272/fix-asp-net-2-0-connected-applications-on-a-web-site-may-appear-to-sto) . 
+    - Kayıt defterinizde ayarlayarak IIS çalışan Işlemi (W3WP) yoklama aralığını 0 olarak güncelleştirin `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` ve W3wp işlemini yeniden başlatın. Bu ayar hakkında bilgi edinmek için bkz. [IIS 'in birçok bölümü tarafından kullanılan ortak kayıt defteri anahtarları](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp).
+- Birimi azaltmak için dosya değişim bildirimi yoklama aralığı sıklığını artırın.
+    - W3WP çalışan işlem yoklama aralığını, gereksiniminize göre daha yüksek bir değere (örn. 10 dakika veya 30 dakika) güncelleştirin. `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` [Kayıt defterinizde ayarlama YAPıN](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) ve W3wp işlemini yeniden başlatın.
+- Web sitenizin eşlenmiş fiziksel dizininde iç içe dizin yapısı varsa, bildirim sesini azaltmak için dosya değişikliği bildiriminin kapsamını sınırlamayı deneyebilirsiniz.
+    - Varsayılan olarak IIS, sanal dizinin eşlendiği fiziksel dizindeki Web.config dosyalarından ve bu fiziksel dizindeki alt dizinlerde bulunan yapılandırmayı kullanır. Alt dizinlerde Web.config dosyaları kullanmak istemiyorsanız, sanal dizindeki allowSubDirConfig özniteliği için false değerini belirtin. Daha fazla ayrıntı [burada](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)bulunabilir. 
+
+Eşlenen fiziksel alt dizinleri kapsamdan dışlamak için Web.Config içindeki IIS sanal dizini "allowSubDirConfig" ayarını false olarak ayarlayın.  
+
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Dosya paylaşma kısıtlandığında uyarı oluşturma
 
 1. Azure portal depolama hesabınıza gidin.
-1. **İzleme** bölümünde **Uyarılar** ' ı seçin ve ardından **Yeni uyarı kuralı** ' nı seçin.
-1. **Kaynağı Düzenle** ' yi seçin, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' yi seçin. Örneğin, depolama hesabı adı *contoso* ise, contoso/dosya kaynağını seçin.
+1. **İzleme** bölümünde **Uyarılar**' ı seçin ve ardından **Yeni uyarı kuralı**' nı seçin.
+1. **Kaynağı Düzenle**' yi seçin, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' yi seçin. Örneğin, depolama hesabı adı *contoso* ise, contoso/dosya kaynağını seçin.
 1. Koşul eklemek için **Koşul Seç** ' i seçin.
 1. Depolama hesabı için desteklenen sinyaller listesinde, **işlem** ölçümünü seçin.
-1. **Sinyal mantığını Yapılandır** bölmesindeki **Boyut adı** açılır listesinde **yanıt türü** ' nü seçin.
+1. **Sinyal mantığını Yapılandır** bölmesindeki **Boyut adı** açılır listesinde **yanıt türü**' nü seçin.
 1. **Boyut değerleri** aşağı açılan listesinde, başarılı olarak daraltma (SMB için) veya **Clientazaltlgerror** (REST için) öğesini seçin. **SuccessWithThrottling**
 
    > [!NOTE]
-   > Ne başarılı bir şekilde **daraltma** ne de **Clientazaltıgerror** değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için, **boyut değerleri** aşağı açılan listesinin yanındaki **özel değer Ekle** ' yi seçin, **başarılı bir kısıtlama** veya **Clientkısıtıngerror** yazın, **Tamam** ' ı seçin ve 7. adımı yineleyin.
+   > Ne başarılı bir şekilde **daraltma** ne de **Clientazaltıgerror** değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için, **boyut değerleri** aşağı açılan listesinin yanındaki **özel değer Ekle**' yi seçin, **başarılı bir kısıtlama** veya **Clientkısıtıngerror** yazın, **Tamam**' ı seçin ve 7. adımı yineleyin.
 
-1. **Boyut adı** açılır listesinde **dosya paylaşma** ' yı seçin.
+1. **Boyut adı** açılır listesinde **dosya paylaşma**' yı seçin.
 1. **Boyut değerleri** aşağı açılan listesinde, uyarmak istediğiniz dosya paylaşımını veya paylaşımlarını seçin.
 
    > [!NOTE]
    > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Boyut değerleri açılan listesi, standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından dosya paylaşımlarını listelemiyor. Depolama hesabındaki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımmıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, depolama hesabı başına bir dosya paylaşımı kullanmanızı öneririz.
 
-1. **Eşik değeri** , **işleci** , **toplama ayrıntı düzeyi** ve **değerlendirme sıklığını** girerek uyarı parametrelerini tanımlayın ve **bitti** ' yi seçin.
+1. **Eşik değeri**, **işleci**, **toplama ayrıntı düzeyi** ve **değerlendirme sıklığını** girerek uyarı parametrelerini tanımlayın ve **bitti**' yi seçin.
 
     > [!TIP]
     > Statik eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşik değeri belirlemenize yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
 
-1. **Eylem grubunu Seç** ' i seçin ve ardından var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (örneğin, e-posta veya SMS) ekleyin.
-1. **Uyarı kuralı adı** , **açıklaması** ve **önem derecesi** gibi uyarı ayrıntılarını girin.
+1. **Eylem grubunu Seç**' i seçin ve ardından var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (örneğin, e-posta veya SMS) ekleyin.
+1. **Uyarı kuralı adı**, **açıklaması** ve **önem derecesi** gibi uyarı ayrıntılarını girin.
 1. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' u seçin.
 
 Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
@@ -203,17 +251,17 @@ Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Premium dosya paylaşımının kısıtlanıyor olması durumunda uyarı oluşturma
 
 1. Azure portal depolama hesabınıza gidin.
-1. **İzleme** bölümünde **Uyarılar** ' ı seçin ve ardından **Yeni uyarı kuralı** ' nı seçin.
-1. **Kaynağı Düzenle** ' yi seçin, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' yi seçin. Örneğin, depolama hesabı adı *contoso* ise, contoso/dosya kaynağını seçin.
+1. **İzleme** bölümünde **Uyarılar**' ı seçin ve ardından **Yeni uyarı kuralı**' nı seçin.
+1. **Kaynağı Düzenle**' yi seçin, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' yi seçin. Örneğin, depolama hesabı adı *contoso* ise, contoso/dosya kaynağını seçin.
 1. Koşul eklemek için **Koşul Seç** ' i seçin.
 1. Depolama hesabı için desteklenen sinyaller listesinde **Çıkış** ölçümünü seçin.
 
    > [!NOTE]
    > Giriş, çıkış veya işlem değerleri ayarladığınız eşikleri aştığında uyarılmak için üç ayrı uyarı oluşturmanız gerekir. Bunun nedeni, bir uyarının yalnızca tüm koşulların karşılanması durumunda tetiklenmesi. Örneğin, tüm koşulları tek bir uyarıya yerleştirirseniz, yalnızca giriş, çıkış ve işlemler eşik tutarlarını aşarsa uyarılırsınız.
 
-1. Aşağı kaydırın. **Boyut adı** açılır listesinde **dosya paylaşma** ' yı seçin.
+1. Aşağı kaydırın. **Boyut adı** açılır listesinde **dosya paylaşma**' yı seçin.
 1. **Boyut değerleri** aşağı açılan listesinde, uyarmak istediğiniz dosya paylaşımını veya paylaşımlarını seçin.
-1. **Operatör** , **eşik değeri** , **toplama ayrıntı düzeyi** ve **değerlendirme sıklığı** aşağı açılan listelerinin değerlerini seçerek uyarı parametrelerini tanımlayın ve ardından **bitti** ' yi seçin.
+1. **Operatör**, **eşik değeri**, **toplama ayrıntı düzeyi** ve **değerlendirme sıklığı** aşağı açılan listelerinin değerlerini seçerek uyarı parametrelerini tanımlayın ve ardından **bitti**' yi seçin.
 
    Çıkış, giriş ve işlem ölçümleri, saniye başına çıkış, giriş ve g/ç sağlanmış olmasına rağmen dakikada ifade edilir. Bu nedenle, örneğin, sağlanan çıkış, &nbsp; saniyede 90/iki bayt (MIB/sn) ise ve eşiğinin sağlanan çıkış için yüzde 80 olmasını istiyorsanız &nbsp; aşağıdaki uyarı parametrelerini seçin: 
    - **Eşik değeri** için: *75497472* 
@@ -222,10 +270,10 @@ Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek
    
    Uyarının ne kadar gürültülü olmasını istediğinize bağlı olarak, **toplama ayrıntı düzeyi** ve **değerlendirme sıklığı** için değerler de seçebilirsiniz. Örneğin, uyarının 1 saat boyunca ortalama giriş bölümüne bakması ve uyarı kuralınızın her saat içinde çalıştırılmasını istiyorsanız aşağıdakileri seçin:
    - **Toplama ayrıntı düzeyi** için: *1 saat*
-   - **Değerlendirme sıklığı** : *1 saat*
+   - **Değerlendirme sıklığı**: *1 saat*
 
-1. **Eylem grubunu Seç** ' i seçin ve ardından var olan bir eylem grubunu seçerek veya yenisini oluşturarak uyarıya bir eylem grubu (örneğin, e-posta veya SMS) ekleyin.
-1. **Uyarı kuralı adı** , **açıklaması** ve **önem derecesi** gibi uyarı ayrıntılarını girin.
+1. **Eylem grubunu Seç**' i seçin ve ardından var olan bir eylem grubunu seçerek veya yenisini oluşturarak uyarıya bir eylem grubu (örneğin, e-posta veya SMS) ekleyin.
+1. **Uyarı kuralı adı**, **açıklaması** ve **önem derecesi** gibi uyarı ayrıntılarını girin.
 1. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' u seçin.
 
     > [!NOTE]
@@ -234,7 +282,7 @@ Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek
     >
     > - *Sağlanan IOPS nedeniyle* Premium dosya paylaşımınızın kısıtlanmak üzere kapandığı hakkında bildirim almak için, önceki yönergeleri izleyin, ancak aşağıdaki değişiklikleri yapın:
     >    - 5. adımda **Çıkış** yerine **işlem** ölçümünü seçin.
-    >    - 10. adımda, **toplama türü** için tek seçenek *Toplam* ' dur. Bu nedenle, eşik değeri seçtiğiniz toplama ayrıntı düzeyine bağlıdır. Örneğin, eşiğin &nbsp; sağlanan temel IOPS 'nin yüzde 80 olmasını istiyorsanız ve **toplama ayrıntı düzeyi** için *1 saat* seçerseniz, **eşik değeri** taban çizgisi IOPS (bayt cinsinden) &times; &nbsp; 0,8 &times; &nbsp; 3600 olacaktır. 
+    >    - 10. adımda, **toplama türü** için tek seçenek *Toplam*' dur. Bu nedenle, eşik değeri seçtiğiniz toplama ayrıntı düzeyine bağlıdır. Örneğin, eşiğin &nbsp; sağlanan temel IOPS 'nin yüzde 80 olmasını istiyorsanız ve **toplama ayrıntı düzeyi** için *1 saat* seçerseniz, **eşik değeri** taban çizgisi IOPS (bayt cinsinden) &times; &nbsp; 0,8 &times; &nbsp; 3600 olacaktır. 
 
 Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 

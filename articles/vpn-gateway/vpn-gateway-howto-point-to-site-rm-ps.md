@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: b6df7aa919721576aad10d6a476be976ef81df7d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145880"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660415"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: PowerShell
 
@@ -111,7 +111,7 @@ $DNS = "10.2.1.4"
 Bu adımda, VNet 'iniz için sanal ağ geçidini yapılandırır ve oluşturursunuz.
 
 * -GatewayType değeri **Vpn** ve -VpnType değeri **RouteBased** olmalıdır.
-* -VpnClientProtocol, etkinleştirmek istediğiniz tünel türlerini belirtmek için kullanılır. Tünel seçenekleri **OpenVPN, SSTP** ve **Ikev2** ' dir. Bunlardan birini veya desteklenen birleşimi etkinleştirmeyi seçebilirsiniz. Birden çok türü etkinleştirmek istiyorsanız, adları virgülle ayırarak belirtin. OpenVPN ve SSTP birlikte etkinleştirilemez. Android ve Linux üzerindeki strongSwan istemcisi ile iOS ve OSX üzerindeki yerel IKEv2 VPN istemcisi, bağlanmak için yalnızca IKEv2 tünelini kullanır. Windows istemcileri önce IKEv2’yi dener ve bağlanamazsa SSTP’ye döner. OpenVPN istemcisini kullanarak OpenVPN tünel türüne bağlanabilirsiniz.
+* -VpnClientProtocol, etkinleştirmek istediğiniz tünel türlerini belirtmek için kullanılır. Tünel seçenekleri **OpenVPN, SSTP** ve **Ikev2**' dir. Bunlardan birini veya desteklenen birleşimi etkinleştirmeyi seçebilirsiniz. Birden çok türü etkinleştirmek istiyorsanız, adları virgülle ayırarak belirtin. OpenVPN ve SSTP birlikte etkinleştirilemez. Android ve Linux üzerindeki strongSwan istemcisi ile iOS ve OSX üzerindeki yerel IKEv2 VPN istemcisi, bağlanmak için yalnızca IKEv2 tünelini kullanır. Windows istemcileri önce IKEv2’yi dener ve bağlanamazsa SSTP’ye döner. OpenVPN istemcisini kullanarak OpenVPN tünel türüne bağlanabilirsiniz.
 * Sanal ağ geçidi ' temel ' SKU 'SU Ikev2, OpenVPN veya RADIUS kimlik doğrulamasını desteklemez. Mac istemcilerinin sanal ağınıza bağlanmasını planlıyorsanız, temel SKU 'YU kullanmayın.
 * Bir VPN ağ geçidi işleminin tamamlanması, seçtiğiniz [ağ geçidi sku'suna](vpn-gateway-about-vpn-gateway-settings.md) bağlı olarak 45 dakikaya kadar sürebilir. Bu örnekte IKEv2 kullanılmıştır.
 
@@ -228,8 +228,8 @@ $profile.VPNProfileSASUrl
 
 ### <a name="mac-vpn-client"></a>Mac VPN istemcisi
 
-Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulup **Bağlan** ’a tıklayın.
-Ayrıntılı yönergeler için [Install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) ' i işaretleyin. Bağlanmayla ilgili sorun yaşıyorsanız, sanal ağ geçidinin temel bir SKU kullanmadığından emin olun. Temel SKU, Mac istemcileri için desteklenmez.
+Ağ iletişim kutusunda kullanmak istediğiniz istemci profilini bulup **Bağlan**’a tıklayın.
+Ayrıntılı yönergeler için [Install-Mac (OS X)](./point-to-site-vpn-client-configuration-azure-cert.md#installmac) ' i işaretleyin. Bağlanmayla ilgili sorun yaşıyorsanız, sanal ağ geçidinin temel bir SKU kullanmadığından emin olun. Temel SKU, Mac istemcileri için desteklenmez.
 
   ![Mac bağlantısı](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -324,7 +324,7 @@ Genellikle ekip ve kuruluş düzeylerinde erişimi yönetmek için kök sertifik
 
 **İptal etmek için:**
 
-1. İstemci sertifikasının parmak izini alın. Daha fazla bilgi için bkz. [bir sertifikanın parmak izini alma](https://msdn.microsoft.com/library/ms734695.aspx).
+1. İstemci sertifikasının parmak izini alın. Daha fazla bilgi için bkz. [bir sertifikanın parmak izini alma](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate).
 
 1. Bilgileri bir metin düzenleyicisine kopyalayın ve sürekli bir dize haline getirmek için tüm boşlukları kaldırın. Bu dize sonraki adımda bir değişken olarak bildirilir.
 
@@ -385,6 +385,6 @@ Ek Noktadan siteye bilgi için [VPN Gateway Noktadan siteye hakkında SSS](vpn-g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](https://docs.microsoft.com/azure/). Ağ ve sanal makineler hakkında daha fazla bilgi edinmek için, bkz. [Azure ve Linux VM ağına genel bakış](../virtual-machines/linux/azure-vm-network-overview.md).
+Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](../index.yml). Ağ ve sanal makineler hakkında daha fazla bilgi edinmek için, bkz. [Azure ve Linux VM ağına genel bakış](../virtual-machines/network-overview.md).
 
 P2S sorun giderme bilgileri için [Sorun giderme: Azure noktadan siteye bağlantısı sorunları](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

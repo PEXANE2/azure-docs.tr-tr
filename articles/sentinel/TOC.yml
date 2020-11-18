@@ -208,7 +208,7 @@
 - name: Başvuru (Yeni!)
   items:
     - name: REST API'leri
-      href: 'https://docs.microsoft.com/rest/api/securityinsights/'
+      href: /rest/api/securityinsights/
     - name: Ağ normalleştirme şeması
       href: normalization-schema.md
 - name: Kaynaklar
@@ -218,7 +218,7 @@
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: 'Azure Güvenlik, Gizlilik ve Uyumluluk blogu'
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+      href: /archive/blogs/azuresecurity/
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: Fiyatlandırma

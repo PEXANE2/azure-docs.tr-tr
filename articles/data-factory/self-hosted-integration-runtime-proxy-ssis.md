@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 09/09/2020
-ms.openlocfilehash: 867f12b026a56b7cab8530ef30c4a2f2c325f6b1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/15/2020
+ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637794"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659990"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Data Factory içinde Azure-SSIS IR için otomatik olarak barındırılan bir IR ara sunucu olarak yapılandırma
 
@@ -28,8 +28,8 @@ Bu makalede, proxy olarak yapılandırılan şirket içinde barındırılan tüm
 Bu özellikle, [Azure-SSIS IR bir sanal ağa katmak](./join-azure-ssis-integration-runtime-virtual-network.md)zorunda kalmadan şirket içi verilere erişebilirsiniz. Bu özellik, kurumsal ağınızın bir yapılandırması çok karmaşık olduğunda veya bir ilke Azure-SSIS IR eklemek için çok fazla kısıtlayıcı olduğunda faydalıdır.
 
 Bu özellik, SSIS veri akışı görevlerinizi uygun olduğunda iki hazırlama görevine ayırır: 
-* **Şirket içi hazırlama görevi** : Bu görev, şirket IÇINDE barındırılan IR üzerinde şirket içi veri deposuna bağlanan veri akışı bileşeninizi çalıştırır. Verileri şirket içi veri deposundan Azure Blob depolama alanındaki bir hazırlama alanına veya tam tersi yönde taşıdıkça.
-* **Bulut hazırlama görevi** : Bu görev, Azure-SSIS IR şirket içi veri deposuna bağlanmeyen veri akışı bileşeninizi çalıştırır. Verileri Azure Blob depolama alanındaki hazırlama alanından bir bulut veri deposuna veya tam tersi yönde taşıırlar.
+* **Şirket içi hazırlama görevi**: Bu görev, şirket IÇINDE barındırılan IR üzerinde şirket içi veri deposuna bağlanan veri akışı bileşeninizi çalıştırır. Verileri şirket içi veri deposundan Azure Blob depolama alanındaki bir hazırlama alanına veya tam tersi yönde taşıdıkça.
+* **Bulut hazırlama görevi**: Bu görev, Azure-SSIS IR şirket içi veri deposuna bağlanmeyen veri akışı bileşeninizi çalıştırır. Verileri Azure Blob depolama alanındaki hazırlama alanından bir bulut veri deposuna veya tam tersi yönde taşıırlar.
 
 Veri akışı görevinde verileri Şirket içinden buluta taşıdıysanız, ilk ve ikinci hazırlama görevleri sırasıyla Şirket içi ve bulut hazırlama görevleri olacaktır. Veri akışı göreviniz verileri buluttan şirket içine taşıdıysanız, ilk ve ikinci hazırlama görevleri sırasıyla bulut ve şirket içi hazırlama görevleri olacaktır. Veri akışı göreviniz Şirket içinden şirket içine veri taşıdıysanız, ilk ve ikinci hazırlama görevleri hem şirket içi hazırlama görevleri olacaktır. Veri akışı göreviniz verileri buluttan buluta taşıdıysa, bu özellik geçerli değildir.
 
@@ -43,24 +43,34 @@ Daha sonra, Azure-SSIS IR ayarlandığı veri fabrikasında kendi kendine barın
 
 Son olarak, şirket içi makinenize veya Azure sanal makinenize (VM) ek sürücü ve çalışma zamanının yanı sıra şirket içinde barındırılan IR 'nin en son sürümünü indirip yüklersiniz:
 - [Şirket içinde BARıNDıRıLAN IR](https://www.microsoft.com/download/details.aspx?id=39717)'nin en son sürümünü indirip yükleyin.
-- Paketlerinizdeki nesne bağlama ve katıştırma veritabanı (OLEDB)/açık veritabanı bağlantısı (ODBC) bağlayıcıları kullanıyorsanız, ilgili sürücüleri, şirket içinde barındırılan IR 'nin yüklü olduğu makinede indirip yükleyin, daha önce yapmadıysanız.  
+- Paketlerinizdeki nesne bağlama ve katıştırma veritabanı (OLEDB), açık veritabanı bağlantısı (ODBC) veya ADO.NET bağlayıcıları kullanıyorsanız, zaten yapmadıysanız, ilgili sürücüleri şirket içinde barındırılan IR 'nin yüklü olduğu makinede indirin ve yükleyin.  
 
   SQL Server (SQL Server Native Client [SQLNCLI]) için OLEDB sürücüsünün önceki sürümünü kullanıyorsanız, [64 bitlik sürümü indirin](https://www.microsoft.com/download/details.aspx?id=50402).  
 
   SQL Server (MSOLEDBSQL) için OLEDB sürücüsünün en son sürümünü kullanıyorsanız, [64 bitlik sürümü indirin](https://www.microsoft.com/download/details.aspx?id=56730).  
   
-  PostgreSQL, MySQL, Oracle vb. gibi diğer veritabanı sistemleri için OLEDB/ODBC sürücüleri kullanıyorsanız, 64 bitlik sürümleri Web sitelerinden indirebilirsiniz.
+  PostgreSQL, MySQL, Oracle vb. gibi diğer veritabanı sistemleri için OLEDB/ODBC/ADO. NET sürücüleri kullanıyorsanız, 64 bitlik sürümleri Web sitelerinden indirebilirsiniz.
 - Şimdiye kadar yapmadıysanız, [Visual C++ (VC) çalışma zamanının 64 bitlik sürümünü](https://www.microsoft.com/download/details.aspx?id=40784) , şirket IÇINDE barındırılan IR 'nin yüklü olduğu makinede indirin ve yükleyin.
 
-## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Azure Blob depolama ile bağlantılı hizmeti hazırlama için hazırlama
+### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>Şirket içi hazırlama görevleri için Windows kimlik doğrulamasını etkinleştirme
 
-Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir Azure Blob depolama alanına bağlı hizmet oluşturun. Bunu yapmak için bkz. [Azure Data Factory 'ye bağlı hizmet oluşturma](./quickstart-create-data-factory-portal.md#create-a-linked-service). Aşağıdakileri yaptığınızdan emin olun:
-- **Veri depolama** Için **Azure Blob depolama** ' yı seçin.  
+Şirket içinde barındırılan IR 'de şirket içi hazırlama görevleri Windows kimlik doğrulaması gerektiriyorsa, [SSIS paketlerinizi aynı Windows kimlik doğrulamasını kullanacak şekilde yapılandırın](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+
+Şirket içi hazırlama görevleriniz, kendi kendine barındırılan IR Hizmeti hesabıyla (varsayılan olarak *NT SERVICE\DIAHostService*) çağrılacaktır ve veri depolarınız Windows kimlik doğrulama hesabıyla erişilecek. Her iki hesap de belirli güvenlik ilkelerinin atanmasını gerektirir. Şirket içinde barındırılan IR makinesinde **yerel güvenlik ilkesi**  >  **Yerel ilkeler**  >  **Kullanıcı hakları ataması**' na gidin ve ardından aşağıdakileri yapın:
+
+1. *Bir işlem için bellek kotalarını ayarlama* ve *bir işlem düzeyi belirteç* ILKELERINI şirket içinde barındırılan IR Hizmeti hesabıyla değiştirme. Bu, kendi kendine barındırılan IR 'yi varsayılan hizmet hesabıyla yüklediğinizde otomatik olarak gerçekleşir. Değilse, bu ilkeleri el ile atayın. Farklı bir hizmet hesabı kullanıyorsanız, buna aynı ilkeleri atayın.
+
+1. Windows kimlik doğrulama hesabına *hizmet olarak oturum* açma ilkesi atayın.
+
+## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Azure Blob depolama bağlı hizmetini hazırlama için hazırlama
+
+Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir Azure Blob depolama bağlı hizmeti oluşturun. Bunu yapmak için bkz. [Azure Data Factory 'ye bağlı hizmet oluşturma](./quickstart-create-data-factory-portal.md#create-a-linked-service). Aşağıdakileri yaptığınızdan emin olun:
+- **Veri depolama** Için **Azure Blob depolama**' yı seçin.  
 - **Tümleştirme çalışma zamanı aracılığıyla Bağlan** Için, Azure Blob depolama alanınızı erişim kimlik bilgilerini getirmek üzere varsayılan Azure IR kullandığımızda **Otomatik resolveıntegrationruntime** (Azure-SSIS IR ve kendi içinde barındırılan IR) seçeneğini belirleyin.
-- **Kimlik doğrulama yöntemi** için **hesap anahtarı** , **SAS URI 'si** veya **hizmet sorumlusu** ' nı seçin.  
+- **Kimlik doğrulama yöntemi** için **hesap anahtarı**, **SAS URI 'Si**, **hizmet sorumlusu** veya **yönetilen kimlik**' i seçin.  
 
-    >[!TIP]
-    >**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı* rolü verin. Daha fazla bilgi için [Azure Blob depolama Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties)' na bakın.
+>[!TIP]
+>**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı* rolü verin. Daha fazla bilgi için bkz. [Azure Blob Storage Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties). **Yönetilen kimlik** yöntemini seçerseniz, Azure Blob depolamaya erışmek için ADF ile yönetilen kimlik uygun rollerinizi verin. Daha fazla bilgi için bkz. [ADF ile yönetilen kimlikle Azure Active Directory kimlik doğrulaması kullanarak Azure Blob depolamaya erişme](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
 
 ![Azure Blob depolama ile bağlantılı hizmeti hazırlama için hazırlama](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -68,7 +78,7 @@ Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir 
 
 Şirket içinde barındırılan IR ve Azure Blob depolama ile bağlantılı hizmetinizi hazırlama için hazırladığınıza göre, artık yeni veya mevcut Azure-SSIS IR, Veri Fabrikası portalınızdaki veya uygulamanızda ara sunucu olarak şirket içinde barındırılan IR ile yapılandırabilirsiniz. Bunu yapmadan önce, mevcut Azure-SSIS IR zaten çalışıyorsa, durdurun ve yeniden başlatın.
 
-1. **Tümleştirme çalışma zamanı kurulumu** bölmesinde, **İleri** ' yi seçerek **Genel ayarlar** ve **SQL ayarları** bölümlerinin ötesine atlayın. 
+1. **Tümleştirme çalışma zamanı kurulumu** bölmesinde, **İleri**' yi seçerek **Genel ayarlar** ve **SQL ayarları** bölümlerinin ötesine atlayın. 
 
 1. **Gelişmiş ayarlar** bölümünde şunları yapın:
 
@@ -80,7 +90,7 @@ Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir 
 
    1. **Hazırlama yolu** kutusunda, seçili Azure Blob depolama hesabınızda bir blob kapsayıcısı belirtin veya hazırlama için varsayılan bir tane kullanmak üzere boş bırakın.
 
-   1. **Devam** ’ı seçin.
+   1. **Devam**’ı seçin.
 
    ![Şirket içinde barındırılan IR ile gelişmiş ayarlar](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -129,7 +139,7 @@ Visual Studio için SSIS projeleri uzantısı ya da tek başına bir yükleyici 
 ![ConnectByProxy özelliğini etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Bu özelliği, var olan paketleri çalıştırdığınızda, bunları bir tane ile el ile değiştirmek zorunda kalmadan da etkinleştirebilirsiniz.  İki seçenek vardır:
-- **Seçenek A** : Azure-SSIS IR için en son SSDT ile bu paketleri içeren projeyi açın, yeniden oluşturun ve yeniden dağıtın. Daha sonra ilgili bağlantı yöneticileri için özelliği *true* olarak ayarlayarak özelliği etkinleştirebilirsiniz. SSMS 'den paket çalıştırırken, bu bağlantı yöneticileri **paket Çalıştır** açılır penceresinin **bağlantı yöneticileri** sekmesinde görüntülenir.
+- **Seçenek A**: Azure-SSIS IR için en son SSDT ile bu paketleri içeren projeyi açın, yeniden oluşturun ve yeniden dağıtın. Daha sonra ilgili bağlantı yöneticileri için özelliği *true* olarak ayarlayarak özelliği etkinleştirebilirsiniz. SSMS 'den paket çalıştırırken, bu bağlantı yöneticileri **paket Çalıştır** açılır penceresinin **bağlantı yöneticileri** sekmesinde görüntülenir.
 
   ![ConnectByProxy Property2 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -147,19 +157,11 @@ Bu özelliği, var olan paketleri çalıştırdığınızda, bunları bir tane i
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>Şirket içi ve bulut hazırlama görevlerinde hata ayıklayın
 
-Şirket içinde barındırılan IR 'de, çalışma zamanı günlüklerini *C:\ProgramData\SSISTelemetry* klasöründe ve şirket içi hazırlama görevlerinin yürütme günlüklerinde *C:\ProgramData\SSISTelemetry\ExecutionLog* klasöründe bulabilirsiniz.  Paketlerinizi SSSıSDB 'de depoladığınıza bağlı olarak, SSıSDB veya belirtilen günlük yollarındaki bulut hazırlama görevlerinin yürütme günlüklerini bulabilirsiniz. Ayrıca, bulut hazırlama görevlerinin yürütme günlüklerinde şirket içi hazırlama görevlerinin benzersiz kimliklerini de bulabilirsiniz. 
+Şirket içinde barındırılan IR 'de, çalışma zamanı günlüklerini *C:\ProgramData\SSISTelemetry* klasöründe ve şirket içi hazırlama görevlerinin yürütme günlüklerinde *C:\ProgramData\SSISTelemetry\ExecutionLog* klasöründe bulabilirsiniz.  Bulut hazırlama görevlerinin yürütme günlüklerini SSıSDB 'de, belirtilen günlük dosyası yolunuzda veya Azure Izleyici 'de paketlerinizi SSSıSDB 'de depoladığınıza, [Azure izleyici tümleştirmesine](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor), vb. bir şekilde bulabilirsiniz. Ayrıca, bulut hazırlama görevlerinin yürütme günlüklerinde şirket içi hazırlama görevlerinin benzersiz kimliklerini de bulabilirsiniz. 
 
 ![İlk hazırlama görevinin benzersiz KIMLIĞI](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="use-windows-authentication-in-on-premises-staging-tasks"></a>Şirket içi hazırlama görevlerinde Windows kimlik doğrulamasını kullanma
-
-Şirket içinde barındırılan IR 'de şirket içi hazırlama görevleri Windows kimlik doğrulaması gerektiriyorsa, [SSIS paketlerinizi aynı Windows kimlik doğrulamasını kullanacak şekilde yapılandırın](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
-
-Şirket içi hazırlama görevleriniz, kendi kendine barındırılan IR Hizmeti hesabıyla (varsayılan olarak *NT SERVICE\DIAHostService* ) çağrılacaktır ve veri depolarınız Windows kimlik doğrulama hesabıyla erişilecek. Her iki hesap de belirli güvenlik ilkelerinin atanmasını gerektirir. Şirket içinde barındırılan IR makinesinde **yerel güvenlik ilkesi**  >  **Yerel ilkeler**  >  **Kullanıcı hakları ataması** ' na gidin ve ardından aşağıdakileri yapın:
-
-1. *Bir işlem için bellek kotalarını ayarlama* ve *bir işlem düzeyi belirteç* ILKELERINI şirket içinde barındırılan IR Hizmeti hesabıyla değiştirme. Bu, kendi kendine barındırılan IR 'yi varsayılan hizmet hesabıyla yüklediğinizde otomatik olarak gerçekleşir. Değilse, bu ilkeleri el ile atayın. Farklı bir hizmet hesabı kullanıyorsanız, buna aynı ilkeleri atayın.
-
-1. Windows kimlik doğrulama hesabına *hizmet olarak oturum* açma ilkesi atayın.
+Müşteri desteği biletleri yaptıysanız, araştırılması için en son işlem/yürütme günlüklerini göndermek üzere şirket içinde barındırılan IR 'de yüklü **Microsoft Integration Runtime Configuration Manager** **Tanılama** sekmesinde **Günlükler gönder** düğmesini seçebilirsiniz.
 
 ## <a name="billing-for-the-on-premises-and-cloud-staging-tasks"></a>Şirket içi ve bulut hazırlama görevleri için faturalandırma
 
@@ -167,7 +169,25 @@ Bu özelliği, var olan paketleri çalıştırdığınızda, bunları bir tane i
 
 Azure-SSIS IR çalışan bulut hazırlama görevleri ayrı olarak faturalandırılmaz, ancak çalıştırdığınız Azure-SSIS IR [Azure-SSIS IR fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/ssis/) makalesinde belirtilen şekilde faturalandırılır.
 
-## <a name="enabling-tls-12"></a>TLS 1.2'yi etkinleştirme
+## <a name="enable-custom3rd-party-components"></a>Özel/üçüncü taraf bileşenlerini etkinleştir 
+
+Özel/üçüncü taraf bileşenlerinizin, Azure-SSIS IR için proxy olarak şirket içinde barındırılan IR kullanarak şirket içi verilere erişmesini sağlamak için aşağıdaki yönergeleri izleyin:
+
+1. [Standart/Express özel kurulumları](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)aracılığıyla Azure-SSIS IR SQL Server 2017 hedefleyen özel/3. taraf bileşenlerinizi yükler.
+
+1. Zaten mevcut değilse, şirket içinde barındırılan IR 'de aşağıdaki DTSPath kayıt defteri anahtarlarını oluşturun: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` ve `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` .
+ 
+1. Yukarıdaki DTSPath altındaki şirket içinde barındırılan IR 'ye SQL Server 2017 ' i hedefleyen özel/3. taraf bileşenlerinizi yükleme ve yükleme işleminizin şu şekilde olduğundan emin olun:
+
+   1. `<DTSPath>`Zaten mevcut değilse,, `<DTSPath>/Connections` `<DTSPath>/PipelineComponents` ve `<DTSPath>/UpgradeMappings` klasörleri oluşturur.
+   
+   1. Klasöründe uzantı eşlemeleri için kendi XML dosyanızı oluşturur `<DTSPath>/UpgradeMappings` .
+   
+   1. Özel/3. taraf bileşen derlemeleriniz tarafından başvurulan tüm derlemeleri genel derleme önbelleği 'ne (GAC) kurar.
+
+Aşağıda, Azure-SSIS IR için proxy olarak hızlı özel kurulum ve şirket içinde barındırılan IR kullanan [üçüncü taraf bileşen örneği](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) verilmiştir.
+
+## <a name="enforce-tls-12"></a>TLS 1.2’yi zorlama
 
 Güçlü şifreleme/daha güvenli ağ protokolü (TLS 1,2) kullanmanız ve şirket içinde barındırılan IR 'de eski SSL/TLS sürümlerini devre dışı bırakmanız gerekirse, genel önizleme kapsayıcımız için *Customsetupscript/Usersenaryolar/tls 1,2* klasöründe bulunan *Main. cmd* betiğini indirebilir ve çalıştırabilirsiniz.  [Azure Depolama Gezgini](https://storageexplorer.com/)kullanarak, aşağıdaki SAS URI 'sini girerek genel önizleme kapsayıcımıza bağlanabilirsiniz:
 
@@ -175,8 +195,10 @@ Güçlü şifreleme/daha güvenli ağ protokolü (TLS 1,2) kullanmanız ve şirk
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Yalnızca OLEDB/ODBC/düz dosya kaynakları veya OLEDB hedefi olan veri akışı görevleri şu anda destekleniyor.
-- Yalnızca *hesap anahtarı* , *paylaşılan ERIŞIM imzası (SAS) URI 'Si* veya *hizmet sorumlusu* kimlik doğrulaması ile yapılandırılmış Azure Blob depolama ile bağlantılı hizmetler şu anda desteklenmektedir.
+- Yalnızca Hadoop/,/DQS bileşenleri hariç Azure-SSIS IR Standard sürümünde yerleşik/önceden yüklenmiş olan veri akışı bileşenleri Şu anda desteklenmektedir: [Azure-SSIS IR üzerinde tüm yerleşik/önceden yüklenmiş bileşenler](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
+- Yalnızca yönetilen kodda (.NET Framework) yazılan özel/3. taraf veri akışı bileşenleri Şu anda desteklenmektedir-yerel kodda (C++) yazılmış olanlar şu anda desteklenmemektedir.
+- Hem şirket içi hem de bulut hazırlama görevlerinde değişken değerlerini değiştirmek Şu anda desteklenmemektedir.
+- Şirket içi hazırlama görevlerinde tür nesnesinin değişken değerlerini değiştirmek diğer görevlere yansıtılmaz.
 - OLEDB kaynağında *Parametermapping* Şu anda desteklenmiyor. Geçici bir çözüm olarak, lütfen bir SQL komutuna değişkenlerinizi/parametrelerini eklemek için ' den *AccessMode* olarak *değişkenden SQL komutunu* kullanın ve *ifadesini* kullanın. Bir çizim olarak, genel önizleme kapsayımızın *Selfhostedirproxy/sınırlamalar* klasöründe bulunan *parametermappingsample. dtsx* paketine bakın. Azure Depolama Gezgini kullanarak, yukarıdaki SAS URI 'sini girerek genel önizleme kapsayıcımıza bağlanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

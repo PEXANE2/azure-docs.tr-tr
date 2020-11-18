@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 979ed3d21986ad43d805446a520a59333a6798ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149325"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659650"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama
 
@@ -39,7 +39,7 @@ Bu makalede, terimler *ağ geçidi* ve *IoT Edge Ağ* geçidi, saydam bir ağ ge
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* IoT Edge cihazı yapılandırmak için kullanılan kök CA sertifika dosyasını, aşağı akış cihazınızda bulunan [saydam bir ağ geçidi olarak davranacak şekilde yapılandırın](how-to-create-transparent-gateway.md) . Aşağı akış cihazınız, ağ geçidi cihazının kimliğini doğrulamak için bu sertifikayı kullanır. Tanıtım sertifikalarını kullandıysanız, kök CA sertifikasına **Azure-iot-test-only. root. ca. cert. ped**adı verilir.
+* IoT Edge cihazı yapılandırmak için kullanılan kök CA sertifika dosyasını, aşağı akış cihazınızda bulunan [saydam bir ağ geçidi olarak davranacak şekilde yapılandırın](how-to-create-transparent-gateway.md) . Aşağı akış cihazınız, ağ geçidi cihazının kimliğini doğrulamak için bu sertifikayı kullanır. Tanıtım sertifikalarını kullandıysanız, kök CA sertifikasına **Azure-iot-test-only. root. ca. cert. ped** adı verilir.
 * [Bir aşağı akış cihazının Azure IoT Hub kimlik doğrulaması](how-to-authenticate-downstream-device.md)bölümünde açıklandığı gibi ağ geçidi cihazını işaret eden değiştirilmiş bağlantı dizesine sahip olmalıdır.
 
 ## <a name="prepare-a-downstream-device"></a>Aşağı akış cihazı hazırlama
@@ -63,9 +63,9 @@ Bir aşağı akış cihazını IoT Edge bir ağ geçidine bağlamak için iki ş
 
 Aşağı akış cihazlarını IoT Edge 'e güvenli bir şekilde bağlama zorluğu, internet üzerinden oluşan diğer tüm güvenli istemci/sunucu iletişimi gibidir. İstemci ve sunucu, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)kullanarak internet üzerinden güvenli bir şekilde iletişim kurar. TLS, sertifikalar adlı standart [ortak anahtar altyapısı (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) yapıları kullanılarak oluşturulmuştur. TLS oldukça ilgili bir belirtimdir ve iki uç noktanın güvenliğini sağlamaya yönelik çok çeşitli konuları ele alır. Bu bölümde, cihazları bir IoT Edge ağ geçidine güvenli bir şekilde bağlamak için ilgili kavramlar özetlenmektedir.
 
-İstemci bir sunucuya bağlandığı zaman sunucu, *sunucu sertifika zinciri*olarak adlandırılan bir sertifika zinciri sunar. Bir sertifika zinciri tipik olarak bir kök sertifika yetkilisi (CA) sertifikası, bir veya daha fazla ara CA sertifikası ve son olarak sunucunun sertifikası oluşur. İstemci, tüm sunucu sertifikası zincirini şifreli olarak doğrulayarak sunucu ile güven oluşturur. Sunucu sertifikası zincirinin bu istemci doğrulaması, *sunucu zinciri doğrulaması*olarak adlandırılır. İstemci, sunucuyu, sahip olma *kanıtı*olarak adlandırılan bir işlemde sunucu sertifikasıyla ilişkili özel anahtarı kanıtlamaya yönelik olarak ele alır. Sunucu zinciri doğrulama ve sahip olma kanıtı 'nın birleşimi *sunucu kimlik doğrulaması*olarak adlandırılır. Bir sunucu sertifika zincirini doğrulamak için, bir istemcinin, sunucunun sertifikasını oluşturmak için kullanılan kök CA sertifikasının bir kopyasına ihtiyacı vardır. Normalde web sitelerine bağlanırken, bir tarayıcı yaygın olarak kullanılan CA sertifikalarıyla önceden yapılandırılmış olarak sunulur, böylece istemci sorunsuz bir işlemdir.
+İstemci bir sunucuya bağlandığı zaman sunucu, *sunucu sertifika zinciri* olarak adlandırılan bir sertifika zinciri sunar. Bir sertifika zinciri tipik olarak bir kök sertifika yetkilisi (CA) sertifikası, bir veya daha fazla ara CA sertifikası ve son olarak sunucunun sertifikası oluşur. İstemci, tüm sunucu sertifikası zincirini şifreli olarak doğrulayarak sunucu ile güven oluşturur. Sunucu sertifikası zincirinin bu istemci doğrulaması, *sunucu zinciri doğrulaması* olarak adlandırılır. İstemci, sunucuyu, sahip olma *kanıtı* olarak adlandırılan bir işlemde sunucu sertifikasıyla ilişkili özel anahtarı kanıtlamaya yönelik olarak ele alır. Sunucu zinciri doğrulama ve sahip olma kanıtı 'nın birleşimi *sunucu kimlik doğrulaması* olarak adlandırılır. Bir sunucu sertifika zincirini doğrulamak için, bir istemcinin, sunucunun sertifikasını oluşturmak için kullanılan kök CA sertifikasının bir kopyasına ihtiyacı vardır. Normalde web sitelerine bağlanırken, bir tarayıcı yaygın olarak kullanılan CA sertifikalarıyla önceden yapılandırılmış olarak sunulur, böylece istemci sorunsuz bir işlemdir.
 
-Bir cihaz Azure IoT Hub bağlandığı zaman, cihaz istemcdir ve IoT Hub bulut hizmeti sunucu olur. IoT Hub bulut hizmeti, genel olarak kullanılabilen ve yaygın olarak kullanılan, **Baltimore CyberTrust kökü**adlı BIR kök CA sertifikası tarafından desteklenir. IoT Hub CA sertifikası çoğu cihazda zaten yüklü olduğundan, çok sayıda TLS uygulaması (OpenSSL, Schannel, LibreSSL) otomatik olarak sunucu sertifikası doğrulama sırasında kullanır. Ancak, IoT Hub başarıyla bağlanan bir cihaz, bir IoT Edge ağ geçidine bağlanmaya çalışırken sorunlara sahip olabilir.
+Bir cihaz Azure IoT Hub bağlandığı zaman, cihaz istemcdir ve IoT Hub bulut hizmeti sunucu olur. IoT Hub bulut hizmeti, genel olarak kullanılabilen ve yaygın olarak kullanılan, **Baltimore CyberTrust kökü** adlı BIR kök CA sertifikası tarafından desteklenir. IoT Hub CA sertifikası çoğu cihazda zaten yüklü olduğundan, çok sayıda TLS uygulaması (OpenSSL, Schannel, LibreSSL) otomatik olarak sunucu sertifikası doğrulama sırasında kullanır. Ancak, IoT Hub başarıyla bağlanan bir cihaz, bir IoT Edge ağ geçidine bağlanmaya çalışırken sorunlara sahip olabilir.
 
 Bir cihaz bir IoT Edge ağ geçidine bağlanırsa, aşağı akış cihazı istemcdir ve ağ geçidi cihazı sunucu olur. Azure IoT Edge, ağ geçidi sertifika zincirlerini derlemenize olanak tanır, ancak bunları görür. Baltimore gibi bir genel CA sertifikası kullanmayı veya otomatik olarak imzalanan (veya şirket içi) bir kök CA sertifikası kullanmayı tercih edebilirsiniz. Genel CA sertifikalarına genellikle bunlarla ilişkili bir maliyet bulunur, bu nedenle genellikle üretim senaryolarında kullanılır. Otomatik olarak imzalanan CA sertifikaları geliştirme ve test için tercih edilir. Tanıtım sertifikalarını kullanıyorsanız, bunlar otomatik olarak imzalanan kök CA sertifikalardır.
 
@@ -77,7 +77,7 @@ IoT Edge sertifikaları ve bazı üretim etkileri hakkında daha fazla bilgi edi
 
 ## <a name="provide-the-root-ca-certificate"></a>Kök CA sertifikasını sağlama
 
-Ağ Geçidi cihazının sertifikalarını doğrulamak için, aşağı akış cihazının kök CA sertifikasının kendine ait bir kopyasına ihtiyacı vardır. Test sertifikaları oluşturmak için IoT Edge git deposunda verilen betikleri kullandıysanız, kök CA sertifikasına **Azure-iot-test-only. root. ca. cert. ped**adı verilir. Zaten diğer aşağı akış cihazı hazırlama adımlarının bir parçası değilseniz, bu sertifika dosyasını aşağı akış cihazınızdaki herhangi bir dizine taşıyın. Sertifika dosyasını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
+Ağ Geçidi cihazının sertifikalarını doğrulamak için, aşağı akış cihazının kök CA sertifikasının kendine ait bir kopyasına ihtiyacı vardır. Test sertifikaları oluşturmak için IoT Edge git deposunda verilen betikleri kullandıysanız, kök CA sertifikasına **Azure-iot-test-only. root. ca. cert. ped** adı verilir. Zaten diğer aşağı akış cihazı hazırlama adımlarının bir parçası değilseniz, bu sertifika dosyasını aşağı akış cihazınızdaki herhangi bir dizine taşıyın. Sertifika dosyasını taşımak için [Azure Key Vault](../key-vault/index.yml) veya [Güvenli kopya Protokolü](https://www.ssh.com/ssh/scp/) gibi bir işlev gibi bir hizmet kullanabilirsiniz.
 
 ## <a name="install-certificates-in-the-os"></a>İşletim sistemine sertifika yükler
 
@@ -168,11 +168,15 @@ Bu bölüm, bir Azure IoT C cihaz istemcisini IoT Edge bir ağ geçidine bağlam
 3. İotedge_downstream_device_sample. c dosyasında, **ConnectionString** ve **edge_ca_cert_path** değişkenlerini güncelleştirin.
 4. Örneğin cihazınızda nasıl çalıştırılacağınız hakkında yönergeler için SDK belgelerine bakın.
 
+
 C için Azure IoT cihaz SDK 'sı, istemciyi ayarlarken bir CA sertifikasını kaydetme seçeneği sunar. Bu işlem, sertifikayı her yere yüklemez, bunun yerine bellekte bir sertifikanın dize biçimini kullanır. Kaydedilen sertifika, bağlantı kurulurken temeldeki TLS yığınına sağlanır.
 
 ```C
 (void)IoTHubDeviceClient_SetOption(device_handle, OPTION_TRUSTED_CERT, cert_string);
 ```
+
+>[!NOTE]
+> İstemci ayarlanırken bir CA sertifikasını kaydetme yöntemi, [yönetilen](https://github.com/Azure/azure-iot-sdk-c#packages-and-libraries) bir paket veya kitaplık kullanılıyorsa değişebilir. Örneğin, [Arduino IDE tabanlı kitaplığı](https://github.com/azure/azure-iot-arduino) , işlem yerine bir genel [CERT. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) dosyasında tanımlanan bir sertifika dizisine CA sertifikası eklenmesini gerektirir `IoTHubDeviceClient_LL_SetOption` .  
 
 Windows Konakları ' nde, OpenSSL veya başka bir TLS kitaplığı kullanmıyorsanız, SDK varsayılan olarak SChannel ' ı kullanmaktır. Schannel 'nin çalışması için, IoT Edge kök CA sertifikasının, işlem kullanılarak ayarlanmayan Windows sertifika deposuna yüklenmesi gerekir `IoTHubDeviceClient_SetOption` .
 

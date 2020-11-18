@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59aa6f5560917651d8f60c667145b0953bf72ef5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442163"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660874"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş
 
@@ -58,9 +58,9 @@ SSTP ve OpenVPN her ikisi de TLS tabanlı protokol olduğundan, aynı ağ geçid
 
 ![Noktadan siteye](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-Ağ Geçidi yapılandırıldıktan sonra, [OpenVPN istemcilerini dağıtana ve yapılandırmadan](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients), mevcut istemciler bağlanamayacak.
+Ağ Geçidi yapılandırıldıktan sonra, [OpenVPN istemcilerini dağıtana ve yapılandırmadan](./vpn-gateway-howto-openvpn-clients.md), mevcut istemciler bağlanamayacak.
 
-Windows 10 kullanıyorsanız, [Windows Için Azure VPN istemcisini](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client) de kullanabilirsiniz.
+Windows 10 kullanıyorsanız, [Windows Için Azure VPN istemcisini](./openvpn-azure-ad-client.md#to-download-the-azure-vpn-client) de kullanabilirsiniz.
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular

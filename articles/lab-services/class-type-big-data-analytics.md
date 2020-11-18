@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 6ae4e658985a3974b311171e83e6243dfc4a1ae9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5eb9cd00350c41645d4427e30a6f25a6c163358c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444038"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659905"
 ---
 # <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Hortonçalışmalar veri platformunun Docker dağıtımını kullanarak büyük veri analizi için laboratuvar ayarlama
 
@@ -28,7 +28,7 @@ Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve lab
 
 ### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
 
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](./specify-marketplace-images.md).
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |
@@ -89,7 +89,7 @@ Bu bölümde, HDP korumalı alanı dağıtırsınız ve ayrıca, tarayıcıyı k
     > HDP için en son. zip dosyasını indirdiğinizde,. zip dosyasını boşluk içeren bir dizin *yoluna kaydetmeyin* .
 
     > [!NOTE] 
-    > Dağıtım sırasında **sürücü paylaşılmadığını**belirten bir özel durum alırsanız, HDP 'nin Linux kapsayıcılarının yerel Windows dosyalarına erişebilmesi için C sürücünüzü Docker ile paylaşmanız gerekir.  Bunu yapmak için, [Windows Sistem tepsisindeki Docker simgesine tıklayarak](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) Docker Desktop menüsünü açın ve **Ayarlar**' ı seçin.  **Docker 'ın ayarlar** iletişim kutusu açıldığında, **kaynak > dosya paylaşımı** ' nı seçin ve **C** sürücüsünü denetleyin.  Ardından, HDP korumalı alanı dağıtmak için adımları tekrarlayabilirsiniz.
+    > Dağıtım sırasında **sürücü paylaşılmadığını** belirten bir özel durum alırsanız, HDP 'nin Linux kapsayıcılarının yerel Windows dosyalarına erişebilmesi için C sürücünüzü Docker ile paylaşmanız gerekir.  Bunu yapmak için, [Windows Sistem tepsisindeki Docker simgesine tıklayarak](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) Docker Desktop menüsünü açın ve **Ayarlar**' ı seçin.  **Docker 'ın ayarlar** iletişim kutusu açıldığında, **kaynak > dosya paylaşımı** ' nı seçin ve **C** sürücüsünü denetleyin.  Ardından, HDP korumalı alanı dağıtmak için adımları tekrarlayabilirsiniz.
 
 1. HDP korumalı alan için Docker Kapsayıcıları dağıtıldıktan ve çalışır olduktan sonra, tarayıcınızı başlatarak ve [korumalı alan karşılama sayfasını](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) açmak ve HDP panosunu başlatmak Için aşağıdaki Cloudera yönergelerini izleyerek ortama erişebilirsiniz.
 

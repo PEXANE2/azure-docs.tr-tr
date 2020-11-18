@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 26a29524e0bf329a368b3cd2281dd9b070b42a14
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516962"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660823"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanmaya başlama
 
@@ -30,7 +30,7 @@ Ortamınızda neler olduğunu görselleştirmek ve analiz etmek için öncelikle
 
 - Azure portal Azure Sentinel ' i seçin ve ardından izlemek istediğiniz çalışma alanını seçin.
 
-  ![Azure Sentinel'e genel bakış](./media/qs-get-visibility/overview.png)
+  ![Azure Sentinel genel bakış](./media/qs-get-visibility/overview.png)
 
 - Üstteki araç çubuğu, belirlenen zaman dilimine göre kaç olay olduğunu size bildirir ve bunu önceki 24 saat ile karşılaştırır. Araç çubuğu, bu olayları, tetiklenen uyarıları (küçük sayı, son 24 saat içindeki değişikliği temsil eder) ve ardından bu olayları, ne kadar açık, devam ediyor ve kapalı olduğunu bildirir. Olay sayısında önemli bir artış veya bırakma olmadığını kontrol edin. Bir bırakma işlemi varsa, bağlantı Azure Sentinel 'e raporlamayı durdurdu olabilir. Bir artış varsa şüpheli bir sorun oluşmuş olabilir. Yeni uyarılar olup olmadığını kontrol edin.
 
@@ -54,7 +54,7 @@ Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik duru
 
 Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemesine bir bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik çalışma kitapları arasında Azure AD, Azure etkinlik olayları ve şirket içi, Windows olaylarına göre güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere tüm üçüncü taraflardan sunuculardan gelen Windows olaylarından veri olabilir. Çalışma kitapları, kendi çalışma kitabınızı tasarlarken gelişmiş özelleştirme ve esneklik sağlamak için Azure Izleyici çalışma kitaplarını temel alır. Daha fazla bilgi için bkz. [çalışma kitapları](../azure-monitor/platform/workbooks-overview.md).
 
-1. **Ayarlar**altında **çalışma kitapları**' nı seçin. **Yüklü**' ın altında, tüm yüklü çalışma kitabınızı görebilirsiniz. **Tümü**altında, yükleme için kullanılabilen yerleşik çalışma kitaplarının tamamını görebilirsiniz. 
+1. **Ayarlar** altında **çalışma kitapları**' nı seçin. **Yüklü**' ın altında, tüm yüklü çalışma kitabınızı görebilirsiniz. **Tümü** altında, yükleme için kullanılabilen yerleşik çalışma kitaplarının tamamını görebilirsiniz. 
 2. Tüm liste ve her bir tekliflerinin açıklamasını görmek için belirli bir çalışma kitabı arayın. 
 3. Azure AD 'yi kullandığınız varsayılarak, Azure Sentinel ile çalışmaya başlayın ve en azından aşağıdaki çalışma kitaplarını yüklemenizi öneririz:
    - **Azure AD**: aşağıdakilerden birini veya her ikisini kullanın:
@@ -66,7 +66,7 @@ Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemes
       ![Palo Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Ana sorgu sorgusu düzenleme düğmesini düzenleyerek çalışma kitaplarını özelleştirebilirsiniz ![ ](./media/qs-get-visibility/edit-query-button.png) . ![ ](./media/qs-get-visibility/go-to-la-button.png) [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek üzere düğme Log Analytics düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayan **kutucuk verilerini Özelleştir**' i seçebilirsiniz.
+Ana sorgu sorgusu düzenleme düğmesini düzenleyerek çalışma kitaplarını özelleştirebilirsiniz ![ ](./media/qs-get-visibility/edit-query-button.png) . ![ ](./media/qs-get-visibility/go-to-la-button.png) [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)gitmek üzere düğme Log Analytics düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayan **kutucuk verilerini Özelleştir**' i seçebilirsiniz.
 
 Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -74,7 +74,7 @@ Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log An
 
 Yeni bir kutucuk eklemek istiyorsanız, onu oluşturduğunuz veya Azure Sentinel yerleşik çalışma kitabının bulunduğu mevcut bir çalışma kitabına ekleyebilirsiniz. 
 1. Log Analytics, [öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)' de bulunan yönergeleri kullanarak bir kutucuk oluşturun. 
-2. Kutucuk oluşturulduktan sonra, **PIN**altında kutucuğun görünmesini istediğiniz çalışma kitabını seçin.
+2. Kutucuk oluşturulduktan sonra, **PIN** altında kutucuğun görünmesini istediğiniz çalışma kitabını seçin.
 
 ## <a name="create-new-workbooks"></a>Yeni çalışma kitapları oluşturma
 Sıfırdan yeni bir çalışma kitabı oluşturabilir veya yeni çalışma kitabınız için temel olarak yerleşik çalışma kitabını kullanabilirsiniz.
@@ -129,4 +129,3 @@ Kullanıma hazır algılamaları alma hakkında daha fazla bilgi için bkz. [ö�
 Bu hızlı başlangıçta, Azure Sentinel 'i kullanmaya nasıl başladığınıza öğrendiniz. [Tehditleri algılayarak](tutorial-detect-threats-built-in.md)ilgili öğreticiye devam edin.
 > [!div class="nextstepaction"]
 > Tehditlere yönelik yanıtlarınızı otomatik hale getirmek için [özel tehdit algılama kuralları oluşturun](tutorial-detect-threats-custom.md) .
-

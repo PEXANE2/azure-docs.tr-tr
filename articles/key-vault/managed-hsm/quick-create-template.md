@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4d1488d6dd2e5d08ae774ca88b7ab41b2020efe5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2726c8d416bee209f864f7e299403f589a767840
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91001055"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659599"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Key Vault yönetilen HSM oluşturma
 
@@ -79,7 +79,6 @@ Kiracı KIMLIĞINIZ da gerekebilir. Bunu bulmak için, Azure CLı [az ad User Sh
     - **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
     - **Konum**: bir konum seçin. Örneğin, **Orta Güney ABD**.
     - **Managedhsmname**: yönetilen HSM 'niz için bir ad girin.
-    - **SKU**: oluşturmak ISTEDIĞINIZ yönetilen HSM 'nin adını ve ailesini girin.  Bu hızlı başlangıçta, Aile için "Standard_B1" adını ve "B" yazın.
     - **KIRACı kimliği**: şablon IşLEVI kiracı kimliğinizi otomatik olarak alır; Varsayılan değeri değiştirmeyin.  Değer yoksa, [ön](#prerequisites)koşullarda ALDıĞıNıZ Kiracı kimliğini girin.
     * **ınitialadminobjectıds**: [ön](#prerequisites)koşullarda aldığınız nesne kimliğini girin.
 

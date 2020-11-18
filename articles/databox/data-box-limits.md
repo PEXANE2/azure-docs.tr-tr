@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00ba711661d69bbaf53ff51fb2cb833d9b1c1ae2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660930"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660432"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box sınırları
 
@@ -28,7 +28,7 @@ Microsoft Azure Data Box dağıtıp işletirken bu limitleri göz önünde bulun
 - Data Box, hem içeri hem de dışarı aktarma için en fazla 500.000.000 dosya saklayabilir.
 - Data Box buluttaki en fazla 512 kapsayıcıyı veya paylaşımı destekler. Kullanıcı paylaşımı içindeki en üst düzey dizinler, bulutta kapsayıcılar veya Azure dosya paylaşımları haline gelir. 
 - Data Box kullanım kapasitesi, ReFS meta veri alanı tüketimine göre 80 TB 'den az olabilir.
-- Data Box, bir NFS paylaşımında en fazla 5 istemci bağlantısını destekler. 
+- Data Box, bir NFS paylaşımında en fazla 10 istemci bağlantısını destekler.
 
 ## <a name="azure-storage-limits"></a>Azure depolama sınırları
 

@@ -8,17 +8,17 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 63484361a6d5a331fd9dc646c53627918ce8b246
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: f348a8d8755402d6426f19eabc432f54e3fb8e42
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630558"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659667"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>FHIR için Azure IoT Bağlayıcısı’nın (önizleme) eşleme şablonları
 Bu makalede, eşleme şablonlarını kullanarak hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR&#174;) * için Azure IoT Bağlayıcısı 'nın nasıl yapılandırılacağı açıklanır.
 
-FHıR için Azure IoT Bağlayıcısı, iki tür JSON tabanlı eşleme şablonu gerektirir. İlk tür olan **cihaz eşleme** , `devicedata` Azure Olay Hub 'ı uç noktasına gönderilen cihaz yüklerini eşleştirmekten sorumludur. Türleri, cihaz tanımlayıcılarını, ölçüm Tarih saatini ve ölçüm değerlerini ayıklar. İkinci tür olan **fhır eşleme** , fhır kaynağı için eşlemeyi denetler. Bu, izleme döneminin uzunluğunu, değerleri depolamak için kullanılan FHıR veri türünü ve terminoloji kodlarını yapılandırmanızı sağlar. 
+FHıR için Azure IoT Bağlayıcısı, iki tür JSON tabanlı eşleme şablonu gerektirir. İlk tür olan **cihaz eşleme**, `devicedata` Azure Olay Hub 'ı uç noktasına gönderilen cihaz yüklerini eşleştirmekten sorumludur. Türleri, cihaz tanımlayıcılarını, ölçüm Tarih saatini ve ölçüm değerlerini ayıklar. İkinci tür olan **fhır eşleme**, fhır kaynağı için eşlemeyi denetler. Bu, izleme döneminin uzunluğunu, değerleri depolamak için kullanılan FHıR veri türünü ve terminoloji kodlarını yapılandırmanızı sağlar. 
 
 Eşleme şablonları, türlerine göre bir JSON belgesinde oluşur. Bu JSON belgeleri daha sonra Azure portal aracılığıyla FHıR için Azure IoT bağlayıcınıza eklenir. Cihaz eşleme belgesi, **cihaz eşlemesini Yapılandır** sayfası ve fhır eşleme belgesi aracılığıyla **Fhır eşlemesini Yapılandır** sayfasından eklenir.
 
@@ -60,7 +60,7 @@ Normalleştirme sırasında ne olacağı hakkında kavramsal bir örnek aşağı
 ```
 
 ### <a name="mapping-with-json-path"></a>JSON yoluyla eşleme
-Günümüzde desteklenen iki cihaz içerik şablonu türü, hem gerekli şablonla hem de ayıklanan değerlerle eşleşen JSON yolunu kullanır. JSON yolu hakkında daha fazla bilgiyi [burada](https://goessner.net/articles/JsonPath/)bulabilirsiniz. Her iki şablon türü de JSON yolu ifadelerini çözümlemek için [JSON .NET uygulamasını](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) kullanır.
+Günümüzde desteklenen üç cihaz içerik şablonu türü, hem gerekli şablonla hem de ayıklanan değerlerle eşleşen JSON yolunu kullanır. JSON yolu hakkında daha fazla bilgiyi [burada](https://goessner.net/articles/JsonPath/)bulabilirsiniz. Tüm üç şablon türü json yolu ifadelerini çözümlemek için [JSON .NET uygulamasını](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) kullanır.
 
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 JsonPathContentTemplate, JSON yolu kullanılarak bir olay hub 'ı iletisinden gelen ve ayıklanan değerleri eşleştirmeyi sağlar.
@@ -71,8 +71,8 @@ JsonPathContentTemplate, JSON yolu kullanılarak bir olay hub 'ı iletisinden ge
 |**TypeMatchExpression**|Olay Hub 'ı yüküne göre değerlendirilen JSON yolu ifadesi. Eşleşen bir JToken bulunursa, şablon bir eşleşme olarak kabul edilir. Sonraki tüm ifadeler, burada eşleşen ayıklanan JToken 'a göre değerlendirilir.|`$..[?(@heartRate)]`
 |**TimestampExpression**|Ölçümün oluşum süresi UTC için zaman damgası değerini Ayıklanacak JSON yol ifadesi.|`$.endDate`
 |**DeviceIdExpression**|Cihaz tanımlayıcısını Ayıklanacak JSON yol ifadesi.|`$.deviceId`
-|**Haentidexpression**|*Isteğe bağlı* : hasta TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.patientId`
-|**Karşılaşıldı Teridexpression**|*Isteğe bağlı* : karşılaştığınız TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.encounterId`
+|**Haentidexpression**|*Isteğe bağlı*: hasta TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.patientId`
+|**Karşılaşıldı Teridexpression**|*Isteğe bağlı*: karşılaştığınız TANıMLAYıCıYı Ayıklanacak JSON yol ifadesi.|`$.encounterId`
 |**Values []. ValueName**|Sonraki ifade tarafından Ayıklanan değer ile ilişkilendirilecek ad. Gerekli değeri/bileşeni FHıR eşleme şablonuna bağlamak için kullanılır. |`hr`
 |**Values []. ValueExpression**|Gerekli değeri Ayıklanacak JSON yol ifadesi.|`$.heartRate`
 |**Values []. Gerekli**|Yük içinde değerin mevcut olmasını gerektirir.  Bulunamazsa, bir ölçüm oluşturulmaz ve bir InvalidOperationException atılır.|`true`
@@ -251,10 +251,12 @@ JsonPathContentTemplate, JSON yolu kullanılarak bir olay hub 'ı iletisinden ge
     }
 }
 ```
+
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
+
 IotJsonPathContentTemplate, DeviceIdExpression ve TimestampExpression gerekli olmadığı sürece JsonPathContentTemplate öğesine benzerdir.
 
-Bu şablonu kullanırken varsayım, değerlendirilmekte olan mesajlar [Azure IoT Hub cihaz SDK 'ları](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)kullanılarak gönderilmiştir. Bu SDK 'Ları kullanırken, cihaz kimliği (Azure IoT Hub/merkezi 'nin cihaz tanımlayıcısı, hedef FHıR sunucusundaki bir cihaz kaynağı için bir tanımlayıcı olarak kaydedilir) ve iletinin zaman damgası bilinirdi. Azure IoT Hub cihaz SDK 'larını kullanıyorsanız, ancak cihaz kimliği veya ölçüm zaman damgası için ileti gövdesinde özel özellikler kullanıyorsanız, JsonPathContentTemplate kullanmaya devam edebilirsiniz.
+Bu şablonu kullanırken varsayımıyla, değerlendirilmekte olan mesajlar Azure [IoT Hub cihaz SDK 'ları](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) kullanılarak gönderilmiştir veya [Azure IoT Central](../iot-central/core/overview-iot-central.md)'ın [veri (eski) özelliğini dışarı aktarın](../iot-central/core/howto-export-data-legacy.md) . Bu SDK 'Ları kullanırken, cihaz kimliği (Azure IoT Hub/merkezi 'nin cihaz tanımlayıcısı, hedef FHıR sunucusundaki bir cihaz kaynağı için bir tanımlayıcı olarak kaydedilir) ve iletinin zaman damgası bilinirdi. Azure IoT Hub cihaz SDK 'larını kullanıyorsanız, ancak cihaz kimliği veya ölçüm zaman damgası için ileti gövdesinde özel özellikler kullanıyorsanız, JsonPathContentTemplate kullanmaya devam edebilirsiniz.
 
 *Note: IotJsonPathContentTemplate kullanılırken, TypeMatchExpression, tüm iletiye JToken olarak çözümlenmelidir. Aşağıdaki örneklere bakın.* 
 ##### <a name="examples"></a>Örnekler
@@ -329,6 +331,101 @@ Bu şablonu kullanırken varsayım, değerlendirilmekte olan mesajlar [Azure IoT
             "valueName": "diastolic"
         }
     ]
+}
+```
+
+#### <a name="iotcentraljsonpathcontenttemplate"></a>IotCentralJsonPathContentTemplate
+
+IotCentralJsonPathContentTemplate Ayrıca DeviceIdExpression ve TimestampExpression gerektirmez ve değerlendirilmekte olan mesajlar [Azure IoT Central](../iot-central/core/overview-iot-central.md)'In [verileri dışarı aktarma](../iot-central/core/howto-export-data.md) özelliği aracılığıyla gönderildiğinde kullanılır. Bu özelliği kullanırken, cihaz kimliği (Azure IoT Central 'daki cihaz tanımlayıcısının, hedef FHıR sunucusundaki bir cihaz kaynağı için bir tanımlayıcı olarak kaydedilir) ve iletinin zaman damgası bilinirdi. Azure IoT Central veri dışa aktarma özelliğini kullanıyorsanız, ancak cihaz kimliği veya ölçüm zaman damgası için ileti gövdesinde özel özellikler kullanıyorsanız, JsonPathContentTemplate kullanmaya devam edebilirsiniz.
+
+*Note: IotCentralJsonPathContentTemplate kullanılırken, TypeMatchExpression, tüm iletiye JToken olarak çözümlenmelidir. Aşağıdaki örneklere bakın.* 
+##### <a name="examples"></a>Örnekler
+---
+**Kalp oranı**
+
+*İleti*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "HeartRate": "88",
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*Şablon*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "heartrate",
+        "typeMatchExpression": "$..[?(@telemetry.HeartRate)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.HeartRate",
+                "valueName": "hr"
+            }
+        ]
+    }
+}
+```
+---
+**Kan basıncı**
+
+*İleti*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "BloodPressure": {
+            "Diastolic": "87",
+            "Systolic": "123"
+        }
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*Şablon*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "bloodPressure",
+        "typeMatchExpression": "$..[?(@telemetry.BloodPressure.Diastolic && @telemetry.BloodPressure.Systolic)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Diastolic",
+                "valueName": "bp_diastolic"
+            },
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Systolic",
+                "valueName": "bp_systolic"
+            }
+        ]
+    }
 }
 ```
 

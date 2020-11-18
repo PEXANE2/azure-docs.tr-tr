@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 548393353d38082c175cde20eef1e93017cdd31a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: eef78ffefe8fe13e6f160e38a05405a80d6e46f8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639393"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660959"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows sanal masaüstü RDP ShortPath (Önizleme)
 
@@ -109,15 +109,15 @@ Set-GPPrefRegistryValue -Key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Ser
 RDP ShortPath için gelen ağ trafiğine izin vermek için, güvenlik duvarı kuralları oluşturmak için grup ilkesi yönetimi MMC ek bileşenindeki Windows Defender güvenlik duvarı 'Nı gelişmiş güvenlik ile birlikte kullanın.
 
 1. [Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı](/windows/security/threat-protection/windows-firewall/open-the-group-policy-management-console-to-windows-firewall-with-advanced-security)'na Grup İlkesi Yönetim Konsolu açın.
-2. Gezinti bölmesinde **gelen kuralları** ' nı seçin.
-3. **Eylem** ' i seçin ve ardından **Yeni kural** ' ı seçin.
-4. Yeni gelen kuralı Sihirbazı 'nın **kural türü** sayfasında, **özel** ' i seçin ve ardından **İleri** ' yi seçin.
-5. **Program** sayfasında, **Bu program yolu** ' nu seçin ve "% SystemRoot% \system32\svchost.exe" yazın ve ardından **İleri** ' yi seçin.
-6. **Protokol ve bağlantı noktaları** sayfasında UDP protokol türünü seçin. **Yerel bağlantı noktasında** , "belirli bağlantı noktaları" ı seçin ve 3390 yazın.
-7. **Kapsam** sayfasında, kuralın yalnızca bu sayfada girilen IP adreslerinden gelen veya giden ağ trafiği için geçerli olduğunu belirtebilirsiniz. Tasarımınıza uygun şekilde yapılandırın ve ardından **İleri** ' yi seçin.
-8. **Eylem** sayfasında **bağlantıya izin ver** ' i seçin ve ardından **İleri** ' yi seçin.
-9. **Profil** sayfasında, bu kuralın uygulandığı ağ konumu türlerini seçin ve ardından **İleri** ' yi seçin.
-10. **Ad** sayfasında, kuralınız için bir ad ve açıklama yazın ve ardından **son** ' u seçin.
+2. Gezinti bölmesinde **gelen kuralları**' nı seçin.
+3. **Eylem**' i seçin ve ardından **Yeni kural**' ı seçin.
+4. Yeni gelen kuralı Sihirbazı 'nın **kural türü** sayfasında, **özel**' i seçin ve ardından **İleri**' yi seçin.
+5. **Program** sayfasında, **Bu program yolu**' nu seçin ve "% SystemRoot% \system32\svchost.exe" yazın ve ardından **İleri**' yi seçin.
+6. **Protokol ve bağlantı noktaları** sayfasında UDP protokol türünü seçin. **Yerel bağlantı noktasında**, "belirli bağlantı noktaları" ı seçin ve 3390 yazın.
+7. **Kapsam** sayfasında, kuralın yalnızca bu sayfada girilen IP adreslerinden gelen veya giden ağ trafiği için geçerli olduğunu belirtebilirsiniz. Tasarımınıza uygun şekilde yapılandırın ve ardından **İleri**' yi seçin.
+8. **Eylem** sayfasında **bağlantıya izin ver**' i seçin ve ardından **İleri**' yi seçin.
+9. **Profil** sayfasında, bu kuralın uygulandığı ağ konumu türlerini seçin ve ardından **İleri**' yi seçin.
+10. **Ad** sayfasında, kuralınız için bir ad ve açıklama yazın ve ardından **son**' u seçin.
 
 Yeni kuralın aşağıdaki ekran görüntüleriyle eşleştiğini doğrulayabilirsiniz: :::image type="content" source="media/rdp-shortpath-firewall-general-tab.png" alt-text="RDP Shortfılepath ağ bağlantıları Için güvenlik duvarı yapılandırması Genel sekmesinin ekran görüntüsü" lightbox="media/rdp-shortpath-firewall-general-tab.png":::
 
@@ -151,6 +151,7 @@ Aşağıdaki parametrelerle trafiğe izin veren bir gelen güvenlik kuralı olu�
 
 * **Kaynak**  -  İstemcilerin bulunduğu **herhangi bir** veya IP aralığı
 * **Kaynak bağlantı noktası aralıkları** -* *\** _ _ **hedef**  -  **Any**
+* **Hedef bağlantı noktası aralıkları**  -  **3390**
 * **Protokol**  -  **UDP**
 * **Eylem**  -  **Izin ver**
 * İsteğe bağlı olarak **önceliği** değiştirin. Öncelik kuralların uygulanma sırasını etkiler: sayısal değer ne kadar düşükse, kural daha önce uygulanır.
@@ -234,8 +235,8 @@ Bazı durumlarda, RDP Shortfılepath aktarımını devre dışı bırakmanız ge
 
 Belirli bir istemci için RDP Shortfılepath 'i devre dışı bırakmak için aşağıdaki grup ilkesi kullanarak UDP desteğini devre dışı bırakabilirsiniz:
 
-1. İstemcisinde **gpedit. msc** ' yi çalıştırın.
-2. **Windows bileşenleri > Uzak Masaüstü Hizmetleri > istemci > > Yönetim Şablonları ' nın bilgisayar yapılandırması** ' na gidin.
+1. İstemcisinde **gpedit. msc**' yi çalıştırın.
+2. **Windows bileşenleri > Uzak Masaüstü Hizmetleri > istemci > > Yönetim Şablonları ' nın bilgisayar yapılandırması**' na gidin.
 3. **"ISTEMCIYE UDP 'yi kapat"** ayarını **etkin** olarak ayarla
 
 ### <a name="disabling-rdp-shortpath-on-the-session-host"></a>Oturum konağında RDP Shortfılepath devre dışı bırakılıyor
@@ -243,8 +244,13 @@ Belirli bir istemci için RDP Shortfılepath 'i devre dışı bırakmak için a�
 Belirli bir oturum ana bilgisayarı için RDP Shortyolunu devre dışı bırakmak üzere, UDP desteğini devre dışı bırakmak için aşağıdaki grup ilkesi kullanabilirsiniz:
 
 1. Oturum konağında **gpedit. msc dosyasını** çalıştırın.
-2. **Windows bileşenleri > > Uzak Masaüstü Hizmetleri > ana bilgisayar uzak masaüstü bağlantısı bağlantılarını > bilgisayar yapılandırması** ' na gidin.
+2. **Windows bileşenleri > > Uzak Masaüstü Hizmetleri > ana bilgisayar uzak masaüstü bağlantısı bağlantılarını > bilgisayar yapılandırması**' na gidin.
 3. **"RDP taşıma protokollerini Seç"** ayarını **yalnızca TCP** olarak ayarlayın
+
+## <a name="feedback"></a>Geri Bildirim
+
+Bu genel önizlemede deneyimlerinizi öğrenmek istiyoruz!
+* Sorular, istekler, açıklamalar ve diğer geri bildirimler için [Bu geri bildirim formunu kullanın](https://aka.ms/RDPShortpathFeedback).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

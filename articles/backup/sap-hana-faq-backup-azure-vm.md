@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d6012ec064b5ec582896ac3484161a6e25f2bf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86513515"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659973"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -79,7 +79,7 @@ Sorun giderme kılavuzunun [Bu bölümüne](./backup-azure-sap-hana-database-tro
 
 Belirli bir zaman noktasında etkin (birincil) düğümden verileri yedeklemek için korumayı yük devretme sonrasında birincil olan ikincil düğüme **geçirebilirsiniz**  .
 
-Bu **anahtar korumasını**gerçekleştirmek için şu adımları izleyin:
+Bu **anahtar korumasını** gerçekleştirmek için şu adımları izleyin:
 
 - Birincil üzerinde [Korumayı Durdur](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) (verileri koruyun)
 - İkincil düğümde [ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) çalıştırma
@@ -124,6 +124,43 @@ Geri yükleme sırasında **üzerine yazmayı zorla** seçeneğinin seçildiğin
 ### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>SLES üzerinde çalışan bir veritabanının yedeklemesini bir RHEL HANA sistemine geri yüklemek veya bunun tersini yapabilir miyim?
 
 Evet, SLES üzerinde çalışan bir HANA veritabanında tetiklenen akış yedeklemelerini kullanarak bir RHEL HANA sistemine geri yükleyebilir ve bunun tersini yapabilirsiniz. Diğer bir deyişle, akış yedeklemeleri kullanılarak platformlar arası geri yükleme mümkündür. Ancak, geri yüklemek istediğiniz HANA sisteminin ve geri yükleme için kullanılan HANA sisteminin hem SAP 'ye göre geri yükleme için uyumlu olduğundan emin olmanız gerekir. Hangi geri yükleme türlerinin uyumlu olduğunu görmek için SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) bölümüne bakın.
+
+## <a name="policy"></a>İlke
+
+### <a name="different-options-available-during-creation-of-a-new-policy-for-sap-hana-backup"></a>SAP HANA yedekleme için yeni bir ilkenin oluşturulması sırasında kullanılabilecek farklı seçenekler
+
+Bir ilke oluşturmadan önce, RPO ve RTO gereksinimleri ve ilgili maliyet etkileri üzerinde bir onay olmalıdır.
+
+RPO (kurtarma noktası hedefi) Kullanıcı/müşteri için ne kadar veri kaybı olduğunu gösterir. Bu, günlük yedekleme sıklığı tarafından belirlenir. Daha sık kullanılan günlük yedeklemeleri, daha düşük RPO 'yu ve Azure Backup hizmeti tarafından desteklenen minimum değeri 15 dakikadır (yani, günlük yedekleme sıklığı 15 dakika veya daha yüksek olabilir).
+
+RTO (kurtarma zamanı-amaç), verilerin bir veri kaybı senaryosundan sonra en son kullanılabilir zaman noktasına ne kadar hızlı geri yükleneceğini gösterir. Bu, genellikle, geri yükleme için gereken dosya sayısına bağlı olan HANA tarafından çalıştırılan kurtarma stratejisine bağlıdır. Bu, maliyet etkilerine da sahiptir ve aşağıdaki tablo tüm senaryoları ve bunların etkilerini anlamak için yardımcı olmalıdır.
+
+|Yedekleme Ilkesi  |RTO  |Maliyet  |
+|---------|---------|---------|
+|Günlük tam + Günlükler     |   En hızlı, zaman içinde nokta geri yüklemesi için yalnızca bir tam kopya ve gerekli günlüklere ihtiyacımız var      |    Costliest seçeneği her gün tam bir kopya alındığından ve daha fazla veri, bekletme zamanına kadar arka uçta birikdiğinden,   |
+|Haftalık tam + günlük fark + Günlükler     |   Yukarıdaki noktadan daha yavaştır, ancak zaman içinde nokta geri yükleme için bir tam kopya ve tek fark kopyası + Günlükler gerektiğinden şundan daha hızlıdır      |    Günlük fark genellikle tamamen daha küçük olduğundan ve tam bir kopya yalnızca haftada bir kez alındığından, daha ucuz bir seçenek      |
+|Haftalık tam + günlük artımlı + Günlükler     |  Uçtan uca kurtarma için bir tam kopya + ' n ' artımlarsa + günlük olması gerektiğinden en yavaş       |     Günlük artımlı değeri Farklıdan küçük olacağından ve tam bir kopya yalnızca haftalık olarak alındığından, en az maliyetli bir seçenek    |
+
+> [!NOTE]
+> Yukarıdaki seçenekler en sık kullanılan seçeneklerdir, ancak tek seçeneklerdir. Örneğin, bir hafta + günlük haftalık tam yedekleme ve farklılıklar olabilir.
+
+Bu nedenle, birisi RPO ve RTO hedeflerine ve maliyet konularına göre ilke türevini seçebilir.
+
+### <a name="impact-of-modifying-a-policy"></a>Bir ilkeyi değiştirmenin etkisi
+
+Bir yedekleme öğesinin ilkesini ilke 1 ' den (P1) Ilke 2 ' ye (P2) veya bir ilke 1 ' e (P1) değiştirme etkisi belirlenirken bazı ilkeler göz önünde tutulmalıdır.
+
+- Tüm değişiklikler Ayrıca, geriye dönük olarak da uygulanır. En son yedekleme ilkesi, daha önce alınmış kurtarma noktalarına da uygulanır. Örneğin, günlük tam bekletmenin 30 gün ve geçerli etkin ilkeye göre 10 kurtarma noktası alındığını varsayalım. Günlük tam saklama süresi 10 gün olarak değiştirilirse, önceki noktanın sona erme saati de başlangıç zamanı + 10 gün olarak yeniden hesaplanır ve süresi dolmuşsa silinir.
+- Değişiklik kapsamı Ayrıca yedekleme gününü, saklama ile birlikte yedekleme türünü de içerir. Örneğin: bir ilke, gün başı 'dan haftalık olarak tam gün olarak değiştirilirse, sunlar üzerinde olmayan önceki tüm tamanlar silinmek üzere işaretlenir.
+- Alt öğe etkin olana veya süre dolana kadar bir üst öğe silinmez. Her yedekleme türünün, şu anda etkin olan ilkeye göre bir sona erme saati vardır. Ancak tam yedekleme türü, sonraki ' farklılıklar ', ' artımlarsa ' ve ' logs ' için üst öğe olarak değerlendirilir. ' Fark ' ve ' log ', başka birinin üst öğesi değil. ' Artımlı ', sonraki ' artımlı ' için üst öğe olabilir. ' Parent ' silinmek üzere işaretlenmiş olsa bile, alt ' farklılıklar ' veya ' Günlükler ' dolmamışsa aslında silinmezler. Örneğin, bir ilke, gün başı 'dan haftalık olarak tam gün olarak değiştirilirse, sunlar üzerinde olmayan önceki tüm tamanlar silinmek üzere işaretlenir. Ancak, daha önce günlük olarak alınan günlüklerin geçerliliği bitinceye kadar aslında silinmezler. Diğer bir deyişle, en son günlük süresine göre saklanır. Günlüklerin süre dolduğunda, hem Günlükler hem de bu tamanlar silinir.
+
+Bu ilkeler sayesinde bir ilke değişikliğinin etkilerini anlamak için aşağıdaki tabloyu okuyabilir.
+
+|Eski ilke/yeni Ilke  |Günlük Fulls + günlükleri  | Haftalık Fulls + günlük farklılıklar + Günlükler  |Haftalık Fulls + günlük artımlarsa + Günlükler  |
+|---------|---------|---------|---------|
+|Günlük Fulls + günlükleri     |   -      |    Haftanın aynı gününde olmayan önceki tamanlar silinmek üzere işaretlendi ancak günlük tutma süresine kadar saklanır     |    Haftanın aynı gününde olmayan önceki tamanlar silinmek üzere işaretlendi ancak günlük tutma süresine kadar saklanır     |
+|Haftalık Fulls + günlük farklılıklar + Günlükler     |   Önceki haftalık dolu saklama, en son ilkeye göre yeniden hesaplanır. Önceki farklılıklar hemen silinir      |    -     |    Önceki farklılıklar hemen silinir     |
+|Haftalık Fulls + günlük artımlarsa + Günlükler     |     Önceki haftalık dolu saklama, en son ilkeye göre yeniden hesaplanır. Önceki artımlarsa hemen silinir    |     Önceki artımlarsa hemen silinir    |    -     |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

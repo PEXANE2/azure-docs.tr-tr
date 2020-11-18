@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f35adcc797e903bb44852e9ba52e1a023f51a0d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292123"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659531"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure'da SLES veya openSUSE sanal makinesi hazırlama
 
@@ -32,7 +32,7 @@ Bu makalede, bir sanal sabit diske zaten SUSE veya openSUSE Linux işletim siste
 
 Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)adresindeki SLES için KCG (kendi aboneliğini getir) görüntülerini da yayımlar.
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>SUSE Linux Enterprise Server 11 SP4 'Ü hazırlayın
+## <a name="prepare-suse-linux-enterprise-server-for-azure"></a>Azure için SUSE Linux Enterprise Server hazırlama
 1. Hyper-V Yöneticisi 'nin orta bölmesinde, sanal makineyi seçin.
 2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
 3. SUSE Linux Enterprise sisteminizi, güncelleştirmeleri indirmesine ve paketleri yüklemeye izin verecek şekilde kaydedin.
@@ -41,57 +41,53 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
     ```console
     # sudo zypper update
     ```
-
-1. SLES deposundan Azure Linux aracısını (SLE11-Public-Cloud-Module) yükler:
+    
+5. Azure Linux Aracısı ve Cloud-init 'yi yükler
 
     ```console
+    # SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
     # sudo zypper install python-azure-agent
+    # sudo zypper install cloud-init
     ```
 
-1. Chkconfig dosyasında waagent 'ın "açık" olarak ayarlanmış olup olmadığını denetleyin ve değilse, otomatik başlatma için etkinleştirin:
+6. Boot & Cloud-init için waagent 'ı etkinleştirin
 
     ```console
     # sudo chkconfig waagent on
+    # systemctl enable cloud-init-local.service
+    # systemctl enable cloud-init.service
+    # systemctl enable cloud-config.service
+    # systemctl enable cloud-final.service
+    # systemctl daemon-reload
+    # cloud-init clean
     ```
 
-7. Waagent hizmetinin çalışıp çalışmadığını denetleyin ve yoksa başlatın: 
+7. Waagent ve Cloud-init yapılandırmasını Güncelleştir
 
     ```console
-    # sudo service waagent start
+    # sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    # sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    # sudo sh -c 'printf "datasource:\n  Azure:" > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg'
+    # sudo sh -c 'printf "reporting:\n  logging:\n    type: log\n  telemetry:\n    type: hyperv" > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg'
     ```
 
-8. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için, bir metin düzenleyicisinde "/boot/grub/menu.lst" öğesini açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
+8. Konsol günlüklerinin seri bağlantı noktasına gönderildiğinden emin olmak için/etc/default/grub dosyasını düzenleyin ve ardından GRUB2-mkconfig-o/Boot/GRUB2/grub.cfg ile ana yapılandırma dosyasını güncelleştirin
 
     ```config-grub
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     ```
-
     Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir.
-9. /Boot/grub/menu.lst ve/etc/fstab 'nin her ikisi de disk KIMLIĞI (kimliğe göre) yerine UUID (UUID) kullanarak diske başvurulacağını doğrulayın. 
-   
-    Disk UUID 'sini al
-
-    ```console
-    # ls /dev/disk/by-uuid/
-    ```
-
-    /Dev/disk/by-id/kullanılıyorsa, hem/boot/grub/menu.lst hem de/etc/fstab öğesini uygun-UUID değeriyle güncelleştirin
-   
-    Değişiklikten önce
-   
-    `root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1`
-   
-    Değişiklikten sonra
-   
-    `root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
-
+    
+9. /Etc/fstab dosyasının UUID 'sini (UUID) kullanarak diske başvurması sağlayın
+         
 10. Ethernet arabirimleri için statik kurallar oluşturmaktan kaçınmak için uıdev kurallarını değiştirin. Bu kurallar Microsoft Azure veya Hyper-V ' d a bir sanal makine kopyalanırken sorunlara neden olabilir:
 
     ```console
     # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
     ```
-
+   
 11. "/Etc/sysconfig/Network/DHCP" dosyasını düzenlemeniz ve `DHCLIENT_SET_HOSTNAME` parametreyi aşağıdaki şekilde değiştirmeniz önerilir:
 
     ```config
@@ -105,7 +101,8 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
     ```
 
-13. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
+13. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun. Bu genellikle varsayılandır.
+
 14. İşletim sistemi diskinde takas alanı oluşturmayın.
     
     Azure Linux Aracısı, Azure 'da sağlamaktan sonra sanal makineye bağlı yerel kaynak diskini kullanarak takas alanını otomatik olarak yapılandırabilir. Yerel kaynak diskinin *geçici* bir disk olduğunu ve VM 'nin sağlaması geri edildiğinde boşaltılıp boşaltıyacağını unutmayın. Azure Linux aracısını yükledikten sonra (önceki adıma bakın),/etc/waagent.exe için aşağıdaki parametreleri uygun şekilde değiştirin:
@@ -133,11 +130,11 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
 2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
 3. Kabukta ' ' komutunu çalıştırın `zypper lr` . Bu komut aşağıdakine benzer bir çıktı döndürürse, depolar beklenen şekilde yapılandırılır; hiçbir ayarlama gerekmez (sürüm numaralarının değişebileceğini unutmayın):
 
-   | # | Diğer ad                 | Adı                  | Etkin | Yenile
+   | # | Diğer ad                 | Ad                  | Etkin | Yenile
    | - | :-------------------- | :-------------------- | :------ | :------
-   | 1 | Bulut: Tools_13.1      | Bulut: Tools_13.1      | Evet     | Evet
-   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Evet     | Evet
-   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | Evet     | Evet
+   | 1 | Bulut: Tools_13.1      | Bulut: Tools_13.1      | Yes     | Yes
+   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Yes     | Yes
+   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | Yes     | Yes
 
     Komut "tanımlı depo yok..." öğesini döndürürse daha sonra bu depoyu eklemek için aşağıdaki komutları kullanın:
 

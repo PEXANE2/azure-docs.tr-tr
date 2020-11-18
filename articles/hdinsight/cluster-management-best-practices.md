@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542327"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659497"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight kümesi Yönetimi en iyi uygulamaları
 
@@ -27,7 +27,7 @@ HDInsight kümelerini yönetmeye yönelik en iyi yöntemleri öğrenin.
 | Özel Kaynak Yöneticisi şablonu | [Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Hızlı başlangıç şablonları | [HDInsight hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
 | Azure örneklerinden | [HDInsight Azure örnekleri](/samples/browse/?products=azure-hdinsight) |
-| Azure portal | [Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun](./spark/apache-spark-intellij-tool-plugin.md) |
+| Azure portalı | [Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Azure CLı kullanarak HDInsight kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Azure PowerShell kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturma](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Azure REST API kullanarak Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
@@ -49,7 +49,7 @@ HDInsight kümelerini yönetmeye yönelik en iyi yöntemleri öğrenin.
 
 | Hata | Daha fazla bilgi |
 |---|---|
-| Kota yok | Her bölgede aboneliğinizde oluşturabileceğiniz kota sayısı için kotalar vardır. Daha fazla bilgi için bkz. [Kapasite planlama: kotalar](./hdinsight-capacity-planning.md). |
+| Kota yok | Her bölgede aboneliğinizde oluşturabileceğiniz çekirdek sayısı için kotalar vardır. Daha fazla bilgi için bkz. [Kapasite planlama: kotalar](./hdinsight-capacity-planning.md). |
 | Daha fazla IP adresi yok | Her VNet 'in sınırlı sayıda IP adresi vardır. Bir HDInsight kümesi oluşturduğunuzda, her düğüm (Zookeeper ve Gateway düğümleri dahil) Bu ayrılmış IP adreslerinden bazılarını kullanır. Tüm IP adresleri kullanımda olduğunda bu hatayla karşılaşırsınız.  |
 | Ağ güvenlik grubu (NSG) kuralları HDInsight kaynak sağlayıcılarıyla iletişime izin vermez | HDInsight kümenize gelen trafiği denetlemek için NSG 'ler veya Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, kümenizin kritik Azure sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olmanız gerekir. Daha fazla bilgi için bkz. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketleri](./hdinsight-service-tags.md) |
 | Küme adının yeniden kullanılması | Daha önce kullandığınız bir küme adı kullandığınızda, kümeyi yeniden oluşturmadan önce X dakika beklemeniz gerekir. Aksi takdirde, kaynağın zaten var olduğunu belirten bir ileti görürsünüz. |

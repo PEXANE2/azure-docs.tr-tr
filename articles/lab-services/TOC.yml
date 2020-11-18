@@ -167,7 +167,7 @@
 - name: Başvuru
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/labservices/'
+      href: /rest/api/labservices/
     - name: Az.LabServices PowerShell modülü (önizleme)
       href: reference-powershell-module.md
 - name: Kaynaklar

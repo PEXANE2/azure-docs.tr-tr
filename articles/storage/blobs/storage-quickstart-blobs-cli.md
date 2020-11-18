@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88520779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660347"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -27,19 +27,9 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-## <a name="install-the-azure-cli-locally"></a>Azure CLı 'yı yerel olarak yükler
-
-Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.46 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümünüzü belirlemek için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
-
-Azure CLı 'yi yerel olarak çalıştırıyorsanız, oturum açıp kimlik doğrulaması yapmanız gerekir. Azure Cloud Shell kullanıyorsanız bu adım gerekli değildir. Azure CLı 'da oturum açmak için `az login` tarayıcı penceresinde çalıştırın ve kimlik doğrulaması yapın:
-
-```azurecli
-az login
-```
-
-Azure CLı ile kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli).
+- Bu makale, Azure CLı 'nin sürüm 2.0.46 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="authorize-access-to-blob-storage"></a>Blob depolamaya erişim yetkisi verme
 
@@ -76,7 +66,7 @@ az storage account create \
     --encryption-services blob
 ```
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılardaki blob gruplarını, dosyalarınızı bilgisayarınızdaki dosyalarınıza düzenlemenize benzer şekilde düzenleyebilirsiniz. [az storage container create](/cli/azure/storage/container) komutunu kullanarak blobları depolamak için bir kapsayıcı oluşturun.
 
@@ -111,7 +101,7 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 vi helloworld
 ```
 
-Dosya açıldığında, **Ekle**' ye basın. *Merhaba Dünya*yazın ve ardından **ESC**tuşuna basın. Sonra, şunu yazın *: x*yazın ve **ENTER**tuşuna basın.
+Dosya açıldığında, **Ekle**' ye basın. *Merhaba Dünya* yazın ve ardından **ESC** tuşuna basın. Sonra, şunu yazın *: x* yazın ve **ENTER** tuşuna basın.
 
 Bu örnekte, son adımda [az storage blob upload](/cli/azure/storage/blob) komutuyla oluşturduğunuz kapsayıcıya bir blob yükleyeceksiniz. Dosya kök dizininde oluşturulduğundan bu yana bir dosya yolu belirtmeniz gerekmez. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 

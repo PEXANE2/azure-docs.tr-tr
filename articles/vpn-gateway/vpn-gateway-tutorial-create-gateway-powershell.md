@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461167"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661010"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Öğretici: PowerShell kullanarak bir VPN ağ geçidi oluşturma ve yönetme
 
@@ -28,7 +28,7 @@ Aşağıdaki diyagramda, bu öğreticinin bir parçası olarak oluşturulan sana
 
 :::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/gateway-diagram.png" alt-text="VNet ve VPN Gateway diyagramı":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -133,7 +133,7 @@ Ağ geçidi oluşturma işlemi tamamlandığında sanal ağınız ile başka bir
 
 ## <a name="view-the-gateway-public-ip-address"></a>Ağ Geçidi genel IP adresini görüntüleme
 
-Genel IP adresinin adını biliyorsanız, ağ geçidine atanan genel IP adresini göstermek için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) komutunu kullanın.
+Genel IP adresinin adını biliyorsanız, ağ geçidine atanan genel IP adresini göstermek için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanın.
 
 Oturumunuz zaman aşımına uğradı, Bu öğreticinin başından itibaren ortak ağ parametrelerini yeni oturumunuza kopyalayın ve devam edin, sonra devam edin.
 
@@ -162,11 +162,11 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
-Daha fazla bilgi için bkz. [Bir VPN ağ geçidini sıfırlama](vpn-gateway-resetgw-classic.md).
+Daha fazla bilgi için bkz. [Bir VPN ağ geçidini sıfırlama](./reset-gateway.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir [sonraki öğreticiye](vpn-gateway-tutorial-vpnconnection-powershell.md)ilerlediyseniz, Önkoşullar olduklarından bu kaynakları korumak isteyeceksiniz.
+Bir [sonraki öğreticiye](./vpn-gateway-create-site-to-site-rm-powershell.md)ilerlediyseniz, Önkoşullar olduklarından bu kaynakları korumak isteyeceksiniz.
 
 Ancak, ağ geçidi bir prototip, test ya da kavram kanıtı dağıtımı bir parçasıysa, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu, VPN ağ geçidini ve tüm ilgili kaynakları kaldırabilirsiniz.
 

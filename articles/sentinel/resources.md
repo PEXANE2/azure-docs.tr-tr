@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 50b88b4af6ea8479097b88b51fe7acfbea355ab8
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392325"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660653"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
@@ -78,7 +78,7 @@ Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz ger
 
 ## <a name="vendor-documentation"></a>Satıcı belgeleri
 
-| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantısının**|
+| **Satıcı**  | **Azure Sentinel 'de olay kullanma** | **Bağlantı**|
 |----|----|----|
 | GitHub| Topluluk sayfasına erişmek için kullanılır| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| CEF 'yi yapılandırma| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
@@ -92,4 +92,4 @@ Sorularınızı Azure Sentinel için [Techcommunity alanına](https://techcommun
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. [Microsoft Azure Güvenlik ve uyumluluk blogunu](https://docs.microsoft.com/archive/blogs/azuresecurity/)Azure Güvenlik ve uyumluluğu hakkında daha fazla bilgi bulacaksınız.
+Bu belgede, Azure Sentinel ile çalışırken yararlı olan kaynakların bir listesini aldınız. [Microsoft Azure Güvenlik ve uyumluluk blogunu](/archive/blogs/azuresecurity/)Azure Güvenlik ve uyumluluğu hakkında daha fazla bilgi bulacaksınız.

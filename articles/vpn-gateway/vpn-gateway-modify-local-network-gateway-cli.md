@@ -7,19 +7,19 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: d5656b60b3c94720ad0a5952f8f6524f90dc6c17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aadb2107cd009ac58cf8edb12853b10a5a0e3677
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392638"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660007"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Azure CLı kullanarak yerel ağ geçidi ayarlarını değiştirme
 
 Bazen yerel ağ geçidi adres ön eki veya ağ geçidi IP adresi değişiklerinizin ayarları değişir. Bu makalede yerel ağ geçidi ayarlarınızı nasıl değiştireceğiniz gösterilir. Ayrıca, aşağıdaki listeden farklı bir seçenek belirleyerek bu ayarları farklı bir yöntem kullanarak da değiştirebilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [Azure portalı](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
@@ -27,7 +27,7 @@ Bazen yerel ağ geçidi adres ön eki veya ağ geçidi IP adresi değişiklerini
 
 ## <a name="before-you-begin"></a><a name="before"></a>Başlamadan önce
 
-CLı komutlarının en son sürümünü (2,0 veya üzeri) yükler. CLI komutlarını yükleme hakkında bilgi için bkz. [Azure CLI’yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+CLı komutlarının en son sürümünü (2,0 veya üzeri) yükler. CLI komutlarını yükleme hakkında bilgi için bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
@@ -42,4 +42,3 @@ CLı komutlarının en son sürümünü (2,0 veya üzeri) yükler. CLI komutlar�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ağ Geçidi bağlantınızı doğrulayabilirsiniz. Bkz. [ağ geçidi bağlantısını doğrulama](vpn-gateway-verify-connection-resource-manager.md).
-

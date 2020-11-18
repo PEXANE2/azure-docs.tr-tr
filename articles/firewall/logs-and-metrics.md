@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: victorh
-ms.openlocfilehash: a0333f9afa69b533ac28dc302987e6d057bfeeb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69890e2d846a63a70c1b7459b1df13ce5e891289
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090168"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659480"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlükleri ve ölçümleri
 
@@ -158,7 +158,7 @@ Aşağıdaki ölçümler Azure Güvenlik Duvarı için kullanılabilir:
   - Durum: olası değerler *sağlıklı*, *düşürülmüş*, *sağlıksız*.
   - Neden: güvenlik duvarının ilgili durumunun nedenini gösterir. 
 
-     SNAT bağlantı noktaları %95 > kullanılırsa, tükendikleri kabul edilir ve durum =**düşürülmüş** ve Reason =**SNAT bağlantı noktası**ile sistem durumu %50 olur. Güvenlik duvarı, trafiği işlemeye devam eder ve var olan bağlantılar bu durumdan etkilenmez. Ancak yeni bağlantılar aralıklı olarak kurulamayabilir.
+     SNAT bağlantı noktaları %95 > kullanılırsa, tükendikleri kabul edilir ve durum =**düşürülmüş** ve Reason =**SNAT bağlantı noktası** ile sistem durumu %50 olur. Güvenlik duvarı, trafiği işlemeye devam eder ve var olan bağlantılar bu durumdan etkilenmez. Ancak yeni bağlantılar aralıklı olarak kurulamayabilir.
 
      SNAT bağlantı noktaları %95 < kullanılırsa, güvenlik duvarı sağlıklı olarak değerlendirilir ve sistem durumu %100 olarak gösterilir.
 
@@ -173,6 +173,6 @@ Aşağıdaki ölçümler Azure Güvenlik Duvarı için kullanılabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izlemeyi öğrenmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](tutorial-diagnostics.md).
+- Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izlemeyi öğrenmek için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](./firewall-diagnostics.md).
 
 - Azure Izleyici 'de ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md).

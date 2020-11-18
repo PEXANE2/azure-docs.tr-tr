@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması (Önizleme) için Gilar 'ı kullanma
 keywords: Giüstler, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371265"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659803"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Yay etkin Kubernetes kümesinde Gilar kullanarak yapılandırma dağıtma (Önizleme)
 
@@ -96,14 +96,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 --Repository-URL parametresi değeri için desteklenen senaryolar aşağıda verilmiştir.
 
-| Senaryo | Biçimlendir | Description |
+| Senaryo | Biçimlendir | Açıklama |
 | ------------- | ------------- | ------------- |
 | Genel git deposu | http [s]:/sunucu/repo.exe git veya git://server/repo.git   | Genel git deposu  |
-| Özel Git deposu – SSH – Flox tarafından oluşturulan anahtarlar | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Flox tarafından üretilen ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına veya depoya eklenmelidir. Daha fazla bilgiyi [burada](#apply-configuration-from-a-private-git-repository) bulabilirsiniz |
+| Özel Git deposu – SSH – Flox tarafından oluşturulan anahtarlar | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Flox tarafından üretilen ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına eklenmelidir. Dağıtım anahtarı Kullanıcı hesabı yerine depoya eklenirse, yerine kullanın `git@` `user@` . Daha fazla bilgiyi [burada](#apply-configuration-from-a-private-git-repository) bulabilirsiniz |
 
 Bu senaryolar Flox tarafından desteklenir, ancak henüz sourceControlConfiguration tarafından desteklenmez.
 
-| Senaryo | Biçimlendir | Description |
+| Senaryo | Biçimlendir | Açıklama |
 | ------------- | ------------- | ------------- |
 | Özel Git deposu-HTTPS | https://server/repo.git | Yakında (Kullanıcı adı/parola, Kullanıcı adı/belirteç, sertifika desteklenir) |
 | Özel Git deposu-SSH – kullanıcı tarafından sunulan anahtarlar | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Çok yakında |
@@ -220,9 +220,21 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 1. Azure portal bağlı küme kaynağına gidin.
 2. Kaynak sayfasında, "konfigürasyonlar" ı seçin ve bu küme için yapılandırmaların listesini görüntüleyin.
 3. Özel Git deposunu kullanan yapılandırmayı seçin.
-4. Açılan bağlam penceresinde, pencerenin alt kısmında **Depo ortak anahtarını**kopyalayın.
+4. Açılan bağlam penceresinde, pencerenin alt kısmında **Depo ortak anahtarını** kopyalayın.
 
-**Ortak anahtarı git deposuna bir dağıtım anahtarı olarak ekleyin**
+GitHub kullanıyorsanız, aşağıdaki 2 seçenekten birini kullanın:
+
+**Seçenek 1: Kullanıcı hesabınıza ortak anahtar ekleme**
+
+1. GitHub ' ı açın, sayfanın sağ üst köşesindeki profil simgesine tıklayın.
+2. **Ayarlar** ' a tıklayın
+3. **SSH ve GPG anahtarlarına** tıklayın
+4. **Yenı SSH anahtarına** tıklayın
+5. Bir başlık sağlayın
+6. Ortak anahtarı (herhangi bir çevreleyen tırnak işareti) Yapıştır
+7. **SSH anahtarı Ekle** 'ye tıklayın
+
+**Seçenek 2: ortak anahtarı git deposuna bir dağıtım anahtarı olarak ekleyin**
 
 1. GitHub ' ı açın, depoya, **Ayarlar**' a gidin ve **anahtarları dağıtın**
 2. **Dağıtım anahtarı Ekle** 'ye tıklayın
@@ -230,8 +242,6 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 4. **Yazma erişimine Izin ver** 'i denetle
 5. Ortak anahtarı (herhangi bir çevreleyen tırnak işareti) Yapıştır
 6. **Anahtar Ekle** 'ye tıklayın
-
-Bu anahtarların nasıl yönetileceği hakkında daha fazla bilgi için GitHub belgelerine bakın.
 
 **Bir Azure DevOps deposu kullanıyorsanız, anahtarı SSH Anahtarlarınıza ekleyin**
 

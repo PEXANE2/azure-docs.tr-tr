@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797641"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659735"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure Lab Services için maliyet yönetimi
 
@@ -31,7 +31,7 @@ Bu tahmin, olası tüm maliyetleri gösteremeyebilir. Birkaç kaynak dahil deği
 
 ## <a name="analyze-the-previous-months-usage"></a>Önceki ayın kullanımını çözümle
 
-Maliyet analizi, laboratuvara ilgili herhangi bir ayarlamayı belirlemenize yardımcı olmak için önceki ayın kullanımını gözden geçirmeye yöneliktir. Önceki maliyetlerin dökümünü [abonelik maliyeti analizinde](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)bulabilirsiniz. Azure portal, arama kutusuna **abonelikler** girebilir ve ardından **abonelikler** seçeneğini belirleyebilirsiniz. 
+Maliyet analizi, laboratuvara ilgili herhangi bir ayarlamayı belirlemenize yardımcı olmak için önceki ayın kullanımını gözden geçirmeye yöneliktir. Önceki maliyetlerin dökümünü [abonelik maliyeti analizinde](../cost-management-billing/costs/quick-acm-cost-analysis.md)bulabilirsiniz. Azure portal, arama kutusuna **abonelikler** girebilir ve ardından **abonelikler** seçeneğini belirleyebilirsiniz. 
 
 > [!div class="mx-imgBorder"]
 > ![Arama kutusunu ve abonelikler seçeneğini gösteren ekran görüntüsü.](./media/cost-management-guide/subscription-search.png)
@@ -41,12 +41,12 @@ Gözden geçirmek istediğiniz belirli bir abonelik seçin.
 > [!div class="mx-imgBorder"]
 > ![Abonelik seçimini gösteren ekran görüntüsü.](./media/cost-management-guide/subscription-select.png)
 
-Maliyet **yönetimi**altında sol bölmede **Maliyet Analizi** ' ni seçin.
+Maliyet **yönetimi** altında sol bölmede **Maliyet Analizi** ' ni seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Bir grafikteki abonelik maliyeti analizini gösteren ekran görüntüsü.](./media/cost-management-guide/subscription-cost-analysis.png)
 
-Bu Pano, bir zamanlamaya göre farklı dosya türlerine dışarı aktarma özelliği de dahil olmak üzere, derinlemesine maliyet analizine izin verir. Daha fazla bilgi için bkz. [maliyet yönetimi + faturalandırma genel bakış](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
+Bu Pano, bir zamanlamaya göre farklı dosya türlerine dışarı aktarma özelliği de dahil olmak üzere, derinlemesine maliyet analizine izin verir. Daha fazla bilgi için bkz. [maliyet yönetimi + faturalandırma genel bakış](../cost-management-billing/cost-management-billing-overview.md).
 
 Kaynak türüne göre filtre uygulayabilirsiniz. Kullanmak `microsoft.labservices/labaccounts` , yalnızca laboratuvar hizmetleriyle ilişkili maliyeti gösterir.
 
@@ -57,9 +57,9 @@ Aşağıdaki ekran görüntüsü, maliyet analizine bir örnektir.
 > [!div class="mx-imgBorder"]
 > ![Bir abonelik için örnek maliyet analizini gösteren ekran görüntüsü.](./media/cost-management-guide/cost-analysis.png)
 
-Varsayılan olarak, altı sütun vardır: **kaynak**, **kaynak türü**, **konum**, **kaynak grubu adı**, **Etiketler**ve **Maliyet**. **Kaynak** sütunu, laboratuvar hesabı, laboratuvar adı ve VM hakkındaki bilgileri içerir. Laboratuvar hesabı, laboratuvar adı ve varsayılan (ikinci ve üçüncü satırlar) gösteren satırlar, laboratuvarın maliyetlidir. Kullanılan VM 'Ler, laboratuvar hesabı, laboratuvar adı, varsayılan ve VM adını gösteren satırlar için görebileceğiniz bir maliyettir. 
+Varsayılan olarak, altı sütun vardır: **kaynak**, **kaynak türü**, **konum**, **kaynak grubu adı**, **Etiketler** ve **Maliyet**. **Kaynak** sütunu, laboratuvar hesabı, laboratuvar adı ve VM hakkındaki bilgileri içerir. Laboratuvar hesabı, laboratuvar adı ve varsayılan (ikinci ve üçüncü satırlar) gösteren satırlar, laboratuvarın maliyetlidir. Kullanılan VM 'Ler, laboratuvar hesabı, laboratuvar adı, varsayılan ve VM adını gösteren satırlar için görebileceğiniz bir maliyettir. 
 
-Bu örnekte, ilk ve ikinci satırları ekleme (her ikisi de **aaalab/dockerlab**ile başlar), "aaalab" Laboratuvar hesabında "dockerlab" Laboratuvarı için toplam maliyet sağlar.
+Bu örnekte, ilk ve ikinci satırları ekleme (her ikisi de **aaalab/dockerlab** ile başlar), "aaalab" Laboratuvar hesabında "dockerlab" Laboratuvarı için toplam maliyet sağlar.
 
 Görüntü galerisinin genel maliyetini almak için kaynak türünü olarak değiştirin `Microsoft.Compute/Galleries` . Bir paylaşılan görüntü Galerisi, galerinin nerede depolandığına bağlı olarak maliyetlerde görünmeyebilir.
 
@@ -70,7 +70,7 @@ Görüntü galerisinin genel maliyetini almak için kaynak türünü olarak değ
 
 Bazı üniversiteler, bir laboratuvar hesabı ve kaynak grubunu, sınıfları ayırmanın yolları olarak kullandı. Her sınıfın kendi laboratuvar hesabı ve kaynak grubu vardır. 
 
-Maliyet Analizi bölmesinde, kaynak grubu adına temel alan, sınıf için uygun kaynak grubu adıyla bir filtre ekleyin. Daha sonra, yalnızca bu sınıfa ait maliyetler görünür olur. Bu, maliyetleri görüntülerken sınıflar arasında daha net bir geri alma olanağı sağlar. Her sınıfın maliyetlerini ayrı dosyalarda indirmek için maliyet analizinin [zamanlanan dışa aktarma](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) özelliğini kullanabilirsiniz.
+Maliyet Analizi bölmesinde, kaynak grubu adına temel alan, sınıf için uygun kaynak grubu adıyla bir filtre ekleyin. Daha sonra, yalnızca bu sınıfa ait maliyetler görünür olur. Bu, maliyetleri görüntülerken sınıflar arasında daha net bir geri alma olanağı sağlar. Her sınıfın maliyetlerini ayrı dosyalarda indirmek için maliyet analizinin [zamanlanan dışa aktarma](../cost-management-billing/costs/tutorial-export-acm-data.md) özelliğini kullanabilirsiniz.
 
 ## <a name="manage-costs"></a>Maliyetleri yönetme
 
@@ -90,7 +90,7 @@ Bu ayarları hem laboratuvar hesabı düzeyinde hem de laboratuvar düzeyinde ya
 > [!NOTE]
 > Bu ayar yalnızca Windows sanal makineler için kullanılabilir.
 
-**Sanal makineler boşta kaldığında kullanıcıların bağlantısını kes** ayarı açık olduğunda, Windows işletim sistemi oturumun (şablon sanal makineler dahil) boşta kalması durumunda kullanıcının laboratuvardaki makinelerle bağlantısı kesilir. [Boştaki Windows işletim sistemi tanımı](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) iki ölçüt kullanır: 
+**Sanal makineler boşta kaldığında kullanıcıların bağlantısını kes** ayarı açık olduğunda, Windows işletim sistemi oturumun (şablon sanal makineler dahil) boşta kalması durumunda kullanıcının laboratuvardaki makinelerle bağlantısı kesilir. [Boştaki Windows işletim sistemi tanımı](/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) iki ölçüt kullanır: 
 
 * Kullanıcı devamsızlığı: klavye veya fare girişi yok.
 * Kaynak tüketiminin bulunmaması: tüm işlemciler ve tüm diskler belirli bir süre için boşta değildi.
@@ -122,7 +122,7 @@ Windows sanal makineleri, Kullanıcı bunları kullanmayı durdurduktan sonra 20
 * Linux için bir SSH bağlantısının bağlantısı kesilir.
  
 > [!NOTE]
-> Yalnızca [belirli bir Linux dağıtımları ve Linux sürümleri](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) desteklenir.
+> Yalnızca [belirli bir Linux dağıtımları ve Linux sürümleri](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions) desteklenir.
  
 Sanal makinelerin otomatik olarak kapanmadan önce kullanıcının yeniden bağlanmasına ne kadar süre beklemesi gerektiğini belirtebilirsiniz. 
 

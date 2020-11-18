@@ -3,12 +3,12 @@ title: Azure Service Fabric kümesinde sertifikaları yönetme
 description: Yeni sertifikaların nasıl ekleneceğini, sertifikanın nasıl aktarılacağını ve bir Service Fabric kümesinden veya bir kümeden sertifika nasıl kaldırılacağını açıklar.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd4440d76bed9d110c13baab9f4e67b3a5c64c0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869771"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660925"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure'da Service Fabric kümesine sertifika ekleme veya kaldırma
 Service Fabric X. 509.440 sertifikalarını nasıl kullandığını ve [küme güvenliği senaryolarını](service-fabric-cluster-security.md)nasıl öğrendiğini öğrenmeniz önerilir. Devam etmeden önce, bir küme sertifikasının ne olduğunu ve ne kullanıldığını anlamalısınız.
@@ -18,7 +18,7 @@ Azure hizmet dokuları SDK 'sının varsayılan sertifika yükleme davranışı,
 Service Fabric, istemci sertifikalarına ek olarak, küme oluşturma sırasında sertifika güvenliğini yapılandırırken, birincil ve ikincil olmak üzere iki küme sertifikası belirtmenize olanak tanır. Oluşturma zamanında ayarlama hakkında ayrıntılar için [Portal aracılığıyla bir Azure kümesi oluşturma](service-fabric-cluster-creation-via-portal.md) veya [Azure Resource Manager aracılığıyla bir Azure kümesi oluşturma](service-fabric-cluster-creation-via-arm.md) bölümüne bakın. Oluşturma zamanında yalnızca bir küme sertifikası belirtirseniz, bu, birincil sertifika olarak kullanılır. Küme oluşturulduktan sonra, ikincil olarak yeni bir sertifika ekleyebilirsiniz.
 
 > [!NOTE]
-> Güvenli bir küme için, her zaman en az bir geçerli (iptal edilmemiş ve dolmayan) küme sertifikası (birincil veya ikincil), dağıtılan (Aksi takdirde, küme çalışmayı durduruyor) gerekir. Tüm geçerli sertifikaların süresi dolmadan 90 gün önce, sistem düğüm üzerinde bir uyarı izlemesi ve ayrıca bir uyarı durumu olayı oluşturur. Şu anda bu makalede Service Fabric bir e-posta veya başka bir bildirim yok. 
+> Güvenli bir küme için, her zaman en az bir geçerli (iptal edilmemiş ve dolmayan) küme sertifikası (birincil veya ikincil), dağıtılan (Aksi takdirde, küme çalışmayı durduruyor) gerekir. Tüm geçerli sertifikaların süresi dolmadan 90 gün önce, sistem düğümde bir uyarı izlemesi ve bir uyarı sistem olayı oluşturur. Bunlar şu anda sertifika süre sonu ile ilgili Service Fabric gönderilen tek bildirimlerdir.
 > 
 > 
 
@@ -26,7 +26,7 @@ Service Fabric, istemci sertifikalarına ek olarak, küme oluşturma sırasında
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Portalı kullanarak ikincil küme sertifikası ekleme
-İkincil küme sertifikası Azure portal aracılığıyla eklenemiyor, Azure PowerShell 'i kullanın. İşlem bu belgede daha sonra özetlenmiştir.
+İkincil küme sertifikası Azure portal üzerinden eklenemiyor; Azure PowerShell kullanın. İşlem bu belgede daha sonra özetlenmiştir.
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>Portalı kullanarak bir küme sertifikasını kaldırma
 Güvenli bir küme için, her zaman en az bir geçerli (iptal edilmemiş ve dolmayan) sertifikaya ihtiyaç duyarsınız. Gelecekteki süresi dolan tarihin en uzağında dağıtılan sertifika kullanımda olur ve bunu kaldırmak kümenizin çalışmasını durdurur; yalnızca süresi dolan sertifikayı veya Soonest süresi dolan kullanılmamış bir sertifikayı kaldırtığınızdan emin olun.
@@ -93,7 +93,7 @@ Bunun yanı sıra, ÜZERINDE örnek 5-VM-1-NodeTypes-Secure_Step2.JS, yaptığı
          }
     ``` 
 
-    **Sertifikayı almak**istiyorsanız, yeni sertifikayı birincil olarak belirtin ve geçerli birincili ikincil olarak hareket ettirin. Bu, geçerli birincil sertifikanızın yeni sertifikaya tek bir dağıtım adımında geçişine neden olur.
+    **Sertifikayı almak** istiyorsanız, yeni sertifikayı birincil olarak belirtin ve geçerli birincili ikincil olarak hareket ettirin. Bu, geçerli birincil sertifikanızın yeni sertifikaya tek bir dağıtım adımında geçişine neden olur.
     
     ```JSON
           "properties": {
@@ -125,7 +125,7 @@ Bunun yanı sıra, ÜZERINDE örnek 5-VM-1-NodeTypes-Secure_Step2.JS, yaptığı
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    **Sertifikayı almak**istiyorsanız, yeni sertifikayı birincil olarak belirtin ve geçerli birincili ikincil olarak hareket ettirin. Bu, geçerli sertifikanızın yeni sertifikaya tek bir dağıtım adımında geçişine neden olur.     
+    **Sertifikayı almak** istiyorsanız, yeni sertifikayı birincil olarak belirtin ve geçerli birincili ikincil olarak hareket ettirin. Bu, geçerli sertifikanızın yeni sertifikaya tek bir dağıtım adımında geçişine neden olur.     
 
     ```json
                    "certificate": {
@@ -197,7 +197,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-Şablonu kaynak grubunuza dağıtın. Kümenizin Şu anda dağıtıldığı kaynak grubunu kullanın. New-AzResourceGroupDeployment komutunu çalıştırın. Varsayılan değer **artımlı**olduğundan, bu modu belirtmeniz gerekmez.
+Şablonu kaynak grubunuza dağıtın. Kümenizin Şu anda dağıtıldığı kaynak grubunu kullanın. New-AzResourceGroupDeployment komutunu çalıştırın. Varsayılan değer **artımlı** olduğundan, bu modu belirtmeniz gerekmez.
 
 > [!NOTE]
 > Modu, tamamlanacak şekilde ayarlarsanız, şablonunuzda olmayan kaynakları yanlışlıkla silebilirsiniz. Bu nedenle, bu senaryoda kullanmayın.

@@ -8,27 +8,25 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c7e8f0fc3a90a0811d38840004f7ae12a9a225ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef397eb67c1f60c14fb36bf455236d84b730f611
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708518"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659582"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
 
 PostgreSQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
-Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
-- [PostgreSQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-server-database-azure-cli.md)
+## <a name="prerequisites"></a>Önkoşullar
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için:
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- [PostgreSQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-server-database-azure-cli.md)gerekir.
 
- 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde, girin `az --version` . Yüklemek veya yükseltmek için bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
+ - Bu makale, Azure CLı 'nin 2,0 veya sonraki bir sürümünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="set-backup-configuration"></a>Yedekleme yapılandırmasını ayarla
 
@@ -69,9 +67,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
+| resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
 | name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, kendi yerel saat diliminizi (gibi) kullanabilirsiniz `2018-03-13T05:59:00-08:00` . UTC Zulu dili biçimini de kullanabilirsiniz. Örneğin, `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
@@ -98,7 +96,7 @@ Sunucuyu coğrafi olarak geri yüklemek için, Azure CLı komut isteminde aşağ
 ```azurecli-interactive
 az postgres server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen4_8 
 ```
-Bu komut, *myresourcegroup*öğesine ait olacak Doğu ABD *mydemoserver-geogeri yüklenen* adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, gen 4 sunucusudur. Sunucu, *myresourcegroup* kaynak grubunda de olan, coğrafi olarak yedekli olan *demosunucum*yedeğinden oluşturulur.
+Bu komut, *myresourcegroup* öğesine ait olacak Doğu ABD *mydemoserver-geogeri yüklenen* adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, gen 4 sunucusudur. Sunucu, *myresourcegroup* kaynak grubunda de olan, coğrafi olarak yedekli olan *demosunucum* yedeğinden oluşturulur.
 
 Yeni sunucuyu var olan sunucudan farklı bir kaynak grubunda oluşturmak isterseniz, `--source-server` Aşağıdaki örnekte olduğu gibi parametresi için sunucu adını niteleyebilirsiniz:
 
@@ -109,7 +107,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 `az postgres server georestore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Yeni sunucunun ait olacağı kaynak grubunun adı.|
 |name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |

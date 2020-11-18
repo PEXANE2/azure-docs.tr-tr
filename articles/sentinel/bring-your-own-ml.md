@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347509"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660585"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Kendi Machine Learning (ML) Azure Sentinel 'e taşıyın
 
@@ -32,7 +32,7 @@ ML algılama modelleri, yanlış pozitifleri azaltmak ve geleneksel bir yaklaş�
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>Kendi Machine Learning (BYO-ML) platformunu getir nedir?
 
-ML kaynaklarına sahip kuruluşlar ve benzersiz iş ihtiyaçları için özelleştirilmiş ML modelleri derlemek istiyorsanız **BYO-ml platformunu**sunuyoruz. Platform, [Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks) / ml ortamını oluşturmak için Azure Databricks[Apache Spark](http://spark.apache.org/) ortamı ve jupi not defterlerini kullanır. Aşağıdaki bileşenleri sağlar:
+ML kaynaklarına sahip kuruluşlar ve benzersiz iş ihtiyaçları için özelleştirilmiş ML modelleri derlemek istiyorsanız **BYO-ml platformunu** sunuyoruz. Platform, [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) / ml ortamını oluşturmak için Azure Databricks[Apache Spark](http://spark.apache.org/) ortamı ve jupi not defterlerini kullanır. Aşağıdaki bileşenleri sağlar:
 
 - verilere erişmenize ve sonuçları Log Analytics (LA) ' a İtmenize yardımcı olacak kitaplıkları içeren bir BYO-ML paketi, sonuçları algılama, araştırma ve arama ile tümleştirebilmenizi sağlar. 
 
@@ -95,7 +95,7 @@ BYO-ML platformunun anahtar bileşenleriyle tanışdığınıza göre, özelleş
 
 ### <a name="setup-the-databricksspark-environment"></a>Databricks/Spark ortamını ayarlayın
 
-Henüz bir tane yoksa, kendi Databricks ortamınızı oluşturmanız gerekecektir. Yönergeler için [Databricks hızlı başlangıç](https://docs.microsoft.com/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) belgesine bakın.
+Henüz bir tane yoksa, kendi Databricks ortamınızı oluşturmanız gerekecektir. Yönergeler için [Databricks hızlı başlangıç](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal) belgesine bakın.
 
 ### <a name="auto-export-instruction"></a>Otomatik dışa aktarma yönergesi
 
@@ -103,7 +103,7 @@ Sentinel 'de kendi verilerinizi temel alan özel ML modelleri oluşturmak için,
 
 Bu örnekte, Azure Blob depolamada dosya paylaşma erişim günlüğü için eğitim verilerinize sahip olmanız gerekir. Verilerin biçimi not defterinde ve kitaplıklarda belgelenmiştir.
 
-[Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/monitor/log-analytics)kullanarak Log Analytics verilerinizi otomatik olarak dışa aktarabilirsiniz. 
+[Azure komut satırı arabirimi 'ni (CLI)](/cli/azure/monitor/log-analytics)kullanarak Log Analytics verilerinizi otomatik olarak dışa aktarabilirsiniz. 
 
 Komutları çalıştırmak için, Log Analytics çalışma alanınızda, depolama hesabınızda ve EventHub kaynağınız için **katkıda** bulunan rolünü atamış olmanız gerekir. 
 
@@ -159,13 +159,13 @@ Puanlama elde etmeniz için, Puanlama not defterindeki modülünü Azure Sentine
 
 Puanlanmış sonuçlarınızı ilgili günlük ayrıntılarıyla birlikte görmek için, Azure Sentinel portalınıza geri dönün. Özel günlüklerde **günlükler** >, sonuçları **AnomalousResourceAccessResult_CL** tablosunda (veya kendi özel tablo adınızla) görürsünüz. Bu sonuçları, araştırma ve avcılık deneyimlerinizi geliştirmek için kullanabilirsiniz.
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="Machine Learning çerçevesi":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="anormal kaynak erişim günlükleri":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>ML sonuçlarıyla özel analiz kuralı oluşturma
 
 ML sonuçlarının özel Günlükler tablosunda olduğunu onayladıktan sonra puanları uygunlukta memnun kaldığınızda, sonuçlara göre bir algılama oluşturabilirsiniz. Azure Sentinel portalından analizler **' e gidin** ve [Yeni bir algılama kuralı oluşturun](tutorial-detect-threats-custom.md). Aşağıda, algılamayı oluşturmak için kullanılan sorguyu gösteren bir örnek verilmiştir.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Machine Learning çerçevesi":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="B Y O M L algılama için özel analiz kuralı oluştur":::
 
 ### <a name="view-and-respond-to-incidents"></a>Olayları görüntüleme ve yanıtlama
 ML sonuçlarını temel alarak analiz kuralını ayarladıktan sonra, sorguda ayarladığınız eşiğin üstünde sonuçlar varsa, Azure Sentinel 'teki **Olaylar** sayfasında bir olay oluşturulur ve ortaya çıkacak. 

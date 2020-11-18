@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 723d93b9a5e986501278bdee35835cfa0c234711
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94555869"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660551"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portal kullanarak VNet-VNet VPN Gateway bağlantısı yapılandırma
 
@@ -74,58 +74,58 @@ Bu makalede VNet-VNet bağlantı türünü kullanarak sanal ağların nasıl ba�
 **VNet1 için değerler:**
 
 * **Sanal ağ ayarları**
-  * **Ad** : VNet1
-  * **Adres alanı** : 10.1.0.0/16
-  * **Abonelik** : kullanmak istediğiniz aboneliği seçin.
-  * **Kaynak grubu** : TestRG1
-  * **Konum** : Doğu ABD
+  * **Ad**: VNet1
+  * **Adres alanı**: 10.1.0.0/16
+  * **Abonelik**: kullanmak istediğiniz aboneliği seçin.
+  * **Kaynak grubu**: TestRG1
+  * **Konum**: Doğu ABD
   * **Alt ağ**
-    * **Ad** : ön uç
-    * **Adres aralığı** : 10.1.0.0/24
+    * **Ad**: ön uç
+    * **Adres aralığı**: 10.1.0.0/24
 
 * **Sanal ağ geçidi ayarları**
-  * **Ad** : VNet1GW
-  * **Kaynak grubu** : Doğu ABD
-  * **Oluşturma** : 1. kuşak
-  * **Ağ geçidi türü** : **VPN** ’i seçin.
-  * **VPN türü** : **route * based** öğesini seçin.
-  * **SKU** : VpnGw1
-  * **Sanal ağ** : VNet1
-  * **Ağ geçidi alt ağ adres aralığı** : 10.1.255.0/27
-  * **Genel IP adresi** : Yeni oluştur
-  * **Genel IP adresi adı** : VNet1GWpip
+  * **Ad**: VNet1GW
+  * **Kaynak grubu**: Doğu ABD
+  * **Oluşturma**: 1. kuşak
+  * **Ağ geçidi türü**: **VPN**’i seçin.
+  * **VPN türü**: **route * based** öğesini seçin.
+  * **SKU**: VpnGw1
+  * **Sanal ağ**: VNet1
+  * **Ağ geçidi alt ağ adres aralığı**: 10.1.255.0/27
+  * **Genel IP adresi**: Yeni oluştur
+  * **Genel IP adresi adı**: VNet1GWpip
 
 * **Bağlantı**
-  * **Ad** : VNet1toVNet4
-  * **Paylaşılan anahtar** : paylaşılan anahtarı kendiniz oluşturabilirsiniz. VNET 'ler arasında bağlantı oluşturduğunuzda değerler eşleşmelidir. Bu alıştırma için abc123 kullanın.
+  * **Ad**: VNet1toVNet4
+  * **Paylaşılan anahtar**: paylaşılan anahtarı kendiniz oluşturabilirsiniz. VNET 'ler arasında bağlantı oluşturduğunuzda değerler eşleşmelidir. Bu alıştırma için abc123 kullanın.
 
 **Ile vnet4 arasında için değerler:**
 
 * **Sanal ağ ayarları**
-  * **Ad** : ile vnet4 arasında
-  * **Adres alanı** : 10.41.0.0/16
-  * **Abonelik** : kullanmak istediğiniz aboneliği seçin.
-  * **Kaynak grubu** : TestRG4
-  * **Konum** : Batı ABD
+  * **Ad**: ile vnet4 arasında
+  * **Adres alanı**: 10.41.0.0/16
+  * **Abonelik**: kullanmak istediğiniz aboneliği seçin.
+  * **Kaynak grubu**: TestRG4
+  * **Konum**: Batı ABD
   * **Alt ağ**
-  * **Ad** : ön uç
-  * **Adres aralığı** : 10.41.0.0/24
+  * **Ad**: ön uç
+  * **Adres aralığı**: 10.41.0.0/24
 
 * **Sanal ağ geçidi ayarları**
-  * **Ad** : VNet4GW
-  * **Kaynak grubu** : Batı ABD
-  * **Oluşturma** : 1. kuşak
-  * **Ağ geçidi türü** : **VPN** ’i seçin.
-  * **VPN türü** : **Rota tabanlı** ' ı seçin.
-  * **SKU** : VpnGw1
-  * **Sanal ağ** : ile vnet4 arasında
-  * **Ağ geçidi alt ağ adres aralığı** : 10.41.255.0/27
-  * **Genel IP adresi** : Yeni oluştur
-  * **Genel IP adresi adı** : VNet4GWpip
+  * **Ad**: VNet4GW
+  * **Kaynak grubu**: Batı ABD
+  * **Oluşturma**: 1. kuşak
+  * **Ağ geçidi türü**: **VPN**’i seçin.
+  * **VPN türü**: **Rota tabanlı**' ı seçin.
+  * **SKU**: VpnGw1
+  * **Sanal ağ**: ile vnet4 arasında
+  * **Ağ geçidi alt ağ adres aralığı**: 10.41.255.0/27
+  * **Genel IP adresi**: Yeni oluştur
+  * **Genel IP adresi adı**: VNet4GWpip
 
 * **Bağlantı**
-  * **Ad** : VNet4toVNet1
-  * **Paylaşılan anahtar** : paylaşılan anahtarı kendiniz oluşturabilirsiniz. VNET 'ler arasında bağlantı oluşturduğunuzda değerler eşleşmelidir. Bu alıştırma için abc123 kullanın.
+  * **Ad**: VNet4toVNet1
+  * **Paylaşılan anahtar**: paylaşılan anahtarı kendiniz oluşturabilirsiniz. VNET 'ler arasında bağlantı oluşturduğunuzda değerler eşleşmelidir. Bu alıştırma için abc123 kullanın.
 
 ## <a name="create-and-configure-vnet1"></a>VNet1 oluşturma ve yapılandırma
 
@@ -157,8 +157,8 @@ VNet1 yapılandırdıktan sonra, önceki adımları tekrarlayarak ve değerleri 
 
 Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığında, sanal ağ geçidi bağlantılarınızı oluşturabilirsiniz. Bu bölümde VNet1 ile VNet4 arasında bir bağlantı oluşturursunuz. Bu adımlar yalnızca aynı abonelikteki sanal ağlar için geçerlidir. Sanal ağlarınız farklı aboneliklerdeyse, bağlantıyı kurmak için [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) kullanmanız gerekir. Ancak sanal ağlarınız aynı abonelikte farklı kaynak gruplarıdır, portalı kullanarak bunları bağlayabilirsiniz.
 
-1. Azure portal, **tüm kaynaklar** ' ı seçin, arama kutusuna *sanal ağ geçidi* girin ve ardından VNET 'iniz için sanal ağ geçidine gidin. Örneğin, **VNet1GW**. **Sanal ağ geçidi** sayfasını açmak için ağ geçidini seçin.
-1. Ağ Geçidi sayfasında, **Ayarlar->bağlantılar** ' a gidin. Ardından **+ Ekle** ' yi seçin.
+1. Azure portal, **tüm kaynaklar**' ı seçin, arama kutusuna *sanal ağ geçidi* girin ve ardından VNET 'iniz için sanal ağ geçidine gidin. Örneğin, **VNet1GW**. **Sanal ağ geçidi** sayfasını açmak için ağ geçidini seçin.
+1. Ağ Geçidi sayfasında, **Ayarlar->bağlantılar**' a gidin. Ardından **+ Ekle**' yi seçin.
 
    :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Bağlantılar sayfası":::
 1. **Bağlantı ekle** sayfası açılır.
@@ -167,13 +167,13 @@ Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığın
 
    **Bağlantı ekle** sayfasında, bağlantınızın değerlerini girin:
 
-   * **Ad** : bağlantınız için bir ad girin. Örneğin, *VNet1toVNet4*.
+   * **Ad**: bağlantınız için bir ad girin. Örneğin, *VNet1toVNet4*.
 
-   * **Bağlantı türü** : açılan listeden VNet **-VNET** ' i seçin.
+   * **Bağlantı türü**: açılan listeden VNet **-VNET** ' i seçin.
 
-   * **İlk sanal ağ geçidi** : Bu bağlantıyı belirtilen sanal ağ geçidinden oluşturduğunuz için, bu alan değeri otomatik olarak doldurulur.
+   * **İlk sanal ağ geçidi**: Bu bağlantıyı belirtilen sanal ağ geçidinden oluşturduğunuz için, bu alan değeri otomatik olarak doldurulur.
 
-   * **İkinci sanal ağ geçidi** : Bu alan, bağlantı oluşturmak istediğiniz VNET 'in sanal ağ geçidindir. **Sanal ağ geçidi Seç** sayfasını açmak için **başka bir sanal ağ geçidi seçin öğesini** seçin.
+   * **İkinci sanal ağ geçidi**: Bu alan, bağlantı oluşturmak istediğiniz VNET 'in sanal ağ geçidindir. **Sanal ağ geçidi Seç** sayfasını açmak için **başka bir sanal ağ geçidi seçin öğesini** seçin.
 
       :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Ağ geçidi seçme":::
 
@@ -181,8 +181,8 @@ Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığın
 
      * Bağlanmak istediğiniz sanal ağ geçidini seçin.
 
-   * **Paylaşılan anahtar (PSK)** : Bu alana, bağlantınız için paylaşılan bir anahtar girin. Bu anahtarı kendiniz üretebilir veya oluşturabilirsiniz. Siteden siteye bağlantı içinde, kullandığınız anahtar şirket içi cihazınız ve sanal ağ geçidi bağlantınız için aynıdır. Bu kavram, bir VPN cihazına bağlanmak yerine, başka bir sanal ağ geçidine bağlanmakta olduğunuz durumlar dışında benzerdir.
-1. Değişikliklerinizi kaydetmek için **Tamam** ’ı seçin.
+   * **Paylaşılan anahtar (PSK)**: Bu alana, bağlantınız için paylaşılan bir anahtar girin. Bu anahtarı kendiniz üretebilir veya oluşturabilirsiniz. Siteden siteye bağlantı içinde, kullandığınız anahtar şirket içi cihazınız ve sanal ağ geçidi bağlantınız için aynıdır. Bu kavram, bir VPN cihazına bağlanmak yerine, başka bir sanal ağ geçidine bağlanmakta olduğunuz durumlar dışında benzerdir.
+1. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
 
 ## <a name="configure-the-vnet4-gateway-connection"></a>Ile vnet4 arasında ağ geçidi bağlantısını yapılandırma
 
@@ -200,7 +200,7 @@ Sonra, Ile vnet4 arasında ile VNet1 arasında bir bağlantı oluşturun. Portal
 
 ## <a name="add-additional-connections"></a>Ek bağlantı ekleme
 
-Ek bağlantılar eklemek istiyorsanız, bağlantıyı oluşturmak istediğiniz sanal ağ geçidine gidin ve **Bağlantılar** ' ı seçin. Başka bir VNet-VNet bağlantısı oluşturabilir veya bir şirket içi konum ile IPSec Siteden Siteye bağlantısı oluşturabilirsiniz. **Bağlantı türünü** , oluşturmak istediğiniz bağlantı türüyle eşleşecek şekilde ayarladığınızdan emin olun. Ek bağlantılar oluşturmadan önce, sanal ağınızın adres alanının, bağlanmak istediğiniz adres alanları ile çakışmadığından emin olun. Siteden Siteye bağlantı oluşturma adımları için bkz. [Siteden Siteye bağlantı oluşturma](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Ek bağlantılar eklemek istiyorsanız, bağlantıyı oluşturmak istediğiniz sanal ağ geçidine gidin ve **Bağlantılar**' ı seçin. Başka bir VNet-VNet bağlantısı oluşturabilir veya bir şirket içi konum ile IPSec Siteden Siteye bağlantısı oluşturabilirsiniz. **Bağlantı türünü**, oluşturmak istediğiniz bağlantı türüyle eşleşecek şekilde ayarladığınızdan emin olun. Ek bağlantılar oluşturmadan önce, sanal ağınızın adres alanının, bağlanmak istediğiniz adres alanları ile çakışmadığından emin olun. Siteden Siteye bağlantı oluşturma adımları için bkz. [Siteden Siteye bağlantı oluşturma](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
 ## <a name="vnet-to-vnet-faq"></a>Sanal Ağdan Sanal Ağa - SSS
 
@@ -210,6 +210,6 @@ Sanal ağlar arası bağlantılar hakkında ek bilgi için SSS sayfasını gör�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ağ trafiğini bir sanal ağ içindeki kaynaklarla nasıl sınırlayabilmeniz hakkında bilgi için bkz. [ağ güvenliği](../virtual-network/security-overview.md).
+* Ağ trafiğini bir sanal ağ içindeki kaynaklarla nasıl sınırlayabilmeniz hakkında bilgi için bkz. [ağ güvenliği](../virtual-network/network-security-groups-overview.md).
 
 * Azure, şirket içi ve İnternet kaynakları arasındaki trafiğin Azure tarafından nasıl yönlendirdiği hakkında bilgi için bkz. [Sanal ağ trafiği yönlendirme](../virtual-network/virtual-networks-udr-overview.md).

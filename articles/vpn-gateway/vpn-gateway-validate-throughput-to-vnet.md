@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: d2347c0688ca58698831019a193d03fe2c6721e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398517"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660942"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Sanal ağa yönelik VPN aktarım hızını doğrulama
 
@@ -119,7 +119,7 @@ Bu araç diske okuma/yazma işlemi gerçekleştirmez. Yalnızca bir uçtan diğe
 1. Önceki adımları tamamladıktan sonra, rol tersine çevrilmiş şekilde aynı adımları yürütün, böylece sunucu düğümü artık istemci düğümü olur ve tam tersi de geçerlidir.
 
 > [!Note]
-> Iperf tek araç değildir. [NTttcp, test için alternatif bir çözümdür](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
+> Iperf tek araç değildir. [NTttcp, test için alternatif bir çözümdür](../virtual-network/virtual-network-bandwidth-testing.md).
 
 ## <a name="test-vms-running-windows"></a>Windows çalıştıran VM 'Leri test etme
 
@@ -225,7 +225,7 @@ Yüklemeyi hızlı yapın
 
 Önceki adımlarla (Iperf/NTTTCP/vb.) birlikte değerlendirilen genel aktarım hızı iyi olsa bile, Windows Gezgini 'ni kullanırken veya bir RDP oturumunu sürükleyip bırakarak yavaş dosya kopyalama işlemi yaşayabilirsiniz. Bu sorun, normalde aşağıdaki faktörlerden biri veya her ikisi nedeniyle oluşur:
 
-* Windows Gezgini ve RDP gibi dosya kopyalama uygulamaları, dosyaları kopyalarken birden çok iş parçacığı kullanmaz. Daha iyi performans için, dosyaları 16 veya 32 iş parçacığı kullanarak kopyalamak üzere [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) gibi çok iş parçacıklı bir dosya kopyalama uygulaması kullanın. RichCopy içindeki dosya kopyası için iş parçacığı numarasını değiştirmek üzere **eylem**  >  **kopyalama seçenekleri**  >  **dosya kopyalama**' ya tıklayın.
+* Windows Gezgini ve RDP gibi dosya kopyalama uygulamaları, dosyaları kopyalarken birden çok iş parçacığı kullanmaz. Daha iyi performans için, dosyaları 16 veya 32 iş parçacığı kullanarak kopyalamak üzere [RichCopy](/previous-versions/technet-magazine/dd547088(v=msdn.10)) gibi çok iş parçacıklı bir dosya kopyalama uygulaması kullanın. RichCopy içindeki dosya kopyası için iş parçacığı numarasını değiştirmek üzere **eylem**  >  **kopyalama seçenekleri**  >  **dosya kopyalama**' ya tıklayın.
 
    ![Yavaş dosya kopyalama sorunları](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -233,7 +233,7 @@ Yüklemeyi hızlı yapın
    > Tüm uygulamalar aynı değildir ve tüm uygulamalar/işlemler tüm iş parçacıklarından yararlanır. Testi çalıştırırsanız bazı iş parçacıklarının boş olduğunu görebilir ve doğru işleme sonuçları sağlayamayacağız.
    > Uygulama dosyası aktarım performansınızı denetlemek için, uygulamanın veya dosya aktarımının en iyi iş verimini bulmak için iş parçacığı sayısını art arda veya azalmış olarak artırarak çok iş parçacığı kullanın.
 
-* VM diski okuma/yazma hızı yetersiz. Daha fazla bilgi için bkz. [Azure Storage sorunlarını giderme](../storage/common/storage-e2e-troubleshooting.md).
+* VM diski okuma/yazma hızı yetersiz. Daha fazla bilgi için bkz. [Azure Storage sorunlarını giderme](/previous-versions/azure/storage/common/storage-e2e-troubleshooting).
 
 ## <a name="on-premises-device-external-facing-interface"></a>Şirket içi cihaza yönelik dış arabirim
 

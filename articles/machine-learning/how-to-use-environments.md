@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f3056c500453c2249d66a05079334851c851df33
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 67b2dacb9debae1990d51be8ca47c76b7342cf67
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616629"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660126"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning yazılım ortamları oluşturun & kullanın
 
@@ -34,7 +34,7 @@ Bu makaledeki örneklerde nasıl yapılacağı gösterilmektedir:
 
 Ortamların Azure Machine Learning nasıl çalıştığı hakkında üst düzey bir genel bakış için bkz. [ml ortamları nedir?](concept-environments.md) Geliştirme ortamlarını yapılandırma hakkında daha fazla bilgi için [buraya](how-to-configure-environment.md)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -95,7 +95,7 @@ myenv = Environment.from_conda_specification(name = "myenv",
                                              file_path = "path-to-conda-specification-file")
 
 # From a pip requirements file
-myenv = Environment.from_pip_requirements(name = "myenv"
+myenv = Environment.from_pip_requirements(name = "myenv",
                                           file_path = "path-to-pip-requirements-file")                                          
 ```
 
@@ -110,7 +110,7 @@ Docker 'ı etkinleştirdiğinizde, Azure Machine Learning bir Docker görüntüs
 myenv.docker.enabled = True
 ```
 
-Varsayılan olarak, yeni oluşturulan Docker görüntüsü, çalışma alanıyla ilişkili kapsayıcı kayıt defterinde görüntülenir.  Depo adının *azureml/azureml_ \<uuid\>* biçimi vardır. Adın benzersiz tanımlayıcı ( *UUID* ) bölümü, ortam yapılandırmasından hesaplanan bir karmaya karşılık gelir. Bu yazışma, hizmetin, belirtilen ortam için bir görüntünün yeniden kullanım için zaten mevcut olup olmadığını belirlemesine izin verir.
+Varsayılan olarak, yeni oluşturulan Docker görüntüsü, çalışma alanıyla ilişkili kapsayıcı kayıt defterinde görüntülenir.  Depo adının *azureml/azureml_ \<uuid\>* biçimi vardır. Adın benzersiz tanımlayıcı (*UUID*) bölümü, ortam yapılandırmasından hesaplanan bir karmaya karşılık gelir. Bu yazışma, hizmetin, belirtilen ortam için bir görüntünün yeniden kullanım için zaten mevcut olup olmadığını belirlemesine izin verir.
 
 #### <a name="use-a-prebuilt-docker-image"></a>Önceden oluşturulmuş bir Docker görüntüsü kullanma
 

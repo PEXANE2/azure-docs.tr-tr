@@ -3,25 +3,25 @@ title: Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne bağlama
 description: Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlamayı öğrenin
 author: memildin
 ms.author: memildin
-ms.date: 10/01/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 88c34be45a832f8944217630568927bc7d52fd88
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660211"
 ---
-#  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
+# <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
-Güvenlik Merkezi, Azure olmayan bilgisayarlarınızın güvenlik duruşunu izleyebilir, ancak önce bunları Azure 'a bağlamanız gerekir. 
+Güvenlik Merkezi, Azure olmayan bilgisayarlarınızın güvenlik duruşunu izleyebilir, ancak önce bunları Azure 'a bağlamanız gerekir.
 
 Azure dışı bilgisayarlarınızı aşağıdaki yollarla bağlayabilirsiniz:
 
-- Azure yay kullanma (**önerilir**)
+- [Azure yay etkin sunucularını kullanma (**önerilir**)
 - Azure portal (**Başlangıç** ve **Stok**) Güvenlik Merkezi sayfalarından
 
 Bunların her biri bu sayfada açıklanmıştır.
@@ -30,21 +30,21 @@ Bunların her biri bu sayfada açıklanmıştır.
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc ile Azure olmayan makineler ekleme
 
-Azure Arc, Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne eklemenin tercih edilen yoludur.
+Azure Arc etkin sunucuları, Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne eklemenin tercih edilen yoludur.
 
-Azure Arc etkin olan bir makine, Azure kaynağı olur ve diğer Azure kaynaklarınız gibi önerilerle birlikte Güvenlik Merkezi 'nde görünür. 
+Azure Arc özellikli sunucuları olan bir makine Azure kaynağı olur ve diğer Azure kaynaklarınız gibi önerilerle birlikte Güvenlik Merkezi 'nde görünür.
 
-Ayrıca, Azure Arc makinede ilkeleri etkinleştirme, Log Analytics aracısını uzantı olarak dağıtma, diğer Azure hizmetleriyle dağıtımı basitleştirme ve daha fazlası gibi gelişmiş yetenekler sağlar. Avantajlara genel bakış için bkz. [desteklenen senaryolar](../azure-arc/servers/overview.md#supported-scenarios).
+Ayrıca, Azure Arc etkin sunucular, makinede konuk yapılandırma ilkelerini etkinleştirme, Log Analytics aracısını uzantı olarak dağıtma, diğer Azure hizmetleriyle dağıtımı basitleştirme ve daha fazlası gibi gelişmiş yetenekler sağlar. Avantajlara genel bakış için bkz. [desteklenen senaryolar](../azure-arc/servers/overview.md#supported-scenarios).
+
+[Azure Arc etkin sunucuları](../azure-arc/servers/overview.md)hakkında daha fazla bilgi edinin.
 
 **Azure yayı dağıtmak için:**
 
 - Bir makine için [hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)' daki yönergeleri izleyin.
-- Azure yayı 'yi ölçekli olarak dağıtmak için bkz. [ölçekli karma makineleri Azure 'A bağlama](../azure-arc/servers/onboard-service-principal.md)
-
-[Azure Arc](../azure-arc/servers/overview.md)hakkında daha fazla bilgi edinin.
+- Birden çok makineyi ölçekteki yay etkin sunuculara bağlamak için bkz. [ölçekli karma makineleri Azure 'A bağlama](../azure-arc/servers/onboard-service-principal.md)
 
 > [!TIP]
-> AWS makinelerini oluşturuyorsanız AWS için Güvenlik Merkezi Bağlayıcısı, Azure Arc dağıtımını sizin için saydam şekilde işler. [AWS hesaplarınızı Azure Güvenlik Merkezi 'Ne bağlama](quickstart-onboard-aws.md)bölümünde daha fazla bilgi edinin.
+> AWS üzerinde çalışan makineler oluşturuyorsanız, AWS için Güvenlik Merkezi Bağlayıcısı, Azure Arc dağıtımını sizin için saydam şekilde işler. [AWS hesaplarınızı Azure Güvenlik Merkezi 'Ne bağlama](quickstart-onboard-aws.md)bölümünde daha fazla bilgi edinin.
 
 ::: zone-end
 
@@ -62,11 +62,11 @@ Ayrıca, Azure Arc makinede ilkeleri etkinleştirme, Log Analytics aracısını 
     > [!TIP]
     > Ayrıca, **Envanter** sayfasının **Azure dışı sunucular Ekle** düğmesini de kullanabilirsiniz.
     > 
-    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="Başlangıç sayfasında kullanmaya başlayın sekmesi":::
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="Varlık envanteri sayfasından Azure dışı makineler ekleme":::
 
     Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
 
-    Mevcut bir çalışma alanına bilgisayar ekleyebilir veya yeni bir çalışma alanı oluşturabilirsiniz. 
+    Mevcut bir çalışma alanına bilgisayar ekleyebilir veya yeni bir çalışma alanı oluşturabilirsiniz.
 
 1. İsteğe bağlı olarak yeni bir çalışma alanı oluşturmak için  **Yeni çalışma alanı oluştur**' u seçin.
 
@@ -79,9 +79,10 @@ Ayrıca, Azure Arc makinede ilkeleri etkinleştirme, Log Analytics aracısını 
     - [Linux makinelerinizi ekleme](#onboard-your-linux-machines)
     - [Windows makinelerinizi ekleme](#onboard-your-windows-machines)
 
-
 ### <a name="onboard-your-azure-stack-vms"></a>Azure Stack VM 'lerinizi ekleme
+
 Azure Stack VM 'Leri eklemek için, **aracılar yönetim** sayfasındaki bilgilere ve Azure Stack üzerinde çalışan sanal makinelerde **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısı ' nı yapılandırmanız gerekir.
+
 1. **Aracılar yönetim** sayfasından, **çalışma alanı kimliği** ve **birincil anahtarı** Not defteri 'ne kopyalayın.
 1. **Azure Stack** portalınızda oturum açın ve **sanal makineler** sayfasını açın.
 1. Güvenlik Merkezi ile korumak istediğiniz sanal makineyi seçin.
@@ -93,18 +94,19 @@ Azure Stack VM 'Leri eklemek için, **aracılar yönetim** sayfasındaki bilgile
     >[!NOTE]
     > Market 'te listelenen **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını görmüyorsanız, kullanılabilir hale getirmek için lütfen Azure Stack işletmenine ulaşın.
 1. Uzantı yapılandırmasını **yükler** sayfasında, önceki adımda not defteri ' ne kopyaladığınız **çalışma alanı kimliğini** ve **çalışma alanı anahtarını (birincil anahtar)** yapıştırın.
-1. Yapılandırmayı tamamladığınızda **Tamam**' ı seçin. Uzantının durumu, **sağlama başarılı**olarak gösterilir. Sanal makinenin güvenlik merkezi 'nde görünmesi bir saate kadar sürebilir.
-
+1. Yapılandırmayı tamamladığınızda **Tamam**' ı seçin. Uzantının durumu, **sağlama başarılı** olarak gösterilir. Sanal makinenin güvenlik merkezi 'nde görünmesi bir saate kadar sürebilir.
 
 ### <a name="onboard-your-linux-machines"></a>Linux makinelerinizi ekleme
+
 Linux makineleri eklemek için **aracılar yönetim** sayfasından wget komutuna ihtiyacınız vardır.
+
 1. **Aracılar yönetim** sayfasından **wget** komutunu Not defteri 'ne kopyalayın. Bu dosyayı Linux bilgisayarınızdan erişilebilen bir konuma kaydedin.
 1. Linux bilgisayarınızda, WGET komutuyla dosyasını açın. İçeriğin tamamını seçin ve kopyalayıp bir Terminal konsoluna yapıştırın.
 1. Yükleme tamamlandığında, *pgrep* komutunu çalıştırarak *omsagent* 'ın yüklü olduğunu doğrulayabilirsiniz. Komutu *omsagent* PID 'sini döndürür.
     Aracının günlükleri şu adreste bulunabilir: */var/seçenek/Microsoft/omsagent/ \<workspace id> /log/* yeni Linux makinenin güvenlik merkezi 'nde görünmesi 30 dakika sürebilir.
 
-
 ### <a name="onboard-your-windows-machines"></a>Windows makinelerinizi ekleme
+
 Windows makineleri eklemek için, **aracılar yönetim** sayfasında bilgilere ve uygun aracı dosyasını (32/64 bit) indirmeniz gerekir.
 1. Kurulum dosyasını indirmek için bilgisayar işlemci türünüz için geçerli olan **Windows Aracısını İndir** bağlantısını seçin.
 1. **Aracılar yönetim** sayfasından, **çalışma alanı kimliği** ve **birincil anahtarı** Not defteri 'ne kopyalayın.
@@ -114,23 +116,24 @@ Windows makineleri eklemek için, **aracılar yönetim** sayfasında bilgilere v
     1. Bilgisayarın Azure Kamu bulutundaki bir Log Analytics çalışma alanına rapor etmesi gerekiyorsa Azure **bulut** açılan LISTESINDEN **Azure ABD kamu** ' yı seçin.
     1. Bilgisayarın, Log Analytics hizmetiyle bir ara sunucu üzerinden iletişim kurması gerekiyorsa **Gelişmiş** seçeneğini belirleyip ara sunucunun URL’sini ve bağlantı noktası numarasını sağlayın.
     1. Yapılandırma ayarlarının tümünü girdikten **sonra ileri**' yi seçin.
-    1. **Yüklemeye hazırlanma** sayfasında, uygulanacak ayarları gözden geçirin ve **yüklemeyi**seçin.
+    1. **Yüklemeye hazırlanma** sayfasında, uygulanacak ayarları gözden geçirin ve **yüklemeyi** seçin.
     1. **Yapılandırma başarıyla tamamlandı** sayfasında **son**' u seçin.
 
-Tamamlandığında, **Log Analytics Aracısı** **Denetim Masası**'nda görüntülenir. Burada yapılandırmanızı gözden geçirebilir ve aracının bağlı olup olmadığını doğrulayabilirsiniz.
+Bu tamamlandığında, **Microsoft İzleme Aracısı** **Denetim Masası**'nda görüntülenir. Burada yapılandırmanızı gözden geçirebilir ve aracının bağlı olup olmadığını doğrulayabilirsiniz.
 
 Aracıyı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows makinelerini bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 ::: zone-end
 
 ## <a name="verifying"></a>Olmadığının
+
 Tebrikler! Artık Azure ve Azure dışı makinelerinizi tek bir yerde görebilirsiniz. [Varlık envanteri sayfasını](asset-inventory.md) açın ve ilgili kaynak türlerine filtre uygulayın. Bu simgeler türleri ayırt edebilir:
 
   ![Azure dışı makine için ASC simgesi](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Azure dışı makine
 
   ![Azure makinesi için ASC simgesi](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
-  ![Azure Arc makinesi için ASC simgesi](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure Arc etkin makinesi
+  ![Azure yay sunucusu için ASC simgesi](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure Arc etkin sunucusu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491486"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660228"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -87,7 +87,7 @@ Ticari Market, bir acentemodeli kullanarak çalışmaktadır. Müşteri, Microso
 
 Yayımcı olarak, yazılım çözümünüz için kullanım koşulları 'nı, müşterilerin satın alma akışının bir parçası olarak kabul etmeleri gereken şekilde ayarlarsınız. Bu işlemleri basitleştirmek ve hızlandırmak için hüküm ve koşullarınıza dahil etmek için seçebileceğiniz standart bir sözleşme sunuyoruz. Bu, müşterilerin standart sözleşmeyi bir kez gözden geçirmesine, yasal ve satın alma takımlarından onay almasını ve ardından her teklifin değişiklik ve değişiklik için odaklanmasına olanak tanır.
 
-Tüm müşterilere uygulanan değişiklikler oluşturabilir veya belirli müşterilere özel değişiklikler yapabilirsiniz. Ayrıca hüküm ve koşullarınızı tam olarak özelleştirerek bir metin kutusuna girilebilir veya Web adresi olarak gösterilecek bir Web sitesinde barınabilir.
+Tüm müşterilere uygulanan değişiklikler oluşturabilir veya belirli müşterilere özel değişiklikler yapabilirsiniz. Ayrıca hüküm ve koşullarınızı, Iş ortağı merkezindeki bir metin kutusuna girilebilecek şekilde tamamen özelleştirebilirsiniz.
 
 Daha fazla bilgi edinmek için bkz. [Microsoft ticari Market Için standart sözleşme](standard-contract.md).
 
@@ -99,10 +99,10 @@ Evet, Azure Kamu marketi Azure Kamu bölgelerinde kullanılabilir ve Azure sanal
 
 Iş ortağı merkezi erişimini yöneten dört ilgili rol vardır.
 
-- *Yönetici* : dizindeki Iş Ortağı Merkezi kullanıcılarını yönetmek ve teklifleri oluşturmak ve güncelleştirmek için izinler sağlar.
-- *Geliştirici* : bir kullanıcının teklifleri oluşturmasına ve güncelleştirmesine izin verir.
-- *Mali katkıda bulunan* : ödeme raporlamasını görüntüleme izinleri sağlar.
-- *Sahip* : ödeme hesabı ve vergi profilini ayarlayabilir. Yayımcı anlaşmasını kabul eden Kullanıcı varsayılan olarak sahip olur.
+- *Yönetici*: dizindeki Iş Ortağı Merkezi kullanıcılarını yönetmek ve teklifleri oluşturmak ve güncelleştirmek için izinler sağlar.
+- *Geliştirici*: bir kullanıcının teklifleri oluşturmasına ve güncelleştirmesine izin verir.
+- *Mali katkıda bulunan*: ödeme raporlamasını görüntüleme izinleri sağlar.
+- *Sahip*: ödeme hesabı ve vergi profilini ayarlayabilir. Yayımcı anlaşmasını kabul eden Kullanıcı varsayılan olarak sahip olur.
 
 Azure Active Directory (Azure AD) *genel yönetici* izinleri, Yeni Kullanıcı hesapları oluşturmak veya temel alınan dizindeki Konuk hesaplarını davet etmek için gereklidir. İş Ortağı Merkezi, Azure AD 'yi kimlik modeline uygular ve bir kuruluşun Azure AD örneği genellikle BT veya güvenlik ekipleri tarafından yönetilir ve denetlenir.
 

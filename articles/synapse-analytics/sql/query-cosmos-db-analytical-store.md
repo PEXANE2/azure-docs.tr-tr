@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 087ee796fbd3c0563b8019a062acab9c7ad80bb1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 2ffc524c14b9ba281d7e386f7f8c726093f11dbf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579394"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661027"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te sunucusuz SQL havuzu ile Azure Cosmos DB verileri sorgulama (Önizleme)
 
@@ -25,7 +25,7 @@ Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transac
 Bu makalede, SYNAPSE bağlantısı etkinleştirilmiş Azure Cosmos DB kapsayıcılarından verileri sorgulayan sunucusuz SQL havuzu ile bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde sunucusuz SQL havuzu görünümleri oluşturma ve bunları [Bu](./tutorial-data-analyst.md) öğreticideki Power BI modellerine bağlama hakkında daha fazla bilgi edinebilirsiniz. 
 
 > [!IMPORTANT]
-> Bu öğretici [Azure Cosmos DB iyi tanımlanmış şemayla](../../cosmos-db/analytical-store-introduction.md#schema-representation)bir kapsayıcı kullanır. Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranış olur. `OPENROWSET` `WITH` Sorgu deneyimi değiştirilmiş ve iyi tanımlanmış şemayla hizalandığı için, tam aslına uygunluk şeması olan bir kapsayıcıdan veri okuyan yan tümce içermeyen işlevin sonuç kümesi şemasına güvenmeyin. Görüşlerinizi [Azure SYNAPSE Analytics geri bildirim forumuna](https://feedback.azure.com/forums/307516-azure-synapse-analytics) gönderin veya [SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) başvurarak geri bildirim sağlayın.
+> Bu öğretici, [Azure Cosmos DB iyi tanımlanmış bir şemaya](../../cosmos-db/analytical-store-introduction.md#schema-representation)sahip bir kapsayıcı kullanır. Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranıştır. `OPENROWSET` `WITH` Sorgu deneyimi ile hizalanabileceğinden ve iyi tanımlanmış şemaya göre değişiklik yaptığından, bir kapsayıcıdan tam uygunluk şeması olan bir kapsayıcıdan veri okuyan yan tümce olmadan işlevin sonuç kümesi şemasına güvenmeyin. Görüşlerinizi [Azure SYNAPSE Analytics geri bildirim forumuna](https://feedback.azure.com/forums/307516-azure-synapse-analytics) gönderin veya geri bildirimde bulunmak için [SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com) başvurun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -358,7 +358,7 @@ Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure SYNAPSE bağlantısıyla Power BI ve sunucusuz SQL havuzu kullanma](../../cosmos-db/synapse-link-power-bi.md)
 - [Sunucusuz SQL havuzunda görünüm oluşturma ve kullanma](create-use-views.md) 

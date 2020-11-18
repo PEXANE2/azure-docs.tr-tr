@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 05/06/2020
+ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a4740699d70601591645aa0d3183531a6687be6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324941"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660092"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Hızlı başlangıç: SYNAPSE SQL ile toplu yükleme
 
@@ -39,7 +39,8 @@ Artık SYNAPSE Studio içindeki aşağıdaki alanlara basit bir sağ tıklama il
 
 ### <a name="steps"></a>Adımlar
 
-1. Kaynak depolama konumu panelinde depolama hesabını ve yükleme yaptığınız dosyayı veya klasörü seçin: ![ kaynak konumu seçme](./sql/media/bulk-load/bulk-load-source-location.png)
+1. Kaynak depolama konumu panelinden depolama hesabını ve yükleme yaptığınız dosyayı veya klasörü seçin. Sihirbaz, Parquet dosyalarını otomatik olarak algılamaya çalışacaktır. Parquet dosya türü onaylanmazsa, ayrılmış metin (CSV) varsayılan olarak kullanılacaktır. 
+   ![Kaynak konumu seçme](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Reddedilen satırları (hata dosyası) yazmak istediğiniz depolama hesabı da dahil olmak üzere dosya biçimi ayarlarını seçin. Şu anda yalnızca CSV ve Parquet dosyaları desteklenir.
 
@@ -47,9 +48,14 @@ Artık SYNAPSE Studio içindeki aşağıdaki alanlara basit bir sağ tıklama il
 
 3. COPY ifadesinin dosya biçimi ayarlarını yapılandırmanıza yardımcı olmak üzere dosyayı nasıl ayrıştırarak olduğunu görmek için "Verileri Önizle" seçeneğini belirleyebilirsiniz. KOPYA ifadesinin dosyayı güncelleştirilmiş ayarla nasıl ayrıştıracağını görmek için "Verileri Önizle" seçeneğini belirleyin: ![ verileri önizleme](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
+> [!NOTE]  
+>
+> - Çoklu karakter alanı sonlandırıcılarını içeren verilerin önizlemesi toplu yükleme sihirbazında desteklenmez. Çoklu karakter alanı Sonlandırıcı belirtildiğinde toplu yükleme Sihirbazı, tek bir sütundaki verilerin önizlemesini alacak. 
+> - Çoklu karakter satır sonlandırıcılarını belirtmek COPY ifadesinde desteklenir; Ancak, bu, bir hatanın oluştuğu toplu yükleme sihirbazında desteklenmez.
+
 4. Yükün mevcut bir tablo veya yeni tablo için olup olmayacağını dahil etmek için kullanmakta olduğunuz adanmış SQL havuzunu seçin: ![ hedef konum seçme](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. Uygun sütun eşlemesine sahip olduğunuzdan emin olmak için "Sütun eşlemeyi Yapılandır" ı seçin. Yeni tablolar için, sütun eşlemesini yapılandırmak, hedef sütun veri türlerini güncelleştirmek için önemlidir: ![ Sütun eşlemeyi yapılandırma](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Uygun sütun eşlemesine sahip olduğunuzdan emin olmak için "Sütun eşlemeyi Yapılandır" ı seçin. "Sütun adlarını çıkar" etkinse, sütun adları otomatik olarak algılanır. Yeni tablolar için, sütun eşlemesini yapılandırmak, hedef sütun veri türlerini güncelleştirmek için önemlidir: ![ Sütun eşlemeyi yapılandırma](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
 6. "Betiği aç" ı seçin ve Data Lake 'ınızdan yüklenecek olan COPY ifadesiyle bir T-SQL betiği oluşturulacaktır: ![ SQL betiğini açma](./sql/media/bulk-load/bulk-load-target-final-script.png)
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: cc2c40dd0b61f917da86d67188f4b503ca9b9298
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c8e454f523f081681d359dfd852c5f88d69a99d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579360"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661061"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulama
 
@@ -35,7 +35,7 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel Azure kimliğiyle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
+Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel Azure kimliğiyle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)oluşturmanız gerekir.
 
 > [!IMPORTANT]
 > `Latin1_General_100_CI_AS_SC_UTF8`PARQUET dosyalarındaki dize DEĞERLERI UTF-8 kodlaması kullanılarak kodlandığından, bazı UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun.
@@ -81,7 +81,7 @@ from openrowset(
 
 Aşağıdaki bölümlerde, çeşitli türlerdeki PARQUET dosyalarını sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız, bir veri kaynağı ile [NYC sarı TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) depolama hesabına başvuran **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

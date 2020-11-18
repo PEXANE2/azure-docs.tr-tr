@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d4d055c0cd20d1b9598c408753334458d709276
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368209"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660636"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure için bir de, VHD 'YI hazırlama
 ## <a name="prerequisites"></a>Önkoşullar
@@ -58,7 +58,7 @@ Azure için Azure-Manage betikleri, [Credadtiv](https://www.credativ.com/)içind
     # sudo update-grub
     ```
 
-6. De, 8 veya 9 ' un Azure depolarını/etc/apt/sources.exe listesine ekleyin:
+6. De, 8, 9 veya 10 için Azure depoları 'nı/etc/apt/sources.exe listesine ekleyin:
 
     **Desek8. x "Jese"**
 
@@ -85,7 +85,18 @@ Azure için Azure-Manage betikleri, [Credadtiv](https://www.credativ.com/)içind
     deb http://debian-archive.trafficmanager.net/debian stretch-backports main
     deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
     ```
-
+    
+    **10. x "Buster"**
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian buster main
+    deb-src http://debian-archive.trafficmanager.net/debian buster main
+    deb http://debian-archive.trafficmanager.net/debian-security buster/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security buster/updates main
+    deb http://debian-archive.trafficmanager.net/debian buster-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian buster-updates main
+    deb http://debian-archive.trafficmanager.net/debian buster-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian buster-backports main
+    ```
 
 7. Azure Linux aracısını yükler:
 

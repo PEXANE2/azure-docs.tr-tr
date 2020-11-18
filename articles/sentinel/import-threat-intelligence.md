@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 19ad45eec78d53261bf1781808339152c69a0136
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638844"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660789"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Tehdit analizini Azure Sentinel’e aktarma
 
@@ -44,7 +44,7 @@ Azure Sentinel 'deki tüm diğer olay verileri gibi tehdit göstergeleri, veri b
 
 ### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>Tehdit bilgileri platformu veri Bağlayıcısı ile Azure Sentinel 'e tehdit göstergeleri ekleme
 
-Birçok kuruluş tehdit bilgileri platformu (tıp) çözümlerini çeşitli kaynaklardan toplamak, platform içindeki verileri seçmek ve ardından ağ cihazları, Gelişmiş tehdit koruması çözümleri veya Azure Sentinel gibi çeşitli güvenlik çözümlerine hangi tehdit göstergelerinin uygulanacağını seçmek için kullanır. Kuruluşunuz, MISP, anomali ThreatStream, ThreatConnect, EclecticIQ platform, ThreatQ Threat Intelligence platformu veya Palo Alto Networks gibi tümleşik bir tıp çözümünü kullanıyorsa, **tehdit bilgileri platformları veri Bağlayıcısı** , tehdit göstergelerini Azure Sentinel 'e aktarmak için ipucunu kullanmanıza olanak sağlar. Bağlayıcı bunu gerçekleştirmek için [Microsoft Graph Security Tiındicators API](https://docs.microsoft.com/graph/api/resources/tiindicator) 'siyle çalıştığından, bağlayıcı Azure Sentinel 'e göstergeler (ve Defender ATP gibi diğer Microsoft güvenlik çözümlerine) göndermek Için TIıNDICATORS API 'sinden yararlanmak üzere tüm özel tehdit bilgileri platformu tarafından da kullanılabilir.
+Birçok kuruluş tehdit bilgileri platformu (tıp) çözümlerini çeşitli kaynaklardan toplamak, platform içindeki verileri seçmek ve ardından ağ cihazları, Gelişmiş tehdit koruması çözümleri veya Azure Sentinel gibi çeşitli güvenlik çözümlerine hangi tehdit göstergelerinin uygulanacağını seçmek için kullanır. Kuruluşunuz, MISP, anomali ThreatStream, ThreatConnect, EclecticIQ platform, ThreatQ Threat Intelligence platformu veya Palo Alto Networks gibi tümleşik bir tıp çözümünü kullanıyorsa, **tehdit bilgileri platformları veri Bağlayıcısı** , tehdit göstergelerini Azure Sentinel 'e aktarmak için ipucunu kullanmanıza olanak sağlar. Bağlayıcı bunu gerçekleştirmek için [Microsoft Graph Security Tiındicators API](/graph/api/resources/tiindicator) 'siyle çalıştığından, bağlayıcı Azure Sentinel 'e göstergeler (ve Defender ATP gibi diğer Microsoft güvenlik çözümlerine) göndermek Için TIıNDICATORS API 'sinden yararlanmak üzere tüm özel tehdit bilgileri platformu tarafından da kullanılabilir.
 
 :::image type="content" source="media/import-threat-intelligence/threat-intel-import-path.png" alt-text="Tehdit bilgileri içeri aktarma yolu":::
 
@@ -74,9 +74,9 @@ Bu bilgiler, aşağıdaki üç adımı içeren **uygulama kaydı** adlı bir iş
 
 1. [Azure Portal](https://portal.azure.com/) açın ve **Azure Active Directory** hizmetine gidin.
 
-1. Menüden **uygulama kayıtları** ' nı seçin ve **Yeni kayıt** ' yi seçin.
+1. Menüden **uygulama kayıtları** ' nı seçin ve **Yeni kayıt**' yi seçin.
 
-1. Uygulama kaydınız için bir ad seçin, **tek kiracılı** radyo düğmesini seçin ve **Kaydet** ' i seçin.
+1. Uygulama kaydınız için bir ad seçin, **tek kiracılı** radyo düğmesini seçin ve **Kaydet**' i seçin.
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Uygulamayı kaydetme":::
 
@@ -92,7 +92,7 @@ Bu bilgiler, aşağıdaki üç adımı içeren **uygulama kaydı** adlı bir iş
 
 1. **BIR API seçin** sayfasında, Microsoft Graph izinleri listesinden seçmek için **Microsoft Graph** ' yi seçin.
 
-1. **Uygulamanızın ne tür izinlere ihtiyacı** olduğu sorulduğunda? **Uygulama izinleri** ' ni seçin. Bu, uygulama KIMLIĞI ve uygulama gizli dizileri (API anahtarları) ile kimlik doğrulaması yapan uygulamalar tarafından kullanılan izin türüdür.
+1. **Uygulamanızın ne tür izinlere ihtiyacı** olduğu sorulduğunda? **Uygulama izinleri**' ni seçin. Bu, uygulama KIMLIĞI ve uygulama gizli dizileri (API anahtarları) ile kimlik doğrulaması yapan uygulamalar tarafından kullanılan izin türüdür.
 
 1. **Threatındicators. ReadWrite. OwnedBy** ' ı seçin ve bu izni uygulamanızın izin listesine eklemek Için **izin Ekle** ' yi seçin.
 
@@ -104,7 +104,7 @@ Bu bilgiler, aşağıdaki üç adımı içeren **uygulama kaydı** adlı bir iş
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Onay ver":::
 
-1. Uygulamanıza izin verildiğinde, **durum** ' un altında yeşil bir onay işareti görürsünüz.
+1. Uygulamanıza izin verildiğinde, **durum**' un altında yeşil bir onay işareti görürsünüz.
  
 Uygulamanız kaydedildikten ve izinler verildiğinden, listenizden son şeyi uygulamanız için bir istemci gizli anahtarı alabilirsiniz.
 
@@ -285,7 +285,7 @@ Tehdit göstergelerini bir TAXıı sunucusundan Azure Sentinel 'e aktarmak için
 
 1. Menüden **veri bağlayıcıları** ' nı seçin, bağlayıcılar galerisinden **Threat Intelligence-taxıı** ' i seçin ve **bağlayıcı sayfası aç** düğmesine tıklayın.
 
-1. Bu TAXıı sunucu koleksiyonu, **API kök URL 'si** , **koleksiyon kimliği** , **Kullanıcı adı** (gerekliyse) ve **parola** (gerekliyse) için bir **ad** yazın ve **Ekle** düğmesine tıklayın.
+1. Bu TAXıı sunucu koleksiyonu, **API kök URL 'si**, **koleksiyon kimliği**, **Kullanıcı adı** (gerekliyse) ve **parola** (gerekliyse) için bir **ad** yazın ve **Ekle** düğmesine tıklayın.
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="TAXıı sunucularını yapılandırma":::
  
@@ -334,9 +334,9 @@ Tehdit göstergelerini etiketleme, bulmayı kolaylaştırmak için bunları grup
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>Analiz, tehdit göstergelerinizi olası tehditleri tespit etmek için koyar
 
-Tehdit göstergelerinizi Azure Sentinel 'e alındı; Bunların nasıl görüntüleneceğini ve yönetileceğini gördünüz; Artık sizin için neler yapabileceğini görün. Azure Sentinel gibi SıEM çözümlerinde tehdit göstergeleri için en önemli kullanım örneği, Power Analytics kurallarına yöneliktir.  Bu gösterge tabanlı kurallar, kuruluşunuzdaki güvenlik tehditlerini algılamak için veri kaynaklarınızdan gelen ham olayları tehdit göstergelerinizi karşılaştırarak karşılaştırır. Azure Sentinel **Analytics** 'te, zamanlanmış olarak çalışan ve güvenlik uyarıları üreten analiz kuralları oluşturun. Kurallar, kuralın ne sıklıkla çalışacağını, hangi tür sorgu sonuçlarının güvenlik uyarıları ürettiğini ve uyarılar oluşturulduğunda tetiklenecek otomatik yanıtları belirleme yapılandırmalarının yanı sıra sorgular tarafından da çalıştırılır.
+Tehdit göstergelerinizi Azure Sentinel 'e alındı; Bunların nasıl görüntüleneceğini ve yönetileceğini gördünüz; Artık sizin için neler yapabileceğini görün. Azure Sentinel gibi SıEM çözümlerinde tehdit göstergeleri için en önemli kullanım örneği, Power Analytics kurallarına yöneliktir.  Bu gösterge tabanlı kurallar, kuruluşunuzdaki güvenlik tehditlerini algılamak için veri kaynaklarınızdan gelen ham olayları tehdit göstergelerinizi karşılaştırarak karşılaştırır. Azure Sentinel **Analytics**'te, zamanlanmış olarak çalışan ve güvenlik uyarıları üreten analiz kuralları oluşturun. Kurallar, kuralın ne sıklıkla çalışacağını, hangi tür sorgu sonuçlarının güvenlik uyarıları ürettiğini ve uyarılar oluşturulduğunda tetiklenecek otomatik yanıtları belirleme yapılandırmalarının yanı sıra sorgular tarafından da çalıştırılır.
 
-Sıfırdan her zaman yeni analiz kuralları oluşturabilirsiniz, ancak Azure Sentinel, Microsoft Güvenlik mühendisleri tarafından oluşturulan ve gereksinimlerinizi karşılayacak şekilde kullanabileceğiniz yerleşik bir kural şablonları kümesi sağlar. Tehdit göstergelerini kullanan kural şablonlarını, " **TI Map**..." ile başlayan tüm bunlar gibi kolay bir şekilde belirleyebilirsiniz. Tüm bu kural şablonları benzer şekilde çalışır; tek fark, tehdit göstergeleri türünün kullanıldığı tek farklılık (etki alanı, e-posta, dosya karması, IP adresi veya URL) ve hangi olay türünün eşleşeceğini gösterir. Her şablon, kuralın çalışması için gereken gerekli veri kaynaklarını listeler. böylece, Azure Sentinel 'de gerekli olan olayları zaten içeri aktardıysanız bir bakışta görebilirsiniz.
+Sıfırdan her zaman yeni analiz kuralları oluşturabilirsiniz, ancak Azure Sentinel, Microsoft Güvenlik mühendisleri tarafından oluşturulan ve gereksinimlerinizi karşılayacak şekilde kullanabileceğiniz yerleşik bir kural şablonları kümesi sağlar. Tehdit göstergelerini kullanan kural şablonlarını, "**TI Map**..." ile başlayan tüm bunlar gibi kolay bir şekilde belirleyebilirsiniz. Tüm bu kural şablonları benzer şekilde çalışır; tek fark, tehdit göstergeleri türünün kullanıldığı tek farklılık (etki alanı, e-posta, dosya karması, IP adresi veya URL) ve hangi olay türünün eşleşeceğini gösterir. Her şablon, kuralın çalışması için gereken gerekli veri kaynaklarını listeler. böylece, Azure Sentinel 'de gerekli olan olayları zaten içeri aktardıysanız bir bakışta görebilirsiniz.
 
 Bu kural şablonlarından birine göz atalım ve Azure Sentinel 'e aktardığınız tehdit göstergelerini kullanarak güvenlik uyarıları oluşturmak için kuralı etkinleştirme ve yapılandırma konusunda yol göstereceğiz. Bu örnekte, **AzureActivity Için TI eşleme IP varlığı** adlı kural şablonunu kullanacağız. Bu kural, tüm Azure etkinlik olaylarınızı içeren herhangi bir IP adresi türü tehdit göstergesi ile eşleşir. Bir eşleşme bulunduğunda, bir **uyarının** ve güvenlik işlemleri ekibiniz tarafından araştırılması için karşılık gelen bir **olayın** oluşturulması gerekir. Bu analiz kuralı, **tehdit bilgileri** veri bağlayıcılarından birini veya her ikisini de etkinleştirdiyseniz (tehdit göstergelerini içeri aktarmak için) ve **Azure etkinlik** verileri bağlayıcısını (Azure abonelik düzeyi olaylarınızı içeri aktarmak için) etkinleştirdiyseniz başarıyla çalışır.
 
@@ -413,7 +413,7 @@ Azure Sentinel 'de sunulan tehdit bilgileri çalışma kitabını bulmayı ve ay
     | summarize count() by ThreatType
     ```
 
-1. **Görselleştirme** açılır penceresinde **çubuk grafik** ' i seçin.
+1. **Görselleştirme** açılır penceresinde **çubuk grafik**' i seçin.
 
 1. **Düzenle** düğmesini seçin. Çalışma kitabınız için yeni bir grafik oluşturdunuz.
 

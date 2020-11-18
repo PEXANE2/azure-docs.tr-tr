@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: c8b4102968e4b6b633216e29d5e993a1c98fa1c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 478f3454a728871040cdbbf9f817394cffe6b82f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89071729"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660262"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Hızlı başlangıç: Kullanılabilirlik Alanları ARM şablonuyla Azure Güvenlik duvarını dağıtma
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, Azure Güvenlik duvarını üç Kullanılabilirlik Al
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Şablon, güvenlik duvarıyla bir test ağı ortamı oluşturur. Ağda üç alt ağa sahip bir sanal ağ (VNet) vardır: *AzureFirewallSubnet*, *Serverssubnet*ve *jumpboxsubnet*. *Serverssubnet* ve *jumpboxsubnet* alt ağı her birinin tek, Iki çekirdekli bir Windows Server sanal makinesi vardır.
+Şablon, güvenlik duvarıyla bir test ağı ortamı oluşturur. Ağda üç alt ağa sahip bir sanal ağ (VNet) vardır: *AzureFirewallSubnet*, *Serverssubnet* ve *jumpboxsubnet*. *Serverssubnet* ve *jumpboxsubnet* alt ağı her birinin tek, Iki çekirdekli bir Windows Server sanal makinesi vardır.
 
 Güvenlik Duvarı *AzureFirewallSubnet* alt ağıdır ve erişim izni veren tek bir kuralla bir uygulama kuralı koleksiyonuna sahiptir `www.microsoft.com` .
 
@@ -80,7 +80,7 @@ Bir şablondaki güvenlik duvarının JSON sözdizimi ve özellikleri hakkında 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyacınız kalmadığında, PowerShell komutunu çalıştırarak kaynak grubunu, güvenlik duvarını ve ilgili tüm kaynakları kaldırabilirsiniz `Remove-AzResourceGroup` . *Myresourcegroup*adlı bir kaynak grubunu kaldırmak için şunu çalıştırın:
+Artık ihtiyacınız kalmadığında, PowerShell komutunu çalıştırarak kaynak grubunu, güvenlik duvarını ve ilgili tüm kaynakları kaldırabilirsiniz `Remove-AzResourceGroup` . *Myresourcegroup* adlı bir kaynak grubunu kaldırmak için şunu çalıştırın:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
@@ -93,4 +93,4 @@ Güvenlik Duvarı izleme öğreticisine devam etmeyi planlıyorsanız, kaynak gr
 Şimdi Azure Güvenlik Duvarı günlüklerini izleyebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Güvenlik Duvarı günlüklerini izleme](tutorial-diagnostics.md)
+> [Öğretici: Azure Güvenlik Duvarı günlüklerini izleme](./firewall-diagnostics.md)

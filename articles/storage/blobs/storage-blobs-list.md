@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0bd2b295e5e4d4d5ea6e25869c8c109ff8bbbf38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093302"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660772"
 ---
 # <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
@@ -51,11 +51,7 @@ Bu yöntemlerin aşırı yüklemeleri, Blobların listeleme işlemi tarafından 
 
 ### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürüldüğünü yönetin
 
-Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür, ancak her listeleme işleminin dönmesini istediğiniz sonuç sayısını belirtebilirsiniz. Bu makalede sunulan örneklerde bunun nasıl yapılacağı gösterilmektedir.
-
-Bir listeleme işlemi 5000 'den fazla BLOB döndürürse veya kullanılabilir BLOB sayısı belirttiğiniz sayıyı aşarsa Azure Storage, blob 'ların listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
-
-Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devamlılık belirteci null olana kadar, sonraki sonuç kümesini almak için devamlılık belirtecini geçirerek Listeleme işlemini yeniden çağırın.
+Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür, ancak her listeleme işleminin dönmesini istediğiniz sonuç sayısını belirtebilirsiniz. Bu makalede sunulan örneklerde, sayfalardaki sonuçların nasıl döndürülayarlanacağı gösterilmektedir.
 
 ### <a name="filter-results-with-a-prefix"></a>Sonuçları bir ön eke göre filtrele
 
@@ -63,7 +59,7 @@ Blobların listesini filtrelemek için, parametre için bir dize belirtin `prefi
 
 ### <a name="return-metadata"></a>Meta veri döndür
 
-Sonuçlarla blob meta verileri döndürebilirsiniz. 
+Sonuçlarla blob meta verileri döndürebilirsiniz.
 
 - .NET V12 SDK kullanıyorsanız [Blobnitelikleri](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) numaralandırması Için **meta veri** değerini belirtin.
 
@@ -90,6 +86,10 @@ Hesabınızda hiyerarşik ad alanı özelliğini etkinleştirdiyseniz, dizinler 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Bir listeleme işlemi 5000 'den fazla BLOB döndürürse veya kullanılabilir BLOB sayısı belirttiğiniz sayıyı aşarsa Azure Storage, blob 'ların listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
+
+Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devamlılık belirteci null olana kadar, sonraki sonuç kümesini almak için devamlılık belirtecini geçirerek Listeleme işlemini yeniden çağırın.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -161,7 +161,7 @@ Aşağıdaki örnek, belirtilen kapsayıcıdaki Blobları, isteğe bağlı bir k
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Blobları hiyerarşik olarak listelemek için, `useFlatBlobListing` Listeleme yönteminin parametresini **false**olarak ayarlayın.
+Blobları hiyerarşik olarak listelemek için, `useFlatBlobListing` Listeleme yönteminin parametresini **false** olarak ayarlayın.
 
 Aşağıdaki örnek, bir düz liste kullanarak belirtilen kapsayıcıdaki Blobları listeler ve isteğe bağlı bir kesim boyutu belirtildi ve BLOB adını konsol penceresine yazar.
 
