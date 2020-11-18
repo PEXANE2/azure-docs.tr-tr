@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe4e981782878ce4f86dd7dcb8ae635a60b2405a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763134"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658715"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>Çoklu oturum açma için tek tıklamayla uygulama yapılandırması
 
@@ -40,13 +40,13 @@ Tek tıklamayla SSO özelliği, SAML protokolünü destekleyen Azure Market uygu
 ## <a name="prerequisites"></a>Önkoşullar
 
 - SSO ile yapılandırılacak uygulamanın etkin bir aboneliği. Yönetici kimlik bilgilerine de ihtiyacınız vardır.
-- Uygulamalarım Microsoft 'un tarayıcıda yüklü olan **güvenli oturum açma uzantısı** . Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulamalara erişme ve bunları kullanma](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+- Uygulamalarım Microsoft 'un tarayıcıda yüklü olan **güvenli oturum açma uzantısı** . Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulamalara erişme ve bunları kullanma](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="one-click-sso-configuration-steps"></a>Tek tıklamayla SSO yapılandırma adımları
 
 1. Uygulamayı Azure Marketi 'nden ekleyin.
 
-2. **Çoklu oturum açma**seçeneğini belirleyin.
+2. **Çoklu oturum açma** seçeneğini belirleyin.
 
 3. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
@@ -59,7 +59,7 @@ Tek tıklamayla SSO özelliği, SAML protokolünü destekleyen Azure Market uygu
 
    ![Uygulamalarımı güvenli oturum açma tarayıcı uzantısı 'nı yükler](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Uzantıyı tarayıcıya ekledikten sonra **Kurulum \<Application Name\> **' u seçin. Uygulama Yöneticisi portalına yeniden yönlendirildikten sonra, yönetici olarak oturum açın.
+6. Uzantıyı tarayıcıya ekledikten sonra **Kurulum \<Application Name\>**' u seçin. Uygulama Yöneticisi portalına yeniden yönlendirildikten sonra, yönetici olarak oturum açın.
 
    ![Kurulum uygulaması adı](./media/one-click-sso-tutorial/setup-sso.png)
 
@@ -84,6 +84,5 @@ Tek tıklamayla SSO özelliği, SAML protokolünü destekleyen Azure Market uygu
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Uygulamalarım güvenli oturum açma tarayıcı uzantısı nedir?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
- 
+* [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
+* [Uygulamalarım güvenli oturum açma tarayıcı uzantısı nedir?](../user-help/my-apps-portal-end-user-access.md)

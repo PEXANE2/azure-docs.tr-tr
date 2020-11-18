@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603348"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658732"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -39,7 +39,7 @@ Azure Marketi, önceden tümleştirilmiş SSO bağlantıları olan 3000 uygulama
 
 ## <a name="plan-your-sso-team"></a>SSO takımınızı planlayın
 
-- **Doğru paydaşlara** katılım-teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle olur. Bu sınırları önlemek için, [doğru hissedarları](https://aka.ms/deploymentplans) ve paydaşların rollerini anlamasına emin olun.
+- **Doğru paydaşlara** katılım-teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle olur. Bu sınırları önlemek için, [doğru hissedarları](../fundamentals/active-directory-deployment-plans.md) ve paydaşların rollerini anlamasına emin olun.
 - **Iletişim planı** , her yeni hizmetin başarısı için önemlidir. Deneyimlerinizin nasıl değiştirileceği, ne zaman değiştirileceği ve sorunlarla karşılaştıkları durumlarda nasıl destek kazanabilecekleri hakkında kullanıcılarınız için etkin bir şekilde iletişim kurun. [Son KULLANıCıLARıN SSO etkin uygulamalarına nasıl erişeceğini](end-user-experiences.md)ve iletişimlerinizi seçiminizle eşleşecek şekilde oluşturma seçeneklerini gözden geçirin. 
 
 ## <a name="plan-your-sso-protocol"></a>SSO protokolünü planlayın
@@ -54,25 +54,25 @@ Kullanıcılarınızın uygulamalarınıza çoklu oturum açma imkanı sağlaman
 
 ### <a name="considerations-for-federation-based-sso"></a>Federasyon tabanlı SSO konuları
 
-- **OpenID Connect ve OAuth kullanarak** , bağlanmakta olduğunuz uygulama onu destekliyorsa, bu uygulama için SSO 'yu etkinleştirmek üzere OIDC/OAuth 2,0 yöntemini kullanın. Bu yöntem daha az yapılandırma gerektirir ve daha zengin bir kullanıcı deneyimi sunar. Daha fazla bilgi için bkz. [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [openıd Connect 1,0](../develop/v2-protocols-oidc.md)ve [Azure Active Directory Geliştirici Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+- **OpenID Connect ve OAuth kullanarak** , bağlanmakta olduğunuz uygulama onu destekliyorsa, bu uygulama için SSO 'yu etkinleştirmek üzere OIDC/OAuth 2,0 yöntemini kullanın. Bu yöntem daha az yapılandırma gerektirir ve daha zengin bir kullanıcı deneyimi sunar. Daha fazla bilgi için bkz. [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [openıd Connect 1,0](../develop/v2-protocols-oidc.md)ve [Azure Active Directory Geliştirici Kılavuzu](../develop/index.yml).
 - **SAML tabanlı SSO Için uç nokta yapılandırması** -SAML kullanıyorsanız, geliştiricilerinizin uygulamayı yapılandırmadan önce belirli bilgilere ihtiyacı olacaktır. Daha fazla bilgi için bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md).
-- **SAML tabanlı SSO Için sertifika yönetimi** -UYGULAMANıZıN Federasyon SSO 'yu etkinleştirdiğinizde, Azure AD üç yıl için varsayılan olarak geçerli olan bir sertifika oluşturur. Gerekirse, bu sertifika için süre sonu tarihini özelleştirebilirsiniz. Sertifikaları, süresi dolduktan önce yenilediğinizden emin olun. Daha fazla bilgi için bkz. [Azure AD sertifikaları yönetme](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
+- **SAML tabanlı SSO Için sertifika yönetimi** -UYGULAMANıZıN Federasyon SSO 'yu etkinleştirdiğinizde, Azure AD üç yıl için varsayılan olarak geçerli olan bir sertifika oluşturur. Gerekirse, bu sertifika için süre sonu tarihini özelleştirebilirsiniz. Sertifikaları, süresi dolduktan önce yenilediğinizden emin olun. Daha fazla bilgi için bkz. [Azure AD sertifikaları yönetme](./manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="considerations-for-password-based-sso"></a>Parola tabanlı SSO konuları
 
-Parola tabanlı SSO için Azure AD 'nin kullanılması, kimlik bilgilerini güvenli bir şekilde alacak ve oturum açma formlarını dolduran bir tarayıcı uzantısının dağıtılmasını gerektirir. Uzantıyı [desteklenen tarayıcılarla](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bir ölçekte dağıtmak için bir mekanizma tanımlayın. Seçeneklere şunlar dahildir:
+Parola tabanlı SSO için Azure AD 'nin kullanılması, kimlik bilgilerini güvenli bir şekilde alacak ve oturum açma formlarını dolduran bir tarayıcı uzantısının dağıtılmasını gerektirir. Uzantıyı [desteklenen tarayıcılarla](../user-help/my-apps-portal-end-user-access.md)bir ölçekte dağıtmak için bir mekanizma tanımlayın. Seçeneklere şunlar dahildir:
 
-- [Internet Explorer için grup ilkesi](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [Internet Explorer için Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-- [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Internet Explorer için grup ilkesi](./access-panel-deployment-plan.md)
+- [Internet Explorer için Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](../user-help/my-apps-portal-end-user-access.md)
 
-Daha fazla bilgi için bkz. [parola çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
+Daha fazla bilgi için bkz. [parola çoklu oturum açmayı yapılandırma](./configure-password-single-sign-on-non-gallery-applications.md).
 
 #### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>Galeride olmayan uygulamalar için oturum açma formları meta verilerini yakalama
 
 Microsoft, parola oluşturma (Kullanıcı adı ve parola alanlarını yakalama) için bir Web uygulamasında meta verilerin yakalanmasını destekler. Form meta verilerini yakalamak üzere uygulamayı yapılandırma işlemi sırasında oturum açma URL 'sine gidin. Uygulamanın sahibine tam oturum açma URL 'SI için sorun. Bu bilgiler oturum açma işlemi sırasında, oturum açma sırasında Azure AD kimlik bilgilerini uygulamaya eşlemek için kullanılır.
 
-Daha fazla bilgi edinmek için bkz. [Azure AD ile uygulama erişimi ve SSO nedir? – parola tabanlı SSO](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/).
+Daha fazla bilgi edinmek için bkz. [Azure AD ile uygulama erişimi ve SSO nedir? – parola tabanlı SSO](./what-is-single-sign-on.md).
 
 #### <a name="indications-that-metadata-in-forms-needs-to-be-recaptured"></a>Formlardaki meta verilerin yeniden yakalanmasının gerektiği konusunda göstergeler
 
@@ -96,7 +96,7 @@ Oturum açma perspektifinden, paylaşılan hesaplara sahip uygulamalar, bireysel
 
 Doğru kimlik doğrulama yönteminin seçilmesi, bir Azure AD karma kimlik çözümü ayarlamaya yönelik önemli bir ilk karardır. Bulut içindeki kullanıcıları da sağlayan Azure AD Connect kullanılarak yapılandırılan kimlik doğrulama yöntemini uygulayın.
 
-Bir kimlik doğrulama yöntemi seçmek için, seçiminizi uygulayan süreyi, var olan altyapıyı, karmaşıklığı ve maliyeti göz önünde bulundurmanız gerekir. Bu faktörler her kuruluş için farklılık gösterebilir ve zaman içinde değişebilir. Belirli senaryolarınız en yakından eşleşen olanı seçmeniz gerekir. Daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
+Bir kimlik doğrulama yöntemi seçmek için, seçiminizi uygulayan süreyi, var olan altyapıyı, karmaşıklığı ve maliyeti göz önünde bulundurmanız gerekir. Bu faktörler her kuruluş için farklılık gösterebilir ve zaman içinde değişebilir. Belirli senaryolarınız en yakından eşleşen olanı seçmeniz gerekir. Daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](../hybrid/choose-ad-authn.md).
 
 ## <a name="plan-your-security-and-governance"></a>Güvenlik ve idare planınızı planlayın 
 
@@ -104,7 +104,7 @@ Ağ duvarlar, KCG cihazlarının ve bulut uygulamalarının açılımına göre 
 
 ### <a name="plan-access-reviews"></a>Erişim incelemelerini planlayın
 
-[Erişim gözden geçirmeleri](https://docs.microsoft.com/azure/active-directory/governance/create-access-review) , kuruluşların grup üyeliklerini verimli bir şekilde yönetmesine, kurumsal uygulamalara erişime ve rol atamalarına olanak tanır. Yalnızca doğru kişilerin erişmeye devam ettiğinden emin olmak için Kullanıcı erişimini düzenli olarak gözden geçirmeyi planlamalısınız.
+[Erişim gözden geçirmeleri](../governance/create-access-review.md) , kuruluşların grup üyeliklerini verimli bir şekilde yönetmesine, kurumsal uygulamalara erişime ve rol atamalarına olanak tanır. Yalnızca doğru kişilerin erişmeye devam ettiğinden emin olmak için Kullanıcı erişimini düzenli olarak gözden geçirmeyi planlamalısınız.
 
 Erişim incelemelerini ayarlarken planlama için plan yapılacak bazı önemli konular şunları içerir:
 
@@ -116,7 +116,7 @@ Erişim incelemelerini ayarlarken planlama için plan yapılacak bazı önemli k
 
 ### <a name="plan-auditing"></a>Denetim planı
 
-Azure AD, [Teknik ve iş öngörüleri içeren raporlar](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)sağlar. 
+Azure AD, [Teknik ve iş öngörüleri içeren raporlar](../reports-monitoring/overview-reports.md)sağlar. 
 
 Güvenlik ve etkinlik raporlarının her ikisi de mevcuttur. Güvenlik raporları, risk için işaretlenen kullanıcıları ve riskli oturum açma işlemlerini gösterir. Etkinlik raporları, oturum açma etkinliğini ayrıntılandıran ve tüm oturum açma işlemleri için denetim izleri sağlayan kuruluşunuzdaki kullanıcıların davranışını anlamanıza yardımcı olur. Riskleri yönetmek, üretkenliği artırmak ve uyumluluğu izlemek için raporları kullanabilirsiniz.
 
@@ -139,15 +139,15 @@ MCAS dağıtımı şunları yapmanızı sağlar:
 - Bulut uygulamalarınızda erişim ve etkinlikler üzerinde gerçek zamanlı görünürlük ve denetim sağlamak için Koşullu Erişim Uygulama Denetimi koruma kullanın
 - Ayarlayarak sürekli denetime sahip olmanıza ve sürekli olarak ince ayar yapmanıza yardımcı olur.
 
-Microsoft Bulut uygulama güvenliği (MCAS) oturum denetimi, herhangi bir işletim sisteminde herhangi bir büyük platformda herhangi bir tarayıcı için kullanılabilir. Mobil uygulamalar ve Masaüstü uygulamaları da engellenebilir veya izin verilebilir. Azure AD ile yerel olarak tümleştirerek, SAML ile yapılandırılmış tüm uygulamalar veya Azure AD 'de çoklu oturum açma ile açık KIMLIK Connect uygulamaları, [çeşitli öne çıkan uygulamalar](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)dahil olmak üzere desteklenebilir.
+Microsoft Bulut uygulama güvenliği (MCAS) oturum denetimi, herhangi bir işletim sisteminde herhangi bir büyük platformda herhangi bir tarayıcı için kullanılabilir. Mobil uygulamalar ve Masaüstü uygulamaları da engellenebilir veya izin verilebilir. Azure AD ile yerel olarak tümleştirerek, SAML ile yapılandırılmış tüm uygulamalar veya Azure AD 'de çoklu oturum açma ile açık KIMLIK Connect uygulamaları, [çeşitli öne çıkan uygulamalar](/cloud-app-security/proxy-intro-aad)dahil olmak üzere desteklenebilir.
 
-MCAS hakkında daha fazla bilgi için [Microsoft Cloud App Security genel bakış](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)bölümüne bakın. MCAS, Kullanıcı tabanlı bir abonelik hizmetidir. [MCAS lisanslama veri sayfasında](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)lisanslama ayrıntılarını gözden geçirebilirsiniz.
+MCAS hakkında daha fazla bilgi için [Microsoft Cloud App Security genel bakış](/cloud-app-security/what-is-cloud-app-security)bölümüne bakın. MCAS, Kullanıcı tabanlı bir abonelik hizmetidir. [MCAS lisanslama veri sayfasında](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)lisanslama ayrıntılarını gözden geçirebilirsiniz.
 
 ### <a name="use-conditional-access"></a>Koşullu Erişimi kullanma
 
 Koşullu erişimle, bulut uygulamalarınız için ölçüt tabanlı erişim denetimi kararlarını otomatik hale getirebilirsiniz.
 
-Koşullu erişim ilkeleri, ilk faktör kimlik doğrulaması tamamlandıktan sonra zorlanır. Bu nedenle, koşullu erişim hizmet reddi (DoS) saldırıları gibi senaryolar için birinci hat savunma olarak tasarlanmamıştır, ancak erişimi anlamak için bu olaylardan gelen sinyalleri kullanabilir. Örneğin, oturum açma risk düzeyi, isteğin konumu vb. kullanılabilir. Koşullu erişim hakkında daha fazla bilgi için bkz. [genel bakış](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) ve [dağıtım planı](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access).
+Koşullu erişim ilkeleri, ilk faktör kimlik doğrulaması tamamlandıktan sonra zorlanır. Bu nedenle, koşullu erişim hizmet reddi (DoS) saldırıları gibi senaryolar için birinci hat savunma olarak tasarlanmamıştır, ancak erişimi anlamak için bu olaylardan gelen sinyalleri kullanabilir. Örneğin, oturum açma risk düzeyi, isteğin konumu vb. kullanılabilir. Koşullu erişim hakkında daha fazla bilgi için bkz. [genel bakış](../conditional-access/plan-conditional-access.md) ve [dağıtım planı](../conditional-access/plan-conditional-access.md).
 
 ## <a name="azure-sso-technical-requirements"></a>Azure SSO teknik gereksinimleri
 
@@ -163,7 +163,7 @@ Aşağıdaki bölümde, gerekli ortamlar, uç noktalar, talep eşleme, gerekli �
 
 ### <a name="attribute-requirements"></a>Öznitelik gereksinimleri
 
-Azure AD Kullanıcı nesneleri ve her SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve öznitelik eşlemeleri kümesi vardır. Bazı uygulamalar, gruplar gibi diğer nesne türlerini yönetir. Azure AD 'den uygulamanıza kullanıcı özniteliklerinin eşlemesini planlayın ve [varsayılan öznitelik eşlemelerini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) iş gereksinimlerinize göre özelleştirin.
+Azure AD Kullanıcı nesneleri ve her SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve öznitelik eşlemeleri kümesi vardır. Bazı uygulamalar, gruplar gibi diğer nesne türlerini yönetir. Azure AD 'den uygulamanıza kullanıcı özniteliklerinin eşlemesini planlayın ve [varsayılan öznitelik eşlemelerini](../app-provisioning/customize-application-attributes.md) iş gereksinimlerinize göre özelleştirin.
 
 ### <a name="certificate-requirements"></a>Sertifika gereksinimleri
 
@@ -171,9 +171,9 @@ Uygulamanın sertifikası güncel olmalıdır veya kullanıcıların uygulamaya 
 
 Sertifikalarınızı yönetmenin iki yolu vardır. 
 
-- **Otomatik Sertifika geçişi** -Microsoft [, Azure AD 'de anahtar geçişi imzalamayı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)destekler. Bu, sertifikaları yönetmek için tercih ettiğiniz yöntemdir, ancak ISV 'nin bu senaryoyu desteklemesi desteklenmez.
+- **Otomatik Sertifika geçişi** -Microsoft [, Azure AD 'de anahtar geçişi imzalamayı](../develop/active-directory-signing-key-rollover.md)destekler. Bu, sertifikaları yönetmek için tercih ettiğiniz yöntemdir, ancak ISV 'nin bu senaryoyu desteklemesi desteklenmez.
 
-- **El ile güncelleştirme** -her uygulamanın, nasıl tanımlandığınıza göre süresi dolan kendi sertifikası vardır. Uygulamanın sertifikasının süresi dolmadan önce yeni bir sertifika oluşturun ve bunu ISV 'ye gönderin. Bu bilgiler, Federasyon meta verilerinden çeklenebilir. [Federasyon meta verileri hakkında buradan daha fazla bilgi edinin.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
+- **El ile güncelleştirme** -her uygulamanın, nasıl tanımlandığınıza göre süresi dolan kendi sertifikası vardır. Uygulamanın sertifikasının süresi dolmadan önce yeni bir sertifika oluşturun ve bunu ISV 'ye gönderin. Bu bilgiler, Federasyon meta verilerinden çeklenebilir. [Federasyon meta verileri hakkında buradan daha fazla bilgi edinin.](../azuread-dev/azure-ad-federation-metadata.md)
 
 ## <a name="implement-sso"></a>SSO uygulama
 
@@ -189,11 +189,11 @@ Sertifikalarınızı yönetmenin iki yolu vardır.
 
 - **SSO 'yu yapılandırma**
 
-   Uygulama [listesinden](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)uygulamanızın SSO öğreticisini bulup açın ve SaaS uygulamanızı başarıyla yapılandırmak için öğreticinin adımlarını izleyin.
+   Uygulama [listesinden](../saas-apps/tutorial-list.md)uygulamanızın SSO öğreticisini bulup açın ve SaaS uygulamanızı başarıyla yapılandırmak için öğreticinin adımlarını izleyin.
 
-   Uygulamanızı bulamıyorsanız bkz. [özel uygulama belgeleri](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). Bu, Azure AD galerisinde bulunmayan bir uygulama ekleme konusunda size kılavuzluk eder.
+   Uygulamanızı bulamıyorsanız bkz. [özel uygulama belgeleri](./configure-saml-single-sign-on.md). Bu, Azure AD galerisinde bulunmayan bir uygulama ekleme konusunda size kılavuzluk eder.
 
-   İsteğe bağlı olarak, [Microsoft 'un rehberlik belgelerini](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)kullanarak kurumsal uygulama için SAML belirtecinde verilen talepleri kullanabilirsiniz. Bu uygulamanın, uygulamanız için SAML yanıtında almak istediğiniz şekilde eşlendiğinden emin olun. Yapılandırma sırasında sorunlarla karşılaşırsanız, [SSO tümleştirmesinde hata ayıklama ile](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)ilgili kılavuzumuzu kullanın.
+   İsteğe bağlı olarak, [Microsoft 'un rehberlik belgelerini](../develop/active-directory-claims-mapping.md)kullanarak kurumsal uygulama için SAML belirtecinde verilen talepleri kullanabilirsiniz. Bu uygulamanın, uygulamanız için SAML yanıtında almak istediğiniz şekilde eşlendiğinden emin olun. Yapılandırma sırasında sorunlarla karşılaşırsanız, [SSO tümleştirmesinde hata ayıklama ile](./debug-saml-sso-issues.md)ilgili kılavuzumuzu kullanın.
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>Son kullanıcılara SSO değişiklik iletişimleri sağlama
 
@@ -231,7 +231,7 @@ Bu bölüm, SSO 'yu başarıyla yönetmeye yönelik gereksinimleri ve önerileri
 
 ### <a name="required-administrative-roles"></a>Gerekli yönetim rolleri
 
-Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek için en az izinlerle kullanın. Microsoft, [kullanılabilir farklı rollerin gözden geçirilmesini](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) önerir ve bu uygulamaya yönelik her kişi için ihtiyaçlarınızı çözümlemek üzere doğru olanı seçer. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
+Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek için en az izinlerle kullanın. Microsoft, [kullanılabilir farklı rollerin gözden geçirilmesini](../roles/permissions-reference.md) önerir ve bu uygulamaya yönelik her kişi için ihtiyaçlarınızı çözümlemek üzere doğru olanı seçer. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
 
 | Bilgisini| Roller | Azure AD rolü (gerekirse) |
 |--------|-------|-----------------------------|
@@ -241,7 +241,7 @@ Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek
 | Altyapı Yöneticileri | Sertifika aktarma sahibi | Genel yönetici |
 | İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
 
-Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) kullanmanızı öneririz.
+Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) kullanmanızı öneririz.
 
 ### <a name="sso-certificate-lifecycle-management"></a>SSO sertifika yaşam döngüsü yönetimi
 
@@ -265,7 +265,7 @@ Uygulama içindeki kimlik doğrulama yöntemlerinin kullanılabilirliği, en iyi
 
 ### <a name="access-management"></a>Erişim yönetimi
 
-Kaynaklara erişimi yönetirken ölçeklendirilen bir yaklaşım seçmeyi öneririz. Yaygın yaklaşımlar, Azure AD Connect aracılığıyla eşitleyerek şirket içi grupların kullanılmasıyla, [Kullanıcı özniteliklerine göre Azure AD 'de dinamik gruplar oluşturmaya](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)veya bir kaynak sahibi tarafından YÖNETILEN Azure AD 'de [self servis grupları](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) oluşturulmasına dahildir.
+Kaynaklara erişimi yönetirken ölçeklendirilen bir yaklaşım seçmeyi öneririz. Yaygın yaklaşımlar, Azure AD Connect aracılığıyla eşitleyerek şirket içi grupların kullanılmasıyla, [Kullanıcı özniteliklerine göre Azure AD 'de dinamik gruplar oluşturmaya](../enterprise-users/groups-dynamic-membership.md)veya bir kaynak sahibi tarafından YÖNETILEN Azure AD 'de [self servis grupları](../enterprise-users/groups-self-service-management.md) oluşturulmasına dahildir.
 
 ### <a name="monitor-security"></a>Güvenliği izle
 
@@ -277,52 +277,52 @@ Aşağıdaki bağlantılar sorun giderme senaryolarını sunar. Destek personeli
 
 #### <a name="consent-issues"></a>Onay sorunları
 
-- [Beklenmeyen izin hatası](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt)
+- [Beklenmeyen izin hatası](./application-sign-in-unexpected-user-consent-prompt.md)
 
-- [Kullanıcı onayı hatası](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error)
+- [Kullanıcı onayı hatası](./application-sign-in-unexpected-user-consent-error.md)
 
 #### <a name="sign-in-issues"></a>Oturum açma sorunları
 
-- [Özel portaldan oturum açma sorunları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
+- [Özel portaldan oturum açma sorunları](./application-sign-in-other-problem-access-panel.md)
 
-- [Uygulamalarım'dan oturum açma sorunları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Uygulamalarım'dan oturum açma sorunları](./application-sign-in-other-problem-access-panel.md)
 
-- [Uygulama oturum açma sayfasında hata](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
+- [Uygulama oturum açma sayfasında hata](./application-sign-in-problem-application-error.md)
 
-- [Microsoft uygulamasında oturum açma sorunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-first-party-microsoft)
+- [Microsoft uygulamasında oturum açma sorunu](./application-sign-in-problem-first-party-microsoft.md)
 
 #### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Azure Uygulama galerisinde listelenen uygulamalar için SSO sorunları
 
-- [Azure Uygulama galerisinde listelenen uygulamalar için parola SSO 'SU ile ilgili sorun](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery) 
+- [Azure Uygulama galerisinde listelenen uygulamalar için parola SSO 'SU ile ilgili sorun](./troubleshoot-password-based-sso.md) 
 
-- [Azure Uygulama galerisinde listelenen uygulamalar için Federasyon SSO 'SU ile ilgili sorun](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-gallery)   
+- [Azure Uygulama galerisinde listelenen uygulamalar için Federasyon SSO 'SU ile ilgili sorun](./application-sign-in-problem-federated-sso-gallery.md)   
 
 #### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Azure Uygulama galerisinde listelenmeyen uygulamalar için SSO sorunları
 
-- [Azure Uygulama galerisinde listelenmeyen uygulamalar için parola SSO 'SU ile ilgili sorun](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-non-gallery) 
+- [Azure Uygulama galerisinde listelenmeyen uygulamalar için parola SSO 'SU ile ilgili sorun](./troubleshoot-password-based-sso.md) 
 
-- [Azure Uygulama galerisinde listelenmeyen uygulamalar için Federasyon SSO 'SU ile ilgili sorun](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
+- [Azure Uygulama galerisinde listelenmeyen uygulamalar için Federasyon SSO 'SU ile ilgili sorun](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[SAML tabanlı SSO hata ayıklama](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+[SAML tabanlı SSO hata ayıklama](./debug-saml-sso-issues.md)
 
-[PowerShell aracılığıyla uygulamalar için talep eşlemesi](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
+[PowerShell aracılığıyla uygulamalar için talep eşlemesi](../develop/active-directory-claims-mapping.md)
 
-[SAML belirtecinde verilen talepleri özelleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+[SAML belirtecinde verilen talepleri özelleştirme](../develop/active-directory-saml-claims-customization.md)
 
-[Çoklu oturum açma SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+[Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md)
 
-[Tek Sign-Out SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[Tek Sign-Out SAML Protokolü](../develop/single-sign-out-saml-protocol.md)
 
-[Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (iş ortakları ve satıcılar gibi dış kullanıcılar için)
+[Azure AD B2B](../external-identities/what-is-b2b.md) (iş ortakları ve satıcılar gibi dış kullanıcılar için)
 
-[Azure AD Koşullu Erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Azure AD Koşullu Erişim](../conditional-access/overview.md)
 
-[Azure kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+[Azure kimlik koruması](../identity-protection/overview-identity-protection.md)
 
-[SSO erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+[SSO erişimi](./what-is-single-sign-on.md)
 
-[Uygulama SSO öğreticisi](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+[Uygulama SSO öğreticisi](../saas-apps/tutorial-list.md)
 
 [Teknik İnceleme Indirme-çoklu oturum açma dağıtım planı](https://aka.ms/SSODeploymentPlan)

@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874552"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658494"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Bir uygulamaya onay gerçekleştirilirken beklenmeyen hata oluştu
 
-Bu makalede, bir uygulamaya yarışmaya yönelik işlem sırasında oluşabilecek hatalar ele alınmaktadır. Hata iletileri içermeyen beklenmedik onay istemlerinde sorun yaşıyorsanız, bkz. [Azure AD Için kimlik doğrulama senaryoları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+Bu makalede, bir uygulamaya yarışmaya yönelik işlem sırasında oluşabilecek hatalar ele alınmaktadır. Hata iletileri içermeyen beklenmedik onay istemlerinde sorun yaşıyorsanız, bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-vs-authorization.md).
 
 Azure Active Directory ile tümleştirilen birçok uygulama, çalışması için diğer kaynaklara erişim izinleri gerektirir. Bu kaynaklar aynı zamanda Azure Active Directory ile tümleştirildiğinde, bunlara erişim izinleri genellikle ortak onay çerçevesi kullanılarak istenir. Genellikle uygulamanın ilk kez kullanıldığı, ancak uygulamanın sonraki kullanımıyla da gerçekleşebileceği bir onay istemi görüntülenir.
 
@@ -90,8 +90,6 @@ Son kullanıcılar riskli olarak algılanan uygulamalara onay veremeyecektir. Y�
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-[Azure Active Directory (v1 uç noktası) üzerinde uygulamalar, izinler ve onay](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Azure Active Directory (v1 uç noktası) üzerinde uygulamalar, izinler ve onay](../develop/quickstart-register-app.md)<br>
 
-[Azure Active Directory (v 2.0 uç noktası) kapsamlar, izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Azure Active Directory (v 2.0 uç noktası) kapsamlar, izinler ve onay](../develop/v2-permissions-and-consent.md)

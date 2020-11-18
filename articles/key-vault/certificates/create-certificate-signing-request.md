@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289608"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658970"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -25,7 +25,15 @@ Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertif
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Güvenilir olmayan bir CA tarafından verilen Key Vault sertifika ekleme
+## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>İş ortağı CA tarafından verilen Key Vault sertifika ekleme
+Sertifika oluşturmayı basitleştirmek için aşağıdaki iki sertifika yetkilisine sahip iş ortakları Key Vault. 
+
+|Sağlayıcı|Sertifika türü|Yapılandırma kurulumu  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault DigiCert ile OV veya EV SSL sertifikaları sunar| [Tümleştirme Kılavuzu](./how-to-integrate-certificate-authority.md)
+|GlobalSign|Key Vault GlobalSign ile OV veya EV SSL sertifikaları sunar| [Tümleştirme Kılavuzu](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+
+## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>İş ortağı olmayan CA tarafından verilen Key Vault sertifika ekleme
 
 Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden bir sertifika oluşturmanıza yardımcı olur (örneğin, GoDaddy güvenilen bir Anahtar Kasası CA 'sı değildir) 
 
@@ -59,21 +67,21 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 
     Sertifika isteği artık başarıyla birleştirildi.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1.  Tercih ettiğiniz CA için CSR oluşturmak üzere, sertifikayı eklemek istediğiniz anahtar kasasına gidin.
-2.  Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
+2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
 3.  **Oluştur/Içeri aktar** sekmesini seçin.
 4.  **Sertifika oluştur** ekranında aşağıdaki değerleri seçin:
     - **Sertifika oluşturma yöntemi:** Üretecek.
     - **Sertifika adı:** ContosoManualCSRCertificate.
     - **Sertifika yetkilisinin (CA) türü:** Tümleşik olmayan bir CA tarafından verilen sertifika
     - **Konu:**`"CN=www.contosoHRApp.com"`
-    - İstediğiniz diğer değerleri seçin. **Oluştur** 'a tıklayın.
+    - İstediğiniz diğer değerleri seçin. **Oluştur**’a tıklayın.
 
     ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Sertifikanın artık sertifikalar listesine eklendiğini görürsünüz. Az önce oluşturduğunuz yeni sertifikayı seçin. Sertifikanın geçerli durumu henüz CA tarafından verilmediğinden ' devre dışı ' olur.
-7. **Sertifika işlemi** sekmesine tıklayın ve CSR 'yi **İndir** ' i seçin.
+7. **Sertifika işlemi** sekmesine tıklayın ve CSR 'yi **İndir**' i seçin.
  ![CSR 'yi Indir düğmesini vurgulayan ekran görüntüsü.](../media/certificates/create-csr-merge-csr/download-csr.png)
 
 8.  İmzalanacak istek için. CSR dosyasını CA 'ya alın.

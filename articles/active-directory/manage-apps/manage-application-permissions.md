@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff97d0a69efbe624e959f92f5320f921476a306
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510887"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658987"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory fazla ayrıcalıklı veya şüpheli uygulamalarda işlem yapın
 
@@ -25,11 +25,11 @@ Uygulama izinlerini incelemeyi ve yönetmeyi öğrenin. Bu makalede, senaryonuza
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki işlemleri yapmak için, genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açmanız gerekir.
 
-Uygulamalara erişimi kısıtlamak için Kullanıcı ataması yapmanız ve ardından kullanıcılara veya grupları uygulamaya atamanız gerekir.  Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](methods-for-assigning-users-and-groups.md).
+Uygulamalara erişimi kısıtlamak için Kullanıcı ataması yapmanız ve ardından kullanıcılara veya grupları uygulamaya atamanız gerekir.  Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](./assign-user-or-group-access-portal.md).
 
 Eylemleri gerçekleştirmek üzere bağlamsal PowerShell betikleri almak için Azure AD portalına erişebilirsiniz.
  
@@ -48,7 +48,7 @@ Eylemleri gerçekleştirmek üzere bağlamsal PowerShell betikleri almak için A
 1. [Azure Portal](https://portal.azure.com) genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin.
 3. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
-4. **Özellikler**' i seçin ve **gerekli Kullanıcı gereksinimini** **Evet**olarak ayarlayın.
+4. **Özellikler**' i seçin ve **gerekli Kullanıcı gereksinimini** **Evet** olarak ayarlayın.
 5. **Kullanıcı ve gruplar**' ı seçin ve ardından uygulamaya atanan istenmeyen kullanıcıları kaldırın.
 6. Uygulamaya Kullanıcı veya Grup atama.
 
@@ -75,7 +75,7 @@ PowerShell betiğini kullanmak, bu uygulamaya verilen tüm izinleri iptal eder.
 1. [Azure Portal](https://portal.azure.com) genel yönetici, uygulama Yöneticisi veya bulut uygulama Yöneticisi olarak oturum açın.
 3. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin.
 5. Erişimi kısıtlamak istediğiniz uygulamayı seçin.
-6. **Özellikler**' i seçin ve **gerekli Kullanıcı gereksinimini** **Evet**olarak ayarlayın.
+6. **Özellikler**' i seçin ve **gerekli Kullanıcı gereksinimini** **Evet** olarak ayarlayın.
 7. **İzinler**' i seçin ve yönetici ve Kullanıcı tarafından onaylanan izinleri gözden geçirin.
 
 İsteğe bağlı olarak, PowerShell kullanarak şunları yapabilirsiniz:

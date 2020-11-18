@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442268"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659055"
 ---
 # <a name="manage-app-consent-policies"></a>Uygulama onayı ilkelerini yönetme
 
@@ -31,7 +31,7 @@ KIMLIğIN "Microsoft-" ile başladığı uygulama onay ilkeleri yerleşik ilkele
 
 ## <a name="pre-requisites"></a>Ön koşullar
 
-1. [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü kullandığınızdan emin olun. Hem [Azuread](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modülünü hem de [azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) modülünü yüklediyseniz bu adım önemlidir.
+1. [Azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modülünü kullandığınızdan emin olun. Hem [Azuread](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) modülünü hem de [azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) modülünü yüklediyseniz bu adım önemlidir.
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue
@@ -133,7 +133,7 @@ Aşağıdaki tabloda, uygulama izin ilkeleri için desteklenen koşulların list
 | Koşul | Açıklama|
 |:---------------|:----------|
 | PermissionClassification | Verilen iznin [izin sınıflandırması](configure-permission-classifications.md) veya "tümü", herhangi bir izin sınıflandırmasıyla (sınıflandırılmamış izinler dahil) eşleşir. Varsayılan değer "All" dır. |
-| PermissionType | Verilen iznin izin türü. Temsilci izinleri için uygulama izinleri (örn. uygulama rolleri) veya "temsilci" için "uygulama" kullanın. <br><br>**Not** : "delegatedUserConsentable" DEĞERI, API yayımcısı tarafından yönetici onayı gerektirecek şekilde yapılandırılmamış izin verilen izinleri belirtir — bu değer yerleşik izin verme ilkelerinde kullanılabilir, ancak özel izin verme ilkelerinde kullanılamaz. Gereklidir. |
+| PermissionType | Verilen iznin izin türü. Temsilci izinleri için uygulama izinleri (örn. uygulama rolleri) veya "temsilci" için "uygulama" kullanın. <br><br>**Not**: "delegatedUserConsentable" DEĞERI, API yayımcısı tarafından yönetici onayı gerektirecek şekilde yapılandırılmamış izin verilen izinleri belirtir — bu değer yerleşik izin verme ilkelerinde kullanılabilir, ancak özel izin verme ilkelerinde kullanılamaz. Gereklidir. |
 | ResourceApplication | Bir iznin verildiği kaynak uygulamanın (ör. API) veya herhangi bir kaynak uygulamasıyla veya API ile eşleşmek için "Any" **AppID** 'si. Varsayılan değer "Any" dır. |
 | İzinler | Eşleşen belirli izinler için izin kimliklerinin listesi veya herhangi bir izinle eşleşecek şekilde tek değeri "tümü" olan bir liste. Varsayılan, tek "All" değeridir. <ul><li>Temsilci izin kimlikleri, API 'nin ServicePrincipal nesnesinin **OAuth2Permissions** özelliğinde bulunabilir.</li><li>Uygulama izin kimlikleri, API 'nin ServicePrincipal nesnesinin **Approles** özelliğinde bulunabilir.</li></ol> |
 | Clientapplicationıds | İstemci uygulamalarının eşleşmesi için **AppID** değerlerinin listesi veya herhangi bir istemci uygulamasıyla eşleşmesi için tek değeri "tümü" olan bir liste. Varsayılan, tek "All" değeridir. |
@@ -149,7 +149,7 @@ Daha fazlasını öğrenin:
 * [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 * [Uygulama onayını yönetmeyi ve izin isteklerini değerlendirmeyi öğrenin](manage-consent-requests.md)
 * [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
-* [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
+* [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
 Yardım almak veya sorularınıza yanıt bulmak için:
 * [StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

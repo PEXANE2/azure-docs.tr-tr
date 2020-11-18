@@ -8,23 +8,23 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d665ee11a0688c2a112858ce0c02d359ed86e973
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: dd07c09c4ed5be311bf5a485b9bff938c976a2f5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659242"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak Azure dosya paylaşımları oluşturma ve yönetme
 Bu kılavuzda, Azure CLI kullanarak [Azure dosya paylaşımları](storage-files-introduction.md) ile çalışmanın temel kuralları gösterilmektedir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları, sektör standart sunucu Ileti bloğu (SMB) protokolünü, ağ dosya sistemi (NFS) protokolünü (Önizleme) destekler ve birden çok makine, uygulama ve örnek üzerinde dosya paylaşımını sunar. 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure CLI’yı yerel olarak yükleyip kullanmaya karar verirseniz, bu makaledeki adımlar için Azure CLI 2.0.4 veya sonraki bir sürümü çalıştırıyor olmanız gerekir. Azure CLI sürümünüzü bulmak için **az --version** komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 2.0 yükleme](/cli/azure/install-azure-cli). 
+- Bu makale, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
-Varsayılan olarak, Azure CLI komutları JavaScript Nesne Gösterimi (JSON) döndürür. JSON, REST API'lerinden ileti gönderip almanın standart yoludur. JSON yanıtlarıyla çalışmayı kolaylaştırmak için, bu kılavuzdaki bazı örneklerde Azure CLI komutları üzerinde *query* parametresi kullanılır. Bu parametre, JSON ayrıştırmak için [JMESPath sorgu dilini](http://jmespath.org/) kullanır. JMESPath sorgu dilini takip ederek Azure CLI komutlarının sonuçlarını kullanma hakkında daha fazla bilgi almak için bkz. [JMESPath öğreticisi](http://jmespath.org/tutorial.html).
+- Varsayılan olarak, Azure CLI komutları JavaScript Nesne Gösterimi (JSON) döndürür. JSON, REST API'lerinden ileti gönderip almanın standart yoludur. JSON yanıtlarıyla çalışmayı kolaylaştırmak için, bu kılavuzdaki bazı örneklerde Azure CLI komutları üzerinde *query* parametresi kullanılır. Bu parametre, JSON ayrıştırmak için [JMESPath sorgu dilini](http://jmespath.org/) kullanır. JMESPath sorgu dilini takip ederek Azure CLI komutlarının sonuçlarını kullanma hakkında daha fazla bilgi almak için bkz. [JMESPath öğreticisi](http://jmespath.org/tutorial.html).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Henüz bir Azure kaynak grubunuz yoksa, [az group create](/cli/azure/group) komutunu kullanarak bir tane oluşturabilirsiniz. 

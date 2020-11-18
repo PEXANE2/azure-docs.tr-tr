@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/16/2020
 ms.author: b-juche
-ms.openlocfilehash: d4e66511ce3017749076615f081a8fb56d8b8452
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5409f9177116add1fd794ec1e72f276daf34e029
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591555"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659157"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -167,6 +167,10 @@ Azure NetApp Files, Active Directory Domain Services Windows Server 2008r2SP1-20
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>SMB istemcimde kullanılabilir alan, sağlanan boyutu neden göstermiyor?
 
 SMB istemcisi tarafından bildirilen birim boyutu, Azure NetApp Files biriminin büyüyebileceği en büyük boyutum boyutudur. SMB istemcisinde gösterildiği gibi Azure NetApp Files birimin boyutu, birimin kotasının veya boyutunun yansıtımsıdır. Azure NetApp Files birim boyutunu veya kotasını Azure portal veya API aracılığıyla edinebilirsiniz.
+
+### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>SMB paylaşımma bağlanırken sorun yaşıyorum. Ne yapmalıyım?
+
+En iyi uygulama olarak, bilgisayar saati eşitlemesi için maksimum toleransı beş dakikaya ayarlayın. Daha fazla bilgi için bkz. [bilgisayar saati eşitlemesi Için maksimum tolerans](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

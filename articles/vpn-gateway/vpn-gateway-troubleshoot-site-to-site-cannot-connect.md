@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037843"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658361"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Sorun giderme: bir Azure siteden siteye VPN bağlantısı bağlanamaz ve çalışmayı durduruyor
 
@@ -22,7 +22,7 @@ ms.locfileid: "86037843"
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
-Sorunu çözmek için öncelikle [Azure VPN Gateway 'i sıfırlamayı](vpn-gateway-resetgw-classic.md) ve ŞIRKET içi VPN cihazından tüneli sıfırlamayı deneyin. Sorun devam ederse, sorunun nedenini belirlemek için aşağıdaki adımları izleyin.
+Sorunu çözmek için öncelikle [Azure VPN Gateway 'i sıfırlamayı](./reset-gateway.md) ve ŞIRKET içi VPN cihazından tüneli sıfırlamayı deneyin. Sorun devam ederse, sorunun nedenini belirlemek için aşağıdaki adımları izleyin.
 
 ### <a name="prerequisite-step"></a>Önkoşul adımı
 
@@ -46,7 +46,7 @@ Anahtarların eşleştiğinden emin olmak için şirket içi VPN cihazının pay
 
 Azure VPN bağlantısının paylaşılan anahtarını görüntülemek için aşağıdaki yöntemlerden birini kullanın:
 
-**Azure portalındaki**
+**Azure portalı**
 
 1. Oluşturduğunuz VPN Gateway siteden siteye bağlantısına gidin.
 

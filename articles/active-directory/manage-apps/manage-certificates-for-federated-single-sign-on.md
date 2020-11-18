@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87190e9a7aa3c3a26b77220dd0332d65c640bc2e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763219"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659004"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme
 
@@ -63,7 +63,7 @@ Aşağıdaki iki bölüm, bu adımları gerçekleştirmenize yardımcı olur.
 1. **Yeni sertifika**' yı seçin. Sertifika listesinin altında, sona erme tarihi varsayılan olarak geçerli tarihten üç yıl sonra olacak şekilde yeni bir satır görüntülenir. (Değişiklikleriniz henüz kaydedilmedi, bu nedenle süre sonu tarihini değiştirebilirsiniz.)
 1. Yeni sertifika satırında, sona erme tarihi sütununun üzerine gelin ve **Tarih Seç** simgesini (Takvim) seçin. Yeni satırın geçerli sona erme tarihi için bir ayın günlerini görüntüleyen bir Takvim denetimi görünür.
 1. Takvim denetimini kullanarak yeni bir tarih ayarlayın. Geçerli tarih ile üç yıl arasında herhangi bir tarihi geçerli tarihten sonra ayarlayabilirsiniz.
-1. **Kaydet**’i seçin. Yeni sertifika artık **etkin değil**durumu, seçtiğiniz sona erme tarihi ve bir parmak izi ile birlikte görüntülenir.
+1. **Kaydet**’i seçin. Yeni sertifika artık **etkin değil** durumu, seçtiğiniz sona erme tarihi ve bir parmak izi ile birlikte görüntülenir.
 1. **SAML-Preview Ile tek Sign-On ayarlama** sayfasına dönmek için **X** ' i seçin.
 
 ### <a name="upload-and-activate-a-certificate"></a>Sertifika yükleme ve etkinleştirme
@@ -77,7 +77,7 @@ Ardından, yeni sertifikayı doğru biçimde indirin, uygulamayı uygulamaya yü
 
 1. Yönergelerde, sertifika karşıya yüklemesi için gereken kodlama biçimine göz önünde.
 1. Daha önce [Galeri ve Galeri olmayan uygulamalar Için otomatik olarak oluşturulan sertifika](#auto-generated-certificate-for-gallery-and-non-gallery-applications) bölümündeki yönergeleri izleyin. Bu adım, sertifikayı uygulama tarafından karşıya yüklemek için gereken kodlama biçiminde indirir.
-1. Yeni sertifikayı almak istediğinizde, **SAML Imzalama sertifikası** sayfasına dönün ve yeni kaydedilen sertifika satırında üç nokta (**...**) simgesini seçin ve **sertifikayı etkin yap**' ı seçin. Yeni sertifikanın durumu **etkin**olarak değişir ve önceden etkin sertifika, etkin **olmayan**bir duruma geçer.
+1. Yeni sertifikayı almak istediğinizde, **SAML Imzalama sertifikası** sayfasına dönün ve yeni kaydedilen sertifika satırında üç nokta (**...**) simgesini seçin ve **sertifikayı etkin yap**' ı seçin. Yeni sertifikanın durumu **etkin** olarak değişir ve önceden etkin sertifika, etkin **olmayan** bir duruma geçer.
 1. SAML imzalama sertifikasını doğru kodlama biçiminde karşıya yükleyebilmeniz için, daha önce kullandığınız SAML oturum açma yapılandırma yönergelerini izleyerek devam edin.
 
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Sertifika süre sonu için e-posta bildirim adresleri ekleme
@@ -111,4 +111,4 @@ Bir sertifikanın süresi sona ermek üzereyken, kullanıcılarınız için öne
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](../saas-apps/tutorial-list.md)
 - [Azure Active Directory ile uygulama yönetimi](what-is-application-management.md)
 - [Azure Active Directory uygulamalarda çoklu oturum açma](what-is-single-sign-on.md)
-- [Azure Active Directory'de SAML tabanlı çoklu oturum açma uygulamaları için hata ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Azure Active Directory'de SAML tabanlı çoklu oturum açma uygulamaları için hata ayıklama](./debug-saml-sso-issues.md)

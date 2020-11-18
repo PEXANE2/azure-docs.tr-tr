@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 38bff38ebe44d9018299444b89d7743c4cc92b72
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ef38c5364a0df1df63be825e2c46009174840b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424192"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658137"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -58,7 +58,7 @@ Hayır, şu anda mümkün değildir. Kayıt denemesi her zaman kullanıcının g
 Uygulama proxy Bağlayıcısı, Azure 'da sertifika tabanlı kimlik doğrulaması gerçekleştirir. TLS sonlandırma (TLS/HTTPS denetimi veya hızlandırma) bu kimlik doğrulama yöntemini keser ve desteklenmez. Bağlayıcıdan Azure 'a giden trafiğin TLS sonlandırmasını gerçekleştiren tüm cihazları atlaması gerekir.  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>TLS 1,2 tüm bağlantılar için gereklidir mi?
-Evet. Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, uygulama proxy hizmeti yalnızca TLS 1,2 protokollerine erişimi sınırlandırır. Bu değişiklikler 31 Ağustos 2019 tarihinden itibaren kademeli olarak alındı ve geçerli. Tüm istemci sunucu ve tarayıcı-sunucu birleşimlerinizin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) için hazırlanma.
+Evet. Müşterilerimize en iyi sınıf şifrelemeyi sağlamak için, uygulama proxy hizmeti yalnızca TLS 1,2 protokollerine erişimi sınırlandırır. Bu değişiklikler 31 Ağustos 2019 tarihinden itibaren kademeli olarak alındı ve geçerli. Tüm istemci sunucu ve tarayıcı-sunucu birleşimlerinizin, uygulama proxy hizmeti ile bağlantı sağlamak için TLS 1,2 kullanacak şekilde güncelleştirildiğinden emin olun. Bunlar, kullanıcılarınızın uygulama proxy 'Si aracılığıyla yayımlanan uygulamalara erişmek için kullandığı istemcileri içerir. Faydalı başvurular ve kaynaklar için bkz. [Office 365 ' de TLS 1,2](/microsoft-365/compliance/prepare-tls-1.2-in-office-365) için hazırlanma.
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Bağlayıcı sunucu (ler) ve arka uç uygulama sunucusu arasında bir iletme proxy cihazı yerleştirebilir miyim?
 Evet, bu senaryo bağlayıcı sürümü 1.5.1526.0 'dan başlayarak desteklenir. Bkz. [mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -102,7 +102,7 @@ Varsayılan uzunluk 85 saniyedir. "Long" ayarı 180 saniyedir. Zaman aşımı s�
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Uygulamamın giriş sayfasını Nasıl yaparım? değiştirmek mi?
 
-Uygulama kayıtları sayfasında, giriş sayfasının istenen dış URL 'si için giriş sayfası URL 'sini değiştirebilirsiniz. Uygulama Uygulamalarım veya Office 365 portalından başlatıldığında belirtilen sayfa yüklenir. Yapılandırma adımları için bkz. [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-home-page)
+Uygulama kayıtları sayfasında, giriş sayfasının istenen dış URL 'si için giriş sayfası URL 'sini değiştirebilirsiniz. Uygulama Uygulamalarım veya Office 365 portalından başlatıldığında belirtilen sayfa yüklenir. Yapılandırma adımları için bkz. [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](./application-proxy-configure-custom-home-page.md)
 
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>Yalnızca IIS tabanlı uygulamalar yayımlanabilir mi? Windows dışı Web sunucularında çalışan Web uygulamaları nelerdir? Bağlayıcının IIS yüklü bir sunucuda yüklü olması gerekir mi?
 
@@ -131,7 +131,7 @@ Hayır, Azure AD 'deki bir Konuk Kullanıcı yukarıda belirtilen oturum açma k
 
 Bu durumda, "Kullanıcı asıl adı" na geri dönüş olur. B2B senaryosu hakkında daha fazla bilgi için lütfen [Azure AD 'de B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme](../external-identities/hybrid-cloud-to-on-premises.md)konusunu okuyun.
 
-## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
+## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulaması
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>Doğrudan kimlik doğrulamasıyla yayımlanan uygulamalar için koşullu erişim Ilkelerini kullanabilir miyim?
 
@@ -171,7 +171,7 @@ Evet, bekleniyor. Kullanıcının bilgisayarı Azure AD 'ye katılırsa, Kullan�
 
 ### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>SharePoint mobil uygulamasını (iOS/Android), yayımlanmış bir SharePoint sunucusuna erişmek için kullanabilir miyim?
 
-[SharePoint mobil uygulaması](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) şu anda Azure Active Directory ön kimlik doğrulamasını desteklemez.
+[SharePoint mobil uygulaması](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) şu anda Azure Active Directory ön kimlik doğrulamasını desteklemez.
 
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yayımlama 
 
@@ -193,7 +193,7 @@ Windows Yönetim Merkezi (WAC) veya Uzak Masaüstü Web Istemcisi (HTML5) içind
 
 Evet. Bağlantı çevirisi performansı etkiler. Uygulama proxy hizmeti, uygulamayı sabit kodlanmış bağlantılar için tarar ve bunları kullanıcıya sunmadan önce ilgili, yayımlanan dış URL 'lerle değiştirir. 
 
-En iyi performansı elde etmek için, [özel etki alanlarını](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)yapılandırarak özdeş iç ve dış URL 'ler kullanmanızı öneririz. Özel etki alanlarının kullanılması mümkün değilse, mobil uygulama veya Microsoft Edge tarayıcısı olan uygulamalarım güvenli oturum açma uzantısı ' nı kullanarak bağlantı çevirisi performansını geliştirebilirsiniz. Bkz. [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar Için yeniden kodlanmış bağlantıları yeniden yönlendirme](application-proxy-configure-hard-coded-link-translation.md).
+En iyi performansı elde etmek için, [özel etki alanlarını](./application-proxy-configure-custom-domain.md)yapılandırarak özdeş iç ve dış URL 'ler kullanmanızı öneririz. Özel etki alanlarının kullanılması mümkün değilse, mobil uygulama veya Microsoft Edge tarayıcısı olan uygulamalarım güvenli oturum açma uzantısı ' nı kullanarak bağlantı çevirisi performansını geliştirebilirsiniz. Bkz. [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar Için yeniden kodlanmış bağlantıları yeniden yönlendirme](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="wildcards"></a>Joker karakterler
 
@@ -204,5 +204,5 @@ Bu senaryo doğrudan desteklenmez. Bu senaryoya ilişkin seçenekleriniz şunlar
 1. Hem HTTP hem de HTTPS URL 'Lerini joker karakterle ayrı uygulamalar olarak yayımlayın, ancak her birine farklı bir özel etki alanı verin. Bu yapılandırma, farklı dış URL 'ler olduğundan çalışacaktır.
 
 2. HTTPS URL 'sini bir joker uygulama aracılığıyla yayımlayın. HTTP uygulamalarını bu uygulama proxy PowerShell cmdlet 'lerini kullanarak ayrı ayrı yayımlayın:
-   - [Uygulama proxy 'Si uygulama yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
-   - [Uygulama proxy Bağlayıcısı yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)
+   - [Uygulama proxy 'Si uygulama yönetimi](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Uygulama proxy Bağlayıcısı yönetimi](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

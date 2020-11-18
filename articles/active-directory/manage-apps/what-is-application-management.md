@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a157396318075522d5b3263c9cf0f749eafc2476
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90604130"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658817"
 ---
 # <a name="what-is-application-management"></a>Uygulama yönetimi nedir?
 
@@ -57,7 +57,7 @@ Azure AD, bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi s
 
 **Kurumsal uygulamalarınıza** ekleyebileceğiniz ve Azure AD ile yönetebileceğiniz dört ana uygulama türü vardır:
 
-- Azure AD **Galeri uygulamaları** – Azure AD, Azure AD ile çoklu oturum açma için önceden tümleştirilmiş binlerce uygulamayı içeren bir galeriye sahiptir. Galeride kuruluşunuzun kullandığı uygulamaların bazıları da mevcuttur. [Uygulama tümleştirmenizi planlama](plan-an-application-integration.md)veya [SaaS uygulama öğreticilerinde](https://docs.microsoft.com/azure/active-directory/saas-apps/)tek tek uygulamalar için ayrıntılı tümleştirme adımları alma hakkında bilgi edinin.
+- Azure AD **Galeri uygulamaları** – Azure AD, Azure AD ile çoklu oturum açma için önceden tümleştirilmiş binlerce uygulamayı içeren bir galeriye sahiptir. Galeride kuruluşunuzun kullandığı uygulamaların bazıları da mevcuttur. [Uygulama tümleştirmenizi planlama](plan-an-application-integration.md)veya [SaaS uygulama öğreticilerinde](/azure/active-directory/saas-apps/)tek tek uygulamalar için ayrıntılı tümleştirme adımları alma hakkında bilgi edinin.
 
 - **Uygulama proxy 'si ile şirket içi uygulamalar** – Azure AD uygulama ara sunucusu ile şirket içi Web UYGULAMALARıNıZı Azure AD ile tümleştirebilir ve çoklu oturum açma desteği sağlayabilirsiniz. Ardından, son kullanıcılar şirket içi Web uygulamalarınıza Microsoft 365 ve diğer SaaS uygulamalarına erişen şekilde erişebilir, bkz. [Azure AD 'Nin uygulama proxy 'si aracılığıyla şirket içi uygulamalara uzaktan erişim sağlama](application-proxy.md).
 
@@ -67,8 +67,8 @@ Azure AD, bulut ve şirket içi uygulamalarınız için tek bir kimlik sistemi s
 
 >[!TIP]
 >Azure AD 'yi önceden yapılandırılmış olmasa ve uygulama galerisinde bile bir uygulamayla tümleştirebilirsiniz. **Azure AD 'yi** aşağıdakilerden biriyle tümleştirebilirsiniz
-> - Bir **Kullanıcı adı ve parola alanı**işleyen herhangi bir Web bağlantısı veya uygulama.
-> - **SAML veya OpenID Connect protokollerini**destekleyen herhangi bir uygulama.
+> - Bir **Kullanıcı adı ve parola alanı** işleyen herhangi bir Web bağlantısı veya uygulama.
+> - **SAML veya OpenID Connect protokollerini** destekleyen herhangi bir uygulama.
 > - **Etki alanları arası kimlik yönetimi (SCıM) standardı Için sistemi** destekleyen herhangi bir uygulama.
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Koşullu erişim ilkeleriyle riskleri yönetme

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8000d07824c27f60dd5d8d6a457521691fe2b7d7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210871"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658409"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Uygulama Ara Sunucusu: sürüm sürümü geçmişi
 Bu makalede, yayımlanan Azure Active Directory (Azure AD) uygulama proxy 'sinin sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, uygulama ara sunucusunu düzenli olarak yeni özellikler ve işlevlerle güncelleştirir. Uygulama proxy bağlayıcıları, yeni bir sürüm yayınlandığında otomatik olarak güncelleştirilir. 
@@ -38,7 +38,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı Indirme |  [En son bağlayıcıy�
 22 Temmuz 2020: bu sürümü indirmek için yayımlanmıştır yalnızca indirme sayfası aracılığıyla yüklenebilir. Bu sürümün otomatik yükseltme sürümü daha sonra yayımlanacak.
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
--   Azure Kamu bulut ortamları için geliştirilmiş destek. Azure Kamu Bulutu için bağlayıcının düzgün şekilde yüklenmesiyle ilgili adımlar için [önkoşulları](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) ve [yükleme adımlarını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)gözden geçirin.
+-   Azure Kamu bulut ortamları için geliştirilmiş destek. Azure Kamu Bulutu için bağlayıcının düzgün şekilde yüklenmesiyle ilgili adımlar için [önkoşulları](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) ve [yükleme adımlarını](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)gözden geçirin.
 - Uygulama proxy 'Si ile Uzak Masaüstü Hizmetleri Web istemcisinin kullanılmasına yönelik destek. Daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu Uzak Masaüstü yayımlama](application-proxy-integrate-with-remote-desktop-services.md) .
 - İyileştirilmiş WebSocket uzantı anlaşmaları. 
 

@@ -15,12 +15,12 @@ ms.date: 03/13/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 820e2cb0d422597f0e649e6934fd8bb11c1521db
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763355"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659038"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Nasıl yapılır: Azure AD SAML belirteci şifrelemesini yapılandırma
 
@@ -124,7 +124,7 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
 
 1. Kiracınıza bağlanmak için en son Azure AD PowerShell modülünü kullanın.
 
-1. **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** komutunu kullanarak belirteç şifreleme ayarlarını ayarlayın.
+1. **[Set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** komutunu kullanarak belirteç şifreleme ayarlarını ayarlayın.
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
@@ -140,7 +140,7 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Uygulama bildirimini kullanarak belirteç şifrelemesini yapılandırmak için
 
-1. Azure portal **Azure Active Directory > uygulama kayıtları**sayfasına gidin.
+1. Azure portal **Azure Active Directory > uygulama kayıtları** sayfasına gidin.
 
 1. Tüm uygulamaları görüntülemek için açılan listeden **tüm uygulamalar** ' ı seçin ve ardından yapılandırmak istediğiniz kurumsal uygulamayı seçin.
 

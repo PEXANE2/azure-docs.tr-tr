@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3483701d34b8fef5b40a411e22b33a73db2de44b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88641152"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658749"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>Uygulama galerisinde listelenmeyen uygulamalar için Azure AD kullanma
 
 [Uygulama ekleme](add-application-portal.md) hızlı başlangıcı ' nda, Azure AD kiracınıza uygulama eklemeyi öğreneceksiniz.
 
-[Azure AD uygulama galerisindeki](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)seçeneklere ek olarak, **Galeri dışı bir uygulama**ekleme seçeneğiniz vardır. 
+[Azure AD uygulama galerisindeki](../saas-apps/tutorial-list.md)seçeneklere ek olarak, **Galeri dışı bir uygulama** ekleme seçeneğiniz vardır. 
 
 ## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Azure AD galerisinde listelenmeyen uygulamalar için yetenekler
 
@@ -33,9 +33,8 @@ Kuruluşunuzda zaten var olan herhangi bir uygulamayı veya Azure AD Galerisi 'n
 - [Kullanıcı sağlaması Için etki alanları arası kimlik yönetimi (SCıM) protokolü Için sistemi](../app-provisioning/use-scim-to-provision-users-and-groups.md) kullanan uygulamaların Self Servis bağlantısı
 - [Office 365 uygulama başlatıcısı](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) veya [uygulamalarınızda](sso-options.md#linked-sign-on) herhangi bir uygulamaya bağlantı ekleme özelliği
 
-Özel uygulamaları Azure AD ile tümleştirme hakkında Geliştirici Kılavuzu arıyorsanız bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-scenarios.md). Kullanıcıların kimliğini doğrulamak için [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) gibi modern bir protokol kullanan bir uygulama geliştirirken, Azure Portal [uygulama kayıtları](../develop/quickstart-register-app.md) deneyimini kullanarak Microsoft Identity platformuna kaydedebilirsiniz.
+Özel uygulamaları Azure AD ile tümleştirme hakkında Geliştirici Kılavuzu arıyorsanız bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-vs-authorization.md). Kullanıcıların kimliğini doğrulamak için [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) gibi modern bir protokol kullanan bir uygulama geliştirirken, Azure Portal [uygulama kayıtları](../develop/quickstart-register-app.md) deneyimini kullanarak Microsoft Identity platformuna kaydedebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
-

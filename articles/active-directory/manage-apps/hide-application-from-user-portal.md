@@ -12,18 +12,18 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0a103ac9b8e6d29830b5ecd6732cd19547014b0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601148"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659072"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory içindeki son kullanıcılardan kurumsal uygulamaları gizleyin
 
 Son kullanıcıların Uygulamaps panelinden veya Microsoft 365 başlatıcısının uygulamalarının nasıl gizlenmek için yönergeler. Bir uygulama gizli olduğunda, kullanıcıların uygulama izinleri hala vardır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uygulama Yöneticisi ayrıcalıkları, bir uygulamayı Uygps panelinden ve Microsoft 365 başlatıcısı 'ndan gizlemek için gereklidir.
 
@@ -34,7 +34,7 @@ Tüm Microsoft 365 uygulamalarını gizlemek için genel yönetici ayrıcalıkla
 Bir uygulamayı Uygulamaps panelinden ve uygulama başlatıcısı Microsoft 365 gizlemek için aşağıdaki adımları kullanın.
 
 1.  [Azure Portal](https://portal.azure.com) , dizininiz için genel yönetici olarak oturum açın.
-2.  **Azure Active Directory**seçin.
+2.  **Azure Active Directory** seçin.
 3.  **Kurumsal uygulamalar**' ı seçin. **Kurumsal uygulamalar-tüm uygulamalar** dikey penceresi açılır.
 4.  **Uygulama türü**' nün altında, henüz seçili değilse **Kurumsal uygulamalar**' ı seçin.
 5.  Gizlemek istediğiniz uygulamayı arayın ve uygulamayı tıklatın.  Uygulamanın genel görünümü açılır.
@@ -47,7 +47,7 @@ Bir uygulamayı Uygulamaps panelinden ve uygulama başlatıcısı Microsoft 365 
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Azure AD PowerShell kullanarak bir uygulamayı gizleme
 
-Uygulamaps panelinden bir uygulamayı gizlemek için, HideApp etiketini uygulamanın hizmet sorumlusuna el ile ekleyebilirsiniz. Uygulamanın **Users olarak görünür mü?** özelliğini **Hayır**olarak ayarlamak Için aşağıdaki [azuread PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) komutlarını çalıştırın. 
+Uygulamaps panelinden bir uygulamayı gizlemek için, HideApp etiketini uygulamanın hizmet sorumlusuna el ile ekleyebilirsiniz. Uygulamanın **Users olarak görünür mü?** özelliğini **Hayır** olarak ayarlamak Için aşağıdaki [azuread PowerShell](/powershell/module/azuread/?view=azureadps-2.0#service_principals) komutlarını çalıştırın. 
 
 ```PowerShell
 Connect-AzureAD
@@ -64,16 +64,15 @@ Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 Uygulamaps panelinden tüm Microsoft 365 uygulamalarını gizlemek için aşağıdaki adımları kullanın. Uygulamalar hala Office 365 portalında görünür.
 
 1.  [Azure Portal](https://portal.azure.com) , dizininiz için genel yönetici olarak oturum açın.
-2.  **Azure Active Directory**seçin.
+2.  **Azure Active Directory** seçin.
 3.  **Kullanıcılar**’ı seçin.
 4.  **Kullanıcı ayarları**'nı seçin.
-5.  **Kurumsal uygulamalar**altında **son kullanıcıların uygulamalarını nasıl başlatıp görüntüleyebileceğini Yönet** ' e tıklayın.
+5.  **Kurumsal uygulamalar** altında **son kullanıcıların uygulamalarını nasıl başlatıp görüntüleyebileceğini Yönet** ' e tıklayın.
 6.  **Kullanıcılar yalnızca office 365 portalında office 365 uygulamalarını görebilir**, **Evet**' e tıklayın.
 7.  **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Tüm gruplarımı gör](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Kurumsal uygulamaya Kullanıcı veya Grup atama](assign-user-or-group-access-portal.md)
-* [Bir kurumsal uygulamadan Kullanıcı veya grup atamasını kaldırma](remove-user-or-group-access-portal.md)
-* [Kurumsal uygulamanın adını veya logosunu değiştirme](change-name-or-logo-portal.md)
-
+* [Bir kurumsal uygulamadan Kullanıcı veya grup atamasını kaldırma](./assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamanın adını veya logosunu değiştirme](./add-application-portal-configure.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069417"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658664"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell kullanarak hibrit bir ağda Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -46,9 +46,9 @@ Bu öğreticiyi tamamlayabilmeniz için Azure portal kullanmak istiyorsanız, bk
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makale, PowerShell 'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modülünün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
+Bu makale, PowerShell 'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modülünün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
 
 Bu senaryonun doğru çalışması için üç önemli gereksinimi vardır:
 
@@ -68,7 +68,7 @@ Bu yolların nasıl oluşturulduğunu görmek için bu makaledeki [yolları olu�
 >[!NOTE]
 >Doğrudan eşlenmiş sanal ağlar arasındaki trafik, bir UDR varsayılan ağ geçidi olarak Azure Güvenlik Duvarı 'na işaret ediyorsa doğrudan yönlendirilir. Alt ağ trafiğine Bu senaryodaki güvenlik duvarının alt ağını göndermek için, her iki alt ağda de bir UDR 'nin hedef alt ağ önekini açıkça içermesi gerekir.
 
-İlgili Azure PowerShell başvuru belgelerini gözden geçirmek için, bkz. [Azure PowerShell Başvurusu](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
+İlgili Azure PowerShell başvuru belgelerini gözden geçirmek için, bkz. [Azure PowerShell Başvurusu](/powershell/module/az.network/new-azfirewall).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -138,7 +138,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Sanal ağınız için oluşturacağınız VPN ağ geçidine ayrılacak genel IP adresi isteyin. *Allocationmethod* 'un **dinamik**olduğuna dikkat edin. Kullanmak istediğiniz IP adresini belirtemezsiniz. IP adresi, VPN ağ geçidinize dinamik olarak ayrılır.
+Sanal ağınız için oluşturacağınız VPN ağ geçidine ayrılacak genel IP adresi isteyin. *Allocationmethod* 'un **dinamik** olduğuna dikkat edin. Kullanmak istediğiniz IP adresini belirtemezsiniz. IP adresi, VPN ağ geçidinize dinamik olarak ayrılır.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +177,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Sanal ağ için oluşturacağınız ağ geçidine ayrılacak genel IP adresi isteyin. *Allocationmethod* 'un **dinamik**olduğuna dikkat edin. Kullanmak istediğiniz IP adresini belirtemezsiniz. IP adresi, ağ geçidinize dinamik olarak ayrılır.
+Sanal ağ için oluşturacağınız ağ geçidine ayrılacak genel IP adresi isteyin. *Allocationmethod* 'un **dinamik** olduğuna dikkat edin. Kullanmak istediğiniz IP adresini belirtemezsiniz. IP adresi, ağ geçidinize dinamik olarak ayrılır.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -292,7 +292,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 
 #### <a name="verify-the-connection"></a>Bağlantıyı doğrulama
 
-*Get-AzVirtualNetworkGatewayConnection* cmdlet 'ini kullanarak başarılı bir bağlantıyı, *hata ayıklama*ile veya olmayan bir şekilde doğrulayabilirsiniz. Aşağıdaki cmdlet örneğini kullanın ve değerleri, kendi değerlerinizle eşleşecek şekilde yapılandırın. İstendiğinde, **Tümü**'nü çalıştırmak için **A** seçin. Örnekte *-Name* , test etmek istediğiniz bağlantının adını ifade eder.
+*Get-AzVirtualNetworkGatewayConnection* cmdlet 'ini kullanarak başarılı bir bağlantıyı, *hata ayıklama* ile veya olmayan bir şekilde doğrulayabilirsiniz. Aşağıdaki cmdlet örneğini kullanın ve değerleri, kendi değerlerinizle eşleşecek şekilde yapılandırın. İstendiğinde, **Tümü**'nü çalıştırmak için **A** seçin. Örnekte *-Name* , test etmek istediğiniz bağlantının adını ifade eder.
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -463,7 +463,7 @@ Azure portalından, **VM-Onprem** sanal makinesine bağlanın.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-**VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://konumuna gidin \<VM-spoke-01 private IP\> .
+**VM-Onpred** üzerinde bir Web tarayıcısı açın ve http://konumuna gidin \<VM-spoke-01 private IP\> .
 
 Internet Information Services varsayılan sayfasını görmelisiniz.
 
@@ -496,4 +496,4 @@ Güvenlik duvarı kaynaklarını bir sonraki öğretici için tutabilirsiniz vey
 
 Şimdi Azure Güvenlik Duvarı günlüklerini izleyebilirsiniz.
 
-[Öğretici: Azure Güvenlik Duvarı günlüklerini izleme](./tutorial-diagnostics.md)
+[Öğretici: Azure Güvenlik Duvarı günlüklerini izleme](./firewall-diagnostics.md)

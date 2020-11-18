@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f46071d15db57f64eb60d9267d4081a2b0b74a50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054843"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658443"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD Uygulama Ara Sunucusu Bağlayıcısı için katılımsız yükleme betiği oluşturma
 
@@ -39,7 +39,7 @@ Bu özellik şunları yapmak istediğinizde yararlıdır:
 Katılımsız yükleme için iki adım vardır. İlk olarak bağlayıcıyı yüklemeniz gerekir. İkincisi, bağlayıcıyı Azure AD 'ye kaydedin.
 
 > [!IMPORTANT]
-> Bağlayıcıyı Azure Kamu Bulutu için yüklüyorsanız, [ön](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) koşullar ve [yükleme adımlarını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)gözden geçirin. Bu, yüklemeyi çalıştırmak için farklı bir URL kümesine ve ek parametreye erişim etkinleştirilmesini gerektirir.
+> Bağlayıcıyı Azure Kamu Bulutu için yüklüyorsanız, [ön](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) koşullar ve [yükleme adımlarını](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)gözden geçirin. Bu, yüklemeyi çalıştırmak için farklı bir URL kümesine ve ek parametreye erişim etkinleştirilmesini gerektirir.
 
 ## <a name="install-the-connector"></a>Bağlayıcıyı yükler
 Bağlayıcıyı kaydetmeden yüklemek için aşağıdaki adımları kullanın:

@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9680c9bee6d0cf5c9605ce7b6009a500abd81ffb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e56968250c10bb46553e618fd278df7d642683f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369106"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659089"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Uygulamaya kiracı genelinde yönetici onayı verme
 
@@ -25,12 +25,12 @@ Bir uygulamaya kiracı genelinde yönetici onayı vererek Kullanıcı deneyimini
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kiracı genelinde yönetici onayı verme, [genel yönetici](../roles/permissions-reference.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator)veya [bulut uygulama Yöneticisi](../roles/permissions-reference.md#cloud-application-administrator)olarak oturum açmanızı gerektirir.
 
 > [!IMPORTANT]
-> Bir uygulamaya kiracı genelinde yönetici onayı verildiğinde, Kullanıcı Ataması gerektirecek şekilde yapılandırılmadığı takdirde tüm kullanıcılar uygulamada oturum açabilirler. Hangi kullanıcıların bir uygulamada oturum açmasını kısıtlamak için Kullanıcı Ataması gerekli kılın ve ardından uygulamaya Kullanıcı veya grup atayabilirsiniz. Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](methods-for-assigning-users-and-groups.md).
+> Bir uygulamaya kiracı genelinde yönetici onayı verildiğinde, Kullanıcı Ataması gerektirecek şekilde yapılandırılmadığı takdirde tüm kullanıcılar uygulamada oturum açabilirler. Hangi kullanıcıların bir uygulamada oturum açmasını kısıtlamak için Kullanıcı Ataması gerekli kılın ve ardından uygulamaya Kullanıcı veya grup atayabilirsiniz. Daha fazla bilgi için bkz. [kullanıcıları ve grupları atamaya yönelik yöntemler](./assign-user-or-group-access-portal.md).
 >
 > Microsoft Graph API 'sine uygulama izinleri için yönetici onayı sağlamak üzere genel yönetici rolü gereklidir.
 
@@ -45,7 +45,7 @@ Kiracı genelinde yönetici onayı verme, [genel yönetici](../roles/permissions
 
 Uygulama kiracınızda zaten sağlanmış ise *Kurumsal uygulamalar* aracılığıyla kiracı genelinde yönetici izni verebilirsiniz. Örneğin, en az bir Kullanıcı uygulamaya zaten verilmişse, kiracınızda bir uygulama sağlanabilir. Daha fazla bilgi için bkz. [uygulamaların nasıl ve neden eklendiği Azure Active Directory](../develop/active-directory-how-applications-are-added.md).
 
-**Kuruluş uygulamalarında**listelenen bir uygulamaya kiracı genelinde yönetici onayı vermek için:
+**Kuruluş uygulamalarında** listelenen bir uygulamaya kiracı genelinde yönetici onayı vermek için:
 
 1. [Azure Portal](https://portal.azure.com) [genel yönetici](../roles/permissions-reference.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator)veya [bulut uygulama Yöneticisi](../roles/permissions-reference.md#cloud-application-administrator)olarak oturum açın.
 2. **Azure Active Directory** **Kurumsal uygulamalar**' ı seçin.
@@ -61,10 +61,10 @@ Uygulama kiracınızda zaten sağlanmış ise *Kurumsal uygulamalar* aracılığ
 
 Kuruluşunuzun geliştirdiği veya doğrudan Azure AD kiracınızda kayıtlı olduğu uygulamalar için, Azure portal **uygulama kayıtları** kiracı genelinde yönetici onayı da verebilirsiniz.
 
-**Uygulama kayıtları**kiracı genelinde yönetici onayı vermek için:
+**Uygulama kayıtları** kiracı genelinde yönetici onayı vermek için:
 
 1. [Azure Portal](https://portal.azure.com) [genel yönetici](../roles/permissions-reference.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator)veya [bulut uygulama Yöneticisi](../roles/permissions-reference.md#cloud-application-administrator)olarak oturum açın.
-2. **Azure Active Directory** **uygulama kayıtları**seçin.
+2. **Azure Active Directory** **uygulama kayıtları** seçin.
 3. Kiracı genelinde yönetici onayı vermek istediğiniz uygulamayı seçin.
 4. **API izinleri** ' ni seçin ve ardından **yönetici izni ver**' e tıklayın.
 5. Uygulamanın gerektirdiği izinleri dikkatle gözden geçirin.
@@ -99,6 +99,6 @@ Her zaman olduğu gibi, izin vermeden önce uygulama isteklerinin izinlerini dik
 
 [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 
-[Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
+[Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
 [StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

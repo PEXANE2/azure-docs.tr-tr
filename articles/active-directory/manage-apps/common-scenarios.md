@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9699f425b296f1c88162c78b8f86de74303747be
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642121"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658341"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD ile uygulama yönetimini merkezileştirme
 
@@ -42,8 +42,8 @@ Daha fazla parola yönetilme. Şirket kimlik bilgilerinizle ihtiyacınız olan t
 
 |Özellik  | Açıklama | Öneri |
 |---------|---------|---------|
-|SSO|Güvenilen sektör standartları kullanarak standartlara dayalı Federasyon SSO 'SU.|Uygulamanız destekliyorsa, SSO 'yu etkinleştirmek için her zaman [SAML/OıDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) kullanın.|
-|Uygulamalarım|Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın.| Uygulamalarınızı SSO için Azure AD ile tümleştirdikten sonra [uygulamalarımı](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan) kuruluşunuzda dağıtın.|
+|SSO|Güvenilen sektör standartları kullanarak standartlara dayalı Federasyon SSO 'SU.|Uygulamanız destekliyorsa, SSO 'yu etkinleştirmek için her zaman [SAML/OıDC](../develop/v2-howto-app-gallery-listing.md) kullanın.|
+|Uygulamalarım|Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın.| Uygulamalarınızı SSO için Azure AD ile tümleştirdikten sonra [uygulamalarımı](./access-panel-deployment-plan.md) kuruluşunuzda dağıtın.|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>Senaryo 2: sağlamayı ve sağlamayı kaldırmayı otomatikleştirme 
 
@@ -53,7 +53,7 @@ Daha fazla parola yönetilme. Şirket kimlik bilgilerinizle ihtiyacınız olan t
 
 |Özellik  |Açıklama|Öneri |
 |---------|---------|---------|
-|SCıM sağlama|[SCIM](https://aka.ms/SCIMOverview) , Kullanıcı sağlamasını otomatikleştirmek için sektör açısından en iyi uygulamadır. Herhangi bir SCıM uyumlu uygulama, Azure AD ile tümleştirilebilir. CSV dosyalarını, özel betikleri veya şirket içi çözümleri sürdürmek zorunda kalmadan kullanıcı hesaplarını otomatik olarak oluşturun, güncelleştirin ve silin.|Azure AD uygulama galerisinde [önceden tümleştirilmiş](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) uygulamalar listesini gözden geçirin|
+|SCıM sağlama|[SCIM](https://aka.ms/SCIMOverview) , Kullanıcı sağlamasını otomatikleştirmek için sektör açısından en iyi uygulamadır. Herhangi bir SCıM uyumlu uygulama, Azure AD ile tümleştirilebilir. CSV dosyalarını, özel betikleri veya şirket içi çözümleri sürdürmek zorunda kalmadan kullanıcı hesaplarını otomatik olarak oluşturun, güncelleştirin ve silin.|Azure AD uygulama galerisinde [önceden tümleştirilmiş](../saas-apps/tutorial-list.md) uygulamalar listesini gözden geçirin|
 |Microsoft Graph|Azure AD 'nin uygulamanızı, ihtiyaç duyacağı verilerle zenginleştirmesini sağlayan verilerin genişliği ve derinliğine yararlanın.|Microsoft ekosistemi üzerinden veri almak için [Microsoft Graph](https://developer.microsoft.com/graph/) 'tan yararlanın. |
 
 
@@ -63,17 +63,17 @@ Kimlik, güvenlik için linchpın 'dir. Bir kimlik tehlikeye atılırsa, çok ge
 |Özellik  |Açıklama| Öneri |
 |---------|---------| ---------|
 |Azure MFA|Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Azure MFA, yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur.| Kullanıcılarınız için [MFA 'Yı etkinleştirin](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) .  |
-|Koşullu Erişim|Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz.| Müşterilerin kullandığı [güvenlik varsayılanlarını](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) ve [ortak ilkeleri](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common) gözden geçirin. | 
-|Kimlik Koruması|Kimlik koruması, Microsoft 'un kuruluşların konumlarından Azure AD, Microsoft hesaplarıyla tüketici alanı ve Xbox ile oyun oynarken kullanıcılarınızı koruduğu dersleri kullanır. Microsoft analizler 6.500.000.000.000 sinyalleri, müşterileri tespit etmek ve tehditlere karşı korumak için günde.|Hizmetimizin tarafından sunulan [varsayılan kimlik koruması ilkelerini](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies) etkinleştirin. | 
+|Koşullu Erişim|Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz.| Müşterilerin kullandığı [güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md) ve [ortak ilkeleri](../conditional-access/concept-conditional-access-policy-common.md) gözden geçirin. | 
+|Kimlik Koruması|Kimlik koruması, Microsoft 'un kuruluşların konumlarından Azure AD, Microsoft hesaplarıyla tüketici alanı ve Xbox ile oyun oynarken kullanıcılarınızı koruduğu dersleri kullanır. Microsoft analizler 6.500.000.000.000 sinyalleri, müşterileri tespit etmek ve tehditlere karşı korumak için günde.|Hizmetimizin tarafından sunulan [varsayılan kimlik koruması ilkelerini](../identity-protection/concept-identity-protection-policies.md) etkinleştirin. | 
 
 ## <a name="scenario-4-govern-access-to-your-applications"></a>Senaryo 4: uygulamalarınıza erişimi yönetir
 Kimlik yönetimi, kuruluşların üretkenlik arasında bir denge elde etmesine yardımcı olur ve kuruluşa ne zaman katılabilecekleri gibi bir kişinin ihtiyacı olan uygulamalara ne kadar hızlı erişmesini sağlayabilir? Ve güvenlik-bu kişinin iş durumundaki değişiklikler nedeniyle, zaman içinde erişimin ne zaman içinde değiştirilmesi gerekir? 
 
 |Özellik  |Açıklama|Öneri |
 |---------|---------| ---------|
-|KARA|Azure AD Yetkilendirme Yönetimi, kuruluşunuzun içindeki ve dışındaki kullanıcıların uygulamalarına erişimi daha verimli bir şekilde yönetmesine yardımcı olabilir.| Yönetici olmayan uygulamalara erişim [paketleriyle](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-first)erişimi yönetmesine izin verin.|
-|Erişim Gözden Geçirmeleri|Kullanıcıların uygulamalara erişimi, yalnızca doğru kişilerin erişmeye devam ettiğinden emin olmak için düzenli olarak incelenebilir.| En hassas uygulamalarınıza [erişimi gözden geçirin](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) . |
-|Log Analytics|Hangi uygulamalara kimin eriştiğini ve verileri veri kaynakları arasında ve zaman içindeki verileri ilişkilendirmek için onu tercih ettiğiniz SıEM aracında depolayan raporlar oluşturun.| [Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) 'i etkinleştirin ve uygulamalarınızla ilgili kritik olaylar için Uyarılar ayarlayın. |
+|KARA|Azure AD Yetkilendirme Yönetimi, kuruluşunuzun içindeki ve dışındaki kullanıcıların uygulamalarına erişimi daha verimli bir şekilde yönetmesine yardımcı olabilir.| Yönetici olmayan uygulamalara erişim [paketleriyle](../governance/entitlement-management-access-package-first.md)erişimi yönetmesine izin verin.|
+|Erişim Gözden Geçirmeleri|Kullanıcıların uygulamalara erişimi, yalnızca doğru kişilerin erişmeye devam ettiğinden emin olmak için düzenli olarak incelenebilir.| En hassas uygulamalarınıza [erişimi gözden geçirin](../governance/access-reviews-overview.md) . |
+|Log Analytics|Hangi uygulamalara kimin eriştiğini ve verileri veri kaynakları arasında ve zaman içindeki verileri ilişkilendirmek için onu tercih ettiğiniz SıEM aracında depolayan raporlar oluşturun.| [Log Analytics](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) 'i etkinleştirin ve uygulamalarınızla ilgili kritik olaylar için Uyarılar ayarlayın. |
 
 
 ## <a name="scenario-5-hybrid-secure-access"></a>Senaryo 5: karma güvenli erişim
@@ -81,14 +81,14 @@ Kimlik yalnızca bulut ve şirket içi uygulamalardaki her şeyi bağlayabildiğ
 
 |Özellik  |Açıklama|Öneri |
 |---------|---------|---------|
-|Uygulama Ara Sunucusu|Günümüzde çalışanlar her yerden, her zaman ve tüm cihazlardan çalışmak istemektedir. Bulut ve şirket içi uygulamalarda SaaS uygulamalarına erişmesi gerekir. Azure AD uygulama proxy 'si, pahalı ve karmaşık sanal özel ağlar (VPN) veya sivil bölgeler (DMZs) olmadan bu güçlü erişimi mümkün hale getirmenizi sunar.|Şirket içi uygulamalarınız için [Uzaktan erişim](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ayarlayın. |
-|F5, Akamai, Zscaler|Mevcut ağ ve teslim denetleyicinizi kullanarak, İş süreçleriniz için hala kritik olan eski uygulamaları kolayca koruyabilir ancak Azure AD ile önce koruyamazsınız. Bu uygulamaları korumaya başlamak için ihtiyacınız olan her şeye zaten sahipsiniz.| Akamai, Citrix, F5 veya Zscaler kullanılıyor mu? [Önceden oluşturulmuş çözümlerimize](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)göz atın. | 
+|Uygulama Ara Sunucusu|Günümüzde çalışanlar her yerden, her zaman ve tüm cihazlardan çalışmak istemektedir. Bulut ve şirket içi uygulamalarda SaaS uygulamalarına erişmesi gerekir. Azure AD uygulama proxy 'si, pahalı ve karmaşık sanal özel ağlar (VPN) veya sivil bölgeler (DMZs) olmadan bu güçlü erişimi mümkün hale getirmenizi sunar.|Şirket içi uygulamalarınız için [Uzaktan erişim](./application-proxy.md) ayarlayın. |
+|F5, Akamai, Zscaler|Mevcut ağ ve teslim denetleyicinizi kullanarak, İş süreçleriniz için hala kritik olan eski uygulamaları kolayca koruyabilir ancak Azure AD ile önce koruyamazsınız. Bu uygulamaları korumaya başlamak için ihtiyacınız olan her şeye zaten sahipsiniz.| Akamai, Citrix, F5 veya Zscaler kullanılıyor mu? [Önceden oluşturulmuş çözümlerimize](./secure-hybrid-access.md)göz atın. | 
 
 ## <a name="related-articles"></a>İlgili makaleler:
 
-- [Uygulama yönetimi](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
-- [Uygulama sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
-- [Karma güvenli erişim](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Kimlik yönetimi](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
-- [Microsoft kimlik platformu](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
-- [Kimlik güvenliği](https://docs.microsoft.com/azure/active-directory/conditional-access/index)
+- [Uygulama yönetimi](./index.yml)
+- [Uygulama sağlama](../app-provisioning/user-provisioning.md)
+- [Karma güvenli erişim](./secure-hybrid-access.md)
+- [Kimlik idaresi](../governance/identity-governance-overview.md)
+- [Microsoft kimlik platformu](../develop/v2-overview.md)
+- [Kimlik güvenliği](../conditional-access/index.yml)

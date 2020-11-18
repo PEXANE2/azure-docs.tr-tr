@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425941"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658800"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
 
@@ -88,7 +88,7 @@ Bu meydana gelme riskini en aza indirmek için, tüm uyarı sağlayıcılarını
 Aşağıdaki varlık türleri şu anda Azure Sentinel 'de tanımlanmıştır:
 
 - Kullanıcı hesabı (hesap)
-- Yönetici
+- Konak
 - IP adresi (IP)
 - Kötü Amaçlı Yazılımlar
 - Dosya
@@ -124,7 +124,7 @@ Varlık sayfaları üç bölümden oluşur:
 
 Zaman çizelgesi, varlık sayfasının Azure Sentinel 'de davranış analizinin katkılarının önemli bir parçasıdır. Varlıkla ilgili olaylar hakkında bir hikaye sunar ve varlığın etkinliğini belirli bir zaman çerçevesinde anlamanıza yardımcı olur.
 
-Birkaç önceden ayarlanmış seçenek arasından ( *son 24 saat* ) veya özel olarak tanımlanmış zaman dilimine ayarlanmış **zaman aralığını** seçebilirsiniz. Ayrıca, zaman çizelgesindeki bilgileri belirli olay veya uyarı türleriyle sınırlayan filtreler ayarlayabilirsiniz.
+Birkaç önceden ayarlanmış seçenek arasından ( *son 24 saat*) veya özel olarak tanımlanmış zaman dilimine ayarlanmış **zaman aralığını** seçebilirsiniz. Ayrıca, zaman çizelgesindeki bilgileri belirli olay veya uyarı türleriyle sınırlayan filtreler ayarlayabilirsiniz.
 
 Aşağıdaki öğe türleri zaman çizelgesine dahildir:
 
@@ -180,7 +180,7 @@ Varlık sayfaları birden çok kullanım senaryosunun parçası olacak şekilde 
 
 ### <a name="querying-behavior-analytics-data"></a>Davranış analizi verilerini sorgulama
 
-[KQL](https://docs.microsoft.com/azure/data-explorer/kusto/query/)kullanarak, davranış analizi tablosunu sorgulayabiliriz.
+[KQL](/azure/data-explorer/kusto/query/)kullanarak, davranış analizi tablosunu sorgulayabiliriz.
 
 Örneğin, bir Azure kaynağında oturum açmayan bir kullanıcının, kullanıcının belirli bir ülkeden ilk kez bağlanmaya çalıştığı ve bu ülkeden gelen bağlantıların, kullanıcının eşleri için de yaygın olarak olduğu tüm durumları bulmak istiyorsam, aşağıdaki sorguyu kullanabiliriz:
 

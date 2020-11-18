@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 629c27602df14c0b35e2063d8db2d0b13bbff99a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635907"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658698"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -72,11 +72,11 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
 1.  [Azure DevOps](https://dev.azure.com/)'da, Data Factory 'niz ile yapılandırılmış projeyi açın.
 
-1.  Sayfanın sol tarafında, işlem **hatları** ' nı seçin ve ardından **yayınlar** ' ı seçin.
+1.  Sayfanın sol tarafında, işlem **hatları**' nı seçin ve ardından **yayınlar**' ı seçin.
 
     ![İşlem hatları, yayınlar seçin](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  **Yeni işlem hattı** ' nı seçin veya mevcut işlem hatlarınız varsa **Yeni** ' yi ve ardından **Yeni yayın** işlem hattını seçin.
+1.  **Yeni işlem hattı**' nı seçin veya mevcut işlem hatlarınız varsa **Yeni** ' yi ve ardından **Yeni yayın** işlem hattını seçin.
 
 1.  **Boş iş** şablonunu seçin.
 
@@ -84,23 +84,23 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
 1.  **Aşama adı** kutusuna ortamınızın adını girin.
 
-1.  **Yapıt Ekle** ' yi seçin ve ardından geliştirme veri fabrikayla yapılandırılmış Git deposunu seçin. **Varsayılan dal** için deponun [Yayımla dalını](source-control.md#configure-publishing-settings) seçin. Bu yayın dalı varsayılan olarak `adf_publish` . **Varsayılan sürüm** için **varsayılan daldan en son** ' u seçin.
+1.  **Yapıt Ekle**' yi seçin ve ardından geliştirme veri fabrikayla yapılandırılmış Git deposunu seçin. **Varsayılan dal** için deponun [Yayımla dalını](source-control.md#configure-publishing-settings) seçin. Bu yayın dalı varsayılan olarak `adf_publish` . **Varsayılan sürüm** için **varsayılan daldan en son**' u seçin.
 
     ![Yapıt ekleme](media/continuous-integration-deployment/continuous-integration-image7.png)
 
 1.  Azure Resource Manager Dağıtım görevi ekleyin:
 
-    a.  Aşama görünümünde, **aşama görevlerini görüntüle** ' yi seçin.
+    a.  Aşama görünümünde, **aşama görevlerini görüntüle**' yi seçin.
 
     ![Aşama görünümü](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Yeni bir görev oluşturun. **ARM şablon dağıtımı** araması yapın ve ardından **Ekle** ' yi seçin.
+    b.  Yeni bir görev oluşturun. **ARM şablon dağıtımı** araması yapın ve ardından **Ekle**' yi seçin.
 
     c.  Dağıtım görevinde, hedef veri fabrikası için abonelik, kaynak grubu ve konum ' u seçin. Gerekirse kimlik bilgilerini sağlayın.
 
-    d.  **Eylem** listesinde, **kaynak grubunu oluştur veya Güncelleştir** ' i seçin.
+    d.  **Eylem** listesinde, **kaynak grubunu oluştur veya Güncelleştir**' i seçin.
 
-    e.  **Şablon** kutusunun yanındaki üç nokta düğmesini ( **...** ) seçin. Yapılandırılmış git deposunun Yayımla dalınızda oluşturulan Azure Resource Manager şablonuna gözatamazsınız. `ARMTemplateForFactory.json` <FactoryName> Adf_publish dalının klasöründe dosyayı arayın.
+    e.  **Şablon** kutusunun yanındaki üç nokta düğmesini (**...**) seçin. Yapılandırılmış git deposunun Yayımla dalınızda oluşturulan Azure Resource Manager şablonuna gözatamazsınız. `ARMTemplateForFactory.json` <FactoryName> Adf_publish dalının klasöründe dosyayı arayın.
 
     f.  Seç **...** **şablon parametreleri** kutusunun yanındaki parametreler dosyasını seçin. `ARMTemplateParametersForFactory.json` <FactoryName> Adf_publish dalının klasöründe dosyayı arayın.
 
@@ -109,13 +109,13 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
     h. **Dağıtım modu** için **artımlı** ' ı seçin.
 
     > [!WARNING]
-    > Tüm dağıtım modunda, kaynak grubunda bulunan ancak yeni Kaynak Yöneticisi şablonunda belirtilmeyen kaynaklar **silinir** . Daha fazla bilgi için lütfen [Azure Resource Manager dağıtım modlarına](../azure-resource-manager/templates/deployment-modes.md) başvurun
+    > Tüm dağıtım modunda, kaynak grubunda bulunan ancak yeni Kaynak Yöneticisi şablonunda belirtilmeyen kaynaklar **silinir**. Daha fazla bilgi için lütfen [Azure Resource Manager dağıtım modlarına](../azure-resource-manager/templates/deployment-modes.md) başvurun
 
     ![Data Factory üretim dağıtımı](media/continuous-integration-deployment/continuous-integration-image9.png)
 
 1.  Yayın ardışık düzenini kaydedin.
 
-1. Bir yayını tetiklemek için **yayın oluştur** ' u seçin. Yayınların oluşturulmasını otomatikleştirmek için bkz. [Azure DevOps yayın Tetikleyicileri](/azure/devops/pipelines/release/triggers?view=azure-devops)
+1. Bir yayını tetiklemek için **yayın oluştur**' u seçin. Yayınların oluşturulmasını otomatikleştirmek için bkz. [Azure DevOps yayın Tetikleyicileri](/azure/devops/pipelines/release/triggers?view=azure-devops)
 
    ![Yayın oluştur ' u seçin](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -189,11 +189,11 @@ Data Factory ekibi, bu makalenin alt kısmında bulunan [örnek bir ön ve dağ�
 
    ![Kaynak Yöneticisi şablonu dışarı aktarma](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-1. Test ve üretim verileri fabrikalarınız içinde **ARM şablonunu Içeri aktar** ' ı seçin. Bu eylem, dışarı aktarılan şablonu içeri aktarabileceğiniz Azure portal sizi yönlendirir. Kaynak Yöneticisi Şablon düzenleyicisini açmak için **düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
+1. Test ve üretim verileri fabrikalarınız içinde **ARM şablonunu Içeri aktar**' ı seçin. Bu eylem, dışarı aktarılan şablonu içeri aktarabileceğiniz Azure portal sizi yönlendirir. Kaynak Yöneticisi Şablon düzenleyicisini açmak için **düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
 
    ![Kendi şablonunuzu oluşturun](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. **Dosya Yükle** ' yi seçin ve ardından oluşturulan kaynak yöneticisi şablonunu seçin. Bu, 1. adımda içe aktarılmış. zip dosyasında bulunan dosya **arm_template.js** .
+1. **Dosya Yükle**' yi seçin ve ardından oluşturulan kaynak yöneticisi şablonunu seçin. Bu, 1. adımda içe aktarılmış. zip dosyasında bulunan dosya **arm_template.js** .
 
    ![Şablonu Düzenle](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -633,19 +633,23 @@ Bir üretime fabrika dağıtımı yaptıysanız ve hemen düzeltilmesi gereken b
 
 10.   Sonraki sürümlerin aynı hatayı içermemesi için düzeltmeden değişiklikleri geliştirme dalına ekleyin.
 
+Ortamlarınızı nasıl sık düzelceğiniz hakkında ayrıntılı bir video öğreticisinin altındaki videoya bakın. 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
 ## <a name="best-practices-for-cicd"></a>CI/CD için en iyi yöntemler
 
 Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerinizi geliştirmeden test ve daha sonra üretime taşıyan bir CI/CD işlem hattına sahipseniz, bu en iyi yöntemleri öneririz:
 
--   **Git tümleştirmesi** . Yalnızca geliştirici veri fabrikanızı git tümleştirmesiyle yapılandırın. Test ve üretimde yapılan değişiklikler CI/CD aracılığıyla dağıtılır ve git tümleştirmesi gerekmez.
+-   **Git tümleştirmesi**. Yalnızca geliştirici veri fabrikanızı git tümleştirmesiyle yapılandırın. Test ve üretimde yapılan değişiklikler CI/CD aracılığıyla dağıtılır ve git tümleştirmesi gerekmez.
 
--   **Dağıtım öncesi ve sonrası betiği** . CI/CD 'deki Kaynak Yöneticisi dağıtım adımından önce, Tetikleyicileri durdurma ve yeniden başlatma ve temizleme işlemlerini yapma gibi belirli görevleri gerçekleştirmeniz gerekir. Dağıtım görevinden önce ve sonra PowerShell betikleri kullanmanızı öneririz. Daha fazla bilgi için bkz. [etkin Tetikleyicileri güncelleştirme](#updating-active-triggers). Data Factory ekibi, bu sayfanın en altında bulunan [bir komut dosyası sağladı](#script) .
+-   **Dağıtım öncesi ve sonrası betiği**. CI/CD 'deki Kaynak Yöneticisi dağıtım adımından önce, Tetikleyicileri durdurma ve yeniden başlatma ve temizleme işlemlerini yapma gibi belirli görevleri gerçekleştirmeniz gerekir. Dağıtım görevinden önce ve sonra PowerShell betikleri kullanmanızı öneririz. Daha fazla bilgi için bkz. [etkin Tetikleyicileri güncelleştirme](#updating-active-triggers). Data Factory ekibi, bu sayfanın en altında bulunan [bir komut dosyası sağladı](#script) .
 
--   **Tümleştirme çalışma zamanları ve paylaşma** . Tümleştirme çalışma zamanları sıklıkla değişmez ve CI/CD 'inizdeki tüm aşamalar arasında benzerdir. Data Factory, CI/CD 'nin tüm aşamalarında aynı ad ve türde tümleştirme çalışma zamanı olmasını bekler. Tümleştirme çalışma zamanlarını tüm aşamalarda paylaşmak istiyorsanız, paylaşılan tümleştirme çalışma zamanlarını içerecek şekilde, Üçlü bir fabrika kullanmayı düşünün. Bu paylaşılan fabrikası tüm ortamlarınızda bağlantılı tümleştirme çalışma zamanı türü olarak kullanabilirsiniz.
+-   **Tümleştirme çalışma zamanları ve paylaşma**. Tümleştirme çalışma zamanları sıklıkla değişmez ve CI/CD 'inizdeki tüm aşamalar arasında benzerdir. Data Factory, CI/CD 'nin tüm aşamalarında aynı ad ve türde tümleştirme çalışma zamanı olmasını bekler. Tümleştirme çalışma zamanlarını tüm aşamalarda paylaşmak istiyorsanız, paylaşılan tümleştirme çalışma zamanlarını içerecek şekilde, Üçlü bir fabrika kullanmayı düşünün. Bu paylaşılan fabrikası tüm ortamlarınızda bağlantılı tümleştirme çalışma zamanı türü olarak kullanabilirsiniz.
 
--   **Yönetilen özel uç nokta dağıtımı** . Özel bir uç nokta zaten bir fabrikada varsa ve aynı ada ancak değiştirilmiş özelliklerle özel bir uç nokta içeren bir ARM şablonu dağıtmaya çalışırsanız, dağıtım başarısız olur. Diğer bir deyişle, fabrikada zaten var olan özelliklerle aynı özelliklere sahip olduğu sürece özel bir uç noktayı başarıyla dağıtabilirsiniz. Herhangi bir özellik ortamlar arasında farklıysa, bu özelliği parametreleyerek ve dağıtım sırasında ilgili değeri sağlayarak geçersiz kılabilirsiniz.
+-   **Yönetilen özel uç nokta dağıtımı**. Özel bir uç nokta zaten bir fabrikada varsa ve aynı ada ancak değiştirilmiş özelliklerle özel bir uç nokta içeren bir ARM şablonu dağıtmaya çalışırsanız, dağıtım başarısız olur. Diğer bir deyişle, fabrikada zaten var olan özelliklerle aynı özelliklere sahip olduğu sürece özel bir uç noktayı başarıyla dağıtabilirsiniz. Herhangi bir özellik ortamlar arasında farklıysa, bu özelliği parametreleyerek ve dağıtım sırasında ilgili değeri sağlayarak geçersiz kılabilirsiniz.
 
--   **Key Vault** . Bağlantı bilgileri Azure Key Vault depolanan bağlı hizmetleri kullandığınızda, farklı ortamlarda ayrı anahtar kasalarının tutulması önerilir. Ayrıca, her Anahtar Kasası için ayrı izin düzeyleri yapılandırabilirsiniz. Örneğin, ekip üyelerinizin üretim gizli dizileri için izinleri olmasını istemeyebilirsiniz. Bu yaklaşımı izlerseniz, tüm aşamalar genelinde aynı gizli adları tutmanız önerilir. Aynı gizli dizi adlarını tutarsanız, tek şey yalnızca bir parametre olan Anahtar Kasası adı olduğundan, her bir bağlantı dizesini CI/CD ortamları arasında parametreleştirmek zorunda kalmazsınız.
+-   **Key Vault**. Bağlantı bilgileri Azure Key Vault depolanan bağlı hizmetleri kullandığınızda, farklı ortamlarda ayrı anahtar kasalarının tutulması önerilir. Ayrıca, her Anahtar Kasası için ayrı izin düzeyleri yapılandırabilirsiniz. Örneğin, ekip üyelerinizin üretim gizli dizileri için izinleri olmasını istemeyebilirsiniz. Bu yaklaşımı izlerseniz, tüm aşamalar genelinde aynı gizli adları tutmanız önerilir. Aynı gizli dizi adlarını tutarsanız, tek şey yalnızca bir parametre olan Anahtar Kasası adı olduğundan, her bir bağlantı dizesini CI/CD ortamları arasında parametreleştirmek zorunda kalmazsınız.
 
 -  **Kaynak adlandırma** ARM şablon kısıtlamaları nedeniyle, kaynaklarınız adda boşluk içeriyorsa dağıtımdaki sorunlar ortaya çıkabilir. Azure Data Factory ekibi, kaynaklar için boşluklar yerine ' _ ' veya '-' karakterlerini kullanmanızı öneriyor. Örneğin, ' Pipeline_1 ', ' Pipeline 1 ' üzerinden tercih edilen bir ad olabilir.
 

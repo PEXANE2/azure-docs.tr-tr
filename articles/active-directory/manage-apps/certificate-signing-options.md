@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc43bb2fa99f95a462dcc4c68d27840199b45c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763695"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658545"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 'daki Galeri uygulamaları için SAML belirtecinde gelişmiş sertifika imzalama seçenekleri
 
@@ -69,11 +69,11 @@ Ardından, bu uygulama için SAML belirtecindeki sertifika imzalama seçenekleri
 
    ![Örnek: SAML imzalama sertifikası sayfası](./media/certificate-signing-options/saml-signing-page.png)
 
-1. **Imzalama seçeneği** açılan LISTESINDE, **SAML yanıtı imzala**, **SAML onayını imzala**veya **SAML yanıtı ve onaylama**imzası ' nı seçin. Bu seçeneklerin açıklamaları [sertifika imzalama seçeneklerinde](#certificate-signing-options)Bu makalede daha önce görüntülenir.
+1. **Imzalama seçeneği** açılan LISTESINDE, **SAML yanıtı imzala**, **SAML onayını imzala** veya **SAML yanıtı ve onaylama** imzası ' nı seçin. Bu seçeneklerin açıklamaları [sertifika imzalama seçeneklerinde](#certificate-signing-options)Bu makalede daha önce görüntülenir.
 1. **Imzalama algoritması** açılan listesinde, **SHA-1** veya **SHA-256**' ı seçin. Bu seçeneklerin açıklamaları, bu makalede daha önce [sertifika imzalama algoritmaları](#certificate-signing-algorithms) bölümünde görüntülenir.
 1. Seçimlerinizden memnun kaldıysanız, yeni SAML imzalama sertifikası ayarlarını uygulamak için **Kaydet** ' i seçin. Aksi takdirde, değişiklikleri atmak için **X** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Active Directory Uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML tabanlı çoklu oturum açma sorunlarını giderme](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Azure Active Directory Uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](./configure-saml-single-sign-on.md)
+* [SAML tabanlı çoklu oturum açma sorunlarını giderme](./debug-saml-sso-issues.md)

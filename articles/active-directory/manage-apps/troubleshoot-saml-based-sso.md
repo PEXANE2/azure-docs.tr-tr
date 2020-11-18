@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 7f7f999c145903be5db3b20ab60bd0f5a18778ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463897"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658885"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'de SAML tabanlı çoklu oturum açma sorunlarını giderme
-Bir uygulamayı yapılandırırken sorunla karşılaşırsanız. Uygulamanın öğreticisindeki tüm adımları izlemediğinizi doğrulayın. Uygulamanın yapılandırmasında, uygulamanın nasıl yapılandırılacağı üzerine satır içi belgeleriniz vardır. Ayrıca, ayrıntılı adım adım yönergeler için [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğretici listesine](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) erişebilirsiniz.
+Bir uygulamayı yapılandırırken sorunla karşılaşırsanız. Uygulamanın öğreticisindeki tüm adımları izlemediğinizi doğrulayın. Uygulamanın yapılandırmasında, uygulamanın nasıl yapılandırılacağı üzerine satır içi belgeleriniz vardır. Ayrıca, ayrıntılı adım adım yönergeler için [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğretici listesine](../saas-apps/tutorial-list.md) erişebilirsiniz.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Uygulamanın başka bir örneği eklenemiyor
 Uygulamanın ikinci bir örneğini eklemek için şunları yapmanız gerekir:
@@ -53,7 +53,7 @@ Değerler, Azure AD 'de önceden yapılandırılmış desenlerle eşleşmezse. �
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>EntityId (Kullanıcı tanımlayıcısı) biçimini nereden ayarlayabilirim?
 Azure AD 'nin Kullanıcı kimlik doğrulamasından sonra yanıtta uygulamaya gönderdiği EntityId (Kullanıcı tanımlayıcısı) biçimini seçemeyeceksiniz.
 
-Azure AD, seçilen değere veya SAML AuthRequest 'te uygulama tarafından istenen biçime göre NameID özniteliği (Kullanıcı tanımlayıcısı) biçimini seçin. Daha fazla bilgi için, Nameıdpolicy bölümünde [tek Sign-On SAML Protokolü](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) makalesini ziyaret edin,
+Azure AD, seçilen değere veya SAML AuthRequest 'te uygulama tarafından istenen biçime göre NameID özniteliği (Kullanıcı tanımlayıcısı) biçimini seçin. Daha fazla bilgi için, Nameıdpolicy bölümünde [tek Sign-On SAML Protokolü](../develop/single-sign-on-saml-protocol.md#authnrequest) makalesini ziyaret edin,
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Uygulama ile yapılandırmayı tamamlamaya yönelik Azure AD meta verileri bulunamıyor
 Azure AD 'den uygulama meta verilerini veya sertifikasını indirmek için şu adımları izleyin:
@@ -70,7 +70,7 @@ Azure AD 'den uygulama meta verilerini veya sertifikasını indirmek için şu a
 Azure AD meta verileri almak için bir URL sağlamıyor. Meta veriler yalnızca bir XML dosyası olarak alınabilir.
 
 ## <a name="customize-saml-claims-sent-to-an-application"></a>Bir uygulamaya gönderilen SAML taleplerini özelleştirme
-Uygulamanıza gönderilen SAML öznitelik taleplerini özelleştirmeyi öğrenmek için, daha fazla bilgi için [Azure Active Directory 'Da talep eşleme](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) konusuna bakın.
+Uygulamanıza gönderilen SAML öznitelik taleplerini özelleştirmeyi öğrenmek için, daha fazla bilgi için [Azure Active Directory 'Da talep eşleme](../develop/active-directory-claims-mapping.md) konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)

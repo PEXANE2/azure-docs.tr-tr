@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 403fa4cab94ad6149e388b10acccd9d5e7a2b7a8
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764596"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658171"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Uygulama proxy bağlayıcılarınızın ve uygulamalarınızın yüksek kullanılabilirliği ve yük dengelemesi
 
@@ -39,7 +39,7 @@ Bağlayıcılar, yüksek kullanılabilirlik ilkelerine bağlı olarak bağlantı
 
 1. İstemci cihazındaki bir Kullanıcı, uygulama proxy 'Si aracılığıyla yayınlanan şirket içi bir uygulamaya erişmeye çalışır.
 2. İstek, hangi uygulama proxy hizmeti örneğinin istek için gerekli olacağını belirleyen bir Azure Load Balancer geçer. Her bölge için, isteği kabul etmek için kullanılabilecek onlarca örnek vardır. Bu yöntem, trafiği hizmet örnekleri genelinde eşit bir şekilde dağıtmaya yardımcı olur.
-3. İstek [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/)gönderilir.
+3. İstek [Service Bus](../../service-bus-messaging/index.yml)gönderilir.
 4. Kullanılabilir bir bağlayıcıya sinyal Service Bus. Bağlayıcı daha sonra Service Bus isteği alır.
    - 2. adımda istekler farklı uygulama proxy hizmeti örneklerine gider, bu nedenle bağlantıların farklı bağlayıcılarla yapılması daha olasıdır. Sonuç olarak, bağlayıcılar grup içinde neredeyse eşit olarak kullanılır.
 5. Bağlayıcı, isteği uygulamanın arka uç sunucusuna geçirir. Ardından uygulama, yanıtı bağlayıcıya geri gönderir.
@@ -98,4 +98,4 @@ Arka uç uygulamasının Yük Dengeleme gereksinimlerini anlamak için Yazılım
 - [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Koşullu erişimi etkinleştir](application-proxy-integrate-with-sharepoint-server.md)
 - [Uygulama Ara Sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
-- [Azure AD mimarisinin yüksek kullanılabilirliği nasıl desteklediğini öğrenin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [Azure AD mimarisinin yüksek kullanılabilirliği nasıl desteklediğini öğrenin](../fundamentals/active-directory-architecture.md)

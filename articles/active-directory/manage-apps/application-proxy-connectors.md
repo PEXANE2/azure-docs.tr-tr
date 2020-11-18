@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 923b83b388b58313e9613f0f8b71f266dcbeb028
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: be5ce5b3eebb2f784469680cf7614df6ca750b55
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282132"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658273"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama
 
@@ -104,7 +104,7 @@ Genellikle, ne kadar çok kullanıcı varsa, ihtiyacınız olacak bir makine dah
 > [!NOTE]
 > 4, 8 ve 16 çekirdek makineler arasındaki en fazla TPS 'de çok fark yoktur. Bunlar arasındaki temel fark beklenen gecikmedir.
 >
-> Bu tablo, üzerinde yüklü olduğu makinenin türüne bağlı olarak bir bağlayıcının beklenen performansına de odaklanır. Bu, uygulama proxy 'Si hizmetinin azaltma limitlarından ayrıdır, bkz. [hizmet limitleri ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+> Bu tablo, üzerinde yüklü olduğu makinenin türüne bağlı olarak bir bağlayıcının beklenen performansına de odaklanır. Bu, uygulama proxy 'Si hizmetinin azaltma limitlarından ayrıdır, bkz. [hizmet limitleri ve kısıtlamaları](../enterprise-users/directory-service-limits-restrictions.md).
 
 ## <a name="security-and-networking"></a>Güvenlik ve ağ
 
@@ -155,7 +155,7 @@ Kullanılan sertifikalar, uygulama proxy 'Si hizmetine özgüdür. Bunlar ilk ka
 
 İlk başarılı sertifika yenilemesinin ardından Azure AD Uygulama Ara Sunucusu bağlayıcı hizmeti 'nin (ağ hizmeti) yerel makine deposundan eski sertifikayı kaldırma izni yoktur. Sertifikanın süresi dolmuşsa veya hizmet tarafından artık kullanılmıyorsa, güvenli bir şekilde silebilirsiniz.
 
-Sertifika yenilemeyle ilgili sorunlardan kaçınmak için, bağlayıcıdan [belgelenen hedeflere](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) doğru olan ağ iletişiminin etkinleştirildiğinden emin olun.
+Sertifika yenilemeyle ilgili sorunlardan kaçınmak için, bağlayıcıdan [belgelenen hedeflere](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) doğru olan ağ iletişiminin etkinleştirildiğinden emin olun.
 
 Bir bağlayıcı birkaç ay için hizmete bağlı değilse, sertifikaları güncel olmayabilir. Bu durumda, kayıt tetiklemek için bağlayıcıyı kaldırın ve yeniden yükleyin. Aşağıdaki PowerShell komutlarını çalıştırabilirsiniz:
 

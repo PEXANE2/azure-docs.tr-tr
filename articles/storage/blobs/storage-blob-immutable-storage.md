@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448330"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658562"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -63,7 +63,7 @@ Zamana dayalı saklama ilkelerini ayarlama ve kilitleme hakkında daha fazla bil
 
 Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi uygulandığında, kapsayıcıdaki tüm Bloblar, *etkin* saklama dönemi süresince sabit durumda kalır. Blob 'lar için geçerli saklama süresi, Blobun **oluşturulma zamanı** ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farka eşittir. Kullanıcılar saklama süresini uzatabildiğinden, sabit depolama geçerli olan saklama süresinin hesaplanmasında kullanıcı tarafından belirtilen en son saklama aralığı değeri kullanılır.
 
-Örneğin, bir kullanıcının beş yıl bekletme aralığı ile zaman tabanlı bir bekletme ilkesi oluşturduğunu varsayalım. Bu kapsayıcıda bulunan mevcut bir blob, _testblob1_, bir yıl önce oluşturulmuştur; Bu nedenle, _testblob1_ için geçerli saklama süresi dört yıldır. _Testblob2_yeni bir blob, kapsayıcıya yüklendiğinde, _testblob2_ için geçerli saklama süresi, oluşturma zamanından beş yıl olur.
+Örneğin, bir kullanıcının beş yıl bekletme aralığı ile zaman tabanlı bir bekletme ilkesi oluşturduğunu varsayalım. Bu kapsayıcıda bulunan mevcut bir blob, _testblob1_, bir yıl önce oluşturulmuştur; Bu nedenle, _testblob1_ için geçerli saklama süresi dört yıldır. _Testblob2_ yeni bir blob, kapsayıcıya yüklendiğinde, _testblob2_ için geçerli saklama süresi, oluşturma zamanından beş yıl olur.
 
 Kilitlemeli bir süre tabanlı bekletme ilkesi yalnızca özellik testi için önerilir ve sn, SEC 17A-4 (f) ve diğer mevzuata uyumluluğuyla uyumlu olması için kilitlenmelidir. Zaman tabanlı bekletme ilkesi kilitlendiğinde, ilke kaldırılamaz ve etkin saklama süresine en fazla beş artışa izin verilir.
 
@@ -102,17 +102,21 @@ Geçerli tutmalar için aşağıdaki sınırlar geçerlidir:
 - Bir kapsayıcı için, ilke süresince en fazla 10 yasal saklama ilkesi denetim günlüğü tutulur.
 
 ## <a name="scenarios"></a>Senaryolar
+
 Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmış BLOB depolama işlemlerinin türleri gösterilmektedir. Daha fazla bilgi için bkz. [Azure Blob hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) belgeleri.
 
-|Senaryo  |Blob durumu  |Blob işlemleri reddedildi  |Kapsayıcı ve hesap koruması
-|---------|---------|---------|---------|
-|Blobdaki geçerli saklama süresi dolmadı ve/veya yasal tutma ayarlandı     |Sabit: hem silme hem de yazma korumalı         | Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, kapsayıcıyı silme, blobu silme, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup>         |Kapsayıcı silme reddedildi; Depolama hesabı silme reddedildi         |
-|Blobda etkin bekletme aralığının süresi doldu ve geçerli bir tutma ayarlanmadı    |Yalnızca yazma korumalı (silme işlemlerine izin verilir)         |Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup>         |Korumalı kapsayıcıda en az 1 blob varsa kapsayıcı silme reddedildi; Depolama hesabı silme yalnızca *kilitli* zaman tabanlı ilkeler için reddedildi         |
-|Hiçbir solucan ilkesi uygulanmadı (zaman tabanlı saklama ve geçerli saklama etiketi yok)     |Değiştirilebilir         |Yok         |Yok         |
+| Senaryo | Blob durumu | Blob işlemleri reddedildi | Kapsayıcı ve hesap koruması |
+|--|--|--|--|
+| Blobdaki geçerli saklama süresi dolmadı ve/veya yasal tutma ayarlandı | Sabit: hem silme hem de yazma korumalı | Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, kapsayıcıyı silme, blobu silme, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup> | Kapsayıcı silme reddedildi; Depolama hesabı silme reddedildi |
+| Blobda etkin bekletme aralığının süresi doldu ve geçerli bir tutma ayarlanmadı | Yalnızca yazma korumalı (silme işlemlerine izin verilir) | Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup> | Korumalı kapsayıcıda en az 1 blob varsa kapsayıcı silme reddedildi; Depolama hesabı silme yalnızca *kilitli* zaman tabanlı ilkeler için reddedildi |
+| Hiçbir solucan ilkesi uygulanmadı (zaman tabanlı saklama ve geçerli saklama etiketi yok) | Değiştirilebilir | Yok | Yok |
 
 <sup>1</sup> blob hizmeti bu işlemlerin bir kez yeni blob oluşturmasına izin verir. Sabit bir kapsayıcıda var olan bir blob yolundaki tüm sonraki üzerine yazma işlemlerine izin verilmez.
 
 <sup>2</sup> Append bloğuna yalnızca özelliği etkinleştirilmiş zaman tabanlı bekletme ilkeleri için izin verilir `allowProtectedAppendWrites` . Daha fazla bilgi için, [korumalı ekleme Blobları yazmaları Izin ver](#allow-protected-append-blobs-writes) bölümüne bakın.
+
+> [!IMPORTANT]
+> [URL 'ye SQL yedeklemesi](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)gibi bazı iş yükleri bir blob oluşturup daha sonra buna ekler. Kapsayıcıda etkin bir zaman tabanlı bekletme ilkesi veya yasal tutma varsa, bu model başarılı olmaz.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

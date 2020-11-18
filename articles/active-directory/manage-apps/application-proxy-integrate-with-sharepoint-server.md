@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c318c539b1c09761ed81e7602808e415fdaf8b80
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764545"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658188"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile SharePoint’e uzaktan erişimi etkinleştirme
 
@@ -68,7 +68,7 @@ Bu adımda, Azure Active Directory kiracınızda uygulama proxy 'Si kullanan bir
    1. Portaldaki uygulama sayfasında **Çoklu oturum açma**’yı seçin.
    1. **Çoklu Oturum Açma Modu** olarak **Tümleşik Windows Kimlik Doğrulaması**’nı seçin.
    1. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın. Bu örnekte, değeri `HTTP/sharepoint` .
-   1. **Temsilci atanan oturum kimliği**altında Active Directory orman yapılandırmanız için en uygun seçeneği belirleyin. Örneğin, ormanınızda tek bir Active Directory etki alanınız varsa Şirket **ıçı Sam hesap adı** ' nı (aşağıdaki ekran görüntüsünde gösterildiği gibi) seçin. Ancak kullanıcılarınız SharePoint ve uygulama proxy Bağlayıcısı sunucularıyla aynı etki alanında değilse **Şirket içi Kullanıcı asıl adı** ' nı (ekran görüntüsünde gösterilmez) seçin.
+   1. **Temsilci atanan oturum kimliği** altında Active Directory orman yapılandırmanız için en uygun seçeneği belirleyin. Örneğin, ormanınızda tek bir Active Directory etki alanınız varsa Şirket **ıçı Sam hesap adı** ' nı (aşağıdaki ekran görüntüsünde gösterildiği gibi) seçin. Ancak kullanıcılarınız SharePoint ve uygulama proxy Bağlayıcısı sunucularıyla aynı etki alanında değilse **Şirket içi Kullanıcı asıl adı** ' nı (ekran görüntüsünde gösterilmez) seçin.
 
    ![SSO için tümleşik Windows kimlik doğrulamasını yapılandırma](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
@@ -103,7 +103,7 @@ SharePoint Web uygulaması, Kerberos ile yapılandırılmalı ve Azure AD Uygula
        ```
 
     2. **SharePoint Yönetim Merkezi** sitesini açın.
-    1. **Sistem ayarları**altında, **Alternatif erişim eşlemelerini Yapılandır**' ı seçin. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
+    1. **Sistem ayarları** altında, **Alternatif erişim eşlemelerini Yapılandır**' ı seçin. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
     1. Ekranı yeni Web uygulamasıyla filtreleyin ve şuna benzer bir şey görmediğinizi onaylayın:
 
        ![Web uygulaması için alternatif erişim eşlemeleri](./media/application-proxy-integrate-with-sharepoint-server/new-webapp-aam.png)
@@ -126,7 +126,7 @@ SharePoint Web uygulaması, Kerberos ile yapılandırılmalı ve Azure AD Uygula
        ```
 
     2. **SharePoint Yönetim Merkezi** sitesini açın.
-    1. **Sistem ayarları**altında, **Alternatif erişim eşlemelerini Yapılandır**' ı seçin. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
+    1. **Sistem ayarları** altında, **Alternatif erişim eşlemelerini Yapılandır**' ı seçin. **Alternatif erişim eşleme koleksiyon** kutusu açılır.
     1. Genişletilmiş Web uygulamasıyla ekranı filtreleyin ve şuna benzer bir şey görmediğinizi onaylayın:
 
         ![Genişletilmiş uygulamanın alternatif erişim eşlemeleri](./media/application-proxy-integrate-with-sharepoint-server/extend-webapp-aam.png)
@@ -167,7 +167,7 @@ Artık SharePoint sitesine Azure AD Uygulama Ara Sunucusu dışarıdan erişebil
 
 ## <a name="step-3-configure-kerberos-constrained-delegation"></a>3. Adım: Kerberos kısıtlı temsilcisini yapılandırma
 
-Kullanıcılar, Azure AD proxy Bağlayıcısı aracılığıyla Kerberos kullanarak Azure AD 'de ve sonrasında SharePoint 'te kimlik doğrulaması yapacak. Bağlayıcının Azure AD kullanıcısı adına Kerberos belirteci almasına izin vermek için, Kerberos kısıtlı temsilcisini (KCD) protokol geçişi ile yapılandırmanız gerekir. KCD hakkında daha fazla bilgi edinmek için bkz. [Kerberos kısıtlı temsilciye genel bakış](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)).
+Kullanıcılar, Azure AD proxy Bağlayıcısı aracılığıyla Kerberos kullanarak Azure AD 'de ve sonrasında SharePoint 'te kimlik doğrulaması yapacak. Bağlayıcının Azure AD kullanıcısı adına Kerberos belirteci almasına izin vermek için, Kerberos kısıtlı temsilcisini (KCD) protokol geçişi ile yapılandırmanız gerekir. KCD hakkında daha fazla bilgi edinmek için bkz. [Kerberos kısıtlı temsilciye genel bakış](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)).
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>SharePoint hizmet hesabı için SPN 'YI ayarlama
 
@@ -176,7 +176,7 @@ Bu makalede, iç URL olur ve bu `https://sharepoint` nedenle hizmet asıl adı (
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-`Setspn`Komutu, SPN 'yi eklemeden önce arar. SPN zaten varsa **Yinelenen BIR SPN değeri** hatası görürsünüz. Bu durumda, doğru uygulama havuzu hesabı altında ayarlanmamışsa mevcut SPN 'YI kaldırmayı göz önünde bulundurun. Komutu-L seçeneğiyle çalıştırarak SPN 'nin başarıyla eklendiğini doğrulayabilirsiniz `Setspn` . Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
+`Setspn`Komutu, SPN 'yi eklemeden önce arar. SPN zaten varsa **Yinelenen BIR SPN değeri** hatası görürsünüz. Bu durumda, doğru uygulama havuzu hesabı altında ayarlanmamışsa mevcut SPN 'YI kaldırmayı göz önünde bulundurun. Komutu-L seçeneğiyle çalıştırarak SPN 'nin başarıyla eklendiğini doğrulayabilirsiniz `Setspn` . Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>Bağlayıcının SharePoint uygulama havuzu hesabına eklenen SPN 'ye devredilmek için güvenilir olduğundan emin olun
 
@@ -187,7 +187,7 @@ KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adı
 1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından Active Directory Kullanıcıları ve Bilgisayarları ' nı açın.
 1. Azure AD proxy bağlayıcısını çalıştıran bilgisayarı bulun. Bu örnekte, SharePoint sunucusudur.
 1. Bilgisayara çift tıklayın ve ardından **Temsilci** sekmesini seçin.
-1. Atama seçeneklerinin **yalnızca belirtilen hizmetlere temsilciliğini sağlamak üzere bu bilgisayara güvenecek**şekilde ayarlandığından emin olun. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
+1. Atama seçeneklerinin **yalnızca belirtilen hizmetlere temsilciliğini sağlamak üzere bu bilgisayara güvenecek** şekilde ayarlandığından emin olun. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
 1. **Ekle** düğmesini seçin, **Kullanıcılar veya bilgisayarlar**' ı seçin ve SharePoint uygulama havuzu hesabını bulun. Örneğin: `Contoso\spapppool`.
 1. SPN 'Ler listesinde, daha önce hizmet hesabı için oluşturduğunuz birini seçin.
 1. **Tamam** ' ı seçin ve sonra değişikliklerinizi kaydetmek için **Tamam** ' ı seçin.

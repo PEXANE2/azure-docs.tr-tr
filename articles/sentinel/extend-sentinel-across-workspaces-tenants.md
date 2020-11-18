@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578487"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658953"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
 
@@ -84,7 +84,7 @@ Azure Sentinel, birden fazla çalışma alanında merkezi olay izlemeyi ve yöne
 Azure Sentinel, tek bir [sorgudaki birden fazla çalışma alanını](../azure-monitor/log-query/cross-workspace-query.md)sorgulamayı destekler, böylece tek bir sorgudaki birden çok çalışma alanındaki verileri arayabilir ve ilişkilendirmenize olanak tanır. 
 
 - Farklı bir çalışma alanındaki bir tabloya başvurmak için [Workspace () ifadesini](../azure-monitor/log-query/workspace-expression.md) kullanın. 
-- Birden çok çalışma alanındaki tablolar arasında bir sorgu uygulamak için, Workspace () ifadesinin yanı sıra [UNION işlecini](https://docs.microsoft.com/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) kullanın.
+- Birden çok çalışma alanındaki tablolar arasında bir sorgu uygulamak için, Workspace () ifadesinin yanı sıra [UNION işlecini](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) kullanın.
 
 Çalışma alanları arası sorguları basitleştirmek için, kaydedilmiş [işlevleri](../azure-monitor/log-query/functions.md) kullanabilirsiniz. Örneğin, bir çalışma alanına yönelik bir başvuru uzunsa, ifadeyi `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` adlı bir işlev olarak kaydetmek isteyebilirsiniz `SecurityEventCustomerA` . Daha sonra sorguları farklı yazabilirsiniz `SecurityEventCustomerA | where ...` .
 

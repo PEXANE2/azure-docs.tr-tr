@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99fb466debd5a2ee4bb659aea3494469a8bbe8e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759972"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658426"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu kişisel verilerini kaldır
 
@@ -35,7 +35,7 @@ Uygulama proxy 'Sinin kişisel verileri aşağıdaki günlük türlerine yazmas�
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Windows olay günlüklerinden kişisel verileri kaldırma
 
-Windows olay günlükleri için veri bekletmenin nasıl yapılandırılacağı hakkında bilgi için bkz. [olay günlüklerine yönelik ayarlar](https://technet.microsoft.com/library/cc952132.aspx). Windows olay günlükleri hakkında bilgi edinmek için bkz. [Windows olay günlüğü kullanma](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
+Windows olay günlükleri için veri bekletmenin nasıl yapılandırılacağı hakkında bilgi için bkz. [olay günlüklerine yönelik ayarlar](https://technet.microsoft.com/library/cc952132.aspx). Windows olay günlükleri hakkında bilgi edinmek için bkz. [Windows olay günlüğü kullanma](/windows/win32/wes/using-windows-event-log).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
@@ -54,7 +54,7 @@ Bağlayıcı olay günlüklerinden kişisel verileri kaldırmak için aşağıda
 
 Belirli verileri görüntülemek veya dışarı aktarmak için, her bağlayıcı olay günlüğündeki ilgili girişleri arayın. Günlükler konumunda bulunur `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace` .
 
-Günlükler metin dosyaları olduğundan, bir kullanıcıyla ilgili metin girişlerini aramak için [Findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) kullanabilirsiniz.  
+Günlükler metin dosyaları olduğundan, bir kullanıcıyla ilgili metin girişlerini aramak için [Findstr](/windows-server/administration/windows-commands/findstr) kullanabilirsiniz.  
 
 Kişisel verileri bulmak için, Kullanıcı kimliği için günlük dosyalarını arayın.
 

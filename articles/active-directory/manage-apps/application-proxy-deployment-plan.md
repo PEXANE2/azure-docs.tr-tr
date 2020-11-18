@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9736e1b71f5e129989aba9a045581bae8a1c5f93
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642427"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658290"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlama
 
-Azure Active Directory (Azure AD) uygulama proxy 'Si, şirket içi uygulamalar için güvenli ve düşük maliyetli bir uzaktan erişim çözümüdür. Henüz modern protokolleri kullanmayan eski şirket içi uygulamalara erişimi yönetmek için "bulut Ilk" kuruluşları için anında geçiş yolu sağlar. Ek tanıtım bilgileri için bkz. [uygulama proxy nedir](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
+Azure Active Directory (Azure AD) uygulama proxy 'Si, şirket içi uygulamalar için güvenli ve düşük maliyetli bir uzaktan erişim çözümüdür. Henüz modern protokolleri kullanmayan eski şirket içi uygulamalara erişimi yönetmek için "bulut Ilk" kuruluşları için anında geçiş yolu sağlar. Ek tanıtım bilgileri için bkz. [uygulama proxy nedir](./application-proxy.md).
 
 Uzak kullanıcılara iç kaynaklara erişim izni vermek için uygulama proxy 'Si önerilir. Uygulama proxy 'Si, bu uzaktan erişim kullanım örnekleri için bir VPN veya ters proxy gereksinimini değiştirir. Şirket ağı üzerinde olan kullanıcılar için tasarlanmamıştır. Intranet erişimi için uygulama proxy 'Si kullanan bu kullanıcılara istenmeyen performans sorunlarıyla karşılaşabilirsiniz.
 
@@ -33,7 +33,7 @@ Bu makale, Azure AD Uygulama Ara Sunucusu planlamak, çalıştırmak ve yönetme
 
 Aşağıdaki bölümde, etkili bir dağıtım deneyimine yönelik olarak ayarlanacak anahtar planlama öğelerinin geniş bir görünümü sunulmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Uygulamanıza başlamadan önce aşağıdaki önkoşulları karşılamanız gerekir. Ortamınızı ayarlama hakkında daha fazla bilgiyi bu ön koşullar da dahil olmak üzere bu [öğreticiye](application-proxy-add-on-premises-application.md)bakabilirsiniz.
 
@@ -47,7 +47,7 @@ Uygulamanıza başlamadan önce aşağıdaki önkoşulları karşılamanız gere
      * Bağlayıcılar yüklenmeden önce bağlayıcı makinelerin [TLS 1,2 için etkinleştirilmesi](application-proxy-add-on-premises-application.md) gerekir.
 
      * Mümkünse, bağlayıcıları, arka uç Web uygulaması sunucularıyla [aynı ağ](application-proxy-network-topology.md) ve kesimde dağıtın. Uygulamaları bulmayı tamamladıktan sonra bağlayıcıları dağıtmak en iyisidir.
-     * Yüksek kullanılabilirlik ve ölçek sağlamak için her bir bağlayıcı grubunda en az iki bağlayıcı olmasını öneririz. Her zaman bir makineye hizmet etmeniz gerekebilmeniz için üç bağlayıcı olması en iyi durumdur. Bağlayıcılara ne tür bir makine yükleyeceğinize karar vermenize yardımcı olması için [bağlayıcı kapasitesi tablosunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) gözden geçirin. Makinenin daha büyük olması ve bağlayıcının performansı artar.
+     * Yüksek kullanılabilirlik ve ölçek sağlamak için her bir bağlayıcı grubunda en az iki bağlayıcı olmasını öneririz. Her zaman bir makineye hizmet etmeniz gerekebilmeniz için üç bağlayıcı olması en iyi durumdur. Bağlayıcılara ne tür bir makine yükleyeceğinize karar vermenize yardımcı olması için [bağlayıcı kapasitesi tablosunu](./application-proxy-connectors.md#capacity-planning) gözden geçirin. Makinenin daha büyük olması ve bağlayıcının performansı artar.
 
 * **Ağ erişim ayarları**: Azure AD uygulama ara sunucusu BAĞLAYıCıLARı [, https (tcp bağlantı noktası 443) ve http (tcp bağlantı noktası 80) aracılığıyla Azure 'a bağlanır](application-proxy-add-on-premises-application.md).
 
@@ -63,9 +63,9 @@ Azure AD Uygulama Ara Sunucusu yapılandırmak ve uygulamak için aşağıdaki t
 
 *  **Azure ekleme**: uygulama proxy 'si dağıtılmadan önce, kullanıcı kimliklerinin şirket içi bir dizinden eşitlenmesi veya doğrudan Azure AD kiracılarınız içinden oluşturulması gerekir. Kimlik eşitlemesi, Azure AD 'nin uygulama proxy 'Si yayımlanmış uygulamalarına erişim vermeden önce kullanıcıların kimliğini doğrulamasına ve çoklu oturum açma (SSO) gerçekleştirmesi için gerekli Kullanıcı tanımlayıcı bilgilerine sahip olmasına olanak sağlar.
 
-* **Koşullu erişim gereksinimleri**: Bu, kullanıcıları etkileyecek gecikme süresi eklediğinden intranet erişimi Için uygulama proxy 'sinin kullanılmasını önermiyoruz. İnternet 'ten uzaktan erişim için ön kimlik doğrulama ve koşullu erişim ilkeleriyle uygulama proxy 'Si kullanmanızı öneririz.  İntranet kullanımı için koşullu erişim sağlamaya yönelik bir yaklaşım, modernleştirin uygulamalar ile doğrudan AAD ile kimlik doğrulaması yapabilmeleri için uygulamalara yöneliktir. Daha fazla bilgi için, [UYGULAMALARı AAD 'ye geçirmeye yönelik kaynaklara](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) bakın.
+* **Koşullu erişim gereksinimleri**: Bu, kullanıcıları etkileyecek gecikme süresi eklediğinden intranet erişimi Için uygulama proxy 'sinin kullanılmasını önermiyoruz. İnternet 'ten uzaktan erişim için ön kimlik doğrulama ve koşullu erişim ilkeleriyle uygulama proxy 'Si kullanmanızı öneririz.  İntranet kullanımı için koşullu erişim sağlamaya yönelik bir yaklaşım, modernleştirin uygulamalar ile doğrudan AAD ile kimlik doğrulaması yapabilmeleri için uygulamalara yöneliktir. Daha fazla bilgi için, [UYGULAMALARı AAD 'ye geçirmeye yönelik kaynaklara](./migration-resources.md) bakın.
 
-* **Hizmet sınırları**: tek tek kiracılar tarafından kaynakların aşırı tüketimine karşı koruma sağlamak için uygulama ve kiracı başına azaltma sınırları vardır. Bu sınırları görmek için [Azure AD hizmet limitleri ve kısıtlamalarına](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)bakın. Bu azaltma sınırları, tipik kullanım hacmi üzerinde en yukarıdaki bir karşılaştırmaya dayanır ve çoğu dağıtımda çok fazla arabellek sağlar.
+* **Hizmet sınırları**: tek tek kiracılar tarafından kaynakların aşırı tüketimine karşı koruma sağlamak için uygulama ve kiracı başına azaltma sınırları vardır. Bu sınırları görmek için [Azure AD hizmet limitleri ve kısıtlamalarına](../enterprise-users/directory-service-limits-restrictions.md)bakın. Bu azaltma sınırları, tipik kullanım hacmi üzerinde en yukarıdaki bir karşılaştırmaya dayanır ve çoğu dağıtımda çok fazla arabellek sağlar.
 
 * **Ortak sertifika**: özel etki alanı adları kullanıyorsanız, bir TLS/SSL sertifikası temin etmeniz gerekir. Kuruluş gereksinimlerinize bağlı olarak, bir sertifikanın alınması biraz zaman alabilir ve işlemin mümkün olduğunca erken bir süre önce başlatılmasına önerilir. Azure uygulama proxy 'Si standart, [joker karakter](application-proxy-wildcard.md)veya San tabanlı sertifikaları destekler. Daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu ile özel etki alanlarını yapılandırma](application-proxy-configure-custom-domain.md).
 
@@ -74,7 +74,7 @@ Konusuyla ilgili ayrıntılı bilgi için bkz. uygulama proxy 'Si ile [Çoklu ot
 
 * **URL 'Ler için DNS kayıtları**
 
-   * Uygulama proxy 'sinde özel etki alanları kullanmadan önce, genel DNS 'de bir CNAME kaydı oluşturmanız gerekir, bu da istemcilerin özel tanımlanmış dış URL 'yi önceden tanımlanmış uygulama proxy adresine çözümlemesine izin verir. Özel etki alanı kullanan bir uygulama için CNAME kaydı oluşturma, uzak kullanıcıların uygulamaya bağlanmasını engeller. CNAME kayıtları eklemek için gereken adımlar, DNS sağlayıcısından sağlayıcıya farklılık gösterebilir, bu nedenle [Azure Portal kullanarak DNS kayıtlarını ve kayıt kümelerini yönetmeyi](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-portal)öğrenin.
+   * Uygulama proxy 'sinde özel etki alanları kullanmadan önce, genel DNS 'de bir CNAME kaydı oluşturmanız gerekir, bu da istemcilerin özel tanımlanmış dış URL 'yi önceden tanımlanmış uygulama proxy adresine çözümlemesine izin verir. Özel etki alanı kullanan bir uygulama için CNAME kaydı oluşturma, uzak kullanıcıların uygulamaya bağlanmasını engeller. CNAME kayıtları eklemek için gereken adımlar, DNS sağlayıcısından sağlayıcıya farklılık gösterebilir, bu nedenle [Azure Portal kullanarak DNS kayıtlarını ve kayıt kümelerini yönetmeyi](../../dns/dns-operations-recordsets-portal.md)öğrenin.
 
    * Benzer şekilde, bağlayıcı Konakları, yayımlanmakta olan uygulamaların iç URL 'sini çözümleyebilmelidir.
 
@@ -97,7 +97,7 @@ Aşağıdaki bilgileri toplayarak uygulama proxy 'Si aracılığıyla yayımlanm
 | Etki alanı üyeliği| Web sunucusunun tam etki alanı adı (FQDN) |
 | Uygulama konumu | Web sunucusunun veya grubun altyapınızda bulunduğu yer |
 | İç erişim | Uygulamaya dahili olarak erişirken kullanılan tam URL. <br> Bir grup, ne tür bir yük dengeleme kullanımda? <br> Uygulamanın kendi dışında bir kaynaktan içerik çizmediği.<br> Uygulamanın WebSockets üzerinde çalışıp çalışmayacağını belirleme. |
-| Dış erişim | Uygulamanın zaten dışarıdan açığa çıkarmış olduğu satıcı çözümü. <br> Dış erişim için kullanmak istediğiniz URL. SharePoint ise, [bu kılavuza](https://docs.microsoft.com/SharePoint/administration/configure-alternate-access-mappings)göre alternatif erişim eşlemelerinin yapılandırıldığından emin olun. Aksi takdirde, dış URL 'Leri tanımlamanız gerekecektir. |
+| Dış erişim | Uygulamanın zaten dışarıdan açığa çıkarmış olduğu satıcı çözümü. <br> Dış erişim için kullanmak istediğiniz URL. SharePoint ise, [bu kılavuza](/SharePoint/administration/configure-alternate-access-mappings)göre alternatif erişim eşlemelerinin yapılandırıldığından emin olun. Aksi takdirde, dış URL 'Leri tanımlamanız gerekecektir. |
 | Ortak sertifika | Özel etki alanı kullanılıyorsa, ilgili konu adına sahip bir sertifika edinin. bir sertifika varsa, seri numarasını ve nereden elde edilecek konumu göz önünde bulabilirsiniz. |
 | Kimlik doğrulaması türü| Temel, Windows tümleştirme kimlik doğrulaması, form tabanlı, üst bilgi tabanlı ve talepler gibi uygulama desteği tarafından desteklenen kimlik doğrulaması türü. <br>Uygulama belirli bir etki alanı hesabı altında çalışacak şekilde yapılandırıldıysa, hizmet hesabının tam etki alanı adını (FQDN) göz önünde önüne alın.<br> SAML tabanlı ise, tanımlayıcı ve yanıt URL 'Leri. <br> Başlık tabanlı ise, satıcı çözümü ve kimlik doğrulama türünü işlemeye yönelik belirli bir gereksinim. |
 | Bağlayıcı grubu adı | Bu arka uç uygulamasına iletken ve SSO sağlamak üzere atanacak bağlayıcı grubunun mantıksal adı. |
@@ -156,7 +156,7 @@ Aşağıdaki tasarım öğeleri, pilot uygulamanızın başarısını doğrudan 
 
 **Bağlayıcı Konağı ve hedef uygulama arasında TLS**: güvenlik, bu nedenle bağlayıcı Konağı ile hedef uygulamalar arasındaki TLS her zaman kullanılmalıdır. Özellikle, Web uygulaması form tabanlı kimlik doğrulaması (FBA) için yapılandırılmışsa, Kullanıcı kimlik bilgileri daha sonra şifresiz metin olarak iletilir.
 
-**Her adımı artımlı olarak uygulayın ve test**edin.
+**Her adımı artımlı olarak uygulayın ve test** edin.
 Aşağıdaki yönergeleri izleyerek tüm Kullanıcı ve iş gereksinimlerinin karşılandığından emin olmak için bir uygulamayı yayımladıktan sonra temel işlevsel test gerçekleştirin:
 
 1. Web uygulamasına ön kimlik doğrulaması devre dışı olarak genel erişimi test edin ve doğrulayın.
@@ -176,7 +176,7 @@ Uygulama ara sunucusunu dağıtma adımları bu [öğreticide, uzaktan erişim i
 
 Uygulamaları yayımlamak, tüm önkoşulların karşılandığını ve uygulama proxy 'Si sayfasında kayıtlı ve etkin olarak gösteren birkaç bağlayıcı olduğunu varsayar.
 
-Ayrıca, [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)kullanarak da uygulama yayımlayabilirsiniz.
+Ayrıca, [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview)kullanarak da uygulama yayımlayabilirsiniz.
 
 Aşağıda, bir uygulamayı yayımlarken izlenecek en iyi yöntemler verilmiştir:
 
@@ -218,9 +218,9 @@ Ayrıca, kullanıcıların şu anda üyesi olmadıkları ve kendi kendine hizmet
 
 Etkinleştirilirse, kullanıcılar Uygulamaps portalında oturum açabilir ve erişim isteğinde bulunabilir ve otomatik olarak onaylanmalı ve zaten izin verilen self servis grubuna eklenebilir veya belirlenen bir onaylayanın onayına gerek duyar.
 
-Konuk kullanıcılar ayrıca, [Azure AD B2B aracılığıyla uygulama proxy 'si aracılığıyla yayımlanan iç uygulamalara erişim için de davet](https://docs.microsoft.com/azure/active-directory/b2b/add-users-information-worker)edilebilir.
+Konuk kullanıcılar ayrıca, [Azure AD B2B aracılığıyla uygulama proxy 'si aracılığıyla yayımlanan iç uygulamalara erişim için de davet](../external-identities/add-users-information-worker.md)edilebilir.
 
-Normalde anonim olarak erişilebilen ve kimlik doğrulaması gerektirmeyen şirket içi uygulamalarda, uygulamanın **özelliklerinde**bulunan seçeneğini devre dışı bırakmayı tercih edebilirsiniz.
+Normalde anonim olarak erişilebilen ve kimlik doğrulaması gerektirmeyen şirket içi uygulamalarda, uygulamanın **özelliklerinde** bulunan seçeneğini devre dışı bırakmayı tercih edebilirsiniz.
 
 ![Resim 26](media/App-proxy-deployment-plan/assignment-required.png)
 
@@ -233,9 +233,9 @@ Uygulamanız yayımlandıktan sonra, dış URL 'sini bir tarayıcıya veya konum
 
 Uygulamanızın dış URL aracılığıyla ona erişen uygulama proxy 'Si aracılığıyla erişilebilir olduğunu doğrulayın.
 
-1. **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory  >  **tüm uygulamalar** ' a gidin ve yönetmek istediğiniz uygulamayı seçin.
+1. **Azure Active Directory**  >  **Kurumsal uygulamalar** Azure Active Directory  >  **tüm uygulamalar** ' a gidin ve yönetmek istediğiniz uygulamayı seçin.
 
-2. **Uygulama proxy 'si**seçin.
+2. **Uygulama proxy 'si** seçin.
 
 3. **Ön kimlik doğrulama** alanında **Azure Active Directory**' yi seçmek için açılan listeyi kullanın ve **Kaydet**' i seçin.
 
@@ -253,9 +253,9 @@ Uygulamalarınızı yapılandırırken en uygun SSO yöntemini seçmenize yardı
 
 ###  <a name="working-with-other-types-of-applications"></a>Diğer uygulama türleriyle çalışma
 
-Azure AD Uygulama Ara Sunucusu, [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)kullanmak üzere geliştirilmiş uygulamaları da destekleyebilir. Kullanıcı adına ön kimlik doğrulaması gerçekleştirmek üzere istemci isteğinin üstbilgi bilgilerinde alınan Azure AD tarafından verilen belirteçleri tüketen yerel istemci uygulamalarını destekler.
+Azure AD Uygulama Ara Sunucusu, [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](../develop/v2-overview.md)kullanmak üzere geliştirilmiş uygulamaları da destekleyebilir. Kullanıcı adına ön kimlik doğrulaması gerçekleştirmek üzere istemci isteğinin üstbilgi bilgilerinde alınan Azure AD tarafından verilen belirteçleri tüketen yerel istemci uygulamalarını destekler.
 
-Uygulama proxy 'sinin kullanılabilir yapılandırması hakkında bilgi edinmek için [yerel ve mobil istemci uygulamalarını](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) ve [talep tabanlı uygulamaları](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) yayımlama makalesini okuyun.
+Uygulama proxy 'sinin kullanılabilir yapılandırması hakkında bilgi edinmek için [yerel ve mobil istemci uygulamalarını](./application-proxy-configure-native-client-application.md) ve [talep tabanlı uygulamaları](./application-proxy-configure-for-claims-aware-applications.md) yayımlama makalesini okuyun.
 
 ### <a name="use-conditional-access-to-strengthen-security"></a>Güvenliği güçlendirmek için koşullu erişimi kullanın
 
@@ -263,11 +263,11 @@ Uygulama güvenliği, şirket içinde ve bulutta bulunan karmaşık tehditleri k
 
 Aşağıdaki yetenekler Azure AD Uygulama Ara Sunucusu desteklemek için kullanılabilir:
 
-* Kullanıcı ve konum tabanlı koşullu erişim: [konum tabanlı koşullu erişim ilkeleriyle](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations), coğrafi konuma veya bir IP adresine bağlı olarak Kullanıcı erişimini sınırlayarak gizli verileri koruma altına alır.
+* Kullanıcı ve konum tabanlı koşullu erişim: [konum tabanlı koşullu erişim ilkeleriyle](../conditional-access/location-condition.md), coğrafi konuma veya bir IP adresine bağlı olarak Kullanıcı erişimini sınırlayarak gizli verileri koruma altına alır.
 
-* Cihaz tabanlı koşullu erişim: yalnızca kayıtlı, onaylanmış ve uyumlu cihazların [cihaz tabanlı koşullu erişimle](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)kurumsal verilere erişebildiğinden emin olun.
+* Cihaz tabanlı koşullu erişim: yalnızca kayıtlı, onaylanmış ve uyumlu cihazların [cihaz tabanlı koşullu erişimle](../conditional-access/require-managed-devices.md)kurumsal verilere erişebildiğinden emin olun.
 
-* Uygulama tabanlı koşullu erişim: bir Kullanıcı kurumsal ağda olmadığında çalışmayı durdurmak zorunda değildir. [Kurumsal bulut ve şirket içi uygulamalara güvenli erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) ve koşullu erişim ile denetim sağlama.
+* Uygulama tabanlı koşullu erişim: bir Kullanıcı kurumsal ağda olmadığında çalışmayı durdurmak zorunda değildir. [Kurumsal bulut ve şirket içi uygulamalara güvenli erişim](../conditional-access/app-based-conditional-access.md) ve koşullu erişim ile denetim sağlama.
 
 * Risk tabanlı koşullu erişim: şirket içinde veya bulutta olsun, tüm uygulamalara ve tüm kullanıcılara uygulanabilen [risk tabanlı bir koşullu erişim ilkesiyle](https://www.microsoft.com/cloud-platform/conditional-access) verilerinizi kötü amaçlı saldırılara karşı koruyun.
 
@@ -277,7 +277,7 @@ Aşağıdaki yetenekler Azure AD Uygulama Ara Sunucusu desteklemek için kullan�
 
 ### <a name="required-roles"></a>Gerekli roller
 
-Microsoft, gerekli görevleri Azure AD ile gerçekleştirmek için en az olası ayrıcalıkları verme ilkesini de sağlar. [Kullanılabilir farklı Azure rollerini gözden geçirin](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) ve her kişinin ihtiyaçlarını karşılamak için doğru olanı seçin. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
+Microsoft, gerekli görevleri Azure AD ile gerçekleştirmek için en az olası ayrıcalıkları verme ilkesini de sağlar. [Kullanılabilir farklı Azure rollerini gözden geçirin](../roles/permissions-reference.md) ve her kişinin ihtiyaçlarını karşılamak için doğru olanı seçin. Dağıtım tamamlandıktan sonra bazı rollerin geçici olarak uygulanması ve kaldırılması gerekebilir.
 
 | İş rolü| İş görevleri| Azure AD rolleri |
 |---|---|---|
@@ -288,7 +288,7 @@ Microsoft, gerekli görevleri Azure AD ile gerçekleştirmek için en az olası 
 
 Güvenli bilgi veya kaynaklara erişimi olan kişilerin sayısını en aza indirmek, kötü niyetli bir aktörün yetkisiz erişim sağlama olasılığını azaltmada veya yetkili bir kullanıcının yanlışlıkla hassas bir kaynağı etkilemesinin ihtimalini azaltmaya yardımcı olur.
 
-Ancak, kullanıcıların günlük ayrıcalıklı işlemleri gerçekleştirmesi gerekir. bu nedenle, Azure kaynaklarına isteğe bağlı ayrıcalıklı erişim sağlamak için tam zamanında (JıT) [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) ilkeleri zorlama ve Azure AD, yönetim erişimi ve denetimini verimli bir şekilde yönetmek için önerilen yaklaşımımız.
+Ancak, kullanıcıların günlük ayrıcalıklı işlemleri gerçekleştirmesi gerekir. bu nedenle, Azure kaynaklarına isteğe bağlı ayrıcalıklı erişim sağlamak için tam zamanında (JıT) [Privileged Identity Management](../privileged-identity-management/pim-configure.md) ilkeleri zorlama ve Azure AD, yönetim erişimi ve denetimini verimli bir şekilde yönetmek için önerilen yaklaşımımız.
 
 ### <a name="reporting-and-monitoring"></a>Raporlama ve izleme
 
@@ -296,17 +296,17 @@ Azure AD, kuruluşunuzun uygulama kullanımı ve [Denetim günlükleri ve raporl
 
 #### <a name="application-audit-logs"></a>Uygulama denetim günlükleri
 
-Bu Günlükler, uygulama proxy 'Si ve cihazla ve uygulamaya erişen kullanıcı ile yapılandırılan uygulamalara yönelik oturumlar hakkında ayrıntılı bilgi sağlar. [Denetim günlükleri](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , Azure Portal ve dışarı aktarma IÇIN [Denetim API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) 'sinde bulunur. Ayrıca, [kullanım ve öngörü raporları](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) uygulamanız için de kullanılabilir.
+Bu Günlükler, uygulama proxy 'Si ve cihazla ve uygulamaya erişen kullanıcı ile yapılandırılan uygulamalara yönelik oturumlar hakkında ayrıntılı bilgi sağlar. [Denetim günlükleri](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , Azure Portal ve dışarı aktarma IÇIN [Denetim API](/graph/api/resources/directoryaudit?view=graph-rest-beta) 'sinde bulunur. Ayrıca, [kullanım ve öngörü raporları](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) uygulamanız için de kullanılabilir.
 
 #### <a name="application-proxy-connector-monitoring"></a>Uygulama proxy Bağlayıcısı izleme
 
-Bağlayıcılar ve hizmet, tüm yüksek oranda kullanılabilir görevleri ele alır. Azure AD portalındaki uygulama proxy 'Si sayfasından bağlayıcılarınızın durumunu izleyebilirsiniz. Bağlayıcı bakım hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcıları anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance).
+Bağlayıcılar ve hizmet, tüm yüksek oranda kullanılabilir görevleri ele alır. Azure AD portalındaki uygulama proxy 'Si sayfasından bağlayıcılarınızın durumunu izleyebilirsiniz. Bağlayıcı bakım hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcıları anlama](./application-proxy-connectors.md#maintenance).
 
 ![Örnek: Azure AD Uygulama Ara Sunucusu bağlayıcıları](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows olay günlükleri ve performans sayaçları
 
-Bağlayıcılar yönetici ve oturum günlüklerine sahiptir. Yönetici günlükleri, anahtar olayları ve bunların hatalarını içerir. Oturum günlükleri tüm işlemleri ve bunların işleme ayrıntılarını içerir. Günlükler ve sayaçlar Windows olay günlüklerinde bulunur daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#under-the-hood). [Azure izleyici 'de olay günlüğü veri kaynaklarını yapılandırmak için bu öğreticiyi](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events)izleyin.
+Bağlayıcılar yönetici ve oturum günlüklerine sahiptir. Yönetici günlükleri, anahtar olayları ve bunların hatalarını içerir. Oturum günlükleri tüm işlemleri ve bunların işleme ayrıntılarını içerir. Günlükler ve sayaçlar Windows olay günlüklerinde bulunur daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](./application-proxy-connectors.md#under-the-hood). [Azure izleyici 'de olay günlüğü veri kaynaklarını yapılandırmak için bu öğreticiyi](../../azure-monitor/platform/data-sources-windows-events.md)izleyin.
 
 ### <a name="troubleshooting-guide-and-steps"></a>Sorun giderme kılavuzu ve adımları
 
@@ -323,7 +323,7 @@ Aşağıdaki makalelerde, destek kuruluşunuza yönelik sorun giderme kılavuzla
 * [Uygulamamda çoklu oturum açmayı yapılandırma](application-proxy-config-sso-how-to.md)
 * [Yönetici portalında uygulama oluştururken sorun oluşuyor](application-proxy-config-problem.md)
 * [Kerberos Kısıtlanmış Temsilini Yapılandırma](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [PingAccess ile yapılandırma](application-proxy-back-end-ping-access-how-to.md)
+* [PingAccess ile yapılandırma](/azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide)
 * [“Bu Şirket Uygulamasına Erişilemiyor” hatası](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor](application-proxy-connector-installation-problem.md)
 * [Oturum açma sorunu](application-sign-in-problem-on-premises-application-proxy.md)

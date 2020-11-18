@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e9544fb73c8599b219ef7a566032adfe5e33d08
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75862722"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658511"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Azure VPN Gateway için topluluk tarafından önerilen üçüncü taraf VPN veya güvenlik duvarı cihaz ayarları
 
@@ -41,7 +41,6 @@ Aşağıdaki tabloda birkaç ortak cihaz ve ilgili yardım listelenmektedir:
 
 ## <a name="next-step"></a>Sonraki adım
 
-[Azure ağ geçitleri ayarları](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+[Azure ağ geçitleri ayarları](./vpn-gateway-about-vpn-devices.md)
 
-[Bilinen uyumlu cihazlar](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
-
+[Bilinen uyumlu cihazlar](./vpn-gateway-about-vpn-devices.md)
