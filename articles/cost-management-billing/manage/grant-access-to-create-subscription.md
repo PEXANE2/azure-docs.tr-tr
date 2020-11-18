@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: 02919cf2e35fdd4d981f3fde53085c2174f11bd1
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132576"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844719"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Kurumsal abonelikleri oluşturma erişimi verme (önizleme)
 
@@ -23,7 +23,7 @@ Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enter
 
 ## <a name="grant-access"></a>Erişim verme
 
-[Kayıt hesabı altında abonelikler oluşturmak](programmatically-create-subscription.md) için kullanıcıların söz konusu hesapta Azure RBAC [Sahibi rolü](../../role-based-access-control/built-in-roles.md#owner) olmalıdır. Aşağıdaki adımları izleyerek kullanıcıya veya kullanıcı grubuna bir kayıt hesabında Azure RBAC Sahibi rolü verebilirsiniz:
+[Kayıt hesabı altında abonelikler oluşturmak](programmatically-create-subscription-enterprise-agreement.md) için kullanıcıların söz konusu hesapta Azure RBAC [Sahibi rolü](../../role-based-access-control/built-in-roles.md#owner) olmalıdır. Aşağıdaki adımları izleyerek kullanıcıya veya kullanıcı grubuna bir kayıt hesabında Azure RBAC Sahibi rolü verebilirsiniz:
 
 1. Erişim vermek istediğiniz kayıt hesabının nesne kimliğini alma
 
@@ -174,7 +174,7 @@ Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enter
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Bir kullanıcı kayıt hesabınızın Azure RBAC Sahibi olduktan sonra bu hesap altında [program aracılığıyla abonelikler oluşturabilir](programmatically-create-subscription.md). Temsilci kullanıcı tarafından oluşturulan aboneliğin de Hizmet Yöneticisi olarak özgün Hesap Sahibi vardır ama aynı zamanda varsayılan olarak temsilci kullanıcı da Azure RBAC Sahibi olur.
+    Bir kullanıcı kayıt hesabınızın Azure RBAC Sahibi olduktan sonra bu hesap altında [program aracılığıyla abonelikler oluşturabilir](programmatically-create-subscription-enterprise-agreement.md). Temsilci kullanıcı tarafından oluşturulan aboneliğin de Hizmet Yöneticisi olarak özgün Hesap Sahibi vardır ama aynı zamanda varsayılan olarak temsilci kullanıcı da Azure RBAC Sahibi olur.
 
     ---
 
@@ -193,7 +193,7 @@ Bu API'yi komut satırından rahatça çağırmak için [ARMClient](https://gith
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Artık kullanıcının veya hizmet sorumlusunun abonelik oluşturma izni olduğuna göre, bu kimliği kullanarak [program aracılığıyla Azure Kurumsal abonelikleri oluşturabilirsiniz](programmatically-create-subscription.md).
+* Artık kullanıcının veya hizmet sorumlusunun abonelik oluşturma izni olduğuna göre, bu kimliği kullanarak [program aracılığıyla Azure Kurumsal abonelikleri oluşturabilirsiniz](programmatically-create-subscription-enterprise-agreement.md).
 * .NET kullanarak abonelik oluşturma örneği için [GitHub'da örnek koda](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core) bakın.
 * Azure Resource Manager ve onun API'leri hakkında daha fazla bilgi edinmek için bkz [Azure Resource Manager’a genel bakış](../../azure-resource-manager/management/overview.md).
 * Yönetim gruplarını kullanarak çok fazla sayıda aboneliği yönetme hakkında daha fazla bilgi edinmek için bkz. [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../governance/management-groups/overview.md)
