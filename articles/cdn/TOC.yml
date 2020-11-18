@@ -35,6 +35,10 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
 - name: Kavramlar
   items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Önbelleğe alma nasıl işler?
       href: cdn-how-caching-works.md
     - name: Çin’de içerik teslimi
