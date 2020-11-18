@@ -4,12 +4,12 @@ description: Azure Service Fabric kümesi için güvenlik senaryoları ve bunlar
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 642356f08a946cae5d2b2d395aaddd8e4dad27ed
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946204"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682800"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric kümesi güvenlik senaryoları
 
@@ -19,7 +19,7 @@ Bu makalede, Azure kümeleri ve tek başına kümeler için güvenlik senaryolar
 
 * Düğümden düğüme güvenlik
 * İstemciden düğüme güvenlik
-* Rol Tabanlı Erişim Denetimi (RBAC)
+* Rol tabanlı erişim denetimi Service Fabric
 
 ## <a name="node-to-node-security"></a>Düğümden düğüme güvenlik
 
@@ -60,7 +60,7 @@ Azure 'da çalışan kümeler ve Windows üzerinde çalışan tek başına küme
 
 Azure portal, bir Kaynak Yöneticisi şablonu kullanarak veya tek başına bir JSON şablonu kullanarak küme oluştururken istemciden düğüme Sertifika güvenliği ayarlayın. Sertifikayı oluşturmak için, bir yönetici istemci sertifikası veya bir kullanıcı istemci sertifikası belirtin. En iyi uygulama olarak, belirttiğiniz yönetici istemcisi ve Kullanıcı istemci sertifikaları, [düğümden düğüme güvenlik](#node-to-node-security)için belirttiğiniz birincil ve ikincil sertifikalardan farklı olmalıdır. Küme sertifikaları, istemci yönetici sertifikalarıyla aynı haklara sahiptir. Bununla birlikte, yalnızca bir güvenlik en iyi uygulaması olarak yönetici kullanıcılar tarafından değil, yalnızca küme tarafından kullanılmalıdır.
 
-Yönetici sertifikasını kullanarak kümeye bağlanan istemciler, yönetim özelliklerine tam erişime sahiptir. Salt okuma Kullanıcı istemci sertifikasını kullanarak kümeye bağlanan istemciler yalnızca yönetim özelliklerine okuma erişimine sahiptir. Bu sertifikalar, bu makalenin ilerleyen kısımlarında açıklanan RBAC için kullanılır.
+Yönetici sertifikasını kullanarak kümeye bağlanan istemciler, yönetim özelliklerine tam erişime sahiptir. Salt okuma Kullanıcı istemci sertifikasını kullanarak kümeye bağlanan istemciler yalnızca yönetim özelliklerine okuma erişimine sahiptir. Bu sertifikalar, bu makalede daha sonra açıklanan Service Fabric RBAC için kullanılır.
 
 Azure için bir kümede sertifika güvenliği ayarlamayı öğrenmek için bkz. [Azure Resource Manager şablonu kullanarak küme ayarlama](service-fabric-cluster-creation-via-arm.md).
 
@@ -85,13 +85,13 @@ Azure 'da barındırılan ortak bir ağda dağıtılan Service Fabric kümeleri 
 
 Tek başına Windows Server kümeleri için Windows Server 2012 R2 ve Windows Active Directory varsa, grup yönetilen hizmet hesaplarıyla Windows güvenliği kullanmanızı öneririz. Aksi takdirde, Windows Güvenlik ile Windows hesaplarını kullanın.
 
-## <a name="role-based-access-control-rbac"></a>Rol Tabanlı Erişim Denetimi (RBAC)
+## <a name="service-fabric-role-based-access-control"></a>Rol tabanlı erişim denetimi Service Fabric
 
 Farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlandırmak için erişim denetimi kullanabilirsiniz. Bu, kümenin daha güvenli olmasına yardımcı olur. Bir kümeye bağlanan istemciler için iki erişim denetimi türü desteklenir: yönetici rolü ve Kullanıcı rolü.
 
 Yönetici rolüne atanan kullanıcıların, okuma ve yazma özellikleri dahil olmak üzere yönetim özelliklerine tam erişimi vardır. Kullanıcı rolüne atanan kullanıcılar varsayılan olarak, yönetim özelliklerine yalnızca okuma erişimine sahiptir (örneğin, sorgu özellikleri). Ayrıca, uygulama ve hizmetleri de çözümleyebilir.
 
-Kümeyi oluştururken yönetici ve Kullanıcı istemci rollerini ayarlayın. Her rol türü için ayrı kimlikler (örneğin, sertifikalar veya Azure AD kullanarak) sağlayarak roller atayın. Varsayılan erişim denetimi ayarları ve varsayılan ayarların nasıl değiştirileceği hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı Access Control](service-fabric-cluster-security-roles.md).
+Kümeyi oluştururken yönetici ve Kullanıcı istemci rollerini ayarlayın. Her rol türü için ayrı kimlikler (örneğin, sertifikalar veya Azure AD kullanarak) sağlayarak roller atayın. Varsayılan erişim denetimi ayarları ve varsayılan ayarların nasıl değiştirileceği hakkında daha fazla bilgi için, bkz. [Service Fabric istemcileri için rol tabanlı erişim denetimi Service Fabric](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>X. 509.440 sertifikaları ve Service Fabric
 
@@ -118,10 +118,10 @@ Sertifikanın aşağıdaki gereksinimleri karşılaması gerekir:
 
 Göz önünde bulundurulması gereken bazı şeyler:
 
-* **Konu** alanı birden fazla değere sahip olabilir. Değer türünü belirtmek için her değere bir başlatma ön eki eklenir. Genellikle, başlatma **CN** 'dir ( *ortak ad*için); Örneğin, **CN = www \. contoso.com**.
+* **Konu** alanı birden fazla değere sahip olabilir. Değer türünü belirtmek için her değere bir başlatma ön eki eklenir. Genellikle, başlatma **CN** 'dir ( *ortak ad* için); Örneğin, **CN = www \. contoso.com**.
 * **Konu** alanı boş olabilir.
 * İsteğe bağlı **konu alternatif adı** alanı doldurulmuşsa, hem sertifikanın ortak adına hem de San başına bir girişe sahip olmalıdır. Bunlar **DNS ad** değerleri olarak girilir. San 'Lara sahip sertifikalar oluşturmayı öğrenmek için bkz. güvenli bir [LDAP sertifikasına konu alternatif adı ekleme](https://support.microsoft.com/kb/931351).
-* Sertifikanın **amaçlanan amaçlar** alanının değeri, **sunucu kimlik doğrulaması** veya **istemci kimlik doğrulaması**gibi uygun bir değer içermelidir.
+* Sertifikanın **amaçlanan amaçlar** alanının değeri, **sunucu kimlik doğrulaması** veya **istemci kimlik doğrulaması** gibi uygun bir değer içermelidir.
 
 ### <a name="application-certificates-optional"></a>Uygulama sertifikaları (isteğe bağlı)
 
@@ -134,7 +134,7 @@ Güvenli kümeler oluşturma kavramı, Linux veya Windows kümeleri olup olmalar
 
 ### <a name="client-authentication-certificates-optional"></a>İstemci kimlik doğrulama sertifikaları (isteğe bağlı)
 
-Yönetici veya Kullanıcı istemci işlemleri için herhangi bir sayıda ek sertifika belirtilebilir. İstemci, karşılıklı kimlik doğrulaması gerektiğinde bu sertifikaları kullanabilir. İstemci sertifikaları genellikle bir üçüncü taraf CA tarafından verilmez. Bunun yerine, geçerli kullanıcı konumunun kişisel deposu genellikle bir kök yetkilisi tarafından yerleştirilmiş istemci sertifikalarını içerir. Sertifikanın, **Istemci kimlik doğrulaması**için **amaçlanan bir amaç** değeri olmalıdır.  
+Yönetici veya Kullanıcı istemci işlemleri için herhangi bir sayıda ek sertifika belirtilebilir. İstemci, karşılıklı kimlik doğrulaması gerektiğinde bu sertifikaları kullanabilir. İstemci sertifikaları genellikle bir üçüncü taraf CA tarafından verilmez. Bunun yerine, geçerli kullanıcı konumunun kişisel deposu genellikle bir kök yetkilisi tarafından yerleştirilmiş istemci sertifikalarını içerir. Sertifikanın, **Istemci kimlik doğrulaması** için **amaçlanan bir amaç** değeri olmalıdır.  
 
 Varsayılan olarak, küme sertifikasında yönetici istemci ayrıcalıkları vardır. Bu ek istemci sertifikaları kümeye yüklenmemelidir, ancak küme yapılandırmasında izin verilme olarak belirtilir.  Ancak, kümeye bağlanmak ve tüm işlemleri gerçekleştirmek için istemci sertifikalarının istemci makinelere yüklenmesi gerekir.
 

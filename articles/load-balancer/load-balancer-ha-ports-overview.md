@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f6d5b5ef816127fe5f0c689132326f6157731d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664882"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684419"
 ---
 # <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktalarına genel bakış
 
@@ -28,7 +28,7 @@ Yüksek kullanılabilirlik (HA) bağlantı noktaları, bir iç Standart Load Bal
 
 HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Bu özellik, çok sayıda bağlantı noktasının yük dengeli olması gerektiğinde da yardımcı olabilir. 
 
-HA bağlantı noktaları Yük Dengeleme kuralları, ön uç ve arka uç bağlantı noktalarını **0** ' a ve Protokolü **tümüne**ayarladığınızda yapılandırılır. İç yük dengeleyici kaynağı, bağlantı noktası numarasından bağımsız olarak tüm TCP ve UDP akışlarını dengeler
+HA bağlantı noktaları Yük Dengeleme kuralları, ön uç ve arka uç bağlantı noktalarını **0** ' a ve Protokolü **tümüne** ayarladığınızda yapılandırılır. İç yük dengeleyici kaynağı, bağlantı noktası numarasından bağımsız olarak tüm TCP ve UDP akışlarını dengeler
 
 ## <a name="why-use-ha-ports"></a>HA bağlantı noktaları neden kullanılmalıdır?
 
@@ -40,7 +40,7 @@ Bu hedeflere, iç yük dengeleyicinizin arka uç havuzuna NVA örnekleri ekleyer
 
 NVA HA senaryolarında, HA bağlantı noktaları aşağıdaki avantajları sunar:
 - Sağlıklı örneklere hızlı yük devretme, örnek başına sistem durumu araştırmalarını sağlama
-- *N*etkin örneklere genişleme ile daha yüksek performans sağlayın
+- *N* etkin örneklere genişleme ile daha yüksek performans sağlayın
 - *N*-aktif ve aktif-pasif senaryolar sağlama
 - İzleme gereçlerine yönelik Apache ZooKeeper düğümleri gibi karmaşık çözümlere gereksinimi ortadan kaldırın
 
@@ -66,7 +66,7 @@ HA bağlantı noktaları özelliği tüm genel Azure bölgelerinde kullanılabil
 
 Bu yapılandırma, temel bir HA bağlantı noktaları yapılandırması. Aşağıdaki işlemleri gerçekleştirerek tek bir ön uç IP adresi üzerinde bir HA bağlantı noktaları Yük Dengeleme kuralı yapılandırabilirsiniz:
 1. Standart Load Balancer yapılandırılırken, Load Balancer kuralı yapılandırmasındaki **ha bağlantı noktaları** onay kutusunu seçin.
-2. **Kayan IP**Için **devre dışı**' yı seçin.
+2. **Kayan IP** Için **devre dışı**' yı seçin.
 
 Bu yapılandırma, geçerli yük dengeleyici kaynağında başka bir yük dengeleme kuralı yapılandırmasına izin vermiyor. Ayrıca, belirtilen arka uç örnekleri kümesi için başka bir iç yük dengeleyici kaynak yapılandırmasına izin vermez.
 
@@ -74,7 +74,7 @@ Ancak, bu HA bağlantı noktaları kuralına ek olarak, arka uç örnekleri içi
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Bir iç Standart Load Balancer, tek bir kayan IP (doğrudan sunucu dönüşü) HA bağlantı noktaları yapılandırması
 
-Benzer şekilde, **kayan IP** 'yi **etkin**olarak ayarlayarak, yük dengeleyicinizi tek bir ön uç ile **ha bağlantı noktasıyla** bir yük dengeleme kuralı kullanacak şekilde yapılandırabilirsiniz. 
+Benzer şekilde, **kayan IP** 'yi **etkin** olarak ayarlayarak, yük dengeleyicinizi tek bir ön uç ile **ha bağlantı noktasıyla** bir yük dengeleme kuralı kullanacak şekilde yapılandırabilirsiniz. 
 
 Bu yapılandırmayı kullanarak, daha fazla kayan IP yük dengeleme kuralı ve/veya bir genel yük dengeleyici ekleyebilirsiniz. Ancak, bu yapılandırmanın en üstünde kayan olmayan IP, HA-Ports yük dengeleme yapılandırması kullanamazsınız.
 
@@ -99,5 +99,4 @@ Arka uç kaynakları için *bir* genel standart Load Balancer KAYNAĞıNı, ha b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Portal, [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)veya [Şablonlar](quickstart-load-balancer-standard-internal-template.md) [aracılığıyla ILB 'Niz için ha bağlantı noktalarını nasıl yapılandıracağınızı öğrenin](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule).
-- [Standart Load Balancer hakkında bilgi edinin](load-balancer-standard-overview.md)
+- [Standart Load Balancer hakkında bilgi edinin](load-balancer-overview.md)

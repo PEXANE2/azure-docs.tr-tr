@@ -1,19 +1,19 @@
 ---
 title: Azure SignalR Hizmeti için sorun giderme kılavuzu
-description: Öğrenin
+description: Sık karşılaşılan sorunları nasıl giderebileceğinizi öğrenin
 author: YanJin
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 5b8360134ace3852fb3c7fbe458ca2572f45b624
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663926"
+ms.locfileid: "94684126"
 ---
-# <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
+# <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR hizmeti yaygın sorunları için sorun giderme kılavuzu
 
 Bu kılavuz, müşterilerin geçen yıllarda karşıladığı ve çözdüğü yaygın sorunlar temelinde yararlı sorun giderme kılavuzu sağlamaktır.
 
@@ -257,7 +257,7 @@ SignalR istemci bağlantısı `DisposeAsync` hiçbir şekilde çağrılmaz, bağ
 
 Bağlantıyı kapatmayı denetleyin. `HubConnection.DisposeAsync()`Bağlantıyı kullandıktan sonra durdurmak için el ile çağrı yapın.
 
-Örneğin:
+Örnek:
 
 ```C#
 var connection = new HubConnectionBuilder()
@@ -347,3 +347,9 @@ ASP.NET Core bir örnek alın (ASP.NET One benzerdir):
 
     * [ASP.NET JavaScript Istemcisi](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu kılavuzda, yaygın sorunları nasıl işleyeceğinizi öğrendiniz. Daha fazla genel sorun giderme yöntemi de öğrenebilirsiniz. 
+
+> [!div class="nextstepaction"]
+> [Bağlantı ve ileti teslimi sorunlarını giderme](./signalr-howto-troubleshoot-method.md)

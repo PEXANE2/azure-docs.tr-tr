@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318458"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682783"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
@@ -25,7 +25,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
 * Şu anda bir ıSE için müşteri tarafından yönetilen anahtar desteği yalnızca şu Azure bölgelerinde kullanılabilir: Batı ABD 2, Doğu ABD ve Orta Güney ABD
 
-* Müşteri tarafından yönetilen bir anahtarı, daha sonra değil *yalnızca Ise 'nizi oluşturduğunuz zaman*belirtebilirsiniz. ISE oluşturulduktan sonra bu anahtarı devre dışı bırakabilirsiniz. Şu anda, bir ıSE için müşteri tarafından yönetilen bir anahtarı döndürmek için destek yok.
+* Müşteri tarafından yönetilen bir anahtarı, daha sonra değil *yalnızca Ise 'nizi oluşturduğunuz zaman* belirtebilirsiniz. ISE oluşturulduktan sonra bu anahtarı devre dışı bırakabilirsiniz. Şu anda, bir ıSE için müşteri tarafından yönetilen bir anahtarı döndürmek için destek yok.
 
 * Müşteri tarafından yönetilen anahtarları desteklemek için, ıSE 'niz, [sistem tarafından atanan yönetilen kimliğin](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) etkinleştirilmesini gerektirir. Bu kimlik, ıSE, kimlik bilgilerinizle oturum açmanıza gerek kalmaması için diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişimi kimlik doğrulamasını sağlar.
 
@@ -39,7 +39,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
 * **Geçici silme** ve **Temizleme** özellikleri etkin olan bir Azure Anahtar Kasası
 
-  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/soft-delete-overview.md) ve [müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](../storage/common/customer-managed-keys-configure-key-vault.md). Azure Key Vault yeni başladıysanız, Azure portal kullanarak veya Azure PowerShell komutu, [New-Azkeykasasını](/powershell/module/az.keyvault/new-azkeyvault)kullanarak [bir Anahtar Kasası oluşturmayı](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
+  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/soft-delete-overview.md) ve [müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](../storage/common/customer-managed-keys-configure-key-vault.md). [Azure Key Vault](../key-vault/general/overview.md)yeni başladıysanız, [Azure Portal](../key-vault/general/quick-create-portal.md), [Azure CLI](../key-vault/general/quick-create-cli.md)veya [Azure PowerShell](../key-vault/general/quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturmayı öğrenin.
 
 * Anahtar Kasanızda, bu özellik değerleriyle oluşturulmuş bir anahtar:
 
@@ -47,7 +47,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
   |----------|-------|
   | **Anahtar türü** | RSA |
   | **RSA anahtar boyutu** | 2048 |
-  | **Etkin** | Evet |
+  | **Etkin** | Yes |
   |||
 
   ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturma](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -219,7 +219,7 @@ Bu görev için Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module
 
       !["Anahtar yönetimi" > "anahtar izinleri" ni seçin](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. **Asıl seçin**Için **Seçili hiçbiri**' ni seçin. **Asıl** bölmesi açıldıktan sonra arama kutusunda, Ise 'nizi bulun ve seçin. İşiniz bittiğinde Ekle ' **yi seçin**  >  **Add**.
+   1. **Asıl seçin** Için **Seçili hiçbiri**' ni seçin. **Asıl** bölmesi açıldıktan sonra arama kutusunda, Ise 'nizi bulun ve seçin. İşiniz bittiğinde Ekle ' **yi seçin**  >  **Add**.
 
       ![Asıl öğe olarak kullanılacak ıSE 'yi seçin](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

@@ -8,22 +8,18 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1efd4baf80c9ba30b1d1ea35390386bc4e7659d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 661d4ba575eafa4e261a1c92c1112a259b95eac7
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747782"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683611"
 ---
 # <a name="enable-shared-disk"></a>Paylaşılan diski etkinleştirme
 
 Bu makalede, Azure yönetilen diskler için paylaşılan diskler özelliğinin nasıl etkinleştirileceği ele alınmaktadır. Azure paylaşılan diskler, yönetilen bir diski birden çok sanal makineye (VM) aynı anda iliştirmenizi sağlayan, Azure yönetilen disklere yönelik yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar. 
 
-Paylaşılan diskler etkinleştirilmiş yönetilen diskler hakkında kavramsal bilgiler arıyorsanız, bkz:
-
-* Linux için: [Azure Paylaşılan diskleri](linux/disks-shared.md)
-
-* Windows için: [Azure paylaşılan diskler](windows/disks-shared.md)
+Paylaşılan diskler etkinleştirilmiş yönetilen diskler hakkında kavramsal bilgiler arıyorsanız bkz. [Azure paylaşılan diskler](disks-shared.md).
 
 ## <a name="limitations"></a>Sınırlamalar
 

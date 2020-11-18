@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a9d5988f25b833480c4809ba116c48022566b7a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f4fe368e9a56e5ac4c9dfa2648ce4af15a1b5ac0
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458192"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684466"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Öğretici: Azure AD çoklu oturum açmayı Maverics Identity Orchestrator SAML Bağlayıcısı ile tümleştirme
 
@@ -38,7 +38,7 @@ Bu öğreticide, kimlik doğrulama ve erişim denetimi için Azure AD kullanmak 
 
 Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://www.strata.io)gidin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 - Maverics Identity Orchestrator SAML Bağlayıcısı SSO özellikli aboneliği. Maverics yazılımını edinmek için [Strata satışları](mailto:sales@strata.io)ile görüşün.
@@ -156,14 +156,14 @@ secrets:
 
 Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirsiniz.
 
-**Azure portalını kullanma**
+**Azure portalı kullanma**
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. [Yeni bir Anahtar Kasası oluşturun](../../key-vault/secrets/quick-create-portal.md#create-a-vault).
+1. [Yeni bir Anahtar Kasası oluşturun](../../key-vault/general/quick-create-portal.md).
 1. [Gizli dizileri anahtar kasasına ekleyin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 1. [Bir uygulamayı Azure AD 'ye kaydedin](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal).
 1. [Bir uygulamayı gizli anahtar kullanması Için yetkilendirin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
-**Azure CLI'yi kullanma**
+**Azure CLI kullanma**
 
 1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'yi açın ve aşağıdaki komutu girin:
 
@@ -201,7 +201,7 @@ Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirs
 
 ## <a name="configure-your-application-in-azure-ad-for-saml-based-sso"></a>Azure AD 'de SAML tabanlı SSO için uygulamanızı yapılandırma
 
-1. Azure AD kiracınızda **Kurumsal uygulamalar**' a gidin, **Maverics kimlik Orchestrator SAML bağlayıcısını**arayın ve ardından seçin.
+1. Azure AD kiracınızda **Kurumsal uygulamalar**' a gidin, **Maverics kimlik Orchestrator SAML bağlayıcısını** arayın ve ardından seçin.
 
 1. Uygulamanın yeni geçirilmiş kullanıcılar için çalışmasını sağlamak için, Maverics Identity Orchestrator SAML Bağlayıcısı **Özellikler** bölmesinde, **gereken Kullanıcı atamasını** **Hayır** olarak ayarlayın.
 
@@ -219,7 +219,7 @@ Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirs
 
 1. **Kaydet**’i seçin.
 
-1. **SAML Imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'Sini**kopyalamak için **Kopyala** düğmesini seçin ve bilgisayarınıza kaydedin.
+1. **SAML Imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'Sini** kopyalamak için **Kopyala** düğmesini seçin ve bilgisayarınıza kaydedin.
 
     !["SAML Imzalama sertifikası" kopyalama düğmesinin ekran görüntüsü.](common/copy-metadataurl.png)
 
@@ -418,7 +418,7 @@ Geçiş iş akışını yapılandırmak için aşağıdakileri yapın:
 
 1. Proxy kullanan oturum açma URL 'sine gidin `http://host.company.com/my_app` .
 1. Uygulamada oturum açmak için kullanılan Kullanıcı kimlik bilgilerini, Sitedefteri tarafından korunurken sağlayın.
-4. **Ev**  >  **kullanıcılarına git | **Kullanıcının Azure AD kiracısında oluşturulduğunu doğrulamak için tüm kullanıcılar.  
+4. **Ev**  >  **kullanıcılarına git |** Kullanıcının Azure AD kiracısında oluşturulduğunu doğrulamak için tüm kullanıcılar.  
 
 ### <a name="configure-the-session-abstraction-workflow"></a>Oturum soyutlama iş akışını yapılandırma
 

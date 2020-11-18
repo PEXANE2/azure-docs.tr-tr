@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5b2ec220bbf14a79247ed2c78a0e84f4717fae3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77593759"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684245"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde Linkerd 'yi kurma
 
@@ -35,7 +35,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede açıklanan adımlarda bir AKS kümesi (RBAC etkinleştirilmiş Kubernetes `1.13` ve üzeri) oluşturduğunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılır `kubectl` . Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
+Bu makalede açıklanan adımlarda, Kubernetes RBAC etkin olan bir AKS kümesi (Kubernetes `1.13` ve üzeri) oluşturdunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılır `kubectl` . Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
 
 Tüm Linkerd 'lerin Linux düğümlerinde çalışacak şekilde zamanlanması gerekir. Bu kurulum, aşağıda açıklanan yükleme yönteminde varsayılandır ve ek yapılandırma gerektirmez.
 

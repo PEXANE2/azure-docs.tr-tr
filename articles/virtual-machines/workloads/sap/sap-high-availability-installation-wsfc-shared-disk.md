@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c914afb3a72ccac4753a1942b6c4303850654a2e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963644"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682647"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure 'da SAP ASCS/SCS örneği için Windows Yük devretme kümesine ve paylaşılan diske SAP NetWeaver HA 'yi yüklemeyin
 
@@ -147,9 +147,9 @@ ms.locfileid: "91963644"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Bu makalede, bir SAP ASCS/SCS örneğini Kümelendirmek için bir Windows Server yük devretme kümesi ve Küme Paylaşılan diski kullanılarak Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır. [Mimari kılavuzunda açıklandığı gibi: Küme Paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDE SAP ASCS/SCS örneği kümeleme][sap-high-availability-guide-wsfc-shared-disk]küme paylaşılan *diski*için iki alternatif vardır:
+Bu makalede, bir SAP ASCS/SCS örneğini Kümelendirmek için bir Windows Server yük devretme kümesi ve Küme Paylaşılan diski kullanılarak Azure 'da yüksek kullanılabilirliğe sahip bir SAP sisteminin nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır. [Mimari kılavuzunda açıklandığı gibi: Küme Paylaşılan diski kullanarak bir Windows Yük devretme KÜMESINDE SAP ASCS/SCS örneği kümeleme][sap-high-availability-guide-wsfc-shared-disk]küme paylaşılan *diski* için iki alternatif vardır:
 
-- [Azure paylaşılan diskleri](../../windows/disks-shared.md)
+- [Azure paylaşılan diskleri](../../disks-shared.md)
 - Kümelenmiş paylaşılan diskin benzetimini yapan yansıtılmış depolama alanı oluşturmak için [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster/) kullanma 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -250,7 +250,7 @@ Tüm küme yapılandırmasının Azure Load Balancer ile çalışmasını sağla
 Ancak, yalnızca bir örnek etkin olduğundan, bazı küme yapılandırmalarında bu çalışmaz. Diğer örnek pasif ve iş yükünün hiçbirini kabul edemiyor. Bir araştırma işlevselliği, Azure iç yük dengeleyicinin hangi Örneğin etkin olduğunu algılayarak ve yalnızca etkin örneği hedeflemeye yardımcı olur.  
 
 > [!IMPORTANT]
-> Bu örnek yapılandırmada, **Probeport** 620**NR**olarak ayarlanır. **00** NUMARALı BIR SAP ascs örneği için 620**00**' dır. Yapılandırmayı SAP örnek numaralarınız ve SAP SID 'niz ile eşleşecek şekilde ayarlamanız gerekecektir.
+> Bu örnek yapılandırmada, **Probeport** 620 **NR** olarak ayarlanır. **00** NUMARALı BIR SAP ascs örneği için 620 **00**' dır. Yapılandırmayı SAP örnek numaralarınız ve SAP SID 'niz ile eşleşecek şekilde ayarlamanız gerekecektir.
 
 Bir araştırma bağlantı noktası eklemek için, bu PowerShell modülünü küme VM 'lerinden birinde çalıştırın:
 

@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 28c9716bfb2dd0a6ac380d9ffd6dcd7fd5eb4978
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f7957670b3ba98c640ebc53c6427273ca75a4e6d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649448"
+ms.locfileid: "94682858"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -31,7 +31,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
 >Önizlemeye kaydolmak için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Önkoşulları](tutorial-backup-sap-hana-db.md#prerequisites) ve [ön kayıt betiği](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) , yedekleme için veritabanını ayarlama bölümlerine bakın.
 
@@ -63,7 +63,7 @@ Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izi
 
 1. **Ayarlar** altında **giden güvenlik kuralları** ' nı seçin.
 
-1. **Ekle**'yi seçin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup* olarak ayarlandığından emin olun.
+1. **Ekle**’yi seçin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup* olarak ayarlandığından emin olun.
 
 1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle**  ' yi seçin.
 
@@ -144,7 +144,7 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 1. **İlke adı** alanına yeni ilkenin adını girin.
 
    ![İlke adını girin](./media/backup-azure-sap-hana-database/policy-name.png)
-2. **Tam Yedekleme ilkesi** bölümünde **Yedekleme Sıklığı** için **Günlük** veya **Haftalık** seçeneğini belirleyin.
+1. **Tam Yedekleme ilkesi** bölümünde **Yedekleme Sıklığı** için **Günlük** veya **Haftalık** seçeneğini belirleyin.
    * **Günlük**: yedekleme işinin başladığı saat ve saat dilimini seçin.
        * Tam yedekleme çalıştırmanız gerekir. Bu seçeneği devre dışı bırakabilirsiniz.
        * **Tam Yedekleme**'yi seçerek ilkeyi görüntüleyin.
@@ -153,16 +153,16 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
    ![Yedekleme sıklığını seçin](./media/backup-azure-sap-hana-database/backup-frequency.png)
 
-3. **Bekletme aralığı**' nda, tam yedekleme için bekletme ayarlarını yapılandırın.
+1. **Bekletme aralığı**' nda, tam yedekleme için bekletme ayarlarını yapılandırın.
     * Varsayılan olarak tüm seçenekler seçilidir. Kullanmak istemediğiniz tüm Bekletme aralığı sınırlarını temizleyin ve yaptığınız değişiklikleri ayarlayın.
     * Herhangi bir yedekleme türü için en düşük saklama süresi (tam/fark/günlük) yedi gündür.
     * Kurtarma noktaları, belirtilen bekletme aralığına göre etiketlenir. Örneğin günlük tam yedek seçerseniz her gün yalnızca bir yedekleme işlemi tetiklenir.
     * Belirli bir günün yedeklemesi, haftalık bekletme aralığına ve ayarına göre etiketlenebilir ve korunur.
     * Aylık ve yıllık bekletme aralıkları da benzer şekilde çalışır.
 
-4. **Tam Yedekleme ilkesi** menüsünde **Tamam**'ı seçerek ayarları kabul edin.
-5. Fark ilkesi eklemek için değişiklik **yedeklemesi** ' ni seçin.
-6. **Değişiklik Yedeği ilkesi** sayfasında **Etkinleştir**'i seçerek sıklık ve bekletme denetimlerini açın.
+1. **Tam Yedekleme ilkesi** menüsünde **Tamam**'ı seçerek ayarları kabul edin.
+1. Fark ilkesi eklemek için değişiklik **yedeklemesi** ' ni seçin.
+1. **Değişiklik Yedeği ilkesi** sayfasında **Etkinleştir**'i seçerek sıklık ve bekletme denetimlerini açın.
     * En yüksek sıklıkta her gün bir değişiklik yedeği tetikleyebilirsiniz.
     * Değişiklik yedekleri en fazla 180 gün bekletilebilir. Daha uzun süre bekletmeniz gerekiyorsa tam yedekleme ilkesini kullanmanız gerekir.
 
@@ -170,22 +170,22 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
     > [!NOTE]
     > Artımlı yedeklemeler artık genel önizlemede destekleniyor. Günlük yedekleme olarak bir fark veya artımlı seçebilirsiniz, ancak ikisini birden kullanamazsınız.
-7. **Artımlı yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin.
+1. **Artımlı yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin.
     * En çok, günde bir artımlı yedekleme tetikleyebilirsiniz.
     * Artımlı yedeklemeler en fazla 180 gün boyunca korunabilir. Daha uzun süre bekletmeniz gerekiyorsa tam yedekleme ilkesini kullanmanız gerekir.
 
     ![Artımlı yedekleme ilkesi](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
-7. **Tamam**'ı seçerek ilkeyi kaydedin ve ana **Yedekleme ilkesi** menüsüne dönün.
-8. İşlem günlüğü yedekleme ilkesi eklemek için **günlük yedeklemesi** ' ni seçin,
+1. **Tamam**'ı seçerek ilkeyi kaydedin ve ana **Yedekleme ilkesi** menüsüne dönün.
+1. İşlem günlüğü yedekleme ilkesi eklemek için **günlük yedeklemesi** ' ni seçin,
     * **Günlük yedeklemesi**' nde **Etkinleştir**' i seçin.  Tüm günlük yedeklemelerini SAP HANA yönettiğinden, bu devre dışı bırakılamaz.
     * Sıklık ve bekletme denetimlerini ayarlayın.
 
     > [!NOTE]
     > Günlük yedeklemeleri, yalnızca başarılı bir tam yedekleme tamamlandıktan sonra Flow 'a başlar.
 
-9. **Tamam**'ı seçerek ilkeyi kaydedin ve ana **Yedekleme ilkesi** menüsüne dönün.
-10. Yedekleme ilkesini tanımlamayı tamamladıktan sonra **Tamam**' ı seçin.
+1. **Tamam**'ı seçerek ilkeyi kaydedin ve ana **Yedekleme ilkesi** menüsüne dönün.
+1. Yedekleme ilkesini tanımlamayı tamamladıktan sonra **Tamam**' ı seçin.
 
 > [!NOTE]
 > Her günlük yedeklemesi, bir kurtarma zinciri oluşturmak için önceki tam yedeklemeye zincirlenir. Bu tam yedekleme, son günlük yedeklemenin saklama süresi sona erene kadar bekletilecektir. Bu, tüm günlüklerin kurtarılabilmesini sağlamak için ek bir süre boyunca tam yedeklemenin korunduğu anlamına gelebilir. Bir kullanıcının haftalık tam yedekleme, günlük fark ve 2 saatlik günlük olduğunu varsayalım. Bunların hepsi 30 gün boyunca tutulur. Ancak, haftalık tam yedekleme yalnızca bir sonraki tam yedekleme kullanılabilir olduktan sonra silinebilir/silinir, yani 30 + 7 gün sonra. Örneğin, haftalık tam yedekleme 16 Kasım 'da gerçekleşir. Bekletme ilkesine göre, 16 Aralık 'a kadar saklanması gerekir. Bu tam için en son günlük yedeklemesi, 22nd tarihinde bir sonraki zamanlanmış tam önce gerçekleşir. Bu günlük, 22nd 'e kadar kullanılabilir olana kadar, 16. ve tam 6. Bu nedenle, 16. dolu, 22nd 'e kadar korunur.

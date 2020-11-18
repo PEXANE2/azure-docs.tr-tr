@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d66f3099ba225fbdd2bfc3d54db56ffd8ed2c43f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670942"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684041"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içinde istio ile akıllı yönlendirme ve kanarya sürümlerini kullanma
 
@@ -33,13 +33,13 @@ Bu makalede şunları öğreneceksiniz:
 > [!NOTE]
 > Bu senaryo, Istio sürümüne karşı test edilmiştir `1.3.2` .
 
-Bu makalede açıklanan adımlarda bir AKS kümesi (RBAC etkinleştirilmiş Kubernetes `1.13` ve üzeri) oluşturdunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılır `kubectl` . Ayrıca, kümenizde yüklü olan Ida gerekir.
+Bu makalede açıklanan adımlarda, Kubernetes RBAC etkinleştirilmiş bir AKS kümesi (Kubernetes `1.13` ve üzeri) oluşturdunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılır `kubectl` . Ayrıca, kümenizde yüklü olan Ida gerekir.
 
 Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, aks [hızlı][aks-quickstart] başlangıcı ' na bakın ve [aks kılavuzuna Istio 'yu yükleyebilirsiniz][istio-install] .
 
 ## <a name="about-this-application-scenario"></a>Bu uygulama senaryosu hakkında
 
-Örnek AKS oylama uygulaması, kullanıcılara iki oylama seçeneği ( **kediler** veya **köpekler** ) sağlar. Her seçenek için oy sayısını sürekli olarak sürdüren bir depolama bileşeni vardır. Ayrıca, her bir seçenek için oy saçılması etrafında ayrıntılar sağlayan bir analiz bileşeni de vardır.
+Örnek AKS oylama uygulaması, kullanıcılara iki oylama seçeneği (**kediler** veya **köpekler**) sağlar. Her seçenek için oy sayısını sürekli olarak sürdüren bir depolama bileşeni vardır. Ayrıca, her bir seçenek için oy saçılması etrafında ayrıntılar sağlayan bir analiz bileşeni de vardır.
 
 Bu uygulama senaryosunda, `1.0` bir analiz bileşeninin oylama uygulaması ve sürümü dağıtarak başlatılır `1.0` . Analytics bileşeni, Oy sayısı için basit sayımlar sağlar. Oylama uygulaması ve analiz bileşeni, `1.0` Reddir tarafından desteklenen depolama bileşeni sürümü ile etkileşim kurar.
 

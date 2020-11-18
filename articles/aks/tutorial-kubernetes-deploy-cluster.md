@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 55af44f498492136b2ae03c7e23fce3676aa8e22
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0e034ebede39a3fd9046ced9716323d0c7d874df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747085"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684080"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Hızlı Başlangıç: Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -31,7 +31,7 @@ Bu öğreticide, Azure CLı sürüm 2.0.53 veya üstünü çalıştırıyor olma
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes kümesi oluşturma
 
-AKS kümeleri, Kubernetes rol tabanlı erişim denetimi 'ni (RBAC) kullanabilir. Bu denetimler, kullanıcılara atanmış olan rollere göre kaynaklara erişim vermenizi sağlayabilir. Bir kullanıcıya birden çok rol atanırsa izinler birleştirilir ve izinler tek bir ad alanı veya tüm küme genelinde kapsam olabilir. Bir AKS kümesi oluşturduğunuzda Azure CLI varsayılan ayarlarda RBAC özelliğini otomatik olarak etkinleştirir.
+AKS kümelerinde Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanılabilir. Bu denetimler, kullanıcılara atanmış olan rollere göre kaynaklara erişim vermenizi sağlayabilir. Bir kullanıcıya birden çok rol atanırsa izinler birleştirilir ve izinler tek bir ad alanı veya tüm küme genelinde kapsam olabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda, Azure CLı, Kubernetes RBAC 'yi otomatik olarak sağlar.
 
 [az aks create][] komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myAKSCluster* adlı bir küme oluşturur. Bu kaynak grubu, *eastus* bölgesindeki [önceki öğreticide][aks-tutorial-prepare-acr] oluşturulmuştur. Aşağıdaki örnek, *eastus* bölgesinde aks kümesinin de oluşturulması için bir bölge belirtmiyor. AKS için kaynak sınırları ve bölge kullanılabilirliği hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service 'te (aks) kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği][quotas-skus-regions] .
 

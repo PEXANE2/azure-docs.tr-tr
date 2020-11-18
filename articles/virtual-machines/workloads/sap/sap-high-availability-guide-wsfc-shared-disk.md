@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3dc49e3e2d8492882507918a59edb0b9da41fcf
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f9bfcaa1299f4aacbc11110308ba14093b09f7d5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167262"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684313"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure 'da küme paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma
 
@@ -32,7 +32,7 @@ Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirli�
 
 Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğümler) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki görevlere başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
 * [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
@@ -122,7 +122,7 @@ _Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 
 Azure 'da bir Windows Yük devretme kümesinde paylaşılan disk için iki seçenek vardır:
 
-- Azure [paylaşılan diskler](../../windows/disks-shared.md) -özelliği, aynı anda birden çok VM 'ye Azure yönetilen disk iliştirmeye olanak tanır. 
+- Azure [paylaşılan diskler](../../disks-shared.md) -özelliği, aynı anda birden çok VM 'ye Azure yönetilen disk iliştirmeye olanak tanır. 
 - Küme paylaşılan depolama benzetimi yapan yansıtılmış bir depolama alanı oluşturmak için 3. taraf yazılım [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster) kullanma. 
 
 Paylaşılan disk için teknolojiyi seçerken aşağıdaki noktalara dikkat edin:
@@ -131,7 +131,7 @@ Paylaşılan disk için teknolojiyi seçerken aşağıdaki noktalara dikkat edin
 - Azure yönetilen diskini, bakımını yapmak ve çalıştırmak için ek yazılım gerekmeden aynı anda birden çok VM 'ye eklemenize olanak tanır 
 - Tek bir depolama kümesinde tek bir Azure Paylaşılan diskle birlikte çalışır. Bu, SAP çözümünüzün güvenilirliğini etkiler.
 - Şu anda desteklenen tek dağıtım, kullanılabilirlik kümesindeki Azure Paylaşılan Premium diskdir. Azure Paylaşılan disk, bölgesel dağıtımında desteklenmiyor.     
-- Aynı anda gerekli sayıda VM 'ye iliştirilebilmek için [Premium SSD aralıklarında](../../windows/disks-shared.md#disk-sizes) belirtilen minimum disk boyutuyla Azure Premium disk 'i sağlamayı unutmayın (genellikle sap ascs Windows Yük devretme kümesi için 2). 
+- Aynı anda gerekli sayıda VM 'ye iliştirilebilmek için [Premium SSD aralıklarında](../../disks-shared.md#disk-sizes) belirtilen minimum disk boyutuyla Azure Premium disk 'i sağlamayı unutmayın (genellikle sap ascs Windows Yük devretme kümesi için 2). 
 - Azure Paylaşılan Ultra disk, kullanılabilirlik kümesi veya bölgesel dağıtımında dağıtımı desteklemediğinden SAP iş yükleri için desteklenmez.  
  
 **HARFI**
@@ -142,19 +142,19 @@ Paylaşılan disk için teknolojiyi seçerken aşağıdaki noktalara dikkat edin
 
 ### <a name="shared-disk-using-azure-shared-disk"></a>Azure Paylaşılan disk kullanarak paylaşılan disk
 
-Microsoft, paylaşılan bir disk seçeneği ile SAP Ass/SCS yüksek kullanılabilirliğini uygulamak için kullanılabilen [Azure Paylaşılan diskleri](../../windows/disks-shared.md)sunmaktadır.
+Microsoft, paylaşılan bir disk seçeneği ile SAP Ass/SCS yüksek kullanılabilirliğini uygulamak için kullanılabilen [Azure Paylaşılan diskleri](../../disks-shared.md)sunmaktadır.
 
 #### <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
 
 Şu anda Azure Premium SSD disklerini SAP ASCS/SCS örneği için Azure Paylaşılan diski olarak kullanabilirsiniz. Şu kısıtlamalar Şu anda yerinde:
 
 -  [Azure Ultra disk](../../disks-types.md#ultra-disk) , SAP iş yükleri Için Azure Paylaşılan diski olarak desteklenmez. Şu anda Azure sanal makinelerini, kullanılabilirlik kümesi 'nde Azure Ultra disk kullanarak yerleştirmek mümkün değildir
--  Premium SSD disklere sahip [Azure Paylaşılan disk](../../windows/disks-shared.md) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
+-  Premium SSD disklere sahip [Azure Paylaşılan disk](../../disks-shared.md) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
 -  Azure Paylaşılan disk değeri [MAXSHARES](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) , kaç küme düğümünün paylaşılan diski kullanabileceğinizi belirler. Genellikle SAP ASCS/SCS örneği için Windows Yük devretme kümesinde iki düğüm yapılandıracaksınız, bu nedenle değerinin `maxShares` iki olarak ayarlanması gerekir.
 -  Tüm SAP yoks/SCS kümesi VM 'lerinin aynı [Azure yakınlık yerleşimi grubuna](../../windows/proximity-placement-groups.md)dağıtılması gerekir.   
    PPG olmadan Azure Paylaşılan disk ile kullanılabilirlik kümesi 'nde Windows kümesi VM 'Leri dağıtabilirsiniz, ancak sanal makineler ve depolama katmanı arasında daha düşük gecikme süresi elde etmek için PPG, Azure Paylaşılan disklerinin ve küme VM 'lerinin fiziksel yakınlığını kapatacaktır.    
 
-Azure Paylaşılan diskine ilişkin sınırlamalar hakkında daha fazla ayrıntı için lütfen Azure Paylaşılan disk belgelerinin [kısıtlama](../../linux/disks-shared.md#limitations) bölümünü dikkatle inceleyin.
+Azure Paylaşılan diskine ilişkin sınırlamalar hakkında daha fazla ayrıntı için lütfen Azure Paylaşılan disk belgelerinin [kısıtlama](../../disks-shared.md#limitations) bölümünü dikkatle inceleyin.
 
 > [!IMPORTANT]
 > SAP ASCS/SCS Windows Yük devretme kümesini Azure Paylaşılan disk ile dağıttığınızda, dağıtımınızın tek bir depolama kümesinde tek bir paylaşılan diskle birlikte çalışır durumda olacağını unutmayın. Azure Paylaşılan diskinin dağıtıldığı depolama kümesiyle ilgili sorunlar durumunda SAP ASCS/SCS örneğiniz etkilenebilir.    
@@ -166,7 +166,7 @@ Azure Paylaşılan diskine ilişkin sınırlamalar hakkında daha fazla ayrınt�
 
 Hem Windows Server 2016 hem de 2019 desteklenir (en son veri merkezi görüntülerini kullanın).
 
-**Windows Server 2019 Datacenter**kullanmanızı kesinlikle öneririz; örneğin:
+**Windows Server 2019 Datacenter** kullanmanızı kesinlikle öneririz; örneğin:
 - Windows 2019 yük devretme kümesi hizmeti Azure ile uyumlu
 - Azure Schedule olaylarını izleyerek Azure ana bilgisayar bakımı ve geliştirilmiş deneyimle ilgili tümleştirme ve tanıma özellikleri eklendi.
 - Dağıtılmış ağ adı (varsayılan seçenektir) kullanılabilir. Bu nedenle, küme ağ adı için ayrılmış bir IP adresine sahip olmanız gerekmez. Ayrıca, Azure Iç Load Balancer bu IP adresini yapılandırmaya gerek yoktur. 

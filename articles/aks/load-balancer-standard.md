@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: b42a952b096f533f916879a11fdb6b6583fa8592
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660364"
+ms.locfileid: "94684211"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde ortak Standart Load Balancer kullanma
 
@@ -225,7 +225,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı noktası ve 7 IP, *düğüm başına 4000 bağlantı noktasına sahip olur * 100 düğümleri = 400k toplam bağlantı noktası < = 448k toplam bağlantı noktası = 7 IP * IP başına 64K bağlantı* noktası. Bu, 100 düğüme güvenle ölçeklenebilme ve varsayılan bir yükseltme işlemi yapmanıza olanak sağlar. Yükseltme ve diğer işlemler için gereken ek düğümler için yeterli bağlantı noktası ayrılması kritik öneme sahiptir. AKS, yükseltme için bir arabellek düğümüne varsayılan olarak, bu örnekte belirli bir zamanda 4000 boş bağlantı noktası gerekir. [Maxdalgalanma değerleri](upgrade-cluster.md#customize-node-surge-upgrade-preview)kullanılıyorsa, düğüm başına giden bağlantı noktalarını maxdalgalanma değerinizdeki değerle çarpın.
+Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı noktası ve 7 IP, *düğüm başına 4000 bağlantı noktasına sahip olur * 100 düğümleri = 400k toplam bağlantı noktası < = 448k toplam bağlantı noktası = 7 IP * IP başına 64K bağlantı* noktası. Bu, 100 düğüme güvenle ölçeklenebilme ve varsayılan bir yükseltme işlemi yapmanıza olanak sağlar. Yükseltme ve diğer işlemler için gereken ek düğümler için yeterli bağlantı noktası ayrılması kritik öneme sahiptir. AKS, yükseltme için bir arabellek düğümüne varsayılan olarak, bu örnekte belirli bir zamanda 4000 boş bağlantı noktası gerekir. [Maxdalgalanma değerleri](upgrade-cluster.md#customize-node-surge-upgrade)kullanılıyorsa, düğüm başına giden bağlantı noktalarını maxdalgalanma değerinizdeki değerle çarpın.
 
 100 düğümüne güvenle gitmek için daha fazla IP eklemeniz gerekir.
 
@@ -233,7 +233,7 @@ Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı 
 > [!IMPORTANT]
 > Bağlantı veya ölçeklendirme sorunlarından kaçınmak için, [gerekli kotayı hesaplamanız ve][requirements] *allocatedOutboundPorts* özelleştirmeden önce gereksinimleri denetlemeniz gerekir.
 
-Ayrıca **`load-balancer-outbound-ports`** , bir küme oluştururken parametreleri de kullanabilirsiniz, ancak aynı zamanda, veya ' ı da belirtmeniz gerekir **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** **`load-balancer-outbound-ip-prefixes`** .  Örneğin:
+Ayrıca **`load-balancer-outbound-ports`** , bir küme oluştururken parametreleri de kullanabilirsiniz, ancak aynı zamanda, veya ' ı da belirtmeniz gerekir **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** **`load-balancer-outbound-ip-prefixes`** .  Örnek:
 
 ```azurecli-interactive
 az aks create \

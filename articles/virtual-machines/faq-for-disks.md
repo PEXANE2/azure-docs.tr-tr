@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973713"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684517"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ile yönetilen ve yönetilmeyen premium diskler hakkında sık sorulan sorular
 
@@ -171,7 +171,7 @@ Hayır, yalnızca Ultra diskler ve Premium SSD tarafından yönetilen diskler i�
 
 **Hangi bölgeler Paylaşılan diskleri destekler?**
 
-Bölgesel bilgiler için bkz. [kavramsal makalemiz](./linux/disks-shared.md).
+Bölgesel bilgiler için bkz. [kavramsal makalemiz](disks-shared.md).
 
 **Paylaşılan diskler, işletim sistemi diski olarak kullanılabilir mi?**
 
@@ -179,7 +179,7 @@ Hayır, paylaşılan diskler yalnızca veri diskleri için desteklenir.
 
 **Hangi disk boyutları Paylaşılan diskleri destekliyor?**
 
-Desteklenen boyutlar için bkz. [kavramsal makalemiz](./linux/disks-shared.md).
+Desteklenen boyutlar için bkz. [kavramsal makalemiz](disks-shared.md).
 
 **Var olan bir diskim varsa, üzerinde paylaşılan diskler etkinleştirebilirim miyim?**
 
@@ -210,7 +210,7 @@ Disk aktarım hızını hangi şekilde ayarlayacağınızdan emin değilseniz, 1
 Disk azaltma 'ya ek olarak, VM düzeyinde uygulanan bir GÇ azaltması vardır. Kullandığınız VM boyutunun disklerinizde yapılandırılan düzeyleri destekleyebileceğini doğrulayın. VM 'niz tarafından uygulanan GÇ limitleriyle ilgili ayrıntılar için bkz. [Azure 'da sanal makineler Için boyutlar](sizes.md).
 
 **Bir ultra disk ile önbelleğe alma düzeylerini kullanabilir miyim?**
-Hayır, Ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe almayı **hiçbiri**olarak ayarlayın.
+Hayır, Ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe almayı **hiçbiri** olarak ayarlayın.
 
 **Var olan sanal makinenize bir ultra disk ekleyebilir miyim?**
 Belki de sanal makinenizin Ultra diskleri destekleyen bir bölge ve kullanılabilirlik alanı çifti olması gerekir. Ayrıntılar için bkz. [Ultra disklerle çalışmaya](disks-enable-ultra-ssd.md) başlama.

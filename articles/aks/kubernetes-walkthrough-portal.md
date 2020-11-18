@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: 30c00b1dfda3e30f047faf0deed7151aaf8c3fae
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 606de7c07f2760ca678563ccf1900fc1bb915c1a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684891"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -31,31 +31,31 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur** ’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
 2. **Kapsayıcılar** >  **Kubernetes Hizmeti** seçeneklerini belirleyin.
 
 3. **Temel Bilgiler** sayfasında aşağıdaki seçenekleri yapılandırın:
-    - **Proje ayrıntıları** : bir Azure **aboneliği** seçin, sonra *Myresourcegroup* gibi bir Azure **kaynak grubu** seçin veya oluşturun.
-    - **Küme ayrıntıları** : *Myakscluster* gibi bir **Kubernetes küme adı** girin. AKS kümesi için bir **bölge** ve **Kubernetes sürümü** seçin.
-    - **Birincil düğüm havuzu** : aks düğümleri IÇIN bir VM **düğüm boyutu** seçin. Bir AKS kümesi dağıtıldıktan sonra *VM boyutu değiştirilemez* .
-            -Kümeye dağıtılacak düğüm sayısını seçin. Bu hızlı başlangıç **Düğüm sayısı** değerini *1* olarak belirleyin. Küme dağıtıldıktan sonra düğüm sayısı *ayarlanabilir* .
+    - **Proje ayrıntıları**: bir Azure **aboneliği** seçin, sonra *Myresourcegroup* gibi bir Azure **kaynak grubu** seçin veya oluşturun.
+    - **Küme ayrıntıları**: *Myakscluster* gibi bir **Kubernetes küme adı** girin. AKS kümesi için bir **bölge** ve **Kubernetes sürümü** seçin.
+    - **Birincil düğüm havuzu**: aks düğümleri IÇIN bir VM **düğüm boyutu** seçin. Bir AKS kümesi dağıtıldıktan sonra *VM boyutu değiştirilemez* .
+            -Kümeye dağıtılacak düğüm sayısını seçin. Bu hızlı başlangıç **Düğüm sayısı** değerini *1* olarak belirleyin. Küme dağıtıldıktan sonra düğüm sayısı *ayarlanabilir*.
     
     ![AKS kümesi oluşturma - temel bilgileri sağlama](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
     **İleri ' yi seçin: tamamlandığında düğüm havuzları** .
 
-4. **Düğüm havuzları** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama** ' ya tıklayın.
+4. **Düğüm havuzları** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
     > [!CAUTION]
     > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu alana ulaşırsanız, azaltma için lütfen [buraya](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) gidin.
 
 5. **Kimlik Doğrulaması** sayfasında aşağıdaki seçenekleri yapılandırın:
-    - **Hizmet Sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu** olarak bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir hizmet sorumlusunu kullanmak için *Hizmet sorumlusu yapılandır* ’ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
-    - Kubernetes rol tabanlı erişim denetimi (RBAC) için seçeneği etkinleştirin. Böylece, AKS kümenizde görüntülenen Kubernetes kaynaklarına erişim konusunda daha ayrıntılı denetim sunulur.
+    - **Hizmet Sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu** olarak bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir hizmet sorumlusunu kullanmak için *Hizmet sorumlusu yapılandır*’ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
+    - Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) için seçeneği etkinleştirin. Böylece, AKS kümenizde görüntülenen Kubernetes kaynaklarına erişim konusunda daha ayrıntılı denetim sunulur.
 
     Alternatif olarak, bir hizmet sorumlusu yerine yönetilen bir kimlik de kullanabilirsiniz. Daha fazla bilgi için bkz. [Yönetilen kimlikler kullanma](use-managed-identity.md) .
 
-Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. Doğrulama tamamlandığında **İncele ve oluştur** ’a ve sonra **Oluştur** ’a tıklayın.
+Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. Doğrulama tamamlandığında **İncele ve oluştur**’a ve sonra **Oluştur**’a tıklayın.
 
 AKS kümesinin oluşturulması birkaç dakika sürer. Dağıtımınız tamamlandığında **Kaynağa Git ' e** tıklayın veya *MYRESOURCEGROUP* gibi aks kümesi kaynak grubuna gidin ve *myakscluster* gibi aks kaynağını seçin. AKS kümesi panosu, aşağıdaki örnekte olduğu gibi gösterilir:
 
@@ -231,7 +231,7 @@ Kümeyi oluşturduğunuzda, kapsayıcılar için Azure Izleyici etkinleştirilmi
 Azure portalında bu verilerin doldurulması birkaç dakika sürebilir. Azure Vote pod'larının geçerli durumunu, çalışma süresini ve kaynak kullanımını görmek için Azure portalda *myAKSCluster* gibi bir AKS kaynağına geri gidin. Sistem durumuna aşağıdaki şekilde erişebilirsiniz:
 
 1. Sol taraftaki **izleme** altında **Öngörüler** ' i seçin.
-1. Üst taraftan **+ Filtre Ekle** 'yi seçin
+1. Üst taraftan **+ Filtre Ekle**'yi seçin
 1. Özellik olarak *ad alanı* ' nı seçin ve ardından şunu seçin *\<All but kube-system\>*
 1. **Kapsayıcılar** bölümünü görüntüleyin.
 

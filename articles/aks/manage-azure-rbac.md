@@ -1,5 +1,5 @@
 ---
-title: Azure 'da Kubernetes 'te RBAC 'yi yönetme
+title: Azure 'da Kubernetes 'te Azure RBAC 'yi yönetme
 titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes hizmeti (AKS) ile Kubernetes yetkilendirmesi için Azure RBAC kullanmayı öğrenin.
 services: container-service
@@ -7,27 +7,27 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346052"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684228"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
 Bugün, [Azure Active Directory (Azure AD) ve AKS arasında tümleşik kimlik doğrulamasından](managed-aad.md)zaten yararlanabilirsiniz. Bu tümleştirme etkinleştirildiğinde, müşterilerin Azure AD kullanıcılarını, gruplarını veya hizmet sorumlularını Kubernetes RBAC 'de konu olarak kullanmasına izin verir. daha fazla bilgi için [buraya](azure-ad-rbac.md)bakın.
-Bu özellik, Kubernetes için Kullanıcı kimliklerini ve kimlik bilgilerini ayrı ayrı yönetme zorunluluğundan kurtarır. Ancak, hala Azure RBAC ve Kubernetes RBAC 'i ayrı olarak ayarlayıp yönetmeniz gerekir. AKS üzerinde kimlik doğrulama, yetkilendirme ve RBAC hakkında daha fazla bilgi için [buraya](concepts-identity.md)bakın.
+Bu özellik, Kubernetes için Kullanıcı kimliklerini ve kimlik bilgilerini ayrı ayrı yönetme zorunluluğundan kurtarır. Ancak, hala Azure RBAC ve Kubernetes RBAC 'i ayrı olarak ayarlayıp yönetmeniz gerekir. AKS üzerinde RBAC ile kimlik doğrulama ve yetkilendirme hakkında daha fazla bilgi için [buraya](concepts-identity.md)bakın.
 
 Bu belge, Azure kaynakları, AKS ve Kubernetes kaynakları genelinde Birleşik yönetim ve erişim denetimine izin veren yeni bir yaklaşım içerir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure 'dan Kubernetes kaynakları için RBAC 'yi yönetme özelliği, Azure veya yerel Kubernetes mekanizmalarını kullanarak küme kaynakları için RBAC yönetme seçeneği sunar. Etkinleştirildiğinde, Azure AD sorumluları, normal Kubernetes kullanıcıları ve hizmet hesapları, Kubernetes RBAC tarafından özel olarak doğrulanırken Azure RBAC tarafından özel olarak doğrulanacak. AKS üzerinde kimlik doğrulama, yetkilendirme ve RBAC hakkında daha fazla bilgi için [buraya](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)bakın.
+Azure 'dan Kubernetes kaynakları için RBAC 'yi yönetme özelliği, Azure veya yerel Kubernetes mekanizmalarını kullanarak küme kaynakları için RBAC yönetme seçeneği sunar. Etkinleştirildiğinde, Azure AD sorumluları, normal Kubernetes kullanıcıları ve hizmet hesapları, Kubernetes RBAC tarafından özel olarak doğrulanırken Azure RBAC tarafından özel olarak doğrulanacak. AKS üzerinde RBAC ile kimlik doğrulama ve yetkilendirme hakkında daha fazla bilgi için [buraya](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)bakın.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Önkoşullar 
+### <a name="prerequisites"></a>Ön koşullar 
 - Azure CLı sürüm 2.9.0 veya sonraki bir sürüme sahip olduğunuzdan emin olun
 - `EnableAzureRBACPreview`Özellik bayrağının etkinleştirildiğinden emin olun.
 - `aks-preview` [CLI uzantısının][az-extension-add] v 0.4.55 veya üzeri yüklü olduğundan emin olun
@@ -272,7 +272,7 @@ az group delete -n MyResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- AKS kimlik doğrulaması, yetkilendirme [ve RBAC hakkında](concepts-identity.md)daha fazla bilgi edinin.
+- AKS kimlik doğrulaması, yetkilendirme, Kubernetes RBAC ve Azure RBAC hakkında daha fazla bilgi [edinin.](concepts-identity.md)
 - Azure [RBAC hakkında](../role-based-access-control/overview.md)daha fazla bilgi edinin.
 - [Burada](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)Kubernetes yetkilendirmesi Için özel Azure rolleri tanımlamak üzere kullanabileceğiniz tüm eylemler hakkında daha fazla bilgi edinin.
 

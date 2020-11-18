@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816244"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683514"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
@@ -186,13 +186,13 @@ Daha fazla bilgi için bkz. küme sürümünüz için kendi kendine sağlamayı 
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Ana uygulamalar/Infra/uygulama düğümleri için hangi UNIX hakları (IaaS 'de) kullanılabilir?
 
-4. x kümelerinde, düğüm erişimi, küme yönetici rolü aracılığıyla kullanılabilir. Daha fazla bilgi için bkz. [RBAC 'ye genel bakış](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x kümelerinde, düğüm erişimi, küme yönetici rolü aracılığıyla kullanılabilir. Daha fazla bilgi için bkz. [Kubernetes RBAC 'e genel bakış](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
 3,11 kümelerinde, düğüm erişimi yasaktır.
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Hangi OCP haklarına sahip olduğumuz? Küme Yöneticisi? Proje-yönetici?
 
-4. x kümelerinde, küme yönetici rolü kullanılabilir. Daha fazla bilgi için bkz. [RBAC 'ye genel bakış](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x kümelerinde, küme yönetici rolü kullanılabilir. Daha fazla bilgi için bkz. [Kubernetes RBAC 'e genel bakış](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
 3,11 kümelerinde daha fazla ayrıntı için bkz. [küme yönetimine genel bakış](https://docs.openshift.com/aro/admin_guide/index.html) .
 

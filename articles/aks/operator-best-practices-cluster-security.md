@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de küme güvenliğini ve yükselt
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 9cb51cb0f5b902553bda0b881c8392d74905c4bc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 9ef019e682511e13af46194d26aec48c1555f70e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073640"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683310"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde küme güvenliği ve yükseltmeleri için en iyi uygulamalar
 
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) içindeki kümeleri yönetirken, iş yüklerinizi
 Bu makalede AKS kümenizin güvenliğini sağlama konusuna odaklanılmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * API sunucusu erişimini güvenli hale getirmek için Azure Active Directory ve rol tabanlı erişim denetimi (RBAC) kullanın
+> * API sunucusu erişimini güvenli hale getirmek için Azure Active Directory ve Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanın
 > * Düğüm kaynaklarına güvenli kapsayıcı erişimi
 > * AKS kümesini en son Kubernetes sürümüne yükseltme
 > * Düğümleri güncel tut ve güvenlik düzeltme eklerini otomatik olarak Uygula
@@ -30,7 +30,7 @@ Tehditleri algılamaya ve AKS kümelerinizi korumaya yönelik önerileri görün
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API sunucusuna ve küme düğümlerine güvenli erişim
 
-**En iyi Yöntem Kılavuzu** -Kubernetes API-Server erişimin güvenliğini sağlamak, kümenizin güvenliğini sağlamak için yapabileceğiniz en önemli işlemlerden biridir. API sunucusuna erişimi denetlemek için Kubernetes rol tabanlı erişim denetimini (RBAC) Azure Active Directory ile tümleştirin. Bu denetimler, Azure aboneliklerinize erişiminizi güvenli hale getirmenin aynı şekilde güvenliğini sağlamanıza olanak tanır.
+**En iyi Yöntem Kılavuzu** -Kubernetes API-Server erişimin güvenliğini sağlamak, kümenizin güvenliğini sağlamak için yapabileceğiniz en önemli işlemlerden biridir. API sunucusuna erişimi denetlemek için Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) Azure Active Directory ile tümleştirin. Bu denetimler, Azure aboneliklerinize erişiminizi güvenli hale getirmenin aynı şekilde güvenliğini sağlamanıza olanak tanır.
 
 Kubernetes API sunucusu, bir küme içinde eylemleri gerçekleştirmek için istekler için tek bir bağlantı noktası sağlar. API sunucusuna erişimi güvenli hale getirmek ve denetlemek için erişimi sınırlayın ve gereken en az ayrıcalıklı erişim izinlerini sağlayın. Bu yaklaşım Kubernetes için benzersiz değildir, ancak AKS kümesi çok kiracılı kullanım için mantıksal olarak yalıtılmışsa özellikle önemlidir.
 
@@ -38,11 +38,11 @@ Azure Active Directory (AD), AKS kümeleriyle tümleştirilen kurumsal özellikl
 
 ![AKS kümeleri için Azure Active Directory tümleştirme](media/operator-best-practices-cluster-security/aad-integration.png)
 
-API sunucusunu güvenli hale getirmek ve tek bir ad alanı gibi kapsamlı bir kaynak kümesine gereken en az sayıda izin sağlamak için Kubernetes RBAC ve Azure AD-Integration kullanın. Azure AD 'deki farklı kullanıcılara veya gruplara farklı RBAC rolleri verilebilir. Bu ayrıntılı izinler, API sunucusuna erişimi kısıtlamanıza ve gerçekleştirilen eylemlerin net bir denetim izini sağlamanıza olanak tanır.
+API sunucusunu güvenli hale getirmek ve tek bir ad alanı gibi kapsamlı bir kaynak kümesine gereken en az sayıda izin sağlamak için Kubernetes RBAC ve Azure AD-Integration kullanın. Azure AD 'deki farklı kullanıcılara veya gruplara farklı Kubernetes rolleri verilebilir. Bu ayrıntılı izinler, API sunucusuna erişimi kısıtlamanıza ve gerçekleştirilen eylemlerin net bir denetim izini sağlamanıza olanak tanır.
 
-Önerilen en iyi yöntem, dosyalara ve klasörlere tek tek kimlikler için erişim sağlamak üzere grupları kullanmak, kullanıcıları bireysel *Kullanıcılar*yerine RBAC rollerine bağlamak IÇIN Azure AD *Grup* üyeliği kullanmaktır. Bir kullanıcının grup üyeliği değiştikçe, AKS kümesindeki erişim izinleri buna göre değişir. Kullanıcıyı doğrudan bir role bağlarsanız, iş işlevi değişebilir. Azure AD grup üyelikleri güncelleştirebilir, ancak AKS kümesindeki izinler bunu yansıtmaz. Bu senaryoda, kullanıcıya bir kullanıcının gerektirdiğinden daha fazla izin verilmeye sona eriyor.
+Önerilen en iyi yöntem, dosyalara ve klasörlere bireysel kimliklere karşı erişim sağlamak için grupları kullanmak, kullanıcıları ayrı *Kullanıcılar* yerine Kubernetes rollerine bağlamak IÇIN Azure AD *Grup* üyeliklerini kullanmaktır. Bir kullanıcının grup üyeliği değiştikçe, AKS kümesindeki erişim izinleri buna göre değişir. Kullanıcıyı doğrudan bir role bağlarsanız, iş işlevi değişebilir. Azure AD grup üyelikleri güncelleştirebilir, ancak AKS kümesindeki izinler bunu yansıtmaz. Bu senaryoda, kullanıcıya bir kullanıcının gerektirdiğinden daha fazla izin verilmeye sona eriyor.
 
-Azure AD tümleştirmesi ve RBAC hakkında daha fazla bilgi için bkz. [AKS 'de kimlik doğrulama ve yetkilendirme Için en iyi uygulamalar][aks-best-practices-identity].
+Azure AD tümleştirmesi, Kubernetes RBAC ve Azure RBAC hakkında daha fazla bilgi için bkz. [AKS 'de kimlik doğrulama ve yetkilendirme Için en iyi uygulamalar][aks-best-practices-identity].
 
 ## <a name="secure-container-access-to-resources"></a>Kaynaklara güvenli kapsayıcı erişimi
 
@@ -50,10 +50,10 @@ Kapsayıcının gerçekleştirebileceği eylemlere erişimi **en iyi yöntem kı
 
 Kullanıcılara veya gruplara gereken en az ayrıcalık sayısını vermeniz gerektiği gibi, kapsayıcılar de yalnızca ihtiyaç duydukları eylemlerle ve işlemlerle sınırlandırılmalıdır. Saldırı riskini en aza indirmek için, ilerletilen ayrıcalıklar veya kök erişim gerektiren uygulamaları ve kapsayıcıları yapılandırmayın. Örneğin, `allowPrivilegeEscalation: false` Pod bildiriminde ayarlayın. Bu *Pod güvenlik bağlamları* , Kubernetes 'te yerleşiktir ve çalıştırılacak Kullanıcı veya grup gibi ek izinler tanımlamanızı veya kullanıma sunulacak Linux özelliklerini tanımlamanızı sağlar. Daha iyi uygulamalar için bkz. [kaynaklara güvenli Pod erişimi][pod-security-contexts].
 
-Kapsayıcı eylemlerinin daha ayrıntılı denetimi için *AppArmor* ve *Seccomp*gibi yerleşik Linux güvenlik özelliklerini de kullanabilirsiniz. Bu özellikler düğüm düzeyinde tanımlanmıştır ve sonra Pod bildirimi aracılığıyla uygulanır. Yerleşik Linux güvenlik özellikleri yalnızca Linux düğümlerinde ve yığınların üzerinde kullanılabilir.
+Kapsayıcı eylemlerinin daha ayrıntılı denetimi için *AppArmor* ve *Seccomp* gibi yerleşik Linux güvenlik özelliklerini de kullanabilirsiniz. Bu özellikler düğüm düzeyinde tanımlanmıştır ve sonra Pod bildirimi aracılığıyla uygulanır. Yerleşik Linux güvenlik özellikleri yalnızca Linux düğümlerinde ve yığınların üzerinde kullanılabilir.
 
 > [!NOTE]
-> Kubernetes ortamları, AKS veya başka bir yerde, çok kiracılı Kullanıcı kullanımı için tamamen güvenli değildir. Düğümler için *AppArmor*, *seccomp*, *Pod güvenlik ilkeleri*veya daha AYRıNTıLı rol tabanlı erişim denetimi (RBAC) gibi ek güvenlik özellikleri, güvenli hale getirme daha zordur. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir.
+> Kubernetes ortamları, AKS veya başka bir yerde, çok kiracılı Kullanıcı kullanımı için tamamen güvenli değildir. Düğümler için *AppArmor*, *seccomp*, *Pod güvenlik ilkeleri* veya daha hassas, rol tabanlı erişim denetimi (Kubernetes RBAC) gibi ek güvenlik özellikleri, güvenli hale getirme daha zordur. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir.
 
 ### <a name="app-armor"></a>Uygulama koruma sağlamak
 

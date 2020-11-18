@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b75c85b85674def84d9fcee62549a6458abf9174
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629004"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684857"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Giden bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -63,7 +63,7 @@ Ortak Standart Load Balancer kullanırken, [giden bağlantılar için birden ço
 Bir sonraki daha büyük arka uç havuzu boyut katmanına ölçeklendirirseniz, ayrılan bağlantı noktalarının yeniden ayrılması durumunda giden bağlantılarınızın bazılarının zaman aşımına uğrar.  Yalnızca SNAT bağlantı noktalarından bazılarını kullanıyorsanız, sonraki daha büyük arka uç havuzu boyutunun ölçeğini ölçeklendirilmeye hazır değildir.  Sonraki arka uç havuz katmanına her geçtiğinizde, mevcut bağlantı noktalarının yarısı yeniden tahsis edilir.  Bunun gerçekleşmesini istemiyorsanız, dağıtımınızı katman boyutuna şekillendirmeniz gerekir.  Ya da uygulamanızın gerektiği şekilde algılayıp yeniden denenebildiğini doğrulayın.  TCP keepcanlı tutma, SNAT bağlantı noktalarının yeniden ayrılması nedeniyle artık işlev olmadığını algılamaya yardımcı olabilir.
 
 ## <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a><a name="idletimeout"></a>Giden boşta kalma zaman aşımını sıfırlamak için keepcanlı tutmayı kullanın
-Giden bağlantılarda 4 dakikalık bir boşta kalma zaman aşımı vardır. Bu zaman aşımı, [giden kuralları](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)aracılığıyla ayarlanabilir. Ayrıca, boş bir akışı yenilemek ve gerekirse bu boşta kalma zaman aşımını sıfırlamak için taşıma (örneğin, TCP keepcanlı tutma) veya uygulama katmanı keepcanlı tutma özelliğini de kullanabilirsiniz.  
+Giden bağlantılarda 4 dakikalık bir boşta kalma zaman aşımı vardır. Bu zaman aşımı, [giden kuralları](outbound-rules.md)aracılığıyla ayarlanabilir. Ayrıca, boş bir akışı yenilemek ve gerekirse bu boşta kalma zaman aşımını sıfırlamak için taşıma (örneğin, TCP keepcanlı tutma) veya uygulama katmanı keepcanlı tutma özelliğini de kullanabilirsiniz.  
 
 TCP keepcanlı hale geldiğinde, bağlantının tek tarafında etkinleştirilmesi yeterlidir. Örneğin, bunları sunucu tarafında etkinleştirmek yeterlidir ve akışın boşta kalma zamanlayıcısını sıfırlayın ve her iki taraf da her iki tarafın da TCP keepcanlı hale getirilir olması gerekmez.  Veritabanı istemci-sunucu yapılandırmalarına dahil olmak üzere uygulama katmanı için benzer kavramlar vardır.  Uygulamaya özgü keepcanlı olarak hangi seçeneklerin mevcut olduğunu kontrol etmek için sunucu tarafını denetleyin.
 

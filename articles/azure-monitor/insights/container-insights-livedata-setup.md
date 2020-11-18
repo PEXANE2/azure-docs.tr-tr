@@ -4,12 +4,12 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullan
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4966ab0d64745c36ee53f27ba4063714f18e35da
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6fdd2d0a97357a2126ff37c0840b1f7da2859da5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648115"
+ms.locfileid: "94682681"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
@@ -136,7 +136,7 @@ Canlı veriler (Önizleme) özelliğine erişebilmek için her Azure AD hesabın
 >[!IMPORTANT]
 >RBAC bağlamasını verdiğiniz kullanıcı aynı Azure AD kiracısında ise, userPrincipalName öğesine göre izinler atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve objectID özelliğini kullanın.
 
-AKS küme **Kümerolü bağlamalarınızı** yapılandırma hakkında daha fazla yardım için bkz. [RBAC bağlaması oluşturma](../../aks/azure-ad-integration-cli.md#create-rbac-binding).
+AKS küme **Kümerolü bağlamalarınızı** yapılandırma hakkında daha fazla yardım için bkz. [Kubernetes RBAC bağlaması oluşturma](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

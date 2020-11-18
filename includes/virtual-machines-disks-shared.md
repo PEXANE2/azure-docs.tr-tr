@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6f819d9b6ba4d74612da304aafea0118f9094bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91451405"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684441"
 ---
 Azure paylaşılan diskler, yönetilen bir diski birden çok sanal makineye (VM) aynı anda iliştirmeye olanak sağlayan, Azure tarafından yönetilen disklere yönelik yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
 
@@ -54,9 +54,9 @@ WSFC üzerinde çalışan bazı popüler uygulamalar şunlardır:
 ### <a name="linux"></a>Linux
 
 Azure paylaşılan diskler şu disklerde desteklenir:
-- [SAP ve SUSE SLE HA 15 SP1 ve üzeri için SUSE SLE](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [SAP ve SUSE SLE HA 15 SP1 ve üzeri için SUSE SLE](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18,04 ve üzeri](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
-- [Herhangi bir RHEL 8 sürümünde RHEL Geliştirici Önizlemesi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
+- [Herhangi bir RHEL 8 sürümünde RHEL Geliştirici Önizlemesi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
 Linux kümeleri [pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)gibi küme yöneticileriyle yararlanabilir. Pacemaker, yüksek oranda kullanılabilir ortamlarda dağıtılan uygulamalar için küme iletişimini etkinleştirerek [Corosync](http://corosync.github.io/corosync/)üzerinde yapılar. Bazı yaygın kümelenmiş dosya sistemleri, [ocfs2](https://oss.oracle.com/projects/ocfs2/) ve [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)' i içerir. Diske erişim sağlamak için SCSI kalıcı ayırma (SCSI PR) ve/veya STONITH blok cihaz (SBD) tabanlı kümeleme modellerini kullanabilirsiniz. SCSI PR kullanırken, [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) ve [sg_persist](https://linux.die.net/man/8/sg_persist)gibi yardımcı programları kullanarak ayırmaları ve kayıtları yönetebilirsiniz.
@@ -131,19 +131,19 @@ Aşağıdaki örneklerde, kısıtlama 'nin paylaşılan Ultra disklerle özel ol
 
 Aşağıda, kümelenmiş paylaşılan birimleri kullanarak 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, her iki VM için aynı anda diske yazma erişimi vardır ve bu, `ReadWrite` Iki VM 'de bölme ve kısıtlama kullanılmakta olan azalmaya neden olur `ReadOnly` .
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Ayırma tutucusu, kayıtlı ve diğerleri için ' ReadOnly ' veya ' oku/yaz ' erişimini gösteren bir tablo görüntüsü.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV iki düğümlü Ultra örnek":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Küme paylaşma birimleri olmayan iki düğümlü küme
 
 Aşağıda, kümelenmiş paylaşılan birimleri kullanmayan 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bu, `ReadWrite` yalnızca BIRINCIL VM için kullanılan kısıtlama ve `ReadOnly` yalnızca ikincil tarafından kullanılan kısıtlama ile sonuçlanır.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Ayırma tutucusu, kayıtlı ve diğerleri için ' ReadOnly ' veya ' oku/yaz ' erişimini gösteren bir tablo görüntüsü.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV iki düğüm hiçbir CSV Ultra disk örneği":::
 
 ##### <a name="four-node-linux-cluster"></a>Dört düğümlü Linux kümesi
 
 Aşağıda, tek bir yazıcı ve üç genişleme okuyucuları içeren 4 düğümlü Linux kümesine bir örnek verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bunun sonucunda, `ReadWrite` BIRINCIL VM için özel olarak kullanılan kısıtlama ve `ReadOnly` Ikincil VM 'lerin bölünmesi
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Ayırma tutucusu, kayıtlı ve diğerleri için ' ReadOnly ' veya ' oku/yaz ' erişimini gösteren bir tablo görüntüsü.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Dört düğümlü Ultra azaltma örneği":::
 
 #### <a name="ultra-pricing"></a>Ultra fiyatlandırma
 

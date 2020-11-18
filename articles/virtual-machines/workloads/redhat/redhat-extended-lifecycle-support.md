@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux Uzatılmış yaşam döngüsü desteği
+title: Red Hat Enterprise Linux Genişletilmiş Yaşam Döngüsü Desteği
 description: Red Hat kurumsal genişletilmiş yaşam döngüsü desteği ekleme hakkında bilgi edinin
 author: mathapli
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: e7c9f9b158d01204536712f8024ed098cd7a5037
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372883"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684364"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) genişletilmiş yaşam döngüsü desteği
 Bu makale, Red Hat Enterprise görüntüleri için genişletilmiş yaşam döngüsü desteği hakkında bilgi sağlar:
@@ -40,7 +40,7 @@ Bu makale, Red Hat Enterprise görüntüleri için genişletilmiş yaşam döng�
 
 #### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a>Yazılım Bakımı (hata ve güvenlik düzeltmeleri) ve Red Hat Enterprise Linux 6 desteği almaya devam etmek için genişletilmiş yaşam döngüsü desteği (PIKSEL) depoları ekleme işlemi nedir?
 
-En kısa sürede kaydolma işleminin uçtan uca işlemi yakında kullanıma sunulacaktır (en son 15 Kasım, 2020).
+En kısa sürede kaydolma işleminin uçtan uca işlemi yakında kullanıma sunulacaktır (en son 30 Kasım 2020).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

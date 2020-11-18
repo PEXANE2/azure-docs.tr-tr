@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286769"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684177"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -46,7 +46,7 @@ Aşağıdaki üç (3) durum, yetersiz alt ağ boyutu hatasına neden olur:
    1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` den **küçük** olduğunda gerçekleşir `number of buffer nodes needed to upgrade` .
    1. Azure CNı kullanıyorsanız, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
    
-   Varsayılan olarak AKS kümeleri, bir (1) bir en fazla dalgalanma (yükseltme arabelleği) değeri ayarladı, ancak bu yükseltme davranışı bir [düğüm havuzunun en fazla dalgalanma değeri](upgrade-cluster.md#customize-node-surge-upgrade-preview) ayarlanarak özelleştirilebilir ve bu da bir yükseltmeyi tamamlaması gereken IP sayısını artırır.
+   Varsayılan olarak AKS kümeleri, bir (1) bir en fazla dalgalanma (yükseltme arabelleği) değeri ayarladı, ancak bu yükseltme davranışı bir [düğüm havuzunun en fazla dalgalanma değeri](upgrade-cluster.md#customize-node-surge-upgrade) ayarlanarak özelleştirilebilir ve bu da bir yükseltmeyi tamamlaması gereken IP sayısını artırır.
 
 1. AKS Nodepool Add veya AKS oluştur
    1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` den **küçük** olduğunda gerçekleşir `number of nodes requested for the node pool` .
@@ -86,13 +86,13 @@ AKS 'in hizmet düzeyi hedeflerini (SLOs) ve hizmet düzeyi sözleşmelerini (SL
 
 Bu zaman aşımları, engellenen düğümler arasındaki iç trafikle ilgili olabilir. Bu trafiğin, kümenizin düğümleri için alt ağdaki [ağ güvenlik grupları](concepts-security.md#azure-network-security-groups) gibi engellenmediğinden emin olun.
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Mevcut bir kümede Role-Based Access Control (RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
+## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Var olan bir kümede Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
 
-Mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor, yeni kümeler oluşturulurken ayarlanmalıdır. Daha sonra CLı, portal veya API sürümü kullanılırken RBAC varsayılan olarak etkindir `2020-03-01` .
+Mevcut kümeler üzerinde Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) etkinleştirmek Şu anda desteklenmiyor, yeni kümeler oluşturulurken ayarlanmalıdır. Kubernetes RBAC, CLı, portal veya daha sonraki bir API sürümü kullanılırken varsayılan olarak etkindir `2020-03-01` .
 
-## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>RBAC etkinken bir küme oluşturdum ve şimdi Kubernetes panosunda birçok uyarı görüyorum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
+## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Kubernetes RBAC etkinleştirilmiş bir küme oluşturdum ve şimdi Kubernetes panosunda çok sayıda uyarı görüyorum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
 
-Uyarıların nedeni kümede RBAC 'nin etkinleştirilmiş ve panoya erişimi artık varsayılan olarak kısıtlıdır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
+Uyarıların nedeni kümede Kubernetes RBAC 'nin etkin ve panoya erişimi artık varsayılan olarak kısıtlıdır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmalıyım?
 
@@ -154,10 +154,10 @@ Bir AKS kümesini doğru şekilde oluşturmak için uygun belge içindeki *başl
 Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulanır. Bir kaynak adı veya parametresi bu kısıtlamaların birini keserse, farklı bir giriş sağlamanızı isteyen bir hata döndürülür. Aşağıdaki ortak adlandırma yönergeleri geçerlidir:
 
 * Küme adları 1-63 karakter olmalıdır. Yalnızca harfler, rakamlar, tireler ve alt çizgi olmak üzere izin verilen karakterler. İlk ve son karakter bir harf veya sayı olmalıdır.
-* AKS düğümü/ *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak oluşturulan sözdiziminin `MC_resourceGroupName_resourceName_AzureRegion` 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın. Ayrıca, [düğüm kaynağı grubu adınızı özelleştirebilirsiniz](cluster-configuration.md#custom-resource-group-name)
+* AKS düğümü/*Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak oluşturulan sözdiziminin `MC_resourceGroupName_resourceName_AzureRegion` 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın. Ayrıca, [düğüm kaynağı grubu adınızı özelleştirebilirsiniz](cluster-configuration.md#custom-resource-group-name)
 * *Dnspredüzeltmesini* alfasayısal değerlerle başlamalı ve bitmeli ve 1-54 karakter arasında olmalıdır. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
 * AKS düğüm havuzu adları küçük harfle yazılmalıdır ve Linux düğüm havuzları için 1-11 karakter ve Windows düğüm havuzları için 1-6 karakter olmalıdır. Ad bir harf ile başlamalı ve yalnızca harf ve rakam olmak üzere yalnızca izin verilen karakterler olmalıdır.
-* Linux düğümleri için yönetici kullanıcı adını ayarlayan *Yönetici-Kullanıcı adı* , bir harfle başlamalıdır, yalnızca harf, sayı, kısa çizgi ve alt çizgi içerebilir ve en fazla 64 karakter uzunluğunda olabilir.
+* Linux düğümleri için yönetici kullanıcı adını ayarlayan *Yönetici-Kullanıcı adı*, bir harfle başlamalıdır, yalnızca harf, sayı, kısa çizgi ve alt çizgi içerebilir ve en fazla 64 karakter uzunluğunda olabilir.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Küme oluşturmaya, güncelleştirmeye, ölçeklendirmeye, silmeye veya yükseltmeye çalışırken hata alıyorum, devam eden başka bir işlem olduğundan bu işleme izin verilmiyor.
 
@@ -167,7 +167,7 @@ Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulan�
 
 Küme durumunun çıkışına göre:
 
-* Küme, *başarılı* veya *başarısız* dışında bir sağlama durumundaysa, Işlem ( *yükseltme/güncelleştirme/oluşturma/ölçeklendirme/silme/geçirme* ) bitene kadar bekleyin. Önceki işlem tamamlandığında, en son küme işleminizi yeniden deneyin.
+* Küme, *başarılı* veya *başarısız* dışında bir sağlama durumundaysa, Işlem (*yükseltme/güncelleştirme/oluşturma/ölçeklendirme/silme/geçirme*) bitene kadar bekleyin. Önceki işlem tamamlandığında, en son küme işleminizi yeniden deneyin.
 
 * Kümenin başarısız bir yükseltmesi varsa, ana belirtilen adımları izleyerek [Kümemin başarısız durumunda olduğunu ve yükseltme ya da ölçeklendirmeyi düzeltilene kadar çalışmayacaktır](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -236,14 +236,14 @@ Kümenizin sağlama durumu *başarısız* olarak kalırsa veya kümenizdeki uygu
 
 Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -256,7 +256,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | Yok |
+| 1,12 ve üzeri | YOK |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
@@ -290,7 +290,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örneğin:
+* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
 
 ```yaml
 initContainers:
@@ -313,7 +313,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -332,7 +332,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -441,7 +441,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | Yok |
+| 1,14 ve üzeri | YOK |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 
@@ -449,13 +449,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4538654b255aad99ff00477134c9eeb5845e50d6
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167347"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682766"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama
 
@@ -165,7 +165,7 @@ ms.locfileid: "92167347"
 Bu makalede, bir SAP ASCS örneğini kümelemek için bir seçenek olarak *Küme Paylaşılan diski* kullanarak bir Windows Yük devretme kümesine yüksek KULLANıLABILIRLIĞE sahip SAP KÖKLERI/SCS örneği yükleme ve yapılandırma için Azure altyapısını hazırlamak üzere uygulamanız gereken adımlar açıklanmaktadır.
 *Küme paylaşılan diskinin* iki seçeneği belgelerde sunulmaktadır:
 
-- [Azure paylaşılan diskleri](../../windows/disks-shared.md)
+- [Azure paylaşılan diskleri](../../disks-shared.md)
 - Kümelenmiş paylaşılan diskin benzetimini yapan yansıtılmış depolama alanı oluşturmak için [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster/) kullanma 
 
 Sunulan yapılandırma, SAP iş yükleri için en iyi ağ gecikme süresine ulaşmak üzere [Azure yakınlık yerleştirme gruplarına (PPG)](./sap-proximity-placement-scenarios.md) bağlıdır. Belgeler veritabanı katmanını kapsamaz.  
@@ -174,7 +174,7 @@ Sunulan yapılandırma, SAP iş yükleri için en iyi ağ gecikme süresine ula�
 > Azure yakınlık yerleştirme grupları, Azure Paylaşılan disk kullanımı için önkoşuldur.
  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yüklemeye başlamadan önce şu makaleyi gözden geçirin:
 
@@ -211,19 +211,19 @@ Aşağıdaki listede, (A) SCS/ERS yük dengeleyicinin yapılandırması gösteri
 - Ön uç yapılandırması
     - Statik yoks/SCS IP adresi **10.0.0.43**
 - Arka uç yapılandırması  
-    (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makineleri ekleyin. Bu örnekte, **PR1-ascs-10** ve **PR1-ascs-11**VM 'lerinde.
+    (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makineleri ekleyin. Bu örnekte, **PR1-ascs-10** ve **PR1-ascs-11** VM 'lerinde.
 - Araştırma bağlantı noktası
-    - Bağlantı noktası 620**NR** protokol (TCP), Aralık (5), sağlıksız eşik (2) için varsayılan seçeneği bırakın
+    - Bağlantı noktası 620 **NR** protokol (TCP), Aralık (5), sağlıksız eşik (2) için varsayılan seçeneği bırakın
 - Yük Dengeleme kuralları
     - Standart Load Balancer kullanıyorsanız HA bağlantı noktaları ' nı seçin.
     - Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-        - 32**NR** TCP
-        - 36**NR** TCP
-        - 39**NR** TCP
-        - 81**NR** TCP
-        - 5**NR**13 TCP
-        - 5**NR**14 TCP
-        - 5**NR**16 TCP
+        - 32 **NR** TCP
+        - 36 **NR** TCP
+        - 39 **NR** TCP
+        - 81 **NR** TCP
+        - 5 **NR** 13 TCP
+        - 5 **NR** 14 TCP
+        - 5 **NR** 16 TCP
 
     - Boşta zaman aşımı (dakika) değerinin en yüksek değer olan 30 ' a ayarlandığından ve kayan IP (doğrudan sunucu dönüşü) etkinleştirildiğinden emin olun.
 
@@ -237,17 +237,17 @@ Sıraya alma çoğaltma sunucusu 2 (ERS2) da kümelenmiş olduğundan, ERS2 sana
   VM 'Ler zaten ıLB arka uç havuzuna eklenmiş.  
 
 - 2. araştırma bağlantı noktası
-    - Bağlantı noktası 621**NR**  
+    - Bağlantı noktası 621 **NR**  
     Protokol (TCP), Aralık (5), sağlıksız eşik (2) için varsayılan seçeneği bırakın
 
 - 2. Yük Dengeleme kuralları
     - Standart Load Balancer kullanıyorsanız HA bağlantı noktaları ' nı seçin.
     - Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-        - 32**NR** TCP
-        - 33**NR** TCP
-        - 5**NR**13 TCP
-        - 5**NR**14 TCP
-        - 5**NR**16 TCP
+        - 32 **NR** TCP
+        - 33 **NR** TCP
+        - 5 **NR** 13 TCP
+        - 5 **NR** 14 TCP
+        - 5 **NR** 16 TCP
 
     - Boşta zaman aşımı (dakika) değerinin en yüksek değer olan 30 ' a ayarlandığından ve kayan IP (doğrudan sunucu dönüşü) etkinleştirildiğinden emin olun.
 

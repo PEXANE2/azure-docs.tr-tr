@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: d6995073ba7d283a30f7580456cd61573752f7cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2d2cda59f23ef0b961ccac60b119996423688e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051398"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682358"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer için Dağıtım modunu yapılandırın
 
@@ -59,7 +59,7 @@ Başka bir kullanım örneği senaryosu medya karşıya yükleme 'dir. Karşıya
 
 ## <a name="configure-source-ip-affinity-settings"></a>Kaynak IP benzeşimi ayarlarını yapılandırma
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Portalda Yük Dengeleme kuralını değiştirerek dağıtım modunun yapılandırmasını değiştirebilirsiniz.
 
@@ -201,6 +201,6 @@ Date: Thu, 16 Oct 2014 22:49:21 GMT
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Iç Load Balancer genel bakış](load-balancer-internal-overview.md)
+* [Azure Load Balancer’a genel bakış](load-balancer-overview.md)
 * [İnternet 'e yönelik yük dengeleyici yapılandırma ile çalışmaya başlama](quickstart-load-balancer-standard-public-powershell.md)
 * [Yük dengeleyiciniz için boşta TCP zaman aşımı ayarlarını yapılandırma](load-balancer-tcp-idle-timeout.md)

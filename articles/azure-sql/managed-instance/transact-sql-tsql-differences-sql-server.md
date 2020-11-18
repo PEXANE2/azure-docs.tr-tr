@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 23a620f8031335e5a950df96427b11251f0ec042
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649322"
+ms.locfileid: "94684929"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -521,7 +521,7 @@ Sistem veritabanları, bir yük devretme grubundaki ikincil örneğe çoğaltıl
 - Genel Amaçlı katmanındaki en büyük dosya boyutu, `tempdb` çekirdek başına 24 GB 'den büyük olamaz. `tempdb`İş açısından kritik katmanındaki en büyük boyut, SQL yönetilen örnek depolama boyutuyla sınırlıdır. `Tempdb` günlük dosyası boyutu Genel Amaçlı katmanında 120 GB ile sınırlıdır. Bazı sorgular, üzerinde çekirdek başına 24 GB 'den fazla gereksinim duyduklarında `tempdb` veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
 - `Tempdb` her zaman 12 veri dosyasına bölünür: Ana, veri dosyası ve 11 birincil olmayan veri dosyası olarak da bilinen 1 birincil dosya. Dosya yapısı değiştirilemez ve yeni dosyalar içine eklenemez `tempdb` . 
 - Yeni bir SQL Server 2019 bellek veritabanı özelliği olan [bellek için iyileştirilmiş `tempdb` meta veriler](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)desteklenmez.
-- Model veritabanında oluşturulan nesneler, `tempdb` bir yeniden başlatma işleminden sonra veya bir yük devretmeden sonra otomatik olarak oluşturulamaz çünkü bu `tempdb` , çoğaltılan model veritabanından ilk nesne listesini almaz. 
+- Model veritabanında oluşturulan nesneler, `tempdb` bir yeniden başlatma işleminden sonra veya bir yük devretmeden sonra otomatik olarak oluşturulamaz çünkü bu `tempdb` , model veritabanından ilk nesne listesini almaz. `tempdb`Her yeniden başlatma veya yük devretme sonrasında nesneleri el ile oluşturmanız gerekir.
 
 ### <a name="msdb"></a>MSDB
 

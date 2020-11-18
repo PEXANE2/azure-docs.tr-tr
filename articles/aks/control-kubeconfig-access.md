@@ -4,18 +4,18 @@ description: Küme yöneticileri ve küme kullanıcıları için Kubernetes yap�
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 371628b02ebecee23697e996ee0d484688167875
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009299"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684823"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) Kubernetes yapılandırma dosyasına erişim tanımlamak için Azure rol tabanlı erişim denetimi kullanma
 
 Aracı kullanarak Kubernetes kümeleriyle etkileşim kurabilirsiniz `kubectl` . Azure CLı, kullanarak AKS kümelerinize bağlanmak için erişim kimlik bilgilerini ve yapılandırma bilgilerini almanın kolay bir yolunu sunar `kubectl` . Bu Kubernetes yapılandırma (*kubeconfig*) bilgilerini kimlerin alabilirim ve sahip oldukları izinleri kısıtlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanabilirsiniz.
 
-Bu makalede, bir AKS kümesi için yapılandırma bilgilerini kimlerin alabilirim olduğunu sınırlayan RBAC rollerinin nasıl atanacağı gösterilmektedir.
+Bu makalede, bir AKS kümesi için yapılandırma bilgilerini kimlerin alabilirim olduğunu sınırlayan Azure rollerinin nasıl atanacağı gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -25,7 +25,7 @@ Bu makalede, Azure CLı sürüm 2.0.65 veya üstünü de çalıştırıyor olman
 
 ## <a name="available-cluster-roles-permissions"></a>Kullanılabilir küme rolleri izinleri
 
-Aracı kullanarak bir AKS kümesiyle etkileşim kurarken `kubectl` , küme bağlantı bilgilerini tanımlayan bir yapılandırma dosyası kullanılır. Bu yapılandırma dosyası genellikle *~/. Kube/config*dizininde depolanır. Bu *kubeconfig* dosyasında birden çok küme tanımlanabilir. [Kubectl config Use-Context][kubectl-config-use-context] komutunu kullanarak kümeler arasında geçiş yapabilirsiniz.
+Aracı kullanarak bir AKS kümesiyle etkileşim kurarken `kubectl` , küme bağlantı bilgilerini tanımlayan bir yapılandırma dosyası kullanılır. Bu yapılandırma dosyası genellikle *~/. Kube/config* dizininde depolanır. Bu *kubeconfig* dosyasında birden çok küme tanımlanabilir. [Kubectl config Use-Context][kubectl-config-use-context] komutunu kullanarak kümeler arasında geçiş yapabilirsiniz.
 
 [Az aks Get-Credentials][az-aks-get-credentials] komutu, BIR aks kümesinin erişim kimlik bilgilerini almanıza ve bunları *kubeconfig* dosyasına birleştirmenize imkan tanır. Bu kimlik bilgilerine erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanabilirsiniz. Bu Azure rolleri, *kubeconfig* dosyasını kimlerin alabileceklerini ve daha sonra küme içinde sahip oldukları izinleri tanımlamanızı sağlar.
 
@@ -38,7 +38,7 @@ Aracı kullanarak bir AKS kümesiyle etkileşim kurarken `kubectl` , küme bağl
   * *Microsoft. ContainerService/Managedkümeler/listClusterUserCredential/Action* API çağrısına erişime izin verir. Bu API çağrısı [, küme kullanıcı kimlik bilgilerini listeler][api-cluster-user].
   * *Clusteruser* rolü için *kubeconfig* ' i indirir.
 
-Bu RBAC rolleri, bir Azure Active Directory (AD) kullanıcısına veya grubuna uygulanabilir.
+Bu Azure rolleri, bir Azure Active Directory (AD) kullanıcısına veya grubuna uygulanabilir.
 
 > [!NOTE]
 > Azure AD kullanan kümeler üzerinde, *Clusteruser* rolüne sahip kullanıcılar oturum açmak isteyen boş bir *kubeconfig* dosyasına sahiptir. Oturum açıldıktan sonra kullanıcıların Azure AD Kullanıcı veya grup ayarlarına bağlı olarak erişimi vardır. *Clusteradmin* rolüne sahip kullanıcılar yönetici erişimine sahiptir.
@@ -71,7 +71,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Bir Azure AD grubuna izinler atamak istiyorsanız, `--assignee` Önceki örnekte gösterilen parametreyi bir *Kullanıcı*yerıne *grubun* nesne kimliğiyle güncelleştirin. Bir grubun nesne KIMLIĞINI almak için [az Ad Group Show][az-ad-group-show] komutunu kullanın. Aşağıdaki örnek, *AppDev*ADLı Azure AD grubu IÇIN nesne kimliğini alır: `az ad group show --group appdev --query objectId -o tsv`
+> Bir Azure AD grubuna izinler atamak istiyorsanız, `--assignee` Önceki örnekte gösterilen parametreyi bir *Kullanıcı* yerıne *grubun* nesne kimliğiyle güncelleştirin. Bir grubun nesne KIMLIĞINI almak için [az Ad Group Show][az-ad-group-show] komutunu kullanın. Aşağıdaki örnek, *AppDev* ADLı Azure AD grubu IÇIN nesne kimliğini alır: `az ad group show --group appdev --query objectId -o tsv`
 
 Daha önce, *küme kullanıcı rolü* için bir önceki atamayı gerektiği şekilde değiştirebilirsiniz.
 
@@ -92,7 +92,7 @@ Aşağıdaki örnek çıktıda, rol atamasının başarıyla oluşturulduğu gö
 
 ## <a name="get-and-verify-the-configuration-information"></a>Yapılandırma bilgilerini edinme ve doğrulama
 
-RBAC rolleri atandığında, AKS kümenizin *kubeconfig* tanımını almak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Aşağıdaki örnekte, kullanıcıya *Küme Yönetici rolü*verildiyse doğru şekilde çalışan *--yönetici* kimlik bilgileri alınır:
+Atanan Azure rolleri sayesinde, AKS kümenizin *kubeconfig* tanımını almak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Aşağıdaki örnekte, kullanıcıya *Küme Yönetici rolü* verildiyse doğru şekilde çalışan *--yönetici* kimlik bilgileri alınır:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin

@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7ee2e1e6a46ce07d95797362cde313dc8e0b0fa5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317186"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683548"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için sunucusuz SQL havuzu kullanma
 
@@ -100,7 +100,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 2000 ve 2010 ' den kaynaklanan her bir ABD İlçesi için cinsiyet ve yarış tarafından popülasyon, Parquet biçiminde ABD 'de Cennial
 
-| Klasör yolu                                                  | Açıklama                                                  |
+| Klasör yolu                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Tanıtım depolama hesabındaki veriler için üst klasör               |
 | /Release/us_population_county/                               | Veri dosyalarını, Hive/Hadoop bölümlendirme şeması kullanılarak yıla göre bölümlenen Parquet biçiminde doldurma. |
@@ -109,15 +109,15 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 Aşağıdaki adımları kullanarak Power BI Desktop raporu oluşturun:
 
-1. Power BI Desktop uygulamasını açın ve **veri al** ' ı seçin.
+1. Power BI Desktop uygulamasını açın ve **veri al**' ı seçin.
 
    ![Power BI Masaüstü uygulamasını açın ve veri al ' ı seçin.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. **Azure**  >  **Azure SQL veritabanı** ' nı seçin. 
+2. **Azure**  >  **Azure SQL veritabanı**' nı seçin. 
 
    ![Veri kaynağını seçin.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. Veritabanının **sunucu** alanında bulunduğu sunucunun adını yazın ve ardından `Demo` veritabanı adını yazın. **Içeri aktarma** seçeneğini belirleyip **Tamam** ' ı seçin. 
+3. Veritabanının **sunucu** alanında bulunduğu sunucunun adını yazın ve ardından `Demo` veritabanı adını yazın. **Içeri aktarma** seçeneğini belirleyip **Tamam**' ı seçin. 
 
    ![Uç noktada veritabanı ' nı seçin.](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
@@ -132,11 +132,11 @@ Aşağıdaki adımları kullanarak Power BI Desktop raporu oluşturun:
         ![SQL oturum açma kullanın.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. Görünümü seçin `usPopulationView` ve ardından **Yükle** ' yi seçin. 
+5. Görünümü seçin `usPopulationView` ve ardından **Yükle**' yi seçin. 
 
    ![Seçili veritabanında bir görünüm seçin.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. İşlemin tamamlanmasını bekleyin ve ardından bir açılır pencere görüntülenir `There are pending changes in your queries that haven't been applied` . **Değişiklikleri Uygula** ' yı seçin. 
+6. İşlemin tamamlanmasını bekleyin ve ardından bir açılır pencere görüntülenir `There are pending changes in your queries that haven't been applied` . **Değişiklikleri Uygula**' yı seçin. 
 
    ![Değişiklikleri Uygula ' ya tıklayın.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 

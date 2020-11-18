@@ -3,12 +3,12 @@ title: Tek başına Service Fabric kümelerine genel bakış
 description: Service Fabric kümeler Windows Server ve Linux üzerinde çalışır. Bu, Windows Server veya Linux 'un çalışabileceği her yerde Service Fabric uygulamaları dağıtabilmeniz ve barındırabilmeniz anlamına gelir.
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841076"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684007"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Tek başına Service Fabric kümelerine genel bakış
 
@@ -43,10 +43,10 @@ Daha fazla bilgi için [düğümden düğüme güvenliği](service-fabric-cluste
 
 Daha fazla bilgi için [istemciden düğüme güvenliği](service-fabric-cluster-security.md#client-to-node-security) okuyun
 
-### <a name="role-based-access-control-rbac"></a>Rol Tabanlı Erişim Denetimi (RBAC)
+### <a name="service-fabric-role-based-access-control"></a>Rol tabanlı erişim denetimi Service Fabric
 Service Fabric Ayrıca, farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlamak üzere erişim denetimini destekler. Bu, kümenin daha güvenli olmasına yardımcı olur. Bir kümeye bağlanan istemciler için iki erişim denetimi türü desteklenir: yönetici rolü ve Kullanıcı rolü.  
 
-Daha fazla bilgi için [rol tabanlı Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)okuyun.
+Daha fazla bilgi için [Service Fabric rol tabanlı erişim denetimi](service-fabric-cluster-security.md#service-fabric-role-based-access-control)makalesini okuyun.
 
 ## <a name="scaling"></a>Ölçeklendirme
 

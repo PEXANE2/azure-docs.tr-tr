@@ -6,18 +6,18 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4aa63493bb14db69821ac04db1d2c5a846de7dbe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612427"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682477"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLı 'yı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme (eski)
 
-Azure Kubernetes hizmeti (AKS), Kullanıcı kimlik doğrulaması için Azure Active Directory (AD) kullanacak şekilde yapılandırılabilir. Bu yapılandırmada, bir Azure AD kimlik doğrulama belirteci kullanarak bir AKS kümesinde oturum açabilirsiniz. Küme işleçleri Ayrıca, bir kullanıcının kimliğine veya dizin grubu üyeliğine bağlı olarak Kubernetes rol tabanlı erişim denetimi 'ni (RBAC) yapılandırabilir.
+Azure Kubernetes hizmeti (AKS), Kullanıcı kimlik doğrulaması için Azure Active Directory (AD) kullanacak şekilde yapılandırılabilir. Bu yapılandırmada, bir Azure AD kimlik doğrulama belirteci kullanarak bir AKS kümesinde oturum açabilirsiniz. Küme işleçleri Ayrıca, Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) bir kullanıcının kimliğine veya dizin grubu üyeliğine göre de yapılandırabilir.
 
-Bu makalede, gerekli Azure AD bileşenlerini oluşturma, ardından Azure AD özellikli bir kümeyi dağıtma ve AKS kümesinde temel RBAC rolü oluşturma işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede, gerekli Azure AD bileşenlerini oluşturma, ardından Azure AD özellikli bir kümeyi dağıtma ve AKS kümesinde temel bir Kubernetes rolü oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
 Bu makalede kullanılan tam örnek betik için bkz. Azure [CLI örnekleri-Azure AD Ile AKS tümleştirmesi][complete-script].
 
@@ -26,7 +26,7 @@ Bu makalede kullanılan tam örnek betik için bkz. Azure [CLI örnekleri-Azure 
 
 ## <a name="the-following-limitations-apply"></a>Aşağıdaki sınırlamalar geçerlidir:
 
-- Azure AD, yalnızca RBAC özellikli kümede etkinleştirilebilir.
+- Azure AD yalnızca Kubernetes RBAC etkin kümesinde etkinleştirilebilir.
 - Azure AD eski tümleştirmesi, yalnızca küme oluşturma sırasında etkinleştirilebilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -35,7 +35,7 @@ Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 [https://shell.azure.com](https://shell.azure.com)Tarayıcınızda Cloud Shell açmak için bölümüne gidin.
 
-Tutarlılık için ve bu makaledeki komutları çalıştırmaya yardımcı olmak için, istediğiniz AKS kümesi adı için bir değişken oluşturun. Aşağıdaki örnek *myakscluster*adını kullanır:
+Tutarlılık için ve bu makaledeki komutları çalıştırmaya yardımcı olmak için, istediğiniz AKS kümesi adı için bir değişken oluşturun. Aşağıdaki örnek *myakscluster* adını kullanır:
 
 ```console
 aksname="myakscluster"
@@ -164,9 +164,9 @@ Son olarak, [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanarak
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 ```
 
-## <a name="create-rbac-binding"></a>RBAC bağlaması oluşturma
+## <a name="create-kubernetes-rbac-binding"></a>Kubernetes RBAC bağlaması oluşturma
 
-Bir Azure Active Directory hesabının AKS kümesiyle kullanılabilmesi için önce bir rol bağlama veya küme rolü bağlamasının oluşturulması gerekir. *Roller* , verilecek izinleri tanımlar ve *bağlamalar* onları istenen kullanıcılara uygular. Bu atamalar, belirli bir ad alanına veya tüm küme genelinde uygulanabilir. Daha fazla bilgi için bkz. [RBAC yetkilendirmesi kullanma][rbac-authorization].
+Bir Azure Active Directory hesabının AKS kümesiyle kullanılabilmesi için önce bir rol bağlama veya küme rolü bağlamasının oluşturulması gerekir. *Roller* , verilecek izinleri tanımlar ve *bağlamalar* onları istenen kullanıcılara uygular. Bu atamalar, belirli bir ad alanına veya tüm küme genelinde uygulanabilir. Daha fazla bilgi için bkz. [Kubernetes RBAC yetkilendirmesini kullanma][rbac-authorization].
 
 [Az ad oturum açan kullanıcı göster][az-ad-signed-in-user-show] komutunu kullanarak şu anda oturum açmış olan kullanıcının Kullanıcı asıl adını (UPN) alın. Bu Kullanıcı hesabı, bir sonraki adımda Azure AD tümleştirmesi için etkinleştirilmiştir.
 
@@ -175,7 +175,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> RBAC bağlamasını verdiğiniz kullanıcı aynı Azure AD kiracısında ise, *userPrincipalName*öğesine göre izinler atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve onun yerine *ObjectID* özelliğini kullanın.
+> İçin Kubernetes RBAC bağlamaya verdiğiniz kullanıcı aynı Azure AD kiracısında ise, *userPrincipalName* temelinde izinleri atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve onun yerine *ObjectID* özelliğini kullanın.
 
 Adlı bir YAML bildirimi oluşturun `basic-azure-ad-binding.yaml` ve aşağıdaki içeriği yapıştırın. Son satırda, *userPrincipalName_or_objectId*  ÖNCEKI komutun UPN veya nesne kimliği çıkışıyla değiştirin:
 
@@ -251,7 +251,7 @@ error: You must be logged in to the server (Unauthorized)
 
 Bu makalede gösterilen komutları içeren tüm betik için, [AKS örnekleri deposunda Azure AD tümleştirme betiğine][complete-script]bakın.
 
-Küme kaynaklarına erişimi denetlemek için Azure AD kullanıcıları ve grupları 'nı kullanmak için bkz. [AKS 'de rol tabanlı erişim denetimi ve Azure AD kimlikleri kullanarak küme kaynaklarına erişimi denetleme][azure-ad-rbac].
+Küme kaynaklarına erişimi denetlemek için Azure AD kullanıcılarını ve gruplarını kullanmak üzere, bkz. [Kubernetes rol tabanlı erişim denetimi ve AKS 'Deki Azure AD kimliklerini kullanarak küme kaynaklarına erişimi denetleme][azure-ad-rbac].
 
 Kubernetes kümelerinin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [AKS Için erişim ve kimlik seçenekleri][rbac-authorization].
 
@@ -281,7 +281,7 @@ Kimlik ve kaynak denetiminde en iyi uygulamalar için bkz. [AKS 'de kimlik doğr
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

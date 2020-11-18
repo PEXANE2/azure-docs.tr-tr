@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 260631e36d113b6ccd190f66ce61caa7ba1b187b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900882"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683140"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) içindeki Azure disk kapsayıcısı depolama arabirimi (CSı) sürücülerini kullanma (Önizleme)
 Azure disk kapsayıcısı depolama arabirimi (CSı) sürücüsü, Azure disk yaşam döngüsünü yönetmek için Azure Kubernetes hizmeti (AKS) tarafından kullanılan bir [CSI belirtimiyle](https://github.com/container-storage-interface/spec/blob/master/spec.md)uyumlu bir sürücü.
@@ -275,7 +275,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## <a name="shared-disk"></a>Paylaşılan disk
 
-Azure [paylaşılan diskler](../virtual-machines/windows/disks-shared.md) , Azure diskini aracı düğümlerine aynı anda eklemeye olanak sağlayan bir Azure yönetilen diskler özelliğidir. Yönetilen bir diski birden çok aracı düğümüne eklemek, örneğin yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmek için kullanabileceğiniz bir disk sağlar.
+Azure [paylaşılan diskler](../virtual-machines/disks-shared.md) , Azure diskini aracı düğümlerine aynı anda eklemeye olanak sağlayan bir Azure yönetilen diskler özelliğidir. Yönetilen bir diski birden çok aracı düğümüne eklemek, örneğin yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmek için kullanabileceğiniz bir disk sağlar.
 
 > [!IMPORTANT] 
 > Şu anda, `volumeMode: Block` Azure DISK CSI sürücüsü tarafından yalnızca ham blok cihaz () desteklenir. Uygulamalar, ham blok cihaz olarak sunulan paylaşılan disk üzerinde yazma, okuma, kilitleme, önbellek, bağlama ve kilitleme işlemlerini yönetmelidir.

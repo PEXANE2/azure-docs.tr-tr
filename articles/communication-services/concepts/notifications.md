@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b368048e5ea34ebfc073b1ae239cbb40724ae393
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320710"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684381"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
@@ -36,7 +36,7 @@ Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, öl
 
 Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir çağrı aldıklarında otomatik olarak anında iletme bildirimleri göndermek için Iletişim Hizmetleri kaynağına bağlayabilirsiniz. Bu anında iletme bildirimlerini, uygulamanızın arka planda uyandırmasını ve kullanıcının çağrıyı kabul etmesi veya reddetmesine izin veren Kullanıcı ARABIRIMINI görüntülemesi gerekir. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Iletişim hizmetlerinin Event Grid ile nasıl tümleştirildiğini gösteren diyagram.":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="İletişim hizmetlerinin Azure Notifications hub ile nasıl tümleştirildiğini gösteren diyagram.":::
 
 İletişim Hizmetleri, [doğrudan gönderme](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 'sini kullanarak platforma özgü çeşitli anında iletme bildirimi hizmetleriyle iletişim kurmak Için Azure Notification Hub 'ını doğrudan bir geçiş hizmeti olarak kullanır. Bu, uygulamalarınıza düşük gecikme süresi ve güvenilir çağrı bildirimleri sunmak için mevcut Azure Notification Hub kaynaklarınızı ve yapılandırmanızı yeniden kullanmanıza olanak tanır.
 
@@ -53,7 +53,8 @@ Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir
 Bildirim Hub 'ı yapılandırıldıktan sonra, Azure Resource Manager Istemcisini kullanarak hub için bağlantı dizesi sağlayarak Iletişim Hizmetleri kaynağıyla ilişkilendirebilirsiniz ve Azure portal aracılığıyla ilişkilendirebilirsiniz. Bağlantı dizesi "Gönder" izinleri içermelidir. Yalnızca hub 'ınız için özel olarak "Gönder" izinlerine sahip başka bir erişim ilkesi oluşturmanızı öneririz. [Notification Hubs güvenlik ve erişim ilkeleri](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security) hakkında daha fazla bilgi edinin
 
 > [!IMPORTANT]
-> Apple Anında İletilen Bildirim Servisi VOıP bildirimlerini etkinleştirmek için, Bildirim Hub 'ınızın adını sonek ile uygulama paketi KIMLIĞINIZ olacak şekilde ayarlamanız gerekir `.voip` . Bkz. [Notification Hubs aracılığıyla APNs VoIP kullanma](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+> Bu yalnızca belirteç kimlik doğrulama modu için geçerlidir. Sertifika kimlik doğrulama modu şu anda desteklenmiyor.  
+APNS VOıP bildirimlerini etkinleştirmek için, Bildirim Hub 'ını son ek ile uygulama paketi KIMLIĞINIZ olacak şekilde yapılandırırken Paket kimliği değerini ayarlamanız gerekir `.voip` . Daha fazla bilgi için bkz. [APNs VoIP 'i Notification Hubs aracılığıyla kullanma](https://docs.microsoft.com/azure/notification-hubs/voip-apns) .
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Bildirim Hub 'ını yapılandırmak için Azure Resource Manager istemcisini kullanma
 
@@ -73,7 +74,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 Portalda Azure Communication Services kaynağınız ' ne gidin. Iletişim Hizmetleri kaynağı içinde Iletişim Hizmetleri sayfasının sol menüsünde anında Iletme bildirimleri ' ni seçin ve daha önce sağladığınız Bildirim Hub 'ını bağlayın. Bağlantı dizenizi ve kaynak KIMLIĞINIZI buradan sağlamanız gerekir:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Iletişim hizmetlerinin Event Grid ile nasıl tümleştirildiğini gösteren diyagram.":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure Portal 'daki anında Iletme bildirimleri ayarlarını gösteren ekran görüntüsü.":::
 
 > [!NOTE]
 > Azure Bildirim Hub 'ı bağlantı dizesi güncelleştirilirse, Iletişim Hizmetleri kaynağının de güncellenmesi gerekiyor.

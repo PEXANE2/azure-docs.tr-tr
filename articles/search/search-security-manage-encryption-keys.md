@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7f2df005a8d3211ba53aadb16370624c4f530eb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 95ac4ed83a4486665ce378972ea7d6423c2482d5
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575875"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682919"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Bilişsel Arama veri şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -41,12 +41,12 @@ Anahtarların tümünün aynı anahtar kasasında olması gerekmez. Tek bir aram
 
 Farklı bir bölge veya 1 Ağustos 'Tan önce oluşturulmuş bir hizmet kullanıyorsanız CMK şifrelemeniz, hizmet tarafından kullanılan geçici diskler hariç yalnızca veri diski ile sınırlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu senaryoda aşağıdaki araçlar ve hizmetler kullanılır.
 
 + [Azure bilişsel arama](search-create-service-portal.md) , [faturalandırılabilir katmanda](search-sku-tier.md#tiers) (herhangi bir bölgedeki temel veya üstü).
-+ Azure Bilişsel Arama ile aynı abonelikte [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) . Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmiş olmalıdır.
++ [Azure Key Vault](../key-vault/general/overview.md), [Azure Portal](../key-vault//general/quick-create-portal.md), [Azure CLI](../key-vault//general/quick-create-cli.md)veya [Azure PowerShell](../key-vault//general/quick-create-powershell.md)kullanarak Anahtar Kasası oluşturabilirsiniz. Azure Bilişsel Arama ile aynı abonelikte. Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmiş olmalıdır.
 + [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Bir tane yoksa, [Yeni bir kiracı kurun](../active-directory/develop/quickstart-create-new-tenant.md).
 
 Şifrelenmiş nesneyi oluşturabileceğiniz bir arama uygulamasına sahip olmanız gerekir. Bu koda, bir Anahtar Kasası anahtarına ve Active Directory kayıt bilgilerine başvurabileceksiniz. Bu kod, çalışan bir uygulama veya [C# kod örneği DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)gibi prototip kodu olabilir.
@@ -66,7 +66,7 @@ Portal, PowerShell veya Azure CLı komutlarını kullanarak her iki özelliği d
 
 1. **Genel bakış** sayfasında, **temel parçalar** altında, **geçici silme** ve **Temizleme korumasını** etkinleştirin.
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 1. `Connect-AzAccount`Azure kimlik bilgilerinizi kurmak için ' i çalıştırın.
 
@@ -108,7 +108,7 @@ Azure Key Vault ' de bir anahtarınız zaten varsa bu adımı atlayın.
 
 1. [Azure Portal oturum açın](https://portal.azure.com) ve Anahtar Kasası genel bakış sayfasını açın.
 
-1. Sol taraftaki **tuşları** seçin ve **+ Oluştur/içeri aktar** ' ı seçin.
+1. Sol taraftaki **tuşları** seçin ve **+ Oluştur/içeri aktar**' ı seçin.
 
 1. **Anahtar oluştur** bölmesinde, **Seçenekler** listesinden, anahtar oluşturmak için kullanmak istediğiniz yöntemi seçin. Yeni bir anahtar **oluşturabilir** , var olan bir anahtarı **yükleyebilir** veya bir anahtarın yedeğini seçmek için **yedekleme geri yükleme** ' yi kullanabilirsiniz.
 
@@ -116,7 +116,7 @@ Azure Key Vault ' de bir anahtarınız zaten varsa bu adımı atlayın.
 
 1. Dağıtımı başlatmak için **Oluştur** ' u seçin.
 
-1. Anahtar tanımlayıcısını bir yere, anahtar **değer URI 'sinden** , **anahtar adından** ve **anahtar sürümünden** oluşur. Azure Bilişsel Arama 'de şifrelenmiş bir dizin tanımlamak için tanımlayıcıya ihtiyacınız olacaktır.
+1. Anahtar tanımlayıcısını bir yere, anahtar **değer URI 'sinden**, **anahtar adından** ve **anahtar sürümünden** oluşur. Azure Bilişsel Arama 'de şifrelenmiş bir dizin tanımlamak için tanımlayıcıya ihtiyacınız olacaktır.
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
 
@@ -124,9 +124,9 @@ Azure Key Vault ' de bir anahtarınız zaten varsa bu adımı atlayın.
 
 1. [Azure Portal](https://portal.azure.com), aboneliğiniz için Azure Active Directory kaynağını bulun.
 
-1. Sol tarafta, **Yönet** altında, **uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt** ' ı seçin.
+1. Sol tarafta, **Yönet** altında, **uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 
-1. Kayda, belki de arama uygulaması adına benzer bir ad verin. **Kaydet** ’i seçin.
+1. Kayda, belki de arama uygulaması adına benzer bir ad verin. **Kaydet**’i seçin.
 
 1. Uygulama kaydı oluşturulduktan sonra uygulama KIMLIĞINI kopyalayın. Bu dizeyi uygulamanıza sağlamanız gerekir. 
 
@@ -136,7 +136,7 @@ Azure Key Vault ' de bir anahtarınız zaten varsa bu adımı atlayın.
 
 1. Ardından, sol taraftaki **sertifikalar & parolaları** ' nı seçin.
 
-1. **Yeni istemci gizli dizisi** ’ni seçin. Gizli dizi için bir görünen ad verin ve **Ekle** ' yi seçin.
+1. **Yeni istemci gizli dizisi**’ni seçin. Gizli dizi için bir görünen ad verin ve **Ekle**' yi seçin.
 
 1. Uygulama gizli dizesini kopyalayın. Örnek içinde adımlarken, bu değeri dosyadaki **appsettings.js** yapıştırın.
 
@@ -150,7 +150,7 @@ Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı k
 
 1. Hala Azure portal, Anahtar Kasası **genel bakış** sayfasını açın. 
 
-1. Sol taraftaki **erişim ilkelerini** seçin ve **+ erişim ilkesi Ekle** ' yi seçin.
+1. Sol taraftaki **erişim ilkelerini** seçin ve **+ erişim ilkesi Ekle**' yi seçin.
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Yeni Anahtar Kasası erişim ilkesi Ekle":::
 
@@ -158,13 +158,13 @@ Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı k
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Anahtar Kasası erişim ilkesi sorumlusunu seçin":::
 
-1. **Anahtar izinler** ' de *Al* , *anahtar kaydırmayı kaldır* ve *anahtarı sarmalama* ' i seçin.
+1. **Anahtar izinler**' de *Al*, *anahtar kaydırmayı kaldır* ve *anahtarı sarmalama*' i seçin.
 
-1. **Gizli izinler** ' de *Al* ' ı seçin.
+1. **Gizli izinler**' de *Al*' ı seçin.
 
-1. **Sertifika izinleri** ' nde *Al* ' ı seçin.
+1. **Sertifika izinleri**' nde *Al*' ı seçin.
 
-1. **Ekle** ' yi ve ardından **Kaydet** ' i seçin.
+1. **Ekle** ' yi ve ardından **Kaydet**' i seçin.
 
 > [!Important]
 > Azure Bilişsel Arama şifrelenmiş içerik, belirli bir **sürüme** sahip belirli bir Azure Key Vault anahtarı kullanacak şekilde yapılandırılmıştır. Anahtarı veya sürümü değiştirirseniz, önceki key\version. silinmeden **önce** dizin veya eş anlamlı haritanın yeni key\version kullanacak şekilde güncellenmesi gerekir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyecek şekilde dizin veya eş anlamlı haritanın kullanılamamasına neden olur.

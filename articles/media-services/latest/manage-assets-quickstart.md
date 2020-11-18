@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0793c8abee27ca415feba313efb029daf092bec9
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91261422"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683038"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Hızlı başlangıç: portala karşıya içerik yükleme, kodlama ve akışla
 
@@ -24,10 +24,10 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
   
 ## <a name="overview"></a>Genel Bakış
 
-* Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız ve yüksek kaliteli dijital medya dosyanızı bir **varlığa**yüklemeniz gerekir. 
+* Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız ve yüksek kaliteli dijital medya dosyanızı bir **varlığa** yüklemeniz gerekir. 
     
     > [!NOTE]
-    > Videonuz daha önce Media Services v3 API kullanılarak Media Services hesabına yüklenmişse veya içerik canlı bir çıkışa göre oluşturulduysa, Azure portal **kodlama**, **Çözümleme**veya **şifreleme** düğmelerini görmezsiniz. Bu görevleri gerçekleştirmek için Media Services v3 API 'Lerini kullanın.
+    > Videonuz daha önce Media Services v3 API kullanılarak Media Services hesabına yüklenmişse veya içerik canlı bir çıkışa göre oluşturulduysa, Azure portal **kodlama**, **Çözümleme** veya **şifreleme** düğmelerini görmezsiniz. Bu görevleri gerçekleştirmek için Media Services v3 API 'Lerini kullanın.
 
     Aşağıdakileri gözden geçirin: 
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
         Şu anda Azure portal kullanılırken şunları yapabilirsiniz: bir TTML ve WebVTT kapalı açıklamalı altyazı dosyaları oluşturma. Bu biçimlerdeki dosyalar, ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilir. Ayrıca, İçeriğinizden anahtar sözcükleri de ayıklayabilirsiniz.
 
         Video ve Ses dosyalarınızın içgörüleri ayıklamanızı sağlayan zengin bir deneyim için Media Services v3 ön ayarlarını kullanın ( [öğretici: Media Services v3 ile videoları analiz edin](analyze-videos-tutorial-with-api.md)). <br/>Daha ayrıntılı Öngörüler istiyorsanız [video Indexer](../video-indexer/index.yml) doğrudan kullanın.    
-* İçeriğiniz işlendikten sonra, istemci oynatıcılara medya içeriği gönderebilirsiniz. Çıktı kıymetindeki videoların, kayıttan yürütmeye yönelik olarak kullanılabilmesini sağlamak için bir **akış Bulucu**oluşturmanız gerekir. **Akış bulucuyu**oluştururken bir **akış ilkesi**belirtmeniz gerekir. Akış **ilkeleri** , akış **Konumlandırıcıları**için akış protokollerini ve şifreleme seçeneklerini (varsa) tanımlamanıza olanak sağlar.
+* İçeriğiniz işlendikten sonra, istemci oynatıcılara medya içeriği gönderebilirsiniz. Çıktı kıymetindeki videoların, kayıttan yürütmeye yönelik olarak kullanılabilmesini sağlamak için bir **akış Bulucu** oluşturmanız gerekir. **Akış bulucuyu** oluştururken bir **akış ilkesi** belirtmeniz gerekir. Akış **ilkeleri** , akış **Konumlandırıcıları** için akış protokollerini ve şifreleme seçeneklerini (varsa) tanımlamanıza olanak sağlar.
     
     İncelemeyi
 
@@ -54,7 +54,7 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[Media Services hesabı oluşturma](create-account-howto.md#use-the-azure-portal)
+[Media Services hesabı oluşturma](create-account-howto.md)
 
 ## <a name="upload"></a>Karşıya Yükleme
 

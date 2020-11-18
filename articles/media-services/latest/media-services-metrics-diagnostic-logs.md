@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309058"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685197"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Azure Izleyici ile Media Services ölçümleri ve tanılama günlüklerini izleme
 
@@ -67,8 +67,8 @@ Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpo
 |İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Akış uç noktası başına dakika başına toplam çıkış baytı.|
 |SuccessE2ELatency|Başarılı uçtan uca gecikme süresi|Akış uç noktasının, yanıtın son baytı gönderilirken isteği aldığı zaman süresi.|
-|CPU kullanımı| Premium akış uç noktaları için CPU kullanımı. Bu veriler standart akış uç noktaları için kullanılamaz. |
-|Çıkış bant genişliği | Bit/saniye cinsinden çıkış bant genişliği.|
+|CPU kullanımı| | Premium akış uç noktaları için CPU kullanımı. Bu veriler standart akış uç noktaları için kullanılamaz. |
+|Çıkış bant genişliği | | Bit/saniye cinsinden çıkış bant genişliği.|
 
 ### <a name="metrics-are-useful"></a>Ölçümler faydalıdır
 
