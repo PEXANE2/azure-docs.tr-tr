@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698775"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842762"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure Güvenlik yönetimi ve izlemeye genel bakış
 Bu makalede, Azure 'un Azure Cloud Services ve sanal makinelerin yönetimine ve izlenmesine yardımcı olmak için Azure 'un sağladığı güvenlik özelliklerine ve hizmetlerine genel bir bakış sunulmaktadır.
@@ -54,15 +54,15 @@ Daha fazla bilgi edinin:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication, birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir. Kullanıcı oturum açma işlemlerine ve işlemlerine kritik bir ikinci güvenlik katmanı ekler.
+Azure AD Multi-Factor Authentication, birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir. Kullanıcı oturum açma işlemlerine ve işlemlerine kritik bir ikinci güvenlik katmanı ekler.
 
 Multi-Factor Authentication, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi korumaya yardımcı olur. Bir dizi doğrulama seçeneği (telefon araması, SMS mesajı veya mobil uygulama bildirimi veya doğrulama kodu) ve üçüncü taraf OATH belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
 
 Daha fazla bilgi edinin:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Azure Multi-Factor Authentication nasıl çalışır?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication nasıl çalışacaktır?](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 

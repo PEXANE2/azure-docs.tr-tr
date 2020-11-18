@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8bfe6f07fead700ae71bba1c28ccb13aa700513c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677347"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842779"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Performans için Azure Data Lake Storage 2. iyileştirin
 
@@ -45,9 +45,9 @@ Yukarıdaki kaynak donanım ve ağ bağlantısı sorunlarını giderdikten sonra
 
 | Araç               | Ayarlar     | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -a (Eşleyici)   | [Bağlantı](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| Paralellkopyalar    | [Bağlantı](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantı](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| DistCp            | -a (Eşleyici)   | [Bağlantısının](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| Paralellkopyalar    | [Bağlantısının](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantısının](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 
@@ -57,7 +57,7 @@ Veriler Data Lake Storage 2. depolandığında, dosya boyutu, dosya sayısı ve 
 
 Genellikle, HDInsight ve Azure Data Lake Analytics gibi analiz altyapılarının dosya başına ek yükü vardır. Verilerinizi birçok küçük dosya olarak depoluseniz bu, performansı olumsuz etkileyebilir. Genel olarak, daha iyi performans için verilerinizi daha büyük boyutlu dosyalara düzenleyin (256 MB/100 GB boyutunda). Bazı altyapıların ve uygulamaların boyutu 100 GB 'tan büyük dosyaları verimli bir şekilde işleme sorunu olabilir.
 
-Bazen veri işlem hatları, çok sayıda küçük dosya içeren ham veriler üzerinde sınırlı denetime sahiptir. Aşağı akış uygulamalarında kullanılmak üzere daha büyük dosyalar üreten bir "pişirme" işleminin olması önerilir.
+Bazen veri işlem hatları, çok sayıda küçük dosya içeren ham veriler üzerinde sınırlı denetime sahiptir. Genel olarak, sisteminizin aşağı akış uygulamaları tarafından kullanılmak üzere küçük dosyaları daha büyük parçalara toplayan bir işlem sıralaması olması önerilir.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Klasörlerdeki zaman serisi verilerini düzenleme
 

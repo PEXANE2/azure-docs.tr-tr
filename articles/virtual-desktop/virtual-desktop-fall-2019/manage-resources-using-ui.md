@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f96365bcdf64d19dc0b894f2f1230233b3137bc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462590"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842660"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonuyla Windows sanal masaüstü (klasik) Yönetim Aracı dağıtma
 
@@ -36,7 +36,7 @@ Aşağıdaki tarayıcılar yönetim aracıyla uyumludur:
 
 Yönetim aracını dağıtmadan önce, bir uygulama kaydı oluşturmak ve yönetim kullanıcı arabirimini dağıtmak için bir Azure Active Directory (Azure AD) kullanıcısına sahip olmanız gerekir. Bu Kullanıcı şunları sağlamalıdır:
 
-- Azure Multi-Factor Authentication (MFA) devre dışı
+- Azure AD Multi-Factor Authentication (MFA) devre dışı
 - Azure aboneliğinizde kaynak oluşturma izniniz var
 - Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
 
@@ -60,7 +60,7 @@ Azure Kaynak Yönetimi şablonunu dağıtmak için aşağıdaki yönergeleri izl
 3. Parametreleri girerken şunları yapın:
     - **Isserviceprincipal** parametresi için **false**' ı seçin.
     - Kimlik bilgileri için Multi-Factor Authentication devre dışı olan Azure AD kimlik bilgilerinizi girin. Bu kimlik bilgileri, Azure AD uygulaması ve Azure kaynakları oluşturmak için kullanılacaktır. Daha fazla bilgi edinmek için [Yönetim Aracı 'nı dağıtmak için](#what-you-need-to-deploy-the-management-tool)gerekenler bölümüne bakın.
-    - **ApplicationName**için, uygulamanız için Azure Active Directory kaydedilecek benzersiz bir ad kullanın. Bu ad Web uygulaması URL 'SI için de kullanılacaktır. Örneğin, "Apr3UX" gibi bir ad kullanabilirsiniz.
+    - **ApplicationName** için, uygulamanız için Azure Active Directory kaydedilecek benzersiz bir ad kullanın. Bu ad Web uygulaması URL 'SI için de kullanılacaktır. Örneğin, "Apr3UX" gibi bir ad kullanabilirsiniz.
 4. Parametreleri girdikten sonra hüküm ve koşulları kabul edin ve **satın al**' ı seçin.
 
 ## <a name="provide-consent-for-the-management-tool"></a>Yönetim aracı için onay sağlayın
@@ -72,20 +72,20 @@ Oturum açmadan önce yönetim aracını kullanmadan önce, yönetim aracı ile 
 > [!div class="mx-imgBorder"]
 > ![UI yönetim aracına izin verdiğiniz zaman girilen izinleri gösteren ekran görüntüsü.](../media/management-ui-delegated-permissions.png)
 
-Araçta oturum açmak için hangi kullanıcıyı kullanabileceğinizi öğrenmek için [Azure Active Directory Kullanıcı ayarları sayfanıza](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) gidin ve **kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin verebilmeleri**için değeri göz önünde bulabilirsiniz.
+Araçta oturum açmak için hangi kullanıcıyı kullanabileceğinizi öğrenmek için [Azure Active Directory Kullanıcı ayarları sayfanıza](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) gidin ve **kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin verebilmeleri** için değeri göz önünde bulabilirsiniz.
 
 > [!div class="mx-imgBorder"]
 > ![Kullanıcıların yalnızca kendi kullanıcıları için izin verip veremediğini gösteren ekran görüntüsü.](../media/management-ui-user-consent-allowed.png)
 
-- Değer **Evet**olarak ayarlanırsa, Azure Active Directory herhangi bir kullanıcı hesabıyla oturum açabilir ve yalnızca bu kullanıcı için onay sağlayabilirsiniz. Bununla birlikte, yönetim aracında daha sonra başka bir kullanıcıyla oturum açarsanız, aynı onayı tekrar gerçekleştirmeniz gerekir.
-- Değer **Hayır**olarak ayarlanırsa, Azure Active Directory genel yönetici olarak oturum açmanız ve dizindeki tüm kullanıcılar için yönetici onayı sağlamanız gerekir. Başka hiçbir Kullanıcı onay istemi istemez.
+- Değer **Evet** olarak ayarlanırsa, Azure Active Directory herhangi bir kullanıcı hesabıyla oturum açabilir ve yalnızca bu kullanıcı için onay sağlayabilirsiniz. Bununla birlikte, yönetim aracında daha sonra başka bir kullanıcıyla oturum açarsanız, aynı onayı tekrar gerçekleştirmeniz gerekir.
+- Değer **Hayır** olarak ayarlanırsa, Azure Active Directory genel yönetici olarak oturum açmanız ve dizindeki tüm kullanıcılar için yönetici onayı sağlamanız gerekir. Başka hiçbir Kullanıcı onay istemi istemez.
 
 
 İzin sağlamak için hangi kullanıcıyı kullanacağınızı belirledikten sonra, araca onay sağlamak için aşağıdaki yönergeleri izleyin:
 
 1. Azure kaynaklarınıza gidin, şablonda verdiğiniz adı taşıyan Azure App Services kaynağını seçin (örneğin, Apr3UX) ve onunla ilişkili URL 'ye gidin. Örneğin,  `https://rdmimgmtweb-210520190304.azurewebsites.net` .
 2. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
-3. Bir genel yönetici ile kimlik doğrulaması yaptıysanız, artık **kuruluşunuz adına izin**vermek için onay kutusunu işaretleyebilirsiniz. Onay sağlamak için **kabul et** ' i seçin.
+3. Bir genel yönetici ile kimlik doğrulaması yaptıysanız, artık **kuruluşunuz adına izin** vermek için onay kutusunu işaretleyebilirsiniz. Onay sağlamak için **kabul et** ' i seçin.
 
    > [!div class="mx-imgBorder"]
    > ![Kullanıcının veya yöneticinin göreceği tam izin sayfasını gösteren ekran görüntüsü.](../media/management-ui-consent-page.png)

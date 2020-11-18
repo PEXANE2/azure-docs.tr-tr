@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966330"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842626"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure 'da Linux görüntülerini getirme ve oluşturma
 
@@ -83,7 +83,7 @@ Yönetilen görüntüler, tek bir bölge ve abonelik içinde kullanmak üzere bi
 - Görüntülerin genel çoğaltması.
 - Daha kolay yönetim için görüntülerin sürümü oluşturma ve gruplama.
 - Kullanılabilirlik Alanları destekleyen bölgelerde, bölge yedekli depolama (ZRS) ile yüksek oranda kullanılabilir görüntüler. ZRS, ZGen hatalarıyla karşı daha iyi esnekliği sunar.
-- RBAC kullanarak abonelikler arasında ve hatta Active Directory (AD) kiracılar arasında paylaşım.
+- Azure RBAC kullanarak abonelikler arasında ve hatta Active Directory (AD) kiracılar arasında paylaşım yapın.
 - Her bölgedeki görüntü çoğaltmalarıyla dağıtımlarınızı ölçeklendirin.
 
 Yüksek düzeyde bir SıG oluşturursunuz ve şu konumda oluşturulur:

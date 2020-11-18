@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002288"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842643"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -29,16 +29,16 @@ Windows sanal masaüstü dağıtımınızda sorumlu olduğunuz güvenlik ihtiya�
 
 | Güvenlik gereksinimi | Müşteri bundan sorumlu mi? |
 |---------------|:-------------------------:|
-|Kimlik|Evet|
-|Kullanıcı cihazları (mobil ve bılgısayar)|Evet|
-|Uygulama güvenliği|Evet|
-|Oturum Ana Bilgisayarı işletim sistemi|Evet|
-|Dağıtım yapılandırması|Evet|
-|Ağ denetimleri|Evet|
-|Sanallaştırma denetim düzlemi|Hayır|
-|Fiziksel konaklar|Hayır|
-|Fiziksel ağ|Hayır|
-|Fiziksel veri merkezi|Hayır|
+|Kimlik|Yes|
+|Kullanıcı cihazları (mobil ve bılgısayar)|Yes|
+|Uygulama güvenliği|Yes|
+|Oturum Ana Bilgisayarı işletim sistemi|Yes|
+|Dağıtım yapılandırması|Yes|
+|Ağ denetimleri|Yes|
+|Sanallaştırma denetim düzlemi|No|
+|Fiziksel konaklar|No|
+|Fiziksel ağ|No|
+|Fiziksel veri merkezi|No|
 
 Müşterinin sorumlu olmadığı güvenlik ihtiyaçları Microsoft tarafından işlenir.
 
@@ -70,7 +70,7 @@ Windows sanal masaüstü 'nde birçok yerleşik güvenlik denetimi vardır. Bu b
 
 ### <a name="require-multi-factor-authentication"></a>Multi-Factor Authentication gerektir
 
-Windows sanal masaüstündeki tüm kullanıcılar ve yöneticiler için Multi-Factor Authentication gerektirme, tüm dağıtımınızın güvenliğini artırır. Daha fazla bilgi için bkz. [Windows sanal masaüstü Için Azure Multi-Factor Authentication 'Yi etkinleştirme](set-up-mfa.md).
+Windows sanal masaüstündeki tüm kullanıcılar ve yöneticiler için Multi-Factor Authentication gerektirme, tüm dağıtımınızın güvenliğini artırır. Daha fazla bilgi için bkz. [Windows sanal masaüstü Için Azure AD Multi-Factor Authentication etkinleştirme](set-up-mfa.md).
 
 ### <a name="enable-conditional-access"></a>Koşullu erişimi etkinleştir
 
@@ -80,7 +80,7 @@ Windows sanal masaüstündeki tüm kullanıcılar ve yöneticiler için Multi-Fa
 
 Denetim günlüğü toplamayı etkinleştirmek, Windows sanal masaüstü ile ilgili Kullanıcı ve yönetici etkinliğini görüntülemenize olanak sağlar. Anahtar denetim günlüklerine bazı örnekler şunlardır:
 
--   [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure Etkinlik Günlüğü](../azure-monitor/platform/activity-log-collect.md)
 -   [Etkinlik günlüğünü Azure Active Directory](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Oturum Konakları](../azure-monitor/platform/agent-windows.md)

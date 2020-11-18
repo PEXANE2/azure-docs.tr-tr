@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e5456c53ca891a7c88797f9661a6a3b9b9935e08
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 208e99f61694f5a81a98dbc649e2a6035f57891b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660917"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842592"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Multi-Factor Authentication için Azure VPN ağ geçidi RADIUS kimlik doğrulamasını NPS sunucusuyla tümleştirme 
 
@@ -49,9 +49,9 @@ MFA 'yı etkinleştirmek için kullanıcıların şirket içi veya bulut ortamı
 
 
  
-### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2. adım Azure MFA için NPS 'YI yapılandırma
+### <a name="step-2-configure-the-nps-for-azure-ad-mfa"></a>2. adım Azure AD MFA için NPS 'YI yapılandırma
 
-1. NPS sunucusunda, [Azure MFA IÇIN NPS uzantısını yükler](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
+1. NPS sunucusunda [Azure AD MFA IÇIN NPS uzantısını yükler](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
 2. NPS konsolunu açın, **RADIUS istemcileri**' ne sağ tıklayın ve ardından **Yeni**' yi seçin. Aşağıdaki ayarları belirterek RADIUS istemcisini oluşturun:
 
     - **Kolay ad**: herhangi bir ad yazın.
@@ -81,5 +81,5 @@ MFA 'yı etkinleştirmek için kullanıcıların şirket içi veya bulut ortamı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
-- [Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme](../active-directory/authentication/howto-mfa-nps-extension.md)
+- [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
+- [Mevcut NPS altyapınızı Azure AD Multi-Factor Authentication tümleştirin](../active-directory/authentication/howto-mfa-nps-extension.md)
