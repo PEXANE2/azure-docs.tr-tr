@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf7e389fc4a8a8dfa88691dc034611cae3471731
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883818"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655349"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı 'Nı Azure Sentinel 'e bağlama
 
-[Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) Bağlayıcısı, Azure Sentinel 'in çalışma alanınızdaki herhangi bir Windows makineden gelişmiş güvenlik günlükleri Ile Windows Defender güvenlik duvarı 'nı kolayca almasına olanak tanır. Bu bağlantı, çalışma kitaplarınızda Windows Güvenlik Duvarı olaylarını görüntülemenize ve çözümlemenize, bunları özel uyarılar oluşturmakta ve güvenlik araştırmalarınıza ekleyerek kuruluşunuzun ağına daha fazla bilgi vererek ve güvenlik işlemleri yeteneklerini iyileştirmenize olanak sağlar. 
+[Gelişmiş Güvenlik Özellikli Windows Defender güvenlik duvarı](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) Bağlayıcısı, Azure Sentinel 'in çalışma alanınızdaki herhangi bir Windows makineden gelişmiş güvenlik günlükleri Ile Windows Defender güvenlik duvarı 'nı kolayca almasına olanak tanır. Bu bağlantı, çalışma kitaplarınızda Windows Güvenlik Duvarı olaylarını görüntülemenize ve çözümlemenize, bunları özel uyarılar oluşturmakta ve güvenlik araştırmalarınıza ekleyerek kuruluşunuzun ağına daha fazla bilgi vererek ve güvenlik işlemleri yeteneklerini iyileştirmenize olanak sağlar. 
 
 Çözüm, Log Analytics aracısının yüklendiği Windows makinelerden Windows Güvenlik Duvarı olaylarını toplar. 
 
@@ -33,11 +33,11 @@ ms.locfileid: "90883818"
 >
 > - Azure Güvenlik Merkezi 'nden Azure Defender uyarıları zaten Azure Sentinel çalışma alanına toplanmışsa, bu bağlayıcı aracılığıyla Windows Güvenlik Duvarı çözümünü etkinleştirmeniz gerekmez. Ancak, bunu etkinleştirirseniz yinelenen verilere neden olmaz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - İzlemek istediğiniz makinelerin bağlı olduğu çalışma alanı üzerinde okuma ve yazma izinlerinizin olması gerekir.
 
-- Tüm **Azure Sentinel** rollerine ek olarak, bu çalışma alanındaki securityınsights çözümünde **Log Analytics katkıda** bulunan rolüne atanmalısınız. [Daha fazla bilgi edinin](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
+- Tüm **Azure Sentinel** rollerine ek olarak, bu çalışma alanındaki securityınsights çözümünde **Log Analytics katkıda** bulunan rolüne atanmalısınız. [Daha fazla bilgi](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="enable-the-connector"></a>Bağlayıcıyı etkinleştirme 
 
@@ -49,7 +49,7 @@ ms.locfileid: "90883818"
 
 - **Windows makineleriniz Azure 'da ise:**
 
-    1. **Azure Windows sanal makinesine aracıyı yüklemeyi**seçin.
+    1. **Azure Windows sanal makinesine aracıyı yüklemeyi** seçin.
 
     1. Görüntülenen **Azure Windows sanal makineler Için yükleme & yükleme aracısı >** bağlantısını tıklatın.
 
@@ -61,13 +61,13 @@ ms.locfileid: "90883818"
 
 - **Windows makineniz bir Azure VM değilse:**
 
-    1. **Azure olmayan Windows makinesine aracıyı yüklemeyi**seçin.
+    1. **Azure olmayan Windows makinesine aracıyı yüklemeyi** seçin.
 
     1. Görüntülenen **Azure olmayan Windows makineleri Için indirme & yükleme aracısı >** bağlantısını tıklatın.
 
-    1. **Aracılar yönetimi** bölmesinde, gerektiğinde **Windows agent 'ı (64 bit) Indir** veya **Windows Agent 'ı (32 bit) İndir**seçeneğini belirleyin.
+    1. **Aracılar yönetimi** bölmesinde, gerektiğinde **Windows agent 'ı (64 bit) Indir** veya **Windows Agent 'ı (32 bit) İndir** seçeneğini belirleyin.
 
-    1. **Çalışma alanı kimliği**, **birincil anahtar**ve **İkincil anahtar** dizelerini bir metin dosyasına kopyalayın. Bu dosyayı ve indirilen yükleme dosyasını Windows makinenize kopyalayın. Yükleme dosyasını çalıştırın ve istendiğinde, yükleme sırasında metin dosyasına KIMLIĞI ve anahtar dizelerini girin.
+    1. **Çalışma alanı kimliği**, **birincil anahtar** ve **İkincil anahtar** dizelerini bir metin dosyasına kopyalayın. Bu dosyayı ve indirilen yükleme dosyasını Windows makinenize kopyalayın. Yükleme dosyasını çalıştırın ve istendiğinde, yükleme sırasında metin dosyasına KIMLIĞI ve anahtar dizelerini girin.
 
     1. **Windows Güvenlik Duvarı** bölmesine geri dönün.
 
@@ -77,14 +77,13 @@ ms.locfileid: "90883818"
 
 - Windows Güvenlik Duvarı günlük verilerinize ilişkin Öngörüler almak için **Windows Güvenlik Duvarı** veri Bağlayıcısı ile birlikte sunulan önerilen çalışma kitaplarına ve sorgu örneklerine bakın.
 
-- **Günlüklerde**Windows Güvenlik Duvarı verilerini sorgulamak için, sorgu penceresine **WindowsFirewall** yazın.
+- **Günlüklerde** Windows Güvenlik Duvarı verilerini sorgulamak için, sorgu penceresine **WindowsFirewall** yazın.
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
  
-Windows Güvenlik Duvarı günlükleri yalnızca yerel günlük dosyası kapasiteye ulaştığında Azure Sentinel 'e gönderildiğinden, günlüğü 4096 KB 'ın varsayılan boyutunda bırakmak büyük olasılıkla yüksek toplama gecikmesi oluşmasına neden olur. Günlük dosyası boyutunu azaltarak gecikme süresini düşürebilirsiniz. [Windows Güvenlik Duvarı günlüğünü yapılandırma](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)yönergelerine bakın. Mümkün olan en düşük günlük boyutunu (1 KB) tanımlarken, koleksiyon gecikmesini neredeyse ortadan kaldıracak, bu durum da yerel makinenin performansını olumsuz yönde etkileyebilir. 
+Windows Güvenlik Duvarı günlükleri yalnızca yerel günlük dosyası kapasiteye ulaştığında Azure Sentinel 'e gönderildiğinden, günlüğü 4096 KB 'ın varsayılan boyutunda bırakmak büyük olasılıkla yüksek toplama gecikmesi oluşmasına neden olur. Günlük dosyası boyutunu azaltarak gecikme süresini düşürebilirsiniz. [Windows Güvenlik Duvarı günlüğünü yapılandırma](/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)yönergelerine bakın. Mümkün olan en düşük günlük boyutunu (1 KB) tanımlarken, koleksiyon gecikmesini neredeyse ortadan kaldıracak, bu durum da yerel makinenin performansını olumsuz yönde etkileyebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Windows Güvenlik Duvarı 'nı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-

@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: e9e892ae08c65ee5c5008bbdc1b419d8dec30183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 756c245fe06ae81545a125dd98f30fb27fdff2dd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941306"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655588"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender 'dan Azure Sentinel 'e veri bağlama
 
 > [!IMPORTANT]
 >
-> **Microsoft 365 Defender** daha önce **Microsoft tehdit koruması** veya **MTP**olarak biliniyordu.
+> **Microsoft 365 Defender** daha önce **Microsoft tehdit koruması** veya **MTP** olarak biliniyordu.
 >
-> **Uç nokta Için Microsoft Defender, daha** önce **Microsoft Defender Gelişmiş tehdit koruması** veya **mdadtp**olarak biliniyordu.
+> **Uç nokta Için Microsoft Defender, daha** önce **Microsoft Defender Gelişmiş tehdit koruması** veya **mdadtp** olarak biliniyordu.
 >
 > Eski adların bir süre içinde hala kullanımda olduğunu görebilirsiniz.
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
-Yeni [Microsoft 365 Defender](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-threat-protection) Bağlayıcısı, bir dizi Ham olay verilerinin Azure Sentinel 'e Microsoft 365 Defender **'a akışını sağlamanıza** olanak tanır. 
+Yeni [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) Bağlayıcısı, bir dizi Ham olay verilerinin Azure Sentinel 'e Microsoft 365 Defender **'a akışını sağlamanıza** olanak tanır. 
 
-[Uç nokta Için Microsoft Defender 'ın (MDADTP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) Microsoft 365 Defender güvenliği şemsiye tümleştirmesiyle, artık Microsoft Defender 'ı, Microsoft 365 Defender bağlayıcısını kullanarak uç nokta [Gelişmiş](https://aka.ms/mdatpAH) arama olayları Için toplayabilir ve bunları Azure Sentinel çalışma alanınızdaki yeni amaç tarafından oluşturulan tablolarda doğrudan akışla aktarabilirsiniz. Bu tablolar Microsoft 365 Defender portalında kullanılan şemaya kurulmuştur. böylece, gelişmiş arama günlüklerinin tamamına tam erişim sağlar ve şunları yapabilirsiniz:
+[Uç nokta Için Microsoft Defender 'ın (MDADTP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) Microsoft 365 Defender güvenliği şemsiye tümleştirmesiyle, artık Microsoft Defender 'ı, Microsoft 365 Defender bağlayıcısını kullanarak uç nokta [Gelişmiş](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview) arama olayları Için toplayabilir ve bunları Azure Sentinel çalışma alanınızdaki yeni amaç tarafından oluşturulan tablolarda doğrudan akışla aktarabilirsiniz. Bu tablolar Microsoft 365 Defender portalında kullanılan şemaya kurulmuştur. böylece, gelişmiş arama günlüklerinin tamamına tam erişim sağlar ve şunları yapabilirsiniz:
 
 - Mevcut Microsoft Defender ATP gelişmiş hunme sorgularınızı kolayca Azure Sentinel 'e kopyalayın.
 
@@ -45,11 +45,11 @@ Yeni [Microsoft 365 Defender](https://docs.microsoft.com/microsoft-365/security/
 
 > [!IMPORTANT]
 >
-> Microsoft 365 Defender Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Microsoft 365 Defender Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Uç nokta [dağıtımı Için Microsoft Defender 'ı ayarlama](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)bölümünde açıklandığı gibi, uç nokta Için Microsoft Defender için geçerli bir lisansa sahip olmanız gerekir. 
+- Uç nokta [dağıtımı Için Microsoft Defender 'ı ayarlama](/windows/security/threat-protection/microsoft-defender-atp/licensing)bölümünde açıklandığı gibi, uç nokta Için Microsoft Defender için geçerli bir lisansa sahip olmanız gerekir. 
 
 - Kullanıcıya Kiracıdaki genel yönetici rolü atanmalıdır (Azure Active Directory).
 
@@ -101,4 +101,4 @@ let Now = now();
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Microsoft 365 Defender bağlayıcısını kullanarak uç nokta için Microsoft Defender 'dan Azure Sentinel 'e Ham olay verileri almayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.

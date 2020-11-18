@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 70f350204796099e02f7afe829a6e2e1fdf653c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b7bc87f83925baed15bc6a411f5b4e4f78df6cc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613130"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654516"
 ---
 # <a name="edit-storage-targets"></a>Depolama hedeflerini düzenleme
 
@@ -40,7 +40,7 @@ Bir depolama hedefini kaldırmak için **depolama hedefleri** sayfasını açın
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 Önbellekten bir depolama hedefini silmek için [az HPC-Cache Storage-Target Remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) kullanın.
 
@@ -79,7 +79,7 @@ Değişiklik yaptıktan sonra, depolama hedefini güncelleştirmek için **Tamam
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 Azure CLı ile bir BLOB depolama hedefinin ad alanını değiştirmek için [az HPC-Cache blob-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update)komutunu kullanın. Yalnızca `--virtual-namespace-path` değer değiştirilebilir.
 
@@ -117,7 +117,7 @@ Ad alanı değerlerini güncelleştirmek için Azure HPC önbelleğiniz için **
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 ``--junction``Ad alanı yolunu, NFS dışarı aktarmayı veya dışarı aktarma alt dizinini değiştirmek için [az HPC-Cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) komutundaki seçeneğini kullanın.
 
@@ -159,7 +159,7 @@ Yeni bir kullanım modeli seçmek için açılan seçiciyi kullanın. Depolama h
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 [Az HPC-Cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target?view=azure-cli-latest#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) komutunu kullanın.
 

@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400171"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654992"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Sanal Masaüstü dağıtımlarını korumak için Azure Güvenlik Duvarı kullanma
 
@@ -22,7 +22,7 @@ Windows sanal masaüstü, Azure 'da çalışan bir masaüstü ve uygulama sanall
 
 Azure Güvenlik Duvarı 'nı kullanarak Windows sanal masaüstü ana bilgisayar havuzunuza ek koruma sağlamak için bu makaledeki yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 
  - Dağıtılan bir Windows sanal masaüstü ortamı ve konak Havuzu.
@@ -36,7 +36,7 @@ Windows sanal masaüstü ortamları hakkında daha fazla bilgi edinmek için bkz
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, düzgün şekilde çalışmak için birkaç tam etki alanı adına (FQDN) erişime sahip olmalıdır. Azure Güvenlik Duvarı, bu yapılandırmayı basitleştirmek için bir Windows sanal masaüstü FQDN etiketi sağlar. Giden Windows sanal masaüstü platformu trafiğine izin vermek için aşağıdaki adımları kullanın:
 
 - Azure Güvenlik Duvarı 'nı dağıtın ve Windows sanal masaüstü ana bilgisayar havuzu alt ağı Kullanıcı tanımlı yol (UDR) kullanarak tüm trafiği Azure Güvenlik Duvarı aracılığıyla yönlendirin. Varsayılan yol artık güvenlik duvarını işaret ediyor.
-- Bir uygulama kuralı koleksiyonu oluşturun ve *Windowsvirtualdesktop* FQDN etiketini etkinleştirmek için bir kural ekleyin. Kaynak IP adresi aralığı konak havuzunun sanal ağı, protokol **https**ve hedef Ise **windowsvirtualdesktop**' dır.
+- Bir uygulama kuralı koleksiyonu oluşturun ve *Windowsvirtualdesktop* FQDN etiketini etkinleştirmek için bir kural ekleyin. Kaynak IP adresi aralığı konak havuzunun sanal ağı, protokol **https** ve hedef Ise **windowsvirtualdesktop**' dır.
 
 - Windows sanal masaüstü konak havuzunuzun gerekli depolama ve hizmet veri yolu hesaplarının kümesi dağıtıma özgüdür, bu nedenle WindowsVirtualDesktop FQDN etiketinde henüz yakalanmamıştır. Bunu aşağıdaki yollarla ele alabilirsiniz:
 
@@ -63,7 +63,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, düzgün
 
 Kuruluşunuzun ihtiyaçlarına bağlı olarak son kullanıcılarınız için güvenli giden Internet erişimini etkinleştirmek isteyebilirsiniz. İzin verilen hedeflerin listesinin iyi tanımlanmış olduğu durumlarda (örneğin, [Microsoft 365 erişim](/microsoft-365/enterprise/microsoft-365-ip-web-service)), gerekli erişimi yapılandırmak Için Azure Güvenlik Duvarı uygulamasını ve ağ kurallarını kullanabilirsiniz. Bu, en iyi performansı elde etmek için son kullanıcı trafiğini doğrudan Internet 'e yönlendirir.
 
-Mevcut bir şirket içi güvenli Web ağ geçidini kullanarak giden Kullanıcı Internet trafiğini filtrelemek istiyorsanız, Web tarayıcılarını veya Windows sanal masaüstü ana bilgisayar havuzunda çalışan diğer uygulamaları açık bir ara sunucu yapılandırmasıyla yapılandırabilirsiniz. Örneğin, [Ara sunucu ayarlarını yapılandırmak Için Microsoft Edge komut satırı seçeneklerini kullanma](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings)konusuna bakın. Bu proxy ayarları yalnızca son kullanıcı Internet erişiminizi etkiler ve Windows sanal masaüstü platformu giden trafiğe doğrudan Azure Güvenlik Duvarı aracılığıyla izin verir.
+Mevcut bir şirket içi güvenli Web ağ geçidini kullanarak giden Kullanıcı Internet trafiğini filtrelemek istiyorsanız, Web tarayıcılarını veya Windows sanal masaüstü ana bilgisayar havuzunda çalışan diğer uygulamaları açık bir ara sunucu yapılandırmasıyla yapılandırabilirsiniz. Örneğin, [Ara sunucu ayarlarını yapılandırmak Için Microsoft Edge komut satırı seçeneklerini kullanma](/deployedge/edge-learnmore-cmdline-options-proxy-settings)konusuna bakın. Bu proxy ayarları yalnızca son kullanıcı Internet erişiminizi etkiler ve Windows sanal masaüstü platformu giden trafiğe doğrudan Azure Güvenlik Duvarı aracılığıyla izin verir.
 
 ## <a name="additional-considerations"></a>Diğer konular
 

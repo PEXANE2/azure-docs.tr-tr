@@ -3,12 +3,12 @@ title: Azure Lab Services-paylaşılan görüntü galerisine özel bir görünt�
 description: Paylaşılan görüntü galerisine özel bir görüntü yüklemeyi açıklar. University BT departmanları, özellikle yararlı olan görüntüleri içeri aktarmayı bulur.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: cd701215eb375b7f9b867ba05082afc7ed348ff7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712417"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654652"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>Paylaşılan Görüntü Galerisi’ne özel görüntü yükleme
 
@@ -35,31 +35,36 @@ Fiziksel laboratuvar ortamından bir VHD oluşturmak için birçok seçenek mevc
        
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/connect-virtual-hard-disk.png" alt-text="Sanal sabit diski bağlama":::   
     1. VM 'yi normalde olduğu gibi yansıın.
-1. [VM 'ye bağlanın ve Azure için hazırlayın](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
-    1. [Azure için Windows yapılandırmalarını ayarlama](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#set-windows-configurations-for-azure)
-    1. [VM bağlantısı sağlamak için gereken en düşük Windows hizmetlerini denetleyin](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#check-the-windows-services)
-    1. [Uzak Masaüstü kayıt defteri ayarlarını Güncelleştir](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#update-remote-desktop-registry-settings)
-    1. [Windows güvenlik duvarı kurallarını yapılandırma](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#configure-windows-firewall-rules)
+1. [VM 'ye bağlanın ve Azure için hazırlayın](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
+    1. [Azure için Windows yapılandırmalarını ayarlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)
+    1. [VM bağlantısı sağlamak için gereken en düşük Windows hizmetlerini denetleyin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)
+    1. [Uzak Masaüstü kayıt defteri ayarlarını Güncelleştir](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)
+    1. [Windows güvenlik duvarı kurallarını yapılandırma](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)
     1. Windows güncelleştirmelerini yükler
-    1. [Azure VM aracısını ve ek yapılandırmayı burada gösterildiği gibi yükleyip](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#complete-the-recommended-configurations) 
+    1. [Azure VM aracısını ve ek yapılandırmayı burada gösterildiği gibi yükleyip](../virtual-machines/windows/prepare-for-upload-vhd-image.md#complete-the-recommended-configurations) 
     
-    Yukarıdaki adımlar, özelleştirilmiş bir görüntü oluşturur. Genelleştirilmiş bir görüntü oluşturuyorsanız, [Sysprep 'i](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#determine-when-to-use-sysprep)de çalıştırmanız gerekecektir. <br/>
+    Yukarıdaki adımlar, özelleştirilmiş bir görüntü oluşturur. Genelleştirilmiş bir görüntü oluşturuyorsanız, [Sysprep 'i](../virtual-machines/windows/prepare-for-upload-vhd-image.md#determine-when-to-use-sysprep)de çalıştırmanız gerekecektir. <br/>
         Görüntüde içerilen yazılımın gerektirdiği Kullanıcı dizinini (dosya, Kullanıcı hesabı bilgisi vb. içerebilir) korumak istiyorsanız, özelleştirilmiş bir görüntü oluşturmalısınız.
 1. **Hyper-V** varsayılan olarak bir **VHDX** dosyası OLUŞTURDUĞUNDAN, bunu bir VHD dosyasına dönüştürmeniz gerekir.
     1. **Hyper-V Yöneticisi**  ->  **eylem**  ->  **düzenleme diski**' ne gidin.
     1. Burada, diski bir VHDX 'ten bir VHD 'ye **dönüştürme** seçeneğiniz vardır
     1. Disk boyutunu genişletmeye çalışırken 128 GB 'ı aşmadığından emin olun.        
-        :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="Sanal sabit diski bağlama" sekmesini kullanabilirsiniz. Daha önce belirtildiği gibi, boyutun > 128 GB olmaması gerekir.
+        :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="Eylem seçin":::   
+1. Yönetilen disk oluşturmak için VHD 'yi Azure 'a yükleyin.
+    1. [BIR VHD 'Yi Azure 'A yükleme veya yönetilen bir diski başka bir bölgeye kopyalama](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)başlığı altında açıklandığı gibi, komut satırından Depolama Gezgini veya AzCopy kullanabilirsiniz.        
+    Makineniz uyku veya kilitler 'e gittiğinde, karşıya yükleme işlemi kesintiye uğrar ve başarısız olabilir.
+    1. Bu adımın sonucunda, artık Azure portal görebileceğiniz bir yönetilen disk vardır. 
+        Disk boyutunuzu seçmek için Azure portal "Size\Performance" sekmesini kullanabilirsiniz. Daha önce belirtildiği gibi, boyutun > 128 GB olmaması gerekir.
 1. Yönetilen diskin anlık görüntüsünü alın.
-    Bu, PowerShell 'den, Azure portal kullanılarak veya Depolama Gezgini içinden, [Portal veya PowerShell kullanarak anlık görüntü oluşturma](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)bölümünde açıklandığı gibi yapılabilir.
+    Bu, PowerShell 'den, Azure portal kullanılarak veya Depolama Gezgini içinden, [Portal veya PowerShell kullanarak anlık görüntü oluşturma](../virtual-machines/windows/snapshot-copy-managed-disk.md)bölümünde açıklandığı gibi yapılabilir.
 1. Paylaşılan görüntü galerisinde, bir görüntü tanımı ve sürümü oluşturun:
-    1. [Bir görüntü tanımı oluşturun](https://docs.microsoft.com/azure/virtual-machines/windows/shared-images-portal#create-an-image-definition).
+    1. [Bir görüntü tanımı oluşturun](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition).
     1. Ayrıca, özelleştirilmiş/Genelleştirilmiş görüntü oluşturup oluşturmadığınızda burada belirtmeniz gerekir.
 1. Azure Lab Services ' de laboratuvar oluşturun ve paylaşılan görüntü galerisindeki özel görüntüyü seçin.
 
-    İşletim sistemi özgün Hyper-V VM 'sine yüklendikten sonra diski genişlettiyseniz, ayrılmamış disk alanını kullanmak için Windows 'daki C sürücüsünü de genişletmeniz gerekir. Bunu yapmak için, laboratuvar oluşturulduktan sonra şablon VM 'de oturum açın, [temel bir birimi genişletme](https://docs.microsoft.com/windows-server/storage/disk-management/extend-a-basic-volume)bölümünde gösterilene benzer adımları uygulayın. Bunu, Kullanıcı arabirimi ve PowerShell kullanarak yapmak için seçenekler vardır.
+    İşletim sistemi özgün Hyper-V VM 'sine yüklendikten sonra diski genişlettiyseniz, ayrılmamış disk alanını kullanmak için Windows 'daki C sürücüsünü de genişletmeniz gerekir. Bunu yapmak için, laboratuvar oluşturulduktan sonra şablon VM 'de oturum açın, [temel bir birimi genişletme](/windows-server/storage/disk-management/extend-a-basic-volume)bölümünde gösterilene benzer adımları uygulayın. Bunu, Kullanıcı arabirimi ve PowerShell kullanarak yapmak için seçenekler vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Paylaşılan görüntü galerisine genel bakış](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
+* [Paylaşılan görüntü galerisine genel bakış](../virtual-machines/windows/shared-image-galleries.md)
 * [Paylaşılan görüntü Galerisi 'ni kullanma](how-to-use-shared-image-gallery.md)

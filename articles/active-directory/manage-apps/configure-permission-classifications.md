@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b72530868b2b12e5f95e79be6ad5a2d7ce170b62
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427673"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654686"
 ---
 # <a name="configure-permission-classifications"></a>İzin sınıflandırmalarını yapılandırma
 
@@ -35,7 +35,7 @@ ms.locfileid: "92427673"
 Azure portal kullanarak izinleri sınıflandırmak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) [genel yönetici](../roles/permissions-reference.md#global-administrator--company-administrator), [Uygulama Yöneticisi](../roles/permissions-reference.md#application-administrator)veya [bulut uygulama Yöneticisi](../roles/permissions-reference.md#cloud-application-administrator) olarak oturum açın
-1. **Azure Active Directory**  >  **kurumsal uygulamaların**  >  **onay ve**izin  >  **izin sınıflandırmalarını**seçin.
+1. **Azure Active Directory**  >  **kurumsal uygulamaların**  >  **onay ve** izin  >  **izin sınıflandırmalarını** seçin.
 1. Başka bir izni "düşük etki" olarak sınıflandırmak için **Izin Ekle** ' yi seçin.
 1. API 'YI seçin ve ardından temsilci izinleri seçin.
 
@@ -45,7 +45,7 @@ Bu örnekte, çoklu oturum açma için gereken en düşük izin kümesini sını
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-İzinleri sınıflandırmak için en son Azure AD PowerShell önizleme modülünü [Azureadpreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)' i kullanabilirsiniz. İzin sınıflandırmaları, izinleri yayımlayan API 'nin **ServicePrincipal** nesnesinde yapılandırılır.
+İzinleri sınıflandırmak için en son Azure AD PowerShell önizleme modülünü [Azureadpreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)' i kullanabilirsiniz. İzin sınıflandırmaları, izinleri yayımlayan API 'nin **ServicePrincipal** nesnesinde yapılandırılır.
 
 #### <a name="list-the-current-permission-classifications-for-an-api"></a>Bir API için geçerli izin sınıflandırmalarını listeleme
 
@@ -123,7 +123,7 @@ Daha fazlasını öğrenin:
 * [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 * [Uygulama onayını yönetmeyi ve izin isteklerini değerlendirmeyi öğrenin](manage-consent-requests.md)
 * [Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
-* [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
+* [Microsoft Identity platformunda izinler ve onay](../develop/v2-permissions-and-consent.md)
 
 Yardım almak veya sorularınıza yanıt bulmak için:
 * [StackOverflow üzerinde Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918477"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653547"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Konuşma hizmeti kapsayıcıları hakkında sık sorulan sorular (SSS)
 
@@ -43,7 +43,7 @@ Ayrıca, [Gelişmiş vektör uzantısı (AVX2)](speech-container-howto.md#advanc
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Son olarak, değişken kullanarak *tek* bir kapsayıcı içinde istediğiniz kod çözücülerinin sayısını ayarlayabilirsiniz `DECODER MAX_COUNT` . Bu nedenle, temel olarak SKU 'nızda (CPU/bellek) başlamamız gerekir ve bundan en iyi şekilde nasıl yararlanabilmeniz tavsiye ederiz. Harika bir başlangıç noktası, önerilen konak makinesi kaynak belirtimlerine işaret eder.
+Değişken kullanarak *tek* bir kapsayıcı içinde istediğiniz kod çözücülerinin sayısını ayarlayabilirsiniz `DECODER MAX_COUNT` . Bu nedenle, temel olarak SKU 'nızda (CPU/bellek) başlamamız gerekir ve bundan en iyi şekilde nasıl yararlanabilmeniz tavsiye ederiz. Harika bir başlangıç noktası, önerilen konak makinesi kaynak belirtimlerine işaret eder.
 
 <br>
 </details>
@@ -290,10 +290,10 @@ Bilgi, 1,8 sürümünde düzeltildi.
 
 Hangi işlevlerin test edilmesi ve SDK ve REST API 'Lerinin nasıl test edilmesi de dahil olmak üzere, şu test ölçümlerini doldurmaya yardımcı olabilirsiniz misiniz? Özellikle, var olan belge/örnekten görmeyen "Etkileşimli" ve "konuşma" farklılıkları.
 
-| Uç Noktası                                                | İşlevsel test                                                   | SDK | REST API |
+| Uç Nokta                                                | İşlevsel test                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Metni sentezleştirme (metinden konuşmaya)                                  |     | Evet      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Bilişsel Hizmetler-Şirket içi dikte v1 WebSocket uç noktası        | Evet | Hayır       |
+| `/speech/synthesize/cognitiveservices/v1`               | Metni sentezleştirme (metinden konuşmaya)                                  |     | Yes      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Bilişsel Hizmetler-Şirket içi dikte v1 WebSocket uç noktası        | Yes | Hayır       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Bilişsel Hizmetler-Şirket içi etkileşimli v1 WebSocket uç noktası  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Bilişsel Hizmetler-Şirket içi konuşma v1 WebSocket uç noktası |     |          |
 
@@ -419,7 +419,7 @@ Kaç tane eş zamanlı istek 4 çekirdek, 4 GB RAM işleme olacaktır? Örneğin
 |-----------------------|---------------------|---------------------|
 | Özel metin okuma | 1 çekirdek, 2 GB bellek | 2 çekirdek, 3 GB bellek |
 
-***
+**_
 
 - Her çekirdek en az 2,6 GHz veya daha hızlı olmalıdır.
 - Dosyalar için, daraltma konuşma SDK 'sında, 2x (ilk 5 saniyelik ses azaltmaz) olacaktır.
@@ -438,7 +438,7 @@ Sahip olduğunuz toplam ses saati sayısını göz önünde bulundurun. Sayı b�
 <b>Konuşma kapsayıcısı noktalama işaretlerini destekliyor mu?</b>
 </summary>
 
-**Cevap:** Şirket içi kapsayıcıda büyük küçük harfe (ıG) sahipsiniz. Noktalama, dile bağımlıdır ve Çince ve Japonca dahil bazı dillerde desteklenmez.
+_ *Cevap:** büyük harfle (IDA) Şirket içi kapsayıcıda mevcut. Noktalama, dile bağımlıdır ve Çince ve Japonca dahil bazı dillerde desteklenmez.
 
 Mevcut kapsayıcılar için örtülü ve temel noktalama desteğiniz *var,* ancak `off` Varsayılan olarak. Bunun anlamı, `.` örneğinizdeki karakteri alabileceğiniz, ancak karakteri belirleyebileceğinize ilişkin bir şeydir `。` . Bu örtük mantığı etkinleştirmek için, konuşma SDK 'sını kullanarak Python 'da nasıl yapılacağını gösteren bir örnek aşağıda verilmiştir (diğer dillerde de benzerdir):
 
@@ -480,6 +480,16 @@ Content-Length: 0
 
 **Cevap:** Konuşma-metin kapsayıcısında REST API desteklemiyoruz, yalnızca konuşma SDK 'Sı aracılığıyla WebSockets destekliyoruz. Her zaman resmi belgelere başvurun, bkz. [sorgu tahmini uç noktaları](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
+<br>
+</details>
+
+
+<details>
+<summary>
+<b> Kapsayıcı kök olmayan kullanıcı olarak neden çalışıyor? Bu nedenle hangi sorunlar meydana gelebilir?</b>
+</summary>
+
+**Cevap:** Kapsayıcı içindeki varsayılan kullanıcının kök olmayan bir kullanıcı olduğunu unutmayın. Bu işlem, kapsayıcıyı kaçış ve ana bilgisayar düğümüne ilerletilen izinleri alma işlemlerine karşı koruma sağlar. Varsayılan olarak, OpenShift kapsayıcı platformu gibi bazı platformlar, rastgele atanan bir kullanıcı KIMLIĞI kullanarak kapsayıcıları çalıştırarak bunu zaten yapamıştı. Bu platformlar için, kök olmayan kullanıcının yazma gerektiren herhangi bir harici eşlenmiş birime yazma izinleri olması gerekir. Örneğin, bir günlük klasörü veya özel bir model indirme klasörü.
 <br>
 </details>
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 7c011c55728db53f0c64ac063c3372a610ef8f2f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542465"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654018"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
@@ -70,7 +70,7 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [Çoklu oturum açma (SSO) nedir?](what-is-single-sign-on.md)
 - [Azure Active Directory fazla ayrıcalıklı veya şüpheli uygulamalarda işlem yapın](manage-application-permissions.md)
 - [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma](add-application-portal-configure.md)
-- [Microsoft Graph API ile SAML tabanlı SSO uygulama yapılandırmasını otomatikleştirme](application-saml-sso-configure-api.md)
+- [Microsoft Graph API ile SAML tabanlı SSO uygulama yapılandırmasını otomatikleştirme](/graph/application-saml-sso-configure-api)
 
 
 ## <a name="july-2020"></a>Temmuz 2020

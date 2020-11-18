@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f034cd07b481f9d72cb3f753b30e1779bf672ac2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491945"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655060"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -75,7 +75,7 @@ Azure yay bulutu, Java 8 ve 11 ' i destekler. Bkz. [Java çalışma zamanı ve i
 
 Uygulama Genel Bakış sekmesinde ve [Azure izleyici](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer) sekmesinde ölçümleri bulun.
 
-Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](../azure-monitor/platform/data-platform-logs.md)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring* ' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
+Azure Spring Cloud, Azure depolama, EventHub ve [Log Analytics](../azure-monitor/platform/data-platform-logs.md)yay bulut uygulaması günlüklerini ve ölçümlerini vermeyi destekler. Log Analytics tablo adı *Appplatformlogsforspring*' dir. Nasıl etkinleştireceğinizi öğrenmek için bkz. [Tanılama Hizmetleri](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure yay bulutu dağıtılmış izlemeyi destekliyor mu?
 
@@ -93,6 +93,21 @@ Evet. Daha fazla bilgi için bkz. [öğretici: Azure Spring Cloud Ile dağıtıl
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Uygulamalarım içinden kalıcı birimleri görüntüleyebilir, ekleyebilir veya taşıyabilir miyim?
 
 Evet.
+
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure yay bulutu örneği kaç tane giden genel IP adresi kullanıyor?
+
+Giden genel IP adreslerinin sayısı, katmanlara ve diğer faktörlere göre farklılık gösterebilir. 
+
+| Azure yay bulutu örnek türü | Varsayılan giden genel IP adresi sayısı |
+| -------------------------------- | ---------------------------------------------- |
+| Temel katman örnekleri             | 1                                              |
+| Standart katman örnekleri          | 2                                              |
+| VNet ekleme örnekleri         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>Giden genel IP adresi sayısını artırabilir miyim?
+
+Evet, daha fazla giden genel IP adresi istemek için bir [destek bileti](https://azure.microsoft.com/support/faq/)  açabilirsiniz.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure yay bulut hizmeti örneğini sildiğimde/taşırken, uzantı kaynakları da silinir/taşınır mi?
 

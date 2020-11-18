@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068039"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655077"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Azure Active Directory bir uygulamayı ekleme veya kaldırma hakkında yaygın sorun giderme
 Bu makale, Azure Active Directory bir uygulama eklerken veya kaldırırken insanların karşılaştığı yaygın sorunları anlamanıza yardımcı olur.
@@ -31,9 +31,9 @@ Bazen geçici sorunlar, ağ sorunları veya bir hata nedeniyle uygulama ekleme b
 **Ekle** düğmesine tıkladığınızda bir hatayla karşılaşırsanız bir **hata** durumunda **bildirim** görürsünüz. Bir destek mühendisiyle daha fazla bilgi edinmek veya paylaşmak için hata hakkında daha fazla ayrıntı isterseniz, bir [Portal bildiriminin ayrıntılarını görme](#how-to-see-the-details-of-a-portal-notification) bölümündeki adımları izleyerek hata hakkında daha fazla bilgi görebilirsiniz.
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Uygulamamın eklendikten sonra nasıl ayarlanacağını bilmiyorum
-Uygulamalar hakkında bilgi edinmek için yardıma ihtiyacınız varsa, [SaaS uygulamalarını Azure Active Directory makaleyle tümleştirme hakkında öğreticilerin listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) başlamak için iyi bir yerdir.
+Uygulamalar hakkında bilgi edinmek için yardıma ihtiyacınız varsa, [SaaS uygulamalarını Azure Active Directory makaleyle tümleştirme hakkında öğreticilerin listesi](../saas-apps/tutorial-list.md) başlamak için iyi bir yerdir.
 
-Buna ek olarak, [Azure AD uygulamaları belge kitaplığı](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) , Azure AD ile çoklu oturum açma ve nasıl çalıştığı hakkında daha fazla bilgi edinmenize yardımcı olur.
+Buna ek olarak, [Azure AD uygulamaları belge kitaplığı](./what-is-application-management.md) , Azure AD ile çoklu oturum açma ve nasıl çalıştığı hakkında daha fazla bilgi edinmenize yardımcı olur.
 
 ## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>Bir uygulamayı silmek istiyorum, ancak Sil düğmesi devre dışı
 
@@ -43,7 +43,7 @@ Sil düğmesi aşağıdaki senaryolarda devre dışı bırakılır:
 
 - Microsoft uygulaması için, rolünüze bakılmaksızın onları kullanıcı arabiriminden silmeniz mümkün olmayacaktır.
 
-- Yönetilen bir kimliğe karşılık gelen hizmet sorumluları için. Yönetilen kimlikler hizmet sorumluları, kurumsal uygulamalar dikey penceresinde silinemez. Bunu yönetmek için Azure kaynağına gitmeniz gerekir. [Yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) hakkında daha fazlasını temizle
+- Yönetilen bir kimliğe karşılık gelen hizmet sorumluları için. Yönetilen kimlikler hizmet sorumluları, kurumsal uygulamalar dikey penceresinde silinemez. Bunu yönetmek için Azure kaynağına gitmeniz gerekir. [Yönetilen kimlik](../managed-identities-azure-resources/overview.md) hakkında daha fazlasını temizle
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portal bildiriminin ayrıntılarını görme
 Aşağıdaki adımları izleyerek, herhangi bir portal bildiriminin ayrıntılarını görebilirsiniz:
@@ -56,7 +56,7 @@ Aşağıdaki adımları izleyerek, herhangi bir portal bildiriminin ayrıntılar
 6.  Tüm bildirim ayrıntılarını bir destek veya ürün grubu mühendisiyle paylaşmak üzere kopyalamak için **kopyalama hatası** metin kutusunun sağ tarafındaki **Kopyala simgesini** seçin.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Destek mühendisine bildirim ayrıntıları göndererek yardım alma
-Daha hızlı yardımcı olmaları için yardıma ihtiyacınız varsa, **aşağıda listelenen tüm ayrıntıları** bir destek mühendisiyle paylaşmanız önemlidir. **Kopyalama hatası** metin kutusunun sağında bulunan **bir ekran görüntüsü alın** veya **kopyalama hatası simgesini**seçin.
+Daha hızlı yardımcı olmaları için yardıma ihtiyacınız varsa, **aşağıda listelenen tüm ayrıntıları** bir destek mühendisiyle paylaşmanız önemlidir. **Kopyalama hatası** metin kutusunun sağında bulunan **bir ekran görüntüsü alın** veya **kopyalama hatası simgesini** seçin.
 
 ## <a name="notification-details-explained"></a>Bildirim ayrıntıları açıklanmaktadır
 Bildirimler hakkında daha fazla ayrıntı için aşağıdaki açıklamalara bakın.

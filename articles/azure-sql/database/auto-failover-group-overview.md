@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/28/2020
-ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/16/2020
+ms.openlocfilehash: 35856a0d414e288fcd184164733e9430a6bee296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675287"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653751"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, bir sunucu veya yönetilen örnek üzerinde veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure portalı](geo-distributed-application-configure-tutorial.md)
 - [Azure CLı: yük devretme grubu](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
@@ -97,14 +97,17 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
 - **Otomatik yük devretme ilkesi**
 
-  Varsayılan olarak, bir yük devretme grubu otomatik yük devretme ilkesiyle yapılandırılır. Hata algılandıktan ve yetkisiz kullanım süresi dolduktan sonra Azure yük devretmeyi tetikler. Sistemin, etkinin ölçeklendirilmesi nedeniyle, yerleşik [yüksek kullanılabilirlik altyapısı](high-availability-sla.md) tarafından kesinti azalmasının azaltıldığından emin olmanız gerekir. Yük devretme iş akışını uygulamadan denetlemek istiyorsanız otomatik yük devretmeyi devre dışı bırakabilirsiniz.
+  Varsayılan olarak, bir yük devretme grubu otomatik yük devretme ilkesiyle yapılandırılır. Hata algılandıktan ve yetkisiz kullanım süresi dolduktan sonra Azure yük devretmeyi tetikler. Sistemin, etkinin ölçeklendirilmesi nedeniyle, yerleşik [yüksek kullanılabilirlik altyapısı](high-availability-sla.md) tarafından kesinti azalmasının azaltıldığından emin olmanız gerekir. Yük devretme iş akışını uygulamadan veya el ile denetlemek istiyorsanız otomatik yük devretmeyi devre dışı bırakabilirsiniz.
   
   > [!NOTE]
   > Kesinti ölçeğinde ve ne kadar hızlı bir şekilde azalmayabileceğini doğrulamak için, işlem ekibine yetkisiz kullanım süresi bir saat altına ayarlanamaz. Bu sınırlama, veri eşitleme durumu ne olursa olsun, yük devretme grubundaki tüm veritabanları için geçerlidir.
 
 - **Salt okuma yük devretme ilkesi**
 
-  Varsayılan olarak, salt okunurdur dinleyicinin yük devretmesi devre dışıdır. İkincil çevrimdışıyken, birincil performans performansının etkilenmemesini sağlar. Bununla birlikte, ikincil kurtarılana kadar salt okuma oturumlarının bağlanamadığı anlamına gelir. Salt okuma oturumları için kapalı kalma süresini kabul edemıyorsanız ve birincil olarak hem salt okuma hem de okuma-yazma trafiği için birincil özelliği geçici olarak kullanmaya devam ediyorsanız, özelliği yapılandırarak salt okuma dinleyicisi için yük devretmeyi etkinleştirebilirsiniz `AllowReadOnlyFailoverToPrimary` . Bu durumda, ikincil kullanılabilir değilse salt okuma trafiği otomatik olarak birincil olarak yönlendirilir.
+  Varsayılan olarak, salt okunurdur dinleyicinin yük devretmesi devre dışıdır. İkincil çevrimdışıyken, birincil performans performansının etkilenmemesini sağlar. Bununla birlikte, ikincil kurtarılana kadar salt okuma oturumlarının bağlanamadığı anlamına gelir. Salt okuma oturumları için kapalı kalma süresini kabul edebiliyorsanız ve birincil ' ı salt okunurdur ve okuma/yazma trafiği için birincil olarak kullanabilir, özelliği yapılandırarak salt okuma dinleyicisi için yük devretmeyi etkinleştirebilirsiniz `AllowReadOnlyFailoverToPrimary` . Bu durumda, ikincil kullanılabilir değilse salt okuma trafiği otomatik olarak birincil olarak yönlendirilir.
+
+  > [!NOTE]
+  > `AllowReadOnlyFailoverToPrimary`Özelliği yalnızca otomatik yük devretme ilkesi etkinse ve Azure tarafından otomatik yük devretme tetikleniyorsa etkilidir. Bu durumda, özelliği true olarak ayarlanırsa, yeni birincil her ikisi de okuma-yazma ve salt okuma oturumlarına sahip olur.
 
 - **Planlı yük devretme**
 
@@ -120,7 +123,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
 - **El ile yük devretme**
 
-  Otomatik yük devretme yapılandırması ne olursa olsun, yük devretmeyi dilediğiniz zaman el ile başlatabilirsiniz. Otomatik yük devretme ilkesi yapılandırılmamışsa, yük devretme grubundaki veritabanlarını ikincil gruba kurtarmak için el ile yük devretme gerekir. Zorunlu veya kolay yük devretme (tam veri eşitlemeyle) başlatabilirsiniz. İkincisi ikincil bölgeye yeniden konumlandırmak için kullanılabilir. Yük devretme tamamlandığında, DNS kayıtları, yeni birincili bağlantıyı sağlamak üzere otomatik olarak güncelleştirilir
+  Otomatik yük devretme yapılandırması ne olursa olsun, yük devretmeyi dilediğiniz zaman el ile başlatabilirsiniz. Otomatik yük devretme ilkesi yapılandırılmamışsa, yük devretme grubundaki veritabanlarını ikincil gruba kurtarmak için el ile yük devretme gerekir. Zorunlu veya kolay yük devretme (tam veri eşitlemeyle) başlatabilirsiniz. İkincisi ikincil bölgeye yeniden konumlandırmak için kullanılabilir. Yük devretme tamamlandığında, DNS kayıtları, yeni birincili bağlantıyı sağlamak üzere otomatik olarak güncelleştirilir.
 
 - **Veri kaybı olan yetkisiz kullanım süresi**
 
@@ -128,7 +131,7 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
 
 - **Çoklu yük devretme grupları**
 
-  Yük devretme ölçeğini denetlemek için aynı sunucu çifti için birden çok yük devretme grubu yapılandırabilirsiniz. Her grup bağımsız olarak devredildi. Çok kiracılı uygulamanız elastik havuzlar kullanıyorsa, bu özelliği kullanarak her havuzda birincil ve ikincil veritabanlarını karıştırabilirsiniz. Bu şekilde, bir kesinti etkisini yalnızca kiracıların yarısını azaltabilirsiniz.
+  Yük devretmeler kapsamını denetlemek için aynı sunucu çifti için birden çok yük devretme grubu yapılandırabilirsiniz. Her grup bağımsız olarak devredildi. Çok kiracılı uygulamanız elastik havuzlar kullanıyorsa, bu özelliği kullanarak her havuzda birincil ve ikincil veritabanlarını karıştırabilirsiniz. Bu şekilde, bir kesinti etkisini yalnızca kiracıların yarısını azaltabilirsiniz.
 
   > [!NOTE]
   > SQL yönetilen örneği birden çok yük devretme grubunu desteklemiyor.
@@ -173,7 +176,7 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.database.windows.net` sunucu U
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Salt okunurdur iş yükü için salt okunurdur dinleyicisi kullanma
 
-Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için `<fog-name>.secondary.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. Ayrıca, kullanarak bağlantı dizesi okuma hedefini belirtmeniz önerilir `ApplicationIntent=ReadOnly` . Yük devretme sonrasında salt okuma iş yükünün yeniden bağlanabildiğinden emin olmak istiyorsanız veya ikincil sunucunun çevrimdışı olması durumunda, `AllowReadOnlyFailoverToPrimary` Yük devretme ilkesinin özelliğini yapılandırdığınızdan emin olun.
+Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Salt okuma oturumları için `<fog-name>.secondary.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı otomatik olarak ikinciye yönlendirilir. Ayrıca, kullanarak bağlantı dizesi okuma hedefini belirtmeniz önerilir `ApplicationIntent=ReadOnly` .
 
 ### <a name="preparing-for-performance-degradation"></a>Performans düşüşü için hazırlanma
 
@@ -264,20 +267,20 @@ OLTP işlemlerini gerçekleştirirken `<fog-name>.zone_id.database.windows.net` 
 Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için `<fog-name>.secondary.<zone_id>.database.windows.net` sunucu URL 'si olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
 > [!NOTE]
-> Belirli hizmet katmanlarında SQL veritabanı, salt okunurdur ve salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve bağlantı dizesindeki parametresini kullanarak yük dengelemesi [için destekler](read-scale-out.md) `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan ikincil örneği yapılandırdığınızda bu özelliği kullanarak birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki bir salt okuma çoğaltmasına bağlanabilirsiniz.
+> Premium, İş Açısından Kritik ve hiper ölçekli hizmet katmanlarında SQL veritabanı, bağlantı dizesindeki parametresini kullanarak salt okunurdur ve salt okunurdur bir veya daha fazla çoğaltmanın kapasitesini kullanarak salt okuma yapılan sorgu iş yüklerini çalıştırmak için [salt okunurdur](read-scale-out.md) `ApplicationIntent=ReadOnly` . Coğrafi olarak çoğaltılan ikincil örneği yapılandırdığınızda bu özelliği kullanarak birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki bir salt okuma çoğaltmasına bağlanabilirsiniz.
 >
-> - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.<zone_id>.database.windows.net` .
-> - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.secondary.<zone_id>.database.windows.net` .
+> - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için `ApplicationIntent=ReadOnly` ve kullanın `<fog-name>.<zone_id>.database.windows.net` .
+> - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için `ApplicationIntent=ReadOnly` ve kullanın `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 ### <a name="preparing-for-performance-degradation"></a>Performans düşüşü için hazırlanma
 
-Tipik bir Azure uygulaması birden çok Azure hizmeti kullanır ve birden çok bileşenden oluşur. Yük devretme grubunun otomatik yük devretmesi, Azure SQL bileşenleri yalnızca durum temelinde tetiklenir. Birincil bölgedeki diğer Azure hizmetleri kesinti tarafından etkilenmeyebilir ve bileşenleri bu bölgede kullanılabilir olmaya devam edebilir. Birincil veritabanları DR bölgesine geçiş yaptıktan sonra, bağımlı bileşenler arasındaki gecikme artabilir. Uygulamanın performansına yönelik daha yüksek gecikme süresini önlemek için tüm uygulama bileşenlerinin DR bölgesindeki yedekliliği olduğundan emin olun ve bu [ağ güvenlik yönergelerini](#failover-groups-and-network-security)izleyin.
+Tipik bir Azure uygulaması birden çok Azure hizmeti kullanır ve birden çok bileşenden oluşur. Yük devretme grubunun otomatik yük devretmesi, Azure SQL bileşenleri yalnızca durum temelinde tetiklenir. Birincil bölgedeki diğer Azure hizmetleri kesinti tarafından etkilenmeyebilir ve bileşenleri bu bölgede kullanılabilir olmaya devam edebilir. Birincil veritabanları ikincil bölgeye geçiş yaptıktan sonra, bağımlı bileşenler arasındaki gecikme artabilir. Uygulamanın performansına yönelik daha yüksek gecikme süresini önlemek için, tüm uygulama bileşenlerinin ikincil bölgedeki yedekliliği ve veritabanı ile birlikte uygulama bileşenlerini devreder. Yapılandırma sırasında, İkincil bölgedeki veritabanına bağlantıyı sağlamak için [ağ güvenliği yönergelerini](#failover-groups-and-network-security) izleyin.
 
 ### <a name="preparing-for-data-loss"></a>Veri kaybı için hazırlanma
 
-Bir kesinti algılanırsa, hiç veri kaybı olursa, bilgi hizmetimizin en iyi şekilde bir okuma-yazma yük devretmesi tetiklenir. Aksi takdirde, belirttiğiniz dönem için bir bekleme olur. Aksi takdirde, belirttiğiniz dönem için bekler `GracePeriodWithDataLossHours` . Belirtilmişse `GracePeriodWithDataLossHours` , veri kaybı için hazırlıklı olun. Genel olarak, kesintiler sırasında Azure kullanılabilirliği tercih eder. Veri kaybını uygun hale getirmek için GracePeriodWithDataLossHours, 24 saat gibi yeterince büyük bir sayı olarak ayarladığınızdan emin olun.
+Bir kesinti algılanırsa, hiç veri kaybı olursa, bilgi hizmetimizin en iyi şekilde bir okuma-yazma yük devretmesi tetiklenir. Aksi takdirde, yük devretme, kullanarak belirttiğiniz dönem için ertelenir `GracePeriodWithDataLossHours` . Belirtilmişse `GracePeriodWithDataLossHours` , veri kaybı için hazırlıklı olun. Genel olarak, kesintiler sırasında Azure kullanılabilirliği tercih eder. Veri kaybını uygun hale getirmek için GracePeriodWithDataLossHours 'i 24 saat gibi yeterince büyük bir sayı olarak ayarladığınızdan emin olun veya otomatik yük devretmeyi devre dışı bırakın.
 
-Okuma-yazma dinleyicisinin DNS güncelleştirmesi, yük devretme başlatıldıktan hemen sonra gerçekleşir. Bu işlem, veri kaybına neden olmaz. Ancak, veritabanı rollerini değiştirme işlemi normal koşullarda 5 dakikaya kadar sürebilir. Tamamlanana kadar, yeni birincil örnekteki bazı veritabanları hala salt okunurdur. Yük devretme PowerShell kullanılarak başlatılmışsa, tüm işlem zaman uyumludur. Azure portal kullanılarak başlatılmışsa, Kullanıcı arabirimi tamamlanma durumunu gösterir. REST API kullanılarak başlatılmışsa, tamamlamayı izlemek için standart Azure Resource Manager yoklama mekanizmasını kullanın.
+Okuma-yazma dinleyicisinin DNS güncelleştirmesi, yük devretme başlatıldıktan hemen sonra gerçekleşir. Bu işlem, veri kaybına neden olmaz. Ancak, veritabanı rollerini değiştirme işlemi normal koşullarda 5 dakikaya kadar sürebilir. Tamamlanana kadar, yeni birincil örnekteki bazı veritabanları hala salt okunurdur. PowerShell kullanılarak bir yük devretme başlatılmışsa, birincil çoğaltma rolünü değiştirme işlemi zaman uyumludur. Azure portal kullanılarak başlatılmışsa, Kullanıcı arabirimi tamamlanma durumunu gösterir. REST API kullanılarak başlatılmışsa, tamamlamayı izlemek için standart Azure Resource Manager yoklama mekanizmasını kullanın.
 
 > [!IMPORTANT]
 > El ile grup yük devretmesini kullanarak özgün konuma doğru bir şekilde geçiş yapın. Yük devretmeye neden olan kesinti azaltıldığında, birincil veritabanlarınızı özgün konuma taşıyabilirsiniz. Bunu yapmak için, grubun el ile yük devretmesini başlatmanız gerekir.

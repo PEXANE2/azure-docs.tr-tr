@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014248"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653802"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -177,7 +177,7 @@ Veri toplama durdurulduğunda bildirim almak için [Yeni bir günlük uyarısı 
 - **Uyarı ölçütleri** 
    - **Sinyal adı**: *özel günlük araması*
    - **Arama sorgusu**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Uyarı mantığı**: **Based on** *sonuç sayısına*ve *şundan büyük*bir **koşula** göre **eşik değeri** *0*
+   - **Uyarı mantığı**: **Based on** *sonuç sayısına* ve *şundan büyük* bir **koşula** göre **eşik değeri** *0*
    - **Temelinde değerlendirilen**: **süresi (dakika)** *30*, **Sıklık (dakika)** *10*
 - **Uyarı ayrıntılarını tanımlama** 
    - **Ad**: *veri koleksiyonu durduruldu*
@@ -405,7 +405,7 @@ Mevcut Application Insights kaynaklarının bir bölgeden diğerine taşınması
 2. Yeni kaynaktaki özgün kaynağa özgü tüm benzersiz özelleştirmeleri yeniden oluşturun.
 3. Uygulamanızı yeni bölge kaynak [izleme anahtarını](app/create-new-resource.md#copy-the-instrumentation-key) veya [bağlantı dizesini](app/sdk-connection-string.md)kullanacak şekilde değiştirin.  
 4. Yeni Application Insights kaynağınız ile her şeyin beklendiği gibi çalışmaya devam etmekte olduğunu onaylamak için test edin. 
-5. Bu noktada, **tüm geçmiş verilerin kaybolmasına**neden olacak özgün kaynağı silebilirsiniz. Veya veri saklama ayarlarının süresi boyunca geçmiş raporlama amacıyla özgün kaynağı koruyun.
+5. Bu noktada, **tüm geçmiş verilerin kaybolmasına** neden olacak özgün kaynağı silebilirsiniz. Veya veri saklama ayarlarının süresi boyunca geçmiş raporlama amacıyla özgün kaynağı koruyun.
 
 Genellikle yeni bölgedeki kaynak için el ile yeniden oluşturulması veya güncellenmesi gereken benzersiz özelleştirmeler şunlardır:
 
@@ -603,7 +603,7 @@ Opentelemetri toplayıcısı, [GitHub Benioku](https://github.com/open-telemetry
 
 **Diğer süreçler** , düğümünüz üzerinde yüksek kaynak kullanımının kök nedenini açık bir şekilde anlamanıza yardımcı olmaya yöneliktir. Bu, Kapsayıcılı süreçler arasındaki kullanımı kapsayıcısız süreçler ile ayırt etmenizi sağlar.
 
-Bu **diğer süreçler**nelerdir? 
+Bu **diğer süreçler** nelerdir? 
 
 Bunlar, düğümünüz üzerinde çalışan kapsayıcısız işlemlerdir.  
 
@@ -674,7 +674,7 @@ Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan AKS-Engine (eski 
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Neden Log Analytics çalışma alanım 'da veri görmüyorum?
 
-Log Analytics çalışma alanında belirli bir zamanda herhangi bir veri göremiyorsanız, günlük toplanacak veri miktarını denetlemek için varsayılan 500 MB sınırına veya belirtilen günlük ucuna ulaşmış olabilirsiniz. Gün için sınır karşılandığında, veri toplama işlemi yalnızca bir sonraki günde duraklar ve sürdürülür. Veri kullanımınızı gözden geçirmek ve tahmin edilen kullanım desenlerinize göre farklı bir fiyatlandırma katmanına güncelleştirmek için bkz. [günlük verisi kullanımı ve maliyeti](platform/manage-cost-storage.md). 
+Her gün belirli bir saatte Log Analytics çalışma alanında hiç veri göremiyorsanız, varsayılan 500 MB sınırına veya günlük toplanacak veri miktarını denetlemek için belirlenmiş günlük sınıra ulaşmış olabilirsiniz. Günlük sınıra ulaşıldığında veri toplama durdurulur ve ancak ertesi gün sürdürülür. Veri kullanımınızı gözden geçirmek ve tahmin edilen kullanım desenlerinize göre farklı bir fiyatlandırma katmanına güncelleştirmek için bkz. [günlük verisi kullanımı ve maliyeti](platform/manage-cost-storage.md). 
 
 ### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Containerınventory tablosunda belirtilen kapsayıcı durumları nelerdir?
 
@@ -682,7 +682,7 @@ Containerınventory tablosu, hem durdurulan hem de çalışan kapsayıcılar hak
  
 ### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Nasıl yaparım? *eksik abonelik kayıt* hatası.
 
-**Microsoft. operationsmanagement Için eksik abonelik kaydı**hatası alırsanız, çalışma alanının tanımlandığı abonelikte **Microsoft. operationsmanagement** kaynak sağlayıcısını kaydederek bu sorunu çözebilirsiniz. Bunun nasıl yapılacağını gösteren belgeler [burada](../azure-resource-manager/templates/error-register-resource-provider.md)bulunabilir.
+**Microsoft. operationsmanagement Için eksik abonelik kaydı** hatası alırsanız, çalışma alanının tanımlandığı abonelikte **Microsoft. operationsmanagement** kaynak sağlayıcısını kaydederek bu sorunu çözebilirsiniz. Bunun nasıl yapılacağını gösteren belgeler [burada](../azure-resource-manager/templates/error-register-resource-provider.md)bulunabilir.
 
 ### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>RBAC etkin AKS kümeleri için destek var mı?
 
@@ -690,7 +690,7 @@ Kapsayıcı Izleme çözümü RBAC 'yi desteklemez, ancak kapsayıcılar için A
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Nasıl yaparım?, KUIN-System ad alanındaki kapsayıcılar için günlük toplamayı Held aracılığıyla etkinleştirmek istiyor musunuz?
 
-Kuto-System ad alanındaki kapsayıcılardan günlük koleksiyonu varsayılan olarak devre dışıdır. Omsagent üzerinde bir ortam değişkeni ayarlanarak günlük toplama etkinleştirilebilir. Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) GitHub sayfası. 
+Kuto-System ad alanındaki kapsayıcılardan günlük koleksiyonu varsayılan olarak devre dışıdır. Omsagent üzerinde bir ortam değişkeni ayarlanarak günlük toplama etkinleştirilebilir. Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici](https://aka.ms/azuremonitor-containers-helm-chart) GitHub sayfası. 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Omsagent 'ı yayınlanan en son sürüme güncelleştirmek Nasıl yaparım? mı?
 

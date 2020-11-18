@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b1d7f95711017feba52cad97f05128d83734da
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578130"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655179"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>VPN istemci profillerini dağıtmak için bir Intune profili oluşturma
 
@@ -22,7 +22,7 @@ Microsoft Intune kullanarak, Azure VPN istemcileri (Windows 10) için profilleri
 > Bu yöntem yalnızca, istemci kimlik doğrulaması için Azure Active Directory veya ortak bir sertifika kullanan profilleri dağıtmak üzere çalışır. Benzersiz istemci sertifikaları kullanılıyorsa, her kullanıcının Azure VPN Istemcisinde doğru sertifikayı el ile seçmeniz gerekir.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Cihazlar zaten Intune MDM 'ye kayıtlı.
 * Windows 10 için Azure VPN Istemcisi, istemci makinesine zaten dağıtıldı.
@@ -35,7 +35,7 @@ Aşağıdaki adımlarda, Intune için özel bir OMA-URI profili için aşağıda
 * Otomatik bağlan
 * Güvenilen ağ algılama etkin.
 
-Desteklenen diğer seçenekler için [VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) makalesine bakın.
+Desteklenen diğer seçenekler için [VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) makalesine bakın.
 
 1. Azure portal VPN profilini indirin ve *azurevpnconfig.xml* dosyasını paketten ayıklayın.
 1. Aşağıdaki metni kopyalayıp yeni bir metin düzenleyici dosyasına yapıştırın.
@@ -69,25 +69,25 @@ Bu bölümde, özel ayarlarla bir Microsoft Intune profili oluşturursunuz.
 1. Intune 'da oturum açın ve **cihazlar-> yapılandırma profilleri**' ne gidin. **+ Profil oluştur**' u seçin.
 
    :::image type="content" source="./media/create-profile-intune/configuration-profile.png" alt-text="Yapılandırma profilleri":::
-1. **Platform** olarak **Windows 10 ve üzeri**'ni seçin. **Profil**için **özel**' i seçin. Ardından **Oluştur**’u seçin.
+1. **Platform** olarak **Windows 10 ve üzeri**'ni seçin. **Profil** için **özel**' i seçin. Ardından **Oluştur**’u seçin.
 1. Profile bir ad ve açıklama verin, ardından **İleri**' yi seçin.
 1. **Yapılandırma ayarları** sekmesinde, **Ekle**' yi seçin.
 
     * **Ad:** Yapılandırma için bir ad girin.
     * **Açıklama:** İsteğe bağlı açıklama.
-    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (Bu bilgiler <name> </name> etiketteki azurevpnconfig.xml dosyasında bulunabilir).
+    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (Bu bilgiler <name></name> etiketteki azurevpnconfig.xml dosyasında bulunabilir).
     * **Veri türü:** Dize (XML dosyası).
 
-   Klasör simgesini seçin ve [XML](#xml) adımlarında adım 6 ' da kaydettiğiniz dosyayı seçin. **Ekle**’yi seçin.
+   Klasör simgesini seçin ve [XML](#xml) adımlarında adım 6 ' da kaydettiğiniz dosyayı seçin. **Ekle**'yi seçin.
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Yapılandırma profilleri" lightbox="./media/create-profile-intune/configuration-settings.png":::
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Yapılandırma ayarları" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. **İleri**’yi seçin.
 1. **Atamalar**' ın altında, yapılandırmayı göndermek istediğiniz grubu seçin. Ardından **İleri**' yi seçin.
 1. Uygulanabilirlik kuralları isteğe bağlıdır. Gerekirse herhangi bir kural tanımlayın ve ardından **İleri**' yi seçin.
 1. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin.
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Yapılandırma profilleri":::
-1. Özel profiliniz artık oluşturuldu. Bu profili dağıtmaya yönelik Microsoft Intune adımlar için bkz. [Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Profil oluştur":::
+1. Özel profiliniz artık oluşturuldu. Bu profili dağıtmaya yönelik Microsoft Intune adımlar için bkz. [Kullanıcı ve cihaz profilleri atama](/mem/intune/configuration/device-profile-assign).
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

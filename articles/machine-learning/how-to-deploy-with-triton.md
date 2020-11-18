@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3a7d750caed297dfa364e2f1ef176ee19ad35480
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309712"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654216"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -47,7 +47,7 @@ Kendi modeliniz için Triton kullanmayı denemeden önce, Azure Machine Learning
 
 * Birden çok [Gunic,](https://gunicorn.org/) gelen istekleri eşzamanlı olarak işleyecek şekilde başlatılır.
 * Bu çalışanlar ön işleme, modeli çağırma ve işlem sonrası işlemleri işler. 
-* Çıkarım istekleri __Puanlama URI__ 'sini kullanır. Örneğin, `https://myserevice.azureml.net/score`.
+* Çıkarım istekleri __Puanlama URI__'sini kullanır. Örneğin, `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normal, üç aylık olmayan dağıtım mimarisi diyagramı":::
 
@@ -66,7 +66,11 @@ Model dağıtımınız için Triton kullanmak üzere iş akışı:
 1. İstekleri, Triton dağıtılan modelinize gönderebildiğinizi doğrulayın.
 1. Triton 'e özgü kodunuzu AML dağıtımınıza ekleyin.
 
-## <a name="optional-define-a-model-config-file"></a>Seçim Model yapılandırma dosyası tanımlama
+## <a name="verify-that-triton-can-serve-your-model"></a>Triton 'in modelinize hizmeti verebildiğini doğrulama
+
+İlk olarak, Triton çıkarımı sunucusunun modelinize hizmeti verebildiğini doğrulamak için aşağıdaki adımları izleyin.
+
+### <a name="optional-define-a-model-config-file"></a>Seçim Model yapılandırma dosyası tanımlama
 
 Model yapılandırma dosyası, kaç giriş olduğunu ve bu girişlerin hangi boyutlarda olacağını gösterir. Yapılandırma dosyasını oluşturma hakkında daha fazla bilgi için bkz. NVıDıA belgelerindeki [model yapılandırması](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html) .
 
@@ -75,7 +79,7 @@ Model yapılandırma dosyası, kaç giriş olduğunu ve bu girişlerin hangi boy
 > 
 > Bu seçenek hakkında daha fazla bilgi için bkz. NVıDıA belgelerinde [oluşturulan model yapılandırması](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html#generated-model-configuration) .
 
-## <a name="directory-structure"></a>Dizin yapısı
+### <a name="use-the-correct-directory-structure"></a>Doğru dizin yapısını kullanın
 
 Azure Machine Learning bir modeli kaydederken, tek tek dosyaları veya dizin yapısını kaydedebilirsiniz. Triton kullanmak için model kaydı, adlı dizini içeren bir dizin yapısı için olmalıdır `triton` . Bu dizinin genel yapısı:
 
@@ -93,7 +97,7 @@ models
 > [!IMPORTANT]
 > Bu dizin yapısı bir Triton model deposudur ve modelinlerinizin Triton ile çalışması için gereklidir. Daha fazla bilgi için bkz. NVıDıA belgelerindeki [Triton modeli depoları](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_repository.html) .
 
-## <a name="test-with-triton-and-docker"></a>Triton ve Docker ile test etme
+### <a name="test-with-triton-and-docker"></a>Triton ve Docker ile test etme
 
 Modelle çalıştığından emin olmak üzere modelinizi test etmek için Docker kullanabilirsiniz. Aşağıdaki komutlar, üç aylık kapsayıcıyı yerel bilgisayarınıza çeker ve ardından Triton sunucusunu başlatır:
 
@@ -146,7 +150,7 @@ Temel bir sistem durumu denetiminin ötesinde, çıkarım için Triton 'a veri g
 
 Docker kullanma hakkında daha fazla bilgi için bkz. GPU [ile bir sistemde bir sistem üzerinde Triton çalıştırma](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-with-a-gpu) ve [GPU olmadan bir sistem üzerinde Triton](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-without-a-gpu)çalıştırma.
 
-## <a name="register-your-model"></a>Modelinizi kaydetme
+### <a name="register-your-model"></a>Modelinizi kaydetme
 
 Modelinizin Triton ile çalıştığını doğruladığınıza göre, bunu Azure Machine Learning kaydedin. Model kaydı, model dosyalarınızı Azure Machine Learning çalışma alanında depolar ve Python SDK ve Azure CLı ile dağıtma sırasında kullanılır.
 
@@ -176,9 +180,9 @@ az ml model register --model-path='triton' \
 
 <a id="processing"></a>
 
-## <a name="add-pre-and-post-processing"></a>Ön ve son işlem Ekle
+## <a name="verify-you-can-call-into-your-model"></a>Modelinize araybildiğinizi doğrulayın
 
-Web hizmetinin çalıştığını doğruladıktan sonra, bir _giriş betiği_ tanımlayarak, ön ve son işleme kodu ekleyebilirsiniz. Bu dosya adı `score.py` . Giriş betikleri hakkında daha fazla bilgi için bkz. [bir giriş betiği tanımlama](how-to-deploy-and-where.md#define-an-entry-script).
+Triton 'nin modelinize hizmeti sağlayabilmesinin ardından, bir _giriş betiği_ tanımlayarak, ön işleme ve sonrası kod ekleyebilirsiniz. Bu dosya adı `score.py` . Giriş betikleri hakkında daha fazla bilgi için bkz. [bir giriş betiği tanımlama](how-to-deploy-and-where.md#define-an-entry-script).
 
 İki ana adım, yönteinizde bir üç aylık HTTP istemcisini başlatmak `init()` ve işlevinizde bu istemciye çağırmak için kullanılır `run()` .
 

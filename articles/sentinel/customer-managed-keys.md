@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427063"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655281"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel müşteri tarafından yönetilen anahtarı ayarlama
 
@@ -59,7 +59,7 @@ CMK sağlamak için şu adımları izleyin:
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>1. Adım: Azure Key Vault oluşturma ve anahtar depolama
 
-1.  [Azure Key Vault kaynak oluşturun](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal), ardından veri şifrelemesi için kullanılacak bir anahtar oluşturun veya içeri aktarın.
+1.  [Azure Key Vault kaynak oluşturun](/azure-stack/user/azure-stack-key-vault-manage-portal), ardından veri şifrelemesi için kullanılacak bir anahtar oluşturun veya içeri aktarın.
     > [!NOTE]
     >  Azure Key Vault anahtarınızı ve erişimini korumak için kurtarılabilir olarak yapılandırılmalıdır.
 
@@ -132,6 +132,5 @@ Aynı anahtarı Azure Sentinel 'de ve Log Analytics ' de kullanırsanız, anahta
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure Sentinel 'de müşteri tarafından yönetilen bir anahtarın nasıl ayarlanacağını öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
-

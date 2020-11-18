@@ -1,5 +1,5 @@
 ---
-title: Bir komutu istemci uygulamasından güncelleştirme
+title: İstemci uygulamasından bir komutu güncelleştirme
 titleSuffix: Azure Cognitive Services
 description: bir komutu istemci uygulamasından güncelleştirme
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 290f9ee9c23071ac56b1ff0c65ddc03decbc7344
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1bffb09d0f49bbd0059e8a528d67bfe215f0650d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94571280"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654376"
 ---
 # <a name="update-a-command-from-the-client"></a>İstemciden bir komut güncelleştirme
 
 Bu makalede, bir istemci uygulamasından devam eden bir komutun nasıl güncelleştireceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!div class = "checklist"]
 > * Önceden oluşturulmuş [Özel Komutlar uygulaması](quickstart-custom-commands-application.md)
 
@@ -53,7 +53,7 @@ Bu etkinliğin anahtar özniteliklerinin gözden geçirilmesini sağlar.
 
 | Öznitelik | Açıklama |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **türüyle** | Etkinlik "Event" türündedir ve olay adının "RemoteUpdate" olması gerekir. |
+| **tür** | Etkinlik "Event" türündedir ve olay adının "RemoteUpdate" olması gerekir. |
 | **değer** | "Value" özniteliği, geçerli komutu güncelleştirmek için gerekli olan öznitelikleri içerir. |
 | **updatedCommand** | "UpdatedCommand" özniteliği, komutun adını içerir, "updatedParameters" parametrelerinin adı ve güncelleştirilmiş değerlerini içeren bir eşlemedir. |
 | **İptal** | Devam eden komutun iptal edilmesi gerekiyorsa, "iptal" özniteliğini true olarak ayarlayın. |
@@ -121,10 +121,24 @@ Birkaç şeyi göz önünde bulundurmanız.
 Bu senaryoyu test etmek için geçerli uygulamamızda yeni bir komut oluşturalım.
 1. Getdeviceınfo adlı yeni bir komut oluşturun.
 1. "Cihaz bilgilerini al" ile örnek tümce ekleyin.
-1. "Bitti" tamamlanma kuralında, konuşma yanıtı gönder eylemi ekleyin.
+1. "Bitti" tamamlanma kuralında, clientContext özniteliklerini içeren bir konuşma yanıtı gönder eylemi ekleyin.
     > ![Bağlam ile konuşma yanıtı gönder](media/custom-commands/send-speech-response-context.png)
-1. Uygulamanızı kaydedin ve eğitme.
-1. Uygulamanızı test edin.
+1. Uygulamanızı kaydedin, eğitme ve test edin.
+1. Sınama penceresinde bir kez, istemci bağlamını güncelleştirmek için bir etkinlik gönderin.
+    > ```json
+    >{
+    >   "type": "event",
+    >   "name": "RemoteUpdate",
+    >   "value": {
+    >     "clientContext": {
+    >       "deviceId": "12345",
+    >       "deviceName": "My device"
+    >     },
+    >     "processTurn": false
+    >   }
+    >}
+    > ```
+1. "Cihaz bilgilerini al" metnini gönder.
     > ![İstemci bağlamı gönderme etkinliği](media/custom-commands/send-client-context-activity.png)
 
 Birkaç şeyi göz önünde bulundurmanız.
@@ -132,8 +146,7 @@ Birkaç şeyi göz önünde bulundurmanız.
 1. ClientContext için karmaşık nesneleri kullanabilirsiniz.
 1. Istemci bağlamını kullanarak, etkinlik gönderme ve Web uç noktalarını çağırırken konuşma yanıtlarını kullanabilirsiniz.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir Web uç noktasından komut güncelleştirme](./how-to-custom-commands-update-command-from-web-endpoint.md)
+> [Web uç noktasından bir komutu güncelleştirme](./how-to-custom-commands-update-command-from-web-endpoint.md)

@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57deed9d7fb178ba1cdc8d6e954d751752532de4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707960"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654414"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft uygulamasında oturum açma sorunları
 
@@ -31,9 +31,9 @@ Bir kullanıcının Microsoft tarafından yayımlanan bir uygulamaya erişebilec
 
 -   Microsoft 365 veya diğer ücretli paketlerde bulunan uygulamalar için, kullanıcılara doğrudan kullanıcı hesaplarına veya grup tabanlı lisans atama becerimizi kullanan bir grup aracılığıyla **Lisans ataması** üzerinden erişim verilir.
 
--   Microsoft 'un veya üçüncü bir tarafın herkes tarafından kullanılmak üzere serbestçe yayımlayabilen uygulamalar için, kullanıcılara **Kullanıcı izni**aracılığıyla erişim izni verilebilir. Bu, Azure AD Iş veya okul hesabıyla uygulamada oturum açtıklarında ve hesabın hesabında sınırlı miktarda veri kümesine erişmesine izin veren anlamına gelir.
+-   Microsoft 'un veya üçüncü bir tarafın herkes tarafından kullanılmak üzere serbestçe yayımlayabilen uygulamalar için, kullanıcılara **Kullanıcı izni** aracılığıyla erişim izni verilebilir. Bu, Azure AD Iş veya okul hesabıyla uygulamada oturum açtıklarında ve hesabın hesabında sınırlı miktarda veri kümesine erişmesine izin veren anlamına gelir.
 
--   Microsoft 'un veya bir üçüncü taraf tarafından herkes tarafından kullanılabilecek uygulamalar için, kullanıcılara **yönetici izni**aracılığıyla da erişim izni verilebilir. Bu, bir yöneticinin uygulamayı kuruluştaki herkes tarafından kullanılabileceğini, böylece bir genel yönetici hesabıyla uygulamada oturum açmasını ve kuruluştaki herkese erişim vermesini belirlediği anlamına gelir.
+-   Microsoft 'un veya bir üçüncü taraf tarafından herkes tarafından kullanılabilecek uygulamalar için, kullanıcılara **yönetici izni** aracılığıyla da erişim izni verilebilir. Bu, bir yöneticinin uygulamayı kuruluştaki herkes tarafından kullanılabileceğini, böylece bir genel yönetici hesabıyla uygulamada oturum açmasını ve kuruluştaki herkese erişim vermesini belirlediği anlamına gelir.
 
 Sorunu gidermek için, [uygulama erişimi ile Ilgili genel sorun alanlarıyla](#general-problem-areas-with-application-access-to-consider) başlayın ve ardından izlenecek yolu okuyun: ayrıntıları almak Için Microsoft uygulama erişiminin sorunlarını giderme adımları.
 
@@ -63,7 +63,7 @@ Kullanıcıları bir Microsoft uygulamasında oturum açarken bazı yaygın soru
 
   * Oturum açma işlemlerinin Kullanıcı hesabının **etkinleştirildiğinden** emin olun. [Kullanıcının hesap durumunu denetleme](#problems-with-the-users-account)
 
-  * Kullanıcının **parolasının dolmadığından veya unutulmuş** olduğundan emin olun. [Kullanıcının parolasını sıfırlama](#reset-a-users-password) veya [self servis parola sıfırlamayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * Kullanıcının **parolasının dolmadığından veya unutulmuş** olduğundan emin olun. [Kullanıcının parolasını sıfırlama](#reset-a-users-password) veya [self servis parola sıfırlamayı etkinleştirme](../authentication/tutorial-enable-sspr.md)
 
   * **Multi-Factor Authentication** Kullanıcı erişimini engellemediğinden emin olun. [Kullanıcının Multi-Factor Authentication durumunu denetleme](#check-a-users-multi-factor-authentication-status) veya [kullanıcının kimlik doğrulaması iletişim bilgilerini denetleme](#check-a-users-authentication-contact-info)
 
@@ -75,13 +75,13 @@ Kullanıcıları bir Microsoft uygulamasında oturum açarken bazı yaygın soru
 
   * Kullanıcıya veya **atanmış bir lisansa** sahip olduğundan emin olun. [Kullanıcının atanan lisanslarını denetleme](#check-a-users-assigned-licenses) veya [grubun atanmış lisanslarını denetleme](#check-a-groups-assigned-licenses)
 
-  * Lisans **statik**bir gruba **atanmışsa** , kullanıcının bu grubun **üyesi** olduğundan emin olun. [Kullanıcının grup üyeliklerini denetleme](#check-a-users-group-memberships)
+  * Lisans **statik** bir gruba **atanmışsa** , kullanıcının bu grubun **üyesi** olduğundan emin olun. [Kullanıcının grup üyeliklerini denetleme](#check-a-users-group-memberships)
 
-  * Lisans **dinamik**bir gruba **atanmışsa** , **dinamik grup kuralının doğru ayarlandığından**emin olun. [Dinamik bir grubun üyelik ölçütlerini denetleme](#check-a-dynamic-groups-membership-criteria)
+  * Lisans **dinamik** bir gruba **atanmışsa** , **dinamik grup kuralının doğru ayarlandığından** emin olun. [Dinamik bir grubun üyelik ölçütlerini denetleme](#check-a-dynamic-groups-membership-criteria)
 
-  * Lisans **dinamik**bir gruba **atanmışsa** , dinamik grubun üyeliğini **işlemeyi bitirdiğinden** ve **kullanıcının üye olduğundan** emin olun (Bu işlem biraz zaman alabilir). [Kullanıcının grup üyeliklerini denetleme](#check-a-users-group-memberships)
+  * Lisans **dinamik** bir gruba **atanmışsa** , dinamik grubun üyeliğini **işlemeyi bitirdiğinden** ve **kullanıcının üye olduğundan** emin olun (Bu işlem biraz zaman alabilir). [Kullanıcının grup üyeliklerini denetleme](#check-a-users-group-memberships)
 
-  *  Lisansın atandığından emin olduktan sonra, lisansın **zaman aşımına uğradığı**emin olun.
+  *  Lisansın atandığından emin olduktan sonra, lisansın **zaman aşımına uğradığı** emin olun.
 
   *  Lisansın eriştiği **uygulama için** olduğundan emin olun.
 
@@ -149,7 +149,7 @@ Kullanıcının hesap durumunu denetlemek için şu adımları izleyin:
 
 7.  **profil**' e tıklayın.
 
-8.  **Ayarlar** ' ın altında, **blok oturum açma** seçeneğinin **Hayır**olarak ayarlandığından emin olun.
+8.  **Ayarlar** ' ın altında, **blok oturum açma** seçeneğinin **Hayır** olarak ayarlandığından emin olun.
 
 ### <a name="reset-a-users-password"></a>Kullanıcının parolasını sıfırlama
 
@@ -179,9 +179,9 @@ Bir kullanıcının parolasını sıfırlamak için şu adımları izleyin:
 
 Self servis parola sıfırlamayı etkinleştirmek için aşağıdaki dağıtım adımlarını izleyin:
 
--   [Kullanıcıların Azure Active Directory parolalarını sıfırlamalarını sağlama](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Kullanıcıların Azure Active Directory parolalarını sıfırlamalarını sağlama](../authentication/tutorial-enable-sspr.md)
 
--   [Kullanıcıların şirket içi parolalarını Active Directory sıfırlamalarını veya değiştirmesini sağlama](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Kullanıcıların şirket içi parolalarını Active Directory sıfırlamalarını veya değiştirmesini sağlama](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Kullanıcının Multi-Factor Authentication durumunu denetleme
 
@@ -203,7 +203,7 @@ Kullanıcının Multi-Factor Authentication durumunu denetlemek için şu adıml
 
 8. Kullanıcıları arayarak, filtreleyerek veya sıralayarak Kullanıcı listesinde bulun.
 
-9. Kullanıcı listesinden kullanıcıyı seçin, istediğiniz şekilde Multi-Factor Authentication 'ı **etkinleştirin**, **devre dışı bırakın**veya **zorlayın** .
+9. Kullanıcı listesinden kullanıcıyı seçin, istediğiniz şekilde Multi-Factor Authentication 'ı **etkinleştirin**, **devre dışı bırakın** veya **zorlayın** .
 
    * **Note**: bir Kullanıcı **zorlanan** durumdaysa, hesaplarına geri dönmek Için geçici olarak **devre dışı** olarak ayarlayabilirsiniz. Yeniden **etkinleştikten** sonra, bir sonraki oturum açma sırasında iletişim bilgilerinin yeniden kaydolmasını gerektirmek için durumlarını tekrar etkin olarak değiştirebilirsiniz. Alternatif olarak, bu verileri doğrulamak veya ayarlamak için [kullanıcının kimlik doğrulaması iletişim bilgilerini denetleme](#check-a-users-authentication-contact-info) bölümündeki adımları izleyebilirsiniz.
 
@@ -225,7 +225,7 @@ Kullanıcının Multi-Factor Authentication, koşullu erişim, kimlik koruması 
 
 7.  **profil**' e tıklayın.
 
-8.  Aşağı kaydırarak **kimlik doğrulama iletişim bilgilerine**gidin.
+8.  Aşağı kaydırarak **kimlik doğrulama iletişim bilgilerine** gidin.
 
 9.  Kullanıcı için kaydedilen verileri **gözden geçirin** ve gerektiğinde güncelleştirin.
 
@@ -508,26 +508,25 @@ Uygun izinler onay işlemi gerçekleşmediğinden uygulama erişimi engellenebil
 
 -   İzinleri isteyen herhangi bir açık KIMLIK Connect özellikli uygulama için, uygulamanın oturum açma ekranına gitmek, oturum açmış kullanıcı için uygulama için Kullanıcı düzeyinde onay gerçekleştirir.
 
--   Bunu programlı olarak yapmak istiyorsanız, bkz. [bireysel kullanıcı onayı isteme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
+-   Bunu programlı olarak yapmak istiyorsanız, bkz. [bireysel kullanıcı onayı isteme](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent).
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Herhangi bir uygulama için yönetici düzeyinde onay işlemi gerçekleştirin
 
 -   **Yalnızca v1 uygulama modeli kullanılarak geliştirilmiş uygulamalarda**, bir uygulamanın oturum açma URL 'sinin sonuna "**? Prompt = admin \_ onay**" ekleyerek bu yönetici düzeyi onayını ortaya çıkmaya zorlayabilirsiniz.
 
--   **V2 uygulama modeli kullanılarak geliştirilen herhangi bir uygulama**için, [Yönetici onay uç noktasını kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay oluşmasını zorunlu kılabilirsiniz.
+-   **V2 uygulama modeli kullanılarak geliştirilen herhangi bir uygulama** için, [Yönetici onay uç noktasını kullanarak](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay oluşmasını zorunlu kılabilirsiniz.
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Tek kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme
 
 -   İzinleri isteyen **tek kiracılı uygulamalar** (kuruluşunuzda geliştirdiğinize veya sahibiyseniz), genel yönetici olarak oturum açarak ve **uygulama kayıt defteri-tüm uygulamalar ' ın en üstündeki izin ver düğmesine tıklayarak tüm kullanıcılar adına yönetim düzeyinde onay Işlemi gerçekleştirebilirsiniz. &gt; uygulama için &gt; &gt; gerekli izinler bölmesini seçin** . **administrative-level consent** **Grant permissions**
 
--   **V1 veya v2 uygulama modeli kullanılarak geliştirilen herhangi bir uygulama**için, [Yönetici onay uç noktasını kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay oluşmasını zorunlu kılabilirsiniz.
+-   **V1 veya v2 uygulama modeli kullanılarak geliştirilen herhangi bir uygulama** için, [Yönetici onay uç noktasını kullanarak](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay oluşmasını zorunlu kılabilirsiniz.
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Çok kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme
 
--   İzinler isteyen **çok kiracılı uygulamalar** (örneğin, üçüncü taraf veya Microsoft, geliştirir) için, **yönetim düzeyinde bir izin** işlemi gerçekleştirebilirsiniz. Genel yönetici olarak oturum açın ve kurumsal uygulamalar-tüm uygulamalar altında **Izin ver** düğmesine tıklayın. ** &gt; &gt; bir uygulama &gt; izinleri** bölmesi (yakında kullanılabilir) seçin.
+-   İzinler isteyen **çok kiracılı uygulamalar** (örneğin, üçüncü taraf veya Microsoft, geliştirir) için, **yönetim düzeyinde bir izin** işlemi gerçekleştirebilirsiniz. Genel yönetici olarak oturum açın ve kurumsal uygulamalar-tüm uygulamalar altında **Izin ver** düğmesine tıklayın. **&gt; &gt; bir uygulama &gt; izinleri** bölmesi (yakında kullanılabilir) seçin.
 
--   Yönetici [onay uç noktasını kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay uygulanmasını da zorunlu kılabilirsiniz.
+-   Yönetici [onay uç noktasını kullanarak](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay uygulanmasını da zorunlu kılabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Yönetici onay uç noktasını kullanma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
-
+[Yönetici onay uç noktasını kullanma](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)

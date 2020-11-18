@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604147"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654142"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -57,7 +57,7 @@ Günümüzün bulutta birinci dünyada Azure AD, ağınızı kimin ve ne olduğu
 
 ## <a name="the-future-of-remote-access"></a>Uzaktan erişim 'in geleceği
 
-Bugünün dijital çalışma alanında, kullanıcılar birden çok cihaz ve uygulama ile her yerde çalışır. Tek sabit Kullanıcı kimliğidir. Günümüzde güvenli bir ağın ilk adımı, [Azure AD 'nin kimlik yönetimi](https://docs.microsoft.com/azure/security/security-identity-management-overview) yeteneklerini güvenlik denetim düzlemi olarak kullanmaktır. Denetim düzlemi olarak kimlik kullanan bir model genellikle aşağıdaki bileşenlerden oluşur:
+Bugünün dijital çalışma alanında, kullanıcılar birden çok cihaz ve uygulama ile her yerde çalışır. Tek sabit Kullanıcı kimliğidir. Günümüzde güvenli bir ağın ilk adımı, [Azure AD 'nin kimlik yönetimi](../../security/fundamentals/identity-management-overview.md) yeteneklerini güvenlik denetim düzlemi olarak kullanmaktır. Denetim düzlemi olarak kimlik kullanan bir model genellikle aşağıdaki bileşenlerden oluşur:
 
 * Kullanıcıları ve Kullanıcı ile ilgili bilgileri izlemek için bir kimlik sağlayıcısı.
 * Şirket kaynaklarına erişimi olan cihazların listesini tutmak için cihaz dizini. Bu dizin, ilgili cihaz bilgilerini (örneğin, cihaz türü, bütünlük vb.) içerir.
@@ -76,7 +76,7 @@ Uygulama proxy 'Si, Azure portal yapılandırdığınız bir Azure AD hizmetidir
 
 Bu özelliğin bileşenleri, bulutta çalışan uygulama proxy hizmeti 'ni, şirket içi sunucuda çalışan hafif bir aracı olan uygulama proxy bağlayıcısını ve kimlik sağlayıcısı olan Azure AD ' yi içerir. Her üç bileşen birlikte çalışarak, kullanıcıya şirket içi Web uygulamalarına erişmek için çoklu oturum açma deneyimi sağlar.
 
-Oturum açtıktan sonra dış kullanıcılar, masaüstü veya iOS/MAC cihazlarından tanıdık bir URL 'YI veya [uygulamalarımı](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) kullanarak şirket içi Web uygulamalarına erişebilir. Örneğin, uygulama proxy 'Si Uzak Masaüstü, SharePoint siteleri, Tableau, Qlik, Web üzerinde Outlook ve iş kolu (LOB) uygulamaları için uzaktan erişim ve çoklu oturum açma sağlayabilir.
+Oturum açtıktan sonra dış kullanıcılar, masaüstü veya iOS/MAC cihazlarından tanıdık bir URL 'YI veya [uygulamalarımı](../user-help/my-apps-portal-end-user-access.md) kullanarak şirket içi Web uygulamalarına erişebilir. Örneğin, uygulama proxy 'Si Uzak Masaüstü, SharePoint siteleri, Tableau, Qlik, Web üzerinde Outlook ve iş kolu (LOB) uygulamaları için uzaktan erişim ve çoklu oturum açma sağlayabilir.
 
 ![Azure AD Uygulama Ara Sunucusu mimarisi](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
@@ -87,7 +87,7 @@ Bir uygulamayı çoklu oturum açma için yapılandırmanın birkaç yolu vardı
 * Web uygulamaları
 * Farklı cihazlarda zengin uygulamalarda kullanıma sunmak istediğiniz Web API 'Leri
 * Uzak Masaüstü Ağ Geçidi arkasında barındırılan uygulamalar
-* [Microsoft kimlik doğrulama kitaplığı (msal)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) ile tümleştirilmiş zengin istemci uygulamaları
+* [Microsoft kimlik doğrulama kitaplığı (msal)](../develop/v2-overview.md) ile tümleştirilmiş zengin istemci uygulamaları
 
 Uygulama proxy 'Si, aşağıdaki yerel kimlik doğrulama protokolünü kullanan uygulamalarla birlikte kullanılabilir:
 
@@ -95,7 +95,7 @@ Uygulama proxy 'Si, aşağıdaki yerel kimlik doğrulama protokolünü kullanan 
 
 Ayrıca, uygulama proxy 'Si, üçüncü taraf tümleştirmeyle veya belirli yapılandırma senaryolarında aşağıdaki kimlik doğrulama protokollerini destekler:
 
-* [**Üst bilgi tabanlı kimlik doğrulama**](application-proxy-configure-single-sign-on-with-ping-access.md). Bu oturum açma yöntemi, PingAccess adlı bir üçüncü taraf kimlik doğrulama hizmeti kullanır ve uygulamanın kimlik doğrulaması için üst bilgileri kullanması durumunda kullanılır. Bu senaryoda, kimlik doğrulaması PingAccess tarafından işlenir.
+* [**Üst bilgi tabanlı kimlik doğrulama**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers). Bu oturum açma yöntemi, PingAccess adlı bir üçüncü taraf kimlik doğrulama hizmeti kullanır ve uygulamanın kimlik doğrulaması için üst bilgileri kullanması durumunda kullanılır. Bu senaryoda, kimlik doğrulaması PingAccess tarafından işlenir.
 * [**Form veya parola tabanlı kimlik doğrulama**](application-proxy-configure-single-sign-on-password-vaulting.md). Bu kimlik doğrulama yöntemiyle, kullanıcılar ilk kez erişirken Kullanıcı adı ve parola ile uygulama üzerinde oturum açabilirler. İlk oturum açma işleminden sonra Azure AD, uygulamaya Kullanıcı adı ve parola sağlar. Bu senaryoda, kimlik doğrulaması Azure AD tarafından işlenir.
 * [**SAML kimlik doğrulaması**](application-proxy-configure-single-sign-on-on-premises-apps.md). SAML tabanlı çoklu oturum açma, SAML 2,0 veya WS-Federation protokollerini kullanan uygulamalar için desteklenir. SAML çoklu oturum açma ile Azure AD, kullanıcının Azure AD hesabını kullanarak uygulamanın kimliğini doğrular.
 
@@ -109,11 +109,11 @@ Uygulama proxy 'Si ve Azure AD tarafından sunulan uzaktan erişim çözümü, m
 * **Koşullu erişim**. Ağınıza yönelik bağlantılar oluşturulmadan daha zengin ilke denetimleri uygulanabilir. Koşullu erişimle, arka uç uygulamanıza ulaşmalarını sağlayan trafik üzerinde kısıtlamalar tanımlayabilirsiniz. Oturum açma işlemlerini konuma, kimlik doğrulama gücüne ve Kullanıcı risk profiline göre sınırlayan ilkeler oluşturursunuz. Koşullu erişim geliştikçe, Microsoft Cloud App Security (MCAS) ile tümleştirme gibi ek güvenlik sağlamak için daha fazla denetim eklenmektedir. MCAS tümleştirmesi, koşullu erişim ilkelerine bağlı olarak oturumları gerçek zamanlı olarak izlemek ve denetlemek için koşullu erişimi kullanarak [gerçek zamanlı izleme](application-proxy-integrate-with-microsoft-cloud-application-security.md) için şirket içi bir uygulamayı yapılandırmanızı sağlar.
 * **Trafik sonlandırma**. Oturum arka uç sunucusuyla yeniden oluşturulduğunda, arka uç uygulamasına giden tüm trafik, buluttaki uygulama ara sunucusu hizmetinde sonlandırılır. Bu bağlantı stratejisi, arka uç sunucularınızın doğrudan HTTP trafiğine açık olmadığı anlamına gelir. Güvenlik duvarınız saldırı altında olmadığı için hedeflenen DoS (hizmet reddi) saldırılarına karşı daha iyi korunur.
 * **Tüm erişim giden**. Uygulama proxy 'Si bağlayıcıları, 80 ve 443 bağlantı noktalarında buluttaki uygulama ara sunucusu hizmetine giden bağlantıları yalnızca kullanır. Gelen bağlantı olmadan, DMZ gelen bağlantılara veya bileşenlere yönelik güvenlik duvarı bağlantı noktalarını açmaya gerek yoktur. Tüm bağlantılar giden ve güvenli bir kanal üzerinden yapılır.
-* **Güvenlik analizi ve Machine Learning (ml) tabanlı zeka**. Azure Active Directory bir parçası olduğundan, uygulama proxy 'Si [Azure AD kimlik koruması](https://docs.microsoft.com/azure/active-directory/identity-protection/overview) kullanabilir ( [Premium P2 lisanslama](https://azure.microsoft.com/pricing/details/active-directory/)gerektirir). Azure AD Kimlik Koruması, güvenliği aşılmış hesapları önceden belirlemek için Microsoft 'un [dijital Crimes birimi](https://news.microsoft.com/stories/cybercrime/index.html) ve [Microsoft Güvenlik Yanıt Merkezi](https://www.microsoft.com/msrc) 'ndeki veri akışlarıyla makine öğrenimi güvenlik zekasını birleştirir. Kimlik koruması, yüksek riskli oturum açma işlemlerinin gerçek zamanlı korumasını sağlar. Bir oturumun risk profilini artırmak için, virüslü cihazlardan erişilen, ağları bir veya olağan dışı ve olası konumlardan erişim gibi önemli faktörleri göz önünde bulundurun. Bu risk profili gerçek zamanlı koruma için kullanılır. Bu raporların ve olayların birçoğu SıEM sistemlerinizle tümleştirme için bir API aracılığıyla zaten kullanılabilir.
+* **Güvenlik analizi ve Machine Learning (ml) tabanlı zeka**. Azure Active Directory bir parçası olduğundan, uygulama proxy 'Si [Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md) kullanabilir ( [Premium P2 lisanslama](https://azure.microsoft.com/pricing/details/active-directory/)gerektirir). Azure AD Kimlik Koruması, güvenliği aşılmış hesapları önceden belirlemek için Microsoft 'un [dijital Crimes birimi](https://news.microsoft.com/stories/cybercrime/index.html) ve [Microsoft Güvenlik Yanıt Merkezi](https://www.microsoft.com/msrc) 'ndeki veri akışlarıyla makine öğrenimi güvenlik zekasını birleştirir. Kimlik koruması, yüksek riskli oturum açma işlemlerinin gerçek zamanlı korumasını sağlar. Bir oturumun risk profilini artırmak için, virüslü cihazlardan erişilen, ağları bir veya olağan dışı ve olası konumlardan erişim gibi önemli faktörleri göz önünde bulundurun. Bu risk profili gerçek zamanlı koruma için kullanılır. Bu raporların ve olayların birçoğu SıEM sistemlerinizle tümleştirme için bir API aracılığıyla zaten kullanılabilir.
 
 * **Hizmet olarak uzaktan erişim**. Uzaktan erişimi etkinleştirmek için şirket içi sunucuları koruma ve düzeltme eki uygulama konusunda endişelenmeniz gerekmez. Uygulama proxy 'Si Microsoft 'un sahip olduğu bir internet ölçeklendirme hizmetidir, bu nedenle her zaman en son güvenlik düzeltme eklerini ve yükseltmelerini alırsınız. Çok sayıda saldırı için düzeltme eki yüklenmemiş yazılım hala hesaplar. Homeland Security departmanına göre, [hedeflenen saldırılardan yüzde 85 ' luk bir koruyucu tablo olduğundan](https://www.us-cert.gov/ncas/alerts/TA15-119A). Bu hizmet modeliyle, uç sunucularınızı yönetmenin ağır yükünü ve gerektiğinde bunlara yama yapmak zorunda kalmazsınız.
 
-* **Intune tümleştirmesi**. Intune ile şirket trafiği kişisel trafikten ayrı olarak yönlendirilir. Uygulama proxy 'Si, şirket trafiğinin doğrulanmasını sağlar. [Uygulama proxy 'si ve Intune Managed Browser özelliği,](https://docs.microsoft.com/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) uzak kullanıcıların IOS ve Android cihazlarından iç Web sitelerine güvenli bir şekilde erişmesini sağlamak için birlikte da kullanılabilir.
+* **Intune tümleştirmesi**. Intune ile şirket trafiği kişisel trafikten ayrı olarak yönlendirilir. Uygulama proxy 'Si, şirket trafiğinin doğrulanmasını sağlar. [Uygulama proxy 'si ve Intune Managed Browser özelliği,](/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) uzak kullanıcıların IOS ve Android cihazlarından iç Web sitelerine güvenli bir şekilde erişmesini sağlamak için birlikte da kullanılabilir.
 
 ### <a name="roadmap-to-the-cloud"></a>Bulutun yol haritası
 
@@ -137,10 +137,10 @@ Aşağıdaki diyagramda, son kullanıcılara şirket içi uygulamalarda çoklu o
 
 |**Bileşen**|**Açıklama**|
 |:-|:-|
-|Uç Noktası|Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
+|Uç Nokta|Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
 |Azure AD|Azure AD, bulutta depolanan kiracı dizinini kullanarak kimlik doğrulamasını gerçekleştirir.|
 |Uygulama proxy hizmeti|Bu uygulama proxy hizmeti, Azure AD 'nin bir parçası olarak bulutta çalışır. Kullanıcının oturum açma belirtecini, uygulama proxy Bağlayıcısı 'na geçirir. Uygulama proxy 'Si, istekteki tüm erişilebilir üstbilgileri iletir ve üst bilgileri protokol başına, istemci IP adresine ayarlar. Ara sunucuya gelen istek zaten bu üstbilgiye sahipse, istemci IP adresi üst bilginin değeri olan virgülle ayrılmış listenin sonuna eklenir.|
-|Uygulama proxy Bağlayıcısı|Bağlayıcı, ağınız içindeki bir Windows Server üzerinde çalışan hafif bir aracıdır. Bağlayıcı, bulutta ve şirket içi uygulamada bulunan uygulama proxy hizmeti arasındaki iletişimi yönetir. Bağlayıcı yalnızca giden bağlantıları kullanır, bu nedenle herhangi bir gelen bağlantı noktasını açmanız veya DMZ 'e herhangi bir şey yerleştirmeniz gerekmez. Bağlayıcılar, gereken şekilde durum bilgisiz ve buluttan tanıtım bilgileri. Yük Dengeleme ve kimlik doğrulama gibi bağlayıcılar hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](application-proxy-connectors.md).|
+|Uygulama proxy Bağlayıcısı|Bağlayıcı, ağınız içindeki bir Windows Server üzerinde çalışan hafif bir aracıdır. Bağlayıcı, bulutta ve şirket içi uygulamada bulunan uygulama proxy hizmeti arasındaki iletişimi yönetir. Bağlayıcı yalnızca giden bağlantıları kullanır, bu nedenle herhangi bir gelen bağlantı noktasını açmanız veya DMZ 'e herhangi bir şey yerleştirmeniz gerekmez. Bağlayıcılar, gereken şekilde durum bilgisiz ve buluttan tanıtım bilgileri. Yük Dengeleme ve kimlik doğrulama gibi bağlayıcılar hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](application-proxy-connectors.md).|
 |Active Directory (AD)|Active Directory etki alanı hesapları için kimlik doğrulaması yapmak üzere şirket içinde çalışır. Çoklu oturum açma yapılandırıldığında, bağlayıcı, gereken ek kimlik doğrulamasını gerçekleştirmek için AD ile iletişim kurar.|
 |Şirket içi uygulama|Son olarak, Kullanıcı şirket içi bir uygulamaya erişebilir.|
 
@@ -181,10 +181,10 @@ Bağlayıcılarınızın nereye yükleneceğini ve ağınızı iyileştirerek ku
 
 Bu noktaya kadar, tüm bulut ve şirket içi uygulamalarınız için çoklu oturum açmayı etkinleştirirken şirket içi uygulamaları dışarıdan yayımlamak için uygulama ara sunucusu 'nu kullanmaya odaklandık. Ancak, uygulama proxy 'Si için gereken başka kullanım örnekleri de vardır. Bunlara aşağıdakiler dahildir:
 
-* **REST API 'Leri güvenli bir şekilde yayımlayın**. Şirket içinde çalışan veya buluttaki sanal makinelerde barındırılan iş mantığı veya API 'Ler olduğunda, uygulama proxy 'SI API erişimi için genel bir uç nokta sağlar. API uç noktası erişimi, gelen bağlantı noktalarına gerek kalmadan kimlik doğrulama ve yetkilendirmeyi denetlemenize olanak tanır. Intune kullanan masaüstleri, iOS, MAC ve Android cihazlar için Multi-Factor Authentication ve cihaz tabanlı koşullu erişim gibi Azure AD Premium özellikler aracılığıyla ek güvenlik sağlar. Daha fazla bilgi edinmek için bkz. [yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md) ve [Azure Active Directory ve API Management ile OAUTH 2,0 kullanarak API 'yi koruma](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
+* **REST API 'Leri güvenli bir şekilde yayımlayın**. Şirket içinde çalışan veya buluttaki sanal makinelerde barındırılan iş mantığı veya API 'Ler olduğunda, uygulama proxy 'SI API erişimi için genel bir uç nokta sağlar. API uç noktası erişimi, gelen bağlantı noktalarına gerek kalmadan kimlik doğrulama ve yetkilendirmeyi denetlemenize olanak tanır. Intune kullanan masaüstleri, iOS, MAC ve Android cihazlar için Multi-Factor Authentication ve cihaz tabanlı koşullu erişim gibi Azure AD Premium özellikler aracılığıyla ek güvenlik sağlar. Daha fazla bilgi edinmek için bkz. [yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md) ve [Azure Active Directory ve API Management ile OAUTH 2,0 kullanarak API 'yi koruma](../../api-management/api-management-howto-protect-backend-with-aad.md).
 * **Uzak Masaüstü Hizmetleri** **(RDS)**. Standart RDS dağıtımları açık gelen bağlantılar gerektirir. Ancak, [uygulama proxy 'si Ile RDS dağıtımı](application-proxy-integrate-with-remote-desktop-services.md) , bağlayıcı hizmetini çalıştıran sunucudan kalıcı bir giden bağlantıya sahiptir. Bu şekilde, Uzak Masaüstü Hizmetleri aracılığıyla şirket içi uygulamaları yayımlayarak son kullanıcılara daha fazla uygulama sunabilirsiniz. Ayrıca, RDS 'ye sınırlı bir iki adımlı doğrulama ve koşullu erişim denetimi kümesiyle dağıtımın saldırı yüzeyini de azaltabilirsiniz.
 * **WebSockets kullanarak bağlanan uygulamalar yayımlayın**. [Qlik Sense](application-proxy-qlik.md) desteği genel önizlemeye sunuldu ve gelecekte diğer uygulamalara genişletilir.
-* **Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini**sağlar. Web uygulamalarını yayımlamak için Azure AD Uygulama Ara Sunucusu kullanabilirsiniz, ancak Azure AD kimlik doğrulama kitaplığı (ADAL) ile yapılandırılmış [yerel istemci uygulamalarını](application-proxy-configure-native-client-application.md) yayımlamak için de kullanılabilir. Yerel istemci uygulamaları bir cihaza yüklendiğinden, Web uygulamalarına bir tarayıcıdan erişildiği için Web Apps 'ten farklıdır.
+* **Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini** sağlar. Web uygulamalarını yayımlamak için Azure AD Uygulama Ara Sunucusu kullanabilirsiniz, ancak Azure AD kimlik doğrulama kitaplığı (ADAL) ile yapılandırılmış [yerel istemci uygulamalarını](application-proxy-configure-native-client-application.md) yayımlamak için de kullanılabilir. Yerel istemci uygulamaları bir cihaza yüklendiğinden, Web uygulamalarına bir tarayıcıdan erişildiği için Web Apps 'ten farklıdır.
 
 ## <a name="conclusion"></a>Sonuç
 

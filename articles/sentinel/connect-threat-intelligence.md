@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362755"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655332"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit zekası sağlayıcılarından veri bağlama
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki tehdit bilgileri veri bağlayıcıları Şu anda genel önizleme aşamasındadır.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Sentinel, kuruluşunuzun kullandığı tehdit göstergelerini içeri aktarmanıza olanak tanır. Bu, güvenlik analistlerinizin bilinen tehditleri algılama ve önceliklerini belirleme yeteneğini geliştirebilecek. Azure Sentinel 'in birkaç özelliği daha sonra kullanılabilir hale gelir veya geliştirilmiştir:
 
@@ -36,7 +36,7 @@ Azure Sentinel, kuruluşunuzun kullandığı tehdit göstergelerini içeri aktar
 
 - Kötü amaçlı davranışlar için anomali ve huniler araştırdığınızda, **Not defterleri** tehdit göstergelerini kullanabilir.
 
-Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürünlerinden birini kullanarak, TAXıı sunucularına bağlanarak veya [Microsoft Graph Security Tiındicators API](https://aka.ms/graphsecuritytiindicators)'siyle doğrudan tümleştirmeyi kullanarak tehdit göstergelerini Azure Sentinel 'e aktarabilirsiniz.
+Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürünlerinden birini kullanarak, TAXıı sunucularına bağlanarak veya [Microsoft Graph Security Tiındicators API](/graph/api/resources/tiindicator)'siyle doğrudan tümleştirmeyi kullanarak tehdit göstergelerini Azure Sentinel 'e aktarabilirsiniz.
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>Tümleşik tehdit bilgileri platformu ürünleri
 
@@ -59,7 +59,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel 'i tehdit bilgileri platformunuza bağlama
 
-### <a name="prerequisites"></a>Ön koşullar  
+### <a name="prerequisites"></a>Önkoşullar  
 
 - Tıp ürününüzün veya güvenlik yöneticisi 'nin Microsoft Graph güvenlik Tiındicators API 'SI ile doğrudan tümleştirme kullanan özel uygulamanıza izin vermek için genel yönetici veya güvenlik yöneticisinin Azure AD rolü.
 
@@ -71,7 +71,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 2. Kayıtlı uygulama için [API Izinlerini yapılandırma](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) : kayıtlı uygulamanıza, **Threatındictındictındictındicmators. ReadWrite. ownedby** uygulama izni Microsoft Graph ekleyin.
 
-3. Azure Active Directory kiracı yöneticinizden kuruluşunuzun kayıtlı uygulamasına yönetici onayı vermesini isteyin. Azure Portal: **Azure Active Directory**  >  **uygulama kayıtları**  >  **\<_app name_>**  >  **API izinleri**  >  **için \<_tenant name_> yönetici izni ver **' i görüntüleyin.
+3. Azure Active Directory kiracı yöneticinizden kuruluşunuzun kayıtlı uygulamasına yönetici onayı vermesini isteyin. Azure Portal: **Azure Active Directory**  >  **uygulama kayıtları**  >  **\<_app name_>**  >  **API izinleri**  >  **için \<_tenant name_> yönetici izni ver**' i görüntüleyin.
 
 4. Şunları belirterek, Azure Sentinel 'e göstergeler göndermek için Microsoft Graph Security Tiındicators API 'SI ile doğrudan tümleştirme kullanan tıp ürününüzü veya uygulamanızı yapılandırın:
     
@@ -85,11 +85,11 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 6. **Bağlayıcı sayfasını aç**' ı ve sonra **Bağlan**' ı seçin.
 
-7. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel**'e gidin  >  ve**securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
+7. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel**'e gidin  >  ve **securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel 'i TAXıı sunucularına bağlama
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Tehdit göstergelerini depolamak için Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 
@@ -107,11 +107,11 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 5. Ek TAXıı 2,0 sunucularınız varsa: 3 ve 4. adımları yineleyin.
 
-6. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel**'e gidin  >  ve**securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
+6. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel**'e gidin  >  ve **securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu belgede, tehdit bilgileri sağlayıcınızı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın.
 
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.

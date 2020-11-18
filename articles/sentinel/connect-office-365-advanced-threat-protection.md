@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 5ac72c9861e06773ffab87dcbf4e730562b798fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5140bcd85606213f00185d4ba1f50dbe70dba63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91346597"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655503"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>Office 365 için Microsoft Defender 'daki uyarıları bağlama 
 
@@ -29,9 +29,9 @@ ms.locfileid: "91346597"
 >
 >     Eski adı bir süre için üründe hala kullanımda (Azure Sentinel 'deki veri Bağlayıcısı dahil) görebilirsiniz.
 >
-> - Office 365 uyarıları için Microsoft Defender 'ın alımı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> - Office 365 uyarıları için Microsoft Defender 'ın alımı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
-[Office 365 Için Microsoft Defender](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) , kuruluşunuzun e-posta iletilerinde, kötü amaçlı URL bağlantılarında ve işbirliği araçlarında bilinmeyen kötü amaçlı yazılımlardan oluşan sıfır gün ve diğer gelişmiş tehditlere karşı korunmasını korumalar. Office 365 uyarıları için Microsoft Defender 'ı Azure Sentinel 'e ekleyerek, güvenlik işlemlerinizin e-posta, dosya paylaşımı ve URL tabanlı tehditler hakkında bilgi kullanabileceksiniz. Daha sonra kuruluşunuz genelinde güvenlik olaylarını daha ayrıntılı şekilde çözümleyebilir ve etkili ve anında yanıt için PlayBook 'lar oluşturabilirsiniz.
+[Office 365 Için Microsoft Defender](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) , kuruluşunuzun e-posta iletilerinde, kötü amaçlı URL bağlantılarında ve işbirliği araçlarında bilinmeyen kötü amaçlı yazılımlardan oluşan sıfır gün ve diğer gelişmiş tehditlere karşı korunmasını korumalar. Office 365 uyarıları için Microsoft Defender 'ı Azure Sentinel 'e ekleyerek, güvenlik işlemlerinizin e-posta, dosya paylaşımı ve URL tabanlı tehditler hakkında bilgi kullanabileceksiniz. Daha sonra kuruluşunuz genelinde güvenlik olaylarını daha ayrıntılı şekilde çözümleyebilir ve etkili ve anında yanıt için PlayBook 'lar oluşturabilirsiniz.
 
 Bağlayıcı aşağıdaki uyarıları içeri aktarır:
 
@@ -49,13 +49,13 @@ Bağlayıcı aşağıdaki uyarıları içeri aktarır:
 
 Bu uyarılar Office **güvenlik ve Uyumluluk Merkezi**'nde Office müşterileri tarafından görülebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bağlayıcıyı etkinleştirdiğinizde Azure Sentinel çalışma alanında okuma ve yazma izinlerinizin olması gerekir.
 
 - Azure Sentinel çalışma alanının kiracısında genel yönetici veya güvenlik yöneticisi olmanız gerekir.
 
-- [Office 365 ATP planı 2](https://docs.microsoft.com/microsoft-365/security/office-365-security/office-365-atp#office-365-atp-plan-1-and-plan-2) için geçerli bir lisansa sahip olmanız gerekir (Office 365 E5, Office 365 A5 ve Microsoft 365 E5 lisanslarına dahildir ve ayrı olarak satın alınabilir). 
+- [Office 365 ATP planı 2](/microsoft-365/security/office-365-security/office-365-atp#office-365-atp-plan-1-and-plan-2) için geçerli bir lisansa sahip olmanız gerekir (Office 365 E5, Office 365 A5 ve Microsoft 365 E5 lisanslarına dahildir ve ayrı olarak satın alınabilir). 
 
 ## <a name="connect-to-microsoft-defender-for-office-365"></a>Office 365 için Microsoft Defender 'a bağlanma
 
@@ -63,13 +63,13 @@ Office 365 için Microsoft Defender dağıtılırsa ve ilkeler yapılandırıld�
 
 1. Azure Sentinel 'de, gezinti menüsünden **veri bağlayıcıları** ' nı seçin.
 
-1. Bağlayıcılar galerisinde **office 365 Için Microsoft Defender** (yine de *Office 365 Gelişmiş tehdit koruması*olarak adlandırılabilir) seçeneğini belirleyin ve **bağlayıcı sayfasını aç**' ı seçin.
+1. Bağlayıcılar galerisinde **office 365 Için Microsoft Defender** (yine de *Office 365 Gelişmiş tehdit koruması* olarak adlandırılabilir) seçeneğini belirleyin ve **bağlayıcı sayfasını aç**' ı seçin.
 
 1. **Yapılandırma** bölümünde, **Bağlan**' a tıklayın. 
 
 1. **Olayları oluştur** bölümünde **Etkinleştir**' e tıklayın.
 
-1. Office 365 ATP uyarılarını sorgulamak için ilgili şemayı kullanmak için, **Securityalert** araması yapın ve **sağlayıcı adını** **oatp**olarak belirtin.
+1. Office 365 ATP uyarılarını sorgulamak için ilgili şemayı kullanmak için, **Securityalert** araması yapın ve **sağlayıcı adını** **oatp** olarak belirtin.
 
 1. Office 365 Bağlayıcısı için Microsoft Defender ile paketlenmiş sorgu örnekleri ve analitik kural şablonlarını görmek ve kullanmak için **sonraki adımlar** sekmesini seçin.
 
@@ -77,4 +77,4 @@ Office 365 için Microsoft Defender dağıtılırsa ve ilkeler yapılandırıld�
 
 Bu belgede, Office 365 için Microsoft Defender 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.
