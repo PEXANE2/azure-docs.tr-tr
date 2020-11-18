@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51e8590e2859a9fe8692f79c5b1238ed5a2098
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0112ab53c501d639d3f8e0d09d82ef3a12cb93a8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948190"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837255"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If aracını kullanarak koşullu erişim sorunlarını giderme
 
 Koşullu erişim 'teki [What If aracı](what-if-tool.md) , bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda uygulanabileceğini anlamaya çalışırken etkili olur.
 
-What If Aracı, **Azure Portal**  >  **Azure Active Directory**  >  **koşullu erişim**  >  **What If**bulunur.
+What If Aracı, **Azure Portal**  >  **Azure Active Directory**  >  **koşullu erişim**  >  **What If** bulunur.
 
 ![Koşullu erişim What If aracı varsayılan durumda](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
@@ -36,7 +36,7 @@ What If aracı yalnızca bir **kullanıcının** çalışmaya başlamanızı ger
 Aşağıdaki ek bilgiler isteğe bağlıdır, ancak belirli durumlar için kapsamı daraltmanıza yardımcı olur.
 
 * Bulut uygulamaları veya eylemleri
-* IP adresi 
+* IP Adresi 
 * Ülke/Bölge
 * Cihaz platformu
 * İstemci uygulamaları (Önizleme)
@@ -78,4 +78,4 @@ Bu test, kapsamı daraltmak için diğer veri noktalarını içerecek şekilde g
 * [Koşullu Erişim nedir?](overview.md)
 * [Azure Active Directory Kimlik Koruması nedir?](../identity-protection/overview-identity-protection.md)
 * [Cihaz kimliği nedir?](../devices/overview.md)
-* [Nasıl çalışır: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Nasıl kullanılır: Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

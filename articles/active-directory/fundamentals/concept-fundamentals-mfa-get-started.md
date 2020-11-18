@@ -1,6 +1,6 @@
 ---
-title: Kuruluşunuz için Azure Multi-Factor Authentication-Azure Active Directory
-description: Lisans modelinize bağlı olarak, kuruluşunuz için Azure Multi-Factor Authentication 'nin kullanılabilir özellikleri hakkında bilgi edinin
+title: Kuruluşunuz için Azure AD Multi-Factor Authentication-Azure Active Directory
+description: Lisans modelinize bağlı olarak, kuruluşunuz için Azure AD Multi-Factor Authentication 'nin kullanılabilir özellikleri hakkında bilgi edinin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: daveba
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093d9fdd75b8a4a581faa0708cf97ea67774d734
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 85e7f02f8cbda6218396bf4a9a4654a113b7817c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241727"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836751"
 ---
-# <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Kuruluşunuz için Azure Multi-Factor Authentication genel bakış
+# <a name="overview-of-azure-ad-multi-factor-authentication-for-your-organization"></a>Kuruluşunuz için Azure AD Multi-Factor Authentication genel bakış
 
-Kuruluşunuzun sahip olduğu lisanslara göre Azure Active Directory (AD) kullanıcılarınız için Azure Multi-Factor Authentication etkinleştirmenin birden çok yolu vardır. 
+Kuruluşunuzun sahip olduğu lisanslara göre Azure Active Directory (AD) kullanıcılarınız için Azure AD Multi-Factor Authentication etkinleştirmenin birden çok yolu vardır. 
 
 ![Gerektiğinde sinyalleri araştırın ve MFA 'yı uygulayın](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
 
@@ -36,7 +36,7 @@ Azure AD 'nin ücretsiz avantajlarından yararlanan müşteriler, ortamınızda 
 
 Microsoft 365 olan müşteriler için iki seçenek vardır:
 
-* Tüm oturum açma olayları için Azure Multi-Factor Authentication, tüm kullanıcılar için etkin veya devre dışı bırakılmış. Yalnızca bir kullanıcı alt kümesi için veya yalnızca belirli senaryolarda Multi-Factor Authentication 'ı etkinleştirebilme özelliği yoktur. Yönetim, Office 365 portalından yapılır. 
+* Tüm oturum açma olayları için Azure AD Multi-Factor Authentication, tüm kullanıcılar için etkin veya devre dışı bırakılmış. Yalnızca bir kullanıcı alt kümesi için veya yalnızca belirli senaryolarda Multi-Factor Authentication 'ı etkinleştirebilme özelliği yoktur. Yönetim, Office 365 portalından yapılır. 
 * Gelişmiş bir kullanıcı deneyimi için Azure AD Premium P1 veya P2 sürümüne yükseltin ve koşullu erişimi kullanın. Daha fazla bilgi için bkz. Multi-Factor Authentication ile güvenli Microsoft 365 kaynakları.
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
@@ -62,6 +62,6 @@ En güçlü güvenlik konumunu ve geliştirilmiş Kullanıcı deneyimini sağlar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [Azure Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme](../authentication/tutorial-enable-azure-mfa.md)öğreticisine bakın.
+Başlamak için [Azure AD Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme](../authentication/tutorial-enable-azure-mfa.md)öğreticisine bakın.
 
-Lisanslama hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Için Özellikler ve lisanslar](../authentication/concept-mfa-licensing.md).
+Lisanslama hakkında daha fazla bilgi için bkz. [Azure AD Multi-Factor Authentication Için Özellikler ve lisanslar](../authentication/concept-mfa-licensing.md).

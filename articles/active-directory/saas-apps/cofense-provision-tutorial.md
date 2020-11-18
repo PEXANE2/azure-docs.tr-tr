@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 69a9b9401f25893ec94b282f52730d92d372268d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b12a595c9b59b40ee6982f123baddaa818dd87ef
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355711"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836300"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Cofense Recipient eşitlemesini yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Cofens
 > * Artık erişim gerektirmeyen kullanıcıları Cofense alıcı eşitlemesine kaldır
 > * Kullanıcı özniteliklerinin Azure AD ile Cofense alıcı eşitlemesi arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -77,11 +77,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
 ### <a name="to-configure-automatic-user-provisioning-for-cofense-recipient-sync-in-azure-ad"></a>Azure AD 'de Cofense Recipient Sync için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Cofense alıcı eşitleme** ' yi seçin.
+2. Uygulamalar listesinde **Cofense alıcı eşitleme**' yi seçin.
 
     ![Uygulamalar listesindeki Cofense bağlantısı](common/all-applications.png)
 
@@ -89,7 +89,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -101,16 +101,16 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Cofense alıcı eşitlemesine Eşitle** ' yi seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Cofense alıcı eşitlemesine Eşitle**' yi seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Cofense alıcı eşitlemesine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Cofense Recipient Sync içindeki kullanıcı hesaplarını eşleştirmek için kullanılır.  Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-   |Öznitelik|Tür|
-   |---|---|
+   |Öznitelik|Tür|Filtreleme için destekleniyor|
+   |---|---|---|
+   |externalId|Dize|&check;|
    |userName|Dize|
-   |externalId|Dize|
    |active|Boole|
    |displayName|Dize|
    |ad. biçimlendirildi|Dize|
@@ -156,7 +156,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

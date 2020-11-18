@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5374dc2ef4c736535b218d8cd67521e83a24a40b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413454"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836470"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD, şirket Içi Iş yükleri için bulut tarafından yönetilen yönetim sağlar
 
@@ -39,7 +39,7 @@ Bu yazıda, Microsoft 'un karma IDaaS stratejisi özetlenmektedir ve kuruluşlar
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Bulut tarafından yönetilen kimlik yönetimi için Azure AD yaklaşımı
 
-Kuruluşlar buluta geçiş yaparken, tam ortamları üzerinde denetimlere sahip oldukları, daha fazla güvenlik ve etkinliklere daha fazla görünürlük, Otomasyon tarafından desteklenen ve proaktif içgörüler hakkında daha fazla bilgi sahibi olmaları gerekir. " **Bulut yönetilen yönetimi** ", kuruluşların kullanıcılarını, uygulamalarını, gruplarını ve cihazlarını buluttan nasıl yönetip yöneteceğini açıklar.
+Kuruluşlar buluta geçiş yaparken, tam ortamları üzerinde denetimlere sahip oldukları, daha fazla güvenlik ve etkinliklere daha fazla görünürlük, Otomasyon tarafından desteklenen ve proaktif içgörüler hakkında daha fazla bilgi sahibi olmaları gerekir. "**Bulut yönetilen yönetimi**", kuruluşların kullanıcılarını, uygulamalarını, gruplarını ve cihazlarını buluttan nasıl yönetip yöneteceğini açıklar.
 
 Bu modern dünyada, SaaS uygulamalarının uzamasını ve işbirliği ve dış kimliklerin artan rolünü nedeniyle kuruluşların ölçeği etkin bir şekilde yönetebilmeleri gerekir. Bulutun yeni risk dünyası, bir kuruluşun daha fazla yanıt vermesi gerektiği anlamına gelir. bir bulut kullanıcısını kapatan kötü niyetli bir aktör, bulutu ve şirket içi uygulamaları etkileyebilir.
 
@@ -89,7 +89,7 @@ Bir kuruluş, uygulamayı barındıran işletim sistemini Azure 'a taşıyarak b
 
 ## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>Şirket içi Federasyon tabanlı uygulamalar için bulut yönetilen yönetimi
 
-Şirket içi kimlik sağlayıcısı kullanan bir kuruluş için, uygulamaları Azure AD 'ye taşımak daha güvenli erişim ve Federasyon yönetimi için daha kolay bir yönetim deneyimi sağlar. Azure AD, Azure AD koşullu erişim kullanarak Azure Multi-Factor Authentication dahil ayrıntılı uygulama başına erişim denetimlerini yapılandırmaya izin vermez. Azure AD, uygulamaya özel belirteç imzalama sertifikaları ve yapılandırılabilir sertifika sona erme tarihleri dahil olmak üzere daha fazla özelliği destekler. Bu yetenekler, Araçlar ve yönergeler kuruluşların şirket içi kimlik sağlayıcılarını devre dışı bırakamalarına olanak sağlar. Microsoft 'un tek bir örneği olan 17.987 uygulamalarını Microsoft 'un Dahili Active Directory Federasyon Hizmetleri (AD FS) (AD FS) Azure AD 'ye taşımıştır.
+Şirket içi kimlik sağlayıcısı kullanan bir kuruluş için, uygulamaları Azure AD 'ye taşımak daha güvenli erişim ve Federasyon yönetimi için daha kolay bir yönetim deneyimi sağlar. Azure AD, Azure AD Multi-Factor Authentication dahil olmak üzere ayrıntılı uygulama başına erişim denetimlerini Azure AD koşullu erişim kullanarak yapılandırmaya izin vermez. Azure AD, uygulamaya özel belirteç imzalama sertifikaları ve yapılandırılabilir sertifika sona erme tarihleri dahil olmak üzere daha fazla özelliği destekler. Bu yetenekler, Araçlar ve yönergeler kuruluşların şirket içi kimlik sağlayıcılarını devre dışı bırakamalarına olanak sağlar. Microsoft 'un tek bir örneği olan 17.987 uygulamalarını Microsoft 'un Dahili Active Directory Federasyon Hizmetleri (AD FS) (AD FS) Azure AD 'ye taşımıştır.
 
 ![Azure AD evrimi](media/cloud-governed-management-for-on-premises/image5.png)
 
@@ -111,7 +111,7 @@ Kuruluşlar [,](../enterprise-users/groups-dynamic-membership.md) [SaaS uygulama
 
 ## <a name="future-directions"></a>Gelecekteki yönergeler
 
-Karma ortamlarda, Microsoft 'un stratejisi, **bulutun kimlik için denetim düzlemi olduğu** , şirket içi dizinlerin ve Active Directory ve diğer şirket içi uygulamalar gibi diğer kimlik sistemlerinin erişimi olan kullanıcıları sağlamaya yönelik hedef olan dağıtımları etkinleştirmektir. Bu strateji, bu uygulama ve iş yüklerindeki haklara, kimliklere ve bunlara dayalı erişim sağlamaya devam edecektir. Bu bitiş durumunda kuruluşlar, son kullanıcı üretkenliğini tamamen buluttan çalıştırabilecektir.
+Karma ortamlarda, Microsoft 'un stratejisi, **bulutun kimlik için denetim düzlemi olduğu**, şirket içi dizinlerin ve Active Directory ve diğer şirket içi uygulamalar gibi diğer kimlik sistemlerinin erişimi olan kullanıcıları sağlamaya yönelik hedef olan dağıtımları etkinleştirmektir. Bu strateji, bu uygulama ve iş yüklerindeki haklara, kimliklere ve bunlara dayalı erişim sağlamaya devam edecektir. Bu bitiş durumunda kuruluşlar, son kullanıcı üretkenliğini tamamen buluttan çalıştırabilecektir.
 
 ![Azure AD mimarisi](media/cloud-governed-management-for-on-premises/image6.png)
 

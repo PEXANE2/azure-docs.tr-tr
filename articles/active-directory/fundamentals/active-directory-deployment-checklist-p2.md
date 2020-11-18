@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077974"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836929"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özellik dağıtım kılavuzu
 
@@ -26,7 +26,7 @@ Kuruluşunuz için Azure Active Directory (Azure AD) dağıtımı yapabilir ve g
 
 Ayrıca müşteriler, Microsoft 'un en iyi uygulamalarına nasıl hizalanacağını öğrenmek için kendi [kimlik güvenli Puanını](identity-secure-score.md) denetleyebilir. Sektörünüz ve boyutlarınızın diğer kuruluşlarındaki diğer kuruluşlara kıyasla ne kadar iyi işlem yaptığınızı görmek için bu önerileri uyguladıktan önce ve sonra güvenli puanınızı kontrol edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kılavuzdaki önerilerin birçoğu Azure AD Ücretsiz veya hiçbir lisans olmadan uygulanabilir. Lisansların gerekli olduğu durumlar, görevi gerçekleştirmek için en düşük düzeyde lisansın gerekli olduğu durumdur.
 
@@ -57,7 +57,7 @@ Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan vey
 | [Koşullu erişim ilkelerini kullanarak Azure AD Multi-Factor Authentication dağıtma](../authentication/howto-mfa-getstarted.md) | Kullanıcıların koşullu erişim ilkelerini kullanarak gizli uygulamalara erişirken iki adımlı doğrulama gerçekleştirmesini gerektir. | Azure AD Premium P1 |
 | [Azure Active Directory Kimlik Koruması etkinleştir](../identity-protection/overview-identity-protection.md) | Kuruluşunuzdaki kullanıcılar için riskli oturum açma işlemlerinin ve güvenliği aşılmış kimlik bilgilerinin izlenmesini etkinleştirin. | Azure AD Premium P2 |
 | [Çok faktörlü kimlik doğrulaması ve parola değişikliklerini tetiklemek için risk algılamalarını kullanma](../authentication/tutorial-risk-based-sspr-mfa.md) | Multi-Factor Authentication, parola sıfırlama ve oturum açma işlemlerini riske göre engelleme gibi olayları tetikleyemeyen Otomasyonu etkinleştirin. | Azure AD Premium P2 |
-| [Self servis parola sıfırlama ve Azure AD Multi-Factor Authentication için Birleşik kaydı etkinleştirme](../authentication/concept-registration-mfa-sspr-combined.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. | Azure AD Premium P1 |
+| [Self servis parola sıfırlama ve Azure AD Multi-Factor Authentication için Birleşik kaydı etkinleştirme](../authentication/concept-registration-mfa-sspr-combined.md) | Kullanıcılarınızın hem Azure AD Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2. Aşama: kullanıcıları Içeri aktarma, eşitlemeyi etkinleştirme ve cihazları yönetme
 

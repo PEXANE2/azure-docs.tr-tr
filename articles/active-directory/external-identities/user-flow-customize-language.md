@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98ead87ce2bd3b4e3ffc45763aa5151168c72078
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7cddb40a6a43c38079906699d9fa4865c4daf558
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576521"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837099"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory dil özelleştirmesi (Önizleme)
 
@@ -37,8 +37,8 @@ Varsayılan olarak, tutarlı bir kaydolma deneyimi sağlamak üzere kaydolan kul
 Dil özelleştirmesi, Kullanıcı akışındaki herhangi bir dizeyi özelleştirmenize olanak sağlar.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri** altında **Azure Active Directory** ' yi seçin.
-3. Sol taraftaki menüden **dış kimlikler** ' i seçin.
+2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
+3. Sol taraftaki menüden **dış kimlikler**' i seçin.
 4. **Kullanıcı akışları ' nı (Önizleme)** seçin.
 3. Çeviriler için etkinleştirmek istediğiniz kullanıcı akışını seçin.
 4. **Dilleri** seçin.
@@ -146,7 +146,7 @@ Chrome ve Firefox, kendi set dilleri için istek. Desteklenen bir dilise, varsay
 
 ## <a name="supported-languages"></a>Desteklenen diller
 
-Azure AD aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Azure AD tarafından sağlanır. Multi-Factor Authentication (MFA) bildirim dilleri [Azure MFA](../authentication/concept-mfa-howitworks.md)tarafından sağlanır.
+Azure AD aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Azure AD tarafından sağlanır. Multi-Factor Authentication (MFA) bildirim dilleri [Azure AD MFA](../authentication/concept-mfa-howitworks.md)tarafından sağlanır.
 
 | Dil              | Dil kodu | Kullanıcı akışları         | MFA bildirimleri  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

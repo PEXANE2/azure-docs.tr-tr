@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705342"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836776"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
 Parola spreyi, yeniden oynama ve kimlik avı gibi yaygın kimlikle ilgili saldırılara karşı güvenliği yönetmek, daha fazla ve daha popüler hale geliyor olabilir. Güvenlik Varsayılanları, kuruluşunuzun önceden yapılandırılmış güvenlik ayarlarıyla bu saldırılara karşı korunmasına yardımcı olmaya daha kolay hale getirir:
 
-- Tüm kullanıcıların Azure Multi-Factor Authentication 'e kaydolmasına gerek vardır.
+- Tüm kullanıcıların Azure AD Multi-Factor Authentication için kaydolmasına gerek vardır.
 - Yöneticilerin Multi-Factor Authentication gerçekleştirmesini gerektirme.
 - Eski kimlik doğrulama protokolleri engelleniyor.
 - Gerektiğinde kullanıcıların Multi-Factor Authentication gerçekleştirmesini isteme.
@@ -52,13 +52,13 @@ Microsoft, güvenlik varsayılanlarını herkes için kullanılabilir hale yapı
 
 ### <a name="unified-multi-factor-authentication-registration"></a>Birleşik Multi-Factor Authentication kaydı
 
-Kiracınızdaki tüm kullanıcıların, Azure Multi-Factor Authentication biçiminde Multi-Factor Authentication (MFA) için kaydolmalıdır. Kullanıcıların, Microsoft Authenticator uygulamasını kullanarak Azure Multi-Factor Authentication kaydolmak için 14 gün daha vardır. 14 gün geçtikten sonra, kayıt tamamlanana kadar Kullanıcı oturum açamaz. Kullanıcının 14 günlük süresi, güvenlik varsayılanlarını etkinleştirdikten sonra, ilk başarılı etkileşimli oturum açma işleminden sonra başlar.
+Kiracınızdaki tüm kullanıcıların, Azure AD Multi-Factor Authentication biçiminde Multi-Factor Authentication (MFA) için kaydolmalıdır. Kullanıcıların, Microsoft Authenticator uygulamasını kullanarak Azure AD Multi-Factor Authentication için kaydolmak üzere 14 gün vardır. 14 gün geçtikten sonra, kayıt tamamlanana kadar Kullanıcı oturum açamaz. Kullanıcının 14 günlük süresi, güvenlik varsayılanlarını etkinleştirdikten sonra, ilk başarılı etkileşimli oturum açma işleminden sonra başlar.
 
 ### <a name="protecting-administrators"></a>Yöneticileri koruma
 
 Ayrıcalıklı erişimi olan kullanıcılar ortamınıza erişimi artırmıştır. Bu hesapların gücüyle ilgili olan güç nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açma için daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure AD 'de Multi-Factor Authentication 'ı zorunlu kılarak daha güçlü bir hesap doğrulaması edinebilirsiniz.
 
-Azure Multi-Factor Authentication 'e kaydolduktan sonra, her oturum açtıklarında ek kimlik doğrulaması gerçekleştirmek için aşağıdaki dokuz Azure AD yönetici rolü gerekecektir:
+Azure AD Multi-Factor Authentication kaydı tamamlandıktan sonra, her oturum açtıklarında ek kimlik doğrulaması gerçekleştirmek için aşağıdaki dokuz Azure AD yönetici rolü gerekir:
 
 - Genel yönetici
 - SharePoint yöneticisi
@@ -98,7 +98,7 @@ Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir pr
 
 Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
 
-- Azure portal 
+- Azure portalı 
 - Azure PowerShell 
 - Azure CLI
 
@@ -120,7 +120,7 @@ Aşağıdaki ek konular, güvenlik varsayılanlarını dağıtma ile ilgilidir.
 
 ### <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-Bu ücretsiz güvenlik Varsayılanları **, bildirimleri kullanarak yalnızca Microsoft Authenticator uygulamasını kullanarak**Azure Multi-Factor Authentication 'nin kaydedilmesine ve kullanımına izin verir. Koşullu erişim, yöneticinin etkinleştirmek üzere seçtiği herhangi bir kimlik doğrulama yönteminin kullanılmasına izin verir.
+Bu ücretsiz güvenlik Varsayılanları **, bildirimleri kullanarak yalnızca Microsoft Authenticator uygulamasını kullanarak** Azure AD Multi-Factor Authentication 'nin kaydedilmesine ve kullanımına izin verir. Koşullu erişim, yöneticinin etkinleştirmek üzere seçtiği herhangi bir kimlik doğrulama yönteminin kullanılmasına izin verir.
 
 | Yöntem | Güvenlik varsayılanları | Koşullu Erişim |
 | --- | --- | --- |
@@ -128,14 +128,14 @@ Bu ücretsiz güvenlik Varsayılanları **, bildirimleri kullanarak yalnızca Mi
 | Mobil uygulama veya donanım belirtecinden doğrulama kodu | X * * | X |
 | Telefona kısa mesaj |   | X |
 | Telefon çağrısı |   | X |
-| Uygulama parolaları |   | X * * * |
+| Uygulama parolaları |   | X * * _ |
 
-- * * Kullanıcılar Microsoft Authenticator uygulamasındaki doğrulama kodlarını kullanabilir, ancak yalnızca bildirim seçeneğini kullanarak kaydolabilirsiniz.
-- Uygulama parolaları yalnızca yöneticiler tarafından etkinleştirildiyse eski kimlik doğrulama senaryolarıyla Kullanıcı başına MFA 'da kullanılabilir.
+- _ * Kullanıcılar Microsoft Authenticator uygulamasındaki doğrulama kodlarını kullanabilir, ancak yalnızca bildirim seçeneğini kullanarak kaydolabilirsiniz.
+- * * _ Uygulama parolaları yalnızca yöneticiler tarafından etkinleştirildiyse eski kimlik doğrulama senaryolarıyla Kullanıcı başına MFA 'da kullanılabilir.
 
 ### <a name="disabled-mfa-status"></a>Devre dışı MFA durumu
 
-Kuruluşunuz, Kullanıcı başına tabanlı Azure Multi-Factor Authentication 'ın önceki bir kullanıcısı ise, Multi-Factor auth durum sayfasına bakarsanız, kullanıcıları **etkin** veya **Zorlanmış** bir durumda görmeyen uyarıda yok. **Devre dışı** , güvenlik varsayılanlarını veya koşullu erişim tabanlı Azure Multi-Factor Authentication kullanan kullanıcılar için uygun durumlardır.
+Kuruluşunuz, Kullanıcı başına tabanlı Azure AD Multi-Factor Authentication 'ın önceki bir kullanıcısı ise, Multi-Factor auth durum sayfasına bakarsanız bir _ *etkin** veya **Zorlanmış** durumda kullanıcıları görmeyen bir uyarıda yok. **Devre dışı** , güvenlik varsayılanlarını veya koşullu erişim tabanlı Azure AD Multi-Factor Authentication kullanan kullanıcılar için uygun durumlardır.
 
 ### <a name="conditional-access"></a>Koşullu Erişim
 
@@ -149,16 +149,16 @@ Aşağıda, güvenlik Varsayılanları tarafından etkinleştirilen ilkelerle e�
 - [Azure yönetimi için MFA gerektirme](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [Eski kimlik doğrulamasını engelleme](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Tüm kullanıcılar için MFA gerektirme](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Azure MFA kaydı gerektir](../identity-protection/howto-identity-protection-configure-mfa-policy.md) -Azure AD Premium P2 Azure AD kimlik koruması bir parçası gerektirir.
+- [Azure AD MFA kaydı gerektir](../identity-protection/howto-identity-protection-configure-mfa-policy.md) -Azure AD Premium P2 Azure AD kimlik koruması bir parçası gerektirir.
 
 ## <a name="enabling-security-defaults"></a>Güvenlik varsayılanlarını etkinleştirme
 
 Dizininizde güvenlik varsayılanlarını etkinleştirmek için:
 
 1.  [Azure Portal](https://portal.azure.com)   bir güvenlik yöneticisi, koşullu erişim Yöneticisi veya genel yönetici olarak oturum açın.
-1.  **Azure Active Directory**   >  **özelliklere**gidin.
+1.  **Azure Active Directory**   >  **özelliklere** gidin.
 1. **Güvenlik varsayılanlarını Yönet**' i seçin.
-1. **Güvenlik varsayılanlarını etkinleştir** ayarını **Evet**olarak ayarlayın.
+1. **Güvenlik varsayılanlarını etkinleştir** ayarını **Evet** olarak ayarlayın.
 1. **Kaydet**’i seçin.
 
 ## <a name="disabling-security-defaults"></a>Güvenlik varsayılanlarını devre dışı bırakma
@@ -170,9 +170,9 @@ Güvenlik varsayılanlarını değiştirecek koşullu erişim ilkelerini uygulam
 Dizininizde güvenlik varsayılanlarını devre dışı bırakmak için:
 
 1.  [Azure Portal](https://portal.azure.com)   bir güvenlik yöneticisi, koşullu erişim Yöneticisi veya genel yönetici olarak oturum açın.
-1.  **Azure Active Directory**   >  **özelliklere**gidin.
+1.  **Azure Active Directory**   >  **özelliklere** gidin.
 1. **Güvenlik varsayılanlarını Yönet**' i seçin.
-1. **Güvenlik varsayılanlarını etkinleştir** ' i ayarla **Hayır**olarak ayarlayın.
+1. **Güvenlik varsayılanlarını etkinleştir** ' i ayarla **Hayır** olarak ayarlayın.
 1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

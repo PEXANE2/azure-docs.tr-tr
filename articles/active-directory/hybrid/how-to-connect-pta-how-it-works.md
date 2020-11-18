@@ -16,12 +16,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358336"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836368"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory geçişli kimlik doğrulaması: teknik derinlemesine bakış
 Bu makale, Azure Active Directory (Azure AD) geçişli kimlik doğrulamanın nasıl çalıştığına ilişkin bir genel bakıştır. Ayrıntılı teknik ve güvenlik bilgileri için bkz. [güvenlik derinlemesine](how-to-connect-pta-security-deep-dive.md) bakış makalesi.
@@ -43,7 +43,7 @@ Bir Kullanıcı Azure AD tarafından güvenli bir uygulamada oturum açmaya çal
 8. Aracı, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından kullanılan benzer bir mekanizma olan standart Windows API 'Lerini kullanarak Kullanıcı adı ve parolayı Active Directory doğrular. Kullanıcı adı, şirket içi varsayılan Kullanıcı adı, genellikle `userPrincipalName` veya Azure AD Connect yapılandırılmış başka bir öznitelik olabilir (olarak bilinir `Alternate ID` ).
 9. Şirket içi Active Directory etki alanı denetleyicisi (DC), isteği değerlendirir ve aracıya uygun yanıtı (başarı, hata, parola doldu veya Kullanıcı kilitli) döndürür.
 10. Kimlik doğrulama Aracısı, sırasıyla bu yanıtı Azure AD 'ye geri döndürür.
-11. Azure AD yanıtı değerlendirir ve kullanıcıya uygun şekilde yanıt verir. Örneğin, Azure AD kullanıcının anında veya Azure Multi-Factor Authentication isteklerinde oturum açar.
+11. Azure AD yanıtı değerlendirir ve kullanıcıya uygun şekilde yanıt verir. Örneğin, Azure AD kullanıcıyı hemen veya Azure AD Multi-Factor Authentication istekleri olarak imzalar.
 12. Kullanıcı oturum açma işlemi başarılı olursa, Kullanıcı uygulamaya erişebilir.
 
 Aşağıdaki diyagramda tüm bileşenler ve ilgili adımlar gösterilmektedir:

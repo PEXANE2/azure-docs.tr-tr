@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370959"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836844"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory genel işlemler Kılavuzu başvurusu
 
@@ -43,7 +43,7 @@ Azure Active Directory Yönetimi, önemli işlem görevlerinin ve işlemlerin s�
 | Karma günlükleri izleme: geçiş kimlik doğrulama aracıları | IAM Işlemler ekibi |
 | Karma günlükleri izleme: parola geri yazma hizmeti | IAM Işlemler ekibi |
 | Karma günlükleri izleme: şirket içi parola koruma ağ geçidi | IAM Işlemler ekibi |
-| Karma günlükleri izleme: Azure MFA NPS uzantısı (varsa) | IAM Işlemler ekibi |
+| Karma günlükleri izleme: Azure AD MFA NPS uzantısı (varsa) | IAM Işlemler ekibi |
 
 Listenizi gözden geçirdikten sonra, sahibi eksik olan görevler için bir sahip atamanız veya yukarıdaki önerilere göre hizalanmamış olan sahiplerin sahipliğini ayarlamanız gerekebilir.
 
@@ -86,7 +86,7 @@ Ortamınızın sistem durumunu izlerken, yüksek önem derecesine sahip uyarıla
 
 ### <a name="on-premises-agents-logs"></a>Şirket içi aracılar günlükleri
 
-Bazı kimlik ve erişim yönetimi hizmetleri, karma senaryoları etkinleştirmek için şirket içi aracılar gerektirir. Parola sıfırlama, geçişli kimlik doğrulaması (PTA), Azure AD Uygulama Ara Sunucusu ve Azure MFA NPS uzantısı örnekleri bulunur. System Center Operations Manager veya SıEM gibi çözümler kullanarak bileşen Aracısı günlüklerini arşivleyerek ve çözümleyerek, işlem ekibinin temel aldığı bir anahtardır ve bu bileşenlerin sistem durumunu izlersiniz. Bilgi Işlem ekibiniz veya yardım masasının hata desenleriyle ilgili sorunları nasıl giderebileceğinizi anlayabilmesi de aynı şekilde önemlidir.
+Bazı kimlik ve erişim yönetimi hizmetleri, karma senaryoları etkinleştirmek için şirket içi aracılar gerektirir. Parola sıfırlama, geçişli kimlik doğrulaması (PTA), Azure AD Uygulama Ara Sunucusu ve Azure AD MFA NPS uzantısı örnekleri bulunur. System Center Operations Manager veya SıEM gibi çözümler kullanarak bileşen Aracısı günlüklerini arşivleyerek ve çözümleyerek, işlem ekibinin temel aldığı bir anahtardır ve bu bileşenlerin sistem durumunu izlersiniz. Bilgi Işlem ekibiniz veya yardım masasının hata desenleriyle ilgili sorunları nasıl giderebileceğinizi anlayabilmesi de aynı şekilde önemlidir.
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Şirket içi aracılar günlüklerinin okunması önerilir
 
@@ -94,7 +94,7 @@ Bazı kimlik ve erişim yönetimi hizmetleri, karma senaryoları etkinleştirmek
 - [Self servis parola sıfırlama sorunlarını giderme-Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect: geçişli kimlik doğrulaması sorunlarını giderme](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
-- [Azure MFA NPS uzantısı için hata kodları sorunlarını giderme](../authentication/howto-mfa-nps-extension-errors.md)
+- [Azure AD MFA NPS uzantısı için hata kodları sorunlarını giderme](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>Şirket içi aracılar yönetimi
 
@@ -156,7 +156,7 @@ Gönderilen bildirimlerin türünü ve bunların nerede kontrol edildiği hakkı
 
 Uygulamaları [Azure AD akıllı kilitleme](../authentication/concept-sspr-howitworks.md)'den Azure AD avantajına doğrudan kimlik doğrulaması yapacak şekilde yapılandıran kuruluşlar. Windows Server 2012 R2 'de AD FS kullanıyorsanız, AD FS [Extranet kilitleme koruması](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)uygulayın. Windows Server 2016 veya sonraki sürümlerde AD FS kullanıyorsanız, [extranet akıllı kilitleme](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)uygulayın. En azından, şirket içi Active Directory karşı deneme yanılma saldırısı riskini içermesi için extranet kilitlemeyi etkinleştirmenizi öneririz. Ancak, Windows 2016 veya üzeri sürümlerde AD FS varsa, [parola spreyi](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) saldırılarını azaltmaya yardımcı olacak extranet akıllı kilitleme özelliğini de etkinleştirmeniz gerekir.
 
-AD FS yalnızca Azure AD Federasyonu için kullanılıyorsa, saldırı yüzeyi alanını en aza indirmek için kapatılabilir bazı uç noktalar vardır. Örneğin, AD FS yalnızca Azure AD için kullanılıyorsa, **usernamemixed** ve **windowstransport**için etkinleştirilen uç noktaların dışında WS-Trust uç noktaları devre dışı bırakmanız gerekir.
+AD FS yalnızca Azure AD Federasyonu için kullanılıyorsa, saldırı yüzeyi alanını en aza indirmek için kapatılabilir bazı uç noktalar vardır. Örneğin, AD FS yalnızca Azure AD için kullanılıyorsa, **usernamemixed** ve **windowstransport** için etkinleştirilen uç noktaların dışında WS-Trust uç noktaları devre dışı bırakmanız gerekir.
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>Şirket içi kimlik bileşenleriyle makinelere erişim
 

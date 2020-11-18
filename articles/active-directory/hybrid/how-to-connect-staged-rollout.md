@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646585"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836402"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
-Hazırlanan dağıtım, etki alanlarınızı kesmeden önce Azure Multi-Factor Authentication (MFA), koşullu erişim, sızdırılan kimlik bilgileri için kimlik koruması, kimlik yönetimi ve diğerleri gibi bulut kimlik doğrulama özelliklerine sahip kullanıcı gruplarını seçmeli olarak test etmenize olanak tanır.  Bu makalede, anahtarın nasıl yapılacağı açıklanır. Ancak, hazırlanan piyasaya başlamadan önce, aşağıdaki koşullardan biri veya daha fazlası doğru olduğunda etkilerini göz önünde bulundurmanız gerekir:
+Hazırlanan dağıtım, etki alanlarınızı kesmeden önce Azure AD Multi-Factor Authentication (MFA), koşullu erişim, sızdırılan kimlik bilgileri için kimlik koruması, kimlik yönetimi ve diğerleri gibi bulut kimlik doğrulama özelliklerine sahip kullanıcı gruplarını seçmeli olarak test etmenize olanak tanır.  Bu makalede, anahtarın nasıl yapılacağı açıklanır. Ancak, hazırlanan piyasaya başlamadan önce, aşağıdaki koşullardan biri veya daha fazlası doğru olduğunda etkilerini göz önünde bulundurmanız gerekir:
     
 -  Şu anda bir şirket içi Multi-Factor Authentication sunucusu kullanıyorsunuz. 
 -  Kimlik doğrulaması için akıllı kartlar kullanıyorsunuz. 
@@ -33,7 +33,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
@@ -45,7 +45,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 -   Bulut kimlik doğrulamasına geçirilmekte olan kullanıcılar için gereken tüm uygun kiracı marka ve koşullu erişim ilkelerini yapılandırdınız.
 
--   Azure Multi-Factor Authentication kullanmayı planlıyorsanız, kullanıcılarınızın kimlik doğrulama yöntemlerini bir kez kaydetmesi için [self servis parola sıfırlama (SSPR) ve Multi-Factor Authentication Birleşik kayıt](../authentication/concept-registration-mfa-sspr-combined.md) kullanmanızı öneririz. Bu şekilde, hazırlanan piyasaya çıkma sırasında parola sıfırlama veya parola değiştirme için SSPR kullanırken Azure AD Connect, sıfırlama sonrasında 2 dakika sürebilen yeni parola karmasını eşitlemeniz gerekir.
+-   Azure AD Multi-Factor Authentication kullanmayı planlıyorsanız, kullanıcılarınızın kimlik doğrulama yöntemlerini bir kez kaydetmesi için [self servis parola sıfırlama (SSPR) ve Multi-Factor Authentication Birleşik kayıt](../authentication/concept-registration-mfa-sspr-combined.md) kullanmanızı öneririz. Bu şekilde, hazırlanan piyasaya çıkma sırasında parola sıfırlama veya parola değiştirme için SSPR kullanırken Azure AD Connect, sıfırlama sonrasında 2 dakika sürebilen yeni parola karmasını eşitlemeniz gerekir.
 
 -   Hazırlanan dağıtım özelliğini kullanmak için kiracınızda genel yönetici olmanız gerekir.
 

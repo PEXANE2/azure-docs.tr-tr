@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a703f6d32cb665bfada73ca833f51c94d83f8b97
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146169"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836606"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -189,7 +189,7 @@ Uygulamalar için Delta sorgusu genel kullanıma sunulmuştur! Artık, Microsoft
 
 **Ürün yeteneği:** Geliştirici deneyimi
 
-Bu API 'Ler, kullanıcılarınızın kimlik doğrulama yöntemlerini yönetmeye yönelik bir temel araçtır. Artık MFA ve self servis parola sıfırlama (SSPR) için kullanılan kimlik doğrulayıcılar aracılığıyla programlı olarak kayıt yapabilir ve yönetebilirsiniz. Bu, Azure MFA, SSPR ve Microsoft Graph alanlarında en çok istenen özelliklerden biridir. Bu dalgaya yayımladığımız yeni API 'Ler şunları yapabilmenizi sağlar:
+Bu API 'Ler, kullanıcılarınızın kimlik doğrulama yöntemlerini yönetmeye yönelik bir temel araçtır. Artık MFA ve self servis parola sıfırlama (SSPR) için kullanılan kimlik doğrulayıcılar aracılığıyla programlı olarak kayıt yapabilir ve yönetebilirsiniz. Bu, Azure AD MFA, SSPR ve Microsoft Graph alanlarında en çok istenen özelliklerden biridir. Bu dalgaya yayımladığımız yeni API 'Ler şunları yapabilmenizi sağlar:
 
 - Kullanıcının kimlik doğrulama telefonlarını okuma, ekleme, güncelleştirme ve kaldırma
 - Kullanıcının parolasını sıfırlama
@@ -227,9 +227,9 @@ Daha fazla bilgi için bkz. [Azure Active Directory (Önizleme) Içinde yönetim
 
 **Ürün yeteneği:** Access Control
 
-**Yazıcı Yöneticisi** : Bu role sahip kullanıcılar, Evrensel Yazdırma Bağlayıcısı ayarları dahil olmak üzere Microsoft Evrensel Yazdırma çözümünde tüm yazıcı yapılandırmalarının yazıcılarını kaydedebilir ve tüm yönlerini yönetebilir. Tüm temsilci atanmış yazdırma izni isteklerini kabul edebilirler. Yazıcı yöneticilerinin Ayrıca raporları yazdırma erişimi de vardır. 
+**Yazıcı Yöneticisi**: Bu role sahip kullanıcılar, Evrensel Yazdırma Bağlayıcısı ayarları dahil olmak üzere Microsoft Evrensel Yazdırma çözümünde tüm yazıcı yapılandırmalarının yazıcılarını kaydedebilir ve tüm yönlerini yönetebilir. Tüm temsilci atanmış yazdırma izni isteklerini kabul edebilirler. Yazıcı yöneticilerinin Ayrıca raporları yazdırma erişimi de vardır. 
 
-**Yazıcı teknisyeni** : Bu role sahip kullanıcılar Microsoft Evrensel Yazdırma çözümünde yazıcı kaydedebilir ve yazıcı durumunu yönetebilir. Ayrıca, tüm bağlayıcı bilgilerini okuyabilir. Ana görevler bir yazıcı teknisyeni, yazıcılar ve paylaşım yazıcılarında Kullanıcı izinlerini ayarlar. [Daha fazla bilgi edinin.](../roles/permissions-reference.md#printer-administrator)
+**Yazıcı teknisyeni**: Bu role sahip kullanıcılar Microsoft Evrensel Yazdırma çözümünde yazıcı kaydedebilir ve yazıcı durumunu yönetebilir. Ayrıca, tüm bağlayıcı bilgilerini okuyabilir. Ana görevler bir yazıcı teknisyeni, yazıcılar ve paylaşım yazıcılarında Kullanıcı izinlerini ayarlar. [Daha fazla bilgi edinin.](../roles/permissions-reference.md#printer-administrator)
 
 ---
 
@@ -397,7 +397,7 @@ Bu yeni geliştirme eylemleri, kullanıcılarınızı veya yöneticilerinizi, di
 **Hizmet kategorisi:** EAı  
 **Ürün yeteneği:** B2B/B2C
  
-Microsoft, **31 mart 2021** ' den ıtıbaren, B2B işbirliği senaryolarına yönelik yönetilmeyen Azure Active Directory (Azure AD) hesapları ve kiracılar oluşturarak davetlerin kullanımını desteklememektedir. Buna hazırlık olarak, [bir kerelik geçiş kodu kimlik doğrulamasını e-posta](../external-identities/one-time-passcode.md)ile yapmayı tercih etmeniz önerilir.
+Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryolarına yönelik yönetilmeyen Azure Active Directory (Azure AD) hesapları ve kiracılar oluşturarak davetlerin kullanımını desteklememektedir. Buna hazırlık olarak, [bir kerelik geçiş kodu kimlik doğrulamasını e-posta](../external-identities/one-time-passcode.md)ile yapmayı tercih etmeniz önerilir.
 
 ---
 
@@ -1271,7 +1271,7 @@ MFA sunucusunu 1 Temmuz 2019 ' den önce etkinleştiren mevcut bir müşteriysen
 
 - Diğer küçük hatalar düzeltildi.
 
-Microsoft, 1 Temmuz 2019 ' den itibaren Yeni dağıtımlar için MFA sunucusunu sunmayı durdurdu. Multi-Factor Authentication gerektiren yeni müşterilerin bulut tabanlı Azure Multi-Factor Authentication kullanması gerekir. Daha fazla bilgi için bkz. [bulut tabanlı Azure Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md).
+Microsoft, 1 Temmuz 2019 ' den itibaren Yeni dağıtımlar için MFA sunucusunu sunmayı durdurdu. Multi-Factor Authentication gerektiren yeni müşterilerin bulut tabanlı Azure AD Multi-Factor Authentication kullanması gerekir. Daha fazla bilgi için bkz. [bulut tabanlı Azure AD Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md).
 
 ---
 
@@ -1435,11 +1435,11 @@ Gelişmiş güvenlik bilgileri deneyimi hakkında daha fazla bilgi için [yönet
 
 1. Azure portal genel yönetici veya Kullanıcı Yöneticisi olarak oturum açın.
 
-2. **Azure Active Directory > Kullanıcı ayarları ' na gidin > erişim paneli Önizleme özellikleri ayarlarını yönetin** .
+2. **Azure Active Directory > Kullanıcı ayarları ' na gidin > erişim paneli Önizleme özellikleri ayarlarını yönetin**.
 
-3. Kullanıcılar, **güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir-gelişmiş** alanı, **Seçili** ' i seçin ve ardından bir Kullanıcı grubu seçebilir ya da bu özelliği Kiracıdaki tüm kullanıcılar için açmak üzere **Tümünü** seçebilirsiniz.
+3. Kullanıcılar, **güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir-gelişmiş** alanı, **Seçili**' i seçin ve ardından bir Kullanıcı grubu seçebilir ya da bu özelliği Kiracıdaki tüm kullanıcılar için açmak üzere **Tümünü** seçebilirsiniz.
 
-4. * * Kullanıcılar, güvenliği kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir * * bilgi * * * * alanı, **hiçbiri** ' ni seçin.
+4. * * Kullanıcılar, güvenliği kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir * * bilgi * * * * alanı, **hiçbiri**' ni seçin.
 
 5. Ayarlarınızı kaydedin.
 
@@ -1573,7 +1573,7 @@ Daha fazla bilgi için bkz. [Azure AD Domain Services Için güvenlik denetimler
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** self servis parola sıfırlama **ürün yeteneği:** izleme & raporlama
 
-Yeni kimlik doğrulama yöntemleri kullanım & öngörüleri raporları, Azure Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kuruluşunuzda nasıl kaydedildiğini ve kullanıldığını, her bir özellik için kayıtlı Kullanıcı sayısı, parolaları sıfırlamak için hangi sıklıkla parola sıfırlamasının kullanıldığı ve sıfırlama yöntemi dahil olmak üzere nasıl çalıştığını anlamanıza yardımcı olabilir.
+Yeni kimlik doğrulama yöntemleri kullanım & öngörüleri raporları, Azure AD Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kuruluşunuzda nasıl kaydedildiğini ve kullanıldığını, her bir özellik için kayıtlı Kullanıcı sayısı, parolaları sıfırlamak için kendi kendine parola sıfırlamasının ne sıklıkta kullanıldığını ve sıfırlamanın ne yaptığını anlamanıza yardımcı olabilir.
 
 Daha fazla bilgi için bkz. [kimlik doğrulama yöntemleri kullanımı & Öngörüler (Önizleme)](../authentication/howto-authentication-methods-usage-insights.md).
 
@@ -1747,9 +1747,9 @@ Azure AD 'yi, şirket markasının artık oturum açma ve hata ekranlarında, ot
 
 **Şunu yazın:** Kullanım dışı **hizmet kategorisi:** MFA **ürün yeteneği:** kimlik güvenliği & koruması
 
-1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kuruluşunuzda Multi-Factor Authentication istemek isteyen yeni müşterilerin artık bulut tabanlı Azure Multi-Factor Authentication kullanması gerekir. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren müşteriler bir değişiklik görmez. Hala en son sürümü indirebilir, gelecekteki güncelleştirmeleri alabilir ve etkinleştirme kimlik bilgileri oluşturabilirsiniz.
+1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kuruluşunuzda Multi-Factor Authentication istemek isteyen yeni müşterilerin artık bulut tabanlı Azure AD Multi-Factor Authentication kullanması gerekir. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren müşteriler bir değişiklik görmez. Hala en son sürümü indirebilir, gelecekteki güncelleştirmeleri alabilir ve etkinleştirme kimlik bilgileri oluşturabilirsiniz.
 
-Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication sunucusu](../authentication/howto-mfaserver-deploy.md)kullanmaya başlama. Bulut tabanlı Azure Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [bulut tabanlı azure Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md).
+Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication sunucusu](../authentication/howto-mfaserver-deploy.md)kullanmaya başlama. Bulut tabanlı Azure AD Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [bulut tabanlı Azure ad Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md).
 
 ---
 
@@ -2221,7 +2221,7 @@ Müşteri geri bildirimlerine yanıt olarak, birleştirilmiş MFA/SSPR kayıt ö
 
 **Kullanıcılarınızın gelişmiş deneyimini bugün açmak için şu adımları izleyin:**
 
-1. Genel yönetici veya Kullanıcı Yöneticisi olarak Azure portal oturum açın ve **> Kullanıcı ayarları ' na Azure Active Directory gidin > erişim paneli Önizleme özellikleri ayarlarını yönetin** .
+1. Genel yönetici veya Kullanıcı Yöneticisi olarak Azure portal oturum açın ve **> Kullanıcı ayarları ' na Azure Active Directory gidin > erişim paneli Önizleme özellikleri ayarlarını yönetin**.
 
 2. **Güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilecek kullanıcılar – Yenile** seçeneği için **Seçili bir Kullanıcı grubu** veya **tüm kullanıcılar** için özellikleri açmayı seçin.
 
@@ -2229,7 +2229,7 @@ Müşteri geri bildirimlerine yanıt olarak, birleştirilmiş MFA/SSPR kayıt ö
 
 **Kiracınız için denetimin kaldırılıp kaldırılmadığını görmek için şu adımları izleyin:**
 
-1. Genel yönetici veya Kullanıcı Yöneticisi olarak Azure portal oturum açın ve **> Kullanıcı ayarları ' na Azure Active Directory gidin > erişim paneli Önizleme özellikleri ayarlarını yönetin** .
+1. Genel yönetici veya Kullanıcı Yöneticisi olarak Azure portal oturum açın ve **> Kullanıcı ayarları ' na Azure Active Directory gidin > erişim paneli Önizleme özellikleri ayarlarını yönetin**.
 
 2. **Güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilecek kullanıcılar** **hiçbiri** olarak ayarlanırsa, bu seçenek kiracınızdan kaldırılır.
 
@@ -2297,9 +2297,9 @@ Daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu kimlik doğrulamas
 
 Uygulama proxy 'Si aracılığıyla yayınlanan uygulamalarınız için kullanılabilen üç yeni tanımlama bilgisi ayarı ekledik:
 
-- **HTTP-Only tanımlama bilgisini kullanın.** Uygulama proxy 'Si erişiminizin ve oturum tanımlama bilgilerinizdeki **HttpOnly** bayrağını ayarlar. Bu ayarı açmak, istemci tarafı komut dosyası aracılığıyla tanımlama bilgilerinin kopyalanmasını veya değiştirilmesini önlemeye yardımcı olmak gibi ek güvenlik avantajları sağlar. Bu bayrağı açmanızı öneririz ( **Evet** ' i seçin).
+- **HTTP-Only tanımlama bilgisini kullanın.** Uygulama proxy 'Si erişiminizin ve oturum tanımlama bilgilerinizdeki **HttpOnly** bayrağını ayarlar. Bu ayarı açmak, istemci tarafı komut dosyası aracılığıyla tanımlama bilgilerinin kopyalanmasını veya değiştirilmesini önlemeye yardımcı olmak gibi ek güvenlik avantajları sağlar. Bu bayrağı açmanızı öneririz ( **Evet**' i seçin).
 
-- **Güvenli tanımlama bilgisini kullanın.** Uygulama proxy 'Si erişiminizin ve oturum tanımlama bilgilerinde **güvenli** bayrağını ayarlar. Bu ayarı açmak, tanımlama bilgilerinin yalnızca HTTPS gibi TLS güvenli kanallarından aktarılmasını sağlamak için ek güvenlik avantajları sağlar. Bu bayrağı açmanızı öneririz ( **Evet** ' i seçin).
+- **Güvenli tanımlama bilgisini kullanın.** Uygulama proxy 'Si erişiminizin ve oturum tanımlama bilgilerinde **güvenli** bayrağını ayarlar. Bu ayarı açmak, tanımlama bilgilerinin yalnızca HTTPS gibi TLS güvenli kanallarından aktarılmasını sağlamak için ek güvenlik avantajları sağlar. Bu bayrağı açmanızı öneririz ( **Evet**' i seçin).
 
 - **Kalıcı tanımlama bilgisini kullanın.** Web tarayıcısı kapalıyken erişim tanımlama bilgilerinin süresinin dolmasını önler. Bu tanımlama bilgileri, erişim belirtecinin ömrü için en son. Ancak, süre sonu zamanına ulaşıldığında veya Kullanıcı tanımlama bilgisini el ile silerse tanımlama bilgileri sıfırlanır. Varsayılan ayar olarak, yalnızca süreçler arasında tanımlama bilgilerini paylaşmayan eski uygulamalar **için ayarı açarak** yapmanız önerilir.
 
@@ -2391,7 +2391,7 @@ Bu, sonuçta, geçmişteki bazı senaryolarda, AD 'den eşitlenen bir kullanıc�
 Azure Izleyici aracılığıyla hem denetim hem de oturum açma günlüğü akışlarını yayımlıyoruz, böylece günlük dosyalarını SıEM araçlarınızla veya Log Analytics ile sorunsuzca tümleştirebilirsiniz. Geri bildirimlerinize göre ve bu özelliğin genel kullanılabilirlik duyurusunu hazırlıyoruz, şemanızda aşağıdaki değişiklikleri yapıyoruz. Bu şema değişiklikleri ve ilgili belge güncelleştirmeleri, Ocak 'un ilk haftası tarafından gerçekleşir.
 
 #### <a name="new-fields-in-the-audit-schema"></a>Denetim şemasındaki yeni alanlar
-Kaynak üzerinde gerçekleştirilen işlem türünü sağlamak için yeni bir **Işlem türü** alanı ekliyoruz. Örneğin, **ekleme** , **güncelleştirme** veya **silme** .
+Kaynak üzerinde gerçekleştirilen işlem türünü sağlamak için yeni bir **Işlem türü** alanı ekliyoruz. Örneğin, **ekleme**, **güncelleştirme** veya **silme**.
 
 #### <a name="changed-fields-in-the-audit-schema"></a>Denetim şemasındaki alanları değiştirme
 Aşağıdaki alanlar denetim şemasında değişiyor:
@@ -2672,7 +2672,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 
 - Microsoft Stream
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
 
@@ -3034,10 +3034,10 @@ Uygulamalarınızdan herhangi biri Azure AD etkinlik günlüğü API 'Lerini kul
 
 **Uygulama izinlerinizi güncelleştirmek için**
 
-1. Azure portal oturum açın, **Azure Active Directory** ' i seçin ve ardından **uygulama kayıtları** ' nı seçin.
-2. Azure AD etkinlik günlükleri API 'sini kullanan uygulamanızı seçin, **Ayarlar** ' ı seçin, **gerekli izinler** ' i seçin ve ardından **Windows Azure Active Directory** API 'sini seçin.
-3. **Erişimi etkinleştir** dikey penceresinin **temsilci izinleri** alanında, **Dizin verilerini oku** ' nın yanındaki kutuyu işaretleyin ve ardından **Kaydet** ' i seçin.
-4. **Izin ver** ' i seçin ve ardından **Evet** ' i seçin.
+1. Azure portal oturum açın, **Azure Active Directory**' i seçin ve ardından **uygulama kayıtları**' nı seçin.
+2. Azure AD etkinlik günlükleri API 'sini kullanan uygulamanızı seçin, **Ayarlar**' ı seçin, **gerekli izinler**' i seçin ve ardından **Windows Azure Active Directory** API 'sini seçin.
+3. **Erişimi etkinleştir** dikey penceresinin **temsilci izinleri** alanında, **Dizin verilerini oku** ' nın yanındaki kutuyu işaretleyin ve ardından **Kaydet**' i seçin.
+4. **Izin ver**' i seçin ve ardından **Evet**' i seçin.
 
     >[!Note]
     >Uygulamaya izin vermek için bir genel yönetici olmanız gerekir.
@@ -3052,30 +3052,30 @@ Daha fazla bilgi için Azure AD Raporlama API 'SI makalesine erişim için önko
 
 Aktarım Katmanı Güvenliği (TLS), iki iletişim uygulaması arasında gizlilik ve veri bütünlüğü sağlayan bir protokoldür ve günümüzde kullanılan en yaygın olarak dağıtılan güvenlik protokolüdür.
 
-[PCI güvenlik standartları Council](https://www.pcisecuritystandards.org/) , uyumluluk **30 Haziran 2018** ' den itibaren, yeni ve daha güvenli uygulama PROTOKOLLERININ etkinleştirilmesi için eski TLS ve Güvenli Yuva Katmanı (SSL) sürümlerinin devre dışı bırakılması gerektiğini belirledi. Bu değişiklik, Azure AD hizmetlerine bağlanıp PCI DSS uyumluluğunu gerektirdiğinde TLS 1,0 ' i devre dışı bırakmanız anlamına gelir. Birden çok TLS sürümü mevcuttur, ancak TLS 1,2 Azure Active Directory Hizmetleri için kullanılabilen en son sürümdür. Hem istemci/sunucu hem de tarayıcı/sunucu birleşimleri için doğrudan TLS 1,2 ' e geçmeyi öneririz.
+[PCI güvenlik standartları Council](https://www.pcisecuritystandards.org/) , uyumluluk **30 Haziran 2018**' den itibaren, yeni ve daha güvenli uygulama PROTOKOLLERININ etkinleştirilmesi için eski TLS ve Güvenli Yuva Katmanı (SSL) sürümlerinin devre dışı bırakılması gerektiğini belirledi. Bu değişiklik, Azure AD hizmetlerine bağlanıp PCI DSS uyumluluğunu gerektirdiğinde TLS 1,0 ' i devre dışı bırakmanız anlamına gelir. Birden çok TLS sürümü mevcuttur, ancak TLS 1,2 Azure Active Directory Hizmetleri için kullanılabilen en son sürümdür. Hem istemci/sunucu hem de tarayıcı/sunucu birleşimleri için doğrudan TLS 1,2 ' e geçmeyi öneririz.
 
-Güncel olmayan tarayıcılar TLS 1,2 gibi daha yeni TLS sürümlerini desteklemeyebilir. Tarayıcı tarafından hangi TLS sürümlerinin desteklendiğini görmek için [Qualys SSL Labs](https://www.ssllabs.com/) sitesine gidin ve **tarayıcınızı test et** ' e tıklayın. Web tarayıcınızın en son sürümüne yükseltmenizi ve tercihen yalnızca TLS 1,2 ' i etkinleştirmenizi öneririz.
+Güncel olmayan tarayıcılar TLS 1,2 gibi daha yeni TLS sürümlerini desteklemeyebilir. Tarayıcı tarafından hangi TLS sürümlerinin desteklendiğini görmek için [Qualys SSL Labs](https://www.ssllabs.com/) sitesine gidin ve **tarayıcınızı test et**' e tıklayın. Web tarayıcınızın en son sürümüne yükseltmenizi ve tercihen yalnızca TLS 1,2 ' i etkinleştirmenizi öneririz.
 
 **TLS 1,2 'yi tarayıcıda etkinleştirmek için**
 
 - **Microsoft Edge ve Internet Explorer (her ikisi de Internet Explorer kullanılarak ayarlanır)**
 
-    1. Internet Explorer 'ı açın, **Araçlar**  >  **Internet seçenekleri**  >  **Gelişmiş** ' i seçin.
-    2. **Güvenlik** alanında, **TLS 1,2 kullan** ' ı seçin ve ardından **Tamam** ' ı seçin.
+    1. Internet Explorer 'ı açın, **Araçlar**  >  **Internet seçenekleri**  >  **Gelişmiş**' i seçin.
+    2. **Güvenlik** alanında, **TLS 1,2 kullan**' ı seçin ve ardından **Tamam**' ı seçin.
     3. Tüm tarayıcı pencerelerini kapatın ve Internet Explorer 'ı yeniden başlatın.
 
 - **Google Chrome**
 
     1. Google Chrome ' ı açın, adres çubuğuna *Chrome://Settings/* yazın ve **ENTER** tuşuna basın.
-    2. **Gelişmiş** seçenekleri genişletin, **sistem** alanına gidin ve **proxy ayarlarını aç** ' ı seçin.
-    3. **Internet özellikleri** kutusunda **Gelişmiş** sekmesini seçin, **güvenlik** alanı ' na gidin, **TLS 1,2 kullan** ' ı seçin ve ardından **Tamam** ' ı seçin.
+    2. **Gelişmiş** seçenekleri genişletin, **sistem** alanına gidin ve **proxy ayarlarını aç**' ı seçin.
+    3. **Internet özellikleri** kutusunda **Gelişmiş** sekmesini seçin, **güvenlik** alanı ' na gidin, **TLS 1,2 kullan**' ı seçin ve ardından **Tamam**' ı seçin.
     4. Tüm tarayıcı pencerelerini kapatın ve Google Chrome 'u yeniden başlatın.
 
 - **Mozilla Firefox**
 
     1. Firefox ' u açın, adres çubuğuna *about: config* yazın ve **ENTER** tuşuna basın.
     2. *TLS* terimini arayın ve ardından **Security. TLS. Version. Max** girişini seçin.
-    3. Tarayıcıyı TLS 1,2 sürümüne kadar kullanmaya zorlamak için değeri **3** olarak ayarlayın ve ardından **Tamam** ' ı seçin.
+    3. Tarayıcıyı TLS 1,2 sürümüne kadar kullanmaya zorlamak için değeri **3** olarak ayarlayın ve ardından **Tamam**' ı seçin.
 
         >[!NOTE]
         >Firefox sürüm 60,0, TLS 1,3 ' yi desteklediğinden, Security. TLS. Version. Max değerini **4** olarak da ayarlayabilirsiniz.
@@ -3132,11 +3132,11 @@ Daha fazla bilgi için bkz. [Azure Active Directory kullanım koşulları özell
 
 ---
 
-### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication dağıtma hakkında yeni ve kapsamlı kılavuz
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication dağıtma hakkında yeni ve kapsamlı kılavuz
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** diğer **ürün yeteneği:** kimlik güvenliği & koruması
 
-Kuruluşunuzda Azure Multi-Factor Authentication (MFA) dağıtma hakkında yeni adım adım yönergeler yayımladık.
+Kuruluşunuzda Azure AD Multi-Factor Authentication (MFA) dağıtma hakkında yeni adım adım yönergeler yayımladık.
 
 MFA dağıtım kılavuzunu görüntülemek için GitHub 'daki [kimlik dağıtım kılavuzlarını](./active-directory-deployment-plans.md) depoya gidin. Dağıtım kılavuzlarıyla ilgili geri bildirim sağlamak için [dağıtım planı geri bildirim formunu](https://aka.ms/deploymentplanfeedback)kullanın. Dağıtım kılavuzlarıyla ilgili sorularınız varsa, [IDGitDeploy](mailto:idgitdeploy@microsoft.com)adresinden bizimle iletişime geçin.
 
@@ -3172,7 +3172,7 @@ Genel önizleme hakkında daha fazla bilgi için bkz. [Azure AD temsilci uygulam
 
 **Şunu yazın:** Değişiklik **hizmeti kategorisini planlayın:** kimlik doğrulamaları (oturum açma) **ürün yeteneği:** platform
 
-Azure Active Directory (Azure AD) gibi bir hizmet sunumu, ExpressRoute veya diğer özel VPN tünellerine gerek duymadan doğrudan Internet üzerinden çalışacak şekilde tasarlanmıştır. Bu nedenle, **1 ağustos 2018** ' de Azure genel eşleme ve Microsoft eşleme 'de Azure toplulukları KULLANıLARAK Azure AD Hizmetleri Için ExpressRoute desteğini durduracağız. Bu değişiklikten etkilenen tüm hizmetler, Azure AD trafiğinin yavaş şekilde ExpressRoute 'a Internet 'e kaydırdığına bildirimde bulunabilir.
+Azure Active Directory (Azure AD) gibi bir hizmet sunumu, ExpressRoute veya diğer özel VPN tünellerine gerek duymadan doğrudan Internet üzerinden çalışacak şekilde tasarlanmıştır. Bu nedenle, **1 ağustos 2018**' de Azure genel eşleme ve Microsoft eşleme 'de Azure toplulukları KULLANıLARAK Azure AD Hizmetleri Için ExpressRoute desteğini durduracağız. Bu değişiklikten etkilenen tüm hizmetler, Azure AD trafiğinin yavaş şekilde ExpressRoute 'a Internet 'e kaydırdığına bildirimde bulunabilir.
 
 Desteğimizi değiştirirken, kimlik doğrulama trafiğiniz için adanmış bir devre kümesi kullanmanız gerekebilecek durumlar olduğunu da biliyoruz. Bu nedenle, Azure AD "diğer Office 365 Online Services" topluluğuyla Microsoft eşliğinde zaten ExpressRoute ve hizmetleri kullanan kiracı başına IP aralığı kısıtlamalarını desteklemeye devam edecektir. Hizmetleriniz etkilenirse, ancak ExpressRoute gerekliyse, aşağıdakileri yapmanız gerekir:
 
@@ -3312,7 +3312,7 @@ Grupların ve uygulamaların erişim gözden geçirmeleri artık Azure AD Premiu
 
 **Şunu yazın:** Değiştirilen özellik **hizmeti kategorisi:** kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
-25 Nisan 2018 ' de veya sonrasında oluşturulan uygulamalar artık **sorgu** response_mode kullanarak **id_token** isteyemeyecektir.  Bu, Azure AD 'yi OıDC belirtimleriyle satır içi olarak getirir ve uygulamalarınızın saldırı yüzeyini azaltmaya yardımcı olur.  25 Nisan 2018 tarihinden önce oluşturulan uygulamalar, **id_token** response_type **sorgu** response_mode kullanılmasını engellenmemiş.  Azure AD 'den bir id_token istenirken döndürülen hata, **AADSTS70007: ' Query ', belirteç istenirken ' response_mode ' için desteklenen bir değer değil** .
+25 Nisan 2018 ' de veya sonrasında oluşturulan uygulamalar artık **sorgu** response_mode kullanarak **id_token** isteyemeyecektir.  Bu, Azure AD 'yi OıDC belirtimleriyle satır içi olarak getirir ve uygulamalarınızın saldırı yüzeyini azaltmaya yardımcı olur.  25 Nisan 2018 tarihinden önce oluşturulan uygulamalar, **id_token** response_type **sorgu** response_mode kullanılmasını engellenmemiş.  Azure AD 'den bir id_token istenirken döndürülen hata, **AADSTS70007: ' Query ', belirteç istenirken ' response_mode ' için desteklenen bir değer değil**.
 
 **Parça** ve **form_post** response_modes çalışmaya devam eder-yeni uygulama nesneleri oluştururken (örneğin, uygulama proxy 'si kullanımı için), yeni bir uygulama oluşturmadan önce bu response_modes birini kullandığınızdan emin olun.
 
@@ -3336,7 +3336,7 @@ Daha fazla bilgi için bkz. [Azure AD B2C: erişim belirteçleri isteme](../../a
 
 SAML tabanlı SSO uygulamalarını yapılandırırken yapılandırma sayfasında tümleştirmeyi test edebilirsiniz. Oturum açma sırasında bir hatayla karşılaşırsanız, testi deneymenizde hata verebilir ve Azure AD, belirli sorunu çözmek için çözüm adımları sağlar.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory uygulama galerisinde bulunmayan uygulamalar için çoklu oturum açmayı yapılandırma](../manage-apps/view-applications-portal.md)
 - [Azure Active Directory içindeki uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
@@ -3471,7 +3471,7 @@ Bir galeri veya Galeri dışı bir uygulama için bir sertifika sona ermek üzer
 
 Bazı kullanıcılar SAML tabanlı çoklu oturum açma için yapılandırılmış kurumsal uygulamalar için bildirim almadı. Bu sorun çözüldü. Azure AD, 7, 30 ve 60 gün içinde süresi dolan sertifikaların bildirimini gönderir. Bu olayı denetim günlüklerinde görebilirsiniz.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Azure Active Directory portalındaki denetim etkinliği raporları](../reports-monitoring/concept-audit-logs.md)
@@ -3500,7 +3500,7 @@ Daha fazla bilgi için bkz. [Azure AD B2B işbirliği nedir?](../external-identi
 
 [Blog gönderimizde](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)bunun hakkında daha fazla bilgi edinin.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Uygulama tabanlı koşullu erişim kurulumu](../conditional-access/app-based-conditional-access.md)
 
@@ -3817,7 +3817,7 @@ Aşağıdaki uygulamalar Şubat sonuna kadar eklenecektir:
 
 - Microsoft faturalandırma
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -3828,7 +3828,7 @@ Daha fazla bilgi için bkz.
 
 **Şunu yazın:** Değiştirilen özellik **hizmeti kategorisi:** kullanım koşulları **ürün yeteneği:** uyumluluk
 
-Kullanım koşulları görüntülendiğinde artık sorun yaşamadan ' a tıklayabilirsiniz. **Buraya tıklayın** . Bu bağlantıya tıkladığınızda cihazınızdaki kullanım koşulları yerel olarak açılır. Belgedeki yazı tipi boyutundan veya cihazın ekran boyutundan bağımsız olarak, belgeyi gerektiği gibi yakınlaştırıp okuyabilirsiniz.
+Kullanım koşulları görüntülendiğinde artık sorun yaşamadan ' a tıklayabilirsiniz. **Buraya tıklayın**. Bu bağlantıya tıkladığınızda cihazınızdaki kullanım koşulları yerel olarak açılır. Belgedeki yazı tipi boyutundan veya cihazın ekran boyutundan bağımsız olarak, belgeyi gerektiği gibi yakınlaştırıp okuyabilirsiniz.
 
 ---
 
@@ -3864,7 +3864,7 @@ Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](../i
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** uygulamalarım **ürün yeteneği:** SSO
 
-Artık, Office 365 uygulamalarının yeni bir Kullanıcı ayarı aracılığıyla kullanıcının erişim panellerinde nasıl gösterileceğini daha iyi yönetebilirsiniz. Bu seçenek, yalnızca Office portalında Office uygulamalarını göstermek istiyorsanız kullanıcının erişim panellerindeki uygulama sayısını azaltmak için yararlıdır. Bu ayar **Kullanıcı ayarlarında** bulunur ve etiketlidir, **kullanıcılar yalnızca Office 365 portalında Office 365 uygulamalarını görebilirler** .
+Artık, Office 365 uygulamalarının yeni bir Kullanıcı ayarı aracılığıyla kullanıcının erişim panellerinde nasıl gösterileceğini daha iyi yönetebilirsiniz. Bu seçenek, yalnızca Office portalında Office uygulamalarını göstermek istiyorsanız kullanıcının erişim panellerindeki uygulama sayısını azaltmak için yararlıdır. Bu ayar **Kullanıcı ayarlarında** bulunur ve etiketlidir, **kullanıcılar yalnızca Office 365 portalında Office 365 uygulamalarını görebilirler**.
 
 Daha fazla bilgi için bkz. [Azure Active Directory kullanıcının deneyiminden bir uygulamayı gizleme](../manage-apps/hide-application-from-user-portal.md).
 
@@ -3914,7 +3914,7 @@ Yeni Azure Active Directory Yönetim konsolunun genel kullanıma sunulduğuna ve
 
 Yeni Yönetici konsoluna geçişin bir parçası olarak, Azure AD etkinlik günlüklerini almak için 2 yeni API 'si yaptık. Yeni API 'Ler kümesi, daha zengin denetim ve oturum açma etkinlikleri sağlamaya ek olarak daha zengin filtreleme ve sıralama işlevselliği sağlar. Daha önce güvenlik raporları üzerinden kullanılabilen verilere artık Microsoft Graph kimlik koruması risk algılamaları API 'SI aracılığıyla erişilebilir.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory Reporting API 'SI ile çalışmaya başlama](../reports-monitoring/concept-reporting-api.md)
 
@@ -3936,7 +3936,7 @@ Artık erişim paneline gidebilir ve önceden kabul ettiğiniz kullanım koşull
 
 2. Sağ üst köşede adınızı seçin ve ardından listeden **profil** ' i seçin.
 
-3. **Profilinizde** **kullanım koşullarını gözden geçir** ' i seçin.
+3. **Profilinizde** **kullanım koşullarını gözden geçir**' i seçin.
 
 4. Artık kabul ettiğiniz kullanım koşullarını gözden geçirebilirsiniz.
 
@@ -4075,7 +4075,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -4157,22 +4157,22 @@ Artık macOS 'ı Azure AD koşullu erişim ilkenize cihaz platformu olarak dahil
 - **MacOS cihazlarının, kuruluşunuzun Intune 'da tanımlanan uyumluluk ilkelerine bağlı olduğundan emin olun.** Azure portal Intune 'da, artık macOS cihazları için uyumluluk ilkeleri ayarlayabilirsiniz.
 - **Azure AD 'deki uygulamalara erişimi yalnızca uyumlu macOS cihazlarına kısıtlayın.** Koşullu erişim ilkesi yazma, macOS öğesini ayrı bir cihaz platformu seçeneği olarak içerir. Artık Azure 'da ayarlanan hedeflenen uygulama için macOS 'a özgü koşullu erişim ilkelerini yazabilirsiniz.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Intune ile macOS cihazları için cihaz uyumluluğu ilkesi oluşturma](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Azure AD 'de koşullu erişim](../conditional-access/overview.md)
 
 ---
 
-### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için ağ Ilkesi sunucusu uzantısı
+### <a name="network-policy-server-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için ağ Ilkesi sunucusu uzantısı
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:**  Multi-Factor Authentication **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
-Azure Multi-Factor Authentication için ağ Ilkesi sunucu uzantısı, mevcut sunucularınızı kullanarak kimlik doğrulama altyapınıza bulut tabanlı Multi-Factor Authentication özellikleri ekler. Ağ Ilkesi sunucusu uzantısıyla, mevcut kimlik doğrulama akışınıza telefon araması, SMS mesajı veya telefon uygulaması doğrulaması ekleyebilirsiniz. Yeni sunucuları yüklemek, yapılandırmak ve bakımını yapmak zorunda değilsiniz.
+Azure AD Multi-Factor Authentication için ağ Ilkesi sunucusu uzantısı, mevcut sunucularınızı kullanarak kimlik doğrulama altyapınıza bulut tabanlı Multi-Factor Authentication özellikleri ekler. Ağ Ilkesi sunucusu uzantısıyla, mevcut kimlik doğrulama akışınıza telefon araması, SMS mesajı veya telefon uygulaması doğrulaması ekleyebilirsiniz. Yeni sunucuları yüklemek, yapılandırmak ve bakımını yapmak zorunda değilsiniz.
 
-Bu uzantı, Azure Multi-Factor Authentication Sunucusu dağıtımı yapmadan sanal özel ağ bağlantılarını korumak isteyen kuruluşlar için oluşturulmuştur. Ağ Ilkesi sunucu uzantısı, federal veya eşitlenmiş kullanıcılar için ikinci bir kimlik doğrulama faktörü sağlamak üzere RADIUS ve bulut tabanlı Azure Multi-Factor Authentication arasında bir bağdaştırıcı görevi görür.
+Bu uzantı, Azure Multi-Factor Authentication Sunucusu dağıtımı yapmadan sanal özel ağ bağlantılarını korumak isteyen kuruluşlar için oluşturulmuştur. Ağ Ilkesi sunucu uzantısı, federal veya eşitlenmiş kullanıcılar için ikinci bir kimlik doğrulama faktörü sağlamak üzere RADIUS ve bulut tabanlı Azure AD Multi-Factor Authentication arasında bir bağdaştırıcı görevi görür.
 
-Daha fazla bilgi için bkz. [mevcut ağ Ilkesi sunucusu altyapınızı Azure Multi-Factor Authentication tümleştirme](../authentication/howto-mfa-nps-extension.md).
+Daha fazla bilgi için bkz. [mevcut ağ Ilkesi sunucusu altyapınızı Azure AD Multi-Factor Authentication tümleştirme](../authentication/howto-mfa-nps-extension.md).
 
 ---
 
@@ -4189,7 +4189,7 @@ Azure AD Yönetim merkezinde artık şunları yapabilirsiniz:
 
 1. Azure AD Yönetim merkezinde **Yönet** bölümündeki [tüm kullanıcılar](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/All) ' ı seçin.
 
-2. **Göster** listesinden, **son silinen kullanıcılar** ' ı seçin.
+2. **Göster** listesinden, **son silinen kullanıcılar**' ı seçin.
 
 3. Son silinen bir veya daha fazla kullanıcı seçin ve ardından onları geri yükleyin veya kalıcı olarak silin.
 
@@ -4204,7 +4204,7 @@ Azure AD Yönetim merkezinde artık şunları yapabilirsiniz:
 - Microsoft Planner
 - Azure Information Protection
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)

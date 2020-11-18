@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155b359c109de948ab9b9d6862ef7507ee76f619
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7ec8062eb864c877b0f3659ca2dd8f103e935071
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576821"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836793"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>Azure Active Directory ile RADIUS kimlik doğrulaması
 
@@ -26,7 +26,7 @@ Arayan Kullanıcının Uzaktan Kimliğini Doğrulama Hizmeti (YARıÇAP), çevir
 
 Microsoft Windows Server, bir RADIUS sunucusu olarak görev yapacak ve RADIUS kimlik doğrulamasını destekleyen ağ Ilkesi sunucusu (NPS) adlı bir role sahiptir.
 
-Azure Active Directory (Azure AD), RADIUS tabanlı sistemlerle Multi-Factor Authentication 'ı sunar. Bir müşteri, daha önce bahsedilen RADIUS iş yüklerinden herhangi birine Azure Multi-Factor Authentication uygulamak isterse, Azure Multi-Factor Authentication NPS uzantısını Windows NPS sunucusuna yükleyebilir. 
+Azure Active Directory (Azure AD), RADIUS tabanlı sistemlerle Multi-Factor Authentication 'ı sunar. Bir müşteri, daha önce bahsedilen RADIUS iş yüklerinden herhangi birine Azure AD Multi-Factor Authentication uygulamak isterse, Azure AD Multi-Factor Authentication NPS uzantısını Windows NPS sunucusuna yükleyebilir. 
 
 Windows NPS sunucusu bir kullanıcının kimlik bilgilerini Active Directory doğrular ve sonra Multi-Factor Authentication isteği Azure 'a gönderir. Böylece Kullanıcı, mobil kimlik doğrulayıcısında bir zorluk alır. Başarılı olduktan sonra istemci uygulamanın hizmete bağlanmasına izin verilir. 
 
@@ -40,30 +40,30 @@ Windows NPS sunucusu bir kullanıcının kimlik bilgilerini Active Directory do�
 * Kullanıcılara kimlik doğrulaması yapmak için RADIUS protokolüne bağlı olan diğerleri. 
 
 > [!NOTE]
-> VPN iş yüklerine Azure Multi-Factor Authentication uygulamak için RADIUS ve Azure Multi-Factor Authentication NPS uzantısına güvenmek yerine, VPN 'nizi SAML 'ye yükseltmenizi ve Azure AD ile VPN 'nizi doğrudan Federasyonu öneririz. Bu, VPN 'nize koşullu erişim, Multi-Factor Authentication, cihaz uyumluluğu ve kimlik koruması gibi Azure AD korumasının tam kapsamını verir.
+> VPN iş yüklerine Azure AD Multi-Factor Authentication uygulamak için RADIUS ve Azure AD Multi-Factor Authentication NPS uzantısının güvenmek yerine, VPN 'nizi SAML 'ye yükseltmenizi ve VPN 'nizi doğrudan Azure AD ile Federasyonu etkinleştirmenizi öneririz. Bu, VPN 'nize koşullu erişim, Multi-Factor Authentication, cihaz uyumluluğu ve kimlik koruması gibi Azure AD korumasının tam kapsamını verir.
 
 ![mimari diyagram](./media/authentication-patterns/radius-auth.png)
 
 
 ## <a name="components-of-the-system"></a>Sistemin bileşenleri 
 
-* **İstemci uygulaması (VPN istemcisi)** : RADIUS istemcisine kimlik doğrulama isteği gönderir.
+* **İstemci uygulaması (VPN istemcisi)**: RADIUS istemcisine kimlik doğrulama isteği gönderir.
 
-* **RADIUS istemcisi** : istemci uygulamasından gelen istekleri dönüştürür ve NPS uzantısının yüklü olduğu RADIUS sunucusuna gönderir.
+* **RADIUS istemcisi**: istemci uygulamasından gelen istekleri dönüştürür ve NPS uzantısının yüklü olduğu RADIUS sunucusuna gönderir.
 
-* **RADIUS sunucusu** : RADIUS isteği için birincil kimlik doğrulamasını gerçekleştirmek üzere Active Directory ile bağlanır. Başarılı olduğunda, isteği Azure Multi-Factor Authentication NPS uzantısına geçirir.
+* **RADIUS sunucusu**: RADIUS isteği için birincil kimlik doğrulamasını gerçekleştirmek üzere Active Directory ile bağlanır. Başarılı olduğunda, isteği Azure AD Multi-Factor Authentication NPS uzantısına geçirir.
 
-* **NPS uzantısı** : ikincil kimlik doğrulaması Için bir Azure Multi-Factor Authentication isteği tetikler. Başarılı olursa, NPS uzantısı, Azure 'un güvenlik belirteci hizmeti tarafından verilen Multi-Factor Authentication talebi içeren güvenlik belirteçleri ile RADIUS sunucusunu sağlayarak kimlik doğrulama isteğini tamamlar.
+* **NPS uzantısı**: ikincil kimlik doğrulaması Için BIR Azure AD Multi-Factor Authentication isteği tetikler. Başarılı olursa, NPS uzantısı, Azure 'un güvenlik belirteci hizmeti tarafından verilen Multi-Factor Authentication talebi içeren güvenlik belirteçleri ile RADIUS sunucusunu sağlayarak kimlik doğrulama isteğini tamamlar.
 
-* **Azure Multi-Factor Authentication** : kullanıcının ayrıntılarını almak IÇIN Azure AD ile iletişim kurar ve Kullanıcı tarafından yapılandırılan bir doğrulama yöntemi kullanarak ikincil kimlik doğrulaması gerçekleştirir.
+* **Azure ad Multi-Factor Authentication**: kullanıcının ayrıntılarını almak IÇIN Azure AD ile iletişim kurar ve Kullanıcı tarafından yapılandırılan bir doğrulama yöntemi kullanarak ikincil kimlik doğrulaması gerçekleştirir.
 
 ## <a name="implement-radius-with-azure-ad"></a>Azure AD ile RADIUS uygulama 
 
-* [NPS kullanarak Azure Multi-Factor Authentication olanakları sağlama](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension) 
+* [NPS kullanarak Azure AD Multi-Factor Authentication olanakları sağlama](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension) 
 
-* [Azure Multi-Factor Authentication NPS uzantısını yapılandırma](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-advanced) 
+* [Azure AD Multi-Factor Authentication NPS uzantısını yapılandırma](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-advanced) 
 
-* [NPS uzantısını kullanarak Azure Multi-Factor Authentication ile VPN](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-vpn) 
+* [NPS uzantısını kullanarak Azure AD Multi-Factor Authentication ile VPN](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-vpn) 
 
   
 ‎ 

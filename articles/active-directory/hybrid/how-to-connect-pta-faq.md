@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb9d9e7c60344a2a4c538c6d3bf59e337e4569c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461283"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836334"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: sık sorulan sorular
 
@@ -37,7 +37,7 @@ Geçişli kimlik doğrulaması, ücretsiz bir özelliktir. Kullanmak için Azure
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[Koşullu erişim](../conditional-access/overview.md) doğrudan kimlik doğrulamasıyla çalışır mı?
 
-Evet. Azure Multi-Factor Authentication dahil tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
+Evet. Azure AD Multi-Factor Authentication dahil olmak üzere tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>"UserPrincipalName" yerine Kullanıcı adı olarak "alternatif KIMLIK" olarak geçiş kimlik doğrulamasını destekliyor mu?
 Evet, alternatif bir e-posta gibi UPN olmayan bir değer kullanan oturum açma, hem geçişli kimlik doğrulaması (PTA) hem de Parola karması eşitleme (PHS) için desteklenir. [Alternatif oturum açma kimliği](../authentication/howto-authentication-use-email-signin.md)hakkında daha fazla bilgi için.
@@ -109,7 +109,7 @@ Her geçişli kimlik doğrulama Aracısı ve Azure AD arasındaki iletişimin se
 
 Bir geçişli kimlik doğrulama Aracısı çalıştığı sürece, etkin kalır ve Kullanıcı oturum açma isteklerini sürekli olarak işler. Bir kimlik doğrulama aracısını kaldırmak istiyorsanız, **Denetim Masası-> programlar-> programlar ve Özellikler** ' e gidin ve hem **Microsoft Azure AD Connect kimlik doğrulama aracısını** hem de **Microsoft Azure AD Connect Agent Güncelleştirici** programlarını kaldırın.
 
-Yukarıdaki adımı tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini kontrol ederseniz, kimlik doğrulama aracısının **etkin değil**olarak gösterildiğini görürsünüz. Bu _beklenen_bir değer. Kimlik doğrulama Aracısı 10 gün sonra otomatik olarak listeden bırakılır.
+Yukarıdaki adımı tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini kontrol ederseniz, kimlik doğrulama aracısının **etkin değil** olarak gösterildiğini görürsünüz. Bu _beklenen_ bir değer. Kimlik doğrulama Aracısı 10 gün sonra otomatik olarak listeden bırakılır.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Azure AD 'de oturum açmak için zaten AD FS kullanıyorum. Nasıl yaparım? doğrudan kimlik doğrulamaya geçiş yapılsın mı?
 

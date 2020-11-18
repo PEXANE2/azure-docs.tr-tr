@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266791"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837116"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -24,10 +24,10 @@ ms.locfileid: "89266791"
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>S: cihazı yakın zamanda kaydettiniz. Azure portal cihazı neden Kullanıcı Bilgilerim altında göremiyorum? Ya da cihaz sahibi, karma Azure Active Directory (Azure AD) ile birleştirilmiş cihazlar için N/A olarak işaretlendi mi?
 
-Y **:** Karma Azure AD 'ye katılmış Windows 10 cihazları **Kullanıcı cihazları**altında gösterilmez.
+Y **:** Karma Azure AD 'ye katılmış Windows 10 cihazları **Kullanıcı cihazları** altında gösterilmez.
 Azure portal **tüm cihazlar** görünümünü kullanın. PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet 'ini de kullanabilirsiniz.
 
-Yalnızca aşağıdaki cihazlar **Kullanıcı cihazları**altında listelenir:
+Yalnızca aşağıdaki cihazlar **Kullanıcı cihazları** altında listelenir:
 
 - Hibrit Azure AD 'ye katılmamış tüm kişisel cihazlar. 
 - Windows olmayan tüm 10 veya Windows Server 2016 cihazları.
@@ -100,7 +100,7 @@ Y **:** Bu işlem tasarıma göre yapılır. Bu durumda, cihazın buluttaki kayn
 
       Azure AD kayıtlı Windows 10 cihazları için aşağıdaki adımları uygulayın:
 
-      1. **Ayarlar**  >  **hesaplar**  >  **iş veya okula erişim**bölümüne gidin. 
+      1. **Ayarlar**  >  **hesaplar**  >  **iş veya okula erişim** bölümüne gidin. 
       1. Hesabı seçin ve **bağlantıyı kes**' i seçin.
       1. "+ Bağlan" düğmesine tıklayın ve oturum açma işlemine giderek cihazı yeniden kaydedin.
 
@@ -192,13 +192,13 @@ Y **:** Bkz. [uzaktan Azure Active Directory KATıLMıŞ bilgisayara bağlanma](
 
 ---
 
-### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>S: Kullanıcılarım neden *burada*buradan görümsin?
+### <a name="q-why-do-my-users-see-you-cant-get-there-from-here"></a>S: Kullanıcılarım neden *burada* buradan görümsin?
 
 Y **:** Belirli koşullu erişim kurallarını belirli bir cihaz durumu gerektirecek şekilde yapılandırdınız mı? Cihaz ölçütlere uymazsa, kullanıcılar engellenir ve bu iletiyi görür. Koşullu erişim ilkesi kurallarını değerlendirin. İletinin önüne geçmek için cihazın ölçütlere uyduğundan emin olun.
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>S: Kullanıcılarım Azure AD 'ye katılmış cihazlarda neden Azure Multi-Factor Authentication istemleri alamıyor?
+### <a name="q-why-dont-some-of-my-users-get-azure-ad-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>S: Kullanıcılarım Azure AD 'ye katılmış cihazlarda neden Azure AD Multi-Factor Authentication istemleri almaz?
 
 Y **:** Kullanıcı Multi-Factor Authentication kullanarak bir cihazı Azure AD 'ye katabilir veya kaydedebilir. Daha sonra cihazın kendisi bu kullanıcı için güvenilir bir ikinci faktör haline gelir. Aynı kullanıcı cihazda oturum açtığında ve bir uygulamaya eriştiğinde Azure AD, cihazı ikinci bir faktör olarak değerlendirir. Bu kullanıcının ek Multi-Factor Authentication istemler olmadan uygulamalara sorunsuz şekilde erişmesini sağlar. 
 
@@ -290,7 +290,7 @@ Y **:** Şirket ağı dışında bir parola değiştirilirse (örneğin, Azure A
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>S: bir cihazın Azure AD kayıtlı durumunu yerel olarak kaldırmak Nasıl yaparım? istiyor musunuz?
 
 **A** 
-- Windows 10 Azure AD kayıtlı cihazlar için **Ayarlar**  >  **hesaplar**  >  **erişim iş veya okul**bölümüne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
+- Windows 10 Azure AD kayıtlı cihazlar için **Ayarlar**  >  **hesaplar**  >  **erişim iş veya okul** bölümüne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
 - İOS ve Android için Microsoft Authenticator uygulama **ayarları**  >  **cihaz kaydını** kullanabilir ve **cihazı Sil**' i seçebilirsiniz.
 - MacOS için Microsoft Intune Şirket Portalı uygulamasını kullanarak cihazın yönetimden kaydını kaldırabilir ve kaydı kaldırabilirsiniz. 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370211"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836691"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure Active Directory ile güvenli kimliklere hızla yanıt verme
 
@@ -75,7 +75,7 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 
 | Önerilen eylem | Ayrıntı |
 | --- | --- |
-| [Kullanıcı kayıt deneyimini basitleştirmek için Azure MFA ve SSPR için Birleşik kayıt deneyimini etkinleştirin](../authentication/howto-registration-mfa-sspr-combined.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. |
+| [Kullanıcı kayıt deneyimini basitleştirmek için Azure AD MFA ve SSPR için Birleşik kayıt deneyimini etkinleştirin](../authentication/howto-registration-mfa-sspr-combined.md) | Kullanıcılarınızın hem Azure AD Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. |
 | [Kuruluşunuz için MFA ayarlarını yapılandırma](../authentication/howto-mfa-getstarted.md) | Hesapların Multi-Factor Authentication ile güvenliğinin aşılmasına karşı korunduğundan emin olun |
 | [Kendi kendine parola sıfırlamayı etkinleştirme](../authentication/tutorial-enable-sspr.md) | Bu özellik, bir Kullanıcı cihazlarındaki veya bir uygulamada oturum açarken yardım masası çağrılarını ve üretkenlik kaybını azaltır |
 | [Parola geri yazmayı Uygula](../authentication/tutorial-enable-sspr-writeback.md) (karma kimlikler kullanılıyorsa) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. |
@@ -105,11 +105,11 @@ Aşağıdaki tablo, aşağıdaki lisans abonelikleriyle ilgili önemli eylemleri
 
 | Önerilen eylem | Ayrıntı |
 | --- | --- |
-| [Kullanıcı kayıt deneyimini basitleştirmek için Azure MFA ve SSPR için Birleşik kayıt deneyimini etkinleştirin](../authentication/howto-registration-mfa-sspr-combined.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. |
+| [Kullanıcı kayıt deneyimini basitleştirmek için Azure AD MFA ve SSPR için Birleşik kayıt deneyimini etkinleştirin](../authentication/howto-registration-mfa-sspr-combined.md) | Kullanıcılarınızın hem Azure AD Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. |
 | [Kuruluşunuz için MFA ayarlarını yapılandırma](../authentication/howto-mfa-getstarted.md) | Hesapların Multi-Factor Authentication ile güvenliğinin aşılmasına karşı korunduğundan emin olun |
 | [Kendi kendine parola sıfırlamayı etkinleştirme](../authentication/tutorial-enable-sspr.md) | Bu özellik, bir Kullanıcı cihazlarındaki veya bir uygulamada oturum açarken yardım masası çağrılarını ve üretkenlik kaybını azaltır |
 | [Parola geri yazmayı Uygula](../authentication/tutorial-enable-sspr-writeback.md) (karma kimlikler kullanılıyorsa) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. |
-| [MFA kaydını zorlamak için kimlik koruma ilkelerini etkinleştirme](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Azure Multi-Factor Authentication (MFA) toplu olarak yönetin. |
+| [MFA kaydını zorlamak için kimlik koruma ilkelerini etkinleştirme](../identity-protection/howto-identity-protection-configure-mfa-policy.md) | Azure AD Multi-Factor Authentication (MFA) toplu olarak yönetin. |
 | [Kimlik koruması Kullanıcı ve oturum açma risk ilkelerini etkinleştirme](../identity-protection/howto-identity-protection-configure-risk-policies.md) | Kimlik koruması Kullanıcı ve oturum açma ilkelerini etkinleştirin. Önerilen oturum açma ilkesi, orta riskli oturum açma işlemlerini hedeflemek ve MFA gerektirmelidir. Kullanıcı ilkeleri için parola değiştirme eylemini gerektiren yüksek riskli kullanıcıları hedeflemelidir. |
 | Koşullu erişim ilkeleri oluşturma ve etkinleştirme | [Yöneticiler için yönetim hakları atanmış hesapları koruma MFA.](../conditional-access/howto-conditional-access-policy-admin-mfa.md) <br><br> [Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle eski kimlik doğrulama protokollerini engelleyin.](../conditional-access/howto-conditional-access-policy-block-legacy.md) <br><br> [Azure kaynaklarına erişen herhangi bir kullanıcı için Multi-Factor Authentication 'ı zorunlu kılarak, Azure yönetimi için MFA 'yı, ayrıcalıklı kaynaklarınızın korunmasını isteyin.](../conditional-access/howto-conditional-access-policy-azure-management.md) |
 | [Parola karma eşitlemesini etkinleştir](../hybrid/how-to-connect-password-hash-synchronization.md) (karma kimlikler kullanılıyorsa) | Kimlik doğrulaması için artıklık sağlayın ve güvenliği geliştirebilirsiniz (akıllı kilitleme, IP kilitleme ve sızdırılan kimlik bilgilerini bulma özelliği de dahil). |

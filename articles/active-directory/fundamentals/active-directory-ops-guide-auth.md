@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371061"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836997"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -95,7 +95,7 @@ Kötü aktörlerin ortamınıza erişim kazanmasını engellemek için kendileri
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Şirket içi kesinti kimlik doğrulama dayanıklılığı
 
-Basitlik avantajları ve sızdırılan kimlik bilgisi algılamayı etkinleştirmenin yanı sıra, Azure AD Parola karması eşitleme (PHS) ve Azure MFA, kullanıcıların SaaS uygulamalarına erişmesine ve [Notpetya gibi Sife](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)nedeniyle Şirket içi kesintiler artma içinde Microsoft 365 olanak tanır. Ayrıca, Federasyonla birlikte da PHS 'yi etkinleştirmek mümkündür. Fes 'nin etkinleştirilmesi, Federasyon Hizmetleri kullanılabilir olmadığında kimlik doğrulamanın geri yüklenmesine izin verir.
+Basitlik avantajları ve sızdırılan kimlik bilgisi algılamayı etkinleştirmenin yanı sıra, Azure AD Parola karması eşitleme (PHS) ve Azure AD MFA, kullanıcıların SaaS uygulamalarına erişmesine ve [Notpetya gibi Sife](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/)nedeniyle Şirket içi kesintiler artma içinde Microsoft 365 olanak tanır. Ayrıca, Federasyonla birlikte da PHS 'yi etkinleştirmek mümkündür. Fes 'nin etkinleştirilmesi, Federasyon Hizmetleri kullanılabilir olmadığında kimlik doğrulamanın geri yüklenmesine izin verir.
 
 Şirket içi kuruluşunuzda bir kesinti dayanıklılık stratejisi yoksa veya Azure AD ile tümleştirilmiş olmayan bir sorun varsa, Azure AD PHS 'yi dağıtmanız ve PHS içeren bir olağanüstü durum kurtarma planı tanımlamanız gerekir. Azure AD PHS 'in etkinleştirilmesi, kullanıcıların Azure AD 'de kimlik doğrulamasından geçmesini sağlar ve şirket içi Active Directory kullanılamaz hale gelmelidir.
 
@@ -309,7 +309,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örneğin:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
 
 |Kaynak | İzin |
 | :- | :- |

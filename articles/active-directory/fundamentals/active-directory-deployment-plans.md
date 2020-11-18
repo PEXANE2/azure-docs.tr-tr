@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c2a7c2813919321227bfcdc4ee43ca15186b89df
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371894"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836827"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -40,11 +40,11 @@ Roller aşağıdaki gibi bulunabilir
 
 **Katılma düzeyleri şunları içerebilir:**
 
-- Proje planı ve sonucu uygulamak için **R**esponerişilebilir 
+- Proje planı ve sonucu uygulamak için **R** esponerişilebilir 
 
-- **A**Proje planının ve sonucunun pproval 'i 
+- **A** Proje planının ve sonucunun pproval 'i 
 
-- **C**ontributor-proje planı ve sonucu 
+- **C** ontributor-proje planı ve sonucu 
 
 - Proje planı ve sonucu **oluşturdum**
 
@@ -61,7 +61,7 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 
 | Özellik | Açıklama|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Azure MFA, yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur. |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA), Microsoft 'un iki adımlı doğrulama çözümüdür. Yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, Azure AD MFA, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur. |
 | [Koşullu Erişim](../conditional-access/plan-conditional-access.md)| Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz. |
 | [Self servis parola sıfırlama](../authentication/howto-sspr-deployment.md)| Self servis parola sıfırlama, kullanıcılarınızın parolalarını yönetici müdahalesi olmadan sıfırlamasına, ne zaman ve nerede ihtiyaç duymalarına yardımcı olur. |
 | [Parolasız](../authentication/howto-authentication-passwordless-deployment.md) | Kuruluşunuzda Microsoft Authenticator App veya FIDO2 güvenlik anahtarlarını kullanarak passwordless kimlik doğrulaması uygulama |
