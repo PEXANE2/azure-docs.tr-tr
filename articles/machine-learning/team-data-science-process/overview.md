@@ -1,5 +1,5 @@
 ---
-title: Team Data Science süreci nedir?
+title: Team Data Science Process nedir?
 description: Tahmine dayalı analiz çözümleri ve akıllı uygulamalar sunmak için bir veri bilimi yöntemi sağlar.
 services: machine-learning
 author: marktab
@@ -8,17 +8,17 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: overview
-ms.date: 1/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a341d33c957af8fe7423bda80f1d34a7f59cdd6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91362240"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738008"
 ---
-# <a name="what-is-the-team-data-science-process"></a>Team Data Science süreci nedir?
+# <a name="what-is-the-team-data-science-process"></a>Team Data Science Process nedir?
 
 Ekip veri bilimi süreci (TDSP), tahmine dayalı analiz çözümlerini ve akıllı uygulamaları verimli bir şekilde sunmak için çevik, yinelemeli bir veri bilimi yöntemleridir. TDSP, takım rollerinin en iyi şekilde nasıl çalıştığını önererek ekip işbirliğini ve öğrenilmesine yardımcı olur. TDSP, veri bilimi girişimlerinin başarıyla uygulanmasına yardımcı olmak için Microsoft ve diğer sektör liderlerinden en iyi uygulamaları ve yapıları içerir. Hedef, şirketlerin kendi analiz programlarının avantajlarını tam olarak hayata geçirmesine yardımcı olmaktır.
 
@@ -49,7 +49,7 @@ Yaşam döngüsü, projelerin tipik olarak yürütülen ana aşamaları özetler
 * **Modelleme**
 * **Dağıtım**
 
-**Team Data Science işlem yaşam döngüsünün**görsel bir gösterimi aşağıda verilmiştir. 
+**Team Data Science işlem yaşam döngüsünün** görsel bir gösterimi aşağıda verilmiştir. 
 
 ![Diyagramda, iş anlama, veri alımı/anlama, modelleme ve dağıtım dahil olmak üzere veri bilimi yaşam döngüsü gösterilmektedir.](./media/overview/tdsp-lifecycle2.png) 
 
@@ -100,7 +100,7 @@ Ham ve işlenen veri kümelerinin depolandığı analiz ve depolama altyapısı,
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Proje yürütmesi için araçlar ve yardımcı programlar
 
-Çoğu kuruluşta işlemlere giriş yapmak zor. Veri bilimi sürecini ve yaşam döngüsünü uygulamak için sağlanan araçlar, üzerindeki engelleri azaltmaya ve bunların tutarlılığını artırmaya yardımcı olur. TDSP, bir ekip içinde TDSP benimseme başlatmaya yönelik ilk araç ve komut dosyası kümesi sağlar. Veri araştırması ve temel modelleme gibi veri bilimi yaşam döngüsünün bazı yaygın görevlerinin otomatikleştirilmesine de yardımcı olur. Kişilerin, ekip paylaşılan kod deposunda paylaşılan araçlar ve yardımcı programlar katkıda bulunmak için iyi tanımlanmış bir yapı mevcuttur. Bu kaynaklar daha sonra ekip veya kuruluş içindeki diğer projelere göre yararlanılabilir olabilir. TDSP Ayrıca, tüm topluluğun araç ve yardımcı programlarının katkılarını etkinleştirmeyi planlıyor. TDSP yardımcı programları [GitHub](https://github.com/Azure/Azure-TDSP-Utilities)'dan kopyalanabilir.
+Çoğu kuruluşta işlemlere giriş yapmak zor. Veri bilimi sürecini ve yaşam döngüsünü uygulamak için sağlanan araçlar, üzerindeki engelleri azaltmaya ve bunların tutarlılığını artırmaya yardımcı olur. TDSP, bir ekip içinde TDSP benimseme başlatmaya yönelik ilk araç ve komut dosyası kümesi sağlar. Veri araştırması ve temel modelleme gibi veri bilimi yaşam döngüsünün bazı yaygın görevlerinin otomatikleştirilmesine de yardımcı olur. Kişilerin, ekip paylaşılan kod deposunda paylaşılan araçlar ve yardımcı programlar katkıda bulunmak için iyi tanımlanmış bir yapı mevcuttur. Bu kaynaklar daha sonra ekip veya kuruluş içindeki diğer projelere göre yararlanılabilir olabilir.  Microsoft, hem açık kaynaklı (Python, R, ONNX, hem de genel derin öğrenme çerçevelerini) hem de Microsoft 'un kendi araçlarını (Oto ml) destekleyen [Azure Machine Learning](../index.yml) içinde kapsamlı araçlar sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

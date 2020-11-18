@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa5c2a0070ea0c3a0963f97fc1a04670eeaa4827
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87310727"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701900"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Otomatik izleme veya kodsuz kullanacaksınız Attach-Azure izleyici Application Insights nedir?
 
@@ -23,17 +23,17 @@ Application Insights çeşitli kaynak sağlayıcılarıyla tümleşiktir ve fark
 
 Daha fazla ve daha fazla tümleştirme eklediğimiz için, otomatik izleme özelliği matrisi karmaşık hale gelir. Aşağıdaki tabloda, çeşitli kaynak sağlayıcılarının, dillerin ve ortamların destek alanının geçerli durumu gösterilmektedir.
 
-|Ortam/kaynak sağlayıcısı | .NET            | .NET Core       | Java            | Node.js         |
-|------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Windows üzerinde Azure App Service  | GA, OnBD *       | GA, kabul etme      | Özel Önizleme | Özel Önizleme |
-|Linux üzerinde Azure App Service    | Yok             | Desteklenmez   | Genel Önizleme  | Genel Önizleme  |
-|AKS üzerinde Azure App Service      | Yok             | Tasarımda       | Tasarımda       | Tasarımda       |
-|Azure Işlevleri-temel       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
-|Azure Işlevleri-bağımlılıklar| Desteklenmez   | Desteklenmez   | Genel Önizleme  | Desteklenmez   |
-|Azure Kubernetes Service      | Yok             | Tasarımda       | Aracı üzerinden   | Tasarımda       |
-|Azure VM 'Leri Windows             | Genel Önizleme  | Desteklenmez   | Desteklenmez   | Desteklenmez   |
-|Şirket Içi VM 'Ler Windows       | GA, kabul etme      | Desteklenmez   | Aracı üzerinden   | Desteklenmez   |
-|Tek başına aracı-tüm env.   | Desteklenmez   | Desteklenmez   | Genel Önizleme  | Desteklenmez   |
+|Ortam/kaynak sağlayıcısı          | .NET            | .NET Core       | Java            | Node.js         |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|
+|Windows üzerinde Azure App Service           | GA, OnBD *       | GA, kabul etme      | Özel Önizleme | Özel Önizleme |
+|Linux üzerinde Azure App Service             | YOK             | Desteklenmez   | Özel Önizleme | Genel Önizleme  |
+|AKS üzerinde Azure App Service               | YOK             | Tasarımda       | Tasarımda       | Tasarımda       |
+|Azure Işlevleri-temel                | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
+|Azure Işlevleri Windows-bağımlılıklar | Desteklenmez   | Desteklenmez   | Genel Önizleme  | Desteklenmez   |
+|Azure Kubernetes Service               | YOK             | Tasarımda       | Aracı üzerinden   | Tasarımda       |
+|Azure VM 'Leri Windows                      | Genel Önizleme  | Desteklenmez   | Desteklenmez   | Desteklenmez   |
+|Şirket Içi VM 'Ler Windows                | GA, kabul etme      | Desteklenmez   | Aracı üzerinden   | Desteklenmez   |
+|Tek başına aracı-tüm env.            | Desteklenmez   | Desteklenmez   | GA              | Desteklenmez   |
 
 * OnBD varsayılan olarak açık için kısaysa, uygulamanızı desteklenen ortamlarda dağıttıktan sonra Application Insights otomatik olarak etkinleştirilir. 
 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 53deb7dc853de969ad6b6679ee728a3f132b6309
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f3e43a6b72d8de25de3220a9a6ac4e0b3986a467
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759110"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701815"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Hızlı başlangıç: Azure.Search.Documstalar istemci kitaplığını kullanarak arama dizini oluşturma
 
@@ -26,7 +26,7 @@ Tamamlanmış bir projeden başlamak için [kaynak kodunu indirin](https://githu
 > [!NOTE]
 > Daha önceki bir sürüm mi arıyorsunuz? Bunun yerine [Microsoft. Azure. Search ile v10 arasındaki kullanarak arama dizini oluşturma](search-get-started-dotnet-v10.md) konusuna bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 
@@ -52,7 +52,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 2. **Ayarlar**  >  **anahtarlarında**, hizmet üzerinde tam haklar için bir yönetici anahtarı alın, nesne oluşturuyorsanız veya silerseniz gereklidir. İki adet değiştirilebilir birincil ve ikincil anahtar vardır. Bunlardan birini kullanabilirsiniz.
 
-   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -70,7 +70,7 @@ Proje oluşturulduktan sonra, istemci kitaplığını ekleyin. [Azure.Search.Doc
 
 ### <a name="create-a-search-client"></a>Arama İstemcisi Oluşturma
 
-1. **Program.cs**içinde, ad alanını olarak değiştirin `AzureSearch.SDK.Quickstart.v11` ve ardından aşağıdaki yönergeleri ekleyin `using` .
+1. **Program.cs** içinde, ad alanını olarak değiştirin `AzureSearch.SDK.Quickstart.v11` ve ardından aşağıdaki yönergeleri ekleyin `using` .
 
    ```csharp
    using Azure;
@@ -134,7 +134,7 @@ Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri 
     }
     ```
 
-1. **Program.cs**içinde, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) nesnesi oluşturun ve ardından, arama hizmetinizde dizini Ifade etmek için [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) yöntemini çağırın.
+1. **Program.cs** içinde, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) nesnesi oluşturun ve ardından, arama hizmetinizde dizini Ifade etmek için [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) yöntemini çağırın.
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -175,7 +175,7 @@ Azure Bilişsel Arama 'de, arama belgeleri, sorguların dizin oluşturma ve çı
 
 Belgeler karşıya yüklenirken [ındexdocumentsbatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini kullanmanız gerekir. Bir `IndexDocumentsBatch` nesne, her biri bir belge ve Azure 'a ([karşıya yükleme, birleştirme, silme ve mergeorupload](search-what-is-data-import.md#indexing-actions)) bilişsel arama bir özellik içeren bir [eylem](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)koleksiyonu içerir.
 
-1. **Program.cs**içinde bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexDocumentsBatch` . Aşağıdaki belgeler, Otel Sınıfı tarafından tanımlanan oteller-QuickStart-v11 diziniyle uyumlu değildir.
+1. **Program.cs** içinde bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexDocumentsBatch` . Aşağıdaki belgeler, Otel Sınıfı tarafından tanımlanan oteller-QuickStart-v11 diziniyle uyumlu değildir.
 
     ```csharp
     // Load documents (using a subset of fields for brevity)
@@ -212,7 +212,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
 
 [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) sınıfı sonuçları temsil eder.
 
-1. **Program.cs**içinde, arama sonuçlarını konsola yazdıran bir writedocuments yöntemi oluşturun.
+1. **Program.cs** içinde, arama sonuçlarını konsola yazdıran bir writedocuments yöntemi oluşturun.
 
     ```csharp
     private static void WriteDocuments(SearchResults<Hotel> searchResults)

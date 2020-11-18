@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 65cdf444386d1b10cf225010c55170e5b47b3eb4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541360"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701662"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -89,7 +89,7 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 Çalışma alanı oluşturmanın birden çok yolu vardır:  
 
 * Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) kullanın.
-* Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](how-to-manage-workspace.md?tabs=python#create-a-workspace) kullanın
+* Python betikleri veya jupi not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](how-to-manage-workspace.md?tabs=python#create-a-workspace) kullanın
 * Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
 * Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](how-to-manage-resources-vscode.md#create-a-workspace)kullanın.
 

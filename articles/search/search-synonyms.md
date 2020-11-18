@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f1fa07b94072d37cf83320b6c8956d3b412f12
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948649"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701125"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Bilişsel Arama eş anlamlılar
 
@@ -23,7 +23,7 @@ Azure Bilişsel Arama 'de, eş anlamlı genişletmesi sorgu zamanında yapılır
 
 ## <a name="create-synonyms"></a>Eş anlamlı oluştur
 
-Eş anlamlıları oluşturmak için portal desteği yoktur, ancak REST API veya .NET SDK 'sını kullanabilirsiniz. REST ile çalışmaya başlamak için bu API 'YI kullanarak isteklerin [Postman](search-get-started-postman.md) ve formüllerinin kullanılması önerilir: [eş anlamlı haritalar oluşturma](/rest/api/searchservice/create-synonym-map). C# geliştiricileri için, [C# kullanarak Azure bilişsel arama 'Da eşanlamlı ekleme](search-synonyms-tutorial-sdk.md)ile çalışmaya başlayın.
+Eş anlamlıları oluşturmak için portal desteği yoktur, ancak REST API veya .NET SDK 'sını kullanabilirsiniz. REST ile çalışmaya başlamak için, bu API 'YI kullanarak isteklerin [Postman veya Visual Studio Code](search-get-started-rest.md) ve formüllerine yönelik olarak kullanılması önerilir: [eş anlamlı haritalar oluşturma](/rest/api/searchservice/create-synonym-map). C# geliştiricileri için, [C# kullanarak Azure bilişsel arama 'Da eşanlamlı ekleme](search-synonyms-tutorial-sdk.md)ile çalışmaya başlayın.
 
 İsteğe bağlı olarak, hizmet tarafı şifreleme için [müşteri tarafından yönetilen anahtarlar](search-security-manage-encryption-keys.md) kullanıyorsanız, bu korumayı eş anlamlı Haritalarınızın içeriğine uygulayabilirsiniz.
 

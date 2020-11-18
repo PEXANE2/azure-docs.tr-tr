@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c7edafd8a4a85e00a02486c646c77ddff5ff3e6b
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458060"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737107"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -63,7 +63,7 @@ Aşağıdaki bölümde, parola karma eşitlemesinin Active Directory ile Azure A
 > [!NOTE]
 > Özgün MD4 karması Azure AD 'ye aktarılmaz. Bunun yerine, özgün MD4 karmasının SHA256 karması iletilir. Sonuç olarak, Azure AD 'de depolanan karma değer elde edilmişse, şirket içi bir karma geçişi saldırısında kullanılamaz.
 
-### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+### <a name="security-considerations"></a>Güvenlik konuları
 
 Parolaları eşitlerken, parolanızın düz metin sürümü Parola karması eşitleme özelliğine, Azure AD 'ye veya ilişkili hizmetlerden herhangi birine gösterilmez.
 
@@ -85,7 +85,7 @@ Parola karması eşitleme etkinleştirildiğinde, şirket içi Active Directory 
 
 #### <a name="password-expiration-policy"></a>Parola süre sonu ilkesi
 
-Bir kullanıcı parola karması eşitleme kapsamınsa, varsayılan olarak, bulut hesabı parolası *hiç kullanım*dışı olarak ayarlanır.
+Bir kullanıcı parola karması eşitleme kapsamınsa, varsayılan olarak, bulut hesabı parolası *hiç kullanım* dışı olarak ayarlanır.
 
 Şirket içi ortamınızda kullanım dışı olan eşitlenmiş bir parolayı kullanarak bulut hizmetlerinize oturum açmaya devam edebilirsiniz. Şirket içi ortamda parolayı bir sonraki değiştirişinizde bulut parolanız güncelleştirilir.
 

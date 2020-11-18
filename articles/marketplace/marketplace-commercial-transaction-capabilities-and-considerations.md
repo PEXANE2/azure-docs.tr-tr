@@ -4,27 +4,27 @@ description: Bu makalede ticari Market Transact seçeneğine yönelik fiyatland�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9a975ee863e81a9f542e717d734f12db850f749e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130332"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738331"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
-Bu makalede, Microsoft ticari Market 'e yönelik fiyatlandırma, faturalandırma, faturalandırma ve ödeme konuları açıklanmaktadır. 
+Bu makalede, Microsoft ticari Market 'e yönelik fiyatlandırma, faturalandırma, faturalandırma ve ödeme konuları açıklanmaktadır.
 
 ## <a name="transactions-by-listing-option"></a>Listeleme seçeneğine göre işlemler
 
-Yayımcı veya Microsoft, ticari Market 'teki teklifler için yazılım lisansı işlemlerini yönetmekten sorumludur. Teklifiniz için seçtiğiniz listeleme seçeneği, işlemi kimin yönettiğini belirler. Her yayımlama seçeneğinin kullanılabilirliği ve açıklamaları için bkz. [liste seçme seçeneği](./determine-your-listing-type.md#choose-a-listing-option) .
+Yayımcı veya Microsoft, ticari Market 'teki teklifler için yazılım lisansı işlemlerini yönetmekten sorumludur. Teklifiniz için seçtiğiniz listeleme seçeneği, işlemi kimin yönettiğini belirler. Her yayımlama seçeneğinin kullanılabilirliği ve açıklamaları için bkz. [listeye giriş seçenekleri](determine-your-listing-type.md)
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>Benimle iletişim kurun, ücretsiz deneme ve KLG seçenekleri
 
-Yayımcılar _benimle Iletişim kurun_ ve _ücretsiz deneme sürümü_ , promosyon ve Kullanıcı alma amaçları için seçenekler arasından seçim yapabilir. Bazı teklif türlerinde, yayımcılar, müşterilerin doğrudan sizin satın aldıkları bir lisansı kullanarak teklifinizi bir abonelik satın almasını sağlamak için kendi lisansını getir (KLG) seçeneğini seçebilirler. Bu seçeneklerle, Microsoft doğrudan yayımcının yazılım lisansı işlemlerine katılmaz ve ilişkili işlem ücreti yoktur. 
+Yayımcılar _benimle Iletişim kurun_ ve _ücretsiz deneme sürümü_, promosyon ve Kullanıcı alma amaçları için seçenekler arasından seçim yapabilir. Bazı teklif türlerinde, yayımcılar, müşterilerin doğrudan sizin satın aldıkları bir lisansı kullanarak teklifinizi bir abonelik satın almasını sağlamak için kendi lisansını getir (KLG) seçeneğini seçebilirler. Bu seçeneklerle, Microsoft doğrudan yayımcının yazılım lisansı işlemlerine katılmaz ve ilişkili işlem ücreti yoktur.
 
 Yayımcılar, yazılım lisans işleminin tüm yönlerini desteklemekten sorumludur. Bu, sipariş, karşılama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon ile sınırlı değildir ancak bunlarla sınırlı değildir. Ilgili kişi listeleme seçeneğiyle, yayımcılar, müşteriden toplanan yayımcı yazılım lisansı ücretleri %100 ' ı tutar.
 
@@ -84,7 +84,15 @@ Transact yayımlama senaryolarında, aboneliğe bağlı olarak, yazılım lisans
 
 Teklif türlerini ve faturalandırma modellerini bir teklifi ayırmak için kullanmanın yanı sıra, anlaşmalı, anlaşmaya özgü fiyatlandırma veya özel yapılandırmalarda özel bir teklif elde edebilirsiniz. Özel teklifler, her üç Transact yayımlama seçeneği tarafından desteklenir.
 
-Bu seçenek, genel kullanıma sunulan teklife göre daha yüksek veya daha düşük fiyatlandırmayı sağlar. Özel teklifler, bir teklifle bir Premium için indirim veya bir Premium eklemek için kullanılabilir. Özel teklifler, bir veya daha fazla müşteriye, Azure aboneliklerini teklif düzeyinde listeleyerek beyaz listeye alınabilir.
+Bu seçenek, genel kullanıma sunulan teklife göre daha yüksek veya daha düşük fiyatlandırmayı sağlar. Özel teklifleri indirimle veya bir teklifle bir Premium eklemek için kullanabilirsiniz. Özel teklifleri bir veya daha fazla müşteri tarafından kullanılabilir hale getirerek Azure aboneliklerini teklif düzeyinde listeleyerek görüntüleyebilirsiniz.
+
+### <a name="commercial-marketplace-service-fees"></a>Ticari Market hizmet ücretleri
+
+Müşteriler, ticari Market 'ten alınan Transact teklifinizi satın alırken %20 Standart mağaza hizmeti ücreti ücretlendirir. Bu masrafın ayrıntıları için, [Microsoft Publisher sözleşmesinin](https://go.microsoft.com/fwlink/?LinkID=699560)bölüm 5c bölümüne bakın.
+
+Ticari Market 'te yayımladığınız bazı transactable teklifleri için, %10 oranında bir depolama hizmeti ücreti için uygun olabilir. Uygun bir teklif için, Microsoft tarafından Azure IP ortak satışı incentivized olarak atanmış olmalıdır. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş iş gününe ulaşılmalıdır.
+
+Daha düşük Market hizmet ücreti, Azure IP ortak satışı incentivized SaaS, VM 'Ler, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS çözümleri için geçerlidir. Tek bir Microsoft ekipleri uygulamasıyla ilişkili ücretli SaaS teklifleri veya en az iki Microsoft 365 eklentisi (Excel, PowerPoint, Word, Outlook ve SharePoint) ve Microsoft AppSource yayımlanan bu iskontoyu da alır.
 
 ### <a name="examples"></a>Örnekler
 
@@ -143,10 +151,6 @@ Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır 
 |---------|---------|
 |Microsoft, lisans maliyetinizi %80 oranında ödetir <br> \* Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %90 oranında ödetir   |   $80,00/ay <br> \* $90,00/ay    |
 |Microsoft, lisans maliyetlerinizin %20 ' sini tutar <br> \* Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %10 oranında tutar.  |  $20,00/ay <br> \* $10,00     |
-
-### <a name="reduced-service-fee"></a>Azaltılmış hizmet ücreti
-
-Microsoft, ticari Market 'te yayımladığınız bazı tekliflerle ilgili Market hizmet ücretini %20 ' den ( [Microsoft Publisher anlaşmasında](https://go.microsoft.com/fwlink/?LinkID=699560)açıklandığı gibi) %10 oranında azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş iş gününe ulaşılmalıdır. Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized SaaS, VM 'Ler, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için geçerlidir. Tek bir Microsoft ekipleri uygulamasıyla ilişkili ücretli SaaS teklifleri veya en az iki Microsoft 365 eklentisi (Excel, PowerPoint, Word, Outlook ve SharePoint) ve AppSource 'ta yayımlanmış bu iskontoyu da alır.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Müşteri Faturalama, ödeme, faturalandırma ve koleksiyonlar
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084027"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734574"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM başlatması Windows Update 'te takıldı
 
@@ -44,7 +44,7 @@ Yüklenen veya toplanan güncelleştirmelerin sayısına bağlı olarak güncell
 
 1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md). 
 2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](troubleshoot-recovery-disks-portal-windows.md).
-3. İşletim sistemi diski kurtarma sanal makinesine eklendikten sonra, disk yönetimi 'ni açmak için **diskmgmt. msc** ' yi çalıştırın ve ekli diskin **çevrimiçi**olduğundan emin olun. \Windows klasörünü tutan bağlı işletim sistemi diskine atanan sürücü harfini unutmayın. Disk şifrelenirse, bu belgedeki sonraki adımlara geçmeden önce diskin şifresini çözün.
+3. İşletim sistemi diski kurtarma sanal makinesine eklendikten sonra, disk yönetimi 'ni açmak için **diskmgmt. msc** ' yi çalıştırın ve ekli diskin **çevrimiçi** olduğundan emin olun. \Windows klasörünü tutan bağlı işletim sistemi diskine atanan sürücü harfini unutmayın. Disk şifrelenirse, bu belgedeki sonraki adımlara geçmeden önce diskin şifresini çözün.
 
 4. Yükseltilmiş bir komut istemi örneği açın (yönetici olarak çalıştır). Bağlı işletim sistemi diskinde bulunan güncelleştirme paketlerinin listesini almak için aşağıdaki komutu çalıştırın:
 
@@ -80,4 +80,4 @@ Yüklenen veya toplanan güncelleştirmelerin sayısına bağlı olarak güncell
     > [!NOTE] 
     > Paketin boyutuna bağlı olarak, DıSM aracının yükleme kaldırma işlemi bir süre sürer. Normalde işlem, 16 dakika içinde tamamlanır.
 
-7. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
+7. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.

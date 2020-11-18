@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/12/2020
+ms.date: 11/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: b2f66f9d4a96bda323413ac9016f582f5605e6cd
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a5cc0fdf0473cb8ceafd164a34df6f0bd66dd6d3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073334"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737447"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi
 Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında güncel bilgiler sağlar. Bu bilgiler, Konuk işletim sistemi devre dışı bırakmadan önce yükseltme yolunuzu planlamanızı sağlar. Rollerinizi [Azure Konuk işletim sistemi güncelleştirme ayarlarında][Azure Guest OS Update Settings]açıklandığı şekilde *Otomatik* Konuk işletim sistemi güncelleştirmelerini kullanacak şekilde yapılandırırsanız, bu sayfayı okumanız çok önemli değildir.
@@ -41,6 +41,9 @@ Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında g
 Konuk işletim sistemini nasıl güncelleştireceğinizden emin misiniz? [Bunu][cloud updates] kontrol edin.
 
 ## <a name="news-updates"></a>Haber güncelleştirmeleri
+
+###### <a name="november-17-2020"></a>**17 Kasım 2020**
+Ekim Konuk işletim sistemi serbest bırakıldı. 
 
 ###### <a name="october-10-2020"></a>**10 Ekim 2020**
 Eylül Konuk işletim sistemi serbest bırakıldı. 
@@ -143,8 +146,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.24 _202010-02 |  17 Kasım 2020  |  6,26 sonrası  |  
 |  WA-GUEST-OS-6.23 _202009-01  |  10 Ekim 2020  |  6,25 sonrası  |  
-|  WA-GUEST-OS-6.22 _202008-02  |  5 Eylül 2020  |  6,24 sonrası  |  
+|~~WA-GUEST-OS-6.22 _202008-02~~|  5 Eylül 2020  |  17 Kasım 2020  |  
 |~~WA-GUEST-OS-6.21 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-6.20 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  |  
 |~~WA-GUEST-OS-6.19 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
@@ -179,8 +183,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.48 _202010-02  |  17 Kasım 2020  |  5,50 sonrası  | 
 |  WA-GUEST-OS-5.47 _202009-01  |  10 Ekim 2020  |  5,49 sonrası  | 
-|  WA-GUEST-OS-5.46 _202008-02  |  5 Eylül 2020  |  5,48 sonrası  |  
+|~~WA-GUEST-OS-5.46 _202008-02~~|  5 Eylül 2020  |  17 Kasım 2020  |  
 |~~WA-GUEST-OS-5.45 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-5.44 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  |  
 |~~WA-GUEST-OS-5.43 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
@@ -212,8 +217,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.83 _202010-02  |  17 Kasım 2020  |  4,85 sonrası  | 
 |  WA-GUEST-OS-4.82 _202009-01  |  10 Ekim 2020  |  4,84 sonrası  | 
-|  WA-GUEST-OS-4.81 _202008-02  |  5 Eylül 2020  |  4,83 sonrası  | 
+|~~WA-GUEST-OS-4.81 _202008-02~~|  5 Eylül 2020  |  17 Kasım 2020  | 
 |~~WA-GUEST-OS-4.80 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  | 
 |~~WA-GUEST-OS-4.79 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  | 
 |~~WA-GUEST-OS-4.78 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
@@ -245,8 +251,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.90 _202010-02  |  17 Kasım 2020  |  3,92 sonrası  |  
 |  WA-GUEST-OS-3.89 _202009-01  |  10 Ekim 2020  |  3,91 sonrası  |  
-|  WA-GUEST-OS-3.88 _202008-02  |  5 Eylül 2020  |  3,90 sonrası  |  
+|~~WA-GUEST-OS-3.88 _202008-02~~|  5 Eylül 2020  |  17 Kasım 2020  |  
 |~~WA-GUEST-OS-3.87 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-3.86 _202006-02~~|  10 Ağustos 2020  |  5 Eylül 2020  |  
 |~~WA-GUEST-OS-3.85 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  
@@ -278,8 +285,9 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.103 _202010-02  |  17 Kasım 2020  |  2,105 sonrası  |  
 |  WA-GUEST-OS-2.102 _202009-01  |  10 Ekim 2020  |  2,104 sonrası  |  
-|  WA-GUEST-OS-2.101 _202008-02  |  5 Eylül 2020  |  2,103 sonrası  |  
+|~~WA-GUEST-OS-2.101 _202008-02~~|  5 Eylül 2020  |  17 Kasım 2020 |    
 |~~WA-GUEST-OS-2.100 _202007-01~~|  17 Ağustos 2020  |  10 Ekim 2020  |  
 |~~WA-GUEST-OS-2.99 _202006-02~~|  10 Ağustos 2020  | 5 Eylül 2020  |  
 |~~WA-GUEST-OS-2.98 _202005-02~~|  2 Haziran 2020  |  17 Ağustos 2020  |  

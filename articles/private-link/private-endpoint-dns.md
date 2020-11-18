@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: fe8f4229a2bc967f1368e263d2c055b153c3717d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bb1f4b5e37cecc33cef115f26c44ad6375c7e327
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369973"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734387"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Özel Uç Nokta DNS yapılandırması
 
@@ -25,9 +25,11 @@ Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak
 - **Ana bilgisayar dosyasını kullanın (yalnızca test için önerilir)**. DNS 'yi geçersiz kılmak için bir sanal makinede ana bilgisayar dosyasını kullanabilirsiniz.  
 - **Özel BIR DNS bölgesi kullanın**. Belirli bir özel uç nokta için DNS çözümlemesini geçersiz kılmak üzere [özel DNS bölgelerini](../dns/private-dns-privatednszone.md) kullanabilirsiniz. Özel bir DNS bölgesi, belirli etki alanlarını çözümlemek için sanal ağınıza bağlanabilir.
 - **DNS ileticinizi kullanın (isteğe bağlı)**. Belirli bir özel bağlantı kaynağı için DNS çözümlemesini geçersiz kılmak üzere DNS ileticinizi kullanabilirsiniz. [DNS sunucunuz](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) bir sanal ağ üzerinde barındırılıyorsa, tüm özel bağlantı kaynakları için yapılandırmayı basitleştirmek üzere özel bir DNS bölgesi kullanmak üzere bir DNS iletme kuralı oluşturabilirsiniz.
- 
+
 > [!IMPORTANT]
 > Ortak uç noktaları çözümlemek için etkin olarak kullanılan bir bölgenin geçersiz kılınması önerilmez. Kaynaklara bağlantılar, DNS iletimi olmadan genel DNS 'e iletilmeksizin doğru şekilde çözümlenemez. Sorunları önlemek için, farklı bir etki alanı adı oluşturun veya aşağıdaki her hizmet için önerilen adı izleyin. 
+
+
 
 ## <a name="azure-services-dns-zone-configuration"></a>Azure hizmetleri DNS bölge yapılandırması
 Azure Hizmetleri, çözümü önerilen özel etki alanı adına yönlendirmek için genel DNS hizmetinde kurallı bir ad DNS kaydı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresi ile çözümlemeyi geçersiz kılabilirsiniz. 
@@ -93,6 +95,8 @@ Tercihlerinize bağlı olarak, aşağıdaki senaryolar DNS çözümüyle tümle�
 - [DNS ileticisi kullanan şirket içi iş yükleri](#on-premises-workloads-using-a-dns-forwarder)
 - [DNS ileticisi kullanan sanal ağ ve şirket içi iş yükleri](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)
 
+> [!NOTE]
+> [Azure Güvenlik DUVARı DNS proxy](../firewall/dns-settings.md#dns-proxy) , Şirket [içi iş YÜKLERI](#on-premises-workloads-using-a-dns-forwarder) ve [bir DNS ileticisi kullanan sanal ağ iş yükleri](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)için DNS ileticisi olarak kullanılabilir.
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>Özel DNS sunucusu olmayan sanal ağ iş yükleri
 
@@ -123,7 +127,7 @@ Bu model, aynı özel uç noktayla ilişkili birden fazla eşlenmiş sanal ağa 
 
 Bu senaryoda, ortak bir özel uç noktasını paylaşan bağlı ağ ağlarının bulunduğu bir [hub ve bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ağ topolojisi vardır ve tüm bağlı bileşen sanal ağları aynı özel DNS bölgesine bağlanır. 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Azure tarafından sunulan DNS ile hub ve bağlı bileşen":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS ileticisi kullanan şirket içi iş yükleri
 
@@ -144,7 +148,7 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 
 Aşağıdaki diyagramda, [bir sanal ağa bağlı](../dns/private-dns-virtual-network-links.md)özel bir DNS bölgesi tarafından çözümlemenin yapıldığı Azure 'da DAĞıTıLAN bir DNS ileticisi kullanan bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir:
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Azure DNS kullanarak şirket içi":::
 
 Bu yapılandırma, zaten bir DNS çözümü olan bir şirket içi ağ için genişletilebilir. Şirket içi DNS çözümünün, DNS trafiğini Azure 'da dağıtılan DNS ileticisine başvuran bir [Koşullu iletici](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) aracılığıyla Azure DNS iletmek üzere yapılandırılması gerekir.
 
@@ -164,7 +168,7 @@ Aşağıdaki diyagramda DNS trafiğini [bir sanal ağa bağlı](../dns/private-d
 > [!IMPORTANT]
 > Koşullu iletme, önerilen [Genel DNS bölge ileticisine](#azure-services-dns-zone-configuration)yapılmalıdır. Örneğin: `database.windows.net` **Privatelink**. Database.Windows.net yerine.
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Azure DNS şirket içi iletme":::
 
 ## <a name="virtual-network-and-on-premises-workloads-using-a-dns-forwarder"></a>DNS ileticisi kullanan sanal ağ ve şirket içi iş yükleri
 
@@ -191,7 +195,7 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 
 Aşağıdaki diyagramda, [bir sanal ağa bağlı](../dns/private-dns-virtual-network-links.md)özel bir DNS bölgesi tarafından çözümlemenin yapıldığı Azure 'da DAĞıTıLAN bir DNS ileticisi kullanan bir şirket içi ve sanal ağdan gelen DNS çözümleme sırası gösterilmektedir:
 
-:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
+:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Karma senaryo":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Özel uç noktalar hakkında bilgi edinin](private-endpoint-overview.md)

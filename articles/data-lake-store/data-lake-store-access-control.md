@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190167"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701458"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de erişim denetimi
 
@@ -124,7 +124,7 @@ Bir Data Lake Storage 1. hesabı için **sahip** rolünün parçası olan tüm k
 
 ### <a name="the-owning-group"></a>Sahip olan grup
 
-**Arka Plan**
+**Arka plan**
 
 POSIX ACL’lerinde her kullanıcı bir "birincil grup" ile ilişkilendirilir. Örneğin, "gamze" adlı kullanıcı "finans" grubuna ait olabilir. Gamze ayrıca birden fazla gruba ait olabilir, ancak bir grup her zaman birincil grubu olarak atanır. POSIX’te Gamze bir dosya oluşturduğunda o dosyanın sahibi olan grup birincil grubu olarak ayarlanır (bu örnekte "finans" grubudur). Aksi takdirde sahip olan grup, diğer kullanıcılar/gruplar için atanan izinlere benzer şekilde davranır.
 
@@ -144,7 +144,7 @@ Sahip olan grup aşağıdakiler tarafından değiştirilebilir:
 > [!NOTE]
 > Sahip olan grup, bir dosya veya klasörün ACL’lerini *değiştiremez*.
 >
-> 2018 Eylül tarihinde veya daha önce oluşturulan hesaplar için, sahip olan Grup, yukarıdaki **1. durum**için kök klasör olması durumunda hesabı oluşturan kullanıcıya ayarlanmıştır.  Tek bir kullanıcı hesabı, sahip olan grup aracılığıyla izin sağlamak için geçerli değildir, bu nedenle bu varsayılan ayar tarafından izin verilmez. Bu izni, geçerli bir kullanıcı grubuna atayabilirsiniz.
+> 2018 Eylül tarihinde veya daha önce oluşturulan hesaplar için, sahip olan Grup, yukarıdaki **1. durum** için kök klasör olması durumunda hesabı oluşturan kullanıcıya ayarlanmıştır.  Tek bir kullanıcı hesabı, sahip olan grup aracılığıyla izin sağlamak için geçerli değildir, bu nedenle bu varsayılan ayar tarafından izin verilmez. Bu izni, geçerli bir kullanıcı grubuna atayabilirsiniz.
 
 
 ## <a name="access-check-algorithm"></a>Erişim denetimi algoritması
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>Maske
 
-Erişim denetimi algoritmasında gösterildiği gibi, maske **adlandırılmış kullanıcılar**, **sahip olan grup**ve **adlandırılmış gruplar**için erişimi sınırlandırır.  
+Erişim denetimi algoritmasında gösterildiği gibi, maske **adlandırılmış kullanıcılar**, **sahip olan grup** ve **adlandırılmış gruplar** için erişimi sınırlandırır.  
 
 > [!NOTE]
 > Yeni bir Data Lake Storage 1. hesabı için kök klasörün ("/") erişim ACL 'SI için maske varsayılan olarak RWX 'tir.
@@ -216,7 +216,7 @@ Var olan bir klasör altında yeni bir dosya ya da klasör oluşturulduğunda ü
 
 ### <a name="umask"></a>umask
 
-Bir dosya veya klasör oluştururken, varsayılan ACL 'Lerin alt öğede nasıl ayarlandığını değiştirmek için umask kullanılır. umask, **sahip olan Kullanıcı**, **sahip olan grup**ve **diğer**için RWX değeri içeren üst klasörlerdeki 9 bitlik bir değerdir.
+Bir dosya veya klasör oluştururken, varsayılan ACL 'Lerin alt öğede nasıl ayarlandığını değiştirmek için umask kullanılır. umask, **sahip olan Kullanıcı**, **sahip olan grup** ve **diğer** için RWX değeri içeren üst klasörlerdeki 9 bitlik bir değerdir.
 
 Azure Data Lake Storage 1. için umask, 007 olarak ayarlanan sabit bir değerdir. Bu değer şunu yapar
 
@@ -280,7 +280,11 @@ ACL’lerdeki girişler, Azure AD’de kullanıcılara karşılık gelen GUID’
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>Azure portalını kullanırken neden bazen ACL’lerde GUID’leri görüyorum?
 
-Kullanıcı artık Azure AD’de mevcut değilse bir GUID gösterilir. Bu genellikle, kullanıcı şirketten ayrıldığında veya Azure AD’de kullanıcının hesabı silindiğinde gerçekleşir.
+Kullanıcı artık Azure AD’de mevcut değilse bir GUID gösterilir. Bu genellikle, kullanıcı şirketten ayrıldığında veya Azure AD’de kullanıcının hesabı silindiğinde gerçekleşir. Ayrıca, ACL 'Leri ayarlamak için doğru KIMLIĞI kullandığınızdan emin olun (aşağıdaki sorudaki Ayrıntılar).
+
+### <a name="when-using-service-principal-what-id-should-i-use-to-set-acls"></a>Hizmet sorumlusu kullanılırken, ACL 'Leri ayarlamak için hangi KIMLIĞI kullanmalıyım?
+
+Azure portalında **Azure Active Directory-> kurumsal uygulamalar** ' a gidin ve uygulamanızı seçin. **Genel bakış** sekmesi BIR nesne kimliği görüntülemelidir ve veri erişimi Için ACL 'ler eklenirken (uygulama kimliği değil) kullanılması gereken şeydir.
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Data Lake Storage 1. ACL 'Leri devralmayı destekliyor mu?
 

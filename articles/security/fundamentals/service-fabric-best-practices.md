@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410021"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700955"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric güvenliği en iyi yöntemleri
 Azure 'da uygulama dağıtmak hızlı, kolay ve ekonomik bir işlemdir. Bulut uygulamanızı üretime dağıtmadan önce, uygulamanızda güvenli kümeler uygulamaya yönelik temel ve önerilen en iyi yöntemler listesini gözden geçirin.
@@ -60,7 +60,7 @@ Ayrıca, aşağıdaki yapılandırma seçeneklerini göz önünde bulundurun:
 -   Düğümden düğüme güvenlik: Bu senaryo, sanal makineler ve kümedeki bilgisayarlar arasındaki iletişimin güvenliğini sağlar. Bu güvenlik biçimi, yalnızca kümeye katılması gereken bilgisayarların kümedeki uygulamaları ve Hizmetleri barındırmasını sağlar.
 Bu senaryoda, Azure 'da çalışan kümeler ya da Windows üzerinde çalışan tek başına kümeler Windows Server makineleri için [sertifika güvenliği](../../service-fabric/service-fabric-windows-cluster-x509-security.md) veya [Windows güvenliği](../../service-fabric/service-fabric-windows-cluster-windows-security.md) kullanabilir.
 -   İstemciden düğüme güvenlik: Bu senaryo, Service Fabric istemci ile kümedeki tek tek düğümler arasındaki iletişimin güvenliğini sağlar.
--   Role-Based Access Control (RBAC): Bu senaryo, kümeye erişen her yönetici ve Kullanıcı istemci rolü için ayrı kimlikler (sertifikalar, Azure AD vb.) kullanır. Kümeyi oluştururken rol kimliklerini belirtirsiniz.
+-   Rol tabanlı erişim denetimi Service Fabric (Service Fabric RBAC): Bu senaryo, kümeye erişen her yönetici ve Kullanıcı istemci rolü için ayrı kimlikler (sertifikalar, Azure AD vb.) kullanır. Kümeyi oluştururken rol kimliklerini belirtirsiniz.
 
 >[!NOTE]
 >**Azure kümeleri Için güvenlik önerisi:** Düğümden düğüme güvenlik için istemcilerin ve sertifikaların kimliğini doğrulamak üzere Azure AD güvenliği ' ni kullanın.
@@ -172,7 +172,7 @@ Bir anahtar kasasının nasıl ayarlanacağı hakkında daha fazla bilgi edinmek
 Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, kullanıcılarınızı Service Fabric tarafından desteklenen rollere atayın: salt okunurdur ve yönetici. Azure portal kullanarak bu rolleri atayabilirsiniz.
 
 >[!NOTE]
-> Service Fabric rollerini kullanma hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı Access Control](../../service-fabric/service-fabric-cluster-security-roles.md).
+> Service Fabric rollerini kullanma hakkında daha fazla bilgi için, bkz. [Service Fabric istemcileri için rol tabanlı erişim denetimi Service Fabric](../../service-fabric/service-fabric-cluster-security-roles.md).
 
 Azure Service Fabric, bir [Service Fabric kümesine](../../service-fabric/service-fabric-cluster-creation-via-arm.md)bağlı istemciler için iki erişim denetimi türünü destekler: yönetici ve Kullanıcı. Küme Yöneticisi, farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlandırmak üzere erişim denetimini kullanabilir. Erişim denetimi kümenin daha güvenli olmasını sağlar.
 

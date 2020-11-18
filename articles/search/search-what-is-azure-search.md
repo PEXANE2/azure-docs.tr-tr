@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 10/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f9a5197b982958fe0a0ff21c4b442142beb38882
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0062caff7d8d25b263a9b1202f61691c056469af
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422476"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701091"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -80,7 +80,7 @@ Push modeli, bir [SDK](search-howto-dotnet-sdk.md) veya [rest](/rest/api/searchs
 
 Bir dizini doldurduktan sonra, [REST API](/rest/api/searchservice/Search-Documents) veya [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)ile basit http isteklerini kullanarak hizmet uç noktanıza [arama sorguları](search-query-overview.md) verebilirsiniz.
 
-Kullanıcı girişi toplayan ve sonuçları işleyen bir Web sayfasını derlemek ve genişletmek için [ilk arama uygulamanızı oluşturun](tutorial-csharp-create-first-app.md) . Ayrıca, var olan bir dizini sorgulamak için Azure portal ' de etkileşimli REST çağrıları veya yerleşik [Arama Gezgini](search-explorer.md) [için Postman](search-get-started-postman.md) kullanabilirsiniz.
+Kullanıcı girişi toplayan ve sonuçları işleyen bir Web sayfasını derlemek ve genişletmek için [ilk arama uygulamanızı oluşturun](tutorial-csharp-create-first-app.md) . Ayrıca, var olan bir dizini sorgulamak için Azure portal etkileşimli REST çağrıları veya yerleşik [Arama Gezgini](search-explorer.md) Için [postman veya Visual Studio Code](search-get-started-rest.md) kullanabilirsiniz.
 
 ## <a name="how-it-compares"></a>Karşılaştırma
 

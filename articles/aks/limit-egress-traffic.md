@@ -6,18 +6,18 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380220"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701611"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
 Bu makalede, Azure Kubernetes hizmetinden (AKS) giden trafiği güvenli hale getirmeye olanak tanıyan gerekli ayrıntılar sağlanmaktadır. Temel AKS dağıtımı için küme gereksinimlerini ve isteğe bağlı eklentiler ve özellikler için ek gereksinimleri içerir. [Azure Güvenlik Duvarı ile bu gereksinimlerin nasıl yapılandırılacağı hakkında daha fazla bir örnek](#restrict-egress-traffic-using-azure-firewall)sunulacaktır. Bununla birlikte, bu bilgileri herhangi bir giden kısıtlama yöntemine veya gerecine uygulayabilirsiniz.
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 AKS kümeleri bir sanal ağa dağıtılır. Bu ağ yönetilebilecek (AKS tarafından oluşturulan) veya özel (önceden Kullanıcı tarafından önceden yapılandırılmış). Her iki durumda da, kümenin söz konusu sanal ağın dışındaki hizmetlerde **giden** bağımlılıkları vardır (hizmetin gelen bağımlılığı yoktur).
 
@@ -209,8 +209,10 @@ Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama k
 
 | FQDN                                          | Bağlantı noktası      | Kullanın      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır. (Şu anda AKS 'deki önizlemededir) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. (Şu anda AKS 'deki önizlemededir) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | Bu adres, Kubernetes ilkelerini çekmek ve küme uyumluluk durumunu ilke hizmetine bildirmek için kullanılır. |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | Bu adres, yerleşik ilkelerin geçit Denetçi yapılarını çekmek için kullanılır. |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır.  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Uygulama öngörüleri uç noktasına telemetri verileri gönderen Azure Ilke eklentisi. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Güvenlik Duvarı 'nı kullanarak çıkış trafiğini kısıtlama

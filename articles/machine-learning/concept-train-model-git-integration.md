@@ -1,20 +1,20 @@
 ---
 title: Azure Machine Learning için git tümleştirmesi
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning yerel bir git deposu ile nasıl tümleştireceğinizi öğrenin. Bir git deposu olan yerel bir dizinden bir eğitim çalıştırıldığında, depo, dal ve geçerli işleme bilgileri çalıştırmanın bir parçası olarak izlenir.
+description: Azure Machine Learning, bir eğitim çalıştırmasının parçası olarak depoyu, dalı ve geçerli kayıt bilgilerini izlemek için yerel bir git deposu ile nasıl tümleştireceğinizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
-ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324765"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701645"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -91,7 +91,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  2. **adımda** başlayın.
 
-+ [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). **Adım 4** ' te başlayın.
++ [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). **Adım 4**' te başlayın.
 
 ### <a name="clone-the-git-repository-with-ssh"></a>Git deposunu SSH ile kopyalama
 
@@ -123,7 +123,7 @@ SSH, bu parmak izini, bilinmeyen bir konağa bağlanırken [ortadaki adam saldı
 
 Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git`Komut geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
 
-| Özellik | Değeri almak için kullanılan git komutu | Açıklama |
+| Özellik | Değeri almak için kullanılan git komutu | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
@@ -150,12 +150,12 @@ Eğitim dosyalarınız geliştirme ortamınızda bir git deposunda bulunmuyorsa 
 
 Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure portal, Python SDK ve CLı kullanarak bu bilgileri görüntüleyebilirsiniz. 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Studio portalından](https://ml.azure.com), çalışma alanınızı seçin.
 1. __Denemeleri__ öğesini seçin ve denemeleri birini seçin.
 1. __Çalıştırma numarası__ sütunundan çalıştırmaların birini seçin.
-1. __Çıktılar + Günlükler__ ' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __### \_ Azure__ ile başlayan bağlantıyı seçin.
+1. __Çıktılar + Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __### \_ Azure__ ile başlayan bağlantıyı seçin.
 
 Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 

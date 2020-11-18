@@ -1,7 +1,7 @@
 ---
 title: VS Code, kaynak uzantısı oluşturma ve yönetme (Önizleme)
 titleSuffix: Azure Machine Learning
-description: VS Code Uzantısı ile kaynak oluşturma ve yönetme
+description: Azure Machine Learning Visual Studio Code uzantısını kullanarak Azure Machine Learning kaynaklarını oluşturma ve yönetme hakkında bilgi edinin.
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/30/2020
-ms.openlocfilehash: 2e410cbc7813031929ea040b2cc4fb2967b99c1b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: f8eb18b190b72381f1a93575eb39b3d19d8d431b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319345"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701424"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code Uzantısı ile Azure Machine Learning kaynaklarını yönetme (Önizleme)
 
@@ -38,7 +38,7 @@ Daha fazla bilgi için bkz. [çalışma alanları](concept-workspace.md).
 
 ### <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-1. Azure Machine Learning görünümünde, abonelik düğümünüz ' a sağ tıklayın ve **çalışma alanı oluştur** ' u seçin.
+1. Azure Machine Learning görünümünde, abonelik düğümünüz ' a sağ tıklayın ve **çalışma alanı oluştur**' u seçin.
 1. İsteminde:
     1. Çalışma alanınız için bir ad sağlayın
     1. Azure aboneliğinizi seçme
@@ -56,8 +56,8 @@ Daha fazla bilgi için bkz. [çalışma alanları](concept-workspace.md).
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Kaldırmak istediğiniz çalışma alanına sağ tıklayın.
 1. Kaldırmak isteyip istemediğinizi seçin:
-    - *Yalnızca çalışma alanı* : Bu seçenek **yalnızca** çalışma alanı Azure kaynağını siler. Kaynak grubu, depolama hesapları ve çalışma alanının iliştirildiği diğer kaynaklar hala Azure 'da.
-    - *İlişkili kaynaklarla* : Bu seçenek çalışma alanını **ve** onunla ilişkili tüm kaynakları siler.
+    - *Yalnızca çalışma alanı*: Bu seçenek **yalnızca** çalışma alanı Azure kaynağını siler. Kaynak grubu, depolama hesapları ve çalışma alanının iliştirildiği diğer kaynaklar hala Azure 'da.
+    - *İlişkili kaynaklarla*: Bu seçenek çalışma alanını **ve** onunla ilişkili tüm kaynakları siler.
 
 ## <a name="datastores"></a>Veri depoları
 
@@ -74,13 +74,13 @@ Daha fazla bilgi için bkz. [veri depoları](concept-data.md#datastores).
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Veri deposunu oluşturmak istediğiniz çalışma alanı düğümünü genişletin.
-1. **Veri depoları** düğümüne sağ tıklayın ve **veri deposunu kaydet** ' i seçin.
+1. **Veri depoları** düğümüne sağ tıklayın ve **veri deposunu kaydet**' i seçin.
 1. İsteminde:
     1. Veri deposu için bir ad sağlayın.
     1. Veri deposu türünü seçin.
     1. Depolama kaynağınızı seçin. Çalışma alanım ile ilişkili bir depolama kaynağı seçebilir veya Azure aboneliklerinizde geçerli bir depolama kaynağından seçim yapabilirsiniz.
     1. Verilerinizin daha önce seçilen depolama kaynağının içinde olduğu kapsayıcıyı seçin.
-1. Bir yapılandırma dosyası VS Code görüntülenir. Yapılandırma dosyanız karşılandıysanız **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+1. Bir yapılandırma dosyası VS Code görüntülenir. Yapılandırma dosyanız karşılandıysanız **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 ### <a name="manage-a-datastore"></a>Veri deposunu yönetme
 
@@ -96,8 +96,8 @@ Daha fazla bilgi için bkz. [veri depoları](concept-data.md#datastores).
 
 Uzantı şu anda aşağıdaki veri kümesi türlerini desteklemektedir:
 
-- *Tablo* : verileri bir veri çerçevesine (Pandas veya pyspark) sunmanızı sağlar.
-- *Dosya* : bir dosya veya dosya koleksiyonu. Dosyaları, işlem için yüklemenize veya oluşturmanıza olanak sağlar.
+- *Tablo*: verileri bir veri çerçevesine (Pandas veya pyspark) sunmanızı sağlar.
+- *Dosya*: bir dosya veya dosya koleksiyonu. Dosyaları, işlem için yüklemenize veya oluşturmanıza olanak sağlar.
 
 Daha fazla bilgi için bkz. [veri kümeleri](concept-data.md#datasets)
 
@@ -105,7 +105,7 @@ Daha fazla bilgi için bkz. [veri kümeleri](concept-data.md#datasets)
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Veri deposunu oluşturmak istediğiniz çalışma alanı düğümünü genişletin.
-1. **Veri kümeleri** düğümüne sağ tıklayın ve **veri kümesi oluştur** ' u seçin.
+1. **Veri kümeleri** düğümüne sağ tıklayın ve **veri kümesi oluştur**' u seçin.
 1. İsteminde:
     1. Veri kümesi türünü seçin
     1. Verilerin bilgisayarınızda mi yoksa Web 'de mi olduğunu tanımlayın
@@ -120,7 +120,7 @@ Makine öğrenimi modellerini oluştururken, veriler değiştikçe veri kümeniz
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanı düğümünü genişletin.
 1. **Veri kümeleri** düğümünü genişletin.
-1. Sürüm eklemek istediğiniz veri kümesine sağ tıklayın ve **Yeni sürüm oluştur** ' u seçin.
+1. Sürüm eklemek istediğiniz veri kümesine sağ tıklayın ve **Yeni sürüm oluştur**' u seçin.
 1. İsteminde:
     1. Veri kümesi türünü seçin
     1. Verilerin bilgisayarınızda mi yoksa Web 'de mi olduğunu tanımlayın.
@@ -134,7 +134,7 @@ Bu seçenek, belirli bir veri kümesiyle ilişkili meta verileri görmenizi sağ
 
 1. Çalışma alanı düğümünü genişletin.
 1. **Veri kümeleri** düğümünü genişletin.
-1. İncelemek istediğiniz veri kümesine sağ tıklayın ve **veri kümesi özelliklerini görüntüle** ' yi seçin. Bu, en son veri kümesi sürümünün özelliklerine sahip bir yapılandırma dosyası görüntüler.
+1. İncelemek istediğiniz veri kümesine sağ tıklayın ve **veri kümesi özelliklerini görüntüle**' yi seçin. Bu, en son veri kümesi sürümünün özelliklerine sahip bir yapılandırma dosyası görüntüler.
 
 > [!NOTE]
 > Veri kümenizin birden çok sürümüne sahipseniz, yalnızca veri kümesi düğümünü genişleterek ve ilgilendiğiniz sürümde bu bölümde açıklanan adımların aynısını gerçekleştirerek belirli bir sürümün veri kümesi özelliklerini görüntülemeyi tercih edebilirsiniz.
@@ -145,7 +145,7 @@ Bir veri kümesini ve tüm sürümünü kaldırmak için kaydını silin. Bunu V
 
 1. Çalışma alanı düğümünü genişletin.
 1. **Veri kümeleri** düğümünü genişletin.
-1. Kaydını silmek istediğiniz veri kümesine sağ tıklayın ve **veri kümesinin kaydını sil** ' i seçin.
+1. Kaydını silmek istediğiniz veri kümesine sağ tıklayın ve **veri kümesinin kaydını sil**' i seçin.
 
 ## <a name="environments"></a>Ortamlar
 
@@ -155,16 +155,16 @@ Daha fazla bilgi için bkz. [ortamlar](concept-environments.md).
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Veri deposunu oluşturmak istediğiniz çalışma alanı düğümünü genişletin.
-1. **Ortamlar** düğümüne sağ tıklayın ve **Ortam Oluştur** ' u seçin.
+1. **Ortamlar** düğümüne sağ tıklayın ve **Ortam Oluştur**' u seçin.
 1. İsteminde:
     1. Ortamınız için bir ad sağlayın
     1. Ortam yapılandırmanızı tanımlayın:
-        - *Seçkin ortamlar* : Azure Machine Learning önceden yapılandırılmış ortamlar. JSON dosyasındaki özelliğini değiştirerek ortamı daha ayrıntılı bir şekilde özelleştirebilirsiniz `dependencies` . [Seçkin ortamlar](resource-curated-environments.md)hakkında daha fazla bilgi edinin.
-        - *Conda bağımlılıklar dosyası* : Anaconda ortamları için ortam tanımınızı içeren dosya belirtilebilir.
-        - *PIP gereksinimleri dosyası* : PIP ortamları için ortam tanımınızı içeren dosya sağlanmış olabilir.
-        - *Mevcut Conda ortamı* : Bu seçenek, yerel bilgisayarınızdaki Conda ortamlarını arar ve seçili ortamdan bir ortam oluşturmaya çalışır.
-        - *Özel* : kendi kanallarınızı ve bağımlılıklarınızı tanımlayın
-    1. Düzenleyicide bir yapılandırma dosyası açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+        - *Seçkin ortamlar*: Azure Machine Learning önceden yapılandırılmış ortamlar. JSON dosyasındaki özelliğini değiştirerek ortamı daha ayrıntılı bir şekilde özelleştirebilirsiniz `dependencies` . [Seçkin ortamlar](resource-curated-environments.md)hakkında daha fazla bilgi edinin.
+        - *Conda bağımlılıklar dosyası*: Anaconda ortamları için ortam tanımınızı içeren dosya belirtilebilir.
+        - *PIP gereksinimleri dosyası*: PIP ortamları için ortam tanımınızı içeren dosya sağlanmış olabilir.
+        - *Mevcut Conda ortamı*: Bu seçenek, yerel bilgisayarınızdaki Conda ortamlarını arar ve seçili ortamdan bir ortam oluşturmaya çalışır.
+        - *Özel*: kendi kanallarınızı ve bağımlılıklarınızı tanımlayın
+    1. Düzenleyicide bir yapılandırma dosyası açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 ### <a name="view-environment-configurations"></a>Ortam yapılandırmasını görüntüleme
 
@@ -173,7 +173,7 @@ Uzantıdaki belirli bir ortam için bağımlılıkları ve konfigürasyonları g
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanı düğümünü genişletin.
 1. **Ortamlar** düğümünü genişletin.
-1. Görüntülemek istediğiniz ortama sağ tıklayın ve **ortamı görüntüle** ' yi seçin.
+1. Görüntülemek istediğiniz ortama sağ tıklayın ve **ortamı görüntüle**' yi seçin.
 
 ### <a name="edit-environment-configurations"></a>Ortam yapılandırmasını düzenle
 
@@ -181,8 +181,8 @@ Uzantıdaki belirli bir ortam için bağımlılıkları ve konfigürasyonları d
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **ortamlar** düğümünü genişletin.
-1. Görüntülemek istediğiniz ortama sağ tıklayın ve **ortamı Düzenle** ' yi seçin.
-1. Değişiklikleri yaptıktan sonra, yapılandırmanızla memnun kaldıysanız **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+1. Görüntülemek istediğiniz ortama sağ tıklayın ve **ortamı Düzenle**' yi seçin.
+1. Değişiklikleri yaptıktan sonra, yapılandırmanızla memnun kaldıysanız **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 ## <a name="experiments"></a>Denemeler
 
@@ -192,7 +192,7 @@ Daha fazla bilgi için bkz. [denemeleri](concept-azure-machine-learning-architec
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanı düğümünü genişletin.
-1. Çalışma alanınızdaki **denemeleri** düğümüne sağ tıklayın ve **deneme oluştur** ' u seçin.
+1. Çalışma alanınızdaki **denemeleri** düğümüne sağ tıklayın ve **deneme oluştur**' u seçin.
 1. Komut isteminde, denemeniz için bir ad girin.
 
 ### <a name="run-experiment"></a>Deneme Çalıştır
@@ -216,8 +216,8 @@ Azure Machine Learning Studio deneme hesabınızı görüntülemek için:
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **denemeleri** düğümünü genişletin.
-1. Görüntülemek istediğiniz denemeyi sağ tıklatın ve denemeyi **görüntüle** ' yi seçin. 
-1. Deneme URL 'sini Azure Machine Learning Studio 'da açmanızı isteyen bir istem görüntülenir. **Aç** ’ı seçin.
+1. Görüntülemek istediğiniz denemeyi sağ tıklatın ve denemeyi **görüntüle**' yi seçin. 
+1. Deneme URL 'sini Azure Machine Learning Studio 'da açmanızı isteyen bir istem görüntülenir. **Aç**’ı seçin.
 
 ### <a name="track-run-progress"></a>Çalıştırma ilerlemesini izleme
 
@@ -226,8 +226,8 @@ Deneme hesabınızı çalıştırdığınız için ilerleme durumunu görmek ist
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **denemeleri** düğümünü genişletin.
 1. İlerleme durumunu izlemek istediğiniz deneme düğümünü genişletin.
-1. Çalıştır ' a sağ tıklayın ve **Azure Portal görünüm Çalıştır** ' ı seçin.
-1. Azure Machine Learning Studio 'da çalıştırma URL 'sini açmanızı isteyen bir istem belirir. **Aç** ’ı seçin.
+1. Çalıştır ' a sağ tıklayın ve **Azure Portal görünüm Çalıştır**' ı seçin.
+1. Azure Machine Learning Studio 'da çalıştırma URL 'sini açmanızı isteyen bir istem belirir. **Aç**’ı seçin.
 
 ### <a name="download-run-logs--outputs"></a>Çalıştırma günlüklerini & çıktıları indirin
 
@@ -237,8 +237,8 @@ Deneme hesabınızı çalıştırdığınız için ilerleme durumunu görmek ist
 1. Çalışma alanınızın içindeki **denemeleri** düğümünü genişletin.
 1. İlerleme durumunu izlemek istediğiniz deneme düğümünü genişletin.
 1. Çalıştırmaya sağ tıklayın:
-    - Çıkışları indirmek için **çıktıları indir** ' i seçin.
-    - Günlükleri indirmek için **günlükleri indir** ' i seçin.
+    - Çıkışları indirmek için **çıktıları indir**' i seçin.
+    - Günlükleri indirmek için **günlükleri indir**' i seçin.
 
 ### <a name="view-run-metadata"></a>Çalışma meta verilerini görüntüle
 
@@ -252,7 +252,7 @@ Daha fazla bilgi için bkz. [işlem örnekleri](concept-compute-instance.md).
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. İşlem örneğini oluşturmak istediğiniz çalışma alanı düğümünü genişletin.
-1. **İşlem örnekleri** düğümüne sağ tıklayın ve **işlem örneği oluştur** ' u seçin.
+1. **İşlem örnekleri** düğümüne sağ tıklayın ve **işlem örneği oluştur**' u seçin.
 1. İsteminde:
     1. İşlem örneğiniz için bir ad sağlayın.
     1. Listeden bir VM boyutu seçin.
@@ -269,13 +269,13 @@ Daha fazla bilgi için bkz. [işlem örnekleri](concept-compute-instance.md).
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **işlem örneği** düğümünü genişletin.
-1. İncelemek istediğiniz işlem örneğine sağ tıklayın ve **işlem örneği özelliklerini görüntüle** ' yi seçin.
+1. İncelemek istediğiniz işlem örneğine sağ tıklayın ve **işlem örneği özelliklerini görüntüle**' yi seçin.
 
 ### <a name="delete-compute-instance"></a>İşlem örneğini Sil
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **işlem örneği** düğümünü genişletin.
-1. Silmek istediğiniz işlem örneğine sağ tıklayın ve **işlem örneğini Sil** ' i seçin.
+1. Silmek istediğiniz işlem örneğine sağ tıklayın ve **işlem örneğini Sil**' i seçin.
 
 ## <a name="compute-clusters"></a>İşlem kümeleri
 
@@ -290,7 +290,7 @@ Daha fazla bilgi için bkz. [işlem hedefleri](concept-compute-target.md#train).
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Altında işlem kümesi oluşturmak istediğiniz çalışma alanı düğümünü genişletin.
-1. **İşlem kümeleri** düğümüne sağ tıklayın ve **işlem oluştur** ' u seçin.
+1. **İşlem kümeleri** düğümüne sağ tıklayın ve **işlem oluştur**' u seçin.
 1. İsteminde:
     1. İşlem türü seçin
     1. Bir VM boyutu seçin. [VM boyutları](../virtual-machines/sizes.md)hakkında daha fazla bilgi edinin.
@@ -300,20 +300,20 @@ Daha fazla bilgi için bkz. [işlem hedefleri](concept-compute-target.md#train).
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **işlem kümeleri** düğümünü genişletin.
-1. Görüntülemek istediğiniz işlem için sağ tıklayın ve **Işlem özelliklerini görüntüle** ' yi seçin.
+1. Görüntülemek istediğiniz işlem için sağ tıklayın ve **Işlem özelliklerini görüntüle**' yi seçin.
 
 ### <a name="edit-compute-scale-settings"></a>İşlem ölçek ayarlarını Düzenle
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **işlem kümeleri** düğümünü genişletin.
-1. Düzenlemek istediğiniz işlem için sağ tıklayın ve **Işlem Düzenle** ' yi seçin.
-1. İşlem için bir yapılandırma dosyası düzenleyicide açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+1. Düzenlemek istediğiniz işlem için sağ tıklayın ve **Işlem Düzenle**' yi seçin.
+1. İşlem için bir yapılandırma dosyası düzenleyicide açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 ### <a name="delete-compute"></a>İşlem silme
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **işlem kümeleri** düğümünü genişletin.
-1. Silmek istediğiniz işlem için sağ tıklayın ve işlemi **Sil** ' i seçin.
+1. Silmek istediğiniz işlem için sağ tıklayın ve işlemi **Sil**' i seçin.
 
 ### <a name="create-run-configuration"></a>Çalıştırma yapılandırması oluştur
 
@@ -321,28 +321,28 @@ Uzantısında bir çalıştırma yapılandırması oluşturmak için:
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **işlem kümeleri** düğümünü genişletin.
-1. Çalıştırma yapılandırmasını oluşturmak istediğiniz işlem hedefine sağ tıklayın ve **çalıştırma yapılandırması oluştur** ' u seçin.
+1. Çalıştırma yapılandırmasını oluşturmak istediğiniz işlem hedefine sağ tıklayın ve **çalıştırma yapılandırması oluştur**' u seçin.
 1. İsteminde:
     1. İşlem hedefi için bir ad sağlayın
     1. Yeni bir ortam seçin veya oluşturun.
     1. Çalıştırmak istediğiniz betiğin adını yazın veya yerel bilgisayarınızda betik için tarayıcıda **ENTER** tuşuna basın.
     1. Seçim Eğitim çalıştıralım için bir veri başvurusu oluşturmak isteyip istemediğinizi seçin. Bunun yapılması, çalışma yapılandırmanızda bir veri kümesi tanımlamanızı ister.
-        1. Kayıt kümenizde bir yapılandırma dosyası olan çalışma kümenize bağlanmak için kayıt kümelerinden birini seçin düzenleyicide açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
-    1. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+        1. Kayıt kümenizde bir yapılandırma dosyası olan çalışma kümenize bağlanmak için kayıt kümelerinden birini seçin düzenleyicide açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
+    1. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 ### <a name="edit-run-configuration"></a>Çalıştırma yapılandırmasını düzenle
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın **işlem kümeleri** düğümündeki işlem kümesi düğümünü genişletin.
-1. Düzenlemek istediğiniz çalışma yapılandırmasına sağ tıklayın ve **çalıştırma yapılandırmasını düzenle** ' yi seçin.
-1. Çalışma yapılandırmanız için bir yapılandırma dosyası düzenleyicide açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+1. Düzenlemek istediğiniz çalışma yapılandırmasına sağ tıklayın ve **çalıştırma yapılandırmasını düzenle**' yi seçin.
+1. Çalışma yapılandırmanız için bir yapılandırma dosyası düzenleyicide açılır. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 ### <a name="delete-run-configuration"></a>Çalıştırma yapılandırmasını sil
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanı düğümünü genişletin.
 1. **İşlem kümeleri** düğümü içinde ilgilendiğiniz işlem kümesi düğümünü genişletin.
-1. Düzenlemek istediğiniz çalışma yapılandırmasına sağ tıklayın ve **çalıştırma yapılandırmasını sil** ' i seçin.
+1. Düzenlemek istediğiniz çalışma yapılandırmasına sağ tıklayın ve **çalıştırma yapılandırmasını sil**' i seçin.
 
 ## <a name="models"></a>Modeller
 
@@ -352,30 +352,30 @@ Daha fazla bilgi için bkz. [modeller](concept-azure-machine-learning-architectu
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanı düğümünü genişletin.
-1. **Modeller** düğümüne sağ tıklayın ve **modeli Kaydet** ' i seçin.
+1. **Modeller** düğümüne sağ tıklayın ve **modeli Kaydet**' i seçin.
 1. İsteminde:
     1. Modelinize bir ad verin
     1. Modelinizin bir dosya veya klasör olup olmadığını seçin.
     1. Yerel BILGISAYARıNıZDA modeli bulun.
-    1. Düzenleyicide modelinize yönelik bir yapılandırma dosyası. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+    1. Düzenleyicide modelinize yönelik bir yapılandırma dosyası. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 ### <a name="view-model-properties"></a>Model özelliklerini görüntüle
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **modeller** düğümünü genişletin.
-1. Özelliklerini görmek istediğiniz modele sağ tıklayın ve **model özelliklerini görüntüle** ' yi seçin. Model özelliklerinizi içeren düzenleyicide bir dosya açılır.
+1. Özelliklerini görmek istediğiniz modele sağ tıklayın ve **model özelliklerini görüntüle**' yi seçin. Model özelliklerinizi içeren düzenleyicide bir dosya açılır.
 
 ### <a name="download-model"></a>Modeli indir
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **modeller** düğümünü genişletin.
-1. İndirmek istediğiniz modele sağ tıklayın ve **model dosyasını indir** ' i seçin.
+1. İndirmek istediğiniz modele sağ tıklayın ve **model dosyasını indir**' i seçin.
 
 ### <a name="delete-a-model"></a>Modeli silme
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **modeller** düğümünü genişletin.
-1. Silmek istediğiniz modele sağ tıklayın ve **modeli kaldır** ' ı seçin.
+1. Silmek istediğiniz modele sağ tıklayın ve **modeli kaldır**' ı seçin.
 
 ## <a name="endpoints"></a>Uç Noktalar
 
@@ -393,7 +393,7 @@ Daha fazla bilgi için bkz. [Web hizmeti uç noktaları](concept-azure-machine-l
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanı düğümünü genişletin.
-1. **Uç noktalar** düğümüne sağ tıklayın ve **Hizmeti Dağıt** ' ı seçin.
+1. **Uç noktalar** düğümüne sağ tıklayın ve **Hizmeti Dağıt**' ı seçin.
 1. İsteminde:
     1. Zaten kayıtlı bir model veya yerel model dosyası kullanmak isteyip istemediğinizi seçin.
     1. Modelinizi seçin
@@ -401,17 +401,17 @@ Daha fazla bilgi için bkz. [Web hizmeti uç noktaları](concept-azure-machine-l
     1. Modelinize bir ad verin.
     1. Model Puanlama yaparken çalıştırılacak betiği sağlayın.
     1. Bir Conda Dependencies dosyası sağlayın.
-    1. Dağıtımınız için bir yapılandırma dosyası düzenleyicide görüntülenir. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
+    1. Dağıtımınız için bir yapılandırma dosyası düzenleyicide görüntülenir. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
 
 > [!NOTE]
-> Alternatif olarak, *modeller* düğümünde kayıtlı bir modele sağ tıklayıp **hizmet dağıtımı kayıtlı modelden** ' yi seçebilirsiniz.
+> Alternatif olarak, *modeller* düğümünde kayıtlı bir modele sağ tıklayıp **hizmet dağıtımı kayıtlı modelden**' yi seçebilirsiniz.
 
 ### <a name="delete-deployments"></a>Dağıtımları silme
 
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **uç noktalar** düğümünü genişletin.
-1. Kaldırmak istediğiniz dağıtıma sağ tıklayın ve **hizmeti Kaldır** ' ı seçin.
-1. Hizmeti kaldırmak istediğinizi onaylayan bir istem belirir. **Tamam** 'ı seçin.
+1. Kaldırmak istediğiniz dağıtıma sağ tıklayın ve **hizmeti Kaldır**' ı seçin.
+1. Hizmeti kaldırmak istediğinizi onaylayan bir istem belirir. **Tamam**'ı seçin.
 
 ### <a name="manage-deployments"></a>Dağıtımları yönetme
 
@@ -420,9 +420,9 @@ Dağıtımları oluşturmaya ve silmeye ek olarak, dağıtımla ilişkili ayarla
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin.
 1. Çalışma alanınızın içindeki **uç noktalar** düğümünü genişletin.
 1. Yönetmek istediğiniz dağıtıma sağ tıklayın:
-    - Ayarları düzenlemek için **hizmeti Düzenle** ' yi seçin.
-        - Dağıtımınız için bir yapılandırma dosyası düzenleyicide görüntülenir. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın ( **> komut paletini görüntüleyin** ) ve **Azure ml: Kaydet ve devam et** yazın.
-    - Dağıtım yapılandırma ayarlarını görüntülemek için **hizmet özelliklerini görüntüle** ' yi seçin.
+    - Ayarları düzenlemek için **hizmeti Düzenle**' yi seçin.
+        - Dağıtımınız için bir yapılandırma dosyası düzenleyicide görüntülenir. Yapılandırmanızı karşılıyoruz, **Kaydet** ' i seçin veya vs Code komut paleti ' ni açın (**> komut paletini görüntüleyin**) ve **Azure ml: Kaydet ve devam et** yazın.
+    - Dağıtım yapılandırma ayarlarını görüntülemek için **hizmet özelliklerini görüntüle**' yi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,15 +6,15 @@ keywords: kodlama; kodlayıcılar; medya
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/31/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 3532032f8fd3ac6e673d3913fd13f7f83ae7759e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88de41ae62e3a81fdb51981afe42135649bf34b4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295368"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734319"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Doğrulanan şirket içi canlı akış kodlayıcıları
 
@@ -22,7 +22,7 @@ ms.locfileid: "89295368"
 
 Azure Media Services, canlı bir [olay](/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Canlı olay, canlı giriş akışlarını iki şekilde alır.
 
-* Şirket içi bir Live Encoder, Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilmemiş canlı olayına çoklu bit hızlı bir RTMP veya Kesintisiz Akış (parçalanmış MP4) akışı gönderir. Alınan akışlar, daha fazla işlem yapmadan canlı olayları geçer. Bu yönteme **doğrudan geçiş**adı verilir. Canlı kodlayıcının, istemciye Uyarlamalı bit hızında akışa izin vermek için tek bit hızlı bir akış yerine çoklu bit hızına sahip akışlar göndermesini öneririz. 
+* Şirket içi bir Live Encoder, Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilmemiş canlı olayına çoklu bit hızlı bir RTMP veya Kesintisiz Akış (parçalanmış MP4) akışı gönderir. Alınan akışlar, daha fazla işlem yapmadan canlı olayları geçer. Bu yönteme **doğrudan geçiş** adı verilir. Canlı kodlayıcının, istemciye Uyarlamalı bit hızında akışa izin vermek için tek bit hızlı bir akış yerine çoklu bit hızına sahip akışlar göndermesini öneririz. 
 
     Geçişli canlı etkinlik için Multi-bitücretler akışları kullanıyorsanız, kayıttan yürütme tarafında beklenmeyen bir davranışın olmaması için video GOP boyutu ve farklı bit hızlarındaki video parçaları eşitlenmelidir.
 
@@ -50,6 +50,7 @@ RTMPS üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarların
 > RTMPS protokollerini kullanırken kodlayıcılar TLS 1,2 ' i desteklemelidir.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Antix dijital](http://www.antixdigital.com/) StreamZ Live (daha önce Imagine Communication SelenioFlex Live)
 - [BlackICE mini ve ATEM mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambrıa canlı 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Elete canlı (sürüm 2.14.15 ve üzeri)
@@ -78,11 +79,11 @@ Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçala
 > Kodlayıcılar, HTTPS protokollerini kullanırken TLS 1,2 ' i desteklemelidir.
 
 - Ateme TITAN Live
+- [Antix dijital](http://www.antixdigital.com/) StreamZ Live (daha önce Imagine Communication SelenioFlex Live)
 - Cisco Digital Media Encoder 2200
 - Dinamik kullanım (TLS 1,2 gereksinimi nedeniyle sürüm 2.14.15 ve üzeri)
 - Envivio 4Caster C4 Gen III 
 - [FFmpeg](https://www.ffmpeg.org)
-- Imagine Communications Selenıo MCP3
 - Media Excel Hero Live ve Hero 4K (UHD/HEVC)
 
 > [!TIP]

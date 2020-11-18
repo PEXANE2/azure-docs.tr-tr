@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408931"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701057"
 ---
 # <a name="security-control-v2-data-protection"></a>Güvenlik denetimi v2: veri koruma
 
@@ -34,9 +34,9 @@ Azure SQL veritabanlarında depolanan bilgilerin sınıflandırmasına ve etiket
 
 - [Azure SQL veri bulmayı uygulama](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -50,19 +50,19 @@ Azure SQL veritabanlarında depolanan bilgilerin sınıflandırmasına ve etiket
 |--|--|--|--|
 | DP-2 | 13,2, 2,10 | SC-7, AC-4 |
 
-Azure rol tabanlı Access Control (Azure RBAC), ağ tabanlı erişim denetimleri ve Azure hizmetlerinde belirli denetimleri (SQL ve diğer veritabanlarında şifreleme gibi) kullanarak erişimi kısıtlayarak hassas verileri koruyun. 
+Azure rol tabanlı erişim denetimi (Azure RBAC), ağ tabanlı erişim denetimleri ve Azure hizmetlerinde belirli denetimler (SQL ve diğer veritabanlarında şifreleme gibi) kullanarak erişimi kısıtlayarak hassas verileri koruyun. 
 
 Tutarlı erişim denetimi sağlamak için, tüm erişim denetimi türleri kurumsal segmentasyon stratejinize hizalanmalıdır. Kurumsal segmentasyon stratejisi Ayrıca hassas veya iş açısından kritik veri ve sistemlerinin konumu ile de bilgilendirilir.
 
 Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri içeriklerini müşteri veri kaybına ve pozlamaya karşı hassas ve koruyucuları olarak değerlendirir. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için, Microsoft bazı varsayılan veri koruma denetimleri ve yeteneklerini uygulamıştır.
 
-- [Azure rol tabanlı Access Control (RBAC)](../../role-based-access-control/overview.md)
+- [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Azure 'da müşteri veri korumasını anlama](../fundamentals/protection-customer-data.md)
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -88,9 +88,9 @@ Veri kaybı önleme (DLP) uyumluluğu için gerekliyse, bir ana bilgisayar taban
 
 - [Azure depolama ATP 'yi etkinleştirme](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Azure, varsayılan olarak Azure veri merkezleri arasında aktarım halindeki ver
 
 - [Yoldaki Azure verileri için çift şifreleme](../fundamentals/double-encryption.md#data-in-transit)
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -146,9 +146,9 @@ Azure, bekleyen veriler için varsayılan olarak şifreleme sağlar. Son derece 
 
 - [Azure 'da Rest çift Şifrelemeli veriler](../fundamentals/double-encryption.md#data-at-rest)
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

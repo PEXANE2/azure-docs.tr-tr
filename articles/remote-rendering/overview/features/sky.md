@@ -6,19 +6,19 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a193fdf82ed5e9a785c6c01db4931fb05e9aaac7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 58c07654c174f5b94512574cb4c279d35897dc71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205753"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701951"
 ---
 # <a name="sky-reflections"></a>Gökyüzü yansımaları
 
 Azure uzaktan Işlemede, nesneleri gerçekçi bir şekilde hafif bir şekilde açmaya yönelik bir gök dokusu kullanılır. Genişletilmiş gerçeklik uygulamaları için bu doku, nesnelerin ikna edici görünmesini sağlamak için gerçek dünyaya benzer olmalıdır. Bu makalede, gök dokusunun nasıl değiştirileceği açıklanır.
 
 > [!NOTE]
-> Gök dokusunu de *ortam Haritası*olarak adlandırılır. Bu terimler birbirinin yerine kullanılır.
+> Gök dokusunu de *ortam Haritası* olarak adlandırılır. Bu terimler birbirinin yerine kullanılır.
 
 ## <a name="object-lighting"></a>Nesne aydınlatma
 
@@ -119,7 +119,7 @@ Bir 2B dokusunu ortam haritası olarak kullanırken, görüntünün [küresel ko
 
 Azure uzaktan Işleme, her zaman kullanılabilir olan birkaç yerleşik ortam haritası sağlar. Tüm yerleşik ortam haritaları cubemaps.
 
-|Tanımlayıcı                         | Açıklama                                              | Göstermektedir                                                      |
+|Tanımlayıcı                         | Description                                              | Göstermektedir                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
 |builtin://Autoshop                 | Çeşitli Stripe ışıkları, parlak kapılı taban aydınlatma    | ![Bir nesneyi aydınlatmak için kullanılan Oto Shop ufuk kutusu](media/autoshop.png)
 |builtin://BoilerRoom               | Parlak kapılı ışık ayarı, birden çok pencere ışıkları      | ![BoilerRoom ufuk kutusu, bir nesneyi aydınlatmak için kullanılır](media/boiler-room.png)
@@ -146,4 +146,3 @@ Azure uzaktan Işleme, her zaman kullanılabilir olan birkaç yerleşik ortam ha
 * [Işıklar](../../overview/features/lights.md)
 * [Malzemeler](../../concepts/materials.md)
 * [Dokular](../../concepts/textures.md)
-* [TexConv komut satırı aracı](../../resources/tools/tex-conv.md)

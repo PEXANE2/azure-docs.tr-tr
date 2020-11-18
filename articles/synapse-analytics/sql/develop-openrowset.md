@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337755"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701764"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak OPENROWSET kullanma
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -156,7 +156,7 @@ WıTH yan tümcesi, dosyalardan okumak istediğiniz sütunları belirtmenize ola
     > Parquet dosyalarındaki sütun adları büyük/küçük harfe duyarlıdır. Parquet dosyasında sütun adından büyük küçük harfe sahip sütun adı belirtirseniz, bu sütun için NULL değerler döndürülür.
 
 
-çıkış sütununun adı column_name. Sağlanmışsa, bu ad kaynak dosyadaki sütun adını geçersiz kılar.
+çıkış sütununun adı column_name. Sağlanmışsa, bu ad kaynak dosyada sütun adını ve varsa JSON yolunda belirtilen sütun adını geçersiz kılar. Json_path sağlanmazsa, otomatik olarak ' $ .column_name ' olarak eklenir. Davranış için json_path bağımsız değişkenini denetleyin.
 
 column_type = çıkış sütunu için veri türü. Örtük veri türü dönüştürmesi burada gerçekleşmeyecektir.
 
@@ -171,11 +171,16 @@ WITH (
 )
 ```
 
+json_path = sütuna veya iç içe özelliğe [JSON yol ifadesi](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) . Varsayılan [yol modu](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) LAX 'tir.
+
+> [!NOTE]
+> Belirtilen yol yoksa, katı modda sorgu hata vererek başarısız olur. LAX modunda sorgu başarılı olur ve JSON yolu ifadesi NULL olarak değerlendirilir.
+
 **\<bulk_options>**
 
 FIELDSONLANDıRıCı = ' field_terminator '
 
-Kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı virgüldür (" **,** ").
+Kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı virgüldür ("**,**").
 
 ROWSONLANDıRıCı = ' row_terminator ' '
 
@@ -273,7 +278,7 @@ Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdak
 | INT32 |INT (8, false) |tinyint |
 | INT32 |INT (16, false) |int |
 | INT32 |INT (32, false) |bigint |
-| INT32 |DATE |date |
+| INT32 |DATE |tarih |
 | INT32 |KATEGORI |decimal |
 | INT32 |SAAT (MILIMETRE)|time |
 | INT64 |INT (64, true) |bigint |
@@ -359,6 +364,32 @@ WITH (
     [stateName] VARCHAR (50),
     [population] bigint
 ) AS [r]
+```
+
+### <a name="specify-columns-using-json-paths"></a>JSON yollarını kullanarak sütunları belirtme
+
+Aşağıdaki örnek, WıTH yan tümcesinde [JSON yol ifadelerini](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) nasıl kullanabileceğinizi gösterir ve katı ve LAX yol modları arasındaki farkı gösterir: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: babd40e0e3a3b7a254a8410313c5d4e3bb2832f0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687141"
+ms.locfileid: "94701866"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Java kod örnekleri
 
@@ -47,5 +47,5 @@ Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](https://docs.micro
 
 | Örnekler | Description | 
 |---------|-------------|
-| [hızlı başlangıç](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/Quickstart) | Hızlı başlangıç için kaynak kodu [: arama dizini oluşturun](search-get-started-javascript.md). Bu örnek REST API 'Lerini çağırır. |
+| [hızlı başlangıç](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/quickstart) | Hızlı başlangıç için kaynak kodu [: Java 'da bir arama dizini oluşturun](search-get-started-java.md). Bu örnek REST API 'Lerini çağırır. |
 | [Search-Java-Indexer-demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-indexer-demo) | Java 'da bir Azure Cosmos DB Dizin Oluşturucu gösterir. Bu örnek REST API 'Lerini çağırır. |

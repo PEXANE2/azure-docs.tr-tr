@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6dd64ae8b7b7307d7dcd510d1fdb877365c6f36
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675962"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701849"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Hızlı başlangıç: eski Microsoft. Azure. Search ile v10 arasındaki istemci kitaplığını kullanarak bir arama dizini oluşturma
 
@@ -33,7 +33,7 @@ Bu makalede, uygulamasının nasıl oluşturulacağı açıklanmaktadır. Ayrıc
 > [!NOTE]
 > Bu makaledeki tanıtım kodu, basitlik için Azure Bilişsel Arama sürüm 10 .NET SDK 'sının zaman uyumlu yöntemlerini kullanır. Ancak, üretim senaryolarında bunları ölçeklenebilir ve hızlı bir şekilde korumak için kendi uygulamalarınızda zaman uyumsuz yöntemleri kullanmanızı öneririz. Örneğin, ve `CreateAsync` yerine ve kullanabilirsiniz `DeleteAsync` `Create` `Delete` .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -51,11 +51,11 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-2. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
-![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -69,9 +69,9 @@ Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygu
 
 Bu proje için NuGet paketinin sürüm 10 ' u `Microsoft.Azure.Search` ve en son `Microsoft.Extensions.Configuration.Json` NuGet paketini kullanın.
 
-1. **Araçlar**  >  **NuGet Paket Yöneticisi** ' nde **çözüm için NuGet Paketlerini Yönet...** seçeneğini belirleyin. 
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**' nde **çözüm için NuGet Paketlerini Yönet...** seçeneğini belirleyin. 
 
-1. **Gözat** ’a tıklayın.
+1. **Gözat**’a tıklayın.
 
 1. `Microsoft.Azure.Search`Sürüm 10 ' u arayın ve seçin.
 
@@ -86,9 +86,9 @@ Bu proje için NuGet paketinin sürüm 10 ' u `Microsoft.Azure.Search` ve en son
 
 1. Yeni öğe Ekle ' de, "JSON" sözcüğünü, JSON ile ilgili öğe türlerinin bir listesini döndürecek şekilde aratın.
 
-1. **JSON dosyası** seçin, "appsettings.jsüzerinde" dosyasını adlandırın ve **Ekle** ' ye tıklayın. 
+1. **JSON dosyası** seçin, "appsettings.jsüzerinde" dosyasını adlandırın ve **Ekle**' ye tıklayın. 
 
-1. Dosyayı çıkış dizininize ekleyin. appsettings.jsüzerinde sağ tıklayın ve **Özellikler** ' i seçin. **Çıkış Dizinine Kopyala** ' da, **daha yeniyse kopyala** ' yı seçin.
+1. Dosyayı çıkış dizininize ekleyin. appsettings.jsüzerinde sağ tıklayın ve **Özellikler**' i seçin. **Çıkış Dizinine Kopyala**' da, **daha yeniyse kopyala**' yı seçin.
 
 1. Aşağıdaki JSON 'ı yeni JSON dosyanıza kopyalayın. 
 

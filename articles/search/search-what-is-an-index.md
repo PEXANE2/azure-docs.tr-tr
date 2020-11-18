@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932891"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701142"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama temel arama dizini oluşturma
 
 Azure Bilişsel Arama 'de, *arama dizini* tam metin ve filtrelenmiş sorgular için kullanılan aranabilir içeriği depolar. Bir dizin, bir şema tarafından tanımlanır ve ikinci bir adım olarak verileri içeri aktarma ile hizmete kaydedilir. 
 
-Dizinler *belgeleri*içerir. Kavramsal olarak, bir belge, dizininizdeki aranabilir verilerin tek bir birimidir. Bir perakendeciden her ürün için bir belge, bir haber kuruluşunda her bir makale için bir belge olabilir ve bu şekilde devam eder. Bu kavramları daha tanıdık veritabanı eşdeğerlerine eşleme: bir *arama dizini* bir *tabloya*karşılık gelir ve *Belgeler* bir tablodaki *satırlara* kabaca eşdeğerdir.
+Dizinler *belgeleri* içerir. Kavramsal olarak, bir belge, dizininizdeki aranabilir verilerin tek bir birimidir. Bir perakendeciden her ürün için bir belge, bir haber kuruluşunda her bir makale için bir belge olabilir ve bu şekilde devam eder. Bu kavramları daha tanıdık veritabanı eşdeğerlerine eşleme: bir *arama dizini* bir *tabloya* karşılık gelir ve *Belgeler* bir tablodaki *satırlara* kabaca eşdeğerdir.
 
 Bir dizinin fiziksel yapısı, şema tarafından belirlenir ve "aranabilir" olarak işaretlenen alanlar, bu alan için oluşturulan ters bir dizin ile sonuçlanır. 
 
@@ -43,7 +43,7 @@ Son dizin tasarımına ulaşan yinelemeli bir işlemdir. İlk dizini oluşturmak
 
 1. Dizindeki her bir arama belgesini benzersiz bir şekilde tanımlamak için kullanılan bir ad ve anahtar belirtin. Anahtar zorunludur ve Edm. String türünde olmalıdır. İçeri aktarma sırasında, kaynak verilerde bulunan benzersiz bir alanı bu alana eşlemeyi planlamanız gerekir. 
 
-   Portal size `id` anahtar için bir alan sağlar. Varsayılanı geçersiz kılmak için `id` Yeni bir alan (örneğin, adlı yeni bir alan tanımı `HotelId` ) oluşturun ve sonra **anahtar**içinde seçin.
+   Portal size `id` anahtar için bir alan sağlar. Varsayılanı geçersiz kılmak için `id` Yeni bir alan (örneğin, adlı yeni bir alan tanımı `HotelId` ) oluşturun ve sonra **anahtar** içinde seçin.
 
    ![Gerekli özellikleri doldur](media/search-what-is-an-index//field-attributes.png "Gerekli özellikleri doldur")
 
@@ -59,7 +59,7 @@ Son dizin tasarımına ulaşan yinelemeli bir işlemdir. İlk dizini oluşturmak
 
    ![Öznitelikleri veri türüne göre gösteren Dizin sayfası ekle](media/search-what-is-an-index//field-definitions.png "Öznitelikleri veri türüne göre gösteren Dizin sayfası ekle")
 
-1. [Get Index (REST API)](/rest/api/searchservice/get-index) ve [Postman](search-get-started-postman.md)gibi bir Web testi aracı kullanarak Dizin şemasını indirin. Artık, kod için uyarlayabileceğiniz dizinin bir JSON gösterimine sahipsiniz.
+1. [Get Index (REST API)](/rest/api/searchservice/get-index) ve [Postman](search-get-started-rest.md)gibi bir Web testi aracı kullanarak Dizin şemasını indirin. Artık, kod için uyarlayabileceğiniz dizinin bir JSON gösterimine sahipsiniz.
 
 1. [Dizininizi verilerle yükleyin](search-what-is-data-import.md). Azure Bilişsel Arama JSON belgelerini kabul eder. Verilerinizi programlı bir şekilde yüklemek için, istek yükünde JSON belgeleriyle Postman kullanabilirsiniz. Verileriniz JSON olarak kolayca ifade edideğilse, bu adım en yoğun işgücü olacaktır. 
 
@@ -70,7 +70,7 @@ Son dizin tasarımına ulaşan yinelemeli bir işlemdir. İlk dizini oluşturmak
 Geliştirme sırasında, sık sık yeniden deryi planlayın. Hizmette fiziksel yapılar oluşturulduğundan, var olan bir alan tanımında çoğu değişiklik için [dizinleri bırakma ve](search-howto-reindex.md) yeniden oluşturma gereklidir. Yeniden oluşturma işlemini daha hızlı hale getirmek için verilerinizin bir alt kümesiyle çalışmayı düşünebilirsiniz. 
 
 > [!Tip]
-> Portal yaklaşımı yerine kod, dizin tasarımı ve veri içeri aktarma ile aynı anda çalışmak için önerilir. Alternatif olarak, [Postman ve REST API](search-get-started-postman.md) gibi araçlar, geliştirme projeleri hala erken aşamalarındayken kavram kanıtı testi için yararlıdır. Bir istek gövdesinde Dizin tanımında artımlı değişiklikler yapabilir ve sonra güncelleştirilmiş bir şemayı kullanarak bir dizini yeniden oluşturmak için isteği hizmetinize gönderebilirsiniz.
+> Portal yaklaşımı yerine kod, dizin tasarımı ve veri içeri aktarma ile aynı anda çalışmak için önerilir. Alternatif olarak, [Postman ve Visual Studio Code](search-get-started-rest.md) gibi araçlar, geliştirme projeleri hala erken aşamalarındayken kavram kanıtı testi için yararlıdır. Bir istek gövdesinde Dizin tanımında artımlı değişiklikler yapabilir ve sonra güncelleştirilmiş bir şemayı kullanarak bir dizini yeniden oluşturmak için isteği hizmetinize gönderebilirsiniz.
 
 ## <a name="index-schema"></a>Dizin şeması
 
@@ -169,7 +169,7 @@ Alanlar bir ada, depolanan verileri sınıflandıran bir türe ve alanın nasıl
 
 ### <a name="data-types"></a>Veri türleri
 
-| Tür | Açıklama |
+| Tür | Description |
 |------|-------------|
 | Edm.String |İsteğe bağlı olarak tam metin araması için simgeleştirilmiş olabilecek metin (sözcük ayırma, sözcük kökü oluşturma vb.). |
 | Collection(Edm.String) |Tam metin araması için isteğe bağlı olarak belirteç haline getirilebilen dize listesi. Bir koleksiyondaki öğelerin sayısında teorik bir üst sınır yoktur ancak yük boyutundaki 16 MB'lık üst sınır, koleksiyonlar için geçerlidir. |
@@ -238,7 +238,7 @@ Varsayılan bir Puanlama profili, bir sonuç kümesindeki her öğe için bir ar
 
 Bir dizinin boyutu, karşıya yüklediğiniz belgelerin boyutuna göre belirlenir ve öneri araçları dahil edilip edilmeyeceğini ve ayrı alanlarda öznitelikleri nasıl ayarlayacağınıza ilişkin Dizin yapılandırması vardır. 
 
-Aşağıdaki ekran görüntüsünde, çeşitli öznitelik birleşimlerinden kaynaklanan dizin depolama desenleri gösterilmektedir. Dizin, verileri Içeri aktarma Sihirbazı 'nı kullanarak kolayca oluşturabileceğiniz **gerçek emlak örnek dizinine**dayalıdır. Dizin şemaları gösterilmese de, dizin adına göre öznitelikleri çıkarsyükleyebilirsiniz. Örneğin, *reatastate ile aranabilir* Dizin "aranabilir" özniteliğine sahiptir ve başka hiçbir şey yoktur, *reatastate-alınabilir* Dizin, "alınabilir" özniteliği seçilir ve başka hiçbir şey yapmaz.
+Aşağıdaki ekran görüntüsünde, çeşitli öznitelik birleşimlerinden kaynaklanan dizin depolama desenleri gösterilmektedir. Dizin, verileri Içeri aktarma Sihirbazı 'nı kullanarak kolayca oluşturabileceğiniz **gerçek emlak örnek dizinine** dayalıdır. Dizin şemaları gösterilmese de, dizin adına göre öznitelikleri çıkarsyükleyebilirsiniz. Örneğin, *reatastate ile aranabilir* Dizin "aranabilir" özniteliğine sahiptir ve başka hiçbir şey yoktur, *reatastate-alınabilir* Dizin, "alınabilir" özniteliği seçilir ve başka hiçbir şey yapmaz.
 
 ![Öznitelik seçimine dayalı Dizin boyutu](./media/search-what-is-an-index/realestate-index-size.png "Öznitelik seçimine dayalı Dizin boyutu")
 

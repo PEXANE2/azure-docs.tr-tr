@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f950cb63b5083a85ab5420434abdd9a720115b1a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76119627"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734557"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure 'da iç içe sanallaştırmayı kullanarak hatalı bir Azure VM sorunlarını giderme
 
@@ -52,7 +52,7 @@ Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama
 
 7.  **Özellikler** bölümünde **İleri ' yi** seçin.
 
-8.  Kullanılabilir bir sanal anahtar varsa, bunu seçin. Aksi takdirde **İleri ' yi**seçin.
+8.  Kullanılabilir bir sanal anahtar varsa, bunu seçin. Aksi takdirde **İleri ' yi** seçin.
 
 9.  **Geçiş** bölümünde **İleri** ' yi seçin.
 
@@ -60,7 +60,7 @@ Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama
 
 11. Gerekirse sunucuyu otomatik olarak yeniden başlatmak için kutuyu işaretleyin.
 
-12. **Yükle**'yi seçin.
+12. **Yükle**’yi seçin.
 
 13. Sunucunun Hyper-V rolünü yüklemesine izin verin. Bu işlem birkaç dakika sürer ve sunucu otomatik olarak yeniden başlatılır.
 
@@ -70,9 +70,9 @@ Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama
 
 2.  Kurtarma sanal makinesine uzak masaüstü.
 
-3.  Disk Yönetimi 'ni (Diskmgmt. msc) açın. Hatalı VM diskinin **çevrimdışı**olarak ayarlandığından emin olun.
+3.  Disk Yönetimi 'ni (Diskmgmt. msc) açın. Hatalı VM diskinin **çevrimdışı** olarak ayarlandığından emin olun.
 
-4.  Hyper-V Yöneticisi 'Ni açın: **Sunucu Yöneticisi**Içinde, **Hyper-v rolünü**seçin. Sunucuya sağ tıklayın ve ardından **Hyper-V Yöneticisi**' ni seçin.
+4.  Hyper-V Yöneticisi 'Ni açın: **Sunucu Yöneticisi** Içinde, **Hyper-v rolünü** seçin. Sunucuya sağ tıklayın ve ardından **Hyper-V Yöneticisi**' ni seçin.
 
 5.  Hyper-V Yöneticisi 'nde, kurtarma sanal makinesine sağ tıklayın ve ardından **Yeni**  >  **sanal makine**  >  **İleri**' yi seçin.
 
@@ -111,7 +111,7 @@ Hatalı VM 'yi bağlamak için, kurtarma VM 'sinin hatalı VM ile aynı depolama
 
 1.  VM 'yi yeniden çevrimiçi olduktan sonra, Hyper-V Yöneticisi 'nde VM 'yi kapatın.
 
-2.  [Onarılan işletim sistemi diskini çıkarın ve](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+2.  [Onarılan işletim sistemi diskini çıkarın ve](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk
 )çıkarın.
 3.  [VM tarafından kullanılan işletim sistemi diskini onarılan işletim sistemi diski Ile değiştirin](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
 ).

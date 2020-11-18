@@ -2,16 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 81dac90aa346d56e5a99f77b42e2637820008758
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6684aa74522779dbf5283d36eb3f19cb00f6f354
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319885"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94736884"
 ---
-|Ad<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Ad<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[FHıR için Azure API 'SI, bekleyen verileri şifrelemek için müşteri tarafından yönetilen bir anahtar (CMK) kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F051cba44-2429-45b9-9649-46cec11c7119) |Bu bir düzenleme veya uyum gereksinimidir FHıR için Azure API 'sinde depolanan verilerin geri kalanında şifrelemeyi denetlemek için müşteri tarafından yönetilen bir anahtar kullanın. Müşteri tarafından yönetilen anahtarlar Ayrıca, hizmet tarafından yönetilen anahtarlarla varsayılan olarak en üstüne bir şifreleme katmanı ekleyerek Çift şifreleme sağlar. |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_EnableByok_Audit.json) |
+|[FHıR için Azure API 'SI özel bağlantı kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1ee56206-5dd1-42ab-b02d-8aae8b1634ce) |FHIR için Azure API 'SI, en az bir onaylanan özel uç nokta bağlantısına sahip olmalıdır. Bir sanal ağdaki istemciler özel bağlantı noktası bağlantılarına sahip kaynaklara güvenli şekilde erişebilir. Daha fazla bilgi için şu adresi ziyaret edin: [https://aka.ms/fhir-privatelink](https://aka.ms/fhir-privatelink) . |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_PrivateLink_Audit.json) |
 |[CORS, her etki alanının FHıR için API 'nize erişmesine izin vermemelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fea8f8a-4169-495d-8307-30ec335f387d) |Çıkış noktaları arası kaynak paylaşımı (CORS), tüm etki alanlarının FHıR için API 'nize erişmesine izin vermemelidir. API 'nizi FHıR 'ye karşı korumak için tüm etki alanları için erişimi kaldırın ve bağlanmasına izin verilen etki alanlarını açık olarak tanımlayın. |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_RestrictCORSAccess_Audit.json) |

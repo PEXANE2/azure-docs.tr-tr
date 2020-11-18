@@ -1,6 +1,6 @@
 ---
-title: Kopyalama etkinliği kullanılarak SQL havuzuna veri yüklemeye yönelik hızlı başlangıç
-description: Azure SYNAPSE Analytics 'i kullanarak SQL havuzuna veri yükleme
+title: 'Hızlı başlangıç: kopyalama etkinliğini kullanarak adanmış SQL havuzuna veri yüklemek için'
+description: Adanmış SQL havuzuna veri yüklemek için Azure SYNAPSE Analytics 'teki işlem hattı kopyalama etkinliğini kullanın.
 services: synapse-analytics
 ms.author: jingwang
 author: linda33wj
@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 12b5530ccf154220b11f9d1286d629caf2209475
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 542fde3ac951bf60d999361dc114491515fb9528
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280949"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94735254"
 ---
-# <a name="quickstart-load-data-into-sql-pool-using-copy-activity"></a>Hızlı başlangıç: kopyalama etkinliğini kullanarak SQL havuzuna veri yükleme
+# <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>Hızlı başlangıç: kopyalama etkinliğini kullanarak adanmış SQL havuzuna veri yükleme
 
-Azure SYNAPSE Analytics, verilerinizi almak, dönüştürmek, modellemek ve analiz etmenize yardımcı olmak için çeşitli analiz motorları sunmaktadır. SQL havuzu, T-SQL tabanlı işlem ve depolama olanakları sunar. SYNAPSE çalışma alanınızda bir SQL havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve daha hızlı analitik Öngörüler için teslim edilebilir.
+Azure SYNAPSE Analytics, verilerinizi almak, dönüştürmek, modellemek ve analiz etmenize yardımcı olmak için çeşitli analiz motorları sunmaktadır. Adanmış bir SQL havuzu, T-SQL tabanlı işlem ve depolama olanakları sunar. SYNAPSE çalışma alanınızda adanmış bir SQL havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve daha hızlı analitik Öngörüler için teslim edilebilir.
 
-Bu hızlı *Başlangıçta Azure SQL veritabanından Azure SYNAPSE Analytics 'e nasıl veri yükleneceğini* öğreneceksiniz. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz. Ayrıca, benzer akış diğer kaynak ve havuz arasındaki veri kopyalama için de geçerlidir.
+Bu hızlı *Başlangıçta Azure SQL veritabanından Azure SYNAPSE Analytics 'e nasıl veri yükleneceğini* öğreneceksiniz. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz. Bu benzer akış, diğer kaynak ve havuzlar için de veri kopyalama için geçerlidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,13 +29,13 @@ Bu hızlı *Başlangıçta Azure SQL veritabanından Azure SYNAPSE Analytics 'e 
 * Azure SYNAPSE çalışma alanı: [hızlı başlangıç: bir Synapse çalışma alanı oluşturma](quickstart-create-workspace.md)yönergelerini takip eden Azure Portal kullanarak bir Synapse çalışma alanı oluşturun.
 * Azure SQL veritabanı: Bu öğretici, verileri Azure SQL veritabanı 'nda Adventure Works LT örnek veri kümesinden kopyalar. [Azure SQL veritabanı 'nda örnek veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki YÖNERGELERI Izleyerek SQL veritabanında bu örnek veritabanını oluşturabilirsiniz. Ya da benzer adımları izleyerek başka veri depoları da kullanabilirsiniz.
 * Azure depolama hesabı: Azure depolama, kopyalama işleminde *hazırlama* alanı olarak kullanılır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
-* Azure SYNAPSE Analytics: bir SQL havuzunu havuz veri deposu olarak kullanırsınız. Azure SYNAPSE Analytics örneğiniz yoksa, oluşturma adımları için bkz. [SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md) .
+* Azure SYNAPSE Analytics: adanmış bir SQL havuzunu havuz veri deposu olarak kullanırsınız. Azure SYNAPSE Analytics örneğiniz yoksa, oluşturma adımları için [Özel BIR SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md) konusuna bakın.
 
 ### <a name="navigate-to-the-synapse-studio"></a>SYNAPSE Studio 'ya gidin
 
-Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak için iki yol vardır:
+SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak için iki yol vardır:
 
-* [Azure Portal](https://ms.portal.azure.com/#home)SYNAPSE çalışma alanınızı açın. Genel Bakış bölümünün üst kısmında, **SYNAPSE Studio 'Yu Başlat** ' ı seçin.
+* [Azure Portal](https://ms.portal.azure.com/#home)SYNAPSE çalışma alanınızı açın. Başlarken ' in altındaki Open SYNAPSE Studio kartını **Aç** ' ı seçin.
 * [Azure SYNAPSE Analytics](https://web.azuresynapse.net/) 'i açın ve çalışma alanınızda oturum açın.
 
 Bu hızlı başlangıçta, örnek olarak "adftest2020" adlı çalışma alanını kullanırız. SYNAPSE Studio giriş sayfasına otomatik olarak gidecektir.
@@ -44,29 +44,29 @@ Bu hızlı başlangıçta, örnek olarak "adftest2020" adlı çalışma alanın�
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
-Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer hizmetlere tanımladığınız yerdir. Bu bölümde, aşağıdaki iki tür bağlı hizmeti oluşturacaksınız: Azure SQL veritabanı ve bağlı hizmetleri Azure Data Lake Storage 2..
+Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer hizmetlere tanımladığınız yerdir. Bu bölümde, aşağıdaki iki tür bağlı hizmeti oluşturacaksınız: Azure SQL veritabanı ve Azure Data Lake Storage 2. (ADLS 2.) bağlı hizmetleri.
 
 1. SYNAPSE Studio giriş sayfasında, sol gezinti bölmesinde **Yönet** sekmesini seçin.
 1. Dış bağlantılar altında bağlı hizmetler ' i seçin.
   
    ![Yeni bağlı hizmet oluşturma](media/doc-common-process/new-linked-service.png)
 
-1. Bağlı bir hizmet eklemek için **Yeni** ' yi seçin.
-1. Galeriden **Azure SQL veritabanı** ' nı seçin ve ardından **devam** ' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
+1. Bağlı bir hizmet eklemek için **Yeni**' yi seçin.
+1. Galeriden **Azure SQL veritabanı** ' nı seçin ve ardından **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
 
    ![Yeni Azure SQL veritabanı bağlı hizmeti oluştur](media/quickstart-copy-activity-load-sql-pool/new-azure-sql-linked-service.png)
 
-1. Yeni bağlı hizmet sayfasında, açılır listeden sunucu adınızı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur** ' u seçin.
+1. Yeni bağlı hizmet sayfasında, açılır listeden sunucu adınızı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur**' u seçin.
 
    ![Azure SQL veritabanı bağlı hizmetini yapılandırma](media/quickstart-copy-activity-load-sql-pool/azure-sql-linked-service-configuration.png)
 
-1. 3-4 arası adımları tekrarlayın, ancak Galeri yerine **Azure Data Lake Storage 2.** seçin. Yeni bağlı hizmet sayfasında, açılan listeden depolama hesabınızın adını seçin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur** ' u seçin. 
+1. 3-4 arası adımları tekrarlayın, ancak Galeri yerine **Azure Data Lake Storage 2.** seçin. Yeni bağlı hizmet sayfasında, açılan listeden depolama hesabınızın adını seçin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur**' u seçin. 
 
    ![Azure Data Lake Storage 2. Yapılandır](media/quickstart-copy-activity-load-sql-pool/adls-gen2-linked-service-configuration.png)
  
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, Azure SQL veritabanı 'ndan bir SQL havuzuna veri veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
+İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, Azure SQL veritabanı 'ndan adanmış bir SQL havuzuna veri veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
 
 1. **Tümleştirin** sekmesine gidin. Ardışık düzen üstbilgisinin yanındaki artı simgesini seçin ve işlem hattı ' nı seçin.
 
@@ -77,14 +77,14 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
    ![Kaynak veri kümesi oluşturma](media/quickstart-copy-activity-load-sql-pool/new-source-dataset.png)
 
-1. Veri depolama alanı olarak **Azure SQL veritabanı** ' nı seçin ve **devam** ' ı seçin.
+1. Veri depolama alanı olarak **Azure SQL veritabanı** ' nı seçin ve **devam**' ı seçin.
 1. *Özellikleri ayarla* bölmesinde, önceki adımda oluşturduğunuz Azure SQL veritabanı bağlı hizmetini seçin. 
 1. Tablo adı altında, aşağıdaki kopyalama etkinliğinde kullanılacak örnek bir tablo seçin. Bu hızlı başlangıçta, örnek olarak "SalesLT. Customer" tablosunu kullanırız. 
 
    ![Kaynak veri kümesi özelliklerini ayarlama](media/quickstart-copy-activity-load-sql-pool/source-dataset-properties.png)
 1. Bittiğinde **Tamam ' ı** seçin.
-1. Kopyalama etkinliği ' ni seçin ve havuz sekmesine gidin. Yeni bir havuz veri kümesi oluşturmak için **Yeni** ' yi seçin.
-1. Veri deponuzu olarak **SQL Analytics havuzu** ' nu seçin ve **devam** ' ı seçin.
+1. Kopyalama etkinliğini seçin ve havuz sekmesine gidin. Yeni bir havuz veri kümesi oluşturmak için **Yeni** ' yi seçin.
+1. Veri depolduğunuz **Azure SYNAPSE ADANMıŞ SQL havuzunu** seçin ve **devam**' ı seçin.
 1. **Özellikleri ayarla** bölmesinde, önceki ADıMDA oluşturduğunuz SQL Analytics havuzunu seçin. Var olan bir tabloya yazıyorsanız *tablo adı* bölümünde açılan listeden seçin. Aksi takdirde, "Düzenle" yi işaretleyin ve yeni tablo adınızı girin. Bittiğinde **Tamam ' ı** seçin.
 1. Havuz veri kümesi ayarları için tablo seçenek alanında **Otomatik oluştur** ' u etkinleştirin.
 
@@ -102,11 +102,11 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
 İşlem hattınızı yapılandırmayı tamamladıktan sonra, yapılarınızı yayımlamadan önce, her şeyin doğru olduğunu doğrulamak için bir hata ayıklama çalıştırması gerçekleştirebilirsiniz.
 
-1. İşlem hattında hata ayıklamak için araç çubuğunda **Hata Ayıkla** 'yı seçin. Pencerenin altındaki **Çıkış** sekmesinde işlem hattı çalıştırmasının durumu görüntülenir. 
+1. İşlem hattında hata ayıklamak için araç çubuğunda **Hata Ayıkla**'yı seçin. Pencerenin altındaki **Çıkış** sekmesinde işlem hattı çalıştırmasının durumu görüntülenir. 
 
    ![İşlem hattında hata ayıklama](media/quickstart-copy-activity-load-sql-pool/debugging-result.png)
 
-1. İşlem hattı başarıyla çalıştırıldığında, üstteki araç çubuğunda **Tümünü Yayımla** ' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) SYNAPSE Analytics hizmetinde yayımlar.
+1. İşlem hattı başarıyla çalıştırıldığında, üstteki araç çubuğunda **Tümünü Yayımla**' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) SYNAPSE Analytics hizmetinde yayımlar.
 1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirim iletilerini görmek için sağ üst köşedeki zil düğmesini seçin. 
 
 
@@ -114,15 +114,15 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
 Bu bölümde, önceki adımda yayınlanan işlem hattını el ile tetiklersiniz. 
 
-1. Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle** ' yi seçin. İşlem **hattı çalıştırma** sayfasında **Tamam** ' ı seçin.  
+1. Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. İşlem **hattı çalıştırma** sayfasında **Tamam**' ı seçin.  
 1. Sol kenar çubuğunda bulunan **izleyici** sekmesine gidin. El ile tetikleme tarafından tetiklenmiş bir işlem hattı çalıştırması görürsünüz. 
 1. İşlem hattı çalıştırması başarıyla tamamlandığında, etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki bağlantıyı seçin. Bu örnekte yalnızca bir etkinlik bulunur, bu nedenle listede yalnızca bir giriş görürsünüz. 
 1. Kopyalama işlemi hakkında daha fazla bilgi için **etkinlik adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. Kaynaktan havuza, veri işleme, karşılık gelen süre ile yürütme adımlarına ve kullanılan yapılandırmalara göre veri hacmi gibi ayrıntıları izleyebilirsiniz.
 
    ![Etkinlik ayrıntıları](media/quickstart-copy-activity-load-sql-pool/activity-details.png)
 
-1. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Listeyi yenilemek için **Yenile** ’yi seçin.
-1. Verilerinizin SQL havuzunda doğru yazıldığından emin olun.
+1. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin.
+1. Verilerinizin adanmış SQL havuzunda doğru yazıldığından emin olun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 6cd696bf0853b1e6bafc06f2e99b2808970fed25
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6bcdb4a48f71e28514229116c10bd25747b55616
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687106"
+ms.locfileid: "94701832"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure Bilişsel Arama için JavaScript kod örnekleri
 
@@ -38,7 +38,7 @@ Java için Azure SDK 'Sı, paket yükleme, istemci kurulumu ve sorun gidermeyi k
 | [Dizinleyiciler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  [Dizin oluşturucular](search-indexer-overview.md)oluşturma, güncelleştirme, alma, listeleme, sıfırlama ve silme işlemlerinin nasıl yapılacağını gösterir.|
 | [Beceri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   Bağlı Dizin oluşturucular olan ve dizin oluşturma sırasında AI tabanlı zenginleştirme gerçekleştiren [becerileri](cognitive-search-working-with-skillsets.md) oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir. |
 | [Eş anlamlı eşlemeler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | [Eş anlamlı haritalar](search-synonyms.md)oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir.  |
-| [Sorgular](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | Sorgular salt okunurdur. Bu örnek sorgu Microsoft tarafından barındırılan bir ortak dizine karşı yürütülür.  |
+| [Sorgular](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | Microsoft tarafından barındırılan salt okunurdur bir ortak dizine karşı sorgu yürütmeyi gösterir.  |
 
 ## <a name="typescript-samples"></a>TypeScript örnekleri
 
@@ -51,7 +51,7 @@ Ayrıca, SDK size kolaylık sağlaması için aşağıda listelenen TypeScript �
 | [Dizinleyiciler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  [Dizin oluşturucular](search-indexer-overview.md)oluşturma, güncelleştirme, alma, listeleme, sıfırlama ve silme işlemlerinin nasıl yapılacağını gösterir.|
 | [Beceri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   Bağlı Dizin oluşturucular olan ve dizin oluşturma sırasında AI tabanlı zenginleştirme gerçekleştiren [becerileri](cognitive-search-working-with-skillsets.md) oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir. |
 | [Eş anlamlı eşlemeler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | [Eş anlamlı haritalar](search-synonyms.md)oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir.  |
-| [Sorgular](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.js) | Microsoft tarafından barındırılan salt okunurdur bir ortak dizine karşı sorgu yürütmeyi gösterir.  |
+| [Sorgular](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | Microsoft tarafından barındırılan salt okunurdur bir ortak dizine karşı sorgu yürütmeyi gösterir.  |
 
 ## <a name="documentation-samples"></a>Belge örnekleri
 
@@ -59,7 +59,7 @@ Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](https://docs.micro
 
 | Örnekler | Description | 
 |---------|-------------|
-| [hızlı başlangıç](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/Quickstart) | Hızlı başlangıç için kaynak kodu [: JavaScript 'te bir arama dizini oluşturun](search-get-started-javascript.md).  |
+| [hızlı başlangıç](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | Hızlı başlangıç için kaynak kodu [: JavaScript 'te bir arama dizini oluşturun](search-get-started-javascript.md).  |
 
 ## <a name="standalone-samples"></a>Tek başına örnekler
 

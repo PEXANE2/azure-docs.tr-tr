@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ad5c73fee93d935ad050cea8feca2754649a61f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 476a2cf0d5886ffa677461a5a8156cdfa4a168a3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058514"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701796"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)]()
 > * [C#](./search-get-started-dotnet.md)
-> * [Postman (REST)](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
 > 
@@ -30,7 +30,7 @@ Bu makalede, PowerShell ve [azure BILIŞSEL arama REST API 'leri](/rest/api/sear
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 
@@ -46,7 +46,7 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -88,7 +88,7 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 
 Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir dizin bulunmalıdır. Bu adım, dizini tanımlar ve hizmete gönderir. [Create ındex REST API](/rest/api/searchservice/create-index) , bu adım için kullanılır.
 
-Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki alanlardan biri `Edm.String` belge kimliği için *anahtar* olarak atanmalıdır.
+Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin* yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki alanlardan biri `Edm.String` belge kimliği için *anahtar* olarak atanmalıdır.
 
 Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördüğünüz alan tanımlarına sahiptir. Bu, makalelerdeki diğer adımlarda kullanılan daha büyük bir [oteller dizininin](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) bir alt kümesidir. Alan tanımları, bu hızlı başlangıçta breçekimi için kırpılmış.
 
@@ -127,7 +127,7 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30"
     ```
 
-3. Sunucuda dizin oluşturmak için **$URL**, **$Headers**ve **$Body** ile komutu çalıştırın. 
+3. Sunucuda dizin oluşturmak için **$URL**, **$Headers** ve **$Body** ile komutu çalıştırın. 
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
@@ -277,7 +277,7 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30"
     ```
 
-1. **$URL**, **$Headers**ve **$Body** kullanarak, dosyaları oteller-hızlı başlangıç dizinine yüklemek için komutunu çalıştırın.
+1. **$URL**, **$Headers** ve **$Body** kullanarak, dosyaları oteller-hızlı başlangıç dizinine yüklemek için komutunu çalıştırın.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json

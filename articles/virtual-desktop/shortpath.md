@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: aee3f5602d0bd1ff12717d903d662ce4605de61d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683769"
+ms.locfileid: "94701798"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows sanal masaüstü RDP ShortPath (Önizleme)
 
@@ -176,7 +176,7 @@ Bağlantıların RDP ShortPath kullandığını doğrulamak için bağlantı ara
 Oturumun RDP Shortfılepath aktarımını kullandığını doğrulamak için:
 
 1. Windows sanal masaüstü istemcisi 'ni kullanarak VM 'nin masaüstüne bağlanın.
-2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulama ve hizmet günlükleri > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > işletimsel**
+2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulama ve hizmet günlükleri > microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV/operasyonel**
 3. RDP ShortPath aktarımının kullanıldığını anlamak için, olay KIMLIĞI 131 ' i arayın.
 
 ### <a name="using-log-analytics-to-verify-shortpath-connectivity"></a>ShortPath bağlantısını doğrulamak için Log Analytics kullanma

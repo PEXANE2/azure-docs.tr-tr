@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0bd2b295e5e4d4d5ea6e25869c8c109ff8bbbf38
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660772"
+ms.locfileid: "94701322"
 ---
 # <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
@@ -64,6 +64,10 @@ Sonuçlarla blob meta verileri döndürebilirsiniz.
 - .NET V12 SDK kullanıyorsanız [Blobnitelikleri](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) numaralandırması Için **meta veri** değerini belirtin.
 
 - .NET v11 SDK kullanıyorsanız, [Bloblistingdetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her blob döndürülen meta verileri içerir, bu nedenle blob meta verilerini almak için bu bağlamdaki **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
+
+### <a name="list-blob-versions-or-snapshots"></a>Blob sürümlerini veya anlık görüntülerini Listele
+
+Blob sürümlerini veya anlık görüntüleri .NET V12 istemci kitaplığı ile listelemek için **Sürüm** veya **anlık görüntü** alanıyla [blobstates](/dotnet/api/azure.storage.blobs.models.blobstates) parametresini belirtin. Sürümler ve anlık görüntüler en eskiden en yeniye listelenmiştir. Sürümleri listeleme hakkında daha fazla bilgi için bkz. [BLOB sürümlerini listeleme](versioning-enable.md#list-blob-versions).
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Düz liste ve hiyerarşik listeye karşı
 

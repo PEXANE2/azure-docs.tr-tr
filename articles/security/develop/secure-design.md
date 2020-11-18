@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e8eab3a1054541b1ef7fc6d2e65089f01f0df3c0
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ad3980db6348867e92664e314326d23b4274abcc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517164"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701577"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
 Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -217,7 +217,7 @@ Web uygulamaları geliştirmeye yönelik kimlik merkezli bir yaklaşım gelişti
 
 [En az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) kavramı, kullanıcılara, işlerini yapmak için ihtiyaç duydukları ve başka hiçbir şeyin daha fazla erişim ve denetim yapma anlamına gelir.
 
-Yazılım geliştiricisi etki alanı yöneticisi haklarına ihtiyaç duyuyor mu? Yönetim Yardımcısı 'nın kişisel bilgisayarlarındaki yönetim denetimlerine erişmesi gerekiyor mu? Yazılıma erişimin değerlendirilmesi farklı değildir. Kullanıcılara uygulamanızda farklı yetenekler ve yetki vermek için [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) kullanıyorsanız herkese her şeye erişim vermeyiz. Her rol için gerekli olan erişimi sınırlayarak, oluşan bir güvenlik sorunu riskini sınırlandırırsınız.
+Yazılım geliştiricisi etki alanı yöneticisi haklarına ihtiyaç duyuyor mu? Yönetim Yardımcısı 'nın kişisel bilgisayarlarındaki yönetim denetimlerine erişmesi gerekiyor mu? Yazılıma erişimin değerlendirilmesi farklı değildir. Kullanıcılara uygulamanızda farklı yetenekler ve yetkilendirme sağlamak için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) kullanıyorsanız herkese her şeye erişim vermeyiz. Her rol için gerekli olan erişimi sınırlayarak, oluşan bir güvenlik sorunu riskini sınırlandırırsınız.
 
 Uygulamanızın erişim desenlerinin tamamında [en az ayrıcalığı](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) zorladığından emin olun.
 

@@ -7,28 +7,34 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: e9d438349f3a080f52050f22a0f991140b3e6b4d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 11/17/2020
+ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699151"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738059"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için REST ve AI kullanma
 
-Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. İşlem hattı görüntüleri işleyebilse de, bu REST öğreticide, sorgularda, modellerle ve filtrelerinizde kullanabileceğiniz yeni alanlar oluşturmak için dil algılama ve doğal dil işleme uygulayarak metin üzerinde odaklanılır.
+Azure Blob depolamada yapılandırılmamış metin veya görüntüleriniz varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) , tam metin arama veya bilgi araştırma senaryoları için faydalı olan bloblardan yeni içerik oluşturabilir. İşlem hattı görüntüleri işleyebilse de, bu REST öğreticide, sorgularda, modellerle ve filtrelerinizde kullanabileceğiniz yeni alanlar oluşturmak için dil algılama ve doğal dil işleme uygulayarak metin üzerinde odaklanılır.
 
 Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [arama REST API 'leri](/rest/api/searchservice/) kullanılmaktadır:
 
 > [!div class="checklist"]
-> * Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
-> * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir işlem hattı tanımlayın.
-> * Çıktıyı depolamak için bir dizin tanımlayın (ham içerik ve ardışık düzen tarafından oluşturulan ad-değer çiftleri).
-> * Dönüşümleri ve Analizi başlatmak ve dizini oluşturmak ve yüklemek için işlem hattını yürütün.
+> * Hizmetleri ve Postman koleksiyonunu ayarlayın.
+> * Metin çıkaran, dili algılayan, varlıkları tanıyan ve anahtar tümceleri algılayan bir zenginleştirme işlem hattı oluşturun.
+> * Çıktıyı depolamak için bir dizin oluşturun (ham içerik ve ardışık düzen tarafından oluşturulan ad-değer çiftleri).
+> * Dönüştürme ve analiz yapmak ve dizini yüklemek için işlem hattını yürütün.
 > * Tam metin aramasını ve zengin sorgu söz dizimini kullanarak sonuçları keşfedebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
+
+## <a name="overview"></a>Genel Bakış
+
+Bu öğretici, bir veri kaynağı, dizin, Dizin Oluşturucu ve beceri oluşturmak için C# ve Azure Bilişsel Arama REST API 'Lerini kullanır. Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlar ve sonra varlıkları, anahtar ifadeleri ve içerik dosyalarındaki diğer metinleri ayıklamak için bunları bir beceri aracılığıyla çalıştırabilirsiniz.
+
+Bu beceri, Bilişsel Hizmetler API'si dayalı yerleşik becerileri kullanır. İşlem hattının adımları metin, anahtar ifade ayıklama ve varlık tanıma (kuruluşlar) üzerinde dil algılamayı içerir. Yeni bilgiler sorgularda, modellerle ve filtrelerinizde kullanabileceğiniz yeni alanlara depolanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,6 +50,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Bu [OneDrive klasörünü](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) açın ve sol üst köşedeki dosyaları bilgisayarınıza kopyalamak için **İndir** ' e tıklayın. 
 
 1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla**' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
+
+İsteğe bağlı olarak, bu öğretici için bir Postman koleksiyon dosyası olan kaynak kodunu da indirebilirsiniz. Kaynak kodu adresinde bulabilirsiniz [https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Tutorial) .
 
 ## <a name="1---create-services"></a>1-hizmet oluşturma
 
@@ -107,7 +115,7 @@ Bununla birlikte, Azure Bilişsel Arama, arka planda bilişsel hizmetlere bağla
 
 Azure Blob depolamada olduğu gibi, erişim anahtarını toplamak için biraz zaman ayırın. Ayrıca, istekleri raporlamaya başladığınızda, her bir isteğin kimliğini doğrulamak için kullanılan uç nokta ve yönetici API 'si anahtarını sağlamanız gerekir.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Bilişsel Arama yönelik bir yönetici API anahtarı ve URL 'SI alın
+### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir yönetici API-anahtarı ve URL 'SI kopyalama
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz olsaydı `https://mydemo.search.windows.net` , hizmet adınız olur `mydemo` .
 
@@ -131,7 +139,7 @@ Bu öğreticide kullanılan istek metotları **gönderi**, **PUT** ve **Get**. A
 
 ## <a name="3---create-the-pipeline"></a>3-işlem hattını oluşturma
 
-Azure Bilişsel Arama 'de, dizin oluşturma (veya veri alımı) sırasında AI işleme oluşur. İzlenecek yolun bu bölümü dört nesne oluşturur: veri kaynağı, Dizin tanımı, Beceri, Dizin Oluşturucu. 
+Azure Bilişsel Arama, dizin oluşturma (veya veri alımı) sırasında zenginleştirme oluşur. İzlenecek yolun bu bölümü dört nesne oluşturur: veri kaynağı, Dizin tanımı, Beceri, Dizin Oluşturucu. 
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
 
@@ -350,7 +358,7 @@ Bir [Dizin](/rest/api/searchservice/create-index) , içeriğinizin fiziksel ifad
 
     ```json
     {
-      "name":"cog-search-demo-idxr",    
+      "name":"cog-search-demo-idxr",
       "dataSourceName" : "cog-search-demo-ds",
       "targetIndexName" : "cog-search-demo-idx",
       "skillsetName" : "cog-search-demo-ss",

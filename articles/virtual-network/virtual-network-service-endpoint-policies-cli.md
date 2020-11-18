@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666798"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737396"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLı kullanarak sanal ağ hizmeti uç noktası ilkeleriyle Azure depolama hesaplarına veri alımını yönetme
 
@@ -37,11 +37,11 @@ Bu makalede şunları öğreneceksiniz:
 * Alt ağdan izin verilen depolama hesabına erişimi onaylayın.
 * Alt ağdan izin verilmeyen depolama hesabına erişimin reddedildiğini doğrulayın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.28 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli). 
+- Bu makale, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
@@ -66,7 +66,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Hizmet uç noktasını girin 
 
-Bu örnekte, alt ağ *özel*için *Microsoft. Storage* için bir hizmet uç noktası oluşturulur: 
+Bu örnekte, alt ağ *özel* için *Microsoft. Storage* için bir hizmet uç noktası oluşturulur: 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -79,7 +79,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Bir kaynak için ağ erişimini kısıtlama
 
-[Az Network NSG Create](/cli/azure/network/nsg)komutuyla bir ağ güvenlik grubu oluşturun. Aşağıdaki örnek, *Mynsgprivate*adlı bir ağ güvenlik grubu oluşturur.
+[Az Network NSG Create](/cli/azure/network/nsg)komutuyla bir ağ güvenlik grubu oluşturun. Aşağıdaki örnek, *Mynsgprivate* adlı bir ağ güvenlik grubu oluşturur.
 
 ```azurecli-interactive
 az network nsg create \
@@ -331,7 +331,7 @@ Azure dosya paylaşımından oluşturduğunuz dizine bağlayın. Aşağıdaki ko
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-`user@myVmPrivate:~$`İstemi alırsınız. Azure dosya paylaşımı, */mnt/myazurefileshare*öğesine başarıyla bağlandı.
+`user@myVmPrivate:~$`İstemi alırsınız. Azure dosya paylaşımı, */mnt/myazurefileshare* öğesine başarıyla bağlandı.
 
 ### <a name="confirm-access-is-denied-to-storage-account"></a>Depolama hesabına erişimin reddedildiğini onaylama
 

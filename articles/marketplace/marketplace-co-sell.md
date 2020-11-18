@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/13/2020
-ms.openlocfilehash: ac56aab233c9d07ea7e82a4eefc4918746e3bdbe
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/17/2020
+ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592524"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738535"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -30,7 +30,7 @@ Ortak satış programı, **fikri mülkiyet (IP) ile birlikte,** **Microsoft Tech
 
 **Azure IP ortak satışı incentivized** durumuna ulaşmak için bu ek Market avantajlarını elde eden teklifler:
 
-- Market hizmeti ücreti %20 ile %10 arasında azaltılır. Bu indirim, ticari Market aracılığıyla satılan IaaS veya SaaS teklifiniz için geçerlidir. Daha fazla bilgi için bkz. daha fazla ayrıntı için daha [az hizmet ücreti](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
+- Market hizmeti ücreti %20 ile %10 arasında azaltılır. Bu indirim, ticari Market aracılığıyla satılan IaaS veya SaaS teklifiniz için geçerlidir. Daha fazla bilgi için bkz. [ticari Market hizmet ücretleri](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees) hakkında daha fazla bilgi.
 - Bulut çözümü sağlayıcısı (CSP) iş ortakları, IaaS veya SaaS teklifinizi satmaya yönelik %10 bir teşvik alır. [Bulut çözümü sağlayıcısı PROGRAMıNDA](cloud-solution-providers.md)CSP programı hakkında daha fazla bilgi edinin.
 - Ticari Market aracılığıyla teklifinizin satışları, müşterilerin Azure tüketim taahhütlerine katkıda bulunur. Uygun müşteriler, Azure portal ' de teklifi **"Azure avantajı uygun"** olarak işaretlenmiş olarak görür. Daha ayrıntılı bilgi için bkz. [Azure tüketim taahhüt avantajı](azure-consumption-commitment-benefit.md).
 - **Azure IP ortak satış incentivized** veya **Business Applications ortak satış incentivized** durumu elde eden teklifler, storeronts 'de **"tercih edilen çözümler"** rozetini alacaktır. Rozet, belirli bir sektör dikey veya çözüm alanında müşteri ihtiyaçlarını ele almak için bir teklifin kalitesini, performansını ve özelliklerini yükseltir. [Microsoft AppSource ve Azure Market 'Te tercih edilen çözümler](preferred-solutions.md)hakkında daha fazla bilgi edinin.
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, Market ' te ortak satış sunma veya ortak satış incenti
 Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Ortağı Merkezi ' nde başlatın. Daha fazla ayrıntı için bkz. [Iş Ortağı Merkezi 'Nde ortak satış seçeneği](./partner-center-portal/commercial-marketplace-co-sell.md).
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-1. Sol bölmede, **ticari Market**  >  **genel bakış** ' ı seçin ve ardından ortak satış yapmak istediğiniz teklifi seçin.
+1. Sol bölmede, **ticari Market**  >  **genel bakış**' ı seçin ve ardından ortak satış yapmak istediğiniz teklifi seçin.
 
     > [!NOTE]
     > Ortak satış programına henüz yayımlanmamış yeni bir teklifle veya zaten yayınlanmış bir teklifle katılabilir.
@@ -63,20 +63,20 @@ Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Orta�
 
     :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Bu görüntü, Microsoft ile ortak satışın konumunu gösterir.":::
 
-1. Microsoft satıcılarına, **liste** bölümünde teklifinizin hızla sıralanmasını ve bulmasına yardımcı olacak temel liste ayrıntılarını sağlayın. ( *Gerekli: tüm alanlar.* )
+1. Microsoft satıcılarına, **liste** bölümünde teklifinizin hızla sıralanmasını ve bulmasına yardımcı olacak temel liste ayrıntılarını sağlayın. (*Gerekli: tüm alanlar.*)
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Bu görüntüde ortak Satış sekmesinin listeleme bölümü gösterilmektedir.":::  
 
-1. Teklifinizle ilgili ayrıntıları sağlayın ve **Belgeler** bölümündeki yardımcı malzemeleri yükleyin. Microsoft satıcıları, bu bilgileri teklifinizi önermek ve satmak için kullanacaktır. ( *Gerekli: müşteri tek sayfalayıcı ve müşteri sunum destesi.* )
+1. Teklifinizle ilgili ayrıntıları sağlayın ve **Belgeler** bölümündeki yardımcı malzemeleri yükleyin. Microsoft satıcıları, bu bilgileri teklifinizi önermek ve satmak için kullanacaktır. (*Gerekli: müşteri tek sayfalayıcı ve müşteri sunum destesi.*)
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Bu görüntüde ortak satış sekmesindeki belgeler bölümü gösterilmektedir.":::
 
-1. **Kişiler** bölümüne satış iletişim bilgilerini yükleyin. Microsoft satıcıları, teklifiniz hakkında ek bilgiler istemek için bu kişilere ulaşabilir. ( *Gerekli: teklifinizin kullanılabilir hale getirilme her coğrafya için bir kişi.* )
+1. **Kişiler** bölümüne satış iletişim bilgilerini yükleyin. Microsoft satıcıları, teklifiniz hakkında ek bilgiler istemek için bu kişilere ulaşabilir. (*Gerekli: teklifinizin kullanılabilir hale getirilme her coğrafya için bir kişi.*)
 
     :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Bu görüntüde ortak satış sekmesindeki kişiler bölümü gösterilir.":::
 
 1. Devam etmeden önce taslağı kaydedin.
-1. Teklifin tüm gerekli bölümlerini tamamladıktan sonra, bunu İnceleme ve yayınlama için gönderebilirsiniz. Sağ üst köşedeki **gözden geçir ve Yayımla** ' yı seçin. Teklif ayrıntılarını gözden geçirin ve **Yayımla** ' yı seçin.
+1. Teklifin tüm gerekli bölümlerini tamamladıktan sonra, bunu İnceleme ve yayınlama için gönderebilirsiniz. Sağ üst köşedeki **gözden geçir ve Yayımla**' yı seçin. Teklif ayrıntılarını gözden geçirin ve **Yayımla**' yı seçin.
 1. İstediğiniz [ortak satış durumu ölçütlerini](#co-sell-publishing-steps-and-requirements)karşıladıktan sonra, ortak satış için teklifinizi aday olarak değerlendirmek üzere aşağıdaki yönergeleri izleyin:
     1. **Bir Microsoft Iş ortağı Yöneticisi (ör. PDM) varsa:** yardım Için Iş ortağı yöneticinize ulaşın. Ortak satış için hazırlık süreci ve Azure IP ortak satışı veya Business Applications ortak satış incentivized (varsa) için aday işlem sürecinde size kılavuzluk eder.
 
