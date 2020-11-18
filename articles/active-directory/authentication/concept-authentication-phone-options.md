@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65c8baa101df5e24780e5e68b5a21b86985608a6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 39555c5b396e8a8fd3449331cd2fd68b96ad2087
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628127"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840007"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-telefon seçeneklerinde kimlik doğrulama yöntemleri
 
 Metin iletisini kullanarak doğrudan kimlik doğrulama için, [SMS tabanlı kimlik doğrulaması (Önizleme) için kullanıcıları yapılandırabilir ve etkinleştirebilirsiniz](howto-authentication-sms-signin.md). SMS tabanlı oturum açma, ön satır çalışanları için harika. SMS tabanlı oturum açma sayesinde, kullanıcıların uygulama ve hizmetlere erişmek için bir Kullanıcı adı ve parola bilmeleri gerekmez. Bunun yerine Kullanıcı kayıtlı cep telefonu numarasını girer, doğrulama kodu içeren bir kısa mesaj alır ve oturum açma arabirimine girer.
 
-Kullanıcılar ayrıca, Azure Multi-Factor Authentication veya self servis parola sıfırlama (SSPR) sırasında kullanılan ikincil kimlik doğrulama biçimi olarak bir cep telefonu veya ofis telefonu kullanarak kendilerini doğrulayabilirler.
+Kullanıcılar ayrıca, Azure AD Multi-Factor Authentication veya self servis parola sıfırlama (SSPR) sırasında kullanılan ikincil kimlik doğrulama biçimi olarak bir cep telefonu veya ofis telefonu kullanarak kendilerini doğrulayabilirler.
 
 Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber* biçiminde olması gerekir, örneğin *+ 1 4251234567*.
 
@@ -32,25 +32,25 @@ Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNu
 
 ## <a name="mobile-phone-verification"></a>Cep telefonu doğrulama
 
-Azure Multi-Factor Authentication veya SSPR için, kullanıcılar oturum açma arabirimine girmek üzere doğrulama kodu içeren bir kısa mesaj almayı seçebilir veya bir telefon araması alabilir.
+Azure AD Multi-Factor Authentication veya SSPR için, kullanıcılar oturum açma arabirimine girmek üzere doğrulama kodu içeren bir kısa mesaj almayı seçebilir veya bir telefon araması alabilir.
 
 Kullanıcılar cep telefonu numarasının dizinde görünmesini istemiyor, ancak parola sıfırlama için kullanmak istiyorsanız, Yöneticiler dizindeki telefon numarasını doldurmamalıdır. Bunun yerine, kullanıcılar, **kimlik doğrulama telefonu** özniteliğini, Birleşik güvenlik bilgileri kaydı aracılığıyla doldurmalıdır [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . Yöneticiler bu bilgileri kullanıcının profilinde görebilir, ancak başka bir yerde yayımlanmaz.
 
 :::image type="content" source="media/concept-authentication-methods/user-authentication-methods.png" alt-text="Bir telefon numarası doldurulmuş kimlik doğrulama yöntemlerini gösteren Azure portal ekran görüntüsü":::
 
-Microsoft, tutarlı SMS veya sesli tabanlı Azure Multi-Factor Authentication istem teslimini aynı numarayla garanti etmez. Kullanıcılarımıza ilişkin olarak, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için istediğiniz zaman kısa kodlar ekleyebilir veya kaldırabiliriz. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
+Microsoft, tutarlı SMS veya ses tabanlı Azure AD Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımıza ilişkin olarak, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için istediğiniz zaman kısa kodlar ekleyebilir veya kaldırabiliriz. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
 
 ### <a name="text-message-verification"></a>Kısa mesaj doğrulaması
 
-SSPR veya Azure Multi-Factor Authentication sırasında kısa mesaj doğrulamayla birlikte, bir doğrulama kodu içeren cep telefonu numarasına SMS gönderilir. Oturum açma işlemini gerçekleştirmek için, girilen doğrulama kodu oturum açma arabirimine girilir.
+SSPR veya Azure AD Multi-Factor Authentication sırasında kısa mesaj doğrulaması ile bir SMS, bir doğrulama kodu içeren cep telefonu numarasına gönderilir. Oturum açma işlemini gerçekleştirmek için, girilen doğrulama kodu oturum açma arabirimine girilir.
 
 ### <a name="phone-call-verification"></a>Telefon araması doğrulaması
 
-SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan kendi tuş takımında # ' a basması istenir.
+SSPR veya Azure AD Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan kendi tuş takımında # ' a basması istenir.
 
 ## <a name="office-phone-verification"></a>Office telefon doğrulaması
 
-SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan kendi tuş takımında # ' a basması istenir.
+SSPR veya Azure AD Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan kendi tuş takımında # ' a basması istenir.
 
 ## <a name="troubleshooting-phone-options"></a>Telefon seçenekleriyle ilgili sorunları giderme
 
@@ -75,11 +75,11 @@ Azure AD için telefon kimlik doğrulamasıyla ilgili sorunlar yaşıyorsanız, 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure Multi-Factor Authentication][tutorial-azure-mfa]öğreticisine bakın.
+Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]öğreticisine bakın.
 
 SSPR kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD self servis parola sıfırlamasının nasıl çalıştığı][concept-sspr].
 
-MFA kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
+MFA kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
 
 [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)kullanarak kimlik doğrulama yöntemlerini yapılandırma hakkında daha fazla bilgi edinin.
 

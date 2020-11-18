@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 026f45e715f6d442b27cdd0274f029a68330f7ee
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356595"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839837"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Parola korumasını Azure Active Directory kullanarak kötü parolaları kaldırın
 
@@ -24,7 +24,7 @@ Birçok güvenlik kılavuzu, aynı parolayı birden fazla yerde kullanmanıza, k
 
 Azure AD parola koruması ile, varsayılan genel yasaklanmış parola listeleri bir Azure AD kiracısındaki tüm kullanıcılara otomatik olarak uygulanır. Kendi iş ve güvenlik gereksinimlerinizi desteklemek için girişleri özel yasaklanmış bir parola listesinde tanımlayabilirsiniz. Kullanıcılar parolalarını değiştirdiğinde veya sıfırlarsam, bu yasaklanmış parola listeleri, güçlü parolaların kullanımını zorlamak üzere denetlenir.
 
-Yalnızca Azure AD parola koruması tarafından zorlanan güçlü parolalara güvenmek üzere [azure Multi-Factor Authentication](concept-mfa-howitworks.md)gibi ek özellikler kullanmanız gerekir. Oturum açma olaylarınız için birden çok güvenlik katmanını kullanma hakkında daha fazla bilgi için, [PA $ $Word bunun önemi yoktur](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
+Azure AD [Multi-Factor Authentication](concept-mfa-howitworks.md)gibi ek özellikler kullanmanız gerekir, yalnızca Azure AD parola koruması tarafından zorlanan güçlü parolalara güvenmez. Oturum açma olaylarınız için birden çok güvenlik katmanını kullanma hakkında daha fazla bilgi için, [PA $ $Word bunun önemi yoktur](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
 > [!IMPORTANT]
 > Bu kavramsal makalede, Azure AD parola korumasının nasıl çalıştığı bir yöneticiye açıklanmaktadır. Self servis parola sıfırlama için zaten kayıtlı bir son kullanıcı varsa ve hesabınıza geri dönmek istiyorsanız adresine gidin [https://aka.ms/sspr](https://aka.ms/sspr) .

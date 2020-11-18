@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: c5ae0e0d312aa9a959b114d576f887bfa5072f49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a166a451c405c2321453e02751baad91c2a14c60
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965514"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840026"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -26,13 +26,13 @@ Azure Active Directory (Azure AD) hesapları için oturum açma deneyiminin bir 
 
 Windows Hello, FIDO2 güvenlik anahtarları ve Microsoft Authenticator uygulaması gibi parolasız kimlik doğrulama yöntemleri, en güvenli oturum açma olaylarını sağlar.
 
-Azure Multi-Factor Authentication, yalnızca bir Kullanıcı oturum açtığında bir parola kullanarak ek güvenlik sağlar. Kullanıcıya bir anında iletme bildirimine yanıt vermek, bir yazılım veya donanım belirtecinden bir kod girmek ya da bir SMS veya telefon çağrısına yanıt vermek gibi ek kimlik doğrulama biçimleri istenebilir.
+Azure AD Multi-Factor Authentication, yalnızca bir Kullanıcı oturum açtığında bir parola kullanarak ek güvenlik sağlar. Kullanıcıya bir anında iletme bildirimine yanıt vermek, bir yazılım veya donanım belirtecinden bir kod girmek ya da bir SMS veya telefon çağrısına yanıt vermek gibi ek kimlik doğrulama biçimleri istenebilir.
 
 Kullanıcı taslak deneyimini basitleştirmek ve MFA ve SSPR için kaydolmak üzere [Birleşik güvenlik bilgileri kaydını etkinleştirmenizi](howto-registration-mfa-sspr-combined.md)öneririz. Dayanıklılık için, kullanıcıların birden çok kimlik doğrulama yöntemi kaydetmesini gerektirmenizi öneririz. Oturum açma veya SSPR sırasında bir kullanıcı için bir yöntem kullanılamadığında, başka bir yöntemle kimlik doğrulamayı seçebilirler. Daha fazla bilgi için bkz. [Azure AD 'de esnek erişim denetimi yönetim stratejisi oluşturma](concept-resilient-controls.md).
 
 ## <a name="authentication-method-strength-and-security"></a>Kimlik doğrulama yöntemi gücü ve güvenliği
 
-Kuruluşunuzda Azure Multi-Factor Authentication gibi özellikler dağıttığınızda, kullanılabilir kimlik doğrulama yöntemlerini gözden geçirin. Güvenlik, kullanılabilirlik ve kullanılabilirlik açısından gereksinimlerinizi karşılayan veya aşan yöntemleri seçin. Mümkün olduğunda, en yüksek güvenlik düzeyiyle kimlik doğrulama yöntemlerini kullanın.
+Kuruluşunuzda Azure AD Multi-Factor Authentication gibi özellikler dağıttığınızda, kullanılabilir kimlik doğrulama yöntemlerini gözden geçirin. Güvenlik, kullanılabilirlik ve kullanılabilirlik açısından gereksinimlerinizi karşılayan veya aşan yöntemleri seçin. Mümkün olduğunda, en yüksek güvenlik düzeyiyle kimlik doğrulama yöntemlerini kullanın.
 
 Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemlerine yönelik güvenlik konuları özetlenmektedir. Kullanılabilirlik, kullanıcının Azure AD 'de hizmet kullanılabilirliğini değil, kimlik doğrulama yöntemini kullanabildiğinin bir göstergesidir:
 
@@ -54,7 +54,7 @@ Güvenlik hakkında daha fazla bilgi için bkz. [kimlik doğrulama güvenlik aç
 
 ## <a name="how-each-authentication-method-works"></a>Her kimlik doğrulama yönteminin nasıl çalıştığı
 
-Bir uygulama veya cihazda oturum açtığınızda, bir FIDO2 güvenlik anahtarı ya da parola gibi bazı kimlik doğrulama yöntemleri birincil faktör olarak kullanılabilir. Diğer kimlik doğrulama yöntemleri yalnızca Azure Multi-Factor Authentication veya SSPR kullandığınızda ikincil bir faktör olarak kullanılabilir.
+Bir uygulama veya cihazda oturum açtığınızda, bir FIDO2 güvenlik anahtarı ya da parola gibi bazı kimlik doğrulama yöntemleri birincil faktör olarak kullanılabilir. Diğer kimlik doğrulama yöntemleri yalnızca Azure AD Multi-Factor Authentication veya SSPR kullandığınızda ikincil bir faktör olarak kullanılabilir.
 
 Aşağıdaki tabloda, bir oturum açma olayı sırasında bir kimlik doğrulama yöntemi kullanılabilir olduğunda özetlenmektedir:
 
@@ -63,10 +63,10 @@ Aşağıdaki tabloda, bir oturum açma olayı sırasında bir kimlik doğrulama 
 | İş İçin Windows Hello     | Yes                    | Çok faktörlü kimlik doğrulaması                       |
 | Microsoft Authenticator uygulaması    | Evet (Önizleme)          | MFA ve SSPR              |
 | FIDO2 güvenlik anahtarı (Önizleme)   | Yes                    | Çok faktörlü kimlik doğrulaması                       |
-| OATH Donanım belirteçleri (Önizleme) | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
-| OATH yazılım belirteçleri           | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
+| OATH Donanım belirteçleri (Önizleme) | No                     | Çok faktörlü kimlik doğrulaması                       |
+| OATH yazılım belirteçleri           | No                     | Çok faktörlü kimlik doğrulaması                       |
 | SMS                            | Evet (Önizleme)          | MFA ve SSPR              |
-| Sesli arama                     | Hayır                     | MFA ve SSPR              |
+| Sesli arama                     | No                     | MFA ve SSPR              |
 | Parola                       | Yes                    |                           |
 
 Bu kimlik doğrulama yöntemlerinin tümü Azure portal yapılandırılabilir ve [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)aracılığıyla giderek giderek daha da yönetilebilir.
@@ -83,25 +83,25 @@ Her bir kimlik doğrulama yönteminin nasıl çalıştığı hakkında daha fazl
 * Parola
 
 > [!NOTE]
-> Azure AD 'de, bir parola genellikle birincil kimlik doğrulama yöntemlerinden biridir. Parola kimlik doğrulama yöntemini devre dışı bırakamıyorum. Birincil kimlik doğrulama faktörü olarak bir parola kullanırsanız, Azure Multi-Factor Authentication kullanarak oturum açma olaylarının güvenliğini artırın.
+> Azure AD 'de, bir parola genellikle birincil kimlik doğrulama yöntemlerinden biridir. Parola kimlik doğrulama yöntemini devre dışı bırakamıyorum. Birincil kimlik doğrulama faktörü olarak bir parola kullanırsanız, Azure AD Multi-Factor Authentication kullanarak oturum açma olaylarının güvenliğini artırın.
 
 Aşağıdaki ek doğrulama yöntemleri belirli senaryolarda kullanılabilir:
 
-* [Uygulama parolaları](howto-mfa-app-passwords.md) -modern kimlik doğrulamayı desteklemeyen eski uygulamalar için kullanılır ve Kullanıcı başına Azure Multi-Factor Authentication için yapılandırılabilir.
+* [Uygulama parolaları](howto-mfa-app-passwords.md) -modern kimlik doğrulamayı desteklemeyen eski uygulamalar için kullanılır ve Kullanıcı BAŞıNA Azure AD Multi-Factor Authentication için yapılandırılabilir.
 * [Güvenlik soruları](concept-authentication-security-questions.md) -yalnızca SSPR için kullanılır
 * [E-posta adresi](concept-sspr-howitworks.md#authentication-methods) -yalnızca SSPR için kullanılır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure Multi-Factor Authentication][tutorial-azure-mfa]öğreticisine bakın.
+Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]öğreticisine bakın.
 
 SSPR kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD self servis parola sıfırlamasının nasıl çalıştığı][concept-sspr].
 
-MFA kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
+MFA kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
 
 [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)kullanarak kimlik doğrulama yöntemlerini yapılandırma hakkında daha fazla bilgi edinin.
 
-Hangi kimlik doğrulama yöntemlerinin kullanımda olduğunu gözden geçirmek için bkz. [PowerShell Ile Azure Multi-Factor Authentication kimlik doğrulama yöntemi analizi](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
+Hangi kimlik doğrulama yöntemlerinin kullanımda olduğunu gözden geçirmek için bkz. [PowerShell Ile Azure AD Multi-Factor Authentication kimlik doğrulama yöntemi analizi](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

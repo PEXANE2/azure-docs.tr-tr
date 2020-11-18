@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b88b2ca0a420295a7a53608f02923e72045e1c44
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964749"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839480"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme
 
@@ -29,7 +29,7 @@ Bu belge, Windows 10 cihazlarıyla, FIDO2 güvenlik anahtarı tabanlı passwordl
 
 | Cihaz Türü | Azure AD'ye katılanlar | Hibrit Azure AD'ye katılmış |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [Birleşik güvenlik bilgileri kayıt önizlemesi](concept-registration-mfa-sspr-combined.md) | X | X |
 | Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN, Windows 10 sürüm 1903 veya üstünü gerektirir | X | X |
@@ -79,8 +79,8 @@ Kuruluşlar, kuruluşunuzun gereksinimlerine bağlı olarak Windows oturum açma
 Intune kullanarak güvenlik anahtarlarının kullanımını etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Microsoft Intune**  >  **Cihaz kaydı**  >  **Windows kaydı**  >  **iş için Windows Hello**  >  **özelliklerini**Microsoft Intune gidin.
-1. **Ayarlar**' ın altında, **oturum açma Için güvenlik anahtarlarını kullan** ' ı **etkin**olarak ayarlayın.
+1. **Microsoft Intune**  >  **Cihaz kaydı**  >  **Windows kaydı**  >  **iş için Windows Hello**  >  **özelliklerini** Microsoft Intune gidin.
+1. **Ayarlar**' ın altında, **oturum açma Için güvenlik anahtarlarını kullan** ' ı **etkin** olarak ayarlayın.
 
 Oturum açma için güvenlik anahtarlarının yapılandırılması, Iş için Windows Hello 'Yu yapılandırmaya bağlı değildir.
 
@@ -111,15 +111,15 @@ Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek 
 1. Windows yapılandırma Tasarımcısı 'nı başlatın.
 1. **Dosya**  >  **Yeni proje**' yi seçin.
 1. Projenize bir ad verin ve projenin oluşturulduğu yolu bir yere göz atın ve ardından **İleri**' yi seçin.
-1. **Seçili proje iş akışı** olarak *sağlama paketini* seçili bırakın ve **İleri ' yi**seçin.
-1. Görüntülenecek **ve yapılandırılacak ayarları seçin**altında *tüm Windows masaüstü sürümleri* ' ni seçin ve ardından **İleri**' yi seçin.
+1. **Seçili proje iş akışı** olarak *sağlama paketini* seçili bırakın ve **İleri ' yi** seçin.
+1. Görüntülenecek **ve yapılandırılacak ayarları seçin** altında *tüm Windows masaüstü sürümleri* ' ni seçin ve ardından **İleri**' yi seçin.
 1. **Son**’u seçin.
 1. Yeni oluşturduğunuz projenizde, **çalışma zamanı ayarları**  >  **windowshelloforbusiness**  >  **SecurityKeys**  >  **usesecuritykeyforsign'** e gidin.
-1. **Usesecuritykeyforsignın** öğesini *etkin*olarak ayarlayın.
+1. **Usesecuritykeyforsignın** öğesini *etkin* olarak ayarlayın.
 1. **Export**  >  **Sağlama paketini** dışarı aktar 'ı seçin
-1. **Sağlama paketini açıkla**altında **derleme** penceresinde varsayılan değerleri bırakın ve ardından **İleri**' yi seçin.
-1. **Sağlama paketinin güvenlik ayrıntılarını Seç** altında **derleme** penceresinde varsayılan değerleri bırakın ve **İleri ' yi**seçin.
-1. **Sağlama paketinin kaydedileceği yeri seçin** ' ın altında **derleme** pencereleri ' ne göz atın veya yolu değiştirin ve **İleri ' yi**seçin.
+1. **Sağlama paketini açıkla** altında **derleme** penceresinde varsayılan değerleri bırakın ve ardından **İleri**' yi seçin.
+1. **Sağlama paketinin güvenlik ayrıntılarını Seç** altında **derleme** penceresinde varsayılan değerleri bırakın ve **İleri ' yi** seçin.
+1. **Sağlama paketinin kaydedileceği yeri seçin** ' ın altında **derleme** pencereleri ' ne göz atın veya yolu değiştirin ve **İleri ' yi** seçin.
 1. **Sağlama paketini oluşturma** sayfasında **Oluştur** ' u seçin.
 1. Oluşturulan iki dosyayı (*ppkg* ve *Cat*), daha sonra makinelere uygulayabileceğiniz bir konuma kaydedin.
 1. Oluşturduğunuz sağlama paketini uygulamak için bkz. [sağlama paketi uygulama](/windows/configuration/provisioning-packages/provisioning-apply-package).
@@ -129,7 +129,7 @@ Intune tarafından yönetilmeyen cihazlar için, işlevselliği etkinleştirmek 
 
 ### <a name="enable-with-group-policy"></a>grup ilkesi ile etkinleştir
 
-Kuruluşlar, **karma Azure AD 'ye katılmış cihazlarda**, Fido güvenlik anahtarı oturum açma özelliğini etkinleştirmek için aşağıdaki Grup İlkesi ayarını yapılandırabilir. Bu ayar **bilgisayar yapılandırması**altında bulunabilir  >  **Yönetim Şablonları**  >  **sistem**  >  **oturumu açma**  >  **güvenlik anahtarı oturum aç**:
+Kuruluşlar, **karma Azure AD 'ye katılmış cihazlarda**, Fido güvenlik anahtarı oturum açma özelliğini etkinleştirmek için aşağıdaki Grup İlkesi ayarını yapılandırabilir. Bu ayar **bilgisayar yapılandırması** altında bulunabilir  >  **Yönetim Şablonları**  >  **sistem**  >  **oturumu açma**  >  **güvenlik anahtarı oturum aç**:
 
 - Bu ilkenin **etkin** olarak ayarlanması, kullanıcıların güvenlik anahtarlarıyla oturum açmasına olanak tanır.
 - Bu ilkenin **devre dışı** veya **yapılandırılmamış** olarak ayarlanması, kullanıcıların güvenlik anahtarlarıyla oturum açmasını engeller.
@@ -145,7 +145,7 @@ Aşağıdaki örnekte, Bala Sandhu adlı bir Kullanıcı önceki makaledeki adı
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Güvenlik anahtarını biyometrik, PIN veya sıfırlama güvenlik anahtarını yönetme
 
 * Windows 10 sürüm 1903 veya üzeri
-   * Kullanıcılar, cihaz > **hesapları**güvenlik anahtarı 'nda **Windows ayarlarını** açabilir  >  **Security Key**
+   * Kullanıcılar, cihaz > **hesapları** güvenlik anahtarı 'nda **Windows ayarlarını** açabilir  >  **Security Key**
    * Kullanıcılar PIN kodlarını değiştirebilir, Biyometri güncelleştirebilir veya güvenlik anahtarını sıfırlayabilir
 
 ## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
@@ -164,4 +164,4 @@ Bu özelliği önizlemede geri bildirimde bulunmak veya sorun yaşıyorsanız, a
 
 [Cihaz kaydı hakkında daha fazla bilgi edinin](../devices/overview.md)
 
-[Azure Multi-Factor Authentication hakkında daha fazla bilgi](../authentication/howto-mfa-getstarted.md)
+[Azure AD Multi-Factor Authentication hakkında daha fazla bilgi](../authentication/howto-mfa-getstarted.md)

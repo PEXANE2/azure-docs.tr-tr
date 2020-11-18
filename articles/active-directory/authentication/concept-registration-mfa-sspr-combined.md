@@ -1,6 +1,6 @@
 ---
-title: SSPR ve Azure Multi-Factor Authentication için Birleşik kayıt Azure Active Directory
-description: Kullanıcıların hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için kaydolmasına izin vermek üzere Azure Active Directory için Birleşik kayıt deneyimi hakkında bilgi edinin
+title: SSPR ve Azure AD Multi-Factor Authentication için Birleşik kayıt Azure Active Directory
+description: Kullanıcıların hem Azure AD Multi-Factor Authentication hem de Self servis parola sıfırlama için kaydolmasına izin vermek üzere Azure Active Directory için Birleşik kayıt deneyimi hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378015"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839803"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory genel bakış için Birleşik güvenlik bilgileri kaydı
 
-Birleşik kayıt öncesinde, kullanıcılar Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini ayrı olarak kaydetti. İnsanlar Multi-Factor Authentication ve SSPR için benzer yöntemlerin kullanıldığını, ancak her iki özelliğe de kaydolmaları gerektiğini karıştı. Artık, birleştirilmiş kayıt ile kullanıcılar bir kez kaydolduktan sonra hem Multi-Factor Authentication hem de SSPR avantajlarından yararlanabilir.
+Birleşik kayıt öncesinde, kullanıcılar Azure AD Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini ayrı olarak kaydetti. İnsanlar Multi-Factor Authentication ve SSPR için benzer yöntemlerin kullanıldığını, ancak her iki özelliğe de kaydolmaları gerektiğini karıştı. Artık, birleştirilmiş kayıt ile kullanıcılar bir kez kaydolduktan sonra hem Multi-Factor Authentication hem de SSPR avantajlarından yararlanabilir.
 
 > [!NOTE]
 > 15 Ağustos 2020 ' den itibaren, tüm yeni Azure AD kiracılar Birleşik kayıt için otomatik olarak etkinleştirilir.
@@ -142,8 +142,8 @@ Daha önce Multi-Factor Authentication için kullanılabilecek en az bir yöntem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için, [self servis parola sıfırlamayı etkinleştirme](tutorial-enable-sspr.md) ve [Azure Multi-Factor Authentication 'yi etkinleştirme](tutorial-enable-azure-mfa.md)öğreticilerine bakın.
+Başlamak için, [self servis parola sıfırlamayı etkinleştirme](tutorial-enable-sspr.md) ve [Azure AD Multi-Factor Authentication etkinleştirme](tutorial-enable-azure-mfa.md)öğreticilerine bakın.
 
 [Kiracınızda Birleşik kaydın nasıl etkinleştirileceğini](howto-registration-mfa-sspr-combined.md) veya [kullanıcılara kimlik doğrulama yöntemlerini yeniden kaydetmeye zorleyeceğinizi](howto-mfa-userdevicesettings.md#manage-user-authentication-options)öğrenin.
 
-[Azure Multi-Factor Authentication ve SSPR için kullanılabilir yöntemleri](concept-authentication-methods.md)de inceleyebilirsiniz.
+Ayrıca, [Azure AD Multi-Factor Authentication ve SSPR için kullanılabilir yöntemleri](concept-authentication-methods.md)inceleyebilirsiniz.

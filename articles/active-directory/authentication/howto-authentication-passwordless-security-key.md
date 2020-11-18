@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99d57e084a6a765b8598ba7f8eebbd7ddb34d74
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964647"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839310"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)
 
@@ -29,7 +29,7 @@ Bu belge güvenlik anahtarı tabanlı passwordless kimlik doğrulamasını etkin
 
 ## <a name="requirements"></a>Gereksinimler
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Birleşik güvenlik bilgileri kaydı önizlemesini](concept-registration-mfa-sspr-combined.md) etkinleştir
 - Uyumlu [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN, Windows 10 sürüm 1903 veya üstünü gerektirir * *
@@ -52,7 +52,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**  >  **güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **kimlik doğrulama yöntemi ilkesi 'ne (Önizleme)** gidin.
-1. Method **FIDO2 Security Key**altında aşağıdaki seçenekleri belirleyin:
+1. Method **FIDO2 Security Key** altında aşağıdaki seçenekleri belirleyin:
    1. **Etkinleştir** -Evet veya Hayır
    1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin
 1. Yapılandırmayı **kaydedin** .
@@ -62,11 +62,11 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 1. [https://myprofile.microsoft.com](https://myprofile.microsoft.com) adresine göz atın.
 1. Henüz yoksa oturum açın.
 1. **Güvenlik bilgileri**' ne tıklayın.
-   1. Kullanıcının kayıtlı en az bir Azure Multi-Factor Authentication yöntemi zaten varsa, bir FIDO2 güvenlik anahtarını hemen kaydedebilirler.
-   1. Kayıtlı en az bir Azure Multi-Factor Authentication yöntemi yoksa, bir tane eklemesi gerekir.
+   1. Kullanıcının zaten en az bir Azure AD Multi-Factor Authentication yöntemi varsa, bir FIDO2 güvenlik anahtarını hemen kaydedebilirler.
+   1. Kayıtlı en az bir Azure AD Multi-Factor Authentication yöntemi yoksa, bir tane eklemesi gerekir.
 1. **Yöntem Ekle** ' ye tıklayıp **güvenlik anahtarı**' nı seçerek bir FIDO2 güvenlik anahtarı ekleyin.
-1. **USB cihazı** veya **NFC cihazını**seçin.
-1. Anahtarınızı hazırlayın ve **İleri ' yi**seçin.
+1. **USB cihazı** veya **NFC cihazını** seçin.
+1. Anahtarınızı hazırlayın ve **İleri ' yi** seçin.
 1. Bir kutu görünür ve kullanıcıdan güvenlik anahtarınız için bir PIN oluşturmasını/girmesini ister ve ardından anahtar için Biyometri ya da Touch için gerekli hareketi gerçekleştirir.
 1. Kullanıcı, Birleşik kayıt deneyimine döndürülür ve kullanıcının birden çok tane varsa bunu belirleyebilmesi için anahtar için anlamlı bir ad sağlaması istenir. **İleri**’ye tıklayın.
 1. İşlemi gerçekleştirmek için **bitti** ' ye tıklayın.
@@ -105,4 +105,4 @@ Karma Azure AD 'ye katılmış ve Azure AD 'ye katılmış cihazlarda UPN deği�
 
 [Cihaz kaydı hakkında daha fazla bilgi edinin](../devices/overview.md)
 
-[Azure Multi-Factor Authentication hakkında daha fazla bilgi](../authentication/howto-mfa-getstarted.md)
+[Azure AD Multi-Factor Authentication hakkında daha fazla bilgi](../authentication/howto-mfa-getstarted.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure MFA ve ADFS ile kaynakları güvenli hale getirme-Azure Active Directory
-description: Bu, bulutta nasıl Azure MFA ve AD FS kullanmaya başlayacağınızı açıklayan Azure Multi-Factor Authentication sayfasıdır.
+title: Azure AD MFA ve ADFS ile kaynakları güvenli hale getirme Azure Active Directory
+description: Bu, Azure AD MFA ve bulutta AD FS kullanmaya başlamanızı açıklayan Azure AD Multi-Factor Authentication sayfasıdır.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5167d9041e8edfd6e829bdd1a78f826f73eea4d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 999fb350aaa5f11510db0d4ecc036e188d76e20f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964596"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839344"
 ---
-# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication ve AD FS ile bulut kaynaklarını güvenli hale getirme
+# <a name="securing-cloud-resources-with-azure-ad-multi-factor-authentication-and-ad-fs"></a>Azure AD Multi-Factor Authentication ve AD FS bulut kaynaklarının güvenliğini sağlama
 
-Kuruluşunuz Azure Active Directory ile birleştiriliyorsa, Azure AD’nin erişebildiği kaynakları güvenli hale getirmek için Azure Multi-Factor Authentication ya da Active Directory Federation Services (AD FS) kullanın. Azure Active Directory kaynaklarını Azure Multi-Factor Authentication ya da Active Directory Federasyon Hizmetleri ile güvenli hale getirmek için aşağıdaki yordamları kullanın.
+Kuruluşunuz Azure Active Directory ile federe ise Azure AD tarafından erişilen kaynakları güvenli hale getirmek için Azure AD Multi-Factor Authentication veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanın. Azure AD Multi-Factor Authentication veya Active Directory Federasyon Hizmetleri (AD FS) ile Azure Active Directory kaynaklarını güvenli hale getirmek için aşağıdaki yordamları kullanın.
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>AD FS kullanarak Azure AD kaynaklarını güvenli hale getirme
 
@@ -48,7 +48,7 @@ Bulut kaynağınızın güvenliğini sağlamak için, kullanıcı iki adımlı d
 
 ## <a name="trusted-ips-for-federated-users"></a>Federasyon kullanıcıları için Güvenilen IP'ler
 
-Güvenilen IP'ler yöneticilerin, belirli IP adresleri ya da kendi intranetlerinden kaynaklanan taleplere sahip federasyon kullanıcıları için iki aşamalı doğrulamayı atlamasına izin verir. Aşağıdaki bölümlerde, federasyon kullanıcıları intranetinden gelen talepler için Azure Multi-Factor Authentication Güvenilen IP’lerinin federasyon kullanıcılarıyla yapılandırılması ve iki aşamalı doğrulamanın atlanması açıklanmıştır. Bu, AD FS’nin bir geçiş kullanacak ya da Kurumsal Ağ İçinde talep türü ile gelen bir talep şablonunu filtreleyecek şekilde yapılandırılmasıyla gerçekleştirilir.
+Güvenilen IP'ler yöneticilerin, belirli IP adresleri ya da kendi intranetlerinden kaynaklanan taleplere sahip federasyon kullanıcıları için iki aşamalı doğrulamayı atlamasına izin verir. Aşağıdaki bölümlerde, Azure AD Multi-Factor Authentication güvenilir IP 'Lerin Federasyon kullanıcıları ile nasıl yapılandırılacağı ve bir isteğin bir Federasyon kullanıcıları intraneti içinden kaynaklandığı iki aşamalı doğrulama ile nasıl yapılandırılacağı açıklanır. Bu, AD FS’nin bir geçiş kullanacak ya da Kurumsal Ağ İçinde talep türü ile gelen bir talep şablonunu filtreleyecek şekilde yapılandırılmasıyla gerçekleştirilir.
 
 Bu örnek, bağlı olan taraf Güvenlerimiz için Microsoft 365 kullanır.
 
@@ -84,12 +84,12 @@ Yapmamız gereken ilk şey, AD FS taleplerini yapılandırmaktır. Biri Kurumsal
 15. **Tamam**’a tıklayın.
 16. AD FS Yönetimi'ni kapatın.
 
-### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication Güvenilen IP’leri Federasyon Kullanıcıları ile Yapılandırma
+### <a name="configure-azure-ad-multi-factor-authentication-trusted-ips-with-federated-users"></a>Federasyon kullanıcılarıyla Azure AD Multi-Factor Authentication güvenilir IP 'Leri yapılandırma
 
 Talepler yapıldığına göre, artık güvenilen IP’leri yapılandırabiliriz.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**olarak  >  **adlandırılan konumları**seçin.
+2. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi** olarak  >  **adlandırılan konumları** seçin.
 3. **Koşullu erişim-adlandırılmış konumlar** DIKEY penceresinde **MFA güvenilir IP 'lerini Yapılandır** ' ı seçin.
 
    ![Azure AD koşullu erişim adlandırılmış konumlar MFA güvenilir IP 'Leri yapılandırma](./media/howto-mfa-adfs/trustedip6.png)

@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication Yapılandırma-Azure Active Directory
-description: Azure portal Azure Multi-Factor Authentication ayarlarını yapılandırma hakkında bilgi edinin
+title: Azure AD Multi-Factor Authentication Yapılandırma-Azure Active Directory
+description: Azure portal Azure AD Multi-Factor Authentication ayarlarını yapılandırma hakkında bilgi edinin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,26 +12,26 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 17fbba605f6f20fa384d59a8c89ee536a9b121bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: adca22b3a8d9b93dfbc62202106127a5833a4c38
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964444"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839208"
 ---
-# <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
+# <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication ayarlarını yapılandırma
 
-Azure Multi-Factor Authentication Son Kullanıcı deneyimini özelleştirmek için hesap kilitleme eşikleri veya sahtekarlık uyarıları ve bildirimleri gibi ayarların seçeneklerini yapılandırabilirsiniz. Bazı ayarlar, Azure Active Directory (Azure AD) ve bazıları ayrı bir Azure Multi-Factor Authentication portalında Azure portal.
+Azure AD Multi-Factor Authentication için son kullanıcı deneyimini özelleştirmek için hesap kilitleme eşikleri veya sahtekarlık uyarıları ve bildirimleri gibi ayarların seçeneklerini yapılandırabilirsiniz. Bazı ayarlar, Azure Active Directory (Azure AD) ve bazıları ayrı bir Azure AD Multi-Factor Authentication portalında Azure portal.
 
-Aşağıdaki Azure Multi-Factor Authentication ayarları Azure portal sunulmaktadır:
+Aşağıdaki Azure AD Multi-Factor Authentication ayarları Azure portal sunulmaktadır:
 
 | Özellik | Açıklama |
 | ------- | ----------- |
-| [Hesap kilitleme](#account-lockout) | Bir satırda çok fazla Reddedilen kimlik doğrulama denemesi varsa, Azure Multi-Factor Authentication kullanarak hesapları geçici olarak kilitleyin. Bu özellik yalnızca kimlik doğrulaması için PIN girişi yapan kullanıcılar için geçerlidir. (MFA sunucusu) |
-| [Kullanıcıları engelle/engelini kaldır](#block-and-unblock-users) | Belirli kullanıcıların Azure Multi-Factor Authentication isteklerini almasına engel olmak. Engellenen kullanıcılar için tüm kimlik doğrulaması denemeleri otomatik olarak reddedilir. Kullanıcılar engellendikleri zamandan itibaren 90 gün boyunca engellenmeye devam eder veya el ile engellenmemiş. |
+| [Hesap kilitleme](#account-lockout) | Bir satırda çok fazla Reddedilen kimlik doğrulama denemesi varsa, hesapları Azure AD Multi-Factor Authentication kullanarak geçici olarak kilitleyin. Bu özellik yalnızca kimlik doğrulaması için PIN girişi yapan kullanıcılar için geçerlidir. (MFA sunucusu) |
+| [Kullanıcıları engelle/engelini kaldır](#block-and-unblock-users) | Belirli kullanıcıların Azure AD Multi-Factor Authentication isteklerini almasına engel olmak. Engellenen kullanıcılar için tüm kimlik doğrulaması denemeleri otomatik olarak reddedilir. Kullanıcılar engellendikleri zamandan itibaren 90 gün boyunca engellenmeye devam eder veya el ile engellenmemiş. |
 | [Sahtekarlık uyarısı](#fraud-alert) | Kullanıcıların sahte doğrulama isteklerini rapordeğiştirmesine izin veren ayarları yapılandırın. |
 | [Bildirimler](#notifications) | MFA sunucusundan olayların bildirimlerini etkinleştirin. |
-| [OATH belirteçleri](concept-authentication-oath-tokens.md) | Kullanıcılar için OATH belirteçlerini yönetmek üzere bulut tabanlı Azure MFA ortamlarında kullanılır. |
+| [OATH belirteçleri](concept-authentication-oath-tokens.md) | Kullanıcılar için OATH belirteçlerini yönetmek üzere bulut tabanlı Azure AD MFA ortamlarında kullanılır. |
 | [Telefon araması ayarları](#phone-call-settings) | Bulut ve şirket içi ortamlar için telefon çağrılarıyla ve tebrikler ilgili ayarları yapılandırın. |
 | Sağlayıcılar | Bu, hesabınızla ilişkilendirdiğiniz mevcut herhangi bir kimlik doğrulama sağlayıcısını gösterir. Yeni kimlik doğrulama sağlayıcıları 1 Eylül 2018 itibariyle oluşturulmayabilir |
 
@@ -50,14 +50,14 @@ Aşağıdaki ayarlar kullanılabilir:
 Hesap kilitleme ayarlarını yapılandırmak için aşağıdaki ayarları doldurun:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-1. **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **hesabı kilitlemesini**inceleyin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **hesabı kilitlemesini** inceleyin.
 1. Ortamınız için gerekli değerleri girin ve ardından **Kaydet**' i seçin.
 
     ![Azure portal hesap kilitleme ayarlarının ekran görüntüsü](./media/howto-mfa-mfasettings/account-lockout-settings.png)
 
 ## <a name="block-and-unblock-users"></a>Kullanıcıları engelle ve engellemeyi kaldır
 
-Bir kullanıcının cihazı kaybolduysa veya çalındıysa, ilişkili hesap için Azure Multi-Factor Authentication girişimlerini engelleyebilirsiniz. Engellenen kullanıcılar için tüm Azure Multi-Factor Authentication girişimleri otomatik olarak reddedilir. Kullanıcılar engellendikleri tarihten 90 gün sonrasına kadar engellenmiş olarak kalır.
+Bir kullanıcının cihazı kaybolduysa veya çalındıysa, ilişkili hesap için Azure AD Multi-Factor Authentication girişimlerini engelleyebilirsiniz. Engellenen kullanıcılar için Azure AD Multi-Factor Authentication girişimleri otomatik olarak reddedilir. Kullanıcılar engellendikleri tarihten 90 gün sonrasına kadar engellenmiş olarak kalır.
 
 ### <a name="block-a-user"></a>Kullanıcıyı engelle
 
@@ -65,7 +65,7 @@ Bir kullanıcıyı engellemek için aşağıdaki adımları izleyin:
 
 1. **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **blok/kullanıcıları engellemeyi kaldır**' a gidin.
 1. Kullanıcıyı engellemek için **Ekle** ' yi seçin.
-1. **Çoğaltma grubunu**seçin ve ardından *Azure varsayılanı*' nı seçin.
+1. **Çoğaltma grubunu** seçin ve ardından *Azure varsayılanı*' nı seçin.
 
     Engellenen Kullanıcı için Kullanıcı adını girin ve `username\@domain.com` sonra *neden* alanında bir açıklama sağlayın.
 1. Hazırsanız, kullanıcıyı engellemek için **Tamam** ' ı seçin.
@@ -85,16 +85,16 @@ Sahtekarlık uyarısı özelliği, kullanıcıların, kaynaklarına erişmek iç
 
 Aşağıdaki sahtekarlık uyarısı yapılandırma seçenekleri mevcuttur:
 
-* **Sahtekarlık raporlayan kullanıcıları otomatik olarak engelle**: bir Kullanıcı sahtekarlık bildirirse, Kullanıcı hesabı IÇIN Azure MFA kimlik doğrulama denemeleri 90 gün boyunca engellenir veya bir yönetici kendi hesabını engellemez. Yönetici, oturum açma raporunu kullanarak oturum açma işlemlerini gözden geçirebilir ve ileride sahtekarlık oluşmasını önlemek için gerekli işlemleri gerçekleştirebilir. Yönetici daha sonra kullanıcının hesabının [engellemesini kaldırabilir](#unblock-a-user) .
+* **Sahtekarlık raporlayan kullanıcıları otomatik olarak engelle**: bir Kullanıcı sahtekarlık bildirirse, Kullanıcı hesabı IÇIN Azure AD MFA kimlik doğrulama denemeleri 90 gün boyunca engellenir veya bir yönetici kendi hesabını engellemez. Yönetici, oturum açma raporunu kullanarak oturum açma işlemlerini gözden geçirebilir ve ileride sahtekarlık oluşmasını önlemek için gerekli işlemleri gerçekleştirebilir. Yönetici daha sonra kullanıcının hesabının [engellemesini kaldırabilir](#unblock-a-user) .
 * **İlk tebrik sırasında sahtekarlık raporlamak Için kod**: kullanıcılar Multi-Factor Authentication 'ı gerçekleştirmek üzere bir telefon araması aldıklarında, normalde **#** oturum açma işlemini onaylamak için Basırlar. Sahtekarlık raporlamak için Kullanıcı, basmadan önce bir kod girer **#** . Bu kod varsayılan olarak **0** ' dır, ancak özelleştirebilirsiniz.
 
    > [!NOTE]
-   > Microsoft 'un varsayılan ses tebrikleri, kullanıcılardan bir sahtekarlık uyarısı göndermesi için **0 #** tuşlarına basmalarını ister. **0**dışında bir kod kullanmak istiyorsanız, kullanıcılarınız için uygun yönergeler ile kendi özel ses tebrikleri kaydedin ve yükleyin.
+   > Microsoft 'un varsayılan ses tebrikleri, kullanıcılardan bir sahtekarlık uyarısı göndermesi için **0 #** tuşlarına basmalarını ister. **0** dışında bir kod kullanmak istiyorsanız, kullanıcılarınız için uygun yönergeler ile kendi özel ses tebrikleri kaydedin ve yükleyin.
 
 Sahtekarlık uyarılarını etkinleştirmek ve yapılandırmak için aşağıdaki adımları izleyin:
 
 1. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **sahtekarlığı uyarısı**' na gidin.
-1. *Kullanıcıların sahtekarlık uyarıları göndermesine Izin ver* ayarını **Açık**olarak ayarlayın.
+1. *Kullanıcıların sahtekarlık uyarıları göndermesine Izin ver* ayarını **Açık** olarak ayarlayın.
 1. *İlk tebrik ayarı sırasında* , istediğiniz gibi sahtekarlık veya kod *rapor veren kullanıcıları otomatik olarak engelle* ' i yapılandırın.
 1. Hazırlanıyor, **Kaydet**' i seçin.
 
@@ -110,7 +110,7 @@ Kullanıcılar sahtekarlık uyarıları raporladıklarında e-posta bildirimleri
 
 Sahtekarlık uyarı bildirimlerini yapılandırmak için aşağıdaki ayarları doldurun:
 
-1. **Azure Active Directory**  >  **güvenlik**  >  **Multi-Factor Authentication**  >  **bildirimlerine**gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **Multi-Factor Authentication**  >  **bildirimlerine** gidin.
 1. Sonraki kutuya eklenecek e-posta adresini girin.
 1. Var olan bir e-posta adresini kaldırmak için, istenen e-posta adresinin yanındaki **...** seçeneğini belirleyin ve **Sil**' i seçin.
 1. Hazırlanıyor, **Kaydet**' i seçin.
@@ -119,7 +119,7 @@ Sahtekarlık uyarı bildirimlerini yapılandırmak için aşağıdaki ayarları 
 
 Azure AD, her 30 veya 60 saniyede bir kodu yenileyen OATH-TOTP SHA-1 belirteçleri kullanımını destekler. Müşteriler bu belirteçleri kendi tercih ettiği satıcıdan satın alabilir.
 
-OATH TOTP Donanım belirteçleri genellikle, belirteçte önceden programlanabilir bir gizli anahtar veya çekirdek ile gelir. Bu anahtarların aşağıdaki adımlarda açıklandığı gibi Azure AD 'ye giriş olması gerekir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *1-7*rakamları içerebilir ve *Base32*içinde kodlanmalıdır.
+OATH TOTP Donanım belirteçleri genellikle, belirteçte önceden programlanabilir bir gizli anahtar veya çekirdek ile gelir. Bu anahtarların aşağıdaki adımlarda açıklandığı gibi Azure AD 'ye giriş olması gerekir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *1-7* rakamları içerebilir ve *Base32* içinde kodlanmalıdır.
 
 Yeniden kullanılabilen programlanabilir OATH TOTP Donanım belirteçleri, yazılım belirteci kurulum akışında Azure AD ile de ayarlanabilir.
 
@@ -156,7 +156,7 @@ Birleşik Devletler, MFA arayanın KIMLIĞINI yapılandırmadıysanız, Microsof
 * *+ 1 (877) 668 6536*
 
 > [!NOTE]
-> Azure Multi-Factor Authentication çağrıları genel telefon ağı üzerinden yerleştirildiğinde, bazı durumlarda çağrılar arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, Azure Multi-Factor Authentication her zaman göndermesi mümkün olsa da arayan KIMLIĞI garanti edilmez. Bu, hem telefon aramalarına hem de Azure Multi-Factor Authentication tarafından sunulan SMS iletilerine uygulanır. Bir SMS iletisinin Azure Multi-Factor Authentication 'den olduğunu doğrulamanız gerekiyorsa bkz. [ileti göndermek Için hangi SMS kısa kodlarının kullanıldığı](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users) .
+> Azure AD Multi-Factor Authentication çağrıları genel telefon ağı üzerinden yerleştirildiğinde, bazı durumlarda çağrılar arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, Azure AD Multi-Factor Authentication her zaman göndermesi mümkün olsa da arayan KIMLIĞI garanti edilmez. Bu, hem telefon aramalarına hem de Azure AD Multi-Factor Authentication tarafından sunulan SMS iletilerine uygulanır. Bir SMS iletisinin Azure AD Multi-Factor Authentication 'den olduğunu doğrulamanız gerekiyorsa, [ileti göndermek Için hangi SMS kısa kodlarının kullanıldığını görün?](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
 
 Kendi arayanın KIMLIK numaranızı yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -166,7 +166,7 @@ Kendi arayanın KIMLIK numaranızı yapılandırmak için aşağıdaki adımlar�
 
 ### <a name="custom-voice-messages"></a>Özel ses iletileri
 
-Özel sesli iletiler özelliği ile Azure Multi-Factor Authentication için kendi kayıtlarınızı veya selamlarınızı kullanabilirsiniz. Bu iletiler, varsayılan Microsoft kayıtlarının yanı sıra veya değiştirmek için de kullanılabilir.
+Özel sesli iletiler özelliği ile Azure AD Multi-Factor Authentication için kendi kayıtlarınızı veya selamlarınızı kullanabilirsiniz. Bu iletiler, varsayılan Microsoft kayıtlarının yanı sıra veya değiştirmek için de kullanılabilir.
 
 Başlamadan önce aşağıdaki kısıtlamalara dikkat edin:
 
@@ -221,22 +221,22 @@ Kendi özel iletilerinizi kullanmak için aşağıdaki adımları izleyin:
 1. **Azure Active Directory**  >  **Security**  >  **MFA**  >  **telefon araması ayarları**' na gidin.
 1. **Karşılama Ekle**' yi seçin.
 1. Selamlama **türü** *(Standart)* veya  *kimlik doğrulama başarılı*' ı seçin.
-1. [Özel ileti dili davranışının](#custom-message-language-behavior)önceki bölümüne göre **dili**seçin.
+1. [Özel ileti dili davranışının](#custom-message-language-behavior)önceki bölümüne göre **dili** seçin.
 1. Karşıya yüklenecek bir *. mp3* veya *. wav* ses dosyasına gözatıp seçin.
 1. Hazırsanız, **Ekle**' yi ve ardından **Kaydet**' i seçin.
 
 ## <a name="mfa-service-settings"></a>MFA hizmet ayarları
 
-Uygulama parolaları, güvenilir IP 'Ler, doğrulama seçenekleri ve Azure Multi-Factor Authentication için çok faktörlü kimlik doğrulamasını hatırlama ayarları, hizmet ayarları ' nda bulunabilir. Bu, eski portaldan daha fazlasına sahiptir ve normal Azure AD portalının bir parçası değildir.
+Uygulama parolaları, güvenilir IP 'Ler, doğrulama seçenekleri ve Azure AD Multi-Factor Authentication için Multi-Factor Authentication 'ı anımsa ayarları hizmet ayarları 'nda bulunabilir. Bu, eski portaldan daha fazlasına sahiptir ve normal Azure AD portalının bir parçası değildir.
 
-Hizmet ayarlarına **Azure Active Directory**güvenlik MFA 'ya giderek Azure Portal erişilebilir ve  >  **Security**  >  **MFA**  >  **Getting started**  >  **Configure**  >  **bulut tabanlı ek MFA ayarlarını**yapılandırma ile çalışmaya başlama. Ek *hizmet ayarları* seçenekleriyle yeni bir pencere veya sekme açılır.
+Hizmet ayarlarına **Azure Active Directory** güvenlik MFA 'ya giderek Azure Portal erişilebilir ve  >  **Security**  >  **MFA**  >  **Getting started**  >  **Configure**  >  **bulut tabanlı ek MFA ayarlarını** yapılandırma ile çalışmaya başlama. Ek *hizmet ayarları* seçenekleriyle yeni bir pencere veya sekme açılır.
 
 ## <a name="trusted-ips"></a>Güvenilen IP'ler
 
-Azure Multi-Factor Authentication 'nin _güvenilir IP 'leri_ özelliği, TANıMLı bir IP adresi aralığından oturum açan kullanıcılar için Multi-Factor Authentication istemlerini atlar. Kullanıcılar bu konumlardan birinde olduğunda, şirket içi ortamlarınız için güvenilen IP aralıklarını ayarlayabilirsiniz, Azure Multi-Factor Authentication istemi yoktur.
+Azure AD Multi-Factor Authentication 'nin _güvenilir IP 'leri_ özelliği, TANıMLı bir IP adresi aralığından oturum açan kullanıcılar için Multi-Factor Authentication istemlerini atlar. Şirket içi ortamlarınız için güvenilen IP aralıklarını, kullanıcılar bu konumlardan birinde olduğunda, Azure AD Multi-Factor Authentication istemi yok olarak ayarlayabilirsiniz.
 
 > [!NOTE]
-> Güvenilen IP 'Ler yalnızca MFA sunucusu kullandığınızda özel IP aralıkları içerebilir. Bulut tabanlı Azure Multi-Factor Authentication için yalnızca genel IP adresi aralıklarını kullanabilirsiniz.
+> Güvenilen IP 'Ler yalnızca MFA sunucusu kullandığınızda özel IP aralıkları içerebilir. Bulut tabanlı Azure AD Multi-Factor Authentication için yalnızca genel IP adresi aralıklarını kullanabilirsiniz.
 >
 > IPv6 aralıkları yalnızca [adlandırılmış konum (Önizleme)](../conditional-access/location-condition.md#preview-features) arabiriminde desteklenir.
 
@@ -263,55 +263,55 @@ Güvenilen IP 'nin tanımlanıp tanımlanmadığına bakılmaksızın, tarayıc�
 
 Aşağıdaki adımları kullanarak adlandırılmış konumları tanımlamak için koşullu erişim kurallarını kullanabilirsiniz:
 
-1. Azure Portal, **Azure Active Directory**arayıp seçin, ardından **güvenlik**  >  **koşullu erişim**  >  **adlı konumlara**gidin.
+1. Azure Portal, **Azure Active Directory** arayıp seçin, ardından **güvenlik**  >  **koşullu erişim**  >  **adlı konumlara** gidin.
 1. **Yeni konum**' u seçin.
 1. Konum için bir ad girin.
 1. **Güvenilen konum olarak işaretle**' yi seçin.
-1. Ortamınız için *40.77.182.32/27*gibi CıDR gösteriminde IP aralığını girin.
+1. Ortamınız için *40.77.182.32/27* gibi CıDR gösteriminde IP aralığını girin.
 1. **Oluştur**’u seçin.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Koşullu erişimi kullanarak güvenilir IP 'Ler özelliğini etkinleştirme
 
 Koşullu erişim ilkelerini kullanarak güvenilen IP 'Leri etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. Azure Portal, **Azure Active Directory**arayıp seçin, ardından **güvenlik**  >   **koşullu erişim**  >  **adlı konumlara**gidin.
+1. Azure Portal, **Azure Active Directory** arayıp seçin, ardından **güvenlik**  >   **koşullu erişim**  >  **adlı konumlara** gidin.
 1. **MFA güvenilir IP 'Lerini Yapılandır**' ı seçin.
-1. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini seçin:
+1. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler** altında, aşağıdaki iki seçenekten birini seçin:
 
    * **İntranetten kaynaklanan Federal kullanıcılardan gelen Istekler için**: Bu seçeneği belirlemek için onay kutusunu seçin. Şirket ağından oturum açan tüm Federasyon kullanıcıları, AD FS tarafından verilen bir talebi kullanarak çok faktörlü kimlik doğrulamasını atlar. AD FS, intranet talebini uygun trafiğe eklemek için bir kural içerdiğinden emin olun. Kural yoksa AD FS ' de aşağıdaki kuralı oluşturun:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Belirli bir genel IP aralığından gelen Istekler için**: Bu seçeneği belirlemek IÇIN, CIDR gösterimini kullanarak metın kutusuna IP adreslerini girin.
-      * Xxx. xxx. xxx. 1 ile xxx. xxx. xxx. 254 aralığındaki IP adresleri için, **xxx. xxx. xxx. 0/24**gibi bir gösterim kullanın.
-      * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
+      * Xxx. xxx. xxx. 1 ile xxx. xxx. xxx. 254 aralığındaki IP adresleri için, **xxx. xxx. xxx. 0/24** gibi bir gösterim kullanın.
+      * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32** gibi bir gösterim kullanın.
       * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Hizmet ayarlarını kullanarak güvenilir IP 'Leri özelliğini etkinleştirme
 
-Güvenilen IP 'Leri etkinleştirmek için koşullu erişim ilkeleri kullanmak istemiyorsanız, aşağıdaki adımları kullanarak Azure Multi-Factor Authentication *hizmet ayarlarını* yapılandırabilirsiniz:
+Güvenilen IP 'Leri etkinleştirmek için koşullu erişim ilkeleri kullanmak istemiyorsanız, aşağıdaki adımları kullanarak Azure AD Multi-Factor Authentication için *hizmet ayarlarını* yapılandırabilirsiniz:
 
-1. Azure portal, **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
+1. Azure portal, **Azure Active Directory** arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**'ı seçin.
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
-1. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini (veya her ikisini) seçin:
+1. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler** altında, aşağıdaki iki seçenekten birini (veya her ikisini) seçin:
 
    * **İntranetimde Federal kullanıcılardan gelen Istekler için**: Bu seçeneği belirlemek için onay kutusunu işaretleyin. Şirket ağından oturum açan tüm Federasyon kullanıcıları, AD FS tarafından verilen bir talebi kullanarak çok faktörlü kimlik doğrulamasını atlar. AD FS, intranet talebini uygun trafiğe eklemek için bir kural içerdiğinden emin olun. Kural yoksa AD FS ' de aşağıdaki kuralı oluşturun:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * **Belirli BIR IP adresi alt ağı aralığından gelen Istekler için**: Bu seçeneği belirlemek IÇIN, CIDR gösterimini kullanarak metın kutusuna IP adreslerini girin.
-      * Xxx. xxx. xxx. 1 ile xxx. xxx. xxx. 254 aralığındaki IP adresleri için, **xxx. xxx. xxx. 0/24**gibi bir gösterim kullanın.
-      * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
+      * Xxx. xxx. xxx. 1 ile xxx. xxx. xxx. 254 aralığındaki IP adresleri için, **xxx. xxx. xxx. 0/24** gibi bir gösterim kullanın.
+      * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32** gibi bir gösterim kullanın.
       * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="verification-methods"></a>Doğrulama yöntemleri
 
-Hizmet ayarları portalındaki kullanıcılarınız için kullanılabilir doğrulama yöntemlerini seçebilirsiniz. Kullanıcılarınız Azure Multi-Factor Authentication hesaplarını kaydettiğinde, etkinleştirdiğiniz seçeneklerden tercih edilen doğrulama yöntemini seçer. Kullanıcı kayıt işlemine kılavuzluk, [Multi-Factor Authentication için hesabımı ayarlama](../user-help/multi-factor-authentication-end-user-first-time.md)bölümünde verilmiştir.
+Hizmet ayarları portalındaki kullanıcılarınız için kullanılabilir doğrulama yöntemlerini seçebilirsiniz. Kullanıcılarınız Azure AD Multi-Factor Authentication hesaplarını kaydettiğinde, etkinleştirdiğiniz seçeneklerden tercih edilen doğrulama yöntemini seçer. Kullanıcı kayıt işlemine kılavuzluk, [Multi-Factor Authentication için hesabımı ayarlama](../user-help/multi-factor-authentication-end-user-first-time.md)bölümünde verilmiştir.
 
 Aşağıdaki doğrulama yöntemleri kullanılabilir:
 
@@ -328,10 +328,10 @@ Daha fazla bilgi için bkz. [Azure AD 'de hangi kimlik doğrulama ve doğrulama 
 
 Doğrulama yöntemlerini etkinleştirmek veya devre dışı bırakmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
+1. Azure portal, **Azure Active Directory** arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**'ı seçin.
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
-1. **Hizmet ayarları** sayfasında, **doğrulama seçenekleri**altında kullanıcılarınıza sağlanacak yöntemlerin seçin/seçimini kaldırın.
+1. **Hizmet ayarları** sayfasında, **doğrulama seçenekleri** altında kullanıcılarınıza sağlanacak yöntemlerin seçin/seçimini kaldırın.
 1. **Kaydet**’e tıklayın.
 
 ## <a name="remember-multi-factor-authentication"></a>Multi-Factor Authentication anımsa
@@ -363,17 +363,17 @@ Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark e
 
 Kullanıcıların MFA durumunu hatırlamaları ve istemleri atlaması için seçeneğini etkinleştirmek ve yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
+1. Azure portal, **Azure Active Directory** arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**'ı seçin.
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
-1. **Hizmet ayarları** sayfasında, **Multi-Factor Authentication 'ı anımsa**altında, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
+1. **Hizmet ayarları** sayfasında, **Multi-Factor Authentication 'ı anımsa** altında, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
 1. Güvenilen cihazların Multi-Factor Authentication 'ı atlamasına izin verilecek gün sayısını ayarlayın. En iyi kullanıcı deneyimi için süreyi *90* veya daha fazla gün uzatın.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="mark-a-device-as-trusted"></a>Bir cihazı güvenilir olarak işaretle
 
-Multi-Factor Authentication hatırla özelliğini etkinleştirdikten sonra, kullanıcılar bir **daha sorma**seçeneğini belirleyerek oturum açtıklarında bir cihazı güvenilir olarak işaretleyebilir.
+Multi-Factor Authentication hatırla özelliğini etkinleştirdikten sonra, kullanıcılar bir **daha sorma** seçeneğini belirleyerek oturum açtıklarında bir cihazı güvenilir olarak işaretleyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Multi-Factor Authentication 'de kullanılabilecek yöntemler hakkında daha fazla bilgi için bkz. [Azure Active Directory hangi kimlik doğrulama ve doğrulama yöntemlerinin kullanılabildiği](concept-authentication-methods.md) .
+Azure AD Multi-Factor Authentication 'da kullanılabilecek yöntemler hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory hangi kimlik doğrulama ve doğrulama yöntemlerinin kullanılabildiği](concept-authentication-methods.md) .

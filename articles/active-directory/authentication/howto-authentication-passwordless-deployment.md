@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964885"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839582"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
 
@@ -67,9 +67,9 @@ Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önko
 
 | Önkoşul | Authenticator uygulaması | FIDO2 güvenlik anahtarları |
 | --- | --- | --- |
-| [Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) Için Birleşik kayıt](howto-registration-mfa-sspr-combined.md) etkin | √ | √ |
-| [Kullanıcılar, Azure Multi-Factor Authentication 'ı gerçekleştirebilir](howto-mfa-getstarted.md) | √ | √ |
-| [Kullanıcılar Azure Multi-Factor Authentication ve SSPR için kaydoldu](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| [Azure AD Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) Için Birleşik kayıt](howto-registration-mfa-sspr-combined.md) etkin | √ | √ |
+| [Kullanıcılar, Azure AD Multi-Factor Authentication gerçekleştirebilir](howto-mfa-getstarted.md) | √ | √ |
+| [Kullanıcılar Azure AD Multi-Factor Authentication ve SSPR için kaydoldu](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Kullanıcılar mobil cihazlarını Azure Active Directory 'e kaydetti](../devices/overview.md) | √ |   |
 | Microsoft Edge veya Mozilla Firefox gibi desteklenen bir tarayıcı kullanarak Windows 10 sürüm 1809 veya üzeri <br> (sürüm 67 veya üzeri). <br> *Microsoft, yerel destek için sürüm 1903 veya üstünü önerir*. |   | √ |
 | Uyumlu FIDO2 güvenlik anahtarları. [Microsoft tarafından sınanmış ve onaylanmış](./concept-authentication-passwordless.md) bir FIDO2 güvenlik cihazını veya başka BIR uyumlu FIDO2 güvenlik cihazını kullandığınızdan emin olun. |   | √ |
@@ -78,9 +78,9 @@ Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önko
 
 Windows Hello önkoşulları, şirket içi, karma veya yalnızca bulut yapılandırmasında dağıtım yapıp etmemediklerine oldukça bağlıdır. Daha fazla bilgi için bkz. [iş Için Windows Hello önkoşulların tam listesi](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
-Kullanıcılar, Azure Multi-Factor Authentication kayıt akışının bir parçası olarak parolasız yöntemini kaydeder. Bir Kullanıcı adı ve parola ile çok faktörlü kimlik doğrulaması, başka bir kayıtlı yöntemle birlikte, telefon veya güvenlik anahtarını bazı senaryolarda kullanamamaları durumunda geri dönüş olarak kullanılabilir.
+Kullanıcılar, Azure AD Multi-Factor Authentication kayıt akışının bir parçası olarak parolasız yöntemini kaydeder. Bir Kullanıcı adı ve parola ile çok faktörlü kimlik doğrulaması, başka bir kayıtlı yöntemle birlikte, telefon veya güvenlik anahtarını bazı senaryolarda kullanamamaları durumunda geri dönüş olarak kullanılabilir.
 
 ### <a name="licensing"></a>Lisanslama 
 Passwordless kimlik doğrulaması için ek bir ücret yoktur, ancak bazı Önkoşullar Premium bir abonelik gerektirebilir. [Azure Active Directory lisanslama sayfasında](https://azure.microsoft.com/pricing/details/active-directory/)ayrıntılı özellik ve lisanslama bilgileri için. 
@@ -140,7 +140,7 @@ Her iOS veya Android telefonunu güçlü, passworddaha az bir kimlik bilgisine d
 
 **AD FS tümleştirme** -kullanıcı, Microsoft Authenticator paroladışı kimlik bilgisini etkinleştirmesidir, bu kullanıcı için kimlik doğrulaması, onay için bir bildirim gönderir. Karma Kiracıdaki kullanıcıların, "parolanızı kullan" seçeneğini seçmedikçe, oturum açma için ADFS 'ye yönlendirilmeleri engellenir. Bu işlem, şirket içi koşullu erişim ilkelerinin yanı sıra geçişli kimlik doğrulama akışlarını da atlar. Ancak, bir *login_hint* belirtilirse, kullanıcı ADFS 'ye iletilir ve passwordless kimlik bilgisini kullanma seçeneğini atlar.
 
-Kuruluşun şirket içi Azure MFA sunucusu aracılığıyla çok faktörlü kimlik doğrulaması için etkinleştirilen **Azure Multi-Factor Authentication sunucusu** son kullanıcıları, tek bir parolasız telefon oturum açma kimlik bilgisi oluşturup kullanabilir. Kullanıcı, kimlik bilgileriyle Microsoft Authenticator birden çok yüklemeyi (5 veya daha fazla) yükseltmeyi denerse, bu değişiklik bir hata oluşmasına neden olabilir.
+Kuruluşun şirket içi Azure MFA sunucusu aracılığıyla çok faktörlü kimlik doğrulaması için etkinleştirilen **Azure AD Multi-Factor Authentication Server** son kullanıcıları, tek bir parolasız telefon oturum açma kimlik bilgisi oluşturup kullanabilir. Kullanıcı, kimlik bilgileriyle Microsoft Authenticator birden çok yüklemeyi (5 veya daha fazla) yükseltmeyi denerse, bu değişiklik bir hata oluşmasına neden olabilir.
 
 **Cihaz kaydı** -kimlik doğrulayıcı uygulamasını passwordless kimlik doğrulaması için kullanmak Için CIHAZıN Azure AD kiracısında kayıtlı olması ve paylaşılan bir cihaz olması gerekir. Bir cihaz yalnızca tek bir kiracıda kaydedilebilir. Bu sınır, kimlik doğrulayıcı uygulamasını kullanarak telefon oturumu açma için yalnızca bir iş veya okul hesabının desteklendiği anlamına gelir.
 
@@ -152,7 +152,7 @@ Güvenlik anahtarları ile kullanılabilen üç tür passwordless oturum açma d
 -    Karma Azure Active Directory katılmış Windows 10 cihazları (Önizleme)
      -    Hem bulut tabanlı hem de şirket içi kaynaklara erişim sağlar. Şirket içi kaynaklara erişim hakkında daha fazla bilgi için bkz. [FIDOP2 anahtarlarını kullanarak şirket içi kaynaklara yönelik SSO](./howto-authentication-passwordless-security-key-on-premises.md)
 
-**Uyumlu FIDO2 güvenlik anahtarlarını**etkinleştirmeniz gerekir. Microsoft [, FIDO2 anahtar satıcıları ile temel ortaklıklar](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)duyurmuştur.
+**Uyumlu FIDO2 güvenlik anahtarlarını** etkinleştirmeniz gerekir. Microsoft [, FIDO2 anahtar satıcıları ile temel ortaklıklar](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)duyurmuştur.
 
 **Azure AD Web Apps ve Azure AD Windows 'a katılmış cihazlar için**:
 
@@ -280,7 +280,7 @@ Aşağıda, güvenlik anahtarlarına sahip parolasız kimlik doğrulaması için
 
 Passwordless kimlik doğrulaması, son kullanıcılar üzerinde en az etkiyle hafif bir özelliktir ancak geri almak gerekebilir.
 
-Geri dönme, yöneticinin Azure Active Directory portalında oturum açmasını, istenen güçlü kimlik doğrulama yöntemlerini seçmesini ve Etkinleştir seçeneğini **Hayır**olarak değiştirmesini gerektirir. Bu işlem, tüm kullanıcılar için parolasız işlevselliği kapatır.
+Geri dönme, yöneticinin Azure Active Directory portalında oturum açmasını, istenen güçlü kimlik doğrulama yöntemlerini seçmesini ve Etkinleştir seçeneğini **Hayır** olarak değiştirmesini gerektirir. Bu işlem, tüm kullanıcılar için parolasız işlevselliği kapatır.
 
 FIDO2 güvenlik cihazlarını zaten kaydetmiş olan kullanıcıların, bir sonraki oturum açma sırasında güvenlik cihazını kullanması istenir ve aşağıdaki hatayı görürsünüz:
 

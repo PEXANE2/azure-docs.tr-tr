@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05f3d422c9a504a0089290f3c2e1e68d809366ac
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9da0c00bd8498e3f43d5f8258308fbc010a6a274
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592966"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839531"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
 
@@ -29,14 +29,14 @@ Bu kimlik doğrulama teknolojisi, mobil dahil olmak üzere herhangi bir cihaz pl
 Microsoft Authenticator uygulamadan telefonla oturum açmayı etkinleştiren kişiler, uygulamalarından bir sayıya dokunmasını isteyen bir ileti görür. İçin Kullanıcı adı veya parola istenmez. Uygulamada oturum açma işlemini gerçekleştirmek için, bir kullanıcının sonraki eylemleri tamamlaması gerekir:
 
 1. Numarayı eşleştirin.
-2. **Onayla** ’yı seçin.
+2. **Onayla**’yı seçin.
 3. PIN veya biyometri sağlayın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Microsoft Authenticator uygulamasıyla passwordless telefon oturum açma 'yı kullanmak için aşağıdaki önkoşulların karşılanması gerekir:
 
-- Doğrulama yöntemi olarak izin verilen anında iletme bildirimleri ile Azure Multi-Factor Authentication.
+- Bir doğrulama yöntemi olarak izin verilen anında iletme bildirimleri ile Azure AD Multi-Factor Authentication.
 - İOS 8,0 veya üzerini çalıştıran cihazlarda yüklü Microsoft Authenticator en son sürümü veya Android 6,0 veya üzeri.
 
 > [!NOTE]
@@ -61,17 +61,17 @@ Parolasız telefon oturumu açma kimlik doğrulama yöntemini etkinleştirmek i�
 1. **Passwordless telefon oturumu açma** altında aşağıdaki seçenekleri belirleyin:
    1. **Etkinleştir** -Evet veya Hayır
    1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin
-1. Yeni ilkeyi uygulamak için **Kaydet** ' i seçin.
+1. Yeni ilkeyi uygulamak için **Kaydet**' i seçin.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Microsoft Authenticator Kullanıcı kaydı ve yönetimi
 
 Kullanıcılar, aşağıdaki adımları kullanarak kendilerini Azure AD 'nin passwordless kimlik doğrulama yöntemine kaydeder:
 
 1. [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) adresine göz atın.
-1. Oturum açın, ardından **Yöntem ekle > Authenticator uygulaması** ' nı ve ardından **Ekle** ' yi seçerek Authenticator uygulamasını ekleyin.
+1. Oturum açın, ardından **Yöntem ekle > Authenticator uygulaması**' nı ve ardından **Ekle**' yi seçerek Authenticator uygulamasını ekleyin.
 1. Microsoft Authenticator uygulamasını cihazınıza yüklemek ve yapılandırmak için yönergeleri izleyin.
 1. Doğrulayıcı yapılandırmasını tamamladıktan sonra **bitti** ' yi seçin.
-1. **Microsoft Authenticator** , kayıtlı hesabın açılan menüsünde **telefonla oturum açmayı etkinleştir** ' i seçin.
+1. **Microsoft Authenticator**, kayıtlı hesabın açılan menüsünde **telefonla oturum açmayı etkinleştir** ' i seçin.
 1. Parolasız telefon oturumu açma hesabı kaydını silmek için uygulamadaki yönergeleri izleyin.
 
 Bir kuruluş, kullanıcıların bir parola kullanmadan telefonlarıyla oturum açmasını yönlendirebilir. Microsoft Authenticator uygulamasını yapılandırma ve telefonla oturum açmayı etkinleştirme hakkında daha fazla bilgi için, bkz. [Microsoft Authenticator uygulamasını kullanarak hesaplarınızda oturum açma](../user-help/user-help-auth-app-sign-in.md).
@@ -89,7 +89,7 @@ Bir Kullanıcı, aşağıdaki tüm eylemler tamamlandıktan sonra, passwordless 
 Kullanıcı telefon oturum açma işlemini ilk kez başlattığında, Kullanıcı aşağıdaki adımları gerçekleştirir:
 
 1. Oturum açma sayfasında adını girer.
-2. **İleri** ' ye seçer.
+2. **İleri**' ye seçer.
 3. Gerekirse, **oturum açmak Için başka yollar** seçer.
 4. **Microsoft Authenticator uygulamamda bir Isteği Onayla** seçimini seçer.
 
@@ -141,4 +141,4 @@ Azure AD kimlik doğrulaması ve parolasız yöntemler hakkında bilgi edinmek i
 
 - [Passwordless kimlik doğrulamasının nasıl çalıştığını öğrenin](concept-authentication-passwordless.md)
 - [Cihaz kaydı hakkında bilgi edinin](../devices/overview.md#getting-devices-in-azure-ad)
-- [Azure Multi-Factor Authentication hakkında bilgi edinin](../authentication/howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication hakkında bilgi edinin](../authentication/howto-mfa-getstarted.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6af2f65aa2e2052a79f4c5cffd7ff4a38a9fc838
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366573"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839718"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
@@ -65,11 +65,11 @@ Kiracınıza yönetici erişiminin kilidini açmak için acil durum erişim hesa
 
 Aşağıdaki erişim denetimlerini, kuruluş için mevcut koşullu erişim ilkelerinize ekleyin:
 
-1. Farklı iletişim kanallarına dayanan her bir kullanıcı için birden çok kimlik doğrulama yöntemi sağlayın (örneğin, Microsoft Authenticator uygulaması (internet tabanlı), OATH belirteci (cihazda oluşturulan) ve SMS (telephonic). Aşağıdaki PowerShell betiği, kullanıcılarınızın kaydolmaları gereken ek yöntemleri ( [Azure MFA kimlik doğrulama yöntemi analizi Için betik](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)) önceden belirlemenize yardımcı olur.
+1. Farklı iletişim kanallarına dayanan her bir kullanıcı için birden çok kimlik doğrulama yöntemi sağlayın (örneğin, Microsoft Authenticator uygulaması (internet tabanlı), OATH belirteci (cihazda oluşturulan) ve SMS (telephonic). Aşağıdaki PowerShell betiği, kullanıcılarınızın kaydolmaları gereken ek yöntemleri: [Azure AD MFA kimlik doğrulama yöntemi analizi Için betik](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)olarak önceden belirlemenize yardımcı olur.
 2. Windows 10 cihazlarında Iş için Windows Hello 'Yu, doğrudan cihaz oturum açma işleminden MFA gereksinimlerini karşılayacak şekilde dağıtın.
 3. Güvenilen cihazları [Azure AD hibrit JOIN](../devices/overview.md) veya [Microsoft Intune yönetilen cihazlar](/intune/planning-guide)aracılığıyla kullanın. Güvenilen cihazlar, kullanıcıya MFA sınaması olmadan ilkenin güçlü kimlik doğrulama gereksinimlerini karşılayabildiğinden, Kullanıcı deneyimini iyileştirir. Daha sonra MFA, yeni bir cihaz kaydedilirken ve güvenilir olmayan cihazlardan uygulamalara veya kaynaklara erişirken gerekecektir.
 4. Kullanıcı veya oturum açma, sabit MFA ilkelerinin yerine risk altında olduğunda erişimi önleyen Azure AD kimlik koruması risk tabanlı ilkelerini kullanın.
-5. Azure MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](../manage-apps/view-applications-portal.md) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
+5. Azure AD MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](../manage-apps/view-applications-portal.md) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
 
 >[!NOTE]
 > Risk tabanlı ilkeler için [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) lisansları gerekir.
@@ -112,7 +112,7 @@ Alternatif olarak, kuruluşunuz da yedek ilkeler oluşturabilir. Yedek ilkeler o
 
 #### <a name="microsoft-recommendations"></a>Microsoft önerileri
 
-Bir yedek koşullu erişim ilkesi, Azure MFA, üçüncü taraf MFA, risk tabanlı veya cihaz tabanlı denetimleri atuygulayan bir **yedekleme ilkesidir** . Bir yedek ilke etkinleştirildiğinde beklenmeyen kesintiyi en aza indirmek için, ilke kullanımda olmadığında yalnızca rapor modunda kalmalıdır. Yöneticiler, koşullu erişim öngörüleri çalışma kitabını kullanarak, acil durum ilkelerinin olası etkisini izleyebilir. Kuruluşunuz, acil durum planınızı etkinleştirmeye karar verdiğinde, Yöneticiler ilkeyi etkinleştirebilir ve normal denetim tabanlı ilkeleri devre dışı bırakabilir.
+Bir yedek koşullu erişim ilkesi, Azure AD MFA, üçüncü taraf MFA, risk tabanlı veya cihaz tabanlı denetimleri atlayacak bir **yedekleme ilkesidir** . Bir yedek ilke etkinleştirildiğinde beklenmeyen kesintiyi en aza indirmek için, ilke kullanımda olmadığında yalnızca rapor modunda kalmalıdır. Yöneticiler, koşullu erişim öngörüleri çalışma kitabını kullanarak, acil durum ilkelerinin olası etkisini izleyebilir. Kuruluşunuz, acil durum planınızı etkinleştirmeye karar verdiğinde, Yöneticiler ilkeyi etkinleştirebilir ve normal denetim tabanlı ilkeleri devre dışı bırakabilir.
 
 >[!IMPORTANT]
 > Kullanıcılarınız için güvenliği zorlayan ilkelerin devre dışı bırakılması, geçici olarak bile, acil durum planı çalışırken güvenlik duruşunuzu azaltır.
@@ -120,7 +120,7 @@ Bir yedek koşullu erişim ilkesi, Azure MFA, üçüncü taraf MFA, risk tabanl�
 * Bir kimlik bilgisi türü veya bir erişim denetimi mekanizmasının uygulamalarınıza erişimi etkilediği bir geri dönüş ilkeleri kümesi yapılandırın. Yalnızca rapor olarak etki alanına katılmayı gerektiren bir ilke yapılandırma olarak, bir üçüncü taraf MFA sağlayıcısı gerektiren etkin bir ilke için yedekleme olarak.
 * [Parola Kılavuzu](https://aka.ms/passwordguidance) teknik incelemesindeki UYGULAMALARı izleyerek MFA gerekli olmadığında, kötü aktör tahmin parolalarının riskini azaltın.
 * Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure ad Self-Service parola sıfırlama (SSPR)](./tutorial-enable-sspr.md) ve [Azure AD parola korumasını](./howto-password-ban-bad-on-premises-deploy.md) dağıtın.
-* Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örneğin:
+* Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örnek:
   * Exchange ve SharePoint 'e kısıtlı oturum talebi gönderen bir yedekleme ilkesi yapılandırın.
   * Kuruluşunuz Microsoft Cloud App Security kullanıyorsa, MCAS 'nin bulunduğu ilkeye geri dönerek MCAS, salt okuma erişimine Izin verir ancak karşıya yüklemelerden yararlanır.
 * Kesintilerinizi bir kesinti sırasında bulmanın kolay olduğundan emin olmak için ilkelerinizi adlandırın. İlke adına aşağıdaki öğeleri ekleyin:
@@ -138,7 +138,7 @@ Acil durum ilkeleri için bu adlandırma standardı aşağıdaki gibi olacaktır
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Aşağıdaki örnek: **görev açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek Için örnek a-acil durum CA ilkesi**tipik bir kurumsal öneme sahiptir. Bu senaryoda, kuruluş genellikle tüm Exchange Online ve SharePoint Online erişimi için MFA gerektirir ve bu durumda, müşterinin bir kesinti (Azure MFA, şirket içi MFA sağlayıcısı veya üçüncü taraf MFA) vardır. Bu ilke, belirli bir hedeflenmiş kullanıcıların, güvenilen Windows cihazlarından bu uygulamalara erişmesine izin vererek bu kesinti için güvenlik altına alınır. Ayrıca, bu kısıtlamalardan acil durum hesaplarını ve çekirdek yöneticileri de hariç tutar. Daha sonra hedeflenen kullanıcılar Exchange Online ve SharePoint Online 'a erişim kazanacaktır, diğer kullanıcılar da kesinti nedeniyle uygulamalara erişim sahibi olmaya devam eder. Bu örnek, hedef kullanıcılarla adlandırılmış bir ağ **konumu corpnetwork** ve bir güvenlik **grubu gerektirir** , çekirdek yöneticilerle **coreadmins** adlı bir grup ve acil durum erişim hesapları **ile acil durum adı adlı** bir grup gerekir. Acil durum, istenen erişimi sağlamak için dört ilke gerektirir. 
+Aşağıdaki örnek: **görev açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek Için örnek a-acil durum CA ilkesi** tipik bir kurumsal öneme sahiptir. Bu senaryoda, kuruluş genellikle tüm Exchange Online ve SharePoint Online erişimi için MFA gerektirir ve bu durumda, müşterinin bir kesinti (Azure AD MFA, şirket içi MFA sağlayıcısı veya üçüncü taraf MFA) vardır. Bu ilke, belirli bir hedeflenmiş kullanıcıların, güvenilen Windows cihazlarından bu uygulamalara erişmesine izin vererek bu kesinti için güvenlik altına alınır. Ayrıca, bu kısıtlamalardan acil durum hesaplarını ve çekirdek yöneticileri de hariç tutar. Daha sonra hedeflenen kullanıcılar Exchange Online ve SharePoint Online 'a erişim kazanacaktır, diğer kullanıcılar da kesinti nedeniyle uygulamalara erişim sahibi olmaya devam eder. Bu örnek, hedef kullanıcılarla adlandırılmış bir ağ **konumu corpnetwork** ve bir güvenlik **grubu gerektirir** , çekirdek yöneticilerle **coreadmins** adlı bir grup ve acil durum erişim hesapları **ile acil durum adı adlı** bir grup gerekir. Acil durum, istenen erişimi sağlamak için dört ilke gerektirir. 
 
 **Örnek A-iş açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek için acil durum CA ilkeleri:**
 
@@ -208,7 +208,7 @@ Etkinleştirme sırası:
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>Şirket içi kaynaklardan (NPS uzantısı) Kullanıcı kilitlemesi için kıdır
 
-Azure MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](../manage-apps/view-applications-portal.md) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
+Azure AD MFA NPS uzantısını kullanarak VPN erişimini koruyorsanız, VPN çözümünüzü bir [SAML uygulaması](../manage-apps/view-applications-portal.md) olarak Federasyonu ve uygulama kategorisini aşağıda önerilen şekilde saptamayı düşünün. 
 
 VPN ve Uzak Masaüstü Ağ Geçidi gibi şirket içi kaynakları korumak için Azure AD MFA NPS uzantısını dağıttıysanız, MFA ile bir acil durum durumunda MFA 'yı devre dışı bırakmak için hazır olduğunuzda önceden göz önünde bulundurmanız gerekir.
 
@@ -280,7 +280,7 @@ Kuruluşunuz Kullanıcı başına MFA eski ilkelerini kullanıyorsa, aşağıdak
  > Erişimi engellemeyi kaldırmak için güvenilen IP adreslerini genişletirseniz, IP adresleriyle ilişkili risk algılamaları (örneğin, imkansız seyahat veya bilmediğiniz konumlar) oluşturulmaz.
 
 >[!NOTE]
- > Azure MFA için [Güvenilen IP 'lerin](./howto-mfa-mfasettings.md) yapılandırılması yalnızca [Azure AD Premium lisanslarla](./concept-mfa-licensing.md)kullanılabilir.
+ > Azure AD MFA için [Güvenilen IP 'lerin](./howto-mfa-mfasettings.md) yapılandırılması yalnızca [Azure AD Premium lisanslarıyla](./concept-mfa-licensing.md)kullanılabilir.
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03989e37ac05228dade2fdcda43856e8a5240865
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fe8a916f4c3ce8869b6b487e33dcdecc061f8cbf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964919"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839599"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanım & öngörüleri (Önizleme)
 
-Kullanım & öngörüleri, Azure Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak sağlar. Bu raporlama özelliği, kuruluşunuzda hangi yöntemlerin kaydedildiğini ve bunların nasıl kullanıldığını anlamak için gerekenleri sağlar.
+Kullanım & öngörüleri, Azure AD Multi-Factor Authentication ve self servis parola sıfırlama gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak sağlar. Bu raporlama özelliği, kuruluşunuzda hangi yöntemlerin kaydedildiğini ve bunların nasıl kullanıldığını anlamak için gerekenleri sağlar.
 
 ## <a name="permissions-and-licenses"></a>İzinler ve lisanslar
 
@@ -31,14 +31,14 @@ Aşağıdaki roller kullanım ve öngörülere erişebilir:
 - Güvenlik Yöneticisi
 - Rapor okuyucu
 
-Kullanım ve Öngörüler 'e erişmek için ek lisans gerekmez. Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) lisanslama bilgileri [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
+Kullanım ve Öngörüler 'e erişmek için ek lisans gerekmez. Azure AD Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) lisanslama bilgileri [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
 Kimlik doğrulama yöntemi kullanımı ve öngörülerine erişmek için:
 
 1. [Azure Portal](https://portal.azure.com)gidin.
-1. **Azure Active Directory**  >  **parola sıfırlama**  >  **kullanımı & öngörülerine**gidin.
+1. **Azure Active Directory**  >  **parola sıfırlama**  >  **kullanımı & öngörülerine** gidin.
 1. **Kayıt** veya **kullanım** genel bakışlarından, gereksinimlerinize göre filtrelemek için önceden filtrelenmiş raporları açmayı seçebilirsiniz.
 
 ![Kullanım & öngörülerine genel bakış](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
@@ -61,11 +61,11 @@ Sağ üst köşedeki denetimi kullanarak, kayıtlarda gösterilen denetim verile
 
 ### <a name="registration-details"></a>Kayıt ayrıntıları
 
-**Kayıtlı kullanıcılar**, **etkin**kullanıcılar veya **kullanıcılara** uygun kutucuk ya da Öngörüler ' e tıkladığınızda kayıt ayrıntılarına bu bilgiler gönderilir.
+**Kayıtlı kullanıcılar**, **etkin** kullanıcılar veya **kullanıcılara** uygun kutucuk ya da Öngörüler ' e tıkladığınızda kayıt ayrıntılarına bu bilgiler gönderilir.
 
 Kayıt ayrıntıları raporu, her kullanıcı için aşağıdaki bilgileri gösterir:
 
-- Name
+- Ad
 - Kullanıcı adı
 - Kayıt durumu (tümü, kayıtlı, kayıtlı değil)
 - Etkin durum (tümü, etkin, etkin değil)
@@ -80,7 +80,7 @@ Kayıt veya sıfırlama grafiklerini tıklatmak sizi sıfırlama ayrıntıların
 
 Ayrıntıları Sıfırla raporu, son 30 günden aşağıdakiler dahil olmak üzere kayıt ve sıfırlama olaylarını gösterir:
 
-- Name
+- Ad
 - Kullanıcı adı
 - Özellik (tümü, kayıt, sıfırlama)
 - Kimlik doğrulama yöntemi (uygulama bildirimi, uygulama kodu, telefon görüşmesi, Office çağrısı, SMS, e-posta, güvenlik soruları)
@@ -92,7 +92,7 @@ Listenin en üstündeki denetimleri kullanarak bir Kullanıcı arayabilir ve gö
 
 Bu raporlarda gösterilen veriler 60 dakikaya kadar ertelenecek. Verilerinizin en son ne olduğunu belirlemek için Azure portal bir "Son yenilenme" alanı bulunur.
 
-Kullanım ve Öngörüler verileri Azure Multi-Factor Authentication etkinlik raporlarının veya Azure AD oturum açma raporu 'nda bulunan bilgilerin yerini almaz.
+Kullanım ve Öngörüler verileri Azure AD Multi-Factor Authentication etkinlik raporlarının veya Azure AD oturum açma raporu 'nda bulunan bilgilerin yerini almaz.
 
 Rapor şu anda dış kullanıcıları dışarıda bırakacak şekilde filtrelenebilir.
 

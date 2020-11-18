@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dbe22a1af8fbf61629fa9df1267416ca3822884b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992823"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840092"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
@@ -44,7 +44,7 @@ Aşağıdaki adımlarda, oturum açma işleminin Azure AD ile nasıl çalıştı
 
 ![Iş için Windows Hello ile Kullanıcı oturumu açma ile ilgili adımları özetleyen diyagram](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
-1. Kullanıcı, Biyometri veya PIN hareketini kullanarak Windows 'da oturum açar. Hareket, Iş için Windows Hello özel anahtarının kilidini açar ve Cloud *AP sağlayıcısı*olarak adlandırılan bulut kimlik doğrulaması güvenlik desteği sağlayıcısına gönderilir.
+1. Kullanıcı, Biyometri veya PIN hareketini kullanarak Windows 'da oturum açar. Hareket, Iş için Windows Hello özel anahtarının kilidini açar ve Cloud *AP sağlayıcısı* olarak adlandırılan bulut kimlik doğrulaması güvenlik desteği sağlayıcısına gönderilir.
 1. Cloud AP sağlayıcısı, Azure AD 'den bir kerelik anahtar (yalnızca bir kez kullanılabilecek rastgele rastgele bir sayı) ister.
 1. Azure AD, 5 dakika boyunca geçerli bir nonce döndürür.
 1. Cloud AP sağlayıcısı, kullanıcının özel anahtarını kullanarak nonce 'yi imzalar ve imzalı nonce 'yi Azure AD 'ye döndürür.
@@ -62,7 +62,7 @@ Ayrıca, çalışanın telefonunun parolasız bir kimlik doğrulama yöntemi olm
 
 Authenticator uygulaması tüm iOS veya Android telefonlarına güçlü, passworddaha az bir kimlik bilgisi getirir. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenebilecek bir sayıyla eşleşen bir sayı ile eşleşen ve sonra biyometrik (dokunmatik veya yüz) veya PIN 'i (touch veya yüz) veya PIN 'ini kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. Yükleme ayrıntıları için [Microsoft Authenticator uygulamayı indirip](../user-help/user-help-auth-app-download-install.md) yükleme bölümüne bakın.
 
-Azure AD 'ye Microsoft Authenticator App ile passwordless oturum açma Şu anda önizleme aşamasındadır. Azure Multi-Factor Authentication için ikincil kimlik doğrulaması için Microsoft Authenticator uygulamasının kullanımı, self servis parola sıfırlama (SSPR) veya OATH yazılım belirteçleri GA 'dir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Azure AD 'ye Microsoft Authenticator App ile passwordless oturum açma Şu anda önizleme aşamasındadır. Azure AD Multi-Factor Authentication için ikincil kimlik doğrulaması için Microsoft Authenticator uygulamasının kullanımı, self servis parola sıfırlama (SSPR) veya OATH yazılım belirteçleri GA 'dir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Kimlik doğrulayıcı uygulamasını kullanan passwordless kimlik doğrulaması, Iş için Windows Hello ile aynı temel kalıbı izler. Azure AD 'nin kullanılan Microsoft Authenticator uygulama sürümünü bulabilmesi için, kullanıcının tanımlanması gerektiğinden çok daha karmaşıktır:
 

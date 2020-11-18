@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication için uygulama parolalarını Yapılandırma-Azure Active Directory
-description: Azure Multi-Factor Authentication eski uygulamalar için uygulama parolalarını Yapılandırma ve kullanma hakkında bilgi edinin
+title: Azure AD Multi-Factor Authentication için uygulama parolalarını Yapılandırma-Azure Active Directory
+description: Azure AD 'de eski uygulamalar için uygulama parolalarını Yapılandırma ve kullanma hakkında bilgi edinin Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85031896a196dd742868466243dd401345b0bc97
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 282bf6a30d8ff70440999ff3763c0d5544ef428d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964511"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839276"
 ---
-# <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure Multi-Factor Authentication etkinleştirme ve kullanma
+# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Uygulama parolalarını kullanarak eski uygulamalarla Azure AD Multi-Factor Authentication etkinleştirme ve kullanma
 
-Office 2010 veya önceki bir sürümü ve iOS 11 ' den önceki Apple Mail gibi bazı eski, tarayıcı olmayan uygulamalar, kimlik doğrulama işleminde duraklamaları veya molaları anlamıyor. Bir Kullanıcı Azure Multi-Factor Authentication için etkinleştirilmişse ve bu eski, tarayıcı olmayan uygulamalardan birini kullanmaya çalışırsa, kimlik doğrulaması başarılı bir şekilde doğrulanamazlar. Bu uygulamaları Azure Multi-Factor Authentication Kullanıcı hesapları için etkin olarak güvenli bir şekilde kullanmak için uygulama parolaları ' nı kullanabilirsiniz. Bu uygulama parolaları, uygulamanın çok faktörlü kimlik doğrulamasını atlayıp doğru şekilde çalışmasını sağlamak için geleneksel parolanızı değiştirdi.
+Office 2010 veya önceki bir sürümü ve iOS 11 ' den önceki Apple Mail gibi bazı eski, tarayıcı olmayan uygulamalar, kimlik doğrulama işleminde duraklamaları veya molaları anlamıyor. Bir Kullanıcı Azure AD Multi-Factor Authentication için etkinleştirilmişse ve bu eski, tarayıcı olmayan uygulamalardan birini kullanmaya çalışırsa, kimlik doğrulaması başarılı bir şekilde doğrulanamazlar. Bu uygulamaları, Azure AD Multi-Factor Authentication Kullanıcı hesapları için etkin olarak güvenli bir şekilde kullanmak için, uygulama parolaları ' nı kullanabilirsiniz. Bu uygulama parolaları, uygulamanın çok faktörlü kimlik doğrulamasını atlayıp doğru şekilde çalışmasını sağlamak için geleneksel parolanızı değiştirdi.
 
 Modern kimlik doğrulaması Microsoft Office 2013 istemcileri ve sonraki sürümler için desteklenir. Outlook dahil Office 2013 istemcileri, modern kimlik doğrulama protokollerini destekler ve iki adımlı doğrulama ile çalışmak üzere etkinleştirilebilir. İstemci etkinleştirildikten sonra istemci için uygulama parolaları gerekli değildir.
 
@@ -31,7 +31,7 @@ Bu makalede, çok faktörlü kimlik doğrulama istemlerini desteklemeyen eski uy
 
 ## <a name="overview-and-considerations"></a>Genel bakış ve noktalar
 
-Bir kullanıcı hesabı Azure Multi-Factor Authentication için etkinleştirildiğinde, normal oturum açma istemi ek doğrulama isteği tarafından kesintiye uğrar. Bazı eski uygulamalar, oturum açma sürecinde bu kesmeyi anlamıyor, kimlik doğrulaması başarısız olur. Kullanıcı hesabı güvenliğini sürdürmek ve Azure Multi-Factor Authentication 'yi etkin bırakmak için kullanıcının normal Kullanıcı adı ve parolası yerine uygulama parolaları kullanılabilir. Oturum açma sırasında bir uygulama parolası kullanıldığında, ek bir doğrulama istemi yoktur, bu nedenle kimlik doğrulama başarılı olur.
+Bir kullanıcı hesabı Azure AD Multi-Factor Authentication için etkinleştirildiğinde, normal oturum açma istemi ek doğrulama isteği tarafından kesintiye uğrar. Bazı eski uygulamalar, oturum açma sürecinde bu kesmeyi anlamıyor, kimlik doğrulaması başarısız olur. Kullanıcı hesabı güvenliğini sürdürmek ve Azure AD Multi-Factor Authentication 'yi etkin bırakmak için, kullanıcının normal Kullanıcı adı ve parolası yerine uygulama parolaları kullanılabilir. Oturum açma sırasında bir uygulama parolası kullanıldığında, ek bir doğrulama istemi yoktur, bu nedenle kimlik doğrulama başarılı olur.
 
 Uygulama parolaları otomatik olarak oluşturulur, Kullanıcı tarafından belirtilmez. Otomatik olarak oluşturulan bu parola, bir saldırganın tahmin etmesini zorlaştırır, bu nedenle daha güvenlidir. Kullanıcılar, uygulama parolaları her uygulama için yalnızca bir kez girildiğinde parolaları izlemek veya her seferinde onları girmek zorunda kalmaz.
 
@@ -39,7 +39,7 @@ Uygulama parolaları kullandığınızda aşağıdaki noktalar geçerlidir:
 
 * Kullanıcı başına 40 uygulama parolalarından oluşan bir sınır vardır.
 * Uygulama parolası iş veya okul hesabı dışında olmadığı için parolaları önbelleğe alan ve bunları şirket içi senaryolarda kullanan uygulamalar başarısız olabilir. Bu senaryoya bir örnek, şirket içi Exchange e-postalarının bir örneğidir, ancak Arşivlenmiş posta bulutta yer alır. Bu senaryoda, aynı parola çalışmaz.
-* Azure Multi-Factor Authentication bir kullanıcının hesabında etkinleştirildikten sonra, uygulama parolaları Outlook ve Microsoft Skype Kurumsal gibi tarayıcı olmayan birçok istemci ile birlikte kullanılabilir. Ancak, Windows PowerShell gibi tarayıcı olmayan uygulamalar aracılığıyla Uygulama parolaları kullanılarak yönetim eylemleri gerçekleştirilemez. Kullanıcı bir yönetici hesabına sahip olsa bile eylemler gerçekleştirilemez.
+* Azure AD Multi-Factor Authentication bir kullanıcının hesabında etkinleştirildikten sonra, uygulama parolaları Outlook ve Microsoft Skype Kurumsal gibi tarayıcı olmayan birçok istemci ile birlikte kullanılabilir. Ancak, Windows PowerShell gibi tarayıcı olmayan uygulamalar aracılığıyla Uygulama parolaları kullanılarak yönetim eylemleri gerçekleştirilemez. Kullanıcı bir yönetici hesabına sahip olsa bile eylemler gerçekleştirilemez.
     * PowerShell betikleri çalıştırmak için güçlü parolalı bir hizmet hesabı oluşturun ve iki adımlı doğrulama için hesabı etkinleştirmeyin.
 * Bir kullanıcı hesabının güvenliğinin aşıldığını ve hesap parolasının iptal/sıfırlama olduğunu düşünüyorsanız, uygulama parolalarının de güncelleştirilmeleri gerekir. Kullanıcı hesabı parolası iptal edildiğinde/sıfırlandığında, uygulama parolaları otomatik olarak iptal edilmez. Kullanıcı var olan uygulama parolalarını silip yenilerini oluşturmalıdır.
    * Daha fazla bilgi için bkz. [ek güvenlik doğrulama sayfasından uygulama parolaları oluşturma ve silme](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page).
@@ -55,7 +55,7 @@ Her uygulama için bir uygulama parolası yerine her cihaz için bir uygulama pa
 
 ## <a name="federated-or-single-sign-on-app-passwords"></a>Federasyon veya çoklu oturum açma uygulama parolaları
 
-Azure AD, Federasyon veya çoklu oturum açma (SSO) ile şirket içi Active Directory Domain Services (AD DS) destekler. Kuruluşunuz Azure AD ile federe ise ve Azure Multi-Factor Authentication kullanıyorsanız, aşağıdaki uygulama parolası konuları geçerlidir:
+Azure AD, Federasyon veya çoklu oturum açma (SSO) ile şirket içi Active Directory Domain Services (AD DS) destekler. Kuruluşunuz Azure AD ile federe ise ve Azure AD Multi-Factor Authentication kullanıyorsanız, aşağıdaki uygulama parolası konuları geçerlidir:
 
 >[!NOTE]
 > Aşağıdaki noktaları yalnızca Federal (SSO) müşteriler için geçerlidir.
@@ -72,7 +72,7 @@ Bazı gelişmiş mimariler, istemcilerle Multi-Factor Authentication için kimli
 * Şirket içi Active Directory örneğiniz Azure AD ile federe olarak sağlanır.
 * Exchange Online 'ı kullanıyorsunuz.
 * Skype Kurumsal Şirket içi 'ı kullanıyorsunuz.
-* Azure Multi-Factor Authentication kullanıyorsunuz.
+* Azure AD Multi-Factor Authentication kullanırsınız.
 
 Bu senaryoda, aşağıdaki kimlik bilgilerini kullanırsınız:
 
@@ -84,7 +84,7 @@ Bu senaryoda, aşağıdaki kimlik bilgilerini kullanırsınız:
 Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıcıların bunları kullanabilmesi için uygulama parolaları özelliğinin etkinleştirilmesi gerekir. Kullanıcılara uygulama parolaları oluşturma yeteneği vermek için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory**arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
+2. **Azure Active Directory** arayıp seçin ve ardından **Kullanıcılar**' ı seçin.
 3. Gezinti çubuğundan *Kullanıcılar* penceresinin üst kısmında **Multi-Factor Authentication** ' yi seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **kullanıcıların tarayıcı olmayan uygulamalara oturum açmak için uygulama parolaları oluşturmasına izin ver** seçeneğini belirleyin.
@@ -99,10 +99,10 @@ Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıc�
 
 ## <a name="create-an-app-password"></a>Uygulama parolası oluşturma
 
-Kullanıcılar Azure Multi-Factor Authentication ilk kaydını tamamlarında, kayıt işleminin sonunda uygulama parolaları oluşturma seçeneği vardır.
+Kullanıcılar Azure AD Multi-Factor Authentication ilk kayıtlarını tamamlarından, kayıt işleminin sonunda uygulama parolaları oluşturma seçeneği vardır.
 
-Kullanıcılar, kayıt sonrasında Uygulama parolaları da oluşturabilir. Kullanıcılarınıza yönelik daha fazla bilgi ve ayrıntılı adımlar için bkz. [Azure Multi-Factor Authentication uygulama parolaları nelerdir?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Kullanıcılar, kayıt sonrasında Uygulama parolaları da oluşturabilir. Kullanıcılarınıza yönelik daha fazla bilgi ve ayrıntılı adımlar için bkz. [Azure AD Multi-Factor Authentication 'de uygulama parolaları nelerdir?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcıların Azure Multi-Factor Authentication hızlı bir şekilde kaydetmesine izin verme hakkında daha fazla bilgi için bkz. [Birleşik güvenlik bilgileri kaydına genel bakış](concept-registration-mfa-sspr-combined.md).
+Kullanıcıların Azure AD Multi-Factor Authentication hızlı bir şekilde kaydetmesine izin verme hakkında daha fazla bilgi için bkz. [Birleşik güvenlik bilgileri kaydına genel bakış](concept-registration-mfa-sspr-combined.md).

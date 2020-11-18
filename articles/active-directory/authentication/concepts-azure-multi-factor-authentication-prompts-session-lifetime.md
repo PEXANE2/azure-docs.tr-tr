@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication istemler ve oturum ömrü
-description: Azure Multi-Factor Authentication ile yeniden kimlik doğrulama istemlerine yönelik önerilen yapılandırma ve oturum ömrünün nasıl uygulandığı hakkında bilgi edinin.
+title: Azure AD Multi-Factor Authentication istemler ve oturum ömrü
+description: Azure AD Multi-Factor Authentication ve oturum ömrünün nasıl uygulandığı ile ilgili yeniden kimlik doğrulama istemlerine yönelik önerilen yapılandırma hakkında bilgi edinin.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a759d4e686f43133716cc1c40237db74a015210
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87b30b12e75a583ccee9780f97a6492961365cca
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964953"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839684"
 ---
-# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
+# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
 
 Azure Active Directory (Azure AD), kullanıcıların hangi sıklıkta yeniden kimlik doğrulaması yapması gerektiğini tespit eden birden çok ayarı vardır. Bu yeniden kimlik doğrulaması, parola, FIDO veya passwordless Microsoft Authenticator gibi bir ilk faktörle veya Multi-Factor Authentication (MFA) gerçekleştirmeye yönelik olabilir. Bu yeniden kimlik doğrulama ayarlarını kendi ortamınız ve istediğiniz kullanıcı deneyimi için gerektiği şekilde yapılandırabilirsiniz.
 
@@ -41,7 +41,7 @@ Kullanıcılarınıza doğru sıklıkta oturum açmasını isteyerek kullanıcı
     * Açık *oturum açmış durumda kalır* seçeneğinin etkin kalmasını sağlayın ve kullanıcılarınıza bunu kabul etmesine kılavuzluk edin.
 * Mobil cihaz senaryolarında, kullanıcılarınızın Microsoft Authenticator uygulamasını kullanmasına emin olun. Bu uygulama, diğer Azure AD federasyon uygulamalarına yönelik bir aracı olarak kullanılır ve cihazdaki kimlik doğrulama istemlerini azaltır.
 
-Araştırmamız bu ayarların çoğu kiracılar için doğru olduğunu gösterir. Bu ayarların *MFA* ve *MAED olmaya devam ediyor*gibi bazı birleşimleri, kullanıcılarınızın çok sık kimlik doğrulamasına neden olabilir. Normal yeniden kimlik doğrulama istemleri, kullanıcı üretkenliği için hatalı ve saldırılara karşı daha savunmasız hale getirebilir.
+Araştırmamız bu ayarların çoğu kiracılar için doğru olduğunu gösterir. Bu ayarların *MFA* ve *MAED olmaya devam ediyor* gibi bazı birleşimleri, kullanıcılarınızın çok sık kimlik doğrulamasına neden olabilir. Normal yeniden kimlik doğrulama istemleri, kullanıcı üretkenliği için hatalı ve saldırılara karşı daha savunmasız hale getirebilir.
 
 ## <a name="azure-ad-session-lifetime-configuration-settings"></a>Azure AD oturum ömür yapılandırması ayarları
 
@@ -55,7 +55,7 @@ Kullanıcı, Azure AD 'de kimliği olmayan bir cihazda birden fazla MFA istemi g
 
 Azure AD 'de oturum ömrü için en kısıtlayıcı ilke, kullanıcının yeniden kimlik doğrulaması yapması gerekip gerekmediğini belirler. Şu senaryoyu göz önünde bulundurun:
 
-* Kalıcı bir tarayıcı tanımlama bilgisi kullanan *oturum açmış durumda kalır*ve
+* Kalıcı bir tarayıcı tanımlama bilgisi kullanan *oturum açmış durumda kalır* ve
 * Ayrıca *14 gün IÇIN MFA 'Yı hatırla* özelliğini de etkinleştirmeniz gerekir
 
 Bu örnek senaryoda, kullanıcının her 14 günde bir yeniden kimlik doğrulaması yapması gerekir. Bu davranış en kısıtlayıcı ilkeyi izler, ancak *benimle oturum açanlar* Kullanıcı tarafından tarayıcıda yeniden kimlik doğrulaması yapılmasını gerektirmez.
@@ -70,7 +70,7 @@ Kullanıcı oturum açık *kalsın* sayfasında **Evet** ' i seçtiğinde, taray
 
 ![Oturum açmış durumda kalması için örnek ekran görüntüsü](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/stay-signed-in-prompt.png)
 
-Azure AD Premium 1 lisansınız varsa *kalıcı tarayıcı oturumu*Için koşullu erişim ilkesi kullanmanızı öneririz. Bu ilke, *oturum açık kal mı?* ayarının üzerine yazar ve geliştirilmiş bir kullanıcı deneyimi sağlar. Azure AD Premium 1 lisansınız yoksa kullanıcılarınız için oturum açmış kalma ayarını etkinleştirmenizi öneririz.
+Azure AD Premium 1 lisansınız varsa *kalıcı tarayıcı oturumu* Için koşullu erişim ilkesi kullanmanızı öneririz. Bu ilke, *oturum açık kal mı?* ayarının üzerine yazar ve geliştirilmiş bir kullanıcı deneyimi sağlar. Azure AD Premium 1 lisansınız yoksa kullanıcılarınız için oturum açmış kalma ayarını etkinleştirmenizi öneririz.
 
 Kullanıcıların oturum açmasını sağlamak için seçeneğini yapılandırma hakkında daha fazla bilgi için bkz. [Azure AD oturum açma sayfanızı özelleştirme](../fundamentals/customize-branding.md#customize-your-azure-ad-sign-in-page).
 
@@ -96,7 +96,7 @@ Daha fazla bilgi için. bkz. [koşullu erişimle kimlik doğrulama oturumu yöne
 
 ### <a name="configurable-token-lifetimes"></a>Yapılandırılabilir belirteç yaşam süreleri
 
-Bu ayar Azure Active Directory tarafından verilen belirtecin ömür yapılandırmasına izin verir. Bu ilke, *koşullu erişimle kimlik doğrulama oturumu yönetimi ile*değiştirilmiştir. Günümüzde *yapılandırılabilir belirteç yaşam süreleri* kullanıyorsanız, geçiş Için koşullu erişim ilkelerine başlamasını öneririz.
+Bu ayar Azure Active Directory tarafından verilen belirtecin ömür yapılandırmasına izin verir. Bu ilke, *koşullu erişimle kimlik doğrulama oturumu yönetimi ile* değiştirilmiştir. Günümüzde *yapılandırılabilir belirteç yaşam süreleri* kullanıyorsanız, geçiş Için koşullu erişim ilkelerine başlamasını öneririz.
 
 ## <a name="review-your-tenant-configuration"></a>Kiracı yapılandırmanızı gözden geçirin  
 
@@ -104,26 +104,26 @@ Farklı ayarların nasıl çalıştığını ve önerilen yapılandırmayı anla
 
 *Kalan oturum açmış* seçeneği yapılandırmak veya gözden geçirmek için aşağıdaki adımları izleyin:
 
-1. Azure AD portalında *Azure Active Directory*arayın ve öğesini seçin.
-1. **Şirket markasını**seçin ve ardından her yerel ayar için, **oturum açmış olarak kalmak için seçeneği göster**' i seçin.
+1. Azure AD portalında *Azure Active Directory* arayın ve öğesini seçin.
+1. **Şirket markasını** seçin ve ardından her yerel ayar için, **oturum açmış olarak kalmak için seçeneği göster**' i seçin.
 1. *Evet*' i seçin, sonra **Kaydet**' i seçin.
 
 Multi-Factor Authentication ayarlarını hatırlamak için aşağıdaki adımları izleyin:
 
-1. Azure AD portalında *Azure Active Directory*arayın ve öğesini seçin.
-1. **Güvenlik**ve **MFA**' yı seçin.
-1. **Yapılandır**altında **bulut tabanlı ek MFA ayarları**' nı seçin.
+1. Azure AD portalında *Azure Active Directory* arayın ve öğesini seçin.
+1. **Güvenlik** ve **MFA**' yı seçin.
+1. **Yapılandır** altında **bulut tabanlı ek MFA ayarları**' nı seçin.
 1. *Multi-Factor Authentication hizmet ayarları* sayfasında **Multi-Factor Authentication ayarlarını anımsa**' ya gidin. Onay kutusunun işaretini kaldırarak ayarı devre dışı bırakın.
 
 Oturum açma sıklığı ve kalıcı tarayıcı oturumu için koşullu erişim ilkelerini yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Azure AD portalında *Azure Active Directory*arayın ve öğesini seçin.
-1. **Güvenlik**ve **koşullu erişim**' i seçin.
+1. Azure AD portalında *Azure Active Directory* arayın ve öğesini seçin.
+1. **Güvenlik** ve **koşullu erişim**' i seçin.
 1. Bu makalede ayrıntılı olarak önerilen oturum yönetimi seçeneklerini kullanarak bir ilke yapılandırın.
 
 Belirteç ömrünü gözden geçirmek için Azure AD [PowerShell 'i kullanarak Azure AD ilkelerini sorgulayın](../develop/configure-token-lifetimes.md#prerequisites). Yerinde olan tüm ilkeleri devre dışı bırakın.
 
-Kiracınızda birden fazla ayar etkinse, sizin için kullanılabilir lisanslama temelinde ayarlarınızı güncelleştirmenizi öneririz. Örneğin, Azure AD Premium lisanslarınız varsa, yalnızca *oturum açma sıklığı* ve *kalıcı tarayıcı oturumunun*koşullu erişim ilkesini kullanmanız gerekir. Microsoft 365 uygulamalarınız veya Azure AD ücretsiz lisanslarınız varsa, *oturum açmış durumda kaldı?* yapılandırmasını kullanmanız gerekir.
+Kiracınızda birden fazla ayar etkinse, sizin için kullanılabilir lisanslama temelinde ayarlarınızı güncelleştirmenizi öneririz. Örneğin, Azure AD Premium lisanslarınız varsa, yalnızca *oturum açma sıklığı* ve *kalıcı tarayıcı oturumunun* koşullu erişim ilkesini kullanmanız gerekir. Microsoft 365 uygulamalarınız veya Azure AD ücretsiz lisanslarınız varsa, *oturum açmış durumda kaldı?* yapılandırmasını kullanmanız gerekir.
 
 Yapılandırılabilir belirteç yaşam sürelerini etkinleştirdiyseniz, bu özellik yakında kaldırılacaktır. Koşullu erişim ilkesine geçiş planlayın.
 
@@ -136,4 +136,4 @@ Aşağıdaki tabloda lisanslarına göre öneriler özetlenmektedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için, [azure Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme](tutorial-enable-azure-mfa.md) veya [Azure Multi-Factor Authentication tetiklemek için Kullanıcı oturum açma işlemleri için risk algılamalarını kullanma](tutorial-risk-based-sspr-mfa.md)öğreticisini doldurun.
+Başlamak için, [Azure ad Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme](tutorial-enable-azure-mfa.md) veya [Kullanıcı oturum açma işlemlerini Azure AD Multi-Factor Authentication tetiklemek için risk algılamalarını kullanma](tutorial-risk-based-sspr-mfa.md)öğreticisini doldurun.
