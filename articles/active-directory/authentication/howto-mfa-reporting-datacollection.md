@@ -1,6 +1,6 @@
 ---
-title: Azure MFA Kullanıcı verileri toplama-Azure Active Directory
-description: Azure Multi-Factor Authentication kullanıcıların kimliğini doğrulamaya yardımcı olmak için hangi bilgiler kullanılır?
+title: Azure AD MFA Kullanıcı verileri koleksiyonu-Azure Active Directory
+description: Azure AD Multi-Factor Authentication tarafından kullanıcıların kimliğini doğrulamaya yardımcı olmak için hangi bilgiler kullanılır?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03ec8eddf55c6b3e90b56501a2e3b657bef6fc8c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed0d4b754911dda49776379fb318390eae411000
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964205"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839021"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication Kullanıcı verisi koleksiyonu
+# <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Azure AD Multi-Factor Authentication Kullanıcı verisi koleksiyonu
 
-Bu belgede, kaldırmak istediğiniz olayda Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve Azure MFA (bulut tabanlı) tarafından toplanan kullanıcı bilgilerinin nasıl bulunacağı açıklanmaktadır.
+Bu belgede, kaldırmak istediğiniz olayda Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve Azure AD MFA (bulut tabanlı) tarafından toplanan kullanıcı bilgilerinin nasıl bulunacağı açıklanmaktadır.
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="information-collected"></a>Toplanan bilgiler
 
-MFA sunucusu, NPS uzantısı ve Windows Server 2016 Azure MFA AD FS bağdaştırıcısı, aşağıdaki bilgileri toplar ve 90 gün boyunca depolar.
+MFA sunucusu, NPS uzantısı ve Windows Server 2016 Azure AD MFA AD FS bağdaştırıcısı, aşağıdaki bilgileri toplar ve 90 gün boyunca depolar.
 
 Kimlik doğrulama denemeleri (Raporlama ve sorun giderme için kullanılır):
 
@@ -89,7 +89,7 @@ Bloklar (engellenen durumu ve raporlamayı tespit etmek için kullanılır):
 - Ülke Kodu
 - Telefon Numarası
 - Telefon numarası biçimli
-- Dahili numara
+- Uzantı
 - Uzantıyı temizle
 - Engellendi
 - Engelleme nedeni
@@ -109,7 +109,7 @@ Atlanır (Raporlama için kullanılır):
 - Ülke Kodu
 - Telefon Numarası
 - Telefon numarası biçimli
-- Dahili numara
+- Uzantı
 - Uzantıyı temizle
 - Atlama nedeni
 - Tamamlama zaman damgası
@@ -163,26 +163,26 @@ Bu Kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmeye yöneli
 
 - Verilerin tam olarak kaldırılması 30 güne kadar sürebilir.
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS bağdaştırıcıdan veri toplama
+## <a name="gather-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure AD MFA AD FS bağdaştırıcıdan veri toplama
 
 Dışarı aktarma isteği yapmak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın. 
 
 - MFA bilgileri dışarı aktarmaya dahildir, bu da tamamlanması saat veya gün olabilir.
 - AD FS Izleme/hata ayıklama olay günlüklerinde (etkinse) Kullanıcı adının oluşumları işletimsel kabul edilir ve dışarı aktarma sırasında sağlanan bilgilere göre tekrarlanmaktadır.
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS bağdaştırıcısındaki verileri silme
+## <a name="delete-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure AD MFA AD FS bağdaştırıcıdan verileri silme
 
 Bu Kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmeye yönelik bir hesap isteğinin kapatılmasını sağlamak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
 
 - Verilerin tam olarak kaldırılması 30 güne kadar sürebilir.
 
-## <a name="gather-data-for-azure-mfa"></a>Azure MFA için veri toplama
+## <a name="gather-data-for-azure-ad-mfa"></a>Azure AD MFA için veri toplama
 
 Dışarı aktarma isteği yapmak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
 
 - MFA bilgileri dışarı aktarmaya dahildir, bu da tamamlanması saat veya gün olabilir.
 
-## <a name="delete-data-for-azure-mfa"></a>Azure MFA için verileri silme
+## <a name="delete-data-for-azure-ad-mfa"></a>Azure AD MFA için verileri silme
 
 Bu Kullanıcı için toplanan tüm MFA bulut hizmeti bilgilerini silmeye yönelik bir hesap isteğinin kapatılmasını sağlamak için [Microsoft Gizlilik portalı](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) 'nı kullanın.
 

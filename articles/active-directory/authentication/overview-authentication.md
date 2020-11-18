@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01751caba2b14f899588deba083a8c59c41d13ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92ac495381f63e01d64c9a3d02777dca37ebb343
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964018"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838000"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması nedir?
 
-Bir kimlik platformunun ana özelliklerinden biri, bir Kullanıcı bir cihazda, uygulamada veya hizmette oturum açtığında kimlik bilgilerini doğrulamak veya *kimliğini*doğrulamak için kullanılır. Azure Active Directory (Azure AD) içinde, kimlik doğrulaması yalnızca Kullanıcı adı ve parola doğrulamasından daha fazlasını içerir. Güvenliği artırmak ve yardım masası yardımı ihtiyacını azaltmak için, Azure AD kimlik doğrulaması aşağıdaki bileşenleri içerir:
+Bir kimlik platformunun ana özelliklerinden biri, bir Kullanıcı bir cihazda, uygulamada veya hizmette oturum açtığında kimlik bilgilerini doğrulamak veya *kimliğini* doğrulamak için kullanılır. Azure Active Directory (Azure AD) içinde, kimlik doğrulaması yalnızca Kullanıcı adı ve parola doğrulamasından daha fazlasını içerir. Güvenliği artırmak ve yardım masası yardımı ihtiyacını azaltmak için, Azure AD kimlik doğrulaması aşağıdaki bileşenleri içerir:
 
 * Self servis parola sıfırlama
-* Azure Multi-Factor Authentication
+* Azure AD Multi-Factor Authentication
 * Parola değişikliklerini şirket içi ortama geri yazmaya yönelik karma tümleştirme
 * Şirket içi bir ortamda parola koruma ilkelerini zorlamak için karma tümleştirme
 * Parolasız kimlik doğrulaması
@@ -32,7 +32,7 @@ Bir kimlik platformunun ana özelliklerinden biri, bir Kullanıcı bir cihazda, 
 
 Azure AD, kullanıcının kimliğini korumaya ve oturum açma deneyimini basitleştirmeye yardımcı olur. Self servis parola sıfırlama gibi özellikler, kullanıcıların herhangi bir cihazdan bir Web tarayıcısı kullanarak parolalarını güncelleştirmesine veya değiştirmesine izin verir. Bu özellik özellikle Kullanıcı parolasını unutursa veya hesapları kilitlenmişse yararlıdır. Bir yardım masası veya yöneticinin destek sağlamasına gerek kalmadan, bir Kullanıcı kendi kendilerini engellemeyi kaldırabilir ve çalışmaya devam edebilir.
 
-Azure Multi-Factor Authentication, kullanıcıların oturum açma sırasında telefon araması veya mobil uygulama bildirimi gibi ek bir kimlik doğrulama biçimi seçmesini sağlar. Bu özellik, bir donanım belirteci gibi tek, sabit bir ikincil kimlik doğrulama biçimi gereksinimini azaltır. Kullanıcının şu anda bir ek kimlik doğrulama formu yoksa, farklı bir yöntem seçip çalışmaya devam edebilirler.
+Azure AD Multi-Factor Authentication, kullanıcıların oturum açma sırasında telefon araması veya mobil uygulama bildirimi gibi ek bir kimlik doğrulama biçimi seçmesini sağlar. Bu özellik, bir donanım belirteci gibi tek, sabit bir ikincil kimlik doğrulama biçimi gereksinimini azaltır. Kullanıcının şu anda bir ek kimlik doğrulama formu yoksa, farklı bir yöntem seçip çalışmaya devam edebilirler.
 
 ![Oturum açma ekranında kullanılan kimlik doğrulama yöntemleri](media/concept-authentication-methods/overview-login.png)
 
@@ -50,7 +50,7 @@ Self servis parola sıfırlama aşağıdaki senaryolarda çalışmaktadır:
 
 Bir Kullanıcı self servis parola sıfırlama kullanarak parolalarını güncelleştirdiğinde veya sıfırladığında, bu parola bir şirket içi Active Directory ortamına da geri yazılabilir. Parola geri yazma özelliği, kullanıcının şirket içi cihazlar ve uygulamalarla güncelleştirilmiş kimlik bilgilerini hemen kullanabilmesini sağlar.
 
-## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+## <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
 Çok faktörlü kimlik doğrulaması bir kullanıcıdan oturum açma sürecinde ek kimlik bilgisi istenmesidir. Bu bilgi, kullanıcının cep telefonuna gönderilen bir kod veya parmak izi taraması olabilir.
 
@@ -58,25 +58,25 @@ Yalnızca bir kullanıcının kimliğini doğrulamak için parola kullanıyorsan
 
 ![Multi-Factor Authentication 'ın farklı biçimlerinin kavramsal resmi](./media/concept-mfa-howitworks/methods.png)
 
-Azure Multi-Factor Authentication, aşağıdaki kimlik doğrulama yöntemlerinin iki veya daha fazlasını gerektirerek işe yarar:
+Azure AD Multi-Factor Authentication, aşağıdaki kimlik doğrulama yöntemlerinin iki veya daha fazlasını gerektirerek işe yarar:
 
 * Bildiğiniz bir şey, genellikle bir paroladır.
 * Telefon veya donanım anahtarı gibi kolayca tekrarlanmayan güvenilir bir cihaz gibi sahip olduğunuz bir şey.
 * Parmak izi veya yüz tarama gibi bir biyometri vardır.
 
-Kullanıcılar kendi self servis parola sıfırlama ve Azure Multi-Factor Authentication için kendilerini tek bir adımda kaydedebilir ve böylece yerleşik deneyimi basitleştirir. Yöneticiler, hangi ikincil kimlik doğrulama biçimlerinin kullanılabileceğini tanımlayabilir. Ayrıca, kullanıcılar bu işlemi daha güvenli hale getirmek için bir self servis parola sıfırlaması gerçekleştirirken Azure Multi-Factor Authentication de gerekebilir.
+Kullanıcılar kendi self servis parola sıfırlama ve Azure AD Multi-Factor Authentication için kendilerini tek bir adımda kaydedebilir ve böylece yerleşik deneyimi basitleştirir. Yöneticiler, hangi ikincil kimlik doğrulama biçimlerinin kullanılabileceğini tanımlayabilir. Azure AD Multi-Factor Authentication, kullanıcılar bu işlemi daha güvenli hale getirmek için bir self servis parola sıfırlaması gerçekleştirirken de gerekli olabilir.
 
 ## <a name="password-protection"></a>Parola koruması
 
-Varsayılan olarak, Azure AD *Parola1*gibi zayıf parolaları engeller. Genel yasaklanmış parola listesi otomatik olarak güncelleştirilir ve bilinen zayıf parolalar dahil zorlanır. Bir Azure AD kullanıcısı parolalarını bu zayıf parolalardan birine ayarlamaya çalışırsa, daha güvenli bir parola seçmek üzere bir bildirim alırlar.
+Varsayılan olarak, Azure AD *Parola1* gibi zayıf parolaları engeller. Genel yasaklanmış parola listesi otomatik olarak güncelleştirilir ve bilinen zayıf parolalar dahil zorlanır. Bir Azure AD kullanıcısı parolalarını bu zayıf parolalardan birine ayarlamaya çalışırsa, daha güvenli bir parola seçmek üzere bir bildirim alırlar.
 
-Güvenliği artırmak için, özel parola koruma ilkeleri tanımlayabilirsiniz. Bu ilkeler, *contoso* gibi bir ad veya *Londra*gibi bir konum içeren bir parola varyasyonlarını engellemek için filtreleri kullanabilir.
+Güvenliği artırmak için, özel parola koruma ilkeleri tanımlayabilirsiniz. Bu ilkeler, *contoso* gibi bir ad veya *Londra* gibi bir konum içeren bir parola varyasyonlarını engellemek için filtreleri kullanabilir.
 
 Karma güvenlik için Azure AD parola korumasını bir şirket içi Active Directory ortamıyla tümleştirebilirsiniz. Şirket içi ortamda yüklü olan bir bileşen, genel yasaklanmış parola listesini ve Azure AD 'den özel parola koruma ilkelerini alır ve etki alanı denetleyicileri, parola değiştirme olaylarını işlemek için bunları kullanır. Bu karma yaklaşım, bir kullanıcının kimlik bilgilerini ne şekilde değiştirdiğine ve güçlü parolaların kullanımını zorunlu kılmaz emin olmanızı sağlar.
 
 ## <a name="passwordless-authentication"></a>Parolasız kimlik doğrulaması
 
-Birçok ortam için son hedef, oturum açma olaylarının bir parçası olarak parolaların kullanımını kaldırmaktır. Azure parola koruması veya Azure Multi-Factor Authentication gibi özellikler güvenliği artırmaya yardımcı olur, ancak Kullanıcı adı ve parola, açığa çıkarılabilecek veya deneme yanılma saldırısı yapan zayıf bir kimlik doğrulama biçimi olarak kalır.
+Birçok ortam için son hedef, oturum açma olaylarının bir parçası olarak parolaların kullanımını kaldırmaktır. Azure parola koruması veya Azure AD Multi-Factor Authentication gibi özellikler güvenliği artırmaya yardımcı olur, ancak bir Kullanıcı adı ve parola, açığa çıkarılan veya deneme yanılma saldırısı yapan zayıf bir kimlik doğrulama biçimi olarak kalır.
 
 ![Güvenlik, passwordless 'a yol gösteren kimlik doğrulama işlemi ile karşı daha kolay](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
@@ -86,11 +86,11 @@ Azure AD, kullanıcılar için oturum açma deneyimini basitleştirmek ve saldı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure Multi-Factor Authentication][tutorial-azure-mfa]öğreticisine bakın.
+Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure AD Multi-Factor Authentication][tutorial-azure-mfa]öğreticisine bakın.
 
 Self servis parola sıfırlama kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD self servis parola sıfırlamasının nasıl çalıştığı][concept-sspr].
 
-Multi-Factor Authentication kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication 'In nasıl çalıştığı][concept-mfa].
+Multi-Factor Authentication kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

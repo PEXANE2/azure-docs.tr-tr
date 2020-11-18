@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70777c80cdee99f13050d7cd342f22d59da13d73
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3da7c3afa6b414e3d7df3bb58766d1ab7657dbc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964120"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838970"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA sunucu ayarlarını yapılandırma
 
 Bu makale, Azure portal Azure MFA sunucu ayarlarını yönetmenize yardımcı olur.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure AD Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 Aşağıdaki MFA sunucusu ayarları kullanılabilir:
 
@@ -41,7 +41,7 @@ Tek seferlik atlama özelliği, bir kullanıcının Multi-Factor Authentication 
 Bir kerelik geçiş oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-1. **Azure Active Directory**arayıp seçin, sonra **güvenlik**  >  **MFA**  >  **bir kerelik geçişe**gidin.
+1. **Azure Active Directory** arayıp seçin, sonra **güvenlik**  >  **MFA**  >  **bir kerelik geçişe** gidin.
 1. **Ekle**’yi seçin.
 1. Gerekirse, atlama için çoğaltma grubunu seçin.
 1. Kullanıcı adını olarak girin `username\@domain.com` . Atlamamasının son olması gereken saniye sayısını ve atlama nedenini girin.
@@ -60,9 +60,9 @@ _Önbelleğe alma_ özelliğini kullanarak bir kullanıcının kimliği doğrula
 
 Önbelleğe almayı ayarlamak için aşağıdaki adımları izleyin:
 
-1. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **önbelleğe alma kurallarını**inceleyin.
+1. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **önbelleğe alma kurallarını** inceleyin.
 1. **Ekle**’yi seçin.
-1. Açılan listeden **önbellek türünü** seçin. En fazla **önbellek saniyesi**sayısını girin.
+1. Açılan listeden **önbellek türünü** seçin. En fazla **önbellek saniyesi** sayısını girin.
 1. Gerekirse, bir kimlik doğrulama türü seçin ve bir uygulama belirtin.
 1. **Ekle**’yi seçin.
 

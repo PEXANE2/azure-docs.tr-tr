@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b763a1cda91886946bba211f589c37940e7c3ae1
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a779fee89d52442207358cf90c8cf87e7ef221c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042811"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837660"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -34,7 +34,7 @@ Blok, uygun bilgilerle silinmeli güçlü bir denetimdir. Blok deyimlerine sahip
 
 Yöneticiler, erişim izni verirken bir veya daha fazla denetimi zorlamayı tercih edebilir. Bu denetimler aşağıdaki seçenekleri içerir: 
 
-- [Multi-Factor Authentication gerektir (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
+- [Multi-Factor Authentication gerektir (Azure AD Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
 - [Cihazın uyumlu olarak işaretlenmesini gerektir (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Karma Azure AD 'ye katılmış cihaz gerektir](../devices/concept-azure-ad-join-hybrid.md)
 - [Onaylanan istemci uygulaması gerektir](app-based-conditional-access.md)
@@ -50,7 +50,7 @@ Varsayılan olarak, koşullu erişim tüm seçili denetimleri gerektirir.
 
 ### <a name="require-multi-factor-authentication"></a>Multi-Factor Authentication gerektir
 
-Bu onay kutusunun belirlenmesi, kullanıcıların Azure Multi-Factor Authentication gerçekleştirmesini gerektirir. Azure Multi-Factor Authentication dağıtımı hakkında daha fazla bilgi, [bulut tabanlı Azure Multi-Factor Authentication dağıtımını planlama](../authentication/howto-mfa-getstarted.md)makalesinde bulunabilir.
+Bu onay kutusunun belirlenmesi, kullanıcıların Azure AD Multi-Factor Authentication gerçekleştirmesini gerektirir. Azure AD Multi-Factor Authentication dağıtma hakkında daha fazla bilgi, [bulut tabanlı Azure ad Multi-Factor Authentication dağıtımını planlama](../authentication/howto-mfa-getstarted.md)makalesinde bulunabilir.
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Cihazın uyumlu olarak işaretlenmesini gerektir
 

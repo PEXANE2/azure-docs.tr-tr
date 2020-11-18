@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d28ecfeb9312a6bf5a0b37e07919f9d781de50ea
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1ba0d359079a8999b3c4f2a41f4beadb835ccacc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968591"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838238"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Azure MFA sunucusu ve üçüncü taraf VPN çözümleriyle gelişmiş senaryolar
 
 Azure Multi-Factor Authentication Sunucusu (Azure MFA sunucusu), çeşitli üçüncü taraf VPN çözümleriyle sorunsuz bir şekilde bağlanmak için kullanılabilir. Bu makalede Cisco &reg; asa VPN gereci, Citrix NetScaler SSL VPN gereci ve Juniper Networks güvenli erişim/Pulse Secure Connect GÜVENLI SSL VPN gereci ele alınmaktadır. Bu üç ortak gereçi ele almak için yapılandırma kılavuzlarını oluşturduk. Azure MFA sunucusu, AD FS için RADIUS, LDAP, IIS veya talep tabanlı kimlik doğrulaması kullanan diğer sistemlerle de tümleştirilebilir. Daha fazla ayrıntı için [Azure MFA sunucu yapılandırmalarında](howto-mfaserver-deploy.md#next-steps)daha fazla bilgi bulabilirsiniz.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sağlamamaktadır. Oturum açma olayları sırasında çok faktörlü kimlik doğrulaması (MFA) gerektirmek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sağlamamaktadır. Oturum açma olayları sırasında çok faktörlü kimlik doğrulaması (MFA) gerektirmek isteyen yeni müşteriler, bulut tabanlı Azure AD Multi-Factor Authentication kullanmalıdır.
 >
-> Bulut tabanlı MFA 'yı kullanmaya başlamak için bkz. [öğretici: Azure Multi-Factor Authentication Ile güvenli Kullanıcı oturum açma olayları](tutorial-enable-azure-mfa.md).
+> Bulut tabanlı MFA 'yı kullanmaya başlamak için bkz. [öğretici: Azure AD Multi-Factor Authentication Ile güvenli Kullanıcı oturum açma olayları](tutorial-enable-azure-mfa.md).
 >
 > Bulut tabanlı MFA kullanıyorsanız bkz. [VPN altyapınızı Azure MFA Ile tümleştirme](howto-mfa-nps-extension-vpn.md).
 >

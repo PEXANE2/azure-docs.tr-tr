@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503819"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837473"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
 
@@ -90,7 +90,7 @@ Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. K
 > [!WARNING]
 > Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç yaşam süresi](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirteç ömrü özelliğine sahip başka bir uygulamayla aynı şekilde desteklenmediğini unutmayın. Microsoft, yapılandırılabilir belirteç yaşam süresi özelliğini 30 Ocak 2021 tarihinde yenileme ve oturum belirteci yaşam süreleri için devre dışı bırakmayı planlıyor ve koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirecek.  
 >
-> Oturum açma sıklığını etkinleştirmeden önce, kiracınızda diğer yeniden kimlik doğrulama ayarlarının devre dışı bırakıldığından emin olun. "Güvenilen cihazlarda MFA 'yı anımsa" etkinse, bu iki ayarı birlikte kullanmak kullanıcıların beklenmedik şekilde sorulmasına yol açacağından, oturum açma sıklığını kullanmadan önce devre dışı bırakmayı unutmayın. Yeniden doğrulama istemleri ve oturum ömrü hakkında daha fazla bilgi edinmek için, bkz. yeniden [kimlik doğrulama Istemlerini iyileştirin ve Azure Multi-Factor Authentication oturum ömrünü anlayın](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
+> Oturum açma sıklığını etkinleştirmeden önce, kiracınızda diğer yeniden kimlik doğrulama ayarlarının devre dışı bırakıldığından emin olun. "Güvenilen cihazlarda MFA 'yı anımsa" etkinse, bu iki ayarı birlikte kullanmak kullanıcıların beklenmedik şekilde sorulmasına yol açacağından, oturum açma sıklığını kullanmadan önce devre dışı bırakmayı unutmayın. Yeniden kimlik doğrulama istemleri ve oturum ömrü hakkında daha fazla bilgi edinmek için, bkz. yeniden [kimlik doğrulama Istemlerini iyileştirme ve Azure AD Multi-Factor Authentication için oturum ömrünü anlama](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ### <a name="policy-1-sign-in-frequency-control"></a>İlke 1: oturum açma sıklığı denetimi
 

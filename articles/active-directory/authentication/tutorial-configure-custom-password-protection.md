@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cb1a0819902d2dfa27718ccfe39b175959a16c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963848"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837898"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Öğretici: Azure Active Directory parola koruması için özel yasaklanmış parolaları yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
 * En az bir Azure AD Premium P1 veya deneme lisansı etkin çalışan bir Azure AD kiracısı.
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
-* Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Bu öğreticide bu hesabı kullanarak bir parola değiştirme olayını test edersiniz.
+* Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser* gibi bir parola. Bu öğreticide bu hesabı kullanarak bir parola değiştirme olayını test edersiniz.
     * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md).
     * Parola değiştirme işlemini yasaklanmış bir parola kullanarak test etmek için, Azure AD kiracısı [self servis parola sıfırlama için yapılandırılmalıdır](tutorial-enable-sspr.md).
 
@@ -65,10 +65,10 @@ Bir Kullanıcı, genel veya özel yasaklanmış parola listesindeki bir parolay�
 Özel yasaklanmış parola listesini etkinleştirmek ve buna giriş eklemek için aşağıdaki adımları izleyin:
 
 1. *Genel yönetici* izinlerine sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
+1. **Azure Active Directory** bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
 1. **Yönet** menü üst bilgisi altında **kimlik doğrulama yöntemleri**' ni ve ardından **parola koruması**' nı seçin.
-1. **Özel listeyi zorla** seçeneğini *Evet*olarak ayarlayın.
-1. **Özel yasaklanmış parola listesine**dizeler ekleyin, her satır için bir dize. Aşağıdaki önemli noktalar ve sınırlamalar özel yasaklanmış parola listesi için geçerlidir:
+1. **Özel listeyi zorla** seçeneğini *Evet* olarak ayarlayın.
+1. **Özel yasaklanmış parola listesine** dizeler ekleyin, her satır için bir dize. Aşağıdaki önemli noktalar ve sınırlamalar özel yasaklanmış parola listesi için geçerlidir:
 
     * Özel yasaklanmış parola listesi, en fazla 1000 terim içerebilir.
     * Özel yasaklanmış parola listesi, büyük/küçük harfe duyarsızdır.
@@ -79,7 +79,7 @@ Bir Kullanıcı, genel veya özel yasaklanmış parola listesindeki bir parolay�
 
     [![Azure Portal ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png) kimlik doğrulama yöntemleri altında özel yasaklanmış parola listesini değiştirin](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
-1. **Windows Server Active Directory parola korumasını etkinleştir** seçeneğini *Hayır*olarak bırakın.
+1. **Windows Server Active Directory parola korumasını etkinleştir** seçeneğini *Hayır* olarak bırakın.
 1. Özel yasaklanmış parolaları ve girdilerinizi etkinleştirmek için **Kaydet**' i seçin.
 
 Özel yasaklanmış parola listesindeki güncelleştirmelerin uygulanması birkaç saat sürebilir.
@@ -109,9 +109,9 @@ Karma bir ortamda [Azure AD parola korumasını şirket içi bir ortama da dağ�
 Bu öğreticinin bir parçası olarak yapılandırdığınız özel yasaklanmış parola listesini artık kullanmak istemiyorsanız, aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
+1. **Azure Active Directory** bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
 1. **Yönet** menü üst bilgisi altında **kimlik doğrulama yöntemleri**' ni ve ardından **parola koruması**' nı seçin.
-1. **Özel liste Uygula** seçeneğini *Hayır*olarak ayarlayın.
+1. **Özel liste Uygula** seçeneğini *Hayır* olarak ayarlayın.
 1. Özel yasaklanmış parola yapılandırmasını güncelleştirmek için **Kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -124,4 +124,4 @@ Bu öğreticide, Azure AD için özel parola koruma listelerini etkinleştirmiş
 > * Parola değişikliklerini yasaklanmış parolayla sına
 
 > [!div class="nextstepaction"]
-> [Risk tabanlı Azure Multi-Factor Authentication'ı etkinleştirme](./tutorial-enable-azure-mfa.md)
+> [Risk tabanlı Azure AD Multi-Factor Authentication etkinleştirme](./tutorial-enable-azure-mfa.md)

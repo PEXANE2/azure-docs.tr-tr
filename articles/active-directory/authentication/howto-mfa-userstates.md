@@ -1,6 +1,6 @@
 ---
 title: Kullanıcı başına Multi-Factor Authentication etkinleştir-Azure Active Directory
-description: Kullanıcı durumunu değiştirerek Kullanıcı başına Azure Multi-Factor Authentication etkinleştirmeyi öğrenin
+description: Kullanıcı durumunu değiştirerek Kullanıcı başına Azure AD Multi-Factor Authentication etkinleştirmeyi öğrenin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,72 +12,72 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9721a789b16f82ebd2b5a75027b5a558d4d63367
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 240fb04068f255128f33e79748762305e4d6b704
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964171"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838783"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarının güvenliğini sağlamak için kullanıcı başına Azure Multi-Factor Authentication’ı etkinleştirme
+# <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarını güvenli hale getirmek için Kullanıcı başına Azure AD Multi-Factor Authentication etkinleştirme
 
-Azure AD 'de Kullanıcı oturum açma olaylarını güvenli hale getirmek için çok faktörlü kimlik doğrulamasının (MFA) gerekli olmasını sağlayabilirsiniz. Koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication etkinleştirme, kullanıcıları korumak için önerilen yaklaşımdır. Koşullu erişim bir Azure AD Premium P1 veya P2 özelliğidir. Bu özellik, belirli senaryolarda gereken MFA gerektirirken kurallar uygulamanıza olanak tanır. Koşullu erişimi kullanmaya başlamak için bkz. [öğretici: Azure Multi-Factor Authentication Ile güvenli Kullanıcı oturum açma olayları](tutorial-enable-azure-mfa.md).
+Azure AD 'de Kullanıcı oturum açma olaylarını güvenli hale getirmek için çok faktörlü kimlik doğrulamasının (MFA) gerekli olmasını sağlayabilirsiniz. Koşullu erişim ilkelerini kullanarak Azure AD Multi-Factor Authentication etkinleştirme, kullanıcıları korumak için önerilen yaklaşımdır. Koşullu erişim bir Azure AD Premium P1 veya P2 özelliğidir. Bu özellik, belirli senaryolarda gereken MFA gerektirirken kurallar uygulamanıza olanak tanır. Koşullu erişimi kullanmaya başlamak için bkz. [öğretici: Azure AD Multi-Factor Authentication Ile güvenli Kullanıcı oturum açma olayları](tutorial-enable-azure-mfa.md).
 
 Koşullu erişim olmadan Azure AD ücretsiz kiracılarında, [kullanıcıları korumak için güvenlik varsayılanlarını kullanabilirsiniz](../fundamentals/concept-fundamentals-security-defaults.md). Kullanıcılara gerektiğinde MFA sorulur, ancak davranışı denetlemek için kendi kurallarınızı tanımlayamazsınız.
 
-Gerekirse, her bir hesabı kullanıcı başına Azure Multi-Factor Authentication için etkinleştirebilirsiniz. Kullanıcılar ayrı ayrı etkinleştirildiğinde, her oturum açtıklarında çok faktörlü kimlik doğrulaması gerçekleştirir (güvenilen IP adreslerinden oturum açtıklarında veya _güvenilir CIHAZLARDA MFA 'yı anımsa_ özelliği açık olduğunda olduğu gibi bazı özel durumlar ile).
+Gerekirse, her bir hesabı kullanıcı başına Azure AD Multi-Factor Authentication için etkinleştirebilirsiniz. Kullanıcılar ayrı ayrı etkinleştirildiğinde, her oturum açtıklarında çok faktörlü kimlik doğrulaması gerçekleştirir (güvenilen IP adreslerinden oturum açtıklarında veya _güvenilir CIHAZLARDA MFA 'yı anımsa_ özelliği açık olduğunda olduğu gibi bazı özel durumlar ile).
 
-Azure AD lisanslarınız koşullu erişim içermediği ve güvenlik varsayılanlarını kullanmak istemediğinizde, Kullanıcı durumlarının değiştirilmesi önerilmez. MFA 'yı etkinleştirmenin farklı yolları hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Için Özellikler ve lisanslar](concept-mfa-licensing.md).
+Azure AD lisanslarınız koşullu erişim içermediği ve güvenlik varsayılanlarını kullanmak istemediğinizde, Kullanıcı durumlarının değiştirilmesi önerilmez. MFA 'yı etkinleştirmenin farklı yolları hakkında daha fazla bilgi için bkz. [Azure AD Multi-Factor Authentication Için Özellikler ve lisanslar](concept-mfa-licensing.md).
 
 > [!IMPORTANT]
 >
-> Bu makalede, Kullanıcı başına Azure Multi-Factor Authentication durumu görüntüleme ve değiştirme ayrıntıları anlatılmaktadır. Koşullu erişim veya güvenlik Varsayılanları kullanırsanız, bu adımları kullanarak Kullanıcı hesaplarını gözden geçirmezsiniz veya etkinleştiremezsiniz.
+> Bu makalede, Kullanıcı başına Azure AD Multi-Factor Authentication durumunu görüntüleme ve değiştirme ayrıntıları anlatılmaktadır. Koşullu erişim veya güvenlik Varsayılanları kullanırsanız, bu adımları kullanarak Kullanıcı hesaplarını gözden geçirmezsiniz veya etkinleştiremezsiniz.
 >
-> Koşullu erişim ilkesi aracılığıyla Azure Multi-Factor Authentication etkinleştirilmesi, kullanıcının durumunu değiştirmez. Kullanıcılar devre dışı görünüyorsa uyarıda yok. Koşullu erişim durumu değiştirmez.
+> Koşullu erişim ilkesi aracılığıyla Azure AD Multi-Factor Authentication etkinleştirilmesi, kullanıcının durumunu değiştirmez. Kullanıcılar devre dışı görünüyorsa uyarıda yok. Koşullu erişim durumu değiştirmez.
 >
-> **Koşullu erişim ilkeleri kullanıyorsanız, Kullanıcı başına Azure Multi-Factor Authentication etkinleştirmeyin veya zorlamaz.**
+> **Koşullu erişim ilkeleri kullanıyorsanız, Kullanıcı başına Azure AD Multi-Factor Authentication etkinleştirmeyin veya zorlamaz.**
 
-## <a name="azure-multi-factor-authentication-user-states"></a>Azure Multi-Factor Authentication Kullanıcı durumları
+## <a name="azure-ad-multi-factor-authentication-user-states"></a>Azure AD Multi-Factor Authentication Kullanıcı durumları
 
-Bir kullanıcının durumu, yönetici tarafından Kullanıcı başına Azure Multi-Factor Authentication kayıtlı olup olmadığını yansıtır. Azure Multi-Factor Authentication Kullanıcı hesapları aşağıdaki üç farklı duruma sahiptir:
+Bir kullanıcının durumu, yönetici tarafından Kullanıcı başına Azure AD Multi-Factor Authentication kayıtlı olup olmadığını yansıtır. Azure AD Multi-Factor Authentication 'daki Kullanıcı hesapları aşağıdaki üç farklı duruma sahiptir:
 
 | Durum | Açıklama | Eski kimlik doğrulaması etkilendi | Etkilenen tarayıcı uygulamaları | Modern kimlik doğrulaması etkilendi |
 |:---:| --- |:---:|:--:|:--:|
-| Devre dışı | Kullanıcı başına Azure Multi-Factor Authentication kayıtlı olmayan bir kullanıcının varsayılan durumu. | Hayır | Hayır | Hayır |
-| Etkin | Kullanıcı, Kullanıcı başına Azure Multi-Factor Authentication kaydedilir, ancak eski kimlik doğrulaması için parolalarını kullanmaya devam edebilir. Kullanıcı, MFA kimlik doğrulama yöntemlerini henüz kaydetmediyse, modern kimlik doğrulaması (örneğin, bir Web tarayıcısı aracılığıyla) kullanarak bir sonraki oturum açtıklarında kaydolmak üzere bir istem alırlar. | Hayır. Eski kimlik doğrulaması, kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra Azure Multi-Factor Authentication kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra Azure Multi-Factor Authentication kaydı gereklidir. |
-| Uygulandı | Kullanıcı Kullanıcı başına Azure Multi-Factor Authentication kaydedilir. Kullanıcı, kimlik doğrulama yöntemlerini henüz kaydetmediyse, modern kimlik doğrulaması (örneğin, bir Web tarayıcısı aracılığıyla) kullanarak bir sonraki oturum açtıklarında kaydolmak üzere bir istem alırlar. *Etkin* durumda kaydı gerçekleştiren kullanıcılar otomatik olarak *Zorlanmış* duruma taşınır. | Evet. Uygulamalar uygulama parolaları gerektirir. | Evet. Azure Multi-Factor Authentication oturum açma sırasında gereklidir. | Evet. Azure Multi-Factor Authentication oturum açma sırasında gereklidir. |
+| Devre dışı | Kullanıcı başına Azure AD Multi-Factor Authentication kayıtlı olmayan bir kullanıcının varsayılan durumu. | Hayır | Hayır | Hayır |
+| Etkin | Kullanıcı, Kullanıcı başına Azure AD Multi-Factor Authentication kaydedilir, ancak eski kimlik doğrulaması için parolasını kullanmaya devam edebilir. Kullanıcı, MFA kimlik doğrulama yöntemlerini henüz kaydetmediyse, modern kimlik doğrulaması (örneğin, bir Web tarayıcısı aracılığıyla) kullanarak bir sonraki oturum açtıklarında kaydolmak üzere bir istem alırlar. | Hayır. Eski kimlik doğrulaması, kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra Azure AD Multi-Factor Authentication kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra Azure AD Multi-Factor Authentication kaydı gereklidir. |
+| Uygulandı | Kullanıcı Azure AD Multi-Factor Authentication 'de Kullanıcı başına kaydolur. Kullanıcı, kimlik doğrulama yöntemlerini henüz kaydetmediyse, modern kimlik doğrulaması (örneğin, bir Web tarayıcısı aracılığıyla) kullanarak bir sonraki oturum açtıklarında kaydolmak üzere bir istem alırlar. *Etkin* durumda kaydı gerçekleştiren kullanıcılar otomatik olarak *Zorlanmış* duruma taşınır. | Evet. Uygulamalar uygulama parolaları gerektirir. | Evet. Oturum açma sırasında Azure AD Multi-Factor Authentication gereklidir. | Evet. Oturum açma sırasında Azure AD Multi-Factor Authentication gereklidir. |
 
-Tüm kullanıcılar *devre dışı bırakıldı*. Kullanıcıları Kullanıcı başına Azure Multi-Factor Authentication kaydettiğinizde, durumları *etkin*olarak değişir. Etkin kullanıcılar oturum açıp kayıt işlemini tamamladıktan sonra, durumu *Zorlanmış*olarak değişir. Yöneticiler, *Zorlanmış* durumdan *etkin* veya *devre dışı*olarak da dahil olmak üzere kullanıcıları durumlar arasında taşıyabiliriz.
+Tüm kullanıcılar *devre dışı bırakıldı*. Kullanıcıları Kullanıcı başına Azure AD Multi-Factor Authentication kaydettiğinizde, durumları *etkin* olarak değişir. Etkin kullanıcılar oturum açıp kayıt işlemini tamamladıktan sonra, durumu *Zorlanmış* olarak değişir. Yöneticiler, *Zorlanmış* durumdan *etkin* veya *devre dışı* olarak da dahil olmak üzere kullanıcıları durumlar arasında taşıyabiliriz.
 
 > [!NOTE]
-> Kullanıcı başına MFA bir kullanıcı için yeniden etkinleştirilmişse ve Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabirimindeki *etkin* *' e geçiş* yapmaz. Yöneticinin kullanıcıyı doğrudan *Zorlanmış*olarak taşıması gerekir.
+> Kullanıcı başına MFA bir kullanıcı için yeniden etkinleştirilmişse ve Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabirimindeki *etkin* *' e geçiş* yapmaz. Yöneticinin kullanıcıyı doğrudan *Zorlanmış* olarak taşıması gerekir.
 
 ## <a name="view-the-status-for-a-user"></a>Kullanıcının durumunu görüntüleme
 
 Kullanıcı durumlarını görüntülemek ve yönetmek için aşağıdaki adımları tamamlayarak Azure portal sayfasına erişin:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-1. *Azure Active Directory*arayıp seçin, sonra **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
+1. *Azure Active Directory* arayıp seçin, sonra **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**'ı seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin: [ ![ Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Aşağıdaki örnekte gösterildiği gibi, Kullanıcı durumunu görüntüleyen yeni bir sayfa açılır.
-   ![Azure Multi-Factor Authentication için örnek Kullanıcı durumu bilgilerini gösteren ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)
+   ![Azure AD Multi-Factor Authentication için örnek Kullanıcı durumu bilgilerini gösteren ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)
 
 ## <a name="change-the-status-for-a-user"></a>Kullanıcının durumunu değiştirme
 
-Bir kullanıcı için Kullanıcı başına Azure Multi-Factor Authentication durumunu değiştirmek için aşağıdaki adımları izleyin:
+Bir kullanıcı için Kullanıcı başına Azure AD Multi-Factor Authentication durumunu değiştirmek için aşağıdaki adımları izleyin:
 
-1. Bir kullanıcının Azure Multi-Factor Authentication **kullanıcıları** sayfasına ulaşmak üzere [durumunu görüntülemek](#view-the-status-for-a-user) için önceki adımları kullanın.
-1. Kullanıcı başına Azure Multi-Factor Authentication için etkinleştirmek istediğiniz kullanıcıyı bulun. En üstteki görünümü **kullanıcılara**değiştirmeniz gerekebilir.
+1. Bir kullanıcının Azure AD Multi-Factor Authentication **kullanıcıları** sayfasına ulaşmak üzere [durumunu görüntülemek](#view-the-status-for-a-user) için önceki adımları kullanın.
+1. Kullanıcı başına Azure AD Multi-Factor Authentication için etkinleştirmek istediğiniz kullanıcıyı bulun. En üstteki görünümü **kullanıcılara** değiştirmeniz gerekebilir.
    ![Durumu Kullanıcı sekmesinden değiştirmek için kullanıcıyı seçin](./media/howto-mfa-userstates/enable1.png)
 1. Durumu değiştirmek için Kullanıcı (ler) in yanındaki kutuyu işaretleyin.
-1. Sağ tarafta **hızlı adımlar**altında **Etkinleştir** veya **devre dışı bırak**' ı seçin. Aşağıdaki örnekte *John Smith* kullanıcısı adının yanında bir denetim sahibi olur ve kullanım için Etkinleştiriliyor: ![ hızlı adımlar menüsünde Etkinleştir ' e tıklayarak Seçili kullanıcıyı etkinleştir](./media/howto-mfa-userstates/user1.png)
+1. Sağ tarafta **hızlı adımlar** altında **Etkinleştir** veya **devre dışı bırak**' ı seçin. Aşağıdaki örnekte *John Smith* kullanıcısı adının yanında bir denetim sahibi olur ve kullanım için Etkinleştiriliyor: ![ hızlı adımlar menüsünde Etkinleştir ' e tıklayarak Seçili kullanıcıyı etkinleştir](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *Etkin* kullanıcılar, Azure Multi-Factor Authentication kaydolduklarında otomatik olarak *zorlandı* . Kullanıcı zaten kayıtlı olmadığı veya kullanıcının eski kimlik doğrulama protokollerine yönelik bağlantılarda kesintiye *uğratılmasını* kabul etmediği takdirde Kullanıcı durumunu zorunlu olarak değiştirmeyin.
+   > *Etkin* kullanıcılar, Azure AD Multi-Factor Authentication kaydolduklarında otomatik olarak *zorlandı* . Kullanıcı zaten kayıtlı olmadığı veya kullanıcının eski kimlik doğrulama protokollerine yönelik bağlantılarda kesintiye *uğratılmasını* kabul etmediği takdirde Kullanıcı durumunu zorunlu olarak değiştirmeyin.
 
 1. Açılan pencere penceresinde seçiminizi onaylayın.
 
-Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Kullanıcılara bir dahaki sefer oturum açtıklarında kaydolmalarını istemek için bir istem görüntülendiğini söyleyin. Ayrıca, kuruluşunuz modern kimlik doğrulamayı desteklemeyen tarayıcı olmayan uygulamalar kullanıyorsa, uygulama parolaları oluşturmaları gerekir. Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Son Kullanıcı Kılavuzu](../user-help/multi-factor-authentication-end-user-first-time.md) , kullanmaya başlamanıza yardımcı olur.
+Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Kullanıcılara bir dahaki sefer oturum açtıklarında kaydolmalarını istemek için bir istem görüntülendiğini söyleyin. Ayrıca, kuruluşunuz modern kimlik doğrulamayı desteklemeyen tarayıcı olmayan uygulamalar kullanıyorsa, uygulama parolaları oluşturmaları gerekir. Daha fazla bilgi için bkz. [Azure AD Multi-Factor Authentication Son Kullanıcı Kılavuzu](../user-help/multi-factor-authentication-end-user-first-time.md) , kullanmaya başlamanıza yardımcı olur.
 
 ## <a name="change-state-using-powershell"></a>PowerShell kullanarak durumu değiştirme
 
@@ -87,7 +87,7 @@ Kullanıcı durumunu [Azure AD PowerShell](/powershell/azure/)kullanarak değiş
 * *Uygulandı*
 * *Devre dışı*  
 
-Genel olarak, kullanıcıları zaten MFA için kayıtlı olmadıkları takdirde doğrudan *Zorlanmış* duruma taşımayın. Bunu yaparsanız, Kullanıcı Azure Multi-Factor Authentication kaydı ve bir [uygulama parolası](howto-mfa-app-passwords.md)edinmediği için eski kimlik doğrulama uygulamaları çalışmayı durdurur. Bazı durumlarda bu davranış istenebilir, ancak Kullanıcı kaydoluncaya kadar Kullanıcı deneyimini etkiler.
+Genel olarak, kullanıcıları zaten MFA için kayıtlı olmadıkları takdirde doğrudan *Zorlanmış* duruma taşımayın. Bunu yaparsanız, Kullanıcı Azure AD Multi-Factor Authentication kaydı olmadığından ve bir [uygulama parolası](howto-mfa-app-passwords.md)edinmediği için eski kimlik doğrulama uygulamaları çalışmayı durdurur. Bazı durumlarda bu davranış istenebilir, ancak Kullanıcı kaydoluncaya kadar Kullanıcı deneyimini etkiler.
 
 Başlamak için, [Install-Module](/powershell/module/powershellget/install-module) kullanarak *MSOnline* modülünü aşağıdaki gibi çalıştırın:
 
@@ -143,7 +143,7 @@ Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirem
 
 ## <a name="convert-users-from-per-user-mfa-to-conditional-access"></a>Kullanıcıları Kullanıcı başına MFA 'dan koşullu erişime dönüştürme
 
-Aşağıdaki PowerShell, koşullu erişim tabanlı Azure Multi-Factor Authentication dönüştürmeyi yaparken size yardımcı olabilir.
+Aşağıdaki PowerShell, koşullu erişim tabanlı Azure AD Multi-Factor Authentication dönüştürmeyi yaparken size yardımcı olabilir.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -180,12 +180,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> MFA bir kullanıcı üzerinde yeniden etkinleştirilmişse ve Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabiriminde *etkin* durumuna geçmez. *Enforced* Bu durumda, yöneticinin kullanıcıyı doğrudan *Zorlanmış*olarak taşıması gerekir.
+> MFA bir kullanıcı üzerinde yeniden etkinleştirilmişse ve Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabiriminde *etkin* durumuna geçmez. *Enforced* Bu durumda, yöneticinin kullanıcıyı doğrudan *Zorlanmış* olarak taşıması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Multi-Factor Authentication ayarlarını yapılandırmak için bkz.  [azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md).
+Azure AD Multi-Factor Authentication ayarlarını yapılandırmak için bkz.  [Azure ad Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md).
 
-Azure Multi-Factor Authentication Kullanıcı ayarlarını yönetmek için bkz. [azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md).
+Azure AD Multi-Factor Authentication Kullanıcı ayarlarını yönetmek için bkz. [Azure ad Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme](howto-mfa-userdevicesettings.md).
 
-Bir kullanıcının neden MFA yapması istenmediğini anlamak için, bkz. [Azure Multi-Factor Authentication raporları](howto-mfa-reporting.md).
+Bir kullanıcının neden MFA yapması istenmediğini anlamak için, bkz. [Azure AD Multi-Factor Authentication raporları](howto-mfa-reporting.md).

@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 74e4ca34a69b121ce5b92ad52125dc317e3aea43
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145358"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837677"
 ---
 # <a name="building-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-[Koşullu erişim olan](overview.md)makalede açıklandığı gibi, koşullu erişim ilkesi **atamalar** ve **erişim denetimleri**için bir if-then deyimidir. Koşullu erişim ilkesi, kararları almak, kararlar almak ve kuruluş ilkelerini zorlamak için sinyalleri bir araya getirir.
+[Koşullu erişim olan](overview.md)makalede açıklandığı gibi, koşullu erişim ilkesi **atamalar** ve **erişim denetimleri** için bir if-then deyimidir. Koşullu erişim ilkesi, kararları almak, kararlar almak ve kuruluş ilkelerini zorlamak için sinyalleri bir araya getirir.
 
 Bir kuruluş bu ilkeleri nasıl oluşturur? Ne gerekir? Nasıl uygulanır?
 
 ![Koşullu erişim (sinyaller + kararlar + zorlama = Ilkeler)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-Her zaman tek bir kullanıcı için birden fazla koşullu erişim ilkesi uygulanabilir. Bu durumda, uygulanan tüm ilkeler karşılanmalıdır. Örneğin, bir ilke çok faktörlü kimlik doğrulaması (MFA) gerektiriyorsa ve başka bir uyumlu cihaz gerektiriyorsa, MFA 'yı doldurmanız ve uyumlu bir cihaz kullanmanız gerekir. Tüm **atamalar mantıksal olarak**da kullanılır. Birden çok atama yapılandırdıysanız, bir ilkenin tetiklenmesi için tüm atamaların karşılanması gerekir.
+Her zaman tek bir kullanıcı için birden fazla koşullu erişim ilkesi uygulanabilir. Bu durumda, uygulanan tüm ilkeler karşılanmalıdır. Örneğin, bir ilke çok faktörlü kimlik doğrulaması (MFA) gerektiriyorsa ve başka bir uyumlu cihaz gerektiriyorsa, MFA 'yı doldurmanız ve uyumlu bir cihaz kullanmanız gerekir. Tüm **atamalar mantıksal olarak** da kullanılır. Birden çok atama yapılandırdıysanız, bir ilkenin tetiklenmesi için tüm atamaların karşılanması gerekir.
 
 Tüm ilkeler iki aşamada zorlanır:
 
@@ -101,7 +101,7 @@ Erişimi engelle, yalnızca belirtilen atamalar altındaki erişimi engeller. Bl
 
 İzin denetimi bir veya daha fazla denetimin zorlanmasını tetikleyebilir. 
 
-- Multi-Factor Authentication gerektir (Azure Multi-Factor Authentication)
+- Multi-Factor Authentication gerektir (Azure AD Multi-Factor Authentication)
 - Cihazın uyumlu olarak işaretlenmesini gerektir (Intune)
 - Karma Azure AD 'ye katılmış cihaz gerektir
 - Onaylanan istemci uygulaması gerektir
@@ -150,7 +150,7 @@ Koşullu erişim ilkesi, zorlanmak için en azından aşağıdakileri içermelid
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
 
-[Bulut tabanlı Azure Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md)
+[Bulut tabanlı bir Azure AD Multi-Factor Authentication dağıtımı planlama](../authentication/howto-mfa-getstarted.md)
 
 [Intune ile cihaz uyumluluğunu yönetme](/intune/device-compliance-get-started)
 

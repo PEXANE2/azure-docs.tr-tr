@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366335"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837490"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -73,7 +73,7 @@ Koşullu erişim hakkında bilgi edinmek için aşağıdaki kaynaklar yararlı o
 * [Koşullu erişim nasıl dağıtılır?](https://youtu.be/c_izIRNJNuk)
 * [CA ilkelerinin son kullanıcılara nasıl alınacağı?](https://youtu.be/0_Fze7Zpyvc)
 * [Cihaz denetimleriyle Koşullu Erişim](https://youtu.be/NcONUf-jeS4)
-* [Azure MFA ile Koşullu Erişim](https://youtu.be/Tbc-SU97G-w)
+* [Azure AD MFA ile koşullu erişim](https://youtu.be/Tbc-SU97G-w)
 * [Enterprise Mobility + Security koşullu erişim](https://youtu.be/A7IrxAH87wc)
 
 
@@ -105,7 +105,7 @@ Ortamınız için yeni ilkeler hazırlanıyor, bunları üretim ortamında aşam
 ## <a name="understand-ca-policy-components"></a>CA ilkesi bileşenlerini anlama
 CA ilkeleri-then ifadeleridir: atama karşılanırsa, bu erişim denetimlerini uygulayın.
 
-CA ilkelerini yapılandırırken, koşullar *atama*olarak adlandırılır. CA ilkeleri, belirli atamalara göre Kuruluşunuzun uygulamalarına erişim denetimlerini zorlamanıza olanak sağlar.
+CA ilkelerini yapılandırırken, koşullar *atama* olarak adlandırılır. CA ilkeleri, belirli atamalara göre Kuruluşunuzun uygulamalarına erişim denetimlerini zorlamanıza olanak sağlar.
 
 
 Daha fazla bilgi için bkz. [CA Ilkesi oluşturma](concept-conditional-access-policies.md).
@@ -287,7 +287,7 @@ EM01-acıl durumda ETKINLEŞTIR: MFA kesintisi [1/4]-Exchange SharePoint: VIP ku
 
 ### <a name="exclude-countries-from-which-you-never-expect-a-sign-in"></a>Hiç oturum açma işleminin beklemediği ülkeleri hariç tutun.
 
-Azure Active Directory, [adlandırılmış konumlar](location-condition.md)oluşturmanıza olanak sağlar. Bir oturum açma işleminin gerçekleşmesini beklemediği tüm ülkeleri içeren adlandırılmış bir konum oluşturun. Ardından, bu adlandırılmış konumdan oturum açmayı engelleyen tüm uygulamalar için bir ilke oluşturun. **Yöneticilerinizi bu ilkeden muaf tutamadığınızdan emin**olun.
+Azure Active Directory, [adlandırılmış konumlar](location-condition.md)oluşturmanıza olanak sağlar. Bir oturum açma işleminin gerçekleşmesini beklemediği tüm ülkeleri içeren adlandırılmış bir konum oluşturun. Ardından, bu adlandırılmış konumdan oturum açmayı engelleyen tüm uygulamalar için bir ilke oluşturun. **Yöneticilerinizi bu ilkeden muaf tutamadığınızdan emin** olun.
 
 ### <a name="plan-your-policy-deployment"></a>İlke dağıtımınızı planlayın
 

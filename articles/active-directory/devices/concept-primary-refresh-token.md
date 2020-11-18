@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 457910f30830db06f148282a32551a400255f7e1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965922"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837272"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
 
@@ -85,7 +85,7 @@ Bir PRT iki farklı yöntemde yenilenir:
 * **Her 4 saatte bir Azure AD CloudAP eklentisi**: cloudap eklentisi, Windows oturum açma sırasında her 4 saatte BIR, prt 'yi yeniler. Bu süre boyunca kullanıcının internet bağlantısı yoksa, CloudAP eklentisi cihaz internet 'e bağlandıktan sonra PRT 'yi yeniler.
 * **Uygulama belirteci istekleri sırasında Azure AD WAM eklentisi**: WAM eklentisi, uygulamalar için sessiz belirteç Isteklerini etkinleştirerek Windows 10 cihazlarında SSO 'yu etkinleştirir. WAM eklentisi, bu belirteç istekleri sırasında PRT 'yi iki farklı şekilde yenileyebilir:
    * Uygulama, erişim belirteci için bir WAM sessizce ister ancak bu uygulama için kullanılabilir yenileme belirteci yok. Bu durumda, WAM, uygulama için bir belirteç istemek üzere PRT 'yi kullanır ve yanıtta yeni bir PRT 'yi geri alır.
-   * Uygulama, erişim belirteci için WAM ister ancak PRT geçersiz ya da Azure AD ek yetkilendirme gerektirir (örneğin, Azure Multi-Factor Authentication). Bu senaryoda, WAM kullanıcının yeniden kimlik doğrulamasını veya ek doğrulama sağlamasını gerektiren etkileşimli bir oturum açma işlemini başlatır ve başarılı bir kimlik doğrulamasında yeni bir PRT verilir.
+   * Uygulama, erişim belirteci için WAM ister ancak PRT geçersiz ya da Azure AD ek yetkilendirme gerektirir (örneğin, Azure AD Multi-Factor Authentication). Bu senaryoda, WAM kullanıcının yeniden kimlik doğrulamasını veya ek doğrulama sağlamasını gerektiren etkileşimli bir oturum açma işlemini başlatır ve başarılı bir kimlik doğrulamasında yeni bir PRT verilir.
 
 Bir ADFS ortamında, PRT 'yi yenilemek için etki alanı denetleyicisine doğrudan görüş satırı gerekli değildir. PRT yenilemesi, WS-Trust protokolü kullanılarak proxy üzerinde yalnızca/ADFS/Services/Trust/2005/usernamemixed ve/ADFS/Services/Trust/13/usernamemixed endpoints gerektirir.
 

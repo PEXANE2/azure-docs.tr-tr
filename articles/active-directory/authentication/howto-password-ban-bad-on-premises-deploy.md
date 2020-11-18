@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b0b34ce55a0896fb804a48779c9c1007c8c340f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077736"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838221"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını planlayın ve dağıtın
 
@@ -42,7 +42,7 @@ Denetim aşamasında, birçok kuruluş aşağıdaki durumların uygulanacağın�
 * Kullanıcılar genellikle güvenli olmayan parolalar kullanır.
 * Kullanıcılara, güvenlik zorlamada yaklaşan değişikliği, bunlara ilişkin olası etkileri ve daha güvenli parolalar seçme hakkında bilgilendirmeleri gerekir.
 
-Daha güçlü parola doğrulamanın, mevcut Active Directory etki alanı denetleyicisi dağıtım otomasyonunu etkilemesini de mümkün hale gelir. Bu tür sorunları açığa çıkarmak için Denetim dönemi değerlendirmesi sırasında en az bir DC yükseltmesinin ve bir DC indirgemenin gerçekleşmesini öneririz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha güçlü parola doğrulamanın, mevcut Active Directory etki alanı denetleyicisi dağıtım otomasyonunu etkilemesini de mümkün hale gelir. Bu tür sorunları açığa çıkarmak için Denetim dönemi değerlendirmesi sırasında en az bir DC yükseltmesinin ve bir DC indirgemenin gerçekleşmesini öneririz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Ntdsutil.exe zayıf Dizin Hizmetleri onarım modu parolasını ayarlayamadı](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [Etki alanı denetleyicisi çoğaltma yükseltmesi zayıf bir dizin hizmetleri onarım modu parolası nedeniyle başarısız oluyor](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -142,8 +142,8 @@ Microsoft Azure AD Connect Agent Güncelleştirici hizmeti, Azure AD parola koru
 
 Şirket içi Azure AD parola koruma dağıtımı için gereken iki yükleyici vardır:
 
-* Azure AD parola koruma DC Aracısı ( *AzureADPasswordProtectionDCAgentSetup.msi* )
-* Azure AD parola koruma proxy 'si ( *AzureADPasswordProtectionProxySetup.exe* )
+* Azure AD parola koruma DC Aracısı (*AzureADPasswordProtectionDCAgentSetup.msi*)
+* Azure AD parola koruma proxy 'si (*AzureADPasswordProtectionProxySetup.exe*)
 
 Her iki yükleyiciyi de [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57071)' nden indirin.
 
@@ -201,7 +201,7 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
 
     Bu komut bir Azure AD parola koruma proxy hizmeti için bir kez başarılı olduktan sonra, ek olarak başarısız olur, ancak gereksizdir.
 
-    `Register-AzureADPasswordProtectionProxy`Cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure Multi-Factor Authentication destekler, ancak üçüncü mod değildir.
+    `Register-AzureADPasswordProtectionProxy`Cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure AD Multi-Factor Authentication destekler, ancak üçüncü mod değildir.
 
     > [!TIP]
     > Bu cmdlet belirli bir Azure kiracısı için ilk kez çalıştırıldığında tamamlanmadan önce dikkat çekici bir gecikme olabilir. Bir hata raporlanmadığı takdirde bu gecikmeden endişelenmeyin.
@@ -231,11 +231,11 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
         ```
 
         > [!NOTE]
-        > Hesabınız için Azure Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya bunun yerine MFA gerektirmeyen farklı bir hesap kullanın.
+        > Hesabınız için Azure AD Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya bunun yerine MFA gerektirmeyen farklı bir hesap kullanın.
         >
         > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu gereksinime geçici bir çözüm olarak, önceki iki kimlik doğrulama modundan biriyle MFA 'yı destekleyen farklı bir hesap kullanabilir veya Azure cihaz kaydı MFA gereksinimini geçici olarak da yapabilirsiniz.
         >
-        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar** ' ı seçin. Cihazların *Hayır* 'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
+        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar**' ı seçin. Cihazların *Hayır*'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
         >
         > MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
 
@@ -252,7 +252,7 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
     
     Bu adım, her orman için bir kez çalıştırılır.
 
-    `Register-AzureADPasswordProtectionForest`Cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure Multi-Factor Authentication destekler, ancak üçüncü mod değildir.
+    `Register-AzureADPasswordProtectionForest`Cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure AD Multi-Factor Authentication destekler, ancak üçüncü mod değildir.
 
     > [!TIP]
     > Bu cmdlet belirli bir Azure kiracısı için ilk kez çalıştırıldığında tamamlanmadan önce dikkat çekici bir gecikme olabilir. Bir hata raporlanmadığı takdirde bu gecikmeden endişelenmeyin.
@@ -282,11 +282,11 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
         ```
 
         > [!NOTE]
-        > Hesabınız için Azure Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya bunun yerine MFA gerektirmeyen farklı bir hesap kullanın.
+        > Hesabınız için Azure AD Multi-Factor Authentication gerekliyse bu mod başarısız olur. Bu durumda, önceki iki kimlik doğrulama modundan birini kullanın veya bunun yerine MFA gerektirmeyen farklı bir hesap kullanın.
         >
         > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu gereksinime geçici bir çözüm olarak, önceki iki kimlik doğrulama modundan biriyle MFA 'yı destekleyen farklı bir hesap kullanabilir veya Azure cihaz kaydı MFA gereksinimini geçici olarak da yapabilirsiniz.
         >
-        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar** ' ı seçin. Cihazların *Hayır* 'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
+        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar**' ı seçin. Cihazların *Hayır*'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
         >
         > MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication SSS-Azure Active Directory
-description: Azure Multi-Factor Authentication ile ilgili sık sorulan sorular ve yanıtlar.
+title: Azure AD Multi-Factor Authentication SSS-Azure Active Directory
+description: Azure AD Multi-Factor Authentication ile ilgili sık sorulan sorular ve yanıtlar.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de86bc7d083fbf1890ed90c588b5bdb2e8479dfb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 909f4b71e07a20abf4af76fecaaf93bb08e4d6b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963984"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837915"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication hakkında sık sorulan sorular
 
-Bu SSS, Azure Multi-Factor Authentication ve Multi-Factor Authentication hizmetini kullanarak ilgili sık sorulan soruları yanıtlar. Genel, faturalandırma modelleri, kullanıcı deneyimleri ve sorun giderme hizmeti hakkındaki sorulara bölünmüştür.
+Bu SSS, Azure AD Multi-Factor Authentication ve Multi-Factor Authentication hizmetini kullanarak ilgili sık sorulan soruları yanıtlar. Genel, faturalandırma modelleri, kullanıcı deneyimleri ve sorun giderme hizmeti hakkındaki sorulara bölünmüştür.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure AD Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 >
 > Azure Multi-Factor Authentication Sunucusu ile ilgili olarak aşağıda paylaşılan bilgiler yalnızca MFA sunucusuna zaten çalışan kullanıcılar için geçerlidir.
 >
@@ -37,7 +37,7 @@ Bu SSS, Azure Multi-Factor Authentication ve Multi-Factor Authentication hizmeti
 
 ### <a name="how-does-azure-multi-factor-authentication-server-handle-user-data"></a>Azure Multi-Factor Authentication Sunucusu Kullanıcı verilerini nasıl işler?
 
-Multi-Factor Authentication Sunucusu, Kullanıcı verileri yalnızca şirket içi sunucularda depolanır. Kalıcı kullanıcı verileri bulutta depolanmaz. Kullanıcı iki aşamalı doğrulama gerçekleştirdiğinde, Multi-Factor Authentication Sunucusu kimlik doğrulaması için verileri Azure Multi-Factor Authentication bulut hizmetine gönderir. Multi-Factor Authentication Sunucusu ile Multi-Factor Authentication bulut hizmeti arasındaki iletişim 443 giden bağlantı noktası üzerinden Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) kullanır.
+Multi-Factor Authentication Sunucusu, Kullanıcı verileri yalnızca şirket içi sunucularda depolanır. Kalıcı kullanıcı verileri bulutta depolanmaz. Kullanıcı iki adımlı doğrulama gerçekleştirdiğinde, Multi-Factor Authentication Sunucusu kimlik doğrulaması için Azure AD Multi-Factor Authentication bulut hizmetine veri gönderir. Multi-Factor Authentication Sunucusu ile Multi-Factor Authentication bulut hizmeti arasındaki iletişim 443 giden bağlantı noktası üzerinden Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) kullanır.
 
 Bulut hizmetine kimlik doğrulama istekleri gönderildiğinde, veriler kimlik doğrulama ve kullanım raporları için toplanır. Aşağıdaki veri alanları iki adımlı doğrulama günlüklerine dahildir:
 
@@ -56,7 +56,7 @@ Bulut hizmetine kimlik doğrulama istekleri gönderildiğinde, veriler kimlik do
 
 Doğrulama sonucu (başarı veya reddetme) ve reddedilme nedeni kimlik doğrulama verileriyle birlikte depolanır. Bu veriler, kimlik doğrulama ve kullanım raporlarında kullanılabilir.
 
-Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Için veri yerleşimi ve müşteri verileri](concept-mfa-data-residency.md).
+Daha fazla bilgi için bkz. [Azure AD Multi-Factor Authentication Için veri yerleşimi ve müşteri verileri](concept-mfa-data-residency.md).
 
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>Kullanıcılarıma SMS iletileri göndermek için hangi SMS kısa kodları kullanılır?
 
@@ -78,19 +78,19 @@ Birleşik Devletler ve Kanada yanı sıra ülkeler ve bölgeler için kısa kodl
 
 ## <a name="billing"></a>Faturalama
 
-Çoğu faturalandırma sorusu, [Multi-Factor Authentication fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) ya da [Azure Multi-Factor Authentication sürümleri ve tüketim planlarına](concept-mfa-licensing.md)yönelik belgelere başvurarak yanıtlanır.
+Çoğu faturalandırma sorusu, [Multi-Factor Authentication fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) ya da [Azure AD Multi-Factor Authentication sürümleri ve tüketim planlarına](concept-mfa-licensing.md)yönelik belgelere başvurarak yanıtlanır.
 
 * [Kuruluşum, kimlik doğrulaması için kullanılan telefon çağrılarını ve SMS iletilerini göndermek için ücretlendiriyor mu?](#is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication)
 * [Kullanıcı başına faturalandırma modeli, etkin olan tüm kullanıcılar için mi, yoksa yalnızca iki adımlı doğrulama gerçekleştirenler için mi ücretlendirilir?](#does-the-per-user-billing-model-charge-me-for-all-enabled-users-or-just-the-ones-that-performed-two-step-verification)
 * [Multi-Factor Authentication Faturalandırma nasıl çalışır?](#how-does-multi-factor-authentication-billing-work)
-* [Azure Multi-Factor Authentication 'in ücretsiz bir sürümü var mı?](#is-there-a-free-version-of-azure-multi-factor-authentication)
+* [Azure AD Multi-Factor Authentication 'nin ücretsiz bir sürümü var mı?](#is-there-a-free-version-of-azure-ad-multi-factor-authentication)
 * [Kuruluşum, her zaman Kullanıcı başına ve kimlik doğrulaması başına tüketim faturalama modelleri arasında geçiş yapabilir mi?](#can-my-organization-switch-between-per-user-and-per-authentication-consumption-billing-models-at-any-time)
 * [Kuruluşum, tüketim tabanlı faturalandırma ve abonelikler arasında (lisans tabanlı bir model) istediğiniz zaman geçiş yapabilir mi?](#can-my-organization-switch-between-consumption-based-billing-and-subscriptions-a-license-based-model-at-any-time)
-* [Kuruluşumun Azure Multi-Factor Authentication kullanmak için kimlikleri kullanması ve eşitlenmesi gerekir mi?](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication)
+* [Kuruluşumun Azure AD Multi-Factor Authentication kullanmak için kimlikleri kullanması ve eşitlenmesi gerekiyor mu?](#does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication)
 
 ### <a name="is-my-organization-charged-for-sending-the-phone-calls-and-text-messages-that-are-used-for-authentication"></a>Kuruluşum, kimlik doğrulaması için kullanılan telefon çağrılarını ve SMS iletilerini göndermek için ücretlendiriyor mu?
 
-Hayır, Azure Multi-Factor Authentication aracılığıyla kullanıcılara gönderilen tek tek telefon aramaları veya SMS iletileri için ücretlendirilirsiniz. Kimlik doğrulaması başına MFA sağlayıcısı kullanıyorsanız, her kimlik doğrulaması için faturalandırılırsınız, ancak kullanılan yöntem için bu değil.
+Hayır, Azure AD Multi-Factor Authentication aracılığıyla kullanıcılara gönderilen tek tek telefon aramaları veya SMS iletileri için ücret ödersiniz. Kimlik doğrulaması başına MFA sağlayıcısı kullanıyorsanız, her kimlik doğrulaması için faturalandırılırsınız, ancak kullanılan yöntem için bu değil.
 
 Kullanıcılarınız, kendi kişisel telefon hizmetine göre aldıkları telefon aramaları veya mesaj iletileri için ücretlendirilir.
 
@@ -102,11 +102,11 @@ Faturalandırma, ayda iki adımlı doğrulama gerçekleştirdiklerinden bağıms
 
 Kullanıcı başına veya kimlik doğrulaması başına MFA sağlayıcısı oluşturduğunuzda, kuruluşunuzun Azure aboneliği kullanım için aylık olarak faturalandırılır. Bu Faturalandırma modeli, Azure 'un sanal makineler ve Web Apps kullanımı ile benzerdir.
 
-Azure Multi-Factor Authentication için bir abonelik satın aldığınızda, kuruluşunuz yalnızca her bir kullanıcı için yıllık lisans ücretini ödersiniz. MFA lisansları ve Microsoft 365, Azure AD Premium veya Enterprise Mobility + Security paketleri bu şekilde faturalandırılır.
+Azure AD Multi-Factor Authentication için bir abonelik satın aldığınızda, kuruluşunuz yalnızca her bir kullanıcı için yıllık lisans ücretini ödersiniz. MFA lisansları ve Microsoft 365, Azure AD Premium veya Enterprise Mobility + Security paketleri bu şekilde faturalandırılır.
 
-Daha fazla bilgi için bkz. [Azure Multi-Factor Authentication alma](concept-mfa-licensing.md).
+Daha fazla bilgi için bkz. [Azure AD Multi-Factor Authentication alma](concept-mfa-licensing.md).
 
-### <a name="is-there-a-free-version-of-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 'in ücretsiz bir sürümü var mı?
+### <a name="is-there-a-free-version-of-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication 'nin ücretsiz bir sürümü var mı?
 
 Güvenlik Varsayılanları Azure AD Ücretsiz katmanında etkinleştirilebilir. Güvenlik varsayılanları ile, tüm kullanıcılar Microsoft Authenticator uygulamasını kullanarak çok faktörlü kimlik doğrulaması için etkinleştirilir. Yalnızca Microsoft Authenticator uygulaması olan güvenlik varsayılanlarını kullanarak kısa mesaj veya telefon doğrulaması kullanabilme özelliği yoktur.
 
@@ -128,7 +128,7 @@ Dizininizde *Kullanıcı başına* Azure Multi-Factor Authentication sağlayıc�
 
 Dizininizde bir *kimlik doğrulaması başına* Azure Multi-Factor Authentication sağlayıcısı varsa, MFA sağlayıcısı aboneliğinize bağlı olduğu sürece her bir kimlik doğrulaması için her zaman faturalandırılırsınız. Kullanıcılara MFA lisansları atayabilirsiniz, ancak her iki adımlı doğrulama isteği için faturalandırılırsınız ve bu, bir MFA lisansı atanmış birisinden gelir.
 
-### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-multi-factor-authentication"></a>Kuruluşumun Azure Multi-Factor Authentication kullanmak için kimlikleri kullanması ve eşitlenmesi gerekir mi?
+### <a name="does-my-organization-have-to-use-and-synchronize-identities-to-use-azure-ad-multi-factor-authentication"></a>Kuruluşumun Azure AD Multi-Factor Authentication kullanmak için kimlikleri kullanması ve eşitlenmesi gerekiyor mu?
 
 Kuruluşunuz tüketim tabanlı bir faturalandırma modeli kullanıyorsa, Azure Active Directory isteğe bağlıdır, ancak gerekli değildir. MFA sağlayıcınız bir Azure AD kiracısına bağlı değilse, yalnızca şirket içi Azure Multi-Factor Authentication Sunucusu dağıtabilirsiniz.
 
@@ -159,11 +159,11 @@ Daha fazla bilgi için bkz. [Son Kullanıcı sorun giderme kılavuzu](../user-he
 
 ### <a name="what-should-i-do-if-one-of-my-users-cant-get-in-to-their-account"></a>Kullanıcılarım hesabında yoksa ne yapmam gerekir?
 
-Kullanıcının hesabını, kayıt işlemini tekrar ilerleyerek sıfırlayabilirsiniz. [Bulutta Azure Multi-Factor Authentication ile Kullanıcı ve cihaz ayarlarını yönetme](howto-mfa-userdevicesettings.md)hakkında daha fazla bilgi edinin.
+Kullanıcının hesabını, kayıt işlemini tekrar ilerleyerek sıfırlayabilirsiniz. [Bulutta Azure AD Multi-Factor Authentication ile Kullanıcı ve cihaz ayarlarını yönetme](howto-mfa-userdevicesettings.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="what-should-i-do-if-one-of-my-users-loses-a-phone-that-is-using-app-passwords"></a>Kullanıcılarımın biri uygulama parolalarını kullanan bir telefonu kaybedersem ne yapmam gerekir?
 
-Yetkisiz erişimi engellemek için kullanıcının tüm uygulama parolalarını silin. Kullanıcı bir değiştirme cihazına sahip olduktan sonra parolaları yeniden oluşturabilir. [Bulutta Azure Multi-Factor Authentication ile Kullanıcı ve cihaz ayarlarını yönetme](howto-mfa-userdevicesettings.md)hakkında daha fazla bilgi edinin.
+Yetkisiz erişimi engellemek için kullanıcının tüm uygulama parolalarını silin. Kullanıcı bir değiştirme cihazına sahip olduktan sonra parolaları yeniden oluşturabilir. [Bulutta Azure AD Multi-Factor Authentication ile Kullanıcı ve cihaz ayarlarını yönetme](howto-mfa-userdevicesettings.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>Kullanıcı tarayıcı olmayan uygulamalarda oturum açamaz ne olursa?
 
@@ -199,7 +199,7 @@ Azure MFA Server v 7.0 veya üzeri bir tek yönlü SMS için bir kayıt defteri 
 
 Kullanıcılar, tanımlanan zaman aşımı süresi içinde SMS 'ye yanıt vermezse, kimlik doğrulaması reddedilir.
 
-Bulutta Azure MFA ile tek yönlü bir SMS (AD FS bağdaştırıcısı veya ağ Ilkesi sunucu uzantısı dahil) için zaman aşımı ayarını yapılandıramazsınız. Azure AD, 180 saniyelik doğrulama kodunu depolar.
+Bulutta Azure AD MFA ile tek yönlü bir SMS (AD FS bağdaştırıcısı veya ağ Ilkesi sunucu uzantısı dahil) için zaman aşımı ayarını yapılandıramazsınız. Azure AD, 180 saniyelik doğrulama kodunu depolar.
 
 ### <a name="can-i-use-hardware-tokens-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu ile donanım belirteçlerini kullanabilir miyim?
 

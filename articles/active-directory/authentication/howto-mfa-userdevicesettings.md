@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication için kimlik doğrulama yöntemlerini yönetme-Azure Active Directory
-description: Azure Multi-Factor Authentication için Azure Active Directory Kullanıcı ayarlarını nasıl yapılandırabileceğinizi öğrenin
+title: Azure AD Multi-Factor Authentication için kimlik doğrulama yöntemlerini yönetme-Azure Active Directory
+description: Azure AD Multi-Factor Authentication için Azure Active Directory Kullanıcı ayarlarını nasıl yapılandırabileceğinizi öğrenin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6309ef6793858051ceaf3c3b33edb9f830b26710
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 1117b5194dae92a8025594ed71fc629670d875cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378054"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838936"
 ---
-# <a name="manage-user-authentication-methods-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için Kullanıcı kimlik doğrulama yöntemlerini yönetme
+# <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için Kullanıcı kimlik doğrulama yöntemlerini yönetme
 
 Azure AD 'deki kullanıcıların iki farklı iletişim bilgisi kümesi vardır:  
 
 - Kullanıcı profilinde yönetilen ve kuruluşunuzun üyelerine görünen genel profil iletişim bilgileri. Şirket içi Active Directory eşitlenen kullanıcılar için, bu bilgiler Şirket içi Windows Server Active Directory Domain Services yönetilir.
 - Her zaman özel olarak tutulan ve Multi-Factor Authentication (MFA) dahil olmak üzere yalnızca kimlik doğrulama için kullanılan kimlik doğrulama yöntemleri. Yöneticiler, bu yöntemleri kullanıcının kimlik doğrulama yöntemi dikey penceresinde yönetebilir ve kullanıcılar kendi yöntemlerini MyAccount güvenlik bilgileri sayfasında yönetebilir.
 
-Kullanıcılarınız için Azure Multi-Factor Authentication yöntemlerini yönetirken, kimlik doğrulama yöneticileri şunları yapabilir: 
+Kullanıcılarınız için Azure AD Multi-Factor Authentication yöntemlerini yönetirken, kimlik doğrulama yöneticileri şunları yapabilir: 
 
 1. MFA için kullanılan telefon numaraları dahil olmak üzere belirli bir kullanıcı için kimlik doğrulama yöntemleri ekleyin.
 1. Kullanıcının parolasını sıfırlayın.
@@ -45,11 +45,11 @@ Azure portal veya Microsoft Graph aracılığıyla bir kullanıcı için kimlik 
 Azure portal aracılığıyla bir kullanıcıya yönelik kimlik doğrulama yöntemleri eklemek için:  
 
 1. **Azure portalında** oturum açın. 
-1. **Azure Active Directory**  >  **kullanıcılara**  >  **tüm kullanıcılar** ' a gidin. 
+1. **Azure Active Directory**  >  **kullanıcılara**  >  **tüm kullanıcılar**' a gidin. 
 1. Kimlik doğrulama yöntemi eklemek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemlerini** seçin.  
-1. Pencerenin üst kısmında **+ kimlik doğrulama yöntemi ekle** ' yi seçin.
+1. Pencerenin üst kısmında **+ kimlik doğrulama yöntemi ekle**' yi seçin.
    1. Bir Yöntem (telefon numarası veya e-posta) seçin. E-posta, kendi kendine parola sıfırlama için kullanılabilir ancak kimlik doğrulaması yok. Telefon numarası eklerken bir telefon türü seçin ve telefon numarasını geçerli biçime (ör. + 1 4255551234) girin.
-   1. **Ekle** ’yi seçin.
+   1. **Ekle**’yi seçin.
 
 > [!NOTE]
 > Önizleme deneyimi, yöneticilerin kullanıcılar için kullanılabilir kimlik doğrulama yöntemleri eklemesine izin verir, ancak özgün deneyim yalnızca telefon ve alternatif telefon yöntemlerinin güncelleştirilmesini sağlar.
@@ -89,8 +89,8 @@ Kimlik doğrulama yöntemleri de Microsoft Graph API 'Leri kullanılarak yöneti
 *Kimlik doğrulama Yöneticisi* rolünü atadıysanız, kullanıcıların kendi parolalarını SıFıRLAMALARıNı, MFA için yeniden kaydolmayı veya mevcut MFA oturumlarını kullanıcı nesnesinden iptal etmeyi zorunlu kılabilirsiniz. Kullanıcı ayarlarını yönetmek için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **Tüm kullanıcılar** 'ı seçin.
-1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri** ' ni seçin. Pencerenin üst kısmında, Kullanıcı için aşağıdaki seçeneklerden birini belirleyin:
+1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **Tüm kullanıcılar**'ı seçin.
+1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri**' ni seçin. Pencerenin üst kısmında, Kullanıcı için aşağıdaki seçeneklerden birini belirleyin:
    - **Parola sıfırlama** Kullanıcı parolasını sıfırlar ve sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atar.
    - **MFA 'Yı yeniden kaydettirme** , Kullanıcı bir sonraki sefer oturum açtığında yenı bir MFA kimlik doğrulama yöntemi ayarlaması istenmesini sağlar.
    
@@ -108,14 +108,14 @@ Yönetici, uygulama parolaları olan kullanıcılar için bu parolaları silmeyi
 Bir kullanıcının uygulama parolalarını silmek için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol tarafta **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar** ' ı seçin.
-1. **Multi-Factor Authentication** 'ı seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin: [ ![ Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Sol tarafta **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
+1. **Multi-Factor Authentication**'ı seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin: [ ![ Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
-1. **Kullanıcı ayarlarını yönet** ' i seçin, sonra aşağıdaki örnekte gösterildiği gibi **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil** kutusunu işaretleyin. ![ var olan tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-1. **Kaydet** ' i ve ardından **Kapat** ' ı seçin.
+1. **Kullanıcı ayarlarını yönet**' i seçin, sonra aşağıdaki örnekte gösterildiği gibi **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil** kutusunu işaretleyin. ![ var olan tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. **Kaydet**' i ve ardından **Kapat**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bireysel kullanıcı ayarlarını nasıl yapılandıracağınız açıklanır. Genel Azure Multi-Factor Authentication hizmet ayarlarını yapılandırmak için bkz. [azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md).
+Bu makalede, bireysel kullanıcı ayarlarını nasıl yapılandıracağınız açıklanır. Genel Azure AD Multi-Factor Authentication hizmet ayarlarını yapılandırmak için bkz. [Azure ad Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md).
 
-Kullanıcılarınızın yardıma ihtiyacı varsa bkz. [Azure Multi-Factor Authentication Için Kullanıcı Kılavuzu](../user-help/multi-factor-authentication-end-user-first-time.md).
+Kullanıcılarınızın yardıma ihtiyacı varsa bkz. [Azure AD Multi-Factor Authentication Için Kullanıcı Kılavuzu](../user-help/multi-factor-authentication-end-user-first-time.md).

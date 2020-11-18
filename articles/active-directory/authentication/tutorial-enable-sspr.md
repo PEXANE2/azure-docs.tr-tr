@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbf1a6aebf54c7928fe0636262055f37d7f93bd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966551"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837830"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Öğretici: kullanıcıların Self servis parola sıfırlama Azure Active Directory kullanarak hesaplarının kilidini açma veya parolaları sıfırlamalarını sağlama
 
@@ -41,14 +41,14 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Bu serideki sonraki öğreticiler için, şirket içi parola geri yazma için Azure AD Premium P1 veya deneme lisansı gerekir.
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
-* Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Son Kullanıcı SSPR deneyimini Bu öğreticide bu hesabı kullanarak test edersiniz.
+* Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser* gibi bir parola. Son Kullanıcı SSPR deneyimini Bu öğreticide bu hesabı kullanarak test edersiniz.
     * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md).
-* Yönetici olmayan kullanıcının *SSPR-test-Group*gibi üyesi olduğu bir grup. Bu öğreticide bu grup için SSPR 'yi etkinleştirirsiniz.
+* Yönetici olmayan kullanıcının *SSPR-test-Group* gibi üyesi olduğu bir grup. Bu öğreticide bu grup için SSPR 'yi etkinleştirirsiniz.
     * Bir grup oluşturmanız gerekiyorsa bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-self-service-password-reset"></a>Kendi kendine parola sıfırlamayı etkinleştirme
 
-Azure AD, SSPR 'yi *hiçbiri*, *Seçili*veya *Tüm* kullanıcılar için etkinleştirmenizi sağlar. Bu ayrıntılı özellik, SSPR kayıt işlemini ve iş akışını test etmek için kullanıcıların bir alt kümesini seçmenize olanak sağlar. İşlemi rahat hale getiriyorsanız ve gereksinimleri daha geniş bir Kullanıcı kümesiyle iletişim kurabiliyorsanız, SSPR için etkinleştirilecek kullanıcı grubunu seçebilirsiniz. Ya da, SSPR 'yi Azure AD kiracısındaki herkes için etkinleştirebilirsiniz.
+Azure AD, SSPR 'yi *hiçbiri*, *Seçili* veya *Tüm* kullanıcılar için etkinleştirmenizi sağlar. Bu ayrıntılı özellik, SSPR kayıt işlemini ve iş akışını test etmek için kullanıcıların bir alt kümesini seçmenize olanak sağlar. İşlemi rahat hale getiriyorsanız ve gereksinimleri daha geniş bir Kullanıcı kümesiyle iletişim kurabiliyorsanız, SSPR için etkinleştirilecek kullanıcı grubunu seçebilirsiniz. Ya da, SSPR 'yi Azure AD kiracısındaki herkes için etkinleştirebilirsiniz.
 
 > [!NOTE]
 >
@@ -57,9 +57,9 @@ Azure AD, SSPR 'yi *hiçbiri*, *Seçili*veya *Tüm* kullanıcılar için etkinle
 Bu öğreticide, bir test grubundaki bir kullanıcı kümesi için SSPR 'yi yapılandırın. Aşağıdaki örnekte, *SSPR-test-Group* grubu kullanılır. Gerektiğinde kendi Azure AD grubunuzu sağlayın:
 
 1. *Genel yönetici* izinlerine sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **parola sıfırlama** ' yı seçin.
-1. **Özellikler** sayfasında, *self servis parola sıfırlama etkin*seçeneği altında **Grup Seç** ' i seçin.
-1. *SSPR-test-Group*gıbı Azure AD grubunuza gözatıp seçin ve ardından *Seç*' i seçin.
+1. **Azure Active Directory** bulun ve seçin ve ardından sol taraftaki menüden **parola sıfırlama** ' yı seçin.
+1. **Özellikler** sayfasında, *self servis parola sıfırlama etkin* seçeneği altında **Grup Seç** ' i seçin.
+1. *SSPR-test-Group* gıbı Azure AD grubunuza gözatıp seçin ve ardından *Seç*' i seçin.
 
     [![Self servis parola sıfırlama ](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) için etkinleştirmek üzere Azure Portal bir grup seçin](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
@@ -69,7 +69,7 @@ Bu öğreticide, bir test grubundaki bir kullanıcı kümesi için SSPR 'yi yap�
 
 Kullanıcıların hesaplarının kilidini açmak veya parolalarını sıfırlaması gerektiğinde, bunlara ek bir onay yöntemi sorulur. Bu ek kimlik doğrulama faktörü yalnızca onaylanan SSPR olaylarının tamamlandığından emin olmanızı sağlar. Kullanıcının sağladığı kayıt bilgilerine göre hangi kimlik doğrulama yöntemlerinin izin verdiğini seçebilirsiniz.
 
-1. Sol taraftaki menüden **kimlik doğrulama yöntemleri** sayfasında, **sıfırlamak Için gereken yöntem sayısını** *1*olarak ayarlayın.
+1. Sol taraftaki menüden **kimlik doğrulama yöntemleri** sayfasında, **sıfırlamak Için gereken yöntem sayısını** *1* olarak ayarlayın.
 
     Güvenliği artırmak için SSPR için gereken kimlik doğrulama yöntemlerinin sayısını artırabilirsiniz.
 
@@ -80,7 +80,7 @@ Kullanıcıların hesaplarının kilidini açmak veya parolalarını sıfırlama
     * *E-posta*
     * *Cep telefonu*
 
-    *Ofis telefonu* veya *güvenlik soruları*gibi ek kimlik doğrulama yöntemleri, iş gereksinimlerinize uyacak şekilde etkinleştirilebilir.
+    *Ofis telefonu* veya *güvenlik soruları* gibi ek kimlik doğrulama yöntemleri, iş gereksinimlerinize uyacak şekilde etkinleştirilebilir.
 
 1. Kimlik doğrulama yöntemlerini uygulamak için **Kaydet**' i seçin.
 
@@ -88,7 +88,7 @@ Kullanıcıların hesaplarının kilidini açmak veya bir parolayı sıfırlayab
 
 Bir yönetici bu iletişim bilgilerini el ile sağlayabilir veya kullanıcıların bilgileri sağlaması için bir kayıt portalına gidebilir. Bu öğreticide, kullanıcıları bir sonraki oturum açtıklarında kayıt yapması istenecek şekilde yapılandırın.
 
-1. Sol taraftaki menüdeki **kayıt** sayfasında, **kullanıcıların oturum açarken kaydolmasını gerektir**için *Evet* ' i seçin.
+1. Sol taraftaki menüdeki **kayıt** sayfasında, **kullanıcıların oturum açarken kaydolmasını gerektir** için *Evet* ' i seçin.
 1. İletişim bilgilerinin güncel tutulması önemlidir. Bir SSPR olayı başlatıldığında iletişim bilgileri güncel değilse, Kullanıcı hesabının kilidini açmayabilir veya parolalarını sıfırlayamayabilir.
 
     **Kullanıcıların kimlik doğrulaması bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı** ayarını *180* olarak belirleyin.
@@ -107,22 +107,22 @@ Kullanıcılara hesap etkinlikleri hakkında bilgi sahibi olmak için, bir SSPR 
 
 Kullanıcıların SSPR işlemiyle ilgili ek yardıma ihtiyacı varsa, "yöneticinize başvurun" bağlantısını özelleştirebilirsiniz. Bu bağlantı SSPR kayıt işleminde ve Kullanıcı hesaplarının kilidini açtığında veya parolalarını sıfırladığında kullanılır. Kullanıcılarınızın gerekli desteği almasını sağlamak için, özel bir yardım masası e-postası veya URL 'SI sağlamanız önemle önerilir.
 
-1. Sol taraftaki menüden **Özelleştirme** sayfasında, *Özelleştir yardım masası* ' nı **Evet**olarak ayarlayın.
+1. Sol taraftaki menüden **Özelleştirme** sayfasında, *Özelleştir yardım masası* ' nı **Evet** olarak ayarlayın.
 1. **Özel yardım masası e-postası veya URL 'si** alanında, kullanıcılarınızın kuruluşunuza ait Ek yardım alabileceğiniz bir e-posta adresi veya Web sayfası URL 'si sağlayın (örneğin,*`https://support.contoso.com/`*
 1. Özel bağlantıyı uygulamak için **Kaydet**' i seçin.
 
 ## <a name="test-self-service-password-reset"></a>Self servis parola sıfırlamayı test etme
 
-SSPR 'yi etkin ve yapılandırılmış olarak, SSPR sürecini *Test-SSPR-Group*gibi önceki bölümde seçtiğiniz grubun parçası olan bir kullanıcıyla test edin. Aşağıdaki örnekte, *testuser* hesabı kullanılır. Bu öğreticinin ilk bölümünde SSPR için etkinleştirdiğiniz grubun parçası olan kendi kullanıcı hesabınızı sağlayın.
+SSPR 'yi etkin ve yapılandırılmış olarak, SSPR sürecini *Test-SSPR-Group* gibi önceki bölümde seçtiğiniz grubun parçası olan bir kullanıcıyla test edin. Aşağıdaki örnekte, *testuser* hesabı kullanılır. Bu öğreticinin ilk bölümünde SSPR için etkinleştirdiğiniz grubun parçası olan kendi kullanıcı hesabınızı sağlayın.
 
 > [!NOTE]
 > Self servis parola sıfırlamayı test ettiğinizde yönetici olmayan bir hesap kullanın. Varsayılan olarak, Yöneticiler Self servis parola sıfırlama için etkinleştirilmiştir ve parolasını sıfırlamak için iki kimlik doğrulama yöntemi kullanmak zorundadır. Daha fazla bilgi için bkz. [yönetici sıfırlama ilkesi farklılıkları](concept-sspr-policy.md#administrator-reset-policy-differences).
 
 1. El ile kayıt işlemini görmek için, InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve konumuna gidin [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Kullanıcılar bir sonraki oturum açtıklarında bu kayıt portalına yönlendirilmelidir.
-1. *Testuser*gibi yönetici olmayan bir test kullanıcısı ile oturum açın ve kimlik doğrulama yöntemlerinin iletişim bilgilerini kaydedin.
+1. *Testuser* gibi yönetici olmayan bir test kullanıcısı ile oturum açın ve kimlik doğrulama yöntemlerinin iletişim bilgilerini kaydedin.
 1. Tamamlandıktan **sonra, işaretlenmiş düğmeyi** seçin ve tarayıcı penceresini kapatın.
 1. InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve konumuna gidin [https://aka.ms/sspr](https://aka.ms/sspr) .
-1. Yönetici olmayan test kullanıcılarınızın hesap bilgilerini ( *testuser*gibi), CAPTCHA ' dan karakterler ' i girin ve ardından **İleri**' yi seçin.
+1. Yönetici olmayan test kullanıcılarınızın hesap bilgilerini ( *testuser* gibi), CAPTCHA ' dan karakterler ' i girin ve ardından **İleri**' yi seçin.
 
     ![Parolayı sıfırlamak için Kullanıcı hesabı bilgilerini girin](media/tutorial-enable-sspr/password-reset-page.png)
 
@@ -135,8 +135,8 @@ Bu serideki aşağıdaki öğreticide, parola geri yazma özelliğini yapıland�
 Bu öğreticinin bir parçası olarak yapılandırdığınız SSPR işlevini artık kullanmak istemiyorsanız, aşağıdaki adımları uygulayarak SSPR durumunu **none** olarak ayarlayın:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **parola sıfırlama** ' yı seçin.
-1. **Özellikler** sayfasında, *self servis parola sıfırlama etkin*seçeneği altında **hiçbiri**' ni seçin.
+1. **Azure Active Directory** bulun ve seçin ve ardından sol taraftaki menüden **parola sıfırlama** ' yı seçin.
+1. **Özellikler** sayfasında, *self servis parola sıfırlama etkin* seçeneği altında **hiçbiri**' ni seçin.
 1. SSPR değişikliğini uygulamak için **Kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -149,4 +149,4 @@ Bu öğreticide, seçili bir Kullanıcı grubu için Azure AD self servis parola
 > * SSPR işlemini Kullanıcı olarak test etme
 
 > [!div class="nextstepaction"]
-> [Azure Multi-Factor Authentication’ı etkinleştirme](./tutorial-enable-azure-mfa.md)
+> [Azure AD Multi-Factor Authentication etkinleştirme](./tutorial-enable-azure-mfa.md)

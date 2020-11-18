@@ -1,6 +1,6 @@
 ---
-title: Azure MFA NPS uzantısı sorunlarını giderme-Azure Active Directory
-description: Azure için NPS uzantısıyla ilgili sorunları çözme konusunda yardım alın Multi-Factor Authentication
+title: Azure AD MFA NPS 'de sorun giderme-Azure Active Directory
+description: Azure AD Multi-Factor Authentication için NPS uzantısıyla ilgili sorunları çözmeye yardımcı olun
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 406b53f833edabafe620b05ccb6acfadffabf5ae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03736f468148ee633aff22718dc000220ab7efe4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964375"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839038"
 ---
-# <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için NPS uzantısından alınan hata iletilerini çözme
+# <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için NPS uzantısından hata iletilerini çözümleyin
 
-Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karşılaşırsanız, bir çözüme daha hızlı ulaşmak için bu makaleyi kullanın. NPS uzantısı günlükleri, NPS uzantısının yüklendiği sunucudaki **özel görünümler**  >  **sunucu rolleri**  >  **Ağ İlkesi ve erişim Hizmetleri** altında Olay Görüntüleyicisi bulunur.
+Azure AD Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karşılaşırsanız, bir çözüme daha hızlı ulaşmak için bu makaleyi kullanın. NPS uzantısı günlükleri, NPS uzantısının yüklendiği sunucudaki **özel görünümler**  >  **sunucu rolleri**  >  **Ağ İlkesi ve erişim Hizmetleri** altında Olay Görüntüleyicisi bulunur.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Sık karşılaşılan hatalar için sorun giderme adımları
 
@@ -30,12 +30,12 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 | **CONTACT_SUPPORT** | [Desteğe başvurun](#contact-microsoft-support)ve günlüklerin toplanması için adımlar listesinden bahsedin. , Kiracı KIMLIĞI ve Kullanıcı asıl adı (UPN) dahil olmak üzere hatadan önce ne olduğu hakkında daha fazla bilgi sağlayın. |
 | **CLIENT_CERT_INSTALL_ERROR** | İstemci sertifikasının nasıl yüklendiği veya kiracınızla ilişkili olduğu bir sorun olabilir. İstemci sertifikası sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
 | **ESTS_TOKEN_ERROR** | İstemci sertifikası ve ADAL belirteci sorunlarını araştırmak için [MFA NPS uzantısının sorunlarını giderme](howto-mfa-nps-extension.md#troubleshooting) konusundaki yönergeleri izleyin. |
-| **HTTPS_COMMUNICATION_ERROR** | NPS sunucusu, Azure MFA 'dan yanıt alamıyor. Güvenlik duvarlarınızın ve giden trafik için açık bir şekilde açık olduğunu doğrulayın https://adnotifications.windowsazure.com |
+| **HTTPS_COMMUNICATION_ERROR** | NPS sunucusu, Azure AD MFA 'dan yanıt alamıyor. Güvenlik duvarlarınızın ve giden trafik için açık bir şekilde açık olduğunu doğrulayın https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | NPS uzantısını çalıştıran sunucuda, ve ' a ulaşabildiğinizi doğrulayın  `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com/` . Bu siteler yüklenmezseniz, bu sunucu üzerinde bağlantı sorunlarını giderin. |
-| **Azure MFA için NPS uzantısı:** <br> Azure MFA için NPS uzantısı yalnızca AccessAccept durumundaki RADIUS istekleri için Ikincil kimlik doğrulaması gerçekleştirir. Yanıt durumu Accessred olan Kullanıcı Kullanıcı adı için istek alındı, istek yoksayılıyor. | Bu hata genellikle AD 'deki bir kimlik doğrulaması hatasını yansıtır veya NPS sunucusunun Azure AD 'den yanıt alamıyor olduğunu gösterir. Güvenlik duvarlarınızın, `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com` 80 ve 443 bağlantı noktalarını kullanarak ve giden trafik için açık bir şekilde açık olduğunu doğrulayın. Ağ erişim Izinlerinin arama sekmesinde, ayarın "NPS ağ Ilkesi aracılığıyla erişimi denetle" olarak ayarlandığını denetlemek de önemlidir. Bu hata, kullanıcıya bir lisans atanmamışsa da tetiklenebilir. |
+| **Azure AD MFA için NPS uzantısı:** <br> Azure AD MFA için NPS uzantısı yalnızca AccessAccept durumundaki RADIUS istekleri için Ikincil kimlik doğrulaması gerçekleştirir. Yanıt durumu Accessred olan Kullanıcı Kullanıcı adı için istek alındı, istek yoksayılıyor. | Bu hata genellikle AD 'deki bir kimlik doğrulaması hatasını yansıtır veya NPS sunucusunun Azure AD 'den yanıt alamıyor olduğunu gösterir. Güvenlik duvarlarınızın, `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com` 80 ve 443 bağlantı noktalarını kullanarak ve giden trafik için açık bir şekilde açık olduğunu doğrulayın. Ağ erişim Izinlerinin arama sekmesinde, ayarın "NPS ağ Ilkesi aracılığıyla erişimi denetle" olarak ayarlandığını denetlemek de önemlidir. Bu hata, kullanıcıya bir lisans atanmamışsa da tetiklenebilir. |
 | **REGISTRY_CONFIG_ERROR** | Uygulama için kayıt defterinde bir anahtar eksik, bu durum [PowerShell betiğinin](howto-mfa-nps-extension.md#install-the-nps-extension) yükleme sonrasında çalıştırılmamasının nedeni olabilir. Hata iletisi eksik anahtarı içermelidir. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa altındaki anahtara sahip olduğunuzdan emin olun. |
 | **REQUEST_FORMAT_ERROR** <br> Radius Isteğinde zorunlu Radius Username\ıdentifier özniteliği eksik. NPS 'nin RADIUS isteklerini aldığını doğrulama | Bu hata genellikle bir yükleme sorununu yansıtır. NPS uzantısının, RADIUS isteklerini alabilen NPS sunucularına yüklenmesi gerekir. RDG ve RRAS gibi hizmetler için bağımlılıklar olarak yüklenen NPS sunucuları RADIUS istekleri almaz. NPS uzantısı, kimlik doğrulama isteğinden ayrıntıları okuyamadığından bu tür yüklemeler ve hatalar üzerine yüklendiğinde çalışmaz. |
-| **REQUEST_MISSING_CODE** | NPS ve NAS sunucuları arasındaki parola şifreleme protokolünün, kullanmakta olduğunuz ikincil kimlik doğrulama yöntemini desteklediğinden emin olun. **Pap** , BULUTTA Azure MFA 'nın tüm kimlik doğrulama yöntemlerini destekler: telefon araması, tek yönlü SMS mesajı, mobil uygulama bildirimi ve mobil uygulama doğrulama kodu. **CHAPv2** ve **EAP** desteği telefon araması ve mobil uygulama bildirimi. |
+| **REQUEST_MISSING_CODE** | NPS ve NAS sunucuları arasındaki parola şifreleme protokolünün, kullanmakta olduğunuz ikincil kimlik doğrulama yöntemini desteklediğinden emin olun. **Pap** , BULUTTA Azure AD MFA 'nın tüm kimlik doğrulama yöntemlerini destekler: telefon araması, tek yönlü SMS mesajı, mobil uygulama bildirimi ve mobil uygulama doğrulama kodu. **CHAPv2** ve **EAP** desteği telefon araması ve mobil uygulama bildirimi. |
 | **USERNAME_CANONICALIZATION_ERROR** | Kullanıcının şirket içi Active Directory örneğinde mevcut olduğunu ve NPS hizmetinin dizine erişim izinleri olduğunu doğrulayın. Ormanlar arası güvenler kullanıyorsanız, daha fazla yardım için [desteğe başvurun](#contact-microsoft-support) . |
 
 ### <a name="alternate-login-id-errors"></a>Alternatif oturum açma KIMLIĞI hataları
@@ -55,7 +55,7 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 | **AuthenticationMethodNotSupported** | Belirtilen kimlik doğrulama yöntemi desteklenmiyor. | Bu hatayı içeren tüm günlüklerinizi toplayın ve [desteğe başvurun](#contact-microsoft-support). Destek ekibiyle iletişime geçerek, hatayı tetikleyen Kullanıcı adını ve ikincil doğrulama yöntemini belirtin. |
 | **Becaccessreddedildi** | MSODS BEC çağrısı erişim engellendi döndürdü, büyük olasılıkla Kullanıcı adı kiracıda tanımlı değil | Kullanıcı şirket içinde Active Directory vardır ancak AD Connect tarafından Azure AD 'ye eşitlenmez. Ya da, kiracı için Kullanıcı eksik. Kullanıcıyı Azure AD 'ye ekleyin ve [iki adımlı doğrulama için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md)konusundaki yönergelere göre doğrulama yöntemlerini eklemesini isteyin. |
 | **Invalidformat** veya **Strongauthenticationserviceınvalidparameter** | Telefon numarası tanınmayan bir biçimde | Kullanıcının kendi doğrulama telefon numaralarını düzeltmesini sağlayabilirsiniz. |
-| **Invalidsession** | Belirtilen oturum geçersiz veya zaman aşımına uğradı | Oturumun tamamlaması üç dakikadan uzun sürdü. Kullanıcının doğrulama kodunu girdiğini veya kimlik doğrulama isteğini başlatma sırasında geçen üç dakika içinde uygulama bildirimine yanıt verdiğini doğrulayın. Bu sorunu çözmezse, istemci, NAS sunucusu, NPS sunucusu ve Azure MFA uç noktası arasında ağ gecikme süresi olmadığından emin olun.  |
+| **Invalidsession** | Belirtilen oturum geçersiz veya zaman aşımına uğradı | Oturumun tamamlaması üç dakikadan uzun sürdü. Kullanıcının doğrulama kodunu girdiğini veya kimlik doğrulama isteğini başlatma sırasında geçen üç dakika içinde uygulama bildirimine yanıt verdiğini doğrulayın. Bu sorunu çözmezse, istemci, NAS sunucusu, NPS sunucusu ve Azure AD MFA uç noktası arasında ağ gecikme süresi olmadığından emin olun.  |
 | **Nodefaultauthenticationmethodısconfigured** | Kullanıcı için varsayılan kimlik doğrulama yöntemi yapılandırılmadı | Kullanıcının, [iki adımlı doğrulama için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md)konusundaki yönergelere göre doğrulama yöntemlerini eklemesini veya doğrulamasını sağlayabilirsiniz. Kullanıcının varsayılan bir kimlik doğrulama yöntemi seçtiğinizden ve hesabı için bu yöntemi yapılandırdığınıza emin olun. |
 | **OathCodePinIncorrect** | Yanlış kod ve PIN girildi. | Bu hata NPS uzantısında beklenmiyor. Kullanıcı bu sorunla karşılaşırsa, sorun giderme Yardım için [desteğe başvurun](#contact-microsoft-support) . |
 | **Redakpatanotfound** | Belirtilen kimlik doğrulama yöntemi için düzeltme verileri yapılandırılmadı. | Kullanıcının farklı bir doğrulama yöntemi denemesini veya [iki adımlı doğrulama için ayarlarınızı yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md)konusundaki yönergelere göre yeni bir doğrulama yöntemi eklemesini sağlayabilirsiniz. Doğrulama yönteminin doğru ayarlandığını doğruladıktan sonra Kullanıcı bu hatayı görmeyi devam ederse [desteğe başvurun](#contact-microsoft-support). |
@@ -99,7 +99,7 @@ Kullanıcılarınız [iki adımlı doğrulamayla ilgili sorun](../user-help/mult
 
 ### <a name="health-check-script"></a>Sistem durumu denetimi betiği
 
-[Azure MFA NPS uzantısı sistem durumu denetim betiği](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) , NPS uzantısı sorunlarını giderirken temel bir sistem durumu denetimi gerçekleştirir. Betiği çalıştırın ve seçenek 3 ' ü seçin.
+[Azure AD MFA NPS uzantısı sistem durumu denetim betiği](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) , NPS uzantısı sorunlarını giderirken temel bir sistem durumu denetimi gerçekleştirir. Betiği çalıştırın ve seçenek 3 ' ü seçin.
 
 ### <a name="contact-microsoft-support"></a>Microsoft desteğine başvurma
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae5995340640e9cda16634cf76b9953d7d663c2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b7ac03ff017f8beefe7cc487cdc32741ac1c5a35
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966670"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838187"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Birleşik güvenlik bilgileri kaydı sorunlarını giderme
 
@@ -30,7 +30,7 @@ Birleşik kayıt için günlüğe kaydedilen olaylar, Azure AD denetim günlükl
 
 Aşağıdaki tabloda, Birleşik kayıt tarafından oluşturulan tüm denetim olayları listelenmektedir:
 
-| Etkinlik | Durum | Neden | Açıklama |
+| Etkinlik | Durum | Nedeni | Açıklama |
 | --- | --- | --- | --- |
 | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Başarılı | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti. | Bu olay, bir kullanıcı kaydı başarıyla tamamladığında oluşur.|
 | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Hata | Kullanıcı güvenlik bilgileri kaydını iptal etti. | Bu olay, bir Kullanıcı kesme modundan kaydı iptal ettiğinde meydana gelir.|
@@ -38,9 +38,9 @@ Aşağıdaki tabloda, Birleşik kayıt tarafından oluşturulan tüm denetim ola
 | Kullanıcı tarafından gözden geçirilmiş güvenlik bilgileri | Başarılı | Kullanıcı, güvenlik bilgilerini başarıyla incelendi. | Bu olay, bir kullanıcı seçildiğinde güvenlik bilgileri incelemesi sayfasında **Iyi görünüyor** durumunda meydana gelir.|
 | Kullanıcı tarafından gözden geçirilmiş güvenlik bilgileri | Hata | Kullanıcı güvenlik bilgilerini inceleyemedi. | Bu olay, bir kullanıcı seçimi, güvenlik bilgileri incelemesi sayfasında **Iyi görünüyor** , ancak arka uçta bir hata oluşmadığında oluşur.|
 | Kullanıcı tarafından silinen güvenlik bilgileri | Başarılı | Kullanıcı tarafından silinen *Yöntem*. | Bu olay, bir kullanıcı tek bir yöntemi sildiğinde oluşur. *Yöntem* kimlik doğrulayıcı uygulaması, telefon, e-posta, güvenlik soruları, uygulama parolası, alternatif telefon vb. olabilir.|
-| Kullanıcı tarafından silinen güvenlik bilgileri | Hata | Kullanıcı *yöntemi*silemedi. | Bu olay, bir Kullanıcı bir yöntemi silmeye çalıştığında oluşur ancak deneme bir nedenden dolayı başarısız olur. *Yöntem* kimlik doğrulayıcı uygulaması, telefon, e-posta, güvenlik soruları, uygulama parolası, alternatif telefon vb. olabilir.|
-| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Başarılı | Kullanıcı, *yöntemi*için varsayılan güvenlik bilgilerini değiştirdi. | Bu olay, bir Kullanıcı varsayılan yöntemi değiştirdiğinde oluşur. *Yöntem* , kimlik doğrulayıcı uygulama bildirimi, kimlik doğrulayıcı uygulamanızdan veya belirteçten bir kod, + x xxxxxxxxxx, bir kodu + x xxxxxxxxx ve benzeri gibi olabilir.|
-| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Hata | Kullanıcı, *yöntemi*için varsayılan güvenlik bilgilerini değiştiremedi. | Bu olay, bir Kullanıcı varsayılan yöntemi değiştirmeyi denediğinde oluşur ancak deneme bir nedenden dolayı başarısız olur. *Yöntem* , kimlik doğrulayıcı uygulama bildirimi, kimlik doğrulayıcı uygulamanızdan veya belirteçten bir kod, + x xxxxxxxxxx, bir kodu + x xxxxxxxxx ve benzeri gibi olabilir.|
+| Kullanıcı tarafından silinen güvenlik bilgileri | Hata | Kullanıcı *yöntemi* silemedi. | Bu olay, bir Kullanıcı bir yöntemi silmeye çalıştığında oluşur ancak deneme bir nedenden dolayı başarısız olur. *Yöntem* kimlik doğrulayıcı uygulaması, telefon, e-posta, güvenlik soruları, uygulama parolası, alternatif telefon vb. olabilir.|
+| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Başarılı | Kullanıcı, *yöntemi* için varsayılan güvenlik bilgilerini değiştirdi. | Bu olay, bir Kullanıcı varsayılan yöntemi değiştirdiğinde oluşur. *Yöntem* , kimlik doğrulayıcı uygulama bildirimi, kimlik doğrulayıcı uygulamanızdan veya belirteçten bir kod, + x xxxxxxxxxx, bir kodu + x xxxxxxxxx ve benzeri gibi olabilir.|
+| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Hata | Kullanıcı, *yöntemi* için varsayılan güvenlik bilgilerini değiştiremedi. | Bu olay, bir Kullanıcı varsayılan yöntemi değiştirmeyi denediğinde oluşur ancak deneme bir nedenden dolayı başarısız olur. *Yöntem* , kimlik doğrulayıcı uygulama bildirimi, kimlik doğrulayıcı uygulamanızdan veya belirteçten bir kod, + x xxxxxxxxxx, bir kodu + x xxxxxxxxx ve benzeri gibi olabilir.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Kesme modunda sorun giderme
 
@@ -151,10 +151,10 @@ Kullanıcılarınız için güncelleştirilmiş deneyimi devre dışı bırakmak
 
 1. Azure portal Kullanıcı Yöneticisi olarak oturum açın.
 2. **Azure Active Directory**  >  **Kullanıcı ayarları**  >  **erişim paneli Önizleme özellikleri ayarlarını yönet**' e gidin.
-3. **Kullanıcılar altında güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir**, seçiciyi **none**olarak ayarlayabilir ve ardından **Kaydet**' i seçin.
+3. **Kullanıcılar altında güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir**, seçiciyi **none** olarak ayarlayabilir ve ardından **Kaydet**' i seçin.
 
 Kullanıcılardan artık güncelleştirilmiş deneyim kullanılarak kaydolması istenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Self servis parola sıfırlama ve Azure Multi-Factor Authentication için Birleşik kayıt hakkında daha fazla bilgi edinin](concept-registration-mfa-sspr-combined.md)
+* [Self servis parola sıfırlama ve Azure AD Multi-Factor Authentication için Birleşik kayıt hakkında daha fazla bilgi edinin](concept-registration-mfa-sspr-combined.md)

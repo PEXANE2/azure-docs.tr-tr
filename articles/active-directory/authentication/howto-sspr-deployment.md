@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363734"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838086"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
 > [!IMPORTANT]
 > Bu dağıtım planı, Azure AD self servis parola sıfırlama (SSPR) dağıtımı için rehberlik ve en iyi yöntemleri sunar.
 >
-> **Son bir Kullanıcı kullanıyorsanız ve hesabınıza geri [https://aka.ms/sspr](https://aka.ms/sspr) **dönmek istiyorsanız adresine gidin.
+> **Son bir Kullanıcı kullanıyorsanız ve hesabınıza geri [https://aka.ms/sspr](https://aka.ms/sspr)** dönmek istiyorsanız adresine gidin.
 
 [Self servis parola sıfırlama (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) , kullanıcıların yardım için BT personeline başvurmadan parolalarını sıfırlamalarını sağlayan bir Azure ACTIVE DIRECTORY (ad) özelliğidir. Kullanıcılar kendi kendilerini engellemeyi kaldırabilir ve nerede olurlarsa veya gün içinde çalışmaya devam edebilir. Kuruluşunuz, çalışanların kendi engellemesini engellemelerine izin vererek, en yaygın parolayla ilgili sorunlara yönelik üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
 
@@ -115,7 +115,7 @@ SSPR 'yi dağıtılmadan önce, her parola sıfırlama çağrısının numarası
 
 Microsoft, kuruluşların SSPR ve Multi-Factor Authentication için Birleşik kayıt deneyimini etkinleştirmesini önerir. Bu Birleşik kayıt deneyimini etkinleştirdiğinizde, kullanıcıların her iki özelliği de etkinleştirmek için kayıt bilgilerini yalnızca bir kez seçmesini gerekir.
 
-Birleşik kayıt deneyimi, kuruluşların hem SSPR hem de Azure Multi-Factor Authentication etkinleştirmesini gerektirmez. Birleşik kayıt, kuruluşlara daha iyi bir kullanıcı deneyimi sağlar. Daha fazla bilgi için bkz. [Birleşik güvenlik bilgileri kaydı](concept-registration-mfa-sspr-combined.md)
+Birleşik kayıt deneyimi, kuruluşların hem SSPR hem de Azure AD Multi-Factor Authentication etkinleştirmesini gerektirmez. Birleşik kayıt, kuruluşlara daha iyi bir kullanıcı deneyimi sağlar. Daha fazla bilgi için bkz. [Birleşik güvenlik bilgileri kaydı](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>Dağıtım projesini planlayın
 
@@ -190,7 +190,7 @@ Kuruluşunuzun daha kısa bir zaman dilimine yönelik bir iş ihtiyacı yoksa, k
 
 ### <a name="notifications-settings"></a>Bildirim ayarları
 
-**Parola sıfırlamaları için kullanıcılara bildir** ' i ve **diğer yöneticiler parolasını Evet olarak sıfırladığında tüm yöneticilere bildir** ' **Yes**i yapılandırın. Her ikisinde de **Evet** ' i seçmek, kullanıcıların parolası sıfırlandığında haberdar olmanızı sağlayarak güvenliği artırır. Ayrıca, bir yönetici bir parolayı değiştirdiğinde tüm yöneticilerin farkında olmasını sağlar. Kullanıcılar veya Yöneticiler bir bildirim alıyorsa ve değişikliği başlatmadıklarında, olası bir güvenlik sorununu anında raporlayabilir.
+**Parola sıfırlamaları için kullanıcılara bildir** ' i ve **diğer yöneticiler parolasını Evet olarak sıfırladığında tüm yöneticilere bildir** ' **Yes** i yapılandırın. Her ikisinde de **Evet** ' i seçmek, kullanıcıların parolası sıfırlandığında haberdar olmanızı sağlayarak güvenliği artırır. Ayrıca, bir yönetici bir parolayı değiştirdiğinde tüm yöneticilerin farkında olmasını sağlar. Kullanıcılar veya Yöneticiler bir bildirim alıyorsa ve değişikliği başlatmadıklarında, olası bir güvenlik sorununu anında raporlayabilir.
 
 ### <a name="customization-settings"></a>Özelleştirme ayarları
 
@@ -204,8 +204,8 @@ Daha fazla bilgi için bkz. [self servis parola sıfırlama Için Azure AD Işle
 
 Aşağıdaki ayarları öneririz:
 
-* Şirket **ıçı ad 'ye geri yazma parolalarının** **Evet**olarak ayarlandığından emin olun. 
-* **Parolayı sıfırlamadan kullanıcıların hesabı kilitlemeden Izin ver** ' i **Evet**olarak ayarlayın.
+* Şirket **ıçı ad 'ye geri yazma parolalarının** **Evet** olarak ayarlandığından emin olun. 
+* **Parolayı sıfırlamadan kullanıcıların hesabı kilitlemeden Izin ver** ' i **Evet** olarak ayarlayın.
 
 Varsayılan olarak, Azure AD, parola sıfırlama gerçekleştirdiğinde hesapların kilidini açar.
 
@@ -254,7 +254,7 @@ SSPR genellikle kullanıcı sorunları oluşturmadığından, oluşabilecek soru
 
 Destek takımınızın başarısını etkinleştirmek için, kullanıcılarınızın aldığınız sorulara dayalı bir SSS oluşturabilirsiniz. İşte birkaç örnek:
 
-| Senaryolar| Description |
+| Senaryolar| Açıklama |
 | - | - |
 | Kullanıcının kayıtlı bir kimlik doğrulama yöntemi yok| Kullanıcı parolasını sıfırlamaya çalışıyor ancak kaydoldukları kimlik doğrulama yöntemlerinden hiçbirine sahip değil (örnek: kendi cep telefonlarını evde ve e-postaya erişemez) |
 | Kullanıcı Office veya cep telefonunda bir metin veya çağrı almıyor| Kullanıcı, kimliğini metin veya çağrı yoluyla doğrulamaya çalışıyor ancak bir metin/çağrı almıyor. |
@@ -321,7 +321,7 @@ Kayıt ve parola sıfırlama için denetim günlükleri 30 gün boyunca kullanı
 
 ### <a name="authentication-methods--usage-and-insights"></a>Kimlik doğrulama yöntemleri-kullanım ve Öngörüler
 
-[Kullanım ve Öngörüler](./howto-authentication-methods-usage-insights.md) , Azure MFA ve SSPR gibi özellikler için kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak tanır. Bu raporlama özelliği, kuruluşunuzun hangi yöntemlerin kayıt yaptığını ve bunların nasıl kullanılacağını anlamak için gerekenleri sağlar.
+[Kullanım ve Öngörüler](./howto-authentication-methods-usage-insights.md) , Azure AD MFA ve SSPR gibi özelliklerin kimlik doğrulama yöntemlerinin kuruluşunuzda nasıl çalıştığını anlamanıza olanak tanır. Bu raporlama özelliği, kuruluşunuzun hangi yöntemlerin kayıt yaptığını ve bunların nasıl kullanılacağını anlamak için gerekenleri sağlar.
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
