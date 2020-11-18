@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 44300771ce6471c97dcd582884995395daae4995
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: fe31e1bf095d15cfdd7945288486cb866ace8246
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215493"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840619"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OAuth 2,0 örtük akışını kullanarak tek sayfalı oturum açma
 
@@ -55,16 +55,16 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-|Kiracı| Evet | Azure AD B2C kiracınızın adı|
-|ilkesinin| Evet| Çalıştırılacak Kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz Kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in` , `b2c_1_sign_up` , veya `b2c_1_edit_profile` . |
-| client_id | Evet | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
-| response_type | Evet | `id_token`OpenID Connect oturum açma için içermelidir. Yanıt türünü de içerebilir `token` . Kullanıyorsanız, uygulamanız yetkilendirme uç noktası `token` için ikinci bir istek yapmadan yetkilendirme uç noktasından hemen bir erişim belirteci alabilir.  `token`Yanıt türünü kullanırsanız, `scope` parametresi belirtecinin hangi kaynağa verilmeyeceğini belirten bir kapsam içermelidir. |
-| redirect_uri | Hayır | Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
-| response_mode | Hayır | Elde edilen belirteci uygulamanıza geri göndermek için kullanılacak yöntemi belirtir.  Örtük akışlar için kullanın `fragment` . |
-| scope | Evet | Kapsamların boşlukla ayrılmış listesi. Tek bir kapsam değeri, Azure AD 'ye, İstenen izinlerin her ikisi de belirtir. `openid`Kapsam, kullanıcıya oturum açma ve kimlik belirteçleri biçimindeki Kullanıcı hakkında veri edinme iznini gösterir. `offline_access`Kapsam, Web Apps için isteğe bağlıdır. Uygulamanızın kaynaklara uzun süreli erişim için yenileme belirteci gerektiğini gösterir. |
-| state | Hayır | İstekte, belirteç yanıtında döndürülen bir değer. Kullanmak istediğiniz herhangi bir içerik dizesi olabilir. Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulan, benzersiz bir değer kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, açık oldukları sayfa gibi kimlik doğrulama isteği yapılmadan önce kodlamak için de kullanılır. |
-| nonce | Evet | İstek olarak ortaya çıkan KIMLIK belirtecine dahil edilen isteğe (uygulama tarafından oluşturulan) dahil bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Genellikle değer, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. |
-| isteme | Hayır | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer `login` . Bu parametre, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar. Çoklu oturum açma etkili olmaz. |
+|Kiracı| Yes | Azure AD B2C kiracınızın adı|
+|ilkesinin| Yes| Çalıştırılacak Kullanıcı akışı. Azure AD B2C kiracınızda oluşturduğunuz Kullanıcı akışının adını belirtin. Örneğin: `b2c_1_sign_in` , `b2c_1_sign_up` , veya `b2c_1_edit_profile` . |
+| client_id | Yes | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
+| response_type | Yes | `id_token`OpenID Connect oturum açma için içermelidir. Yanıt türünü de içerebilir `token` . Kullanıyorsanız, uygulamanız yetkilendirme uç noktası `token` için ikinci bir istek yapmadan yetkilendirme uç noktasından hemen bir erişim belirteci alabilir.  `token`Yanıt türünü kullanırsanız, `scope` parametresi belirtecinin hangi kaynağa verilmeyeceğini belirten bir kapsam içermelidir. |
+| redirect_uri | No | Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
+| response_mode | No | Elde edilen belirteci uygulamanıza geri göndermek için kullanılacak yöntemi belirtir.  Örtük akışlar için kullanın `fragment` . |
+| scope | Yes | Kapsamların boşlukla ayrılmış listesi. Tek bir kapsam değeri, Azure AD 'ye, İstenen izinlerin her ikisi de belirtir. `openid`Kapsam, kullanıcıya oturum açma ve kimlik belirteçleri biçimindeki Kullanıcı hakkında veri edinme iznini gösterir. `offline_access`Kapsam, Web Apps için isteğe bağlıdır. Uygulamanızın kaynaklara uzun süreli erişim için yenileme belirteci gerektiğini gösterir. |
+| state | No | İstekte, belirteç yanıtında döndürülen bir değer. Kullanmak istediğiniz herhangi bir içerik dizesi olabilir. Genellikle, siteler arası istek sahteciliği saldırıları engellemek için rastgele oluşturulan, benzersiz bir değer kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, açık oldukları sayfa gibi kimlik doğrulama isteği yapılmadan önce kodlamak için de kullanılır. |
+| nonce | Yes | İstek olarak ortaya çıkan KIMLIK belirtecine dahil edilen isteğe (uygulama tarafından oluşturulan) dahil bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Genellikle değer, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. |
+| isteme | No | Gerekli Kullanıcı etkileşimi türü. Şu anda geçerli olan tek değer `login` . Bu parametre, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar. Çoklu oturum açma etkili olmaz. |
 
 Bu noktada, kullanıcıdan ilkenin iş akışını tamamlaması istenir. Kullanıcının Kullanıcı adı ve parolasını girmesi, bir sosyal kimlik ile oturum açması, dizin için kayıt veya başka birçok adım olması gerekebilir. Kullanıcı eylemleri, Kullanıcı akışının nasıl tanımlandığına bağlıdır.
 
@@ -141,7 +141,7 @@ Gerçekleştirmeniz gereken birkaç doğrulama daha vardır ve [OpenID Connect C
 
 * Kullanıcı veya kuruluşun uygulamaya kaydolmasını sağlama.
 * Kullanıcının uygun yetkilendirme ve ayrıcalıklara sahip olduğundan emin olma.
-* Azure Multi-Factor Authentication kullanarak gibi belirli bir kimlik doğrulama gücünün meydana geldiğinden emin olma.
+* Azure AD Multi-Factor Authentication kullanma gibi belirli bir kimlik doğrulama gücünün meydana geldiğinden emin olma.
 
 Bir KIMLIK belirtecindeki talepler hakkında daha fazla bilgi için [Azure AD B2C belirteç başvurusuna](tokens-overview.md)bakın.
 
@@ -233,10 +233,10 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 | Parametre | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kiracı | Evet | Azure AD B2C kiracınızın adı |
-| ilkesinin | Evet | Kullanıcıyı uygulamanızda imzalamak için kullanmak istediğiniz kullanıcı akışı. |
-| post_logout_redirect_uri | Hayır | Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL. Dahil değilse, kullanıcıya genel bir ileti gösterir Azure AD B2C. |
-| state | Hayır | İsteğe bir `state` parametre dahil ise, yanıtta aynı değer görünmelidir. Uygulamanın, `state` istek ve yanıt değerlerinin özdeş olduğunu doğrulaması gerekir. |
+| Kiracı | Yes | Azure AD B2C kiracınızın adı |
+| ilkesinin | Yes | Kullanıcıyı uygulamanızda imzalamak için kullanmak istediğiniz kullanıcı akışı. |
+| post_logout_redirect_uri | No | Başarılı oturum kapatıldıktan sonra kullanıcının yeniden yönlendirilmesi gereken URL. Dahil değilse, kullanıcıya genel bir ileti gösterir Azure AD B2C. |
+| state | No | İsteğe bir `state` parametre dahil ise, yanıtta aynı değer görünmelidir. Uygulamanın, `state` istek ve yanıt değerlerinin özdeş olduğunu doğrulaması gerekir. |
 
 
 > [!NOTE]

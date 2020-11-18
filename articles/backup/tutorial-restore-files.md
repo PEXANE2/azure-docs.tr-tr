@@ -4,12 +4,12 @@ description: Backup ve Recovery Services ile bir Azure sanal makinesinde nasıl 
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf55b9d64d7d716aee9862b0e1e3e24966629286
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 236b2c2c7799ef6a0df1da2ddded0e689349e222
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746702"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842218"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure’da dosyaları sanal makineye geri yükleme
 
@@ -119,7 +119,7 @@ Dosyalarınızı geri yüklemek için Azure Backup, yerel dosya olarak kurtarma 
 Sanal makinenize kurtarma betiği kopyalandığına göre artık kurtarma noktasını bağlayabilir ve dosyaları geri yükleyebilirsiniz.
 
 >[!NOTE]
-> Devam etmeden önce betiği sanal makinenizde çalıştırıp çalıştıracağınızı görmek için [buraya](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) bakın.
+> Devam etmeden önce betiği sanal makinenizde çalıştırıp çalıştıracağınızı görmek için [buraya](backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) bakın.
 
 1. SSH ile sanal makinenize bağlanın. *publicIpAddress* değerini, aşağıdaki şekilde sanal makinenizin genel IP adresiyle değiştirin:
 

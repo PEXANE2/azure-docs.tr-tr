@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695342"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841997"
 ---
 # <a name="securing-paas-deployments"></a>PaaS dağıtımlarının güvenliğini sağlama
 
@@ -82,14 +82,14 @@ Kimlik kuşağını yönetmeye yönelik en iyi yöntemler aşağıda verilmişti
 **En iyi yöntem**: Bu VM 'leri doğrudan uzaktan yönetmenizi sağlayan bir yönetim arabirimi kullanarak, karma PaaS ve IaaS hizmetlerindeki VM yönetimi arabirimlerinizi koruyun.   
 **Ayrıntı**: [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)ve [PowerShell uzaktan iletişim](/powershell/module/microsoft.powershell.core/enable-psremoting) gibi uzak yönetim protokolleri kullanılabilir. Genel olarak, internet 'ten VM 'lere doğrudan uzaktan erişimi etkinleştirmenizi öneririz.
 
-Mümkünse, bir Azure sanal ağındaki sanal özel ağları kullanma gibi diğer yaklaşımları kullanın. Alternatif yaklaşımlar yoksa, karmaşık parola ve iki öğeli kimlik doğrulaması ( [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)gibi) kullandığınızdan emin olun.
+Mümkünse, bir Azure sanal ağındaki sanal özel ağları kullanma gibi diğer yaklaşımları kullanın. Alternatif yaklaşımlar yoksa, karmaşık parola ve iki öğeli kimlik doğrulaması (örneğin, [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) kullandığınızdan emin olun.
 
 **En iyi yöntem**: güçlü kimlik doğrulama ve yetkilendirme platformları kullanın.   
 **Ayrıntı**: Azure AD 'de özel Kullanıcı depoları yerine federe kimlikler kullanın. Federal kimlikler kullandığınızda, platform tabanlı bir yaklaşımdan yararlanabilir ve yetkili kimliklerin yönetim yetkisini iş ortaklarınıza devredebilirsiniz. Çalışanlar sonlandırıldığı ve bilgilerin birden çok kimlik ve yetkilendirme sistemine yansıtılması gerektiğinde, bir federal kimlik yaklaşımı özellikle önemlidir.
 
 Özel kod yerine platform tarafından sağlanan kimlik doğrulama ve yetkilendirme mekanizmalarını kullanın. Bunun nedeni, özel kimlik doğrulama kodu geliştirmenin hata olabilir. Geliştiricilerinizin çoğu güvenlik uzmanı değildir ve kimlik doğrulama ve yetkilendirme konusunda en son gelişmeleri göz önünde bulundurulmamalıdır. Ticari kod (örneğin, Microsoft 'tan) genellikle yaygın olarak güvenlik gözden geçirilir.
 
-İki öğeli kimlik doğrulaması kullanın. Kimlik doğrulama ve parola türlerinde bulunan güvenlik zayıflarını önlediği için iki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır. Hem Azure Yönetim (portal/uzak PowerShell) arabirimlerine hem de müşteriye yönelik hizmetlere erişim, [azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)kullanmak üzere tasarlanmalı ve yapılandırılmalıdır.
+İki öğeli kimlik doğrulaması kullanın. Kimlik doğrulama ve parola türlerinde bulunan güvenlik zayıflarını önlediği için iki öğeli kimlik doğrulama, kimlik doğrulama ve yetkilendirme için geçerli standarttır. Azure Yönetim (portal/uzak PowerShell) arabirimlerine ve müşteriye yönelik hizmetlere erişim, [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)kullanacak şekilde tasarlanmalı ve yapılandırılmalıdır.
 
 OAuth2 ve Kerberos gibi standart kimlik doğrulama protokollerini kullanın. Bu protokoller kapsamlı bir şekilde incelendi ve büyük olasılıkla kimlik doğrulama ve yetkilendirme için platform kitaplıklarınızın bir parçası olarak uygulandı.
 

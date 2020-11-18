@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 20045ce914a340ac36e4df8cbd0df38e872a1d38
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 387eb4f4c73b2103a7461c0d06c4d0e0562ec9db
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487339"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842473"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka ve Azure Cosmos DB ile yapılandırılmış Apache Spark akışı kullanın
 
@@ -69,7 +69,7 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
     |Abonelik|Azure aboneliğinizi seçin.|
     |Kaynak grubu|Bir grup oluşturun veya var olan bir grubu seçin. Bu grup HDInsight kümesini içerir.|
     |Cosmos DB hesap adı|Bu değer, Cosmos DB hesabının adı olarak kullanılır. Ad yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. Ad, 3-31 karakter arası uzunlukta olmalıdır.|
-    |Taban küme adı|Bu değer Spark ve Kafka kümelerinin temel adı olarak kullanılır. Örneğin, **myhdı** girildiğinde __Spark-Myhdi__ adlı bir Spark kümesi ve **Kafka-Myhdi**adlı bir Kafka kümesi oluşturulur.|
+    |Taban küme adı|Bu değer Spark ve Kafka kümelerinin temel adı olarak kullanılır. Örneğin, **myhdı** girildiğinde __Spark-Myhdi__ adlı bir Spark kümesi ve **Kafka-Myhdi** adlı bir Kafka kümesi oluşturulur.|
     |Küme sürümü|HDInsight kümesi sürümü. Bu örnek HDInsight 3,6 ile test edilmiştir ve diğer küme türleriyle çalışmayabilir.|
     |Küme Oturum Açma Kullanıcı Adı|Spark ve Kafka kümeleri için Yönetici Kullanıcı adı.|
     |Küme Oturum Açma Parolası|Spark ve Kafka kümeleri için Yönetici Kullanıcı parolası.|

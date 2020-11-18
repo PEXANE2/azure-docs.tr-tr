@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 09066d9e51f12923772758b3aebcebd347a59380
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5e688fbf653646fcdd500f36930fd6b46bebeefa
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174125"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842167"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Yedekleme için Azure Güvenlik temeli
 
@@ -298,11 +298,11 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
 
-**Rehberlik**: Azure Backup kritik işlemler gerçekleştirdiğinizde, Azure Portal kullanılabilen BIR güvenlik PIN 'i girmeniz gerekir. Azure Multi-Factor Authentication etkinleştirilmesi bir güvenlik katmanı ekler. Yalnızca geçerli Azure kimlik bilgilerine sahip yetkili kullanıcılar ve ikinci bir cihazdan kimlik doğrulaması yapılabilir Azure portal.
+**Rehberlik**: Azure Backup kritik işlemler gerçekleştirdiğinizde, Azure Portal kullanılabilen BIR güvenlik PIN 'i girmeniz gerekir. Azure AD Multi-Factor Authentication etkinleştirilmesi, bir güvenlik katmanı ekler. Yalnızca geçerli Azure kimlik bilgilerine sahip yetkili kullanıcılar ve ikinci bir cihazdan kimlik doğrulaması yapılabilir Azure portal.
 
 - [Azure Backup Multi-Factor Authentication](./backup-azure-security-feature.md)
 
-- [Bulut tabanlı Azure Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Bulut tabanlı bir Azure AD Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -310,11 +310,11 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
 
-**Rehberlik**: Azure Backup etkin kaynaklarınızı oturum açmak ve yapılandırmak Için yapılandırılmış Azure MULTI-Factor AUTHENTICATION (MFA) ile ayrıcalıklı bir erişim iş istasyonu (Paw) kullanın.
+**Rehberlik**: Azure Backup etkin kaynaklarınızı oturum açmak ve yapılandırmak Için YAPıLANDıRıLMıŞ Azure AD MULTI-Factor AUTHENTICATION (MFA) ile ayrıcalıklı bir erişim iş istasyonu (Paw) kullanın.
 
 - [Ayrıcalıklı Erişim İş İstasyonları](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Bulut tabanlı Azure Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Bulut tabanlı bir Azure AD Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

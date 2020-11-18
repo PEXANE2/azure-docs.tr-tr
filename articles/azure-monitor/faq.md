@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653802"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841912"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -81,7 +81,7 @@ Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyd
 
 ### <a name="how-do-i-retrieve-log-data"></a>Günlük verilerini almak Nasıl yaparım??
 Tüm veriler, kusto sorgu dili (KQL) kullanılarak yazılmış bir günlük sorgusu kullanarak bir Log Analytics çalışma alanından alınır. Kendi sorgularınızı yazabilir veya belirli bir uygulama veya hizmete ait günlük sorgularını içeren çözüm ve Öngörüler kullanabilirsiniz. Bkz. [Azure izleyici 'de günlük sorgularına genel bakış](log-query/log-query-overview.md).
-
+p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki verileri silebilir miyim?
 Veriler, [bekletme dönemine](platform/manage-cost-storage.md#change-the-data-retention-period)göre çalışma alanından kaldırılır. Gizlilik veya uyumluluk nedenleriyle belirli verileri silebilirsiniz. Daha fazla bilgi için bkz. [özel verileri dışarı ve silme](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
@@ -594,10 +594,6 @@ Opentelemetri toplayıcısı, [GitHub Benioku](https://github.com/open-telemetry
 
 
 ## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
-
-### <a name="health-feature-is-in-private-preview"></a>Sistem durumu özelliği özel önizlemede
-
-İşlevselliği eklemek ve geri bildiriminizi gidermek için bir dizi değişiklik yapmayı planlıyoruz. Sistem durumu özelliği, Haziran 2020 ' nin sonunda özel önizlemeye geçiş yapmak ve ek bilgi edinmek için aşağıdaki [Azure güncelleştirmeleri duyurusunu](https://azure.microsoft.com/updates/ci-health-limited-preview/)inceleyin.
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Düğüm görünümü altında *diğer süreçler* ne gösterir?
 

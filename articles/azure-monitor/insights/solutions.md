@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64e01253652ea3b49ad6221f161bb78f499b6ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150541"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841929"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
@@ -20,7 +20,7 @@ Azure Izleyici 'de çözüm izleme, belirli bir Azure uygulaması veya hizmeti i
 
 ## <a name="use-monitoring-solutions"></a>İzleme çözümlerini kullanma
 
-Azure Izleyici 'de çözümlere **genel bakış** sayfası, Log Analytics çalışma alanında yüklü her bir çözüm için bir kutucuk görüntüler. Bu sayfayı açmak için [Azure Portal](https://ms.portal.azure.com) **Azure izleyici** 'ye gidin. **Öngörüler** menüsünde, **Öngörüler**merkezini açmak için **diğer** ' i seçin ve ardından **Log Analytics çalışma alanları**' na tıklayın.
+Azure Izleyici 'de çözümlere **genel bakış** sayfası, Log Analytics çalışma alanında yüklü her bir çözüm için bir kutucuk görüntüler. Bu sayfayı açmak için [Azure Portal](https://ms.portal.azure.com) **Azure izleyici** 'ye gidin. **Öngörüler** menüsünde, **Öngörüler** merkezini açmak için **diğer** ' i seçin ve ardından **Log Analytics çalışma alanları**' na tıklayın.
 
 [![Öngörüler Merkezi](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
@@ -37,7 +37,7 @@ Azure Izleyici 'de çözümlere **genel bakış** sayfası, Log Analytics çalı
 
 Aboneliğinizde yüklü izleme çözümlerini listelemek için aşağıdaki yordamı kullanın.
 
-1. [Azure portalına](https://ms.portal.azure.com) gidin. **Çözümler**arayın ve seçin.
+1. [Azure portalına](https://ms.portal.azure.com) gidin. **Çözümler** arayın ve seçin.
 1. Çalışma alanlarınızın tümünde yüklü olan çözümler listelenir. Çözümün adının ardından yüklendiği çalışma alanının adı gelir.
 1. Abonelik veya kaynak grubuna göre filtrelemek için ekranın üst kısmındaki açılan kutuları kullanın.
 

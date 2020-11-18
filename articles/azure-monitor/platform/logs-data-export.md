@@ -3,16 +3,16 @@ title: Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Ana
 description: Log Analytics veri dışa aktarma, seçili tabloların verilerini Log Analytics çalışma alanınızdan Azure depolama hesabına veya Azure Event Hubs toplandığından sürekli olarak dışarı aktaralmanıza olanak sağlar.
 ms.subservice: logs
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: adac986cfa1a975ced7ef579c088ed2739778bf5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427811"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841816"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -81,7 +81,7 @@ Dikkat edilmesi gerekenler:
 1. ' Temel ' Olay Hub 'ı SKU, daha düşük olay boyutu [sınırını](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) destekler ve çalışma alanınızdaki bazı Günlükler onu aşabilir ve bırakılamaz. Dışarı aktarma hedefi olarak ' Standard ' veya ' adanmış ' Olay Hub 'ı kullanmanızı öneririz.
 2. İçe aktarılmış verilerin hacmi genellikle zaman içinde artar ve daha büyük aktarım hızlarını işlemek ve kısıtlama senaryolarından ve veri gecikmesinden kaçınmak için Olay Hub 'ı ölçeğinin artması gerekir. İşleme birimlerinin sayısını otomatik olarak artırmak ve kullanım ihtiyaçlarını karşılamak için Event Hubs otomatik Şişir özelliğini kullanmanız gerekir. Ayrıntılar için bkz. [Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme](../../event-hubs/event-hubs-auto-inflate.md) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Log Analytics veri dışarı aktarma yapılandırmadan önce tamamlanması gereken önkoşullar aşağıda verilmiştir.
 
 - Depolama hesabının ve Olay Hub 'ının zaten oluşturulması ve Log Analytics çalışma alanıyla aynı bölgede olması gerekir. Verilerinizi diğer depolama hesaplarına çoğaltmanız gerekiyorsa [Azure depolama yedekliliği seçeneklerinin](../../storage/common/storage-redundancy.md)herhangi birini kullanabilirsiniz.  
@@ -100,7 +100,7 @@ Log Analytics verilerini dışarı aktarmaya olanak tanımak için aşağıdaki 
 
 - Microsoft. Insights
 
-Bu kaynak sağlayıcısı muhtemelen çoğu Azure Izleyici kullanıcısı için zaten kayıtlı olacak. Doğrulamak için Azure portal **abonelikler** ' e gidin. Aboneliğinizi seçin ve ardından menüdeki **Ayarlar** bölümünde **kaynak sağlayıcıları** ' na tıklayın. **Microsoft. Insights** 'ı bulun. Durumu **kayıtlıysa** , zaten kayıtlı olur. Aksi takdirde, kaydetmek için **Kaydet** ' e tıklayın.
+Bu kaynak sağlayıcısı muhtemelen çoğu Azure Izleyici kullanıcısı için zaten kayıtlı olacak. Doğrulamak için Azure portal **abonelikler** ' e gidin. Aboneliğinizi seçin ve ardından menüdeki **Ayarlar** bölümünde **kaynak sağlayıcıları** ' na tıklayın. **Microsoft. Insights**'ı bulun. Durumu **kayıtlıysa**, zaten kayıtlı olur. Aksi takdirde, kaydetmek için **Kaydet** ' e tıklayın.
 
 [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/management/resource-providers-and-types.md)bölümünde açıklandığı gibi, bir kaynak sağlayıcısını kaydetmek için de kullanılabilir yöntemlerden birini kullanabilirsiniz. Aşağıda PowerShell kullanan örnek bir komut verilmiştir:
 
@@ -109,7 +109,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ```
 
 ### <a name="allow-trusted-microsoft-services"></a>Güvenilen Microsoft hizmetlerine izin ver
-Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılandırdıysanız, Azure Izleyici 'nin hesaba yazmasına izin vermek için bir özel durum eklemeniz gerekir. Depolama Hesabınıza yönelik **güvenlik duvarları ve sanal ağlardan** , **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver** ' i seçin.
+Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılandırdıysanız, Azure Izleyici 'nin hesaba yazmasına izin vermek için bir özel durum eklemeniz gerekir. Depolama Hesabınıza yönelik **güvenlik duvarları ve sanal ağlardan** , **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**' i seçin.
 
 [![Depolama hesabı güvenlik duvarları ve sanal ağlar](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 

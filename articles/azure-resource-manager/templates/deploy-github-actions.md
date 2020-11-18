@@ -3,13 +3,13 @@ title: GitHub eylemlerini kullanarak Kaynak Yöneticisi şablonları dağıtma
 description: GitHub eylemleri kullanılarak Azure Resource Manager şablonlarının nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: 69974a8db30f12b255a4bab57ebfa32ba78f67ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: adb0b9d9a7da19c45904a5d222573e1880915b12
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746093"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841691"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak Azure Resource Manager şablonları dağıtma
 
@@ -75,7 +75,7 @@ Azure kimlik bilgileriniz, kaynak grubunuz ve abonelikleriniz için gizli dizile
 
 1. [GitHub](https://github.com/)'da deponuza gözatamazsınız.
 
-1. **Yeni gizli > > ayarlar** ' ı seçin.
+1. **Yeni gizli > > ayarlar**' ı seçin.
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
@@ -98,9 +98,9 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
 İş akışı dosyası, deponuzın kökündeki **. GitHub/iş akışları** klasöründe depolanmalıdır. İş akışı dosyası uzantısı **. yıml** ya da **. YAML** olabilir.
 
 1. GitHub deponuzdan üstteki menüden **Eylemler** ' i seçin.
-1. **Yeni iş akışı** ' nı seçin.
+1. **Yeni iş akışı**' nı seçin.
 1. **Bir iş akışını kendiniz ayarlayın** öğesini seçin.
-1. **Main. yml** dışında farklı bir ad tercih ediyorsanız, iş akışı dosyasını yeniden adlandırın. Örneğin: **Deploystorageaccount. yml** .
+1. **Main. yml** dışında farklı bir ad tercih ediyorsanız, iş akışı dosyasını yeniden adlandırın. Örneğin: **Deploystorageaccount. yml**.
 1. yml dosyasının içeriğini aşağıdakilerle değiştirin:
 
     ```yml
@@ -136,12 +136,12 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
 
     İş akışı dosyasının ilk bölümü şunları içerir:
 
-    - **ad** : iş akışının adı.
-    - **Açık** : iş akışını tetikleyen GitHub olaylarının adı. Ana dalda, belirtilen iki dosyadan en az birini değiştiren bir anında iletme olayı olduğunda iş akışı tetiklenir. İki dosya, iş akışı dosyası ve şablon dosyasıdır.
+    - **ad**: iş akışının adı.
+    - **Açık**: iş akışını tetikleyen GitHub olaylarının adı. Ana dalda, belirtilen iki dosyadan en az birini değiştiren bir anında iletme olayı olduğunda iş akışı tetiklenir. İki dosya, iş akışı dosyası ve şablon dosyasıdır.
 
-1. **Yürütmeyi Başlat** ' ı seçin.
-1. **Doğrudan ana dala kaydet** ' i seçin.
-1. **Yeni dosya Kaydet** ' i (veya **değişiklikleri Yürüt** ) seçin.
+1. **Start commit** (İşlemeye başla) öğesini seçin.
+1. **Doğrudan ana dala kaydet**' i seçin.
+1. **Yeni dosya Kaydet** ' i (veya **değişiklikleri Yürüt**) seçin.
 
 İş akışı, iş akışı dosyası ya da güncelleştirilmekte olan şablon dosyası tarafından tetiklenecek şekilde yapılandırıldığından, değişiklikleri kaydettikten sonra iş akışı hemen başlar.
 

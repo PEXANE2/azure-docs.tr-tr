@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 71a4fba177f5bbbaf9f8d991222b071d0da66d4d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b66d0f20959d196fddeb8356d8171573f1243b58
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660398"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842286"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -627,7 +627,7 @@ Bir uyarı aldığınızda, kullanımın neden beklenenden yüksek olduğunu nas
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Log Analytics kullanarak veri aktarımı ücretleri
 
-Verilerin Log Analytics gönderilmesi veri bant genişliği ücretlerine neden olabilirler. [Azure bant genişliği fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/bandwidth/)açıklandığı gibi, iki bölgede bulunan Azure hizmetleri arasındaki veri aktarımı, normal fiyata giden veri aktarımı olarak ücretlendirilir. Gelen veri aktarımı ücretsizdir. Ancak, bu ücret çok küçük (az%) Log Analytics veri alımı maliyetleriyle karşılaştırılır. Sonuç olarak Log Analytics maliyetlerinin denetlenmesi, alınan [veri hacminin](#understanding-ingested-data-volume)odaklanılmasını gerektirir. 
+Verilerin Log Analytics gönderilmesi, veri bant genişliği ücretlerine neden olur, ancak bu, bir Log Analytics aracısının yüklü olduğu sanal makinelerle sınırlıdır ve Tanılama ayarları veya Azure Sentinel 'de yerleşik olan diğer bağlayıcılar ile ilgili olarak uygulanmaz. [Azure bant genişliği fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/bandwidth/)açıklandığı gibi, iki bölgede bulunan Azure hizmetleri arasındaki veri aktarımı, normal fiyata giden veri aktarımı olarak ücretlendirilir. Gelen veri aktarımı ücretsizdir. Ancak, bu ücret çok küçük (az%) Log Analytics veri alımı maliyetleriyle karşılaştırılır. Sonuç olarak Log Analytics maliyetlerinin denetlenmesi, alınan [veri hacminin](#understanding-ingested-data-volume)odaklanılmasını gerektirir. 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics neden artık veri toplamadığına ilişkin sorun giderme

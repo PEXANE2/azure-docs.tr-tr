@@ -11,12 +11,12 @@ ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b7cc772e2a2e44a72af5e47a794c8b0f36aa9786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48c79306d376c2faa1089886881a7b5e9a792c86
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387652"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840568"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı verilerini yönetme
 
@@ -52,7 +52,7 @@ Azure AD B2C Kullanıcı verileri şu şekilde sınırlıdır:
 
 Aşağıdaki bir dışarı aktarma veri akışı örneğinde, uygulama tarafından gerçekleştirilmekte olan adımlar, bir arka uç işlemi ya da dizinde yönetici rolü olan bir kullanıcı tarafından da gerçekleştirilebilir:
 
-1. Kullanıcı uygulamada oturum açar. Azure AD B2C gerekirse Azure Multi-Factor Authentication kimlik doğrulamasını zorlar.
+1. Kullanıcı uygulamada oturum açar. Azure AD B2C gerekirse, Azure AD Multi-Factor Authentication kimlik doğrulamasını zorlar.
 2. Uygulama, Kullanıcı özniteliklerini almak için Microsoft Graph bir API işlemini çağırmak üzere Kullanıcı kimlik bilgilerini kullanır. Microsoft Graph API 'SI, JSON biçiminde öznitelik verileri sağlar. Şemaya bağlı olarak, KIMLIK belirteç içeriğini bir kullanıcıyla ilgili tüm kişisel verileri içerecek şekilde ayarlayabilirsiniz.
 3. Uygulama, Kullanıcı denetim etkinliğini alır. Microsoft Graph API 'SI, uygulamaya olay verileri sağlar.
 4. Uygulama, verileri toplar ve Kullanıcı tarafından kullanılabilir hale getirir.

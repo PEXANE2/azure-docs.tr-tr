@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ea77540e5fcaac0c4231403473d25ebae46aac
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384966"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840262"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Özel ilkelerin ve kimlik deneyimi çerçevesinin Azure AD B2C sorunlarını giderme
 
@@ -64,7 +64,7 @@ Yaygın doğrulama hataları şunları içerir:
 
 * İstemci tarayıcınızla Azure AD B2C ileti alışverişi izlemek için [Fiddler](https://www.telerik.com/fiddler)'ı kullanın. Bu, Kullanıcı yolculuğunun düzenleme adımlarınızın başarısız olduğunu belirten bir bildirim almanıza yardımcı olabilir.
 
-* **Geliştirme modunda**, kimlik deneyimi çerçevesi Kullanıcı yolculuğunun etkinliğini izlemek için [Application Insights](troubleshoot-with-application-insights.md) kullanın. **Geliştirme modunda**, kimlik deneyimi çerçevesi ile kimlik SAĞLAYıCıLARı, API tabanlı hizmetler, Azure AD B2C Kullanıcı dizini ve Azure Multi-Factor Authentication gibi diğer hizmetler gibi teknik profiller tarafından tanımlanan çeşitli talep sağlayıcıları arasındaki taleplerin değişimini gözlemleyebilirsiniz.
+* **Geliştirme modunda**, kimlik deneyimi çerçevesi Kullanıcı yolculuğunun etkinliğini izlemek için [Application Insights](troubleshoot-with-application-insights.md) kullanın. **Geliştirme modunda**, kimlik deneyimi çerçevesi ile kimlik SAĞLAYıCıLARı, API tabanlı hizmetler, Azure AD B2C Kullanıcı dizini ve Azure AD Multi-Factor Authentication gibi diğer hizmetler gibi teknik profiller tarafından tanımlanan çeşitli talep sağlayıcıları arasındaki taleplerin değişimini gözlemleyebilirsiniz.
 
 ## <a name="recommended-practices"></a>Önerilen uygulamalar
 

@@ -4,19 +4,19 @@ description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güven
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c671b1b54b937f518f7179bb6940f31a28a78d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181689"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841027"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup kullanan karma yedeklemeleri korumanıza yardımcı olacak güvenlik özellikleri
 
 Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları hakkında sorunlar artıyor. Bu güvenlik sorunları hem para hem de veri bakımından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır. Bu makalede, Azure kurtarma hizmetleri Aracısı ve Azure Backup Sunucusu kullanarak bu özelliklerin nasıl etkinleştirileceği ve kullanılacağı ele alınmaktadır. Bu özellikler şunları içerir:
 
 - **Önleme**. Bir parolayı değiştirme gibi kritik bir işlem gerçekleştirildiğinde ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilmesini sağlamaktır.
-- **Uyarı**verme. Yedekleme verilerini silme gibi kritik bir işlem gerçekleştirildiğinde abonelik yöneticisine bir e-posta bildirimi gönderilir. Bu e-posta, kullanıcının bu eylemler hakkında hızlı bir şekilde bildirilmesini sağlar.
+- **Uyarı** verme. Yedekleme verilerini silme gibi kritik bir işlem gerçekleştirildiğinde abonelik yöneticisine bir e-posta bildirimi gönderilir. Bu e-posta, kullanıcının bu eylemler hakkında hızlı bir şekilde bildirilmesini sağlar.
 - **Kurtarma**. Silinen yedekleme verileri, silme tarihinden itibaren ek 14 gün boyunca tutulur. Bu, belirli bir süre içindeki verilerin kurtarılabilmesini sağlar; bu nedenle bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı koruma sağlamak için daha fazla sayıda en düşük kurtarma noktası tutulur.
 
 > [!NOTE]
@@ -35,7 +35,7 @@ Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları h
 Bir kurtarma hizmetleri Kasası oluşturuyorsanız, tüm güvenlik özelliklerini kullanabilirsiniz. Mevcut bir kasasıyla çalışıyorsanız, aşağıdaki adımları izleyerek güvenlik özelliklerini etkinleştirin:
 
 1. Azure kimlik bilgilerinizi kullanarak Azure portal oturum açın.
-2. **Araştır**' ı seçin ve **Kurtarma Hizmetleri**yazın.
+2. **Araştır**' ı seçin ve **Kurtarma Hizmetleri** yazın.
 
     ![Azure portal tarayıcı seçeneğinin ekran görüntüsü](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
@@ -43,15 +43,15 @@ Bir kurtarma hizmetleri Kasası oluşturuyorsanız, tüm güvenlik özelliklerin
 3. Kasa altında görünen öğelerin listesinden, **Ayarlar**' ın altında **Özellikler**' i seçin.
 
     ![Kurtarma Hizmetleri Kasası seçeneklerinin ekran görüntüsü](./media/backup-azure-security-feature/vault-list-properties.png)
-4. **Güvenlik ayarları**altında **Güncelleştir**' i seçin.
+4. **Güvenlik ayarları** altında **Güncelleştir**' i seçin.
 
     ![Kurtarma Hizmetleri Kasası özelliklerinin ekran görüntüsü](./media/backup-azure-security-feature/security-settings-update.png)
 
     Güncelleştirme bağlantısı, özelliklerin bir özetini sunan ve bunları etkinleştirmenizi sağlayan **güvenlik ayarları** bölmesini açar.
-5. Aşağı açılan listeden **azure Multi-Factor Authentication mı yapılandırdığınıza**göre, [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)etkinleştirilip etkinleştirilmediğini onaylamak için bir değer seçin. Etkinleştirilirse, Azure portal oturum açarken başka bir cihazdan (örneğin, cep telefonu) kimlik doğrulaması yapmanız istenir.
+5. Aşağı açılan listeden **Azure ad Multi-Factor Authentication mı yapılandırdığınıza** göre, [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)etkinleştirilip etkinleştirilmediğini onaylamak için bir değer seçin. Etkinleştirilirse, Azure portal oturum açarken başka bir cihazdan (örneğin, cep telefonu) kimlik doğrulaması yapmanız istenir.
 
-   Yedekleme sırasında kritik işlemler gerçekleştirdiğinizde, Azure portal kullanılabilir bir güvenlik PIN 'i girmeniz gerekir. Azure Multi-Factor Authentication etkinleştirilmesi bir güvenlik katmanı ekler. Yalnızca geçerli Azure kimlik bilgilerine sahip yetkili kullanıcılar ve ikinci bir cihazdan kimlik doğrulaması yapılabilir Azure portal.
-6. Güvenlik ayarlarını kaydetmek için **Etkinleştir** ' i seçin ve **Kaydet**' i seçin. Yalnızca önceki adımda **Azure Multi-Factor Authentication mı yapılandırdığınız** bir değeri seçtikten sonra **Etkinleştir** ' i seçebilirsiniz.
+   Yedekleme sırasında kritik işlemler gerçekleştirdiğinizde, Azure portal kullanılabilir bir güvenlik PIN 'i girmeniz gerekir. Azure AD Multi-Factor Authentication etkinleştirilmesi, bir güvenlik katmanı ekler. Yalnızca geçerli Azure kimlik bilgilerine sahip yetkili kullanıcılar ve ikinci bir cihazdan kimlik doğrulaması yapılabilir Azure portal.
+6. Güvenlik ayarlarını kaydetmek için **Etkinleştir** ' i seçin ve **Kaydet**' i seçin. Önceki adımda, **Azure AD Multi-Factor Authentication mı yapılandırdığınız** bir değeri seçtikten sonra **Etkinleştir** ' i seçebilirsiniz.
 
     ![Güvenlik ayarlarının ekran görüntüsü](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
@@ -88,8 +88,8 @@ Kritik işlemler için ek bir kimlik doğrulama katmanı eklemenin bir parçası
 
 Bu PIN 'ı almak için:
 
-1. Azure Portal’da oturum açın.
-2. **Kurtarma Hizmetleri Kasası**  >  **ayarları**  >  **özelliklerine**gidin.
+1. Azure portalında oturum açın.
+2. **Kurtarma Hizmetleri Kasası**  >  **ayarları**  >  **özelliklerine** gidin.
 3. **GÜVENLIK PIN**'ı altında **Oluştur**' u seçin. Bu, Azure kurtarma hizmetleri Aracısı kullanıcı arabirimine girilecek PIN 'ı içeren bir bölme açar.
     Bu PIN yalnızca beş dakika için geçerlidir ve bu dönemden sonra otomatik olarak oluşturulur.
 

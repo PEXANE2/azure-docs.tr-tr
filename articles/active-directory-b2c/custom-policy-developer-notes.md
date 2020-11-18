@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e2ebc0033f2d2d55571ba45a38b5e0061716673d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 04852e3081807930ced9fdacc75c956d9a15ff23
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532486"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840738"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -98,7 +98,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 | Öne çıkan özelliği | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Telefon faktörü kimlik doğrulaması](phone-factor-technical-profile.md) |  |  | X |  |
-| [Azure MFA kimlik doğrulaması](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Azure AD MFA kimlik doğrulaması](multi-factor-auth-technical-profile.md) |  | X |  |  |
 | [Tek kullanımlık parola](one-time-password-technical-profile.md) |  | X |  |  |
 | Yerel Dizin olarak [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
 | Eposta doğrulaması için Azure e-posta alt sistemi |  |  | X |  |

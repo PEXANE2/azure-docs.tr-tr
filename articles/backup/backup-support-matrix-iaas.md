@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5988cc7bdc34521bfa75e9f179f88bfbe881b882
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 650c239423db23bcd4329ab38080b82809fa4f09
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925654"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842184"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -27,7 +27,7 @@ Azure Backup hizmeti ile Azure VM 'lerini yedekleme ve geri yükleme işlemlerin
 
 **Senaryo** | **Backup** | **Aracısı** |**Geri yükleme**
 --- | --- | --- | ---
-Azure VM 'lerinin doğrudan yedeklemesi  | Tüm VM 'yi yedekleyin.  | Azure VM 'de ek bir aracı gerekmez. Azure Backup, VM üzerinde çalışan [Azure VM aracısına](../virtual-machines/extensions/agent-windows.md) bir uzantı yükleyip kullanır. | Aşağıdaki şekilde geri yükleyin:<br/><br/> - **Temel BIR VM oluşturun** . Bu, VM 'nin birden çok IP adresi gibi özel bir yapılandırması yoksa yararlıdır.<br/><br/> - **VM diskini geri yükleyin** . Diski geri yükleyin. Daha sonra mevcut bir VM 'ye bağlayın veya PowerShell 'i kullanarak diskten yeni bir VM oluşturun.<br/><br/> - **VM diskini değiştirin** . Bir VM varsa ve yönetilen diskler (şifrelenmemiş) kullanıyorsa, bir diski geri yükleyebilir ve sanal makinede var olan bir diski değiştirmek için kullanabilirsiniz.<br/><br/> - **Belirli dosyaları/klasörleri geri yükleyin** . Dosyaları/klasörleri VM 'nin tamamı yerine bir VM 'den geri yükleyebilirsiniz.
+Azure VM 'lerinin doğrudan yedeklemesi  | Tüm VM 'yi yedekleyin.  | Azure VM 'de ek bir aracı gerekmez. Azure Backup, VM üzerinde çalışan [Azure VM aracısına](../virtual-machines/extensions/agent-windows.md) bir uzantı yükleyip kullanır. | Aşağıdaki şekilde geri yükleyin:<br/><br/> - **Temel BIR VM oluşturun**. Bu, VM 'nin birden çok IP adresi gibi özel bir yapılandırması yoksa yararlıdır.<br/><br/> - **VM diskini geri yükleyin**. Diski geri yükleyin. Daha sonra mevcut bir VM 'ye bağlayın veya PowerShell 'i kullanarak diskten yeni bir VM oluşturun.<br/><br/> - **VM diskini değiştirin**. Bir VM varsa ve yönetilen diskler (şifrelenmemiş) kullanıyorsa, bir diski geri yükleyebilir ve sanal makinede var olan bir diski değiştirmek için kullanabilirsiniz.<br/><br/> - **Belirli dosyaları/klasörleri geri yükleyin**. Dosyaları/klasörleri VM 'nin tamamı yerine bir VM 'den geri yükleyebilirsiniz.
 Azure VM 'lerinin doğrudan yedeklemesi (yalnızca Windows)  | Belirli dosyaları/klasörleri/birimleri yedekleyin. | [Azure kurtarma hizmetleri Aracısı](backup-azure-file-folder-backup-faq.md)'nı yükler.<br/><br/> VM 'yi dosya/klasör düzeyinde yedeklemek için, Azure VM aracısının yedekleme uzantısı ile birlikte MARS aracısını çalıştırabilirsiniz. | Belirli klasörleri/dosyaları geri yükleyin.
 Azure VM 'yi yedekleme sunucusuna yedekleme  | Dosya/klasör/birim yedekleme; sistem durumu/çıplak dosyalar; uygulama verilerini System Center DPM 'ye veya Microsoft Azure Backup sunucusuna (MABS).<br/><br/> DPM/MABS daha sonra yedekleme kasasına yedekler. | DPM/MABS koruma aracısını VM 'ye yükler. MARS Aracısı DPM/MABS üzerine yüklenir.| Dosyaları/klasörleri/birimleri geri yükleme sistem durumu/çıplak dosyalar; uygulama verileri.
 
@@ -109,7 +109,7 @@ DPM/MABS diskindeki kurtarma noktaları | dosya sunucuları için 64 ve uygulama
 
 **Geri yükleme** | **Desteklenir**
 --- | ---
-İşletim sistemleri arasında dosyaları geri yükleme | Yedeklenen VM ile aynı (veya uyumlu) işletim sistemine sahip herhangi bir makinedeki dosyaları geri yükleyebilirsiniz. Bkz. [uyumlu işletim sistemi tablosu](backup-azure-restore-files-from-vm.md#system-requirements).
+İşletim sistemleri arasında dosyaları geri yükleme | Yedeklenen VM ile aynı (veya uyumlu) işletim sistemine sahip herhangi bir makinedeki dosyaları geri yükleyebilirsiniz. Bkz. [uyumlu işletim sistemi tablosu](backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).
 Şifrelenmiş VM 'lerden dosyaları geri yükleme | Desteklenmez.
 Ağ kısıtlı depolama hesaplarından dosyaları geri yükleme | Desteklenmez.
 Windows depolama alanları 'nı kullanarak sanal makinelere dosya geri yükleme | Geri yükleme aynı VM 'de desteklenmiyor.<br/><br/> Bunun yerine, uyumlu bir sanal makinenin dosyalarını geri yükleyin.
@@ -160,7 +160,7 @@ Veri diski boyutu | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm disk
 Depolama türü | Standart HDD, Standart SSD Premium SSD.
 Yönetilen diskler | Destekleniyor.
 Şifrelenmiş diskler | Destekleniyor.<br/><br/> Azure disk şifrelemesi ile etkinleştirilen Azure VM 'Leri yedeklenebilir (Azure AD uygulaması ile veya olmadan).<br/><br/> Şifrelenmiş VM 'Ler dosya/klasör düzeyinde kurtarılamaz. Tüm VM 'yi kurtarmanız gerekir.<br/><br/> Azure Backup tarafından zaten korunan VM 'lerde şifrelemeyi etkinleştirebilirsiniz.
-Yazma Hızlandırıcısı etkin olan diskler | Desteklenmez.<br/><br/> Azure Backup, yedekleme sırasında etkin Yazma Hızlandırıcısı (WA) olan diskleri otomatik olarak dışlar. Yedeklendiklerinden, bu diskleri VM kurtarma noktalarından geri alamazsınız. <br><br> **Önemli dikkat** : WA diskleri olan sanal makinelerin başarılı bir yedekleme için internet bağlantısı olması gerekir (Bu diskler yedeklemeden dışlansa bile).
+Yazma Hızlandırıcısı etkin olan diskler | Desteklenmez.<br/><br/> Azure Backup, yedekleme sırasında etkin Yazma Hızlandırıcısı (WA) olan diskleri otomatik olarak dışlar. Yedeklendiklerinden, bu diskleri VM kurtarma noktalarından geri alamazsınız. <br><br> **Önemli dikkat**: WA diskleri olan sanal makinelerin başarılı bir yedekleme için internet bağlantısı olması gerekir (Bu diskler yedeklemeden dışlansa bile).
 Yinelenen yinelenenleri kaldırma & VM 'Leri/diskleri geri yükleme | Azure Backup Yinelenenleri kaldırmayı desteklemez. Daha fazla bilgi için bu [makaleye](./backup-support-matrix.md#disk-deduplication-support) bakın <br/> <br/>  -Azure Backup kurtarma hizmetleri kasasındaki VM 'lerde yinelenmez <br/> <br/>  -Geri yükleme sırasında yinelenenleri kaldırma durumunda VM 'Ler varsa, kasa biçimi anlamadığından dosyalar geri yüklenemez. Ancak, tam VM geri yükleme işlemini başarıyla gerçekleştirebilirsiniz.
 Korumalı VM 'ye disk ekleme | Destekleniyor.
 Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.

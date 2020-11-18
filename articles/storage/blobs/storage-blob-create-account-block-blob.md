@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 65a60425f09e9cd7a3e06ca1624621ed8b9fdcbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124977"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842082"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage hesabı oluşturma
 
@@ -88,13 +88,13 @@ az login
 ## <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portal **depolama** kategorisi > depolama **hesapları** > **tüm hizmetler** ' i seçin.
+1. Azure portal **depolama** kategorisi > depolama **hesapları**> **tüm hizmetler** ' i seçin.
 
-2. **Depolama hesapları** altında **Ekle** ' yi seçin.
+2. **Depolama hesapları** altında **Ekle**' yi seçin.
 
 3. **Abonelik** alanında, depolama hesabının oluşturulacağı aboneliği seçin.
 
-4. **Kaynak grubu** alanında, var olan bir kaynak grubunu seçin veya **Yeni oluştur** ' u seçin ve yeni kaynak grubu için bir ad girin.
+4. **Kaynak grubu** alanında, var olan bir kaynak grubunu seçin veya **Yeni oluştur**' u seçin ve yeni kaynak grubu için bir ad girin.
 
 5. **Depolama hesabı adı** alanına hesap için bir ad girin. Aşağıdaki yönergeleri dikkate alın:
 
@@ -108,8 +108,8 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
    |Alan     |Değer  |
    |---------|---------|
-   |**Performans**    |  **Premium** ' u seçin.   |
-   |**Hesap türü**    | **Blockblobstorage** ' ı seçin.      |
+   |**Performans**    |  **Premium**' u seçin.   |
+   |**Hesap türü**    | **Blockblobstorage**' ı seçin.      |
    |**Çoğaltma**    |  **Yerel olarak yedekli depolama (LRS)** varsayılan ayarını bırakın.      |
 
    ![Bir Blok Blobu depolama hesabı oluşturmak için Portal Kullanıcı arabirimini gösterir](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
@@ -120,7 +120,7 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
 8. Depolama hesabı ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 
-9. **Oluştur** ’u seçin.
+9. **Oluştur**’u seçin.
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

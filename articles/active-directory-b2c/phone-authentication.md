@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d044be923e5d7a621b72a926db0b4ce9a09b72
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 096d771cbf6e02a67903da7d5ce495890cc6828d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122733"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840500"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
@@ -35,7 +35,7 @@ Telefon kayıt ve oturum açma ile Kullanıcı, birincil tanımlayıcıları ola
 > [!NOTE]
 > Kaydolma ve oturum açma deneyiminize aşağıdaki örnek metinlere benzer onay bilgileri dahil etmeyi kesinlikle öneririz. Bu örnek metin yalnızca bilgilendirme amaçlıdır. Lütfen [CUR Web sitesinde](https://www.ctia.org/programs) kısa kod izleme el kitabı bakın ve son metin ve özellik yapılandırmanıza, kendi uyumluluk ihtiyaçlarınızı karşılayacak yönergeler için kendi yasal veya uyumluluk uzmanlarıyla temasa geçin:
 >
-> *Telefon numaranızı girerek, eklemek üzere oturum açmanıza yardımcı olmak üzere kısa mesaj tarafından gönderilen bir kerelik geçiş kodu almayı kabul etmiş olursunuz *&lt; : uygulamanızın adı &gt;* . Standart ileti ve veri ücretleri uygulanabilir.*
+> *Telefon numaranızı girerek, eklemek üzere oturum açmanıza yardımcı olmak üzere kısa mesaj tarafından gönderilen bir kerelik geçiş kodu almayı kabul etmiş olursunuz *&lt; : uygulamanızın adı &gt;*. Standart ileti ve veri ücretleri uygulanabilir.*
 >
 > *&lt;Ekle: Gizlilik Bildiriinize bir bağlantı&gt;*<br/>*&lt;Ekle: hizmet koşullarınıza bir bağlantı&gt;*
 
@@ -60,23 +60,23 @@ Kullanıcının uygulamanız için zaten bir hesabı yoksa, **Şimdi kaydolun** 
 
 ![Kullanıcı telefon kaydı başlatır](media/phone-authentication/phone-signup-start.png)
 
-Kullanıcının telefon numarasına bir kerelik doğrulama kodu gönderilir. Kullanıcı **doğrulama kodunu** kaydolma sayfasına girer ve **kodu doğrula** ' yı seçer. (Kullanıcı kodu alamıyorsa, **Yeni kod gönder** ' i seçebiliyor.)
+Kullanıcının telefon numarasına bir kerelik doğrulama kodu gönderilir. Kullanıcı **doğrulama kodunu** kaydolma sayfasına girer ve **kodu doğrula**' yı seçer. (Kullanıcı kodu alamıyorsa, **Yeni kod gönder**' i seçebiliyor.)
 
 ![Kullanıcı telefon kaydı sırasında kodu doğrular](media/phone-authentication/phone-signup-verify-code.png)
 
- Kullanıcı kaydolma sayfasında istenen diğer bilgileri (örneğin, **görünen ad** , **verilen ad** ve **Soyadı** ) girer (ülke ve telefon numarası doldurulmuş olarak kalır). Kullanıcı farklı bir telefon numarası kullanmak isterse, kayıt işlemini yeniden başlatmak için **numarayı Değiştir** ' i seçebilirler. İşiniz bittiğinde, Kullanıcı **devam** ' ı seçer.
+ Kullanıcı kaydolma sayfasında istenen diğer bilgileri (örneğin, **görünen ad**, **verilen ad** ve **Soyadı** ) girer (ülke ve telefon numarası doldurulmuş olarak kalır). Kullanıcı farklı bir telefon numarası kullanmak isterse, kayıt işlemini yeniden başlatmak için **numarayı Değiştir** ' i seçebilirler. İşiniz bittiğinde, Kullanıcı **devam**' ı seçer.
 
 ![Kullanıcı ek bilgi sağlar](media/phone-authentication/phone-signup-additional-info.png)
 
-Ardından, kullanıcıdan bir kurtarma e-postası sağlaması istenir. Kullanıcı e-posta adresini girip, **doğrulama kodu gönder** ' i seçer. Bir kod, kullanıcının e-posta gelen kutusuna gönderilir ve bu kimlik **doğrulama kodu** kutusuna girebilirler. Ardından Kullanıcı **doğrulama kodunu** seçer. 
+Ardından, kullanıcıdan bir kurtarma e-postası sağlaması istenir. Kullanıcı e-posta adresini girip, **doğrulama kodu gönder**' i seçer. Bir kod, kullanıcının e-posta gelen kutusuna gönderilir ve bu kimlik **doğrulama kodu** kutusuna girebilirler. Ardından Kullanıcı **doğrulama kodunu** seçer. 
 
-Kod doğrulandıktan sonra Kullanıcı, hesabını oluşturmak için **Oluştur** ' u seçer. Ya da Kullanıcı farklı bir e-posta adresi kullanmak isterse, **e-postayı değiştir** ' i seçebilirler.
+Kod doğrulandıktan sonra Kullanıcı, hesabını oluşturmak için **Oluştur** ' u seçer. Ya da Kullanıcı farklı bir e-posta adresi kullanmak isterse, **e-postayı değiştir**' i seçebilirler.
 
 ![Kullanıcı Hesap oluşturuyor](media/phone-authentication/email-verification.png)
 
 ### <a name="phone-sign-in-experience"></a>Telefonla oturum açma deneyimi
 
-Kullanıcı, telefon numarası tanımlayıcı olarak bir hesap hesabı içeriyorsa, Kullanıcı telefon numarasını girer ve **devam** ' ı seçer. **Devam** ' i seçerek ülke ve telefon numarasını onaylarlar ve telefonlarına bir kerelik doğrulama kodu gönderilir. Kullanıcı doğrulama kodunu girer ve oturum açmak için **devam** ' i seçer.
+Kullanıcı, telefon numarası tanımlayıcı olarak bir hesap hesabı içeriyorsa, Kullanıcı telefon numarasını girer ve **devam**' ı seçer. **Devam**' i seçerek ülke ve telefon numarasını onaylarlar ve telefonlarına bir kerelik doğrulama kodu gönderilir. Kullanıcı doğrulama kodunu girer ve oturum açmak için **devam** ' i seçer.
 
 ![Telefonla oturum açma kullanıcı deneyimi](media/phone-authentication/phone-signin-screens.png)
 
@@ -88,7 +88,7 @@ Belirli durumlarda, Azure AD B2C dizininizden bir kullanıcıyı ve ilişkili ve
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 OTP 'yi ayarlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir.
 
@@ -113,8 +113,8 @@ Aşağıdaki adımlarda [önkoşulları](#prerequisites) tamamladığınız ve [
 ## <a name="upload-the-policy-files"></a>İlke dosyalarını karşıya yükle
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınıza gidin.
-1. **İlkeler** altında **kimlik deneyimi çerçevesi** ' ni seçin.
-1. **Özel Ilkeyi karşıya yükle** ' yi seçin.
+1. **İlkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. **Özel Ilkeyi karşıya yükle**' yi seçin.
 1. İlke dosyalarını aşağıdaki sırada karşıya yükleyin:
     1. *Phone_Email_Base.xml*
     1. *SignUpOrSignInWithPhone.xml*
@@ -128,7 +128,7 @@ Her dosyayı karşıya yüklerken Azure, ön eki ekler `B2C_1A_` .
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. **Özel ilkeler** altında **B2C_1A_SignUpOrSignInWithPhone** ' yi seçin.
+1. **Özel ilkeler** altında **B2C_1A_SignUpOrSignInWithPhone**' yi seçin.
 1. **Uygulama Seç** altında önkoşulları tamamlarken kaydettiğiniz *WebApp1* uygulamasını seçin.
 1. **Yanıt URL 'Si Seç** için öğesini seçin `https://jwt.ms` .
 1. **Şimdi Çalıştır** ' ı seçin ve bir e-posta adresi veya telefon numarası kullanarak kaydolun.
@@ -144,7 +144,7 @@ Telefon numarası ile kaydolan ancak bir kurtarma e-posta adresi sağlamayan bir
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Örneğin:
+Örnek:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
@@ -153,7 +153,7 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 GitHub 'da telefon kayıt ve oturum açma özel İlkesi başlangıç paketini (ve diğer başlangıç paketleri) bulabilirsiniz: [Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/senaryolar/Phone-Number-passwordless][starter-pack-phone] Başlatıcı paketi ilke dosyaları Multi-Factor Authentication teknik profillerini ve telefon numarası talep dönüşümlerini kullanır:
-* [Azure Multi-Factor Authentication teknik profili tanımlama](multi-factor-auth-technical-profile.md)
+* [Azure AD Multi-Factor Authentication teknik profili tanımlama](multi-factor-auth-technical-profile.md)
 * [Telefon numarası talep dönüşümlerini tanımlayın](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->

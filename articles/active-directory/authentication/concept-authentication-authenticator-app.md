@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8fe6c7ead587d58775984854260bd071215e42
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: eab1a3f81666cd3bddea9954f210e5825a538356
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965582"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840126"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory Microsoft Authenticator uygulamasındaki kimlik doğrulama yöntemleri
 
-Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar ve [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir. Microsoft Authenticator uygulamayla, kullanıcılar oturum açma sırasında parolasız bir şekilde veya self servis parola sıfırlama (SSPR) veya Azure Multi-Factor Authentication olayları sırasında ek bir doğrulama seçeneği olarak kimlik doğrulaması yapabilir.
+Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar ve [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir. Microsoft Authenticator uygulamayla, kullanıcılar oturum açma sırasında daha az bir şekilde veya self servis parola sıfırlama (SSPR) veya Azure AD Multi-Factor Authentication olayları sırasında ek bir doğrulama seçeneği olarak kimlik doğrulaması yapabilir.
 
 Kullanıcılar, bir oturum açma arabirimine girilebilecek bir OATH doğrulama kodu oluşturmak için Mobil uygulamayla ilgili bir bildirim alabilir veya bu uygulamayı kullanabilir. Hem bildirim hem de doğrulama kodunu etkinleştirirseniz, Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için her iki yöntemi de kullanabilir.
 

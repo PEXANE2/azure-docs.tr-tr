@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7819c934ab97d597d52d4809c11e5c59fb87c89a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410513"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840677"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -27,33 +27,44 @@ ms.locfileid: "94410513"
 
 KIMLIĞI `api.signuporsignin` ve [kendini onaylanan teknik profiliyle](self-asserted-technical-profile.md)bir içerik tanımı için aşağıdaki kimlikler kullanılır.
 
-| ID | Varsayılan değer |
-| -- | ------------- |
-| **local_intro_email** | Mevcut hesabınızla oturum açın |
-| **logonIdentifier_email** | E-posta Adresi |
-| **requiredField_email** | Lütfen e-postanızı girin |
-| **invalid_email** | Lütfen geçerli bir e-posta adresi girin |
-| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
-| **local_intro_username** | Kullanıcı adınızla oturum açın |
-| **logonIdentifier_username** | Kullanıcı adı |
-| **requiredField_username** | Lütfen Kullanıcı adınızı girin |
-| **parola** | Parola |
-| **requiredField_password** | Lütfen parolanızı girin |
-| **invalid_password** | Girdiğiniz parola beklenen biçimde değil. |
-| **forgotpassword_link** | Parolanızı mı unuttunuz? |
-| **createaccount_intro** | Hesabınız yok mu? |
-| **createaccount_link** | Hemen kaydolun |
-| **divider_title** | VEYA |
-| **cancel_message** | Kullanıcı parolasını unutuldu |
-| **button_signin** | Oturum açın |
-| **social_intro** | Sosyal hesabınızla oturum açın |
-  **remember_me** |Oturumumu Açık tut. |
-| **unknown_error** | Oturumunuzu açmada sorun yaşıyoruz. Lütfen daha sonra yeniden deneyin. |
+| ID | Varsayılan değer | Sayfa düzeni sürümü |
+| -- | ------------- | ------ |
+| **forgotpassword_link** | Parolanızı mı unuttunuz? | `All` |
+| **createaccount_intro** | Hesabınız yok mu? | `All` |
+| **button_signin** | Oturum açın | `All` |
+| **social_intro** | Sosyal hesabınızla oturum açın | `All` |
+| **remember_me** |Oturumumu Açık tut. | `All` |
+| **unknown_error** | Oturumunuzu açmada sorun yaşıyoruz. Lütfen daha sonra yeniden deneyin. | `All` |
+| **divider_title** | VEYA | `All` |
+| **local_intro_email** | Mevcut hesabınızla oturum açın | `< 2.0.0` |
+| **logonIdentifier_email** | E-posta Adresi | `< 2.0.0` |
+| **requiredField_email** | Lütfen e-postanızı girin | `< 2.0.0` |
+| **invalid_email** | Lütfen geçerli bir e-posta adresi girin | `< 2.0.0` |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' \* +/=? ^ \_ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +) \* $ |`< 2.0.0` |
+| **local_intro_username** | Kullanıcı adınızla oturum açın | `< 2.0.0` |
+| **logonIdentifier_username** | Kullanıcı adı | `< 2.0.0` |
+| **requiredField_username** | Lütfen Kullanıcı adınızı girin | `< 2.0.0` |
+| **parola** | Parola | `< 2.0.0` |
+| **requiredField_password** | Lütfen parolanızı girin | `< 2.0.0` |
+| **createaccount_link** | Hemen kaydolun | `< 2.0.0` |
+| **cancel_message** | Kullanıcı parolasını unutuldu | `< 2.0.0` |
+| **invalid_password** | Girdiğiniz parola beklenen biçimde değil. | `< 2.0.0` |
+| **createaccount_one_link** | Hemen kaydolun | `>= 2.0.0` |
+| **createaccount_two_links** | Veya ile kaydolun {0}{1} | `>= 2.0.0` |
+| **createaccount_three_links** | {0}, Veya ile kaydolun {1}{2} | `>= 2.0.0` |
+| **local_intro_generic** | İle oturum açın {0} | `>= 2.1.0` |
+| **requiredField_generic** | Lütfen parolanızı girin {0} | `>= 2.1.0` |
+| **invalid_generic** | Lütfen geçerli bir {0} | `>= 2.1.1` |
+| **başlığıyla** | Oturum açın | `>= 2.1.1` |
+
+
+> [!NOTE]
+> * Gibi yer tutucular {0} , değeri ile otomatik olarak doldurulur `DisplayName` `ClaimType` . 
+> * Yerelleştirmeye yönelik bilgi edinmek için `ClaimType` bkz. [kaydolma veya oturum açma örneği](#signupsigninexample).
 
 Aşağıdaki örnek, kayıt veya oturum açma sayfasında bazı Kullanıcı arabirimi öğelerinin kullanımını gösterir:
 
-![Kaydolma veya oturum açma sayfası UX öğeleri](./media/localization-string-ids/localization-susi.png)
-
+![Kaydolma veya oturum açma sayfası UX öğeleri](./media/localization-string-ids/localization-susi-2.png)
 
 ### <a name="sign-up-or-sign-in-identity-providers"></a>Kaydolma veya oturum açma kimlik sağlayıcıları
 
@@ -95,32 +106,28 @@ Aşağıdaki örnek, Facebook kimlik sağlayıcısını Arapça olarak yerelleş
 | **Usermessageifuseraccountkilitlendi** | Hesabınız yetkisiz kullanımı engellemek için geçici olarak kilitlidir. Daha sonra tekrar deneyin. |
 | **Aadrequestskısıtlanıyor** | Şu anda çok fazla istek var. Lütfen bir süre bekleyip yeniden deneyin. |
 
+<a name="signupsigninexample"></a>
 ### <a name="sign-up-or-sign-in-example"></a>Kaydolma veya oturum açma örneği
 
 ```xml
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_email">Email Address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_email">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="logonIdentifier_username">Username</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="password">Password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_link">Sign up now</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="requiredField_username">Please enter your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="createaccount_intro">Don't have an account?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="cancel_message">The user has forgotten their password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email Address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="heading">Sign in</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="social_intro">Sign in with your social account</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="local_intro_generic">Sign in with your {0}</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="requiredField_password">Please enter your password</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_password">The password you entered is not in the expected format.</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_username">Sign in with your user name</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="local_intro_email">Sign in with your existing account</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="invalid_email">Please enter a valid email address</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="requiredField_generic">Please enter your {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="invalid_generic">Please enter a valid {0}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_one_link">Sign up now</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_two_links">Sign up with {0} or {1}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="createaccount_three_links">Sign up with {0}, {1}, or {2}</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="forgotpassword_link">Forgot your password?</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="button_signin">Sign in</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="divider_title">OR</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="unknown_error">We are having trouble signing you in. Please try again later.</LocalizedString>
     <!-- Uncomment the remember_me only if the keep me signed in is activated. 
     <LocalizedString ElementType="UxElement" StringId="remember_me">Keep me signed in</LocalizedString> -->
-    <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
@@ -145,7 +152,7 @@ Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TAN
 | **cancel_message** | Kullanıcı kendi kendine onaylanan bilgileri girmeyi iptal etti |
 | **preloader_alt** | Lütfen bekleyin |
 | **ver_but_send** | Doğrulama kodu gönder |
-| **alert_yes** | Evet |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Bir veya daha fazla alan yanlış doldurulmuş. Lütfen girişlerinizi denetleyin ve yeniden deneyin. |
 | **yıl** | Yıl |
 | **verifying_blurb** | Bilgilerinizi işlerken lütfen bekleyin. |
@@ -158,12 +165,12 @@ Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TAN
 | **error_requiredFieldMissing** | Gerekli bir alan eksik. Lütfen tüm gerekli alanları doldurun ve yeniden deneyin. |
 | **initial_intro** | Lütfen aşağıdaki ayrıntıları sağlayın. |
 | **ver_but_resend** | Yeni kod gönder |
-| **button_continue** | Oluştur |
+| **button_continue** | Oluşturma |
 | **error_passwordEntryMismatch** | Parola girişi alanları eşleşmiyor. Lütfen her iki alana da aynı parolayı girip yeniden deneyin. |
 | **ver_incorrect_format** | Hatalı biçim. |
 | **ver_but_edit** | E-postayı değiştir |
 | **ver_but_verify** | Kodu doğrula |
-| **alert_no** | Hayır |
+| **alert_no** | No |
 | **ver_info_msg** | Doğrulama kodu gelen kutunuza gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın. |
 | **günündeki** | Gün |
 | **ver_fail_throttled** | Bu e-posta adresini doğrulamak için çok fazla istek vardı. Lütfen bekleyin, sonra yeniden deneyin. |
@@ -433,9 +440,9 @@ Aşağıda, [Restvıservice teknik profili](restful-technical-profile.md) hata i
 </LocalizedResources>
 ```
 
-## <a name="azure-mfa-error-messages"></a>Azure MFA hata iletileri
+## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA hata iletileri
 
-Aşağıda, [Azure MFA teknik profili](multi-factor-auth-technical-profile.md) hata iletilerinin kimlikleri verilmiştir:
+Aşağıda, bir [Azure AD MFA teknik profili](multi-factor-auth-technical-profile.md) hata iletilerinin kimlikleri verilmiştir:
 
 | ID | Varsayılan değer |
 | -- | ------------- |
@@ -446,7 +453,7 @@ Aşağıda, [Azure MFA teknik profili](multi-factor-auth-technical-profile.md) h
 |Usermessageifkısıtlanıyor | İsteğiniz kısıtlandı, lütfen daha sonra yeniden deneyin.|
 |Usermessageifyanlışlıkla Gcodegirildi|Yanlış kod girildi, lütfen yeniden deneyin.|
 
-### <a name="azure-mfa-example"></a>Azure MFA örneği
+### <a name="azure-ad-mfa-example"></a>Azure AD MFA örneği
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">

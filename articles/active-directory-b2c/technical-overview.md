@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364091"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840566"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -95,13 +95,13 @@ Hem Kullanıcı akışları hem de özel ilkeler, *kimlik deneyimi çerçevesi*,
 
 ### <a name="user-flow"></a>Kullanıcı akışı
 
-En yaygın kimlik görevlerini hızlı bir şekilde ayarlamanıza yardımcı olması için Azure portal, *Kullanıcı akışları*adlı birkaç önceden tanımlı ve yapılandırılabilir ilke içerir.
+En yaygın kimlik görevlerini hızlı bir şekilde ayarlamanıza yardımcı olması için Azure portal, *Kullanıcı akışları* adlı birkaç önceden tanımlı ve yapılandırılabilir ilke içerir.
 
 Uygulamalarınızda kimlik deneyimi davranışlarını denetlemek için aşağıdaki gibi Kullanıcı akış ayarlarını yapılandırabilirsiniz:
 
 * Facebook gibi sosyal hesaplar veya oturum açma için bir e-posta adresi ve parola kullanan yerel hesaplar gibi oturum açma için kullanılan hesap türleri
 * Tüketiciden toplanacak öznitelikler (örneğin, ilk ad, posta kodu veya bir yerden ülke/bölge)
-* Azure Multi-Factor Authentication (MFA)
+* Azure AD Multi-Factor Authentication (MFA)
 * Kullanıcı arabiriminin özelleştirilmesi
 * Kullanıcı Kullanıcı akışını tamamladıktan sonra uygulamanızın aldığı bir belirteçte talepler kümesi
 * Oturum yönetimi
@@ -115,7 +115,7 @@ Mobil, Web ve tek sayfalı uygulamaların çoğunluğu için en yaygın kimlik s
 
 Özel ilkeler, kimlik deneyimi çerçevesi (ıEF) düzenleme altyapısının tam gücüne erişimi kaldırır. Özel ilkeler sayesinde, Imagine 'yi kullanarak neredeyse tüm kimlik doğrulaması, Kullanıcı kaydı ve profil düzenlemesi deneyimi oluşturabilirsiniz.
 
-Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örneğin:
+Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örnek:
 
 * Diğer kimlik sağlayıcılarıyla federasyona ekleme
 * Birinci ve üçüncü taraf Multi-Factor Authentication (MFA) sorunları

@@ -5,19 +5,19 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 802c126548a6fa7062a262e2f939c9a214480794
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789650"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841147"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SYNAPSE IP güvenlik duvarı kuralları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -138,17 +138,17 @@ Azure portal sunucu düzeyinde bir IP güvenlik duvarı kuralı ayarlamak için 
 
     Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
 
-2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet** ' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet**' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
     ![Sunucu düzeyi IP güvenlik duvarı kuralını ayarla](./media/firewall-configure/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>Sunucuya genel bakış sayfasından
 
-Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *mynewserver20170403.Database.Windows.net* ) gösterir ve daha fazla yapılandırma seçeneği sunar.
+Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *mynewserver20170403.Database.Windows.net*) gösterir ve daha fazla yapılandırma seçeneği sunar.
 
 1. Bu sayfadan bir sunucu düzeyi kuralı ayarlamak için, sol taraftaki **Ayarlar** menüsünden **güvenlik duvarı** ' nı seçin.
 
-2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet** ' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+2. Kullanmakta olduğunuz bilgisayarın IP adresini eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin ve ardından **Kaydet**' i seçin. Geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>IP güvenlik duvarı kurallarını yönetmek için Transact-SQL kullanma
 

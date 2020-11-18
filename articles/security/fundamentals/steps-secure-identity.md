@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410071"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842031"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -48,7 +48,7 @@ Bu belgedeki öneriler, Azure AD kiracının kimlik güvenlik yapılandırmasın
 
 Bu denetim listesine başlamadan önce, bu denetim listesini okurken güvenliği ihlal ettiğinizden emin olun. Önce ayrıcalıklı hesaplarınızı korumanız gerekir.
 
-Ayrıcalıklı hesapların denetimini alan saldırganlar çok fazla zarar verebilir, bu yüzden öncelikle bu hesapların korunması önemlidir. [Azure AD güvenlik varsayılanlarını](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) veya [koşullu erişim](../../active-directory/conditional-access/plan-conditional-access.md)'i kullanarak kuruluşunuzdaki tüm yöneticiler için [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) özelliğini etkinleştirin ve gerekli kılın. MFA uygulamadıysanız şimdi yapın! Bu önemlidir.
+Ayrıcalıklı hesapların denetimini alan saldırganlar çok fazla zarar verebilir, bu yüzden öncelikle bu hesapların korunması önemlidir. [Azure AD güvenlik Varsayılanları](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) veya [koşullu erişim](../../active-directory/conditional-access/plan-conditional-access.md)kullanarak kuruluşunuzdaki tüm yöneticiler için [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (MFA) etkinleştirin ve gerekli kılın. MFA uygulamadıysanız şimdi yapın! Bu önemlidir.
 
 Tüm ayarlar mı? Denetim listesini kullanmaya başlayalım.
 
@@ -59,9 +59,9 @@ Tüm ayarlar mı? Denetim listesini kullanmaya başlayalım.
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>Kuruluşunuzun güçlü kimlik doğrulaması kullandığından emin olun
 
-Tahmin edilen parola sıklığı, çok kötü amaçlı yazılımlara karşı koruma veya yeniden kullanım için, parolayı bir güçlü kimlik bilgisi biçimiyle yedeklemeniz kritik öneme sahiptir. [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)hakkında daha fazla bilgi edinin.
+Tahmin edilen parolaların sıklığı, çok zararlı yazılımlara karşı koruma, kötü amaçlı yazılımdan koruma veya yeniden kullanım için, parolayı bazı güçlü kimlik bilgileri ile yedeklemeniz kritik öneme sahiptir. [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)hakkında daha fazla bilgi edinin.
 
-Temel düzeyde kimlik güvenliğini kolayca etkinleştirmek için [Azure AD güvenlik Varsayılanları](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)ile tek tıklamayla etkinleştirme ' yi kullanabilirsiniz. Güvenlik Varsayılanları, bir Kiracıdaki tüm kullanıcılar için Azure MFA 'yı uygular ve eski protokollerdeki oturum açma işlemlerini kiracı genelinde engeller.
+Temel düzeyde kimlik güvenliğini kolayca etkinleştirmek için [Azure AD güvenlik Varsayılanları](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)ile tek tıklamayla etkinleştirme ' yi kullanabilirsiniz. Güvenlik Varsayılanları, bir Kiracıdaki tüm kullanıcılar için Azure AD MFA 'yı uygular ve eski protokollerdeki oturum açma işlemlerini kiracı genelinde engeller.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Yaygın olarak saldırıya uğratan parolaları başlatın ve geleneksel karmaşıklığı ve süre sonu kurallarını devre dışı bırakın.
 

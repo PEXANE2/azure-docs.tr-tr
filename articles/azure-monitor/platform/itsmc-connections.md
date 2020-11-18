@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682427"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842305"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](./itsmc-overview.md).
@@ -32,7 +32,7 @@ Aşağıdaki ıTSM ürünleri/hizmetleri desteklenir. Ürünün ıSMC 'a nasıl 
 
 Aşağıdaki bölümlerde, System Center Service Manager ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -41,6 +41,7 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
 - Karma bağlantı oluşturuldu ve yapılandırıldı. Daha fazla bilgi: [karma bağlantıyı yapılandırın](#configure-the-hybrid-connection).
 - Desteklenen Service Manager sürümleri: 2012 R2 veya 2016.
 - Kullanıcı rolü:  [Gelişmiş işleç](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
+- Bugün Azure Izleyici 'den gönderilen uyarılar System Center Service Manager olayları oluşturabilir.
 
 > [!NOTE]
 > 
@@ -182,11 +183,11 @@ Aşağıdaki örnek görüntüde başarılı bir bağlantının ayrıntıları g
 
 Aşağıdaki bölümlerde, ServiceNow ürününüzü Azure 'daki ıSMC 'a bağlama hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki önkoşulların karşılandığından emin olun:
 - ISMC yüklendi. Daha fazla bilgi: [BT hizmet yönetimi Bağlayıcısı çözümü ekleme](./itsmc-overview.md#add-it-service-management-connector).
 - ServiceNow desteklenen sürümler: Orlando, New York, Madrid, Londra, Kingston, Jakarta, Istanbul, Helsinki, Genfiliz.
-- Bugün Azure Izleyici 'den gönderilen uyarılar ServiceNow içinde şu öğelerden birini oluşturabilir: olaylar, Incedents veya uyarılar.
+- Bugün Azure Izleyici 'den gönderilen uyarılar ServiceNow içinde şu öğelerden birini oluşturabilir: olaylar, olaylar veya uyarılar.
 > [!NOTE]
 > ISMC, şimdi hizmetten yalnızca resmi SaaS teklifini destekler. Hizmetin özel dağıtımları artık desteklenmiyor. 
 
@@ -312,7 +313,7 @@ Aşağıdaki bölümlerde, Provance ürününüzü Azure 'daki ıSMC 'a bağlama
 > 1-Ekim-2020 Provance ıSM tümleştirmesi, Azure uyarısı ile artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek. 
 > Mevcut ıTSM bağlantıları desteklenecek.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -370,7 +371,7 @@ Aşağıdaki bölümlerde, Cherwell ürününüzü Azure 'daki ıSMC 'a bağlama
 > Azure uyarısı ile 1 Ekim 2020 Cherwell ıSM tümleştirmesi artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek. 
 > Mevcut ıTSM bağlantıları desteklenecek.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki önkoşulların karşılandığından emin olun:
 

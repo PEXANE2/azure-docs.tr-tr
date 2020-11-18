@@ -1,6 +1,6 @@
 ---
 title: Azure AD Domain Services 'de uzak VM erişiminin güvenliğini sağlama | Microsoft Docs
-description: Ağ Ilkesi sunucusu (NPS) ve Azure Multi-Factor Authentication kullanarak VM 'lere uzaktan erişimi Azure Active Directory Domain Services yönetilen bir etki alanında Uzak Masaüstü Hizmetleri dağıtımıyla güvenli hale getirme hakkında bilgi edinin.
+description: Ağ Ilkesi sunucusu (NPS) ve Azure AD Multi-Factor Authentication kullanarak VM 'lere uzaktan erişimi Azure Active Directory Domain Services yönetilen bir etki alanında Uzak Masaüstü Hizmetleri dağıtımıyla güvenli hale getirme hakkında bilgi edinin.
 services: active-directory-ds
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 2964ca74a05ccbc61646f8a289fc950b46cdad47
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a08b5bf4fb575f0cd2098b3ef180860bb8fbd6e0
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967792"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840245"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de sanal makinelere uzaktan erişimi güvenli hale getirme
 
-Azure Active Directory Domain Services (Azure AD DS) tarafından yönetilen etki alanında çalışan sanal makinelere (VM 'Ler) uzaktan erişimi güvenli hale getirmek için Uzak Masaüstü Hizmetleri (RDS) ve ağ Ilkesi sunucusu (NPS) kullanabilirsiniz. Azure AD DS, kullanıcıların RDS ortamı üzerinden erişim istediklerinde kimliklerini doğrular. Gelişmiş güvenlik için Azure Multi-Factor Authentication 'yi, oturum açma olayları sırasında ek bir kimlik doğrulama istemi sunacak şekilde tümleştirebilirsiniz. Azure Multi-Factor Authentication, bu özelliği sağlamak üzere NPS uzantısını kullanır.
+Azure Active Directory Domain Services (Azure AD DS) tarafından yönetilen etki alanında çalışan sanal makinelere (VM 'Ler) uzaktan erişimi güvenli hale getirmek için Uzak Masaüstü Hizmetleri (RDS) ve ağ Ilkesi sunucusu (NPS) kullanabilirsiniz. Azure AD DS, kullanıcıların RDS ortamı üzerinden erişim istediklerinde kimliklerini doğrular. Gelişmiş güvenlik için, oturum açma olayları sırasında ek bir kimlik doğrulama istemi sağlamak üzere Azure AD Multi-Factor Authentication tümleştirebilirsiniz. Azure AD Multi-Factor Authentication, bu özelliği sağlamak üzere NPS uzantısını kullanır.
 
 > [!IMPORTANT]
 > Azure AD DS yönetilen bir etki alanında sanal makinelerinize güvenli bir şekilde bağlanmak için önerilen yol, sanal ağınızda sağladığınız tam platform tarafından yönetilen bir PaaS hizmeti olan Azure savunma 'yı kullanmaktır. Savunma ana bilgisayarı, doğrudan SSL üzerinden Azure portal sanal makinelerinize güvenli ve sorunsuz Uzak Masaüstü Protokolü (RDP) bağlantısı sağlar. Bir savunma ana bilgisayarı aracılığıyla bağlandığınızda, sanal makinelerinize genel bir IP adresi gerekmez ve TCP bağlantı noktası 3389 ' de RDP 'ye erişimi göstermek için ağ güvenlik grupları 'nı kullanmanız gerekmez.
@@ -28,7 +28,7 @@ Azure Active Directory Domain Services (Azure AD DS) tarafından yönetilen etki
 >
 > Daha fazla bilgi için bkz. Azure savunma nedir [?][bastion-overview].
 
-Bu makalede, Azure AD DS 'de RDS 'yi yapılandırma ve isteğe bağlı olarak Azure Multi-Factor Authentication NPS uzantısını kullanma hakkında yönergeler verilmektedir.
+Bu makalede, Azure AD DS 'de RDS 'yi yapılandırma ve isteğe bağlı olarak Azure AD Multi-Factor Authentication NPS uzantısını kullanma işlemlerinin nasıl yapılacağı gösterilir.
 
 ![Uzak Masaüstü Hizmetleri (RDS) genel bakış](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
@@ -59,39 +59,39 @@ VM 'Lerin Azure AD DS sanal ağınızın bir *iş yükü* alt ağına dağıtıl
 
 RD ortamı dağıtımı bir dizi adım içerir. Mevcut RD dağıtım kılavuzu, yönetilen bir etki alanında kullanılmak üzere belirli bir değişiklik yapılmadan kullanılabilir:
 
-1. *Azure AD DC yöneticileri* grubunun bir parçası olan *contosoadmin*gibi bir hesapla RD ortamı için oluşturulan VM 'lerde oturum açın.
+1. *Azure AD DC yöneticileri* grubunun bir parçası olan *contosoadmin* gibi bir hesapla RD ortamı için oluşturulan VM 'lerde oturum açın.
 1. RDS oluşturmak ve yapılandırmak için, mevcut [Uzak Masaüstü ortamı dağıtım kılavuzunu][deploy-remote-desktop]kullanın. RD sunucusu bileşenlerini istediğiniz şekilde Azure sanal makinelerinize dağıtın.
     * Azure AD DS 'e özgü-RD lisansını yapılandırırken, dağıtım kılavuzunda belirtildiği şekilde **Kullanıcı başına** değil, **cihaz başına** moduna ayarlayın.
 1. Bir Web tarayıcısı kullanarak erişim sağlamak istiyorsanız, [kullanıcılarınız Için Uzak Masaüstü Web istemcisini ayarlayın][rd-web-client].
 
 Yönetilen etki alanına dağıtılan RD ile hizmeti, şirket içi AD DS etki alanı ile yaptığınız gibi yönetebilir ve kullanabilirsiniz.
 
-## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>NPS 'yi ve Azure MFA NPS uzantısını dağıtma ve yapılandırma
+## <a name="deploy-and-configure-nps-and-the-azure-ad-mfa-nps-extension"></a>NPS 'yi ve Azure AD MFA NPS uzantısını dağıtma ve yapılandırma
 
-Kullanıcı oturum açma deneyiminin güvenliğini artırmak istiyorsanız, isteğe bağlı olarak RD ortamını Azure Multi-Factor Authentication ile tümleştirebilirsiniz. Bu yapılandırmayla, kullanıcılar kimlik doğrulamak için oturum açma sırasında ek bir istem alırlar.
+Kullanıcı oturum açma deneyiminin güvenliğini artırmak istiyorsanız, isteğe bağlı olarak RD ortamını Azure AD Multi-Factor Authentication ile tümleştirebilirsiniz. Bu yapılandırmayla, kullanıcılar kimlik doğrulamak için oturum açma sırasında ek bir istem alırlar.
 
-Bu özelliği sağlamak için, ortamınızda Azure Multi-Factor Authentication NPS uzantısıyla birlikte ek bir ağ Ilkesi sunucusu (NPS) yüklenir. Bu uzantı, çok faktörlü kimlik doğrulama istemlerinin durumunu istemek ve döndürmek için Azure AD ile tümleşir.
+Bu özelliği sağlamak için, ortamınızda Azure AD Multi-Factor Authentication NPS Uzantısı ile birlikte ek bir ağ Ilkesi sunucusu (NPS) yüklenir. Bu uzantı, çok faktörlü kimlik doğrulama istemlerinin durumunu istemek ve döndürmek için Azure AD ile tümleşir.
 
-Kullanıcıların [azure Multi-Factor Authentication kullanmak için kayıtlı][user-mfa-registration]olmaları gerekir, bu da ek Azure AD lisansları gerektirebilir.
+Kullanıcıların [Azure ad Multi-Factor Authentication kullanmak için kayıtlı][user-mfa-registration]olmaları gerekir, bu da ek Azure AD lisansları gerektirebilir.
 
-Azure Multi-Factor Authentication ' de Azure AD DS uzak masaüstü ortamınızda bütünleştirmek için, bir NPS sunucusu oluşturun ve uzantıyı yüklemelisiniz:
+Azure AD Multi-Factor Authentication ' de Azure AD DS uzak masaüstü ortamınızda bütünleştirmek için, bir NPS sunucusu oluşturun ve uzantıyı yüklemelisiniz:
 
-1. Azure AD DS sanal ağınızdaki bir *iş yükü* alt ağına bağlı *NPSVM01*gibi ek bir Windows Server 2016 veya 2019 sanal makinesi oluşturun. VM 'yi yönetilen etki alanına ekleyin.
-1. NPS VM 'de *contosoadmin*gıbı *Azure AD DC yöneticileri* grubunun bir parçası olan hesap olarak oturum açın.
+1. Azure AD DS sanal ağınızdaki bir *iş yükü* alt ağına bağlı *NPSVM01* gibi ek bir Windows Server 2016 veya 2019 sanal makinesi oluşturun. VM 'yi yönetilen etki alanına ekleyin.
+1. NPS VM 'de *contosoadmin* gıbı *Azure AD DC yöneticileri* grubunun bir parçası olan hesap olarak oturum açın.
 1. **Sunucu Yöneticisi**, **rol ve Özellik Ekle**' yi seçin, ardından *Ağ İlkesi ve erişim Hizmetleri* rolünü yükler.
-1. [Azure MFA NPS uzantısını yüklemek ve yapılandırmak][nps-extension]için mevcut nasıl yapılır makalesini kullanın.
+1. [Azure AD MFA NPS uzantısını yüklemek ve yapılandırmak][nps-extension]için mevcut nasıl yapılır makalesini kullanın.
 
-NPS sunucusu ve Azure Multi-Factor Authentication NPS uzantısı yüklüyken, RD ortamıyla kullanılmak üzere yapılandırmak için sonraki bölümü doldurun.
+NPS sunucusu ve Azure AD Multi-Factor Authentication NPS uzantısı yüklüyken, RD ortamıyla kullanılmak üzere yapılandırmak için bir sonraki bölümü doldurun.
 
-## <a name="integrate-remote-desktop-gateway-and-azure-multi-factor-authentication"></a>Uzak Masaüstü Ağ Geçidi ve Azure Multi-Factor Authentication tümleştirin
+## <a name="integrate-remote-desktop-gateway-and-azure-ad-multi-factor-authentication"></a>Uzak Masaüstü Ağ Geçidi ve Azure AD Multi-Factor Authentication tümleştirin
 
-Azure Multi-Factor Authentication NPS uzantısını bütünleştirmek için, [ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı bütünleştirmek][azure-mfa-nps-integration]üzere mevcut nasıl yapılır makalesini kullanın.
+Azure AD Multi-Factor Authentication NPS uzantısını bütünleştirmek için, [ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı bütünleştirmek][azure-mfa-nps-integration]üzere mevcut nasıl yapılır makalesini kullanın.
 
 Yönetilen bir etki alanı ile tümleştirme için aşağıdaki ek yapılandırma seçenekleri gereklidir:
 
 1. [NPS sunucusunu Active Directory kaydetme][register-nps-ad]. Bu adım yönetilen bir etki alanında başarısız olur.
-1. [Ağ ilkesini yapılandırmak için 4. adım][create-nps-policy]' da, **Kullanıcı hesabı Içeri arama özelliklerini yok saymak**için kutuyu işaretleyin.
-1. NPS sunucusu ve Azure Multi-Factor Authentication NPS uzantısı için Windows Server 2019 kullanıyorsanız, güvenli kanalı NPS sunucusunun doğru iletişim kurmasına izin verecek şekilde güncelleştirmek için aşağıdaki komutu çalıştırın:
+1. [Ağ ilkesini yapılandırmak için 4. adım][create-nps-policy]' da, **Kullanıcı hesabı Içeri arama özelliklerini yok saymak** için kutuyu işaretleyin.
+1. NPS sunucusu ve Azure AD Multi-Factor Authentication NPS uzantısı için Windows Server 2019 kullanıyorsanız, güvenli kanalı NPS sunucusunun doğru iletişim kurmasına izin verecek şekilde güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```powershell
     sc sidtype IAS unrestricted
@@ -103,7 +103,7 @@ Kullanıcılar artık Microsoft Authenticator uygulamasında bir SMS mesajı vey
 
 Dağıtımınızın dayanıklılığını artırma hakkında daha fazla bilgi için bkz. [Uzak Masaüstü Hizmetleri-yüksek kullanılabilirlik][rds-high-availability].
 
-Kullanıcı oturum açma güvenliğini sağlama hakkında daha fazla bilgi için bkz. [nasıl çalıştığını öğrenin: Azure Multi-Factor Authentication][concepts-mfa].
+Kullanıcı oturum açma güvenliğini sağlama hakkında daha fazla bilgi için bkz. [nasıl çalıştığını öğrenin: Azure AD Multi-Factor Authentication][concepts-mfa].
 
 <!-- INTERNAL LINKS -->
 [bastion-overview]: ../bastion/bastion-overview.md

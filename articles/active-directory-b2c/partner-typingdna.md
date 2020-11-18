@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f7d89942ad5209b854b8df486ad3e59a3976edfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edbc944e77d2483d32574f8044c72fc3d1292e2a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259060"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840443"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Azure Active Directory B2C TypingDNA yapılandırma öğreticisi
 
 Bu kılavuzda, Azure Active Directory B2C ' de bir örnek çevrimiçi ödeme uygulamasını TypingDNA UYGULAMASı ile tümleştirmeyi öğrenin. TypingDNA App ' i kullanarak, Azure AD B2C müşteriler [ödeme hizmetleri yönerge 2](https://www.typingdna.com/use-cases/sca-strong-customer-authentication) (PSD2) işlem gereksinimleriyle, bir tuş vuruşu dinamikleri ve güçlü müşteri kimlik doğrulaması aracılığıyla uyum sağlayabilir. TypingDNA hakkında daha fazla bilgiyi [burada](https://www.typingdna.com/)bulabilirsiniz.
 
- Azure AD B2C, kullanıcıların yazma özelliklerini yakalamak ve bunların her bir kimlik doğrulaması için, kaydedilmesini ve çözümlenmelerini sağlamak için TypingDNA 'in teknolojilerini kullanır. Bu, bir kimlik doğrulamanın riskiness ilişkili bir koruma katmanı ekler ve risk düzeylerini değerlendirir. Azure AD B2C, kullanıcının Azure MFA 'yı çağırarak, e-posta doğrulamasını zorlayarak veya senaryonuz için başka özel bir mantığa göre daha fazla güven sağlamak üzere diğer mekanizmaların çağrılmasını sağlayabilir.
+ Azure AD B2C, kullanıcıların yazma özelliklerini yakalamak ve bunların her bir kimlik doğrulaması için, kaydedilmesini ve çözümlenmelerini sağlamak için TypingDNA 'in teknolojilerini kullanır. Bu, bir kimlik doğrulamanın riskiness ilişkili bir koruma katmanı ekler ve risk düzeylerini değerlendirir. Azure AD B2C, kullanıcının Azure AD MFA 'yı çağırarak, e-posta doğrulamasını zorlayarak veya senaryonuz için başka özel bir mantığa göre daha fazla güven sağlamak üzere diğer mekanizmaları çağırabilir.
 
 >[!NOTE]
 > Bu örnek ilke, [SocialAndLocalAccountsWithMfa](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) başlangıç paketini temel alır.
@@ -113,7 +113,7 @@ Bu eşikler kullanım durumunda ayarlanmalıdır.
 
 - API 'niz değerlendirdikten sonra `net_score` B2C 'ye bir Boole talebi döndürmelidir `promptMFA` .
 
-- `promptMFA`Talep, Azure MFA 'yı koşullu olarak yürütmek için bir ön koşul içinde kullanılır.
+- `promptMFA`Talep, Azure AD MFA 'yı koşullu olarak yürütmek için bir ön koşul içinde kullanılır.
 
 ```xml
 
@@ -154,7 +154,7 @@ Bu eşikler kullanım durumunda ayarlanmalıdır.
 ## <a name="onboard-with-typingdna"></a>TypingDNA ile ekleme
 
 1. TypingDNA için [buraya](https://www.typingdna.com/) kaydolun
-2. TypingDNA panosu ' nda oturum açın ve **API anahtarı** ve **API gizli**anahtarını edinin. Bu, daha sonra API arabirimi kurulumunda gerekecektir
+2. TypingDNA panosu ' nda oturum açın ve **API anahtarı** ve **API gizli** anahtarını edinin. Bu, daha sonra API arabirimi kurulumunda gerekecektir
 
 ## <a name="integrate-typingdna-with-azure-ad-b2c"></a>TypingDNA Azure AD B2C ile tümleştirin
 
@@ -162,7 +162,7 @@ Bu eşikler kullanım durumunda ayarlanmalıdır.
 2. `apiKey` `apiSecret` [TYPINGDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) çözümünde ve Içindeki tüm örnekleri typingdna panonuzdaki kimlik bilgileriyle değiştirin
 3. [Buradakı](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) CORS gereksinimlerini takip eden SAĞLAYıCııNıZDA HTML dosyalarını barındırın.
 4. `api.selfasserted.tdnasignup`Dosyasındaki ve içerik tanımlarının loaduri öğelerini `api.selfasserted.tdnasignin` `TrustFrameworkExtensions.xml` sırasıyla barındırılan HTML dosyalarınızın URI 'siyle değiştirin.
-5. **Azure Portal**Azure AD dikey penceresinde kimlik deneyimi ÇERÇEVESI altında B2C ilke anahtarı oluşturun. Seçeneğini kullanın `Generate` ve bu anahtarı adlandırın `tdnaHashedId` .
+5. **Azure Portal** Azure AD dikey penceresinde kimlik deneyimi ÇERÇEVESI altında B2C ilke anahtarı oluşturun. Seçeneğini kullanın `Generate` ve bu anahtarı adlandırın `tdnaHashedId` .
 6. İlke dosyalarında Tenantıd 'yi değiştirme
 7. Tüm TypingDNA REST API teknik profillerindeki (REST-TDNA-VerifyUser, REST-TDNA-SaveUser, REST-TDNA-CheckUser) ServiceUrl 'Lerini [Typingdna-api-ıNTERFACE API](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)'niz için uç noktayla değiştirin.
 8. [İlke dosyalarını](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/policy) kiracınıza yükleyin.
@@ -170,7 +170,7 @@ Bu eşikler kullanım durumunda ayarlanmalıdır.
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
 1. B2C kiracısını açın ve kimlik deneyimi çerçevesi ' ni seçin.
-2. Daha önce oluşturduğunuz **Kullanıcı akışınızı**seçin.
+2. Daha önce oluşturduğunuz **Kullanıcı akışınızı** seçin.
 3. Kullanıcı akışını **Çalıştır** ' ı seçin
 
     a. **Uygulama** -kayıtlı uygulamayı seçin (örnek JWT)

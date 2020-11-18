@@ -3,19 +3,19 @@ title: SQL yönetilen örneği üzerinde el ile yük devretme başlatma
 description: Azure SQL yönetilen örneği 'nde birincil ve ikincil çoğaltmaların el ile yük devretmesini öğrenin.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7bcdabdb4e49d198b9acb7a1c57312b31a5b4fff
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791639"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842235"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme
 
@@ -46,7 +46,7 @@ Yük devretmeyi başlatan kullanıcının aşağıdaki RBAC rollerinden birine s
 - Aşağıdaki izne sahip özel rol:
   - `Microsoft.Sql/managedInstances/failover/action`
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 En az az. SQL sürümünün [v 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)olması gerekir. Her zaman en son PowerShell sürümü bulunan Azure portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanmayı göz önünde bulundurun. 
 

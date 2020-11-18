@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789582"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841232"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,12 +101,12 @@ SQL veritabanı, güvenlik ve gizliliği çok önemli bir şekilde alır. SQL ve
 
 SQL veritabanı 'nda sunulan iki kimlik doğrulama yöntemi vardır:
 
-- [Azure Active Directory Kimlik Doğrulaması](authentication-aad-overview.md)
+- [Azure Active Directory kimlik doğrulaması](authentication-aad-overview.md)
 - [SQL kimlik doğrulaması](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (Azure AD) merkezi bir kimlik ve erişim yönetimi hizmetidir. Bu sayesinde, kuruluşunuzdaki tüm personele çok rahat bir oturum açma erişimi (SSO) sağlayabilirsiniz. Bu anlamı, kimlik bilgilerinin daha basit kimlik doğrulama için tüm Azure hizmetleri genelinde paylaşılmasıdır. 
 
-Azure AD, Azure [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) destekler ve [bırkaç tıklamayla](../../active-directory/hybrid/how-to-connect-install-express.md) Azure ad, Windows Server Active Directory ile tümleştirilebilir. SQL kimlik doğrulaması, tam olarak onu zaten kullandığınız gibi çalışmaktadır. Bir Kullanıcı adı/parola sağlarsınız ve belirli bir sunucudaki tüm veritabanları için kullanıcıların kimliğini doğrulayabilirsiniz. Bu ayrıca SQL veritabanı ve Azure SYNAPSE analizlerinin (eski adıyla SQL veri ambarı) bir Azure AD etki alanı içinde Multi-Factor Authentication ve Konuk Kullanıcı hesapları sunmasına olanak tanır. Şirket içi bir Active Directory zaten varsa, dizininizi Azure 'a genişletmek için dizini Azure Active Directory federasyona bağlayabilirsiniz.
+Azure AD, Azure AD [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) destekler ve [bırkaç tıklamayla](../../active-directory/hybrid/how-to-connect-install-express.md) Azure ad, Windows Server Active Directory ile tümleştirilebilir. SQL kimlik doğrulaması, tam olarak onu zaten kullandığınız gibi çalışmaktadır. Bir Kullanıcı adı/parola sağlarsınız ve belirli bir sunucudaki tüm veritabanları için kullanıcıların kimliğini doğrulayabilirsiniz. Bu ayrıca SQL veritabanı ve Azure SYNAPSE analizlerinin (eski adıyla SQL veri ambarı) bir Azure AD etki alanı içinde Multi-Factor Authentication ve Konuk Kullanıcı hesapları sunmasına olanak tanır. Şirket içi bir Active Directory zaten varsa, dizininizi Azure 'a genişletmek için dizini Azure Active Directory federasyona bağlayabilirsiniz.
 
 |**Eğer...**|**SQL veritabanı/Azure SYNAPSE Analizi**|
 |---|---|
@@ -172,7 +172,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 |**Özellikler**|**Always Encrypted**|**Saydam Veri Şifrelemesi**|
 |---|---|---|
 |**Şifreleme kapsamı**|Uçtan uca|Rest verileri|
-|**Sunucu, hassas verilere erişebilir**|Hayır|Evet, çünkü şifreleme bekleyen veriler için|
+|**Sunucu, hassas verilere erişebilir**|No|Evet, çünkü şifreleme bekleyen veriler için|
 |**İzin verilen T-SQL işlemleri**|Eşitlik karşılaştırması|Tüm T-SQL Surface alanı kullanılabilir|
 |**Özelliği kullanmak için gereken uygulama değişiklikleri**|En az|Çok küçük|
 |**Şifreleme ayrıntı düzeyi**|Sütun düzeyi|Veritabanı düzeyinde Kimlik Bilgileri belirleme seçeneği|
@@ -261,7 +261,7 @@ Bu Analizi "Advisor" bölümünde da görüntüleyebilirsiniz:
 
 SQL veritabanında, performansı izlemek ve uygun şekilde ayarlamak için platformun akıllı öngörülerini kullanabilirsiniz. Aşağıdaki yöntemleri kullanarak SQL veritabanı 'nda performans ve kaynak kullanımını izleyebilirsiniz:
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, veritabanını seçip Genel Bakış bölmesinde grafiğe tıklayarak bir veritabanının kullanımını gösterir. Grafiği CPU yüzdesi, DTU yüzdesi, veri GÇ yüzdesi, oturum yüzdesi ve veritabanı boyutu yüzdesi gibi birden çok ölçümü gösterecek şekilde değiştirebilirsiniz.
 
@@ -320,11 +320,11 @@ SQL veritabanı, belirli veri bozulması sınıflarının otomatik olarak ve ver
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Azure portal kullanarak verileri SQL veritabanından BACPAC dosyaları olarak dışarı ve içeri aktarma Nasıl yaparım?
 
-- **Dışarı aktarma** : Azure SQL veritabanı 'nda veritabanınızı Azure Portal bacpac dosyası olarak dışarı aktarabilirsiniz.
+- **Dışarı aktarma**: Azure SQL veritabanı 'nda veritabanınızı Azure Portal bacpac dosyası olarak dışarı aktarabilirsiniz.
 
    ![veritabanı dışarı aktarma](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Içeri aktarma** : ayrıca, Azure Portal kullanarak VERILERI BIR bacpac dosyası olarak Azure SQL veritabanı 'nda veritabanınıza aktarabilirsiniz.
+- **Içeri aktarma**: ayrıca, Azure Portal kullanarak VERILERI BIR bacpac dosyası olarak Azure SQL veritabanı 'nda veritabanınıza aktarabilirsiniz.
 
    ![veritabanı içeri aktarma](./media/manage-data-after-migrating-to-database/import1.png)
 

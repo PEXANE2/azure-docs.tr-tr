@@ -3,12 +3,12 @@ title: ISO 27001 şema örnek denetimleri
 description: ISO 27001 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 04e9863cd52c272cf74e2656df207f4ced7b4286
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0c1c20ae8b740ce019441dbee880f883947af160
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420249"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842507"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğinin denetim eşlemesi
 
@@ -84,7 +84,7 @@ Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access
 
 ## <a name="a942-secure-log-on-procedures"></a>A. 9.4.2 Secure oturum açma yordamları
 
-Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek için üç Azure Ilke tanımı atar. Azure Multi-Factor Authentication, ikinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve güçlü kimlik doğrulaması sunar. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
+Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek için üç Azure Ilke tanımı atar. Azure AD Multi-Factor Authentication ikinci bir kimlik doğrulama biçimi isteyerek ve güçlü kimlik doğrulaması sunarak ek güvenlik sağlar. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir

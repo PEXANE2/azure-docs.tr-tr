@@ -5,19 +5,19 @@ description: Azure AD 'yi yapılandırdıktan sonra Azure Active Directory kimli
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
+ms.custom: azure-synapse, has-adal-ref, sqldbrb=2, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 99af4d5711c70523053b37e19b08173f32bd117b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a9ef15bf595d84613b5f41a73e5526cb0fe79d5b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675116"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841419"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -73,11 +73,11 @@ Coğrafi çoğaltma ile Azure Active Directory kullanırken, hem birincil hem de
 > [!IMPORTANT]
 > Yalnızca bir Azure SQL yönetilen örneği sağlıyorsanız bu adımları izleyin. Bu işlem, yalnızca genel/şirket yöneticisi veya Azure AD 'de ayrıcalıklı rol yöneticisi tarafından yürütülebilir.
 >
-> **Genel önizlemede** , **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen örnek kimliğini bu grubun bir üyesi olarak ekleyebilir, bu da SQL yönetilen örneği için bir Azure AD yöneticisi sağlamanıza olanak tanır. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
+> **Genel önizlemede**, **Dizin OKUYUCULARı** rolünü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen örnek kimliğini bu grubun bir üyesi olarak ekleyebilir, bu da SQL yönetilen örneği için bir Azure AD yöneticisi sağlamanıza olanak tanır. Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
 SQL yönetilen örneğinizin, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşturma aracılığıyla kullanıcıların kimlik doğrulaması gibi görevleri başarılı bir şekilde gerçekleştirmek için Azure AD 'yi okuma izinlerine ihtiyacı vardır. Bunun çalışması için, Azure AD 'yi okumak üzere SQL yönetilen örneği iznini vermeniz gerekir. Azure portal veya PowerShell 'i kullanarak bunu yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek için Azure AD 'de Genel/Şirket Yöneticisi olarak oturum açın ve şu adımları izleyin:
 
@@ -103,13 +103,13 @@ SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek
 
     ![Seçili SQL yönetilen örneği için Active Directory yönetici sayfasında vurgulanan yönetici ayarla komutunun gösterildiği ekran görüntüsü.](./media/authentication-aad-configure/set-admin.png)
 
-7. Azure AD Yöneticisi sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç** ' i seçin.
+7. Azure AD Yöneticisi sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin.
 
    Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediği için seçilemez. [Azure AD özellikleri ve kısıtlamalarından](authentication-aad-overview.md#azure-ad-features-and-limitations)desteklenen Yöneticiler listesine bakın. Rol tabanlı erişim denetimi (RBAC) yalnızca Azure portal için geçerlidir ve SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'e yayılmaz.
 
     ![Azure Active Directory Yöneticisi ekleme](./media/authentication-aad-configure/add-azure-active-directory-admin.png)
 
-8. Active Directory Yöneticisi sayfasının en üstünde **Kaydet** ' i seçin.
+8. Active Directory Yöneticisi sayfasının en üstünde **Kaydet**' i seçin.
 
     ![Yönetici ayarla ve Yöneticiyi Kaldır düğmelerinin yanındaki üst satırdaki Kaydet düğmesine sahip Active Directory yönetici sayfasının ekran görüntüsü.](./media/authentication-aad-configure/save.png)
 
@@ -118,7 +118,7 @@ SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek
 SQL yönetilen örneğiniz için bir Azure AD yöneticisi sağlamaktan sonra, <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">create LOGIN</a> sözdizimi Ile Azure AD Server sorumlularını (oturum açma) oluşturmaya başlayabilirsiniz. Daha fazla bilgi için bkz. [SQL yönetilen örneğe genel bakış](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
 
 > [!TIP]
-> Bir yöneticiyi daha sonra kaldırmak için, Active Directory yönetici sayfasının üst kısmında, **Yöneticiyi Kaldır** ' ı seçin ve ardından **Kaydet** ' i seçin.
+> Bir yöneticiyi daha sonra kaldırmak için, Active Directory yönetici sayfasının üst kısmında, **Yöneticiyi Kaldır**' ı seçin ve ardından **Kaydet**' i seçin.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -236,7 +236,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL mi](/cli/azure/sql
 
 Aşağıdaki iki yordam, Azure portal sunucusu için ve PowerShell kullanarak sunucunuzun Azure Active Directory yöneticisini nasıl sağlayacağınızı gösterir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve sunucu için aynı aboneliğin kullanıldığından emin olmak üzere abonelikle ilişkili Active Directory sunucuyla bağlantılandırır.
 
@@ -245,19 +245,19 @@ Aşağıdaki iki yordam, Azure portal sunucusu için ve PowerShell kullanarak su
     ![SQL Server arama ve seçme](./media/authentication-aad-configure/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
-    > Bu sayfada, **SQL Server** 'ı seçmeden önce, kategorinin en *sevdiğiniz* adı yanındaki **yıldızı** seçip sol gezinti çubuğuna **SQL sunucuları** ekleyebilirsiniz.
+    > Bu sayfada, **SQL Server**'ı seçmeden önce, kategorinin en *sevdiğiniz* adı yanındaki **yıldızı** seçip sol gezinti çubuğuna **SQL sunucuları** ekleyebilirsiniz.
 
-3. **SQL Server** sayfasında, **Active Directory yönetici** ' yi seçin.
+3. **SQL Server** sayfasında, **Active Directory yönetici**' yi seçin.
 
-4. **Active Directory Yöneticisi** sayfasında, **yönetici ayarla** ' yı seçin.
+4. **Active Directory Yöneticisi** sayfasında, **yönetici ayarla**' yı seçin.
 
     ![Active Directory yönetici olarak ayarlanan SQL Server 'lar](./media/authentication-aad-configure/sql-servers-set-active-directory-admin.png)  
 
-5. **Yönetici Ekle** sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç** ' i seçin. (Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediğinden seçilemiyor. ( [SQL veritabanı veya Azure SYNAPSE kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullan](authentication-aad-overview.md)' ın **Azure AD özellikleri ve sınırlamaları** bölümünde desteklenen Yöneticiler listesine bakın.) Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz.
+5. **Yönetici Ekle** sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin. (Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediğinden seçilemiyor. ( [SQL veritabanı veya Azure SYNAPSE kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullan](authentication-aad-overview.md)' ın **Azure AD özellikleri ve sınırlamaları** bölümünde desteklenen Yöneticiler listesine bakın.) Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz.
 
     ![Azure Active Directory yönetici seçin](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 
-6. **Active Directory Yöneticisi** sayfasının en üstünde **Kaydet** ' i seçin.
+6. **Active Directory Yöneticisi** sayfasının en üstünde **Kaydet**' i seçin.
 
     ![Yöneticiyi Kaydet](./media/authentication-aad-configure/save-admin.png)
 
@@ -266,7 +266,7 @@ Yöneticiyi değiştirme işlemi birkaç dakika sürebilir. Ardından yeni yöne
    > [!NOTE]
    > Azure AD yöneticisi ayarlanırken yeni yönetici adı (Kullanıcı veya grup), sanal ana veritabanında sunucu kimlik doğrulaması kullanıcısı olarak zaten mevcut olamaz. Varsa, Azure AD yönetici kurulumu başarısız olur; oluşturma geri alınıyor ve bu tür bir yöneticinin (ad) zaten var olduğunu gösterir. Bu tür bir sunucu kimlik doğrulama kullanıcısı Azure AD 'nin bir parçası olmadığından, Azure AD kimlik doğrulaması kullanarak sunucuya bağlanma çabaları başarısız olur.
 
-Bir yöneticiyi daha sonra kaldırmak için, **Active Directory yönetici** sayfasının üst kısmında, **Yöneticiyi Kaldır** ' ı seçin ve ardından **Kaydet** ' i seçin.
+Bir yöneticiyi daha sonra kaldırmak için, **Active Directory yönetici** sayfasının üst kısmında, **Yöneticiyi Kaldır**' ı seçin ve ardından **Kaydet**' i seçin.
 
 ### <a name="powershell-for-sql-database-and-azure-synapse"></a>SQL veritabanı ve Azure SYNAPSE için PowerShell
 
@@ -298,7 +298,7 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 > [!NOTE]
 > Azure PowerShell komutu, ```Set-AzSqlServerActiveDirectoryAdministrator``` Desteklenmeyen kullanıcılar Için Azure AD yöneticileri 'ni sağlamanıza engel olmaz. Desteklenmeyen bir Kullanıcı sağlanabilir, ancak bir veritabanına bağlanamaz.
 
-Aşağıdaki örnek, isteğe bağlı **ObjectID** 'yi kullanır:
+Aşağıdaki örnek, isteğe bağlı **ObjectID**'yi kullanır:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" `
@@ -343,7 +343,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL Server](/cli/azure
 Uygulamalarınızın veya kullanıcılarınızın Azure AD kimliklerini kullanarak SQL veritabanı 'na veya Azure SYNAPSE 'e bağlandığı tüm istemci makinelerde aşağıdaki yazılımları yüklemelisiniz:
 
 - .NET Framework 4,6 veya sonraki bir sürümü [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) .
-- SQL Server için Azure Active Directory kimlik doğrulama kitaplığı ( *ADAL.DLL* ). Aşağıda, *ADAL.DLL* kitaplığını içeren en son SSMS, ODBC ve OLE DB sürücüsünü yüklemek için karşıdan yükleme bağlantıları verilmiştir.
+- SQL Server için Azure Active Directory kimlik doğrulama kitaplığı (*ADAL.DLL*). Aşağıda, *ADAL.DLL* kitaplığını içeren en son SSMS, ODBC ve OLE DB sürücüsünü yüklemek için karşıdan yükleme bağlantıları verilmiştir.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [SQL Server için ODBC sürücüsü 17](https://www.microsoft.com/download/details.aspx?id=56567)
   - [SQL Server için 18 OLE DB sürücüsü](https://www.microsoft.com/download/details.aspx?id=56730)
@@ -406,7 +406,7 @@ Azure Active Directory kimliklerine göre kapsanan veritabanı kullanıcıları 
 > Sunucu için Azure Active Directory yöneticisini kaldırmak, herhangi bir Azure AD kimlik doğrulama kullanıcısının sunucuya bağlanmasını engeller. Gerekirse, kullanılamayan Azure AD kullanıcıları bir SQL veritabanı yöneticisi tarafından el ile bırakılabilir.
 
 > [!NOTE]
-> Bir **bağlantı zaman aşımı süresi dolmuşsa** , `TransparentNetworkIPResolution` bağlantı dizesinin parametresini false olarak ayarlamanız gerekebilir. Daha fazla bilgi için bkz. [.NET Framework 4.6.1-TransparentNetworkIPResolution Ile bağlantı zaman aşımı sorunu](/archive/blogs/dataaccesstechnologies/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution).
+> Bir **bağlantı zaman aşımı süresi dolmuşsa**, `TransparentNetworkIPResolution` bağlantı dizesinin parametresini false olarak ayarlamanız gerekebilir. Daha fazla bilgi için bkz. [.NET Framework 4.6.1-TransparentNetworkIPResolution Ile bağlantı zaman aşımı sorunu](/archive/blogs/dataaccesstechnologies/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution).
 
 Bir veritabanı kullanıcısı oluşturduğunuzda, bu kullanıcı **bağlantı** iznini alır ve bu veritabanına **genel** rolün bir üyesi olarak bağlanabilir. Başlangıçta yalnızca Kullanıcı için kullanılabilen izinler, **genel** role veya üyesi oldukları herhangi BIR Azure AD grubuna verilen izinlere sahiptir. Azure AD tabanlı bir kapsanan veritabanı kullanıcısı sağladığınızda, diğer Kullanıcı türlerine izin verdiğiniz şekilde kullanıcıya ek izinler verebilirsiniz. Genellikle veritabanı rollerine izinler verin ve rollere kullanıcı ekleyin. Daha fazla bilgi için bkz. [veritabanı altyapısı Izin temelleri](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Özel SQL veritabanı rolleri hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda veritabanlarını ve oturum açma Işlemlerini yönetme](logins-create-manage.md).
 Yönetilen bir etki alanına dış Kullanıcı olarak içeri aktarılan bir Federasyon etki alanı kullanıcı hesabı, yönetilen etki alanı kimliğini kullanmalıdır.
@@ -430,7 +430,7 @@ Aşağıdaki yordamlarda, SQL Server Management Studio veya SQL Server veritaban
 
 Bir Federasyon etki alanındaki Azure Active Directory kimlik bilgilerinizi veya doğrudan geçiş ve parola karması kimlik doğrulaması için sorunsuz çoklu oturum açma için yapılandırılmış bir yönetilen etki alanını kullanarak Windows 'da oturum açtıysanız bu yöntemi kullanın. Daha fazla bilgi için bkz. [kesintisiz çoklu oturum açma Azure Active Directory](../../active-directory/hybrid/how-to-connect-sso.md).
 
-1. Management Studio veya veri araçlarını başlatın ve **sunucuya Bağlan** (veya **veritabanı altyapısına Bağlan** ) Iletişim kutusunda, **kimlik doğrulama** kutusunda **Azure Active Directory tümleştirilmiş** ' ı seçin. Mevcut kimlik bilgileriniz bağlantı için sunulacağından parola gerekmez veya girilemez.
+1. Management Studio veya veri araçlarını başlatın ve **sunucuya Bağlan** (veya **veritabanı altyapısına Bağlan**) Iletişim kutusunda, **kimlik doğrulama** kutusunda **Azure Active Directory tümleştirilmiş**' ı seçin. Mevcut kimlik bilgileriniz bağlantı için sunulacağından parola gerekmez veya girilemez.
 
    ![AD Tümleşik kimlik doğrulaması seçin][11]
 
@@ -444,7 +444,7 @@ Azure AD tarafından yönetilen etki alanını kullanarak bir Azure AD asıl ad�
 
 SQL veritabanı ya da SQL yönetilen örneği ile SQL veritabanı kimlik doğrulaması yapmak için bu yöntemi kullanın. yalnızca Azure AD bulutu, kimlik kullanıcıları ya da Azure AD karma kimliklerini kullananlar. Bu yöntem, Windows kimlik bilgilerini kullanmak isteyen kullanıcıları destekler, ancak yerel makineleri etki alanına (örneğin, uzaktan erişim kullanılarak) katılmadı. Bu durumda, bir Windows kullanıcısı etki alanı hesabını ve parolasını belirtebilir ve SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'de veritabanında kimlik doğrulaması yapabilir.
 
-1. Management Studio veya veri araçlarını başlatın ve **sunucuya Bağlan** (veya **veritabanı altyapısına Bağlan** ) Iletişim kutusunda, **kimlik doğrulama** kutusunda **Azure Active Directory-Password** ' ı seçin.
+1. Management Studio veya veri araçlarını başlatın ve **sunucuya Bağlan** (veya **veritabanı altyapısına Bağlan**) Iletişim kutusunda, **kimlik doğrulama** kutusunda **Azure Active Directory-Password**' ı seçin.
 
 2. **Kullanıcı adı** kutusuna Azure Active Directory Kullanıcı adınızı **UserName \@ Domain.com** biçiminde yazın. Kullanıcı adları, Azure Active Directory sahip yönetilen veya Federasyon etki alanındaki bir Azure Active Directory veya bir hesaptan hesap olmalıdır.
 

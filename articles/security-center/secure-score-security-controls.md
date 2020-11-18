@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: bcbad58935300c765fdcccb1701b64f239de43fd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: fd01e7e6853d69889d0ffba3d8775a0fd92f7cd2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357887"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842541"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
@@ -88,7 +88,7 @@ Azure Kaynak Grafiği, güçlü filtreleme, gruplama ve sıralama özelliklerine
 
 Bağımsız değişken ile birden çok aboneliğin güvenli puanına erişmek için:
 
-1. Azure portal **Azure Kaynak Grafiği Gezgini** ' ni açın.
+1. Azure portal **Azure Kaynak Grafiği Gezgini**' ni açın.
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Kaynak Grafiği Gezgini * * öneri sayfası başlatılıyor" :::
 
@@ -112,7 +112,7 @@ Bağımsız değişken ile birden çok aboneliğin güvenli puanına erişmek i�
         | project SecureControl , unhealthy, currentscore, maxscore
         ```
 
-1. **Sorguyu Çalıştır** ' ı seçin.
+1. **Sorguyu Çalıştır**' ı seçin.
 
 ## <a name="how-your-secure-score-is-calculated"></a>Güvenli puanınızın hesaplanması 
 
@@ -242,7 +242,7 @@ Güvenlik Merkezi 'nin varsayılan güvenlik girişimi sektörde en iyi uygulama
     <td class="tg-lboi"; width=55%>- Azure SQL veritabanı sunucularında gelişmiş veri güvenliği etkinleştirilmelidir<br>- Makinelerdeki SQL sunucularında gelişmiş veri güvenliği etkinleştirilmelidir<br>- Gelişmiş tehdit koruması sanal makinelerde etkinleştirilmelidir<br>- Gelişmiş tehdit koruması Azure App Service planlarda etkinleştirilmelidir<br>- Gelişmiş tehdit koruması, Azure depolama hesaplarında etkinleştirilmelidir<br>- Gelişmiş tehdit koruması, Azure Kubernetes hizmet kümelerinde etkinleştirilmelidir<br>- Gelişmiş tehdit koruması Azure Container Registry kayıt defterlerinde etkinleştirilmelidir<br>- Gelişmiş tehdit koruması Azure Key Vault kasaları üzerinde etkinleştirilmelidir</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">En iyi güvenlik uygulamalarını uygulayın (en fazla puan 0)</p></strong>Modern güvenlik uygulamaları, ağ çevre ' ün ihlal olduğunu varsayar. Bu nedenle, bu denetimdeki en iyi uygulamalardan birçoğu kimlikleri yönetmeye odaklanmaktadır.<br>Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarları,. pfx dosyalarını ve parolaları şifreleyerek anahtarları ve gizli dizileri <a href="/azure/key-vault/key-vault-overview">Azure Key Vault</a> korur.<br>Sanal özel ağlar (VPN 'Ler), sanal makinelerinize erişmenin güvenli bir yoludur. VPN 'Ler kullanılamıyorsa, karmaşık parola ve <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a>gibi iki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulaması, yalnızca Kullanıcı adları ve parolalara bağlı olan zayıf yanları önler.<br>Güçlü kimlik doğrulama ve yetkilendirme platformlarının kullanılması, başka bir en iyi uygulamadır. Federal kimliklerin kullanılması, kuruluşların yetkili kimliklerin yönetimini temsilciliğini sağlar. Bu, çalışanlar sonlandırıldığı ve erişiminin iptal edilmesi gereken durumlarda da önemlidir.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">En iyi güvenlik uygulamalarını uygulayın (en fazla puan 0)</p></strong>Modern güvenlik uygulamaları, ağ çevre ' ün ihlal olduğunu varsayar. Bu nedenle, bu denetimdeki en iyi uygulamalardan birçoğu kimlikleri yönetmeye odaklanmaktadır.<br>Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarları,. pfx dosyalarını ve parolaları şifreleyerek anahtarları ve gizli dizileri <a href="/azure/key-vault/key-vault-overview">Azure Key Vault</a> korur.<br>Sanal özel ağlar (VPN 'Ler), sanal makinelerinize erişmenin güvenli bir yoludur. VPN 'Ler kullanılamıyorsa, karmaşık parola ve <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Azure AD Multi-Factor Authentication</a>gibi iki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulaması, yalnızca Kullanıcı adları ve parolalara bağlı olan zayıf yanları önler.<br>Güçlü kimlik doğrulama ve yetkilendirme platformlarının kullanılması, başka bir en iyi uygulamadır. Federal kimliklerin kullanılması, kuruluşların yetkili kimliklerin yönetimini temsilciliğini sağlar. Bu, çalışanlar sonlandırıldığı ve erişiminin iptal edilmesi gereken durumlarda da önemlidir.</td>
     <td class="tg-lboi"; width=55%>- Aboneliğiniz için en fazla 3 sahip belirtilmelidir<br>- Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir<br>- MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir<br>- Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır<br>- RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır<br>- SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır<br>- Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir<br>- Olay Hub 'ı örneğindeki yetkilendirme kuralları tanımlanmalıdır<br>- Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir<br>- Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir<br>- Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>- Önizle Windows Exploit Guard etkinleştirilmelidir <br>- Önizle Konuk yapılandırma aracısının yüklü olması gerekir<br>- İnternet 'e yönelik olmayan sanal makineler ağ güvenlik gruplarıyla korunmalıdır<br>- Sanal makineler için Azure Backup etkinleştirilmelidir<br>- MariaDB için Azure veritabanı 'nda coğrafi olarak yedekli yedekleme etkinleştirilmelidir<br>- MySQL için Azure veritabanı 'nda coğrafi olarak yedekli yedekleme etkinleştirilmelidir<br>- PostgreSQL için Azure veritabanı için coğrafi olarak yedekli yedekleme etkinleştirilmelidir<br>- PHP, API uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- PHP, Web uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- Java, API uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- Java, işlev uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- Java, Web uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- Python, API uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- Python, işlev uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- Python, Web uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>- SQL sunucuları için denetim bekletme en az 90 gün olarak ayarlanmalıdır</td>
   </tr>
 </tbody>

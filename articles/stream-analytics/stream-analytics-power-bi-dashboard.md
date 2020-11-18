@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745369"
+ms.locfileid: "94842490"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu
 
@@ -23,7 +23,7 @@ Bu makale Stream Analytics [gerçek zamanlı sahtekarlık algılama](stream-anal
 Bu senaryoyu gösteren [bir video](https://www.youtube.com/watch?v=SGUpT-a99MA)  izleyebilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
@@ -59,7 +59,7 @@ Gerçek zamanlı sahtekarlık algılama öğreticisinde, çıkış Azure Blob de
 
 4. **Yetkilendir**'i seçtiğinizde bir açılır pencere görünür ve Power BI hesabınızda kimlik doğrulaması için sizden kimlik bilgilerini sağlamanız istenir. Yetkilendirme başarılı olduktan sonra **Kaydet** seçeneğine tıklayarak ayarları kaydedin.
 
-8. **Oluştur**’a tıklayın.
+8. **Oluştur**'a tıklayın.
 
 Veri kümesi aşağıdaki ayarlarla oluşturulur:
 
@@ -221,7 +221,7 @@ Bu yapılandırma verildiğinde, özgün sorguyu aşağıdaki şekilde değişti
 ```
 
 ### <a name="renew-authorization"></a>Yetkilendirmeyi Yenile
-İşiniz oluşturulduktan veya en son kimlik doğrulamasından sonra parola değişmişse, Power BI hesabınızı yeniden kimlik doğrulaması yapmanız gerekir. Azure Multi-Factor Authentication Azure Active Directory (Azure AD) kiracınızda yapılandırılırsa, her iki haftada bir Power BI yetkilendirmeyi de yenilemeniz gerekir. ' Yi yenilemezseniz, iş çıktısının bulunmaması veya işlem günlüklerinde bir olması gibi belirtilerle karşılaşabilirsiniz `Authenticate user error` .
+İşiniz oluşturulduktan veya en son kimlik doğrulamasından sonra parola değişmişse, Power BI hesabınızı yeniden kimlik doğrulaması yapmanız gerekir. Azure AD Multi-Factor Authentication Azure Active Directory (Azure AD) kiracınızda yapılandırılmışsa, her iki haftada bir Power BI yetkilendirmeyi de yenilemeniz gerekir. ' Yi yenilemezseniz, iş çıktısının bulunmaması veya işlem günlüklerinde bir olması gibi belirtilerle karşılaşabilirsiniz `Authenticate user error` .
 
 Benzer şekilde, bir iş, belirtecin süresi dolduktan sonra başlarsa bir hata oluşur ve iş başarısız olur. Bu sorunu çözmek için, çalıştıran işi durdurun ve Power BI çıktısına gidin. Veri kaybını önlemek için, **Yetkilendirmeyi Yenile** bağlantısını seçin ve ardından **son durdurulma zamanından** sonra işinizi yeniden başlatın.
 

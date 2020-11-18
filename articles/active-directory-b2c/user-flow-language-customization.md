@@ -11,12 +11,12 @@ ms.date: 08/13/2019
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a5bfdada12229070568bb9b0556471ea5aab306f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a2c39d9809204328a6eba30c073b1fa81795924a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575960"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840296"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
 
@@ -28,9 +28,9 @@ Kullanıcı akışlarınızın hangi dillerde kullanılabilir olduğunu seçmek 
 
 Müşterinizin hangi dillerde gördüğü üzerinde bu denetim düzeyine ihtiyaç duymayabilir. Bir `ui_locales` parametre sağlamazsanız, müşterinin deneyimi tarayıcının ayarları tarafından belirlenir. Desteklenen bir dil olarak ekleyerek, Kullanıcı akışlarınızın hangi dillerde çevrildiğinden de denetleyebilirsiniz. Bir müşterinin tarayıcısı, desteklemek istemediğiniz bir dili gösterecek şekilde ayarlandıysa, desteklenen kültürler için varsayılan olarak seçtiğiniz dil bunun yerine gösterilir.
 
-* **UI-yerel ayarlar belirtilen dil** : dil özelleştirmesini etkinleştirdikten sonra, Kullanıcı akışınız burada belirtilen dile çevrilir.
-* **Tarayıcı tarafından istenen dil** : herhangi bir `ui_locales` parametre belirtilmemişse, *dil destekleniyorsa* Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
-* **İlke varsayılan dili** : tarayıcı bir dil belirtmezse veya desteklenmeyen bir değer belirtiyorsa, Kullanıcı akışı, Kullanıcı akışı varsayılan diline çevrilir.
+* **UI-yerel ayarlar belirtilen dil**: dil özelleştirmesini etkinleştirdikten sonra, Kullanıcı akışınız burada belirtilen dile çevrilir.
+* **Tarayıcı tarafından istenen dil**: herhangi bir `ui_locales` parametre belirtilmemişse, *dil destekleniyorsa* Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
+* **İlke varsayılan dili**: tarayıcı bir dil belirtmezse veya desteklenmeyen bir değer belirtiyorsa, Kullanıcı akışı, Kullanıcı akışı varsayılan diline çevrilir.
 
 > [!NOTE]
 > Özel Kullanıcı özniteliklerini kullanıyorsanız kendi çevirilerinizi sağlamanız gerekir. Daha fazla bilgi için bkz. [dizelerinizi özelleştirme](#customize-your-strings).
@@ -41,10 +41,10 @@ Dil özelleştirmenin genel kullanıma sunulmadan önce oluşturulan ilkelerin �
 
 Bir Kullanıcı akışında dil özelleştirmesini etkinleştirdiğinizde, parametresini ekleyerek Kullanıcı akışının dilini kontrol edebilirsiniz `ui_locales` .
 
-1. Azure AD B2C kiracınızda **Kullanıcı akışları** ' nı seçin.
+1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 1. Çeviriler için etkinleştirmek istediğiniz kullanıcı akışına tıklayın.
 1. **Dilleri** seçin.
-1. **Dil özelleştirmesini etkinleştir** ' i seçin.
+1. **Dil özelleştirmesini etkinleştir**' i seçin.
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Kullanıcı akışındaki hangi dillerin etkinleştirildiğini seçin
 
@@ -164,13 +164,13 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 Ayrıca, Microsoft 'un şu anda çevirisi sağlamayan diller ekleyebilirsiniz. Kullanıcı akışındaki tüm dizeler için çevirileri sağlamanız gerekir. Dil ve yerel ayar kodları ISO 639-1 standardına göre sınırlandırılmıştır.
 
-1. Azure AD B2C kiracınızda **Kullanıcı akışları** ' nı seçin.
-2. Özel diller eklemek istediğiniz kullanıcı akışına tıklayın ve sonra **Diller** ' e tıklayın.
+1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
+2. Özel diller eklemek istediğiniz kullanıcı akışına tıklayın ve sonra **Diller**' e tıklayın.
 3. Sayfanın üst kısmından **Özel Dil ekle** ' yi seçin.
 4. Açılan bağlam bölmesinde geçerli bir yerel ayar kodu girerek hangi dilde çeviri sağlayadığınızı belirler.
 5. Her sayfa için, Ingilizce için bir geçersiz kılmalar kümesi indirebilir ve çeviriler üzerinde çalışma yapabilirsiniz.
 6. JSON dosyaları ile işiniz bittiğinde, bunları her bir sayfa için karşıya yükleyebilirsiniz.
-7. **Etkinleştir** ' i seçtiğinizde Kullanıcı akışınız artık kullanıcılarınız için bu dili görüntüleyebilir.
+7. **Etkinleştir**' i seçtiğinizde Kullanıcı akışınız artık kullanıcılarınız için bu dili görüntüleyebilir.
 8. Dili kaydedin.
 
 >[!IMPORTANT]
@@ -200,7 +200,7 @@ Chrome ve Firefox, kendi set dilleri için istek. Desteklenen bir dilise, varsay
 
 ## <a name="supported-languages"></a>Desteklenen diller
 
-Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Azure AD B2C tarafından sağlanır. Multi-Factor Authentication (MFA) bildirim dilleri [Azure MFA](../active-directory/authentication/concept-mfa-howitworks.md)tarafından sağlanır.
+Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Azure AD B2C tarafından sağlanır. Multi-Factor Authentication (MFA) bildirim dilleri [Azure AD MFA](../active-directory/authentication/concept-mfa-howitworks.md)tarafından sağlanır.
 
 | Dil              | Dil kodu | Kullanıcı akışları         | MFA bildirimleri  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

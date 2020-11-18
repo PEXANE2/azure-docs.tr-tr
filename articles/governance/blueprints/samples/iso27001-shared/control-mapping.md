@@ -3,12 +3,12 @@ title: ISO 27001 paylaşılan hizmetleri şema örnek denetimleri
 description: ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
 ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: bb1cfbc09e8a6209b9e6d0cb2970dc66ee05ba6d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: c79159fca9d619b727ef651bf42044182144ab35
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420351"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842524"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 paylaşılan hizmetleri şema örneğinin denetim eşlemesi
 
@@ -82,7 +82,7 @@ Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access
 
 ## <a name="a942-secure-log-on-procedures"></a>A. 9.4.2 Secure oturum açma yordamları
 
-Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek için üç Azure Ilke tanımı atar. Azure Multi-Factor Authentication, ikinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve güçlü kimlik doğrulaması sunar. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
+Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek için üç Azure Ilke tanımı atar. Azure AD Multi-Factor Authentication ikinci bir kimlik doğrulama biçimi isteyerek ve güçlü kimlik doğrulaması sunarak ek güvenlik sağlar. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir

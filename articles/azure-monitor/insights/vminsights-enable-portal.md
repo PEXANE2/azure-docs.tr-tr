@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ba6ae9262fb0e55c53e1b1421c075e555fae8d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55e5ff2af62c903efeab5c4932eae0c9dc9b535c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87328369"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842320"
 ---
 # <a name="enable-azure-monitor-for-single-virtual-machine-or-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portal tek bir sanal makine veya sanal makine ölçek kümesi için Azure Izleyicisini etkinleştirin
 Bu makalede, Azure portal kullanarak bir sanal makine veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
@@ -20,14 +20,14 @@ Bu makalede, Azure portal kullanarak bir sanal makine veya sanal makine ölçek 
 - Azure sanal makine ölçek kümesi
 - Azure Arc ile bağlantılı karma sanal makine
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Log Analytics çalışma alanı oluşturun ve yapılandırın](vminsights-configure-workspace.md). Alternatif olarak, bu işlem sırasında yeni bir çalışma alanı oluşturabilirsiniz.
 - Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
 
 ## <a name="enable-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici etkinleştir
 
-Azure portal **sanal makineler**, **Sanal Makine Ölçek Kümeleri**veya **makineler-Azure yay** ' i seçin ve listeden bir kaynak seçin. Menünün **izleme** bölümünde **Öngörüler** ' i ve ardından **Etkinleştir**' i seçin. Aşağıdaki örnekte bir Azure sanal makinesi gösterilmektedir, ancak menü Azure sanal makine ölçek kümesi veya Azure Arc için benzerdir.
+Azure portal **sanal makineler**, **Sanal Makine Ölçek Kümeleri** veya **sunucular-Azure yay** ' i seçin ve listeden bir kaynak seçin. Menünün **izleme** bölümünde **Öngörüler** ' i ve ardından **Etkinleştir**' i seçin. Aşağıdaki örnekte bir Azure sanal makinesi gösterilmektedir, ancak menü Azure sanal makine ölçek kümesi veya Azure Arc için benzerdir.
 
 ![VM için VM'ler için Azure İzleyici etkinleştirme](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 

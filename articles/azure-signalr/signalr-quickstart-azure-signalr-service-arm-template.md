@@ -4,15 +4,15 @@ description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kull
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289915"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841641"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Hızlı başlangıç: Azure SignalR hizmeti dağıtmak için ARM şablonu kullanma
 
@@ -24,7 +24,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure SignalR hizmetini Azure portal bir ARM şablonu kullanarak Azure 'a dağıtma düğmesi.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -66,22 +66,22 @@ Azure portal ARM şablonunu kullanarak Azure SignalR hizmetini dağıtmak için 
 
 1. İsterseniz, **aboneliği** varsayılan ' dan değiştirin.
 
-2. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam** ' ı seçin.
+2. **Kaynak grubu** Için **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam**' ı seçin.
 
 3. Yeni bir kaynak grubu oluşturduysanız, kaynak grubu için bir **bölge** seçin.
 
-4. İsterseniz, Azure SignalR hizmetinin yeni bir **adını** ve **konumunu** (örneğin, **eastus2** ) girin. Bir ad belirtmezseniz, otomatik olarak oluşturulur. Azure SignalR hizmetinin konumu, kaynak grubunun bölgesiyle aynı veya farklı olabilir. Bir konum belirtmezseniz, kaynak grubuyla aynı bölgeye ayarlanır.
+4. İsterseniz, Azure SignalR hizmetinin yeni bir **adını** ve **konumunu** (örneğin, **eastus2**) girin. Bir ad belirtmezseniz, otomatik olarak oluşturulur. Azure SignalR hizmetinin konumu, kaynak grubunun bölgesiyle aynı veya farklı olabilir. Bir konum belirtmezseniz, kaynak grubuyla aynı bölgeye ayarlanır.
 
-5. **Fiyatlandırma katmanını** ( **Free_F1** veya **Standard_S1** ) seçin, **kapasiteyi** (SignalR birimi sayısını) girin ve **varsayılan** bir **hizmet modu** seçin (hub sunucusu gerektirir), **sunucusuz** (herhangi bir sunucu bağlantısına izin vermez) veya **Klasik** (hub sunucusu bağlantısı varsa hub sunucusuna yönlendirilir). Sonra **bağlantı günlüklerinin** etkinleştirilip etkinleştirilmeyeceğini seçin veya **mesajlaşma günlüklerini etkinleştirin**.
+5. **Fiyatlandırma katmanını** (**Free_F1** veya **Standard_S1**) seçin, **kapasiteyi** (SignalR birimi sayısını) girin ve **varsayılan** bir **hizmet modu** seçin (hub sunucusu gerektirir), **sunucusuz** (herhangi bir sunucu bağlantısına izin vermez) veya **Klasik** (hub sunucusu bağlantısı varsa hub sunucusuna yönlendirilir). Sonra **bağlantı günlüklerinin** etkinleştirilip etkinleştirilmeyeceğini seçin veya **mesajlaşma günlüklerini etkinleştirin**.
 
     > [!NOTE]
     > **Free_F1** fiyatlandırma katmanı için kapasite 1 birimle sınırlıdır.
 
     :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Azure portal Azure SignalR hizmeti oluşturmak için ARM şablonunun ekran görüntüsü.":::
 
-6. **Gözden geçir + oluştur** ’u seçin.
+6. **Gözden geçir + oluştur**’u seçin.
 
-7. Hüküm ve koşulları okuyun ve ardından **Oluştur** ' u seçin.
+7. Hüküm ve koşulları okuyun ve ardından **Oluştur**' u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -92,12 +92,12 @@ ARM şablonunu kullanarak Azure SignalR hizmetini dağıtmak için aşağıdaki 
 
 * Yeni Azure SignalR hizmeti 'nin adı ve bölgesi
 * Yeni bir kaynak grubunun adı ve bölgesi
-* Azure Fiyatlandırma Katmanı ( **Free_F1** veya **Standard_S1** )
+* Azure Fiyatlandırma Katmanı (**Free_F1** veya **Standard_S1**)
 * SignalR birim kapasitesi (1, 2, 5, 10, 20, 50 veya 100)
   > [!NOTE]
   > **Free_F1** fiyatlandırma katmanı için kapasite 1 birimle sınırlıdır.
 * Hizmet modu: bir hub sunucusu istemek için **varsayılan** , herhangi bir sunucu bağlantısına izin vermemek Için **sunucusuz** ya da hub 'ın bir sunucu bağlantısı varsa hub sunucusuna yönlendirmek için **Klasik**
-* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir ( **true** veya **false** )
+* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir (**true** veya **false**)
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -137,12 +137,12 @@ ARM şablonunu kullanarak Azure SignalR hizmetini dağıtmak için aşağıdaki 
 
 * Yeni Azure SignalR hizmeti 'nin adı ve bölgesi
 * Yeni bir kaynak grubunun adı ve bölgesi
-* Azure Fiyatlandırma Katmanı ( **Free_F1** veya **Standard_S1** )
+* Azure Fiyatlandırma Katmanı (**Free_F1** veya **Standard_S1**)
 * SignalR birim kapasitesi (1, 2, 5, 10, 20, 50 veya 100)
     > [!NOTE]
     > **Free_F1** fiyatlandırma katmanı için kapasite 1 birimle sınırlıdır.
 * Hizmet modu: bir hub sunucusu istemek için **varsayılan** , herhangi bir sunucu bağlantısına izin vermemek Için **sunucusuz** ya da hub 'ın bir sunucu bağlantısı varsa hub sunucusuna yönlendirmek için **Klasik**
-* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir ( **true** veya **false** )
+* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir (**true** veya **false**)
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
@@ -213,9 +213,9 @@ Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu
 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
 
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
 
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

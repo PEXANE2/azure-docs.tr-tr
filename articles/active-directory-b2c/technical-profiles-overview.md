@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61471e07dda8fcf0c715dcffe85ad3e39ed8ac3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562885"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840381"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
@@ -30,7 +30,7 @@ Teknik bir profil, bu tür senaryolara izin vermez:
 
 - [Application Insights](application-insights-technical-profile.md) - [Application Insights](../azure-monitor/app/app-insights-overview.md)olay verileri gönderiliyor.
 - [Azure Active Directory](active-directory-technical-profile.md) -Azure Active Directory B2C Kullanıcı yönetimi için destek sağlar.
-- [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) -Azure MULTI-Factor AUTHENTICATION (MFA) kullanarak telefon numarasını doğrulamaya yönelik destek sağlar. 
+- [Azure ad Multi-Factor Authentication](multi-factor-auth-technical-profile.md) -azure ad MULTI-Factor AUTHENTICATION (MFA) kullanarak telefon numarasını doğrulamaya yönelik destek sağlar. 
 - [Talep dönüştürme](claims-transformation-technical-profile.md) -çağrı çıkışı, talep değerlerini işlemek, talepleri doğrulamak veya bir çıktı talepleri kümesi için varsayılan değerleri ayarlamak için bir dönüştürme talebi talep dönüştürmelerini sağlar.
 - [Kimlik belirteci ipucu](id-token-hint.md) - `id_token_hint` JWT belirteç imzasını, verenin adını ve belirteç kitleyi doğrular ve gelen belirteçten talebi ayıklar.
 - [JWT belirteci veren](jwt-issuer-technical-profile.md) -bağlı olan taraf uygulamasına geri döndürülen bir JWT belirteci yayar.
@@ -54,7 +54,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
 1. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md)kullanarak teknik profilin oturum durumunu geri yükler.
 1. Giriş talepleri **dönüştürme** -her giriş [talebi dönüşümünün](claimstransformations.md) giriş talepleri, talep çantasından alınır.  Bir giriş talep dönüşümünün çıkış talepleri, sonraki bir giriş talebi dönüşümünün giriş talepleri olabilir.
 1. **Giriş talepleri** -talepler, talep çantasından alınır ve teknik profil için kullanılır. Örneğin, [kendinden onaylanan bir teknik profil](self-asserted-technical-profile.md) , kullanıcının sağladığı çıkış taleplerini önceden doldurmak için giriş taleplerini kullanır. REST API teknik bir profil, giriş parametrelerini REST API uç noktasına göndermek için giriş taleplerini kullanır. Azure Active Directory, hesap okumak, güncelleştirmek veya silmek için benzersiz bir tanımlayıcı olarak giriş talebi kullanır.
-1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örneğin:
+1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örnek:
     - Oturum açma işleminin tamamlanabilmesi için kullanıcıyı kimlik sağlayıcısına yönlendirin. Başarılı oturum açma işleminden sonra Kullanıcı geri döner ve teknik profil yürütme devam eder.
     - Parametreleri ınputtalepler olarak gönderirken ve Outputclaim olarak geri bilgi alırken bir REST API çağırın.
     - Kullanıcı hesabı oluşturun veya güncelleştirin.

@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: bef6e6c5ef795c192a846700fc046aa20274502d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673401"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841657"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication Azure SQL veritabanı 'na bağlanma
+# <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication Azure SQL veritabanı 'na bağlanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu makale, Azure SQL veritabanı 'na bağlanan bir C# programı sağlar. Program, [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)destekleyen etkileşimli mod kimlik doğrulamasını kullanır.
+Bu makale, Azure SQL veritabanı 'na bağlanan bir C# programı sağlar. Program, [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)destekleyen etkileşimli mod kimlik doğrulamasını kullanır.
 
 SQL araçları için Multi-Factor Authentication desteği hakkında daha fazla bilgi için, bkz. [SQL Server veri araçları (SSDT) Azure Active Directory desteği](/sql/ssdt/azure-active-directory).
 
@@ -39,7 +39,7 @@ SQL araçları için Multi-Factor Authentication desteği hakkında daha fazla b
 
 * Sistemin bir cep telefonuna gönderdiği Multi-Factor Authentication doğrulama kodu isteyen bir iletişim kutusu.
 
-Azure AD 'yi Multi-Factor Authentication gerektirecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [bulutta azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)kullanmaya başlama.
+Azure AD 'yi Multi-Factor Authentication gerektirecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [Bulutta Azure ad Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)kullanmaya başlama.
 
 Bu iletişim kutularının ekran görüntüleri için bkz. [SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).
 
@@ -68,15 +68,15 @@ Uygulamanız için gerekli izinleri kaydetmek ve ayarlamak için:
 
     ![Uygulama KIMLIĞI görüntülendi](./media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. **API izinlerini** seçin  >  **izin Ekle** .
+2. **API izinlerini** seçin  >  **izin Ekle**.
 
     ![Kayıtlı uygulama için izin ayarları](./media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. **Kuruluşumun kullandığı API 'leri** seçin > **Azure SQL veritabanı** 'nı arama > yazın ve **Azure SQL veritabanı** ' nı seçin.
+3. **Kuruluşumun kullandığı API 'leri** seçin > **Azure SQL veritabanı** 'nı arama > yazın ve **Azure SQL veritabanı**' nı seçin.
 
     ![Azure SQL veritabanı için API erişimi ekleme](./media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. **Temsilci izinleri**  >  **user_impersonation**  >  **izinleri ekle** ' yi seçin.
+4. **Temsilci izinleri**  >  **user_impersonation**  >  **izinleri ekle**' yi seçin.
 
     ![Azure SQL veritabanı için API 'ye izin verme](./media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
@@ -84,7 +84,7 @@ Uygulamanız için gerekli izinleri kaydetmek ve ayarlamak için:
 
 C# programınızın çalışması için, [mantıksal BIR SQL Server](logical-servers.md) yöneticisinin sunucunuz Için BIR Azure AD yöneticisi ataması gerekir.
 
-**SQL Server** sayfasında **Active Directory yönetici**  >  **kümesi Yöneticisi** ' ni seçin.
+**SQL Server** sayfasında **Active Directory yönetici**  >  **kümesi Yöneticisi**' ni seçin.
 
 Azure AD yöneticileri ve Azure SQL veritabanı kullanıcıları hakkında daha fazla bilgi için [SQL veritabanı ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md#provision-azure-ad-admin-sql-database)konusundaki ekran görüntülerine bakın.
 
@@ -143,7 +143,7 @@ SSMS 'yi yeniden çalıştırın. bu kez **kimlik doğrulaması** , **MFA ile Az
 Daha fazla bilgi için bkz. [SSMS ve Azure AD için Multi-Factor Authentication yapılandırma](authentication-mfa-ssms-configure.md).
 
 > [!NOTE]
-> Veritabanında bir Konuk Kullanıcı kullanıyorsanız, veritabanı için Azure AD etki alanı adını da sağlamanız gerekir: **Seçenekler**  >  **ad etki alanı adı veya Kiracı kimliği** ' ni seçin. Azure Portal etki alanı adını bulmak için **Azure Active Directory**  >  **özel etki alanı adları** Azure Active Directory ' nı seçin. C# örnek programında, bir etki alanı adı sağlanması gerekli değildir.
+> Veritabanında bir Konuk Kullanıcı kullanıyorsanız, veritabanı için Azure AD etki alanı adını da sağlamanız gerekir: **Seçenekler**  >  **ad etki alanı adı veya Kiracı kimliği**' ni seçin. Azure Portal etki alanı adını bulmak için **Azure Active Directory**  >  **özel etki alanı adları** Azure Active Directory ' nı seçin. C# örnek programında, bir etki alanı adı sağlanması gerekli değildir.
 
 ## <a name="c-code-example"></a>C# kod örneği
 
@@ -152,7 +152,7 @@ Daha fazla bilgi için bkz. [SSMS ve Azure AD için Multi-Factor Authentication 
 
 Örnek C# programı, [*Microsoft. IdentityModel. clients. ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) dll derlemesini temel alır.
 
-Bu paketi yüklemek için Visual Studio 'da, **Proje**  >  **NuGet Paketlerini Yönet** ' i seçin. **Microsoft. IdentityModel. clients. ActiveDirectory** araması yapın ve bunları yükler.
+Bu paketi yüklemek için Visual Studio 'da, **Proje**  >  **NuGet Paketlerini Yönet**' i seçin. **Microsoft. IdentityModel. clients. ActiveDirectory** araması yapın ve bunları yükler.
 
 Bu bir C# kaynak kodu örneğidir.
 

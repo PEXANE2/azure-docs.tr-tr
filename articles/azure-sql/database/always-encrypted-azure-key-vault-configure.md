@@ -5,19 +5,19 @@ keywords: veri şifreleme, şifreleme anahtarı, bulut şifreleme
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
-ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321622"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841470"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
 
@@ -37,7 +37,7 @@ Bu makaledeki adımları izleyin ve Azure SQL veritabanı veya SQL yönetilen ö
 - Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 - Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 
 - Bir Azure hesabı ve aboneliği Bir hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
@@ -55,7 +55,7 @@ Bir Azure Active Directory (Azure AD) uygulaması ayarlayarak ve uygulamanızın
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Anahtarlarınızı depolamak için bir Anahtar Kasası oluşturma
 
-Artık istemci uygulamanız yapılandırıldıktan ve uygulama KIMLIĞINIZE sahip olduğunuza göre, bir Anahtar Kasası oluşturup kendi erişim ilkesini yapılandırarak uygulamanızın kasaların gizli dizilerini (Always Encrypted anahtarlarına) erişebileceği bir zaman vardır. Yeni bir sütun ana anahtarı oluşturmak ve SQL Server Management Studio ile şifrelemeyi ayarlamak için *Create* , *Get* , *list* , *imzala* , *Verify* , *wrapKey* ve *unwrapKey* izinleri gereklidir.
+Artık istemci uygulamanız yapılandırıldıktan ve uygulama KIMLIĞINIZE sahip olduğunuza göre, bir Anahtar Kasası oluşturup kendi erişim ilkesini yapılandırarak uygulamanızın kasaların gizli dizilerini (Always Encrypted anahtarlarına) erişebileceği bir zaman vardır. Yeni bir sütun ana anahtarı oluşturmak ve SQL Server Management Studio ile şifrelemeyi ayarlamak için *Create*, *Get*, *list*, *imzala*, *Verify*, *wrapKey* ve *unwrapKey* izinleri gereklidir.
 
 Aşağıdaki betiği çalıştırarak hızlı bir şekilde Anahtar Kasası oluşturabilirsiniz. Bu komutların ayrıntılı açıklaması ve bir Anahtar Kasası oluşturma ve yapılandırma hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md).
 
@@ -122,8 +122,8 @@ SQL Server Management Studio (SSMS) açın ve sunucuya bağlanın ya da veritaba
 
 Bu bölümde, hasta verilerini tutacak bir tablo oluşturacaksınız. Başlangıçta şifrelenmemiştir; bir sonraki bölümde şifrelemeyi yapılandıracaksınız.
 
-1. **Veritabanları** ' nı genişletin.
-2. Veritabanına sağ tıklayın ve **Yeni sorgu** ' ya tıklayın.
+1. **Veritabanları**' nı genişletin.
+2. Veritabanına sağ tıklayın ve **Yeni sorgu**' ya tıklayın.
 3. Aşağıdaki Transact-SQL (T-SQL) ' i yeni sorgu penceresine yapıştırın ve **yürütün** .
 
 ```sql
@@ -146,12 +146,12 @@ GO
 
 SSMS, sütun ana anahtarı, sütun şifreleme anahtarı ve şifreli sütunları sizin için ayarlayarak Always Encrypted kolayca yapılandırmanıza yardımcı olan bir sihirbaz sağlar.
 
-1. **Veritabanları**  >  **Clinic**  >  **tabloları** ' nı genişletin.
+1. **Veritabanları**  >  **Clinic**  >  **tabloları**' nı genişletin.
 2. **Hastalar** tablosuna sağ tıklayın ve Always Encrypted Sihirbazı 'nı açmak Için **sütunları şifreleyin** ' ı seçin:
 
     ![Şifrelenmiş sütunları vurgulayan ekran görüntüsü... menü seçeneği.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
-Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi** , **ana anahtar yapılandırması** , **doğrulama** ve **Özet**.
+Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi**, **ana anahtar yapılandırması**, **doğrulama** ve **Özet**.
 
 ### <a name="column-selection"></a>Sütun seçimi
 
@@ -159,7 +159,7 @@ Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi**
 
 Her hasta için **SSK** ve **Doğum tarihi** bilgilerini şifreleyin. SSK sütunu, eşitlik aramalarını, birleştirmeleri ve gruplama tarafından desteklenen belirleyici şifrelemeyi kullanır. Doğum tarihi sütunu, işlemleri desteklemeyen rastgele şifrelemeyi kullanır.
 
-SSN sütunu için **şifreleme türünü** **belirleyici** ve Doğum tarihi sütununu **rastgele** olarak ayarlayın. **İleri** ’ye tıklayın.
+SSN sütunu için **şifreleme türünü** **belirleyici** ve Doğum tarihi sütununu **rastgele** olarak ayarlayın. **İleri**’ye tıklayın.
 
 ![Sütunları şifreleyin](./media/always-encrypted-azure-key-vault-configure/column-selection.png)
 
@@ -171,13 +171,13 @@ Bu öğreticide, anahtarlarınızı Azure Key Vault nasıl depolayabileceği gö
 
 1. **Azure Key Vault** seçin.
 2. Açılan listeden istenen anahtar kasasını seçin.
-3. **İleri** ’ye tıklayın.
+3. **İleri**’ye tıklayın.
 
 ![Ana anahtar yapılandırması](./media/always-encrypted-azure-key-vault-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Doğrulama
 
-Sütunları şimdi şifreleyebilir veya daha sonra çalıştırmak için bir PowerShell betiği kaydedebilirsiniz. Bu öğreticide **Şimdi sona ermesini sağlamak Için devam** 'ı seçin ve **İleri** ' ye tıklayın.
+Sütunları şimdi şifreleyebilir veya daha sonra çalıştırmak için bir PowerShell betiği kaydedebilirsiniz. Bu öğreticide **Şimdi sona ermesini sağlamak Için devam** 'ı seçin ve **İleri**' ye tıklayın.
 
 ### <a name="summary"></a>Özet
 
@@ -203,8 +203,8 @@ Always Encrypted ayarlandığına *göre,* şifrelenmiş sütunlarda *eklemeleri
 > Uygulamanızın, Always Encrypted sütunları ile sunucuya düz metin verileri geçirirken [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) nesneleri kullanması gerekir. SqlParameter nesneleri kullanılmadan değişmez değerler geçirilmesi bir özel durumla sonuçlanır.
 
 1. Visual Studio 'Yu açın ve yeni bir C# **konsol uygulaması** (visual Studio 2015 ve önceki sürümler) ya da **konsol uygulaması (.NET Framework)** (Visual Studio 2017 ve üzeri) oluşturun. Projenizin **.NET Framework 4,6** veya üzeri bir sürüme ayarlandığından emin olun.
-2. Projeyi **Alwaysencryptedconsoleakvapp** olarak adlandırın ve **Tamam** ' a tıklayın.
-3. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' na giderek aşağıdaki NuGet paketlerini yükler.
+2. Projeyi **Alwaysencryptedconsoleakvapp** olarak adlandırın ve **Tamam**' a tıklayın.
+3. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' na giderek aşağıdaki NuGet paketlerini yükler.
 
 Bu iki kod satırını Paket Yöneticisi konsolunda çalıştırın:
 
@@ -219,7 +219,7 @@ Bu bölümde, veritabanı bağlantı dizeniz Always Encrypted nasıl etkinleşti
 
 Always Encrypted etkinleştirmek için, bağlantı dizeniz için **sütun şifreleme ayarı** anahtar sözcüğünü eklemeniz ve **etkin** olarak ayarlamanız gerekir.
 
-Bunu doğrudan bağlantı dizesinde ayarlayabilir veya [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)kullanarak ayarlayabilirsiniz. Sonraki bölümde bulunan örnek uygulama, **SqlConnectionStringBuilder** 'ın nasıl kullanılacağını gösterir.
+Bunu doğrudan bağlantı dizesinde ayarlayabilir veya [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)kullanarak ayarlayabilirsiniz. Sonraki bölümde bulunan örnek uygulama, **SqlConnectionStringBuilder**'ın nasıl kullanılacağını gösterir.
 
 ### <a name="enable-always-encrypted-in-the-connection-string"></a>Bağlantı dizesinde Always Encrypted etkinleştir
 
@@ -576,12 +576,12 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
    ![Şifrelenmiş sütunların herhangi bir düz metin verisi içermediğini gösteren ekran görüntüsü.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, önce kullanıcının Azure Key Vault uygun izinlere sahip olduğundan emin olmanız gerekir: *Get* , *unwrapKey* ve *Verify*. Ayrıntılı bilgi için bkz. [sütun ana anahtarları oluşturma ve depolama (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, önce kullanıcının Azure Key Vault uygun izinlere sahip olduğundan emin olmanız gerekir: *Get*, *unwrapKey* ve *Verify*. Ayrıntılı bilgi için bkz. [sütun ana anahtarları oluşturma ve depolama (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Ardından, bağlantınız sırasında *şifreleme ayarı = etkin* parametresini ekleyin.
 
-1. SSMS 'de sunucunuza **Nesne Gezgini** sağ tıklayın ve **bağlantıyı kes** ' i seçin.
-2. **Connect**  >  **Sunucuya Bağlan** penceresini açmak için **veritabanı altyapısına** Bağlan ' a tıklayın ve **Seçenekler** ' e tıklayın.
+1. SSMS 'de sunucunuza **Nesne Gezgini** sağ tıklayın ve **bağlantıyı kes**' i seçin.
+2. **Connect**  >  **Sunucuya Bağlan** penceresini açmak için **veritabanı altyapısına** Bağlan ' a tıklayın ve **Seçenekler**' e tıklayın.
 3. **Ek bağlantı parametreleri** ve tür **sütunu şifreleme ayarı = etkin** öğesine tıklayın.
 
     ![Ek düzeltme parametreleri sekmesini gösteren ekran görüntüsü.](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)

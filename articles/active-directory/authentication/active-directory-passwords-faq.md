@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 078b24e7fc3668e9b5832f0bfa46024db9b33848
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965565"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840109"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Self servis parola sıfırlama sık sorulan sorular
 
@@ -38,7 +38,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
 
   > **Y:** Evet. Parola sıfırlama etkin olduğu ve lisansladığı sürece, kullanıcılar, https://aka.ms/ssprsetup) kimlik doğrulama bilgilerini kaydetmek için parola sıfırlama kayıt portalına gidebilir. Kullanıcılar ayrıca erişim paneli ( https://myapps.microsoft.com) . Erişim paneli 'ne kaydolmak için profil resmini seçmesini, **profil**' i ve ardından **parola sıfırlama için kaydol** seçeneğini belirlemeniz gerekir.
   >
-  > [Birleşik kaydı](concept-registration-mfa-sspr-combined.md)etkinleştirirseniz, kullanıcılar hem SSPR hem de Azure Multi-Factor Authentication için aynı anda kayıt yapabilir.
+  > [Birleşik kaydı](concept-registration-mfa-sspr-combined.md)etkinleştirirseniz kullanıcılar her IKI SSPR ve Azure AD Multi-Factor Authentication için de aynı anda kayıt yapabilir.
 * **S: bir grup için parola sıfırlamayı etkinleştirdiğimde ve Kullanıcılarım için izin verme izni varsa, Kullanıcılarım için yeniden kayıt gerekli midir?**
 
   > Y **:** Eşleşen. Kimlik doğrulama verilerinin doldurulduğu kullanıcıların yeniden kaydedilmesi gerekmez.
