@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 10c7d4146d61f5b589b29bc8faad5fa8e60a293a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924036"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697093"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir dizini yeniden oluşturma
 
@@ -37,7 +37,7 @@ Dizinin yapısını değiştirmiyorsanız, dizini ilk olarak yüklemek için kul
 
 Aşağıdaki koşullardan herhangi biri doğru olduğunda bir dizini bırakıp yeniden oluşturun. 
 
-| Koşul | Açıklama |
+| Koşul | Description |
 |-----------|-------------|
 | Alan tanımını değiştirme | Bir alan adını, veri türünü veya belirli [Dizin özniteliklerini](/rest/api/searchservice/create-index) (aranabilir, filtrelenebilir, sıralanabilir, çok yönlü tablo) yeniden düzeltme için tam yeniden oluşturma gerekir. |
 | Bir alana çözümleyici atama | [Çözümleyiciler](search-analyzers.md) bir dizinde tanımlanır ve alanlara atanır. Dizine dilediğiniz zaman yeni bir çözümleyici tanımı ekleyebilirsiniz, ancak alan oluşturulduğunda yalnızca bir çözümleyici *atayabilirsiniz* . Bu, hem **çözümleyici** hem de **ındexanalyzer** özellikleri için geçerlidir. **SearchAnalyzer** özelliği bir özel durumdur (Bu özelliği var olan bir alana atayabilirsiniz). |
@@ -91,7 +91,7 @@ Dizini yüklediğinizde, her alanın ters çevrilmiş dizini her belgedeki benze
 
 İlk belge yüklendikten hemen sonra bir dizini sorgulamaya başlayabilirsiniz. Bir belgenin KIMLIĞINI biliyorsanız, [Arama belgesi REST API](/rest/api/searchservice/lookup-document) belirli belgeyi döndürür. Daha geniş bir test için, Dizin tam olarak yüklenene kadar beklemeniz gerekir ve ardından görmek istediğiniz bağlamı doğrulamak için sorguları kullanabilirsiniz.
 
-Güncelleştirilmiş içeriği denetlemek için, [Arama Gezgini](search-explorer.md) 'Ni veya [Postman](search-get-started-postman.md) gibi bir Web Testi aracını kullanabilirsiniz.
+Güncelleştirilmiş içeriği denetlemek için, [Arama Gezgini](search-explorer.md) 'Ni veya [postman veya Visual Studio Code](search-get-started-rest.md) gibi bir Web Testi aracını kullanabilirsiniz.
 
 Bir alanı eklediyseniz veya yeniden adlandırdıysanız, bu alanı döndürmek için [$Select](search-query-odata-select.md) kullanın: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

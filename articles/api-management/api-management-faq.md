@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542300"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698011"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management SSS
 Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını alın.
@@ -71,18 +71,7 @@ Evet, kullanarak API Management programlı bir şekilde yönetebilirsiniz:
 * [Hizmet dağıtımı](/powershell/module/wds) ve [hizmet yönetimi](/powershell/azure/servicemanagement/overview) PowerShell cmdlet 'leri.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Yöneticiler grubuna nasıl kullanıcı ekleyebilirim?
-Yöneticiler grubuna bir kullanıcıyı nasıl ekleyebileceğiniz aşağıda bulabilirsiniz:
-
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Güncelleştirmek istediğiniz API Management örneğine sahip kaynak grubuna gidin.
-3. API Management, **API Management hizmeti katkıda bulunan** rolünü kullanıcıya atayın.
-
-Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](/powershell/azure/)kullanabilir. Yönetici olarak oturum açmak için şu adımları uygulayın:
-
-1. `Connect-AzAccount`Oturum açmak için cmdlet 'ini kullanın.
-2. Bağlamını kullanarak hizmeti olan aboneliğin bağlamını ayarlayın `Set-AzContext -SubscriptionID <subscriptionGUID>` .
-3. Kullanarak çoklu oturum açma URL 'SI alın `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` .
-4. Yönetici portalına erişmek için URL 'YI kullanın.
+Yöneticiler grupları, sabit bir sistem grubudur. Azure abonelik yöneticileri bu grubun üyesidir. Bu gruba bir kullanıcı ekleyemezsiniz. Daha fazla bilgi için bkz. [Azure API Management geliştirici hesaplarını yönetmek için grupları oluşturma ve kullanma](./api-management-howto-create-groups.md) .
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>İlke düzenleyicisinde kullanılamaz olarak eklemek istediğim ilke neden?
 Eklemek istediğiniz ilke, ilke düzenleyicisinde soluk veya gölgeli görünüyorsa, ilke için doğru kapsamda olduğunuzdan emin olun. Her ilke açıklaması, belirli kapsamlar ve ilke bölümlerinde kullanabilmeniz için tasarlanmıştır. İlke bölümlerini ve bir ilkeye ait kapsamları gözden geçirmek için, [API Management ilkeleri](./api-management-policies.md)' nde ilkenin kullanımı bölümüne bakın.
@@ -118,8 +107,8 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 
 #### <a name="direct-api-update-method"></a>Doğrudan API güncelleştirme yöntemi ####
 1. API Management kullanarak bir [arka uç](/rest/api/apimanagement/) varlık oluşturun.     
-2. **Skipcertificatechainvalidation** özelliğini **true**olarak ayarlayın.     
-3. Artık otomatik olarak imzalanan sertifikalara izin vermek istemiyorsanız, arka uç varlığını silin veya **Skipcertificatechainvalidation** özelliğini **false**olarak ayarlayın.
+2. **Skipcertificatechainvalidation** özelliğini **true** olarak ayarlayın.     
+3. Artık otomatik olarak imzalanan sertifikalara izin vermek istemiyorsanız, arka uç varlığını silin veya **Skipcertificatechainvalidation** özelliğini **false** olarak ayarlayın.
 
 ### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>Bir Git deposunu kopyalamaya çalıştığımda neden kimlik doğrulaması hatası alıyorum?
 Git kimlik bilgileri Yöneticisi kullanıyorsanız veya Visual Studio 'Yu kullanarak bir Git deposunu kopyalamaya çalışıyorsanız, Windows kimlik bilgileri iletişim kutusuyla bilinen bir sorunla karşılaşabilirsiniz. İletişim kutusu, parola uzunluğunu 127 karakter ile sınırlandırır ve Microsoft tarafından oluşturulan parolayı keser. Parolayı kısaltada çalışıyoruz. Şimdilik git deponuzu kopyalamak için lütfen git Bash kullanın.

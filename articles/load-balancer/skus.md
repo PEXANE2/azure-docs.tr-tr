@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 874ecfc8c1c50816916fb0b04975477a1cbe0a71
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631452"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698096"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU 'Ları
 
@@ -26,7 +26,7 @@ Azure Load Balancer iki SKU 'su vardır.
 
 Yük dengeleyici hem standart hem de temel SKU 'Ları destekler. Bu SKU 'Lar senaryo ölçeğinde, özelliklerde ve fiyatlandırmaya göre farklılık gösterir. Temel yük dengeleyici ile mümkün olan herhangi bir senaryo, standart yük dengeleyici ile oluşturulabilir.
 
-Farkları karşılaştırmak ve anlamak için aşağıdaki tabloya bakın. Daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](load-balancer-standard-overview.md).
+Farkları karşılaştırmak ve anlamak için aşağıdaki tabloya bakın. Daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](./load-balancer-overview.md).
 
 >[!NOTE]
 > Microsoft, standart yük dengeleyiciyi öneriyor.
@@ -34,21 +34,21 @@ Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümel
 
 | | Standart Load Balancer | Temel Load Balancer |
 | --- | --- | --- |
-| **[Arka uç havuzu boyutu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | En fazla 1000 örneği destekler. | En fazla 300 örneği destekler. |
+| **[Arka uç havuzu boyutu](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | En fazla 1000 örneği destekler. | En fazla 300 örneği destekler. |
 | **Arka uç havuzu uç noktaları** | Tek bir sanal ağdaki herhangi bir sanal makine veya sanal makine ölçek kümesi. | Tek bir kullanılabilirlik kümesindeki veya sanal makine ölçek kümesindeki sanal makineler. |
 | **[Sistem durumu araştırmaları](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
 | **[Durum araştırma azaltma davranışı](./load-balancer-custom-probe-overview.md#probedown)** | TCP bağlantıları bir örnek araştırması üzerinde __ve__ tüm yoklamalar üzerinde etkin kalır. | TCP bağlantıları bir örnek araştırmasına etkin kalır. Tüm yoklamalar kapatıldığında tüm TCP bağlantıları sona erdir. |
 | **Kullanılabilirlik Alanları** | Gelen ve giden trafik için bölge yedekli ve zikzak ön uçları. | Kullanılamaz |
-| **Tanılama** | [Azure Izleyici çok boyutlu ölçümleri](./load-balancer-standard-diagnostics.md) | [Azure Izleyici günlükleri](./load-balancer-monitor-log.md) |
+| **Tanılama** | [Azure Izleyici çok boyutlu ölçümleri](./load-balancer-standard-diagnostics.md) | [Azure İzleyici günlükleri](./load-balancer-monitor-log.md) |
 | **HA bağlantı noktaları** | [Iç Load Balancer için kullanılabilir](./load-balancer-ha-ports-overview.md) | Kullanılamaz |
 | **Varsayılan olarak güvenli** | Ağ güvenlik grubu tarafından izin verilmediği takdirde gelen akışlar için kapatıldı. Sanal ağdan iç yük dengeleyiciye iç trafiğe izin verilir. | Varsayılan olarak açın. Ağ güvenlik grubu isteğe bağlı. |
-| **Giden kuralları** | [Bildirim temelli giden NAT yapılandırması](./load-balancer-outbound-rules-overview.md) | Kullanılamaz |
+| **Giden kuralları** | [Bildirim temelli giden NAT yapılandırması](./load-balancer-outbound-connections.md#outboundrules) | Kullanılamaz |
 | **Boşta durumunda TCP sıfırlaması** | [Herhangi bir kuralda kullanılabilir](./load-balancer-tcp-reset.md) | Kullanılamaz |
 | **[Birden çok ön uç](./load-balancer-multivip-overview.md)** | Gelen ve [giden](./load-balancer-outbound-connections.md) | Yalnızca gelen |
 | **Yönetim Işlemleri** | Çoğu işlem 30 saniye < | 60-90 + saniye tipik |
 | **SLA** | [% 99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
 
-Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](load-balancer-standard-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
+Daha fazla bilgi için bkz. [yük dengeleyici sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](./load-balancer-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -65,4 +65,4 @@ Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microso
 - [Sistem durumu araştırmaları](load-balancer-custom-probe-overview.md)hakkında bilgi edinin.
 - [Giden bağlantılar için Load Balancer](load-balancer-outbound-connections.md)kullanma hakkında bilgi edinin.
 - [Ha bağlantı noktaları Yük Dengeleme kurallarıyla standart Load Balancer](load-balancer-ha-ports-overview.md)hakkında bilgi edinin.
-- [Ağ güvenlik grupları](../virtual-network/security-overview.md)hakkında daha fazla bilgi edinin.
+- [Ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md)hakkında daha fazla bilgi edinin.

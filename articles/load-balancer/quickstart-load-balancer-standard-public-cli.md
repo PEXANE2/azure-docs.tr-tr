@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 4da232569a0f490b7fd6c2e50b81be6508ac5933
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c66ecceea770ec32e907a9bdc21fff29cf6aa453
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682103"
+ms.locfileid: "94698521"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak sanal makinelerin yük dengelemesi için genel yük dengeleyici oluşturma
 
@@ -37,7 +37,7 @@ Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure CLı kullana
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-[Az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)ile bir kaynak grubu oluşturun:
+[Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create)ile bir kaynak grubu oluşturun:
 
 * Adlandırılmış **Createpublbqs-RG**. 
 * **Eastus** konumunda.
@@ -60,7 +60,7 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[Az Network VNET Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun:
+[Az Network VNET Create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun:
 
 * **Myvnet** adında.
 * **10.1.0.0/16** adres ön eki.
@@ -83,7 +83,7 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 
 Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik grubuna ait olan ağ arabirimlerine sahip olması gerekir. 
 
-[Az Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun:
+[Az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun:
 
 * **Mynsg** adlı adlandırılmış.
 * **Createpublbqs-RG** kaynak grubunda.
@@ -96,7 +96,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 
 ### <a name="create-a-network-security-group-rule"></a>Ağ güvenlik grubu kuralı oluşturma
 
-[Az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun:
+[Az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun:
 
 * **Mynsgrutahttp** adında.
 * Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**.
@@ -126,7 +126,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>Sanal makineler için ağ arabirimleri oluşturma
 
-[Az Network Nic Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)ile üç ağ arabirimi oluşturun:
+[Az Network Nic Create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)ile üç ağ arabirimi oluşturun:
 
 #### <a name="vm1"></a>VM1
 
@@ -233,7 +233,7 @@ runcmd:
 ```
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-[Az VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create)ile sanal makineler oluşturun:
+[Az VM Create](/cli/azure/vm?view=azure-cli-latest#az-vm-create)ile sanal makineler oluşturun:
 
 #### <a name="vm1"></a>VM1
 * **MyVM1** adlı.
@@ -300,7 +300,7 @@ VM 'Lerin dağıtılması birkaç dakika sürebilir.
 
 Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. 
 
-[Az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
+[Az Network public-ip Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
 
 * **Mypublicıp** adlı standart bölge YEDEKLI genel IP adresi oluşturun.
 * **Createpublbqs-RG** içinde.
@@ -333,7 +333,7 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
 
 ### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
 
-[Az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
+[Az Network lb Create](/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
 
 * **Myloadbalancer** adlı.
 * **Myön uç** adlı bir ön uç Havuzu.
@@ -356,7 +356,7 @@ Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek a�
 
 Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
 
-[Az Network lb araştırması Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
+[Az Network lb araştırması Create](/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
 
 * Sanal makinelerin sistem durumunu izler.
 * Adlandırılmış **Myhealtharaştırma**.
@@ -380,7 +380,7 @@ Yük dengeleyici kuralı şunları tanımlar:
 * Trafiği almak için arka uç IP Havuzu.
 * Gerekli kaynak ve hedef bağlantı noktası. 
 
-[Az Network lb Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
+[Az Network lb Rule Create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
 
 * Adlandırılmış **Myhttprule**
 * Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
@@ -409,7 +409,7 @@ Yük dengeleyici kuralı şunları tanımlar:
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuna sanal makineler ekleme
 
-[Az Network Nic IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
+[Az Network Nic IP-Config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
 
 #### <a name="vm1"></a>VM1
 * Arka uç adres havuzunda **Mybackendpool**.
@@ -463,9 +463,9 @@ Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağl
 
 ### <a name="create-outbound-public-ip-address-or-public-ip-prefix"></a>Giden genel IP adresi veya genel IP öneki oluşturun.
 
-Giden bağlantı için tek bir IP oluşturmak için [az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) kullanın.  
+Giden bağlantı için tek bir IP oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) kullanın.  
 
-Giden bağlantı için genel bir IP öneki oluşturmak için [az Network public-ip Create oluştur](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) kullanın.
+Giden bağlantı için genel bir IP öneki oluşturmak için [az Network public-ip Create oluştur](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) kullanın.
 
 Giden NAT ve giden bağlantıların ölçeklendirilmesi hakkında daha fazla bilgi için bkz. [birden çok IP adresi Ile genişleme gıden NAT](load-balancer-outbound-connections.md).
 
@@ -514,7 +514,7 @@ Bölge 1 ' de gereksiz bir genel IP öneki oluşturmak için:
 
 ### <a name="create-outbound-frontend-ip-configuration"></a>Giden ön uç IP yapılandırması oluştur
 
-[Az Network lb ön uç-IP Create ](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)ile yeni bir ön uç IP yapılandırması oluşturun:
+[Az Network lb ön uç-IP Create ](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)ile yeni bir ön uç IP yapılandırması oluşturun:
 
 Önceki adımdaki kararı temel alarak genel IP veya genel IP öneki komutlarını seçin.
 
@@ -550,7 +550,7 @@ Bölge 1 ' de gereksiz bir genel IP öneki oluşturmak için:
 
 ### <a name="create-outbound-pool"></a>Giden Havuz oluştur
 
-[Az Network lb Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)komutuyla yeni bir giden havuz oluşturun:
+[Az Network lb Address-Pool Create](/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)komutuyla yeni bir giden havuz oluşturun:
 
 * **Mybackendpooloutbound** adlı adlandırılmış.
 * **Createpublbqs-RG** kaynak grubunda.
@@ -564,7 +564,7 @@ Bölge 1 ' de gereksiz bir genel IP öneki oluşturmak için:
 ```
 ### <a name="create-outbound-rule"></a>Giden kuralı oluştur
 
-Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.microsoft.com/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create)ile yeni bir giden kuralı oluşturun:
+Giden arka uç havuzu için [az Network lb giden kuralı oluştur](/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create)ile yeni bir giden kuralı oluşturun:
 
 * Adlandırılmış **mbir Boundrule**.
 * **Createpublbqs-RG** kaynak grubunda.
@@ -588,7 +588,7 @@ Giden arka uç havuzu için [az Network lb giden kuralı oluştur](https://docs.
 ```
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Sanal makineleri giden havuzuna Ekle
 
-[Az Network Nic IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri giden havuza ekleyin:
+[Az Network Nic IP-Config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri giden havuza ekleyin:
 
 
 #### <a name="vm1"></a>VM1
@@ -647,7 +647,7 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[Az Network VNET Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun:
+[Az Network VNET Create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt)kullanarak bir sanal ağ oluşturun:
 
 * **Myvnet** adında.
 * **10.1.0.0/16** adres ön eki.
@@ -670,7 +670,7 @@ VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sa
 
 Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik grubuna ait olan ağ arabirimlerine sahip olması gerekir. 
 
-[Az Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun:
+[Az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)kullanarak bir ağ güvenlik grubu oluşturun:
 
 * **Mynsg** adlı adlandırılmış.
 * **Createpublbqs-RG** kaynak grubunda.
@@ -683,7 +683,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 
 ### <a name="create-a-network-security-group-rule"></a>Ağ güvenlik grubu kuralı oluşturma
 
-[Az Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun:
+[Az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)kullanarak bir ağ güvenlik grubu kuralı oluşturun:
 
 * **Mynsgrutahttp** adında.
 * Önceki adımda oluşturduğunuz ağ güvenlik grubunda, **Mynsg**.
@@ -713,7 +713,7 @@ Standart yük dengeleyici için arka uç adresindeki VM 'Lerin bir ağ güvenlik
 
 ### <a name="create-network-interfaces-for-the-virtual-machines"></a>Sanal makineler için ağ arabirimleri oluşturma
 
-[Az Network Nic Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)ile üç ağ arabirimi oluşturun:
+[Az Network Nic Create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)ile üç ağ arabirimi oluşturun:
 
 #### <a name="vm1"></a>VM1
 
@@ -825,7 +825,7 @@ runcmd:
 ```
 ### <a name="create-availability-set-for-virtual-machines"></a>Sanal makineler için kullanılabilirlik kümesi oluştur
 
-Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create)ile oluşturun:
+Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create)ile oluşturun:
 
 * **MyAvSet** adlı.
 * **Createpublbqs-RG** kaynak grubunda.
@@ -841,7 +841,7 @@ Kullanılabilirlik kümesini [az VM AVAILABILITY-set create](https://docs.micros
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-[Az VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create)ile sanal makineler oluşturun:
+[Az VM Create](/cli/azure/vm?view=azure-cli-latest#az-vm-create)ile sanal makineler oluşturun:
 
 #### <a name="vm1"></a>VM1
 * **MyVM1** adlı.
@@ -908,7 +908,7 @@ VM 'Lerin dağıtılması birkaç dakika sürebilir.
 
 Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. 
 
-[Az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
+[Az Network public-ip Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to kullanın:
 
 * **Mypublicıp** adlı standart bölge YEDEKLI genel IP adresi oluşturun.
 * **Createpublbqs-RG** içinde.
@@ -931,7 +931,7 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
 
 ### <a name="create-the-load-balancer-resource"></a>Yük dengeleyici kaynağı oluşturma
 
-[Az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
+[Az Network lb Create](/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create)komutuyla bir genel yük dengeleyici oluşturun:
 
 * **Myloadbalancer** adlı.
 * **Myön uç** adlı bir ön uç Havuzu.
@@ -954,7 +954,7 @@ Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek a�
 
 Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
 
-[Az Network lb araştırması Create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
+[Az Network lb araştırması Create](/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create)komutuyla bir sistem durumu araştırması oluşturun:
 
 * Sanal makinelerin sistem durumunu izler.
 * Adlandırılmış **Myhealtharaştırma**.
@@ -978,7 +978,7 @@ Yük dengeleyici kuralı şunları tanımlar:
 * Trafiği almak için arka uç IP Havuzu.
 * Gerekli kaynak ve hedef bağlantı noktası. 
 
-[Az Network lb Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
+[Az Network lb Rule Create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)ile bir yük dengeleyici kuralı oluşturun:
 
 * Adlandırılmış **Myhttprule**
 * Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
@@ -1003,7 +1003,7 @@ Yük dengeleyici kuralı şunları tanımlar:
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuna sanal makineler ekleme
 
-[Az Network Nic IP-Config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
+[Az Network Nic IP-Config Address-Pool Add](/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)komutuyla sanal makineleri arka uç havuzuna ekleyin:
 
 
 #### <a name="vm1"></a>VM1
@@ -1054,7 +1054,7 @@ Yük dengeleyici kuralı şunları tanımlar:
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
-Yük dengeleyicinin genel IP adresini almak için [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) komutunu kullanın. 
+Yük dengeleyicinin genel IP adresini almak için [az network public-ip show](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) komutunu kullanın. 
 
 Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
@@ -1069,7 +1069,7 @@ Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanarak kaynak grubunu, yük dengeleyiciyi ve tüm ilgili kaynakları kaldırın.
+Artık gerekli değilse, [az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanarak kaynak grubunu, yük dengeleyiciyi ve tüm ilgili kaynakları kaldırın.
 
 ```azurecli-interactive
   az group delete \

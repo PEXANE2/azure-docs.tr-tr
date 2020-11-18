@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a1a8df6d503ec5f5bf9c1e739e5ecf6486a85776
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912455"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697429"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
@@ -35,7 +35,7 @@ Arka uç VM 'lerine dış istemciler yük dengeleyiciye geldiğinde, istemcileri
 
 **Doğrulama ve çözümleme**
 
-Standart ılbs 'ler **Varsayılan olarak güvenlidir** . *Gizli* genel IP adresi aracılığıyla internet 'e bağlanmasına izin verilen temel ılbs. Bu, IP adresi statik olmadığı veya sahip olduğunuz NSG 'ler aracılığıyla kilitlendiği için üretim iş yükleri için recommened değildir. Kısa bir süre önce temel ıLB 'den standart bir ıLB 'ye taşındıysanız IP 'yi NSG 'ler aracılığıyla kilitleyen [yalnızca giden](egress-only.md) yapılandırma yoluyla açık bir IP oluşturmalısınız. Ayrıca, alt ağınızda bir [NAT ağ geçidi](../virtual-network/nat-overview.md) de kullanabilirsiniz.
+Standart ılbs 'ler **Varsayılan olarak güvenlidir**. *Gizli* genel IP adresi aracılığıyla internet 'e bağlanmasına izin verilen temel ılbs. Bu, IP adresi statik olmadığı veya sahip olduğunuz NSG 'ler aracılığıyla kilitlendiği için üretim iş yükleri için recommened değildir. Kısa bir süre önce temel ıLB 'den standart bir ıLB 'ye taşındıysanız IP 'yi NSG 'ler aracılığıyla kilitleyen [yalnızca giden](egress-only.md) yapılandırma yoluyla açık bir IP oluşturmalısınız. Ayrıca, alt ağınızda bir [NAT ağ geçidi](../virtual-network/nat-overview.md) de kullanabilirsiniz.
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Belirti: Load Balancer arkasındaki VM 'Ler sistem durumu araştırmalara yanıt vermiyor
 Arka uç sunucularının yük dengeleyici kümesine katılması için, araştırma denetimini geçmesi gerekir. Sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer araştırmalarını anlama](load-balancer-custom-probe-overview.md). 
@@ -87,7 +87,7 @@ Yukarıdaki tüm nedenler doğru şekilde doğrulanıp çözümlenirse ve arka u
         - Arka uç havuzu VM 'si üzerinde hiçbir gelen paket gözlemleniyorsa, ağ güvenlik grupları veya UDR yanlış yapılandırma, trafiği engelliyor olabilir. 
         - Arka uç havuzu VM 'sinde hiçbir giden paket gözlemleniyorsa, sanal makinenin ilgisiz sorunlar için denetlenmesi gerekir (örneğin, uygulama araştırma bağlantı noktasını engelliyor). 
     - Yük dengeleyiciye ulaşmadan önce araştırma paketlerinin başka bir hedefe (muhtemelen UDR aracılığıyla) zorlandığından emin olun. Bu, trafiğin arka uç VM 'ye hiçbir şekilde ulaşmasına neden olabilir. 
-* Araştırma türünü (örneğin, HTTP-TCP) değiştirin ve ağ güvenlik grupları ACL 'lerinde ve güvenlik duvarında karşılık gelen bağlantı noktasını, sorunun araştırma yanıtı yapılandırmasıyla olup olmadığını doğrulayacak şekilde yapılandırın. Durum araştırma yapılandırması hakkında daha fazla bilgi için bkz. [Endpoint Yük Dengeleme sistem durumu araştırma yapılandırması](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
+* Araştırma türünü (örneğin, HTTP-TCP) değiştirin ve ağ güvenlik grupları ACL 'lerinde ve güvenlik duvarında karşılık gelen bağlantı noktasını, sorunun araştırma yanıtı yapılandırmasıyla olup olmadığını doğrulayacak şekilde yapılandırın. Durum araştırma yapılandırması hakkında daha fazla bilgi için bkz. [Endpoint Yük Dengeleme sistem durumu araştırma yapılandırması](/archive/blogs/mast/endpoint-load-balancing-heath-probe-configuration-details).
 
 ## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Belirti: Load Balancer arkasındaki VM 'Ler, yapılandırılan veri bağlantı noktasındaki trafiğe yanıt vermiyor
 
@@ -133,7 +133,7 @@ Bir Load Balancer arka uç VM 'sinde barındırılan uygulamanız aynı ağ arab
 
 Bir sanal ağ içinde bir iç Load Balancer yapılandırıldıysa ve katılımcı arka uç VM 'lerinden biri iç Load Balancer ön uca erişmeye çalışıyorsa, akış kaynak VM 'ye eşlendiğinde sorunlar oluşabilir. Bu senaryo desteklenmez.
 
-**Çözüm** Bu senaryonun engelini kaldırmak için proxy kullanma gibi çeşitli yollar vardır. Application Gateway veya diğer üçüncü taraf proxy 'leri değerlendirin (örneğin, NGINX veya HAProxy). Application Gateway hakkında daha fazla bilgi için bkz. [Application Gateway genel bakış](../application-gateway/application-gateway-introduction.md)
+**Çözüm** Bu senaryonun engelini kaldırmak için proxy kullanma gibi çeşitli yollar vardır. Application Gateway veya diğer üçüncü taraf proxy 'leri değerlendirin (örneğin, NGINX veya HAProxy). Application Gateway hakkında daha fazla bilgi için bkz. [Application Gateway genel bakış](../application-gateway/overview.md)
 
 **Ayrıntılar** İç yük dengeleyiciler, giden kaynaklı bağlantıları iç Load Balancer ön ucuna çevirmez çünkü her ikisi de özel IP adresi alanında bulunur. Ortak yük dengeleyiciler, sanal ağ içindeki özel IP adreslerinden genel IP adreslerine [giden bağlantılar](load-balancer-outbound-connections.md) sağlar. Bu yaklaşım, iç yük dengeleyiciler için, çeviri gerekli olmadığı, benzersiz bir iç IP adresi alanı içinde olası SNAT bağlantı noktası tükenmesi önler.
 
@@ -143,7 +143,7 @@ Akış kendisiyle eşleniyorsa, giden akış VM 'den ön uca, buna karşılık g
 
 Bu senaryonun belirtisi, akış kaynaklı aynı arka uca döndüğünde zaman aralıklı bağlantı zaman aşımları olur. Yaygın geçici çözümler, iç Load Balancer arkasında bir proxy katmanının eklenmesini ve doğrudan sunucu dönüşü (DSR) stil kurallarını kullanmayı içerir. Daha fazla bilgi için bkz. [Azure Load Balancer Için birden fazla ön uçlar](load-balancer-multivip-overview.md).
 
-Bir iç Load Balancer herhangi bir üçüncü taraf proxy ile birleştirebilir veya HTTP/HTTPS ile proxy senaryolarında iç [Application Gateway](../application-gateway/application-gateway-introduction.md) kullanabilirsiniz. Bu sorunu gidermek için genel Load Balancer kullanabilmeniz sırasında, sonuçta elde edilen senaryo [SNAT tükenmesine](load-balancer-outbound-connections.md)açıktır. Dikkatle yönetilene kadar bu ikinci yaklaşımdan kaçının.
+Bir iç Load Balancer herhangi bir üçüncü taraf proxy ile birleştirebilir veya HTTP/HTTPS ile proxy senaryolarında iç [Application Gateway](../application-gateway/overview.md) kullanabilirsiniz. Bu sorunu gidermek için genel Load Balancer kullanabilmeniz sırasında, sonuçta elde edilen senaryo [SNAT tükenmesine](load-balancer-outbound-connections.md)açıktır. Dikkatle yönetilene kadar bu ikinci yaklaşımdan kaçının.
 
 ## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Belirti: arka uç havuzunda sanal makine ölçek kümesi dağıtılan bir yük dengeleyicinin mevcut LB kuralı için arka uç bağlantı noktası değiştirilemez. 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Neden: VM Ölçek kümesi tarafından başvurulan yük dengeleyici için bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemiyor.
@@ -172,4 +172,3 @@ Bir destek durumu açmaya karar verirseniz daha hızlı bir çözüm için aşa�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yukarıdaki adımlar sorunu çözmezse, bir [destek bileti](https://azure.microsoft.com/support/options/)açın.
-

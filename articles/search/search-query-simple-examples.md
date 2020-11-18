@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740692"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697263"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama basit bir sorgu oluşturma
 
@@ -27,13 +27,13 @@ Alternatif sorgu söz dizimi, belirsiz ve joker karakter araması gibi daha karm
 
 Aşağıdaki örnekler, [New York OpenData girişiminin City](https://nycopendata.socrata.com/) tarafından sağlanan bir veri kümesine dayalı olarak bulunan işleri içeren bir NYC işleri arama dizininden yararlanır. Bu verilerin geçerli veya tamamlanmış olarak kabul edilmemelidir. Dizin, Microsoft tarafından sağlanmış bir korumalı alan hizmetidir ve bu sorguları denemek için bir Azure aboneliğine veya Azure Bilişsel Arama ihtiyaç duymayın.
 
-Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Bilişsel Arama REST API Postman kullanarak araştırma](search-get-started-postman.md).
+Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Bilişsel Arama REST API araştırma](search-get-started-rest.md).
 
 ### <a name="set-the-request-header"></a>İstek üst bilgisini ayarlama
 
 1. İstek üstbilgisinde, **Içerik türünü** olarak ayarlayın `application/json` .
 
-2. Bir **API anahtarı**ekleyin ve bu dizeye ayarlayın: `252044BE3886FE4A8E3BAA4F595114BB` . Bu, NYC Işleri dizinini barındıran korumalı alan arama hizmeti için bir sorgu anahtarıdır.
+2. Bir **API anahtarı** ekleyin ve bu dizeye ayarlayın: `252044BE3886FE4A8E3BAA4F595114BB` . Bu, NYC Işleri dizinini barındıran korumalı alan arama hizmeti için bir sorgu anahtarıdır.
 
 İstek üst bilgisini belirttikten sonra, bu makaledeki tüm sorgular için onu yeniden kullanabilirsiniz ve yalnızca **Search =** dizesini takas edebilirsiniz. 
 
@@ -43,7 +43,7 @@ Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bi
 
 İstek, Azure Bilişsel Arama uç noktası ve arama dizesini içeren bir URL ile eşleştirilmiş bir GET komutu.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman istek üst bilgisi al" border="false":::
 
 URL kompozisyonu aşağıdaki öğelere sahiptir:
 
@@ -69,7 +69,7 @@ Sorgu dizesi, **`search=*`** null veya boş arama için belirtilmemiş bir arama
 
 ## <a name="how-to-invoke-simple-query-parsing"></a>Basit sorgu ayrıştırmayı çağırma
 
-Etkileşimli sorgular için, herhangi bir şey belirtmeniz gerekmez: Simple varsayılandır. Kodda, daha önce tam sorgu söz dizimi için **QueryType = Full** olarak çağrılırsa, varsayılan değer **QueryType = Simple**ile sıfırlanabilir.
+Etkileşimli sorgular için, herhangi bir şey belirtmeniz gerekmez: Simple varsayılandır. Kodda, daha önce tam sorgu söz dizimi için **QueryType = Full** olarak çağrılırsa, varsayılan değer **QueryType = Simple** ile sıfırlanabilir.
 
 ## <a name="example-1-field-scoped-query"></a>Örnek 1: alan kapsamlı sorgu
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Bu sorgu için yanıt aşağıdaki ekran görüntüsüne benzer görünmelidir.
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman örnek yanıtı" border="false":::
 
 Yanıtta arama puanı olduğunu fark etmiş olabilirsiniz. Arama tam metin araması olmadığı veya hiçbir ölçüt uygulanmadığı için, tek bir derecelendirme olmadığında 1 Tekdüzen puanları oluşur. Ölçüt olmadan null arama için, satırlar rastgele sırada geri gelir. Gerçek ölçütleri dahil ettiğinizde, arama puanları anlamlı değerlere geliştikçe görüntülenir.
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 Birlikte kullanıldığında, filtre önce tüm dizine uygulanır ve sonra filtrenin sonuçlarında arama yapılır. Filtreler arama sorgusunun işlemesi gereken belge kümesini azalttığından, sorgu performansını iyileştirmeye yönelik kullanışlı bir teknik olabilir.
 
-  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Filtre sorgusu yanıtı" border="false":::
 
 Bunu al kullanarak Postman 'da denemek istiyorsanız, bu dizeyi yapıştırabilirsiniz:
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Sayısal aralıklar için Aralık filtresi" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Metin aralıkları için Aralık filtresi" border="false":::
 
 Ayrıca şunları al kullanarak Postman 'da da deneyebilirsiniz:
 
@@ -251,14 +251,14 @@ Varsayılan searchMode (any) kullanıldığında, 2800 belge döndürülür: ço
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Arama modu any" border="false":::
 
 SearchMode ' `all` yi değiştirmek, ölçütlerde bir toplu etki uygulamak ve daha küçük bir sonuç kümesi-21 belge ("Fire Departmanı" ifadesinin tamamını içeren belgelerden ve bu işlerin tamamını MetroTech Center adresinde ortaya çıkar.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Postman istek üst bilgisi kümesi parametreleri" border="false":::
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Arama modu tümü" border="false":::
 
 ## <a name="example-8-structuring-results"></a>Örnek 8: sonuçları yapılandırma
 

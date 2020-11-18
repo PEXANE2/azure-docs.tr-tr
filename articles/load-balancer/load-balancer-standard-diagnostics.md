@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717351"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697569"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
 Azure Standart Load Balancer aşağıdaki tanılama yeteneklerini kullanıma sunar:
 
-* **Çok boyutlu ölçümler ve uyarılar**: Standart yük dengeleyici yapılandırmalarına yönelik [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) aracılığıyla çok boyutlu tanılama özellikleri sağlar. Standart yük dengeleyici kaynaklarınızı izleyebilir, yönetebilir ve sorun giderebilirsiniz.
+* **Çok boyutlu ölçümler ve uyarılar**: Standart yük dengeleyici yapılandırmalarına yönelik [Azure izleyici](../azure-monitor/overview.md) aracılığıyla çok boyutlu tanılama özellikleri sağlar. Standart yük dengeleyici kaynaklarınızı izleyebilir, yönetebilir ve sorun giderebilirsiniz.
 
 * **Kaynak sistem durumu**: Load Balancer kaynak durumu durumu Monitor altındaki kaynak durumu sayfasında bulunur. Bu otomatik denetim, Load Balancer kaynağınızın geçerli kullanılabilirliğini bildirir.
 
@@ -35,7 +35,7 @@ Azure Load Balancer, Azure portal Azure ölçümleri aracılığıyla çok boyut
 
 Çeşitli Standart Load Balancer yapılandırmalarında aşağıdaki ölçümler sağlanır:
 
-| Ölçüm | Kaynak türü | Açıklama | Önerilen toplama |
+| Ölçüm | Kaynak türü | Description | Önerilen toplama |
 | --- | --- | --- | --- |
 | Veri yolu kullanılabilirliği | Genel ve iç yük dengeleyici | Standart Load Balancer bir bölgedeki veri yolunu sürekli olarak yük dengeleyicinin ön ucuna (VM’nizi destekleyen SDN yığınına kadar) aktarır. Sağlıklı örnekler kaldığı sürece ölçüm, uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da doğrulanır. Ölçümler uygulamanızda görünmez ve diğer işlemleri engellemez.| Ortalama |
 | Sistem durumu yoklama durumu | Genel ve iç yük dengeleyici | Standart Load Balancer, yapılandırma ayarlarınıza göre uygulama uç noktanızın sistem durumunu izleyen dağıtılmış bir sistem durumu algılama hizmeti kullanır. Bu ölçüm, yük dengeleyici havuzundaki her örnek uç noktası için toplu veya uç noktası başına filtrelenmiş bir görünüm sunar. Durum yoklaması yapılandırmanızın belirttiği gibi Load Balancer’ın uygulamanızın durumunu nasıl görüntülediğini görebilirsiniz. |  Ortalama |
@@ -70,7 +70,7 @@ Standart Load Balancer kaynaklarınızın ölçümlerini görüntülemek için:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API 'Ler aracılığıyla çok boyutlu ölçümleri program aracılığıyla alma
 
-Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api). Bu ölçümler yalnızca ' tüm ölçümler ' seçeneği aracılığıyla bir depolama hesabına yazılabilir. 
+Çok boyutlu ölçüm tanımlarını ve değerlerini almaya yönelik API Kılavuzu için bkz. [Azure izleme REST API izlenecek yol](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Bu ölçümler yalnızca ' tüm ölçümler ' seçeneği aracılığıyla bir depolama hesabına yazılabilir. 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Çok boyutlu ölçümler için uyarıları yapılandırma ###
 
@@ -138,9 +138,9 @@ Durum araştırmaları aşağıdaki nedenlerden dolayı başarısız olur:
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Giden bağlantı istatistiklerimi denetlemek Nasıl yaparım? mı? 
 <details>
   <summary>Genişlet</summary>
-SNAT bağlantı ölçümü, [giden akışlar](https://aka.ms/lboutbound)için başarılı ve başarısız bağlantıların hacmini açıklar.
+SNAT bağlantı ölçümü, [giden akışlar](./load-balancer-outbound-connections.md)için başarılı ve başarısız bağlantıların hacmini açıklar.
 
-Sıfırdan büyük bir hatalı bağlantı birimi, SNAT bağlantı noktası tükenmesi olduğunu gösterir. Bu hatalara neyin neden olabileceğini belirlemek için daha fazla araştırma yapmanız gerekir. SNAT bağlantı noktası Tükenme bildirimleri, [giden akış](https://aka.ms/lboutbound)oluşturma hatası olarak. İş üzerindeki senaryoları ve mekanizmaları anlamak için giden bağlantılar hakkındaki makaleyi gözden geçirin ve SNAT bağlantı noktası tükenmesi olmaması için nasıl azaltacağınızı ve tasarlayacağınızı öğrenin. 
+Sıfırdan büyük bir hatalı bağlantı birimi, SNAT bağlantı noktası tükenmesi olduğunu gösterir. Bu hatalara neyin neden olabileceğini belirlemek için daha fazla araştırma yapmanız gerekir. SNAT bağlantı noktası Tükenme bildirimleri, [giden akış](./load-balancer-outbound-connections.md)oluşturma hatası olarak. İş üzerindeki senaryoları ve mekanizmaları anlamak için giden bağlantılar hakkındaki makaleyi gözden geçirin ve SNAT bağlantı noktası tükenmesi olmaması için nasıl azaltacağınızı ve tasarlayacağınızı öğrenin. 
 
 SNAT bağlantı istatistiklerini almak için:
 1. **SNAT bağlantıları** ölçüm türünü ve toplama olarak **Sum** ' ı seçin. 
@@ -157,17 +157,17 @@ SNAT bağlantı istatistiklerini almak için:
   <summary>Genişlet</summary>
 Kullanılan SNAT bağlantı noktaları ölçümü, giden akışları sürdürmek için kaç adet SNAT bağlantı noktasının tüketildiğini izler. Bu, bir internet kaynağı ile arka uç VM veya bir yük dengeleyicinin arkasındaki sanal makine ölçek kümesi arasında kaç tane benzersiz akış yapıldığını ve genel IP adresine sahip olmadığını gösterir. Kullanmakta olduğunuz SNAT bağlantı noktası sayısını ayrılan SNAT bağlantı noktaları ölçümüyle karşılaştırarak, hizmetinizin, SNAT tükenmesi ve elde edilen giden akış arızası riski olup olmadığını belirleyebilirsiniz. 
 
-Ölçümleriniz [giden akış](https://aka.ms/lboutbound) hatası riskini gösteriyorsa, makaleye başvurun ve hizmetin sistem durumunu sağlamak için bunu azaltmaya yönelik adımları uygulayın.
+Ölçümleriniz [giden akış](./load-balancer-outbound-connections.md) hatası riskini gösteriyorsa, makaleye başvurun ve hizmetin sistem durumunu sağlamak için bunu azaltmaya yönelik adımları uygulayın.
 
 SNAT bağlantı noktası kullanımını ve ayırmayı görüntülemek için:
 1. İstenen verilerin görüntülendiğinden emin olmak için grafiğin zaman toplamasını 1 dakika olarak ayarlayın.
 1. Ölçüm türü ve toplama olarak **Ortalama** IÇIN **kullanılan SNAT bağlantı noktalarını** ve/veya **ayrılmış SNAT bağlantı noktalarını** seçin
     * Varsayılan olarak, bu ölçümler, TCP ve UDP üzerinden toplanan Load Balancer eşlenen tüm ön uç genel IP 'lerine karşılık gelen, her bir arka uç VM 'si veya VMSS tarafından ayrılan veya kullanılan toplam SNAT bağlantı noktası sayısıdır.
     * Tarafından kullanılan veya yük dengeleyici için ayrılan toplam SNAT bağlantı noktalarını görüntülemek için ölçüm toplama **toplamını** kullanın
-1. Belirli bir **protokol türüne**, bir **arka uç IP**kümesine ve/veya **ön uç IP**'lerine filtre uygulayın.
+1. Belirli bir **protokol türüne**, bir **arka uç IP** kümesine ve/veya **ön uç IP**'lerine filtre uygulayın.
 1. Arka uç veya ön uç örneği başına sistem durumunu izlemek için bölme uygulayın. 
     * Notun bölünmesi yalnızca tek bir ölçümün tek seferde görüntülenmesine izin verir. 
-1. Örneğin, makine başına TCP akışı için SNAT kullanımını izlemek için, **Ortalama**olarak toplayın, **arka uç IP** 'Lerine göre ayrılır ve **protokol türüne**göre filtreleyin. 
+1. Örneğin, makine başına TCP akışı için SNAT kullanımını izlemek için, **Ortalama** olarak toplayın, **arka uç IP** 'Lerine göre ayrılır ve **protokol türüne** göre filtreleyin. 
 
 ![SNAT ayırma ve kullanım](./media/load-balancer-standard-diagnostics/snat-usage-and-allocation.png)
 
@@ -181,7 +181,7 @@ SNAT bağlantı noktası kullanımını ve ayırmayı görüntülemek için:
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Hizmetme gelen/giden bağlantı girişimlerini kontrol Nasıl yaparım? mı?
 <details>
   <summary>Genişlet</summary>
-Bir SYN paketleri ölçümü, belirli bir ön uçla ilişkili olan veya gönderilen ( [giden akışlar](https://aka.ms/lboutbound)IÇIN) TCP SYN paketlerinin hacmini açıklar. Bu ölçümü, hizmetinize yönelik TCP bağlantısı girişimlerini anlamak için kullanabilirsiniz.
+Bir SYN paketleri ölçümü, belirli bir ön uçla ilişkili olan veya gönderilen ( [giden akışlar](./load-balancer-outbound-connections.md)IÇIN) TCP SYN paketlerinin hacmini açıklar. Bu ölçümü, hizmetinize yönelik TCP bağlantısı girişimlerini anlamak için kullanabilirsiniz.
 
 Çoğu senaryo için toplama olarak **Toplam** ' i kullanın.
 
@@ -231,10 +231,10 @@ Grafik, müşterilerin, diğer sorunların oluşup oluşmadığını tahmin etme
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Kaynak sistem durumu
 
-Standart Load Balancer kaynaklarının sistem durumu, **izleme > hizmeti sistem durumu**altında mevcut **kaynak sistem durumu** aracılığıyla gösterilir.
+Standart Load Balancer kaynaklarının sistem durumu, **izleme > hizmeti sistem durumu** altında mevcut **kaynak sistem durumu** aracılığıyla gösterilir.
 
 Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
-1. **Monitor**  >  **Hizmet durumunu**İzle ' yi seçin.
+1. **Monitor**  >  **Hizmet durumunu** İzle ' yi seçin.
 
    ![Sayfayı izle](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
@@ -252,9 +252,9 @@ Genel Standart Load Balancer kaynaklarınızın durumunu görüntülemek için:
 
    *Şekil: Load Balancer kaynak durumu görünümü*
  
-Genel kaynak sistem durumu açıklaması [RHC belgelerinde](https://docs.microsoft.com/azure/service-health/resource-health-overview)bulunabilir. Azure Load Balancer için belirli durumlar için aşağıdaki tabloda listelenmiştir: 
+Genel kaynak sistem durumu açıklaması [RHC belgelerinde](../service-health/resource-health-overview.md)bulunabilir. Azure Load Balancer için belirli durumlar için aşağıdaki tabloda listelenmiştir: 
 
-| Kaynak sistem durumu | Açıklama |
+| Kaynak sistem durumu | Description |
 | --- | --- |
 | Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
 | Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %90 ' den az, ancak %25 ' ten büyük bir durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. [Veri yolu kullanılabilirliği Kılavuzu ' nu izleyerek, kullanılabilirliğinden etkilenmesine neden olan kullanıcı tarafından başlatılan olaylar olup olmadığını saptayın.
@@ -263,7 +263,7 @@ Genel kaynak sistem durumu açıklaması [RHC belgelerinde](https://docs.microso
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Standart Yük Dengeleyici](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin.
-- [Yük dengeleyici giden bağlantınız](https://aka.ms/lboutbound)hakkında daha fazla bilgi edinin.
-- [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)hakkında bilgi edinin.
-- [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/) ve [ölçümleri REST API aracılığıyla alma](/rest/api/monitor/metrics/list)hakkında bilgi edinin.
+- [Standart Yük Dengeleyici](./load-balancer-overview.md) hakkında daha fazla bilgi edinin.
+- [Yük dengeleyici giden bağlantınız](./load-balancer-outbound-connections.md)hakkında daha fazla bilgi edinin.
+- [Azure izleyici](../azure-monitor/overview.md)hakkında bilgi edinin.
+- [Azure izleyici REST API](/rest/api/monitor/) ve [ölçümleri REST API aracılığıyla alma](/rest/api/monitor/metrics/list)hakkında bilgi edinin.

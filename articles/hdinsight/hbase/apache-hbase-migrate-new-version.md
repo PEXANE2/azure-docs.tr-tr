@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 3e35dc35746f08f48150a738b927433065fc1c67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8ce25780e197c26e0e5b102670e093031e1a2582
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910279"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697671"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
 
@@ -191,7 +191,7 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
    hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
    ```
     
-1. Yeni HDInsight kümesinde ambarı 'nda oturum açın. Bu `fs.defaultFS` ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config** 'ler altında.
+1. Yeni HDInsight kümesinde ambarı 'nda oturum açın. Bu `fs.defaultFS` ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config**'ler altında.
 
    ![Ambarı 'nda hizmetler >, gelişmiş > > config 'ler ' e tıklayın](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -223,9 +223,9 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
    hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
    ```
    
-1. HDInsight 3,6 ' i 4,0 sürümüne yükseltiyorsanız aşağıdaki adımları izleyin, aksi halde adım 10 ' a atlayın:
+1. HDInsight 3,6 ' ye 4,0 ' ye yükseltiyorsanız aşağıdaki adımları izleyin, aksi halde 13. adıma atlayın:
 
-    1. **Hizmetler**  >  **yeniden başlatma gerekli** ' i seçerek, tüm gerekli hizmetleri yeniden başlatın.
+    1. **Hizmetler**  >  **yeniden başlatma gerekli**' i seçerek, tüm gerekli hizmetleri yeniden başlatın.
     1. HBase hizmetini durdurun.
     1. Zookeeper düğümüne SSH yazın ve [Zkclı](https://github.com/go-zkcli/zkcli) komutunu yürütün. Bu, `rmr /hbase-unsecure` HBase kök Znode değerini Zookeeper 'dan kaldırın.
     1. HBase 'i yeniden başlatın.

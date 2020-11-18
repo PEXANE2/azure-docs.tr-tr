@@ -2,13 +2,13 @@
 title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/17/2020
+ms.openlocfilehash: c447a08b4422929f042315370b5888f3db0626e4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949131"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697741"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -151,7 +151,6 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft. Search | [Azure Bilişsel Arama](../../search/index.yml) |
 | Microsoft.Security | [Güvenlik Merkezi](../../security-center/index.yml) |
-| Microsoft. SecurityGraph | [Güvenlik Merkezi](../../security-center/index.yml) |
 | Microsoft. Securityınsights | [Azure Sentinel](../../sentinel/index.yml) |
 | Microsoft. SerialConsole<sup>1</sup> | [Windows için Azure seri konsol](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
@@ -162,7 +161,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. SoftwarePlan | Lisans |
 | Microsoft. Solutions | [Azure Yönetilen Uygulamalar](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Veritabanı](../../azure-sql/database/index.yml)<br /> [Azure SQL Yönetilen Örnek](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [Azure sanal makineler 'de SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
+| Microsoft. SqlVirtualMachine | [Azure Sanal Makineler'de SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Depolama](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Önbelleği](../../hpc-cache/index.yml) |
 | Microsoft. Storagessync | [Depolama](../../storage/index.yml) |
@@ -174,10 +173,10 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Timeseriesınsights | [Azure Zaman Serisi Görüşleri](../../time-series-insights/index.yml) |
 | Microsoft. Token | Belirteç |
 | Microsoft. Virtualmachineımages | [Azure Görüntü Oluşturucusu](../../virtual-machines/linux/image-builder-overview.md) |
-| Microsoft. VisualStudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft. VisualStudio | [Azure DevOps](/azure/devops/) |
 | Microsoft. VMware | [Azure VMware Çözümü](../../azure-vmware/index.yml) |
 | Microsoft. Vmwarechoparlör basit | [CloudSimple tarafından sunulan Azure VMware Çözümü](../../vmware-cloudsimple/index.md) |
-| Microsoft. VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft. VSOnline | [Azure DevOps](/azure/devops/) |
 | Microsoft. Web | [App Service](../../app-service/index.yml)<br />[Azure İşlevleri](../../azure-functions/index.yml) |
 | Microsoft. Windowssavunma Deratp | [Microsoft Defender Gelişmiş Tehdit Koruması](../../security-center/security-center-wdatp.md) |
 | Microsoft. WindowsESU | Genişletilmiş güvenlik güncelleştirmeleri |

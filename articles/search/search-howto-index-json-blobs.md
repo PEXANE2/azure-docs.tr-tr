@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: d41146b01b6b81804cdba31fbbf2541ba7ae0f03
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372396"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697212"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizin Oluşturucu kullanarak JSON bloblarını dizin oluşturma
 
@@ -53,7 +53,7 @@ Arama hizmetinizin Genel Bakış sayfasında Sihirbazı komut çubuğundan [baş
 
 + **Ayıklanacak veriler** *içerik ve meta veri* olmalıdır. Bu seçeneğin belirlenmesi, sihirbazın bir dizin şemasını çıkarmasını ve içeri aktarma için alanları eşlemenizi sağlar.
    
-+ **Ayrıştırma modu** *JSON* , *JSON dizisi* veya *JSON satırları* olarak ayarlanmalıdır. 
++ **Ayrıştırma modu** *JSON*, *JSON dizisi* veya *JSON satırları* olarak ayarlanmalıdır. 
 
   *JSON* , her Blobun arama sonuçlarında bağımsız bir öğe olarak göstererek tek bir arama belgesi olarak ifade edin. 
 
@@ -108,7 +108,7 @@ Azure Bilişsel Arama tüm dizin oluşturucular için ortak olan üç bölümden
 
 Bu bölümün sonunda, her üç nesnenin de nasıl oluşturulacağını gösteren [REST örnek kodunu](#rest-example) gözden geçirebilirsiniz. Bu bölüm ayrıca [JSON ayrıştırma modları](#parsing-modes), [tek blob 'lar](#parsing-single-blobs), [JSON dizileri](#parsing-arrays)ve [iç içe diziler](#nested-json-arrays)hakkındaki ayrıntıları içerir.
 
-Kod tabanlı JSON dizin oluşturma için [Postman](search-get-started-postman.md) ve REST API kullanarak bu nesneleri oluşturun:
+Kod tabanlı JSON dizin oluşturma için [Postman veya Visual Studio Code](search-get-started-rest.md) kullanın ve bu nesneleri oluşturmak için REST API:
 
 + [indeks](/rest/api/searchservice/create-index)
 + [veri kaynağı](/rest/api/searchservice/create-data-source)
@@ -126,7 +126,7 @@ Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi veya bir 
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-istek için girişleri birleştirin
 
-Her istek için, Azure Bilişsel Arama için hizmet adı ve yönetici anahtarı (posta üst bilgisinde) ve BLOB depolama için depolama hesabı adı ve anahtarı sağlamalısınız. Azure Bilişsel Arama HTTP istekleri göndermek için [Postman](search-get-started-postman.md) kullanabilirsiniz.
+Her istek için, Azure Bilişsel Arama için hizmet adı ve yönetici anahtarı (posta üst bilgisinde) ve BLOB depolama için depolama hesabı adı ve anahtarı sağlamalısınız. Azure Bilişsel Arama HTTP istekleri göndermek için [Web API test aracı](search-get-started-rest.md) kullanabilirsiniz.
 
 Aşağıdaki dört değeri not defteri 'ne kopyalayın, böylece bunları bir isteğe yapıştırabilirsiniz:
 
@@ -141,7 +141,7 @@ Bu değerleri portalda bulabilirsiniz:
 
 2. Sol gezinti bölmesinde **anahtarlar** ' a tıklayın ve ardından birincil ya da ikincil anahtarı kopyalayın (eşdeğerdir).
 
-3. Depolama hesabınız için Portal sayfalarına geçiş yapın. Sol gezinti bölmesindeki **Ayarlar** altında **erişim anahtarları** ' na tıklayın. Bu sayfada hem hesap adı hem de anahtar sağlanır. Depolama hesabı adını ve anahtarlardan birini Not defteri 'ne kopyalayın.
+3. Depolama hesabınız için Portal sayfalarına geçiş yapın. Sol gezinti bölmesindeki **Ayarlar** altında **erişim anahtarları**' na tıklayın. Bu sayfada hem hesap adı hem de anahtar sağlanır. Depolama hesabı adını ve anahtarlardan birini Not defteri 'ne kopyalayın.
 
 ### <a name="2---create-a-data-source"></a>2-veri kaynağı oluşturma
 

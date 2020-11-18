@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: bc1e477882f3d065dfe89e8511259732129cec30
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 06dfa65236bf1aa5cfde626c5574ffdf487eb045
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746035"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698368"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Azure CLı kullanarak birden çok IP yapılandırmasında Yük Dengeleme
 
@@ -30,7 +30,7 @@ Bu makalede, bir ikincil ağ arabirimi (NIC) üzerinde birden çok IP adresi ile
 
 Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin:
 
-1. Bağlantılı makaledeki adımları izleyerek [Azure CLI 'Yı yükleyip yapılandırın](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve Azure hesabınızda oturum açın.
+1. Bağlantılı makaledeki adımları izleyerek [Azure CLI 'Yı yükleyip yapılandırın](/cli/azure/install-azure-cli?view=azure-cli-latest) ve Azure hesabınızda oturum açın.
 2. *Contosofabrikam* adlı [bir kaynak grubunu](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) aşağıdaki gibi oluşturun:
 
     ```azurecli
@@ -71,7 +71,7 @@ Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin:
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Arka uç adres havuzlarınızı oluşturun- *contosopool* ve *fabrikampool* , [bir araştırma](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  -  *http* ve yük dengeleme kurallarınızı- *httpc* ve *httpf* :
+8. Arka uç adres havuzlarınızı oluşturun- *contosopool* ve *fabrikampool*, [bir araştırma](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  -  *http* ve yük dengeleme kurallarınızı- *httpc* ve *httpf*:
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool

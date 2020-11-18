@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072093"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698079"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -46,7 +46,7 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
@@ -78,27 +78,28 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 AKS Ubuntu 16,04 görüntüsüyle düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
 
+## <a name="container-runtime-configuration"></a>Kapsayıcı çalışma zamanı yapılandırması
 
-## <a name="container-runtime-configuration-preview"></a>Kapsayıcı çalışma zamanı yapılandırması (Önizleme)
+Kapsayıcı çalışma zamanı, kapsayıcıları yürüten ve bir düğümdeki kapsayıcı görüntülerini yöneten yazılımdır. Çalışma zamanı,, Linux veya Windows üzerinde kapsayıcıları çalıştırmak için, özel sys çağrıları veya işletim sistemi (OS) işlevine özgü işlevselliğin sağlanmasına yardımcı olur. Kubernetes sürüm 1,19 düğüm havuzlarını ve daha büyük kullanımını `containerd` kapsayıcı çalışma zamanı olarak kullanan AKS kümeleri. For node havuzları için v 1.19 öncesinde Kubernetes kullanan AKS kümeleri, kapsayıcı çalışma zamanı olarak [Moby](https://mobyproject.org/) (yukarı akış Docker) kullanır.
 
-Kapsayıcı çalışma zamanı, kapsayıcıları yürüten ve bir düğümdeki kapsayıcı görüntülerini yöneten yazılımdır. Çalışma zamanı,, Linux veya Windows üzerinde kapsayıcıları çalıştırmak için, özel sys çağrıları veya işletim sistemi (OS) işlevine özgü işlevselliğin sağlanmasına yardımcı olur. Bugün AKS, kapsayıcı çalışma zamanı olarak [Moby](https://mobyproject.org/) (yukarı akış Docker) kullanıyor. 
-    
 ![Docker CRı 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/) , kapsayıcıları yürütmek ve bir düğümdeki görüntüleri yönetmek için gereken minimum işlev kümesini sağlayan bir [OCI](https://opencontainers.org/) (açık kapsayıcı girişimi) ile uyumlu bir çekirdek kapsayıcı çalışma zamanı. , Mart 2017 ' de Cloud Native COMPUTE Foundation 'a (CNCF) [bağlandı](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . AKS 'in bugün kullandığı güncel Moby sürümü, `containerd` yukarıda gösterildiği gibi, üzerine kurulmuştur ve üzerinde yerleşiktir. 
+[`Containerd`](https://containerd.io/) , kapsayıcıları yürütmek ve bir düğümdeki görüntüleri yönetmek için gereken minimum işlev kümesini sağlayan bir [OCI](https://opencontainers.org/) (açık kapsayıcı girişimi) ile uyumlu bir çekirdek kapsayıcı çalışma zamanı. , Mart 2017 ' de Cloud Native COMPUTE Foundation 'a (CNCF) [bağlandı](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . AKS 'in kullandığı güncel Moby sürümü `containerd` yukarıda gösterildiği gibi, üzerine kurulmuştur.
 
-Bir containerd tabanlı düğüm ve düğüm havuzları ile konuşmak yerine, `dockershim` kubelet, `containerd` DOCKER cri uygulamasıyla karşılaştırıldığında akıştaki ek atlamaları kaldırarak doğrudan CRI (container Runtime Interface) eklentisi aracılığıyla konuşuyor. Bu nedenle, daha iyi Pod başlangıç gecikmesi ve daha az kaynak (CPU ve bellek) kullanımı görürsünüz.
+`containerd`-Tabanlı bir düğüm ve düğüm havuzları ile konuşmak yerine, `dockershim` kubelet, `containerd` Docker cri uygulamasıyla karşılaştırıldığında akıştaki ek atlamaları kaldırarak doğrudan CRI (container Runtime Interface) eklentisi aracılığıyla konuşuyor. Bu nedenle, daha iyi Pod başlangıç gecikmesi ve daha az kaynak (CPU ve bellek) kullanımı görürsünüz.
 
 `containerd`AKS düğümleri için kullanarak, Pod başlangıç gecikmesi artar ve kapsayıcı çalışma zamanına göre düğüm kaynak tüketimi azalır. Bu geliştirmeler, kubelet 'in, `containerd` Moby/Docker mimarisi kuı eklentisini kullanarak doğrudan CRI eklentisi aracılığıyla konuştukça, bu yeni mimari tarafından etkinleştirilir `dockershim` ve bu `containerd` sayede akışta ek atlamaları vardır.
 
 ![Docker CRı 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd` AKS 'deki Kubernetes 'in her bir GA sürümünde ve v 1,10 üzerindeki her yukarı akış Kubernetes sürümünde çalışarak, tüm Kubernetes ve AKS özelliklerini destekler.
+`Containerd` AKS 'deki Kubernetes 'in her bir GA sürümünde ve v 1.19 üzerindeki her yukarı akış Kubernetes sürümünde çalışarak, tüm Kubernetes ve AKS özelliklerini destekler.
 
 > [!IMPORTANT]
-> `containerd`AKS üzerinde genel kullanıma sunulduğunda, yeni kümelerde kapsayıcı çalışma zamanı için varsayılan ve tek seçeneği kullanılabilir. Moby nodepools ve kümelerini kullanmaya devam edebilirsiniz, ancak bu, destek düşene kadar desteklenen eski sürümlerde. 
+> Düğüm havuzlarının bulunduğu kümeler `containerd` , kapsayıcı çalışma zamanı Için Kubernetes v 1.19 veya daha büyük varsayılan üzerinde oluşturulmuş. Desteklenen bir Kubernetes sürümünde, kapsayıcı çalışma zamanı için 1,19 ' den küçük olan düğüm havuzları bulunan kümeler `Moby` , ancak `ContainerD` düğüm havuzunun Kubernetes sürümü v 1.19 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilecektir. Hala `Moby` Desteklenen sürümler için düğüm havuzlarını ve kümeleri, bu destek bitene kadar kullanmaya devam edebilirsiniz.
 > 
-> `containerd`Bu kapsayıcı çalışma zamanına sahip yeni kümeler yükseltmeden veya oluşturmadan önce iş yüklerinizi düğüm havuzlarında test etmenizi öneririz.
+> AKS düğüm havuzlarındaki iş yüklerinizi, `containerD` 1,19 veya üzeri kümeler kullanılmadan önce kullanarak test etmek kesinlikle önerilir.
+
+Aşağıdaki bölümde, `containerD` henüz bir Kubernetes sürüm 1,19 veya üstünü kullanmayan ya da bu özelliğin genel kullanıma sunulmasından önce kapsayıcı çalışma zamanı yapılandırma önizlemesi kullanılarak oluşturulmuş kümeler üzerinde Ile AKS 'i nasıl kullanabileceğinizi ve test ettebileceğiniz açıklanmaktadır.
 
 ### <a name="use-containerd-as-your-container-runtime-preview"></a>`containerd`Kapsayıcı çalışma zamanı olarak kullanın (Önizleme)
 
@@ -124,7 +125,7 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
@@ -193,7 +194,7 @@ Ayrıca, AKS Gen2 VM 'lerinde Gen2 desteği olan tüm VM görüntüleri, yeni [a
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
@@ -250,7 +251,7 @@ Geçici disk gibi, daha kısa bir işletim sistemi diski sanal makinenin fiyatı
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"

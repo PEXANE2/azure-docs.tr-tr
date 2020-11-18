@@ -1,7 +1,7 @@
 ---
 title: Visual Studio Code (Önizleme) içinde işlem örneğine bağlanma
 titleSuffix: Azure Machine Learning
-description: Visual Studio Code Azure Machine Learning bir işlem örneğine nasıl bağlanacağınızı öğrenin
+description: Etkileşimli Jupyter Notebook ve Uzaktan geliştirme iş yüklerini çalıştırmak için Visual Studio Code Azure Machine Learning bir işlem örneğine nasıl bağlanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 09/03/2020
-ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/16/2020
+ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708382"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697587"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code bir Azure Machine Learning işlem örneğine bağlanma (Önizleme)
 
@@ -132,7 +132,7 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 |Alan|Açıklama|
 |----|---------|
-|Ana bilgisayar|İşlem örneği için istediğiniz toplu şeyi kullanın |
+|Konak|İşlem örneği için istediğiniz toplu şeyi kullanın |
 |HostName|Bu, işlem örneğinin IP adresidir |
 |Bağlantı noktası|Bu, yukarıdaki SSH iletişim kutusunda gösterilen bağlantı noktasıdır |
 |Kullanıcı|Bunun olması gerekir `azureuser` |
