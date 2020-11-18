@@ -12,12 +12,12 @@ ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e43ad9dedf4212e9b30a08f0c978cb8d1a86776c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426493"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657423"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Uygulama proxy 'Si ile uygulamalarınıza çoklu oturum açma (SSO) için Kerberos kısıtlı temsili
 
@@ -39,12 +39,12 @@ Bu diyagramda, bir Kullanıcı ıWA kullanan bir şirket içi uygulamaya erişme
 7. Bağlayıcı, AD 'den aldığı Kerberos belirtecini kullanarak özgün isteği uygulama sunucusuna gönderir.
 8. Uygulama, yanıtı bağlayıcıya gönderir ve ardından uygulama proxy 'Si hizmetine ve son olarak kullanıcıya döndürülür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 IWA uygulamaları için çoklu oturum açma ile çalışmaya başlamadan önce ortamınızın aşağıdaki ayarlar ve yapılandırmalara göre hazırlandığına emin olun:
 
-* SharePoint Web Apps gibi uygulamalarınız tümleşik Windows kimlik doğrulaması kullanacak şekilde ayarlanmıştır. Daha fazla bilgi için bkz. [Kerberos kimlik doğrulaması desteğini etkinleştirme](https://technet.microsoft.com/library/dd759186.aspx)veya SharePoint için bkz. [SharePoint 2013 'de Kerberos kimlik doğrulaması planı](https://technet.microsoft.com/library/ee806870.aspx).
+* SharePoint Web Apps gibi uygulamalarınız tümleşik Windows kimlik doğrulaması kullanacak şekilde ayarlanmıştır. Daha fazla bilgi için bkz. [Kerberos kimlik doğrulaması desteğini etkinleştirme](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11))veya SharePoint için bkz. [SharePoint 2013 'de Kerberos kimlik doğrulaması planı](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning).
 * Tüm uygulamalarınızın [hizmet sorumlusu adları](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx)vardır.
-* Bağlayıcıyı çalıştıran sunucu ve uygulamayı çalıştıran sunucu, etki alanına katılmış ve aynı etki alanının veya güvenen etki alanlarının bir parçasıdır. Etki alanına ekleme hakkında daha fazla bilgi için bkz. [bir bilgisayarı etki alanına ekleme](https://technet.microsoft.com/library/dd807102.aspx).
+* Bağlayıcıyı çalıştıran sunucu ve uygulamayı çalıştıran sunucu, etki alanına katılmış ve aynı etki alanının veya güvenen etki alanlarının bir parçasıdır. Etki alanına ekleme hakkında daha fazla bilgi için bkz. [bir bilgisayarı etki alanına ekleme](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807102(v=ws.11)).
 * Bağlayıcıyı çalıştıran sunucu, kullanıcılar için TokenGroupsGlobalAndUniversal özniteliğini okuma erişimine sahiptir. Bu varsayılan ayar, ortamı güvenlik sağlamlaştırma tarafından etkilendi.
 
 ### <a name="configure-active-directory"></a>Active Directory'yi yapılandırma
@@ -61,7 +61,7 @@ Active Directory yapılandırması, uygulama proxy bağlayıcısının ve uygula
    ![Bağlayıcı-SVR Özellikler penceresi ekran görüntüsü](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Farklı etki alanlarında bağlayıcı ve uygulama sunucusu
-1. Etki alanlarında KCD ile çalışmaya yönelik önkoşulların listesi için bkz. [etki alanları arasında Kerberos kısıtlanmış temsili](https://technet.microsoft.com/library/hh831477.aspx).
+1. Etki alanlarında KCD ile çalışmaya yönelik önkoşulların listesi için bkz. [etki alanları arasında Kerberos kısıtlanmış temsili](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831477(v=ws.11)).
 2. `principalsallowedtodelegateto`Uygulama proxy 'sinden (bağlayıcı) Kerberos kimlik doğrulaması temsilcisini etkinleştirmek için Web uygulamasının hizmet hesabının (bilgisayar veya adanmış etki alanı kullanıcı hesabı) özelliğini kullanın. Uygulama sunucusu, bağlamında çalışıyor `webserviceaccount` ve temsilci sunucu `connectorcomputeraccount` . Etki alanındaki bir etki alanı denetleyicisinde (Windows Server 2012 R2 veya üstünü çalıştıran) aşağıdaki komutları çalıştırın `webserviceaccount` . Her iki hesap için düz adlar (UPN olmayan) kullanın.
 
    `webserviceaccount`Bir bilgisayar hesabı ise şu komutları kullanın:
@@ -85,9 +85,9 @@ Active Directory yapılandırması, uygulama proxy bağlayıcısının ve uygula
    ```
 
 ## <a name="configure-single-sign-on"></a>Çoklu oturum açmayı yapılandırma 
-1. Uygulamanızı [uygulama proxy 'si Ile yayımlama](application-proxy-add-on-premises-application.md)bölümünde açıklanan yönergelere göre yayımlayın. **Ön kimlik doğrulama yöntemi**olarak **Azure Active Directory** ' yi seçtiğinizden emin olun.
+1. Uygulamanızı [uygulama proxy 'si Ile yayımlama](application-proxy-add-on-premises-application.md)bölümünde açıklanan yönergelere göre yayımlayın. **Ön kimlik doğrulama yöntemi** olarak **Azure Active Directory** ' yi seçtiğinizden emin olun.
 2. Uygulamanız kurumsal uygulamalar listesinde görüntülendikten sonra, seçin ve **Çoklu oturum açma**' ya tıklayın.
-3. Çoklu oturum açma modunu **Tümleşik Windows kimlik doğrulaması**olarak ayarlayın.  
+3. Çoklu oturum açma modunu **Tümleşik Windows kimlik doğrulaması** olarak ayarlayın.  
 4. Uygulama sunucusunun **Iç uygulama SPN** 'sini girin. Bu örnekte, yayımlanmış uygulamamız için SPN, http/www. contoso. com ' dır. Bu SPN 'nin, bağlayıcının temsilci kimlik bilgileri sunabildiğinden hizmet listesinde olması gerekir. 
 5. Bağlayıcıyı kullanıcılar adına kullanmak için **Temsilci Oturum Açma Kimliği**’ni seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](#working-with-different-on-premises-and-cloud-identities)
 
@@ -153,4 +153,3 @@ Ancak, bazı durumlarda, bu uygulama diğer HTTP yanıtlarına yanıt verdiğind
 
 * [Kerberos kısıtlanmış temsilciyi kullanmak için bir uygulama proxy uygulaması yapılandırma](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Uygulama Ara Sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
-

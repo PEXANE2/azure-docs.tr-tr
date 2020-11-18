@@ -15,15 +15,15 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5c840722ae6b03a0b8a7fa44e5999e14730d4f3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386988"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656284"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Uygulama proxy 'sinde talep kullanan uygulamalarla çalışma
-[Talep kullanan uygulamalar](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) , güvenlik belirteci hizmeti 'NE (STS) yeniden yönlendirme gerçekleştirir. STS, bir belirteç için Exchange 'deki kullanıcıdan kimlik bilgilerini ister ve sonra kullanıcıyı uygulamaya yönlendirir. Uygulama proxy 'Sinin bu yeniden yönlendirmelere çalışması için birkaç yol vardır. Talep kullanan uygulamalar için dağıtımınızı yapılandırmak üzere bu makaleyi kullanın. 
+[Talep kullanan uygulamalar](/previous-versions/windows/desktop/legacy/bb736227(v=vs.85)) , güvenlik belirteci hizmeti 'NE (STS) yeniden yönlendirme gerçekleştirir. STS, bir belirteç için Exchange 'deki kullanıcıdan kimlik bilgilerini ister ve sonra kullanıcıyı uygulamaya yönlendirir. Uygulama proxy 'Sinin bu yeniden yönlendirmelere çalışması için birkaç yol vardır. Talep kullanan uygulamalar için dağıtımınızı yapılandırmak üzere bu makaleyi kullanın. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 Talep kullanan uygulamanın yönlendirdiği STS 'nin şirket içi ağınızın dışında kullanılabilir olduğundan emin olun. Bir proxy aracılığıyla veya dış bağlantılara izin vererek, STS 'yi kullanılabilir hale getirebilirsiniz. 
@@ -31,8 +31,8 @@ Talep kullanan uygulamanın yönlendirdiği STS 'nin şirket içi ağınızın d
 ## <a name="publish-your-application"></a>Uygulamanızı yayımlama
 
 1. Uygulamanızı [uygulama proxy 'si Ile yayımlama](application-proxy-add-on-premises-application.md)bölümünde açıklanan yönergelere göre yayımlayın.
-2. Portalda uygulama sayfasına gidin ve **Çoklu oturum açma**seçeneğini belirleyin.
-3. **Ön**kimlik doğrulama yönteminiz olarak **Azure Active Directory** ' yi seçtiyseniz, **Iç KIMLIK doğrulama yönteminiz**olarak **Azure AD çoklu oturum açma devre dışı** ' yı seçin. **Ön kimlik doğrulama yönteminiz**olarak **PASSTHROUGH** ' i seçerseniz, herhangi bir değişiklik yapmanız gerekmez.
+2. Portalda uygulama sayfasına gidin ve **Çoklu oturum açma** seçeneğini belirleyin.
+3. **Ön** kimlik doğrulama yönteminiz olarak **Azure Active Directory** ' yi seçtiyseniz, **Iç KIMLIK doğrulama yönteminiz** olarak **Azure AD çoklu oturum açma devre dışı** ' yı seçin. **Ön kimlik doğrulama yönteminiz** olarak **PASSTHROUGH** ' i seçerseniz, herhangi bir değişiklik yapmanız gerekmez.
 
 ## <a name="configure-adfs"></a>ADFS 'yi yapılandırma
 
@@ -49,12 +49,10 @@ Uygulamalarınızın tüm iç URL 'Leri tam etki alanı adları (FQDN) ise, uygu
 
    ![Bağlı olan taraf güvenleri uygulama adı ' na sağ tıklayın-ekran görüntüsü](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. Uç **noktalar** sekmesinde, **uç nokta türü**altında, **WS-Federation**' ı seçin.
-4. **GÜVENILEN URL**altında, **dış URL** altına uygulama proxy 'sine girdiğiniz URL 'yi girin ve **Tamam**' a tıklayın.  
+3. Uç **noktalar** sekmesinde, **uç nokta türü** altında, **WS-Federation**' ı seçin.
+4. **GÜVENILEN URL** altında, **dış URL** altına uygulama proxy 'sine girdiğiniz URL 'yi girin ve **Tamam**' a tıklayın.  
 
    ![Uç nokta ekleme-güvenilen URL değeri ayarlama-ekran görüntüsü](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md)
-
-

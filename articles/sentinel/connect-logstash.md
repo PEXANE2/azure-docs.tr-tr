@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 7fe47289dcc6b6d6af4d13b36b5c3b1dae3baaf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89664729"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655689"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Veri kaynaklarını Azure Sentinel 'e bağlamak için Logstash 'i kullanma
 
 > [!IMPORTANT]
-> Logstash çıkış eklentisi kullanılarak veri alımı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Logstash çıkış eklentisi kullanılarak veri alımı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-**Logstash veri toplama altyapısı**Için Azure Sentinel 'in yeni çıkış eklentisini kullanarak, artık Azure sentinel 'de Log Analytics çalışma alanınıza doğrudan logstash aracılığıyla istediğiniz her türlü günlüğü gönderebilirsiniz. Günlüklerinizi, çıkış eklentisini kullanarak tanımlayacağınızı belirten özel bir tabloya gönderilir.
+**Logstash veri toplama altyapısı** Için Azure Sentinel 'in yeni çıkış eklentisini kullanarak, artık Azure sentinel 'de Log Analytics çalışma alanınıza doğrudan logstash aracılığıyla istediğiniz her türlü günlüğü gönderebilirsiniz. Günlüklerinizi, çıkış eklentisini kullanarak tanımlayacağınızı belirten özel bir tabloya gönderilir.
 
 Logstash veri toplama altyapısıyla çalışma hakkında daha fazla bilgi edinmek için bkz. [Logstash ile çalışmaya başlama](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html).
 
@@ -48,8 +48,8 @@ Logstash altyapısı üç bileşenden oluşur:
 
 Logstash için Azure Sentinel çıktı eklentisi, Log Analytics çalışma alanınıza JSON biçimli verileri gönderir Log Analytics HTTP veri toplayıcı REST API ' nı kullanarak. Veriler özel günlüklere alınır.
 
-- [Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics/create-request)hakkında daha fazla bilgi edinin.
-- [Özel Günlükler](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs)hakkında daha fazla bilgi edinin.
+- [Log Analytics REST API](/rest/api/loganalytics/create-request)hakkında daha fazla bilgi edinin.
+- [Özel Günlükler](../azure-monitor/platform/data-sources-custom-logs.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Logstash 'te Azure Sentinel çıkış eklentisini dağıtma
 
@@ -57,7 +57,7 @@ Logstash için Azure Sentinel çıktı eklentisi, Log Analytics çalışma alan�
 
 Azure Sentinel çıktı eklentisi, Logstash koleksiyonunda kullanılabilir.
 
-- ***Microsoft-logstash-output-Azure-loganalytics*** eklentisini yüklemek için [Eklentiler belgesi Ile çalışan](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) logstash içindeki yönergeleri izleyin.
+- **_Microsoft-logstash-output-Azure-loganalytics_* _ eklentisini yüklemek için [Eklentiler belgesi Ile çalışan](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) logstash içindeki yönergeleri izleyin.
    
 - Logstash sisteminizin Internet erişimi yoksa, bir çevrimdışı eklenti paketi hazırlamak ve kullanmak için Logstash [çevrimdışı eklenti yönetimi](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) belgesindeki yönergeleri izleyin. (Bu, Internet erişimi ile başka bir Logstash sistemi oluşturmanızı gerektirir.)
 
@@ -67,17 +67,17 @@ Azure Sentinel çıktı eklentisi, Logstash koleksiyonunda kullanılabilir.
 
 | Alan adı | Veri türü | Açıklama |
 |----------------|---------------|-----------------|
-| `workspace_id` | dize | Çalışma alanı KIMLIĞI GUID 'nizi girin. * |
+| `workspace_id` | dize | Çalışma alanı KIMLIĞI GUID 'nizi girin. _ |
 | `workspace_key` | string | Çalışma alanınızın birincil anahtar GUID 'nizi girin. * |
-| `custom_log_table_name` | string | Günlüklerin alınacağı tablonun adını ayarlayın. Her çıkış eklentisi için yalnızca bir tablo adı yapılandırılabilir. Günlük tablosu, **özel Günlükler** kategorisindeki **tablolarda** bulunan **Günlükler**altında Azure Sentinel 'de, bir sonek ile görünür `_CL` . |
+| `custom_log_table_name` | string | Günlüklerin alınacağı tablonun adını ayarlayın. Her çıkış eklentisi için yalnızca bir tablo adı yapılandırılabilir. Günlük tablosu, **özel Günlükler** kategorisindeki **tablolarda** bulunan **Günlükler** altında Azure Sentinel 'de, bir sonek ile görünür `_CL` . |
 | `endpoint` | string | İsteğe bağlı alan. Bu, varsayılan olarak Log Analytics uç noktasıdır. Alternatif bir uç nokta ayarlamak için bu alanı kullanın. |
 | `time_generated_field` | string | İsteğe bağlı alan. Bu özellik Log Analytics varsayılan **TimeGenerated** alanını geçersiz kılar. Veri kaynağındaki zaman damgası alanının adını girin. Alandaki verilerin ISO 8601 biçimine () uyması gerekir `YYYY-MM-DDThh:mm:ssZ` |
 | `key_names` | array | Log Analytics çıktı şeması alanlarının bir listesini girin. Her liste öğesi tek tırnak içine, virgülle ayrılmış öğeleri ve köşeli parantez içine alınmış tüm listeyi kapsamalıdır. Aşağıdaki örneğe bakın. |
-| `plugin_flush_interval` | number | İsteğe bağlı alan. İleti aktarımları arasındaki en büyük aralığı (saniye olarak) Log Analytics olarak tanımlamak için ayarlayın. Varsayılan değer 5 ' tir. |
+| `plugin_flush_interval` | sayı | İsteğe bağlı alan. İleti aktarımları arasındaki en büyük aralığı (saniye olarak) Log Analytics olarak tanımlamak için ayarlayın. Varsayılan değer 5 ' tir. |
     | `amount_resizing` | boolean | True veya false. İleti arabellek boyutunu alınan günlük verisi hacmine göre ayarlayan otomatik ölçeklendirme mekanizmasını etkinleştirin veya devre dışı bırakın. |
-| `max_items` | number | İsteğe bağlı alan. Yalnızca `amount_resizing` "false" olarak ayarlandıysa geçerlidir. İleti arabellek boyutunda bir üst sınır ayarlamak için kullanın (kayıtlar). Varsayılan değer 2000’dir.  |
+| `max_items` | sayı | İsteğe bağlı alan. Yalnızca `amount_resizing` "false" olarak ayarlandıysa geçerlidir. İleti arabellek boyutunda bir üst sınır ayarlamak için kullanın (kayıtlar). Varsayılan değer 2000’dir.  |
 
-\* Çalışma alanı KIMLIĞI ve birincil anahtarı, **aracılar yönetimi**altında çalışma alanı kaynağında bulabilirsiniz.
+\* Çalışma alanı KIMLIĞI ve birincil anahtarı, **aracılar yönetimi** altında çalışma alanı kaynağında bulabilirsiniz.
 
 #### <a name="sample-configurations"></a>Örnek yapılandırma
 
@@ -162,7 +162,7 @@ Birkaç farklı seçenek kullanan bazı örnek konfigürasyonlar aşağıda veri
 
 1. Tablodaki kayıtları görmek için tablo adını şema olarak kullanarak sorgulayın.
 
-   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Günlük hazırlama özel günlüklerinin ekran görüntüsü.":::
+   :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Günlük hazırlama özel günlükleri sorgusunun ekran görüntüsü.":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>Çıktı eklentisi denetim günlüklerini izleme
 

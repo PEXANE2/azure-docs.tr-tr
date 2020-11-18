@@ -5,16 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776570"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657899"
 ---
-# <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>ExpressRoute özel eşlemesi (Önizleme) üzerinden siteden siteye VPN bağlantısı yapılandırma
+# <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>ExpressRoute özel eşlemesi üzerinden siteden siteye VPN bağlantısı yapılandırma
 
 Bir RFC 1918 IP adresi kullanarak bir ExpressRoute özel eşlemesi üzerinden bir sanal ağ geçidine siteden siteye VPN yapılandırabilirsiniz. Bu yapılandırma aşağıdaki avantajları sağlar:
 
@@ -76,14 +76,14 @@ Bu örneklerde, Azure, VPN koruması olmadan doğrudan ExpressRoute üzerinden d
 
    Bölgesel olarak yedekli SKU 'Ların SKU 'nun sonunda "AZ" vardır. Örneğin, **VpnGw1AZ**. Bölgesel olarak yedekli ağ geçitleri yalnızca kullanılabilirlik alanı hizmetinin kullanılabildiği bölgelerde kullanılabilir. Kullanılabilirlik bölgelerini desteklediğimiz bölgeler hakkında daha fazla bilgi için bkz. [kullanılabilirlik bölgelerini destekleyen bölgeler](../availability-zones/az-region.md).
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Şekil 1":::
-1. Ağ geçidinde özel IP 'Leri etkinleştirin. **Yapılandırma**' yı seçin, ardından **ağ geçidi özel IP** 'lerini **etkin**olarak ayarlayın. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Ağ Geçidi özel IP 'Leri":::
+1. Ağ geçidinde özel IP 'Leri etkinleştirin. **Yapılandırma**' yı seçin, ardından **ağ geçidi özel IP** 'lerini **etkin** olarak ayarlayın. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
 1. **Genel bakış** sayfasında, özel IP adresini görüntülemek Için **daha fazla göster** ' i seçin. Yapılandırma adımlarında daha sonra kullanmak için bu bilgileri yazın.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Şekil 1" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
-1. Bağlantıda **Azure özel IP adresi kullanımını** etkinleştirmek için  **yapılandırma**' yı seçin. **Azure özel IP adresi kullan** ' ı **etkin**olarak ayarlayın ve **Kaydet**' i seçin.
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Genel Bakış sayfası" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+1. Bağlantıda **Azure özel IP adresi kullanımını** etkinleştirmek için  **yapılandırma**' yı seçin. **Azure özel IP adresi kullan** ' ı **etkin** olarak ayarlayın ve **Kaydet**' i seçin.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Şekil 1":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Ağ Geçidi özel IP 'Leri-etkin":::
 1. Güvenlik duvarınızdan, adım 3 ' te yazdığınız özel IP 'ye ping gönderin. Özel IP 'nin ExpressRoute özel eşlemesi üzerinden erişilebilir olması gerekir.
 1. ExpressRoute özel eşlemesi üzerinden siteden siteye tüneli oluşturmak için bu özel IP 'yi şirket içi güvenlik duvarınız üzerinde uzak IP olarak kullanın.
 

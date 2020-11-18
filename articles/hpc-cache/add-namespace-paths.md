@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614654"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657117"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Toplanan ad alanını ayarlama
 
@@ -57,7 +57,7 @@ Azure portal, **ad alanı** ayarları sayfasını yükleyin. Bu sayfadan ad alan
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 Azure CLı kullanırken, depolama hedefini oluştururken bir ad alanı yolu eklemeniz gerekir. Ayrıntılar için [Yeni bir Azure Blob depolama hedefi ekleyin](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) makalesini okuyun.
 
@@ -119,7 +119,7 @@ Her ad alanı yolu için bu değerleri girin:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 Azure CLı kullanırken, depolama hedefini oluştururken en az bir ad alanı yolu eklemeniz gerekir. Ayrıntılar için [yenı NFS depolama hedefi ekleme](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) bölümünü okuyun.
 

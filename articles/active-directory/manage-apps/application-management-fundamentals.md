@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642444"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656416"
 ---
 # <a name="application-management-best-practices"></a>Uygulama yönetimi en iyi uygulamaları
 
@@ -30,7 +30,7 @@ Bu makalede, Azure Active Directory (Azure AD) içinde uygulamaları yönetmeye 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Bulut uygulaması ve çoklu oturum açma önerileri
 | Öneri | Yorumlar |
 | --- | --- |
-| Uygulamalar için Azure AD Uygulama Galerisine bakın  | Azure AD 'de Kurumsal Çoklu oturum açma (SSO) ile etkinleştirilen binlerce önceden tümleştirilmiş uygulama içeren bir galeri bulunur. Uygulamaya özgü Kurulum Kılavuzu için [SaaS uygulama öğreticileri listesine](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)bakın.  | 
+| Uygulamalar için Azure AD Uygulama Galerisine bakın  | Azure AD 'de Kurumsal Çoklu oturum açma (SSO) ile etkinleştirilen binlerce önceden tümleştirilmiş uygulama içeren bir galeri bulunur. Uygulamaya özgü Kurulum Kılavuzu için [SaaS uygulama öğreticileri listesine](../saas-apps/tutorial-list.md)bakın.  | 
 | Federal SAML tabanlı SSO kullanın  | Bir uygulama bunu destekliyorsa, parola tabanlı SSO ve ADFS yerine Azure AD ile Federal ve SAML tabanlı SSO kullanın.  | 
 | Sertifika imzalama için SHA-256 kullanın  | Azure AD, SAML Yanıtını imzalamak için varsayılan olarak SHA-256 algoritmasını kullanır. Uygulama SHA-1 gerektirmediği takdirde SHA-256 kullanın (bkz. [sertifika imzalama seçenekleri](certificate-signing-options.md) ve [uygulama oturum açma sorunu](application-sign-in-problem-application-error.md).)  | 
 | Kullanıcı Ataması gerektir  | Varsayılan olarak, kullanıcılar bu kullanıcılara atanmadan kurumsal uygulamalarınıza erişebilir. Ancak, uygulama rolleri kullanıma sunarsa veya uygulamanın kullanıcı uygulamamda görünmesini istiyorsanız, Kullanıcı Ataması gerektir. (Bkz. [uygulamaları tümleştirmek Için Geliştirici Kılavuzu](developer-guidance-for-integrating-applications.md).)  | 
@@ -41,7 +41,7 @@ Bu makalede, Azure Active Directory (Azure AD) içinde uygulamaları yönetmeye 
 ## <a name="provisioning-recommendations"></a>Sağlama önerileri
 | Öneri | Yorumlar |
 | --- | --- |
-| Bulut uygulamalarıyla sağlamayı ayarlamak için öğreticileri kullanın | Eklemek istediğiniz Galeri uygulaması için sağlamayı yapılandırmaya yönelik adım adım yönergeler için [SaaS uygulama öğreticileri listesini](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) kontrol edin. |
+| Bulut uygulamalarıyla sağlamayı ayarlamak için öğreticileri kullanın | Eklemek istediğiniz Galeri uygulaması için sağlamayı yapılandırmaya yönelik adım adım yönergeler için [SaaS uygulama öğreticileri listesini](../saas-apps/tutorial-list.md) kontrol edin. |
 | Durumu izlemek için sağlama günlüklerini (Önizleme) kullanma | [Sağlama günlükleri](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , bireysel kullanıcılar için durum da dahil olmak üzere, sağlama hizmeti tarafından gerçekleştirilen tüm eylemlerin ayrıntılarını verir. |
 | Sağlama bildirim e-postasına bir dağıtım grubu atama | Sağlama hizmeti tarafından gönderilen kritik uyarıların görünürlüğünü artırmak için, bildirim e-postaları ayarına bir dağıtım grubu atayın. |
 

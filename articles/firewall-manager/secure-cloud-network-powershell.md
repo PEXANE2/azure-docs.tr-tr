@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: d9d9da9cd01b4bb9b3cabcf069990cd3cbd38d38
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e2bcdf947db60fb50b44abba9d6a224768840b28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92429340"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656148"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak sanal hub 'ınızı güvenli hale getirme
 
 Bu öğreticide, bir bölgede bir sanal hub ile sanal bir WAN örneği oluşturursunuz ve bağlantıyı güvenli hale getirmek için sanal hub 'da bir Azure Güvenlik Duvarı dağıtırsınız. Bu örnekte, sanal ağlar arasında güvenli bağlantı gösterilmektedir. Sanal ağlar ile siteden siteye, Noktadan siteye veya ExpressRoute dalları arasındaki trafik de sanal güvenli hub tarafından desteklenir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal WAN 'ı dağıtma
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 - PowerShell 7
 
-   Bu öğretici, Azure PowerShell PowerShell 7 ' de yerel olarak çalıştırmanızı gerektirir. PowerShell 7 ' yi yüklemek için bkz. [Windows powershell 5,1 ' den PowerShell 7 ' ye geçme](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7).
+   Bu öğretici, Azure PowerShell PowerShell 7 ' de yerel olarak çalıştırmanızı gerektirir. PowerShell 7 ' yi yüklemek için bkz. [Windows powershell 5,1 ' den PowerShell 7 ' ye geçme](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7).
 - Az. Network Version 3.2.0
 
     Az. Network Version 3.4.0 veya daha yeni bir sürüme sahipseniz, bu öğreticideki bazı komutları kullanmak için düşürme yapmanız gerekir. Komutunu kullanarak az. Network modülünüzün sürümünü kontrol edebilirsiniz `Get-InstalledModule -Name Az.Network` . Az. Network modülünü kaldırmak için öğesini çalıştırın `Uninstall-Module -name az.network` . Az. Network 3.2.0 modülünü yüklemek için öğesini çalıştırın `Install-Module az.network -RequiredVersion 3.2.0 -force` .

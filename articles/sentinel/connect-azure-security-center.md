@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659657"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655961"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden Azure Defender uyarı verilerini bağlama
 
-Azure [Güvenlik Merkezi](../security-center/security-center-intro.md) 'Nden Azure Defender uyarılarını almak ve bunları Azure Sentinel 'e aktarmak Için Azure Defender uyarı bağlayıcısını kullanın. 
+Azure [Güvenlik Merkezi](../security-center/security-center-introduction.md) 'Nden Azure Defender uyarılarını almak ve bunları Azure Sentinel 'e aktarmak Için Azure Defender uyarı bağlayıcısını kullanın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kullanıcı, akış yaptığınız günlüklerin aboneliğinde güvenlik okuyucusu rolüne sahip olmalıdır.
 
@@ -32,11 +32,11 @@ Azure [Güvenlik Merkezi](../security-center/security-center-intro.md) 'Nden Azu
 
 1. Veri bağlayıcıları galerisinden **ASC 'Den Azure Defender uyarıları** ' nı seçin (yine de Azure Güvenlik Merkezi olarak adlandırılabilir) ve **bağlayıcı sayfası aç** düğmesine tıklayın.
 
-1. **Yapılandırma**altında, uyarıları Azure Sentinel 'e aktarmak istediğiniz her aboneliğin yanındaki **Bağlan** ' a tıklayın. Bağlan düğmesi yalnızca gerekli izinleriniz varsa kullanılabilir.
+1. **Yapılandırma** altında, uyarıları Azure Sentinel 'e aktarmak istediğiniz her aboneliğin yanındaki **Bağlan** ' a tıklayın. Bağlan düğmesi yalnızca gerekli izinleriniz varsa kullanılabilir.
 
-1. Azure Defender 'daki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur**altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz**altında düzenleyebilirsiniz.
+1. Azure Defender 'daki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur** altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz** altında düzenleyebilirsiniz.
 
-1. Azure Defender uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert**aratın.
+1. Azure Defender uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert** aratın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede Azure Defender 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

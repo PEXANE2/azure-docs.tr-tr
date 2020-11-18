@@ -7,19 +7,19 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 346536f5797841a850ef97dc4667110eafa721a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892830"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656965"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma
 
 Bu makalede, Azure portalını kullanarak şirket içi ağınızdan VNet’e Siteden Siteye VPN ağ geçidi bağlantısı oluşturma işlemi gösterilir. Bu makaledeki adımlar, klasik dağıtım modeli için geçerlidir ve geçerli dağıtım modeli için geçerli değildir Kaynak Yöneticisi. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure portalı](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -75,7 +75,7 @@ Yerel site genellikle şirket içi konumunuzu ifade eder. Bağlantı oluşturaca
 
 1. VNet 'iniz sayfasında, **Ayarlar**' ın altında, **siteden siteye bağlantılar**' ı seçin.
 1. Siteden siteye bağlantılar sayfasında **+ Ekle**' yi seçin.
-1. **VPN bağlantısı ve ağ geçidi yapılandırma** sayfasında, **bağlantı türü**için **siteden siteye** seçili bırakın. Bu alıştırmada, [örnek değerlerinin](#values) ve kendi değerlerinizin bir birleşimini kullanmanız gerekir.
+1. **VPN bağlantısı ve ağ geçidi yapılandırma** sayfasında, **bağlantı türü** için **siteden siteye** seçili bırakın. Bu alıştırmada, [örnek değerlerinin](#values) ve kendi değerlerinizin bir birleşimini kullanmanız gerekir.
 
    * **VPN ağ geçidi IP adresi:** Şirket içi ağınızdaki VPN cihazının genel IP adresidir. VPN cihazı, IPv4 genel IP adresi gerektirir. Bağlanmak istediğiniz VPN cihazı için geçerli bir genel IP adresi belirtin. Azure tarafından erişilebilmelidir. VPN cihazınızın IP adresini bilmiyorsanız her zaman bir yer tutucu değeri girebilir (geçerli bir genel IP adresi biçiminde olduğu sürece) ve daha sonra değiştirebilirsiniz.
 
@@ -135,7 +135,7 @@ Bağlantı sorunları yaşıyorsanız, sol bölmedeki içindekiler tablosunun **
 
 ## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>VPN ağ geçidini sıfırlama
 
-Bir veya daha fazla Siteden Siteye VPN tünelinde şirketler arası VPN bağlantısını kaybederseniz bir Azure VPN ağ geçidinin sıfırlanması yararlıdır. Bu durumda şirket içi VPN cihazlarınızın tümü düzgün çalışır, ancak Azure VPN ağ geçitleriyle IPsec tünelleri kuramaz. Adımlar için bkz. [VPN ağ geçidini sıfırlama](vpn-gateway-resetgw-classic.md#resetclassic).
+Bir veya daha fazla Siteden Siteye VPN tünelinde şirketler arası VPN bağlantısını kaybederseniz bir Azure VPN ağ geçidinin sıfırlanması yararlıdır. Bu durumda şirket içi VPN cihazlarınızın tümü düzgün çalışır, ancak Azure VPN ağ geçitleriyle IPsec tünelleri kuramaz. Adımlar için bkz. [VPN ağ geçidini sıfırlama](./reset-gateway.md#resetclassic).
 
 ## <a name="how-to-change-a-gateway-sku"></a><a name="changesku"></a>Ağ geçidi SKU'sunu değiştirme
 
@@ -143,5 +143,5 @@ Ağ Geçidi SKU 'sunu değiştirme adımları için bkz. [ağ GEÇIDI SKU 'Sunu 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](https://docs.microsoft.com/azure/).
+* Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](../index.yml).
 * Zorlamalı tünel oluşturma hakkında bilgi için bkz. [Zorlamalı tünel oluşturma](vpn-gateway-about-forced-tunneling.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555408"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655706"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>F5 ASM 'yi Azure Sentinel 'e bağlama
 
@@ -29,10 +29,10 @@ Bu makalede, F5 asm günlüklerinizi Azure Sentinel 'e kolayca çekmek için F5 
 ## <a name="configure-your-f5-asm-to-send-cef-messages"></a>F5 ASM 'nizi CEF iletileri gönderecek şekilde yapılandırma
 
 1. Aşağıdaki yönergeleri kullanarak, uzaktan günlüğe kaydetmeyi ayarlamak için [F5 'Teki uygulama güvenliği olay günlüğünü yapılandırma](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html) bölümündeki yönergeleri izleyin:
-   - **Uzak depolama türünü** **CEF**olarak ayarlayın.
-   - **Protokolü** **TCP**olarak ayarlayın.
+   - **Uzak depolama türünü** **CEF** olarak ayarlayın.
+   - **Protokolü** **TCP** olarak ayarlayın.
    - **IP adresini** Syslog sunucusu IP adresi olarak ayarlayın.
-   - **Bağlantı noktası numarasını** **514**olarak veya aracıyı kullanmak için ayarladığınız bağlantı noktasını ayarlayın.
+   - **Bağlantı noktası numarasını** **514** olarak veya aracıyı kullanmak için ayarladığınız bağlantı noktasını ayarlayın.
    - **En büyük sorgu dizesi boyutunu** , aracısında ayarladığınız boyuta ayarlayabilirsiniz.
 
 1. CEF olayları için Log Analytics ilgili şemayı kullanmak için arama yapın `CommonSecurityLog` .
@@ -43,6 +43,5 @@ Bu makalede, F5 asm günlüklerinizi Azure Sentinel 'e kolayca çekmek için F5 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, F5 ASM 'yi Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
-

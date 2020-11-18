@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 2e5c588db6f372a50b2a80afd8a2a023ece34502
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 235c5c19c9a6e587106b3fd41691a3f775caa84f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203629"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656624"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için SAML tabanlı çoklu oturum açma (SSO) ayarlama
 
@@ -53,17 +53,17 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
 
 1. SSO yapılandırma sayfasını açmak için **SAML** ' yi seçin. Bu örnekte, SSO için yapılandırdığımız uygulama GitHub ' dır. GitHub kurulduktan sonra, kullanıcılarınız Azure AD kiracınızdaki kimlik bilgilerini kullanarak GitHub 'da oturum açabilirler.
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Ekran görüntüsü, Azure AD portalındaki çoklu oturum açma yapılandırma sayfasını gösterir.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Ekran görüntüsü, GitHub 'daki çoklu oturum açma yapılandırma sayfasını gösterir.":::
 
-1. SAML tabanlı SSO için Azure AD kullanmak üzere bir uygulamayı yapılandırma işlemi uygulamaya bağlı olarak değişir. GitHub Kılavuzu için bir bağlantı vardır. Diğer uygulamalara yönelik kılavuzlar bulmak için bkz. [SaaS uygulamalarını Azure Active Directory ile tümleştirmek Için öğreticiler](https://docs.microsoft.com/azure/active-directory/saas-apps/).
+1. SAML tabanlı SSO için Azure AD kullanmak üzere bir uygulamayı yapılandırma işlemi uygulamaya bağlı olarak değişir. GitHub Kılavuzu için bir bağlantı vardır. Diğer uygulamalara yönelik kılavuzlar bulmak için bkz. [SaaS uygulamalarını Azure Active Directory ile tümleştirmek Için öğreticiler](/azure/active-directory/saas-apps/).
 1. Uygulamanın SSO 'yu ayarlamak için Kılavuzu izleyin. Birçok uygulamanın SSO işlevselliği için belirli abonelik gereksinimleri vardır. Örneğin, GitHub bir kurumsal abonelik gerektirir.
     > [!TIP]
     > SAML yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-saml-single-sign-on.md).
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Ekran görüntüsü, Azure AD portalındaki çoklu oturum açma yapılandırma sayfasını gösterir.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Ekran görüntüsü, GitHub fiyatlandırma sayfasının kurumsal aboneliğindeki çoklu oturum açma seçeneğini gösterir.":::
 
 > [!TIP]
-> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 8bdc9d588e89f498b973db7d1de299b0b26a3d02
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515719"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655740"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
 Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümünüzü BT CEF iletileri gönderecek şekilde yapılandırdıysanız (adım 2 ' de), güvenlik çözümünüz ile Azure Sentinel arasındaki bağlantıyı doğrulamak için bu yönergeleri izleyin. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Günlük ileticisi makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
@@ -36,7 +36,7 @@ Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümü
 
 ## <a name="how-to-validate-connectivity"></a>Bağlantıyı doğrulama
 
-1. Azure Sentinel gezinti menüsünde **Günlükler** ' i açın. Güvenlik çözümünüzdeki günlükleri alıp almadığınızı görmek için **Commonsecuritylog** şemasını kullanarak bir sorgu çalıştırın.<br>
+1. Azure Sentinel gezinti menüsünde **Günlükler**' i açın. Güvenlik çözümünüzdeki günlükleri alıp almadığınızı görmek için **Commonsecuritylog** şemasını kullanarak bir sorgu çalıştırın.<br>
 Günlüklerinizin **Log Analytics** görünmeye başlaması için 20 dakika sürecağına dikkat edin. 
 
 1. Sorgudan herhangi bir sonuç görmüyorsanız, olayların güvenlik çözümünden oluşturulduğunu doğrulayın veya bir süre oluşturmayı deneyin ve belirlediğiniz Syslog iletici makinesine iletildiğini doğrulayın. 
@@ -247,6 +247,5 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
-

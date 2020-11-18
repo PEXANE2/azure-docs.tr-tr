@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 0a25d910b694968802e853a81c16e34dd0539f7a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9ea4ec748ca37f93e9711970b10746a009543d00
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203509"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656607"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama
 
@@ -54,13 +54,13 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
 
 3. Başarılı kimlik doğrulamasından sonra, yönetici onayı isteyen bir iletişim kutusu görüntülenir. **Kuruluşunuz adına izin** ' ı seçin ve ardından **kabul et**' i seçin. 
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Ekran görüntüsünde çoklu oturum açma seçeneği ve kaydolma düğmesi gösterilir." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Ekran görüntüsü, bir uygulamanın onay ekranını gösterir." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. Uygulama kiracınıza eklenir ve uygulama giriş sayfası görüntülenir.
 
 
 > [!TIP]
-> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

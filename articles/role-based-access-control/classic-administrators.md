@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc8a23d8cdb923f86d581d1af2967112d226c847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370636"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657760"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
 
@@ -44,7 +44,7 @@ Bu makalede Co-Administrator ve hizmet yöneticisi rollerinin nasıl ekleneceği
 
     ![Klasik yöneticileri açan ekran görüntüsü](./media/classic-administrators/classic-administrators.png)
 
-1. Ortak **Add**  >  yönetici Ekle bölmesini açmak için**ortak yönetici Ekle** ' ye tıklayın.
+1. Ortak **Add**  >  yönetici Ekle bölmesini açmak için **ortak yönetici Ekle** ' ye tıklayın.
 
     Ortak yönetici Ekle seçeneği devre dışıysa, izinleriniz yoktur.
 
@@ -58,7 +58,7 @@ Konuk kullanıcıyı ortak yönetici olarak eklemek için, önceki [ortak yönet
 
 - Konuk kullanıcının dizininizde bir varlık olması gerekir. Bu, kullanıcının dizininize davet edildiği ve daveti kabul ettiği anlamına gelir.
 
-Dizininize Konuk Kullanıcı ekleme hakkında daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../active-directory/b2b/add-users-administrator.md).
+Dizininize Konuk Kullanıcı ekleme hakkında daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../active-directory/external-identities/add-users-administrator.md).
 
 ### <a name="differences-for-guest-users"></a>Konuk kullanıcılar için farklılıklar
 
@@ -138,7 +138,7 @@ Hesap Yöneticisi, başlangıçta Azure aboneliğine kaydolan ve aboneliğin fat
 
 Hesap yöneticisini görüntülemek için aşağıdaki adımları izleyin.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'i açın ve bir abonelik seçin.
 

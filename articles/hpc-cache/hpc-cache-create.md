@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341389"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657100"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC önbelleği oluşturma
 
@@ -102,10 +102,10 @@ Oluşturma tamamlandığında, yeni Azure HPC önbellek örneğinin bağlantıs�
 
 ## <a name="create-the-cache-with-azure-cli"></a>Azure CLı ile önbellek oluşturma
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 > [!NOTE]
-> Azure CLı Şu anda müşteri tarafından yönetilen şifreleme anahtarlarıyla bir önbellek oluşturmayı desteklemiyor. Azure portalını kullanın.
+> Azure CLı Şu anda müşteri tarafından yönetilen şifreleme anahtarlarıyla bir önbellek oluşturmayı desteklemiyor. Azure portal kullanın.
 
 Yeni bir Azure HPC önbelleği oluşturmak için [az HPC-Cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) komutunu kullanın.
 
@@ -208,7 +208,7 @@ Install-Module -Name Az.HPCCache
 ## <a name="create-the-cache-with-azure-powershell"></a>Azure PowerShell ile önbellek oluşturma
 
 > [!NOTE]
-> Azure PowerShell Şu anda, müşteri tarafından yönetilen şifreleme anahtarlarıyla bir önbellek oluşturulmasını desteklemez. Azure portalını kullanın.
+> Azure PowerShell Şu anda, müşteri tarafından yönetilen şifreleme anahtarlarıyla bir önbellek oluşturulmasını desteklemez. Azure portal kullanın.
 
 Yeni bir Azure HPC önbelleği oluşturmak için [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) cmdlet 'ini kullanın.
 

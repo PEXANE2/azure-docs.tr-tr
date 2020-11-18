@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555425"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655672"
 ---
 # <a name="connect-your-domain-name-server"></a>Etki alanı ad sunucunuzu bağlama
 
 > [!IMPORTANT]
 > Azure Sentinel 'deki DNS veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Windows üzerinde çalışan herhangi bir etki alanı ad sunucusunu (DNS) Azure Sentinel 'e bağlayabilirsiniz. Bu işlem, DNS makinesine bir aracı yüklenerek yapılır. DNS günlüklerini kullanarak, analitik ve denetim günlüklerini ve DNS sunucularından diğer ilgili verileri toplayarak, çözümleyerek ve birbirleriyle ilişkilendirerek, kuruluşunuzun DNS altyapısına güvenlik, performans ve işlemlerle ilgili Öngörüler elde edebilirsiniz.
 
@@ -43,14 +43,14 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
-| [Windows aracıları](../azure-monitor/platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
+| [Windows aracıları](../azure-monitor/platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
 | [Linux aracıları](../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
-| [System Center Operations Manager yönetim grubu](../azure-monitor/platform/om-agents.md) | Evet | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
-| [Azure depolama hesabı](../azure-monitor/platform/collect-azure-metrics-logs.md) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
+| [System Center Operations Manager yönetim grubu](../azure-monitor/platform/om-agents.md) | Yes | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| [Azure depolama hesabı](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
 
 ### <a name="data-collection-details"></a>Veri toplama ayrıntıları
 
-Çözüm, bir Log Analytics aracısının yüklendiği DNS sunucularından DNS envanterini ve DNS olay ile ilgili verileri toplar. DNS PowerShell cmdlet 'leri çalıştırılarak, DNS sunucularının, bölgelerin ve kaynak kayıtlarının sayısı gibi stokla ilgili veriler toplanır. Veriler her iki günde bir güncelleştirilir. Olayla ilgili veriler, Windows Server 2012 R2 'de Gelişmiş DNS günlüğü ve tanılama tarafından verilen [analitik ve denetim günlüklerinden](https://technet.microsoft.com/library/dn800669.aspx#enhanc) gerçek zamanlı olarak toplanır.
+Çözüm, bir Log Analytics aracısının yüklendiği DNS sunucularından DNS envanterini ve DNS olay ile ilgili verileri toplar. DNS PowerShell cmdlet 'leri çalıştırılarak, DNS sunucularının, bölgelerin ve kaynak kayıtlarının sayısı gibi stokla ilgili veriler toplanır. Veriler her iki günde bir güncelleştirilir. Olayla ilgili veriler, Windows Server 2012 R2 'de Gelişmiş DNS günlüğü ve tanılama tarafından verilen [analitik ve denetim günlüklerinden](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc) gerçek zamanlı olarak toplanır.
 
 
 ## <a name="connect-your-dns-appliance"></a>DNS gerecinizi bağlama
@@ -64,8 +64,8 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 2. DNS makineniz bir Azure VM değilse:
     1. **Azure dışı makinelerde aracıyı yükler**' e tıklayın.
-    1. **Doğrudan aracı** penceresinde, **Windows agent 'ı (64 bit) İndir** veya **Windows Agent 'ı (32 bit) İndir**seçeneğini belirleyin.
-    1. Aracıyı DNS makinenize yükler. **Çalışma alanı kimliği**, **birincil anahtar**ve **İkincil anahtarı** kopyalayın ve yükleme sırasında istendiğinde bunları kullanın.
+    1. **Doğrudan aracı** penceresinde, **Windows agent 'ı (64 bit) İndir** veya **Windows Agent 'ı (32 bit) İndir** seçeneğini belirleyin.
+    1. Aracıyı DNS makinenize yükler. **Çalışma alanı kimliği**, **birincil anahtar** ve **İkincil anahtarı** kopyalayın ve yükleme sırasında istendiğinde bunları kullanın.
 
 3. DNS günlükleri için Log Analytics ilgili şemayı kullanmak için **Dnsevents**' ı arayın.
 
@@ -76,10 +76,10 @@ Log Analytics, şema **Dnsevents** için arama yapın ve olayların bulunduğund
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Arama sorguları Azure Sentinel 'de görünmüyorsa, sorguların düzgün görüntülenmesi için aşağıdaki adımları izleyin:
-1. [Sunucularınızdaki DNS Analizi günlüklerini](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))açın.
+1. [Sunucularınızdaki DNS Analizi günlüklerini](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))açın.
 2. DNSEvents Log Analytics koleksiyon listenizde göründüğünden emin olun.
 3. [Azure DNS ANALYTICS](../azure-monitor/insights/dns-analytics.md)'i açın.
-4. Azure DNS Analytics ' te **yapılandırma**altında ayarları değiştirin, kaydedin, sonra gerekirse geri değiştirin ve yeniden kaydedin.
+4. Azure DNS Analytics ' te **yapılandırma** altında ayarları değiştirin, kaydedin, sonra gerekirse geri değiştirin ve yeniden kaydedin.
 5. Sorguların görüntülendiğinden emin olmak için Azure DNS analizlerini denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

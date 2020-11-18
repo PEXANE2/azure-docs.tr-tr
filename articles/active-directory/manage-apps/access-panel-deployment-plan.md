@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8e345b27fdb2604c0c3264d6935cb9cff8aeec9c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372489"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656743"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory uygulamalarımın dağıtımını planlayın
 
@@ -54,10 +54,10 @@ Azure AD My Apps, işletmelerden aşağıdaki yollarla faydalanır:
 
 Uygulamalarım ücretsizdir ve temel düzeyde kullanılacak bir lisans gerektirmez. Ancak, dizininizdeki nesne sayısı ve dağıtmak istediğiniz ek özellikler ek lisanslar gerektirebilir. Lisanslama gereksinimlerine sahip bazı yaygın Azure AD senaryoları aşağıdaki güvenlik özelliklerini içerir:
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-* [Grup tabanlı üyelik](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-* [Self servis parola sıfırlama](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-* [Azure Active Directory Kimlik Koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Grup tabanlı üyelik](../fundamentals/active-directory-manage-groups.md)
+* [Self servis parola sıfırlama](../authentication/tutorial-enable-sspr.md)
+* [Azure Active Directory Kimlik Koruması](../identity-protection/overview-identity-protection.md)
 
 [Azure AD için tam lisanslama kılavuzuna](https://azure.microsoft.com/pricing/details/active-directory/)bakın.
 
@@ -65,14 +65,14 @@ Uygulamalarım ücretsizdir ve temel düzeyde kullanılacak bir lisans gerektirm
 
 Bu projeye başlamadan önce aşağıdaki önkoşulları doldurun:
 
-* [Uygulama SSO 'SU tümleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-* [Azure AD Kullanıcı ve grup altyapısını yönetme](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [Uygulama SSO 'SU tümleştirme](./plan-sso-deployment.md)
+* [Azure AD Kullanıcı ve grup altyapısını yönetme](../fundamentals/active-directory-manage-groups.md)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Azure AD My Apps dağıtımını planlayın
 
 Aşağıdaki tabloda, uygulamalar dağıtımı için anahtar kullanım durumları özetlenmektedir:
 
-| Alan| Description |
+| Alan| Açıklama |
 | - | - |
 | Access| Şirket ağı içindeki şirket ve kişisel cihazlardan uygulama portalından erişilebilir. |
 |Access | Uygulama portalından şirket ağı dışındaki şirket aygıtlarından erişilebilir. |
@@ -166,23 +166,23 @@ Uygulamalarım sayfasında en iyi deneyim için, Federasyon SSO için kullanıla
 
 Bir uygulama tarafından desteklenen parola tabanlı SSO ve ADFS yerine, Azure AD ile Federasyon SSO (OpenID Connect/SAML) kullanın.
 
-SaaS uygulamalarınızı dağıtma ve yapılandırma hakkında daha fazla bilgi için bkz. [SaaS SSO dağıtım planı](https://aka.ms/deploymentplans/sso).
+SaaS uygulamalarınızı dağıtma ve yapılandırma hakkında daha fazla bilgi için bkz. [SaaS SSO dağıtım planı](./plan-sso-deployment.md).
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>Uygulamalarım tarayıcı uzantısını dağıtmayı planlayın
 
-Kullanıcılar parola tabanlı SSO uygulamalarında oturum açtıklarında, uygulamaların güvenli oturum açma uzantısını yükleyip kullanmaları gerekir. Uzantı, parolayı uygulamanın oturum açma formuna ileten bir betiği yürütür. Kullanıcılardan, parola tabanlı SSO uygulamasını ilk kez başlattığında uzantıyı yüklemeleri istenir. Bu belgede uzantı hakkında daha fazla bilgi, [uygulamalarımı tarayıcı uzantısından yükleme](access-panel-extension-problem-installing.md)konusunda bulunabilir.
+Kullanıcılar parola tabanlı SSO uygulamalarında oturum açtıklarında, uygulamaların güvenli oturum açma uzantısını yükleyip kullanmaları gerekir. Uzantı, parolayı uygulamanın oturum açma formuna ileten bir betiği yürütür. Kullanıcılardan, parola tabanlı SSO uygulamasını ilk kez başlattığında uzantıyı yüklemeleri istenir. Bu belgede uzantı hakkında daha fazla bilgi, [uygulamalarımı tarayıcı uzantısından yükleme]()konusunda bulunabilir.
 
-Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıcılarla](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bir ölçekte dağıtmak için bir mekanizma tanımlamanız gerekir. Seçeneklere şunlar dahildir:
+Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıcılarla](../user-help/my-apps-portal-end-user-access.md)bir ölçekte dağıtmak için bir mekanizma tanımlamanız gerekir. Seçeneklere şunlar dahildir:
 
-* [Internet Explorer için grup ilkesi](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-* [Internet Explorer için Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-* [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+* [Internet Explorer için grup ilkesi]()
+* [Internet Explorer için Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](../user-help/my-apps-portal-end-user-access.md)
 
 Parola tabanlı SSO uygulamaları kullanmayan kullanıcılar da uzantısından faydalanır. Bu avantajlar, arama çubuğundan herhangi bir uygulamayı başlatma, son kullanılan uygulamalara erişimi bulma ve uygulamalarım sayfasına bir bağlantı olma imkanını içerir.
 
 #### <a name="plan-for-mobile-access"></a>Mobil erişim planlaması
 
-Intune ilkesi (Microsoft Edge veya Intune Managed Browser) ile korunan bir tarayıcı, parola tabanlı SSO uygulamaları başlatan mobil kullanıcılar için gereklidir. İlke korumalı bir tarayıcı, uygulama için kaydedilen parolanın aktarılmasına izin vermez. Microsoft Edge veya Managed Browser, bir dizi Web veri koruma özelliği sağlar. İOS ve Android cihazlarda kurumsal senaryolar için Microsoft Edge 'i de kullanabilirsiniz. Microsoft Edge, Intune Managed Browser ile aynı yönetim senaryolarını destekler ve Kullanıcı deneyimini geliştirir. Daha fazla bilgi: [Microsoft Intune İlkeyle korunan bir tarayıcı kullanarak Web erişimini yönetme](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Intune ilkesi (Microsoft Edge veya Intune Managed Browser) ile korunan bir tarayıcı, parola tabanlı SSO uygulamaları başlatan mobil kullanıcılar için gereklidir. İlke korumalı bir tarayıcı, uygulama için kaydedilen parolanın aktarılmasına izin vermez. Microsoft Edge veya Managed Browser, bir dizi Web veri koruma özelliği sağlar. İOS ve Android cihazlarda kurumsal senaryolar için Microsoft Edge 'i de kullanabilirsiniz. Microsoft Edge, Intune Managed Browser ile aynı yönetim senaryolarını destekler ve Kullanıcı deneyimini geliştirir. Daha fazla bilgi: [Microsoft Intune İlkeyle korunan bir tarayıcı kullanarak Web erişimini yönetme](/intune/app-configuration-managed-browser).
 
 ## <a name="plan-your-my-apps-deployment"></a>Uygulamalarım dağıtımınızı planlayın
 
@@ -248,7 +248,7 @@ Denetim, raporlama ve olağanüstü durum kurtarma yedeklemeleri için gereken i
 
 Bir uygulama SSO için yapılandırıldıktan sonra gruplara erişim atanır. Atanan gruplardaki kullanıcıların erişimi olur ve uygulamayı Uygulamalarım ve Microsoft 365 uygulama başlatıcısı 'nda görür.
 
-Bkz. [Active Directory bir uygulamaya Kullanıcı ve Grup atama](methods-for-assigning-users-and-groups.md).
+Bkz. [Active Directory bir uygulamaya Kullanıcı ve Grup atama](./assign-user-or-group-access-portal.md).
 
 Testi veya dağıtımı sırasında, grupları eklemek istiyorsanız ancak uygulamaların uygulamamda görüntülemesine izin vermediyse, bkz. [Azure Active Directory kullanıcının deneyiminden bir uygulamayı gizleme](hide-application-from-user-portal.md).
 
@@ -294,7 +294,7 @@ Aşağıdaki testler, şirkete ait cihazlar ve kişisel cihazlarla birlikte ger�
 
 ### <a name="rollback-steps"></a>Geri alma adımları
 
-Dağıtımınız planlanmazsa ne yapılacağını planlamanız önemlidir. Dağıtım sırasında SSO yapılandırması başarısız olursa, [SSO sorunlarını nasıl giderebileceğinizi](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) ve kullanıcılarınıza etkisini nasıl azaltacağınızı anlamanız gerekir. Olağanüstü durumlarda, [SSO 'yu geri almanız](../manage-apps/plan-sso-deployment.md#rollback-process)gerekebilir.
+Dağıtımınız planlanmazsa ne yapılacağını planlamanız önemlidir. Dağıtım sırasında SSO yapılandırması başarısız olursa, [SSO sorunlarını nasıl giderebileceğinizi](../hybrid/tshoot-connect-sso.md) ve kullanıcılarınıza etkisini nasıl azaltacağınızı anlamanız gerekir. Olağanüstü durumlarda, [SSO 'yu geri almanız](../manage-apps/plan-sso-deployment.md#rollback-process)gerekebilir.
 
 
 ## <a name="manage-your-implementation"></a>Uygulamanızı yönetme
@@ -312,4 +312,4 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek için [Privileged Identity Management](../privileged-identity-management/pim-configure.md) kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Multi-Factor Authentication dağıtımını planlayın](https://aka.ms/deploymentplans/mfa)
+[Azure Multi-Factor Authentication dağıtımını planlayın](../authentication/howto-mfa-getstarted.md)

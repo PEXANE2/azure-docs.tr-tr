@@ -11,26 +11,26 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bef120e754c84798b2d1b48f4f00fbb8f5fb3c1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587778"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656386"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 
-Azure Active Directory Uygulama Ara Sunucusu aracılığıyla bir uygulama yayımladığınızda kullanıcılarınız için bir dış URL oluşturursunuz. Bu URL varsayılan etki alanını alır *yourtenant.msappproxy.net*. Örneğin, kiracınızda *contoso* *adlı bir* uygulama yayımlarsanız, dış URL *https: \/ /Expenses-contoso.msappproxy.net*olur. *Msappproxy.net*yerine kendi etki alanı adınızı kullanmak istiyorsanız, uygulamanız için özel bir etki alanı yapılandırabilirsiniz. 
+Azure Active Directory Uygulama Ara Sunucusu aracılığıyla bir uygulama yayımladığınızda kullanıcılarınız için bir dış URL oluşturursunuz. Bu URL varsayılan etki alanını alır *yourtenant.msappproxy.net*. Örneğin, kiracınızda *contoso* *adlı bir* uygulama yayımlarsanız, dış URL *https: \/ /Expenses-contoso.msappproxy.net* olur. *Msappproxy.net* yerine kendi etki alanı adınızı kullanmak istiyorsanız, uygulamanız için özel bir etki alanı yapılandırabilirsiniz. 
 
 ## <a name="benefits-of-custom-domains"></a>Özel etki alanlarının avantajları
 
 Mümkün olduğunda uygulamalarınız için özel etki alanları ayarlamanız iyi bir fikirdir. Özel etki alanlarını kullanmanın bazı nedenleri şunlardır:
 
-- Uygulamalar arasındaki bağlantılar, şirket ağı dışında da çalışır. Özel etki alanı olmadan, uygulamanız uygulama proxy 'Si dışındaki hedeflere sabit kodlanmış iç bağlantılar içeriyorsa ve bağlantılar dışarıdan çözümlenememişse, bunlar kesilir. İç ve dış URL 'niz aynı olduğunda, bu sorundan kaçının. Özel etki alanlarını kullanmıyorsanız, bu sorunu gidermek için [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar için bkz. yeniden kodlanmış bağlantıları yeniden yönlendirme](../application-proxy-link-translation.md) . 
+- Uygulamalar arasındaki bağlantılar, şirket ağı dışında da çalışır. Özel etki alanı olmadan, uygulamanız uygulama proxy 'Si dışındaki hedeflere sabit kodlanmış iç bağlantılar içeriyorsa ve bağlantılar dışarıdan çözümlenememişse, bunlar kesilir. İç ve dış URL 'niz aynı olduğunda, bu sorundan kaçının. Özel etki alanlarını kullanmıyorsanız, bu sorunu gidermek için [Azure AD uygulama ara sunucusu ile yayımlanan uygulamalar için bkz. yeniden kodlanmış bağlantıları yeniden yönlendirme](./application-proxy-configure-hard-coded-link-translation.md) . 
   
 - Kullanıcılarınız, ağınızın içinden veya dışından aynı URL ile uygulamaya gidebildiğinden daha kolay bir deneyimle karşılaşacaktır. Farklı iç ve dış URL 'Ler öğrenmeleri veya geçerli konumlarını izlemesi gerekmez. 
 
-- Markanızı denetleyebilir ve istediğiniz URL 'Leri oluşturabilirsiniz. Kullanıcılar, *msappproxy.net*yerine tanıdık bir ad görüp kullandığından, özel bir etki alanı kullanıcılarınızın güvenini oluşturmaya yardımcı olabilir.
+- Markanızı denetleyebilir ve istediğiniz URL 'Leri oluşturabilirsiniz. Kullanıcılar, *msappproxy.net* yerine tanıdık bir ad görüp kullandığından, özel bir etki alanı kullanıcılarınızın güvenini oluşturmaya yardımcı olabilir.
 
 - Bazı yapılandırmalara yalnızca özel etki alanları ile çalışacaksınız. Örneğin, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullandığınızda, ancak WS-Federation ' i kullanırken Security Assertion Markup Language (SAML) kullanan uygulamalar için özel etki alanlarına ihtiyacınız vardır. Daha fazla bilgi için bkz. [uygulama proxy 'sinde talep kullanan uygulamalarla çalışma](application-proxy-configure-for-claims-aware-applications.md). 
 
@@ -42,7 +42,7 @@ Gereksinimlerinize bağlı olarak DNS yapılandırmanızı ayarlamaya yönelik �
 
 ### <a name="same-internal-and-external-url-different-internal-and-external-behavior"></a>Aynı dahili ve dış URL, farklı iç ve dış davranış 
 
-İç kullanıcılarınızın uygulama proxy 'Si aracılığıyla yönlendirilmesini istemiyorsanız, *bölünmüş beyinli BIR DNS*ayarlayabilirsiniz. Bölünmüş bir DNS altyapısı, iç Konakları iç etki alanı ad sunucusuna ve dış ana bilgisayarları, ad çözümlemesi için bir dış etki alanı ad sunucusuna yönlendirir. 
+İç kullanıcılarınızın uygulama proxy 'Si aracılığıyla yönlendirilmesini istemiyorsanız, *bölünmüş beyinli BIR DNS* ayarlayabilirsiniz. Bölünmüş bir DNS altyapısı, iç Konakları iç etki alanı ad sunucusuna ve dış ana bilgisayarları, ad çözümlemesi için bir dış etki alanı ad sunucusuna yönlendirir. 
 
 ![Ayrık beyinli DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
@@ -64,7 +64,7 @@ Dış URL için özel bir etki alanı seçtiğinizde, bir bilgi çubuğu dış D
 1. Özel etki alanı adınızı girip **etki alanı Ekle**' yi seçin. 
 1. Etki alanı sayfasında, etki alanınız için TXT kayıt bilgilerini kopyalayın. 
 1. Etki alanı Kaydedicinizin üzerine gidip, kopyalanmış DNS bilgilerinizi temel alarak etki alanınız için yeni bir TXT kaydı oluşturun.
-1. Etki alanını kaydettikten sonra, Azure Active Directory etki alanının sayfasında **Doğrula**' yı seçin. Etki alanı durumu **doğrulandıktan**sonra, uygulama proxy 'si de dahil olmak üzere tüm Azure AD yapılandırmalarında etki alanını kullanabilirsiniz. 
+1. Etki alanını kaydettikten sonra, Azure Active Directory etki alanının sayfasında **Doğrula**' yı seçin. Etki alanı durumu **doğrulandıktan** sonra, uygulama proxy 'si de dahil olmak üzere tüm Azure AD yapılandırmalarında etki alanını kullanabilirsiniz. 
 
 Daha ayrıntılı yönergeler için [Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme](../fundamentals/add-custom-domain.md)bölümüne bakın.
 
@@ -74,7 +74,7 @@ Uygulamanızı özel bir etki alanı ile uygulama proxy 'Si aracılığıyla yay
 
 1. Yeni bir uygulama için, Azure Active Directory, sol gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin. **Yeni uygulama**’yı seçin. Şirket **içi uygulamalar** bölümünde Şirket **içi uygulama ekle**' yi seçin. 
    
-   Zaten **Kurumsal uygulamalarda**bulunan bir uygulama için listeden seçin ve sol gezinti bölmesinde **uygulama proxy 'si** ' ni seçin. 
+   Zaten **Kurumsal uygulamalarda** bulunan bir uygulama için listeden seçin ve sol gezinti bölmesinde **uygulama proxy 'si** ' ni seçin. 
 
 2. Uygulama proxy 'Si ayarları sayfasında, kendi şirket içi uygulamanızı ekliyorsanız bir **ad** girin.
 
@@ -82,7 +82,7 @@ Uygulamanızı özel bir etki alanı ile uygulama proxy 'Si aracılığıyla yay
    
 4. **Dış URL** alanında, listeyi aşağı açılır ve kullanmak istediğiniz özel etki alanını seçin.
    
-5. **Ekle**’yi seçin.
+5. **Ekle**'yi seçin.
    
    ![Özel etki alanı seç](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
@@ -123,7 +123,7 @@ Tüm gerekli ara sertifikaların dahil edildiğinden emin olmak için bir PFX se
 
 Konu alternatif adı (SAN) gibi en yaygın sertifika imzası yöntemleri desteklenir. 
 
-Joker karakter, dış URL ile eşleştiği sürece joker sertifikaları kullanabilirsiniz. [Joker uygulamalar](application-proxy-wildcard.md)için joker karakter sertifikaları kullanmanız gerekir. Sertifikayı da alt etki alanlarına erişmek üzere kullanmak istiyorsanız, alt etki alanı joker karakterlerini aynı sertifikaya konu alternatif adları olarak eklemeniz gerekir. Örneğin, bir konu diğer adı olarak * \* . Apps.Adventure-Works.com* eklemediğiniz sürece. * \* adventure-works.com* için bir sertifika. * \* Apps.Adventure-Works.com* için çalışmaz. 
+Joker karakter, dış URL ile eşleştiği sürece joker sertifikaları kullanabilirsiniz. [Joker uygulamalar](application-proxy-wildcard.md)için joker karakter sertifikaları kullanmanız gerekir. Sertifikayı da alt etki alanlarına erişmek üzere kullanmak istiyorsanız, alt etki alanı joker karakterlerini aynı sertifikaya konu alternatif adları olarak eklemeniz gerekir. Örneğin, bir konu diğer adı olarak *\* . Apps.Adventure-Works.com* eklemediğiniz sürece. *\* adventure-works.com* için bir sertifika. *\* Apps.Adventure-Works.com* için çalışmaz. 
 
 Sertifika zinciri istemci cihazlarınızda yüklüyse, kendi ortak anahtar altyapınız (PKI) tarafından verilen sertifikaları kullanabilirsiniz. Intune, bu sertifikaları yönetilen cihazlara dağıtabilir. Yönetilmeyen cihazlar için, bu sertifikaları el ile yüklemelisiniz. 
 

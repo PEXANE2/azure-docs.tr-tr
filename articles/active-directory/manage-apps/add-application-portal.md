@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd81e5f87aaf4a28676b79863df60b71707849e9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91305772"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656522"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınıza uygulama ekleme
 
@@ -46,7 +46,7 @@ Azure AD kiracınıza bir uygulama eklemek için:
 2. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar**' ı seçin. **Tüm uygulamalar** bölmesi açılır ve Azure AD kiracınızdaki uygulamaların rastgele bir örneğini görüntüler.
 3. **Kurumsal uygulamalar** bölmesinde **Yeni uygulama**' yı seçin. 
     ![Kiracınıza Galeri uygulaması eklemek için yeni uygulama ' yı seçin](media/add-application-portal/new-application.png)
-4. Yeni Galeri önizleme deneyimine geç: **Uygulama Ekle sayfasının**en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**bağlantısını seçin.
+4. Yeni Galeri önizleme deneyimine geç: **Uygulama Ekle sayfasının** en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın** bağlantısını seçin.
 5. **Azure AD galerisine gözatıp (Önizleme)** bölmesi açılır ve bulut platformları, şirket içi uygulamalar ve öne çıkan uygulamalar için kutucukları görüntüler. **Öne çıkan uygulamalar** bölümünde listelenen uygulamalar, federe çoklu oturum açma (SSO) ve sağlamayı destekleyip desteklemediğini gösteren simgelere sahiptir. 
     ![Bir uygulamayı ada veya kategoriye göre ara](media/add-application-portal/browse-gallery.png)
 6. Eklemek istediğiniz uygulamanın galerisine gözatıp, arama kutusuna adını girerek uygulamayı arayabilirsiniz. Sonra sonuçlardan uygulamayı seçin. 
@@ -55,10 +55,10 @@ Azure AD kiracınıza bir uygulama eklemek için:
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="Ekran görüntüsü SSO türleri seçicisini gösterir." lightbox="media/add-application-portal/sso-types.png":::
 
     - Uygulamanın geliştiricisi SSO için **OIDC standardını** kullandıysanız **kaydolun**' ı seçin. Bir kurulum sayfası görüntülenir. Ardından, OıDC tabanlı çoklu oturum açmayı ayarlama hakkında hızlı başlangıç bölümüne gidin.
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Ekran görüntüsü SSO türleri seçicisini gösterir.":::
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Ekran görüntüsünde, OıDC tabanlı SSO uygulaması ekleme gösterilmektedir.":::
 
     - Uygulamanın geliştiricisi SSO için **SAML standardını** kullandıysanız **Oluştur**' u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır. Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz. Ardından, SAML tabanlı çoklu oturum açma 'yı ayarlamaya yönelik hızlı başlangıç sayfasına gidin.
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Ekran görüntüsü SSO türleri seçicisini gösterir.":::
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Ekran görüntüsü SAML tabanlı SSO uygulaması eklemeyi gösterir.":::
 
 
 > [!IMPORTANT]
@@ -69,7 +69,7 @@ Aradığınız uygulama Galeri 'de değilse, **kendi uygulamanızı oluşturma**
 Uygulama eklemeyi tamamladınız. Sonraki hızlı başlangıçta, logosunun nasıl değiştirileceği ve uygulamanızın diğer özelliklerinin nasıl düzenleneceği gösterilmektedir.
 
 > [!TIP]
-> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](/graph/application-saml-sso-configure-api).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

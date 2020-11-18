@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: b18eb0f8d57c06e82d243c10bf038a861bcf88d1
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: c28e79c9a6f8c489a97d360c4fe142d431b5ab5d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042702"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656556"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme
 
@@ -81,7 +81,7 @@ Daha önce belirtildiği gibi, tarayıcı hata iletileri neden başarısız oldu
 
 ![Örnek: yanlış KCD yapılandırma hatası](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olaylarını gösterir. **Uygulama ve hizmet günlüklerinde** bağlayıcı olay günlüklerini bulma &gt; **Microsoft** &gt; **aadapplicationproxy** &gt; **bağlayıcı** &gt; **Yöneticisi** .
+Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olaylarını gösterir. **Uygulama ve hizmet günlüklerinde** bağlayıcı olay günlüklerini bulma &gt; **Microsoft** &gt; **aadapplicationproxy** &gt; **bağlayıcı** &gt; **Yöneticisi**.
 
 ![Uygulama proxy 'Si olay günlüğünden olay 13019](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -90,7 +90,7 @@ Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olay
 1. **CNAME** değil, uygulamanın adresi IÇIN iç DNS 'Niz içindeki **bir** kaydı kullanın.
 1. Bağlayıcı ana bilgisayarına belirtilen hedef hesabın SPN 'sine temsilci atanmış hakkı verildiğini yeniden onaylayın. **Herhangi bir kimlik doğrulama protokolünü kullan** ' ın seçili olduğunu yeniden onaylayın. Daha fazla bilgi için bkz. [SSO yapılandırma makalesi](application-proxy-configure-single-sign-on-with-kcd.md).
 1. Azure AD 'de mevcut olan SPN 'nin yalnızca bir örneğinin olduğunu doğrulayın. `setspn -x`Herhangi bir etki alanı üyesi konağında bir komut isteminden sorun.
-1. [Verilen Kerberos belirteçlerinin maksimum boyutunu](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/)sınırlayan bir etki alanı ilkesinin zorlandığını denetleyin. Bu ilke, bağlayıcının aşırı olduğu bulunursa bir belirteç alınmasını engeller.
+1. [Verilen Kerberos belirteçlerinin maksimum boyutunu](/archive/blogs/askds/maxtokensize-and-windows-8-and-windows-server-2012)sınırlayan bir etki alanı ilkesinin zorlandığını denetleyin. Bu ilke, bağlayıcının aşırı olduğu bulunursa bir belirteç alınmasını engeller.
 
 Bağlayıcı ana bilgisayarı ve etki alanı KDC arasındaki alışverişleri yakalayan bir ağ izlemesi, sorunlar hakkında daha düşük düzeyde ayrıntı elde etmek için bir sonraki en iyi adımdır. Daha fazla bilgi için bkz. [ayrıntılı sorun giderme](https://aka.ms/proxytshootpaper)sayfası.
 
@@ -102,9 +102,9 @@ Bağlayıcı tarafından sağlanmış Kerberos biletinin tüketicisi. Bu aşamad
 
 1. Portalda tanımlanan iç URL 'yi kullanarak, uygulamanın bağlayıcı ana bilgisayarındaki tarayıcıdan doğrudan erişilebilir olduğunu doğrulayın. Ardından başarıyla oturum açabilirsiniz. Ayrıntılar bağlayıcı **sorun giderme** sayfasında bulunabilir.
 1. Hala bağlayıcı konağında, tarayıcı ve uygulama arasındaki kimlik doğrulamasının Kerberos kullandığını doğrulayın. Aşağıdaki eylemlerden birini uygulayın:
-1. Internet Explorer 'da DevTools ( **F12** ) öğesini çalıştırın veya bağlayıcı ana bilgisayardan [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) 'ı kullanın. İç URL 'YI kullanarak uygulamaya gidin. Negotiate veya Kerberos 'un mevcut olduğundan emin olmak için uygulamadan alınan yanıtta döndürülen, sunulan WWW yetkilendirme üst bilgilerini inceleyin.
+1. Internet Explorer 'da DevTools (**F12**) öğesini çalıştırın veya bağlayıcı ana bilgisayardan [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) 'ı kullanın. İç URL 'YI kullanarak uygulamaya gidin. Negotiate veya Kerberos 'un mevcut olduğundan emin olmak için uygulamadan alınan yanıtta döndürülen, sunulan WWW yetkilendirme üst bilgilerini inceleyin.
 
-   - Tarayıcıdan uygulamaya yapılan yanıtta döndürülen bir sonraki Kerberos blobu, **yıIı** ile başlar. Bu mektuplar, Kerberos 'un çalıştığını söyler. Diğer yandan Microsoft NT LAN Manager (NTLM), her zaman, Base64 'ten kodu çözülerek NTLM güvenlik desteği sağlayıcısı 'nı (NTLMSSP) okuyan **Tlrmtvntuaab** ile başlar. Blob başlangıcında **Tlrmtvntuaab** görürseniz, Kerberos kullanılabilir değildir. **Tlrmtvntuaab** ' yi görmüyorsanız, Kerberos büyük olasılıkla kullanılabilir.
+   - Tarayıcıdan uygulamaya yapılan yanıtta döndürülen bir sonraki Kerberos blobu, **yıIı** ile başlar. Bu mektuplar, Kerberos 'un çalıştığını söyler. Diğer yandan Microsoft NT LAN Manager (NTLM), her zaman, Base64 'ten kodu çözülerek NTLM güvenlik desteği sağlayıcısı 'nı (NTLMSSP) okuyan **Tlrmtvntuaab** ile başlar. Blob başlangıcında **Tlrmtvntuaab** görürseniz, Kerberos kullanılabilir değildir. **Tlrmtvntuaab**' yi görmüyorsanız, Kerberos büyük olasılıkla kullanılabilir.
 
       > [!NOTE]
       > Fiddler kullanırsanız, bu yöntem uygulamanın IIS 'deki yapılandırmasında genişletilmiş korumayı geçici olarak devre dışı bırakmanızı gerektirir.
@@ -115,7 +115,7 @@ Bağlayıcı tarafından sağlanmış Kerberos biletinin tüketicisi. Bu aşamad
 
 1. NTLM 'yi IIS sitesindeki sağlayıcılar listesinden geçici olarak kaldırın. Uygulamaya doğrudan bağlayıcı ana bilgisayarındaki Internet Explorer 'dan erişin. NTLM artık sağlayıcılar listesinde değil. Uygulamaya yalnızca Kerberos kullanarak erişebilirsiniz. Erişim başarısız olursa, uygulamanın yapılandırmasıyla ilgili bir sorun olabilir. Kerberos kimlik doğrulaması çalışmıyor.
 
-   - Kerberos kullanılamıyorsa, uygulamanın IIS 'de kimlik doğrulama ayarlarını kontrol edin. **Negotiate** 'in hemen altındaki NTLM ile en üstte listelendiğinden emin olun. **Negotiate** , **Kerberos veya Negotiate** ya da **PKU2U** ' u görmüyorsanız, yalnızca Kerberos çalışır ise devam edin.
+   - Kerberos kullanılamıyorsa, uygulamanın IIS 'de kimlik doğrulama ayarlarını kontrol edin. **Negotiate** 'in hemen altındaki NTLM ile en üstte listelendiğinden emin olun. **Negotiate**, **Kerberos veya Negotiate** ya da **PKU2U**' u görmüyorsanız, yalnızca Kerberos çalışır ise devam edin.
 
      ![Windows kimlik doğrulama sağlayıcıları](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
 

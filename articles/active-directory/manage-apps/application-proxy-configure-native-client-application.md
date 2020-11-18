@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09e813e0dff09885f104e43099b10d6f6f8a7f9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165082"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657440"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama
 
@@ -31,7 +31,7 @@ Yerel istemci uygulamalarını desteklemek için, uygulama proxy 'Si, üst bilgi
 
 ![Son kullanıcılar, Azure AD ve yayımlanan uygulamalar arasındaki ilişki](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Yerel uygulamaları yayımlamak için, kimlik doğrulamasından geçen ve birçok istemci ortamını destekleyen Microsoft kimlik doğrulama Kitaplığı ' nı kullanın. Uygulama proxy 'Si, [oturum açmış bir Kullanıcı senaryosu adına bir Web API 'si çağıran masaüstü uygulamasına](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user) uyar.
+Yerel uygulamaları yayımlamak için, kimlik doğrulamasından geçen ve birçok istemci ortamını destekleyen Microsoft kimlik doğrulama Kitaplığı ' nı kullanın. Uygulama proxy 'Si, [oturum açmış bir Kullanıcı senaryosu adına bir Web API 'si çağıran masaüstü uygulamasına](../develop/authentication-flows-app-scenarios.md#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user) uyar.
 
 Bu makalede, uygulama proxy 'Si ve Azure AD kimlik doğrulama kitaplığı ile yerel bir uygulama yayımlamanın dört adımı anlatılmaktadır.
 
@@ -46,7 +46,7 @@ Artık uygulamanızı şu şekilde Azure AD 'ye kaydetmeniz gerekir:
 1. [Azure Active Directory portalında](https://aad.portal.azure.com/)oturum açın. **Azure Active Directory Yönetim Merkezi** **panosu** görüntülenir.
 1. Kenar çubuğunda **Azure Active Directory**' yi seçin. **Azure Active Directory** genel bakış sayfası görüntülenir.
 1. Azure AD Genel Bakış kenar çubuğunda **uygulama kayıtları**' yi seçin. Tüm uygulama kayıtlarının listesi görüntülenir.
-1. **Yeni kayıt**seçeneğini belirleyin. **Uygulama kaydetme** sayfası görüntülenir.
+1. **Yeni kayıt** seçeneğini belirleyin. **Uygulama kaydetme** sayfası görüntülenir.
 
    ![Azure portal yeni bir uygulama kaydı oluşturun](./media/application-proxy-configure-native-client-application/create.png)
 
@@ -56,8 +56,8 @@ Artık uygulamanızı şu şekilde Azure AD 'ye kaydetmeniz gerekir:
    - Yalnızca kuruluşunuz için dahili olan hesapları hedeflemek için **yalnızca bu kuruluş dizininde hesaplar**' ı seçin.
    - Yalnızca iş veya Eğitim müşterilerini hedeflemek için **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
    - En geniş Microsoft kimlikleri kümesini hedeflemek için **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-1. **Yeniden yönlendirme URI 'si**altında **ortak istemci ' yi (mobil & Masaüstü)** seçin ve ardından uygulamanızın yeniden yönlendirme URI 'sini yazın `https://login.microsoftonline.com/common/oauth2/nativeclient` .
-1. **Microsoft Platformu ilkelerini**seçin ve okuyun ve ardından **Kaydet**' i seçin. Yeni uygulama kaydı için bir genel bakış sayfası oluşturulur ve görüntülenir.
+1. **Yeniden yönlendirme URI 'si** altında **ortak istemci ' yi (mobil & Masaüstü)** seçin ve ardından uygulamanızın yeniden yönlendirme URI 'sini yazın `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+1. **Microsoft Platformu ilkelerini** seçin ve okuyun ve ardından **Kaydet**' i seçin. Yeni uygulama kaydı için bir genel bakış sayfası oluşturulur ve görüntülenir.
 
 Yeni bir uygulama kaydı oluşturma hakkında daha ayrıntılı bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-register-app.md).
 
@@ -68,7 +68,7 @@ Yerel uygulamanızı kaydettirdiğiniz için, bu durumda ara sunucu uygulamasın
 1. Yeni uygulama kaydı sayfasının kenar çubuğunda, **API izinleri**' ni seçin. Yeni uygulama kaydı için **API izinleri** sayfası görüntülenir.
 1. **Izin Ekle**' yi seçin. **İstek API 'si izinleri** sayfası görüntülenir.
 1. **BIR API seçin** ayarı altında **Kuruluşumun kullandığı API 'ler**' i seçin. Dizininizde API 'Leri kullanıma sunan uygulamaları içeren bir liste görüntülenir.
-1. [1. Adım: ara sunucu uygulamanızı yayımlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-native-client-application#step-1-publish-your-proxy-application)bölümünde yayımladığınız proxy uygulamasını bulmak için arama kutusuna veya kaydırın, sonra da ara sunucu uygulamasını seçin.
+1. [1. Adım: ara sunucu uygulamanızı yayımlama](#step-1-publish-your-proxy-application)bölümünde yayımladığınız proxy uygulamasını bulmak için arama kutusuna veya kaydırın, sonra da ara sunucu uygulamasını seçin.
 1. **Uygulamanızın ne tür izinler gerekiyor?** başlığına izin türünü seçin. Yerel uygulamanızın oturum açmış kullanıcı olarak proxy uygulama API 'sine erişmesi gerekiyorsa, **temsilci izinleri**' ni seçin.
 1. **Izinleri Seç** başlığında, istenen izni seçin ve **izin Ekle**' yi seçin. Yerel uygulamanız için **API izinleri** sayfası artık eklediğiniz proxy uygulamasını ve izin API 'sini gösterir.
 

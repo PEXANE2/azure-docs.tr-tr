@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340317"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657185"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -56,7 +56,7 @@ Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolam
 Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 * **Depolama hedefi adı** -Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
-* **Hedef türü** - **BLOB**seçin.
+* **Hedef türü** - **BLOB** seçin.
 * **Depolama hesabı** -kullanmak istediğiniz hesabı seçin.
 
   [Erişim rolleri ekleme](#add-the-access-control-roles-to-your-account)bölümünde açıklandığı gibi, depolama hesabına erişmek için önbellek örneğini yetkilendirmeniz gerekecektir.
@@ -103,9 +103,9 @@ Azure rollerini ekleme adımları:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
 ### <a name="prerequisite-storage-account-access"></a>Önkoşul: depolama hesabı erişimi
+
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 BLOB depolama hedefi eklemeden önce, önbelleğin depolama hesabına erişmek için doğru rollere sahip olduğunu ve güvenlik duvarı ayarlarının depolama hedefi oluşturulmasına izin ver, olduğunu kontrol edin.
 
@@ -217,7 +217,7 @@ NFS ile desteklenen bir depolama hedefi için şu bilgileri sağlayın:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 Depolama hedefini oluşturmak için [az HPC-Cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) Azure CLI komutunu kullanın.
 
@@ -301,7 +301,7 @@ Daha fazla bilgi edinmek için [depolama hedeflerini düzenleme](hpc-cache-edit-
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC önbelleği Için Azure CLI 'Yi ayarlayın](./az-cli-prerequisites.md).
 
 Bir önbelleğin mevcut depolama hedeflerini göstermek için [az HPC-Cache Storage-Target List](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) seçeneğini kullanın. Önbellek adını ve kaynak grubunu sağlayın (Bu ayarı küresel olarak ayarlamadığınız müddetçe).
 

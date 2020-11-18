@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032433"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657933"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Şifreleme gereksinimleri ve Azure VPN ağ geçitleri hakkında
 
@@ -20,7 +20,7 @@ Bu makalede, Azure VPN ağ geçitlerini, hem şirket içi S2S VPN tünellerini h
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Azure VPN bağlantıları için IKEv1 ve IKEv2 hakkında
 
-Geleneksel olarak yalnızca temel SKU 'Lar için IKEv1 bağlantılara ve temel SKU 'Lardan başka tüm VPN Gateway SKU 'Larına izin verilen Ikev2 bağlantılarına izin verdik. Temel SKU 'Lar yalnızca 1 bağlantıya ve performans gibi diğer kısıtlamalarla birlikte yalnızca IKEv1 protokollerini destekleyen eski cihazları kullanan müşteriler sınırlı deneyimle izin veriyor. IKEv1 protokollerini kullanan müşterilerin deneyimini geliştirmek için artık temel SKU dışında tüm VPN Gateway SKU 'Larına yönelik IKEv1 bağlantılara izin veririz. Daha fazla bilgi için bkz. [VPN Gateway SKU 'lar](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
+Geleneksel olarak yalnızca temel SKU 'Lar için IKEv1 bağlantılara ve temel SKU 'Lardan başka tüm VPN Gateway SKU 'Larına izin verilen Ikev2 bağlantılarına izin verdik. Temel SKU 'Lar yalnızca 1 bağlantıya ve performans gibi diğer kısıtlamalarla birlikte yalnızca IKEv1 protokollerini destekleyen eski cihazları kullanan müşteriler sınırlı deneyimle izin veriyor. IKEv1 protokollerini kullanan müşterilerin deneyimini geliştirmek için artık temel SKU dışında tüm VPN Gateway SKU 'Larına yönelik IKEv1 bağlantılara izin veririz. Daha fazla bilgi için bkz. [VPN Gateway SKU 'lar](./vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ![Azure VPN Gateway IKEv1 ve IKEv2 bağlantıları](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 

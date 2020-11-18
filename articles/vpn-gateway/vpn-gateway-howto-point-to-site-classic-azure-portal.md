@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: a66b76350da6f3b3804dac73a7aeb9f54d2e34eb
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938381"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657083"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Sertifika kimlik doğrulaması kullanarak noktadan siteye bağlantı yapılandırma (klasik)
 
@@ -22,7 +22,7 @@ ms.locfileid: "91938381"
 Bu makalede, Noktadan siteye bağlantı ile sanal ağ oluşturma konusu gösterilmektedir. Azure portal kullanarak bu VNet 'i klasik dağıtım modeliyle oluşturursunuz. Bu yapılandırma, bağlanan istemcinin kimliğini doğrulamak için otomatik olarak imzalanan veya CA tarafından verilen sertifikaları kullanır. Aşağıdaki makalelerde açıklanan seçenekleri kullanarak bu yapılandırmayı farklı bir dağıtım aracı veya modeliyle de oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure portalı](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
@@ -63,7 +63,7 @@ Aşağıdaki değerleri kullanarak bir test ortamı oluşturun veya bu makaledek
 * **Gatewaysubnet:** 10.11.255.0/27
 * **Bölge:** (US) Doğu ABD
 * **İstemci adres alanı:** 172.16.201.0/24 <br> Sanal ağa bu noktadan siteye bağlantıyı kullanarak bağlanan VPN istemcileri belirtilen havuzdan bir IP adresi alır.
-* **Bağlantı türü**: **Noktadan siteye**seçeneğini belirleyin.
+* **Bağlantı türü**: **Noktadan siteye** seçeneğini belirleyin.
 * **Gatewaysubnet adres aralığı (CIDR bloğu):** 192.168.200.0/24
 
 Başlamadan önce, bir Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
@@ -79,7 +79,7 @@ Zaten bir sanal ağınız varsa, ayarların VPN ağ geçidi tasarımınızla uyu
 ## <a name="create-a-vpn-gateway"></a><a name="gateway"></a>VPN ağ geçidi oluşturma
 
 1. Oluşturduğunuz VNet 'e gidin.
-1. VNet sayfasında, ayarlar altında **ağ geçidi**' ni seçin. **Ağ geçidi** sayfasında, sanal ağınızın ağ geçidini görüntüleyebilirsiniz. Bu sanal ağ henüz bir ağ geçidine sahip değil. **Bağlantı ve ağ geçidi eklemek için buraya tıklayacağını**belirten nota tıklayın.
+1. VNet sayfasında, ayarlar altında **ağ geçidi**' ni seçin. **Ağ geçidi** sayfasında, sanal ağınızın ağ geçidini görüntüleyebilirsiniz. Bu sanal ağ henüz bir ağ geçidine sahip değil. **Bağlantı ve ağ geçidi eklemek için buraya tıklayacağını** belirten nota tıklayın.
 1. **VPN bağlantısı ve ağ geçidi yapılandırma** sayfasında, aşağıdaki ayarları seçin:
 
    * Bağlantı türü: Noktadan siteye
@@ -97,7 +97,7 @@ Zaten bir sanal ağınız varsa, ayarların VPN ağ geçidi tasarımınızla uyu
 
 ## <a name="create-certificates"></a><a name="generatecerts"></a>Sertifika oluşturma
 
-Azure, Noktadan siteye VPN 'Lerde VPN istemcilerinin kimliğini doğrulamak için sertifikaları kullanır. Kök sertifikanın ortak anahtar bilgilerini Azure'a yükleyin. Ortak anahtar daha sonra *güvenilir*olarak değerlendirilir. İstemci sertifikalarının güvenilir kök sertifikadan oluşturulması ve ardından Certificates-Current User\person\certificates sertifika deposundaki her bir istemci bilgisayara yüklenmesi gerekir. Sertifika, VNet 'e bağlanırken istemcinin kimliğini doğrulamak için kullanılır. 
+Azure, Noktadan siteye VPN 'Lerde VPN istemcilerinin kimliğini doğrulamak için sertifikaları kullanır. Kök sertifikanın ortak anahtar bilgilerini Azure'a yükleyin. Ortak anahtar daha sonra *güvenilir* olarak değerlendirilir. İstemci sertifikalarının güvenilir kök sertifikadan oluşturulması ve ardından Certificates-Current User\person\certificates sertifika deposundaki her bir istemci bilgisayara yüklenmesi gerekir. Sertifika, VNet 'e bağlanırken istemcinin kimliğini doğrulamak için kullanılır. 
 
 Otomatik olarak imzalanan sertifikalar kullanıyorsanız, bunların belirli parametreler kullanılarak oluşturulması gerekir. [PowerShell ve Windows 10](vpn-gateway-certificates-point-to-site.md)veya [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)yönergelerini kullanarak otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. Otomatik olarak imzalanan kök sertifikaları kullanırken ve otomatik olarak imzalanan kök sertifikadan istemci sertifikaları oluştururken bu talimatlardaki adımları izlemeniz önemlidir. Aksi halde, oluşturduğunuz sertifikalar P2S bağlantılarıyla uyumlu olmaz ve bağlantı hatası alırsınız.
 
@@ -152,8 +152,8 @@ Bu alıştırmada, istemci sertifikasını oluşturduğunuzda bilgisayarınıza 
 >
 
 1. İstemci bilgisayarda VPN ayarları ' na gidin.
-1. Oluşturduğunuz VPN 'yi seçin. Örnek ayarları kullandıysanız, bağlantı **Grup TestRG VNet1**olarak etiketlenir.
-1. **Bağlan**'ı seçin.
+1. Oluşturduğunuz VPN 'yi seçin. Örnek ayarları kullandıysanız, bağlantı **Grup TestRG VNet1** olarak etiketlenir.
+1. **Bağlan**’ı seçin.
 1. Windows Azure sanal ağ kutusunda **Bağlan**' ı seçin. Sertifika hakkında bir açılır ileti görünürse, yükseltilmiş ayrıcalıkları kullanmak için **devam** ' ı ve yapılandırma değişikliklerini kabul etmek için **Evet** ' i seçin.
 1. Bağlantınız başarılı olursa, **bağlı** bir bildirim görürsünüz.
 
@@ -161,7 +161,7 @@ Bu alıştırmada, istemci sertifikasını oluşturduğunuzda bilgisayarınıza 
 
 ## <a name="verify-the-vpn-connection"></a>VPN bağlantısını doğrulama
 
-1. VPN bağlantınızın etkin olduğunu doğrulayın. İstemci bilgisayarınızda yükseltilmiş bir komut istemi açın ve **ipconfig/all**komutunu çalıştırın.
+1. VPN bağlantınızın etkin olduğunu doğrulayın. İstemci bilgisayarınızda yükseltilmiş bir komut istemi açın ve **ipconfig/all** komutunu çalıştırın.
 1. Sonuçlara bakın. Aldığınız IP adresinin, sanal ağınızı oluştururken belirlediğiniz Noktadan Siteye bağlantı adres aralığı içerisinden bir adres olduğuna dikkat edin. Sonuçlar şu örneğe benzer olmalıdır:
 
    ```
@@ -202,7 +202,7 @@ Genellikle ekip ve kuruluş düzeylerinde erişimi yönetmek için kök sertifik
 
 Parmak izini iptal listesine ekleyerek bir istemci sertifikasını iptal edebilirsiniz.
 
-1. İstemci sertifikasının parmak izini alın. Daha fazla bilgi için bkz. [Nasıl yapılır: Bir Sertifikanın Parmak İzini Alma](https://msdn.microsoft.com/library/ms734695.aspx).
+1. İstemci sertifikasının parmak izini alın. Daha fazla bilgi için bkz. [Nasıl yapılır: Bir Sertifikanın Parmak İzini Alma](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate).
 1. Bilgileri bir metin düzenleyicisine kopyalayın ve alanlarını sürekli bir dize olacak şekilde kaldırın.
 1. **Noktadan sıteye VPN bağlantısı**' na gidin ve **sertifikayı Yönet**' i seçin.
 1. İptal **listesi ' ni seçerek** **iptal listesi** sayfasını açın.
@@ -217,8 +217,8 @@ Güncelleştirme tamamlandıktan sonra sertifika artık bağlanmak için kullan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](https://docs.microsoft.com/azure/).
+* Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makineler](../index.yml).
 
-* Ağ ve Linux sanal makineleri hakkında daha fazla bilgi edinmek için bkz. [Azure ve LINUX VM ağına genel bakış](../virtual-machines/linux/network-overview.md).
+* Ağ ve Linux sanal makineleri hakkında daha fazla bilgi edinmek için bkz. [Azure ve LINUX VM ağına genel bakış](../virtual-machines/network-overview.md).
 
 * P2S sorun giderme bilgileri için [Azure noktadan siteye bağlantıları sorununu giderme](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

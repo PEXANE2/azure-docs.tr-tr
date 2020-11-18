@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7babe23426cafe01cadc7a5557f91896aa9bbae4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108210"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657338"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
 
@@ -39,7 +39,7 @@ Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşa�
 
 **Amaç:** Bağlayıcı makinenin uygulama proxy 'Si kayıt uç noktasına ve Microsoft oturum açma sayfasına bağlanabildiğini doğrulayın.
 
-1.  Bağlayıcı sunucusunda, 443 ve 80 bağlantı noktalarının açık olduğunu doğrulamak için [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) veya diğer bağlantı noktası test aracı kullanarak bir bağlantı noktası testi çalıştırın.
+1.  Bağlayıcı sunucusunda, 443 ve 80 bağlantı noktalarının açık olduğunu doğrulamak için [Telnet](/windows-server/administration/windows-commands/telnet) veya diğer bağlantı noktası test aracı kullanarak bir bağlantı noktası testi çalıştırın.
 
 2.  Bu bağlantı noktalarından herhangi biri başarılı olmazsa, güvenlik duvarının veya arka uç proxy 'sinin gerekli etki alanlarına ve bağlantı noktalarına erişimi olduğunu doğrulayın, Şirket [içi ortamınızı hazırlayın](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
@@ -74,16 +74,16 @@ Geçerli istemci sertifikasının parmak izini doğrulayın. Sertifika depolama 
 </ConnectorTrustSettingsFile>
 ```
 
-Olası **ısınuserstore** değerleri **true** ve **false**şeklindedir. **Doğru** değeri, otomatik olarak yenilenen sertifikanın, ağ hizmetinin Kullanıcı sertifikası deposundaki kişisel kapsayıcıda depolandığı anlamına gelir. **False** değeri, istemci sertifikasının yükleme sırasında veya Register-AppProxyConnector komutu tarafından başlatılan kayıt sırasında oluşturulduğu ve yerel makinenin sertifika deposundaki kişisel kapsayıcıda depolandığı anlamına gelir.
+Olası **ısınuserstore** değerleri **true** ve **false** şeklindedir. **Doğru** değeri, otomatik olarak yenilenen sertifikanın, ağ hizmetinin Kullanıcı sertifikası deposundaki kişisel kapsayıcıda depolandığı anlamına gelir. **False** değeri, istemci sertifikasının yükleme sırasında veya Register-AppProxyConnector komutu tarafından başlatılan kayıt sırasında oluşturulduğu ve yerel makinenin sertifika deposundaki kişisel kapsayıcıda depolandığı anlamına gelir.
 
-Değer **true**ise, sertifikayı doğrulamak için şu adımları izleyin:
-1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) indir
-2. Paketten [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) 'yi ayıklayın ve yükseltilmiş bir komut isteminden **PsExec-i-u "NT authorıty\servıce" cmd.exe** çalıştırın.
+Değer **true** ise, sertifikayı doğrulamak için şu adımları izleyin:
+1. [PsTools.zip](/sysinternals/downloads/pstools) indir
+2. Paketten [PsExec](/sysinternals/downloads/psexec) 'yi ayıklayın ve yükseltilmiş bir komut isteminden **PsExec-i-u "NT authorıty\servıce" cmd.exe** çalıştırın.
 3. Yeni görünen komut isteminde **certmgr. msc** dosyasını çalıştır
 4. Yönetim konsolunda kişisel kapsayıcıyı genişletin ve Sertifikalar ' a tıklayın.
 5. **Connectorregistrationca.msappproxy.net** tarafından verilen sertifikayı bulma
 
-Değer **false**ise, sertifikayı doğrulamak için aşağıdaki adımları izleyin:
+Değer **false** ise, sertifikayı doğrulamak için aşağıdaki adımları izleyin:
 1. **Certlm. msc** çalıştırma
 2. Yönetim konsolunda kişisel kapsayıcıyı genişletin ve Sertifikalar ' a tıklayın.
 3. **Connectorregistrationca.msappproxy.net** tarafından verilen sertifikayı bulma
@@ -101,7 +101,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-Register-AppProxyConnector komutu hakkında daha fazla bilgi edinmek için lütfen bkz [. Azure AD uygulama ara sunucusu Bağlayıcısı için katılımsız yükleme betiği oluşturma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)
+Register-AppProxyConnector komutu hakkında daha fazla bilgi edinmek için lütfen bkz [. Azure AD uygulama ara sunucusu Bağlayıcısı için katılımsız yükleme betiği oluşturma](./application-proxy-register-connector-powershell.md)
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Bağlayıcıyı yüklemek için yöneticinin kullanıldığını doğrulayın
 
@@ -109,7 +109,7 @@ Register-AppProxyConnector komutu hakkında daha fazla bilgi edinmek için lütf
 
 **Kimlik bilgilerinin doğru olduğunu doğrulamak için:**
 
-' A bağlanın `https://login.microsoftonline.com` ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun. **Azure Active Directory**  - &gt; **Kullanıcılar ve gruplar**  - &gt; **tüm kullanıcılar**Azure Active Directory giderek Kullanıcı rolünü kontrol edebilirsiniz. 
+' A bağlanın `https://login.microsoftonline.com` ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun. **Azure Active Directory**  - &gt; **Kullanıcılar ve gruplar**  - &gt; **tüm kullanıcılar** Azure Active Directory giderek Kullanıcı rolünü kontrol edebilirsiniz. 
 
 Kullanıcı hesabınızı ve ardından ortaya çıkan menüdeki "Dizin rolü" nü seçin. Seçili rolün "uygulama Yöneticisi" olduğunu doğrulayın. Bu adımlarla ilgili sayfaların hiçbirine erişemiyorsanız, gerekli rolünüzün olması gerekmez.
 

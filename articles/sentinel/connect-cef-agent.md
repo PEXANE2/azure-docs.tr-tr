@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 512e5e0140038b27b7ffc9f2affb4a0e5b28b41b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516746"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655842"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -34,7 +34,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
     - TCP bağlantı noktası 514 ' deki güvenlik çözümlerinizde syslog iletilerini dinleme
     - TCP bağlantı noktası 25226 kullanarak yalnızca, CEF olarak tanımladığı iletileri localhost üzerinde Log Analytics aracısına iletme
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
@@ -46,7 +46,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 
 ## <a name="run-the-deployment-script"></a>Dağıtım betiğini çalıştırma
  
-1. Azure Sentinel gezinti menüsünde, **veri bağlayıcıları** ' na tıklayın. Bağlayıcılar listesinden **ortak olay biçimi (CEF)** kutucuğuna ve ardından sağ alt köşedeki **bağlayıcı sayfası aç** düğmesine tıklayın. 
+1. Azure Sentinel gezinti menüsünde, **veri bağlayıcıları**' na tıklayın. Bağlayıcılar listesinden **ortak olay biçimi (CEF)** kutucuğuna ve ardından sağ alt köşedeki **bağlayıcı sayfası aç** düğmesine tıklayın. 
 
 1. 1,2 altında, **CEF toplayıcısını Linux makinesine yüklemek** için aşağıdaki betiği Çalıştır altında belirtilen bağlantıyı kopyalayın **ve CEF toplayıcısı 'nı yüklemek ve uygulamak için aşağıdaki** METINDEN (çalışma alanı kimliğini ve birincil anahtarı yer tutucuları yerine uygulayarak) uygulayın:
 
@@ -212,5 +212,4 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, CEF gereçlerini Azure Sentinel 'e bağlamak için Log Analytics aracısının nasıl dağıtılacağını öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
-
+- [Azure Sentinel ile tehditleri algılamaya](./tutorial-detect-threats-built-in.md)başlayın.

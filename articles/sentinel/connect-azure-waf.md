@@ -9,19 +9,19 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88264074"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655910"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Azure Web uygulaması güvenlik duvarı 'ndan (WAF) veri bağlama
 
-Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan kötü amaçlı saldırılara karşı giderek daha da yöneliktir. Azure Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın kod ekleme ve siteler arası betik oluşturma gibi yaygın güvenlik açıklarından ve tehditlerden merkezi bir şekilde korunmasını sağlar. Azure WAF, Azure [Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) hizmeti, [Azure ön kapı](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview) hizmeti ve [Azure Content Delivery Network (CDN)](https://docs.microsoft.com/azure/web-application-firewall/cdn/cdn-overview) WAF ilkesi aracılığıyla (Şu anda genel önizleme aşamasında) dağıtılabilir.
+Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan kötü amaçlı saldırılara karşı giderek daha da yöneliktir. Azure Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın kod ekleme ve siteler arası betik oluşturma gibi yaygın güvenlik açıklarından ve tehditlerden merkezi bir şekilde korunmasını sağlar. Azure WAF, Azure [Application Gateway](../web-application-firewall/ag/ag-overview.md) hizmeti, [Azure ön kapı](../web-application-firewall/afds/afds-overview.md) hizmeti ve [Azure Content Delivery Network (CDN)](../web-application-firewall/cdn/cdn-overview.md) WAF ilkesi aracılığıyla (Şu anda genel önizleme aşamasında) dağıtılabilir.
 Azure WAF günlüklerini Azure Sentinel 'e bağlanarak, çalışma kitaplarında günlük verilerini görüntülemenize, özel uyarılar oluşturmak için bu uygulamayı kullanmanıza ve araştırmanızı iyileştirebilecek şekilde katabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izinlerine sahip olmanız gerekir.
 
@@ -33,7 +33,7 @@ Azure WAF günlüklerini Azure Sentinel 'e bağlanarak, çalışma kitaplarında
 
 1. Veri bağlayıcıları galerisinden **Azure Web uygulaması güvenlik duvarını (WAF)** seçin ve ardından Önizleme bölmesinde **bağlayıcı sayfasını aç** ' ı seçin.
 
-1. Günlüklerini bağlamak istediğiniz WAF kaynağı türü için bağlantıyı seçin – **Application Gateway kaynak >açın **, **ön kapı kaynağı >açın **veya **Content Delivery Network (CDN) WAF ilkesi >** açın ve kaynak listesinin ekranında bir kez, listeden bir WAF kaynağı seçin.
+1. Günlüklerini bağlamak istediğiniz WAF kaynağı türü için bağlantıyı seçin – **Application Gateway kaynak >açın**, **ön kapı kaynağı >açın** veya **Content Delivery Network (CDN) WAF ilkesi >** açın ve kaynak listesinin ekranında bir kez, listeden bir WAF kaynağı seçin.
 
     1. WAF kaynağının gezinti menüsünde **Tanılama ayarları**' nı seçin.
 
@@ -58,7 +58,7 @@ Azure WAF günlüklerini Azure Sentinel 'e bağlanarak, çalışma kitaplarında
 
 - Azure WAF günlük verileriniz hakkında öngörü almak için **Azure Web uygulaması güvenlik duvarı** veri Bağlayıcısı ile birlikte paketlenmiş önerilen çalışma kitaplarına, sorgu örneklerine ve analiz kuralı şablonlarına bakın.
 
-- **Günlüklerde**Azure WAF verilerini sorgulamak için sorgu penceresine **AzureDiagnostics** yazın.
+- **Günlüklerde** Azure WAF verilerini sorgulamak için sorgu penceresine **AzureDiagnostics** yazın.
 
 > [!NOTE]
 >

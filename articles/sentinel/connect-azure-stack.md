@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 9ff70e7c05ca8de49f560fba3d59f0609785b8c4
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 9ac4aa9e93ac296913d7a62e83b182d673015bae
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636784"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655978"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack hub sanal makinelerini Azure Sentinel 'e bağlama
 
@@ -34,19 +34,19 @@ Azure Stack hub makinelerine bağlandıktan sonra verilerinizi temel alan bir pa
 
 Azure Stack hub 'ınızda çalışan sanal makinelere **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısını ekleyin. 
 
-1. Yeni bir tarayıcı sekmesinde [Azure Stack hub Portal](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)' da oturum açın.
-2. **Sanal makineler** sayfasına gidin, Azure Sentinel ile korumak istediğiniz sanal makineyi seçin. Azure Stack hub 'da sanal makine oluşturma hakkında daha fazla bilgi için, bkz. [bir Windows Server VM oluşturma, Azure Stack hub portalı Ile oluşturma](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) veya [Azure Stack hub portalını kullanarak BIR Linux Server VM oluşturma](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal).
-3. **Uzantılar** 'ı seçin. Bu sanal makinede yüklü olan sanal makine uzantılarının listesi gösteriliyor.
+1. Yeni bir tarayıcı sekmesinde [Azure Stack hub Portal](/azure-stack/user/azure-stack-use-portal#access-the-portal)' da oturum açın.
+2. **Sanal makineler** sayfasına gidin, Azure Sentinel ile korumak istediğiniz sanal makineyi seçin. Azure Stack hub 'da sanal makine oluşturma hakkında daha fazla bilgi için, bkz. [bir Windows Server VM oluşturma, Azure Stack hub portalı Ile oluşturma](/azure-stack/user/azure-stack-quick-windows-portal) veya [Azure Stack hub portalını kullanarak BIR Linux Server VM oluşturma](/azure-stack/user/azure-stack-quick-linux-portal).
+3. **Uzantılar**'ı seçin. Bu sanal makinede yüklü olan sanal makine uzantılarının listesi gösteriliyor.
 4. **Ekle** sekmesine tıklayın. **Yeni kaynak** menüsü dikey penceresi açılır ve kullanılabilir sanal makine uzantılarının listesini gösterir. 
-5. **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını seçin ve **Oluştur** ' a tıklayın. **Uzantı yapılandırmasını yükler** penceresi açılır.
+5. **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını seçin ve **Oluştur**' a tıklayın. **Uzantı yapılandırmasını yükler** penceresi açılır.
 
    ![Azure Izleyici, güncelleştirme ve yapılandırma yönetimi ayarları](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
 
    >[!NOTE]
    > Market 'te listelenen **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını görmüyorsanız, kullanılabilir hale getirmek Için Azure Stack hub işletmenine ulaşın.
 
-6. Azure Sentinel menüsünde, **çalışma alanı ayarları** ' nı ve ardından **Gelişmiş** ' i SEÇIN ve **çalışma alanı kimliğini** ve **çalışma alanı anahtarını (birincil anahtar)** kopyalayın. 
-1. Azure Stack hub 'ı **yüklemesi uzantısı** penceresinde, bunları belirtilen alanlara yapıştırın ve **Tamam** ' a tıklayın.
+6. Azure Sentinel menüsünde, **çalışma alanı ayarları** ' nı ve ardından **Gelişmiş**' i SEÇIN ve **çalışma alanı kimliğini** ve **çalışma alanı anahtarını (birincil anahtar)** kopyalayın. 
+1. Azure Stack hub 'ı **yüklemesi uzantısı** penceresinde, bunları belirtilen alanlara yapıştırın ve **Tamam**' a tıklayın.
 1. Uzantı yüklemesi tamamlandıktan sonra, durumu **sağlama başarılı** olarak gösterilir. Sanal makinenin Azure Sentinel portalında görünmesi bir saate kadar sürebilir.
 
 Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
@@ -62,8 +62,8 @@ Uzantıyı kaldırmak için:
 
 1. **Azure Stack hub portalını** açın.
 2. **Sanal makineler** sayfasına gidin, uzantıyı kaldırmak istediğiniz sanal makineyi seçin.
-3. **Uzantılar** ' ı seçin, **Microsoft. Enterprisecloud. Monitoring** uzantısını seçin.
-4. **Kaldır** ' a tıklayın ve seçiminizi onaylayın.
+3. **Uzantılar**' ı seçin, **Microsoft. Enterprisecloud. Monitoring** uzantısını seçin.
+4. **Kaldır**' a tıklayın ve seçiminizi onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

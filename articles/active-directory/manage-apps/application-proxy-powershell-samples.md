@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efe71fd77e9e4edb7fc7df4c633ae8f81177097b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85554994"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657829"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu için Azure AD PowerShell örnekleri
 
-Aşağıdaki tablo Azure AD Uygulama Ara Sunucusu için PowerShell betiği örneklerine bağlantılar içerir. Bu örnekler, aksi belirtilmedikçe, Graph modülü [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) veya [Graf modülü önizleme sürümü Için azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)gerektirir.
+Aşağıdaki tablo Azure AD Uygulama Ara Sunucusu için PowerShell betiği örneklerine bağlantılar içerir. Bu örnekler, aksi belirtilmedikçe, Graph modülü [Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) veya [Graf modülü önizleme sürümü Için azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)gerektirir.
 
 
-Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uygulama proxy 'Si uygulama yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) ve [uygulama proxy Bağlayıcısı yönetimi](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
+Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uygulama proxy 'Si uygulama yönetimi](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) ve [uygulama proxy Bağlayıcısı yönetimi](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
 
 | Bağlantı | Açıklama |
 |---|---|
@@ -32,7 +32,7 @@ Bu örneklerde kullanılan cmdlet 'ler hakkında daha fazla bilgi için bkz. [uy
 | [Tüm uygulama proxy uygulamaları için temel bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-basic.md) | Dizininizdeki tüm uygulama proxy uygulamaları hakkında temel bilgileri (AppID, DisplayName, ObjId) listeler. |
 | [Tüm uygulama proxy uygulamaları için genişletilmiş bilgileri listeleyin](scripts/powershell-get-all-app-proxy-apps-extended.md) | Dizininizdeki tüm uygulama proxy uygulamaları hakkında genişletilmiş bilgileri (AppID, DisplayName, ExternalUrl, InternalUrl, ExternalAuthenticationType) listeler.  |
 | [Tüm uygulama proxy uygulamalarını bağlayıcı grubuna göre Listele](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Dizininizdeki tüm uygulama proxy uygulamalarıyla ilgili bilgileri ve uygulamaların hangi bağlayıcı gruplarına atandığını listeler. |
-| [Belirteç ömür ilkesi ile tüm uygulama proxy uygulamalarını edinme](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Bir belirteç ömür ilkesi ve ayrıntıları ile dizininizdeki tüm uygulama proxy uygulamalarını listeler. Bu örnek, [Graf modülü önizleme sürümü Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)'i gerektirir. |
+| [Belirteç ömür ilkesi ile tüm uygulama proxy uygulamalarını edinme](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Bir belirteç ömür ilkesi ve ayrıntıları ile dizininizdeki tüm uygulama proxy uygulamalarını listeler. Bu örnek, [Graf modülü önizleme sürümü Için Azuread v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)'i gerektirir. |
 |**Bağlayıcı grupları**||
 | [Dizindeki tüm bağlayıcı gruplarını ve bağlayıcıları al](scripts/powershell-get-all-connectors.md) | Dizininizdeki tüm bağlayıcı gruplarını ve bağlayıcıları listeler. |
 | [Bir bağlayıcı grubuna atanan tüm uygulamaları başka bir bağlayıcı grubuna Taşı](scripts/powershell-move-all-apps-to-connector-group.md) | Bir bağlayıcı grubuna şu anda atanmış olan tüm uygulamaları farklı bir bağlayıcı grubuna taşırlar. |

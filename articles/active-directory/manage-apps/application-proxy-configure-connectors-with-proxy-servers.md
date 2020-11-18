@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 81a735966b2a0ebdd7c8fcd9e9aa467d68aac354
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792761"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656349"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -179,7 +179,7 @@ Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhan
    ![Services. msc ' de Azure AD Uygulama Ara Sunucusu Bağlayıcısı hizmeti](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 1. Ileti Çözümleyicisi 'ni yönetici olarak çalıştırın.
-1. **Yerel Izlemeyi Başlat** ' ı seçin.
+1. **Yerel Izlemeyi Başlat**' ı seçin.
 1. Azure AD Uygulama Ara Sunucusu Bağlayıcısı hizmetini başlatın.
 1. Ağ yakalamayı durdurun.
 
@@ -189,7 +189,7 @@ Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhan
 
 Uygulama proxy bağlayıcınızı proxy sunucularını atlayacak ve doğrudan uygulama ara sunucusu hizmetine bağlanacak şekilde yapılandırdıysanız, başarısız olan TCP bağlantı girişimleri için ağ yakalamaya bakmak isteyebilirsiniz.
 
-Bu denemeleri belirlemek için Ileti Çözümleyicisi filtresini kullanın. `property.TCPSynRetransmit`Filtre kutusuna girin ve **Uygula** ' yı seçin.
+Bu denemeleri belirlemek için Ileti Çözümleyicisi filtresini kullanın. `property.TCPSynRetransmit`Filtre kutusuna girin ve **Uygula**' yı seçin.
 
 Bir SYN paketi, TCP bağlantısı kurmak için gönderilen ilk pakettir. Bu paket bir yanıt döndürmezse, SYN işlemi yeniden deneyin. Yeniden iletilen tüm sistem 'leri görmek için önceki filtreyi kullanabilirsiniz. Ardından, bu sistem 'lerin bağlayıcıyla ilgili herhangi bir trafiğe karşılık geldiğini kontrol edebilirsiniz.
 
@@ -208,4 +208,4 @@ Yukarıdaki filtrede yalnızca HTTPs istekleri ve proxy bağlantı noktasından/
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
-* Bağlayıcı bağlantı sorunlarıyla ilgili sorun yaşıyorsanız, [Azure Active Directory Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-active-directory.html) soru sorun veya destek ekibimiz ile bir bilet oluşturun.
+* Bağlayıcı bağlantı sorunlarıyla ilgili sorun yaşıyorsanız, [Azure Active Directory Için Microsoft Q&soru sayfasında](/answers/topics/azure-active-directory.html) soru sorun veya destek ekibimiz ile bir bilet oluşturun.

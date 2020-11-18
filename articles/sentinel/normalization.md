@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941819"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657032"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 'te normalleştirme
 
@@ -58,7 +58,7 @@ OSSEM varlık yapısı hakkında daha fazla bilgi edinmek için [RESMI ossem ba�
 
 ### <a name="how-the-normalized-schemas-are-implemented-in-azure-sentinel"></a>Azure Sentinel 'de normalleştirilmiş şemalar nasıl uygulanır
 
-Azure Sentinel 'de OSSEM CıM 'in uygulanmasında, bu temsilin yerleşik bir tablo olup olmadığı veya mevcut verileri bu gösterimde eşleştiren sorgu zamanı Çözümleyicileri ya da işlevleri kullanılarak oluşturulmuş olması halinde, OSSEM gösterimini Log Analytics tablolu bir gösterimine yansıtıyoruz. Tablo gösteriminde, OSSEM varlık adlarını ve öznitelik adlarını birleştirirken ve bunları topluca tek bir sütun adıyla eşleştiriyoruz. Örneğin, MD5 özniteliği içeren bir karma varlık içeren bir dosya varlığı içeren bir kaynak varlık, şu Log Analytics sütunu olarak uygulanır: SrcFileHashMd5. (OSSEM varsayılan olarak *snake_case* kullanır, Azure Sentinel ve Log Analytics *PascalCase*kullanır. OSSEM 'de böyle bir sütun src_file_hash_md5.)
+Azure Sentinel 'de OSSEM CıM 'in uygulanmasında, bu temsilin yerleşik bir tablo olup olmadığı veya mevcut verileri bu gösterimde eşleştiren sorgu zamanı Çözümleyicileri ya da işlevleri kullanılarak oluşturulmuş olması halinde, OSSEM gösterimini Log Analytics tablolu bir gösterimine yansıtıyoruz. Tablo gösteriminde, OSSEM varlık adlarını ve öznitelik adlarını birleştirirken ve bunları topluca tek bir sütun adıyla eşleştiriyoruz. Örneğin, MD5 özniteliği içeren bir karma varlık içeren bir dosya varlığı içeren bir kaynak varlık, şu Log Analytics sütunu olarak uygulanır: SrcFileHashMd5. (OSSEM varsayılan olarak *snake_case* kullanır, Azure Sentinel ve Log Analytics *PascalCase* kullanır. OSSEM 'de böyle bir sütun src_file_hash_md5.)
 
 Azure Sentinel uygulamasında ek özel alanlar, Log Analytics Platform gereksinimleri ve Azure Sentinel müşterilerine özgü durumlar nedeniyle mevcut olabilir.
 
@@ -95,9 +95,9 @@ Kullanılabilir sorgu süresi ayrıştırıcıları, Azure Sentinel [resmi GitHu
 
     1. **Işlev diğer adı**: aşağıdaki adlandırma kuralı- *PRODUCT_Network_NormalizedParser* olarak adlandırılmalıdır (Yukarıdaki örnekte, *CheckPoint_Network_NormalizedParser*).
 
-    1. **Kategori**: varolan bir kategoriyi seçebilir veya yeni kategori ( *Normalizednetworksessionspariler*gibi) oluşturabilirsiniz
+    1. **Kategori**: varolan bir kategoriyi seçebilir veya yeni kategori ( *Normalizednetworksessionspariler* gibi) oluşturabilirsiniz
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Ayrıştırıcısı Kaydet":::
 
 Çözümleyicileri doğru bir şekilde kullanabilmek için, boş ağ şeması ayrıştırıcısının (tüm ağ oturumları şeması alanlarının boş bir tablosal görünümü oluşturan) ve ağ meta ayrıştırıcısının (ağ şemasında çeşitli kaynaklardan gelen verilerin tek bir görünümünü oluşturmak için tüm etkin Çözümleyicileri birlikte bulunan) de yüklenmesi gerekir. Bu iki ayrıştırıcıları yüklemek, belirtilen adımlara benzer bir şekilde yapılır.
 
@@ -107,13 +107,15 @@ Sorgu işlevini kaydettikten sonra, sorgu Gezginini kapatıp yeni işlevin yans�
 
 Etkinleştirildikten sonra, şu anda etkinleştirilmiş olan tüm çözümleyiciler üzerinde Birleşik bir görünümü sorgulamak için meta ayrıştırıcısı kullanabilirsiniz. Bunu yapmak için, Sentinel Günlükler sayfasına gidin ve meta ayrıştırıcısı sorgulayın:
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="Ayrıştırıcısı sorgulama":::
  
 Ayrıca, ' sorgu Gezgini ' ' ne tıklayarak Sentinel günlükleri sayfasında sorgu Gezgini ' ni kullanarak meta ayrıştırıcıya da tek tek ayrıştırıcıya erişebilirsiniz:
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Yeni bir Ayrıştırıcı yükler" bölümünü genişletin ve ' Normalizednetworkayrıştırıcıları ' klasörünü (veya Çözümleyicileri oluştururken seçtiğiniz kategori adını) bulun:
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Sorgu Gezgini":::
 
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
+Sağdaki bölmede, "kayıtlı sorgular" bölümünü genişletin ve ' Normalizednetworkayrıştırıcıları ' klasörünü (veya Çözümleyicileri oluştururken seçtiğiniz kategori adını) bulun:
+
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="Ayrıştırıcılarınızı bulun":::
 
 Her bir ayrıştırıcıya tıklayıp kullandığı temel işlevi görebilir ve bunu çalıştırabilir (veya yukarıda açıklandığı şekilde, diğer adıyla doğrudan erişebilirsiniz). Bazı ayrıştırıcıların, özgün alanları kolay bir şekilde normalleştirilmek üzere normalleştirilmiş alanlara korumasını sağlayabilirsiniz. Bu, ayrıştırıcının sorgusunda kolayca düzenlenebilir.
 
@@ -122,13 +124,15 @@ Her bir ayrıştırıcıya tıklayıp kullandığı temel işlevi görebilir ve 
 Yukarıdaki adımları tekrarlayabilirsiniz (sorgu Gezgini 'nde ayrıştırıcısı bulma), ilgili ayrıştırıcıya tıklayıp işlev uygulamasını görebilirsiniz.
 Örneğin, bağımsız ayrıştırıcıları eklemek/kaldırmak için meta ayrıştırıcısı düzenlemeye karar verebilirsiniz.
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Yeni bir Ayrıştırıcı yükler" düğmesine basın:
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Ayrıştırıcılarınızı özelleştirme":::
+ 
+İşlev değiştirildikten sonra, "Kaydet" e tıklayın ve aynı adı, diğer adı ve kategoriyi kullanın. Bir geçersiz kılma iletişim kutusu açılır. "Tamam" düğmesine basın:
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Yeni bir Ayrıştırıcı yükler":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Emin misiniz":::
 
 #### <a name="additional-information"></a>Ek bilgiler
 
-Log Analytics 'de [kayıtlı sorgular](../azure-monitor/log-query/saved-queries.md) (sorgu zaman Çözümleyicileri uygulama) hakkında daha fazla bilgi edinin.
+Log Analytics 'de [kayıtlı sorgular](../azure-monitor/log-query/example-queries.md) (sorgu zaman Çözümleyicileri uygulama) hakkında daha fazla bilgi edinin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
