@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311072"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686166"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma
 
@@ -32,7 +32,7 @@ Azure SYNAPSE Analytics kullanarak adanmış SQL havuzunu sorgulamak için Visua
 > [!NOTE]
 > Sunucusuz SQL Havuzu (Önizleme) SSDT tarafından desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir:
 
@@ -52,10 +52,10 @@ Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir
    
     ![Sunucuya bağlanma](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Sunucu adı** : daha önce tanımlanan **sunucu adını** girin.
-   * **Kimlik doğrulaması** : **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması** seçin:
-   * **Kullanıcı adı** ve **parola** : yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
-   * **Bağlan** 'a tıklayın.
+   * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
+   * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması** seçin:
+   * **Kullanıcı adı** ve **parola**: yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
+   * **Bağlan**'a tıklayın.
 5. Araştırmak için Azure SQL sunucunuzu genişletin. Sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Örnek veritabanınızdaki tabolaları görmek için AdventureWorksDW'yi genişletin.
    
     ![AdventureWorksDW'yi araştırma](./media/get-started-visual-studio/explore-sample.png)
@@ -64,7 +64,7 @@ Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir
 Artık veritabanınıza bir bağlantı kuruldığına göre bir sorgu yazacaksınız.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu** ’yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
     ![Yeni sorgu](./media/get-started-visual-studio/new-query2.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:

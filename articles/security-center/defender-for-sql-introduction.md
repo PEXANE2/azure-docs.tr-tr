@@ -3,17 +3,17 @@ title: SQL için Azure Defender-avantajlar ve Özellikler
 description: SQL için Azure Defender 'ın avantajları ve özellikleri hakkında bilgi edinin.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b4f046339c027a5ae66f7f7510d8d2b311abd6df
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372548"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693469"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
@@ -25,7 +25,7 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 |----|:----|
 |Yayın durumu:|**Azure SQL veritabanı sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA)<br>**MAKINELERDE SQL Server 'lar Için Azure Defender** -Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|**SQL Için Azure Defender 'ı** oluşturan iki plan, [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Korumalı SQL sürümleri:|Azure SQL Veritabanı <br>Azure SQL Yönetilen Örnek<br>Azure Synapse Analytics (eski adı SQL DW)<br>SQL Server (tüm desteklenen sürümler)|
+|Korumalı SQL sürümleri:|Azure SQL Veritabanı <br>Azure SQL Yönetilen Örnek<br>Azure SYNAPSE 'de adanmış SQL Havuzu (eski adıyla SQL DW)<br>SQL Server (tüm desteklenen sürümler)|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
@@ -36,7 +36,7 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 - **Azure SQL veritabanı sunucuları Için Azure Defender** şunları korur:
   - [Azure SQL Veritabanı](../azure-sql/database/sql-database-paas-overview.md)
   - [Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+  - [Azure 'da adanmış SQL havuzu SYNAPSE](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
 
 - **MAKINELERDEKI SQL sunucuları Için Azure Defender (Önizleme)** , Azure Native SQL Server 'larınıza yönelik korumalar genişleterek karma ortamları tamamen destekler ve Azure, diğer bulut ortamlarında ve hatta şirket içi MAKINELERDE barındırılan SQL sunucularını (desteklenen tüm sürümleri) korur
 

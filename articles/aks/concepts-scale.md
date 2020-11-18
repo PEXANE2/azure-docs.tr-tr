@@ -4,12 +4,12 @@ description: Bkz. Azure Kubernetes hizmeti (AKS) ile yatay Pod otomatik Scaler, 
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72ed7cefc6a16eb484e1337dbd64e5f069a2201
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499894"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686047"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) uygulamaları için ölçeklendirme seçenekleri
 
@@ -50,7 +50,7 @@ Yarış olaylarını en aza indirmek için bir gecikme değeri ayarlanır. Bu de
 
 ## <a name="cluster-autoscaler"></a>Küme otomatik ölçeklendiricisi
 
-Kubernetes 'in değişen Pod taleplerini, düğüm havuzundaki istenen işlem kaynaklarını temel alan düğüm sayısını ayarlayan bir küme otomatik olarak ayarlamıştır. Varsayılan olarak, küme otomatik Scaler, düğüm sayısında gerekli değişiklikler için ölçüm API sunucusunu her 10 saniyede bir denetler. Küme otomatik ölçeklendirme bir değişikliğin gerekli olduğunu belirlerse, AKS kümenizdeki düğümlerin sayısı göre artar veya azaltılır. Küme otomatik yüklemesi, Kubernetes 1,10. x veya üstünü çalıştıran RBAC özellikli AKS kümeleriyle çalışır.
+Kubernetes 'in değişen Pod taleplerini, düğüm havuzundaki istenen işlem kaynaklarını temel alan düğüm sayısını ayarlayan bir küme otomatik olarak ayarlamıştır. Varsayılan olarak, küme otomatik Scaler, düğüm sayısında gerekli değişiklikler için ölçüm API sunucusunu her 10 saniyede bir denetler. Küme otomatik ölçeklendirme bir değişikliğin gerekli olduğunu belirlerse, AKS kümenizdeki düğümlerin sayısı göre artar veya azaltılır. Küme otomatik Scaler, Kubernetes 1,10. x veya üstünü çalıştıran Kubernetes RBAC özellikli AKS kümeleriyle çalışır.
 
 ![Kubernetes kümesi otomatik Scaler](media/concepts-scale/cluster-autoscaler.png)
 

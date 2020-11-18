@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558028"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686234"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management Yönetilen kimlikler kullanma
 
@@ -29,13 +29,13 @@ API Management örneğine iki tür kimlik verebilirsiniz:
 
 ## <a name="create-a-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik oluşturma
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal yönetilen bir kimlik ayarlamak için, önce bir API Management örneği oluşturup sonra özelliği etkinleştirmeniz gerekir.
 
 1. Portalda genellikle yaptığınız gibi bir API Management örneği oluşturun. Portalda buna gidin.
 2. **Yönetilen kimlikler**' i seçin.
-3. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’i seçin.
+3. **Sistem atandı** sekmesinde **durumu** **Açık** olarak değiştirin. **Kaydet**’i seçin.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Sistem tarafından atanan yönetilen kimliği etkinleştirme seçimleri" border="true":::
 
@@ -123,12 +123,12 @@ Bu özellik Azure 'un API Management örneğiniz için kimlik oluşturmasını v
 > [!NOTE]
 > Bir API Management örneği aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği olur `SystemAssigned,UserAssigned` .
 
-### <a name="supported-scenarios"></a>Desteklenen senaryolar
+## <a name="supported-scenarios-using-system-assigned-identity"></a>Sistem tarafından atanan kimlik kullanılarak desteklenen senaryolar
 
-#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Azure Key Vault API Management örneği için özel bir TLS/SSL sertifikası alın
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Azure Key Vault API Management örneği için özel bir TLS/SSL sertifikası alın
 Azure Key Vault depolanan özel TLS/SSL sertifikalarını almak için bir API Management örneğinin sistem tarafından atanan kimliğini kullanabilirsiniz. Daha sonra bu sertifikaları API Management örneğindeki özel etki alanlarına atayabilirsiniz. Şu noktaları göz önünde bulundurun:
 
-- Gizli dizi içerik türü *Application/x-PKCS12*olmalıdır.
+- Gizli dizi içerik türü *Application/x-PKCS12* olmalıdır.
 - Parolayı içeren Key Vault sertifika gizli uç noktasını kullanın.
 
 > [!Important]
@@ -262,7 +262,7 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
 }
 ```
 
-#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>API Management kimliği kullanarak arka uçta kimlik doğrulama
+### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>API Management kimliği kullanarak arka uçta kimlik doğrulama
 
 [Kimlik doğrulaması ile yönetilen](api-management-authentication-policies.md#ManagedIdentity) kimlik ilkesi aracılığıyla arka uçta kimlik doğrulaması yapmak için sistem tarafından atanan kimliğini kullanabilirsiniz.
 
@@ -272,7 +272,7 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
 > [!NOTE]
 > API Management örneği, en fazla 10 Kullanıcı tarafından atanan yönetilen kimlik ile ilişkilendirebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Portalda yönetilen bir kimlik ayarlamak için önce bir API Management örneği oluşturup sonra özelliği etkinleştirmeniz gerekir.
 
@@ -281,7 +281,7 @@ Portalda yönetilen bir kimlik ayarlamak için önce bir API Management örneği
 3. **Kullanıcı atandı** sekmesinde **Ekle**' yi seçin.
 4. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**’yi seçin.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Sistem tarafından atanan yönetilen kimliği etkinleştirme seçimleri" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Kullanıcı tarafından atanan yönetilen kimliği etkinleştirme seçimleri" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -387,9 +387,32 @@ Hizmet oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 > [!NOTE]
 > Bir API Management örneği aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği olur `SystemAssigned,UserAssigned` .
 
-### <a name="supported-scenarios"></a>Desteklenen senaryolar
+## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik kullanılarak desteklenen senaryolar
 
-#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Kullanıcı tarafından atanan bir kimlik kullanarak arka uçta kimlik doğrulama
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>Azure Key Vault API Management örneği için özel bir TLS/SSL sertifikası alın
+Bir API Management örneği ile Anahtar Kasası arasında güven oluşturmak için Kullanıcı tarafından atanan herhangi bir kimliği kullanabilirsiniz. Bu güven daha sonra, Azure Key Vault depolanan özel TLS/SSL sertifikalarını almak için kullanılabilir. Daha sonra bu sertifikaları API Management örneğindeki özel etki alanlarına atayabilirsiniz. 
+
+Şu noktaları göz önünde bulundurun:
+
+- Gizli dizi içerik türü *Application/x-PKCS12* olmalıdır.
+- Parolayı içeren Key Vault sertifika gizli uç noktasını kullanın.
+
+> [!Important]
+> Sertifikanın nesne sürümünü sağlamazsanız, API Management Key Vault güncelleştirildikten sonra sertifikanın dört saat içinde otomatik olarak yeni sürümünü elde eder.
+
+Tüm şablon için, bkz. [Kullanıcı tarafından atanan kimlik kullanarak Anahtar Kasası tabanlı SSL ile API Management](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json).
+
+Bu şablonda şunları dağıtacaksınız:
+
+* Azure API Management
+* Azure yönetilen Kullanıcı tarafından atanan kimlik
+* SSL/TLS sertifikasını depolamak için Azure Anahtar Kasası
+
+Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıklayın:
+
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+
+### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Kullanıcı tarafından atanan bir kimlik kullanarak arka uçta kimlik doğrulama
 
 [Kimlik doğrulaması ile yönetilen](api-management-authentication-policies.md#ManagedIdentity) kimlik ilkesi aracılığıyla arka uçta kimlik doğrulaması yapmak için Kullanıcı tarafından atanan kimlik ' i kullanabilirsiniz.
 

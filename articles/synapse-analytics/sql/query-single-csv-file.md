@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: b9896b62ab347ec3b4751eb517c00222f00ddb1c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9faff6589466c7cbe78a11c283139acb72bce4bb
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579411"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685656"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgulama
 
@@ -104,7 +104,7 @@ Tümce içindeki bir veri türünden sonraki sayılar `WITH` CSV dosyasındaki s
 
 Aşağıdaki bölümlerde, çeşitli CSV dosyası türlerini sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız tabloların oluşturulacağı **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

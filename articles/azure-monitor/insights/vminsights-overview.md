@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eaf2d7075ca09aeb3cfaa2dfea81fd0f8d65ad
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022505"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685316"
 ---
-# <a name="what-is-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici nedir?
+# <a name="overview-of-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici’ye genel bakış
 
 VM'ler için Azure İzleyici, sanal makinelerinizin ve sanal makine ölçek kümelerinin, çalışan işlemleri ve diğer kaynaklardaki bağımlılıklar dahil olmak üzere performansını ve sistem durumunu izler. Performans sorunlarını ve ağ sorunlarını tanımlayarak önemli uygulamaların öngörülebilir performans ve kullanılabilirlik sağlanmasına yardımcı olabilir ve ayrıca bir sorunun diğer bağımlılıklarla ilgili olup olmadığını anlamanıza yardımcı olabilir.
 
@@ -26,8 +26,6 @@ VM'ler için Azure İzleyici, Windows ve Linux işletim sistemlerini aşağıdak
 - Başka bir bulut ortamında barındırılan sanal makineler
   
 
-
-
 VM'ler için Azure İzleyici, verileri Azure Izleyici günlüklerinde depolar ve bu sayede güçlü toplama ve filtreleme olanağı sunar ve zaman içinde veri eğilimlerini analiz edebilir. Bu verileri doğrudan sanal makineden tek bir VM 'de görüntüleyebilir veya birden çok VM 'nin toplanmış bir görünümünü sunmak için Azure Izleyici 'yi kullanabilirsiniz.
 
 ![Azure portal sanal makine öngörüleri perspektifi](media/vminsights-overview/vminsights-azmon-directvm.png)
@@ -37,6 +35,7 @@ VM'ler için Azure İzleyici, verileri Azure Izleyici günlüklerinde depolar ve
 VM'ler için Azure İzleyici için doğrudan maliyet yoktur, ancak Log Analytics çalışma alanındaki etkinliği için ücretlendirilirsiniz. [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)yayınlanan fiyatlandırmaya göre, VM'ler için Azure izleyici için faturalandırılır:
 
 - Aracılardan alınan ve çalışma alanında depolanan veriler.
+- Konuk sistem durumundan toplanan sistem durumu verileri (Önizleme)
 - Günlük ve sistem durumu verilerine göre uyarı kuralları.
 - Uyarı kurallarından gönderilen bildirimler.
 

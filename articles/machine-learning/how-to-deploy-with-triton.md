@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a7d750caed297dfa364e2f1ef176ee19ad35480
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: eed1a3d403a6012e2010a6b9a47a60f815044565
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654216"
+ms.locfileid: "94685911"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -32,7 +32,7 @@ Triton, *çıkarım için iyileştirilmiş* bir çerçevedir. GPU 'ların daha i
 > [!TIP]
 > Bu belgedeki kod parçacıkları tanım amaçlıdır ve bir çözümü tamamen gösteremeyebilir. Çalışan örnek kod için [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine](https://github.com/Azure/azureml-examples/tree/main/tutorials)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * Azure Machine Learning [bir modelin nasıl ve nasıl dağıtılacağı hakkında](how-to-deploy-and-where.md) benzerlik.
@@ -50,6 +50,17 @@ Kendi modeliniz için Triton kullanmayı denemeden önce, Azure Machine Learning
 * Çıkarım istekleri __Puanlama URI__'sini kullanır. Örneğin, `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normal, üç aylık olmayan dağıtım mimarisi diyagramı":::
+
+### <a name="setting-the-number-of-workers"></a>Çalışan sayısını ayarlama
+
+Dağıtımınızdaki çalışanların sayısını ayarlamak için ortam değişkenini ayarlayın `WORKER_COUNT` . Adlı bir [ortam](https://docs.microsoft.compython/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) nesneniz varsa `env` , şunları yapabilirsiniz:
+
+```{py}
+env.environment_variables["WORKER_COUNT"] = "1"
+```
+
+Bu, Azure ML 'nin belirttiğiniz çalışan sayısını kullanmasını söyler.
+
 
 **Triton ile çıkarım yapılandırma dağıtımı**
 

@@ -6,18 +6,18 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808720"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693758"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak dış yük dengeleyiciyi başka bir bölgeye taşıyın
 
 Bir dış yük dengeleyiciyi bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, test için aynı yapılandırmaya sahip başka bir dış yük dengeleyici oluşturmak isteyebilirsiniz. Ayrıca, olağanüstü durum kurtarma planlamasının bir parçası olarak bir dış yük dengeleyiciyi başka bir bölgeye taşımak isteyebilirsiniz.
 
-Değişmez değer anlamda, bir Azure dış yük dengeleyiciyi bir bölgeden diğerine taşıyamazsınız. Ancak, bir dış yük dengeleyicinin var olan yapılandırmasını ve genel IP adresini dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz. Daha sonra, yük dengeleyiciyi ve genel IP 'yi bir şablona aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak kaynağı başka bir bölgede oluşturabilirsiniz. Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
+Değişmez değer anlamda, bir Azure dış yük dengeleyiciyi bir bölgeden diğerine taşıyamazsınız. Ancak, bir dış yük dengeleyicinin var olan yapılandırmasını ve genel IP adresini dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz. Daha sonra, yük dengeleyiciyi ve genel IP 'yi bir şablona aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak kaynağı başka bir bölgede oluşturabilirsiniz. Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates).
 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -32,7 +32,7 @@ Değişmez değer anlamda, bir Azure dış yük dengeleyiciyi bir bölgeden diğ
 
 - Azure aboneliğinizin, hedef bölgede dış yük dengeleyiciler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
 
-- Aboneliğinizin yük dengeleyiciler eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin yük dengeleyiciler eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Bkz. [Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma
 Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma için dış yük dengeleyiciyi hazırlama ve Azure portal kullanarak dış yük dengeleyici yapılandırmasını hedef bölgeye taşıma işlemleri gösterilmektedir. Önce dış yük dengeleyicinin genel IP yapılandırmasını dışarı aktarmanız gerekir.
@@ -44,8 +44,8 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 2. Kaynak ortak IP 'yi içeren kaynak grubunu bulun ve seçin.
 3. **Ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
-4. **Şablonu dışarı aktar**altında **Dağıt** ' ı seçin.
-5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon**düzenleme parametrelerini** seçin.
+4. **Şablonu dışarı aktar** altında **Dağıt** ' ı seçin.
+5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon **düzenleme parametrelerini** seçin.
 8. Genel IP adının parametresini düzenlemek için, **Parametreler** altındaki **değer** özelliğini kaynak genel IP adından hedef genel IP 'niz adına değiştirin. Adı tırnak işaretleri içine alın.
 
     ```json
@@ -63,9 +63,9 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 
     Düzenleyicide **Kaydet** ' i seçin.
 
-9.  **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon**düzenleme şablonu** ' nu seçin.
+9.  **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon **düzenleme şablonu** ' nu seçin.
 
-10. Genel IP 'nin taşınacağı hedef bölgeyi düzenlemek için, **kaynaklar**altındaki **Location** özelliğini değiştirin:
+10. Genel IP 'nin taşınacağı hedef bölgeyi düzenlemek için, **kaynaklar** altındaki **Location** özelliğini değiştirin:
 
     ```json
             "resources": [
@@ -95,7 +95,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
     
 12. Gereksinimlerinize bağlı olarak, veya gerekirse, şablondaki diğer parametreleri de değiştirebilirsiniz:
 
-    * **SKU 'su**. Dosyadaki template.js**SKU** altında bulunan **Name** özelliğini DEĞIŞTIREREK, yapılandırmadaki genel IP 'yi standart iken temel veya temel ile standart arasında değiştirebilirsiniz:
+    * **SKU 'su**. Dosyadaki template.js **SKU** altında bulunan **Name** özelliğini DEĞIŞTIREREK, yapılandırmadaki genel IP 'yi standart iken temel veya temel ile standart arasında değiştirebilirsiniz:
 
         ```json
           "resources": [
@@ -110,7 +110,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
             },
         ```
 
-        Temel ve standart SKU genel IP 'Leri arasındaki farklar hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
+        Temel ve standart SKU genel IP 'Leri arasındaki farklar hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](../virtual-network/virtual-network-public-ip-address.md).
 
     * **Genel IP ayırma yöntemi** ve **boşta kalma zaman aşımı**. **Publicıpallocationmethod** özelliğini **Dynamic** ya da **static** 'ten **Dynamic** **'e değiştirerek** genel IP ayırma yöntemini değiştirebilirsiniz. **Idletimeoutınminutes** özelliğini istenen değere değiştirerek boşta kalma zaman aşımını değiştirebilirsiniz. Varsayılan değer **4**' dir.
 
@@ -136,14 +136,14 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 
         ```
 
-        Ayırma yöntemleri ve boşta kalma zaman aşımı değerleri hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
+        Ayırma yöntemleri ve boşta kalma zaman aşımı değerleri hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](../virtual-network/virtual-network-public-ip-address.md).
 
  
 13. Çevrimiçi düzenleyicide **Kaydet** ' i seçin.
 
-14. **BASICS**  >  Hedef genel IP 'nin dağıtılacağı aboneliği seçmek için temel bilgiler**aboneliğini** seçin.
+14. **BASICS**  >  Hedef genel IP 'nin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliğini** seçin.
 
-15. **BASICS**  >  Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için temel bilgiler**kaynak grubu** ' nu seçin. Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak üzere **Yeni oluştur** ' u seçebilirsiniz. Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
+15. **BASICS**  >  Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' nu seçin. Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak üzere **Yeni oluştur** ' u seçebilirsiniz. Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. Temel bir **BASICS**  >  **konumun** , genel IP 'nin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
@@ -160,8 +160,8 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 2. Kaynak dış yük dengeleyiciyi içeren kaynak grubunu bulun ve seçin.
 3. **Ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
-4. **Şablonu dışarı aktar**altında **Dağıt** ' ı seçin.
-5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon**düzenleme parametrelerini** seçin.
+4. **Şablonu dışarı aktar** altında **Dağıt** ' ı seçin.
+5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya parameters.jsaçmak için şablon **düzenleme parametrelerini** seçin.
 
 5. Dış yük dengeleyici adının parametresini düzenlemek için, kaynak dış yük dengeleyici adının **değer** özelliğini hedef dış yük dengeleyicinizin adıyla değiştirin. Adı tırnak işaretleri içine alın.
 
@@ -223,7 +223,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
         },
     ```
 
-8.  **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon**düzenleme şablonu** ' nu seçin.
+8.  **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya template.jsaçmak için şablon **düzenleme şablonu** ' nu seçin.
 9.  Dış yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, dosyadaki template.jsiçindeki **kaynaklar** altında **Location** özelliğini değiştirin:
 
     ```json
@@ -243,7 +243,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
 
 11. Gereksinimlerinize bağlı olarak, veya gerekirse, şablondaki diğer parametreleri de değiştirebilirsiniz:
 
-    * **SKU 'su**. Dosyadaki template.js**SKU** altında bulunan **Name** özelliğini değiştirerek, YAPıLANDıRMADAKI dış yük dengeleyicinin SKU 'sunu temel veya temel ile standart arasında değiştirebilirsiniz:
+    * **SKU 'su**. Dosyadaki template.js **SKU** altında bulunan **Name** özelliğini değiştirerek, YAPıLANDıRMADAKI dış yük dengeleyicinin SKU 'sunu temel veya temel ile standart arasında değiştirebilirsiniz:
 
         ```json
         "resources": [
@@ -257,7 +257,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
                 "tier": "Regional"
             },
         ```
-      Temel ve standart SKU yük dengeleyiciler arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+      Temel ve standart SKU yük dengeleyiciler arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](./load-balancer-overview.md).
 
     * **Yük Dengeleme kuralları**. template.jsdosyadaki **loadBalancingRules** bölümüne giriş ekleyip çıkararak Yük Dengeleme kuralları ekleyebilir veya kaldırabilirsiniz:
 
@@ -291,7 +291,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
         ```
        Yük Dengeleme kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
 
-    * **Yoklamalar**. Dosyadaki template.js**yoklamalar** bölümünde girdileri ekleyerek veya kaldırarak, yapılandırmada yük dengeleyici için bir araştırma ekleyebilir veya kaldırabilirsiniz:
+    * **Yoklamalar**. Dosyadaki template.js **yoklamalar** bölümünde girdileri ekleyerek veya kaldırarak, yapılandırmada yük dengeleyici için bir araştırma ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "probes": [
@@ -311,7 +311,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
         ```
        Daha fazla bilgi için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-    * **Gelen NAT kuralları**. Dosyadaki template.js**ınboundnatrules** bölümüne giriş ekleyip kaldırarak yük dengeleyici IÇIN gelen NAT kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Gelen NAT kuralları**. Dosyadaki template.js **ınboundnatrules** bölümüne giriş ekleyip kaldırarak yük dengeleyici IÇIN gelen NAT kuralları ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "inboundNatRules": [
@@ -359,7 +359,7 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
         ```
         Gelen NAT kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
 
-    * **Giden kuralları**. Dosyadaki template.js**outboundrules** özelliğini düzenleyerek, yapılandırmada giden kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Giden kuralları**. Dosyadaki template.js **outboundrules** özelliğini düzenleyerek, yapılandırmada giden kuralları ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "outboundRules": [
@@ -385,13 +385,13 @@ Aşağıdaki yordamlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma i�
                 ]
         ```
 
-         Daha fazla bilgi için bkz. [Load Balancer giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).
+         Daha fazla bilgi için bkz. [Load Balancer giden kuralları](./load-balancer-outbound-connections.md#outboundrules).
 
 12. Çevrimiçi düzenleyicide **Kaydet** ' i seçin.
 
-13. **BASICS**  >  Hedef dış yük dengeleyicinin dağıtılacağı aboneliği seçmek için temel bilgiler**aboneliğini** seçin.
+13. **BASICS**  >  Hedef dış yük dengeleyicinin dağıtılacağı aboneliği seçmek için temel bilgiler **aboneliğini** seçin.
 
-15. **BASICS**  >  Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için temel bilgiler**kaynak grubu** ' nu seçin. Hedef dış yük dengeleyici için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçebilirsiniz. Ya da daha önce genel IP için oluşturduğunuz mevcut kaynak grubunu seçebilirsiniz. Adın mevcut kaynak dış yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
+15. **BASICS**  >  Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için temel bilgiler **kaynak grubu** ' nu seçin. Hedef dış yük dengeleyici için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçebilirsiniz. Ya da daha önce genel IP için oluşturduğunuz mevcut kaynak grubunu seçebilirsiniz. Adın mevcut kaynak dış yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. **Temel bilgiler**  >  **konumunun** , dış yük dengeleyicinin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
@@ -414,5 +414,5 @@ Değişiklikleri uygulamak ve genel IP ve dış yük dengeleyiciyi tamamlamak i�
 Bu öğreticide, bir Azure dış yük dengeleyiciyi bir bölgeden diğerine taşımış ve kaynak kaynakları temizledi. Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz.:
 
 
-- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM’lerini başka bir bölgeye taşıma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM’lerini başka bir bölgeye taşıma](../site-recovery/azure-to-azure-tutorial-migrate.md)

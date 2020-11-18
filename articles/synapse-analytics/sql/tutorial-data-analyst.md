@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 84fc49df2838a66969b449dee5b416c2a0f86f86
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309290"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685928"
 ---
 # <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Öğretici: Azure Open veri kümelerini analiz etmek ve Azure SYNAPSE Studio 'da sonuçları görselleştirmek için sunucusuz SQL havuzu kullanma
 
@@ -102,7 +102,7 @@ Aşağıdaki kod parçacığında, yıllık sayıda TAXI rides için sonuç gös
 
 ![Yıllık TAXI bayıldığı sonuç parçacığı sayısı](./media/tutorial-data-analyst/4.png)
 
-Veriler, **tablodan** **grafik** görünümüne geçiş yaparak SYNAPSE Studio 'da görselleştirilebilir. **Alan** , **çubuk** , **sütun** , **çizgi** , **pasta** ve **dağılım** gibi farklı grafik türleri arasından seçim yapabilirsiniz. Bu durumda, **sütun** grafiğinin **Kategori** sütununu **current_year** olarak çizimiyle:
+Veriler, **tablodan** **grafik** görünümüne geçiş yaparak SYNAPSE Studio 'da görselleştirilebilir. **Alan**, **çubuk**, **sütun**, **çizgi**, **pasta** ve **dağılım** gibi farklı grafik türleri arasından seçim yapabilirsiniz. Bu durumda, **sütun** grafiğinin **Kategori** sütununu **current_year** olarak çizimiyle:
 
 ![Yıl başına bayıldığı gösteren sütun grafiği](./media/tutorial-data-analyst/5.png)
 

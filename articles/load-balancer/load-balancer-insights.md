@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 2168ee05ab93655cc0ad87221bff29c1b6b1035d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d57dfd0a496e71c1f0e6ddea839723da35bc5f76
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897610"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686251"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer izlemek ve yapılandırmak için öngörüleri kullanma
 
-[Ağlarda Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/insights-overview#azure-monitor-for-networks-preview)aracılığıyla, yük dengeleyiciler için işlevsel bağımlılık görselleştirmeleri ve önceden yapılandırılmış ölçüm panosu sunulmaktadır. Bu görseller bilinçli tasarım kararları almanıza ve hataları hızlı bir şekilde yerelleştirmenize, tanılamanıza ve çözmenize yardımcı olur.
+Ağlarda Azure Izleyici aracılığıyla, yük dengeleyiciler için işlevsel bağımlılık görselleştirmeleri ve önceden yapılandırılmış ölçüm panosu sunulmaktadır. Bu görseller bilinçli tasarım kararları almanıza ve hataları hızlı bir şekilde yerelleştirmenize, tanılamanıza ve çözmenize yardımcı olur.
 
 >[!NOTE] 
 >Bu özelliğin önizlemededir ve işlev bağımlılığı görünümü ve önceden yapılandırılmış Pano bu deneyimi geliştirmek için değişebilir

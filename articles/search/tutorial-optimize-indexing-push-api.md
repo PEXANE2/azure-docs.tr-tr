@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d22ff5c863617a3feb2a08d4b1889d0a7c10cd3a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973453"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693408"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Öğretici: gönderme API 'SI ile dizin oluşturmayı Iyileştirme
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](/
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
@@ -54,7 +54,7 @@ Verileri bir dizine gönderdiğinizde, dizin oluşturma hızlarını etkileyen b
 Dikkate alınması gereken altı temel etken şunlardır:
 
 + **Hizmet katmanı ve bölüm/çoğaltma sayısı** -bölüm ekleme ve katmanınızı artırma, her ikisi de dizin oluşturma hızlarını arttırır.
-+ **Dizin şeması** -alanları ekleme ve alanlara ek özellikler ekleme ( *aranabilir*, çok *yönlü tablo*veya *filtrelenebilir*gibi) her ikisi de dizin oluşturma hızlarını azaltır.
++ **Dizin şeması** -alanları ekleme ve alanlara ek özellikler ekleme ( *aranabilir*, çok *yönlü tablo* veya *filtrelenebilir* gibi) her ikisi de dizin oluşturma hızlarını azaltır.
 + **Toplu iş boyutu** -en iyi toplu iş boyutu Dizin şemanıza ve veri kümenize göre değişir.
 + **İş parçacığı/çalışan sayısı** -tek bir iş parçacığı dizin oluşturma hızlarından tam olarak yararlanmaz
 + **Yeniden deneme stratejisi** -Dizin oluşturmayı iyileştirmek için bir üstel geri alma yeniden deneme stratejisi kullanılmalıdır.
@@ -73,7 +73,7 @@ API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle 
 
 1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 ## <a name="2---set-up-your-environment"></a>2-ortamınızı ayarlama
 
@@ -90,7 +90,7 @@ API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle 
 
 ## <a name="3---explore-the-code"></a>3-kodu keşfet
 
-*appsettings.js*güncelleştirme yaptıktan sonra, **Optimizedataındexing. sln** dosyasındaki örnek program, derleme ve çalıştırmaya hazır olmalıdır.
+*appsettings.js* güncelleştirme yaptıktan sonra, **Optimizedataındexing. sln** dosyasındaki örnek program, derleme ve çalıştırmaya hazır olmalıdır.
 
 Bu kod, [C# hızlı](search-get-started-dotnet.md)başlangıcının türetilir. Bu makaledeki .NET SDK ile çalışmanın temelleri hakkında daha ayrıntılı bilgi edinebilirsiniz.
 
@@ -162,7 +162,7 @@ Dizinlerinizin şeması, dizin oluşturma hızları üzerinde önemli bir etkiye
 Azure Bilişsel Arama, bir dizine tek veya birden çok belge yüklemek için aşağıdaki API 'Leri destekler:
 
 + [Belge Ekleme, Güncelleştirme veya Silme (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [Indexdocumentsaction sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet) veya [ındexdocumentsbatch sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
++ [Indexdocumentsaction sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsaction) veya [ındexdocumentsbatch sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsbatch)
 
 Belgelerin toplu olarak dizinlemesi, dizin oluşturma performansını önemli ölçüde iyileştirir. Bu toplu işlemler en fazla 1000 belge veya toplu işlem başına en fazla 16 MB olabilir.
 
@@ -388,7 +388,7 @@ Dizin Istatistiklerini al işlemi, geçerli dizin için bir belge sayısı ve de
 var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal ' de, arama hizmeti **genel bakış** sayfasını açın ve **dizinler** listesinde **en iyileştirme dizin oluşturma** dizinini bulun.
 

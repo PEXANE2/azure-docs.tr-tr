@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 95ac4ed83a4486665ce378972ea7d6423c2482d5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682919"
+ms.locfileid: "94693452"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Bilişsel Arama veri şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -52,7 +52,7 @@ Bu senaryoda aşağıdaki araçlar ve hizmetler kullanılır.
 Şifrelenmiş nesneyi oluşturabileceğiniz bir arama uygulamasına sahip olmanız gerekir. Bu koda, bir Anahtar Kasası anahtarına ve Active Directory kayıt bilgilerine başvurabileceksiniz. Bu kod, çalışan bir uygulama veya [C# kod örneği DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)gibi prototip kodu olabilir.
 
 > [!TIP]
-> Bir şifreleme anahtarı parametresi içeren dizin ve eş anlamlı eşlemeler oluşturan REST API 'Leri çağırmak için [Postman](search-get-started-postman.md) veya [Azure PowerShell](./search-get-started-powershell.md) kullanabilirsiniz. Şu anda dizinlere veya eş anlamlı haritalara anahtar eklemek için bir portal desteği yoktur.
+> Şifreleme anahtarı parametresi içeren dizin ve eş anlamlı eşlemeler oluşturan REST API 'Leri çağırmak için [Postman veya Visual Studio Code](search-get-started-rest.md)ya da [Azure PowerShell](./search-get-started-powershell.md)kullanabilirsiniz. Şu anda dizinlere veya eş anlamlı haritalara anahtar eklemek için bir portal desteği yoktur.
 
 ## <a name="1---enable-key-recovery"></a>1-anahtar kurtarmayı etkinleştir
 

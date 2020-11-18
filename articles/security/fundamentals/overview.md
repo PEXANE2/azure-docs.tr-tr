@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536540"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693741"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -141,8 +141,8 @@ Uygulama Tanılamada, bu şekilde gruplandırılmış olayları görebilirsiniz:
 ## <a name="storage"></a>Depolama
 Bu bölümde, Azure Storage Security 'deki temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
-### <a name="role-based-access-control-rbac"></a>Rol Tabanlı Erişim Denetimi (RBAC)
-Depolama hesabınızı Role-Based Access Control (RBAC) ile güvenli hale getirebilirsiniz. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur. Bu erişim hakları, belirli bir kapsamdaki gruplara ve uygulamalara uygun Azure rolü atanarak verilir. Kullanıcılara ayrıcalık atamak için depolama hesabı katılımcısı gibi [Azure yerleşik rollerini](../../role-based-access-control/built-in-roles.md)kullanabilirsiniz. [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modelini kullanarak bir depolama hesabı için depolama anahtarlarına erişim, Role-Based Access Control (RBAC) ile denetlenebilir.
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC)
+Azure rol tabanlı erişim denetimi (Azure RBAC) ile depolama hesabınızı güvenli hale getirebilirsiniz. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur. Bu erişim hakları, belirli bir kapsamdaki gruplara ve uygulamalara uygun Azure rolü atanarak verilir. Kullanıcılara ayrıcalık atamak için depolama hesabı katılımcısı gibi [Azure yerleşik rollerini](../../role-based-access-control/built-in-roles.md)kullanabilirsiniz. [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modelini kullanarak bir depolama hesabı için depolama anahtarlarına erişim, Azure RBAC aracılığıyla denetlenebilir.
 
 ### <a name="shared-access-signature"></a>Paylaşılan erişim Imzası
 [Paylaşılan erişim imzası (SAS)](../../storage/common/storage-sas-overview.md), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. SAS, belirli bir süre ve belirli bir izin kümesi için Depolama hesabınızdaki nesnelere sınırlı bir istemci izinleri vermeyeceğiniz anlamına gelir. Hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan bu sınırlı izinleri verebilirsiniz.
@@ -336,7 +336,7 @@ Microsoft, ürün ve hizmetlerinde kimlik ve erişim yönetimi için birden çok
 
 -   [Belirteç tabanlı kimlik doğrulaması](../../active-directory/develop/authentication-vs-authorization.md) , Azure Active Directory aracılığıyla kimlik doğrulaması yapılmasını mümkün.
 
--   [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/built-in-roles.md) , kullanıcının atanan rolüne göre erişim sağlamanıza olanak sağlayarak kullanıcılara yalnızca iş görevlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını vermeyi kolaylaştırır. RBAC 'yi kuruluşunuzun iş modeli ve risk toleransı başına özelleştirebilirsiniz.
+-   [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/built-in-roles.md) , kullanıcının atanan rolüne göre erişim sağlamanıza olanak sağlayarak kullanıcılara yalnızca iş görevlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını vermeyi kolaylaştırır. Azure RBAC 'yi kuruluşunuzun iş modeli ve risk toleransı başına özelleştirebilirsiniz.
 
 -   [Tümleşik kimlik yönetimi (Hibrit kimliği)](../../active-directory/hybrid/plan-hybrid-identity-design-considerations-overview.md) , kullanıcıların iç veri merkezleri ve bulut platformları genelinde erişiminin denetimini korumanıza olanak sağlar. bu sayede, tüm kaynaklara yönelik kimlik doğrulama ve yetkilendirme için tek bir Kullanıcı Kimliği oluşturursunuz.
 

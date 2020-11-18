@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311115"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686217"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "93311115"
 > [!NOTE]
 > AAD oturumunun sorgu yürütme sırasında 1 saatten uzun süre açık bağlantısı varsa, AAD 'yi kullanan herhangi bir sorgu başarısız olur. Bu, AAD ile etkileşime geçen AAD geçişli geçiş ve deyimlerini kullanarak depolamayı sorgulamayı içerir (dış sağlayıcı oluşturma gibi). Bu, SSMS ve REKLAMLARı 'nda sorgu Düzenleyicisi gibi bağlantı açık tutan tüm araçları etkiler. Sorgu yürütmek için yeni bağlantı açan araçlar SYNAPSE Studio gibi etkilenmez.
 > Bu sorunu gidermek için SSMS 'yi yeniden başlatabilir veya reklamlar ' a bağlanıp bağlantıyı kesebilirsiniz. .
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:  
 
@@ -45,20 +45,20 @@ Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
 ## <a name="connect"></a>Bağlan
 
-### <a name="dedicated-sql-pool"></a>Adanmış SQL havuzu
+### <a name="dedicated-sql-pool"></a>Ayrılmış SQL havuzu
 
 Adanmış SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin: 
 
 1. SQL Server Management Studio (SSMS) açın. 
-1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan** ' ı seçin. 
+1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan**' ı seçin. 
   
     ![Sunucu 1 ' e bağlanma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Sunucu adı** : daha önce tanımlanan **sunucu adını** girin.
-   * **Kimlik doğrulaması** : **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması** gibi bir kimlik doğrulama türü seçin.
-   * **Kullanıcı adı** ve **parola** : yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
+   * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
+   * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması** gibi bir kimlik doğrulama türü seçin.
+   * **Kullanıcı adı** ve **parola**: yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
 
-1. Azure SQL Server **Nesne Gezgini** ' ni genişletin. Sunucu ile ilişkili veritabanlarını (örneğin, örnek AdventureWorksDW veritabanı) görüntüleyebilirsiniz. Tabloları görmek için veritabanını genişletebilirsiniz:
+1. Azure SQL Server **Nesne Gezgini**' ni genişletin. Sunucu ile ilişkili veritabanlarını (örneğin, örnek AdventureWorksDW veritabanı) görüntüleyebilirsiniz. Tabloları görmek için veritabanını genişletebilirsiniz:
    
     ![AdventureWorksDW 1 ' i keşfet](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
@@ -68,14 +68,14 @@ Adanmış SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları i
 Sunucusuz SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin: 
 
 1. SQL Server Management Studio (SSMS) açın.
-1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan** ' ı seçin. 
+1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan**' ı seçin. 
    
     ![Sunucu 2 ' ye Bağlan](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Sunucu adı** : daha önce tanımlanan **sunucu adını** girin.
-   * **Kimlik doğrulaması** : **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması** gibi bir kimlik doğrulama türü seçin:
-   * **Kullanıcı adı** ve **parola** : yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
-   * **Bağlan** ’ı seçin.
+   * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
+   * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması** gibi bir kimlik doğrulama türü seçin:
+   * **Kullanıcı adı** ve **parola**: yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
+   * **Bağlan**’ı seçin.
 
 4. Araştırmak için Azure SQL sunucunuzu genişletin. Sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Örnek veritabanınızdaki içeriği görmek için *demo* ' i genişletin.
    
@@ -84,12 +84,12 @@ Sunucusuz SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları i
 
 ## <a name="run-a-sample-query"></a>Örnek sorgu çalıştırma
 
-### <a name="dedicated-sql-pool"></a>Adanmış SQL havuzu
+### <a name="dedicated-sql-pool"></a>Ayrılmış SQL havuzu
 
 Bir veritabanı bağlantısı kuruldığına göre, verileri sorgulayabilirsiniz.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu** ’yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
     ![Yeni sorgu 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:
@@ -109,7 +109,7 @@ Bir veritabanı bağlantısı kuruldığına göre, verileri sorgulayabilirsiniz
 Bir veritabanı bağlantısı kurdığınıza göre, verileri sorgulayabilirsiniz.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu** ’yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
    
     ![Yeni sorgu 2](./media/get-started-ssms/new-query.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:

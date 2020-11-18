@@ -3,12 +3,12 @@ title: Sertifikaları kullanarak Windows 'da küme güvenliğini sağlama
 description: Azure Service Fabric tek başına veya şirket içi küme içinde ve istemciler ile küme arasında güvenli iletişim.
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 18af6fd79e03cd67e77ed4d0d4b3b6291f90301d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841297"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686132"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme
 Bu makalede, tek başına Windows kümenizin çeşitli düğümleri arasındaki iletişimin nasıl güvenliği sağlanacağı açıklanır. Ayrıca, X. 509.440 sertifikalarını kullanarak bu kümeye bağlanan istemcilerin kimliğini nasıl doğrulayacağınızı açıklar. Kimlik doğrulaması yalnızca yetkili kullanıcıların kümeye ve dağıtılan uygulamalara erişip yönetim görevlerini gerçekleştirmesini sağlar. Küme oluşturulduğunda, kümede sertifika güvenliği etkinleştirilmelidir.  
@@ -104,7 +104,7 @@ Düğüm-düğüm güvenliği, istemciden düğüme güvenlik ve rol tabanlı er
 },
 ```
 
-Bu bölümde, tek başına Windows kümenizin güvenliğini sağlamak için ihtiyacınız olan sertifikalar açıklanmaktadır. Bir küme sertifikası belirtirseniz, ClusterCredentialType değerini _x509_olarak ayarlayın. Dış bağlantılar için bir sunucu sertifikası belirtirseniz, ServerCredentialType öğesini _x509_olarak ayarlayın. Zorunlu olmasa da, düzgün bir şekilde güvenli bir küme için bu sertifikaların her ikisine de sahip olmanız önerilir. Bu değerleri *x509*olarak ayarlarsanız, bunlara karşılık gelen sertifikaları belirtmeniz gerekir veya Service Fabric bir özel durum oluşturur. Bazı senaryolarda yalnızca _Clientcertificateparmak izlerini_ veya _smarproxycertificate_öğesini belirtmek isteyebilirsiniz. Bu senaryolarda, _clustercredentialtype_ veya _servercredentialtype_ ' ı _x509_olarak ayarlamanız gerekmez.
+Bu bölümde, tek başına Windows kümenizin güvenliğini sağlamak için ihtiyacınız olan sertifikalar açıklanmaktadır. Bir küme sertifikası belirtirseniz, ClusterCredentialType değerini _x509_ olarak ayarlayın. Dış bağlantılar için bir sunucu sertifikası belirtirseniz, ServerCredentialType öğesini _x509_ olarak ayarlayın. Zorunlu olmasa da, düzgün bir şekilde güvenli bir küme için bu sertifikaların her ikisine de sahip olmanız önerilir. Bu değerleri *x509* olarak ayarlarsanız, bunlara karşılık gelen sertifikaları belirtmeniz gerekir veya Service Fabric bir özel durum oluşturur. Bazı senaryolarda yalnızca _Clientcertificateparmak izlerini_ veya _smarproxycertificate_ öğesini belirtmek isteyebilirsiniz. Bu senaryolarda, _clustercredentialtype_ veya _servercredentialtype_ ' ı _x509_ olarak ayarlamanız gerekmez.
 
 
 > [!NOTE]
@@ -122,7 +122,7 @@ Aşağıdaki tabloda, küme kurulumunda ihtiyacınız olan sertifikalar listelen
 | Sunucusertifikası |Test ortamı için önerilir. Bu sertifika, bu kümeye bağlanmayı denediğinde istemciye sunulur. Daha kolay bir şekilde, ClusterCertificate ve ServerCertificate için aynı sertifikayı kullanmayı tercih edebilirsiniz. Yükseltme için birincil ve ikincil olmak üzere iki farklı sunucu sertifikası kullanabilirsiniz. Parmak Izi bölümünde birincil sertifikanın parmak izini ve parmak izi Ikincil değişkenlerinde ikincil değeri ayarlayın. |
 | ServerCertificateCommonNames |Üretim ortamı için önerilir. Bu sertifika, bu kümeye bağlanmayı denediğinde istemciye sunulur. Certificateıssuerparmak Izi, bu sertifikayı verenin parmak izine karşılık gelir. Aynı ortak ada sahip birden fazla sertifika kullanılırsa, birden çok verenin parmak izleri belirtebilirsiniz. Daha kolay bir şekilde, ClusterCertificateCommonNames ve ServerCertificateCommonNames için aynı sertifikayı kullanmayı tercih edebilirsiniz. Bir veya iki sunucu sertifikası ortak adı kullanabilirsiniz. |
 | Servercertificateıssuermağazalarında |Üretim ortamı için önerilir. Bu sertifika, sunucu sertifikasını veren öğesine karşılık gelir. ServerCertificateCommonNames altında veren parmak izini belirtmek yerine, bu bölümde verenin ortak adını ve karşılık gelen depo adını sağlayabilirsiniz.  Bu, sunucu veren sertifikalarının kolayca geçişine olanak sağlar. Birden fazla sunucu sertifikası kullanılıyorsa birden çok veren belirlenebilir. Boş bir ıssuercommonname, X509StoreNames altında belirtilen ilgili depolardaki tüm sertifikalara izin verir.|
-| Clientcertificateparmak Izleri |Kimliği doğrulanmış istemcilere bu sertifika kümesini yükler. Kümeye erişime izin vermek istediğiniz makinelere farklı sayıda istemci sertifikanız yüklü olabilir. CertificateThumbprint değişkeninde her bir sertifikanın parmak izini ayarlayın. IsAdmin 'i *true*olarak ayarlarsanız, bu sertifikaya sahip istemci, kümede yönetici yönetim etkinliklerini gerçekleştirebilir. Isadmin *false*ise, bu sertifikaya sahip istemci yalnızca Kullanıcı erişim hakları için izin verilen eylemleri genellikle salt okunurdur. Roller hakkında daha fazla bilgi için bkz. [rol tabanlı Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac). |
+| Clientcertificateparmak Izleri |Kimliği doğrulanmış istemcilere bu sertifika kümesini yükler. Kümeye erişime izin vermek istediğiniz makinelere farklı sayıda istemci sertifikanız yüklü olabilir. CertificateThumbprint değişkeninde her bir sertifikanın parmak izini ayarlayın. IsAdmin 'i *true* olarak ayarlarsanız, bu sertifikaya sahip istemci, kümede yönetici yönetim etkinliklerini gerçekleştirebilir. Isadmin *false* ise, bu sertifikaya sahip istemci yalnızca Kullanıcı erişim hakları için izin verilen eylemleri genellikle salt okunurdur. Roller hakkında daha fazla bilgi için bkz. [rol tabanlı erişim denetimi Service Fabric](service-fabric-cluster-security.md#service-fabric-role-based-access-control). |
 | ClientCertificateCommonNames |CertificateCommonName için ilk istemci sertifikasının ortak adını ayarlayın. Certificateıssuerparmak Izi, bu sertifikanın vereninin parmak izine ait. Ortak adlar ve veren hakkında daha fazla bilgi edinmek için bkz. [sertifikalarla çalışma](/dotnet/framework/wcf/feature-details/working-with-certificates). |
 | Clientcertificateıssuermağazalarında |Üretim ortamı için önerilir. Bu sertifika, istemci sertifikasını veren (yönetici ve yönetici olmayan roller) öğesine karşılık gelir. ClientCertificateCommonNames altında veren parmak izini belirtmek yerine, bu bölümde verenin ortak adını ve karşılık gelen depo adını sağlayabilirsiniz.  Bu, istemci veren sertifikalarının kolayca geçişine olanak sağlar. Birden fazla istemci sertifikası kullanılıyorsa birden çok veren belirlenebilir. Boş bir ıssuercommonname, X509StoreNames altında belirtilen ilgili depolardaki tüm sertifikalara izin verir.|
 | Smarproxycertificate |Test ortamı için önerilir. Bu isteğe bağlı sertifika, [ters proxy](service-fabric-reverseproxy.md)'nizin güvenliğini sağlamak istiyorsanız belirlenebilir. Bu sertifikayı kullanıyorsanız, düğüm türlerinde Smarproxyendpointport ayarlandığından emin olun. |
@@ -252,7 +252,7 @@ Sertifikanın düzgün çalışması için sahip olması gereken birçok özelli
 
 * Sertifikanın sağlayıcısı **Microsoft IYILEŞTIRILMIŞ RSA ve AES şifreleme sağlayıcısı** olmalıdır
 
-* Bir RSA anahtarı oluştururken, anahtarın **2048 bit**olduğundan emin olun.
+* Bir RSA anahtarı oluştururken, anahtarın **2048 bit** olduğundan emin olun.
 
 * Anahtar kullanımı uzantısının dijital Imzaya sahip bir değeri vardır **, anahtar şifreleme (a0)**
 
@@ -348,7 +348,7 @@ Dosyadaki ClusterConfig.X509.MultiMachine.jsgüvenlik bölümünü yapılandırd
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örneğin:
+Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örnek:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
@@ -365,6 +365,6 @@ Kümeyi kaldırmak için, Service Fabric paketini indirdiğiniz kümedeki düğ�
 ```
 
 > [!NOTE]
-> Yanlış sertifika yapılandırması, kümenin dağıtım sırasında çalışmasını engelleyebilir. Güvenlik sorunlarını kendi kendine tanılamak için Olay Görüntüleyicisi grup **Uygulamaları ve Hizmetleri günlüklerine**bakın  >  **Microsoft-Service Fabric**.
+> Yanlış sertifika yapılandırması, kümenin dağıtım sırasında çalışmasını engelleyebilir. Güvenlik sorunlarını kendi kendine tanılamak için Olay Görüntüleyicisi grup **Uygulamaları ve Hizmetleri günlüklerine** bakın  >  **Microsoft-Service Fabric**.
 > 
 > 

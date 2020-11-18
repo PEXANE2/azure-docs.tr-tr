@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b4755d1d2e14b8ce3b05cfef6d30d7f6102905d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318823"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685605"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Sunucusuz SQL havuzu sorgularında dosya meta verilerini kullan
 
@@ -24,7 +24,7 @@ Bazen, sonuç kümesindeki belirli bir satırla hangi dosya veya klasör kaynağ
 
 `filepath` `filename` Sonuç kümesindeki dosya adlarını ve/veya yolu döndürmek için işlevini kullanabilirsiniz. Ya da bunları, dosya adı ve/veya klasör yoluna göre filtrelemek için kullanabilirsiniz. Bu işlevler, [dosya adı işlevi](query-data-storage.md#filename-function) ve [FilePath işlevinde](query-data-storage.md#filepath-function)sözdizimi bölümünde açıklanmaktadır. Aşağıdaki bölümlerde, örnekler üzerinde kısa açıklamalar bulacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adımınız, depolama hesabına başvuran bir veri kaynağı ile **veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

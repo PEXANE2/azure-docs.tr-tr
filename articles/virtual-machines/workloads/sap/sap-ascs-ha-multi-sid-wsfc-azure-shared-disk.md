@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: df611e01fefacd22f4dc026a819d4c71ede6e7e3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970410"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686098"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Windows Server Yük Devretme Kümelemesi ve Azure Paylaşılan disk ile SAP ASCS/SCS örneği çoklu SID yüksek kullanılabilirliği
 
@@ -35,12 +35,12 @@ Bu makalede, Azure Paylaşılan disk ile var olan bir Windows Server Yük Devret
 Şu anda Azure Premium SSD disklerini SAP ASCS/SCS örneği için Azure Paylaşılan diski olarak kullanabilirsiniz. Aşağıdaki sınırlamalar geçerlidir:
 
 -  [Azure Ultra disk](../../disks-types.md#ultra-disk) , SAP iş yükleri Için Azure Paylaşılan diski olarak desteklenmez. Şu anda Azure sanal makinelerini, kullanılabilirlik kümesi 'nde Azure Ultra disk kullanarak yerleştirmek mümkün değildir
--  Premium SSD disklere sahip [Azure Paylaşılan disk](../../windows/disks-shared.md) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
+-  Premium SSD disklere sahip [Azure Paylaşılan disk](../../disks-shared.md) yalnızca kullanılabilirlik kümesindeki VM 'ler ile desteklenir. Kullanılabilirlik Alanları dağıtımında desteklenmez. 
 -  Azure Paylaşılan disk değeri [MAXSHARES](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) , kaç küme düğümünün paylaşılan diski kullanabileceğinizi belirler. Genellikle SAP ASCS/SCS örneği için Windows Yük devretme kümesinde iki düğüm yapılandıracaksınız, bu nedenle değerinin `maxShares` iki olarak ayarlanması gerekir.
 -  Tüm SAP yoks/SCS kümesi VM 'lerinin aynı [Azure yakınlık yerleşimi grubuna](../../windows/proximity-placement-groups.md)dağıtılması gerekir.   
    PPG olmadan Azure Paylaşılan disk ile kullanılabilirlik kümesinde Windows küme VM 'Leri dağıtabilseniz de PPG, Azure Paylaşılan disklerinin ve küme VM 'lerinin fiziksel yakınlığını, bu nedenle VM 'Ler ve depolama katmanı arasında daha düşük gecikme süresine neden olur.    
 
-Azure Paylaşılan disk sınırlamaları hakkında daha fazla bilgi için, Azure Paylaşılan disk belgelerinin [sınırlamalar](../../linux/disks-shared.md#limitations) bölümünü dikkatle inceleyin.  
+Azure Paylaşılan disk sınırlamaları hakkında daha fazla bilgi için, Azure Paylaşılan disk belgelerinin [sınırlamalar](../../disks-shared.md#limitations) bölümünü dikkatle inceleyin.  
 
 > [!IMPORTANT]
 > SAP ASCS/SCS Windows Yük devretme kümesini Azure Paylaşılan disk ile dağıttığınızda, dağıtımınızın tek bir depolama kümesinde tek bir paylaşılan diskle birlikte çalışır durumda olacağını unutmayın. SAP ASCS/SCS Örneğinizde, Azure Paylaşılan diskinin dağıtıldığı depolama kümesiyle ilgili sorunlar söz konusu olduğunda bu örnek etkilenecektir.  
@@ -56,7 +56,7 @@ Azure Paylaşılan disk sınırlamaları hakkında daha fazla bilgi için, Azure
 
 Hem Windows Server 2016 hem de Windows Server 2019 desteklenir (en son veri merkezi görüntülerini kullanın).
 
-**Windows Server 2019 Datacenter**kullanmanızı kesinlikle öneririz; örneğin:
+**Windows Server 2019 Datacenter** kullanmanızı kesinlikle öneririz; örneğin:
 - Windows 2019 yük devretme kümesi hizmeti Azure ile uyumlu
 - Azure Schedule olaylarını izleyerek Azure ana bilgisayar bakımı ve geliştirilmiş deneyimle ilgili tümleştirme ve tanıma özellikleri eklendi.
 - Dağıtılmış ağ adı (varsayılan seçenektir) kullanılabilir. Bu nedenle, küme ağ adı için ayrılmış bir IP adresine sahip olmanız gerekmez. Ayrıca, Azure Iç Load Balancer bu IP adresini yapılandırmaya gerek yoktur. 
@@ -95,7 +95,7 @@ Birden çok SID yapılandırmasında hem sıraya alma çoğaltma sunucusu 1 (ERS
 
 ## <a name="infrastructure-preparation"></a>Altyapı hazırlığı
 
-**Mevcut kümelenmiş** SAP **PR1** ascs/SCS örneğine ek olarak yeni bir SAP SID **PR2**yükleyeceğiz.  
+**Mevcut kümelenmiş** SAP **PR1** ascs/SCS örneğine ek olarak yeni bir SAP SID **PR2** yükleyeceğiz.  
 
 ### <a name="host-names-and-ip-addresses"></a>Ana bilgisayar adları ve IP adresleri
 
@@ -113,7 +113,7 @@ Birden çok SID yapılandırmasında hem sıraya alma çoğaltma sunucusu 1 (ERS
 
 SAP ASCS, SAP SCS ve yeni SAP ERS2, sanal konak adı ve sanal IP adresleri kullanın. Azure 'da bir sanal IP adresi kullanmak için bir [yük dengeleyici](../../../load-balancer/load-balancer-overview.md) gereklidir. [Standart yük dengeleyiciyi](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)kullanmanızı kesinlikle öneririz. 
 
-İkinci SAP SID yoks/SCS/ERS örneği **PR2**için mevcut yük dengeleyiciye yapılandırma eklemeniz gerekir. İlk SAP SID **PR1** yapılandırması zaten yerinde olmalıdır.  
+İkinci SAP SID yoks/SCS/ERS örneği **PR2** için mevcut yük dengeleyiciye yapılandırma eklemeniz gerekir. İlk SAP SID **PR1** yapılandırması zaten yerinde olmalıdır.  
 
 **A SCS PR2 [örnek numarası 02]**
 - Ön uç yapılandırması
@@ -121,24 +121,24 @@ SAP ASCS, SAP SCS ve yeni SAP ERS2, sanal konak adı ve sanal IP adresleri kulla
 - Arka uç yapılandırması  
     Zaten mevcut-VM 'Ler zaten arka uç havuzuna eklenmiş, SAP SID **PR1** için Yapılandırılıyor
 - Araştırma bağlantı noktası
-    - Bağlantı noktası 620**NR** [**62002**] protokol (TCP), Aralık (5) için varsayılan seçeneği bırakın, sağlıksız eşik (2)
+    - Bağlantı noktası 620 **NR** [**62002**] protokol (TCP), Aralık (5) için varsayılan seçeneği bırakın, sağlıksız eşik (2)
 - Yük Dengeleme kuralları
     - Standart Load Balancer kullanıyorsanız HA bağlantı noktaları ' nı seçin.
     - Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-        - 32**NR** TCP [**3202**]
-        - 36**NR** TCP [**3602**]
-        - 39**NR** TCP [**3902**]
-        - 81**NR** TCP [**8102**]
-        - 5**NR**13 TCP [**50213**]
-        - 5**NR**14 TCP [**50214**]
-        - 5**NR**16 TCP [**50216**]
+        - 32 **NR** TCP [**3202**]
+        - 36 **NR** TCP [**3602**]
+        - 39 **NR** TCP [**3902**]
+        - 81 **NR** TCP [**8102**]
+        - 5 **NR** 13 TCP [**50213**]
+        - 5 **NR** 14 TCP [**50214**]
+        - 5 **NR** 16 TCP [**50216**]
         - **PR2** ascs ön uç IP 'si, sistem durumu araştırması ve mevcut arka uç havuzuyla ilişkilendirin.  
 
     - Boşta zaman aşımı (dakika) değerinin en fazla 30 değerine ayarlandığından ve kayan IP (doğrudan sunucu dönüşü) etkinleştirildiğinden emin olun.
 
 **ERS2 PR2 [örnek numarası 12]** 
 
-Sıraya alma çoğaltma sunucusu 2 (ERS2) da kümelenmiş olduğundan, ERS2 sanal IP adresinin, yukarıdaki SAP ASCS/SCS IP 'ye ek olarak Azure ıLB üzerinde de yapılandırılması gerekir. Bu bölüm yalnızca **PR2**için sıraya alma çoğaltma sunucusu 2 mimarisi kullanılıyorsa geçerlidir.  
+Sıraya alma çoğaltma sunucusu 2 (ERS2) da kümelenmiş olduğundan, ERS2 sanal IP adresinin, yukarıdaki SAP ASCS/SCS IP 'ye ek olarak Azure ıLB üzerinde de yapılandırılması gerekir. Bu bölüm yalnızca **PR2** için sıraya alma çoğaltma sunucusu 2 mimarisi kullanılıyorsa geçerlidir.  
 - Yeni ön uç yapılandırması
     - Statik SAP ERS2 IP adresi **10.0.0.46**
 
@@ -146,16 +146,16 @@ Sıraya alma çoğaltma sunucusu 2 (ERS2) da kümelenmiş olduğundan, ERS2 sana
   VM 'Ler zaten ıLB arka uç havuzuna eklenmiş.  
 
 - Yeni yoklama bağlantı noktası
-    - Bağlantı noktası 621**NR**  [**62112**] protokol (TCP), Aralık (5) için varsayılan seçeneği bırakın, sağlıksız eşik (2)
+    - Bağlantı noktası 621 **NR**  [**62112**] protokol (TCP), Aralık (5) için varsayılan seçeneği bırakın, sağlıksız eşik (2)
 
 - Yeni Yük Dengeleme kuralları
     - Standart Load Balancer kullanıyorsanız HA bağlantı noktaları ' nı seçin.
     - Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-        - 32**NR** TCP [**3212**]
-        - 33**NR** TCP [**3312**]
-        - 5**NR**13 TCP [**51212**]
-        - 5**NR**14 TCP [**51212**]
-        - 5**NR**16 TCP [**51212**]
+        - 32 **NR** TCP [**3212**]
+        - 33 **NR** TCP [**3312**]
+        - 5 **NR** 13 TCP [**51212**]
+        - 5 **NR** 14 TCP [**51212**]
+        - 5 **NR** 16 TCP [**51212**]
         - **PR2** ERS2 ön uç IP 'si, sistem durumu araştırması ve mevcut arka uç havuzuyla ilişkilendirin.  
 
     - Boşta kalma zaman aşımı (dakika) değerinin en fazla değere (30) ayarlandığından ve kayan IP (doğrudan sunucu dönüşü) etkinleştirildiğinden emin olun.
@@ -293,7 +293,7 @@ Tüm küme yapılandırmasının Azure Load Balancer ile çalışmasını sağla
 Ancak, yalnızca bir örnek etkin olduğundan, bazı küme yapılandırmalarında bu çalışmaz. Diğer örnek pasif ve iş yükünün hiçbirini kabul edemiyor. Bir araştırma işlevselliği, Azure iç yük dengeleyicinin hangi Örneğin etkin olduğunu algılayarak ve yalnızca etkin örneği hedeflemeye yardımcı olur.  
 
 > [!IMPORTANT]
-> Bu örnek yapılandırmada, **Probeport** 620**NR**olarak ayarlanır. SAP ASCS örneği için **02** sayı ile 620**02**olur.
+> Bu örnek yapılandırmada, **Probeport** 620 **NR** olarak ayarlanır. SAP ASCS örneği için **02** sayı ile 620 **02** olur.
 > Yapılandırmayı SAP örnek numaralarınız ve SAP SID 'niz ile eşleşecek şekilde ayarlamanız gerekecektir.
 
 Bir araştırma bağlantı noktası eklemek için, bu PowerShell modülünü küme VM 'lerinden birinde çalıştırın:
@@ -303,7 +303,7 @@ Bir araştırma bağlantı noktası eklemek için, bu PowerShell modülünü kü
    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID PR2 -ProbePort 62002
    ```
 
-- ERS2 kullanıyorsanız, kümelenmiş örnek numarası **12**olan. Kümelenmemiş olduğundan, ERS1 için araştırma bağlantı noktasını yapılandırmaya gerek yoktur.  
+- ERS2 kullanıyorsanız, kümelenmiş örnek numarası **12** olan. Kümelenmemiş olduğundan, ERS1 için araştırma bağlantı noktasını yapılandırmaya gerek yoktur.  
    ```powershell
    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID PR2 -ProbePort 62012 -IsSAPERSClusteredInstance $True
    ```
@@ -461,7 +461,7 @@ Bir araştırma bağlantı noktası eklemek için, bu PowerShell modülünü kü
 ## <a name="test-the-sap-ascsscs-instance-failover"></a>SAP ASCS/SCS örneği yük devretmesini test etme
 Seviyelendirilmiş yük devretme testleri için SAP Ass 'nin A düğümünde etkin olduğunu varsaytık.  
 
-1. SAP sisteminin A düğümünden B düğümüne başarıyla yük devredebildiğini doğrulayın. Bu örnekte, test SAPSıD **PR2**için yapılır.  
+1. SAP sisteminin A düğümünden B düğümüne başarıyla yük devredebildiğini doğrulayın. Bu örnekte, test SAPSıD **PR2** için yapılır.  
    SAPSıD 'nin her birinin diğer küme düğümüne başarıyla taşınerişebildiğinizden emin olun.   
    A kümesi düğümünden B kümesine SAP küme grubunun yük devretmesini başlatmak için şu seçeneklerden birini seçin \<SID\> :
     - Yük Devretme Kümesi Yöneticisi  

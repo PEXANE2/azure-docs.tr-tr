@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 09/15/2020
-ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/16/2020
+ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331966"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685435"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>SYNAPSE bilgi merkezini araştırma
 
@@ -25,7 +25,7 @@ Bu öğreticide, SYNAPSE Studio bilgi merkezini kullanmayı öğreneceksiniz.
 
 SYNAPSE Studio 'da bilgi merkezini bulmanın iki yolu vardır:
 
-  1. Giriş merkezinde, yararlı bağlantılar altında, **Bilgi Merkezi** adlı ilk bağlantıya tıklayın.
+  1. Ana Hub 'da, sayfanın sağ üst kısmındaki **öğrenme**' ye tıklayın.
   2. Üstteki menü çubuğunda, **?** ' e tıklayın. daha sonra  **Bilgi Merkezi**.
 
 Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.

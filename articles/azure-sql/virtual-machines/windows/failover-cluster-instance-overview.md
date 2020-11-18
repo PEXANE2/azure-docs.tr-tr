@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5845a3bdc4b86fbbe44c92779e5aae95044eb6b2
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556379"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685945"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,7 @@ Geleneksel şirket içi kümelenmiş ortamlarda Windows Yük devretme kümesi, p
 
 Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin dağıtımı için paylaşılan depolama çözümü olarak çeşitli seçenekler sunar: 
 
-||[Azure paylaşılan diskleri](../../../virtual-machines/windows/disks-shared.md)|[Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Depolama Alanları Doğrudan (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure paylaşılan diskleri](../../../virtual-machines/disks-shared.md)|[Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Depolama Alanları Doğrudan (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
@@ -58,12 +58,12 @@ Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabile
 
 ### <a name="azure-shared-disks"></a>Azure paylaşılan diskleri
 
-[Azure paylaşılan diskler](../../../virtual-machines/windows/disks-shared.md) , [Azure yönetilen disklerinin](../../../virtual-machines/managed-disks-overview.md)bir özelliğidir. Windows Server Yük Devretme Kümelemesi, yük devretme kümesi örneğiyle Azure Paylaşılan diskleri kullanmayı destekler. 
+[Azure paylaşılan diskler](../../../virtual-machines/disks-shared.md) , [Azure yönetilen disklerinin](../../../virtual-machines/managed-disks-overview.md)bir özelliğidir. Windows Server Yük Devretme Kümelemesi, yük devretme kümesi örneğiyle Azure Paylaşılan diskleri kullanmayı destekler. 
 
-**Desteklenen işletim sistemi** : tümü   
-**Desteklenen SQL sürümü** : tümü     
+**Desteklenen işletim sistemi**: tümü   
+**Desteklenen SQL sürümü**: tümü     
 
-**Avantajlar** : 
+**Avantajlar**: 
 - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) mimarisini olduğu gibi tutarken Azure 'a geçiş yapmak isteyen uygulamalar için faydalıdır. 
 - , SCSI kalıcı ayırmaları (SCSI PR) desteği nedeniyle kümelenmiş uygulamaları Azure 'a geçirebilirler. 
 - , Paylaşılan Azure Premium SSD ve Azure Ultra Disk depolamayı destekler.
@@ -71,7 +71,7 @@ Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabile
 - FILESTREAM 'i destekler.
 
 
-**Sınırlamalar** : 
+**Sınırlamalar**: 
 - Sanal makinelerin aynı Kullanılabilirlik kümesine ve yakınlık yerleşimi grubuna yerleştirilmesi gerekir.
 - Kullanılabilirlik alanları desteklenmiyor.
 - Premium SSD disk önbelleğe alma desteklenmez.
@@ -82,8 +82,8 @@ Başlamak için bkz. [Azure Paylaşılan disklerle SQL Server yük devretme küm
 
 [Depolama alanları doğrudan](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) , Azure sanal makinelerinde Yük Devretme Kümelemesi ile desteklenen bir Windows Server özelliğidir. Yazılım tabanlı bir sanal SAN sağlar.
 
-**Desteklenen işletim sistemi** : Windows Server 2016 ve üzeri   
-**Desteklenen SQL sürümü** : SQL Server 2016 ve üzeri   
+**Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
+**Desteklenen SQL sürümü**: SQL Server 2016 ve üzeri   
 
 
 **Larından** 
@@ -104,8 +104,8 @@ Başlamak için, bkz. [SQL Server yük devretme kümesi örneği depolama alanla
 
 [Premium dosya paylaşımları](../../../storage/files/storage-how-to-create-premium-fileshare.md) , [Azure dosyalarının](../../../storage/files/index.yml)bir özelliğidir. Premium dosya paylaşımları SSD olarak desteklenir ve sürekli düşük gecikme süresine sahiptir. Windows Server 2012 veya sonraki sürümlerde SQL Server 2012 veya üzeri yük devretme kümesi örnekleriyle birlikte kullanılmak üzere tam olarak desteklenmektedir. Bir dosya paylaşımını herhangi bir kesinti olmadan yeniden boyutlandırabilir ve ölçeklendirebileceğiniz için Premium dosya paylaşımları size daha fazla esneklik sağlar.
 
-**Desteklenen işletim sistemi** : Windows Server 2012 ve üzeri   
-**Desteklenen SQL sürümü** : SQL Server 2012 ve üzeri   
+**Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
+**Desteklenen SQL sürümü**: SQL Server 2012 ve üzeri   
 
 **Larından** 
 - Yalnızca sanal makineler için paylaşılan depolama çözümü birden çok kullanılabilirlik bölgesine yayılır. 
@@ -122,8 +122,8 @@ Başlamak için bkz. [Premium dosya paylaşımıyla SQL Server yük devretme kü
 
 Desteklenen depolamaya sahip iş ortağı kümesi çözümleri vardır. 
 
-**Desteklenen işletim sistemi** : tümü   
-**Desteklenen SQL sürümü** : tümü   
+**Desteklenen işletim sistemi**: tümü   
+**Desteklenen SQL sürümü**: tümü   
 
 Bir örnek, depolama olarak SIOS veri Man kullanır. Daha fazla bilgi için bkz. blog girdisi [Yük Devretme Kümelemesi ve SIOS veri Man](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).
 
@@ -131,8 +131,8 @@ Bir örnek, depolama olarak SIOS veri Man kullanır. Daha fazla bilgi için bkz.
 
 Ayrıca, Azure ExpressRoute aracılığıyla bir Iscsı hedefi paylaşılan blok depolama alanını kullanıma sunabilirsiniz. 
 
-**Desteklenen işletim sistemi** : tümü   
-**Desteklenen SQL sürümü** : tümü   
+**Desteklenen işletim sistemi**: tümü   
+**Desteklenen SQL sürümü**: tümü   
 
 Örneğin, NetApp özel depolama (NPS), Azure VM 'lerine Equinx ile ExpressRoute aracılığıyla bir Iscsı hedefi sunar.
 

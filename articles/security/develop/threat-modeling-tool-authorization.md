@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d99295fbb355b3efa22a64c9adc04311508e474
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517572"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693167"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Güvenlik çerçevesi: yetkilendirme | Karşı 
 | Ürün/hizmet | Makale |
@@ -32,11 +32,11 @@ ms.locfileid: "94517572"
 | **IoT bulut ağ geçidi** | <ul><li>[En az ayrıcalıklı belirteçleri kullanarak bulut ağ geçidine bağlanma](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Cihaz belirteçleri oluşturmak için yalnızca bir salt-Gönder izin SAS anahtarı kullanın](#sendonly-sas)</li><li>[Olay Hub 'ına doğrudan erişim sağlayan erişim belirteçleri kullanmayın](#access-tokens-hub)</li><li>[Minimum izinleri olması gereken SAS anahtarlarını kullanarak Olay Hub 'ına bağlanma](#sas-minimum-permissions)</li></ul> |
 | **Azure belge DB** | <ul><li>[Mümkün olduğunda Azure Cosmos DB bağlanmak için kaynak belirteçlerini kullanın](#resource-docdb)</li></ul> |
-| **Azure Güven sınırı** | <ul><li>[RBAC kullanarak Azure aboneliğine ayrıntılı erişim yönetimini etkinleştirme](#grained-rbac)</li></ul> |
-| **Service Fabric güven sınırı** | <ul><li>[RBAC kullanarak istemcinin küme işlemlerine erişimini kısıtlama](#cluster-rbac)</li></ul> |
+| **Azure Güven sınırı** | <ul><li>[Azure RBAC kullanarak Azure aboneliğine ayrıntılı erişim yönetimini etkinleştirme](#grained-rbac)</li></ul> |
+| **Service Fabric güven sınırı** | <ul><li>[Azure RBAC kullanarak istemci küme işlemlerine erişimi kısıtla](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Güvenlik modellemesini gerçekleştirin ve gereken yerlerde alan düzeyi güvenliği kullanın](#modeling-field)</li></ul> |
 | **Dynamics CRM portalı** | <ul><li>[Portalın güvenlik modelinin CRM 'nin geri kalanından farklı olduğunu aklınızda tutarak Portal hesaplarının güvenlik modellemesini gerçekleştirin](#portal-security)</li></ul> |
-| **Azure Depolama** | <ul><li>[Azure Tablo depolama alanındaki çeşitli varlıklar üzerinde hassas izinler verin](#permission-entities)</li><li>[Azure Resource Manager kullanarak Azure Storage hesabı 'nda Role-Based Access Control (RBAC) etkinleştirme](#rbac-azure-manager)</li></ul> |
+| **Azure Depolama** | <ul><li>[Azure Tablo depolama alanındaki çeşitli varlıklar üzerinde hassas izinler verin](#permission-entities)</li><li>[Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) Azure Resource Manager kullanarak Azure depolama hesabına etkinleştirin](#rbac-azure-manager)</li></ul> |
 | **Mobil Istemci** | <ul><li>[Örtük jailbreak veya kök öğe algılamayı uygulama](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF 'de zayıf sınıf başvurusu](#weak-class-wcf)</li><li>[WCF-Yetkilendirme denetimini uygulama](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API 'sinde doğru yetkilendirme mekanizmasını uygulama](#authz-aspnet)</li></ul> |
@@ -229,7 +229,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Başvurular**              | YOK  |
 | **Adımlar** | Kaynak belirteci Azure Cosmos DB bir izin kaynağıyla ilişkilendirilir ve bir veritabanının kullanıcısı ile kullanıcının belirli bir Azure Cosmos DB uygulama kaynağına (örn. koleksiyon, belge) sahip olduğu izni yakalar. İstemci, bir mobil veya masaüstü istemcisi gibi son kullanıcı uygulaması gibi ana veya salt okunurdur anahtarlar ile güvenilemiyorsa Azure Cosmos DB erişmek için her zaman bir kaynak belirteci kullanın. Bu anahtarları güvenli bir şekilde depolayabilen arka uç uygulamalarından ana anahtar veya salt okuma anahtarları kullanın.|
 
-## <a name="enable-fine-grained-access-management-to-azure-subscription-using-rbac"></a><a id="grained-rbac"></a>RBAC kullanarak Azure aboneliğine ayrıntılı erişim yönetimini etkinleştirme
+## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>Azure RBAC kullanarak Azure aboneliğine ayrıntılı erişim yönetimini etkinleştirme
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
@@ -237,10 +237,10 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanın](../../role-based-access-control/role-assignments-portal.md)  |
-| **Adımlar** | Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. RBAC kullanarak, yalnızca kullanıcıların işlerini yapmak için gereksinim duyduğu erişim miktarını verebilirsiniz.|
+| **Başvurular**              | [Azure abonelik kaynaklarınıza erişimi yönetmek için Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)  |
+| **Adımlar** | Azure rol tabanlı erişim denetimi (Azure RBAC), Azure için ayrıntılı erişim yönetimine izin vermez. Azure RBAC kullanarak, yalnızca kullanıcıların işlerini gerçekleştirmesi için ihtiyaç duyduğu erişim miktarına izin verebilirsiniz.|
 
-## <a name="restrict-clients-access-to-cluster-operations-using-rbac"></a><a id="cluster-rbac"></a>RBAC kullanarak istemcinin küme işlemlerine erişimini kısıtlama
+## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Service Fabric RBAC kullanarak istemcinin küme işlemlerine erişimini kısıtlama
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
@@ -248,7 +248,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ortam-Azure |
-| **Başvurular**              | [Service Fabric istemcileri için rol tabanlı erişim denetimi](../../service-fabric/service-fabric-cluster-security-roles.md) |
+| **Başvurular**              | [Service Fabric istemciler için rol tabanlı erişim denetimi Service Fabric](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **Adımlar** | <p>Azure Service Fabric, bir Service Fabric kümesine bağlı istemciler için iki farklı erişim denetimi türünü destekler: yönetici ve Kullanıcı. Erişim denetimi, küme yöneticisinin farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlandırıp kümenin daha güvenli olmasını sağlar.</p><p>Yöneticiler, yönetim özelliklerine (okuma/yazma özellikleri dahil) tam erişime sahiptir. Varsayılan olarak kullanıcılar, yönetim özelliklerine (örneğin, sorgu özellikleri) yalnızca okuma erişimine ve uygulama ve Hizmetleri çözme imkanına sahiptir.</p><p>Her biri için ayrı sertifikalar sağlayarak küme oluşturma sırasında iki istemci rolünü (yönetici ve istemci) belirtirsiniz.</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>Güvenlik modellemesini gerçekleştirin ve gereken yerlerde alan düzeyi güvenliği kullanın
@@ -284,7 +284,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Başvurular**              | [SAS kullanarak Azure Depolama hesabınızdaki nesnelere erişim yetkisi verme](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **Adımlar** | Bazı iş senaryolarında, Azure Tablo depolaması, farklı taraflara göre hassas verileri depolamak için gerekli olabilir. Örneğin, farklı ülkeler/bölgelerle ilgili hassas veriler. Bu gibi durumlarda SAS imzaları, bir kullanıcının belirli bir ülkeye/bölgeye özgü verilere erişebileceği şekilde bölüm ve satır anahtar aralıkları belirtilerek oluşturulabilir.| 
 
-## <a name="enable-role-based-access-control-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure Resource Manager kullanarak Azure Storage hesabı 'nda Role-Based Access Control (RBAC) etkinleştirme
+## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) Azure Resource Manager kullanarak Azure depolama hesabına etkinleştirin
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
@@ -292,7 +292,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [Role-Based Access Control (RBAC) ile depolama hesabınızın güvenliğini sağlama](../../storage/blobs/security-recommendations.md) |
+| **Başvurular**              | [Azure rol tabanlı erişim denetimi (Azure RBAC) ile depolama hesabınızın güvenliğini sağlama](../../storage/blobs/security-recommendations.md) |
 | **Adımlar** | <p>Yeni bir depolama hesabı oluşturduğunuzda, klasik veya Azure Resource Manager dağıtım modelini seçersiniz. Azure 'da kaynak oluşturmak için klasik model, yalnızca aboneliğe hiçbir şey erişimi ve depolama hesabını sırayla sağlar.</p><p>Azure Resource Manager modeliyle, depolama hesabını bir kaynak grubuna yerleştirip, bu belirli depolama hesabının yönetim düzlemine erişimi Azure Active Directory kullanarak kontrol edersiniz. Örneğin, belirli kullanıcılara depolama hesabı anahtarlarına erişme özelliği verebilirsiniz, ancak diğer kullanıcılar depolama hesabı hakkındaki bilgileri görüntüleyebilir, ancak depolama hesabı anahtarlarına erişemez.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Örtük jailbreak veya kök öğe algılamayı uygulama

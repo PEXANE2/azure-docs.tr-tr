@@ -6,16 +6,16 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: b81b592cf35d0ca13d1c7bd2281ce35cce827a3c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 1adf8370f55a0f6131eb4140c58fa4618e08127b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057867"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686030"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service’teki (AKS) uygulamalar ve kümeler için güvenlik kavramları
 
-Azure Kubernetes Service (AKS) içinde uygulama iş yüklerini çalıştırırken müşteri verilerinizi korumak için, kümenizin güvenliği önemli bir konudur. Kubernetes, *ağ ilkeleri* ve *gizli*dizileri gibi güvenlik bileşenleri içerir. Daha sonra Azure, ağ güvenlik grupları ve düzenlenmiş küme yükseltmeleri gibi bileşenlere eklenir. Bu güvenlik bileşenleri, AKS kümenizi en son işletim sistemi güvenlik güncelleştirmelerini ve Kubernetes yayınlarını çalıştıran, güvenli Pod trafiği ve hassas kimlik bilgilerine erişim sağlamak için birleştirilir.
+Azure Kubernetes Service (AKS) içinde uygulama iş yüklerini çalıştırırken müşteri verilerinizi korumak için, kümenizin güvenliği önemli bir konudur. Kubernetes, *ağ ilkeleri* ve *gizli* dizileri gibi güvenlik bileşenleri içerir. Daha sonra Azure, ağ güvenlik grupları ve düzenlenmiş küme yükseltmeleri gibi bileşenlere eklenir. Bu güvenlik bileşenleri, AKS kümenizi en son işletim sistemi güvenlik güncelleştirmelerini ve Kubernetes yayınlarını çalıştıran, güvenli Pod trafiği ve hassas kimlik bilgilerine erişim sağlamak için birleştirilir.
 
 Bu makalede, AKS 'deki uygulamalarınızın güvenliğini sağlayan temel kavramlar tanıtılmaktadır:
 
@@ -36,7 +36,7 @@ AKS 'de Kubernetes ana bileşenleri, Microsoft tarafından sunulan yönetilen hi
 
 Varsayılan olarak, Kubernetes API sunucusu genel bir IP adresi ve tam etki alanı adı (FQDN) kullanır. [Yetkılı IP aralıklarını][authorized-ip-ranges]kullanarak API sunucusu uç noktasına erişimi sınırlayabilirsiniz. Ayrıca, API sunucusu erişimini sanal ağınıza sınırlamak için tam bir [özel küme][private-clusters] da oluşturabilirsiniz.
 
-Kubernetes rol tabanlı erişim denetimi (RBAC) ve Azure Active Directory kullanarak API sunucusuna erişimi denetleyebilirsiniz. Daha fazla bilgi için bkz. [AKS Ile Azure AD tümleştirmesi][aks-aad].
+Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) ve Azure RBAC kullanarak API sunucusuna erişimi denetleyebilirsiniz. Daha fazla bilgi için bkz. [AKS Ile Azure AD tümleştirmesi][aks-aad].
 
 ## <a name="node-security"></a>Düğüm güvenliği
 
@@ -50,7 +50,7 @@ Düğümler, genel IP adresleri atanmadan özel bir sanal ağ alt ağına dağı
 
 Depolama sağlamak için düğümler Azure yönetilen diskleri kullanır. Çoğu VM düğüm boyutu için bunlar, yüksek performanslı SSD 'Ler tarafından desteklenen Premium disklerdir. Yönetilen disklerde depolanan veriler, Azure platformunda Rest 'de otomatik olarak şifrelenir. Bu diskler, artıklığı artırmak için Azure veri merkezi 'nde de güvenli bir şekilde çoğaltılır.
 
-Kubernetes ortamları, AKS veya başka bir yerde, şu anda çok kiracılı olmayan kullanım için tamamen güvenli değildir. *Pod güvenlik ilkeleri*gibi ek güvenlik özellikleri veya düğümler için daha ayrıntılı rol tabanlı erişim denetımı (RBAC), güvenli hale getirme daha zordur. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir. İş yüklerini yalıtma yolları hakkında daha fazla bilgi için bkz. [AKS 'de küme yalıtımı Için en iyi uygulamalar][cluster-isolation].
+Kubernetes ortamları, AKS veya başka bir yerde, şu anda çok kiracılı olmayan kullanım için tamamen güvenli değildir. Temel bileşenler için *Pod güvenlik ilkeleri* veya daha hassas rol tabanlı erişim denetimi (KUBERNETES RBAC) gibi ek güvenlik özellikleri, daha çok daha zor hale getirir. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir. İş yüklerini yalıtma yolları hakkında daha fazla bilgi için bkz. [AKS 'de küme yalıtımı Için en iyi uygulamalar][cluster-isolation].
 
 ### <a name="compute-isolation"></a>İşlem yalıtımı
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a36e15a56a5a4c8a637120ca730ae1da764d376d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: a543f03cb73d9eae8eaa81eeb3a37fd59e4e6a81
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422912"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685809"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault için ortak hata kodları
 
@@ -30,6 +30,7 @@ Aşağıdaki tabloda listelenen hata kodları, Azure Anahtar Kasası 'ndaki bir 
 | RegionNotSupported |  Belirtilen Azure bölgesi bu kaynak için desteklenmiyor. |
 | SkuNotSupported |  Belirtilen SKU türü bu kaynak için desteklenmiyor. |
 | ResourceNotFound |  Belirtilen Azure kaynağı bulunamadı. |
+| ResourceGroupNotFound | Belirtilen Azure Kaynak grubu bulunamadı. |
 | Certificate, zaman aşımına uğradı |  Sertifikanın süre sonu tarihini ve geçerlilik süresini denetleyin. |
 
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c5c536b95360c536998a5de87e9307918b15630
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913968"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685996"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -27,7 +27,7 @@ Key Vault VM uzantısı, Windows 'un aşağıdaki sürümlerini destekler:
 - Windows Server 2016
 - Windows Server 2012
 
-Key Vault VM extensio, Windows Server 2019 Core yüklemesi kullanılarak Azure 'da kullanılmak üzere yüklenmiş ve özelleştirilmiş bir görüntüye dönüştürülen özel yerel VM 'de de desteklenir.
+Key Vault VM uzantısı, Windows Server 2019 Core yüklemesi kullanılarak Azure 'da kullanılmak üzere yüklenmiş ve özelleştirilmiş bir görüntüye dönüştürülen özel yerel VM 'de de desteklenir.
 
 ### <a name="supported-certificate-content-types"></a>Desteklenen sertifika içerik türleri
 
@@ -87,9 +87,9 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | date |
+| apiVersion | 2019-07-01 | tarih |
 | yayımcı | Microsoft.Azure.KeyVault | string |
 | tür | KeyVaultForWindows | string |
 | typeHandlerVersion | 1,0 | int |

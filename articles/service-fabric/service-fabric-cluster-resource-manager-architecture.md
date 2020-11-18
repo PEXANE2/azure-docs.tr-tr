@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e7d5d4b730ef1669bd9bb7d74e35924061f5580
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0aff55810508fedcf354fba3d9fca9f7a402029b
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146220"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685843"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Küme Resource Manager mimarisine genel bakış
 Service Fabric kümesi Kaynak Yöneticisi, kümede çalışan merkezi bir hizmettir. Özellikle kaynak tüketimine ve herhangi bir yerleştirme kuralına göre kümedeki hizmetlerin istenen durumunu yönetir. 
@@ -43,7 +43,7 @@ Aşağıdaki diyagrama bakalım:
 
 <center>
 
-![Küme Kaynak Yöneticisi hizmetini gösteren diyagram, yerel aracılardan gelen tüm bilgileri toplar ve geçerli yapılandırmasına göre yeniden çalışır.][Image1]
+![Küme Kaynak Yöneticisi hizmetini gösteren diyagram, yerel aracılardan tüm bilgileri toplar ve geçerli yapılandırmasına göre yeniden çalışır.][Image1]
 </center>
 
 Çalışma zamanı sırasında oluşabilecek birçok değişiklik vardır. Örneğin, bazı hizmetlerin değişiklik tükettiği kaynak miktarını, bazı hizmetleri başarısız olduğunu ve bazı düğümlerin kümeye katılıp ayrılmaalım. Bir düğümdeki tüm değişiklikler toplanır ve Küme Kaynak Yöneticisi hizmetine (1, 2) yeniden toplanmış, çözümlendikleri ve depolandıklarında düzenli aralıklarla gönderilir. Hizmetin değişikliklere baktığı ve herhangi bir eylemin gerekli olup olmadığını belirlediği (3) her birkaç saniye. Örneğin, kümeye bazı boş düğümlerin eklendiğini fark edebilirsiniz. Sonuç olarak, bazı hizmetleri bu düğümlere taşımaya karar verir. Küme Kaynak Yöneticisi, belirli bir düğümün aşırı yüklenmiş olduğunu veya belirli hizmetlerin başarısız olduğunu ya da silindiğini, kaynakları başka bir yerde boşaltmasını de fark edebilirsiniz.

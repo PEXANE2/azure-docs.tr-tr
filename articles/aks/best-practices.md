@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) içinde uygulama derlemek ve yönetm
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008789"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686268"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama derlemek ve yönetmek için küme operatörü ve geliştirici en iyi uygulamaları
 
@@ -30,7 +30,7 @@ Bir küme operatörü olarak, ihtiyaçlarını anlamak için uygulama sahipleri 
 * [Gelişmiş zamanlayıcı özellikleri için en iyi deneyimler](operator-best-practices-advanced-scheduler.md)
     * Talara ve toleranlara, düğüm seçicilerini ve benzeşimine ve yerleşik olmayan benzeşim ve benzeşim kullanımını içerir.
 * [Kimlik doğrulaması ve yetkilendirme için en iyi yöntemler](operator-best-practices-identity.md)
-    * Rol tabanlı erişim denetimi (RBAC) ve pod kimliklerini kullanarak Azure Active Directory tümleştirme içerir.
+    * , Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC), Azure RBAC ve pod kimliklerini kullanarak Azure Active Directory tümleştirme içerir.
 
 **Güvenlik**
 

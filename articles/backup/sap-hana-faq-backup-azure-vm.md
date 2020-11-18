@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a1d6012ec064b5ec582896ac3484161a6e25f2bf
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 24eb4abaaabe166ceb3e6bdb99f9446d398d03a1
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659973"
+ms.locfileid: "94686115"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -26,7 +26,7 @@ Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca ba
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Yedekleme Işleri menüsünde zamanlanmış yedekleme işlerini görebilir miyim?
 
-Yedekleme Işi menüsü, yalnızca geçici yedekleme işlerini gösterir. Zamanlanan işler için [Azure izleyici](./backup-azure-monitoring-use-azuremonitor.md)'yi kullanın.
+Yedekleme Işi menüsü yalnızca isteğe bağlı yedekleme işlerini gösterir. Zamanlanan işler için [Azure izleyici](./backup-azure-monitoring-use-azuremonitor.md)'yi kullanın.
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>Gelecekteki veritabanları yedekleme için otomatik olarak eklenir mi?
 
@@ -39,7 +39,7 @@ Bu veritabanını korumayı durdurmanın doğru yolu, bu veritabanındaki **silm
 
 ### <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-the-behavior-be"></a>Korunduktan sonra veritabanının adını değiştirdiğimde, davranış ne olur?
 
-Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, hizmet bu durumu veritabanında bulunamamıştır ve yedeklemelerle başarısız olur. Yeniden adlandırılan veritabanı yeni bir veritabanı olarak görünür ve koruma için yapılandırılması gerekir.
+Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, hizmet bu durumu veritabanı bulunmazsa ve yedeklemelerle başarısız olacak şekilde değerlendirir. Yeniden adlandırılan veritabanı yeni bir veritabanı olarak görünür ve koruma için yapılandırılması gerekir.
 
 ### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Azure VM 'de SAP HANA veritabanlarını yedeklemek için Önkoşullar nelerdir?
 
@@ -47,7 +47,7 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 
 ### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>Azure 'un SAP HANA veritabanlarını yedekleyebilmesi için hangi izinlerin ayarlanması gerekir?
 
-Ön kayıt betiğini çalıştırmak, Azure 'un SAP HANA veritabanlarını yedeklemesini sağlamak için gerekli izinleri ayarlar. Ön kayıt betiğini [buradan](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)daha fazla bulabilirsiniz.
+Ön kayıt betiğini çalıştırmak, Azure 'un SAP HANA veritabanlarını yedeklemesini sağlamak için gerekli izinleri ayarlar. Ön kayıt betiğinin [buradan](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)daha fazla bilgi edinebilirsiniz.
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>SAP HANA SDC 'den MDC 'ye geçirdikten sonra yedeklemeler çalışır mi?
 
@@ -62,13 +62,13 @@ Sorun giderme kılavuzunun [Bu bölümüne](./backup-azure-sap-hana-database-tro
 1. Şu anda çalışmakta olan yedeklemenin istenen veritabanında tamamlanmasını bekleyin (Studio 'nun tamamlanmasını denetleyin).
 1. Aşağıdaki adımları kullanarak, günlük yedeklemelerini devre dışı bırakın ve istenen VERITABANı için Katalog yedeklemesini **dosya sistemine** ayarlayın:
 1. **SystemDB**  ->  **yapılandırma**  ->  **veritabanı**  ->  **filtresi Seç (günlük)** öğesine çift tıklayın
-    1. Enable_auto_log_backup **Hayır** olarak ayarla
-    1. Catalog_backup_using_backint **false** olarak ayarla
+    1. Enable_auto_log_backup **Hayır** olarak ayarlayın.
+    1. Catalog_backup_using_backint **false** olarak ayarlayın.
 1. İstenen veritabanında isteğe bağlı bir yedekleme (tam/değişiklik/artımlı) yapın ve yedekleme ve Katalog yedeklemesinin tamamlanmasını bekleyin.
 1. Günlük yedeklemelerini de dosya sistemine taşımak istiyorsanız, enable_auto_log_backup **Evet** olarak ayarlayın.
 1. Yedeklemelerin Azure kasasına akmasını sağlamak için önceki ayarlara geri dönün:
-    1. Enable_auto_log_backup **Evet** olarak ayarla
-    1. Catalog_backup_using_backint **true** olarak ayarla
+    1. Enable_auto_log_backup **Evet** olarak ayarlayın.
+    1. Catalog_backup_using_backint **true** olarak ayarlayın.
 
 >[!NOTE]
 >Yedeklemeleri yerel dosya sistemine taşımak ve Azure kasasına yeniden dönmek, kasadaki günlük yedeklerinin bir günlük yedeklerine neden olabilir. Bu, başarılı bir şekilde tamamlandıktan sonra günlükleri yedeklemeye başlayacak şekilde tam yedekleme tetikleyecektir.
@@ -77,7 +77,7 @@ Sorun giderme kılavuzunun [Bu bölümüne](./backup-azure-sap-hana-database-tro
 
 Şu anda Azure Backup bir HSR kurulumunu anlama yeteneği yoktur. Bu, HSR 'nin birincil ve ikincil düğümlerinin iki bireysel, ilişkisiz VM olarak kabul edildiği anlamına gelir. Öncelikle birincil düğümde yedekleme 'yi yapılandırmanız gerekir. Yük devretme gerçekleştiğinde, ikincil düğümde (şimdi birincil düğüm haline gelir) yedeklemenin yapılandırılması gerekir. Diğer düğüme yedeklemenin otomatik olarak devredilme işlemi yapılmaz.
 
-Belirli bir zaman noktasında etkin (birincil) düğümden verileri yedeklemek için korumayı yük devretme sonrasında birincil olan ikincil düğüme **geçirebilirsiniz**  .
+Belirli bir zaman noktasında etkin (birincil) düğümden verileri yedeklemek için korumayı yük devretme sonrasında birincil olan ikincil düğüme **geçirebilirsiniz** .
 
 Bu **anahtar korumasını** gerçekleştirmek için şu adımları izleyin:
 
@@ -129,38 +129,38 @@ Evet, SLES üzerinde çalışan bir HANA veritabanında tetiklenen akış yedekl
 
 ### <a name="different-options-available-during-creation-of-a-new-policy-for-sap-hana-backup"></a>SAP HANA yedekleme için yeni bir ilkenin oluşturulması sırasında kullanılabilecek farklı seçenekler
 
-Bir ilke oluşturmadan önce, RPO ve RTO gereksinimleri ve ilgili maliyet etkileri üzerinde bir onay olmalıdır.
+Bir ilke oluşturmadan önce, RPO ve RTO gereksinimlerinin yanı sıra ilgili maliyet etkilerine ilişkin etkileri açık olmalıdır.
 
-RPO (kurtarma noktası hedefi) Kullanıcı/müşteri için ne kadar veri kaybı olduğunu gösterir. Bu, günlük yedekleme sıklığı tarafından belirlenir. Daha sık kullanılan günlük yedeklemeleri, daha düşük RPO 'yu ve Azure Backup hizmeti tarafından desteklenen minimum değeri 15 dakikadır (yani, günlük yedekleme sıklığı 15 dakika veya daha yüksek olabilir).
+RPO (kurtarma noktası hedefi) Kullanıcı/müşteri için ne kadar veri kaybı kabul edilebilir olduğunu gösterir. Bu, günlük yedekleme sıklığı tarafından belirlenir. Daha sık kullanılan günlük yedeklemeleri, daha düşük RPO ve Azure Backup hizmeti tarafından desteklenen en düşük değer 15 dakikadır. Bu nedenle günlük yedekleme sıklığı 15 dakika veya daha yüksek olabilir.
 
 RTO (kurtarma zamanı-amaç), verilerin bir veri kaybı senaryosundan sonra en son kullanılabilir zaman noktasına ne kadar hızlı geri yükleneceğini gösterir. Bu, genellikle, geri yükleme için gereken dosya sayısına bağlı olan HANA tarafından çalıştırılan kurtarma stratejisine bağlıdır. Bu, maliyet etkilerine da sahiptir ve aşağıdaki tablo tüm senaryoları ve bunların etkilerini anlamak için yardımcı olmalıdır.
 
-|Yedekleme Ilkesi  |RTO  |Maliyet  |
+|Yedekleme ilkesi  |RTO  |Maliyet  |
 |---------|---------|---------|
-|Günlük tam + Günlükler     |   En hızlı, zaman içinde nokta geri yüklemesi için yalnızca bir tam kopya ve gerekli günlüklere ihtiyacımız var      |    Costliest seçeneği her gün tam bir kopya alındığından ve daha fazla veri, bekletme zamanına kadar arka uçta birikdiğinden,   |
-|Haftalık tam + günlük fark + Günlükler     |   Yukarıdaki noktadan daha yavaştır, ancak zaman içinde nokta geri yükleme için bir tam kopya ve tek fark kopyası + Günlükler gerektiğinden şundan daha hızlıdır      |    Günlük fark genellikle tamamen daha küçük olduğundan ve tam bir kopya yalnızca haftada bir kez alındığından, daha ucuz bir seçenek      |
+|Günlük tam + Günlükler     |   En hızlı, zaman içinde nokta geri yükleme için yalnızca bir tam kopya ve gerekli günlüklere ihtiyacımız olduğundan      |    Costliest seçeneği her gün tam bir kopya alındığından ve daha fazla veri, bekletme zamanına kadar arka uçta birikdiğinden,   |
+|Haftalık tam + günlük fark + Günlükler     |   Yukarıdaki seçeneğe göre daha yavaş, ancak zaman içinde nokta geri yükleme için bir tam kopya ve tek fark kopyası + Günlükler gerektiğinden sonraki seçenekten daha hızlı      |    Günlük fark genellikle tamamen daha küçük olduğundan ve tam bir kopya yalnızca haftada bir kez alındığından, daha ucuz bir seçenek      |
 |Haftalık tam + günlük artımlı + Günlükler     |  Uçtan uca kurtarma için bir tam kopya + ' n ' artımlarsa + günlük olması gerektiğinden en yavaş       |     Günlük artımlı değeri Farklıdan küçük olacağından ve tam bir kopya yalnızca haftalık olarak alındığından, en az maliyetli bir seçenek    |
 
 > [!NOTE]
-> Yukarıdaki seçenekler en sık kullanılan seçeneklerdir, ancak tek seçeneklerdir. Örneğin, bir hafta + günlük haftalık tam yedekleme ve farklılıklar olabilir.
+> Yukarıdaki seçenekler en sık kullanılan seçeneklerdir, ancak tek seçeneklerdir. Örneğin, haftalık bir tam yedekleme ve farklılıklar iki haftada bir, iki günlük olabilir.
 
-Bu nedenle, birisi RPO ve RTO hedeflerine ve maliyet konularına göre ilke türevini seçebilir.
+Bu nedenle, RPO ve RTO hedefleri ve maliyet konuları temelinde ilke türevini seçebilirsiniz.
 
 ### <a name="impact-of-modifying-a-policy"></a>Bir ilkeyi değiştirmenin etkisi
 
-Bir yedekleme öğesinin ilkesini ilke 1 ' den (P1) Ilke 2 ' ye (P2) veya bir ilke 1 ' e (P1) değiştirme etkisi belirlenirken bazı ilkeler göz önünde tutulmalıdır.
+Bir yedekleme öğesinin ilkesini ilke 1 ' den (P1) Ilke 2 ' ye (P2) veya (P1) ilke 1 ' e (P1) değiştirme etkisi belirlenirken bazı ilkeler göz önünde tutulmalıdır.
 
 - Tüm değişiklikler Ayrıca, geriye dönük olarak da uygulanır. En son yedekleme ilkesi, daha önce alınmış kurtarma noktalarına da uygulanır. Örneğin, günlük tam bekletmenin 30 gün ve geçerli etkin ilkeye göre 10 kurtarma noktası alındığını varsayalım. Günlük tam saklama süresi 10 gün olarak değiştirilirse, önceki noktanın sona erme saati de başlangıç zamanı + 10 gün olarak yeniden hesaplanır ve süresi dolmuşsa silinir.
-- Değişiklik kapsamı Ayrıca yedekleme gününü, saklama ile birlikte yedekleme türünü de içerir. Örneğin: bir ilke, gün başı 'dan haftalık olarak tam gün olarak değiştirilirse, sunlar üzerinde olmayan önceki tüm tamanlar silinmek üzere işaretlenir.
-- Alt öğe etkin olana veya süre dolana kadar bir üst öğe silinmez. Her yedekleme türünün, şu anda etkin olan ilkeye göre bir sona erme saati vardır. Ancak tam yedekleme türü, sonraki ' farklılıklar ', ' artımlarsa ' ve ' logs ' için üst öğe olarak değerlendirilir. ' Fark ' ve ' log ', başka birinin üst öğesi değil. ' Artımlı ', sonraki ' artımlı ' için üst öğe olabilir. ' Parent ' silinmek üzere işaretlenmiş olsa bile, alt ' farklılıklar ' veya ' Günlükler ' dolmamışsa aslında silinmezler. Örneğin, bir ilke, gün başı 'dan haftalık olarak tam gün olarak değiştirilirse, sunlar üzerinde olmayan önceki tüm tamanlar silinmek üzere işaretlenir. Ancak, daha önce günlük olarak alınan günlüklerin geçerliliği bitinceye kadar aslında silinmezler. Diğer bir deyişle, en son günlük süresine göre saklanır. Günlüklerin süre dolduğunda, hem Günlükler hem de bu tamanlar silinir.
+- Değişiklik kapsamı Ayrıca yedekleme gününü, saklama ile birlikte yedekleme türünü de içerir. Örneğin: bir ilke, gün başı 'dan haftalık tam ' a, Güneş günleri ' ne kadar değiştirilirse, sunlar üzerinde olmayan önceki tüm tamanlar silinmek üzere işaretlenir.
+- Alt öğe etkin olana veya süre dolana kadar bir üst öğe silinmez. Her yedekleme türünün, şu anda etkin olan ilkeye göre bir sona erme saati vardır. Ancak tam yedekleme türü, sonraki ' farklılıklar ', ' artımlarsa ' ve ' logs ' için üst öğe olarak değerlendirilir. ' Fark ' ve ' log ', başka birinin üst öğesi değildir. ' Artımlı ', sonraki ' artımlı ' için üst öğe olabilir. ' Parent ' silinmek üzere işaretlenmiş olsa bile, alt ' farklılıklar ' veya ' logs 'un kullanım dışı bırakılmamışsa aslında silinmez. Örneğin, bir ilke, gün başı 'dan haftalık olarak tam gün açık olarak değiştirilirse, sunlar üzerinde olmayan önceki tüm tamanlar silinmek üzere işaretlenir. Ancak, daha önce günlük olarak alınan günlüklerin geçerliliği bitinceye kadar aslında silinmezler. Diğer bir deyişle, en son günlük süresine göre saklanır. Günlüklerin süre dolduğunda, hem Günlükler hem de bu tamanlar silinir.
 
-Bu ilkeler sayesinde bir ilke değişikliğinin etkilerini anlamak için aşağıdaki tabloyu okuyabilir.
+Bu ilkeler sayesinde, bir ilke değişikliğinin etkilerini anlamak için aşağıdaki tabloyu okuyabilirsiniz.
 
-|Eski ilke/yeni Ilke  |Günlük Fulls + günlükleri  | Haftalık Fulls + günlük farklılıklar + Günlükler  |Haftalık Fulls + günlük artımlarsa + Günlükler  |
+|Eski ilke/yeni ilke  |Günlük dolu + günlükleri  | Haftalık dolu + günlük farklılıklar + Günlükler  |Haftalık dolu + günlük artımlarsa + Günlükler  |
 |---------|---------|---------|---------|
-|Günlük Fulls + günlükleri     |   -      |    Haftanın aynı gününde olmayan önceki tamanlar silinmek üzere işaretlendi ancak günlük tutma süresine kadar saklanır     |    Haftanın aynı gününde olmayan önceki tamanlar silinmek üzere işaretlendi ancak günlük tutma süresine kadar saklanır     |
-|Haftalık Fulls + günlük farklılıklar + Günlükler     |   Önceki haftalık dolu saklama, en son ilkeye göre yeniden hesaplanır. Önceki farklılıklar hemen silinir      |    -     |    Önceki farklılıklar hemen silinir     |
-|Haftalık Fulls + günlük artımlarsa + Günlükler     |     Önceki haftalık dolu saklama, en son ilkeye göre yeniden hesaplanır. Önceki artımlarsa hemen silinir    |     Önceki artımlarsa hemen silinir    |    -     |
+|Günlük dolu + günlükleri     |   -      |    Haftanın aynı gününde olmayan önceki tamanlar silinmek üzere işaretlendi ancak günlük tutma süresine kadar saklanır     |    Haftanın aynı gününde olmayan önceki tamanlar silinmek üzere işaretlendi ancak günlük tutma süresine kadar saklanır     |
+|Haftalık dolu + günlük farklılıklar + Günlükler     |   Önceki haftalık dolu saklama, en son ilkeye göre yeniden hesaplanır. Önceki farklılıklar hemen silinir      |    -     |    Önceki farklılıklar hemen silinir     |
+|Haftalık dolu + günlük artımlarsa + Günlükler     |     Önceki haftalık dolu saklama, en son ilkeye göre yeniden hesaplanır. Önceki artımlarsa hemen silinir    |     Önceki artımlarsa hemen silinir    |    -     |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

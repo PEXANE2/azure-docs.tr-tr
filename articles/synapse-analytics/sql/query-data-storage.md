@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310947"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685673"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) ile depolama dosyalarını sorgulama
 
@@ -65,7 +65,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 Özel CSv biçimine ayrıştırma kuralları ayarlamak için kullanılabilen bazı ek seçenekler vardır:
 - ESCAPE_CHAR = ' Char ', dosyanın kendisini ve tüm sınırlayıcı değerlerini kaçış için kullanılan dosyadaki karakteri belirtir. Kaçış karakterinin kendisi dışında bir değer veya sınırlayıcı değerlerinden herhangi biri gelmesi durumunda, değer okunurken kaçış karakteri bırakılır.
 ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmadığı veya etkinleştirilmediği için uygulanır. Tırnak işareti karakterini atlamak için kullanılmaz. Tırnak işareti karakteri başka bir tırnak işareti karakteriyle atlanmalıdır. Tırnak içine alma karakteri sütun değeri içinde, yalnızca değer tırnak içine alma karakterleriyle kapsüllense görünebilir.
-- FIELDSONLANDıRıCı = ' field_terminator ' kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı bir virgül (" **,** ")
+- FIELDSONLANDıRıCı = ' field_terminator ' kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı bir virgül ("**,**")
 - ROWSONLANDıRıCı = ' row_terminator ' kullanılacak satır sonlandırıcıyı belirtir. Varsayılan satır Sonlandırıcı bir yeni satır karakteri: **\r\n**.
 
 ## <a name="file-schema"></a>Dosya şeması

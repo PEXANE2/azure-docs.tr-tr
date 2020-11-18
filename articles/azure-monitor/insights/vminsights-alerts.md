@@ -5,16 +5,19 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/23/2020
-ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: f582f0dc7547a607351fcfc4ff9d39e8c5a077df
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254814"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686186"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici uyarılar oluşturma
 [Azure izleyici 'Deki uyarılar](../platform/alerts-overview.md) , izleme verilerinizde ilgi çekici veriler ve desenler konusunda size bir bildirim gönderir. VM'ler için Azure İzleyici önceden yapılandırılmış uyarı kuralları içermez, ancak topladığı verilere göre kendi kendinize de oluşturabilirsiniz. Bu makale, örnek sorgu kümesi de dahil olmak üzere uyarı kuralları oluşturma hakkında rehberlik sağlar.
+
+> [!IMPORTANT]
+> Bu makalede açıklanan uyarılar, VM'ler için Azure İzleyici toplanan verilerden günlük sorgularını temel alır. Bu, şu anda genel önizlemede olan bir özellik olan [VM Konuk sistem durumu Için Azure izleyici](vminsights-health-overview.md) tarafından oluşturulan uyarılardan farklıdır. Bu özellik genel kullanılabilirliği yaklaştığında, uyarı için rehberlik birleştirilir.
 
 
 ## <a name="alert-rule-types"></a>Uyarı kuralı türleri
@@ -29,11 +32,11 @@ Azure Izleyici 'de iki tür günlük uyarısı vardır:
 ## <a name="alert-rule-walkthrough"></a>Uyarı kuralı Kılavuzu
 Bu bölüm, VM'ler için Azure İzleyici performans verilerini kullanarak bir ölçüm ölçümü uyarı kuralının oluşturulmasını açıklar. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz.
 
-[Azure izleyici 'yi kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](../platform/alerts-log.md)bölümündeki yordamı izleyerek yeni bir uyarı kuralı oluşturarak başlayın. **Kaynak**Için, Azure izleyici VM 'lerinin aboneliğinizde kullandığı Log Analytics çalışma alanını seçin. Günlük uyarısı kuralları için hedef kaynak her zaman bir Log Analytics çalışma alanı olduğundan, günlük sorgusunun belirli sanal makineler veya sanal makine ölçek kümeleri için herhangi bir filtre içermesi gerekir. 
+[Azure izleyici 'yi kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](../platform/alerts-log.md)bölümündeki yordamı izleyerek yeni bir uyarı kuralı oluşturarak başlayın. **Kaynak** Için, Azure izleyici VM 'lerinin aboneliğinizde kullandığı Log Analytics çalışma alanını seçin. Günlük uyarısı kuralları için hedef kaynak her zaman bir Log Analytics çalışma alanı olduğundan, günlük sorgusunun belirli sanal makineler veya sanal makine ölçek kümeleri için herhangi bir filtre içermesi gerekir. 
 
-Uyarı kuralının **koşulu** Için, **arama sorgusu**olarak [aşağıdaki bölümdeki](#sample-alert-queries) sorgulardan birini kullanın. Sorgu, *aggregdbulunan değeri*adlı bir sayısal Özellik döndürmelidir. Eşiği aşan her bir sanal makine için ayrı bir uyarı oluşturabilmeniz için verileri bilgisayara göre özetlemelidir.
+Uyarı kuralının **koşulu** Için, **arama sorgusu** olarak [aşağıdaki bölümdeki](#sample-alert-queries) sorgulardan birini kullanın. Sorgu, *aggregdbulunan değeri* adlı bir sayısal Özellik döndürmelidir. Eşiği aşan her bir sanal makine için ayrı bir uyarı oluşturabilmeniz için verileri bilgisayara göre özetlemelidir.
 
-**Uyarı mantığındaki** **ölçüm ölçümü** ' ni seçin ve ardından bir **eşik değeri**belirtin. **Tetikleyici uyarısı temelinde**, bir uyarı oluşturulmadan önce eşiğin kaç kez aşılacağı belirtin. Örneğin, işlemcinin bir eşiği bir kez aşıp daha sonra normal 'e geri döndürdüğünü de dikkate almamanız gerekir, ancak birden çok ardışık ölçüm üzerinden eşiği aşmaya devam ederse dikkatli olursunuz.
+**Uyarı mantığındaki** **ölçüm ölçümü** ' ni seçin ve ardından bir **eşik değeri** belirtin. **Tetikleyici uyarısı temelinde**, bir uyarı oluşturulmadan önce eşiğin kaç kez aşılacağı belirtin. Örneğin, işlemcinin bir eşiği bir kez aşıp daha sonra normal 'e geri döndürdüğünü de dikkate almamanız gerekir, ancak birden çok ardışık ölçüm üzerinden eşiği aşmaya devam ederse dikkatli olursunuz.
 
 Bölüm **temelinde değerlendirilen** , sorgunun ne sıklıkta çalıştırılacağını ve sorgu için zaman penceresini tanımlar. Aşağıda gösterilen örnekte, sorgu 15 dakikada bir çalışacaktır ve önceki 15 dakika içinde toplanan performans değerlerini değerlendirmeyecektir.
 
