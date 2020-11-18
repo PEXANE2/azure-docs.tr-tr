@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 04da4d6466d450d04d7008332e32ea3d59cd0252
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555541"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699755"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıyın
 
@@ -30,7 +30,7 @@ Bu makalede, Log Analytics çalışma alanını aynı bölgedeki başka bir kayn
 
 ## <a name="workspace-move-considerations"></a>Çalışma alanı taşıma konuları
 - Çalışma alanına yüklenen yönetilen çözümler Log Analytics çalışma alanı taşıma işlemiyle birlikte taşınır. 
-- Çalışma alanı anahtarları çalışma alanı taşıma (birincil ve ikincil) ile yeniden oluşturulur. çalışma alanı anahtarınıza anahtar kasanız, bunları yeni oluşturulan anahtarlarla güncelleştirin. 
+- Çalışma alanı anahtarları (birincil ve ikincil) çalışma alanı taşıma işlemi ile yeniden oluşturulur. Çalışma alanı anahtarlarınızın bir kopyasını Anahtar Kasası 'nda tutarsanız, çalışma alanı taşıdıktan sonra oluşturulan yeni anahtarlarla güncelleştirin. 
 - Bağlı aracılar bağlı kalacak ve taşıma sonrasında çalışma alanına veri göndermeyecektir. 
 - Taşıma işlemi çalışma alanından bağlı bir hizmet olmadığından, çalışma alanının taşınmasına izin vermek için o bağlantıyı kullanan çözümlerin kaldırılması gerekir. Otomasyon Hesabınızın bağlantısını kaldırmak için önce kaldırılması gereken çözümler:
   - Güncelleştirme Yönetimi
@@ -60,7 +60,7 @@ Azure portal kullanarak çözümleri kaldırmak için aşağıdaki yordamı kull
 
 1. Üzerinde çözümlerin yüklendiği kaynak grubunun menüsünü açın.
 2. Kaldırılacak çözümleri seçin.
-3. **Kaynakları Sil** ' e tıklayın ve ardından **Sil** ' e tıklayarak kaldırılacak kaynakları onaylayın.
+3. **Kaynakları Sil** ' e tıklayın ve ardından **Sil**' e tıklayarak kaldırılacak kaynakları onaylayın.
 
 ![Çözümleri silme](media/move-workspace/delete-solutions.png)
 
@@ -77,9 +77,9 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 ### <a name="remove-alert-rules-for-startstop-vms-solution"></a>VM 'Leri Başlat/Durdur çözümünün uyarı kurallarını kaldır
 **VM 'Leri Başlat/Durdur** çözümünü kaldırmak için, çözüm tarafından oluşturulan uyarı kurallarını da kaldırmanız gerekir. Bu kuralları kaldırmak için Azure portal aşağıdaki yordamı kullanın.
 
-1. **İzleyici** menüsünü açın ve ardından **Uyarılar** ' ı seçin.
-2. **Uyarı kurallarını yönet** ' e tıklayın.
-3. Aşağıdaki üç uyarı kuralını seçin ve ardından **Sil** ' e tıklayın.
+1. **İzleyici** menüsünü açın ve ardından **Uyarılar**' ı seçin.
+2. **Uyarı kurallarını yönet**' e tıklayın.
+3. Aşağıdaki üç uyarı kuralını seçin ve ardından **Sil**' e tıklayın.
 
    - AutoStop_VM_Child
    - ScheduledStartStop_Parent
@@ -91,18 +91,18 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Azure portal kullanarak Otomasyon hesabının çalışma alanından bağlantısını kaldırmak için aşağıdaki yordamı kullanın:
 
 1. **Otomasyon hesapları** menüsünü açın ve kaldırılacak hesabı seçin.
-2. Menünün **Ilgili kaynaklar** bölümünde **bağlantılı çalışma alanı** ' nı seçin. 
+2. Menünün **Ilgili kaynaklar** bölümünde **bağlantılı çalışma alanı**' nı seçin. 
 3. Çalışma alanının Otomasyon hesabından bağlantısını kaldırmak için **çalışma alanının bağlantısını kaldır** ' a tıklayın.
 
     ![Çalışma alanının bağlantısını kaldırma](media/move-workspace/unlink-workspace.png)
 
 ## <a name="move-your-workspace"></a>Çalışma alanınızı taşıyın
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 Azure portal kullanarak çalışma alanınızı taşımak için aşağıdaki yordamı kullanın:
 
 1. **Log Analytics çalışma alanları** menüsünü açın ve ardından çalışma alanınızı seçin.
-2. **Genel bakış** sayfasında, **kaynak grubu** veya **abonelik** ' ın yanındaki **Değiştir** ' e tıklayın.
+2. **Genel bakış** sayfasında, **kaynak grubu** veya **abonelik**' ın yanındaki **Değiştir** ' e tıklayın.
 3. Çalışma alanıyla ilgili kaynak listesini içeren yeni bir sayfa açılır. Çalışma alanıyla aynı hedef aboneliğe ve kaynak grubuna taşınacak kaynakları seçin. 
 4. Hedef **aboneliği** ve **kaynak grubunu** seçin. Çalışma alanını aynı abonelik içindeki başka bir kaynak grubuna taşıyorsanız, **abonelik** seçeneğini görmezsiniz.
 5. Çalışma alanını ve seçili kaynakları taşımak için **Tamam** ' ı tıklatın.

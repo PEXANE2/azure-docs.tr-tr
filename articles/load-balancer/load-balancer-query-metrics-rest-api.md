@@ -10,22 +10,22 @@ ms.custom: REST, seodec18
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeca560989c174bcb654116eb13da40d6ec79e60
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808379"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700520"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>REST API kullanarak Load Balancer kullanım ölçümleri alın
 
-[Azure REST API](/rest/api/azure/)kullanarak bir zaman aralığı için [Standart Load Balancer](/azure/load-balancer/load-balancer-standard-overview) işlenen bayt sayısını toplayın.
+[Azure REST API](/rest/api/azure/)kullanarak bir zaman aralığı için [Standart Load Balancer](./load-balancer-overview.md) işlenen bayt sayısını toplayın.
 
 Tüm başvuru belgelerini ve REST API için ek örnekleri [Azure IZLEYICI Rest başvurusunda](/rest/api/monitor)bulabilirsiniz. 
 
 ## <a name="build-the-request"></a>İsteği oluşturma
 
-Bir Standart Load Balancer [ByteCount ölçümünü](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) toplamak IÇIN aşağıdaki get isteğini kullanın. 
+Bir Standart Load Balancer [ByteCount ölçümünü](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics) toplamak IÇIN aşağıdaki get isteğini kullanın. 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=ByteCount&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -44,10 +44,10 @@ Aşağıdaki üstbilgiler gereklidir:
 
 | Ad | Açıklama |
 | :--- | :---------- |
-| subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Kaynağı içeren kaynak grubunun adı. Bu değeri Azure Resource Manager API, CLı veya portaldan elde edebilirsiniz. |
 | loadBalancerName | Azure Load Balancer adı. |
-| ölçüm adları | Geçerli  [Load Balancer ölçümlerinin](/azure/load-balancer/load-balancer-standard-diagnostics)virgülle ayrılmış listesi. |
+| ölçüm adları | Geçerli  [Load Balancer ölçümlerinin](./load-balancer-standard-diagnostics.md)virgülle ayrılmış listesi. |
 | api-sürümü | İstek için kullanılacak API sürümü.<br /><br /> Bu belge `2018-01-01` , yukarıdaki URL 'ye dahil edilen api sürümünü içerir.  |
 | timespan | Sorgunun TimeSpan değeri. Bu, aşağıdaki biçime sahip bir dizedir `startDateTime_ISO/endDateTime_ISO` . Bu isteğe bağlı parametre, örnekteki verilerin bir gününü döndürecek şekilde ayarlanır. |
 | &nbsp; | &nbsp; |

@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
-ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280397"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700163"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
 
@@ -45,9 +45,9 @@ Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılac
     | Ayar | Değer |
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin|
-    | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*yazın ve **Tamam** ' ı seçin. |
+    | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup* yazın ve **Tamam** ' ı seçin. |
     | Ad | *MyVirtualNetwork* girin |
-    | Bölge | İstediğiniz bölgeyi seçin |
+    | Region | İstediğiniz bölgeyi seçin |
     |||
 
 1. Geri kalan ayarlar için varsayılan değerleri bırakın. **Gözden geçir + oluştur** ve sonra **Oluştur** ' a tıklayın.
@@ -58,7 +58,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
 
 1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **Web**  >  **Azure bilişsel arama**' nı seçin.
 
-1. **Yeni arama hizmeti temel kavramları**için bu bilgileri girin veya seçin:
+1. **Yeni arama hizmeti temel kavramları** için bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -77,7 +77,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
 
 1. **Yeni arama hizmeti-ağ**' da, **uç nokta bağlantısı (veriler)** için **özel** ' i seçin.
 
-1. **Yeni arama hizmeti-ağ**' da, **Özel uç nokta**altında **+ Ekle** ' yi seçin. 
+1. **Yeni arama hizmeti-ağ**' da, **Özel uç nokta** altında **+ Ekle** ' yi seçin. 
 
 1. **Özel uç nokta oluştur**' da bu bilgileri girin veya seçin:
 
@@ -85,12 +85,12 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
-    | Konum | **Batı ABD**seçin.|
+    | Konum | **Batı ABD** seçin.|
     | Name | *myPrivateEndpoint* değerini girin.  |
     | Hedef alt kaynak | Varsayılan **SearchService**' i bırakın. |
     | **AĞ** |  |
-    | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
-    | Alt ağ | *Mysubnet*öğesini seçin. |
+    | Sanal ağ  | *Myresourcegroup* kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
+    | Alt ağ | *Mysubnet* öğesini seçin. |
     | **ÖZEL DNS TÜMLEŞTİRMESİ** |  |
     | Özel DNS bölgesi ile tümleştirme  | Varsayılan **Evet**' i bırakın. |
     | Özel DNS bölgesi  | Varsayılan * * (yeni) privatelink.search.windows.net * * ' i bırakın. |
@@ -112,7 +112,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
 
 1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
 
-1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
+1. **Sanal makine oluşturma-temel bilgiler** bölümünde, bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -121,9 +121,9 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
     | Sanal makine adı | *Myvm*' i girin. |
-    | Bölge | **Batı ABD** veya kullandığınız bölgeyi seçin. |
+    | Region | **Batı ABD** veya kullandığınız bölgeyi seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
-    | Görüntü | **Windows Server 2019 Datacenter**öğesini seçin. |
+    | Görüntü | **Windows Server 2019 Datacenter** öğesini seçin. |
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETİCİ HESABI** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
@@ -133,18 +133,18 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Genel gelen bağlantı noktaları | Varsayılan olarak **Seçili bağlantı noktalarına Izin ver**' i bırakın. |
     | Gelen bağlantı noktalarını seçin | Varsayılan RDP 'yi **(3389)** bırakın. |
     | **TASARRUF EDİN** |  |
-    | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
+    | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır** olarak bırakın. |
     |||
 
 1. **İleri ' yi seçin: diskler**.
 
 1. **Sanal makine oluştur - Diskler** bölümünde varsayılan değerleri değiştirmeyin ve **Sonraki: Ağ** seçeneğini belirleyin.
 
-1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
+1. **Sanal makine oluşturma-ağ oluşturma** bölümünde şu bilgileri seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Sanal ağ | Varsayılan **MyVirtualNetwork**bırakın.  |
+    | Sanal ağ | Varsayılan **MyVirtualNetwork** bırakın.  |
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
     | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
@@ -180,7 +180,7 @@ VM *myvm* ' yi indirip şu şekilde bağlayın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -194,7 +194,7 @@ Bu bölümde, arama hizmetine özel ağ erişimini doğrulayacaksınız ve özel
 
 Arama hizmeti uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi ayarlarını görüntüleyebilir ve yönetebileceksiniz, ancak dizin, Dizin Oluşturucu ve beceri tanımları gibi hizmet içindeki çeşitli diğer bileşenlere güvenlik nedenleriyle, Portal erişimi, güvenlik nedenleriyle kısıtlıdır.
 
-1. *Myvm*uzak masaüstünde PowerShell ' i açın.
+1. *Myvm* uzak masaüstünde PowerShell ' i açın.
 
 1. ' Nslookup [arama hizmeti adı]. Search. Windows. net ' yazın
 
@@ -208,17 +208,17 @@ Arama hizmeti uç noktası özel olduğunda, bazı Portal özellikleri devre dı
     Aliases:  [search service name].search.windows.net
     ```
 
-1. VM 'den arama hizmetine bağlanın ve bir dizin oluşturun. REST API kullanarak Postman 'da hizmetinize yeni bir arama dizini oluşturmak için bu [hızlı](search-get-started-postman.md) başlangıcı izleyebilirsiniz. İstekleri Postman 'dan ayarlamak için arama hizmeti uç noktası (https://[arama hizmeti adı]. Search. Windows. net) ve önceki adımda kopyaladığınız yönetici API anahtarı gerekir.
+1. VM 'den arama hizmetine bağlanın ve bir dizin oluşturun. REST API kullanarak hizmetinize yeni bir arama dizini oluşturmak için bu [hızlı](search-get-started-rest.md) başlangıcı izleyebilirsiniz. Bir Web API 'SI test aracından istekleri ayarlamak için arama hizmeti uç noktası (https://[arama hizmeti adı]. Search. Windows. net) ve önceki adımda kopyaladığınız yönetici API anahtarı gerekir.
 
 1. VM 'den hızlı başlangıç işlemini tamamlamak, hizmetin tam olarak çalışır durumda olduğunu onaylamadır.
 
-1. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
+1. *Myvm* ile uzak masaüstü bağlantısını kapatın. 
 
 1. Hizmetinizin genel bir uç noktada erişilebilir olmadığından emin olmak için, yerel iş istasyonunuzda Postman ' ı açın ve hızlı başlangıçta ilk birkaç görevi deneyin. Uzak sunucunun mevcut olmadığı bir hata alırsanız, arama hizmetiniz için bir özel uç nokta başarıyla yapılandırdınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, arama hizmeti ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
-1.  *myResourceGroup*   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından *myresourcegroup*öğesini seçin   . 
+1.  *myResourceGroup*   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından  *myresourcegroup* öğesini seçin   . 
 1. **Kaynak grubunu sil**'i seçin. 
 1.  *myResourceGroup*   **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 

@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90058759"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700700"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer için IPv6 'ya genel bakış
 
 
 >[!NOTE] 
->[Azure VNET 'e genel bakış için](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)bu Içeriğin yerine IPv6 tarafından erişildi. Azure, yeni IPv6 dağıtımlarının Azure sanal ağları için yeni IPv6 özelliklerini kullanmasını önerir.
+>[Azure VNET 'e genel bakış için](../virtual-network/ipv6-overview.md)bu Içeriğin yerine IPv6 tarafından erişildi. Azure, yeni IPv6 dağıtımlarının Azure sanal ağları için yeni IPv6 özelliklerini kullanmasını önerir.
 
 >[!NOTE]
->Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](load-balancer-standard-overview.md).
+>Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](./load-balancer-overview.md).
 
 Temel SKU Internet 'e yönelik yük dengeleyiciler bir IPv6 adresi ile dağıtılabilir. IPv4 bağlantısına ek olarak, bu özellik aşağıdaki özellikleri sağlar:
 

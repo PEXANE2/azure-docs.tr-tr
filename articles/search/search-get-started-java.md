@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ab87dfdeb18f97265c3bb2f34616c942a345c1e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791231"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698956"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -25,17 +25,17 @@ ms.locfileid: "92791231"
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)ve [Azure bilişsel arama REST API](/rest/api/searchservice/)kullanarak bir arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri kullandık:
 
-+ [IntelliJ IDEA](https://www.jetbrains.com/idea/)
++ [IntelliJ fıkrı](https://www.jetbrains.com/idea/)
 
 + [Java 11 SDK](/java/azure/jdk/)
 
@@ -49,7 +49,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-2. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Bir sorgu anahtarı oluşturun. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
@@ -63,22 +63,22 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-1. IntelliJ FIKRINI açın ve **Yeni proje oluştur** ' u seçin.
-1. **Maven** ' ı seçin.
+1. IntelliJ FIKRINI açın ve **Yeni proje oluştur**' u seçin.
+1. **Maven**' ı seçin.
 1. **Proje SDK** 'sı listesinde, Java 11 SDK ' yı seçin.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Maven projesi oluşturma" border="false":::
 
 1. **GroupID** ve **ArtifactId** için girin `AzureSearchQuickstart` .
 1. Projeyi açmak için kalan Varsayılanları kabul edin.
 
 ### <a name="specify-maven-dependencies"></a>Maven bağımlılıklarını belirt
 
-1. **Dosya**  >  **ayarları** ' nı seçin.
-1. **Ayarlar** penceresinde **Yapı, yürütme, dağıtım**  >  **derleme araçları**  >  **Maven**  >  **içeri aktarma** ' yı seçin.
+1. **Dosya**  >  **ayarları**' nı seçin.
+1. **Ayarlar** penceresinde **Yapı, yürütme, dağıtım**  >  **derleme araçları**  >  **Maven**  >  **içeri aktarma**' yı seçin.
 1. **Maven projelerini otomatik olarak Içeri aktar** onay kutusunu seçin ve **Tamam** ' a tıklayarak pencereyi kapatın. Maven eklentileri ve diğer bağımlılıklar artık sonraki adımda pom.xml dosyasını güncelleştirdiğinizde otomatik olarak eşitlenir.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="IntelliJ ayarlarındaki Maven içeri aktarma seçenekleri" border="false":::
 
 1. pom.xml dosyasını açın ve içeriğini aşağıdaki Maven yapılandırma ayrıntıları ile değiştirin. Bunlar, [Exec Maven eklentisine](https://www.mojohaus.org/exec-maven-plugin/) ve bir [JSON arabirimi API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) 'sine yönelik başvuruları içerir
 
@@ -134,19 +134,19 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 ### <a name="set-up-the-project-structure"></a>Proje yapısını ayarlama
 
 1. **Dosya**  >  **projesi yapısı ' nı** seçin.
-1. **Modüller** ' i seçin ve kaynak ağacı ' nı genişleterek klasörün içeriklerine erişin `src`  >   `main` .
+1. **Modüller**' i seçin ve kaynak ağacı ' nı genişleterek klasörün içeriklerine erişin `src`  >   `main` .
 1. `src`  >   `main`  >  `java` Klasöründe, `app` ve `service` klasörlerini ekleyin. Bunu yapmak için `java` klasörü seçin, alt + Ekle tuşlarına basın ve ardından klasör adını girin.
 1. `src`  >   `main`  > `resources` Klasöründe, `app` ve `service` klasörlerini ekleyin.
 
     İşiniz bittiğinde, proje ağacının aşağıdaki resim gibi görünmesi gerekir.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Proje dizini yapısı" border="false":::
 
-1. Pencereyi kapatmak için **Tamam** ’a tıklayın.
+1. Pencereyi kapatmak için **Tamam**’a tıklayın.
 
 ### <a name="add-azure-cognitive-search-service-information"></a>Azure Bilişsel Arama hizmet bilgilerini ekleme
 
-1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `app` ve bir `config.properties` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya** ' yı seçin ve ardından dosya adını girin.
+1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `app` ve bir `config.properties` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve ardından dosya adını girin.
 
 1. Aşağıdaki ayarları yeni dosyaya kopyalayın ve `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>` `<YOUR-QUERY-KEY>` hizmet adınızla ve anahtarlarınız ile değiştirin. Hizmet uç noktanız ise `https://mydemo.search.windows.net` , hizmet adı olacaktır `"mydemo"` .
 
@@ -160,7 +160,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="add-the-main-method"></a>Main metodunu ekleyin
 
-1. `src`  >   `main`  >  `java`  >  `app` Klasöründe bir `App` sınıf ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Java sınıfı** ' nı seçin ve ardından sınıf adını girin.
+1. `src`  >   `main`  >  `java`  >  `app` Klasöründe bir `App` sınıf ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Java sınıfı**' nı seçin ve ardından sınıf adını girin.
 1. Sınıfını açın `App` ve içeriği aşağıdaki kodla değiştirin. Bu kod yöntemini içerir `main` . 
 
     Açıklamalı olmayan kod, arama hizmeti parametrelerini okur ve arama hizmeti istemcisinin bir örneğini oluşturmak için bunları kullanır. Arama hizmeti istemci kodu bir sonraki bölüme eklenecektir.
@@ -259,7 +259,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="add-the-http-operations"></a>HTTP işlemlerini ekleme
 
-1. `src`  >   `main`  >  `java`  >  `service` Klasöründe bir `SearchServiceClient` sınıf ekleyin. Bunu yapmak için `service` klasörü seçin, alt + Ekle ' ye basın, **Java sınıfı** ' nı seçin ve ardından sınıf adını girin.
+1. `src`  >   `main`  >  `java`  >  `service` Klasöründe bir `SearchServiceClient` sınıf ekleyin. Bunu yapmak için `service` klasörü seçin, alt + Ekle ' ye basın, **Java sınıfı**' nı seçin ve ardından sınıf adını girin.
 1. Sınıfını açın `SearchServiceClient` ve içeriğini aşağıdaki kodla değiştirin. Bu kod, Azure Bilişsel Arama REST API kullanmak için gereken HTTP işlemlerini sağlar. Dizin oluşturmak, belge yüklemek ve dizini sorgulamak için ek yöntemler sonraki bir bölüme eklenecektir.
 
     ```java
@@ -373,10 +373,10 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 1. Projenizin aşağıdaki yapıya sahip olduğunu doğrulayın.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Proje dizin yapısı Plus sınıfları" border="false":::
 
 1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java` 
- :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Maven hedefini yürütme: exec: Java 'yı doğrula" border="false":::
 
 İşlem tamamlandığında, derleme başarılı iletisini ve ardından sıfır (0) çıkış kodunu arayın.
 
@@ -384,7 +384,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir alana örnek olarak "HotelName" veya "Description" verilebilir. "Adres" alanı, "sokak adresi" ve "şehir" gibi alt alanlar içerdiğinden karmaşık bir alandır. Bu hızlı başlangıçta, Dizin tanımı JSON kullanılarak belirtilir.
 
-1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `service` ve bir `index.json` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya** ' yı seçin ve ardından dosya adını girin.
+1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `service` ve bir `index.json` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve ardından dosya adını girin.
 
 1. Dosyasını açın `index.json` ve aşağıdaki dizin tanımını ekleyin.
 
@@ -571,7 +571,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `service` ve bir `hotels.json` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın,  **Dosya** ' yı seçin ve ardından dosya adını girin.
+1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `service` ve bir `hotels.json` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın,  **Dosya**' yı seçin ve ardından dosya adını girin.
 1. Aşağıdaki otel belgelerini dosyaya ekleyin.
 
     ```json

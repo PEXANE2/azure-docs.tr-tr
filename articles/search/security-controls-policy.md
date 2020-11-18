@@ -1,18 +1,18 @@
 ---
 title: Azure Bilişsel Arama için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Bilişsel Arama için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2a63243415959458815207c50b921b5092e461b1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4a31b4564a36a82c2b469c3e3737ab6ecac1a1f7
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319225"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700205"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Azure Ilke mevzuat uyumluluk denetimleri
 
@@ -20,7 +20,7 @@ Azure [güvenlik kıyaslaması](../security/benchmarks/introduction.md)' nda ön
 
 Azure Bilişsel Arama için, aşağıda listelenen ve bir ilke atamasında kullanabileceğiniz bir yerleşik tanım vardır. Yerleşik, günlüğe kaydetme ve izleme içindir. [Oluşturduğunuz bir ilkede](../governance/policy/assign-policy-portal.md)bu yerleşik tanımı kullanarak, sistem, [tanılama günlüğü](search-monitor-logs.md)olmayan arama hizmetlerini tarar ve ardından buna uygun şekilde etkinleştirin.
 
-[Azure Ilkesinde mevzuata uyumluluğu](../governance/policy/concepts/regulatory-compliance.md) , farklı uyumluluk standartlarıyla ilgili **Uyumluluk etki alanları** ve **güvenlik denetimleri** için _yerleşik_olarak bilinen Microsoft tarafından oluşturulan ve yönetilen girişim tanımlarını sağlar. Bu sayfada, Azure Bilişsel Arama için **Uyumluluk etki alanları** ve **güvenlik denetimleri** listelenmektedir. Azure kaynaklarınızı belirli bir standarda uygun hale getirmenize yardımcı olmak için, bir **güvenlik denetimi** için yerleşik bileşenleri atayabilirsiniz.
+[Azure Ilkesinde mevzuata uyumluluğu](../governance/policy/concepts/regulatory-compliance.md) , farklı uyumluluk standartlarıyla ilgili **Uyumluluk etki alanları** ve **güvenlik denetimleri** için _yerleşik_ olarak bilinen Microsoft tarafından oluşturulan ve yönetilen girişim tanımlarını sağlar. Bu sayfada, Azure Bilişsel Arama için **Uyumluluk etki alanları** ve **güvenlik denetimleri** listelenmektedir. Azure kaynaklarınızı belirli bir standarda uygun hale getirmenize yardımcı olmak için, bir **güvenlik denetimi** için yerleşik bileşenleri atayabilirsiniz.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

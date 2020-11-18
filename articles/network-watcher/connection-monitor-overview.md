@@ -1,6 +1,6 @@
 ---
-title: Bağlantı Izleyicisi (Önizleme) | Microsoft Docs
-description: Dağıtılmış bir ortamdaki ağ iletişimini izlemek için bağlantı Izleyicisi 'ni (Önizleme) nasıl kullanacağınızı öğrenin.
+title: Bağlantı Izleyicisi | Microsoft Docs
+description: Dağıtılmış bir ortamdaki ağ iletişimini izlemek için bağlantı Izleyicisini nasıl kullanacağınızı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447822"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699245"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme (Önizleme)
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme
 
-Bağlantı Izleyicisi (Önizleme), Azure ağ Izleyicisi 'nde birleştirilmiş uçtan uca bağlantı izleme sağlar. Bağlantı Izleyicisi (Önizleme) özelliği karma ve Azure bulut dağıtımlarını destekler. Ağ Izleyicisi, Azure dağıtımlarınız için bağlantı ile ilgili ölçümleri izlemek, tanılamak ve görüntülemek için araçlar sağlar.
+Bağlantı Izleyicisi, Azure ağ Izleyicisi 'nde birleştirilmiş uçtan uca bağlantı izleme sağlar. Bağlantı Izleyicisi özelliği karma ve Azure bulut dağıtımlarını destekler. Ağ Izleyicisi, Azure dağıtımlarınız için bağlantı ile ilgili ölçümleri izlemek, tanılamak ve görüntülemek için araçlar sağlar.
 
-Bağlantı Izleyicisi (Önizleme) için bazı kullanım durumları aşağıda verilmiştir:
+Bağlantı Izleyicisi için bazı kullanım durumları aşağıda verilmiştir:
 
 - Ön uç Web sunucusu sanal makinesi, çok katmanlı bir uygulamadaki bir veritabanı sunucusu VM 'si ile iletişim kurar. İki VM arasındaki ağ bağlantısını kontrol etmek istiyorsunuz.
 - Doğu ABD bölgesindeki VM 'Lerin Orta ABD bölgesindeki sanal makinelere ping işlemi olmasını ve bölgeler arası ağ gecikmelerinin karşılaştırmasını istiyorsunuz.
@@ -34,9 +34,9 @@ Bağlantı Izleyicisi (Önizleme) için bazı kullanım durumları aşağıda ve
 - Karma uygulamanızın bir Azure depolama uç noktasına bağlanması gerekiyor. Şirket içi siteniz ve Azure uygulamanız aynı Azure depolama uç noktasına bağlanır. Şirket içi sitenin gecikme sürelerini Azure uygulamasının gecikme süreleriyle karşılaştırmak istiyorsunuz.
 - Şirket içi kurulumlarınız ile bulut uygulamanızı barındıran Azure VM 'Ler arasındaki bağlantıyı denetlemek istiyorsunuz.
 
-Bağlantı Izleyicisi, önizleme aşamasında iki özelliği en iyi şekilde birleştirir: ağ Izleyicisi [Bağlantı İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) özelliği ve ağ performansı İzleyicisi (NPM) [hizmet bağlantısı İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), [ExpressRoute izleme](https://docs.microsoft.com/azure/expressroute/how-to-npm)ve [performans izleme](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) özelliği.
+Bağlantı Izleyicisi iki özelliği en iyi şekilde birleştirir: ağ Izleyicisi [Bağlantı İzleyicisi (klasik)](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) özelliği ve ağ performansı İzleyicisi (NPM) [hizmet bağlantısı İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), [ExpressRoute izleme](https://docs.microsoft.com/azure/expressroute/how-to-npm)ve [performans izleme](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) özelliği.
 
-Bağlantı Izleyicisi 'nin (Önizleme) bazı avantajları aşağıda verilmiştir:
+Bağlantı Izleyicisi 'nin bazı avantajları aşağıda verilmiştir:
 
 * Azure ve karma izleme ihtiyaçlarına yönelik Birleşik, sezgisel deneyim
 * Bölgeler arası, çapraz çalışma alanı bağlantısı izleme
@@ -47,7 +47,7 @@ Bağlantı Izleyicisi 'nin (Önizleme) bazı avantajları aşağıda verilmişti
 
 ![Bağlantı Izleyicisinin Azure VM 'Leri, Azure dışı Konakları, uç noktaları ve veri depolama konumları ile nasıl etkileşime gireceğini gösteren diyagram](./media/connection-monitor-2-preview/hero-graphic.png)
 
-İzleme için bağlantı Izleyicisi 'ni (Önizleme) kullanmaya başlamak için şu adımları izleyin: 
+İzleme için bağlantı Izleyicisi 'ni kullanmaya başlamak için şu adımları izleyin: 
 
 1. İzleme aracılarını yükler.
 1. Aboneliğinizde ağ Izleyicisi 'Ni etkinleştirin.
@@ -59,7 +59,7 @@ Aşağıdaki bölümlerde bu adımlarla ilgili ayrıntılar sağlanmaktadır.
 
 ## <a name="install-monitoring-agents"></a>İzleme aracılarını yükler
 
-Bağlantı Izleyicisi, bağlantı denetimlerini çalıştırmak için hafif yürütülebilir dosyaları kullanır.  Azure ortamlarından ve şirket içi ortamların bağlantı denetimlerini destekler. Kullandığınız yürütülebilir dosya, sanal makinenizin Azure 'da mı yoksa şirket içinde mi barındırıldığından bağlıdır.
+Bağlantı Izleyicisi, bağlantı denetimlerini çalıştırmak için hafif yürütülebilir dosyaları kullanır. Azure ortamlarından ve şirket içi ortamların bağlantı denetimlerini destekler. Kullandığınız yürütülebilir dosya, sanal makinenizin Azure 'da mı yoksa şirket içinde mi barındırıldığından bağlıdır.
 
 ### <a name="agents-for-azure-virtual-machines"></a>Azure sanal makineleri için aracılar
 
@@ -89,19 +89,19 @@ Bağlantı Izleyicisi, iletişimi düzenli aralıklarla izler. Ulaşılabilirlik
 
 Kaynaklar, yüklü bir izleme aracısına sahip Azure sanal makineleri veya şirket içi makineler olabilir. Hedef uç noktalar Microsoft 365 URL 'Ler, Dynamics 365 URL 'Leri, özel URL 'ler, Azure VM kaynak kimlikleri, IPv4, IPv6, FQDN veya herhangi bir etki alanı adı olabilir.
 
-### <a name="access-connection-monitor-preview"></a>Erişim bağlantısı Izleyicisi (Önizleme)
+### <a name="access-connection-monitor"></a>Erişim bağlantısı Izleyicisi
 
-1. Azure portal giriş sayfasında **Ağ İzleyicisi** ' ne gidin.
-1. Sol tarafta, **izleme** bölümünde **Bağlantı İzleyicisi (Önizleme)** öğesini seçin.
-1. Bağlantı Izleyicisinde (Önizleme) oluşturulan tüm bağlantı izleyicilerini görürsünüz. Klasik bağlantı Izleyici deneyiminde oluşturulan bağlantı izleyicilerini görmek için **Bağlantı İzleyicisi** sekmesine gidin.
+1. Azure portal giriş sayfasında **Ağ İzleyicisi**' ne gidin.
+1. Sol tarafta, **izleme** bölümünde **Bağlantı İzleyicisi**' ni seçin.
+1. Bağlantı Izleyicisinde oluşturulan tüm bağlantı izleyicilerini görürsünüz. Klasik bağlantı Izleyici deneyiminde oluşturulan bağlantı izleyicilerini görmek için **Bağlantı İzleyicisi** sekmesine gidin.
     
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Bağlantı Izleyicisinde oluşturulan bağlantı izleyicilerini gösteren ekran görüntüsü (Önizleme)" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Bağlantı Izleyicisinde oluşturulan bağlantı izleyicilerini gösteren ekran görüntüsü" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>Bağlantı izleyicisi oluşturma
 
-Bağlantı Izleyici (Önizleme) bölümünde oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure veya başka bir URL veya IP üzerinde olabilir.
+Bağlantı Izleyicisinde oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure veya başka bir URL veya IP üzerinde olabilir.
 
-Bağlantı Izleyicisi (Önizleme) aşağıdaki varlıkları içerir:
+Bağlantı Izleyicisi aşağıdaki varlıkları içerir:
 
 * **Bağlantı İzleyicisi kaynağı** : bölgeye özgü bir Azure kaynağı. Aşağıdaki varlıkların hepsi bir bağlantı İzleyicisi kaynağının özellikleridir.
 * **Uç nokta** : bağlantı denetimlerine katılan kaynak veya hedef. Uç noktalara örnek olarak Azure VM 'Leri, şirket içi aracılar, URL 'Ler ve IP 'Ler verilebilir.
@@ -111,7 +111,7 @@ Bağlantı Izleyicisi (Önizleme) aşağıdaki varlıkları içerir:
 
  ![Test grupları ve testler arasındaki ilişkiyi tanımlayan bir bağlantı izleyicisini gösteren diyagram](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-[Azure Portal](connection-monitor-preview-create-using-portal.md) veya [armclient](connection-monitor-preview-create-using-arm-client.md) kullanarak bir bağlantı İzleyicisi önizlemesi oluşturabilirsiniz
+[Azure Portal](connection-monitor-preview-create-using-portal.md) veya [armclient](connection-monitor-preview-create-using-arm-client.md) kullanarak bir bağlantı İzleyicisi oluşturabilirsiniz
 
 Bir test grubuna eklediğiniz tüm kaynaklar, hedefler ve test yapılandırması, bireysel testlere bölünmüştür. Kaynak ve hedeflerin nasıl bölündüğü hakkında bir örnek aşağıda verilmiştir:
 
@@ -151,7 +151,7 @@ Bir bağlantı İzleyicisi oluşturduktan sonra, kaynaklar test yapılandırman�
 
 ### <a name="checks-in-a-test"></a>Bir testte denetimler
 
-Bağlantı Izleyicisi (Önizleme), test yapılandırmasında seçtiğiniz protokole bağlı olarak, kaynak-hedef çifti için bir dizi denetim çalıştırır. Denetimler, seçtiğiniz test sıklığına göre çalışır.
+Bağlantı Izleyicisi, test yapılandırmasında seçtiğiniz protokolüne bağlı olarak, kaynak-hedef çifti için bir dizi denetim çalıştırır. Denetimler, seçtiğiniz test sıklığına göre çalışır.
 
 HTTP kullanırsanız, hizmet geçerli bir yanıt kodu döndüren HTTP yanıtlarının sayısını hesaplar. Geçerli yanıt kodları PowerShell ve CLı kullanılarak ayarlanabilir. Sonuç, başarısız denetimlerin yüzdesini belirler. RTT 'yi hesaplamak için, hizmet bir HTTP çağrısıyla yanıt arasındaki süreyi ölçer.
 
@@ -164,14 +164,14 @@ Denetimlerin döndürdüğü verilere bağlı olarak, testler aşağıdaki durum
 * **Pass** : başarısız denetimlerin yüzdesi için gerçek değerler ve RTT belirtilen eşiklerin içindedir.
 * **Başarısız** – başarısız DENETIMLERIN veya RTT yüzdesinin gerçek değerleri belirtilen eşikleri aştı. Eşik belirtilmemişse, başarısız denetimlerin yüzdesi 100 olduğunda bir test başarısız durumuna ulaşır.
 * **Uyarı** – 
-     * Eşik belirtilmişse ve bağlantı Izleyici (Önizleme) OBM denetimleri %80 ' dan daha fazla% daha fazla başarısız olursa, test uyarı olarak işaretlenir.
-     * Belirtilen eşiklerin yokluğu, bağlantı Izleyicisi (Önizleme) otomatik olarak bir eşik atar. Bu eşik aşıldığında, test durumu uyarı olarak değişir.TCP veya ıCMP testlerinde gidiş dönüş süresi için eşik değeri 750ms 'dir. % Başarısız denetimler için eşik %10 ' dur. 
+     * Eşik belirtilirse ve bağlantı Izleyicisi obhizmet denetimleri, eşiğin yüzde 80 ' sinden daha fazla başarısız olduysa, test uyarı olarak işaretlenir.
+     * Belirtilen eşiklerin yokluğunda, bağlantı Izleyicisi otomatik olarak bir eşik atar. Bu eşik aşıldığında, test durumu uyarı olarak değişir.TCP veya ıCMP testlerinde gidiş dönüş süresi için eşik değeri 750ms 'dir. % Başarısız denetimler için eşik %10 ' dur. 
 * **Belirsiz**   – Log Analytics çalışma alanında veri yok.Ölçümleri denetleyin. 
 * **Çalışmıyor**   – Test grubunu devre dışı bırakarak devre dışı  
 
 ### <a name="data-collection-analysis-and-alerts"></a>Veri toplama, analiz ve uyarılar
 
-Bağlantı Izleyicisi (Önizleme) tarafından toplanan veriler Log Analytics çalışma alanında depolanır. Bu çalışma alanını bağlantı izleyicisini oluştururken ayarlarsınız. 
+Bağlantı Izleyicisinin topladığı veriler Log Analytics çalışma alanında depolanır. Bu çalışma alanını bağlantı izleyicisini oluştururken ayarlarsınız. 
 
 Azure Izleyici ölçümlerinde izleme verileri de mevcuttur. İzleme verilerinizi istediğiniz uzunlukta tutmak için Log Analytics kullanabilirsiniz. Azure Izleyici, ölçümleri varsayılan olarak yalnızca 30 gün boyunca depolar. 
 
@@ -181,7 +181,7 @@ Azure Izleyici ölçümlerinde izleme verileri de mevcuttur. İzleme verileriniz
 
 İzleme Panoları ' nde, abonelikleriniz, bölgeler, zaman damgaları, kaynaklarınız ve hedef türleri için erişebileceğiniz bağlantı izleyicilerinin bir listesini görürsünüz.
 
-Ağ Izleyicisinden bağlantı Izleyicisi 'ne (Önizleme) gittiğinizde, verileri şu şekilde görüntüleyebilirsiniz:
+Ağ Izleyicisinden bağlantı Izleyicisi 'ne gittiğinizde, verileri şu şekilde görüntüleyebilirsiniz:
 
 * **Bağlantı İzleyicisi** – abonelikleriniz, bölgeler, zaman damgaları, kaynaklarınız ve hedef türleri için oluşturulan tüm bağlantı izleyicilerinin listesi. Bu görünüm varsayılandır.
 * **Test grupları** – abonelikleriniz, bölgelerleriniz, zaman damgaları, kaynaklarınız ve hedef türleri için oluşturulan tüm test gruplarının listesidir. Bu test grupları bağlantı izleyicilerine göre filtrelenmez.
@@ -197,24 +197,24 @@ Bir listeyi temelinde filtreleyebilirsiniz:
 * **Durum tabanlı filtreler** : Bağlantı İzleyicisi, test grubu veya test durumuna göre filtreleyin. Aşağıdaki görüntüde Box 2 ' ye bakın.
 * **Uyarı tabanlı filtre** -uyarılara göre filtrele Bağlantı İzleyicisi kaynağında tetiklendi. Aşağıdaki görüntüde Box 3 ' ü inceleyin.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Bağlantı Izleyicilerindeki bağlantı izleyicilerinin, test gruplarının ve testlerin nasıl filtreleneceğini gösteren ekran görüntüsü (Önizleme)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Bağlantı izleyicilerinde bağlantı izleyicilerinin, test gruplarının ve testlerin görünümlerinin nasıl filtreleneceğini gösteren ekran görüntüsü " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
-Örneğin, kaynak IP 'nin 10.192.64.56 olduğu bağlantı Izleyicisi 'ndeki (Önizleme) tüm testlere bakmak için:
+Örneğin, kaynak IP 'nin 10.192.64.56 olduğu bağlantı Izleyicisinde tüm testlere bakmak için:
 1. Görünümü **Test** olacak şekilde değiştirin.
 1. Arama alanına *10.192.64.56* yazın.
-1. En üst düzey filtre **kapsamında** , **kaynaklar** ' ı seçin.
+1. En üst düzey filtre **kapsamında** , **kaynaklar**' ı seçin.
 
-Kaynak IP 'nin 10.192.64.56 olduğu bağlantı Izleyicisinde (Önizleme) yalnızca başarısız testleri göstermek için:
+Kaynak IP 'nin 10.192.64.56 olduğu bağlantı Izleyicisinde yalnızca başarısız testleri göstermek için:
 1. Görünümü **Test** olacak şekilde değiştirin.
-1. Durum tabanlı filtre için **başarısız** ' ı seçin.
+1. Durum tabanlı filtre için **başarısız**' ı seçin.
 1. Arama alanına *10.192.64.56* yazın.
-1. En üst düzey filtre **kapsamında** , **kaynaklar** ' ı seçin.
+1. En üst düzey filtre **kapsamında** , **kaynaklar**' ı seçin.
 
-Yalnızca hedef outlook.office365.com olan bağlantı Izleyicisinde (Önizleme) başarısız testleri göstermek için:
+Yalnızca hedefin outlook.office365.com olduğu bağlantı Izleyicisinde başarısız testleri göstermek için:
 1. Görünümü **Test** olarak değiştirin.
-1. Durum tabanlı filtre için **başarısız** ' ı seçin.
+1. Durum tabanlı filtre için **başarısız**' ı seçin.
 1. Arama alanına *Outlook.office365.com* girin.
-1. En üst düzey filtre **kapsamında** , **hedefler** ' i seçin.
+1. En üst düzey filtre **kapsamında** , **hedefler**' i seçin.
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Outlook.Office365.com hedefi için yalnızca başarısız testleri göstermek üzere filtrelenmiş bir görünümü gösteren ekran görüntüsü" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
@@ -265,13 +265,13 @@ RTT içindeki eğilimleri ve test için başarısız denetimlerin yüzdesini gö
 
 #### <a name="metrics-in-azure-monitor"></a>Azure İzleyicisi'nde ölçümler
 
-Bağlantı Izleyicisi (Önizleme) deneyiminden önce oluşturulan bağlantı izleyicilerinde, dört ölçüm de kullanılabilir:% araştırmaları başarısız, AverageRoundtripMs, ChecksFailedPercent (Önizleme) ve Roundüçlü zaman MS (Önizleme). Bağlantı Izleyicisi (Önizleme) deneyiminde oluşturulan bağlantı izleyicilerinde, veriler yalnızca ile etiketlenmiş ölçümler *(Önizleme)* için kullanılabilir.
+Bağlantı Izleyicisi deneyiminden önce oluşturulan bağlantı izleyicilerinde, dört ölçüm kullanılabilir:% araştırmaları başarısız, AverageRoundtripMs, ChecksFailedPercent (Önizleme) ve Roundüçlü MS (Önizleme). Bağlantı Izleyicisi deneyiminde oluşturulan bağlantı izleyicilerinde, veriler yalnızca ile etiketlenmiş ölçümler için kullanılabilir *(Önizleme)*.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Bağlantı Izleyicisinde ölçümleri gösteren ekran görüntüsü (Önizleme)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Bağlantı Izleyicisinde ölçümleri gösteren ekran görüntüsü" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Ölçümleri kullandığınızda, kaynak türünü Microsoft. Network/networkWatchers/Connectionmonitörleri olarak ayarlayın
 
-| Ölçüm | Görünen ad | Birim | Toplama türü | Açıklama | Boyutlar |
+| Ölçüm | Görünen ad | Birim | Toplama türü | Description | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Yoklama başarısız oldu | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
 | AverageRoundtripMs | Ort. gidiş dönüş süresi (MS) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |
@@ -282,19 +282,19 @@ Bağlantı Izleyicisi (Önizleme) deneyiminden önce oluşturulan bağlantı izl
 
 Aşağıdaki yöntemleri kullanarak bağlantı izleyicilerinde ölçüm uyarıları oluşturabilirsiniz 
 
-1. Bağlantı Izleyicisi 'nden (Önizleme), [Azure Portal kullanarak](connection-monitor-preview-create-using-portal.md#) Bağlantı İzleyicisi oluşturma sırasında 
-1. Bağlantı Izleyicisi 'nden (Önizleme), panoda "uyarıları yapılandırma" kullanımı 
+1. Bağlantı Izleyicisi 'nden, [Azure Portal kullanarak](connection-monitor-preview-create-using-portal.md#) Bağlantı İzleyicisi oluşturma sırasında 
+1. Bağlantı Izleyicisi 'nden, panoda "uyarıları Yapılandır" ı kullanma 
 1. Azure Izleyici 'den-Azure Izleyici 'de uyarı oluşturmak Için: 
-    1. Bağlantı Izleyicisi (Önizleme) bölümünde oluşturduğunuz Bağlantı İzleyicisi kaynağını seçin.
+    1. Bağlantı Izleyicisi 'nde oluşturduğunuz Bağlantı İzleyicisi kaynağını seçin.
     1. **Ölçümün** Bağlantı İzleyicisi için sinyal türü olarak görüntülendiğinden emin olun.
     1. **Koşul** adı bölümünde, **sinyal adı** Için, **checksfailedpercent (Önizleme)** veya **roundüçlü MS (Önizleme)** öğesini seçin.
-    1. **Sinyal türü** için **ölçümler** ' i seçin. Örneğin, **Checksfailedpercent (Önizleme)** öğesini seçin.
+    1. **Sinyal türü** için **ölçümler**' i seçin. Örneğin, **Checksfailedpercent (Önizleme)** öğesini seçin.
     1. Ölçümün tüm boyutları listelenir. Boyut adı ve boyut değerini seçin. Örneğin, **kaynak adresi** ' ni seçin ve ardından bağlantı izleyicinizdeki herhangi BIR kaynağın IP adresini girin.
-    1. **Uyarı mantığı** ' nda aşağıdaki ayrıntıları girin:
-        * **Koşul türü** : **statik**.
+    1. **Uyarı mantığı**' nda aşağıdaki ayrıntıları girin:
+        * **Koşul türü**: **statik**.
         * **Koşul** ve **eşik**.
-        * **Toplama ayrıntı düzeyi ve değerlendirme sıklığı** : bağlantı Izleyicisi (Önizleme) her dakikada verileri güncelleştirir.
-    1. **Eylemler** ' de eylem grubunuzu seçin.
+        * **Toplama ayrıntı düzeyi ve değerlendirme sıklığı**: Bağlantı İzleyicisi her dakikada verileri güncelleştirir.
+    1. **Eylemler**' de eylem grubunuzu seçin.
     1. Uyarı ayrıntılarını belirtin.
     1. Uyarı kuralını oluşturun.
 
@@ -302,7 +302,7 @@ Aşağıdaki yöntemleri kullanarak bağlantı izleyicilerinde ölçüm uyarıla
 
 ## <a name="diagnose-issues-in-your-network"></a>Ağınızdaki sorunları tanılayın
 
-Bağlantı Izleyicisi (Önizleme), bağlantı izleyicinizdeki ve ağınızdaki sorunları tanılamanıza yardımcı olur. Karma ağınızdaki sorunlar, daha önce yüklediğiniz Log Analytics aracıları tarafından algılanır. Azure 'daki sorunlar ağ Izleyicisi uzantısı tarafından algılanır. 
+Bağlantı Izleyicisi, bağlantı izleyicinizdeki ve ağınızdaki sorunları tanılamanıza yardımcı olur. Karma ağınızdaki sorunlar, daha önce yüklediğiniz Log Analytics aracıları tarafından algılanır. Azure 'daki sorunlar ağ Izleyicisi uzantısı tarafından algılanır. 
 
 Ağ topolojisinde Azure ağı 'ndaki sorunları görüntüleyebilirsiniz.
 
@@ -348,5 +348,5 @@ Kaynakları Azure VM 'Leri olan ağlarda aşağıdaki sorunlar tespit edilebilir
 
 ## <a name="next-steps"></a>Sonraki Adımlar
     
-   * [Azure Portal kullanarak bağlantı İzleyicisi (Önizleme) oluşturmayı](connection-monitor-preview-create-using-portal.md) öğrenin  
-   * [ARMClient kullanarak bağlantı İzleyicisi (Önizleme) oluşturmayı](connection-monitor-preview-create-using-arm-client.md) öğrenin  
+   * [Azure Portal kullanarak bağlantı İzleyicisi oluşturmayı](connection-monitor-preview-create-using-portal.md) öğrenin  
+   * [ARMClient kullanarak bağlantı İzleyicisi oluşturmayı](connection-monitor-preview-create-using-arm-client.md) öğrenin  

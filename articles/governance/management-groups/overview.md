@@ -1,15 +1,15 @@
 ---
 title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
-ms.date: 09/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c48361e7f3d67c6d3eec40d5acb47917f7835db5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951885"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699602"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure yönetim grupları nedir?
 
@@ -90,7 +90,7 @@ Bu izinler, hiyerarşide mevcut olan alt kaynaklara devredilir. Herhangi bir Azu
 
 Aşağıdaki grafikte rollerin listesi ve yönetim gruplarında desteklenen eylemler gösterilmektedir.
 
-| Azure rolü adı             | Oluştur | Yeniden adlandır | Geçiş\*\* | Sil | Erişim Ata | İlke Ata | Okuma  |
+| Azure rolü adı             | Oluştur | Rename | Geçiş\*\* | Sil | Erişim Ata | İlke Ata | Okuma  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Sahip                       | X      | X      | X        | X      | X             | X             | X     |
 |Katılımcı                 | X      | X      | X        | X      |               |               | X     |
@@ -150,7 +150,7 @@ Rol tanımları, yönetim grubu hiyerarşisi içinde herhangi bir yerde atanabil
 
 Örneğin, bir görselin hiyerarşinin küçük bir bölümüne bakalım.
 
-:::image type="complex" source="./media/subtree.png" alt-text="Örnek bir yönetim grubu hiyerarşisinin diyagramı." border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="Örnek yönetim grubu hiyerarşisinin bir alt kümesinin diyagramı." border="false":::
    Diyagram, alt I T ve pazarlama yönetimi gruplarıyla kök yönetim grubuna odaklanır. I T yönetim grubunun üretim adlı tek bir alt yönetim grubu vardır, ancak pazarlama yönetim grubunun iki ücretsiz deneme alt aboneliği vardır.
 :::image-end:::
 
@@ -171,7 +171,11 @@ Yönetim gruplarında özel roller kullanılırken var olan sınırlamalar vard�
  - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz. Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır. Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşınırsa meydana gelir.  
  - Kaynak sağlayıcısı veri düzlemi eylemleri yönetim grubu özel rollerinde tanımlanamaz. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarının güncelleştirilmesiyle ilgili bir gecikme sorunu olduğu için gerçekleştirilir.
    Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
- - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz. Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.  
+ - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz. Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.
+
+> [!IMPORTANT]
+> ' Ye bir yönetim grubu eklemek `AssignableScopes` Şu anda önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez.
+> Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Yönetim gruplarını ve abonelikleri taşıma 
 
@@ -194,7 +198,7 @@ Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma he
 
 Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/platform-logs-overview.md)'nde desteklenir. Yönetim grubunda gerçekleşen tüm olayları, diğer Azure kaynaklarıyla aynı merkezi konumda arayabilirsiniz. Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Örnek bir yönetim grubu hiyerarşisinin diyagramı." border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Seçili yönetim grubuyla ilgili etkinlik günlüklerinin ve işlemlerinin ekran görüntüsü." border="false":::
 
 Azure portalının dışında Yönetim Gruplarını sorgulamak istediğinizde, yönetim gruplarının hedef kapsamı **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** gibi görünür.
 

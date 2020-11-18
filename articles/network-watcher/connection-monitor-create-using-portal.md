@@ -1,7 +1,7 @@
 ---
-title: Bağlantı Izleyicisi önizlemesi oluşturma-Azure portal
+title: Bağlantı Izleyicisi oluşturma-Azure portal
 titleSuffix: Azure Network Watcher
-description: Bu makalede, Azure portal kullanarak bağlantı Izleyicisi önizlemesinde bir izleyicinin nasıl oluşturulacağı açıklanır.
+description: Bu makalede, Azure portal kullanarak bağlantı Izleyicisinde bir izleyicinin nasıl oluşturulacağı açıklanır.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 97d20f2b6b7b355ea5c810ad46b084f42b9bd6d1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447857"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699381"
 ---
-# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>Azure portal kullanarak bağlantı Izleyicisi önizlemesinde izleyici oluşturma
+# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal kullanarak bağlantı Izleyicisinde izleyici oluşturma
 
-Kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisi önizlemeyi nasıl kullanacağınızı öğrenin. Bu makalede, Azure portal kullanarak nasıl bir izleyici oluşturacağınız açıklanır. Bağlantı Izleyicisi karma ve Azure bulut dağıtımlarını destekler.
+Kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisini nasıl kullanacağınızı öğrenin. Bu makalede, Azure portal kullanarak nasıl bir izleyici oluşturacağınız açıklanır. Bağlantı Izleyicisi karma ve Azure bulut dağıtımlarını destekler.
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 
-Bağlantı Izleyicisi önizlemeyi kullanarak oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure 'da veya başka bir URL veya IP üzerinde olabilir.
+Bağlantı Izleyicisi 'ni kullanarak oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure 'da veya başka bir URL veya IP üzerinde olabilir.
 
 İşte başlamanıza yönelik bazı tanımlar:
 
@@ -47,31 +47,31 @@ Bağlantı Izleyicisi önizlemeyi kullanarak oluşturduğunuz bağlantı izleyic
 
 ## <a name="create-a-connection-monitor"></a>Bağlantı izleyicisi oluşturma
 
-Azure portal kullanarak bağlantı Izleyicisi önizlemesinde bir izleyici oluşturmak için:
+Azure portal kullanarak bağlantı Izleyicisinde bir izleyici oluşturmak için:
 
-1. Azure portal giriş sayfasında **Ağ İzleyicisi** ' ne gidin.
-1. Sol bölmedeki **izleme** bölümünde **Bağlantı İzleyicisi (Önizleme)** öğesini seçin.
+1. Azure portal giriş sayfasında **Ağ İzleyicisi**' ne gidin.
+1. Sol bölmedeki **izleme** bölümünde **Bağlantı İzleyicisi**' ni seçin.
 
-   Bağlantı Izleyicisi önizlemesinde oluşturulan tüm bağlantı izleyicilerini görürsünüz. Klasik bağlantı Izleyicisinde oluşturulan bağlantı izleyicilerini görmek için **Bağlantı İzleyicisi** sekmesine gidin.
+   Bağlantı Izleyicisinde oluşturulan tüm bağlantı izleyicilerini görürsünüz. Klasik bağlantı Izleyicisinde oluşturulan bağlantı izleyicilerini görmek için **Bağlantı İzleyicisi** sekmesine gidin.
 
-   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Bağlantı Izleyicisi önizlemesinde oluşturulan bağlantı izleyicilerini gösteren ekran görüntüsü.":::
+   :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Bağlantı Izleyicisinde oluşturulan bağlantı izleyicilerini gösteren ekran görüntüsü.":::
    
     
-1. **Bağlantı İzleyicisi (Önizleme)** panosunda, sol üst köşedeki **Oluştur** ' u seçin.
+1. **Bağlantı İzleyicisi** panosunda, sol üst köşedeki **Oluştur**' u seçin.
 
    
 
 1. **Temel bilgiler** sekmesinde, bağlantı monitörünüz için bilgi girin: 
-   * **Bağlantı Izleyicisi adı** : bağlantı monitörünüz için bir ad girin. Azure kaynakları için standart adlandırma kurallarını kullanın.
-   * **Abonelik** : bağlantı monitörünüz için bir abonelik seçin.
-   * **Bölge** : bağlantı monitörünüz için bir bölge seçin. Yalnızca bu bölgede oluşturulan kaynak VM 'Leri seçebilirsiniz.
-   * **Çalışma alanı yapılandırması** : özel bir çalışma alanı veya varsayılan çalışma alanı seçin. Çalışma alanınız izleme verilerinizi barındırır.
+   * **Bağlantı Izleyicisi adı**: bağlantı monitörünüz için bir ad girin. Azure kaynakları için standart adlandırma kurallarını kullanın.
+   * **Abonelik**: bağlantı monitörünüz için bir abonelik seçin.
+   * **Bölge**: bağlantı monitörünüz için bir bölge seçin. Yalnızca bu bölgede oluşturulan kaynak VM 'Leri seçebilirsiniz.
+   * **Çalışma alanı yapılandırması**: özel bir çalışma alanı veya varsayılan çalışma alanı seçin. Çalışma alanınız izleme verilerinizi barındırır.
        * Varsayılan çalışma alanını kullanmak için onay kutusunu işaretleyin. 
        * Özel bir çalışma alanı seçmek için onay kutusunu temizleyin. Ardından özel çalışma alanınızın aboneliğini ve bölgesini seçin. 
 
    :::image type="content" source="./media/connection-monitor-2-preview/create-cm-basics.png" alt-text="Bağlantı Izleyicisinde temel bilgiler sekmesini gösteren ekran görüntüsü.":::
    
-1. Sekmenin alt kısmındaki **İleri: test grupları** ' nı seçin.
+1. Sekmenin alt kısmındaki **İleri: test grupları**' nı seçin.
 
 1. Test gruplarınızı kaynak, hedef ve test yapılandırması ekleyin. Test gruplarınızı ayarlama hakkında bilgi edinmek için bkz. [bağlantı Izleyicisinde test grupları oluşturma](#create-test-groups-in-a-connection-monitor). 
 
@@ -81,18 +81,18 @@ Azure portal kullanarak bağlantı Izleyicisi önizlemesinde bir izleyici oluşt
 
    :::image type="content" source="./media/connection-monitor-2-preview/create-alert.png" alt-text="Uyarı Oluştur sekmesini gösteren ekran görüntüsü.":::
 
-1. Sekmenin alt kısmındaki Ileri ' yi seçin ve **ardından Oluştur** ' a tıklayın.
+1. Sekmenin alt kısmındaki Ileri ' yi seçin ve **ardından Oluştur**' a tıklayın.
 
 1. **Gözden geçir + oluştur** sekmesinde, bağlantı izleyicisini oluşturmadan önce temel bilgileri ve test gruplarını gözden geçirin. Bağlantı izleyicisini düzenlemeniz gerekiyorsa, ilgili sekmelere geri giderek bunu yapabilirsiniz. 
    :::image type="content" source="./media/connection-monitor-2-preview/review-create-cm.png" alt-text="Bağlantı Izleyicisinde Inceleme ve oluşturma sekmesini gösteren ekran görüntüsü.":::
    > [!NOTE] 
-   > **Gözden geçir + oluştur** sekmesi, Bağlantı İzleyicisi önizleme aşamasında aylık maliyeti gösterir. Şu anda **geçerli maliyet/ay** sütununda hiçbir ücret gösterililmez. Bağlantı Izleyicisi genel kullanıma sunulduğunda, bu sütunda aylık bir ücret gösterilir. 
+   > **Gözden geçir + oluştur** sekmesi, Bağlantı İzleyicisi aşamasında aylık maliyeti gösterir. Şu anda **geçerli maliyet/ay** sütununda hiçbir ücret gösterililmez. Bağlantı Izleyicisi genel kullanıma sunulduğunda, bu sütunda aylık bir ücret gösterilir. 
    > 
-   > Bağlantı Izleyicisi önizleme aşamasında bile, Log Analytics alma ücretleri uygulanır.
+   > Bağlantı Izleyicisi aşamasında bile, Log Analytics alma ücretleri uygulanır.
 
-1. Bağlantı izleyicisini oluşturmaya hazırsanız, **gözden geçir + oluştur** sekmesinin altındaki **Oluştur** ' u seçin.
+1. Bağlantı izleyicisini oluşturmaya hazırsanız, **gözden geçir + oluştur** sekmesinin altındaki **Oluştur**' u seçin.
 
-Bağlantı Izleyicisi önizlemesi, arka planda Bağlantı İzleyicisi kaynağını oluşturur.
+Bağlantı Izleyicisi, arka planda Bağlantı İzleyicisi kaynağını oluşturur.
 
 ## <a name="create-test-groups-in-a-connection-monitor"></a>Bağlantı izleyicisinde test grupları oluşturma
 
@@ -100,16 +100,16 @@ Bir bağlantı izleyicisinde bulunan her bir test grubu, ağ parametrelerini tes
 
 Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşağıdaki alanlar için değerler belirtirsiniz:
 
-* **Test grubunu devre dışı bırak** : Bu onay kutusunu, test grubunun belirttiği tüm kaynaklar ve hedefler için izlemeyi devre dışı bırakmak üzere seçebilirsiniz. Bu seçim varsayılan olarak temizlenir.
-* **Ad** : test grubunuzu adlandırın.
-* **Kaynaklar** : aracılar bunlara yüklenmişse Azure sanal makinelerini ve şirket içi makineleri kaynak olarak belirtebilirsiniz. Kaynağınız için bir aracı yükleme hakkında bilgi edinmek için bkz. [izleme aracılarını yükleme](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+* **Test grubunu devre dışı bırak**: Bu onay kutusunu, test grubunun belirttiği tüm kaynaklar ve hedefler için izlemeyi devre dışı bırakmak üzere seçebilirsiniz. Bu seçim varsayılan olarak temizlenir.
+* **Ad**: test grubunuzu adlandırın.
+* **Kaynaklar**: aracılar bunlara yüklenmişse Azure sanal makinelerini ve şirket içi makineleri kaynak olarak belirtebilirsiniz. Kaynağınız için bir aracı yükleme hakkında bilgi edinmek için bkz. [izleme aracılarını yükleme](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
    * Azure aracılarını seçmek için **Azure uç noktaları** sekmesini seçin. Burada yalnızca bağlantı izleyicisini oluştururken belirttiğiniz bölgeye bağlı olan VM 'Leri görürsünüz. Varsayılan olarak VM 'Ler, ait oldukları abonelikte gruplandırılır. Bu gruplar daraltılmıştır. 
    
        **Abonelik** düzeyinden hiyerarşideki diğer düzeylere ayrıntıya gidebilirsiniz:
 
       **Abonelik**  >  **Kaynak grubu**  >  **VNET**  >  **Alt ağ**  >  **Aracılarla VM 'ler**
 
-      Ayrıca, ağacı başka bir düzeyden başlatmak için grubu seçiciye **göre** de değiştirebilirsiniz. Örneğin, sanal ağa göre gruplandırdıysanız, **VNET**  >  aracılarla sanal ağ **alt ağı**  >  **VM** 'lerinde aracıların bulunduğu VM 'leri görürsünüz.
+      Ayrıca, ağacı başka bir düzeyden başlatmak için grubu seçiciye **göre** de değiştirebilirsiniz. Örneğin, sanal ağa göre gruplandırdıysanız, **VNET**  >  aracılarla sanal ağ **alt ağı**  >  **VM**'lerinde aracıların bulunduğu VM 'leri görürsünüz.
 
        VNET, alt ağ veya tek VM seçtiğinizde, karşılık gelen kaynak KIMLIĞI uç nokta olarak ayarlanır. Varsayılan olarak, Azure ağ Izleyicisi uzantısının bulunduğu seçili VNET veya alt ağdaki tüm sanal makineler izlemeye katılır. Kapsamı azaltmak için belirli alt ağları veya aracıları seçin ya da kapsam özelliğinin değerini değiştirin. 
 
@@ -127,7 +127,7 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
    
    * Kaynakları ayarlamayı bitirdiğinizde sekmenin en altında **bitti** ' yi seçin. **Test grubu oluştur** görünümündeki uç noktayı seçerek uç nokta adı gibi temel özellikleri de düzenleyebilirsiniz. 
 
-* **Hedefler** : BIR Azure VM 'ye, bir şirket içi makineye veya herhangi bir uç noktaya (genel IP, URL veya FQDN) yönelik bağlantıyı hedef olarak belirterek izleyebilirsiniz. Tek bir test grubunda Azure VM 'leri, şirket içi makineler, Office 365 URL 'Leri, Dynamics 365 URL 'Leri ve özel uç noktaları ekleyebilirsiniz.
+* **Hedefler**: BIR Azure VM 'ye, bir şirket içi makineye veya herhangi bir uç noktaya (genel IP, URL veya FQDN) yönelik bağlantıyı hedef olarak belirterek izleyebilirsiniz. Tek bir test grubunda Azure VM 'leri, şirket içi makineler, Office 365 URL 'Leri, Dynamics 365 URL 'Leri ve özel uç noktaları ekleyebilirsiniz.
 
     * Azure VM 'lerini hedef olarak seçmek için **Azure uç noktaları** sekmesini seçin. Varsayılan olarak, Azure VM 'Leri **temel bilgiler** sekmesinde **Bağlantı İzleyicisi oluştur** altında seçtiğiniz bölgede bulunan bir abonelik hiyerarşisinde gruplandırılır. Bölgeyi değiştirebilir ve yeni bölgeden Azure VM 'Leri seçebilirsiniz. Ardından, kaynak Azure uç noktalarını ayarladığınızda yaptığınız gibi, **abonelik** düzeyinden hiyerarşideki diğer düzeylere gidebilirsiniz.
 
@@ -148,25 +148,25 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
     
     * Genel uç noktaları hedef olarak seçmek için **dış adresler** sekmesini seçin. Uç noktalar listesi, Office 365 test URL 'Leri ve Dynamics 365 test URL 'Lerini ada göre gruplanmış olarak içerir. Aynı bağlantı izleyicisinde diğer test gruplarında oluşturulan uç noktaları da seçebilirsiniz. 
     
-        Uç nokta eklemek için sağ üst köşedeki **uç nokta Ekle** ' yi seçin. Ardından bir uç nokta adı ve URL, IP veya FQDN belirtin.
+        Uç nokta eklemek için sağ üst köşedeki **uç nokta Ekle**' yi seçin. Ardından bir uç nokta adı ve URL, IP veya FQDN belirtin.
 
        :::image type="content" source="./media/connection-monitor-2-preview/add-endpoints.png" alt-text="Bağlantı Izleyicisinde genel uç noktaların hedef olarak nereye ekleneceğini gösteren ekran görüntüsü.":::
 
     * Son kullanılan uç noktaları seçmek için **son bitiş noktası**   sekmesine gidin.
-    * Hedefleri seçme işini bitirdiğinizde **bitti** ' yi seçin. **Test grubu oluştur** görünümündeki uç noktayı seçerek uç nokta adı gibi temel özellikleri de düzenleyebilirsiniz. 
+    * Hedefleri seçme işini bitirdiğinizde **bitti**' yi seçin. **Test grubu oluştur** görünümündeki uç noktayı seçerek uç nokta adı gibi temel özellikleri de düzenleyebilirsiniz. 
 
-* **Test yapılandırması** : bir test grubuna bir veya daha fazla test yapılandırması ekleyebilirsiniz. **Yeni yapılandırma** sekmesini kullanarak yeni bir test yapılandırması oluşturun. Ya da aynı bağlantı Izleyicisinde bulunan başka bir test grubundan **var olanı seç** sekmesinden bir test yapılandırması ekleyin.
+* **Test yapılandırması**: bir test grubuna bir veya daha fazla test yapılandırması ekleyebilirsiniz. **Yeni yapılandırma** sekmesini kullanarak yeni bir test yapılandırması oluşturun. Ya da aynı bağlantı Izleyicisinde bulunan başka bir test grubundan **var olanı seç** sekmesinden bir test yapılandırması ekleyin.
 
-    * **Test yapılandırması adı** : test yapılandırmasını adlandırın.
-    * **Protokol** : **TCP** , **ICMP** veya **http** ' yi seçin. HTTP 'yi HTTPS olarak değiştirmek için protokol olarak **http** ' yi seçin ve bağlantı noktası olarak **443** ' yı seçin.
-        * **TCP test yapılandırması oluştur** : Bu onay kutusu yalnızca **protokol** listesinde **http** ' yi seçtiğinizde görünür. Yapılandırmanızda başka bir yerde belirttiğiniz kaynakları ve hedefleri kullanan başka bir test yapılandırması oluşturmak için bu onay kutusunu işaretleyin. Yeni test yapılandırması **\<name of test configuration> _networkTestConfig** olarak adlandırılır.
-        * İzleme işlemi **devre dışı bırak** : Bu onay kutusu, protokol TCP veya ICMP olduğunda geçerlidir. Kaynakları, topolojiyi ve Atlama RTT 'yi bulmaktan durdurmak için bu kutuyu seçin.
-    * **Hedef bağlantı noktası** : tercih ettiğiniz bir hedef bağlantı noktası sağlayabilirsiniz.
-        * **Bağlantı noktasında dinle** : Bu onay kutusu, protokol TCP olduğunda geçerlidir. Zaten açık değilse, seçilen TCP bağlantı noktasını açmak için bu onay kutusunu işaretleyin. 
-    * **Sınama sıklığı** : Bu listede, kaynakların, belirttiğiniz protokol ve bağlantı noktasındaki hedeflere ne sıklıkta ping uygulayabileceğini belirtin. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. 30 saniye ile 30 dakika arasında başka bir sıklık girmek için **özel** ' i seçin. Kaynaklar, seçtiğiniz değere göre hedeflere bağlantıyı test edecektir. Örneğin, 30 saniye seçerseniz, kaynaklar her 30 saniyelik dönemde en az bir kez hedefe bağlantıyı kontrol eder.
-    * **Başarı eşiği** : aşağıdaki ağ parametrelerinde eşikler ayarlayabilirsiniz:
-       * **Denetim başarısız** : kaynaklar, belirttiğiniz kriterleri kullanarak hedeflere bağlantı denetlediğinde başarısız olan denetimlerin yüzdesini ayarlayın. TCP veya ıCMP protokolü için, başarısız denetimlerin yüzdesi paket kaybı yüzdesine eşit olabilir. HTTP protokolü için, bu değer yanıt olmadan alınan HTTP isteklerinin yüzdesini temsil eder.
-       * Gidiş **dönüş süresi** : saniye cinsinden, test yapılandırması üzerinden hedefe bağlanmak için kaynakların ne kadar süreceğine ilişkin RTT 'yi ayarlayın.
+    * **Test yapılandırması adı**: test yapılandırmasını adlandırın.
+    * **Protokol**: **TCP**, **ICMP** veya **http**' yi seçin. HTTP 'yi HTTPS olarak değiştirmek için protokol olarak **http** ' yi seçin ve bağlantı noktası olarak **443** ' yı seçin.
+        * **TCP test yapılandırması oluştur**: Bu onay kutusu yalnızca **protokol** listesinde **http** ' yi seçtiğinizde görünür. Yapılandırmanızda başka bir yerde belirttiğiniz kaynakları ve hedefleri kullanan başka bir test yapılandırması oluşturmak için bu onay kutusunu işaretleyin. Yeni test yapılandırması **\<name of test configuration> _networkTestConfig** olarak adlandırılır.
+        * İzleme işlemi **devre dışı bırak**: Bu onay kutusu, protokol TCP veya ICMP olduğunda geçerlidir. Kaynakları, topolojiyi ve Atlama RTT 'yi bulmaktan durdurmak için bu kutuyu seçin.
+    * **Hedef bağlantı noktası**: tercih ettiğiniz bir hedef bağlantı noktası sağlayabilirsiniz.
+        * **Bağlantı noktasında dinle**: Bu onay kutusu, protokol TCP olduğunda geçerlidir. Zaten açık değilse, seçilen TCP bağlantı noktasını açmak için bu onay kutusunu işaretleyin. 
+    * **Sınama sıklığı**: Bu listede, kaynakların, belirttiğiniz protokol ve bağlantı noktasındaki hedeflere ne sıklıkta ping uygulayabileceğini belirtin. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. 30 saniye ile 30 dakika arasında başka bir sıklık girmek için **özel** ' i seçin. Kaynaklar, seçtiğiniz değere göre hedeflere bağlantıyı test edecektir. Örneğin, 30 saniye seçerseniz, kaynaklar her 30 saniyelik dönemde en az bir kez hedefe bağlantıyı kontrol eder.
+    * **Başarı eşiği**: aşağıdaki ağ parametrelerinde eşikler ayarlayabilirsiniz:
+       * **Denetim başarısız**: kaynaklar, belirttiğiniz kriterleri kullanarak hedeflere bağlantı denetlediğinde başarısız olan denetimlerin yüzdesini ayarlayın. TCP veya ıCMP protokolü için, başarısız denetimlerin yüzdesi paket kaybı yüzdesine eşit olabilir. HTTP protokolü için, bu değer yanıt olmadan alınan HTTP isteklerinin yüzdesini temsil eder.
+       * Gidiş **dönüş süresi**: saniye cinsinden, test yapılandırması üzerinden hedefe bağlanmak için kaynakların ne kadar süreceğine ilişkin RTT 'yi ayarlayın.
        
    :::image type="content" source="./media/connection-monitor-2-preview/add-test-config.png" alt-text="Bağlantı Izleyicisinde bir test yapılandırmasının ayarlandığı yeri gösteren ekran görüntüsü.":::
        
@@ -176,17 +176,17 @@ Test yapılandırmalarında ayarlanan eşiklere göre başarısız olan testler 
 
 Azure portal, bir bağlantı izleyicisine yönelik uyarılar oluşturmak için bu alanlar için değerler belirtirsiniz: 
 
-- **Uyarı oluştur** : Azure izleyici 'de bir ölçüm uyarısı oluşturmak için bu onay kutusunu seçebilirsiniz. Bu onay kutusunu seçtiğinizde diğer alanlar düzenlenmek üzere etkinleştirilir. Uyarı için ek ücretler, uyarı [fiyatlandırmasına](https://azure.microsoft.com/pricing/details/monitor/)göre geçerli olacaktır. 
+- **Uyarı oluştur**: Azure izleyici 'de bir ölçüm uyarısı oluşturmak için bu onay kutusunu seçebilirsiniz. Bu onay kutusunu seçtiğinizde diğer alanlar düzenlenmek üzere etkinleştirilir. Uyarı için ek ücretler, uyarı [fiyatlandırmasına](https://azure.microsoft.com/pricing/details/monitor/)göre geçerli olacaktır. 
 
-- **Kapsam**  >  **Kaynak**  >  **Hiyerarşi** : Bu değerler, **temel bilgiler** sekmesinde belirtilen değerlere göre otomatik olarak doldurulur.
+- **Kapsam**  >  **Kaynak**  >  **Hiyerarşi**: Bu değerler, **temel bilgiler** sekmesinde belirtilen değerlere göre otomatik olarak doldurulur.
 
-- **Koşul adı** : Bu uyarı, `Test Result(preview)` ölçümde oluşturulur. Bağlantı İzleyicisi testinin sonucu başarısız olan bir sonuç olduğunda, uyarı kuralı harekete geçmeyecektir. 
+- **Koşul adı**: Bu uyarı, `Test Result(preview)` ölçümde oluşturulur. Bağlantı İzleyicisi testinin sonucu başarısız olan bir sonuç olduğunda, uyarı kuralı harekete geçmeyecektir. 
 
-- **Eylem grubu adı** : e-postanızı doğrudan girebilir veya eylem grupları aracılığıyla uyarı oluşturabilirsiniz. E-postanızı doğrudan girerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur. E-posta KIMLIĞI, bu eylem grubuna eklenir. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Bir eylem grubu oluşturmayı öğrenmek için [Azure Portal eylem grupları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)bölümüne bakın. Uyarı oluşturulduktan sonra [uyarılarınızı yönetebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+- **Eylem grubu adı**: e-postanızı doğrudan girebilir veya eylem grupları aracılığıyla uyarı oluşturabilirsiniz. E-postanızı doğrudan girerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur. E-posta KIMLIĞI, bu eylem grubuna eklenir. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Bir eylem grubu oluşturmayı öğrenmek için [Azure Portal eylem grupları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)bölümüne bakın. Uyarı oluşturulduktan sonra [uyarılarınızı yönetebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
 
-- **Uyarı kuralı adı** : bağlantı izleyicisinin adı.
+- **Uyarı kuralı adı**: bağlantı izleyicisinin adı.
 
-- **Oluşturma sonrasında kuralı etkinleştir** : uyarı kuralını koşula göre etkinleştirmek için bu onay kutusunu işaretleyin. Kuralı etkinleştirmeden oluşturmak istiyorsanız bu onay kutusunu devre dışı bırakın. 
+- **Oluşturma sonrasında kuralı etkinleştir**: uyarı kuralını koşula göre etkinleştirmek için bu onay kutusunu işaretleyin. Kuralı etkinleştirmeden oluşturmak istiyorsanız bu onay kutusunu devre dışı bırakın. 
 
 :::image type="content" source="./media/connection-monitor-2-preview/create-alert-filled.png" alt-text="Bağlantı Izleyicisinde uyarı Oluştur sekmesini gösteren ekran görüntüsü.":::
 

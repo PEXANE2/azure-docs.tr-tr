@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5ccbe1035c5cc73993e069c7683d6b15ae18e21c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795956"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698905"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Hızlı başlangıç: JavaScript SDK 'sını kullanarak Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -24,14 +24,14 @@ ms.locfileid: "92795956"
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 
-JavaScript 'te bir arama dizini oluşturan, yükleyen ve sorgulayan bir Node.js uygulaması oluşturmak için [Azure bilişsel arama JavaScript/Typscript SDK 'sını](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) kullanın.
+JavaScript 'te bir arama dizini oluşturan, yükleyen ve sorgulayan bir Node.js uygulaması oluşturmak için [Azure bilişsel arama JavaScript/Typscript SDK 'sını](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) kullanın.
 
 Bu makalede, uygulamanın adım adım nasıl oluşturulacağı gösterilir. Alternatif olarak, [kaynak kodu ve verileri indirebilir](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) ve uygulamayı komut satırından çalıştırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 
@@ -56,9 +56,9 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-2. **Ayarlar**  >  **anahtarlarında** , hizmet üzerinde tam haklar için bir yönetici anahtarı alın, nesne oluşturuyorsanız veya silerseniz gereklidir. İki adet değiştirilebilir birincil ve ikincil anahtar vardır. Bunlardan birini kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlarında**, hizmet üzerinde tam haklar için bir yönetici anahtarı alın, nesne oluşturuyorsanız veya silerseniz gereklidir. İki adet değiştirilebilir birincil ve ikincil anahtar vardır. Bunlardan birini kullanabilirsiniz.
 
-   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-rest/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -80,7 +80,7 @@ VS Code ve [Tümleşik terminalini](https://code.visualstudio.com/docs/editor/in
     ```
      Lisans dışında, "MıT" olarak ayarlamanız gereken varsayılan değerleri kabul edin. 
 
-3. `@azure/search-documents` [Azure bilişsel arama için JavaScript/TYPSCRIPT SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)'yı yükler.
+3. `@azure/search-documents` [Azure bilişsel arama için JavaScript/TYPSCRIPT SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme)'yı yükler.
 
     ```cmd
     npm install @azure/search-documents

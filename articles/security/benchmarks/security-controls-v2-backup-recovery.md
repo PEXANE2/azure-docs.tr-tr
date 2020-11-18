@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408949"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698810"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Güvenlik denetimi v2: yedekleme ve kurtarma
 
@@ -36,9 +36,9 @@ Daha yüksek düzeyde koruma için, coğrafi olarak yedekli depolama seçeneğin
 
 - [Çapraz bölge geri yüklemeyi etkinleştirme](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [İlke ve standartlar](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -58,7 +58,7 @@ Yedeklemelerinizin saldırılara karşı korunduğundan emin olun. Bu, gizlilik 
 
 Azure Backup kullanarak şirket içi yedeklemeler için, sağladığınız parola kullanılarak bekleyen şifreleme sağlanır. Normal Azure hizmet yedeklemeleri için, yedekleme verileri Azure platformu tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Yedeklemeleri, müşteri tarafından yönetilen anahtarı kullanarak şifrelemeyi seçebilirsiniz. Bu durumda, anahtar kasasındaki müşterinin yönettiği anahtarın de yedekleme kapsamında olduğundan emin olun. 
 
-Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için Azure Backup, Azure Key Vault veya diğer kaynaklarda rol tabanlı erişim denetimi kullanın. Ayrıca, yedeklemelerin değiştirilemeyeceği veya silinebilmesi için gelişmiş güvenlik özelliklerinin MFA gerektirmesini sağlayabilirsiniz.
+Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için Azure Backup, Azure Key Vault veya diğer kaynaklarda Azure rol tabanlı erişim denetimi kullanın. Ayrıca, yedeklemelerin değiştirilemeyeceği veya silinebilmesi için gelişmiş güvenlik özelliklerinin MFA gerektirmesini sağlayabilirsiniz.
 
 - [Azure Backup güvenlik özelliklerine genel bakış](../../backup/security-overview.md)
 
@@ -68,9 +68,9 @@ Yedeklemeleri ve müşteri tarafından yönetilen anahtarları korumak için Azu
 
 - [Karma yedeklemelerin saldırılara karşı korunmasına yardımcı olacak güvenlik özellikleri](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -90,9 +90,9 @@ Yedeklemeniz düzenli aralıklarla veri geri yükleme işlemini gerçekleştirin
 
 - [Azure 'da Key Vault anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Olay hazırlama](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -108,9 +108,9 @@ Anahtar kaybını engellemek ve kurtarmak için ölçülerde yer aldığından e
 
 - [Key Vault 'da geçici silme ve Temizleme korumasını etkinleştirme](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 

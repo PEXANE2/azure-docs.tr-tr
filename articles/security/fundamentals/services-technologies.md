@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 46b1cbbd620cf2de8d875927f5745e91fcf608c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410054"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700768"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 'da kullanılabilen güvenlik hizmetleri ve teknolojileri
 
@@ -67,7 +67,7 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 |Hizmet|Açıklama|
 |------|--------|
-| [Azure &nbsp; rol &nbsp; tabanlı &nbsp; Access Control](../../role-based-access-control/role-assignments-portal.md)|Kullanıcıların yalnızca kuruluştaki rollerine göre erişmesi gereken kaynaklara erişmesine izin vermek için tasarlanan bir erişim denetimi özelliği.  |
+| [Azure &nbsp; rol tabanlı &nbsp; erişim denetimi](../../role-based-access-control/role-assignments-portal.md)|Kullanıcıların yalnızca kuruluştaki rollerine göre erişmesi gereken kaynaklara erişmesine izin vermek için tasarlanan bir erişim denetimi özelliği.  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Azure 'da çok kiracılı, bulut tabanlı bir dizini ve birden çok kimlik yönetimi hizmetini destekleyen bulut tabanlı bir kimlik doğrulama deposu.  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Azure tabanlı uygulamalar kullanılırken müşterilerin kaydolmasına, oturum açma ve profillerini yönetme konusunda denetim sağlayan bir kimlik yönetimi hizmeti.   |
 | [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)| Active Directory Domain Services bulut tabanlı ve yönetilen bir sürümü. |

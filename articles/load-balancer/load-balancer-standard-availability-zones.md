@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fca6b40f4bd871041d14d119eb44e8366d8562ee
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669180"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700469"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer ve Kullanılabilirlik Bölgeleri
 
@@ -32,7 +32,7 @@ Yük dengeleyici, bileşenlerinden bölge yapılandırmasını devralır:
 * Kurallar
 * Arka uç havuzu tanımı
 
-Kullanılabilirlik alanları bağlamında, bir yük dengeleyici kuralının davranışı ve özellikleri, bölgesel olarak yedekli veya zonal olarak açıklanmaktadır.  Yük dengeleyici bağlamında, bölgesel olarak yedekli her zaman **birden çok bölge** ve ZGen, hizmeti **tek bir bölgeye**ayırma anlamına gelir. Azure Load Balancer, ortak ve dahili iki tür içerir. Her iki yük dengeleyici türü de bölge yedekliliği ve bölgesel dağıtımını destekler.  Her iki yük dengeleyici türü, gerektiğinde trafiği bölgeler arasında yönlendirebilir.
+Kullanılabilirlik alanları bağlamında, bir yük dengeleyici kuralının davranışı ve özellikleri, bölgesel olarak yedekli veya zonal olarak açıklanmaktadır.  Yük dengeleyici bağlamında, bölgesel olarak yedekli her zaman **birden çok bölge** ve ZGen, hizmeti **tek bir bölgeye** ayırma anlamına gelir. Azure Load Balancer, ortak ve dahili iki tür içerir. Her iki yük dengeleyici türü de bölge yedekliliği ve bölgesel dağıtımını destekler.  Her iki yük dengeleyici türü, gerektiğinde trafiği bölgeler arasında yönlendirebilir.
 
 ## <a name="frontend"></a>Ön uç
 
@@ -58,7 +58,7 @@ Tek bir ön uç IP adresi bölge hatasını sürdüren. Ön uç IP, bölge ne ol
 
 ### <a name="zonal"></a>Bölgesel
 
-Tek bir bölge için bir ön uç garantisini seçebilirsiniz ve bu da *Bölgesel ön*ucu olarak bilinir.  Bu senaryo, herhangi bir gelen veya giden akışın bir bölgedeki tek bir bölge tarafından sunulduğunu gösterir.  Ön uç paylaşımlarınız, bölgenin sistem durumuyla birlikte fada.  Veri yolu, garantide olduğu yerde yer alan bölgelerde hatalara göre etkilenmemiştir. Kullanılabilirlik alanı başına bir IP adresi göstermek için, bölgesel ön uçları kullanabilirsiniz.  
+Tek bir bölge için bir ön uç garantisini seçebilirsiniz ve bu da *Bölgesel ön* ucu olarak bilinir.  Bu senaryo, herhangi bir gelen veya giden akışın bir bölgedeki tek bir bölge tarafından sunulduğunu gösterir.  Ön uç paylaşımlarınız, bölgenin sistem durumuyla birlikte fada.  Veri yolu, garantide olduğu yerde yer alan bölgelerde hatalara göre etkilenmemiştir. Kullanılabilirlik alanı başına bir IP adresi göstermek için, bölgesel ön uçları kullanabilirsiniz.  
 
 Ayrıca, her bir bölgedeki yük dengeli uç noktalar için doğrudan bölgesel ön uçları kullanılması desteklenir. Her bölgeyi tek tek izlemek için, bu yapılandırmayı her bölge için yük dengeli uç nokta başına göstermek üzere kullanabilirsiniz. Ortak uç noktalar için, bunları [Traffic Manager](../traffic-manager/traffic-manager-overview.md) gıbı bir DNS Yük Dengeleme ürünüyle tümleştirilebilir ve tek bir DNS adı kullanabilirsiniz.
 
@@ -123,14 +123,14 @@ Uygulamanız için tek bir kritik bileşen yalnızca, kalan bölge (ler) den ba�
 
 - Uygulamanızın iki bileşeni varsa:
 
-    * IP adresi
+    * IP Adresi
     * Yönetilen diske sahip sanal makine
 
 Bunlar bölge 1 ve bölge 2 ' de yapılandırılır. Bölge 1 başarısız olduğunda hizmetiniz devam görmez. Potansiyel olarak tehlikeli bir hata modu oluşturmadığınızı tam olarak anlamadığınız müddetçe, Dilimsiz senaryolarla çapraz bölgeler oluşturmayın. Bu senaryonun esneklik sağlamasına izin verilir.
 
 - Uygulamanızın iki bileşeni varsa:
 
-    * IP adresi
+    * IP Adresi
     * Yönetilen diske sahip sanal makine
 
 Bunlar, bölge yedekli ve bölge 1 olacak şekilde yapılandırılmıştır. Bölge 1 başarısız olmadığı takdirde hizmetiniz bölge 2, bölge 3 veya her ikisi de bölge arızasından kaçınacaktır. Ancak, tüm gözlerinizin ön ucu için ulaşılabilirlik durumunda hizmetinizin sistem durumu hakkında bir neden özelliği kaybedersiniz.  Daha kapsamlı bir sistem durumu ve kapasite modeli geliştirmeyi düşünün.  İçgörüler ve yönetilebilirlik ' i genişletmek için, bölgesel olarak yedekli ve bölgesel kavramlarını birlikte kullanabilirsiniz.
@@ -151,11 +151,11 @@ Hata ile etkilenmeyen bölgelerdeki kaynaklarınız kullanılabilir olacaktır. 
   - Bir bölge başarısız olduğunda, hizmetiniz bu hatayı anladığında durum kaybedilmişse nasıl kurtarılır?
   - Bir bölge döndürüldüğünde, uygulamanız güvenle nasıl yakınsama yapılacağını anlasın mı?
 
-Uygulamanızın hata senaryolarıyla olan dayanıklılığını artırmak için [Azure bulut tasarım modellerini](https://docs.microsoft.com/azure/architecture/patterns/) gözden geçirin.
+Uygulamanızın hata senaryolarıyla olan dayanıklılığını artırmak için [Azure bulut tasarım modellerini](/azure/architecture/patterns/) gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Kullanılabilirlik alanları](../availability-zones/az-overview.md) hakkında daha fazla bilgi edinin
-- [Standart Load Balancer](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin
-- Bir [bölge Içinde VM 'lerin yükünü bir standart Load Balancer kullanarak bir bölgede yük ön uç ile yükleme](load-balancer-standard-public-zonal-cli.md) hakkında bilgi edinin
-- Bölgesel olarak [yedekli bir ön uç ile standart Load Balancer kullanarak sanal makinelerin bölge üzerinden yük dengelenmesi](load-balancer-standard-public-zone-redundant-cli.md) hakkında bilgi edinin
-- Uygulamanızın hata senaryolarıyla olan dayanıklılığını artırmak için [Azure bulut tasarım desenleri](https://docs.microsoft.com/azure/architecture/patterns/) hakkında bilgi edinin.
+- [Standart Load Balancer](./load-balancer-overview.md) hakkında daha fazla bilgi edinin
+- Bir [bölge Içinde VM 'lerin yükünü bir standart Load Balancer kullanarak bir bölgede yük ön uç ile yükleme](./quickstart-load-balancer-standard-public-cli.md) hakkında bilgi edinin
+- Bölgesel olarak [yedekli bir ön uç ile standart Load Balancer kullanarak sanal makinelerin bölge üzerinden yük dengelenmesi](./quickstart-load-balancer-standard-public-cli.md) hakkında bilgi edinin
+- Uygulamanızın hata senaryolarıyla olan dayanıklılığını artırmak için [Azure bulut tasarım desenleri](/azure/architecture/patterns/) hakkında bilgi edinin.

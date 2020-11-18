@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410343"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698775"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure Güvenlik yönetimi ve izlemeye genel bakış
 Bu makalede, Azure 'un Azure Cloud Services ve sanal makinelerin yönetimine ve izlenmesine yardımcı olmak için Azure 'un sağladığı güvenlik özelliklerine ve hizmetlerine genel bir bakış sunulmaktadır.
 
-## <a name="role-based-access-control"></a>Rol Tabanlı Access Control
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
-Role-Based Access Control (RBAC), Azure kaynakları için ayrıntılı erişim yönetimi sağlar. RBAC kullanarak, kullanıcılara yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını verebilirsiniz. RBAC Ayrıca kişilerin kuruluştan ayrıldıklarında, buluttaki kaynaklara erişiminin kaybedildiğinden emin olmanıza da yardımcı olabilir.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları için ayrıntılı erişim yönetimi sağlar. Azure RBAC kullanarak kullanıcılara yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları erişim miktarını verebilirsiniz. Azure RBAC Ayrıca kişilerin kuruluştan ayrıldıklarında buluttaki kaynaklara erişiminin kaybedildiğinden emin olmanıza da yardımcı olabilir.
 
 Daha fazla bilgi edinin:
 
-* [RBAC üzerinde ekip blogu Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Azure RBAC üzerinde ekip blogu Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Kötü amaçlı yazılımdan koruma

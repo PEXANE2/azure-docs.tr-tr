@@ -1,7 +1,7 @@
 ---
-title: Bağlantı Izleyicisi önizlemesi-ARMClient
+title: Bağlantı Izleyicisi oluşturma-ARMClient
 titleSuffix: Azure Network Watcher
-description: ARMClient kullanarak bağlantı Izleyicisi 'ni (Önizleme) oluşturmayı öğrenin.
+description: ARMClient kullanarak bağlantı Izleyicisi oluşturmayı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 5a351e550cac9edcc8ce1c54fbe5c57d012ee607
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447801"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699109"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-armclient"></a>ARMClient kullanarak bağlantı Izleyicisi (Önizleme) oluşturma
+# <a name="create-a-connection-monitor-using-the-armclient"></a>ARMClient kullanarak bağlantı Izleyicisi oluşturma
 
-ARMClient kullanarak kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisi 'ni (Önizleme) oluşturmayı öğrenin. Karma ve Azure bulut dağıtımlarını destekler.
+ARMClient kullanarak kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisi oluşturmayı öğrenin. Karma ve Azure bulut dağıtımlarını destekler.
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 
-Bağlantı Izleyici (Önizleme) bölümünde oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure veya başka bir URL veya IP üzerinde olabilir.
+Bağlantı Izleyicisinde oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure veya başka bir URL veya IP üzerinde olabilir.
 
-Bağlantı Izleyicisi (Önizleme) aşağıdaki varlıkları içerir:
+Bağlantı Izleyicisi aşağıdaki varlıkları içerir:
 
 * **Bağlantı İzleyicisi kaynağı** : bölgeye özgü bir Azure kaynağı. Aşağıdaki varlıkların hepsi bir bağlantı İzleyicisi kaynağının özellikleridir.
 * **Uç nokta** : bağlantı denetimlerine katılan kaynak veya hedef. Uç noktalara örnek olarak Azure VM 'Leri, şirket içi aracılar, URL 'Ler ve IP 'Ler verilebilir.
@@ -359,7 +359,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 * Uç Noktalar
     * ad – her uç nokta için benzersiz ad
-    * RESOURCEID – Azure uç noktaları Için kaynak KIMLIĞI, sanal makineler için Azure Resource Manager kaynak KIMLIĞI anlamına gelir. Azure dışı uç noktalar için kaynak KIMLIĞI, Azure olmayan aracılarla bağlantılı Log Analytics çalışma alanı için Azure Resource Manager kaynak KIMLIĞI anlamına gelir.
+    * RESOURCEID – Azure uç noktaları Için kaynak KIMLIĞI, sanal makineler için Azure Resource Manager kaynak KIMLIĞINE başvurur. Azure dışı uç noktalar için kaynak KIMLIĞI, Azure olmayan aracılara bağlı Log Analytics çalışma alanının Azure Resource Manager kaynak KIMLIĞINE başvurur.
     * Adres: yalnızca kaynak KIMLIĞI belirtilmediğinde veya kaynak KIMLIĞI Log Analytics çalışma alanı ise geçerlidir. Log Analytics kaynak KIMLIĞIYLE birlikte kullanılırsa, bu, izleme için kullanılabilen aracının FQDN 'sine başvurur. Kaynak KIMLIĞI olmadan kullanılırsa bu, herhangi bir genel bitiş noktasının URL veya IP 'SI olabilir.
     * Filtre: Azure dışı uç noktalar Için, Bağlantı İzleyicisi kaynağında izlemek üzere kullanılacak Log Analytics çalışma alanından aracıları seçmek için filtre kullanın. Filtreler ayarlanmamışsa, Log Analytics çalışma alanına ait olan tüm aracılar izleme için kullanılabilir
         * tür – türü "aracı adresi" olarak ayarla

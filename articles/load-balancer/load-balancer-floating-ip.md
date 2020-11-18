@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: e15aab3ebfe82fa97f5716769b5ff9675b4b3dc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637444"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699415"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Kayan IP yapılandırmasını Azure Load Balancer
 
@@ -45,4 +45,4 @@ Kayan IP olmadan Azure, kullanım kolaylığı için geleneksel bir yük dengele
 - [Azure Load Balancer](load-balancer-overview.md)hakkında daha fazla bilgi edinin.
 - [Sistem durumu araştırmaları](load-balancer-custom-probe-overview.md)hakkında bilgi edinin.
 - [Standart Load Balancer tanılama](load-balancer-standard-diagnostics.md)hakkında bilgi edinin.
-- [Ağ güvenlik grupları](../virtual-network/security-overview.md)hakkında daha fazla bilgi edinin.
+- [Ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md)hakkında daha fazla bilgi edinin.

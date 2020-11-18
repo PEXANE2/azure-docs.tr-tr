@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96be79a349478db7d0452cae1ff07ee1c48aaa3
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83744493"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700112"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Doğrulama yönteminiz olarak Microsoft Authenticator uygulamasını ayarlama
 
@@ -45,6 +45,11 @@ Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de p
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Güvenlik bilgileri sayfasından Microsoft Authenticator uygulamasını ayarlama
 
 Kuruluşunuzun ayarlarına bağlı olarak, güvenlik bilgileri yöntemlerinizin biri olarak bir kimlik doğrulama uygulaması kullanabilirsiniz. Microsoft Authenticator uygulamasını kullanmanız gerekmez ve kurulum işlemi sırasında farklı bir uygulama seçebilirsiniz. Ancak, bu makale Microsoft Authenticator uygulamasını kullanır.
+
+>[!Important]
+> 5 farklı cihazlarda veya 5 donanım belirteçlerinde Microsoft Authenticator uygulama kurulumuna sahipseniz, altıncı bir değer Ayarlayamayabilir ve aşağıdaki hata iletisini görebilirsiniz.
+> 
+> **Zaten beş Authenticator uygulamanız veya donanım belirteçleriniz olduğundan Microsoft Authenticator kurulum yapamazsınız. Kimlik doğrulayıcı uygulamalarınızı veya donanım belirteçlerinden birini silmek için lütfen yöneticinize başvurun.**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını ayarlamak için
 
@@ -135,7 +140,7 @@ Kimlik doğrulayıcı uygulamasının, iki öğeli doğrulama kullanarak iş vey
 
     ![Varsayılan oturum açma yöntemini seçin](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
-3. **Onayla**seçeneğini belirleyin.
+3. **Onayla** seçeneğini belirleyin.
 
     Microsoft Authenticator uygulamasında oturum açma değişiklikleri için kullanılan varsayılan yöntem.
 

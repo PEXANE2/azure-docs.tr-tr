@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 526947c4d2db9fd87727fdd60c33bcaa9e75c6ff
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413301"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699874"
 ---
 # <a name="azure-network-security-overview"></a>Azure ağ güvenliğine genel bakış
 
@@ -81,7 +81,7 @@ Daha fazla bilgi edinin:
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC tam zamanında VM erişimi
 
-[Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) VM 'Lerde NSG 'leri yönetebilir ve uygun rol tabanlı erişim denetimi [RBAC](../../role-based-access-control/overview.md) izinleri istediğinde, VM 'ye erişimi kilitler. Kullanıcı başarıyla yetkilendirildiğinde, belirtilen süre boyunca seçilen bağlantı noktalarına erişime izin vermek için NSG 'lerdeki değişiklikler yapar. Süre sona erdiğinde NSG 'ler önceki güvenli durumlarına geri yüklenir.
+[Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) , uygun Azure rol tabanlı erişim denetimine sahip bir kullanıcı tarafından [Azure RBAC](../../role-based-access-control/overview.md) izinleri Istediğinde, sanal makinelerde NSG 'leri yönetebilir ve VM 'ye erişimi kilitler. Kullanıcı başarıyla yetkilendirildiğinde, belirtilen süre boyunca seçilen bağlantı noktalarına erişime izin vermek için NSG 'lerdeki değişiklikler yapar. Süre sona erdiğinde NSG 'ler önceki güvenli durumlarına geri yüklenir.
 
 Daha fazla bilgi edinin:
 
