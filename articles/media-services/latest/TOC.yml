@@ -68,8 +68,8 @@
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma REST
           href: stream-files-tutorial-with-rest.md
-        - name: Media Services ile müşteri tarafından yönetilen anahtarlar
-          href: tutorial-byok.md
+        - name: REST API ile müşteri tarafından yönetilen anahtarlar
+          href: tutorial-byok-postman.md
     - name: CLI
       items:
         - name: Uzaktaki bir dosyayı kodlama ve akış ile aktarma CLI
@@ -80,6 +80,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: Azure portal
       items:
+        - name: Müşteri tarafından yönetilen anahtarlar veya KAG öğreticisi
+          href: tutorial-byok-portal.md
         - name: Azure Log Analytics’te AMS olaylarını depolama
           href: tutorial-events-log-analytics.md
 - name: Örnekler
@@ -102,6 +104,11 @@
         - name: Depolama hesabı
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: Yönetilen kimlikler ve medya hizmetleri
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: Müşteri tarafından yönetilen anahtarlar
+          href: concept-use-customer-managed-keys-byok.md
     - name: Varlıklar
       items:
         - name: Varlıklar
@@ -178,8 +185,6 @@
         - name: Dinamik şifreleme ve anahtar teslimi
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
-        - name: Müşteri tarafından yönetilen anahtarlar
-          href: concept-use-customer-managed-keys-byok.md
         - name: Çoklu DRM sisteminin tasarımı
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
@@ -392,7 +397,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Başlayın
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

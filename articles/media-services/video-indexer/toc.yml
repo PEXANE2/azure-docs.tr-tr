@@ -65,6 +65,8 @@
       href: use-editor-create-project.md
     - name: Uygulamanıza pencere öğeleri ekleme
       href: video-indexer-embed-widgets.md
+    - name: Büyük ölçekte Video Indexer kullanırken dikkate alınması gerekenler
+      href: considerations-when-use-at-scale.md
     - name: Olağanüstü durum kurtarma
       href: video-indexer-disaster-recovery.md
     - name: İçerik modellerini özelleştirme

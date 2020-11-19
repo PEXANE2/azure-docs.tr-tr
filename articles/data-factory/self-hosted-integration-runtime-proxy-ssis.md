@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 11/15/2020
-ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.date: 11/19/2020
+ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659990"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916789"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Data Factory içinde Azure-SSIS IR için otomatik olarak barındırılan bir IR ara sunucu olarak yapılandırma
 
@@ -175,8 +175,10 @@ Azure-SSIS IR çalışan bulut hazırlama görevleri ayrı olarak faturalandır�
 
 1. [Standart/Express özel kurulumları](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)aracılığıyla Azure-SSIS IR SQL Server 2017 hedefleyen özel/3. taraf bileşenlerinizi yükler.
 
-1. Zaten mevcut değilse, şirket içinde barındırılan IR 'de aşağıdaki DTSPath kayıt defteri anahtarlarını oluşturun: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` ve `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` .
- 
+1. Zaten mevcut değilse, şirket içinde barındırılan IR 'de aşağıdaki DTSPath kayıt defteri anahtarlarını oluşturun:
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` ayarla `C:\Program Files\Microsoft SQL Server\140\DTS\`
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` ayarla `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\`
+   
 1. Yukarıdaki DTSPath altındaki şirket içinde barındırılan IR 'ye SQL Server 2017 ' i hedefleyen özel/3. taraf bileşenlerinizi yükleme ve yükleme işleminizin şu şekilde olduğundan emin olun:
 
    1. `<DTSPath>`Zaten mevcut değilse,, `<DTSPath>/Connections` `<DTSPath>/PipelineComponents` ve `<DTSPath>/UpgradeMappings` klasörleri oluşturur.
@@ -185,7 +187,7 @@ Azure-SSIS IR çalışan bulut hazırlama görevleri ayrı olarak faturalandır�
    
    1. Özel/3. taraf bileşen derlemeleriniz tarafından başvurulan tüm derlemeleri genel derleme önbelleği 'ne (GAC) kurar.
 
-Aşağıda, Azure-SSIS IR için proxy olarak hızlı özel kurulum ve şirket içinde barındırılan IR kullanan [üçüncü taraf bileşen örneği](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) verilmiştir.
+İş ortaklarımızın sunduğu [Obald yazılımlarının](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) ve akayıtlarımızda [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir), bir Azure-SSIS IR ara sunucu olarak hızlı özel kurulum ve şirket içinde barındırılan IR 'yi kullanmak için bileşenlerini uyarlayan örnekler aşağıda verilmiştir.
 
 ## <a name="enforce-tls-12"></a>TLS 1.2’yi zorlama
 

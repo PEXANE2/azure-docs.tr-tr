@@ -67,6 +67,12 @@
           href: storage-sync-files-networking-overview.md
         - name: Bulutta katmanlama hakkında
           href: storage-sync-cloud-tiering.md
+    - name: Performans ve ölçeklendirme
+      items:
+        - name: Çok Kanallı SMB performansı
+          href: storage-files-smb-multichannel-performance.md
+        - name: Ölçeklenebilirlik ve performans hedefleri
+          href: storage-files-scale-targets.md
     - name: Yanlışlıkla veri silinmesini engelleme
       href: storage-files-prevent-file-share-deletion.md
     - name: Dosya paylaşımlarını yedekleme
@@ -74,9 +80,7 @@
     - name: Bekleme sırasında şifreleme
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Müşteri tarafından yönetilen anahtarlarla bekleyen verileri şifreleme
-      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Ölçeklenebilirlik ve performans hedefleri
-      href: storage-files-scale-targets.md
+      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Uyumluluk teklifleri
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: SSS
@@ -87,8 +91,6 @@
       items:
         - name: SMB dosya paylaşımı oluşturma
           href: storage-how-to-create-file-share.md
-        - name: Büyük dosya paylaşımına olanak tanıma
-          href: storage-files-how-to-create-large-file-share.md
         - name: Premium dosya paylaşımı oluşturma
           href: storage-how-to-create-premium-fileshare.md
         - name: NFS paylaşımı oluşturma
@@ -231,6 +233,12 @@
               href: storage-files-migration-storsimple-8000.md
             - name: StorSimple 1200 geçiş kılavuzu
               href: storage-files-migration-storsimple-1200.md
+    - name: Performansı geliştirme
+      items:
+        - name: Çok Kanallı SMB’yi etkinleştirme
+          href: storage-files-enable-smb-multichannel.md
+        - name: Büyük dosya paylaşımına olanak tanıma
+          href: storage-files-how-to-create-large-file-share.md
     - name: Geliştirme
       items:
         - name: Bağlantı dizelerini yapılandırma

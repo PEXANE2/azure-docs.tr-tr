@@ -1,135 +1,143 @@
 ---
 title: Azure 'da Red Hat Enterprise Linux görüntülerini yerinde yükseltme
-description: Red Hat Enterprise 7. x görüntülerinden en son 8. x sürümüne yerinde yükseltme gerçekleştirme adımlarını bulun
+description: Red Hat Enterprise 7. x görüntülerinden en son 8. x sürümüne yerinde yükseltme yapmayı öğrenin.
 author: mathapli
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 1160bc43db0dc9ec1714b1766c8cadf09660e291
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 04a83687161c390d86e1a9b40d33f10cdd6a47d5
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844582"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916687"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Yerinde yükseltmeleri Red Hat Enterprise Linux
 
-Bu makalede, Azure 'daki ' Leapp ' yardımcı programını kullanarak Red Hat Enterprise Linux 7 ' den Red Hat Enterprise Linux 8 ' e yerinde yükseltme gerçekleştirme hakkında adım adım yönergeler sağlanmaktadır. Yerinde yükseltme sırasında, var olan RHEL 7 işletim sistemi, RHEL 8 sürümü ile değiştirilmiştir.
+Bu makalede Red Hat Enterprise Linux (RHEL) 7 ' den Red Hat Enterprise Linux 8 ' e yerinde yükseltmenin nasıl yapılacağı hakkında yönergeler sağlanmaktadır. Yönergeler, `leapp` Azure 'daki aracı kullanır. Yerinde yükseltme sırasında, var olan RHEL 7 işletim sistemi RHEL 8 sürümü ile değiştirilmiştir.
 
 >[!Note] 
-> Red Hat Enterprise Linux tekliflerle SQL Server, Azure 'da yerinde yükseltmeyi desteklemez.
+> Red Hat Enterprise Linux SQL Server teklifleri, Azure 'da yerinde yükseltmeleri desteklemez.
 
 ## <a name="what-to-expect-during-the-upgrade"></a>Yükseltme sırasında beklenmeniz gerekenler
-Sistem, yükseltme sırasında birkaç kez yeniden başlatılır ve normal olur. Son yeniden başlatma işlemi, VM 'yi RHEL 8 en son küçük sürümüne yükseltir. 
+Yükseltme sırasında sistem birkaç kez yeniden başlatılır. Son yeniden başlatma, VM 'yi RHEL 8 en son küçük sürümüne yükseltir. 
 
-Yükseltme işlemi 20 dakikadan birkaç saate kadar sürebilir. Bu, VM boyutu ve sistemde yüklü paketlerin sayısı gibi çeşitli faktörlere bağlıdır.
+Yükseltme işlemi 20 dakikadan 2 saate kadar herhangi bir zaman alabilir. Toplam süre, VM boyutu ve sistemde yüklü paketlerin sayısı gibi çeşitli faktörlere bağlıdır.
 
-## <a name="preparations-for-the-upgrade"></a>Yükseltme hazırlıkları
-Yerinde yükseltme, müşterilerin sistemi bir sonraki ana sürüme yükseltmesine olanak tanımak için Red Hat ve Azure 'un resmi olarak önerilmiş yoludur. Yükseltmenin daha önce gerçekleştirilmesi gereken bazı şeyler aşağıda verilmiştir ve göz önüne almanız gerekir. 
+## <a name="preparations"></a>Lıkların
+Red Hat ve Azure, bir sistemi sonraki ana sürüme geçirmeye yönelik yerinde yükseltme kullanılmasını önerir. 
+
+Yükseltmeye başlamadan önce aşağıdaki noktaları göz önünde bulundurun. 
 
 >[!Important] 
-> Lütfen yükseltme işlemini gerçekleştirmeden önce görüntünün bir anlık görüntüsünü alın.
+> Yükseltmeye başlamadan önce görüntünün anlık görüntüsünü alın.
 
->[!NOTE]
-> Bu makaledeki komutların kök hesap kullanılarak çalıştırılması gerekir
+* En son RHEL 7 sürümünü kullandığınızdan emin olun. Şu anda en son sürüm RHEL 7,9 ' dir. Kilitli bir sürüm kullanıyorsanız ve RHEL 7,9 sürümüne yükseltirsiniz, [Bu adımları izleyerek BIR EUS (genişletilmiş güncelleştirme desteği) deposuna geçiş yapın](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
 
-* Şu anda RHEL 7,9 olan en son RHEL 7 sürümünü kullandığınızdan emin olun. Kilitli bir sürüm kullanıyorsanız ve RHEL 7,9 sürümüne yükseltirsiniz, [buradaki adımları kullanarak BIR EUS deposuna geçiş](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock)yapabilirsiniz.
+* Yükseltinizi denetlemek ve başarıyla bitirilip bitirilmeyeceğini görmek için aşağıdaki komutu çalıştırın. Komutun */var/log/liapp/leapp-report.txt* dosyası oluşturması gerekir. Bu dosya, işlemi, neler olduğunu ve yükseltmenin mümkün olup olmadığını açıklar.
 
-* Yükseltmenin nasıl gittiğini ve tamamlanmacağınızı öğrenmek için aşağıdaki komutu çalıştırın. Komut, '/var/log/leapp/leapp-report.txt ' altında, işlemi ve ne yapılması gerektiğini ve yükseltmenin mümkün olup olmadığını açıklayan bir dosya üretmelidir
+    >[!NOTE]
+    > Bu makaledeki komutları çalıştırmak için kök hesabını kullanın. 
+
     ```bash
     leapp preupgrade --no-rhsm
     ```
-* Yükseltme işlemi sırasında izlemeye izin verdiğinden, seri konsolunun işlevsel olduğundan emin olun.
+* Seri konsolunun işlevsel olduğundan emin olun. Yükseltme işlemi sırasında bu konsolu izlemek için kullanacaksınız.
 
-* ' De SSH kök erişimini etkinleştir `/etc/ssh/sshd_config`
-    1. `/etc/ssh/sshd_config` dosyasını açın
-    1. ' #PermitRootLogin Yes ' araması yapın
-    1. Açıklama eklemek için ' # ' öğesini kaldır
+* */Etc/ssh/sshd_config*'de SSH kök erişimini etkinleştir:
+    1. */Etc/ssh/sshd_config* dosyasını açın.
+    1. `#PermitRootLogin yes` arayın.
+    1. Dizenin açıklamasını kaldırmak için sayı işaretini ( `#` ) kaldırın.
 
-## <a name="steps-for-performing-the-upgrade"></a>Yükseltmeyi gerçekleştirmeye yönelik adımlar
+## <a name="upgrade-steps"></a>Yükseltme adımları
 
-Bu adımları dikkatle gerçekleştirin. Üretim örneklerinden önce bir test makinesinde yükseltmeyi denemek kesinlikle önerilir.
+Bu adımları dikkatle izleyin. Üretim örneklerinde denemeden önce bir test makinesinde yükseltmeyi denemenizi öneririz.
 
-1. En son istemci paketlerini getirmek için bir yıum güncelleştirmesi gerçekleştirin.
+1. `yum`En son istemci paketlerini getirmek için bir güncelleştirme yapın.
     ```bash
     yum update -y
     ```
 
-1. Liapp-Client-Package ' i yükler.
+1. Yüklemesini yapın `leapp-client-package` .
     ```bash
     yum install leapp-rhui-azure
     ```
     
-1. Leapp-Data. tar. gz dosyasını repomap.csv ve pes-events.jsile birlikte kullanarak, [RedHat portalında](https://access.redhat.com/articles/3664871)sunun ve bunları ayıklayın. 
-    1. Dosyayı indirin.
-    1. Aşağıdaki komutu kullanarak içeriği ayıklayın ve dosyayı kaldırın:
+1. [Red Hat portalında](https://access.redhat.com/articles/3664871) *repomap.csv* ve *pes-events.js* içeren *leapp-Data. tar. gz* dosyasını edinin. *Leapp-Data. tar. gz* dosyasını ayıklayın.
+    1. *Leapp-Data. tar. gz* dosyasını indirin.
+    1. İçeriği ayıklayın ve dosyayı kaldırın. Aşağıdaki komutu kullanın:
     ```bash
     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
 
-1. ' Liapp ' için ' yanıtlar ' dosyası ekleyin.
+1. İçin bir `answers` dosya ekleyin `leapp` .
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
     ``` 
 
-1. ' Leapp ' yükseltmesini gerçekleştirin.
+1. Yükseltmeyi başlatın.
     ```bash
     leapp upgrade --no-rhsm
     ```
-1.  `leapp upgrade`Komut başarıyla tamamlandıktan sonra, işlemi gerçekleştirmek için sistemi el ile yeniden başlatın. Sistem, devre dışı bırakılacak şekilde birkaç kez yeniden başlatılacak. Seri konsolunu kullanarak işlemi izleyin.
+1.  `leapp upgrade`Komut başarıyla tamamlandıktan sonra, işlemi gerçekleştirmek için sistemi el ile yeniden başlatın. Sistem birkaç kez yeniden başlatıldığı için kullanılamaz. Seri konsolunu kullanarak işlemi izleyin.
 
 1.  Yükseltmenin başarıyla tamamlandığını doğrulayın.
     ```bash
     uname -a && cat /etc/redhat-release
     ```
 
-1. Yükseltme tamamlandıktan sonra kök SSH erişimini kaldırın.
-    1. `/etc/ssh/sshd_config` dosyasını açın
-    1. ' #PermitRootLogin Yes ' araması yapın
-    1. Açıklamaya ' # ' ekleyin
+1. Yükseltme tamamlandığında kök SSH erişimini kaldırın:
+    1. */Etc/ssh/sshd_config* dosyasını açın.
+    1. `#PermitRootLogin yes` arayın.
+    1. Dizeyi açıklamaya yönelik bir sayı işareti ( `#` ) ekleyin.
 
-1. Değişikliklerin etkili olması için SSHD hizmetini yeniden başlatın
+1. Değişiklikleri uygulamak için SSHD hizmetini yeniden başlatın.
     ```bash
     systemctl restart sshd
     ```
+## <a name="common-problems"></a>Sık karşılaşılan sorunlar
 
-## <a name="common-issues"></a>Genel Sorunlar
-Bunlar `leapp preupgrade` veya işlemin başarısız olduğu bazı yaygın örneklerden bazılarıdır `leapp upgrade` .
+Aşağıdaki hatalar genellikle `leapp preupgrade` işlem başarısız olduğunda ya da işlem başarısız olduğunda meydana gelir `leapp upgrade` :
 
-**Hata: aşağıdaki devre dışı eklenti desenleri için eşleşme bulunamadı**
-```plaintext
-STDERR:
-No matches found for the following disabled plugin patterns: subscription-manager
-Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
-```
-**Çözüm**\
-Dosyayı düzenleyerek `/etc/yum/pluginconf.d/subscription-manager.conf` ve etkin olarak ' ye değiştirerek abonelik Yöneticisi eklentisini devre dışı bırakın `enabled=0` .
+* **Hata**: aşağıdaki devre dışı eklenti desenleri için eşleşme bulunamadı.
 
-Bu, PAYG VM 'Leri için kullanılmayan abonelik Yöneticisi 'nin etkinleştirilme eklentisine neden olur.
+    ```plaintext
+    STDERR:
+    No matches found for the following disabled plugin patterns: subscription-manager
+    Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+    ```
 
-**Hata: kök kullanılarak uzaktan oturum açmada olası sorunlar** `leapp preupgrade` Şu hatayla başarısız olabilir:
-```structured-text
-============================================================
-                     UPGRADE INHIBITED
-============================================================
+    **Çözüm**: Abonelik Yöneticisi eklentisini devre dışı bırakın. */Etc/yum/pluginconf.d/Subscription-Manager.conf* dosyasını düzenleyerek ve olarak değiştirerek devre dışı bırakın `enabled` `enabled=0` .
 
-Upgrade has been inhibited due to the following problems:
-    1. Inhibitor: Possible problems with remote login using root account
-Consult the pre-upgrade report for details and possible remediation.
+    Bu hata, `yum` etkin olan abonelik Yöneticisi eklentisi VM 'ler için kullanılmazsa oluşur `PAYG` .
 
-============================================================
-                     UPGRADE INHIBITED
-============================================================
-```
-**Çözüm**\
-' De kök erişimi etkinleştirin `/etc/sshd_config` .
-Bunun nedeni, `/etc/sshd_config` "[yükseltme hazırlıkları](#preparations-for-the-upgrade)" bölümünde olduğu gibi kök SSH erişiminin etkinleştirilmemesinin nedeni. 
+* **Hata**: kök kullanılarak uzaktan oturum açmada olası sorunlar.
+
+    Başarısız olduğunda şu hatayla karşılaşabilirsiniz `leapp preupgrade` :
+
+    ```structured-text
+    ============================================================
+                         UPGRADE INHIBITED
+    ============================================================
+    
+    Upgrade has been inhibited due to the following problems:
+        1. Inhibitor: Possible problems with remote login using root account
+    Consult the pre-upgrade report for details and possible remediation.
+    
+    ============================================================
+                         UPGRADE INHIBITED
+    ============================================================
+    ```
+    **Çözüm**: */etc/sshd_config* içinde kök erişimi etkinleştirin.
+
+    Bu hata, */etc/sshd_config* IÇINDE kök SSH erişimi etkinleştirilmediğinde meydana gelir. Daha fazla bilgi için bu makaledeki [hazırlıklar](#preparations) bölümüne bakın. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure 'Da Red Hat görüntüleri](./redhat-images.md)hakkında daha fazla bilgi edinin.
 * [Red Hat güncelleştirme altyapısı](./redhat-rhui.md)hakkında daha fazla bilgi edinin.
 * [RHEL BYOS teklifi](./byos.md)hakkında daha fazla bilgi edinin.
-* Red Hat yerinde yükseltme işlemleriyle ilgili bilgiler Red Hat belgelerinde bulunabilir ve [RHEL 7 ' den RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/upgrading_from_rhel_7_to_rhel_8/index) ' e yükseltilir.
-* Tüm RHEL sürümleri için Red Hat destek ilkeleriyle ilgili bilgiler [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasında bulunabilir.
+* Red Hat yerinde yükseltme işlemi hakkında daha fazla bilgi edinmek için Red Hat belgelerindeki [RHEL 7 ' den RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/upgrading_from_rhel_7_to_rhel_8/index) ' e yükseltme konusuna bakın.
+* Tüm RHEL sürümleri için Red Hat destek ilkeleri hakkında daha fazla bilgi edinmek için Red Hat belgelerindeki [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) ' ne bakın.

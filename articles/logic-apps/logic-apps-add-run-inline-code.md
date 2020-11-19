@@ -5,29 +5,33 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 11/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f339ae4ff1ea90929ce7811efe002f5860f7b47d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 589420d96a3a6dfcc1c17a1b204765022b1ce412
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269344"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916653"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps içinde satır içi kod kullanarak kod parçacıkları ekleme ve çalıştırma
 
 Mantıksal uygulamanızın içinde kod parçası çalıştırmak istediğinizde, yerleşik **satır Içi kod** eylemini mantıksal uygulamanızın iş akışına bir adım olarak ekleyebilirsiniz. Bu eylem, bu senaryoya uyan kodu çalıştırmak istediğinizde en iyi şekilde çalışır:
 
 * JavaScript 'te çalışır. Yakında daha fazla dil geliyor.
+
 * Beş saniye veya daha kısa bir süre içinde çalışmayı sonlandırır.
+
 * Boyutu 50 MB 'a kadar olan verileri işler.
+
 * Henüz desteklenmeyen [ **değişken** eylemlerle](../logic-apps/logic-apps-create-variables-store-values.md)çalışmayı gerektirmez.
-* Node.js sürüm 8.11.1 kullanır. Daha fazla bilgi için bkz. [Standart yerleşik nesneler](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+
+* Node.js sürüm 8.11.1 kullanır. Daha fazla bilgi için bkz. [Standart yerleşik nesneler](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
 
   > [!NOTE]
   > `require()`İşlev, JavaScript çalıştırmak Için **satır içi kod** eylemi tarafından desteklenmiyor.
 
-Bu eylem, kod parçacığını çalıştırır ve mantıksal uygulamanızdaki sonraki eylemlerde kullanabileceğiniz **Result**adlı bir belirteç olarak bu kod parçacığındaki çıktıyı döndürür. Kodunuz için bir işlev oluşturmak istediğiniz diğer senaryolar için, mantıksal uygulamanızda [bir Azure işlevi oluşturmayı ve çağırmayı](../logic-apps/logic-apps-azure-functions.md) deneyin.
+Bu eylem, kod parçacığını çalıştırır ve mantıksal uygulamanızdaki sonraki eylemlerde kullanabileceğiniz **Result** adlı bir belirteç olarak bu kod parçacığındaki çıktıyı döndürür. Kodunuz için bir işlev oluşturmak istediğiniz diğer senaryolar için, mantıksal uygulamanızda [bir Azure işlevi oluşturmayı ve çağırmayı](../logic-apps/logic-apps-azure-functions.md) deneyin.
 
 Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-posta geldiğinde tetiklenir. Kod parçacığı, e-posta gövdesinde görünen tüm e-posta adreslerini ayıklar ve döndürür.
 
@@ -41,7 +45,7 @@ Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-p
 
    Bu konudaki örnek mantık uygulaması bu Office 365 Outlook tetikleyicisini kullanır: **Yeni bir e-posta geldiğinde**
 
-* Mantıksal uygulamanıza bağlı bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* Mantıksal uygulamanıza bağlı bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) . Tümleştirme hesabı oluşturmak veya kullanmak istemiyorsanız, yeni **mantıksal uygulama (Önizleme)** kaynak türünü veya Visual Studio Code yeni [Azure Logic Apps önizleme uzantısını](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)kullanarak Azure Portal bir mantıksal uygulama oluşturmayı deneyin.
 
   > [!NOTE]
   > Kullanım örneği veya senaryonuz için uygun bir tümleştirme hesabı kullandığınızdan emin olun. Örneğin, [ücretsiz katman](../logic-apps/logic-apps-pricing.md#integration-accounts) tümleştirme hesapları yalnızca araştırmacı senaryolar ve iş yükleri için, üretim senaryolarında değil, kullanım ve verimlilik açısından sınırlı ve hizmet düzeyi SÖZLEŞMESI (SLA) tarafından desteklenmemektedir. Diğer katmanlar maliyetlere tabi olur, ancak SLA desteğini içerir, daha fazla verimlilik sunar ve daha yüksek sınırlara sahiptir. Tümleştirme hesabı [katmanları](../logic-apps/logic-apps-pricing.md#integration-accounts), [fiyatlandırma](https://azure.microsoft.com/pricing/details/logic-apps/)ve [sınırlamalar](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)hakkında daha fazla bilgi edinin.
@@ -60,7 +64,7 @@ Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-p
 
    ![Yeni adım Ekle](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "satır içi kod" yazın. Eylemler listesinden şu eylemi seçin: **JavaScript kodunu Yürüt**
+1. **Eylem seçin** altında, arama kutusuna filtreniz olarak "satır içi kod" yazın. Eylemler listesinden şu eylemi seçin: **JavaScript kodunu Yürüt**
 
    !["JavaScript kodunu Yürüt" i seçin](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
@@ -68,13 +72,13 @@ Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-p
 
    ![Varsayılan örnek kodlu satır içi kod eylemi](./media/logic-apps-add-run-inline-code/inline-code-action-default.png)
 
-1. **Kod** kutusunda, örnek kodu silin ve çalıştırmak istediğiniz kodu girin. Yöntem imzasını tanımlamadan, bir yöntemin içine yerleştirdiğiniz kodu yazın. 
+1. **Kod** kutusunda, örnek kodu silin ve çalıştırmak istediğiniz kodu girin. Yöntem imzasını tanımlamadan, bir yöntemin içine yerleştirdiğiniz kodu yazın.
 
    Tanınan bir anahtar sözcük yazdığınızda, otomatik tamamlama listesi görüntülenir, böylece kullanılabilir anahtar sözcüklerden seçim yapabilirsiniz, örneğin:
 
    ![Anahtar sözcük otomatik tamamlama listesi](./media/logic-apps-add-run-inline-code/auto-complete.png)
 
-   Bu örnek kod parçacığı ilk olarak, giriş metninde eşleştirilecek bir model belirten *normal ifade*depolayan bir değişken oluşturur. Daha sonra kod, tetikleyiciden e-posta gövdesi verilerini depolayan bir değişken oluşturur.
+   Bu örnek kod parçacığı ilk olarak, giriş metninde eşleştirilecek bir model belirten *normal ifade* depolayan bir değişken oluşturur. Daha sonra kod, tetikleyiciden e-posta gövdesi verilerini depolayan bir değişken oluşturur.
 
    ![Değişken oluşturma](./media/logic-apps-add-run-inline-code/save-email-body-variable.png)
 
@@ -84,8 +88,7 @@ Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-p
 
    ![Sonuç seçin](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   Kod kutusunda, **kod** parçacığında, salt okunurdur `workflowContext` nesnesini giriş olarak kullanabilirsiniz. Bu nesne, kodunuzu tetikleyiciden gelen sonuçlara ve iş akışınızdan önceki eylemlere erişim sağlayan alt özellikler içerir.
-   Daha fazla bilgi için bu konunun ilerleyen kısımlarında bulunan bu bölüme bakın: [başvuru tetikleyicisi ve eylem sonuçları kodunuzda oluşur](#workflowcontext).
+   Kod kutusunda, **kod** parçacığında, salt okunurdur `workflowContext` nesnesini giriş olarak kullanabilirsiniz. Bu nesne, kodunuzu tetikleyiciden gelen sonuçlara ve iş akışınızdan önceki eylemlere erişim sağlayan alt özellikler içerir. Daha fazla bilgi için bu konunun ilerleyen kısımlarında bulunan bu bölüme bakın: [başvuru tetikleyicisi ve eylem sonuçları kodunuzda oluşur](#workflowcontext).
 
    > [!NOTE]
    >
@@ -97,8 +100,7 @@ Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-p
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   Satır içi kod eylemi bir ifade gerektirmez `return` , ancak bir `return` deyimin sonuçları sonraki eylemlerde **sonuç** belirteci aracılığıyla başvuru için kullanılabilir. 
-   Örneğin, kod parçacığı, `match()` normal ifadeye karşılık gelen e-posta gövdesinde eşleşmeleri bulan işlevi çağırarak sonucu döndürür. **Oluşturma** eylemi, satır içi kod eyleminin sonuçlarına başvurmak için **sonuç** belirtecini kullanır ve tek bir sonuç oluşturur.
+   Satır içi kod eylemi bir ifade gerektirmez `return` , ancak bir `return` deyimin sonuçları sonraki eylemlerde **sonuç** belirteci aracılığıyla başvuru için kullanılabilir. Örneğin, kod parçacığı, `match()` normal ifadeye karşılık gelen e-posta gövdesinde eşleşmeleri bulan işlevi çağırarak sonucu döndürür. **Oluşturma** eylemi, satır içi kod eyleminin sonuçlarına başvurmak için **sonuç** belirtecini kullanır ve tek bir sonuç oluşturur.
 
    ![Tamamlanmış mantıksal uygulama](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -129,7 +131,7 @@ Nesnesi,, `workflowContext` ve alt özellikleri içeren bu yapıya `actions` sah
 
 Bu tablo, bu alt özellikler hakkında daha fazla bilgi içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |----------|------|-------|
 | `actions` | Nesne koleksiyonu | Kod parçacığınızdan önce çalışan eylemlerden elde edilen sonuç nesneleri. Her bir nesne, anahtarın bir eylemin adı olduğu ve değeri ile [eylem () işlevinin](../logic-apps/workflow-definition-language-functions-reference.md#actions) çağrılmasının eşdeğeri olan *anahtar-değer* çiftine sahiptir `@actions('<action-name>')` . Eylemin adı, temel alınan iş akışı tanımında kullanılan aynı eylem adını kullanır. Bu, eylem adındaki boşluklar ("") alt çizgi (_) ile değiştirir. Bu nesne, geçerli iş akışı örneğinden çalıştırılan eylem özelliği değerlerine erişim sağlar. |
 | `trigger` | Nesne | Tetikleyiciden elde edilen sonuç nesnesi ve [Trigger () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#trigger)çağırma ile eşdeğerdir. Bu nesne, geçerli iş akışı örneği çalıştırağından tetikleme özelliği değerlerine erişim sağlar. |

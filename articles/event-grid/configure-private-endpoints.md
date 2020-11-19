@@ -2,14 +2,14 @@
 title: Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
 description: Bu makalede, Azure Event Grid konular veya etki alanı için özel uç noktaların nasıl yapılandırılacağı açıklanır.
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8e0cfc0a850ae15ea6d03ff6ca8b90003adbfc9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324153"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916984"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
 [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, konu veya etki alanınız için VNet adres alanından bir IP adresi kullanır. Daha fazla kavramsal bilgi için bkz. [ağ güvenliği](network-security.md).
@@ -20,7 +20,7 @@ Bu makalede, konular veya etki alanları için özel uç noktaların nasıl yap�
 Bu bölümde, bir konu veya etki alanı için özel bir uç nokta oluşturmak üzere Azure portal nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar genellikle konular içindir. **Etki alanları**için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar genellikle konular içindir. **Etki alanları** için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve konu veya etki alanına gidin.
 2. Konu sayfanızın **ağ** sekmesine geçin. Araç çubuğunda **+ Özel uç nokta** ' ı seçin.
@@ -37,21 +37,21 @@ Bu bölümde, bir konu veya etki alanı için özel bir uç nokta oluşturmak ü
 3. **Kaynak** sayfasında, aşağıdaki adımları izleyin: 
     1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin. Bu örnek, dizininizde bir Azure kaynağına nasıl bağlanılacağını gösterir. 
         1. **Konunun/etki alanının** bulunduğu **Azure aboneliğini** seçin. 
-        1. **Kaynak türü**Için, **kaynak türü**Için **Microsoft. Eventgrid/konular** veya **Microsoft. eventgrid/Domains** ' i seçin.
-        2. **Kaynak**için, açılan listeden bir konu/etki alanı seçin. 
+        1. **Kaynak türü** Için, **kaynak türü** Için **Microsoft. Eventgrid/konular** veya **Microsoft. eventgrid/Domains** ' i seçin.
+        2. **Kaynak** için, açılan listeden bir konu/etki alanı seçin. 
         3. **Hedef alt kaynağın** **Konu** veya **etki alanı** olarak ayarlandığını onaylayın (seçtiğiniz kaynak türüne göre).    
         4. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
 
             !["Özel uç nokta kaynağı oluşturma" sayfasını gösteren ekran görüntüsü.](./media/configure-private-endpoints/resource-page.png)
     2. Kaynak **kimliği veya diğer ad kullanarak bir kaynağa Bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
         1. Kaynağın KIMLIĞINI girin. Örneğin: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
-        2. **Kaynak**için **konu başlığını** veya **etki alanını**girin. 
+        2. **Kaynak** için **konu başlığını** veya **etki alanını** girin. 
         3. seçim İstek iletisi ekleyin. 
         4. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
 
             ![Özel uç nokta-kaynak sayfası](./media/configure-private-endpoints/connect-azure-resource-id.png)
 4. **Yapılandırma** sayfasında, bir sanal ağda özel uç noktayı dağıtmak istediğiniz alt ağı seçersiniz. 
-    1. Bir **sanal ağ**seçin. Yalnızca şu anda seçili olan abonelikte ve konumda bulunan sanal ağlar açılan listede listelenir. 
+    1. Bir **sanal ağ** seçin. Yalnızca şu anda seçili olan abonelikte ve konumda bulunan sanal ağlar açılan listede listelenir. 
     2. Seçtiğiniz sanal ağda bir **alt ağ** seçin. 
     3. Sayfanın alt kısmındaki **İleri: etiketler >** düğmesini seçin. 
 
@@ -79,7 +79,7 @@ Dört sağlama durumu vardır:
 Aşağıdaki bölümlerde, özel bir uç nokta bağlantısını onaylama veya reddetme işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Arama çubuğuna **Event Grid konuları** ' nı veya **Event Grid etki alanlarını**yazın.
+1. Arama çubuğuna **Event Grid konuları** ' nı veya **Event Grid etki alanlarını** yazın.
 1. Yönetmek istediğiniz **konuyu** veya **etki alanını** seçin.
 1. **Ağ** sekmesini seçin.
 1. Bekleyen herhangi bir bağlantı varsa, sağlama durumunda **bekliyor** ile listelenmiş bir bağlantı görürsünüz. 
@@ -88,7 +88,7 @@ Aşağıdaki bölümlerde, özel bir uç nokta bağlantısını onaylama veya re
 Bekleyen durumunda olan özel bir uç noktayı onaylayabilirsiniz. Onaylamak için aşağıdaki adımları izleyin: 
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar genellikle konular içindir. **Etki alanlarının**özel uç noktalarını onaylamak için de benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar genellikle konular içindir. **Etki alanlarının** özel uç noktalarını onaylamak için de benzer adımları kullanabilirsiniz. 
 
 1. Onaylamak istediğiniz **Özel uç noktayı** seçin ve araç çubuğunda **Onayla** ' yı seçin.
 
@@ -96,7 +96,7 @@ Bekleyen durumunda olan özel bir uç noktayı onaylayabilirsiniz. Onaylamak iç
 1. **Bağlantıyı Onayla** iletişim kutusunda bir açıklama girin (isteğe bağlı) ve **Evet**' i seçin. 
 
     ![Özel uç nokta-Onayla](./media/configure-private-endpoints/approve.png)
-1. Uç noktanın durumunu **Onaylandı**olarak görtığınızdan emin olun. 
+1. Uç noktanın durumunu **Onaylandı** olarak görtığınızdan emin olun. 
 
     ![Özel uç nokta-onaylanan durum](./media/configure-private-endpoints/approved-status.png)
 
@@ -104,15 +104,15 @@ Bekleyen durumunda olan özel bir uç noktayı onaylayabilirsiniz. Onaylamak iç
 Bekleyen durumunda veya onaylanan durumunda olan özel bir uç noktayı reddedebilirsiniz. Reddetmek için şu adımları izleyin: 
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**için özel uç noktaları reddetmek üzere benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** için özel uç noktaları reddetmek üzere benzer adımları kullanabilirsiniz. 
 
 1. Reddetmek istediğiniz **Özel uç noktayı** seçin ve araç çubuğunda **Reddet** ' i seçin.
 
-    !["Ağ-özel uç nokta bağlantıları (Önizleme)" öğesini "Reddet" seçiliyken gösteren ekran görüntüsü.](./media/configure-private-endpoints/reject-button.png)
+    !["Ağ-özel uç nokta bağlantıları" nı "Reddet" seçiliyken gösteren ekran görüntüsü.](./media/configure-private-endpoints/reject-button.png)
 1. **Bağlantıyı Reddet** iletişim kutusunda bir açıklama girin (isteğe bağlı) ve **Evet**' i seçin. 
 
     ![Özel uç nokta-Reddet](./media/configure-private-endpoints/reject.png)
-1. Uç noktanın durumunu **reddedildi**olarak görtiğinizi onaylayın. 
+1. Uç noktanın durumunu **reddedildi** olarak görtiğinizi onaylayın. 
 
     ![Özel uç nokta-reddedildi durumu](./media/configure-private-endpoints/rejected-status.png)
 
@@ -121,7 +121,7 @@ Bekleyen durumunda veya onaylanan durumunda olan özel bir uç noktayı reddedeb
 
 
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
-Özel bir uç nokta oluşturmak için, aşağıdaki örnekte gösterildiği gibi [az Network Private-ENDPOINT Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) metodunu kullanın:
+Özel bir uç nokta oluşturmak için, aşağıdaki örnekte gösterildiği gibi [az Network Private-ENDPOINT Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) metodunu kullanın:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -135,19 +135,19 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-Örnekte kullanılan parametrelerin açıklamaları için, [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)için belgeler bölümüne bakın. Bu örnekte birkaç noktaya göz önünde bulunmaktadır: 
+Örnekte kullanılan parametrelerin açıklamaları için, [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create)için belgeler bölümüne bakın. Bu örnekte birkaç noktaya göz önünde bulunmaktadır: 
 
-- İçin `private-connection-resource-id` , **konunun** veya **etki alanının**kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
+- İçin `private-connection-resource-id` , **konunun** veya **etki alanının** kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
 - için `group-ids` , `topic` veya belirtin `domain` . Yukarıdaki örnekte `topic` kullanılır. 
 
-Özel bir uç noktayı silmek için, aşağıdaki örnekte gösterildiği gibi [az Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metodunu kullanın:
+Özel bir uç noktayı silmek için, aşağıdaki örnekte gösterildiği gibi [az Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) metodunu kullanın:
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
 ```
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
 
 
@@ -165,7 +165,7 @@ az extension add -n eventgrid
 ```
 
 ### <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
-Özel bir uç nokta oluşturmak için, aşağıdaki örnekte gösterildiği gibi [az Network Private-ENDPOINT Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) metodunu kullanın:
+Özel bir uç nokta oluşturmak için, aşağıdaki örnekte gösterildiği gibi [az Network Private-ENDPOINT Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) metodunu kullanın:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -179,19 +179,19 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-Örnekte kullanılan parametrelerin açıklamaları için, [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)için belgeler bölümüne bakın. Bu örnekte birkaç noktaya göz önünde bulunmaktadır: 
+Örnekte kullanılan parametrelerin açıklamaları için, [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create)için belgeler bölümüne bakın. Bu örnekte birkaç noktaya göz önünde bulunmaktadır: 
 
-- İçin `private-connection-resource-id` , **konunun** veya **etki alanının**kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
+- İçin `private-connection-resource-id` , **konunun** veya **etki alanının** kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
 - için `group-ids` , `topic` veya belirtin `domain` . Yukarıdaki örnekte `topic` kullanılır. 
 
-Özel bir uç noktayı silmek için, aşağıdaki örnekte gösterildiği gibi [az Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metodunu kullanın:
+Özel bir uç noktayı silmek için, aşağıdaki örnekte gösterildiği gibi [az Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) metodunu kullanın:
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
 ```
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
 #### <a name="sample-script"></a>Örnek betik
 Aşağıdaki Azure kaynaklarını oluşturan örnek bir betik aşağıda verilmiştir:
@@ -311,7 +311,7 @@ az eventgrid topic update \
 Bu bölüm, PowerShell kullanarak bir konu veya etki alanı için özel bir uç nokta oluşturmayı gösterir. 
 
 ### <a name="prerequisite"></a>Önkoşul
-[Nasıl yapılır: Azure AD uygulaması ve hizmet sorumlusu oluşturmak için,](../active-directory/develop/howto-create-service-principal-portal.md) bir Azure Active Directory uygulaması oluşturmak ve **Dizin (kiracı) kimliği**, **uygulama (istemci) kimliği**ve **uygulama (istemci) gizliliğine**ilişkin değerleri aramak için, nasıl yapılır: portalı kullanma konusundaki yönergeleri izleyin. 
+[Nasıl yapılır: Azure AD uygulaması ve hizmet sorumlusu oluşturmak için,](../active-directory/develop/howto-create-service-principal-portal.md) bir Azure Active Directory uygulaması oluşturmak ve **Dizin (kiracı) kimliği**, **uygulama (istemci) kimliği** ve **uygulama (istemci) gizliliğine** ilişkin değerleri aramak için, nasıl yapılır: portalı kullanma konusundaki yönergeleri izleyin. 
 
 ### <a name="prepare-token-and-headers-for-rest-api-calls"></a>REST API çağrıları için belirteci ve üstbilgileri hazırlama 
 REST API çağrılar ve yetkilendirme ve diğer üst bilgi bilgileriyle kullanılacak bir kimlik doğrulama belirteci almak için aşağıdaki önkoşul komutlarını çalıştırın. 
@@ -358,7 +358,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 ### <a name="create-an-event-grid-topic-with-a-private-endpoint"></a>Özel bir uç nokta ile bir olay Kılavuzu konusu oluşturma
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** için özel uç noktalar oluşturmak üzere benzer adımları kullanabilirsiniz. 
 
 
 ```azurepowershell-interactive
@@ -438,7 +438,7 @@ Uç noktanın oluşturulduğunu doğruladıktan sonra, aşağıdakine benzer bir
 Aşağıdaki örnek PowerShell kod parçacığında özel bir uç noktanın nasıl onaylanacağı gösterilmektedir. 
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar konular içindir. **Etki alanlarının**özel uç noktalarını onaylamak için de benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar konular içindir. **Etki alanlarının** özel uç noktalarını onaylamak için de benzer adımları kullanabilirsiniz. 
 
 ```azurepowershell-interactive
 $approvedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"="approved";"description"="connection approved";"actionsRequired"="none"}}} | ConvertTo-Json
@@ -460,7 +460,7 @@ Invoke-RestMethod -Method 'Get'  `
 Aşağıdaki örnek, PowerShell kullanarak özel bir uç noktanın nasıl reddedileceği gösterilmektedir. Önceki GET komutunun sonucundan özel uç nokta için GUID 'ı alabilirsiniz. 
 
 > [!NOTE]
-> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları**için özel uç noktaları reddetmek üzere benzer adımları kullanabilirsiniz. 
+> Bu bölümde gösterilen adımlar konular içindir. **Etki alanları** için özel uç noktaları reddetmek üzere benzer adımları kullanabilirsiniz. 
 
 
 ```azurepowershell-interactive

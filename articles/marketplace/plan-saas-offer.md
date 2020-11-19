@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5a646f7f42a2af8dcf15f7b7b2cd700e159fe88d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734404"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917554"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -104,7 +104,26 @@ Teklif oluşturma sırasında veya sonrasında bir CRM bağlantısını dilediğ
 
 ## <a name="selecting-an-online-store"></a>Çevrimiçi mağaza seçme
 
-SaaS teklifini yayımladığınızda, Microsoft AppSource, Azure Marketi veya her ikisinde de listelenir. Her çevrimiçi mağaza, benzersiz müşteri gereksinimlerine hizmet eder. AppSource iş çözümleri içindir ve Azure Marketi BT çözümleri içindir. Teklif türü, Transact özellikleri ve kategorileriniz, teklifinizin nerede yayımlanacağını belirleyecektir. Kategoriler ve alt kategoriler, çözüm türüne göre her bir çevrimiçi mağazaya eşlenir. Çevrimiçi mağazaların desteklediği seçenekleri listeleme hakkında ayrıntılı bilgi için bkz. [çevrimiçi mağazaya göre listeleme ve fiyatlandırma seçenekleri](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). Kategoriler ve alt kategoriler hakkında daha fazla bilgi için bkz. [ticari Market 'Teki Kategoriler ve alt kategoriler](categories.md).
+SaaS teklifini yayımladığınızda, Microsoft AppSource, Azure Marketi veya her ikisinde de listelenir. Her çevrimiçi mağaza, benzersiz müşteri gereksinimlerine hizmet eder. AppSource iş çözümleri içindir ve Azure Marketi BT çözümleri içindir. Teklif türü, Transact özellikleri ve kategorileriniz, teklifinizin nerede yayımlanacağını belirleyecektir. Kategoriler ve alt kategoriler, çözüm türüne göre her bir çevrimiçi mağazaya eşlenir. 
+
+SaaS teklifiniz hem BT çözümü (Azure Marketi) hem *de* bir iş çözümü (appsource) ise, her çevrimiçi mağaza için geçerli bir kategori ve alt kategori seçin. Her iki çevrimiçi mağaza için yayımlanan teklifler, BT çözümü *ve* iş çözümü olarak bir değer teklifi içermelidir.
+
+> [!IMPORTANT]
+> [Tarifeli faturalandırma](partner-center-portal/saas-metered-billing.md) ile SaaS teklifleri, Azure marketi ve Azure Portal aracılığıyla kullanılabilir. Yalnızca özel planlara sahip SaaS teklifleri Azure portal aracılığıyla kullanılabilir.
+
+| Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
+|---|---|---|---|
+| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
+| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
+| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
+|||||
+
+&#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
+
+Örneğin, tarifeli faturalandırma ve yalnızca özel planı (genel plan olmadan) içeren bir teklif, Azure portal müşteriler tarafından satın alınacaktır. [Microsoft ticari Market 'Teki özel teklifler](private-offers.md)hakkında daha fazla bilgi edinin.
+
+Çevrimiçi mağazaların desteklediği seçenekleri listeleme hakkında ayrıntılı bilgi için bkz. [çevrimiçi mağazaya göre listeleme ve fiyatlandırma seçenekleri](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). Kategoriler ve alt kategoriler hakkında daha fazla bilgi için bkz. [ticari Market 'Teki Kategoriler ve alt kategoriler](categories.md).
 
 ## <a name="legal-contracts"></a>Yasal sözleşmeler
 
@@ -183,7 +202,7 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
   - . png dosyası
   - Bir resim yazısı içermelidir
 - **Medya-videolar** (isteğe bağlı): aşağıdaki gereksinimlere sahip en fazla dört video ekleyebilirsiniz, bu da teklifinizi gösterir:
-  - Ad
+  - Name
   - URL: yalnızca YouTube veya Vimeo 'da barındırılmalıdır.
   - Küçük resim: 1280 x 720. png dosyası
 

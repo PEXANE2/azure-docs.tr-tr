@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592592"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917690"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
@@ -42,11 +42,13 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 
 ### <a name="analyze-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
-1. SYNAPSE Studio 'da **veri** merkezine gidin ve **bağlı** ' yı seçin.
+Çalışma alanınızın varsayılan ADLS 2. hesabındaki verileri çözümleyebilir veya "**Yönet**" > "**bağlı hizmetler**" > "**Yeni**" ADLS 2. veya bir BLOB depolama hesabını çalışma alanınıza bağlayabilirsiniz (aşağıdaki adımlar birincil ADLS 2. hesabına başvuracaktır).
+
+1. SYNAPSE Studio 'da **veri** merkezine gidin ve **bağlı**' yı seçin.
 1. **Depolama hesapları**  >  **MyWorkspace (birincil-contosolake)** sayfasına gidin.
 1. **Kullanıcıları (birincil)** seçin. **NYCTaxi** klasörünü görmeniz gerekir. İçinde **PassengerCountStats_csvformat** ve **PassengerCountStats_parquetformat** adlı iki klasör görmeniz gerekir.
 1. **PassengerCountStats_parquetformat** klasörünü açın. İçinde, benzer bir adı olan bir Parquet dosyası görürsünüz `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. **. Parquet** öğesine sağ tıklayın ve ardından **Yeni Not defteri** ' ni seçin. Şöyle bir hücre içeren bir not defteri oluşturur:
+1. **. Parquet** öğesine sağ tıklayın ve ardından **Yeni Not defteri**' ni seçin. Şöyle bir hücre içeren bir not defteri oluşturur:
 
     ```py
     %%pyspark

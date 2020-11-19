@@ -139,6 +139,8 @@
       href: ../../container-instances/security-baseline.md
     - name: Container Registry güvenlik temeli
       href: ../../container-registry/security-baseline.md
+    - name: Content Delivery Network güvenlik temeli
+      href: ../../cdn/security-baseline.md
     - name: Cosmos DB güvenlik temeli
       href: ../../cosmos-db/security-baseline.md
     - name: Maliyet Yönetimi güvenlik temeli

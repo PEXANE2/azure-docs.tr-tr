@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c015561e66d77e6df352e601bf1a67da5996d4d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886796"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915233"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
@@ -151,9 +151,9 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>Genel Bakış
 Mobil anında iletme bildirimleri, mobil cihazlarda gördüğünüz açılır bildirimlerdir. Çağırmak için VoIP (Internet Protokolü üzerinden ses) anında iletme bildirimleri üzerine odaklanacağız. Anında iletme bildirimleri için kaydolacağız, anında iletme bildirimlerini işleyecek ve sonra anında iletme bildirimlerinin kaydını sileceğiz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-Bulut mesajlaşma (FCM) ile birlikte ayarlanmış bir Firebase hesabı ve Azure Notification Hub örneğine bağlı olan Firebase bulut mesajlaşma hizmeti. Daha fazla bilgi için bkz. [Iletişim Hizmetleri bildirimleri](https://docs.microsoft.com/azure/communication-services/concepts/notifications) .
+Bulut mesajlaşma (FCM) ile birlikte ayarlanmış bir Firebase hesabı ve Azure Notification Hub örneğine bağlı olan Firebase bulut mesajlaşma hizmeti. Daha fazla bilgi için bkz. [Iletişim Hizmetleri bildirimleri](../../../concepts/notifications.md) .
 Ayrıca öğreticide, uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsaymaktadır.
 
 Firebase Cloud Messaging 'ten bildirim iletileri alabilmesi için Android uygulaması için bir izin kümesi gereklidir. `AndroidManifest.xml`Dosyanızda, *<manifest... >* veya etiketinin hemen arkasına aşağıdaki izin kümesini ekleyin *</application>*

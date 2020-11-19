@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788559"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917809"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneğine örnek geçişi SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Bu makalede, SQL Server 2005 veya sonraki bir sürüm örneğini [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md)'ne geçirmeye yönelik yöntemler hakkında bilgi edineceksiniz. Tek bir veritabanına veya elastik havuza geçiş hakkında daha fazla bilgi için bkz. [SQL veritabanına geçme](../database/migrate-to-database-from-sql-server.md). Diğer platformlardan geçiş hakkında geçiş bilgileri için bkz. [Azure veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/).
+Bu makalede, SQL Server 2005 veya sonraki bir sürüm örneğini [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md)'ne geçirmeye yönelik yöntemler hakkında bilgi edineceksiniz. Tek bir veritabanına veya elastik havuza geçiş hakkında daha fazla bilgi için bkz. [geçişe genel bakış: SQL veritabanına SQL Server](../migration-guides/database/sql-server-to-sql-database-overview.md). Diğer platformlardan geçiş ve araçlar ve seçenekler hakkında rehberlik hakkında geçiş bilgileri için bkz. [Azure SQL 'e geçiş](../migration-guides/index.yml).
 
 > [!NOTE]
 > Azure SQL yönetilen örneğini hızla başlatıp denemek istiyorsanız, Bu sayfa yerine [hızlı başlangıç kılavuzuna](quickstart-content-reference-guide.md) gitmeniz gerekebilir.

@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516450"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916483"
 ---
-# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Genel Önizleme: Azure Hibrit Avantajı – nasıl uygulandığı Linux Sanal Makineleri
+# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı: Linux Sanal Makineleri için nasıl uygulanır
 
 ## <a name="overview"></a>Genel Bakış
 
 Azure Hibrit Avantajı, önceden var olan Red hat veya SUSE yazılım aboneliğinizi kullanarak şirket içi Red Hat Enterprise Linux (RHEL) ve SUSE Linux Enterprise Server (SLES) sanal makinelerinizi (VM) Azure 'a daha kolay bir şekilde geçirebilmesini sağlar. Bu avantajla, yazılım ücreti RHEL veya SLES Aboneliğiniz kapsamında olduğu için yalnızca sanal makinenizin altyapı maliyetleri için ödeme yaparsınız. Bu avantaj, tüm RHEL ve SLES Market (PAYG) görüntüleri için geçerlidir.
 
 > [!IMPORTANT]
-> Linux VM 'Leri için Azure Hibrit Avantajı Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Linux VM 'Leri için Azure Hibrit Avantajı Şu anda genel kullanıma sunuldu
+
 
 ## <a name="benefit-description"></a>Avantaj açıklaması
 
@@ -44,12 +44,6 @@ Tüm RHEL ve SLES Market PAYG görüntüleri için Azure Hibrit Avantajı kullan
 Linux VM 'lerle avantajı zaten kullanıyorsanız, ayrılmış örnekler, adanmış konaklar ve SQL hibrit avantajları Azure Hibrit Avantajı uygun değildir.
 
 ## <a name="how-to-get-started"></a>Nasıl kullanmaya başlarım
-
-Azure Hibrit Avantajı Şu anda Linux VM 'Leri için bir önizleme aşamasındadır. Önizlemeye erişim kazandıktan sonra, Azure CLı kullanarak avantaja izin verebilir.
-
-### <a name="public-preview"></a>Genel Önizleme
-
-Azure Hibrit Avantajı (Linux için) Şu anda genel önizleme aşamasındadır. Red Hat ve SUSE dağıtımları avantajını etkinleştirmek için aşağıdaki adımları kullanabilirsiniz. 
 
 ### <a name="red-hat-customers"></a>Red Hat müşterileri
 

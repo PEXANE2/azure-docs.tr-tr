@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 64334b17060879a2e587b13b062c81e86df33831
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d47abaade13958b4e28d3ad5f62b88e8a53e89a9
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743448"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917850"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Geçişe genel bakış: Azure VM 'lerinde SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -57,13 +57,15 @@ Kullanıcı veritabanlarınızı Azure VM 'lerinde bir SQL Server örneğine ge�
 - Mevcut ürünlerinizin desteklenebilirlik yaşam döngüsü
 - Geçiş sırasında uygulama kesinti süresi için pencere
 
+:::image type="content" source="media/sql-server-to-sql-on-azure-vm-individual-databases-guide/virtual-machine-migration-downtime.png" alt-text="sanal makine geçişi kapalı kalma süresi":::
+
 Aşağıdaki tabloda, iki geçiş stratejisinden farkları açıklanmaktadır:
 <br />
 
 | **Geçiş stratejisi** | **Açıklama** | **Kullanılması gereken durumlar** |
 | --- | --- | --- |
 | **& Shift tuşunu kaldırın** | Tüm fiziksel veya sanal SQL Server geçerli konumundan, işletim sisteminde veya SQL Server sürümünde herhangi bir değişiklik yapmadan Azure VM 'deki bir SQL Server örneğine taşımak için Kaldır ve Shift geçiş stratejisini kullanın. Bir kaldırma ve kaydırma geçişini gerçekleştirmek için bkz. [Azure geçişi](../../../migrate/migrate-services-overview.md). <br /><br /> Kaynak sunucu, neredeyse sorunsuz bir geçişe izin vererek kaynak ve hedef sunucu verileri eşitlerken çevrimiçi ve hizmet istekleri olarak kalır. | Veri merkezi çıkışı gibi senaryolar için geçerli olan tek ve çok büyük ölçekli geçişler için kullanın. <br /><br /> Kullanıcı SQL veritabanları veya uygulamaları için gerekli kod değişikliği olmaması için en az, daha hızlı geçiş yapılmasına izin verir. <br /><br />[SSIS,](/sql/integration-services/sql-server-integration-services) [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)ve [SSAS](/analysis-services/analysis-services-overview)gibi iş zekası hizmetlerini geçirmek için ek adım gerekmez. |
-|**Geçirme** | Hedef SQL Server ve/veya işletim sistemi sürümünü yükseltmek istediğinizde bir geçiş stratejisi kullanın. <br /> <br /> Azure Marketi 'nden bir Azure VM veya kaynak SQL Server sürümüyle eşleşen hazırlanmış bir SQL Server görüntüsü seçin. | SQL Server veya daha yeni sürümlerde bulunan özellikleri kullanmak istediğinizde veya artık destek içinde olmayan eski SQL Server ve/veya işletim sistemi sürümlerini yükseltmek için bir gereksinim varsa kullanın.  <br /> <br /> SQL Server yükseltmesini desteklemek için bazı uygulama veya Kullanıcı veritabanı değişiklikleri gerektirebilir. <br /><br />Geçiş kapsamınızda [Business Intelligence](#business-intelligence) hizmetlerini geçirmeye yönelik ek hususlar olabilir. |
+|**Geçiş** | Hedef SQL Server ve/veya işletim sistemi sürümünü yükseltmek istediğinizde bir geçiş stratejisi kullanın. <br /> <br /> Azure Marketi 'nden bir Azure VM veya kaynak SQL Server sürümüyle eşleşen hazırlanmış bir SQL Server görüntüsü seçin. | SQL Server veya daha yeni sürümlerde bulunan özellikleri kullanmak istediğinizde veya artık destek içinde olmayan eski SQL Server ve/veya işletim sistemi sürümlerini yükseltmek için bir gereksinim varsa kullanın.  <br /> <br /> SQL Server yükseltmesini desteklemek için bazı uygulama veya Kullanıcı veritabanı değişiklikleri gerektirebilir. <br /><br />Geçiş kapsamınızda [Business Intelligence](#business-intelligence) hizmetlerini geçirmeye yönelik ek hususlar olabilir. |
 
 
 ## <a name="lift-and-shift"></a>Lift and shift  
@@ -75,7 +77,7 @@ Aşağıdaki tabloda, SQL Server veritabanınızı Azure VM 'lerinde SQL Server 
 | --- | --- | --- | --- | --- |
 | [Azure Geçişi](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM depolama sınırı](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Bir Azure sanal makinesinde SQL Server örneğine olduğu gibi, mevcut SQL Server. , 35.000 adede kadar VM 'ye kadar geçiş iş yüklerini ölçeklendirebilir. <br /><br /> Kaynak sunucu, sunucu verilerinin eşitlenmesi sırasında çevrimiçi ve hizmet isteklerine devam eder, kapalı kalma süresini en aza indirir. <br /><br /> **Otomasyon & betiği oluşturma**: [Azure Site Recovery betikler](../../../migrate/how-to-migrate-at-scale.md) ve [ölçeklendirme ve Azure için planlama](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale) örnekleri|
 
-## <a name="migrate"></a>Geçirme  
+## <a name="migrate"></a>Geçiş  
 
 Kurulum kolaylığı nedeniyle, önerilen geçiş yaklaşımı yerel bir SQL Server [yedeklemesini](/sql/t-sql/statements/backup-transact-sql) yerel olarak almak ve sonra dosyayı Azure 'a kopyalamaktır. Bu yöntem, 2008 ve daha büyük veritabanı yedeklerinden (>1 TB) başlayan tüm SQL Server sürümleri için daha büyük veritabanlarını (>1 TB) destekler. Ancak, 1 TB 'tan küçük olan ve Azure 'a iyi bir bağlantı içeren SQL Server 2014 ' den başlayan veritabanları için [yedekleme, URL 'ye SQL Server](/sql/relational-databases/backup-restore/sql-server-backup-to-url) daha iyi bir yaklaşımdır. 
 

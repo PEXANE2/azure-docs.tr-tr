@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 211ce85fdbf918171ecfc7964bbcdfa2ef245990
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790721"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917945"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Aşağıdaki diyagramda SQL yönetilen örneği 'nin temel özellikleri özetlen
 
 ![Önemli özellikler](./media/sql-managed-instance-paas-overview/key-features.png)
 
-Azure SQL yönetilen örneği, şirket içi veya IaaS, kendiliğinden oluşturulmuş veya ISV tarafından sağlanmış bir ortamdan çok sayıda uygulamayı tam olarak yönetilen PaaS bulut ortamına geçirmek isteyen müşteriler için tasarlanmıştır. Müşteriler, tam otomatik [Azure veri geçiş hizmeti](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)'ni kullanarak mevcut SQL Server örneğini SQL yönetilen örneği 'ne taşıyıp kaydırabilirler. Bu, yerel VNET desteğiyle müşteri örneklerinin SQL Server ve tamamen yalıtımıyla uyumluluk sağlar.  Yazılım Güvencesi sayesinde, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak mevcut LISANSLARıNıZı SQL yönetilen örnekteki indirimli ücretler için Exchange 'e dönüştürebilirsiniz. SQL yönetilen örneği, yüksek güvenlik ve zengin bir programlama yüzeyi gerektiren SQL Server örnekleri için buluttaki en iyi geçiş hedefidir.
+Azure SQL yönetilen örneği, şirket içi veya IaaS, kendiliğinden oluşturulmuş veya ISV tarafından sağlanmış bir ortamdan çok sayıda uygulamayı tam olarak yönetilen PaaS bulut ortamına geçirmek isteyen müşteriler için tasarlanmıştır. Müşteriler, tam otomatik [Azure veri geçiş hizmeti](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)'ni kullanarak mevcut SQL Server örneğini SQL yönetilen örneği 'ne taşıyıp kaydırabilirler. Bu, yerel VNET desteğiyle müşteri örneklerinin SQL Server ve tamamen yalıtımıyla uyumluluk sağlar. Geçiş seçenekleri ve araçları hakkında daha fazla bilgi için bkz. [geçişe genel bakış: Azure SQL yönetilen örneği 'ne SQL Server](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> Yazılım Güvencesi sayesinde, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak mevcut LISANSLARıNıZı SQL yönetilen örnekteki indirimli ücretler için Exchange 'e dönüştürebilirsiniz. SQL yönetilen örneği, yüksek güvenlik ve zengin bir programlama yüzeyi gerektiren SQL Server örnekleri için buluttaki en iyi geçiş hedefidir.
 
 ## <a name="key-features-and-capabilities"></a>Temel özellikler ve yetenekler
 
@@ -56,15 +56,15 @@ SQL yönetilen örneği 'nin temel özellikleri aşağıdaki tabloda gösterilmi
 |Özellik | Açıklama|
 |---|---|
 | Sürüm/derleme SQL Server | SQL Server veritabanı altyapısı (en son kararlı) |
-| Yönetilen otomatik yedeklemeler | Evet |
-| Yerleşik örnek ve veritabanı izleme ve ölçümler | Evet |
-| Otomatik yazılım düzeltme eki uygulama | Evet |
-| En son veritabanı altyapısı özellikleri | Evet |
+| Yönetilen otomatik yedeklemeler | Yes |
+| Yerleşik örnek ve veritabanı izleme ve ölçümler | Yes |
+| Otomatik yazılım düzeltme eki uygulama | Yes |
+| En son veritabanı altyapısı özellikleri | Yes |
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
-| VNet-Azure Resource Manager dağıtımı | Evet |
-| VNet-klasik dağıtım modeli | Hayır |
-| Portal desteği | Evet|
+| VNet-Azure Resource Manager dağıtımı | Yes |
+| VNet-klasik dağıtım modeli | No |
+| Portal desteği | Yes|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](../../data-factory/tutorial-deploy-ssis-packages-azure.md) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](../../analysis-services/analysis-services-overview.md) |
 | Yerleşik raporlama hizmeti (SSRS) | Azure VM üzerinde [Power BI sayfalandırılmış raporlar](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) veya konak SSRS 'yi kullanın. SQL yönetilen örneği SSRS 'yi bir hizmet olarak çalıştıramıyor olsa da, Azure sanal makinesine yüklenen bir raporlama sunucusu için [SSRS Katalog veritabanlarını](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) SQL Server kimlik doğrulaması kullanılarak barındırabilirler. |
@@ -85,8 +85,8 @@ Sanal çekirdek modelinde, donanım nesilleri arasından seçim yapabilirsiniz.
 
 SQL yönetilen örneği iki hizmet katmanında kullanılabilir:
 
-- **Genel amaçlı** : tipik performans ve g/ç gecikme süresi gereksinimleriyle uygulamalar için tasarlanmıştır.
-- **İş açısından kritik** : düşük g/ç gecikme süresi gereksinimleri ve iş yükünde temeldeki bakım işlemlerinin en az etkisi olan uygulamalar için tasarlanmıştır.
+- **Genel amaçlı**: tipik performans ve g/ç gecikme süresi gereksinimleriyle uygulamalar için tasarlanmıştır.
+- **İş açısından kritik**: düşük g/ç gecikme süresi gereksinimleri ve iş yükünde temeldeki bakım işlemlerinin en az etkisi olan uygulamalar için tasarlanmıştır.
 
 Her iki hizmet katmanı da% 99,99 kullanılabilirlik garantisi sağlar ve depolama boyutunu ve işlem kapasitesini bağımsız olarak seçmenizi sağlar. Azure SQL yönetilen örneğinin yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz. [yüksek kullanılabilirlik ve Azure SQL yönetilen örneği](../database/high-availability-sla.md).
 
@@ -156,7 +156,7 @@ Azure SQL yönetilen örneği, verilerinizi korumak için kullanılabilecek bir 
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory tümleştirmesi
 
-SQL yönetilen örneği, Azure AD ile tümleştirilmiş geleneksel SQL Server veritabanı altyapısı oturumlarını ve oturum açmaları destekler. Azure AD Server sorumluları (oturum açmalar) ( **genel önizleme** ), şirket içi ortamınızda kullandığınız şirket içi veritabanı oturumlarının bir Azure bulut sürümüdür. Azure AD Server sorumluları (oturum açmalar), aynı yönetilen örnek içindeki çapraz veritabanı sorguları dahil olmak üzere, Azure AD kiracınızdan doğru örnek kapsamlı sorumlular olarak Kullanıcı ve grupları belirtmenize olanak tanır.
+SQL yönetilen örneği, Azure AD ile tümleştirilmiş geleneksel SQL Server veritabanı altyapısı oturumlarını ve oturum açmaları destekler. Azure AD Server sorumluları (oturum açmalar) (**genel önizleme**), şirket içi ortamınızda kullandığınız şirket içi veritabanı oturumlarının bir Azure bulut sürümüdür. Azure AD Server sorumluları (oturum açmalar), aynı yönetilen örnek içindeki çapraz veritabanı sorguları dahil olmak üzere, Azure AD kiracınızdan doğru örnek kapsamlı sorumlular olarak Kullanıcı ve grupları belirtmenize olanak tanır.
 
 **Dış sağlayıcıdan** Azure AD Server sorumlularını (oturum açma) oluşturmak için yeni bir sözdizimi sunulmuştur. Sözdizimi hakkında daha fazla bilgi için bkz. <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">oturum oluştur</a>ve [SQL yönetilen örneği Için Azure Active Directory Yöneticisi sağlama](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) makalesini gözden geçirin.
 
@@ -168,10 +168,10 @@ SQL yönetilen örneği, [Azure Active Directory tümleştirmeyle](../database/a
 
 SQL yönetilen örnek kimlik doğrulaması, kullanıcıların veritabanına bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:  
 
-- **SQL kimlik doğrulaması** :
+- **SQL kimlik doğrulaması**:
 
   Bu kimlik doğrulama yöntemi bir Kullanıcı adı ve parola kullanır.
-- **Azure Active Directory kimlik doğrulaması** :
+- **Azure Active Directory kimlik doğrulaması**:
 
   Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır ve yönetilen ve tümleşik etki alanları için desteklenir. [Mümkün olan her durumda](/sql/relational-databases/security/choose-an-authentication-mode)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
 
@@ -181,14 +181,14 @@ Yetkilendirme, bir kullanıcının Azure SQL yönetilen örneğindeki bir verita
 
 ## <a name="database-migration"></a>Veritabanı geçişi
 
-SQL yönetilen örneği, şirket içi veya IaaS veritabanı uygulamalarından toplu veritabanı geçişi ile Kullanıcı senaryolarını hedefler. SQL yönetilen örneği, çeşitli veritabanı geçiş seçeneklerini destekler:
+SQL yönetilen örneği, şirket içi veya IaaS veritabanı uygulamalarından toplu veritabanı geçişi ile Kullanıcı senaryolarını hedefler. SQL yönetilen örneği, geçiş kılavuzlarında ele alınan çeşitli veritabanı geçiş seçeneklerini destekler. Bkz. geçişe genel bakış: daha fazla bilgi için bkz. [Azure SQL yönetilen örneği SQL Server](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md) .
 
 ### <a name="backup-and-restore"></a>Yedekleme ve geri yükleme  
 
 Geçiş yaklaşımı SQL yedeklemelerini Azure Blob depolamaya kullanır. Bir Azure depolama blobunda depolanan yedeklemeler, [T-SQL restore komutu](/sql/t-sql/statements/restore-statements-transact-sql?preserve-view=true&view=azuresqldb-mi-current)kullanılarak yönetilen bir örneğe doğrudan geri yüklenebilir.
 
 - Wide World Importers-standart veritabanı yedekleme dosyasının nasıl geri yükleneceğini gösteren bir hızlı başlangıç için bkz. [bir yedekleme dosyasını yönetilen bir örneğe geri yükleme](restore-sample-database-quickstart.md). Bu hızlı başlangıçta, bir yedekleme dosyasını Azure Blob depolama alanına yüklemeniz ve paylaşılan erişim imzası (SAS) anahtarı kullanarak güvence altına almanız gerektiğini gösterir.
-- URL 'den geri yükleme hakkında daha fazla bilgi için bkz. [URL 'Den yerel GERI yükleme](migrate-to-instance-from-sql-server.md#native-restore-from-url).
+- URL 'den geri yükleme hakkında daha fazla bilgi için bkz. [URL 'Den yerel GERI yükleme](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#backup-and-restore).
 
 > [!IMPORTANT]
 > Yönetilen bir örnekten yedeklemeler, yalnızca başka bir yönetilen örneğe geri yüklenebilir. SQL Server örneğine veya Azure SQL veritabanı 'na geri yüklenemez.

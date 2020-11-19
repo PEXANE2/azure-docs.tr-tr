@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660296"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916500"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
@@ -196,7 +196,7 @@ SMB çok kanallı yapılandırma ayarları için bir uzaktan yeniden bağlama ol
 
 ### <a name="cause"></a>Nedeni  
 
-Dosya paylaşımlarında yüksek sayıdaki dosya değişikliği bildirimi, önemli ölçüde yüksek gecikme süreleriyle sonuçlanabilir. Bu genellikle derin iç içe Dizin yapısıyla dosya paylaşımlarında barındırılan Web sitelerinde oluşur. Tipik bir senaryo, varsayılan yapılandırmadaki her bir dizin için dosya değişiklik bildiriminin ayarlandığı IIS tarafından barındırılan Web uygulamasıdır. SMB istemcisinin kaydedildiği paylaşımdaki her değişiklik (ReadDirectoryChangesW), sistem kaynaklarını alan ve değişiklik sayısıyla worsens veren dosya hizmetinden istemciye bir değişiklik bildirimi gönderir. Bu, paylaşımın azaltılmasına neden olabilir ve bu nedenle daha yüksek istemci tarafı gecikme süresine neden olur. 
+Dosya paylaşımlarında yüksek sayıdaki dosya değişikliği bildirimi, önemli ölçüde yüksek gecikme süreleriyle sonuçlanabilir. Bu genellikle derin iç içe Dizin yapısıyla dosya paylaşımlarında barındırılan Web sitelerinde oluşur. Tipik bir senaryo, varsayılan yapılandırmadaki her bir dizin için dosya değişiklik bildiriminin ayarlandığı IIS tarafından barındırılan Web uygulamasıdır. SMB istemcisinin kaydedildiği paylaşımdaki her değişiklik ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)), sistem kaynaklarını alan ve değişiklik sayısıyla worsens veren dosya hizmetinden istemciye bir değişiklik bildirimi gönderir. Bu, paylaşımın azaltılmasına neden olabilir ve bu nedenle daha yüksek istemci tarafı gecikme süresine neden olur. 
 
 Doğrulamak için, portalda Azure ölçümlerini kullanabilirsiniz. 
 
@@ -213,10 +213,8 @@ Doğrulamak için, portalda Azure ölçümlerini kullanabilirsiniz.
     - Kayıt defterinizde ayarlayarak IIS çalışan Işlemi (W3WP) yoklama aralığını 0 olarak güncelleştirin `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` ve W3wp işlemini yeniden başlatın. Bu ayar hakkında bilgi edinmek için bkz. [IIS 'in birçok bölümü tarafından kullanılan ortak kayıt defteri anahtarları](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp).
 - Birimi azaltmak için dosya değişim bildirimi yoklama aralığı sıklığını artırın.
     - W3WP çalışan işlem yoklama aralığını, gereksiniminize göre daha yüksek bir değere (örn. 10 dakika veya 30 dakika) güncelleştirin. `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` [Kayıt defterinizde ayarlama YAPıN](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) ve W3wp işlemini yeniden başlatın.
-- Web sitenizin eşlenmiş fiziksel dizininde iç içe dizin yapısı varsa, bildirim sesini azaltmak için dosya değişikliği bildiriminin kapsamını sınırlamayı deneyebilirsiniz.
-    - Varsayılan olarak IIS, sanal dizinin eşlendiği fiziksel dizindeki Web.config dosyalarından ve bu fiziksel dizindeki alt dizinlerde bulunan yapılandırmayı kullanır. Alt dizinlerde Web.config dosyaları kullanmak istemiyorsanız, sanal dizindeki allowSubDirConfig özniteliği için false değerini belirtin. Daha fazla ayrıntı [burada](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)bulunabilir. 
-
-Eşlenen fiziksel alt dizinleri kapsamdan dışlamak için Web.Config içindeki IIS sanal dizini "allowSubDirConfig" ayarını false olarak ayarlayın.  
+- Web sitenizin eşlenmiş fiziksel dizininde iç içe dizin yapısı varsa, bildirim sesini azaltmak için dosya değişikliği bildiriminin kapsamını sınırlamayı deneyebilirsiniz. Varsayılan olarak IIS, sanal dizinin eşlendiği fiziksel dizindeki Web.config dosyalarından ve bu fiziksel dizindeki alt dizinlerde bulunan yapılandırmayı kullanır. Alt dizinlerde Web.config dosyaları kullanmak istemiyorsanız, sanal dizindeki allowSubDirConfig özniteliği için false değerini belirtin. Daha fazla ayrıntı [burada](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)bulunabilir. 
+    - Eşlenen fiziksel alt dizinleri kapsamdan dışlamak için Web.Config içindeki IIS sanal dizini "allowSubDirConfig" ayarını *false* olarak ayarlayın.  
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Dosya paylaşma kısıtlandığında uyarı oluşturma
 

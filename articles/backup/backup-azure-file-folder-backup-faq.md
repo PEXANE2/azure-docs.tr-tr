@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9fb9e3993d6f56833e43a4d451c0865b7fd732d3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172519"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917367"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
@@ -22,7 +22,7 @@ Windows Server makineleri, System Center DPM ve Microsoft Azure Backup sunucusu 
 
 ### <a name="where-can-i-download-the-vault-credentials-file"></a>Kasa kimlik bilgileri dosyasını nereden indirebilirim?
 
-Azure portal, kasanızın **Özellikler** ' e gidin. **Yedekleme kimlik bilgileri**altında, **zaten en son kurtarma hizmetleri aracısını kullanan**onay kutusunu seçin. **İndir**'i seçin.
+Azure portal, kasanızın **Özellikler** ' e gidin. **Yedekleme kimlik bilgileri** altında, **zaten en son kurtarma hizmetleri aracısını kullanan** onay kutusunu seçin. **İndir**'i seçin.
 
 ![Kimlik bilgilerini indir](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
@@ -71,6 +71,10 @@ Evet. MARS Aracısı, yinelenenleri kaldırılmış verileri, yedekleme işlemin
 ### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>MARS aracısını yüklemek ve yapılandırmak için yönetici izinlerine ihtiyacım var mı?
 
 Evet, Mars konsolunu kullanarak MARS aracısının ve yedeklemelerin yapılandırmasının yüklenmesi, kullanıcının korumalı sunucuda yerel yönetici olması gerekir.
+
+### <a name="what-is-the-impact-on-mars-agent-backups-of-transferring-the-vault-subscription-to-a-different-azure-ad-directory"></a>Kasa aboneliğini farklı bir Azure AD dizinine aktarmaya yönelik MARS aracı yedeklerinin etkileri nelerdir?
+
+Azure AD dizini değişikliğinin, MARS Aracısı yedeklemelerini üzerinde hiçbir etkisi olmayacaktır. 
 
 ## <a name="manage-backups"></a>Yedekleri yönetme
 
@@ -194,7 +198,7 @@ Aşağıdaki koşulları göz önünde bulundurun:
 
 | Özgün makine | Deyimi | Kullanılabilir seçenekler |
 | --- | --- | --- |
-| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. **Recovery Option**  >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini**başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
+| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. **Recovery Option**  >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini **başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Yedekleme işlerim uzun süredir başarısız olmuş veya çalışmıyor. Saklama süresini geçti. Hala geri yükleme yapabilir miyim?

@@ -2,13 +2,13 @@
 title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
-ms.date: 09/30/2020
-ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598138"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916891"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
@@ -31,13 +31,13 @@ Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümler
 
 ![Azure portal Izleyici-ölçümler (Önizleme) sayfasının ekran görüntüsü.][1]
 
-Ölçümlere doğrudan ad alanı aracılığıyla da erişebilirsiniz. Bunu yapmak için ad alanınızı seçin ve ardından **ölçümler**' e tıklayın. Varlığın kapsamına filtrelenen ölçümleri göstermek için varlığı seçin ve ardından **ölçümler**' e tıklayın.
+Ölçümlere doğrudan ad alanı aracılığıyla da erişebilirsiniz. Bunu yapmak için ad alanınızı seçip **ölçümler**' i seçin. Varlığın kapsamına filtrelenen ölçümleri göstermek için varlığı seçin ve ardından **ölçümler**' i seçin.
 
 ![Varlığın kapsamına filtrelenmiş Izleyici-ölçümler (Önizleme) sayfasının ekran görüntüsü.][2]
 
 Boyutları destekleyen ölçümler için, istenen boyut değeri ile filtrelemeniz gerekir.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Azure Izleyici 'de ölçümler ve uyarılar her uyarı temelinde ücretlendirilir. Bu ücretler, uyarı ayarlandığında ve kaydedilmeden önce portalda kullanılabilir olmalıdır. 
 
@@ -54,12 +54,12 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 | Gelen İstekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Başarılı İstekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Sunucu hataları|Belirli bir süre içinde Service Bus hizmetindeki bir hata nedeniyle işlenmemiş istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
-|Kullanıcı hataları (aşağıdaki alt bölüme bakın)|Belirtilen bir süre içinde Kullanıcı hataları nedeniyle işlenmeyen isteklerin sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
+|Kullanıcı hataları (aşağıdaki alt bölüme bakın)|Belirtilen bir dönemdeki Kullanıcı hataları nedeniyle işlenmemiş olan istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Kısıtlanmış Istekler|Kullanım aşıldığı için kısıtlanan isteklerin sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 
 ### <a name="user-errors"></a>Kullanıcı hataları
@@ -72,7 +72,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 ## <a name="message-metrics"></a>İleti ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
@@ -80,20 +80,18 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 | Etkin Iletiler| Bir kuyruktaki/konudaki etkin ileti sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Boyut: varlık adı |
 | Kullanılmayan iletiler| Bir kuyruktaki/konudaki kullanılmayan iletilerin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/>Boyut: varlık adı |
 | Zamanlanan iletiler| Bir kuyruktaki/konudaki zamanlanan ileti sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama  <br/> Boyut: varlık adı |
+| Tamamlanan Iletiler| Bir kuyruktaki/konudaki tamamlanan iletilerin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Boyut: varlık adı |
+| Bırakılan Iletiler| Bir kuyrukta/konuda bırakılan ileti sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Boyut: varlık adı |
 | Boyut | Bir varlığın (kuyruk veya konu) bayt cinsinden boyutu. <br/><br/>Birim: sayım <br/>Toplama türü: Ortalama <br/>Boyut: varlık adı | 
 
 > [!NOTE]
-> Aşağıdaki ölçümler için değerler, zaman içinde değerlerdir. Söz konusu noktadan hemen sonra tüketilen gelen iletiler bu ölçümlere yansıtılmayabilir. 
-> - İletiler
-> - Etkin iletiler 
-> - Kullanılmayan iletiler 
-> - Zamanlanan iletiler 
+> İletiler, etkin, atılacak, zamanlanmış, tamamlandı ve bırakılan iletiler için değerler, zaman içinde olan değerlerdir. Söz konusu noktadan hemen sonra tüketilen gelen iletiler bu ölçümlere yansıtılmayabilir. 
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
-|Etkin Bağlantılar|Ad alanındaki etkin bağlantıların yanı sıra ad alanındaki bir varlık. Bu ölçümün değeri bir zaman noktası değeridir. Bu noktadan hemen sonra etkin olan bağlantılar ölçüme yansıtılmayabilir.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
+|Etkin Bağlantılar|Ad alanındaki etkin bağlantı sayısı ve ad alanındaki bir varlık. Bu ölçümün değeri bir zaman noktası değeridir. Bu noktadan hemen sonra etkin olan bağlantılar ölçüme yansıtılmayabilir.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Açılan bağlantılar |Açık bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Kapalı bağlantılar |Kapalı bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 
@@ -106,16 +104,16 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 > 
 > İzleyebilmeniz için kullanabileceğiniz diğer ölçüm: **Kısıtlanmış istekleriniz**. Ad alanı bellek, CPU ve aracılı bağlantı sınırları içinde kaldığında bir sorun olması gerekmez. Daha fazla bilgi için bkz. [Azure Service Bus Premium katmanında daraltma](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 
-| Ölçüm Adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Ad alanı başına CPU kullanımı|Ad alanının CPU kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: varlık adı|
 |Ad alanı başına bellek boyutu kullanımı|Ad alanının bellek kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: varlık adı|
 
 ## <a name="metrics-dimensions"></a>Ölçüm boyutları
 
-Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
+Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklememeniz halinde ölçümler ad alanı düzeyinde belirtilir. 
 
-|Boyut adı|Açıklama|
+|Boyut adı|Description|
 | ------------------- | ----------------- |
 |Varlık adı| Service Bus ad alanı altındaki mesajlaşma varlıklarını destekler.|
 
@@ -128,18 +126,18 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
     1. **Kaynak türüne göre filtrele** alanı Için **Service Bus ad alanlarını** seçin. 
     2. **Aboneliğe göre filtrele** alanı için aboneliğinizi seçin.
     3. Listeden **Service Bus ad alanını** seçin. 
-    4. **Bitti** seçeneğini belirleyin. 
+    4. **Bitti**'yi seçin. 
     
         ![Ad alanı seçin](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. **Ölçüt Ekle**' yi seçin ve **sinyal mantığını Yapılandır** sayfasında aşağıdaki işlemleri yapın:
-    1. **Sinyal türü**için **ölçümleri** seçin. 
+    1. **Sinyal türü** için **ölçümleri** seçin. 
     2. Bir sinyal seçin. Örneğin: **hizmet hataları**. 
 
         ![Sunucu hatalarını seçin](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
-    1. Condition **değerinden büyük** ' **Condition**ı seçin.
-    2. **Zaman toplama**için **Toplam** ' u seçin. 
-    3. **Eşik**için **5** girin. 
-    4. **Bitti** seçeneğini belirleyin.    
+    1. Condition **değerinden büyük** ' **Condition** ı seçin.
+    2. **Zaman toplama** için **Toplam** ' u seçin. 
+    3. **Eşik** için **5** girin. 
+    4. **Bitti**'yi seçin.    
 
         ![Koşul Belirt](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. **Kural oluştur** sayfasında, **uyarı ayrıntılarını tanımla**' yı genişletin ve aşağıdaki eylemleri yapın:
@@ -148,17 +146,17 @@ Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları 
     3. Uyarı için **önem derecesi** ' ni seçin. 
 
         ![Kural Oluştur sayfasının ekran görüntüsü. Uyarı ayrıntılarının tanımlanması genişletilir ve uyarı kuralı adı, açıklaması ve önem alanları vurgulanır.](./media/service-bus-metrics-azure-monitor/alert-details.png)
-1. **Kural oluştur** sayfasında, **eylem grubu tanımla**' yı genişletin, **yeni eylem grubu**' nu seçin ve **eylem grubu Ekle sayfasında**aşağıdaki işlemleri yapın. 
+1. **Kural oluştur** sayfasında, **eylem grubu tanımla**' yı genişletin, **yeni eylem grubu**' nu seçin ve **eylem grubu Ekle sayfasında** aşağıdaki işlemleri yapın. 
     1. Eylem grubu için bir ad girin.
     2. Eylem grubu için kısa bir ad girin. 
     3. Aboneliğinizi seçin. 
     4. Kaynak grubunu seçin. 
-    5. Bu izlenecek yol için **eylem adı**için **e-posta gönder** ' i girin.
-    6. **Eylem türü**Için **e-posta/SMS/Push/Voice** ' ı seçin. 
+    5. Bu izlenecek yol için **eylem adı** için **e-posta gönder** ' i girin.
+    6. **Eylem türü** Için **e-posta/SMS/Push/Voice** ' ı seçin. 
     7. **Ayrıntıları düzenle** seçeneğini belirleyin. 
     8. **E-posta/SMS/Push/Voice** sayfasında aşağıdaki işlemleri yapın:
-        1. **E-posta**seçeneğini belirleyin. 
-        2. **E-posta adresini**yazın. 
+        1. **E-posta** seçeneğini belirleyin. 
+        2. **E-posta adresini** yazın. 
         3. **Tamam**’ı seçin.
 
             ![Eylem grubu Ekle sayfasının ekran görüntüsü. "E-posta gönder" adlı bir eylem, gruba e-posta/SMS/Push/Voice eylem türünde ekleniyor.](./media/service-bus-metrics-azure-monitor/add-action-group.png)

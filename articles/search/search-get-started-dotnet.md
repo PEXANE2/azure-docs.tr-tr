@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3e43a6b72d8de25de3220a9a6ac4e0b3986a467
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f82254915ffedf97f945be79be0de827a956af45
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701815"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916619"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Hızlı başlangıç: Azure.Search.Documstalar istemci kitaplığını kullanarak arama dizini oluşturma
 
@@ -26,7 +26,7 @@ Tamamlanmış bir projeden başlamak için [kaynak kodunu indirin](https://githu
 > [!NOTE]
 > Daha önceki bir sürüm mi arıyorsunuz? Bunun yerine [Microsoft. Azure. Search ile v10 arasındaki kullanarak arama dizini oluşturma](search-get-started-dotnet-v10.md) konusuna bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 
@@ -37,6 +37,8 @@ Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/), tüm sürüm. Örnek kod, Visual Studio 2019 ' un ücretsiz topluluk sürümünde test edilmiştir.
 
 + [Azure.Search.Documstalar NuGet paketi](https://www.nuget.org/packages/Azure.Search.Documents/)
+
+.NET için Azure SDK, en düşük gereksinimleri .NET Framework 4.6.1 ve .NET Core 2,0 anlamına gelen [.NET Standard 2,0](/dotnet/standard/net-standard#net-implementation-support)' a uyar.
 
 ## <a name="set-up-your-project"></a>Projenizi ayarlama
 
@@ -58,15 +60,9 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 
 ### <a name="install-the-nuget-package"></a>NuGet paketini yükler
 
-Proje oluşturulduktan sonra, istemci kitaplığını ekleyin. [Azure.Search.Documstalar paketi](https://www.nuget.org/packages/Azure.Search.Documents/) , .net 'teki bir arama hizmetiyle çalışmak için kullanılan tüm API 'leri sağlayan bir istemci kitaplığından oluşur.
-
-1. **Araçlar**  >  **NuGet Paket Yöneticisi**' nde **çözüm için NuGet Paketlerini Yönet...** seçeneğini belirleyin. 
-
-1. **Gözat**’a tıklayın.
+1. Visual Studio 'da, C# için konsol uygulaması (.NET Core) şablonunu kullanarak yeni bir proje oluşturun.
 
 1. `Azure.Search.Documents`Sürüm 11,0 veya üzerini arayın ve seçin.
-
-1. Derlemeyi projenize ve çözümünüze eklemek için **sağdaki aç '** a tıklayın.
 
 ### <a name="create-a-search-client"></a>Arama İstemcisi Oluşturma
 
@@ -134,9 +130,20 @@ Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri 
     }
     ```
 
-1. **Program.cs** içinde, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) nesnesi oluşturun ve ardından, arama hizmetinizde dizini Ifade etmek için [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) yöntemini çağırın.
+1. **Program.cs** Içinde [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) metodunu üzerinde çağırarak bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) nesnesi oluşturun `SearchIndexClient` .
 
-   ```csharp
+    ```csharp
+    private static void CreateIndex(string indexName, SearchIndexClient indexClient)
+    {
+        FieldBuilder fieldBuilder = new FieldBuilder();
+        var searchFields = fieldBuilder.Build(typeof(Hotel));
+        var definition = new SearchIndex(indexName, searchFields);
+
+        indexClient.CreateOrUpdateIndex(definition);
+    }
+    ```
+
+   <!-- ```csharp
     // Define an index schema using SearchIndex
     // Create the index using SearchIndexClient
     SearchIndex index = new SearchIndex(indexName)
@@ -153,7 +160,7 @@ Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri 
 
     Console.WriteLine("{0}", "Creating index...\n");
     idxclient.CreateIndex(index);
-   ```
+   ``` -->
 
 Alanındaki öznitelikler bir uygulamada nasıl kullanıldığını belirleme. Örneğin, `IsFilterable` özniteliği bir filtre ifadesini destekleyen her alana atanmalıdır.
 
@@ -194,7 +201,7 @@ Belgeler karşıya yüklenirken [ındexdocumentsbatch](/dotnet/api/azure.search.
 
     [Indexdocumentsbatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini başlattığınızda, [searchclient](/dotnet/api/azure.search.documents.searchclient) nesneniz üzerindeki [ındexdocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) ' ı çağırarak dizine gönderebilirsiniz.
 
-1. Bu, tüm komutları sıralı olarak çalıştıran bir konsol uygulaması olduğundan, dizin oluşturma ve sorgular arasında 2 saniyelik bir bekleme süresi ekleyin.
+1. Bu, tüm komutları sıralı olarak çalıştıran bir konsol uygulaması olduğundan, 2 saniyelik bir gecikme ekleyin.
 
     ```csharp
     // Wait 2 seconds for indexing to complete before starting queries (for demo and console-app purposes only)
@@ -206,7 +213,7 @@ Belgeler karşıya yüklenirken [ındexdocumentsbatch](/dotnet/api/azure.search.
 
 ## <a name="3---search-an-index"></a>3 - Dizin arama
 
-İlk belge dizine eklendiğinde sorgu sonuçları elde edebilirsiniz, ancak dizininizin gerçek testi tüm belgelerin dizinlenene kadar beklemeniz gerekir.
+İlk belge dizine eklendiğinde sorgu sonuçları elde edebilirsiniz, ancak doğru test için, tüm belgelerin dizinlenmesini bekleyin.
 
 Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgular için [arama](/dotnet/api/azure.search.documents.searchclient.search) yöntemini kullanın. Bu yöntem, arama metnini (sorgu dizesi) ve diğer [seçenekleri](/dotnet/api/azure.search.documents.searchoptions)alır.
 
@@ -292,14 +299,6 @@ Arama ve filtrelerin her ikisi de [Searchclient. Search](/dotnet/api/azure.searc
 Uygulamayı yeniden derlemek ve programı tamamen çalıştırmak için F5 tuşuna basın. 
 
 Çıktı, sorgu bilgilerinin ve sonuçların eklenmesiyle birlikte [Console. WriteLine](/dotnet/api/system.console.writeline)içindeki iletileri içerir.
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
-
-Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
-
-Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

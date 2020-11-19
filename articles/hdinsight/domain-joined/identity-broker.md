@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337685"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917775"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight KIMLIK Aracısı (HIB)
 
@@ -54,7 +54,7 @@ HDInsight ID Broker etkin bir Kurumsal Güvenlik Paketi kümesi oluşturmak içi
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kurumsal Güvenlik Paketi kümesi için temel oluşturma adımlarını izleyin. Daha fazla bilgi için bkz. [Kurumsal güvenlik paketi HDInsight kümesi oluşturma](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
-1. **HDıNSIGHT kimlik Broker 'ı etkinleştir** ' i seçin.
+1. **HDıNSIGHT kimlik Broker 'ı etkinleştir**' i seçin.
 
 HDInsight ID Broker özelliği kümeye bir ek VM ekler. Bu VM, HDInsight ID Broker düğümüdür ve kimlik doğrulamasını desteklemek için sunucu bileşenleri içerir. HDInsight ID Broker düğümü, Azure AD DS etki alanına katılmış etki alanıdır.
 
@@ -137,6 +137,25 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 ``` 
 
 Beeline ve Livy 'ı kullanmak için, istemcinizi OAuth kullanmak üzere ayarlamak ve kümeye bağlanmak için [burada](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) sağlanan örnek kodlarını da izleyebilirsiniz.
+
+## <a name="faq"></a>SSS
+### <a name="what-app-is-created-by-hdinsight-in-aad"></a>AAD 'de HDInsight tarafından hangi uygulama oluşturuldu?
+Her küme için, üçüncü taraf bir uygulama, ıdentifieruri (gibi) olarak küme URI 'si ile AAD 'ye kaydedilir https://clustername.azurehdinsight.net .
+
+### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>Kullanıcılardan, HIB etkin kümeleri kullanmadan önce neden onay istenir?
+AAD 'de, kullanıcıların kimliğini doğrulayabilmesi veya verilere erişim izni vermeden önce tüm üçüncü taraf uygulamalar için izin gerekir.
+
+### <a name="can-the-consent-be-approved-programatically"></a>Onay program aracılığıyla onaylansın mı?
+Microsoft Graph API, onayı otomatik hale getirmenizi sağlar. [API belgelerine](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) , onayı otomatik hale getirmeye yönelik dizi:
+
+* Bir uygulamayı kaydedin ve App. ReadWrite verin. Microsoft Graph erişmek için uygulamaya tüm izinler verin
+* Bir küme oluşturulduktan sonra, küme uygulamasını tanımlayıcı URI 'sine göre sorgulama
+* Uygulama için izin kaydetme
+
+Küme silindiğinde, HDInsight uygulamayı siler ve herhangi bir onayı Temizleme gereksinimi yoktur.
+
+ 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

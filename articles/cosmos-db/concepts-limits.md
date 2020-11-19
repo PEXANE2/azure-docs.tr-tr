@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 503d3d5ed9b099e01a88ee40ef80e88105beb340
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491826"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917741"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,26 +41,48 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 > [!NOTE]
 > Depolama veya işleme için daha fazla sınır gerektiren bölüm anahtarlarına sahip iş yüklerini yönetmeye yönelik en iyi yöntemler hakkında bilgi edinmek için bkz. [yapay bir bölüm anahtarı oluşturma](synthetic-partition-keys.md).
 
-Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 RU/sn aktarım hızına sahip olması gerekir. Kapsayıcı büyüdükçe, desteklenen en düşük aktarım hızı da aşağıdaki etkenlere bağlıdır:
+### <a name="minimum-throughput-limits"></a>Minimum işleme limitleri
 
-* Kapsayıcıda şimdiye kadar sağlanan en yüksek aktarım hızı. Örneğin, aktarım hızı 50.000 RU/sn 'ye yükseldiğinde, olası en düşük sağlanan aktarım hızı 500 RU/s olacaktır.
-* Kapsayıcıda GB cinsinden geçerli depolama alanı. Örneğin, kapsayıcınızda 100 GB depolama alanı varsa, en düşük olası üretilen işlem 1000 RU/s olacaktır. **Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program)uygun olabilir.
-* Paylaşılan bir üretilen iş veritabanında en düşük aktarım hızı, her zaman bir paylaşılan üretilen iş veritabanında oluşturduğunuz toplam kapsayıcı sayısına, kapsayıcı başına 100 RU/sn ile ölçülür. Örneğin, paylaşılan bir üretilen iş veritabanı içinde beş kapsayıcı oluşturduysanız, verimlilik en az 500 RU/sn olmalıdır.
+Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 RU/sn aktarım hızına sahip olması gerekir. Kapsayıcı büyüdükçe, veritabanının veya kapsayıcının işlemleri için yeterli kaynak içerdiğinden emin olmak için Cosmos DB en düşük aktarım hızı gerekir.
 
 Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı Azure portal veya SDK 'lardan alınabilir. Daha fazla bilgi için bkz. [kapsayıcılar ve veritabanları üzerinde üretilen Iş sağlama](set-throughput.md). 
 
-> [!NOTE]
-> Bazı durumlarda, aktarım hızını %10 ' dan küçük bir süre düşürübiliyor olabilirsiniz. Kapsayıcı başına en az ru 'yı tam olarak almak için API 'YI kullanın.
+Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir. [Azure izleyici ölçümlerini](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) , kaynak üzerinde sağlanan üretilen Iş (ru/s) ve depolamanın geçmişini görüntülemek için kullanabilirsiniz. 
+
+#### <a name="minimum-throughput-on-container"></a>Kapsayıcıda en düşük aktarım hızı 
+
+El ile işleme içeren bir kapsayıcının gerektirdiği minimum aktarım hızını tahmin etmek için, en yüksek değeri bulun:
+
+* 400 RU/sn 
+* GB cinsinden geçerli depolama alanı * 10 RU/sn
+* Kapsayıcıda sağlanan en yüksek RU/sn/100
+
+Örnek: 400 RU/s ve 0 GB depolama alanı ile sağlanan bir kapsayıcınıza sahip olduğunuzu varsayalım. 50.000 RU/sn 'ye aktarım hızını artırır ve 20 GB veri içeri aktarın. En az RU/sn artık `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/sn 'dir. Zaman içinde, depolama alanı 200 GB olarak artar. En az RU/sn artık `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/sn 'dir. 
+
+**Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program)uygun olabilir.
+
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Paylaşılan aktarım hızı veritabanında en düşük aktarım hızı 
+Paylaşılan bir üretilen iş veritabanının el ile üretilen iş için gereken en düşük aktarım hızını tahmin etmek için en yüksek değeri bulun:
+
+* 400 RU/sn 
+* GB cinsinden geçerli depolama alanı * 10 RU/sn
+* Veritabanı/100 üzerinde sağlanan en yüksek RU/sn
+* 400 + MAX (kapsayıcı sayısı-25, 0) * 100 RU/sn
+
+Örnek: 400 RU/s, 15 GB depolama ve 10 kapsayıcı ile sağlanan bir veritabanınız olduğunu varsayalım. En az RU/sn `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/sn 'dir. Veritabanında 30 kapsayıcı varsa, en az RU/sn şöyle olacaktır `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 ru/s. 
+
+**Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program)uygun olabilir.
 
 Özet bölümünde, sağlanan en düşük RU sınırları aşağıda verilmiştir. 
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Kapsayıcı başına en az ru ([özel üretilen iş işleme modu](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Veritabanı başına en az ru ([paylaşılan verimlilik sağlanmış mod](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Paylaşılan bir üretilen iş veritabanı içinde kapsayıcı başına en az ru | 100 |
+| Kapsayıcı başına en az ru ([özel üretilen iş işleme modu](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Veritabanı başına en az ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | ilk 25 kapsayıcı için 400 RU/sn. Daha sonra her bir kapsayıcı için ek 100 RU/sn. |
 
-Cosmos DB, SDK veya Portal aracılığıyla kapsayıcı veya veritabanı başına esnek işleme (ru) boyutunu destekler. Her kapsayıcı, en düşük ve en yüksek değerler arasında zaman uyumlu olarak ve 10 ila 100 kez bir ölçek aralığı içinde ölçeklendirebilir. İstenen üretilen iş değeri aralığın dışındaysa, ölçekleme zaman uyumsuz olarak gerçekleştirilir. Zaman uyumsuz ölçeklendirmenin, kapsayıcıda istenen işleme ve veri depolama boyutuna bağlı olarak tamamlanması dakika sürebilir.  
+Cosmos DB, SDK veya Portal aracılığıyla kapsayıcı veya veritabanı başına üretilen iş (RU/sn) için programlı ölçeklendirmeyi destekler.    
+
+Sağlanan geçerli RU/s ve kaynak ayarlarına bağlı olarak, her bir kaynak en az ru/sn 'ye kadar her bir zaman uyumlu ve en az ru/s arasında ölçeklendirebilir. İstenen üretilen iş değeri aralığın dışındaysa, ölçekleme zaman uyumsuz olarak gerçekleştirilir. Zaman uyumsuz ölçeklendirmenin, kapsayıcıda istenen işleme ve veri depolama boyutuna bağlı olarak tamamlanması dakika sürebilir.  
 
 ### <a name="serverless"></a>Sunucusuz
 
@@ -172,9 +194,9 @@ Azure Cosmos DB her hesap için sistem meta verilerini korur. Bu meta veriler, k
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-|Dakika başına en fazla toplama oluşturma hızı| 5|
-|Dakika başına en fazla veritabanı oluşturma hızı|   5|
-|Dakika başına sağlanan en fazla aktarım hızı güncelleştirme hızı| 5|
+|Dakika başına en fazla toplama oluşturma hızı|    5|
+|Dakika başına en fazla veritabanı oluşturma hızı|    5|
+|Dakika başına sağlanan en fazla aktarım hızı güncelleştirme hızı|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Otomatik ölçeklendirme sağlanan verimlilik için sınırlar
 

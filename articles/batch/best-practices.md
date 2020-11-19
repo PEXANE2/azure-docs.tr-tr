@@ -1,18 +1,18 @@
 ---
 title: En iyi uygulamalar
-description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
-ms.date: 08/12/2020
+description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
+ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913237"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916874"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
-Bu makalede, toplu Iş ile gerçek yaşam deneyimine göre Azure Batch hizmetini etkili ve verimli bir şekilde kullanmaya yönelik en iyi yöntemler koleksiyonu ele alınmaktadır. Toplu Iş için geliştirme ve kullanma konularında tasarım ve kullanım alışkanlıkları, olası performans sorunları ve daha fazla bilgi için bu makaleyi okuyun.
+Bu makalede, Batch ile gerçek yaşam deneyimlerine bağlı olarak Azure Batch hizmeti etkin bir şekilde kullanmak için en iyi yöntemler ve yararlı ipuçları açıklanmaktadır. Bu ipuçları, performansı geliştirmenize ve Azure Batch çözümlerinizde tasarımı ortadan önlemenize yardımcı olabilir.
 
 ## <a name="pools"></a>Havuzlar
 
@@ -20,7 +20,7 @@ Bu makalede, toplu Iş ile gerçek yaşam deneyimine göre Azure Batch hizmetini
 
 ### <a name="pool-configuration-and-naming"></a>Havuz yapılandırması ve adlandırma
 
-- **Havuz ayırma modu** Batch hesabı oluştururken iki havuz ayırma modu arasından seçim yapabilirsiniz: **Batch hizmeti** veya **Kullanıcı aboneliği** . Çoğu durumda, toplu yönetilen aboneliklerde havuzların arkasında ayrıldığı varsayılan Batch hizmeti modunu kullanmanız gerekir. Alternatif Kullanıcı aboneliği modunda, bir havuz oluşturulduğunda Batch VM'leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Kullanıcı aboneliği hesapları, önemli, ancak küçük bir senaryo alt kümesini etkinleştirmek için öncelikli olarak kullanılır. Kullanıcı aboneliği modu hakkında daha fazla bilgi için kullanıcı aboneliği [modu Için ek yapılandırma](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)makalesini okuyun.
+- **Havuz ayırma modu** Batch hesabı oluştururken iki havuz ayırma modu arasından seçim yapabilirsiniz: **Batch hizmeti** veya **Kullanıcı aboneliği**. Çoğu durumda, toplu yönetilen aboneliklerde havuzların arkasında ayrıldığı varsayılan Batch hizmeti modunu kullanmanız gerekir. Alternatif Kullanıcı aboneliği modunda, bir havuz oluşturulduğunda Batch VM'leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Kullanıcı aboneliği hesapları, önemli, ancak küçük bir senaryo alt kümesini etkinleştirmek için öncelikli olarak kullanılır. Kullanıcı aboneliği modu hakkında daha fazla bilgi için kullanıcı aboneliği [modu Için ek yapılandırma](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)makalesini okuyun.
 
 - **İş ve görev çalışma süresini, havuzdan eşleme işi belirlenirken göz önünde bulundurun.**
     Öncelikle kısa süreli görevlerden oluşan işleriniz varsa ve beklenen toplam görev sayısı küçük olduğundan, işin genel beklenen çalışma zamanının uzun olmaması ve her iş için yeni bir havuz ayrılmaması gerekir. Düğümlerin ayırma süresi, işin çalışma süresini azaledecektir.
@@ -41,7 +41,7 @@ Bu makalede, toplu Iş ile gerçek yaşam deneyimine göre Azure Batch hizmetini
 Havuz ömrü, havuz yapılandırmasına uygulanan ayırma ve seçenekler yöntemine bağlı olarak farklılık gösterebilir. Havuzlar, zaman içinde herhangi bir zamanda, havuzda rastgele bir yaşam süresine ve farklı sayıda işlem düğümüne sahip olabilir. Havuzdaki işlem düğümlerini açıkça veya hizmet tarafından sunulan özellikler aracılığıyla (otomatik ölçeklendirme veya otomatik havuz) yönetmek sizin sorumluluğunuzdadır.
 
 - **Havuzları güncel tutun.**
-    [En son düğüm Aracısı güncelleştirmelerini ve hata düzeltmelerini](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)aldığınızdan emin olmak için havuzlarınızı her birkaç ayda bir sıfır olacak şekilde yeniden boyutlandırmalısınız. Havuzunuz, yeniden oluşturulup 0 işlem düğümlerine yeniden boyutlandırılana kadar düğüm Aracısı güncelleştirmeleri almaz. Havuzunuzu yeniden oluşturmadan veya yeniden boyutlandırabilmeniz için, [düğümler](#nodes) bölümünde anlatıldığı gibi, hata ayıklama amacıyla herhangi bir düğüm Aracısı günlüğünü indirmeniz önerilir.
+    [En son düğüm Aracısı güncelleştirmelerini ve hata düzeltmelerini](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)aldığınızdan emin olmak için havuzlarınızı her bir ayda bir sıfır olacak şekilde yeniden boyutlandırın. Havuzunuz, yeniden oluşturulup 0 işlem düğümlerine yeniden boyutlandırılana kadar düğüm Aracısı güncelleştirmeleri almaz. Havuzunuzu yeniden oluşturmadan veya yeniden boyutlandırabilmeniz için, [düğümler](#nodes) bölümünde anlatıldığı gibi, hata ayıklama amacıyla herhangi bir düğüm Aracısı günlüğünü indirmeniz önerilir.
 
 - **Havuz yeniden oluşturma** Benzer bir notta havuzlarınızın günlük olarak silinmesi ve yeniden oluşturulması önerilmez. Bunun yerine, yeni bir havuz oluşturun, mevcut işlerinizi yeni havuza işaret etmek üzere güncelleştirin. Tüm görevler yeni havuza taşındıktan sonra eski havuzu silin.
 
@@ -175,7 +175,7 @@ Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [hızlı 
 
 ## <a name="connectivity"></a>Bağlantı
 
-Batch çözümlerinde bağlantıyı değerlendirirken aşağıdaki kılavuzu gözden geçirin.
+Batch çözümlerinizde bağlantı ile ilgili aşağıdaki kılavuzu gözden geçirin.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs)
 
@@ -198,6 +198,10 @@ Batch hizmeti istemcilerinizde, normal işlem sırasında bile isteklerinizi oto
 
 Genellikle, bir Batch havuzundaki sanal makinelere, havuzun kullanım ömrü boyunca değişebilir genel IP adresleri üzerinden erişilir. Bu, belirli IP adreslerine erişimi sınırlayan bir veritabanı veya başka bir dış hizmetle etkileşim kurmayı zorlaştırır. Havuzunuzdaki genel IP adreslerinin beklenmedik şekilde değişmemesini sağlamak için, denetlediğiniz bir statik genel IP adresleri kümesini kullanarak bir havuz oluşturabilirsiniz. Daha fazla bilgi için bkz. [belirtilen genel IP adreslerine sahip bir Azure Batch havuzu oluşturma](create-pool-public-ip.md).
 
+### <a name="testing-connectivity-with-cloud-services-configuration"></a>Cloud Services yapılandırmasıyla bağlantı test ediliyor
+
+Azure Yük dengeleyicisinden ıCMP protokolüne izin verilmediğinden, normal "ping"/ıCMP protokolünü Cloud Services ile kullanamazsınız. Daha fazla bilgi için bkz. [Azure Cloud Services Için bağlantı ve ağ](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service).
+
 ## <a name="batch-node-underlying-dependencies"></a>Toplu düğüm temel alınan bağımlılıklar
 
 Batch çözümlerinizi tasarlarken aşağıdaki bağımlılıkları ve kısıtlamaları göz önünde bulundurun.
@@ -206,12 +210,12 @@ Batch çözümlerinizi tasarlarken aşağıdaki bağımlılıkları ve kısıtla
 
 Azure Batch, sanal makinede değiştirilmemelidir bir Kullanıcı ve grup kümesi oluşturur ve yönetir. Bunlar şu şekildedir:
 
-#### <a name="windows"></a>Windows
+Windows:
 
 - **Poolnonadmin** adlı Kullanıcı
 - **Wataskcommon** adlı bir Kullanıcı grubu
 
-#### <a name="linux"></a>Linux
+Linux:
 
 - **_Azbatch** adlı bir Kullanıcı
 
@@ -220,3 +224,9 @@ Azure Batch, sanal makinede değiştirilmemelidir bir Kullanıcı ve grup kümes
 Toplu işlem, saklama süresi sona erdiğinde görevlerin çalıştırıldığı çalışma dizinini etkin bir şekilde temizlemeye çalışır. Bu dizinin dışında yazılan tüm dosyalar, disk alanını doldurmaktan kaçınmak için [Temizleme sorumluluğudur](#manage-task-lifetime) .
 
 Windows üzerinde bir hizmeti, startTask çalışma dizininden hala kullanımda olması nedeniyle çalıştırırsanız, çalışma dizini için otomatik temizleme engellenir. Bu, performansın düşmesine neden olur. Bunu yapmak için, bu hizmetin dizinini Batch tarafından yönetilmeyen ayrı bir dizinle değiştirin.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure Portal kullanarak bir Azure Batch hesabı oluşturun](batch-account-create-portal.md).
+- [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
+- [Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları hakkında bilgi edinin ve kota artışlarının nasıl isteneceğini](batch-quota-limit.md)öğrenin.

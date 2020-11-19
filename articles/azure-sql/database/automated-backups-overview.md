@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/30/2020
-ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/18/2020
+ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131369"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917911"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -36,9 +36,9 @@ Bir veritabanını geri yüklediğinizde, hizmet hangi tam, fark ve işlem günl
 
 ### <a name="backup-storage-redundancy"></a>Yedekleme depolama yedekliliği
 
-Varsayılan olarak, SQL veritabanı ve SQL yönetilen örneği, [eşleştirilmiş bir bölgeye](../../best-practices-availability-paired-regions.md)çoğaltılan coğrafi olarak YEDEKLI (RA-GRS) [depolama Blobları](../../storage/common/storage-redundancy.md) içinde verileri depolar. Bu, birincil bölgedeki yedekleme depolama alanını etkileyen kesintilere karşı korunmaya yardımcı olur ve bir olağanüstü durum durumunda sunucunuzu farklı bir bölgeye geri yüklemenize olanak tanır. 
+Varsayılan olarak, SQL veritabanı ve SQL yönetilen örneği, [eşleştirilmiş bir bölgeye](../../best-practices-availability-paired-regions.md)çoğaltılan coğrafi olarak yedekli [depolama Bloblarında](../../storage/common/storage-redundancy.md) verileri depolar. Bu, birincil bölgedeki yedekleme depolama alanını etkileyen kesintilere karşı korunmaya yardımcı olur ve bir olağanüstü durum durumunda sunucunuzu farklı bir bölgeye geri yüklemenize olanak tanır. 
 
-Yedekleme depolama yedekliliği yapılandırma seçeneği, bir SQL yönetilen örneği veya bir SQL veritabanı için yerel olarak yedekli, bölgesel olarak yedekli veya coğrafi olarak yedekli depolama Blobları arasında seçim yapmak için esneklik sağlar. Verilerinizin yönetilen örneğinizin veya SQL veritabanınızın dağıtıldığı bölge içinde kalmasını sağlamak için, varsayılan coğrafi olarak yedekli yedekleme depolama yedekliği ' nı değiştirebilir ve yedeklemeler için yerel olarak yedekli (LRS) ya da bölgesel olarak yedekli (ZRS) depolama bloblarını yapılandırabilirsiniz. Depolama artıklığı mekanizmaları, geçici donanım arızası, ağ veya güç kesintileri ya da büyük doğal felaketler dahil, planlı ve plansız olaylardan korunmak üzere verilerinizin birden çok kopyasını depolar. Yapılandırılan yedekleme depolama yedekliliği, uzun vadeli yedeklemeler (LTR) için kullanılan zaman içinde nokta geri yükleme (ıNR) ve uzun süreli bekletme yedeklemeleri için kullanılan kısa süreli yedekleme bekletme ayarlarına uygulanır. 
+Yedekleme depolama yedekliliği yapılandırma seçeneği, bir SQL yönetilen örneği veya bir SQL veritabanı için yerel olarak yedekli, bölgesel olarak yedekli veya coğrafi olarak yedekli depolama Blobları arasında seçim yapmak için esneklik sağlar. Verilerinizin yönetilen örneğinizin veya SQL veritabanınızın dağıtıldığı bölge içinde kalmasını sağlamak için, varsayılan coğrafi olarak yedekli yedekleme depolama yedekliliği değiştirebilir ve yedeklemeler için yerel olarak yedekli ya da bölgesel olarak yedekli depolama bloblarını yapılandırabilirsiniz. Depolama artıklığı mekanizmaları, geçici donanım arızası, ağ veya güç kesintileri ya da büyük doğal felaketler dahil, planlı ve plansız olaylardan korunmak üzere verilerinizin birden çok kopyasını depolar. Yapılandırılan yedekleme depolama yedekliliği, uzun vadeli yedeklemeler (LTR) için kullanılan zaman içinde nokta geri yükleme (ıNR) ve uzun süreli bekletme yedeklemeleri için kullanılan kısa süreli yedekleme bekletme ayarlarına uygulanır. 
 
 SQL veritabanı için yedekleme depolama yedekliliği, veritabanı oluşturma sırasında yapılandırılabilir veya var olan bir veritabanı için güncelleştirilemeyebilir; var olan bir veritabanında yapılan değişiklikler yalnızca gelecekteki yedeklemeler için geçerlidir. Mevcut bir veritabanının yedek depolama yedekliliği güncelleştirildikten sonra, değişikliklerin uygulanması 48 saate kadar sürebilir. Coğrafi geri yükleme, bir veritabanı yerel veya bölgesel olarak yedekli depolama kullanmak üzere güncelleştirildikten hemen devre dışı bırakıldığını unutmayın. 
 
@@ -179,9 +179,9 @@ Her yedekleme türü (tam, fark, işlem günlüğü) için toplam yedekleme depo
 ### <a name="backup-storage-redundancy"></a>Yedekleme depolama yedekliliği
 
 Yedekleme depolama artıklığı, yedekleme maliyetlerini aşağıdaki şekilde etkiler:
-- LRS Fiyatı = x
-- ZRS fiyatı = 1,25 x
-- RA-GRS fiyatı = 2x
+- Yerel olarak yedekli fiyat = x
+- bölge-yedekli fiyat = 1,25 x
+- coğrafi olarak yedekli fiyat = 2x
 
 Yedekleme Depolama fiyatlandırması hakkında daha fazla bilgi için [Azure SQL Veritabanı fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/sql-database/single/) ve [Azure SQL yönetilen örnek fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)ziyaret edin.
 
@@ -190,9 +190,9 @@ Yedekleme Depolama fiyatlandırması hakkında daha fazla bilgi için [Azure SQL
 
 ### <a name="monitor-costs"></a>Maliyetleri izleme
 
-Yedekleme depolama maliyetlerini anlamak için Azure portal **maliyet yönetimi + faturalandırma** ' e gidin, **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi** ' ni seçin. **Kapsam** olarak istenen aboneliği seçin ve ilgilendiğiniz zaman aralığı ve hizmet için filtre uygulayın.
+Yedekleme depolama maliyetlerini anlamak için Azure portal **maliyet yönetimi + faturalandırma** ' e gidin, **maliyet yönetimi**' ni seçin ve ardından **Maliyet Analizi**' ni seçin. **Kapsam** olarak istenen aboneliği seçin ve ilgilendiğiniz zaman aralığı ve hizmet için filtre uygulayın.
 
-**Hizmet adı** için bir filtre ekleyin ve ardından açılan listede **SQL veritabanı** ' nı seçin. Hizmetiniz için faturalandırma sayacını seçmek üzere **ölçüm alt kategori** filtresini kullanın. Tek bir veritabanı veya elastik veritabanı havuzu için, **tek/elastik havuz yedek depolama** ' yı seçin. Yönetilen bir örnek için mı. **yedekleme depolama alanı** ' nı seçin. **Depolama** ve **işlem** alt kategorileri sizi ilgilendirir, ancak yedekleme depolama maliyetleriyle ilişkili değildir.
+**Hizmet adı** için bir filtre ekleyin ve ardından açılan listede **SQL veritabanı** ' nı seçin. Hizmetiniz için faturalandırma sayacını seçmek üzere **ölçüm alt kategori** filtresini kullanın. Tek bir veritabanı veya elastik veritabanı havuzu için, **tek/elastik havuz yedek depolama**' yı seçin. Yönetilen bir örnek için mı. **yedekleme depolama alanı**' nı seçin. **Depolama** ve **işlem** alt kategorileri sizi ilgilendirir, ancak yedekleme depolama maliyetleriyle ilişkili değildir.
 
 ![Yedekleme depolama maliyeti Analizi](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
@@ -373,7 +373,7 @@ Daha fazla bilgi için bkz. [yedekleme bekletme REST API](/rest/api/sql/backupsh
 > [!NOTE]
 > SQL yönetilen örneği için yapılandırılabilir depolama yedekliliği yalnızca yönetilen örnek oluşturma işlemi sırasında belirtilebilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz. SQL veritabanı için, bu özelliğin genel önizlemesi Şu anda Brezilya Güney sürümünde sunulmaktadır ve Güney Doğu Asya Azure bölgesinde genel kullanıma sunulmuştur. 
 
-Yönetilen bir örnek için yedek depolama yedekliği yalnızca örnek oluşturma sırasında ayarlanabilir. Bir SQL veritabanı için veritabanı oluşturulurken ayarlanabilir veya var olan bir veritabanı için güncelleştirilemeyebilir. Varsayılan değer, coğrafi olarak yedekli depolama (RA-GRS) değeridir. Yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS) ve coğrafi olarak yedekli (RA-GRS) yedekleme depolaması arasındaki fiyatlandırma farkları için [yönetilen örnek fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)ziyaret edin.
+Yönetilen bir örnek için yedek depolama yedekliği yalnızca örnek oluşturma sırasında ayarlanabilir. Bir SQL veritabanı için veritabanı oluşturulurken ayarlanabilir veya var olan bir veritabanı için güncelleştirilemeyebilir. Varsayılan değer, coğrafi olarak yedekli depolama. Yerel olarak yedekli, bölgesel olarak yedekli ve coğrafi olarak yedekli yedekleme depolaması arasındaki fiyatlandırma farkları için [yönetilen örnek fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)ziyaret edin.
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Azure portal kullanarak yedek depolama yedekliliği yapılandırma
 

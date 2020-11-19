@@ -5,17 +5,17 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0559a9b763d273579373bb57922606f14ff6e6db
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94574419"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915296"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Uygulamayı çağıran, çalışan bir [Iletişim Hizmetleri](../getting-started-with-calling.md).
-- Bir [takımlar dağıtımı](https://docs.microsoft.com/deployoffice/teams-install).
+- Bir [takımlar dağıtımı](/deployoffice/teams-install).
 
 ## <a name="enable-teams-interoperability"></a>Takımların birlikte çalışabilirliğini etkinleştir
 
@@ -98,7 +98,7 @@ meetingButton.addEventListener("click", () => {
 
 ## <a name="get-the-meeting-context"></a>Toplantı bağlamını al
 
-Takımlar bağlamı, Graph API 'Leri kullanılarak alınabilir. Bu, [Graph belgelerinde](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?view=graph-rest-beta&tabs=http)ayrıntılıdır.
+Takımlar bağlamı, Graph API 'Leri kullanılarak alınabilir. Bu, [Graph belgelerinde](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)ayrıntılıdır.
 
 Ayrıca, Toplantı daveti ' nda **Toplantı** davet URL 'sinden gerekli toplantı bilgilerini de alabilirsiniz.
 
@@ -115,4 +115,3 @@ Tarayıcınızı açın ve adresine gidin http://localhost:8080/ . Şunları gö
 :::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="Tamamlanan JavaScript uygulamasının ekran görüntüsü.":::
 
 Iletişim Hizmetleri uygulamanızın içinden takım toplantısına katmak için, metin kutusuna takımlar bağlamını ekleyin ve *takımlar toplantısına* Ekle ' ye basın.
-

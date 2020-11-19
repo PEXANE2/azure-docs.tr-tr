@@ -2,13 +2,13 @@
 title: Kaynakları kaynak gruplarına dağıtma
 description: Azure Resource Manager şablonunda kaynakların nasıl dağıtılacağını açıklar. Birden fazla kaynak grubunun nasıl hedeflenecek gösterilmektedir.
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: fd211641d7fcc02a1db154053597497583b21ae5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/18/2020
+ms.openlocfilehash: 5e33f0d505759944ccaf2233aa122b6ab701c91f
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681672"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917435"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM şablonlarıyla kaynak grubu dağıtımları
 
@@ -83,6 +83,8 @@ Bir kaynak grubuna dağıtırken, kaynakların dağıtımını yapabilirsiniz:
 
 * işlemin hedef kaynak grubu
 * aynı abonelikte veya diğer aboneliklerdeki diğer kaynak grupları
+* Kiracıdaki tüm abonelikler
+* kaynak grubu için kiracı
 * [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
 
 Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
@@ -95,6 +97,8 @@ Hedef kaynağa kaynak dağıtmak için bu kaynakları şablonun kaynaklar bölü
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-rg.json" highlight="5":::
 
+Örnek bir şablon için bkz. [hedef kaynak grubuna dağıtma](#deploy-to-target-resource-group).
+
 ### <a name="scope-to-resource-group-in-same-subscription"></a>Aynı abonelikte kaynak grubu için kapsam
 
 Aynı abonelikte farklı bir kaynak grubuna kaynak dağıtmak için, iç içe geçmiş bir dağıtım ekleyin ve `resourceGroup` özelliğini ekleyin. Abonelik KIMLIĞINI veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının mevcut olması gerekir.
@@ -103,13 +107,43 @@ Aşağıdaki örnekte, iç içe dağıtım adlı bir kaynak grubunu hedefler `de
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/same-sub-to-resource-group.json" highlight="9,13":::
 
+Örnek bir şablon için bkz. [birden çok kaynak grubuna dağıtma](#deploy-to-multiple-resource-groups).
+
 ### <a name="scope-to-resource-group-in-different-subscription"></a>Farklı abonelikteki kaynak grubuna kapsam
 
 Kaynakları farklı bir abonelikte kaynak grubuna dağıtmak için, iç içe geçmiş bir dağıtım ekleyin ve `subscriptionId` ve özelliklerini dahil edin `resourceGroup` . Aşağıdaki örnekte, iç içe dağıtım adlı bir kaynak grubunu hedefler `demoResourceGroup` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/different-sub-to-resource-group.json" highlight="9,10,14":::
 
-## <a name="cross-resource-groups"></a>Çapraz kaynak grupları
+Örnek bir şablon için bkz. [birden çok kaynak grubuna dağıtma](#deploy-to-multiple-resource-groups).
+
+### <a name="scope-to-subscription"></a>Abonelik kapsamı
+
+Bir aboneliğe kaynak dağıtmak için, iç içe geçmiş bir dağıtım ekleyin ve `subscriptionId` özelliğini ekleyin. Abonelik, hedef kaynak grubu veya Kiracıdaki başka bir abonelik için abonelik olabilir. Ayrıca, `location` iç içe dağıtım için özelliğini ayarlayın.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-subscription.json" highlight="9,10,14":::
+
+Örnek bir şablon için bkz. [kaynak grubu oluşturma](#create-resource-group).
+
+### <a name="scope-to-tenant"></a>Kapsam-kiracı
+
+Kümesini olarak ayarlayarak kiracıya kaynak oluşturabilirsiniz `scope` `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
+
+Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
+
+Ya da kapsamını `/` Yönetim grupları gibi bazı kaynak türleri için olarak ayarlayabilirsiniz.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
+
+## <a name="deploy-to-target-resource-group"></a>Hedef kaynak grubuna dağıt
+
+Hedef kaynak grubunda kaynakları dağıtmak için, bu kaynakları şablonun **kaynaklar** bölümünde tanımlayın. Aşağıdaki şablon, dağıtım işleminde belirtilen kaynak grubunda bir depolama hesabı oluşturur.
+
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
+
+## <a name="deploy-to-multiple-resource-groups"></a>Birden çok kaynak grubuna dağıtma
 
 Tek bir ARM şablonunda birden fazla kaynak grubuna dağıtım yapabilirsiniz. Üst şablon için olandan farklı bir kaynak grubunu hedeflemek için, [iç içe veya bağlı bir şablon](linked-templates.md)kullanın. Dağıtım kaynak türü içinde, iç içe şablonun dağıtılmasını istediğiniz abonelik KIMLIĞI ve kaynak grubu için değerleri belirtin. Kaynak grupları farklı aboneliklerde bulunabilir.
 
@@ -152,10 +186,10 @@ $secondRG = "secondarygroup"
 $firstSub = "<first-subscription-id>"
 $secondSub = "<second-subscription-id>"
 
-Select-AzSubscription -Subscription $secondSub
+Set-AzContext -Subscription $secondSub
 New-AzResourceGroup -Name $secondRG -Location eastus
 
-Select-AzSubscription -Subscription $firstSub
+Set-AzContext -Subscription $firstSub
 New-AzResourceGroup -Name $firstRG -Location southcentralus
 
 New-AzResourceGroupDeployment `
@@ -207,6 +241,76 @@ az deployment group create \
 ```
 
 ---
+
+## <a name="create-resource-group"></a>Kaynak grubu oluşturma
+
+Bir kaynak grubu dağıtımından, bir abonelik düzeyine geçebilir ve bir kaynak grubu oluşturabilirsiniz. Aşağıdaki şablon, hedef kaynak grubuna bir depolama hesabı dağıtır ve belirtilen abonelikte yeni bir kaynak grubu oluşturur.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storagePrefix": {
+            "type": "string",
+            "maxLength": 11
+        },
+        "newResourceGroupName": {
+            "type": "string"
+        },
+        "nestedSubscriptionID": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "variables": {
+        "storageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[variables('storageName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "demoSubDeployment",
+            "location": "westus",
+            "subscriptionId": "[parameters('nestedSubscriptionID')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2020-06-01",
+                            "name": "[parameters('newResourceGroupName')]",
+                            "location": "[parameters('location')]",
+                            "properties": {}
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

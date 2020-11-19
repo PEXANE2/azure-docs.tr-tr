@@ -98,6 +98,12 @@
           href: signalr-howto-diagnostic-logs.md
         - name: Azure İlkesi kullanarak uyumluluğu denetleme
           href: signalr-howto-azure-policy.md
+    - name: Sorun giderme
+      items:
+        - name: Sorun giderme kılavuzları
+          href: signalr-howto-troubleshoot-guide.md
+        - name: Metotlarda sorun giderme
+          href: signalr-howto-troubleshoot-method.md
 - name: Başvurular
   items:
     - name: Azure CLI

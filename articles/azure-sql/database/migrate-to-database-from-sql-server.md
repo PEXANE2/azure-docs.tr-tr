@@ -12,17 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 41f3505388e72fba15277067a94cf4e473008f20
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fab52fcea03a2f65c868cfac27f8a8cef115b2be
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790432"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917656"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Azure SQL Veritabanı’na SQL Server veritabanı geçişi
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu makalede, SQL Server 2005 veya sonraki bir veritabanını Azure SQL veritabanı 'na geçirmeye yönelik birincil yöntemler hakkında bilgi edineceksiniz. Azure SQL yönetilen örneği 'ne geçiş hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine SQL Server örneği geçirme](../managed-instance/migrate-to-instance-from-sql-server.md). Diğer platformlardan geçiş hakkında geçiş bilgileri için bkz. [Azure veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/).
+Bu makalede, SQL Server 2005 veya sonraki bir veritabanını Azure SQL veritabanı 'na geçirmeye yönelik birincil yöntemler hakkında bilgi edineceksiniz. Azure SQL yönetilen örneği 'ne geçiş hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine SQL Server örneği geçirme](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md). Azure SQL 'e geçirilecek geçiş seçeneklerini ve araçlarını seçme konusunda yönergeler için bkz. [Azure SQL 'e](../migration-guides/index.yml) geçiş
+
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Tek bir veritabanına veya havuza alınmış bir veritabanına geçirme
 

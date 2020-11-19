@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490279"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917265"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Sağlanan aktarım hızı ile bir veritabanı içinde oluşturulan tüm kapsayı
 
 Mantıksal bir bölümdeki iş yükü, belirli bir mantıksal bölüme ayrılan aktarım hızına göre daha fazla tüketir, işlemlerinizin hızı sınırlıdır. Oran sınırlaması gerçekleştiğinde, veritabanının tamamı için üretilen işi artırabilir veya işlemleri yeniden deneyebilirsiniz. Bölümlendirme hakkında daha fazla bilgi için bkz. [mantıksal bölümler](partitioning-overview.md).
 
-Paylaşılan aktarım hızı veritabanındaki kapsayıcılar, söz konusu veritabanına ayrılmış olan aktarım hızını (RU/sn) paylaşır. Veritabanında en az 400 RU/sn hızında en çok dört kapsayıcınız olabilir. Standart (el ile) sağlanan aktarım hızı sayesinde, ilk dört değerden sonraki her yeni kapsayıcı için ek olarak 100 RU/sn gerekir. Örneğin sekiz kapsayıcılı bir paylaşılan aktarım hızı veritabanınız varsa, veritabanındaki en düşük RU/sn 800 RU/sn olacaktır. Otomatik ölçeklendirme sağlanan aktarım hızı sayesinde, bir veritabanında en fazla %4000 RU/sn (400-4000 RU/sn arasında ölçekleme) ile en fazla 25 kapsayıcı olabilir.
+Paylaşılan aktarım hızı veritabanındaki kapsayıcılar, söz konusu veritabanına ayrılmış olan aktarım hızını (RU/sn) paylaşır. Standart (el ile) sağlanan aktarım hızı sayesinde, veritabanında en az 400 RU/sn olan en fazla 25 kapsayıcı olabilir. Otomatik ölçeklendirme sağlanan aktarım hızı sayesinde, bir veritabanında en fazla %4000 RU/sn (400-4000 RU/sn arasında ölçekleme) ile en fazla 25 kapsayıcı olabilir.
 
 > [!NOTE]
 > 2020 Şubat 'de, paylaşılan bir üretilen iş veritabanında en fazla 25 kapsayıcı kullanmanıza izin veren bir değişiklik geliştirdik ve bu değişiklikler, kapsayıcılar arasında üretilen iş aktarımını daha iyi bir şekilde olanaklı hale getirmiştir. İlk 25 kapsayıcıdan sonra veritabanına daha fazla kapsayıcı ekleyebilirsiniz ve bu, veritabanının paylaşılan iş verimini birbirinden ayrı olan [ayrılmış aktarım hızı ile sağlanırlar](#set-throughput-on-a-database-and-a-container).<br>
@@ -80,11 +80,11 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 İki modeli birleştirebilirsiniz. Hem veritabanında hem de kapsayıcıda sağlama aktarımına izin verilir. Aşağıdaki örnek, bir Azure Cosmos veritabanı ve bir kapsayıcı üzerinde standart (el ile) sağlanan işleme sağlamayı gösterir:
 
 * *"K"* ru 'nin sağlanan standart (el ile) üretilen iş hızına sahip *Z* adlı bir Azure Cosmos veritabanı oluşturabilirsiniz. 
-* Sonra, veritabanı içinde *A* , *B* , *C* , *D* ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış aktarım hızını yapılandırabilirsiniz. 
+* Sonra, veritabanı içinde *A*, *B*, *C*, *D* ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış aktarım hızını yapılandırabilirsiniz. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Aktarım hızını kapsayıcı düzeyinde ayarlama":::
 
-* *"K"* Rus verimlilik, *A* , *C* , *D* ve *E* dört kapsayıcı genelinde paylaşılır. *Bir* , *C* , *D* veya *E* için kullanılabilir aktarım hızı miktarı farklılık gösterir. Her bir kapsayıcının verimlilik için SLA 'lar yoktur.
+* *"K"* Rus verimlilik, *A*, *C*, *D* ve *E* dört kapsayıcı genelinde paylaşılır. *Bir*, *C*, *D* veya *E* için kullanılabilir aktarım hızı miktarı farklılık gösterir. Her bir kapsayıcının verimlilik için SLA 'lar yoktur.
 * *B* adlı kapsayıcı, *"P"* ru aktarım hızını her zaman almak için garanti edilir. SLA 'Lar tarafından desteklenir.
 
 > [!NOTE]
@@ -111,7 +111,6 @@ Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir
 * 400 RU/sn 
 * GB * 10 RU/sn cinsinden geçerli depolama alanı (Kapsayıcınız veya veritabanınız 1 TB 'den fazla veri içermiyorsa, bkz. [yüksek depolama/düşük aktarım hızı programı](#high-storage-low-throughput-program))
 * Veritabanı veya kapsayıcı/100 üzerinde sağlanan en yüksek RU/sn
-* Kapsayıcı sayısı * 100 RU/sn (yalnızca paylaşılan üretilen iş veritabanı)
 
 ### <a name="changing-the-provisioned-throughput"></a>Sağlanan aktarım hızını değiştirme
 
@@ -122,7 +121,7 @@ Azure portal veya SDK 'Ları kullanarak bir kapsayıcının veya veritabanının
 
 **Sağlanan aktarım hızını azalttıktan** sonra [En düşük düzeyde](#current-provisioned-throughput)yapabileceksiniz.
 
-**Sağlanan aktarım hızını artırdıysanız** , çoğu zaman işlem anında gerçekleşir. Bununla birlikte, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle işlemin uzun sürebileceği durumlar vardır. Bu durumda, bu işlem devam ederken sağlanan aktarım hızını değiştirme girişimi, başka bir ölçeklendirme işleminin devam ettiğini belirten bir hata iletisiyle HTTP 423 yanıtı verir.
+**Sağlanan aktarım hızını artırdıysanız**, çoğu zaman işlem anında gerçekleşir. Bununla birlikte, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle işlemin uzun sürebileceği durumlar vardır. Bu durumda, bu işlem devam ederken sağlanan aktarım hızını değiştirme girişimi, başka bir ölçeklendirme işleminin devam ettiğini belirten bir hata iletisiyle HTTP 423 yanıtı verir.
 
 > [!NOTE]
 > Sağlanan aktarım hızı için büyük bir artış gerektiren çok büyük bir alım iş yükü planlıyorsanız, ölçeklendirme işleminin SLA olmadığını ve önceki paragrafta belirtildiği gibi, artışın büyük olduğu zaman uzun sürebileceğini aklınızda bulundurun. İş yükü başlamadan önce planı planlamak ve ölçeklendirmeyi başlatmak isteyebilirsiniz ve ilerleme durumunu denetlemek için aşağıdaki yöntemleri kullanın.
@@ -147,8 +146,8 @@ Bu tabloda bir veritabanında ve bir kapsayıcı üzerinde standart (el ile) akt
 
 |**Parametre**  |**Bir veritabanında standart (el ile) aktarım hızı**  |**Kapsayıcıda standart (el ile) aktarım hızı**|**Veritabanında otomatik ölçeklendirme işleme** | **Kapsayıcıda otomatik ölçeklendirme işleme**|
 |---------|---------|---------|---------|---------|
-|Giriş noktası (en az RU/sn) |400 RU/sn. İlk dört kapsayıcının ardından, her ek kapsayıcı için en az 100 RU/sn gerekir</li> |400| 400-4000 RU/s arasında otomatik ölçeklendirme. Kapsayıcı başına en az RU/sn olmayan en fazla 25 kapsayıcı olabilir</li> | 400-4000 RU/s arasında otomatik ölçeklendirme.|
-|Kapsayıcı başına en az RU/sn|100|400|--|400-4000 RU/s arasında otomatik ölçeklendirme|
+|Giriş noktası (en az RU/sn) |400 RU/sn. Kapsayıcı başına en az RU/sn olmayan en fazla 25 kapsayıcı olabilir.</li> |400| 400-4000 RU/s arasında otomatik ölçeklendirme. Kapsayıcı başına en az RU/sn olmayan en fazla 25 kapsayıcı olabilir.</li> | 400-4000 RU/s arasında otomatik ölçeklendirme.|
+|Kapsayıcı başına en az RU/sn|--|400|--|400-4000 RU/s arasında otomatik ölçeklendirme|
 |Maksimum RUs|Sınırsız, veritabanında.|Sınırsız, kapsayıcıda.|Sınırsız, veritabanında.|Sınırsız, kapsayıcıda.
 |RUs atanmış veya belirli bir kapsayıcıya kullanılabilir|Garanti yok. Belirli bir kapsayıcıya atanan RUs özelliklere bağlıdır. Özellikler, aktarım hızını, iş yükünün dağıtımını ve kapsayıcı sayısını paylaşan kapsayıcıların bölüm anahtarları seçeneği olabilir. |Kapsayıcıda yapılandırılan tüm RUs 'lar kapsayıcı için özel olarak ayrılmıştır.|Garanti yok. Belirli bir kapsayıcıya atanan RUs özelliklere bağlıdır. Özellikler, aktarım hızını, iş yükünün dağıtımını ve kapsayıcı sayısını paylaşan kapsayıcıların bölüm anahtarları seçeneği olabilir. |Kapsayıcıda yapılandırılan tüm RUs 'lar kapsayıcı için özel olarak ayrılmıştır.|
 |Bir kapsayıcı için maksimum depolama alanı|Sayısız.|Sınırsız|Sınırsız|Sınırsız|

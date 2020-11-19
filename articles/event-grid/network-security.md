@@ -5,25 +5,25 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 84336051fc3d653fbe73f650f2fc2badb2ec58da
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148934"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917537"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
 Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
 
 - Çıkış için hizmet etiketleri
-- Giriş için IP güvenlik duvarı kuralları (Önizleme)
+- Giriş için IP güvenlik duvarı kuralları
 - Giriş için özel uç noktalar
 
 
 ## <a name="service-tags"></a>Hizmet etiketleri
 Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](../virtual-network/service-tags-overview.md).
 
-[Ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules)   veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak*veya hedef alanındaki hizmet etiketi adını (örneğin, **AzureEventGrid**) belirterek    *destination*   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
+[Ağ güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanındaki hizmet etiketi adını (örneğin, **AzureEventGrid**) belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
 
 | Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|
@@ -45,7 +45,7 @@ Konular ve etki alanları için IP güvenlik duvarını yapılandırmaya yöneli
 Event Grid kaynağınız için özel uç noktalar kullanmak şunları yapmanıza olanak sağlar:
 
 - Genel internet 'in aksine Microsoft omurga ağı üzerinden bir VNet 'ten konuya veya etki alanına güvenli erişim.
-- VPN veya ExpressRoutes kullanarak VNet 'e bağlanan şirket içi ağlardan özel eşleme ile güvenli bir şekilde bağlanın.
+- VPN veya Express yollarını özel eşleme ile kullanarak VNet 'e bağlanan şirket içi ağlardan güvenli bir şekilde bağlanın.
 
 VNet 'iniz içindeki bir konu veya etki alanı için özel bir uç nokta oluşturduğunuzda, kaynak sahibine onay için bir izin isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda kaynağın sahibiyseniz, bu onay isteği otomatik olarak onaylanır. Aksi takdirde, bağlantı onaylanana kadar **bekleme** durumunda olur. VNet 'teki uygulamalar, başka şekilde kullandıkları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak, Özel uç nokta üzerinden Event Grid hizmetine sorunsuz bir şekilde bağlanabilir. Kaynak sahipleri, Azure portal kaynağın **Özel uç noktaları** sekmesinden izin isteklerini ve özel uç noktaları yönetebilir.
 
@@ -88,7 +88,7 @@ Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve y
 | Beklemede            | No                             |
 | Bağlantı kesildi       | No                             |
 
-Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
+Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması** gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
 
 ## <a name="pricing-and-quotas"></a>Fiyatlandırma ve Kotalar
 **Özel uç noktalar** , Event Grid hem temel hem de Premium katmanlarında kullanılabilir. Event Grid, konuya veya etki alanına göre 64 'e kadar özel uç nokta bağlantısının oluşturulmasına izin verir. 
