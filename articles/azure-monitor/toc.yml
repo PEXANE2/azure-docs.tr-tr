@@ -944,14 +944,28 @@
           href: insights/vminsights-maps.md
         - name: Performansı izleme
           href: insights/vminsights-performance.md
-        - name: Değişiklikleri izleme
-          href: insights/vminsights-change-analysis.md
+        - name: Konuk durumunu izleme (önizleme)
+          items:
+            - name: Genel Bakış
+              href: insights/vminsights-health-overview.md
+            - name: Etkinleştir
+              href: insights/vminsights-health-enable.md
+            - name: Uyarılar
+              href: insights/vminsights-health-alerts.md
+            - name: Portalda izleyicileri yapılandırma
+              href: insights/vminsights-health-configure.md
+            - name: İzleyicileri büyük ölçekte yapılandırma
+              href: insights/vminsights-health-configure-dcr.md
+            - name: Sorun giderme
+              href: insights/vminsights-health-troubleshoot.md
         - name: Günlük sorgularıyla verileri çözümleme
           href: insights/vminsights-log-search.md
+        - name: Performansı izleme
+          href: insights/vminsights-alerts.md
+        - name: Değişiklikleri izleme
+          href: insights/vminsights-change-analysis.md
         - name: Çalışma kitapları ile verileri görselleştirme
           href: insights/vminsights-workbooks.md
-        - name: Uyarı kuralları oluşturma
-          href: insights/vminsights-alerts.md
         - name: İzlemeyi devre dışı bırakma
           href: insights/vminsights-optout.md
     - name: Kapsayıcılar için Azure İzleyici

@@ -96,7 +96,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-portal.md
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: tutorial-design-database-using-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -246,7 +246,7 @@
             - name: Azure portal
               href: howto-restore-server-portal.md
               displayName: 'restore server,backup'
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-restore-server-cli.md
               displayName: 'restore server, backup'
             - name: Azure PowerShell
@@ -277,7 +277,7 @@
             - name: Azure portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -287,12 +287,16 @@
           items:
             - name: MySQL sunucusunu başlatma/durdurma
               href: how-to-stop-start-server.md
+        - name: Ana sürüm yükseltmesi
+          items:
+            - name: Ana sürüm yükseltmesi
+              href: how-to-major-version-upgrade.md
         - name: Otomatik büyüyen depolama alanı
           items:
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-auto-grow-storage-cli.md
               displayName: 'storage, business continuity , downtime, cli'
             - name: Azure PowerShell
@@ -400,7 +404,7 @@
             - name: Azure portal
               href: howto-restart-server-portal.md
               displayName: restart
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: howto-restart-server-cli.md
               displayName: restart
             - name: Azure PowerShell
@@ -530,7 +534,7 @@
             - name: Azure portal
               href: flexible-server/how-to-configure-server-parameters-portal.md
               displayName: server parameters
-            - name: Azure CLI
+            - name: Azure CLI’si
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
         - name: İzleme ve Günlükler
@@ -561,7 +565,7 @@
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql

@@ -39,7 +39,7 @@
     - name: 10 - Olağanüstü durum kurtarmayı etkinleştirme
       href: tutorial-disaster-recovery.md
     - name: 11 - VM’leri yönetme
-      displayName: scope policy RBAC lock tag
+      displayName: scope policy Azure RBAC lock tag
       href: tutorial-govern-resources.md
     - name: 12 - VM’leri izleme ve güncelleştirme
       href: tutorial-config-management.md
@@ -425,17 +425,17 @@
         - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geçişe Genel Bakış
-          href: migration-classic-resource-manager-overview.md
+          href: ../migration-classic-resource-manager-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geçişe Derinlemesine Bakış
           href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geçiş planlaması
-          href: migration-classic-resource-manager-plan.md
+          href: ../migration-classic-resource-manager-plan.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: PowerShell kullanarak geçirme
-          href: migration-classic-resource-manager-ps.md
+          href: ../migration-classic-resource-manager-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Sık karşılaşılan geçiş hataları
-          href: migration-classic-resource-manager-errors.md
+          href: ../migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geçiş için topluluk araçları
-          href: migration-classic-resource-manager-community-tools.md
+          href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: SSS
           href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Görüntüleri Kullanma
