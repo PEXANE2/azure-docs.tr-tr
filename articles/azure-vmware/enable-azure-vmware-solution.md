@@ -3,12 +3,12 @@ title: Azure VMware Çözüm kaynağınızı etkinleştirme
 description: Azure VMware Çözüm kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla düğüm isteyebilirsiniz.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: c9c31d8ffbf62a511f4f2ab19f995b6bc0ee0ca4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695155"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888445"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Çözüm kaynağını etkinleştirme
 [Azure VMware Çözüm](introduction.md) kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla düğüm isteyebilirsiniz.
@@ -78,7 +78,7 @@ CSP 'Ler, müşterileri için Azure VMware çözümünü etkinleştirmek üzere 
 
 1. Müşterinizin Azure planı aboneliğini genel olarak ayarlamayı gözden geçirin ve son inceleyin. Daha fazla bilgi için bkz. [Microsoft Iş Ortağı Merkezi belgeleri](https://docs.microsoft.com/partner-center/azure-plan-manage).
 
-Azure planı yapılandırıldıktan ve gerekli RBAC izinleri bir CSP olarak yer aldıktan sonra, bir Azure plan aboneliğine yönelik kotayı etkinleştirmek için Microsoft 'u devreye alırsınız. **Şirket adına yönetici** (Aobo) yordamını kullanarak Iş ortağı merkezinden Azure Portal erişin.
+Azure planı yapılandırıldıktan ve gerekli vSphere RBAC izinleri bir CSP olarak yer aldıktan sonra, bir Azure plan aboneliğine yönelik kotayı etkinleştirmek için Microsoft 'u devreye alırsınız. **Şirket adına yönetici** (Aobo) yordamını kullanarak Iş ortağı merkezinden Azure Portal erişin.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com)' nde oturum açın.
 

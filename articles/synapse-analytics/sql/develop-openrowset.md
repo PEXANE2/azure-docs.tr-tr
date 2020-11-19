@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701764"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888598"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak OPENROWSET kullanma
 
@@ -225,6 +225,9 @@ CSV Ayrıştırıcısı sürüm 2,0 özellikleri:
 - En büyük satır boyutu sınırı 8 MB 'tır.
 - Şu seçenekler desteklenmez: DATA_COMPRESSION.
 - Tırnak işareti boş dize ("") boş dize olarak yorumlanır.
+- TARIH veri türü için desteklenen biçim: YYYY-AA-GG
+- Saat veri türü için desteklenen biçim: ss: DD: SS [. kesirli saniye]
+- DATETIME2 veri türü için desteklenen biçim: YYYY-AA-GG SS: DD: SS [. kesirli saniye]
 
 HEADER_ROW = {TRUE | YANLÝÞ
 

@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148826"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888887"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub nedir?
 
@@ -119,6 +119,12 @@ Her Azure aboneliği, hizmet kötüye kullanımını önlemek için varsayılan 
 * [Azure abonelik hizmeti sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub azaltma ve siz](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
+
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>Azure Stack hub 'ında IoT Hub (Önizleme)
+
+Azure Stack hub 'da (Önizleme) IoT Hub karma IoT çözümleri oluşturmanıza olanak tanır. IoT Hub, IoT uygulamanız ile yönettiği cihazlar arasındaki çift yönlü iletişim için merkezi bir ileti hub 'ı görevi gören yönetilen bir hizmettir. IoT cihazları ve şirket içi çözümleriniz arasında güvenilir ve güvenli iletişimlerle IoT çözümleri oluşturmak için Azure Stack hub 'ında IoT Hub kullanabilirsiniz.
+
+Azure Stack hub 'ında IoT Hub genel önizleme sırasında ücretsizdir. Daha fazla bilgi için [Azure Stack hub 'ına genel bakış IoT Hub](/azure-stack/operator/iot-hub-rp-overview)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

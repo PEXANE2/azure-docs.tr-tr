@@ -8,14 +8,14 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947895"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886632"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .
@@ -37,7 +37,7 @@ Daha fazla bilgi için bkz. [istemci-sunucu mimarisi](../../concepts/client-and-
 
 ### <a name="azure-functions-set-up"></a>Azure Işlevleri ayarlandı
 
-İlk olarak Azure işlevimiz için temel yapıyı ayarlayalım. Kurulum üzerinde adım adım yönergeler şurada bulunabilir: [Visual Studio Code kullanarak Işlev oluşturma](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)
+İlk olarak Azure işlevimiz için temel yapıyı ayarlayalım. Kurulum üzerinde adım adım yönergeler şurada bulunabilir: [Visual Studio Code kullanarak Işlev oluşturma](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript)
 
 Azure Işlevimiz aşağıdaki yapılandırmayı gerektirir:
 
@@ -46,7 +46,7 @@ Azure Işlevimiz aşağıdaki yapılandırmayı gerektirir:
 - Yetkilendirme düzeyi: anonim (farklı bir yetkilendirme modelini tercih ediyorsanız bu daha sonra değiştirilebilir)
 - İşlev adı: Kullanıcı tanımlı
 
-Yukarıdaki yapılandırmayla [Azure işlevleri yönergelerinden](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript) sonra, işlevin kendisini içeren bir dosya Ile Azure işlevi için Visual Studio Code bir projeniz olmalıdır `index.js` . Bu dosyanın içindeki kod şu şekilde olmalıdır:
+Yukarıdaki yapılandırmayla [Azure işlevleri yönergelerinden](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript) sonra, işlevin kendisini içeren bir dosya Ile Azure işlevi için Visual Studio Code bir projeniz olmalıdır `index.js` . Bu dosyanın içindeki kod şu şekilde olmalıdır:
 
 ```javascript
 
@@ -128,15 +128,15 @@ Mevcut Iletişim hizmetlerinde `CommunicationUser` , oluşturma adımını atlay
 
 ## <a name="test-the-azure-function"></a>Azure Işlevini test etme
 
-Azure Işlevini kullanarak yerel olarak çalıştırın `F5` . Bu işlem, Azure Işlevini yerel olarak başlatır ve aracılığıyla erişilebilir hale getirir: `http://localhost:7071/api/FUNCTION_NAME` . [Yerel olarak çalışmaya](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-locally) yönelik ek belgelere göz atın
+Azure Işlevini kullanarak yerel olarak çalıştırın `F5` . Bu işlem, Azure Işlevini yerel olarak başlatır ve aracılığıyla erişilebilir hale getirir: `http://localhost:7071/api/FUNCTION_NAME` . [Yerel olarak çalışmaya](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally) yönelik ek belgelere göz atın
 
 Tarayıcınızda URL 'YI açın ve belirteç için Iletişim Kullanıcı kimliği, belirteç ve süre sonu ile bir yanıt gövdesi görmeniz gerekir.
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Güvenilen hizmet mimarisi diyagramı":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Oluşturulan Azure Işlevi için bir yanıt örneği gösteren ekran görüntüsü.":::
 
 ## <a name="deploy-the-function-to-azure"></a>Işlevi Azure 'a dağıtın
 
-Azure Işlevinizi dağıtmak için [adım adım yönergeleri](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#sign-in-to-azure) izleyebilirsiniz.
+Azure Işlevinizi dağıtmak için [adım adım yönergeleri](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure) izleyebilirsiniz.
 
 Genellikle şunları yapmanız gerekir:
 1. Visual Studio 'dan Azure 'da oturum açın
@@ -151,4 +151,4 @@ URL 'yi kullanarak Azure işlevini çalıştırma `http://<function-appn-ame>.az
 
 Visual Studio Code üzerinde işleve sağ tıklayıp Işlev URL 'sini kopyalayarak URL 'YI bulabilirsiniz.
 
-[Azure işlevinizi çalıştırma](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript#run-the-function-in-azure) hakkında daha fazla bilgi için
+[Azure işlevinizi çalıştırma](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-in-azure) hakkında daha fazla bilgi için

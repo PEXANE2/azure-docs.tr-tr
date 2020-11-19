@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78330404"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888513"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -21,7 +21,7 @@ ms.locfileid: "78330404"
 
 Bu öğreticide, Azure depolama 'ya statik bir Web sitesi derleyip dağıtmayı öğreneceksiniz. İşiniz bittiğinde, kullanıcıların herkese açık bir şekilde erişebileceği statik bir Web siteniz olur. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Statik Web sitesi barındırmayı yapılandırma
@@ -49,7 +49,7 @@ Başlamak için [Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="configure-static-website-hosting"></a>Statik Web sitesi barındırmayı yapılandırma
 
-İlk adım, depolama hesabınızı Azure portal statik bir Web sitesi barındıracak şekilde yapılandırmaktır. Hesabınızı statik Web sitesi barındırma için yapılandırdığınızda, Azure Storage otomatik olarak *$Web*adlı bir kapsayıcı oluşturur. *$Web* kapsayıcı, statik Web siteniz için dosyaları içerecektir. 
+İlk adım, depolama hesabınızı Azure portal statik bir Web sitesi barındıracak şekilde yapılandırmaktır. Hesabınızı statik Web sitesi barındırma için yapılandırdığınızda, Azure Storage otomatik olarak *$Web* adlı bir kapsayıcı oluşturur. *$Web* kapsayıcı, statik Web siteniz için dosyaları içerecektir. 
 
 1. [Azure Portal](https://portal.azure.com/) Web tarayıcınızda açın. 
 1. Depolama hesabınızı bulun ve hesaba genel bakış ' ı görüntüleyin.
@@ -70,21 +70,31 @@ Sonra, Visual Studio Code sahip bir Merhaba Dünya Web sayfası oluşturun ve Az
 
     ![Klasörü Visual Studio Code açın](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
-1. *Mywebsite* klasöründe varsayılan dizin dosyasını oluşturun ve *index.html*olarak adlandırın.
+1. *Mywebsite* klasöründe varsayılan dizin dosyasını oluşturun ve *index.html* olarak adlandırın.
 
     ![Visual Studio Code varsayılan dizin dosyasını oluşturun](media/storage-blob-static-website-host/create-index-file-vs-code.png)
 
 1. Düzenleyicide *index.html* 'yi açın, dosyaya aşağıdaki metni yapıştırın ve kaydedin:
 
     ```
-    <h1>Hello World!</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>Hello World!</h1>
+      </body>
+    </html>
     ```
 
-1. Varsayılan hata dosyasını oluşturun ve *404.html*olarak adlandırın.
+1. Varsayılan hata dosyasını oluşturun ve *404.html* olarak adlandırın.
 1. Düzenleyicide *404.html* 'yi açın, dosyaya aşağıdaki metni yapıştırın ve kaydedin:
 
     ```
-    <h1>404</h1>
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h1>404</h1>
+      </body>
+    </html>
     ```
 
 1. **Gezgin** panelinde *mywebsite* klasörü altına sağ tıklayın ve Web sitenizi dağıtmak Için **statik Web sitesine dağıt...** seçeneğini belirleyin. Aboneliklerin listesini almak için Azure 'da oturum açmanız istenir.

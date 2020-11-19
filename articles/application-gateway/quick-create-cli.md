@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb577947942ffce640f91daf0050f6796f93222b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4b6fc296ae41667d271e243e9aca9b594e4a5b6
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91311708"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886711"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure CLI
 
@@ -24,14 +24,11 @@ Uygulama ağ geçidi, uygulama Web trafiğini bir arka uç havuzundaki belirli k
 
 Bu hızlı başlangıcı [Azure PowerShell](quick-create-powershell.md) veya [Azure Portal](quick-create-portal.md)kullanarak da tamamlayabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure CLI sürüm 2.0.4 veya üzeri](/cli/azure/install-azure-cli) (Azure CLI 'yi yerel olarak çalıştırırsanız).
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
+- Bu makale, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
@@ -77,7 +74,7 @@ Arka uçta NIC 'Ler, sanal makine ölçek kümeleri, genel IP 'Ler, iç IP 'Ler,
 
 Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere NGıNX Web sunucusunu yükler. Bir Cloud-init yapılandırma dosyasını kullanarak NGıNX 'i yükleyebilir ve bir Linux sanal makinesinde bir "Merhaba Dünya" Node.js uygulaması çalıştırabilirsiniz. Cloud-init hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için Cloud-init desteği](../virtual-machines/linux/using-cloud-init.md).
 
-Azure Cloud Shell aşağıdaki yapılandırmayı kopyalayıp *cloud-init.txt*adlı bir dosyaya yapıştırın. Dosyayı oluşturmak için *düzenleyici cloud-init.txt* girin.
+Azure Cloud Shell aşağıdaki yapılandırmayı kopyalayıp *cloud-init.txt* adlı bir dosyaya yapıştırın. Dosyayı oluşturmak için *düzenleyici cloud-init.txt* girin.
 
 ```yaml
 #cloud-config
@@ -165,9 +162,9 @@ Azure 'un uygulama ağ geçidini oluşturması 30 dakika kadar sürebilir. Oluş
 
 - **Appgatewaybackendpool**: **arka uç havuzları** sayfasında bulunur. Gerekli arka uç havuzunu belirtir.
 - **Appgatewaybackendhttpsettings**: **http ayarları** sayfasında bulunur. Uygulama ağ geçidinin, iletişim için 80 bağlantı noktasını ve HTTP protokolünü kullandığını belirtir.
-- **Appgatewayhttplistener**: **dinleyiciler sayfasında**bulunur. **Appgatewaybackendpool**ile ilişkili varsayılan dinleyiciyi belirtir.
-- **Appgatewayfrontendıp**: **ön uç IP yapılandırması** sayfasında bulunur. **Appgatewayhttplistener**öğesine *Myagpublicıpaddress* atar.
-- **rule1**: **Rules** sayfasında bulunur. **Appgatewayhttplistener**ile ilişkili varsayılan yönlendirme kuralını belirtir.
+- **Appgatewayhttplistener**: **dinleyiciler sayfasında** bulunur. **Appgatewaybackendpool** ile ilişkili varsayılan dinleyiciyi belirtir.
+- **Appgatewayfrontendıp**: **ön uç IP yapılandırması** sayfasında bulunur. **Appgatewayhttplistener** öğesine *Myagpublicıpaddress* atar.
+- **rule1**: **Rules** sayfasında bulunur. **Appgatewayhttplistener** ile ilişkili varsayılan yönlendirme kuralını belirtir.
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 

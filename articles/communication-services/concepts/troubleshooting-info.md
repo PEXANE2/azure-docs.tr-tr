@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357632"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886796"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde sorun giderme
 
@@ -23,17 +23,17 @@ Bu belge, Iletişim Hizmetleri çözümünüz dahilinde karşılaşabileceğiniz
 
 Geliştiricilerin Iletişim Hizmetleri [GitHub deposunda](https://github.com/Azure/communication)soru göndermelerini, özellik önermesine ve sorunları sorun olarak raporlamalarını öneririz. Diğer Forumlar şunlardır:
 
-* [Microsoft Soru-Cevap](https://docs.microsoft.com/answers/questions/topics/single/101418.html)
+* [Microsoft Soru-Cevap](/answers/questions/topics/single/101418.html)
 * [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
 
 Azure abonelik [destek planınıza](https://azure.microsoft.com/support/plans/) bağlı olarak, [Azure Portal](https://azure.microsoft.com/support/create-ticket/)doğrudan bir destek bileti gönderebilirsiniz.
 
 Belirli sorun türleriyle ilgili sorunları gidermenize yardımcı olması için aşağıdaki bilgi parçalarından herhangi biri istenebilir:
 
-* **MS-CV kimliği** : Bu kimlik, çağrı ve iletilerle ilgili sorunları gidermek için kullanılır. 
-* **Çağrı kimliği** : Bu kimlik, iletişim hizmetleri çağrılarını belirlemek için kullanılır.
-* **SMS ILETI kimliği** : bu KIMLIK, SMS iletilerini tanımlamak için kullanılır.
-* **Çağrı günlükleri** : Bu Günlükler, çağrı ve ağ sorunlarını gidermek için kullanılabilecek ayrıntılı bilgiler içerir.
+* **MS-CV kimliği**: Bu kimlik, çağrı ve iletilerle ilgili sorunları gidermek için kullanılır. 
+* **Çağrı kimliği**: Bu kimlik, iletişim hizmetleri çağrılarını belirlemek için kullanılır.
+* **SMS ILETI kimliği**: bu KIMLIK, SMS iletilerini tanımlamak için kullanılır.
+* **Çağrı günlükleri**: Bu Günlükler, çağrı ve ağ sorunlarını gidermek için kullanılabilecek ayrıntılı bilgiler içerir.
 
 
 ## <a name="access-your-ms-cv-id"></a>MS-CV KIMLIĞINIZE erişin

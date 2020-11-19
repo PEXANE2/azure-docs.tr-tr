@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744850"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889023"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için otomatik örnek onarımları
 
@@ -36,9 +36,9 @@ Otomatik örnek onarım ilkesini etkinleştirmeden önce, ölçek kümesi örnek
 
 "Sağlıksız" olarak işaretlenmiş örnekler için otomatik onarımlar ölçek kümesi tarafından tetiklenir. Uç nokta yapılandırılırken, istenmeyen örnek onarımlarını önlemek için otomatik onarımlar ilkesini etkinleştirmeden önce uygulama uç noktasının doğru yapılandırıldığından emin olun.
 
-**Tek yerleşim grubunu etkinleştir**
+**Ölçek kümesindeki en fazla örnek sayısı**
 
-Bu özellik şu anda yalnızca tek bir yerleştirme grubu olarak dağıtılan ölçek kümeleri için kullanılabilir. *Tekplacementgroup* özelliği, ölçek kümesinin otomatik örnek onarımları özelliğini kullanması için *true* olarak ayarlanmalıdır. [Yerleştirme grupları](./virtual-machine-scale-sets-placement-groups.md#placement-groups)hakkında daha fazla bilgi edinin.
+Bu özellik şu anda yalnızca en fazla 200 örneğe sahip olan ölçek kümeleri için kullanılabilir. Ölçek kümesi tek bir yerleştirme grubu ya da bir çok yerleştirme grubu olarak dağıtılabilir, ancak ölçek kümesi için otomatik örnek onarımı etkinse, örnek sayısı 200 üzerinde olamaz.
 
 **API sürümü**
 
@@ -68,7 +68,7 @@ Bir örnek, ölçek kümesinde gerçekleştirilen bir PUT, PATCH veya POST eylem
 
 Sanal Makine Ölçek Kümeleri gerekirse otomatik örnek onarımları geçici olarak askıya alma özelliğini sağlar. Sanal makine ölçek kümesinin örnek görünümündeki otomatik onarımda bulunan *Hizmetler* Için *ServiceState* , otomatik onarımın geçerli durumunu gösterir. Ölçek kümesi otomatik onarımları kabul ettiğinde, *ServiceState* parametresinin değeri *çalışıyor* olarak ayarlanır. Ölçek kümesi için otomatik onarımlar askıya alındığında, *ServiceState* parametresi *askıya alındı* olarak ayarlanır. Bir ölçek kümesi üzerinde *Automaticrepairspolicy* tanımlanmazsa, ancak otomatik onarımlar özelliği etkinleştirilmemişse, *ServiceState* parametresi *çalışmıyor* olarak ayarlanır.
 
-Bir ölçek kümesindeki sağlıksız olanları değiştirmek için yeni oluşturulan örnekler, sürekli olarak onarım işlemleri gerçekleştirildikten sonra bile düzgün şekilde kalmaya devam ederse, bir güvenlik önlemi olarak platform otomatik onarımlar için *ServiceState* 'ı *askıya alındı* olarak güncelleştirir. Otomatik onarımları bir kez daha yeniden *deneyebilirsiniz. bu* , otomatik onarımlar Için *ServiceState* değerini ayarlar. Ölçek kümesi için [Otomatik onarımlar ilkesinin hizmet durumunu görüntüleme ve güncelleştirme](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) bölümünde ayrıntılı yönergeler verilmiştir. 
+Bir ölçek kümesindeki sağlıksız olanları değiştirmek için yeni oluşturulan örnekler, sürekli olarak onarım işlemleri gerçekleştirildikten sonra bile düzgün şekilde kalmaya devam ederse, bir güvenlik önlemi olarak platform otomatik onarımlar için *ServiceState* 'ı *askıya alındı* olarak güncelleştirir. Otomatik onarımları bir kez daha yeniden *deneyebilirsiniz. bu*, otomatik onarımlar Için *ServiceState* değerini ayarlar. Ölçek kümesi için [Otomatik onarımlar ilkesinin hizmet durumunu görüntüleme ve güncelleştirme](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) bölümünde ayrıntılı yönergeler verilmiştir. 
 
 Otomatik örnek onarımları işlemi aşağıdaki gibi işler:
 
@@ -92,7 +92,7 @@ Yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirmek
 
 Bu [hızlı başlangıç şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) , yük dengeleyici durum araştırmasına sahip bir sanal makine ölçek kümesi dağıtmak ve 30 dakikalık yetkisiz kullanım süresiyle etkin otomatik örnek onarımları sağlamak için de kullanabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
  
 Aşağıdaki adımlar, yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirir.
  
@@ -164,17 +164,17 @@ Mevcut bir ölçek kümesinde otomatik onarım ilkesini etkinleştirmeden önce,
 
 Varolan bir ölçek kümesinin modelini güncelleştirdikten sonra, en son modelin ölçeğin tüm örneklerine uygulandığından emin olun. [En son ölçek kümesi modeliyle VM 'leri güncel hale getirme](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)yönergelerine bakın.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Mevcut bir ölçek kümesinin otomatik onarımlar ilkesini Azure portal aracılığıyla değiştirebilirsiniz. 
  
 1. Var olan bir sanal makine ölçek kümesine gidin.
-1. Soldaki menüdeki **Ayarlar** ' ın altında **sistem durumu ve Onar** ' ı seçin.
+1. Soldaki menüdeki **Ayarlar** ' ın altında **sistem durumu ve Onar**' ı seçin.
 1. **Uygulama durumunu izle** seçeneğini etkinleştirin.
 1. **Otomatik onarma ilkesi** bölümünü bulun.
 1. **Otomatik onarımlar** **seçeneğini açın.**
 1. **Yetkisiz kullanım süresi (dk)** alanında yetkisiz kullanım süresini dakika cinsinden belirtin, izin verilen değerler 30 ila 90 dakika arasındadır. 
-1. İşiniz bittiğinde **Kaydet** ‘i seçin. 
+1. İşiniz bittiğinde **Kaydet**‘i seçin. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -257,7 +257,7 @@ Otomatik onarımın durumunu ayarlamak için, bir sanal makine ölçek kümesind
 }
 ```
 
-### <a name="azure-cli"></a>Azure CLI 
+### <a name="azure-cli"></a>Azure CLI’si 
 
 Otomatik örnek onarımlarını için *ServiceState* 'i görüntülemek için [Get-Instance-View](/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) cmdlet 'ini kullanın. 
 

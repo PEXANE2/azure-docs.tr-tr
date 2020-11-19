@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f2b46b37fc8c773062402c52f2903a7a10acc2c4
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874721"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888428"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -218,7 +218,7 @@ CloudAdmin grup ayrıcalıklarınız olacaktır. Daha fazla bilgi için bkz. [er
 
 #### <a name="what-privileges-and-permissions-will-i-have-on-the-nsx-t-manager"></a>NSX-T Manager 'da hangi ayrıcalıkları ve izinleri almam gerekir?
 
-NSX-T üzerinde tam yönetici ayrıcalıklarına sahip olacaksınız ve şirket içi NSX-T veri merkezi ile yaptığınız gibi rol tabanlı erişim denetimini yönetebilirsiniz. Daha fazla bilgi için bkz. [erişim ve kimlik kavramları](concepts-identity.md).
+NSX-T üzerinde tam yönetici ayrıcalıklarına sahip olacaksınız ve şirket içi NSX-T veri merkezi 'nde olduğu gibi vSphere rol tabanlı erişim denetimini yönetebilirsiniz. Daha fazla bilgi için bkz. [erişim ve kimlik kavramları](concepts-identity.md).
 
 > [!NOTE]
 > Bir T0 yönlendiricisi, özel bulut dağıtımının bir parçası olarak oluşturulur ve yapılandırılır. Bu mantıksal yönlendiricide veya NSX-T Edge düğümü VM 'lerinde yapılan herhangi bir değişiklik, özel bulutunuzun bağlantısını etkileyebilir.

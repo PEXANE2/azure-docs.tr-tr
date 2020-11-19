@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358125"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887408"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -31,9 +31,9 @@ Bunun için şunları yapın:
 
 Düşük bir kod deneyimi için bkz. öğreticide, [Azure Machine Learning Studio](https://ml.azure.com/)'da otomatik makine öğrenimini kullanarak bir zaman serisi tahmin örneği için [otomatik makine öğrenimine sahip tahmin talebi](tutorial-automated-ml-forecast.md) .
 
-Klasik zaman serisi yöntemlerinin aksine, otomatik ML 'de, geçmiş zaman serisi değerleri, gerileme için diğer tahminlerle birlikte ek boyutlar haline gelir. Bu yaklaşım, eğitim sırasında birden çok bağlamsal değişkeni ve bunlarla ilişkilerini bir araya ekler. Birden çok etken bir tahmini etkileyebileceğinden, bu yöntem kendisini gerçek dünya tahmin senaryolarıyla iyi bir şekilde hizalar. Örneğin, satış tahmini yaparken, geçmiş eğilimleri etkileşimlerinin yanı sıra Döviz Kuru ve fiyat, satış sonucunu güvenle bir şekilde ister. 
+Klasik zaman serisi yöntemlerinin aksine, otomatik ML 'de, geçmiş zaman serisi değerleri, gerileme için diğer tahminlerle birlikte ek boyutlar haline gelir. Bu yaklaşım, eğitim sırasında birden çok bağlamsal değişkeni ve bunlarla ilişkilerini bir araya ekler. Birden çok etken bir tahmini etkileyebileceğinden, bu yöntem kendisini gerçek dünya tahmin senaryolarıyla iyi bir şekilde hizalar. Örneğin, satış tahmini yaparken geçmiş eğilimler, Döviz Kuru ve fiyatın etkileşimleri, satış sonucunu güvenle bir şekilde ister. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede, 
 
@@ -46,7 +46,7 @@ Klasik zaman serisi yöntemlerinin aksine, otomatik ML 'de, geçmiş zaman seris
 Bir tahmin regresyon görev türü ve oto içindeki regresyon görev türü arasındaki en önemli fark, verilerinize geçerli bir zaman serisini temsil eden bir özellik dahil etmektedir. Düzenli bir zaman serisinde iyi tanımlanmış ve tutarlı bir sıklık bulunur ve sürekli bir zaman aralığında her örnek noktada bir değer vardır. 
 
 Bir dosyanın aşağıdaki anlık görüntüsünü göz önünde bulundurun `sample.csv` .
-Bu veri kümesi, A ve B olmak üzere iki farklı mağaza içeren bir şirkete ait günlük satış verileri. 
+Bu veri kümesi, iki farklı mağaza, A ve B içeren bir şirkete ait günlük satış verileri. 
 
 Ayrıca, için özellikler mevcuttur
 
@@ -138,7 +138,7 @@ Forekaletcn (Önizleme)| Forekaletcn, en zorlu tahmin görevlerinin üstesinden 
 
 Regresyon sorununa benzer şekilde, görev türü, yineleme sayısı, eğitim verileri ve çapraz doğrulamaları sayısı gibi standart eğitim parametrelerini tanımlarsınız. Tahmin görevleri için, denemeyi etkileyen ayarlanması gereken ek parametreler vardır. 
 
-Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için [başvuru belgelerine](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) bakın.
+Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için bkz. [Forekaleingparameter sınıfı başvuru belgeleri](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) .
 
 | Parametre &nbsp; adı | Açıklama | Gerekli |
 |-------|-------|-------|
@@ -149,11 +149,11 @@ Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım de
 |`target_lags`|Hedef değerleri, verilerin sıklığından sonra gecikme olacak satır sayısı. Gecikme bir liste veya tek tamsayı olarak temsil edilir. Bağımsız değişkenler ve bağımlı değişken arasındaki ilişki, varsayılan olarak birbiriyle eşleşmediği veya ilişkilendirilemiyor durumunda gecikme kullanılmalıdır. ||
 |`feature_lags`| Belirlenen özellikler, ayarlandığında otomatik ML tarafından otomatik olarak kararilir `target_lags` ve olarak `feature_lags` ayarlanır `auto` . Özellik lags özelliğinin etkinleştirilmesi doğruluğu artırmaya yardımcı olabilir. Özellik lags varsayılan olarak devre dışıdır. ||
 |`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* <= eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur. Modele eğitim yaparken yalnızca belirli bir geçmişi düşünmek istediğinizde bu parametreyi belirtin. [Hedef sıralı pencere toplama](#target-rolling-window-aggregation)hakkında daha fazla bilgi edinin.||
-|`short_series_handling`| Yetersiz veri nedeniyle eğitim sırasında hata oluşmasını önlemek için kısa süre serisi işlemeyi sağlar. Kısa seri işleme varsayılan olarak true olarak ayarlanır.|
+|`short_series_handling_config`| Yetersiz veri nedeniyle eğitim sırasında hata oluşmasını önlemek için kısa süre serisi işlemeyi sağlar. Kısa seri işleme `auto` Varsayılan olarak olarak ayarlanır. [Kısa seri işleme](#short-series-handling)hakkında daha fazla bilgi edinin.|
 
 
 Aşağıdaki kod, 
-* `ForecastingParameters`Deneme eğitimine yönelik tahmin parametrelerini tanımlamak için sınıfından yararlanır
+* [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)Deneme eğitimine yönelik tahmin parametrelerini tanımlamak için sınıfından yararlanır
 * `time_column_name` `day_datetime` Veri kümesindeki alanını ayarlar. 
 * `time_series_id_column_names`Parametresini öğesine tanımlar `"store"` . Bu, veriler için **iki ayrı zaman serisi grubu** oluşturulmasını sağlar; bir mağaza A ve B.
 * `forecast_horizon`Tüm test kümesini tahmin etmek için 50 olarak ayarlar. 
@@ -164,13 +164,12 @@ Aşağıdaki kod,
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
-forecasting_parameters = ForecastingParameters(
-    time_column_name='day_datetime', 
-    forecast_horizon=50,
-    time_series_id_column_names=["store"],
-    target_lags='auto',
-    target_rolling_window_size=10
-)
+forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                               forecast_horizon=50,
+                                               time_series_id_column_names=["store"],
+                                               target_lags='auto',
+                                               target_rolling_window_size=10)
+                                              
 ```
 
 Bunlar `forecasting_parameters` daha sonra `AutoMLConfig` `forecasting` görev türü, birincil ölçüm, çıkış kriterleri ve eğitim verileriyle birlikte standart nesneniz içine geçirilir. 
@@ -190,7 +189,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 
 ### <a name="featurization-steps"></a>Korturlama adımları
@@ -226,12 +225,16 @@ SDK ile korturleri özelleştirmek için, `"featurization": FeaturizationConfig`
 
 ```python
 featurization_config = FeaturizationConfig()
+
 # `logQuantity` is a leaky feature, so we remove it.
 featurization_config.drop_columns = ['logQuantitity']
+
 # Force the CPWVOL5 feature to be of numeric type.
 featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+
 # Fill missing values in the target column, Quantity, with zeroes.
 featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+
 # Fill mising values in the `INCOME` column with median value.
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
@@ -260,7 +263,7 @@ Derin öğrenmeyi etkinleştirmek için, nesnesinde öğesini ayarlayın `enable
 automl_config = AutoMLConfig(task='forecasting',
                              enable_dnn=True,
                              ...
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 > [!Warning]
 > SDK ile oluşturulan denemeleri için DNN 'yi etkinleştirdiğinizde, [en iyi model açıklamaları](how-to-machine-learning-interpretability-automl.md) devre dışı bırakılır.
@@ -279,6 +282,35 @@ Tablo, pencere toplama uygulandığında ortaya çıkan özellik mühendisliğin
 ![hedef sıralı pencere](./media/how-to-auto-train-forecast/target-roll.svg)
 
 [Hedef sıralı pencere toplama özelliğinden](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)yararlanarak bir Python kod örneği görüntüleyin.
+
+### <a name="short-series-handling"></a>Kısa seri işleme
+
+Model geliştirmenin eğitim ve doğrulama aşamalarını yürütmek için yeterli veri noktası yoksa otomatik ML bir zaman serisini bir **kısa seriler** olarak değerlendirir. Veri noktalarının sayısı her bir denemeye göre farklılık gösterir ve max_horizon, çapraz doğrulama sayısını ve modelin geri elde ettiği, zaman serisi özelliklerinin oluşturulması için gereken en fazla geçmişin uzunluğunu bağlıdır. Tam hesaplama için [short_series_handling_config başvuru belgelerine](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)bakın.
+
+Otomatik ML `short_series_handling_config` , nesne içindeki parametresiyle varsayılan olarak kısa seri işleme sağlar `ForecastingParameters` . 
+
+Kısa seri işlemeyi etkinleştirmek için `freq` parametresinin de tanımlanması gerekir. Varsayılan davranışı değiştirmek için `short_series_handling_config = auto` , `short_series_handling_config` nesnenizin parametresini güncelleştirin `ForecastingParameter` .  
+
+```python
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                            forecast_horizon=50,
+                                            short_series_handling_config='auto',
+                                            freq = 50
+                                            target_lags='auto')
+```
+Aşağıdaki tablo, için kullanılabilir ayarları özetler `short_series_handling_config` .
+ 
+|Ayar|Açıklama
+|---|---
+|`auto`| Kısa seri işleme için varsayılan davranış aşağıda verilmiştir <li> *Tüm seriler kısaysa*, verileri doldurur. <br> <li> *Tüm seriler kısaysa*, kısa seriyi bırakın. 
+|`pad`| `short_series_handling_config = pad`Daha sonra OTOMATIK ml, bulunan her kısa serinin işlevsiz değerler ekler. Aşağıda sütun türleri ve bunların nasıl doldurulmuş oldukları listelenmiştir: <li>NaNs içeren nesne sütunları <li> 0 ile sayısal sütunlar <li> False ile Boole/mantık sütunları <li> Hedef sütun, sıfır ortalaması ve standart sapması 1 olan rastgele değerlerle doldurulur. 
+|`drop`| `short_series_handling_config = drop`Daha sonra OTOMATIK ml, kısa serileri bırakır ve eğitim veya tahmin için kullanılmaz. Bu serinin tahminleri NaN olarak döndürülür.
+|`None`| Doldurulmuş veya bırakılan seri yok
+
+>[!WARNING]
+>Daha önce hatasız eğitim elde etmek üzere yapay veri aldığımızdan doldurma, elde edilen modelin doğruluğunu etkileyebilir. <br> <br> Serinin birçoğu kısaysa, explainability sonuçlarında bazı etkileri da görebilirsiniz
 
 ## <a name="run-the-experiment"></a>Denemeyi çalıştırma 
 

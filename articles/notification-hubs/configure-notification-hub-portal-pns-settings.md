@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c75ccaa05457f13697d1a26dbc8fd2f6720a751
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517861"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887272"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Hızlı başlangıç: Bildirim Hub 'ında anında iletme bildirimleri ayarlama
 
@@ -42,9 +42,9 @@ Apple Anında İletilen Bildirim Servisi (APNS) ayarlamak için:
 
      ![Azure portal bir APNS sertifika yapılandırmasının ekran görüntüsü](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. **Belirteç** ' yi seçerseniz:
+   b. **Belirteç**' yi seçerseniz:
 
-   * **Anahtar kimliği** , **paket KIMLIĞI** , **Takım Kimliği** ve **belirteç** değerlerini girin.
+   * **Anahtar kimliği**, **paket KIMLIĞI**, **Takım Kimliği** ve **belirteç** değerlerini girin.
    * **Korumalı alan** modunu seçin. Ya da uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek için **Üretim** modu ' nu seçin.
 
      ![Azure portal bir APNS belirteç yapılandırması ekran görüntüsü](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
@@ -59,7 +59,7 @@ Google FCM için anında iletme bildirimleri ayarlamak için:
 
 1. Azure portal, **Bildirim Hub** 'ı sayfasında, soldaki menüden **Google (GCM/FCM)** öğesini seçin.
 2. Daha önce kaydettiğiniz Google FCM projesi için **API anahtarını** yapıştırın.
-3. **Kaydet** ’i seçin.
+3. **Kaydet**’i seçin.
 
    ![Google FCM için Notification Hubs yapılandırmayı gösteren ekran görüntüsü](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
@@ -108,13 +108,15 @@ Google Firebase Cloud Messaging (FCM) projeniz için **API anahtarına** ihtiyac
 
 Android uygulamasına bildirim gönderme hakkında daha fazla bilgi için bkz. [Firebase kullanarak Android cihazlarına anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
+---
+
 ## <a name="windows-push-notification-service"></a>Windows anında Iletme bildirimi hizmeti
 
 Windows anında bildirim hizmeti 'ni (WNS) ayarlamak için:
 
 1. Azure portal, **Bildirim Hub** 'ı sayfasında, sol menüden **Windows (WNS)** seçeneğini belirleyin.
 2. **Paket SID 'si** ve **güvenlik anahtarı** için değerler girin.
-3. **Kaydet** ’i seçin.
+3. **Kaydet**’i seçin.
 
    ![Paket SID ve güvenlik anahtarı kutularını gösteren ekran görüntüsü](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
@@ -127,16 +129,16 @@ Windows Phone için Microsoft anında Iletme bildirimi hizmeti 'ni (MPNS) ayarla
 1. Azure portal, **Bildirim Hub** 'ı sayfasında sol menüden **Windows Phone (MPNS)** öğesini seçin.
 1. Kimliği doğrulanmamış veya kimliği doğrulanmış anında iletme bildirimlerini etkinleştir:
 
-   a. Kimliği doğrulanmamış anında iletme bildirimlerini etkinleştirmek için, **kimliği doğrulanmamış gönderimi etkinleştir** ' i seçin  >  **Save**.
+   a. Kimliği doğrulanmamış anında iletme bildirimlerini etkinleştirmek için, **kimliği doğrulanmamış gönderimi etkinleştir**' i seçin  >  **Save**.
 
       ![Kimliği doğrulanmamış anında iletme bildirimlerinin nasıl etkinleştirileceğini gösteren ekran görüntüsü](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
    b. Kimliği doğrulanmış anında iletme bildirimlerini etkinleştirmek için:
-      * Araç çubuğunda **sertifikayı karşıya yükle** ' yi seçin.
+      * Araç çubuğunda **sertifikayı karşıya yükle**' yi seçin.
       * Dosya simgesini seçin ve ardından sertifika dosyasını seçin.
       * Sertifika için parola belirtin.
-      * **Tamam** ’ı seçin.
-      * **Windows Phone (MPNS)** sayfasında **Kaydet** ' i seçin.
+      * **Tamam**’ı seçin.
+      * **Windows Phone (MPNS)** sayfasında **Kaydet**' i seçin.
 
 Daha fazla bilgi için bkz. [Notification Hubs kullanarak Windows Phone uygulamalara anında iletme bildirimleri gönderme](notification-hubs-windows-mobile-push-notifications-mpns.md).
 
@@ -147,7 +149,7 @@ Baidu için anında iletme bildirimleri ayarlamak için:
 1. Azure portal, **Bildirim Hub** 'ı sayfasında sol menüden **Baidu (Android China)** öğesini seçin.
 2. Baidu bulut anında iletme projesindeki Baidu konsolundan edindiğiniz **API anahtarını** girin.
 3. Baidu bulut anında iletme projesindeki Baidu konsolundan edindiğiniz **gizli anahtarı** girin.
-4. **Kaydet** ’i seçin.
+4. **Kaydet**’i seçin.
 
     ![Anında iletme bildirimleri için Baidu (Android China) yapılandırmasını gösteren Notification Hubs ekran görüntüsü](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 

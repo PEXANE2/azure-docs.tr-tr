@@ -3,18 +3,18 @@ title: Microsoft Graph güvenliği & güvenlik işlemlerini tümleştirin ve yö
 description: Microsoft Graph güvenlik & ile uygulamanızın tehdit korumasını, algılamayı ve yanıtını geliştirebilirsiniz Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: ea861dce23e50bc5fcae50116a3e71793d402f8f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873327"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888547"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Güvenlik işlemlerini Microsoft Graph güvenlik & tümleştirerek tehdit korumasını geliştirebilirsiniz Azure Logic Apps
 
@@ -30,7 +30,7 @@ ms.locfileid: "94873327"
 
 Mantıksal uygulamanızın iş akışı, Microsoft Graph güvenlik bağlayıcısından yanıt alan eylemleri kullanabilir ve bu çıktıyı iş akışınızda diğer eylemler için kullanılabilir hale getirir. Ayrıca, iş akışınızda başka eylemlere de sahip olabilirsiniz Microsoft Graph güvenlik Bağlayıcısı eylemleriyle çıktıyı kullanın. Örneğin, Microsoft Graph güvenlik Bağlayıcısı aracılığıyla yüksek önem derecesine sahip uyarılar alırsanız, bu uyarıları Outlook bağlayıcısını kullanarak bir e-posta iletisiyle gönderebilirsiniz. 
 
-Microsoft Graph güvenliği hakkında daha fazla bilgi edinmek için [Microsoft Graph güvenlik API 'sine genel bakış](/graph/security-concept-overview)bölümüne bakın. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin. Power otomatikleştir veya PowerApps arıyorsanız, bkz. [Power otomatikleştir nedir?](https://flow.microsoft.com/) veya [PowerApps nedir?](https://powerapps.microsoft.com/)
+Microsoft Graph güvenliği hakkında daha fazla bilgi edinmek için [Microsoft Graph güvenlik API 'sine genel bakış](/graph/security-concept-overview)bölümüne bakın. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin. Power otomatikleştir veya PowerApps arıyorsanız, bkz. [Power otomatikleştir nedir? ne](https://flow.microsoft.com/) de [Power Apps nedir?](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>Önkoşullar
 

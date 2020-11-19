@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85368116"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888870"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Hızlı başlangıç: özel bir sağlayıcı oluşturma ve özel kaynaklar dağıtma
 
@@ -23,8 +23,11 @@ Bu hızlı başlangıçta, kendi kaynak sağlayıcınızı oluşturup bu kaynak 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- [Özel sağlayıcılar](/cli/azure/ext/custom-providers/custom-providers/resource-provider) komutları bir uzantı gerektirir. Daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
-- Azure CLı örnekleri, `az rest` istekler için kullanır `REST` . Daha fazla bilgi için bkz. [az Rest](/cli/azure/reference-index#az-rest).
+Ortamınızı Azure CLı için hazırlayın.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure CLı örnekleri, `az rest` istekler için kullanır `REST` . Daha fazla bilgi için bkz. [az Rest](/cli/azure/reference-index#az-rest).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -33,8 +36,6 @@ Bu hızlı başlangıçta, kendi kaynak sağlayıcınızı oluşturup bu kaynak 
 - **Armclient** yüklendikten sonra, şunu yazarak bir PowerShell komut isteminden kullanım bilgilerini görüntüleyebilirsiniz: `armclient.exe` . Ya da [Armclient wiki](https://github.com/projectkudu/ARMClient/wiki)'ye gidin.
 
 ---
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Özel sağlayıcı dağıt
 
@@ -86,7 +87,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="view-custom-provider-and-resource"></a>Özel sağlayıcıyı ve kaynağı görüntüle
 
-Portalda, özel sağlayıcı gizli bir kaynak türüdür. Kaynak sağlayıcının dağıtıldığını doğrulamak için kaynak grubuna gidin. **Gizli türleri gösterme**seçeneğini belirleyin.
+Portalda, özel sağlayıcı gizli bir kaynak türüdür. Kaynak sağlayıcının dağıtıldığını doğrulamak için kaynak grubuna gidin. **Gizli türleri gösterme** seçeneğini belirleyin.
 
 ![Gizli kaynak türlerini göster](./media/create-custom-provider/show-hidden.png)
 

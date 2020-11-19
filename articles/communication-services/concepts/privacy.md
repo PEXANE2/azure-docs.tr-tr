@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043591"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888649"
 ---
 # <a name="region-availability-and-data-residency"></a>Bölge kullanılabilirliği ve veri yerleşikliği
 
@@ -37,13 +37,13 @@ Uygulamanız insan kullanıcıları ve Iletişim hizmeti kimlikleri arasındaki 
 
 ### <a name="identities"></a>Kimlikler
 
-Azure Iletişim Hizmetleri bir kimlik dizinini tutar, silme işlemini kaldırmak için [Deleteıdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete) API 'sini kullanın. Bir kimlik silindiğinde tüm ilişkili erişim belirteçleri iptal edilir ve sohbet iletileri silinir. Kimlik kaldırma hakkında daha fazla bilgi için [Bu sayfaya bakın](../quickstarts/access-tokens.md).
+Azure Iletişim Hizmetleri bir kimlik dizinini tutar, silme işlemini kaldırmak için [Deleteıdentity](/rest/api/communication/communicationidentity/delete) API 'sini kullanın. Bir kimlik silindiğinde tüm ilişkili erişim belirteçleri iptal edilir ve sohbet iletileri silinir. Kimlik kaldırma hakkında daha fazla bilgi için [Bu sayfaya bakın](../quickstarts/access-tokens.md).
 
 - Deleteıdentity
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Iletişim hizmetleriyle Azure portal veya Azure Resource Manager API 'Leri kullanarak kişisel veri oluşturabilir. [Azure Resource Manager sistemlerindeki kişisel verileri yönetmeyi öğrenmek için bu sayfayı kullanın.](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data)
+Iletişim hizmetleriyle Azure portal veya Azure Resource Manager API 'Leri kullanarak kişisel veri oluşturabilir. [Azure Resource Manager sistemlerindeki kişisel verileri yönetmeyi öğrenmek için bu sayfayı kullanın.](../../azure-resource-manager/management/resource-manager-personal-data.md)
 
 ### <a name="telephone-number-management"></a>Telefon numarası yönetimi
 
@@ -52,7 +52,7 @@ Azure Iletişim Hizmetleri, bir Iletişim Hizmetleri kaynağıyla ilişkili tele
 
 ### <a name="chat"></a>Sohbet
 
-Sohbet iş parçacıkları ve iletiler açıkça silinene kadar tutulur. Tam boş bir iş parçacığı, 30 gün sonra otomatik olarak silinir. İletileri almak, listelemek, güncelleştirmek ve silmek için [sohbet API 'lerini](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage) kullanın.
+Sohbet iş parçacıkları ve iletiler açıkça silinene kadar tutulur. Tam boş bir iş parçacığı, 30 gün sonra otomatik olarak silinir. İletileri almak, listelemek, güncelleştirmek ve silmek için [sohbet API 'lerini](/rest/api/communication/chat/deletechatmessage/deletechatmessage) kullanın.
 
 - `Get Thread`
 - `Get Message`
@@ -73,10 +73,10 @@ Ses ve video iletişimi, hizmet tarafından ephemersel olarak işlenir ve kaynak
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Izleyici ve Log Analytics
 
-Azure Iletişim Hizmetleri, işlemsel sistem durumunu ve hizmetin kullanımını anlamak için Azure Izleyici günlüğe kaydetme verilerine akış oluşturacak. Bu günlüklerin bazıları, Iletişim hizmeti kimliklerini ve telefon numaralarını alan verileri olarak içerir. Potansiyel olarak kişisel verileri silmek için [Bu yordamları Azure izleyici 'de kullanın](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt). Ayrıca [, Azure izleyici için varsayılan saklama süresini](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)yapılandırmak isteyebilirsiniz.
+Azure Iletişim Hizmetleri, işlemsel sistem durumunu ve hizmetin kullanımını anlamak için Azure Izleyici günlüğe kaydetme verilerine akış oluşturacak. Bu günlüklerin bazıları, Iletişim hizmeti kimliklerini ve telefon numaralarını alan verileri olarak içerir. Potansiyel olarak kişisel verileri silmek için [Bu yordamları Azure izleyici 'de kullanın](../../azure-monitor/platform/personal-data-mgmt.md). Ayrıca [, Azure izleyici için varsayılan saklama süresini](../../azure-monitor/platform/manage-cost-storage.md)yapılandırmak isteyebilirsiniz.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [GDPR ve CCPA için Azure veri konu Istekleri](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
+- [GDPR ve CCPA için Azure veri konu Istekleri](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
 - [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Azure etkileşimli harita-müşteri Verilerim nerede?](https://azuredatacentermap.azurewebsites.net/)

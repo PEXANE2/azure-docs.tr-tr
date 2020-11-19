@@ -5,12 +5,12 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: Azure Dev Spaces, Kubernetes 'e köprülemek için geçiş işlemini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Kubernetes ile Köprü oluşturma
-ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895265"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888530"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Kubernetes Köprüsü’ne geçiş
 
@@ -46,26 +46,26 @@ Kubernetes 'in Azure Dev Spaces ve Köprüsü benzer özelliklere sahiptir ve ay
 | Azure Kubernetes Service | 15 Azure bölgesinde | Herhangi bir AKS hizmet bölgesi    |
 | **Güvenlik** |
 | Kümenizde güvenlik erişimi gerekiyor  | AKS kümesi Katılımcısı  | Kubernetes RBAC-dağıtım güncelleştirmesi   |
-| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | Yok  | Yerel yönetici/sudo   |
+| Geliştirme bilgisayarınızda güvenlik erişimi gerekli  | YOK  | Yerel yönetici/sudo   |
 | **Stillerin** |
-| Kubernetes ve Docker yapılarından bağımsız  | Hayır  | Evet   |
-| Değişiklikleri otomatik geri alma, hata ayıklama sonrası  | Hayır  | Evet   |
+| Kubernetes ve Docker yapılarından bağımsız  | Hayır  | Yes   |
+| Değişiklikleri otomatik geri alma, hata ayıklama sonrası  | Hayır  | Yes   |
 | **Desteklenen Istemci araçları** |
-| Visual Studio 2019 ile birlikte çalışma  | Evet  | Evet   |
-| Visual Studio Code ile birlikte çalışma  | Evet  | Evet   |
-| CLı ile birlikte çalışma  | Evet  | Hayır   |
+| Visual Studio 2019 ile birlikte çalışma  | Yes  | Yes   |
+| Visual Studio Code ile birlikte çalışma  | Yes  | Yes   |
+| CLı ile birlikte çalışma  | Yes  | Hayır   |
 | **İşletim sistemi uyumluluğu** |
-| Windows 10 ' da geçerlidir  | Evet  | Evet  |
-| Linux üzerinde çalışma  | Evet  | Evet  |
-| MacOS 'ta çalışma  | Evet  | Evet  |
-| **Yetenek** |
-| Geliştirici yalıtımı veya takım geliştirme  | Evet  | Evet  |
-| Ortam değişkenlerinin seçmeli olarak üzerine yaz  | Hayır  | Evet  |
-| Dockerfile ve Held grafiğinin oluşturulması  | Evet  | Hayır  |
-| Kubernetes 'e kalıcı kod dağıtımı  | Evet  | Hayır  |
-| Bir Kubernetes Pod 'da uzaktan hata ayıklama  | Evet  | Hayır  |
-| Yerel hata ayıklama, Kubernetes 'e bağlanıldı  | Hayır  | Evet  |
-| Aynı iş istasyonunda aynı anda birden fazla hizmetin hatalarını ayıklama  | Evet  | Evet  |
+| Windows 10 ' da geçerlidir  | Yes  | Yes  |
+| Linux üzerinde çalışma  | Yes  | Yes  |
+| MacOS 'ta çalışma  | Yes  | Yes  |
+| **Özellikler** |
+| Geliştirici yalıtımı veya takım geliştirme  | Yes  | Yes  |
+| Ortam değişkenlerinin seçmeli olarak üzerine yaz  | Hayır  | Yes  |
+| Dockerfile ve Held grafiğinin oluşturulması  | Yes  | Hayır  |
+| Kubernetes 'e kalıcı kod dağıtımı  | Yes  | Hayır  |
+| Bir Kubernetes Pod 'da uzaktan hata ayıklama  | Yes  | Hayır  |
+| Yerel hata ayıklama, Kubernetes 'e bağlanıldı  | Hayır  | Yes  |
+| Aynı iş istasyonunda aynı anda birden fazla hizmetin hatalarını ayıklama  | Yes  | Yes  |
 
 ## <a name="kubernetes-inner-loop-development"></a>Kubernetes iç döngüsü geliştirme
 
@@ -85,7 +85,7 @@ Kubernetes Köprüsü, dağıtım yöntemlerinden bağımsız olarak Kubernetes 
 1. Visual Studio kullanıyorsanız, Visual Studio IDE 'nizi 16,7 veya üzeri bir sürüme güncelleştirin ve köprüyü [Visual Studio Market][vs-marketplace]Kubernetes uzantısına yükleyebilirsiniz. Visual Studio Code kullanıyorsanız, [Kubernetes uzantısına köprü][vsc-marketplace]yükleyebilirsiniz.
 1. Azure portal veya [Azure dev Spaces CLI][azds-delete]kullanarak Azure dev Spaces denetleyiciyi devre dışı bırakın.
 1. [Azure Cloud Shell](https://shell.azure.com)kullanın. Ya da Bash yüklü olan Mac, Linux veya Windows üzerinde, bir bash kabuğu istemi açın. Aşağıdaki araçların komut satırı ortamınızda kullanılabildiğinden emin olun: Azure CLı, Docker, kubectl, kıvrık, tar ve gunzip.
-1. Bir kapsayıcı kayıt defteri oluşturun veya var olan bir kayıt defteri kullanın. Azure 'da [Azure Container Registry](../container-registry/index.yml) kullanarak veya [Docker Hub](https://hub.docker.com/)kullanarak bir kapsayıcı kayıt defteri oluşturabilirsiniz. Azure Cloud Shell kullanırken Docker görüntülerini barındırmak için yalnızca Azure Container Registry kullanılabilir.
+1. Bir kapsayıcı kayıt defteri oluşturun veya var olan bir kayıt defteri kullanın. Azure 'da [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) kullanarak veya [Docker Hub](https://hub.docker.com/)kullanarak bir kapsayıcı kayıt defteri oluşturabilirsiniz. Azure Cloud Shell kullanırken Docker görüntülerini barındırmak için yalnızca Azure Container Registry kullanılabilir.
 1. Azure Dev Spaces varlıkları Kubernetes varlıklarına köprü haline dönüştürmek için geçiş betiğini çalıştırın. Betik, Kubernetes ile Köprüle uyumlu yeni bir görüntü oluşturur, onu belirlenen kayıt defterine yükler ve ardından kümeyi görüntüyle güncelleştirmek için [Held](https://helm.sh) kullanır. Kaynak grubu, AKS kümesinin adı ve bir kapsayıcı kayıt defteri sağlamanız gerekir. Burada gösterildiği gibi diğer komut satırı seçenekleri vardır:
 
    ```azure-cli
@@ -117,7 +117,7 @@ Kubernetes Köprüsü, dağıtım yöntemlerinden bağımsız olarak Kubernetes 
 
 Ayrıca, Kubernetes ile bir Köprüle, geliştiriciye özgü yönlendirmeyi de kullanabilirsiniz. Azure Dev Spaces takım geliştirme senaryosu, üst ve alt ad alanları kavramını kullanarak bir hizmeti uygulamanın geri kalanından yalıtmak için birden çok Kubernetes ad alanı kullanır. Kubernetes Köprüsü, gelişmiş performans özellikleriyle ve aynı uygulama ad alanı içinde aynı özelliği sunar.
 
-Hem Kubernetes hem de Azure Dev Spaces Köprüsü, HTTP üstbilgilerinin mevcut olmasını ve uygulamanın tamamında yayılmesini gerektirir. Uygulamanızı Azure Dev Spaces için üst bilgi yaymayı işleyecek şekilde yapılandırdıysanız üstbilginin güncelleştirilmesi gerekir. Azure Dev Spaces 'den Kubernetes 'e geçiş yapmak için, yapılandırılmış üstbilgiyi *azds* 'den, *Kubernetes* 'e (as) güncelleştirin.
+Hem Kubernetes hem de Azure Dev Spaces Köprüsü, HTTP üstbilgilerinin mevcut olmasını ve uygulamanın tamamında yayılmesini gerektirir. Uygulamanızı Azure Dev Spaces için üst bilgi yaymayı işleyecek şekilde yapılandırdıysanız üstbilginin güncelleştirilmesi gerekir. Azure Dev Spaces 'den Kubernetes 'e geçiş yapmak için, yapılandırılmış üstbilgiyi *azds* 'den, *Kubernetes*'e (as) güncelleştirin.
 
 ## <a name="evaluate-bridge-to-kubernetes"></a>Kubernetes için köprüyü değerlendir
 

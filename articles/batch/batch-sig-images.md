@@ -2,14 +2,14 @@
 title: Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 description: Özel görüntü havuzları, toplu iş yüklerinizi çalıştırmak için işlem düğümlerini yapılandırmanın etkili bir yoludur.
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0ba6270e6b6b4fcd258d8f5b3668931706f95b5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745526"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888360"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -40,7 +40,7 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 
 - **Bir Azure Batch hesabı.** Batch hesabı oluşturmak için, [Azure Portal](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md)kullanarak Batch hızlı başlangıçlara bakın.
 
-- **Paylaşılan görüntü Galerisi görüntüsü** . Paylaşılan bir görüntü oluşturmak için, yönetilen bir görüntü kaynağınız olması veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
+- **Paylaşılan görüntü Galerisi görüntüsü**. Paylaşılan bir görüntü oluşturmak için, yönetilen bir görüntü kaynağınız olması veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır.
 
 > [!NOTE]
 > Paylaşılan görüntü, Batch hesabıyla aynı abonelikte değilse, bu abonelik için [Microsoft.Batch kaynak sağlayıcısını kaydetmeniz](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) gerekir. İki abonelik aynı Azure AD kiracısında olmalıdır.
@@ -208,9 +208,9 @@ Azure portal paylaşılan görüntüden bir havuz oluşturmak için aşağıdaki
 1. [Azure portalını](https://portal.azure.com) açın.
 1. **Batch hesaplarına** gidin ve hesabınızı seçin.
 1. **Havuzlar** ' ı seçin ve ardından **Ekle** ' yi seçerek yeni bir havuz oluşturun.
-1. **Görüntü türü** bölümünde **paylaşılan görüntü Galerisi** ' ni seçin.
+1. **Görüntü türü** bölümünde **paylaşılan görüntü Galerisi**' ni seçin.
 1. Kalan bölümleri, yönetilen görüntünüz hakkındaki bilgilerle doldurun.
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 
 ![Portalla paylaşılan görüntüden sahip bir havuz oluşturun.](media/batch-sig-images/create-custom-pool.png)
 
@@ -218,7 +218,7 @@ Azure portal paylaşılan görüntüden bir havuz oluşturmak için aşağıdaki
 
 Paylaşılan bir görüntü kullanarak yüzlerce veya binlerce VM veya daha fazlasını içeren bir havuz oluşturmayı planlıyorsanız, aşağıdaki kılavuzu kullanın.
 
-- **Paylaşılan görüntü Galerisi çoğaltma numaraları.**  En fazla 600 örneği olan her havuz için en az bir çoğaltma tutmanız önerilir. Örneğin, 3000 VM 'Ler içeren bir havuz oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanız gerekir. Daha iyi performans için en düşük gereksinimlerden her zaman daha fazla çoğaltma tutulması önerilir.
+- **Paylaşılan görüntü Galerisi çoğaltma numaraları.**  En fazla 300 örneği olan her havuz için en az bir çoğaltma tutmanız önerilir. Örneğin, 3000 VM 'Ler içeren bir havuz oluşturuyorsanız, resminizin en az 10 çoğaltmasını tutmanız gerekir. Daha iyi performans için en düşük gereksinimlerden her zaman daha fazla çoğaltma tutulması önerilir.
 
 - **Yeniden boyutlandırma zaman aşımı.** Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yoksa) havuz `resizeTimeout` boyutuna bağlı olarak havuzun özelliğini arttırın. Her 1000 VM için önerilen yeniden boyutlandırma zaman aşımı en az 15 dakikadır. Örneğin, 2000 VM içeren bir havuz için önerilen yeniden boyutlandırma zaman aşımı süresi en az 30 dakikadır.
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c66c14d42c3d14fc4171f6fdfaf2e7f75a531507
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185120"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886915"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Öğretici: Azure Batch kullanarak Azure Data Factory Python betikleri çalıştırma
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel test için yüklü bir [Python](https://www.python.org/downloads/) dağıtımı.
-* [Azure](https://pypi.org/project/azure/) `pip` paketi.
+* [Azure-Storage-blob](https://pypi.org/project/azure-storage-blob/) `pip` paketi.
 * [iris.csv veri kümesi](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Bir Azure Batch hesabı ve bağlı bir Azure Depolama hesabı. Batch hesaplarını oluşturma ve depolama hesaplarına bağlama hakkında daha fazla bilgi için bkz. [Batch hesabı oluşturma](quick-create-portal.md#create-a-batch-account) .
 * Azure Data Factory hesabı. Azure portal aracılığıyla veri fabrikası oluşturma hakkında daha fazla bilgi için bkz. [Veri Fabrikası oluşturma](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) .
@@ -54,10 +54,10 @@ Bu bölümde, Azure Data Factory Işlem hattının kullanacağı toplu Iş havuz
 1. Batch hesabınızı seçin
 1. Sol taraftaki çubukta **havuzlar** ' ı seçerek bir havuz oluşturun, sonra arama formunun üzerindeki **Ekle** düğmesine basın. 
     1. Bir KIMLIK ve görünen ad seçin. `custom-activity-pool`Bu örnek için kullanacağız.
-    1. Ölçek türünü **sabit boyut**olarak ayarlayın ve adanmış düğüm sayısını 2 olarak ayarlayın.
-    1. **Veri bilimi**altında, işletim sistemi olarak **dsvm Windows** ' u seçin.
+    1. Ölçek türünü **sabit boyut** olarak ayarlayın ve adanmış düğüm sayısını 2 olarak ayarlayın.
+    1. **Veri bilimi** altında, işletim sistemi olarak **dsvm Windows** ' u seçin.
     1. `Standard_f2s_v2`Sanal makine boyutu olarak seçin.
-    1. Başlangıç görevini etkinleştirin ve komutunu ekleyin `cmd /c "pip install pandas"` . Kullanıcı kimliği varsayılan **Havuz kullanıcısı**olarak kalabilir.
+    1. Başlangıç görevini etkinleştirin ve komutunu ekleyin `cmd /c "pip install azure-storage-blob pandas"` . Kullanıcı kimliği varsayılan **Havuz kullanıcısı** olarak kalabilir.
     1. **Tamam**’ı seçin.
 
 ## <a name="create-blob-containers"></a>Blob kapsayıcıları oluşturma
@@ -75,17 +75,17 @@ Aşağıdaki Python betiği, `iris.csv` `input` veri kümesini kapsayıcıların
 
 ``` python
 # Load libraries
-from azure.storage.blob import BlockBlobService
+from azure.storage.blob import BlobServiceClient
 import pandas as pd
 
 # Define parameters
-storageAccountName = "<storage-account-name>"
+storageAccountURL = "<storage-account-url>"
 storageKey         = "<storage-account-key>"
 containerName      = "output"
 
 # Establish connection with the blob storage account
-blobService = BlockBlobService(account_name=storageAccountName,
-                               account_key=storageKey
+blob_service_client = BlockBlobService(account_url=storageAccountURL,
+                               credential=storageKey
                                )
 
 # Load iris dataset from the task node
@@ -98,10 +98,12 @@ df = df[df['Species'] == "setosa"]
 df.to_csv("iris_setosa.csv", index = False)
 
 # Upload iris dataset
-blobService.create_blob_from_path(containerName, "iris_setosa.csv", "iris_setosa.csv")
+container_client = blob_service_client.get_container_client(containerName)
+with open("iris_setosa.csv", "rb") as data:
+    blob_client = container_client.upload_blob(name="iris_setosa.csv", data=data)
 ```
 
-Betiği kaydedin `main.py` ve **Azure depolama** kapsayıcısına yükleyin. Blob kapsayıcınıza yüklemeden önce işlevselliğini yerel olarak test edin ve doğrulayın:
+Betiği kaydedin `main.py` ve **Azure depolama** `input` kapsayıcısına yükleyin. Blob kapsayıcınıza yüklemeden önce işlevselliğini yerel olarak test edin ve doğrulayın:
 
 ``` bash
 python main.py
@@ -126,7 +128,7 @@ Bu bölümde, Python komut dosyanızı kullanarak bir işlem hattı oluşturup d
     ![Azure Batch sekmesinde, önceki adımlarda oluşturulan Batch hesabını ekleyin, ardından bağlantıyı test edin](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. **Ayarlar** sekmesinde, komutunu girin `python main.py` .
-1. **Kaynak bağlı hizmeti**için, önceki adımlarda oluşturulan depolama hesabını ekleyin. Başarılı olduğundan emin olmak için bağlantıyı test edin.
+1. **Kaynak bağlı hizmeti** için, önceki adımlarda oluşturulan depolama hesabını ekleyin. Başarılı olduğundan emin olmak için bağlantıyı test edin.
 1. **Klasör yolu**' nda, Python betiğini ve ilişkili girişleri Içeren **Azure Blob depolama** kapsayıcısının adını seçin. Bu işlem, Python betiği yürütülmeden önce seçili dosyaları kapsayıcıdan havuzdan düğüm örneklerine indirir.
 
     ![Klasör yolu ' nda, Azure Blob depolama kapsayıcısının adını seçin](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)

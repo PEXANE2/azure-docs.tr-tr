@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9a5bd6dff05fe39d62e5bf5f897bc61936686bb7
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426749"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887238"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Ağ Izleyicisi özelliklerini kullanmak için gereken Azure rol tabanlı erişim denetimi izinleri
 
@@ -90,6 +90,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC), kuruluşunuzun kendilerine ata
 | Eylem                                                              | Açıklama                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/topoloji/eylem                   | Topolojiyi al                                                   |
+| Microsoft. Network/networkWatchers/topoloji/okuma                     | Yukarıdakiyle aynı                                                  |
 
 ## <a name="reachability-report"></a>Ulaşılabilirlik raporu
 
@@ -102,7 +103,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC), kuruluşunuzun kendilerine ata
 
 Ağ Izleyicisi özellikleri aşağıdaki eylemleri de gerektirir:
 
-| Eylem (ler)                                                           | Description                                                    |
+| Eylem (ler)                                                           | Açıklama                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Authorization/ \* /Read                                     | Azure rol atamalarını ve ilke tanımlarını getirmek için kullanılır          |
 | Microsoft. resources/abonelikler/resourceGroups/Read               | Bir abonelikteki tüm kaynak gruplarını listelemek için kullanılır    |

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: c294079663630e71581f08227fbdb9ae4640cab5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f26f3e6e80bf854ff4f57503aa43de2558f07a1e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102434"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888564"
 ---
 # <a name="client-libraries-and-rest-apis"></a>İstemci kitaplıkları ve REST API’leri
 
@@ -31,7 +31,7 @@ Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde dü
 | Yönetim         | REST | Aç               | Azure. Communication. Administration  | Kullanıcıları, erişim belirteçlerini ve telefon numaralarını yönetme, standartlara uyumlu bir yönetim ve açma sunucusu ayırma |
 | Sohbet                   | Özel sinyalle REST | Kapalı kaynak sinyal paketiyle aç    | Azure. Communication. sohbet            | Uygulamalarınıza gerçek zamanlı metin tabanlı sohbet ekleyin  |
 | SMS                    | REST | Aç              | Azure. Communication. SMS             | SMS iletileri gönderme ve alma |
-| Events                | Özel aktarım | Kapalı |Azure. Communication. çağrılıyor         | Ses, video, ekran paylaşımı ve diğer gerçek zamanlı veri iletişim özelliklerinden yararlanın          |
+| Events                | Özel aktarım | Kapatıldı |Azure. Communication. çağrılıyor         | Ses, video, ekran paylaşımı ve diğer gerçek zamanlı veri iletişim özelliklerinden yararlanın          |
 
 Azure Resource Manager, yönetim ve SMS istemci kitaplıklarının hizmet tümleştirilmesine odaklandığına ve birçok durumda, bu işlevleri Son Kullanıcı uygulamalarıyla tümleştirirseniz güvenlik sorunları ortaya çıkar. Ortak ve sohbet istemci kitaplıkları hizmet ve istemci uygulamaları için uygundur. Çağıran istemci kitaplığı, istemci uygulamaları için tasarlanmıştır. Hizmet senaryolarına odaklanan bir istemci kitaplığı geliştirmede.
 
@@ -50,7 +50,7 @@ Ayrı istemci kitaplığı paketleri için yayımlama konumları aşağıda ayr�
 | Başvuru Belgeleri     | [belgeler](https://azure.github.io/azure-sdk-for-js/communication.html)         | [belgeler](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [belgeler](http://azure.github.io/azure-sdk-for-java/communication.html)     | (Obj-C) ✔️     | ✔️            | -                              |
 ## <a name="rest-apis"></a>REST API'leri
 
-İletişim Hizmetleri API 'Leri, [docs.Microsoft.com](https://docs.microsoft.com/rest/api/azure/)' deki DIĞER Azure REST API 'leri ile birlikte belgelenmiştir. Bu belgede, HTTP iletilerinizi nasıl yapılandıracağınızı ve Postman kullanmaya yönelik yönergeler sunulmaktadır. Bu belge [GitHub](https://github.com/Azure/azure-rest-api-specs)'da Swagger biçiminde de sunulur.
+İletişim Hizmetleri API 'Leri, [docs.Microsoft.com](/rest/api/azure/)' deki DIĞER Azure REST API 'leri ile birlikte belgelenmiştir. Bu belgede, HTTP iletilerinizi nasıl yapılandıracağınızı ve Postman kullanmaya yönelik yönergeler sunulmaktadır. Bu belge [GitHub](https://github.com/Azure/azure-rest-api-specs)'da Swagger biçiminde de sunulur.
 
 ## <a name="additional-support-details"></a>Ek destek ayrıntıları
 
@@ -81,7 +81,7 @@ Arama dışında, Iletişim Hizmetleri paketleri .NET Standard 2,0 hedef, aşağ
 ## <a name="api-stability-expectations"></a>API kararlılık beklentileri 
 
 > [!IMPORTANT]
-> Bu bölüm, REST API 'Ler ve istemci kitaplıkları için **kararlı**olarak işaretlenmiş yönergeler sağlar. Yayın öncesi, önizleme veya beta olarak işaretlenen API 'Ler, **bildirimde bulunulmadan**değiştirilebilir veya kullanım dışı bırakılmış olabilir. Şu anda Azure Iletişim Hizmetleri **genel önizlemede**ve API 'ler bu şekilde işaretlenir.
+> Bu bölüm, REST API 'Ler ve istemci kitaplıkları için **kararlı** olarak işaretlenmiş yönergeler sağlar. Yayın öncesi, önizleme veya beta olarak işaretlenen API 'Ler, **bildirimde bulunulmadan** değiştirilebilir veya kullanım dışı bırakılmış olabilir. Şu anda Azure Iletişim Hizmetleri **genel önizlemede** ve API 'ler bu şekilde işaretlenir.
 
 Gelecekte Iletişim Hizmetleri istemci kitaplıklarının sürümlerini devre dışı bırakabiliriz ve REST API 'lerimiz ve sunulan istemci kitaplıklarında önemli değişiklikler sunabiliriz. Azure iletişim hizmetleri, hizmet sürümlerinin kullanımdan kaldırılması için *genellikle* iki desteklenebilirlik ilkesi izler:
 

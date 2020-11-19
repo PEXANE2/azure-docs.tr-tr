@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072127"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888734"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde olay Işleme
 
@@ -22,13 +22,13 @@ ms.locfileid: "92072127"
 
 Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, ölçeklenebilir ve güvenli bir şekilde sunmak için [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) ile tümleşir. Bu makalenin amacı, uygulamalarınızı Iletişim Hizmetleri olaylarını dinleyecek şekilde yapılandırmanıza yardımcı olur. Örneğin, Iletişim Hizmetleri kaynağınız ile ilişkili bir telefon numarası tarafından bir SMS iletisi alındığında bir veritabanını güncelleştirmek, bir iş öğesi oluşturmak ve anında iletme bildirimi sunmak isteyebilirsiniz.
 
-Azure Event Grid, yayımlama-abonelik modeli kullanan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) ve [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)gibi Azure hizmetleri için yerleşik desteğe sahiptir. Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](https://docs.microsoft.com/azure/event-grid/overview).
+Azure Event Grid, yayımlama-abonelik modeli kullanan, tam olarak yönetilen bir olay yönlendirme hizmetidir. Event Grid [Azure işlevleri](../../azure-functions/functions-overview.md) ve [Azure Logic Apps](../../azure-functions/functions-overview.md)gibi Azure hizmetleri için yerleşik desteğe sahiptir. Web kancalarını kullanarak Azure olmayan hizmetlere olay uyarıları sunabilir. Event Grid desteklediği olay işleyicilerinin tüm listesi için bkz. [Azure Event Grid giriş](../../event-grid/overview.md).
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Azure Event Grid olay modelini gösteren diyagram.":::
 
 ## <a name="events-types"></a>Olay türleri
 
-Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) kullanır. 
+Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../../event-grid/concepts.md#event-subscriptions) kullanır. 
 
 Azure Iletişim Hizmetleri aşağıdaki olay türlerini yayar:
 
@@ -50,7 +50,7 @@ Iletişim Hizmetleri kaynağınız tarafından oluşturulan olaylara abone olmak
 
 ## <a name="event-subjects"></a>Olay konuları
 
-`subject`Tüm Iletişim Hizmetleri olaylarının alanı, olay tarafından hedeflenen Kullanıcı, telefon numarası veya varlığı tanımlar. Ortak ön ekler basit [Event Grid filtrelemeye](https://docs.microsoft.com/azure/event-grid/event-filtering)izin vermek için kullanılır.
+`subject`Tüm Iletişim Hizmetleri olaylarının alanı, olay tarafından hedeflenen Kullanıcı, telefon numarası veya varlığı tanımlar. Ortak ön ekler basit [Event Grid filtrelemeye](../../event-grid/event-filtering.md)izin vermek için kullanılır.
 
 | Konu öneki                              | İletişim hizmeti varlığı |
 | ------------------------------------------- | ---------------------------- |
@@ -351,6 +351,6 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event Grid giriş için bkz. [Event Grid nedir?](https://docs.microsoft.com/azure/event-grid/overview)
-* Azure Event Grid kavramlara giriş için bkz. [Event Grid kavramlar nelerdir?](https://docs.microsoft.com/azure/event-grid/concepts)
-* Azure Event Grid sistem konuları hakkında giriş için, [Azure Event Grid Içindeki sistem konularına](https://docs.microsoft.com/azure/event-grid/system-topics) bakın.
+* Azure Event Grid giriş için bkz. [Event Grid nedir?](../../event-grid/overview.md)
+* Azure Event Grid kavramlara giriş için bkz. [Event Grid kavramlar nelerdir?](../../event-grid/concepts.md)
+* Azure Event Grid sistem konuları hakkında giriş için, [Azure Event Grid Içindeki sistem konularına](../../event-grid/system-topics.md) bakın.

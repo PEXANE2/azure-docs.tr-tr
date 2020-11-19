@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: f0ef1c32035eed26c0717364bda030b6b7662b3e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 271913a731a2bdf5af94885b5fe4027c0334853c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740279"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887510"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -26,15 +26,13 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.61 veya üstünü çalıştırıyor olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+- Bu makale, Azure CLı 'nin sürüm 2.0.61 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-Kaynak Yöneticisi şablonu kullanarak AKS kümesi oluşturmak için bir SSH ortak anahtarı ve Azure Active Directory hizmet sorumlusu sağlarsınız. Alternatif olarak, izinler için bir hizmet sorumlusu yerine [yönetilen bir kimlik](use-managed-identity.md) kullanabilirsiniz. Bu kaynaklardan herhangi birine ihtiyacınız varsa, aşağıdaki bölüme bakın; Aksi takdirde, [şablonu gözden geçirme](#review-the-template) bölümüne atlayın.
+- Kaynak Yöneticisi şablonu kullanarak AKS kümesi oluşturmak için bir SSH ortak anahtarı ve Azure Active Directory hizmet sorumlusu sağlarsınız. Alternatif olarak, izinler için bir hizmet sorumlusu yerine [yönetilen bir kimlik](use-managed-identity.md) kullanabilirsiniz. Bu kaynaklardan herhangi birine ihtiyacınız varsa, aşağıdaki bölüme bakın; Aksi takdirde, [şablonu gözden geçirme](#review-the-template) bölümüne atlayın.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 
@@ -88,22 +86,22 @@ Daha fazla AKS örneği için bkz. [aks hızlı başlangıç şablonları][aks-q
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-    Bu hızlı başlangıçta, *Işletim sistemi disk boyutu GB* , *Aracı sayısı* , *Aracı VM boyutu* , *Işletim sistemi türü* ve *Kubernetes sürümü* için varsayılan değerleri bırakın. Aşağıdaki şablon parametreleri için kendi değerlerinizi sağlayın:
+    Bu hızlı başlangıçta, *Işletim sistemi disk boyutu GB*, *Aracı sayısı*, *Aracı VM boyutu*, *Işletim sistemi türü* ve *Kubernetes sürümü* için varsayılan değerleri bırakın. Aşağıdaki şablon parametreleri için kendi değerlerinizi sağlayın:
 
-    * **Abonelik** : bir Azure aboneliği seçin.
-    * **Kaynak grubu** : **Yeni oluştur** ' u seçin. Kaynak grubu için *Myresourcegroup* gibi benzersiz bir ad girin ve ardından **Tamam** ' ı seçin.
-    * **Konum** : **Doğu ABD** gibi bir konum seçin.
-    * **Küme adı** : aks kümesi Için *Myakscluster* gibi benzersiz bir ad girin.
-    * **DNS ön eki** : kümeniz için *myakscluster* gibi benzersiz bir DNS öneki girin.
-    * **Linux Yöneticisi Kullanıcı adı** : SSH kullanarak bağlanmak için *azureuser* gibi bir Kullanıcı adı girin.
-    * **Ssh rsa ortak anahtarı** : SSH anahtar çiftin *genel* bölümünü kopyalayıp yapıştırın (varsayılan olarak, *~/. ssh/id_rsa. pub* içeriğini).
-    * **Hizmet sorumlusu Istemci kimliği** : hizmet sorumlusunun *AppID* 'sini kopyalayıp `az ad sp create-for-rbac` komuttan yapıştırın.
-    * **Hizmet sorumlusu Istemci parolası** : hizmet sorumlusunun *parolasını* kopyalayıp yapıştırın `az ad sp create-for-rbac` .
-    * **Yukarıdaki hüküm ve koşullar durumunu kabul ediyorum** : kabul etmek için bu kutuyu işaretleyin.
+    * **Abonelik**: bir Azure aboneliği seçin.
+    * **Kaynak grubu**: **Yeni oluştur**' u seçin. Kaynak grubu için *Myresourcegroup* gibi benzersiz bir ad girin ve ardından **Tamam**' ı seçin.
+    * **Konum**: **Doğu ABD** gibi bir konum seçin.
+    * **Küme adı**: aks kümesi Için *Myakscluster* gibi benzersiz bir ad girin.
+    * **DNS ön eki**: kümeniz için *myakscluster* gibi benzersiz bir DNS öneki girin.
+    * **Linux Yöneticisi Kullanıcı adı**: SSH kullanarak bağlanmak için *azureuser* gibi bir Kullanıcı adı girin.
+    * **Ssh rsa ortak anahtarı**: SSH anahtar çiftin *genel* bölümünü kopyalayıp yapıştırın (varsayılan olarak, *~/. ssh/id_rsa. pub* içeriğini).
+    * **Hizmet sorumlusu Istemci kimliği**: hizmet sorumlusunun *AppID* 'sini kopyalayıp `az ad sp create-for-rbac` komuttan yapıştırın.
+    * **Hizmet sorumlusu Istemci parolası**: hizmet sorumlusunun *parolasını* kopyalayıp yapıştırın `az ad sp create-for-rbac` .
+    * **Yukarıdaki hüküm ve koşullar durumunu kabul ediyorum**: kabul etmek için bu kutuyu işaretleyin.
 
     ![Portalda Azure Kubernetes hizmet kümesi oluşturmak için şablon Kaynak Yöneticisi](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. **Satın al** 'ı seçin.
+3. **Satın al**'ı seçin.
 
 AKS kümesinin oluşturulması birkaç dakika sürer. Sonraki adıma geçmeden önce kümenin başarılı bir şekilde dağıtılmasını bekleyin.
 

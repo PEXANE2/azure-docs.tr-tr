@@ -6,14 +6,14 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1ed2929dc5dc79c30f2a9583966e32d81b63ba2e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1803a0070321ff4d895203f027f839601bb726ee
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487917"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887153"
 ---
-# <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
+# <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı - Tek Sunucu'da planlı bakım bildirimi
 
 PostgreSQL için Azure veritabanı 'nda planlı bakım olaylarına hazırlanma hakkında bilgi edinin.
 
@@ -21,7 +21,7 @@ PostgreSQL için Azure veritabanı 'nda planlı bakım olaylarına hazırlanma h
 
 PostgreSQL için Azure veritabanı hizmeti, temel alınan donanım, işletim sistemi ve veritabanı altyapısının otomatik düzeltme eki uygular. Düzeltme Eki, yeni hizmet özellikleri, güvenlik ve yazılım güncelleştirmeleri içerir. PostgreSQL altyapısı için, ikincil sürüm yükseltmeleri otomatik ve düzeltme eki uygulama döngüsünün bir parçası olarak dahil edilmiştir. Düzeltme için gereken kullanıcı eylemi veya yapılandırma ayarları yoktur. Düzeltme Eki, kapsamlı olarak test edilir ve güvenli dağıtım uygulamaları kullanılarak alınır.
 
-Planlı bakım, bu hizmet güncelleştirmeleri belirli bir Azure bölgesindeki sunuculara dağıtıldığında bakım penceresidir. Planlı bakım sırasında, hizmet güncelleştirmesi sunucularını barındıran Azure bölgesinde dağıtıldığında müşterileri bilgilendirmek için bir bildirim olayı oluşturulur. İki planlı bakım arasındaki en az süre 30 gündür. Sonraki bakım penceresi 72 saat için önceden bir bildirim alırsınız.
+Planlı bakım, bu hizmet güncelleştirmeleri belirli bir Azure bölgesindeki sunuculara dağıtıldığında bakım penceresidir. Planlı bakım sırasında, sunucularını barındıran Azure bölgesinde hizmet güncelleştirmesinin ne zaman dağıtılacağını müşteriye bildirmek için bir bildirim olayı oluşturulur. İki planlı bakım arasındaki en az süre 30 gündür. Sonraki bakım penceresi için 72 saat önce bildirim alırsınız.
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Planlı bakım-süre ve müşteri etkisi
 
@@ -56,12 +56,12 @@ Azure portal planlı bakım bildirimini denetleyebilir ya da uyarıları bildiri
 2. **Uyarılar** bölümünde **sistem durumu uyarıları**' nı seçin.
 3. **+ Hizmet sistem durumu uyarısı Ekle** ' yi seçin ve alanları girin.
 4. Gerekli alanları doldurun. 
-5. **Olay türünü**seçin, **Planlı bakım** ' ı seçin veya **tümünü seçin**
+5. **Olay türünü** seçin, **Planlı bakım** ' ı seçin veya **tümünü seçin**
 6. **Eylem gruplarında** , uyarıyı nasıl almak istediğinizi tanımlar (bir e-posta alın, mantıksal uygulama tetiklemesi vb.)  
 7. Oluşturma sonrasında kuralın etkinleştir ' in Evet olarak ayarlandığından emin olun.
 8. Uyarınızı gerçekleştirmek için **Uyarı kuralı oluştur** ' u seçin
 
-**Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md)konusuna bakın.
+**Hizmet durumu uyarıları** oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md)konusuna bakın.
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Planlı Bakımı iptal edebilir veya erteleyebilir miyim?
 
@@ -78,7 +78,7 @@ Geçici arıza olarak da bilinen geçici bir hata, kendisini çözecek bir hatad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- PostgreSQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden PostgreSQL için Azure veritabanı ekibine bir e-posta gönderin *AskAzureDBforMySQL@service.microsoft.com* .
+- PostgreSQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden PostgreSQL için Azure veritabanı ekibine bir e-posta gönderin *AskAzureDBforPostgreSQL@service.microsoft.com* .
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
 - [PostgreSQL için Azure veritabanı ile ilgili bağlantı sorunlarını giderme-tek sunucu](howto-troubleshoot-common-connection-issues.md)
 - [Geçici hataları işleyin ve PostgreSQL için Azure veritabanı 'na verimli bir şekilde bağlanın-tek sunucu](concepts-connectivity.md)

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 838d6244127bc1b3609ab5e925e54dbab7fe3a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e845efa2c1df47c80fcc10e7fb758f05af9fbecc
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212693"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887425"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için Azure Cosmos DB tetikleyicisi
 
@@ -184,9 +184,8 @@ Belirtilen veritabanı ve koleksiyonda ekleme veya güncelleştirme olduğunda b
 
 ```csharp
     [FunctionName("DocumentUpdates")]
-    public static void Run(
-        [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
-    IReadOnlyList<Document> documents,
+    public static void Run([CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+        IReadOnlyList<Document> documents,
         ILogger log)
     {
         ...
@@ -228,7 +227,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Seçim Kira toplamayı tutan Azure Cosmos DB hesaba bağlantı dizesi içeren bir uygulama ayarının adı. Ayarlanmayan `connectionStringSetting` değer kullanılır. Bu parametre, bağlama portalda oluşturulduğunda otomatik olarak ayarlanır. Kiralamalar koleksiyonunun bağlantı dizesinde yazma izinleri olmalıdır.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | Seçim Kiraları depolamak için kullanılan koleksiyonu tutan veritabanının adı. Ayarlamadığınızda, `databaseName` ayarın değeri kullanılır. Bu parametre, bağlama portalda oluşturulduğunda otomatik olarak ayarlanır. |
 |**leaseCollectionName** | **LeaseCollectionName** | Seçim Kiralamaları depolamak için kullanılan koleksiyonun adı. Ayarlanmayan değer `leases` kullanılır. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Seçim Olarak ayarlandığında `true` , kiralamalar koleksiyonu zaten mevcut olmadığında otomatik olarak oluşturulur. Varsayılan değer: `false`. |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Seçim Olarak ayarlandığında `true` , kiralamalar koleksiyonu zaten mevcut olmadığında otomatik olarak oluşturulur. `false` varsayılan değerdir. |
 |**Leasescollectionüretilen Iş**| **Leasescollectionüretilen Iş**| Seçim Kiralamalar koleksiyonu oluşturulduğunda atanacak Istek birimi sayısını tanımlar. Bu ayar yalnızca, `createLeaseCollectionIfNotExists` olarak ayarlandığında kullanılır `true` . Bu parametre, bağlama Portal kullanılarak oluşturulduğunda otomatik olarak ayarlanır.
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| Seçim Ayarlandığında, bu Işlev için kira koleksiyonunda oluşturulan kiralamalar için bir ön ek olarak değer eklenir. Ön ek kullanmak, iki ayrı Azure Işlevinin aynı kira koleksiyonunu farklı ön ekler kullanarak paylaşmasına izin verir.
 |**feedPollDelay**| **FeedPollDelay**| Seçim Geçerli tüm değişiklikler boşaltılır sonra, bir bölümü akıştaki yeni değişiklikler için yoklayarak gecikme süresi (milisaniye cinsinden). Varsayılan değer 5.000 milisaniyedir veya 5 saniyedir.

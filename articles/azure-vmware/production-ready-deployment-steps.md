@@ -3,12 +3,12 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: a8ebd5bd4a9e553e24fbe528a4f6654bd4a1dee4
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873344"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888989"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -92,14 +92,6 @@ Ağ kesimlerini Şirket içinden Azure VMware çözümüne genişletebilirsiniz 
 
 - Ağları Şirket içinden genişletmeyi planlıyorsanız, bu ağlar şirket içi VMware ortamınızda bir [vSphere dağıtılmış anahtarına (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) bağlanmalıdır.  
 - Bir [vSphere standart anahtarında](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)canlı genişletmek istediğiniz ağ (ler) i yoksa genişletilemez.
-
-## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach eşleme ağı
-
-`/29`ExpressRoute Global Reach eşlemesi için gereken bir CIDR ağ adresi bloğunu belirler. Oluşturulan herhangi bir IP kesiminin Azure VMware çözümünüz ve şirket içi parmak izi genelinde benzersiz olması gerektiğini unutmayın. Bu kesimdeki IP 'Ler, Azure VMware çözümü ExpressRoute bağlantı hattını şirket içi ExpressRoute devresiyle bağlamak üzere ExpressRoute Global Reach bağlantısının her ucunda kullanılır. 
-
-**Örnek:** 10.1.0.0/29
-
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Tanımla-ExpressRoute Global Reach eşleme ağı" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware çözümü eklemek için Azure sanal ağı
 

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677423"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888581"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -40,25 +40,21 @@ Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan �
 
 Örnek şöyle görünür:
 
-:::image type="content" source="./media/chat/landing-page.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
+:::image type="content" source="./media/chat/landing-page.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.":::
 
-&quot;Sohbet Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, sohbet 'te sizi temsil edecek adınızı ve Emoji belirtmeniz istenecektir. 
+"Sohbet Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, sohbet 'te sizi temsil edecek adınızı ve Emoji belirtmeniz istenecektir. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
-
-&quot;Sohbet Başlat":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Uygulamanın sohbet öncesi ekranını gösteren ekran görüntüsü.":::
 
 Görünen adınızı ve Emoji yapılandırıldıktan sonra sohbet oturumuna katılabilir. Artık çekirdek sohbet deneyiminin yaşadığı ana sohbet tuvali görüntülenir.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
-
-&quot;Sohbet Başlat":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="Örnek uygulamanın ana ekranını gösteren ekran görüntüsü.":::
 
 Ana sohbet ekranının bileşenleri:
 
-- **Ana sohbet alanı** : Bu, kullanıcıların ileti gönderebildiği ve aldığı temel sohbet deneyimidir. İleti göndermek için, giriş alanını kullanabilir ve ENTER tuşuna basabilir (ya da Gönder düğmesini kullanabilirsiniz). Alınan sohbet iletileri, doğru ad ve Emoji ile gönderici tarafından kategorilere ayrılmıştır. Sohbet alanında iki tür bildirim görürsünüz: 1) bir Kullanıcı yazarken ve 2) iletiler için gönderme ve okuma bildirimleri yazma.
-- **Üst bilgi** : Bu, kullanıcının sohbet iş parçacığının başlığını ve katılımcı ve ayarlar yan çubuklarının konumunu değiştirmeye yönelik denetimleri ve sohbet oturumundan çıkmak için bir Bırak düğmesini göremeyeceği yerdir.
-- **Yan çubuk** : burada katılımcılar ve ayar bilgileri, üstbilgideki denetimler kullanılarak açıldığında gösterilir. Katılımcılar yan çubuğu, sohbetteki katılımcılar listesini ve katılımcıları sohbet oturumuna davet etmek için bir bağlantı içerir. Ayarlar yan çubuğu, sohbet iş parçacığı başlığını yapılandırmanıza olanak tanır. 
+- **Ana sohbet alanı**: Bu, kullanıcıların ileti gönderebildiği ve aldığı temel sohbet deneyimidir. İleti göndermek için, giriş alanını kullanabilir ve ENTER tuşuna basabilir (ya da Gönder düğmesini kullanabilirsiniz). Alınan sohbet iletileri, doğru ad ve Emoji ile gönderici tarafından kategorilere ayrılmıştır. Sohbet alanında iki tür bildirim görürsünüz: 1) bir Kullanıcı yazarken ve 2) iletiler için gönderme ve okuma bildirimleri yazma.
+- **Üst bilgi**: Bu, kullanıcının sohbet iş parçacığının başlığını ve katılımcı ve ayarlar yan çubuklarının konumunu değiştirmeye yönelik denetimleri ve sohbet oturumundan çıkmak için bir Bırak düğmesini göremeyeceği yerdir.
+- **Yan çubuk**: burada katılımcılar ve ayar bilgileri, üstbilgideki denetimler kullanılarak açıldığında gösterilir. Katılımcılar yan çubuğu, sohbetteki katılımcılar listesini ve katılımcıları sohbet oturumuna davet etmek için bir bağlantı içerir. Ayarlar yan çubuğu, sohbet iş parçacığı başlığını yapılandırmanıza olanak tanır. 
 
 Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
@@ -111,7 +107,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 >[!div class="nextstepaction"] 
 >[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Sohbet kavramları](../concepts/chat/concepts.md) hakkında bilgi edinin
 - [Sohbet istemci kitaplığımızı](../concepts/chat/sdk-features.md) öğrenmeye
@@ -122,4 +118,4 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 - [Redux](https://redux.js.org/) -istemci tarafı durum yönetimi
 - [Floentuı](https://aka.ms/fluent-ui) -MICROSOFT Powered UI kitaplığı
 - Kullanıcı arabirimleri oluşturmak için [tepki](https://reactjs.org/) verme kitaplığı
-- Web uygulamaları oluşturmak için [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) çerçeve
+- Web uygulamaları oluşturmak için [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) çerçeve

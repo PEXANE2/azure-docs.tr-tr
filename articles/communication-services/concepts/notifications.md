@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b368048e5ea34ebfc073b1ae239cbb40724ae393
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f4de7268f3384f86b7090dfe18576347311e048e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684381"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888683"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
@@ -22,11 +22,11 @@ ms.locfileid: "94684381"
 
 Azure Iletişim Hizmetleri sohbeti ve arama istemci kitaplıkları, sinyal iletilerinin bağlı istemcilere verimli ve güvenilir bir şekilde gönderilmesine izin veren gerçek zamanlı bir mesajlaşma kanalı oluşturur. Bu, karmaşık HTTP yoklama mantığını uygulamaya gerek kalmadan uygulamalarınıza zengin ve gerçek zamanlı iletişim işlevleri oluşturmanıza olanak sağlar. Ancak, mobil uygulamalarda, bu sinyal kanalı yalnızca uygulamanız ön planda etkin olduğunda bağlı kalır. Uygulamanız arka planda olduğunda kullanıcılarınızın gelen çağrıları veya sohbet iletilerini almasını istiyorsanız anında iletme bildirimleri kullanmanız gerekir.
 
-Anında iletme bildirimleri uygulamanızdan kullanıcıların mobil cihazlarına bilgi göndermenize olanak tanır. Bir iletişim kutusu göstermek, ses çalmak veya gelen çağrı Kullanıcı arabirimini görüntülemek için anında iletme bildirimlerini kullanabilirsiniz. Azure Iletişim Hizmetleri, uygulamalarınıza anında iletme bildirimleri eklemenize olanak tanıyan [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) ve [Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-overview) tümleştirmelerini sağlar.
+Anında iletme bildirimleri uygulamanızdan kullanıcıların mobil cihazlarına bilgi göndermenize olanak tanır. Bir iletişim kutusu göstermek, ses çalmak veya gelen çağrı Kullanıcı arabirimini görüntülemek için anında iletme bildirimlerini kullanabilirsiniz. Azure Iletişim Hizmetleri, uygulamalarınıza anında iletme bildirimleri eklemenize olanak tanıyan [Azure Event Grid](../../event-grid/overview.md) ve [Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md) tümleştirmelerini sağlar.
 
 ## <a name="trigger-push-notifications-via-azure-event-grid"></a>Azure Event Grid aracılığıyla anında iletme bildirimlerini tetikleme
 
-Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, ölçeklenebilir ve güvenli bir şekilde sunmak için [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) ile tümleşir. [Azure işlevini](https://docs.microsoft.com/azure/azure-functions/functions-overview) veya Web kancasını tetikleyen bir olay Kılavuzu aboneliği oluşturarak kullanıcılarınıza mobil anında iletme bildirimleri sağlayan bir bildirim hizmeti oluşturmak için bu tümleştirmeden yararlanabilirsiniz.
+Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, ölçeklenebilir ve güvenli bir şekilde sunmak için [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) ile tümleşir. [Azure işlevini](../../azure-functions/functions-overview.md) veya Web kancasını tetikleyen bir olay Kılavuzu aboneliği oluşturarak kullanıcılarınıza mobil anında iletme bildirimleri sağlayan bir bildirim hizmeti oluşturmak için bu tümleştirmeden yararlanabilirsiniz.
 
 :::image type="content" source="./media/notifications/acs-events-int.png" alt-text="Iletişim hizmetlerinin Event Grid ile nasıl tümleştirildiğini gösteren diyagram.":::
 
@@ -38,23 +38,23 @@ Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir
 
 :::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="İletişim hizmetlerinin Azure Notifications hub ile nasıl tümleştirildiğini gösteren diyagram.":::
 
-İletişim Hizmetleri, [doğrudan gönderme](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 'sini kullanarak platforma özgü çeşitli anında iletme bildirimi hizmetleriyle iletişim kurmak Için Azure Notification Hub 'ını doğrudan bir geçiş hizmeti olarak kullanır. Bu, uygulamalarınıza düşük gecikme süresi ve güvenilir çağrı bildirimleri sunmak için mevcut Azure Notification Hub kaynaklarınızı ve yapılandırmanızı yeniden kullanmanıza olanak tanır.
+İletişim Hizmetleri, [doğrudan gönderme](/rest/api/notificationhubs/direct-send) API 'sini kullanarak platforma özgü çeşitli anında iletme bildirimi hizmetleriyle iletişim kurmak Için Azure Notification Hub 'ını doğrudan bir geçiş hizmeti olarak kullanır. Bu, uygulamalarınıza düşük gecikme süresi ve güvenilir çağrı bildirimleri sunmak için mevcut Azure Notification Hub kaynaklarınızı ve yapılandırmanızı yeniden kullanmanıza olanak tanır.
 
 > [!NOTE]
 > Şu anda yalnızca çağırma anında iletme bildirimleri destekleniyor.
 
 ### <a name="notification-hub-provisioning"></a>Notification Hub 'ı sağlama 
 
-İstemci cihazlarına Notification Hubs kullanarak anında iletme bildirimleri göndermek için, Iletişim Hizmetleri kaynağınız ile aynı abonelikte [bir Bildirim Hub 'ı oluşturun](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) . Kullanmak istediğiniz platform bildirimleri hizmeti için Azure Notification Hubs yapılandırılmalıdır. İstemci uygulamanızda Notification Hubs anında iletme bildirimleri alma hakkında bilgi edinmek için bkz. [Notification Hubs kullanmaya](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) başlama ve sayfanın üst kısmındaki açılan listeden hedef istemci platformunuzu seçme.
+İstemci cihazlarına Notification Hubs kullanarak anında iletme bildirimleri göndermek için, Iletişim Hizmetleri kaynağınız ile aynı abonelikte [bir Bildirim Hub 'ı oluşturun](../../notification-hubs/create-notification-hub-portal.md) . Kullanmak istediğiniz platform bildirimleri hizmeti için Azure Notification Hubs yapılandırılmalıdır. İstemci uygulamanızda Notification Hubs anında iletme bildirimleri alma hakkında bilgi edinmek için bkz. [Notification Hubs kullanmaya](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) başlama ve sayfanın üst kısmındaki açılan listeden hedef istemci platformunuzu seçme.
 
 > [!NOTE]
 > APNs ve FCM platformları şu anda desteklenmektedir.
 
-Bildirim Hub 'ı yapılandırıldıktan sonra, Azure Resource Manager Istemcisini kullanarak hub için bağlantı dizesi sağlayarak Iletişim Hizmetleri kaynağıyla ilişkilendirebilirsiniz ve Azure portal aracılığıyla ilişkilendirebilirsiniz. Bağlantı dizesi "Gönder" izinleri içermelidir. Yalnızca hub 'ınız için özel olarak "Gönder" izinlerine sahip başka bir erişim ilkesi oluşturmanızı öneririz. [Notification Hubs güvenlik ve erişim ilkeleri](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security) hakkında daha fazla bilgi edinin
+Bildirim Hub 'ı yapılandırıldıktan sonra, Azure Resource Manager Istemcisini kullanarak hub için bağlantı dizesi sağlayarak Iletişim Hizmetleri kaynağıyla ilişkilendirebilirsiniz ve Azure portal aracılığıyla ilişkilendirebilirsiniz. Bağlantı dizesi "Gönder" izinleri içermelidir. Yalnızca hub 'ınız için özel olarak "Gönder" izinlerine sahip başka bir erişim ilkesi oluşturmanızı öneririz. [Notification Hubs güvenlik ve erişim ilkeleri](../../notification-hubs/notification-hubs-push-notification-security.md) hakkında daha fazla bilgi edinin
 
 > [!IMPORTANT]
 > Bu yalnızca belirteç kimlik doğrulama modu için geçerlidir. Sertifika kimlik doğrulama modu şu anda desteklenmiyor.  
-APNS VOıP bildirimlerini etkinleştirmek için, Bildirim Hub 'ını son ek ile uygulama paketi KIMLIĞINIZ olacak şekilde yapılandırırken Paket kimliği değerini ayarlamanız gerekir `.voip` . Daha fazla bilgi için bkz. [APNs VoIP 'i Notification Hubs aracılığıyla kullanma](https://docs.microsoft.com/azure/notification-hubs/voip-apns) .
+APNS VOıP bildirimlerini etkinleştirmek için, Bildirim Hub 'ını son ek ile uygulama paketi KIMLIĞINIZ olacak şekilde yapılandırırken Paket kimliği değerini ayarlamanız gerekir `.voip` . Daha fazla bilgi için bkz. [APNs VoIP 'i Notification Hubs aracılığıyla kullanma](../../notification-hubs/voip-apns.md) .
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Bildirim Hub 'ını yapılandırmak için Azure Resource Manager istemcisini kullanma
 
@@ -85,5 +85,5 @@ Cihaz işleyicinizi Iletişim hizmetleriyle nasıl kaydedeceğinizi öğrenmek i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event Grid giriş için bkz. [Event Grid nedir?](https://docs.microsoft.com/azure/event-grid/overview)
-* Azure Notification Hub 'ı kavramları hakkında daha fazla bilgi edinmek için bkz. [azure Notification Hubs belgeleri](https://docs.microsoft.com/azure/notification-hubs/)
+* Azure Event Grid giriş için bkz. [Event Grid nedir?](../../event-grid/overview.md)
+* Azure Notification Hub 'ı kavramları hakkında daha fazla bilgi edinmek için bkz. [azure Notification Hubs belgeleri](../../notification-hubs/index.yml)

@@ -4,12 +4,12 @@ description: Bu makalede, Azure Resource Manager kullanarak bir Azure Service Fa
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 886b7d6b40bebf6234064b0627017db1d8cfe31f
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681695"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888836"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli
 
@@ -91,6 +91,7 @@ Artık uygulama hazırlanmıştır ve uygulamayı dağıtmak için Kaynak Yönet
 >
 >
 
+
 | Parametre              | Açıklama                                 | Örnek                                                      | Yorumlar                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Dağıtım yaptığınız kümenin adı | SF-cluster123                                                |                                                              |
@@ -137,6 +138,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ```
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Service Fabric uygulamayı Kaynak Yöneticisi kullanarak yükseltme
+
+
+> [!IMPORTANT]
+> ARM JSON tanımıyla dağıtılan herhangi bir hizmetin, karşılık gelen ApplicationManifest.xml dosyasının DefaultServices bölümünden kaldırılması gerekir.
+
 
 Aşağıdaki nedenlerden biri için zaten Service Fabric bir kümeye dağıtılmış olan bir uygulamayı yükseltebilirsiniz:
 

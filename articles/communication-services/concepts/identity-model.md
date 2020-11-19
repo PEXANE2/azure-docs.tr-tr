@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651252"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888717"
 ---
 # <a name="identity-model"></a>Kimlik modeli
 
@@ -83,6 +83,6 @@ Erişim belirteçlerini bir yedekleme deposuna önbellekliyorsanız, şifrelemey
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Belirteç yönetimine erişim tanıtımı için bkz. [erişim belirteçleri oluşturma ve yönetme](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
-* Kimlik doğrulamaya giriş için bkz. [Azure Iletişim hizmetlerinde kimlik doğrulama](https://docs.microsoft.com/azure/communication-services/concepts/authentication).
-* Veri yerleşimi ve gizliliği 'ne giriş için bkz. [bölge kullanılabilirliği ve veri](https://docs.microsoft.com/azure/communication-services/concepts/privacy)yerleşimi.
+* Belirteç yönetimine erişim tanıtımı için bkz. [erişim belirteçleri oluşturma ve yönetme](../quickstarts/access-tokens.md).
+* Kimlik doğrulamaya giriş için bkz. [Azure Iletişim hizmetlerinde kimlik doğrulama](./authentication.md).
+* Veri yerleşimi ve gizliliği 'ne giriş için bkz. [bölge kullanılabilirliği ve veri](./privacy.md)yerleşimi.

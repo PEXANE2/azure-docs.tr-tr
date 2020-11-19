@@ -1,16 +1,16 @@
 ---
-title: Kavramlar-rol tabanlı erişim denetimi (RBAC)
-description: Azure VMware çözümü için rol tabanlı erişim denetimi 'nin temel özellikleri hakkında bilgi edinin
+title: Kavramlar-vSphere rol tabanlı erişim denetimi (vSphere RBAC)
+description: Azure VMware çözümü için vSphere rol tabanlı erişim denetimi 'nin temel özellikleri hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535495"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888411"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Azure VMware çözümü için rol tabanlı erişim denetimi (RBAC)
+# <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>Azure VMware çözümü için vSphere rol tabanlı erişim denetimi (vSphere RBAC)
 
 Azure VMware çözümünde, vCenter cloudadmin adlı yerleşik bir yerel kullanıcıya sahiptir ve yerleşik CloudAdmin rolüne atanır. Yerel cloudadmin kullanıcısı, AD 'de kullanıcıları ayarlamak için kullanılır. Genel olarak, CloudAdmin rolü özel bulutunuzda iş yüklerini oluşturur ve yönetir. Azure VMware çözümünde, CloudAdmin rolünde diğer VMware bulut çözümlerinden farklı vCenter ayrıcalıkları vardır.     
 
@@ -30,9 +30,9 @@ Azure VMware Çözüm dağıtımında, yöneticinin yönetici kullanıcı hesab�
 
 Azure VMware Çözüm CloudAdmin rolüne verilen ayrıcalıkları Azure VMware çözümünüz özel bulut vCenter ' da görebilirsiniz.
 
-1. SDDC vSphere istemcisinde oturum açın ve **menü**  >  **yönetimi** ' ne gidin.
-1. **Access Control** altında **Roller** ' i seçin.
-1. Roller listesinden **CloudAdmin** öğesini seçin ve ardından **ayrıcalıklar** ' ı seçin. 
+1. SDDC vSphere istemcisinde oturum açın ve **menü**  >  **yönetimi**' ne gidin.
+1. **Access Control** altında **Roller**' i seçin.
+1. Roller listesinden **CloudAdmin** öğesini seçin ve ardından **ayrıcalıklar**' ı seçin. 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="VSphere Istemcisinde CloudAdmin rol ayrıcalıklarını görüntüleme":::
 

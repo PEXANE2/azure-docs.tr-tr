@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303378"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888615"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure İletişim Hizmetleri nedir?
 
@@ -77,9 +77,9 @@ Aşağıdaki kaynaklar, Azure Communication Services istemci kitaplıkları hakk
 
 Şu anda Iletişim hizmetleriyle doğrudan birlikte çalışabilen, kullanmayı düşünebileceğiniz iki farklı Microsoft iletişim ürünü vardır:
 
- - [Microsoft Graph bulut Iletişimi API 'leri](https://docs.microsoft.com/graph/cloud-communications-concept-overview) , kuruluşların M365 lisanslarıyla Azure Active Directory kullanıcılara bağlı iletişim deneyimleri oluşturmasına olanak tanır. Bu, Azure Active Directory bağlı olan veya Microsoft ekiplerinde üretkenlik deneyimlerini uzatmak istediğiniz durumlarda idealdir. Ayrıca [takımlar deneyimi](https://docs.microsoft.com/microsoftteams/platform/?view=msteams-client-js-latest&preserve-view=true) içinde uygulama ve özelleştirme oluşturmak Için API 'ler vardır.
+ - [Microsoft Graph bulut Iletişimi API 'leri](/graph/cloud-communications-concept-overview) , kuruluşların M365 lisanslarıyla Azure Active Directory kullanıcılara bağlı iletişim deneyimleri oluşturmasına olanak tanır. Bu, Azure Active Directory bağlı olan veya Microsoft ekiplerinde üretkenlik deneyimlerini uzatmak istediğiniz durumlarda idealdir. Ayrıca [takımlar deneyimi](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest) içinde uygulama ve özelleştirme oluşturmak Için API 'ler vardır.
 
- - [Azure PlayFab partisi](https://docs.microsoft.com/gaming/playfab/features/multiplayer/networking/) , oyunlara düşük gecikmeli sohbet ve veri iletişimi eklemeyi basitleştirir. Sohbet ve ağ sistemlerini Iletişim hizmetleriyle oyun oynamak için PlayFab, Xbox 'ta hazırlanmış ve ücretsiz bir seçenektir.
+ - [Azure PlayFab partisi](/gaming/playfab/features/multiplayer/networking/) , oyunlara düşük gecikmeli sohbet ve veri iletişimi eklemeyi basitleştirir. Sohbet ve ağ sistemlerini Iletişim hizmetleriyle oyun oynamak için PlayFab, Xbox 'ta hazırlanmış ve ücretsiz bir seçenektir.
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

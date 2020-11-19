@@ -1,6 +1,6 @@
 ---
 title: Klasik modelden Azure Resource Manager’a geçişle ilgili sık sorulan sorular
-description: Klasik modelden Azure Resource Manager’a geçişle ilgili sık sorulan sorular
+description: Klasik 'dan Azure Resource Manager 'ye geçiş hakkında sık sorulan sorular.
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 33dfd298224962617891f3ab1d540462b2b88954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5734e028f7a735a48e49f4e6c582682bcd7cbd97
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844617"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888394"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Klasik modelden Azure Resource Manager’a geçişle ilgili sık sorulan sorular
 
@@ -42,11 +42,13 @@ Etkin veya durdurulmuş olan, ancak aboneliklerinde, IaaS VM 'Leri (klasik), Şu
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Neden "NewClassicVMCreationNotAllowedForSubscription" belirten bir hata alıyorum?
 
-Kullanımdan kaldırma işleminin bir parçası olarak, IaaS VM (klasik) artık yeni müşteriler için kullanılamaz. Size yeni müşteri olarak tanımladınız ve bu nedenle işlem yetkilendirilmedi. [ARM kullanarak Azure sanal makinelerini](./windows/quick-create-powershell.md)kullanmanızı kesinlikle öneririz. ARM kullanarak Azure VM 'Leri kullanmıyorsanız, aboneliğinizi izin verilenler listesine eklemek için lütfen desteğe başvurun.
+Kullanımdan kaldırma işleminin bir parçası olarak, IaaS VM (klasik) artık yeni müşteriler için kullanılamaz. Size yeni müşteri olarak tanımladınız ve bu nedenle işlem yetkilendirilmedi. Azure Resource Manager kullanmanızı kesinlikle öneririz. Azure Resource Manager kullanarak Azure VM 'Leri kullanyükleyemezsiniz, aboneliğinizi izin verilenler listesine eklemek için lütfen desteğe başvurun.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Bu geçiş planı Azure sanal makinelerde çalışan mevcut hizmetlerimi ya da uygulamaların herhangi birini etkiliyor mu? 
 
-IaaS VM 'Leri (klasik) için 1 Mart 2023 ' ye kadar değil. IaaS VM 'Leri (klasik) genel kullanıma yönelik olarak tam olarak desteklenen hizmetlerdir. Microsoft Azure’da, ayak izinizi genişletmek için bu kaynakları kullanmaya devam edebilirsiniz. 1 Mart 2023 ' de, bu VM 'Ler tamamen kullanımdan kaldırılacak ve etkin veya ayrılmış VM 'Ler serbest bırakılacak & durdurulur. Cloud Services (klasik), depolama hesapları (klasik) vb. gibi klasik diğer kaynaklara hiçbir etkisi olmaz.   
+IaaS VM 'Leri (klasik) için 1 Mart 2023 ' ye kadar değil. IaaS VM 'Leri (klasik) genel kullanıma yönelik olarak tam olarak desteklenen hizmetlerdir. Microsoft Azure’da, ayak izinizi genişletmek için bu kaynakları kullanmaya devam edebilirsiniz. 1 Mart 2023 ' de, bu VM 'Ler tamamen kullanımdan kaldırılacak ve etkin veya ayrılmış VM 'Ler serbest bırakılacak & durdurulur.
+
+Cloud Services (klasik), depolama hesapları (klasik) vb. gibi klasik diğer kaynaklara hiçbir etkisi olmaz.
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Yakın gelecekte geçirmeyi planlamadığım VM'lerime ne olur? 
 
@@ -124,20 +126,20 @@ Bu ileti, VM’nin giden İnternet bağlantısı olmadığında alınır. VM ara
 
 Linux için:
 
-* [IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama](./linux/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için PowerShell 'i kullanma](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için CLı kullanma](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişine yardımcı olacak topluluk araçları](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [En sık karşılaşılan geçiş hatalarını gözden geçirme](./linux/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış](./linux/migration-classic-resource-manager-overview.md)
+* [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](migration-classic-resource-manager-deep-dive.md)
+* [IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama](migration-classic-resource-manager-plan.md)
+* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için PowerShell 'i kullanma](migration-classic-resource-manager-ps.md)
+* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için CLı kullanma](migration-classic-resource-manager-cli.md)
+* [IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişine yardımcı olacak topluluk araçları](migration-classic-resource-manager-community-tools.md)
+* [En sık karşılaşılan geçiş hatalarını gözden geçirme](migration-classic-resource-manager-errors.md)
 
 Windows için:
 
-* [IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](./migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama](./windows/migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için PowerShell 'i kullanma](./windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için CLı kullanma](./linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişine yardımcı olacak topluluk araçları](./windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [En sık karşılaşılan geçiş hatalarını gözden geçirme](./windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış](migration-classic-resource-manager-overview.md)
+* [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](migration-classic-resource-manager-deep-dive.md)
+* [IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama](migration-classic-resource-manager-plan.md)
+* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için PowerShell 'i kullanma](migration-classic-resource-manager-ps.md)
+* [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için CLı kullanma](migration-classic-resource-manager-cli.md)
+* [IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişine yardımcı olacak topluluk araçları](migration-classic-resource-manager-community-tools.md)
+* [En sık karşılaşılan geçiş hatalarını gözden geçirme](migration-classic-resource-manager-errors.md)

@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 5a6fc8e9b316f7c4740ee27fe72c5f056f071d73
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 28e977ed68a3f288f9f86a0c2be02af4cbb26ba4
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912724"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886570"
 ---
-# <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>DDoS saldırı risk azaltma raporlarını ve akış günlüklerini yapılandırma 
+# <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>DDoS saldırı azaltma raporları ve akış günlükleri 
 
 Azure DDoS koruması standardı, DDoS saldırı analiziyle ayrıntılı saldırı öngörüleri ve görselleştirmeleri sağlar. Sanal ağlarını DDoS saldırılarına karşı koruyan müşteriler, saldırı saldırılarına karşı saldırı ve risk azaltma & raporları aracılığıyla saldırının etkilerini azaltmak için gerçekleştirilen saldırı ve eylemler hakkında ayrıntılı görünürlük sağlar. Zengin telemetri, DDoS saldırısının süresi boyunca ayrıntılı ölçümler dahil olmak üzere Azure Izleyici aracılığıyla sunulur. DDoS koruması tarafından sunulan Azure Izleyici ölçümlerinden herhangi biri için uyarı yapılandırılabilir. Günlüğe kaydetme, Azure Izleme tanılama arabirimi aracılığıyla [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection), splunk (Azure Event Hubs), OMS Log Analytics ve gelişmiş analiz Için Azure depolama ile daha da tümleştirilebilir.
 
@@ -39,14 +39,14 @@ Saldırı risk azaltma raporları, kaynak üzerinde saldırı hakkında ayrınt�
 
 1. Portalın sol tarafındaki **tüm hizmetler** ' i seçin.
 2. **Filtre** kutusuna *izleyiciyi* girin. Sonuçlarda **izleyici** göründüğünde seçin.
-3. **Ayarlar** altında **Tanılama ayarları** ' nı seçin.
+3. **Ayarlar** altında **Tanılama ayarları**' nı seçin.
 4. Günlüğe kaydetmek istediğiniz genel IP adresini içeren **aboneliği** ve **kaynak grubunu** seçin.
 5. **Kaynak türü** IÇIN **genel IP adresi** ' ni seçin ve ardından ölçümlerini günlüğe kaydetmek istediğiniz belirli genel IP adresini seçin.
 6. **DDoSMitigationReports günlüğünü toplamak için tanılamayı aç** ' ı seçin ve ardından ihtiyacınız olan aşağıdaki seçeneklerden birçoğunu seçin:
 
-    - **Bir depolama hesabına arşivleme** : veriler bir Azure depolama hesabına yazılır. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Arşiv kaynak günlükleri](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Bir olay hub 'ına akış** : günlük alıcının bir Azure Olay Hub 'ı kullanarak günlükleri seçmesine izin verir. Olay Hub 'ları, splunk veya diğer SıEM sistemleriyle tümleştirmeyi etkinleştirir. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [kaynak günlüklerini bir olay hub 'ına akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Log Analytics gönder** : günlükleri Azure izleyici hizmetine yazar. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde kullanılacak günlükleri toplama](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Bir depolama hesabına arşivleme**: veriler bir Azure depolama hesabına yazılır. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Arşiv kaynak günlükleri](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Bir olay hub 'ına akış**: günlük alıcının bir Azure Olay Hub 'ı kullanarak günlükleri seçmesine izin verir. Olay Hub 'ları, splunk veya diğer SıEM sistemleriyle tümleştirmeyi etkinleştirir. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [kaynak günlüklerini bir olay hub 'ına akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Log Analytics gönder**: günlükleri Azure izleyici hizmetine yazar. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde kullanılacak günlükleri toplama](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Hem artımlı & saldırı sonrası risk azaltma raporları aşağıdaki alanları içerir
 - Saldırı vektörleri
@@ -61,14 +61,16 @@ Saldırı risk azaltma akış günlükleri, etkin bir DDoS saldırısı sırası
 
 1. Portalın sol tarafındaki **tüm hizmetler** ' i seçin.
 2. **Filtre** kutusuna *izleyiciyi* girin. Sonuçlarda **izleyici** göründüğünde seçin.
-3. **Ayarlar** altında **Tanılama ayarları** ' nı seçin.
+3. **Ayarlar** altında **Tanılama ayarları**' nı seçin.
 4. Günlüğe kaydetmek istediğiniz genel IP adresini içeren **aboneliği** ve **kaynak grubunu** seçin.
 5. **Kaynak türü** IÇIN **genel IP adresi** ' ni seçin ve ardından ölçümlerini günlüğe kaydetmek istediğiniz belirli genel IP adresini seçin.
 6. **DDoSMitigationFlowLogs günlüğünü toplamak için tanılamayı aç** ' ı seçin ve ardından ihtiyacınız olan aşağıdaki seçeneklerden birçoğunu seçin:
 
-    - **Bir depolama hesabına arşivleme** : veriler bir Azure depolama hesabına yazılır. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Arşiv kaynak günlükleri](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Bir olay hub 'ına akış** : günlük alıcının bir Azure Olay Hub 'ı kullanarak günlükleri seçmesine izin verir. Olay Hub 'ları, splunk veya diğer SıEM sistemleriyle tümleştirmeyi etkinleştirir. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [kaynak günlüklerini bir olay hub 'ına akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Log Analytics gönder** : günlükleri Azure izleyici hizmetine yazar. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde kullanılacak günlükleri toplama](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Bir depolama hesabına arşivleme**: veriler bir Azure depolama hesabına yazılır. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Arşiv kaynak günlükleri](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Bir olay hub 'ına akış**: günlük alıcının bir Azure Olay Hub 'ı kullanarak günlükleri seçmesine izin verir. Olay Hub 'ları, splunk veya diğer SıEM sistemleriyle tümleştirmeyi etkinleştirir. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [kaynak günlüklerini bir olay hub 'ına akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Log Analytics gönder**: günlükleri Azure izleyici hizmetine yazar. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde kullanılacak günlükleri toplama](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Bu [şablon](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) , tanılama günlüğünü etkinleştirmek Için bir Azure ilke tanımı oluşturur.
 
 ### <a name="azure-sentinel-data-connector"></a>Azure Sentinel veri Bağlayıcısı
 
@@ -118,5 +120,5 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 DDoS saldırısını test etme ve benzetimini yapma hakkında bilgi edinmek için bkz. simülasyon test Kılavuzu:
 
 > [!div class="nextstepaction"]
-> [Benzetimler üzerinden test](test-through-simulations.md)
+> [Simülasyonlar aracılığıyla test etme](test-through-simulations.md)
 

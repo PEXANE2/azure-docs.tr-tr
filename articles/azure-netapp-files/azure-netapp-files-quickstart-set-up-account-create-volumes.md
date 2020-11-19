@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336472"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888819"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma
 
@@ -32,8 +32,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 > [!IMPORTANT]
 > Azure NetApp Files hizmetine erişim verilmesi gerekir. Hizmete erişim istemek için, [Azure NetApp Files eklenebileceğinizi gönderim sayfasına](https://aka.ms/azurenetappfiles)bakın.  Devam etmeden önce Azure NetApp Files ekipten bir resmi onay e-postası beklemeniz gerekir.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
@@ -65,6 +63,10 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+Ortamınızı Azure CLı için hazırlayın.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
 # <a name="template"></a>[Şablon](#tab/template)
@@ -85,14 +87,14 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
 
       ![Azure NetApp Files seçin](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
-2. Yeni bir NetApp hesabı oluşturmak için **+ Ekle** 'ye tıklayın.
+2. Yeni bir NetApp hesabı oluşturmak için **+ Ekle**'ye tıklayın.
 
      ![Yeni NetApp hesabı oluştur](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
 3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın:
    1. Hesap adı için **myaccount1** girin.
    2. Aboneliğinizi seçin.
-   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam** ’a tıklayın.
+   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam** düğmesine tıklayın.
    4. Hesap konumunuzu seçin.
 
       ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)
@@ -176,15 +178,15 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure NetApp Files yönetimi dikey penceresinde NetApp hesabınızı ( **myaccount1** ) seçin.
+1. Azure NetApp Files yönetimi dikey penceresinde NetApp hesabınızı (**myaccount1**) seçin.
 
     ![NetApp hesabı seçin](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
-2. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **Kapasite havuzları** ' na tıklayın.
+2. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **Kapasite havuzları**' na tıklayın.
 
     ![Kapasite havuzları ' na tıklayın](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)
 
-3. **+ Havuz Ekle** ' ye tıklayın.
+3. **+ Havuz Ekle**' ye tıklayın.
 
     ![Havuz Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
@@ -194,7 +196,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
     * Havuz boyutu olarak **4 (TiB)** belirtin.
     * **Otomatik** QoS türünü kullanın.
 
-5. **Oluştur** 'a tıklayın.
+5. **Oluştur**'a tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -250,17 +252,17 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **birimler** ' e tıklayın.
+1. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **birimler**' e tıklayın.
 
     ![Birimler'e tıklayın](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)
 
-2. **+ Birim ekle** ’ye tıklayın.
+2. **+ Birim ekle**’ye tıklayın.
 
     ![Birim Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)
 
 3. Birim Oluştur penceresinde, birim için bilgi sağlayın:
    1. Birim adı olarak **myvol1** girin.
-   2. Kapasite havuzunuzu ( **mypool1** ) seçin.
+   2. Kapasite havuzunuzu (**mypool1**) seçin.
    3. Kota için varsayılan değeri kullanın.
    4. Yeni bir Azure sanal ağı (VNet) oluşturmak için sanal ağ altında **Yeni oluştur** ' a tıklayın.  Ardından aşağıdaki bilgileri girin:
        * VNET adı olarak **myvnet1** girin.
@@ -269,25 +271,25 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzl
        * Alt ağ adres aralığını belirtin, örneğin, 10.7.0.0/24. Ayrılmış alt ağı diğer kaynaklarla paylaşamazsınız.
        * Alt ağ temsili için **Microsoft. NetApp/birimler** ' i seçin.
        * VNET oluşturmak için **Tamam** ' ı tıklatın.
-   5. Alt ağ ' da, temsilci alt ağı olarak yeni oluşturulan VNET 'i ( **myvnet1** ) seçin.
+   5. Alt ağ ' da, temsilci alt ağı olarak yeni oluşturulan VNET 'i (**myvnet1**) seçin.
 
       ![Birim penceresi oluşturma](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
       ![Sanal Ağ penceresi oluştur](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)
 
-4. **Protokol** ' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:
+4. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:
     * Birimin protokol türü olarak **NFS** ' yi seçin.
     * Birimin dışa aktarma yolunu oluşturmak için kullanılacak dosya yolu olarak **myfilepath1** girin.
-    * Birim için NFS sürümünü ( **NFSv3** veya **nfsv 4.1** ) seçin.
+    * Birim için NFS sürümünü (**NFSv3** veya **nfsv 4.1**) seçin.
       Bkz. NFS sürümleri hakkında [konular](azure-netapp-files-create-volumes.md#considerations) ve [en iyi uygulamalar](azure-netapp-files-create-volumes.md#best-practice) .
 
     ![Hızlı başlangıç için NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-5. **Gözden geçir ve oluştur** ’a tıklayın.
+5. **Gözden geçir ve oluştur**’a tıklayın.
 
     ![İnceleme ve pencere oluşturma](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)
 
-6. Birimle ilgili bilgileri gözden geçirin ve ardından **Oluştur** ' a tıklayın.
+6. Birimle ilgili bilgileri gözden geçirin ve ardından **Oluştur**' a tıklayın.
     Oluşturulan birim birimler dikey penceresinde görünür.
 
     ![Birim oluşturuldu](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)
@@ -415,13 +417,13 @@ Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resou
     ![Kaynak gruplarına gidin](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
 
 
-3. Kaynak grubu sayfasında, **kaynak grubunu sil** ' e tıklayın.
+3. Kaynak grubu sayfasında, **kaynak grubunu sil**' e tıklayın.
 
     ![Kaynak grubunu Sil düğmesini vurgulayan ekran görüntüsü.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png)
 
     Bir pencere açılır ve kaynak grubuyla birlikte silinecek kaynaklar hakkında bir uyarı görüntüler.
 
-4. Kaynak grubunu ve içindeki tüm kaynakları kalıcı olarak silmek istediğinizi onaylamak için kaynak grubunun adını (myRG1) girin ve ardından **Sil** ' e tıklayın.
+4. Kaynak grubunu ve içindeki tüm kaynakları kalıcı olarak silmek istediğinizi onaylamak için kaynak grubunun adını (myRG1) girin ve ardından **Sil**' e tıklayın.
 
     ![Kaynak grubunu silmeyi onayla](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png )
 

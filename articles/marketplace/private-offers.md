@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 5396845e13e94b4d957f42618baaf19c408f559d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fdd8c752e8cf610ef3c32e1af91b3ad6454c0813
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843783"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887187"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
@@ -42,6 +42,8 @@ Kurumsal müşteriler, bulut çözümlerini bulmak, denemek ve satın almak içi
 Özel planlar bir teklifin bileşenleridir ve hedeflenen müşteriler tarafından yalnızca görünür ve satın alınabilir alınırken. Özel planlar, temel görüntüleri yeniden kullanabilir ve/veya zaten ortak bir plan için yayımlanmış meta verileri sunabilir. Bu seçenek, yayımcıların aynı temel görüntünün birden çok sürümünü yayınlamak ve meta verileri sunmak zorunda kalmadan ortak bir teklifin birden çok özel çeşitlemelerini oluşturmalarına olanak tanır. Yalnızca sanal makine ve Azure uygulaması için özel bir plan ortak bir plana sahip bir temel görüntüyü paylaşıyorsa, teklifin temel görüntüsündeki tüm değişiklikler, bu temel görüntüyü kullanarak tüm genel ve özel planlara yayılır.
 
 *Yalnızca özel planlar içeren yeni teklifler* için yayımcılar, tekliflerini başka bir teklif olarak oluşturabilir ve sonra planları özel olarak işaretleyebilir. Yalnızca özel planları olan teklifler, Microsoft ticari marketi veya teklifle ilişkilendirilmemiş müşteriler tarafından [Azure Portal](https://azure.microsoft.com/features/azure-portal/) bulunabilir veya erişilebilir olmayacaktır.
+
+Özel planlar hem Azure genel hem de Azure Kamu için kullanılabilir.
 
 >[!NOTE]
 >Yalnızca özel planları içeren bir teklif, genel Azure Market veya AppSource 'ta görünmez.

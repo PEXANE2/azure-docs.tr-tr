@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233942"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887544"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Hero örneği çağıran grup ile çalışmaya başlama
 
@@ -50,13 +50,13 @@ Görüntü adınızı ve cihazlarınızı yapılandırdıktan sonra, çağrı ot
 
 Ana arama ekranının bileşenleri:
 
-1. **Medya Galerisi** : katılımcıların gösterildiği ana aşama. Bir katılımcının Kamerası etkinse, video akışları burada gösterilir. Her katılımcının, görünen adını ve video akışını (bir tane olduğunda) gösteren bir tek kutucuğu vardır
-2. **Üst bilgi** : Bu, birincil çağrı denetimlerinin ayarları ve katılımcı tarafı çubuğunu açıp, video ve karışımı açma/kapatma, ekran paylaşma ve çağrıyı bırakma olarak bulunduğu yerdir.
-3. **Yan çubuk** : Bu, üst bilgi üzerindeki denetimler kullanılarak, katılımcılar ve ayar bilgilerinin gösterildiği yerdir. Bileşen sağ üst köşedeki ' X ' kullanılarak kapatılabilir. Katılımcılar yan çubuğu, katılımcıların bir listesini ve sohbet 'e daha fazla kullanıcı davet etmek için bir bağlantı gösterir. Ayarlar yan çubuğu, mikrofon ve kamera ayarlarını yapılandırmanıza olanak tanır.
+1. **Medya Galerisi**: katılımcıların gösterildiği ana aşama. Bir katılımcının Kamerası etkinse, video akışları burada gösterilir. Her katılımcının, görünen adını ve video akışını (bir tane olduğunda) gösteren bir tek kutucuğu vardır
+2. **Üst bilgi**: Bu, birincil çağrı denetimlerinin ayarları ve katılımcı tarafı çubuğunu açıp, video ve karışımı açma/kapatma, ekran paylaşma ve çağrıyı bırakma olarak bulunduğu yerdir.
+3. **Yan çubuk**: Bu, üst bilgi üzerindeki denetimler kullanılarak, katılımcılar ve ayar bilgilerinin gösterildiği yerdir. Bileşen sağ üst köşedeki ' X ' kullanılarak kapatılabilir. Katılımcılar yan çubuğu, katılımcıların bir listesini ve sohbet 'e daha fazla kullanıcı davet etmek için bir bağlantı gösterir. Ayarlar yan çubuğu, mikrofon ve kamera ayarlarını yapılandırmanıza olanak tanır.
 
 Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Node.js (12.18.4 ve üzeri)](https://nodejs.org/en/download/)
@@ -105,7 +105,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 >[!div class="nextstepaction"] 
 >[GitHub 'dan örneği indirin](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Çağıran istemci kitaplığını kullanma](../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
@@ -116,4 +116,4 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 - [Redux](https://redux.js.org/) -istemci tarafı durum yönetimi
 - [Floentuı](https://aka.ms/fluent-ui) -MICROSOFT Powered UI kitaplığı
 - Kullanıcı arabirimleri oluşturmak için [tepki](https://reactjs.org/) verme kitaplığı
-- Web uygulamaları oluşturmak için [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) çerçeve
+- Web uygulamaları oluşturmak için [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1) çerçeve

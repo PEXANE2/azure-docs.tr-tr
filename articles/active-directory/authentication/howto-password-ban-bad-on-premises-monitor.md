@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 315dfcb10b11278401d6cc0abd42b40b5f55f72a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968370"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886762"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Şirket içi Azure AD parola koruma ortamları için günlükleri izleme ve gözden geçirme
 
@@ -66,15 +66,19 @@ Anahtar parolası-doğrulama ile ilgili olaylar aşağıdaki gibidir:
 
 | Olay |Parola değiştirme |Parola kümesi|
 | --- | :---: | :---: |
-|Aktar |10014 |10015|
+|Başarılı |10014 |10015|
 |Başarısız (müşteri parola ilkesi nedeniyle)| 10016, 30002| 10017, 30003|
 |Başarısız (Microsoft parola ilkesi nedeniyle)| 10016, 30004| 10017, 30005|
 |Başarısız (Birleşik Microsoft ve müşteri parola ilkeleri nedeniyle)| 10016, 30026| 10017, 30027|
+|Başarısız (Kullanıcı adı nedeniyle)| 10016, 30021| 10017, 30022|
 |Yalnızca denetim geçişi (müşteri parolası ilkesi başarısız olur)| 10024, 30008| 10025, 30007|
 |Yalnızca denetim geçişi (Microsoft parola ilkesi başarısız olur)| 10024, 30010| 10025, 30009|
 |Yalnızca denetim geçişi (Microsoft ve müşteri parola ilkelerini birleştirmelidir)| 10024, 30028| 10025, 30029|
+|Yalnızca denetim geçişi (Kullanıcı adı nedeniyle başarısız olmuş olabilir)| 10016, 30024| 10017, 30023|
 
 Yukarıdaki tabloda yer alan "birleştirilmiş ilkeler" e başvuran durumlar, bir kullanıcının parolasının hem Microsoft yasaklanmış parola listesi hem de müşteri yasaklanmış parola listesinden en az bir belirteç içerdiği durumlara başvururlar.
+
+Yukarıdaki tabloda yer alan "Kullanıcı adı" bölümüne başvuran durumlar, kullanıcının hesap adını ve/veya kullanıcının kolay adlarından birini içeren Kullanıcı parolasının bulunduğu durumlara başvurur. Her iki senaryo da, ilke zorla ' ya ayarlandığında ve ilke denetleme modundaysa geçirildiğinde kullanıcının parolasının reddedilmesine neden olur.
 
 Bir çift olay çifti birlikte kaydedildiğinde, her iki olay da aynı CorrelationId 'ye sahip tarafından açıkça ilişkilendirilir.
 
@@ -234,7 +238,7 @@ Metin günlüğe kaydetme varsayılan olarak devre dışıdır. Bu değerde yap�
 
 ## <a name="dc-agent-performance-monitoring"></a>DC Aracısı performans izleme
 
-DC aracı hizmeti yazılımı, **Azure AD parola koruması**adlı bir performans sayacı nesnesi yüklüyor. Aşağıdaki performans sayaçları Şu anda kullanılabilir:
+DC aracı hizmeti yazılımı, **Azure AD parola koruması** adlı bir performans sayacı nesnesi yüklüyor. Aşağıdaki performans sayaçları Şu anda kullanılabilir:
 
 |Performans sayacı adı | Açıklama|
 | --- | --- |

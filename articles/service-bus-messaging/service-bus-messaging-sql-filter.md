@@ -2,17 +2,17 @@
 title: Azure Service Bus SQLFilter sözdizimi başvurusu | Microsoft Docs
 description: Bu makalede, SQLFilter dilbilgisi hakkında ayrıntılar sağlanmaktadır. Bir SqlFilter, SQL-92 standardının bir alt kümesini destekler.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341603"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888479"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter söz dizimi
 
-*Sqlfilter* nesnesi [sqlfilter sınıfının](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)bir örneğidir ve bir [brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)tarafından değerlendirilen bir SQL dil tabanlı filtre ifadesini temsil eder. Bir SqlFilter, SQL-92 standardının bir alt kümesini destekler.  
+*Sqlfilter* nesnesi [sqlfilter sınıfının](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)bir örneğidir ve bir Ile karşılaştırılarak değerlendirilen bir SQL dil tabanlı filtre ifadesini temsil eder [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . Bir SqlFilter, SQL-92 standardının bir alt kümesini destekler.  
   
  Bu konuda, SqlFilter dilbilgisinde ayrıntıları listelenmektedir.  
   
@@ -47,9 +47,9 @@ ms.locfileid: "85341603"
   
 ```  
   
-## <a name="arguments"></a>Bağımsız değişkenler  
+## <a name="arguments"></a>Arguments  
   
--   `<scope>` , kapsamını belirten isteğe bağlı bir dizedir `<property_name>` . Geçerli değerler veya ' dir `sys` `user` . `sys`Değer, `<property_name>` [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olan sistem kapsamını gösterir. `user` Kullanıcı kapsamını `<property_name>` , [aracılı edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user` belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
+-   `<scope>` , kapsamını belirten isteğe bağlı bir dizedir `<property_name>` . Geçerli değerler veya ' dir `sys` `user` . `sys`Değer, `<property_name>` [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olan sistem kapsamını gösterir. `user` Kullanıcı kapsamını `<property_name>` , [aracılı edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user` belirtilmezse, kapsam varsayılan kapsamdır `<scope>` .  
   
 ## <a name="remarks"></a>Açıklamalar
 
@@ -67,7 +67,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ```  
   
-### <a name="arguments"></a>Bağımsız değişkenler  
+### <a name="arguments"></a>Arguments  
 
  `<regular_identifier>` , aşağıdaki normal ifade tarafından temsil edilen bir dizedir:  
   
@@ -81,7 +81,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 `[:IsDigit:]` ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsDigit(c)``true` `c` Unicode basamağı ise döndürür.  
   
-`<regular_identifier>`, Ayrılmış bir anahtar sözcük olamaz.  
+, `<regular_identifier>` Ayrılmış bir anahtar sözcük olamaz.  
   
 `<delimited_identifier>` sol/sağ köşeli ayraç ([]) ile çevrelenen herhangi bir dizedir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. Aşağıdakiler aşağıda verilmiştir `<delimited_identifier>` :  
   
@@ -132,20 +132,20 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Bağımsız değişkenler  
+### <a name="arguments"></a>Arguments  
   
--   `<integer_constant>` , tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak depolanır `System.Int64` ve aynı aralığı izler.  
+-   `<integer_constant>` , tırnak işaretleri içine almayan ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak depolanır `System.Int64` ve aynı aralığı izler.  
   
-     Bunlar, uzun sabitler örneğidir:  
+     Uzun sabitler örnekleri aşağıda verilmiştir:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>` , tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak depolanır `System.Double` ve aynı aralığa/duyarlığa uyar.  
+-   `<decimal_constant>` , tırnak işaretleri içine almayan sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak depolanır `System.Double` ve aynı aralığa/duyarlığa uyar.  
   
-     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün için olduğu olguyu temel almamalıdır `System.Double` `<decimal_constant>` .  
+     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün bir olgusuna güvenmemelisiniz `System.Double` `<decimal_constant>` .  
   
      Ondalık sabitlerin örnekleri aşağıda verilmiştir:  
   
@@ -170,7 +170,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ### <a name="remarks"></a>Açıklamalar  
 
-Boole sabitleri, **true** veya **false**anahtar sözcükleriyle temsil edilir. Değerler olarak depolanır `System.Boolean` .  
+Boole sabitleri, **true** veya **false** anahtar sözcükleriyle temsil edilir. Değerler olarak depolanır `System.Boolean` .  
   
 ## <a name="string_constant"></a>string_constant  
   
@@ -192,7 +192,7 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
   
 ### <a name="remarks"></a>Açıklamalar
   
-`newid()`İşlevi, yöntemi tarafından oluşturulan bir **System. Guid** döndürür `System.Guid.NewGuid()` .  
+`newid()`İşlevi `System.Guid` , yöntemi tarafından oluşturulan bir döndürür `System.Guid.NewGuid()` .  
   
 `property(name)`İşlevi tarafından başvurulan özelliğin değerini döndürür `name` . `name`Değer, bir dize değeri döndüren geçerli bir ifade olabilir.  
   
@@ -214,25 +214,25 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
 - Var olmayan bir sistem özelliğini değerlendirme girişimi bir [Filterexception](/dotnet/api/microsoft.servicebus.messaging.filterexception) özel durumu oluşturur.  
   
-- Varolmayan bir özellik dahili olarak **Bilinmeyen**olarak değerlendirilir.  
+- Mevcut olmayan bir özellik dahili olarak **Bilinmeyen** olarak değerlendirilir.  
   
   Aritmetik işleçlerinde bilinmeyen değerlendirme:  
   
-- İkili işleçler için, işlenenlerin sol ve/veya sağ tarafı **bilinmiyor**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
+- İkili işleçler için, işlenenleri 'nin sol veya sağ tarafı **bilinmiyor** olarak değerlendiriliyorsa sonuç **bilinmez**.  
   
-- Birli İşleçler için, bir işlenen **bilinmiyor**olarak değerlendiriliyorsa sonuç **bilinmez**.  
+- Birli İşleçler için, bir işlenen **bilinmiyor** olarak değerlendiriliyorsa sonuç **bilinmez**.  
   
   İkili karşılaştırma işleçleri içinde bilinmeyen değerlendirme:  
   
-- İşlenenlerin sol ve/veya sağ tarafı **bilinmiyor**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
+- İşlenenlerin sol veya sağ tarafı **bilinmiyor** olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
   İçinde bilinmeyen değerlendirme `[NOT] LIKE` :  
   
-- Herhangi bir işlenen **Bilinmeyen**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
+- Herhangi bir işlenen **Bilinmeyen** olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
   İçinde bilinmeyen değerlendirme `[NOT] IN` :  
   
-- Sol işlenen **Bilinmeyen**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
+- Sol işlenen **Bilinmeyen** olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
   **Ve** işlecinde bilinmeyen değerlendirme:  
   
@@ -267,6 +267,58 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
 -   ,,,, Ve gibi karşılaştırma işleçleri, `>` `>=` `<` `<=` `!=` `=` veri türü yükseltmeleri ve örtük dönüşümlerde C# işleci bağlamasıyla aynı semantiğini izler.  
   
 -   ,,, Ve gibi aritmetik işleçler, `+` `-` `*` `/` `%` veri türü yükseltmeleri ve örtük dönüşümlerde C# işleci bağlamasıyla aynı semantiğini izler.
+
+
+## <a name="examples"></a>Örnekler
+
+### <a name="set-rule-action-for-a-sql-filter"></a>SQL filtresi için kural eylemi ayarlama
+
+```csharp
+// instantiate the ManagementClient
+this.mgmtClient = new ManagementClient(connectionString);
+
+// create the SQL filter
+var sqlFilter = new SqlFilter("source = @stringParam");
+
+// assign value for the parameter
+sqlFilter.Parameters.Add("@stringParam", "orders");
+
+// instantiate the Rule = Filter + Action
+var filterActionRule = new RuleDescription
+{
+    Name = "filterActionRule",
+    Filter = sqlFilter,
+    Action = new SqlRuleAction("SET source='routedOrders'")
+};
+
+// create the rule on Service Bus
+await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
+```
+
+### <a name="sql-filter-on-a-system-property"></a>Bir sistem özelliğinde SQL filtresi
+
+```csharp
+sys.Label LIKE '%bus%'`
+```
+
+### <a name="using-or"></a>VEYA kullanma 
+
+```csharp
+ sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
+```
+
+### <a name="using-in-and-not-in"></a>İçinde DEĞIL, içinde kullanma
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+Bir C# örneği için bkz. [GitHub 'Da konu filtreleri örneği](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

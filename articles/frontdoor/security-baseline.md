@@ -4,15 +4,15 @@ description: Azure ön kapı güvenlik temeli, Azure Güvenlik kıyaslaması 'nd
 author: msmbaldwin
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2b5995478d1c9e65916f76c70c8af374ce82ca54
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 9e9eca3bb230bbfc969a5a429f664e602ad0d78b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94631578"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888326"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure ön kapısı için Azure Güvenlik temeli
 
@@ -24,43 +24,27 @@ Azure ön kapısının Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendi
 
 *Daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması: ağ güvenliği](/azure/security/benchmarks/security-controls-v2-network-security).*
 
-### <a name="ns-2-connect-private-networks-together"></a>NS-2: özel ağları birbirine bağlama
-
-**Rehberlik** : uygulanamaz; Azure ön kapısı, bir özel ağa dağıtmak veya güvenli hale getirilmesi için tasarlanmamıştır, bu denetim ağ bağlantısını tanımlamaya yöneliktir ve uygulanmaz.
-
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
-
-**Sorumluluk** : ayarı yok. Lütfen iş öğesinde bir değer belirtin.
-
-### <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Azure hizmetlerine özel ağ erişimi oluşturma
-
-**Rehberlik** : geçerli değil, Azure ön kapısı özel ağ erişimi için bir sanal ağ tarafından dağıtılan veya güvenli hale getirilmiş şekilde tasarlanmamıştır.
-
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
-
-**Sorumluluk** : ayarı yok. Lütfen iş öğesinde bir değer belirtin.
-
 ### <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: uygulamaları ve Hizmetleri dış ağ saldırılarına karşı koruma
 
-**Rehberlik** : bir coğrafi filtreleme ilkesi oluşturmak ve Ilkeyi mevcut Azure ön kapısı ön uç konunuzla ilişkilendirmek için Azure PowerShell kullanın. Bu coğrafi filtreleme ilkesi, dış ağlardan gelen istekleri (örneğin, Birleşik Devletler dışındaki diğer ülkelerden veya bölgelerden) engeller.
+**Rehberlik**: bir coğrafi filtreleme ilkesi oluşturmak ve Ilkeyi mevcut Azure ön kapısı ön uç konunuzla ilişkilendirmek için Azure PowerShell kullanın. Bu coğrafi filtreleme ilkesi, dış ağlardan gelen istekleri (örneğin, Birleşik Devletler dışındaki diğer ülkelerden veya bölgelerden) engeller.
 
 - [Öğretici-ön kapılarınız için coğrafi filtreleme WAF ilkesini ayarlama](front-door-tutorial-geo-filtering.md)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="ns-6-simplify-network-security-rules"></a>NS-6: ağ güvenlik kurallarını basitleştirme
 
-**Kılavuz** : Azure ön kapı teklifi kaynaklarınız için yapılandırılmış ağ güvenlik gruplarında ağ erişim denetimleri tanımlamak Için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (Azurefrontkapısı. ön uç, Azurefrontkapısı. arka uç, Azurefrontkapısı. Firstpartisi) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. 
+**Kılavuz**: Azure ön kapı teklifi kaynaklarınız için yapılandırılmış ağ güvenlik gruplarında ağ erişim denetimleri tanımlamak Için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (Azurefrontkapısı. ön uç, Azurefrontkapısı. arka uç, Azurefrontkapısı. Firstpartisi) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. 
 
 Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
 - [Hizmet etiketlerini anlama ve kullanma](../virtual-network/service-tags-overview.md)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="identity-management"></a>Kimlik Yönetimi
 
@@ -68,13 +52,13 @@ Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres 
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: koşullara göre Azure kaynak erişimini kısıtlama
 
-**Kılavuz** : varsayılan olarak, Azure ön kapısının, isteğin kaynaklandığı yere bakılmaksızın tüm Kullanıcı isteklerine yanıt vermesi. Müşteriler Ayrıca, Web uygulamalarının ülkelerine veya bölgelerine erişimini kısıtlayabilir. Azure ön kapıdaki Web uygulaması Güvenlik Duvarı hizmeti, müşterilerin belirli ülkelerde veya bölgelerde erişime izin vermek veya erişimi engellemek için kendi uç noktasındaki belirli bir yol için özel erişim kuralları kullanarak bir ilke tanımlamasına olanak tanır.
+**Kılavuz**: varsayılan olarak, Azure ön kapısının, isteğin kaynaklandığı yere bakılmaksızın tüm Kullanıcı isteklerine yanıt vermesi. Müşteriler Ayrıca, Web uygulamalarının ülkelerine veya bölgelerine erişimini kısıtlayabilir. Azure ön kapıdaki Web uygulaması Güvenlik Duvarı hizmeti, müşterilerin belirli ülkelerde veya bölgelerde erişime izin vermek veya erişimi engellemek için kendi uç noktasındaki belirli bir yol için özel erişim kuralları kullanarak bir ilke tanımlamasına olanak tanır.
 
 - [Öğretici-Azure ön kapılarınız için coğrafi filtreleme WAF ilkesini ayarlama](front-door-tutorial-geo-filtering.md)
 
-**Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="privileged-access"></a>Ayrıcalıklı erişim
 
@@ -82,7 +66,7 @@ Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres 
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: iş açısından kritik sistemlere yönetici erişimini kısıtlama
 
-**Kılavuz** : Azure ön kapısı, iş açısından kritik sistemlere erişimi yalıtmak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanır. Abonelikler ve yönetim gruplarına ayrıcalıklı erişim verilen hesapları sınırlamak için Azure RBAC kullanın (nerede bulunur).
+**Kılavuz**: Azure ön kapısı, iş açısından kritik sistemlere erişimi yalıtmak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanır. Abonelikler ve yönetim gruplarına ayrıcalıklı erişim verilen hesapları sınırlamak için Azure RBAC kullanın (nerede bulunur).
 
 Active Directory Etki Alanı Denetleyicileri, güvenlik araçları ve sistem yönetimi araçları gibi iş açısından kritik sistemlere yönetici erişimi olan yönetim, kimlik ve güvenlik sistemlerine kısıtlı erişim sağlayın. Sürekli ve tutarlı uygulama için tüm erişim denetimleri türlerini kurumsal segmentleme stratejinize hizalayın.
 
@@ -92,13 +76,13 @@ Active Directory Etki Alanı Denetleyicileri, güvenlik araçları ve sistem yö
 
 - [Azure abonelik yöneticileri](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6: ayrıcalıklı erişim iş istasyonlarını kullanma
 
-**Rehberlik** : güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve kritik hizmet işleçleri gibi hassas rollerin güvenliği açısından kritik öneme sahiptir. 
+**Rehberlik**: güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve kritik hizmet işleçleri gibi hassas rollerin güvenliği açısından kritik öneme sahiptir. 
 
 Yönetim görevleri için Azure savunma ile yüksek düzeyde güvenli Kullanıcı iş istasyonları kullanın. Yönetim görevleri için güvenli ve yönetilen Kullanıcı iş istasyonları dağıtmak üzere Azure Active Directory (Azure AD), Microsoft Defender Gelişmiş tehdit koruması (ATP) ve Microsoft Intune seçin. Güçlü kimlik doğrulaması, yazılım ve donanım temelleri, kısıtlı mantıksal ve ağ erişimi gibi güvenli yapılandırmayı zorlamak için güvenli iş istasyonları merkezi olarak yönetilmelidir.
 
@@ -106,13 +90,13 @@ Yönetim görevleri için Azure savunma ile yüksek düzeyde güvenli Kullanıc�
 
 - [Ayrıcalıklı erişim iş istasyonu dağıtma](../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: yalnızca yeterli yönetim (en az ayrıcalık ilkesi) Izleyin 
 
-**Rehberlik** : Azure ön kapısı, kaynaklarını yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) ile tümleşiktir. Azure RBAC, rol atamaları aracılığıyla Azure kaynak erişimini yönetmenizi sağlar. Bu rolleri kullanıcılara atayabilir, hizmet sorumlularını ve yönetilen kimlikleri gruplara atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell veya Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir. 
+**Rehberlik**: Azure ön kapısı, kaynaklarını yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) ile tümleşiktir. Azure RBAC, rol atamaları aracılığıyla Azure kaynak erişimini yönetmenizi sağlar. Bu rolleri kullanıcılara atayabilir, hizmet sorumlularını ve yönetilen kimlikleri gruplara atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell veya Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir. 
 
 Azure RBAC ile kaynaklara atanan rol tabanlı izinler için en az ayrıcalık modelini izleyin ve iş ihtiyacını temel aldığından emin olun. Bu, Azure AD Privileged Identity Management (PıM) ' nin tam zamanında (JıT) yaklaşımını tamamlar ve düzenli olarak incelenmelidir.
 
@@ -124,9 +108,9 @@ Azure RBAC ile kaynaklara atanan rol tabanlı izinler için en az ayrıcalık mo
 
 - [Azure AD kimlik ve erişim gözden geçirmeleri kullanma](../active-directory/governance/access-reviews-overview.md)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
 ## <a name="data-protection"></a>Veri Koruma
 
@@ -134,23 +118,25 @@ Azure RBAC ile kaynaklara atanan rol tabanlı izinler için en az ayrıcalık mo
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: geçiş sırasında hassas bilgileri şifreleyin
 
-**Rehberlik** : veri koruma açısından önemli olduğundan, dış ve ortak ağlardaki trafiği korumak için şifrelemeyi kullanın. Ek olarak:
+**Rehberlik**: erişim denetimlerini tamamlamak için, yoldaki veriler, saldırganların verileri kolayca okuyamadığından veya değiştiremeyeceği için şifreleme kullanılarak ' bant dışı ' saldırılarına (ör. trafik yakalama) karşı korunmalıdır.
 
-- Erişim denetimlerini kullanma,
+Ön kapı 1,0, 1,1 ve 1,2 TLS sürümlerini destekler. TLS 1,3 henüz desteklenmiyor. Eylül 2019 ' den sonra oluşturulan tüm ön kapılı profiller varsayılan en düşük düzeyde TLS 1,2 ' i kullanır.
 
-- saldırganların verileri kolayca okuyamadığı veya değiştirememesini sağlamak için şifreleme kullanarak ' bant dışı ' saldırılarına (trafik yakalama gibi) karşı koruyun.
-- HTTP trafiği için Azure kaynaklarınıza bağlanan tüm istemcilerin TLS v 1.2 veya üzerini anlaşamadığından emin olun.
-- Şifrelenmemiş protokoller yerine uzaktan yönetim için SSH (Linux için) veya RDP/TLS (Windows için) kullanın
+Bu, özel ağlardaki trafik için isteğe bağlı olsa da, bu, dış ve genel ağlardaki trafik için önemlidir. HTTP trafiği için, Azure kaynaklarınıza bağlanan istemcilerin TLS v 1.2 veya üzerini anlaştığınızdan emin olun. Uzaktan Yönetim için şifrelenmemiş bir protokol yerine SSH (Linux için) veya RDP/TLS (Windows için) kullanın. Kullanımdan çıkarıldı SSL, TLS ve SSH sürümleri ve protokolleri ve zayıf şifrelemeler devre dışı bırakılmalıdır.
 
-- Kullanımdan etkilenen SSL/TLS/SSH sürümlerini, protokolleri ve zayıf şifrelemeleri devre dışı bırak
-
-Azure, varsayılan olarak Azure veri merkezleri arasındaki veri trafiği için iletim şifrelemesinde veri sağlar. 
+Azure, varsayılan olarak Azure veri merkezleri arasında aktarım halindeki veriler için şifreleme sağlar.
 
 - [Öğretici-bir ön kapı özel etki alanında HTTPS 'yi yapılandırma](front-door-custom-domain-https.md)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+- [Azure ile iletim sırasında şifrelemeyi anlama](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
-**Sorumluluk** : paylaşılan
+- [TLS güvenliği hakkında bilgi](/security/engineering/solving-tls1-problem) 
+
+- [Yoldaki Azure verileri için çift şifreleme](../security/fundamentals/double-encryption.md#data-in-transit)
+
+**Azure Güvenlik Merkezi izleme**: Evet
+
+**Sorumluluk**: paylaşılan
 
 ## <a name="asset-management"></a>Varlık Yönetimi
 
@@ -158,7 +144,7 @@ Azure, varsayılan olarak Azure veri merkezleri arasındaki veri trafiği için 
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>ÖÖ-1: güvenlik ekibinin, varlıklar için riskleri görebilirliği sağlayın
 
-**Rehberlik** : güvenlik ekiplerinde Azure Güvenlik Merkezi 'ni kullanarak güvenlik risklerini Izlemek için Azure kiracınızda ve aboneliklerinizde güvenlik okuyucusu izinleri verildiğinden emin olun. 
+**Rehberlik**: güvenlik ekiplerinde Azure Güvenlik Merkezi 'ni kullanarak güvenlik risklerini Izlemek için Azure kiracınızda ve aboneliklerinizde güvenlik okuyucusu izinleri verildiğinden emin olun. 
 
 Güvenlik ekibinin sorumluluklarına bağlı olarak, güvenlik risklerini izlemek, merkezi bir güvenlik ekibinin veya yerel ekibin sorumluluğunda olabilir. Bununla birlikte, güvenlik öngörüleri ve riskler her zaman bir kuruluş içinde toplanmalıdır. 
 
@@ -170,13 +156,13 @@ Unutmayın: iş yüklerinin ve hizmetlerinin görünürlüğü için ek izinler 
 
 - [Azure Yönetim Grupları 'ye Genel Bakış](../governance/management-groups/overview.md)
 
-**Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>-2: güvenlik ekibinin varlık envanterini ve meta verileri erişimine sahip olduğundan emin olun
 
-**Rehberlik** : Azure kaynaklarına, kaynak gruplarına ve aboneliklerine mantıksal olarak bunları bir taksonomi halinde düzenlemek için Etiketler uygulayın. Her etiket bir ad ve bir değer çiftinden oluşur. Örneğin, "ortam" adını ve "üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
+**Rehberlik**: Azure kaynaklarına, kaynak gruplarına ve aboneliklerine mantıksal olarak bunları bir taksonomi halinde düzenlemek için Etiketler uygulayın. Her etiket bir ad ve bir değer çiftinden oluşur. Örneğin, "ortam" adını ve "üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
 
 - [Azure Kaynak Grafiği Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md) 
 
@@ -184,13 +170,13 @@ Unutmayın: iş yüklerinin ve hizmetlerinin görünürlüğü için ek izinler 
 
 - [Kaynak adlandırma ve etiketleme kararı kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="am-3-use-only-approved-azure-services"></a>HAR-3: yalnızca onaylanan Azure hizmetlerini kullanma
 
-**Rehberlik** : kullanıcıların ortamınızda hangi hizmetleri sağlayabileceğini denetlemek ve kısıtlamak Için Azure İlkesi ' ni kullanın. Azure Kaynak Grafiği ile abonelikleri dahilinde kaynakları sorgulayın ve bulun.
+**Rehberlik**: kullanıcıların ortamınızda hangi hizmetleri sağlayabileceğini denetlemek ve kısıtlamak Için Azure İlkesi ' ni kullanın. Azure Kaynak Grafiği ile abonelikleri dahilinde kaynakları sorgulayın ve bulun.
 
 Onaylanmamış bir hizmet algılandığında uyarıları tetiklemek için kurallar oluşturmak üzere Azure Izleyici 'yi kullanın.
 
@@ -200,19 +186,19 @@ Onaylanmamış bir hizmet algılandığında uyarıları tetiklemek için kurall
 
 - [Azure Kaynak Grafiği Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>ÖÖ-4: varlık yaşam döngüsü yönetiminin güvenliğinin yapıldığından emin olun
 
-**Rehberlik** : uygulanamaz; Azure ön kapısı, bir yaşam döngüsü yönetimi işlemindeki varlıkların güvenliğini sağlamak için kullanılamaz. Yüksek etki olarak kabul edilen varlıkların özniteliklerinin ve ağ yapılandırmalarının bakımını yapmak müşterinin sorumluluğundadır. 
+**Rehberlik**: yüksek etki olarak kabul edilen Azure ön kapı varlıklarının özniteliklerini ve ağ yapılandırmalarının bakımını yapmak müşterinin sorumluluğundadır.
 
 Müşterinin özniteliği ve ağ yapılandırması değişikliklerini yakalamak, değişiklik etkisini ölçmek ve uygun şekilde düzeltme görevleri oluşturmak için bir işlem oluşturması önerilir.
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="logging-and-threat-detection"></a>Günlüğe kaydetme ve tehdit algılama
 
@@ -220,19 +206,19 @@ Müşterinin özniteliği ve ağ yapılandırması değişikliklerini yakalamak,
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Azure ağ etkinlikleri için günlüğe kaydetmeyi etkinleştirme
 
-**Kılavuz** : Azure sınır kapısının sanal ağlara dağıtılması amaçlanmamaktadır; Bu müşteriler, ağ güvenlik grubu akış günlüğünü etkinleştiremediği için trafiği bir güvenlik duvarı üzerinden yönlendirin veya paket yakalamalarını gerçekleştiremez.
+**Kılavuz**: Azure sınır kapısının sanal ağlara dağıtılması amaçlanmamaktadır; Bu müşteriler, ağ güvenlik grubu akış günlüğünü etkinleştiremediği için trafiği bir güvenlik duvarı üzerinden yönlendirin veya paket yakalamalarını gerçekleştiremez.
 
 Azure ön kapısının müşteri erişimi için işlediği tüm ağ trafiği günlüğe kaydedilir. Ağ akışı günlükleri özelliğini etkinleştirin ve uzun süreli saklama ve denetim için bu günlükleri bir depolama hesabına gönderilecek şekilde yapılandırın.
 
 - [Öğretici-Azure ön kapıda Izleme ölçümlerini ve günlüklerini ayarlama](front-door-diagnostics.md)
 
-**Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Azure kaynakları için günlüğe kaydetmeyi etkinleştirme
 
-**Kılavuz** : otomatik olarak kullanılabilir olan etkinlik günlükleri, okuma IŞLEMLERI (Get) haricinde Azure ön kapılarınız için tüm yazma IŞLEMLERINI (put, Post, Delete) içerir. Etkinlik günlükleri, sorun giderirken bir hata bulmak veya kuruluşunuzdaki bir kullanıcının bir kaynağı nasıl değiştirdiğinizi izlemek için kullanılabilir.
+**Kılavuz**: otomatik olarak kullanılabilir olan etkinlik günlükleri, okuma IŞLEMLERI (Get) haricinde Azure ön kapılarınız için tüm yazma IŞLEMLERINI (put, Post, Delete) içerir. Etkinlik günlükleri, sorun giderirken bir hata bulmak veya kuruluşunuzdaki bir kullanıcının bir kaynağı nasıl değiştirdiğinizi izlemek için kullanılabilir.
 
 Azure ön kapısına yönelik Azure Kaynak günlüklerini etkinleştirin. Kaynak günlüklerini ve günlük verilerini toplamayı etkinleştirmek için Azure Güvenlik Merkezi 'ni ve Azure Ilkesi 'ni kullanabilirsiniz. Bu Günlükler, daha sonra güvenlik olaylarını araştırmak ve bu uygulamaların gerçekleştirilmesi için kritik öneme sahip olabilir.
 
@@ -242,9 +228,9 @@ Azure ön kapısına yönelik Azure Kaynak günlüklerini etkinleştirin. Kaynak
 
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../security-center/security-center-enable-data-collection.md)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
 ## <a name="incident-response"></a>Olay Yanıtı
 
@@ -252,29 +238,29 @@ Azure ön kapısına yönelik Azure Kaynak günlüklerini etkinleştirin. Kaynak
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: hazırlık – Azure için olay yanıtı işlemini güncelleştirme
 
-**Rehberlik** : kuruluşunuzun güvenlik olaylarına yanıt vermek için tanımlı işlemlere sahip olduğundan emin olun. Bu işlemlerin Azure kaynakları için güncelleştirildiğini ve hazırlık sağlamak için düzenli olarak test olduğunu doğrulayın.
+**Rehberlik**: kuruluşunuzun güvenlik olaylarına yanıt vermek için tanımlı işlemlere sahip olduğundan emin olun. Bu işlemlerin Azure kaynakları için güncelleştirildiğini ve hazırlık sağlamak için düzenli olarak test olduğunu doğrulayın.
 
 - [Kurumsal ortam genelinde güvenliği uygulama](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
 - [Olay yanıtı başvuru kılavuzu](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="ir-2-preparation--setup-incident-notification"></a>IR-2: hazırlık – olay bildirimini kurma
 
-**Rehberlik** : Azure Güvenlik Merkezi 'nde güvenlik olayı iletişim bilgilerini ayarlama. Bu iletişim bilgileri, Microsoft Güvenlik Yanıt Merkezi (MSRC) verilerinize izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse Microsoft tarafından sizinle iletişim kurmak için kullanılır. Ayrıca, olay uyarı gereksinimlerinize göre farklı Azure hizmetlerinde olay uyarısını ve bildirimi özelleştirme seçenekleriniz vardır. 
+**Rehberlik**: Azure Güvenlik Merkezi 'nde güvenlik olayı iletişim bilgilerini ayarlama. Bu iletişim bilgileri, Microsoft Güvenlik Yanıt Merkezi (MSRC) verilerinize izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse Microsoft tarafından sizinle iletişim kurmak için kullanılır. Ayrıca, olay uyarı gereksinimlerinize göre farklı Azure hizmetlerinde olay uyarısını ve bildirimi özelleştirme seçenekleriniz vardır. 
 
 - [Azure Güvenlik Merkezi güvenlik ilgili kişisini ayarlama](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Güvenlik Merkezi izleme** : Evet
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3: algılama ve analiz – yüksek kaliteli uyarılara göre olaylar oluşturun
 
-**Rehberlik** : yüksek kaliteli uyarılar oluşturmak ve uyarı kalitesini ölçmek için bir işleminiz olduğundan emin olun. Bu, geçmiş olaylardan dersler öğrenmenize ve analistlere yönelik olarak bu uyarıların önceliklendirmesine izin verir, böylelikle hatalı pozitif sonuçlar üzerinde zaman harcanmazlar. 
+**Rehberlik**: yüksek kaliteli uyarılar oluşturmak ve uyarı kalitesini ölçmek için bir işleminiz olduğundan emin olun. Bu, geçmiş olaylardan dersler öğrenmenize ve analistlere yönelik olarak bu uyarıların önceliklendirmesine izin verir, böylelikle hatalı pozitif sonuçlar üzerinde zaman harcanmazlar. 
 
 Yüksek kaliteli uyarılar, geçmiş olaylar, doğrulanan topluluk kaynakları ve uyarılar oluşturmak ve temizlemek için tasarlanan araçların yanı sıra çeşitli sinyal kaynaklarını kullanarak oluşturulabilir. 
 
@@ -286,13 +272,13 @@ Azure kaynakları için riskleri belirlemenize yardımcı olmak üzere dışarı
 
 - [Uyarıları Azure Sentinel 'e akış](../sentinel/connect-azure-security-center.md)
 
-**Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="ir-4-detection-and-analysis--investigate-an-incident"></a>IR-4: algılama ve analiz – bir olayı araştırın
 
-**Rehberlik** : analistlerin eksiksiz bir görünümünü oluşturmak için olası olayları araştırıp farklı veri kaynaklarını sorgulayabilecekleri ve bu kaynakları kullandığından emin olun. Tüm görünmeyen noktaları önlemek için, sonlandırma zincirindeki olası bir saldırganın etkinliklerini izlemek üzere farklı günlük türlerinin toplanması gerekir.  Öngörüler ve dersleri diğer analistler için yakalandığından ve gelecekteki geçmiş başvurusuyla emin olun.  
+**Rehberlik**: analistlerin eksiksiz bir görünümünü oluşturmak için olası olayları araştırıp farklı veri kaynaklarını sorgulayabilecekleri ve bu kaynakları kullandığından emin olun. Tüm görünmeyen noktaları önlemek için, sonlandırma zincirindeki olası bir saldırganın etkinliklerini izlemek üzere farklı günlük türlerinin toplanması gerekir.  Öngörüler ve dersleri diğer analistler için yakalandığından ve gelecekteki geçmiş başvurusuyla emin olun.  
 
 Araştırmaya yönelik veri kaynakları, zaten kapsam içi hizmetlerden ve çalışan sistemlerde toplanmakta olan Merkezi günlük kaynakları içerir, ancak şunları da içerebilir:
 
@@ -316,13 +302,13 @@ Azure Sentinel, olayların tam yaşam döngüsünü yönetmek için neredeyse t�
 
 - [Azure Sentinel ile olayları araştırın](../sentinel/tutorial-investigate-cases.md)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5: algılama ve analiz – olayların önceliklerini belirleme
 
-**Rehberlik** : olayların, uyarı önem derecesine ve varlık duyarlığına göre ilk olarak odaklanacağı analistlere bağlam sağlar. 
+**Rehberlik**: olayların, uyarı önem derecesine ve varlık duyarlığına göre ilk olarak odaklanacağı analistlere bağlam sağlar. 
 
 Azure Güvenlik Merkezi, ilk olarak hangi uyarıların araştırılması gerektiğini önceliklendirmenize yardımcı olmak için her bir uyarıya önem derecesi atar. Önem derecesi, güvenlik merkezi 'nin uyarıyı vermek için kullanılan bulma veya analitik ile ne kadar önemli olduğunu ve uyarıya yönelik etkinliğin arkasında kötü amaçlı bir amaç olduğunu belirten güven düzeyini temel alır.
 
@@ -332,13 +318,13 @@ Ayrıca, etiketleri kullanarak kaynakları işaretleyin ve Azure kaynaklarını 
 
 - [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](/azure/azure-resource-manager/resource-group-using-tags)
 
-**Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6: kapsama, eradleme ve kurtarma – olay işlemeyi otomatikleştirin
 
-**Rehberlik** : yanıt süresini hızlandırmak ve analistlerin yükünü azaltmak için el ile yinelenen görevleri otomatikleştirin. El ile gerçekleştirilen görevlerin yürütülmesi daha uzun sürer, her olayı yavaşlatarak analist 'nin işleyebileceği olayların sayısını azaltır. El ile gerçekleştirilen görevler Ayrıca analist yükselini artırır ve bu da gecikme ve analistlerin karmaşık görevlere etkin bir şekilde odaklanmasına olanak tanır. İşlemleri otomatik olarak tetiklemek veya gelen güvenlik uyarılarına yanıt vermek üzere bir PlayBook çalıştırmak için Azure Güvenlik Merkezi 'nde ve Azure Sentinel 'de iş akışı Otomasyonu özelliklerini kullanın. PlayBook, bildirimler gönderme, hesapları devre dışı bırakma ve sorunlu ağları yalıtma gibi işlemleri gerçekleştirir. 
+**Rehberlik**: yanıt süresini hızlandırmak ve analistlerin yükünü azaltmak için el ile yinelenen görevleri otomatikleştirin. El ile gerçekleştirilen görevlerin yürütülmesi daha uzun sürer, her olayı yavaşlatarak analist 'nin işleyebileceği olayların sayısını azaltır. El ile gerçekleştirilen görevler Ayrıca analist yükselini artırır ve bu da gecikme ve analistlerin karmaşık görevlere etkin bir şekilde odaklanmasına olanak tanır. İşlemleri otomatik olarak tetiklemek veya gelen güvenlik uyarılarına yanıt vermek üzere bir PlayBook çalıştırmak için Azure Güvenlik Merkezi 'nde ve Azure Sentinel 'de iş akışı Otomasyonu özelliklerini kullanın. PlayBook, bildirimler gönderme, hesapları devre dışı bırakma ve sorunlu ağları yalıtma gibi işlemleri gerçekleştirir. 
 
 - [Güvenlik Merkezi 'nde iş akışı Otomasyonu 'nu yapılandırma](../security-center/workflow-automation.md)
 
@@ -346,9 +332,9 @@ Ayrıca, etiketleri kullanarak kaynakları işaretleyin ve Azure kaynaklarını 
 
 - [Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama](../sentinel/tutorial-respond-threats-playbook.md)
 
-**Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="posture-and-vulnerability-management"></a>Posture ve güvenlik açığı yönetimi
 
@@ -356,29 +342,29 @@ Ayrıca, etiketleri kullanarak kaynakları işaretleyin ve Azure kaynaklarını 
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>BD-3: işlem kaynakları için güvenli yapılandırma oluşturma
 
-**Rehberlik** : sanal makineler, kapsayıcılar ve daha fazlası dahil tüm işlem kaynaklarında güvenli konfigürasyonlar oluşturmak Için Azure Güvenlik Merkezi 'Ni ve Azure ilkesini kullanın.
+**Rehberlik**: sanal makineler, kapsayıcılar ve daha fazlası dahil tüm işlem kaynaklarında güvenli konfigürasyonlar oluşturmak Için Azure Güvenlik Merkezi 'Ni ve Azure ilkesini kullanın.
 
 - [Azure Güvenlik Merkezi önerilerini izleme](../security-center/security-center-recommendations.md) 
 
 - [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
-**Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
 ### <a name="pv-7-rapidly-and-automatically-remediate-software-vulnerabilities"></a>BD-7: yazılım güvenlik açıklarını hızla ve otomatik olarak düzeltin
 
-**Rehberlik** : işletim sistemleri ve uygulamalardaki yazılım güvenlik açıklarını düzeltmek için hızlı bir şekilde yazılım güncelleştirmeleri dağıtın.
+**Rehberlik**: işletim sistemleri ve uygulamalardaki yazılım güvenlik açıklarını düzeltmek için hızlı bir şekilde yazılım güncelleştirmeleri dağıtın.
 
 Genel risk Puanlama programını (örneğin, ortak güvenlik açığı Puanlama sistemi) veya kullandığınız bir üçüncü taraf tarama aracı tarafından sunulan varsayılan risk derecelendirmelerini önceliklendirin. ve yüksek bir güvenlik riski sunan bağlamı ve yüksek çalışma süresi gerektiren bağlamı kullanarak ortamınıza uyarlayın.
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>BD-8: normal saldırı simülasyonu gerçekleştir
 
-**Rehberlik** : gerektiğinde, Azure kaynaklarınızda sızma testi veya Red takım etkinlikleri gerçekleştirin ve tüm kritik güvenlik bulgularını düzeltmeye dikkat edin.
+**Rehberlik**: gerektiğinde, Azure kaynaklarınızda sızma testi veya Red takım etkinlikleri gerçekleştirin ve tüm kritik güvenlik bulgularını düzeltmeye dikkat edin.
 Microsoft Bulut penme test kurallarını izleyerek, sızma testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olun. Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına karşı kırmızı ekip oluşturma ve canlı site sızma testi stratejisini kullanın.
 
 - [Azure 'da sızma testi](../security/fundamentals/pen-testing.md)
@@ -387,9 +373,9 @@ Microsoft Bulut penme test kurallarını izleyerek, sızma testlerinizin Microso
 
 - [Microsoft Bulut Kırmızı ekip oluşturma](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: paylaşılan
 
 ## <a name="governance-and-strategy"></a>İdare ve Strateji
 
@@ -397,7 +383,7 @@ Microsoft Bulut penme test kurallarını izleyerek, sızma testlerinizin Microso
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: varlık yönetimi ve veri koruma stratejisini tanımlama 
 
-**Rehberlik** : sistemlerin ve verilerin sürekli izlenmesi ve korunması için açık bir strateji belgelemenizi ve iletdiğinizden emin olun. İş açısından kritik veri ve sistemlerinin bulunmasını, değerlendirmesini, korunmasını ve izlenmesini önceliklendirin. 
+**Rehberlik**: sistemlerin ve verilerin sürekli izlenmesi ve korunması için açık bir strateji belgelemenizi ve iletdiğinizden emin olun. İş açısından kritik veri ve sistemlerinin bulunmasını, değerlendirmesini, korunmasını ve izlenmesini önceliklendirin. 
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
@@ -425,13 +411,13 @@ Başvurulan bağlantılarda daha fazla bilgi bulunabilir.
 
 - [Azure Güvenlik kıyaslaması-veri koruma](/azure/security/benchmarks/security-benchmark-v2-data-protection)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2: Kurumsal segmentleme stratejisini tanımlama 
 
-**Rehberlik** : kimlik, ağ, uygulama, abonelik, yönetim grubu ve diğer denetimlerin birleşimini kullanarak varlıklara erişimi parçalara ayırma konusunda kurumsal çapta bir strateji oluşturun.
+**Rehberlik**: kimlik, ağ, uygulama, abonelik, yönetim grubu ve diğer denetimlerin birleşimini kullanarak varlıklara erişimi parçalara ayırma konusunda kurumsal çapta bir strateji oluşturun.
 
 Güvenlik ayrımı gereksinimini, birbirleriyle iletişim kurması gereken sistemlerin günlük işlemlerini etkinleştirme gereksinimiyle dikkatle dengeleyin ve verilere erişin.
 
@@ -443,23 +429,23 @@ Segmentleme stratejisinin ağ güvenliği, kimlik ve erişim modelleri ve uygula
 
 - [Kurumsal segmentasyon stratejisi ile ağ segmentlemesini hizalayın](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="gs-3-define-security-posture-management-strategy"></a>GS-3: güvenlik sonrası yönetim stratejisini tanımlama
 
-**Rehberlik** : bireysel varlıklarınızda ve barındırdıkları ortamda riskleri sürekli olarak ölçün ve azaltır. Yayımlanan uygulamalar, ağ giriş ve çıkış noktaları, Kullanıcı ve yönetici uç noktaları gibi yüksek değerli varlıkların ve yüksek oranda sunulan saldırı yüzeylerinin önceliklerini belirleyin.
+**Rehberlik**: bireysel varlıklarınızda ve barındırdıkları ortamda riskleri sürekli olarak ölçün ve azaltır. Yayımlanan uygulamalar, ağ giriş ve çıkış noktaları, Kullanıcı ve yönetici uç noktaları gibi yüksek değerli varlıkların ve yüksek oranda sunulan saldırı yüzeylerinin önceliklerini belirleyin.
 
 - [Azure Güvenlik kıyaslaması-Posture ve güvenlik açığı yönetimi](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4: kuruluş rollerini, sorumlulukları ve accountacakları hizalayın
 
-**Rehberlik** : güvenlik kuruluşunuzdaki roller ve sorumlulukların açık bir stratejisini belgelemenizi ve iletdiğinizden emin olun. Güvenlik kararlarını açık bir şekilde yapın, paylaşılan sorumluluk modelinde herkese eğitilendir ve bulutu güvenli hale getirmek için teknik ekipleri teknolojide eğitin.
+**Rehberlik**: güvenlik kuruluşunuzdaki roller ve sorumlulukların açık bir stratejisini belgelemenizi ve iletdiğinizden emin olun. Güvenlik kararlarını açık bir şekilde yapın, paylaşılan sorumluluk modelinde herkese eğitilendir ve bulutu güvenli hale getirmek için teknik ekipleri teknolojide eğitin.
 
 - [Azure Güvenlik En Iyi Yöntem 1 – Insanlar: ekipleri bulut güvenlik yolculuğunda eğitin](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
@@ -467,13 +453,13 @@ Segmentleme stratejisinin ağ güvenliği, kimlik ve erişim modelleri ve uygula
 
 - [Azure Güvenlik En Iyi Yöntem 3-Işlem: bulut güvenlik kararları için sorumluluk atama](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="gs-5-define-network-security-strategy"></a>GS-5: ağ güvenlik stratejisini tanımlayın
 
-**Rehberlik** : kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak Azure ağ güvenlik yaklaşımı oluşturun.  
+**Rehberlik**: kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak Azure ağ güvenlik yaklaşımı oluşturun.  
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
@@ -497,13 +483,13 @@ Başvurulan bağlantılarda daha fazla bilgi bulunabilir.
 
 - [Azure ağ güvenliğine genel bakış](../security/fundamentals/network-overview.md)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6: kimlik ve ayrıcalıklı erişim stratejisi tanımlama
 
-**Rehberlik** : kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak Azure kimliği ve ayrıcalıklı erişim yaklaşımları oluşturun.  
+**Rehberlik**: kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olarak Azure kimliği ve ayrıcalıklı erişim yaklaşımları oluşturun.  
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
@@ -527,13 +513,13 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
 - [Azure Identity Management güvenliğine genel bakış](../security/fundamentals/identity-management-overview.md)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: günlüğe kaydetme ve tehdit yanıt stratejisini tanımlama
 
-**Rehberlik** : uyumluluk gereksinimlerini karşılaırken tehditleri hızlı bir şekilde tespit etmek ve düzeltmek için bir günlüğe kaydetme ve tehdit yanıt stratejisi kurun. Tümleştirme ve el ile adımlar yerine tehditlere odaklanabilmeleri için yüksek kaliteli uyarılar ve sorunsuz deneyimlerle analistleri sağlamayı önceliklendirin. 
+**Rehberlik**: uyumluluk gereksinimlerini karşılaırken tehditleri hızlı bir şekilde tespit etmek ve düzeltmek için bir günlüğe kaydetme ve tehdit yanıt stratejisi kurun. Tümleştirme ve el ile adımlar yerine tehditlere odaklanabilmeleri için yüksek kaliteli uyarılar ve sorunsuz deneyimlerle analistleri sağlamayı önceliklendirin. 
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
@@ -561,9 +547,9 @@ Başvurulan bağlantılarda daha fazla bilgi bulunabilir.
 
 - [Azure benimseme çerçevesi, günlüğe kaydetme ve raporlama kararı Kılavuzu](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting)
 
-**Azure Güvenlik Merkezi izleme** : uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

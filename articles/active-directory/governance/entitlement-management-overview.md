@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ecc25af19694c0befdd24b041807e2067db4f13b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362476"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886949"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -39,7 +39,7 @@ Kurumsal kuruluşlar, çalışanların şu gibi kaynaklara erişimini yönetirke
 - Kullanıcılar sahip olmaları gereken erişimi bilmiyor olabilir ve olsalar bile, erişimleri onaylamak için doğru bireyleri bulmaya zorluk gösterebilir
 - Kullanıcılar bir kaynağa erişim bulup aldıktan sonra, iş amaçları için gerekenden daha uzun bir süre erişim için açık kalabilir
 
-Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örneğin:
+Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir kuruluştan erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örnek:
 
 - Başka bir kişi, diğer kuruluş dizinlerindeki tüm kişilerin davet etmesini sağlayabilmesi için
 - Bu kullanıcılar davet edebilse bile, bu kuruluştan hiç kimse kullanıcının tüm erişimini sürekli olarak yönetmeyi anımsayabilir
@@ -66,7 +66,7 @@ Ayrıca, [Genel senaryoları](entitlement-management-scenarios.md)okuyabilir vey
 
 ## <a name="what-are-access-packages-and-what-resources-can-i-manage-with-them"></a>Erişim paketleri nedir ve bunlarla hangi kaynakları yönetebilirim?
 
-Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi*kavramını tanıtır. Erişim paketi, kullanıcının bir proje üzerinde çalışması veya görevlerini gerçekleştirmesi için gereken erişime sahip tüm kaynakların bir paketidir. Erişim paketleri, dahili çalışanlarınızın ve ayrıca kuruluşunuzun dışındaki kullanıcıların erişimini yönetmek için kullanılır.
+Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi* kavramını tanıtır. Erişim paketi, kullanıcının bir proje üzerinde çalışması veya görevlerini gerçekleştirmesi için gereken erişime sahip tüm kaynakların bir paketidir. Erişim paketleri, dahili çalışanlarınızın ve ayrıca kuruluşunuzun dışındaki kullanıcıların erişimini yönetmek için kullanılır.
 
  Kullanıcıların yetkilendirme yönetimiyle erişimini yönetebileceğiniz kaynak türleri şunlardır:
 
@@ -75,7 +75,7 @@ Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi*kavramını tanıtır.
 - SaaS uygulamaları ve Federasyon/çoklu oturum açma ve/veya sağlamayı destekleyen özel tümleşik uygulamalar dahil olmak üzere Azure AD kurumsal uygulamalarına atama
 - SharePoint Online sitelerinin üyeliği
 
-Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örneğin:
+Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örnek:
 
 - Erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için [grup tabanlı lisanslamayı](../enterprise-users/licensing-groups-assign.md) yapılandırarak Microsoft 365 kullanıcılara lisans verebilirsiniz.
 - Kullanıcılara, erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak Azure kaynaklarını yönetmek için erişim izni verebilirsiniz.
@@ -85,7 +85,7 @@ Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı d
 
 Bir erişim paketiyle yönetici veya temsilci erişimi paketi Yöneticisi, kaynakları (gruplar, uygulamalar ve siteler) ve kullanıcıların bu kaynaklar için ihtiyaç duyduğu rolleri listeler.
 
-Erişim paketleri bir veya daha fazla *ilke*de içerir. Bir ilke, erişim paketine atanmak üzere kuralları veya guardrayları tanımlar. Her ilke, yalnızca uygun kullanıcıların erişim isteyebilmesini, istekleri için onaylayan olduğunu ve bu kaynaklara erişiminin zaman sınırlı olduğunu ve yenilenmediğinde süresinin dolacağını sağlamak için kullanılabilir.
+Erişim paketleri bir veya daha fazla *ilke* de içerir. Bir ilke, erişim paketine atanmak üzere kuralları veya guardrayları tanımlar. Her ilke, yalnızca uygun kullanıcıların erişim isteyebilmesini, istekleri için onaylayan olduğunu ve bu kaynaklara erişiminin zaman sınırlı olduğunu ve yenilenmediğinde süresinin dolacağını sağlamak için kullanılabilir.
 
 ![Paket ve ilkelere erişim](./media/entitlement-management-overview/elm-overview-access-package.png)
 
@@ -113,13 +113,13 @@ Erişim paketleri, erişim atama için diğer mekanizmaların yerini alır.  Bun
 
 ## <a name="how-do-i-delegate-access"></a>Temsilci erişimi mi Nasıl yaparım??
 
- Erişim paketleri, *kataloglar*olarak adlandırılan kapsayıcılar içinde tanımlanır.  Tüm erişim paketleriniz için tek bir kataloğunuz olabilir ya da bireyleri kendi kataloglarını oluşturmak ve kendilerine sahip olacak şekilde tanımlayabilirsiniz. Bir yönetici herhangi bir kataloğa kaynak ekleyebilir, ancak yönetici olmayan bir kataloğa yalnızca sahip oldukları kaynakları ekleyebilir. Katalog sahibi, diğer kullanıcıları Katalog ortak sahipleri veya erişim paketi yöneticileri olarak ekleyebilir.  Bu senaryolar, [Azure AD Yetkilendirme Yönetimi 'nde daha fazla destek ve rol](entitlement-management-delegate.md)makalesinde açıklanmaktadır.
+ Erişim paketleri, *kataloglar* olarak adlandırılan kapsayıcılar içinde tanımlanır.  Tüm erişim paketleriniz için tek bir kataloğunuz olabilir ya da bireyleri kendi kataloglarını oluşturmak ve kendilerine sahip olacak şekilde tanımlayabilirsiniz. Bir yönetici herhangi bir kataloğa kaynak ekleyebilir, ancak yönetici olmayan bir kataloğa yalnızca sahip oldukları kaynakları ekleyebilir. Katalog sahibi, diğer kullanıcıları Katalog ortak sahipleri veya erişim paketi yöneticileri olarak ekleyebilir.  Bu senaryolar, [Azure AD Yetkilendirme Yönetimi 'nde daha fazla destek ve rol](entitlement-management-delegate.md)makalesinde açıklanmaktadır.
 
 ## <a name="summary-of-terminology"></a>Terminolojinin Özeti
 
 Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için, aşağıdaki terim listesine geri başvurabilirsiniz.
 
-| Süre | Açıklama |
+| Terim | Açıklama |
 | --- | --- |
 | erişim paketi | Bir ekibin veya projenin ihtiyaç duyacağı ve ilkelerle ilişkilendirilen kaynak demeti. Bir erişim paketi her zaman bir katalogda bulunur. Kullanıcıların erişim istemesi gereken bir senaryo için yeni bir erişim paketi oluşturacaksınız.  |
 | erişim isteği | Erişim paketindeki kaynaklara erişim isteği. İstek genellikle bir onay iş akışından geçer.  Onaylanırsa, isteyen Kullanıcı bir erişim paketi ataması alır. |
@@ -144,17 +144,22 @@ Azure Almanya ve Azure Çin 21Vianet gibi özel bulutlar Şu anda kullanım içi
 Dizininizde en az sayıda Azure AD Premium P2 lisansa sahip olduğunuzdan emin olun:
 
 - Erişim paketi **isteyebilen** üye kullanıcıları.
-- Erişim paketi isteyen üye ve Konuk kullanıcılar.
-- Bir erişim paketi için istekleri onaylayan üye ve Konuk kullanıcılar.
-- Erişim paketine doğrudan atamaya sahip olan üye ve Konuk kullanıcılar.
+- Erişim <u>paketi isteyen üye</u> ve Konuk kullanıcılar.
+- Bir erişim paketi için <u>istekleri</u> onaylayan üye ve Konuk kullanıcılar.
+- Bir erişim paketi için <u>atamaları gözden geçirebilen</u> üye kullanıcıları. 
+- Erişim paketine <u>doğrudan atamaya</u> sahip olan üye ve Konuk kullanıcılar.
+
+Konuk kullanıcılar için lisanslama gereksinimlerine bağlı olarak, kullanmakta olduğunuz [lisanslama modeline](../external-identities/external-identities-pricing.md) bağlıdır. Ancak, aşağıdaki konuk kullanıcıların etkinlikleri Azure AD Premium P2 kullanımı olarak kabul edilir:
+- Erişim <u>paketi isteyen Konuk</u> kullanıcılar. 
+- Bir erişim paketi için <u>istekleri</u> onaylayan Konuk kullanıcılar.
+- Bir erişim paketi için <u>atamaları gözden geçirerek</u> Konuk kullanıcılar.
+- Erişim paketine <u>doğrudan atamaya</u> sahip Konuk kullanıcılar. 
 
 Aşağıdaki görevler için Azure AD Premium P2 lisansları gerekli **değildir** :
 
 - İlk katalogları kuran, paketlere ve ilkelere erişen ve diğer kullanıcılara yönetim görevleri atayan genel yönetici rolüne sahip kullanıcılar için lisans gerekmez.
 - Katalog Oluşturucu, Katalog sahibi ve erişim paketi Yöneticisi gibi yönetim görevlerinin yetkilendirilmiş olduğu kullanıcılar için lisans gerekmez.
 - Erişim paketleri talep edebilen ancak erişim paketi **istemeyen** konukları için lisans gerekmez. **not**
-
-Azure AD dış kimlikleri (Konuk Kullanıcı) fiyatlandırması, aylık etkin kullanıcıları (MAU) temel alır. Bu, bir takvim ayı içinde kimlik doğrulama etkinliği olan benzersiz kullanıcıların sayısıdır. Bu model, kiracınızdaki Azure AD Premium her bir lisans için beş adede kadar Konuk kullanıcıya izin veren 1:5 orandaki faturalandırma modelinin yerini alır. Kiracınız bir aboneliğe bağlandığında ve konuk kullanıcılarla işbirliği yapmak için dış kimlikler özelliklerini kullandığınızda, MAU tabanlı faturalandırma modeli kullanılarak otomatik olarak faturalandırılırsınız. Daha fazla bilgi için bkz. [Azure AD dış kimlikleri](../external-identities/external-identities-pricing.md)için faturalandırma modeli.
 
 Lisanslar hakkında daha fazla bilgi için bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
 
@@ -170,4 +175,4 @@ Sahip olmanız gereken lisans sayısını belirlemenize yardımcı olacak bazı 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Öğretici: ilk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
-- [Yaygın senaryolar](entitlement-management-scenarios.md)
+- [Genel senaryolar](entitlement-management-scenarios.md)

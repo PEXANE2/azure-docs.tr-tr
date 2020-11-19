@@ -1,19 +1,19 @@
 ---
-title: Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
+title: Linux bilgisayarlarına Log Analytics aracısını yükleme
 description: Bu makalede, diğer bulutlarda veya şirket içinde barındırılan Linux bilgisayarların Linux için Log Analytics aracısıyla Azure Izleyici 'ye nasıl bağlanacağı açıklanır.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e1dbf5e20aa206189397cab26e9b867f4942e1d5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332510"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886847"
 ---
-# <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
+# <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics aracısını yükleme
 Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
 
 * GitHub 'da barındırılan [bir sarmalayıcı betiği kullanarak Linux için aracıyı yükler](#install-the-agent-using-wrapper-script) . Bu, bilgisayarın Internet bağlantısı olduğunda (doğrudan veya bir proxy sunucusu aracılığıyla) aracıyı yüklemek ve yükseltmek için önerilen yöntemdir.
@@ -30,13 +30,17 @@ Log Analytics Aracısı tarafından desteklenen Linux dağıtımların listesi i
 
 >[!NOTE]
 >OpenSSL 1.1.0 yalnızca x86_x64 platformlarında desteklenir (64-bit) ve OpenSSL, 1. x ' den önceki bir platformda desteklenmez.
->
+
+>[!NOTE]
+>Kapsayıcılarda Log Analytics Linux aracısının çalıştırılması desteklenmez. Kapsayıcıları izlemeniz gerekiyorsa lütfen Docker konakları için [kapsayıcı izleme çözümünü](../insights/containers.md) veya Kubernetes için [kapsayıcılar için Azure izleyicisini](../insights/container-insights-overview.md) kullanın.
+
 2018 Ağustos 'Tan sonra yayınlanan sürümlerle başlayarak, destek modelimiz için aşağıdaki değişiklikleri yapıyoruz:  
 
 * İstemci değil yalnızca sunucu sürümleri desteklenir.  
 * Azure Linux tarafından onaylanan bazı [destekler](../../virtual-machines/linux/endorsed-distros.md)için odak desteği. Azure Linux tarafından onaylama ve Log Analytics Linux Aracısı için desteklenmekte olan yeni bir delinler/sürüm arasında bazı gecikme olabileceğini unutmayın.
 * Listelenen her ana sürüm için tüm küçük yayınlar desteklenir.
-* Üreticisinin destek sonu tarihini geçen sürümler desteklenmez.  
+* Üreticisinin destek sonu tarihini geçen sürümler desteklenmez.
+* Yalnızca VM görüntülerini destekler; Hatta, resmi olmayan yayımcıların görüntülerinin türevi olan kapsayıcılar desteklenmez.
 * Yeni bir AMı sürümü desteklenmez.  
 * Yalnızca SSL 1. x çalıştıran sürümler varsayılan olarak desteklenir.
 
@@ -83,7 +87,7 @@ Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için dest
 
 Aşağıdaki tabloda, aracının yükleneceği [desteklenen Linux destekleri](#supported-operating-systems) için gereken paketler vurgulanmıştır.
 
-|Gerekli paket |Description |En düşük sürüm |
+|Gerekli paket |Açıklama |En düşük sürüm |
 |-----------------|------------|----------------|
 |GLIBC |    GNU C Kitaplığı | 2.5-12 
 |Openssl    | OpenSSL kitaplıkları | 1.0. x veya 1.1. x |
@@ -186,7 +190,7 @@ Linux için Log Analytics Aracısı kendiliğinden ayıklanan ve yüklenebilir b
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örneğin: 
+    Kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örnek: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

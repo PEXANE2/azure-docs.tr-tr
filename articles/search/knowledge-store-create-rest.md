@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 49b7b855a7608b6426d0bda50330dbe1a3b5ced7
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.date: 11/18/2020
+ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741578"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889063"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST ve Postman kullanarak bilgi deposu oluşturma
 
@@ -84,7 +84,7 @@ Değerini almak için `admin-key` Azure bilişsel arama hizmetine gidin ve **ana
 | `index-name` | Otel-, **-x** olarak bırakın. | 
 | `search-service-name` | Azure Bilişsel Arama hizmetinin adı. URL `https://{{search-service-name}}.search.windows.net` . | 
 | `skillset-name` | Otel- **İnceleme** olarak bırakın. | 
-| `storage-account-name` | Depolama hesabı adı. | 
+| `storage-account-name` | Azure depolama hesabı adı. | 
 | `storage-connection-string` | Depolama hesabında, **erişim anahtarları** sekmesinde **KEY1**  >  **bağlantı dizesi**' ni seçin. | 
 | `storage-container-name` | **Otel-incelemeler** olarak bırakın. | 
 
