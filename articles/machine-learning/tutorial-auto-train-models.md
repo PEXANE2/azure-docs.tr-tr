@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358618"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886337"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: Taksi ücretlerini tahmin etmek için otomatik makine öğrenmesini kullanma
 
@@ -34,12 +34,14 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
 
-Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets`Gerekli paketleri almak için öğesini çalıştırın.
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Gerekli paketleri almak için, 
+* [Tam `automl` istemciyi yükler](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment).
+* `pip install azureml-opendatasets azureml-widgets`Gerekli paketleri almak için öğesini çalıştırın.
 
 ## <a name="download-and-prepare-data"></a>Verileri indirme ve hazırlama
 
@@ -182,7 +184,7 @@ ws = Workspace.from_config()
 
 ## <a name="split-the-data-into-train-and-test-sets"></a>Verileri eğitme ve test kümelerine Böl
 
-Kitaplığındaki işlevini kullanarak verileri eğitim ve test kümelerine ayırın `train_test_split` `scikit-learn` . Bu işlev, model eğitimi için verileri x ( **Özellikler** ) veri kümesine ayırır ve test için y ( **tahmin edilecek değerler** ) veri kümesini gösterir.
+Kitaplığındaki işlevini kullanarak verileri eğitim ve test kümelerine ayırın `train_test_split` `scikit-learn` . Bu işlev, model eğitimi için verileri x (**Özellikler**) veri kümesine ayırır ve test için y (**tahmin edilecek değerler**) veri kümesini gösterir.
 
 `test_size`Parametresi, teste ayrılacak verilerin yüzdesini belirler. `random_state`Parametresi, tren-test bölünmeleri belirleyici olacak şekilde rastgele oluşturucuya bir çekirdek ayarlar.
 
@@ -212,7 +214,7 @@ Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların
 |**experiment_timeout_hours**|0.3|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için en fazla saat cinsinden süre.|
 |**enable_early_stopping**|Doğru|Puan, kısa vadede iyileştirilmediğinden erken sonlandırmayı etkinleştirmek için bayrak.|
 |**primary_metric**| spearman_correlation | İyileştirmek istediğiniz ölçüm. En uygun model bu ölçüme göre seçilecek.|
-|**korturlama**| auto | **Otomatik** , deneme kullanarak giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)|
+|**korturlama**| auto | **Otomatik**, deneme kullanarak giriş verilerini önceden işleyebilir (eksik verileri işleme, metni sayısal olarak dönüştürme vb.)|
 |**ayrıntı**| logging.INFO | Günlüğe kaydetme düzeyini denetler.|
 |**n_cross_validations**|5|Doğrulama verileri belirtilmediğinde gerçekleştirilecek çapraz doğrulama bölme sayısı.|
 
@@ -390,10 +392,10 @@ Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, herhangi bir ücret
 
 1. Azure portalının en sol tarafındaki **Kaynak gruplarını** seçin.
 1. Listeden oluşturduğunuz kaynak grubunu seçin.
-1. **Kaynak grubunu sil** 'i seçin.
-1. Kaynak grubu adını girin. Ardından **Sil** ’i seçin.
+1. **Kaynak grubunu sil**'i seçin.
+1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.
 
-Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil** ' i seçin.
+Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

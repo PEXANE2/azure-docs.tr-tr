@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 63cc4448034b6a2ae2d74f4a2d9a0a62296678cf
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93417597"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886490"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
 
@@ -21,7 +21,7 @@ MySQL için Azure veritabanı 'nda planlı bakım olaylarına hazırlanma hakkı
 
 MySQL için Azure veritabanı hizmeti, temel alınan donanım, işletim sistemi ve veritabanı altyapısının otomatik düzeltme eki uygulamayı gerçekleştirir. Düzeltme Eki, yeni hizmet özellikleri, güvenlik ve yazılım güncelleştirmeleri içerir. MySQL altyapısı için, ikincil sürüm yükseltmeleri otomatik ve düzeltme eki uygulama döngüsünün bir parçası olarak dahil edilmiştir. Düzeltme için gereken kullanıcı eylemi veya yapılandırma ayarları yoktur. Düzeltme Eki, kapsamlı olarak test edilir ve güvenli dağıtım uygulamaları kullanılarak alınır.
 
-Planlı bakım, bu hizmet güncelleştirmeleri belirli bir Azure bölgesindeki sunuculara dağıtıldığında bakım penceresidir. Planlı bakım sırasında, hizmet güncelleştirmesi sunucularını barındıran Azure bölgesinde dağıtıldığında müşterileri bilgilendirmek için bir bildirim olayı oluşturulur. İki planlı bakım arasındaki en az süre 30 gündür. Sonraki bakım penceresi 72 saat için önceden bir bildirim alırsınız.
+Planlı bakım, bu hizmet güncelleştirmeleri belirli bir Azure bölgesindeki sunuculara dağıtıldığında bakım penceresidir. Planlı bakım sırasında, sunucularını barındıran Azure bölgesinde hizmet güncelleştirmesinin ne zaman dağıtılacağını müşteriye bildirmek için bir bildirim olayı oluşturulur. İki planlı bakım arasındaki en az süre 30 gündür. Sonraki bakım penceresi için 72 saat önce bildirim alırsınız.
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Planlı bakım-süre ve müşteri etkisi
 
@@ -46,14 +46,14 @@ Azure portal planlı bakım bildirimini denetleyebilir ya da uyarıları bildiri
 
 ### <a name="check-planned-maintenance-notification-from-azure-portal"></a>Azure portal planlı bakım bildirimini denetle
 
-1. [Azure Portal](https://portal.azure.com) **hizmet durumu** ' nu seçin.
+1. [Azure Portal](https://portal.azure.com) **hizmet durumu**' nu seçin.
 2. **Planlı bakım** sekmesini seçin
-3. Planlı bakım bildirimini denetlemek istediğiniz **abonelik** , **bölge** ve **hizmeti** seçin. 
+3. Planlı bakım bildirimini denetlemek istediğiniz **abonelik**, **bölge** ve **hizmeti** seçin. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Planlı bakım bildirimi almak için
 
-1. [Portalda](https://portal.azure.com) **hizmet durumu** ' nu seçin.
-2. **Uyarılar** bölümünde **sistem durumu uyarıları** ' nı seçin.
+1. [Portalda](https://portal.azure.com) **hizmet durumu**' nu seçin.
+2. **Uyarılar** bölümünde **sistem durumu uyarıları**' nı seçin.
 3. **+ Hizmet sistem durumu uyarısı Ekle** ' yi seçin ve alanları girin.
 4. Gerekli alanları doldurun. 
 5. **Olay türünü** seçin, **Planlı bakım** ' ı seçin veya **tümünü seçin**
@@ -78,7 +78,7 @@ Geçici arıza olarak da bilinen geçici bir hata, kendisini çözecek bir hatad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden MySQL için Azure veritabanı ekibine bir e-posta gönderin *AskAzureDBforMySQL@service.microsoft.com* .
+- MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden MySQL için Azure veritabanı ekibine bir e-posta gönderin **AskAzureDBforMySQL@service.microsoft.com** .
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
 - [MySQL için Azure veritabanı 'na yönelik bağlantı sorunlarını giderme-tek sunucu](howto-troubleshoot-common-connection-issues.md)
 - [MySQL için Azure veritabanı-tek sunucu için geçici hataları işleyin ve verimli bir şekilde bağlanın](concepts-connectivity.md)

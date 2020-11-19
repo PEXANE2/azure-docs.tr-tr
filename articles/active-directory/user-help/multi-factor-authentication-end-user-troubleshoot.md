@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 095ea62ee992fa12fc80f715f9e63725e9930595
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322611"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886218"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınızla ilgili yaygın sorunlar
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) kuruluşunuz, hesabınız için iki öğeli do
 - Parolanız
 - Bir mobil cihaz veya telefon
 
-İki öğeli doğrulama yalnızca bir paroladan daha güvenlidir, çünkü iki öğeli doğrulama, _sahip_olduğunuz bir şeyi _bildiğiniz_ bir şey gerektirir. Fiziksel telefonunuza sahip bir korsan yok.
+İki öğeli doğrulama yalnızca bir paroladan daha güvenlidir, çünkü iki öğeli doğrulama, _sahip_ olduğunuz bir şeyi _bildiğiniz_ bir şey gerektirir. Fiziksel telefonunuza sahip bir korsan yok.
 
 >[!Important]
 >Yöneticimce sahipseniz Azure AD [belgelerinde](../index.yml)Azure AD ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi edinebilirsiniz.
@@ -74,6 +74,7 @@ Doğrulama kodunuzun alınmıyor yaygın bir sorundur. Sorun genellikle mobil ci
 
 Bunu deneyin | Kılavuz bilgileri
 --------- | ------------
+Microsoft Authenticator uygulamasını veya doğrulama kodlarını kullanma | Oturum açma sırasında "doğrulama çağrılarında limitimize ulaştınız" veya "metin Doğrulama kodlarıyla sınırımızda karşılaştık" hata iletileriyle karşılaşıyoruz. <br/><br/>Microsoft, aynı kullanıcı tarafından kısa bir süre içinde yapılan yinelenen kimlik doğrulama girişimlerini sınırlayabilir. Bu sınırlama Microsoft Authenticator veya doğrulama kodu için geçerlidir. Bu sınırlara ulaşırsanız, doğrulayıcı uygulamasını, doğrulama kodunu kullanabilir veya birkaç dakika içinde yeniden oturum açmayı deneyebilirsiniz.
 Mobil cihazınızı yeniden başlatın | Bazen cihazınızda bir yenileme yeterlidir. Cihazınızı yeniden başlattığınızda, tüm arka plan işlem ve Hizmetleri sonlandırılır. Yeniden başlatma, cihazınızın temel bileşenlerini de kapatır. Cihazınızı yeniden başlattığınızda herhangi bir hizmet veya bileşen yenilenir.
 Güvenlik bilgilerinizin doğru olduğundan emin olun | Güvenlik doğrulama yöntemi bilgilerinizin doğru, özellikle telefon numaralarınızı doğru olduğundan emin olun. Yanlış telefon numarasına yerleştirirseniz, Tüm uyarılarınız bu hatalı sayıya gider. Neyse ki, bu kullanıcı uyarılarla hiçbir şey yapamayacaktır, ancak hesabınızda oturum açmanıza de yardımcı olmaz. Bilgilerinizin doğru olduğundan emin olmak için, [iki öğeli doğrulama yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md) makalesindeki yönergelere bakın.
 Bildirimlerin açık olduğunu doğrulayın | Mobil cihazınızın bildirimleri açık olduğundan emin olun. Aşağıdaki bildirim modlarına izin verildiğinden emin olun: <br/><br/> &bull; Telefon görüşmeleri <br/> &bull; Kimlik doğrulama uygulamanız <br/> &bull; SMS mesajlaşma uygulamanız <br/><br/> Bu modların cihazınızda _görünür_ bir uyarı oluşturtığınızdan emin olun.

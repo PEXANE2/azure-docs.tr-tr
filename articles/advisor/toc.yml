@@ -13,6 +13,10 @@
         - name: ARM şablonu
           displayName: Resource Manager
           href: advisor-alerts-arm.md
+- name: Kavramlar
+  items:
+    - name: Güvenlik temeli
+      href: security-baseline.md
 - name: Öğreticiler
   items:
     - name: Danışman'ı kullanmaya başlama

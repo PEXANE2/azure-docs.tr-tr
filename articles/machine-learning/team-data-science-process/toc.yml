@@ -64,10 +64,6 @@
       href: walkthroughs-sql-server.md
     - name: Azure Synapse Analytics ile T-SQL ve Python
       href: walkthroughs-sql-data-warehouse.md
-- name: Yardımcı programlar ve araçlar
-  items:
-    - name: Veri keşfetme ve modellemeye yönelik yardımcı programlar (GitHub)
-      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
 - name: Eğitim
   items:
     - name: Veri bilim insanlarına yönelik

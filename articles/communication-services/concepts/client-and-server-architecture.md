@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b63ce25d6839e8672027240099859dc7aad96c5
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666951"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886082"
 ---
 # <a name="client-and-server-architecture"></a>İstemci ve sunucu mimarisi
 
@@ -37,19 +37,19 @@ Azure Iletişim Hizmetleri istemci kitaplıklarının `user access tokens` Ileti
 
 :::image type="content" source="../media/scenarios/archdiagram-access.png" alt-text="Kullanıcı erişim belirteci mimarisini gösteren diyagram.":::
 
-Daha fazla bilgi için [en iyi kimlik yönetimi uygulamalarını](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices) inceleyin
+Daha fazla bilgi için [en iyi kimlik yönetimi uygulamalarını](../../security/fundamentals/identity-management-best-practices.md) inceleyin
 
 ## <a name="browser-communication"></a>Tarayıcı iletişimi
 
 Azure Communications JavaScript istemci kitaplıkları, Web uygulamalarını zengin metin, ses ve video etkileşimi ile etkinleştirebilir. Uygulama, veri düzlemine erişmek ve gerçek zamanlı metin, ses ve video iletişimi sunmak için istemci kitaplığı aracılığıyla doğrudan Azure Iletişim hizmetleriyle etkileşime girer. Örnek mimari akışı aşağıda bulunabilir:
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Kullanıcı erişim belirteci mimarisini gösteren diyagram.":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Iletişim Hizmetleri için tarayıcı mimarisine tarayıcıyı gösteren diyagram.":::
 
 ## <a name="native-app-communication"></a>Yerel uygulama iletişimi
 
 Birçok senaryo, yerel uygulamalarla en iyi şekilde sunulur. Azure Iletişim Hizmetleri, hem tarayıcıdan uygulamaya hem de uygulamadan uygulamaya iletişimi destekler.  Yerel bir uygulama deneyimi oluştururken, anında iletme bildirimlerinin olması, kullanıcıların uygulama çalışmadığı zaman bile çağrı almasına imkan tanır. Azure Iletişim Hizmetleri, Google Firebase, Apple Anında İletilen Bildirim Servisi ve Windows anında Iletme bildirimlerine yönelik tümleşik anında iletme bildirimleri sayesinde bunu kolaylaştırır. Örnek mimari akışı aşağıda bulunabilir:
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Kullanıcı erişim belirteci mimarisini gösteren diyagram.":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Yerel uygulama iletişimi için Iletişim Hizmetleri mimarisini gösteren diyagram.":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>Ortak anahtarlı telefon ağı (PSTN) üzerinden sesli ve SMS
 
@@ -58,7 +58,7 @@ Telefon sistemi üzerinden iletişim kurmak, uygulamanızın erişim düzeyini �
 > [!Note]
 > Genel Önizleme sırasında ABD telefon numaralarının sağlanması ABD ve Kanada 'da fatura adresi bulunan müşteriler tarafından kullanılabilir. 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Kullanıcı erişim belirteci mimarisini gösteren diyagram.":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Iletişim Hizmetleri PSTN mimarisini gösteren diyagram.":::
 
 PSTN ve SMS çözümleri hakkında daha fazla bilgi için bkz. [PSTN ve SMS çözümünüzü planlayın](../concepts/telephony-sms/plan-solution.md)
 
@@ -66,7 +66,7 @@ PSTN ve SMS çözümleri hakkında daha fazla bilgi için bkz. [PSTN ve SMS çö
 
 Azure Iletişim Hizmetleri, Azure Communication Services veri düzlemine doğrudan erişebilen hizmetlerle, metin ve ses kanalları gibi insandan sisteme iletişimi destekler. Örneğin, bir bot yanıt gelen telefon aramalarından veya Web sohbetine katılımda bulunabilir. Azure Iletişim Hizmetleri, bu senaryoları çağırmak ve sohbet etmek için etkinleştiren istemci kitaplıkları sağlar. Örnek mimari akışı aşağıda bulunabilir:
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Kullanıcı erişim belirteci mimarisini gösteren diyagram.":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Iletişim Hizmetleri bot mimarisini gösteren diyagram.":::
 
 ## <a name="networking"></a>Ağ
 
@@ -80,7 +80,7 @@ Azure Iletişim Hizmetleri, Azure Communication Services veri düzlemine doğrud
 > [!div class="nextstepaction"]
 > [Kullanıcı erişim belirteçleri oluşturma](../quickstarts/access-tokens.md)
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Kimlik doğrulaması](../concepts/authentication.md) hakkında bilgi edinin
 - [PSTN ve SMS çözümleri](../concepts/telephony-sms/plan-solution.md) hakkında bilgi edinin

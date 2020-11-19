@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948294"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886133"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
 - İşletim sisteminiz için en son sürüm [.NET Core istemci kitaplığı](https://dotnet.microsoft.com/download/dotnet-core) .
-- [.NET Identity istemci kitaplığının](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)en son sürümünü alın.
+- [.NET Identity istemci kitaplığının](/dotnet/api/azure.identity?view=azure-dotnet)en son sürümünü alın.
 - [.Net Management istemci kitaplığının](../../concepts/sdk-options.md)en son sürümünü alın.
 
 ## <a name="installing-the-client-library"></a>İstemci kitaplığını yükleme
@@ -44,13 +44,13 @@ Azure Iletişim hizmetleriyle iletişim kurmak için öncelikle Azure 'da kimlik
 
 ### <a name="option-1-managed-identity"></a>Seçenek 1: yönetilen kimlik
 
-Kodunuz Azure 'da bir hizmet olarak çalışıyorsa, kimlik doğrulamasının en kolay yolu Azure 'dan yönetilen bir kimlik elde etmek için kullanılır. [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında daha fazla bilgi edinin.
+Kodunuz Azure 'da bir hizmet olarak çalışıyorsa, kimlik doğrulamasının en kolay yolu Azure 'dan yönetilen bir kimlik elde etmek için kullanılır. [Yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md)hakkında daha fazla bilgi edinin.
 
-[Yönetilen kimlikleri destekleyen Azure hizmetleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+[Yönetilen kimlikleri destekleyen Azure hizmetleri](../../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-[App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma](../../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-#### <a name="system-assigned-managed-identity"></a>[Sistem tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+#### <a name="system-assigned-managed-identity"></a>[Sistem tarafından atanan yönetilen kimlik](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
 ```csharp
 using Azure.Identity;
@@ -62,7 +62,7 @@ var subscriptionId = "AZURE_SUBSCRIPTION_ID";
 var acsClient = new CommunicationManagementClient(subscriptionId, new ManagedIdentityCredential());
 ```
 
-#### <a name="user-assigned-managed-identity"></a>[Kullanıcı tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)
+#### <a name="user-assigned-managed-identity"></a>[Kullanıcı tarafından atanan yönetilen kimlik](../../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)
 
 Oluşturduğunuz yönetilen kimliğin ClientID 'si açıkça geçirilmesi gerekir `ManagedIdentityCredential` .
 
@@ -79,7 +79,7 @@ var acsClient = new CommunicationManagementClient(subscriptionId, managedIdentit
 
 ### <a name="option-2-service-principal"></a>Seçenek 2: hizmet sorumlusu
 
-Yönetilen bir kimlik kullanmak yerine, kendinizi yönettiğiniz hizmet sorumlusunu kullanarak Azure 'da kimlik doğrulaması yapmak isteyebilirsiniz. [Azure Active Directory ' de bir hizmet sorumlusu oluşturma ve yönetme](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)ile ilgili belgeler hakkında daha fazla bilgi edinin.
+Yönetilen bir kimlik kullanmak yerine, kendinizi yönettiğiniz hizmet sorumlusunu kullanarak Azure 'da kimlik doğrulaması yapmak isteyebilirsiniz. [Azure Active Directory ' de bir hizmet sorumlusu oluşturma ve yönetme](../../../active-directory/develop/howto-create-service-principal-portal.md)ile ilgili belgeler hakkında daha fazla bilgi edinin.
 
 Hizmet sorumlunuzu oluşturduktan sonra, Azure portal hakkında aşağıdaki bilgileri toplamanız gerekir:
 
@@ -121,7 +121,7 @@ Artık kimliğiniz doğrulandıktan sonra, API çağrıları yapmak için yönet
 
 Aşağıdaki örneklerden her biri için, Iletişim Hizmetleri kaynaklarınızı var olan bir kaynak grubuna atacağız.
 
-Bir kaynak grubu oluşturmanız gerekiyorsa, [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) veya [Azure Resource Manager istemci kitaplığını](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)kullanarak bunu yapabilirsiniz.
+Bir kaynak grubu oluşturmanız gerekiyorsa, [Azure Portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) veya [Azure Resource Manager istemci kitaplığını](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)kullanarak bunu yapabilirsiniz.
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Iletişim Hizmetleri kaynağı oluşturma ve yönetme
 

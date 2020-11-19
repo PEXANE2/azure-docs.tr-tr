@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 051f903c0b203045886b80f72d868adc1fa85f73
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948297"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886123"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
 
@@ -23,11 +23,11 @@ Azure Communication Services kaynağı oluşturmak için öncelikle [Azure Porta
 
 **Market girişini ara** ' ya veya portalın üst kısmındaki arama çubuğu ' na **iletişim** girin.
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Azure portal kaynak oluştur düğmesinin vurgulandığı ekran görüntüsü.":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Arama çubuğunda iletişim hizmetleri araması gösteren ekran görüntüsü.":::
 
 Sonuçlarda **Iletişim Hizmetleri** ' ni seçin ve ardından **Ekle**' yi seçin.
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Azure portal kaynak oluştur düğmesinin vurgulandığı ekran görüntüsü.":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Ekle düğmesini vurgulayan Azure panelini gösteren ekran görüntüsü.":::
 
 Artık Iletişim Hizmetleri kaynağınızı yapılandırabilirsiniz. Oluşturma işlemindeki ilk sayfada şunları belirtmeniz istenir:
 
@@ -36,7 +36,7 @@ Artık Iletişim Hizmetleri kaynağınızı yapılandırabilirsiniz. Oluşturma 
 * Iletişim Hizmetleri kaynağının adı
 * Kaynağın ilişkilendirileceği Coğrafya
 
-Sonraki adımda, kaynağa etiketler atayabilirsiniz. Etiketler, Azure kaynaklarınızı düzenlemek için kullanılabilir. Etiketler hakkında daha fazla bilgi için bkz. [kaynak etiketleme belgeleri](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources) .
+Sonraki adımda, kaynağa etiketler atayabilirsiniz. Etiketler, Azure kaynaklarınızı düzenlemek için kullanılabilir. Etiketler hakkında daha fazla bilgi için bkz. [kaynak etiketleme belgeleri](../../../azure-resource-manager/management/tag-resources.md) .
 
 Son olarak, yapılandırmanızı gözden geçirebilir ve kaynağı **oluşturabilirsiniz** . Dağıtımın tamamlanması birkaç dakika sürer.
 

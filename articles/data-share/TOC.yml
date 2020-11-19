@@ -25,6 +25,10 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: Kavramlar
   items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Azure Veri Paylaşımı terminolojisi
       href: terminology.md
     - name: Roller ve gereksinimler

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3b66c962758afc28da3c6be938c13d768c4f2572
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666152"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94885997"
 ---
 # <a name="chat-client-library-overview"></a>Sohbet istemci kitaplığına genel bakış
 
@@ -52,7 +52,7 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbeti istemci kitaplıklarında Şu
 | Olaylar             | Sohbet iş parçacıklarında oluşan Kullanıcı etkinliğine abone olmak ve özel bildirim hizmetlerini veya iş mantığını bütünleştirmek için Event Grid kullanın     | ✔️   | ✔️  | ✔️    | ✔️  |
 | İzleme        | Gönderilen ileti koşullarına göre kullanımı izleme                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Uygulamanız tarafından yapılan API isteklerinin kalitesini ve durumunu izleyin ve uyarıları Portal aracılığıyla yapılandırın                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
-|Ek özellikler | Akıllı Özellikler *dil çevirisi 'ni, bir istemcideki gelen iletinin yaklaşım analizini &, üye kulakça bir ileti oluşturmak üzere konuşmayı metne dönüştürmeye, vb.* sağlamak için sohbet istemci kitaplığı ile birlikte [bilişsel hizmetler API'si](https://docs.microsoft.com/azure/cognitive-services/) kullanın.                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+|Ek özellikler | Akıllı Özellikler *dil çevirisi 'ni, bir istemcideki gelen iletinin yaklaşım analizini &, üye kulakça bir ileti oluşturmak üzere konuşmayı metne dönüştürmeye, vb.* sağlamak için sohbet istemci kitaplığı ile birlikte [bilişsel hizmetler API'si](../../../cognitive-services/index.yml) kullanın.                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,18 +10,18 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 8b606108d0e33ba1dd49e37c0f407b0caa350f6b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667512"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886124"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Hızlı başlangıç: Iletişim Hizmetleri kaynaklarını oluşturma ve yönetme
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, Azure portal veya .NET Management istemci kitaplığı ile sağlanabilir. Yönetim istemci kitaplığı, [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview), Azure 'un dağıtım ve yönetim hizmeti ile kaynak ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. İstemci kitaplıklarında bulunan tüm işlevler Azure portal kullanılabilir. 
+İlk Iletişim Hizmetleri kaynağınızı sağlayarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. İletişim Hizmetleri kaynakları, Azure portal veya .NET Management istemci kitaplığı ile sağlanabilir. Yönetim istemci kitaplığı, [Azure Resource Manager](../../azure-resource-manager/management/overview.md), Azure 'un dağıtım ve yönetim hizmeti ile kaynak ve arabirimlerinizi oluşturmanıza, yapılandırmanıza, güncelleştirmenize ve silmesine izin verir. İstemci kitaplıklarında bulunan tüm işlevler Azure portal kullanılabilir. 
 
 > [!WARNING]
 > Iletişim Hizmetleri kullanılabilirliğinin genel önizleme sırasında ABD coğrafya ile sınırlı olduğunu unutmayın. Ayrıca, genel önizleme sırasında iletişim kaynaklarının farklı bir aboneliğe aktarılamayacağını unutmayın.
@@ -47,8 +47,8 @@ Iletişim Hizmetleri kaynağınız üzerinde gezindikten sonra, gezinti menüsü
 İletişim Hizmetleri istemci kitaplıkları Iletişim hizmetlerine yapılan istekleri yetkilendirmek için bağlantı dizelerini kullanır. Bağlantı dizenizi depolamak için çeşitli seçenekleriniz vardır:
 
 * Masaüstünde veya cihazda çalışan bir uygulama, bağlantı dizesini bir **app.config** veya **web.config** dosyasında saklayabilir. Bağlantı dizesini bu dosyalardaki **appSettings** bölümüne ekleyin.
-* Azure App Service çalışan bir uygulama, bağlantı dizesini [App Service uygulama ayarlarında](https://docs.microsoft.com/azure/app-service/configure-common)saklayabilir. Bağlantı dizesini Portal içindeki uygulama ayarları sekmesinin **bağlantı dizeleri** bölümüne ekleyin.
-* Bağlantı dizenizi [Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)' de saklayabilirsiniz.
+* Azure App Service çalışan bir uygulama, bağlantı dizesini [App Service uygulama ayarlarında](../../app-service/configure-common.md)saklayabilir. Bağlantı dizesini Portal içindeki uygulama ayarları sekmesinin **bağlantı dizeleri** bölümüne ekleyin.
+* Bağlantı dizenizi [Azure Key Vault](../../data-factory/store-credentials-in-key-vault.md)' de saklayabilirsiniz.
 * Uygulamanızı yerel olarak çalıştırıyorsanız, Bağlantı dizenizi bir ortam değişkeninde depolamak isteyebilirsiniz.
 
 ### <a name="store-your-connection-string-in-an-environment-variable"></a>Bağlantı dizenizi bir ortam değişkeninde depolayın
@@ -77,7 +77,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
-**.Bash_profile**düzenleyin ve ortam değişkenini ekleyin:
+**.Bash_profile** düzenleyin ve ortam değişkenini ekleyin:
 
 ```bash
 export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
