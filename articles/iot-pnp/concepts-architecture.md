@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a87617e1cc6910b4c807aa90f413efe94b6e6953
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574339"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920313"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT Tak Çalıştır mimarisi
 
@@ -36,7 +36,7 @@ Aşağıdaki diyagramda IoT Tak ve Kullan çözümünün temel öğeleri göster
 
 Web Kullanıcı arabirimi modelleri ve arabirimleri yönetmenizi sağlar.
 
-Model deposu, arabirim tanımlarına erişimi sınırlamanıza olanak tanımak için RBAC kullanır.
+Model deposunda, arabirim tanımlarına erişimi sınırlamanıza olanak sağlayan yerleşik rol tabanlı erişim denetimleri vardır.
 
 ## <a name="devices"></a>Cihazlar
 

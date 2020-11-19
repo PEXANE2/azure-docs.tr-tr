@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: adac986cfa1a975ced7ef579c088ed2739778bf5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1813da8a8a812eeded235d71c351ec352c42707c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841816"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920092"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -117,7 +117,11 @@ Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılan
 ### <a name="create-or-update-data-export-rule"></a>Veri dışarı aktarma kuralı oluştur veya güncelleştir
 Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek verileri tanımlar. Her hedef için bir kural oluşturabilirsiniz.
 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Çalışma alanınızdaki tabloları görüntülemek için aşağıdaki CLı komutunu kullanın. İstediğiniz tabloları kopyalayıp veri dışa aktarma kuralına dahil etmek için yardımcı olabilir.
+
 ```azurecli
 az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
@@ -133,6 +137,8 @@ CLı kullanarak bir olay hub 'ına veri dışarı aktarma kuralı oluşturmak i�
 ```azurecli
 az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 REST API kullanarak bir veri dışarı aktarma kuralı oluşturmak için aşağıdaki isteği kullanın. İstek, taşıyıcı belirteç yetkilendirmesi ve içerik türü uygulama/JSON kullanmalıdır.
 
@@ -193,26 +199,38 @@ Aşağıda, Olay Hub 'ı adının sağlandığı bir olay hub 'ı için REST ist
   }
 }
 ```
+---
 
 ## <a name="view-data-export-configuration"></a>Veri dışarı aktarma yapılandırmasını görüntüle
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 CLı kullanarak bir veri dışa aktarma kuralının yapılandırmasını görüntülemek için aşağıdaki komutu kullanın.
 
 ```azurecli
 az monitor log-analytics workspace data-export show --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 REST API kullanarak bir veri dışarı aktarma kuralının yapılandırmasını görüntülemek için aşağıdaki isteği kullanın. İstek, taşıyıcı belirteç yetkilendirmesi kullanmalıdır.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="disable-an-export-rule"></a>Dışarı aktarma kuralını devre dışı bırak
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Sınama gerçekleştirilirken belirli bir süre için verileri tutmanız gerekmiyorsa dışarı aktarma kuralları devre dışı bırakılabilir. CLı kullanarak bir veri dışarı aktarma kuralını devre dışı bırakmak için aşağıdaki komutu kullanın.
 
 ```azurecli
 az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 REST API kullanarak bir veri dışarı aktarma kuralını devre dışı bırakmak için aşağıdaki isteği kullanın. İstek, taşıyıcı belirteç yetkilendirmesi kullanmalıdır.
 
@@ -234,32 +252,45 @@ Content-type: application/json
     }
 }
 ```
+---
 
 ## <a name="delete-an-export-rule"></a>Dışarı aktarma kuralını silme
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 CLı kullanarak bir veri dışarı aktarma kuralını silmek için aşağıdaki komutu kullanın.
 
 ```azurecli
 az monitor log-analytics workspace data-export delete --resource-group resourceGroupName --workspace-name workspaceName --name ruleName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 REST API kullanarak bir veri dışarı aktarma kuralını silmek için aşağıdaki isteği kullanın. İstek, taşıyıcı belirteç yetkilendirmesi kullanmalıdır.
 
 ```rest
 DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>Çalışma alanındaki tüm veri dışarı aktarma kurallarını görüntüleme
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 CLı kullanarak bir çalışma alanındaki tüm veri dışarı aktarma kurallarını görüntülemek için aşağıdaki komutu kullanın.
 
 ```azurecli
 az monitor log-analytics workspace data-export list --resource-group resourceGroupName --workspace-name workspaceName
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 REST API kullanarak bir çalışma alanındaki tüm veri dışarı aktarma kurallarını görüntülemek için aşağıdaki isteği kullanın. İstek, taşıyıcı belirteç yetkilendirmesi kullanmalıdır.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
 ```
+---
 
 ## <a name="unsupported-tables"></a>Desteklenmeyen tablolar
 Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, yapılandırma başarılı olur, ancak bu tablo için hiçbir veri aktarılmaz. Tablo daha sonra destekleniyorsa, verileri o anda dışarıya kaydedilir.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535342"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920381"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -83,7 +83,7 @@ from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**Yerel işlem denemeleri için** , daha hızlı işleme süreleri için Pandas dataframes önerilir.
+**Yerel işlem denemeleri için**, daha hızlı işleme süreleri için Pandas dataframes önerilir.
 
   ```python
   import pandas as pd
@@ -103,7 +103,7 @@ Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezs
 |Eğitim &nbsp; veri &nbsp; boyutu| Doğrulama tekniği |
 |---|-----|
 |**&nbsp; &nbsp; 20.000 &nbsp; satırdan büyük**| Eğitme/doğrulama verileri bölünmesi uygulandı. Varsayılan değer, doğrulama kümesi olarak ilk eğitim verileri kümesinin %10 ' un sürme sayısıdır. Buna karşılık, bu doğrulama kümesi ölçüm hesaplamaları için kullanılır.
-|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa** , 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa** , üç katlar kullanılır.
+|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa**, 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa**, üç katlar kullanılır.
 
 Şu anda, model değerlendirmesi için kendi **Test verilerinizi** sağlamanız gerekir. Model değerlendirmesi için kendi test verilerinizi getirme kodu örneği için, [Bu Jupyter Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)'nin **Test** bölümüne bakın.
 
@@ -130,26 +130,24 @@ Bazı örnekler:
 1. Deneme zaman aşımı dakikalarını 30 dakika ve 2 çapraz doğrulama katlarından oluşan birincil ölçüm olarak AUC ağırlıklı kullanarak yeniden sınıflandırın.
 
    ```python
-       automl_classifier=AutoMLConfig(
-       task='classification',
-       primary_metric='AUC_weighted',
-       experiment_timeout_minutes=30,
-       blocked_models=['XGBoostClassifier'],
-       training_data=train_data,
-       label_column_name=label,
-       n_cross_validations=2)
+       automl_classifier=AutoMLConfig(task='classification',
+                                      primary_metric='AUC_weighted',
+                                      experiment_timeout_minutes=30,
+                                      blocked_models=['XGBoostClassifier'],
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=2)
    ```
 1. Aşağıdaki örnek, beş doğrulama yük katlarından sonra 60 dakika sonra biten bir gerileme deneimiyle ayarlanmıştır.
 
    ```python
-      automl_regressor = AutoMLConfig(
-      task='regression',
-      experiment_timeout_minutes=60,
-      allowed_models=['KNN'],
-      primary_metric='r2_score',
-      training_data=train_data,
-      label_column_name=label,
-      n_cross_validations=5)
+      automl_regressor = AutoMLConfig(task='regression',
+                                      experiment_timeout_minutes=60,
+                                      allowed_models=['KNN'],
+                                      primary_metric='r2_score',
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=5)
    ```
 
 
@@ -222,7 +220,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Açıklama |
+|Korleştirme yapılandırması | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|
@@ -301,6 +299,18 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
+<a name="exit"></a> 
+
+### <a name="exit-criteria"></a>Çıkış kriterleri
+
+Denemenizin sona erdirmek için, Cmlconfig ' de tanımlayabileceğiniz birkaç seçenek vardır.
+
+|Ölçütler| açıklama
+|----|----
+&nbsp;Ölçüt yok | Herhangi bir çıkış parametresi tanımlamadıysanız, deneme, birincil ölçümünüzün başka bir işlem yapılmayacağı sürece devam eder.
+&nbsp;Sürenin sonunda &nbsp; &nbsp; &nbsp;| `experiment_timeout_minutes`Dakika cinsinden, denemenizin ne kadar süreyle çalışmaya devam etmesi gerektiğini tanımlamak için ayarlarınızda kullanın. <br><br> Deneme zaman aşımı başarısızlıklarını önlemeye yardımcı olmak için en az 15 dakika, ya da sütunlarınızın sütun boyutu 10.000.000 ' i aşarsa 60 dakika olur.
+Bir &nbsp; puana &nbsp; &nbsp; &nbsp; ulaşıldı| Kullanım `experiment_exit_score` , belirtilen birincil ölçüm puanına ulaşıldıktan sonra denemeyi tamamlar.
+
 ## <a name="run-experiment"></a>Deneme Çalıştır
 
 Otomatik ML için, `Experiment` `Workspace` denemeleri çalıştırmak için kullanılan bir adlandırılmış nesne olan bir nesnesi oluşturursunuz.
@@ -327,17 +337,15 @@ run = experiment.submit(automl_config, show_output=True)
 >Bağımlılıklar önce yeni bir makineye yüklenir.  Çıktının gösterilmesi 10 dakika kadar sürebilir.
 >`show_output` `True` Konsolunda gösterilen çıkışın sonucu olarak ayarlanıyor.
 
- <a name="exit"></a> 
+### <a name="multiple-child-runs-on-clusters"></a>Kümeler üzerinde birden çok alt çalışma
 
-### <a name="exit-criteria"></a>Çıkış kriterleri
+Otomatik ML denemesi alt çalıştırmaları, zaten başka bir deneme çalıştıran bir kümede gerçekleştirilebilir. Ancak, zamanlama kümenin kaç düğüme sahip olduğuna ve bu düğümlerin farklı bir deneme çalıştırmak için kullanılabilir olup olmadığına bağlıdır.
 
-Denemenizin sona erdirmek için tanımlayabileceğiniz birkaç seçenek vardır.
+Kümedeki her düğüm tek bir eğitim çalıştırmasını gerçekleştirebilen tek bir sanal makine (VM) görevi görür; Otomatik ML için bu bir alt çalışma anlamına gelir. Tüm düğümler meşgulse, yeni deneme sıraya alınır. Ancak, ücretsiz düğümler varsa, yeni deneme otomatik ML alt çalıştırmalarını kullanılabilir düğümlerde/VM 'lerde paralel olarak çalıştırır.
 
-|Ölçütler| açıklama
-|----|----
-&nbsp;Ölçüt yok | Herhangi bir çıkış parametresi tanımlamadıysanız, deneme, birincil ölçümünüzün başka bir işlem yapılmayacağı sürece devam eder.
-&nbsp;Sürenin sonunda &nbsp; &nbsp; &nbsp;| `experiment_timeout_minutes`Dakika cinsinden, denemenizin ne kadar süreyle çalışmaya devam etmesi gerektiğini tanımlamak için ayarlarınızda kullanın. <br><br> Deneme zaman aşımı başarısızlıklarını önlemeye yardımcı olmak için en az 15 dakika, ya da sütunlarınızın sütun boyutu 10.000.000 ' i aşarsa 60 dakika olur.
-Bir &nbsp; puana &nbsp; &nbsp; &nbsp; ulaşıldı| Kullanım `experiment_exit_score` , belirtilen birincil ölçüm puanına ulaşıldıktan sonra denemeyi tamamlar.
+Alt çalıştırmaların yönetilmesine yardımcı olmak ve bunların gerçekleştirilebileceği durumlarda, deneme başına adanmış bir küme oluşturmanızı ve `max_concurrent_iterations` denemenizin sayısını kümedeki düğüm sayısına göre eşleşmeyi öneririz. Bu şekilde, tüm küme düğümlerini aynı anda istediğiniz eşzamanlı alt çalıştırma/yineleme sayısıyla birlikte kullanırsınız.
+
+`max_concurrent_iterations`Nesneniz içinde yapılandırın `AutoMLConfig` . Yapılandırılmazsa, deneme başına yalnızca bir eşzamanlı alt çalışma/yinelemeye izin verilir.  
 
 ## <a name="explore-models-and-metrics"></a>Modelleri ve ölçümleri keşfet
 
@@ -348,7 +356,7 @@ Her çalıştırma için sunulan performans grafiklerinin ve ölçümlerinin tan
 Bir Özet Özeti almak ve belirli bir modele hangi özelliklerin eklendiğini anlamak için bkz. uygun [Saydamlık](how-to-configure-auto-features.md#featurization-transparency). 
 
 > [!NOTE]
-> Otomatik ML algoritmaları, önerilen modellerde, doğruluk gibi son ölçüm puanına hafif değişimler oluşmasına neden olabilecek, rastgele bir şekilde sahiptir. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
+> Otomatik ML algoritmaları, önerilen bir modelin nihai ölçüm puanından, doğruluk gibi hafif çeşitçine neden olabilecek, rastgele bir açıklık elde ediyor. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
 
 ## <a name="register-and-deploy-models"></a>Modelleri kaydetme ve dağıtma
 

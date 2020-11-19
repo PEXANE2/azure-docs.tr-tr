@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: f83413bc54164107b8e8a4e6010f8a826a5fe327
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888428"
+ms.locfileid: "94920602"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -237,7 +237,7 @@ Evet, müşteriler Azure VMware çözümünü bir CSP tarafından yönetilen bir
 
 Microsoft, Azure VMware çözümü için destek sunar. Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz. 
 
-CSP ile yönetilen abonelikler için, ilk destek düzeyi çözüm sağlayıcısı tarafından diğer Azure hizmetleri için CSP ile aynı şekilde sağlanacaktır.
+CSP ile yönetilen abonelikler için, ilk destek düzeyi çözüm sağlayıcısı tarafından diğer Azure hizmetleri için CSP ile aynı şekilde sağlanır.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümü özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?
 
@@ -247,9 +247,9 @@ Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
 Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yönelik Birleşik bir iletişim noktası sağlayan tümleşik, birlikte bulunan bir destek ekibini paylaşır.  Red Hat Enterprise Linux ile çalışan diğer Azure platformu hizmetleri gibi Azure VMware çözümü, bulut erişimi ve tümleşik destek şemsiye kapsamında bulunur ve Azure 'da Azure VMware çözümünün üzerinde çalışmak için Red Hat Enterprise Linux desteklenir.
 
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition mevcuttur ve bu durumda ne kadar maliyetlidir?
+#### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise mevcuttur ve bu durumda ne kadar ücret maliyetlidir?
 
-VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
+VMware HCX Enterprise, *Önizleme* işlevi/hizmeti olarak Azure VMware çözümü ile kullanılabilir. Azure VMware çözümü için VMware HCX Enterprise önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX Enterprise hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 
@@ -260,8 +260,7 @@ EA abonelikleri için aşağıdaki yordamı kullanın. Öncelikle şunları yapm
 * Microsoft ile [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) .
 * Azure aboneliğindeki bir Azure hesabı.
 
-Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizi ayırmak için bir destek bileti göndermeniz gerekir. İsteğinizi doğrulamak ve düğümlerinizi ayırmak için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
-
+Azure VMware Çözüm kaynağınızı oluşturmadan önce, düğümlerinizin ayrılmaları için bir destek bileti oluşturun. İsteğinizi doğrulamak ve düğümlerinizi ayırmak için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
 
 1. Azure portal, **Yardım + Destek** altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
    - **Sorun türü:** Teknik

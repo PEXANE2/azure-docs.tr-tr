@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 61313a1790fe51cb26168622cc871076c40bb511
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1c9ae694fefcede599331d5d57a298bda4739f53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887442"
+ms.locfileid: "94920534"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda planlı bakım bildirimi
 
@@ -78,7 +78,7 @@ Geçici arıza olarak da bilinen geçici bir hata, kendisini çözecek bir hatad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- MariaDB için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, şu adreste bulunan MariaDB ekibi için Azure veritabanı ekibine bir e-posta gönderin. **AskAzureDBforMariaDB@service.microsoft.com**
+- MariaDB için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, şu adreste bulunan MariaDB ekibi için Azure veritabanı ekibine bir e-posta gönderin. AskAzureDBforMariaDB@service.microsoft.com
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-metric.md) bölümüne bakın.
 - [MariaDB için Azure Veritabanı bağlantı sorunlarını giderme](howto-troubleshoot-common-connection-issues.md)
 - [Geçici hataları işleyin ve MariaDB için Azure veritabanı 'na verimli bir şekilde bağlanın](concepts-connectivity.md)

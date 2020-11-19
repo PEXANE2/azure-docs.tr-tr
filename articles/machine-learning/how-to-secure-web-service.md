@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 03/05/2020
+ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: a9b68b2d4298c5e692782e529bae9a9df6359953
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 97017e104ecff38ebf4e475fb5f6ae42707ef10e
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331167"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919599"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 
@@ -87,6 +87,9 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
 
 **Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 
+> [!WARNING]
+> AKS kümeniz bir iç yük dengeleyiciye yapılandırılmışsa, Microsoft tarafından sağlanmış bir sertifika kullanılması __desteklenmez__. Microsoft tarafından sağlanan bir sertifikanın kullanılması, Azure 'da, iç yük dengeleyici için yapılandırıldığında AKS için kullanılamayan bir genel IP kaynağı gerektirir.
+
   * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso" etki alanı adını oluşturur \<six-random-characters> . \<azureregion> cloudapp.azure.com ", burada \<azureregion> hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label* üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
 
     Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
@@ -115,7 +118,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * *Satın aldığınız bir sertifikayı* kullandığınızda *ssl_cert_pem_file* , *ssl_key_pem_file* ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir TLS/SSL sertifikası kullanan bir yapılandırma oluşturmak için *. pek* dosyalarının nasıl kullanılacağını gösterir:
+  * *Satın aldığınız bir sertifikayı* kullandığınızda *ssl_cert_pem_file*, *ssl_key_pem_file* ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir TLS/SSL sertifikası kullanan bir yapılandırma oluşturmak için *. pek* dosyalarının nasıl kullanılacağını gösterir:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -132,7 +135,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
 
 *Enable_ssl* hakkında daha fazla bilgi için bkz. [AksProvisioningConfiguration.Enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) ve [AksAttachConfiguration.Enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
-### <a name="deploy-on-azure-container-instances"></a>Azure Container Instances dağıtma
+### <a name="deploy-on-azure-container-instances"></a>Azure Container Instances’ta dağıtma
 
 Azure Container Instances ' a dağıtırken, aşağıdaki kod parçacığı gösterdiği gibi TLS ile ilgili parametrelerin değerlerini sağlarsınız:
 
@@ -159,7 +162,8 @@ Sonra, DNS 'nizi Web hizmetine işaret etmek için güncelleştirmeniz gerekir.
 
   > [!WARNING]
   > Hizmeti Microsoft 'un bir sertifikası kullanarak oluşturmak için *leaf_domain_label* kullandıysanız, kümenin DNS değerini el ile güncelleştirin. Değer otomatik olarak ayarlanmalıdır.
-
+  >
+  > AKS kümeniz bir iç yük dengeleyiciye yapılandırılmışsa, Microsoft tarafından sağlanmış bir sertifika ( *leaf_domain_label* ayarlanarak) kullanılması __desteklenmez__. Microsoft tarafından sağlanan bir sertifikanın kullanılması, Azure 'da, iç yük dengeleyici için yapılandırıldığında AKS için kullanılamayan bir genel IP kaynağı gerektirir.
   Sol bölmedeki **Ayarlar** ' ın altındaki **yapılandırma** sekmesinde aks KÜMESININ genel IP adresinin DNS 'sini güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
 
   [![Azure Machine Learning: TLS ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)

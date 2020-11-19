@@ -4,12 +4,12 @@ description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi de
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb8306da4022ea1819e2da32a2f513c83bed309f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309365"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920517"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -53,9 +53,9 @@ Batch hizmetine yönelik isteklerin kimliğini doğrulamak için bir belirteç a
 
 Kimlik doğrulaması yapmak için Azure AD kullanmanın ilk adımı, uygulamanızı bir Azure AD kiracısında kaydediyor. Uygulamanızı kaydetmek, kodunuzun Azure [Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) çağrısını yapmanızı sağlar. ADAL, uygulamanızdan Azure AD ile kimlik doğrulaması için bir API sağlar. Uygulamanızı kaydetmek, tümleşik kimlik doğrulaması veya hizmet sorumlusu kullanmayı planladığınızdan gereklidir.
 
-Uygulamanızı kaydettiğinizde, Azure AD 'ye uygulamanız hakkında bilgi sağlarsınız. Daha sonra Azure AD, uygulamanızı çalışma zamanında Azure AD ile ilişkilendirmek için kullandığınız bir uygulama KIMLIĞI ( *ISTEMCI kimliği*olarak da bilinir) sağlar. Uygulama KIMLIĞI hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md)bölümüne bakın.
+Uygulamanızı kaydettiğinizde, Azure AD 'ye uygulamanız hakkında bilgi sağlarsınız. Daha sonra Azure AD, uygulamanızı çalışma zamanında Azure AD ile ilişkilendirmek için kullandığınız bir uygulama KIMLIĞI ( *ISTEMCI kimliği* olarak da bilinir) sağlar. Uygulama KIMLIĞI hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md)bölümüne bakın.
 
-Batch uygulamanızı kaydetmek için [hızlı başlangıç: Microsoft Identity platformu ile uygulama](../active-directory/develop/quickstart-register-app.md) **kaydetme bölümündeki adımları** izleyin. Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, **yeniden yönlendirme URI 'si**için GEÇERLI bir URI belirtebilirsiniz. Gerçek bir uç nokta olması gerekmez.
+Batch uygulamanızı kaydetmek için [hızlı başlangıç: Microsoft Identity platformu ile uygulama](../active-directory/develop/quickstart-register-app.md) **kaydetme bölümündeki adımları** izleyin. Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, **yeniden yönlendirme URI 'si** için GEÇERLI bir URI belirtebilirsiniz. Gerçek bir uç nokta olması gerekmez.
 
 Uygulamanızı kaydettikten sonra uygulama KIMLIĞINI görürsünüz:
 
@@ -67,7 +67,7 @@ Kiracı KIMLIĞI, uygulamanıza kimlik doğrulama hizmetleri sağlayan Azure AD 
 
 1. Azure portal Active Directory seçin.
 1. **Özellikler**’i seçin.
-1. **DIZIN kimliği**IÇIN belirtilen GUID değerini kopyalayın. Bu değer, kiracı KIMLIĞI olarak da adlandırılır.
+1. **DIZIN kimliği** IÇIN belirtilen GUID değerini kopyalayın. Bu değer, kiracı KIMLIĞI olarak da adlandırılır.
 
 ![Azure portal Dizin KIMLIĞININ ekran görüntüsü.](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -193,7 +193,7 @@ Kiracı KIMLIĞI, uygulamanıza kimlik doğrulama hizmetleri sağlayan Azure AD 
 
 1. Azure portal Active Directory seçin.
 1. **Özellikler**’i seçin.
-1. **DIZIN kimliği**IÇIN belirtilen GUID değerini kopyalayın. Bu değer, kiracı KIMLIĞI olarak da adlandırılır.
+1. **DIZIN kimliği** IÇIN belirtilen GUID değerini kopyalayın. Bu değer, kiracı KIMLIĞI olarak da adlandırılır.
 
 ![Dizin KIMLIĞINI Kopyala](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -268,13 +268,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Temsilciyi bir parametre olarak alan bir **BatchTokenCredentials** nesnesi oluşturun. **Batchclient** nesnesini açmak için bu kimlik bilgilerini kullanın. Batch hizmetinde sonraki işlemler için bu **Batchclient** nesnesini kullanabilirsiniz:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```
@@ -336,13 +336,13 @@ public static async Task<string> GetAuthenticationTokenAsync()
 Temsilciyi bir parametre olarak alan bir **BatchTokenCredentials** nesnesi oluşturun. **Batchclient** nesnesini açmak için bu kimlik bilgilerini kullanın. Ardından Batch hizmetinde sonraki işlemler için bu **Batchclient** nesnesini kullanın:
 
 ```csharp
-public static async Task PerformBatchOperations()
+public static void PerformBatchOperations()
 {
     Func<Task<string>> tokenProvider = () => GetAuthenticationTokenAsync();
 
-    using (var client = await BatchClient.OpenAsync(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
+    using (var client = BatchClient.Open(new BatchTokenCredentials(BatchAccountUrl, tokenProvider)))
     {
-        await client.JobOperations.ListJobs().ToListAsync();
+        client.JobOperations.ListJobs();
     }
 }
 ```

@@ -3,12 +3,12 @@ title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491809"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920024"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -16,7 +16,7 @@ Bu makale, ilkeleri programlı olarak oluşturma ve yönetme konusunda size kıl
 
 Uyumluluk hakkında daha fazla bilgi için bkz. [Uyumluluk verileri alma](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -203,7 +203,7 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın:
    ```
 
    Komut, _ortak ağlarda açık olan denetim depolama hesapları_ adlı bir ilke tanımı oluşturur.
-   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [az Policy Definition Create](/cli/azure/policy/definition#az-policy-definition-create).
+   Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [az Policy Definition Create](/cli/azure/policy/definition#az_policy_definition_create).
 
    Konum parametreleri olmadan çağrıldığında, `az policy definition creation` Varsayılan olarak ilke tanımını oturum bağlamının seçili aboneliğine kaydetme varsayılan değeri. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
 

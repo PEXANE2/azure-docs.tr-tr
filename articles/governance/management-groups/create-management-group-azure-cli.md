@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşis
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f07ae46c95f9ab9cc1ad973204ac5c50320fdf46
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 54d7afbaa4bfe2799ca0d68927394a38d9845c53
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89237402"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920670"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>Hızlı başlangıç: Azure CLı ile bir yönetim grubu oluşturma
 
@@ -17,7 +17,7 @@ Yönetim grupları, birden çok abonelik üzerinde erişimi, ilkeyi ve uyumlulu�
 
 Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. Dizininiz için Azure 'da yönetim grupları hizmetini ayarlamak için ilk kez çalışan süreçler vardır. İşlem tamamlandığında bir bildirim alırsınız. Daha fazla bilgi için bkz. [yönetim gruplarının ilk kurulumu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -29,7 +29,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. D
 
 ### <a name="create-in-the-azure-cli"></a>Azure CLı 'de oluşturma
 
-Azure CLı için, yeni bir yönetim grubu oluşturmak için [az Account Management-Group Create](/cli/azure/account/management-group#az-account-management-group-create) komutunu kullanın. Bu örnekte, yönetim grubu **adı** _contoso_' dır.
+Azure CLı için, yeni bir yönetim grubu oluşturmak için [az Account Management-Group Create](/cli/azure/account/management-group#az_account_management_group_create) komutunu kullanın. Bu örnekte, yönetim grubu **adı** _contoso_' dır.
 
 ```azurecli-interactive
 az account management-group create --name 'Contoso'
@@ -51,7 +51,7 @@ az account management-group create --name 'ContosoSubGroup' --parent 'Contoso'
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Yukarıda oluşturulan yönetim grubunu kaldırmak için [az Account Management-Group Delete](/cli/azure/account/management-group#az-account-management-group-delete) komutunu kullanın:
+Yukarıda oluşturulan yönetim grubunu kaldırmak için [az Account Management-Group Delete](/cli/azure/account/management-group#az_account_management_group_delete) komutunu kullanın:
 
 ```azurecli-interactive
 az account management-group delete --name 'Contoso'

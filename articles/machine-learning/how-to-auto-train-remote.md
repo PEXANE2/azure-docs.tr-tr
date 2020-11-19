@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: a79fc0311e940b9b4eb3e14838ef22e09342a066
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 65ce11581972c83b0294c0afcbe95e5a35ef2471
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358006"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920585"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Otomatik makine öğrenmesi ile modelleri bulutta eğitin
 
@@ -45,7 +45,7 @@ ws = Workspace.from_config()
 
 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py)Hedefi zaten yoksa çalışma alanınızda ( `ws` ) oluşturun.
 
-**Tahmin süresi** : AmlCompute hedefinin oluşturulması yaklaşık 5 dakika sürer.
+**Tahmin süresi**: AmlCompute hedefinin oluşturulması yaklaşık 5 dakika sürer.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -220,7 +220,7 @@ Jupyter not defterinde değilseniz, bu URL 'YI çalıştırmanın içinden gör�
 remote_run.get_portal_url()
 ```
 
-Çalışma alanınızda aynı bilgiler bulunur.  Bu sonuçlar hakkında daha fazla bilgi edinmek için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md).
+Çalışma alanınızda aynı bilgiler bulunur.  Bu sonuçlar hakkında daha fazla bilgi edinmek için bkz. [otomatik makine öğrenimi sonuçlarını değerlendir](how-to-understand-automated-ml.md).
 
 ## <a name="example"></a>Örnek
 

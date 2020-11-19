@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289779"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919939"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
@@ -44,8 +44,17 @@ Bir Key Vault sertifikası oluşturulduğunda, bu, özel anahtarla birlikte adre
 
 Adreslenebilir anahtar, dışarı aktarılabilir KV sertifikalarıyla daha da alakalı olur. Adreslenebilir kV anahtarının işlemleri, KV sertifikasını oluşturmak için kullanılan kV sertifika ilkesinin *KeyUsage uzantısında* alanından eşleştirilir.  
 
+Sertifikalar için desteklenen anahtar çiftinin türü
+
  - Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
 
+|Anahtar türü|Hakkında|Güvenlik|
+|--|--|--|
+|**RSA**| "Yazılım korumalı" RSA anahtarı|FIPS 140-2 düzey 1|
+|**RSA-HSM**| "HSM korumalı" RSA anahtarı (yalnızca Premium SKU)|FIPS 140-2 düzey 2 HSM|
+|**EC**| "Yazılım korumalı" eliptik eğri anahtarı|FIPS 140-2 düzey 1|
+|**EC-HSM**| "HSM korumalı" eliptik eğri anahtarı (yalnızca Premium SKU)|FIPS 140-2 düzey 2 HSM|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>Sertifika öznitelikleri ve Etiketler
 
@@ -57,14 +66,14 @@ Sertifika öznitelikleri, bir adreslenebilir anahtar ve KV sertifikası oluştur
 
 Bir Key Vault sertifikası aşağıdaki özniteliklere sahiptir:  
 
--   *etkin* : Boolean, isteğe bağlı, varsayılan değer **true** 'dur. , Sertifika verilerinin anahtar olarak gizli veya çalıştırılabilir olarak alınıp alınamayacağını göstermek için belirtilebilir. Ayrıca *, NBF ve* *Exp* arasında bir işlem gerçekleştiğinde, *NBF* ve *Exp* ile birlikte de kullanılır ve yalnızca etkin değeri true olarak ayarlandıysa izin verilir. *NBF* ve *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.  
+-   *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. , Sertifika verilerinin anahtar olarak gizli veya çalıştırılabilir olarak alınıp alınamayacağını göstermek için belirtilebilir. Ayrıca *, NBF ve* *Exp* arasında bir işlem gerçekleştiğinde, *NBF* ve *Exp* ile birlikte de kullanılır ve yalnızca etkin değeri true olarak ayarlandıysa izin verilir. *NBF* ve *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.  
 
 Yanıtta bulunan ek salt okuma öznitelikleri vardır:
 
--   *oluşturma* : intdate: sertifikanın bu sürümünün ne zaman oluşturulduğunu gösterir.  
--   *güncelleştirildi* : intdate: sertifikanın bu sürümünün ne zaman güncelleştirildiğini gösterir.  
--   *Exp* : intdate: x509 sertifikasının süre sonu tarihinin değerini içerir.  
--   *NBF* : intdate: x509 sertifikası tarihinin değerini içerir.  
+-   *oluşturma*: intdate: sertifikanın bu sürümünün ne zaman oluşturulduğunu gösterir.  
+-   *güncelleştirildi*: intdate: sertifikanın bu sürümünün ne zaman güncelleştirildiğini gösterir.  
+-   *Exp*: intdate: x509 sertifikasının süre sonu tarihinin değerini içerir.  
+-   *NBF*: intdate: x509 sertifikası tarihinin değerini içerir.  
 
 > [!Note] 
 > Key Vault sertifikasının süresi dolarsa adreslenebilir anahtarı ve gizli dizisi çalışmaz.  
@@ -103,14 +112,14 @@ Aşağıdaki tablo, x509 anahtar kullanımı ilkesinin Key Vault sertifikası ol
 
 |**X509 anahtar kullanım bayrakları**|**Key Vault anahtar Ops**|**Varsayılan davranış**|
 |----------|--------|--------|
-|Veri şifreleme|şifreleme, şifre çözme| Yok |
-|Yalnızca çözülemez|çözülemiyor| Yok  |
+|Veri şifreleme|şifreleme, şifre çözme| YOK |
+|Yalnızca çözülemez|çözülemiyor| YOK  |
 |DigitalSignature|imzala, Doğrula| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
-|Yalnızca şifreleme|şifrele| Yok |
-|KeyCertSign|imzala, Doğrula|Yok|
+|Yalnızca şifreleme|şifrele| YOK |
+|KeyCertSign|imzala, Doğrula|YOK|
 |KeyEncipherment|wrapKey, unwrapKey| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
-|Kabullenme|imzala, Doğrula| Yok |
-|crlsign|imzala, Doğrula| Yok |
+|Kabullenme|imzala, Doğrula| YOK |
+|crlsign|imzala, Doğrula| YOK |
 
 ## <a name="certificate-issuer"></a>Sertifikayı veren
 

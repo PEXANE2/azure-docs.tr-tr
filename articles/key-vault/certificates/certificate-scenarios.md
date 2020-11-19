@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286897"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920449"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarını kullanmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
@@ -113,7 +113,6 @@ AKV, 2 PEM tabanlı biçimleri destekler. Tek bir PKCS # 8 kodlu sertifikayı ve
 
 -----SERTIFIKAYı----------SON SERTIFIKA-----BAŞLAT
 
-Şu anda pek biçimindeki EC anahtarlarını desteklemiyoruz.
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Key Vault ile iş ortağı olmayan bir CA ile sertifika oluşturma  
  Bu yöntem, Key Vault iş ortağı sağlayıcılardan diğer CA 'larla çalışmaya olanak sağlar. Bu, kuruluşunuzun tercih ettiği bir CA ile çalışabilmesi anlamına gelir.  

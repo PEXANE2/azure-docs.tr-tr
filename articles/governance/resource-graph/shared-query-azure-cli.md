@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Azure CLı ile paylaşılan bir sorgu oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı için kaynak grafik uzantısını etkinleştirmek ve paylaşılan bir sorgu oluşturmak için aşağıdaki adımları izleyin.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 93df1c858ac6238a0192bcdedac8286f2cf75007
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057204"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919718"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak kaynak grafiği paylaşılan sorgusu oluşturma
 
@@ -28,14 +28,14 @@ Azure CLı 'nın Azure Kaynak Graf ile çalışmasını sağlamak için uzantın
 
 1. En son Azure CLı 'nın yüklü olup olmadığını denetleyin (en azından **2.8.0**). Henüz yüklenmiş değilse, [bu yönergeleri](/cli/azure/install-azure-cli-windows) izleyin.
 
-1. Tercih ettiğiniz Azure CLı ortamınızda, kaynak grafiği uzantısını aşağıdaki komutla içe aktarmak için [az Extension Add](/cli/azure/extension#az-extension-add) komutunu kullanın:
+1. Tercih ettiğiniz Azure CLı ortamınızda, kaynak grafiği uzantısını aşağıdaki komutla içe aktarmak için [az Extension Add](/cli/azure/extension#az_extension_add) komutunu kullanın:
 
    ```azurecli-interactive
    # Add the Resource Graph extension to the Azure CLI environment
    az extension add --name resource-graph
    ```
 
-1. Uzantının yüklendiğini ve az [extension List](/cli/azure/extension#az-extension-list)ile beklenen sürüm (en az **1.1.0**) olduğunu doğrulayın:
+1. Uzantının yüklendiğini ve az [extension List](/cli/azure/extension#az_extension_list)ile beklenen sürüm (en az **1.1.0**) olduğunu doğrulayın:
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -47,9 +47,9 @@ Azure CLı 'nın Azure Kaynak Graf ile çalışmasını sağlamak için uzantın
 
 ## <a name="create-a-resource-graph-shared-query"></a>Kaynak Grafiği paylaşılan sorgusu oluşturma
 
-Azure CLı uzantısı tercih ettiğiniz ortamınıza eklendiğinde, kaynak grafiği paylaşılan sorgusunun zamanı da vardır. Paylaşılan sorgu, Azure Resource Graph Explorer 'da izin vereceğiniz veya çalıştırabileceğiniz bir Azure Resource Manager nesnesidir. Sorgu _konuma_göre gruplandırılan tüm kaynakların sayısını özetler.
+Azure CLı uzantısı tercih ettiğiniz ortamınıza eklendiğinde, kaynak grafiği paylaşılan sorgusunun zamanı da vardır. Paylaşılan sorgu, Azure Resource Graph Explorer 'da izin vereceğiniz veya çalıştırabileceğiniz bir Azure Resource Manager nesnesidir. Sorgu _konuma_ göre gruplandırılan tüm kaynakların sayısını özetler.
 
-1. Azure Kaynak Grafiği paylaşılan sorgusunu depolamak için [az Group Create](/cli/azure/group#az-group-create) ile bir kaynak grubu oluşturun. Bu kaynak grubunun adı `resource-graph-queries` ve konumu `westus2` .
+1. Azure Kaynak Grafiği paylaşılan sorgusunu depolamak için [az Group Create](/cli/azure/group#az_group_create) ile bir kaynak grubu oluşturun. Bu kaynak grubunun adı `resource-graph-queries` ve konumu `westus2` .
 
    ```azurecli-interactive
    # Login first with az login if not using Cloud Shell
@@ -58,7 +58,7 @@ Azure CLı uzantısı tercih ettiğiniz ortamınıza eklendiğinde, kaynak grafi
    az group create --name 'resource-graph-queries' --location 'westus2'
    ```
 
-1. Uzantıyı kullanarak Azure Kaynak Grafiği paylaşılan sorgusunu oluşturun `graph` ve [az Graph Shared-Query Create](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-create) komutunu kullanın:
+1. Uzantıyı kullanarak Azure Kaynak Grafiği paylaşılan sorgusunu oluşturun `graph` ve [az Graph Shared-Query Create](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_create) komutunu kullanın:
 
    ```azurecli-interactive
    # Create the Azure Resource Graph shared query
@@ -68,14 +68,14 @@ Azure CLı uzantısı tercih ettiğiniz ortamınıza eklendiğinde, kaynak grafi
       --resource-group 'resource-graph-queries'
    ```
 
-1. Yeni kaynak grubundaki paylaşılan sorguları listeleyin. [Az Graph Shared-Query List](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-list) komutu bir değer dizisi döndürür.
+1. Yeni kaynak grubundaki paylaşılan sorguları listeleyin. [Az Graph Shared-Query List](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_list) komutu bir değer dizisi döndürür.
 
    ```azurecli-interactive
    # List all the Azure Resource Graph shared queries in a resource group
    az graph shared-query list --resource-group 'resource-graph-queries'
    ```
 
-1. Yalnızca tek bir paylaşılan sorgu sonucu almak için [az Graph Shared-Query Show](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-show) komutunu kullanın.
+1. Yalnızca tek bir paylaşılan sorgu sonucu almak için [az Graph Shared-Query Show](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_show) komutunu kullanın.
 
    ```azurecli-interactive
    # Show a specific Azure Resource Graph shared query
@@ -83,7 +83,7 @@ Azure CLı uzantısı tercih ettiğiniz ortamınıza eklendiğinde, kaynak grafi
       --name 'Summarize resources by location'
    ```
 
-1. `{{shared-query-uri}}`Bir [az Graph Query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query) komutunda SÖZDIZIMI ile Azure CLI 'de paylaşılan sorguyu çalıştırın.
+1. `{{shared-query-uri}}`Bir [az Graph Query](/cli/azure/ext/resource-graph/graph#ext_resource_graph_az_graph_query) komutunda SÖZDIZIMI ile Azure CLI 'de paylaşılan sorguyu çalıştırın.
    İlk olarak, `id` Önceki komutun sonucundan alanı kopyalayın `show` . `shared-query-uri`Örnekteki metni alanındaki değerle değiştirin `id` , ancak çevreden `{{` ve karakterlerinden ayrılın `}}` .
 
    ```azurecli-interactive
@@ -100,9 +100,9 @@ Kaynak Grafiği paylaşılan sorgularını bulmanın bir başka yolu da Azure po
 
 Kaynak Grafiği paylaşılan sorgusunu, kaynak grubunu ve uzantıyı Azure CLı ortamınızdan kaldırmak isterseniz, aşağıdaki komutları kullanarak bunu yapabilirsiniz:
 
-- [az Graph Shared-Query Delete](/cli/azure/ext/resource-graph/graph/shared-query#ext-resource-graph-az-graph-shared-query-delete)
-- [az group delete](/cli/azure/group#az-group-delete)
-- [az Extension Remove](/cli/azure/extension#az-extension-remove)
+- [az Graph Shared-Query Delete](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_delete)
+- [az group delete](/cli/azure/group#az_group_delete)
+- [az Extension Remove](/cli/azure/extension#az_extension_remove)
 
 ```azurecli-interactive
 # Delete the Azure Resource Graph shared query

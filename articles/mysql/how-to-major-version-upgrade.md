@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 78c35e42cefa8897d9f93c3a941b4c0e8b81e5f9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4dd4729589e429cb1b028b183fdfd144617d1d1b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687145"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920653"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda ana sürüm yükseltmesi
 
@@ -26,13 +26,16 @@ Bu özellik, müşterilerin MySQL 5,6 sunucularının herhangi bir veri hareketi
 > * Ana sürüm yükseltmesi yalnızca MySQL 5,6 ' den MySQL 5,7 ' ye ana sürüm yükseltmesi için kullanılabilir<br>
 > * Ana sürüm yükseltmesi henüz Çoğaltma sunucusunda desteklenmiyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı tek sunucu](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57"></a>MySQL 5,6 ' den MySQL 5,7 ' e büyük sürüm yükseltmesi gerçekleştirin
 
 MySQL 5,6 Server Azure veritabanınız için ana sürüm yükseltmesini gerçekleştirmek üzere bu adımları izleyin
+
+> [!IMPORTANT]
+> Üretimi doğrudan yükseltmek yerine, ilk olarak sunucunun geri yüklenen kopyasında yükseltmeyi gerçekleştirmenizi öneririz. Bkz. [Noktadan noktaya geri yükleme gerçekleştirme](howto-restore-server-portal.md#point-in-time-restore).
 
 1. [Azure Portal](https://portal.azure.com/), var olan MySQL 5,6 Server Için Azure veritabanınızı seçin.
 

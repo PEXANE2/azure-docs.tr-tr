@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 63cc4448034b6a2ae2d74f4a2d9a0a62296678cf
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886490"
+ms.locfileid: "94919633"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
 
@@ -78,7 +78,7 @@ Geçici arıza olarak da bilinen geçici bir hata, kendisini çözecek bir hatad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden MySQL için Azure veritabanı ekibine bir e-posta gönderin **AskAzureDBforMySQL@service.microsoft.com** .
+- MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden MySQL için Azure veritabanı ekibine bir e-posta gönderin. AskAzureDBforMySQL@service.microsoft.com
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
 - [MySQL için Azure veritabanı 'na yönelik bağlantı sorunlarını giderme-tek sunucu](howto-troubleshoot-common-connection-issues.md)
 - [MySQL için Azure veritabanı-tek sunucu için geçici hataları işleyin ve verimli bir şekilde bağlanın](concepts-connectivity.md)

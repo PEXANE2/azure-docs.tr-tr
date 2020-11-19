@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069764"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919701"
 ---
 # <a name="known-issues-application-provisioning"></a>Bilinen sorunlar: uygulama sağlama
 Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
@@ -86,6 +86,9 @@ Sağlama `enabled = off` veya geçiş durdurma işlemleri yapıldığında, geç
 
 Bir grup kapsamdadır ve üye kapsam dışı olduğunda, Grup sağlanır. Kapsam dışı Kullanıcı sağlanmayacaktır. Üye kapsama geri dönerse, hizmet değişikliği hemen algılamaz. Sağlama yeniden başlatıldığında sorun ele alınacaktır. Tüm kullanıcıların doğru şekilde sağlandığından emin olmak için hizmeti düzenli aralıklarla yeniden başlatmanızı öneririz.  
 
+**Yönetici sağlanmadı**
+
+Bir Kullanıcı ve Yöneticisi her ikisi de sağlama kapsamıdır, hizmet kullanıcıyı hazırlar ve sonra Yöneticiyi güncelleştirir. Ancak, bir gün Kullanıcı kapsamdadır ve yönetici kapsam dışında olduğunda, yönetici başvurusu olmadan kullanıcıyı sağlayacağız. Yönetici kapsama geldiğinde, sağlama yeniden başlatılana ve hizmetin tüm kullanıcıları yeniden değerlendirmesine neden olana kadar yönetici başvurusu güncellenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Sağlama nasıl çalışır?](how-provisioning-works.md)

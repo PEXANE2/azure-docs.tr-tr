@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1803a0070321ff4d895203f027f839601bb726ee
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887153"
+ms.locfileid: "94920262"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı - Tek Sunucu'da planlı bakım bildirimi
 
@@ -78,7 +78,7 @@ Geçici arıza olarak da bilinen geçici bir hata, kendisini çözecek bir hatad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- PostgreSQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden PostgreSQL için Azure veritabanı ekibine bir e-posta gönderin *AskAzureDBforPostgreSQL@service.microsoft.com* .
+- PostgreSQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, adresinden PostgreSQL için Azure veritabanı ekibine bir e-posta gönderin. AskAzureDBforPostgreSQL@service.microsoft.com
 - Bir ölçüm üzerinde uyarı oluşturma konusunda rehberlik için [uyarıları ayarlama](howto-alert-on-metric.md) bölümüne bakın.
 - [PostgreSQL için Azure veritabanı ile ilgili bağlantı sorunlarını giderme-tek sunucu](howto-troubleshoot-common-connection-issues.md)
 - [Geçici hataları işleyin ve PostgreSQL için Azure veritabanı 'na verimli bir şekilde bağlanın-tek sunucu](concepts-connectivity.md)

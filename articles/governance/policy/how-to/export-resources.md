@@ -4,12 +4,12 @@ description: İlke tanımları ve ilke atamaları gibi Azure Ilke kaynaklarını
 ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 923b063244f6f47def1c3e6a63d6e4d6b3b88083
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025723"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919574"
 ---
 # <a name="export-azure-policy-resources"></a>Azure İlkesi kaynaklarını dışarı aktarma
 
@@ -19,20 +19,20 @@ Bu makalede, mevcut Azure Ilke kaynaklarınızı dışarı aktarma hakkında bil
 
 Azure portal bir ilke tanımını dışarı aktarmak için şu adımları izleyin:
 
-1. Azure portalında **Tüm hizmetler** ’e tıkladıktan sonra **İlke** 'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
 1. Azure Ilkesi sayfasının sol tarafındaki **tanımlar** ' ı seçin.
 
-1. **Tanımları dışarı aktar** düğmesini veya bir ilke tanımının satırındaki üç noktayı seçip **dışarı aktarma tanımı** ' nı seçin.
+1. **Tanımları dışarı aktar** düğmesini veya bir ilke tanımının satırındaki üç noktayı seçip **dışarı aktarma tanımı**' nı seçin.
 
 1. **GitHub Ile oturum aç** düğmesini seçin. Kaynağı dışarı aktarmak için Azure Ilkesini yetkilendirmek üzere GitHub ile henüz kimlik doğrulamasından ayrıldıysanız, açılan yeni pencerede [GitHub eylemi](https://github.com/features/actions) ihtiyaçlarına erişimi gözden geçirin ve dışarı aktarma işlemine devam etmek Için **Yetkilendir AzureGitHubActions** ' ı seçin. Tamamlandıktan sonra, yeni pencere kendi kendini kapatır.
 
 1. **Temel bilgiler** sekmesinde, aşağıdaki seçenekleri ayarlayın ve ardından sayfanın alt kısmındaki **Ilkeler** sekmesini veya **Sonraki: ilkeler** düğmesini seçin.
 
-   - **Depo filtresi** : GitHub eyleminin erişimine izin verdiğiniz tüm depoları görmek Için _depolarıma_ yalnızca sahip olduğunuz depoları veya _Tüm depolarımı_ görüntülemek için ayarlayın.
-   - **Depo** : Azure ilke kaynaklarını dışarı aktarmak istediğiniz depoya ayarlayın.
-   - **Dal** : depodaki dalı ayarlayın. Varsayılan dışında bir dal kullanmak, kaynak kodunuzda daha fazla birleştirmeden önce güncelleştirmelerinizi doğrulamak için iyi bir yoldur.
-   - **Dizin** : Azure ilke kaynaklarının dışarı aktarılacağı _kök düzeyi klasörü_ . Bu dizin altındaki alt klasörler, hangi kaynakların verileceği temel alınarak oluşturulur.
+   - **Depo filtresi**: GitHub eyleminin erişimine izin verdiğiniz tüm depoları görmek Için _depolarıma_ yalnızca sahip olduğunuz depoları veya _Tüm depolarımı_ görüntülemek için ayarlayın.
+   - **Depo**: Azure ilke kaynaklarını dışarı aktarmak istediğiniz depoya ayarlayın.
+   - **Dal**: depodaki dalı ayarlayın. Varsayılan dışında bir dal kullanmak, kaynak kodunuzda daha fazla birleştirmeden önce güncelleştirmelerinizi doğrulamak için iyi bir yoldur.
+   - **Dizin**: Azure ilke kaynaklarının dışarı aktarılacağı _kök düzeyi klasörü_ . Bu dizin altındaki alt klasörler, hangi kaynakların verileceği temel alınarak oluşturulur.
 
 1. **İlkeler** sekmesinde, üç noktayı seçip yönetim gruplarının, aboneliklerinin veya kaynak gruplarının bir birleşimini seçerek kapsamı arama olarak ayarlayın.
    
@@ -63,9 +63,9 @@ Azure Ilke kaynakları, seçilen GitHub deposu ve _kök düzeyi klasörü_ için
 
 Azure Ilke tanımları, girişimleri ve atamaları, her biri [Azure CLI](/cli/azure/install-azure-cli)ile JSON olarak aktarılabilir. Bu komutların her biri, JSON 'ı hangi nesnenin alınacağını belirtmek için bir **ad** parametresi kullanır. **Name** özelliği genellikle bir _GUID_ 'dir ve nesnenin **DisplayName** değeri değildir.
 
-- Tanım- [az Policy Definition Show](/cli/azure/policy/definition#az-policy-definition-show)
-- Girişim- [az Policy set-Definition Show](/cli/azure/policy/set-definition#az-policy-set-definition-show)
-- Atama- [az Policy atama Show](/cli/azure/policy/assignment#az-policy-assignment-show)
+- Tanım- [az Policy Definition Show](/cli/azure/policy/definition#az_policy_definition_show)
+- Girişim- [az Policy set-Definition Show](/cli/azure/policy/set-definition#az_policy_set_definition_show)
+- Atama- [az Policy atama Show](/cli/azure/policy/assignment#az_policy_assignment_show)
 
 Aşağıda _Virtual, Inesstorage_ **adlı** BIR ilke tanımı için JSON alma örneği verilmiştir:
 

@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Azure CLI ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 790e23897a24ea06565572163b8226af88e0bb7c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057969"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920568"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure Blueprint tanımlama ve atama
 
@@ -116,9 +116,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
      > [!NOTE]
      > Şema tanımlarınızı içeri aktarırken _blueprint.js_ dosya adını kullanın.
-     > Bu dosya adı [az şema Import](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import)çağrılırken kullanılır.
+     > Bu dosya adı [az şema Import](/cli/azure/ext/blueprint/blueprint#ext_blueprint_az_blueprint_import)çağrılırken kullanılır.
 
-     Şema nesnesi varsayılan olarak varsayılan abonelikte oluşturulur. Yönetim grubunu belirtmek için, **ManagementGroup**parametresini kullanın. Aboneliği belirtmek için, parametre **aboneliğini**kullanın.
+     Şema nesnesi varsayılan olarak varsayılan abonelikte oluşturulur. Yönetim grubunu belirtmek için, **ManagementGroup** parametresini kullanın. Aboneliği belirtmek için, parametre **aboneliğini** kullanın.
 
 1. Depolama yapıtları için kaynak grubunu tanımına ekleyin.
 
@@ -295,7 +295,7 @@ Yapıtları ekledikten sonra şemayı yayımlayabilirsiniz. Yayımladığınızd
 az blueprint publish --blueprint-name 'MyBlueprint' --version '{BlueprintVersion}'
 ```
 
-`{BlueprintVersion}` değeri en fazla 20 karakter olmak üzere harf, rakam ve kısa çizgilerden oluşan bir dizedir (boşluk veya özel karakter kullanılamaz). **V20200605-135541**gibi benzersiz ve bilgilendirici bir öğe kullanın.
+`{BlueprintVersion}` değeri en fazla 20 karakter olmak üzere harf, rakam ve kısa çizgilerden oluşan bir dizedir (boşluk veya özel karakter kullanılamaz). **V20200605-135541** gibi benzersiz ve bilgilendirici bir öğe kullanın.
 
 ## <a name="assign-a-blueprint"></a>Şema atama
 

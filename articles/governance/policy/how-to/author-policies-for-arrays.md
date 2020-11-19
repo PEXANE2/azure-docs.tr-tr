@@ -3,12 +3,12 @@ title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 92339a6da4fd2061d66935cc8d04428c69822862
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323221"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920466"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -17,7 +17,7 @@ Azure Resource Manager özellikler genellikle dizeler ve Boole değerleri olarak
 - Birden çok seçenek sağlamak için bir [tanım parametresinin](../concepts/definition-structure.md#parameters)türü
 - **Ya da** **notın** koşullarını kullanan bir [ilke kuralının](../concepts/definition-structure.md#policy-rule) bir parçası
 - Değerlendirmek için [ \[ \* \] diğer adı](../concepts/definition-structure.md#understanding-the--alias) değerlendiren bir ilke kuralının parçası:
-  - **Hiçbiri** , **Any** veya **Tümü** gibi senaryolar
+  - **Hiçbiri**, **Any** veya **Tümü** gibi senaryolar
   - **Count** ile karmaşık senaryolar
 - Var olan bir diziyi değiştirmek veya eklemek için [ekleme efekti](../concepts/effects.md#append)
 
@@ -28,7 +28,7 @@ Bu makalede Azure Ilkesi tarafından kullanılan her kullanım ele alınmaktadı
 ### <a name="define-a-parameter-array"></a>Parametre dizisi tanımlama
 
 Bir parametreyi dizi olarak tanımlamak, birden fazla değer gerektiğinde ilke esnekliği sağlar.
-Bu ilke tanımı, **Allowedlocations** parametresi için tek bir konuma izin verir ve varsayılan olarak _eastus2_ :
+Bu ilke tanımı, **Allowedlocations** parametresi için tek bir konuma izin verir ve varsayılan olarak _eastus2_:
 
 ```json
 "parameters": {
@@ -44,7 +44,7 @@ Bu ilke tanımı, **Allowedlocations** parametresi için tek bir konuma izin ver
 }
 ```
 
-**Tür** _dize_ olduğu için, ilke atanırken yalnızca bir değer ayarlanabilir. Bu ilke atanırsa, kapsamdaki kaynaklara yalnızca tek bir Azure bölgesi içinde izin verilir. Çoğu ilke tanımlarının, _eastus2_ , _eastus_ ve _westus2_ gibi onaylanan seçenekler listesi için izin verilmesi gerekir.
+**Tür** _dize_ olduğu için, ilke atanırken yalnızca bir değer ayarlanabilir. Bu ilke atanırsa, kapsamdaki kaynaklara yalnızca tek bir Azure bölgesi içinde izin verilir. Çoğu ilke tanımlarının, _eastus2_, _eastus_ ve _westus2_ gibi onaylanan seçenekler listesi için izin verilmesi gerekir.
 
 Birden çok seçeneğe izin vermek üzere ilke tanımı oluşturmak için _dizi_ **türünü** kullanın. Aynı ilke aşağıdaki gibi yeniden yazılabilir:
 
@@ -75,7 +75,7 @@ Bu yeni parametre tanımı, ilke ataması sırasında birden fazla değer alır.
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Atama sırasında değerleri bir parametre dizisine geçirme
 
-İlke Azure portal aracılığıyla atanırken, _dizi_ **türünde** bir parametre tek bir metin kutusu olarak görüntülenir. İpucu "kullanım" diyor. değerlerini ayırmak için. (örneğin, Londra; New York) ". _Eastus2_ , _eastus_ ve _westus2_ izin verilen konum değerlerini parametreye geçirmek için aşağıdaki dizeyi kullanın:
+İlke Azure portal aracılığıyla atanırken, _dizi_ **türünde** bir parametre tek bir metin kutusu olarak görüntülenir. İpucu "kullanım" diyor. değerlerini ayırmak için. (örneğin, Londra; New York) ". _Eastus2_, _eastus_ ve _westus2_ izin verilen konum değerlerini parametreye geçirmek için aşağıdaki dizeyi kullanın:
 
 `eastus2;eastus;westus2`
 
@@ -95,7 +95,7 @@ Azure CLı, Azure PowerShell veya REST API kullanılırken parametre değerinin 
 
 Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 
-- Azure CLı: komut [az Policy atama Create](/cli/azure/policy/assignment#az-policy-assignment-create) parametresini parametre **params**
+- Azure CLı: komut [az Policy atama Create](/cli/azure/policy/assignment#az_policy_assignment_create) parametresini parametre **params**
 - Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with Parameter **PolicyParameter**
 - REST API: _PUT_ [oluşturma](/rest/api/resources/policyassignments/create) işleminde, **Properties. Parameters** özelliğinin değeri olarak istek gövdesinin bir parçası olarak
 
@@ -172,7 +172,7 @@ Dizi kaynağı özellikleri genellikle iki farklı diğer ad türü tarafından 
 
 #### <a name="referencing-the-array"></a>Diziye başvurma
 
-İlk diğer ad, istek içeriğinden özelliğin değerini tek bir değer temsil eder `stringArray` . Bu özelliğin değeri bir dizi olduğundan, ilke koşullarında çok yararlı değildir. Örneğin:
+İlk diğer ad, istek içeriğinden özelliğin değerini tek bir değer temsil eder `stringArray` . Bu özelliğin değeri bir dizi olduğundan, ilke koşullarında çok yararlı değildir. Örnek:
 
 ```json
 {
@@ -311,7 +311,7 @@ Bu davranış, iç içe diziler ile de kullanılabilir. Örneğin, `count` `true
 }
 ```
 
-Öğesinin gücü `count` `where` koşulnda. Belirtildiğinde, Azure Ilkesi dizi üyelerini numaralandırır ve her bir koşula göre değerlendirilen dizi üyelerinin sayısını sayarak değerlendirir `true` . Özellikle, koşul değerlendirmesinin her yinelemesinde `where` , Azure ilkesi tek bir dizi üyesi * **i** _ seçer ve kaynak içeriğini * `where` i array_ 'nin tek üyesi * _*_i_*_ . Her yinelemede yalnızca bir dizi üyesinin kullanılabilir olması, her bir dizi üyesine karmaşık koşullar uygulamak için bir yol sağlar.
+Öğesinin gücü `count` `where` koşulnda. Belirtildiğinde, Azure Ilkesi dizi üyelerini numaralandırır ve her bir koşula göre değerlendirilen dizi üyelerinin sayısını sayarak değerlendirir `true` . Özellikle, koşul değerlendirmesinin her yinelemesinde `where` , Azure ilkesi tek bir dizi üyesi ***i** _ seçer ve kaynak içeriğini * `where` i array_ 'nin tek üyesi * _*_i_*_ . Her yinelemede yalnızca bir dizi üyesinin kullanılabilir olması, her bir dizi üyesine karmaşık koşullar uygulamak için bir yol sağlar.
 
 Örnek:
 ```json
@@ -424,7 +424,7 @@ Ve bu nedenle `count` döndürülür `1` .
 1. `field()` dizi diğer adlarına başvuran işlevler, seçili değerlere sahip bir dizi döndürür.
 1. Koşul içinde sayılan dizi diğer adına başvurmak, `where` geçerli yinelemede değerlendirilen dizi üyesinden tek bir değer seçilmiş bir koleksiyon döndürür.
 
-Bu davranış, koşul içindeki bir işlevle sayılan dizi üyesine başvurulduğunda `field()` `where` , **tek bir üyeye sahip bir dizi döndürdüğünü** gösterir. Bu sezgisel olmayabilir, dizi diğer adlarının her zaman seçili özelliklerin bir koleksiyonunu döndürdüğü fikrle tutarlıdır. İşte bir örnek:
+Bu davranış, koşul içindeki bir işlevle sayılan dizi üyesine başvurulduğunda `field()` `where` , **tek bir üyeye sahip bir dizi döndürdüğünü** gösterir. Bu sezgisel olmayabilir, dizi diğer adlarının her zaman seçili özelliklerin bir koleksiyonunu döndürdüğü fikrle tutarlıdır. Aşağıda bir örnek verilmiştir:
 
 ```json
 {
