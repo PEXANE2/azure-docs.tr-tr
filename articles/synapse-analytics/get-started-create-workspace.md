@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: c15750a7a63293994ff7c6b68cb85a5066acee90
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d22d70a360290e7fbfabf1d05fc49d4ef6eb8c83
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981145"
+ms.locfileid: "94986343"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
 Bu öğreticide, bir Synapse çalışma alanı, adanmış bir SQL havuzu ve sunucusuz Apache Spark havuzu oluşturmayı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığınız bir kaynak grubuna erişiminizin olması gerekir. Bu kaynak grubunda SYNAPSE çalışma alanını oluşturun.
 
@@ -67,7 +67,7 @@ Spark havuzu, Azure SYNAPSE 'in kaç Spark kaynağı kullandığını söyler. Y
 
 ## <a name="the-built-in-serverless-sql-pool"></a>Yerleşik sunucusuz SQL havuzu
 
-Her çalışma alanı, **yerleşik** olarak adlandırılan önceden oluşturulmuş bir havuz ile gelir. Bu havuz silinemiyor. Sunucusuz SQL havuzu, Azure SYNAPSE 'da sunucusuz bir SQL havuzu oluşturmak veya yönetmek zorunda kalmadan SQL ile çalışmanıza olanak sağlar. Adanmış SQL havuzlarının aksine, sunucusuz SQL havuzunun faturalandırılması, sorguyu yürütmek için kullanılan kaynak sayısını değil, sorguyu çalıştırmak için taranan veri miktarına bağlıdır.
+Her çalışma alanı, **yerleşik** olarak adlandırılan önceden oluşturulmuş bir SUNUCUSUZ SQL havuzu ile gelir. Bu havuz silinemiyor. Sunucusuz SQL havuzları, adanmış SQL havuzlarıyla kapasiteyi ayırmak için SQL withou HAVING kullanmanıza olanak sağlar. Adanmış SQL havuzlarının aksine, sunucusuz SQL havuzu için faturalandırma, havuza ayrılan kapasite sayısını değil, sorguyu çalıştırmak için taranan veri miktarına bağlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

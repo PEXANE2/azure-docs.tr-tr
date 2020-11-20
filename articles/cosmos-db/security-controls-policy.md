@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Cosmos DB için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 89a894a44537065afc35b76415f2de2fb43acbb0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: aa1cbff7dc3f97d8826e0ec1cd608338ee743f4c
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694595"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984940"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Ilke mevzuat uyumluluk denetimleri
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

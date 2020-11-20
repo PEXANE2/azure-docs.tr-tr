@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7b048581b29fa4244c42261810f382b229a627dd
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126182"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985976"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central mimarisi
 
@@ -54,7 +54,7 @@ IoT Central, IoT Edge cihazlar için aşağıdaki özellikleri sağlar:
   - Her modülün gönderdiği telemetri.
   - Her modülün Özellikler rapor.
   - Her modülün yanıt verdiği komutlar.
-  - IoT Edge ağ geçidi cihazı yetenek modeli ve aşağı akış cihazı yetenek modeli arasındaki ilişkiler.
+  - IoT Edge ağ geçidi cihazı ve aşağı akış cihazı arasındaki ilişkiler.
   - IoT Edge cihazında depolanmayan bulut özellikleri.
   - IoT Central uygulamanızın parçası olan özelleştirmeler, panolar ve formlar.
 
@@ -133,12 +133,12 @@ Azure IoT Central uygulamasında cihaz şablonları cihaz türlerinin davranış
 
 ![Şablon mimarisi](media/concepts-architecture/template-architecture.png)
 
-Bir IoT Central uygulama cihaz şablonunda şunları içerir:
+Bir IoT Central [cihaz şablonunda](concepts-device-templates.md) şunları içerir:
 
-- **Cihaz yetenek modelleri** , gönderdiği telemetri, cihaz durumunu tanımlayan Özellikler ve cihazın yanıt verdiği komutları gibi bir cihazın yeteneklerini belirtir. Cihaz özellikleri bir veya daha fazla arabirimde düzenlenir.
+- Bir cihazın gönderdiği Telemetriyi, cihaz durumunu tanımlayan özellikleri ve cihazın yanıt verdiği komutları belirtmek için bir **cihaz modeli** . Cihaz özellikleri bir veya daha fazla arabirimde düzenlenir.
 - **Bulut özellikleri** bir cihaz için IoT Central depolar özelliklerini belirtir. Bu özellikler yalnızca IoT Central depolanır ve hiçbir şekilde cihaza gönderilmez.
 - **Görünümler** , bir işlecin cihazları izlemesine ve yönetmesine izin vermek için oluşturucunun oluşturduğu panoları ve formları belirler.
-- **Özelleştirmeler** , oluşturucunun IoT Central uygulamayla daha uygun olması için cihaz yetenek modelindeki bazı tanımları geçersiz kılmasını sağlar.
+- **Özelleştirmeler** , oluşturucunun IoT Central uygulamayla daha uygun olması için cihaz modelindeki bazı tanımları geçersiz kılmasını sağlar.
 
 Bir uygulama, her bir cihaz şablonuna dayalı bir veya daha fazla sanal ve gerçek cihaza sahip olabilir.
 
@@ -152,7 +152,7 @@ Azure IoT Central uygulamasında, bağlı cihazları yönetmek için [işler olu
 
 ## <a name="role-based-access-control-rbac"></a>Rol tabanlı erişim denetimi (RBAC)
 
-Yönetici, önceden tanımlanmış rollerden birini kullanarak veya özel bir rol oluşturarak Azure IoT Central uygulamasına yönelik [erişim kuralları tanımlayabilir](howto-manage-users-roles.md) . Roller, uygulamanın ne kadar kullanıcıya erişimi olduğunu ve gerçekleştirebileceği eylemleri tespit edebilir.
+Her IoT Central uygulamasının kendi yerleşik RBAC sistemine sahiptir. Yönetici, önceden tanımlanmış rollerden birini kullanarak veya özel bir rol oluşturarak Azure IoT Central uygulamasına yönelik [erişim kuralları tanımlayabilir](howto-manage-users-roles.md) . Roller, uygulamanın ne kadar kullanıcıya erişimi olduğunu ve gerçekleştirebileceği eylemleri tespit edebilir.
 
 ## <a name="security"></a>Güvenlik
 

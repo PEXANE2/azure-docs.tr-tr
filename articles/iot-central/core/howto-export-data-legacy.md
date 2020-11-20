@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126746"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987363"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Veri dışa aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma (eski)
 
@@ -22,7 +22,7 @@ ms.locfileid: "92126746"
 > - Yeni Önizleme verileri dışarı aktarma özellikleri hakkında daha fazla bilgi için bkz. [veri dışa aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma](./howto-export-data.md).
 > - Önizleme verileri dışarı aktarma ve eski verileri dışarı aktarma özellikleri arasındaki farklar hakkında bilgi edinmek için [karşılaştırma tablosuna](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)bakın.
 
-Bu makalede, Azure IoT Central 'da veri dışarı aktarma özelliğinin nasıl kullanılacağı açıklanır. Bu özellik verilerinizi **azure Event Hubs**, **Azure Service Bus**veya **Azure Blob Storage** örneklerine sürekli olarak dışa aktarmanıza olanak tanır. Veri dışa aktarma JSON biçimini kullanır ve Telemetriyi, cihaz bilgilerini ve cihaz şablonu bilgilerini içerebilir. İçin, bu verileri kullan:
+Bu makalede, Azure IoT Central 'da veri dışarı aktarma özelliğinin nasıl kullanılacağı açıklanır. Bu özellik verilerinizi **azure Event Hubs**, **Azure Service Bus** veya **Azure Blob Storage** örneklerine sürekli olarak dışa aktarmanıza olanak tanır. Veri dışa aktarma JSON biçimini kullanır ve Telemetriyi, cihaz bilgilerini ve cihaz şablonu bilgilerini içerebilir. İçin, bu verileri kullan:
 
 - Sıcak yol öngörüleri ve analizi. Bu seçenek, Azure Stream Analytics özel kuralların tetiklenmesi, Azure Logic Apps özel iş akışlarını tetiklenmesi veya dönüştürülecek Azure Işlevleri aracılığıyla geçirilmesidir.
 - Microsoft Power BI 'de Azure Machine Learning veya uzun süreli eğilim analizinde eğitim modelleri gibi soğuk yol analizi.
@@ -55,7 +55,7 @@ Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoks
 1. [Azure Portal yeni bir Service Bus ad alanı](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)oluşturun. [Azure Service Bus docs](../../service-bus-messaging/service-bus-create-namespace-portal.md)' de daha fazla bilgi edinebilirsiniz.
 2. Bir abonelik seçin. IoT Central uygulamanızla aynı abonelikte olmayan diğer aboneliklerdeki verileri dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanırsınız.
 
-3. Uygulamasına dışarı aktarmak için bir kuyruk veya konu oluşturmak için Service Bus ad alanına gidin ve **+ Queue** veya **+ konu başlığını**seçin.
+3. Uygulamasına dışarı aktarmak için bir kuyruk veya konu oluşturmak için Service Bus ad alanına gidin ve **+ Queue** veya **+ konu başlığını** seçin.
 
 Dışarı aktarma hedefi olarak Service Bus seçtiğinizde, kuyruklar ve konuların oturumları veya yinelenen algılama özelliği etkin olmalıdır. Bu seçeneklerden biri etkinleştirilirse, bazı iletiler kuyruğunuza veya konuya ulaşmayacaktır.
 
@@ -72,7 +72,7 @@ Dışarı aktarma hedefi olarak Service Bus seçtiğinizde, kuyruklar ve konular
     |Standart|Blob depolama|
     |Premium|Blob depolamayı engelle|
 
-2. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **BLOB hizmeti**altında **bloblara gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üst kısımdaki **+ kapsayıcı** ' yı seçin.
+2. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **BLOB hizmeti** altında **bloblara gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üst kısımdaki **+ kapsayıcı** ' yı seçin.
 
 ## <a name="set-up-data-export"></a>Veri dışarı aktarma ayarlama
 
@@ -85,9 +85,9 @@ Verilerin dışarı aktarılacağı bir hedef olduğuna göre, verileri dışar�
     > [!Tip]
     > Sol bölmede **veri dışa aktarma** 'yı görmüyorsanız, uygulamanızda veri dışarı aktarma yapılandırma izniniz yok demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
-3. **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **Azure Blob depolama**, **azure Event Hubs**, **Azure Service Bus kuyruğu**veya **Azure Service Bus konusunun** birini seçin. Uygulama başına en fazla dışarı aktarma sayısı beştir.
+3. **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **Azure Blob depolama**, **azure Event Hubs**, **Azure Service Bus kuyruğu** veya **Azure Service Bus konusunun** birini seçin. Uygulama başına en fazla dışarı aktarma sayısı beştir.
 
-4. Dışarı aktarma için bir ad girin. Aşağı açılan liste kutusunda, **ad**alanınızı seçin veya **bir bağlantı dizesi girin**.
+4. Dışarı aktarma için bir ad girin. Aşağı açılan liste kutusunda, **ad** alanınızı seçin veya **bir bağlantı dizesi girin**.
 
     - Depolama hesapları, Event Hubs ad alanları ve Service Bus ad alanlarını IoT Central uygulamanızla aynı abonelikte görürsünüz. Bu aboneliğin dışında bir hedefe aktarmak istiyorsanız, **bir bağlantı dizesi girin** ' i seçin ve 6. adıma bakın.
     - Ücretsiz fiyatlandırma planı kullanılarak oluşturulan uygulamalar için, veri dışa aktarma 'yı yapılandırmanın tek yolu bir bağlantı dizesidir. Ücretsiz fiyatlandırma planındaki uygulamalar ilişkili bir Azure aboneliğine sahip değildir.
@@ -100,20 +100,20 @@ Verilerin dışarı aktarılacağı bir hedef olduğuna göre, verileri dışar�
 
     - Event Hubs veya Service Bus, Azure portal ad alanına gidin:
         - Tüm ad alanı için bir bağlantı dizesi kullanmak için:
-            1. **Ayarlar**altında, **paylaşılan erişim ilkeleri** ' ni seçin.
+            1. **Ayarlar** altında, **paylaşılan erişim ilkeleri** ' ni seçin.
             2. Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
             3. Birincil veya ikincil bağlantı dizesini kopyalayın
         - Belirli bir olay hub 'ı örneği veya Service Bus kuyruğu veya konusunun bağlantı dizesini kullanmak için, Event Hubs veya varlıklar **> kuyruklar** veya **varlıklar > konular** **>** ' a bakın. Belirli bir örnek seçin ve bağlantı dizesi almak için yukarıdaki adımları izleyin.
     - Depolama hesabı, Azure portal depolama hesabına gidin:
         - Yalnızca tüm depolama hesabının bağlantı dizeleri desteklenir. Tek bir kapsayıcıya kapsamlı bağlantı dizeleri desteklenmez.
-          1. **Ayarlar**altında **erişim anahtarları** ' nı seçin.
+          1. **Ayarlar** altında **erişim anahtarları** ' nı seçin.
           2. KEY1 bağlantı dizesini veya key2 bağlantı dizesini kopyalayın
 
-    Bağlantı dizesini yapıştırın. Örneği veya büyük/küçük harfe duyarlı **kapsayıcı adını**yazın.
+    Bağlantı dizesini yapıştırın. Örneği veya büyük/küçük harfe duyarlı **kapsayıcı adını** yazın.
 
-7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak veri türlerini seçin.
+7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine** ayarlayarak dışarı aktarılacak veri türlerini seçin.
 
-8. Verilerin dışarı aktarılmasını açmak için **etkin** geçiş özelliğinin **Açık**olduğundan emin olun. **Kaydet**’i seçin.
+8. Verilerin dışarı aktarılmasını açmak için **etkin** geçiş özelliğinin **Açık** olduğundan emin olun. **Kaydet**’i seçin.
 
 9. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
 
@@ -382,7 +382,6 @@ Bu örnek, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz şablo
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -506,7 +505,6 @@ Bu örnek anlık görüntü, blob depolamada cihaz ve özellik verilerini içere
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -555,11 +553,11 @@ Bu örnek anlık görüntü, blob depolamada cihaz ve özellik verilerini içere
 > [!Note]
 > Telemetri akış veri biçimi bu değişiklikten etkilenmez. Yalnızca cihazlar ve cihaz şablonu veri akışları etkilenir.
 
-Önizleme uygulamanızda *cihazlar* ve *cihaz şablonları* akışları açık olan bir veri dışa aktarma Işlemi varsa, **30 Haziran 2020 tarihine**kadar dışarı aktarmayı güncelleştirin. Bu gereksinim, Azure Blob depolama, Azure Event Hubs ve Azure Service Bus dışarı aktarmalar için geçerlidir.
+Önizleme uygulamanızda *cihazlar* ve *cihaz şablonları* akışları açık olan bir veri dışa aktarma Işlemi varsa, **30 Haziran 2020 tarihine** kadar dışarı aktarmayı güncelleştirin. Bu gereksinim, Azure Blob depolama, Azure Event Hubs ve Azure Service Bus dışarı aktarmalar için geçerlidir.
 
 1 Şubat 2020 ' den başlayarak, cihazlar ve cihaz şablonları etkin olan uygulamalardaki tüm yeni dışarı aktarımlar yukarıda açıklanan veri biçimine sahip olacaktır. Bu tarihten önce oluşturulan tüm dışarı aktarımlar, 30 Haziran 2020 ' e kadar eski veri biçiminde kalır. bu zaman, bu dışarı aktarmalar otomatik olarak yeni veri biçimine geçirilir. Yeni veri biçimi [cihaz](/rest/api/iotcentral/devices/get), [cihaz özelliği](/rest/api/iotcentral/devices/getproperties), [cihaz bulutu özelliği](/rest/api/iotcentral/devices/getcloudproperties)ve IoT Central genel API 'sindeki [cihaz şablonu](/rest/api/iotcentral/devicetemplates/get) nesneleriyle eşleşir.
 
-**Cihazlar**için eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
+**Cihazlar** için eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
 - `@id` cihaz kaldırıldığında, `deviceId` olarak yeniden adlandırılır `id` 
 - `provisioned` Cihazın sağlama durumunu açıklamaya yönelik bayrak eklenir
 - `approved` Cihazın onay durumunu açıklamaya yönelik bayrak eklenir

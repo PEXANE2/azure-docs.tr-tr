@@ -1,5 +1,5 @@
 ---
-title: Bağlantı Izleyicisi oluşturma-PowerShell
+title: Bağlantı Izleyicisi oluşturma (Önizleme)-PowerShell
 titleSuffix: Azure Network Watcher
 description: PowerShell kullanarak bağlantı Izleyicisi oluşturmayı öğrenin.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949046"
+ms.locfileid: "94984252"
 ---
-# <a name="create-a-connection-monitor-using-powershell"></a>PowerShell kullanarak bağlantı Izleyicisi oluşturma
+# <a name="create-a-connection-monitor-preview-using-powershell"></a>PowerShell kullanarak bağlantı Izleyicisi (Önizleme) oluşturma
 
 PowerShell kullanarak kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisi oluşturmayı öğrenin.
+
+> [!IMPORTANT]
+> Bağlantı Izleyicisi Şu anda genel önizleme aşamasındadır.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 
@@ -80,7 +84,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 * Uç Noktalar
     * ad – her uç nokta için benzersiz ad
-    * RESOURCEID – Azure uç noktaları Için kaynak KIMLIĞI, sanal makineler için Azure Resource Manager kaynak KIMLIĞINE başvurur. Azure dışı uç noktalar için kaynak KIMLIĞI, Azure dışı aracılara bağlı Log Analytics çalışma alanı için Azure Resource Manager 'ın kaynak KIMLIĞINI belirtir.
+    * RESOURCEID – Azure uç noktaları Için kaynak KIMLIĞI, sanal makineler için Azure Resource Manager kaynak KIMLIĞINE başvurur. Azure dışı uç noktalar için kaynak KIMLIĞI, Azure olmayan aracılara bağlı Log Analytics çalışma alanının Azure Resource Manager kaynak KIMLIĞINE başvurur.
     * Adres: yalnızca kaynak KIMLIĞI belirtilmediğinde veya kaynak KIMLIĞI Log Analytics çalışma alanı ise geçerlidir. Log Analytics kaynak KIMLIĞIYLE birlikte kullanılırsa, bu, izleme için kullanılabilen aracının FQDN 'sine başvurur. Kaynak KIMLIĞI olmadan kullanılırsa bu, herhangi bir genel bitiş noktasının URL veya IP 'SI olabilir.
     * Filtre: Azure dışı uç noktalar Için, Bağlantı İzleyicisi kaynağında izlemek üzere kullanılacak Log Analytics çalışma alanından aracıları seçmek için filtre kullanın. Filtreler ayarlanmamışsa, Log Analytics çalışma alanına ait olan tüm aracılar izleme için kullanılabilir
         * tür – türü "aracı adresi" olarak ayarla
@@ -100,6 +104,10 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
         * preferHTTPS-HTTP üzerinden HTTPS kullanıp kullanmayacağınızı belirtin
         * bağlantı noktası-tercih ettiğiniz hedef bağlantı noktasını belirtin.
         * Disableizleme Oute-bu, protokolü TCP veya ıCMP olan test grupları için geçerlidir. Topoloji ve atlama-atlama RTT bulma kaynaklarını durdurur.
+        * Yöntem-bu, Protokolü HTTP olan test yapılandırmalarına yöneliktir. HTTP istek yöntemini seçin--Al veya postala
+        * yol-URL 'ye eklenecek yol parametrelerini belirtin
+        * validStatusCodes-geçerli durum kodlarını seçin. Yanıt kodu bu listeyle eşleşmiyorsa, bir tanılama iletisi alacaksınız
+        * requestHeaders-hedefe geçirilecek özel istek üst bilgisi dizelerini belirtin
     * Başarılı eşik-aşağıdaki ağ parametrelerinde eşikler ayarlayabilirsiniz:
         * checksFailedPercent-belirttiğiniz ölçütlere göre kaynaklar hedeflere bağlantı denetlediğinde başarısız olan denetim yüzdesini ayarlayın. TCP veya ıCMP protokolü için, başarısız denetimlerin yüzdesi, paket kaybı yüzdesine eşit hale getirilmiş olabilir. HTTP protokolü için, bu alan yanıt olmadan alınan HTTP isteklerinin yüzdesini temsil eder.
         * Roundroundtimems-kaynakların test yapılandırması üzerinden hedefe bağlanması için geçen süreyi milisaniye olarak ayarlayın.

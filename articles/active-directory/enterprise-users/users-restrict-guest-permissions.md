@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 11/15/2020
+ms.date: 11/17/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac88e57ce0135295ac4b7078111102fa69e6838
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e89793ed8404bf36f2857f228d94fdf2a8828d43
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646602"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984269"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory 'de Konuk erişim izinlerini (Önizleme) kısıtlama
 
@@ -155,7 +155,8 @@ Geçerli destek olmadan hizmet yeni Konuk kısıtlama ayarıyla uyumluluk sorunl
 Soru | Yanıt
 -------- | ------
 Bu izinler nereye uygulanır? | Bu dizin düzeyi izinleri Microsoft Graph, PowerShell V2, Azure portal ve uygulamalarım portalı dahil olmak üzere Azure AD Hizmetleri ve portalları arasında zorlanır. İşbirliği senaryolarına yönelik Microsoft 365 grupları kullanan Microsoft 365 Hizmetleri, özellikle de Outlook, Microsoft ekipleri ve SharePoint 'i de etkilemiştir.
-Uygulamamın portalının hangi parçaları bu özellik tarafından etkilenecek? | Uygulamalarım portalındaki gruplar işlevi bu yeni izinleri kabul eder. Bu, gruplar listesini ve grup üyeliklerini uygulamamda görüntülemek için tüm yolları içerir. Grup kutucuğu kullanılabilirliğine hiçbir değişiklik yapılmadı. Grup kutucuğu kullanılabilirliği, Azure yönetim portalındaki mevcut Grup ayarı tarafından hala denetlenmektedir.
+Kısıtlı izinler konukları hangi grupların görebileceği şekilde etkiler? | Varsayılan veya kısıtlı Konuk izinlerinden bağımsız olarak, konuklar grup veya Kullanıcı listesini numaralandıramaz. Konuklar izinlere bağlı olarak hem Azure portal hem de My Apps portalında üye oldukları grupları görebilir:<li>**Varsayılan izinler**: Azure Portal üye oldukları grupları bulmak için, Konuk, **tüm kullanıcılar** listesinde kendi nesne kimliklerini aramalıdır ve ardından **gruplar**' ı seçer. Burada ad, e-posta vb. dahil olmak üzere tüm grup ayrıntıları dahil olmak üzere üye oldukları grupların listesini görebilirler. Uygulamalarım portalında, sahip oldukları grupların bir listesini ve üyesi oldukları grupları görebilirler.</li><li>**Kısıtlı Konuk izinleri**: Azure Portal, tüm kullanıcılar listesinde kendı nesne kimliklerini arayarak üye oldukları grupların listesini yine de bulabilir ve ardından Gruplar ' ı seçin. Bunlar, özellikle de nesne KIMLIĞI olan grup hakkında çok sınırlı ayrıntıları görebilirler. Tasarım, ad ve e-posta sütunları boş ve Grup türü tanınmıyor. Uygulamalarım portalında, sahip oldukları grupların listesine veya üyesi oldukları gruplara erişemez.</li><br>Graph API gelen dizin izinlerinin daha ayrıntılı bir karşılaştırması için bkz. [Varsayılan Kullanıcı izinleri](../fundamentals/users-default-permissions.md#member-and-guest-users).
+Uygulamamın portalının hangi parçaları bu özellik tarafından etkilenecek? | Uygulamalarım portalındaki gruplar işlevi bu yeni izinleri kabul eder. Bu, gruplar listesini ve grup üyeliklerini uygulamamda görüntülemek için tüm yolları içerir. Grup kutucuğu kullanılabilirliğine hiçbir değişiklik yapılmadı. Grup kutucuğu kullanılabilirliği hala Azure portal var olan Grup ayarı tarafından denetlenmektedir.
 Bu izinler SharePoint veya Microsoft ekipleri Konuk ayarlarını geçersiz kılar mi? | Hayır. Mevcut ayarlar, bu uygulamalardaki deneyimi ve erişimi yine de denetler. Örneğin, SharePoint 'te sorunlar görürseniz, dış paylaşım ayarlarınızı iki kez kontrol edin.
 Planner ve Yammer 'daki bilinen uyumluluk sorunları nelerdir? | <li>İzinler ' Restricted ' olarak ayarlandığında, Planner uygulamasında oturum açan veya Microsoft ekiplerinde planlayıcıya erişen konuklara, planlarına veya herhangi bir göreve erişemez.<li>İzinler ' Restricted ' olarak ayarlandığında, Yammer 'da oturum açan konuklar gruptan ayrılamayacaktır.
 Kiracımda var olan konuk izinlerim değiştirilsin mi? | Geçerli ayarlarınızda değişiklik yapılmadı. Mevcut ayarlarınızla geriye dönük uyumluluk sağlıyoruz. Ne zaman değişiklik yapmak istediğinize karar verirsiniz.

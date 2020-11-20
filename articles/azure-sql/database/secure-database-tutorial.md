@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792693"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985867"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında bir veritabanını güvenli hale getirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğine genel b
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanı 'nda veritabanınızın güvenliğini sağlama](/learn/modules/secure-your-azure-sql-database/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -78,11 +78,11 @@ Sunucu düzeyinde bir güvenlik duvarı kuralı kurmak için:
     ![sunucu güvenlik duvarı kuralı](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > Öğreticide daha sonra kullanmak üzere tam sunucu adını (örneğin, *yourserver.Database.Windows.net* ) kopyalamaya dikkat edin.
+    > Öğreticide daha sonra kullanmak üzere tam sunucu adını (örneğin, *yourserver.Database.Windows.net*) kopyalamaya dikkat edin.
 
-1. **Genel bakış** sayfasında **sunucu güvenlik duvarını ayarla** ' yı seçin. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
+1. **Genel bakış** sayfasında **sunucu güvenlik duvarını ayarla**' yı seçin. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
 
-   1. Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Kural tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir. **Kaydet** ’i seçin.
+   1. Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Kural tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir. **Kaydet**’i seçin.
 
       ![sunucu güvenlik duvarı kuralı ayarla](./media/secure-database-tutorial/server-firewall-rule2.png)
 
@@ -98,7 +98,7 @@ Veritabanı düzeyinde bir güvenlik duvarı kuralı kurmak için:
 
 1. Veritabanına bağlanın, örneğin [SQL Server Management Studio](connect-query-ssms.md)kullanarak.
 
-1. **Nesne Gezgini** , veritabanına sağ tıklayın ve **Yeni sorgu** ' yı seçin.
+1. **Nesne Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
 1. Sorgu penceresinde, bu ifadeyi ekleyin ve IP adresini genel IP adresiniz olarak değiştirin:
 
@@ -119,21 +119,21 @@ Uygun Azure Active Directory (AD) yönetilen etki alanını kullandığınızdan
 
 Azure AD yöneticisi 'ni ayarlamak için:
 
-1. Azure portal, **SQL Server** sayfasında **Active Directory yönetici** ' yi seçin. Sonra **yöneticiyi ayarla** ' yı seçin.
+1. Azure portal, **SQL Server** sayfasında **Active Directory yönetici**' yi seçin. Sonra **yöneticiyi ayarla**' yı seçin.
 
     ![active directory seçme](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
     > Bu görevi gerçekleştirmek için "Şirket Yöneticisi" veya "genel yönetici" olmanız gerekir.
 
-1. **Yönetici Ekle** SAYFASıNDA, ad kullanıcısını veya grubunu arayıp seçin ve **Seç** ' i seçin. Active Directory tüm Üyeler ve gruplar listelenir ve gri renkte olan girişler Azure AD yöneticileri olarak desteklenmez. Bkz. [Azure AD özellikleri ve sınırlamaları](authentication-aad-overview.md#azure-ad-features-and-limitations).
+1. **Yönetici Ekle** SAYFASıNDA, ad kullanıcısını veya grubunu arayıp seçin ve **Seç**' i seçin. Active Directory tüm Üyeler ve gruplar listelenir ve gri renkte olan girişler Azure AD yöneticileri olarak desteklenmez. Bkz. [Azure AD özellikleri ve sınırlamaları](authentication-aad-overview.md#azure-ad-features-and-limitations).
 
     ![Yönetici seçin](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
-    > Rol tabanlı erişim denetimi (RBAC) yalnızca portala uygulanır ve SQL Server yayılmaz.
+    > Azure rol tabanlı erişim denetimi (Azure RBAC) yalnızca portala uygulanır ve SQL Server yayılmaz.
 
-1. **Active Directory Yöneticisi** sayfasının en üstünde **Kaydet** ' i seçin.
+1. **Active Directory Yöneticisi** sayfasının en üstünde **Kaydet**' i seçin.
 
     Bir yöneticiyi değiştirme işlemi birkaç dakika sürebilir. Yeni yönetici **Active Directory yönetici** kutusunda görünür.
 
@@ -155,9 +155,9 @@ Veritabanına Kullanıcı ekleyerek veya güvenli bağlantı dizeleriyle Kullan�
 
 Kullanıcıları eklemek için veritabanı kimlik doğrulaması türünü seçin:
 
-- **SQL kimlik doğrulaması** , oturum açma işlemleri için bir Kullanıcı adı ve parola kullanın ve yalnızca sunucu içindeki belirli bir veritabanı bağlamında geçerlidir
+- **SQL kimlik doğrulaması**, oturum açma işlemleri için bir Kullanıcı adı ve parola kullanın ve yalnızca sunucu içindeki belirli bir veritabanı bağlamında geçerlidir
 
-- **Azure AD kimlik doğrulaması** , Azure AD tarafından yönetilen kimlikleri kullanma
+- **Azure AD kimlik doğrulaması**, Azure AD tarafından yönetilen kimlikleri kullanma
 
 ### <a name="sql-authentication"></a>SQL kimlik doğrulaması
 
@@ -165,7 +165,7 @@ SQL kimlik doğrulaması ile bir kullanıcı eklemek için:
 
 1. Veritabanına bağlanın, örneğin [SQL Server Management Studio](connect-query-ssms.md)kullanarak.
 
-1. **Nesne Gezgini** , veritabanına sağ tıklayın ve **Yeni sorgu** ' yı seçin.
+1. **Nesne Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
 1. Sorgu penceresinde, aşağıdaki komutu girin:
 
@@ -201,7 +201,7 @@ Azure AD kimlik doğrulamasıyla bir kullanıcı eklemek için:
 
 1. En azından *alter any user* iznine sahip BIR Azure AD hesabı kullanarak Azure 'daki sunucunuza bağlanın.
 
-1. **Nesne Gezgini** , veritabanına sağ tıklayın ve **Yeni sorgu** ' yı seçin.
+1. **Nesne Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
 1. Sorgu penceresinde, aşağıdaki komutu girin ve Azure AD `<Azure_AD_principal_name>` kullanıcısının asıl adına veya Azure AD grubunun görünen adına değiştirin:
 
@@ -225,7 +225,7 @@ Güvenli bir bağlantı dizesini kopyalamak için:
 
 1. Azure portal, sol taraftaki menüden **SQL veritabanları** ' nı seçin ve **SQL veritabanları** sayfasında veritabanınızı seçin.
 
-1. **Genel bakış** sayfasında, **veritabanı bağlantı dizelerini göster** ' i seçin.
+1. **Genel bakış** sayfasında, **veritabanı bağlantı dizelerini göster**' i seçin.
 
 1. Bir sürücü sekmesi seçin ve tüm bağlantı dizesini kopyalayın.
 
@@ -248,9 +248,9 @@ SQL için Azure Defender 'ı etkinleştirmek için:
 
 1. **Genel bakış** sayfasında **sunucu adı** bağlantısını seçin. Sunucu sayfası açılır.
 
-1. **SQL Server** sayfasında **güvenlik** bölümünü bulun ve **Güvenlik Merkezi** ' ni seçin.
+1. **SQL Server** sayfasında **güvenlik** bölümünü bulun ve **Güvenlik Merkezi**' ni seçin.
 
-   1. Özelliği etkinleştirmek için **SQL Için Azure Defender** **altında öğesini** seçin. Güvenlik açığı değerlendirmesi sonuçlarının kaydedileceği bir depolama hesabı seçin. Sonra **Kaydet** 'i seçin.
+   1. Özelliği etkinleştirmek için **SQL Için Azure Defender** **altında öğesini** seçin. Güvenlik açığı değerlendirmesi sonuçlarının kaydedileceği bir depolama hesabı seçin. Sonra **Kaydet**'i seçin.
 
       ![Gezinti bölmesi](./media/secure-database-tutorial/threat-settings.png)
 
@@ -272,7 +272,7 @@ Denetimi etkinleştirmek için:
 
 1. Azure portal, sol taraftaki menüden **SQL veritabanları** ' nı seçin ve **SQL veritabanları** sayfasında veritabanınızı seçin.
 
-1. **Güvenlik** bölümünde **Denetim** ' i seçin.
+1. **Güvenlik** bölümünde **Denetim**' i seçin.
 
 1. **Denetim** ayarları altında aşağıdaki değerleri ayarlayın:
 
@@ -280,7 +280,7 @@ Denetimi etkinleştirmek için:
 
    1. Aşağıdaki gibi, **Denetim günlüğü hedefini** seçin:
 
-       - **Depolama** , olay günlüklerinin kaydedildiği ve *. XEL* dosyaları olarak indirilebilen bir Azure depolama hesabıdır.
+       - **Depolama**, olay günlüklerinin kaydedildiği ve *. XEL* dosyaları olarak indirilebilen bir Azure depolama hesabıdır.
 
           > [!TIP]
           > Denetim raporu şablonlarından en iyi şekilde yararlanmak için, denetlenen tüm veritabanları için aynı depolama hesabını kullanın.
@@ -290,9 +290,9 @@ Denetimi etkinleştirmek için:
            > [!NOTE]
            > Analiz, özel uyarı kuralları ve Excel veya Power BI dışarı aktarmalar gibi gelişmiş özellikleri desteklemek için bir **Log Analytics çalışma alanı** gereklidir. Çalışma alanı olmadan yalnızca sorgu Düzenleyicisi kullanılabilir.
 
-       - Olayların diğer uygulamalarda kullanılmak üzere yönlendirilmesine izin veren **Olay Hub** 'ı.
+       - Olayların diğer uygulamalarda kullanılmak üzere yönlendirilmesine izin veren **Olay Hub**'ı.
 
-   1. **Kaydet** ’i seçin.
+   1. **Kaydet**’i seçin.
 
       ![Denetim ayarları](./media/secure-database-tutorial/audit-settings.png)
 
@@ -311,13 +311,13 @@ Veri maskeleme 'yi etkinleştirmek için:
 
 1. Azure portal, sol taraftaki menüden **SQL veritabanları** ' nı seçin ve **SQL veritabanları** sayfasında veritabanınızı seçin.
 
-1. **Güvenlik** bölümünde **dinamik veri maskeleme** ' yi seçin.
+1. **Güvenlik** bölümünde **dinamik veri maskeleme**' yi seçin.
 
 1. **Dinamik veri maskeleme** ayarları altında maske kuralı eklemek Için **maske Ekle** ' yi seçin. Azure, kullanılabilir veritabanı şemalarını, tabloları ve sütunları seçmek için otomatik olarak doldurur.
 
     ![Maske ayarları](./media/secure-database-tutorial/mask-settings.png)
 
-1. **Kaydet** ’i seçin. Seçili bilgiler artık gizlilik için maskelenir.
+1. **Kaydet**’i seçin. Seçili bilgiler artık gizlilik için maskelenir.
 
     ![Maske örneği](./media/secure-database-tutorial/mask-query.png)
 
@@ -329,9 +329,9 @@ Veri maskeleme 'yi etkinleştirmek için:
 
 1. Azure portal, sol taraftaki menüden **SQL veritabanları** ' nı seçin ve **SQL veritabanları** sayfasında veritabanınızı seçin.
 
-1. **Güvenlik** bölümünde **Saydam veri şifrelemesi** ' ni seçin.
+1. **Güvenlik** bölümünde **Saydam veri şifrelemesi**' ni seçin.
 
-1. Gerekirse, **veri şifrelemeyi** **Açık** olarak ayarlayın. **Kaydet** ’i seçin.
+1. Gerekirse, **veri şifrelemeyi** **Açık** olarak ayarlayın. **Kaydet**’i seçin.
 
     ![Saydam Veri Şifrelemesi](./media/secure-database-tutorial/encryption-settings.png)
 

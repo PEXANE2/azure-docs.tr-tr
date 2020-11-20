@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb66d8a197a33d6d0ad46502b510662f43ea1ca
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532526"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988570"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -64,7 +64,7 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 
 Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-|Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
+|Üst bilgi| Description | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
@@ -90,10 +90,10 @@ HTTP isteğinin gövdesinde ses gönderilir `POST` . Bu tablodaki biçimlerden b
 
 Bu tabloda, telaffuz değerlendirmesi için gerekli ve isteğe bağlı parametreler listelenmektedir.
 
-| Parametre | Açıklama | Gerekli/Isteğe bağlı |
+| Parametre | Açıklama | Gerekli mi? |
 |-----------|-------------|---------------------|
 | ReferenceText | Telaffuz tarafından değerlendirilecek metin. | Gerekli |
-| GradingSystem | Puan ayarlaması için nokta sistemi. Kabul edilen değerler `FivePoint` şunlardır `HundredMark` . Varsayılan ayar `FivePoint` değeridir. | İsteğe Bağlı |
+| GradingSystem | Puan ayarlaması için nokta sistemi. `FivePoint`Sistem, 0-5 kayan nokta puanı verir ve `HundredMark` bir 0-100 kayan nokta puanı verir. Varsayılan: `FivePoint`. | İsteğe Bağlı |
 | Ayrıntı düzeyi | Değerlendirme ayrıntı düzeyi. Kabul edilen değerler, tam metin ve sözcük düzeyindeki puanı gösteren ve tam metin düzeyinde puan gösteren, `Phoneme` Word ve Fonem düzeyindeki puanı gösteren kabul edilir `Word` `FullText` . Varsayılan ayar `Phoneme` değeridir. | İsteğe Bağlı |
 | Boyut | Çıkış ölçütünü tanımlar. Kabul edilen değerler `Basic` yalnızca doğruluk puanı ' nı gösterir, `Comprehensive` daha fazla boyutlara ilişkin puanları gösterir (örneğin, tam metin düzeyinde, akıcı puan ve tamamlayıcı puanı, sözcük düzeyinde hata türü). Farklı puan boyutlarının tanımlarını ve sözcük hata türlerini görmek için [yanıt parametrelerini](#response-parameters) denetleyin. Varsayılan ayar `Basic` değeridir. | İsteğe Bağlı |
 | EnableMiscue | Hatalı işaret hesaplamasını etkinleştirilir. Bu etkinken, bulunan sözcükler başvuru metniyle karşılaştırılır ve karşılaştırmaya göre atlama/ekleme ile işaretlenir. Kabul edilen değerler `False` şunlardır `True` . Varsayılan ayar `False` değeridir. | İsteğe Bağlı |

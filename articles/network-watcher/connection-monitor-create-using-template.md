@@ -1,5 +1,5 @@
 ---
-title: Bağlantı Izleyicisi oluşturma-ARMClient
+title: Bağlantı Izleyicisi oluşturma (Önizleme)-ARM şablonu
 titleSuffix: Azure Network Watcher
 description: ARMClient kullanarak bağlantı Izleyicisi oluşturmayı öğrenin.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: c80f2aaf26c0f0e89014c997151599c8bddbe903
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e1a0ecd85d07aa4fdf5482c5104c17eb4a068688
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948825"
+ms.locfileid: "94984235"
 ---
-# <a name="create-a-connection-monitor-using-the-armclient"></a>ARMClient kullanarak bağlantı Izleyicisi oluşturma
+# <a name="create-a-connection-monitor-using-the-arm-template"></a>ARM şablonunu kullanarak bağlantı Izleyicisi oluşturma
 
 ARMClient kullanarak kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisi oluşturmayı öğrenin. Karma ve Azure bulut dağıtımlarını destekler.
+
+> [!IMPORTANT]
+> Bağlantı Izleyicisi Şu anda genel önizleme aşamasındadır.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ec193eab02d937e9d93b8632fa171fec8227d6c2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503445"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987533"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL yönetilen örneğini yönetme uzun vadeli yedek saklama (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,13 +24,13 @@ ms.locfileid: "92503445"
 Azure SQL yönetilen örneği 'nde [uzun süreli yedek saklama](../database/long-term-retention-overview.md#sql-managed-instance-support) ILKESINI (LTR) sınırlı bir genel önizleme özelliği olarak yapılandırabilirsiniz. Bu, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak korumanızı sağlar. Ardından, bu yedeklemeleri PowerShell ile kullanarak bir veritabanını kurtarabilirsiniz.
 
    > [!IMPORTANT]
-   > Yönetilen örnekler için LTR Şu anda sınırlı önizlemededir ve büyük bir süre içinde EA ve CSP aboneliklerinde kullanılabilir. Kayıt istemek için lütfen bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturun. Sorun türü için teknik sorunu seçin, hizmet için SQL veritabanı yönetilen örneğini seçin ve sorun türü için **yedekleme, geri yükleme ve Iş sürekliliği/uzun süreli yedekleme saklama ' yı**seçin. İsteğiniz içinde, yönetilen örnek için LTR 'ın sınırlı genel önizlemesine kaydedilmesini istediğiniz durumu girin.
+   > Yönetilen örnekler için LTR Şu anda sınırlı önizlemededir ve büyük bir süre içinde EA ve CSP aboneliklerinde kullanılabilir. Kayıt istemek için lütfen bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturun. Sorun türü için teknik sorunu seçin, hizmet için SQL veritabanı yönetilen örneğini seçin ve sorun türü için **yedekleme, geri yükleme ve Iş sürekliliği/uzun süreli yedekleme saklama ' yı** seçin. İsteğiniz içinde, yönetilen örnek için LTR 'ın sınırlı genel önizlemesine kaydedilmesini istediğiniz durumu girin.
 
 Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azure SQL depolamada yedeklemeleri görüntüleme ve Azure SQL depolama 'daki bir yedekten geri yükleme işlemleri gösterilmektedir.
 
 ## <a name="azure-roles-to-manage-long-term-retention"></a>Uzun süreli saklama yönetimi için Azure rolleri
 
-**Get-AzSqlInstanceDatabaseLongTermRetentionBackup** ve **restore-Azsqlınstancedatabase**için aşağıdaki rollerden birine sahip olmanız gerekir:
+**Get-AzSqlInstanceDatabaseLongTermRetentionBackup** ve **restore-Azsqlınstancedatabase** için aşağıdaki rollerden birine sahip olmanız gerekir:
 
 - Abonelik sahibi rolü veya
 - Yönetilen örnek katılımcısı rolü veya
@@ -39,7 +39,7 @@ Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azu
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read`
 
-**Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**için aşağıdaki rollerden birine sahip olmanız gerekir:
+**Remove-AzSqlInstanceDatabaseLongTermRetentionBackup** için aşağıdaki rollerden birine sahip olmanız gerekir:
 
 - Abonelik sahibi rolü veya
 - Aşağıdaki izne sahip özel rol:
@@ -48,7 +48,7 @@ Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azu
 > [!NOTE]
 > Yönetilen örnek katılımcısı rolü, LTR yedeklemeleri silme iznine sahip değil.
 
-*Abonelik* ya da *kaynak grubu* kapsamında RBAC izinleri verilebilir. Ancak, bırakılan bir örneğe ait olan LTR yedeklemelerine erişmek için, bu örneğin *abonelik* kapsamında izin verilmelidir.
+Azure RBAC izinleri, *abonelik* ya da *kaynak grubu* kapsamında verilebilir. Ancak, bırakılan bir örneğe ait olan LTR yedeklemelerine erişmek için, bu örneğin *abonelik* kapsamında izin verilmelidir.
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 

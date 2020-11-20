@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542193"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984456"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -24,7 +24,7 @@ Proje yöneticiniz Azure Machine Learning ' de [bir etiketleme projesi](./how-to
 > * Etiketleme Araçları
 > * Belirli etiketleme görevleri için araçları kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kuruluş ve proje için bir [Microsoft hesabı](https://account.microsoft.com/account) veya Azure Active Directory hesabı
 * Etiketleme projesini içeren çalışma alanına katkıda bulunan düzeyi erişimi.
@@ -41,7 +41,7 @@ Proje yöneticiniz Azure Machine Learning ' de [bir etiketleme projesi](./how-to
 
 Veri etiketleme projeleri tablosunda, projeniz için **etiket bağlantısı** ' nı seçin.
 
-Projenize özel yönergeler görürsünüz. Bunlar, söz konusu verilerin türünü, kararlarınızı nasıl yapmanız gerektiğini ve diğer ilgili bilgileri açıklar. Bu bilgileri okuduktan sonra, sayfanın üst kısmında **Görevler** ' i seçin.  Ya da sayfanın en altında **etiketlemeyi Başlat** ' ı seçin.
+Projenize özel yönergeler görürsünüz. Bunlar, söz konusu verilerin türünü, kararlarınızı nasıl yapmanız gerektiğini ve diğer ilgili bilgileri açıklar. Bu bilgileri okuduktan sonra, sayfanın üst kısmında **Görevler**' i seçin.  Ya da sayfanın en altında **etiketlemeyi Başlat**' ı seçin.
 
 ## <a name="common-features-of-the-labeling-task"></a>Etiketleme görevinin ortak özellikleri
 
@@ -49,7 +49,7 @@ Tüm görüntü etiketleme görevlerinde, proje yöneticisi tarafından belirtil
 
 Görüntü sınıflandırma görevlerinde birden çok görüntüyü aynı anda görüntülemeyi seçebilirsiniz. Düzeni seçmek için görüntü alanının üzerindeki simgeleri kullanın. 
 
-Görüntülenecek tüm görüntüleri eşzamanlı olarak seçmek için **Tümünü Seç** ' i kullanın. Tek tek görüntüleri seçmek için görüntünün sağ üst köşesindeki dairesel seçim düğmesini kullanın. Etiket uygulamak için en az bir görüntü seçmelisiniz. Birden çok görüntü seçerseniz, seçtiğiniz herhangi bir etiket seçili tüm görüntülere uygulanır.
+Görüntülenecek tüm görüntüleri eşzamanlı olarak seçmek için **Tümünü Seç**' i kullanın. Tek tek görüntüleri seçmek için görüntünün sağ üst köşesindeki dairesel seçim düğmesini kullanın. Etiket uygulamak için en az bir görüntü seçmelisiniz. Birden çok görüntü seçerseniz, seçtiğiniz herhangi bir etiket seçili tüm görüntülere uygulanır.
 
 Burada iki-by iki düzen seçtik ve "Mammal" etiketini, ve Orca 'nın görüntülerine uygulamak üzeresiniz. Parça görüntüsü zaten "Cartilaginou balığı" olarak etiketlendi ve Iguana henüz etiketlendi.
 
@@ -80,9 +80,9 @@ Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etki
 
 ## <a name="tag-images-for-multi-class-classification"></a>Çok sınıflı sınıflandırma için resimleri etiketleme
 
-Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. Yönergeleri istediğiniz zaman gözden geçirmek için, **yönergeler** sayfasına gidin ve **ayrıntılı yönergeleri görüntüle** ' yi seçin.
+Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. Yönergeleri istediğiniz zaman gözden geçirmek için, **yönergeler** sayfasına gidin ve **ayrıntılı yönergeleri görüntüle**' yi seçin.
 
-Bir resme etiket atadıktan sonra bir hata yaptık, bu hatayı çözebilirsiniz. Etiketi temizlemek için görüntünün altında görüntülenen etikette " **X** " işaretini seçin. Veya resmi seçip başka bir sınıf seçin. Yeni seçilen değer, daha önce uygulanan etiketin yerine geçecek.
+Bir resme etiket atadıktan sonra bir hata yaptık, bu hatayı çözebilirsiniz. Etiketi temizlemek için görüntünün altında görüntülenen etikette "**X**" işaretini seçin. Veya resmi seçip başka bir sınıf seçin. Yeni seçilen değer, daha önce uygulanan etiketin yerine geçecek.
 
 ## <a name="tag-images-for-multi-label-classification"></a>Çok etiketli sınıflandırma için resimleri etiketleme
 
@@ -96,7 +96,7 @@ Etiketlemek istediğiniz görüntüyü seçin ve ardından etiketi seçin. Etike
 
 ![Animasyon MultiLabel akışını gösterir](./media/how-to-label-images/multilabel.gif)
 
-Bir hata düzeltmek için " **X** " düğmesine tıklayarak tek bir etiketi temizleyin veya görüntüleri seçin ve ardından etiketi seçerek seçili tüm görüntülerden etiketi temizler. Bu senaryo burada gösterilmiştir. "Land" tıklanması, seçili iki görüntüden bu etiketi temizler.
+Bir hata düzeltmek için "**X**" düğmesine tıklayarak tek bir etiketi temizleyin veya görüntüleri seçin ve ardından etiketi seçerek seçili tüm görüntülerden etiketi temizler. Bu senaryo burada gösterilmiştir. "Land" tıklanması, seçili iki görüntüden bu etiketi temizler.
 
 ![Bir ekran görüntüsü birden çok seçimi gösterir](./media/how-to-label-images/multiple-deselection.png)
 
@@ -133,7 +133,7 @@ Projeniz "örnek kesimleme (çokgen)" türündedir, görüntüde bir veya daha f
 
 1. Oluşturmayı planladığınız Çokgen için bir etiket seçin.
 1. Çokgen bölgesi **Draw polygon region** aracı çiz araç alanı ![ Çokgen ](./media/how-to-label-images/polygon-tool.png) veya "P" seçeneğini belirleyin.
-3. Poligon her bir nokta için tıklayın.  Şekli tamamladıktan sonra, son ' a çift tıklayın.
+1. Poligon her bir nokta için tıklayın.  Şekli tamamladıktan sonra, son ' a çift tıklayın.
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Kedi ve köpek için çokgenler oluşturun":::
 
@@ -153,8 +153,10 @@ Bir görüntü için çokgenler oluşturduktan sonra, çalışmanızı kaydetmek
 
 Etiketli verilerin bir sayfasını gönderdiğinizde Azure, bir iş kuyruğundan sizin için etiketlendirilmiş yeni veri atar. Etiketli daha fazla veri yoksa, bunu portal giriş sayfasının bağlantısı ile birlikte gösteren bir ileti alırsınız.
 
-Etiketleme tamamlandığında, etiketleme portalının sağ üst köşesindeki adınızı seçin ve ardından **Oturumu Kapat** ' ı seçin. Oturumu kapatma, sonunda Azure "sizin zaman aşımına uğrar" ve verilerinizi başka bir etiketleyici 'ye atacaktır.
+Etiketleme tamamlandığında, etiketleme portalının sağ üst köşesindeki adınızı seçin ve ardından **Oturumu Kapat**' ı seçin. Oturumu kapatma, sonunda Azure "sizin zaman aşımına uğrar" ve verilerinizi başka bir etiketleyici 'ye atacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure 'da görüntü sınıflandırma modellerini eğitme](./tutorial-train-models-with-aml.md) hakkında bilgi edinin
+
+

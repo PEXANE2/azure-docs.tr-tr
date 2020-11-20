@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981196"
+ms.locfileid: "94988230"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
 
@@ -69,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Zamanlanan pencere ile bakım yapılandırması oluşturma
 
-Azure 'un kaynaklarınıza güncelleştirmeleri uygulayabilmesi durumunda zamanlanmış bir pencereyle bakım yapılandırması oluşturmak için New-AzMaintenanceConfiguration kullanın. Bu örnek, her ayın dördüncü Pazartesi günü 5 saatlik zamanlanan bir pencere ile myConfig adlı bir bakım yapılandırması oluşturur. Zamanlanmış bir pencere oluşturduktan sonra güncelleştirmeleri el ile uygulamanız gerekmez.
+Ayrıca, Azure 'un kaynaklarınıza güncelleştirmeleri uygulayabilmesi için zamanlanmış bir pencere de bildirebilirsiniz. Bu örnek, her ayın dördüncü Pazartesi günü 5 saatlik zamanlanan bir pencere ile myConfig adlı bir bakım yapılandırması oluşturur. Zamanlanmış bir pencere oluşturduktan sonra güncelleştirmeleri el ile uygulamanız gerekmez.
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -85,12 +85,10 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > Bakım **süresi** *2 saat* veya daha uzun olmalıdır. Bakım **tekrarlamaları** , 35 gün içinde en az bir kez gerçekleşmelidir.
 
-Bakım **yinelemesi** şöyle ifade edilebilir:
- | Değer | Örnek |
-      |-------|-------------|
-      | Her | recurEvery: Day **veya** Recurevery: 3days | 
-      | haftalık | Yeniden Renklendir: 3hafta **veya** yeniden Renklendir: hafta Cumartesi, Pazar | 
-      | aylık | recurEvery: month day23, day24 **veya** recurevery: ay son Pazar **veya** Recurevery: ay dördüncü Pazartesi | 
+Bakım **yinelemesi** günlük, haftalık veya aylık olarak ifade edilebilir. Bazı örnekler şunlardır:
+ - günlük-"recurEvery: Day" **veya** "Recurevery: 3days" 
+ - haftalık-"recurEvery: 3Haftaları" **veya** "Recurevery: hafta Cumartesi, Pazar" 
+ - aylık-"recurEvery: month day23, day24" **veya** "recurevery: ay son Pazar" **veya** "Recurevery: ay dördüncü Pazartesi"  
       
 
 ## <a name="assign-the-configuration"></a>Yapılandırmayı ata

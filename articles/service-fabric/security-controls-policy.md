@@ -1,18 +1,18 @@
 ---
 title: Azure Service Fabric için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Service Fabric için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: erikadoyle
 ms.author: edoyle
 ms.service: service-fabric
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 86d66b9890cdcc5b80951c1ee3aa8c0a416a9823
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c51777a5f455d2c374b8173f240007111e9a46f5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700827"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988119"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-fabric"></a>Azure Service Fabric için Azure Ilke mevzuat uyumluluk denetimleri
 

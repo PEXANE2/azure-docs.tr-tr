@@ -1,15 +1,15 @@
 ---
 title: Desteklenen Azure Resource Manager kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Azure Resource Manager kaynak türlerinin bir listesini sağlayın.
-ms.date: 10/28/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: e604fe7c5e3a7f40e31f43db64bcd59ae0545ac0
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: fa5a5f5741f05e6f5f30a3d04958ba0b450a1bb7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927575"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988349"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -68,6 +68,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. aisupercomputer/accounts/jobgroups
 - Microsoft. aisupercomputer/accounts/jobgroups/Jobs
 - Microsoft. alertsmanagement/actionrules
+- Microsoft. alertsmanagement/resourcehealthalertrules
 - Microsoft. alertsmanagement/smartdetectoralertrules
 - Microsoft. AnalysisServices/sunucuları
 - Microsoft. apimanayönetimi/hizmeti
@@ -88,6 +89,10 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. azconfig/configurationmağazaları
 - Microsoft. azureactivedirectory/b2cdirectories
 - Microsoft. azureactivedirectory/guestkullanımlar
+- Microsoft. azurearcdata/datacontrollers
+- Microsoft. azurearcdata/postgresınstances
+- Microsoft. azurearcdata/sqlmanagedınstances
+- Microsoft. azurearcdata/sqlserverınstances
 - Microsoft. azuredata/datacontrollers
 - Microsoft. azuredata/hybriddatayöneticileri
 - Microsoft. azuredata/postgresınstances
@@ -103,6 +108,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. baremetal/consoleconnections
 - Microsoft. baremetal/crayservers
 - Microsoft. baremetal/monitoringservers
+- Microsoft. baremetalinfrastructure/baremetalinstances
 - microsoft.batch/batchaccounts
 - Chai/kümeleri microsoft.bat
 - Chai/fileservers microsoft.bat
@@ -131,6 +137,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. cloudes/hesaplar
 - Microsoft. cloudsearch/Indexes
 - Microsoft. cloudtest/hesapları
+- Microsoft. cloudtest/hostedpools
 - Microsoft. cloudtest/görüntüleri
 - Microsoft. cloudtest/havuzları
 - Microsoft. codespaces/planlar
@@ -177,6 +184,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Containerservice/openshiftmanagedclusters
 - Microsoft. contoso/kümeler
 - Microsoft. contoso/çalışanlar
+- Microsoft. contoso/kuleler
 - Microsoft. costmanagement/bağlayıcıları
 - Microsoft. customproviders/resourceproviders
 - Microsoft. d365customerinsights/örnekleri
@@ -205,6 +213,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. dbforpostgresql/sunucuları
 - Microsoft. dbforpostgresql/serversv2
 - Microsoft. dbforpostgresql/singleservers
+- Microsoft. delegatednetwork/Controller
 - Microsoft. delegatednetwork/delegatedalt ağları
 - Microsoft. delegatednetwork/orchestratorınstances
 - Microsoft. deploymentmanager/artifactsources
@@ -302,6 +311,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. machinöğrenim/çalışma alanları
 - Microsoft. machinelearningcompute/operationalizationkümeler
 - Microsoft. machinelearningservices/çalışma alanları
+- Microsoft. machinelearningservices/Workspaces/batchendpoints
 - Microsoft. machinelearningservices/Workspaces/ınenceendpoints
 - Microsoft. machinelearningservices/Workspaces/ınenceendpoints/dağıtımlar
 - Microsoft. machinelearningservices/Workspaces/onlineendpoints
@@ -316,6 +326,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. managednetwork/managednetworks/managednetworkgroups
 - Microsoft. managednetwork/managednetworks/managednetworkpeeringpolicies
 - Microsoft. Maps/hesaplar
+- Microsoft. Maps/hesaplar/oluşturucular
 - Microsoft. Maps/accounts/privateatlases
 - Microsoft. marketplaceapps/classicdevservices
 - Microsoft. Media/mediaservices
@@ -389,6 +400,8 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. Network/serviceendpointpolicies
 - Microsoft. Network/trafficmanagerprofiles
 - Microsoft. Network/virtualhub 'ları
+- Microsoft. Network/virtualhub 'ları/bgpconnections
+- Microsoft. Network/virtualhub 'ları/ipconfigurations
 - Microsoft. Network/virtualnetworkgateway 'ler
 - Microsoft. Network/virtualnetworks
 - Microsoft. Network/virtualnetworktaps
@@ -424,6 +437,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. PowerBI/workspacecollections
 - Microsoft. powerbiadanmış/kapasiteler
 - Microsoft. projectbabylon/hesaplar
+- Microsoft. purview/hesapları
 - Microsoft. hisse/çalışma alanları
 - Microsoft. recoveryservices/kasa
 - Microsoft. redhatopenshıft/openshiftclusters

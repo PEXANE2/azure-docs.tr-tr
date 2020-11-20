@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987074"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 
@@ -48,7 +48,7 @@ Her bir konsorsiyum üye dağıtımı şunları içerir:
 * Günlük ve performans istatistikleri toplamak için Azure Izleyici
 * Özel VNET 'lerde VPN bağlantılarına izin vermek için sanal ağ geçidi (isteğe bağlı)
 
-Varsayılan olarak, RPC ve eşleme uç noktalarına, abonelikler ve bulutlar arasında basitleştirilmiş bağlantı sağlamak için genel IP üzerinden erişilebilir. Uygulama düzeyi erişim denetimleri için, [eşlik 'nın izinleri sözleşmeleri](https://wiki.parity.io/Permissioning)' ni kullanabilirsiniz. Platformlar arası bağlantı için VNet ağ geçitlerinden yararlanan VPN arkasında dağıtılan ağlar desteklenir. VPN ve VNet dağıtımları daha karmaşık olduğundan, bir çözümü prototip oluştururken bir genel IP modeliyle başlamak isteyebilirsiniz.
+Varsayılan olarak, RPC ve eşleme uç noktalarına, abonelikler ve bulutlar arasında basitleştirilmiş bağlantı sağlamak için genel IP üzerinden erişilebilir. Uygulama düzeyi erişim denetimleri için, eşlik 'nın izinleri sözleşmeleri ' ni kullanabilirsiniz. Platformlar arası bağlantı için VNet ağ geçitlerinden yararlanan VPN arkasında dağıtılan ağlar desteklenir. VPN ve VNet dağıtımları daha karmaşık olduğundan, bir çözümü prototip oluştururken bir genel IP modeliyle başlamak isteyebilirsiniz.
 
 Docker Kapsayıcıları güvenilirlik ve modülarfor için kullanılır. Azure Container Registry, her dağıtımın parçası olarak sürümlü görüntüleri barındırmak ve barındırmak için kullanılır. Kapsayıcı görüntüleri aşağıdakilerden oluşur:
 
@@ -84,11 +84,11 @@ Sonraki bölümlerde, ağdaki ilk üyenin parmak izini nasıl yapılandıracağ�
 
 **Blok zinciri**  >  **Ethereum yetki kanıtlama Konsorsiyumu (Önizleme)** öğesini seçin.
 
-### <a name="basics"></a>Temel Bilgiler
+### <a name="basics"></a>Temel bilgiler
 
-**Temel bilgiler**altında herhangi bir dağıtım için standart parametrelerin değerlerini belirtin.
+**Temel bilgiler** altında herhangi bir dağıtım için standart parametrelerin değerlerini belirtin.
 
-![Temel Bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
+![Temel bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
 
 Parametre | Açıklama | Örnek değer
 ----------|-------------|--------------
@@ -119,7 +119,7 @@ Bölge sayısı|Konsorsiyum ağını dağıtmak için bölge sayısı| 2
 
 ### <a name="network-size-and-performance"></a>Ağ boyutu ve performansı
 
-*Ağ boyutu ve performans*altında, konsorsiyumun ağ boyutu için giriş belirtin. Doğrulayıcı düğümü depolama boyutu, blok zincirinin olası boyutunu belirler. Boyut dağıtımdan sonra değiştirilebilir.
+*Ağ boyutu ve performans* altında, konsorsiyumun ağ boyutu için giriş belirtin. Doğrulayıcı düğümü depolama boyutu, blok zincirinin olası boyutunu belirler. Boyut dağıtımdan sonra değiştirilebilir.
 
 ![Ağ boyutu ve performansı](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -141,7 +141,7 @@ F16s|Premium SSD|yüksek|yüksek|zayıf
 
 ### <a name="ethereum-settings"></a>Ethereum ayarları
 
-*Ethereum ayarları*altında, Ethereum ile ilgili yapılandırma ayarlarını belirtin.
+*Ethereum ayarları* altında, Ethereum ile ilgili yapılandırma ayarlarını belirtin.
 
 ![Ethereum ayarları](./media/ethereum-poa-deployment/ethereum-settings.png)
 
@@ -197,7 +197,7 @@ Bir e-posta adresi ([temel bilgiler bölümü](#basics)) sağlarsanız, dağıt�
 Dağıtım başarıyla tamamlandıktan ve tüm kaynaklar sağlandıktan sonra, çıkış parametrelerini kaynak grubunuzda görüntüleyebilirsiniz.
 
 1. Portalda kaynak grubunuza gidin.
-1. **> dağıtımlarını genel bakış ' ı**seçin.
+1. **> dağıtımlarını genel bakış ' ı** seçin.
 
     ![Kaynak grubuna genel bakış](./media/ethereum-poa-deployment/resource-group-overview.png)
 
@@ -313,7 +313,7 @@ ParityLog_CL
 
 ## <a name="ssh-access"></a>SSH erişimi
 
-Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir ağ grubu güvenlik kuralı tarafından reddedilir. PoA ağındaki sanal makine örneklerine erişmek için aşağıdaki güvenlik kuralını *izin*verilecek şekilde değiştirmeniz gerekir.
+Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir ağ grubu güvenlik kuralı tarafından reddedilir. PoA ağındaki sanal makine örneklerine erişmek için aşağıdaki güvenlik kuralını *izin* verilecek şekilde değiştirmeniz gerekir.
 
 1. Azure portal dağıtılan kaynak grubunun **genel bakış** bölümüne gidin.
 
@@ -333,7 +333,7 @@ Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir 
 
 1. **Kaydet**’i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
 
-Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örneğin:
+Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örnek:
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
@@ -341,7 +341,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 Ek işlem düğümlerine ulaşmak için, bağlantı noktası numarasını bir artırın.
 
-Birden fazla bölgeye dağıttıysanız, komutu bu bölgedeki yük dengeleyicinin DNS adı veya IP adresi olarak değiştirin. Diğer bölgelerin DNS adını veya IP adresini bulmak için, adlandırma kuralı ** \* \* \* \* \* -lbpıp-reg \# ** adlı kaynağı bulun ve DNS adını ve IP adresi özelliklerini görüntüleyin.
+Birden fazla bölgeye dağıttıysanız, komutu bu bölgedeki yük dengeleyicinin DNS adı veya IP adresi olarak değiştirin. Diğer bölgelerin DNS adını veya IP adresini bulmak için, adlandırma kuralı **\* \* \* \* \* -lbpıp-reg \#** adlı kaynağı bulun ve DNS adını ve IP adresi özelliklerini görüntüleyin.
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Azure Traffic Manager yük dengelemesi
 
@@ -354,7 +354,7 @@ Bir Traffic Manager profili oluşturmaya karar verirseniz, ağınıza erişmek i
 ### <a name="creating-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 1. [Azure Portal](https://portal.azure.com)sol üst köşedeki **kaynak oluştur** ' u seçin.
-1. **Traffic Manager profili**araması yapın.
+1. **Traffic Manager profili** araması yapın.
 
     ![Azure Traffic Manager ara](./media/ethereum-poa-deployment/traffic-manager-search.png)
 
@@ -370,7 +370,7 @@ Bir Traffic Manager profili oluşturmaya karar verirseniz, ağınıza erişmek i
 
 1. **Uç noktalar** sekmesini seçin ve **Ekle** düğmesini seçin.
 1. Uç noktaya benzersiz bir ad verin.
-1. **Hedef kaynak türü**IÇIN **genel IP adresi**' ni seçin.
+1. **Hedef kaynak türü** IÇIN **genel IP adresi**' ni seçin.
 1. İlk bölgenin yük dengeleyicinin genel IP adresini seçin.
 
     ![Yönlendirme trafiği Yöneticisi](./media/ethereum-poa-deployment/traffic-manager-routing.png)
@@ -523,7 +523,7 @@ Ağa dağıtılan ilk üyesiyse, otomatik olarak yönetici olur ve eşlik düğ�
 
 ### <a name="candidates"></a>Larınızdan
 
-**Adaylar** sekmesinin seçilmesi, geçerli aday Yöneticiler kümesini gösterir.  Bir aday, geçerli yöneticiler tarafından büyük bir oyuna ulaştığında aday bir yöneticiye yükseltilir.  Bir aday üzerinde oy vermek için satırı seçin ve **oyın**' u seçin. Oyunuzu bir oyda değiştirirseniz, adayı seçin ve **rescind oynı**seçin.
+**Adaylar** sekmesinin seçilmesi, geçerli aday Yöneticiler kümesini gösterir.  Bir aday, geçerli yöneticiler tarafından büyük bir oyuna ulaştığında aday bir yöneticiye yükseltilir.  Bir aday üzerinde oy vermek için satırı seçin ve **oyın**' u seçin. Oyunuzu bir oyda değiştirirseniz, adayı seçin ve **rescind oynı** seçin.
 
 ![Larınızdan](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
 
@@ -535,7 +535,7 @@ Ağa dağıtılan ilk üyesiyse, otomatik olarak yönetici olur ve eşlik düğ�
 
 ### <a name="validators"></a>Metninin
 
-**Doğrulayıcılar** sekmesini seçtiğinizde, örnek için dağıtılan geçerli eşlik düğümleri ve bunların geçerli durumu (düğüm türü) görüntülenir. Bu görünüm geçerli dağıtılmış Consortium üyesini temsil ettiğinden, her bir konsorsiyumun bu listede farklı bir doğrulayıcılar kümesi vardır. Örnek yeni dağıtılırsa ve Doğrulayıcıları eklemediyseniz, **doğrulayıcılar ekleme**seçeneğini alırsınız. Doğrulayıcılar eklemek, bölgesel olarak dengelenmiş bir eşlik düğümleri kümesini otomatik olarak seçer ve bunları Doğrulayıcı kümesine atar. İzin verilen kapasiteden daha fazla düğüm dağıttıysanız, kalan düğümler ağ üzerinde işlem düğümleri haline gelir.
+**Doğrulayıcılar** sekmesini seçtiğinizde, örnek için dağıtılan geçerli eşlik düğümleri ve bunların geçerli durumu (düğüm türü) görüntülenir. Bu görünüm geçerli dağıtılmış Consortium üyesini temsil ettiğinden, her bir konsorsiyumun bu listede farklı bir doğrulayıcılar kümesi vardır. Örnek yeni dağıtılırsa ve Doğrulayıcıları eklemediyseniz, **doğrulayıcılar ekleme** seçeneğini alırsınız. Doğrulayıcılar eklemek, bölgesel olarak dengelenmiş bir eşlik düğümleri kümesini otomatik olarak seçer ve bunları Doğrulayıcı kümesine atar. İzin verilen kapasiteden daha fazla düğüm dağıttıysanız, kalan düğümler ağ üzerinde işlem düğümleri haline gelir.
 
 Her doğrulayıcının adresi, Azure 'daki [kimlik deposu](#identity-store) aracılığıyla otomatik olarak atanır.  Bir düğüm kapanıyorsa, kendi kimliğini yeniden oluşturur, böylece dağıtımınızdaki başka bir düğümün yerini alır. Bu işlem, konsensus katılımınızı yüksek oranda kullanılabilir olmasını sağlar.
 
@@ -561,7 +561,7 @@ Akıllı sözleşmeleri derlemek, dağıtmak ve test etmek için, Ethereum geli�
 
 Aşağıdaki örnekte basit bir akıllı sözleşme oluşturursunuz. Akıllı sözleşmeyi derlemek ve blok zinciri ağınıza dağıtmak için Truffle kullanırsınız. Dağıtıldıktan sonra bir işlem aracılığıyla akıllı sözleşme işlevini çağırabilirsiniz.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Truffle ve Web3 için Python gereklidir. Yolunuza Python eklemek için Install seçeneğini seçin.
 * Truffle v 5.0.5 'i yükler `npm install -g truffle@v5.0.5` . Truffle, [Node.js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).
@@ -582,7 +582,7 @@ Akıllı bir sözleşmeyi derleyip dağıtabilmeniz için önce bir truffle proj
 Akıllı sözleşmelerinizi Truffle projenizin **sözleşmeler** alt dizininde oluşturun.
 
 1. `postBox.sol`Truffle projenizin **sözleşmeler** alt dizininde adında bir dosya oluşturun.
-1. Aşağıdaki Solidity kodunu **Postbox. Nuevo**öğesine ekleyin.
+1. Aşağıdaki Solidity kodunu **Postbox. Nuevo** öğesine ekleyin.
 
     ```javascript
     pragma solidity ^0.5.0;
@@ -654,7 +654,7 @@ Truffle, bir blok zinciri ağına akıllı sözleşmeleri dağıtmak için geçi
 Akıllı sözleşmeniz dağıtıldığına göre, bir işlevi çağırmak için bir işlem gönderebilirsiniz.
 
 1. Truffle proje dizininde adlı yeni bir dosya oluşturun `sendtransaction.js` .
-1. Aşağıdaki içerikleri **sendtransaction.js**ekleyin.
+1. Aşağıdaki içerikleri **sendtransaction.js** ekleyin.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -685,7 +685,7 @@ Akıllı sözleşmeniz dağıtıldığına göre, bir işlevi çağırmak için 
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (ıSSTREAM) desteği
 
-WebAssembly desteği yeni dağıtılan PoA ağlarında zaten etkin. Bu, transpiles (Rust, C, C++) tarafından Web-Assembly bir dilde akıllı anlaşma geliştirmesini sağlar. Daha fazla bilgi için bkz.. [Weelsembly 'e eşlik genel bakış](https://wiki.parity.io/WebAssembly-Home) [Tutorial from Parity Tech](https://github.com/paritytech/pwasm-tutorial)
+WebAssembly desteği yeni dağıtılan PoA ağlarında zaten etkin. Bu, transpiles (Rust, C, C++) tarafından Web-Assembly bir dilde akıllı anlaşma geliştirmesini sağlar. Daha fazla bilgi için bkz. [eşlik teknik eğitimi](https://github.com/paritytech/pwasm-tutorial).
 
 ## <a name="faq"></a>SSS
 

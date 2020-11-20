@@ -1,350 +1,289 @@
 ---
 title: Öğretici-Azure 'a genel bir Python istemci uygulaması bağlama IoT Central | Microsoft Docs
-description: Bu öğreticide, bir cihaz geliştiricisi olarak, Python istemci uygulaması çalıştıran bir cihaza Azure IoT Central uygulamanıza nasıl bağlanacağı gösterilmektedir. Cihaz yetenek modeli içeri aktararak ve bağlı bir cihazla etkileşime girebilen görünümler ekleyerek bir cihaz şablonu oluşturursunuz
+description: Bu öğreticide, bir cihaz geliştiricisi olarak, Python istemci uygulaması çalıştıran bir cihaza Azure IoT Central uygulamanıza nasıl bağlanacağı gösterilmektedir. Bir işlecin bağlı bir cihazla etkileşime girmesine izin veren görünümler ekleyerek otomatik olarak oluşturulan cihaz şablonunu değiştirirsiniz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/07/2020
+ms.date: 11/03/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - devx-track-python
 - device-developer
-ms.openlocfilehash: 1be7087e99ca2e4dc605a8d1c6b9821567aecfef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a178447533493911ae1f8ada5c617119bc3479
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968136"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987697"
 ---
-# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Öğretici: İstemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
 *Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
 
-Bu öğreticide, bir cihaz geliştiricisi olarak, bir Python istemci uygulamasını Azure IoT Central uygulamanıza nasıl bağlayabilmeniz gösterilmektedir. Python uygulaması, bir ortam algılayıcısı cihazının davranışını benzetir. IoT Central bir _cihaz şablonu_ oluşturmak için örnek bir _cihaz yetenek modeli_ kullanın. Bir işlecin bir cihazla etkileşime geçmesini sağlamak için cihaz şablonuna görünümler eklersiniz.
+Bu öğreticide, bir cihaz geliştiricisi olarak, bir Python istemci uygulamasını Azure IoT Central uygulamanıza nasıl bağlayabilmeniz gösterilmektedir. Python uygulaması, bir termostat cihazının davranışının benzetimini yapar. Uygulama IoT Central bağlandığı zaman, termostat cihaz modelinin model KIMLIĞINI gönderir. IoT Central, cihaz modelini almak ve sizin için bir cihaz şablonu oluşturmak üzere model KIMLIĞINI kullanır. Bir işlecin bir cihazla etkileşime geçmesini sağlamak için cihaz şablonuna özelleştirmeler ve görünümler eklersiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Cihaz şablonu oluşturmak için bir cihaz yetenek modeli içeri aktarın.
-> * Varsayılan ve özel görünümleri bir cihaz şablonuna ekleyin.
-> * Bir cihaz şablonu yayımlayın ve IoT Central uygulamanıza gerçek bir cihaz ekleyin.
 > * Python Cihaz kodunu oluşturup çalıştırın ve IoT Central uygulamanıza bağlanın.
 > * Cihazdan gönderilen sanal Telemetriyi görüntüleyin.
+> * Özel görünümleri bir cihaz şablonuna ekleyin.
+> * Cihaz şablonunu yayımlayın.
 > * Cihaz özelliklerini yönetmek için bir görünüm kullanın.
-> * Cihazı denetlemek için zaman uyumlu ve zaman uyumsuz komutları çağırın.
+> * Cihazı denetlemek için bir komut çağırın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
-* **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md). Uygulamanın 07/14/2020 veya sonrasında oluşturulmuş olması gerekir.
-* [Python](https://www.python.org/) sürüm 3,7 veya sonraki bir sürümü yüklü bir geliştirme makinesi. `python3 --version`Sürümünüzü denetlemek için komut satırından çalıştırabilirsiniz. Python, çok çeşitli işletim sistemleri için kullanılabilir. Bu öğreticideki yönergeler, **python3** komutunu Windows komut isteminde kullandığınızı varsayar.
+* **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md). Uygulamanın 14 Temmuz 2020 tarihinde veya sonrasında oluşturulmuş olması gerekir.
+* [Python](https://www.python.org/) sürüm 3,7 veya sonraki bir sürümü yüklü bir geliştirme makinesi. `python --version`Sürümünüzü denetlemek için komut satırından çalıştırabilirsiniz. Python, çok çeşitli işletim sistemleri için kullanılabilir. Bu öğreticideki yönergeler, Windows komut isteminde **Python** komutunu çalıştırmakta olduğunuzu varsayar.
+* Örnek kodu içeren Python GitHub deposu [için Microsoft Azure ıOT SDK](https://github.com/Azure/azure-iot-sdk-python) 'nın yerel bir kopyası. Deponun bir kopyasını indirmek için bu bağlantıyı kullanın: ZIP 'i [indirin](https://github.com/Azure/azure-iot-sdk-python/archive/master.zip). Sonra dosyayı yerel makinenizde uygun bir konuma ayıklayın.
 
-[!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
+## <a name="review-the-code"></a>Kodu gözden geçirin
 
-### <a name="create-a-python-application"></a>Python uygulaması oluşturma
+Daha önce indirdiğiniz Python için Microsoft Azure IoT SDK kopyasında, *Azure-IoT-SDK-Python/Azure-IoT-Device/Samples/PNP/simple_thermostat. Kopyala* dosyasını bir metin düzenleyicisinde açın.
 
-Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Python istemci uygulamasının nasıl oluşturulacağı gösterilmektedir. Bu Python uygulaması, gerçek bir cihazın davranışının benzetimini yapar.
+IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetmek ve bir bağlantı dizesi oluşturmak için cihaz sağlama hizmeti 'ni (DPS) kullanır. Örnek, gereken DPS bağlantı bilgilerini komut satırı ortamından alır.
 
-1. Komut satırı ortamınızda, `environmental-sensor` daha önce oluşturduğunuz klasöre gidin.
+`main`İşlev:
 
-1. Gerekli kitaplıkları yüklemek için aşağıdaki komutları çalıştırın:
+* , Cihazı sağlamak için DPS kullanır. Sağlama bilgileri, model KIMLIĞINI içerir.
+* Bir `Device_client` nesne oluşturur ve `dtmi:com:example:Thermostat;1` bağlantıyı açmadan önce model kimliğini ayarlar.
+* `maxTempSinceLastReboot`Özelliği IoT Central 'e gönderir.
+* Komut için bir dinleyici oluşturur `getMaxMinReport` .
+* Yazılabilir Özellik güncelleştirmelerini dinlemek için özellik dinleyicisi oluşturur.
+* Her 10 saniyede bir sıcaklık telemetrisi göndermek için bir döngü başlatır.
 
-    ```cmd
-    pip install azure-iot-device
-    ```
+```python
+async def main():
+    switch = os.getenv("IOTHUB_DEVICE_SECURITY_TYPE")
+    if switch == "DPS":
+        provisioning_host = (
+            os.getenv("IOTHUB_DEVICE_DPS_ENDPOINT")
+            if os.getenv("IOTHUB_DEVICE_DPS_ENDPOINT")
+            else "global.azure-devices-provisioning.net"
+        )
+        id_scope = os.getenv("IOTHUB_DEVICE_DPS_ID_SCOPE")
+        registration_id = os.getenv("IOTHUB_DEVICE_DPS_DEVICE_ID")
+        symmetric_key = os.getenv("IOTHUB_DEVICE_DPS_DEVICE_KEY")
 
-1. Klasörde **environmental_sensor. Kopyala** adlı bir dosya oluşturun `environmental-sensor` .
+        registration_result = await provision_device(
+            provisioning_host, id_scope, registration_id, symmetric_key, model_id
+        )
 
-1. `import` **Environmental_sensor. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin:
+        if registration_result.status == "assigned":
 
-    ```python
-    import asyncio
-    import os
-    import json
-    import datetime
-    import random
-
-    from azure.iot.device.aio import ProvisioningDeviceClient
-    from azure.iot.device.aio import IoTHubDeviceClient
-    from azure.iot.device import MethodResponse
-    from azure.iot.device import Message
-    ```
-
-1. Aşağıdaki zaman uyumsuz `main` işlev ve değişken bildirimlerini dosyaya ekleyin:
-
-    ```python
-    async def main():
-        # In a production environment, don't store
-        # connection information in the code.
-        provisioning_host = 'global.azure-devices-provisioning.net'
-        id_scope = '{your Scope ID}'
-        registration_id = '{your Device ID}'
-        symmetric_key = '{your Primary Key}'
-  
-        delay = 2
-  
-        # All the remaining code is nested within this main function
-
-    if __name__ == '__main__':
-        asyncio.run(main())
-    ```
-
-    Yer tutucuları `{your Scope ID}` , `{your Device ID}` , ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Gerçek bir uygulamada, bu bilgileri uygulamada sabit olarak kodmayın.
-
-    Aşağıdaki işlev tanımlarının ve kodların hepsi işlevin içinde iç içe `main` .
-
-1. `main`Cihazı kaydetmek ve IoT Central uygulamanıza bağlamak için aşağıdaki iki işlevi işlevin içine ekleyin. Kayıt, Azure cihaz sağlama hizmeti 'ni kullanır:
-
-    ```python
-        async def register_device():
-            provisioning_device_client = ProvisioningDeviceClient.create_from_symmetric_key(
-                provisioning_host=provisioning_host,
-                registration_id=registration_id,
-                id_scope=id_scope,
+            device_client = IoTHubDeviceClient.create_from_symmetric_key(
                 symmetric_key=symmetric_key,
+                hostname=registration_result.registration_state.assigned_hub,
+                device_id=registration_result.registration_state.device_id,
+                product_info=model_id,
             )
-
-            registration_result = await provisioning_device_client.register()
-
-            print(f'Registration result: {registration_result.status}')
-
-            return registration_result
-  
-        async def connect_device():
-            device_client = None
-            try:
-                registration_result = await register_device()
-                if registration_result.status == 'assigned':
-                    device_client = IoTHubDeviceClient.create_from_symmetric_key(
-                        symmetric_key=symmetric_key,
-                        hostname=registration_result.registration_state.assigned_hub,
-                        device_id=registration_result.registration_state.device_id
-                    )
-                    # Connect the client.
-                    await device_client.connect()
-                    print('Device connected successfully')
-            finally:
-                return device_client
-    ```
-
-1. `main`IoT Central uygulamanıza telemetri göndermek için işlevin içine aşağıdaki işlevi ekleyin:
-
-    ```python
-        async def send_telemetry():
-            print(f'Sending telemetry from the provisioned device every {delay} seconds')
-            while True:
-                temp = random.randrange(1, 75)
-                humid = random.randrange(30, 99)
-                payload = json.dumps(
-                    {
-                        'temp': temp,
-                        'humid': humid
-                    })
-                msg = Message(payload)
-                await device_client.send_message(msg, )
-                print(f'Sent message: {msg}')
-                await asyncio.sleep(delay)
-    ```
-
-    Telemetri öğelerinin (ve) adları, `temp` `humid` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
-
-1. `main`IoT Central uygulamanızdan çağrılan komutları işlemek için işlevin içine aşağıdaki işlevleri ekleyin:
-
-    ```python
-        async def blink_command(request):
-            print('Received synchronous call to blink')
-            response = MethodResponse.create_from_method_request(
-                request,
-                status = 200,
-                payload = {'description': f'Blinking LED every {request.payload} seconds'}
-            )
-            await device_client.send_method_response(response)  # send response
-            print(f'Blinking LED every {request.payload} seconds')
-
-        async def diagnostics_command(request):
-            print('Starting asynchronous diagnostics run...')
-            response = MethodResponse.create_from_method_request(
-                request,
-                status = 202
-            )
-            await device_client.send_method_response(response)  # send response
-            print('Generating diagnostics...')
-            await asyncio.sleep(2)
-            print('Generating diagnostics...')
-            await asyncio.sleep(2)
-            print('Generating diagnostics...')
-            await asyncio.sleep(2)
-            print('Sending property update to confirm command completion')
-            await device_client.patch_twin_reported_properties(
-                {
-                    'rundiagnostics':
-                    {
-                        'value': f'Diagnostics run complete at {datetime.datetime.today()}.'
-                    }
-                })
-
-        async def turnon_command(request):
-            print('Turning on the LED')
-            response = MethodResponse.create_from_method_request(
-                request, status = 200
-            )
-            await device_client.send_method_response(response)  # send response
-
-        async def turnoff_command(request):
-            print('Turning off the LED')
-            response = MethodResponse.create_from_method_request(
-                request, status = 200
-            )
-            await device_client.send_method_response(response)  # send response
-
-        commands = {
-            'blink': blink_command,
-            'rundiagnostics': diagnostics_command,
-            'turnon': turnon_command,
-            'turnoff': turnoff_command,
-        }
-
-        # Define behavior for handling commands
-        async def command_listener():
-            while True:
-                method_request = await device_client.receive_method_request()  # Wait for commands
-                await commands[method_request.name](method_request)
-    ```
-
-    Komutların ( `blink` , `turnon` , ve) adları, `turnoff` `rundiagnostics` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
-
-    Şu anda IoT Central, cihaz yetenek modelinde tanımlanan yanıt şemasını kullanmıyor. Zaman uyumlu bir komut için, yanıt yükü geçerli bir JSON olabilir. Zaman uyumsuz bir komut için, cihazın hemen bir 202 yanıtı döndürmesi ve sonra iş tamamlandığında bildirilen özellik güncelleştirmesi gelmelidir. Bildirilen özellik güncelleştirmesinin biçimi:
-
-    ```json
-    {
-      [command name] : {
-        value: 'response message'
-      }
-    }
-    ```
-
-    Bir işleç, yanıt yükünü komut geçmişinde görüntüleyebilir.
-
-1. `main`IoT Central uygulamanızdan gönderilen Özellik güncelleştirmelerini işlemek için işlevin içine aşağıdaki işlevleri ekleyin. [Yazılabilir Özellik güncelleştirmesine](concepts-telemetry-properties-commands.md#writeable-property-types) yanıt olarak cihazın gönderdiği ileti, `av` ve `ac` alanlarını içermelidir. `ad`Alan isteğe bağlıdır:
-
-    ```python
-        async def name_setting(value, version):
-            await asyncio.sleep(1)
-            print(f'Setting name value {value} - {version}')
-            await device_client.patch_twin_reported_properties(
-                {
-                    'name' :
-                    {
-                        'value': value,
-                        'ad': 'completed',
-                        'ac': 200,
-                        'av': version
-                    }
-                })
-  
-        async def brightness_setting(value, version):
-            await asyncio.sleep(5)
-            print(f'Setting brightness value {value} - {version}')
-            await device_client.patch_twin_reported_properties(
-                {
-                    'brightness' :
-                    {
-                        'value': value,
-                        'ad': 'completed',
-                        'ac': 200,
-                        'av': version
-                    }
-                })
-  
-        settings = {
-            'name': name_setting,
-            'brightness': brightness_setting
-        }
-
-        # define behavior for receiving a twin patch
-        async def twin_patch_listener():
-            while True:
-                patch = await device_client.receive_twin_desired_properties_patch() # blocking
-                to_update = patch.keys() & settings.keys()
-                await asyncio.gather(
-                    *[settings[setting](patch[setting], patch['$version']) for setting in to_update]
-                )
-    ```
-
-    İşleci IoT Central uygulamasında yazılabilir bir özellik ayarladığında, uygulama, değeri cihaza göndermek için bir Device ikizi istenen özelliğini kullanır. Cihaz daha sonra bir Device ikizi bildirilen özelliği kullanarak yanıt verir. IoT Central bildirilen özellik değerini aldığında, özellik görünümünü **eşitlenmiş**durumuyla güncelleştirir.
-
-    Özelliklerin (ve) adları, `name` `brightness` cihaz şablonunda kullanılan adlarla eşleşmelidir.
-
-1. `main`Uygulamayı denetlemek için işlevin içine aşağıdaki işlevleri ekleyin:
-
-    ```python
-        # Define behavior for halting the application
-        def stdin_listener():
-            while True:
-                selection = input('Press Q to quit\n')
-                if selection == 'Q' or selection == 'q':
-                    print('Quitting...')
-                    break
-  
-        device_client = await connect_device()
-  
-        if device_client is not None and device_client.connected:
-            print('Send reported properties on startup')
-            await device_client.patch_twin_reported_properties(
-                {
-                    'state': 'true',
-                    'processorArchitecture': 'ARM',
-                    'swVersion': '1.0.0'
-                })
-            tasks = asyncio.gather(
-                send_telemetry(),
-                command_listener(),
-                twin_patch_listener(),
-            )
-
-            # Run the stdin listener in the event loop
-            loop = asyncio.get_running_loop()
-            user_finished = loop.run_in_executor(None, stdin_listener)
-
-            # Wait for user to indicate they are done listening for method calls
-            await user_finished
-
-            # Cancel tasks
-            tasks.add_done_callback(lambda r: r.exception())
-            tasks.cancel()
-            await device_client.disconnect()
-  
         else:
-            print('Device could not connect')
-    ```
+            raise RuntimeError(
+                "Could not provision device. Aborting Plug and Play device connection."
+            )
 
-1. **Environmental_sensor. Kopyala** dosyasını kaydedin.
+    elif switch == "connectionString":
 
-## <a name="run-your-python-application"></a>Python uygulamanızı çalıştırma
+        # ...
 
-Cihaz istemci uygulamasını başlatmak için komut satırı ortamınızda aşağıdaki komutu çalıştırın:
+    # Connect the client.
+    await device_client.connect()
 
-```cmd
-python3 environmental_sensor.py
+    max_temp = 10.96  # Initial Max Temp otherwise will not pass certification
+    await device_client.patch_twin_reported_properties({"maxTempSinceLastReboot": max_temp})
+
+    listeners = asyncio.gather(
+        execute_command_listener(
+            device_client,
+            method_name="getMaxMinReport",
+            user_command_handler=max_min_handler,
+            create_user_response_handler=create_max_min_report_response,
+        ),
+        execute_property_listener(device_client),
+    )
+
+    async def send_telemetry():
+        global max_temp
+        global min_temp
+        current_avg_idx = 0
+
+        while True:
+            current_temp = random.randrange(10, 50)
+            if not max_temp:
+                max_temp = current_temp
+            elif current_temp > max_temp:
+                max_temp = current_temp
+
+            if not min_temp:
+                min_temp = current_temp
+            elif current_temp < min_temp:
+                min_temp = current_temp
+
+            avg_temp_list[current_avg_idx] = current_temp
+            current_avg_idx = (current_avg_idx + 1) % moving_window_size
+
+            temperature_msg1 = {"temperature": current_temp}
+            await send_telemetry_from_thermostat(device_client, temperature_msg1)
+            await asyncio.sleep(8)
+
+    send_telemetry_task = asyncio.create_task(send_telemetry())
+
+    # ...
 ```
 
-Cihazın Azure IoT Central uygulamanıza bağlandığını görebilir ve telemetri göndermeye başlar:
+`provision_device`İşlevi, cihazı sağlamak ve IoT Central kaydetmek IÇIN DPS kullanır. İşlevi, sağlama yükünde cihaz modeli KIMLIĞINI içerir:
 
-![İstemci uygulamasını çalıştırma](media/tutorial-connect-device-python/run-application.png)
+```python
+async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):
+    provisioning_device_client = ProvisioningDeviceClient.create_from_symmetric_key(
+        provisioning_host=provisioning_host,
+        registration_id=registration_id,
+        id_scope=id_scope,
+        symmetric_key=symmetric_key,
+    )
+    provisioning_device_client.provisioning_payload = {"modelId": model_id}
+    return await provisioning_device_client.register()
+```
 
-[!INCLUDE [iot-central-monitor-environmental-sensor](../../../includes/iot-central-monitor-environmental-sensor.md)]
+`execute_command_listener`İşlevi komut isteklerini işler, `max_min_handler` cihaz komutu aldığında işlevi çalıştırır `getMaxMinReport` ve `create_max_min_report_response` yanıtı oluşturmak için işlevi çalıştırır:
+
+```python
+async def execute_command_listener(
+    device_client, method_name, user_command_handler, create_user_response_handler
+):
+    while True:
+        if method_name:
+            command_name = method_name
+        else:
+            command_name = None
+
+        command_request = await device_client.receive_method_request(command_name)
+        print("Command request received with payload")
+        print(command_request.payload)
+
+        values = {}
+        if not command_request.payload:
+            print("Payload was empty.")
+        else:
+            values = command_request.payload
+
+        await user_command_handler(values)
+
+        response_status = 200
+        response_payload = create_user_response_handler(values)
+
+        command_response = MethodResponse.create_from_method_request(
+            command_request, response_status, response_payload
+        )
+
+        try:
+            await device_client.send_method_response(command_response)
+        except Exception:
+            print("responding to the {command} command failed".format(command=method_name))
+```
+
+, Gibi `async def execute_property_listener` yazılabilir Özellik güncelleştirmelerini işler `targetTemperature` ve JSON yanıtını üretir:
+
+```python
+async def execute_property_listener(device_client):
+    ignore_keys = ["__t", "$version"]
+    while True:
+        patch = await device_client.receive_twin_desired_properties_patch()  # blocking call
+
+        print("the data in the desired properties patch was: {}".format(patch))
+
+        version = patch["$version"]
+        prop_dict = {}
+
+        for prop_name, prop_value in patch.items():
+            if prop_name in ignore_keys:
+                continue
+            else:
+                prop_dict[prop_name] = {
+                    "ac": 200,
+                    "ad": "Successfully executed patch",
+                    "av": version,
+                    "value": prop_value,
+                }
+
+        await device_client.patch_twin_reported_properties(prop_dict)
+```
+
+`send_telemetry_from_thermostat`İşlevi telemetri iletilerini IoT Central gönderir:
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
+
+[!INCLUDE [iot-central-connection-configuration](../../../includes/iot-central-connection-configuration.md)]
+
+## <a name="run-the-code"></a>Kodu çalıştırma
+
+Örnek uygulamayı çalıştırmak için bir komut satırı ortamı açın ve *simple_thermostat. Kopyala* örnek dosyasını içeren *Azure-IoT-SDK-Python/Azure-IoT-Device/Samples/PNP* klasörüne gidin.
+
+[!INCLUDE [iot-central-connection-environment](../../../includes/iot-central-connection-environment.md)]
+
+Gerekli paketleri yükler:
+
+```cmd/sh
+pip install azure-iot-device
+```
+
+Örneği çalıştırın:
+
+```cmd/sh
+python simple_thermostat.py
+```
+
+Aşağıdaki çıktı, IoT Central kaydetme ve bağlanma için cihazı gösterir. Örnek, `maxTempSinceLastReboot` özelliği telemetri göndermeye başlamadan önce gönderir:
+
+```cmd/sh
+Device was assigned
+iotc-.......azure-devices.net
+sample-device-01
+Listening for command requests and property updates
+Press Q to quit
+Sending telemetry for temperature
+Sent message
+Sent message
+Sent message
+```
+
+[!INCLUDE [iot-central-monitor-thermostat](../../../includes/iot-central-monitor-thermostat.md)]
 
 Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verdiğini görebilirsiniz:
 
-![İstemci uygulamasını gözlemleyin](media/tutorial-connect-device-python/run-application-2.png)
+```cmd/sh
+Sent message
+the data in the desired properties patch was: {'targetTemperature': {'value': 86.3}, '$version': 2}
+Sent message
+
+...
+
+Sent message
+Command request received with payload
+2020-10-14T08:00:00.000Z
+Will return the max, min and average temperature from the specified time 2020-10-14T08:00:00.000Z to the current time
+Done generating
+{"avgTemp": 31.5, "endTime": "2020-10-16T10:07:41.580722", "maxTemp": 49, "minTemp": 12, "startTime": "2020-10-16T10:06:21.580632"}
+```
 
 ## <a name="view-raw-data"></a>Ham verileri görüntüleme
 
-[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+[!INCLUDE [iot-central-monitor-thermostat-raw-data](../../../includes/iot-central-monitor-thermostat-raw-data.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -357,3 +296,4 @@ Bir cihaz geliştiricisi olarak, Python kullanarak bir cihazın nasıl oluşturu
 
 * Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
 * Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
+* IoT Central ile cihaz alışverişi yapılan veriler hakkında daha fazla bilgi edinmek için [telemetri, özellik ve komut yüklerini](concepts-telemetry-properties-commands.md) okuyun.

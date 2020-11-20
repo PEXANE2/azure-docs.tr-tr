@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: 42f6badabd27ceaa302f635a7a33b0161b870dc5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782867"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984439"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Aşağıdaki bölümlerde, uzun süreli saklama 'yi yapılandırmak, uzun sürel
 
 SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hizmet katmanınızın saklama süresinden daha uzun bir süre koruyacak şekilde yapılandırabilirsiniz.
 
-1. Azure portal, SQL Server örneğinizi seçin ve ardından **Yedeklemeleri Yönet** ' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
+1. Azure portal, SQL Server örneğinizi seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
 
    ![Yedeklemeleri Yönet bağlantısı](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -39,7 +39,7 @@ SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hi
 
    ![ilkeleri yapılandırma](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. Tamamlandığında, **Uygula** ' ya tıklayın.
+3. Tamamlandığında, **Uygula**' ya tıklayın.
 
 > [!IMPORTANT]
 > Uzun süreli yedek saklama ilkesini etkinleştirdiğinizde, ilk yedeklemenin görünür olması ve geri yükleme için kullanılabilir olması 7 güne kadar sürebilir. LTR yedekleme cadans ayrıntıları için bkz. [uzun süreli yedek saklama](long-term-retention-overview.md).
@@ -48,7 +48,7 @@ SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hi
 
 Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntüleyin ve bu yedeklerden geri yükleyin.
 
-1. Azure portal, sunucunuzu seçin ve ardından **Yedeklemeleri Yönet** ' e tıklayın. **Kullanılabilir yedeklemeler** sekmesinde, kullanılabilir yedeklemeleri görmek istediğiniz veritabanını seçin.
+1. Azure portal, sunucunuzu seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Kullanılabilir yedeklemeler** sekmesinde, kullanılabilir yedeklemeleri görmek istediğiniz veritabanını seçin.
 
    ![Veritabanı Seç](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
@@ -100,7 +100,7 @@ Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azu
 > [!NOTE]
 > SQL Server katkıda bulunan rolünün LTR yedeklemeleri silme izni yok.
 
-*Abonelik* ya da *kaynak grubu* kapsamında RBAC izinleri verilebilir. Ancak, bırakılan bir sunucuya ait olan LTR yedeklemelerine erişmek için, bu sunucunun *abonelik* kapsamında izin verilmesi gerekir.
+Azure RBAC izinleri, *abonelik* ya da *kaynak grubu* kapsamında verilebilir. Ancak, bırakılan bir sunucuya ait olan LTR yedeklemelerine erişmek için, bu sunucunun *abonelik* kapsamında izin verilmesi gerekir.
 
 - Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Delete
 

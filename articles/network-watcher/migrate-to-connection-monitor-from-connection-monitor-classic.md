@@ -1,5 +1,5 @@
 ---
-title: Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne geçiş
+title: Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne (Önizleme) geçiş
 titleSuffix: Azure Network Watcher
 description: Bağlantı İzleyicisi 'nden bağlantı Izleyicisi 'ne geçiş yapmayı öğrenin.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 0ae1a1f36b9f81145b49245d8e6ace37ab36f834
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974910"
+ms.locfileid: "94985799"
 ---
-# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Bağlantı izleyiciden bağlantı Izleyicisine geçiş (klasik)
+# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne (Önizleme) geçiş (klasik)
 
-Mevcut bağlantı izleyicilerini yeni, geliştirilmiş bağlantı Izleyicilerine yalnızca birkaç tıklamayla ve sıfır kapalı kalma süresiyle geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için bkz. [Bağlantı İzleyicisi](./connection-monitor-overview.md).
+Var olan bağlantı izleyicilerini yalnızca birkaç tıklamayla ve sıfır kapalı kalma süresiyle yeni, geliştirilmiş bağlantı Izleyicisine (Önizleme) geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için bkz. [Bağlantı İzleyicisi](./connection-monitor-overview.md).
+
+> [!IMPORTANT]
+> Bağlantı Izleyicisi Şu anda genel önizleme aşamasındadır.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="key-points-to-note"></a>Önemli noktaları göz önünde
 
@@ -34,7 +38,7 @@ Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
    * **Uyarılar**: otomatik olarak yeni ölçümlere geçirilir.
    * **Panolar ve tümleştirmeler**: ölçüm kümesinin el ile düzenlenmesine gerek vardır. 
     
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel bir çalışma alanı kullanıyorsanız, aboneliğinizde ve Log Analytics çalışma alanınızın bölgesinde ağ Izleyicisi 'nin etkinleştirildiğinden emin olun. 
 

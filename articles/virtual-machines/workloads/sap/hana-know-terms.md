@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b65190c0fd2fcac132f762116a63357a08e6bf02
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7777888bd27325e9094032458922969494a9a64e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967746"
+ms.locfileid: "94984966"
 ---
 # <a name="know-the-terms"></a>Terimleri öğrenme
 
@@ -45,6 +45,7 @@ ms.locfileid: "94967746"
 - **Düzeltme**: Hana büyük örnek damgaları için iki farklı damga düzeltmesi vardır. Bunlar mimaride ve Azure sanal makine konaklarına yakınlığa göre farklılık gösterir
     - "Düzeltme 3" (Rev 3): 2016 yılının ortalarından dağıtılan orijinal tasarımdır
     - "Düzeltme 4" (Rev 4): Azure sanal makine konaklarına daha yakından yakınlık sağlayabilen ve Azure VM 'Leri ile HANA büyük örnek birimleri arasında daha düşük ağ gecikmesi sunan yeni bir tasarımdır 
+    - "Düzeltme 4,2" (Rev 4,2): mevcut düzeltme 4 DC 'lerde, kaynaklar BareMetal altyapısına yeniden eklenir.  Müşteriler, kaynaklarına Azure portal BareMetal örnekleri olarak erişebilir. 
 
 Bulutta SAP iş yükünün nasıl dağıtılacağı konusunda çeşitli ek kaynaklar mevcuttur. SAP HANA dağıtımını Azure 'da yürütmeyi planlıyorsanız Azure IaaS ilkelerine ve Azure IaaS 'de SAP iş yüklerinin dağıtımına sahip olmanız ve bunların farkında olmanız gerekir. Devam etmeden önce daha fazla bilgi için bkz. [Azure sanal makineler 'de SAP çözümlerini kullanma](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . 
 

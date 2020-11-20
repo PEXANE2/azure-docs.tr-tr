@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288371"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987346"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
 ## <a name="dismiss-user-risk-known-issues"></a>Kullanıcı riski bilinen sorunlarını kapat
 
-Klasik kimlik koruması ' nda **Kullanıcı riskini** kapatma, kullanıcının kimlik koruması olan risk GEÇMIŞINI **Azure AD** 'ye ayarlar.
+Klasik kimlik koruması ' nda **Kullanıcı riskini** kapatma, kullanıcının kimlik koruması olan risk GEÇMIŞINI **Azure AD**'ye ayarlar.
 
 Kimlik koruması ' nda **Kullanıcı riskini kapat** kullanıcının kimlik koruması olan risk geçmişinde aktör olarak ayarlanır **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
@@ -95,6 +95,4 @@ Kullanıcı riskini doğası gereği, kullanım süreleri dolana kadar, kimlik k
 
 Yüksek toplu risk puanı, oturum açma işleminin diğer özelliklerine veya bu oturum açma için birden fazla algılamanın tetiklenmesi durumunda olabilir. Üstelik, oturum açma ile ilişkili algılamalar yüksek riskli olsa da, oturum açma, ortamın bir oturum açma riski (toplama) olabilir. 
 
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>Bir riskli oturum açma ile bağlantılı algılamanın neden, oturum açma riski düzeyinden (gerçek zamanlı) farklı risk düzeyine sahip. 
 
-Yakın zamanda gerçek zamanlı oturum açma riskini nasıl hesapladığımızda geliştirmeler yaptık. Risk algılama düzeyi ile oturum açma risk düzeyi arasında gözlemlendi olan tutarsızlık bu değişikliklerin bir sonucudur. Gerçek zamanlı oturum açma riskini, ilke zorlaması sırasında kullanılan değer olduğunu unutmayın. 

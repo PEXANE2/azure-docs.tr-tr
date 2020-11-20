@@ -1,18 +1,18 @@
 ---
 title: Azure Logic Apps için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure Logic Apps için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: sample
 author: ecfan
 ms.author: estfan
 ms.service: logic-apps
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 35f976be600ff4c6b965a5ceb4100c62e91e5c0f
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5359d7c8fc19454c1c0fe2ad26ae063f54333182
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701925"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985228"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-logic-apps"></a>Azure Logic Apps için Azure Ilke mevzuat uyumluluk denetimleri
 

@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 245a00acb07d1c0e769a243413fccdf64d544f5a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133778"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984930"
 ---
 # <a name="pronunciation-assessment"></a>Telaffuz değerlendirmesi
 
@@ -154,12 +154,12 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 Bu tablo, telaffuz değerlendirmesi için yapılandırma parametrelerini listeler.
 
-| Parametre | Açıklama | Gerekli/Isteğe bağlı |
+| Parametre | Açıklama | Gerekli mi? |
 |-----------|-------------|---------------------|
 | ReferenceText | Telaffuz tarafından değerlendirilecek metin. | Gerekli |
-| GradingSystem | Puan ayarlaması için nokta sistemi. Kabul edilen değerler `FivePoint` şunlardır `HundredMark` . Varsayılan ayar `FivePoint` değeridir. | İsteğe Bağlı |
-| Ayrıntı düzeyi | Değerlendirme ayrıntı düzeyi. Kabul edilen değerler, tam metin ve sözcük düzeyindeki puanı gösteren ve tam metin düzeyinde puan gösteren, `Phoneme` Word ve Fonem düzeyindeki puanı gösteren kabul edilir `Word` `FullText` . Varsayılan ayar `Phoneme` değeridir. | İsteğe Bağlı |
-| EnableMiscue | Hatalı işaret hesaplamasını etkinleştirilir. Bu etkinken, bulunan sözcükler başvuru metniyle karşılaştırılır ve karşılaştırmaya göre atlama/ekleme ile işaretlenir. Kabul edilen değerler `False` şunlardır `True` . Varsayılan ayar `False` değeridir. | İsteğe Bağlı |
+| GradingSystem | Puan ayarlaması için nokta sistemi. `FivePoint`Sistem, 0-5 kayan nokta puanı verir ve `HundredMark` bir 0-100 kayan nokta puanı verir. Varsayılan: `FivePoint`. | İsteğe Bağlı |
+| Ayrıntı düzeyi | Değerlendirme ayrıntı düzeyi. Kabul edilen değerler, tam metin ve sözcük düzeyindeki puanı gösteren ve tam metin düzeyinde puan gösteren, `Phoneme` Word ve Fonem düzeyindeki puanı gösteren kabul edilir `Word` `FullText` . Varsayılan: `Phoneme`. | İsteğe Bağlı |
+| EnableMiscue | Hatalı işaret hesaplamasını etkinleştirilir. Bu etkinken, bulunan sözcükler başvuru metniyle karşılaştırılır ve karşılaştırmaya göre atlama/ekleme ile işaretlenir. Kabul edilen değerler `False` şunlardır `True` . Varsayılan: `False`. | İsteğe Bağlı |
 | ScenarioId | Özelleştirilmiş bir nokta sistemini gösteren bir GUID. | İsteğe Bağlı |
 
 ### <a name="pronunciation-assessment-result-parameters"></a>Söyleniş değerlendirmesi sonuç parametreleri

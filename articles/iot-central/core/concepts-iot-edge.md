@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 5c51649e742f6e314e0e324ae19c38f1a83b02ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016869"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987057"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge cihazlarını Azure IoT Central uygulamasına bağlama
 
@@ -63,9 +63,9 @@ Azure IoT Central, bir cihaz şablonu oluşturmak için dağıtım bildirimini i
 
 IoT Edge bir cihazı aşağıdaki şekilde modeller IoT Central:
 
-* Her IoT Edge cihaz şablonunda bir cihaz yetenek modeli vardır.
+* Her IoT Edge cihaz şablonunda bir cihaz modeli vardır.
 * Dağıtım bildiriminde listelenen her özel modül için bir modül yetenek modeli oluşturulur.
-* Her modül yetenek modeli ve cihaz yetenek modeli arasında bir ilişki oluşturulur.
+* Her modül yetenek modeli ve bir cihaz modeli arasında bir ilişki oluşturulur.
 * Modül yetenek modeli modül arabirimlerini uygular.
 * Her modül arabirimi telemetri, Özellikler ve komutlar içerir.
 
@@ -73,7 +73,7 @@ IoT Edge bir cihazı aşağıdaki şekilde modeller IoT Central:
 
 ## <a name="iot-edge-gateway-devices"></a>IoT Edge ağ geçidi cihazları
 
-Bir IoT Edge cihazını ağ geçidi cihazı olacak şekilde seçtiyseniz, ağ geçidi cihazına bağlamak istediğiniz cihazlar için cihaz yetenek modellerine aşağı akış ilişkileri ekleyebilirsiniz.
+Bir IoT Edge cihazını ağ geçidi cihazı olacak şekilde seçtiyseniz, ağ geçidi cihazına bağlanmak istediğiniz cihazların cihaz modellerine aşağı akış ilişkileri ekleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

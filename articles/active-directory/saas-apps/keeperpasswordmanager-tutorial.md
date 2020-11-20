@@ -11,96 +11,96 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 88f84fba43959ee5e5b8d93446e4985a75697813
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ef49a8a3ac1779071a4d4906bfd053530063102d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685877"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Öğretici: Man Password Manager ile Azure Active Directory tümleştirme & dijital kasa
 
 Bu öğreticide, Man parola Yöneticisi & dijital kasasını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Azure AD ile Man Password Manager & bir dijital kasada tümleştirmek aşağıdaki avantajları sağlar:
+Bu tümleştirme size aşağıdaki avantajları sağlar:
 
 * Azure AD 'de, Man Password Manager & dijital kasa erişimine erişimi olan bir denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla, bir dijital kasa (çoklu oturum açma) & için, kullanıcılarınızın oturum açmak için otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Kullanıcılarınızın Azure AD hesaplarıyla, bir dijital kasa (çoklu oturum açma) & bir şekilde, kullanıcılar için Man Password Manager 'da otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini, Man Password Manager & dijital kasa ile yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini, Man Password Manager & dijital kasa ile yapılandırmak için şunlar gerekir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Man parola Yöneticisi & dijital kasa çoklu oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, bir [aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)alabilirsiniz.
+* Man Password Manager, çoklu oturum açma (SSO) için etkinleştirilen dijital kasa aboneliği &.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Man parola Yöneticisi & dijital kasa, **SP** tarafından başlatılan SSO 'yu destekler
+* Man parola Yöneticisi & dijital kasa, SP tarafından başlatılan SSO 'yu destekler.
 
-* Man parola Yöneticisi & dijital kasa **, tam zamanında** Kullanıcı sağlamasını destekler
+* Man parola Yöneticisi & dijital kasa, tam zamanında Kullanıcı sağlamayı destekler.
 
-## <a name="adding-keeper-password-manager--digital-vault-from-the-gallery"></a>Galeriden bir dijital kasa & Man parola Yöneticisi ekleme
+## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Galeriden bir dijital kasa & Man parola Yöneticisi ekleme
 
-Man Password Manager & dijital kasasının Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yönetim ve dijital kasadan, yönetilen SaaS uygulamaları listenize bir dijital kasa & eklemeniz gerekir.
+Man Password Manager & dijital kasasının Azure AD 'ye tümleştirilmesini yapılandırmak için, uygulamayı Galeriden yönetilen hizmet olarak yazılım (SaaS) uygulamaları listenize ekleyin.
 
-1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **man Password Manager & dijital kasasını** yazın.
-1. Uygulamalar panelinden **& Man Password Manager** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak Azure portal oturum açın.
+1. Sol bölmede **Azure Active Directory** hizmeti seçin.
+1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle**' de, arama kutusuna **man Password Manager & dijital kasasını** yazın.
+1. Sonuçlar panelinden bir **Man Password Manager & bir dijital kasa** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-sso-for-keeper-password-manager--digital-vault"></a>Azure AD SSO for Man Password Manager & dijital kasa yapılandırma ve test etme
 
-**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, Man Password Manager & dijital kasasıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, Man Password Manager & dijital kasadaki bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Man Password Manager &, dijital kasasıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, Man Password Manager & dijital kasa arasında bağlı bir ilişki kurmanız gerekir.
 
-Azure AD SSO 'yu, Man Password Manager & dijital kasa ile yapılandırmak ve test etmek için şu yapı taşlarını doldurun::
+Azure AD SSO 'yu, Man Password Manager & dijital kasa ile yapılandırmak ve test etmek için:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso) .
 
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+    * Britta Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
+    * Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
 
-1. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Man Password Manager & dijital kasa SSO 'Yu yapılandırın](#configure-keeper-password-manager--digital-vault-sso)** .
-    * Man Password Manager &, kullanıcının Azure AD gösterimine bağlı dijital kasa& daki Britta Simon 'a sahip olması için bir **[Man parola Yöneticisi oluşturun](#create-keeper-password-manager--digital-vault-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Uygulama tarafında SSO ayarlarını yapılandırmak için, [Man Password Manager & dijital kasa SSO 'Yu yapılandırın](#configure-keeper-password-manager--digital-vault-sso) .
+    * [Bir Man Password manager &, bir dijital kasa sınama kullanıcısına](#create-a-keeper-password-manager--digital-vault-test-user) , kullanıcının Azure AD gösterimine bağlı dijital kasadaki bir Man password Manager & bir Britta Simon 'a sahip olacak şekilde bir Man parola Yöneticisi oluşturun.
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için [test SSO 'su](#test-sso) .
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure portal, **Man Password Manager & dijital kasa** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Man Password Manager & dijital kasa** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Kalem simgesi vurgulanmış şekilde, SAML ile tek Sign-On ayarlama ekran görüntüsü.](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
-    * **Cloud SSO** için:`https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
-    * **On-Pred SSO** için:`https://<KEEPER_FQDN>/sso-connect/saml/login`
+    a. **Oturum açma URL 'si** için aşağıdaki kalıbı kullanan bir URL yazın:
+    * Cloud SSO için: `https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
+    * Şirket içi SSO için: `https://<KEEPER_FQDN>/sso-connect/saml/login`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
-    * **Cloud SSO** için:`https://keepersecurity.com/api/rest/sso/saml/<CLOUD_INSTANCE_ID>`
-    * **On-Pred SSO** için:`https://<KEEPER_FQDN>/sso-connect`
+    b. **Tanımlayıcı (VARLıK kimliği)** için aşağıdaki kalıbı kullanan bir URL yazın:
+    * Cloud SSO için: `https://keepersecurity.com/api/rest/sso/saml/<CLOUD_INSTANCE_ID>`
+    * Şirket içi SSO için: `https://<KEEPER_FQDN>/sso-connect`
 
-    c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
-    * **Cloud SSO** için:`https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
-    * **On-Pred SSO** için:`https://<KEEPER_FQDN>/sso-connect/saml/sso`
+    c. **Yanıt URL 'si** için aşağıdaki kalıbı kullanan bir URL yazın:
+    * Cloud SSO için: `https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
+    * Şirket içi SSO için: `https://<KEEPER_FQDN>/sso-connect/saml/sso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Man Password Manager & dijital kasa istemci desteği ekibine](https://keepersecurity.com/contact.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [dijital kasa istemci desteği ekibine & Man parola Yöneticisi](https://keepersecurity.com/contact.html)ile iletişime geçin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. Man Password Manager & dijital kasa uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/default-attributes.png)
+    ![Talepler & kullanıcı özniteliklerinin ekran görüntüsü.](common/default-attributes.png)
 
-1. Daha yukarıya ek olarak, Man Password Manager & dijital kasa uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Ayrıca, Man Password Manager & dijital kasa uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bunlar aşağıdaki tabloda gösterilmiştir. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
 
     | Name | Kaynak özniteliği|
     | ------------| --------- |
@@ -108,58 +108,58 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | Son | User. soyadı |
     | E-posta | Kullanıcı. Mail |
 
-5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sırasında, **SAML Imzalama sertifikası** bölümünde **İndir**' i seçin. Bu, gereksiniminize göre seçeneklerden **Federasyon meta VERI XML** 'sini indirir ve bilgisayarınıza kaydeder.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+    ![Yükleme vurgulanmış şekilde SAML Imzalama sertifikasının ekran görüntüsü.](common/metadataxml.png)
 
-6. **Man parola yöneticisini ayarla & dijital kasa** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+6. **Man Password Manager 'ı ayarlama & dijital kasasında** uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![URL 'Ler vurgulanmış şekilde, bir dijital kasa & Man Password Manager 'ı ayarlama ekran görüntüsü.](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, adlı Azure portal bir test kullanıcısı oluşturacaksınız `B.Simon` .
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Ad** için girin `B.Simon` .  
+   1. **Kullanıcı adı** için öğesini girin `username@companydomain.extension` . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster**' i seçin ve ardından gösterilen değeri yazın.
+   1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Man Password Manager & dijital kasaya erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, Man Password Manager & dijital kasaya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Man Password Manager & dijital kasa**' yı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. **Kullanıcı ekle**'yi seçin. **Atama Ekle**' de, **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcılar ve gruplar**' da, Kullanıcı listesinden **B. Simon** ' u seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, **varsayılan erişim** rolü seçilidir.
+1. **Atama Ekle**' de, **ata**' yı seçin.
 
 
 ## <a name="configure-keeper-password-manager--digital-vault-sso"></a>Man parola yöneticisini yapılandırma & dijital kasa SSO 'SU
 
-**Man Password Manager & dijital kasa yapılandırma** tarafında çoklu oturum açma 'yı yapılandırmak Için, [Man Destek Kılavuzu](https://docs.keeper.io/sso-connect-guide/)' na verilen yönergeleri izleyin.
+Uygulamanın SSO 'yu yapılandırmak için, [Man Destek Kılavuzu](https://docs.keeper.io/sso-connect-guide/)'ndaki yönergelere bakın.
 
-### <a name="create-keeper-password-manager--digital-vault-test-user"></a>Man parola Yöneticisi oluşturma & dijital kasa test kullanıcısı
+### <a name="create-a-keeper-password-manager--digital-vault-test-user"></a>Bir Man parola Yöneticisi oluşturun & dijital kasa test kullanıcısı
 
-Azure AD kullanıcılarının, dijital kasadaki bir Man parola Yöneticisi & oturum açmasını sağlamak için, bu kullanıcıların, anahtar şifresi yönetici & dijital kasasında sağlanması gerekir. Uygulama tam zamanında Kullanıcı sağlamayı ve kimlik doğrulama kullanıcılarının uygulamada otomatik olarak oluşturulmasını destekler. Kullanıcıları el ile ayarlamak istiyorsanız, [Man desteğiyle](https://keepersecurity.com/contact.html)iletişim sağlayabilirsiniz.
+Azure AD kullanıcılarının, dijital kasadaki bir Man Password Manager & oturum açmasını sağlamak için bunları sağlamanız gerekir. Uygulama, tam zamanında Kullanıcı sağlamayı destekler ve kimlik doğrulama kullanıcıları uygulamada otomatik olarak oluşturulur. Kullanıcıları el ile ayarlamak istiyorsanız, [Man desteğiyle](https://keepersecurity.com/contact.html)iletişime geçin.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz dijital kasa oturum açma URL 'sini & Man Password Manager 'a yönlendirir. 
+* Azure portal **Bu uygulamayı test et**' i seçin. Bu, oturum açma işlemini başlatabileceğiniz bir dijital kasa & Man Password Manager oturum açma URL 'sine yeniden yönlendirir. 
 
-* Man Password Manager & doğrudan dijital kasa oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
+* Uygulamanın oturum açma URL 'sine doğrudan gidebilir ve oturum açma işlemini buradan başlatabilirsiniz.
 
-* Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde, Man Password Manager & dijital kasa kutucuğuna tıkladığınızda, bu, bir Man Password Manager & dijital kasa oturum açma URL 'sine yönlendirecektir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft Access panel ' i kullanabilirsiniz. Erişim paneli 'nde **Man Password Manager & dijital kasa** kutucuğunu seçtiğinizde, bu sizi uygulamanın oturum açma URL 'sine yönlendirir. Erişim paneli hakkında daha fazla bilgi için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Man parola Yöneticisi 'Ni & dijital kasa 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
+Man parola Yöneticisi & dijital kasa yapılandırdıktan sonra, oturum denetimini zorunlu kılabilirsiniz. Bu, kuruluşunuzun hassas verilerinin, gerçek zamanlı olarak ayıklanma ve içe taşmayı korur. Oturum denetimi koşullu erişimden genişletiliyor. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad).

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967908"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988060"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Öğretici-Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
 
@@ -51,11 +51,11 @@ Bu öğreticide, bir **S1 algılayıcısı** cihazının cihaz şablonları ve s
 
 1. **İnceleme** sayfasında, cihaz şablonunu uygulamanıza eklemek için **Oluştur** ' u seçin. 
 
-***RS40 doluluk algılayıcısı** cihazı için bir cihaz şablonu oluşturmak için:
+**_RS40 doluluk algılayıcısı_* cihazı için bir cihaz şablonu oluşturmak için:
 
 1. Sol bölmede **cihaz şablonları**' nı seçin. Sonra **+** şablonu eklemeye başlamak için seçin.
 
-1. ***RS40 doluma algılayıcısı** cihazının kutucuğunu görene kadar aşağı kaydırın. Kutucuğu seçin ve ardından **İleri: Özelleştir**' i seçin.
+1. **_RS40 doluma algılayıcısı_* cihazının kutucuğunu görene kadar aşağı kaydırın. Kutucuğu seçin ve ardından **İleri: Özelleştir**' i seçin.
 
 1. **İnceleme** sayfasında, cihaz şablonunu uygulamanıza eklemek için **Oluştur** ' u seçin. 
 
@@ -128,7 +128,7 @@ Bir Oluşturucu olarak, uygulamayı bir işlecine çevresel algılayıcı cihaz�
 
 1. **Varsayılan görünümleri oluştur** kutucuğunu seçin ve tüm seçeneklerin seçili olduğundan emin olun.
 
-1. **Varsayılan pano Görünüm Oluştur ' u**seçin.
+1. **Varsayılan pano Görünüm Oluştur ' u** seçin.
 
 ## <a name="publish-the-device-template"></a>Cihaz şablonunu yayımlama
 
@@ -142,7 +142,7 @@ Ağ Geçidi cihaz şablonunu yayımlamak için:
 
 3. **Cihaz şablonu Yayımla** Iletişim kutusunda **Yayımla**' yı seçin.
 
-Bir cihaz şablonu yayımlandıktan sonra **cihazlar** sayfasında ve işlecine görünür. Yayımlanmış bir cihaz şablonunda, yeni bir sürüm oluşturmadan bir cihaz yetenek modeli düzenleyemezsiniz. Ancak, yayımlanmış bir cihaz şablonunda bulut özellikleri, özelleştirmeler ve görünümlerde güncelleştirmeler yapabilirsiniz. Bu güncelleştirmeler yeni bir sürümün oluşturulmasına neden olmaz. Herhangi bir değişiklik yaptıktan sonra, bu değişiklikleri işletmenizin dışına göndermek için **Yayımla**  ' yı seçin.
+Bir cihaz şablonu yayımlandıktan sonra **cihazlar** sayfasında ve işlecine görünür. Yayımlanmış bir cihaz şablonunda, yeni bir sürüm oluşturmadan bir cihaz modelini düzenleyemezsiniz. Ancak, yayımlanmış bir cihaz şablonunda bulut özellikleri, özelleştirmeler ve görünümlerde güncelleştirmeler yapabilirsiniz. Bu güncelleştirmeler yeni bir sürümün oluşturulmasına neden olmaz. Herhangi bir değişiklik yaptıktan sonra, bu değişiklikleri işletmenizin dışına göndermek için **Yayımla**  ' yı seçin.
 
 ## <a name="create-the-simulated-devices"></a>Sanal cihazları oluşturma
 
@@ -154,7 +154,7 @@ Sanal ağ geçidi cihazı oluşturmak için:
 
 1. **+** Yeni bir cihaz eklemeye başlamak için seçin.
 
-1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
+1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını** saklayın. **Benzetimli** anahtarın **Açık** olduğundan emin olun. **Oluştur**’u seçin.
 
 Sanal bir aşağı akış cihazları oluşturmak için:
 
@@ -162,13 +162,13 @@ Sanal bir aşağı akış cihazları oluşturmak için:
 
 1. **+** Yeni bir cihaz eklemeye başlamak için seçin.
 
-1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
+1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını** saklayın. **Benzetimli** anahtarın **Açık** olduğundan emin olun. **Oluştur**’u seçin.
 
 1. **Cihazlar** sayfasında, cihaz şablonları listesinden **S1 algılayıcısı** ' nı seçin.
 
 1. **+** Yeni bir cihaz eklemeye başlamak için seçin.
 
-1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını**saklayın. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
+1. Oluşturulan **CIHAZ kimliğini** ve **cihaz adını** saklayın. **Benzetimli** anahtarın **Açık** olduğundan emin olun. **Oluştur**’u seçin.
 
 ![Uygulamanızdaki sanal cihazlar](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 

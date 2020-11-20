@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127412"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985051"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -58,7 +58,7 @@ Bir çözüm Oluşturucusu olarak, uygulamanıza bağlanan cihazlar için bir _c
 
 Bu [cihaz şablonu](howto-set-up-template.md) şunları içerir:
 
-- Bir cihazın uygulaması gereken özellikleri açıklayan bir _cihaz yetenek modeli_ . Cihaz özellikleri şunları içerir:
+- Bir cihazın uygulaması gereken özellikleri açıklayan bir _cihaz modeli_ . Cihaz özellikleri şunları içerir:
 
   - IoT Central için akış yaptığı telemetri.
   - Durumu IoT Central raporlamak için kullandığı salt okunurdur özellikleri.
@@ -72,9 +72,9 @@ Bu [cihaz şablonu](howto-set-up-template.md) şunları içerir:
 
 Bir çözüm Oluşturucusu olarak, cihaz şablonları oluşturmak için çeşitli seçenekleriniz vardır:
 
-- IoT Central cihaz şablonunu tasarlayın ve cihaz kodunuzda cihaz yetenek modelini uygulayın.
-- Visual Studio Code 'u kullanarak bir cihaz yetenek modeli oluşturun ve modeli bir depoya yayımlayın. Modelden cihaz kodunuzu uygulayın ve cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, depodan cihaz yetenek modelini bulur ve sizin için basit bir cihaz şablonu oluşturur.
-- Visual Studio Code 'u kullanarak bir cihaz yetenek modeli oluşturun. Modelden cihaz kodunuzu uygulayın. Cihaz yetenek modelini IoT Central uygulamanıza el ile aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
+- IoT Central cihaz şablonunu tasarlayın ve cihaz kodunuzda cihaz modelini uygulayın.
+- Visual Studio Code 'u kullanarak bir cihaz modeli oluşturun ve modeli bir depoya yayımlayın. Modelden cihaz kodunuzu uygulayın ve cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, depodan cihaz modelini bulur ve sizin için basit bir cihaz şablonu oluşturur.
+- Visual Studio Code 'u kullanarak bir cihaz modeli oluşturun. Modelden cihaz kodunuzu uygulayın. Cihaz modelini IoT Central uygulamanıza el ile aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
 
 Bir çözüm Oluşturucusu olarak, cihaz şablonlarınızı doğrulamak üzere test cihazları için kod oluşturmak üzere IoT Central kullanabilirsiniz.
 
@@ -151,7 +151,6 @@ Her Azure aboneliğinin, IoT çözümünüzün kapsamını etkileyebilecek varsa
 - Dizi şeması türleri desteklenmez.
 - Yalnızca C cihaz SDK 'Sı ve Node.js cihaz ve hizmet SDK 'Ları desteklenir.
 - IoT Central Şu anda Birleşik Devletler, Avrupa, Asya Pasifik, Avustralya, Birleşik Krallık ve Japonya konumlarında sunulmaktadır.
-- Cihaz yetenek modelleri aynı dosyada satır içi tanımlanmış tüm arabirimlere sahip olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
