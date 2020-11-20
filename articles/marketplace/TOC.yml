@@ -15,7 +15,7 @@
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
 - name: Kavramlar
   items:
-    - name: Yayımlama seçenekleri ve dikkat edilmesi gerekenler
+    - name: Listeleme seçenekleri
       href: determine-your-listing-type.md
     - name: Ticari markette işlem yapma
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
@@ -349,15 +349,14 @@
       items:
         - name: SaaS Gerçekleştirme API’sine genel bakış
           href: partner-center-portal/pc-saas-fulfillment-apis.md
-          items:
-            - name: SaaS uygulaması kaydetme
-              href: partner-center-portal/pc-saas-registration.md
-            - name: SaaS Gerçekleştirme API’leri v2
-              href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-            - name: SaaS Gerçekleştirme API’leri v1 (kullanım dışı)
-              href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-            - name: SaaS gerçekleştirme API’leri - SSS
-              href: partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: SaaS uygulaması kaydetme
+          href: partner-center-portal/pc-saas-registration.md
+        - name: SaaS Gerçekleştirme API’leri v2
+          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+        - name: SaaS Gerçekleştirme API’leri v1 (kullanım dışı)
+          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+        - name: SaaS gerçekleştirme API’leri - SSS
+          href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: Kaynaklar
   items:
     - name: Ticari market hakkında SSS
