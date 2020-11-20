@@ -7,17 +7,18 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652194"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950032"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA için yedekleme Kılavuzu
 
@@ -116,12 +117,12 @@ Daha önce belirtildiği gibi, Azure Backup anlık görüntü yedekleme özellik
 > Birden çok veritabanı kapsayıcısının kullanıldığı dağıtımlarda SAP HANA için disk anlık görüntüsü tabanlı yedeklemeler, en düşük HANA 2,0 SP04 sürümünü gerektirir
 > 
 
-Azure depolama, anlık görüntü işlemi sırasında bir VM 'ye bağlı birden çok diskte veya birimde dosya sistemi tutarlılığı sağlamaz. Bu, anlık görüntü sırasında uygulama tutarlılığının uygulama tarafından teslim edilmesi gerektiği anlamına gelir, bu durumda SAP HANA. [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) , depolama anlık görüntülerine göre SAP HANA yedeklemeleri hakkında önemli bilgiler içerir. Örneğin, XFS dosya sistemleri ile, uygulama tutarlılığı sağlamak üzere bir depolama anlık görüntüsü başlatmadan önce **XFS \_ donması** 'nı çalıştırmak gerekir ( **XFS \_ **donması hakkında ayrıntılar için bkz. [XFS \_ dondurma (8)-Linux man sayfası](https://linux.die.net/man/8/xfs_freeze) ).
+Azure depolama, anlık görüntü işlemi sırasında bir VM 'ye bağlı birden çok diskte veya birimde dosya sistemi tutarlılığı sağlamaz. Bu, anlık görüntü sırasında uygulama tutarlılığının uygulama tarafından teslim edilmesi gerektiği anlamına gelir, bu durumda SAP HANA. [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) , depolama anlık görüntülerine göre SAP HANA yedeklemeleri hakkında önemli bilgiler içerir. Örneğin, XFS dosya sistemleri ile, uygulama tutarlılığı sağlamak üzere bir depolama anlık görüntüsü başlatmadan önce **XFS \_ donması** 'nı çalıştırmak gerekir ( **XFS \_** donması hakkında ayrıntılar için bkz. [XFS \_ dondurma (8)-Linux man sayfası](https://linux.die.net/man/8/xfs_freeze) ).
 
 Dört Azure sanal diski kapsayan bir XFS dosya sistemi olduğu varsayılarak, aşağıdaki adımlarda, HANA veri alanını temsil eden tutarlı bir anlık görüntü sağlanmıştır:
 
 1. HANA veri anlık görüntüsü hazırlama oluşturma
-1. Tüm disklerin/birimlerin dosya sistemlerini dondurun (örneğin, **XFS \_ donması**kullanın)
+1. Tüm disklerin/birimlerin dosya sistemlerini dondurun (örneğin, **XFS \_ donması** kullanın)
 1. Tüm gerekli blob anlık görüntülerini Azure 'da oluşturun
 1. Dosya sistemini çöz
 1. HANA veri anlık görüntüsünü onaylayın (anlık görüntü silinir)

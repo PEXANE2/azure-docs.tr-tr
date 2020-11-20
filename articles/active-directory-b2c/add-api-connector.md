@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 47885e64b40db07ca3b4a7380389967a36abbd9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504120"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949845"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Kaydolma Kullanıcı akışına API Bağlayıcısı ekleme (Önizleme)
 
@@ -27,7 +27,7 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 ## <a name="create-an-api-connector"></a>API Bağlayıcısı oluşturma
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. **Azure hizmetleri**altında **Azure AD B2C**' yi seçin.
+2. **Azure hizmetleri** altında **Azure AD B2C**' yi seçin.
 4. **API bağlayıcıları (Önizleme)** öğesini seçin ve ardından **yeni API Bağlayıcısı**' nı seçin.
 
    ![Yeni API Bağlayıcısı ekleme](./media/add-api-connector/api-connector-new.png)
@@ -36,13 +36,13 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 6. API çağrısının **uç nokta URL 'sini** sağlayın.
 7. API için kimlik doğrulama bilgilerini sağlayın.
 
-   - Şu anda yalnızca temel kimlik doğrulaması destekleniyor. Geliştirme amacıyla temel kimlik doğrulaması olmadan bir API kullanmak istiyorsanız, API 'nizin yoksaymasına yönelik bir ' kukla ' **Kullanıcı adı** ve **parola** girmeniz yeterlidir. API anahtarı olan bir Azure Işleviyle birlikte kullanmak için, kodu **uç nokta URL 'sine** bir sorgu parametresi olarak ekleyebilirsiniz (örneğin, https []() ://contoso.azurewebsites.net/api/Endpoint<b>? Code = 0123456789</b>).
+   - Şu anda yalnızca temel kimlik doğrulaması destekleniyor. Geliştirme amacıyla temel kimlik doğrulaması olmadan bir API kullanmak istiyorsanız, API 'nizin yoksaymasına yönelik bir ' kukla ' **Kullanıcı adı** ve **parola** girmeniz yeterlidir. API anahtarı olan bir Azure Işleviyle birlikte kullanmak için, kodu **uç nokta URL 'sine** bir sorgu parametresi olarak ekleyebilirsiniz (örneğin, https []() ://contoso.azurewebsites.net/api/Endpoint <b>? Code = 0123456789</b>).
 
    ![Yeni bir API Bağlayıcısı yapılandırma](./media/add-api-connector/api-connector-config.png)
 8. **Kaydet**’i seçin.
 
 ## <a name="the-request-sent-to-your-api"></a>API 'nize gönderilen istek
-Bir API Bağlayıcısı, bir JSON gövdesinde anahtar-değer çiftleri olarak Kullanıcı öznitelikleri (' talepler ') gönderen bir **http post** isteği olarak yürütülür. Öznitelikler, [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) Kullanıcı özelliklerine benzer şekilde serileştirilir. 
+Bir API Bağlayıcısı, bir JSON gövdesinde anahtar-değer çiftleri olarak Kullanıcı öznitelikleri (' talepler ') gönderen bir **http post** isteği olarak yürütülür. Öznitelikler, [Microsoft Graph](/graph/api/resources/user#properties) Kullanıcı özelliklerine benzer şekilde serileştirilir. 
 
 **Örnek istek**
 ```http
@@ -83,14 +83,14 @@ Ayrıca, **Kullanıcı arabirimi yerel ayarları (' ui_locales ')** talebi tüm 
 > Bir talebin API uç noktası çağrıldığında bir değeri yoksa, talep API 'ye gönderilmez. API 'niz istek içinde olmayan bir talebi açıkça denetlemek ve işlemek için tasarlanmalıdır.
 
 > [!TIP] 
-> [**kimlikler (' kimlikler ')**](https://docs.microsoft.com/graph/api/resources/objectidentity) ve **e-posta adresi (' e-posta ')** talepleri, kiracınızda bir hesabı olmadan önce BIR kullanıcıyı tanımlamak için API 'niz tarafından kullanılabilir. 
+> [**kimlikler (' kimlikler ')**](/graph/api/resources/objectidentity) ve **e-posta adresi (' e-posta ')** talepleri, kiracınızda bir hesabı olmadan önce BIR kullanıcıyı tanımlamak için API 'niz tarafından kullanılabilir. 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Kullanıcı akışında API bağlayıcısını etkinleştirme
 
 Kaydolma Kullanıcı akışına bir API Bağlayıcısı eklemek için bu adımları izleyin.
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. **Azure hizmetleri**altında **Azure AD B2C**' yi seçin.
+2. **Azure hizmetleri** altında **Azure AD B2C**' yi seçin.
 4. **Kullanıcı akışları**' nı seçin ve ardından API bağlayıcısını eklemek istediğiniz kullanıcı akışını seçin.
 5. **API bağlayıcıları**' nı seçin ve ardından Kullanıcı akışında aşağıdaki adımlarda ÇAĞıRMAK istediğiniz API uç noktalarını seçin:
 
@@ -241,8 +241,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir _ * uygulama talebi * * olarak seçilirse belirtece da döndürülebilecek.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi**olarak seçilirse belirtece de döndürülebilir.  |
+| \<builtInUserAttribute>                            | \<attribute-type> | No       | Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir _ * uygulama talebi * * olarak seçilirse belirtece da döndürülebilecek.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Talebin içermesi gerekmez `_<extensions-app-id>_` . Döndürülen değerler, bir kullanıcıdan toplanan değerlerin üzerine yazabilir. Ayrıca, bir **uygulama talebi** olarak seçilirse belirtece de döndürülebilir.  |
 
 ### <a name="example-of-a-blocking-response"></a>Engelleme yanıtı örneği
 

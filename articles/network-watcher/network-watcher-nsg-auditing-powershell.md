@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 10abd1065fe47556109ed69d36493c165dec1418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 177215775c9e83286aa98872eed0ab211a8f36ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738235"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948757"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure ağ Izleyicisi güvenlik grubu görünümü ile NSG denetimini otomatikleştirin
 
 Müşteriler genellikle altyapısının güvenlik duruşunu doğrulamaya yönelik zorluk gösterir. Bu zorluk, Azure 'daki VM 'Ler için farklı değildir. Uygulanan ağ güvenlik grubu (NSG) kurallarını temel alan benzer bir güvenlik profiline sahip olmak önemlidir. Güvenlik grubu görünümünü kullanarak, artık NSG içindeki bir VM 'ye uygulanan kuralların listesini alabilirsiniz. Bir altın NSG güvenlik profili tanımlayabilir ve bir haftalık temposunda güvenlik grubu görünümünü başlatabilir ve çıktıyı altın profille karşılaştırabilir ve bir rapor oluşturabilirsiniz. Bu şekilde, önceden tanımlanmış güvenlik profiliyle uyumlu olmayan tüm VM 'Leri kolay bir şekilde belirleyebilirsiniz.
 
-Ağ güvenlik grupları hakkında bilginiz varsa bkz. [ağ güvenliğine genel bakış](../virtual-network/security-overview.md).
+Ağ güvenlik grupları hakkında bilginiz varsa bkz. [ağ güvenliğine genel bakış](../virtual-network/network-security-groups-overview.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -189,16 +189,3 @@ SideIndicator            : <=
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ayarlar değiştirildiyse, ağ güvenlik grubunu ve söz konusu güvenlik kurallarını izlemek için [ağ güvenlik gruplarını yönetme](../virtual-network/manage-network-security-group.md) bölümüne bakın.
-
-
-
-
-
-
-
-
-
-
-
-
-

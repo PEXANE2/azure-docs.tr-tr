@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 532f045233f26a9a2933a19ae7a0a893195ad33f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384149"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949046"
 ---
 # <a name="create-a-connection-monitor-using-powershell"></a>PowerShell kullanarak bağlantı Izleyicisi oluşturma
 
@@ -89,7 +89,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 * Test grupları
     * ad-test grubunuzu adlandırın.
     * testConfigurations-kaynak uç noktaların hedef uç noktalara bağlandığı test yapılandırması
-    * kaynaklar-yukarıda oluşturulan uç noktalardan seçin. Azure tabanlı kaynak uç noktalarında Azure ağ Izleyicisi uzantısının yüklü olması ve Azure tabanlı kaynak uç noktalarında Azure Log Analytics aracısının yüklü olması gerekir. Kaynağınıza yönelik bir aracı yüklemek için bkz. [izleme aracılarını yüklemek](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+    * kaynaklar-yukarıda oluşturulan uç noktalardan seçin. Azure tabanlı kaynak uç noktalarında Azure ağ Izleyicisi uzantısının yüklü olması ve Azure tabanlı kaynak uç noktalarında Azure Log Analytics aracısının yüklü olması gerekir. Kaynağınıza yönelik bir aracı yüklemek için bkz. [izleme aracılarını yüklemek](./connection-monitor-overview.md#install-monitoring-agents).
     * hedefler-yukarıda oluşturulan uç noktalardan seçin. Azure VM 'lerine veya herhangi bir uç noktaya (genel IP, URL veya FQDN) yönelik bağlantıyı, bunları hedefler olarak belirterek izleyebilirsiniz. Tek bir test grubunda Azure VM 'leri, Office 365 URL 'Leri, Dynamics 365 URL 'Leri ve özel uç noktaları ekleyebilirsiniz.
     * devre dışı bırak-bu alanı, test grubunun belirttiği tüm kaynaklar ve hedefler için izlemeyi devre dışı bırakmak için kullanın.
 
@@ -115,5 +115,5 @@ Bağlantı izleyicileri aşağıdaki ölçek sınırlarına sahiptir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [İzleme verilerini çözümlemeyi ve uyarıları ayarlamayı](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts) öğrenin
-* [Ağınızdaki sorunları tanılamayı](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network) öğrenin
+* [İzleme verilerini çözümlemeyi ve uyarıları ayarlamayı](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts) öğrenin
+* [Ağınızdaki sorunları tanılamayı](./connection-monitor-overview.md#diagnose-issues-in-your-network) öğrenin

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65e9657c3948d8ce5883cd33ca8720f501352105
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999526"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950678"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>StorSimple için Windows PowerShell’i kullanarak cihazınızı yönetme
 
@@ -28,7 +28,7 @@ Bu makaleyi okuduktan sonra şunları yapabilirsiniz:
 * StorSimple için Windows PowerShell yardım alın.
 
 > [!NOTE]
-> * StorSimple için Windows PowerShell cmdlet 'leri, StorSimple cihazınızı bir seri konsolundan veya Windows PowerShell uzaktan iletişim yoluyla uzaktan yönetmenize olanak sağlar. Bu arabirimde kullanılabilecek tek tek cmdlet 'ler hakkında daha fazla bilgi için, [StorSimple için Windows PowerShell için cmdlet başvurusuna](https://technet.microsoft.com/library/dn688168.aspx)gidin.
+> * StorSimple için Windows PowerShell cmdlet 'leri, StorSimple cihazınızı bir seri konsolundan veya Windows PowerShell uzaktan iletişim yoluyla uzaktan yönetmenize olanak sağlar. Bu arabirimde kullanılabilecek tek tek cmdlet 'ler hakkında daha fazla bilgi için, [StorSimple için Windows PowerShell için cmdlet başvurusuna](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)gidin.
 > * Azure PowerShell StorSimple cmdlet 'leri, komut satırından StorSimple hizmet düzeyi ve geçiş görevlerini otomatikleştirmenizi sağlayan farklı cmdlet koleksiyonlardır. StorSimple için Azure PowerShell cmdlet 'leri hakkında daha fazla bilgi için [Azure StorSimple cmdlet başvurusuna](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)gidin.
 
 
@@ -50,7 +50,7 @@ Seri konsolundan Windows PowerShell arabirimine bağlanmak için aşağıdaki Pu
 1. PuTTY yeniden **yapılandırması** Iletişim kutusundaki **Kategori** bölmesinde **klavye**' yi seçin.
 2. Aşağıdaki seçeneklerin seçili olduğundan emin olun (yeni bir oturum başlattığınızda bunlar varsayılan ayarlardır).
    
-   | Klavye öğesi | Seç |
+   | Klavye öğesi | Şunu seçin: |
    | --- | --- |
    | Geri Al tuşu |Denetim-? (127) |
    | Giriş ve bitiş anahtarları |Standart |
@@ -81,7 +81,7 @@ Başlık iletisi, model, ad, yüklü yazılım sürümü ve eriştiğiniz denetl
 ![Seri başlık iletisi](./media/storsimple-windows-powershell-administration/IC741098.png)
 
 > [!IMPORTANT]
-> Bağlı olduğunuz denetleyicinin _etkin_ veya _Pasif_olduğunu belirlemek için başlık iletisini kullanabilirsiniz.
+> Bağlı olduğunuz denetleyicinin _etkin_ veya _Pasif_ olduğunu belirlemek için başlık iletisini kullanabilirsiniz.
 
 Aşağıdaki görüntüde, seri konsol menüsünde bulunan çeşitli çalışma alanı seçenekleri gösterilmektedir.
 
@@ -94,7 +94,7 @@ Aşağıdaki ayarlardan seçim yapabilirsiniz:
 2. **Tam erişim ile eş denetleyicide oturum açma** Bu seçenek, bağlantı denetleyicisindeki **Ssadminconsole** çalışma alanına (uygun kimlik bilgileriyle) bağlanabiliyor olmanız dışında, seçenek 1 ile aynıdır. StorSimple cihazı, etkin-Pasif yapılandırmada iki denetleyicisi olan yüksek oranda kullanılabilir bir cihaz olduğundan, eş, seri konsol üzerinden eriştiğiniz cihazdaki diğer denetleyiciye başvurur.
    1. seçeneğe benzer şekilde, bu seçenek Microsoft Desteği eş denetleyicide Kısıtlanmamış çalışma alanına erişmesine izin vermek için de kullanılabilir.
 
-3. **Sınırlı erişimle bağlanma** Bu seçenek, Windows PowerShell arabirimine sınırlı modda erişmek için kullanılır. Sizden erişim kimlik bilgileri istenmez. Bu seçenek, Seçenekler 1 ve 2 ile karşılaştırıldığında daha kısıtlı bir çalışma alanına bağlanır.  Bu çalışma alanında*gerçekleştirilemediği 1* seçenek ile kullanılabilir görevlerden bazıları şunlardır:
+3. **Sınırlı erişimle bağlanma** Bu seçenek, Windows PowerShell arabirimine sınırlı modda erişmek için kullanılır. Sizden erişim kimlik bilgileri istenmez. Bu seçenek, Seçenekler 1 ve 2 ile karşılaştırıldığında daha kısıtlı bir çalışma alanına bağlanır.  Bu çalışma alanında *gerçekleştirilemediği 1* seçenek ile kullanılabilir görevlerden bazıları şunlardır:
    
    * Fabrika ayarlarına sıfırla
    * Parolayı değiştirme
@@ -178,4 +178,3 @@ Windows PowerShell arabirimindeki yardımı kolayca güncelleştirebilirsiniz. S
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yukarıdaki iş akışlarından birini gerçekleştirirken StorSimple cihazınız ile ilgili herhangi bir sorunla karşılaşırsanız, [StorSimple dağıtımlarının sorunlarını gidermeye yönelik araçlar](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)bölümüne bakın.
-

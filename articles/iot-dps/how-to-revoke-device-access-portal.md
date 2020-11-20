@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532350"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951086"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti 'nden cihaz kaydetme
 
@@ -56,7 +56,7 @@ Yordamı tamamladıktan sonra, girişin ayrı kayıtlar listesinden kaldırıld�
 
 ## <a name="disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Bir kayıt grubu kullanarak X. 509.952 ara veya kök CA sertifikasına izin verme
 
-X. 509.440 sertifikaları tipik olarak bir sertifika güven zincirinde düzenlenir. Bir zincirdeki herhangi bir aşamada bir sertifika tehlikeye atılırsa, güven bozulur. Cihaz sağlama hizmeti 'nin cihazları bu sertifikayı içeren herhangi bir zincirde aşağı akış olarak sağlamasını engellemek için sertifikaya izin verilmeli. X. 509.440 sertifikaları ve sağlama hizmeti ile nasıl kullanıldıkları hakkında daha fazla bilgi edinmek için bkz. [X. 509.440 sertifikaları](./concepts-security.md#x509-certificates). 
+X. 509.440 sertifikaları tipik olarak bir sertifika güven zincirinde düzenlenir. Bir zincirdeki herhangi bir aşamada bir sertifika tehlikeye atılırsa, güven bozulur. Cihaz sağlama hizmeti 'nin cihazları bu sertifikayı içeren herhangi bir zincirde aşağı akış olarak sağlamasını engellemek için sertifikaya izin verilmeli. X. 509.440 sertifikaları ve sağlama hizmeti ile nasıl kullanıldıkları hakkında daha fazla bilgi edinmek için bkz. [X. 509.440 sertifikaları](./concepts-x509-attestation.md#x509-certificates). 
 
 Kayıt grubu, aynı ara veya kök CA tarafından imzalanan X. 509.440 sertifikalarının ortak kanıtlama mekanizmasını paylaşan cihazlar için bir giriştir. Kayıt grubu girişi, ara veya kök CA ile ilişkili X. 509.440 sertifikasıyla yapılandırılır. Giriş Ayrıca, sertifika zincirinde bu sertifikaya sahip cihazlar tarafından paylaşılan ikizi State ve IoT Hub bağlantısı gibi herhangi bir yapılandırma değeri ile yapılandırılır. Sertifikaya izin vermemek için kayıt grubunu devre dışı bırakabilir ya da silebilirsiniz.
 
@@ -110,4 +110,4 @@ Kaydınıza başarıyla bağlandığınızda, **bireysel** kayıtlar sekmesinde 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kayıt kaldırma işlemi, daha büyük sağlama işleminin de bir parçasıdır. Bir cihazın sağlamasını kaldırma işlemi, sağlama hizmetinden ve IoT Hub 'ından kaydını kaldırmak içerir. Tam işlem hakkında bilgi edinmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md) 
+Kayıt kaldırma işlemi, daha büyük sağlama işleminin de bir parçasıdır. Bir cihazın sağlamasını kaldırma işlemi, sağlama hizmetinden ve IoT Hub 'ından kaydını kaldırmak içerir. Tam işlem hakkında bilgi edinmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md)

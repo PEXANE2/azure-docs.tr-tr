@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e80332b172eeb4c49ae068e1781ffcaf1657f13
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978229"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950372"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -135,7 +136,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
             - Oracle Linux 7,5. RHCKL çekirdeğini kullanıyorsanız, 3.10.0-862.13.1. EL7 sürümü gerekir. Oracle UEK çekirdeğini kullanıyorsanız sürüm 5 gerekir.
         - Sap destek notlarına [#500235](https://launchpad.support.sap.com/#/notes/500235) ve [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)göre SAP uygulama KATMANı VM 'leri ve DBMS VM 'ler arasındaki ağ gecikmesini test edin ve değerlendirin. [Sap desteği not#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)ağ gecikmesi yönergelerine karşı sonuçları değerlendirin. Ağ gecikmesi orta veya iyi bir aralıkta olmalıdır. [Bu makalede](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)belgelendiği gibi, VM 'ler ve Hana büyük örnek birimleri arasındaki trafik için özel durumlar geçerlidir.
         - ILB dağıtımlarının doğrudan sunucu dönüşü kullanacak şekilde ayarlandığından emin olun. Bu ayar, DBMS katmanında yüksek kullanılabilirlik yapılandırmalarında Azure ılbs 'ler kullanıldığında gecikme süresini azaltır.
-        - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, Linux ağ parametresinin **net.ipv4.tcp_timestamps** **0**olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
+        - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, Linux ağ parametresinin **net.ipv4.tcp_timestamps** **0** olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
         - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](../../linux/co-location.md) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
    4. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
         - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](../../manage-availability.md)dağıtıldığından emin olun.
@@ -150,7 +151,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - Azure 'da dağıtılan şirket içi SAP GUI arabirimleri ve SAP uygulama katmanları arasındaki GUI zaman aşımlarını önlemek için, bu parametrelerin varsayılan. PFL veya örnek profilinde ayarlanmış olup olmadığını denetleyin:
             - rdisp/keepalive_timeout = 3600
             - rdisp/KeepAlive = 20
-        - SAP sıraya alma işlemi ve SAP çalışma işlemleri arasında kurulan bağlantıların kesintiye uğramasını önlemek için **EnQue/encnı/set_so_keepalive** parametresini **true**olarak ayarlamanız gerekir. Ayrıca bkz. [SAP note #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
+        - SAP sıraya alma işlemi ve SAP çalışma işlemleri arasında kurulan bağlantıların kesintiye uğramasını önlemek için **EnQue/encnı/set_so_keepalive** parametresini **true** olarak ayarlamanız gerekir. Ayrıca bkz. [SAP note #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
         - Windows Yük devretme kümesi yapılandırması kullanıyorsanız, yanıt vermeyen düğümlerde tepki vermeye yönelik sürenin Azure için doğru ayarlandığından emin olun. [Yük devretme kümesi ağ eşiklerini ayarlama](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) makalesi, parametreleri ve yük devretme sensitivities nasıl etkilediğini listeler. Küme düğümlerinin aynı alt ağda olduğu varsayıldığında, bu parametreleri değiştirmelisiniz:
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15

@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 8800adae73de2672dd89678a6346fe6b0df755ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f107ba4dd0150e9727183d0bd334c9279de17337
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144193"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950015"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği
 
@@ -51,7 +52,7 @@ ms.locfileid: "92144193"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Bu makalede, HANA dosya sistemleri Azure NetApp Files (ANF) kullanılarak NFS aracılığıyla bağlandığında, ölçek dağıtımı 'nda SAP HANA sistem çoğaltmasının nasıl yapılandırılacağı açıklanır. Örnek yapılandırma ve yükleme komutları, örnek numarası **03**ve Hana sistem kimliği **HN1** kullanılır. SAP HANA çoğaltma bir birincil düğümden ve en az bir ikincil düğümden oluşur.
+Bu makalede, HANA dosya sistemleri Azure NetApp Files (ANF) kullanılarak NFS aracılığıyla bağlandığında, ölçek dağıtımı 'nda SAP HANA sistem çoğaltmasının nasıl yapılandırılacağı açıklanır. Örnek yapılandırma ve yükleme komutları, örnek numarası **03** ve Hana sistem kimliği **HN1** kullanılır. SAP HANA çoğaltma bir birincil düğümden ve en az bir ikincil düğümden oluşur.
 
 Bu belgedeki adımlar aşağıdaki öneklerle işaretlendiğinde, anlamı aşağıdaki gibidir:
 
@@ -251,13 +252,13 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](../..
     1.  Sonra, bir sistem durumu araştırması oluşturun:
         1.  Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
         1.  Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
-        1.  Protokol ve bağlantı noktası 625**03**olarak TCP ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+        1.  Protokol ve bağlantı noktası 625 **03** olarak TCP ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
         1.  **Tamam**’ı seçin.
     1.  Sonra, Yük Dengeleme kurallarını oluşturun:
         1.  Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
         1.  Yeni yük dengeleyici kuralının adını girin (örneğin, **Hana-lb**).
         1.  Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**, **Hana-arka uç** ve **Hana-HP**) seçin.
-        1.  **Ha bağlantı noktalarını**seçin.
+        1.  **Ha bağlantı noktalarını** seçin.
         1.  **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
         1.  **Kayan IP**'yi etkinleştirdiğinizden emin olun.
         1.  **Tamam**’ı seçin.
@@ -280,40 +281,40 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](../..
     1.  Sonra, bir sistem durumu araştırması oluşturun:
         1.  Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
         1.  Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
-        1.  Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+        1.  Protokol ve bağlantı noktası 625 **03** olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
         1.  **Tamam**’ı seçin.
     1.  SAP HANA 1,0 için, Yük Dengeleme kurallarını oluşturun:
         1.  Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-        1.  Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**15).
+        1.  Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3 **03** 15).
         1.  Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
-        1.  **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**15 girin.
+        1.  **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası 3 **03** 15 girin.
         1.  **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
         1.  **Kayan IP**'yi etkinleştirdiğinizden emin olun.
         1.  **Tamam**’ı seçin.
-        1.  Bağlantı noktası 3**03**17 için bu adımları tekrarlayın.
+        1.  Bağlantı noktası 3 **03** 17 için bu adımları tekrarlayın.
     1.  SAP HANA 2,0 için, sistem veritabanı için Yük Dengeleme kurallarını oluşturun:
         1.  Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-        1.  Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**13).
+        1.  Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3 **03** 13).
         1.  Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
-        1.  **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**13 yazın.
+        1.  **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası 3 **03** 13 yazın.
         1.  **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
         1.  **Kayan IP**'yi etkinleştirdiğinizden emin olun.
         1.  **Tamam**’ı seçin.
-        1.  Bağlantı noktası 3**03**14 için bu adımları tekrarlayın.
+        1.  Bağlantı noktası 3 **03** 14 için bu adımları tekrarlayın.
     1.  SAP HANA 2,0 için, önce Kiracı veritabanı için Yük Dengeleme kurallarını oluşturun:
         1.  Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-        1.  Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**40).
+        1.  Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3 **03** 40).
         1.  Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **Hana-ön uç**).
-        1.  **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**40 yazın.
+        1.  **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası 3 **03** 40 yazın.
         1.  **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
         1.  **Kayan IP**'yi etkinleştirdiğinizden emin olun.
         1.  **Tamam**’ı seçin.
-        1.  Bağlantı noktaları 3**03**41 ve 3**03**42 için bu adımları yineleyin.
+        1.  Bağlantı noktaları 3 **03** 41 ve 3 **03** 42 için bu adımları yineleyin.
 
 SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694)' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md). Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0** olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md). Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Azure NetApp Files birimini bağlama
 
@@ -325,7 +326,7 @@ SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [
     mkdir -p /hana/shared
     ```
 
-2. **[A]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **defaultv4iddomain.com** ve eşleme **hiç bir kimse**olarak ayarlanmıştır.
+2. **[A]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **defaultv4iddomain.com** ve eşleme **hiç bir kimse** olarak ayarlanmıştır.
 
     ```
     sudo cat /etc/idmapd.conf
@@ -338,7 +339,7 @@ SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [
     ```
 
     > [!IMPORTANT]    
-    > SANAL makinede bulunan/etc/ıdmapd.exe içindeki NFS etki alanını Azure NetApp Files: **defaultv4iddomain.com**konumundaki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri hiç kimse tarafından görüntülenir.
+    > SANAL makinede bulunan/etc/ıdmapd.exe içindeki NFS etki alanını Azure NetApp Files: **defaultv4iddomain.com** konumundaki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri hiç kimse tarafından görüntülenir.
     
 
 3. **[1]** Düğüm1 üzerinde düğüme özgü birimleri bağlama (**hanadb1**) 
@@ -373,7 +374,7 @@ SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [
     Flags: rw,noatime,vers=4.1,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.32.0.4,local_lock=none,addr=10.32.2.4
     ```
 
-6. **[A]** **nfs4_disable_idmapping**doğrulayın. **Y**olarak ayarlanmalıdır. **Nfs4_disable_idmapping** bulunduğu dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.
+6. **[A]** **nfs4_disable_idmapping** doğrulayın. **Y** olarak ayarlanmalıdır. **Nfs4_disable_idmapping** bulunduğu dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.
 
     ```
     # Check nfs4_disable_idmapping 
@@ -418,11 +419,11 @@ SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [
 
     HANA DVD 'sindeki **hdblcm** programını çalıştırın. Komut istemine aşağıdaki değerleri girin:  
     Yükleme seç: **1** girin (yükleme için)  
-    Yükleme için ek bileşenler seçin: **1**girin.  
+    Yükleme için ek bileşenler seçin: **1** girin.  
     Yükleme yolunu girin [/Hana/Shared]: varsayılanı kabul etmek için ENTER tuşuna basın  
     Yerel ana bilgisayar adını girin [..]: varsayılanı kabul etmek için ENTER tuşuna basın  
     Sisteme ek konaklar eklemek istiyor musunuz? (e/h) [n]: **n**  
-    SAP HANA sistem KIMLIĞINI girin: **HN1**girin.  
+    SAP HANA sistem KIMLIĞINI girin: **HN1** girin.  
     Örnek numarasını girin [00]: **03** girin  
     Veritabanı modunu seçin/Dizin [1] girin: varsayılanı kabul etmek için ENTER tuşuna basın  
     Sistem kullanımı seçin/dizin girin [4]: **4** girin (özel için)  
@@ -563,7 +564,7 @@ Bu örnekte her küme düğümünün kendi HANA NFS dosya sistemleri/Hana/Shared
 
    Kümenin ve tüm kaynakların durumunu kontrol edin
    > [!NOTE]
-   > Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı*dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+   > Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı* dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
    
     ```
     sudo pcs status

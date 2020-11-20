@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514546"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950763"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple cihazınızı güvenle yükleyip çalıştırın
 ![Uyarı simgesi ](./media/storsimple-safety/IC740879.png)
@@ -30,7 +30,7 @@ Bu makaledeki Microsoft Azure StorSimple cihazınız için geçerli olan tüm g�
 ## <a name="safety-icon-conventions"></a>Güvenlik simgesi kuralları
 Microsoft Azure StorSimple cihazınızı kurarken ve çalıştırırken gözlenecek güvenlik önlemlerinizi gözden geçirdikten sonra bulacağınız simgeler aşağıda verilmiştir.
 
-| Simge | Açıklama |
+| Simge | Description |
 |:--- |:--- |
 | ![Danger simgesi ](./media/storsimple-safety/IC740879.png) **tehlike!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olan tehlikeli bir durum belirtir. Bu sinyal sözcüğü, en Extreme durumlarla sınırlı olacaktır. |
 | ![Uyarı simgesi ](./media/storsimple-safety/IC740879.png) **uyarısı!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olabilecek tehlikeli bir durum belirtir. |
@@ -114,7 +114,7 @@ Cihaz iki PCMs ile çalışacak şekilde tasarlanmıştır. Her PCMs 'nin bir g�
 
 Yaralanma, elektrik sarsıntı veya ölüm olasılığını azaltmak için:
 
-* Kapakları, PCM 'den kaldırmayın. İçinde elektrik sarsıntısı bir tehlike vardır. PCM 'yi döndürmek ve bir değiştirme almak için [Microsoft desteği başvurun](storsimple-contact-microsoft-support.md).
+* Kapakları, PCM 'den kaldırmayın. İçinde elektrik sarsıntısı bir tehlike vardır. PCM 'yi döndürmek ve bir değiştirme almak için [Microsoft desteği başvurun](./storsimple-8000-contact-microsoft-support.md).
 
 ![Bildirim simgesi ](./media/storsimple-safety/IC740881.png) **bildirimi:**
 

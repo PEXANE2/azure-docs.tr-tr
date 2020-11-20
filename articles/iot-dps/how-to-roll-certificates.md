@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531415"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951137"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>X. 509.440 cihaz sertifikalarını alma
 
@@ -51,7 +51,7 @@ Bir cihaz başlangıçta otomatik sağlama aracılığıyla sağlandığında, �
 
 Cihaza yeni bir yaprak sertifikası alındıktan sonra, bağlanmak için yeni bir sertifika kullandığından, artık IoT Hub 'ına bağlanamaz. IoT Hub, cihazı yalnızca eski sertifikaya sahip olarak tanır. Cihazın bağlantı denemesinin sonucu "yetkisiz" bir bağlantı hatası olacaktır. Bu hatayı çözmek için cihazın yeni yaprak sertifikası için hesap için kayıt girişini güncelleştirmeniz gerekir. Ardından, sağlama hizmeti cihaz yeniden sağlandığında gereken cihaz kayıt defteri bilgilerini IoT Hub güncelleştirebilir. 
 
-Bu bağlantı hatasının olası bir istisnası, sağlama hizmeti 'nde cihazınız için bir [kayıt grubu](concepts-service.md#enrollment-group) oluşturduğunuz bir senaryodur. Bu durumda, cihazın sertifika güven zincirinde kök veya ara sertifikaları görmüyorsanız, yeni sertifika kayıt grubunda tanımlanan güven zincirinin bir parçasıysa cihaz tanınır... Bu senaryo bir güvenlik ihlalinin yeniden eylemi olarak ortaya çıkarsa, grupta ihlal edilen belirli cihaz sertifikalarına en azından izin vermemelisiniz. Daha fazla bilgi için bkz. [bir kayıt grubundaki belirli cihazlara Izin verme](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group).
+Bu bağlantı hatasının olası bir istisnası, sağlama hizmeti 'nde cihazınız için bir [kayıt grubu](concepts-service.md#enrollment-group) oluşturduğunuz bir senaryodur. Bu durumda, cihazın sertifika güven zincirinde kök veya ara sertifikaları görmüyorsanız, yeni sertifika kayıt grubunda tanımlanan güven zincirinin bir parçasıysa cihaz tanınır... Bu senaryo bir güvenlik ihlalinin yeniden eylemi olarak ortaya çıkarsa, grupta ihlal edilen belirli cihaz sertifikalarına en azından izin vermemelisiniz. Daha fazla bilgi için bkz. [bir kayıt grubundaki belirli cihazlara Izin verme](./how-to-revoke-device-access-portal.md#disallow-specific-devices-in-an-enrollment-group).
 
 Toplu sertifikaların kayıt girişlerini güncelleştirme, kayıtları **Yönet** sayfasında gerçekleştirilir. Bu sayfaya erişmek için şu adımları izleyin:
 
@@ -69,7 +69,7 @@ Kayıt girişinin güncelleştirilmesini nasıl işleyeceğinizi, bireysel kayı
 
 Bir güvenlik ihlaline yanıt olarak sertifika alıyorsanız, geçerli sertifikayı hemen silen aşağıdaki yaklaşımı kullanmanız gerekir:
 
-1. **Ayrı**kayıtlar ' a tıklayın ve LISTEDEKI kayıt kimliği girişine tıklayın. 
+1. **Ayrı** kayıtlar ' a tıklayın ve LISTEDEKI kayıt kimliği girişine tıklayın. 
 
 2. **Geçerli sertifikayı Sil** düğmesine tıklayın ve ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. İşiniz bittiğinde **Kaydet** ' e tıklayın.
 
@@ -92,7 +92,7 @@ Sertifika süre sonlarını işlemek için bir sertifika alıyorsanız, sağlama
 Daha sonra ikincil sertifika süre sonu yaklaştığında ve alınması gerektiğinde, birincil yapılandırmayı kullanarak döndürebilirsiniz. Bu şekilde birincil ve ikincil Sertifikalar arasında döndürme, sağlamaya çalışan cihazların kapalı kalma süresini azaltır.
 
 
-1. **Ayrı**kayıtlar ' a tıklayın ve LISTEDEKI kayıt kimliği girişine tıklayın. 
+1. **Ayrı** kayıtlar ' a tıklayın ve LISTEDEKI kayıt kimliği girişine tıklayın. 
 
 2. **Ikincil sertifika** ' ya tıklayın, ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. **Kaydet**’e tıklayın.
 

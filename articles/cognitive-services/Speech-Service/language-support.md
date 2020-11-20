@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
-ms.custom: seodec18
-ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.custom: references_regions
+ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616799"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949097"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -86,7 +86,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Litvanca (Litvanya)             |`lt-LT` | Dil modeli                                   |
 |Malta dili (Malta)                     |`mt-MT` | Dil modeli                                   |
 |Marathi dili (Hindistan)                    |`mr-IN` | Dil modeli                                   |
-|Norveççe (BokmÃ ¥ l) (Norveç)       |`nb-NO` | Dil modeli                                   |
+|Norveççe (Bokmål, Norveç)         |`nb-NO` | Dil modeli                                   |
 |Lehçe (Polonya)                    |`pl-PL` | Dil modeli                                   |
 |Portekizce (Brezilya)                |`pt-BR` | Akustik model<br>Dil modeli<br>İşi|
 |Portekizce (Portekiz)              |`pt-PT` | Dil modeli                                   |
@@ -134,83 +134,103 @@ Sinir metin okuma, derin sinir ağlarla desteklenen yeni bir konuşma türü tü
 
 Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, sinir seslerde kullanıcılar AI sistemleriyle etkileşim kurarken büyük ölçüde dinleme performansını önemli ölçüde azaltır.
 
-Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
-
-|Dil  | Yerel ayar (BCP-47)          | Cinsiyet | Ses adı | Stil desteği |
-|--|--|--|--|--|
+| Dil | Yerel Ayar | Cinsiyet | Ses adı | Stil desteği |
+|---|---|---|---|---|
 | Arapça (Mısır) | `ar-EG` | Kadın | `ar-EG-SalmaNeural` | Genel |
 | Arapça (Suudi Arabistan) | `ar-SA` | Kadın | `ar-SA-ZariyahNeural` | Genel |
-| Bulgarca (Bulgary) | `bg-BG` <sup>Yeni</sup> | Kadın | `bg-BG-KalinaNeural` | Genel |
-| Cantonetıcı (Geleneksel Çince, Hong Kong) | `zh-HK` | Kadın | `zh-HK-HiuGaaiNeural` | Genel |
+| Bulgarca (Bulgary) | `bg-BG` | Kadın | `bg-BG-KalinaNeural` <sup>Yeni</sup> | Genel |
 | Katalanca (İspanya) | `ca-ES` | Kadın | `ca-ES-AlbaNeural` | Genel |
-| Hırvatça (Hırvatistan) | `hr-HR` <sup>Yeni</sup> | Kadın | `hr-HR-GabrijelaNeural` | Genel |
-| Çekçe (Çek) | `cs-CZ` <sup>Yeni</sup> | Kadın | `cs-CZ-VlastaNeural` | Genel |
+| Çince (Cantoneo, geleneksel) | `zh-HK` | Kadın | `zh-HK-HiuGaaiNeural` | Genel |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-XiaoxiaoNeural` | Genel, [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili mevcuttur |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-XiaoyouNeural` | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Erkek   | `zh-CN-YunyangNeural` | Haberleri okuma için iyileştirilmiş,<br /> [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili kullanılabilir |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Erkek   | `zh-CN-YunyeNeural` | Öykü anlatımı için iyileştirildi |
+| Çince (Taiwanese Mandarin) | `zh-TW` | Kadın | `zh-TW-HsiaoYuNeural` | Genel |
+| Hırvatça (Hırvatistan) | `hr-HR` | Kadın | `hr-HR-GabrijelaNeural` <sup>Yeni</sup> | Genel |
+| Çekçe (Çek) | `cs-CZ` | Kadın | `cs-CZ-VlastaNeural` <sup>Yeni</sup>    | Genel |
 | Danca (Danimarka) | `da-DK` | Kadın | `da-DK-ChristelNeural` | Genel |
 | Felemenkçe (Hollanda) | `nl-NL` | Kadın | `nl-NL-ColetteNeural` | Genel |
 | İngilizce (Avustralya) | `en-AU` | Kadın | `en-AU-NatashaNeural` | Genel |
-| İngilizce (Avustralya) | `en-AU` <sup>Yeni</sup> | Erkek | `en-AU-WilliamNeural` | Genel |
+| İngilizce (Avustralya) | `en-AU` | Erkek   | `en-AU-WilliamNeural` <sup>Yeni</sup>  | Genel |
 | İngilizce (Kanada) | `en-CA` | Kadın | `en-CA-ClaraNeural` | Genel |
 | İngilizce (Hindistan) | `en-IN` | Kadın | `en-IN-NeerjaNeural` | Genel |
-| İngilizce (İrlanda) | `en-IE` <sup>Yeni</sup> | Kadın | `en-IE-EmilyNeural` | Genel |
+| İngilizce (İrlanda) | `en-IE` | Kadın | `en-IE-EmilyNeural` <sup>Yeni</sup> | Genel |
 | İngilizce (İngiltere) | `en-GB` | Kadın | `en-GB-LibbyNeural` | Genel |
 | İngilizce (İngiltere) | `en-GB` | Kadın | `en-GB-MiaNeural` | Genel |
-| İngilizce (İngiltere) | `en-GB` <sup>Yeni</sup> | Erkek | `en-GB-RyanNeural` | Genel |
-| İngilizce (ABD) | `en-US` | Kadın | `en-US-AriaNeural` | Genel, birden çok ses stili mevcuttur |
+| İngilizce (İngiltere) | `en-GB` | Erkek | `en-GB-RyanNeural` <sup>Yeni</sup> | Genel |
+| İngilizce (ABD) | `en-US` | Kadın | `en-US-AriaNeural` | Genel, [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili mevcuttur |
 | İngilizce (ABD) | `en-US` | Erkek | `en-US-GuyNeural` | Genel |
-| İngilizce (ABD) | `en-US` <sup>Yeni</sup> | Kadın | `en-US-JennyNeural` | Genel, birden çok ses stili mevcuttur |
+| İngilizce (ABD) | `en-US` | Kadın | `en-US-JennyNeural` <sup>Yeni</sup> | Genel, [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili mevcuttur |
 | Fince (Finlandiya) | `fi-FI` | Kadın | `fi-FI-NooraNeural` | Genel |
 | Fransızca (Kanada) | `fr-CA` | Kadın | `fr-CA-SylvieNeural` | Genel |
-| Fransızca (Kanada) | `fr-CA` <sup>Yeni</sup> | Erkek | `fr-CA-JeanNeural` | Genel |
+| Fransızca (Kanada) | `fr-CA` | Erkek | `fr-CA-JeanNeural` <sup>Yeni</sup> | Genel |
 | Fransızca (Fransa) | `fr-FR` | Kadın | `fr-FR-DeniseNeural` | Genel |
-| Fransızca (Fransa) | `fr-FR` <sup>Yeni</sup> | Erkek | `fr-FR-HenriNeural` | Genel |
-| Fransızca (İsviçre) | `fr-CH` <sup>Yeni</sup> | Kadın | `fr-CH-ArianeNeural` | Genel |
-| Almanca (Avusturya) | `de-AT` <sup>Yeni</sup> | Kadın | `de-AT-IngridNeural` | Genel |
+| Fransızca (Fransa) | `fr-FR` | Erkek | `fr-FR-HenriNeural` <sup>Yeni</sup> | Genel |
+| Fransızca (İsviçre) | `fr-CH` | Kadın | `fr-CH-ArianeNeural` <sup>Yeni</sup> | Genel |
+| Almanca (Avusturya) | `de-AT` | Kadın | `de-AT-IngridNeural` <sup>Yeni</sup> | Genel |
 | Almanca (Almanya) | `de-DE` | Kadın | `de-DE-KatjaNeural` | Genel |
-| Almanca (Almanya) | `de-DE` <sup>Yeni</sup> | Erkek | `de-DE-ConradNeural` | Genel |
-| Almanca (İsviçre) | `de-CH` <sup>Yeni</sup> | Kadın | `de-CH-LeniNeural` | Genel |
-| Yunanca (Yunanistan) | `el-GR` <sup>Yeni</sup> | Kadın | `el-GR-AthinaNeural` | Genel |
-| İbranice (Israil) | `he-IL` <sup>Yeni</sup> | Kadın | `he-IL-HilaNeural` | Genel |
+| Almanca (Almanya) | `de-DE` | Erkek | `de-DE-ConradNeural` <sup>Yeni</sup> | Genel |
+| Almanca (İsviçre) | `de-CH` | Kadın | `de-CH-LeniNeural` <sup>Yeni</sup> | Genel |
+| Yunanca (Yunanistan) | `el-GR` | Kadın | `el-GR-AthinaNeural` <sup>Yeni</sup> | Genel |
+| İbranice (Israil) | `he-IL` | Kadın | `he-IL-HilaNeural` <sup>Yeni</sup> | Genel |
 | Hintçe (Hindistan) | `hi-IN` | Kadın | `hi-IN-SwaraNeural` | Genel |
-| Macarca (Macaristan) | `hu-HU` <sup>Yeni</sup> | Kadın | `hu-HU-NoemiNeural` | Genel |
-| Endonezce (Endonezya) | `id-ID` <sup>Yeni</sup> | Erkek | `id-ID-ArdiNeural` | Genel |
+| Macarca (Macaristan) | `hu-HU` | Kadın | `hu-HU-NoemiNeural` <sup>Yeni</sup> | Genel |
+| Endonezce (Endonezya) | `id-ID` | Erkek | `id-ID-ArdiNeural` <sup>Yeni</sup> | Genel |
 | İtalyanca (İtalya) | `it-IT` | Kadın | `it-IT-ElsaNeural` | Genel |
-| İtalyanca (İtalya) | `it-IT` <sup>Yeni</sup> | Kadın | `it-IT-IsabellaNeural` | Genel |
-| İtalyanca (İtalya) | `it-IT` <sup>Yeni</sup> | Erkek | `it-IT-DiegoNeural` | Genel |
+| İtalyanca (İtalya) | `it-IT` | Kadın | `it-IT-IsabellaNeural` <sup>Yeni</sup> | Genel |
+| İtalyanca (İtalya) | `it-IT` | Erkek | `it-IT-DiegoNeural` <sup>Yeni</sup> | Genel |
 | Japonca (Japonya) | `ja-JP` | Kadın | `ja-JP-NanamiNeural` | Genel |
-| Japonca (Japonya) | `ja-JP` <sup>Yeni</sup> | Erkek | `ja-JP-KeitaNeural` | Genel |
+| Japonca (Japonya) | `ja-JP` | Erkek | `ja-JP-KeitaNeural` <sup>Yeni</sup> | Genel |
 | Korece (Kore) | `ko-KR` | Kadın | `ko-KR-SunHiNeural` | Genel |
-| Korece (Kore) | `ko-KR` <sup>Yeni</sup> | Erkek | `ko-KR-InJoonNeural` | Genel |
-| Malayca (Malezya) | `ms-MY` <sup>Yeni</sup> | Kadın | `ms-MY-YasminNeural` | Genel |
-| Mandarin (Basitleştirilmiş Çince, Çin) | `zh-CN` | Kadın | `zh-CN-XiaoxiaoNeural` | Genel, birden çok ses stili mevcuttur |
-| Mandarin (Basitleştirilmiş Çince, Çin) | `zh-CN` | Kadın | `zh-CN-XiaoyouNeural` | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
-| Mandarin (Basitleştirilmiş Çince, Çin) | `zh-CN` | Erkek | `zh-CN-YunyangNeural` | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
-| Mandarin (Basitleştirilmiş Çince, Çin) | `zh-CN` | Erkek | `zh-CN-YunyeNeural` | Öykü anlatımı için iyileştirildi |
-| Mandarin (Geleneksel Çince, Tayvan) | `zh-TW` | Kadın | `zh-TW-HsiaoYuNeural` | Genel |
-| Norveççe, BokmÃ ¥ l (Norveç) | `nb-NO` | Kadın | `nb-NO-IselinNeural` | Genel |
+| Korece (Kore) | `ko-KR` | Erkek | `ko-KR-InJoonNeural` <sup>Yeni</sup> | Genel |
+| Malayca (Malezya) | `ms-MY` | Kadın | `ms-MY-YasminNeural` <sup>Yeni</sup> | Genel |
+| Norveççe (Bokmål, Norveç) | `nb-NO` | Kadın | `nb-NO-IselinNeural` | Genel |
 | Lehçe (Polonya) | `pl-PL` | Kadın | `pl-PL-ZofiaNeural` | Genel |
-| Portekizce (Brezilya) | `pt-BR` | Kadın | `pt-BR-FranciscaNeural` | Genel, birden çok ses stili mevcuttur |
-| Portekizce (Brezilya) | `pt-BR` <sup>Yeni</sup> | Erkek | `pt-BR-AntonioNeural` | Genel |
+| Portekizce (Brezilya) | `pt-BR` | Kadın | `pt-BR-FranciscaNeural` | Genel, [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) birden çok ses stili mevcuttur |
+| Portekizce (Brezilya) | `pt-BR` | Erkek | `pt-BR-AntonioNeural` <sup>Yeni</sup> | Genel |
 | Portekizce (Portekiz) | `pt-PT` | Kadın | `pt-PT-FernandaNeural` | Genel |
-| Rumence (Romanya) | `ro-RO` <sup>Yeni</sup> | Kadın | `ro-RO-AlinaNeural` | Genel |
+| Rumence (Romanya) | `ro-RO` | Kadın | `ro-RO-AlinaNeural` <sup>Yeni</sup> | Genel |
 | Rusça (Rusya) | `ru-RU` | Kadın | `ru-RU-DariyaNeural` | Genel |
-| Slovakça (Slovakya) | `sk-SK` <sup>Yeni</sup> | Kadın | `sk-SK-ViktoriaNeural` | Genel |
-| Slovence (Slovenya) | `sl-SI` <sup>Yeni</sup> | Kadın | `sl-SI-PetraNeural` | Genel |
+| Slovakça (Slovakya) | `sk-SK` | Kadın | `sk-SK-ViktoriaNeural` <sup>Yeni</sup> | Genel |
+| Slovence (Slovenya) | `sl-SI` | Kadın | `sl-SI-PetraNeural` <sup>Yeni</sup> | Genel |
 | İspanyolca (Meksika) | `es-MX` | Kadın | `es-MX-DaliaNeural` | Genel |
-| İspanyolca (Meksika) | `es-MX` <sup>Yeni</sup> | Erkek | `es-MX-JorgeNeural` | Genel |
+| İspanyolca (Meksika) | `es-MX` | Erkek | `es-MX-JorgeNeural` <sup>Yeni</sup> | Genel |
 | İspanyolca (İspanya) | `es-ES` | Kadın | `es-ES-ElviraNeural` | Genel |
-| İspanyolca (İspanya) | `es-ES` <sup>Yeni</sup> | Erkek | `es-ES-AlvaroNeural` | Genel |
+| İspanyolca (İspanya) | `es-ES` | Erkek | `es-ES-AlvaroNeural` <sup>Yeni</sup> | Genel |
 | İsveççe (İsviçre) | `sv-SE` | Kadın | `sv-SE-HilleviNeural` | Genel |
-| Tamil dili (Hindistan) | `ta-IN` <sup>Yeni</sup> | Kadın | `ta-IN-PallaviNeural` | Genel |
-| Telugu dili (Hindistan) | `te-IN` <sup>Yeni</sup> | Kadın | `te-IN-ShrutiNeural` | Genel |
+| Tamil dili (Hindistan) | `ta-IN` | Kadın | `ta-IN-PallaviNeural` <sup>Yeni</sup> | Genel |
+| Telugu dili (Hindistan) | `te-IN` | Kadın | `te-IN-ShrutiNeural` <sup>Yeni</sup> | Genel |
 | Tayca (Tayland) | `th-TH` | Kadın | `th-TH-AcharaNeural` | Genel |
-| Tayca (Tayland) | `th-TH` <sup>Yeni</sup> | Kadın | `th-TH-PremwadeeNeural` | Genel |
+| Tayca (Tayland) | `th-TH` | Kadın | `th-TH-PremwadeeNeural` <sup>Yeni</sup> | Genel |
 | Türkçe (Türkiye) | `tr-TR` | Kadın | `tr-TR-EmelNeural` | Genel |
 | Vietnamca (Vietnam) | `vi-VN` <sup>Yeni</sup> | Kadın | `vi-VN-HoaiMyNeural` | Genel|
 
+#### <a name="neural-voices-in-preview"></a>Önizlemede sinir sesler
+
+Aşağıdaki sinir sesleri genel önizlemede. 
+
+| Dil                         | Yerel Ayar  | Cinsiyet | Ses adı                             | Stil desteği |
+|----------------------------------|---------|--------|----------------------------------------|---------------|
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Erkek   | `zh-CN-YunxiNeural` <sup>Yeni</sup> | [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) genel, birden çok stil kullanılabilir |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-XiaohanNeural` <sup>Yeni</sup> | [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) genel, birden çok stil kullanılabilir |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-XiaoxuanNeural` <sup>Yeni</sup> | [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) genel, birden çok rol yürütme ve stil kullanılabilir |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-XiaomoNeural` <sup>Yeni</sup> | [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) genel, birden çok rol yürütme ve stil kullanılabilir |
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-XiaoruiNeural` <sup>Yeni</sup> | [SSML kullanarak](speech-synthesis-markup.md#adjust-speaking-styles) üst düzey ses, birden çok stil kullanılabilir |
+| Estonca (Estonya) | `et-EE` | Kadın | `et-EE-AnuNeural` <sup>Yeni</sup> | Genel |
+| Gaelce (Irlanda) | `ga-IE` | Kadın | `ga-IE-OrlaNeural` <sup>Yeni</sup> | Genel |
+| Litvanca (Litvanya) | `lt-LT` | Kadın | `lt-LT-OnaNeural` <sup>Yeni</sup> | Genel |
+| Letonca (Letonya) | `lv-LV` | Kadın | `lv-LV-EveritaNeural` <sup>Yeni</sup> | Genel |
+| Malta dili (Malta) | `mt-MT` | Kadın | `mt-MT-GraceNeural` <sup>Yeni</sup> | Genel |
+
+> [!IMPORTANT]
+> Genel önizlemede bulunan sesler yalnızca 3 hizmet bölgesinde kullanılabilir: Doğu ABD, Batı Avrupa ve Güneydoğu Asya.
+
+Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
+
+Konuşma stilleri gibi sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğrenmek için bkz. [konuşma SensMe biçimlendirme dili](speech-synthesis-markup.md#adjust-speaking-styles).
+
 > [!IMPORTANT]
 > `en-US-JessaNeural`Ses olarak değiştirildi `en-US-AriaNeural` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.
-
-Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğrenmek için bkz. [konuşma sen, biçimlendirme dili](speech-synthesis-markup.md#adjust-speaking-styles).
 
 > [!TIP]
 > Konuşma sensimi isteklerinizin "Microsoft Server konuşma Metin Okuma sesi (en-US, AriaNeural)" gibi tam hizmet adı eşlemesini kullanmaya devam edebilirsiniz.
@@ -221,84 +241,83 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 | Dil | Yerel ayar (BCP-47) | Cinsiyet | Ses adı |
 |--|--|--|--|
-| Arapça (Arapça)  |  `ar-EG`  |  Kadın  |  `ar-EG-Hoda`|
-| Arapça (Suudi Arabistan)  |  `ar-SA`  |  Erkek  |  `ar-SA-Naayf`|
-| Bulgarca (Bulgaristan)  |  `bg-BG`  |  Erkek  |  `bg-BG-Ivan`|
-| Cantonetıcı (Geleneksel Çince, Hong Kong)  |  `zh-HK`  |  Erkek  |  `zh-HK-Danny`|
-| Cantonetıcı (Geleneksel Çince, Hong Kong)  |  `zh-HK`  |  Kadın  |  `zh-HK-TracyRUS`|
-| Katalanca (İspanya)  |  `ca-ES`  |  Kadın  |  `ca-ES-HerenaRUS`|
-| Hırvatça (Hırvatistan)  |  `hr-HR`  |  Erkek  |  `hr-HR-Matej`|
-| Çekçe (Çek Cumhuriyeti)  |  `cs-CZ`  |  Erkek  |  `cs-CZ-Jakub`|
-| Danca (Danimarka)  |  `da-DK`  |  Kadın  |  `da-DK-HelleRUS`|
-| Felemenkçe (Hollanda)  |  `nl-NL`  |  Kadın  |  `nl-NL-HannaRUS`|
-| İngilizce (Avustralya)  |  `en-AU`  |  Kadın  |  `en-AU-Catherine`|
-| İngilizce (Avustralya)  |  `en-AU`  |  Kadın  |  `en-AU-HayleyRUS`|
-| İngilizce (Kanada)  |  `en-CA`  |  Kadın  |  `en-CA-HeatherRUS`|
-| İngilizce (Kanada)  |  `en-CA`  |  Kadın  |  `en-CA-Linda`|
-| İngilizce (Hindistan)  |  `en-IN`  |  Kadın  |  `en-IN-Heera`|
-| İngilizce (Hindistan)  |  `en-IN`  |  Kadın  |  `en-IN-PriyaRUS`|
-| İngilizce (Hindistan)  |  `en-IN`  |  Erkek  |  `en-IN-Ravi`|
-| İngilizce (İrlanda)  |  `en-IE`  |  Erkek  |  `en-IE-Sean`|
-| İngilizce (İngiltere)  |  `en-GB`  |  Erkek  |  `en-GB-George`|
-| İngilizce (İngiltere)  |  `en-GB`  |  Kadın  |  `en-GB-HazelRUS`|
-| İngilizce (İngiltere)  |  `en-GB`  |  Kadın  |  `en-GB-Susan`|
-| İngilizce (ABD)  |  `en-US`  |  Erkek  |  `en-US-BenjaminRUS`|
-| İngilizce (ABD)  |  `en-US`  |  Erkek  |  `en-US-GuyRUS`|
-| İngilizce (ABD)  |  `en-US`  |  Kadın  |  `en-US-JessaRUS`|
-| İngilizce (ABD)  |  `en-US`  |  Kadın  |  `en-US-ZiraRUS`|
-| Fince (Finlandiya)  |  `fi-FI`  |  Kadın  |  `fi-FI-HeidiRUS`|
-| Fransızca (Kanada)  |  `fr-CA`  |  Kadın  |  `fr-CA-Caroline`|
-| Fransızca (Kanada)  |  `fr-CA`  |  Kadın  |  `fr-CA-HarmonieRUS`|
-| Fransızca (Fransa)  |  `fr-FR`  |  Kadın  |  `fr-FR-HortenseRUS`|
-| Fransızca (Fransa)  |  `fr-FR`  |  Kadın  |  `fr-FR-Julie`|
-| Fransızca (Fransa)  |  `fr-FR`  |  Erkek  |  `fr-FR-Paul`|
-| Fransızca (İsviçre)  |  `fr-CH`  |  Erkek  |  `fr-CH-Guillaume`|
-| Almanca (Avusturya)  |  `de-AT`  |  Erkek  |  `de-AT-Michael`|
-| Almanca (Almanya)  |  `de-DE`  |  Kadın  |  `de-DE-HeddaRUS`|
-| Almanca (Almanya)  |  `de-DE`  |  Erkek  |  `de-DE-Stefan`|
-| Almanca (İsviçre)  |  `de-CH`  |  Erkek  |  `de-CH-Karsten`|
-| Yunanca (Yunanistan)  |  `el-GR`  |  Erkek  |  `el-GR-Stefanos`|
-| İbranice (Israil)  |  `he-IL`  |  Erkek  |  `he-IL-Asaf`|
-| Hintçe (Hindistan)  |  `hi-IN`  |  Erkek  |  `hi-IN-Hemant`|
-| Hintçe (Hindistan)  |  `hi-IN`  |  Kadın  |  `hi-IN-Kalpana`|
-| Macarca (Macaristan)  |  `hu-HU`  |  Erkek  |  `hu-HU-Szabolcs`|
-| Endonezce (Endonezya)  |  `id-ID`  |  Erkek  |  `id-ID-Andika`|
-| İtalyanca (İtalya)  |  `it-IT`  |  Erkek  |  `it-IT-Cosimo`|
-| İtalyanca (İtalya)  |  `it-IT`  |  Kadın  |  `it-IT-LuciaRUS`|
-| Japonca (Japonya)  |  `ja-JP`  |  Kadın  |  `ja-JP-Ayumi`|
-| Japonca (Japonya)  |  `ja-JP`  |  Kadın  |  `ja-JP-HarukaRUS`|
-| Japonca (Japonya)  |  `ja-JP`  |  Erkek  |  `ja-JP-Ichiro`|
-| Korece (Kore)  |  `ko-KR`  |  Kadın  |  `ko-KR-HeamiRUS`|
-| Malayca (Malezya)  |  `ms-MY`  |  Erkek  |  `ms-MY-Rizwan`|
-| Mandarin (Basitleştirilmiş Çince, Çin)  |  `zh-CN`  |  Kadın  |  `zh-CN-HuihuiRUS`|
-| Mandarin (Basitleştirilmiş Çince, Çin)  |  `zh-CN`  |  Erkek  |  `zh-CN-Kangkang`|
-| Mandarin (Basitleştirilmiş Çince, Çin)  |  `zh-CN`  |  Kadın  |  `zh-CN-Yaoyao`|
-| Mandarin (Geleneksel Çince, Tayvan)  |  `zh-TW`  |  Kadın  |  `zh-TW-HanHanRUS`|
-| Mandarin (Geleneksel Çince, Tayvan)  |  `zh-TW`  |  Kadın  |  `zh-TW-Yating`|
-| Mandarin (Geleneksel Çince, Tayvan)  |  `zh-TW`  |  Erkek  |  `zh-TW-Zhiwei`|
-| Norveççe, BokmÃ ¥ l (Norveç)  |  `nb-NO`  |  Kadın  |  `nb-NO-HuldaRUS`|
-| Lehçe (Polonya)  |  `pl-PL`  |  Kadın  |  `pl-PL-PaulinaRUS`|
-| Portekizce (Brezilya)  |  `pt-BR`  |  Erkek  |  `pt-BR-Daniel`|
-| Portekizce (Brezilya)  |  `pt-BR`  |  Kadın  |  `pt-BR-HeloisaRUS`|
-| Portekizce (Portekiz)  |  `pt-PT`  |  Kadın  |  `pt-PT-HeliaRUS`|
-| Rumence (Romanya)  |  `ro-RO`  |  Erkek  |  `ro-RO-Andrei`|
-| Rusça (Rusya)  |  `ru-RU`  |  Kadın  |  `ru-RU-EkaterinaRUS`|
-| Rusça (Rusya)  |  `ru-RU`  |  Kadın  |  `ru-RU-Irina`|
-| Rusça (Rusya)  |  `ru-RU`  |  Erkek  |  `ru-RU-Pavel`|
-| Slovakça (Slovakya)  |  `sk-SK`  |  Erkek  |  `sk-SK-Filip`|
-| Slovence (Slovenya)  |  `sl-SI`  |  Erkek  |  `sl-SI-Lado`|
-| İspanyolca (Meksika)  |  `es-MX`  |  Kadın  |  `es-MX-HildaRUS`|
-| İspanyolca (Meksika)  |  `es-MX`  |  Erkek  |  `es-MX-Raul`|
-| İspanyolca (İspanya)  |  `es-ES`  |  Kadın  |  `es-ES-HelenaRUS`|
-| İspanyolca (İspanya)  |  `es-ES`  |  Kadın  |  `es-ES-Laura`|
-| İspanyolca (İspanya)  |  `es-ES`  |  Erkek  |  `es-ES-Pablo`|
-| İsveççe (İsviçre)  |  `sv-SE`  |  Kadın  |  `sv-SE-HedvigRUS`|
-| Tamil dili (Hindistan)  |  `ta-IN`  |  Erkek  |  `ta-IN-Valluvar`|
-| Telugu dili (Hindistan)  |  `te-IN`  |  Kadın  |  `te-IN-Chitra`|
-| Tayca (Tayland)  |  `th-TH`  |  Erkek  |  `th-TH-Pattara`|
-| Türkçe (Türkiye)  |  `tr-TR`  |  Kadın  |  `tr-TR-SedaRUS`|
-| Vietnamca (Vietnam)  |  `vi-VN`  |  Erkek  |  `vi-VN-An`  |
-
+| Arapça (Arapça) | `ar-EG` | Kadın | `ar-EG-Hoda`|
+| Arapça (Suudi Arabistan) | `ar-SA` | Erkek | `ar-SA-Naayf`|
+| Bulgarca (Bulgaristan) | `bg-BG` | Erkek | `bg-BG-Ivan`|
+| Katalanca (İspanya) | `ca-ES` | Kadın | `ca-ES-HerenaRUS`|
+| Çince (Cantoneo, geleneksel) | `zh-HK` | Erkek | `zh-HK-Danny`|
+| Çince (Cantoneo, geleneksel) | `zh-HK` | Kadın | `zh-HK-TracyRUS`|
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-HuihuiRUS`|
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Erkek | `zh-CN-Kangkang`|
+| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Kadın | `zh-CN-Yaoyao`|
+| Çince (Taiwanese Mandarin) |  `zh-TW` | Kadın | `zh-TW-HanHanRUS`|
+| Çince (Taiwanese Mandarin) |  `zh-TW` | Kadın | `zh-TW-Yating`|
+| Çince (Taiwanese Mandarin) |  `zh-TW` | Erkek | `zh-TW-Zhiwei`|
+| Hırvatça (Hırvatistan) | `hr-HR` | Erkek | `hr-HR-Matej`|
+| Çekçe (Çek Cumhuriyeti) | `cs-CZ` | Erkek | `cs-CZ-Jakub`|
+| Danca (Danimarka) | `da-DK` | Kadın | `da-DK-HelleRUS`|
+| Felemenkçe (Hollanda) | `nl-NL` | Kadın | `nl-NL-HannaRUS`|
+| İngilizce (Avustralya) | `en-AU` | Kadın | `en-AU-Catherine`|
+| İngilizce (Avustralya) | `en-AU` | Kadın | `en-AU-HayleyRUS`|
+| İngilizce (Kanada) | `en-CA` | Kadın | `en-CA-HeatherRUS`|
+| İngilizce (Kanada) | `en-CA` | Kadın | `en-CA-Linda`|
+| İngilizce (Hindistan) | `en-IN` | Kadın | `en-IN-Heera`|
+| İngilizce (Hindistan) | `en-IN` | Kadın | `en-IN-PriyaRUS`|
+| İngilizce (Hindistan) | `en-IN` | Erkek | `en-IN-Ravi`|
+| İngilizce (İrlanda) | `en-IE` | Erkek | `en-IE-Sean`|
+| İngilizce (İngiltere) | `en-GB` | Erkek | `en-GB-George`|
+| İngilizce (İngiltere) | `en-GB` | Kadın | `en-GB-HazelRUS`|
+| İngilizce (İngiltere) | `en-GB` | Kadın | `en-GB-Susan`|
+| İngilizce (ABD) | `en-US` | Erkek | `en-US-BenjaminRUS`|
+| İngilizce (ABD) | `en-US` | Erkek | `en-US-GuyRUS`|
+| İngilizce (ABD) | `en-US` | Kadın | `en-US-JessaRUS`|
+| İngilizce (ABD) | `en-US` | Kadın | `en-US-ZiraRUS`|
+| Fince (Finlandiya) | `fi-FI` | Kadın | `fi-FI-HeidiRUS`|
+| Fransızca (Kanada) | `fr-CA` | Kadın | `fr-CA-Caroline`|
+| Fransızca (Kanada) | `fr-CA` | Kadın | `fr-CA-HarmonieRUS`|
+| Fransızca (Fransa) | `fr-FR` | Kadın | `fr-FR-HortenseRUS`|
+| Fransızca (Fransa) | `fr-FR` | Kadın | `fr-FR-Julie`|
+| Fransızca (Fransa) | `fr-FR` | Erkek | `fr-FR-Paul`|
+| Fransızca (İsviçre) | `fr-CH` | Erkek | `fr-CH-Guillaume`|
+| Almanca (Avusturya) | `de-AT` | Erkek | `de-AT-Michael`|
+| Almanca (Almanya) | `de-DE` | Kadın | `de-DE-HeddaRUS`|
+| Almanca (Almanya) | `de-DE` | Erkek | `de-DE-Stefan`|
+| Almanca (İsviçre) | `de-CH` | Erkek | `de-CH-Karsten`|
+| Yunanca (Yunanistan) | `el-GR` | Erkek | `el-GR-Stefanos`|
+| İbranice (Israil) | `he-IL` | Erkek | `he-IL-Asaf`|
+| Hintçe (Hindistan) | `hi-IN` | Erkek | `hi-IN-Hemant`|
+| Hintçe (Hindistan) | `hi-IN` | Kadın | `hi-IN-Kalpana`|
+| Macarca (Macaristan) | `hu-HU` | Erkek | `hu-HU-Szabolcs`|
+| Endonezce (Endonezya) | `id-ID` | Erkek | `id-ID-Andika`|
+| İtalyanca (İtalya) | `it-IT` | Erkek | `it-IT-Cosimo`|
+| İtalyanca (İtalya) | `it-IT` | Kadın | `it-IT-LuciaRUS`|
+| Japonca (Japonya) | `ja-JP` | Kadın | `ja-JP-Ayumi`|
+| Japonca (Japonya) | `ja-JP` | Kadın | `ja-JP-HarukaRUS`|
+| Japonca (Japonya) | `ja-JP` | Erkek | `ja-JP-Ichiro`|
+| Korece (Kore) | `ko-KR` | Kadın | `ko-KR-HeamiRUS`|
+| Malayca (Malezya) | `ms-MY` | Erkek | `ms-MY-Rizwan`|
+| Norveççe (Bokmål, Norveç) | `nb-NO` | Kadın | `nb-NO-HuldaRUS`|
+| Lehçe (Polonya) | `pl-PL` | Kadın | `pl-PL-PaulinaRUS`|
+| Portekizce (Brezilya) | `pt-BR` | Erkek | `pt-BR-Daniel`|
+| Portekizce (Brezilya) | `pt-BR` | Kadın | `pt-BR-HeloisaRUS`|
+| Portekizce (Portekiz) | `pt-PT` | Kadın | `pt-PT-HeliaRUS`|
+| Rumence (Romanya) | `ro-RO` | Erkek | `ro-RO-Andrei`|
+| Rusça (Rusya) | `ru-RU` | Kadın | `ru-RU-EkaterinaRUS`|
+| Rusça (Rusya) | `ru-RU` | Kadın | `ru-RU-Irina`|
+| Rusça (Rusya) | `ru-RU` | Erkek | `ru-RU-Pavel`|
+| Slovakça (Slovakya) | `sk-SK` | Erkek | `sk-SK-Filip`|
+| Slovence (Slovenya) | `sl-SI` | Erkek | `sl-SI-Lado`|
+| İspanyolca (Meksika) | `es-MX` | Kadın | `es-MX-HildaRUS`|
+| İspanyolca (Meksika) | `es-MX` | Erkek | `es-MX-Raul`|
+| İspanyolca (İspanya) | `es-ES` | Kadın | `es-ES-HelenaRUS`|
+| İspanyolca (İspanya) | `es-ES` | Kadın | `es-ES-Laura`|
+| İspanyolca (İspanya) | `es-ES` | Erkek | `es-ES-Pablo`|
+| İsveççe (İsviçre) | `sv-SE` | Kadın | `sv-SE-HedvigRUS`|
+| Tamil dili (Hindistan) | `ta-IN` | Erkek | `ta-IN-Valluvar`|
+| Telugu dili (Hindistan) | `te-IN` | Kadın | `te-IN-Chitra`|
+| Tayca (Tayland) | `th-TH` | Erkek | `th-TH-Pattara`|
+| Türkçe (Türkiye) | `tr-TR` | Kadın | `tr-TR-SedaRUS`|
+| Vietnamca (Vietnam) | `vi-VN` | Erkek | `vi-VN-An` |
 
 > [!IMPORTANT]
 > `en-US-Jessa`Ses olarak değiştirildi `en-US-Aria` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.

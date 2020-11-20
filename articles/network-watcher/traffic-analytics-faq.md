@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: ae87771e8a557ad7cb58c9cad9231784606cdd74
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426552"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948485"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
 
@@ -52,13 +52,13 @@ Trafik analizlerini etkinleştirmek için hesabınızın aşağıdakilerden biri
         
 Bir abonelik için kullanıcıya atanan rolleri denetlemek için:
 
-1. **Login-AzAccount**komutunu kullanarak Azure 'da oturum açın. 
+1. **Login-AzAccount** komutunu kullanarak Azure 'da oturum açın. 
 
-2. **Select-AzSubscription**kullanarak gerekli aboneliği seçin. 
+2. **Select-AzSubscription** kullanarak gerekli aboneliği seçin. 
 
-3. Belirtilen bir kullanıcıya atanan tüm rolleri listelemek için  **Get-Azroleatama-Signınname [User email]-IncludeClassicAdministrators**komutunu kullanın. 
+3. Belirtilen bir kullanıcıya atanan tüm rolleri listelemek için  **Get-Azroleatama-Signınname [User email]-IncludeClassicAdministrators** komutunu kullanın. 
 
-Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişim sağlamak üzere ilgili abonelik yöneticisine başvurun. Daha ayrıntılı bilgi için bkz. [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişim sağlamak üzere ilgili abonelik yöneticisine başvurun. Daha ayrıntılı bilgi için bkz. [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-powershell.md).
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Hangi Azure bölgeleri Trafik Analizi kullanılabilir?
@@ -126,7 +126,7 @@ Evet.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Mevcut bir çalışma alanını kullanabilir miyim?
 
-Evet. Mevcut bir çalışma alanını seçerseniz, yeni sorgu diline geçirilmiş olduğundan emin olun. Çalışma alanını yükseltmek istemiyorsanız yeni bir tane oluşturmanız gerekir. Yeni sorgu dili hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri yeni günlük aramasına yükseltme](../log-analytics/log-analytics-log-search-upgrade.md).
+Evet. Mevcut bir çalışma alanını seçerseniz, yeni sorgu diline geçirilmiş olduğundan emin olun. Çalışma alanını yükseltmek istemiyorsanız yeni bir tane oluşturmanız gerekir. Yeni sorgu dili hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri yeni günlük aramasına yükseltme](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Azure depolama Hesabım bir abonelikte yer alabilir ve Log Analytics çalışma alanım farklı bir abonelikte olabilir mi?
 
@@ -176,7 +176,7 @@ Kaynak bilgilerini panoda görüyorsunuz. Ancak, akışla ilgili bir istatistik 
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>PowerShell 'i veya bir Azure Resource Manager şablonu ya da istemciyi kullanarak trafik analizini yapılandırabilir miyim?
 
-Trafik analizlerini Windows PowerShell 'i sürüm 6.2.1 sürümlerini kullanarak yapılandırabilirsiniz. Set cmdlet 'ini kullanarak belirli bir NSG için akış günlüğü ve trafik analizi yapılandırmak için bkz. [set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Belirli bir NSG için akış günlüğü ve trafik analizi durumunu almak için bkz. [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
+Trafik analizlerini Windows PowerShell 'i sürüm 6.2.1 sürümlerini kullanarak yapılandırabilirsiniz. Set cmdlet 'ini kullanarak belirli bir NSG için akış günlüğü ve trafik analizi yapılandırmak için bkz. [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Belirli bir NSG için akış günlüğü ve trafik analizi durumunu almak için bkz. [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 Şu anda trafik analizini yapılandırmak için bir Azure Resource Manager şablonu kullanamazsınız.
 
@@ -250,7 +250,7 @@ Trafik Analizi tarifeli. Ölçüm, hizmet tarafından akış günlüğü veriler
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Ne sıklıkla veri Trafik Analizi?
 
-Trafik Analizi şeması ve veri toplama belgesi içindeki [veri toplama bölümüne](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) bakın
+Trafik Analizi şeması ve veri toplama belgesi içindeki [veri toplama bölümüne](./traffic-analytics-schema.md#data-aggregation) bakın
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Trafik Analizi bir IP 'nin kötü amaçlı olduğuna nasıl karar veriyor? 
 
@@ -262,7 +262,7 @@ Trafik Analizi, uyarılar için yerleşik olmayan desteğe sahip değil. Ancak T
 - Trafik Analizi Log Analytics için shortlink kullanabilirsiniz. 
 - Sorgularınızı yazmak için [burada belgelenen şemayı](traffic-analytics-schema.md) kullanın 
 - Uyarıyı oluşturmak için "yeni uyarı kuralı" na tıklayın
-- Uyarı oluşturmak için [günlük uyarıları belgelerine](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) başvurun
+- Uyarı oluşturmak için [günlük uyarıları belgelerine](../azure-monitor/platform/alerts-log.md) başvurun
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Nasıl yaparım? hangi VM 'Lerin en çok şirket içi trafiği aldığını denetleyin.
 
@@ -348,10 +348,10 @@ Coğrafi harita sayfası iki ana bölüm içerir:
 - Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6` , odak harita görünümündeki vurgulanan düğümlerden birine (**Azure veri merkezi** veya **ülke/bölge**) gider.
 - Haritadaki diğer vurgulanan düğümlere geçmek için, `Tab` `Right arrow` iletme hareketi için ya da anahtarını kullanın. `Shift+Tab` `Left arrow` Geri hareket için veya anahtarını kullanın.
 - Haritadaki vurgulanmış düğümleri seçmek için `Enter` veya `Down arrow` tuşunu kullanın.
-- Bu tür düğümlerin seçimi üzerinde odak, düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki**kapalı düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- `Tab`Odak **bilgi araç kutusunda**olduğunda, odak seçili düğüm ile aynı kıta olan bitiş noktalarına taşınır. `Right arrow` `Left arrow` Bu uç noktalar arasında gezinmek için ve anahtarlarını kullanın.
+- Bu tür düğümlerin seçimi üzerinde odak, düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** kapalı düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda** odaklanmış düğmesini seçerek aynı etkiye sahiptir.
+- `Tab`Odak **bilgi araç kutusunda** olduğunda, odak seçili düğüm ile aynı kıta olan bitiş noktalarına taşınır. `Right arrow` `Left arrow` Bu uç noktalar arasında gezinmek için ve anahtarlarını kullanın.
 - Diğer akış uç noktalarına veya kıta kümelere gitmek için, `Tab` İleri hareket ve `Shift+Tab` geriye doğru hareket için kullanın.
-- Odak, **kıta kümeler**üzerinde olduğunda, `Enter` ya da `Down` ok tuşlarını kullanarak kıta küme içindeki uç noktaları vurgulayın. Kıta kümesinin bilgi kutusunda uç noktalar ve Kapat düğmesi ile hareket etmek için, `Right arrow` `Left arrow` sırasıyla ileri ve geri hareket için ya da tuşunu kullanın. Herhangi bir uç noktada, `Shift+L` Seçili düğümdeki bağlantı satırına uç noktaya geçiş yapmak için kullanabilirsiniz. `Shift+L`Seçili uç noktaya gitmek için yeniden tuşuna basın.
+- Odak, **kıta kümeler** üzerinde olduğunda, `Enter` ya da `Down` ok tuşlarını kullanarak kıta küme içindeki uç noktaları vurgulayın. Kıta kümesinin bilgi kutusunda uç noktalar ve Kapat düğmesi ile hareket etmek için, `Right arrow` `Left arrow` sırasıyla ileri ve geri hareket için ya da tuşunu kullanın. Herhangi bir uç noktada, `Shift+L` Seçili düğümdeki bağlantı satırına uç noktaya geçiş yapmak için kullanabilirsiniz. `Shift+L`Seçili uç noktaya gitmek için yeniden tuşuna basın.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Herhangi bir aşamada klavye gezintisi
     
@@ -377,7 +377,7 @@ Sanal ağlar topolojisi sayfası iki ana bölüm içerir:
     
 - Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6` , odak, topoloji görünümündeki vurgulanan düğümlerden birine (**VNET**) gider.
 - Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, `Shift+Right arrow` iletme hareketi anahtarını kullanın. 
-- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için, `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
+- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için, `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda** odaklanmış düğmesini seçerek aynı etkiye sahiptir.
 - Bu tür düğümlerin seçimi üzerinde, anahtara basarak tüm bağlantılarını tek tek ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .
     
 
@@ -399,5 +399,5 @@ Sanal alt ağlar topolojisi sayfası iki ana bölüm içerir:
     
 - Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6` , odak, topoloji görünümündeki vurgulanan düğümlerden (**alt ağ**) birine taşınır.
 - Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, `Shift+Right arrow` iletme hareketi anahtarını kullanın. 
-- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .    
+- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda** odaklanmış düğmesini seçerek aynı etkiye sahiptir.
+- Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .

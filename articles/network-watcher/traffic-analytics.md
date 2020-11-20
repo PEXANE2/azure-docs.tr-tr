@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e35d44d197e1ca4e8f8036cb7920a96e5a60a5f9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424267"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948808"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -44,15 +44,15 @@ Azure sanal ağları, tek tek ağ arabirimleri, VM 'Ler veya alt ağlar ile ili�
 
 ## <a name="key-components"></a>Başlıca bileşenler
 
-- **Ağ güvenlik grubu (NSG)**: bir Azure sanal ağına bağlı kaynaklara yönelik ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir. Ağ güvenlik grupları (NSG’ler), alt ağlarla, ayrı ayrı VM’lerle (klasik) veya VM’lere bağlı ağ arabirimleri ile ilişkilendirilebilir (Resource Manager). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Ağ güvenlik grubu (NSG)**: bir Azure sanal ağına bağlı kaynaklara yönelik ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir. Ağ güvenlik grupları (NSG’ler), alt ağlarla, ayrı ayrı VM’lerle (klasik) veya VM’lere bağlı ağ arabirimleri ile ilişkilendirilebilir (Resource Manager). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json).
 - **Ağ güvenlik grubu (NSG) akış günlükleri**: bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize izin verir. NSG akış günlükleri, JSON biçiminde yazılır ve bir kural temelinde giden ve gelen akışları gösterir, akış için geçerli olan NIC, Flow (kaynak/hedef IP adresi, kaynak/hedef bağlantı noktası ve protokol) ve trafiğe izin verildiyse veya reddedildiyse. NSG akış günlükleri hakkında daha fazla bilgi için bkz. [NSG akış günlükleri](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: izleme verilerini toplayan ve verileri merkezi bir depoda depolayan Azure hizmeti. Bu veriler olayları, performans verilerini veya Azure API 'SI aracılığıyla sunulan özel verileri içerebilir. Toplanan veriler uyarı, analiz ve dışarı aktarma için kullanılabilir hale gelir. Ağ Performansı İzleyicisi ve trafik analizi gibi izleme uygulamaları, bir temel olarak Azure Izleyici günlükleri kullanılarak oluşturulmuştur. Daha fazla bilgi için bkz. [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics**: izleme verilerini toplayan ve verileri merkezi bir depoda depolayan Azure hizmeti. Bu veriler olayları, performans verilerini veya Azure API 'SI aracılığıyla sunulan özel verileri içerebilir. Toplanan veriler uyarı, analiz ve dışarı aktarma için kullanılabilir hale gelir. Ağ Performansı İzleyicisi ve trafik analizi gibi izleme uygulamaları, bir temel olarak Azure Izleyici günlükleri kullanılarak oluşturulmuştur. Daha fazla bilgi için bkz. [Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json).
 - **Log Analytics çalışma alanı**: Azure hesabıyla ilgili verilerin depolandığı Azure izleyici günlüklerinin bir örneği. Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Ağ İzleyicisi**: Azure 'da bir ağ senaryosu düzeyinde koşulları izlemenizi ve tanılamanıza olanak tanıyan bölgesel bir hizmettir. Ağ Izleyicisi ile NSG akış günlüklerini açıp kapatabilirsiniz. Daha fazla bilgi için bkz. [Ağ İzleyicisi](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Trafik analizinin çalışması
 
-Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi, hedef IP adresi, hedef bağlantı noktası ve protokol arasındaki ortak akışları toplayarak azaltılan günlükleri yakalar. Örneğin, ana bilgisayar 1 (IP adresi: 10.10.10.10), ana bilgisayar 2 ' ye (IP adresi: 10.10.20.10), bağlantı noktasını (örneğin, 80) ve Protokolü (örneğin, http) kullanarak 1 saat boyunca 100 kez iletişim kurarak. Azaltılan günlükte tek bir giriş bulunur. ana bilgisayar 1 & ana bilgisayar 2 bağlantı noktası *80* ve protokol 100 *http*kullanılarak 1 saat boyunca 100 kez iletidedir. Azaltılan Günlükler coğrafya, güvenlik ve topoloji bilgileriyle geliştirilmiştir ve sonra bir Log Analytics çalışma alanında depolanır. Aşağıdaki resimde veri akışı gösterilmektedir:
+Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi, hedef IP adresi, hedef bağlantı noktası ve protokol arasındaki ortak akışları toplayarak azaltılan günlükleri yakalar. Örneğin, ana bilgisayar 1 (IP adresi: 10.10.10.10), ana bilgisayar 2 ' ye (IP adresi: 10.10.20.10), bağlantı noktasını (örneğin, 80) ve Protokolü (örneğin, http) kullanarak 1 saat boyunca 100 kez iletişim kurarak. Azaltılan günlükte tek bir giriş bulunur. ana bilgisayar 1 & ana bilgisayar 2 bağlantı noktası *80* ve protokol 100 *http* kullanılarak 1 saat boyunca 100 kez iletidedir. Azaltılan Günlükler coğrafya, güvenlik ve topoloji bilgileriyle geliştirilmiştir ve sonra bir Log Analytics çalışma alanında depolanır. Aşağıdaki resimde veri akışı gösterilmektedir:
 
 ![NSG akış günlükleri işleme için veri akışı](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -227,12 +227,12 @@ New-AzStorageAccount `
 Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 
 1. **Durum** için *Açık* seçeneğini belirleyin
-2. **Akış günlükleri sürümü**için *sürüm 2* ' yi seçin. Sürüm 2, akış oturumu istatistikleri içerir (bayt ve paket)
+2. **Akış günlükleri sürümü** için *sürüm 2* ' yi seçin. Sürüm 2, akış oturumu istatistikleri içerir (bayt ve paket)
 3. Akış günlüklerini depolamak için mevcut bir depolama hesabı seçin. Depolama alanınız "Data Lake Storage 2. hiyerarşik ad alanı etkin değil" özelliğinin true olarak ayarlandığından emin olun.
-4. **Bekletmeyi** , verilerini depolamak istediğiniz gün sayısına ayarlayın. Verileri süresiz olarak depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz. 
-5. **Trafik Analizi durumu**Için *Açık '* ı seçin.
+4. **Bekletmeyi** , verilerini depolamak istediğiniz gün sayısına ayarlayın. Verileri süresiz olarak depolamak istiyorsanız, değeri *0* olarak ayarlayın. Depolama hesabı için Azure depolama ücretine tabi olursunuz. 
+5. **Trafik Analizi durumu** Için *Açık '* ı seçin.
 6. İşleme aralığını seçin. Seçim yapmanız temelinde, akış günlüklerinizi depolama hesabından toplanacak ve Trafik Analizi tarafından işlenir. Her 1 saatte bir veya 10 dakikada bir işleme aralığı seçebilirsiniz. 
-7. Var olan bir Log Analytics (OMS) çalışma alanı seçin veya yeni bir **çalışma alanı** oluştur ' u seçerek yeni bir tane oluşturun. Log Analytics çalışma alanı, analiz oluşturmak için kullanılan toplanmış ve dizine alınmış verileri depolamak için Trafik Analizi tarafından kullanılır. Mevcut bir çalışma alanını seçerseniz, [desteklenen bölgelerden](#supported-regions-log-analytics-workspaces) birinde bulunmalıdır ve yeni sorgu diline yükseltilir. Mevcut bir çalışma alanını yükseltmek veya desteklenen bir bölgede çalışma alanınız yoksa yeni bir tane oluşturun. Sorgu dilleri hakkında daha fazla bilgi için bkz. [Azure Log Analytics yükseltme yeni günlük araması](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+7. Var olan bir Log Analytics (OMS) çalışma alanı seçin veya yeni bir **çalışma alanı** oluştur ' u seçerek yeni bir tane oluşturun. Log Analytics çalışma alanı, analiz oluşturmak için kullanılan toplanmış ve dizine alınmış verileri depolamak için Trafik Analizi tarafından kullanılır. Mevcut bir çalışma alanını seçerseniz, [desteklenen bölgelerden](#supported-regions-log-analytics-workspaces) birinde bulunmalıdır ve yeni sorgu diline yükseltilir. Mevcut bir çalışma alanını yükseltmek veya desteklenen bir bölgede çalışma alanınız yoksa yeni bir tane oluşturun. Sorgu dilleri hakkında daha fazla bilgi için bkz. [Azure Log Analytics yükseltme yeni günlük araması](../azure-monitor/log-query/log-query-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json).
 
 > [!NOTE]
 >Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
@@ -271,7 +271,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
 - Kötü amaçlı izin verilen/engellenen trafik istatistikleri
   - Bir ana bilgisayar neden kötü amaçlı trafik alıyor ve kötü amaçlı kaynaklardan akışa neden izin veriliyor? Bu davranış daha fazla araştırma ve büyük olasılıkla yapılandırma iyileştirmesi gerektirir.
 
-    Aşağıdaki resimde gösterildiği gibi, **ana bilgisayar**altında **Tümünü göster**' i seçin:
+    Aşağıdaki resimde gösterildiği gibi, **ana bilgisayar** altında **Tümünü göster**' i seçin:
 
     ![En fazla trafik ayrıntılarının bulunduğu bir ana bilgisayar gösterilen Pano](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
@@ -287,7 +287,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
     - Bir konağın önemli miktarda trafik için izin verme veya engelleme
 - En sık kullanılan uygulama protokolü, en çok kullanılan konak çiftleri arasında:
     - Bu uygulamalar bu ağda izin veriyor mu?
-    - Uygulamalar düzgün şekilde yapılandırılmış mı? İletişim için uygun protokolü kullanıyor mu? Aşağıdaki resimde gösterildiği gibi **sık kullanılan konuşma**altındaki **Tümünü** göster ' i seçin:
+    - Uygulamalar düzgün şekilde yapılandırılmış mı? İletişim için uygun protokolü kullanıyor mu? Aşağıdaki resimde gösterildiği gibi **sık kullanılan konuşma** altındaki **Tümünü** göster ' i seçin:
 
         ![En sık görülen konuşmayı görüntüleyen Pano](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
 
@@ -299,7 +299,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
 
 - Ortamınızda en çok kullanılan uygulama protokolü ve ana bilgisayar çiftleri en çok uygulama protokolünü kullanıyor mu?
     - Bu uygulamalar bu ağda izin veriyor mu?
-    - Uygulamalar düzgün şekilde yapılandırılmış mı? İletişim için uygun protokolü kullanıyor mu? Beklenen davranış, 80 ve 443 gibi yaygın bağlantı noktalarıdır. Standart iletişim için, olağan dışı bağlantı noktaları görüntülenirse, bir yapılandırma değişikliği gerekebilir. Aşağıdaki resimde, **uygulama bağlantı noktası**altında **Tümünü göster** ' i seçin:
+    - Uygulamalar düzgün şekilde yapılandırılmış mı? İletişim için uygun protokolü kullanıyor mu? Beklenen davranış, 80 ve 443 gibi yaygın bağlantı noktalarıdır. Standart iletişim için, olağan dışı bağlantı noktaları görüntülenirse, bir yapılandırma değişikliği gerekebilir. Aşağıdaki resimde, **uygulama bağlantı noktası** altında **Tümünü göster** ' i seçin:
 
         ![Üst düzey uygulama protokollerini gösteren Pano](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
 
@@ -315,7 +315,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
     - Her VPN SKU 'SU belirli bir bant genişliği miktarına izin verir. VPN ağ geçitleri az kullanılıyor mu?
     - Ağ geçitleriniz kapasiteye ulaşıyor mu? Sonraki daha yüksek SKU 'ya yükseltmeniz mı gerekiyor?
 - VPN ağ geçidi üzerinden hangi bağlantı noktası üzerinden en fazla söyleşen ana bilgisayar var?
-    - Bu model normal midir? Aşağıdaki resimde gösterildiği gibi, **VPN Gateway**altında **Tümünü göster** ' i seçin:
+    - Bu model normal midir? Aşağıdaki resimde gösterildiği gibi, **VPN Gateway** altında **Tümünü göster** ' i seçin:
 
         ![Büyük küçük harfe sahip Pano üst etkin VPN bağlantıları](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
 
@@ -331,7 +331,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
   - Bir veri merkezinde daha fazla yük gözlemlerseniz, verimli trafik dağıtımı için plan yapabilirsiniz.
   - Veri merkezinde standart dışı ağlarda söyleşmek gerekirse, bunları engellemek için NSG kurallarını düzeltin.
 
-    Aşağıdaki resimde gösterildiği gibi **ortamınızın**altındaki **Haritayı görüntüle** ' yi seçin:
+    Aşağıdaki resimde gösterildiği gibi **ortamınızın** altındaki **Haritayı görüntüle** ' yi seçin:
 
     ![Büyük/küçük harf trafiği dağıtımını gösteren Pano](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
@@ -353,7 +353,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
   - Hangi sanal ağın hangi sanal ağa dönüştürüleşdiğinin bilinmesi. Konuşma beklenmiyorsa, düzeltilebilir.
   - Standart dışı ağlarda bir sanal ağla iletişim varsa, standart dışı ağları engellemek için NSG kurallarını düzeltebilirsiniz.
  
-    Aşağıdaki resimde gösterildiği gibi **ortamınız**altında **sanal ağları görüntüle** ' yi seçin:
+    Aşağıdaki resimde gösterildiği gibi **ortamınız** altında **sanal ağları görüntüle** ' yi seçin:
 
     ![Sanal ağ dağıtımını gösteren Pano](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 

@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8db4d4ae56a5a0ee0c92de5d9822614a3270b1c5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738150"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948689"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundan NSG akış günlüklerini yapılandırma
 
 > [!div class="op_single_selector"]
-> - [Azure portalındaki](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure portalı](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) , Azure 'un [altyapınızı kod olarak](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)yönetmenin yerel ve güçlü bir yoludur.
+[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) , Azure 'un [altyapınızı kod olarak](/azure/devops/learn/what-is-infrastructure-as-code)yönetmenin yerel ve güçlü bir yoludur.
 
-Bu makalede, Azure Resource Manager şablonu ve Azure PowerShell kullanarak el ile [NSG akış günlüklerinin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) nasıl etkinleştirileceği gösterilmektedir. NSG akış günlüğü nesnesinin özelliklerine genel bir bakış sunarak ve ardından birkaç örnek şablon tarafından başlayacağız. Ardından, şablonu yerel bir PowerShell örneği kullanarak dağıtın.
+Bu makalede, Azure Resource Manager şablonu ve Azure PowerShell kullanarak el ile [NSG akış günlüklerinin](./network-watcher-nsg-flow-logging-overview.md) nasıl etkinleştirileceği gösterilmektedir. NSG akış günlüğü nesnesinin özelliklerine genel bir bakış sunarak ve ardından birkaç örnek şablon tarafından başlayacağız. Ardından, şablonu yerel bir PowerShell örneği kullanarak dağıtın.
 
 
 ## <a name="nsg-flow-logs-object"></a>NSG akış günlükleri nesnesi
 
 NSG akış günlüğü nesnesi tüm parametreleri aşağıda gösterilmiştir.
-Özelliklere yönelik kapsamlı bir genel bakış için [NSG akış günlükleri şablon başvurusunu](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)okuyabilirsiniz.
+Özelliklere yönelik kapsamlı bir genel bakış için [NSG akış günlükleri şablon başvurusunu](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)okuyabilirsiniz.
 
 ```json
 {
@@ -76,8 +76,8 @@ Bir Microsoft. Network/networkWatchers/flowLogs kaynağı oluşturmak için, yuk
 
 Azure Resource Manager şablonlarını ilk kez kullanıyorsanız aşağıdaki bağlantıları kullanarak bunlarla ilgili daha fazla bilgi edinebilirsiniz.
 
-* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
-* [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
+* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+* [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 
 Aşağıda NSG akış günlüklerini ayarlamaya yönelik tüm şablonlara yönelik iki örnek verilmiştir.
@@ -172,14 +172,14 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 ## <a name="verifying-your-deployment"></a>Dağıtımınız doğrulanıyor
 
-Dağıtımınızın başarılı olup olmadığını denetlemek için birkaç yol vardır. PowerShell konsolunuzun "başarılı" olarak "ProvisioningState" gösterilmesi gerekir. Ayrıca, değişikliklerinizi onaylamak için [NSG akış günlükleri portalı sayfasını](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) ziyaret edebilirsiniz. Dağıtım ile ilgili sorunlar varsa, [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları gidermeye](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)göz atın.
+Dağıtımınızın başarılı olup olmadığını denetlemek için birkaç yol vardır. PowerShell konsolunuzun "başarılı" olarak "ProvisioningState" gösterilmesi gerekir. Ayrıca, değişikliklerinizi onaylamak için [NSG akış günlükleri portalı sayfasını](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) ziyaret edebilirsiniz. Dağıtım ile ilgili sorunlar varsa, [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları gidermeye](../azure-resource-manager/templates/common-deployment-errors.md)göz atın.
 
 ## <a name="deleting-your-resource"></a>Kaynağınız siliniyor
-Azure, "tamamlanmış" dağıtım modundan kaynak silmeye izin vermez. Bir akış günlükleri kaynağını silmek için, silmek istediğiniz kaynağı dahil etmeden bir dağıtımı tamamlanmış modda belirtin. [Tüm dağıtım modu](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode) hakkında daha fazla bilgi edinin
+Azure, "tamamlanmış" dağıtım modundan kaynak silmeye izin vermez. Bir akış günlükleri kaynağını silmek için, silmek istediğiniz kaynağı dahil etmeden bir dağıtımı tamamlanmış modda belirtin. [Tüm dağıtım modu](../azure-resource-manager/templates/deployment-modes.md#complete-mode) hakkında daha fazla bilgi edinin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kullanarak NSG akış verilerinizi görselleştirmeyi öğrenin:
 * [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [Açık kaynak araçları](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-* [Azure Trafik Analizi](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Azure Trafik Analizi](./traffic-analytics.md)

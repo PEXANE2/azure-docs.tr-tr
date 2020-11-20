@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531398"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950745"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma 
 
@@ -25,7 +25,7 @@ Genel olarak, bir cihazın sağlamasını kaldırma işlemi iki adımdan oluşur
    - Bir cihazın kaydını nasıl kaydedeceğinizi öğrenmek için bkz. [Azure IoT Hub cihaz sağlama hizmeti 'nden cihaz ayırma](how-to-revoke-device-access-portal.md).
    - Sağlama hizmeti SDK 'larının birini kullanarak bir cihazın programlı olarak nasıl kaydedileceğini öğrenmek için bkz. cihaz kayıtlarını [hizmet SDK 'ları Ile yönetme](how-to-manage-enrollments-sdks.md).
 
-2. Gelecekteki iletişimleri ve veri aktarımını engellemek için IoT Hub cihazın kaydını silin. Yeniden devre dışı bırakıp, kimlik kayıt defterinde cihazın girişini, sağlandığı IoT Hub için geçici olarak devre dışı bırakabilir veya kalıcı olarak silebilirsiniz. Disablement hakkında daha fazla bilgi için bkz. [cihazları devre dışı bırakma](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . [Azure portal](https://portal.azure.com)IoT Hub kaynağınız Için "cihaz yönetimi/IoT cihazları" başlığına bakın.
+2. Gelecekteki iletişimleri ve veri aktarımını engellemek için IoT Hub cihazın kaydını silin. Yeniden devre dışı bırakıp, kimlik kayıt defterinde cihazın girişini, sağlandığı IoT Hub için geçici olarak devre dışı bırakabilir veya kalıcı olarak silebilirsiniz. Disablement hakkında daha fazla bilgi için bkz. [cihazları devre dışı bırakma](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) . [Azure portal](https://portal.azure.com)IoT Hub kaynağınız Için "cihaz yönetimi/IoT cihazları" başlığına bakın.
 
 Bir cihazın sağlamasını kaldırmak için alacağınız tam adımlar, kanıtlama mekanizmasına ve sağlama hizmetinizdeki ilgili kayıt girişine bağlıdır. Aşağıdaki bölümlerde, kayıt ve kanıtlama türüne göre işlem için genel bir bakış sağlanmaktadır.
 
@@ -63,4 +63,4 @@ Kayıt gruplarıyla, dikkate alınması gereken iki senaryo vardır:
 
 - Bir kayıt grubundan tek bir cihazı sağlamayı kaldırmak için:
   1. Yaprak (cihaz) sertifikası için devre dışı bir bireysel kayıt oluşturun. Bu, bu cihaz için sağlama hizmetine erişimi iptal ederken, kayıt grubunun imzalama sertifikasına sahip diğer cihazlara erişim izni almaya devam eder. Cihazın devre dışı bırakılmış kaydını silmeyin. Bunun yapılması, cihazın kayıt grubuna yeniden kaydolmasını sağlar. 
-  2. Cihazın sağlandığı IoT Hub 'ını bulmak için bu kayıt grubu için sağlanan cihazların listesini kullanın ve bu hub 'ın kimlik kayıt defterinde devre dışı bırakın ya da silin. 
+  2. Cihazın sağlandığı IoT Hub 'ını bulmak için bu kayıt grubu için sağlanan cihazların listesini kullanın ve bu hub 'ın kimlik kayıt defterinde devre dışı bırakın ya da silin.

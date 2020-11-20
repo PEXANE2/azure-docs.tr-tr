@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972025"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950746"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Yedekleme kümesinden StorSimple birimini geri yükleme
 
@@ -45,7 +45,7 @@ Bir geri yükleme işlemine başlamadan önce, aşağıdaki uyarıları gözden 
 
 ## <a name="how-does-restore-work"></a>Geri yükleme nasıl çalışır?
 
-Güncelleştirme 4 veya üstünü çalıştıran cihazlarda heatmap tabanlı bir geri yükleme uygulanır. Verilere erişmek için ana bilgisayar istekleri cihaza ulaştığında, bu istekler izlenir ve bir ısı haritasını oluşturulur. Yüksek istek hızı, daha yüksek bir ısı ile veri öbeklerinin sonucunu azaltır ve daha düşük bir istek hızı daha düşük olan parçalara çevrilir. Verilere en az iki kez erişmeniz _gerekir._ Değiştirilen bir dosya aynı zamanda _sık_erişimli olarak işaretlenir. Geri yüklemeyi başlattığınızda, verilerin öngörülü olarak kullanılması heatmap 'e göre oluşur. Güncelleştirme 4 ' ten önceki sürümler için, veriler yalnızca erişim temelinde geri yükleme sırasında indirilir.
+Güncelleştirme 4 veya üstünü çalıştıran cihazlarda heatmap tabanlı bir geri yükleme uygulanır. Verilere erişmek için ana bilgisayar istekleri cihaza ulaştığında, bu istekler izlenir ve bir ısı haritasını oluşturulur. Yüksek istek hızı, daha yüksek bir ısı ile veri öbeklerinin sonucunu azaltır ve daha düşük bir istek hızı daha düşük olan parçalara çevrilir. Verilere en az iki kez erişmeniz _gerekir._ Değiştirilen bir dosya aynı zamanda _sık_ erişimli olarak işaretlenir. Geri yüklemeyi başlattığınızda, verilerin öngörülü olarak kullanılması heatmap 'e göre oluşur. Güncelleştirme 4 ' ten önceki sürümler için, veriler yalnızca erişim temelinde geri yükleme sırasında indirilir.
 
 Aşağıdaki uyarılar, heatmap tabanlı geri yüklemeler için geçerlidir:
 
@@ -63,7 +63,7 @@ Güncelleştirme 4 ' te, Windows PowerShell cmdlet 'leri çalışan yeniden dold
 
 * `Set-HcsRehydrationJob` -Bu cmdlet, yeniden doldurma işlemi devam ederken, yeniden doldurma işini duraklatmanızı, durdurmanızı, sürdürmenizi sağlar.
 
-Yeniden doldurma cmdlet 'leri hakkında daha fazla bilgi için, [StorSimple Için Windows PowerShell cmdlet başvurusuna](https://technet.microsoft.com/library/dn688168.aspx)bakın.
+Yeniden doldurma cmdlet 'leri hakkında daha fazla bilgi için, [StorSimple Için Windows PowerShell cmdlet başvurusuna](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)bakın.
 
 Otomatik yeniden doldurma sayesinde genellikle daha yüksek geçici okuma performansı beklenmektedir. Geliştirmelerin gerçek büyüklüğü, erişim deseninin, veri dalgalanması ve veri türü gibi çeşitli faktörlere bağlıdır. 
 
@@ -137,4 +137,3 @@ Geri yükleme işlemini gerçekleştirmek için, birimi konakta çevrimdışına
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple birimlerini yönetmeyi](storsimple-8000-manage-volumes-u2.md)öğrenin.
 * StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
-

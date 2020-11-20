@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d652f1eae62270fa8968d64a2bd15a1261dca673
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699381"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949199"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal kullanarak bağlantı Izleyicisinde izleyici oluşturma
 
@@ -102,7 +102,7 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
 
 * **Test grubunu devre dışı bırak**: Bu onay kutusunu, test grubunun belirttiği tüm kaynaklar ve hedefler için izlemeyi devre dışı bırakmak üzere seçebilirsiniz. Bu seçim varsayılan olarak temizlenir.
 * **Ad**: test grubunuzu adlandırın.
-* **Kaynaklar**: aracılar bunlara yüklenmişse Azure sanal makinelerini ve şirket içi makineleri kaynak olarak belirtebilirsiniz. Kaynağınız için bir aracı yükleme hakkında bilgi edinmek için bkz. [izleme aracılarını yükleme](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+* **Kaynaklar**: aracılar bunlara yüklenmişse Azure sanal makinelerini ve şirket içi makineleri kaynak olarak belirtebilirsiniz. Kaynağınız için bir aracı yükleme hakkında bilgi edinmek için bkz. [izleme aracılarını yükleme](./connection-monitor-overview.md#install-monitoring-agents).
    * Azure aracılarını seçmek için **Azure uç noktaları** sekmesini seçin. Burada yalnızca bağlantı izleyicisini oluştururken belirttiğiniz bölgeye bağlı olan VM 'Leri görürsünüz. Varsayılan olarak VM 'Ler, ait oldukları abonelikte gruplandırılır. Bu gruplar daraltılmıştır. 
    
        **Abonelik** düzeyinden hiyerarşideki diğer düzeylere ayrıntıya gidebilirsiniz:
@@ -117,7 +117,7 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
 
    * Şirket içi aracıları seçmek için, **Azure dışı uç noktaları** sekmesini seçin. Varsayılan olarak, aracılar bölgelere göre çalışma alanları halinde gruplandırılır. Tüm bu çalışma alanlarının yapılandırılmış Ağ Performansı İzleyicisi vardır. 
    
-       Çalışma alanınıza Ağ Performansı İzleyicisi eklemeniz gerekiyorsa [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)'nden alın. Ağ Performansı İzleyicisi ekleme hakkında daha fazla bilgi için bkz. [Azure izleyici 'de çözümleri izleme](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+       Çalışma alanınıza Ağ Performansı İzleyicisi eklemeniz gerekiyorsa [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)'nden alın. Ağ Performansı İzleyicisi ekleme hakkında daha fazla bilgi için bkz. [Azure izleyici 'de çözümleri izleme](../azure-monitor/insights/solutions.md). 
    
        **Bağlantı Izleyicisi oluştur** altında, **temel bilgiler** sekmesinde varsayılan bölge seçilidir. Bölgeyi değiştirirseniz, yeni bölgedeki çalışma alanlarından aracılar seçebilirsiniz. Bir veya daha fazla aracıyı veya alt ağı seçebilirsiniz. **Alt ağ** görünümünde, izleme Için belirli IP 'leri seçebilirsiniz. Birden çok alt ağ eklerseniz, **OnPremises_Network_1** adlı özel bir şirket içi ağ oluşturulur. **Gruba** göre grupla ' yı Group By seçicisine göre de değiştirebilirsiniz.
 
@@ -140,7 +140,7 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
     
     * Azure olmayan aracıları hedef olarak seçmek için **Azure dışı uç noktaları** sekmesini seçin. Varsayılan olarak, aracılar bölgelere göre çalışma alanları halinde gruplandırılır. Tüm bu çalışma alanlarının yapılandırılmış Ağ Performansı İzleyicisi var. 
     
-      Çalışma alanınıza Ağ Performansı İzleyicisi eklemeniz gerekiyorsa Azure Marketi 'nden alın. Ağ Performansı İzleyicisi ekleme hakkında daha fazla bilgi için bkz. [Azure izleyici 'de çözümleri izleme](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+      Çalışma alanınıza Ağ Performansı İzleyicisi eklemeniz gerekiyorsa Azure Marketi 'nden alın. Ağ Performansı İzleyicisi ekleme hakkında daha fazla bilgi için bkz. [Azure izleyici 'de çözümleri izleme](../azure-monitor/insights/solutions.md). 
 
        **Bağlantı Izleyicisi oluştur** altında, **temel bilgiler**   sekmesinde varsayılan bölge seçilidir. Bölgeyi değiştirirseniz, yeni bölgedeki çalışma alanlarından aracılar seçebilirsiniz. Bir veya daha fazla aracıyı veya alt ağı seçebilirsiniz. **Alt ağ** görünümünde, izleme Için belirli IP 'leri seçebilirsiniz. Birden çok alt ağ eklerseniz, **OnPremises_Network_1** adlı özel bir şirket içi ağ oluşturulur.  
 
@@ -182,7 +182,7 @@ Azure portal, bir bağlantı izleyicisine yönelik uyarılar oluşturmak için b
 
 - **Koşul adı**: Bu uyarı, `Test Result(preview)` ölçümde oluşturulur. Bağlantı İzleyicisi testinin sonucu başarısız olan bir sonuç olduğunda, uyarı kuralı harekete geçmeyecektir. 
 
-- **Eylem grubu adı**: e-postanızı doğrudan girebilir veya eylem grupları aracılığıyla uyarı oluşturabilirsiniz. E-postanızı doğrudan girerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur. E-posta KIMLIĞI, bu eylem grubuna eklenir. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Bir eylem grubu oluşturmayı öğrenmek için [Azure Portal eylem grupları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)bölümüne bakın. Uyarı oluşturulduktan sonra [uyarılarınızı yönetebilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+- **Eylem grubu adı**: e-postanızı doğrudan girebilir veya eylem grupları aracılığıyla uyarı oluşturabilirsiniz. E-postanızı doğrudan girerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur. E-posta KIMLIĞI, bu eylem grubuna eklenir. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Bir eylem grubu oluşturmayı öğrenmek için [Azure Portal eylem grupları oluşturma](../azure-monitor/platform/action-groups.md)bölümüne bakın. Uyarı oluşturulduktan sonra [uyarılarınızı yönetebilirsiniz](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Uyarı kuralı adı**: bağlantı izleyicisinin adı.
 
@@ -201,5 +201,5 @@ Bağlantı izleyicilerinde bu ölçek sınırları vardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [İzleme verilerini çözümlemeyi ve uyarıları ayarlamayı](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)öğrenin.
-* [Ağınızdaki sorunları tanılamayı](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)öğrenin.
+* [İzleme verilerini çözümlemeyi ve uyarıları ayarlamayı](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)öğrenin.
+* [Ağınızdaki sorunları tanılamayı](./connection-monitor-overview.md#diagnose-issues-in-your-network)öğrenin.

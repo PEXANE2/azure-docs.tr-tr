@@ -10,18 +10,18 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cdd7f4957b22eb4c87d60e3d57b0cec675659963
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7ba0604c0fb1a51c5276f2a28fb0e39b878b7639
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131811"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949573"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini yerelleştirin
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) dil özelleştirmesi, müşterinizin ihtiyaçlarını karşılamak için farklı dillere sahip etmenize olanak tanır. Microsoft, [36 dil](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)için Çeviriler sağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki tüm metinleri özelleştirebilirsiniz. 
+Azure Active Directory B2C (Azure AD B2C) dil özelleştirmesi, müşterinizin ihtiyaçlarını karşılamak için farklı dillere sahip etmenize olanak tanır. Microsoft, [36 dil](./user-flow-language-customization.md#supported-languages)için Çeviriler sağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki tüm metinleri özelleştirebilirsiniz. 
 
 Bu makalede, Kullanıcı bağlantısı için ilkedeki birden çok yerel ayarı veya dili nasıl destekleyeceği gösterilmektedir. Yerelleştirme üç adım gerektirir: desteklenen dillerin açık listesini ayarlayın, dile özgü dizeler ve koleksiyonlar sağlayın ve sayfanın [içerik tanımını](contentdefinitions.md) düzenleyin. 
 
@@ -245,8 +245,8 @@ Aşağıdaki örnekte, kayıt veya oturum açma sayfasına ve yerel hesap kaydol
 
 1. Uzantı dosyasını kaydedin.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Arama yapın ve **Azure AD B2C**seçin.
-1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. Arama yapın ve **Azure AD B2C** seçin.
+1. **İlkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Özel Ilkeyi karşıya yükle**' yi seçin.
 1. Daha önce değiştirdiğiniz uzantıları dosyasını karşıya yükleyin.
 
@@ -265,4 +265,3 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_s
 
 - IEF başvurusunda [Yerelleştirme](localization.md) öğesi hakkında daha fazla bilgi edinin.
 - Azure AD B2C bulunan [Yerelleştirme dize kimliklerinin](localization-string-ids.md) listesine bakın.
-

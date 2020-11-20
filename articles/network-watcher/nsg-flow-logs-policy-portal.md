@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: damendo
-ms.openlocfilehash: a603f55bd5bff7b2ed68623e9c712faaf8ac766f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 54b87da73d4427234e65e406d183525d55c6c00d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877138"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948553"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>Hızlı başlangıç: Azure Ilkesi kullanarak NSG akış günlüklerini dağıtma ve yönetme 
 
@@ -25,8 +25,8 @@ ms.locfileid: "91877138"
 Azure İlkesi, kuruluş standartlarının uygulanmasına ve büyük ölçekte uyumluluk değerlendirmesi yapılmasına yardımcı olur. Azure Ilkesi için genel kullanım örnekleri, kaynak tutarlılığı, mevzuata uyumluluk, güvenlik, maliyet ve yönetim için idare uygulamayı içerir. Bu makalede, akış günlükleri kurulumunuzu yönetmek için NSG akış günlükleri için kullanılabilen iki yerleşik ilke kullanacağız. İlk ilke, akış günlükleri etkin olmayan tüm NSG 'leri işaretler. İkinci ilke, akış günlükleri etkin olmadan NSG 'ler için akış günlüklerini otomatik olarak dağıtır. 
 
 Azure ilkesini ilk kez oluşturuyorsanız, şu şekilde okuyabilirsiniz: 
-- [Azure Ilkesine genel bakış](https://docs.microsoft.com/azure/governance/policy/overview) 
-- [İlke oluşturma öğreticisi](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal#create-a-policy-assignment).
+- [Azure Ilkesine genel bakış](../governance/policy/overview.md) 
+- [İlke oluşturma öğreticisi](../governance/policy/assign-policy-portal.md#create-a-policy-assignment).
 
 
 ## <a name="locate-the-policies"></a>İlkeleri bulma
@@ -134,5 +134,5 @@ Sonuçları denetlemek için, Uyumluluk sekmesini açın ve atamalarınızın ad
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
--   Bu [öğreticiyi](https://docs.microsoft.com/azure/network-watcher/quickstart-configure-network-security-group-flow-logs-from-arm-template) kullanın, akış günlüklerini dağıtmak ve trafık ANALIZI için ARM şablonları kullanarak daha ayrıntılı bir şekilde devam edin.
--   [Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/) hakkında daha fazla bilgi
+-   Bu [öğreticiyi](./quickstart-configure-network-security-group-flow-logs-from-arm-template.md) kullanın, akış günlüklerini dağıtmak ve trafık ANALIZI için ARM şablonları kullanarak daha ayrıntılı bir şekilde devam edin.
+-   [Ağ İzleyicisi](./index.yml) hakkında daha fazla bilgi

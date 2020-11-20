@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184f01f27023ce5976e5204bed384df54bab82d4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87035851"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950440"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure üzerinde çalışan SAP Sertifikaları ve yapılandırması
 
@@ -54,7 +55,7 @@ Başvur
 | --- | --- | --- | --- |
 | SAP Business Suite yazılımı | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3, E2as_v4 E64as_v4 M208s_v2 M208ms_v2, M416s_v2 M416ms_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,, |
 | SAP Business hepsi-tek | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3, E2as_v4 E64as_v4 M208s_v2 M208ms_v2, M416s_v2 M416ms_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,, |
-| SAP BusinessObjects bı | Windows |Yok |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3, E2as_v4 E64as_v4 M208s_v2 M208ms_v2, M416s_v2 M416ms_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,, |
+| SAP BusinessObjects bı | Windows |YOK |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3, E2as_v4 E64as_v4 M208s_v2 M208ms_v2, M416s_v2 M416ms_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,, |
 | SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ATıCı |A5 A11, D11 to D14, DS11 to DS14 DS15_v2 DS11_v2, GS1 to GS5 D2s_v3, D2as_v4 D64s_v3, D64as_v4 E2s_v3 E64s_v3, E2as_v4 E64as_v4 M208s_v2 M208ms_v2, M416s_v2 M416ms_v2, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,,,, |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Azure 'da desteklenen diğer SAP Iş yükü

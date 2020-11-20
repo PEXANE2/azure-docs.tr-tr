@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2020
 ms.author: damendo
-ms.openlocfilehash: 97349071fee6a95623e5b5efdc0c9818cfe7b811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84764e73ec5b4ada8c204147def310326a3c7bdd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87388481"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948434"
 ---
 # <a name="moving-azure-network-watcher-resources-across-regions"></a>Azure ağ Izleyicisi kaynaklarını bölgeler arasında taşıma
 
@@ -29,5 +29,5 @@ Ağ Izleyicisi kaynağı, ağ Izleyicisi için arka uç hizmetini temsil eder ve
 Kaynakları bölgeler arasında taşımak, kaynak türünün herhangi bir alt kaynağı için şu anda desteklenmiyor `*networkWatcher*` .
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* Ağ izleyicisine [genel bakış](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) konusunu okuyun
-* Bkz. [Ağ İzleyicisi hakkında SSS](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions)
+* Ağ izleyicisine [genel bakış](./network-watcher-monitoring-overview.md) konusunu okuyun
+* Bkz. [Ağ İzleyicisi hakkında SSS](./frequently-asked-questions.md)

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efd3f0f19325bdaccf98d10306c90488c78b3de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b506ada0bc072a4174de6f884d1814a63f1f93ca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653775"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949369"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -774,7 +775,7 @@ Burada, bu dağıtım senaryosu için Azure Resource Manager şablonları edineb
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Altyapıyı mimari Şablon 3 için hazırlama
 
-Altyapıyı hazırlayabilir ve **Çoklu SID**için SAP 'yi yapılandırabilirsiniz. Örneğin, *var olan* bir küme yapılandırmasına ek BIR SAP ascs/SCS örneği ekleyebilirsiniz. Daha fazla bilgi için, [Azure Resource Manager ' de SAP çoklu SID yapılandırması oluşturmak üzere mevcut bir küme yapılandırmasına ek SAP ASCS/SCS örneği yapılandırma][sap-ha-multi-sid-guide]konusuna bakın.
+Altyapıyı hazırlayabilir ve **Çoklu SID** için SAP 'yi yapılandırabilirsiniz. Örneğin, *var olan* bir küme yapılandırmasına ek BIR SAP ascs/SCS örneği ekleyebilirsiniz. Daha fazla bilgi için, [Azure Resource Manager ' de SAP çoklu SID yapılandırması oluşturmak üzere mevcut bir küme yapılandırmasına ek SAP ASCS/SCS örneği yapılandırma][sap-ha-multi-sid-guide]konusuna bakın.
 
 Yeni bir çoklu SID kümesi oluşturmak istiyorsanız [GitHub 'da çoklu SID hızlı başlangıç şablonlarını](https://github.com/Azure/azure-quickstart-templates)kullanabilirsiniz.
 Yeni bir çoklu SID kümesi oluşturmak için aşağıdaki üç şablonu dağıtmanız gerekir:
@@ -791,7 +792,7 @@ YOKS/SCS şablonu, birden fazla ASCS/SCS örneğini barındıran bir Windows Ser
 
 ASCS/SCS çok düzeyli şablonunu ayarlamak için, [yoks/SCS çok düzeyli şablonunda][sap-templates-3-tier-multisid-xscs-marketplace-image]aşağıdaki parametrelerin değerlerini girin:
 
-  - **Kaynak ön eki**.  Dağıtım sırasında oluşturulan tüm kaynakların ön eki için kullanılan kaynak önekini ayarlayın. Kaynaklar yalnızca bir SAP sistemine ait olmadığından, kaynağın ön eki bir SAP sisteminin SID 'SI değildir.  Ön ek **üç ve altı karakter**arasında olmalıdır.
+  - **Kaynak ön eki**.  Dağıtım sırasında oluşturulan tüm kaynakların ön eki için kullanılan kaynak önekini ayarlayın. Kaynaklar yalnızca bir SAP sistemine ait olmadığından, kaynağın ön eki bir SAP sisteminin SID 'SI değildir.  Ön ek **üç ve altı karakter** arasında olmalıdır.
   - **Yığın türü**. SAP sisteminin yığın türünü seçin. Yığın türüne bağlı olarak, Azure Load Balancer SAP sistemine göre yalnızca bir (ABAP veya Java) veya iki (ABAP + Java) özel IP adresi vardır.
   -  **Işletim sistemi türü**. Sanal makinelerin işletim sistemini seçin.
   -  **SAP sistem sayısı**. Bu kümeye yüklemek istediğiniz SAP sistemi sayısını seçin.
@@ -830,7 +831,7 @@ Veritabanı çoklu SID şablonunu ayarlamak için, [veritabanı çoklu SID şabl
 - **Işletim sistemi türü**. Sanal makinelerin işletim sistemini seçin.
 - **DbType**. Kümeye yüklemek istediğiniz veritabanının türünü seçin. Microsoft SQL Server yüklemek istiyorsanız **SQL** ' i seçin. SAP HANA sanal makinelere yüklemeyi planlıyorsanız **Hana** ' yı seçin. Doğru işletim sistemi türünü seçtiğinizden emin olun: SQL için **Windows** ' u SEÇIN ve Hana Için bir Linux dağıtımı seçin. Sanal makinelere bağlı Azure Load Balancer seçili veritabanı türünü destekleyecek şekilde yapılandırılacak:
   * **SQL**. Yük dengeleyici 1433 numaralı bağlantı noktasını yük dengelemeye çalışır. SQL Server her zaman kurulum üzerinde bu bağlantı noktasını kullandığınızdan emin olun.
-  * **Hana**. Yük dengeleyici 35015 ve 35017 bağlantı noktalarını yük dengelemeye çalışır. **50**örnek numarasıyla SAP HANA yüklediğinizden emin olun.
+  * **Hana**. Yük dengeleyici 35015 ve 35017 bağlantı noktalarını yük dengelemeye çalışır. **50** örnek numarasıyla SAP HANA yüklediğinizden emin olun.
   Yük dengeleyici, 62550 araştırma bağlantı noktasını kullanır.
 - **SAP sistem boyutu**. Yeni sistemin sunmayacak olan SAPS sayısını ayarlayın. Sisteme kaç tane SAPS isteyeceğiz emin değilseniz, SAP Technology Iş ortağınızdan veya sistem tümleştirmenize sorun.
 - **Sistem kullanılabilirliği**. **Ha**'yi seçin.
@@ -852,7 +853,7 @@ Uygulama sunucuları Multi-SID şablonunu ayarlamak için, [uygulama sunucuları
 
 
 ### <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure sanal ağı
-Örneğimizde, Azure sanal ağının adres alanı 10.0.0.0/16 ' dır. Adres aralığı 10.0.0.0/24 olan **alt ağ**adlı bir alt ağ vardır. Tüm sanal makineler ve iç yük dengeleyiciler bu sanal ağda dağıtılır.
+Örneğimizde, Azure sanal ağının adres alanı 10.0.0.0/16 ' dır. Adres aralığı 10.0.0.0/24 olan **alt ağ** adlı bir alt ağ vardır. Tüm sanal makineler ve iç yük dengeleyiciler bu sanal ağda dağıtılır.
 
 > [!IMPORTANT]
 > Konuk işletim sistemi içindeki ağ ayarlarında herhangi bir değişiklik yapmayın. Buna IP adresleri, DNS sunucuları ve alt ağ dahildir. Tüm ağ ayarlarınızı Azure 'da yapılandırın. Dinamik ana bilgisayar Yapılandırma Protokolü (DHCP) hizmeti, ayarlarınızı yayar.
@@ -863,7 +864,7 @@ Uygulama sunucuları Multi-SID şablonunu ayarlamak için, [uygulama sunucuları
 
 Gerekli DNS IP adreslerini ayarlamak için aşağıdaki adımları uygulayın.
 
-1. Azure portal, **DNS sunucuları** dikey penceresinde, sanal ağ **DNS SUNUCULARıNıZ** seçeneğinin **özel DNS**olarak ayarlandığından emin olun.
+1. Azure portal, **DNS sunucuları** dikey penceresinde, sanal ağ **DNS SUNUCULARıNıZ** seçeneğinin **özel DNS** olarak ayarlandığından emin olun.
 2. Sahip olduğunuz ağ türüne göre ayarlarınızı seçin. Daha fazla bilgi için aşağıdaki kaynaklara bakın:
    * Şirket içi DNS sunucularının IP adreslerini ekleyin.  
    Şirket içi DNS sunucularını Azure 'da çalışan sanal makinelere genişletebilirsiniz. Bu senaryoda, DNS hizmetini çalıştırdığınız Azure sanal makinelerinin IP adreslerini ekleyebilirsiniz.
@@ -897,13 +898,13 @@ Gerekli DNS IP adreslerini ayarlamak için aşağıdaki adımları uygulayın.
 
 Kümeyi oluşturduğunuzda, **PR1-ascs-Vir** ve **PR1-DBMS-Vir** sanal ana bilgisayar adlarını ve KÜMENIN kendisini yöneten ilişkili IP adreslerini oluşturun. Bunun nasıl yapılacağı hakkında bilgi için bkz. küme [düğümlerini bir küme yapılandırmasında toplama][sap-ha-guide-8.12.1].
 
-Diğer iki sanal ana bilgisayar adını, **PR1-ascs-SAP** ve **PR1-DBMS-SAP**ve DNS sunucusunda ilişkili IP adreslerini el ile oluşturabilirsiniz. Kümelenmiş SAP ASCS/SCS örneği ve kümelenmiş DBMS örneği bu kaynakları kullanır. Bunun nasıl yapılacağı hakkında bilgi için bkz. [KÜMELENMIŞ SAP yoks/SCS örneği için sanal konak adı oluşturma][sap-ha-guide-9.1.1].
+Diğer iki sanal ana bilgisayar adını, **PR1-ascs-SAP** ve **PR1-DBMS-SAP** ve DNS sunucusunda ilişkili IP adreslerini el ile oluşturabilirsiniz. Kümelenmiş SAP ASCS/SCS örneği ve kümelenmiş DBMS örneği bu kaynakları kullanır. Bunun nasıl yapılacağı hakkında bilgi için bkz. [KÜMELENMIŞ SAP yoks/SCS örneği için sanal konak adı oluşturma][sap-ha-guide-9.1.1].
 
 ### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> SAP sanal makineleri için statik IP adresleri ayarlama
 Kümenizde kullanmak üzere sanal makineleri dağıttıktan sonra, tüm sanal makineler için statik IP adresleri ayarlamanız gerekir. Bunu, Konuk işletim sisteminde değil, Azure sanal ağ yapılandırmasında yapın.
 
 1. Azure Portal, **kaynak grubu**  >  **ağ kartı**  >  **ayarları**  >  **IP adresi**' ni seçin.
-2. **IP adresleri** dikey penceresinde **atama**altında **statik**' ı seçin. **IP adresi** kutusuna, kullanmak istediğiniz IP adresini girin.
+2. **IP adresleri** dikey penceresinde **atama** altında **statik**' ı seçin. **IP adresi** kutusuna, kullanmak istediğiniz IP adresini girin.
 
    > [!NOTE]
    > Ağ kartının IP adresini değiştirirseniz, değişikliği uygulamak için Azure sanal makinelerini yeniden başlatmanız gerekir.  
@@ -941,7 +942,7 @@ SAP Azure Resource Manager şablonu, SAP ASCS/SCS örneği kümesi ve DBMS küme
 
 Azure iç yük dengeleyici için bir statik IP adresi ayarlamak için:
 
-1. İlk dağıtım, iç yük dengeleyici IP adresini **dinamik**olarak ayarlar. Azure portal, **IP adresleri** dikey penceresindeki **atama**altında **statik**' ı seçin.
+1. İlk dağıtım, iç yük dengeleyici IP adresini **dinamik** olarak ayarlar. Azure portal, **IP adresleri** dikey penceresindeki **atama** altında **statik**' ı seçin.
 2. **PR1-lb-ascs** iç yük dengeleyicinin IP adresini SAP ascs/SCS örneğinin sanal ana BILGISAYAR adının IP adresine ayarlayın.
 3. İç yük dengeleyici **PR1-lb-DBMS** IP ADRESINI, DBMS örneğinin sanal ana BILGISAYAR adının IP adresine ayarlayın.
 
@@ -1013,16 +1014,16 @@ Yük dengeleyici **PR1-lb-DBMS** IP ADRESINI, DBMS örneğinin sanal ana BILGISA
 
 SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, bağlantı noktalarının adlarını ve değerlerini varsayılan değerlerle değiştirmeniz gerekir.
 
-1. Azure Portal ** < *SID*>-lb-ascs yük dengeleyici**  >  **Yük Dengeleme kuralları**' nı seçin.
+1. Azure Portal **< *SID*>-lb-ascs yük dengeleyici**  >  **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
-   * Adı
+   * Name
    * Bağlantı noktası
    * Arka uç bağlantı noktası
 
    Örneğin, varsayılan ASCS örnek numarasını 00 ' dan 31 ' e değiştirmek istiyorsanız, Tablo 1 ' de listelenen tüm bağlantı noktaları için değişiklikleri yapmanız gerekir.
 
-   Bağlantı noktası *lbrule3200*için bir güncelleştirme örneği aşağıda verilmiştir.
+   Bağlantı noktası *lbrule3200* için bir güncelleştirme örneği aşağıda verilmiştir.
 
    ![Şekil 16: Azure iç yük dengeleyici için Ass/SCS varsayılan Yük Dengeleme kurallarını değiştirme][sap-ha-guide-figure-3005]
 
@@ -1104,7 +1105,7 @@ SAP yoks/SCS örneği için Windows Server Yük Devretme Kümelemesi kümesi aya
 
 5. Çekirdek küme hizmetinin IP adresini değiştirin. Sunucu IP adresi sanal makine düğümlerinden birine işaret ettiğinden, küme, çekirdek küme hizmetinin IP adresini değiştirene kadar başlayamaz. Bunu, çekirdek küme hizmetinin IP kaynağının **Özellikler** sayfasında yapın.
 
-   Örneğin, **PR1-ascs-Vir**küme sanal ana bilgisayar adı IÇIN bir IP adresi (örneğimizde, **10.0.0.42**) atanmamız gerekiyor.
+   Örneğin, **PR1-ascs-Vir** küme sanal ana bilgisayar adı IÇIN bir IP adresi (örneğimizde, **10.0.0.42**) atanmamız gerekiyor.
 
    ![Şekil 23: Özellikler iletişim kutusunda IP adresini değiştirme][sap-ha-guide-figure-3012]
 
@@ -1161,7 +1162,7 @@ Küme dosya paylaşımının tanığını yapılandırmak şu görevleri içerir
 
 1. Çekirdek disk yerine bir dosya paylaşma tanığı seçin. SIOS Dataman bu seçeneği destekler.
 
-   Bu makaledeki örneklerde, dosya paylaşma tanığı Azure 'da çalışan Active Directory/DNS sunucusudur. Dosya paylaşımının tanığı, **domcontenr-0**olarak adlandırılır. Azure 'a bir VPN bağlantısı yapılandırdığınıza (siteden siteye VPN veya Azure ExpressRoute aracılığıyla), Active Directory/DNS hizmetiniz şirket içi ve dosya paylaşma tanığı çalıştırmak için uygun değildir.
+   Bu makaledeki örneklerde, dosya paylaşma tanığı Azure 'da çalışan Active Directory/DNS sunucusudur. Dosya paylaşımının tanığı, **domcontenr-0** olarak adlandırılır. Azure 'a bir VPN bağlantısı yapılandırdığınıza (siteden siteye VPN veya Azure ExpressRoute aracılığıyla), Active Directory/DNS hizmetiniz şirket içi ve dosya paylaşma tanığı çalıştırmak için uygun değildir.
 
    > [!NOTE]
    > Active Directory/DNS hizmetiniz yalnızca şirket içi çalıştırıyorsa, dosya paylaşma tanığını şirket içinde çalışan Active Directory/DNS Windows işletim sisteminde yapılandırmayın. Azure 'da çalışan küme düğümleri ve şirket içi Active Directory/DNS arasındaki ağ gecikmesi çok büyük olabilir ve bağlantı sorunlarına yol açabilir. Dosya paylaşımının tanığını, küme düğümüne kapat çalıştıran bir Azure sanal makinesinde yapılandırmayı unutmayın.  
@@ -1270,7 +1271,7 @@ Microsoft .NET Framework 3,5, Windows Server 2012 R2 'de otomatik olarak etkinle
 
 Kümedeki her düğüme SIOS Dataman küme sürümü yükleyin. Bir sanal paylaşılan depolama alanını, SIOS \ veri Man ile oluşturmak için eşitlenmiş bir yansıtma oluşturun ve küme paylaşılan depolama benzetimi yapın.
 
-SIOS yazılımını yüklemeden önce, Kullanıcı **veri birimi Persvc**etki alanını oluşturun.
+SIOS yazılımını yüklemeden önce, Kullanıcı **veri birimi Persvc** etki alanını oluşturun.
 
 > [!NOTE]
 > **Data, Persvc** kullanıcısını her iki küme düğümünde **yerel yönetici** grubuna ekleyin.
@@ -1409,7 +1410,7 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 1. Windows DNS Yöneticisi 'nde, yoks/SCS örneğinin sanal ana bilgisayar adı için bir DNS girişi oluşturun.
 
    > [!IMPORTANT]
-   > Ascs/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır (** < *SID*>-lb-ascs**).  
+   > Ascs/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır (**< *SID*>-lb-ascs**).  
    >
    >
 
@@ -1547,7 +1548,7 @@ Araştırma bağlantı noktası eklemek için:
    }
    ```
 
-   **SAP <*SID* > ** küme rolünü çevrimiçine geçirdikten sonra, **probeport** değerinin yeni değere ayarlandığını doğrulayın.
+   **SAP <*SID* >** küme rolünü çevrimiçine geçirdikten sonra, **probeport** değerinin yeni değere ayarlandığını doğrulayın.
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1571,7 +1572,7 @@ Her iki küme düğümünde bir Windows Güvenlik Duvarı araştırma bağlantı
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**Probeport** **62000**olarak ayarlanır. Artık ** \\ \ascsha-clsap\sapmnt** dosya paylaşımıyla, **assha-DBAS**gibi diğer konaklardan erişebilirsiniz.
+**Probeport** **62000** olarak ayarlanır. Artık **\\ \ascsha-clsap\sapmnt** dosya paylaşımıyla, **assha-DBAS** gibi diğer konaklardan erişebilirsiniz.
 
 ### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> Veritabanı örneğini yükler
 
@@ -1607,7 +1608,7 @@ Yük Devretme Kümesi Yöneticisi ve SIOS Dataman yönetimi ve yapılandırma ar
 
 ### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> SAP ASCS/SCS örneği, küme düğümü A 'da çalışıyor
 
-**SAP PR1** küme grubu, A küme düğümü üzerinde çalışıyor. Örneğin, **PR1-ascs-0**üzerinde. **SAP PR1** küme grubunun bir parçası olan ve ascs/SCS örneğinin kullandığı paylaşılan disk sürücüsünü, A düğümünü Kümelendirmek için atayın.
+**SAP PR1** küme grubu, A küme düğümü üzerinde çalışıyor. Örneğin, **PR1-ascs-0** üzerinde. **SAP PR1** küme grubunun bir parçası olan ve ascs/SCS örneğinin kullandığı paylaşılan disk sürücüsünü, A düğümünü Kümelendirmek için atayın.
 
 ![Şekil 61: Yük Devretme Kümesi Yöneticisi: SAP <SID> cluster grubu A kümesi düğümünde çalışıyor][sap-ha-guide-figure-5000]
 
@@ -1636,7 +1637,7 @@ _**Şekil 62:** Jımdataman 'da yerel birimi küme düğümü A 'yı küme düğ
 3. Azure portal küme düğümünü A 'dan yeniden başlatın (Bu, A düğümünden B düğümüne) SAP <*sıd*> küme grubunun otomatik yük devretmesini başlatır).  
 4. Azure PowerShell kullanarak küme düğümünü yeniden başlatma (Bu, A düğümünden B düğümüne, SAP <*sıd*> küme grubunun otomatik yük devretmesini başlatır).
 
-   Yük devretmeden sonra SAP <*sıd*> küme grubu B küme düğümünde çalışıyor. Örneğin, **PR1-ascs-1**üzerinde çalışıyor.
+   Yük devretmeden sonra SAP <*sıd*> küme grubu B küme düğümünde çalışıyor. Örneğin, **PR1-ascs-1** üzerinde çalışıyor.
 
    ![Şekil 63: Yük Devretme Kümesi Yöneticisi ' de, SAP <SID> küme düğümü B üzerinde çalışıyor][sap-ha-guide-figure-5002]
 

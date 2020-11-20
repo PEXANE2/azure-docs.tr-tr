@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a9323cc92567d681ee8c73a62e0b89c17c22b1e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647622"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949420"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
 
@@ -35,13 +35,13 @@ Yönetim uygulamanızın kullanabileceği bir uygulama kaydı oluşturmak için 
 
 ## <a name="user-management-microsoft-graph-operations"></a>Kullanıcı Yönetimi Microsoft Graph işlemleri
 
-[MICROSOFT Graph API](https://docs.microsoft.com/graph/api/resources/user)'de aşağıdaki kullanıcı yönetim işlemleri mevcuttur:
+[MICROSOFT Graph API](/graph/api/resources/user)'de aşağıdaki kullanıcı yönetim işlemleri mevcuttur:
 
-- [Kullanıcıların listesini al](https://docs.microsoft.com/graph/api/user-list)
-- [Kullanıcı oluşturma](https://docs.microsoft.com/graph/api/user-post-users)
-- [Kullanıcı al](https://docs.microsoft.com/graph/api/user-get)
-- [Kullanıcı güncelleştirme](https://docs.microsoft.com/graph/api/user-update)
-- [Kullanıcı silme](https://docs.microsoft.com/graph/api/user-delete)
+- [Kullanıcıların listesini al](/graph/api/user-list)
+- [Kullanıcı oluşturma](/graph/api/user-post-users)
+- [Kullanıcı al](/graph/api/user-get)
+- [Kullanıcı güncelleştirme](/graph/api/user-update)
+- [Kullanıcı silme](/graph/api/user-delete)
 
 ## <a name="user-properties"></a>Kullanıcı özellikleri
 
@@ -60,7 +60,7 @@ Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. 
 
 Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity][graph-objectIdentity]türünde olan User özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar.
 
-| Özellik   | Tür |Açıklama|
+| Özellik   | Tür |Description|
 |:---------------|:--------|:----------|
 |Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir  `federated` .|
 |yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için  `federated` değer verenin adıdır, örneğin `facebook.com`|
@@ -117,7 +117,7 @@ Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure A
 
 Müşterilere yönelik her uygulamanın, toplanacak bilgiler için benzersiz gereksinimleri vardır. Azure AD B2C kiracınız, belirtilen ad, soyadı, şehir ve posta kodu gibi özelliklerde depolanan yerleşik bir bilgi kümesiyle gelir. Azure AD B2C, her müşteri hesabında depolanan özellikler kümesini genişletebilirsiniz. Özel öznitelikler tanımlama hakkında daha fazla bilgi için bkz. [özel öznitelikler (Kullanıcı akışları)](user-flow-custom-attributes.md) ve [özel öznitelikler (özel ilkeler)](custom-policy-custom-attributes.md).
 
-Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulamanın **(istemci) kimliğidir** `b2c-extensions-app` ( **App registrations**  >  Azure Portal **tüm uygulamalarda** uygulama kayıtları bulunur). Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örneğin:
+Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulamanın **(istemci) kimliğidir** `b2c-extensions-app` ( **App registrations**  >  Azure Portal **tüm uygulamalarda** uygulama kayıtları bulunur). Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örnek:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -125,7 +125,7 @@ Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulm
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kod örneği: program aracılığıyla Kullanıcı hesaplarını yönetme
 
-Bu kod örneği, Microsoft Graph API ile etkileşim kurmak için [Microsoft Graph SDK 'sını](https://docs.microsoft.com/graph/sdks/sdks-overview) kullanan bir .NET Core konsol uygulamasıdır. Kodu, bir Azure AD B2C kiracısındaki kullanıcıları programlı bir şekilde yönetmek için API 'nin nasıl çağrılacağını gösterir.
+Bu kod örneği, Microsoft Graph API ile etkileşim kurmak için [Microsoft Graph SDK 'sını](/graph/sdks/sdks-overview) kullanan bir .NET Core konsol uygulamasıdır. Kodu, bir Azure AD B2C kiracısındaki kullanıcıları programlı bir şekilde yönetmek için API 'nin nasıl çağrılacağını gösterir.
 [Örnek Arşivi](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip) Indirebilir, GitHub 'daki [depoya gözatabilir](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) veya depoyu klonlayabilirsiniz:
 
 ```cmd
@@ -152,7 +152,7 @@ Uygulama, yürütebilmeniz için kullanabileceğiniz komutların bir listesini g
 
 ### <a name="code-discussion"></a>Kod tartışması
 
-Örnek kod, Microsoft Graph erişen yüksek kaliteli, verimli ve esnek uygulamalar oluşturmayı basitleştirmek için tasarlanan [Microsoft Graph SDK 'sını](https://docs.microsoft.com/graph/sdks/sdks-overview)kullanır.
+Örnek kod, Microsoft Graph erişen yüksek kaliteli, verimli ve esnek uygulamalar oluşturmayı basitleştirmek için tasarlanan [Microsoft Graph SDK 'sını](/graph/sdks/sdks-overview)kullanır.
 
 Microsoft Graph API 'sine yönelik herhangi bir istek, kimlik doğrulaması için bir erişim belirteci gerektirir. Çözüm, Microsoft Graph SDK ile kullanmak üzere Microsoft kimlik doğrulama kitaplığı 'nın (MSAL) kimlik doğrulama senaryosu tabanlı bir sarmalayıcı sağlayan [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet paketini kullanır.
 
@@ -203,7 +203,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Microsoft Graph SDK 'ları kullanarak API çağrıları yapın](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph bilgileri okuma ve yazma hakkında bilgiler içerir, `$select` döndürülen özellikleri denetlemek, özel sorgu parametreleri sağlamak ve `$filter` ve sorgu parametrelerini kullanmak için kullanın `$orderBy` .
+[Microsoft Graph SDK 'ları kullanarak API çağrıları yapın](/graph/sdks/create-requests) Microsoft Graph bilgileri okuma ve yazma hakkında bilgiler içerir, `$select` döndürülen özellikleri denetlemek, özel sorgu parametreleri sağlamak ve `$filter` ve sorgu parametrelerini kullanmak için kullanın `$orderBy` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -211,5 +211,5 @@ Azure AD B2C kaynakları için desteklenen Microsoft Graph API işlemlerinin tam
 
 <!-- LINK -->
 
-[graph-objectIdentity]: https://docs.microsoft.com/graph/api/resources/objectidentity
+[graph-objectIdentity]: /graph/api/resources/objectidentity
 [graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

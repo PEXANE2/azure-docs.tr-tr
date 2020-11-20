@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 13b379fd3b4f788d79cbb6a9bf6d40cb1693eaf9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699245"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948998"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme
 
@@ -34,7 +34,7 @@ Bağlantı Izleyicisi için bazı kullanım durumları aşağıda verilmiştir:
 - Karma uygulamanızın bir Azure depolama uç noktasına bağlanması gerekiyor. Şirket içi siteniz ve Azure uygulamanız aynı Azure depolama uç noktasına bağlanır. Şirket içi sitenin gecikme sürelerini Azure uygulamasının gecikme süreleriyle karşılaştırmak istiyorsunuz.
 - Şirket içi kurulumlarınız ile bulut uygulamanızı barındıran Azure VM 'Ler arasındaki bağlantıyı denetlemek istiyorsunuz.
 
-Bağlantı Izleyicisi iki özelliği en iyi şekilde birleştirir: ağ Izleyicisi [Bağlantı İzleyicisi (klasik)](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) özelliği ve ağ performansı İzleyicisi (NPM) [hizmet bağlantısı İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), [ExpressRoute izleme](https://docs.microsoft.com/azure/expressroute/how-to-npm)ve [performans izleme](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) özelliği.
+Bağlantı Izleyicisi iki özelliği en iyi şekilde birleştirir: ağ Izleyicisi [Bağlantı İzleyicisi (klasik)](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint) özelliği ve ağ performansı İzleyicisi (NPM) [hizmet bağlantısı İzleyicisi](../azure-monitor/insights/network-performance-monitor-service-connectivity.md), [ExpressRoute izleme](../expressroute/how-to-npm.md)ve [performans izleme](../azure-monitor/insights/network-performance-monitor-performance-monitor.md) özelliği.
 
 Bağlantı Izleyicisi 'nin bazı avantajları aşağıda verilmiştir:
 
@@ -65,7 +65,7 @@ Bağlantı Izleyicisi, bağlantı denetimlerini çalıştırmak için hafif yür
 
 Bağlantı Izleyicisi 'nin Azure VM 'lerinizi izleme kaynakları olarak tanımasını sağlamak için, ağ Izleyicisi Aracısı sanal makine uzantısını bunlara yükler. Bu uzantı, *Ağ İzleyicisi uzantısı* olarak da bilinir. Azure sanal makineleri, uzantının uçtan uca izlemeyi ve diğer gelişmiş işlevleri tetiklemesine gerek duyar. 
 
-[BIR VM oluşturduğunuzda](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)ağ izleyicisi uzantısını yükleyebilirsiniz. Ayrıca, [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)için ağ izleyicisi uzantısını ayrı olarak yükleyebilir, yapılandırabilir ve sorun giderebilirsiniz.
+[BIR VM oluşturduğunuzda](./connection-monitor.md#create-the-first-vm)ağ izleyicisi uzantısını yükleyebilirsiniz. Ayrıca, [Linux](../virtual-machines/extensions/network-watcher-linux.md) ve [Windows](../virtual-machines/extensions/network-watcher-windows.md)için ağ izleyicisi uzantısını ayrı olarak yükleyebilir, yapılandırabilir ve sorun giderebilirsiniz.
 
 Bir ağ güvenlik grubu (NSG) veya güvenlik duvarı için kurallar, kaynak ve hedef arasındaki iletişimi engelleyebilirler. Bağlantı Izleyicisi bu sorunu algılar ve topolojide bir tanılama iletisi olarak gösterir. Bağlantı izlemeyi etkinleştirmek için NSG ve Güvenlik Duvarı kurallarının, kaynak ve hedef arasında TCP veya ıCMP üzerinden paketlere izin verildiğinden emin olun.
 
@@ -73,7 +73,7 @@ Bir ağ güvenlik grubu (NSG) veya güvenlik duvarı için kurallar, kaynak ve h
 
 Bağlantı Izleyicisi 'ni izlemek için kaynak olarak şirket içi makinelerinizi tanımasını sağlamak için, makinelere Log Analytics aracısını yüklersiniz. Ağ Performansı İzleyicisi çözümü etkinleştirin. Bu aracılar Log Analytics çalışma alanlarına bağlanır, bu nedenle aracıların izlemeye başlamadan önce çalışma alanı KIMLIĞI ve birincil anahtarı ayarlamanız gerekir.
 
-Windows makineleri için Log Analytics Aracısı 'nı yüklemek için bkz. [Windows Için Azure izleyici sanal makine uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows).
+Windows makineleri için Log Analytics Aracısı 'nı yüklemek için bkz. [Windows Için Azure izleyici sanal makine uzantısı](../virtual-machines/extensions/oms-windows.md).
 
 Yol güvenlik duvarları veya ağ sanal gereçler (NVA 'lar) içeriyorsa, hedefin erişilebilir olduğundan emin olun.
 
@@ -81,7 +81,7 @@ Yol güvenlik duvarları veya ağ sanal gereçler (NVA 'lar) içeriyorsa, hedefi
 
 Sanal ağı olan tüm abonelikler ağ Izleyicisi ile etkinleştirilir. Aboneliğinizde bir sanal ağ oluşturduğunuzda, sanal ağın bölgesinde ve aboneliğinde ağ Izleyicisi otomatik olarak etkinleştirilir. Bu otomatik etkinleştirme, kaynaklarınızı etkilemez veya ücretlendirir. Ağ Izleyicisi 'nin aboneliğinizde açık olarak devre dışı olmadığından emin olun. 
 
-Daha fazla bilgi için bkz. [ağ Izleyicisini etkinleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+Daha fazla bilgi için bkz. [ağ Izleyicisini etkinleştirme](./network-watcher-create.md).
 
 ## <a name="create-a-connection-monitor"></a>Bağlantı izleyicisi oluşturma 
 
@@ -111,7 +111,7 @@ Bağlantı Izleyicisi aşağıdaki varlıkları içerir:
 
  ![Test grupları ve testler arasındaki ilişkiyi tanımlayan bir bağlantı izleyicisini gösteren diyagram](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-[Azure Portal](connection-monitor-preview-create-using-portal.md) veya [armclient](connection-monitor-preview-create-using-arm-client.md) kullanarak bir bağlantı İzleyicisi oluşturabilirsiniz
+[Azure Portal](./connection-monitor-create-using-portal.md) veya [armclient](./connection-monitor-create-using-template.md) kullanarak bir bağlantı İzleyicisi oluşturabilirsiniz
 
 Bir test grubuna eklediğiniz tüm kaynaklar, hedefler ve test yapılandırması, bireysel testlere bölünmüştür. Kaynak ve hedeflerin nasıl bölündüğü hakkında bir örnek aşağıda verilmiştir:
 
@@ -213,7 +213,7 @@ Kaynak IP 'nin 10.192.64.56 olduğu bağlantı Izleyicisinde yalnızca başarıs
 Yalnızca hedefin outlook.office365.com olduğu bağlantı Izleyicisinde başarısız testleri göstermek için:
 1. Görünümü **Test** olarak değiştirin.
 1. Durum tabanlı filtre için **başarısız**' ı seçin.
-1. Arama alanına *Outlook.office365.com* girin.
+1. Arama alanına *Office.Live.com* girin.
 1. En üst düzey filtre **kapsamında** , **hedefler**' i seçin.
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Outlook.Office365.com hedefi için yalnızca başarısız testleri göstermek üzere filtrelenmiş bir görünümü gösteren ekran görüntüsü" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -348,5 +348,5 @@ Kaynakları Azure VM 'Leri olan ağlarda aşağıdaki sorunlar tespit edilebilir
 
 ## <a name="next-steps"></a>Sonraki Adımlar
     
-   * [Azure Portal kullanarak bağlantı İzleyicisi oluşturmayı](connection-monitor-preview-create-using-portal.md) öğrenin  
-   * [ARMClient kullanarak bağlantı İzleyicisi oluşturmayı](connection-monitor-preview-create-using-arm-client.md) öğrenin  
+   * [Azure Portal kullanarak bağlantı İzleyicisi oluşturmayı](./connection-monitor-create-using-portal.md) öğrenin  
+   * [ARMClient kullanarak bağlantı İzleyicisi oluşturmayı](./connection-monitor-create-using-template.md) öğrenin

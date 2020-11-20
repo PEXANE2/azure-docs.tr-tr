@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: 68a7dd1b9a7af9f2667785c8b822b2771510d00e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562906"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949964"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -25,7 +25,7 @@ Farklı izleme çözümlerine Azure Active Directory B2C (Azure AD B2C) oturum a
 Günlük olaylarını şu şekilde yönlendirebilirsiniz:
 
 * Bir Azure [depolama hesabı](../storage/blobs/storage-blobs-introduction.md).
-* [Log Analytics çalışma alanı](../azure-monitor/platform/resource-logs-collect-workspace.md) (verileri analiz etmek, panolar oluşturmak ve belirli olaylara uyarı vermek için).
+* [Log Analytics çalışma alanı](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (verileri analiz etmek, panolar oluşturmak ve belirli olaylara uyarı vermek için).
 * Azure [Olay Hub 'ı](../event-hubs/event-hubs-about.md) (ve splunk ve sumo Logic Instances ile tümleştirin).
 
 ![Azure İzleyici](./media/azure-monitor/azure-monitor-flow.png)
@@ -34,7 +34,7 @@ Bu makalede, günlüklerin bir Azure Log Analytics çalışma alanına nasıl ak
 
 ## <a name="deployment-overview"></a>Dağıtıma genel bakış
 
-Azure AD B2C [Azure Active Directory izlemeyi](../active-directory/reports-monitoring/overview-monitoring.md)kullanır. Azure AD B2C kiracınızda Azure Active Directory *tanılama ayarlarını* etkinleştirmek Için, [Azure açık thouse](../lighthouse/concepts/azure-delegated-resource-management.md) ' ı kullanarak [bir kaynağı devredebilir](../lighthouse/concepts/azure-delegated-resource-management.md)ve bu da Azure AD B2C ( **hizmet sağlayıcısı** ) bir Azure AD ( **Müşteri** ) kaynağını yönetmesine olanak tanır. Bu makaledeki adımları tamamladıktan sonra, **Azure AD B2C** portalınızdaki [Log Analytics çalışma alanını](../azure-monitor/learn/quick-create-workspace.md) içeren *Azure-AD-B2C-Monitor* kaynak grubuna erişebilirsiniz. Ayrıca, Azure AD B2C günlükleri Log Analytics çalışma alanınıza aktarabilirsiniz.
+Azure AD B2C [Azure Active Directory izlemeyi](../active-directory/reports-monitoring/overview-monitoring.md)kullanır. Azure AD B2C kiracınızda Azure Active Directory *tanılama ayarlarını* etkinleştirmek Için, [Azure açık thouse](../lighthouse/concepts/azure-delegated-resource-management.md) ' ı kullanarak [bir kaynağı devredebilir](../lighthouse/concepts/azure-delegated-resource-management.md)ve bu da Azure AD B2C ( **hizmet sağlayıcısı**) bir Azure AD ( **Müşteri**) kaynağını yönetmesine olanak tanır. Bu makaledeki adımları tamamladıktan sonra, **Azure AD B2C** portalınızdaki [Log Analytics çalışma alanını](../azure-monitor/learn/quick-create-workspace.md) içeren *Azure-AD-B2C-Monitor* kaynak grubuna erişebilirsiniz. Ayrıca, Azure AD B2C günlükleri Log Analytics çalışma alanınıza aktarabilirsiniz.
 
 Bu dağıtım sırasında, Azure aboneliğinizi içeren Kiracıdaki Log Analytics çalışma alanı örneğini yapılandırmak için Azure AD B2C dizininizde bir kullanıcı veya grup yetkilendirirsiniz. Yetkilendirmeyi oluşturmak için aboneliği içeren Azure AD kiracınıza bir [Azure Resource Manager](../azure-resource-manager/index.yml) şablonu dağıtırsınız.
 
@@ -70,7 +70,7 @@ Bu adımda, **hizmet sağlayıcısı** olarak Azure AD B2C kiracınızı seçers
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından **Azure AD B2C** kiracınızı içeren dizini seçin.
-1. **Azure Active Directory** seçin, **genel bakış** ' ı seçin.
+1. **Azure Active Directory** seçin, **genel bakış**' ı seçin.
 1. **KIRACı kimliğini** kaydedin.
 
 ### <a name="32-select-a-security-group"></a>3,2 bir güvenlik grubu seçin
@@ -82,12 +82,12 @@ Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı *grupları*
 > [!IMPORTANT]
 > Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik** olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-1. **Azure Active Directory** **Azure AD B2C** dizininizde seçili durumdayken **gruplar** ' ı seçin ve ardından bir grup seçin. Mevcut bir grubunuz yoksa, bir **güvenlik** grubu oluşturun ve ardından Üyeler ekleyin. Daha fazla bilgi için [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)yordamını izleyin. 
-1. **Genel bakış** ' ı seçin ve grubun **nesne kimliğini** kaydedin.
+1. **Azure Active Directory** **Azure AD B2C** dizininizde seçili durumdayken **gruplar**' ı seçin ve ardından bir grup seçin. Mevcut bir grubunuz yoksa, bir **güvenlik** grubu oluşturun ve ardından Üyeler ekleyin. Daha fazla bilgi için [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)yordamını izleyin. 
+1. **Genel bakış**' ı seçin ve grubun **nesne kimliğini** kaydedin.
 
 ### <a name="33-create-an-azure-resource-manager-template"></a>3,3 Azure Resource Manager şablonu oluşturma
 
-Daha sonra, daha önce oluşturduğunuz Azure AD kaynak grubuna Azure AD B2C erişimi veren bir Azure Resource Manager şablonu oluşturacaksınız (örneğin, *Azure-AD-B2C-Monitor* ). Azure portal açan ve şablonu doğrudan portalda yapılandırmanıza ve dağıtmanıza olanak tanıyan **Azure 'A dağıt** düğmesini kullanarak şablonu GitHub örneğinden dağıtın. Bu adımlar için, Azure AD kiracınızda (Azure AD B2C kiracısında değil) oturum açtığınızdan emin olun.
+Daha sonra, daha önce oluşturduğunuz Azure AD kaynak grubuna Azure AD B2C erişimi veren bir Azure Resource Manager şablonu oluşturacaksınız (örneğin, *Azure-AD-B2C-Monitor*). Azure portal açan ve şablonu doğrudan portalda yapılandırmanıza ve dağıtmanıza olanak tanıyan **Azure 'A dağıt** düğmesini kullanarak şablonu GitHub örneğinden dağıtın. Bu adımlar için, Azure AD kiracınızda (Azure AD B2C kiracısında değil) oturum açtığınızdan emin olun.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından **Azure AD** kiracınızı içeren dizini seçin.
@@ -155,16 +155,16 @@ Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 1. [Azure portal](https://portal.azure.com/) Azure AD B2C Yönetici hesabınızla oturum açın. Bu hesap, [bir güvenlik grubu seçin](#32-select-a-security-group) adımında belirttiğiniz güvenlik grubunun bir üyesi olmalıdır.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin
-1. **İzleme** bölümünde **Tanılama ayarları** 'nı seçin.
+1. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
 1. Kaynak için mevcut ayarlar varsa, önceden yapılandırılmış ayarların bir listesini görürsünüz. Yeni bir ayar eklemek için **Tanılama ayarı Ekle** ' yi seçin veya var olan bir ayarı düzenlemek için **Düzenle** ' yi seçin. Her bir ayarın hedef türlerin her biri birden fazla olamaz.
 
     ![Azure portal Tanılama ayarları bölmesi](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
 1. Ayarınız yoksa, bir ad verin.
 1. Günlükleri göndermek için her bir hedefin kutusunu işaretleyin. Ayarlarını **Aşağıdaki tabloda açıklandığı gibi** belirtmek için **Yapılandır** ' ı seçin.
-1. **Log Analytics gönder** ' i seçin ve daha önce oluşturduğunuz **çalışma alanının adını** ( `AzureAdB2C` ) seçin.
-1. **Auditlogs** ve **signınlogs** ' u seçin.
-1. **Kaydet** ’i seçin.
+1. **Log Analytics gönder**' i seçin ve daha önce oluşturduğunuz **çalışma alanının adını** ( `AzureAdB2C` ) seçin.
+1. **Auditlogs** ve **signınlogs**' u seçin.
+1. **Kaydet**’i seçin.
 
 > [!NOTE]
 > Bir olay, [bir Log Analytics çalışma alanında görünmesi](../azure-monitor/platform/data-ingestion-time.md)için bir olayın yayıldıktan sonra 15 dakika kadar sürebilir. Ayrıca, verilerin etkisini etkileyebilecek ve raporlama 'da önemli bir rol oynatabilen [Active Directory raporlama gecikme](../active-directory/reports-monitoring/reference-reports-latencies.md)süreleri hakkında daha fazla bilgi edinin.
@@ -192,8 +192,8 @@ Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini
     | order by SignInCount desc  nulls last
     ```
 
-1. **Çalıştır** 'ı seçin. Sorgu sonuçları, ekranın alt kısmında görüntülenir.
-1. Sorgunuzu daha sonra kullanmak üzere kaydetmek için **Kaydet** ' i seçin.
+1. **Çalıştır**'ı seçin. Sorgu sonuçları, ekranın alt kısmında görüntülenir.
+1. Sorgunuzu daha sonra kullanmak üzere kaydetmek için **Kaydet**' i seçin.
 
    ![Log Analytics günlük Düzenleyicisi](./media/azure-monitor/query-policy-usage.png)
 
@@ -203,7 +203,7 @@ Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini
     - Seçim **olarak kaydet** `query` .
     - **Kategori** -seçin `Log` .
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 Ayrıca, [render](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) işlecini kullanarak verileri görselleştirmek için sorgunuzu değiştirebilirsiniz.
 
@@ -228,19 +228,19 @@ Daha fazla örnek için Azure AD B2C [SIEM GitHub deposu](https://aka.ms/b2csiem
 
 JSON Galerisi şablonu kullanarak yeni bir çalışma kitabı oluşturmak için aşağıdaki yönergeleri izleyin. Bu çalışma kitabı, Azure AD B2C kiracı için bir **Kullanıcı öngörüleri** ve **kimlik doğrulama** panosu sağlar.
 
-1. **Log Analytics çalışma** alanından **çalışma kitapları** ' nı seçin.
+1. **Log Analytics çalışma** alanından **çalışma kitapları**' nı seçin.
 1. Araç çubuğundan, yeni bir çalışma kitabı oluşturmak için **+ Yeni** seçeneğini belirleyin.
 1. **Yeni çalışma kitabı** sayfasında, araç çubuğundaki seçeneğini kullanarak **Gelişmiş Düzenleyici** seçin **</>** .
 
      ![Galeri şablonu](./media/azure-monitor/wrkb-adv-editor.png)
 
-1. **Galeri şablonu** ' nu seçin.
+1. **Galeri şablonu**' nu seçin.
 1. **Galeri ŞABLONUNDAKI JSON öğesini** [Azure AD B2C temel çalışma kitabındaki](https://raw.githubusercontent.com/azure-ad-b2c/siem/master/workbooks/dashboard.json)içerikle değiştirin:
 1. **Uygula** düğmesini kullanarak şablonu uygulayın.
 1. Çalışma kitabını düzenlemenin tamamlanması için araç çubuğundan **Düzenle** düğmesini seçin.
 1. Son olarak, çalışma kitabını araç çubuğundan **Kaydet** düğmesini kullanarak kaydedin.
 1. *Azure AD B2C panosu* gibi bir **başlık** sağlayın.
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
     ![Çalışma kitabını Kaydet](./media/azure-monitor/wrkb-title.png)
 
@@ -261,7 +261,7 @@ Uyarılar, Azure İzleyici'deki uyarı kuralları tarafından oluşturulur ve ka
 **Toplam isteklerindeki** %25 ' in önceki döneme karşılaştırıldığı her durumda bir [e-posta bildirimi](../azure-monitor/platform/action-groups.md#configure-notifications) gönderecek yeni bir Azure uyarısı oluşturmak için aşağıdaki yönergeleri kullanın. Uyarı her 5 dakikada bir çalışır ve son 24 saat içinde bırakma için arama yapılır. Uyarılar kusto sorgu dili kullanılarak oluşturulur.
 
 
-1. **Log Analytics çalışma** alanından **Günlükler** ' i seçin. 
+1. **Log Analytics çalışma** alanından **Günlükler**' i seçin. 
 1. Aşağıdaki sorguyu kullanarak yeni bir **kusto sorgusu** oluşturun.
 
     ```kusto
@@ -279,16 +279,16 @@ Uyarılar, Azure İzleyici'deki uyarı kuralları tarafından oluşturulur ve ka
     | where PercentageChange <= threshold   //Trigger's alert rule if matched.
     ```
 
-1. Sorguyu test etmek için **Çalıştır** ' ı seçin. Son 24 saat içindeki toplam isteklerde %25 veya daha fazla bir bırakma varsa sonuçları görmeniz gerekir.
+1. Sorguyu test etmek için **Çalıştır**' ı seçin. Son 24 saat içindeki toplam isteklerde %25 veya daha fazla bir bırakma varsa sonuçları görmeniz gerekir.
 1. Yukarıdaki sorguyu temel alan bir uyarı kuralı oluşturmak için, araç çubuğunda bulunan **+ Yeni uyarı kuralı** seçeneğini kullanın.
 1. **Uyarı kuralı oluştur** sayfasında **koşul adı** ' nı seçin. 
 1. **Sinyal mantığını Yapılandır** sayfasında, aşağıdaki değerleri ayarlayın ve ardından değişiklikleri kaydetmek için **bitti** düğmesini kullanın.
-    * Uyarı mantığı: **0** ' **dan büyük** **sonuçların sayısını** ayarlayın.
+    * Uyarı mantığı: **0**' **dan büyük** **sonuçların sayısını** ayarlayın.
     * Değerlendirme temeli: dönem için **1440** (dakika) ve sıklık için **5** (dakika cinsinden) seçin 
 
     ![Uyarı kuralı koşulu oluşturma](./media/azure-monitor/alert-create-rule-condition.png)
 
-Uyarı oluşturulduktan sonra, **Log Analytics çalışma alanına** gidin ve **Uyarılar** ' ı seçin. Bu sayfada, **zaman aralığına** göre ayarlanan süre seçeneğinde tetiklenen tüm uyarılar görüntülenir.  
+Uyarı oluşturulduktan sonra, **Log Analytics çalışma alanına** gidin ve **Uyarılar**' ı seçin. Bu sayfada, **zaman aralığına** göre ayarlanan süre seçeneğinde tetiklenen tüm uyarılar görüntülenir.  
 
 ### <a name="configure-action-groups"></a>Eylem gruplarını Yapılandır
 

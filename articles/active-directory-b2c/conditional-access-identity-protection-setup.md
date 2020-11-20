@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309781"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949777"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C 'da kimlik koruması ve koşullu erişim ayarlama
 
@@ -26,7 +26,7 @@ Kimlik koruması, Azure AD B2C kiracınız için sürekli risk algılama sağlar
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD B2C kiracınızın [bir Azure AD aboneliğine bağlı](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)olması gerekir.
-- Azure AD B2C Premium P2, oturum açma ve Kullanıcı risk tabanlı koşullu erişim kullanımı için gereklidir. Gerekirse, [Azure AD B2C fiyatlandırma katmanınızı Premium P2 olarak değiştirin](https://aka.ms/exid-pricing-tier). 
+- Azure AD B2C Premium P2, oturum açma ve Kullanıcı risk tabanlı koşullu erişim kullanımı için gereklidir. Gerekirse, [Azure AD B2C fiyatlandırma katmanınızı Premium P2 olarak değiştirin](./billing.md). 
 - B2C kiracınızda kimlik koruması ve koşullu erişimi yönetmek için, genel yönetici rolüne veya güvenlik yöneticisi rolüne atanmış bir hesaba sahip olmanız gerekir.
 - Kiracınızda bu özellikleri kullanmak için öncelikle Azure AD B2C Premium P2 fiyatlandırma katmanına geçmeniz gerekir.
 
@@ -38,7 +38,7 @@ Kimlik koruması varsayılan olarak açık. Azure AD B2C kiracınızda kimlik ko
 
 Aşağıdaki risk algılamaları Şu anda Azure AD B2C için desteklenmektedir:  
 
-|Risk algılama türü  |Açıklama  |
+|Risk algılama türü  |Description  |
 |---------|---------|
 | Olağandışı yolculuk     | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın.        |
 |Anonim IP adresi     | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler).        |
@@ -54,13 +54,13 @@ Aşağıdaki risk algılamaları Şu anda Azure AD B2C için desteklenmektedir:
 
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 
-1. **Güvenlik**altında **riskli kullanıcılar (Önizleme)** seçeneğini belirleyin.
+1. **Güvenlik** altında **riskli kullanıcılar (Önizleme)** seçeneğini belirleyin.
 
    ![Riskli kullanıcılar](media/conditional-access-identity-protection-setup/risky-users.png)
 
-1. **Güvenlik**altında **risk algılamaları (Önizleme)** seçeneğini belirleyin.
+1. **Güvenlik** altında **risk algılamaları (Önizleme)** seçeneğini belirleyin.
 
    ![Risk algılamaları](media/conditional-access-identity-protection-setup/risk-detections.png)
 
@@ -74,7 +74,7 @@ Kimlik koruması risk algılamalarını temel alan koşullu erişim ilkesi eklem
 
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-3. Azure portal, araması yapın ve **Azure Active Directory**seçin.
+3. Azure portal, araması yapın ve **Azure Active Directory** seçin.
 
 4. **Özellikler**' i seçin ve ardından **güvenlik varsayılanlarını Yönet**' i seçin.
 
@@ -90,9 +90,9 @@ Kimlik koruması risk algılamalarını temel alan koşullu erişim ilkesi eklem
 
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 
-1. **Güvenlik**altında **koşullu erişim (Önizleme)** öğesini seçin. **Koşullu erişim ilkeleri** sayfası açılır. 
+1. **Güvenlik** altında **koşullu erişim (Önizleme)** öğesini seçin. **Koşullu erişim ilkeleri** sayfası açılır. 
 
 1. Yeni **ilke** ' yi seçin ve yeni bir ilke oluşturmak IÇIN Azure AD koşullu erişim belgelerini izleyin. Aşağıda bir örnek verilmiştir:
 
@@ -105,10 +105,10 @@ Kimlik koruması risk algılamalarını temel alan koşullu erişim ilkesi eklem
 
 1. Yukarıda belirtildiği gibi, aşağıdaki ayarlarla bir koşullu erişim ilkesi oluşturun:
    
-   - **Kullanıcılar ve gruplar**için test kullanıcısını seçin. **Tüm kullanıcıları** seçmeyin veya kendi oturum açmasını engelleyebilirsiniz.
-   - **Bulut uygulamaları veya eylemler**Için **Uygulama Seç**' i seçin ve ardından bağlı olan taraf uygulamanızı seçin.
-   - Koşullar için **oturum açma riski** ve **yüksek**, **Orta**ve **düşük** riskli Düzeyler ' i seçin.
-   - **Izin ver**Için **erişimi engelle**' yi seçin.
+   - **Kullanıcılar ve gruplar** için test kullanıcısını seçin. **Tüm kullanıcıları** seçmeyin veya kendi oturum açmasını engelleyebilirsiniz.
+   - **Bulut uygulamaları veya eylemler** Için **Uygulama Seç**' i seçin ve ardından bağlı olan taraf uygulamanızı seçin.
+   - Koşullar için **oturum açma riski** ve **yüksek**, **Orta** ve **düşük** riskli Düzeyler ' i seçin.
+   - **Izin ver** Için **erişimi engelle**' yi seçin.
 
       ![Erişimi engelle 'yi seçin](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
@@ -128,11 +128,11 @@ Koşullu erişim olayının sonucunu gözden geçirmek için:
 
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-3. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+3. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 
 4. **Etkinlikler**' in altında, **Denetim günlükleri**' ni seçin.
 
-5. **Kategoriyi** **B2C** olarak ayarlayarak ve **etkinlik kaynak türünü** **ıdentityprotection**olarak ayarlayarak denetim günlüğünü filtreleyin. Sonra **Uygula**'yı seçin.
+5. **Kategoriyi** **B2C** olarak ayarlayarak ve **etkinlik kaynak türünü** **ıdentityprotection** olarak ayarlayarak denetim günlüğünü filtreleyin. Sonra **Uygula**'yı seçin.
 
 6. Son 7 güne kadar denetim etkinliğini gözden geçirin. Aşağıdaki etkinlik türleri dahildir:
 

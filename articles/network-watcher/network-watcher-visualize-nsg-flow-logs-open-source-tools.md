@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ffc5aa9c56451099afc4ddbe8b6ac5bd588974
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986249"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948774"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Açık kaynak araçları kullanarak Azure Ağ İzleyicisi NSG akış günlüklerini görselleştirme
 
@@ -41,7 +41,7 @@ NSG akış günlüklerini elastik Stack ile bağlayarak, günlüklerimize ilişk
 
 #### <a name="install-elasticsearch"></a>Elaa aramasını yükleme
 
-1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. `java -version`Sürümünüzü denetlemek için komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](https://aka.ms/azure-jdks)ile ilgili belgelere başvurun.
+1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. `java -version`Sürümünüzü denetlemek için komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](/azure/developer/java/fundamentals/java-jdk-long-term-support)ile ilgili belgelere başvurun.
 2. Sisteminiz için doğru ikili paketi indirin:
 
    ```bash
@@ -195,7 +195,7 @@ Bu eklenti hakkında daha fazla bilgi için [belgelerine](https://github.com/Azu
 
 3. Kibana Web arabiriminizi görüntülemek için şuraya gidin `http://localhost:5601`
 4. Bu senaryoda, akış günlükleri için kullanılan dizin deseninin "NSG-Flow-Logs" olması gerekir. Logstash. conf dosyanızın "çıktı" bölümünde Dizin modelini değiştirebilirsiniz.
-5. Kibana panosunu uzaktan görüntülemek istiyorsanız, **5601 numaralı bağlantı noktasına**erişime izin veren bir gelen NSG kuralı oluşturun.
+5. Kibana panosunu uzaktan görüntülemek istiyorsanız, **5601 numaralı bağlantı noktasına** erişime izin veren bir gelen NSG kuralı oluşturun.
 
 ### <a name="create-a-kibana-dashboard"></a>Kibana panosu oluşturma
 
