@@ -1,7 +1,7 @@
 ---
-title: Metin Analizi REST API ile yaklaşım analizini gerçekleştirme
+title: Metin Analizi REST API ile yaklaşım analizini ve fikrinizi araştırma yapın
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure bilişsel hizmetler Metin Analizi REST API metinle ilgili yaklaşım hakkında nasıl algılanacağı gösterilir.
+description: Bu makalede, Azure bilişsel hizmetler Metin Analizi API'si ile metinde nasıl yaklaşım ve e-posta ile ilgili nasıl algılanacağı gösterilir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,20 +10,18 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 87e6ad488438ae28467f6e904fbb57f7ca5448ff
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518184"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968280"
 ---
-# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
+# <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği
 
-Metin Analizi API'si Yaklaşım Analizi özelliği metni değerlendirir ve her tümce için yaklaşım puanlarını ve etiketlerini döndürür. Bu, sosyal medya, müşteri incelemeleri, tartışma forumları ve daha fazlası için olumlu ve olumsuz yaklaşımı saptamak için yararlıdır. API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, yalnızca analiz için içerik göndermeniz gerekir.
+Metin Analizi API'si Yaklaşım Analizi özelliği pozitif ve olumsuz yaklaşımı tespit etmek için iki yol sağlar. Bir Yaklaşım Analizi isteği gönderirseniz, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür. Ayrıca, metinde (ürünlerin veya hizmetlerin öznitelikleri gibi) konuyla ilgili ayrıntılı bilgiler sağlayan Yaklaşım Analizi uç noktası kullanarak bir istek araştırma isteği gönderebilirsiniz.
 
-Bir yaklaşım analiz isteği gönderdikten sonra, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür.
-
-Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [Desteklenen diller](../language-support.md).
+API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, yalnızca analiz için içerik göndermeniz gerekir.
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Sürümler ve Özellikler Yaklaşım Analizi
 
@@ -32,15 +30,15 @@ Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Dah
 | Öne çıkan özelliği                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Tek ve toplu istekler için Yöntemler    | X                     | X                                 |
-| Yaklaşım puanları ve etiketleme             | X                     | X                                 |
+| Yaklaşım Analizi puanları ve etiketleme             | X                     | X                                 |
 | Linux tabanlı [Docker kapsayıcısı](text-analytics-how-to-install-containers.md) | X  |  |
 | Görüşün madenciliği                            |                       | X                                 |
 
-## <a name="sentiment-scoring-and-labeling"></a>Yaklaşım Puanlama ve etiketleme
+## <a name="sentiment-analysis"></a>Yaklaşım Analizi
 
-V3 'teki Yaklaşım Analizi, bir tümce ve belge düzeyinde döndürülen ve her biri için bir güven puanı bulunan yaklaşım etiketlerini metne uygular. 
+Sürüm 3. x ' teki Yaklaşım Analizi, bir tümce ve belge düzeyinde döndürülen ve her biri için güven puanı bulunan yaklaşım etiketlerini metne uygular. 
 
-Etiketler *pozitif* , *negatif* ve *nötr*. Belge düzeyinde, *karışık* yaklaşım etiketi de döndürülebilir. Belgenin yaklaşımı aşağıda belirlenir:
+Etiketler *pozitif*, *negatif* ve *nötr*. Belge düzeyinde, *karışık* yaklaşım etiketi de döndürülebilir. Belgenin yaklaşımı aşağıda belirlenir:
 
 | Tümce yaklaşımı                                                                            | Döndürülen belge etiketi |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -55,12 +53,9 @@ Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıf
 
 Fikrinizi araştırma, 3,1-Preview. 1 ' den başlayarak Yaklaşım Analizi bir özelliktir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar.
 
-Örneğin, bir müşteri bir otel hakkında "Oda harika, ancak personel daha kolay değildi" gibi bir otel hakkında geri bildirim bırakırsa, feedback araştırma, metindeki yönleri ve bunlarla ilişkili ek ve duyguları bulur:
+Örneğin, bir müşteri bir otel hakkında "Oda harika, ancak personelin kullanımı çok iyiydi" gibi bir otel hakkında geri bildirim bırakırsa, görüşmelerin araştırma metni ve bunlarla ilişkili ek ve yaklaşım gibi konuları bulur. Yaklaşım Analizi yalnızca negatif bir yaklaşım rapor edebilir.
 
-| Görünüş | İzi    | Yaklaşım |
-|--------|------------|-----------|
-| Oda   | alanları      | pozitif  |
-| personeli  | değişikliklerinden | negatif  |
+:::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Fikrinizi araştırma örneği diyagramı" lightbox="../media/how-tos/opinion-mining.png":::
 
 Sonuçlarınızda dikkatli araştırma elde etmek için, `opinionMining=true` bayrağı bir yaklaşım Analizi isteğine dahil etmeniz gerekir. Fikrinizi araştırma sonuçları, yaklaşım Analizi yanıtına dahil edilir.
 
@@ -70,9 +65,9 @@ Sonuçlarınızda dikkatli araştırma elde etmek için, `opinionMining=true` ba
 
 Yaklaşım analizi, üzerinde çalışmak üzere daha az miktarda metin verdiğiniz zaman daha yüksek kalitede bir sonuç üretir. Bu, büyük metin öbekleri üzerinde daha iyi performans gösteren anahtar ifade ayıklamasının tersidir. Her iki işlemden de en iyi sonuçları almak için, girişleri buna göre yeniden yapılandırmayı göz önünde bulundurun.
 
-Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil.
+Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil. Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [Desteklenen diller](../language-support.md).
 
-Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiyon başına en fazla 1.000 öğe (kimlik) kullanabilirsiniz. Koleksiyon, istek gövdesinde gönderilir.
+Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Bir koleksiyonda izin verilen en fazla belge sayısı için kavramlar bölümündeki [veri limitleri](../concepts/data-limits.md?tabs=version-3) makalesine bakın. Koleksiyon, istek gövdesinde gönderilir.
 
 ## <a name="structure-the-request"></a>İsteği yapısı
 
@@ -80,7 +75,7 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz
 
 #### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
 
-[Yaklaşım Analizi v 3.1 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
+[Yaklaşım Analizi v 3.1 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
@@ -93,11 +88,15 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz
 Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örnek:
 
 > [!NOTE]
-> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
+> Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı Azure portal bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
 #### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
 
+**Yaklaşım Analizi**
+
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+
+**Görüşün madenciliği**
 
 Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örnek:
 
@@ -107,15 +106,19 @@ Bu parametre `false` Varsayılan olarak olarak ayarlanır.
 
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
+**Yaklaşım Analizi**
+
+V 3.0 'da, kullanılabilir tek uç nokta Yaklaşım Analizi içindir.
+ 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
 
 ---
 
 Metin Analizi API'si anahtarınızı dahil etmek için bir istek üst bilgisi ayarlayın. İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
 
-### <a name="example-sentiment-analysis-request"></a>Örnek Yaklaşım Analizi isteği 
+### <a name="example-request-for-sentiment-analysis-and-opinion-mining"></a>Yaklaşım Analizi ve görüşme madenciliği için örnek istek  
 
-Aşağıda, yaklaşım analizi için gönderebileceğiniz bir içerik örneği verilmiştir. İstek biçimi her iki sürüm için de aynıdır.
+Aşağıda, yaklaşım analizi için gönderebileceğiniz bir içerik örneği verilmiştir. İstek biçimi hem hem de için aynıdır `v3.0` `v3.1-preview` .
     
 ```json
 {
@@ -138,15 +141,20 @@ Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonu�
 
 ### <a name="view-the-results"></a>Sonuçları görüntüleme
 
-Yaklaşım analizi, tüm belge ve içindeki her cümle için bir yaklaşım etiketi ve Güvenirlik puanı döndürür. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Bir belgede birden fazla tümce olabilir ve her belge veya tümce içindeki güven puanları 1 ' e kadar eklenebilir.
-
 Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [uzaklıkları işleme](../concepts/text-offsets.md) .
 
 #### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
 
-### <a name="sentiment-analysis-v31-example-response"></a>Yaklaşım Analizi v 3.1 örnek yanıtı
+### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Yaklaşım Analizi ve görüşün Inceleme örneği yanıtı
 
-Yaklaşım Analizi v 3.1, **sürüm 3,0** sekmesindeki yanıt nesnesine ek olarak görüşme madenciliği sağlar. Aşağıdaki yanıtta, *restorana tümce harika yiyecek içeriyordu ve garson kullanımı kolay* iki yöne sahiptir: *yiyecek* ve *garson*. Her bir en boy `relations` özelliği, `ref` ilişkili `documents` , `sentences` ve nesnelerine URI başvurusu olan bir değer içerir `opinions` .
+> [!IMPORTANT]
+> Aşağıda, API 'nin v 3.1 ' de sunulan, Yaklaşım Analizi ile birlikte, bir,,, ile ilgili olarak, bir ve daha fazla İstek araştırma isteğinde yoksa, API yanıtı **sürüm 3,0** sekmesi ile aynı olacaktır.  
+
+Yaklaşım Analizi v 3.1, hem Yaklaşım Analizi hem de görüşün madenciliği için yanıt nesneleri döndürebilir.
+  
+Yaklaşım analizi, tüm belge ve içindeki her cümle için bir yaklaşım etiketi ve Güvenirlik puanı döndürür. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Bir belgede birden fazla tümce olabilir ve her belge veya tümce içindeki güven puanları 1 ' e kadar eklenebilir.
+
+Görüşmelerin madenciliği, metin ve bunlarla ilişkili ek ve yaklaşım konularını bulur. Aşağıdaki yanıtta, *restorana tümce harika yiyecek içeriyordu ve garson kullanımı kolay* iki yöne sahiptir: *yiyecek* ve *garson*. Her bir en boy `relations` özelliği, `ref` ilişkili `documents` , `sentences` ve nesnelerine URI başvurusu olan bir değer içerir `opinions` .
 
 ```json
 {
@@ -240,7 +248,9 @@ Yaklaşım Analizi v 3.1, **sürüm 3,0** sekmesindeki yanıt nesnesine ek olara
 
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
-### <a name="sentiment-analysis-v30-example-response"></a>Yaklaşım Analizi v 3.0 örnek yanıtı
+### <a name="sentiment-analysis-example-response"></a>Yaklaşım Analizi örnek yanıt
+
+Yaklaşım analizi, tüm belge ve içindeki her cümle için bir yaklaşım etiketi ve Güvenirlik puanı döndürür. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Bir belgede birden fazla tümce olabilir ve her belge veya tümce içindeki güven puanları 1 ' e kadar eklenebilir.
 
 Yaklaşım Analizi v3 'ten gelen yanıtlar, çözümlenen her tümce ve belge için yaklaşım etiketleri ve puanları içerir.
 
@@ -282,9 +292,10 @@ Yaklaşım Analizi v3 'ten gelen yanıtlar, çözümlenen her tümce ve belge i�
 
 Bu makalede, Metin Analizi API'si kullanarak yaklaşım analizi için kavramları ve iş akışını öğrendiniz. Özet:
 
-+ Yaklaşım Analizi seçili diller için kullanılabilir.
++ Yaklaşım Analizi ve görüşme madenciliği seçme dilleri için kullanılabilir.
 + İstek gövdesindeki JSON belgeleri bir KIMLIK, metin ve dil kodu içerir.
 + POST isteği, `/sentiment` kişiselleştirilmiş bir [erişim anahtarı ve](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) aboneliğiniz için geçerli olan bir uç nokta kullanarak bir uç noktaya gönderilir.
++ `opinionMining=true`Sentient analiz isteklerinde, dikkatli araştırma sonuçları elde edin.
 + Her belge KIMLIĞI için bir yaklaşım puanından oluşan yanıt çıkışı, JSON kabul eden herhangi bir uygulamaya akışla eklenebilir. Örneğin, Excel ve Power BI.
 
 ## <a name="see-also"></a>Ayrıca bkz.

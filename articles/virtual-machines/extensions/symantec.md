@@ -4,16 +4,17 @@ description: Symantec Endpoint Protection güvenlik uzantısını, klasik dağı
 author: roiyz
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: a89ec99af02b32d452fba1dffb0387ae6013a7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e001c85dd960e9d60ff321cfecc8bf8b80de087c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967950"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
@@ -42,7 +43,7 @@ $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-**Write-Host** komutu **true**görüntülüyorsa, VM Aracısı yüklenir. **Yanlış**görüntüleniyorsa, Azure Blog Post [VM aracısında ve uzantıları-Bölüm 2][Agent]' de bulunan yönergelere ve bir bağlantıya bakın.
+**Write-Host** komutu **true** görüntülüyorsa, VM Aracısı yüklenir. **Yanlış** görüntüleniyorsa, Azure Blog Post [VM aracısında ve uzantıları-Bölüm 2][Agent]' de bulunan yönergelere ve bir bağlantıya bakın.
 
 VM Aracısı yüklüyse, Symantec Endpoint Protection Aracısı 'nı yüklemek için şu komutları çalıştırın.
 
@@ -56,7 +57,7 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 Symantec güvenlik uzantısının yüklendiğini ve güncel olduğunu doğrulamak için:
 
 1. Sanal makinede oturum açın. Yönergeler için bkz. [Windows Server çalıştıran bir sanal makinede oturum açma][Logon].
-2. Windows Server 2008 R2 için, **> Symantec Endpoint Protection Başlat**' a tıklayın. Windows Server 2012 veya Windows Server 2012 R2 için, başlangıç ekranında, **Symantec**yazın ve ardından **Symantec Endpoint Protection**' ye tıklayın.
+2. Windows Server 2008 R2 için, **> Symantec Endpoint Protection Başlat**' a tıklayın. Windows Server 2012 veya Windows Server 2012 R2 için, başlangıç ekranında, **Symantec** yazın ve ardından **Symantec Endpoint Protection**' ye tıklayın.
 3. **Durum-Symantec Endpoint Protection** penceresinin **durum** sekmesinde, güncelleştirmeleri uygulayın veya gerekirse yeniden başlatın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar

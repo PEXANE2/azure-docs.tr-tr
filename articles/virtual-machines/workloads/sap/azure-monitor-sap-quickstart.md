@@ -5,14 +5,15 @@ author: sameeksha91
 ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739894"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968596"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal ile SAP Çözümleri için Azure Izleyici dağıtma
 
@@ -24,13 +25,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-monitoring-resource"></a>İzleme kaynağı oluştur
 
-1. **Azure Marketi** 'Nden **SAP Çözümleri için Azure İzleyicisi** ' ni seçin.
+1. **Azure Marketi**'Nden **SAP Çözümleri için Azure İzleyicisi** ' ni seçin.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-1.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-1.png":::
 
 2. **Temel bilgiler** sekmesinde gerekli değerleri sağlayın. Uygulanabiliyorsa, mevcut bir Log Analytics çalışma alanını kullanabilirsiniz.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="Azure portal yapılandırma seçeneklerini görüntüleyin." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
 
 3. Bir sanal ağ seçerken, izlemek istediğiniz sistemlerin bu VNET 'in içinden erişilebilir olduğundan emin olun. 
 
@@ -43,7 +44,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 1. Yapılandırmak istediğiniz sağlayıcıları eklemek için **sağlayıcı** sekmesini seçin. Birden çok sağlayıcıyı bir veya daha sonra ekleyebilirsiniz veya izleme kaynağını dağıttıktan sonra ekleyebilirsiniz. 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="SAP Çözümleri için Azure Izleyicisine ek sağlayıcılar eklemek için sağlayıcı sekmesini gösterir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
 2. **Sağlayıcı Ekle** ' yi seçin ve açılan listeden **SAP HANA** seçin. 
 
@@ -54,13 +55,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 4. Kullanmak istediğiniz veritabanı kiracının adını girin. Herhangi bir kiracıyı seçebilirsiniz, ancak daha geniş bir izleme alanı dizisi sağladığından **SystemDB** kullanılması önerilir. 
 
-5. HANA veritabanınıza ilişkin SQL bağlantı noktası numarasını girin. Bağlantı noktası numarası **[3]** [  +  **örnek #]**  +  **[13]** biçiminde olmalıdır. Örneğin, 30013. 
+5. HANA veritabanınıza ilişkin SQL bağlantı noktası numarasını girin. Bağlantı noktası numarası **[3]**[  +  **örnek #]**  +  **[13]** biçiminde olmalıdır. Örneğin, 30013. 
 
 6. Kullanmak istediğiniz veritabanı kullanıcı adını girin. Veritabanı kullanıcısına, **izleme** ve **Katalog okuma** rollerinin atanmış olduğundan emin olun. 
 
-7. İşiniz bittiğinde **Sağlayıcı Ekle** ' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+7. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Sağlayıcı bilgileri eklenirken yapılandırma seçeneklerinin görüntüsü." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>Yüksek kullanılabilirlik kümesi (pacemaker) sağlayıcısı
 
@@ -73,9 +74,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
  
 3. Sistem KIMLIĞINI (SID), ana bilgisayar adını ve küme adını girin.
 
-4. İşiniz bittiğinde **Sağlayıcı Ekle** ' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Görüntü, HA kümesi pacemaker sağlayıcısıyla ilgili seçenekleri gösterir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server sağlayıcı
@@ -111,9 +112,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 3. Microsoft SQL Server ile ilişkili bilgileri kullanarak alanları doldurun. 
 
-4. İşiniz bittiğinde **Sağlayıcı Ekle** ' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
-     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Görüntüde, Azure Marketi 'nden SAP Çözümleri için Azure Izleyicisi teklifinin seçilmesi gösterilmektedir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Görüntüde Microsoft SQL Server sağlayıcısı eklemeyle ilgili bilgiler gösterilir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

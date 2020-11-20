@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f72342a318e3436fb80fb06b2312f664c9d04969
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617012"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967627"
 ---
 # <a name="onboarding-requirements"></a>Ekleme gereksinimleri
 
@@ -70,7 +71,7 @@ Farklı Linux sürümlerindeki farklı SAP HANA sürümlerinin destek matrisi i�
 - SAP HANA ve ilgili SAP destek sözleşmelerine bağlanan tüm SAP uygulamaları için lisanslar ve yazılım yükleme bileşenleri.
 - Azure (büyük örnekler) ortamlarında ve ilgili destek sözleşmelerinde SAP HANA birlikte kullanılan tüm SAP olmayan uygulamalar için lisanslar ve yazılım yükleme bileşenleri.
 
-**Becerilere**
+**Beceriler**
 
 - Azure IaaS ve bileşenleri hakkında deneyim ve bilgi.
 - Azure 'da SAP iş yükünün nasıl dağıtılacağı hakkında bilgi ile deneyim.

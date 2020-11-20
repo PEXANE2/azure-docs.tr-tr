@@ -9,12 +9,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
-ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846836"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968205"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS bölgelerine ve kayıtlarına genel bakış
 
@@ -93,7 +93,7 @@ Bölgede kayıtlar üzerinde değişiklik yapıldığında SOA kaydındaki bölg
 [SRV kayıtları](https://en.wikipedia.org/wiki/SRV_record) , çeşitli hizmetler tarafından sunucu konumlarını belirtmek için kullanılır. Azure DNS içinde bir SRV kaydı belirtirken:
 
 * *Hizmet* ve *protokol* , kayıt kümesi adının bir parçası olarak belirtilmelidir, alt çizgi öneki.  Örneğin, ' \_ SIP. \_ tcp.name '.  Tepesinde bölgesindeki bir kayıt için, \@ kayıt adında ' ' belirtmeniz gerekmez, hizmet ve protokolü kullanmanız yeterlidir, örneğin ' \_ SIP. \_ TCP '.
-* *Öncelik*, *Ağırlık*, *bağlantı noktası*ve *hedef* , kayıt kümesindeki her bir kaydın parametresi olarak belirtilir.
+* *Öncelik*, *Ağırlık*, *bağlantı noktası* ve *hedef* , kayıt kümesindeki her bir kaydın parametresi olarak belirtilir.
 
 ### <a name="txt-records"></a>TXT kayıtları
 
@@ -113,7 +113,7 @@ Etiketler, ad-değer çiftleri listesidir ve kaynakları etiketlemek için Azure
 
 Azure DNS, DNS bölge kaynaklarında Azure Resource Manager etiketlerin kullanılmasını destekler.  DNS kayıt kümelerinde etiketleri desteklemez, ancak aşağıda açıklandığı gibi DNS kayıt kümelerinde alternatif bir ' Metadata ' desteklenir.
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 Kayıt kümesi etiketlerinin bir alternatifi olarak Azure DNS, ' Metadata ' kullanarak kayıt kümelerine açıklama eklemeyi destekler.  Etiketlere benzer şekilde meta veriler, ad-değer çiftlerini her bir kayıt kümesiyle ilişkilendirmenizi sağlar.  Bu, örneğin, her bir kayıt kümesinin amacını kaydetmek yararlı olabilir.  Etiketlerin aksine, meta veriler Azure faturanızda filtrelenmiş bir görünüm sağlamak için kullanılamaz ve bir Azure Resource Manager ilkesinde belirtilemez.
 
@@ -143,5 +143,5 @@ Azure DNS kullanırken aşağıdaki varsayılan sınırlar geçerlidir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure DNS kullanmaya başlamak için, [DNS bölgesi oluşturmayı](dns-getstarted-create-dnszone-portal.md) ve [DNS kayıtları oluşturmayı](dns-getstarted-create-recordset-portal.md)öğrenin.
+* Azure DNS kullanmaya başlamak için, [DNS bölgesi oluşturmayı](./dns-getstarted-portal.md) ve [DNS kayıtları oluşturmayı](./dns-getstarted-portal.md)öğrenin.
 * Var olan bir DNS bölgesini geçirmek için [BIR DNS bölge dosyasını içeri ve dışarı aktarmayı](dns-import-export.md)öğrenin.

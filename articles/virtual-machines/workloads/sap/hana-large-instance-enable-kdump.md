@@ -7,18 +7,19 @@ author: prtyag
 manager: hrushib
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8f573f5f00d266fe5d27857cc9e244d136f61a5
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b6afcfe7684102b451860d9916d849842489cace
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379273"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967712"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Azure üzerinde SAP HANA Büyük Örnekleri için kdump (HLI)
 
@@ -28,7 +29,7 @@ Bu durumlarda, bir işletim sistemi veya uygulama sorunu olabilir ve kdump, SUSE
 
 ## <a name="enable-kdump-service"></a>Kdump hizmetini etkinleştir
 
-Bu belgede, Azure HANA büyük örneği ( **tür ı ve tür II** ) üzerinde kdump hizmetini etkinleştirme ayrıntıları açıklanmaktadır
+Bu belgede, Azure HANA büyük örneği (**tür ı ve tür II**) üzerinde kdump hizmetini etkinleştirme ayrıntıları açıklanmaktadır
 
 ## <a name="supported-skus"></a>Desteklenen SKU 'Lar
 

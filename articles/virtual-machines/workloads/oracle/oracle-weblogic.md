@@ -3,16 +3,17 @@ title: Azure sanal makinelerinde Oracle WebLogic Server çalıştırmaya yöneli
 description: Microsoft Azure Sanal Makineler 'da Oracle WebLogic Server çalıştırmayı öğrenin.
 author: rezar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927299"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968715"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Sanal Makineler’de çalışan Oracle WebLogic Server’a yönelik çözümler nelerdir?
 
@@ -28,7 +29,7 @@ Azure WLS çözümleri, en çok ortak işlemleri otomatikleştirerek Java EE uyg
 
 Farklı senaryoları karşılamak için kullanabileceğiniz dört teklif vardır: [yönetici sunucusu olmayan tek düğüm](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls), yönetim sunucusu, [küme](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)ve [dinamik küme](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster) [içeren tek](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin)düğüm. Teklifler ücretsiz olarak kullanılabilir. Bu teklifler aşağıda açıklanmıştır ve aşağıda bağlantılıdır.
 
-_Bu teklifler, kendi lisansını getir_ . Bunlar, Oracle ile ilgili lisanslarınızın zaten bulunduğunu varsayar ve Azure 'da teklifleri çalıştırmak için doğru lisanslanır.
+_Bu teklifler, kendi lisansını getir_. Bunlar, Oracle ile ilgili lisanslarınızın zaten bulunduğunu varsayar ve Azure 'da teklifleri çalıştırmak için doğru lisanslanır.
 
 Teklifler, temel görüntüler (Oracle Linux 7,6 ' de WebLogic Server 14 ve JDK 11 gibi) aracılığıyla bir dizi işletim sistemi, Java ve WLS sürümü destekler. Bu temel görüntüler, Azure 'da kendi kendine de kullanılabilir. Temel görüntüler, karmaşık ve özelleştirilmiş Azure dağıtımları gerektiren müşteriler için uygundur. Geçerli temel görüntü kümesine [buradan](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)ulaşabilirsiniz.
 
@@ -52,7 +53,7 @@ _Bu teklifleri geliştirirken mühendislik ekibinin geçiş senaryolarınız üz
 
 Çözümler, kapsamlı bir üretime yönelik dağıtım mimarilerinin göreli kolaylıklarla etkinleştirecektir. İş uygulaması geliştirmeye odaklanmaya izin vererek, çoğu geçiş durumunu mümkün olduğunca en verimli şekilde karşılayabilirsiniz.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Azure 'da WebLogic Server dağıtmak için Azure portal kullanabilirsiniz":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Azure 'da karmaşık WebLogic Server dağıtımları etkin":::
 
 Çözümler tarafından otomatik olarak sağlananların ötesinde, müşteriler dağıtımlarını daha da özelleştirmek için tamamen esneklik sunar. Büyük olasılıkla uygulama dağıtımı müşterileri, diğer Azure kaynaklarını dağıtımlarıyla tümleştirecektir. Müşterilerin çözümleri daha da geliştirmek için geri bildirim sağlaması önerilir.
 

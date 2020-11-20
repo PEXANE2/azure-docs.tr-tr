@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328768"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968256"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS SSS
 
@@ -80,7 +80,7 @@ DNSSEC özelliği Azure DNS biriktirme listesinde izlenir. [Bu özellik için de
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS, bölge aktarımlarını (AXFR/ıXFR) destekler mi?
 
-Hayır. Azure DNS şu anda bölge aktarımlarını desteklememektedir. DNS bölgeleri [, Azure CLI kullanılarak Azure DNS içine aktarılabilir](dns-import-export.md). DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)veya [CLI aracı](dns-operations-recordsets-cli.md)aracılığıyla yönetilir.
+Hayır. Azure DNS şu anda bölge aktarımlarını desteklememektedir. DNS bölgeleri [, Azure CLI kullanılarak Azure DNS içine aktarılabilir](dns-import-export.md). DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)veya [CLI aracı](dns-operations-recordsets-cli.md)aracılığıyla yönetilir.
 
 Bölge aktarımı özelliği Azure DNS biriktirme listesinde izlenir. [Bu özellik için destek kaydetmek](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)üzere geri bildirim sitesini kullanın.
 
@@ -149,7 +149,7 @@ Evet. Azure DNS, diğer DNS hizmetleriyle birlikte barındırma etki alanların�
 
 Ortak barındırma ayarlamak için, etki alanı için NS kayıtlarını her iki sağlayıcının ad sunucularına işaret etmek üzere değiştirin. Ad sunucusu (NS) kayıtları, hangi sağlayıcıların etki alanı için DNS sorguları alacağını denetler. Bu NS kayıtlarını, diğer sağlayıcıda ve üst bölgede Azure DNS değiştirebilirsiniz. Üst bölge genellikle etki alanı adı kaydedicisi aracılığıyla yapılandırılır. DNS temsili hakkında daha fazla bilgi için bkz. [DNS etki alanı temsili](dns-domain-delegation.md).
 
-Ayrıca, etki alanı için DNS kayıtlarının her iki DNS sağlayıcısı arasında eşitlenmiş olduğundan emin olun. Azure DNS, DNS bölge aktarımlarını desteklememektedir. DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/rest/api/dns/), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)ya da [CLI aracı](dns-operations-recordsets-cli.md)kullanılarak eşitlenmelidir.
+Ayrıca, etki alanı için DNS kayıtlarının her iki DNS sağlayıcısı arasında eşitlenmiş olduğundan emin olun. Azure DNS, DNS bölge aktarımlarını desteklememektedir. DNS kayıtları, [Azure DNS yönetim portalı](dns-operations-recordsets-portal.md), [REST API](/rest/api/dns/), [SDK](dns-sdk.md), [PowerShell cmdlet 'leri](dns-operations-recordsets.md)ya da [CLI aracı](dns-operations-recordsets-cli.md)kullanılarak eşitlenmelidir.
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Etki alanım 'ı dört Azure DNS ad sunucusuna temsilcmem gerekir mi?
 

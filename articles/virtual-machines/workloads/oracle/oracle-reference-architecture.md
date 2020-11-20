@@ -3,16 +3,17 @@ title: Azure 'da Oracle veritabanları için başvuru mimarileri | Microsoft Doc
 description: Microsoft Azure Sanal Makineler üzerinde Oracle Database Enterprise Edition veritabanlarını çalıştırmaya yönelik mimarilere başvurur.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86f3ef8ccac83cdc939cff5572dd81e78137d396
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480437"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968732"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -108,7 +109,7 @@ Aşağıdaki diyagram, yüksek kullanılabilirlik ve olağanüstü durum kurtarm
 
 GoldenGate, kuruluş genelinde birden çok farklı platform arasında işlem düzeyindeki verilerin değişimini ve işlemesini mümkün değildir. İşlem bütünlüğü ve mevcut altyapınızdaki en az ek yük ile kaydedilmiş işlemleri hareket ettirir. Modüler mimarisi, seçili veri kayıtlarını, işlemsel değişiklikleri ve DDL 'de yapılan değişiklikleri (veri tanımlama dili) çeşitli topolojilerde ayıklama ve çoğaltma esnekliği sağlar.
 
-Oracle GoldenGate, çift yönlü çoğaltma sağlayarak veritabanınızı yüksek kullanılabilirlik için yapılandırmanızı sağlar. Bu, **çok yöneticili** veya **etkin-etkin bir yapılandırma**ayarlamanıza olanak sağlar. Aşağıdaki diyagram, Azure 'da Oracle GoldenGate etkin-etkin kurulumu için önerilen bir mimaridir. Aşağıdaki mimaride, Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
+Oracle GoldenGate, çift yönlü çoğaltma sağlayarak veritabanınızı yüksek kullanılabilirlik için yapılandırmanızı sağlar. Bu, **çok yöneticili** veya **etkin-etkin bir yapılandırma** ayarlamanıza olanak sağlar. Aşağıdaki diyagram, Azure 'da Oracle GoldenGate etkin-etkin kurulumu için önerilen bir mimaridir. Aşağıdaki mimaride, Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
 
 ![Veri koruma Aracısı ile kullanılabilirlik alanlarını kullanmak Oracle Database-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -168,7 +169,7 @@ Yinelenen tablolar tüm parçalar üzerinde depolanır, ancak parçalı tablolar
 
 Oracle Data Guard, sistem tarafından yönetilen, Kullanıcı tanımlı ve bileşik parçalama yöntemleriyle parçalama için kullanılabilir.
 
-Aşağıdaki diyagramda, her parça için yüksek kullanılabilirlik için kullanılan Oracle veri koruyucusu ile Oracle parçalara yönelik bir başvuru mimarisi bulunur. Mimari diyagramı, bileşik bir parçalama _yöntemi_gösterir. Mimari diyagramı, büyük olasılıkla veri konumu, Yük Dengeleme, yüksek kullanılabilirlik, olağanüstü durum kurtarma vb. için farklı gereksinimlere sahip uygulamalar için farklılık gösterir ve parçalama için farklı bir yöntem kullanabilir. Oracle parçalama, bu seçenekleri sağlayarak bu gereksinimleri karşılamanıza ve yatay ve verimli bir şekilde ölçeklendirmenize olanak tanır. Benzer bir mimari, Oracle GoldenGate kullanılarak da dağıtılabilir.
+Aşağıdaki diyagramda, her parça için yüksek kullanılabilirlik için kullanılan Oracle veri koruyucusu ile Oracle parçalara yönelik bir başvuru mimarisi bulunur. Mimari diyagramı, bileşik bir parçalama _yöntemi_ gösterir. Mimari diyagramı, büyük olasılıkla veri konumu, Yük Dengeleme, yüksek kullanılabilirlik, olağanüstü durum kurtarma vb. için farklı gereksinimlere sahip uygulamalar için farklılık gösterir ve parçalama için farklı bir yöntem kullanabilir. Oracle parçalama, bu seçenekleri sağlayarak bu gereksinimleri karşılamanıza ve yatay ve verimli bir şekilde ölçeklendirmenize olanak tanır. Benzer bir mimari, Oracle GoldenGate kullanılarak da dağıtılabilir.
 
 ![Data Guard broker ile kullanılabilirlik bölgelerini kullanarak parçalama Oracle Database-FSFO](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 

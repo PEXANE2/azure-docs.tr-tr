@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2018
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334608"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967411"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM DB2 kaynaklarına erişin ve yönetin
 
@@ -28,7 +28,7 @@ IBM DB2 Bağlayıcısı, bu IBM DB2 platformlarını ve sürümlerini, dağıtı
 
 | Platform | Sürüm | 
 |----------|---------|
-| Z/ç için IBM DB2 | 11,1, 10,1 |
+| Z/ç için IBM DB2 | 12, 11,1, 10,1 |
 | I için IBM DB2 | 7,3, 7,2, 7,1 |
 | LUW için IBM DB2 | 11, 10,5 |
 |||
@@ -82,15 +82,15 @@ Bağlantınızı ayarlamak için, istendiğinde bu bağlantı ayrıntılarını 
 
 | Özellik | Gerekli | Açıklama |
 |----------|----------|-------------|
-| **Şirket içi ağ geçidi üzerinden Bağlan** | Hayır | Yalnızca şirket içi bağlantılar için geçerlidir. |
-| **Bağlantı adı** | Evet | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" |
-| **Sunucu** | Evet | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası (örneğin, "myDB2server.cloudapp.net:50000") <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
-| **Veritabanı** | Evet | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
-| **Kullanıcı adı** | Evet | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
-| **Parola** | Evet | Veritabanı için parolanız |
+| **Şirket içi ağ geçidi üzerinden Bağlan** | No | Yalnızca şirket içi bağlantılar için geçerlidir. |
+| **Bağlantı adı** | Yes | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" |
+| **Sunucu** | Yes | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası (örneğin, "myDB2server.cloudapp.net:50000") <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
+| **Veritabanı** | Yes | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
+| **Kullanıcı adı** | Yes | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
+| **Parola** | Yes | Veritabanı için parolanız |
 ||||
 
-Örneğin:
+Örnek:
 
 ![Bulut tabanlı veritabanları için bağlantı ayrıntıları](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -102,17 +102,17 @@ Bağlantınızı oluşturmadan önce şirket içi veri ağ geçidiniz zaten yük
 
 | Özellik | Gerekli | Açıklama |
 |----------|----------|-------------|
-| **Şirket içi ağ geçidi üzerinden Bağlan** | Evet | Şirket içinde bağlantı istediğinizde geçerlidir ve şirket içi bağlantı özelliklerini gösterir. |
-| **Bağlantı adı** | Evet | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" | 
-| **Sunucu** | Evet | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası, örneğin, "myDB2server: 50000" <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
-| **Veritabanı** | Evet | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
-| **Kimlik Doğrulaması** | Evet | Bağlantınızın kimlik doğrulama türü, örneğin, "temel" <p><p>**Note**: temel veya Windows (Kerberos) içeren listeden bu değeri seçin. |
-| **Kullanıcı adı** | Evet | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
-| **Parola** | Evet | Veritabanı için parolanız |
-| **Geçidinde** | Evet | Yüklü şirket içi veri ağ geçidinizin adı <p><p>**Note**: Azure aboneliğiniz ve kaynak grubunuz içindeki tüm yüklü veri ağ geçitlerini içeren listeden bu değeri seçin. |
+| **Şirket içi ağ geçidi üzerinden Bağlan** | Yes | Şirket içinde bağlantı istediğinizde geçerlidir ve şirket içi bağlantı özelliklerini gösterir. |
+| **Bağlantı adı** | Yes | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" | 
+| **Sunucu** | Yes | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası, örneğin, "myDB2server: 50000" <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
+| **Veritabanı** | Yes | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
+| **Kimlik Doğrulaması** | Yes | Bağlantınızın kimlik doğrulama türü, örneğin, "temel" <p><p>**Note**: temel veya Windows (Kerberos) içeren listeden bu değeri seçin. |
+| **Kullanıcı adı** | Yes | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
+| **Parola** | Yes | Veritabanı için parolanız |
+| **Geçidinde** | Yes | Yüklü şirket içi veri ağ geçidinizin adı <p><p>**Note**: Azure aboneliğiniz ve kaynak grubunuz içindeki tüm yüklü veri ağ geçitlerini içeren listeden bu değeri seçin. |
 ||||
 
-Örneğin:
+Örnek:
 
 ![Şirket içi veritabanları için bağlantı ayrıntıları](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -122,11 +122,11 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin.
 
-1. **Özet**altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
+1. **Özet** altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
 
    ![Çalıştırma geçmişini görüntüleme](./media/connectors-create-api-db2/run-history.png)
 
-1. **Mantıksal uygulama çalıştırması**altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
+1. **Mantıksal uygulama çalıştırması** altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
 **Tabloları al** eylemini genişletin.
 
    ![Eylemi Genişlet](./media/connectors-create-api-db2/expand-action-step.png)
@@ -153,8 +153,8 @@ Bir DB2 veritabanı tablosunda bir kayıt getirmek için mantıksal uygulamanız
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Evet | Bu örnekteki "alan" gibi istediğiniz kayda sahip tablo |
-   | **Alan KIMLIĞI** | Evet | Bu örnekte "99999" gibi istediğiniz kaydın KIMLIĞI |
+   | **Tablo adı** | Yes | Bu örnekteki "alan" gibi istediğiniz kayda sahip tablo |
+   | **Alan KIMLIĞI** | Yes | Bu örnekte "99999" gibi istediğiniz kaydın KIMLIĞI |
    ||||
 
    ![Açılan "Tablo adı" ve "alan" değeri seçili "satırı al (Önizleme)" eylemini gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -167,9 +167,9 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin.
 
-1. **Özet**altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
+1. **Özet** altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
 
-1. **Mantıksal uygulama çalıştırması**altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
+1. **Mantıksal uygulama çalıştırması** altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
 **Satırı al** eylemini genişletin.
 
 1. Girişleri görüntülemek için **Ham girdileri göster**' i seçin.
@@ -204,9 +204,9 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin.
 
-1. **Özet**altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
+1. **Özet** altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
 
-1. **Mantıksal uygulama çalıştırması**altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
+1. **Mantıksal uygulama çalıştırması** altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
 **Satırları al** eylemini genişletin.
 
 1. Girişleri görüntülemek için **Ham girdileri göster**' i seçin.
@@ -233,13 +233,13 @@ Bir DB2 veritabanı tablosuna tek bir kayıt eklemek için mantıksal uygulaman�
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Evet | Kaydın ekleneceği tablo, örneğin "alan" |
-   | **Alan KIMLIĞI** | Evet | Eklenecek alanın KIMLIĞI, örneğin "99999" |
-   | **Alan açıklaması** | Evet | Eklenecek alanın açıklaması, örneğin "alan 99999" |
-   | **Bölge KIMLIĞI** | Evet | Eklenecek bölgenin KIMLIĞI, örneğin "102" |
+   | **Tablo adı** | Yes | Kaydın ekleneceği tablo, örneğin "alan" |
+   | **Alan KIMLIĞI** | Yes | Eklenecek alanın KIMLIĞI, örneğin "99999" |
+   | **Alan açıklaması** | Yes | Eklenecek alanın açıklaması, örneğin "alan 99999" |
+   | **Bölge KIMLIĞI** | Yes | Eklenecek bölgenin KIMLIĞI, örneğin "102" |
    |||| 
 
-   Örneğin:
+   Örnek:
 
    !["Satır ekle (Önizleme)" eylemi ve örnek özellik değerleri ile Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
@@ -251,9 +251,9 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin.
 
-1. **Özet**altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
+1. **Özet** altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
 
-1. **Mantıksal uygulama çalıştırması**altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
+1. **Mantıksal uygulama çalıştırması** altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
 **Satır ekle** eylemini genişletin.
 
 1. Girişleri görüntülemek için **Ham girdileri göster**' i seçin.
@@ -280,14 +280,14 @@ Bir DB2 veritabanı tablosundaki tek bir kaydı güncelleştirmek için mantıks
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Evet | Kaydın güncelleştirilmesi gereken tablo, örneğin "alan" |
-   | **Satır KIMLIĞI** | Evet | Güncelleştirilecek kaydın KIMLIĞI, örneğin "99999" |
-   | **Alan KIMLIĞI** | Evet | Yeni alan KIMLIĞI ("99999" gibi) |
-   | **Alan açıklaması** | Evet | Yeni alan açıklaması ("güncelleştirilmiş 99999" gibi) |
-   | **Bölge KIMLIĞI** | Evet | Yeni bölge KIMLIĞI ("102" gibi) |
+   | **Tablo adı** | Yes | Kaydın güncelleştirilmesi gereken tablo, örneğin "alan" |
+   | **Satır KIMLIĞI** | Yes | Güncelleştirilecek kaydın KIMLIĞI, örneğin "99999" |
+   | **Alan KIMLIĞI** | Yes | Yeni alan KIMLIĞI ("99999" gibi) |
+   | **Alan açıklaması** | Yes | Yeni alan açıklaması ("güncelleştirilmiş 99999" gibi) |
+   | **Bölge KIMLIĞI** | Yes | Yeni bölge KIMLIĞI ("102" gibi) |
    ||||
 
-   Örneğin:
+   Örnek:
 
    ![Bir tabloyu seçtiğiniz "satırı güncelleştir (Önizleme)" eylemiyle Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
@@ -299,9 +299,9 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin.
 
-1. **Özet**altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
+1. **Özet** altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
 
-1. **Mantıksal uygulama çalıştırması**altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
+1. **Mantıksal uygulama çalıştırması** altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
 **Satırı Güncelleştir** eylemini genişletin.
 
 1. Girişleri görüntülemek için **Ham girdileri göster**' i seçin.
@@ -328,11 +328,11 @@ Bir DB2 veritabanı tablosundan tek bir kaydı silmek için, mantıksal uygulama
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Evet | Kaydın silineceği tablo, örneğin "alan" |
-   | **Satır KIMLIĞI** | Evet | Silinecek kaydın KIMLIĞI, örneğin "99999" |
+   | **Tablo adı** | Yes | Kaydın silineceği tablo, örneğin "alan" |
+   | **Satır KIMLIĞI** | Yes | Silinecek kaydın KIMLIĞI, örneğin "99999" |
    ||||
 
-   Örneğin:
+   Örnek:
 
    ![Silinecek tabloyu seçtiğiniz "satırı sil (Önizleme)" eylemiyle Logic Apps tasarımcısını gösteren ekran görüntüsü.](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
@@ -344,9 +344,9 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
 1. Mantıksal uygulama menüsünde **genel bakış**' ı seçin.
 
-1. **Özet**altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
+1. **Özet** altında, çalışma **geçmişi** bölümünde, listedeki ilk öğe olan en son çalıştırmayı seçin.
 
-1. **Mantıksal uygulama çalıştırması**altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
+1. **Mantıksal uygulama çalıştırması** altında artık mantıksal uygulamanızdaki her adımın durumunu, girişlerini ve çıkışlarını gözden geçirebilirsiniz.
 **Satırı sil** eylemini genişletin.
 
 1. Girişleri görüntülemek için **Ham girdileri göster**' i seçin.

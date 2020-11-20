@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83660570"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967831"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Olağanüstü durum kurtarma yük devretme yordamı
 
@@ -42,7 +43,7 @@ Birden çok SAP HANA örneğine yük devredilecek şekilde, azure_hana_dr_failov
 Ayrıca, gerçek çoğaltma ilişkisini etkilemeden DR yük devretmesini test edebilirsiniz. Yük devretme testi gerçekleştirmek için, [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)'nda "test Dr yük devretmesi-azure_hana_test_dr_failover" bölümündeki adımları izleyin. 
 
 >[!IMPORTANT]
->**Yük devretmeyi test etme**IŞLEMI aracılığıyla Dr sitesinde oluşturduğunuz örnek üzerinde herhangi bir üretim *işlemini çalıştırmayın.* Komut azure_hana_test_dr_failover, birincil siteyle ilişkisi olmayan bir birim kümesi oluşturur. Sonuç olarak, birincil siteye geri eşitleme mümkün *değildir* . 
+>**Yük devretmeyi test etme** IŞLEMI aracılığıyla Dr sitesinde oluşturduğunuz örnek üzerinde herhangi bir üretim *işlemini çalıştırmayın.* Komut azure_hana_test_dr_failover, birincil siteyle ilişkisi olmayan bir birim kümesi oluşturur. Sonuç olarak, birincil siteye geri eşitleme mümkün *değildir* . 
 
 Sınanacak birden çok SAP HANA örneğine sahip olmak istiyorsanız, betiği birkaç kez çalıştırın. İstendiğinde, yük devretme için sınamak istediğiniz örneğin SAP HANA SID 'sini girin. 
 
@@ -83,7 +84,7 @@ Aşağıdaki adımlarda, geri yüklenen depolama anlık görüntüsüne ve kulla
 
 1. Varsayılan ayarlardan bazılarını ayarlayın:
 
-      - **Delta yedeklemeleri kullan**seçimini kaldırın.
+      - **Delta yedeklemeleri kullan** seçimini kaldırın.
       - **Günlük alanını Başlat**' ı seçin.
 
    ![Başlatma günlüğü alanını ayarla](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)

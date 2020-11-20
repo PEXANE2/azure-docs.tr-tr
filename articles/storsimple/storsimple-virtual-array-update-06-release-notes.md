@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
-ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60870715"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967032"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,6 sürüm notları
 
@@ -40,7 +40,7 @@ Güncelleştirme 0,6, yazılım sürümü **10.0.10293.0**'e karşılık gelir.
 ## <a name="whats-new-in-the-update-06"></a>Güncelleştirme 0,6 ' deki yenilikler
 Güncelleştirme 0,6 kritik bir güncelleştirmedir ve hemen dağıtılmalıdır. Bu güncelleştirme aşağıdaki düzeltmeleri içerir: 
 
-- **Windows Güvenlik düzeltmeleri** -bu sürümde **Windows kritik güvenlik düzeltmeleri**vardır. Güvenlik sorunları ve ilgili düzeltmeler hakkında daha fazla bilgi için aşağıdaki güvenlik güncelleştirmelerini gözden geçirin:
+- **Windows Güvenlik düzeltmeleri** -bu sürümde **Windows kritik güvenlik düzeltmeleri** vardır. Güvenlik sorunları ve ilgili düzeltmeler hakkında daha fazla bilgi için aşağıdaki güvenlik güncelleştirmelerini gözden geçirin:
     - [Windows 8.1 ve Windows Server 2012 R2 için Aralık 2016 güvenlik yalnızca kalite güncelleştirmesi](https://support.microsoft.com/help/3205400/december-2016-security-only-quality-update-for-windows-8.1-and-windows-server-2012-r2)
     - [Windows 8.1 ve Windows Server 2012 R2 için Mart 2017 güvenlik yalnızca kalite güncelleştirmesi](https://support.microsoft.com/help/4012213/march-2017-security-only-quality-update-for-windows-8-1-and-windows-server-2012-r23)
     - [9 Mayıs 2017 — KB4019213 (yalnızca güvenlik güncelleştirmesi)](https://support.microsoft.com/help/4019213/windows-8-update-kb4019213)
@@ -52,7 +52,7 @@ Güncelleştirme 0,6 kritik bir güncelleştirmedir ve hemen dağıtılmalıdır
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Özellik | Sorun |
+| Hayır. | Öne çıkan özelliği | Sorun |
 | --- | --- | --- |
 | 1 |Güvenlik| Bu sürüm, kritik Windows güvenlik güncelleştirmeleri içerir. Bu güncelleştirmeyi hemen yüklemenizi öneririz.|
 | 2 |Geri Yükleme| Geri yükleme sırasında geri yükleme işinin tamamlanmasını engelleyecek bir yarış durumu vardı. Hata düzelttiğinde bu yarış durumu ele alınmaktadır.|
@@ -62,7 +62,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir.
 
-| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |
@@ -92,5 +92,4 @@ Daha eski bir sürüm notuna mi bakıyorsunuz? Şuraya gidin:
 * [StorSimple Sanal dizisi güncelleştirme 0,4 sürüm notları](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,1 ve 0,2 sürüm notları](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları]()

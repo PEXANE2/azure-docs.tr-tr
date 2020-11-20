@@ -2,18 +2,18 @@
 title: Sık sorulan sorular
 description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920602"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967355"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
-Azure VMware çözümü hakkında sık sorulan sorular için yanıtlar.
+Bu makalede, Azure VMware çözümü hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="general"></a>Genel
 
@@ -33,7 +33,7 @@ Tüm Azure hizmetleri Azure VMware Çözüm müşterileri tarafından kullanıla
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>Özel bulut kaynaklarını yönetmek için şu anda kullandığım araçları kullanıyorum?
 
-Evet. Azure portal dağıtım ve bir dizi yönetim işlemi için kullanılır. vCenter ve NSX Yöneticisi, vSphere ve NSX-T kaynaklarını yönetmek için kullanılır.
+Evet. Azure portal dağıtım ve çeşitli yönetim işlemleri için kullanılır. vCenter ve NSX Yöneticisi, vSphere ve NSX-T kaynaklarını yönetmek için kullanılır.
 
 #### <a name="can-i-manage-a-private-cloud-with-my-on-premises-vcenter"></a>Şirket içi vCenter 'um ile özel bir bulutu yönetebilir miyim?
 
@@ -49,11 +49,11 @@ Evet. Standart çapraz vCenter [vMotion gereksinimleri](https://kb.vmware.com/s/
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>Şirket içi ortamlarda gerekli olan belirli bir vSphere sürümü mi?
 
-Tüm bulut ortamları, vMotion için şirket içi ortamlarda VMware HCX, vSphere 5,5 veya üzeri ile gelir.
+Tüm bulut ortamları, vMotion için şirket içi ortamlarda VMware HCX, vSphere 5,5 veya sonraki bir sürümü ile gelir.
 
 #### <a name="what-does-the-change-control-process-look-like"></a>Değişiklik denetimi işlemi nasıl görünür?
 
-Hizmette yapılan güncelleştirmeler, Microsoft Azure Standart değişiklik yönetimi işlemini izler. Müşteriler tüm iş yükü yönetim görevlerinden ve ilişkili değişiklik yönetimi işlemlerinden sorumludur.
+Hizmette yapılan güncelleştirmelerin kendisi Microsoft Azure Standart değişiklik yönetimi sürecidir. Müşteriler tüm iş yükü yönetim görevlerinden ve ilişkili değişiklik yönetimi işlemlerinden sorumludur.
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>Bu, CloudSimple tarafından Azure VMware çözümünden farklı midir?
 
@@ -65,7 +65,7 @@ Yeni Azure VMware çözümüyle, Microsoft ve VMware 'nin doğrudan bir bulut sa
 Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve ESXi ana bilgisayar adlarını çözümlemek için ortak DNS kullanıyor olabilir.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri ile VMRC 'yi yüklemek ve kullanmak için özel yönergeler var mı?
-Hayır, [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın ve bu YÖNERGELERDE belirtilen VM önkoşullarını yerine uygulayın. 
+Hayır. Bu yönergelerde belirtilen VM önkoşullarını karşılamak için [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Şu VPN 'lerde VMware HCX destekleniyor mu?
 Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
@@ -74,7 +74,7 @@ Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
 Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri için Azure Load Balancer dahili olarak kullanılabilir mi?
-Hayır. Azure Load Balancer iç yalnızca Azure IaaS VM 'lerini destekler. Azure Load Balancer, IP tabanlı arka uç havuzlarını desteklemez; Azure VMware Çözüm VM 'lerinin Azure nesneleri olmayan yalnızca Azure VM 'Leri veya sanal makine ölçek kümesi nesneleri.
+Hayır. Azure Load Balancer iç-yalnızca Azure IaaS VM 'lerini destekler. Azure Load Balancer, IP tabanlı arka uç havuzlarını desteklemez; Azure VMware Çözüm VM 'lerinin Azure nesneleri olmayan yalnızca Azure VM 'Leri veya sanal makine ölçek kümesi nesneleri.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?
 Evet, sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanabilirsiniz.  Bununla birlikte, ExpressRoute aracılığıyla şirket içi Azure VMware çözümüne erişmek için ExpressRoute Global Reach sahip olmanız gerekir. Bu, ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamamalıdır.
@@ -105,7 +105,7 @@ Azure VMware çözümünde her ESXi Konağı 4 25-Gbps NIC, ESXi sistem trafiği
 
 Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak varsayılan olarak şifrelenir.
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>Commkasasının, VERITAS ve Veead 'nin Azure VMware çözümüyle birlikte çalışmak için yedekleme çözümlerini genişletmiş olursunuz. Diğer bağımsız yazılım satıcısı (ISV) yedekleme çözümleri hakkında ne olacak?
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Commkasasının, VERITAS ve Veead 'nin Azure VMware çözümüyle birlikte çalışmak için yedekleme çözümlerini genişletmiş olursunuz. Diğer bağımsız yazılım satıcıları (ISV) yedekleme çözümleri hakkında ne olacak?
 
 Öğrendiğimiz kadar, HotAdd taşıma moduyla VMware VADP kullanan tüm yedekleme çözümlerinin Azure VMware çözümünde kutudan hemen çalışması gerekir.
 
@@ -147,7 +147,7 @@ Hayır. Yüksek kaliteli ESXi Konakları üretim kümelerinde kullanılmak üzer
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>Özel bulutlarda VMware yazılımının hangi sürümleri kullanılıyor?
 
-Özel bulutlar vSphere 6,7, vSAN 6,7, VMware HCX ve NSX-T sürüm 2,5 ' i kullanır.  
+Özel bulutlar vSphere 6,7 U3, vSAN 6,7 U3, VMware HCX ve NSX-T 2,5 kullanır.  Daha fazla bilgi için bkz. [VMware yazılım sürümü gereksinimleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>Özel bulutlar VMware NSX kullanıyor mu?
 
@@ -163,7 +163,7 @@ Hayır, NSX 'i şirket içinde kullanmak zorunda değilsiniz.
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>Özel buluttaki VMware yazılımı için yükseltme ve güncelleştirme zamanlaması nedir?
 
-Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümü içinde tutmak için yapılır. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, vSAN) farklı olabilir.
+Özel bulut yazılım paketi yükseltmeleri, Yazılımı VMware 'den en son yazılım paketi sürümünün bir sürümü içinde tutar. Özel bulut yazılımı sürümleri, bireysel yazılım bileşenlerinin en son sürümlerinden (ESXi, NSX-T, vCenter, vSAN) farklı olabilir.
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>Özel bulut yazılım yığını ne sıklıkla güncelleştirilir?
 
@@ -184,7 +184,7 @@ Hizmete iki yöntemden birini kullanabilirsiniz:
 
 #### <a name="how-do-i-connect-a-workload-vm-to-the-internet-or-an-azure-service-endpoint"></a>Bir iş yükü VM 'sini Internet 'e veya Azure hizmeti uç noktasına bağlamak Nasıl yaparım?.
 
-Azure portal bir özel bulut için internet bağlantısını etkinleştirin. NSX-T Yöneticisi ile bir NSX-T T1 yönlendiricisi ve bir mantıksal anahtar oluşturun. Ardından, mantıksal anahtar tarafından tanımlanan ağ kesimine bir VM dağıtmak için vCenter 'ı kullanırsınız. Bu VM, internet ve Azure hizmetleri için ağ erişimine sahip olacaktır.
+Azure portal bir özel bulut için internet bağlantısını etkinleştirin. NSX-T Yöneticisi ile bir NSX-T T1 yönlendiricisi ve bir mantıksal anahtar oluşturun. Ardından, mantıksal anahtar tarafından tanımlanan ağ kesimine bir VM dağıtmak için vCenter 'ı kullanırsınız. Bu VM 'nin internet ve Azure hizmetlerine ağ erişimi olur.
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>İnternet 'ten özel bir buluttaki mantıksal ağlardaki VM 'lere erişimi kısıtlayacağım mi?
 
@@ -237,7 +237,7 @@ Evet, müşteriler Azure VMware çözümünü bir CSP tarafından yönetilen bir
 
 Microsoft, Azure VMware çözümü için destek sunar. Bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz. 
 
-CSP ile yönetilen abonelikler için, ilk destek düzeyi çözüm sağlayıcısı tarafından diğer Azure hizmetleri için CSP ile aynı şekilde sağlanır.
+CSP ile yönetilen abonelikler için, ilk destek düzeyi çözüm sağlayıcısını diğer Azure hizmetleri için CSP ile aynı şekilde sağlar.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümü özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?
 
@@ -245,11 +245,11 @@ Azure aboneliğinde bir Azure hesabınızın olması gerekir.
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Red hat çözümleri Azure VMware çözümünde destekleniyor mu?
 
-Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yönelik Birleşik bir iletişim noktası sağlayan tümleşik, birlikte bulunan bir destek ekibini paylaşır.  Red Hat Enterprise Linux ile çalışan diğer Azure platformu hizmetleri gibi Azure VMware çözümü, bulut erişimi ve tümleşik destek şemsiye kapsamında bulunur ve Azure 'da Azure VMware çözümünün üzerinde çalışmak için Red Hat Enterprise Linux desteklenir.
+Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yönelik Birleşik bir iletişim noktası sağlayan tümleşik, birlikte bulunan bir destek ekibini paylaşır.  Red Hat Enterprise Linux ile çalışan diğer Azure platformu hizmetleri gibi Azure VMware çözümü de bulut erişimi ve tümleşik destek şemsiye altındadır. Red Hat Enterprise Linux Azure 'da Azure VMware çözümünün üzerine çalıştırmak için desteklenir.
 
 #### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise mevcuttur ve bu durumda ne kadar ücret maliyetlidir?
 
-VMware HCX Enterprise, *Önizleme* işlevi/hizmeti olarak Azure VMware çözümü ile kullanılabilir. Azure VMware çözümü için VMware HCX Enterprise önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX Enterprise hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
+VMware HCX Enterprise, *Önizleme* işlevi/hizmeti olarak Azure VMware çözümü ile kullanılabilir. Azure VMware çözümü için VMware HCX Enterprise önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX Enterprise hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti devre dışı bırakabilirsiniz veya hizmetten vazgeçebilirsiniz.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 
@@ -260,7 +260,7 @@ EA abonelikleri için aşağıdaki yordamı kullanın. Öncelikle şunları yapm
 * Microsoft ile [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) .
 * Azure aboneliğindeki bir Azure hesabı.
 
-Azure VMware Çözüm kaynağınızı oluşturmadan önce, düğümlerinizin ayrılmaları için bir destek bileti oluşturun. İsteğinizi doğrulamak ve düğümlerinizi ayırmak için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
+Azure VMware Çözüm kaynağınızı oluşturabilmeniz için önce, konaklarınızın ayrılmaları için bir destek bileti göndereceğiz. İsteğinizi onaylamak ve yerine getirmek için beş adede kadar iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla ana bilgisayar ayırmak istiyorsanız, aynı işlemden geçmeniz gerekir.
 
 1. Azure portal, **Yardım + Destek** altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
    - **Sorun türü:** Teknik
@@ -275,46 +275,47 @@ Azure VMware Çözüm kaynağınızı oluşturmadan önce, düğümlerinizin ayr
 
    - POC veya üretim 
    - Bölge Adı
-   - Düğüm sayısı
+   - Ana bilgisayar sayısı
    - Diğer ayrıntılar
 
    >[!NOTE]
-   >Azure VMware çözümü, özel bulutunuzu ve artıklığı N + 1 düğümlerini çalıştırmak için en az üç düğüm önerir. 
+   >Azure VMware çözümü, özel bulutunuzu ve artıklığı N + 1 ana bilgisayarlarını çalıştırmak için en az üç ana bilgisayar önerir. 
 
 1. İsteği göndermek için **gözden geçir + oluştur** ' u seçin.
 
    Bir destek temsilcisinin isteğinizi onaylamasını beş adede kadar iş günü sürer.
 
    >[!IMPORTANT] 
-   >Zaten mevcut bir Azure VMware çözümünüz varsa ve ek düğümler istiyorsanız, düğümlerin ayrılması için beş iş gününe ihtiyacımız olduğunu lütfen unutmayın. 
+   >Zaten mevcut bir Azure VMware çözümünüz varsa ve ek konaklar istemeniz durumunda, Konakları ayırmak için beş iş gününe ihtiyacımız olduğunu lütfen unutmayın. 
 
-1. Düğümlerinizi sağlayabilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
+1. Konaklarınızı sağlayabilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
+   ```
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+   Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md). 
 
-#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+#### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>Ayrılmış örnekler, bulut çözümü sağlayıcısı (CSP) programı aracılığıyla satın alınabilir mi?
 
-Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
+Evet. CSP, müşterileri için ayrılmış örnekler satın alabilir. Daha fazla bilgi için bkz. [ayrılmış örnek ile maliyetleri kaydetme](reserved-instance.md) makalesi. 
 
-#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+#### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware çözümü, CSP iş ortaklarını barındırmak için çok kiracılı bir teklif sunuyor mu?
 
-No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+Hayır. Şu anda Azure VMware çözümü çok kiracılı bir sunmaz.
 
-#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+#### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>ExpressRoute üzerinden şirket içi ve Azure VMware çözümü arasındaki trafik, ölçülen veri planındaki giden veri aktarımı ücretlerine neden olur?
 
-Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
+Azure VMware Çözüm ExpressRoute bağlantı hattının trafiği hiçbir şekilde tarifeli değildir. ExpressRoute bağlantı hattınızdan şirket içi olarak Azure 'a bağlanan trafik, ExpressRoute fiyatlandırma planlarına göre ücretlendirilir.
 
 
-## Customer communication
+## <a name="customer-communication"></a>Müşteri iletişimi
 
-#### How can I receive an alert when Azure sends service health notifications to my Azure subscription?
+#### <a name="how-can-i-receive-an-alert-when-azure-sends-service-health-notifications-to-my-azure-subscription"></a>Azure, Azure aboneliğime hizmet durumu bildirimleri gönderdiğinde nasıl uyarı alabilirim?
 
-Service issues, planned maintenance, health advisories, security advisories notifications are published through **Service Health** in the Azure portal.  You can take timely actions when you set up activity log alerts for these notifications. For more information, see [Create service health alerts using the Azure portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+Hizmet sorunları, planlı bakım, sistem durumu danışmanları, Güvenlik Danışma belgeleri bildirimleri Azure portal **hizmet durumu** üzerinden yayımlanır.  Bu bildirimler için etkinlik günlüğü uyarılarını ayarlarken zamanında işlem yapabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet durumu uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
 
-:::image type="content" source="media/service-health.png" alt-text="Screenshot of Service Health notifications":::
+:::image type="content" source="media/service-health.png" alt-text="Hizmet durumu bildirimlerinin ekran görüntüsü":::
 
 
 

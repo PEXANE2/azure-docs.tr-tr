@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d4d21ac0fc0f218b9168adfad3e1b2ec42092b42
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544758"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968545"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -109,8 +110,8 @@ Yapılandırma şöyle görünür:
 4. Belirli genel uç noktalarına erişimi kısıtlamak için ağ güvenlik grubu kuralları oluşturun. Var olan bir ağ güvenlik grubu varsa, bunu ayarlayabilirsiniz. Aşağıdaki örnekte, Azure Yönetim API 'sine erişimin nasıl etkinleştirileceği gösterilmektedir: 
    1. Ağ güvenlik grubuna git
    1. Giden güvenlik kuralları ' na tıklayın
-   1. **Internet** 'e giden tüm erişimi **reddetmek** için bir kural ekleyin.
-   1. Tüm internet erişimini reddetmek için kuralın önceliğinden daha düşük olan **Azurecı** 'ye erişime **izin veren** bir kural ekleyin.
+   1. **Internet**'e giden tüm erişimi **reddetmek** için bir kural ekleyin.
+   1. Tüm internet erişimini reddetmek için kuralın önceliğinden daha düşük olan **Azurecı**'ye erişime **izin veren** bir kural ekleyin.
 
 
    Giden güvenlik kuralları şöyle görünür: 
@@ -147,14 +148,14 @@ Mimari şöyle görünür:
    1. Alt ağ Ekle ' ye tıklayın. Ad olarak **AzureFirewallSubnet** girin. Uygun adres aralığını girin. Kaydedin.  
 3. Azure Güvenlik duvarı oluşturun.  
    1. Azure portal tüm kaynaklar ' ı seçin, Ekle, güvenlik duvarı, Oluştur ' a tıklayın. Kaynak grubu ' nu seçin (sanal ağın bulunduğu kaynak grubunu seçin).  
-   1. Azure Güvenlik Duvarı kaynağı için ad girin. Örneğin, **Myazurefirewall** .  
+   1. Azure Güvenlik Duvarı kaynağı için ad girin. Örneğin, **Myazurefirewall**.  
    1. Bölge ' yi seçin ve VM 'nizin dağıtıldığı kullanılabilirlik bölgeleriyle hizalı en az iki kullanılabilirlik bölgesi seçin.  
    1. SAP VM 'lerinin ve Azure Standart yük dengeleyicinin dağıtıldığı Sanal ağınızı seçin.  
-   1. Genel IP adresi: oluştur ' a tıklayın ve bir ad girin. Örneğin, **Myfirewallpublicıp** .  
+   1. Genel IP adresi: oluştur ' a tıklayın ve bir ad girin. Örneğin, **Myfirewallpublicıp**.  
 4. Belirtilen genel uç noktalara giden bağlantılara izin vermek için Azure Güvenlik Duvarı kuralı oluşturun. Örnekte, Azure Yönetim API 'SI genel uç noktasına erişime nasıl izin verilecek gösterilmektedir.  
    1. Kurallar, ağ kuralı koleksiyonu ' nu seçin ve ardından ağ kuralı koleksiyonu Ekle ' ye tıklayın.  
-   1. Ad: **mbir Boundrule** , öncelik girin, eylem **izin ver** ' i seçin.  
-   1. Hizmet: adı **ToAzureAPI** .  Protokol: **herhangi bir** seçin. Kaynak adresi: VM 'Lerin ve Standart Load Balancer örneği için dağıtıldığı alt ağınız için aralığı girin: **11.97.0.0/24** . Hedef bağlantı noktaları: girin <b>*</b> .  
+   1. Ad: **mbir Boundrule**, öncelik girin, eylem **izin ver**' i seçin.  
+   1. Hizmet: adı **ToAzureAPI**.  Protokol: **herhangi bir** seçin. Kaynak adresi: VM 'Lerin ve Standart Load Balancer örneği için dağıtıldığı alt ağınız için aralığı girin: **11.97.0.0/24**. Hedef bağlantı noktaları: girin <b>*</b> .  
    1. Kaydet
    1. Hala Azure Güvenlik duvarında konumlandırılmakta olduğunuz için genel bakış ' ı seçin. Azure Güvenlik duvarının özel IP adresini aklınızda edin.  
 5. Azure Güvenlik Duvarı 'na yol oluşturma  
@@ -165,8 +166,8 @@ Mimari şöyle görünür:
    Güvenlik duvarı kuralı şöyle görünür: ![ güvenlik duvarının neye benzebileceklerini gösteren diyagram.](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall** özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
-   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle ' yi seçin. 
-   1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0** . Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4** .  
+   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle’yi seçin. 
+   1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 
 ## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Azure Yönetim API 'sine pacemaker çağrıları için proxy kullanma

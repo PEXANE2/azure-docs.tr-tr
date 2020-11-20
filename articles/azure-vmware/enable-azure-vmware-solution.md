@@ -1,17 +1,17 @@
 ---
 title: Azure VMware Çözüm kaynağınızı etkinleştirme
-description: Azure VMware Çözüm kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla düğüm isteyebilirsiniz.
+description: Azure VMware Çözüm kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla ana bilgisayar isteyebilirsiniz.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888445"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967372"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Çözüm kaynağını etkinleştirme
-[Azure VMware Çözüm](introduction.md) kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla düğüm isteyebilirsiniz.
+[Azure VMware Çözüm](introduction.md) kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla ana bilgisayar isteyebilirsiniz.
 
 ## <a name="eligibility-criteria"></a>Uygunluk ölçütleri
 
@@ -22,7 +22,7 @@ Azure aboneliğinde bir Azure hesabınızın olması gerekir. Azure aboneliği a
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>EA müşterileri için Azure VMware çözümünü etkinleştirme
-Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz.
+Azure VMware Çözüm kaynağını oluşturmadan önce, konaklarınızın ayrılmış olması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve konaklarınızı ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla ana bilgisayar ayırmak istiyorsanız, aynı işlemden geçmeniz gerekir.
 
 
 1. Azure portal, **Yardım + Destek** altında, **[Yeni bir destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support)** oluşturun ve bilet için aşağıdaki bilgileri sağlayın:
@@ -38,20 +38,20 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrıl
 
    - POC veya üretim 
    - Bölge Adı
-   - Düğüm sayısı
+   - Ana bilgisayar sayısı
    - Diğer ayrıntılar
 
    >[!NOTE]
-   >Azure VMware çözümü, özel bulutunuzu ve artıklığı N + 1 düğümlerini çalıştırmak için en az üç düğüm önerir. 
+   >Azure VMware çözümü, özel bulutunuzu ve artıklığı N + 1 ana bilgisayarlarını çalıştırmak için en az üç ana bilgisayar önerir. 
 
 1. İsteği göndermek için **gözden geçir + oluştur** ' u seçin.
 
    Bir destek temsilcisinin isteğinizi onaylamasını beş adede kadar iş günü sürer.
 
    >[!IMPORTANT] 
-   >Zaten mevcut bir Azure VMware çözümünüz varsa ve ek düğümler istiyorsanız, düğümlerin ayrılması için beş iş gününe ihtiyacımız olduğunu lütfen unutmayın. 
+   >Zaten mevcut bir Azure VMware çözümünüz varsa ve ek konaklar isterseniz, Konakları ayırmak için beş iş gününe ihtiyacımız olduğunu lütfen unutmayın. 
 
-1. Düğümlerinizi sağlayabilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
+1. Konaklarınızı sağlayabilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -99,21 +99,21 @@ Azure planı yapılandırıldıktan ve gerekli vSphere RBAC izinleri bir CSP ola
 
    - POC veya üretim 
    - Bölge Adı
-   - Düğüm sayısı
+   - Ana bilgisayar sayısı
    - Diğer ayrıntılar
    - Birden çok müşteriyi barındırmak için tasarlanmıştır mı?
 
    >[!NOTE]
-   >Azure VMware çözümü, özel bulutunuzu ve artıklığı N + 1 düğümlerini çalıştırmak için en az üç düğüm önerir. 
+   >Azure VMware çözümü, özel bulutunuzu ve artıklığı N + 1 ana bilgisayarlarını çalıştırmak için en az üç ana bilgisayar önerir. 
 
 1. İsteği göndermek için **gözden geçir + oluştur** ' u seçin.
 
    Bir destek temsilcisinin isteğinizi onaylamasını beş adede kadar iş günü sürer.
 
    >[!IMPORTANT] 
-   >Zaten mevcut bir Azure VMware çözümünüz varsa ve ek düğümler istiyorsanız, düğümlerin ayrılması için beş iş gününe ihtiyacımız olduğunu lütfen unutmayın. 
+   >Zaten mevcut bir Azure VMware çözümünüz varsa ve ek konaklar isterseniz, Konakları ayırmak için beş iş gününe ihtiyacımız olduğunu lütfen unutmayın. 
 
-1. Azure planına eklendikten ve kota etkinleştirildikten sonra, müşteri veya iş ortağı Yöneticisi Azure portal aracılığıyla bir Azure VMware çözümü özel bulutu dağıtabilir. Düğümlerinizi sağlayabilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
+1. Azure planına eklendikten ve kota etkinleştirildikten sonra, müşteri veya iş ortağı Yöneticisi Azure portal aracılığıyla bir Azure VMware çözümü özel bulutu dağıtabilir. Konaklarınızı sağlayabilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>

@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88b1cd2a5bf33d6401f0d2e15237400e27c72e54
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541161"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967661"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux için SMT Server 'ı ayarlama
 Büyük SAP HANA örneklerinin internet 'e doğrudan bağlantısı yoktur. Bu tür bir birimi işletim sistemi sağlayıcısına kaydetmek ve güncelleştirmeleri indirmek ve uygulamak için kolay bir işlem değildir. SUSE Linux çözümü, bir Azure sanal makinesinde bir SMT sunucusu ayarlamaya yöneliktir. Sanal makineyi, HANA büyük örneğine bağlı bir Azure sanal ağında barındırın. Bu tür bir SMT sunucusu sayesinde, HANA büyük örnek birimi güncelleştirmeleri kaydedebilir ve indirebilir. 
@@ -78,7 +79,7 @@ Resolving package dependencies...
 ```
 
 
-Ayrıca, SMT paketlerini yüklemek için YAST aracını da kullanabilirsiniz. YAST 'de **Yazılım Bakımı**' na gidin ve SMT araması yapın. Otomatik olarak YaST2 **-smt öğesine**geçiş yapar.
+Ayrıca, SMT paketlerini yüklemek için YAST aracını da kullanabilirsiniz. YAST 'de **Yazılım Bakımı**' na gidin ve SMT araması yapın. Otomatik olarak YaST2 **-smt öğesine** geçiş yapar.
 
 ![YAST içindeki SMT ekran görüntüsü](./media/hana-installation/image5_smt_in_yast.PNG)
 

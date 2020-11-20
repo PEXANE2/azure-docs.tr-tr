@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526451"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968086"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Öğretici: Azure IoT Hub cihaz sağlama hizmeti 'ni kullanarak bir IoT Hub 'ına cihaz sağlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "90526451"
 > * Cihazı başlatın
 > * Cihaz kayıtlı olduğunu doğrulayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce, [Azure IoT Hub Cihazı Sağlama Hizmeti’ni kullanarak bir cihazı sağlamak üzere ayarlama](./tutorial-set-up-device.md) öğreticisinde açıklandığı gibi cihazınızı yapılandırdığınızdan emin olun.
 
@@ -36,13 +36,13 @@ Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [sağlamaya](
 Bu adım, cihazın benzersiz güvenlik yapılarının Cihaz Sağlama Hizmeti’ne eklenmesini kapsar. Bu güvenlik yapıları, aşağıdaki gibi cihazın [Kanıtlama mekanizması](concepts-service.md#attestation-mechanism)’nı temel alır:
 
 - TPM tabanlı cihazlar için şunlar gerekir:
-    - TPM yongası veya simülasyonu için benzersiz olan, TPM yonga üreticisinden alınan *Onay Anahtarı*.  Daha fazla bilgi için [TPM Onay Anahtarını Anlama](https://technet.microsoft.com/library/cc770443.aspx) bölümünü okuyun.
+    - TPM yongası veya simülasyonu için benzersiz olan, TPM yonga üreticisinden alınan *Onay Anahtarı*.  Daha fazla bilgi için [TPM Onay Anahtarını Anlama](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11)) bölümünü okuyun.
     - Ad alanındaki/kapsamdaki bir cihazı benzersiz şekilde tanımlamak için kullanılan *Kayıt Kimliği*. Bu kimlik, cihaz kimliğiyle aynı olabilir veya olmayabilir. Kimlik her cihaz için zorunludur. TPM tabanlı cihazlar için kayıt kimliği, TPM’den türetilebilir; örneğin, TPM Onay Anahtarının SHA-256 karması.
 
       [![Portalda TPM için kayıt bilgileri](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509 tabanlı cihazlar için şunlar gerekir:
-    - *.pem* veya *.cer* dosyası şeklinde [X.509 yongasına ya da simülasyonuna düzenlenen sertifika](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx). Bireysel kayıt için, X. 509.952 sisteminiz için cihaz başına  *imzalı sertifikayı* kullanmanız gerekir, ancak kayıt grupları için *kök sertifikayı*kullanmanız gerekir. 
+    - *.pem* veya *.cer* dosyası şeklinde [X.509 yongasına ya da simülasyonuna düzenlenen sertifika](/windows/win32/seccertenroll/about-x-509-public-key-certificates). Bireysel kayıt için, X. 509.952 sisteminiz için cihaz başına  *imzalı sertifikayı* kullanmanız gerekir, ancak kayıt grupları için *kök sertifikayı* kullanmanız gerekir. 
 
       [![Portalda X. 509.440 kanıtlama için bireysel kayıt ekleme](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -88,7 +88,7 @@ Cihazınız önyüklendikten sonra aşağıdaki eylemler gerçekleşmelidir:
 
     ![Portalda hub ile başarılı bağlantı](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-Daha fazla bilgi için bkz. cihaz istemci örneği sağlama, [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). Örnek, TPM, X. 509.440 sertifikaları ve simetrik anahtarlar kullanılarak sanal bir cihazın sağlanmasını gösterir. Örneği kullanmaya ilişkin adım adım yönergeler için [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X. 509.440](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)ve [simetrik anahtar](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) kanıtlama hızlı başlangıçlarına geri bakın.
+Daha fazla bilgi için bkz. cihaz istemci örneği sağlama, [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). Örnek, TPM, X. 509.440 sertifikaları ve simetrik anahtarlar kullanılarak sanal bir cihazın sağlanmasını gösterir. Örneği kullanmaya ilişkin adım adım yönergeler için [TPM](./quick-create-simulated-device.md), [X. 509.440](./quick-create-simulated-device-x509.md)ve [simetrik anahtar](./quick-create-simulated-device-symm-key.md) kanıtlama hızlı başlangıçlarına geri bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:

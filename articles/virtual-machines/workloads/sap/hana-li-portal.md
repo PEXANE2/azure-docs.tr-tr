@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927201"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967763"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
 Bu belge, [Hana büyük örneklerinin](./hana-overview-architecture.md) [Azure Portal](https://portal.azure.com) nasıl sunulduğunu ve sizin Için dağıtılan Hana büyük örnek birimleri ile Azure Portal aracılığıyla hangi etkinliklerin yapılabileceğini anlatmaktadır. Azure portal 'daki HANA büyük örneklerin görünürlüğü, şu anda genel önizlemede olan HANA büyük örnekleri için bir Azure Kaynak sağlayıcısı aracılığıyla sunulmaktadır
@@ -146,7 +147,7 @@ Bir sonraki ekranda listelenen SAP HANA Büyük Örnekleri hizmetini almak için
 
 ![Azure portal tüm hizmetleri seçin](./media/hana-li-portal/portal-create-service-request.png)
 
-Hizmetler listesinde, hizmet **SAP HANA büyük örnek** ' i bulabilirsiniz. Bu hizmeti seçerken, belirli sorun türlerini gösterildiği gibi seçebilirsiniz:
+Hizmetler listesinde, hizmet **SAP HANA büyük örnek**' i bulabilirsiniz. Bu hizmeti seçerken, belirli sorun türlerini gösterildiği gibi seçebilirsiniz:
 
 
 ![Azure portal sorun sınıfını seçin](./media/hana-li-portal/portal-select-problem-class.png)

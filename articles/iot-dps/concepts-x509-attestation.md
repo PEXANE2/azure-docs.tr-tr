@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 3e06c79b9cbd5643d119974a4ed8628ea1b1cd4f
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 9eee315aac28847710662b463add7d6e68d8d505
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096768"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967304"
 ---
 # <a name="x509-certificate-attestation"></a>X.509 sertifikası kanıtlama
 
@@ -26,7 +26,7 @@ X. 509.440 sertifikaları, bir donanım güvenlik modülü HSM 'de depolanabilir
 
 ## <a name="x509-certificates"></a>X. 509.440 sertifikaları
 
-Bir kanıtlama mekanizması olarak X. 509.440 sertifikalarını kullanmak, üretimi ölçeklendirmek ve cihaz sağlamayı basitleştirmek için mükemmel bir yoldur. X. 509.440 sertifikaları genellikle, zincirdeki her bir sertifikanın bir sonraki daha yüksek sertifikanın özel anahtarıyla imzalandığı ve bu şekilde otomatik olarak imzalanan bir kök sertifikada sonlandıralındığı bir sertifika güven zinciri halinde düzenlenir. Bu düzenleme, bir cihazda yüklü olan son varlık "yaprak" sertifikasına her bir ara CA aracılığıyla bir güvenilen kök sertifika yetkilisi (CA) tarafından oluşturulan kök sertifikadan temsilci bir güven zinciri oluşturur. Daha fazla bilgi için bkz. [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](/azure/iot-hub/iot-hub-x509ca-overview). 
+Bir kanıtlama mekanizması olarak X. 509.440 sertifikalarını kullanmak, üretimi ölçeklendirmek ve cihaz sağlamayı basitleştirmek için mükemmel bir yoldur. X. 509.440 sertifikaları genellikle, zincirdeki her bir sertifikanın bir sonraki daha yüksek sertifikanın özel anahtarıyla imzalandığı ve bu şekilde otomatik olarak imzalanan bir kök sertifikada sonlandıralındığı bir sertifika güven zinciri halinde düzenlenir. Bu düzenleme, bir cihazda yüklü olan son varlık "yaprak" sertifikasına her bir ara CA aracılığıyla bir güvenilen kök sertifika yetkilisi (CA) tarafından oluşturulan kök sertifikadan temsilci bir güven zinciri oluşturur. Daha fazla bilgi için bkz. [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](../iot-hub/iot-hub-x509ca-overview.md). 
 
 Genellikle sertifika zinciri cihazlarla ilişkilendirilmiş bazı mantıksal veya fiziksel hiyerarşiyi temsil eder. Örneğin, bir üretici şunları içerebilir:
 - otomatik olarak imzalanan kök CA sertifikası verme
@@ -34,11 +34,11 @@ Genellikle sertifika zinciri cihazlarla ilişkilendirilmiş bazı mantıksal vey
 - Tesisteki her üretim satırı için benzersiz bir ara CA sertifikası oluşturmak üzere her bir fabrikasının sertifikasını kullanın
 - son olarak, satır üzerinde üretilen her bir cihaz için benzersiz bir cihaz (son varlık) sertifikası oluşturmak üzere üretim satırı sertifikasını kullanın. 
 
-Daha fazla bilgi edinmek için bkz. [IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına](/azure/iot-hub/iot-hub-x509ca-concept)bakın. 
+Daha fazla bilgi edinmek için bkz. [IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına](../iot-hub/iot-hub-x509ca-concept.md)bakın. 
 
 ### <a name="root-certificate"></a>Kök sertifika
 
-Kök sertifika, bir sertifika yetkilisini (CA) temsil eden kendinden imzalı bir X. 509.440 sertifikasıdır. Sertifika zincirinin sonlandıralım veya güven çıpasıdır. Kök sertifikalar bir kuruluş tarafından kendi kendine verilebilir veya bir kök sertifika yetkilisinden satın alınabilir. Daha fazla bilgi edinmek için bkz. [X. 509.440 CA sertifikalarını alma](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Kök sertifika, kök CA sertifikası olarak da adlandırılabilir.
+Kök sertifika, bir sertifika yetkilisini (CA) temsil eden kendinden imzalı bir X. 509.440 sertifikasıdır. Sertifika zincirinin sonlandıralım veya güven çıpasıdır. Kök sertifikalar bir kuruluş tarafından kendi kendine verilebilir veya bir kök sertifika yetkilisinden satın alınabilir. Daha fazla bilgi edinmek için bkz. [X. 509.440 CA sertifikalarını alma](../iot-hub/iot-hub-security-x509-get-started.md#get-x509-ca-certificates). Kök sertifika, kök CA sertifikası olarak da adlandırılabilir.
 
 ### <a name="intermediate-certificate"></a>Ara sertifika
 
@@ -47,7 +47,7 @@ Ara sertifika, kök sertifika tarafından imzalanmış bir X. 509.440 sertifikas
 ##### <a name="why-are-intermediate-certs-useful"></a>Ara sertifikalar neden kullanışlıdır?
 Ara sertifikalar çeşitli şekillerde kullanılır. Örneğin, ara sertifikalar, cihazları ürün hatları, müşterileri satın alan müşteriler, şirket bölümleri veya fabrikalar için gruplamak üzere kullanılabilir. 
 
-Contoso 'nun, *ContosoRootCert*adlı kök sertifikayı kullanarak kendi ortak anahtar ALTYAPıSıNA (PKI) sahip büyük bir kuruluş olduğunu düşünün. Contoso 'nun her bir yan kuruluşu, *ContosoRootCert*tarafından imzalanan kendi ara sertifikasına sahiptir. Böylece her bir yan kuruluş, her bir cihazın yaprak sertifikalarını imzalamak için ara sertifikasını kullanır. Bu senaryoda, contoso, *ContosoRootCert* ile birlikte doğrulanan tek bir DPS örneğini [kullanabilir.](./how-to-verify-certificates.md) Her bir yan kuruluş için bir kayıt grubuna sahip olabilirler. Bu şekilde, her bir yan kuruluş sertifikaların doğrulanması konusunda endişelenmenize gerek kalmaz.
+Contoso 'nun, *ContosoRootCert* adlı kök sertifikayı kullanarak kendi ortak anahtar ALTYAPıSıNA (PKI) sahip büyük bir kuruluş olduğunu düşünün. Contoso 'nun her bir yan kuruluşu, *ContosoRootCert* tarafından imzalanan kendi ara sertifikasına sahiptir. Böylece her bir yan kuruluş, her bir cihazın yaprak sertifikalarını imzalamak için ara sertifikasını kullanır. Bu senaryoda, contoso, *ContosoRootCert* ile birlikte doğrulanan tek bir DPS örneğini [kullanabilir.](./how-to-verify-certificates.md) Her bir yan kuruluş için bir kayıt grubuna sahip olabilirler. Bu şekilde, her bir yan kuruluş sertifikaların doğrulanması konusunda endişelenmenize gerek kalmaz.
 
 
 ### <a name="end-entity-leaf-certificate"></a>Son varlık "yaprak" sertifikası
@@ -56,7 +56,7 @@ Yaprak sertifikası veya son varlık sertifikası, sertifika sahibini tanımlar.
 
 [Tek bir kayıt](./concepts-service.md#individual-enrollment) girişiyle kullanılan yaprak sertifikaların, **konu adının** ayrı kayıt girişinin kayıt kimliğine ayarlanması gerekir. Bir [kayıt grubu](./concepts-service.md#enrollment-group) girdisiyle kullanılan yaprak sertifikaları, kayıt grubundaki kimliği doğrulanmış cihazın **kayıt kayıtlarında** GÖSTERILECEK olan Istenen cihaz kimliğine ayarlanmış **konu adına** sahip olmalıdır.
 
-Daha fazla bilgi edinmek için bkz. [X. 509.440 CA sertifikaları ile imzalanmış cihazların kimliğini doğrulama](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Daha fazla bilgi edinmek için bkz. [X. 509.440 CA sertifikaları ile imzalanmış cihazların kimliğini doğrulama](../iot-hub/iot-hub-x509ca-overview.md#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>X. 509.440 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme
 

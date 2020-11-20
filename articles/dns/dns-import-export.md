@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
-ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b998432f6c4417da0242d86347ed43acb5071a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424231"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968239"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI’yı kullanarak DNS bölge dosyasını içeri ve dışarı aktarma
 
@@ -32,8 +32,8 @@ Azure CLı, Azure hizmetlerini yönetmek için kullanılan platformlar arası bi
 Azure DNS bir DNS bölge dosyasını içeri aktarmadan önce, bölge dosyasının bir kopyasını edinmeniz gerekir. Bu dosyanın kaynağı, DNS bölgesinin Şu anda barındırıldığı yere bağlıdır.
 
 * DNS bölgeniz bir iş ortağı hizmeti (örneğin, bir etki alanı kaydedici, adanmış DNS barındırma sağlayıcısı veya alternatif bulut sağlayıcısı) tarafından barındırılıyorsa, bu hizmet DNS bölge dosyasını indirme yeteneğini sağlamalıdır.
-* DNS bölgeniz Windows DNS üzerinde barındırılıyorsa, bölge dosyaları için varsayılan klasör **%SystemRoot%\System32\Dns**olur. Her bölge dosyasının tam yolu, DNS konsolunun **genel** sekmesinde de görüntülenir.
-* DNS bölgeniz BIND kullanılarak barındırılıyorsa, her bir bölgenin bölge dosyasının konumu **. conf ADLı**bağlama yapılandırma dosyasında belirtilir.
+* DNS bölgeniz Windows DNS üzerinde barındırılıyorsa, bölge dosyaları için varsayılan klasör **%SystemRoot%\System32\Dns** olur. Her bölge dosyasının tam yolu, DNS konsolunun **genel** sekmesinde de görüntülenir.
+* DNS bölgeniz BIND kullanılarak barındırılıyorsa, her bir bölgenin bölge dosyasının konumu **. conf ADLı** bağlama yapılandırma dosyasında belirtilir.
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>DNS bölge dosyasını Azure DNS içine aktarma
 
@@ -77,7 +77,7 @@ Kaynak grubunda bu ada sahip bir bölge yoksa, sizin için oluşturulur. Bölge 
 
 ### <a name="step-1-import-a-zone-file"></a>Adım 1. Bölge dosyasını içeri aktarma
 
-Bölge **contoso.com**için bir bölge dosyasını içeri aktarma.
+Bölge **contoso.com** için bir bölge dosyasını içeri aktarma.
 
 1. Henüz bir tane yoksa, bir Kaynak Yöneticisi kaynak grubu oluşturmanız gerekir.
 
@@ -85,7 +85,7 @@ Bölge **contoso.com**için bir bölge dosyasını içeri aktarma.
     az group create --resource-group myresourcegroup -l westeurope
     ```
 
-2. **Contoso.com** bölgesini dosya **contoso.com.txt** **myresourcegroup**kaynak grubundaki yeni bir DNS bölgesine aktarmak için komutunu çalıştırın `az network dns zone import` .<BR>Bu komut, bölge dosyasını yükler ve ayrıştırır. Komutu, bölgeyi ve bölgedeki tüm kayıt kümelerini oluşturmak için Azure DNS hizmetinde bir dizi komut yürütür. Komut, ilerleme durumunu, hata veya uyarılarla birlikte konsol penceresinde bildirir. Kayıt kümeleri seri halinde oluşturulduğundan, büyük bir bölge dosyasının içe aktarılması birkaç dakika sürebilir.
+2. **Contoso.com** bölgesini dosya **contoso.com.txt** **myresourcegroup** kaynak grubundaki yeni bir DNS bölgesine aktarmak için komutunu çalıştırın `az network dns zone import` .<BR>Bu komut, bölge dosyasını yükler ve ayrıştırır. Komutu, bölgeyi ve bölgedeki tüm kayıt kümelerini oluşturmak için Azure DNS hizmetinde bir dizi komut yürütür. Komut, ilerleme durumunu, hata veya uyarılarla birlikte konsol penceresinde bildirir. Kayıt kümeleri seri halinde oluşturulduğundan, büyük bir bölge dosyasının içe aktarılması birkaç dakika sürebilir.
 
     ```azurecli
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
@@ -179,6 +179,6 @@ az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* DNS bölgesindeki [kayıt kümelerini ve kayıtları yönetmeyi](dns-getstarted-create-recordset-cli.md) öğrenin.
+* DNS bölgesindeki [kayıt kümelerini ve kayıtları yönetmeyi](./dns-getstarted-cli.md) öğrenin.
 
 * [Azure DNS için etki alanınızı nasıl atayacağınızı](dns-domain-delegation.md)öğrenin.

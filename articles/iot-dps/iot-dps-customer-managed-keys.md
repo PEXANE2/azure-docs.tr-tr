@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: menchi
-ms.openlocfilehash: e9b5a549d550f117e080fc64193fbe29658f401d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22a01bab81fc330484e7715a65c89a1cfd7802c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298234"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967185"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>Cihaz sağlama hizmeti için müşteri tarafından yönetilen anahtarlarla bekleyen verilerin şifrelenmesi
 
@@ -26,6 +26,6 @@ Bu özellik yeni bir DPS oluşturulmasını gerektirir. Bu özelliği denemek i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Cihaz sağlama hizmeti hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/iot-dps/)
+* [Cihaz sağlama hizmeti hakkında daha fazla bilgi edinin](./index.yml)
 
-* [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault hakkında daha fazla bilgi edinin](../key-vault/general/overview.md)

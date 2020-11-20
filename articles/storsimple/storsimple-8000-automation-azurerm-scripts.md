@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3339f883d177366a64187e0c090752527802c8d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183267"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968783"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Resource Manager SDK tabanlı betikleri kullanma
 
@@ -25,7 +25,7 @@ Aşağıdaki örnek betikler çeşitli StorSimple işlerini otomatikleştirmek i
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Azure Resource Manager SDK tabanlı örnek betikler tablosu
 
-| Azure Resource Manager betiği                    | Açıklama                                                                                                                                                                                                       |
+| Azure Resource Manager betiği                    | Description                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Bu betik, StorSimple cihazınızı, hizmet veri şifreleme anahtarını değiştirecek şekilde yetkilendirebilmeniz için izin verir.                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Bu betik bir 8010 veya 8020 StorSimple Cloud Appliance oluşturur. Bulut gereci daha sonra StorSimple Veri Yöneticisi hizmetinize yapılandırılıp kaydedilebilir.                                                       |
@@ -57,7 +57,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
     * Bir Windows ortamında, [Azure PowerShell yükleyip yapılandırma](/powershell/azure/install-az-ps)içindeki adımları izleyin. Kullanıyorsanız, StorSimple için Windows Server ana bilgisayarınıza Azure PowerShell yükleyebilirsiniz.
     * Bir Linux veya MacOS ortamında, [MacOS veya Linux üzerinde Azure PowerShell yükleyip yapılandırma](/powershell/azure/install-az-ps)bölümündeki adımları izleyin.
 
-Azure PowerShell kullanma hakkında daha fazla bilgi için [Azure PowerShell kullanmaya başlama](https://docs.microsoft.com/powershell/azure/get-started-azureps)bölümüne gidin.
+Azure PowerShell kullanma hakkında daha fazla bilgi için [Azure PowerShell kullanmaya başlama](/powershell/azure/get-started-azureps)bölümüne gidin.
 
 ### <a name="run-azure-powershell-script"></a>Azure PowerShell Betiği Çalıştır
 
@@ -69,7 +69,7 @@ Bu örnekte kullanılan betik, StorSimple cihazındaki tüm işleri listeler. Bu
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. Önceki adımda oluşturulan klasöre [NUGET CLI 'Yı indirin](https://www.nuget.org/downloads) . _nuget.exe_çeşitli sürümleri vardır. SDK 'nize karşılık gelen sürümü seçin. Her indirme bağlantı noktası doğrudan bir _. exe_ dosyasına bağlanır. Sağ tıklayıp dosyayı tarayıcıdan çalıştırmak yerine bilgisayarınıza kaydettiğinizden emin olun.
+2. Önceki adımda oluşturulan klasöre [NUGET CLI 'Yı indirin](https://www.nuget.org/downloads) . _nuget.exe_ çeşitli sürümleri vardır. SDK 'nize karşılık gelen sürümü seçin. Her indirme bağlantı noktası doğrudan bir _. exe_ dosyasına bağlanır. Sağ tıklayıp dosyayı tarayıcıdan çalıştırmak yerine bilgisayarınıza kaydettiğinizden emin olun.
 
     Ayrıca, aşağıdaki komutu çalıştırarak betiği daha önce oluşturduğunuz aynı klasöre indirebilir ve kaydedebilirsiniz.
     

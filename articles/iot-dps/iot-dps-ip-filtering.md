@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511951"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967219"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS IP bağlantı filtrelerini kullanma
 
@@ -22,7 +22,7 @@ Güvenlik tüm IoT çözümlerinde önemli bir konudur. Bazen güvenlik yapılan
 
 Belirli IP adreslerinden DPS uç noktasına bağlantıları engellemenin yararlı olduğu iki belirgin kullanım örneği vardır:
 
-* DPS'niz yalnızca belirtilen IP adresi aralığından gelen trafiği almalı ve diğer her şeyi reddetmelidir. Örneğin DPS ile cihazlarınız arasında özel bağlantılar oluşturmak üzere DPS'nizi [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) ile kullanıyor olabilirsiniz.
+* DPS'niz yalnızca belirtilen IP adresi aralığından gelen trafiği almalı ve diğer her şeyi reddetmelidir. Örneğin DPS ile cihazlarınız arasında özel bağlantılar oluşturmak üzere DPS'nizi [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) ile kullanıyor olabilirsiniz.
 
 * DPS yöneticisinin şüpheli olarak tanımladığı IP adreslerinden gelen trafiği reddetmeniz gerekir.
 
@@ -48,7 +48,7 @@ IP filtresi kuralı eklemek için **+ IP Filtresi Kuralı Ekle**'yi seçin.
 
 ![IP Filtresi Kuralı Ekle'yi seçtikten sonra](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* IP Filtresi kuralı için bir **ad** girin. Benzersiz, büyük-küçük harfe duyarlı olmayan alfasayısal bir dize olmalı ve en fazla 128 karakterden oluşmalıdır. Yalnızca ASCII 7-bit alfasayısal karakterler ile `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` karakterleri kabul edilir.
+* IP Filtresi kuralı için bir **ad** girin. Benzersiz, büyük-küçük harfe duyarlı olmayan alfasayısal bir dize olmalı ve en fazla 128 karakterden oluşmalıdır. Yalnızca ASCII 7-bit alfasayısal karakterler ile `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` karakterleri kabul edilir.
 
 * Tek IPv4 adresi veya CIDR gösteriminde bir IP adresleri bloğu belirtin. Örneğin CIDR gösteriminde 192.168.100.0/22, 192.168.100.0 ile 192.168.103.255 arasındaki 1024 IPv4 adresini temsil eder.
 
@@ -74,7 +74,7 @@ IP filtresi kuralını silmek için, söz konusu satırdaki çöp kutusu simgesi
 
 ## <a name="update-ip-filter-rules-in-code"></a>Kodda IP filtresi kurallarını güncelleştirme
 
-Azure kaynak sağlayıcısının REST uç noktasını kullanarak DPS IP filtrenizi alabilir ve değiştirebilirsiniz. [createorupdate yöntemi](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate) altında `properties.ipFilterRules` bölümüne bakın.
+Azure kaynak sağlayıcısının REST uç noktasını kullanarak DPS IP filtrenizi alabilir ve değiştirebilirsiniz. [createorupdate yöntemi](/rest/api/iot-dps/iotdpsresource/createorupdate) altında `properties.ipFilterRules` bölümüne bakın.
 
 Şu anda DPS IP filtresi kurallarını Azure CLI veya Azure PowerShell ile güncelleştirme desteği yoktur ama Azure Resource Manager şablonlarıyla güncelleştirilebilir. Resource Manager şablonlarını kullanma yönergeleri için bkz. [Azure Resource Manager şablonları](../azure-resource-manager/templates/overview.md). Aşağıda verilen şablon örneklerinde DPS IP filtresi kurallarını oluşturma, düzenleme ve silme işlemleri gösterilir.
 
@@ -136,7 +136,7 @@ Aşağıdaki şablon örneği tüm trafiği kabul eden "AllowAll" adlı yeni bir
 | Öznitelik                | Açıklama |
 | ------------------------ | ----------- |
 | **FilterName**           | IP Filtresi kuralı için bir ad girin. Benzersiz, büyük-küçük harfe duyarlı olmayan alfasayısal bir dize olmalı ve en fazla 128 karakterden oluşmalıdır. Yalnızca ASCII 7-bit alfasayısal karakterler ile {'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''} karakterleri kabul edilir. |
-| **Eylem**               | IP filtresi kuralının eylemi olarak kabul edilen değerler **Accept** veya **Reject** 'tir. |
+| **Eylem**               | IP filtresi kuralının eylemi olarak kabul edilen değerler **Accept** veya  **Reject** 'tir. |
 | **ipMask**               | Tek IPv4 adresi veya CIDR gösteriminde bir IP adresleri bloğu belirtin. Örneğin CIDR gösteriminde 192.168.100.0/22, 192.168.100.0 ile 192.168.103.255 arasındaki 1024 IPv4 adresini temsil eder. |
 
 

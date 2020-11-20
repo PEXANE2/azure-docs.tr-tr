@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 994130ce2ecb4578a8d34f1f77b310bb558d3c7a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617202"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967916"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Azure 'da SAP HANA HANA 'yı (büyük örnekler)
 
@@ -39,7 +40,7 @@ HANA büyük örnek birimleri doğrudan internet 'e bağlı değildir. Yükleme 
 
 SAP Market 'e erişmenize izin veren bir SAP S-User veya başka bir kullanıcı olması gerekir.
 
-1. Oturum açın ve [SAP hizmeti marketi](https://support.sap.com/en/index.html)' ne gidin. **Yazılım yüklemelerini indir**  >  **ve**  >  **alfabetik dizine göre**Yükselt ' i seçin. Ardından **H – SAP HANA platform Edition**  >  **SAP HANA platform Edition 2,0**  >  **yüklemesi**altında öğesini seçin. Aşağıdaki ekran görüntüsünde gösterilen dosyaları indirin.
+1. Oturum açın ve [SAP hizmeti marketi](https://support.sap.com/en/index.html)' ne gidin. **Yazılım yüklemelerini indir**  >  **ve**  >  **alfabetik dizine göre** Yükselt ' i seçin. Ardından **H – SAP HANA platform Edition**  >  **SAP HANA platform Edition 2,0**  >  **yüklemesi** altında öğesini seçin. Aşağıdaki ekran görüntüsünde gösterilen dosyaları indirin.
 
    ![İndirilecek dosyaların ekran görüntüsü](./media/hana-installation/image16_download_hana.PNG)
 

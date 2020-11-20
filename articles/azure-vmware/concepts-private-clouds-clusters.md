@@ -3,12 +3,12 @@ title: Kavramlar-özel bulutlar ve kümeler
 description: Azure VMware çözümü yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874024"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967389"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü özel bulutu ve küme kavramları
 
@@ -38,7 +38,7 @@ Küme yapılandırmasının veya işlemin diğer yönlerini yönetmek için vSph
 
 ## <a name="hosts"></a>Ana bilgisayarlar
 
-Azure VMware çözümü özel bulut kümeleri hiper yakınsama, çıplak altyapı düğümlerini kullanır. Aşağıdaki tabloda konağın RAM, CPU ve disk kapasiteleri gösterilmektedir. 
+Azure VMware çözümü özel bulut kümeleri hiper yakınsama, çıplak altyapı Konakları kullanır. Aşağıdaki tabloda konağın RAM, CPU ve disk kapasiteleri gösterilmektedir. 
 
 | Ana Bilgisayar Türü              |             CPU             |   RAM (GB)   |  vSAN NVMe önbellek katmanı (TB, RAW)  |  vSAN SSD kapasite katmanı (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |

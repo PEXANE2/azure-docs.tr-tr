@@ -3,6 +3,7 @@ title: Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler | Microsoft D
 description: Azure sanal makinesi (VM) hizmet olarak altyapı (IaaS) üzerinde IBM Z geliştirme ve test ortamı (zD&T) dağıtın.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12a812f66345a26701b2a1623487fd262ede4be
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499928"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968341"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler
 
@@ -39,10 +40,10 @@ Daha fazla bilgi için bkz. IBM bilgi merkezi 'nde [zd&T 'ye genel bakış](http
 
 Bu makalede, Azure 'da Z geliştirme ve test ortamı (zD&T) Enterprise Edition 'ın nasıl ayarlanacağı gösterilmektedir. Daha sonra, Azure 'da Z tabanlı ortamlar oluşturmak ve yönetmek için zD&T Enterprise Edition Web sunucusunu kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!NOTE]
-> IBM, zD&T Enterprise Edition 'ın yalnızca geliştirme ve test ortamlarında yüklenmesine izin verir; üretim ortamları*değildir* .
+> IBM, zD&T Enterprise Edition 'ın yalnızca geliştirme ve test ortamlarında yüklenmesine izin verir; üretim ortamları *değildir* .
 
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -62,7 +63,7 @@ Bu makalede, Azure 'da Z geliştirme ve test ortamı (zD&T) Enterprise Edition '
 
 3. **Bağlan** DÜĞMESI aracılığıyla VM 'Nin **genel bakış** dikey penceresinde gösterilen SSH kimlik bilgilerini alın. **SSH** sekmesini SEÇIN ve SSH oturum açma komutunu panoya kopyalayın.
 
-4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](../../../../cloud-shell/quickstart.md) 'nda oturum açın ve komutu yapıştırın. ** \<user id\> SSH \@ biçiminde \<IP Address\> **olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
+4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](../../../../cloud-shell/quickstart.md) 'nda oturum açın ve komutu yapıştırın. **\<user id\> SSH \@ biçiminde \<IP Address\>** olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Yükleme dosyasını sunucuya Kopyala
 
@@ -116,7 +117,7 @@ Web sunucusunun yükleme dosyası **Zdt \_ Install \_ Ee \_ v 12.0.0.1. tgz**' d
     dpkg -l | grep zdtapp
     ```
 
-7. Çıkışın, paket gaz 'nin başarıyla yüklendiğini gösteren **zdtapp 12.0.0.0**dizesini içerdiğini doğrulayın
+7. Çıkışın, paket gaz 'nin başarıyla yüklendiğini gösteren **zdtapp 12.0.0.0** dizesini içerdiğini doğrulayın
 
 ### <a name="starting-enterprise-edition"></a>Enterprise Edition başlatılıyor
 

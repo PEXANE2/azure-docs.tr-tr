@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515439"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967100"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizi yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 ![işlem akışını ayarla](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -34,7 +34,7 @@ Bu makaleyi okuduktan sonra şunları yapabilirsiniz:
 * StorSimple Sanal dizinizi StorSimple Aygıt Yöneticisi hizmeti aracılığıyla yönetin
 
 > [!NOTE]
-> StorSimple 8000 serisi cihaz için kullanılabilen yönetim seçeneklerini görüntülemek için, StorSimple [cihazınızı yönetmek Için StorSimple Yöneticisi hizmetini kullanma](storsimple-manager-service-administration.md)bölümüne gidin.
+> StorSimple 8000 serisi cihaz için kullanılabilen yönetim seçeneklerini görüntülemek için, StorSimple [cihazınızı yönetmek Için StorSimple Yöneticisi hizmetini kullanma](./storsimple-8000-manager-service-administration.md)bölümüne gidin.
 > 
 > 
 
@@ -78,4 +78,3 @@ Her iş akışı hakkında daha fazla bilgi için, tabloda ilgili yordama tıkla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Web Kullanıcı arabirimi ve nasıl kullanılacağı hakkında bilgi için, StorSimple [sanal dizinizi yönetmek üzere StorSimple Web Kullanıcı arabirimini kullanma](storsimple-ova-web-ui-admin.md)bölümüne gidin.
-

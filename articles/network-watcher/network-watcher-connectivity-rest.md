@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 33a3c41f49833d669fd94ccf1e22afed971e544b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb790bf15ba232b45fbf144c77ca177bab17b99
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737980"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968477"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Azure REST API kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
@@ -37,7 +37,7 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 * İle bağlantı sorunlarını gidermek için sanal makineler.
 
 > [!IMPORTANT]
-> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız VM 'nin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
+> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız VM 'nin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
 
 ## <a name="log-in-with-armclient"></a>ARMClient ile oturum açma
 
@@ -132,7 +132,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta, `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. `NetworkSecurityRule`Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış, Kullanıcı tarafından yapılandırılan adlandırılmış **UserRule_Port80**nedeniyle bağlantı Sanal Gereç üzerinde başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta, `ConnectionStatus` **ulaşılamaz** olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. `NetworkSecurityRule`Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış, Kullanıcı tarafından yapılandırılan adlandırılmış **UserRule_Port80** nedeniyle bağlantı Sanal Gereç üzerinde başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```json
 {
@@ -248,7 +248,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte,, `connectionStatus` **ulaşılamaz**olarak gösterilir. `hops`Ayrıntılarda, `issues` trafiğin bir nedeniyle engellenmiş olduğunu görebilirsiniz `UserDefinedRoute` .
+Aşağıdaki örnekte,, `connectionStatus` **ulaşılamaz** olarak gösterilir. `hops`Ayrıntılarda, `issues` trafiğin bir nedeniyle engellenmiş olduğunu görebilirsiniz `UserDefinedRoute` .
 
 ```json
 {
@@ -344,7 +344,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıtta, `connectionStatus` programları **erişilebilir**olarak görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
+Aşağıdaki yanıtta, `connectionStatus` programları **erişilebilir** olarak görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
 
 ```json
 {
@@ -431,7 +431,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnek, önceki API çağrısını çalıştırmanın yanıtı örneğidir. Denetim başarılı olduğu için `connectionStatus` özelliği **erişilebilir**olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
+Aşağıdaki örnek, önceki API çağrısını çalıştırmanın yanıtı örneğidir. Denetim başarılı olduğu için `connectionStatus` özelliği **erişilebilir** olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
 
 ```json
 {

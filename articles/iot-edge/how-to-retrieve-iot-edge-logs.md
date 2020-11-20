@@ -4,18 +4,18 @@ description: Modül günlüğü alımı IoT Edge ve Azure Blob depolamaya yükle
 author: v-tcassi
 manager: philmea
 ms.author: v-tcassi
-ms.date: 09/14/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171908"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966930"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge dağıtımlarından günlükleri alma
 
@@ -63,7 +63,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | schemaVersion | string | Ayarla `1.0` |
 | öğeler | JSON dizisi | `id`Ve tanımlama gruplarını içeren bir dizi `filter` . |
@@ -141,7 +141,15 @@ az iot hub invoke-module-method \
 
 İstenen günlükleri belirtilen bir Azure Blob depolama kapsayıcısına göndermek için **Uploadmodulelogs** Direct metodunu kullanın.
 
-Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs**ile benzer bir JSON yükünü kabul eder:
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> Bir ağ geçidi cihazının arkasındaki bir cihazdan günlükleri karşıya yüklemek isterseniz, [API proxy ve BLOB depolama modüllerinizin](how-to-configure-api-proxy-module.md) üst katman cihazında yapılandırılmış olması gerekir. Bu modüller, ağ geçidi cihazınız aracılığıyla alt katman cihazınızdan günlükleri buluttaki depolama alanına yönlendirir.
+
+::: moniker-end
+
+Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs** ile benzer bir JSON yükünü kabul eder:
 
 ```json
     {
@@ -164,7 +172,7 @@ Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs**ile benzer bir 
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim imzası URL 'si](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
@@ -178,7 +186,7 @@ Günlükleri karşıya yükleme başarılı bir isteği, **"durum": 200** ve ard
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
@@ -261,6 +269,14 @@ Azure portal, `UploadModuleLogs` sasURL 'sini bilgilerinizi doldurduktan sonra Y
 
 Mevcut bir Azure Blob depolama kapsayıcısına IoT Edge modül günlüklerinin bir ZIP dosyasını paketleyip yüklemek için **Uploadsupportpaketini** doğrudan yöntemini kullanın. Bu doğrudan yöntem, [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) günlükleri almak için IoT Edge cihazınızda komutunu çalıştırır.
 
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> Bir ağ geçidi cihazının arkasındaki bir cihazdan günlükleri karşıya yüklemek isterseniz, [API proxy ve BLOB depolama modüllerinizin](how-to-configure-api-proxy-module.md) üst katman cihazında yapılandırılmış olması gerekir. Bu modüller, ağ geçidi cihazınız aracılığıyla alt katman cihazınızdan günlükleri buluttaki depolama alanına yönlendirir.
+
+::: moniker-end
+
 Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 
 ```json
@@ -273,7 +289,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | schemaVersion | string | Ayarla `1.0` |
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim Imzası URL 'SI](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -294,7 +310,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
@@ -352,7 +368,7 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
     }
 ```
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |

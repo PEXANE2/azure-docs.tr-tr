@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598294"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968562"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -122,7 +123,7 @@ ms.locfileid: "91598294"
    </code></pre>
 
    > [!IMPORTANT]
-   > Azure sınır Aracısı 'nı güncelleştirmeniz gerekiyorsa ve özel rol kullanıyorsanız, özel rolü eylem **poweroff**içerecek şekilde güncelleştirdiğinizden emin olun. Ayrıntılar için bkz. sınır [Aracısı için özel rol oluşturma](#1-create-a-custom-role-for-the-fence-agent).  
+   > Azure sınır Aracısı 'nı güncelleştirmeniz gerekiyorsa ve özel rol kullanıyorsanız, özel rolü eylem **poweroff** içerecek şekilde güncelleştirdiğinizden emin olun. Ayrıntılar için bkz. sınır [Aracısı için özel rol oluşturma](#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]** kurulum konak adı çözümlemesi
 
@@ -169,13 +170,13 @@ ms.locfileid: "91598294"
 
    Düğümlerin kimliğini doğrulamak ve kümeyi oluşturmak için aşağıdaki komutları çalıştırın. Belleği Bakımı korumak için belirteci 30000 olarak ayarlayın. Daha fazla bilgi için [Linux için bu makaleye][virtual-machines-linux-maintenance]bakın.  
    
-   **RHEL 7. x**üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:  
+   **RHEL 7. x** üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
    </code></pre>
 
-   **RHEL 8. X**üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:  
+   **RHEL 8. X** üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:  
    <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
    sudo pcs cluster start --all
@@ -235,7 +236,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
 1. Bir düğümü değer yapın. Hizmet sorumlusu için **parola** olarak kullanılır
-1. Genel bakış'ı seçin. Uygulama KIMLIĞINI bir yere getirin. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
+1. Genel bakış'ı seçin. Uygulama KIMLIĞINI bir yere getirin. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda **oturum açma kimliği** ) olarak kullanılır
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
@@ -294,13 +295,13 @@ sudo pcs property set stonith-timeout=900
 > [!NOTE]
 > ' Pcmk_host_map ' seçeneği yalnızca, RHEL ana bilgisayar adları ve Azure düğüm adları aynı DEĞILSE komutunda gereklidir. Komutun kalın bölümüne bakın.
 
-RHEL **7. X**için, çit cihazını yapılandırmak için aşağıdaki komutu kullanın:    
+RHEL **7. X** için, çit cihazını yapılandırmak için aşağıdaki komutu kullanın:    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
 
-RHEL **8. X**için, çit cihazını yapılandırmak için aşağıdaki komutu kullanın:  
+RHEL **8. X** için, çit cihazını yapılandırmak için aşağıdaki komutu kullanın:  
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600

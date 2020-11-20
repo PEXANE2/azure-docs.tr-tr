@@ -9,26 +9,27 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure, ANF, HANA, Azure NetApp Files, anlık görüntü
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02755c164e72e3149497ee8e3c1fdc19141fd54f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973640"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967491"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri
 
-Azure NetApp Files, **/Hana/Shared**, **/Hana/Data**ve **/Hana/log** birimleri için kullanılabilen yerel NFS paylaşımları sağlar. **/Hana/Data** ve **/Hana/log** birimleri IÇIN ANF tabanlı NFS paylaşımlarının KULLANıLMASı, v 4.1 NFS protokolünün kullanımını gerektirir. NFS Protokolü v3, paylaşımları ANF üzerinde dayandırırken **/Hana/Data** ve **/Hana/log** birimlerinin kullanımı için desteklenmez. 
+Azure NetApp Files, **/Hana/Shared**, **/Hana/Data** ve **/Hana/log** birimleri için kullanılabilen yerel NFS paylaşımları sağlar. **/Hana/Data** ve **/Hana/log** birimleri IÇIN ANF tabanlı NFS paylaşımlarının KULLANıLMASı, v 4.1 NFS protokolünün kullanımını gerektirir. NFS Protokolü v3, paylaşımları ANF üzerinde dayandırırken **/Hana/Data** ve **/Hana/log** birimlerinin kullanımı için desteklenmez. 
 
 
 > [!IMPORTANT]
-> Azure NetApp Files uygulanan NFS v3 protokolünün **/Hana/Data** ve **/Hana/log**için **kullanılması desteklenmez.** NFS 4,1 kullanımı, **/Hana/Data** ve **/Hana/log** birimleri için bir işlev noktasından bir görünüm açısından zorunludur. Öte yandan, **/Hana/Shared** BIRIMI için NFS v3 veya NFS v 4.1 protokolü, bir görünüm noktasından kullanılabilir.
+> Azure NetApp Files uygulanan NFS v3 protokolünün **/Hana/Data** ve **/Hana/log** için **kullanılması desteklenmez.** NFS 4,1 kullanımı, **/Hana/Data** ve **/Hana/log** birimleri için bir işlev noktasından bir görünüm açısından zorunludur. Öte yandan, **/Hana/Shared** BIRIMI için NFS v3 veya NFS v 4.1 protokolü, bir görünüm noktasından kullanılabilir.
 
 ## <a name="important-considerations"></a>Önemli noktalar
 
@@ -91,7 +92,7 @@ Yüksek bant genişliği gerektirmeyen HANA sistemleri için, ANF birim boyutlar
 > [!IMPORTANT]
 > Tek bir NFS biriminde dağıttığınız kapasiteden bağımsız olarak üretilen iş, bir sanal makinedeki bir tüketici tarafından 1.2-1.4 GB/sn bant genişliği yararlanılabilir aralığında platoya 'ya bekleniyor. Bu, ANF teklifinin temel mimarisiyle ve NFS 'nin çevresindeki ilgili Linux oturum sınırlarının ile ilgilidir. [Azure NetApp Files Için performans kıyaslama test sonuçları](../../../azure-netapp-files/performance-benchmarks-linux.md) makalesinde belgelenen performans ve verimlilik numaraları, birden fazla istemci VM 'sine sahip BIR paylaşılan NFS biriminde ve birden çok oturumla bir sonuç olarak yapılmıştır. Bu senaryo, SAP 'de ölçüdiğimiz senaryoya göre farklılık gösteren bir senaryodur. Bir NFS birimine göre tek bir VM 'den üretilen iş verimini ölçyoruz. ANF üzerinde barındırılıyor.
 
-Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak ve **/Hana/Shared**yönergelerine göre, önerilen boyutlar şöyle görünür:
+Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak ve **/Hana/Shared** yönergelerine göre, önerilen boyutlar şöyle görünür:
 
 | Birim | Boyut<br /> Premium depolama katmanı | Boyut<br /> Ultra depolama katmanı | Desteklenen NFS Protokolü |
 | --- | --- | --- |

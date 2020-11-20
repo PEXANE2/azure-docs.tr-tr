@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d44fada1eddf2d3f80bec085d8a5bf751197eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514327"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968817"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple cihazınız için çok yollu g/ç yapılandırma
 
 Bu öğreticide, Windows Server 2012 R2 çalıştıran ve StorSimple fiziksel cihazına bağlı bir konakta çok yollu g/ç (MPIO) özelliğini yüklemek ve kullanmak için izlemeniz gereken adımlar açıklanmaktadır. Bu makaledeki kılavuz yalnızca StorSimple 8000 serisi fiziksel cihazları için geçerlidir. MPIO, StorSimple Cloud Appliance Şu anda desteklenmiyor.
 
-Microsoft, Windows Server 'daki çok yollu g/ç (MPIO) özelliği için, yüksek oranda kullanılabilir, hataya dayanıklı Iscsı ağ yapılandırmalarına yönelik destek oluşturulmuştur. MPIO, sunucu ile depolama cihazı arasında mantıksal yollar oluşturmak için gereksiz fiziksel yol bileşenleri (bağdaştırıcılar, kablolar ve anahtarlar) kullanır. Bir bileşen hatası varsa, bir mantıksal yolun başarısız olmasına neden olan çok yol mantığı, uygulamaların verilerine erişmeye devam edebilmesi için g/ç için alternatif bir yol kullanır. Ayrıca, yapılandırmanıza bağlı olarak, bu yolların tamamında yükü yeniden dengeleyerek MPIO performansı da iyileştirebilir. Daha fazla bilgi için bkz. [MPIO 'ya genel bakış](https://technet.microsoft.com/library/cc725907.aspx "MPIO genel bakış ve Özellikler").
+Microsoft, Windows Server 'daki çok yollu g/ç (MPIO) özelliği için, yüksek oranda kullanılabilir, hataya dayanıklı Iscsı ağ yapılandırmalarına yönelik destek oluşturulmuştur. MPIO, sunucu ile depolama cihazı arasında mantıksal yollar oluşturmak için gereksiz fiziksel yol bileşenleri (bağdaştırıcılar, kablolar ve anahtarlar) kullanır. Bir bileşen hatası varsa, bir mantıksal yolun başarısız olmasına neden olan çok yol mantığı, uygulamaların verilerine erişmeye devam edebilmesi için g/ç için alternatif bir yol kullanır. Ayrıca, yapılandırmanıza bağlı olarak, bu yolların tamamında yükü yeniden dengeleyerek MPIO performansı da iyileştirebilir. Daha fazla bilgi için bkz. [MPIO 'ya genel bakış](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725907(v=ws.11) "MPIO genel bakış ve Özellikler").
 
 StorSimple çözümünüzün yüksek kullanılabilirliği için, StorSimple cihazınızda MPIO yapılandırılmalıdır. Windows Server 2012 R2 çalıştıran ana bilgisayar sunucularınız üzerinde MPIO yüklendiğinde, sunucular bir bağlantı, ağ veya arabirim hatasına göre zaman alabilir.
 
@@ -79,7 +79,7 @@ MPIO, StorSimple birimlerini tanımlayacak şekilde yapılandırılmalıdır. MP
 
 #### <a name="to-configure-mpio-for-storsimple-volumes"></a>StorSimple birimlerine yönelik MPIO yapılandırmak için
 
-1. **MPIO yapılandırmasını**açın. **Sunucu Yöneticisi > pano > araçlar > MPIO**' ya tıklayın.
+1. **MPIO yapılandırmasını** açın. **Sunucu Yöneticisi > pano > araçlar > MPIO**' ya tıklayın.
 2. **MPIO özellikleri** Iletişim kutusunda **çok yollarla bul** sekmesini seçin.
 3. **İSCSI cihazları için destek ekle**' yi seçin ve ardından **Ekle**' ye tıklayın.  
    ![MPIO özellikleri çoklu yolları bulur](./media/storsimple-configure-mpio-windows-server/IC741003.png)
@@ -108,7 +108,7 @@ Windows Server 'da MPIO yapılandırıldıktan sonra, StorSimple cihazında olu�
       > **Iscsı bağlantıları için özel bir ağ kullanıyorsanız, özel ağa bağlı olan VERI bağlantı noktasının IP adresini girin.**
     
 4. Cihazınızdaki ikinci bir ağ arabirimi (örneğin, VERI 1) için 2-3 adımları yineleyin. Bu arabirimlerin Iscsı için etkinleştirilmesi gerektiğini aklınızda bulundurun. Daha fazla bilgi için bkz. [ağ arabirimlerini değiştirme](storsimple-8000-modify-device-config.md#modify-network-interfaces).
-5. **Iscsı Başlatıcısı özellikleri** Iletişim kutusunda **hedefler** sekmesini seçin. **Bulunan hedefler**altında StorSimple CIHAZ hedefi IQN 'sini görmeniz gerekir.
+5. **Iscsı Başlatıcısı özellikleri** Iletişim kutusunda **hedefler** sekmesini seçin. **Bulunan hedefler** altında StorSimple CIHAZ hedefi IQN 'sini görmeniz gerekir.
 
    ![Iscsı başlatıcı özellikleri hedefler sekmesi](./media/storsimple-configure-mpio-windows-server/IC741007.png)
    
@@ -128,11 +128,11 @@ Windows Server 'da MPIO yapılandırıldıktan sonra, StorSimple cihazında olu�
     2. **BAŞLATıCı IP** açılan listesinde, konağa KARŞıLıK gelen IP adresini seçin. Bu durumda, aygıttaki iki ağ arabirimini konaktaki tek bir ağ arabirimine bağlanıyorsunuz. Bu nedenle, bu arabirim ilk oturum için belirtilen ile aynıdır.
     3. **Hedef portal IP 'si** açılan listesinde, cihazda etkinleştirilen ikinci VERI arabiriminin IP adresini seçin.
     4. Iscsı Başlatıcısı özellikleri iletişim kutusuna dönmek için **Tamam** ' ı tıklatın. Hedefe ikinci bir oturum eklediniz.
-12. Bilgisayar Yönetimi **> Sunucu Yöneticisi > panosuna**giderek **Bilgisayar Yönetimi** 'ni açın. Sol bölmede, **depolama > disk yönetimi**' ne tıklayın. StorSimple cihazında oluşturulan ve bu konakta görülebilen birim, **disk yönetimi** altında yeni disk (ler) olarak görüntülenir.
+12. Bilgisayar Yönetimi **> Sunucu Yöneticisi > panosuna** giderek **Bilgisayar Yönetimi** 'ni açın. Sol bölmede, **depolama > disk yönetimi**' ne tıklayın. StorSimple cihazında oluşturulan ve bu konakta görülebilen birim, **disk yönetimi** altında yeni disk (ler) olarak görüntülenir.
 13. Diski başlatın ve yeni bir birim oluşturun. Biçim işlemi sırasında 64 KB 'lik bir blok boyutu seçin.
     
     ![Disk Yönetimi](./media/storsimple-configure-mpio-windows-server/IC741008.png)
-14. **Disk yönetimi**altında, **diske** sağ tıklayın ve **Özellikler**' i seçin.
+14. **Disk yönetimi** altında, **diske** sağ tıklayın ve **Özellikler**' i seçin.
 15. StorSimple modeli # # # # **Çoklu yol disk cihazı özellikleri** Iletişim kutusunda **MPIO** sekmesine tıklayın.
     
     ![StorSimple 8100 Multi-Path disk DeviceProp.](./media/storsimple-configure-mpio-windows-server/IC741009.png)
@@ -191,4 +191,3 @@ Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ ara
 ## <a name="next-steps"></a>Sonraki adımlar
 
 StorSimple [cihaz yapılandırmanızı değiştirmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-modify-device-config.md)hakkında daha fazla bilgi edinin.
-

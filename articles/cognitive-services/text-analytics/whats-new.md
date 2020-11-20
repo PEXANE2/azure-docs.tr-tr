@@ -8,23 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369469"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966896"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
 
+## <a name="november-2020"></a>Kasım 2020
+
+* NER, PII ve anahtar tümceciği ayıklama işlemleri için toplu işlemeyi destekleyen yeni zaman uyumsuz [analiz API 'si](how-tos/text-analytics-how-to-call-api.md?tabs=analyze)için Metin Analizi API'si v 3.1-Preview. 3 içeren [Yeni bir uç nokta](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze) .
+* Toplu işleme desteğiyle [sistem durumu](how-tos/text-analytics-for-health.md) barındırılan API için yeni zaman uyumsuz Metin Analizi için Metin Analizi API'si v 3.1-Preview. 3 ile [Yeni bir uç nokta](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) .
+* Yukarıda listelenen yeni özelliklerin her ikisi de yalnızca şu bölgelerde kullanılabilir: `West US 2` , `East US 2` , `Central US` , `North Europe` ve `West Europe` bölgeleri.
+* Portekizce (Brezilya) `pt-BR` , model sürümü ile başlayarak [yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md) v3. x sürümünde desteklenmektedir `2020-04-01` . `pt-PT`Portekizce için mevcut desteğe ekler.
+* Zaman uyumsuz analiz ve sistem durumu işlemleri için Metin Analizi içeren güncelleştirilmiş istemci kitaplıkları. GitHub 'da örnekleri bulabilirsiniz:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+
+
+> [!div class="nextstepaction"]
+> [Metin Analizi API'si v 3.1-önizleme hakkında daha fazla bilgi edinin. 3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
+
 ## <a name="october-2020"></a>Ekim 2020
 
 * Model sürümünden itibaren Yaklaşım Analizi v3. x için Hintçe desteği `2020-04-01` . 
-* `2020-09-01`V3/diller uç noktası için, artan dil algılama ve doğruluk iyileştirmeleri ekleyen model.
+* `2020-09-01`Daha fazla dil algılama ve doğruluk iyileştirmeleri ekleyen v3/diller uç noktası için model sürümü.
 * Orta Hindistan ve BAE Kuzey v3 kullanılabilirliği.
 
 ## <a name="september-2020"></a>Eylül 2020
@@ -147,7 +164,7 @@ JSON yanıtında aşağıdaki özelliklerin adları, uygun yerlerde değiştiril
 
 ### <a name="text-analytics-api-v31-public-preview"></a>Metin Analizi API'si v 3.1 genel önizleme
    * Yeni Yaklaşım Analizi özelliği- [görüşme madenciliği](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * Korunan sağlık bilgileri () için yeni [Kişisel ( `PII` ) etki alanı filtresi](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `PHI` .
+   * `PII`Korunan sağlık bilgileri () için yeni kişisel () etki alanı filtresi `PHI` .
 
 > [!div class="nextstepaction"]
 > [Metin Analizi API'si v 3.1 Preview hakkında daha fazla bilgi edinin](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -162,7 +179,7 @@ JSON yanıtında aşağıdaki özelliklerin adları, uygun yerlerde değiştiril
    * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
    * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
-   > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [Metin Analizi API'si v3 SDK hakkında daha fazla bilgi edinin](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Adlandırılmış varlık tanıma v3 genel önizlemesi
@@ -185,9 +202,6 @@ Ek varlık türleri artık, metinde bulunan genel ve kişisel bilgi varlıkları
     * Telefon numarası (yalnızca ABD)
     * URL
     * IP Adresi
-
-> [!div class="nextstepaction"]
-> [Adlandırılmış varlık tanıma v3 hakkında daha fazla bilgi edinin](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>Ekim 2019
 
@@ -223,7 +237,7 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 
 * [Metin Analizi API'si nedir?](overview.md)  
 * [Örnek kullanıcı senaryoları](text-analytics-user-scenarios.md)
-* [Yaklaşım analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
-* [Anahtar ifade ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

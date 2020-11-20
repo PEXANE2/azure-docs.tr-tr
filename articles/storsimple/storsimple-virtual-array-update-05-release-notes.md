@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 385d9126d578250064659153f6f0f54eec696790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f70cf96baed274eaf260832bd83ab0e2c91f3683
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60870681"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967049"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,5 sürüm notları
 
@@ -47,7 +47,7 @@ Güncelleştirme 0,5, birincil olarak bir hata düzeltmesini derleme. Ana geliş
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Özellik | Sorun |
+| Hayır. | Öne çıkan özelliği | Sorun |
 | --- | --- | --- |
 | 1 |Yedekleme esnekliği| Önceki sürümlerde yedeklemeler yalnızca belirli özel durumlar için yeniden denenir. Bu sürüm, tüm yedekleme özel durumlarını yeniden denemeden yedeklemeleri daha dayanıklı hale getirmek için bir çözüm içerir.|
 | 2 |İzleme| StorSimple sanal cihaz serisi için depolama kullanımı izleme 30 Haziran 2017 ' den itibaren kullanım dışı bırakılacak. Bu eylem, StorSimple Sanal dizileri (1200 modeli) üzerinde çalışan StorSimple Aygıt Yöneticisi hizmetindeki izleme grafiklerini etkiler. Bu sürümde, kullanıcının 30 Haziran 2017 ' den sonraki sanal dizilerde depolama kullanımı izlemenin kullanılmasına devam etmesine izin veren güncelleştirmeler vardır.|
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir.
 
-| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |
@@ -86,5 +86,4 @@ Daha eski bir sürüm notuna mi bakıyorsunuz? Şuraya gidin:
 * [StorSimple Sanal dizisi güncelleştirme 0,4 sürüm notları](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,1 ve 0,2 sürüm notları](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](./storsimple-virtual-array-update-06-release-notes.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: e802f798ade5e6bfe0b40b17bbf15df5387ef7c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 26192c742ab2e010c18c02226252dbb480b72cee
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357853"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967168"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -188,7 +188,7 @@ Dinamik uyumluluk paketleri, Güvenlik Merkezi güvenlik ilkesi sayfasından abo
 - **Kanada Federal PBMM**
 - **Azure CIS 1.1.0 (yeni)** (Azure CIS 1.1.0 'ın daha kapsamlı bir gösterimi)
 
-Ayrıca, Azure **güvenlik kıyaslaması** ' nı son zamanlarda, genel uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan Azure 'a özgü yönergeleri ekledik. Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir.  
+Ayrıca, Azure **güvenlik kıyaslaması**' nı son zamanlarda, genel uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan Azure 'a özgü yönergeleri ekledik. Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir.  
  
 [Yasal uyumluluk panonuzda standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)hakkında daha fazla bilgi edinin.
 
@@ -392,7 +392,7 @@ Kubernetes, bulutta yazılım dağıtmak ve yönetmek için hızlı bir şekilde
 Bu genel önizleme sürümündeki yeni yetenekler şunlardır:
 
 - **Keşif & görünürlüğü** -Güvenlik Merkezi 'nin kayıtlı aboneliklerinde YÖNETILEN aks örneklerinin sürekli keşfi.
-- **Güvenli puan önerileri** -müşterilerin, bir Kubernetes hizmet kümesine erişimi kısıtlamak Için "rol tabanlı Access Control kullanılması gerekir" gibi, müşterinin güvenli puanının bir parçası olarak aks 'deki en iyi güvenlik uygulamalarına uyum sağlamak için işlem yapılabilir öğeler.
+- **Güvenli puan önerileri** -müşterilerin aks için en iyi güvenlik uygulamaları ile uyumlu olmasını sağlamak ve güvenli Puanlarını artırmak için işlem yapılabilir öğeler. "Rol tabanlı erişim denetimi, bir Kubernetes hizmet kümesine erişimi kısıtlamak için kullanılmalıdır" gibi öğeleri içerir.
 - **Tehdit algılama** -"ayrıcalıklı bir kapsayıcı algılandı" gibi konak ve küme tabanlı analiz.
 
 

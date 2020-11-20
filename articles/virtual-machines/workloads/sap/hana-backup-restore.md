@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fdaa1346e4837b3bf611d964158d132dcdfeeda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 42333a3feae19b6c3c77494f7e843cac1d9bc078
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282675"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968137"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>HANA büyük örneklerde SAP HANA yedekleme ve geri yükleme
 
@@ -112,7 +113,7 @@ Snapshot betiğinin başarıyla çalıştığından emin olmak için, Perl 'nin 
 
 HANA büyük örneklerle depolama anlık görüntülerini ayarlamak için aşağıdaki adımları izleyin.
 1. Perl 'nin HANA büyük örnekler sunucusunda Linux işletim sisteminde yüklü olduğundan emin olun.
-1. \_ _Mac HMAC-SHA1_satırını eklemek için/etc/ssh/SSH yapılandırmasını değiştirin.
+1. \_ _Mac HMAC-SHA1_ satırını eklemek için/etc/ssh/SSH yapılandırmasını değiştirin.
 1. Varsa, çalıştırdığınız her bir SAP HANA örneği için ana düğümde SAP HANA bir yedekleme Kullanıcı hesabı oluşturun.
 1. SAP HANA HDB istemcisini tüm SAP HANA Büyük Örnekleri sunucularına yükler.
 1. Her bölgenin ilk SAP HANA Büyük Örnekleri sunucusunda, anlık görüntü oluşturmayı denetleyen temeldeki depolama altyapısına erişmek için ortak bir anahtar oluşturun.
@@ -319,7 +320,7 @@ Daha önce açıklandığı gibi, depoladığınız bazı anlık görüntü etik
 ./azure_hana_backup --type=hana --prefix=dailyhana --frequency=15min --retention=28
 ```
 
-Önceki örnekte, Snapshot etiketi **dailyhana**olur. Bu etikete sahip olacak anlık görüntü sayısı **28**' dir. Disk alanı tüketimine yanıt verme sırasında, depolanan anlık görüntü sayısını azaltmak isteyebilirsiniz. Anlık görüntü sayısını 15 ' e düşürmenin kolay bir yolu, örneğin, betiği **15**' e ayarlanan son parametre ile çalıştırmaktır:
+Önceki örnekte, Snapshot etiketi **dailyhana** olur. Bu etikete sahip olacak anlık görüntü sayısı **28**' dir. Disk alanı tüketimine yanıt verme sırasında, depolanan anlık görüntü sayısını azaltmak isteyebilirsiniz. Anlık görüntü sayısını 15 ' e düşürmenin kolay bir yolu, örneğin, betiği **15**' e ayarlanan son parametre ile çalıştırmaktır:
 
 ```
 ./azure_hana_backup --type=hana --prefix=dailyhana --frequency=15min --retention=15
@@ -338,7 +339,7 @@ Belirli anlık görüntüleri silmek için ikinci bir seçenek betiği kullanmak
 
 Betiği hakkında daha fazla bilgi için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)'nda "anlık görüntü silme-azure_hana_snapshot_delete".
 
-Betiği Kullanıcı **kökü**olarak çalıştırın.
+Betiği Kullanıcı **kökü** olarak çalıştırın.
 
 >[!IMPORTANT]
 >Yalnızca silmeyi planladığınız anlık görüntüde bulunan veriler varsa, anlık görüntü silindikten sonra bu veriler süresiz olarak kaybedilir.
@@ -347,7 +348,7 @@ Betiği Kullanıcı **kökü**olarak çalıştırın.
 ## <a name="file-level-restore-from-a-storage-snapshot"></a>Depolama anlık görüntüsünden dosya düzeyinde geri yükleme
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
-**Hana** ve **Günlükler**anlık görüntü türleri için anlık görüntülere doğrudan **. Snapshot** dizinindeki birimlerde erişebilirsiniz. Her anlık görüntü için bir alt dizin bulunur. Bu alt dizindeki anlık görüntü noktasındaki her bir dosyayı gerçek dizin yapısına kopyalayın. 
+**Hana** ve **Günlükler** anlık görüntü türleri için anlık görüntülere doğrudan **. Snapshot** dizinindeki birimlerde erişebilirsiniz. Her anlık görüntü için bir alt dizin bulunur. Bu alt dizindeki anlık görüntü noktasındaki her bir dosyayı gerçek dizin yapısına kopyalayın. 
 
 Betiğin geçerli sürümünde, anlık görüntü geri yükleme için self servis olarak belirtilen geri yükleme betiği *yoktur* . Anlık görüntü geri yükleme, yük devretme sırasında olağanüstü durum kurtarma sitesindeki self servis olağanüstü durum kurtarma betikleri kapsamında gerçekleştirilebilir. Mevcut kullanılabilir anlık görüntülerden istenen bir anlık görüntüyü geri yüklemek için bir hizmet isteği açarak Microsoft Operasyon ekibine başvurmanız gerekir.
 
@@ -438,19 +439,19 @@ SAP HANA 'da Snapın tümleştirme adımları şunlardır:
 
 1. SAP HANA abonelik sayfasında, **kaynak grupları** alt sayfasını seçin.
 
-   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
+   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Çözüm Laboratuvarı abonelik kaynak grubu" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
 
 1. Bir bölgede uygun bir kaynak grubu seçin.
 
-   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
+   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Bölgede uygun kaynak grubunu seçin" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
 
 1. Azure depolama üzerinde SAP HANA karşılık gelen bir SKU girişi seçin.
 
-   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
+   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="SAP HANA karşılık gelen SKU girişi seçin" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
 
 1. Kırmızı renkle özetlenen **Yeni bir destek bileti** isteği açın.
 
-   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Yeni destek bileti isteği aç":::
 
 1. **Temel bilgiler** sekmesinde bilet için aşağıdaki bilgileri sağlayın:
 
@@ -468,7 +469,7 @@ SAP HANA 'da Snapın tümleştirme adımları şunlardır:
    * HLI için SnapCenter ayarlama
    * SnapCenter kullanıcısı (snapcenter. ped) için ortak anahtarınız-aşağıdaki ortak anahtar oluştur örneğine bakın
 
-     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="./media/snapcenter/new-support-request-details.png":::
+     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Yeni destek isteği-Ayrıntılar sekmesi" lightbox="./media/snapcenter/new-support-request-details.png":::
 
 1. Destek biletinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 
@@ -525,7 +526,7 @@ SnapCenter 'ı yüklemeden önce, yedekleme stratejinizi tanımlamak için, ek y
 
 1. Anlık görüntü için Kullanıcı kimlik bilgilerini yapılandırın. Varsayılan olarak, uygulamayı yüklemek için kullanılan Windows Kullanıcı kimlik bilgilerini doldurur. 
 
-   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma"::: 
+   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Yükleme Kullanıcı girdileri iletişim kutusu"::: 
 
 1. Oturumu başlattığınızda, güvenlik muafiyetini kaydedin ve GUI başlatılır.
 
@@ -536,20 +537,20 @@ SnapCenter 'ı yüklemeden önce, yedekleme stratejinizi tanımlamak için, ek y
 
 1. Anlık görüntü merkezinde **depolama sistemi**' ni seçin ve **+ Yeni**' yi seçin. 
 
-   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
+   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="SnapCenter depolama bağlantıları" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
 
    Varsayılan değer, kiracı başına bir SVM 'dir. Bir müşterinin birden çok bölgede birden çok kiracıya veya HLIs 'e sahip olması durumunda, ek yük merkezinde tüm SVMs 'Leri yapılandırmak için öneri
 
 1. Depolama sistemi Ekle ' de, eklemek istediğiniz depolama sistemi, anlık görüntü Kullanıcı adı ve parola bilgilerini girip **Gönder**' i seçin.
 
-   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Yeni depolama bağlantısı":::
 
    >[!NOTE]
    >Varsayılan değer, kiracı başına bir SVM 'dir.  Birden çok kiracı varsa, bu durumda tüm SVMs 'Leri ek izin merkezinde yapılandırmak önerilir. 
 
 1. Ek bileşen merkezi 'nde, **ana bilgisayarlar** ' ı seçin ve ardından seçin **+ Ekle** ' yi seçerek Hana eklentisini ve Hana DB ana bilgisayarlarını ayarlayın.  SnapCenter 'ın en son sürümü, konaktaki HANA veritabanını otomatik olarak algılar.
 
-   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="media/snapcenter/managed-hosts-new-host.png":::
+   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="Anlık görüntü merkezi 'nde Konaklar ' ı ve ardından Ekle ' yi seçin." lightbox="media/snapcenter/managed-hosts-new-host.png":::
 
 1. Yeni konakla ilgili bilgileri belirtin:
    1. Konak türü için işletim sistemini seçin.
@@ -557,7 +558,7 @@ SnapCenter 'ı yüklemeden önce, yedekleme stratejinizi tanımlamak için, ek y
    1. Kullanmak istediğiniz kimlik bilgilerini sağlayın.
    1. **Microsoft Windows** ve **SAP HANA** seçeneklerini belirleyip **Gönder**' i seçin.
 
-   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Yeni ana bilgisayar için bilgiler":::
 
    >[!IMPORTANT]
    >İlk düğümü yüklemeden önce, SnapCenter, kök olmayan bir kullanıcının veritabanına eklentiler yüklemesine izin verir.  Kök olmayan bir kullanıcının nasıl etkinleştirileceği hakkında bilgi için, bkz. [kök olmayan kullanıcı ekleme ve sudo ayrıcalıklarını yapılandırma](https://library.netapp.com/ecmdocs/ECMLP2590889/html/GUID-A3EEB5FC-242B-4C2C-B407-510E48A8F131.html).
@@ -566,7 +567,7 @@ SnapCenter 'ı yüklemeden önce, yedekleme stratejinizi tanımlamak için, ek y
 
 1. Eklenti yüklendikten sonra, ek bileşen Merkezi ' nde **konaklar** ' ı seçin ve ardından **+ Ekle** ' yi seçerek bir hana düğümü ekleyin.
 
-   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="media/snapcenter/add-hana-node.png":::
+   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="HANA düğümü ekleme" lightbox="media/snapcenter/add-hana-node.png":::
 
 1. HANA düğümü için bilgi sağlayın:
    1. Konak türü için işletim sistemini seçin.
@@ -574,15 +575,15 @@ SnapCenter 'ı yüklemeden önce, yedekleme stratejinizi tanımlamak için, ek y
    1. **+** Hana DB konak işletim sisteminde yapılandırılan kimlik bilgilerini eklemek için seçin ve ardından **Tamam**' ı seçin.
    1. **SAP HANA** seçip **Gönder**' i seçin.
 
-   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="SAP HANA düğüm ayrıntıları":::
 
 1. Parmak izini onaylayın ve **Onayla ve Gönder '** i seçin.
 
-   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Parmak izini Onayla ve Gönder":::
 
-1. Hana düğümünde, sistem veritabanı altında **güvenlik**kullanıcıları ek bileşenleri ' ni seçerek  >  **Users**  >  **SNAPCENTER** snapcenter kullanıcısını oluşturun.
+1. Hana düğümünde, sistem veritabanı altında **güvenlik** kullanıcıları ek bileşenleri ' ni seçerek  >  **Users**  >  **SNAPCENTER** snapcenter kullanıcısını oluşturun.
 
-   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="HANA 'da (sistem DB) Snapın kullanıcısı oluşturma":::
 
 
 
@@ -595,15 +596,15 @@ HSR 'yi yapılandırdıysanız sistemi el ile yapılandırmanız gerekir.
 
 1. Anlık görüntü merkezinde **kaynaklar** ve **San Hana** (en üstte) öğesini seçin ve **+ SAP HANA veritabanı Ekle** (sağda) seçeneğini belirleyin.
 
-   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="media/snapcenter/manual-hana-setup.png":::
+   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="El ile HANA kurulumu" lightbox="media/snapcenter/manual-hana-setup.png":::
 
 1. Linux konağında veya eklentilerin yüklendiği konakta yapılandırılan HANA yönetici kullanıcısının kaynak ayrıntılarını belirtin. Yedekleme, Linux sistemindeki eklentiden yönetilir.
 
-   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Linux konağında yapılandırılan HANA yönetici kullanıcısının kaynak ayrıntılarını belirtin.":::
 
 1. Anlık görüntü almak için gereken veri birimini seçin, **Kaydet** ' i seçin ve ardından **son**' u seçin.
 
-   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Anlık görüntü almak için gereken veri birimini seçin, Kaydet ' i seçin ve ardından son ' u seçin.":::
 
 ### <a name="create-a-snapshot-policy"></a>Anlık görüntü ilkesi oluşturma
 
@@ -611,53 +612,53 @@ SAP HANA veritabanı kaynaklarını yedeklemek için SnapCenter 'ı kullanmadan 
 
 1. Anlık görüntü merkezi 'nde **kaynaklar** ' ı seçin ve ardından bir veritabanı seçin.
 
-   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="Anlık görüntü merkezi 'nde kaynaklar ' ı seçin ve ardından bir veritabanı seçin.":::
 
 1. Anlık görüntü zamanlayıcısını yapılandırmak için yapılandırma sihirbazının iş akışını izleyin.
 
-   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
+   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="Anlık görüntü zamanlayıcısını yapılandırmak için yapılandırma sihirbazının iş akışını izleyin." lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
 
 1. Ön/son komutlarını ve özel SSL anahtarlarını yapılandırma seçeneklerini belirtin.  Bu örnekte, özel ayar kullandık.
 
-   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
+   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Post öncesi komutlarını ve özel SSL anahtarlarını yapılandırma seçeneklerini belirtin." lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
 
 1. Diğer HANA veritabanları için de kullanılabilecek bir anlık görüntü ilkesi oluşturmak için **Ekle** ' yi seçin. 
 
-   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="Diğer HANA veritabanları için de kullanılabilecek bir anlık görüntü ilkesi oluşturmak için Ekle ' yi seçin.":::
 
 1. İlke adını ve açıklamasını girin.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="İlke adını ve açıklamasını girin.":::
 
 
 1. Yedekleme türünü ve sıklığını seçin.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Yedekleme türünü ve sıklığını seçin.":::
 
-1. İsteğe bağlı **yedekleme bekletme ayarlarını**yapılandırın.  Bizim örneğimizde, saklama için bekletme üç anlık görüntü kopyasına ayarlıyoruz.
+1. İsteğe bağlı **yedekleme bekletme ayarlarını** yapılandırın.  Bizim örneğimizde, saklama için bekletme üç anlık görüntü kopyasına ayarlıyoruz.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="İsteğe bağlı yedekleme bekletme ayarlarını yapılandırın.":::
 
-1. **Saatlik bekletme ayarlarını**yapılandırın. 
+1. **Saatlik bekletme ayarlarını** yapılandırın. 
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Saatlik bekletme ayarlarını yapılandırın.":::
 
 1. Bir anlık görüntü görüntüsü yapılandırılmışsa, **Yerel anlık görüntü kopyası oluşturduktan sonra anlık görüntü görüntüsünü Güncelleştir**' i seçin.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Bir anlık görüntü görüntüsü gerekiyorsa, yerel bir anlık görüntü kopyası oluşturduktan sonra, anlık görüntü görüntüsünü Güncelleştir ' i seçin.":::
 
 1. Yeni yedekleme ilkesinin özetini gözden geçirmek için **son** ' u seçin. 
-1. **Zamanlamayı Yapılandır**altında **Ekle**' yi seçin.
+1. **Zamanlamayı Yapılandır** altında **Ekle**' yi seçin.
 
-   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="Zamanlamayı Yapılandır altında Ekle ' yi seçin.":::
 
 1. **Başlangıç tarihi** **, tarihi bitiş tarihi ve** sıklığı seçin.
 
-   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Başlangıç tarihi, tarihi bitiş tarihi ve sıklığı seçin.":::
 
 1. Bildirimler için e-posta ayrıntılarını sağlayın.
 
-   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Bildirimler için e-posta ayrıntılarını sağlayın.":::
 
 1.  Yedekleme ilkesini oluşturmak için **son** ' u seçin.
 
@@ -704,11 +705,11 @@ Veritabanını geri yüklemek için Snapın merkezini kullanabilirsiniz.  Bu bö
 
 1. Veritabanı dosyalarını SnapCenter aracılığıyla geri yükleyin.  Veritabanını seçin ve ardından **geri yükle**' yi seçin.  
 
-   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
+   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Bir veritabanı seçin ve geri yükle ' yi seçin." lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
 
 1. Geri yükleme türünü seçin.  Bizim örneğimizde, kaynağın tamamını geri göndereceğiz. 
 
-   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Geri yükleme türünü seçin.":::
 
    >[!NOTE]
    >Varsayılan bir kurulumla, disk üzerindeki anlık görüntüden yerel geri yükleme yapmak için komutlar belirtmeniz gerekmez. 
@@ -720,27 +721,27 @@ Veritabanını geri yüklemek için Snapın merkezini kullanabilirsiniz.  Bu bö
    
    SnapCenter, HANA 'da geri yükleme işlemini başlatmak için verileri özgün konuma geri yükler. Ayrıca, SnapCenter yedekleme kataloğunu değiştiremediğinden (veritabanı kapalıysa) bir uyarı görüntülenir.
 
-   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="SnapCenter, yedekleme kataloğunu değiştiremediğinden bir uyarı görüntülenir. ":::
 
-1. Tüm veritabanı dosyaları geri yüklendiği için, HANA 'daki geri yükleme işlemini başlatın. Hana Studio 'da **sistemler**altında sistem veritabanına sağ tıklayın ve **yedekleme ve kurtarma**  >  **sistem veritabanını kurtar**' ı seçin.
+1. Tüm veritabanı dosyaları geri yüklendiği için, HANA 'daki geri yükleme işlemini başlatın. Hana Studio 'da **sistemler** altında sistem veritabanına sağ tıklayın ve **yedekleme ve kurtarma**  >  **sistem veritabanını kurtar**' ı seçin.
 
-   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="HANA 'da geri yükleme işlemini başlatın.":::
 
 1. Bir kurtarma türü seçin.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Kurtarma türünü seçin.":::
 
 1. Yedekleme kataloğunun konumunu seçin.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Yedekleme kataloğunun konumunu seçin.":::
 
 1. SAP HANA veritabanını kurtarmak için bir yedekleme seçin.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma":::
+   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="SAP HANA veritabanını kurtarmak için bir yedekleme seçin.":::
 
    Veritabanı kurtarıldıktan sonra, bir **kez kurtarılan** ve **günlük konum** damgasına kurtarılan bir ileti görüntülenir.
 
-1. **Sistemler**altında sistem veritabanına sağ tıklayın ve **yedekleme ve kurtarma**  >  **kiracı veritabanını kurtar**' ı seçin.
+1. **Sistemler** altında sistem veritabanına sağ tıklayın ve **yedekleme ve kurtarma**  >  **kiracı veritabanını kurtar**' ı seçin.
 1. Kiracı veritabanının kurtarmasını gerçekleştirmek için sihirbazın iş akışını izleyin. 
 
 Bir veritabanını geri yükleme hakkında daha fazla bilgi için bkz. [snapı Ile yedekleme/kurtarma SAP HANA](https://www.netapp.com/us/media/tr-4614.pdf).
@@ -753,7 +754,7 @@ Veri olmayan birimleri (örneğin, bir ağ dosya paylaşımından (/Hana/Shared)
 
 ' Yi kopyalayabilmeniz için, kaynak veritabanı ile aynı HANA sürümünü yüklemiş olmanız gerekir. SID ve ID farklı olabilir. 
 
-:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Kullanıcı depolaması kurulumu için destek durumu oluşturma" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
+:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Sistem kopyalama SAP HANA" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
 
 1. /Usr/SAP/H34/hdb40H34 veritabanı için bir HANA veritabanı kullanıcı deposu oluşturun.
 
@@ -777,7 +778,7 @@ Veri olmayan birimleri (örneğin, bir ağ dosya paylaşımından (/Hana/Shared)
 1. Anlık görüntü merkezinde, kopyanın bağlanacağı hedef Konağı ekleyin. Daha fazla bilgi için bkz. [uzak konaklara ana bilgisayar ekleme ve eklenti paketleri yükleme](http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-sap-hana%2FGUID-246C0810-4F0B-4BF7-9A35-B729AD69954A.html).
    1. Eklemek istediğiniz farklı çalıştır kimlik bilgileri için bilgi sağlayın. 
    1. Konak işletim sistemini seçin ve ana bilgisayar bilgilerini girin.
-   1. **Yüklemek için**eklentiler altında sürümü seçin, yüklemek için yolu girin ve **SAP HANA**' yi seçin.
+   1. **Yüklemek için** eklentiler altında sürümü seçin, yüklemek için yolu girin ve **SAP HANA**' yi seçin.
    1. Yüklemeyi önyükleme denetimlerini çalıştırmak için **Doğrula** ' yı seçin.
 
 1. HANA 'yı durdurun ve eski veri birimini çıkarın.  Kopyayı SnapCenter 'dan bağlayacaksınız.  
@@ -830,7 +831,7 @@ Veri olmayan birimleri (örneğin, bir ağ dosya paylaşımından (/Hana/Shared)
    >[!NOTE]
    >Daha fazla bilgi için bkz. [bir yedekten kopyalama](https://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-cpi%2FGUID-F6E7FF73-0183-4B9F-8156-8D7DA17A8555.html).
 
-1. **Betikler**altında aşağıdakileri sağlayın:
+1. **Betikler** altında aşağıdakileri sağlayın:
 
    * **Mount komutu:** /NetApp/SC-System-Refresh.exe Mount H34% hana_data_h31_mnt00001_t250_vol_Clone
    * **Kopyalama sonrası komutu:** /NetApp/SC-System-Refresh.exe Recover H34

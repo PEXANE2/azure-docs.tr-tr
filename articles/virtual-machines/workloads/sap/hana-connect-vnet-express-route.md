@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a8a8157721f34abf7761a85febc7bcea3abb88
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082163"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967848"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Sanal ağı HANA büyük örneklerine bağlama
 
@@ -32,7 +33,7 @@ Azure sanal ağını oluşturduktan sonra, bu ağı Azure büyük örneklerinde 
 Bir ağ geçidi zaten varsa, bir ExpressRoute ağ geçidi olup olmadığını kontrol edin. ExpressRoute ağ geçidi değilse, ağ geçidini silin ve ExpressRoute ağ geçidi olarak yeniden oluşturun. Bir ExpressRoute ağ geçidi zaten kurulduysa, "sanal ağları bağlama" başlıklı bu makalenin aşağıdaki bölümüne bakın. 
 
 - Sanal ağınıza bağlı bir ExpressRoute VPN Gateway oluşturmak için [Azure Portal](https://portal.azure.com/) ya da PowerShell kullanın.
-  - Azure portal kullanıyorsanız, yeni bir **sanal ağ geçidi**ekleyin ve ardından ağ geçidi türü olarak **ExpressRoute** ' u seçin.
+  - Azure portal kullanıyorsanız, yeni bir **sanal ağ geçidi** ekleyin ve ardından ağ geçidi türü olarak **ExpressRoute** ' u seçin.
   - PowerShell kullanıyorsanız, önce en son [Azure PowerShell SDK 'sını](https://azure.microsoft.com/downloads/)indirip kullanın. 
  
 Aşağıdaki komutlar bir ExpressRoute ağ geçidi oluşturur. Önünde bir olan metinler, _$_ belirli bilgileriniz ile güncelleştirilmeleri gereken kullanıcı tanımlı değişkenlerdir.

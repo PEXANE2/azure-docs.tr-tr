@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183284"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968749"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple’ı Azure Dosya Eşitleme ve Data Box Edge veri aktarma seçenekleriyle karşılaştırma 
 
@@ -20,9 +20,9 @@ ms.locfileid: "88183284"
  
 Bu belgede, Azure 'a yönelik şirket içi veri aktarımı seçeneklerine genel bir bakış sunulmaktadır: Data Box Edge vs. Azure Dosya Eşitleme vs. StorSimple 8000 serisi karşılaştırması.
 
-- **[Data Box Edge](/azure/databox-online/data-box-edge-overview)** – Data Box Edge, verileri Azure 'a ve dışına taşıtan ve karşıya yükleme sırasında verileri önceden işlemeye yönelik bir şirket içi ağ aygıtıdır. Data Box Gateway, aynı veri aktarımı özelliklerine sahip bir cihazın sanal sürümüdür.
-- **[Azure dosya eşitleme](/azure/storage/files/storage-sync-files-deployment-guide)** – Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken, şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kullanılabilir. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Azure Dosya Eşitleme genel kullanılabilirliği 2018 ' de daha önce duyuruldu.
-- **[StorSimple](/azure/storsimple/storsimple-overview)** – StorSimple, kuruluşların depolama altyapısını birincil depolama, veri koruma, arşivleme ve olağanüstü durum kurtarma için tek bir çözümde birleştirerek Azure depolama ile sıkı bir şekilde tümleştirmenize yardımcı olan bir karma cihazdır. StorSimple için ürün yaşam döngüsü [burada](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)bulunabilir.
+- **[Data Box Edge](../databox-online/azure-stack-edge-overview.md)** – Data Box Edge, verileri Azure 'a ve dışına taşıtan ve karşıya yükleme sırasında verileri önceden işlemeye yönelik bir şirket içi ağ aygıtıdır. Data Box Gateway, cihazın sanal bir sürümüdür ancak aynı veri aktarımı yeteneklerine sahiptir.
+- **[Azure dosya eşitleme](../storage/files/storage-sync-files-deployment-guide.md)** – Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken, şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kullanılabilir. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Azure Dosya Eşitleme genel kullanılabilirliği 2018 ' de daha önce duyuruldu.
+- **[StorSimple](./storsimple-overview.md)** – StorSimple, kuruluşların depolama altyapısını birincil depolama, veri koruma, arşivleme ve olağanüstü durum kurtarma için tek bir çözümde birleştirerek Azure depolama ile sıkı bir şekilde tümleştirmenize yardımcı olan bir karma cihazdır. StorSimple için ürün yaşam döngüsü [burada](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)bulunabilir.
 
 ## <a name="comparison-summary"></a>Karşılaştırma Özeti
 
@@ -39,5 +39,5 @@ Bu belgede, Azure 'a yönelik şirket içi veri aktarımı seçeneklerine genel 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview) ve [Azure Data Box Gateway](/azure/databox-online/data-box-gateway-overview) hakkında bilgi edinin
-- [Azure dosya eşitleme](/azure/storage/files/storage-sync-files-deployment-guide) hakkında bilgi edinin
+- [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) ve [Azure Data Box Gateway](../databox-online/data-box-gateway-overview.md) hakkında bilgi edinin
+- [Azure dosya eşitleme](../storage/files/storage-sync-files-deployment-guide.md) hakkında bilgi edinin

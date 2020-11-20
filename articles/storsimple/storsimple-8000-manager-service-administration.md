@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508053"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967984"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple cihazınızı yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -65,7 +65,7 @@ Her iş akışı hakkında daha fazla bilgi için, tabloda ilgili yordama tıkla
 | Erişim denetimi kayıtları hakkında</br>Erişim denetimi kaydı oluşturma</br>Erişim denetimi kaydını düzenleme</br>Erişim denetimi kaydını silme |[Erişim denetim kayıtlarını yönetme](storsimple-8000-manage-acrs.md) |
 | İş ayrıntılarını görüntüleme</br>Bir işi iptal etme |[İşleri yönetme](storsimple-8000-manage-jobs-u2.md) |
 | Uyarı bildirimleri alma</br>Uyarıları yönetme</br>Uyarıları gözden geçirme |[StorSimple uyarılarını görüntüleyin ve yönetin](storsimple-8000-manage-alerts.md) |
-| İzleme grafikleri oluşturma |[StorSimple cihazınızı izleme](storsimple-monitor-device.md) |
+| İzleme grafikleri oluşturma |[StorSimple cihazınızı izleme](./storsimple-8000-monitor-device.md) |
 | Birim kapsayıcısı ekleme</br>Birim kapsayıcısını değiştirme</br>Birim kapsayıcısını silme |[Birim kapsayıcıları yönetme](storsimple-8000-manage-volume-containers.md) |
 | Birim ekleme</br>Bir birimi değiştirme</br>Bir birimi çevrimdışı duruma getirme</br>Bir birimi silme</br>Bir birimi izleme |[Birimleri yönetme](storsimple-8000-manage-volumes-u2.md) |
 | Cihaz ayarlarını değiştir</br>Zaman ayarlarını değiştir</br>DNS.md ayarlarını değiştir</br>Ağ arabirimlerini yapılandırma |[StorSimple cihazınız için cihaz yapılandırmasını değiştirme](storsimple-8000-modify-device-config.md) |
@@ -73,7 +73,7 @@ Her iş akışı hakkında daha fazla bilgi için, tabloda ilgili yordama tıkla
 | Cihaz yönetici parolasını değiştir</br>StorSimple Snapshot Manager parolasını değiştirme |[StorSimple parolalarını değiştirme](storsimple-8000-change-passwords.md) |
 | Uzaktan yönetimi yapılandırma |[StorSimple cihazınıza uzaktan bağlanma](storsimple-8000-remote-connect.md) |
 | Uyarı ayarlarını yapılandırma |[StorSimple uyarılarını görüntüleyin ve yönetin](storsimple-8000-manage-alerts.md) |
-| StorSimple cihazınız için CHAP yapılandırma |[StorSimple cihazınız için CHAP yapılandırma](storsimple-configure-chap.md) |
+| StorSimple cihazınız için CHAP yapılandırma |[StorSimple cihazınız için CHAP yapılandırma](./storsimple-8000-configure-chap.md) |
 | Yedekleme ilkesi ekleme</br>Zamanlama ekleme veya değiştirme</br>Yedekleme ilkesini silme</br>El ile yedekleme yapın</br>Birden çok birim ve zamanlamaya sahip özel bir yedekleme ilkesi oluşturma |[Yedekleme ilkelerini yönetme](storsimple-8000-manage-backup-policies-u2.md) |
 | Cihaz denetleyicilerini durdur</br>Cihaz denetleyicilerini yeniden Başlat</br>Cihaz denetleyicilerini kapatma</br>Cihazınızı fabrika varsayılanlarına sıfırlayın</br>(Yukarıda yalnızca şirket içi cihaz için geçerlidir) |[StorSimple cihaz denetleyicisini yönetme](storsimple-8000-manage-device-controller.md) |
 | StorSimple donanım bileşenleri hakkında bilgi edinin</br>Donanım durumunu izleme</br>(Yukarıda yalnızca şirket içi cihaz için geçerlidir) |[Donanım bileşenlerini izleme](storsimple-8000-monitor-hardware-status.md) |
@@ -88,4 +88,3 @@ StorSimple cihazınızın günlük işlemleri veya donanım bileşenlerinden her
 * [StorSimple izleme göstergesi LED 'lerini kullanın](storsimple-monitoring-indicators.md)
 
 Sorunları çözemezseniz ve bir hizmet isteği oluşturmanız gerekiyorsa, [iletişim Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md).
-

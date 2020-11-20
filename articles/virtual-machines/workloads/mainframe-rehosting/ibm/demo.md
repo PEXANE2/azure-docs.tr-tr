@@ -3,6 +3,7 @@ title: IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) a
 description: Azure sanal makinelerinde (VM) bir IBM Z geliştirme ve test ortamı (zD&T) ortamı çalıştırın.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87052407"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968409"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama
 
@@ -50,9 +51,9 @@ ADCD medyası için erişim gereklidir. Aşağıdaki adımlarda, bir IBM müşte
 
 1. [Passport avantajı](https://www.ibm.com/software/howtobuy/passportadvantage/paocustomer)'nda oturum açın.
 
-2. **Yazılım İndirmeleri** ve **medya erişimi**seçin.
+2. **Yazılım İndirmeleri** ve **medya erişimi** seçin.
 
-3. **Program sunumu ve anlaşma numarasını**seçin ve **devam**' a tıklayın.
+3. **Program sunumu ve anlaşma numarasını** seçin ve **devam**' a tıklayın.
 
 4. Bölüm açıklamasını veya parça numarasını girin ve **Bulucu**' ye tıklayın.
 
@@ -111,13 +112,13 @@ Sonraki adım, zD&T 'leri karşıya yüklenen paketleri kullanacak şekilde yap�
 
     ![IBM zD&T Enterprise Edition hoş geldiniz ekranı](media/02-welcome.png)
 
-3. **Hızlı başlangıç** sayfasında, **Yapılandır**altında, **görüntü depolaması**' nı seçin.
+3. **Hızlı başlangıç** sayfasında, **Yapılandır** altında, **görüntü depolaması**' nı seçin.
 
      ![IBM zD&T Enterprise Edition hızlı başlangıç ekranı](media/03-quickstart.png)
 
 4. **Görüntü depolamayı Yapılandır** sayfasında **SSH dosya aktarım protokolü**' yi seçin.
 
-5. **Ana bilgisayar adı**için **localhost** yazın ve görüntüleri karşıya yüklediğiniz dizin yolunu girin. Örneğin,/home/MyUserID/ZDT/adcd/nov2017/volumes.
+5. **Ana bilgisayar adı** için **localhost** yazın ve görüntüleri karşıya yüklediğiniz dizin yolunu girin. Örneğin,/home/MyUserID/ZDT/adcd/nov2017/volumes.
 
 6. VM 'nin **Kullanıcı kimliğini** ve **parolasını** girin. ZD&T kullanıcı KIMLIĞINI ve parolasını kullanmayın.
 
@@ -127,13 +128,13 @@ Sonraki adım, zD&T 'leri karşıya yüklenen paketleri kullanacak şekilde yap�
 
 Sonraki adım zD&T hedef ortamını yapılandırmaktır. Bu öykünülmüş barındırılan ortam, görüntülerinizin çalıştığı yerdir.
 
-1. **Hızlı başlangıç** sayfasında, **Yapılandır**altında **hedef ortamlar**' ı seçin.
+1. **Hızlı başlangıç** sayfasında, **Yapılandır** altında **hedef ortamlar**' ı seçin.
 
 2. **Hedef ortamları Yapılandır** sayfasında, **hedef Ekle**' yi seçin.
 
 3. **Linux**' u seçin. IBM iki tür ortamı, Linux ve bulutu (OpenStack) destekler, ancak bu demo Linux üzerinde çalışır.
 
-4. **Hedef ortam ekle** sayfasında, **konak adı**için **localhost**girin. **SSH bağlantı noktasını** **22**olarak ayarlayın.
+4. **Hedef ortam ekle** sayfasında, **konak adı** için **localhost** girin. **SSH bağlantı noktasını** **22** olarak ayarlayın.
 
 5. **Hedef ortam etiketi** kutusuna **mycıcs** gibi bir etiket girin.
 
@@ -143,7 +144,7 @@ Sonraki adım zD&T hedef ortamını yapılandırmaktır. Bu öykünülmüş bar�
 
 Önceki yapılandırma adımlarını tamamladıktan sonra, zD&T paketini ve hedef ortamı kullanacak şekilde yapılandırmanız gerekir. Yine, resim depolama sürecini zD&T ' de kullanarak görüntüleri bağlayabilir ve kullanmanıza olanak tanır. SSH veya FTP kullanabilir.
 
-1. **Hızlı başlangıç** sayfasında, **Yapılandır**altında **adcd**' yi seçin. Bir ADCD paketinin bağlanması için tamamlanması gereken adımları söyleyen bir dizi yönerge görüntülenir. Bu, daha önce yaptığımız şekilde hedef dizini adlandırdığımızda açıklanmaktadır.
+1. **Hızlı başlangıç** sayfasında, **Yapılandır** altında **adcd**' yi seçin. Bir ADCD paketinin bağlanması için tamamlanması gereken adımları söyleyen bir dizi yönerge görüntülenir. Bu, daha önce yaptığımız şekilde hedef dizini adlandırdığımızda açıklanmaktadır.
 
 2. Tüm görüntülerin doğru dizinlere yüklendiği varsayılarak, sağ alt köşedeki (aşağıdaki ekran görüntüsünde adım 7 ' de gösterilen) **ADCD** bağlantısı ' na tıklayın.
 
@@ -157,7 +158,7 @@ Sonraki adım zD&T hedef ortamını yapılandırmaktır. Bu öykünülmüş bar�
 
 2. Bu demo için **Müşteri bilgileri denetim sistemi (CICS)-5,3**' ı seçin.
 
-3. **Görüntü adı** kutusuna resim Için **mycıcs Image**gibi bir ad yazın.
+3. **Görüntü adı** kutusuna resim Için **mycıcs Image** gibi bir ad yazın.
 
 4. Sağ alt köşedeki **görüntü oluştur** düğmesini seçin.
 
@@ -171,7 +172,7 @@ Sonraki adım zD&T hedef ortamını yapılandırmaktır. Bu öykünülmüş bar�
 
 8. Özellikler bölmesinde, çalışan görüntü için **Merkezi işlemcilerin (CPS)** sayısını, **sistem belleğı miktarını (GB)** ve **dağıtım dizinini** girin. Bu bir demo olduğundan, küçük tutun.
 
-9. **Dağıtım sonrasında IPL komutunu otomatik olarak z/ç 'ye verilecek şekilde**kutunun seçildiğinden emin olun.
+9. **Dağıtım sonrasında IPL komutunu otomatik olarak z/ç 'ye verilecek şekilde** kutunun seçildiğinden emin olun.
 
      ![Özellikler ekranı](media/07-properties.png)
 
@@ -186,7 +187,7 @@ Görüntünüz artık dağıtabilir ve bir 3270 Terminal öykünücüsü tarafı
 
 Tebrikler! Artık Azure 'da bir IBM ana bilgisayar ortamı çalıştırıyorsunuz.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 - [Ana bilgisayar geçişi: Myon ve olgular](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 'da IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)

@@ -7,18 +7,19 @@ author: bentrin
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25eae9f9ba0e28a5aa069972c8c7d5eb2877545f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085223"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967695"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>Azure sanal makinelerine Azure büyük örnek geçişi SAP HANA
 Bu makalede olası Azure büyük örnek dağıtım senaryoları açıklanmakta ve küçültülmüş geçiş kapalı kalma süresi ile planlama ve geçiş yaklaşımı sunulmaktadır
@@ -49,21 +50,21 @@ HLI müşterilerine sahip ortak dağıtım modelleri aşağıdaki tabloda özetl
 
 | Senaryo KIMLIĞI | HLI senaryosu | VM 'ye geçiş mı? | Görüyorum |
 | --- | --- | --- | --- |
-| 1 | [Tek bir SID içeren tek düğüm](./hana-supported-scenario.md#single-node-with-one-sid) | Evet | - |
-| 2 | [MCOS ile tek düğüm](./hana-supported-scenario.md#single-node-mcos) | Evet | - |
-| 3 | [Depolama çoğaltması kullanan DR ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | Hayır | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
-| 4 | [Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | Hayır | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
-| 5 | [Yüksek kullanılabilirlik için STONITH ile HSR](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Evet | Hedef VM 'Ler için önceden yapılandırılmış bir SBD yok.  Bir STONITH çözümü seçin ve dağıtın.  Olası seçenekler: Azure Uçuşlama Aracısı (hem [RHEL](./high-availability-guide-rhel-pacemaker.md), [SLES](./high-availability-guide-suse-pacemaker.md)Için desteklenir), SBD |
-| 6 | [HSR ile, depolama çoğaltması ile DR](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | Hayır | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
-| 7 | [Konak otomatik yük devretme (1 + 1)](./hana-supported-scenario.md#host-auto-failover-11) | Evet | Azure VM 'leriyle paylaşılan depolama için ANF kullanma |
-| 8 | [Bekleme ile genişleme](./hana-supported-scenario.md#scale-out-with-standby) | Evet | Yalnızca depolama için ANF kullanan M128s, M416s, M416ms VM 'Ler ile siyah beyaz/4HANA |
-| 9 | [Bekleme olmadan genişleme](./hana-supported-scenario.md#scale-out-without-standby) | Evet | M128s, M416s, M416ms VM 'Leri ile siyah beyaz/4HANA (depolama için ANF kullanma ile veya olmadan) |
-| 10 | [Depolama çoğaltması kullanarak DR ile genişleme](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | Hayır | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
-| 11 | [HSR kullanarak DR ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | Evet | - |
-| 12 | [Tek düğümlü HSR-DR (maliyet için iyileştirilmiş)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | Evet | - |
-| 13 | [HSR ile HA ve DR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | Evet | - |
-| 14 | [HSR ile HA ve DR (maliyet için iyileştirilmiş)](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Evet | - |
-| 15 | [HSR kullanarak DR ile ölçeklendirme](./hana-supported-scenario.md#scale-out-with-dr-using-hsr) | Evet | M128s ile siyah beyaz/4HANA. M416s, M416ms VM 'Leri (depolama için ANF kullanma ile veya olmadan) |
+| 1 | [Tek bir SID içeren tek düğüm](./hana-supported-scenario.md#single-node-with-one-sid) | Yes | - |
+| 2 | [MCOS ile tek düğüm](./hana-supported-scenario.md#single-node-mcos) | Yes | - |
+| 3 | [Depolama çoğaltması kullanan DR ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | No | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
+| 4 | [Depolama çoğaltması kullanarak DR (çok amaçlı) ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | No | Depolama çoğaltması Azure sanal platformunda kullanılamaz, geçerli DR çözümünü HSR veya yedekleme/geri yükleme olarak değiştirin |
+| 5 | [Yüksek kullanılabilirlik için STONITH ile HSR](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Yes | Hedef VM 'Ler için önceden yapılandırılmış bir SBD yok.  Bir STONITH çözümü seçin ve dağıtın.  Olası seçenekler: Azure Uçuşlama Aracısı (hem [RHEL](./high-availability-guide-rhel-pacemaker.md), [SLES](./high-availability-guide-suse-pacemaker.md)Için desteklenir), SBD |
+| 6 | [HSR ile, depolama çoğaltması ile DR](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | No | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
+| 7 | [Konak otomatik yük devretme (1 + 1)](./hana-supported-scenario.md#host-auto-failover-11) | Yes | Azure VM 'leriyle paylaşılan depolama için ANF kullanma |
+| 8 | [Bekleme ile genişleme](./hana-supported-scenario.md#scale-out-with-standby) | Yes | Yalnızca depolama için ANF kullanan M128s, M416s, M416ms VM 'Ler ile siyah beyaz/4HANA |
+| 9 | [Bekleme olmadan genişleme](./hana-supported-scenario.md#scale-out-without-standby) | Yes | M128s, M416s, M416ms VM 'Leri ile siyah beyaz/4HANA (depolama için ANF kullanma ile veya olmadan) |
+| 10 | [Depolama çoğaltması kullanarak DR ile genişleme](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | No | DR için depolama çoğaltmasını, HSR veya yedekleme/geri yükleme ile değiştirin |
+| 11 | [HSR kullanarak DR ile tek düğüm](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [Tek düğümlü HSR-DR (maliyet için iyileştirilmiş)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [HSR ile HA ve DR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HSR ile HA ve DR (maliyet için iyileştirilmiş)](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [HSR kullanarak DR ile ölçeklendirme](./hana-supported-scenario.md#scale-out-with-dr-using-hsr) | Yes | M128s ile siyah beyaz/4HANA. M416s, M416ms VM 'Leri (depolama için ANF kullanma ile veya olmadan) |
 
 
 ## <a name="source-hli-planning"></a>Kaynak (HLI) planlaması

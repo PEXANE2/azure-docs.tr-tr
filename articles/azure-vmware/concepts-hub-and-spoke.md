@@ -3,12 +3,12 @@ title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm 
 description: Azure 'da bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: da4a5f5ec6fa2b0a2733e8d1bf0243ec75f38d55
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577728"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967457"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme
 
@@ -38,7 +38,7 @@ Mimaride aşağıdaki ana bileşenler bulunur:
 
 - **Şirket içi site:** Müşteri şirket içi veri merkezi, bir ExpressRoute bağlantısı üzerinden Azure 'a bağlandı.
 
-- **Azure VMware çözümü özel bulutu:** Her biri en fazla 16 düğüm içeren bir veya daha fazla vSphere kümesi tarafından oluşturulan Azure VMware Çözüm SDDC.
+- **Azure VMware çözümü özel bulutu:** Her biri en fazla 16 ana bilgisayar içeren bir veya daha fazla vSphere kümesi tarafından oluşturulan Azure VMware Çözüm SDDC 'SI.
 
 - **ExpressRoute ağ geçidi:** Azure VMware çözümü özel bulutu, hub sanal ağı üzerindeki paylaşılan hizmetler ve bağlı olan sanal ağlarda çalışan iş yükleri arasındaki iletişimi mümkün bir şekilde sunar.
 

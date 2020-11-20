@@ -3,16 +3,17 @@ title: Azure Linux VM 'de Oracle altın kapısı uygulama | Microsoft Docs
 description: Azure ortamınızda bir Oracle altın kapıdan yararlanın ve çalışır duruma hızla erişin.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3fff58c240341776a3bb99c059c179cc4f9d96e9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534150"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966879"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM 'de Oracle altın kapısı uygulama 
 
@@ -24,7 +25,7 @@ Başlamadan önce Azure CLI’nin yüklü olduğundan emin olun. Daha fazla bilg
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama
 
-Oracle altın kapısı yüklemesini gerçekleştirmek için aynı Kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir. VM 'Leri oluşturmak için kullandığınız Market görüntüsü **Oracle: Oracle-Database-Ee: 12.1.0.2: latest** .
+Oracle altın kapısı yüklemesini gerçekleştirmek için aynı Kullanılabilirlik kümesinde iki Azure VM oluşturmanız gerekir. VM 'Leri oluşturmak için kullandığınız Market görüntüsü **Oracle: Oracle-Database-Ee: 12.1.0.2: latest**.
 
 Ayrıca, UNIX Düzenleyicisi VI hakkında bilgi sahibi olmanız ve X11 (X Windows) ile ilgili temel bilgiye sahip olmanız gerekir.
 
@@ -389,9 +390,9 @@ Bu isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X
 3. PuTTY anahtar Oluşturucu:
 
    - Bir anahtar oluşturmak için **Oluştur** düğmesini seçin.
-   - Anahtarın içeriğini kopyalayın ( **CTRL + C** ).
+   - Anahtarın içeriğini kopyalayın (**CTRL + C**).
    - **Özel anahtarı kaydet** düğmesini seçin.
-   - Görüntülenen uyarıyı yoksayın ve sonra **Tamam** ' ı seçin.
+   - Görüntülenen uyarıyı yoksayın ve sonra **Tamam**' ı seçin.
 
    ![PuTTY anahtar Oluşturucu sayfasının ekran görüntüsü](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -409,15 +410,15 @@ Bu isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten X
    > Anahtarın dizeyi içermesi gerekir `ssh-rsa` . Ayrıca, anahtarın içeriği tek satırlık bir metin olmalıdır.
    >  
 
-6. PuTTY’yi başlatın. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **kimlik doğrulaması** ' nı seçin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
+6. PuTTY’yi başlatın. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **kimlik doğrulaması**' nı seçin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
 
    ![Özel anahtar ayarla sayfasının ekran görüntüsü](./media/oracle-golden-gate/setprivatekey.png)
 
-7. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **X11** ' ı seçin. Ardından **X11 Iletmeyi etkinleştir** kutusunu seçin.
+7. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **X11**' ı seçin. Ardından **X11 Iletmeyi etkinleştir** kutusunu seçin.
 
    ![Enable X11 sayfasının ekran görüntüsü](./media/oracle-golden-gate/enablex11.png)
 
-8. **Kategori** bölmesinde **oturum** ' a gidin. Ana bilgisayar bilgilerini girip **Aç** ' ı seçin.
+8. **Kategori** bölmesinde **oturum**' a gidin. Ana bilgisayar bilgilerini girip **Aç**' ı seçin.
 
    ![Oturum sayfasının ekran görüntüsü](./media/oracle-golden-gate/puttysession.png)
 

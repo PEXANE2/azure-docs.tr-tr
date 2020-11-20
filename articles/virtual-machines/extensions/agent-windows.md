@@ -1,18 +1,19 @@
 ---
-title: Azure sanal makine aracısına genel bakış
-description: Azure sanal makine aracısına genel bakış
+title: Azure Sanal Makine Aracısına Genel Bakış
+description: Azure Sanal Makine Aracısına Genel Bakış
 services: virtual-machines-windows
+ms.subservice: extensions
 author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 07/20/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1ef2c9ef4e2a2296ceb214c89bb6e3fb98dcb26f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3724b8a2afb89594c73f7dae782658ec8978963a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974915"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968443"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
 Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.
@@ -105,7 +106,7 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>El ile algılama
 
-Bir Windows VM 'de oturum açıldığında, çalışan işlemlerin incelenmesi için Görev Yöneticisi kullanılabilir. Azure VM aracısını denetlemek için, Görev Yöneticisi 'ni açın, *Ayrıntılar* sekmesine tıklayın ve **WindowsAzureGuestAgent.exe**bir işlem adı arayın. Bu işlemin varlığı, VM aracısının yüklü olduğunu gösterir.
+Bir Windows VM 'de oturum açıldığında, çalışan işlemlerin incelenmesi için Görev Yöneticisi kullanılabilir. Azure VM aracısını denetlemek için, Görev Yöneticisi 'ni açın, *Ayrıntılar* sekmesine tıklayın ve **WindowsAzureGuestAgent.exe** bir işlem adı arayın. Bu işlemin varlığı, VM aracısının yüklü olduğunu gösterir.
 
 
 ## <a name="upgrade-the-vm-agent"></a>VM aracısını yükseltme

@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617068"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967729"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA tarafından izleme ve sorun giderme
 
@@ -135,7 +136,7 @@ Tüm SQL deyimleri, giriş parametrelerinin (değiştirme bölümü) değiştiri
 
 ![Tüm SQL deyimleri, giriş parametrelerinin (değiştirme bölümü) değiştirilmesine ve sonra yürütülmesine izin vererek açılır](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-Diğer bir örnek, **çoğaltma: genel bakış**altındaki deyimlere sağ tıklandır. Bağlam menüsünden **Çalıştır** ' ı seçin:
+Diğer bir örnek, **çoğaltma: genel bakış** altındaki deyimlere sağ tıklandır. Bağlam menüsünden **Çalıştır** ' ı seçin:
 
 ![Diğer bir örnek, çoğaltma: genel bakış altındaki deyimlere sağ tıklandır. Bağlam menüsünden Yürüt ' ü seçin](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -155,7 +156,7 @@ HANA yapılandırma Minichecks için aynısını \_ yapın \_ ve _C_ (kritik) s�
 
 ![HANA \_ hizmetlerine \_ genel bakış SAP HANA Hizmetleri 'nin şu anda çalıştığı hakkında genel bakış](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**Hana \_ SAP HANA \_ ** Service ıNFORMATION (CPU, bellek, vb.) için hizmet istatistikleri.
+**Hana \_ SAP HANA \_** Service ıNFORMATION (CPU, bellek, vb.) için hizmet istatistikleri.
 
 ![\_ \_ SAP HANA hizmeti BILGILERI için Hana Hizmetleri istatistikleri](./media/troubleshooting-monitoring/image13-services-statistics.png)
 

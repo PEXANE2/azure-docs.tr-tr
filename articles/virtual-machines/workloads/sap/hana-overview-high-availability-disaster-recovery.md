@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56e2e2a048e44dcad626208b059e258d55ba7057
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77616939"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967610"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA Büyük Örnekleri 
 
@@ -69,7 +70,7 @@ Aşağıdaki SAP makalelerinde SAP HANA yüksek kullanılabilirlik hakkında dah
 
 HANA büyük örneklerin olağanüstü durum kurtarma işlevselliğinden faydalanmak için, iki Azure bölgesine ağ bağlantısı tasarlamanız gerekir. Ana Azure bölgenizdeki Şirket içinden bir Azure ExpressRoute bağlantı hattı bağlantısı ve şirket içi Şirket içinden olağanüstü durum kurtarma bölgenize başka bir bağlantı gerekir. Bu ölçü, bir Microsoft kurumsal sınır yönlendiricisi (MSEE) konumu dahil olmak üzere Azure bölgesinde bir sorun olduğu bir durumu ele alır.
 
-İkinci bir ölçü olarak, Azure 'daki SAP HANA bağlanan tüm Azure sanal ağlarını (büyük örnekler) bir bölgedeki bir ExpressRoute devresine, diğer bölgedeki HANA büyük örneklerini bağlayan bir ExpressRoute devresine bağlayabilirsiniz. Bu *çapraz bağlantı*Ile, bölge 1 ' de bir Azure sanal ağı üzerinde çalışan hizmetler, bölge 2 ' deki Hana büyük örnek birimlerine ve diğer bir yönteme bağlanabilir. Bu ölçü, Azure ile şirket içi konumunuza bağlanan MSEE konumlarından yalnızca birinin çevrimdışı olduğu bir durumu ele alır.
+İkinci bir ölçü olarak, Azure 'daki SAP HANA bağlanan tüm Azure sanal ağlarını (büyük örnekler) bir bölgedeki bir ExpressRoute devresine, diğer bölgedeki HANA büyük örneklerini bağlayan bir ExpressRoute devresine bağlayabilirsiniz. Bu *çapraz bağlantı* Ile, bölge 1 ' de bir Azure sanal ağı üzerinde çalışan hizmetler, bölge 2 ' deki Hana büyük örnek birimlerine ve diğer bir yönteme bağlanabilir. Bu ölçü, Azure ile şirket içi konumunuza bağlanan MSEE konumlarından yalnızca birinin çevrimdışı olduğu bir durumu ele alır.
 
 Aşağıdaki grafikte olağanüstü durum kurtarma durumları için dayanıklı bir yapılandırma gösterilmektedir:
 
@@ -81,7 +82,7 @@ Aşağıdaki grafikte olağanüstü durum kurtarma durumları için dayanıklı 
 
 HANA büyük örneklerle bir olağanüstü durum kurtarma kurulumu için önceki gereksinimlere ek olarak, şunları yapmanız gerekir:
 
-- Azure (büyük örnekler) SKU 'Larında, üretim SKU 'larınız ile aynı boyutta olan ve bunları olağanüstü durum kurtarma bölgesinde dağıtan SAP HANA sıralayın. Geçerli müşteri dağıtımlarında, bu örnekler üretim dışı HANA örneklerini çalıştırmak için kullanılır. Bu yapılandırmalara *çok AMAÇLı Dr kurulumları*denir.   
+- Azure (büyük örnekler) SKU 'Larında, üretim SKU 'larınız ile aynı boyutta olan ve bunları olağanüstü durum kurtarma bölgesinde dağıtan SAP HANA sıralayın. Geçerli müşteri dağıtımlarında, bu örnekler üretim dışı HANA örneklerini çalıştırmak için kullanılır. Bu yapılandırmalara *çok AMAÇLı Dr kurulumları* denir.   
 - Olağanüstü durum kurtarma sitesinde kurtarmak istediğiniz Azure (büyük örnekler) SKU 'Larında SAP HANA her biri için DR sitesinde ek depolama alanı sıralayın. Ek depolama alanı satın alma, depolama birimlerini ayırmanıza olanak tanır. Depolama alanı çoğaltmasının hedefi olan birimleri, üretim Azure bölgesindeki olağanüstü durum kurtarma Azure bölgesine ayırabilirsiniz.
 - Birincil üzerinde HSR kurulumunu yaptığınız ve DR sitesine depolama tabanlı çoğaltma kurmanızdan sonra, birincil ve ikincil düğümlerin verilerinin DR sitesine çoğaltılması için DR sitesinde ek depolama alanı satın almanız gerekir.
 

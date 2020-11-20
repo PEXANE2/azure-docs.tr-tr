@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 9b4684f8d9a6bd04a11961632b616258db7344a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 496b78de869cc213af6b79b3e72016bba3da1266
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487577"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967440"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
 
@@ -150,7 +151,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
    1. Yönetici Kullanıcı adı, yönetici parolası veya SSH anahtarı  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    1. Alt ağ KIMLIĞI  
-   VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/** &lt; abonelik kimliği &gt; **/ResourceGroups/** &lt; kaynak grubu adı &gt; **/Providers/Microsoft.Network/virtualNetworks/** &lt; sanal ağ adı &gt; **/Subnets/** &lt; alt ağ adı &gt; ** gibi görünüyor
+   VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/**&lt; abonelik kimliği &gt;**/ResourceGroups/**&lt; kaynak grubu adı &gt;**/Providers/Microsoft.Network/virtualNetworks/**&lt; sanal ağ adı &gt;**/Subnets/**&lt; alt ağ adı &gt;** gibi görünüyor
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 
@@ -185,13 +186,13 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
       1. (A) SCS kümesinin sanal makinelerini ve IP adreslerini seçin.
       1. Ekle'ye tıklayın.
    1. Sistem durumu araştırmalarını oluşturma
-      1. YOKS için bağlantı noktası 620**00**
+      1. YOKS için bağlantı noktası 620 **00**
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-ascs-HP**)
-         1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+         1. TCP as Protocol, bağlantı noktası 620 **00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
          1. Tamam 'a tıklayın
-      1. YOKLAR için bağlantı noktası 621**02**
-         * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, 621**02** ve **NW1-aers-HP**)
+      1. YOKLAR için bağlantı noktası 621 **02**
+         * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, 621 **02** ve **NW1-aers-HP**)
    1. Yük Dengeleme kuralları
       1. YOKS için Yük Dengeleme kuralları
          1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın.
@@ -219,15 +220,15 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
       1. (A) SCS kümesinin sanal makinelerini seçin
       1. Tamam 'a tıklayın
    1. Sistem durumu araştırmalarını oluşturma
-      1. YOKS için bağlantı noktası 620**00**
+      1. YOKS için bağlantı noktası 620 **00**
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-ascs-HP**)
-         1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+         1. TCP as Protocol, bağlantı noktası 620 **00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
          1. Tamam 'a tıklayın
-      1. YOKLAR için bağlantı noktası 621**02**
-         * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, 621**02** ve **NW1-aers-HP**)
+      1. YOKLAR için bağlantı noktası 621 **02**
+         * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, 621 **02** ve **NW1-aers-HP**)
    1. Yük Dengeleme kuralları
-      1. YOKS için 32**00** TCP
+      1. YOKS için 32 **00** TCP
          1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın.
          1. Yeni yük dengeleyici kuralının adını girin (örneğin, **NW1-lb-3200**)
          1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **NW1-ascs-ön uç**)
@@ -236,9 +237,9 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
          1. Tamam 'a tıklayın
       1. YOKS için ek bağlantı noktaları
-         * 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 ve TCP bağlantı noktaları için yukarıdaki adımları tekrarlayın
+         * 36 **00**, 39 **00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 ve TCP bağlantı noktaları için yukarıdaki adımları tekrarlayın
       1. YOKLAR için ek bağlantı noktaları
-         * 33**02**, 5**02**13, 5**02 14, 5****02**16 ve TCP bağlantı noktaları için yukarıdaki adımları yineleyin
+         * 33 **02**, 5 **02** 13, 5 **02 14, 5****02** 16 ve TCP bağlantı noktaları için yukarıdaki adımları yineleyin
 
 > [!IMPORTANT]
 > Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
@@ -247,7 +248,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
 > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0** olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker kümesi oluşturma
 
@@ -406,7 +407,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Yükleme/usr/SAP/**NW1**/ascs**00**' da bir alt klasör oluşturamazsa, Ass**00** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
+   Yükleme/usr/SAP/**NW1**/ascs **00**' da bir alt klasör oluşturamazsa, Ass **00** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -462,7 +463,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Yükleme/usr/SAP/**NW1**/ers**02**' de bir alt klasör oluşturamazsa, ers**02** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
+   Yükleme/usr/SAP/**NW1**/ers **02**' de bir alt klasör oluşturamazsa, ers **02** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
@@ -761,7 +762,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
      DATABASE: <b>NW1</b>
    </code></pre>
 
-   Çıktı, varsayılan girdinin IP adresinin, yük dengeleyicinin IP adresine değil, sanal makineye işaret ettiği gösterir. Bu girdinin, yük dengeleyicinin sanal ana bilgisayar adına işaret eden şekilde değiştirilmesi gerekir. Aynı bağlantı noktasını (yukarıdaki çıktıda**30313** ) ve veritabanı adını (yukarıdaki çıktıda bulunan**HN1** ) kullandığınızdan emin olun!
+   Çıktı, varsayılan girdinin IP adresinin, yük dengeleyicinin IP adresine değil, sanal makineye işaret ettiği gösterir. Bu girdinin, yük dengeleyicinin sanal ana bilgisayar adına işaret eden şekilde değiştirilmesi gerekir. Aynı bağlantı noktasını (yukarıdaki çıktıda **30313** ) ve veritabanı adını (yukarıdaki çıktıda bulunan **HN1** ) kullandığınızdan emin olun!
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db</b>:<b>30313@NW1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>

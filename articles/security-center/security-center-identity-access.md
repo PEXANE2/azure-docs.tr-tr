@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 12e5a6db7257678b3d4d14d7583a1a30da0d3a87
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371078"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967151"
 ---
 # <a name="monitor-identity-and-access"></a>Kimlik ve erişimi izleme
 
-Güvenlik çevresi, bir ağ çevre öğesinden bir kimlik çevre 'e geliştirilmiştir. Bu geliştirmeyle, güvenlik, ağınızı erteleme ve uygulamalarınızın, verilerinizin ve kullanıcılarınızın güvenliğini yönetme hakkında daha azdır.
+Güvenlik çevresi ağ çevresinden kimlik çevresine geliştirildi. Bu geliştirmeyle, güvenlik, ağınızı erteleme ve uygulamalarınızın, verilerinizin ve kullanıcılarınızın güvenliğini yönetme hakkında daha azdır.
 
 Kimlik ile ilgili etkinlikleri ve yapılandırma ayarlarını izleyerek, bir olay gerçekleşmeden önce öngörülü eylemler gerçekleştirebilir ya da denenen saldırıları durdurmak için reaktif eylemler gerçekleştirebilirsiniz.
 
@@ -30,7 +30,7 @@ Kimlik ile ilgili etkinlikleri ve yapılandırma ayarlarını izleyerek, bir ola
 
 Azure Güvenlik Merkezi, kuruluşunuzun kimlik ve güvenlik gereksinimlerini karşıladığınızı sağlamaya yönelik iki adanmış güvenlik denetimine sahiptir: 
 
- - **Erişimi ve Izinleri yönetme** - [en az ayrıcalık erişim modelini](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) benimsemenizi ve kullanıcılarınıza yalnızca onların işlerini yapması için gereken erişimi vermenizi öneririz. Bu denetim Ayrıca kaynaklarınıza erişimi denetlemek için [rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md) uygulamaya yönelik öneriler içerir.
+ - **Erişimi ve Izinleri yönetme** - [en az ayrıcalık erişim modelini](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) benimsemenizi ve kullanıcılarınıza yalnızca onların işlerini yapması için gereken erişimi vermenizi öneririz. Bu denetim, kaynaklarınıza erişimi denetlemek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) uygulama önerilerini de içerir.
  
  - **MFA 'Yı etkinleştirme** - [MFA](https://www.microsoft.com/security/business/identity/mfa) etkinken hesaplarınız daha güvenlidir ve kullanıcılar, tek oturum açma ile neredeyse her uygulama için kimlik doğrulaması yapabilir.
 
@@ -65,7 +65,7 @@ MFA 'nın etkinleştirilmesi [Azure Active Directory (ad) kiracı izinleri](../a
 
 Hangi hesapların MFA 'nın etkin olduğunu görmek için aşağıdaki Azure Kaynak Grafiği sorgusunu kullanın. Sorgu, tüm sağlıksız kaynakları döndürür-önerinin tüm uygun olmayan kaynakları-hesaplar, aboneliğiniz üzerinde sahip izinleri olan hesaplarda MFA etkinleştirilmelidir. 
 
-1. **Azure Kaynak Grafiği Gezginini**açın.
+1. **Azure Kaynak Grafiği Gezginini** açın.
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Kaynak Grafiği Gezgini * * öneri sayfası başlatılıyor" :::
 

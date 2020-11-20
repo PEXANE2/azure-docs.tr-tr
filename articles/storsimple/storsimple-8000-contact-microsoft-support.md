@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960329"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968766"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft Desteği’ne başvurma
 
@@ -21,7 +21,7 @@ StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir deste
 * Portalın içinden destek isteği yaşam döngüsünü yönetme.
 * StorSimple cihazınızın Windows PowerShell arabiriminde destek oturumu başlatma.
 
-Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını ve bilgilerini](https://msdn.microsoft.com/library/mt433077.aspx) gözden geçirin.
+Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını ve bilgilerini](./storsimple-8000-support-options.md) gözden geçirin.
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
@@ -43,19 +43,19 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
 
 3. **Yeni destek isteği** dikey penceresinde **Adım 2 sorunu**' nı seçin. **Sorun** dikey penceresinde aşağıdaki adımları uygulayın:
     
-    1. **Önem derecesini**seçin.
+    1. **Önem derecesini** seçin.
     2. Sorunun gereç veya StorSimple Aygıt Yöneticisi hizmeti ile ilgili olup olmadığını belirtin.
     3. Bu sorun için bir **Kategori** seçin ve sorun hakkında daha fazla **ayrıntı** sağlayın.
     4. Sorunun başlangıç tarihini ve saatini belirtin.
-    5. **Dosya karşıya yükleme**sırasında, destek paketinize gitmek için klasör simgesine tıklayın.
-    6. **Paylaşma tanılama bilgilerini**denetleyin.
+    5. **Dosya karşıya yükleme** sırasında, destek paketinize gitmek için klasör simgesine tıklayın.
+    6. **Paylaşma tanılama bilgilerini** denetleyin.
     7. **İleri**’ye tıklayın.
 
        ![Yeni Portal aracılığıyla MS desteğine başvurun 3](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. **Yeni destek isteği** dikey penceresinde **Adım 3 iletişim bilgileri**' ne tıklayın. **İletişim bilgileri** dikey penceresinde aşağıdaki adımları uygulayın:
 
-   1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
+   1. **İletişim seçeneklerinde** tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
    2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
    3. **Oluştur**'a tıklayın.
    

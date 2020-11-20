@@ -3,16 +3,17 @@ title: SAP Solutions sağlayıcıları için Azure Izleyici | Microsoft Docs
 description: Bu makalede, SAP çözüm sağlayıcıları için Azure izleyici hakkında sık sorulan sorulara yanıtlar verilmektedir.
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356459"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968613"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP Solutions sağlayıcıları için Azure izleyici (Önizleme)
 
