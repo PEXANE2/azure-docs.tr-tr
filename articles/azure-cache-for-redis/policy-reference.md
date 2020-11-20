@@ -1,18 +1,18 @@
 ---
 title: Redsıs için Azure önbelleği için yerleşik ilke tanımları
 description: Redin için Azure Cache 'In Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 849e6667eff1daab7cbebec1fb09928c887d3a38
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2f186a7ac33114e7746ee4365fc16706bad06eb2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741024"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991298"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Redin için Azure önbellek için Azure Ilkesi yerleşik tanımları
 
@@ -20,7 +20,7 @@ Bu sayfa, redin için Azure Cache 'in Azure [ilkesi](../governance/policy/overvi
 
 Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
-## <a name="azure-cache-for-redis"></a>Redis için Azure Cache
+## <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
 
 [!INCLUDE [azure-policy-reference-rp-cache](../../includes/policy/reference/byrp/microsoft.cache.md)]
 

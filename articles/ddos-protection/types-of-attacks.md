@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 50dd5cf9a51ebcc6b2df188838ef2910afcd224d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 8b213755aeed1590df3d1f5e91f44796c13c7711
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905678"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991783"
 ---
 # <a name="types-of-ddos-attacks-overview"></a>DDoS saldırılarına genel bakış türleri
 
 DDoS koruma standardı aşağıdaki tür saldırıları hafifletmenize yardımcı olabilir:
 
-- **Volumetric saldırıları** : Bu saldırılar, ağ katmanını önemli miktarda meşru trafik ile taşmıştır. Bunlar UDP floods, ampmi, floods ve diğer sahte paket floods içerirler. DDoS koruma standardı, bu potansiyel çok gigabaytlık saldırıları, Azure 'un küresel ağ ölçeklendirilmesi ve bunları otomatik olarak yaparak, bu olası çok kiracılı saldırıları azaltır.
-- **Protokol saldırıları** : Bu saldırılar, katman 3 ve katman 4 protokol yığınındaki zayıf bir durumu kötüye vererek bir hedefi işlemez. SYN taşma saldırıları, yansıma saldırıları ve diğer protokol saldırıları içerirler. DDoS koruması standardı, bu saldırıları azaltır, istemciyle etkileşime girerek ve kötü amaçlı trafiği engelleyerek kötü amaçlı ve meşru trafik arasında ayrım gerçekleştirebilir. 
-- **Kaynak (uygulama) katmanı saldırıları** : Bu saldırılar, ana bilgisayarlar arasında veri aktarımını kesintiye uğratan Web uygulaması paketlerini hedeflemelidir. HTTP protokol ihlalleri, SQL ekleme, siteler arası komut dosyası ve diğer katman 7 saldırıları içerirler. Azure [Application Gateway Web uygulaması güvenlik duvarı](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)gibi bir Web uygulaması güvenlik duvarı ve bu saldırılara karşı savunma sağlamak Için DDoS koruma standardı kullanın. Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)'nde bulunan üçüncü taraf Web uygulaması güvenlik duvarı teklifleri de mevcuttur.
+- **Volumetric saldırıları**: Bu saldırılar, ağ katmanını önemli miktarda meşru trafik ile taşmıştır. Bunlar UDP floods, ampmi, floods ve diğer sahte paket floods içerirler. DDoS koruma standardı, bu potansiyel çok gigabaytlık saldırıları, Azure 'un küresel ağ ölçeklendirilmesi ve bunları otomatik olarak yaparak, bu olası çok kiracılı saldırıları azaltır.
+- **Protokol saldırıları**: Bu saldırılar, katman 3 ve katman 4 protokol yığınındaki zayıf bir durumu kötüye vererek bir hedefi işlemez. SYN taşma saldırıları, yansıma saldırıları ve diğer protokol saldırıları içerirler. DDoS koruması standardı, bu saldırıları azaltır, istemciyle etkileşime girerek ve kötü amaçlı trafiği engelleyerek kötü amaçlı ve meşru trafik arasında ayrım gerçekleştirebilir. 
+- **Kaynak (uygulama) katmanı saldırıları**: Bu saldırılar, ana bilgisayarlar arasında veri aktarımını kesintiye uğratan Web uygulaması paketlerini hedeflemelidir. HTTP protokol ihlalleri, SQL ekleme, siteler arası komut dosyası ve diğer katman 7 saldırıları içerirler. Azure [Application Gateway Web uygulaması güvenlik duvarı](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)gibi bir Web uygulaması güvenlik duvarı ve bu saldırılara karşı savunma sağlamak Için DDoS koruma standardı kullanın. Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)'nde bulunan üçüncü taraf Web uygulaması güvenlik duvarı teklifleri de mevcuttur.
 
 ## <a name="azure-ddos-protection-standard"></a>Azure DDoS Koruması Standart
 

@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: a9ef15bf595d84613b5f41a73e5526cb0fe79d5b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841419"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990117"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -77,7 +77,7 @@ Coğrafi çoğaltma ile Azure Active Directory kullanırken, hem birincil hem de
 
 SQL yönetilen örneğinizin, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşturma aracılığıyla kullanıcıların kimlik doğrulaması gibi görevleri başarılı bir şekilde gerçekleştirmek için Azure AD 'yi okuma izinlerine ihtiyacı vardır. Bunun çalışması için, Azure AD 'yi okumak üzere SQL yönetilen örneği iznini vermeniz gerekir. Azure portal veya PowerShell 'i kullanarak bunu yapabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek için Azure AD 'de Genel/Şirket Yöneticisi olarak oturum açın ve şu adımları izleyin:
 
@@ -105,7 +105,7 @@ SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek
 
 7. Azure AD Yöneticisi sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin.
 
-   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediği için seçilemez. [Azure AD özellikleri ve kısıtlamalarından](authentication-aad-overview.md#azure-ad-features-and-limitations)desteklenen Yöneticiler listesine bakın. Rol tabanlı erişim denetimi (RBAC) yalnızca Azure portal için geçerlidir ve SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'e yayılmaz.
+   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediği için seçilemez. [Azure AD özellikleri ve kısıtlamalarından](authentication-aad-overview.md#azure-ad-features-and-limitations)desteklenen Yöneticiler listesine bakın. Azure rol tabanlı erişim denetimi (Azure RBAC) yalnızca Azure portal geçerlidir ve SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'e yayılmaz.
 
     ![Azure Active Directory Yöneticisi ekleme](./media/authentication-aad-configure/add-azure-active-directory-admin.png)
 
@@ -190,7 +190,7 @@ Bir Azure AD yöneticisi sağlamak için aşağıdaki Azure PowerShell komutlar�
 
 SQL yönetilen örneğiniz için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler aşağıdaki tabloda listelenmiştir:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikte SQL yönetilen örneği için bir Azure AD yöneticisi sağlar. (Geçerli abonelikte olmalıdır)|
 | [Remove-Azsqlınstanceactivedirectoryadministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Geçerli abonelikteki SQL yönetilen örneği için bir Azure AD yöneticisini kaldırır. |
@@ -236,7 +236,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL mi](/cli/azure/sql
 
 Aşağıdaki iki yordam, Azure portal sunucusu için ve PowerShell kullanarak sunucunuzun Azure Active Directory yöneticisini nasıl sağlayacağınızı gösterir.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve sunucu için aynı aboneliğin kullanıldığından emin olmak üzere abonelikle ilişkili Active Directory sunucuyla bağlantılandırır.
 
@@ -253,7 +253,7 @@ Aşağıdaki iki yordam, Azure portal sunucusu için ve PowerShell kullanarak su
 
     ![Active Directory yönetici olarak ayarlanan SQL Server 'lar](./media/authentication-aad-configure/sql-servers-set-active-directory-admin.png)  
 
-5. **Yönetici Ekle** sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin. (Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediğinden seçilemiyor. ( [SQL veritabanı veya Azure SYNAPSE kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullan](authentication-aad-overview.md)' ın **Azure AD özellikleri ve sınırlamaları** bölümünde desteklenen Yöneticiler listesine bakın.) Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz.
+5. **Yönetici Ekle** sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin. (Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediğinden seçilemiyor. ( [SQL veritabanı veya Azure SYNAPSE kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullan](authentication-aad-overview.md)' ın **Azure AD özellikleri ve sınırlamaları** bölümünde desteklenen Yöneticiler listesine bakın.) Azure rol tabanlı erişim denetimi (Azure RBAC) yalnızca portala uygulanır ve SQL Server yayılmaz.
 
     ![Azure Active Directory yönetici seçin](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 
@@ -279,7 +279,7 @@ PowerShell cmdlet 'lerini çalıştırmak için Azure PowerShell yüklü ve çal
 
 SQL veritabanı ve Azure SYNAPSE için Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler:
 
-| Cmdlet adı | Açıklama |
+| Cmdlet adı | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory Yöneticisi sağlar. (Geçerli abonelikte olmalıdır) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |SQL veritabanı veya Azure SYNAPSE barındıran sunucu için Azure Active Directory yöneticisini kaldırır.|

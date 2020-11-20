@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 11/19/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952140"
+ms.locfileid: "94990134"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
 
@@ -41,9 +41,9 @@ Uygulama ağ geçidinize genel ilke uyguladığınızı düşünelim. Sonrasınd
 
 URI düzeyine daha fazla özelleştirme için, bir WAF ilkesini yol tabanlı bir kuralla ilişkilendirebilirsiniz. Farklı ilkeler gerektiren tek bir sitede belirli sayfalar varsa, WAF ilkesinde yalnızca belirli bir URI 'yi etkileyen değişiklikler yapabilirsiniz. Bu, bir ödeme veya oturum açma sayfası veya WAF 'nizin arkasındaki diğer sitelerden daha fazla belirli bir WAF ilkesi gerektiren başka bir URI için de geçerlidir.
 
-Site başına WAF ilkelerinde olduğu gibi, daha belirgin ilkeler, daha az spesifik olanları geçersiz kılar. Bu, bir URL yolu eşlemesindeki URI başına bir ilkenin üzerinde her site veya genel WAF ilkesini geçersiz kılacak anlamına gelir.
+Site başına WAF ilkelerinde olduğu gibi, daha belirgin ilkeler, daha az özel ilke geçersiz kılar. Bu, bir URL yolu eşlemesindeki URI başına bir ilkenin üzerinde her site veya genel WAF ilkesini geçersiz kılacak anlamına gelir.
 
-## <a name="example"></a>Örnek
+### <a name="example"></a>Örnek
 
 Üç siteniz olduğunu varsayalım: contoso.com, fabrikam.com ve adatum.com tümü aynı uygulama ağ geçidi arkasında. Tüm üç siteye de bir WAF uygulanmasını istiyorsunuz, ancak müşterilerin ürünleri ziyaret ettiği, gözatdığı ve satın satın aldığı yer olduğu için adatum.com ile güvenlik eklemeniz gerekir.
 

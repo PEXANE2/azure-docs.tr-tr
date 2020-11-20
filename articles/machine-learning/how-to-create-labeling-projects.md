@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543230"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992327"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -39,7 +39,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 > * Etiketleri dışarı aktarma
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel dosyalarda veya Azure Blob depolamada etiketlemek istediğiniz veriler.
 * Uygulamak istediğiniz Etiketler kümesi.
@@ -53,7 +53,7 @@ Etiketleme projeleri Azure Machine Learning yönetilir. Projelerinizi yönetmek 
 
 Verileriniz zaten Azure Blob depolamadaki etiketleme projesini oluşturmadan önce onu bir veri deposu olarak kullanılabilir hale getirin. Veri deposu kullanmanın bir örneği için bkz. [öğretici: ilk görüntü sınıflandırma etiketleme projenizi oluşturma](tutorial-labeling.md).
 
-Proje oluşturmak için **Proje Ekle** ' yi seçin. Projeye uygun bir ad verin ve **etiketleme görev türünü** seçin.
+Proje oluşturmak için **Proje Ekle**' yi seçin. Projeye uygun bir ad verin ve **etiketleme görev türünü** seçin.
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Proje oluşturma Sihirbazı etiketleme":::
 
@@ -76,7 +76,7 @@ Verilerinizi içeren bir veri kümesi zaten oluşturduysanız, **mevcut bir veri
 
 Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturmak için:
 
-1. Veri **deposundan veri kümesi oluştur** ' u seçin  >  **From datastore**.
+1. Veri **deposundan veri kümesi oluştur**' u seçin  >  **From datastore**.
 1. Veri kümenize bir **ad** atayın.
 1. **Veri kümesi türü** olarak **Dosya** ' yı seçin.  Yalnızca dosya veri kümesi türleri desteklenir.
 1. Veri deposunu seçin.
@@ -84,7 +84,7 @@ Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturma
     * Seçili yolun alt klasörlerindeki tüm dosyaları dahil etmek için yola "/* *" ekleyin.
     * */* Tüm verileri geçerli kapsayıcıya ve alt klasörlerine dahil etmek için "*. *" ekleyin.
 1. Veri kümeniz için bir açıklama sağlayın.
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 1. Ayrıntıları onaylayın. Ayarları değiştirmek için **geri** ' yi veya veri kümesini oluşturmak için **Oluştur** ' u seçin.
 
 
@@ -92,13 +92,13 @@ Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturma
 
 Verilerinizi doğrudan karşıya yüklemek için:
 
-1. Yerel **dosyalardan veri kümesi oluştur** ' u seçin  >  **From local files**.
+1. Yerel **dosyalardan veri kümesi oluştur**' u seçin  >  **From local files**.
 1. Veri kümenize bir **ad** atayın.
 1. **Veri kümesi türü** olarak "dosya" yı seçin.
 1. *Isteğe bağlı:* Veri deposu, kapsayıcı ve yolun yolunu özelleştirmek için **Gelişmiş ayarlar** ' ı seçin.
 1. Karşıya yüklenecek yerel dosyaları seçmek için **Araştır** ' ı seçin.
 1. Veri kümeniz için bir açıklama sağlayın.
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 1. Ayrıntıları onaylayın. Ayarları değiştirmek için **geri** ' yi veya veri kümesini oluşturmak için **Oluştur** ' u seçin.
 
 Veriler, Machine Learning çalışma alanınızın varsayılan blob deposuna ("Workspace BlobStore") yüklenir.
@@ -213,7 +213,7 @@ Sağ tarafta, tamamlanmış görevlere ait etiketlerin bir dağılımı vardır.
 
 ### <a name="data-tab"></a>Veri sekmesi
 
-**Veri** sekmesinde, veri kümenizi görebilir ve etiketli verileri gözden geçirebilirsiniz. Hatalı etiketlenmiş verileri görürseniz, bunu seçin ve **Reddet** ' i seçin. Bu, etiketleri kaldırır ve verileri etiketsiz kuyruğa geri koyar.
+**Veri** sekmesinde, veri kümenizi görebilir ve etiketli verileri gözden geçirebilirsiniz. Hatalı etiketlenmiş verileri görürseniz, bunu seçin ve **Reddet**' i seçin. Bu, etiketleri kaldırır ve verileri etiketsiz kuyruğa geri koyar.
 
 ### <a name="details-tab"></a>Ayrıntılar sekmesi
 
@@ -239,7 +239,7 @@ Bir projeye bir veya daha fazla etiket eklemek için bu adımları kullanın:
 1. Ana **veri etiketleme** sayfasında projeyi seçin.
 1. Sayfanın sağ üst köşesinde, etiketleyicilerinin etkinliklerinden durdurulması için **çalışmayı** **duraklatıldı** olarak değiştirin.
 1. **Ayrıntılar** sekmesini seçin.
-1. Sol taraftaki listede **etiket sınıfları** ' nı seçin.
+1. Sol taraftaki listede **etiket sınıfları**' nı seçin.
 1. Listenin üst kısmında **+** etiket ekle ![ etiket ekle ' yi seçin](media/how-to-create-labeling-projects/add-label.png)
 1. Formunda, yeni etiketinizi ekleyin ve nasıl devam etmek istediğinizi seçin.  Bir görüntü için kullanılabilir etiketleri değiştirdiğiniz için, zaten etiketlenmiş verilerin nasıl davranalınacağını seçersiniz:
     * Tüm mevcut etiketleri kaldırarak baştan başlayın.  Yeni tam Etiketler kümesiyle başlayarak etiketlemeye başlamak istiyorsanız bu seçeneği belirleyin. 
@@ -250,7 +250,7 @@ Bir projeye bir veya daha fazla etiket eklemek için bu adımları kullanın:
 
 ## <a name="export-the-labels"></a>Etiketleri dışarı aktarma
 
-Machine Learning deneme için etiket verilerini dilediğiniz zaman dışarı aktarabilirsiniz. Resim etiketleri [Coco formatında](http://cocodataset.org/#format-data) veya Azure Machine Learning veri kümesi olarak aktarılabilir. Etiketleme projenizin **proje ayrıntıları** sayfasında **dışarı aktar** düğmesini kullanın.
+Machine Learning deneme için etiket verilerini dilediğiniz zaman dışarı aktarabilirsiniz. Resim etiketleri [Coco formatında](http://cocodataset.org/#format-data) veya [etiketli bir Azure Machine Learning veri kümesi](how-to-use-labeled-dataset.md)olarak aktarılabilir. Etiketleme projenizin **proje ayrıntıları** sayfasında **dışarı aktar** düğmesini kullanın.
 
 COCO dosyası, Azure Machine Learning çalışma alanının varsayılan Blob deposunda *dışarı aktarma/Coco* içindeki bir klasörde oluşturulur. Machine Learning **veri kümeleri** bölümünde, dışarıya aktarılmış Azure Machine Learning veri kümesine erişebilirsiniz. Veri kümesi ayrıntıları sayfası, Python 'daki etiketlerinize erişmek için örnek kod de sağlar.
 

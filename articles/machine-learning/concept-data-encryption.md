@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540017"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992055"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning ile veri şifreleme
 
@@ -129,6 +129,12 @@ Her bir sanal makinenin işletim sistemi işlemleri için yerel bir geçici disk
 ### <a name="azure-databricks"></a>Azure Databricks
 
 Azure Databricks, Azure Machine Learning işlem hatları içinde kullanılabilir. Varsayılan olarak, Azure Databricks tarafından kullanılan Databricks dosya sistemi (DBFS), Microsoft tarafından yönetilen bir anahtar kullanılarak şifrelenir. Azure Databricks, müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırmak için, bkz. [varsayılan (root) için müşteri tarafından yönetilen anahtarları yapılandırma](/azure/databricks/security/customer-managed-keys-dbfs).
+
+### <a name="microsoft-generated-data"></a>Microsoft tarafından oluşturulan veriler
+
+Microsoft, otomatik Machine Learning gibi hizmetleri kullanırken, birden çok modeli eğitmek için geçici, önceden işlenmiş bir veri oluşturabilir. Bu veriler, çalışma alanınızdaki bir veri deposunda depolanır ve bu da erişim denetimlerini ve şifrelemeyi uygun şekilde zorlamanıza olanak sağlar.
+
+[Dağıtılmış uç noktanıza kaydedilen tanılama bilgilerini](how-to-enable-app-insights.md) Azure Application Insights örneğinize şifrelemek da isteyebilirsiniz.
 
 ## <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 

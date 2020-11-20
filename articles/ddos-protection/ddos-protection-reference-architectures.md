@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 3371b9cc0848e387c0150ca9aa7e7a971cecba1a
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905612"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992446"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS koruması başvuru mimarileri
 
-DDoS koruma standardı, [sanal bir ağa dağıtılan hizmetler için](/azure/virtual-network/virtual-network-for-azure-services)tasarlanmıştır. Diğer hizmetler için, varsayılan DDoS koruması temel hizmeti geçerlidir. Aşağıdaki başvuru mimarileri, mimari desenleriyle birlikte gruplanmış senaryolar tarafından düzenlenir.
+DDoS koruma standardı, [sanal bir ağa dağıtılan hizmetler için](../virtual-network/virtual-network-for-azure-services.md)tasarlanmıştır. Diğer hizmetler için, varsayılan DDoS koruması temel hizmeti geçerlidir. Aşağıdaki başvuru mimarileri, mimari desenleriyle birlikte gruplanmış senaryolar tarafından düzenlenir.
 
 ## <a name="virtual-machine-windowslinux-workloads"></a>Sanal makine (Windows/Linux) iş yükleri
 
@@ -54,7 +54,7 @@ Yük devretme senaryoları için bir bekleme bölgesi ayarlanır.
 
 Azure Traffic Manager, gelen istekleri bölgelerden birinde Application Gateway yönlendirir. Normal işlemler sırasında, istekleri etkin bölgede Application Gateway yönlendirir. Bu bölge kullanılamaz duruma gelirse, Traffic Manager bekleme bölgesinde Application Gateway devreder.
 
-İnternet 'ten Web uygulamasına giden tüm trafik, Traffic Manager üzerinden [Application Gateway genel IP adresine](/azure/application-gateway/application-gateway-web-app-overview) yönlendirilir. Bu senaryoda, App Service (Web App) doğrudan dışarıdan verilmez ve Application Gateway tarafından korunur. 
+İnternet 'ten Web uygulamasına giden tüm trafik, Traffic Manager üzerinden [Application Gateway genel IP adresine](../application-gateway/application-gateway-web-app-overview.md) yönlendirilir. Bu senaryoda, App Service (Web App) doğrudan dışarıdan verilmez ve Application Gateway tarafından korunur. 
 
 Katman 7 (HTTP/HTTPS/WebSocket) saldırılarına karşı korumaya yardımcı olmak için Application Gateway WAF SKU 'SU (mod engelleme) yapılandırmanızı öneririz. Ayrıca, Web Apps [yalnızca Application Gateway IP adresinden gelen trafiği kabul](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) edecek şekilde yapılandırılmıştır.
 
@@ -64,7 +64,7 @@ Bu başvuru mimarisi hakkında daha fazla bilgi için [Bu makaleye](/azure/archi
 
 ### <a name="hdinsight-on-azure"></a>Azure 'da HDInsight
 
-Bu başvuru mimarisinde, [Azure HDInsight kümesi](/azure/hdinsight/)Için DDoS koruma standardı yapılandırma gösterilmektedir. HDInsight kümesinin bir sanal ağa bağlı olduğundan ve sanal ağ üzerinde DDoS korumasının etkinleştirildiğinden emin olun.
+Bu başvuru mimarisinde, [Azure HDInsight kümesi](../hdinsight/index.yml)Için DDoS koruma standardı yapılandırma gösterilmektedir. HDInsight kümesinin bir sanal ağa bağlı olduğundan ve sanal ağ üzerinde DDoS korumasının etkinleştirildiğinden emin olun.
 
 ![Sanal ağ ayarlarına sahip "HDInsight" ve "Gelişmiş ayarlar" bölmeleri](./media/ddos-best-practices/image-12.png)
 
@@ -72,7 +72,7 @@ Bu başvuru mimarisinde, [Azure HDInsight kümesi](/azure/hdinsight/)Için DDoS 
 
 Bu mimaride, Internet 'ten HDInsight kümesine giden trafik, HDInsight ağ geçidi yük dengeleyicisiyle ilişkili genel IP 'ye yönlendirilir. Ağ Geçidi yük dengeleyici daha sonra trafiği baş düğümlere veya çalışan düğümlerine doğrudan gönderir. HDInsight sanal ağında DDoS koruması standardı etkinleştirildiğinden, sanal ağdaki tüm genel IP 'Ler 3. ve 4. katman için DDoS koruması 'nı alır. Bu başvuru mimarisi, N katmanlı ve çok bölgeli başvuru mimarileri ile birleştirilebilir.
 
-Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanarak Azure HDInsight 'ı genişletme](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) bölümüne bakın.
+Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanarak Azure HDInsight 'ı genişletme](../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bölümüne bakın.
 
 
 > [!NOTE]

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 78e98ba3707f1ca02b5089dd416062be9b698985
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e491c3a1f0364626a1efb5b81d4680e83c027a4a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734429"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992266"
 ---
-|Ad<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Sanal makineler için Azure Backup etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Azure Backup etkinleştirerek Azure sanal makinelerinizin korunmasını sağlayın. Azure Backup, Azure için güvenli ve uygun maliyetli bir veri koruma çözümüdür. |Auditınotexists, devre dışı |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
 |[Verilen bir etikete sahip VM 'lerde yedeklemeyi varsayılan ilkeyle yeni bir kurtarma hizmetleri kasasına yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83644c87-93dd-49fe-bf9f-6aff8fd0834e) |Sanal makineyle aynı konuma ve kaynak grubuna bir kurtarma hizmetleri Kasası dağıtarak tüm sanal makineler için yedeklemeyi zorunlu tutun. Bu işlem, kuruluşunuzdaki farklı uygulama ekiplerine ayrı kaynak grupları tahsis edildiğinde ve kendi yedeklemelerini yönetmesi ve geri yüklemeleri gerektiğinde faydalıdır. Atama kapsamını denetlemek için isteğe bağlı olarak belirtilen bir etiketi içeren sanal makineler ekleyebilirsiniz. Bakýn [https://aka.ms/AzureVMAppCentricBackupIncludeTag](https://aka.ms/AzureVMAppCentricBackupIncludeTag) |deployIfNotExists |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithTag.json) |

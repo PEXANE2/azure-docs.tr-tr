@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 594a7e2a6977cc2a7052a15e1a007c68c08da259
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 66c1ab1cb5ed478aa34825fb6903e4d06f834097
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905559"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989482"
 ---
-# <a name="fundamental-best-practices"></a>Temel en iyi uygulamalar
+# <a name="fundamental-best-practices"></a>Temel en iyi yöntemler
 
 Aşağıdaki bölümler Azure 'da DDoS-dayanıklı hizmetler oluşturmaya yönelik öngörülü rehberlik sağlar.
 
@@ -35,16 +35,16 @@ Bir uygulamanın, uygulamanın kendisi için hedeflenen bir hizmet reddine yetec
 
 Ölçeklenebilirlik, sistemin artan yükü işleyebilme konusunda ne kadar iyi bir sistem olabilir. Uygulamalarınızı, özellikle de DDoS saldırısı durumunda, yükseltilmiş bir yükün talebini karşılayacak şekilde [ölçeklendirmek](/azure/architecture/guide/design-principles/scale-out) üzere tasarlayın. Uygulamanız bir hizmetin tek bir örneğine bağımlıysa, tek bir hata noktası oluşturur. Birden çok örneği sağlamak, sisteminizi daha dayanıklı ve daha ölçeklenebilir hale getirir.
 
-[Azure App Service](/azure/app-service/app-service-value-prop-what-is)için, birden çok örnek sunan bir [App Service planı](/azure/app-service/overview-hosting-plans) seçin. Azure Cloud Services için, rollerinizin her birini [birden çok örnek](/azure/cloud-services/cloud-services-choose-me)kullanacak şekilde yapılandırın. [Azure sanal makineler](../virtual-machines/index.yml)için, sanal makıne (VM) mimarinizin bırden fazla VM içerdiğinden ve her VM 'nin bir [kullanılabilirlik kümesine](../virtual-machines/windows/tutorial-availability-sets.md)eklendiğinden emin olun. Otomatik ölçeklendirme özellikleri için [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/overview.md) kullanmanızı öneririz.
+[Azure App Service](../app-service/overview.md)için, birden çok örnek sunan bir [App Service planı](../app-service/overview-hosting-plans.md) seçin. Azure Cloud Services için, rollerinizin her birini [birden çok örnek](../cloud-services/cloud-services-choose-me.md)kullanacak şekilde yapılandırın. [Azure sanal makineler](../virtual-machines/index.yml)için, sanal makıne (VM) mimarinizin bırden fazla VM içerdiğinden ve her VM 'nin bir [kullanılabilirlik kümesine](../virtual-machines/windows/tutorial-availability-sets.md)eklendiğinden emin olun. Otomatik ölçeklendirme özellikleri için [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/overview.md) kullanmanızı öneririz.
 
 ## <a name="defense-in-depth"></a>Derinlemesine savunma
 
 Derinlemesine savunma 'nın arkasındaki fikir, farklı savunma stratejileri kullanarak riskleri yönetmenizde yarar vardır. Bir uygulamadaki güvenlik savunmaları katmanlama, başarılı bir saldırı olasılığını azaltır. Azure platformunun yerleşik yeteneklerini kullanarak uygulamalarınız için güvenli tasarımlar uygulamanızı öneririz.
 
-Örneğin, saldırı riski uygulamanın boyutuyla ( *yüzey alanı* ) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](/azure/virtual-network/security-overview) , saldırı yüzeyini azaltmak için başka bir yoldur.
-Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](/azure/virtual-network/security-overview#service-tags) ve [uygulama güvenlik gruplarını](/azure/virtual-network/security-overview#application-security-groups) kullanabilirsiniz.
+Örneğin, saldırı riski uygulamanın boyutuyla (*yüzey alanı*) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](../load-balancer/quickstart-load-balancer-standard-public-portal.md) ve [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](../virtual-network/network-security-groups-overview.md) , saldırı yüzeyini azaltmak için başka bir yoldur.
+Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](../virtual-network/network-security-groups-overview.md#service-tags) ve [uygulama güvenlik gruplarını](../virtual-network/network-security-groups-overview.md#application-security-groups) kullanabilirsiniz.
 
-Mümkün olduğunda Azure hizmetlerini bir [Sanal ağda](/azure/virtual-network/virtual-networks-overview) dağıtmanız gerekir. Bu uygulama, hizmet kaynaklarının özel IP adresleri üzerinden iletişim kurmasına izin verir. Bir sanal ağdan gelen Azure hizmet trafiği, varsayılan olarak kaynak IP adresleri olarak genel IP adreslerini kullanır. [Hizmet uç noktalarının](/azure/virtual-network/virtual-network-service-endpoints-overview) kullanılması, hizmet trafiğini bir sanal ağdan Azure hizmetine ERIŞIRKEN kaynak IP adresleri olarak sanal ağ özel adreslerini kullanacak şekilde geçer.
+Mümkün olduğunda Azure hizmetlerini bir [Sanal ağda](../virtual-network/virtual-networks-overview.md) dağıtmanız gerekir. Bu uygulama, hizmet kaynaklarının özel IP adresleri üzerinden iletişim kurmasına izin verir. Bir sanal ağdan gelen Azure hizmet trafiği, varsayılan olarak kaynak IP adresleri olarak genel IP adreslerini kullanır. [Hizmet uç noktalarının](../virtual-network/virtual-network-service-endpoints-overview.md) kullanılması, hizmet trafiğini bir sanal ağdan Azure hizmetine ERIŞIRKEN kaynak IP adresleri olarak sanal ağ özel adreslerini kullanacak şekilde geçer.
 
 Müşterilerin Şirket içi kaynaklarını Azure 'daki kaynaklarıyla birlikte saldırıya uğradığını görtik. Şirket içi bir ortamı Azure 'a bağlıyorsanız, şirket içi kaynakların açık internet 'te etkilenme olasılığını en aza indirmenizi öneririz. Azure 'un ölçek ve gelişmiş DDoS koruma özelliklerini kullanarak Azure 'da iyi bilinen genel varlıkları dağıtabilirsiniz. Bu genel olarak erişilebilen varlıklar, DDoS saldırıları için genellikle bir hedef olduğundan, bunları Azure 'a koymak, şirket içi kaynaklarınızın etkisini azaltır.
 

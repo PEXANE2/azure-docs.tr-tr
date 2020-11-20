@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central yeni bir IoT cihaz türü tanımlayın | Microsoft Docs
-description: Bu makalede, Azure IoT Central uygulamanızda yeni bir Azure IoT cihaz şablonu oluşturma, Oluşturucu olarak gösterilir. Türü için telemetri, durum, özellik ve komutları tanımlarsınız.
+description: Bu makalede, bir çözüm Oluşturucu olarak Azure IoT Central uygulamanızda yeni bir Azure IoT cihaz şablonu oluşturma yöntemi gösterilmektedir. Türü için telemetri, durum, özellik ve komutları tanımlarsınız.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: c8fb60a4b549a7203057dd60298d2ae0540450d6
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f5b3e461408242553822024bc59c56a3feb29c44
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122662"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991069"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama
 
@@ -38,12 +38,12 @@ Bu cihaz şablonundan bir operatör gerçek fan cihazları oluşturup bağlayabi
 > [!NOTE]
 > Yalnızca oluşturucular ve yöneticiler cihaz şablonları oluşturabilir, düzenleyebilir ve silebilir. Herhangi bir Kullanıcı, mevcut cihaz şablonlarından **cihazlar** sayfasında cihaz oluşturabilir.
 
-Bir IoT Central uygulamasında cihaz şablonu, bir cihazın yeteneklerini anlatmak için cihaz yetenek modeli kullanır. Bir Oluşturucu olarak, cihaz şablonları oluşturmak için çeşitli seçenekleriniz vardır:
+Bir IoT Central uygulamasında cihaz şablonu, bir cihazın yeteneklerini betimleyen bir cihaz modeli kullanır. Bir Oluşturucu olarak, cihaz şablonları oluşturmak için çeşitli seçenekleriniz vardır:
 
-- IoT Central cihaz şablonunu tasarlayın ve cihaz [kodunuzda cihaz yetenek modelini uygulayın](concepts-telemetry-properties-commands.md).
-- [IoT cihaz kataloğu Için Azure Sertifikalı](https://aka.ms/iotdevcat)bir cihaz yetenek modeli içeri aktarın. Ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
-- Visual Studio Code kullanarak bir cihaz yetenek modeli oluşturun. Modelden cihaz kodunuzu uygulayın. Cihaz yetenek modelini IoT Central uygulamanıza el ile içeri aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
-- Visual Studio Code kullanarak bir cihaz yetenek modeli oluşturun. Cihazdan cihaz kodunuzu uygulayın ve cihaz ilk bağlantısı kullanarak gerçek cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, cihaz yetenek modelini sizin için ortak depodan bulur ve içeri aktarır. Daha sonra IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları cihaz şablonuna ekleyebilirsiniz.
+- IoT Central cihaz şablonunu tasarlayın ve cihaz [kodunuzda cihaz modelini uygulayın](concepts-telemetry-properties-commands.md).
+- [IoT cihaz kataloğu Için Azure Sertifikalı](https://aka.ms/iotdevcat)bir cihaz şablonu içeri aktarın. Cihaz şablonunu IoT Central gereksinimlerinize göre özelleştirin.
+- [Dijital TWINS tanım dili (DTDL)-sürüm 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)kullanarak bir cihaz modeli yazar. Visual Studio Code, DTDL modellerini yazmayı destekleyen bir uzantıya sahiptir. Daha fazla bilgi için bkz. [DTDL yazma araçlarını yüklemek ve kullanmak](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Ardından modeli ortak model deposuna yayımlayın. Daha fazla bilgi için bkz. [cihaz modeli deposu](../../iot-pnp/concepts-model-repository.md). Modelden cihaz kodunuzu uygulayın ve gerçek cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, cihaz modelini sizin için ortak depodan bulur ve içeri aktarır ve bir cihaz şablonu oluşturur. Daha sonra IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları cihaz şablonuna ekleyebilirsiniz.
+- DTDL 'yi kullanarak bir cihaz modeli yazar. Modelden cihaz kodunuzu uygulayın. Cihaz modelini IoT Central uygulamanıza el ile içeri aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
 
 Ayrıca, [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) veya [clı](howto-manage-iot-central-from-cli.md)kullanarak bir IoT Central uygulamasına cihaz şablonları ekleyebilirsiniz.
 
@@ -51,10 +51,10 @@ Bazı [uygulama şablonları](concepts-app-templates.md) , uygulama şablonunun 
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Cihaz kataloğundan cihaz şablonu oluşturma
 
-Bir Oluşturucu olarak, IoT Tak ve Kullan (Önizleme) sertifikalı bir cihaz kullanarak çözümünüzü oluşturmaya hızlı bir başlangıç yapabilirsiniz. [Azure IoT cihaz kataloğunda](https://catalog.azureiotsolutions.com/alldevices)listeyi inceleyin. IoT Central, bu IoT Tak ve Kullan (Önizleme) sertifikalı cihazların herhangi birinden bir cihaz yetenek modeli alabilmeniz için cihaz kataloğu ile tümleşir. IoT Central içinde bu cihazlardan birini bir cihaz şablonu oluşturmak için:
+Bir Oluşturucu olarak, sertifikalı bir cihaz kullanarak çözümünüzü oluşturmaya hızlı bir başlangıç yapabilirsiniz. [Azure IoT cihaz kataloğunda](https://catalog.azureiotsolutions.com/alldevices)listeyi inceleyin. IoT Central, cihaz kataloğunu tümleştirerek sertifikalı cihazlardan herhangi birinden bir cihaz modeli aktarabilirsiniz. IoT Central içinde bu cihazlardan birini bir cihaz şablonu oluşturmak için:
 
 1. IoT Central uygulamanızda **cihaz şablonları** sayfasına gidin.
-1. **+ Yeni**' yi seçin ve ardından katalogdaki IoT Tak ve kullan (Önizleme) sertifikalı cihazları seçin. IoT Central, bu cihaz yetenek modelini temel alan bir cihaz şablonu oluşturur.
+1. **+ Yeni**' yi seçin ve ardından katalogda sertifikalı cihazlardan birini seçin. IoT Central, bu cihaz modelini temel alan bir cihaz şablonu oluşturur.
 1. Cihaz şablonunuza tüm bulut özelliklerini, özelleştirmeleri veya görünümlerini ekleyin.
 1. Şablonu operatörlerin cihazları görüntülemesi ve bağlanabilmesi için kullanılabilir hale getirmek için **Yayımla** ' yı seçin.
 
@@ -62,57 +62,56 @@ Bir Oluşturucu olarak, IoT Tak ve Kullan (Önizleme) sertifikalı bir cihaz kul
 
 Bir cihaz şablonu şunları içerir:
 
-- Cihazın uyguladığı telemetri, özellik ve komutları belirten bir _cihaz yetenek modeli_ . Bu yetenekler bir veya daha fazla arabirim halinde düzenlenmiştir.
+- Cihazın uyguladığı telemetri, özellik ve komutları belirten bir _cihaz modeli_ . Bu yetenekler bir veya daha fazla bileşen halinde düzenlenmiştir.
 - IoT Central uygulamanızın cihazlarınızla ilgili depoladığını belirten bilgileri tanımlayan _bulut özellikleri_ . Örneğin, bir bulut özelliği bir cihazın en son hizmet verdiği tarihi kaydedebilir. Bu bilgiler hiçbir şekilde cihazla paylaşılmaz.
-- _Özelleştirmeler_ , oluşturucunun cihaz yetenek modelindeki bazı tanımları geçersiz kılmasına izin verir. Örneğin, Oluşturucu bir cihaz özelliğinin adını geçersiz kılabilir. Özellik adları IoT Central panolar ve formlarda görüntülenir.
+- _Özelleştirmeler_ , oluşturucunun cihaz modelindeki bazı tanımları geçersiz kılmasına izin verir. Örneğin, Oluşturucu bir cihaz özelliğinin adını geçersiz kılabilir. Özellik adları IoT Central panolar ve formlarda görüntülenir.
 - _Panolar ve formlar_ , oluşturucunun uygulamanıza bağlı olan cihazları izleyip yönetmesine olanak tanıyan bir kullanıcı arabirimi oluşturmasını sağlar.
 
 IoT Central bir cihaz şablonu oluşturmak için:
 
 1. IoT Central uygulamanızda **cihaz şablonları** sayfasına gidin.
-1. **+ Yeni**  >  **özel**' i seçin.
-1. Şablonunuz için **ortam algılayıcısı**gibi bir ad girin.
-1.  **Enter** tuşuna basın. IoT Central boş bir cihaz şablonu oluşturur.
+1. **+ Yeni**  >  **IoT cihazı**' nı seçin. Ardından **İleri: Özelleştir**' i seçin.
+1. Şablonunuz için **termostat** gibi bir ad girin. Sonra **İleri** ' yi seçin ve ardından **Oluştur**' u seçin.
+1. IoT Central boş bir cihaz şablonu oluşturur ve sıfırdan özel bir model oluşturmayı veya bir DTDL modelini içeri aktarmayı seçmenizi sağlar.
 
 ## <a name="manage-a-device-template"></a>Bir cihaz şablonunu yönetme
 
 Şablonun giriş sayfasından bir şablonu yeniden adlandırabilir veya silebilirsiniz.
 
-Şablonunuza bir cihaz yetenek modeli ekledikten sonra, bunu yayımlayabilirsiniz. Şablonu yayımlaana kadar, işletmenler için bu şablona dayalı bir cihazı, **cihazlar** sayfasında görmek üzere bağlanamazsınız.
+Şablonunuza bir cihaz modeli ekledikten sonra, bunu yayımlayabilirsiniz. Şablonu yayımlaana kadar, işletmenler için bu şablona dayalı bir cihazı, **cihazlar** sayfasında görmek üzere bağlanamazsınız.
 
 ## <a name="create-a-capability-model"></a>Yetenek modeli oluşturma
 
-Bir cihaz yetenek modeli oluşturmak için şunları yapabilirsiniz:
+Bir cihaz modeli oluşturmak için şunları yapabilirsiniz:
 
 - Sıfırdan özel bir model oluşturmak için IoT Central kullanın.
-- JSON dosyasından bir model içeri aktarın. Bir cihaz Oluşturucu, uygulamanız için bir cihaz yetenek modeli yazmak üzere Visual Studio Code kullanmış olabilir.
-- Cihaz kataloğundan cihazlardan birini seçin. Bu seçenek, üreticinin Bu cihaz için yayımladığı cihaz yetenek modelini içe aktarır. Bu şekilde içeri aktarılan bir cihaz yetenek modeli otomatik olarak yayımlanır.
+- Bir JSON dosyasından DTDL modeli içeri aktarın. Bir cihaz Oluşturucu, uygulamanız için bir cihaz modeli yazmak üzere Visual Studio Code kullanmış olabilir.
+- Cihaz kataloğundan cihazlardan birini seçin. Bu seçenek, üreticinin Bu cihaz için yayımladığı cihaz modelini içeri aktarır. Bu şekilde içeri aktarılan bir cihaz modeli otomatik olarak yayımlanır.
 
 ## <a name="manage-a-capability-model"></a>Yetenek modeli yönetme
 
-Bir cihaz yetenek modeli oluşturduktan sonra şunları yapabilirsiniz:
+Bir cihaz modeli oluşturduktan sonra şunları yapabilirsiniz:
 
-- Modele arabirimler ekleyin. Bir modelde en az bir arabirim olmalıdır.
+- Modele bileşen ekleyin. Bir modelde en az bir bileşen olmalıdır.
 - KIMLIĞI, ad alanı ve adı gibi model meta verilerini düzenleyin.
 - Modeli silin.
 
-## <a name="create-an-interface"></a>Arabirim oluşturma
+## <a name="create-a-component"></a>Bileşen oluşturma
 
-Cihaz yeteneğinin en az bir arabirimi olmalıdır. Arabirim, yeniden kullanılabilir bir özellik koleksiyonudur.
+Bir cihaz modelinde en az bir varsayılan bileşen olmalıdır. Bir bileşen, yeniden kullanılabilir bir özellik koleksiyonudur.
 
-Bir arabirim oluşturmak için:
+Bir bileşen oluşturmak için:
 
-1. Cihaz yetenek modelinize gidin ve **+ arabirim Ekle**' yi seçin.
+1. Cihaz modelinize gidin ve **+ Bileşen Ekle**' yi seçin.
 
-1. **Bir arabirim seçin** sayfasında şunları yapabilirsiniz:
+1. **Bileşen arabirimi ekleme** sayfasında şunları yapabilirsiniz:
 
-    - Sıfırdan özel bir arabirim oluşturun.
-    - Varolan bir arabirimi dosyadan içeri aktarın. Cihaz Oluşturucu, cihazınız için bir arabirim yazmak üzere Visual Studio Code kullanmış olabilir.
-    - **Cihaz bilgileri** arabirimi gibi standart arabirimlerden birini seçin. Standart arabirimler, birçok cihaz için ortak olan özellikleri belirtir. Bu standart arabirimler Azure IoT tarafından yayımlanır ve sürümü oluşturulamaz veya düzenlenemez.
+    - Sıfırdan özel bir bileşen oluşturun.
+    - Bir DTDL dosyasından mevcut bir bileşeni içeri aktarın. Cihaz Oluşturucu, cihazınızın bileşen arabirimini yazmak için Visual Studio Code kullanmış olabilir.
 
-1. Arabirim oluşturduktan sonra, arabirimin görünen adını değiştirmek için **kimliği Düzenle** ' yi seçin.
+1. Bir bileşeni oluşturduktan sonra, bileşenin görünen adını değiştirmek için **kimliği Düzenle** ' yi seçin.
 
-1. Sıfırdan özel bir arabirim oluşturmayı seçerseniz, cihazınızın yeteneklerini ekleyebilirsiniz. Cihaz özellikleri telemetri, Özellikler ve komutlardır.
+1. Sıfırdan özel bir bileşen oluşturmayı seçerseniz, cihazınızın yeteneklerini ekleyebilirsiniz. Cihaz özellikleri telemetri, Özellikler ve komutlardır.
 
 ### <a name="telemetry"></a>Telemetri
 
@@ -127,12 +126,12 @@ Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları göster
 | Yetenek Türü | Telemetri. |
 | Anlamsal tür | Telemetrinin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi telemetri veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
-| Önem Derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
+| Önem derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi** veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
-| Birim | Bir telemetri değeri için **mph**, **%** veya ** &deg; C**gibi bir birim. |
+| Birim | Bir telemetri değeri için **mph**, **%** veya **&deg; C** gibi bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
 | Yorum | Telemetri yeteneği hakkında herhangi bir yorum. |
-| Açıklama | Telemetri yeteneğinin açıklaması. |
+| Description | Telemetri yeteneğinin açıklaması. |
 
 ### <a name="properties"></a>Özellikler
 
@@ -148,12 +147,12 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
 | Yazılabilir | Özellik yazılabilir değilse, cihaz özellik değerlerini IoT Central rapor edebilir. Özellik yazılabilir ise, cihaz özellik değerlerini IoT Central rapor edebilir ve IoT Central Özellik güncelleştirmelerini cihaza gönderebilir.
-| Önem Derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
+| Önem derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi** veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
-| Birim | **Mph**, **%** veya ** &deg; C**gibi özellik değeri için bir birim. |
+| Birim | **Mph**, **%** veya **&deg; C** gibi özellik değeri için bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
 | Yorum | Özellik yeteneği hakkında herhangi bir açıklama. |
-| Açıklama | Özellik yeteneğinin açıklaması. |
+| Description | Özellik yeteneğinin açıklaması. |
 
 ### <a name="commands"></a>Komutlar
 
@@ -166,11 +165,12 @@ Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları göste
 | Görünen Ad | Panolar ve formlarda kullanılan komutun görünen adı. |
 | Name | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Komutundaki. |
-| Komut | `SynchronousExecutionType`. |
 | Yorum | Komut özelliğiyle ilgili herhangi bir yorum. |
-| Açıklama | Komut yeteneğinin açıklaması. |
+| Description | Komut yeteneğinin açıklaması. |
 | İstek | Etkinleştirilirse, istek parametresinin tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
 | Yanıt | Etkinleştirilirse, komut yanıtının tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
+
+Cihazların komutları nasıl uygulayabileceği hakkında daha fazla bilgi edinmek için bkz. [telemetri, özellik ve komut yükleri > komutlar ve uzun süre çalışan komutlar](concepts-telemetry-properties-commands.md#commands).
 
 #### <a name="offline-commands"></a>Çevrimdışı komutlar
 
@@ -185,13 +185,13 @@ Buluttan cihaza iletiler:
 - Cihazın buluttan cihaza iletisini işlemesi için bir ileti işleyicisi uygulaması gerekir.
 
 > [!NOTE]
-> Bu seçenek yalnızca IoT Central Web Kullanıcı arabiriminde kullanılabilir. Bu ayar, cihaz şablonundan bir modeli veya arabirimi dışa aktardığınızda dahil değildir.
+> Bu seçenek yalnızca IoT Central Web Kullanıcı arabiriminde kullanılabilir. Bu ayar, cihaz şablonundan bir modeli veya bileşeni dışa aktardığınızda dahil değildir.
 
-## <a name="manage-an-interface"></a>Arabirim yönetme
+## <a name="manage-a-component"></a>Bir bileşeni yönetme
 
-Arabirimi yayımlamadıysanız, arabirim tarafından tanımlanan özellikleri düzenleyebilirsiniz. Arabirimi yayımladıktan sonra, herhangi bir değişiklik yapmak istiyorsanız, cihaz şablonunun yeni bir sürümünü oluşturmanız ve arabirimi sürümüne uygulamanız gerekir. **Özelleştirme** bölümünde, sürüm oluşturma gerektirmeyen değişiklikler (görünen adlar veya birimler gibi) yapabilirsiniz.
+Bileşeni yayımlamadıysanız, bileşen tarafından tanımlanan özellikleri düzenleyebilirsiniz. Bileşeni yayımladıktan sonra, herhangi bir değişiklik yapmak istiyorsanız, cihaz şablonunun yeni bir sürümünü oluşturmanız ve [bileşeni sürümüne](howto-version-device-template.md)uygulamanız gerekir. **Özelleştirme** bölümünde, sürüm oluşturma gerektirmeyen değişiklikler (görünen adlar veya birimler gibi) yapabilirsiniz.
 
-Ayrıca, başka bir yetenek modelinde yeniden kullanmak istiyorsanız, bir JSON dosyası olarak arayüzü dışarı aktarabilirsiniz.
+Ayrıca, başka bir yetenek modelinde yeniden kullanmak istiyorsanız bileşeni bir JSON dosyası olarak dışarı aktarabilirsiniz.
 
 ## <a name="add-cloud-properties"></a>Bulut özelliklerini ekleme
 
@@ -208,23 +208,23 @@ Aşağıdaki tabloda bir bulut özelliğinin yapılandırma ayarları gösterilm
 
 ## <a name="add-customizations"></a>Özelleştirmeler ekleme
 
-İçeri aktarılan bir arabirimi değiştirmeniz veya bir özelliğe IoT Central özgü özellikler eklemeniz gerektiğinde özelleştirmeleri kullanın. Yalnızca arabirim uyumluluğunu kesen alanları özelleştirebilirsiniz. Örneğin, şunları yapabilirsiniz:
+İçeri aktarılan bir bileşeni değiştirmeniz veya bir özelliğe özgü IoT Central özellikler eklemeniz gerektiğinde özelleştirmeler kullanın. Yalnızca bileşen uyumluluğunu kesen alanları özelleştirebilirsiniz. Örneğin, şunları yapabilirsiniz:
 
 - Bir özelliğin görünen adını ve birimlerini özelleştirin.
 - Değer bir grafikte göründüğünde kullanılacak varsayılan rengi ekleyin.
 - Bir özellik için başlangıçtaki, minimum ve maksimum değerleri belirtin.
 
-Yetenek adını veya yetenek türünü özelleştiremezsiniz. **Özelleştirme** bölümünde yapameyeceğiniz değişiklikler varsa, özelliği değiştirmek için cihaz şablonunuzu ve arabirimini sürüm yapmanız gerekir.
+Yetenek adını veya yetenek türünü özelleştiremezsiniz. **Özelleştirme** bölümünde yapameyeceğiniz değişiklikler varsa, özelliği değiştirmek için cihaz şablonunuzu ve bileşenini sürüm yapmanız gerekir.
 
 ### <a name="generate-default-views"></a>Varsayılan görünümleri oluştur
 
 Varsayılan görünümleri oluşturmak, önemli cihaz bilgilerinizin görselleştirilmesine yönelik hızlı bir yoldur. Cihaz şablonunuz için en fazla üç varsayılan görünümünüz oluşturulmuştur:
 
-- **Komutlar** , cihaz komutlarıyla bir görünüm sağlar ve operatörünüzün bunları cihazınıza göndermelerine olanak sağlar.
-- **Genel bakış** cihaz telemetrisi ile grafik ve ölçümleri görüntüleyen bir görünüm sağlar.
-- **Hakkında** cihaz bilgileriyle cihaz bilgilerini görüntüleyen bir görünüm sağlar.
+- **Komutlar**: cihaz komutları içeren bir görünüm ve işletmenizin bu cihazları cihazınıza gönderme olanağı sağlar.
+- **Genel bakış**: cihaz telemetrisine sahip bir görünüm, grafikleri ve ölçümleri görüntüleme.
+- **Hakkında**: cihaz bilgilerini görüntüleyen bir görünüm, cihaz özelliklerini görüntülüyor.
 
-**Varsayılan görünümleri oluştur**' u seçtikten sonra, bunların cihaz şablonunuzun **Görünümler** bölümü altında otomatik olarak eklendiğini görürsünüz.
+**Varsayılan görünümleri oluştur**' u seçtikten sonra, cihaz şablonunuzun **Görünümler** bölümü altında otomatik olarak eklendiğini görürsünüz.
 
 ## <a name="add-dashboards"></a>Pano ekleme
 
@@ -233,17 +233,17 @@ Varsayılan görünümleri oluşturmak, önemli cihaz bilgilerinizin görselleş
 Bir cihaz şablonuna Pano eklemek için:
 
 1. Cihaz şablonunuza gidin ve **Görünümler**' i seçin.
-1. **Cihazı görselleştirmeyi**seçin.
-1. Pano **adı**bölümünde panonuz için bir ad girin.
+1. **Cihazı görselleştirmeyi** seçin.
+1. Pano **adı** bölümünde panonuz için bir ad girin.
 1. Statik, özellik, bulut özelliği, telemetri ve komut kutucukları listesinden panonuza kutucuk ekleyin. Panonuza eklemek istediğiniz kutucukları sürükleyip bırakın.
 1. Tek bir grafik kutucuğunda birden çok telemetri değeri çizmek için telemetri değerlerini seçin ve ardından **Birleştir**' i seçin.
-1. Eklediğiniz her kutucuğu, verilerin nasıl görüntüleneceğini özelleştirmek için yapılandırın. Bunu, dişli simgesini seçerek veya grafik kutucuğunda **yapılandırmayı Değiştir** ' i seçerek yapabilirsiniz.
+1. Eklediğiniz her kutucuğu, verilerin nasıl görüntüleneceğini özelleştirmek için yapılandırın. Dişli simgesini seçerek veya grafik kutucuğunda **yapılandırmayı Değiştir** ' i seçerek bu seçeneğe erişin.
 1. Panonuzdaki kutucukları düzenleyin ve yeniden boyutlandırın.
 1. Değişiklikleri kaydedin.
 
 ### <a name="configure-preview-device-to-view-dashboard"></a>Panoyu görüntülemek için Önizleme cihazını yapılandırma
 
-Panonuzu görüntülemek ve test etmek için **Önizleme cihazını Yapılandır**' ı seçin. Bu, işletmeni yayımlandıktan sonra bir kez gördüğünde panoyu görmenizi sağlar. Görünümlerinizin doğru verileri göstermesini doğrulamak için bu seçeneği kullanın. Aşağıdakilerden birini seçebilirsiniz:
+Panonuzu görüntülemek ve test etmek için **Önizleme cihazını Yapılandır**' ı seçin. Bu özellik, operatörünüz yayımlandıktan sonra gördüğü panoyu görmenizi sağlar. Görünümlerinizin doğru verileri göstermesini doğrulamak için bu özelliği kullanın. Aşağıdaki seçeneklerden birini belirtebilirsiniz:
 
 - Önizleme cihazı yok.
 - Cihaz şablonunuz için yapılandırdığınız gerçek test cihazı.
@@ -266,9 +266,9 @@ Bir cihaz şablonuna form eklemek için:
 
 ## <a name="publish-a-device-template"></a>Cihaz şablonunu yayımlama
 
-Cihaz yetenek modelinizi uygulayan bir cihazı bağlayabilmeniz için önce cihaz şablonunuzu yayımlamanız gerekir.
+Cihaz modelinizi uygulayan bir cihazı bağlayabilmeniz için önce cihaz şablonunuzu yayımlamanız gerekir.
 
-Bir cihaz şablonu yayımladıktan sonra, yalnızca cihaz yetenek modelinde sınırlı değişiklikler yapabilirsiniz. Bir arabirimi değiştirmek için [Yeni bir sürüm oluşturmanız ve yayımlamanız](./howto-version-device-template.md)gerekir.
+Bir cihaz şablonunu yayımladıktan sonra, yalnızca cihaz modelinde sınırlı değişiklikler yapabilirsiniz. Bir bileşeni değiştirmek için [Yeni bir sürüm oluşturmanız ve yayımlamanız](./howto-version-device-template.md)gerekir.
 
 Bir cihaz şablonu yayımlamak için, cihaz şablonunuza gidin ve **Yayımla**' yı seçin.
 

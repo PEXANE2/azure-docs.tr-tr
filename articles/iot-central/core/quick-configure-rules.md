@@ -3,50 +3,49 @@ title: Hızlı başlangıç-Azure IoT Central kuralları ve eylemleri yapıland�
 description: Bu hızlı başlangıçta, Azure IoT Central uygulamanızda telemetri tabanlı kuralların ve eylemlerin nasıl yapılandırılacağı hakkında bir Oluşturucu olarak gösterilir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99846a5f2435398d13c436460a2756b1b021a1be
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80998974"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990232"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Hızlı Başlangıç: Azure IoT Central’da cihazınız için kurallar ve eylemler yapılandırma
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-Bu hızlı başlangıçta, bir cihaz algılayıcısı tarafından bildirilen sıcaklık 90 F 'yi aştığında bir e-posta gönderen bir kural oluşturacaksınız &deg; .
+Bu hızlı başlangıçta, bir cihaz algılayıcısı tarafından bildirilen nem %55 ' ü aştığında bir e-posta gönderen bir kural oluşturacaksınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygulaması oluşturun](./quick-deploy-iot-central.md) ve birlikte çalışmak üzere **Mxyongaıot devkit** cihaz şablonunu oluşturmak için [IoT Central uygulamanıza sanal bir cihaz ekleyin](./quick-create-simulated-device.md) .
+Başlamadan önce, bir önceki hızlı başlangıç [oluşturma Azure IoT Central uygulaması oluşturmanız](./quick-deploy-iot-central.md) ve birlikte çalışmak üzere **algılayıcı denetleyicisi** cihaz şablonunu oluşturmak için [IoT Central uygulamanıza sanal bir cihaz eklemeniz](./quick-create-simulated-device.md) gerekir.
 
 ## <a name="create-a-telemetry-based-rule"></a>Telemetri tabanlı kural oluşturma
 
 1. Uygulamanıza yeni bir telemetri tabanlı kural eklemek için, sol bölmede **kurallar**' ı seçin.
 
-1. Yeni bir kural oluşturmak için öğesini seçin **+** .
+1. Yeni bir kural oluşturmak için **+ Yeni**' yi seçin.
 
-1. Kural adı olarak **çevresel sıcaklık** girin.
+1. Kural adı olarak **çevresel nem** girin.
 
-1. **Hedef cihazlar** bölümünde, cihaz şablonu olarak **Mxyongaıot devkit** ' i seçin. Bu seçenek, kural için geçerli olan cihazları cihaz şablonu türüne göre filtreler. **+ Filter**öğesini seçerek daha fazla filtre ölçütü ekleyebilirsiniz.
+1. **Hedef cihazlar** bölümünde, cihaz şablonu olarak **algılayıcı denetleyicisi** ' ni seçin. Bu seçenek, kural için geçerli olan cihazları cihaz şablonu türüne göre filtreler. **+ Filter** öğesini seçerek daha fazla filtre ölçütü ekleyebilirsiniz.
 
 1. **Koşullar** bölümünde, kuralınızı neyin tetikleyeceğini tanımlarsınız. Sıcaklık telemetrisine dayalı bir koşul tanımlamak için aşağıdaki bilgileri kullanın:
 
     | Alan        | Değer            |
     | ------------ | ---------------- |
-    | Ölçüm  | Sıcaklık      |
+    | Ölçüm  | Sensorhumıd      |
     | Operatör     | büyüktür  |
-    | Değer        | 90               |
+    | Değer        | 55               |
 
     Daha fazla koşul eklemek için **+ koşul**' ı seçin.
 
-    ![Kural koşulu oluştur](./media/quick-configure-rules/condition.png)
+    :::image type="content" source="media/quick-configure-rules/condition.png" alt-text="Kural koşulunu gösteren ekran görüntüsü":::
 
 1. Kural tetiklendiğinde çalıştırılacak bir e-posta eylemi eklemek için **+ e-posta**' yı seçin.
 
@@ -56,18 +55,18 @@ Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygu
     | --------- | ------------------------------------------------- |
     | Görünen ad | İşleç e-posta eylemi                          |
     | Amaç        | E-posta adresiniz                                |
-    | Notlar     | Çevresel sıcaklık eşiği aştı. |
+    | Notlar     | Çevresel nem eşiği aştı. |
 
     > [!NOTE]
     > Bir e-posta bildirimi almak için e-posta adresinin [uygulamadaki bir kullanıcı kimliği](howto-administer.md) olması ve bu kullanıcının uygulamada en az bir kez oturum açmış olması gerekir.
 
-    ![Kural oluşturma eylemi](./media/quick-configure-rules/action.png)
+    :::image type="content" source="media/quick-configure-rules/action.png" alt-text="Kurala eklenen bir e-posta eylemini gösteren ekran görüntüsü":::
 
 1. **Kaydet**’i seçin. Kuralınız **Kurallar** sayfasında listelenir.
 
 ## <a name="test-the-rule"></a>Kuralı test etme
 
-Kural kaydedildikten kısa bir süre sonra dinamik olur. Kuralda tanımlanan koşullar karşılandığında, uygulamanız eylemde belirtilen e-posta adresine bir ileti gönderir.
+Kural kaydedildikten kısa bir süre sonra dinamik olur. Kuralda tanımlanan koşullar karşılandığında, uygulamanız eylemde belirttiğiniz adrese bir e-posta gönderir.
 
 > [!NOTE]
 > Testiniz tamamlandıktan sonra, gelen kutunuzda uyarı almayı durdurmak için kuralı kapatın.

@@ -1,6 +1,6 @@
 ---
 title: Azure DDoS koruması standardına genel bakış
-description: Azure DDoS koruma standardı 'nın, uygulama tasarımı en iyi uygulamaları ile birlikte kullanıldığında, DDoS saldırılarına karşı savunma olanağı sağladığını öğrenin.
+description: Azure DDoS Koruması Standart'ın, uygulama tasarımı en iyi yöntemleriyle birleştirildiğinde DDoS saldırılarına karşı nasıl savunma sağladığını öğrenin.
 services: virtual-network
 documentationcenter: na
 author: yitoh
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: a8d8a41b5d527833ef071275d90cf9102cec47f7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3ded2fc286117da1438b0bb28298632532c4329
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905649"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992548"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Koruması Standardı’na genel bakış
 
@@ -38,10 +38,10 @@ Azure DDoS koruması, müşteri verilerini depolamaz.
 - **Uyarlamalı ayarlama:** Akıllı trafik profili oluşturma, uygulamanızın zaman içindeki trafiğini öğrenir ve hizmetiniz için en uygun profili seçer ve güncelleştirir. Profil zaman içinde trafik değişikliği olarak ayarlanır.
 - **Çok katmanlı koruma:** Bir Web uygulaması güvenlik duvarıyla birlikte kullanıldığında, tam yığın koruması sağlar.
 - **Kapsamlı risk azaltma ölçeği:** 60 üzerinde farklı saldırı türleri, en büyük bilinen DDoS saldırılarına karşı koruma sağlamak için küresel kapasiteyle birlikte azaltılabilir.
-- **Saldırı Analizi:** Saldırı sırasında beş dakikalık artışlarla ayrıntılı raporlar alın ve saldırı bittikten sonra tam bir Özet yapın. Bir saldırı sırasında neredeyse gerçek zamanlı izleme için [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection) 'e veya çevrimdışı güvenlik bilgilerine ve olay yönetimi (SIEM) sistemine yönelik günlük azaltma akışı.
+- **Saldırı Analizi:** Saldırı sırasında beş dakikalık artışlarla ayrıntılı raporlar alın ve saldırı bittikten sonra tam bir Özet yapın. Bir saldırı sırasında neredeyse gerçek zamanlı izleme için [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) 'e veya çevrimdışı güvenlik bilgilerine ve olay yönetimi (SIEM) sistemine yönelik günlük azaltma akışı.
 - **Saldırı ölçümleri:** Her bir saldırıya ait özetlenen ölçümler Azure Izleyici aracılığıyla erişilebilir.
 - **Saldırı uyarısı:** Uyarılar, yerleşik saldırı ölçümleri kullanılarak saldırı başlangıcında ve durdurulduğunda ve saldırının süresi boyunca yapılandırılabilir. Uyarılar, Microsoft Azure Izleme günlükleri, splunk, Azure depolama, e-posta ve Azure portal gibi işletimsel yazılımınızla tümleştirilir.
-- **DDoS hızlı yanıt** : saldırı araştırması ve analizine yönelik yardım Için DDoS koruması hızlı yanıt (drr) ekibine katılın. Daha fazla bilgi için bkz. [DDoS hızlı yanıt](ddos-rapid-response.md).
+- **DDoS hızlı yanıt**: saldırı araştırması ve analizine yönelik yardım Için DDoS koruması hızlı yanıt (drr) ekibine katılın. Daha fazla bilgi için bkz. [DDoS hızlı yanıt](ddos-rapid-response.md).
 - **Maliyet garantisi:** Veri aktarımı ve belgelenmiş DDoS saldırıları için uygulama genişleme hizmeti kredileri.
 
 ## <a name="pricing"></a>Fiyatlandırma

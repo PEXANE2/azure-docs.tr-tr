@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095552"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989641"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure DDoS koruma standardı oluşturma ve yapılandırma
 
@@ -39,7 +39,7 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlang
 
 Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Var olan bir kaynak grubunu kullanabilir ya da yeni bir tane oluşturabilirsiniz.
 
-Bir kaynak grubu oluşturmak için [az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)kullanın. Bu örnekte kaynak grubumuzu _Myresourcegroup_ olarak adlandırın ve _Doğu ABD_ konumunu kullanın:
+Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create)kullanın. Bu örnekte kaynak grubumuzu _Myresourcegroup_ olarak adlandırın ve _Doğu ABD_ konumunu kullanın:
 
 ```azurecli-interactive
 az group create \
@@ -111,7 +111,7 @@ Komutun DDoS koruma planınızın doğru ayrıntılarını döndürdüğünden e
 
 Kaynaklarınızın bir sonraki öğreticide kalmasını sağlayabilirsiniz. Artık gerekmiyorsa, _Myresourcegroup_ kaynak grubunu silin. Kaynak grubunu sildiğinizde, DDoS koruma planını ve ilgili tüm kaynakları da silersiniz. 
 
-Kaynak grubunu silmek için [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true)kullanın:
+Kaynak grubunu silmek için [az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete)kullanın:
 
 ```azurecli-interactive
 az group delete \

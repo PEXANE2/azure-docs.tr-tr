@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812361"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990763"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central cihaz geliştirmeye genel bakış
 
@@ -45,7 +45,7 @@ Bir ağ geçidi cihazı, IoT Central uygulamanıza bağlanan bir veya daha fazla
 
 ### <a name="edge-device"></a>Edge cihazı
 
-Sınır cihazı doğrudan IoT Central bağlanır, ancak _yaprak cihazlar_olarak bilinen diğer cihazlar için bir aracı gibi davranır. Bir uç cihaz, genellikle bir aracı olarak hareket eden yaprak cihazlara yakın şekilde bulunur. Edge cihazları kullanan senaryolar şunlardır:
+Sınır cihazı doğrudan IoT Central bağlanır, ancak _yaprak cihazlar_ olarak bilinen diğer cihazlar için bir aracı gibi davranır. Bir uç cihaz, genellikle bir aracı olarak hareket eden yaprak cihazlara yakın şekilde bulunur. Edge cihazları kullanan senaryolar şunlardır:
 
 - Edge cihazından bağlanmak üzere IoT Central doğrudan bağlanamadaki cihazları etkinleştirin. Örneğin, bir yaprak cihaz uç cihaza bağlanmak için Bluetooth kullanabilir ve daha sonra IoT Central internet üzerinden bağlanır.
 - IoT Central gönderilmeden önce Birleşik telemetri toplayın. Bu yaklaşım, IoT Central veri gönderme maliyetlerini azaltmaya yardımcı olabilir.
@@ -72,7 +72,7 @@ Daha fazla bilgi edinmek için bkz. [Azure IoT Central 'ye bağlanma](./concepts
 
 ### <a name="security"></a>Güvenlik
 
-Bir cihaz ile IoT Central uygulamanız arasındaki bağlantı, [paylaşılan erişim imzaları](./concepts-get-connected.md#connect-devices-at-scale-using-sas) ya da sektör standardı [X. 509.440 sertifikaları](./concepts-get-connected.md#connect-devices-using-x509-certificates)kullanılarak güvenlidir.
+Bir cihaz ile IoT Central uygulamanız arasındaki bağlantı, [paylaşılan erişim imzaları](./concepts-get-connected.md#sas-group-enrollment) ya da sektör standardı [X. 509.440 sertifikaları](./concepts-get-connected.md#x509-group-enrollment)kullanılarak güvenlidir.
 
 ### <a name="communication-protocols"></a>İletişim protokolleri
 
@@ -80,12 +80,58 @@ Bir cihazın IoT Central bağlanmak için kullanabileceği iletişim protokoller
 
 ## <a name="implement-the-device"></a>Cihazı uygulama
 
+IoT Central cihaz şablonu, bu türde bir cihazın uygulanması gereken davranışları belirten bir _model_ içerir. Davranışlar telemetri, Özellikler ve komutları içerir.
+
+> [!TIP]
+> IoT Central modeli [dijital bir TWINS tanım dili (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON dosyası olarak dışarı aktarabilirsiniz.
+
+Her modelde, gibi benzersiz bir _cihaz ikizi model tanımlayıcısı_ (dtmı) vardır `dtmi:com:example:Thermostat;1` . Bir cihaz IoT Central bağlandığı zaman, uygulayan modelin DTMı 'sini gönderir. IoT Central, ardından doğru cihaz şablonunu cihazla ilişkilendirebilir.
+
+[Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) , BIR dtdl modeli uyguladığı zaman bir cihazın izlemesi gereken bir dizi kural tanımlar.
+
+[Azure IoT cihaz SDK 'Ları](#languages-and-sdks) IoT Tak ve kullan kuralları için destek içerir.
+
+### <a name="device-model"></a>Cihaz modeli
+
+Bir cihaz modeli [Dtdl](https://github.com/Azure/opendigitaltwins-dtdl)kullanılarak tanımlanır. Bu dil şunları tanımlamanızı sağlar:
+
+- Cihazın gönderdiği telemetri. Tanım, telemetrinin adını ve veri türünü içerir. Örneğin, bir cihaz sıcaklık telemetrisini çift olarak gönderir.
+- Cihazın IoT Central rapor aldığı Özellikler. Bir özellik tanımı, adını ve veri türünü içerir. Örneğin, bir cihaz Vana durumunu Boole olarak bildirir.
+- Cihazın IoT Central alabileceği Özellikler. İsteğe bağlı olarak, bir özelliği yazılabilir olarak işaretleyebilirsiniz. Örneğin, IoT Central bir hedef sıcaklık bir cihaza çift olarak gönderilir.
+- Bir cihazın yanıt verdiği komutlar. Tanım, komutun adını ve parametrelerinin adlarını ve veri türlerini içerir. Örneğin, bir cihaz yeniden başlatmadan önce kaç saniye bekleneceğini belirten bir reboot komutuna yanıt verir.
+
+DTDL modeli, _bileşen_ olmayan veya _çok bileşen_ modeli olabilir:
+
+- Bileşen olmayan model: basit bir model, gömülü veya basamaklı bileşenleri kullanmaz. Tüm telemetri, özellik ve komutlar tek bir _varsayılan bileşen_ olarak tanımlanmıştır. Bir örnek için bkz. [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) modeli.
+- Çoklu bileşen modeli. İki veya daha fazla bileşen içeren daha karmaşık bir model. Bu bileşenler tek bir varsayılan bileşeni ve bir veya daha fazla iç içe geçmiş bileşeni içerir. Bir örnek için bkz. [sıcaklık denetleyicisi](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modeli.
+
+Daha fazla bilgi için bkz. [modellerdeki ıot Tak ve kullan bileşenleri](../../iot-pnp/concepts-components.md)
+
+### <a name="conventions"></a>Kurallar
+
+Bir cihaz, IoT Central veri alışverişi yaparken IoT Tak ve Kullan kurallarını izlemelidir. Kurallar şunları içerir:
+
+- IoT Central 'e bağlanırken DTMı 'yi gönderin.
+- IoT Central için doğru biçimli JSON yüklerini ve meta verilerini gönderin.
+- IoT Central ' den yazılabilir özellikleri ve komutları doğru şekilde yanıtlayın.
+- Bileşen komutları için adlandırma kurallarını izleyin.
+
+> [!NOTE]
+> Şu anda IoT Central DTDL **Array** ve **Jeo uzamsal** veri türlerini tam olarak desteklemez.
+
+Bir cihazın IoT Central sahip olduğu JSON iletilerinin biçimi hakkında daha fazla bilgi edinmek için bkz. [telemetri, özellik ve komut yükleri](concepts-telemetry-properties-commands.md).
+
+IoT Tak ve Kullan kuralları hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan kuralları](../../iot-pnp/concepts-convention.md).
+
+### <a name="device-sdks"></a>Cihaz SDK 'Ları
+
 Cihazınızın davranışını uygulamak için [Azure IoT cihaz SDK](#languages-and-sdks) 'larından birini kullanın. Kod şu şekilde olmalıdır:
 
 - Cihazı DPS 'e kaydedin ve IoT Central uygulamanızdaki iç IoT Hub 'ına bağlanmak için DPS içindeki bilgileri kullanın.
-- Telemetri IoT Central ' deki cihaz şablonunun belirttiği biçimde gönderin. IoT Central, görselleştirme ve analiz için Telemetriyi nasıl kullanacağınızı öğrenmek için cihaz şablonunu kullanır.
-- Cihaz ve IoT Central arasındaki özellik değerlerini eşitler. Cihaz şablonu, IoT Central bilgileri görüntüleyebilmesi için özellik adlarını ve veri türlerini belirtir.
-- Komutlar için komut işleyicilerini uygulama cihaz şablonunda belirtir. Cihaz şablonu, cihazın kullanması gereken komut adlarını ve parametreleri belirtir.
+- Cihazın uyguladığı modelin DTMı 'sini duyurur.
+- Telemetriyi cihaz modelinin belirttiği biçimde gönderin. IoT Central, görselleştirme ve analizler için Telemetriyi nasıl kullanacağınızı öğrenmek için cihaz şablonundaki modeli kullanır.
+- Cihaz ve IoT Central arasındaki özellik değerlerini eşitler. Model, IoT Central bilgileri görüntülemesi için özellik adlarını ve veri türlerini belirtir.
+- Modelde belirtilen komutlar için komut işleyicileri uygulayın. Model, cihazın kullanması gereken komut adlarını ve parametreleri belirtir.
 
 Cihaz şablonlarının rolü hakkında daha fazla bilgi için bkz. [cihaz şablonları nelerdir?](./concepts-device-templates.md).
 

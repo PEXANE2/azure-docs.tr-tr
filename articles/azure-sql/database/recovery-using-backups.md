@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629198"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989488"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Tek bir abonelik için, eş zamanlı geri yükleme isteği sayısında sınırla
 Sunucunun tamamını geri yüklemek için yerleşik bir yöntem yoktur. Bu görevi nasıl gerçekleştireceğinizi gösteren bir örnek için bkz. [Azure SQL veritabanı: tam sunucu kurtarma](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
 
 > [!IMPORTANT]
-> Otomatik yedeklemeleri kullanarak kurtarmak için, abonelikte SQL Server katkıda bulunan rolün veya SQL yönetilen örnek katılımcısı rolünün (kurtarma hedefine bağlı olarak) üyesi olmanız veya abonelik sahibi olmanız gerekir. Daha fazla bilgi için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md). Azure portal, PowerShell veya REST API kullanarak kurtarma yapabilirsiniz. Transact-SQL ' i kullanamazsınız.
+> Otomatik yedeklemeleri kullanarak kurtarmak için, abonelikte SQL Server katkıda bulunan rolün veya SQL yönetilen örnek katılımcısı rolünün (kurtarma hedefine bağlı olarak) üyesi olmanız veya abonelik sahibi olmanız gerekir. Daha fazla bilgi için bkz. [Azure RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md). Azure portal, PowerShell veya REST API kullanarak kurtarma yapabilirsiniz. Transact-SQL ' i kullanamazsınız.
 
 ## <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
 
@@ -113,13 +113,13 @@ Silinen veritabanlarını sunucudan veya yönetilen örnek kaynağından Azure p
 
 #### <a name="sql-database"></a>SQL Veritabanı
 
-Silinen bir veritabanını Azure portal kullanarak silme zamanına kurtarmak için, sunucuya genel bakış sayfasını açın ve **silinen veritabanları** ' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
+Silinen bir veritabanını Azure portal kullanarak silme zamanına kurtarmak için, sunucuya genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
 
   ![Silinen veritabanını geri yükleme ekran görüntüsü](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Yönetilen Örnek
 
-Azure portal kullanarak yönetilen bir veritabanını kurtarmak için, yönetilen örneğe genel bakış sayfasını açın ve **silinen veritabanları** ' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
+Azure portal kullanarak yönetilen bir veritabanını kurtarmak için, yönetilen örneğe genel bakış sayfasını açın ve **silinen veritabanları**' nı seçin. Geri yüklemek istediğiniz silinen bir veritabanını seçin ve yedeklemeden geri yüklenen verilerle oluşturulacak yeni veritabanının adını yazın.
 
   ![Silinen Azure SQL yönetilen örnek veritabanını geri yükleme ekran görüntüsü](./media/recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -157,9 +157,9 @@ Azure portal, yeni bir tek veya yönetilen örnek veritabanı oluşturup kullan�
 
 Seçtiğiniz bölgedeki ve sunucudaki Azure portal tek bir veritabanını coğrafi olarak geri yüklemek için şu adımları izleyin:
 
-1. **Panodan** **Add**  >  **SQL veritabanı oluştur** ' u seçin. **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
-2. **Ek ayarlar** ' ı seçin.
-3. **Mevcut verileri kullan** için **Yedekle** ' yi seçin.
+1. **Panodan** **Add**  >  **SQL veritabanı oluştur**' u seçin. **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
+2. **Ek ayarlar**' ı seçin.
+3. **Mevcut verileri kullan** için **Yedekle**' yi seçin.
 4. **Yedekleme** için, kullanılabilir coğrafi geri yükleme yedeklemeleri listesinden bir yedekleme seçin.
 
     ![SQL veritabanı seçeneklerini oluştur ekran görüntüsü](./media/recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
@@ -170,9 +170,9 @@ Yedeklemeden yeni bir veritabanı oluşturma işlemini tamamlar. Azure SQL verit
 
 Yönetilen bir örnek veritabanını Azure portal tercih ettiğiniz bir bölgede varolan bir yönetilen örneğe coğrafi olarak geri yüklemek için veritabanının geri yüklenmesini istediğiniz yönetilen örneği seçin. Şu adımları izleyin:
 
-1. **Yeni veritabanı** ' nı seçin.
+1. **Yeni veritabanı**' nı seçin.
 2. İstenen bir veritabanı adı yazın.
-3. **Mevcut verileri kullan** altında **Yedekle** ' yi seçin.
+3. **Mevcut verileri kullan** altında **Yedekle**' yi seçin.
 4. Kullanılabilir coğrafi geri yükleme yedeklemeleri listesinden bir yedekleme seçin.
 
     ![Yeni veritabanı seçeneklerinin ekran görüntüsü](./media/recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
@@ -243,7 +243,7 @@ REST API kullanarak bir veritabanını geri yüklemek için:
 | [REST (createMode = kurtarma)](/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 #### <a name="sql-database"></a>SQL Veritabanı
 

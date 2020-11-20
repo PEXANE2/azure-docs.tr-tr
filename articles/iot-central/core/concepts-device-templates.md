@@ -3,17 +3,17 @@ title: Azure IoT Central cihaz şablonları nelerdir | Microsoft Docs
 description: Azure IoT Central cihaz şablonları, uygulamanıza bağlı cihazların davranışını belirtmenizi sağlar. Cihaz şablonu, cihazın uygulaması gereken telemetri, Özellikler ve komutları belirtir. Bir cihaz şablonu Ayrıca, bir işlecin kullandığı formlar ve panolar gibi IoT Central cihaz için Kullanıcı arabirimini tanımlar.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/21/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813177"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992684"
 ---
 # <a name="what-are-device-templates"></a>Cihaz şablonları nedir?
 
@@ -25,86 +25,99 @@ Azure IoT Central 'deki bir cihaz şablonu, uygulamanıza bağlanan bir cihaz t�
 
 Bir cihaz şablonu aşağıdaki bölümleri içerir:
 
-- _Bir cihaz yetenek modeli (DCM)_. Cihaz şablonunun bu bölümü, cihazın uygulamanızla nasıl etkileşime gireceğini tanımlar. Bir cihaz geliştiricisi, DCM 'de tanımlanan davranışları uygular.
-    - _Arabirimler_. Bir DCM, cihazın uygulaması gereken telemetri, özellik ve komutları tanımlayan bir veya daha fazla arabirim içerir.
-- _Bulut özellikleri_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin depolanacak cihaz meta verilerini belirtmesini sağlar. Bulut özellikleri hiçbir zaman cihazlarla eşitlenmez ve uygulamada mevcut değildir. Bulut özellikleri, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
-- _Özelleştirmeler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin DCM içindeki bazı tanımları geçersiz kılmasına izin verir. Çözüm geliştiricisi, uygulamanın bir özelliğin görünen adını değiştirme veya telemetri değerini göstermek için kullanılan renk gibi bir değeri nasıl işleyeceğini iyileştirmek isterse, özelleştirmeler yararlı olur. Özelleştirmeler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
-- _Görünümler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin Cihazdaki verileri görüntülemek ve bir cihazı yönetmek ve denetlemek için form görselleştirmeleri tanımlamasına olanak sağlar. Görünümler DCM, bulut özellikleri ve özelleştirmeleri kullanır. Görünümler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
+- _Bir cihaz modeli_. Cihaz şablonunun bu bölümü, cihazın uygulamanızla nasıl etkileşime gireceğini tanımlar. Bir cihaz geliştiricisi modelde tanımlanan davranışları uygular.
+    - _Varsayılan bileşen_. Her cihaz modelinde varsayılan bir bileşen vardır. Varsayılan bileşen arabirimi, cihaz modeline özgü özellikleri açıklar.
+    - _Bileşenler_. Cihaz modeli, cihaz yeteneklerini betimleyen varsayılan bileşene ek olarak bileşenleri içerebilir. Her bileşenin, bileşenin yeteneklerini açıklayan bir arabirimi vardır. Bileşen arabirimleri, diğer cihaz modellerinde yeniden kullanılabilir. Örneğin, birkaç telefon cihaz modeli aynı kamera arabirimini kullanabilir.
+    - _Devralınan arabirimler_. Bir cihaz modeli, varsayılan bileşenin yeteneklerini genişleten bir veya daha fazla arabirim içerir.
+- _Bulut özellikleri_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin depolanacak cihaz meta verilerini belirtmesini sağlar. Bulut özellikleri hiçbir zaman cihazlarla eşitlenmez ve uygulamada mevcut değildir. Bulut özellikleri bir cihaz geliştiricisinin cihaz modelini uygulamak için yazdığı kodu etkilemez.
+- _Özelleştirmeler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin cihaz modelindeki bazı tanımları geçersiz kılmasına izin verir. Çözüm geliştiricisi, uygulamanın bir özelliğin görünen adını değiştirme veya telemetri değerini göstermek için kullanılan renk gibi bir değeri nasıl işleyeceğini iyileştirmek isterse, özelleştirmeler yararlı olur. Özelleştirmeler bir cihaz geliştiricisinin cihaz modelini uygulamak için yazdığı kodu etkilemez.
+- _Görünümler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin Cihazdaki verileri görüntülemek ve bir cihazı yönetmek ve denetlemek için form görselleştirmeleri tanımlamasına olanak sağlar. Görünümler cihaz modelini, bulut özelliklerini ve özelleştirmeleri kullanır. Görünümler bir cihaz geliştiricisinin cihaz modelini uygulamak için yazdığı kodu etkilemez.
 
-## <a name="device-capability-models"></a>Cihaz özelliği modelleri
+## <a name="device-models"></a>Cihaz modelleri
 
-Bir DCM, cihazın IoT Central uygulamanızla nasıl etkileşime gireceğini tanımlar. Cihaz geliştiricisi, cihazın IoT Central cihazı izleyip yönetebilmesi için DCM 'de tanımlanan davranışları uyguladığından emin olmalıdır. Bir DCM, bir veya daha fazla _arabirimden_oluşur ve her arabirim _telemetri_ türlerinin, _cihaz özelliklerinin_ve _komutlarının_bir koleksiyonunu tanımlayabilir. Çözüm geliştiricisi, DCM 'yi bir cihaz şablonuna tanımlayan bir JSON dosyasını içeri aktarabilir veya bir DCM oluşturmak veya düzenlemek için IoT Central Web Kullanıcı arabirimini kullanabilirsiniz. Web Kullanıcı arabirimi kullanılarak yapılan bir DCM üzerinde yapılan değişiklikler, [cihaz şablonunun sürümlendirimesini](./howto-version-device-template.md)gerektirir.
+Bir cihaz modeli, bir cihazın IoT Central uygulamanızla nasıl etkileşime gireceğini tanımlar. Cihaz geliştiricisi, cihazın cihazı izleyip yönetebilmesi için cihazın cihaz IoT Central modelinde tanımlanan davranışları uyguladığından emin olmalıdır. Bir cihaz modeli bir veya daha fazla _arabirimden_ oluşur ve her arabirim _telemetri_ türlerinin, _cihaz özelliklerinin_ ve _komutlarının_ bir koleksiyonunu tanımlayabilir. Bir çözüm geliştiricisi cihaz modelini bir cihaz şablonuna tanımlayan bir JSON dosyasını içeri aktarabilir veya bir cihaz modeli oluşturmak veya düzenlemek için IoT Central 'de Web Kullanıcı arabirimini kullanabilir. Web Kullanıcı arabirimi kullanılarak oluşturulan bir cihaz modelinde yapılan değişiklikler, [cihaz şablonunun sürümlendirimesini](./howto-version-device-template.md)gerektirir.
 
-Bir çözüm geliştiricisi, DCM içeren bir JSON dosyasını da dışa aktarabilir. Bir cihaz geliştiricisi, cihazın IoT Central uygulamayla nasıl iletişim kuracağını anlamak için bu JSON belgesini kullanabilir.
+Bir çözüm geliştiricisi, cihaz modelini içeren bir JSON dosyasını da dışa aktarabilir. Bir cihaz geliştiricisi, cihazın IoT Central uygulamayla nasıl iletişim kuracağını anlamak için bu JSON belgesini kullanabilir.
 
-DCM 'yi tanımlayan JSON dosyası [Digital Ikizi tanım dili (DTDL) v1](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)kullanır. IoT Central, JSON dosyasının ayrı dosyalar yerine satır içi tanımlanmış arabirimlerle birlikte DCM içermesini bekliyor.
+Cihaz modelini tanımlayan JSON dosyası [Digital Ikizi tanım dili (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)kullanır. IoT Central, JSON dosyasının ayrı dosyalar yerine satır içi tanımlanmış arabirimlere sahip cihaz modelini içermesini bekler.
 
 Tipik bir IoT cihazı şu şekilde yapılır:
 
 - Özel parçalar, cihazınızın benzersiz hale getirme işlemleri.
 - Tüm cihazlarda ortak olan standart parçalar.
 
-Bu bölümler bir DCM içinde _arabirimler_ olarak adlandırılır. Arabirimler, cihazınızın uyguladığı her bir bölümün ayrıntılarını tanımlar. Arabirimler DCMs 'lerde yeniden kullanılabilir.
+Bu bölümler bir cihaz modelinde _arabirimler_ olarak adlandırılır. Arabirimler, cihazınızın uyguladığı her bir bölümün ayrıntılarını tanımlar. Arabirimler cihaz modelleri arasında yeniden kullanılabilir. DTDL 'de bir bileşen, ayrı bir DTDL dosyasında tanımlanan bir arabirime başvurur.
 
-Aşağıdaki örnek, iki arabirime sahip bir ortam algılayıcısı cihazının cihaz yetenek modelinin ana hattını göstermektedir:
+Aşağıdaki örnek, bir sıcaklık denetleyicisi cihazının cihaz modelinin ana hattını gösterir. Varsayılan bileşen,, ve için tanımlar içerir `workingSet` `serialNumber` `reboot` . Cihaz modeli `thermostat` ve arabirimlerini de içerir `deviceInformation` :
 
 ```json
 {
-  "@id": "urn:contoso:sensor_device:1",
-  "@type": "CapabilityModel",
-  "displayName": "Environment Sensor Capability Model",
-  "implements": [
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:TemperatureController;1",
+  "@type": "Interface",
+  "displayName": "Temperature Controller",
+  "description": "Device with two thermostats and remote reboot.",
+  "contents": [
     {
-      "@type": "InterfaceInstance",
-      "name": "deviceinfo",
-      "schema": {
-        "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1",
-        "@type": "Interface",
-        "displayName": "Device Information",
-        "@context": "http://azureiot.com/v1/contexts/IoTModel.json",
-        "contents": [
-          ...
-        ]
+      "@type": [
+        "Telemetry", "DataSize"
+      ],
+      "name": "workingSet",
+      "displayName": "Working Set",
+      "description": "Current working set of the device memory in KiB.",
+      "schema": "double",
+      "unit" : "kibibyte"
+    },
+    {
+      "@type": "Property",
+      "name": "serialNumber",
+      "displayName": "Serial Number",
+      "description": "Serial number of the device.",
+      "schema": "string"
+    },
+    {
+      "@type": "Command",
+      "name": "reboot",
+      "displayName": "Reboot",
+      "description": "Reboots the device after waiting the number of seconds specified.",
+      "request": {
+        "name": "delay",
+        "displayName": "Delay",
+        "description": "Number of seconds to wait before rebooting the device.",
+        "schema": "integer"
       }
     },
     {
-      "@type": "InterfaceInstance",
-      "name": "sensor",
-      "schema": {
-        "@id": "urn:contoso:EnvironmentalSensor:1",
-        "@type": "Interface",
-        "displayName": "Environmental Sensor",
-        "@context": "http://azureiot.com/v1/contexts/IoTModel.json",
-        "contents": [
-          ...
-        ]
-      }
+      "@type" : "Component",
+      "schema": "dtmi:com:example:Thermostat;1",
+      "name": "thermostat",
+      "displayName": "Thermostat",
+      "description": "Thermostat One."
+    },
+    {
+      "@type": "Component",
+      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+      "name": "deviceInformation",
+      "displayName": "Device Information interface",
+      "description": "Optional interface with basic device hardware information."
     }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
+  ]
 }
 ```
-
-Yetenek modelinde bazı gerekli alanlar vardır:
-
-- `@id`: basit bir Tekdüzen Kaynak adı biçimindeki benzersiz bir KIMLIK.
-- `@type`: Bu nesnenin yetenek modeli olduğunu bildirir.
-- `@context`: yetenek modeli için kullanılan DTDL sürümünü belirtir.
-- `implements`: cihazınızın uyguladığı arabirimleri listeler.
-
-Implements bölümündeki arabirimler listesindeki her giriş için şunu vardır:
-
-- `name`: arabirimin programlama adı.
-- `schema`: yetenek modelinin uyguladığı arabirim.
 
 Bir arabirimin bazı gerekli alanları vardır:
 
 - `@id`: basit bir Tekdüzen Kaynak adı biçimindeki benzersiz bir KIMLIK.
 - `@type`: Bu nesnenin bir arabirim olduğunu bildirir.
 - `@context`: arabirim için kullanılan DTDL sürümünü belirtir.
-- `contents`: cihazınızı oluşturan özellikleri, telemetri ve komutları listeler.
+- `contents`: cihazınızı oluşturan özellikleri, telemetri ve komutları listeler. Özellikleri birden çok arabirimde tanımlanabilir.
 
 Özellik modeline, görünen ad ve açıklama gibi daha ayrıntılı bilgi eklemek için kullanabileceğiniz bazı isteğe bağlı alanlar vardır.
+
+Implements bölümündeki arabirimler listesindeki her giriş için şunu vardır:
+
+- `name`: arabirimin programlama adı.
+- `schema`: yetenek modelinin uyguladığı arabirim.
 
 ## <a name="interfaces"></a>Arabirimler
 
@@ -114,55 +127,105 @@ DTDL, cihazınızın yeteneklerini açıklamanıza olanak sağlar. İlgili yeten
 - `Telemetry`. Telemetri alanları sensörlerden ölçümleri temsil eder. Cihazınız her bir algılayıcı ölçümü aldığında, algılayıcı verilerini içeren bir telemetri olayı göndermelidir.
 - `Commands`. Komutlar, cihazınızın kullanıcılarının cihazda yürütebilmesi için yöntemleri temsil eder. Örneğin, bir fanı değiştirme veya kapatma için bir Reset komutu veya komutu.
 
-Aşağıdaki örnekte, ortam algılayıcısı arabirim tanımı gösterilmektedir:
+Aşağıdaki örnekte, termostat arabirim tanımı gösterilmektedir:
 
 ```json
 {
-  "@type": "Property",
-  "displayName": "Device State",
-  "description": "The state of the device. Two states online/offline are available.",
-  "name": "state",
-  "schema": "boolean"
-},
-{
-  "@type": "Property",
-  "displayName": "Customer Name",
-  "description": "The name of the customer currently operating the device.",
-  "name": "name",
-  "schema": "string",
-  "writable": true
-},
-{
-  "@type": [
-    "Telemetry",
-    "SemanticType/Temperature"
-  ],
-  "description": "Current temperature on the device",
-  "displayName": "Temperature",
-  "name": "temp",
-  "schema": "double",
-  "unit": "Units/Temperature/fahrenheit"
-},
-{
-  "@type": "Command",
-  "name": "turnon",
-  "comment": "This Commands will turn-on the LED light on the device.",
-  "commandType": "synchronous"
-},
-{
-  "@type": "Command",
-  "name": "turnoff",
-  "comment": "This Commands will turn-off the LED light on the device.",
-  "commandType": "synchronous"
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:Thermostat;1",
+  "@type": "Interface",
+  "displayName": "Thermostat",
+  "description": "Reports current temperature and provides desired temperature control.",
+  "contents": [
+    {
+      "@type": [
+        "Telemetry",
+        "Temperature"
+      ],
+      "name": "temperature",
+      "displayName" : "Temperature",
+      "description" : "Temperature in degrees Celsius.",
+      "schema": "double",
+      "unit": "degreeCelsius"
+    },
+    {
+      "@type": [
+        "Property",
+        "Temperature"
+      ],
+      "name": "targetTemperature",
+      "schema": "double",
+      "displayName": "Target Temperature",
+      "description": "Allows to remotely specify the desired target temperature.",
+      "unit" : "degreeCelsius",
+      "writable": true
+    },
+    {
+      "@type": [
+        "Property",
+        "Temperature"
+      ],
+      "name": "maxTempSinceLastReboot",
+      "schema": "double",
+      "unit" : "degreeCelsius",
+      "displayName": "Max temperature since last reboot.",
+      "description": "Returns the max temperature since last device reboot."
+    },
+    {
+      "@type": "Command",
+      "name": "getMaxMinReport",
+      "displayName": "Get Max-Min report.",
+      "description": "This command returns the max, min and average temperature from the specified time to the current time.",
+      "request": {
+        "name": "since",
+        "displayName": "Since",
+        "description": "Period to return the max-min report.",
+        "schema": "dateTime"
+      },
+      "response": {
+        "name" : "tempReport",
+        "displayName": "Temperature Report",
+        "schema": {
+          "@type": "Object",
+          "fields": [
+            {
+              "name": "maxTemp",
+              "displayName": "Max temperature",
+              "schema": "double"
+            },
+            {
+              "name": "minTemp",
+              "displayName": "Min temperature",
+              "schema": "double"
+            },
+            {
+              "name" : "avgTemp",
+              "displayName": "Average Temperature",
+              "schema": "double"
+            },
+            {
+              "name" : "startTime",
+              "displayName": "Start Time",
+              "schema": "dateTime"
+            },
+            {
+              "name" : "endTime",
+              "displayName": "End Time",
+              "schema": "dateTime"
+            }
+          ]
+        }
+      }
+    }
+  ]
 }
 ```
 
-Bu örnekte, iki Özellik (bir salt okunurdur ve bir yazılabilir), telemetri türü ve iki komut gösterilmektedir. En az bir alan açıklamasında şunu vardır:
+Bu örnekte, iki Özellik (bir salt okunurdur ve bir yazılabilir), telemetri türü ve bir komut gösterilmektedir. En az bir alan açıklamasında şunu vardır:
 
 - `@type` özelliğin türünü belirtmek için: `Telemetry` , `Property` , veya `Command` .  Bazı durumlarda tür, değerin nasıl işleneceği hakkında bazı varsayımlar yapmak IoT Central sağlamak için bir anlamsal tür içerir.
 - `name` Telemetri değeri için.
 - `schema` Telemetri veya özelliğin veri türünü belirtmek için. Bu değer, Double, Integer, Boolean veya String gibi bir temel tür olabilir. Karmaşık nesne türleri, diziler ve eşlemeler de desteklenir.
-- `commandType` komutun nasıl işleneceğini belirtmek için.
 
 Görünen ad ve açıklama gibi isteğe bağlı alanlar, arabirime ve yeteneklere daha fazla ayrıntı eklemenizi sağlar.
 
@@ -180,33 +243,36 @@ Yazılabilir özellikler için, cihaz uygulaması, özellik değerini alınıp u
 
 ## <a name="telemetry"></a>Telemetri
 
-IoT Central, panolar ve grafiklerde Telemetriyi görüntülemenizi ve eşiklere ulaşıldığında eylemleri tetiklemek için kuralları kullanmanızı sağlar. IoT Central telemetri değerlerinin nasıl görüntüleneceğini anlamak için veri türleri, birimler ve görünen adlar gibi DCM içindeki bilgileri kullanır.
+IoT Central, panolar ve grafiklerde Telemetriyi görüntülemenizi ve eşiklere ulaşıldığında eylemleri tetiklemek için kuralları kullanmanızı sağlar. IoT Central telemetri değerlerinin nasıl görüntüleneceğini anlamak için, veri türleri, birimler ve görünen adlar gibi cihaz modelindeki bilgileri kullanır.
 
 IoT Central verilerini dışa aktarma özelliğini kullanarak depolama veya Event Hubs gibi diğer hedeflere telemetri akışını sağlayabilirsiniz.
 
 ## <a name="commands"></a>Komutlar
 
-Komutlar zaman uyumlu ya da zaman uyumsuz. Zaman uyumlu bir komutun varsayılan olarak 30 saniye içinde yürütülmesi gerekir ve komut geldiğinde cihazın bağlanması gerekir. Cihaz zaman yanıt verirse veya cihaz bağlı değilse, komut başarısız olur.
+Komutun varsayılan olarak 30 saniye içinde yürütülmesi gerekir ve komut geldiğinde cihazın bağlanması gerekir. Cihaz zaman yanıt verirse veya cihaz bağlı değilse, komut başarısız olur.
 
-Uzun süre çalışan işlemler için zaman uyumsuz komutları kullanın. Cihaz, telemetri iletilerini kullanarak ilerleme bilgileri gönderir. Bu ilerleme iletileri aşağıdaki üst bilgi özelliklerine sahiptir:
+Komutların istek parametreleri olabilir ve bir yanıt döndürebilir.
 
-- `iothub-command-name`: Örneğin, komut adı `UpdateFirmware` .
-- `iothub-command-request-id`: sunucu tarafında oluşturulan ve ilk çağrıda cihaza gönderilen istek KIMLIĞI.
-- `iothub-interface-id`: Bu komutun tanımlanmış olduğu arabirimin KIMLIĞI (örneğin,) `urn:example:AssetTracker:1` .
- `iothub-interface-name`: Örneğin, bu arabirimin örnek adı `myAssetTracker` .
-- `iothub-command-statuscode`: Örneğin, cihazdan döndürülen durum kodu `202` .
+### <a name="offline-commands"></a>Çevrimdışı komutlar
+
+Cihaz şablonundaki bir komutla ilgili olarak, bir cihaz çevrimdışıyken **sırayı** etkinleştirerek kuyruk komutları ' nı seçebilirsiniz.
+
+Çevrimdışı komutlar, çözümünüzde cihaza yönelik tek yönlü bildirimlerdir. Çevrimdışı komutların istek parametreleri olabilir ancak yanıt döndürmez.
+
+> [!NOTE]
+> Bu seçenek yalnızca IoT Central Web Kullanıcı arabiriminde kullanılabilir. Bu ayar, cihaz şablonundan bir modeli veya arabirimi dışa aktardığınızda dahil değildir.
 
 ## <a name="cloud-properties"></a>Bulut özellikleri
 
-Bulut özellikleri, cihaz şablonunun bir parçasıdır, ancak DCM 'nin bir parçası değildir. Bulut özellikleri, çözüm geliştiricisinin IoT Central uygulamasında depolanacak cihaz meta verilerini belirtmesini sağlar. Bulut özellikleri, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
+Bulut özellikleri cihaz şablonunun bir parçasıdır, ancak cihaz modelinin bir parçası değildir. Bulut özellikleri, çözüm geliştiricisinin IoT Central uygulamasında depolanacak cihaz meta verilerini belirtmesini sağlar. Bulut özellikleri bir cihaz geliştiricisinin cihaz modelini uygulamak için yazdığı kodu etkilemez.
 
 Bir çözüm geliştiricisi, uygulamaya bağlı cihazları yönetmek için bir operatör etkinleştirmek üzere cihaz özellikleriyle birlikte panolara ve görünümlere bulut özellikleri ekleyebilir. Bir çözüm geliştiricisi, bir eşik değerini bir operatör tarafından düzenlenebilir hale getirmek için bir kural tanımının parçası olarak bulut özelliklerini de kullanabilir.
 
 ## <a name="customizations"></a>Özelleştirmeler
 
-Özelleştirmeler cihaz şablonunun bir parçasıdır, ancak DCM 'nin bir parçası değildir. Özelleştirmeler, çözüm geliştiricisinin DCM içindeki tanımları geliştirmesini veya geçersiz kılmasını sağlar. Örneğin, bir çözüm geliştiricisi bir telemetri türü veya özelliği için görünen adı değiştirebilir. Bir çözüm geliştiricisi, bir dize cihaz özelliği için minimum veya maksimum uzunluk gibi doğrulama eklemek için özelleştirmeleri de kullanabilir.
+Özelleştirmeler cihaz şablonunun bir parçasıdır, ancak cihaz modelinin bir parçası değildir. Özelleştirmeler, çözüm geliştiricisinin cihaz modelindeki bazı tanımları geliştirmesine veya geçersiz kılmasına izin verir. Örneğin, bir çözüm geliştiricisi bir telemetri türü veya özelliği için görünen adı değiştirebilir. Bir çözüm geliştiricisi, bir dize cihaz özelliği için minimum veya maksimum uzunluk gibi doğrulama eklemek için özelleştirmeleri de kullanabilir.
 
-Özelleştirmeler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkileyebilir. Örneğin, bir özelleştirme minimum ve maksimum dize uzunluklarını veya minimum ve maksimum sayı değerlerini telemetri için ayarlayabilir.
+Özelleştirmeler bir cihaz geliştiricisinin cihaz modelini uygulamak için yazdığı kodu etkileyebilir. Örneğin, bir özelleştirme minimum ve maksimum dize uzunluklarını veya minimum ve maksimum sayı değerlerini telemetri için ayarlayabilir.
 
 ## <a name="views"></a>Görünümler
 
@@ -219,7 +285,7 @@ Bir çözüm geliştiricisi, operatörlerin bağlı cihazları izlemesine ve yö
 - Bir yük bekleyen komutlar da dahil olmak üzere operatör çağrı komutlarına izin veren kutucuklar.
 - Etiketleri, resimleri veya markı metnini görüntüleyen kutucuklar.
 
-Bir görünüme ekleyebileceğiniz telemetri, Özellikler ve komutlar, cihaz şablonundaki DCM, bulut özellikleri ve özelleştirmeler tarafından belirlenir.
+Bir görünüme ekleyebileceğiniz telemetri, Özellikler ve komutlar cihaz şablonundaki cihaz modeli, bulut özellikleri ve özelleştirmeler tarafından belirlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

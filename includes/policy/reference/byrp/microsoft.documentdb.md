@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: eb1f2f138f85edc15da528f24ae9fad5a8b4831d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 29fc078b7a037697f79555fa53f12fb605fceea6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744509"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992572"
 ---
-|Ad<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Cosmos DB hesap, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f905d99-2ab7-462c-a6b0-f709acca6c8f) |Bu bir düzenleme veya uyum gereksinimidir Azure Cosmos DB depolanan verilerin geri kalanında şifrelemeyi denetlemek için müşteri tarafından yönetilen anahtarları kullanın. Müşteri tarafından yönetilen anahtarlar Ayrıca, hizmet tarafından yönetilen anahtarlarla varsayılan olarak en üstüne bir şifreleme katmanı ekleyerek Çift şifreleme sağlar. Bakýn [https://aka.ms/cosmosdb-cmk](https://aka.ms/cosmosdb-cmk) |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_CMK_Deny.json) |
 |[Azure Cosmos DB hesapların güvenlik duvarı kuralları olmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb) |Yapılandırılmış IP kuralları olmayan kaynakları denetleyin veya reddedin ve varsayılan olarak tüm ağlara izin verin. Sanal ağ filtresi etkin olarak tanımlanmış en az bir IP kuralına sahip hesaplara uyumlu olduğu kabul edilir. Ortak erişimi devre dışı bırakan hesaplar da uyumlu olarak kabul edilir. |Denetim, reddetme, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json) |

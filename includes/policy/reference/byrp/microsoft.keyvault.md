@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5018240a9d7a10f25c8314549d0a856c17149087
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 7b6f3098794edcde8d0dd74321c7b3a613bbe0f9
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746661"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992222"
 ---
-|Ad<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Sertifikalar, belirtilen tümleşik sertifika yetkilisi tarafından verilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Anahtar kasasında DigiCert veya GlobalSign gibi sertifikalar veren Azure tümleşik sertifika yetkililerini belirterek kurumsal uyumluluk gereksinimlerinizi yönetin. |Denetim, reddetme, devre dışı |[2.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |
 |[Sertifikalar, belirtilen tümleşik olmayan sertifika yetkilisi tarafından verilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa22f4a40-01d3-4c7d-8071-da157eeff341) |Anahtar Kasanızda sertifika veren özel veya iç sertifika yetkililerini belirterek kurumsal uyumluluk gereksinimlerinizi yönetin. |Denetim, reddetme, devre dışı |[2.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_CustomCAs.json) |

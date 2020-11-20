@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 10b10309e438bab3c99cb2ed7202eaa272d24abe
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905637"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989420"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS koruma planlarını yönetme: izinler ve kısıtlamalar
 
@@ -30,14 +30,14 @@ DDoS koruma planı bölgeler ve abonelikler arasında çalışmaktadır. Aynı p
 
 DDoS koruma planlarıyla çalışmak için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                            | Ad                                     |
+| Eylem                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/Ddosprotectionplanlar/okuma        | DDoS koruma planını okuyun              |
 | Microsoft. Network/Ddosprotectionplanlar/yazma       | DDoS koruma planı oluşturma veya güncelleştirme  |
 | Microsoft. Network/Ddosprotectionplanlar/silme      | DDoS koruma planını silme            |
 | Microsoft. Network/Ddosprotectionplanlar/JOIN/Action | DDoS koruma planına ekleme              |
 
-Bir sanal ağ için DDoS korumasını etkinleştirmek üzere hesabınıza [sanal ağlar için uygun eylemler](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#permissions)de atanmalıdır.
+Bir sanal ağ için DDoS korumasını etkinleştirmek üzere hesabınıza [sanal ağlar için uygun eylemler](../virtual-network/manage-virtual-network.md#permissions)de atanmalıdır.
 
 ## <a name="azure-policy"></a>Azure İlkesi
 
@@ -51,4 +51,4 @@ Bir sanal ağ için DDoS korumasını etkinleştirmek üzere hesabınıza [sanal
 DDoS koruma planınız için telemetri görüntüleme ve yapılandırma hakkında bilgi edinmek için öğreticilere devam edin.
 
 > [!div class="nextstepaction"]
-> [DDoS koruması telemetrisini görüntüleyin ve yapılandırın](telemetry-monitoring-alerting.md)
+> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry-monitoring-alerting.md)

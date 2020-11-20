@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 36e61c8d1e0e41fd981f5483eff1f30814b22b92
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905565"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992378"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS hızlı yanıt
 
@@ -51,7 +51,7 @@ Yalnızca şu durumlarda DRR 'yi devreye almalısınız:
 
 DRR Azure Rapid Response destek modelini izler. Hızlı yanıt hakkında daha fazla bilgi için [Destek kapsamı ve yanıt hızı](https://azure.microsoft.com/en-us/support/plans/response/) ' na bakın.
 
-Daha fazla bilgi edinmek için [DDoS koruması standart belgelerini](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)okuyun.
+Daha fazla bilgi edinmek için [DDoS koruması standart belgelerini](./ddos-protection-overview.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

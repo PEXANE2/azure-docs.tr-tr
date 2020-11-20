@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212187"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94991239"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
 
@@ -41,6 +41,7 @@ Aşağıdaki örnek, Service Bus kuyruğu tetikleyicisi kullanan bir [C# işlevi
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
@@ -49,7 +50,7 @@ public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
     [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
 {
-var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
 message = new SendGridMessage();
 message.AddTo(emailObject.To);
@@ -71,15 +72,16 @@ public class OutgoingEmail
 
 ```cs
 using SendGrid.Helpers.Mail;
+using System.Text.Json;
 
 ...
 
 [FunctionName("SendEmail")]
-public static async void Run(
+public static async Task Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
  [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] IAsyncCollector<SendGridMessage> messageCollector)
 {
- var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
+ var emailObject = JsonSerializer.Deserialize<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
  var message = new SendGridMessage();
  message.AddTo(emailObject.To);
@@ -189,7 +191,7 @@ JavaScript kodu aşağıda verilmiştir:
 ```javascript
 module.exports = function (context, input) {
     var message = {
-         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: { email: "sender@contoso.com" },
         subject: "Azure news",
         content: [{
@@ -204,7 +206,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, SendGrid bağlamasını kullanarak bir e-posta gönderen HTTP ile tetiklenen bir işlev gösterir. Bağlama yapılandırmasında varsayılan değerleri sağlayabilirsiniz. Örneğin, *Kimden* e-posta adresi * üzerindefunction.js*yapılandırılır. 
+Aşağıdaki örnek, SendGrid bağlamasını kullanarak bir e-posta gönderen HTTP ile tetiklenen bir işlev gösterir. Bağlama yapılandırmasında varsayılan değerleri sağlayabilirsiniz. Örneğin, *Kimden* e-posta adresi *üzerindefunction.js* yapılandırılır. 
 
 ```json
 {
@@ -355,16 +357,16 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 Aşağıdaki tabloda, dosyasında  *function.js* bulunan bağlama yapılandırma özellikleri ve `SendGrid` özniteliği/ek açıklaması listelenmektedir.
 
-| *function.js* özelliği | Öznitelik/ek açıklama özelliği | Açıklama | İsteğe Bağlı |
+| *function.js* özelliği | Öznitelik/ek açıklama özelliği | Description | İsteğe Bağlı |
 |--------------------------|-------------------------------|-------------|----------|
-| tür |yok| Olarak ayarlanmalıdır `sendGrid` .| Hayır |
-| yön |yok| Olarak ayarlanmalıdır `out` .| Hayır |
-| name |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer `$return` yalnızca bir dönüş değeri olduğunda geçerlidir. | Hayır |
-| apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
-| şöyle değiştirin:| Amaç | Alıcının e-posta adresi. | Evet |
-| Kaynak| Kaynak | Gönderenin e-posta adresi. |  Evet |
-| Konu| Konu | E-postanın konusu. | Evet |
-| metin| Metin | E-posta içeriği. | Evet |
+| tür |yok| Olarak ayarlanmalıdır `sendGrid` .| No |
+| yön |yok| Olarak ayarlanmalıdır `out` .| No |
+| name |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer `$return` yalnızca bir dönüş değeri olduğunda geçerlidir. | No |
+| apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey* olur.| No |
+| şöyle değiştirin:| Amaç | Alıcının e-posta adresi. | Yes |
+| Kaynak| Kaynak | Gönderenin e-posta adresi. |  Yes |
+| Konu| Konu | E-postanın konusu. | Yes |
+| metin| Metin | E-posta içeriği. | Yes |
 
 İsteğe bağlı özellikler, bağlamada tanımlanmış ve program aracılığıyla eklenmiş ya da geçersiz kılınan varsayılan değerlere sahip olabilir.
 
@@ -390,7 +392,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```  
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 

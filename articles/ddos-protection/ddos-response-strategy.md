@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 23822ce5b311dc479824128d66bc18a15473862d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905564"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992242"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS yanıt stratejisinin bileşenleri
 
@@ -44,9 +44,9 @@ DDoS saldırılarına karşı risk kapsamını sürekli olarak anlamanız zorunl
 
 - Hizmetlerim, birden çok bölgede yük devretmeyle etkin/etkin mi?
 
-Bir uygulamanın normal davranışını anlamanız ve uygulama DDoS saldırısı sırasında beklendiği gibi davranmıyorsa, uygulamaya hazırlanmanız önemlidir. , İstemci davranışını taklit eden, iş açısından kritik uygulamalarınız için yapılandırılmış izleyicilere sahiptir ve ilgili anomali algılandığında size bildirimde bulunur. Uygulamanızın sistem durumu hakkında öngörüler elde etmek için [izleme ve tanılama en iyi uygulamaları](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) bölümüne bakın.
+Bir uygulamanın normal davranışını anlamanız ve uygulama DDoS saldırısı sırasında beklendiği gibi davranmıyorsa, uygulamaya hazırlanmanız önemlidir. , İstemci davranışını taklit eden, iş açısından kritik uygulamalarınız için yapılandırılmış izleyicilere sahiptir ve ilgili anomali algılandığında size bildirimde bulunur. Uygulamanızın sistem durumu hakkında öngörüler elde etmek için [izleme ve tanılama en iyi uygulamaları](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) bölümüne bakın.
 
-[Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı Web uygulamanızı izlemek için Application Insights kullanın. Performans bozuklulıkları otomatik olarak algılar. Sorunları tanılamanıza ve kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olacak analiz araçları içerir. Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır.
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) , birden çok platformda Web geliştiricileri için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı Web uygulamanızı izlemek için Application Insights kullanın. Performans bozuklulıkları otomatik olarak algılar. Sorunları tanılamanıza ve kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olacak analiz araçları içerir. Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır.
 
 ## <a name="customer-ddos-response-team"></a>Müşteri DDoS yanıt ekibi
 

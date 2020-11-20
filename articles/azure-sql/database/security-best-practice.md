@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: c7a94a24bd825249859ff699ab82ce4d3ae8fce1
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842269"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992174"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 > [!NOTE]
 >
 > - Azure AD kimlik doğrulaması Azure SQL denetim günlüklerine kaydedilir, ancak Azure AD oturum açma günlüklerinde değildir.
-> - Azure 'da verilen RBAC izinleri Azure SQL veritabanı veya SQL yönetilen örnek izinleri için geçerlidir. Bu izinlerin mevcut SQL izinleri kullanılarak el ile oluşturulması/eşlenmesi gerekir.
+> - Azure 'da verilen Azure RBAC izinleri, Azure SQL veritabanı veya SQL yönetilen örnek izinleri için geçerlidir. Bu izinlerin mevcut SQL izinleri kullanılarak el ile oluşturulması/eşlenmesi gerekir.
 > - İstemci tarafında, Azure AD kimlik doğrulamasının internet 'e erişmesi veya bir sanal ağa Kullanıcı tanımlı yol (UDR) aracılığıyla ihtiyacı vardır.
 > - Azure AD erişim belirteci, istemci tarafında önbelleğe alınır ve süresi, belirteç yapılandırmasına bağlıdır. [Azure Active Directory yapılandırılabilir belirteç yaşam süreleri](../../active-directory/develop/active-directory-configurable-token-lifetimes.md) makalesine bakın
 > - Azure AD kimlik doğrulaması sorunlarını giderme konusunda yönergeler için şu bloga bakın: [Azure AD sorunlarını giderme](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).

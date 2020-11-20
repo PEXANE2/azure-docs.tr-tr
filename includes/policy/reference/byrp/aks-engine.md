@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3c925d7b7194a1b048dc9ef5e23244f35a29ccab
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 55b914c6a4c2fe7bfaded8c199782b11c38509c7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738756"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989723"
 ---
-|Ad<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Kubernetes kümesinde ayrıcalıklı kapsayıcılara izin verme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Bu ilke bir Kubernetes kümesinde ayrıcalıklı kapsayıcılar oluşturulmasına izin vermiyor. Bu ilke, Kubernetes hizmeti (AKS) için genel kullanıma sunulmuştur ve AKS altyapısı ve Azure Arc etkin Kubernetes için Önizleme. Bu ilkeyi kullanma hakkında yönergeler için, adresini ziyaret edin [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |Denetim, reddetme, devre dışı |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[Kubernetes kümesinde HTTPS girişini zorla](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Bu ilke bir Kubernetes kümesinde HTTPS girişi uygular. Bu ilke, Kubernetes hizmeti (AKS) için genel kullanıma sunulmuştur ve AKS altyapısı ve Azure Arc etkin Kubernetes için Önizleme. Bu ilkeyi kullanma hakkında yönergeler için, adresini ziyaret edin [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |Denetim, reddetme, devre dışı |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |

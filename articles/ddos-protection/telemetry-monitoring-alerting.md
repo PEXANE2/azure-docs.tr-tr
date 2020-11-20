@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: eefb658c689128c1d91858ac906c09e71d05cda6
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 5c80e5e611c275c2a2262963aa0759075fca836b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888955"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989403"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS konuma telemetrisini görüntüleme ve yapılandırma
 
-Azure DDoS koruması standardı, DDoS saldırı analiziyle ayrıntılı saldırı öngörüleri ve görselleştirmeleri sağlar. Sanal ağlarını DDoS saldırılarına karşı koruyan müşteriler, saldırı saldırılarına karşı saldırı ve risk azaltma & raporları aracılığıyla saldırının etkilerini azaltmak için gerçekleştirilen saldırı ve eylemler hakkında ayrıntılı görünürlük sağlar. Zengin telemetri, DDoS saldırısının süresi boyunca ayrıntılı ölçümler dahil olmak üzere Azure Izleyici aracılığıyla sunulur. DDoS koruması tarafından sunulan Azure Izleyici ölçümlerinden herhangi biri için uyarı yapılandırılabilir. Günlüğe kaydetme, Azure Izleme tanılama arabirimi aracılığıyla [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection), splunk (Azure Event Hubs), OMS Log Analytics ve gelişmiş analiz Için Azure depolama ile daha da tümleştirilebilir.
+Azure DDoS koruması standardı, DDoS saldırı analiziyle ayrıntılı saldırı öngörüleri ve görselleştirmeleri sağlar. Sanal ağlarını DDoS saldırılarına karşı koruyan müşteriler, saldırı saldırılarına karşı saldırı ve risk azaltma & raporları aracılığıyla saldırının etkilerini azaltmak için gerçekleştirilen saldırı ve eylemler hakkında ayrıntılı görünürlük sağlar. Zengin telemetri, DDoS saldırısının süresi boyunca ayrıntılı ölçümler dahil olmak üzere Azure Izleyici aracılığıyla sunulur. DDoS koruması tarafından sunulan Azure Izleyici ölçümlerinden herhangi biri için uyarı yapılandırılabilir. Günlüğe kaydetme, Azure Izleme tanılama arabirimi aracılığıyla [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), splunk (Azure Event Hubs), OMS Log Analytics ve gelişmiş analiz Için Azure depolama ile daha da tümleştirilebilir.
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
@@ -49,7 +49,7 @@ Azure Izleyici uyarı yapılandırması kullanılarak saldırı sırasında etki
     |Ad                     | _Myddosalert_ yazın.                                                                                |
     |Abonelik             | Uyarılarını almak istediğiniz genel IP adresini içeren aboneliği seçin.        |
     |Kaynak grubu           | Uyarılarını almak istediğiniz genel IP adresini içeren kaynak grubunu seçin.      |
-    |Kaynak                 | Uyarıları almak istediğiniz genel IP adresini içeren genel IP adresini seçin. DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. Azure App Service ortamları ve Azure VPN Gateway dışında [Azure hizmetleri Için sanal ağda](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services#services-that-can-be-deployed-into-a-virtual-network)listelenen Kaynak Yöneticisi (klasik değil) aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.                   |
+    |Kaynak                 | Uyarıları almak istediğiniz genel IP adresini içeren genel IP adresini seçin. DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. Azure App Service ortamları ve Azure VPN Gateway dışında [Azure hizmetleri Için sanal ağda](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)listelenen Kaynak Yöneticisi (klasik değil) aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.                   |
     |Ölçüm                   | **DDoS saldırısı altında** öğesini seçin.                                                                |
     |Eşik                | 1- **1** saldırı altında olduğunuz anlamına gelir. **0** saldırı altında olmayan anlamına gelir.                         |
     |Dönem                   | Seçtiğiniz değeri seçin.                                                                   |
@@ -95,7 +95,7 @@ DDoS koruması standardı, DDoS 'ın etkinleştirildiği sanal ağdaki korumalı
 
 ## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde DDoS koruma uyarılarını görüntüleme
 
-Azure Güvenlik Merkezi, sorunları araştırmaya ve düzeltmeye yardımcı olacak bilgiler içeren [güvenlik uyarılarının](/azure/security-center/security-center-managing-and-responding-alerts)bir listesini sağlar. Bu özellikle, DDoS saldırılarıyla ilgili uyarılar ve saldırıyı neredeyse güncel olarak azaltmak için gerçekleştirilecek eylemler dahil olmak üzere uyarıların birleştirilmiş bir görünümünü alırsınız.
+Azure Güvenlik Merkezi, sorunları araştırmaya ve düzeltmeye yardımcı olacak bilgiler içeren [güvenlik uyarılarının](../security-center/security-center-managing-and-responding-alerts.md)bir listesini sağlar. Bu özellikle, DDoS saldırılarıyla ilgili uyarılar ve saldırıyı neredeyse güncel olarak azaltmak için gerçekleştirilecek eylemler dahil olmak üzere uyarıların birleştirilmiş bir görünümünü alırsınız.
 Tüm DDoS saldırıları algılama ve risk azaltma için göreceğiniz iki özel uyarı vardır:
 
 - **Genel IP Için DDoS saldırısı algılandı**: Bu uyarı, DDoS Koruması hizmeti, genel IP adreslerinizin bir DDoS saldırısının hedefi olduğunu algıladığında üretilir.

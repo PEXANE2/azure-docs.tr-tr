@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780368"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989199"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -46,17 +46,17 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritaban
 ## <a name="access-management"></a>Erişim yönetimi
 
 > [!IMPORTANT]
-> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)bölümüne bakın.
+> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için [Azure Portal Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)bölümüne bakın.
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
-- **SQL kimlik doğrulaması** :
+- **SQL kimlik doğrulaması**:
 
     SQL kimlik doğrulaması, Kullanıcı adı ve parola kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği ile bağlantı kurulurken bir kullanıcının kimlik doğrulamasını ifade eder. Sunucu oluşturulurken Kullanıcı adı ve parola ile **Sunucu Yöneticisi** oturum açma belirtilmelidir. Bu kimlik bilgilerini kullanarak **Sunucu Yöneticisi** , veritabanı sahibi olarak bu sunucu veya örnekteki herhangi bir veritabanında kimlik doğrulaması yapabilir. Bundan sonra, ek SQL oturum açmaları ve kullanıcılar, kullanıcıların Kullanıcı adı ve parola kullanarak bağlanmasına olanak tanıyan Sunucu Yöneticisi tarafından oluşturulabilir.
 
-- **Azure Active Directory kimlik doğrulaması** :
+- **Azure Active Directory kimlik doğrulaması**:
 
     Azure Active Directory kimlik doğrulaması, Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE ANALYTICS](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'e Azure Active Directory (Azure AD) kimlikleri kullanılarak bağlanma mekanizmasıdır. Azure AD kimlik doğrulaması, yöneticilerin diğer Azure hizmetleriyle birlikte veritabanı kullanıcılarının kimliklerini ve izinlerini tek bir merkezi konumda merkezi olarak yönetmesine olanak tanır. Bu, parola depolamanın en az düzeyde bir kısmını içerir ve merkezi parola döndürme ilkelerini sunar.
 
@@ -65,7 +65,7 @@ Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işl
     Kullanılabilir ek Azure AD kimlik doğrulama seçenekleri [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) ve [koşullu erişim](conditional-access-configure.md)dahil [SQL Server Management Studio bağlantılar için evrensel kimlik doğrulaması Active Directory](authentication-mfa-ssms-overview.md) .
 
 > [!IMPORTANT]
-> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/overview.md). Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için geçerlidir.* Gereken ağ yapılandırması hakkında daha fazla bilgi için lütfen [yönetilen bir örneğe bağlanma](../managed-instance/connect-application-instance.md) hakkında aşağıdaki makaleye bakın.
+> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md). Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için geçerlidir.* Gereken ağ yapılandırması hakkında daha fazla bilgi için lütfen [yönetilen bir örneğe bağlanma](../managed-instance/connect-application-instance.md) hakkında aşağıdaki makaleye bakın.
 
 ## <a name="authorization"></a>Yetkilendirme
 
@@ -130,7 +130,7 @@ Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir 
 
 ![Dinamik veri maskeleme gösteren diyagram. Bir iş uygulaması, verileri iş uygulamasına geri göndermeden önce maskelerden oluşan bir SQL veritabanına gönderir.](./media/security-overview/azure-database-ddm.png)
 
-Dinamik veri maskeleme, hassas verileri ayrıcalıksız kullanıcılarla maskeleyerek kısıtlar. Dinamik veri maskeleme, Azure SQL veritabanı ve SQL yönetilen örneği 'nde potansiyel olarak hassas verileri otomatik olarak bulur ve uygulama katmanında en az etkiyle bu alanları maskelemek için eylem yapılabilir öneriler sağlar. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde karartır ancak veritabanındaki veriler değişmez. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL yönetilen örnek dinamik veri maskeleme 'yi kullanmaya başlama](dynamic-data-masking-overview.md).
+Dinamik veri maskeleme, hassas verilerin görünürlüğünü ayrıcalık sahibi olmayan kullanıcılardan gizler. Dinamik veri maskeleme, Azure SQL veritabanı ve SQL yönetilen örneği 'nde potansiyel olarak hassas verileri otomatik olarak bulur ve uygulama katmanında en az etkiyle bu alanları maskelemek için eylem yapılabilir öneriler sağlar. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde karartır ancak veritabanındaki veriler değişmez. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL yönetilen örnek dinamik veri maskeleme 'yi kullanmaya başlama](dynamic-data-masking-overview.md).
 
 ## <a name="security-management"></a>Güvenlik yönetimi
 

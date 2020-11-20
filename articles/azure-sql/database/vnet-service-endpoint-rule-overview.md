@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5c5276f11da687f14630bafd007532d172ef3737
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325002"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990814"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ Sanal ağ hizmet uç noktalarının yönetiminde güvenlik rollerinin bir ayrım
 - **Ağ Yöneticisi:** &nbsp; Uç noktasını açın.
 - **Veritabanı Yöneticisi:** &nbsp; Verilen alt ağı sunucuya eklemek için erişim denetim listesini (ACL) güncelleştirin.
 
-*RBAC alternatifi:*
+*Azure RBAC alternatifi:*
 
 Ağ yöneticisinin ve veritabanı yöneticisinin rollerinin sanal ağ kurallarını yönetmek için gerekenden daha fazla özelliği vardır. Yalnızca kendi yeteneklerinin bir alt kümesi gereklidir.
 
@@ -89,7 +89,7 @@ Azure SQL veritabanı için sanal ağ kuralları özelliği aşağıdaki sınır
 
 Azure SQL veritabanı için hizmet uç noktaları kullanırken aşağıdaki noktaları gözden geçirin:
 
-- **Azure SQL veritabanı genel IP 'Lerine giden** : ağ güvenlik grupları (NSG 'ler), bağlantıya izin vermek IÇIN Azure SQL veritabanı 'na açık olmalıdır. Bunu Azure SQL veritabanı için NSG [hizmet etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags) kullanarak yapabilirsiniz.
+- **Azure SQL veritabanı genel IP 'Lerine giden**: ağ güvenlik grupları (NSG 'ler), bağlantıya izin vermek IÇIN Azure SQL veritabanı 'na açık olmalıdır. Bunu Azure SQL veritabanı için NSG [hizmet etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags) kullanarak yapabilirsiniz.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -136,7 +136,7 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
    > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md)kullanarak **v2 'ye yükseltmeniz** gerekir.
    > - Azure Data Lake Storage 2. ile ilgili bilinen sorunlar için lütfen bu [kılavuza](../../storage/blobs/data-lake-storage-known-issues.md)bakın.
 
-1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle** ' yi seçin. #1 adım Azure Active Directory (AAD) ile kaydettiğiniz Azure SYNAPSE analizlerinizi barındıran sunucuya **Depolama Blobu verileri katkıda bulunan** Azure rolü atayın.
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. #1 adım Azure Active Directory (AAD) ile kaydettiğiniz Azure SYNAPSE analizlerinizi barındıran sunucuya **Depolama Blobu verileri katkıda bulunan** Azure rolü atayın.
 
    > [!NOTE]
    > Yalnızca depolama hesabında sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md)bakın.
@@ -192,7 +192,7 @@ Bağlantı hatası 40914, Azure portal güvenlik duvarı bölmesinde belirtilen 
 
 ### <a name="error-40914"></a>Hata 40914
 
-*İleti metni:* Oturum açma tarafından istenen ' *[sunucu-adı]* ' sunucusu açılamıyor. İstemcinin sunucuya erişmesine izin verilmiyor.
+*İleti metni:* Oturum açma tarafından istenen '*[sunucu-adı]*' sunucusu açılamıyor. İstemcinin sunucuya erişmesine izin verilmiyor.
 
 *Hata açıklaması:* İstemci, sanal ağ sunucusu uç noktaları olan bir alt ağda bulunur. Ancak sunucuda, veritabanıyla iletişim kurmak için gereken alt ağa izin veren bir sanal ağ kuralı yok.
 
@@ -231,16 +231,16 @@ Dahili olarak, SQL VNet eylemleri için PowerShell cmdlet 'leri REST API 'Leri �
 
 Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü adıyla* etiketlenmiş bir alt ağa sahip olmanız gerekir.
 
-- İlgili uç nokta türü adı **Microsoft. SQL** ' dir.
+- İlgili uç nokta türü adı **Microsoft. SQL**' dir.
 - Alt ağınız tür adıyla etiketlenmemişse, bkz. [alt ağınızın bir uç nokta olduğunu doğrulayın][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
 
-2. **SQL Server 'lar** için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar** ' ı seçin.
+2. **SQL Server 'lar** için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
 
 3. **Azure hizmetleri denetimine erişime Izin ver** denetimini kapalı olarak ayarlayın.
 
@@ -255,7 +255,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
     > [!TIP]
     > Alt ağınız için doğru **Adres önekini** dahil etmeniz gerekir. Değeri portalda bulabilirsiniz.
-    > Tüm **kaynaklara** git &gt; **Tüm** &gt; **sanal ağlar**. Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar** ' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
+    > Tüm **kaynaklara** git &gt; **Tüm** &gt; **sanal ağlar**. Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar**' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
 
     ![Yeni kural için alanları doldur.][image-portal-firewall-create-update-vnet-rule-20-png]
 

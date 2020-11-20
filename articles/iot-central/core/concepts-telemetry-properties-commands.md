@@ -3,17 +3,17 @@ title: Azure IoT Central telemetri, özellik ve komut yükleri | Microsoft Docs
 description: Azure IoT Central cihaz şablonları, bir cihazın telemetri, Özellikler ve komutlarının uygulanması gerektiğini belirtmenize olanak tanır. Bir cihazın IoT Central ile değişimi için veri biçimini anlayın.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/12/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427873"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989556"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, özellik ve komut yükleri
 
@@ -29,12 +29,12 @@ Bu makalede, cihaz geliştiricileri için cihazların bir cihaz şablonunda tan�
 
 Makale, olası telemetri, özellik ve komut yükünün her türünü tanımlamaz, ancak örnekler tüm anahtar türlerini gösterir.
 
-Her örnek, cihazın IoT Central uygulamayla nasıl etkileşime gireceğini göstermek için türü ve örnek JSON yüklerini tanımlayan cihaz yetenek modeli 'nden (DCM) bir kod parçacığı gösterir.
+Her örnek, cihazın IoT Central uygulamayla nasıl etkileşime gireceğini göstermek için türü ve örnek JSON yüklerini tanımlayan cihaz modelinden bir kod parçacığı gösterir.
 
 > [!NOTE]
-> IoT Central geçerli bir JSON kabul eder, ancak yalnızca DCM içindeki bir tanımla eşleşiyorsa görselleştirmeler için kullanılabilir. Tanımıyla eşleşmeyen verileri dışarı aktarabilirsiniz, bkz. [Azure 'Da IoT verilerini hedeflere aktarma](howto-export-data.md).
+> IoT Central geçerli bir JSON kabul eder, ancak yalnızca cihaz modelindeki bir tanıma eşleşiyorsa görselleştirmeler için kullanılabilir. Tanımıyla eşleşmeyen verileri dışarı aktarabilirsiniz, bkz. [Azure 'Da IoT verilerini hedeflere aktarma](howto-export-data.md).
 
-DCM 'yi tanımlayan JSON dosyası [Digital Ikizi tanım dili (DTDL) v1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)kullanır. Bu belirtim `@id` özellik biçiminin tanımını içerir.
+Cihaz modelini tanımlayan JSON dosyası [Digital Ikizi tanım dili (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)kullanır.
 
 Kullanımda olan bu yüklerden bazılarını gösteren örnek cihaz kodu için bkz. [azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Node.js)](tutorial-connect-device-nodejs.md) ve [bir Istemci uygulamasını oluşturup Azure IoT Central uygulamanız (Python)](tutorial-connect-device-python.md) öğreticilerimize bağlama.
 
@@ -56,11 +56,10 @@ IoT Central, bir cihazın bir uygulamaya gönderdiği ham verileri görüntülem
 
 Bu bölümde, bir cihazın IoT Central uygulamasına akışı yapılan temel telemetri türleri örnekleri gösterilmektedir.
 
-Bir DCM 'deki aşağıdaki kod parçacığında `boolean` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `boolean` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "BooleanTelemetry"
@@ -76,11 +75,10 @@ Bir cihaz istemcisi, aşağıdaki örnekte gösterildiği gibi Telemetriyi JSON 
 { "BooleanTelemetry": true }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `string` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `string` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "StringTelemetry"
@@ -96,11 +94,10 @@ Bir cihaz istemcisi, aşağıdaki örnekte gösterildiği gibi Telemetriyi JSON 
 { "StringTelemetry": "A string value - could be a URL" }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `integer` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `integer` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "IntegerTelemetry"
@@ -117,11 +114,10 @@ Bir cihaz istemcisi, aşağıdaki örnekte gösterildiği gibi Telemetriyi JSON 
 { "IntegerTelemetry": 23 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `double` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `double` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DoubleTelemetry"
@@ -137,11 +133,10 @@ Bir cihaz istemcisi, aşağıdaki örnekte gösterildiği gibi Telemetriyi JSON 
 { "DoubleTelemetry": 56.78 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `dateTime` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `dateTime` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DateTimeTelemetry"
@@ -151,17 +146,16 @@ Bir DCM 'deki aşağıdaki kod parçacığında `dateTime` telemetri türünün 
 }
 ```
 
-Bir cihaz istemcisi telemetrinin aşağıdaki örnek `DateTime` türler ıso 8061 uyumlu olmalıdır:
+Bir cihaz istemcisi Telemetriyi aşağıdaki örnek `DateTime` türler ıso 8061 biçiminde olması gereken JSON olarak göndermelidir:
 
 ```json
 { "DateTimeTelemetry": "2020-08-30T19:16:13.853Z" }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `duration` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `duration` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "DurationTelemetry"
@@ -171,7 +165,7 @@ Bir DCM 'deki aşağıdaki kod parçacığında `duration` telemetri türünün 
 }
 ```
 
-Bir cihaz istemcisi, aşağıdaki örnek süreler ISO 8601 süresi uyumlu olmalıdır:
+Bir cihaz istemcisi, aşağıdaki örnek süreler ISO 8601 biçiminde olmalıdır:
 
 ```json
 { "DurationTelemetry": "PT10H24M6.169083011336625S" }
@@ -181,11 +175,10 @@ Bir cihaz istemcisi, aşağıdaki örnek süreler ISO 8601 süresi uyumlu olmal�
 
 Bu bölümde, bir cihazın IoT Central uygulamasına akışını sağlayan karmaşık telemetri türleri örnekleri gösterilmektedir.
 
-Bir DCM 'deki aşağıdaki kod parçacığında `geopoint` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `geopoint` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "GeopointTelemetry"
@@ -207,18 +200,16 @@ Bir cihaz istemcisi, aşağıdaki örneğe benzer şekilde Telemetriyi JSON olar
 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `Enum` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `Enum` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "EnumTelemetry"
   },
   "name": "EnumTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -226,8 +217,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Enum` telemetri türünün tan�
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -235,8 +224,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Enum` telemetri türünün tan�
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -244,8 +231,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Enum` telemetri türünün tan�
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -263,26 +248,22 @@ Bir cihaz istemcisi, aşağıdaki örneğe benzer şekilde Telemetriyi JSON olar
 { "EnumTelemetry": 1 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `Object` telemetri türünün tanımı gösterilmektedir. Bu nesne, ve türlerine sahip üç alana sahiptir `dateTime` `integer` `Enum` :
+Bir cihaz modelinden aşağıdaki kod parçacığında `Object` telemetri türünün tanımı gösterilmektedir. Bu nesne, ve türlerine sahip üç alana sahiptir `dateTime` `integer` `Enum` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "ObjectTelemetry"
   },
   "name": "ObjectTelemetry",
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property1"
         },
@@ -290,8 +271,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Object` telemetri türünün ta
         "schema": "dateTime"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property2"
         },
@@ -299,14 +278,11 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Object` telemetri türünün ta
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Property3"
         },
         "name": "Property3",
         "schema": {
-          "@id": "<element id>",
           "@type": "Enum",
           "displayName": {
             "en": "Enum"
@@ -314,8 +290,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Object` telemetri türünün ta
           "valueSchema": "integer",
           "enumValues": [
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item1"
               },
@@ -323,8 +297,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Object` telemetri türünün ta
               "name": "Item1"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item2"
               },
@@ -332,8 +304,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında `Object` telemetri türünün ta
               "name": "Item2"
             },
             {
-              "@id": "<element id>",
-              "@type": "EnumValue",
               "displayName": {
                 "en": "Item3"
               },
@@ -360,11 +330,10 @@ Bir cihaz istemcisi, aşağıdaki örneğe benzer şekilde Telemetriyi JSON olar
 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında `vector` telemetri türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında `vector` telemetri türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Telemetry",
   "displayName": {
     "en": "VectorTelemetry"
@@ -390,14 +359,13 @@ Bir cihaz istemcisi, aşağıdaki örnekte gösterildiği gibi Telemetriyi JSON 
 
 Bu bölümde, telemetri olaylarının örnekleri ve bir cihazın IoT Central uygulamasına gönderdiği durumlar gösterilmektedir.
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir olay türünün tanımı gösterilmektedir `integer` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `integer` olay türü tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/Event"
+    "Event"
   ],
   "displayName": {
     "en": "IntegerEvent"
@@ -413,27 +381,23 @@ Bir cihaz istemcisi, olay verilerini aşağıdaki örnekteki gibi görünen JSON
 { "IntegerEvent": 74 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir durum türünün tanımı gösterilmektedir `integer` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `integer` durum türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": [
     "Telemetry",
-    "SemanticType/State"
+    "State"
   ],
   "displayName": {
     "en": "IntegerState"
   },
   "name": "IntegerState",
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level1"
         },
@@ -441,8 +405,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir durum türünün tanımı g�
         "name": "Level1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level2"
         },
@@ -450,8 +412,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir durum türünün tanımı g�
         "name": "Level2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Level3"
         },
@@ -478,17 +438,17 @@ Bir cihaz istemcisi, durumu aşağıdaki örnekte gösterildiği gibi JSON olara
 
 Bu bölümde, bir cihazın IoT Central uygulamasına gönderdiği temel özellik türlerinin örnekleri gösterilmektedir.
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `boolean` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `boolean` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "BooleanProperty"
   },
   "name": "BooleanProperty",
-  "schema": "boolean"
+  "schema": "boolean",
+  "writable": false
 }
 ```
 
@@ -498,17 +458,17 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 { "BooleanProperty": false }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `boolean` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `boolean` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "LongProperty"
   },
   "name": "LongProperty",
-  "schema": "long"
+  "schema": "long",
+  "writable": false
 }
 ```
 
@@ -518,17 +478,17 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 { "LongProperty": 439 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `date` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `date` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DateProperty"
   },
   "name": "DateProperty",
-  "schema": "date"
+  "schema": "date",
+  "writable": false
 }
 ```
 
@@ -538,17 +498,17 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 { "DateProperty": "2020-05-17" }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `duration` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `duration` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "DurationProperty"
   },
   "name": "DurationProperty",
-  "schema": "duration"
+  "schema": "duration",
+  "writable": false
 }
 ```
 
@@ -558,17 +518,17 @@ Bir cihaz istemcisi, cihazda bildirilen bir özellik olarak aşağıdaki örnekt
 { "DurationProperty": "PT10H24M6.169083011336625S" }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `float` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `float` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "FloatProperty"
   },
   "name": "FloatProperty",
-  "schema": "float"
+  "schema": "float",
+  "writable": false
 }
 ```
 
@@ -578,17 +538,17 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 { "FloatProperty": 1.9 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `string` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `string` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringProperty"
   },
   "name": "StringProperty",
-  "schema": "string"
+  "schema": "string",
+  "writable": false
 }
 ```
 
@@ -602,17 +562,17 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 
 Bu bölümde, bir cihazın IoT Central uygulamasına gönderdiği karmaşık özellik türleri örnekleri gösterilmektedir.
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `geopoint` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `geopoint` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "GeopointProperty"
   },
   "name": "GeopointProperty",
-  "schema": "geopoint"
+  "schema": "geopoint",
+  "writable": false
 }
 ```
 
@@ -628,18 +588,17 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `Enum` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `Enum` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumProperty"
   },
   "name": "EnumProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -647,8 +606,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -656,8 +613,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -665,8 +620,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -684,26 +637,23 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 { "EnumProperty": 1 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `Object` . Bu nesne, türlerine sahip iki alana sahiptir `string` ve `integer` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `Object` özellik türünün tanımı gösterilmektedir. Bu nesne, türlerine sahip iki alana sahiptir `string` ve `integer` :
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "ObjectProperty"
   },
   "name": "ObjectProperty",
+  "writable": false,
   "schema": {
-    "@id": "<element id>",
     "@type": "Object",
     "displayName": {
       "en": "Object"
     },
     "fields": [
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field1"
         },
@@ -711,8 +661,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı
         "schema": "integer"
       },
       {
-        "@id": "<element id>",
-        "@type": "SchemaField",
         "displayName": {
           "en": "Field2"
         },
@@ -735,17 +683,17 @@ Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örne
 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir özellik türünün tanımı gösterilmektedir `vector` :
+Bir cihaz modelinden aşağıdaki kod parçacığında bir `vector` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "VectorProperty"
   },
   "name": "VectorProperty",
-  "schema": "vector"
+  "schema": "vector",
+  "writable": false
 }
 ```
 
@@ -780,11 +728,10 @@ IoT Central cihazdan yazılabilir Özellik güncelleştirmelerine yanıt bekliyo
 
 `ad` , bir seçenek dize açıklamasıdır.
 
-Bir DCM 'deki aşağıdaki kod parçacığında yazılabilir `string` özellik türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında yazılabilir `string` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "StringPropertyWritable"
@@ -816,11 +763,10 @@ Cihaz, güncelleştirmeyi tamamladıktan sonra IoT Central aşağıdaki JSON yü
 }
 ```
 
-Bir DCM 'deki aşağıdaki kod parçacığında yazılabilir `Enum` özellik türünün tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında yazılabilir `Enum` özellik türünün tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Property",
   "displayName": {
     "en": "EnumPropertyWritable"
@@ -828,7 +774,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında yazılabilir `Enum` özellik tü
   "name": "EnumPropertyWritable",
   "writable": true,
   "schema": {
-    "@id": "<element id>",
     "@type": "Enum",
     "displayName": {
       "en": "Enum"
@@ -836,8 +781,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında yazılabilir `Enum` özellik tü
     "valueSchema": "integer",
     "enumValues": [
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item1"
         },
@@ -845,8 +788,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında yazılabilir `Enum` özellik tü
         "name": "Item1"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item2"
         },
@@ -854,8 +795,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında yazılabilir `Enum` özellik tü
         "name": "Item2"
       },
       {
-        "@id": "<element id>",
-        "@type": "EnumValue",
         "displayName": {
           "en": "Item3"
         },
@@ -890,36 +829,30 @@ Cihaz, güncelleştirmeyi tamamladıktan sonra IoT Central aşağıdaki JSON yü
 
 ## <a name="commands"></a>Komutlar
 
-### <a name="synchronous-command-types"></a>Zaman uyumlu komut türleri
+> [!NOTE]
+> IoT Central Web Kullanıcı arabiriminde, bir komut için **çevrimdışı** seçeneğini belirleyebilirsiniz. Bu ayar, cihaz şablonundan bir modeli veya arabirimi dışa aktardığınızda dahil değildir.
 
-Bir DCM 'nin aşağıdaki kod parçacığında parametresi olmayan ve cihazın herhangi bir şeyi döndürmesini beklemediği zaman uyumlu bir komutun tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında, parametresi olmayan ve cihazın herhangi bir şeyi döndürmesini beklemediği bir komutun tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "displayName": {
-    "en": "SynchronousCommandBasic"
+    "en": "CommandBasic"
   },
-  "name": "SynchronousCommandBasic"
+  "name": "CommandBasic"
 }
 ```
 
 Cihaz, istekte boş bir yük alır ve `200` başarıyı göstermek için http yanıt kodu ile yanıtta boş bir yük döndürmelidir.
 
-Bir DCM 'nin aşağıdaki kod parçacığında, bir tamsayı parametresi olan ve cihazın bir tamsayı değeri döndürmesini bekleyen zaman uyumlu bir komutun tanımı gösterilmektedir:
+Bir cihaz modelinden aşağıdaki kod parçacığında, bir tamsayı parametresi olan ve cihazın bir tamsayı değeri döndürmesini bekleyen bir komutun tanımı gösterilmektedir:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -927,8 +860,7 @@ Bir DCM 'nin aşağıdaki kod parçacığında, bir tamsayı parametresi olan ve
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -936,39 +868,32 @@ Bir DCM 'nin aşağıdaki kod parçacığında, bir tamsayı parametresi olan ve
     "schema": "integer"
   },
   "displayName": {
-    "en": "SynchronousCommandSimple"
+    "en": "CommandSimple"
   },
-  "name": "SynchronousCommandSimple"
+  "name": "CommandSimple"
 }
 ```
 
 Cihaz, istek yükü olarak bir tamsayı değeri alır. Bu cihaz, `200` başarıyı göstermek için bir http yanıt kodu ile yanıt yükü olarak bir tamsayı değeri döndürmelidir.
 
-Bir DCM 'deki aşağıdaki kod parçacığında, bir nesne parametresi olan ve cihazın bir nesne döndürmesini bekleyen zaman uyumlu bir komutun tanımı gösterilmektedir. Bu örnekte, her iki nesnenin de Integer ve String alanları vardır:
+Bir cihaz modelinden aşağıdaki kod parçacığında, bir nesne parametresi olan ve cihazın bir nesne döndürmesini bekleyen bir komutun tanımı gösterilmektedir. Bu örnekte, her iki nesnenin de Integer ve String alanları vardır:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "synchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
     "name": "RequestParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -976,8 +901,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında, bir nesne parametresi olan ve c
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -988,22 +911,18 @@ Bir DCM 'deki aşağıdaki kod parçacığında, bir nesne parametresi olan ve c
     }
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
     "name": "ResponseParam",
     "schema": {
-      "@id": "<element id>",
       "@type": "Object",
       "displayName": {
         "en": "Object"
       },
       "fields": [
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field1"
           },
@@ -1011,8 +930,6 @@ Bir DCM 'deki aşağıdaki kod parçacığında, bir nesne parametresi olan ve c
           "schema": "integer"
         },
         {
-          "@id": "<element id>",
-          "@type": "SchemaField",
           "displayName": {
             "en": "Field2"
           },
@@ -1023,9 +940,9 @@ Bir DCM 'deki aşağıdaki kod parçacığında, bir nesne parametresi olan ve c
     }
   },
   "displayName": {
-    "en": "SynchronousCommandComplex"
+    "en": "CommandComplex"
   },
-  "name": "SynchronousCommandComplex"
+  "name": "CommandComplex"
 }
 ```
 
@@ -1041,19 +958,15 @@ Aşağıdaki kod parçacığında cihazdan gönderilen örnek bir yanıt yükü 
 { "Field1": 87, "Field2": "Another string value" }
 ```
 
-### <a name="asynchronous-command-types"></a>Zaman uyumsuz komut türleri
+### <a name="long-running-commands"></a>Uzun süre çalışan komutlar
 
-Bir DCM 'deki aşağıdaki kod parçacığında bir zaman uyumsuz komutun tanımı gösterilmektedir. Komutun bir tamsayı parametresi vardır ve cihazın bir tamsayı değeri döndürmesini bekler:
+Bir cihaz modelinden aşağıdaki kod parçacığında bir komutun tanımı gösterilmektedir. Komutun bir tamsayı parametresi vardır ve cihazın bir tamsayı değeri döndürmesini bekler:
 
 ```json
 {
-  "@id": "<element id>",
   "@type": "Command",
-  "commandType": "asynchronous",
-  "durable": false,
   "request": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "RequestParam"
     },
@@ -1061,8 +974,7 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir zaman uyumsuz komutun tanım
     "schema": "integer"
   },
   "response": {
-    "@id": "<element id>",
-    "@type": "SchemaField",
+    "@type": "CommandPayload",
     "displayName": {
       "en": "ResponseParam"
     },
@@ -1070,19 +982,19 @@ Bir DCM 'deki aşağıdaki kod parçacığında bir zaman uyumsuz komutun tanım
     "schema": "integer"
   },
   "displayName": {
-    "en": "AsynchronousCommandSimple"
+    "en": "LongRunningCommandSimple"
   },
-  "name": "AsynchronousCommandSimple"
+  "name": "LongRunningCommandSimple"
 }
 ```
 
-Cihaz, istek yükü olarak bir tamsayı değeri alır. Cihazın `202` zaman uyumsuz işleme isteğini kabul ettiğini belirten bir http yanıt kodu ile birlikte boş bir yanıt yükü döndürmelidir.
+Cihaz, istek yükü olarak bir tamsayı değeri alır. Cihazın bu komutu işlemesi için zaman ihtiyacı varsa, `202` cihazın işleme isteğini kabul ettiğini göstermek için bir http yanıt koduyla boş bir yanıt yükü döndürmelidir.
 
 Cihaz isteği işlemeyi tamamladığında, aşağıdaki örnek gibi görünen IoT Central bir özellik göndermelidir. Özellik adı, komut adıyla aynı olmalıdır:
 
 ```json
 {
-  "AsynchronousCommandSimple": {
+  "LongRunningCommandSimple": {
     "value": 87
   }
 }

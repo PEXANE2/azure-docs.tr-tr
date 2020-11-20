@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 133a27d8aef6c9df16ffcabfb4fac6c118665890
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905606"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992395"
 ---
-# <a name="azure-ddos-protection-standard-features"></a>Azure DDoS koruması standart özellikleri
+# <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Koruması Standart'ın özellikleri
 
 Aşağıdaki bölümlerde, Azure DDoS koruması standart hizmetinin temel özellikleri ana hatlarıyla verilmiştir.
 
@@ -48,11 +48,11 @@ Azure DDoS koruması temel hizmeti, müşterileri korumanıza ve diğer müşter
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS koruması telemetrisi, izleme ve uyarı
 
-DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](/azure/azure-monitor/overview) aracılığıyla zengin telemetri sunar. DDoS korumasının kullandığı Azure Izleyici ölçümlerinden herhangi biri için uyarıları yapılandırabilirsiniz. Azure Izleyici tanılama arabirimi aracılığıyla, gelişmiş analiz için Azure depolama ile splunk (Azure Event Hubs), Azure Izleyici günlükleri ve Azure Storage ile günlüğe kaydetmeyi tümleştirebilir.
+DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](../azure-monitor/overview.md) aracılığıyla zengin telemetri sunar. DDoS korumasının kullandığı Azure Izleyici ölçümlerinden herhangi biri için uyarıları yapılandırabilirsiniz. Azure Izleyici tanılama arabirimi aracılığıyla, gelişmiş analiz için Azure depolama ile splunk (Azure Event Hubs), Azure Izleyici günlükleri ve Azure Storage ile günlüğe kaydetmeyi tümleştirebilir.
 
 ### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure Portal ölçümleri **İzle** ' yi seçin  >  **Metrics** . **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure Portal ölçümleri **İzle**' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
 DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri** seçerek ilke eşiklerini görüntüleyebilirsiniz.
 
@@ -72,7 +72,7 @@ Daha fazla bilgi için, [Azure Portal kullanarak Azure DDoS koruması standardı
 
 ## <a name="web-application-firewall-for-resource-attacks"></a>Kaynak saldırıları için Web uygulaması güvenlik duvarı
 
-Uygulama katmanında kaynak saldırılarına özgü, Web uygulamalarının güvenliğini sağlamaya yardımcı olmak için bir Web uygulaması güvenlik duvarı (WAF) yapılandırmanız gerekir. Bir WAF, SQL ınjec, siteler arası komut dosyası, DDoS ve diğer katman 7 saldırılarını engellemek için gelen Web trafiğini inceler. Azure, yaygın güvenlik açıklarından ve güvenlik açıklarından Web uygulamalarınızın merkezi olarak korunması için [Application Gateway bir özelliği olarak WAF](/azure/application-gateway/application-gateway-web-application-firewall-overview) sağlar. Azure iş ortaklarından [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)aracılığıyla gereksinimlerinize uygun olabilecek başka WAF teklifleri de mevcuttur.
+Uygulama katmanında kaynak saldırılarına özgü, Web uygulamalarının güvenliğini sağlamaya yardımcı olmak için bir Web uygulaması güvenlik duvarı (WAF) yapılandırmanız gerekir. Bir WAF, SQL ınjec, siteler arası komut dosyası, DDoS ve diğer katman 7 saldırılarını engellemek için gelen Web trafiğini inceler. Azure, yaygın güvenlik açıklarından ve güvenlik açıklarından Web uygulamalarınızın merkezi olarak korunması için [Application Gateway bir özelliği olarak WAF](../web-application-firewall/ag/ag-overview.md) sağlar. Azure iş ortaklarından [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)aracılığıyla gereksinimlerinize uygun olabilecek başka WAF teklifleri de mevcuttur.
 
 Web uygulaması güvenlik duvarları, Volumetric ve durum tükenmesi saldırılarına açıktır. Volumetric ve protokol saldırılarına karşı korumaya yardımcı olmak için WAF sanal ağı üzerinde DDoS koruma standardının etkinleştirilmesini önemle öneririz. Daha fazla bilgi için [DDoS koruması başvuru mimarileri](ddos-protection-reference-architectures.md) bölümüne bakın.
 

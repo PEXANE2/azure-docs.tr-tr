@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790500"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989131"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL veritabanı için DNS diğer adı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,7 +61,7 @@ Aşağıdaki özellikler, sunucunuzun her bir DNS diğer adı için geçerlidir:
   - Bir sunucuyu bıraktığınızda, Azure sistemi sunucuya başvuran tüm DNS diğer adlarını da bırakır.
 - *Hiçbir bölgeye bağlanmadı:* DNS diğer adları bir bölgeye bağlanmamış. Herhangi bir DNS diğer adı, herhangi bir coğrafi bölgede yer alan bir sunucuya başvuracak şekilde güncelleştirilemeyebilir.
   - Ancak diğer bir sunucuya başvuracak bir diğer ad güncelleştirilirken her iki sunucu da aynı Azure *aboneliğinde* bulunmalıdır.
-- *İzinler:* Bir DNS diğer adını yönetmek için, kullanıcının *sunucu katılımcısı* izinlerinin veya daha yüksek olması gerekir. Daha fazla bilgi için [Azure portal Role-Based Access Control kullanmaya başlama](../../role-based-access-control/overview.md)bölümüne bakın.
+- *İzinler:* Bir DNS diğer adını yönetmek için, kullanıcının *sunucu katılımcısı* izinlerinin veya daha yüksek olması gerekir. Daha fazla bilgi için bkz. [Azure Portal Azure rol tabanlı erişim denetimi ile çalışmaya başlama](../../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>DNS diğer adlarınızı yönetin
 

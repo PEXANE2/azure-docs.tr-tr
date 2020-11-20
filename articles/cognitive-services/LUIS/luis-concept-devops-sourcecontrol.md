@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309515"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990576"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
 
@@ -54,11 +54,11 @@ Bir LUO uygulamasını `.lu` biçimde kaydetmek ve kaynak denetimi altına yerle
 
 > [!TIP]
 > Bir LUO uygulamasının JSON dışarı aktarıcısı ile çalışıyorsanız, [Botbuilder-Tools LUSıS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)' yı kullanarak [bunu baaşağı dönüştürebilirsiniz](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) . `--sort`Amaçları ve dıklarınızı alfabetik olarak sıralanmış olduğundan emin olmak için seçeneğini kullanın.  
-> **. **Luu portalına YERLEŞTIRILMIŞ lu dışarı aktarma özelliği çıktıyı zaten sıralıyor.
+> **.** Luu portalına YERLEŞTIRILMIŞ lu dışarı aktarma özelliği çıktıyı zaten sıralıyor.
 
 ### <a name="build-the-luis-app-from-source"></a>Kaynaktan LUSıS uygulamasını oluşturma
 
-Bir LUSıS uygulaması için kaynaktan *derleme* yapmak, kaynağı içeri aktararak [sürümü eğitmek](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) ve[yayımlamak](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)için [Yeni bir Luo uygulama `.lu` sürümü oluşturma](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) anlamına gelir. Bunu, LUO portalında veya komut satırında yapabilirsiniz:
+Bir LUSıS uygulaması için kaynaktan *derleme* yapmak, kaynağı içeri aktararak [sürümü eğitmek](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) ve [yayımlamak](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)için [Yeni bir Luo uygulama `.lu` sürümü oluşturma](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) anlamına gelir. Bunu, LUO portalında veya komut satırında yapabilirsiniz:
 
 - Kaynak denetiminden uygulamanın [ `.lu` sürümünü içeri aktarmak](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) ve uygulamayı [eğit](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) ve [yayımlamak](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) için Luo portalını kullanın.
 
@@ -74,7 +74,7 @@ LUSıS uygulamanız için aşağıdaki dosya türleri kaynak denetimi altında t
 
 - Performans testi için kullanılan [toplu işlem test dosyaları](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) (utterslar ve beklenen sonuçlar)
 
-### <a name="credentialsand-keys-are-not-checked-in"></a>Kimlik bilgileri ve anahtarlar iade edilmedi
+### <a name="credentials-and-keys-are-not-checked-in"></a>Kimlik bilgileri ve anahtarlar iade edilmedi
 
 Abonelik anahtarlarını veya benzer gizli değerleri, deponuzda, yetkisiz personele görünür olabileceği durumlarda iade ettiğiniz dosyalara eklemeyin. İadeden engellemeniz gereken anahtarlar ve diğer değerler şunlardır:
 

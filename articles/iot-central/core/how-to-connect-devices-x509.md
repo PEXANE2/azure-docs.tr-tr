@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c2af331304decd7955892ef4911d1644518f57b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427889"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989539"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central uygulama için Node.js cihaz SDK 'sını kullanarak X. 509.440 sertifikalarıyla cihazları bağlama
 
@@ -21,7 +21,7 @@ IoT Central, bir cihaz ve uygulamanız arasındaki iletişimin güvenliğini sa�
 
 Bu makalede, genellikle üretim ortamında kullanılan X. 509.440- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) kayıtlarını kullanmanın iki yolu ve [bireysel](how-to-connect-devices-x509.md#use-an-individual-enrollment) kayıtlar test için yararlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın (Node.js)](./tutorial-connect-device-nodejs.md) öğreticisine bağlama işleminin tamamlanması.
 - [Git](https://git-scm.com/download/).
@@ -55,7 +55,7 @@ Bu bölümde, bir cihazı kayıt grubunun sertifikasından türetilmiş bir sert
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
-    node create_test_cert.js device mytestdevice mytestrootcert
+    node create_test_cert.js device sample-device-01 mytestrootcert
     ```
 
     > [!TIP]
@@ -91,61 +91,70 @@ filename | dekiler
 
     ![Doğrulanan sertifika](./media/how-to-connect-devices-x509/verified.png)
 
-Artık bu birincil kök sertifikadan türetilmiş bir X. 509.440 sertifikası olan cihazları bağlayabilirsiniz. Kayıt grubunu kaydettikten sonra, KIMLIK kapsamını bir yere getirin.
+Artık bu birincil kök sertifikadan türetilmiş bir X. 509.440 sertifikası olan cihazları bağlayabilirsiniz.
+
+Kayıt grubunu kaydettikten sonra, KIMLIK kapsamını bir yere getirin.
 
 ## <a name="run-sample-device-code"></a>Örnek cihaz kodunu Çalıştır
 
-1. Azure IoT Central uygulamasında **cihazlar**' ı seçin ve **ortam algılayıcısı** cihaz şablonundan **cihaz kimliği** olarak _mytestdevice_ ile yeni bir cihaz oluşturun.
+1. **SampleDevice01_key. pek** ve **sampleDevice01_cert. pea** dosyalarını, **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne kopyalayın. Bu uygulamayı, [cihaz bağlama (Node.js) öğreticisini](./tutorial-connect-device-nodejs.md)tamamladıktan sonra kullandınız.
 
-1. _Mytestdevice_key. pek_ ve _mytestdevice_cert. pea_ dosyalarını _environmentalSensor.js_ uygulamasını içeren klasöre kopyalayın. Bu uygulamayı, [cihaz bağlama (Node.js) öğreticisini](./tutorial-connect-device-nodejs.md)tamamladığınızda oluşturdunuz.
-
-1. environmentalSensor.js uygulamasını içeren klasöre gidin ve X. 509.440 paketini yüklemek için aşağıdaki komutu çalıştırın:
+1. **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne gidin ve X. 509.440 paketini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     npm install azure-iot-security-x509 --save
     ```
 
-1. **environmentalSensor.js** dosyasını düzenleyin.
-    - Değeri, `idScope` daha önce bir notunuz yaptığınız **kimlik kapsamıyla** değiştirin.
-    - `registrationId`Değeri ile değiştirin `mytestdevice` .
+1. **simple_thermostat.js** dosyasını bir metin düzenleyicisinde açın.
 
-1. `require`Deyimlerini aşağıdaki gibi düzenleyin:
+1. Deyimlerini, `require` aşağıdakileri içerecek şekilde düzenleyin:
 
     ```javascript
-    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
-    var Client = require('azure-iot-device').Client;
-    var Message = require('azure-iot-device').Message;
-    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
-    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
-    var fs = require('fs');
-    var X509Security = require('azure-iot-security-x509').X509Security;
+    const fs = require('fs');
+    const X509Security = require('azure-iot-security-x509').X509Security;
     ```
 
-1. İstemciyi oluşturan bölümü aşağıdaki gibi düzenleyin:
+1. Değişkeni başlatmak için aşağıdaki dört satırı "DPS bağlantı bilgileri" bölümüne ekleyin `deviceCert` :
 
     ```javascript
-    var provisioningHost = 'global.azure-devices-provisioning.net';
-    var deviceCert = {
-      cert: fs.readFileSync('mytestdevice_cert.pem').toString(),
-      key: fs.readFileSync('mytestdevice_key.pem').toString()
+    const deviceCert = {
+      cert: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_CERT).toString(),
+      key: fs.readFileSync(process.env.IOTHUB_DEVICE_X509_KEY).toString()
     };
-    var provisioningSecurityClient = new X509Security(registrationId, deviceCert);
-    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
-    var hubClient;
     ```
 
-1. Bağlantıyı açan bölümü aşağıdaki gibi değiştirin:
+1. `provisionDevice`İlk satırı aşağıdaki ile değiştirerek istemciyi oluşturan işlevi düzenleyin:
 
-   ```javascript
-    var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
-    hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
-    hubClient.setOptions(deviceCert);
+    ```javascript
+    var provSecurityClient = new X509Security(registrationId, deviceCert);
     ```
+
+1. Aynı işlevde, değişkeni ayarlayan satırı `deviceConnectionString` aşağıdaki gibi değiştirin:
+
+    ```javascript
+    deviceConnectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
+    ```
+
+1. `main`İşlevinde, öğesini çağıran satırdan sonra aşağıdaki satırı ekleyin `Client.fromConnectionString` :
+
+    ```javascript
+    client.setOptions(deviceCert);
+    ```
+
+1. Kabuk ortamınızda aşağıdaki iki ortam değişkenini ayarlayın:
+
+    ```cmd/sh
+    set IOTHUB_DEVICE_X509_CERT=sampleDevice01_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=sampleDevice01_key.pem
+    ```
+
+    > [!TIP]
+    > [İstemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın öğreticisine bağlama öğreticinizi tamamladıktan sonra](./tutorial-connect-device-nodejs.md) diğer gerekli ortam değişkenlerini ayarlarsınız.
 
 1. Betiği yürütün ve cihazın başarıyla sağlandığını doğrulayın:
 
     ```cmd/sh
-    node environmentalSensor.js
+    node simple_thermostat.js
     ```
 
     Ayrıca, telemetrinin panoda göründüğünü doğrulayabilirsiniz.
@@ -170,7 +179,7 @@ Betiği çalıştırarak kendinden imzalı bir X. 509.952 cihaz sertifikası olu
 
 ## <a name="create-individual-enrollment"></a>Bireysel kayıt oluştur
 
-1. Azure IoT Central uygulamasında **cihazlar**' ı seçin ve ortam algılayıcısı cihaz şablonundan _mytestselfcertprimary_ olarak **cihaz kimliğiyle** yeni bir cihaz oluşturun. **Kimlik kapsamını**bir yere getirin, daha sonra kullanırsınız.
+1. Azure IoT Central uygulamasında **cihazlar**' ı seçin ve **cihaz kimliğine** sahip yeni bir cihazı, termostat cihaz şablonundan _mytestselfcertprimary_ olarak oluşturun. **Kimlik kapsamını** bir yere getirin, daha sonra kullanırsınız.
 
 1. Oluşturduğunuz cihazı açın ve **Bağlan**' ı seçin.
 
@@ -188,19 +197,15 @@ Cihaz artık X. 509.440 sertifikası ile sağlanıyor.
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>Örnek bir bireysel kayıt cihazı çalıştırma
 
-1. _Mytestselfcertprimary_key. pek_ ve _mytestselfcertprimary_cert. pea_ dosyalarını environmentalSensor.js uygulamasını içeren klasöre kopyalayın. Bu uygulamayı, [cihaz bağlama (Node.js) öğreticisini](./tutorial-connect-device-nodejs.md)tamamladığınızda oluşturdunuz.
+1. _Mytestselfcertprimary_key. pek_ ve _mytestselfcertprimary_cert. pea_ dosyalarını, **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne kopyalayın. Bu uygulamayı, [cihaz bağlama (Node.js) öğreticisini](./tutorial-connect-device-nodejs.md)tamamladıktan sonra kullandınız.
 
-1. **environmentalSensor.js** dosyasını aşağıdaki gibi düzenleyin ve kaydedin.
-    - Değeri, `idScope` daha önce bir notunuz yaptığınız **kimlik kapsamıyla** değiştirin.
-    - `registrationId`Değeri ile değiştirin `mytestselfcertprimary` .
-    - **Var deviceCert** öğesini şöyle değiştirin:
+1. İçinde kullandığınız ortam değişkenlerini aşağıdaki gibi değiştirin:
 
-        ```javascript
-        var deviceCert = {
-        cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
-        key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
-        };
-        ```
+    ```cmd/sh
+    set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary
+    set IOTHUB_DEVICE_X509_CERT=mytestselfcertprimary_cert.pem
+    set IOTHUB_DEVICE_X509_KEY=mytestselfcertprimary_key.pem
+    ```
 
 1. Betiği yürütün ve cihazın başarıyla sağlandığını doğrulayın:
 
