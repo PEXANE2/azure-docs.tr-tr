@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: b8f570c2cd5f3939bab0df0c4fefe1becc3c81da
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893450"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962918"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS
 
@@ -32,7 +32,7 @@ Azure veritabanı geçiş hizmeti, birden çok veritabanı kaynağından Azure v
 * Sürekli geçişlerde sürekli yatırım.
 
 **Ç. Azure veritabanı geçiş hizmeti şu anda hangi kaynak/hedef çiftleri destekliyor?**
-Hizmet şu anda çeşitli kaynak/hedef çiftlerini veya geçiş senaryolarını desteklemektedir. Kullanılabilir her geçiş senaryosunun durum listesinin tamamı için, [Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının](https://docs.microsoft.com/azure/dms/resource-scenario-status)makalesine bakın.
+Hizmet şu anda çeşitli kaynak/hedef çiftlerini veya geçiş senaryolarını desteklemektedir. Kullanılabilir her geçiş senaryosunun durum listesinin tamamı için, [Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının](./resource-scenario-status.md)makalesine bakın.
 
 Diğer geçiş senaryoları önizlemededir ve DMS önizleme sitesi aracılığıyla bir aday gönderilmesini gerektirir. Önizlemedeki senaryoların tamamen listesi için ve bu tekliflerinden birine katılmak üzere kaydolmak için, [DMS önizleme sitesine](https://aka.ms/dms-preview/)bakın.
 
@@ -58,11 +58,11 @@ Azure veritabanı geçiş hizmeti 'nin veritabanı geçişleri gerçekleştirirk
 
 Tüm desteklenen geçiş senaryolarında ortak olan Azure veritabanı geçiş hizmeti önkoşulları şunlar için gereklidir:
 
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun.
-* Sanal ağ ağ güvenlik grubu kurallarınızın şu iletişim bağlantı noktalarını 443, 53, 5671-5672, 9350-9354, 445, 12000 engellemediğinden emin olun. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
+* [ExpressRoute](../expressroute/expressroute-introduction.md) veya [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun.
+* Sanal ağ ağ güvenlik grubu kurallarınızın şu iletişim bağlantı noktalarını 443, 53, 5671-5672, 9350-9354, 445, 12000 engellemediğinden emin olun. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
 * Kaynak veritabanınızın önünde bir güvenlik duvarı gereci kullanırken, Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanına erişmesine izin vermek üzere güvenlik duvarı kuralları eklemeniz gerekebilir.
 
-Azure veritabanı geçiş hizmeti 'ni kullanarak belirli geçiş senaryolarına rekabet etmek için gereken tüm önkoşulların bir listesi için, docs.microsoft.com adresindeki Azure veritabanı geçiş hizmeti [belgelerindeki](https://docs.microsoft.com/azure/dms/dms-overview) ilgili öğreticilere bakın.
+Azure veritabanı geçiş hizmeti 'ni kullanarak belirli geçiş senaryolarına rekabet etmek için gereken tüm önkoşulların bir listesi için, docs.microsoft.com adresindeki Azure veritabanı geçiş hizmeti [belgelerindeki](./dms-overview.md) ilgili öğreticilere bakın.
 
 **Ç. Geçiş için kaynak veritabanıma erişmek üzere kullanılan güvenlik duvarı kuralları için bir izin verilenler listesi oluşturabilmeniz için Azure veritabanı geçiş hizmeti 'nin IP adresini bulun Nasıl yaparım?.**
 Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanınıza erişmesine izin veren güvenlik duvarı kuralları eklemeniz gerekebilir. Hizmetin IP adresi dinamiktir, ancak ExpressRoute kullanıyorsanız, bu adres şirket ağınız tarafından özel olarak atanır. Uygun IP adresini tanımlamanın en kolay yolu, ilişkili ağ arabirimini bulmak için sağlanan Azure veritabanı geçiş hizmeti kaynağınız ile aynı kaynak grubunu görbilmenizdir. Genellikle, ağ arabirimi kaynağının adı NIC öneki ile başlar ve ardından benzersiz bir karakter ve numara sırası gelir; Örneğin, NIC-jj6tnztnmarpsskr82rbndyp. Bu ağ arabirimi kaynağını seçerek kaynağa genel bakış Azure portal sayfasında izin verilenler listesine dahil olması gereken IP adresini görebilirsiniz.
@@ -86,7 +86,7 @@ SQL Server hata günlüğünü sorgulayarak SQL Server dinlediği bağlantı nok
 ```
 
 **Ç. Nasıl yaparım? bir Microsoft Azure Sanal Ağ mi ayarlanıyor?**
-Bir sanal ağ ayarlama sürecinde size yol gösterecek birden çok Microsoft öğreticilerinde, resmi belgeler [Azure sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)makalesinde görüntülenir.
+Bir sanal ağ ayarlama sürecinde size yol gösterecek birden çok Microsoft öğreticilerinde, resmi belgeler [Azure sanal ağ](../virtual-network/virtual-networks-overview.md)makalesinde görüntülenir.
 
 ## <a name="usage"></a>Kullanım
 
@@ -96,7 +96,7 @@ Genellikle basit bir veritabanı geçişi sırasında şunları yapabilirsiniz:
 1. Hedef veritabanı (ler) oluşturun.
 2. Kaynak veritabanınızı değerlendirin.
     * Hogenler geçişleri için, [DMA](https://www.microsoft.com/download/details.aspx?id=53595)kullanarak var olan veritabanınızı değerlendirin.
-    * Heterojen geçişler (rekabet kaynaklarından) için, var olan veritabanınızı [SSMA](https://aka.ms/get-ssma)ile değerlendirin. Ayrıca SSMA 'yı kullanarak veritabanı nesnelerini dönüştürüp şemayı hedef platformunuza geçirebilirsiniz.
+    * Heterojen geçişler (rekabet kaynaklarından) için, var olan veritabanınızı [SSMA](/sql/ssma/sql-server-migration-assistant)ile değerlendirin. Ayrıca SSMA 'yı kullanarak veritabanı nesnelerini dönüştürüp şemayı hedef platformunuza geçirebilirsiniz.
 3. Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
 4. Kaynak veritabanlarını, hedef veritabanlarını ve geçirilecek tabloları belirten bir geçiş projesi oluşturun.
 5. Tam yüklemeyi başlatın.

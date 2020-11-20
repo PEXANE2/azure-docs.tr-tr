@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 156da7504a1a5e2a704e52a783fcd3e437a59867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2efd3e9c9ca97ea3d94b03bd5e440cd24d5da5da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986270"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960630"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API kullanarak, sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
@@ -27,7 +27,7 @@ ms.locfileid: "90986270"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> Güvenlik grubu görünümü API 'SI artık korunmaz ve yakında kullanım dışı bırakılacak. Lütfen aynı işlevselliği sağlayan [etkin güvenlik kuralları özelliğini](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) kullanın. 
+> Güvenlik grubu görünümü API 'SI artık korunmaz ve yakında kullanım dışı bırakılacak. Lütfen aynı işlevselliği sağlayan [etkin güvenlik kuralları özelliğini](./network-watcher-security-group-view-overview.md) kullanın. 
 
 Güvenlik grubu görünümü, bir sanal makineye uygulanan yapılandırılmış ve etkin ağ güvenlik kurallarını döndürür. Bu özellik, trafiğin doğru şekilde izin verilmesini veya reddedilmemesini sağlamak için bir sanal makinede yapılandırılan ağ güvenlik gruplarını ve kurallarını denetlemek ve tanılamak için yararlıdır. Bu makalede, REST API kullanarak, etkin ve uygulanan güvenlik kurallarını bir sanal makineye nasıl alacağınızı göstereceğiz
 
@@ -115,7 +115,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="view-the-response"></a>Yanıtı görüntüleme
 
-Aşağıdaki örnek, önceki komuttan döndürülen yanıt örneğidir. Sonuçlar, **Networkınterfacesecurityrules**, **Defaultsecurityrules**ve **securittivesecurityrules**gruplarında oluşan sanal makinede etkin ve uygulanan tüm güvenlik kurallarını gösterir.
+Aşağıdaki örnek, önceki komuttan döndürülen yanıt örneğidir. Sonuçlar, **Networkınterfacesecurityrules**, **Defaultsecurityrules** ve **securittivesecurityrules** gruplarında oluşan sanal makinede etkin ve uygulanan tüm güvenlik kurallarını gösterir.
 
 ```json
 
@@ -186,5 +186,3 @@ Aşağıdaki örnek, önceki komuttan döndürülen yanıt örneğidir. Sonuçla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ağ güvenlik gruplarının doğrulanmasını otomatik hale getirmeyi öğrenmek için ağ [İzleyicisi ile ağ güvenlik grupları (NSG) denetimini](network-watcher-security-group-view-powershell.md) ziyaret edin.
-
-

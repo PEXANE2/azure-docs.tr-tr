@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962896"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961184"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -65,7 +65,7 @@ Cihazınızın, bulut depolama hizmeti sağlayıcınızda kimlik doğrulaması i
 
  Aşağı açılan listeden saat diliminizi seçin. En fazla iki ağ zaman Protokolü (NTP) sunucusu belirtebilirsiniz:
 
- - **BIRINCIL NTP sunucusu** -yapılandırma gereklidir ve cihazınızı yapılandırmak için StorSimple için Windows PowerShell kullandığınızda belirtilir. Varsayılan Windows Server **Time.Windows.com** 'i NTP sunucunuz olarak belirtebilirsiniz. Birincil NTP sunucusu yapılandırmasını Azure portal aracılığıyla görüntüleyebilirsiniz, ancak bunu değiştirmek için Windows PowerShell arabirimini kullanmanız gerekir. `Set-HcsNTPClientServerAddress`Cihazınızın BIRINCIL NTP sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için, [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
+ - **BIRINCIL NTP sunucusu** -yapılandırma gereklidir ve cihazınızı yapılandırmak için StorSimple için Windows PowerShell kullandığınızda belirtilir. Varsayılan Windows Server **Time.Windows.com** 'i NTP sunucunuz olarak belirtebilirsiniz. Birincil NTP sunucusu yapılandırmasını Azure portal aracılığıyla görüntüleyebilirsiniz, ancak bunu değiştirmek için Windows PowerShell arabirimini kullanmanız gerekir. `Set-HcsNTPClientServerAddress`Cihazınızın BIRINCIL NTP sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için, [set-HcsNTPClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet sözdizimi ' ne gidin.
 
 - **IKINCIL NTP sunucusu** -yapılandırma isteğe bağlıdır. İkincil bir NTP sunucusunu yapılandırmak için portalı kullanabilirsiniz.
 
@@ -85,7 +85,7 @@ Cihazınız bulut depolama hizmeti sağlayıcınızla iletişim kurmaya çalış
 
 Yüksek kullanılabilirlik için, ilk cihaz dağıtımı sırasında hem birincil hem de ikincil DNS sunucularını yapılandırmanız gerekir.
 
-**BIRINCIL DNS sunucusu** -ilk kurulum SıRASıNDA birincil DNS sunucusunu belirtmek için StorSimple için Windows PowerShell kullanırsınız. Birincil DNS sunucusunu yalnızca Windows PowerShell arabirimi aracılığıyla yeniden yapılandırabilirsiniz. `Set-HcsDNSClientServerAddress`Cihazınızın BIRINCIL DNS sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
+**BIRINCIL DNS sunucusu** -ilk kurulum SıRASıNDA birincil DNS sunucusunu belirtmek için StorSimple için Windows PowerShell kullanırsınız. Birincil DNS sunucusunu yalnızca Windows PowerShell arabirimi aracılığıyla yeniden yapılandırabilirsiniz. `Set-HcsDNSClientServerAddress`Cihazınızın BIRINCIL DNS sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için [set-HcsDNSClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet sözdizimi ' ne gidin.
 
 **IKINCIL DNS sunucusu** -ikincil DNS sunucusunu değiştirmek için, `Set-HcsDNSClientServerAddress` Azure Portal StorSimple cihazınızın Windows PowerShell arabirimindeki cmdlet 'ini kullanın. **Network settings**
 
@@ -93,7 +93,7 @@ Azure portal ikincil DNS sunucusunu değiştirmek için aşağıdaki adımları 
 
 1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Cihaz listesinden cihazınızı seçin ve tıklatın.
 
-2. **Ayarlar** dikey penceresinde **cihaz ayarları > ağ ' a**gidin. Bu, **ağ ayarları** dikey penceresini açar. **DNS ayarları** Kutucuğu ' na tıklayın. İkincil DNS sunucusu IP adresini değiştirin.
+2. **Ayarlar** dikey penceresinde **cihaz ayarları > ağ ' a** gidin. Bu, **ağ ayarları** dikey penceresini açar. **DNS ayarları** Kutucuğu ' na tıklayın. İkincil DNS sunucusu IP adresini değiştirin.
 
     ![İkincil DNS sunucusu IP adresini değiştir](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
@@ -169,4 +169,3 @@ Ağ arabirimlerinin herhangi birine ait VIP 'leri değiştirmek veya yeniden ata
 
 * [StorSimple cihazınız IÇIN MPIO yapılandırma](storsimple-8000-configure-mpio-windows-server.md)hakkında bilgi edinin.
 * StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-8000-manager-service-administration.md)öğrenin.
-

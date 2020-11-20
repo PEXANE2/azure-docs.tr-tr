@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 6648a20e03facad4b791cacba8513f9f1aa7d2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 748c3f8e38b98b2cbdcfecdf7d755827230fdb3d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291920"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962476"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -54,7 +54,7 @@ Aşağıdaki adımları kullanın.
 
 **Kaynaklar**
 
-Daha fazla bilgi için bkz. [geçici tablolar](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)makalesi.
+Daha fazla bilgi için bkz. [geçici tablolar](/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)makalesi.
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Tabloların geçirilmesi HierarchyId veri türüne sahip bir veya daha fazla sütun içeriyor
 
@@ -90,7 +90,7 @@ Aşağıdaki adımları kullanın.
      select * from sys.triggers where is_disabled =0
      ```
 
-2. [Tetikleyici devre dışı bırak (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)makalesinde belirtilen adımları kullanarak kaynak veritabanınızdaki Tetikleyicileri devre dışı bırakın.
+2. [Tetikleyici devre dışı bırak (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)makalesinde belirtilen adımları kullanarak kaynak veritabanınızdaki Tetikleyicileri devre dışı bırakın.
 
 3. Geçiş etkinliğini yeniden çalıştırın.
 

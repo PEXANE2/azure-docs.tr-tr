@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183658"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961133"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Veri dönüşümü başlatmak için .NET SDK'sını kullanma
 
@@ -33,7 +33,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
     - Visual Studio 2012, 2013, 2015 veya 2017.
 
-    - Azure PowerShell. [Azure PowerShell 'ı indirin](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+    - Azure PowerShell. [Azure PowerShell 'ı indirin](/powershell/azure/).
 *   Kaynak grubu içinde StorSimple Veri Yöneticisi doğru şekilde yapılandırılmış bir iş tanımı.
 *   Tüm gerekli dll 'ler. Bu dll 'leri [GitHub deposundan](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)indirin.
 *   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) GitHub deposundan betiği.
@@ -66,8 +66,8 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
         ![Proje oluşturun 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
     2. **Visual C# > konsol uygulaması > yüklü > şablonları**' nı seçin.
-    3. **Ad**Için **Datadönüştürme tionapp** yazın.
-    4. **Konum**için **c:\datatransformation** öğesini seçin.
+    3. **Ad** Için **Datadönüştürme tionapp** yazın.
+    4. **Konum** için **c:\datatransformation** öğesini seçin.
     6. Projeyi oluşturmak için **Tamam**'a tıklayın.
 
         ![Proje oluşturma 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
@@ -75,7 +75,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 4. Şimdi, [DLL klasöründe](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) bulunan tüm dll 'leri oluşturduğunuz projede **başvuru** olarak ekleyin. Dll dosyalarını eklemek için aşağıdakileri yapın:
 
    1. Visual Studio 'da **> Çözüm Gezgini görüntüle**' ye gidin.
-   2. Veri dönüştürme uygulaması projesinin solundaki oka tıklayın. **Başvurular** ' a tıklayın ve ardından **başvuru eklemek**için sağ tıklayın.
+   2. Veri dönüştürme uygulaması projesinin solundaki oka tıklayın. **Başvurular** ' a tıklayın ve ardından **başvuru eklemek** için sağ tıklayın.
     
        ![Dll 'leri Ekle 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
@@ -94,7 +94,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
     ```
     
-6. Aşağıdaki kod, veri dönüştürme işi örneğini başlatır. Bunu **Main yöntemine**ekleyin. Yapılandırma parametrelerinin değerlerini daha önce elde edilen şekilde değiştirin. **Kaynak grubu adı** ve **resourceName**değerlerini takın. **Resourcegroupname** , iş tanımının yapılandırıldığı StorSimple veri Yöneticisi ile ilişkilidir. **ResourceName** , StorSimple veri Yöneticisi hizmetinizin adıdır.
+6. Aşağıdaki kod, veri dönüştürme işi örneğini başlatır. Bunu **Main yöntemine** ekleyin. Yapılandırma parametrelerinin değerlerini daha önce elde edilen şekilde değiştirin. **Kaynak grubu adı** ve **resourceName** değerlerini takın. **Resourcegroupname** , iş tanımının yapılandırıldığı StorSimple veri Yöneticisi ile ilişkilidir. **ResourceName** , StorSimple veri Yöneticisi hizmetinizin adıdır.
 
     ```
     // Setup the configuration parameters.
@@ -149,7 +149,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
     };
     ```
 
-8. Başlatma işleminden sonra, iş tanımında bir veri dönüştürme işini tetiklemek için aşağıdaki kodu ekleyin. Uygun **Iş tanımı adını**takın.
+8. Başlatma işleminden sonra, iş tanımında bir veri dönüştürme işini tetiklemek için aşağıdaki kodu ekleyin. Uygun **Iş tanımı adını** takın.
 
     ```
     // Trigger a job, retrieve the jobId and the retry interval for polling.

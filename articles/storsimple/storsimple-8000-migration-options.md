@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514655"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961150"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 serisindeki verileri geçirme seçenekleri 
 
@@ -43,7 +43,7 @@ StorSimple 8000 serisini kullanarak verileri geçirme hakkında daha fazla bilgi
 
 Bu yepyeni geçiş seçeneği, müşterilerin kuruluşunuzun dosya paylaşımlarını Azure dosyalarında depolamasına olanak sağlar. Bu dosya paylaşımları daha sonra Azure Dosya Eşitleme (AFS) kullanarak şirket içi erişim için merkezi hale getirilmiş. AFS, bir Windows Server konağında dağıtılabilir. Gerçek veri geçişi daha sonra bir konak kopyası olarak veya geçiş aracı kullanılarak gerçekleştirilir.
 
-Azure Dosya Eşitleme verileri geçirme hakkında daha fazla bilgi için, [StorSimple 5000-7000 serisinden verileri Azure dosya eşitleme geçirme](storsimple-5000-7000-afs-migration.md)bölümüne gidin.
+Azure Dosya Eşitleme verileri geçirme hakkında daha fazla bilgi için, [StorSimple 5000-7000 serisinden verileri Azure dosya eşitleme geçirme](../storage/files/storage-files-migration-storsimple-8000.md)bölümüne gidin.
 
 ### <a name="third-party-options"></a>Üçüncü taraf seçenekleri
 
@@ -127,4 +127,4 @@ A. StorSimple 8000 serisi için destek bitiş tarihi [burada](https://support.mi
 
 ## <a name="next-steps"></a>Sonraki adımlar
  - [StorSimple 5000-7000 serisinden bir 8000 serisi cihaza veri geçirin](storsimple-8000-migrate-from-5000-7000.md).
- - [StorSimple 5000-7000 serilerinden verileri Azure Dosya Eşitleme 'e geçirme](storsimple-5000-7000-afs-migration.md)
+ - [StorSimple 5000-7000 serilerinden verileri Azure Dosya Eşitleme 'e geçirme](../storage/files/storage-files-migration-storsimple-8000.md)

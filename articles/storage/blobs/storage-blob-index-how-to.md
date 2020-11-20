@@ -3,18 +3,18 @@ title: Blob dizini etiketlerini kullanarak Azure Blob Storage 'da verileri yöne
 description: Blob nesnelerini kategorilere ayırmak, yönetmek ve sorgulamak için blob Dizin etiketlerinin nasıl kullanılacağına ilişkin örneklere bakın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371979"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961796"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Blob Dizin etiketlerini (Önizleme) kullanarak Azure Blob depolamada verileri yönetme ve bulma
 
@@ -56,13 +56,13 @@ Blob dizini önizlemede olduğu için, .NET depolama paketi önizleme NuGet akı
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Dizin etiketlerine sahip yeni bir blobu karşıya yükleme
 
-Dizin etiketleriyle yeni bir blobu karşıya yüklemek, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+Bu görev, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin 
 
-2. **BLOB hizmeti**altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
+2. **BLOB hizmeti** altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
 
 3. Bir Blok Blobu olarak karşıya yüklenecek dosyayı bulmak için **karşıya yükle** düğmesini seçin ve yerel dosya sisteminize gidin.
 
@@ -114,15 +114,15 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Blob dizini etiketlerini al, ayarla ve Güncelleştir
 
-Blob dizini etiketlerini alma, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+Blob dizini etiketlerini alma, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
-Blob dizini etiketlerini ayarlama ve güncelleştirme, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+Blob dizini etiketlerini ayarlama ve güncelleştirme, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin 
 
-2. **BLOB hizmeti**altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
+2. **BLOB hizmeti** altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
 
 3. Seçili kapsayıcı içindeki blob 'lar listesinden blobu seçin
 
@@ -132,7 +132,7 @@ Blob dizini etiketlerini ayarlama ve güncelleştirme, [Depolama Blobu veri sahi
 
 6. Bloba ilgili tüm güncelleştirmeleri onaylamak için **Kaydet** düğmesini seçin
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Bloblarda Dizin etiketlerinin nasıl alınacağını, ayarlanacağını, güncelleşileceğini ve silineceğini gösteren Azure portal ekran görüntüsü.":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Blob dizini etiketleriyle verileri filtreleme ve bulma
 
-Blob dizini etiketlerine göre arama ve filtreleme, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)tarafından gerçekleştirilebilir. Bunlara ek olarak, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview) iznine sahip kullanıcılar bu işlemi gerçekleştirebilir.
+Bu görev, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -201,7 +201,7 @@ Azure portal içinde, blob dizini etiketleri filtresi, `@container` parametreyi 
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin. 
 
-2. **BLOB hizmeti**altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
+2. **BLOB hizmeti** altındaki **kapsayıcılar** seçeneğine gidin, kapsayıcınızı seçin
 
 3. Seçili kapsayıcı içinde filtrelemek için **BLOB dizin etiketleri filtresi** düğmesini seçin
 
@@ -209,7 +209,7 @@ Azure portal içinde, blob dizini etiketleri filtresi, `@container` parametreyi 
 
 5. Ek etiket filtreleri eklemek için **blob dizini Etiketleri filtre** düğmesini seçin (10 ' a kadar)
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Dizin etiketlerini kullanarak etiketli Blobların nasıl filtreleneceğini ve bulunacağını gösteren Azure portal ekran görüntüsü":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -303,11 +303,11 @@ static async Task FindBlobsByTagsExample()
 
 4. Önek eşleşmesi ve blob dizini eşleşmesi için isteğe bağlı filtre eklemek üzere **filtre** ayarla ' yı seçin
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Yaşam döngüsü yönetimi için Dizin etiketlerinin nasıl ekleneceğini gösteren Azure portal ekran görüntüsü.":::
 
 5. Kural ayarlarını gözden geçirmek için **gözden geçir + Ekle** ' yi seçin
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Dizin etiketleriyle blob yükleme işleminin nasıl yapılacağını gösteren Azure portal ekran görüntüsü.":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Blob dizin etiketleri filtresi örneği ile bir yaşam döngüsü yönetimi kuralını gösteren Azure portal ekran görüntüsü":::
 
 6. Yeni kuralı yaşam döngüsü yönetimi ilkesine uygulamak için **Ekle** ' yi seçin
 

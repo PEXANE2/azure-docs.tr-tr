@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: a9ac4830d11aa3360a272ac1feb167eb20c26c9a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494434"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962629"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile MySQL için Azure DB 'ye yönelik sınırlamalar & çevrimiçi geçiş sorunları
 
@@ -118,7 +118,7 @@ AWS RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçek
 
   **Sınırlama**: Bu hata, MySQL Için Azure veritabanı veritabanının gerekli şemasına sahip olmadığı durumlarda oluşur. Hedefinizdeki verilerin geçirilmesini sağlamak için şema geçişi gereklidir.
 
-  **Geçici çözüm**: şemayı kaynak veritabanından hedef veritabanına [geçirin](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) .
+  **Geçici çözüm**: şemayı kaynak veritabanından hedef veritabanına [geçirin](./tutorial-mysql-azure-mysql-online.md#migrate-the-sample-schema) .
 
 ## <a name="other-limitations"></a>Diğer sınırlamalar
 
@@ -136,7 +136,7 @@ AWS RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçek
 
 - Azure veritabanı geçiş hizmeti 'nde, tek bir geçiş etkinliğinde geçirilecek veritabanlarının sınırı dördü olur.
 
-- Azure DMS, üst tabloda bir satır silindiğinde veya güncelleştirilirse alt tablodaki eşleşen bir satırı otomatik olarak silmeye veya güncelleştirmeye yardımcı olan CASCADE başvuru eylemini desteklemez. Daha fazla bilgi için MySQL belgelerinde [yabancı anahtar kısıtlamaları](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)makalesinin başvurusal Eylemler bölümüne bakın. Azure DMS, ilk veri yükü sırasında hedef veritabanı sunucusunda yabancı anahtar kısıtlamalarını bırakmayı gerektirir ve başvurusal eylemleri kullanamazsınız. İş yükünüz bu başvuru eylemi aracılığıyla ilişkili bir alt tablonun güncelleştirilmesine bağımlıysa bunun yerine bir [döküm ve geri yükleme](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) gerçekleştirmenizi öneririz. 
+- Azure DMS, üst tabloda bir satır silindiğinde veya güncelleştirilirse alt tablodaki eşleşen bir satırı otomatik olarak silmeye veya güncelleştirmeye yardımcı olan CASCADE başvuru eylemini desteklemez. Daha fazla bilgi için MySQL belgelerinde [yabancı anahtar kısıtlamaları](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)makalesinin başvurusal Eylemler bölümüne bakın. Azure DMS, ilk veri yükü sırasında hedef veritabanı sunucusunda yabancı anahtar kısıtlamalarını bırakmayı gerektirir ve başvurusal eylemleri kullanamazsınız. İş yükünüz bu başvuru eylemi aracılığıyla ilişkili bir alt tablonun güncelleştirilmesine bağımlıysa bunun yerine bir [döküm ve geri yükleme](../mysql/concepts-migrate-dump-restore.md) gerçekleştirmenizi öneririz. 
 
 - **Hata:** Satır boyutu çok büyük (> 8126). Bazı sütunların metın veya BLOBUN değiştirilmesi yardımcı olabilir. Geçerli satır biçiminde, 0 baytlık BLOB ön eki satır içi olarak depolanır.
 

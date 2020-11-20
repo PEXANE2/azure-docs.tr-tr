@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297367"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962289"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Yaygın Azure veritabanı geçiş hizmeti sorunlarını ve hatalarını giderme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure veritabanı geçiş hizmeti kullanıcılarının üzerinde ge
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 ## <a name="migration-activity-in-queued-state"></a>Sıraya alınmış durumda geçiş etkinliği
@@ -54,7 +54,7 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak MySQL 'ten MySQL için Azure ve
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |
-| Bu hata, geçişi yapan kullanıcının ReplicationAdmin rolünü ve/veya çoğaltma ISTEMCISI, çoğaltma ÇOĞALTMASı ve süper (MySQL 5.6.6 'dan önceki sürümler) ayrıcalıklarına sahip olmadığı durumlarda meydana gelebilir.<br><br><br><br><br><br><br><br><br><br><br><br><br> | Kullanıcı hesabı için [Önkoşul ayrıcalıkların](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) , MySQL Için Azure veritabanı örneği üzerinde doğru şekilde yapılandırıldığından emin olun. Örneğin, aşağıdaki adımlar, gerekli ayrıcalıklara sahip ' migrateuser ' adlı bir kullanıcı oluşturmak için izlenebilir:<br>1. ' gizli ' Ile tanımlanan '% ' Kullanıcı migrateuser@ oluşturun; <br>2. db_name. * ' de ' gizli ' tarafından tanımlanan ' migrateuser ' @ '% ' öğesine tüm ayrıcalıkları verin; daha fazla veritabanına erişim vermek için bu adımı tekrarlayın <br>3. çoğaltma bağımlı ' i verin *.* ' gizli ' ile tanımlanan ' migrateuser ' @ '% '<br>4. çoğaltma istemcisine izin verin *.* ' gizli ' ile tanımlanan ' migrateuser ' @ '% '<br>5. Temizleme ayrıcalıkları; |
+| Bu hata, geçişi yapan kullanıcının ReplicationAdmin rolünü ve/veya çoğaltma ISTEMCISI, çoğaltma ÇOĞALTMASı ve süper (MySQL 5.6.6 'dan önceki sürümler) ayrıcalıklarına sahip olmadığı durumlarda meydana gelebilir.<br><br><br><br><br><br><br><br><br><br><br><br><br> | Kullanıcı hesabı için [Önkoşul ayrıcalıkların](./tutorial-mysql-azure-mysql-online.md#prerequisites) , MySQL Için Azure veritabanı örneği üzerinde doğru şekilde yapılandırıldığından emin olun. Örneğin, aşağıdaki adımlar, gerekli ayrıcalıklara sahip ' migrateuser ' adlı bir kullanıcı oluşturmak için izlenebilir:<br>1. ' gizli ' Ile tanımlanan '% ' Kullanıcı migrateuser@ oluşturun; <br>2. db_name. * ' de ' gizli ' tarafından tanımlanan ' migrateuser ' @ '% ' öğesine tüm ayrıcalıkları verin; daha fazla veritabanına erişim vermek için bu adımı tekrarlayın <br>3. çoğaltma bağımlı ' i verin *.* ' gizli ' ile tanımlanan ' migrateuser ' @ '% '<br>4. çoğaltma istemcisine izin verin *.* ' gizli ' ile tanımlanan ' migrateuser ' @ '% '<br>5. Temizleme ayrıcalıkları; |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti durdurulmaya çalışılırken hata oluştu
 
@@ -84,7 +84,7 @@ SQL Server Azure SQL yönetilen örneği 'ne çevrimiçi geçiş gerçekleştird
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| Bu hata, SQL Server 'den SQL yönetilen örneğine çevrimiçi geçiş için kullanılan uygulama sorumlusunun, abonelik üzerinde katkıda bulunan iznine sahip olmadığını gösterir. Mevcut olan yönetilen örnekle bazı API çağrıları geri yükleme işlemi için abonelikte bu izni gerektirir. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | `Get-AzureADServicePrincipal` `-ObjectId` Kullanılan uygulama kimliğinin görünen adını listelemek için hata iletisinden kullanılabilir PowerShell cmdlet 'ini kullanın.<br><br> Bu uygulama için izinleri doğrulayın ve abonelik düzeyinde [katkıda bulunan rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olduğundan emin olun. <br><br> Azure veritabanı geçiş hizmeti mühendislik ekibi, abonelik üzerindeki geçerli katkıda bulunma rolünden gerekli erişimi kısıtlamak için çalışmaktadır. Katkıda bulunma rolünün kullanılmasına izin veren bir iş gereksinimiyle karşılaşırsanız, ek yardım için Azure desteğine başvurun. |
+| Bu hata, SQL Server 'den SQL yönetilen örneğine çevrimiçi geçiş için kullanılan uygulama sorumlusunun, abonelik üzerinde katkıda bulunan iznine sahip olmadığını gösterir. Mevcut olan yönetilen örnekle bazı API çağrıları geri yükleme işlemi için abonelikte bu izni gerektirir. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | `Get-AzureADServicePrincipal` `-ObjectId` Kullanılan uygulama kimliğinin görünen adını listelemek için hata iletisinden kullanılabilir PowerShell cmdlet 'ini kullanın.<br><br> Bu uygulama için izinleri doğrulayın ve abonelik düzeyinde [katkıda bulunan rolüne](../role-based-access-control/built-in-roles.md#contributor) sahip olduğundan emin olun. <br><br> Azure veritabanı geçiş hizmeti mühendislik ekibi, abonelik üzerindeki geçerli katkıda bulunma rolünden gerekli erişimi kısıtlamak için çalışmaktadır. Katkıda bulunma rolünün kullanılmasına izin veren bir iş gereksinimiyle karşılaşırsanız, ek yardım için Azure desteğine başvurun. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile ilişkili NIC silinirken hata oluştu
 
@@ -102,7 +102,7 @@ Azure Veritabanı Geçiş Hizmeti proje sihirbazında kaynağa bağlanmayı dene
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanılırken, Azure veritabanı geçiş hizmeti, hizmetle Ilişkili sanal ağ alt ağında üç hizmet uç noktası sağlanması [gerekir](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) :<br> --Service Bus uç noktası<br> --Depolama uç noktası<br> --Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası)<br><br><br><br><br> | Kaynak ve Azure veritabanı geçiş hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet uç noktalarını [etkinleştirin](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) . <br><br><br><br><br><br><br><br> |
+| [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanılırken, Azure veritabanı geçiş hizmeti, hizmetle Ilişkili sanal ağ alt ağında üç hizmet uç noktası sağlanması [gerekir](./tutorial-sql-server-azure-sql-online.md) :<br> --Service Bus uç noktası<br> --Depolama uç noktası<br> --Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası)<br><br><br><br><br> | Kaynak ve Azure veritabanı geçiş hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet uç noktalarını [etkinleştirin](./tutorial-sql-server-azure-sql-online.md) . <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL için Azure DB 'ye bir MySQL veritabanını geçirirken kilit bekleme zaman aşımı hatası
 
@@ -126,13 +126,13 @@ Azure veritabanı geçiş hizmeti 'ni adlandırılmış örnek veya dinamik bir 
 
 ## <a name="additional-known-issues"></a>Bilinen diğer sorunlar
 
-* [Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [PostgreSQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-sql-online.md)
+* [MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-mysql-online.md)
+* [PostgreSQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure veritabanı geçiş hizmeti PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)makalesini görüntüleyin.
-* [Azure Portal kullanarak MySQL Için Azure veritabanı 'nda sunucu parametrelerini yapılandırma](https://docs.microsoft.com/azure/mysql/howto-server-parameters)makalesini görüntüleyin.
-* [Azure veritabanı geçiş hizmeti 'ni kullanmaya yönelik önkoşullara genel bakış](https://docs.microsoft.com/azure/dms/pre-reqs)makalesini görüntüleyin.
-* [Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS](https://docs.microsoft.com/azure/dms/faq)bölümüne bakın.
+* [Azure veritabanı geçiş hizmeti PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)makalesini görüntüleyin.
+* [Azure Portal kullanarak MySQL Için Azure veritabanı 'nda sunucu parametrelerini yapılandırma](../mysql/howto-server-parameters.md)makalesini görüntüleyin.
+* [Azure veritabanı geçiş hizmeti 'ni kullanmaya yönelik önkoşullara genel bakış](./pre-reqs.md)makalesini görüntüleyin.
+* [Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS](./faq.md)bölümüne bakın.

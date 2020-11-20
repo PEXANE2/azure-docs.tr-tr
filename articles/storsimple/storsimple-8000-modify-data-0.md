@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85d7114f419266124d0d23368b24700af025758a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514610"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961048"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızda DATA 0 ağ arabirimi ayarlarını değiştirin
 
@@ -38,7 +38,7 @@ Bu öğreticiyi okuduktan sonra şunları yapabilirsiniz:
 StorSimple cihazınızın Windows PowerShell arabirimine bağlanıp bir Kurulum Sihirbazı oturumu başlatarak VERI 0 ağ ayarlarını yeniden yapılandırabilirsiniz. VERI 0 ayarlarını değiştirmek için aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>VERI 0 ağ ayarlarını Kurulum Sihirbazı aracılığıyla değiştirmek için
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1` .
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını** belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    
     `Invoke-HcsSetupWizard`
@@ -64,9 +64,8 @@ DATA 0 ağ arabirimini yeniden yapılandırmak için alternatif bir yol, `Set-Hc
    * Denetleyici 0 için sabit IPv4 adresi
    * Denetleyici 1 için sabit IPv4 adresi
      
-     Bu cmdlet 'in kullanımı hakkında daha fazla bilgi için [StorSimple için Windows PowerShell cmdlet başvurusuna](https://technet.microsoft.com/library/dn688161.aspx)gidin.
+     Bu cmdlet 'in kullanımı hakkında daha fazla bilgi için [StorSimple için Windows PowerShell cmdlet başvurusuna](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630))gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * VERI 0 ' dan farklı ağ arabirimlerini yapılandırmak için [Azure Portal ağ ayarlarını yapılandırma](storsimple-8000-modify-device-config.md)' yı kullanabilirsiniz. 
-* Ağ arabirimlerinizi yapılandırırken herhangi bir sorunla karşılaşırsanız [dağıtım sorunlarını giderme](storsimple-troubleshoot-deployment.md)bölümüne bakın.
-
+* Ağ arabirimlerinizi yapılandırırken herhangi bir sorunla karşılaşırsanız [dağıtım sorunlarını giderme](./storsimple-8000-troubleshoot-deployment.md)bölümüne bakın.

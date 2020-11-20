@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 85b42c6a3c3c59bd8c22bcdc8954b8dd3399c454
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 05e523c368cfa8407d66ff57fc481a756664b1ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460980"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961677"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB 'yi geçirme/yükseltme-tek sunucudan PostgreSQL için Azure VERITABANı-tek sunuculu, Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
 
-Azure veritabanı geçiş hizmeti 'ni, [PostgreSQL Için Azure veritabanı-tek sunuculu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) bir SQL örneğinden, PostgreSQL için Azure veritabanı 'nın aynı veya farklı bir sürümüne, örneğin, PostgreSQL için Azure veritabanı 'na (en az kapalı kalma süresi Ile) esnek sunucuya geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki ' dan PostgreSQL için Azure veritabanı 'na (tek sunucu) ait **DVD Kiralama** örneği veritabanını geçireceğiniz.
+Azure veritabanı geçiş hizmeti 'ni, [PostgreSQL Için Azure veritabanı-tek sunuculu](../postgresql/overview.md#azure-database-for-postgresql---single-server) bir SQL örneğinden, PostgreSQL için Azure veritabanı 'nın aynı veya farklı bir sürümüne, örneğin, PostgreSQL için Azure veritabanı 'na (en az kapalı kalma süresi Ile) esnek sunucuya geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki ' dan PostgreSQL için Azure veritabanı 'na (tek sunucu) ait **DVD Kiralama** örneği veritabanını geçireceğiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Pg_dump yardımcı programını kullanarak örnek şemayı geçirin.
@@ -46,25 +46,25 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-* Desteklenen geçiş ve sürüm birleşimleri için [Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumunu](https://docs.microsoft.com/azure/dms/resource-scenario-status) denetleyin. 
-* [PostgreSQL için mevcut bir Azure veritabanı](https://docs.microsoft.com/azure/postgresql/) sürüm 10 ve daha sonraki bir örnek, **DVD Kiralama** veritabanıdır. 
+* Desteklenen geçiş ve sürüm birleşimleri için [Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumunu](./resource-scenario-status.md) denetleyin. 
+* [PostgreSQL için mevcut bir Azure veritabanı](../postgresql/index.yml) sürüm 10 ve daha sonraki bir örnek, **DVD Kiralama** veritabanıdır. 
 
     Ayrıca, PostgreSQL için hedef Azure veritabanının, şirket içi PostgreSQL sürümüne eşit veya ondan daha yeni olması gerektiğini unutmayın. Örneğin PostgreSQL 10, PostgreSQL için Azure veritabanı 10 veya 11 ' e geçiş yapabilir, ancak PostgreSQL için Azure veritabanı 9,6 ' e geçirilemez.
 
-* [PostgreSQL Için Azure veritabanı sunucusu oluşturun](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) veya veri geçirilecek hedef veritabanı sunucusu olarak [PostgreSQL için Azure veritabanı-Hyperscale (Citus) sunucusu oluşturun](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal) .
-* Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure Sanal Ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
+* [PostgreSQL Için Azure veritabanı sunucusu oluşturun](../postgresql/quickstart-create-server-database-portal.md) veya veri geçirilecek hedef veritabanı sunucusu olarak [PostgreSQL için Azure veritabanı-Hyperscale (Citus) sunucusu oluşturun](../postgresql/quickstart-create-hyperscale-portal.md) .
+* Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure Sanal Ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](../virtual-network/index.yml)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 
-* Sanal ağınız için ağ güvenlik grubu (NSG) kurallarının Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)makalesine bakın.
-* Azure veritabanı geçiş hizmeti 'nin kaynak veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı kaynağı için sunucu düzeyinde bir [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
-* Azure veritabanı geçiş hizmeti 'nin hedef veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı hedefi için sunucu düzeyinde bir [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
-* PostgreSQL için Azure DB kaynağı 'nda [mantıksal çoğaltmayı etkinleştirin](https://docs.microsoft.com/azure/postgresql/concepts-logical) . 
+* Sanal ağınız için ağ güvenlik grubu (NSG) kurallarının Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
+* Azure veritabanı geçiş hizmeti 'nin kaynak veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı kaynağı için sunucu düzeyinde bir [güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
+* Azure veritabanı geçiş hizmeti 'nin hedef veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı hedefi için sunucu düzeyinde bir [güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
+* PostgreSQL için Azure DB kaynağı 'nda [mantıksal çoğaltmayı etkinleştirin](../postgresql/concepts-logical.md) . 
 * Kaynak olarak kullanılan PostgreSQL için Azure veritabanı örneğinde aşağıdaki sunucu parametrelerini ayarlayın:
 
   * max_replication_slots = [yuva sayısı], **on yuva** olarak ayarlama önerilir
   * max_wal_senders =[eşzamanlı görev sayısı] - max_wal_senders parametresi, çalışabilecek eşzamanlı görevlerin sayısını ayarlar; önerilen ayar **10 görevdir**
 
 > [!NOTE]
-> Yukarıdaki sunucu parametreleri statiktir ve bu nesnelerin etkili olabilmesi için PostgreSQL için Azure veritabanı örneğinin yeniden başlatılmasını gerektirir. Sunucu parametrelerini değiştirme hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı sunucu parametrelerini yapılandırma](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal).
+> Yukarıdaki sunucu parametreleri statiktir ve bu nesnelerin etkili olabilmesi için PostgreSQL için Azure veritabanı örneğinin yeniden başlatılmasını gerektirir. Sunucu parametrelerini değiştirme hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı sunucu parametrelerini yapılandırma](../postgresql/howto-configure-server-parameters-using-portal.md).
 
 > [!IMPORTANT]
 > Mevcut veritabanınızdaki tüm tabloların, değişikliklerin hedef veritabanıyla eşitlendiğinden emin olmak için bir birincil anahtar gerekir.
@@ -89,7 +89,7 @@ Tablo şemaları, dizinler ve saklı yordamlar gibi tüm veritabanı nesnelerini
 
 2. Hedef ortamınız olan PostgreSQL için Azure Veritabanı içinde boş bir veritabanı oluşturun.
 
-    Veritabanına bağlanma ve oluşturma hakkında daha fazla bilgi için, [Azure Portal bir PostgreSQL Için Azure veritabanı sunucusu oluşturma](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) veya [Azure Portal bir PostgreSQL Için Azure veritabanı oluşturma-hiper ölçek (Citus) sunucusu oluşturma](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)makalesine bakın.
+    Veritabanına bağlanma ve oluşturma hakkında daha fazla bilgi için, [Azure Portal bir PostgreSQL Için Azure veritabanı sunucusu oluşturma](../postgresql/quickstart-create-server-database-portal.md) veya [Azure Portal bir PostgreSQL Için Azure veritabanı oluşturma-hiper ölçek (Citus) sunucusu oluşturma](../postgresql/quickstart-create-hyperscale-portal.md)makalesine bakın.
 
     > [!NOTE]
     > PostgreSQL için Azure veritabanı 'nın (Citus) bir örneği yalnızca tek bir veritabanına sahiptir: **Citus**.
@@ -100,7 +100,7 @@ Tablo şemaları, dizinler ve saklı yordamlar gibi tüm veritabanı nesnelerini
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
@@ -185,7 +185,7 @@ Tablo şemaları, dizinler ve saklı yordamlar gibi tüm veritabanı nesnelerini
 
     Sanal ağ, Azure veritabanı geçiş hizmeti 'ni kaynak PostgreSQL sunucusuna ve hedef Azure Database for PostgreSQL örneğine erişimi sağlar.
 
-    Azure portal sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
+    Azure portal sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/quick-create-portal.md)makalesine bakın.
 
 5. Fiyatlandırma katmanını seçin.
 
@@ -258,7 +258,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 * **Geçişi çalıştır**'ı seçin.
 
-Geçiş etkinliği penceresi görünür ve **devam eden yedekleme**olarak göstermek Için etkinliğin **durumu** güncellemelidir. PostgreSQL için Azure DB 9,5 veya 9,6 ' den yükseltirken aşağıdaki hatayla karşılaşabilirsiniz:
+Geçiş etkinliği penceresi görünür ve **devam eden yedekleme** olarak göstermek Için etkinliğin **durumu** güncellemelidir. PostgreSQL için Azure DB 9,5 veya 9,6 ' den yükseltirken aşağıdaki hatayla karşılaşabilirsiniz:
 
 **Bir senaryo bilinmeyen bir hata bildirdi. 28000: "40.121.141.121" konağından çoğaltma bağlantısı için pg_hba. conf girdisi yok, Kullanıcı "SR"**
 
@@ -277,7 +277,7 @@ Bunun nedeni, PostgreSQL 'in gerekli mantıksal çoğaltma yapıtları oluşturm
 
      ![Geçiş işlemini izleme](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-monitor-migration.png)
 
-2. Geçiş tamamlandığında, **veritabanı adı**altında, **tam veri yükü** ve **artımlı veri eşitleme** işlemleri için geçiş durumuna ulaşmak üzere belirli bir veritabanını seçin.
+2. Geçiş tamamlandığında, **veritabanı adı** altında, **tam veri yükü** ve **artımlı veri eşitleme** işlemleri için geçiş durumuna ulaşmak üzere belirli bir veritabanını seçin.
 
    > [!NOTE]
    > **Tam veri yükleme** , ilk yük geçiş durumunu gösterir, ancak **artımlı veri eşitleme** , DEĞIŞIKLIK verilerini yakalama (CDC) durumunu gösterir.
@@ -296,7 +296,7 @@ Bunun nedeni, PostgreSQL 'in gerekli mantıksal çoğaltma yapıtları oluşturm
 
     ![Tam geçişi ekranını doldurun](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, [dizileri yeniden oluşturun](https://wiki.postgresql.org/wiki/Fixing_Sequences) (varsa) ve uygulamalarınızı PostgreSQL için Azure veritabanı 'nın yeni hedef örneğine bağlayın.
+3. Veritabanı geçiş durumu **tamamlandı** olarak görüntülendiğinde, [dizileri yeniden oluşturun](https://wiki.postgresql.org/wiki/Fixing_Sequences) (varsa) ve uygulamalarınızı PostgreSQL için Azure veritabanı 'nın yeni hedef örneğine bağlayın.
  
 > [!NOTE]
 > Azure veritabanı geçiş hizmeti, PostgreSQL için Azure veritabanı-tek sunucu 'da azaltılmış kapalı kalma süresiyle büyük sürüm yükseltmeleri gerçekleştirmek için kullanılabilir. İlk olarak, istenen daha fazla PostgreSQL sürümü, ağ ayarları ve parametreleri ile bir hedef veritabanı yapılandırırsınız. Daha sonra, yukarıda açıklanan yordamı kullanarak hedef veritabanlarına geçişi başlatabilirsiniz. Hedef veritabanı sunucusuna geçiş yaptıktan sonra, uygulama Bağlantı dizenizi hedef veritabanı sunucusuna işaret etmek üzere güncelleştirebilirsiniz. 
@@ -304,5 +304,5 @@ Bunun nedeni, PostgreSQL 'in gerekli mantıksal çoğaltma yapıtları oluşturm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * PostgreSQL için Azure Veritabanı'na yönelik çevrimiçi geçiş gerçekleştirirken karşılaşılan bilinen sorunlar ve sınırlamalar hakkında bilgi için [PostgreSQL için Azure Veritabanı geçiş işlemleri ile ilgili bilinen sorunlar ve geçici çözümler](known-issues-azure-postgresql-online.md) başlıklı makaleye bakın.
-* Azure Veritabanı Geçiş Hizmeti hakkında bilgi için [What is the Azure Database Migration Service? (Azure Veritabanı Geçiş Hizmeti nedir?)](https://docs.microsoft.com/azure/dms/dms-overview) başlıklı makaleye bakın.
-* PostgreSQL için Azure veritabanı hakkında daha fazla bilgi için [PostgreSQL Için Azure veritabanı nedir?](https://docs.microsoft.com/azure/postgresql/overview)makalesine bakın.
+* Azure Veritabanı Geçiş Hizmeti hakkında bilgi için [What is the Azure Database Migration Service? (Azure Veritabanı Geçiş Hizmeti nedir?)](./dms-overview.md) başlıklı makaleye bakın.
+* PostgreSQL için Azure veritabanı hakkında daha fazla bilgi için [PostgreSQL Için Azure veritabanı nedir?](../postgresql/overview.md)makalesine bakın.

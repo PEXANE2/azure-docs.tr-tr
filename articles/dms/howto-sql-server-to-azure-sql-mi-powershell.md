@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1c45b99138a05ef78976b90f65f57304e676ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291996"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962782"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti & PowerShell ile SQL yönetilen örneğine SQL Server geçirme
 
@@ -40,30 +40,30 @@ Bu makale, hem çevrimiçi hem de çevrimdışı geçişleri gerçekleştirme ha
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 * [SQL Server 2016 veya üzeri](https://www.microsoft.com/sql-server/sql-server-downloads) (herhangi bir sürüm).
-* [Burada](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)indirmek üzere kullanılabilen **AdventureWorks2016** veritabanının yerel bir kopyası.
-* SQL Server Express yükleme ile varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirmek için. [Sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)MAKALESINI izleyerek TCP/IP protokolünü etkinleştirin.
-* [Windows Güvenlik duvarınızı veritabanı altyapısı erişimi için](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)yapılandırmak için.
+* [Burada](/sql/samples/adventureworks-install-configure?view=sql-server-2017)indirmek üzere kullanılabilen **AdventureWorks2016** veritabanının yerel bir kopyası.
+* SQL Server Express yükleme ile varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirmek için. [Sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)MAKALESINI izleyerek TCP/IP protokolünü etkinleştirin.
+* [Windows Güvenlik duvarınızı veritabanı altyapısı erişimi için](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)yapılandırmak için.
 * Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
-* SQL yönetilen örneği. [BIR ASQL yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)makalesindeki ayrıntıyı IZLEYEREK bir SQL yönetilen örneği oluşturabilirsiniz.
+* SQL yönetilen örneği. [BIR ASQL yönetilen örneği oluşturma](../azure-sql/managed-instance/instance-create-quickstart.md)makalesindeki ayrıntıyı IZLEYEREK bir SQL yönetilen örneği oluşturabilirsiniz.
 * [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 veya sonraki bir sürümünü indirip yükleyin.
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak Azure veritabanı geçiş hizmeti 'ni şirket içi kaynak sunucularınız için siteden siteye bağlantı ile sağlayan Azure Resource Manager dağıtım modeli kullanılarak oluşturulan Microsoft Azure sanal ağ.
-* [SQL Server geçiş değerlendirmesi gerçekleştirme](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)makalesinde açıklandığı gibi Data Migration Yardımcısı kullanarak şirket içi veritabanınızın ve şema geçişinin tamamlanmış değerlendirmesi.
-* `Az.DataMigration`PowerShell Galerisi modülünü (sürüm 0.7.2 veya üzeri), [Install-Module PowerShell cmdlet 'ini](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)kullanarak indirip yükleyin.
-* Kaynak SQL Server örneğine bağlanmak için kullanılan kimlik bilgilerinin [DENETIM sunucusu](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) iznine sahip olduğundan emin olmak için.
+* [ExpressRoute](../expressroute/expressroute-introduction.md) veya [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanarak Azure veritabanı geçiş hizmeti 'ni şirket içi kaynak sunucularınız için siteden siteye bağlantı ile sağlayan Azure Resource Manager dağıtım modeli kullanılarak oluşturulan Microsoft Azure sanal ağ.
+* [SQL Server geçiş değerlendirmesi gerçekleştirme](/sql/dma/dma-assesssqlonprem)makalesinde açıklandığı gibi Data Migration Yardımcısı kullanarak şirket içi veritabanınızın ve şema geçişinin tamamlanmış değerlendirmesi.
+* `Az.DataMigration`PowerShell Galerisi modülünü (sürüm 0.7.2 veya üzeri), [Install-Module PowerShell cmdlet 'ini](/powershell/module/powershellget/Install-Module?view=powershell-5.1)kullanarak indirip yükleyin.
+* Kaynak SQL Server örneğine bağlanmak için kullanılan kimlik bilgilerinin [DENETIM sunucusu](/sql/t-sql/statements/grant-server-permissions-transact-sql) iznine sahip olduğundan emin olmak için.
 * Hedef SQL yönetilen örneğine bağlanmak için kullanılan kimlik bilgilerinin hedef SQL yönetilen örnek veritabanlarında DENETIM VERITABANı iznine sahip olduğundan emin olmak için.
 
     > [!IMPORTANT]
-    > Çevrimiçi geçişler için Azure Active Directory kimlik bilgilerinizi ayarlamış olmanız gerekir. Daha fazla bilgi için, [kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)makalesine bakın.
+    > Çevrimiçi geçişler için Azure Active Directory kimlik bilgilerinizi ayarlamış olmanız gerekir. Daha fazla bilgi için, [kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)makalesine bakın.
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure aboneliğinizde oturum açın
 
-PowerShell kullanarak Azure aboneliğinizde oturum açın. Daha fazla bilgi için [Azure PowerShell oturum açma](https://docs.microsoft.com/powershell/azure/authenticate-azureps)makalesine bakın.
+PowerShell kullanarak Azure aboneliğinizde oturum açın. Daha fazla bilgi için [Azure PowerShell oturum açma](/powershell/azure/authenticate-azureps)makalesine bakın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Komutunu kullanarak bir kaynak grubu oluşturun [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) .
+Komutunu kullanarak bir kaynak grubu oluşturun [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) .
 
 Aşağıdaki örnek, *Doğu ABD* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur.
 
@@ -76,13 +76,13 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 Cmdlet 'ini kullanarak Azure veritabanı geçiş hizmeti 'nin yeni bir örneğini oluşturabilirsiniz `New-AzDataMigrationService` .
 Bu cmdlet aşağıdaki gerekli parametreleri bekliyor:
 
-* *Azure Kaynak grubu adı*. [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Komutunu, daha önce gösterildiği gibi bir Azure Kaynak grubu oluşturmak ve adını bir parametre olarak sağlamak için kullanabilirsiniz.
+* *Azure Kaynak grubu adı*. [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup)Komutunu, daha önce gösterildiği gibi bir Azure Kaynak grubu oluşturmak ve adını bir parametre olarak sağlamak için kullanabilirsiniz.
 * *Hizmet adı*. Azure veritabanı geçiş hizmeti için istenen benzersiz hizmet adına karşılık gelen dize.
 * *Konum*. Hizmetin konumunu belirtir. Batı ABD veya Güneydoğu Asya gibi bir Azure veri merkezi konumu belirtin.
 * *SKU 'su*. Bu parametre, DMS SKU adına karşılık gelir. Şu anda desteklenen SKU adları *Basic_1vCore*, *Basic_2vCores* *GeneralPurpose_4vCores*.
-* *Sanal alt ağ tanımlayıcısı*. [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig)Bir alt ağ oluşturmak için cmdlet 'ini kullanabilirsiniz.
+* *Sanal alt ağ tanımlayıcısı*. [`New-AzVirtualNetworkSubnetConfig`](//powershell/module/az.network/new-azvirtualnetworksubnetconfig)Bir alt ağ oluşturmak için cmdlet 'ini kullanabilirsiniz.
 
-Aşağıdaki örnek, *Myvnet* adlı bir sanal ağ ve *mysubnet*adlı bir alt ağ kullanarak *Doğu ABD* bölgesinde bulunan *Mydmsresourcegroup* kaynak grubunda *mydms* adlı bir hizmet oluşturur.
+Aşağıdaki örnek, *Myvnet* adlı bir sanal ağ ve *mysubnet* adlı bir alt ağ kullanarak *Doğu ABD* bölgesinde bulunan *Mydmsresourcegroup* kaynak grubunda *mydms* adlı bir hizmet oluşturur.
 
 > [!IMPORTANT]
 > Aşağıdaki kod parçacığı, Premium SKU 'ya dayalı bir Azure veritabanı geçiş hizmeti örneği gerektirmeyen çevrimdışı geçiş içindir. Çevrimiçi geçiş için-SKU parametresinin değeri bir Premium SKU içermelidir.
@@ -161,7 +161,7 @@ Ardından, bir Azure veritabanı geçiş hizmeti görevi oluşturun ve başlatı
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Kaynak ve hedef için kimlik bilgisi parametreleri oluşturma
 
-Bağlantı güvenliği kimlik bilgilerini [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesnesi olarak oluşturun.
+Bağlantı güvenliği kimlik bilgilerini [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) nesnesi olarak oluşturun.
 
 Aşağıdaki örnek, hem kaynak hem de hedef bağlantılar için *PSCredential* nesnelerinin oluşturulmasını gösterir ve bu da *$sourcePassword* dize değişkenleri olarak parolalar sağlar *$targetPassword*.
 
@@ -226,7 +226,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 > [!NOTE]
-> Azure veritabanı geçiş hizmeti, hesap düzeyinde SAS belirteci kullanmayı desteklemez. Depolama hesabı kapsayıcısı için bir SAS URI 'SI kullanmanız gerekir. [Blob kapsayıcısı için SAS URI değerini almayı öğrenin](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+> Azure veritabanı geçiş hizmeti, hesap düzeyinde SAS belirteci kullanmayı desteklemez. Depolama hesabı kapsayıcısı için bir SAS URI 'SI kullanmanız gerekir. [Blob kapsayıcısı için SAS URI değerini almayı öğrenin](../vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container).
 
 ### <a name="additional-configuration-requirements"></a>Ek yapılandırma gereksinimleri
 
@@ -290,8 +290,8 @@ Yalnızca çevrimiçi geçişler için aşağıdaki ek yapılandırma görevleri
 * *Görevadı*. Oluşturulacak görevin adı. 
 * *SourceConnection*. Kaynak SQL Server bağlantısını temsil eden Azdmsconnınfo nesnesi.
 * *TargetConnection*. Hedef Azure SQL yönetilen örnek bağlantısını temsil eden Azdmsconnınfo nesnesi.
-* *Sourcecred*. Kaynak sunucuya bağlanmak için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesnesi.
-* *Targetkimlik bilgileri*. Hedef sunucuya bağlanmak için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesnesi.
+* *Sourcecred*. Kaynak sunucuya bağlanmak için [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) nesnesi.
+* *Targetkimlik bilgileri*. Hedef sunucuya bağlanmak için [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) nesnesi.
 * *Selecteddatabase*. Kaynak ve hedef veritabanı eşlemesini temsil eden AzDataMigrationSelectedDB nesnesi.
 * *Backupfileshare*. Azure veritabanı geçiş hizmetinin kaynak veritabanı yedeklemelerini atabileceğiniz yerel ağ paylaşımını temsil eden FileShare nesnesi.
 * *Backupblobsasurı*. Azure veritabanı geçiş hizmeti 'ni, hizmetin yedekleme dosyalarını karşıya yükleyen depolama hesabı kapsayıcısına erişim sağlayan SAS URI 'SI. Blob kapsayıcısı için SAS URI değerini almayı öğrenin.
@@ -314,7 +314,7 @@ Yalnızca çevrimiçi geçişler için aşağıdaki ek yapılandırma görevleri
 
 #### <a name="create-and-start-an-offline-migration-task"></a>Çevrimdışı geçiş görevi oluşturma ve başlatma
 
-Aşağıdaki örnek, **myDMSTask**adlı bir çevrimdışı geçiş görevi oluşturur ve başlatır:
+Aşağıdaki örnek, **myDMSTask** adlı bir çevrimdışı geçiş görevi oluşturur ve başlatır:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
@@ -335,7 +335,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
 
 #### <a name="create-and-start-an-online-migration-task"></a>Çevrimiçi geçiş görevi oluşturma ve başlatma
 
-Aşağıdaki örnek, **myDMSTask**adlı bir çevrimiçi geçiş görevi oluşturur ve başlatır:
+Aşağıdaki örnek, **myDMSTask** adlı bir çevrimiçi geçiş görevi oluşturur ve başlatır:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
@@ -422,4 +422,4 @@ Diğer geçiş senaryoları (kaynak/hedef çiftleri) hakkında daha fazla bilgi 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure veritabanı geçiş hizmeti nedir [?](https://docs.microsoft.com/azure/dms/dms-overview)makalesinde Azure veritabanı geçiş hizmeti hakkında daha fazla bilgi edinin.
+Azure veritabanı geçiş hizmeti nedir [?](./dms-overview.md)makalesinde Azure veritabanı geçiş hizmeti hakkında daha fazla bilgi edinin.

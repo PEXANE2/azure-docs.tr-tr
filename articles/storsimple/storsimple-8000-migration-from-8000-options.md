@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 78ac7e849a3a8f1742701006638a2cb72299bad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055784"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961201"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 serisinden veri geçirme seçenekleri
 
@@ -31,7 +31,7 @@ StorSimple 8000 serisini kullanan müşterilerin Azure veya üçüncü taraf se�
 
 Bu yepyeni geçiş seçeneği, müşterilerin kuruluşunuzun dosya paylaşımlarını Azure dosyalarında depolamasına olanak sağlar. Bu dosya paylaşımları daha sonra Azure Dosya Eşitleme (AFS) kullanarak şirket içi erişim için merkezi hale getirilmiş. AFS, bir Windows Server konağında dağıtılabilir. Gerçek veri geçişi daha sonra bir konak kopyası olarak veya geçiş aracı kullanılarak gerçekleştirilir.
 
-Azure Dosya Eşitleme verileri geçirme hakkında daha fazla bilgi için, [Azure dosya eşitleme Için StorSimple 8100 ve 8600 geçişine](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)gidin.
+Azure Dosya Eşitleme verileri geçirme hakkında daha fazla bilgi için, [Azure dosya eşitleme Için StorSimple 8100 ve 8600 geçişine](../storage/files/storage-files-migration-storsimple-8000.md)gidin.
 
 ### <a name="third-party-options"></a>Üçüncü taraf seçenekleri
 
@@ -111,4 +111,4 @@ A. Verilerin geçirilmesi için geçen süre, veri miktarına ve yükseltme seç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [StorSimple 8000 serilerinden verileri Azure Dosya Eşitleme 'e geçirme](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)
+* [StorSimple 8000 serilerinden verileri Azure Dosya Eşitleme 'e geçirme](../storage/files/storage-files-migration-storsimple-8000.md)

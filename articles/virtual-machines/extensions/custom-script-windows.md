@@ -5,17 +5,18 @@ services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973827"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960980"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -124,15 +125,15 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| yayımcı | Microsoft.Compute | dize |
-| tür | CustomScriptExtension | dize |
+| apiVersion | 2015-06-15 | tarih |
+| yayımcı | Microsoft.Compute | string |
+| tür | CustomScriptExtension | string |
 | typeHandlerVersion | 1.10 | int |
 | Dosya URI 'leri (ör.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | zaman damgası (ör.) | 123456789 | 32 bit tamsayı |
-| commandToExecute (ör.) | PowerShell-ExecutionPolicy Kısıtlamasız-dosya configure-music-app.ps1 | dize |
-| storageAccountName (ör.) | örnek storageacct | dize |
-| storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | dize |
+| commandToExecute (ör.) | PowerShell-ExecutionPolicy Kısıtlamasız-dosya configure-music-app.ps1 | string |
+| storageAccountName (ör.) | örnek storageacct | string |
+| storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
 | Managedıdentity (ör.) | {} veya {"ClientID": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} veya {"ObjectID": "12dd289c-0583-46e5-B9B4-115d5c19ef4b"} | JSON nesnesi |
 
 >[!NOTE]
@@ -250,7 +251,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="running-scripts-from-a-local-share"></a>Yerel bir paylaşımdan betikleri çalıştırma
 
-Bu örnekte, komut dosyası konumunuz için yerel bir SMB sunucusu kullanmak isteyebilirsiniz. Bunu yaptığınızda, **Commandtoexecute**dışında başka bir ayar sağlamanız gerekmez.
+Bu örnekte, komut dosyası konumunuz için yerel bir SMB sunucusu kullanmak isteyebilirsiniz. Bunu yaptığınızda, **Commandtoexecute** dışında başka bir ayar sağlamanız gerekmez.
 
 ```powershell
 $protectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
@@ -273,7 +274,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 * Uzantı **adı** parametresi, uzantının önceki dağıtımıyla aynı olur.
 * Yapılandırmayı güncelleştirin, aksi takdirde komut yeniden yürütülmez. Komutuna bir zaman damgası gibi dinamik bir özelliği ekleyebilirsiniz.
 
-Alternatif olarak, [Forceupdatetag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) özelliğini de **true**olarak ayarlayabilirsiniz.
+Alternatif olarak, [Forceupdatetag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) özelliğini de **true** olarak ayarlayabilirsiniz.
 
 ### <a name="using-invoke-webrequest"></a>Invoke-WebRequest kullanma
 
@@ -294,7 +295,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 ### <a name="azure-portal"></a>Azure portal
 
-Klasik VM kaynağına gidin. **Ayarlar**altındaki **Uzantılar** ' ı seçin.
+Klasik VM kaynağına gidin. **Ayarlar** altındaki **Uzantılar** ' ı seçin.
 
 **+ Ekle** ' ye tıklayın ve kaynak listesinde **Özel Betik uzantısı**' nı seçin.
 

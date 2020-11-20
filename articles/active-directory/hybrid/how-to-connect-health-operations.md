@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91b7bd6d05ee0b992ee166b9acb13aff2e605a2c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89276278"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961014"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemler
 Bu konuda Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
@@ -137,7 +137,7 @@ Azure AD Connect Health içindeki *tüm hizmet örnekleri* düzeyinde kullanıc�
 3. **Rol seçin** bölmesinde bir rol (örneğin, **sahip**) seçin.<br>
    ![Azure AD Connect Health ve Azure RBAC yapılandırma menüsünün ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**’e tıklayın.
-   ![Azure AD Connect Health ve Azure RBAC rol listesinin ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_select_users.png)
+   ![Azure AD Connect Health ve Azure rol listesinin ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. **Tamam**’ı seçin.<br>
 6. Rol ataması tamamlandıktan sonra, kullanıcılar ve gruplar listede görüntülenir.<br>
    ![Azure AD Connect Health ve Azure RBAC ve yeni kullanıcıların vurgulandığı ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_user_list.png)

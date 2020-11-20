@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: e5f9ba7ea4afd81d62cba7b970693f603b53ef9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316095"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963003"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS paketlerini Azure veritabanı geçiş hizmeti ile Azure SQL veritabanı 'na yeniden dağıtma
 
 SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/paketlerinizi SQL Server tarafından barındırılan kaynak SSSıSDB 'den Azure SQL veritabanı tarafından barındırılan hedef SSıSDB 'ye geçirmek istiyorsanız, Tümleştirme Hizmetleri dağıtım Sihirbazı 'nı kullanarak bunları yeniden dağıtabilirsiniz. Sihirbazı SQL Server Management Studio (SSMS) içinden başlatabilirsiniz.
 
-SSIS 'nin kullandığınız sürümü 2012 'den daha eski ise, SSIS projelerinizi/paketlerinizi proje dağıtım modeline yeniden dağıtmadan önce, SSIS 'den de başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak bunları dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)makalesine bakın.
+SSIS 'nin kullandığınız sürümü 2012 'den daha eski ise, SSIS projelerinizi/paketlerinizi proje dağıtım modeline yeniden dağıtmadan önce, SSIS 'den de başlatılabilen Tümleştirme Hizmetleri proje Dönüştürme Sihirbazı 'Nı kullanarak bunları dönüştürmeniz gerekir. Daha fazla bilgi için [projeleri proje dağıtım modeline dönüştürme](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)makalesine bakın.
 
 > [!NOTE]
 > Azure veritabanı geçiş hizmeti (DMS) Şu anda bir kaynak SSSıSDB 'nin Azure SQL veritabanı 'na geçişini desteklemez, ancak aşağıdaki işlemi kullanarak SSIS projelerinizi/paketlerinizi yeniden dağıtabilirsiniz.
@@ -40,7 +40,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 * SSMS sürüm 17,2 veya üzeri.
 * SSıSDB barındırmak için hedef veritabanı sunucunuzun bir örneği. Henüz yoksa, SQL Server (yalnızca mantıksal sunucu) [formuna](https://ms.portal.azure.com/#create/Microsoft.SQLServer)giderek Azure Portal kullanarak BIR [mantıksal SQL Server](../azure-sql/database/logical-servers.md) (veritabanı olmadan) oluşturun.
-* SSIS, SQL veritabanı tarafından barındırılan hedef SSSıSDB ile Azure-SSIS Integration Runtime (IR) içeren Azure Data Factory (ADF) ( [Azure Data Factory 'de Azure-SSIS Integration Runtime sağlama](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)makalesinde açıklandığı gibi) sağlanmalıdır.
+* SSIS, SQL veritabanı tarafından barındırılan hedef SSSıSDB ile Azure-SSIS Integration Runtime (IR) içeren Azure Data Factory (ADF) ( [Azure Data Factory 'de Azure-SSIS Integration Runtime sağlama](../data-factory/tutorial-deploy-ssis-packages-azure.md)makalesinde açıklandığı gibi) sağlanmalıdır.
 
 ## <a name="assess-source-ssis-projectspackages"></a>Kaynak SSIS projelerini/paketlerini değerlendir
 
@@ -62,7 +62,7 @@ SSIS projelerini/paketlerini Azure SQL veritabanı 'na geçirmek için aşağıd
 
 4. SSMS Nesne Gezgini **Tümleştirme Hizmetleri katalogları** düğümünü genişletin, **sssısdb**' yi genişletin ve var olan klasörler yoksa, **SSISDB** ' ye sağ tıklayıp yeni bir klasör oluşturun.
 
-5. **Sssısdb**altında herhangi bir klasörü genişletin, **Projeler**' e sağ tıklayın ve ardından **projeyi dağıt**' ı seçin.
+5. **Sssısdb** altında herhangi bir klasörü genişletin, **Projeler**' e sağ tıklayın ve ardından **projeyi dağıt**' ı seçin.
 
     ![SSIS SSıSDB düğümü genişletildi](media/how-to-migrate-ssis-packages/dms-ssis-ssisdb-node-expanded.png)
 

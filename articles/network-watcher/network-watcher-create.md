@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272170"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962017"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Ağ İzleyicisi örneği oluşturma
 
@@ -49,13 +49,13 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Portalda ağ Izleyicisi oluşturma
 
-**Tüm hizmetler**  >  **ağ**  >  **İzleyicisi ağ**izleyicisine gidin. Ağ İzleyicisini etkinleştirmek istediğiniz tüm abonelikleri seçebilirsiniz. Bu eylem, kullanılabilir her bölgede bir ağ Izleyicisi oluşturur.
+**Tüm hizmetler**  >  **ağ**  >  **İzleyicisi ağ** izleyicisine gidin. Ağ İzleyicisini etkinleştirmek istediğiniz tüm abonelikleri seçebilirsiniz. Bu eylem, kullanılabilir her bölgede bir ağ Izleyicisi oluşturur.
 
 ![Ağ İzleyicisi oluşturma](./media/network-watcher-create/figure1.png)
 
-Portal 'ı kullanarak Ağ İzleyicisini etkinleştirdiğinizde, ağ Izleyicisi örneğinin adı otomatik olarak *NetworkWatcher_region_name* olarak ayarlanır ve *region_name* , örneğin etkin olduğu Azure bölgesine karşılık gelir. Örneğin, Orta Batı ABD bölgesinde etkinleştirilmiş bir ağ Izleyicisi *NetworkWatcher_westcentralus*olarak adlandırılır.
+Portal 'ı kullanarak Ağ İzleyicisini etkinleştirdiğinizde, ağ Izleyicisi örneğinin adı otomatik olarak *NetworkWatcher_region_name* olarak ayarlanır ve *region_name* , örneğin etkin olduğu Azure bölgesine karşılık gelir. Örneğin, Orta Batı ABD bölgesinde etkinleştirilmiş bir ağ Izleyicisi *NetworkWatcher_westcentralus* olarak adlandırılır.
 
-Ağ Izleyicisi örneği, *NetworkWatcherRG*adlı bir kaynak grubunda otomatik olarak oluşturulur. Kaynak grubu zaten yoksa oluşturulur.
+Ağ Izleyicisi örneği, *NetworkWatcherRG* adlı bir kaynak grubunda otomatik olarak oluşturulur. Kaynak grubu zaten yoksa oluşturulur.
 
 Bir ağ Izleyicisi örneğinin adını ve yerleştirildiği kaynak grubunu özelleştirmek isterseniz, aşağıdaki bölümlerde açıklanan PowerShell, Azure CLı, REST API veya ARMClient yöntemlerini kullanabilirsiniz. Her seçenekte, içinde bir ağ Izleyicisi oluşturmadan önce kaynak grubunun mevcut olması gerekir.  
 
@@ -107,7 +107,7 @@ Ağ Izleyicisi 'nin bir örneğini oluşturmak için bu [hızlı başlangıç ş
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Portalda bir ağ izleyicisini silme
 
-**Tüm hizmetler**  >  **ağ**  >  **İzleyicisi ağ**izleyicisine gidin.
+**Tüm hizmetler**  >  **ağ**  >  **İzleyicisi ağ** izleyicisine gidin.
 
 Henüz orada değilseniz genel bakış sekmesini seçin. ' De Ağ İzleyicisini devre dışı bırakmak istediğiniz aboneliği seçmek için açılan menüyü kullanın.
 Ok simgesine tıklayarak seçtiğiniz abonelik için bölgelerin listesini genişletin. Verilen her türlü için, bağlam menüsüne erişmek için sağdaki 3 noktayı kullanın.
@@ -129,7 +129,7 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 Artık bir ağ Izleyicisi örneğine sahip olduğunuza göre, kullanılabilir özellikler hakkında bilgi edinin:
 
-* [Topoloji](network-watcher-topology-overview.md)
+* [Topoloji](./view-network-topology.md)
 * [Paket yakalama](network-watcher-packet-capture-overview.md)
 * [IP akışı doğrulama](network-watcher-ip-flow-verify-overview.md)
 * [Sonraki atlama](network-watcher-next-hop-overview.md)

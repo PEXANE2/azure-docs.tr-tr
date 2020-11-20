@@ -11,19 +11,19 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441708"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961235"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
 Bu makalede, erişimi (yetkilendirme) bir Azure Machine Learning çalışma alanına yönetmeyi öğreneceksiniz. Azure [rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarına erişimi yönetmek için kullanılır; Örneğin, yeni kaynaklar oluşturma veya var olanları kullanma özelliği. Azure Active Directory (Azure AD) kullanıcılara, kaynaklara erişim izni veren belirli roller atanır. Azure, yerleşik roller ve özel roller oluşturma yeteneği sağlar.
 
 > [!TIP]
-> Bu makale Azure Machine Learning odaklanırken, Azure ML 'nin kullandığı ayrı hizmetler kendi RBAC ayarlarını sağlar. Örneğin, bu makaledeki bilgileri kullanarak, Puanlama isteklerini Azure Kubernetes hizmetinde Web hizmeti olarak dağıtılan bir modele kimlerin gönderebilecekleri yapılandırabilirsiniz. Ancak Azure Kubernetes hizmeti kendi Azure RBAC rolleri kümesini sağlar. Azure Machine Learning yararlı olabilecek hizmete özgü RBAC bilgileri için aşağıdaki bağlantılara bakın:
+> Bu makale Azure Machine Learning odaklanırken, Azure ML 'nin kullandığı ayrı hizmetler kendi RBAC ayarlarını sağlar. Örneğin, bu makaledeki bilgileri kullanarak, Puanlama isteklerini Azure Kubernetes hizmetinde Web hizmeti olarak dağıtılan bir modele kimlerin gönderebilecekleri yapılandırabilirsiniz. Ancak Azure Kubernetes hizmeti kendi Azure rolleri kümesini sağlar. Azure Machine Learning yararlı olabilecek hizmete özgü RBAC bilgileri için aşağıdaki bağlantılara bakın:
 >
 > * [Azure Kubernetes küme kaynaklarına erişimi denetleme](../aks/azure-ad-rbac.md)
 > * [Kubernetes yetkilendirmesi için Azure RBAC kullanma](../aks/manage-azure-rbac.md)
@@ -209,7 +209,7 @@ Azure Machine Learning çalışma alanınızda MLflow işlemleri gerçekleştirm
 
 ### <a name="data-scientist"></a>Veri bilimcisi
 
-Bir veri bilimi 'nin bir çalışma alanı içinde tüm işlemleri gerçekleştirmesini sağlar, **ancak** :
+Bir veri bilimi 'nin bir çalışma alanı içinde tüm işlemleri gerçekleştirmesini sağlar, **ancak**:
 
 * İşlem oluşturma
 * Bir üretim AKS kümesine model dağıtma
@@ -247,7 +247,7 @@ Bir veri bilimi 'nin bir çalışma alanı içinde tüm işlemleri gerçekleşti
 
 ### <a name="data-scientist-restricted"></a>Veri bilimi kısıtlanmış
 
-İzin verilen eylemlerde joker karakter olmadan daha kısıtlı bir rol tanımı. **Aşağıdakiler dışında** , çalışma alanındaki tüm işlemleri gerçekleştirebilir:
+İzin verilen eylemlerde joker karakter olmadan daha kısıtlı bir rol tanımı. **Aşağıdakiler dışında**, çalışma alanındaki tüm işlemleri gerçekleştirebilir:
 
 * İşlem oluşturma
 * Bir üretim AKS kümesine model dağıtma

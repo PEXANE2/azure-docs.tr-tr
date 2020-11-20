@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d121430452e0ed445af19f9b1ac89cfdfccdcdae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 05bcb0aebd44dee60fa3f323e1f109e4c0761ec8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167330"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961966"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
 
@@ -51,7 +52,7 @@ ms.locfileid: "92167330"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 Bu makalede, sanal makinelerin nasıl dağıtılacağı, sanal makinelerin nasıl yapılandırılacağı, küme çerçevesinin nasıl yükleneceği ve yüksek oranda kullanılabilir bir SAP sisteminin paylaşılan verilerini depolamak için kullanılabilecek yüksek oranda kullanılabilir bir NFS sunucusunun nasıl yükleneceği açıklanır.
-Bu kılavuzda iki SAP sistemi, NW1 ve NW2 tarafından kullanılan yüksek düzeyde kullanılabilir bir NFS sunucusunun nasıl ayarlanacağı açıklanır. Örnekteki kaynakların (örneğin, sanal makineler, sanal ağlar) adları, kaynak öneki **Üretim**kaynağı ile [SAP dosya sunucusu şablonunu][template-file-server] kullandığınızı varsayar.
+Bu kılavuzda iki SAP sistemi, NW1 ve NW2 tarafından kullanılan yüksek düzeyde kullanılabilir bir NFS sunucusunun nasıl ayarlanacağı açıklanır. Örnekteki kaynakların (örneğin, sanal makineler, sanal ağlar) adları, kaynak öneki **Üretim** kaynağı ile [SAP dosya sunucusu şablonunu][template-file-server] kullandığınızı varsayar.
 
 Önce aşağıdaki SAP notlarını ve kağıtları okuyun
 
@@ -120,7 +121,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    4. Yönetici Kullanıcı adı ve yönetici parolası  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    5. Alt ağ KIMLIĞI  
-      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/** &lt; abonelik kimliği &gt; **/ResourceGroups/** &lt; kaynak grubu adı &gt; **/Providers/Microsoft.Network/virtualNetworks/** &lt; sanal ağ adı &gt; **/Subnets/** &lt; alt ağ adı &gt; ** gibi görünüyor
+      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/**&lt; abonelik kimliği &gt;**/ResourceGroups/**&lt; kaynak grubu adı &gt;**/Providers/Microsoft.Network/virtualNetworks/**&lt; sanal ağ adı &gt;**/Subnets/**&lt; alt ağ adı &gt;** gibi görünüyor
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 
@@ -158,7 +159,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
          1. NW1 için bağlantı noktası 61000
             1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
             1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-HP**)
-            1. TCP as Protocol, bağlantı noktası 610**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+            1. TCP as Protocol, bağlantı noktası 610 **00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
             1. Tamam 'a tıklayın
          1. NW2 için bağlantı noktası 61001
             * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
@@ -166,7 +167,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
          1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın.
          1. Yeni yük dengeleyici kuralının adını girin (örneğin, **NW1-lb**)
          1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **NW1-ön uç**. **NW-arka uç** ve **NW1-HP**)
-         1. **Ha bağlantı noktalarını**seçin.
+         1. **Ha bağlantı noktalarını** seçin.
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
          1. Tamam 'a tıklayın
@@ -192,7 +193,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
          1. NW1 için bağlantı noktası 61000
             1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
             1. Yeni sistem durumu araştırmasının adını girin (örneğin, **NW1-HP**)
-            1. TCP as Protocol, bağlantı noktası 610**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+            1. TCP as Protocol, bağlantı noktası 610 **00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
             1. Tamam 'a tıklayın
          1. NW2 için bağlantı noktası 61001
             * NW2 için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları yineleyin
@@ -219,7 +220,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
 > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0** olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker kümesi oluşturma
 

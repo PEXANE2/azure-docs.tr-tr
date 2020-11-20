@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d0103857b6f759560129dbe8e693ec6c0d7291e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743616"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961218"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>İşi tetiklemek için Azure Otomasyonu'nu kullanma
 
@@ -26,7 +26,7 @@ Bu makalede, bir Azure Otomasyonu runbook 'u oluşturma ve ardından bir veri d�
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 
-*   İstemci bilgisayarda yüklü Azure PowerShell. [Azure PowerShell indirin](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+*   İstemci bilgisayarda yüklü Azure PowerShell. [Azure PowerShell indirin](/powershell/azure/azurerm/install-azurerm-ps).
 *   Bir kaynak grubundaki StorSimple Veri Yöneticisi hizmetinde doğru şekilde yapılandırılmış bir iş tanımı.
 *   [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip)GitHub deposundan dosyayı indirin. 
 *   [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)GitHub deposundan betiği indirin.
@@ -48,9 +48,9 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
    1. Otomasyon hesabınızın **adını** sağlayın.
    2. StorSimple Veri Yöneticisi hizmetinize bağlı **aboneliği** seçin.
    3. Yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubundan seçin.
-   4. Bir **konum**seçin.
+   4. Bir **konum** seçin.
    5. Varsayılan **Farklı Çalıştır hesabı oluştur** seçeneğini seçili bırakın.
-   6. Panoda hızlı erişim için bir bağlantı almak üzere **panoya sabitle**' yi işaretleyin. **Oluştur**’a tıklayın.
+   6. Panoda hızlı erişim için bir bağlantı almak üzere **panoya sabitle**' yi işaretleyin. **Oluştur**'a tıklayın.
 
       ![Farklı Çalıştır Otomasyon hesabı oluşturma 3](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -58,7 +58,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
     
       ![Otomasyon hesabı dağıtımı için bildirim](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-      Daha fazla bilgi için [Farklı Çalıştır hesabı oluşturma](../automation/automation-create-runas-account.md)bölümüne gidin.
+      Daha fazla bilgi için [Farklı Çalıştır hesabı oluşturma](../automation/manage-runas-account.md)bölümüne gidin.
 
 3. Yeni oluşturulan hesapta, **paylaşılan kaynaklar > modüller** ' e gidin ve **+ Modül Ekle**' ye tıklayın.
 
@@ -72,7 +72,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
    ![İçeri aktarma modülü 4](./media/storsimple-data-manager-job-using-automation/import-module-4.png)
 
-5. Modülün dağıtıldığını belirten bir bildirim ve işlem tamamlandığında başka bir bildirim alırsınız.  **Modüllerindeki** durum **kullanılabilir**olarak değişir.
+5. Modülün dağıtıldığını belirten bir bildirim ve işlem tamamlandığında başka bir bildirim alırsınız.  **Modüllerindeki** durum **kullanılabilir** olarak değişir.
 
     ![İçeri aktarma modülü 5](./media/storsimple-data-manager-job-using-automation/import-module-5.png)
 
@@ -86,7 +86,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
 2. **Runbook Ekle**' de **mevcut bir runbook 'u içeri aktar**' a tıklayın.
 
-3. `Trigger-DataTransformation-Job.ps1` **Runbook dosyası**için Azure PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**’a tıklayın.
+3. `Trigger-DataTransformation-Job.ps1` **Runbook dosyası** için Azure PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**'a tıklayın.
 
     ![Runbook Ekle 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 
@@ -98,7 +98,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
     ![Runbook Ekle 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. StorSimple Veri Yöneticisi hizmetinizin adı, ilişkili kaynak grubu ve iş tanımı adı gibi parametreleri sağlayın. Testi **başlatın** . Çalışma tamamlandığında rapor oluşturulur. Daha fazla bilgi için, [runbook 'u test](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)etme konusuna gidin.
+6. StorSimple Veri Yöneticisi hizmetinizin adı, ilişkili kaynak grubu ve iş tanımı adı gibi parametreleri sağlayın. Testi **başlatın** . Çalışma tamamlandığında rapor oluşturulur. Daha fazla bilgi için, [runbook 'u test](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)etme konusuna gidin.
 
     ![Runbook ekle 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 

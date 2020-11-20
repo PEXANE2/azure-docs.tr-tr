@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d06ad2f740394a4959f3665c5d6311e71841241
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79126596"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960844"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes hizmet tanılama (Önizleme) genel bakış
 
@@ -39,7 +39,7 @@ Bir kategoriye tıkladıktan sonra, kümenize özgü bir tanılama raporu görü
 
 ## <a name="cluster-insights"></a>Küme öngörüleri
 
-Aşağıdaki tanılama denetimleri, **küme öngörülerinde**kullanılabilir.
+Aşağıdaki tanılama denetimleri, **küme öngörülerinde** kullanılabilir.
 
 ### <a name="cluster-node-issues"></a>Küme düğümü sorunları
 
@@ -82,5 +82,7 @@ Kimlik ve güvenlik yönetimi, kümenizin iletişimini engelleyebilecek kimlik d
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Aks Periscope](https://aka.ms/aksperiscope)kullanarak küme sorunlarınızı gidermeye yardımcı olmak için günlükleri toplayın.
+
+AKS gün-2 işlemler kılavuzunun [önceliklendirme uygulamaları bölümünü](https://docs.microsoft.com/azure/architecture/operator-guides/aks/aks-triage-practices) okuyun.
 
 Başlığa "[diag]" ekleyerek sorularınızı veya görüşlerinizi [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) 'a gönderin.
