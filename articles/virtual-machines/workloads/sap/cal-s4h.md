@@ -3,16 +3,17 @@ title: Azure VM 'de SAP S/4HANA veya siyah beyaz/4HANA dağıtma | Microsoft Doc
 description: Azure VM 'de SAP S/4HANA veya siyah beyaz/4HANA dağıtma
 author: hermanndms
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 116de28501b77262ef126ed420982d853376da4e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993402"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959297"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure 'da SAP S/4HANA veya siyah beyaz/4HANA dağıtma
 Bu makalede SAP Cloud gereç kitaplığı (SAP CAL) 3,0 kullanılarak Azure 'da S/4HANA 'nın nasıl dağıtılacağı açıklanır. Siyah beyaz/4HANA gibi diğer SAP HANA tabanlı çözümleri dağıtmak için aynı adımları izleyin.
@@ -105,9 +106,9 @@ Dağıtımın temel yolunu burada gösteririz.
 
     a. SAP CAL hesabı seçin. (Kaynak Yöneticisi dağıtım modeliyle dağıtım ile ilişkili bir hesabı kullanın.)
 
-    b. Örnek **adı**girin.
+    b. Örnek **adı** girin.
 
-    c. Bir Azure **bölgesi**seçin. SAP CAL 'si bir bölge önerir. Başka bir Azure bölgesine ihtiyacınız varsa ve SAP CAL aboneliğiniz yoksa SAP ile CAL aboneliği sipariş etmeniz gerekir.
+    c. Bir Azure **bölgesi** seçin. SAP CAL 'si bir bölge önerir. Başka bir Azure bölgesine ihtiyacınız varsa ve SAP CAL aboneliğiniz yoksa SAP ile CAL aboneliği sipariş etmeniz gerekir.
 
     d. Sekiz veya dokuz karakterlik çözüm için bir ana **parola** girin. Parola, farklı bileşenlerin yöneticileri için kullanılır.
 
@@ -131,7 +132,7 @@ Dağıtımın temel yolunu burada gösteririz.
 
    ![Yeni portalda dağıtılan SAP CAL nesneleri](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-1. SAP CAL portalında durum **etkin**olarak görünür. Çözüme bağlanmak için **Bağlan**' a tıklayın. Farklı bileşenlere bağlanmak için farklı seçenekler bu çözüm içinde dağıtılır.
+1. SAP CAL portalında durum **etkin** olarak görünür. Çözüme bağlanmak için **Bağlan**' a tıklayın. Farklı bileşenlere bağlanmak için farklı seçenekler bu çözüm içinde dağıtılır.
 
    ![SAP CAL örnekleri](./media/cal-s4h/active_solution.png)
 

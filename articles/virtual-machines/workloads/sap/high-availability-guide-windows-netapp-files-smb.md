@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88853103"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958957"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files (SMB) ile Windows üzerinde Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -146,7 +147,7 @@ SAP 'den aşağıdaki yazılımlara ihtiyacınız vardır:
 1. İlk küme düğümüne bir SAP ASCS/SCS örneği yükler. SAP swpm yükleme aracını başlatın ve şuraya gidin: **ürün**  >  **DBMS** > yükleme > uygulama sunucusu ABAP (veya Java) > High-Availability sistem > ascs/SCS örneği > ilk küme düğümü.  
 
 2. SWPM 'de küme paylaşma yapılandırması olarak **dosya paylaşma kümesi** ' ni seçin.  
-3. **SAP sistem kümesi parametrelerine**adım sorulduğunda, **dosya paylaşma ana bilgisayar adı**olarak zaten oluşturduğunuz Azure NetApp Files SMB paylaşımının ana bilgisayar adını girin.  Bu örnekte, SMB paylaşımının ana bilgisayar adı **anfsmb-9562**' dir. 
+3. **SAP sistem kümesi parametrelerine** adım sorulduğunda, **dosya paylaşma ana bilgisayar adı** olarak zaten oluşturduğunuz Azure NetApp Files SMB paylaşımının ana bilgisayar adını girin.  Bu örnekte, SMB paylaşımının ana bilgisayar adı **anfsmb-9562**' dir. 
 
    > [!IMPORTANT]
    > Önkoşul denetleyicisi, SWPM ile sonuçlanıyorsa sürekli kullanılabilirlik özelliği koşulunun karşılanmadığını gösteriyorsa, [Windows 'ta artık mevcut olmayan bir paylaşılan klasöre erişmeye çalıştığınızda geciken hata iletisindeki](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l)yönergeleri izleyerek bu durum çözülebilir.  

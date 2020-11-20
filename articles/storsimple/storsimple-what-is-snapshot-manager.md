@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7e9d73fa94acd2f31452de05ef3caee92d5cf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2214f085c30419cefb3f6f84139d5592873173f7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055512"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960130"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager giriş
 
@@ -33,7 +33,7 @@ StorSimple cihazı, StorSimple Yöneticisi hizmeti, StorSimple Snapshot Manager 
 
 > [!NOTE]
 > * Microsoft Azure StorSimple Sanal dizilerini (StorSimple şirket içi sanal aygıtlar olarak da bilinir) yönetmek için StorSimple Snapshot Manager kullanamazsınız.
-> * StorSimple cihazınıza StorSimple güncelleştirme 2 ' yi yüklemeyi planlıyorsanız, StorSimple **güncelleştirme 2 ' yi yüklemeden önce**storsimple Snapshot Manager 'nin en son sürümünü indirdiğinizden emin olun ve yükleyin. StorSimple Snapshot Manager 'nin en son sürümü, geriye dönük olarak uyumludur ve Microsoft Azure StorSimple yayınlanan tüm sürümleriyle birlikte çalışmaktadır. StorSimple Snapshot Manager 'ın önceki sürümünü kullanıyorsanız, bu sürümü güncelleştirmeniz gerekir (yeni sürümü yüklemeden önce önceki sürümü kaldırmanız gerekmez).
+> * StorSimple cihazınıza StorSimple güncelleştirme 2 ' yi yüklemeyi planlıyorsanız, StorSimple **güncelleştirme 2 ' yi yüklemeden önce** storsimple Snapshot Manager 'nin en son sürümünü indirdiğinizden emin olun ve yükleyin. StorSimple Snapshot Manager 'nin en son sürümü, geriye dönük olarak uyumludur ve Microsoft Azure StorSimple yayınlanan tüm sürümleriyle birlikte çalışmaktadır. StorSimple Snapshot Manager 'ın önceki sürümünü kullanıyorsanız, bu sürümü güncelleştirmeniz gerekir (yeni sürümü yüklemeden önce önceki sürümü kaldırmanız gerekmez).
 > 
 > 
 
@@ -77,9 +77,9 @@ StorSimple Snapshot Manager özellikleri ve bunların nasıl kullanılacağı ha
 ## <a name="volumes-and-volume-groups"></a>Birimler ve birim grupları
 StorSimple Snapshot Manager, birimler oluşturup bunları birim grupları olarak yapılandırırsınız. 
 
-StorSimple Snapshot Manager, uygulama tutarlılığı olan yedek kopyalar oluşturmak için birim gruplarını kullanır. Tüm ilgili dosyalar ve veritabanları eşitlendiğinde uygulama tutarlılığı vardır ve belirli bir noktadaki uygulamanın doğru durumunu temsil eder. Birim grupları ( *tutarlılık grupları*olarak da bilinir), bir yedekleme veya geri yükleme işinin temelini oluşturur.
+StorSimple Snapshot Manager, uygulama tutarlılığı olan yedek kopyalar oluşturmak için birim gruplarını kullanır. Tüm ilgili dosyalar ve veritabanları eşitlendiğinde uygulama tutarlılığı vardır ve belirli bir noktadaki uygulamanın doğru durumunu temsil eder. Birim grupları ( *tutarlılık grupları* olarak da bilinir), bir yedekleme veya geri yükleme işinin temelini oluşturur.
 
-Birim grupları birim kapsayıcılarıyla aynı değildir. Birim kapsayıcısı, bulut depolama hesabı ve şifreleme ve bant genişliği tüketimi gibi diğer öznitelikleri paylaşan bir veya daha fazla birim içerir. Tek bir birim kapsayıcısı, en fazla 256 ölçülü kaynak sağlanmış StorSimple birimi içerebilir. Birim kapsayıcıları hakkında daha fazla bilgi için [birim Kapsayıcılarınızı yönetme](storsimple-manage-volume-containers.md)sayfasına gidin. Birim grupları, yedekleme işlemlerini kolaylaştırmak için yapılandırdığınız birimlerin koleksiyonlarıdır. Farklı birim kapsayıcılarına ait iki birim seçerseniz, bunları tek bir birim grubuna yerleştirin ve ardından bu birim grubu için bir yedekleme ilkesi oluşturursanız, her birim uygun depolama hesabı kullanılarak uygun birim kapsayıcısında yedeklenir.
+Birim grupları birim kapsayıcılarıyla aynı değildir. Birim kapsayıcısı, bulut depolama hesabı ve şifreleme ve bant genişliği tüketimi gibi diğer öznitelikleri paylaşan bir veya daha fazla birim içerir. Tek bir birim kapsayıcısı, en fazla 256 ölçülü kaynak sağlanmış StorSimple birimi içerebilir. Birim kapsayıcıları hakkında daha fazla bilgi için [birim Kapsayıcılarınızı yönetme](./storsimple-8000-manage-volume-containers.md)sayfasına gidin. Birim grupları, yedekleme işlemlerini kolaylaştırmak için yapılandırdığınız birimlerin koleksiyonlarıdır. Farklı birim kapsayıcılarına ait iki birim seçerseniz, bunları tek bir birim grubuna yerleştirin ve ardından bu birim grubu için bir yedekleme ilkesi oluşturursanız, her birim uygun depolama hesabı kullanılarak uygun birim kapsayıcısında yedeklenir.
 
 > [!NOTE]
 > Bir birim grubundaki tüm birimlerin tek bir bulut hizmeti sağlayıcısından gelmesi gerekir.
@@ -89,7 +89,7 @@ Birim grupları birim kapsayıcılarıyla aynı değildir. Birim kapsayıcısı,
 ## <a name="integration-with-windows-volume-shadow-copy-service"></a>Windows Birim Gölge Kopyası Hizmeti ile tümleştirme
 StorSimple Snapshot Manager uygulamayla tutarlı verileri yakalamak için Windows Birim Gölge Kopyası Hizmeti (VSS) kullanır. VSS, artımlı anlık görüntülerin oluşturulmasını koordine etmek üzere VSS kullanan uygulamalarla iletişim kurarak uygulama tutarlılığını kolaylaştırır. VSS, anlık görüntüler çekilirken uygulamaların geçici olarak devre dışı veya quiescent olmasını sağlar. 
 
-VSS 'nin StorSimple Snapshot Manager uygulanması SQL Server ve genel NTFS birimleri ile birlikte kullanılır. İşlem aşağıdaki gibidir: 
+VSS 'nin StorSimple Snapshot Manager uygulanması SQL Server ve genel NTFS birimleri ile birlikte kullanılır. Süreç şu şekilde ilerler: 
 
 1. Genellikle bir veri yönetimi ve koruma çözümü (StorSimple Snapshot Manager) veya bir yedekleme uygulaması olan bir istek sahibi VSS 'yi çağırır ve Hedef uygulamadaki yazıcı yazılımından bilgi toplamasını ister.
 2. VSS, verilerin bir açıklamasını almak için yazıcı bileşeniyle iletişim kurar. Yazıcı yedeklenecek verilerin açıklamasını döndürür. 
@@ -140,4 +140,3 @@ Yedekleme işlerini izleme hakkında daha fazla bilgi için bkz. [StorSimple Sna
 ## <a name="next-steps"></a>Sonraki adımlar
 * StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager kullanma](storsimple-snapshot-manager-admin.md)hakkında daha fazla bilgi edinin.
 * [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)indirin.
-

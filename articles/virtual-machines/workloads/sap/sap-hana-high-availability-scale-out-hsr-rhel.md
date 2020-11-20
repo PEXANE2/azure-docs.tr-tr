@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 36c101acc9e272ca0860649aad1a5e18fb5000a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152115"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957342"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux üzerinde SAP HANA genişleme sisteminin yüksek kullanılabilirliği 
 
@@ -122,7 +123,7 @@ Aşağıdaki yönergelerde, kaynak grubu, Azure sanal ağı üç Azure ağ alt a
 Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın: 
    - Hana çoğaltma sitesi 1 için HANA DB düğümleri olarak kullanılacak üç sanal makine: **Hana-S1-DB1**, **Hana-S1-DB2** ve **Hana-S1-DB3**  
    - Hana çoğaltma sitesi 2 için HANA DB düğümleri olarak kullanılacak üç sanal makine: **Hana-S2-DB1**, **Hana-S2-DB2** ve **Hana-S2-DB3**  
-   - *çoğunluk Oluşturucu*olarak kullanılacak küçük bir sanal makine: **Hana-s-mm**
+   - *çoğunluk Oluşturucu* olarak kullanılacak küçük bir sanal makine: **Hana-s-mm**
 
    SAP DB HANA düğümleri olarak dağıtılan VM 'Ler, [SAP HANA donanım dizininde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)yayınlanan Hana için SAP tarafından sertifikalandırılmalıdır. HANA DB düğümlerini dağıttığınızda, [hızlandırılmış ağın](../../../virtual-network/create-vm-accelerated-networking-cli.md) seçili olduğundan emin olun.  
   
@@ -131,16 +132,16 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
    Ve için yerel yönetilen diskler `/hana/data` dağıtın `/hana/log` . Ve için önerilen en düşük depolama yapılandırması, `/hana/data` `/hana/log` [Azure VM 'leri depolama yapılandırmalarında SAP HANA](./hana-vm-operations-storage.md)açıklanmıştır.
 
    Sanal ağ alt ağındaki her VM için birincil ağ arabirimini dağıtın `client` .  
-   VM Azure portal aracılığıyla dağıtıldığında, ağ arabirimi adı otomatik olarak oluşturulur. Basitlikle ilgili Bu yönergelerde, `client` Azure sanal ağ alt ağına **Hana-S1-DB1-Client**, **Hana-S1-DB2-Client**, **Hana-S1-DB3-Client**gibi bir şekilde eklenmiş olan otomatik olarak oluşturulan, birincil ağ arabirimlerine başvuracağız.  
+   VM Azure portal aracılığıyla dağıtıldığında, ağ arabirimi adı otomatik olarak oluşturulur. Basitlikle ilgili Bu yönergelerde, `client` Azure sanal ağ alt ağına **Hana-S1-DB1-Client**, **Hana-S1-DB2-Client**, **Hana-S1-DB3-Client** gibi bir şekilde eklenmiş olan otomatik olarak oluşturulan, birincil ağ arabirimlerine başvuracağız.  
 
 
    > [!IMPORTANT]
    > Seçtiğiniz işletim sisteminin, kullanmakta olduğunuz belirli VM türlerinde SAP HANA için SAP sertifikalı olduğundan emin olun. Bu türlere yönelik SAP HANA sertifikalı VM türlerinin ve işletim sistemi sürümlerinin listesi için, [SAP HANA sertifikalı IaaS platformları](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) sitesine gidin. Söz konusu türe yönelik SAP HANA tarafından desteklenen işletim sistemi sürümlerinin tam listesini almak için listelenen VM türünün ayrıntılarına tıklayın.  
   
 
-2. Sanal ağ alt ağında her bir HANA DB sanal makinesi için bir tane olmak üzere altı ağ arabirimi oluşturun `inter` (Bu örnekte, **Hana-S1-DB1-Inter**, **Hana-S1-DB2-Inter**, **Hana-S1-DB3-Inter**, **Hana-S2-DB1-Inter**, **Hana-S2-DB2-Inter**ve **Hana-S2-DB3-Inter**).  
+2. Sanal ağ alt ağında her bir HANA DB sanal makinesi için bir tane olmak üzere altı ağ arabirimi oluşturun `inter` (Bu örnekte, **Hana-S1-DB1-Inter**, **Hana-S1-DB2-Inter**, **Hana-S1-DB3-Inter**, **Hana-S2-DB1-Inter**, **Hana-S2-DB2-Inter** ve **Hana-S2-DB3-Inter**).  
 
-3. Altı ağ arabirimi oluşturun, her bir HANA DB sanal makinesi için, `hsr` sanal ağ alt ağında (Bu örnekte, **Hana-S1-DB1-HSR**, Hana- **S1-DB2-HSR**, **Hana-S1-DB3-HSR**, **Hana-S2-DB1-HSR**, **Hana-S2-DB2-HSR**ve **Hana-S2-DB3-HSR**).  
+3. Altı ağ arabirimi oluşturun, her bir HANA DB sanal makinesi için, `hsr` sanal ağ alt ağında (Bu örnekte, **Hana-S1-DB1-HSR**, Hana- **S1-DB2-HSR**, **Hana-S1-DB3-HSR**, **Hana-S2-DB1-HSR**, **Hana-S2-DB2-HSR** ve **Hana-S2-DB3-HSR**).  
 
 4. Yeni oluşturulan sanal ağ arabirimlerini karşılık gelen sanal makinelere ekleyin:  
 
@@ -150,7 +151,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
 
     c. **Genel bakış** bölmesinde, sanal makineyi serbest bırakmak için **Durdur** ' u seçin.  
 
-    d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `inter` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hsr` .  
+    d. Ağ **' ı** seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `inter` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hsr` .  
     
     e. **Kaydet**’i seçin. 
  
@@ -206,7 +207,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
 
       1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
       1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
-      1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+      1. Protokol ve bağlantı noktası 625 **03** olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
       1. **Tamam**’ı seçin.
 
    1. Sonra, Yük Dengeleme kurallarını oluşturun:
@@ -214,7 +215,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
       1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
       1. Yeni yük dengeleyici kuralının adını girin (örneğin, **Hana-lb**).
       1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**, **Hana-arka uç** ve **Hana-HP**) seçin.
-      1. **Ha bağlantı noktalarını**seçin.
+      1. **Ha bağlantı noktalarını** seçin.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
       1. **Tamam**’ı seçin.
@@ -227,7 +228,7 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
 
 
    > [!IMPORTANT]
-   > Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
+   > Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0** olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
    > Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).  
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files altyapısını dağıtma 
@@ -322,7 +323,7 @@ Bu örnekte, paylaşılan HANA dosya sistemleri Azure NetApp Files dağıtılır
     Nobody-Group = nobody
     ```
 
-3. **[Ah]** Doğrulayın `nfs4_disable_idmapping` . **Y**olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
+3. **[Ah]** Doğrulayın `nfs4_disable_idmapping` . **Y** olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
    Bu adım yalnızca Azure NetAppFiles NFSv 4.1 kullanılıyorsa gereklidir.  
 
     ```
@@ -352,7 +353,7 @@ Bu örnekte, paylaşılan HANA dosya sistemleri Azure NetApp Files dağıtılır
     ```
 
 
-10. **[Ah]** Karşılık gelen `/hana/shared/` dosya sistemlerinin, NFS protokol sürümü **NFSv4**olan tüm Hana DB VM 'lerine bağlı olduğunu doğrulayın.  
+10. **[Ah]** Karşılık gelen `/hana/shared/` dosya sistemlerinin, NFS protokol sürümü **NFSv4** olan tüm Hana DB VM 'lerine bağlı olduğunu doğrulayın.  
 
     ```
     sudo nfsstat -m
@@ -395,7 +396,7 @@ Sunulan yapılandırmada, dosya sistemleri `/hana/data` ve `/hana/log` yönetile
     ```
 
 4. **[Ah]** Mantıksal birimleri oluşturun. 
-   Anahtar olmadan kullandığınızda doğrusal bir birim oluşturulur `lvcreate` `-i` . Daha iyi g/ç performansı için şeritli bir birim oluşturmanızı ve şeritli boyutları [SAP HANA VM depolama yapılandırmalarında](./hana-vm-operations-storage.md)belgelenen değerlere hizalamanızı öneririz. `-i`Bağımsız değişken, temeldeki fiziksel birimlerin sayısı olmalıdır ve `-I` bağımsız değişken Stripe boyutudur. Bu belgede, veri hacmi için iki fiziksel birim kullanılır, bu nedenle `-i` anahtar bağımsız değişkeni **2**olarak ayarlanır. Veri hacmi için Şerit boyutu **256 KiB**'dir. Günlük birimi için bir fiziksel birim kullanılır, bu nedenle `-i` `-I` günlük birimi komutları için hiçbir veya anahtar açık olarak kullanılmaz.  
+   Anahtar olmadan kullandığınızda doğrusal bir birim oluşturulur `lvcreate` `-i` . Daha iyi g/ç performansı için şeritli bir birim oluşturmanızı ve şeritli boyutları [SAP HANA VM depolama yapılandırmalarında](./hana-vm-operations-storage.md)belgelenen değerlere hizalamanızı öneririz. `-i`Bağımsız değişken, temeldeki fiziksel birimlerin sayısı olmalıdır ve `-I` bağımsız değişken Stripe boyutudur. Bu belgede, veri hacmi için iki fiziksel birim kullanılır, bu nedenle `-i` anahtar bağımsız değişkeni **2** olarak ayarlanır. Veri hacmi için Şerit boyutu **256 KiB**'dir. Günlük birimi için bir fiziksel birim kullanılır, bu nedenle `-i` `-I` günlük birimi komutları için hiçbir veya anahtar açık olarak kullanılmaz.  
 
    > [!IMPORTANT]
    > `-i`Her bir veri veya günlük birimi için birden fazla fiziksel birim kullandığınızda anahtarı kullanın ve temel alınan fiziksel birimin numarasını ayarlayın. `-I`Şeritli birim oluştururken Stripe boyutunu belirtmek için anahtarını kullanın.  
@@ -454,7 +455,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
     ssh root@hana-s1-db3
     ```
 
-4. **[2]** bir parola istenmeden bu sitede **Hana-S2-DB2** ve **Hana-S2-DB3**içindeki Hana DB VM 'lerine SSH aracılığıyla oturum açabildiğinizi doğrulayın.  
+4. **[2]** bir parola istenmeden bu sitede **Hana-S2-DB2** ve **Hana-S2-DB3** içindeki Hana DB VM 'lerine SSH aracılığıyla oturum açabildiğinizi doğrulayın.  
    Böyle bir durum değilse, [anahtar tabanlı kimlik doğrulaması kullanma](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)bölümünde belirtildiği gibi Exchange SSH anahtarları.  
     ```
     ssh root@hana-s2-db2
@@ -490,12 +491,12 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
    b. İsteminde aşağıdaki değerleri girin:
 
-     * **Eylem Seç**için: **1** girin (Install için)
-     * **Yükleme Için ek bileşenler**için: **2, 3** girin
+     * **Eylem Seç** için: **1** girin (Install için)
+     * **Yükleme Için ek bileşenler** için: **2, 3** girin
      * Yükleme yolu için: ENTER tuşuna basın (varsayılan olarak/Hana/Shared değerini alır)
-     * **Yerel ana bilgisayar adı**için: varsayılan değer kabul etmek için ENTER tuşuna basın
+     * **Yerel ana bilgisayar adı** için: varsayılan değer kabul etmek için ENTER tuşuna basın
      * İçin **sisteme konaklar eklemek istiyor musunuz?**: **n** girin
-     * **SAP HANA SISTEM kimliği**Için: **HN1** girin
+     * **SAP HANA SISTEM kimliği** Için: **HN1** girin
      * **Örnek numarası** [00]: **03** girin
      * **Yerel konak çalışan grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
      * **Sistem kullanımını Seç/dizini girin [4]**: **4** girin (özel için)
@@ -503,14 +504,14 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
      * **Günlük birimlerinin konumu** için [/Hana/log/hn1]: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Maksimum bellek ayırmayı kısıtlamak için?** [n]: **n** girin
      * **Host Hana-S1-DB1** [Hana-S1-DB1] Için sertifika ana bilgisayar adı: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **SAP konak Aracısı Kullanıcı (sapadm) parolası**için: parolayı girin
+     * **SAP konak Aracısı Kullanıcı (sapadm) parolası** için: parolayı girin
      * **SAP konak Aracısı Kullanıcı (sapadm) parolasını onaylayın**: parolayı girin
-     * **Sistem Yöneticisi (hn1adm) parolası**için: parolayı girin
+     * **Sistem Yöneticisi (hn1adm) parolası** için: parolayı girin
      * **Sistem Yöneticisi ana dizini** için [/usr/SAP/hn1/Home]: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Sistem Yöneticisi oturum açma kabuğu** [/bin/sh]: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Sistem Yöneticisi Kullanıcı kimliği** [1001]: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Kullanıcı grubunun (sapsys)** [79] kimliğini girin: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **Sistem veritabanı kullanıcısı (sistem) parolası**için: sistemin parolasını girin
+     * **Sistem veritabanı kullanıcısı (sistem) parolası** için: sistemin parolasını girin
      * **Sistem veritabanı kullanıcı (sistem) parolasını onaylayın**: sistem parolasını girin
      * **Makine yeniden başlatıldıktan sonra sistem yeniden başlatma için mi?** [n]: **n** girin 
      * **Devam etmek Istiyor musunuz (e/h)**: Özeti doğrulayıp her şey iyi görünüyorsa **y** girin
@@ -574,19 +575,19 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
    b. İsteminde aşağıdaki değerleri girin:
 
-     * **Eylem Seç**için: **2** girin (ana bilgisayar Ekle için)
+     * **Eylem Seç** için: **2** girin (ana bilgisayar Ekle için)
      * **Eklenecek virgülle ayrılmış ana bilgisayar adlarını girin**: Hana-S1-DB2, Hana-S1-DB3
-     * **Yükleme Için ek bileşenler**için: **2, 3** girin
+     * **Yükleme Için ek bileşenler** için: **2, 3** girin
      * **Kök Kullanıcı adı girin [root]**: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **' Hana-S1-DB2 ' [1] konağının Select rolleri**için: 1 (çalışan için)
+     * **' Hana-S1-DB2 ' [1] konağının Select rolleri** için: 1 (çalışan için)
      * **Ana bilgisayar Için konak yük devretme grubunu girin ' Hana-S1-DB2 ' [varsayılan]**: varsayılanı kabul etmek için ENTER tuşuna basın
      * **' Hana-S1-DB2 ' [<<assign automatically>>] konağının depolama bölümü numarasını girin**: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Konağın ' Hana-S1-DB2 ' [varsayılan] çalışan grubunu girin**: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **' Hana-S1-DB3 ' [1] Konağı Için seçme rolleri**için: 1 (çalışan için)
+     * **' Hana-S1-DB3 ' [1] Konağı Için seçme rolleri** için: 1 (çalışan için)
      * **Ana bilgisayar ' Hana-S1-DB3 ' [varsayılan] Için konak yük devretme grubu girin**: varsayılanı kabul etmek için ENTER tuşuna basın
      * **' Hana-S1-DB3 ' [<<assign automatically>>] konağının depolama bölümü numarasını girin**: varsayılanı kabul etmek için ENTER tuşuna basın
      * **' Hana-S1-DB3 ' [varsayılan] konağının çalışan grubunu girin**: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **Sistem Yöneticisi (hn1adm) parolası**için: parolayı girin
+     * **Sistem Yöneticisi (hn1adm) parolası** için: parolayı girin
      * **SAP konak aracısı kullanıcısı (sapadm) parolasını girin**: parolayı girin
      * **SAP konak Aracısı Kullanıcı (sapadm) parolasını onaylayın**: parolayı girin
      * **Host Hana-S1-DB2** [Hana-S1-DB2] Için sertifika ana bilgisayar adı: varsayılanı kabul etmek için ENTER tuşuna basın
@@ -599,7 +600,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
 1. **[1]** SITE 1 ' de sistem çoğaltmasını yapılandırın:
 
-   Veritabanlarını **hn1**adm olarak yedekleme:
+   Veritabanlarını **hn1** adm olarak yedekleme:
 
     ```
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
@@ -936,7 +937,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
    3. Ardından, HANA örnek kaynağını oluşturun.  
       > [!NOTE]
-      > Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı*dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.  
+      > Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı* dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.  
  
       RHEL **7. x** kümesi oluşturuyorsanız aşağıdaki komutları kullanın:    
       ```
@@ -961,7 +962,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
        meta master-max="1" clone-node-max=1 interleave=true
       ```
       > [!IMPORTANT]
-      > Başarısız olan birincil örneğin otomatik olarak ikincil olarak kaydolmasını engellemek için AUTOMATED_REGISTER yalnızca **Hayır**olarak ayarlamanız önerilir. Yük devretme testleri başarıyla tamamlandıktan sonra, AUTOMATED_REGISTER ' i **Evet**olarak ayarlayın, böylelikle sistem çoğaltması otomatik olarak devam edebilir. 
+      > Başarısız olan birincil örneğin otomatik olarak ikincil olarak kaydolmasını engellemek için AUTOMATED_REGISTER yalnızca **Hayır** olarak ayarlamanız önerilir. Yük devretme testleri başarıyla tamamlandıktan sonra, AUTOMATED_REGISTER ' i **Evet** olarak ayarlayın, böylelikle sistem çoğaltması otomatik olarak devam edebilir. 
 
    4. Sanal IP ve ilişkili kaynaklar oluşturun.  
       ```
@@ -1068,9 +1069,9 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
 2. Bir düğüm NFS paylaşımında () erişimi kaybettiğinde hata senaryosu için küme yapılandırmasını doğrulayın `/hana/shared` .  
 
-   SAP HANA kaynak aracıları, `/hana/shared` Yük devretme sırasında işlemleri gerçekleştirmek için üzerinde depolanan ikili dosyalara bağımlıdır. Dosya sistemi `/hana/shared` , sunulan YAPıLANDıRMADA NFS üzerinden bağlanır. Gerçekleştirilebileceği bir test, `/hana/shared` dosya sistemini *salt okuma*olarak yeniden bağlamak içindir. Bu yaklaşım, `/hana/shared` etkin sistem çoğaltma sitesinde erişim kaybı durumunda kümenin yük devredebildiğini doğrular.  
+   SAP HANA kaynak aracıları, `/hana/shared` Yük devretme sırasında işlemleri gerçekleştirmek için üzerinde depolanan ikili dosyalara bağımlıdır. Dosya sistemi `/hana/shared` , sunulan YAPıLANDıRMADA NFS üzerinden bağlanır. Gerçekleştirilebileceği bir test, `/hana/shared` dosya sistemini *salt okuma* olarak yeniden bağlamak içindir. Bu yaklaşım, `/hana/shared` etkin sistem çoğaltma sitesinde erişim kaybı durumunda kümenin yük devredebildiğini doğrular.  
 
-   **Beklenen sonuç**: `/hana/shared` *salt okuma*olarak yeniden bağlama yaptığınızda dosya sisteminde okuma/yazma işlemi gerçekleştiren izleme işlemi başarısız olur, çünkü dosya sistemine yazamaz ve Hana kaynak yük devretmesini tetikleyecektir. HANA düğümünüz NFS paylaşımının erişimini kaybettiğinde aynı sonuç beklenmektedir.  
+   **Beklenen sonuç**: `/hana/shared` *salt okuma* olarak yeniden bağlama yaptığınızda dosya sisteminde okuma/yazma işlemi gerçekleştiren izleme işlemi başarısız olur, çünkü dosya sistemine yazamaz ve Hana kaynak yük devretmesini tetikleyecektir. HANA düğümünüz NFS paylaşımının erişimini kaybettiğinde aynı sonuç beklenmektedir.  
      
    Veya çalıştırarak küme kaynaklarının durumunu kontrol edebilirsiniz `crm_mon` `pcs status` . Teste başlamadan önce kaynak durumu:
       ```

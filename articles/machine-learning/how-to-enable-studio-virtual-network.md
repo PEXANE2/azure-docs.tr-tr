@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554674"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960011"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -53,7 +53,7 @@ Bu serideki diğer makalelere göz atın:
 
 Studio 'ya bir sanal ağın içindeki bir kaynaktan erişiyorsanız (örneğin, bir işlem örneği veya sanal makine), sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
 
-Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__ 'nin __hizmet etiketi__ hedefine bir kural ekleyin.
+Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__'nin __hizmet etiketi__ hedefine bir kural ekleyin.
 
 ## <a name="access-data-using-the-studio"></a>Studio 'yu kullanarak verilere erişme
 
@@ -81,16 +81,16 @@ Bu adım yalnızca, Azure Storage hesabını [özel bir uç nokta](how-to-secure
 
 Azure Machine Learning, depolama hesaplarına bağlanmak için [veri depolarını](concept-data.md#datastores) kullanır. Veri mağazalarınızı yönetilen kimlik kullanacak şekilde yapılandırmak için aşağıdaki adımları kullanın. 
 
-1. Studio 'da __veri depoları__ ' nı seçin.
+1. Studio 'da __veri depoları__' nı seçin.
 
-1. Yeni bir veri deposu oluşturmak için __+ Yeni veri deposu__ ' nu seçin.
+1. Yeni bir veri deposu oluşturmak için __+ Yeni veri deposu__' nu seçin.
 
-    Mevcut bir veri deposunu güncelleştirmek için veri deposunu seçin ve __kimlik bilgilerini güncelleştir__ ' i seçin.
+    Mevcut bir veri deposunu güncelleştirmek için veri deposunu seçin ve __kimlik bilgilerini güncelleştir__' i seçin.
 
 1. Veri deposu ayarları ' nda, __çalışma alanı tarafından yönetilen kimliği kullanarak Azure Machine Learning hizmetin depolamaya erişmesine Izin ver__ için __Evet__ ' i seçin.
 
 
-Bu adımlar, Azure Kaynak tabanlı erişim denetimi (Azure RBAC) kullanarak, çalışma alanı tarafından yönetilen kimliği depolama hizmetine __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının güvenlik duvarı ayarlarını almasına ve verilerin sanal ağdan çıkmadığınızdan emin olmanızı sağlar.
+Bu adımlar, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak, çalışma alanı tarafından yönetilen kimliği depolama hizmetine __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının güvenlik duvarı ayarlarını almasına ve verilerin sanal ağdan çıkmadığınızdan emin olmanızı sağlar.
 
 > [!NOTE]
 > Bu değişikliklerin etkili olması 10 dakika kadar sürebilir.
@@ -131,7 +131,7 @@ Tasarımcı, çıktıyı varsayılan olarak depolamak için çalışma alanını
 Bir işlem hattı için yeni bir varsayılan depolama alanı ayarlamak için:
 
 1. İşlem hattı Taslağınızda, işlem hatlarınızın başlığının yakınında bulunan **Ayarlar dişli simgesini** seçin.
-1. **Varsayılan veri deposunu Seç** ' i seçin.
+1. **Varsayılan veri deposunu Seç**' i seçin.
 1. Yeni bir veri deposu belirtin.
 
 Ayrıca modül temelinde varsayılan veri deposunu geçersiz kılabilirsiniz. Bu, her bir modülün depolama konumu üzerinde denetim sağlar.
@@ -139,7 +139,7 @@ Ayrıca modül temelinde varsayılan veri deposunu geçersiz kılabilirsiniz. Bu
 1. Çıktısını belirtmek istediğiniz modülü seçin.
 1. **Çıkış ayarları** bölümünü genişletin.
 1. **Varsayılan çıkış ayarlarını geçersiz kıl ' ı** seçin.
-1. **Çıkış ayarlarını ayarla** ' yı seçin.
+1. **Çıkış ayarlarını ayarla**' yı seçin.
 1. Yeni bir veri deposu belirtin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

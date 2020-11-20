@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977247"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957291"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu duyarlılık, uygulama katmanında çalışan iş mantığının büyük bir sonucudur. SAP uygulama katmanı iş mantığını çalıştırdığı için, bir saniyede binlerce veya onlarca binlerce veya on binde bir hızda veritabanı katmanına sorgu verir. Çoğu durumda, bu sorguların doğası basittir. Bunlar, genellikle 500 mikrosaniye veya daha az bir veritabanı katmanında çalıştırılabilir.

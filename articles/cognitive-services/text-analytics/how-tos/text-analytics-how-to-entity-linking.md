@@ -8,47 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518235"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957104"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
-Metin Analizi API'si, yapılandırılmamış metin almanıza ve Web hakkında daha fazla bilgi için bağlantılarla birlikte, Kesinleştirme varlıklarının bir listesini döndürmenize olanak tanır. API, adlandırılmış varlık tanıma (NER) ve varlık bağlamayı destekler.
+Metin Analizi API'si, yapılandırılmamış metin almanıza ve Web hakkında daha fazla bilgi için bağlantılarla birlikte, Kesinleştirme varlıklarının bir listesini döndürmenize olanak tanır. API, birçok varlık kategorisi ve varlık bağlama için hem adlandırılmış varlık tanımayı (NER) destekler.
 
-### <a name="entity-linking"></a>Varlık Bağlama
+## <a name="entity-linking"></a>Varlık Bağlama
 
 Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme olanağıdır (örneğin, "Mars" sözcüğünün bir oluşumunun Planet 'e veya War 'ın gerçekleşen ' ine mi başvurduğunu belirleme). Bu işlem, tanınan varlıkları metinde bağlamak için uygun bir dilde Bilgi Bankası 'nın bulunmasını gerektirir. Varlık bağlama, bu Bilgi Bankası olarak [Vikipedi](https://www.wikipedia.org/) kullanır.
 
+## <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
 
-### <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
+Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar veya türler, örneğin: kişi, konum, olay, ürün ve kuruluş gibi kategorilere ayırma olanağıdır.  
 
-Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar veya türler, örneğin: kişi, konum, olay, ürün ve kuruluş gibi kategorilere ayırma yeteneğidir.  
+## <a name="personally-identifiable-information-pii"></a>Kişisel olarak tanımlanabilen bilgiler (PII)
 
-## <a name="named-entity-recognition-versions-and-features"></a>Adlandırılmış varlık tanıma sürümleri ve özellikleri
+PII özelliği, NER 'in bir parçasıdır ve gizli varlıkları, telefon numarası, e-posta adresi, posta adresi, Passport numarası gibi bireysel bir kişiyle ilişkili metinde tanımlayabilir ve redaksiyonde ekleyebilir.  
+
+## <a name="named-entity-recognition-features-and-versions"></a>Adlandırılmış varlık tanıma özellikleri ve sürümleri
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Öne çıkan özelliği                                                         | NER v 3.0 | NER v 3.1-Önizleme. 2 |
+| Öne çıkan özelliği                                                         | NER v 3.0 | NER v 3.1-Önizleme. 3 |
 |-----------------------------------------------------------------|--------|----------|
 | Tek ve toplu istekler için Yöntemler                          | X      | X        |
 | Çeşitli kategoriler genelinde Genişletilmiş varlık tanıma           | X      | X        |
 | Varlık bağlama ve NER istekleri göndermek için ayrı uç noktalar. | X      | X        |
 | Kişisel ( `PII` ) ve sağlık ( `PHI` ) bilgi varlıklarının tanınması        |        | X        |
+| Redaksiyon `PII`        |        | X        |
 
 Bilgi için bkz. [dil desteği](../language-support.md) .
 
-## <a name="entity-types"></a>Varlık türleri
-
 Adlandırılmış varlık tanıma v3, birden çok tür genelinde genişletilmiş algılama sağlar. Şu anda NER v 3.0, [genel varlık kategorisindeki](../named-entity-types.md)varlıkları tanıyabilir.
 
-Adlandırılmış varlık tanıma v 3.1-Önizleme. 2, v 3.0 'ın algılama yeteneklerini ve `PII` uç noktayı kullanarak kişisel bilgileri () algılama olanağını içerir `v3.1-preview.2/entities/recognition/pii` . `domain=phi`Gizli sistem durumu bilgilerini () algılamak için isteğe bağlı parametresini kullanabilirsiniz `PHI` . Daha fazla bilgi için [varlık kategorileri](../named-entity-types.md) makalesine ve [istek uç noktaları](#request-endpoints) bölümüne bakın.
+Adlandırılmış varlık tanıma v 3.1-Önizleme. 3, v 3.0 'ın algılama yeteneklerini ve şunları içerir: 
+* Uç noktasını kullanarak kişisel bilgileri () algılama özelliği `PII` `v3.1-preview.3/entities/recognition/pii` . 
+* `domain=phi`Gizli durum bilgilerini () algılamak için isteğe bağlı bir parametre `PHI` .
+* Uç nokta kullanan [zaman uyumsuz işlem](text-analytics-how-to-call-api.md) `/analyze` .
 
+Daha fazla bilgi için aşağıdaki [varlık kategorileri](../named-entity-types.md) makalesine ve [istek uç noktaları](#request-endpoints) bölümüne bakın. 
 
 ## <a name="sending-a-rest-api-request"></a>REST API isteği gönderiliyor
 
@@ -68,41 +74,41 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapılandırmak ve göndermek 
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
-#### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-preview)
 
-Adlandırılmış varlık tanıma `v3.1-preview.2` , ner, PII ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
+Adlandırılmış varlık tanıma `v3.1-preview.3` , ner, PII ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın.
 
-Varlık bağlama
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+**Varlık bağlama**
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
 
-[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
+[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-HI
-* Genel varlıklar- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
+**Adlandırılmış varlık tanıma**
+* Genel varlıklar- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
-[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
+[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
 
-Kişisel olarak tanımlanabilen bilgiler (PII)
-* Kişisel ( `PII` ) bilgileri- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
+**Kişisel olarak tanımlanabilen bilgiler (PII)**
+* Kişisel ( `PII` ) bilgileri- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
 
 Ayrıca, `domain=phi` metindeki sağlık () bilgilerini algılamak için isteğe bağlı parametresini de kullanabilirsiniz `PHI` . 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-Lütfen, `redactedText` ALGıLANAN PII varlıklarının varlıkların her bir karakteri için bir * ile değiştirildiği değiştirilmiş giriş metnini içeren yanıt json ' da özelliğinin eklenmesini unutmayın.
+' Den itibaren `v3.1-preview.3` , JSON yanıtı, `redactedText` algılanan PII varlıklarının `*` varlıklardaki her karakter için bir ile değiştirildiği değiştirilmiş giriş metnini içeren bir özelliği içerir.
 
-[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+[Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
 
-Varlık bağlama
+**Varlık bağlama**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
 [İçin adlandırılmış varlık tanıma sürüm 3,0 başvurusu `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-HI
+**Adlandırılmış varlık tanıma**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [İçin adlandırılmış varlık tanıma sürüm 3,0 başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -113,7 +119,7 @@ Metin Analizi API'si anahtarınızı dahil etmek için bir istek üst bilgisi ay
 
 ### <a name="example-ner-request"></a>Örnek NER isteği 
 
-Aşağıda, API 'ye gönderebilecek içeriklere bir örnek verilmiştir. İstek biçimi, her iki API sürümü için de aynıdır.
+Aşağıdaki JSON, API 'ye gönderebilecek içeriklere bir örnektir. İstek biçimi, her iki API sürümü için de aynıdır.
 
 ```json
 {
@@ -138,7 +144,7 @@ Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonu�
 
 Tüm POST istekleri, kimlik ve algılanan varlık özelliklerine sahip JSON biçimli bir yanıt döndürür.
 
-Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [metin farklarını işleme](../concepts/text-offsets.md) .
+Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [metin farklarını işleme](../concepts/text-offsets.md).
 
 ### <a name="example-responses"></a>Örnek yanıtlar
 

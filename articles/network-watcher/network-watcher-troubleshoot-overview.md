@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 95edcee32c1917d23e4808e805f947d18d2fa7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986241"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960334"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
 
@@ -54,11 +54,11 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | PlannedMaintenance |  Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | Hayır |
 | VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
-| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Evet|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Evet |
+| PlatformInActive | Platform ile ilgili bir sorun var. | No|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
+| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| No|
+| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
 
 ### <a name="connection"></a>Bağlantı
 
@@ -68,15 +68,15 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
 | PlannedMaintenance | Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
-| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Evet|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
-| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
+| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | No |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | No |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |No|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
+| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
+| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
 
 ## <a name="supported-gateway-types"></a>Desteklenen ağ geçidi türleri
 
@@ -105,7 +105,7 @@ Kaynak sorun giderme günlük dosyaları, kaynak sorunlarını giderme işlemi t
 > [!NOTE]
 > Bazı durumlarda, günlük dosyalarının yalnızca bir alt kümesi depolamaya yazılır.
 
-Azure depolama hesaplarından dosya indirme yönergeleri için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Kullanılabilecek başka bir araç Depolama Gezgini. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
+Azure depolama hesaplarından dosya indirme yönergeleri için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-quickstart-blobs-dotnet.md). Kullanılabilecek başka bir araç Depolama Gezgini. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

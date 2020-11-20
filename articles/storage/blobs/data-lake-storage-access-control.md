@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320468"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959144"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetim listeleri (ACL 'Ler)
 
@@ -39,7 +39,7 @@ Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden b
 |Java|[Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için Java kullanın](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
 |Python|[Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
 |PowerShell|[PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI’si|[Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|Azure CLI|[Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
 |REST API |[Yol-Güncelleştir](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -60,7 +60,7 @@ Erişim ACL 'Leri ve varsayılan ACL 'Ler aynı yapıya sahiptir.
 
 ## <a name="levels-of-permission"></a>İzin düzeyleri
 
-Bir kapsayıcı nesnesindeki izinler **okuma**, **yazma**ve **yürütme**, aşağıdaki tabloda gösterildiği gibi dosyalar ve dizinler üzerinde de kullanılabilir:
+Bir kapsayıcı nesnesindeki izinler **okuma**, **yazma** ve **yürütme**, aşağıdaki tabloda gösterildiği gibi dosyalar ve dizinler üzerinde de kullanılabilir:
 
 |            |    Dosya     |   Dizin |
 |------------|-------------|----------|
@@ -90,9 +90,9 @@ Data Lake Storage 2. tarafından kullanılan POSIX stili modelde bir öğe için
 
 Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelenen işlemleri gerçekleştirmesini sağlamak IÇIN gereken ACL girdileri gösterilmektedir. 
 
-Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `\` , **Oregon**adlı bir alt dizin, **İstanbul**adlı MARI dizininin bir alt dizini ve **Data.txt**adlı Portland dizinindeki bir metin dosyası. 
+Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `\` , **Oregon** adlı bir alt dizin, **İstanbul** adlı MARI dizininin bir alt dizini ve **Data.txt** adlı Portland dizinindeki bir metin dosyası. 
 
-> [! IMPORANT] Bu tablo, hiçbir Azure RBAC rol ataması olmadan **yalnızca** ACL 'leri kullandığınızı varsayar. Azure RBAC 'i ACL 'lerle birlikte birleştiren benzer bir tablo görmek için bkz. [izin tablosu: Azure RBAC ve ACL 'Yi birleştirme](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
+> [! IMPORANT] Bu tablo, hiçbir Azure rol ataması olmadan **yalnızca** ACL 'leri kullandığınızı varsayar. Azure RBAC 'i ACL 'lerle birlikte birleştiren benzer bir tablo görmek için bkz. [izin tablosu: Azure RBAC ve ACL 'Yi birleştirme](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
 
 |    İşlem             |    /    | 'Daki | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -119,7 +119,7 @@ Her dosya ve dizin, bu kimlikler için farklı izinlere sahiptir:
 - Adlandırılmış Yönetilen kimlikler
 - Diğer tüm kullanıcılar
 
-Kullanıcıların ve grupların kimlikleri, Azure Active Directory (Azure AD) kimlikleridir. Bu nedenle, aksi belirtilmediği takdirde, Data Lake Storage 2. bağlamında bir *Kullanıcı*Azure AD kullanıcısına, hizmet sorumlusuna, yönetilen kimliğe veya güvenlik grubuna başvurabilir.
+Kullanıcıların ve grupların kimlikleri, Azure Active Directory (Azure AD) kimlikleridir. Bu nedenle, aksi belirtilmediği takdirde, Data Lake Storage 2. bağlamında bir *Kullanıcı* Azure AD kullanıcısına, hizmet sorumlusuna, yönetilen kimliğe veya güvenlik grubuna başvurabilir.
 
 ### <a name="the-owning-user"></a>Sahip olan kullanıcı
 
@@ -133,11 +133,11 @@ Kullanıcıların ve grupların kimlikleri, Azure Active Directory (Azure AD) ki
 
 ### <a name="the-owning-group"></a>Sahip olan grup
 
-POSIX ACL 'lerinde, her Kullanıcı bir *birincil grupla*ilişkilendirilir. Örneğin, "Gamze" kullanıcısı "Finans" grubuna ait gelebilir. Gamze birden çok gruba ait olabilir, ancak bir grup her zaman birincil grubu olarak atanır. POSIX’te Gamze bir dosya oluşturduğunda o dosyanın sahibi olan grup birincil grubu olarak ayarlanır (bu örnekte "finans" grubudur). Aksi takdirde sahip olan grup, diğer kullanıcılar/gruplar için atanan izinlere benzer şekilde davranır.
+POSIX ACL 'lerinde, her Kullanıcı bir *birincil grupla* ilişkilendirilir. Örneğin, "Gamze" kullanıcısı "Finans" grubuna ait gelebilir. Gamze birden çok gruba ait olabilir, ancak bir grup her zaman birincil grubu olarak atanır. POSIX’te Gamze bir dosya oluşturduğunda o dosyanın sahibi olan grup birincil grubu olarak ayarlanır (bu örnekte "finans" grubudur). Aksi takdirde sahip olan grup, diğer kullanıcılar/gruplar için atanan izinlere benzer şekilde davranır.
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Yeni bir dosya veya dizin için sahip olan grup atanıyor
 
-* **Durum 1**: kök dizin "/". Bu dizin Data Lake Storage 2. bir kapsayıcı oluşturulduğunda oluşturulur. Bu durumda sahip olan Grup, OAuth kullanılarak yapıldıysa kapsayıcıyı oluşturan kullanıcıya ayarlanır. Kapsayıcı paylaşılan anahtar, bir hesap SAS veya hizmet SAS kullanılarak oluşturulduysa, sahip ve sahip grubu **$superuser**olarak ayarlanır.
+* **Durum 1**: kök dizin "/". Bu dizin Data Lake Storage 2. bir kapsayıcı oluşturulduğunda oluşturulur. Bu durumda sahip olan Grup, OAuth kullanılarak yapıldıysa kapsayıcıyı oluşturan kullanıcıya ayarlanır. Kapsayıcı paylaşılan anahtar, bir hesap SAS veya hizmet SAS kullanılarak oluşturulduysa, sahip ve sahip grubu **$superuser** olarak ayarlanır.
 * **Durum 2** (diğer her durum): yeni bir öğe oluşturulduğunda, sahip olan grup üst dizinden kopyalanır.
 
 #### <a name="changing-the-owning-group"></a>Sahip olan grubu değiştirme
@@ -224,7 +224,7 @@ Mevcut bir dizin altında yeni bir dosya veya dizin oluşturulduğunda, üst diz
 
 ### <a name="umask"></a>umask
 
-Bir dosya veya dizin oluştururken, varsayılan ACL 'Lerin alt öğede nasıl ayarlandığını değiştirmek için umask kullanılır. umask, **sahip olan Kullanıcı**, **sahip olan grup**ve **diğer**için bir RWX değeri içeren üst dizinlerdeki 9 bitlik bir değerdir.
+Bir dosya veya dizin oluştururken, varsayılan ACL 'Lerin alt öğede nasıl ayarlandığını değiştirmek için umask kullanılır. umask, **sahip olan Kullanıcı**, **sahip olan grup** ve **diğer** için bir RWX değeri içeren üst dizinlerdeki 9 bitlik bir değerdir.
 
 Umask, 007 olarak ayarlanan sabit bir değer Azure Data Lake Storage 2.. Bu değer şunu yapar:
 
@@ -270,7 +270,7 @@ HNS kapalıysa, Azure Azure RBAC yetkilendirme kuralları yine de geçerlidir.
 
 Sistemin depolama hesabı kaynakları için yetkilendirme kararları vermesini sağlamak üzere Azure RBAC ve ACL 'Leri birlikte nasıl değerlendirdiğini öğrenmek için, bkz. [Izinlerin nasıl değerlendirildiği](data-lake-storage-access-control-model.md#how-permissions-are-evaluated).
 
-### <a name="what-are-the-limits-for-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC rol atamaları ve ACL girdileri sınırları nelerdir?
+### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Azure rol atamaları ve ACL girdileri sınırları nelerdir?
 
 Aşağıdaki tabloda, Azure RBAC kullanılırken "kaba" izinleri (depolama hesapları veya kapsayıcılar için uygulanan izinler) ve ACL 'Leri kullanarak "hassas" izinleri (dosyalar ve dizinler için uygulanan izinler) yönetmek için göz önünde bulundurmanız gereken limitlerin Özet görünümü verilmektedir. ACL atamaları için güvenlik gruplarını kullanın. Grupları kullanarak, abonelik başına maksimum rol ataması sayısını ve dosya veya dizin başına en fazla ACl girişi sayısını aşmanız daha düşüktür. 
 

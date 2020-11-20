@@ -3,16 +3,17 @@ title: SAP çözümlerine genel bakış ve mimari için Azure Izleyici | Microso
 description: Bu makale, SAP Çözümleri için Azure izleyici hakkında sık sorulan soruların yanıtlarını sağlar
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: d9730324b2557c8f0bb203f7badbd00e0e7e704e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994254"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957444"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP Çözümleri için Azure izleyici (Önizleme)
 
@@ -21,7 +22,7 @@ ms.locfileid: "91994254"
 SAP Çözümleri için Azure Izleyici, Azure 'da SAP 'lerini çalıştıran, müşteriler için Azure Native bir izleme ürünüdür. Ürün [Azure sanal makinelerinde hem SAP](./hana-get-started.md) hem de [Azure büyük örneklerde SAP](./hana-overview-architecture.md)ile birlikte kullanılabilir.
 SAP Çözümleri için Azure Izleyici ile müşteriler, Azure altyapısından ve veritabanlarından tek bir merkezi konumda telemetri verileri toplayabilir ve daha hızlı sorun giderme için telemetri verilerini görsel olarak ilişkilendirebilir.
 
-SAP Çözümleri için Azure Izleyici, Azure Marketi aracılığıyla sunulur. Basit, sezgisel bir kurulum deneyimi sağlar ve yalnızca birkaç tıklamayla yararlanarak SAP için Azure Izleyici çözümleri için kaynak ( **SAP Monitor kaynağı**olarak bilinir) dağıtımı gerçekleştirir.
+SAP Çözümleri için Azure Izleyici, Azure Marketi aracılığıyla sunulur. Basit, sezgisel bir kurulum deneyimi sağlar ve yalnızca birkaç tıklamayla yararlanarak SAP için Azure Izleyici çözümleri için kaynak ( **SAP Monitor kaynağı** olarak bilinir) dağıtımı gerçekleştirir.
 
 Müşteriler, bu bileşene karşılık gelen **sağlayıcıyı** ekleyerek Azure sanal makineleri, yüksek kullanılabilirlik kümesi, SAP HANA veritabanı vb. gibi SAP yatay 'ın farklı bileşenlerini izleyebilir.
 
@@ -78,12 +79,12 @@ Mimarinin temel bileşenleri şunlardır:
 - Azure portal: müşteriler için başlangıç noktası. Müşteriler, Azure portal dahilinde Market 'e gidebilir ve SAP Çözümleri için Azure Izleyicisini bulabilir
 - SAP Çözümleri için Azure Izleyici kaynak: müşterilerin izleme telemetrisini görüntülemesi için bir giriş yeri
 - Yönetilen kaynak grubu – SAP Çözümleri için Azure Izleyici Kaynak dağıtımının bir parçası olarak otomatik olarak dağıtılır. Yönetilen kaynak grubu içinde dağıtılan kaynaklar telemetri topluluğunda yardım eder. Dağıtılan anahtar kaynakları ve amaçları şunlardır:
-   - Azure sanal makinesi: *TOPLAYıCı VM*olarak da bilinir. Bu bir Standard_B2ms VM 'dir. Bu sanal makinenin ana amacı, *Izleme yükünü*barındırmak için kullanılır. İzleme yükü, kaynak sistemlerden telemetri toplama ve toplanan verileri izleme çerçevesine aktarma mantığını ifade eder. Yukarıdaki diyagramda, izleme yükü SQL bağlantı noktası üzerinden SAP HANA veritabanına bağlanma mantığını içerir.
+   - Azure sanal makinesi: *TOPLAYıCı VM* olarak da bilinir. Bu bir Standard_B2ms VM 'dir. Bu sanal makinenin ana amacı, *Izleme yükünü* barındırmak için kullanılır. İzleme yükü, kaynak sistemlerden telemetri toplama ve toplanan verileri izleme çerçevesine aktarma mantığını ifade eder. Yukarıdaki diyagramda, izleme yükü SQL bağlantı noktası üzerinden SAP HANA veritabanına bağlanma mantığını içerir.
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): Bu kaynak, SAP HANA veritabanı kimlik bilgilerini güvenli bir şekilde tutmak ve [sağlayıcılar](./azure-monitor-providers.md)hakkındaki bilgileri depolamak için dağıtılır.
    - Log Analytics çalışma alanı: Telemetri verilerinin bulunduğu hedef.
       - Görselleştirme, [Azure çalışma kitaplarını](../../../azure-monitor/platform/workbooks-overview.md)kullanarak Log Analytics telemetri üzerine kurulmuştur. Müşteriler görselleştirmeyi özelleştirebilir. Müşteriler, çalışma kitaplarını veya çalışma kitapları içindeki belirli görselleştirmeleri, en düşük ayrıntı düzeyi olan 30 dakikalık bir şekilde Azure panosuna de sabitleyebilir.
       - Müşteriler, dağıtım sırasında bu seçeneği belirleyerek, mevcut çalışma alanını SAP Monitor kaynağı ile aynı abonelikte kullanabilir.
-      - Müşteriler, Log Analytics çalışma alanındaki ham tablolara karşı [sorgu](../../../azure-monitor/log-query/log-query-overview.md) çalıştırmak için kusto sorgu DILI (KQL) kullanabilir. *Özel günlüklere*bakın.
+      - Müşteriler, Log Analytics çalışma alanındaki ham tablolara karşı [sorgu](../../../azure-monitor/log-query/log-query-overview.md) çalıştırmak için kusto sorgu DILI (KQL) kullanabilir. *Özel günlüklere* bakın.
 
 > [!Note]
 > Müşteriler, yönetilen kaynak grubunda dağıtılan VM 'nin düzeltme eki uygulama ve bakım yapmaktan sorumludur.

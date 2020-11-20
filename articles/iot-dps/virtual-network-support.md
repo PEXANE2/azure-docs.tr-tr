@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998585"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959790"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Sanal ağlar için Azure IoT Hub cihaz sağlama hizmeti (DPS) desteği
 
@@ -38,7 +38,7 @@ Birçok nedenden dolayı müşteriler, DPS gibi Azure kaynaklarıyla bağlantıy
 
 Bağlantıları kısıtlamak için yaygın yaklaşımlar, [DPS IP filtresi kurallarını](./iot-dps-ip-filtering.md) ve sanal ağı (VNet) [Özel uç noktalarla](../private-link/private-endpoint-overview.md)kapsar. Bu makalenin amacı, Özel uç noktalar kullanılarak DPS için VNET yaklaşımını betimmaktır. 
 
-Şirket içi ağlarda çalışan cihazlar, Azure 'daki bir VNET 'e bağlanmak ve özel uç noktalar aracılığıyla DPS kaynaklarına erişmek için [sanal özel ağ (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) özel eşlemesini kullanabilir. 
+Şirket içi ağlarda çalışan cihazlar, Azure 'daki bir VNET 'e bağlanmak ve özel uç noktalar aracılığıyla DPS kaynaklarına erişmek için [sanal özel ağ (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) özel eşlemesini kullanabilir. 
 
 Özel bir uç nokta, bir Azure kaynağına erişilebilen, müşterinin sahip olduğu VNET içinde ayrılan özel bir IP adresidir. DPS kaynağınız için özel bir uç nokta sunarak, VNET 'iniz içinde çalışan cihazların, genel uç noktaya trafiğe izin vermeden DPS kaynağınız tarafından sağlanmasını istemesi için izin verebilirsiniz.
 
@@ -51,7 +51,7 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 
 * Özel uç noktanın oluşturulacağı bir alt ağa sahip bir Azure VNET sağladınız. Daha fazla bilgi için bkz. [Azure CLI kullanarak sanal ağ oluşturma](../virtual-network/quick-create-cli.md).
 
-* Şirket içi ağların içinde çalışan cihazlarda [sanal özel ağ (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) özel eşlemesini Azure VNET 'iniz ile ayarlayın.
+* Şirket içi ağların içinde çalışan cihazlarda [sanal özel ağ (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) özel eşlemesini Azure VNET 'iniz ile ayarlayın.
 
 ## <a name="private-endpoint-limitations"></a>Özel uç nokta sınırlamaları
 
@@ -69,7 +69,7 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 
 Özel bir uç nokta ayarlamak için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), DPS kaynağını açın ve **ağ** sekmesine tıklayın. **Özel uç nokta bağlantıları** ve **+ Özel uç nokta**öğesine tıklayın.
+1. [Azure Portal](https://portal.azure.com/), DPS kaynağını açın ve **ağ** sekmesine tıklayın. **Özel uç nokta bağlantıları** ve **+ Özel uç nokta** öğesine tıklayın.
 
     ![DPS için yeni bir özel uç nokta ekleyin](./media/virtual-network-support/networking-tab-add-private-endpoint.png)
 
@@ -93,9 +93,9 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
     | Alan | Değer |
     | :---- | :-----|
     | **Abonelik**        | Özel uç noktanızın işaret edecek olan DPS kaynağını içeren Azure aboneliğini seçin.  |
-    | **Kaynak türü**       | **Microsoft. Devices/ProvisioningServices**öğesini seçin. |
+    | **Kaynak türü**       | **Microsoft. Devices/ProvisioningServices** öğesini seçin. |
     | **Kaynak**            | Özel uç noktanın eşolacağı DPS kaynağını seçin. |
-    | **Hedef alt kaynak** | **Iotdps**öğesini seçin. |
+    | **Hedef alt kaynak** | **Iotdps** öğesini seçin. |
 
     > [!TIP]
     > Bu makaledeki [özel bir uç nokta iste](#request-a-private-endpoint) bölümünde **kaynak kimliğine veya diğer ada göre Azure kaynağına bağlanma** hakkında bilgi sağlanır.
@@ -154,5 +154,5 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 
 DPS güvenlik özellikleri hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın:
 
-* [Güvenlik](concepts-security.md)
+* [Güvenlik](./concepts-service.md#attestation-mechanism)
 * [TLS 1,2 desteği](tls-support.md)

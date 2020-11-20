@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: a4496ba46b486f183136381a51c6a523dd9e1b87
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5c8918995675cae8e70ca9fc1efb0cf4c7cb233b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047990"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959416"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için Node.js IoT Edge modülü geliştirme ve dağıtma
 
@@ -33,9 +33,9 @@ Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından o
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Çözüm kapsamı
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide, **Visual Studio Code**kullanarak **Node.js** bir modülün nasıl geliştirileceği ve bir **Linux cihazına**nasıl dağıtılacağı gösterilmektedir. IoT Edge, Windows cihazları için Node.js modüllerini desteklemez.
+Bu öğreticide, **Visual Studio Code** kullanarak **Node.js** bir modülün nasıl geliştirileceği ve bir **Linux cihazına** nasıl dağıtılacağı gösterilmektedir. IoT Edge, Windows cihazları için Node.js modüllerini desteklemez.
 
 Node.js modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloyu kullanın:
 
@@ -43,8 +43,6 @@ Node.js modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Linux AMD64 üzerinde Node.js modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 'de Node.js modülleri için VS Code kullanma](./media/tutorial-c-module/green-check.png) |  |
-
-## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -74,7 +72,7 @@ Temel olarak kullanabileceğiniz bir Node.js çözüm şablonu oluşturmak için
     npm install -g yo generator-azure-iot-edge-module
     ```
 
-3. **View**  >  Vs Code komut paletini açmak için**komut paleti** görüntüle ' yi seçin.
+3. **View**  >  Vs Code komut paletini açmak için **komut paleti** görüntüle ' yi seçin.
 
 4. Komut paletinde **Azure: Sign in** komutunu yazıp çalıştırdıktan sonra yönergeleri izleyerek Azure hesabınızda oturum açın. Oturumu önceden açtıysanız bu adımı atlayabilirsiniz.
 
@@ -83,8 +81,8 @@ Temel olarak kullanabileceğiniz bir Node.js çözüm şablonu oluşturmak için
    | Alan | Değer |
    | ----- | ----- |
    | Klasör seçin | Geliştirme makinenizde VS Code'un çözüm dosyalarını oluşturmak için kullanacağı konumu seçin. |
-   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution**kabul edin. |
-   | Modül şablonunu seçin | **Node.js modülünü**seçin. |
+   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution** kabul edin. |
+   | Modül şablonunu seçin | **Node.js modülünü** seçin. |
    | Modül adı sağlayın | Modülünüze **NodeModule** adını verin. |
    | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusunu Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu \<registry name\> . azurecr.io/nodemodule gibi görünüyor. |
 
@@ -104,7 +102,7 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 Şu anda Visual Studio Code, Linux AMD64 ve Linux ARM32v7 cihazları için Node.js modülleri geliştirebilirler. Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Linux AMD64 varsayılandır.
 
-1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla**veya pencerenin altındaki yan çubukta kısayol simgesini seçin.
+1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla** veya pencerenin altındaki yan çubukta kısayol simgesini seçin.
 
 2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64**'yi tutacağız.
 
@@ -112,7 +110,7 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı verileri alan ve IoT Hub yönlendiren örnek kod içerir. Bu bölümde NodeModule modülünün verileri göndermeden önce analiz etmesi için gerekli kodu ekleyin.
 
-1. VS Code Gezgini 'nde, **modüller**  >  **nodemodule**  >  **app.js**açın.
+1. VS Code Gezgini 'nde, **modüller**  >  **nodemodule**  >  **app.js** açın.
 
 2. Gerekli düğüm modülleri altına bir sıcaklık eşik değeri girin. Sıcaklık eşiği, verilerin IoT Hub’a gönderilmesi için, ölçülen sıcaklığın aşması gereken değeri ayarlar.
 
@@ -187,7 +185,7 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
 
 Önceki bölümde, bildirilen makine sıcaklığının kabul edilebilir sınırlar içinde olduğu iletileri filtreleyecek bir IoT Edge çözümü oluşturdunuz ve NodeModule 'e kod eklediniz. Şimdi çözümü kapsayıcı görüntüsü olarak derlemeniz ve kapsayıcı kayıt defterine göndermeniz gerekiyor.
 
-1. **Görünüm**terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
+1. **Görünüm** terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
 
 2. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
 
@@ -197,7 +195,7 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
 
    Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin` . Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
-3. VS Code Gezgini 'nde, dosya ** üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
+3. VS Code Gezgini 'nde, dosya **üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü** seçin.
 
    Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
 
@@ -215,7 +213,7 @@ IoT Edge cihazınızın çalışır ve çalışıyor olduğundan emin olun.
 
 3. **Config** klasöründeki dosya **deployment.amd64.js** seçin ve ardından **kenar dağıtım bildirimini Seç**' e tıklayın. deployment.template.json dosyasını kullanmayın.
 
-4. Cihazınızın altında, dağıtılan ve çalışan modüllerin listesini görmek için **modüller** ' i genişletin. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub**birlikte çalışan yeni **nodemodule** görmeniz gerekir.
+4. Cihazınızın altında, dağıtılan ve çalışan modüllerin listesini görmek için **modüller** ' i genişletin. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub** birlikte çalışan yeni **nodemodule** görmeniz gerekir.
 
     Modüllerin başlaması birkaç dakika sürebilir. IoT Edge çalışma zamanının yeni dağıtım bildirimini alması, kapsayıcı çalışma zamanından modül görüntülerini çekmek ve sonra her yeni modülü başlatması gerekir.
 

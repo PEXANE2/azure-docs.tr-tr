@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
-ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1118dfcec67a49365f1f6e5e522e98b97694d052
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66420611"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960213"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 1,2 sürüm notları
 
@@ -46,7 +46,7 @@ KB4502035 indirin ve [Yerel Web Kullanıcı arabirimi aracılığıyla güncelle
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Özellik | Sorun |
+| Hayır. | Öne çıkan özelliği | Sorun |
 | --- | --- | --- |
 | 1 |Silme| Yazılımın önceki sürümlerinde, Dosyalar silindiğinde bile cihazın kullanımı değişmediyse bir sorun oluştu. Bu sorun bu sürümde düzeltilmiştir. Kod yolu, silinen dosyalar işlenirken daha dayanıklı yapıldı.|
 | 2 |Özel durum işleme| Yazılımın önceki sürümlerinde, sistem yeniden başlatıldıktan sonra yedeklemelerdeki hatalara neden olabilecek, geri yükleme, buluttan okuma ve otomatik Space geri kazanma ile ilgili bir sorun oluştu. Bu sürüm, başlangıç yolunda özel durumların nasıl işlendiği gibi değişiklikler içerir.|
@@ -69,4 +69,4 @@ Daha eski bir sürüm notuna mi bakıyorsunuz? Şuraya gidin:
 * [StorSimple Sanal dizisi güncelleştirme 0,4 sürüm notları](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,1 ve 0,2 sürüm notları](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](storsimple-ova-pp-release-notes.md)
+* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](./storsimple-virtual-array-update-06-release-notes.md)

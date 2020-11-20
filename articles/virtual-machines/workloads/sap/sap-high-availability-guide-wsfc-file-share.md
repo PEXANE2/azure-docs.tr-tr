@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 469f6a1021fde661c4eae7951b86c9bb500c7050
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361339"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958583"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure 'da bir dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP yoks/SCS örneği oluşturma
 
@@ -123,7 +124,7 @@ Genişleme dosya paylaşımının kullanılması için sisteminizin aşağıdaki
 
 * Genişleme dosya paylaşımının en az iki küme düğümü.
 * Her düğüm için en az iki yerel disk olmalıdır.
-* Performans nedeniyle, *yansıtma dayanıklılığı*kullanmanız gerekir:
+* Performans nedeniyle, *yansıtma dayanıklılığı* kullanmanız gerekir:
     * İki küme düğümü olan bir genişleme dosya paylaşımında iki yönlü yansıtma.
     * Üç (veya daha fazla) küme düğümüne sahip bir genişleme dosya paylaşımında üç yönlü yansıtma.
 * Üç yönlü yansıtmayla genişleme dosya paylaşımında üç (veya daha fazla) küme düğümü öneririz.

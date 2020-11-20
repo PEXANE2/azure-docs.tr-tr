@@ -8,17 +8,14 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660256"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959637"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
-
-> [!NOTE]
-> Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
 
 Bu makalede, aşağıdaki görevleri yaptık:
 
@@ -29,6 +26,10 @@ Bu makalede, aşağıdaki görevleri yaptık:
 Azure Notebooks, makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullanılan temel bir blok olan Azure Machine Learning çalışma alanından faydalanır.
 
 Bu makaledeki adımlar genellikle veri bilimcileri tarafından gerçekleştirilmiş olabilir.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
 ## <a name="set-up-azure-notebooks"></a>Azure Notebooks ayarlama
 
@@ -64,17 +65,17 @@ Azure Notebooks kullanmak için bir hesap oluşturmanız gerekir. Azure Not deft
 
 1. Düğmeyi seçerek yeni bir proje ekleyin **+** .
 
-1. **Yeni proje oluştur** iletişim kutusunda bir **Proje adı**girin. 
+1. **Yeni proje oluştur** iletişim kutusunda bir **Proje adı** girin. 
 
 1. Projenin public olması veya bir Benioku dosyası olması gerektiği için **Public** ve **README** işaretini kaldırın.
 
 1. **Oluştur**’u seçin.
 
-1. **Karşıya yükle** ' yi (yukarı ok simgesi) seçin ve **bilgisayardan**öğesini seçin.
+1. **Karşıya yükle** ' yi (yukarı ok simgesi) seçin ve **bilgisayardan** öğesini seçin.
 
 1. **Dosya Seç**' i seçin.
 
-1. **C:\source\ıotedgeandmlsample\azurenotebooks**dizinine gidin. Listedeki tüm dosyaları seçin ve **Aç**' a tıklayın.
+1. **C:\source\ıotedgeandmlsample\azurenotebooks** dizinine gidin. Listedeki tüm dosyaları seçin ve **Aç**' a tıklayın.
 
 1. **Bu dosyaların içeriğine güvenim** kutusunu işaretleyin.
 
@@ -110,11 +111,11 @@ Azure Notebooks projenize yüklediğiniz dosyaları gözden geçirelim. Öğreti
 
 Artık proje oluşturulduğuna göre, not defterlerini çalıştırabilirsiniz. 
 
-1. Proje sayfanıza **01-turbofan \_ regresyon. ipynb**öğesini seçin.
+1. Proje sayfanıza **01-turbofan \_ regresyon. ipynb** öğesini seçin.
 
     ![Çalıştırılacak ilk not defterini seçin](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-1. Not defteri **güvenilir değil**olarak listeleniyorsa, Not defterinin sağ üst köşesindeki **güvenilir değil** pencere öğesine tıklayın. İletişim kutusu geldiğinde **güven**' i seçin.
+1. Not defteri **güvenilir değil** olarak listeleniyorsa, Not defterinin sağ üst köşesindeki **güvenilir değil** pencere öğesine tıklayın. İletişim kutusu geldiğinde **güven**' i seçin.
 
 1. En iyi sonuçlar için, her bir hücrenin belgelerini okuyun ve tek tek çalıştırın. Araç çubuğunda **Çalıştır** ' ı seçin. Daha sonra, daha sonra birden çok hücre çalıştırmak için BT 'yi görürsünüz. Yükseltme ve kullanımdan kaldırma uyarılarını yoksayabilirsiniz.
 
@@ -129,7 +130,7 @@ Artık proje oluşturulduğuna göre, not defterlerini çalıştırabilirsiniz.
 
     ![Not defterindeki genel özellikleri ayarlama](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
 
-1. **Çalışma alanı ayrıntılarının**önceki hücresinde, çalıştırıldıktan sonra kimlik doğrulaması için oturum açmanızı sağlayan bağlantıyı arayın:
+1. **Çalışma alanı ayrıntılarının** önceki hücresinde, çalıştırıldıktan sonra kimlik doğrulaması için oturum açmanızı sağlayan bağlantıyı arayın:
 
     ![Cihaz kimlik doğrulaması için oturum açma istemi](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
 
@@ -137,7 +138,7 @@ Artık proje oluşturulduğuna göre, not defterlerini çalıştırabilirsiniz.
 
     ![Cihazda uygulamanın kimliğini doğrulama onayı](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
 
-1. **Sonuçları keşfetmeye**önce gelen hücrede, çalışma kimliği ' nden değeri kopyalayın ve **bir çalıştırma edilmeyen**izleyen hücrede çalıştırma kimliği için yapıştırın.
+1. **Sonuçları keşfetmeye** önce gelen hücrede, çalışma kimliği ' nden değeri kopyalayın ve **bir çalıştırma edilmeyen** izleyen hücrede çalıştırma kimliği için yapıştırın.
 
    ![Çalışma KIMLIĞINI hücreler arasında kopyalama](media/tutorial-machine-learning-edge-04-train-model/automl-id.png)
 
@@ -157,7 +158,7 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
 
 1. Aşağıdaki dosyaların oluşturulduğunu doğrulayın:
 
-    | Dosya | Açıklama |
+    | Dosya | Description |
     | --- | --- |
     | ./aml_config/.azureml/config.js | Azure Machine Learning Çalışma Alanı oluşturmak için kullanılan yapılandırma dosyası. |
     | ./aml_config/model_config.jsaçık | Modeli Azure 'daki **Turbofandemo** Machine Learning çalışma alanına dağıtmak için gereken yapılandırma dosyası. |
@@ -168,7 +169,7 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
     | Azure kaynağı | Name |
     | --- | --- |
     | Machine Learning çalışma alanı | turborfanDemo |
-    | Container Kayıt Defteri | turbofandemoxxxxxxxx |
+    | Container Registry | turbofandemoxxxxxxxx |
     | Uygulama öngörüleri | turbofanınsilerxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
     | Depolama | turbofanstoragexxxxxxxxx |

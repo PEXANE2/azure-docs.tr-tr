@@ -9,23 +9,24 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857257"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959314"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
-
-> [!NOTE]
-> Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
 
 Bu makalede, bir kez sanal cihaz olarak geliştirme sanal makinesi olarak kullanıyoruz. Ancak, IoT Hub doğrudan veri göndermek yerine, cihaz verileri saydam bir ağ geçidi olarak yapılandırılmış IoT Edge cihazına gönderir.
 
 Sanal cihaz veri gönderirken IoT Edge cihazının işlemini izliyoruz. Cihazın çalışması tamamlandığında, her şeyin beklendiği gibi çalıştığını doğrulamak için depolama hesabımızda bulunan verilere baktık.
 
 Bu adım genellikle bir bulut veya cihaz geliştiricisi tarafından gerçekleştirilir.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
 ## <a name="review-device-harness"></a>Cihaz bandı gözden geçirme
 
@@ -38,7 +39,7 @@ Bu iki öğenin nasıl uygulandığını görmek için koda bakın.
 
 1. Geliştirme makinenizde Visual Studio Code açın.
 
-1. **File**  >  C: kaynak ıotedgeandmlsample Device, dosyasını açmak için dosya**klasörü aç...** öğesini kullanın \\ \\ \\ .
+1. **File**  >  C: kaynak ıotedgeandmlsample Device, dosyasını açmak için dosya **klasörü aç...** öğesini kullanın \\ \\ \\ .
 
 1. Program.cs ' de InstallCertificate () yöntemine bakın.
 
@@ -110,7 +111,7 @@ AvroFileWriter modülünün çıktısı, IoT Edge cihazına bakarak kolayca göz
 
 1. 10 dakika geçtikten sonra modülün dosyaları karşıya yüklemesi gerekir. Karşıya yükleme başarılı olursa, dosyaları diskten siler.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 Verilerin yönlendirilmesini beklediğimiz depolama hesaplarına bakarak yaprak cihazımızın sonuçlarını gözlemleyebiliriz.
 
@@ -142,7 +143,7 @@ Avro dosyasını okumak ve dosyadaki iletilerin JSON dizesini döndürmek için 
    pip install c:\source\IoTEdgeAndMlSample\HubAvroReader
    ```
 
-1. **Rulum verilerinden**indirdiğiniz avro dosyasını okumak için hubavroreader 'ı kullanın.
+1. **Rulum verilerinden** indirdiğiniz avro dosyasını okumak için hubavroreader 'ı kullanın.
 
    ```cmd
    hubavroreader <avro file with ath> | more

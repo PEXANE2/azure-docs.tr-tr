@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 618b2c6acb8792382adb4c067aa8f33003227091
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9fc34532818a742ef67e4b2532966874d083199d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91532593"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959858"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Hızlı başlangıç: C# kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Bu hızlı başlangıçta C# programlama özelliklerini kullanarak ara veya kök CA X.509 sertifikalarını kullanan bir [Kayıt grubu](concepts-service.md#enrollment-group) oluşturmayı öğreneceksiniz. Kayıt grubu, [.NET için Microsoft Azure ıOT SDK](https://github.com/Azure/azure-iot-sdk-csharp) ve örnek bir C# .NET Core uygulaması kullanılarak oluşturulur. Kayıt grubu, sertifika zincirlerinde ortak imzalama sertifikasını paylaşan cihazlar için sağlama hizmetine erişimi denetler. Daha fazla bilgi edinmek için bkz. [X.509 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Azure IoT Hub ve Cihaz Sağlama Hizmeti ile X.509 sertifikası tabanlı Ortak Anahtar Altyapısı'nı (PKI) kullanma hakkında daha fazla bilgi için bkz. [X.509 CA sertifikası güvenliğine genel bakış](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+Bu hızlı başlangıçta C# programlama özelliklerini kullanarak ara veya kök CA X.509 sertifikalarını kullanan bir [Kayıt grubu](concepts-service.md#enrollment-group) oluşturmayı öğreneceksiniz. Kayıt grubu, [.NET için Microsoft Azure ıOT SDK](https://github.com/Azure/azure-iot-sdk-csharp) ve örnek bir C# .NET Core uygulaması kullanılarak oluşturulur. Kayıt grubu, sertifika zincirlerinde ortak imzalama sertifikasını paylaşan cihazlar için sağlama hizmetine erişimi denetler. Daha fazla bilgi edinmek için bkz. [X.509 sertifikalarıyla sağlama hizmetine cihaz erişimini denetleme](./concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Azure IoT Hub ve Cihaz Sağlama Hizmeti ile X.509 sertifikası tabanlı Ortak Anahtar Altyapısı'nı (PKI) kullanma hakkında daha fazla bilgi için bkz. [X.509 CA sertifikası güvenliğine genel bakış](../iot-hub/iot-hub-x509ca-overview.md). 
 
 Bu hızlı başlangıçta zaten bir IoT Hub ve cihaz sağlama hizmeti örneği oluşturmuş olmanız beklenir. Bu kaynakları daha önce oluşturmadıysanız, bu makaleye devam etmeden önce Azure portal hızlı başlangıç [ile IoT Hub cihaz sağlama hizmetini ayarla](./quick-setup-auto-provision.md) ' yı doldurun.
 
@@ -28,7 +28,7 @@ Bu makaledeki adımlar hem Windows hem de Linux bilgisayarlarda çalışır, anc
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio 2019](https://www.visualstudio.com/vs/)’u yükleyin.
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
@@ -43,8 +43,8 @@ Bu hızlı başlangıç için ara veya kök CA X.509 sertifikasının ortak böl
 > [!CAUTION]
 > Yalnızca geliştirme testi için SDK araçları ile oluşturulan sertifikaları kullanın.
 > Bu sertifikaları üretimde kullanmayın.
-> 30 gün sonra sona ereceği *1234*gibi sabit kodlanmış parolalar içerirler.
-> Üretim ortamında kullanıma uygun sertifikalar almayı öğrenmek için, Azure IoT Hub belgelerinde [X.509 CA sertifikası alma](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) konusuna bakın.
+> 30 gün sonra sona ereceği *1234* gibi sabit kodlanmış parolalar içerirler.
+> Üretim ortamında kullanıma uygun sertifikalar almayı öğrenmek için, Azure IoT Hub belgelerinde [X.509 CA sertifikası alma](../iot-hub/iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) konusuna bakın.
 >
 
 Sertifika oluşturmak için bu test araçlarını kullanmak üzere aşağıdaki adımları uygulayın:
@@ -79,17 +79,17 @@ Bu hızlı başlangıçtaki örnek için sağlama hizmetinizin bağlantı dizesi
 
 ## <a name="create-the-enrollment-group-sample"></a>Kayıt grubu örneğini oluşturma 
 
-Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Biraz değişiklikle, kayıt grubunu eklemek üzere bir [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) konsol uygulaması oluşturmak için de bu adımları izleyebilirsiniz. IoT Core ile geliştirme hakkında daha fazla bilgi edinmek için bkz. [Windows IoT Core geliştirici belgeleri](https://docs.microsoft.com/windows/iot-core/).
+Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Biraz değişiklikle, kayıt grubunu eklemek üzere bir [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) konsol uygulaması oluşturmak için de bu adımları izleyebilirsiniz. IoT Core ile geliştirme hakkında daha fazla bilgi edinmek için bkz. [Windows IoT Core geliştirici belgeleri](/windows/iot-core/).
 
-1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin. **Yeni proje oluştur**bölümünde C# proje şablonu Için **konsol uygulaması (.NET Core)** öğesini seçin ve **İleri**' yi seçin.
+1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin. **Yeni proje oluştur** bölümünde C# proje şablonu Için **konsol uygulaması (.NET Core)** öğesini seçin ve **İleri**' yi seçin.
 
-1. Projeyi *Createkayıtmentgroup*olarak adlandırın ve **Oluştur**' a basın.
+1. Projeyi *Createkayıtmentgroup* olarak adlandırın ve **Oluştur**' a basın.
 
     ![Visual C# Windows Klasik Masaüstü projesini yapılandırma](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
 1. Çözüm Visual Studio 'da açıldığında, **Çözüm Gezgini** bölmesinde **createkayıtsayısı** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin, **Microsoft. Azure. Devices. sağlama. hizmeti**' ni arayın ve ardından **Install**tuşuna basın.
+1. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin, **Microsoft. Azure. Devices. sağlama. hizmeti**' ni arayın ve ardından **Install** tuşuna basın.
 
     ![NuGet Paket Yöneticisi penceresi](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
@@ -190,7 +190,7 @@ C# hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta olu
 
 1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i ve ardından **kayıt grupları**' nı seçin. Bu hızlı başlangıcı kullanarak oluşturduğunuz kayıt girişinin *kayıt kimliği* ' ni seçin ve **Sil**' e basın.
 
-1. Azure portal cihaz sağlama hizmetinizden **Sertifikalar**' ı seçin, bu hızlı başlangıç için karşıya yüklediğiniz sertifikayı seçin ve **sertifika ayrıntılarının**en üstünde bulunan **Sil** ' e basın.  
+1. Azure portal cihaz sağlama hizmetinizden **Sertifikalar**' ı seçin, bu hızlı başlangıç için karşıya yüklediğiniz sertifikayı seçin ve **sertifika ayrıntılarının** en üstünde bulunan **Sil** ' e basın.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

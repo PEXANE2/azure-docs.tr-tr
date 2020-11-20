@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
-ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df4722a4232686b0d981c190bdc154f0d1bec62e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60789646"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960215"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 1,1 sürüm notları
 
@@ -48,7 +48,7 @@ Bu güncelleştirme aşağıdaki geliştirme ve hata düzeltmelerini içerir:
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Özellik | Sorun |
+| Hayır. | Öne çıkan özelliği | Sorun |
 | --- | --- | --- |
 | 1 |Yedeklemeler| Bu sürüm, bulut hatalarıyla ve yüksek CPU kullanımının dayanıklılığını artırarak yedekleme hatalarının artmasıyla ilgili değişiklikler içerir.|
 | 2 |Günlüğe Kaydetme| Bu sürüm, cihaz destek oturumu ayrıntılı modda olduğunda günlüğe kaydetme değişiklikleri içerir.|
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir.
 
-| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal diziler desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal diziler, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal dizisini oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmelisiniz. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |
@@ -91,4 +91,4 @@ Daha eski bir sürüm notuna mi bakıyorsunuz? Şuraya gidin:
 * [StorSimple Sanal dizisi güncelleştirme 0,4 sürüm notları](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,1 ve 0,2 sürüm notları](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](storsimple-ova-pp-release-notes.md)
+* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](./storsimple-virtual-array-update-06-release-notes.md)

@@ -5,23 +5,24 @@ author: sameeksha91
 ms.author: sakhare
 ms.topic: quickstart
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.devlang: azurepowershell
 ms.date: 09/08/2020
 ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 466883de31f0967f593c3c1abf5c1725bc327e41
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 28b26b8d4d6acdffb4083d182c6a0ce0539080c9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994116"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957376"
 ---
 # <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SAP Çözümleri için Azure Izleyici dağıtma
 
 Bu makalede, [az. HanaOnAzure](/powershell/module/az.hanaonazure/#sap-hana-on-azure) PowerShell modülünü kullanarak SAP Çözümleri Için Azure izleyici kaynaklarını nasıl oluşturabileceğiniz açıklanmaktadır.
 
 > [!CAUTION]
-> SAP Çözümleri için Azure Izleyici Şu anda genel önizleme aşamasındadır. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> SAP Çözümleri için Azure Izleyici Şu anda genel önizleme aşamasındadır. Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır. Üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Gereksinimler
 

@@ -3,16 +3,17 @@ title: Azure sanal makinelerinde SAP Business One | Microsoft Docs
 description: Azure 'da SAP Business One.
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: b076045f6a106f77717159d3095ffd5973ab27aa
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1201ff91634a1f63c8fe0e545ca6d6dee33abe35
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359893"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957393"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
 Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
@@ -23,7 +24,7 @@ Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberli
 
 SQL Server, [SAP NetWeaver Için Azure sanal MAKINELER DBMS dağıtımı](./dbms_guide_general.md) 'nda belgelendiği gibi temel dağıtım konuları geçerlidir. SAP HANA için bu belgede dikkat edilecek noktalar bahsedilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere ihtiyacınız vardır:
 
 - [Windows üzerinde Azure sanal makineleri](../../windows/tutorial-manage-vm.md)

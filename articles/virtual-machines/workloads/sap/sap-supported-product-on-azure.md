@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065093"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957818"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure dağıtımları için hangi SAP yazılımı desteklenir?
 Bu makalede, Azure dağıtımları için hangi SAP yazılımlarının desteklendiğini ve gereken işletim sistemi yayınlarının veya DBMS sürümlerinin ne olduğu nasıl bulabileceğiniz açıklanır.
@@ -95,7 +96,7 @@ SAP HANA çalıştırmak için SAP daha fazla ve daha güçlü koşullara sahipt
 > Mektupla başlayan birimler [Hana büyük örnekler](./hana-overview-architecture.md) birimleridir. 
 
 > [!NOTE]
-> SAP 'nin SAP HANA ana sürümlere bağımlı belirli bir sertifikası yoktur. [Hana sertifikalı IaaS platformlarındaki](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)sütun **sertifikasyon senaryosu** olan yaygın GÖRÜŞLERDE, sütun, **Hana büyük veya küçük yayın sertifikalı bir ifade**yapmaz. Belirli birimlere yönelik sertifikalı işletim sistemi yayınları de HANA 1,0 yayınları tarafından desteklendiği sürece, HANA 1,0 ve HANA 2,0 için kullanılabilen tüm birimlerin kabul etmeniz gerekir. 
+> SAP 'nin SAP HANA ana sürümlere bağımlı belirli bir sertifikası yoktur. [Hana sertifikalı IaaS platformlarındaki](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)sütun **sertifikasyon senaryosu** olan yaygın GÖRÜŞLERDE, sütun, **Hana büyük veya küçük yayın sertifikalı bir ifade** yapmaz. Belirli birimlere yönelik sertifikalı işletim sistemi yayınları de HANA 1,0 yayınları tarafından desteklendiği sürece, HANA 1,0 ve HANA 2,0 için kullanılabilen tüm birimlerin kabul etmeniz gerekir. 
 
 SAP HANA kullanımı için, genel NetWeaver durumları için farklı en düşük işletim sistemi yayınları uygulanabilir. Bu gibi farklılık gösterebileceğinden, her birim için desteklenen işletim sistemlerini ayrı ayrı denetlemeniz gerekir. Her bir birime tıklayarak bunu yapabilirsiniz. Daha fazla ayrıntı görüntülenecektir. Listelenen ayrıntıların biri, bu belirli birim için desteklenen farklı işletim sistemleridir.
 

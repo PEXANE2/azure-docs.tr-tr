@@ -8,19 +8,20 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047667"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959603"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
-> [!NOTE]
-> Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
-
 Bu makalede, ortamınız geliştirme ve dağıtım için hazırlanmanıza yardımcı olur. İlk olarak, ihtiyacınız olan tüm araçlarla bir geliştirme makinesi ayarlayın. Daha sonra, Azure 'da gerekli bulut kaynaklarını oluşturun.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
 ## <a name="set-up-the-development-vm"></a>Geliştirme sanal makinesini ayarlama
 
@@ -36,7 +37,7 @@ Geliştirme sanal makinesi şu şekilde ayarlanır:
 * [Windows için Git](https://gitforwindows.org/)
 * [Windows için git kimlik bilgileri Yöneticisi](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
 * [.NET Core SDK](https://dotnet.microsoft.com/)
-* [Python 3](https://www.python.org/)
+* [Python 3 karşılaştırması](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
 * [VS Code uzantıları](https://marketplace.visualstudio.com/search?target=VSCode)
@@ -100,7 +101,7 @@ Maliyeti azaltmanıza yardımcı olmak için, geliştirme sanal makinesi, 1900 P
 
 1. Azure portal, betiğin oluşturulduğu VM 'ye gidin.
 
-1. Sol bölme menüsünde, **işlemler**altında **otomatik olarak kapalı**' yı seçin.
+1. Sol bölme menüsünde, **işlemler** altında **otomatik olarak kapalı**' yı seçin.
 
 1. **Zamanlanan kapalı** ve **saat dilimini** Istediğiniz şekilde ayarlayın ve **Kaydet**' i seçin.
 
@@ -183,7 +184,7 @@ IoT Hub 'ı oluşturmanın bir parçası olarak, önceki bölümde çalıştık 
 
 1. Kaynak listesinde, betiğin oluşturduğu IoT Hub seçin. Bu, gibi rastgele karakterlerle biten bir ada sahip olacaktır `IotEdgeAndMlHub-jrujej6de6i7w` .
 
-1. Sol bölme menüsünde, **mesajlaşma**altında **ileti yönlendirme**' yi seçin.
+1. Sol bölme menüsünde, **mesajlaşma** altında **ileti yönlendirme**' yi seçin.
 
 1. **İleti yönlendirme** sayfasında **Özel uç noktalar** sekmesini seçin.
 
@@ -193,19 +194,19 @@ IoT Hub 'ı oluşturmanın bir parçası olarak, önceki bölümde çalıştık 
 
    **Turbofandevicesstorage** özel uç noktalar listesinde görüyoruz. Bu uç nokta hakkında aşağıdaki özelliklere göz önünde edin:
 
-   * `devicedata` **Kapsayıcı adına**göre gösterildiği gibi, oluşturduğunuz BLOB depolama kapsayıcısını işaret eder.
+   * `devicedata` **Kapsayıcı adına** göre gösterildiği gibi, oluşturduğunuz BLOB depolama kapsayıcısını işaret eder.
    * **Dosya adı biçimi** , adı içindeki son öğe olarak bölümlenir. Bu biçimi, öğreticide daha sonra Azure Notebooks yapacağız dosya işlemleri için daha uygun olduğunu bulduk.
    * **Durumu** sağlıklı olmalıdır.
 
 1. **Rotalar** sekmesini seçin.
 
-1. **Turbofandevicedatatostorage**adlı yolu seçin.
+1. **Turbofandevicedatatostorage** adlı yolu seçin.
 
 1. **Rotalar ayrıntıları** sayfasında, yolun uç noktasının **Turbofandevicesstorage** uç noktası olduğunu unutmayın.
 
    ![TurbofanDeviceDataToStorage rotası hakkındaki ayrıntıları gözden geçirin](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. **Doğru**olarak ayarlanan **yönlendirme sorgusuna**bakın. Bu ayar, tüm cihaz telemetri iletilerinin bu rota ile eşleştiği anlamına gelir; Bu nedenle, tüm iletiler **Turbofandevicesstorage** uç noktasına gönderilir.
+1. **Doğru** olarak ayarlanan **yönlendirme sorgusuna** bakın. Bu ayar, tüm cihaz telemetri iletilerinin bu rota ile eşleştiği anlamına gelir; Bu nedenle, tüm iletiler **Turbofandevicesstorage** uç noktasına gönderilir.
 
 1. Hiçbir düzenleme yapılmazdan bu yana yalnızca bu sayfayı kapatmanız yeterlidir.
 

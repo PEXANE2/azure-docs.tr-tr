@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 802f732e8d62f5df861be525316b3c31ab4d0655
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184558"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957937"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>StorSimple Veri Yöneticisi hizmetini Azure portal yönetme
 
@@ -42,13 +42,13 @@ StorSimple Veri Yöneticisi bir hizmet oluşturmak için aşağıdaki adımları
 
    2. Açılan listeden bir **abonelik** seçin. Abonelik fatura hesabınıza bağlıdır. Yalnızca bir aboneliğiniz varsa, bu alan otomatik olarak doldurulur (ve seçilemez).
 
-   3. Var olan bir kaynak grubunu seçin veya yeni bir grup oluşturun. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   3. Var olan bir kaynak grubunu seçin veya yeni bir grup oluşturun. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    4. Hizmetinizin depolama hesaplarınızın ve StorSimple Veri Yöneticisi hizmetinizin barındırıldığı **konumu** belirtin. StorSimple Aygıt Yöneticisi hizmetiniz, Veri Yöneticisi hizmetiniz ve ilişkili depolama hesabı, tümünün desteklenen bölgelerde olması gerekir.
     
    5. Panonuzda bu hizmetin bağlantısını almak için **panoya sabitle**' yi seçin.
     
-   6. **Oluştur**’a tıklayın.
+   6. **Oluştur**'a tıklayın.
 
       ![StorSimple Veri Yöneticisi hizmeti oluşturma 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -74,7 +74,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
     ![Kaynak veri deposundan yapılandırma](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-6. Bu yeni bir Veri Yöneticisi hizmeti olduğundan, veri depoları yapılandırılmadı. **Veri kaynağını Yapılandır**bölümünde, storsimple 8000 serisi cihazınızın ayrıntılarını ve ilgilendiğiniz verileri belirtin.
+6. Bu yeni bir Veri Yöneticisi hizmeti olduğundan, veri depoları yapılandırılmadı. **Veri kaynağını Yapılandır** bölümünde, storsimple 8000 serisi cihazınızın ayrıntılarını ve ilgilendiğiniz verileri belirtin.
 
    StorSimple Aygıt Yöneticisi veri deposu olarak eklemek için, veri deposu açılan menüsünde **Yeni Ekle** ' ye tıklayın ve sonra **veri deposu Ekle**' ye tıklayın.
 
@@ -86,7 +86,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
     
    3. Açılan listeden, StorSimple Aygıt Yöneticisi hizmetinize ilişkin bir abonelik seçin.
     
-   4. **Kaynak**Için storsimple Aygıt Yöneticisi adını sağlayın.
+   4. **Kaynak** Için storsimple Aygıt Yöneticisi adını sağlayın.
 
    5. StorSimple Aygıt Yöneticisi hizmeti için **hizmet veri şifreleme** anahtarını girin. 
 
@@ -94,7 +94,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
       Bittiğinde **Tamam** ' a tıklayın. Bu, veri deponuzu kaydeder. Bu StorSimple Aygıt Yöneticisi, bu parametreleri tekrar girmeden diğer iş tanımlarında yeniden kullanın. Yeni oluşturulan kaynak veri deposunun açılan menüde görünmesi için **Tamam** ' a tıkladıktan sonra birkaç saniye sürer.
 
-7. **Veri deposunun**açılan listesinden, oluşturduğunuz veri deposunu seçin. 
+7. **Veri deposunun** açılan listesinden, oluşturduğunuz veri deposunu seçin. 
 
    1. İlgilendiğiniz verileri içeren StorSimple 8000 serisi cihazının adını girin.
 
@@ -104,7 +104,7 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
 
    4. Veri dönüştürme hizmeti yalnızca Azure 'a gönderilen verilerin en son anlık görüntüsünde çalışır.
 
-   5. **Tamam**'a tıklayın.
+   5. **Tamam** düğmesine tıklayın.
 
       ![Kaynak veri deposu yapılandırma 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -119,9 +119,9 @@ Bir iş tanımı oluşturmak için aşağıdaki adımları gerçekleştirin.
     
 10. Veri deposunu ekledikten sonra birkaç dakika bekleyin.
     
-    1. Hedef **Hesap adındaki**açılan listeden hedef olarak oluşturduğunuz depoyu seçin.
+    1. Hedef **Hesap adındaki** açılan listeden hedef olarak oluşturduğunuz depoyu seçin.
 
-    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam**'a tıklayın.
+    2. Depolama türünü blob 'lar veya dosyalar olarak seçin. Dönüştürülen verilerin bulunduğu depolama kapsayıcısının adını belirtin. **Tamam** düğmesine tıklayın.
 
         ![Hedef veri deposu depolama hesabını yapılandırma](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
@@ -153,7 +153,7 @@ StorSimple 'tan iş tanımında belirttiğiniz depolama hesabına veri taşıman
 
 ### <a name="view-logs-after-job-completion"></a>İş tamamlandıktan sonra günlükleri görüntüle
 
-Bir işi tamamladıktan sonra işin durumunu görüntüleyebilirsiniz. İş durumu **başarılı**, **kısmen başarılı** ve **başarısız**olabilir. Başarıyla kopyalanan dosyaların listesini ve kopyalanamayan dosyaları görüntüleyebilirsiniz. Bu listeler, hedef depolama hesabınızda **"StorSimple-Data-Manager-joblogs"** adlı bir kapsayıcıda mevcuttur. Bu kapsayıcı içinde, iş tanımınızda aynı ada sahip bir klasör arayabilirsiniz. Bunun içinde, listelerinizi içerecek her iş çalıştırması için bir klasör oluşturulur. Bu klasörün adı, iş ayrıntıları sayfasından alabileceğiniz işin GUID 'sidir. Alternatif olarak, çoğu durumda işler sayfasının içinden kopyalama günlüklerinin bağlantısını görürsünüz.
+Bir işi tamamladıktan sonra işin durumunu görüntüleyebilirsiniz. İş durumu **başarılı**, **kısmen başarılı** ve **başarısız** olabilir. Başarıyla kopyalanan dosyaların listesini ve kopyalanamayan dosyaları görüntüleyebilirsiniz. Bu listeler, hedef depolama hesabınızda **"StorSimple-Data-Manager-joblogs"** adlı bir kapsayıcıda mevcuttur. Bu kapsayıcı içinde, iş tanımınızda aynı ada sahip bir klasör arayabilirsiniz. Bunun içinde, listelerinizi içerecek her iş çalıştırması için bir klasör oluşturulur. Bu klasörün adı, iş ayrıntıları sayfasından alabileceğiniz işin GUID 'sidir. Alternatif olarak, çoğu durumda işler sayfasının içinden kopyalama günlüklerinin bağlantısını görürsünüz.
 Bu klasörde göreceğiniz 2 CSV dosyası kümesi vardır. **Copiedfilelist...** ile başlayan tüm dosyalar, başarıyla kopyalanan dosyaların listesini içerecektir. **Failedfilelist..** . ile başlayan tüm dosyalar, bir hata iletisiyle birlikte kopyalanamayacak dosyaları içerir.
 
 

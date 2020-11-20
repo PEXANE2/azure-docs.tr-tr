@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5db19a6549e7e4675213973554ff18bf46dda1e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92915449"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957121"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Azure haritalar Hava Hizmetleri 'ni kullanarak gerçek zamanlı ve tahmini hava durumu verileri isteyin
 
@@ -28,7 +28,13 @@ Bu makalede şunları öğreneceksiniz:
 * [Saatlik tahmin al API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview)'sini kullanarak saatlik tahminleri isteyin.
 * Dakika [Tahmini al API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview)'sini kullanarak dakikalık tahminlere göre dakika isteyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+Bu videoda, REST çağrı örnekleriyle Azure Maps 'ta Hava durumu hizmetlerine genel bir bakış sunulmaktadır.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="Geliştiriciler için Azure Maps Hava durumu Hizmetleri-Microsoft Channel 9 videosu"></iframe>
+
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
@@ -44,9 +50,9 @@ Bu öğretici [Postman](https://www.postman.com/) uygulamasını kullanır, anca
 
 Bu örnekte, Seattle, WA 'da bulunan koordinatlardaki geçerli hava durumu koşullarını almak için [geçerli koşulları Al API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) 'sini kullanacaksınız.
 
-1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **koleksiyon** ' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. Bu belgenin geri kalan örnekleri için bu koleksiyonu kullanacaksınız.
+1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. Bu belgenin geri kalan örnekleri için bu koleksiyonu kullanacaksınız.
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 3. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
@@ -236,7 +242,7 @@ Bu örnekte, geçerli hava durumu koşullarını, Cheyenne, WY ' de bulunan koor
 >[!NOTE]
 >Bu örnekte, bu yazma sırasında ciddi hava durumu uyarıları alınır. İstenen konumda artık ciddi hava durumu uyarılarının olmaması olasıdır. Bu örneği çalıştırırken gerçek ciddi uyarı verilerini almak için, farklı bir koordinat konumundaki verileri almanız gerekir.
 
-1. Postman uygulamasını açın, **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
@@ -288,7 +294,7 @@ Bu örnekte, geçerli hava durumu koşullarını, Cheyenne, WY ' de bulunan koor
 
 Bu örnekte, Seattle, WA 'da bulunan koordinatlar için beş günlük bir hava durumu tahminini almak üzere [günlük tahmin al API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) 'sini kullanacaksınız.
 
-1. Postman uygulamasını açın, **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
@@ -536,7 +542,7 @@ Bu örnekte, Seattle, WA 'da bulunan koordinatlar için beş günlük bir hava d
 
 Bu örnekte, Seattle, WA 'da bulunan koordinatlardan sonraki 12 saat için saatlik hava durumu tahminini almak üzere [saatlik tahmin API 'Si al](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) ' ı kullanacaksınız.
 
-1. Postman uygulamasını açın, **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
@@ -643,7 +649,7 @@ Bu örnekte, Seattle, WA 'da bulunan koordinatlardan sonraki 12 saat için saatl
 
 Bu örnekte, Seattle, WA 'da bulunan koordinatlara göre dakika başına Hava durumu tahminini almak için [dakikalık tahmini alma API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) 'sini kullanırsınız. Hava durumu tahmini önümüzdeki 120 dakika boyunca verilir. Sorgumız tahminin 15 dakikalık aralıklarla verilmesini ister, ancak parametreyi 1 veya 5 dakika olacak şekilde ayarlayabilirsiniz.
 
-1. Postman uygulamasını açın, **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 

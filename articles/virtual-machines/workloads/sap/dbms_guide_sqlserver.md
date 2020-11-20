@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: Azure, SQL Server, SAP, AlwaysOn
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76bc3273177e94c7619d69293c1e79546d96662c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef00f33040d30795ae5374b74d0d7a6e9b6e2156
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977315"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957682"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
 
@@ -360,7 +361,7 @@ Azure M serisi VM için, işlem günlüğüne yazma gecikmesi, Azure Yazma Hızl
 ### <a name="formatting-the-disks"></a>Diskleri biçimlendirme
 SQL Server için, SQL Server veri ve günlük dosyaları içeren disklerin NTFS blok boyutu 64 KB olmalıdır. D:\ biçimini biçimlendirmeye gerek yoktur. sürücü. Bu sürücü önceden biçimlendirilen şekilde gelir.
 
-Veritabanlarının geri yüklenmesi veya oluşturulması, dosyaların içeriğini sıfırlama yoluyla veri dosyalarını başlatmadığından emin olmak için, SQL Server hizmetinin üzerinde çalıştığı Kullanıcı bağlamının belirli bir izne sahip olduğundan emin olun. Genellikle Windows Yönetici grubundaki kullanıcılar bu izinlere sahiptir. SQL Server hizmeti Windows olmayan yönetici kullanıcısının kullanıcı bağlamında çalışıyorsa, kullanıcıya **toplu bakım görevlerini gerçekleştirmesi**için bu kullanıcıya atamanız gerekir.  Bu Microsoft Bilgi Bankası makalesindeki ayrıntılara bakın: <https://support.microsoft.com/kb/2574695>
+Veritabanlarının geri yüklenmesi veya oluşturulması, dosyaların içeriğini sıfırlama yoluyla veri dosyalarını başlatmadığından emin olmak için, SQL Server hizmetinin üzerinde çalıştığı Kullanıcı bağlamının belirli bir izne sahip olduğundan emin olun. Genellikle Windows Yönetici grubundaki kullanıcılar bu izinlere sahiptir. SQL Server hizmeti Windows olmayan yönetici kullanıcısının kullanıcı bağlamında çalışıyorsa, kullanıcıya **toplu bakım görevlerini gerçekleştirmesi** için bu kullanıcıya atamanız gerekir.  Bu Microsoft Bilgi Bankası makalesindeki ayrıntılara bakın: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Veritabanı sıkıştırmasının etkisi
 G/ç bant genişliğinin sınırlama faktörü olabileceği yapılandırmalarda, her ölçü, ıOPS 'yi azaltan iş yükünün Azure gibi bir IaaS senaryosunda çalıştırılabileceği şekilde uzamasına yardımcı olabilir. Bu nedenle, henüz yapılmazsa, mevcut bir SAP veritabanını Azure 'a yüklemeden önce hem SAP hem de Microsoft tarafından SQL Server sayfa sıkıştırması uygulanması önerilir.

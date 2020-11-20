@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3ddcbe57112251a428e11d6c164cdb1224553f98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578657"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959212"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetimi modeli
 
@@ -53,16 +53,16 @@ ACL 'Ler, dizinlere ve dosyalara "daha hassas" bir erişim düzeyi uygulamanıza
 
 Güvenlik sorumlusu tabanlı yetkilendirme sırasında izinler aşağıdaki sırayla değerlendirilir.
 
-: bunlardan biri: &nbsp; &nbsp; Azure RBAC rol atamaları önce değerlendirilir ve tüm ACL atamalarından önceliklidir.
+: bunlardan biri: &nbsp; &nbsp; Azure rol atamaları önce değerlendirilir ve tüm ACL atamalarından önceliklidir.
 
-: iki: &nbsp; &nbsp; Işlem Azure RBAC rol ataması temel alınarak tam Yetkilendirirse, ACL 'ler hiç değerlendirilmez.
+: iki: &nbsp; &nbsp; işlem Azure rol ataması temelinde tam Yetkilendirirse, ACL 'ler hiç değerlendirilmez.
 
 : üç: &nbsp; &nbsp; işlem tam olarak yetkilendirilmemişse, ACL 'ler değerlendirilir.
 
 > [!div class="mx-imgBorder"]
 > ![Data Lake depolama izin akışı](./media/control-access-permissions-data-lake-storage/data-lake-storage-permissions-flow.png)
 
-Erişim izinlerinin sistem tarafından değerlendirilme biçimi nedeniyle, bir rol ataması tarafından zaten verilmiş olan erişimi **kısıtlamak** IÇIN bir **ACL kullanamazsınız.** Bunun nedeni, sistemin ilk olarak Azure RBAC rol atamalarını değerlendirdiği ve atamanın yeterli erişim izni verdiğini belirten ACL 'Ler yoksayılır. 
+Erişim izinlerinin sistem tarafından değerlendirilme biçimi nedeniyle, bir rol ataması tarafından zaten verilmiş olan erişimi **kısıtlamak** IÇIN bir **ACL kullanamazsınız.** Bunun nedeni, sistemin önce Azure rol atamalarını değerlendirdiği ve atamanın yeterli erişim izni verdiğini belirten ACL 'Ler yoksayılır. 
 
 Aşağıdaki diyagramda, üç yaygın işlem için izin akışı gösterilmektedir: dizin içeriğini listeleme, dosya okuma ve dosya yazma.
 
@@ -71,7 +71,7 @@ Aşağıdaki diyagramda, üç yaygın işlem için izin akışı gösterilmekted
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>İzinler tablosu: Azure RBAC ve ACL 'yi birleştirme
 
-Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelenen işlemleri gerçekleştirebilmesi IÇIN Azure RBAC ROLLERINI ve ACL girdilerini nasıl birleştirebileceğiniz gösterilmektedir. Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `/` , **Oregon** adlı bir alt dizin, **İstanbul** adlı MARI dizininin bir alt dizini ve **Data.txt** adlı Portland dizinindeki bir metin dosyası. Bu sütunlarda görünen, izin vermek için gereken ACL girişinin [kısa biçimli](data-lake-storage-access-control.md#short-forms-for-permissions) temsilleridir. İşlemi gerçekleştirmek **için BIR ACL** girişi gerekmiyorsa yok ( _uygulanamaz_ ) sütununda görüntülenir.
+Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelenen işlemleri gerçekleştirebilmesi için Azure ROLLERINI ve ACL girdilerini nasıl birleştirebileceğiniz gösterilmektedir. Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `/` , **Oregon** adlı bir alt dizin, **İstanbul** adlı MARI dizininin bir alt dizini ve **Data.txt** adlı Portland dizinindeki bir metin dosyası. Bu sütunlarda görünen, izin vermek için gereken ACL girişinin [kısa biçimli](data-lake-storage-access-control.md#short-forms-for-permissions) temsilleridir. İşlemi gerçekleştirmek **için BIR ACL** girişi gerekmiyorsa yok (_uygulanamaz_) sütununda görüntülenir.
 
 |    İşlem             | Atanmış RBAC rolü               |    /        | 'Daki     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
@@ -112,7 +112,7 @@ Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelene
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)]
 
-## <a name="limits-on-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC rol atamaları ve ACL girdileri sınırları
+## <a name="limits-on-azure-role-assignments-and-acl-entries"></a>Azure rol atamaları ve ACL girdileri sınırları
 
 Grupları kullanarak, abonelik başına maksimum rol ataması sayısını ve dosya veya dizin başına en fazla ACL girişi sayısını aşmanız daha düşüktür. Aşağıdaki tabloda bu sınırlar açıklanmaktadır.
 

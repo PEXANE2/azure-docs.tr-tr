@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76271334"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960249"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 1,0 sürüm notları
 
@@ -47,7 +47,7 @@ Güncelleştirme 1,0, yazılım sürümü **10.0.10296.0**'e karşılık gelir.
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Özellik | Sorun |
+| Hayır. | Öne çıkan özelliği | Sorun |
 | --- | --- | --- |
 | 1 |AAD tabanlı kimlik doğrulaması| Bu sürüm, AAD 'nin StorSimple Aygıt Yöneticisi kimlik doğrulamasına izin veren değişiklikler içerir.|
 | 2 |Atık toplama| Bu sorun, cihaz ve depolama hesaplarının farklı bölgelerde olduğu ve müşterinin zaman aralıklı ağ hataları bildirdiği ve bu sayede faturalandırmayı etkileyebilecek bir müşteri sitesinde bildirilmiştir. Bu sürümde, bu sorun düzeltildi. |
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir.
 
-| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal diziler desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal diziler, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal dizisini oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmelisiniz. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |
@@ -90,4 +90,4 @@ Daha eski bir sürüm notuna mi bakıyorsunuz? Şuraya gidin:
 * [StorSimple Sanal dizisi güncelleştirme 0,4 sürüm notları](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Sanal dizisi güncelleştirme 0,1 ve 0,2 sürüm notları](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](storsimple-ova-pp-release-notes.md)
+* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](./storsimple-virtual-array-update-06-release-notes.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a2b7a64006ab6963290be3ac86a3a5d1e4916d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532333"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959892"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure cihaz sağlama hizmeti SDK 'Ları ile cihaz kayıtlarını yönetme
 Bir *cihaz kaydı* , tek bir cihazın veya bazı noktada cihaz sağlama hizmeti 'ne kaydolabileceği bir cihaz grubunun kaydını oluşturur. Kayıt kaydı, istenen IoT Hub 'ı da dahil olmak üzere, bu kayıt kapsamında cihaz (ler) için ilk istenen yapılandırmayı içerir. Bu makalede, Azure IoT sağlama hizmeti SDK 'larını kullanarak sağlama hizmetiniz için cihaz kayıtlarını nasıl yöneteceğiniz gösterilmektedir.  SDK 'lar, Azure IoT SDK 'Ları ile aynı depoda GitHub 'da kullanılabilir.
@@ -21,12 +21,12 @@ Bir *cihaz kaydı* , tek bir cihazın veya bazı noktada cihaz sağlama hizmeti 
 ## <a name="prerequisites"></a>Ön koşullar
 * Cihaz sağlama hizmeti örneğinden bağlantı dizesini edinin.
 * Kullanılan [kanıtlama mekanizması](concepts-service.md#attestation-mechanism) için cihaz güvenlik yapılarını edinin:
-    * [**Güvenilir Platform Modülü (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
+    * [**Güvenilir Platform Modülü (TPM)**](./concepts-tpm-attestation.md):
         * Bireysel kayıt: fiziksel bir cihazdan veya TPM Benzeticisinde kayıt KIMLIĞI ve TPM onay anahtarı.
         * Kayıt grubu TPM kanıtlama için uygulanmıyor.
-    * [**X. 509.440**](/azure/iot-dps/concepts-security):
-        * Bireysel kayıt: fiziksel cihazdan veya SDK [zar](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) öykünücüsünde [yaprak sertifikası](/azure/iot-dps/concepts-security) .
-        * Kayıt grubu: fiziksel bir cihazda cihaz sertifikası oluşturmak için kullanılan [CA/kök sertifika](/azure/iot-dps/concepts-security#root-certificate) veya [Ara Sertifika](/azure/iot-dps/concepts-security#intermediate-certificate).  Ayrıca, SDK zar öykünücüden da oluşturulabilir.
+    * [**X. 509.440**](./concepts-service.md#attestation-mechanism):
+        * Bireysel kayıt: fiziksel cihazdan veya SDK [zar](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) öykünücüsünde [yaprak sertifikası](./concepts-service.md#attestation-mechanism) .
+        * Kayıt grubu: fiziksel bir cihazda cihaz sertifikası oluşturmak için kullanılan [CA/kök sertifika](./concepts-x509-attestation.md#root-certificate) veya [Ara Sertifika](./concepts-x509-attestation.md#intermediate-certificate).  Ayrıca, SDK zar öykünücüden da oluşturulabilir.
 * Dil farklılıkları nedeniyle tam API çağrıları farklı olabilir. Ayrıntılar için lütfen GitHub 'da sağlanan örnekleri gözden geçirin:
    * [Java sağlama hizmeti Istemci örnekleri](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
    * [Node.js sağlama hizmeti Istemci örnekleri](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
@@ -35,7 +35,7 @@ Bir *cihaz kaydı* , tek bir cihazın veya bazı noktada cihaz sağlama hizmeti 
 ## <a name="create-a-device-enrollment"></a>Cihaz kaydı oluşturma
 Cihazları sağlama hizmeti ile kaydedebilmeniz için iki yol vardır:
 
-* **Kayıt grubu** , [kök sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) veya [Ara Sertifika](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)tarafından imzalanan bir X. 509.440 sertifikaları ortak kanıtlama mekanizmasını paylaşan bir cihaz grubu için giriştir. İstenen ilk yapılandırmayı paylaşan çok sayıda cihaz için veya hepsi aynı kiracıya giden cihazlar için bir kayıt grubu kullanmanızı öneririz. Yalnızca X. 509.440 kanıtlama mekanizmasını kullanan cihazları *kayıt grupları*olarak kaydedebileceğinizi unutmayın. 
+* **Kayıt grubu** , [kök sertifika](./concepts-x509-attestation.md#root-certificate) veya [Ara Sertifika](./concepts-x509-attestation.md#intermediate-certificate)tarafından imzalanan bir X. 509.440 sertifikaları ortak kanıtlama mekanizmasını paylaşan bir cihaz grubu için giriştir. İstenen ilk yapılandırmayı paylaşan çok sayıda cihaz için veya hepsi aynı kiracıya giden cihazlar için bir kayıt grubu kullanmanızı öneririz. Yalnızca X. 509.440 kanıtlama mekanizmasını kullanan cihazları *kayıt grupları* olarak kaydedebileceğinizi unutmayın. 
 
     Bu iş akışını izleyen SDK 'lara sahip bir kayıt grubu oluşturabilirsiniz:
 

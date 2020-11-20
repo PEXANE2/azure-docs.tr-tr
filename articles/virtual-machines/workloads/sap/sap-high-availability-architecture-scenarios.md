@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b409254abbde1c1f6156052c49a07e6cc09a4dfd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360361"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958787"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
@@ -243,13 +244,13 @@ Azure 'da SAP yüksek kullanılabilirlik üç tür için ayrılabilir:
 
     Örneğin, yüksek kullanılabilirlik işlem (VM 'Ler), ağ veya depolama alanı ve SAP uygulamalarının kullanılabilirliğini arttırmaya yönelik avantajları içerebilir.
 
-* **SAP uygulamalarında *daha yüksek kullanılabilirlik* elde etmek IÇIN Azure altyapı VM yeniden başlatması**kullanma: 
+* **SAP uygulamalarında *daha yüksek kullanılabilirlik* elde etmek IÇIN Azure altyapı VM yeniden başlatması** kullanma: 
 
     Linux üzerinde Windows Server Yük Devretme Kümelemesi (WSFC) veya pacemaker gibi işlevleri kullanmamaya karar verirseniz, Azure VM yeniden başlatması kullanılır. Azure fiziksel sunucu altyapısının ve temel alınan Azure platformunun planlanmış ve planlanmamış kapalı kalma süresine karşı SAP sistemlerini korur.
 
 * **SAP uygulaması yüksek kullanılabilirliği**: 
 
-    Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
+    Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
     * Yedekli SAP uygulama sunucuları.
     * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 
@@ -267,12 +268,12 @@ Hesaplamanın temeli ayda 30 gün veya 43.200 dakikadır. Örneğin,% 0,05 kesin
 
 (Kullanılabilirlik hizmeti #1/100) * (kullanılabilirlik hizmeti #2/100) * (kullanılabilirlik hizmeti #3/100) \* ...
 
-Örneğin:
+Örnek:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 veya genel olarak% 99,75 kullanılabilirliği.
 
 ### <a name="multiple-instances-of-virtual-machines-in-the-same-availability-set"></a>Aynı Kullanılabilirlik kümesindeki birden fazla sanal makine örneği
-Aynı *kullanılabilirlik kümesinde*dağıtılan iki veya daha fazla örneğe sahip tüm sanal makinelerde, en az bir örneğe yönelik sanal makine bağlantınızın en az% 99,95 olacağını garanti ediyoruz.
+Aynı *kullanılabilirlik kümesinde* dağıtılan iki veya daha fazla örneğe sahip tüm sanal makinelerde, en az bir örneğe yönelik sanal makine bağlantınızın en az% 99,95 olacağını garanti ediyoruz.
 
 İki veya daha fazla VM aynı Kullanılabilirlik kümesinin parçası olduğunda, kullanılabilirlik kümesindeki her bir sanal makineye, temel alınan Azure platformu tarafından bir *güncelleştirme etki alanı* ve bir *hata etki alanı* atanır.
 
@@ -310,7 +311,7 @@ Kullanılabilirlik Alanları kullanarak göz önünde bulundurmanız gereken baz
 
 Daha fazla bilgi için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme][azure-virtual-machines-manage-availability].
 
-### <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
+### <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 Depolama hesabınızdaki veriler, dayanıklılık ve yüksek kullanılabilirlik sağlamak için her zaman çoğaltılır ve geçici donanım arızalarının yanında bile Azure Storage SLA 'sını ister.
 
 Azure depolama, varsayılan olarak verilerin üç görüntüsünü sakladığı için, RAID 5 veya RAID 1 ' in birden çok Azure diskinde kullanılması gereksizdir.
@@ -334,7 +335,7 @@ Bu yaklaşım hakkında daha fazla bilgi için bkz. [SAP sisteminin daha yüksek
 
 ## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Azure IaaS 'de SAP uygulamalarının yüksek kullanılabilirliği
 
-Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
+Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
   * Yedekli SAP uygulama sunucuları.
   * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 

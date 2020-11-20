@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7195e3c9f2d38c16bd9cad59a2489157c7c1340f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4257fcca1172502560c182651d649745e494cc1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654642"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958974"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı
 
@@ -425,7 +426,7 @@ SAP Şu anda şunları destekler:
 * **SAP MaxDB sürüm 7,9**
 * **Microsoft IIS (Internet Information Server) sürüm 8,0 (ve üzeri)**
 
-En yeni SAP Içerik sunucusu sürümünün ve en yeni **MICROSOFT IIS**sürümünün kullanılması önemle önerilir. 
+En yeni SAP Içerik sunucusu sürümünün ve en yeni **MICROSOFT IIS** sürümünün kullanılması önemle önerilir. 
 
 SAP [ürün kullanılabilirliği matrisinde (Pam)][sap-pam]SAP içerik sunucusu ve Microsoft IIS 'nin desteklenen son sürümlerini denetleyin.
 

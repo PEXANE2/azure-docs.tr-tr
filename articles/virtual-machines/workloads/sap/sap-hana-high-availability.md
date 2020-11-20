@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9efdbb32683c9a244226012bd2d4bfcab6046678
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2783d9dc7151190857d870b5493465884b82ffcc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151165"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957274"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği
 
@@ -50,7 +51,7 @@ ms.locfileid: "92151165"
 Azure sanal makinelerinde (VM), Azure 'da HANA sistem çoğaltması Şu anda desteklenen tek yüksek kullanılabilirlik işlevidir. SAP HANA çoğaltma bir birincil düğümden ve en az bir ikincil düğümden oluşur. Birincil düğümdeki verilerde yapılan değişiklikler ikincil düğüme zaman uyumlu veya zaman uyumsuz olarak çoğaltılır.
 
 Bu makalede, sanal makinelerin nasıl dağıtılacağı ve yapılandırılacağı, küme çerçevesinin nasıl yükleneceği ve SAP HANA sistem çoğaltmasının nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır.
-Örnek yapılandırmalarda, yükleme komutları, örnek numarası **03**ve Hana sistem kimliği **HN1** kullanılır.
+Örnek yapılandırmalarda, yükleme komutları, örnek numarası **03** ve Hana sistem kimliği **HN1** kullanılır.
 
 Önce aşağıdaki SAP notlarını ve kağıtları okuyun:
 
@@ -107,12 +108,12 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
     - **SAP SISTEM kimliği**: yüklemek istediğiniz SAP sisteminin SAP sistem kimliğini girin. KIMLIK, dağıtılan kaynakların ön eki olarak kullanılır.
     - **Yığın türü**: (Bu parametre yalnızca yakınsama şablonu kullanıyorsanız uygulanabilir.) SAP NetWeaver Stack türünü seçin.
     - **Işletim sistemi türü**: Linux dağılımından birini seçin. Bu örnek için **SLES 12**' yi seçin.
-    - **Veritabanı türü**: **Hana**seçin.
+    - **Veritabanı türü**: **Hana** seçin.
     - **SAP sistem boyutu**: yeni sistemin SAĞLAYACAĞı SAPS sayısını girin. Sistemin kaç tane için gerekli olduğundan emin değilseniz, SAP Technology Iş ortağınızdan veya sistem tümleştirmenize sorun.
-    - **Sistem kullanılabilirliği**: **ha**seçeneğini belirleyin.
+    - **Sistem kullanılabilirliği**: **ha** seçeneğini belirleyin.
     - **Yönetici Kullanıcı adı ve yönetici parolası**: makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
     - **Yeni veya var olan alt ağ**: yeni bir sanal ağın ve alt ağın oluşturulması gerekip gerekmediğini veya mevcut bir alt ağın kullanıldığını belirler. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
-    - **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle **/Subscriptions/ \<subscription ID> /ResourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /Subnets/ \<subnet name> **şeklinde görünür.
+    - **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle **/Subscriptions/ \<subscription ID> /ResourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /Subnets/ \<subnet name>** şeklinde görünür.
 
 ### <a name="manual-deployment"></a>El ile dağıtım
 
@@ -163,7 +164,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
    
       1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
       1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
-      1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+      1. Protokol ve bağlantı noktası 625 **03** olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
       1. **Tamam**’ı seçin.
    
    1. Sonra, Yük Dengeleme kurallarını oluşturun:
@@ -171,7 +172,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
       1. Yeni yük dengeleyici kuralının adını girin (örneğin, **Hana-lb**).
       1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**, **Hana-arka uç** ve **Hana-HP**) seçin.
-      1. **Ha bağlantı noktalarını**seçin.
+      1. **Ha bağlantı noktalarını** seçin.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
       1. **Tamam**’ı seçin.
@@ -198,46 +199,46 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
    
       1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
       1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
-      1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+      1. Protokol ve bağlantı noktası 625 **03** olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
       1. **Tamam**’ı seçin.
    
    1. SAP HANA 1,0 için, Yük Dengeleme kurallarını oluşturun:
    
       1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**15).
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3 **03** 15).
       1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
-      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**15 girin.
+      1. **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası 3 **03** 15 girin.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
       1. **Tamam**’ı seçin.
-      1. Bağlantı noktası 3**03**17 için bu adımları tekrarlayın.
+      1. Bağlantı noktası 3 **03** 17 için bu adımları tekrarlayın.
    
    1. SAP HANA 2,0 için, sistem veritabanı için Yük Dengeleme kurallarını oluşturun:
    
       1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**13).
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3 **03** 13).
       1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
-      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**13 yazın.
+      1. **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası 3 **03** 13 yazın.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
       1. **Tamam**’ı seçin.
-      1. Bağlantı noktası 3**03**14 için bu adımları tekrarlayın.
+      1. Bağlantı noktası 3 **03** 14 için bu adımları tekrarlayın.
    
    1. SAP HANA 2,0 için, önce Kiracı veritabanı için Yük Dengeleme kurallarını oluşturun:
    
       1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**40).
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3 **03** 40).
       1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **Hana-ön uç**).
-      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**40 yazın.
+      1. **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası 3 **03** 40 yazın.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
       1. **Tamam**’ı seçin.
-      1. Bağlantı noktaları 3**03**41 ve 3**03**42 için bu adımları yineleyin.
+      1. Bağlantı noktaları 3 **03** 41 ve 3 **03** 42 için bu adımları yineleyin.
 
    SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya [SAP Note 2388694][2388694]' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0** olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
 > Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
@@ -281,7 +282,7 @@ Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Mantıksal birimleri oluşturun. Anahtar olmadan kullandığınızda doğrusal bir birim oluşturulur `lvcreate` `-i` . Daha iyi g/ç performansı için şeritli bir birim oluşturmanızı ve şeritli boyutları [SAP HANA VM depolama yapılandırmalarında](./hana-vm-operations-storage.md)belgelenen değerlere hizalamanızı öneririz. `-i`Bağımsız değişken, temeldeki fiziksel birimlerin sayısı olmalıdır ve `-I` bağımsız değişken Stripe boyutudur. Bu belgede, veri hacmi için iki fiziksel birim kullanılır, bu nedenle `-i` anahtar bağımsız değişkeni **2**olarak ayarlanır. Veri hacmi için Şerit boyutu **256Kıb**'dir. Günlük birimi için bir fiziksel birim kullanılır, bu nedenle `-i` `-I` günlük birimi komutları için hiçbir veya anahtar açık olarak kullanılmaz.  
+   Mantıksal birimleri oluşturun. Anahtar olmadan kullandığınızda doğrusal bir birim oluşturulur `lvcreate` `-i` . Daha iyi g/ç performansı için şeritli bir birim oluşturmanızı ve şeritli boyutları [SAP HANA VM depolama yapılandırmalarında](./hana-vm-operations-storage.md)belgelenen değerlere hizalamanızı öneririz. `-i`Bağımsız değişken, temeldeki fiziksel birimlerin sayısı olmalıdır ve `-I` bağımsız değişken Stripe boyutudur. Bu belgede, veri hacmi için iki fiziksel birim kullanılır, bu nedenle `-i` anahtar bağımsız değişkeni **2** olarak ayarlanır. Veri hacmi için Şerit boyutu **256Kıb**'dir. Günlük birimi için bir fiziksel birim kullanılır, bu nedenle `-i` `-I` günlük birimi komutları için hiçbir veya anahtar açık olarak kullanılmaz.  
 
    > [!IMPORTANT]
    > `-i`Her bir veri, günlük veya paylaşılan birim için birden fazla fiziksel birim kullandığınızda anahtarı kullanın ve temel alınan fiziksel birimin numarasını ayarlayın. `-I`Şeritli birim oluştururken Stripe boyutunu belirtmek için anahtarını kullanın.  
@@ -366,8 +367,8 @@ Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 SAP HANA sistem çoğaltmasını yüklemek için, [SAP HANA SR performansı Iyileştirilmiş senaryo kılavuzunun](https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/)4. bölümünü izleyin.
 
 1. **[A]** Hana DVD 'den **hdblcm** programını çalıştırın. Komut istemine aşağıdaki değerleri girin:
-   * Yükleme seç: **1**yazın.
-   * Yükleme için ek bileşenler seçin: **1**girin.
+   * Yükleme seç: **1** yazın.
+   * Yükleme için ek bileşenler seçin: **1** girin.
    * Yükleme yolunu girin [/Hana/Shared]: ENTER ' ı seçin.
    * Yerel ana bilgisayar adı [..] girin: ENTER ' u seçin.
    * Sisteme ek konaklar eklemek istiyor musunuz? (e/h) [n]: ENTER ' ı seçin.

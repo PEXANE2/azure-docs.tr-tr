@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: 24985a006390977c89c4eedc23084a9856272eba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaaf9011d38e7ec02e83db63757c434329b835e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91355660"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960300"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Hızlı başlangıç: Python kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma
 
 Azure SignalR hizmeti uygulamanıza kolayca gerçek zamanlı işlevsellik eklemenizi sağlar. Azure İşlevleri, herhangi bir altyapı yönetimine gerek kalmadan kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR Hizmeti ve İşlevlerini sunucusuz ve gerçek zamanlı bir sohbet uygulaması oluşturmak için kullanmayı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
@@ -31,21 +31,21 @@ Azure Işlevleri için [Python 3,6 veya 3,7](https://www.python.org/downloads/)g
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qspython).
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
 Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında oturum açın.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qspython).
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure İşlev Uygulamasını yapılandırıp çalıştırma
 
@@ -81,7 +81,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. **local.settings.json** dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
 
-1. Python işlevleri klasörler halinde düzenlenir. Her bir klasörde iki dosya vardır: *function.json* , işlevde kullanılan bağlamaları tanımlar ve * \_ \_ init \_ \_ . Kopyala* işlevinin gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
+1. Python işlevleri klasörler halinde düzenlenir. Her bir klasörde iki dosya vardır: *function.json* , işlevde kullanılan bağlamaları tanımlar ve *\_ \_ init \_ \_ . Kopyala* işlevinin gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
 
     - **negotiate** - Geçerli bağlantı bilgileri döndürmek için *SignalRConnectionInfo* giriş bağlamasını kullanır.
     - **messages** - İstek gövdesinde bir sohbet iletisi alır ve iletiyi bağlı olan tüm istemci uygulamalara yaymak için *SignalR* çıkış bağlamasını kullanır.
@@ -100,15 +100,15 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
     ![İşlev uygulamasını Çalıştır](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
     
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)
+Sorun mu yaşıyorsunuz? [Sorun giderme kılavuzunu](signalr-howto-troubleshoot-guide.md) deneyin veya [bize bilgi verin](https://aka.ms/asrs/qspython).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -117,4 +117,3 @@ Bu hızlı başlangıçta, VS Code ' de gerçek zamanlı sunucusuz bir uygulama 
 > [!div class="nextstepaction"]
 > [VS Code ile Azure İşlevlerini dağıtma](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qspython)

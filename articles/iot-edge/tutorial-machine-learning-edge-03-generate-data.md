@@ -8,17 +8,14 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857087"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959688"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
-
-> [!NOTE]
-> Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
 
 Bu makalede, Azure IoT Hub telemetri gönderen bir cihazın benzetimini yapmak için makine öğrenimi eğitim verilerini kullanırız. Bu öğretici, giriş bölümünde belirtildiği gibi, eğitim ve test için bir uçak motoru kümesinden verilerin benzetimini yapmak için [turbofan motor düşme simülasyonu veri kümesini](https://c3.nasa.gov/dashlink/resources/139/) kullanır.
 
@@ -46,6 +43,10 @@ Bu makalede açıklanan görevlerin tamamlanması yaklaşık 20 dakika sürer.
 
 Bu adımdaki işe yönelik gerçek hayatta büyük olasılıkla cihaz geliştiricileri ve bulut geliştiricileri tarafından gerçekleştirilmesi olasıdır.
 
+## <a name="prerequisites"></a>Ön koşullar
+
+Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
+
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Visual Studio Code yapılandırma ve Devicebir proje oluşturma
 
 1. Geliştirme sanal makinenize Uzak Masaüstü oturumu açın.
@@ -69,7 +70,7 @@ Bu adımdaki işe yönelik gerçek hayatta büyük olasılıkla cihaz geliştiri
 
    Bu bildirimleri alamazsanız Visual Studio Code kapatın, içindeki bin ve obj dizinlerini silin `C:\source\IoTEdgeAndMlSample\DeviceHarness` , Visual Studio Code açın ve Devicebandı klasörünü yeniden açın.
 
-1. Bir derleme, **CTRL**  +  **vardiyası**  +  **B**veya **Terminal**  >  **çalıştırma oluşturma görevi**tetikleyerek ortamınızın düzgün şekilde ayarlandığını doğrulayın.
+1. Bir derleme, **CTRL**  +  **vardiyası**  +  **B** veya **Terminal**  >  **çalıştırma oluşturma görevi** tetikleyerek ortamınızın düzgün şekilde ayarlandığını doğrulayın.
 
 1. Çalıştırılacak derleme görevini seçmeniz istenir. **Oluştur**' u seçin.
 
@@ -85,7 +86,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
 ### <a name="sign-in-to-azure-in-visual-studio-code"></a>Visual Studio Code 'de Azure 'da oturum açın
 
-1. Komut paletini açarak `Ctrl + Shift + P` veya **View**  >  **komut paletini**görüntüleyerek Visual Studio Code Azure aboneliğinizde oturum açın.
+1. Komut paletini açarak `Ctrl + Shift + P` veya **View**  >  **komut paletini** görüntüleyerek Visual Studio Code Azure aboneliğinizde oturum açın.
 
 1. **Azure: oturum aç** komutunu arayın.
 
@@ -105,7 +106,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
 ### <a name="run-the-deviceharness-project"></a>Devicebir projeyi Çalıştır
 
-1. **View**  >  Visual Studio Code terminalini açmak için**terminali** görüntüle ' yi seçin.
+1. **View**  >  Visual Studio Code terminalini açmak için **terminali** görüntüle ' yi seçin.
 
    Bir istem görmüyorsanız, ENTER tuşuna basın.
 
@@ -119,7 +120,7 @@ Proje binamız olduğuna göre, bağlantı dizesine erişmek ve veri oluşturma 
 
 1. Cihazların IoT Hub eklendiğini ve verilerin bu cihaz aracılığıyla gönderildiğini göstermek için cihazların yeşil renkte görünür olduğunu unutmayın. Cihazlar IoT Hub 'ına ileti gönderdikten sonra bağlantı kesilir ve mavi görünür.
 
-1. Herhangi bir cihaza sağ tıklayıp **Izlemeyi Başlat yerleşik olay uç noktasını**seçerek hub 'a gönderilen iletileri görüntüleyebilirsiniz. İletiler, Visual Studio Code ' deki çıkış bölmesinde görünür.
+1. Herhangi bir cihaza sağ tıklayıp **Izlemeyi Başlat yerleşik olay uç noktasını** seçerek hub 'a gönderilen iletileri görüntüleyebilirsiniz. İletiler, Visual Studio Code ' deki çıkış bölmesinde görünür.
 
 1. **Azure IoT Hub** çıktı bölmesine tıklayarak izlemeyi durdurun ve **yerleşik olay uç noktasını İzlemeyi Durdur**' u seçin.
 
@@ -131,7 +132,7 @@ Devicebandı tarafından gönderilen veriler IoT Hub 'ınıza gitti, burada Azur
 
 1. [Azure Portal](https://portal.azure.com/) açın ve bu öğretici Için oluşturulan IoT Hub 'ına gidin.
 
-1. Sol bölme menüsünde, **izleme**altında **ölçümler**' i seçin.
+1. Sol bölme menüsünde, **izleme** altında **ölçümler**' i seçin.
 
 1. Grafik tanımı sayfasında, **ölçüm** açılan listesine tıklayın, listeyi aşağı kaydırın ve **Yönlendirme: depolamaya teslim edilen veriler**' i seçin. Grafik, verilerin depoya yönlendirilme durumunu göstermelidir.
 

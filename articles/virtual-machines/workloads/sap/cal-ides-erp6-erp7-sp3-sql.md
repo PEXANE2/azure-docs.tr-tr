@@ -3,16 +3,17 @@ title: Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma | Microsoft 
 description: Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma
 author: hermanndms
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 2e1c20ba5549a1d9660b6e30fafa040d545a6a37
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dc0c1744c2943d33d516de4ed9d28893541773ad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993435"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957886"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure 'da SAP ERP 6,0 için SAP ıDES EHP7 SP3 'Ü dağıtma
 Bu makalede, SAP Cloud gereç kitaplığı (SAP CAL) 3,0 aracılığıyla Azure 'da SQL Server ve Windows işletim sistemi çalıştıran bir SAP ıDES sisteminin nasıl dağıtılacağı açıklanır. Ekran görüntüleri adım adım işlemi gösterir. Farklı bir çözüm dağıtmak için, aynı adımları izleyin.
@@ -89,9 +90,9 @@ SAP CAL 'de oturum açtıktan sonra, ilk sayfa genellikle **çözümler** sayfas
 
 1. **Temel mod: örnek oluştur** sayfasında şunları yapmanız gerekir:
 
-    a. Örnek **adı**girin.
+    a. Örnek **adı** girin.
 
-    b. Bir Azure **bölgesi**seçin. Birden çok Azure bölgesini sunulan bir SAP CAL aboneliğine sahip olmanız gerekebilir.
+    b. Bir Azure **bölgesi** seçin. Birden çok Azure bölgesini sunulan bir SAP CAL aboneliğine sahip olmanız gerekebilir.
 
     c.  Çözümün ana **parolasını** aşağıda gösterildiği gibi girin:
 

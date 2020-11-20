@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890488"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959161"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure için SAP LaMa bağlayıcısı
 
@@ -319,7 +320,7 @@ NetApp hesabında, kapasite havuzu her havuzun disk boyutunu ve türünü belirt
 
 ![SAP 'nin NetApp kapasite havuzunu oluşturma ](media/lama/sap-lama-capacitypool-list.png)
 
-NFS birimleri artık tanımlanabilir. Tek bir havuzdaki birden fazla sistem için birimler olacağı için, kendi kendine açıklayan bir adlandırma düzeni seçilmelidir. SID ekleme ilgili birimleri birlikte gruplamak için yardımcı olur. Yoks ve as örneği için aşağıdaki takmalar gereklidir: */sapmnt/ \<SID\>* , */usr/SAP/ \<SID\>* ve */Home/ \<sid\> ADM* . İsteğe bağlı olarak, */usr/SAP/Trans* , en azından bir yatay 'ın tüm sistemleri tarafından kullanılan merkezi aktarım dizini için gereklidir.
+NFS birimleri artık tanımlanabilir. Tek bir havuzdaki birden fazla sistem için birimler olacağı için, kendi kendine açıklayan bir adlandırma düzeni seçilmelidir. SID ekleme ilgili birimleri birlikte gruplamak için yardımcı olur. Yoks ve as örneği için aşağıdaki takmalar gereklidir: */sapmnt/ \<SID\>*, */usr/SAP/ \<SID\>* ve */Home/ \<sid\> ADM*. İsteğe bağlı olarak, */usr/SAP/Trans* , en azından bir yatay 'ın tüm sistemleri tarafından kullanılan merkezi aktarım dizini için gereklidir.
 
 > [!NOTE]
 > BETA aşamasında birimlerin adı, abonelik içinde benzersiz olmalıdır.
@@ -381,7 +382,7 @@ HANA kiracısına bağlanmak için uygulama sunucuları tarafından kullanılan 
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-HANA sanal makinesinde değil, uygulama sunucusu sanal makinesinde SWPM 'nin veritabanı örneği yüklemesini çalıştırın. *SAP sistemi için Iletişim veritabanı* 'Ndaki *veritabanı ana bilgisayarı* için *AH1-DB* kullanın.
+HANA sanal makinesinde değil, uygulama sunucusu sanal makinesinde SWPM 'nin veritabanı örneği yüklemesini çalıştırın. *SAP sistemi için Iletişim veritabanı*'Ndaki *veritabanı ana bilgisayarı* için *AH1-DB* kullanın.
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>SAP HANA için SAP NetWeaver uygulama sunucusunu yükler
 
@@ -447,7 +448,7 @@ Veritabanının sanal ana bilgisayar adının IP adresini bir ağ arabirimine ek
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-SQL Server sanal makinesinde SWPM veritabanı örneği yüklemesini çalıştırın. SQL Server bağlanmak için kullanılan ana bilgisayar adını geçersiz kılmak için SAPINST_USE_HOSTNAME = *AS1-DB* kullanın. Sanal makineyi Azure Resource Manager şablonu kullanarak dağıttıysanız, veritabanı veri dosyaları için kullanılan dizini *C:\sql\data* ve veritabanı günlük dosyası için *c:\SQL\LOG* olarak ayarladığınızdan emin olun.
+SQL Server sanal makinesinde SWPM veritabanı örneği yüklemesini çalıştırın. SQL Server bağlanmak için kullanılan ana bilgisayar adını geçersiz kılmak için SAPINST_USE_HOSTNAME =*AS1-DB* kullanın. Sanal makineyi Azure Resource Manager şablonu kullanarak dağıttıysanız, veritabanı veri dosyaları için kullanılan dizini *C:\sql\data* ve veritabanı günlük dosyası için *c:\SQL\LOG* olarak ayarladığınızdan emin olun.
 
 *NT AUTHORITY\SYSTEM* kullanıcısının SQL Server erişimi olduğundan ve sunucu rolü *sysadmin* olduğundan emin olun. Daha fazla bilgi için bkz. SAP Note [1877727] ve [2562184].
 

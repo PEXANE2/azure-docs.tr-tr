@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1383db44922a044f5e51075b6e1feafa70c78009
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314071"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958770"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -232,11 +233,11 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
    c. İstemci Azure sanal ağ alt ağını seçin. [Hızlandırılmış ağ](../../../virtual-network/create-vm-accelerated-networking-cli.md)' ı seçin.  
 
-   Sanal makineleri dağıtırken, ağ arabirimi adı otomatik olarak oluşturulur. Kolaylık sağlaması için Bu yönergelerde, **hanadb1-Client**, **hanadb2-Client**ve **Hanadb3-Client**şeklinde istemci Azure sanal ağ alt ağına eklenen otomatik olarak oluşturulan ağ arabirimlerine başvuracağız. 
+   Sanal makineleri dağıtırken, ağ arabirimi adı otomatik olarak oluşturulur. Kolaylık sağlaması için Bu yönergelerde, **hanadb1-Client**, **hanadb2-Client** ve **Hanadb3-Client** şeklinde istemci Azure sanal ağ alt ağına eklenen otomatik olarak oluşturulan ağ arabirimlerine başvuracağız. 
 
 3. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `storage` (Bu örnekte, **hanadb1-Storage**, **hanadb2-** Storage ve **hanadb3-Storage**).  
 
-4. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `hana`  (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana**ve **hanadb3-Hana**).  
+4. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `hana`  (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana** ve **hanadb3-Hana**).  
 
 5. Aşağıdaki adımları uygulayarak, yeni oluşturulan sanal ağ arabirimlerini karşılık gelen sanal makinelere ekleyin:  
 
@@ -246,7 +247,7 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
     c. **Genel bakış** bölmesinde, sanal makineyi serbest bırakmak için **Durdur** ' u seçin.  
 
-    d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `storage` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hana` .  
+    d. Ağ **' ı** seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `storage` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hana` .  
     
     e. **Kaydet**’i seçin. 
  
@@ -404,7 +405,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse**olarak ayarlanmıştır.  
+3. **[A]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse** olarak ayarlanmıştır.  
 
     > [!IMPORTANT]
     > VM 'de NFS etki alanını `/etc/idmapd.conf` Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak görüntülenir `nobody` .  
@@ -421,7 +422,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** doğrula `nfs4_disable_idmapping` . **Y**olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
+4. **[A]** doğrula `nfs4_disable_idmapping` . **Y** olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -435,7 +436,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-5. **[A]** SAP HANA grubunu ve kullanıcıyı el ile oluşturun. Bu grup sapsys ve Kullanıcı **hn1**adm kimlikleri, ekleme sırasında belirtilen kimliklere ayarlanmalıdır. (Bu örnekte, kimlikler **1001**olarak ayarlanır.) Kimlikler doğru şekilde ayarlanmamışsa birimlere erişemezsiniz. Grup sapsys ve Kullanıcı hesapları **hn1**adm ve Sapadm kimlikleri tüm sanal makinelerde aynı olmalıdır.  
+5. **[A]** SAP HANA grubunu ve kullanıcıyı el ile oluşturun. Bu grup sapsys ve Kullanıcı **hn1** adm kimlikleri, ekleme sırasında belirtilen kimliklere ayarlanmalıdır. (Bu örnekte, kimlikler **1001** olarak ayarlanır.) Kimlikler doğru şekilde ayarlanmamışsa birimlere erişemezsiniz. Grup sapsys ve Kullanıcı hesapları **hn1** adm ve Sapadm kimlikleri tüm sanal makinelerde aynı olmalıdır.  
 
     <pre><code>
     # Create user group 
@@ -462,7 +463,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     sudo mount -a 
     </code></pre>
 
-7. **[1]** düğüme özgü birimleri **hanadb1**üzerinde bağlayın.  
+7. **[1]** düğüme özgü birimleri **hanadb1** üzerinde bağlayın.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -472,7 +473,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     sudo mount -a 
     </code></pre>
 
-8. **[2]** düğüme özgü birimleri **hanadb2**üzerine bağlayın.  
+8. **[2]** düğüme özgü birimleri **hanadb2** üzerine bağlayın.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -482,7 +483,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     sudo mount -a 
     </code></pre>
 
-9. **[3]** düğüme özgü birimleri **hanadb3**üzerinde bağlayın.  
+9. **[3]** düğüme özgü birimleri **hanadb3** üzerinde bağlayın.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -492,7 +493,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     sudo mount -a 
     </code></pre>
 
-10. **[A]** tüm Hana birimlerinin NFS protokol sürümü **NFSv4**bağlandığından emin olun.  
+10. **[A]** tüm Hana birimlerinin NFS protokol sürümü **NFSv4** bağlandığından emin olun.  
 
     <pre><code>
     sudo nfsstat -m
@@ -520,7 +521,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 
 1. **[A]** Hana yüklemesinden önce kök parolasını ayarlayın. Yükleme tamamlandıktan sonra kök parolayı devre dışı bırakabilirsiniz. Farklı Çalıştır `root` komutu `passwd` .  
 
-2. **[1]** bir parola istenmeden **hanadb2** ve **hanadb3**için SSH aracılığıyla oturum açabildiğinizi doğrulayın.  
+2. **[1]** bir parola istenmeden **hanadb2** ve **hanadb3** için SSH aracılığıyla oturum açabildiğinizi doğrulayın.  
 
     <pre><code>
     ssh root@<b>hanadb2</b>
@@ -533,7 +534,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2], [3]** SAP HANA `data` ve `log` dizinlerin sahipliğini **hn1**adm olarak değiştirin.   
+4. **[2], [3]** SAP HANA `data` ve `log` dizinlerin sahipliğini **hn1** adm olarak değiştirin.   
 
     <pre><code>
     # Execute as root
@@ -553,14 +554,14 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 
    b. İsteminde aşağıdaki değerleri girin:
 
-     * **Eylem Seç**için: **1** girin (Install için)
-     * **Yükleme Için ek bileşenler**için: **2, 3** girin
+     * **Eylem Seç** için: **1** girin (Install için)
+     * **Yükleme Için ek bileşenler** için: **2, 3** girin
      * Yükleme yolu için: ENTER tuşuna basın (varsayılan olarak/Hana/Shared değerini alır)
-     * **Yerel ana bilgisayar adı**için: varsayılan değer kabul etmek için ENTER tuşuna basın
+     * **Yerel ana bilgisayar adı** için: varsayılan değer kabul etmek için ENTER tuşuna basın
      * **Sisteme ana bilgisayar eklemek istiyor musunuz?**: **y** girin
-     * **Eklenecek virgülle ayrılmış ana bilgisayar adları**için: ENTER **hanadb2, hanadb3**
+     * **Eklenecek virgülle ayrılmış ana bilgisayar adları** için: ENTER **hanadb2, hanadb3**
      * **Kök Kullanıcı adı** [root]: varsayılanı kabul etmek için ENTER tuşuna basın
-     * **Kök kullanıcı parolası**için: kök kullanıcının parolasını girin
+     * **Kök kullanıcı parolası** için: kök kullanıcının parolasını girin
      * Host hanadb2 için roller için: **1**  girin (çalışan için)
      * Host hanadb2 için **konak yük devretme grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
      * Host hanadb2 için **depolama bölüm numarası** [<<assign automatically>>]: varsayılanı kabul etmek Için ENTER tuşuna basın
@@ -568,7 +569,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
      * Host hanadb3 için **seçme rolleri** için: **2** girin (bekleme için)
      * Host hanadb3 için **konak yük devretme grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
      * Host hanadb3 için **çalışan grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
-     * **SAP HANA SISTEM kimliği**Için: **HN1** girin
+     * **SAP HANA SISTEM kimliği** Için: **HN1** girin
      * **Örnek numarası** [00]: **03** girin
      * **Yerel konak çalışan grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
      * **Sistem kullanımını Seç/dizini girin [4]**: **4** girin (özel için)
@@ -578,8 +579,8 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
      * Host hanadb1 [hanadb1] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın
      * Host hanadb2 [hanadb2] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın
      * Host hanadb3 [hanadb3] **Için sertifika ana bilgisayar adı** : varsayılanı kabul etmek için ENTER tuşuna basın
-     * **Sistem Yöneticisi (hn1adm) parolası**için: parolayı girin
-     * **Sistem veritabanı kullanıcısı (sistem) parolası**için: sistemin parolasını girin
+     * **Sistem Yöneticisi (hn1adm) parolası** için: parolayı girin
+     * **Sistem veritabanı kullanıcısı (sistem) parolası** için: sistemin parolasını girin
      * **Sistem veritabanı kullanıcı (sistem) parolasını onaylayın**: sistem parolasını girin
      * **Makine yeniden başlatıldıktan sonra sistem yeniden başlatma için mi?** [n]: **n** girin 
      * **Devam etmek Istiyor musunuz (e/h)**: Özeti doğrulayıp her şey iyi görünüyorsa **y** girin
@@ -635,8 +636,8 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 6. Temel Azure NetApp Files depolama SAP HANA iyileştirmek için aşağıdaki SAP HANA parametrelerini ayarlayın:
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
+   - `async_read_submit`**üzerinde**
+   - `async_write_submit_active`**üzerinde**
    - `async_write_submit_blocks`**Tümü**
 
    Daha fazla bilgi için [Azure NetApp Files kullanarak Microsoft Azure NetApp SAP uygulamaları][anf-sap-applications-azure]bölümüne bakın. 
@@ -657,7 +658,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 
 1. SAP HANA çalışan düğümünde düğüm kilitlenmesinin benzetimini yapın. Şunları yapın: 
 
-   a. Düğüm kilitlenmesinin benzetimini yapmadan önce, ortamın durumunu yakalamak için aşağıdaki komutları **hn1**adm olarak çalıştırın:  
+   a. Düğüm kilitlenmesinin benzetimini yapmadan önce, ortamın durumunu yakalamak için aşağıdaki komutları **hn1** adm olarak çalıştırın:  
 
    <pre><code>
     # Check the landscape status
@@ -712,7 +713,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 
 2. Aşağıdaki işlemleri gerçekleştirerek ad sunucusunu sonlandırın:
 
-   a. Testten önce, **hn1**adm olarak aşağıdaki komutları çalıştırarak ortamın durumunu kontrol edin:  
+   a. Testten önce, **hn1** adm olarak aşağıdaki komutları çalıştırarak ortamın durumunu kontrol edin:  
 
    <pre><code>
     #Landscape status 
@@ -734,7 +735,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b. Bu durumda **hanadb1** olan etkin ana düğümde **hn1**adm olarak aşağıdaki komutları çalıştırın:  
+   b. Bu durumda **hanadb1** olan etkin ana düğümde **hn1** adm olarak aşağıdaki komutları çalıştırın:  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -768,7 +769,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   **Hanadb1**üzerinde SAP HANA başlatıldıktan sonra, aşağıdaki durumu bekler:  
+   **Hanadb1** üzerinde SAP HANA başlatıldıktan sonra, aşağıdaki durumu bekler:  
 
    <pre><code>
     # Check the instance status
@@ -821,13 +822,13 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-   e. **Hanadb3**üzerinde SAP HANA başlatın, bu, bekleme düğümü olarak hazırlanmaya hazır olacak.  
+   e. **Hanadb3** üzerinde SAP HANA başlatın, bu, bekleme düğümü olarak hazırlanmaya hazır olacak.  
 
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   **Hanadb3**üzerinde SAP HANA başlatıldıktan sonra durum aşağıdaki gibi görünür:  
+   **Hanadb3** üzerinde SAP HANA başlatıldıktan sonra durum aşağıdaki gibi görünür:  
 
    <pre><code>
     # Check the instance status

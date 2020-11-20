@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57c6caea2de9063b133d4d5d643629184e412dad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797755"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957699"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure 'da SUSE Linux Enterprise Server Paceyapıcısı ayarlama
 
@@ -54,7 +55,7 @@ Bir SBD cihazını sınırlama için kullanmak istiyorsanız bu adımları izley
 
 1. Yeni SLES 12 SP1 veya üzeri sanal makineler dağıtın ve SSH aracılığıyla bunlara bağlanın. Makinelerin büyük olması gerekmez. Standard_E2s_v3 veya Standard_D2s_v3 gibi bir sanal makine boyutu yeterlidir. İşletim sistemi diski Premium Storage kullandığınızdan emin olun.
 
-Tüm **iSCSI hedef sanal makinelerinde**aşağıdaki komutları çalıştırın.
+Tüm **iSCSI hedef sanal makinelerinde** aşağıdaki komutları çalıştırın.
 
 1. SLES 'yi Güncelleştir
 
@@ -86,7 +87,7 @@ Tüm **iSCSI hedef sanal makinelerinde**aşağıdaki komutları çalıştırın.
 
 SAP sistemleriniz tarafından kullanılan kümeler için Iscsı diskleri oluşturmak üzere tüm **iSCSI hedef sanal makinelerinde** aşağıdaki komutları çalıştırın. Aşağıdaki örnekte, birden çok küme için SBD cihazları oluşturulur. Birden çok küme için bir Iscsı hedef sunucusunu nasıl kullanacağınızı gösterir. SBD cihazları işletim sistemi diskine yerleştirilir. Yeterli alana sahip olduğunuzdan emin olun.
 
-**`nfs`**, NFS kümesini tanımlamak için kullanılır, **ascsnw1** , **NW1**öğesinin ascs kümesini tanımlamak için kullanılır. **dbnw1** , NFS **-0** ve **NFS-1** **' in veritabanı**kümesini tanımlamak için kullanılır, NFS küme düğümlerinin ana bilgisayar adları, **NW1-xscs-0** ve **NW1-xscs-1** , **NW1** ascs küme düğümlerinin ana bilgisayar adları ve **NW1-DB-0** ve **NW1-DB-1** veritabanı kümesi düğümlerinin ana bilgisayar adı. Bunları, Küme düğümlerinizin ana bilgisayar adları ve SAP sisteminizin SID 'SI ile değiştirin.
+**`nfs`**, NFS kümesini tanımlamak için kullanılır, **ascsnw1** , **NW1** öğesinin ascs kümesini tanımlamak için kullanılır. **dbnw1** , NFS **-0** ve **NFS-1** **' in veritabanı** kümesini tanımlamak için kullanılır, NFS küme düğümlerinin ana bilgisayar adları, **NW1-xscs-0** ve **NW1-xscs-1** , **NW1** ascs küme düğümlerinin ana bilgisayar adları ve **NW1-DB-0** ve **NW1-DB-1** veritabanı kümesi düğümlerinin ana bilgisayar adı. Bunları, Küme düğümlerinizin ana bilgisayar adları ve SAP sisteminizin SID 'SI ile değiştirin.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -442,7 +443,7 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
    >Uzantısı, SUSEConnect---List-Extensions ' ı çalıştırarak da denetleyebilirsiniz.  
    >Azure çit Aracısı ile daha hızlı yük devretme süreleri elde etmek için:
    > - SLES 12 SP4 veya SLES 12 SP5, sürüm **4.6.2** veya daha yüksek paket Python-Azure-MGMT-COMPUTE  
-   > - SLES 15 paketinin sürüm **4.6.2** veya daha yüksek bir sürümünü yükler Python**3**-Azure-MGMT-COMPUTE 
+   > - SLES 15 paketinin sürüm **4.6.2** veya daha yüksek bir sürümünü yükler Python **3**-Azure-MGMT-COMPUTE 
 
 1. **[A]** kurulum konak adı çözümlemesi
 
@@ -584,7 +585,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
 1. Değeri yazın. Hizmet sorumlusu için **parola** olarak kullanılır
-1. Genel bakış'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
+1. Genel bakış'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda **oturum açma kimliği** ) olarak kullanılır
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 

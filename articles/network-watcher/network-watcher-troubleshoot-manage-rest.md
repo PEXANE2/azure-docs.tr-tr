@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: a3cd2323900dfbe6bec8f192822135f0c9dbb1cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad89ac04d753fbe3203851af268aed29813fa587
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738677"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960402"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Azure ağ Izleyicisi 'ni kullanarak sanal ağ geçidi ve bağlantıları sorunlarını giderme
 
@@ -123,7 +123,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 }
 ```
 
-İşlem tamamlandığında durum **başarılı**olarak değişir.
+İşlem tamamlandığında durum **başarılı** olarak değişir.
 
 ```json
 {
@@ -133,7 +133,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 
 ### <a name="retrieve-the-results"></a>Sonuçları alma
 
-Döndürülen durum **başarılı**olduktan sonra, sonuçları almak Için OPERATIONRESULT URI 'SINDEKI bir get yöntemi çağırın.
+Döndürülen durum **başarılı** olduktan sonra, sonuçları almak Için OPERATIONRESULT URI 'SINDEKI bir get yöntemi çağırın.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30" -verbose
@@ -254,7 +254,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 }
 ```
 
-İşlem tamamlandığında durum **başarılı**olarak değişir.
+İşlem tamamlandığında durum **başarılı** olarak değişir.
 
 ```json
 {
@@ -266,7 +266,7 @@ Aşağıdaki yanıtlar, bir bağlantı sorunlarını gidermeye yönelik sonuçla
 
 ### <a name="retrieve-the-results"></a>Sonuçları alma
 
-Döndürülen durum **başarılı**olduktan sonra, sonuçları almak Için OPERATIONRESULT URI 'SINDEKI bir get yöntemi çağırın.
+Döndürülen durum **başarılı** olduktan sonra, sonuçları almak Için OPERATIONRESULT URI 'SINDEKI bir get yöntemi çağırın.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
@@ -323,7 +323,7 @@ is a transient state while the Azure platform is being updated.",
 
 Eylem metni, sorunun nasıl çözüleceği hakkında genel rehberlik sağlar. Sorun için bir eylem uygulanabilir ise, ek kılavuzlarla bir bağlantı sağlanır. Ek bir kılavuz olmadığı durumlarda yanıt, bir destek talebi açmak için URL 'yi sağlar.  Yanıtın özellikleri ve dahil olan özellikler hakkında daha fazla bilgi için [ağ Izleyicisi sorunlarını giderme genel bakış](network-watcher-troubleshoot-overview.md) ' ı ziyaret edin
 
-Azure depolama hesaplarından dosya indirme yönergeleri için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Kullanılabilecek başka bir araç Depolama Gezgini. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
+Azure depolama hesaplarından dosya indirme yönergeleri için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-quickstart-blobs-dotnet.md). Kullanılabilecek başka bir araç Depolama Gezgini. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

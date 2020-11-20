@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34bbf4d723e46663efe77560245db74d9dea1fc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766245"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957920"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmetinde cihaz özetini kullanma
 
@@ -81,7 +81,7 @@ Essentials alanı, durum, model, hedef ıQN ve yazılım sürümü gibi önemli 
      Bu bağlamda, *birincil depolama* , ana bilgisayar tarafından yazılan toplam veri miktarını ifade eder ve birim türüne göre ayrılabilir: *birincil katmanlı depolama* , hem yerel olarak depolanmış verileri hem de buluta katmanlanmış verileri içerir. *Birincil yerel olarak sabitlenmiş depolama* yalnızca yerel olarak depolanan verileri içerir. *Bulut depolama*, diğer yandan bulutta depolanan toplam veri miktarının ölçümüdür. Bu depolama alanı, katmanlı verileri ve yedeklemeleri içerir. Bulutta depolanan veriler yinelenenleri kaldırılmış ve sıkıştırılır, ancak birincil depolama, veriler silinmeden ve sıkıştırmadan önce kullanılan depolama alanı miktarını gösterir. (Sıkıştırma hızının bir fikrini almak için bu iki sayıyı karşılaştırabilirsiniz.) Birincil ve bulut depolama için, gösterilen tutarlar yapılandırdığınız izleme sıklığıyla hesaplanır. Örneğin, bir hafta sıklığı seçerseniz, grafik önceki haftadaki her bir güne ait verileri gösterir.
 
      Zaman içinde tüketilen bulut depolama miktarını görmek için, **kullanılan bulut depolama alanını** seçin. Konak tarafından yazılan toplam depolama alanını görmek için, **kullanılan BIRINCIL KATMANLı depolama** ALANıNı ve **yerel olarak SABITLENMIŞ depolama alanı kullanılan** seçenekleri seçin. 
-     Daha fazla bilgi için bkz. StorSimple [cihazınızı izlemek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-monitor-device.md).
+     Daha fazla bilgi için bkz. StorSimple [cihazınızı izlemek Için storsimple Aygıt Yöneticisi hizmetini kullanma](./storsimple-8000-monitor-device.md).
 
 
 * **Kapasite** kutucuğu, cihaz genelinde sağlanan ve kalan toplam depolama alanı ile ilişkili birincil depolamayı görüntüler. **Sağlanan** , kullanıma hazır ve kullanım için ayrılan depolama miktarına başvuruyorsa, **kalan** , bu cihaz genelinde sağlanabilen kalan kapasiteyi ifade eder. 
@@ -96,4 +96,3 @@ Essentials alanı, durum, model, hedef ıQN ve yazılım sürümü gibi önemli 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple hizmeti Özet dikey](storsimple-8000-service-dashboard.md)penceresi hakkında daha fazla bilgi edinin.
 * StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
-

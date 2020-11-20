@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: fd5c0905b4a5d050eaf35456353122fd26f8cbf7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 75d013b863671246e6249f367676e4de86bc1de8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445277"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960029"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
 
@@ -26,7 +26,7 @@ Bu makalede, bir makine öğrenimi işlem hattının iş arkadaşlarınızla vey
 
 Machine Learning işlem hatları, Machine Learning görevleri için yeniden kullanılabilir iş akışlarıdır. İşlem hatlarından bir avantajı daha fazla işbirliği. Ayrıca, yeni bir sürümde çalışırken müşterilerin geçerli modeli kullanmasına izin vererek işlem hatlarını de kullanabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Tüm işlem hattı kaynaklarınızın tutulacağı bir [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md) oluşturun
 
@@ -74,7 +74,7 @@ Machine Learning işlem hatları, Machine Learning görevleri için yeniden kull
 Yayımlanan tüm işlem hatları bir REST uç noktasına sahiptir. Ardışık düzen uç noktasıyla, Python olmayan istemciler de dahil olmak üzere herhangi bir dış sistemlerden işlem hattının çalıştırılmasını tetikleyebilirsiniz. Bu uç nokta, toplu Puanlama ve yeniden eğitim senaryolarında "Managed yinelenebilirlik" öğesini sunar.
 
 > [!IMPORTANT]
-> İşlem hattınızı erişimi yönetmek için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#common-scenarios).
+> İşlem hattınızı erişimi yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#common-scenarios).
 
 Önceki işlem hattının çalıştırılmasını çağırmak için bir Azure Active Directory kimlik doğrulaması üst bilgisi belirtecine ihtiyacınız vardır. Bu tür bir belirteci almak, [Azurecliauthentication sınıf](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) başvurusunda ve Azure Machine Learning not defterindeki [kimlik doğrulamasında](https://aka.ms/pl-restep-auth) açıklanmıştır.
 
@@ -90,7 +90,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 `json`POST isteğinin bağımsız değişkeni, anahtar için işlem `ParameterAssignments` hattı parametrelerini ve değerlerini içeren bir sözlüğü içermelidir. Ayrıca `json` bağımsız değişken aşağıdaki anahtarları içerebilir:
 
-| Anahtar | Açıklama |
+| Anahtar | Description |
 | --- | --- | 
 | `ExperimentName` | Bu uç noktayla ilişkili denemenin adı |
 | `Description` | Uç noktayı açıklayan serbest biçimli metin | 
@@ -343,9 +343,9 @@ Ayrıca, Studio 'dan yayımlanmış bir işlem hattı da çalıştırabilirsiniz
 
 1. [Çalışma alanınızı görüntüleyin](how-to-manage-workspace.md#view).
 
-1. Sol tarafta **uç noktalar** ' ı seçin.
+1. Sol tarafta **uç noktalar**' ı seçin.
 
-1. Üstte **ardışık düzen uç noktaları** ' nı seçin.
+1. Üstte **ardışık düzen uç noktaları**' nı seçin.
  ![Machine Learning yayımlanmış işlem hatları listesi](./media/how-to-create-your-first-pipeline/pipeline-endpoints.png)
 
 1. İşlem hattı uç noktasının önceki çalıştırmalarının sonuçlarını çalıştırmak, kullanmak veya gözden geçirmek için belirli bir işlem hattı seçin.
