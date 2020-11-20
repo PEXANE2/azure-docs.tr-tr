@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9055bb9689895a9b74f3d6b5affa325a3b594d65
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874687"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963649"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -707,10 +707,11 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | **Eylemler** | **Açıklama** |
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Azure Active Directory içindeki Devices. bitLockerRecoveryKeys özelliğini okuyun. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
 | Microsoft. Directory/Devices/Delete | Azure Active Directory cihazları silin. |
 | Microsoft. Directory/cihazlar/devre dışı bırak | Azure Active Directory cihazları devre dışı bırakın. |
 | Microsoft. Directory/cihazlar/etkinleştir | Azure Active Directory cihazları etkinleştirin. |
+| Microsoft. Directory/Devices/extensionAttributes/Update | Azure Active Directory içindeki Devices. extensionAttributes özelliğinin tüm değerlerini güncelleştirin. |
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
@@ -731,6 +732,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | Microsoft. Directory/uygulamalar/allProperties/allTasks | Uygulamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Approtaatamalar/allProperties/allTasks | Approtaatamalar oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
 | Microsoft. Directory/Contacts/allProperties/allTasks | Kişiler oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/sözleşmeleri/allProperties/allTasks | Sözleşmeleri oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Devices/allProperties/allTasks | Cihazları oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
@@ -1087,6 +1089,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. Directory/uygulamalar/temel/okuma    | Azure Active Directory içindeki uygulamalarda temel özellikleri okuyun. |
 | Microsoft. Directory/uygulamalar/sahipler/okuma    | Azure Active Directory içindeki Applications. Owners özelliğini okuyun. |
 | Microsoft. Directory/uygulamalar/ilkeler/okuma    | Azure Active Directory içindeki Applications. Policies özelliğini okuyun. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
 | Microsoft. Directory/Contacts/Basic/Read    | Azure Active Directory kişilerdeki temel özellikleri okuyun. |
 | Microsoft. Directory/kiþiler/memberOf/Read    | Azure Active Directory içinde Contacts. memberOf özelliğini okuyun. |
 | Microsoft. Directory/sözleşmeleri/temel/okuma    | Azure Active Directory 'daki sözleşmelerdeki temel özellikleri okuyun. |
@@ -1267,13 +1270,16 @@ Microsoft 365 Insights uygulamasında yönetim erişimine sahiptir.
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
 | Microsoft. Directory/Contacts/Basic/Update | Azure Active Directory kişilerdeki temel özellikleri güncelleştirin. |
 | Microsoft. Directory/kişiler/oluştur | Azure Active Directory kişiler oluşturun. |
 | Microsoft. Directory/Contacts/Delete | Azure Active Directory kişileri silin. |
 | Microsoft. Directory/Devices/Basic/Update | Azure Active Directory cihazlarda temel özellikleri güncelleştirin. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Azure Active Directory içindeki Devices. bitLockerRecoveryKeys özelliğini okuyun. |
 | Microsoft. Directory/cihazlar/oluşturma | Azure Active Directory cihazlar oluşturun. |
 | Microsoft. Directory/Devices/Delete | Azure Active Directory cihazları silin. |
+| Microsoft. Directory/cihazlar/devre dışı bırak | Azure Active Directory cihazları devre dışı bırakın. |
+| Microsoft. Directory/cihazlar/etkinleştir | Azure Active Directory cihazları etkinleştirin. |
+| Microsoft. Directory/Devices/extensionAttributes/Update | Azure Active Directory içindeki Devices. extensionAttributes özelliğinin tüm değerlerini güncelleştirin. |
 | Microsoft. Directory/Devices/kayıt araçları/güncelleştirme | Azure Active Directory Devices. Kaydedeteredowners özelliğini güncelleştirin. |
 | Microsoft. Directory/Devices/registeredUsers/Update | Azure Active Directory Devices. registeredUsers özelliğini güncelleştirin. |
 | Microsoft. Directory/Groups/Approtaatamalar/güncelleştirme | Azure Active Directory groups. Approtaatamalar özelliğini güncelleştirin. |
@@ -1654,9 +1660,9 @@ Güvenlik bilgilerini ve raporlarını okuyabilir ve Azure AD 'de yapılandırma
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
 | Microsoft. Directory/uygulamalar/ilkeler/güncelleştirme | Azure Active Directory içindeki Applications. Policies özelliğini güncelleştirin. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Azure Active Directory içindeki Devices. bitLockerRecoveryKeys özelliğini okuyun. |
 | Microsoft. Directory/ıdentityprotection/allProperties/Read | Microsoft. AAD. ıdentityprotection içindeki tüm kaynakları okuyun. |
 | Microsoft. Directory/ıdentityprotection/allProperties/Update | Microsoft. AAD. ıdentityprotection içindeki tüm kaynakları güncelleştirin. |
 | Microsoft. Directory/policies/Basic/Update | Azure Active Directory ilkelerde temel özellikleri güncelleştirin. |
@@ -1706,7 +1712,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | **Eylemler** | **Açıklama** |
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
-| Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Azure Active Directory içindeki Devices. bitLockerRecoveryKeys özelliğini okuyun. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
 | Microsoft. Directory/policies/conditionalAccess/temel/okuma | Azure Active Directory içindeki policies. conditionalAccess özelliğini okuyun. |
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. AAD. ıdentityprotection/Allentitıes/Read | Microsoft. AAD. ıdentityprotection içindeki tüm kaynakları okuyun. |

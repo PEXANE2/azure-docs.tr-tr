@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b33b866a10ad4a44cef14f3c86d8ca1f40c4750
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318288"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965383"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
 Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub cihaz sağlama hizmeti (DPS), doğru IoT Hub 'a, Kullanıcı müdahalesi gerektirmeden tam zamanında sağlama sağlayan, IoT Hub için bir yardımcı hizmettir. DPS, milyonlarca cihazın güvenli ve ölçeklenebilir bir şekilde sağlanması için izin vermez.
@@ -81,7 +81,7 @@ DPS birçok özelliğe sahiptir ve bu, cihazları sağlamak için ideal hale get
 
 * **Güvenli kanıtlama**: Hem X.509 hem de TPM tabanlı kimlikler için destek.
 * **Kayıt listesi**: Bir noktada kaydedilebilecek cihazların/cihaz gruplarının tam kaydını içerir. Kayıt listesi, kaydedilen cihazın istenen yapılandırması hakkında bilgi içerir ve istenen zamanda güncelleştirilebilir.
-* Senaryolarınızı desteklemek için DPS Cihazları IoT Hub 'larına nasıl atayacağını denetlemek için **birden çok ayırma ilkesi** : en düşük gecikme süresi, eşit ağırlıklı dağıtım (varsayılan) ve kayıt listesi aracılığıyla statik yapılandırma. Gecikme süresi [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)ile aynı yöntem kullanılarak belirlenir.
+* Senaryolarınızı desteklemek için DPS Cihazları IoT Hub 'larına nasıl atayacağını denetlemek için **birden çok ayırma ilkesi** : en düşük gecikme süresi, eşit ağırlıklı dağıtım (varsayılan) ve kayıt listesi aracılığıyla statik yapılandırma. Gecikme süresi [Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#performance)ile aynı yöntem kullanılarak belirlenir.
 * **İzleme ve tanılama günlüğü**: Her şeyin düzgün çalıştığından emin olmanızı sağlar.
 * **Çoklu Hub desteği** , DPS 'nin birden fazla IoT Hub 'ına cihaz atamasına izin verir. DPS, birden çok Azure aboneliği genelinde hub 'larla iletişim kurabilir.
 * **Çapraz bölge desteği** , DPS 'nin diğer bölgelerde IoT Hub 'larına cihaz atamasını sağlar.
@@ -119,7 +119,7 @@ Kota sınırları hakkındaki diğer ayrıntılar için:
 * [Azure Aboneliği Hizmet Sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>İlgili Azure bileşenleri
-DPS cihaz sağlamayı Azure IoT Hub otomatikleştirir. [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)hakkında daha fazla bilgi edinin.
+DPS cihaz sağlamayı Azure IoT Hub otomatikleştirir. [IoT Hub](../iot-hub/index.yml)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık Azure’da IoT cihazlarını sağlama hakkında genel bilgilere sahipsiniz. Bir sonraki adımda uçtan uca bir IoT senaryosunu tamamlamayı deneyeceksiniz.

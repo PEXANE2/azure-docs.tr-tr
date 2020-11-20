@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342289"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965196"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -46,7 +46,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 1. **Güvenlik Merkezi** panosunda **güvenlik ilkesi**' ni seçin.
 
-    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="İlke yönetimi sayfası&quot;:::
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="İlke yönetimi sayfası":::
 
    **İlke yönetimi** ekranında yönetim gruplarının, aboneliklerin ve çalışma alanlarının yanı sıra yönetim grubu yapınızı da görebilirsiniz.
 
@@ -57,7 +57,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
    ![ilke sayfası](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Varsayılan ilkenize göre &quot;MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
+    > Varsayılan ilkenize göre "MG devralınmış" etiketi varsa, ilke bir yönetim grubuna atandı ve görüntülemekte olduğunuz aboneliğin Devralındığı anlamına gelir.
 
 
 1. Bu sayfadaki kullanılabilir seçenekler arasından seçim yapın:
@@ -68,18 +68,7 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
     1. Varsayılan ilkeyi görüntülemek ve düzenlemek için, **geçerli Ilkeyi görüntüle** ' yi seçin ve aşağıda açıklandığı gibi devam edin. 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="İlke yönetimi sayfası&quot;:::
-
-   **İlke yönetimi** ekranında yönetim gruplarının, aboneliklerin ve çalışma alanlarının yanı sıra yönetim grubu yapınızı da görebilirsiniz.
-
-1. İlkelerini görüntülemek istediğiniz aboneliği veya yönetim grubunu seçin.
-
-1. Bu abonelik veya yönetim grubu için güvenlik ilkesi sayfası görüntülenir. Kullanılabilir ve atanan ilkeleri gösterir.
-
-   ![ilke sayfası](./media/tutorial-security-policy/security-policy-page.png)
-
-    > [!NOTE]
-    > Varsayılan ilkenize göre &quot;MG devralınmış":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Etkin ilke ekranı":::
 
        Bu **güvenlik ilkesi** ekranı, seçtiğiniz abonelik veya yönetim grubunda atanan ilkeler tarafından gerçekleştirilen eylemi yansıtır.
        
@@ -97,10 +86,10 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 Azure Ilke portalından, REST API aracılığıyla veya Windows PowerShell kullanarak güvenlik ilkelerini düzenleyebilirsiniz.
 
-Güvenlik Merkezi, Azure kullanıcılarına, gruplarına ve hizmetlerine atayabileceğiniz yerleşik roller sağlayan Role-Based Access Control (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Kullanıcılara, kaynağın aboneliğine *sahip*, *katkıda bulunan*veya *okuyucu* rolünün atandığı anlamına gelir. Ayrıca iki özel güvenlik merkezi rolü de vardır:
+Güvenlik Merkezi, Azure kullanıcılarına, gruplarına ve hizmetlerine atayabileceğiniz yerleşik roller sağlayan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Kullanıcılara, kaynağın aboneliğine *sahip*, *katkıda bulunan* veya *okuyucu* rolünün atandığı anlamına gelir. Ayrıca iki özel güvenlik merkezi rolü de vardır:
 
 - **Güvenlik okuyucusu**: öneriler, uyarılar, ilke ve sistem durumu gibi güvenlik merkezi öğelerini görüntüleme haklarına sahiptir. Değişiklik yapılamıyor.
-- **Güvenlik Yöneticisi**: *güvenlik okuyucusu*ile aynı görünüm haklarına sahiptir. Ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları kapatabilir.
+- **Güvenlik Yöneticisi**: *güvenlik okuyucusu* ile aynı görünüm haklarına sahiptir. Ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları kapatabilir.
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Güvenlik ilkelerini devre dışı bırakma ve önerileri devre dışı bırakma

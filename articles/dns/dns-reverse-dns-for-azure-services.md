@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 15396467e92b3e035add03d0d29888558571aa2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711247"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965638"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure 'da barındırılan hizmetler için ters DNS yapılandırma
 
@@ -247,11 +247,10 @@ Hayır. Azure Şu anda yalnızca IPv4 Publicıpaddress kaynakları ve Cloud Serv
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Azure Işlem hizmetlerimin dış etki alanlarına e-posta gönderebilir miyim?
 
-Doğrudan bir Azure dağıtımından e-posta göndermenin teknik özelliği abonelik türüne bağlıdır. Abonelik türünden bağımsız olarak, Microsoft, giden e-posta göndermek için güvenilen posta geçiş hizmetlerinin kullanılmasını önerir. Daha ayrıntılı bilgi için bkz. [e-posta göndermek Için gelişmiş Azure güvenliği – kasım 2017 güncelleştirmesi](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
+Doğrudan bir Azure dağıtımından e-posta göndermenin teknik özelliği abonelik türüne bağlıdır. Abonelik türünden bağımsız olarak, Microsoft, giden e-posta göndermek için güvenilen posta geçiş hizmetlerinin kullanılmasını önerir. Daha ayrıntılı bilgi için bkz. [e-posta göndermek Için gelişmiş Azure güvenliği – kasım 2017 güncelleştirmesi](../virtual-network/troubleshoot-outbound-smtp-connectivity.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ters DNS hakkında daha fazla bilgi için bkz. [Vikipde ters DNS araması](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
 [Azure DNS 'de ISS tarafından atanan IP aralığınızı geriye doğru arama bölgesini nasıl barındıracağınızı](dns-reverse-dns-for-azure-services.md)öğrenin.
-

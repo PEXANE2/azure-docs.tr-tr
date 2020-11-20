@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80297717"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966199"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 serisi yazılım, yüksek kullanılabilirlik ve ağ gereksinimleri
 
@@ -65,14 +65,14 @@ StorSimple cihazınız kilitli bir cihazdır. Ancak, Iscsı, bulut ve Yönetim t
 
 | Bağlantı noktası No.<sup>1, 2</sup> | Dışarı veya dışarı | Bağlantı noktası kapsamı | Gerekli | Notlar |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Out |WAN |Hayır |<ul><li>Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Out |WAN |Evet |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Out |WAN |No |<ul><li>Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Out |WAN |Yes |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
 | UDP 53 (DNS) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. |
 | UDP 123 (NTP) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir. |
-| TCP 9354 |Out |WAN |Evet |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
-| 3260 (Iscsı) |İçinde |LAN |Hayır |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
-| 5985 |İçinde |LAN |Hayır |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda da kullanılır. |
-| 5986 |İçinde |LAN |Hayır |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda kullanılır. |
+| TCP 9354 |Out |WAN |Yes |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
+| 3260 (Iscsı) |İçinde |LAN |No |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
+| 5985 |İçinde |LAN |No |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda da kullanılır. |
+| 5986 |İçinde |LAN |No |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda kullanılır. |
 
 <sup>1</sup> genel Internet üzerinde hiçbir gelen bağlantı noktasının açık olması gerekmez.
 
@@ -122,7 +122,7 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 Yönlendirme ölçümü, verileri belirtilen ağlara yönlendiren arabirimler ve ağ geçidi ile ilişkilendirilir. Yönlendirme ölçümü, birden çok yolun aynı hedefe varolduğunu öğrenirse, belirli bir hedefin en iyi yolunu hesaplamak için yönlendirme protokolü tarafından kullanılır. Yönlendirme ölçümü ne kadar düşükse tercih daha yüksektir.
 
-StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi Kanal trafiği olarak yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı öğrenmek için yönlendirme ölçümleri yürütmeye gelir. Yönlendirme ölçümleri Kullanıcı tarafından değiştirilemez. Bununla birlikte, `Get-HcsRoutingTable` StorSimple cihazınızda yönlendirme tablosunu (ve ölçümleri) yazdırmak için cmdlet 'ini kullanabilirsiniz. [StorSimple dağıtımında sorun giderme](storsimple-troubleshoot-deployment.md)konusunda Get-HcsRoutingTable cmdlet 'i hakkında daha fazla bilgi.
+StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi Kanal trafiği olarak yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı öğrenmek için yönlendirme ölçümleri yürütmeye gelir. Yönlendirme ölçümleri Kullanıcı tarafından değiştirilemez. Bununla birlikte, `Get-HcsRoutingTable` StorSimple cihazınızda yönlendirme tablosunu (ve ölçümleri) yazdırmak için cmdlet 'ini kullanabilirsiniz. [StorSimple dağıtımında sorun giderme](./storsimple-8000-troubleshoot-deployment.md)konusunda Get-HcsRoutingTable cmdlet 'i hakkında daha fazla bilgi.
 
 Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme ölçüm algoritması aşağıdaki gibi açıklanabilir.
 
@@ -233,7 +233,7 @@ StorSimple cihaz modeli 8600, birincil kutunun yanı sıra genişletilmiş bir d
 * Hem cbod Kasası denetleyici modüllerinin hem de SAS kablolarının ve tüm sabit disk sürücülerinin her zaman yüklü olduğundan emin olun.
 * Bir EBOD Kasası denetleyicisi modülü başarısız olursa, hemen bir değiştirme isteyin.
 * Bir EBOD Kasası denetleyicisi modülü başarısız olursa, başarısız modülün yerine geçmeden önce diğer denetleyici modülünün etkin olduğundan emin olun. Bir denetleyicinin etkin olduğunu doğrulamak için [cihazınızda etkin denetleyiciyi tanımla](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)' ya gidin.
-* Ebod denetleyicisi modül değişikliği sırasında, **Monitor**  >  **donanım sistem durumunu**izlemeye erişerek StorSimple aygıt yöneticisi hizmetinde bileşenin durumunu sürekli olarak izleyin.
+* Ebod denetleyicisi modül değişikliği sırasında, **Monitor**  >  **donanım sistem durumunu** izlemeye erişerek StorSimple aygıt yöneticisi hizmetinde bileşenin durumunu sürekli olarak izleyin.
 * SAS kablosu başarısız olursa veya değişiklik gerektiriyorsa (Bu tür bir belirleme yapmak için Microsoft Desteği dahil edilmelidir), yalnızca değiştirme gerektiren SAS kablosunu kaldırdığınızdan emin olun.
 * Her zaman bir noktada, her iki SAS kablolarını sistemden eşzamanlı olarak kaldırmayın.
 
@@ -250,4 +250,4 @@ StorSimple cihazınıza bağlı olan konaklara yüksek kullanılabilirlik sağla
 * [StorSimple çözümünüzü dağıtmayı öğrenin](storsimple-8000-deployment-walkthrough-u2.md).
 
 <!--Reference links-->
-[1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731844(v=ws.10)

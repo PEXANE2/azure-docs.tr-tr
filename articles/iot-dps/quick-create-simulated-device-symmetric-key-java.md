@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: fa1354c471cf23d85b3c2b0b563ed0463f5e19b2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90528440"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966709"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Hızlı başlangıç: simetrik anahtarlarla IoT Hub için sanal cihaz sağlama
 
@@ -32,9 +32,9 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Makinenizde [Java SE Development Kit 8](https://aka.ms/azure-jdks) veya sonraki bir sürümünün yüklü olduğundan emin olun.
+* Makinenizde [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) veya sonraki bir sürümünün yüklü olduğundan emin olun.
 
 * [Maven](https://maven.apache.org/install.html)'ı indirip yükleyin.
 
@@ -88,7 +88,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 
 Bu bölümde, cihazın önyükleme sırasını DPS örneğinize göndermek için cihaz örnek kodunu güncelleşolursunuz. Bu önyükleme sırası, cihazın tanınmasına, kimliğinin doğrulanmasını ve DPS örneğine bağlı bir IoT Hub 'ına atanmasını sağlar.
 
-1. Cihaz sağlama hizmeti menüsünden **genel bakış** ' ı seçin ve _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_belirtin.
+1. Cihaz sağlama hizmeti menüsünden **genel bakış** ' ı seçin ve _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_ belirtin.
 
     ![Hizmet bilgileri](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -132,7 +132,7 @@ Bu bölümde, cihazın önyükleme sırasını DPS örneğinize göndermek için
       Message received! Response status: OK_EMPTY
     ```
 
-6. Azure portalda, sağlama hizmetinize bağlı olan IoT hub'ına gidin ve **Device Explorer** dikey penceresini açın. Sanal bir simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra, cihaz KIMLIĞI **Device Explorer** dikey penceresinde *durumu* **etkin**olarak görüntülenir.  Örnek cihaz uygulamasını çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
+6. Azure portalda, sağlama hizmetinize bağlı olan IoT hub'ına gidin ve **Device Explorer** dikey penceresini açın. Sanal bir simetrik anahtar cihazı hub 'a başarıyla sağlamaktan sonra, cihaz KIMLIĞI **Device Explorer** dikey penceresinde *durumu* **etkin** olarak görüntülenir.  Örnek cihaz uygulamasını çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 

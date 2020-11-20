@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80298817"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966182"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Sanal Dizini sistem gereksinimleri
 
@@ -29,7 +29,7 @@ Sistem gereksinimleri şunları içerir:
 
 Bu makalede yayımlanan StorSimple sistem gereksinimleri bilgileri yalnızca StorSimple Sanal dizileri için geçerlidir.
 
-* 8000 serisi cihazlarda, [StorSimple 8000 serisi cihazınız Için sistem gereksinimleri](storsimple-system-requirements.md)' ne gidin.
+* 8000 serisi cihazlarda, [StorSimple 8000 serisi cihazınız Için sistem gereksinimleri](./storsimple-8000-system-requirements.md)' ne gidin.
 * 7000 serisi cihazlarda, [StorSimple 5000-7000 Serisi cihazınız Için sistem gereksinimleri](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)' ne gidin.
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
@@ -84,20 +84,20 @@ Aşağıdaki yazılım gereksinimleri, StorSimple Sanal dizinizi (bir dosya sunu
 
 
 ### <a name="supported-storage-format"></a>Desteklenen depolama biçimi
-Yalnızca Azure Blok Blobu depolama desteklenir. Sayfa Blobları desteklenmez. [Blok Blobları ve sayfa Blobları hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)daha fazla bilgi.
+Yalnızca Azure Blok Blobu depolama desteklenir. Sayfa Blobları desteklenmez. [Blok Blobları ve sayfa Blobları hakkında](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)daha fazla bilgi.
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 Aşağıdaki tabloda Iscsı, SMB, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *, gelen istemci* tarafından cihazınıza erişim isteğinin yönünü ifade eder. *Çıkış* veya *Çıkış* , StorSimple cihazınızın verileri dışarıdan, dağıtımın ötesinde (örneğin, Internet 'e giden) gönderdiği yönü ifade eder.
 
 | **Bağlantı noktası No.<sup>1</sup>** | **Dışarı veya dışarı** | **Bağlantı noktası kapsamı** | **Gerekli** | **Notlar** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Out |WAN |Hayır |Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
-| TCP 443 (HTTPS) |Out |WAN |Evet |Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
+| TCP 80 (HTTP) |Out |WAN |No |Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
+| TCP 443 (HTTPS) |Out |WAN |Yes |Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
 | UDP 53 (DNS) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. <br></br> Bir dosya sunucusu dağıtıyorsanız, yerel DNS sunucusu kullanmanızı öneririz. |
 | UDP 123 (NTP) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir.<br></br> Bir dosya sunucusu dağıtıyorsanız, Active Directory etki alanı denetleyicileriniz ile zaman eşitlemesini öneririz. |
-| TCP 80 (HTTP) |İçinde |LAN |Evet |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. <br></br> HTTP üzerinden yerel kullanıcı arabirimine erişmenin otomatik olarak HTTPS 'ye yönlendirilmesini unutmayın. |
-| TCP 443 (HTTPS) |İçinde |LAN |Evet |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. |
-| TCP 3260 (Iscsı) |İçinde |LAN |Hayır |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
+| TCP 80 (HTTP) |İçinde |LAN |Yes |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. <br></br> HTTP üzerinden yerel kullanıcı arabirimine erişmenin otomatik olarak HTTPS 'ye yönlendirilmesini unutmayın. |
+| TCP 443 (HTTPS) |İçinde |LAN |Yes |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. |
+| TCP 3260 (Iscsı) |İçinde |LAN |No |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
 
 <sup>1</sup> genel Internet üzerinde hiçbir gelen bağlantı noktasının açık olması gerekmez.
 

@@ -9,22 +9,23 @@ manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5593257fa17944eebce6346a1eb9e88e7af2c06
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852605"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965961"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>Python 3 etkin Linux Azure sanal makineleri sistemlerinde VM uzantıları kullanma sorunları
 
 > [!NOTE]
-> İş yükünüz **Python 2. x** desteği gerektirmediği takdirde, Microsoft kullanıcıların sistemlerinde **Python 3. x** 'i benimsemesini öneriyor. Bu gereksinime örnek olarak eski yönetim betikleri veya **Azure disk şifrelemesi** ve **Azure izleyici**gibi uzantılar bulunabilir.
+> İş yükünüz **Python 2. x** desteği gerektirmediği takdirde, Microsoft kullanıcıların sistemlerinde **Python 3. x** 'i benimsemesini öneriyor. Bu gereksinime örnek olarak eski yönetim betikleri veya **Azure disk şifrelemesi** ve **Azure izleyici** gibi uzantılar bulunabilir.
 >
 > **Python 2. x** ' i yüklemeden önce, Python 2. x ' in uzun süreli destek sorusunu, özellikle de güvenlik güncelleştirmelerini alma yeteneğini göz önünde bulundurun. Ürün olarak, bahsedilen uzantının bazıları dahil, **python 3,8** desteğiyle güncelleştirme yaparken Python 2. x kullanımını sona erdirmelisiniz.
 
@@ -47,7 +48,7 @@ Daha önce özette açıklanan bilinen etkilenen senaryolara uzantılar dağıt�
 
 1. Uzantıyı dağıtılmadan önce, `/usr/bin/python` Linux dağıtım satıcısı tarafından sunulan yöntemi kullanarak oluşturmaksızın 'i yeniden devreye sokun.
 
-   - Örneğin, **Python 2,7**için şunu kullanın: `sudo apt update && sudo apt install python-is-python2`
+   - Örneğin, **Python 2,7** için şunu kullanın: `sudo apt update && sudo apt install python-is-python2`
 
 1. Bu öneri Azure müşterilerine yöneliktir ve Azure Stack desteklenmez:
 

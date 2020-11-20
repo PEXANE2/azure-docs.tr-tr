@@ -1,7 +1,7 @@
 ---
-title: Bir Web uç noktasından komut güncelleştirme
+title: Web uç noktasından bir komutu güncelleştirme
 titleSuffix: Azure Cognitive Services
-description: bir Web uç noktasından komut güncelleştirme
+description: Bir Web uç noktasına çağrı kullanarak bir komutun durumunu güncelleştirme hakkında bilgi edinin.
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 4432843ac93002bc92068db191706352234d76e6
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94571292"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963615"
 ---
-# <a name="update-a-command-from-a-web-endpoint"></a>Bir Web uç noktasından komut güncelleştirme
+# <a name="update-a-command-from-a-web-endpoint"></a>Web uç noktasından bir komutu güncelleştirme
 
-İstemci uygulamanız, ses girişi olmadan devam eden bir komutun durumunu güncelleştirmek istiyorsa, komutu güncelleştirmek için bir Web uç noktasına çağrı kullanabilirsiniz.
+İstemci uygulamanız, ses girişi olmadan devam eden bir komutun durumunda bir güncelleştirme gerektiriyorsa, komutu güncelleştirmek için bir Web uç noktası çağrısı kullanabilirsiniz.
 
 Bu makalede, bir Web uç noktasından devam eden bir komutun nasıl güncelleştireceğinizi öğreneceksiniz.
 
@@ -27,9 +27,9 @@ Bu makalede, bir Web uç noktasından devam eden bir komutun nasıl güncelleşt
 > [!div class = "checklist"]
 > * Önceden oluşturulmuş [Özel Komutlar uygulaması](quickstart-custom-commands-application.md)
 
-## <a name="create-an-azure-function"></a>Azure İşlevi oluşturma 
+## <a name="create-an-azure-function"></a>Azure işlevi oluşturma 
 
-Bu örnekte, aşağıdaki girişi (veya bu girişin bir alt kümesini) destekleyen HTTP-Triggered bir [Azure işlevi](https://docs.microsoft.com/azure/azure-functions/) gerekir.
+Bu örnekte, aşağıdaki girişi (veya bu girişin bir alt kümesini) destekleyen HTTP ile tetiklenen bir [Azure işlevi](https://docs.microsoft.com/azure/azure-functions/) gerekir:
 
 ```JSON
 {
@@ -48,16 +48,16 @@ Bu örnekte, aşağıdaki girişi (veya bu girişin bir alt kümesini) destekley
 }
 ```
 
-Bu girdinin anahtar özniteliklerinin gözden geçirilmesini sağlar.
+Bu girdinin anahtar özniteliklerini gözden geçirelim:
 
 | Öznitelik | Açıklama |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **ConversationId** | "konuşma kimliği", görüşmenin benzersiz tanımlayıcısıdır ve bu kimliğin istemci uygulamasından oluşturulup oluşturulmadığını unutmayın. |
-| **currentCommand** | "currentCommand", şu anda konuşmada etkin olan komuttur. |
-| **ada** | "ad" komutun adıdır ve "parametreler" parametrelerin geçerli değerleriyle bir eşlemedir. |
-| **currentGlobalParameters** | "currentGlobalParameters" Ayrıca "Parameters" gibi bir haritadır, ancak genel parametreler için kullanılır. |
+| **ConversationId** | Görüşmenin benzersiz tanımlayıcısı. Bu KIMLIğIN istemci uygulamasından oluşturulup oluşturulmadığını unutmayın. |
+| **currentCommand** | Şu anda konuşmada etkin olan komut. |
+| **ada** | Komutun adı. `parameters`Öznitelik, parametrelerin geçerli değerlerini içeren bir eşlemedir. |
+| **currentGlobalParameters** | Gibi bir eşlem `parameters` , ancak genel parametreler için kullanılır. |
 
-Azure Işlevinin çıktısının aşağıdaki biçimi desteklemesi gerekir.
+Azure işlevinin çıktısının aşağıdaki biçimi desteklemesi gerekir:
 
 ```JSON
 {
@@ -74,9 +74,9 @@ Azure Işlevinin çıktısının aşağıdaki biçimi desteklemesi gerekir.
 }
 ```
 
-[İstemciden bir komut güncelleştirilirken](./how-to-custom-commands-update-command-from-client.md)kullanılan aynı olduğundan, bu biçimi tanınduyabilirsiniz. 
+[İstemciden bir komut güncelleştirirken](./how-to-custom-commands-update-command-from-client.md)kullandığınız aynı olduğundan, bu biçimi görebilirsiniz. 
 
-Şimdi NodeJS tabanlı bir Azure Işlevi oluşturun ve bu kodu kopyalayın ve yapıştırın
+Şimdi, Node.js dayalı bir Azure işlevi oluşturun. Bu kodu kopyala/yapıştır:
 
 ```nodejs
 module.exports = async function (context, req) {
@@ -94,35 +94,35 @@ module.exports = async function (context, req) {
 }
 ```
 
-Özel komutlardan bu Azure Işlevini çağırdığımızda, görüşmenin geçerli değerlerini göndereceğiz ve güncelleştirmek istediğimiz parametreleri geri döneceğiz veya geçerli komutu iptal etmek istiyoruz.
+Bu Azure işlevini özel komutlardan çağırdığınızda görüşmenin geçerli değerlerini gönderirsiniz. Güncelleştirmek istediğiniz parametreleri veya geçerli komutu iptal etmek istiyorsanız bu parametreleri döndürebilirsiniz.
 
 ## <a name="update-the-existing-custom-commands-app"></a>Var olan özel komutlar uygulamasını güncelleştirme
 
-Şimdi, mevcut özel komutlar uygulamasıyla Azure Işlevini yedeklim.
+Azure işlevini var olan özel komutlar uygulamasıyla yedeklim:
 
-1. Incrementcounter adlı yeni bir komut ekleyin.
-1. "Increment" değeriyle yalnızca bir örnek cümle ekleyin.
-1. Varsayılan değeri 0 olan tür numarası olan sayaç adlı yeni bir parametre (yukarıdaki Azure Işlevinde belirtilen aynı ad) ekleyin.
-1. Azure Işlevinizin URL 'siyle birlikte IncrementEndpoint adlı yeni bir Web uç noktası ekleyin ve uzak güncelleştirmeler etkindir.
+1. Adlı yeni bir komut ekleyin `IncrementCounter` .
+1. Değeri ile yalnızca bir örnek tümce ekleyin `increment` .
+1. `Counter`Varsayılan değeri ile türünün adlı yeni bir parametre (Azure işlevinde belirtilen aynı ad) ekleyin `Number` `0` .
+1. `IncrementEndpoint` **Uzak güncelleştirmeler** **etkin** olarak ayarlanmış şekılde, Azure işlevinizin URL 'siyle birlikte adlı yeni bir Web uç noktası ekleyin.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="Web uç noktasını uzak güncelleştirmelerle ayarla":::
-1. "IncrementRule" adlı yeni bir etkileşim kuralı oluşturun ve bir çağrı Web uç noktası eylemi ekleyin.
+    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="Uzak güncelleştirmelerle bir Web uç noktası ayarlamayı gösteren ekran görüntüsü.":::
+1. **IncrementRule** adlı yeni bir etkileşim kuralı oluşturun ve **çağrı Web uç noktası** eylemi ekleyin.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="Artış kuralı":::
-1. Eylem yapılandırmasında IncrementEndpoint öğesini seçin, sayaç değeriyle konuşma yanıtı göndermek için başarılı olarak yapılandırın ve hata iletisiyle başarısız yapın.
+    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="Bir etkileşim kuralının oluşturulmasını gösteren ekran görüntüsü.":::
+1. Eylem yapılandırması ' nda, öğesini seçin `IncrementEndpoint` . Değeri ile **konuşma yanıtı gönderme** **başarısını** yapılandırın `Counter` ve hata iletisiyle **başarısız** olarak yapılandırın.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="Artış sayacı çağrı uç noktasını ayarla":::
-1. Kullanıcının girişini beklemek için kuralın yürütme sonrası durumunu ayarlayın
+    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="Web uç noktası çağırmak için bir artış sayacı ayarlamanın gösterildiği ekran görüntüsü.":::
+1. **Kullanıcının girişini beklemek** için kuralın yürütme sonrası durumunu ayarlayın.
 
 ## <a name="test-it"></a>Test etme
 
-1. Uygulamanızı kaydetme ve eğitme
-1. Test 'e tıklayın
-1. Birkaç kez "artış" (ıncrementcounter komutu için örnek cümle) gönderin
+1. Uygulamanızı kaydedin ve eğitme.
+1. **Test**'i seçin.
+1. `increment`Birkaç kez gönderin (komutun örnek cümlesi olur `IncrementCounter` ).
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="Artış sayacı örneği":::
+    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="Artış sayacı örneği gösteren ekran görüntüsü.":::
 
-Her bir Azure Işlevi tarafından her bir sayaç parametresinin değerinin nasıl artdığına dikkat edin.
+Azure işlevinin her bir sırayla parametresinin değerini nasıl artırdığına dikkat edin `Counter` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

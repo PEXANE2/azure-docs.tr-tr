@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 738d62d60ad06431bd77cd99343fc8835c4c5685
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a36b37c1f0118055d931f785f570a10041e2dbfc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330181"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965706"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Özel DNS bölgelerini ve kayıtlarını koruma
 
@@ -65,7 +65,7 @@ az role assignment create \
 
 Azure RBAC kuralları bir aboneliğe, bir kaynak grubuna veya tek bir kaynağa uygulanabilir. Bu kaynak tek bir DNS bölgesi veya tek bir kayıt kümesi olabilir.
 
-Örneğin, *Myprivatedns* kaynak grubu *Private.contoso.com* bölgesini ve bir alt bölge *Customers.Private.contoso.com*içerir. CNAME kayıtları her müşteri hesabı için oluşturulur. CNAME kayıtlarını yönetmek için kullanılan yönetici hesabına, *Customers.Private.contoso.com* bölgesinde kayıt oluşturmak için izinler atanır. Hesap yalnızca *Customers.Private.contoso.com* yönetebilir.
+Örneğin, *Myprivatedns* kaynak grubu *Private.contoso.com* bölgesini ve bir alt bölge *Customers.Private.contoso.com* içerir. CNAME kayıtları her müşteri hesabı için oluşturulur. CNAME kayıtlarını yönetmek için kullanılan yönetici hesabına, *Customers.Private.contoso.com* bölgesinde kayıt oluşturmak için izinler atanır. Hesap yalnızca *Customers.Private.contoso.com* yönetebilir.
 
 Bölge düzeyinde Azure RBAC izinleri Azure portal aracılığıyla verilebilir.  Bölge için **erişim denetimi (IAM)** açın, **Ekle**' yi seçin, sonra **özel DNS bölgesi katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
 
@@ -204,7 +204,7 @@ Bölge düzeyi kaynak kilitleri Azure portal aracılığıyla oluşturulabilir. 
 
 ![Azure portal aracılığıyla bölge düzeyi kaynak kilitleri](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-Bölge düzeyi kaynak kilitleri [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest)aracılığıyla da oluşturulabilir:
+Bölge düzeyi kaynak kilitleri [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest)aracılığıyla da oluşturulabilir:
 
 ```azurepowershell-interactive
 # Lock a DNS zone
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Eşdeğer komut [Azure CLI aracılığıyla da kullanılabilir](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
+Eşdeğer komut [Azure CLI aracılığıyla da kullanılabilir](/cli/azure/lock?view=azure-cli-latest#az-lock-create):
 
 ```azurecli-interactive
 # Lock a DNS zone

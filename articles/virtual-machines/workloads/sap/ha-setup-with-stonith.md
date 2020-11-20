@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34a7665770308b45732711f5d8328eb1d0a785f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363129"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965077"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH kullanarak SUSE’de yüksek kullanılabilirlik ayarlama
 Bu belgede, SUSE Işletim sisteminde STONITH cihazını kullanarak yüksek kullanılabilirliği ayarlamak için ayrıntılı adım adım yönergeler sağlanmaktadır.
@@ -75,7 +76,7 @@ Microsoft hizmet yönetimi bu dizeyi sağlar. Her **iki** düğümdeki dosyayı 
 
 ![Ekran görüntüsü bir düğüm için ınitiatorname değerlerini içeren bir ınitiatorname dosyası gösterir.](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 */etc/IDL/SCC SID.conf*değiştirme: set *Node.Session.Timeo.replacement_timeout = 5* ve *Node. Startup = Automatic*. **Her iki** düğümdeki dosyayı değiştirin.
+1,2 */etc/IDL/SCC SID.conf* değiştirme: set *Node.Session.Timeo.replacement_timeout = 5* ve *Node. Startup = Automatic*. **Her iki** düğümdeki dosyayı değiştirin.
 
 1,3 bulma komutunu yürütür, dört oturum gösterir. Her iki düğümde de çalıştırın.
 
@@ -99,7 +100,7 @@ rescan-scsi-bus.sh
 ```
 ![Ekran görüntüsü, komut dosyası sonuçlarının bulunduğu bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
-1,6 cihaz adını almak için *fdisk – l*komutunu çalıştırın. Her iki düğümde de çalıştırın. **178 MiB**boyutunda bir cihaz seçin.
+1,6 cihaz adını almak için *fdisk – l* komutunu çalıştırın. Her iki düğümde de çalıştırın. **178 MiB** boyutunda bir cihaz seçin.
 
 ```
   fdisk –l
@@ -134,7 +135,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
  ![ Ekran görüntüsü, SAPHanaSR-doc komutunun sonucuna sahip bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 kümeyi ayarlama
-3.2.1, *ha-Cluster-init* komutunu kullanabilir ya da kümeyi ayarlamak için YaST2 sihirbazını kullanabilirsiniz. Bu durumda, YaST2 Sihirbazı kullanılır. Bu adımı **yalnızca birincil düğümde**gerçekleştirirsiniz.
+3.2.1, *ha-Cluster-init* komutunu kullanabilir ya da kümeyi ayarlamak için YaST2 sihirbazını kullanabilirsiniz. Bu durumda, YaST2 Sihirbazı kullanılır. Bu adımı **yalnızca birincil düğümde** gerçekleştirirsiniz.
 
 YaST2> yüksek kullanılabilirliği > küme ![ ekran görüntüsü, yüksek kullanılabilirlik ve küme seçiliyken YaST denetim merkezini gösterir. ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
  ![ Ekran görüntüsünde, Install ve Cancel seçeneklerinin bulunduğu bir iletişim kutusu gösterilir.](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
@@ -146,7 +147,7 @@ Halk2 paketi zaten yüklü olduğundan **iptal** ' e tıklayın.
 **Devam** ' a tıklayın
 
 Beklenen değer = dağıtılan düğümlerin sayısı (Bu durumda 2) ![ ekran görüntüsünde güvenlik kimlik doğrulamasını etkinleştir onay kutusu Ile küme güvenliği gösterilmektedir.](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
-**İleri**ekran görüntüsü ' ne tıklayın 
+**İleri** ekran görüntüsü ' ne tıklayın 
  ![ , eşitleme konağı ve eşitleme dosya listeleriyle küme yapılandırma penceresini gösterir.](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
 Düğüm adları ekleyin ve ardından "önerilen dosyaları Ekle" ye tıklayın
 
@@ -260,7 +261,7 @@ systemctl start pacemaker
 crm_mon
 ```
 ![Ekran görüntüsünde, c r m_mon sonuçlarının bulunduğu bir konsol penceresi gösterilmektedir.](media/HowToHLI/HASetupWithStonith/crm-mon.png)
-Ayrıca, *https:// \<node IP> : 7630*küme durumunu denetlemek için havk 'da da oturum açabilirsiniz. Varsayılan Kullanıcı hacluster ve parola Linux olur. Gerekirse, *passwd* komutunu kullanarak parolayı değiştirebilirsiniz.
+Ayrıca, *https:// \<node IP> : 7630* küme durumunu denetlemek için havk 'da da oturum açabilirsiniz. Varsayılan Kullanıcı hacluster ve parola Linux olur. Gerekirse, *passwd* komutunu kullanarak parolayı değiştirebilirsiniz.
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. küme özelliklerini ve kaynaklarını yapılandırma 
 Bu bölümde, küme kaynaklarını yapılandırma adımları açıklanmaktadır.
@@ -322,7 +323,7 @@ crm configure load update crm-vip.txt
 
 ### <a name="74-validate-the-resources"></a>7,4 kaynakları doğrulama
 
-Komut *crm_mon*çalıştırdığınızda, iki kaynağı orada görebilirsiniz.
+Komut *crm_mon* çalıştırdığınızda, iki kaynağı orada görebilirsiniz.
 ![Ekran görüntüsü iki kaynakla bir konsol penceresi gösterir.](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
 Ayrıca, *https:// \<node IP address> : 7630/CIB/Live/State* konumundaki durumu görebilirsiniz.

@@ -12,18 +12,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
-ms.openlocfilehash: 07776e0361b8221cf3aca9f06c66478aa6127f53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84701792"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965723"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure DNS Azure PowerShell kullanarak DNS kayıtlarını ve kayıt kümelerini yönetme
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure klasik CLı](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure Portalı](dns-operations-recordsets-portal.md)
+> * [Azure klasik CLı](./dns-operations-recordsets-cli.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -142,7 +142,7 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Tek kayıtlı bir SRV kayıt kümesi oluşturma
 
-Bir [SRV kayıt kümesi](dns-zones-records.md#srv-records)oluştururken, kayıt kümesi adında * \_ hizmeti* ve * \_ Protokolü* belirtin. \@Tepesinde bölgesinde BIR SRV kayıt kümesi oluştururken, kayıt kümesi adına ' ' eklemeniz gerekmez.
+Bir [SRV kayıt kümesi](dns-zones-records.md#srv-records)oluştururken, kayıt kümesi adında *\_ hizmeti* ve *\_ Protokolü* belirtin. \@Tepesinde bölgesinde BIR SRV kayıt kümesi oluştururken, kayıt kümesi adına ' ' eklemeniz gerekmez.
 
 ```powershell
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
@@ -230,7 +230,7 @@ Varolan bir kayıt kümesine kayıt eklemek için aşağıdaki üç adımı izle
 
 Kullanmak, `Set-AzDnsRecordSet` Azure DNS (ve içerdiği tüm kayıtlar) içindeki mevcut kayıt kümesini belirtilen kayıt kümesiyle *değiştirir* . [ETag denetimleri](dns-zones-records.md#etags) , eşzamanlı değişikliklerin üzerine yazılmadığından emin olmak için kullanılır. `-Overwrite`Bu denetimleri bastırmak için isteğe bağlı anahtarı kullanabilirsiniz.
 
-Bu işlem dizisi de *Ayrıca, bir parametre olarak geçirilmesi yerine*kanal kullanarak kayıt kümesi nesnesini geçirdiğiniz anlamına gelir.
+Bu işlem dizisi de *Ayrıca, bir parametre olarak geçirilmesi yerine* kanal kullanarak kayıt kümesi nesnesini geçirdiğiniz anlamına gelir.
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1d7d477e50ef4fc47042d57aa973d483a784465d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 792908236c4f240db64bd3899474d779d5b0570c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127344"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966522"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlük kaydına giriş
 
 ## <a name="introduction"></a>Giriş
 
-[Ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) akış günlükleri, BIR NSG aracılığıyla akan IP trafiği hakkındaki bilgileri günlüğe kaydetmenize olanak sağlayan bir Azure Ağ İzleyicisi özelliğidir. Akış verileri Azure depolama hesaplarına gönderilir ve buradan erişebilirsiniz ve dilediğiniz görselleştirme aracına, SıEM 'e veya KIMLIKLERINE dışarı aktarabilirsiniz.
+[Ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) akış günlükleri, BIR NSG aracılığıyla akan IP trafiği hakkındaki bilgileri günlüğe kaydetmenize olanak sağlayan bir Azure Ağ İzleyicisi özelliğidir. Akış verileri Azure depolama hesaplarına gönderilir ve buradan erişebilirsiniz ve dilediğiniz görselleştirme aracına, SıEM 'e veya KIMLIKLERINE dışarı aktarabilirsiniz.
 
 ![akış günlüklerine genel bakış](./media/network-watcher-nsg-flow-logging-overview/homepage.jpg)
 
@@ -54,12 +54,12 @@ Akış günlükleri, bulut ortamınızdaki tüm ağ etkinlikleri için Truth kay
 - Akış günlükleri, oluşturma işleminden sonra otomatik olarak bir yıla kadar olan günlükleri silmeye izin veren bir bekletme özelliğine sahiptir. 
 
 > [!NOTE]
-> Saklama, yalnızca [genel amaçlı v2 depolama hesapları (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)kullandığınızda kullanılabilir. 
+> Saklama, yalnızca [genel amaçlı v2 depolama hesapları (GPv2)](../storage/common/storage-account-overview.md#types-of-storage-accounts)kullandığınızda kullanılabilir. 
 
 **Temel kavramlar**
 
 - Yazılım tanımlı ağlar, sanal ağların (VNet) ve alt ağların etrafında düzenlenir. Bu sanal ağlar ve alt ağların güvenliği NSG kullanılarak yönetilebilir.
-- Bir ağ güvenlik grubu (NSG), bağlı olduğu kaynaklarda ağ trafiğine izin veren veya reddeden _güvenlik kurallarının_ bir listesini içerir. NSG 'Ler, VM 'lere bağlı olan alt ağlar, tek VM 'Ler veya tek ağ arabirimleri (NIC) ile ilişkilendirilebilir (Kaynak Yöneticisi). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json).
+- Bir ağ güvenlik grubu (NSG), bağlı olduğu kaynaklarda ağ trafiğine izin veren veya reddeden _güvenlik kurallarının_ bir listesini içerir. NSG 'Ler, VM 'lere bağlı olan alt ağlar, tek VM 'Ler veya tek ağ arabirimleri (NIC) ile ilişkilendirilebilir (Kaynak Yöneticisi). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json).
 - Ağınızdaki tüm trafik akışları, geçerli NSG kuralları kullanılarak değerlendirilir.
 - Bu değerlendirmelerinin sonucu NSG akış günlüklerinizi de kaydeder. Akış günlükleri Azure platformu aracılığıyla toplanır ve müşteri kaynaklarında herhangi bir değişiklik yapılmasını gerektirmez.
 - Note: kurallar, her biri farklı günlüğe kaydetme davranışlarına sahip olan & Sonlandırılmamış olan iki türden oluşur.
@@ -309,11 +309,11 @@ Devamlılık _C_ ve bitiş _E_ akışı durumları için bayt ve paket sayılar�
 
 Akış günlüklerini etkinleştirme yönergeleri için aşağıda yer alan ilgili bağlantıyı kullanın.
 
-- [Azure portalı](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
-- [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
-- [CLI](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
-- [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
-- [Azure Resource Manager](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-azure-resource-manager)
+- [Azure portalı](./network-watcher-nsg-flow-logging-portal.md)
+- [PowerShell](./network-watcher-nsg-flow-logging-powershell.md)
+- [CLI](./network-watcher-nsg-flow-logging-cli.md)
+- [REST](./network-watcher-nsg-flow-logging-rest.md)
+- [Azure Resource Manager](./network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 ## <a name="updating-parameters"></a>Parametreleri güncelleştirme
 
@@ -329,8 +329,8 @@ Komut satırı araçları aracılığıyla parametreleri güncelleştirmek için
 
 *Akış günlüklerini okuma ve dışarı aktarma*
 
-- [&amp;Portalda görünüm akışı günlüklerini indirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)
-- [PowerShell işlevlerini kullanarak akış günlüklerini okuma](https://docs.microsoft.com/azure/network-watcher/network-watcher-read-nsg-flow-logs)
+- [&amp;Portalda görünüm akışı günlüklerini indirme](./network-watcher-nsg-flow-logging-portal.md#download-flow-log)
+- [PowerShell işlevlerini kullanarak akış günlüklerini okuma](./network-watcher-read-nsg-flow-logs.md)
 - [NSG akış günlüklerini splunk 'a dışarı aktarma](https://www.splunk.com/en_us/blog/tips-and-tricks/splunking-microsoft-azure-network-watcher-data.html)
 
 Akış günlükleri NSG 'leri hedeflerse, diğer Günlükler ile aynı görüntülenmez. Akış günlükleri yalnızca bir depolama hesabı içinde depolanır ve aşağıdaki örnekte gösterilen günlük yolunu izler:
@@ -341,11 +341,11 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 *Akış günlüklerini görselleştirme*
 
-- [Azure Trafik Analizi](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) , akış günlüklerini Işlemek için Azure yerel bir hizmettir, öngörüleri ayıklar ve akış günlüklerini görselleştirin. 
-- [Öğreticide NSG akış günlüklerini Power BI ile görselleştirin](https://docs.microsoft.com/azure/network-watcher/network-watcher-visualize-nsg-flow-logs-power-bi)
-- [Öğreticide Esnek Stack ile NSG akış günlüklerini görselleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-visualize-nsg-flow-logs-open-source-tools)
-- [Öğreticide Grafana kullanarak NSG akış günlüklerini yönetme ve çözümleme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-grafana)
-- [Öğreticide GG akış günlüklerini gri günlük kullanarak yönetme ve çözümleme](https://docs.microsoft.com/azure/network-watcher/network-watcher-analyze-nsg-flow-logs-graylog)
+- [Azure Trafik Analizi](./traffic-analytics.md) , akış günlüklerini Işlemek için Azure yerel bir hizmettir, öngörüleri ayıklar ve akış günlüklerini görselleştirin. 
+- [Öğreticide NSG akış günlüklerini Power BI ile görselleştirin](./network-watcher-visualize-nsg-flow-logs-power-bi.md)
+- [Öğreticide Esnek Stack ile NSG akış günlüklerini görselleştirme](./network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+- [Öğreticide Grafana kullanarak NSG akış günlüklerini yönetme ve çözümleme](./network-watcher-nsg-grafana.md)
+- [Öğreticide GG akış günlüklerini gri günlük kullanarak yönetme ve çözümleme](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG akış günlüğü konuları
@@ -357,7 +357,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
 
-**Kullanıcı tanımlı gelen TCP kuralları Ile Ilgili sorunlar**: [ağ güvenlik grupları (NSG 'Ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, geçerli platform sınırlamaları nedeniyle, gelen TCP akışlarını etkileyen Kullanıcı tanımlı kurallar durum bilgisiz bir biçimde uygulanır. Bu nedenle, Kullanıcı tanımlı gelen kuralların etkilediği akışlar Sonlandırılmamış hale gelir. Ayrıca, bu akışlar için bayt ve paket sayıları kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Bu sorunları düzelten bir kabul etme bayrağı, Aralık 2020 ' de en son kullanılabilir şekilde zamanlanır. Bu durumda, bu davranış nedeniyle önemli sorunlara yönelik müşterilere yönelik olan müşteriler destek aracılığıyla isteğe bağlı olarak talep edebilir, lütfen ağ Izleyicisi > NSG akış günlükleri altında bir destek isteği yükseltin.  
+**Kullanıcı tanımlı gelen TCP kuralları Ile Ilgili sorunlar**: [ağ güvenlik grupları (NSG 'Ler)](../virtual-network/network-security-groups-overview.md) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, geçerli platform sınırlamaları nedeniyle, gelen TCP akışlarını etkileyen Kullanıcı tanımlı kurallar durum bilgisiz bir biçimde uygulanır. Bu nedenle, Kullanıcı tanımlı gelen kuralların etkilediği akışlar Sonlandırılmamış hale gelir. Ayrıca, bu akışlar için bayt ve paket sayıları kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Bu sorunları düzelten bir kabul etme bayrağı, Aralık 2020 ' de en son kullanılabilir şekilde zamanlanır. Bu durumda, bu davranış nedeniyle önemli sorunlara yönelik müşterilere yönelik olan müşteriler destek aracılığıyla isteğe bağlı olarak talep edebilir, lütfen ağ Izleyicisi > NSG akış günlükleri altında bir destek isteği yükseltin.  
 
 **Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 
@@ -379,13 +379,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 - **Microsoft. Insights** kaynak sağlayıcısı kayıtlı değil
 
-_AuthorizationFailed_ veya _GatewayAuthenticationFailed_ hatası aldıysanız aboneliğinizde Microsoft Insights kaynak sağlayıcısını etkinleştirmemiş olabilirsiniz. Microsoft Insights sağlayıcısını etkinleştirmek için [yönergeleri izleyin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider) .
+_AuthorizationFailed_ veya _GatewayAuthenticationFailed_ hatası aldıysanız aboneliğinizde Microsoft Insights kaynak sağlayıcısını etkinleştirmemiş olabilirsiniz. Microsoft Insights sağlayıcısını etkinleştirmek için [yönergeleri izleyin](./network-watcher-nsg-flow-logging-portal.md#register-insights-provider) .
 
 **NSG Akış Günlüklerini etkinleştirdim ama depolama hesabımda verileri görmüyorum**
 
 - **Hazırlık süresi**
 
-NSG Akış Günlüklerinin depolama hesabınızda görüntülenmesi 5 dakika kadar sürebilir (doğru yapılandırıldıysa). [Burada açıklandığı gibi](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log) erişilebilen bir PT1H.json dosyası görüntülenir.
+NSG Akış Günlüklerinin depolama hesabınızda görüntülenmesi 5 dakika kadar sürebilir (doğru yapılandırıldıysa). [Burada açıklandığı gibi](./network-watcher-nsg-flow-logging-portal.md#download-flow-log) erişilebilen bir PT1H.json dosyası görüntülenir.
 
 - **NSG'lerinizde trafik yok**
 
@@ -399,7 +399,7 @@ NSG Akış Günlüklerinde şu an için ARM şablonları aracılığıyla otomas
 
 **NSG akış günlükleri ne yapar?**
 
-Azure ağ kaynakları, [ağ güvenlik grupları (NSG 'ler)](https://docs.microsoft.com/azure/virtual-network/security-overview)ile birleştirilebilir ve yönetilebilir. NSG akış günlükleri, NSG 'larınız aracılığıyla tüm trafikle ilgili 5 demet akış bilgilerini günlüğe Kaydetetkinleştirmenizi sağlar. Ham akış günlükleri, gerektikçe daha fazla işlenebileceği, çözümlenebildiği, sorgulanan veya verilebilecekleri bir Azure depolama hesabına yazılır.
+Azure ağ kaynakları, [ağ güvenlik grupları (NSG 'ler)](../virtual-network/network-security-groups-overview.md)ile birleştirilebilir ve yönetilebilir. NSG akış günlükleri, NSG 'larınız aracılığıyla tüm trafikle ilgili 5 demet akış bilgilerini günlüğe Kaydetetkinleştirmenizi sağlar. Ham akış günlükleri, gerektikçe daha fazla işlenebileceği, çözümlenebildiği, sorgulanan veya verilebilecekleri bir Azure depolama hesabına yazılır.
 
 **Akış günlüklerinin kullanılması ağ gecikmesinin veya performansumu etkiler mi?**
 
@@ -419,15 +419,14 @@ Birkaç dakika sonra depolama günlüklerini denetleyebilirsiniz; güncelleştir
 
 **Nasıl yaparım? bir hizmet uç noktası arkasında depolama hesabı bulunan NSG akış günlükleri mi kullanıyorsunuz?**
 
-NSG akış günlükleri, ek yapılandırma gerektirmeden hizmet uç noktaları ile uyumludur. Sanal ağınızdaki [hizmet uç noktalarını etkinleştirme öğreticisine](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) bakın.
+NSG akış günlükleri, ek yapılandırma gerektirmeden hizmet uç noktaları ile uyumludur. Sanal ağınızdaki [hizmet uç noktalarını etkinleştirme öğreticisine](../virtual-network/tutorial-restrict-network-access-to-resources.md#enable-a-service-endpoint) bakın.
 
 **Akış günlükleri sürümleri 1 & 2 arasındaki fark nedir?**
 
-Akış günlükleri sürüm 2, _akış durumu_ kavramını tanıtır & aktarılan bayt ve paketler hakkında bilgi depolar. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
+Akış günlükleri sürüm 2, _akış durumu_ kavramını tanıtır & aktarılan bayt ve paketler hakkında bilgi depolar. [Daha fazla bilgi edinin](#log-format)
 
 ## <a name="pricing"></a>Fiyatlandırma
 
 NSG akış günlükleri, toplanan her bir günlük için ücretlendirilir ve abonelik başına 5 GB/ay boyunca ücretsiz bir katman ile gelir. Bölgenizdeki geçerli fiyatlandırma için, bkz. [Ağ İzleyicisi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/network-watcher/).
 
 Günlüklerin depolanması ayrı olarak ücretlendirilir, ilgili fiyatlar için bkz. [Azure Storage Blok Blobu fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/blobs/) .
- 

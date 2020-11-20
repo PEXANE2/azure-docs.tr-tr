@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984052"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965553"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Ağ Izleyicisi ve gri günlük kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme
 
@@ -40,7 +40,7 @@ Ağ güvenlik grubu akış günlükleri, ağ Izleyicisi kullanılarak etkinleşt
 
 ### <a name="enable-network-security-group-flow-logging"></a>Ağ güvenlik grubu akış günlüğünü etkinleştir
 
-Bu senaryoda, hesabınızdaki en az bir ağ güvenlik grubunda ağ güvenlik grubu akış günlüğü 'nün etkin olması gerekir. Ağ güvenlik grubu akış günlüklerini etkinleştirme hakkında yönergeler için, [ağ güvenlik grupları için akış günlüğüne giriş konusuna giriş](network-watcher-nsg-flow-logging-overview.md)olarak aşağıdaki makaleye bakın.
+Bu senaryoda, hesabınızdaki en az bir ağ güvenlik grubunda ağ güvenlik grubu akış günlüğü 'nün etkin olması gerekir. Ağ güvenlik grubu akış günlüklerini etkinleştirme hakkında yönergeler için, [ağ güvenlik grupları için akış günlüğüne giriş konusuna giriş](network-watcher-nsg-flow-logging-overview.md)olarak aşağıdaki makaleye bakın.
 
 ### <a name="setting-up-graylog"></a>Gri günlük ayarlama
 
@@ -53,7 +53,7 @@ Bu örnek, minimum gri günlük kurulumunu kullanır (ör. bir gri tonlamalı g�
 
 Gri, platformunuza ve tercihlerinize bağlı olarak birçok şekilde gri bir şekilde yüklenebilir. Olası yükleme yöntemlerinin tam listesi için, gri tonlamalı günlüğün resmi [belgelerine](https://docs.graylog.org/en/2.2/pages/installation.html)bakın. Gri günlük sunucu uygulaması, Linux dağıtımları üzerinde çalışır ve aşağıdaki önkoşullara sahiptir:
 
--  Java s 8 veya üzeri – [Azul Azure JDK belgeleri](https://aka.ms/azure-jdks)
+-  Java s 8 veya üzeri – [Azul Azure JDK belgeleri](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 -  Elastik arama 2. x (2.1.0 veya üzeri)- [Elaksearch yükleme belgeleri](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2,4 veya üzeri – [MongoDB Yükleme belgeleri](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -184,7 +184,7 @@ Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir 
 
 3. Yeni girişi başlatmak için **Giriş Seç** açılan kutusunda *gelf UDP* ' yi seçin ve ardından formu doldurun. GELF, gri günlük Genişletilmiş günlük biçimini temsil eder. GELF biçimi, Grig günlüğü tarafından geliştirilmiştir. Avantajları hakkında daha fazla bilgi edinmek için bkz. gri günlük [belgeleri](https://docs.graylog.org/en/2.2/pages/gelf.html).
 
-   Girişi, gri tonlamalı günlük sunucunuzu yapılandırdığınız IP 'ye bağladığınızdan emin olun. IP adresi, Logstash yapılandırma dosyasının UDP çıktısının **ana bilgisayar** alanıyla eşleşmelidir. Varsayılan bağlantı noktası *12201*olmalıdır. Bağlantı noktasının Logstash yapılandırma dosyasında belirlenen UDP çıkışındaki **bağlantı noktası** alanıyla eşleştiğinden emin olun.
+   Girişi, gri tonlamalı günlük sunucunuzu yapılandırdığınız IP 'ye bağladığınızdan emin olun. IP adresi, Logstash yapılandırma dosyasının UDP çıktısının **ana bilgisayar** alanıyla eşleşmelidir. Varsayılan bağlantı noktası *12201* olmalıdır. Bağlantı noktasının Logstash yapılandırma dosyasında belirlenen UDP çıkışındaki **bağlantı noktası** alanıyla eşleştiğinden emin olun.
 
    ![Ekran görüntüsünde, giriş başlatma ve bulma seçenekleri ile gri günlük girişleri gösterilmektedir.](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
@@ -246,4 +246,4 @@ Ağ İzleyicisini, gri tonlamalı günlük ile tümleştirerek ağ güvenlik gru
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- [Power BI ile ağ güvenlik grubu akış günlüklerini görselleştirme](network-watcher-visualize-nsg-flow-logs-power-bi.md)' i ziyaret ederek ağ güvenlik grubu akış günlüklerinizi Power BI ile görselleştirmeyi öğrenin.
+[Power BI ile ağ güvenlik grubu akış günlüklerini görselleştirme](network-watcher-visualize-nsg-flow-logs-power-bi.md)' i ziyaret ederek ağ güvenlik grubu akış günlüklerinizi Power BI ile görselleştirmeyi öğrenin.

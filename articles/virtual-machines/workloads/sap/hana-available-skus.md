@@ -8,18 +8,19 @@ manager: juergent
 editor: ''
 keywords: HLI, HANA, SKU 'Lar, S896, S224, S448, S672, Optane, SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08872b95c4cff3c261a545f117cc4e6bf24e15a5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fd979f553ff03d8373948d73c416a96bb140b544
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411482"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964771"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>HANA büyük örnekleri için kullanılabilir SKU 'Lar
 
@@ -37,7 +38,7 @@ Düzeltme 4 damgalarına dayanan Azure (büyük örnekler) hizmetinde SAP HANA, 
 - Doğu ABD 2
 - Orta Güney ABD
 - West Europe
-- North Europe
+- Kuzey Avrupa
 
 
 
@@ -48,7 +49,7 @@ Aşağıdakiler gibi sunulan kullanılabilir Azure büyük örneklerinin listesi
 
 
 
-| SAP HANA sertifikalı | Modelleme | Toplam bellek | Bellek DRAM | Bellek Optane | Depolama | Kullanılabilirlik |
+| SAP HANA sertifikalı | Model | Toplam bellek | Bellek DRAM | Bellek Optane | Depolama | Kullanılabilirlik |
 | --- | --- | --- | --- | --- | --- | --- |
 | EVET <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | Azure S96 üzerinde SAP HANA<br /> – 2 x Intel® Xeon® Işlemci E7-8890 v4 <br /> 48 CPU çekirdeği ve 96 CPU iş parçacığı |  768 GB | 768 GB | --- | 3,0 TB | Kullanılabilir |
 | EVET <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | Azure S224 üzerinde SAP HANA<br /> – 4 x Intel® Xeon® Platinum 8276 işlemcisi <br /> 112 CPU çekirdeği ve 224 CPU iş parçacığı |  3,0 TB | 3,0 TB | --- | 6,3 TB | Kullanılabilir |
@@ -104,9 +105,9 @@ Seçilen belirli yapılandırma iş yüküne, CPU kaynaklarına ve istenen belle
 
 Tüm HANA büyük örnek damgası, tek bir müşteri&#39;kullanımı için özel olarak ayrılmaz. Bu olgu, Azure 'da dağıtılan bir ağ dokusuna göre bağlanmış işlem ve depolama kaynaklarının raflarına yöneliktir. Azure gibi HANA büyük örnek altyapısı, &quot; &quot; aşağıdaki üç düzeyde bir diğerinden yalıtılmış farklı müşteri kiracılar dağıtır:
 
-- **Ağ** : Hana büyük örnek damgasında sanal ağlar aracılığıyla yalıtım.
-- **Depolama** : depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtım yapın ve depolama birimlerini kiracılar arasında yalıtın.
-- **İşlem** : sunucu birimlerinin tek bir kiracıya adanmış atanması. Sunucu birimlerinin sabit veya geçici bölümlendirme yok. Kiracılar arasında tek bir sunucu veya konak birimi paylaşımı yoktur. 
+- **Ağ**: Hana büyük örnek damgasında sanal ağlar aracılığıyla yalıtım.
+- **Depolama**: depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtım yapın ve depolama birimlerini kiracılar arasında yalıtın.
+- **İşlem**: sunucu birimlerinin tek bir kiracıya adanmış atanması. Sunucu birimlerinin sabit veya geçici bölümlendirme yok. Kiracılar arasında tek bir sunucu veya konak birimi paylaşımı yoktur. 
 
 Farklı kiracılar arasında HANA büyük örnek birimlerinin dağıtımları birbirleriyle görülemez. Farklı kiracılarda dağıtılan HANA büyük örnek birimleri, HANA büyük örnek damgası düzeyinde birbirleriyle doğrudan iletişim kuramaz. Yalnızca bir kiracının içindeki HANA büyük örnek birimleri, HANA büyük örnek damgası düzeyinde birbirleriyle iletişim kurabilir.
 

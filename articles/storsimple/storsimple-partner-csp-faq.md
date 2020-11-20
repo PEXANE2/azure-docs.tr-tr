@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36b96581d98465b860b630fe2f9a8aa64cf0f64f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400052"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964941"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>Cloud Solutions sağlayıcı programı için StorSimple: sık sorulan sorular
 
@@ -59,7 +59,7 @@ CSP için StorSimple Sanal dizisi, StorSimple 'ın bugün kullanılabildiği tü
 Birden çok çözüm vardır:
 
 - İş ortakları StorSimple Sanal dizisi 'ni yeniden sattabilir. 
-- İş ortakları, StorSimple ve diğer Azure hizmetleri veya üçüncü taraf yazılımlar çerçevesinde oluşturulmuş çözümler sunabilir. Daha fazla bilgi için, [StorSimple etrafında mevcut](https://aka.ms/storsimple-build-solutions)olabilecek bazı çözümleri gözden geçirin.
+- İş ortakları, StorSimple ve diğer Azure hizmetleri veya üçüncü taraf yazılımlar çerçevesinde oluşturulmuş çözümler sunabilir. Daha fazla bilgi için, [StorSimple etrafında mevcut](./storsimple-disaster-recovery-using-azure-site-recovery.md)olabilecek bazı çözümleri gözden geçirin.
 - Ayrıca, yönetilen Hizmetleri sunarak yeni iş modellerini keşfedebilir.
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>StorSimple CSP iş ortakları için kullanılabilen teşvikleri nedir? Herhangi bir CSP programı teşvikleri için uygun mu?
@@ -86,7 +86,7 @@ Evet. İş ortağı Sales Executive ve son müşteri için müşteri hesap ekibi
 ## <a name="support-for-storsimple-and-csp"></a>StorSimple ve CSP desteği
 
 ### <a name="are-there-any-forums-to-get-additional-support-for-csp-partners-to-deploy-and-manage-storsimple"></a>StorSimple 'ı dağıtmak ve yönetmek üzere CSP iş ortaklarına ek destek almak için herhangi bir forum var mı?
-Bazı sık sorulan soruların yanıtlarını almak için StorSimple ın CSP Forum sitesini ziyaret edebilirsiniz. Önce [Azure danışmanları Yammer grubuna](https://www.yammer.com/azureadvisors) katılmanız gerekir. Sonra grup- **StorSimple Iş ortağı danışmanları**için arama yapın ve ekleyin.
+Bazı sık sorulan soruların yanıtlarını almak için StorSimple ın CSP Forum sitesini ziyaret edebilirsiniz. Önce [Azure danışmanları Yammer grubuna](https://www.yammer.com/azureadvisors) katılmanız gerekir. Sonra grup- **StorSimple Iş ortağı danışmanları** için arama yapın ve ekleyin.
 
 ### <a name="how-does-the-support-work-for-storsimple-for-csp"></a>CSP için StorSimple desteği nasıl çalışır? 
 CSP 'de StorSimple için destek modeli, CSP 'deki diğer Azure hizmetleriyle aynıdır. Daha fazla bilgi için, [CSP Için müşteri desteği](/partner-center/csp-overview)' ne gidin.

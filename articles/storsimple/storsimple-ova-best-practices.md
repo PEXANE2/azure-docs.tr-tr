@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71b018da6b54ebf2b45a261378ea521a397159e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81460656"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964992"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Sanal Dizisi ile ilgili en iyi deneyimler
 
@@ -44,8 +44,8 @@ Sanal diziyi sağlarken aşağıdaki en iyi yöntemleri uygulayın:
 |  | Hyper-V | VMware |
 | --- | --- | --- |
 | **Sanal makine türü** |**2. nesil** Windows Server 2012 veya üzeri ve *. vhdx* görüntüsüyle kullanılacak VM. <br></br> **1. nesil** Windows Server 2008 veya üzeri ile bir *. vhd* görüntüsüyle kullanılacak VM. |*. Vmdk* görüntüsünü kullanırken sanal makine sürüm 8 ' i kullanın. |
-| **Bellek türü** |**Statik bellek**olarak yapılandırın. <br></br> **Dinamik bellek** seçeneğini kullanmayın. | |
-| **Veri diski türü** |Dinamik olarak **genişleyen**sağlama.<br></br> **Sabit boyut** uzun zaman alır. <br></br> **Fark kayıt** seçeneğini kullanmayın. |**Ölçülü kaynak sağlama** seçeneğini kullanın. |
+| **Bellek türü** |**Statik bellek** olarak yapılandırın. <br></br> **Dinamik bellek** seçeneğini kullanmayın. | |
+| **Veri diski türü** |Dinamik olarak **genişleyen** sağlama.<br></br> **Sabit boyut** uzun zaman alır. <br></br> **Fark kayıt** seçeneğini kullanmayın. |**Ölçülü kaynak sağlama** seçeneğini kullanın. |
 | **Veri diski değişikliği** |Genişletme veya küçültme yapılmasına izin verilmez. Bunun bir girişimi, cihazdaki tüm yerel verilerin kaybedilmesine neden olur. |Genişletme veya küçültme yapılmasına izin verilmez. Bunun bir girişimi, cihazdaki tüm yerel verilerin kaybedilmesine neden olur. |
 
 ### <a name="sizing"></a>Boyutlandırma
@@ -119,7 +119,7 @@ Sanal diziniz etki alanına katılmış ise, GPO 'Lara uygulanabilir. Bu GPO 'La
 Bu nedenle şunları yapmanızı öneririz:
 
 * Sanal diziniz Active Directory için kendi kuruluş biriminde (OU) olduğundan emin olun.
-* Sanal dizize hiçbir Grup İlkesi nesnesi (GPO 'Lar) uygulanmadığından emin olun. Sanal dizinin (alt düğüm) üst öğeden hiçbir GPO 'yu otomatik olarak devralmamasından emin olmak için devralmayı engelleyebilirsiniz. Daha fazla bilgi için, [blok devralma](https://technet.microsoft.com/library/cc731076.aspx)bölümüne gidin.
+* Sanal dizize hiçbir Grup İlkesi nesnesi (GPO 'Lar) uygulanmadığından emin olun. Sanal dizinin (alt düğüm) üst öğeden hiçbir GPO 'yu otomatik olarak devralmamasından emin olmak için devralmayı engelleyebilirsiniz. Daha fazla bilgi için, [blok devralma](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731076(v=ws.11))bölümüne gidin.
 
 ### <a name="networking"></a>Ağ
 Sanal diziniz için ağ yapılandırması yerel Web Kullanıcı arabirimi üzerinden yapılır. Sanal bir ağ arabirimi, sanal dizinin sağlandığı hiper yönetici aracılığıyla etkinleştirilir. Sanal ağ arabirimi IP adresini, alt ağını ve ağ geçidini yapılandırmak için [ağ ayarları](storsimple-virtual-array-deploy3-fs-setup.md) sayfasını kullanın.  Ayrıca, cihazınız için birincil ve ikincil DNS sunucusunu, zaman ayarlarını ve isteğe bağlı ara sunucu ayarlarını da yapılandırabilirsiniz. Ağ yapılandırmasının çoğu tek seferlik bir kurulumdır. Sanal diziyi dağıtmadan önce [StorSimple ağ gereksinimlerini](storsimple-ova-system-requirements.md#networking-requirements) gözden geçirin.
@@ -171,7 +171,7 @@ StorSimple, kullanıma bağlı olarak iki birim/paylaşma türünü destekler: y
 
 StorSimple birimlerini/paylaşımlarını yapılandırırken aşağıdaki en iyi yöntemleri uygulamanız önerilir:
 
-* Birim türünü, bir birim oluşturmadan önce dağıtmayı planladığınız iş yüklerine göre belirler. Yerel olarak sabitlenmiş birimler (bir bulut kesintisi da dahil olmak üzere) ve düşük bulut gecikme süreleri gerektiren iş yükleri için yerel olarak sabitlenmiş birimler kullanın. Sanal diziniz üzerinde bir birim oluşturduktan sonra, birim türünü yerel olarak sabitlenmiş veya *tam tersi*olarak değiştiremezsiniz. Örnek olarak, sanal makineleri (VM 'Ler) barındıran SQL iş yüklerini veya iş yüklerini dağıttığınızda yerel olarak sabitlenmiş birimler oluşturun; dosya paylaşma iş yükleri için katmanlı birimleri kullanın.
+* Birim türünü, bir birim oluşturmadan önce dağıtmayı planladığınız iş yüklerine göre belirler. Yerel olarak sabitlenmiş birimler (bir bulut kesintisi da dahil olmak üzere) ve düşük bulut gecikme süreleri gerektiren iş yükleri için yerel olarak sabitlenmiş birimler kullanın. Sanal diziniz üzerinde bir birim oluşturduktan sonra, birim türünü yerel olarak sabitlenmiş veya *tam tersi* olarak değiştiremezsiniz. Örnek olarak, sanal makineleri (VM 'Ler) barındıran SQL iş yüklerini veya iş yüklerini dağıttığınızda yerel olarak sabitlenmiş birimler oluşturun; dosya paylaşma iş yükleri için katmanlı birimleri kullanın.
 
 
 #### <a name="volume-format"></a>Birim biçimi
@@ -235,7 +235,7 @@ Sanal diziniz için yük devretme gerçekleştirirken şunları aklınızda tutu
 * Planlı Yük devretme için, yük devretmeyi başlatmadan önce tüm birimleri/paylaşımları çevrimdışı duruma getirme önerilen en iyi uygulamadır. Öncelikle konakta bulunan birimleri/paylaşımları çevrimdışına almak için işletim sistemine özgü yönergeleri izleyin ve ardından sanal cihazınızda çevrimdışı duruma getirin.
 * Bir dosya sunucusu olağanüstü durum kurtarma (DR) için, paylaşma izinlerinin otomatik olarak çözülmesi için hedef cihazın kaynakla aynı etki alanına katılması önerilir. Bu sürümde yalnızca aynı etki alanındaki bir hedef cihaza yük devretme desteklenir.
 * DR başarıyla tamamlandıktan sonra kaynak cihaz otomatik olarak silinir. Cihaz artık kullanılamıyor olsa da, konak sisteminde sağladığınız sanal makine halen kaynak tüketiyor. Tahakkuk eden ücretleri engellemek için bu sanal makineyi konak sisteminizden silmenizi öneririz.
-* Yük devretme başarısız olsa bile, **verilerin bulutta her zaman güvenli**olduğunu unutmayın. Yük devretmenin başarıyla tamamlanmadığından aşağıdaki üç senaryoyu göz önünde bulundurun:
+* Yük devretme başarısız olsa bile, **verilerin bulutta her zaman güvenli** olduğunu unutmayın. Yük devretmenin başarıyla tamamlanmadığından aşağıdaki üç senaryoyu göz önünde bulundurun:
   
   * Yük devretmenin, DR ön denetimleri gerçekleştirilirken olduğu gibi ilk aşamalarında bir hata oluştu. Bu durumda, hedef cihazınız hala kullanılabilir. Aynı hedef cihazda yük devretmeyi yeniden deneyebilirsiniz.
   * Gerçek yük devretme işlemi sırasında bir hata oluştu. Bu durumda, hedef cihaz kullanılamaz olarak işaretlenir. Başka bir hedef sanal dizi sağlamalısınız ve yapılandırmanız ve bu işlemi yük devretme için kullanmanız gerekir.
@@ -289,4 +289,3 @@ Birden çok sanal dizi, buluta taşılabilecek, daha sonra cihazın performansı
 
 ## <a name="see-also"></a>Ayrıca bkz.
 StorSimple [sanal dizinizi](storsimple-virtual-array-manager-service-administration.md) StorSimple Yöneticisi hizmeti aracılığıyla yönetmeyi öğrenin.
-

@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 347fde86b2a37aa0f82c09c94d6aa2f9e405da9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6abcca9d9888dc8968d7233e7aee6cd76aa215f7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075605"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965757"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell kullanarak DNS Bölgeleri Yönetme
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure klasik CLı](dns-operations-dnszones-cli-nodejs.md)
+> * [Azure klasik CLı](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 Bu makalede, Azure PowerShell kullanarak DNS bölgelerinizi nasıl yöneteceğiniz gösterilmektedir. Ayrıca, platformlar arası [Azure CLI](dns-operations-dnszones-cli.md) veya Azure Portal kullanarak DNS bölgelerinizi yönetebilirsiniz.
@@ -40,13 +40,13 @@ Bu kılavuz özellikle ortak DNS bölgeleriyle ilgilidir. Azure DNS özel bölge
 
 DNS bölgesi, `New-AzureRmDnsZone` cmdlet’i kullanılarak oluşturulur.
 
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *contoso.com* adlı bir DNS bölgesi oluşturur:
+Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *contoso.com* adlı bir DNS bölgesi oluşturur:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-Aşağıdaki örnek, *Proje = demo* ve *env = test*olmak üzere ıkı [Azure Resource Manager etiketleriyle](dns-zones-records.md#tags)bir DNS bölgesinin nasıl oluşturulacağını gösterir:
+Aşağıdaki örnek, *Proje = demo* ve *env = test* olmak üzere ıkı [Azure Resource Manager etiketleriyle](dns-zones-records.md#tags)bir DNS bölgesinin nasıl oluşturulacağını gösterir:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -174,4 +174,3 @@ DNS bölgesindeki [kayıt kümelerini ve kayıtları yönetmeyi](dns-operations-
 [Azure DNS için etki alanınızı nasıl atayacağınızı](dns-domain-delegation.md)öğrenin.
 <br>
 [PowerShell başvuru belgelerini Azure DNS](/powershell/module/azurerm.dns)inceleyin.
-

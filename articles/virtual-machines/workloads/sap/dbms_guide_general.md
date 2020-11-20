@@ -3,16 +3,17 @@ title: SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik k
 description: SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993294"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965298"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -213,7 +214,7 @@ Standart depolama için olası önbellek türleri şunlardır:
 * Okuma
 * Okuma/Yazma
 
-Tutarlı ve belirleyici performans sağlamak için, DBMS ile ilgili veri dosyalarını içeren tüm diskler için standart depolamada önbelleğe alma, dosyaları günlüğe kaydetme ve yineleme ve tablo alanı **yok**olarak ayarlayın. Temel VHD 'nin önbelleğe alınması varsayılan olarak kalabilir.
+Tutarlı ve belirleyici performans sağlamak için, DBMS ile ilgili veri dosyalarını içeren tüm diskler için standart depolamada önbelleğe alma, dosyaları günlüğe kaydetme ve yineleme ve tablo alanı **yok** olarak ayarlayın. Temel VHD 'nin önbelleğe alınması varsayılan olarak kalabilir.
 
 Azure Premium Depolama için aşağıdaki önbelleğe alma seçenekleri mevcuttur:
 
@@ -223,7 +224,7 @@ Azure Premium Depolama için aşağıdaki önbelleğe alma seçenekleri mevcuttu
 * Hiçbiri + yalnızca Azure a serisi VM 'Ler için olan Yazma Hızlandırıcısı
 * Yalnızca Azure d serisi VM 'Ler için olan Yazma Hızlandırıcısı +.
 
-Premium Depolama için SAP veritabanının **veri dosyaları Için okuma önbelleği** kullanmanızı ve **günlük dosyalarının diskleri için önbelleğe alma**seçeneğini seçmenizi öneririz.
+Premium Depolama için SAP veritabanının **veri dosyaları Için okuma önbelleği** kullanmanızı ve **günlük dosyalarının diskleri için önbelleğe alma** seçeneğini seçmenizi öneririz.
 
 D serisi dağıtımlar için, DBMS dağıtımınız için Azure Yazma Hızlandırıcısı kullanmanızı öneririz. Ayrıntılar, kısıtlamalar ve Azure Yazma Hızlandırıcısı dağıtımı için bkz. [Enable yazma Hızlandırıcısı](../../how-to-enable-write-accelerator.md).
 

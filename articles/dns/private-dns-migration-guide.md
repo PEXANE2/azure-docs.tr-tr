@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84699475"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964788"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Eski Azure DNS özel bölgelerini yeni kaynak modeline geçirme
 
@@ -25,7 +25,7 @@ az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
 ```
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure PowerShell 'ın en son sürümünü yüklediğinizden emin olun. Azure PowerShell (az) ve nasıl yükleneceğine ilişkin daha fazla bilgi için ziyaret edin https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
@@ -107,10 +107,10 @@ Bu adım eski DNS bölgelerini silecek ve yalnızca DNS çözümünün beklenen 
 ## <a name="update-your-automation"></a>Otomasyonunuzu güncelleştirme
 
 Şablonlar, PowerShell betikleri veya SDK kullanılarak geliştirilen özel kod dahil Otomasyon kullanıyorsanız, özel DNS bölgeleri için yeni kaynak modelini kullanmak üzere otomasyon hesabınızı güncelleştirmeniz gerekir. Aşağıda, yeni özel DNS CLı/PS/SDK belgelerinin bağlantıları verilmiştir.
-* [Özel bölgeler Azure DNS REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Özel bölgeler CLı Azure DNS](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Özel bölgeler PowerShell Azure DNS](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Özel bölgeler SDK Azure DNS](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Özel bölgeler Azure DNS REST API](/rest/api/dns/privatedns/privatezones)
+* [Özel bölgeler CLı Azure DNS](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Özel bölgeler PowerShell Azure DNS](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Özel bölgeler SDK Azure DNS](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>Daha fazla yardım gerekiyor
 

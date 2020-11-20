@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225555"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964890"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Yönetilen görüntüden paylaşılan görüntü Galerisi görüntüsüne geçiş
 
@@ -56,7 +56,7 @@ Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan 
 
 Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./windows/shared-image-galleries.md#image-definitions).
 
-[New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve genelleştirilmiş bir Windows işletim sistemi içindir. Linux işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `-OsType Linux` . 
+[New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve genelleştirilmiş bir Windows işletim sistemi içindir. Linux işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>Yönetilen görüntüyü al
 
-[Get-Azımage](/powershell/module/az.compute/get-azimage)kullanarak bir kaynak grubunda kullanılabilen görüntülerin listesini görebilirsiniz. Görüntü adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzImage` görüntü nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *MyImage* adlı bir görüntü alır ve onu *$managedImage*değişkenine atar. 
+[Get-Azımage](/powershell/module/az.compute/get-azimage)kullanarak bir kaynak grubunda kullanılabilen görüntülerin listesini görebilirsiniz. Görüntü adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzImage` görüntü nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *MyImage* adlı bir görüntü alır ve onu *$managedImage* değişkenine atar. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -102,7 +102,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $imageDefinition.ResourceGroupName `
    -Location $imageDefinition.Location `
    -TargetRegion $targetRegions  `
-   -Source $managedImage.Id.ToString() `
+   -SourceImageId $managedImage.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-31' `
    -asJob 
 ```

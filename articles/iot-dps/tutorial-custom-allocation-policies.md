@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e20183356655668750cb1450338d4c8af1ee2d8c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951715"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966675"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Öğretici: cihaz sağlama hizmeti (DPS) ile özel ayırma ilkeleri kullanma
 
@@ -46,7 +46,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
-* Windows geliştirme ortamı için, [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yüküne sahip [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 gereklidir. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
+* Windows geliştirme ortamı için, [' C++ Ile masaüstü geliştirme '](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yüküne sahip [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 gereklidir. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
 
 * Linux veya macOS için, [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
@@ -55,7 +55,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 ## <a name="create-the-custom-allocation-function"></a>Özel ayırma işlevini oluşturma
 
-Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksınız. Bu işlev, kayıt KIMLIĞININ **contoso-Toaster**dize önekini içerip içermediğini temel alarak IoT Hub bir cihazın kaydedilip kaydedilmeyeceğine karar verir.
+Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksınız. Bu işlev, kayıt KIMLIĞININ **contoso-Toaster** dize önekini içerip içermediğini temel alarak IoT Hub bir cihazın kaydedilip kaydedilmeyeceğine karar verir.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Giriş sayfanızda **+ kaynak oluştur**' u seçin.
 
@@ -73,10 +73,10 @@ Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksı
 
     **Çalışma zamanı yığını**: açılan listeden **.NET Core** ' u seçin.
 
-    **Bölge**: kaynak grubağınız ile aynı bölgeyi seçin. Bu örnek **Batı ABD**kullanır.
+    **Bölge**: kaynak grubağınız ile aynı bölgeyi seçin. Bu örnek **Batı ABD** kullanır.
 
     > [!NOTE]
-    > Varsayılan olarak, Application Insights etkindir. Bu makale için Application Insights gerekli değildir, ancak özel ayırma ile karşılaştığınız sorunları anlamanıza ve araştırmanıza yardımcı olabilir. İsterseniz, **izleme** sekmesini seçip **Etkinleştir Application Insights**için **Hayır** ' ı seçerek Application Insights devre dışı bırakabilirsiniz.
+    > Varsayılan olarak, Application Insights etkindir. Bu makale için Application Insights gerekli değildir, ancak özel ayırma ile karşılaştığınız sorunları anlamanıza ve araştırmanıza yardımcı olabilir. İsterseniz, **izleme** sekmesini seçip **Etkinleştir Application Insights** için **Hayır** ' ı seçerek Application Insights devre dışı bırakabilirsiniz.
 
     ![Özel ayırma işlevini barındırmak için Azure İşlev Uygulaması oluşturma](./media/tutorial-custom-allocation-policies/create-function-app.png)
 
@@ -194,7 +194,7 @@ Bu bölümde, özel ayırma ilkesini kullanan yeni bir kayıt grubu oluşturacak
 
     ![Simetrik anahtar kanıtlama için özel ayırma kayıt grubu ekleme](./media/tutorial-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı**bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu birincil simetrik anahtar, daha sonra sağlamayı deneyen cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır. 
+4. Kayıt kaydedildikten sonra yeniden açın ve **birincil anahtarı** bir yere getirin. Anahtarların oluşturulması için önce kaydı kaydetmelisiniz. Bu birincil simetrik anahtar, daha sonra sağlamayı deneyen cihazlar için benzersiz cihaz anahtarları oluşturmak üzere kullanılacaktır. 
 
 ## <a name="derive-unique-device-keys"></a>Benzersiz cihaz anahtarları türet
 
@@ -296,7 +296,7 @@ Bu bölüm, Windows tabanlı bir iş istasyonuna yönelir. Bir Linux örneği i�
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    `cmake`C++ derleyicisini bulamazsa, komutunu çalıştırırken derleme hataları alabilirsiniz. Bu durumda, [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)komutunu çalıştırmayı deneyin.
+    `cmake`C++ derleyicisini bulamazsa, komutunu çalıştırırken derleme hataları alabilirsiniz. Bu durumda, [Visual Studio komut isteminde](/dotnet/framework/tools/developer-command-prompt-for-vs)komutunu çalıştırmayı deneyin.
 
     Derleme başarılı olduktan sonra, son birkaç çıkış satırı aşağıdaki çıkışa benzer olacaktır:
 
@@ -347,7 +347,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. `main()`İşlevinde, çağrısını bulun `Prov_Device_Register_Device()` . Bu çağrıdan hemen önce, [`Prov_Device_Set_Provisioning_Payload()`](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) sağlama sırasında Özel BIR JSON yükünü geçirmek için kullanan aşağıdaki kod satırlarını ekleyin. Bu, özel ayırma işlevleriniz hakkında daha fazla bilgi sağlamak için kullanılabilir. Bu, kayıt KIMLIĞINI incelemek yerine cihaz türünü iletmek için de kullanılabilir.
+6. `main()`İşlevinde, çağrısını bulun `Prov_Device_Register_Device()` . Bu çağrıdan hemen önce, [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) sağlama sırasında Özel BIR JSON yükünü geçirmek için kullanan aşağıdaki kod satırlarını ekleyin. Bu, özel ayırma işlevleriniz hakkında daha fazla bilgi sağlamak için kullanılabilir. Bu, kayıt KIMLIĞINI incelemek yerine cihaz türünü iletmek için de kullanılabilir.
 
     ```c
     // An example custom payload
@@ -465,7 +465,7 @@ Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bi
 
 Bu makalede oluşturulan kaynaklarla çalışmaya devam etmeyi planlıyorsanız, bunları bırakabilirsiniz. Kaynakları kullanmaya devam etmeyi planlamıyorsanız, gereksiz ücretlerden kaçınmak için bu makalede oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
-Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group**adlı aynı kaynak grubunda belirtildiği şekilde oluşturduğunuz varsayılır.
+Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group** adlı aynı kaynak grubunda belirtildiği şekilde oluşturduğunuz varsayılır.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. IoT Hub'ı tutmak istediğiniz kaynakların bulunduğu mevcut bir kaynak grubunda oluşturduysanız kaynak grubunu silmek yerine IoT Hub kaynağını silin.

@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9b9e91cda93a986fdaaf0f53d8987544e783a2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272544"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966474"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG akış günlüklerini okuma
 
 PowerShell ile NSG akış günlüğü girdilerini okumayı öğrenin.
 
-NSG akış günlükleri, [Blok Bloblarında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)bir depolama hesabında depolanır. Blok Blobları daha küçük bloklarından oluşur. Her günlük, her saat oluşturulan ayrı bir blok bloğudur. Her saat yeni günlükler oluşturulur. Günlükler en son verilerle birkaç dakikada bir yeni girişlerle güncelleştirilir. Bu makalede, akış günlüklerinin bölümlerini nasıl okuyacağınızı öğreneceksiniz.
+NSG akış günlükleri, [Blok Bloblarında](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)bir depolama hesabında depolanır. Blok Blobları daha küçük bloklarından oluşur. Her günlük, her saat oluşturulan ayrı bir blok bloğudur. Her saat yeni günlükler oluşturulur. Günlükler en son verilerle birkaç dakikada bir yeni girişlerle güncelleştirilir. Bu makalede, akış günlüklerinin bölümlerini nasıl okuyacağınızı öğreneceksiniz.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -37,7 +37,7 @@ Başlamadan önce, hesabınızdaki bir veya daha fazla ağ güvenlik grubunda a�
 
 ## <a name="retrieve-the-block-list"></a>Engelleme listesini alma
 
-Aşağıdaki PowerShell, NSG akış günlüğü blobunu sorgulamak için gereken değişkenleri ayarlar ve [Cloudblockblob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) Blok Blobu içindeki blokları listeler. Komut dosyasını ortamınız için geçerli değerler içerecek şekilde güncelleştirin.
+Aşağıdaki PowerShell, NSG akış günlüğü blobunu sorgulamak için gereken değişkenleri ayarlar ve [Cloudblockblob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) Blok Blobu içindeki blokları listeler. Komut dosyasını ortamınız için geçerli değerler içerecek şekilde güncelleştirin.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -189,6 +189,6 @@ Bu senaryo, tüm günlüğü ayrıştırmanıza gerek kalmadan NSG akış günl�
 
 NSG akış günlüklerini görüntüleme yolları hakkında daha fazla bilgi edinmek için [elastik Stack kullanın](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Grafana kullanın](network-watcher-nsg-grafana.md)ve [gri günlük kullanın](network-watcher-analyze-nsg-flow-logs-graylog.md) . Blob 'ları doğrudan tüketmeye yönelik açık kaynaklı bir Azure Işlevi yaklaşımı ve çeşitli Log Analytics tüketicilerine yayma, burada bulunabilir: [Azure Ağ İzleyicisi NSG akış günlükleri Bağlayıcısı](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Trafik akışlarınızla ilgili Öngörüler elde etmek için [Azure Trafik Analizi](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) kullanabilirsiniz. Trafik Analizi trafik akışınızı sorgulanabilir hale getirmek için [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) kullanır.
+Trafik akışlarınızla ilgili Öngörüler elde etmek için [Azure Trafik Analizi](./traffic-analytics.md) kullanabilirsiniz. Trafik Analizi trafik akışınızı sorgulanabilir hale getirmek için [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) kullanır.
 
 Depolama Blobları hakkında daha fazla bilgi edinmek için ziyaret edin: [Azure Işlevleri BLOB depolama bağlamaları](../azure-functions/functions-bindings-storage-blob.md)

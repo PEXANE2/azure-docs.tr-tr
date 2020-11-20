@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 59656db2bbb8a6898ae08a168dbbc7e0a6a82aec
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d9cffcadcb95b6c8c61205d458610f402fa7286d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044726"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964601"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları için C IoT Edge modülü geliştirme
 
@@ -33,17 +33,15 @@ Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından o
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Çözüm kapsamı
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide, **Visual Studio 2019** kullanarak **C** 'de bir modülün nasıl geliştirilmesi ve bir **Windows cihazına**dağıtılması gösterilmektedir. Linux cihazları için modüller geliştiriyorsanız bunun yerine [Linux cihazları Için C IoT Edge modülü geliştirme](tutorial-c-module.md) bölümüne gidin.
+Bu öğreticide, **Visual Studio 2019** kullanarak **C** 'de bir modülün nasıl geliştirilmesi ve bir **Windows cihazına** dağıtılması gösterilmektedir. Linux cihazları için modüller geliştiriyorsanız bunun yerine [Linux cihazları Için C IoT Edge modülü geliştirme](tutorial-c-module.md) bölümüne gidin.
 
 Windows cihazlarına C modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloyu kullanın:
 
 | C | Visual Studio Code | Visual Studio 2017/2019 |
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![Visual Studio 'da WinAMD64 için C modülleri geliştirme](./media/tutorial-c-module/green-check.png) |
-
-## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Windows kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Windows cihazları için IoT Edge modüller](tutorial-develop-for-windows.md)geliştirme. Bu Öğreticiyi tamamladıktan sonra, aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -79,7 +77,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C çözüm şablonu olu
 
    ![Yeni bir Azure IoT Edge projesi oluştur](./media/tutorial-c-module-windows/new-project.png)
 
-3. Projeyi ve çözümü **CTutorialApp**gibi açıklayıcı bir şekilde yeniden adlandırın. Projeyi oluşturmak için **Oluştur** ' a tıklayın.
+3. Projeyi ve çözümü **CTutorialApp** gibi açıklayıcı bir şekilde yeniden adlandırın. Projeyi oluşturmak için **Oluştur** ' a tıklayın.
 
    ![Yeni bir Azure IoT Edge projesi yapılandırma](./media/tutorial-c-module-windows/configure-project.png)
 
@@ -87,7 +85,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C çözüm şablonu olu
 
    | Alan | Değer |
    | ----- | ----- |
-   | Şablon seçin | **C modülünü**seçin. |
+   | Şablon seçin | **C modülünü** seçin. |
    | Modül proje adı | Modülünüze **CModule** adını verin. |
    | Docker görüntü deposu | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusunu Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu \<registry name\> . azurecr.io/cmodule gibi görünüyor. |
 
@@ -140,7 +138,7 @@ Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir
 
    4. **CMakeLists.txt** dosyasını kaydedin.
 
-   5. **Cmodule**  >  **Main. c**öğesini açın. Include deyimleri listesinin en altında, JSON desteği eklemek için yeni bir tane ekleyin `parson.h` :
+   5. **Cmodule**  >  **Main. c** öğesini açın. Include deyimleri listesinin en altında, JSON desteği eklemek için yeni bir tane ekleyin `parson.h` :
 
       ```c
       #include "parson.h"
@@ -296,7 +294,7 @@ Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir
 
 7. main.c dosyasını kaydedin.
 
-8. deployment.template.jsdosya ** üzerinde** açın.
+8. deployment.template.jsdosya **üzerinde** açın.
 
 9. Dağıtım bildirimine CModule modül ikizini ekleyin. Aşağıdaki JSON içeriğini `moduleContent` bölümünün en altına, `$edgeHub` modül ikizinin arkasına ekleyin:
 
@@ -334,9 +332,9 @@ Kapsayıcı görüntünüzü kayıt defterinde depolanacak şekilde gönderebilm
 
 Geliştirme makinenizin artık kapsayıcı Kayıt defterinize erişimi vardır ve IoT Edge cihazlarınız da çok fazla olur. Proje kodunu bir kapsayıcı görüntüsüne dönüştürmek zaman.
 
-1. Visual Studio Çözüm Gezgini ' nde, derlemek istediğiniz proje adına sağ tıklayın. Varsayılan ad **AzureIotEdgeApp1**' dir. Bu öğreticide, **CTutorialApp** adı seçilmiştir. Bir Windows modülü oluştururken, uzantının **Windows. amd64**olması gerekir.
+1. Visual Studio Çözüm Gezgini ' nde, derlemek istediğiniz proje adına sağ tıklayın. Varsayılan ad **AzureIotEdgeApp1**' dir. Bu öğreticide, **CTutorialApp** adı seçilmiştir. Bir Windows modülü oluştururken, uzantının **Windows. amd64** olması gerekir.
 
-2. **Derleme ve gönderme IoT Edge modüllerini**seçin.
+2. **Derleme ve gönderme IoT Edge modüllerini** seçin.
 
    Build ve push komutu üç işlem başlatır. İlk olarak, **yapılandırma** adlı çözümde, dağıtım şablonunda bilgi ve diğer çözüm dosyalarını içeren tam dağıtım bildirimini tutan yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
 

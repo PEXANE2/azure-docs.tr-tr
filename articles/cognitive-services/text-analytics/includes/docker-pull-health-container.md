@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 519625f6468372ec7ace523dae7648212f4f3203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b2c9548f9c1289ae0abd61a72d7146a3bbca29
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779580"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965176"
 ---
-Kapsayıcıya erişim istemek için bilişsel [Hizmetler kapsayıcıları istek formunu](https://aka.ms/csgate) doldurun ve iletin.
+Sistem durumu genel önizlemesi için Metin Analizi erişim istemek için bilişsel [Hizmetler istek formunu](https://aka.ms/csgate) doldurun ve iletin.  Bu uygulama hem kapsayıcı hem de barındırılan Web API genel önizlemesi için geçerlidir.
 Form, siz, şirketiniz ve kapsayıcısını kullanacağınız kullanıcı senaryosu hakkında bilgi ister. Formu gönderdikten sonra, Azure bilişsel hizmetler ekibi, özel kapsayıcı kayıt defterine erişim ölçütlerini karşıladığınızdan emin olmak için bunu inceler.
 
 > [!IMPORTANT]
@@ -25,7 +25,7 @@ Form, siz, şirketiniz ve kapsayıcısını kullanacağınız kullanıcı senary
 > * Kapsayıcıyı çalıştırmak için kullandığınız Azure kaynağının, onaylanan Azure abonelik KIMLIĞIYLE oluşturulmuş olması gerekir. 
 > * Microsoft 'tan uygulamanızın durumuyla ilgili güncelleştirmeler için e-postanızı (hem gelen kutusu hem de önemsiz klasörler) denetleyin.
 
-Bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt defterimize bağlanmak üzere ekleme e-postanıza girilen kimlik bilgileriyle Docker Login komutunu kullanın.
+Onaylandığında, özel kapsayıcı kayıt defterine erişmek için kimlik bilgilerini içeren bir e-posta gönderilir.  Bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt defterimize bağlanmak üzere ekleme e-postanıza girilen kimlik bilgileriyle Docker Login komutunu kullanın.
 
 
 ```Docker

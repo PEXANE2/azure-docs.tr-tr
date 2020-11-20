@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514283"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966233"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple cihazınız için Web proxy 'yi yapılandırma
 
@@ -59,21 +59,21 @@ Web proxy yapılandırması adımlarında size rehberlik etmek için Kurulum Sih
 
 #### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>Kurulum Sihirbazı aracılığıyla Web proxy 'yi yapılandırmak için
 
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın** ve **Cihaz Yöneticisi parolasını**belirtin. Bir Kurulum Sihirbazı oturumu başlatmak için aşağıdaki komutu yazın:
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın** ve **Cihaz Yöneticisi parolasını** belirtin. Bir Kurulum Sihirbazı oturumu başlatmak için aşağıdaki komutu yazın:
    
     `Invoke-HcsSetupWizard`
-2. Bu, cihaz kaydı için Kurulum Sihirbazı 'nı ilk kez kullandıysanız, Web proxy yapılandırmasına ulaşana kadar gerekli tüm ağ ayarlarını yapılandırmanız gerekir. Cihazınız zaten kaydedilmişse, Web proxy yapılandırmasına ulaşana kadar yapılandırılmış tüm ağ ayarlarını kabul edin. Kurulum sihirbazında, Web proxy ayarlarını yapılandırmak isteyip istemediğiniz sorulduğunda **Evet**yazın.
-3. **Web proxy URL 'si**için, Web ara sunucunuzun IP adresini veya tam etki alanı adını (FQDN) ve cihazınızın buluttan iletişim kurarken kullanmasını istediğiniz TCP bağlantı noktası numarasını belirtin. Şu biçimi kullanın:
+2. Bu, cihaz kaydı için Kurulum Sihirbazı 'nı ilk kez kullandıysanız, Web proxy yapılandırmasına ulaşana kadar gerekli tüm ağ ayarlarını yapılandırmanız gerekir. Cihazınız zaten kaydedilmişse, Web proxy yapılandırmasına ulaşana kadar yapılandırılmış tüm ağ ayarlarını kabul edin. Kurulum sihirbazında, Web proxy ayarlarını yapılandırmak isteyip istemediğiniz sorulduğunda **Evet** yazın.
+3. **Web proxy URL 'si** için, Web ara sunucunuzun IP adresini veya tam etki alanı adını (FQDN) ve cihazınızın buluttan iletişim kurarken kullanmasını istediğiniz TCP bağlantı noktası numarasını belirtin. Şu biçimi kullanın:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Varsayılan olarak, 8080 numaralı TCP bağlantı noktası belirtilir.
-4. Kimlik doğrulama türünü **NTLM**, **temel**veya **none**olarak seçin. Temel, proxy sunucusu yapılandırması için en az güvenli kimlik doğrulamadır. NT LAN Manager (NTLM), bir kullanıcının kimliğini doğrulamak için üç yönlü bir mesajlaşma sistemi (bazen ek bütünlük gerekliyse dördü) kullanan yüksek düzeyde güvenli ve karmaşık bir kimlik doğrulama protokolüdür. Varsayılan kimlik doğrulaması NTLM 'dir. Daha fazla bilgi için bkz. [temel](https://hc.apache.org/httpclient-3.x/authentication.html) ve [NTLM kimlik doğrulaması](https://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Kimlik doğrulama türünü **NTLM**, **temel** veya **none** olarak seçin. Temel, proxy sunucusu yapılandırması için en az güvenli kimlik doğrulamadır. NT LAN Manager (NTLM), bir kullanıcının kimliğini doğrulamak için üç yönlü bir mesajlaşma sistemi (bazen ek bütünlük gerekliyse dördü) kullanan yüksek düzeyde güvenli ve karmaşık bir kimlik doğrulama protokolüdür. Varsayılan kimlik doğrulaması NTLM 'dir. Daha fazla bilgi için bkz. [temel](https://hc.apache.org/httpclient-3.x/authentication.html) ve [NTLM kimlik doğrulaması](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **StorSimple Aygıt Yöneticisi hizmetinde, cihazın ara sunucu yapılandırmasında temel veya NTLM kimlik doğrulaması etkinleştirildiğinde cihaz izleme grafikleri çalışmaz. İzleme grafiklerinin çalışması için, kimlik doğrulamasının NONE olarak ayarlandığından emin olmanız gerekir.**
   
-5. Kimlik doğrulamasını etkinleştirdiyseniz, bir **Web Proxy Kullanıcı adı** ve bir **Web proxy parolası**sağlayın. Parolayı da onaylamanız gerekir.
+5. Kimlik doğrulamasını etkinleştirdiyseniz, bir **Web Proxy Kullanıcı adı** ve bir **Web proxy parolası** sağlayın. Parolayı da onaylamanız gerekir.
    
     ![StorSimple Device1 'Ta Web proxy 'Yi yapılandırma](./media/storsimple-configure-web-proxy/IC751830.png)
 
@@ -86,7 +86,7 @@ Web proxy artık etkin. [Web proxy 'Yi etkinleştir](#enable-web-proxy) adımın
 Web proxy ayarlarını yapılandırmanın alternatif bir yolu StorSimple için Windows PowerShell cmdlet 'lerini kullanmaktır. Web proxy 'yi yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>Cmdlet 'ler aracılığıyla Web proxy 'yi yapılandırmak için
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1` .
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını** belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
@@ -108,7 +108,7 @@ Web proxy varsayılan olarak devre dışıdır. StorSimple cihazınızda Web pro
 Cihazınızda Web proxy 'sini etkinleştirmek için StorSimple için Windows PowerShell aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-enable-web-proxy"></a>Web proxy 'yi etkinleştirmek için
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1` .
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını** belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    
     `Enable-HcsWebProxy`
@@ -122,7 +122,7 @@ Cihazınızda Web proxy 'sini etkinleştirmek için StorSimple için Windows Pow
 Web proxy ayarları Windows PowerShell arabirimi aracılığıyla yapılandırılır ve Portal içinden değiştirilemez. Ancak, bu yapılandırılan ayarları portalda görüntüleyebilirsiniz. Web proxy 'yi görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-view-web-proxy-settings"></a>Web proxy ayarlarını görüntülemek için
-1. **StorSimple aygıt yöneticisi hizmeti > cihazlara**gidin. Bir cihazı seçip tıklatın ve ardından **cihaz ayarları > ağ**' a gidin.
+1. **StorSimple aygıt yöneticisi hizmeti > cihazlara** gidin. Bir cihazı seçip tıklatın ve ardından **cihaz ayarları > ağ**' a gidin.
 
     ![Ağ seçeneğine tıklayın](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
@@ -154,6 +154,5 @@ Web proxy ayarları yanlış yapılandırılmışsa, StorSimple için Windows Po
 > * Web proxy ayarlarıyla ilgili hatalar, StorSimple Aygıt Yöneticisi hizmetinizde Azure portal gösterilmez. Yapılandırma tamamlandıktan sonra Web proxy ile ilgili bir sorun varsa, cihaz durumu klasik portalda **çevrimdışı** olarak değişir. |
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* Cihazınızı dağıtma veya Web proxy ayarlarını yapılandırma sırasında herhangi bir sorunla karşılaşırsanız, [StorSimple cihaz dağıtımınızda sorun giderme](storsimple-troubleshoot-deployment.md)bölümüne bakın.
+* Cihazınızı dağıtma veya Web proxy ayarlarını yapılandırma sırasında herhangi bir sorunla karşılaşırsanız, [StorSimple cihaz dağıtımınızda sorun giderme](./storsimple-8000-troubleshoot-deployment.md)bölümüne bakın.
 * StorSimple Aygıt Yöneticisi hizmetini kullanmayı öğrenmek için, StorSimple cihazınızı yönetmek için StorSimple [Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)bölümüne gidin.
-

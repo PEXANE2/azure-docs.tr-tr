@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 30a5f92e0092d3e20db25b519fec46e6018dd543
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6d98f1a1dfb575f4af8b666d173f9354b5eeac6b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168027"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966267"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple üzerinde barındırılan dosya paylaşımları için Azure Site Recovery kullanan otomatik olağanüstü durum kurtarma çözümü
 
@@ -37,14 +37,14 @@ Bu belgede, StorSimple depolamada barındırılan dosya paylaşımlarınız içi
 ## <a name="supported-azure-site-recovery-deployment-options"></a>Desteklenen Azure Site Recovery dağıtım seçenekleri
 Müşteriler, Hyper-V veya VMware üzerinde çalışan fiziksel sunucu veya sanal makine (VM) olarak dosya sunucuları dağıtabilir ve ardından StorSimple depolama alanından alınan birimlerden dosya paylaşımları oluşturabilir. Azure Site Recovery, hem fiziksel hem de sanal dağıtımları ikincil bir siteye veya Azure 'a koruyabilir. Bu belge, Hyper-V ' d a ve StorSimple depolamada dosya paylaşımları ile barındırılan bir dosya sunucusu VM 'si için kurtarma sitesi olarak Azure ile bir DR çözümünün ayrıntılarını içermektedir. Dosya sunucusu VM 'sinin bir VMware VM 'de olduğu diğer senaryolar veya fiziksel makine benzer şekilde uygulanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 StorSimple depolamada barındırılan dosya paylaşımları için Azure Site Recovery kullanan tek tıklamayla oluşan bir olağanüstü durum kurtarma çözümünün uygulanması aşağıdaki önkoşullara sahiptir:
 
    - Hyper-V veya VMware üzerinde barındırılan şirket içi Windows Server 2012 R2 dosya sunucusu VM 'si veya fiziksel makine
    - Azure StorSimple Manager 'a kayıtlı, şirket içi StorSimple depolama cihazı
    - StorSimple Cloud Appliance Azure StorSimple Manager 'da oluşturuldu. Gereç bir kapatma durumunda tutulabilir.
    - StorSimple depolama cihazında yapılandırılan birimlerde barındırılan dosya paylaşımları
-   - Microsoft Azure abonelikte oluşturulan [Azure Site Recovery Services Kasası](../site-recovery/site-recovery-vmm-to-vmm.md)
+   - Microsoft Azure abonelikte oluşturulan [Azure Site Recovery Services Kasası](/azure/storsimple/hyper-v-vmm-disaster-recovery)
 
 Ayrıca, Azure kurtarma siteniz ise, Azure VM 'Leri ve Azure Site Recovery hizmetleriyle uyumlu olduklarından emin olmak için VM 'lerde [Azure sanal makine hazırlığı değerlendirmesi aracı](https://azure.microsoft.com/downloads/vm-readiness-assessment/) 'nı çalıştırın.
 
@@ -73,11 +73,11 @@ DR sitesinde kullanılabilir bir etki alanı denetleyicisi yaparken yönergeler 
 Bu adım, şirket içi dosya sunucusu ortamını hazırlamanızı, bir Azure Site Recovery Kasası oluşturup hazırlamanızı ve VM 'nin dosya korumasını etkinleştirmenizi gerektirir.
 
 #### <a name="to-prepare-the-on-premises-file-server-environment"></a>Şirket içi dosya sunucusu ortamını hazırlamak için
-1. **Kullanıcı hesabı denetimini** **hiçbir şekilde uyarma**olarak ayarlayın. Azure Site Recovery tarafından yük devretmeden sonra Iscsı hedeflerini bağlamak için Azure Otomasyonu betikleri kullanabilmeniz için bu gereklidir.
+1. **Kullanıcı hesabı denetimini** **hiçbir şekilde uyarma** olarak ayarlayın. Azure Site Recovery tarafından yük devretmeden sonra Iscsı hedeflerini bağlamak için Azure Otomasyonu betikleri kullanabilmeniz için bu gereklidir.
    
    1. Windows tuşu + Q tuşlarına basın ve **UAC**'yi arayın.  
    1. **Kullanıcı hesabı denetim ayarlarını değiştir**' i seçin.  
-   1. Çubuğu, **hiçbir şekilde uyarma**öğesine doğru sürükleyin.  
+   1. Çubuğu, **hiçbir şekilde uyarma** öğesine doğru sürükleyin.  
    1. **Tamam** ' a tıklayın ve istendiğinde **Evet** ' i seçin.  
    
       ![Kullanıcı hesabı denetim ayarları](./media/storsimple-disaster-recovery-using-azure-site-recovery/image1.png) 
@@ -94,9 +94,9 @@ Bu adım, şirket içi dosya sunucusu ortamını hazırlamanızı, bir Azure Sit
 1. **İleri**’ye tıklayın.
 1. **Sözleşme koşullarını** kabul edin ve ardından **İleri**' ye tıklayın.
 1. **Finish (Son)** düğmesine tıklayın.
-1. StorSimple Storage 'dan alınan birimleri kullanarak dosya paylaşımları oluşturun. Daha fazla bilgi için bkz. [birimleri yönetmek Için StorSimple Yöneticisi hizmetini kullanma](storsimple-manage-volumes.md).
+1. StorSimple Storage 'dan alınan birimleri kullanarak dosya paylaşımları oluşturun. Daha fazla bilgi için bkz. [birimleri yönetmek Için StorSimple Yöneticisi hizmetini kullanma](./index.yml).
    
-   1. Şirket içi sanal makinelerinize Windows tuşu + Q tuşlarına basın ve **iSCSI**araması yapın.
+   1. Şirket içi sanal makinelerinize Windows tuşu + Q tuşlarına basın ve **iSCSI** araması yapın.
    1. **İSCSI başlatıcısı**' nı seçin.
    1. **Yapılandırma** sekmesini seçin ve Başlatıcı adını kopyalayın.
    1. [Azure Portal](https://portal.azure.com/)oturum açın.
@@ -104,7 +104,7 @@ Bu adım, şirket içi dosya sunucusu ortamını hazırlamanızı, bir Azure Sit
    1. Birim kapsayıcısı oluşturun ve sonra birimleri oluşturun. (Bu birimler dosya sunucusu VM 'lerinde dosya paylaşımlardır). Birimleri oluştururken Başlatıcı adını kopyalayın ve Access Control kayıtları için uygun bir ad verin.
    1. **Yapılandır** sekmesini seçin ve cihazın IP adresini göz önünde edin.
    1. Şirket içi sanal makinelerunuzda **iSCSI başlatıcısına** tekrar gidin ve Hızlı Bağlan bölümüne IP 'yi girin. **Hızlı Bağlan** ' a tıklayın (cihaz artık bağlı olmalıdır).
-   1. Azure portal açın ve **birimler ve aygıtlar** sekmesini seçin. **Otomatik Yapılandır**öğesine tıklayın. Oluşturduğunuz birimin görünmesi gerekir.
+   1. Azure portal açın ve **birimler ve aygıtlar** sekmesini seçin. **Otomatik Yapılandır** öğesine tıklayın. Oluşturduğunuz birimin görünmesi gerekir.
    1. Portalda, **cihazlar** sekmesini seçin ve ardından **Yeni bir sanal cihaz oluştur** ' u seçin. (Bu sanal cihaz, bir yük devretme gerçekleşirse kullanılır). Bu yeni sanal cihaz, ek maliyetlerin önüne geçmek için çevrimdışı durumda tutulabilir. Sanal cihazı çevrimdışına almak için portaldaki **sanal makineler** bölümüne gidin ve kapatın.
    1. Şirket içi VM 'lere geri dönün ve disk yönetimi 'ni açın (Windows tuşu + X tuşlarına basın ve **disk yönetimi**'ni seçin).
    1. Bazı ek diskler (oluşturduğunuz birim sayısına bağlı olarak) fark edeceksiniz. İlk öğesine sağ tıklayın, **Diski Başlat**' ı seçin ve **Tamam**' ı seçin. **Ayrılmamış** bölümüne sağ tıklayın, **Yeni basit birim**' i seçin, bir sürücü harfi atayın ve Sihirbazı sona erdirin.
@@ -112,19 +112,19 @@ Bu adım, şirket içi dosya sunucusu ortamını hazırlamanızı, bir Azure Sit
    1. Bu birimlerde dosya paylaşımları oluşturmak için dosya ve Depolama Hizmetleri rolünü kullanın.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Azure Site Recovery kasasını oluşturmak ve hazırlamak için
-Dosya sunucusu VM 'sini korumadan önce Azure Site Recovery kullanmaya başlamak için [Azure Site Recovery belgelerine](../site-recovery/site-recovery-hyper-v-site-to-azure.md) bakın.
+Dosya sunucusu VM 'sini korumadan önce Azure Site Recovery kullanmaya başlamak için [Azure Site Recovery belgelerine](/azure/storsimple/hyper-v-azure-tutorial) bakın.
 
 #### <a name="to-enable-protection"></a>Korumayı etkinleştirmek için
 1. Azure Site Recovery üzerinden korumak istediğiniz şirket içi VM 'lerden Iscsı hedefinin bağlantısını kesin:
    
-   1. Windows tuşu + Q tuşlarına basın ve **iSCSI**araması yapın.
+   1. Windows tuşu + Q tuşlarına basın ve **iSCSI** araması yapın.
    1. **İSCSI başlatıcısı ayarla**' yı seçin.
    1. Daha önce bağladığınız StorSimple cihazını kesin. Alternatif olarak, korumayı etkinleştirirken dosya sunucusunu birkaç dakika boyunca kapatabilirsiniz.
       
    > [!NOTE]
    > Bu, dosya paylaşımlarının geçici olarak kullanılamamasına neden olur.
    
-1. Azure Site Recovery portalından dosya sunucusu VM 'sinin [sanal makine korumasını etkinleştirin](../site-recovery/site-recovery-hyper-v-site-to-azure.md) .
+1. Azure Site Recovery portalından dosya sunucusu VM 'sinin [sanal makine korumasını etkinleştirin](/azure/storsimple/hyper-v-azure-tutorial) .
 1. İlk eşitleme başladığında hedefi yeniden yeniden bağlayabilirsiniz. Iscsı başlatıcısına gidin, StorSimple cihazını seçin ve **Bağlan**' a tıklayın.
 1. Eşitleme tamamlandığında ve VM 'nin durumu **korunduğunda**, VM 'yi seçin, **Yapılandır** sekmesini seçin ve VM 'nin ağını uygun şekilde güncelleştirin (Bu, yük devredilen VM (ler) ın bir parçası olacağı ağ olur). Ağ görünmüyorsa, eşitlemenin hala devam ettiği anlamına gelir.
 
@@ -283,7 +283,7 @@ Sınama yük devretmesi sırasında Active Directory özgü hususlar için [ACTI
    ![Yük devretmeyi Başlat](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
 1. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. Özelliklerini açmak için VM 'ye tıklayarak veya kasa adı işlerinde **Test yük devretmesi işi** &gt; **Jobs** &gt; **Site Recovery işleri**' ne tıklayarak ilerlemeyi izleyebilirsiniz.
-1. Yük devretme tamamlandıktan sonra, çoğaltma Azure makinesi 'nin Azure portal &gt; **sanal makinelerde**göründüğünü de görmeniz gerekir. Doğrulamalarınızı gerçekleştirebilirsiniz.
+1. Yük devretme tamamlandıktan sonra, çoğaltma Azure makinesi 'nin Azure portal &gt; **sanal makinelerde** göründüğünü de görmeniz gerekir. Doğrulamalarınızı gerçekleştirebilirsiniz.
 1. Doğrulamalar yapıldıktan sonra, **doğrulamalar tamamlandı**' ya tıklayın. Bu, StorSimple birimlerini kaldıracak ve StorSimple Cloud Appliance kapatacaktır.
 1. İşiniz bittiğinde kurtarma planında **Yük devretme testini temizle** ' ye tıklayın. Notlar ' da, test yük devretmesi ile ilişkili tüm gözlemlerinizi kaydeder ve kaydeder. Bu işlem, yük devretme testi sırasında oluşturulan sanal makineyi silecektir.
 

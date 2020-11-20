@@ -7,22 +7,22 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696840"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965740"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure portal kullanarak DNS kayıtlarını ve kayıt kümelerini yönetme
 
 Bu makalede, Azure portal kullanarak DNS bölgeniz için kayıt kümelerini ve kayıtları nasıl yöneteceğiniz gösterilmektedir.
 
-DNS kayıt kümeleri ve bireysel DNS kayıtları arasındaki farkı anlamak önemlidir. Kayıt kümesi, aynı ada sahip ve aynı türde olan bir bölgedeki kayıt koleksiyonudur. Daha fazla bilgi için, bkz. [Azure Portal kullanarak DNS kayıt kümeleri ve kayıtları oluşturma](dns-getstarted-create-recordset-portal.md).
+DNS kayıt kümeleri ve bireysel DNS kayıtları arasındaki farkı anlamak önemlidir. Kayıt kümesi, aynı ada sahip ve aynı türde olan bir bölgedeki kayıt koleksiyonudur. Daha fazla bilgi için, bkz. [Azure Portal kullanarak DNS kayıt kümeleri ve kayıtları oluşturma](./dns-getstarted-portal.md).
 
 ## <a name="create-a-new-record-set-and-record"></a>Yeni bir kayıt kümesi ve kayıt oluştur
 
-Azure portal bir kayıt kümesi oluşturmak için, bkz. [Azure Portal kullanarak DNS kayıtları oluşturma](dns-getstarted-create-recordset-portal.md).
+Azure portal bir kayıt kümesi oluşturmak için, bkz. [Azure Portal kullanarak DNS kayıtları oluşturma](./dns-getstarted-portal.md).
 
 ## <a name="view-a-record-set"></a>Kayıt kümesini görüntüleme
 

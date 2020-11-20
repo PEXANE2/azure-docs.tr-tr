@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e5f2a519564716d426c50bb9cc8dd245774321e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84724937"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966505"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLı kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
 > [!div class="op_single_selector"]
-> - [Azure portalındaki](network-watcher-packet-capture-manage-portal.md)
+> - [Azure portalı](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -46,7 +46,7 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 - Paket yakalama uzantısı etkin olan bir sanal makine.
 
 > [!IMPORTANT]
-> Paket yakalama, sanal makinede bir aracının çalışıyor olmasını gerektirir. Aracı bir uzantı olarak yüklenir. VM uzantıları hakkında yönergeler için, [sanal makine uzantıları ve özellikleri](../virtual-machines/windows/extensions-features.md)' ni ziyaret edin.
+> Paket yakalama, sanal makinede bir aracının çalışıyor olmasını gerektirir. Aracı bir uzantı olarak yüklenir. VM uzantıları hakkında yönergeler için, [sanal makine uzantıları ve özellikleri](../virtual-machines/extensions/features-windows.md)' ni ziyaret edin.
 
 ## <a name="install-vm-extension"></a>VM uzantıları yükleme
 
@@ -192,13 +192,13 @@ Aşağıdaki örnek, komutunun çıktıdır `az network watcher packet-capture s
   "additionalProperties": {
     "status": "Succeeded"
   },
-  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
 cketCaptures/packetCaptureName",
-  "name": "packetCaptureName",
+  "name": "packetCaptureName",
   "packetCaptureError": [],
-  "packetCaptureStatus": "Stopped",
-  "stopReason": "TimeExceeded"
+  "packetCaptureStatus": "Stopped",
+  "stopReason": "TimeExceeded"
 }
 ```
 

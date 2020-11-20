@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 119436cbe03e619b0d09df30ab2c5dc34126b0ce
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 20d44fd3150f9da31e9c242017e597d4f46e4d5d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629402"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963938"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Bir mantıksal uygulamadan Machine Learning işlem hattının çalıştırılmasını tetikleme
 
@@ -49,7 +49,7 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
     > [!div class="mx-imgBorder"]
     > ![Boş şablon](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. Tasarımcıda **BLOB** ' u arayın. **Bir blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** tetikleyicisi ' ni seçin ve bu tetikleyiciyi mantıksal uygulamanıza ekleyin.
+1. Tasarımcıda **BLOB**' u arayın. **Bir blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** tetikleyicisi ' ni seçin ve bu tetikleyiciyi mantıksal uygulamanıza ekleyin.
     > [!div class="mx-imgBorder"]
     > ![Tetikleyici ekleme](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -60,7 +60,7 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
     > [!NOTE]
     > Bu tetikleyici seçili kapsayıcıyı izler, ancak alt klasörleri izlemez.
 
-1. Yeni veya değiştirilmiş bir blob algılandığında çalışacak bir HTTP eylemi ekleyin. **+ Yeni adım** ' ı seçin ve ardından http eylemini arayın ve seçin.
+1. Yeni veya değiştirilmiş bir blob algılandığında çalışacak bir HTTP eylemi ekleyin. **+ Yeni adım**' ı seçin ve ardından http eylemini arayın ve seçin.
 
   > [!div class="mx-imgBorder"]
   > ![HTTP eylemi ara](media/how-to-trigger-published-pipeline/search-http.png)
@@ -96,11 +96,11 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
 1. **Kaydet** ' i seçin ve zamanlamanız artık hazırdır.
 
 > [!IMPORTANT]
-> İşlem hattınızı erişimi yönetmek için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#common-scenarios).
+> İşlem hattınızı erişimi yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#common-scenarios).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 > [!div class="nextstepaction"]
 > [Batch Puanlama için Azure Machine Learning işlem hatları kullanma](tutorial-pipeline-batch-scoring-classification.md)

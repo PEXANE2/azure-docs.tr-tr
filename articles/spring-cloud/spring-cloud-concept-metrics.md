@@ -7,13 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094067"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965060"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -69,7 +68,7 @@ Zaman aralığı, son 30 dakika ile son 30 güne veya özel bir zaman aralığı
 
 ![Ölçüm değişikliği](media/metrics/metrics-6.png)
 
-Varsayılan görünüm, bir Azure yay bulut hizmeti 'nin applicationın ölçümlerini birlikte içerir. Bir uygulama veya örneğin ölçümleri, ekranda filtrelenebilir.  **Filtre Ekle**' ye tıklayın, özelliği **uygulama**olarak ayarlayın ve **değerler** metin kutusunda izlemek istediğiniz hedef uygulamayı seçin. 
+Varsayılan görünüm, bir Azure yay bulut hizmeti 'nin applicationın ölçümlerini birlikte içerir. Bir uygulama veya örneğin ölçümleri, ekranda filtrelenebilir.  **Filtre Ekle**' ye tıklayın, özelliği **uygulama** olarak ayarlayın ve **değerler** metin kutusunda izlemek istediğiniz hedef uygulamayı seçin. 
 
 İki tür filtre (Özellikler) kullanabilirsiniz:
 * Uygulama: uygulama adına göre filtrele
@@ -82,7 +81,7 @@ Ayrıca, bir uygulama için birden çok satır çizecek **bölme Uygula** seçen
 ![Ölçüm bölme](media/metrics/metrics-8.png)
 
 >[!TIP]
-> Ölçümler sayfasında kendi grafiklerinizi oluşturabilir ve bunları **panonuza**sabitleyebilirsiniz. Grafiğinizi adlandırarak başlayın.  Sonra **sağ üst köşedeki panoya sabitle**' yi seçin. Artık uygulamanızı Portal **panonuzda**denetleyebilirsiniz.
+> Ölçümler sayfasında kendi grafiklerinizi oluşturabilir ve bunları **panonuza** sabitleyebilirsiniz. Grafiğinizi adlandırarak başlayın.  Sonra **sağ üst köşedeki panoya sabitle**' yi seçin. Artık uygulamanızı Portal **panonuzda** denetleyebilirsiniz.
 
 ## <a name="user-metrics-options"></a>Kullanıcı ölçümleri seçenekleri
 
@@ -92,7 +91,7 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat. Global. Error | Tomcat. Global. Error | Sayı | İşlenen isteklerde oluşan hata sayısı |
+>| Tomcat. Global. Error | Tomcat. Global. Error | Count | İşlenen isteklerde oluşan hata sayısı |
 
 ### <a name="performance"></a>Performans
 >[!div class="mx-tdCol2BreakAll"]
@@ -107,10 +106,9 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| JVM. GC. Live. Data. size | JVM. GC. Live. Data. size | Bayt | Tam GC sonrasında eski nesil bellek havuzunun boyutu. |
 >| JVM. GC. Memory. yükseltilen | JVM. GC. Memory. yükseltilen | Bayt | GC 'den sonra GC öncesinde, eski nesil bellek havuzunun boyutundaki pozitif artış sayısı. |
 >| JVM. GC. Memory. ayrılmış | JVM. GC. Memory. ayrılmış | Bayt | Bir GC 'nin bir sonraki öncesinde bir GC sonrasında küçük kuşak bellek havuzunun boyutunun artması için artırılır. |
->| JVM. GC. Pause. Total. Count | JVM. GC. Pause (Toplam-sayı) | Sayı | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere toplam GC sayısı. |
+>| JVM. GC. Pause. Total. Count | JVM. GC. Pause (Toplam-sayı) | Count | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere toplam GC sayısı. |
 >| JVM. GC. Pause. Total. Time | JVM. GC. Pause (Toplam süre) | Mayacak | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere tüketilen toplam GC süresi. |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="performance-net"></a>Performans (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
@@ -119,24 +117,23 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| CPU kullanımı       | CPU kullanımı      | Mayacak | İşlemin CPU 'YU kullandığı süre miktarı. |
 >| Çalışma kümesi     | çalışma kümesi    | TI    | İşlem tarafından kullanılan çalışma kümesi miktarı. |
 >| GC yığın boyutu    | GC-yığın boyutu   | TI    | Çöp toplayıcı tarafından bildirilen toplam yığın boyutu. |
->| Gen 0 GC sayısı  | Gen-0-GC-Count | Sayı        | Saniye başına kuşak 0 çöp koleksiyonlarının sayısı. |
->| Gen 1 GC sayısı  | Gen-1-GC-sayısı | Sayı        | Saniye başına 1. nesil atık koleksiyonları sayısı. |
->| Gen 2 GC sayısı  | Gen-2-GC-sayım | Sayı        | Saniye başına 2. nesil atık toplama sayısı. |
+>| Gen 0 GC sayısı  | Gen-0-GC-Count | Count        | Saniye başına kuşak 0 çöp koleksiyonlarının sayısı. |
+>| Gen 1 GC sayısı  | Gen-1-GC-sayısı | Count        | Saniye başına 1. nesil atık koleksiyonları sayısı. |
+>| Gen 2 GC sayısı  | Gen-2-GC-sayım | Count        | Saniye başına 2. nesil atık toplama sayısı. |
 >| Gen 0 yığın boyutu | Gen-0-boyut     | Bayt        | Nesil 0 yığın boyutu. |
 >| Gen 1 yığın boyutu | Gen-1-boyut     | Bayt        | 1. nesil yığın boyutu. |
 >| Gen 2 yığın boyutu | Gen-2 boyutu     | Bayt        | 2. nesil yığın boyutu. |
 >| LOH yığın boyutu   | Loh-boyut       | Bayt        | Büyük nesne yığın yığın boyutu. |
 >| Ayırma oranı | ayırma oranı     | Bayt        | Saniye başına ayrılan bayt sayısı. |
->| Derleme sayısı  | derleme sayısı | Sayı        | Yüklenen derleme sayısı. |
->| Özel durum sayısı | özel durum-sayı | Sayı       | Saniye başına özel durum sayısı. |
->| İş parçacığı havuzu iş parçacığı sayısı      | ThreadPool-thread-Count              | Sayı | İş parçacığı havuzu iş parçacıklarının sayısı. |
->| Kilit çakışması sayısını izle | Monitor-Lock-çekişme-Count        | Sayı | Bir izleyicinin kilidi alınmaya çalışılırken, saniye başına çekişme sayısı. |
->| İş parçacığı havuzu sıra uzunluğu      | ThreadPool-kuyruk uzunluğu              | Sayı | İş parçacığı havuzu iş öğeleri sıra uzunluğu. |
->| İş parçacığı havuzu tamamlanan öğe sayısı | ThreadPool-tamamlanan-öğe sayısı | Sayı | İş parçacığı havuzu tamamlanan iş öğesi sayısı. |
->| Etkin zamanlayıcılar sayısı               | etkin-zamanlayıcı-sayısı               | Sayı | Şu anda etkin olan zamanlayıcılar sayısı. Etkin bir zamanlayıcı, gelecekte bir noktada Tick 'e kayıtlı ve henüz iptal edilmemiş bir zamanlayıcıya sahiptir. |
+>| Derleme sayısı  | derleme sayısı | Count        | Yüklenen derleme sayısı. |
+>| Özel durum sayısı | özel durum-sayı | Count       | Saniye başına özel durum sayısı. |
+>| İş parçacığı havuzu iş parçacığı sayısı      | ThreadPool-thread-Count              | Count | İş parçacığı havuzu iş parçacıklarının sayısı. |
+>| Kilit çakışması sayısını izle | Monitor-Lock-çekişme-Count        | Count | Bir izleyicinin kilidi alınmaya çalışılırken, saniye başına çekişme sayısı. |
+>| İş parçacığı havuzu sıra uzunluğu      | ThreadPool-kuyruk uzunluğu              | Count | İş parçacığı havuzu iş öğeleri sıra uzunluğu. |
+>| İş parçacığı havuzu tamamlanan öğe sayısı | ThreadPool-tamamlanan-öğe sayısı | Count | İş parçacığı havuzu tamamlanan iş öğesi sayısı. |
+>| Etkin zamanlayıcılar sayısı               | etkin-zamanlayıcı-sayısı               | Count | Şu anda etkin olan zamanlayıcılar sayısı. Etkin bir zamanlayıcı, gelecekte bir noktada Tick 'e kayıtlı ve henüz iptal edilmemiş bir zamanlayıcıya sahiptir. |
 
 Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet-counters).
-::: zone-end
 
 ### <a name="request"></a>İstek
 >[!div class="mx-tdCol2BreakAll"]
@@ -144,33 +141,31 @@ Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet
 >|----|----|----|------------|
 >| Tomcat. Global. gönderildi | Tomcat. Global. gönderildi | Bayt | Gönderilen veri miktarı Tomcat Web sunucusu |
 >| Tomcat. Global. alındı | Tomcat. Global. alındı | Bayt | Alınan veri miktarı Tomcat Web sunucusu |
->| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (Toplam sayı) | Sayı | Toplam Tomcat Web sunucusu işlenen istek sayısı |
+>| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (Toplam sayı) | Count | Toplam Tomcat Web sunucusu işlenen istek sayısı |
 >| Tomcat. Global. Request. Max | Tomcat. Global. Request. Max | Mayacak | Bir isteği işlemek için en fazla Tomcat Web sunucusu süresi |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="request-net"></a>İstek (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|------|-----------------------------|------|---------|
->| Saniyedeki istek | saniye başına istek sayısı | Sayı | İstek hızı. |
->| Toplam istek sayısı | toplam istek sayısı | Sayı | Toplam istek sayısı. |
->| Geçerli istekler | geçerli istekler | Sayı | Geçerli istek sayısı. |
->| Başarısız istekler | başarısız-istekler | Sayı | Başarısız istek sayısı. |
+>| Saniyedeki istek | saniye başına istek sayısı | Count | İstek hızı. |
+>| Toplam istek sayısı | toplam istek sayısı | Count | Toplam istek sayısı. |
+>| Geçerli istekler | geçerli istekler | Count | Geçerli istek sayısı. |
+>| Başarısız istekler | başarısız-istekler | Count | Başarısız istek sayısı. |
 
 Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet-counters).
-::: zone-end
 
 ### <a name="session"></a>Oturum
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Sayı | Aynı anda etkin olan en fazla oturum sayısı |
+>| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Count | Aynı anda etkin olan en fazla oturum sayısı |
 >| Tomcat. Sessions. canlı. Max | Tomcat. Sessions. canlı. Max | Mayacak | Süresi biten bir oturumun etkin olduğu en uzun süre (saniye cinsinden) |
->| Tomcat. Sessions. oluşturuldu | Tomcat. Sessions. oluşturuldu | Sayı | Oluşturulan oturum sayısı |
->| Tomcat. Sessions. süre geçildi | Tomcat. Sessions. süre geçildi | Sayı | Zaman aşımına uğramış oturum sayısı |
->| Tomcat. Sessions. reddedildi | Tomcat. Sessions. reddedildi | Sayı | En fazla etkin oturum sayısına ulaşıldığından, oluşturulmayan oturum sayısı. |
->| Tomcat. Sessions. ACTIVE. Current | Tomcat. Sessions. ACTIVE. Current | Sayı | Tomcat oturumu etkin sayısı |
+>| Tomcat. Sessions. oluşturuldu | Tomcat. Sessions. oluşturuldu | Count | Oluşturulan oturum sayısı |
+>| Tomcat. Sessions. süre geçildi | Tomcat. Sessions. süre geçildi | Count | Zaman aşımına uğramış oturum sayısı |
+>| Tomcat. Sessions. reddedildi | Tomcat. Sessions. reddedildi | Count | En fazla etkin oturum sayısına ulaşıldığından, oluşturulmayan oturum sayısı. |
+>| Tomcat. Sessions. ACTIVE. Current | Tomcat. Sessions. ACTIVE. Current | Count | Tomcat oturumu etkin sayısı |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

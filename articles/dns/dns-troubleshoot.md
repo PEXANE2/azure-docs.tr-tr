@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fae63c61949302e25c9dee2899577fa4f0d2a975
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711196"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965587"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS sorun giderme kılavuzu
 
 Bu makale, yaygın Azure DNS soruları için sorun giderme bilgileri sağlar.
 
-Bu adımlar sorununuzu gidermezse, [topluluk desteği Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)sorununuzu da arayabilir veya bu şekilde gönderebilirsiniz. Ya da bir Azure destek isteği açabilirsiniz.
+Bu adımlar sorununuzu gidermezse, [topluluk desteği Için Microsoft Q&soru sayfasında](/answers/topics/azure-virtual-network.html)sorununuzu da arayabilir veya bu şekilde gönderebilirsiniz. Ya da bir Azure destek isteği açabilirsiniz.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>DNS bölgesi oluşturamıyorum
@@ -34,7 +34,7 @@ Sık karşılaşılan sorunları çözmek için aşağıdaki adımlardan birini 
 ### <a name="recommended-articles"></a>Önerilen makaleler
 
 * [DNS bölgeleri ve kayıtları](dns-zones-records.md)
-* [DNS bölgesi oluşturma](dns-getstarted-create-dnszone-portal.md)
+* [DNS bölgesi oluşturma](./dns-getstarted-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>DNS kaydı oluşturamıyorum
 
@@ -50,7 +50,7 @@ Sık karşılaşılan sorunları çözmek için aşağıdaki adımlardan birini 
 ### <a name="recommended-articles"></a>Önerilen makaleler
 
 * [DNS bölgeleri ve kayıtları](dns-zones-records.md)
-* [DNS bölgesi oluşturma](dns-getstarted-create-dnszone-portal.md)
+* [DNS bölgesi oluşturma](./dns-getstarted-portal.md)
 
 
 
@@ -85,13 +85,12 @@ Azure DNS, DNS kayıtlarını kayıt kümeleri olarak yönetir. Bu kümeler, ayn
 ### <a name="recommended-articles"></a>Önerilen makaleler
 
 * [DNS bölgeleri ve kayıtları](dns-zones-records.md)
-* [Azure portalını kullanarak DNS kayıt kümeleri ve kayıtları oluşturma](dns-getstarted-create-recordset-portal.md)
+* [Azure portalını kullanarak DNS kayıt kümeleri ve kayıtları oluşturma](./dns-getstarted-portal.md)
 * [SRV kayıt türü (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure DNS bölgeler ve kayıtlar](dns-zones-records.md) hakkında bilgi edinin
-* Azure DNS kullanmaya başlamak için, [DNS bölgesi oluşturmayı](dns-getstarted-create-dnszone-portal.md) ve [DNS kayıtları oluşturmayı](dns-getstarted-create-recordset-portal.md)öğrenin.
+* Azure DNS kullanmaya başlamak için, [DNS bölgesi oluşturmayı](./dns-getstarted-portal.md) ve [DNS kayıtları oluşturmayı](./dns-getstarted-portal.md)öğrenin.
 * Var olan bir DNS bölgesini geçirmek için [BIR DNS bölge dosyasını içeri ve dışarı aktarmayı](dns-import-export.md)öğrenin.
-

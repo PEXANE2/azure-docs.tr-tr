@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 1ba6a19b271943c7ecbe2254ef2544a5f576ad3d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167432"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965247"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu
 
@@ -112,7 +113,7 @@ Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP
   * NW2 için IP adresi: 10.3.1.16
   * NW3 için IP adresi: 10.3.1.13
 * Araştırma bağlantı noktaları
-  * Bağlantı noktası 620<strong> &lt; &gt; NR</strong>, bu nedenle NW1, NW2 ve NW3 araştırma bağlantı noktaları 620**00**, 620**10** ve 620**20**
+  * Bağlantı noktası 620 <strong> &lt; &gt; NR</strong>, bu nedenle NW1, NW2 ve NW3 araştırma bağlantı noktaları 620 **00**, 620 **10** ve 620 **20**
 * Yük Dengeleme kuralları- 
 * Her örnek için bir tane oluşturun, diğer bir deyişle, NW1/ASCS, NW2/yoks ve NW3/yoks.
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
@@ -132,7 +133,7 @@ Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP
   * NW2 10.3.1.17 için IP adresi
   * NW3 10.3.1.19 için IP adresi
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 621<strong> &lt; &gt; NR</strong>, bu nedenle NW1, NW2 ve N # araştırma bağlantı noktaları 621**02**, 621**12** ve 621**22**
+  * Bağlantı noktası 621 <strong> &lt; &gt; NR</strong>, bu nedenle NW1, NW2 ve N # araştırma bağlantı noktaları 621 **02**, 621 **12** ve 621 **22**
 * Yük Dengeleme kuralları-her örnek için, diğer bir deyişle, NW1/ERS, NW2/ERS ve NW3/ERS için bir tane oluşturun.
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
@@ -152,7 +153,7 @@ Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP
 > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. Parametre **net.ipv4.tcp_timestamps** **0** olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ## <a name="sap-nfs-shares"></a>SAP NFS paylaşımları
 
@@ -178,7 +179,7 @@ Bu örnekte, sistem **NW1** zaten kümede dağıtıldığını varsaydık. Küme
 
 Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-### <a name="prerequisites"></a>Önkoşullar 
+### <a name="prerequisites"></a>Ön koşullar 
 
 > [!IMPORTANT]
 > Kümeye ek SAP sistemleri dağıtmaya yönelik yönergeleri izlemeden önce, ilk sistem dağıtımı sırasında yalnızca gerekli adımlar olduğundan, kümedeki ilk SAP sistemini dağıtmak için yönergeleri izleyin.  
@@ -290,7 +291,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 2. **[1]** SAP NetWeaver yoks 'yi yükler  
 
-   Ass için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adı kullanarak SAP NetWeaver yoks 'yi kök olarak yükleyin. Örneğin, System **NW2**için, sanal konak adı <b>msnw2ascs</b>, <b>10.3.1.16</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası, örneğin <b>10</b>. System **NW3**için, sanal konak adı <b>msnw3ascs</b>, <b>10.3.1.13</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası, örneğin <b>20</b>.
+   Ass için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adı kullanarak SAP NetWeaver yoks 'yi kök olarak yükleyin. Örneğin, System **NW2** için, sanal konak adı <b>msnw2ascs</b>, <b>10.3.1.16</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası, örneğin <b>10</b>. System **NW3** için, sanal konak adı <b>msnw3ascs</b>, <b>10.3.1.13</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası, örneğin <b>20</b>.
 
    Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz. Sanal ana bilgisayar adını kullanarak SAP 'yi yüklemek için SAPINST_USE_HOSTNAME parametresini kullanabilirsiniz.  
 
@@ -298,7 +299,7 @@ Bu belgede şu şekilde varsayılmaktadır:
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   Yükleme,/usr/SAP/**SID**/ascs**Instance #** içinde bir alt klasör oluşturamazsa, sahibini **SID**adm ve grup olarak belirlemes**örneğinin** sapsys olarak ayarlamayı deneyin ve yeniden deneyin.
+   Yükleme,/usr/SAP/**SID**/ascs **Instance #** içinde bir alt klasör oluşturamazsa, sahibini **SID** adm ve grup olarak belirlemes **örneğinin** sapsys olarak ayarlamayı deneyin ve yeniden deneyin.
 
 3. **[1]** kümeye DAĞıTTıĞıNıZ ek SAP sisteminin ers örneği IÇIN sanal IP ve durum araştırma kümesi kaynakları oluşturun. Burada gösterilen örnek, yüksek oranda kullanılabilir NFS sunucusu kullanılarak **NW2** ve **NW3** ers içindir. 
 
@@ -340,7 +341,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 4. **[2]** SAP NetWeaver iciler 'ı yükler
 
-   SAP NetWeaver ERS 'ı diğer düğüme kök olarak yükleyin. Bu, bir sanal ana bilgisayar adını kullanarak, ERS için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşleşir. Örneğin, System **NW2**için sanal ana bilgisayar adı <b>msnw2ers</b>, <b>10.3.1.17</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası olur, örneğin <b>12</b>. System **NW3**için, sanal ana bilgisayar adı <b>msnw3ers</b>, <b>10.3.1.19</b> ve yük dengeleyicinin araştırması için kullandığınız örnek numarası, örneğin <b>22</b>. 
+   SAP NetWeaver ERS 'ı diğer düğüme kök olarak yükleyin. Bu, bir sanal ana bilgisayar adını kullanarak, ERS için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşleşir. Örneğin, System **NW2** için sanal ana bilgisayar adı <b>msnw2ers</b>, <b>10.3.1.17</b> ve yük dengeleyici araştırması için kullandığınız örnek numarası olur, örneğin <b>12</b>. System **NW3** için, sanal ana bilgisayar adı <b>msnw3ers</b>, <b>10.3.1.19</b> ve yük dengeleyicinin araştırması için kullandığınız örnek numarası, örneğin <b>22</b>. 
 
    Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz. Sanal ana bilgisayar adını kullanarak SAP 'yi yüklemek için SAPINST_USE_HOSTNAME parametresini kullanabilirsiniz.  
 
@@ -351,9 +352,9 @@ Bu belgede şu şekilde varsayılmaktadır:
    > [!NOTE]
    > SWPM SP 20 PL 05 veya üzeri bir sürümü kullanın. Düşük sürümler izinleri doğru olarak ayarlamayın ve yükleme başarısız olur.
 
-   Yükleme,/usr/SAP/**NW2**/ers**örnek #**' da bir alt klasör oluşturamazsa, sahibi **SID**adm olarak ayarlamayı ve grup **#** klasörünün değerini sapsys olarak ayarlamayı deneyin ve yeniden deneyin.
+   Yükleme,/usr/SAP/**NW2**/ers **örnek #**' da bir alt klasör oluşturamazsa, sahibi **SID** adm olarak ayarlamayı ve grup **#** klasörünün değerini sapsys olarak ayarlamayı deneyin ve yeniden deneyin.
 
-   Yeni dağıtılan SAP sisteminin ERS grubunu farklı bir küme düğümüne geçirmeniz gerekiyorsa, ERS grubu için konum kısıtlamasını kaldırmayı unutmayın. Aşağıdaki komutu çalıştırarak kısıtlamayı kaldırabilirsiniz (örneğin, SAP Systems **NW2** ve **NW3**için verilmiştir).  
+   Yeni dağıtılan SAP sisteminin ERS grubunu farklı bir küme düğümüne geçirmeniz gerekiyorsa, ERS grubu için konum kısıtlamasını kaldırmayı unutmayın. Aşağıdaki komutu çalıştırarak kısıtlamayı kaldırabilirsiniz (örneğin, SAP Systems **NW2** ve **NW3** için verilmiştir).  
 
     ```
       crm resource unmigrate g-NW2_ERS
@@ -406,7 +407,7 @@ Bu belgede şu şekilde varsayılmaktadır:
    sudo usermod -aG haclient nw3adm
    ```
 
-7. Yeni yüklenen SAP sistemi için, bu dosya için ASCS ve Ise SAP hizmetlerini ekleyin `sapservice` . Aşağıda gösterilen örnek, SAP Systems **NW2** ve **NW3**içindir.  
+7. Yeni yüklenen SAP sistemi için, bu dosya için ASCS ve Ise SAP hizmetlerini ekleyin `sapservice` . Aşağıda gösterilen örnek, SAP Systems **NW2** ve **NW3** içindir.  
 
    ASCS hizmeti girişini ikinci düğüme ekleyin ve ilk düğüme ERS hizmet girişini kopyalayın. Her SAP sistemi için, SAP sisteminin ASCS örneğinin yüklendiği düğüm üzerindeki komutları yürütün.  
 
@@ -772,7 +773,7 @@ Sunulan testler, üç adet SAP sistemi yüklü olan çok düzeyli bir küme olan
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   NW2 ASCS örneğini geçirmek için aşağıdaki komutları **NW2**adm olarak çalıştırın.
+   NW2 ASCS örneğini geçirmek için aşağıdaki komutları **NW2** adm olarak çalıştırın.
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""

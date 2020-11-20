@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006033"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965009"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 serisi: karma bulut depolama çözümü
 
@@ -39,7 +39,7 @@ StorSimple veri koruma özellikleri, depolama yönetimine ek olarak isteğe bağ
 ## <a name="why-use-storsimple"></a>StorSimple neden kullanılmalıdır?
 Aşağıdaki tabloda Microsoft Azure StorSimple sağladığı bazı önemli avantajlar açıklanmaktadır.
 
-| Özellik | Avantaj |
+| Öne çıkan özelliği | Avantaj |
 | --- | --- |
 | Saydam tümleştirme |, Veri depolama olanaklarını ayrıntılı bir şekilde bağlamak için Iscsı protokolünü kullanır. Bu, bulutta depolanan verilerin veri merkezinde veya uzak sunucularda tek bir konumda depolanması gibi göründüğünden emin olmanızı sağlar. |
 | Azaltılan depolama maliyetleri |Mevcut taleplerini karşılamak için yeterli yerel veya bulut depolama alanını ayırır ve bulut depolamayı yalnızca gerekli olduğunda genişletir. Aynı verilerin (yinelenenleri kaldırma) yedekli sürümlerini kaldırarak ve sıkıştırma kullanarak, depolama gereksinimlerini ve harcamayı daha da azaltır. |
@@ -48,7 +48,7 @@ Aşağıdaki tabloda Microsoft Azure StorSimple sağladığı bazı önemli avan
 | Veri taşınabilirliği |Microsoft Azure Cloud Services 'a yüklenen verilere, kurtarma ve geçiş amacıyla diğer sitelerden erişilebilir. Ayrıca, Microsoft Azure ' de çalışan sanal makinelerde (VM) StorSimple bulut gereçlerini yapılandırmak için StorSimple kullanabilirsiniz. VM 'Ler daha sonra sanal cihazları kullanarak test veya kurtarma amaçlarıyla depolanmış verilere erişebilir. |
 | İş sürekliliği |StorSimple 5000-7000 Serisi kullanıcıların verilerini bir StorSimple 8000 serisi cihazına geçirmelerini sağlar. |
 | Azure Kamu portalında kullanılabilirlik |StorSimple, Azure Kamu portalında kullanılabilir. Daha fazla bilgi için bkz. Şirket [Içi StorSimple cihazınızı kamu portalında dağıtma](storsimple-8000-deployment-walkthrough-gov-u2.md). |
-| Veri koruma ve kullanılabilirlik |StorSimple 8000 serisi, yerel olarak yedekli depolama (LRS) ve coğrafi olarak yedekli depolama (GRS) özelliklerine ek olarak bölgesel olarak yedekli depolamayı (ZRS) destekler. ZRS ayrıntıları için [Azure Storage artıklık seçenekleri ' nde bu makaleye](https://azure.microsoft.com/documentation/articles/storage-redundancy/) bakın. |
+| Veri koruma ve kullanılabilirlik |StorSimple 8000 serisi, yerel olarak yedekli depolama (LRS) ve coğrafi olarak yedekli depolama (GRS) özelliklerine ek olarak bölgesel olarak yedekli depolamayı (ZRS) destekler. ZRS ayrıntıları için [Azure Storage artıklık seçenekleri ' nde bu makaleye](../storage/common/storage-redundancy.md) bakın. |
 | Kritik uygulamalar için destek |StorSimple, yerel olarak sabitlenmiş uygun birimleri tanımlamanızı sağlar ve bu da kritik uygulamalar için gereken verilerin buluta katmanlanmamasını sağlar. Yerel olarak sabitlenmiş birimler, bulut gecikme sürelerine veya bağlantı sorunlarına tabi değildir. Yerel olarak sabitlenmiş birimler hakkında daha fazla bilgi için bkz. [birimleri yönetmek Için StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-volumes-u2.md). |
 | Düşük gecikme süresi ve yüksek performans |Azure Premium Depolama 'nın yüksek performans ve düşük gecikme süresi özelliklerinden faydalanan bulut gereçlerini oluşturabilirsiniz. StorSimple Premium bulut gereçlerinin hakkında daha fazla bilgi için bkz. [Azure 'da StorSimple Cloud Appliance dağıtma ve yönetme](storsimple-8000-cloud-appliance-u2.md). |
 
@@ -210,10 +210,10 @@ Desteklenen StorSimple iş yüklerinin özeti aşağıda verilmiştir.
 
 | Senaryo | İş Yükü | Desteklenir | Kısıtlamalar | Sürüm |
 | --- | --- | --- | --- | --- |
-| İşbirliği |Dosya paylaşımı |Evet | |Tüm sürümler |
-| İşbirliği |Dağıtılmış dosya paylaşımı |Evet | |Tüm sürümler |
+| İşbirliği |Dosya paylaşımı |Yes | |Tüm sürümler |
+| İşbirliği |Dağıtılmış dosya paylaşımı |Yes | |Tüm sürümler |
 | İşbirliği |SharePoint |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
-| Arşivleme |Basit dosya arşivleme |Evet | |Tüm sürümler |
+| Arşivleme |Basit dosya arşivleme |Yes | |Tüm sürümler |
 | Sanallaştırma |Sanal makineler |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
 | Veritabanı |SQL |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Güncelleştirme 2 ve üzeri |
 | Video gözetimi |Video gözetimi |Evet* |StorSimple cihazı yalnızca bu iş yüküne ayrılmışsa desteklenir |Güncelleştirme 2 ve üzeri |
@@ -237,7 +237,7 @@ Aşağıda, StorSimple desteklenen altyapı bileşenlerinin bir listesi verilmi�
 
 | Senaryo | İş Yükü | Desteklenir | Kısıtlamalar | Sürüm |
 | --- | --- | --- | --- | --- |
-| Genel |Express Route |Evet | |Tüm sürümler |
+| Genel |Express Route |Yes | |Tüm sürümler |
 | Genel |DataCore FC |Evet* |DataCore Sansimphony ile desteklenir |Tüm sürümler |
 | Genel |DFSR |Evet* |Yalnızca yerel olarak sabitlenmiş birimlerle desteklenir |Tüm sürümler |
 | Genel |Dizinleme |Evet* |Katmanlı birimlerde yalnızca meta veri dizinleme desteklenir (veri yok).<br>Yerel olarak sabitlenmiş birimlerde, tam dizin oluşturma desteklenir. |Tüm sürümler |
@@ -258,7 +258,7 @@ Aşağıda, StorSimple ile çözüm oluşturmak için kullanılan diğer yazıl�
 Microsoft Azure StorSimple çözümünüzü dağıtmaya başlamadan önce, aşağıdaki hüküm ve tanımları incelemenizi öneririz.
 
 ### <a name="key-terms-and-definitions"></a>Anahtar hüküm ve tanımlar
-| Terim (kısaltma veya kısaltma) | Açıklama |
+| Terim (kısaltma veya kısaltma) | Description |
 | --- | --- |
 | erişim denetimi kaydı (ACR) |Microsoft Azure StorSimple cihazındaki bir birimle ilişkili bir kayıt, hangi konaklara bağlanamayacağını belirler. Belirleme, StorSimple cihazınıza bağlanan ana bilgisayarların (ACR 'de bulunan) Iscsı tam adını (ıQN) temel alır. |
 | AES-256 |Verileri buluta ve buluta taşırken verileri şifrelemek için 256 bitlik bir Gelişmiş Şifreleme Standardı (AES) algoritması. |
@@ -315,4 +315,3 @@ Microsoft Azure StorSimple çözümünüzü dağıtmaya başlamadan önce, aşa�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [StorSimple güvenliği](storsimple-8000-security.md)hakkında bilgi edinin.
-

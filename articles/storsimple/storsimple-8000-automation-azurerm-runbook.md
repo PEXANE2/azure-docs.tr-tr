@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5f2a86fb7c776436ea707ef293a66c033014c33
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744041"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966335"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>StorSimple cihazlarını yönetmek için Azure Otomasyonu runbook 'larını kullanma
 
@@ -41,7 +41,7 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
         cd C:\scripts\StorSimpleSDKTools
     ```
 
-2. Önceki adımda oluşturulan klasöre [NUGET CLI 'Yı indirin](https://www.nuget.org/downloads) . _nuget.exe_çeşitli sürümleri vardır. SDK 'nize karşılık gelen sürümü seçin. Her indirme bağlantı noktası doğrudan bir _. exe_ dosyasına bağlanır. Sağ tıklayıp dosyayı tarayıcıdan çalıştırmak yerine bilgisayarınıza kaydettiğinizden emin olun.
+2. Önceki adımda oluşturulan klasöre [NUGET CLI 'Yı indirin](https://www.nuget.org/downloads) . _nuget.exe_ çeşitli sürümleri vardır. SDK 'nize karşılık gelen sürümü seçin. Her indirme bağlantı noktası doğrudan bir _. exe_ dosyasına bağlanır. Sağ tıklayıp dosyayı tarayıcıdan çalıştırmak yerine bilgisayarınıza kaydettiğinizden emin olun.
 
     Ayrıca, aşağıdaki komutu çalıştırarak betiği daha önce oluşturduğunuz aynı klasöre indirebilir ve kaydedebilirsiniz.
 
@@ -182,11 +182,11 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
    3. Yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubundan seçin.
    4. Bir **konum** seçin (mümkünse hizmetinizin çalıştığı gibi).
    5. Varsayılan **Farklı Çalıştır hesabı oluştur** seçeneğini seçili bırakın.
-   6. İsteğe bağlı olarak **panoya sabitle ' yi**işaretleyin. **Oluştur**’a tıklayın.
+   6. İsteğe bağlı olarak **panoya sabitle ' yi** işaretleyin. **Oluştur**'a tıklayın.
 
        ![Ekran görüntüsü, abonelik değerleriyle Otomasyon hesabı ekle, Azure farklı çalıştır hesabı oluştur ve 2 oluştur ' u gösterir](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
-      Otomasyon hesabı başarıyla oluşturulduktan sonra bilgilendirirsiniz. Otomasyon hesabı oluşturma hakkında daha fazla bilgi için, [Farklı Çalıştır hesabı oluşturma](https://docs.microsoft.com/azure/automation/automation-create-runas-account)bölümüne gidin.
+      Otomasyon hesabı başarıyla oluşturulduktan sonra bilgilendirirsiniz. Otomasyon hesabı oluşturma hakkında daha fazla bilgi için, [Farklı Çalıştır hesabı oluşturma](../automation/manage-runas-account.md)bölümüne gidin.
 
 3. Oluşturulan Otomasyon hesabının StorSimple Aygıt Yöneticisi hizmetine erişebildiğinden emin olmak için, Otomasyon hesabına uygun izinleri atamanız gerekir. StorSimple Aygıt Yöneticisi hizmetinizde **erişim denetimi** ' ne gidin. **+ Ekle** ' ye tıklayın ve Azure Otomasyonu hesabınızın adını sağlayın. Ayarları **kaydedin** .
 
@@ -194,11 +194,11 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
 
 4. Yeni oluşturulan hesapta, **paylaşılan kaynaklar > modüller** ' e gidin ve **+ Modül Ekle**' ye tıklayın.
 
-5. **Modül Ekle** dikey penceresinde, daraltılmış modülün konumuna gidin ve modülünü seçin ve açın. **Tamam**'a tıklayın.
+5. **Modül Ekle** dikey penceresinde, daraltılmış modülün konumuna gidin ve modülünü seçin ve açın. **Tamam** düğmesine tıklayın.
 
     ![Ekran görüntüsü, karşıya yükleme dosyası değeri ve Tamam olarak Modül Ekle bölmesini gösterir](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. **Işlem otomasyonu > runbook 'larına gidin ve + Runbook Ekle ' ye tıklayın**. **Runbook Ekle** dikey penceresinde **mevcut bir runbook 'u içeri aktar**' a tıklayın. **Runbook dosyası**Için Windows PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**’a tıklayın.
+6. **Işlem otomasyonu > runbook 'larına gidin ve + Runbook Ekle ' ye tıklayın**. **Runbook Ekle** dikey penceresinde **mevcut bir runbook 'u içeri aktar**' a tıklayın. **Runbook dosyası** Için Windows PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**'a tıklayın.
 
     ![Add-Module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
@@ -206,7 +206,7 @@ StorSimple 8000 serisi cihaz yönetimi için bir otomasyon modülü oluşturmak 
 
     ![tıklama-yeni-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. Runbook 'u düzenleyin ve **Test bölmesi**' ne tıklayın. StorSimple Aygıt Yöneticisi hizmetinizin adı, StorSimple cihazının adı ve aboneliğin adı gibi parametreleri sağlayın. Testi **başlatın** . Çalışma tamamlandığında rapor oluşturulur. Daha fazla bilgi için, [runbook 'u test etme](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)konusuna gidin.
+8. Runbook 'u düzenleyin ve **Test bölmesi**' ne tıklayın. StorSimple Aygıt Yöneticisi hizmetinizin adı, StorSimple cihazının adı ve aboneliğin adı gibi parametreleri sağlayın. Testi **başlatın** . Çalışma tamamlandığında rapor oluşturulur. Daha fazla bilgi için, [runbook 'u test etme](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)konusuna gidin.
 
     ![Ekran görüntüsü, parametre değerlerini girebileceğiniz ve bir test başlattığınız test kaydırma süresini gösterir](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 

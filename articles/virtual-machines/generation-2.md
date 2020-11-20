@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977604"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963836"
 ---
-# <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
+# <a name="support-for-generation-2-vms-on-azure"></a>Azure'da 2. nesil VM'ler için destek
 
 2. nesil sanal makineler (VM 'Ler) için destek artık Azure 'da kullanıma sunuldu. Oluşturduktan sonra bir sanal makinenin neslini değiştiremezsiniz, bu nedenle bir oluşturma seçmeden önce bu sayfadaki konuları gözden geçirin.
 
@@ -85,7 +85,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
-| Özellik | 1. nesil | 2. nesil |
+| Öne çıkan özelliği | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
 | Önyükleme             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
@@ -101,7 +101,8 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Yedekleme/geri yükleme                    | :heavy_check_mark: | :heavy_check_mark: |
 | Paylaşılan görüntü Galerisi              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure disk şifrelemesi             | :heavy_check_mark: | sayı                |
+| [Azure disk şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | sayı                |
+| [Sunucu tarafı şifrelemesi](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>2. nesil VM oluşturma
 
@@ -119,7 +120,7 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 1. Gen2 destekleyen bir görüntü seçin.
 1. **Oluştur**'a tıklayın.
 1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
-1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları**altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
+1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları** altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
 1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.
 1. VM oluşturma işleminin bitmesini sağlamak için sayfaların geri kalanına gidin.
 
@@ -146,7 +147,7 @@ Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yete
 
 #### <a name="azure-cli"></a>Azure CLI
 
-Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
+Alternatif olarak, **Yayımcı** tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
 
 ```azurecli
 az vm image list --publisher Canonical --sku gen2 --output table --all

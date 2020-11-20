@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92509ff96af0ed2a7d77799edca8447ff6839ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019666"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965604"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma
 
@@ -79,7 +79,7 @@ Azure DNS bölgeyi gerçekten oluşturmak veya güncelleştirmek için, bölge p
 > [!NOTE]
 > DnsManagementClient üç işlem modunu destekler: zaman uyumlu (' CreateOrUpdate '), zaman uyumsuz (' CreateOrUpdateAsync ') veya HTTP yanıtına erişimi olan zaman uyumsuz (' CreateOrUpdateWithHttpMessagesAsync ').  Uygulama gereksinimlerinize bağlı olarak bu modlardan herhangi birini seçebilirsiniz.
 
-Azure DNS, [ETags](dns-getstarted-create-dnszone.md)adlı iyimser eşzamanlılığı destekler. Bu örnekte, ' If-None-Match ' üst bilgisi için "*" belirtildiğinde, bir tane yoksa bir DNS bölgesi oluşturmak Azure DNS söyler.  Verilen kaynak grubunda verilen ada sahip bir bölge zaten varsa, çağrı başarısız olur.
+Azure DNS, [ETags](./dns-getstarted-powershell.md)adlı iyimser eşzamanlılığı destekler. Bu örnekte, ' If-None-Match ' üst bilgisi için "*" belirtildiğinde, bir tane yoksa bir DNS bölgesi oluşturmak Azure DNS söyler.  Verilen kaynak grubunda verilen ada sahip bir bölge zaten varsa, çağrı başarısız olur.
 
 ```cs
 // Create zone parameters

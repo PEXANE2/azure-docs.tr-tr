@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 4e2bcb683c9d4c5248315549bf6d6ee26b2a51ac
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873905"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965043"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik ve idare
 
@@ -28,7 +28,7 @@ Bir bulut hizmeti kullandığınızda, erişimi yalnızca ihtiyacı olan kullan�
 
 ## <a name="authentication--authorization"></a>Kimlik doğrulama & yetkilendirmesi
 
-Azure Machine Learning kaynakların çoğu kimlik doğrulaması için Azure Active Directory (Azure AD) ve yetkilendirme için rol tabanlı erişim denetimi (Azure RBAC) kullanır. Bunun özel durumları şunlardır:
+Azure Machine Learning kaynakların çoğu kimlik doğrulaması için Azure Active Directory (Azure AD) ve yetkilendirme için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanır. Bunun özel durumları şunlardır:
 
 * __SSH__: Azure Machine Learning işlem örneği gibi bazı Işlem kaynaklarına SSH erişimini etkinleştirebilirsiniz. SSH erişimi anahtar tabanlı kimlik doğrulaması kullanır. SSH anahtarları oluşturma hakkında daha fazla bilgi için bkz. [SSH anahtarları oluşturma ve yönetme](../virtual-machines/linux/create-ssh-keys-detailed.md). SSH erişimini etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md).
 * __Web Hizmetleri olarak dağıtılan modeller__: Web hizmeti dağıtımları, __anahtar__ veya __belirteç__ tabanlı erişim denetimi kullanabilir. Anahtarlar statik dizelerdir. Belirteçler, bir Azure AD hesabı kullanılarak alınır. Daha fazla bilgi için bkz. [Web hizmeti olarak dağıtılan modeller için kimlik doğrulamasını yapılandırma](how-to-authenticate-web-service.md).
@@ -49,7 +49,7 @@ Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı Için kiml
 
 ### <a name="azure-rbac"></a>Azure RBAC
 
-Birden çok çalışma alanı oluşturabilirsiniz ve her çalışma alanı birden çok kişi tarafından paylaşılabilir. Azure AD hesabını Azure RBAC rollerine atayarak, kullanıcıların hangi özellikleri veya işlemlerini erişebileceğini kontrol edebilirsiniz. Yerleşik roller aşağıda verilmiştir:
+Birden çok çalışma alanı oluşturabilirsiniz ve her çalışma alanı birden çok kişi tarafından paylaşılabilir. Kullanıcıların Azure AD hesabını Azure rollerine atayarak hangi özellik veya işlemlerin erişebileceğini kontrol edebilirsiniz. Yerleşik roller aşağıda verilmiştir:
 
 * Sahip
 * Katılımcı
@@ -131,7 +131,7 @@ Microsoft, otomatik Machine Learning gibi hizmetleri kullanırken, birden çok m
 
 Role ve izlenmekte göre Azure Machine Learning birkaç izleme senaryosu vardır.
 
-| Rol | Kullanım için izleme | Açıklama |
+| Rol | Kullanım için izleme | Description |
 | ---- | ----- | ----- |
 | Yönetici, DevOps, MLOps | [Azure izleyici ölçümleri](#azure-monitor), [etkinlik günlüğü](#activity-log), [güvenlik açığı taraması](#vulnerability-scanning) | Hizmet düzeyi bilgileri |
 | Veri bilimcisi, MLOps | [İzleme çalıştırmaları](#monitor-runs) | Eğitim çalıştırmaları sırasında günlüğe kaydedilen bilgiler |

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 7c5aa7e5189b4c89636fdb38e8fd365208148900
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb6f9f598ef68911a9017dde504a032672dc55a3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094651"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966590"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Hızlı başlangıç: Java kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -22,7 +22,7 @@ ms.locfileid: "93094651"
 
 Bu hızlı başlangıçta, bir X. 509.952 sanal cihaz grubunu Azure IoT Hub cihaz sağlama hizmeti 'ne programlı bir şekilde kaydetmek için Java 'Yı kullanırsınız. Cihazlar bir kayıt grubu veya bireysel kayıt oluşturarak bir sağlama hizmeti örneğine kaydedilir. Bu hızlı başlangıçta, Java hizmeti SDK 'sını ve örnek bir Java uygulamasını kullanarak her iki tür kaydı nasıl oluşturacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -47,11 +47,11 @@ Aşağıdaki adımlarda örnek koda X.509 cihazınızın sağlama ayrıntıları
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-2. İndirilen kaynak kodunda örnek klasörüne gidin: **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** . **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** adlı dosyayı istediğiniz düzenleyicide açıp aşağıdaki ayrıntıları ekleyin:
+2. İndirilen kaynak kodunda örnek klasörüne gidin: **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**. **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** adlı dosyayı istediğiniz düzenleyicide açıp aşağıdaki ayrıntıları ekleyin:
 
     1. Portaldan sağlama hizmetinize ait `[Provisioning Connection String]` bilgisini aşağıdaki şekilde ekleyin:
         1. [Azure portalında](https://portal.azure.com) sağlama hizmetinize gidin. 
-        2. **Paylaşılan erişim ilkeleri** 'ni açıp *EnrollmentWrite* iznine sahip bir ilke seçin.
+        2. **Paylaşılan erişim ilkeleri**'ni açıp *EnrollmentWrite* iznine sahip bir ilke seçin.
         3. **Birincil anahtar bağlantı dizesini** kopyalayın. 
 
             ![Sağlama bağlantısı dizesini portaldan alma](./media/quick-enroll-device-x509-java/provisioning-string.png)  
@@ -102,7 +102,7 @@ Aşağıdaki adımlarda örnek koda X.509 cihazınızın sağlama ayrıntıları
  
     3. İsteğe bağlı olarak örnek kod aracılığıyla sağlama hizmetinizi de yapılandırabilirsiniz:
         - Örneğe bu yapılandırmayı eklemek için aşağıdaki adımları izleyin:
-            1. [Azure portalında](https://portal.azure.com) sağlama hizmetinizle bağlantılı IoT hub sayfasına gidin. Hub'ın **Özet** sayfasını açıp **Ana bilgisayar adı** 'nı kopyalayın. Bu **Ana bilgisayar adı** değerini *IOTHUB_HOST_NAME* parametresine atayın.
+            1. [Azure portalında](https://portal.azure.com) sağlama hizmetinizle bağlantılı IoT hub sayfasına gidin. Hub'ın **Özet** sayfasını açıp **Ana bilgisayar adı**'nı kopyalayın. Bu **Ana bilgisayar adı** değerini *IOTHUB_HOST_NAME* parametresine atayın.
 
                 ```Java
                 private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
@@ -157,7 +157,7 @@ Bu yordam bir kayıt grubu kullanır. Sonraki bölümde tek bir kayıt kullanıl
 
 4. Kaydın başarılı olup olmadığını görmek için çıktı penceresini izleyin.
 
-5. Azure portalında sağlama hizmetinize gidin. **Kayıtları yönetme** 'ye tıklayın. X.509 cihaz grubunun **Kayıt Grupları** bölümünde, otomatik olarak oluşturulmuş bir *GRUP ADI* altında göründüğüne dikkat edin. 
+5. Azure portalında sağlama hizmetinize gidin. **Kayıtları yönetme**'ye tıklayın. X.509 cihaz grubunun **Kayıt Grupları** bölümünde, otomatik olarak oluşturulmuş bir *GRUP ADI* altında göründüğüne dikkat edin. 
 
     ![Portalda X.509 kaydının başarılı olup olmadığını doğrulama](./media/quick-enroll-device-x509-java/verify-x509-enrollment.png)  
 
@@ -203,7 +203,7 @@ Java hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta o
 
 1. Makinenizdeki Java örnek çıktı penceresini kapatın.
 1. Makinenizde _X509 Cert Generator_ penceresini kapatın.
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet** ' i seçin ve **kayıt grupları** sekmesini seçin. Bu hızlı başlangıcı kullanarak kaydettiğiniz X. 509.440 cihazları için *Grup adının* yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.  
+1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve **kayıt grupları** sekmesini seçin. Bu hızlı başlangıcı kullanarak kaydettiğiniz X. 509.440 cihazları için *Grup adının* yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta, sanal bir X. 509.952 cihaz grubunu cihaz sağlama hizmetinize kaydettiniz. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin. 

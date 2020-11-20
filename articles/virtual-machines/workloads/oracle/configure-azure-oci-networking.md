@@ -3,16 +3,17 @@ title: Azure ExpressRoute 'ı Oracle bulut altyapısıyla bağlama | Microsoft D
 description: Platformlar arası Oracle uygulama çözümlerini etkinleştirmek için Azure ExpressRoute 'ı Oracle Cloud Infrastructure (OCı) FastConnect ile bağlama
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
 ms.reviewer: cynthn
-ms.openlocfilehash: e932bf7381e1246f4b489e7d564cf5486c3ec635
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2717ba307cac82465e0c5df996ef3b668af5e7d4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996221"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963717"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ile Oracle bulut altyapısı arasında doğrudan bir iç bağlantı kurma  
 
@@ -30,7 +31,7 @@ Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış g�
 
 ![Platformlar arası ağ bağlantısı](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure ile OCı arasında bağlantı kurmak için etkin bir Azure aboneliğiniz ve etkin bir OCı kiralamanın olması gerekir.
 
@@ -43,12 +44,12 @@ Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış g�
     * Azure ExpressRoute bağlantı hattı, ayrıntılı bant genişliği seçenekleri sunar, ancak FastConnect 1, 2, 5 veya 10 Gbps 'yi destekler. Bu nedenle, ExpressRoute altındaki bu eşleşen bant genişliği seçeneklerinden birini seçmeniz önerilir.
 
     ![ExpressRoute devresi oluşturma](media/configure-azure-oci-networking/exr-create-new.png)
-1. ExpressRoute **hizmet anahtarınızı**aklınızda edin. FastConnect devrenizi yapılandırırken anahtarı sağlamanız gerekir.
+1. ExpressRoute **hizmet anahtarınızı** aklınızda edin. FastConnect devrenizi yapılandırırken anahtarı sağlamanız gerekir.
 
     ![ExpressRoute hizmet anahtarı](media/configure-azure-oci-networking/exr-service-key.png)
 
     > [!IMPORTANT]
-    > ExpressRoute bağlantı hattı sağlandığında ( **sağlayıcı durumu** **sağlanmadığından**bile) ExpressRoute ücretleri için faturalandırılırsınız.
+    > ExpressRoute bağlantı hattı sağlandığında ( **sağlayıcı durumu** **sağlanmadığından** bile) ExpressRoute ücretleri için faturalandırılırsınız.
 
 1. Azure sanal ağınız veya OCı sanal bulut ağı IP adresi alanı ile örtüşmeyen her biri/30 olan iki özel IP adresi alanını carın. İlk IP adresi alanına birincil adres alanı ve ikinci IP adresi alanı ikincil adres alanı olarak başvuracağız. FastConnect devrenizi yapılandırırken ihtiyacınız olan adresleri aklınızda edin.
 1. Dinamik yönlendirme ağ geçidi (DRG) oluşturun. FastConnect devrenizi oluştururken buna ihtiyacınız olacak. Daha fazla bilgi için bkz. [dinamik yönlendirme ağ geçidi](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) belgeleri.

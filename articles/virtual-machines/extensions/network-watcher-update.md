@@ -8,16 +8,17 @@ manager: balar
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 23520a0249e22b3f81c7f7c598ef10d8c3acb550
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c427a206e0422e66cb526a29a462d8b6bdf6818e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900192"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965944"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Ağ Izleyicisi uzantısını en son sürüme güncelleştirin
 
@@ -25,7 +26,7 @@ ms.locfileid: "92900192"
 
 [Azure Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md) , Azure ağlarını izleyen bir ağ performansı izleme, tanılama ve analiz hizmetidir. Ağ Izleyicisi Aracısı sanal makinesi (VM) uzantısı, ağ trafiğini talep üzerine yakalama ve Azure VM 'lerinde diğer gelişmiş işlevleri kullanma gereksinimidir. Ağ Izleyicisi uzantısı, bağlantı Izleyicisi, bağlantı Izleyicisi (Önizleme), bağlantı sorunlarını giderme ve paket yakalama gibi özellikler tarafından kullanılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, ağ Izleyicisi uzantısının sanal makinenizde yüklü olduğu varsayılır.
 
@@ -47,7 +48,7 @@ Azure portal, Azure CLı veya PowerShell 'i kullanarak uzantı sürümünüzü k
 1. Ayrıntılar bölmesini görmek için **Azurenetworkizleyici** uzantısını seçin.
 1. **Sürüm alanındaki sürüm** numarasını bulun.  
 
-#### <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
+#### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 Bir Azure CLı isteminde aşağıdaki komutu çalıştırın:
 
@@ -82,7 +83,8 @@ Aşağıdaki komutları çalıştırın:
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+
 ```
 
 Bu işe yaramazsa. Aşağıdaki adımları kullanarak uzantıyı kaldırın ve yeniden yüklemeyi deneyin. Bu, en son sürümü otomatik olarak ekler.
@@ -143,4 +145,4 @@ Ağ Izleyicisi uzantısı için otomatik yükseltmeyi doğru olarak ayarlarsanı
 
 ## <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa [Linux](./network-watcher-linux.md) veya [Windows](./network-watcher-windows.md)için ağ izleyicisi uzantısı belgelerine bakın. Ayrıca [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla da iletişime geçin. Alternatif olarak, bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al** ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa [Linux](./network-watcher-linux.md) veya [Windows](./network-watcher-windows.md)için ağ izleyicisi uzantısı belgelerine bakın. Ayrıca [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla da iletişime geçin. Alternatif olarak, bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

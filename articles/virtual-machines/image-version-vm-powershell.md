@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 757b297d3d74365928cda0934485c0018f28ffee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225657"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964873"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Önizleme: VM 'den görüntü oluşturma
 
@@ -54,7 +54,7 @@ $gallery = Get-AzGallery `
 
 ## <a name="get-the-vm"></a>VM 'yi al
 
-[Get-azvm](/powershell/module/az.compute/get-azvm)kullanarak bir kaynak grubunda kullanılabilir olan sanal makinelerin listesini görebilirsiniz. VM adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzVM` VM nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *sourcevm* ADLı bir VM 'yi alır ve *$sourceVm*değişkenine atar. 
+[Get-azvm](/powershell/module/az.compute/get-azvm)kullanarak bir kaynak grubunda kullanılabilir olan sanal makinelerin listesini görebilirsiniz. VM adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzVM` VM nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *sourcevm* ADLı bir VM 'yi alır ve *$sourceVm* değişkenine atar. 
 
 ```azurepowershell-interactive
 $sourceVm = Get-AzVM `
@@ -81,7 +81,7 @@ Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla
 
 [New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. 
 
-Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve Windows çalıştıran özel bir sanal makine içindir. Linux kullanarak görüntü tanımı oluşturmak için kullanın `-OsType Linux` . 
+Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve Windows çalıştıran özel bir sanal makine içindir. Linux kullanarak görüntü tanımı oluşturmak için kullanın `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -105,7 +105,7 @@ Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir.
 
 Bu örnekte, görüntü sürümü *1.0.0* ve hem *Orta Batı ABD* hem de *Orta Güney ABD* veri merkezlerine çoğaltılır. Çoğaltma için hedef bölge seçerken, *kaynak* bölgeyi çoğaltma için hedef olarak da dahil etmeniz gerektiğini unutmayın.
 
-VM 'den bir görüntü sürümü oluşturmak için, için kullanın `$vm.Id.ToString()` `-Source` .
+VM 'den bir görüntü sürümü oluşturmak için, için kullanın `$vm.Id.ToString()` `-SourceImageId` .
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -119,7 +119,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $gallery.ResourceGroupName `
    -Location $gallery.Location `
    -TargetRegion $targetRegions  `
-   -Source $sourceVm.Id.ToString() `
+   -SourceImageId $sourceVm.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01' `  
    -asJob 
 ```

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363842"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965111"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Metin Analizi API'si için veri ve hız sınırları
 <a name="data-limits"></a>
@@ -31,27 +31,31 @@ Boyut sınırlarını bulmak için bu makaleyi kullanın ve Metin Analizi API'si
 
 | Sınır | Değer |
 |------------------------|---------------|
-| Tek belge için maksimum boyut | [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)ile ölçülen 5.120 karakter. Ayrıca sistem durumu kapsayıcısı için Metin Analizi de geçerlidir. |
-| İsteğin tamamının maksimum boyutu | 1 MB. Ayrıca sistem durumu kapsayıcısı için Metin Analizi de geçerlidir. |
+| Tek belge için maksimum boyut | [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)ile ölçülen 5.120 karakter. Ayrıca sistem durumu için Metin Analizi için de geçerlidir. |
+| Tek bir belgenin en büyük boyutu ( `/analyze` uç nokta)  | [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)Ile ölçülen 125K karakter. Sistem durumu için Metin Analizi uygulanmaz. |
+| İsteğin tamamının maksimum boyutu | 1 MB. Ayrıca sistem durumu için Metin Analizi için de geçerlidir. |
 
-Tek bir istekte gönderebilmeniz için en fazla belge sayısı, kullanmakta olduğunuz API sürümüne ve özelliğine bağlı olacaktır.
+Tek bir istekte gönderebilmeniz için en fazla belge sayısı, kullanmakta olduğunuz API sürümüne ve özelliğine bağlı olacaktır. `/analyze`Herhangi bir belge en büyük boyutu aşarsa, uç nokta tüm isteği reddeder (125K karakter)
 
 #### <a name="version-3"></a>[Sürüm 3](#tab/version-3)
 
-Aşağıdaki sınırlar API 'nin v3 sürümünde değiştirilmiştir. Aşağıdaki sınırları aşmamak, bir HTTP 400 hata kodu üretir.
+Aşağıdaki sınırlar geçerli v3 API 'sidir. Aşağıdaki sınırları aşmamak, bir HTTP 400 hata kodu üretir.
 
 
-| Özellik | Istek başına en fazla belge | 
+| Öne çıkan özelliği | Istek başına en fazla belge | 
 |----------|-----------|
 | Dil Algılama | 1000 |
 | Yaklaşım Analizi | 10 |
+| Görüşün madenciliği | 10 |
 | Anahtar İfade Ayıklama | 10 |
 | Adlandırılmış Varlık Tanıma | 5 |
 | Varlık Bağlama | 5 |
-| Sistem durumu kapsayıcısı için Metin Analizi | 1000 |
+| Sistem durumu için Metin Analizi  | Web tabanlı API için 10, kapsayıcı için 1000. |
+| Uç noktayı çözümle | Tüm işlemler için 25. |
+
 #### <a name="version-2"></a>[Sürüm 2](#tab/version-2)
 
-| Özellik | Istek başına en fazla belge | 
+| Öne çıkan özelliği | Istek başına en fazla belge | 
 |----------|-----------|
 | Dil Algılama | 1000 |
 | Yaklaşım Analizi | 1000 |
@@ -74,7 +78,7 @@ Oran sınırınız [fiyatlandırma katmanınızda](https://azure.microsoft.com/p
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 
-İstekler her bir Metin Analizi özelliği için ayrı olarak ölçülür. Örneğin, fiyatlandırma katmanınız için en fazla istek sayısını aynı anda her bir özelliğe gönderebilirsiniz.  
+İstek ücretleri her bir Metin Analizi özelliği için ayrı olarak ölçülür. Fiyatlandırma katmanınız için en fazla istek sayısını aynı anda her bir özelliğe gönderebilirsiniz. Örneğin, `S` katmanda çalışıyorsanız ve 1000 istek bir kez gönderiyorsanız, 59 saniyelik başka bir istek gönderemeyebilirsiniz.
 
 
 ## <a name="see-also"></a>Ayrıca bkz.

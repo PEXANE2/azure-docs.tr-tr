@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d6213d49c98f5e09f22e7310183315800d0c6f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359791"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966556"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Servic
 > * ServiceNow 'da grupları ve grup üyeliklerini sağlama
 > * ServiceNow ['Da çoklu oturum açma](servicenow-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -56,13 +56,6 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
    ![ServiceNow yönetici rolü](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. ServiceNow 'da aşağıdaki ayarların **devre dışı bırakıldığından** emin olmak için denetleyin:
-
-   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları** ' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
-   2. **Sistem özelliklerini** seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir**.
-     
-   > [!IMPORTANT]
-   > Bu ayar *etkinleştirilirse* , sağlama altyapısı ServiceNow ile iletişim kuramayacaktır.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden ServiceNow ekleme
 
@@ -83,11 +76,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Azure AD 'de ServiceNow için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **ServiceNow** ' ı seçin.
+2. Uygulamalar listesinde **ServiceNow**' ı seçin.
 
     ![Uygulamalar listesindeki ServiceNow bağlantısı](common/all-applications.png)
 
@@ -95,7 +88,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -107,13 +100,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları ServiceNow** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları ServiceNow**' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den ServiceNow 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için ServiceNow içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz ServiceNow API 'sinin, bu özniteliğe göre kullanıcıların filtrelemesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory grupları ServiceNow** ' a eşitler ' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory grupları ServiceNow**' a eşitler ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den ServiceNow 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, ServiceNow güncelleştirme işlemlerinde grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -127,7 +120,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
@@ -151,7 +144,7 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 
    Bu hata ServiceNow örneğiyle iletişim kuran bir sorunu gösterir. ServiceNow 'da aşağıdaki ayarların *devre dışı bırakıldığından* emin olmak için iki kez kontrol edin:
    
-   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları** ' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
+   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları**' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
    2. **Sistem özelliklerini** seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir**.
 
 ## <a name="additional-resources"></a>Ek kaynaklar

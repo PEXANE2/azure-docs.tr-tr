@@ -4,16 +4,16 @@ description: Bileşen durumu ve günlüklerini alma gibi Azure IoT Edge için st
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046579"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964516"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge cihazınızda sorun giderme
 
@@ -46,6 +46,8 @@ Sorun giderme aracı, bu üç kategoride sıralanan birçok denetimi çalıştı
 * *Bağlantı denetimleri* , IoT Edge çalışma zamanının konak cihazdaki bağlantı noktalarına erişebileceğini ve tüm IoT Edge bileşenlerinin IoT Hub bağlanabildiğini doğrular. IoT Edge cihaz bir proxy 'nin arkasındaysa bu denetim kümesi hataları döndürür.
 * *Üretime hazırlık denetimleri* , cihaz sertifika YETKILISI (CA) sertifikalarının durumu ve modül günlük dosyası yapılandırması gibi önerilen üretim en iyi uygulamalarına bakar.
 
+IoT Edge Denetim Aracı, tanılamayı çalıştırmak için bir kapsayıcı kullanır. Kapsayıcı görüntüsü, `mcr.microsoft.com/azureiotedge-diagnostics:latest` [Microsoft Container Registry](https://github.com/microsoft/containerregistry)ile kullanılabilir. Bir cihazda İnternet 'e doğrudan erişim olmadan bir denetim çalıştırmanız gerekiyorsa, cihazlarınız kapsayıcı görüntüsüne erişmesi gerekir.
+
 Bu aracın çalıştığı her bir tanılama denetimi hakkında bilgi için, bir hata veya uyarı alırsanız, [IoT Edge sorun giderme denetimleri](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)bölümüne bakın.
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>' Support-demeti ' komutuyla hata ayıklama bilgilerini toplayın
@@ -66,6 +68,8 @@ Windows'da:
 iotedge support-bundle --since 6h
 ```
 
+Destek-paket komutunun çıkışını Azure Blob depolama alanına yüklemek için cihazınıza [doğrudan yöntem](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) çağrısı da kullanabilirsiniz.
+
 > [!WARNING]
 > `support-bundle`Komutun çıktısı ana bilgisayar, cihaz ve modül adları, modülleriniz tarafından günlüğe kaydedilen bilgiler içerebilir. Çıktıyı ortak bir forumunda paylaşımında lütfen unutmayın.
 
@@ -74,6 +78,23 @@ iotedge support-bundle --since 6h
 IoT Edge'in eski bir sürümünü çalıştırıyorsanız, yükseltme yapmak sorununuzu çözebilir. `iotedge check`Araç, IoT Edge güvenlik arka plan programının en son sürümü olup olmadığını denetler, ancak IoT Edge hub ve aracı modüllerinin sürümlerini denetlemez. Cihazınızdaki çalışma zamanı modüllerinin sürümünü denetlemek için, ve komutlarını kullanın `iotedge logs edgeAgent` `iotedge logs edgeHub` . Modül başlatıldığında sürüm numarası günlüklerde bildirilir.
 
 Cihazınızı güncelleştirme hakkında yönergeler için bkz. [IoT Edge güvenlik cini ve çalışma zamanını güncelleştirme](how-to-update-iot-edge.md).
+
+## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>Cihazlarınızda IoT Edge yüklemesini doğrulayın
+
+[Ikizi edgeAgent modülünü izleyerek](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins)cihazlarınızda IoT Edge yüklemesini doğrulayabilirsiniz.
+
+En son edgeAgent modülünü ikizi almak için [Azure Cloud Shell](https://shell.azure.com/)adresinden aşağıdaki komutu çalıştırın:
+
+   ```azurecli-interactive
+   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   ```
+
+Bu komut, bildirilen tüm edgeAgent [özelliklerini](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)çıktı olarak alır. Cihazın durumunu izleyen bazı yararlı bilgiler aşağıda verilmiştir:
+
+* çalışma zamanı durumu
+* çalışma zamanı başlangıç zamanı
+* çalışma zamanının son çıkış zamanı
+* çalışma zamanı yeniden başlatma sayısı
 
 ## <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Güvenlik Yöneticisi ve günlüklerinin durumunu kontrol edin
 
@@ -192,6 +213,8 @@ IoT Edge güvenlik arka plan programı çalışmaya başladıktan sonra, sorunla
 ```cmd
 iotedge logs <container name>
 ```
+
+Ayrıca, Bu modülün günlüklerini Azure Blob depolama alanına yüklemek için cihazınızdaki bir modüle [doğrudan yöntem](how-to-retrieve-iot-edge-logs.md#upload-module-logs) çağrısı kullanabilirsiniz.
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge hub 'ından giden iletileri görüntüleme
 

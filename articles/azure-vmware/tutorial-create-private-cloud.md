@@ -1,14 +1,14 @@
 ---
 title: Öğretici-Azure 'da vSphere kümesi dağıtma
-description: Azure VMWare çözümünü kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
+description: Azure VMware çözümünü kullanarak Azure 'da vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/19/2020
+ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952293"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966318"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Öğretici: Azure 'da Azure VMware çözümü özel bulutu dağıtma
 
@@ -51,7 +51,7 @@ Bir kod bloğunun sağ üst köşesinden **deneyin** öğesini seçin. Ayrıca, 
 
 #### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
+`[az group create](/cli/azure/group)` komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 
@@ -77,7 +77,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümünün özel bulutunu silme
 
-Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, bunu silebilirsiniz. Azure VMware çözümü özel bulutu, yalıtılmış bir ağ etki alanı, ayrılmış sunucu düğümlerinde sağlanan bir veya daha fazla vSphere kümesi ve genellikle birçok sanal makine içerir. Özel bir bulut silindiğinde tüm sanal makineler, verileri ve kümeleri silinir. Adanmış çıplak düğümler güvenli bir şekilde temizlenir ve ücretsiz havuza döndürülür. Müşteri için sağlanan ağ etki alanı silinir.  
+Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, bunu silebilirsiniz. Azure VMware çözümü özel bulutu, yalıtılmış bir ağ etki alanı, adanmış sunucu konaklarında bir veya daha fazla sağlanan vSphere kümesi ve birkaç sanal makine içerir. Özel bir bulut silindiğinde tüm sanal makineler, verileri ve kümeleri silinir. Adanmış çıplak konaklar güvenli bir şekilde temizlenir ve ücretsiz havuza döndürülür. Müşteri için sağlanan ağ etki alanı silinir.  
 
 > [!CAUTION]
 > Özel bulutun silinmesi geri alınamaz bir işlemdir. Özel bulut silindikten sonra, tüm çalışan iş yüklerini ve bileşenlerini sonlandırdığı ve genel IP adresleri dahil tüm özel bulut verilerini ve yapılandırma ayarlarını yok etmek için veriler kurtarılamaz.
@@ -92,7 +92,7 @@ Artık ihtiyacınız olmayan bir Azure VMware çözümü özel bulutunuz varsa, 
 
 2. Silinecek özel bulutu seçin.
  
-3. Özel bulutun adını girip **Evet**' i seçin. Birkaç saat içinde silme işlemi tamamlanır.  
+3. Özel bulutun adını girip **Evet**' i seçin. Birkaç saat içinde, silme işlemi tamamlanır.  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware komutları
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: alkohli
-ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 309fa85d0a4d877522a89dd8f1e6e71fb2074744
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054916"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964975"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -45,7 +45,7 @@ Bu öğreticide, birimleri bağlama, başlatma ve biçimlendirme işlemlerinin y
 > 
 
 ## <a name="mount-volumes"></a>Birimleri bağlama
-StorSimple birimlerini bağlamak, başlatmak ve biçimlendirmek için aşağıdaki yordamı kullanın. Bu yordam, sabit diskleri ve ilgili birimleri veya bölümleri yönetmeye yönelik bir sistem yardımcı programı olan disk yönetimi 'ni kullanır. Disk yönetimi hakkında daha fazla bilgi için Microsoft TechNet Web sitesinde [disk yönetimi](https://technet.microsoft.com/library/cc770943.aspx) ' ne gidin.
+StorSimple birimlerini bağlamak, başlatmak ve biçimlendirmek için aşağıdaki yordamı kullanın. Bu yordam, sabit diskleri ve ilgili birimleri veya bölümleri yönetmeye yönelik bir sistem yardımcı programı olan disk yönetimi 'ni kullanır. Disk yönetimi hakkında daha fazla bilgi için Microsoft TechNet Web sitesinde [disk yönetimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11)) ' ne gidin.
 
 #### <a name="to-mount-volumes"></a>Birimleri bağlamak için
 1. Ana bilgisayarınızda Microsoft Iscsı Başlatıcısı ' nı başlatın.
@@ -62,7 +62,7 @@ StorSimple birimlerini bağlamak, başlatmak ve biçimlendirmek için aşağıda
      > 
 4. Birimleri çevrimiçi duruma alın:
    
-   1. Disk Yönetimi 'nde **çevrimdışı**olarak işaretlenmiş herhangi bir birime sağ tıklayın.
+   1. Disk Yönetimi 'nde **çevrimdışı** olarak işaretlenmiş herhangi bir birime sağ tıklayın.
    2. **Diski yeniden etkinleştir**' e tıklayın. Disk yeniden etkinleştirildikten sonra diskin **çevrimiçi** olarak işaretlenmesi gerekir.
 5. Birim (ler) i başlatın:
    
@@ -80,7 +80,7 @@ StorSimple birimlerini bağlamak, başlatmak ve biçimlendirmek için aşağıda
       * NTFS dosya sistemi ' ni seçin.
       * 64 KB ayırma birimi boyutu belirtin.
       * Hızlı biçimlendirme gerçekleştirin.
-7. Çoklu bölümlü birimleri biçimlendirin. Yönergeler için, [Disk Yönetimi uygulama](https://msdn.microsoft.com/library/dd163556.aspx)bölümünde "bölümler ve birimler" bölümüne gidin.
+7. Çoklu bölümlü birimleri biçimlendirin. Yönergeler için, [Disk Yönetimi uygulama](/previous-versions/tn-archive/dd163556(v=technet.10))bölümünde "bölümler ve birimler" bölümüne gidin.
 
 ## <a name="view-information-about-your-volumes"></a>Birimleriniz hakkındaki bilgileri görüntüleme
 Yerel ve Azure StorSimple birimleri hakkındaki bilgileri görüntülemek için aşağıdaki yordamı kullanın.
@@ -133,7 +133,7 @@ Temel bir birimin yedeğini yapılandırmak için aşağıdaki yordamı kullanı
 ### <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce:
 
-* StorSimple cihazının ve ana bilgisayarın doğru yapılandırıldığından emin olun. Daha fazla bilgi için, Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-deployment-walkthrough-u2.md)konusuna gidin.
+* StorSimple cihazının ve ana bilgisayarın doğru yapılandırıldığından emin olun. Daha fazla bilgi için, Şirket [Içi StorSimple cihazınızı dağıtma](./storsimple-8000-deployment-walkthrough-u2.md)konusuna gidin.
 * StorSimple Snapshot Manager yükleyip yapılandırın. Daha fazla bilgi için, [StorSimple Snapshot Manager dağıtma](storsimple-snapshot-manager-deployment.md)konusuna gidin.
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>Temel bir birimin yedeklemesini yapılandırmak için
@@ -166,12 +166,12 @@ Başlamadan önce:
 * StorSimple cihazında iki birim yapılandırın. (Örneklerde, kullanılabilir birimler **disk 1** ve **Disk 2**' dir.) 
 
 ### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>1. Adım: Dinamik yansıtılmış birim oluşturmak için disk yönetimi 'Ni kullanma
-Disk Yönetimi, sabit diskleri ve içerdikleri birimleri veya bölümleri yönetmeye yönelik bir sistem yardımcı programıdır. Disk yönetimi hakkında daha fazla bilgi için Microsoft TechNet Web sitesinde [disk yönetimi](https://technet.microsoft.com/library/cc770943.aspx) ' ne gidin.
+Disk Yönetimi, sabit diskleri ve içerdikleri birimleri veya bölümleri yönetmeye yönelik bir sistem yardımcı programıdır. Disk yönetimi hakkında daha fazla bilgi için Microsoft TechNet Web sitesinde [disk yönetimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11)) ' ne gidin.
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>Dinamik bir yansıtılmış birim oluşturmak için
 1. Disk Yönetimi 'ni başlatmak için aşağıdaki seçeneklerden herhangi birini kullanın: 
    
-   * **Çalıştır** kutusunu açın, **diskmgmt. msc**yazın ve ENTER tuşuna basın.
+   * **Çalıştır** kutusunu açın, **diskmgmt. msc** yazın ve ENTER tuşuna basın.
    * Sunucu Yöneticisi başlatın, **depolama** düğümünü genişletin ve ardından **disk yönetimi**' ni seçin. 
    * **Yönetimsel Araçlar**'ı başlatın, **Bilgisayar Yönetimi** düğümünü genişletin ve ardından **disk yönetimi**'ni seçin. 
 2. StorSimple cihazında iki biriminiz bulunduğundan emin olun. (Örnekte, kullanılabilir birimler **disk 1** ve **Disk 2**' dir.) 
@@ -210,4 +210,4 @@ Dinamik bir yansıtılmış birimi yapılandırmak için aşağıdaki yordamı k
 * [StorSimple Snapshot Manager kullanarak birim grupları oluşturma ve yönetme](storsimple-snapshot-manager-manage-volume-groups.md)hakkında bilgi edinin.
 
 <!--Reference links-->
-[1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee338480(v=ws.10)

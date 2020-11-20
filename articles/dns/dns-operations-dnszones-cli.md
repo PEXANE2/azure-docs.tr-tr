@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff1abd48282a4ec9278d7182fea286178b5bd3ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495922"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965791"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLı kullanarak Azure DNS DNS Bölgeleri Yönetme
 
@@ -43,11 +43,11 @@ Yapılandırmanıza başlamadan önce aşağıdaki öğelerin bulunduğunu doğr
 
 * Azure aboneliği. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-* Windows, Linux veya Mac için Azure CLI'nin son sürümünü yüklemeniz gerekir. Daha fazla bilgi için bkz. [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-az-cli2).
+* Windows, Linux veya Mac için Azure CLI'nin son sürümünü yüklemeniz gerekir. Daha fazla bilgi için bkz. [Azure CLI'yı yükleme](/cli/azure/install-az-cli2).
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure hesabınızda oturum açma
 
-Bir konsol penceresi açın ve kimlik bilgilerinizi girerek kimliğinizi doğrulayın. Daha fazla bilgi için bkz. [Azure CLI üzerinden Azure’da oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+Bir konsol penceresi açın ve kimlik bilgilerinizi girerek kimliğinizi doğrulayın. Daha fazla bilgi için bkz. [Azure CLI üzerinden Azure’da oturum açma](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 
 ```
 az login
@@ -85,7 +85,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Yardım alma
 
-Azure DNS ile ilgili tüm Azure CLı komutları ile başlar `az network dns` . Her komut için, seçeneği kullanılarak yardım vardır `--help` (kısa form `-h` ).  Örneğin:
+Azure DNS ile ilgili tüm Azure CLı komutları ile başlar `az network dns` . Her komut için, seçeneği kullanılarak yardım vardır `--help` (kısa form `-h` ).  Örnek:
 
 ```azurecli
 az network dns --help
@@ -97,7 +97,7 @@ az network dns zone create --help
 
 DNS bölgesi, `az network dns zone create` komutu kullanılarak oluşturulur. Yardım için bkz. `az network dns zone create -h`.
 
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *contoso.com* adlı bir DNS bölgesi oluşturur:
+Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *contoso.com* adlı bir DNS bölgesi oluşturur:
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
@@ -105,7 +105,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>Etiketlerle bir DNS bölgesi oluşturmak için
 
-Aşağıdaki örnek, parametresini kullanarak iki [Azure Resource Manager Tag](dns-zones-records.md#tags), *Project = demo* ve *env = test*ile bir DNS bölgesinin nasıl oluşturulacağını gösterir `--tags` (kısa biçim `-t` ):
+Aşağıdaki örnek, parametresini kullanarak iki [Azure Resource Manager Tag](dns-zones-records.md#tags), *Project = demo* ve *env = test* ile bir DNS bölgesinin nasıl oluşturulacağını gösterir `--tags` (kısa biçim `-t` ):
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
@@ -115,7 +115,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com -
 
 Bir DNS bölgesi almak için kullanın `az network dns zone show` . Yardım için bkz. `az network dns zone show --help`.
 
-Aşağıdaki örnek, *Myresourcegroup*kaynak GRUBUNDAKI *contoso.com* DNS bölgesini ve onunla ilişkili verileri döndürür. 
+Aşağıdaki örnek, *Myresourcegroup* kaynak GRUBUNDAKI *contoso.com* DNS bölgesini ve onunla ilişkili verileri döndürür. 
 
 ```azurecli
 az network dns zone show --resource-group myresourcegroup --name contoso.com
@@ -185,7 +185,7 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 
 Bu komut, onay ister. İsteğe bağlı `--yes` anahtarı, bu onay istemini gizler.
 
-Aşağıdaki örnek, *contoso.com* bölgesinin *myresourcegroup*kaynak grubundan nasıl silineceğini gösterir.
+Aşağıdaki örnek, *contoso.com* bölgesinin *myresourcegroup* kaynak grubundan nasıl silineceğini gösterir.
 
 ```azurecli
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
@@ -193,7 +193,6 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-DNS bölgesindeki [kayıt kümelerini ve kayıtları yönetmeyi](dns-getstarted-create-recordset-cli.md) öğrenin.
+DNS bölgesindeki [kayıt kümelerini ve kayıtları yönetmeyi](./dns-getstarted-cli.md) öğrenin.
 
 [Azure DNS için etki alanınızı nasıl atayacağınızı](dns-domain-delegation.md)öğrenin.
-

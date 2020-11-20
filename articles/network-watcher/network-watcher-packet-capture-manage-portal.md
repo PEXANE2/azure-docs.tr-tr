@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 099ead37b8d6b46b767ef59ff24a7e7ff9dc9e3c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84736739"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966454"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Portalı kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
@@ -41,14 +41,14 @@ Ağ güvenlik grubu, ağ arabirimi veya ağ arabiriminin içinde bulunduğu alt 
 ## <a name="start-a-packet-capture"></a>Paket yakalaması başlatma
 
 1. Tarayıcınızda [Azure Portal](https://portal.azure.com) gidin ve **tüm hizmetler**' i seçin ve ağ **İzleyicisi** ' ni **seçin.**
-2. **Ağ tanılama araçları**altında **paket yakalama** ' yı seçin. Mevcut paket yakalamaları, durumlarına bakılmaksızın listelenir.
+2. **Ağ tanılama araçları** altında **paket yakalama** ' yı seçin. Mevcut paket yakalamaları, durumlarına bakılmaksızın listelenir.
 3. Paket yakalama oluşturmak için **Ekle** ' yi seçin. Aşağıdaki özellikler için değer seçebilirsiniz:
    - **Abonelik**: paket yakalamayı oluşturmak istediğiniz sanal makinenin içinde olduğu abonelik.
    - **Kaynak grubu**: sanal makinenin kaynak grubu.
    - **Hedef sanal makine**: paket yakalamayı oluşturmak istediğiniz sanal makine.
    - **Paket yakalama adı**: paket yakalama için bir ad.
-   - **Depolama hesabı veya dosyası**: **depolama hesabı**, **Dosya**veya her ikisini birden seçin. **Dosya**' yı seçerseniz yakalama, sanal makine içindeki bir yola yazılır.
-   - **Yerel dosya yolu**: sanal makinedeki paket yakalamanın kaydedileceği yerel yol (yalnızca *Dosya* seçildiğinde geçerlidir). Yol geçerli bir yol olmalıdır. Linux sanal makinesi kullanıyorsanız yolun */var/yakalamaları*ile başlaması gerekir.
+   - **Depolama hesabı veya dosyası**: **depolama hesabı**, **Dosya** veya her ikisini birden seçin. **Dosya**' yı seçerseniz yakalama, sanal makine içindeki bir yola yazılır.
+   - **Yerel dosya yolu**: sanal makinedeki paket yakalamanın kaydedileceği yerel yol (yalnızca *Dosya* seçildiğinde geçerlidir). Yol geçerli bir yol olmalıdır. Linux sanal makinesi kullanıyorsanız yolun */var/yakalamaları* ile başlaması gerekir.
    - **Depolama hesapları**: *depolama hesabı*' nı seçtiyseniz, var olan bir depolama hesabını seçin. Bu seçenek yalnızca **depolama**' yı seçtiyseniz kullanılabilir.
    
      > [!NOTE]
@@ -74,7 +74,7 @@ Paket yakalamada ayarlanan zaman sınırının süresi dolduktan sonra, paket ya
 > [!NOTE]
 > Portal otomatik olarak:
 >  * Bölgenin zaten bir ağ izleyicisi yoksa, seçtiğiniz sanal makinenin bulunduğu bölge ile aynı bölgede bir ağ izleyicisi oluşturur.
->  * *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) veya [Windows](../virtual-machines/windows/extensions-nwa.md) sanal makine uzantısını, zaten yüklenmemişse sanal makineye ekler.
+>  * *AzureNetworkWatcherExtension* [Linux](../virtual-machines/extensions/network-watcher-linux.md) veya [Windows](../virtual-machines/extensions/network-watcher-windows.md) sanal makine uzantısını, zaten yüklenmemişse sanal makineye ekler.
 
 ## <a name="delete-a-packet-capture"></a>Paket yakalamayı silme
 

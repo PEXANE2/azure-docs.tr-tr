@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: e1e34bacb905bf48fc5f7cd44e66cf4a4326de91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d6bc11f4f468b784b957ded954dc9a1720e89bfd
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044658"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964465"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları için C# IoT Edge modülü geliştirme
 
@@ -33,9 +33,9 @@ Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından o
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Çözüm kapsamı
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide, **Visual Studio 2019** kullanarak **C#** ' de bir modülün nasıl geliştirilmesi ve bir **Windows cihazına**dağıtılması gösterilmektedir. Linux cihazları için modüller geliştiriyorsanız bunun yerine [Linux cihazları için C# IoT Edge modülü geliştirme](tutorial-csharp-module.md) bölümüne gidin.
+Bu öğreticide, **Visual Studio 2019** kullanarak **C#** ' de bir modülün nasıl geliştirilmesi ve bir **Windows cihazına** dağıtılması gösterilmektedir. Linux cihazları için modüller geliştiriyorsanız bunun yerine [Linux cihazları için C# IoT Edge modülü geliştirme](tutorial-csharp-module.md) bölümüne gidin.
 
 Windows cihazlarına C# modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloyu kullanın:
 
@@ -43,8 +43,6 @@ Windows cihazlarına C# modülleri geliştirme ve dağıtmaya yönelik seçenekl
 | -- | ------------------ | ------------------ |
 | **Windows AMD64 geliştirme** | ![VS Code 'de WinAMD64 için C# modülleri geliştirme](./media/tutorial-c-module/green-check.png) | ![Visual Studio 'da WinAMD64 için C# modülleri geliştirme](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 hata ayıklama** |   | ![Visual Studio 'da WinAMD64 için C# modüllerine hata ayıklama](./media/tutorial-c-module/green-check.png) |
-
-## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, [bir Windows cihazı için IoT Edge modülü geliştirmede](tutorial-develop-for-windows.md)geliştirme ortamınızı ayarlamak için önceki öğreticiden çıkmalısınız. Bu Öğreticiyi tamamladıktan sonra, zaten aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -71,7 +69,7 @@ Azure IoT Edge araçları, Visual Studio 'da desteklenen tüm IoT Edge modül di
 
    ![Yeni bir Azure IoT Edge projesi oluştur](./media/tutorial-csharp-module-windows/new-project.png)
 
-3. Projeyi ve çözümü **CSharpTutorialApp**gibi açıklayıcı bir şekilde yeniden adlandırın. Projeyi oluşturmak için **Oluştur** ' a tıklayın.
+3. Projeyi ve çözümü **CSharpTutorialApp** gibi açıklayıcı bir şekilde yeniden adlandırın. Projeyi oluşturmak için **Oluştur** ' a tıklayın.
 
    ![Yeni bir Azure IoT Edge projesi yapılandırma](./media/tutorial-csharp-module-windows/configure-project.png)
 
@@ -79,7 +77,7 @@ Azure IoT Edge araçları, Visual Studio 'da desteklenen tüm IoT Edge modül di
 
    | Alan | Değer |
    | ----- | ----- |
-   | Şablon seçin | **C# modülünü**seçin. |
+   | Şablon seçin | **C# modülünü** seçin. |
    | Modül proje adı | Modülünüze **CSharpModule** adını verin. |
    | Docker görüntü deposu | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusunu Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu \<registry name\> . azurecr.io/csharpmodule gibi görünüyor. |
 
@@ -131,7 +129,7 @@ Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-4. Değişken bildirimlerinden sonra **Program** sınıfına **MessageBody**, **Machine**ve **Ambient** sınıfları ekleyin. Bu sınıflar gelen iletilerin gövdesi için beklenen şemayı tanımlar.
+4. Değişken bildirimlerinden sonra **Program** sınıfına **MessageBody**, **Machine** ve **Ambient** sınıfları ekleyin. Bu sınıflar gelen iletilerin gövdesi için beklenen şemayı tanımlar.
 
     ```csharp
     class MessageBody
@@ -273,7 +271,7 @@ Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir
 
 8. Program.cs dosyasını kaydedin.
 
-9. IoT Edge çözümünüzdeki dosyada **deployment.template.js** açın. Bu dosya, IoT Edge aracısına hangi modüllerin dağıtılacağını, bu örnekte **SimulatedTemperatureSensor** ve **csharpmodülünü**söyler ve IoT Edge hub 'ına iletileri aralarında nasıl yönlendirildiğini söyler.
+9. IoT Edge çözümünüzdeki dosyada **deployment.template.js** açın. Bu dosya, IoT Edge aracısına hangi modüllerin dağıtılacağını, bu örnekte **SimulatedTemperatureSensor** ve **csharpmodülünü** söyler ve IoT Edge hub 'ına iletileri aralarında nasıl yönlendirildiğini söyler.
 
 10. İkizi **csharpmodule** modülünü dağıtım bildirimine ekleyin. Aşağıdaki JSON içeriğini **modulesContent** bölümünün en altına, **$edgeHub** modül ikizinden sonra ekleyin:
 
@@ -301,9 +299,9 @@ Bir önceki bölümde bir IoT Edge çözümü oluşturdunuz ve **CSharpModule** 
 
    Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin` . Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
-2. Visual Studio Çözüm Gezgini ' nde, derlemek istediğiniz proje adına sağ tıklayın. Varsayılan ad **AzureIotEdgeApp1** ' dir ve bir Windows modülü oluştururken, uzantı **Windows. amd64**olmalıdır.
+2. Visual Studio Çözüm Gezgini ' nde, derlemek istediğiniz proje adına sağ tıklayın. Varsayılan ad **AzureIotEdgeApp1** ' dir ve bir Windows modülü oluştururken, uzantı **Windows. amd64** olmalıdır.
 
-3. **Derleme ve gönderme IoT Edge modüllerini**seçin.
+3. **Derleme ve gönderme IoT Edge modüllerini** seçin.
 
    Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
 

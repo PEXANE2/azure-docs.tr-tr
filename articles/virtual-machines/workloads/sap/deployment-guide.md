@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359622"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964958"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -828,7 +829,7 @@ Azure Marketi 'nden bir VM dağıtırsanız, bu adım gerekli değildir. Azure M
 
 Azure VM aracısını güncelleştirmek için Kullanıcı etkileşimi gerekmez. VM Aracısı otomatik olarak güncelleştirilir ve VM 'nin yeniden başlatılmasını gerektirmez.
 
-#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>'Un
+#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
 
 Linux için VM aracısını yüklemek üzere aşağıdaki komutları kullanın:
 
@@ -854,14 +855,14 @@ Windows 'da proxy 'yi yapılandırmak için gerçekleştirmeniz gereken adımlar
 
 Yerel sistem hesabının Internet 'e erişmesi için proxy ayarlarının doğru ayarlanmış olması gerekir. Proxy ayarlarınız grup ilkesi tarafından ayarlanmamışsa, yerel sistem hesabı için ayarları yapılandırabilirsiniz.
 
-1. **Başlat**' a gidin, **gpedit. msc**yazın ve ardından **ENTER**' u seçin.
-1. **Computer Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**Yönetim Şablonları bilgisayar yapılandırması ' nı seçin. **Proxy ayarlarını makine başına (Kullanıcı başına değil)** ayarla ayarının devre dışı veya yapılandırılmamış olduğundan emin olun.
+1. **Başlat**' a gidin, **gpedit. msc** yazın ve ardından **ENTER**' u seçin.
+1. **Computer Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer** Yönetim Şablonları bilgisayar yapılandırması ' nı seçin. **Proxy ayarlarını makine başına (Kullanıcı başına değil)** ayarla ayarının devre dışı veya yapılandırılmamış olduğundan emin olun.
 1. **Denetim Masası**' nda **Ağ ve Paylaşım Merkezi**  >  **Internet seçenekleri**' ne gidin.
 1. **Bağlantılar** sekmesinde, **LAN ayarları** düğmesini seçin.
 1. **Ayarları otomatik olarak algıla** onay kutusunu temizleyin.
 1. **LAN için bir proxy sunucusu kullan** onay kutusunu seçin ve ardından proxy adresini ve bağlantı noktasını girin.
 1. **Gelişmiş** düğmesini seçin.
-1. **Özel durumlar** kutusuna **168.63.129.16**IP adresini girin. **Tamam**’ı seçin.
+1. **Özel durumlar** kutusuna **168.63.129.16** IP adresini girin. **Tamam**’ı seçin.
 
 #### <a name="linux"></a>Linux
 
@@ -869,14 +870,14 @@ Aynı anda \\ waagent. conf dosyasında bulunan Microsoft Azure Konuk aracısın
 
 Aşağıdaki parametreleri ayarlayın:
 
-1. **Http proxy Konağı**. Örneğin, bunu **proxy. Corp. Local**olarak ayarlayın.
+1. **Http proxy Konağı**. Örneğin, bunu **proxy. Corp. Local** olarak ayarlayın.
 
    ```console
    HttpProxy.Host=<proxy host>
 
    ```
 
-1. **Http proxy bağlantı noktası**. Örneğin, bunu **80**olarak ayarlayın.
+1. **Http proxy bağlantı noktası**. Örneğin, bunu **80** olarak ayarlayın.
 
    ```console
    HttpProxy.Port=<port of the proxy host>
@@ -933,7 +934,7 @@ PowerShell kullanarak SAP için Azure uzantısı 'nı yüklemek için:
 
 1. Azure PowerShell cmdlet 'inin en son sürümünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'Leri dağıtma][deployment-guide-4.1].  
 1. Aşağıdaki PowerShell cmdlet’ini çalıştırın.
-    Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak istiyorsanız, ortamınız **Azurecyüksek**' dir. Azure Çin 21Vianet için **AzureChinaCloud**öğesini seçin.
+    Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak istiyorsanız, ortamınız **Azurecyüksek**' dir. Azure Çin 21Vianet için **AzureChinaCloud** öğesini seçin.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -1030,7 +1031,7 @@ SAP için yeni VM uzantısı, VM 'nin izleme ve yapılandırma verilerine erişm
 1. SAP için VM uzantısının geçerli sürümünü kaldırdığınızdan emin olun. Aynı sanal makinede SAP için VM uzantısının her iki sürümünün de yüklenmesi desteklenmez.
 1. Azure PowerShell cmdlet 'inin en son sürümünü yüklediğinizden emin olun (en az 4.3.0). Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'Leri dağıtma][deployment-guide-4.1].
 1. Aşağıdaki PowerShell cmdlet’ini çalıştırın.
-    Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak istiyorsanız, ortamınız **Azurecyüksek**' dir. Azure Çin 21Vianet için **AzureChinaCloud**öğesini seçin.
+    Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak istiyorsanız, ortamınız **Azurecyüksek**' dir. Azure Çin 21Vianet için **AzureChinaCloud** öğesini seçin.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -1104,7 +1105,7 @@ Bu denetim SAP uygulamanızın içinde görüntülenen tüm performans ölçüml
 1. Bir komut istemi penceresi açın.
 1. Komut isteminde, SAP için Azure uzantısının yükleme klasörü olarak değiştirin: C: \\ Packages \\ eklentileri \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler \\ &lt; Version>\\ Drop
 
-   Uzantının yolundaki *sürümü* farklılık gösterebilir. Yükleme klasöründe uzantının birden çok sürümü için klasörler görürseniz, AzureEnhancedMonitoring Windows hizmetinin yapılandırmasını denetleyin ve sonra *yürütülebilir dosyanın yolu*olarak belirtilen klasöre geçin.
+   Uzantının yolundaki *sürümü* farklılık gösterebilir. Yükleme klasöründe uzantının birden çok sürümü için klasörler görürseniz, AzureEnhancedMonitoring Windows hizmetinin yapılandırmasını denetleyin ve sonra *yürütülebilir dosyanın yolu* olarak belirtilen klasöre geçin.
 
    ![SAP için Azure uzantısını çalıştıran hizmetin özellikleri][deployment-guide-figure-1000]
 
@@ -1128,7 +1129,7 @@ Azperflib.exe çıktı, SAP için doldurulan tüm Azure performans sayaçların�
 ![Sorun olmadığını gösteren azperflib.exe yürüterek sistem durumu denetimi çıkışı][deployment-guide-figure-1100]
 <a name="figure-11"></a>
 
-Yukarıdaki şekilde gösterilen, boş olarak bildirilen **sayaçların toplam** çıkış ve **sistem durumu**için döndürülen sonucu denetleyin.
+Yukarıdaki şekilde gösterilen, boş olarak bildirilen **sayaçların toplam** çıkış ve **sistem durumu** için döndürülen sonucu denetleyin.
 
 Sonuç değerlerini aşağıdaki gibi yorumlayın:
 
@@ -1136,10 +1137,10 @@ Sonuç değerlerini aşağıdaki gibi yorumlayın:
 | --- | --- |
 | **API çağrıları-kullanılamıyor** | Mevcut olmayan sayaçlar, sanal makine yapılandırması için geçerli olmayabilir ya da hatalar olabilir. Bkz. **sistem durumu**. |
 | **Toplam sayaç-boş** |Aşağıdaki iki Azure depolama sayacı boş olabilir: <ul><li>Depolama okuma Işlem gecikmesi sunucusu msn</li><li>Depolama okuma Işlem gecikmesi E2E msn</li></ul>Diğer tüm sayaçların değerleri olmalıdır. |
-| **Sistem durumu** |Yalnızca geri dönüş durumu **Tamam**gösteriyorsa Tamam 'a tıklayın. |
+| **Sistem durumu** |Yalnızca geri dönüş durumu **Tamam** gösteriyorsa Tamam 'a tıklayın. |
 | **Tanılama** |Sağlık durumu hakkında ayrıntılı bilgi. |
 
-**Sistem** durumu değeri **Tamam**değilse, [SAP yapılandırması için Azure uzantısı sistem durumu denetimi][deployment-guide-5.2]konusundaki yönergeleri izleyin.
+**Sistem** durumu değeri **Tamam** değilse, [SAP yapılandırması için Azure uzantısı sistem durumu denetimi][deployment-guide-5.2]konusundaki yönergeleri izleyin.
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>Bir Linux VM 'de hazırlık denetimini çalıştırma
 
@@ -1153,7 +1154,7 @@ Sonuç değerlerini aşağıdaki gibi yorumlayın:
 
    b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` komutunu çalıştırın
 
-   **Beklenen sonuç**: hatanın **hiçbiri**olduğu bir satır döndürür, örneğin, **3; config; Hata;; 0; 0; hiçbiri; 0; 1456416792; TST-servercs;**
+   **Beklenen sonuç**: hatanın **hiçbiri** olduğu bir satır döndürür, örneğin, **3; config; Hata;; 0; 0; hiçbiri; 0; 1456416792; TST-servercs;**
 
    c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` komutunu çalıştırın
 
@@ -1187,7 +1188,7 @@ Yukarıdaki denetim başarılı olmazsa, şu ek denetimleri çalıştırın:
 
    b.  `dump ccm` komutunu çalıştırın
 
-   c.  **Virtualization_Configuration \ gelişmiş Izleme erişim** ölçüsünün **doğru**olup olmadığını denetleyin.
+   c.  **Virtualization_Configuration \ gelişmiş Izleme erişim** ölçüsünün **doğru** olup olmadığını denetleyin.
 
 Zaten yüklü bir SAP NetWeaver ABAP uygulama sunucusu varsa, işlem ST06 ' yi açın ve izlemenin etkin olup olmadığını denetleyin.
 
@@ -1210,7 +1211,7 @@ Bu denetim SAP uygulamanızın içinde görüntülenen tüm performans ölçüml
 
 Adresinden erişebileceğiniz XML dosyası, http://127.0.0.1:11812/azure4sap/metrics SAP için doldurulmuş tüm Azure performans sayaçlarını içerir. Ayrıca, SAP için Azure uzantısının durumunun bir özetini ve sistem durumunu içerir.
 
-**Sağlayıcı sistem durumu açıklama** öğesinin değerini denetleyin. Değer **Tamam**DEĞILSE, [SAP yapılandırması Için yeni Azure uzantısı için sistem durumu denetimi][deployment-guide-5.2-new]konusundaki yönergeleri izleyin.
+**Sağlayıcı sistem durumu açıklama** öğesinin değerini denetleyin. Değer **Tamam** DEĞILSE, [SAP yapılandırması Için yeni Azure uzantısı için sistem durumu denetimi][deployment-guide-5.2-new]konusundaki yönergeleri izleyin.
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>Bir Linux VM 'de hazırlık denetimini çalıştırma
 
@@ -1252,7 +1253,7 @@ Yukarıdaki denetim başarılı olmazsa, şu ek denetimleri çalıştırın:
 
    b.  `dump ccm` komutunu çalıştırın
 
-   c.  **Virtualization_Configuration \ gelişmiş Izleme erişim** ölçüsünün **doğru**olup olmadığını denetleyin.
+   c.  **Virtualization_Configuration \ gelişmiş Izleme erişim** ölçüsünün **doğru** olup olmadığını denetleyin.
 
 Zaten yüklü bir SAP NetWeaver ABAP uygulama sunucusu varsa, işlem ST06 ' yi açın ve izlemenin etkin olup olmadığını denetleyin.
 
@@ -1266,7 +1267,7 @@ Bu denetimlerden herhangi biri başarısız olursa ve uzantının nasıl yeniden
 Altyapı verilerinden bazıları [SAP Için Azure uzantısı Için hazırlık denetimi][deployment-guide-5.1]bölümünde açıklanan test tarafından belirtilen şekilde doğru şekilde iletilemiyorsa, `Test-AzVMAEMExtension` Azure altyapısının ve SAP için Azure uzantısının doğru yapılandırılıp yapılandırılmadığını denetlemek için cmdlet 'ini çalıştırın.
 
 1. [Azure PowerShell cmdlet 'Leri dağıtma][deployment-guide-4.1]bölümünde açıklandığı gibi Azure PowerShell cmdlet 'inin en son sürümünü yüklediğinizden emin olun.
-1. Aşağıdaki PowerShell cmdlet’ini çalıştırın. Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak için **Azurecyüksek** ortamını seçin. Azure Çin 21Vianet için **AzureChinaCloud**öğesini seçin.
+1. Aşağıdaki PowerShell cmdlet’ini çalıştırın. Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak için **Azurecyüksek** ortamını seçin. Azure Çin 21Vianet için **AzureChinaCloud** öğesini seçin.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
@@ -1279,7 +1280,7 @@ Altyapı verilerinden bazıları [SAP Için Azure uzantısı Için hazırlık de
 
    ![SAP için Azure uzantısının başarılı testinin çıkışı][deployment-guide-figure-1300]
 
-Her sistem durumu denetimi sonucunun **Tamam**olduğundan emin olun. Bazı denetimler **Tamam**' ı görüntülemediği takdirde, güncelleştirme CMDLET 'ini [SAP Için Azure uzantısını yapılandırma][deployment-guide-4.5]bölümünde anlatıldığı gibi çalıştırın. 15 dakika bekleyin ve SAP [yapılandırması Için Azure uzantısı IÇIN sap ve sistem durumu denetimi][deployment-guide-5.2]için [hazırlık denetimi][deployment-guide-5.1] bölümünde açıklanan denetimleri tekrarlayın. Denetimler hala bazı veya tüm sayaçlarla ilgili bir sorun gösteriyorsa, bkz. [SAP Için Azure uzantısı sorunlarını giderme][deployment-guide-5.3].
+Her sistem durumu denetimi sonucunun **Tamam** olduğundan emin olun. Bazı denetimler **Tamam**' ı görüntülemediği takdirde, güncelleştirme CMDLET 'ini [SAP Için Azure uzantısını yapılandırma][deployment-guide-4.5]bölümünde anlatıldığı gibi çalıştırın. 15 dakika bekleyin ve SAP [yapılandırması Için Azure uzantısı IÇIN sap ve sistem durumu denetimi][deployment-guide-5.2]için [hazırlık denetimi][deployment-guide-5.1] bölümünde açıklanan denetimleri tekrarlayın. Denetimler hala bazı veya tüm sayaçlarla ilgili bir sorun gösteriyorsa, bkz. [SAP Için Azure uzantısı sorunlarını giderme][deployment-guide-5.3].
 
 > [!Note]
 > Yönetilen standart Azure disklerini kullandığınız durumlarda bazı uyarılar yaşayabilirsiniz. "Tamam" döndüren testler yerine uyarılar görüntülenecektir. Bu, normal ve bu disk türü olması durumunda tasarlanmıştır. Ayrıca bkz [. sap Için Azure uzantısı sorunlarını giderme][deployment-guide-5.3]
@@ -1293,7 +1294,7 @@ Her sistem durumu denetimi sonucunun **Tamam**olduğundan emin olun. Bazı denet
 Altyapı verilerinden bazıları [SAP Için Azure uzantısı Için hazırlık denetimi][deployment-guide-5.1-new]bölümünde açıklanan test tarafından belirtilen şekilde doğru şekilde iletilemiyorsa, `Get-AzVMExtension` SAP için Azure uzantısı 'nın yüklü olup olmadığını denetlemek için cmdlet 'ini çalıştırın. `Test-AzVMAEMExtension`Henüz yeni uzantıyı desteklemez. Cmdlet yeni uzantıyı destekledikten sonra bu makaleyi güncelleştireceğiz.
 
 1. [Azure PowerShell cmdlet 'Leri dağıtma][deployment-guide-4.1]bölümünde açıklandığı gibi Azure PowerShell cmdlet 'inin en son sürümünü yüklediğinizden emin olun.
-1. Aşağıdaki PowerShell cmdlet’ini çalıştırın. Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak için **Azurecyüksek** ortamını seçin. Azure Çin 21Vianet için **AzureChinaCloud**öğesini seçin.
+1. Aşağıdaki PowerShell cmdlet’ini çalıştırın. Kullanılabilir ortamların bir listesi için cmdlet 'ini çalıştırın `Get-AzEnvironment` . Küresel Azure 'u kullanmak için **Azurecyüksek** ortamını seçin. Azure Çin 21Vianet için **AzureChinaCloud** öğesini seçin.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>

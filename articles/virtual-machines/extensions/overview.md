@@ -4,16 +4,17 @@ description: Azure VM uzantıları hakkında daha fazla bilgi
 services: virtual-machines
 author: amjads1
 ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/03/2020
 ms.author: amjads
-ms.openlocfilehash: 73738f339bea3e8e075530e5de564c1c0854d283
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1dd26fce2e0a761ceed211933cb79ce518905e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87552059"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965893"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure sanal makine uzantıları ve özellikleri
 Uzantılar, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon sağlayan küçük uygulamalardır. Azure platformu VM yapılandırması, izleme, güvenlik ve yardımcı program uygulamalarını kapsayan birçok uzantıyı barındırır. Yayımcılar bir uygulamayı alır, bir uzantıya sarın ve yüklemeyi basitleştirir. Yapmanız gereken tek şey zorunlu parametreler sağlamaktır. 

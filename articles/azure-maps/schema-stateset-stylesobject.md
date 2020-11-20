@@ -8,20 +8,20 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4284956138002d209ab0934cdd052748ef8aab78
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891708"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966284"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>Dinamik haritalar için StylesObject şeması başvuru kılavuzu
 
-Bu makale, için JSON şemasına ve sözdizimine yönelik başvuru kılavuzudur `StylesObject` . , `StylesObject` `StyleObject` Stateset stillerini temsil eden bir dizidir. Stateset stillerinizi ınkapımap veri özelliklerine uygulamak için Azure Maps Oluşturucu [özelliği durum hizmetini](/rest/api/maps/featurestate) kullanın. Stateset stillerinizi oluşturduktan ve bunları ınkapımap özellikleriyle ilişkilendirdikten sonra, bunları dinamik ınkapılı haritalar oluşturmak için kullanabilirsiniz. Dinamik ınkapılı haritalar oluşturma hakkında daha fazla bilgi için bkz. [creator ınkapımaps için dinamik stil uygulama](indoor-map-dynamic-styling.md).
+ , `StylesObject` `StyleObject` Stateset stillerini temsil eden bir dizidir. Stateset stillerinizi ınkapımap veri özelliklerine uygulamak için Azure Maps Oluşturucu [özelliği durum hizmetini](/rest/api/maps/featurestate) kullanın. Stateset stillerinizi oluşturduktan ve onları ınkapımap özellikleriyle ilişkilendirdikten sonra, bunları dinamik ınkapılı haritalar oluşturmak için kullanabilirsiniz. Dinamik ınkapılı haritalar oluşturma hakkında daha fazla bilgi için bkz. [creator ınkapımaps için dinamik stil uygulama](indoor-map-dynamic-styling.md).
 
 ## <a name="styleobject"></a>StyleObject
 
-`StyleObject`, Ya da olarak olur [`BooleanTypeStyleRule`](#booleantypestylerule) [`NumericTypeStyleRule`](#numerictypestylerule) .
+`StyleObject`, Bir veya olur [`BooleanTypeStyleRule`](#booleantypestylerule) [`NumericTypeStyleRule`](#numerictypestylerule) .
 
 Aşağıdaki JSON `BooleanTypeStyleRule` adlı bir adlandırılmış `occupied` ve adı gösterir `NumericTypeStyleRule` `temperature` .
 
@@ -66,9 +66,9 @@ Aşağıdaki JSON `BooleanTypeStyleRule` adlı bir adlandırılmış `occupied` 
 
 | Özellik | Tür | Açıklama | Gerekli |
 |-----------|----------|-------------|-------------|
-| `keyName` | string | *Durum* veya dinamik özellik adı. Bir, `keyName` dizi içinde benzersiz olmalıdır `StyleObject` .| Evet |
-| `type` | string | Değer "numeric". | Evet |
-| `rules` | [`NumberRuleObject`](#numberruleobject)[]| İlişkili renklerle bir sayısal stil aralığı dizisi. Her Aralık, *durum* değeri aralığa uygun olduğunda kullanılacak bir renk tanımlar.| Evet |
+| `keyName` | string | *Durum* veya dinamik özellik adı. Bir, `keyName` dizi içinde benzersiz olmalıdır `StyleObject` .| Yes |
+| `type` | string | Değer "numeric". | Yes |
+| `rules` | [`NumberRuleObject`](#numberruleobject)[]| İlişkili renklerle bir sayısal stil aralığı dizisi. Her Aralık, *durum* değeri aralığa uygun olduğunda kullanılacak bir renk tanımlar.| Yes |
 
 ### <a name="numberruleobject"></a>NumberRuleObject
 
@@ -76,7 +76,7 @@ Aşağıdaki JSON `BooleanTypeStyleRule` adlı bir adlandırılmış `occupied` 
 
 Birden çok çakışan Aralık tanımlarsanız, seçilen renk, karşıladığınız ilk aralıkta tanımlanan renk olur.
 
-Aşağıdaki JSON örneğinde, *durum* değeri 50-60 arasındaysa her iki Aralık da true olarak kalır. Ancak, kullanılacak olan renk, listedeki uygulanan ilk Aralık olduğu için kullanılır `#343deb` .
+Aşağıdaki JSON örneğinde, *durum* değeri 50-60 arasındaysa her iki Aralık da true olarak kalır. Ancak, kullanılan renk, `#343deb` Bu, listedeki ilk Aralık olduğu için kullanılır.
 
 ```json
 
@@ -103,8 +103,8 @@ Aşağıdaki JSON örneğinde, *durum* değeri 50-60 arasındaysa her iki Aralı
 
 | Özellik | Tür | Açıklama | Gerekli |
 |-----------|----------|-------------|-------------|
-| `range` | [RangeObject](#rangeobject) | [Rangeobject](#rangeobject) , bir mantıksal Aralık koşulları kümesi tanımlar, bu, `true` *durumun* görüntüleme rengini özelliğinde belirtilen renkle değiştirir `color` . `range`Belirtilmemişse, özellikte tanımlanan renk `color` her zaman kullanılacaktır.   | Hayır |
-| `color` | string | Durum değeri aralığa düştüğünde kullanılacak renk. `color`Özelliği, aşağıdaki biçimlerden herhangi birindeki BIR JSON dizesidir: <ul><li> HTML stili onaltılı değerler </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, %50, 50%)")</li><li> HSLA ("HSLA (100, %50, 50%, 1)")</li><li> Önceden tanımlanmış, sarı ve mavi gibi HTML renkleri adları.</li></ul> | Evet |
+| `range` | [RangeObject](#rangeobject) | [Rangeobject](#rangeobject) , bir mantıksal Aralık koşulları kümesi tanımlar, bu, `true` *durumun* görüntüleme rengini özelliğinde belirtilen renkle değiştirir `color` . `range`Belirtilmemişse, özellikte tanımlanan renk `color` her zaman kullanılacaktır.   | No |
+| `color` | string | Durum değeri aralığa düştüğünde kullanılacak renk. `color`Özelliği, aşağıdaki biçimlerden herhangi birindeki BIR JSON dizesidir: <ul><li> HTML stili onaltılı değerler </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, %50, 50%)")</li><li> HSLA ("HSLA (100, %50, 50%, 1)")</li><li> Önceden tanımlanmış, sarı ve mavi gibi HTML renkleri adları.</li></ul> | Yes |
 
 ### <a name="rangeobject"></a>RangeObject
 
@@ -112,10 +112,10 @@ Aşağıdaki JSON örneğinde, *durum* değeri 50-60 arasındaysa her iki Aralı
 
 | Özellik | Tür | Açıklama | Gerekli |
 |-----------|----------|-------------|-------------|
-| `minimum` | double | X ≥ kadar olan tüm x `minimum`| Hayır |
-| `maximum` | double | X 'in x ≤ tüm sayısı `maximum` . | Hayır |
-| `exclusiveMinimum` | double | X 'in tüm x > sayısı `exclusiveMinimum` .| Hayır |
-| `exclusiveMaximum` | double | X 'in tüm x < sayısı `exclusiveMaximum` .| Hayır |
+| `minimum` | double | X ≥ kadar olan tüm x `minimum`| No |
+| `maximum` | double | X 'in x ≤ tüm sayısı `maximum` . | No |
+| `exclusiveMinimum` | double | X 'in tüm x > sayısı `exclusiveMinimum` .| No |
+| `exclusiveMaximum` | double | X 'in tüm x < sayısı `exclusiveMaximum` .| No |
 
 ### <a name="example-of-numerictypestylerule"></a>NumericTypeStyleRule örneği
 
@@ -150,9 +150,9 @@ Aşağıdaki JSON adlı bir `NumericTypeStyleRule` *durumu* gösterir `temperatu
 
 | Özellik | Tür | Açıklama | Gerekli |
 |-----------|----------|-------------|-------------|
-| `keyName` | string |  *Durum* veya dinamik özellik adı.  `keyName`Stil dizisi içinde benzersiz olmalıdır.| Evet |
-| `type` | string |Değer "Boolean" değeridir. | Evet |
-| `rules` | [`BooleanRuleObject`](#booleanruleobject)1| Renkleri `true` ve `false` *durum* değerlerini içeren bir Boole çifti.| Evet |
+| `keyName` | string |  *Durum* veya dinamik özellik adı.  `keyName`Stil dizisi içinde benzersiz olmalıdır.| Yes |
+| `type` | string |Değer "Boolean" değeridir. | Yes |
+| `rules` | [`BooleanRuleObject`](#booleanruleobject)1| Renkleri `true` ve `false` *durum* değerlerini içeren bir Boole çifti.| Yes |
 
 ### <a name="booleanruleobject"></a>BooleanRuleObject
 
@@ -160,8 +160,8 @@ Aşağıdaki JSON adlı bir `NumericTypeStyleRule` *durumu* gösterir `temperatu
 
 | Özellik | Tür | Açıklama | Gerekli |
 |-----------|----------|-------------|-------------|
-| `true` | string | *Durum* değeri olduğunda kullanılacak renk `true` . `color`Özelliği, aşağıdaki biçimlerden herhangi birindeki BIR JSON dizesidir: <ul><li> HTML stili onaltılı değerler </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, %50, 50%)")</li><li> HSLA ("HSLA (100, %50, 50%, 1)")</li><li> Önceden tanımlanmış, sarı ve mavi gibi HTML renkleri adları.</li></ul>| Evet |
-| `false` | string | *Durum* değeri olduğunda kullanılacak renk `false` . | Evet |
+| `true` | string | *Durum* değeri olduğunda kullanılacak renk `true` . `color`Özelliği, aşağıdaki biçimlerden herhangi birindeki BIR JSON dizesidir: <ul><li> HTML stili onaltılı değerler </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, %50, 50%)")</li><li> HSLA ("HSLA (100, %50, 50%, 1)")</li><li> Önceden tanımlanmış, sarı ve mavi gibi HTML renkleri adları.</li></ul>| Yes |
+| `false` | string | *Durum* değeri olduğunda kullanılacak renk `false` . | Yes |
 
 ### <a name="example-of-booleantypestylerule"></a>BooleanTypeStyleRule örneği
 

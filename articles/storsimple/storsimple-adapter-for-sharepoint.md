@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053285"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966301"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint için StorSimple bağdaştırıcısını yükleyip yapılandırma
 ## <a name="overview"></a>Genel Bakış
@@ -53,7 +53,7 @@ KÇY 'nin Microsoft Azure StorSimple uygulanması aşağıdaki avantajları sağ
 BLOB içeriğini dosya sistemine taşımak, diğer maliyet tasarrufları ve avantajları sağlayabilir. Örneğin, KÇY kullanılması pahalı katman 1 depolama gereksinimini azaltabilir ve içerik veritabanını küçültiğinden, KÇY SharePoint sunucu grubunda gereken veritabanlarının sayısını azaltabilir. Ancak, veritabanı boyutu sınırları ve KÇY olmayan içerik miktarı gibi diğer faktörler de depolama gereksinimlerini etkileyebilir. KÇY kullanmanın maliyetleri ve avantajları hakkında daha fazla bilgi için bkz. [KÇY Için plan (SharePoint Foundation 2010)][4] ve [SharePoint 2013 ' de KÇY kullanmaya karar verme][5].
 
 ### <a name="capacity-and-performance-limits"></a>Kapasite ve performans sınırları
-SharePoint çözümünüzde KÇY 'yi kullanmadan önce, SharePoint Server 2010 ve SharePoint Server 2013 ' nin sınanmış performans ve kapasite limitlerini ve bu limitlerin kabul edilebilir performansla ilişkisini bilmeniz gerekir. Daha fazla bilgi için bkz. [SharePoint 2013 Için yazılım sınırları ve sınırları](https://technet.microsoft.com/library/cc262787.aspx).
+SharePoint çözümünüzde KÇY 'yi kullanmadan önce, SharePoint Server 2010 ve SharePoint Server 2013 ' nin sınanmış performans ve kapasite limitlerini ve bu limitlerin kabul edilebilir performansla ilişkisini bilmeniz gerekir. Daha fazla bilgi için bkz. [SharePoint 2013 Için yazılım sınırları ve sınırları](/SharePoint/install/software-boundaries-and-limits-0).
 
 KÇY 'yi yapılandırmadan önce aşağıdakileri gözden geçirin:
 
@@ -139,8 +139,8 @@ SharePoint sunucu grubunuzun doğru yapılandırıldığından emin olun, aşağ
   2. Sunucu Yöneticisi başlatın.
   3. Sol bölmede **yerel sunucu**' ya tıklayın.
   4. Sağ bölmedeki **IE artırılmış güvenlik yapılandırması**' nın yanındaki **Açık**' a tıklayın.
-  5. **Yöneticiler**altında **kapalı**' ya tıklayın.
-  6. **Tamam**'a tıklayın.
+  5. **Yöneticiler** altında **kapalı**' ya tıklayın.
+  6. **Tamam** düğmesine tıklayın.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Uzak BLOB depolama (KÇY) önkoşulları
 SQL Server desteklenen bir sürümünü kullandığınızdan emin olun. Yalnızca aşağıdaki sürümler desteklenir ve KÇY 'yi kullanabilir:
@@ -222,11 +222,11 @@ SharePoint yazılımı için StorSimple bağdaştırıcısını kaldırmadan ön
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>Blobları içerik veritabanlarına geri taşımak için
 1. Externalized nesnelerinin her birini indirin.
 2. **SharePoint Merkezi Yönetim** sayfasını açın ve **sistem ayarları**' na gidin.
-3. **Azure StorSimple**altında **StorSimple bağdaştırıcısını Yapılandır**' a tıklayın.
+3. **Azure StorSimple** altında **StorSimple bağdaştırıcısını Yapılandır**' a tıklayın.
 4. **StorSimple bağdaştırıcısını Yapılandır** sayfasında, dış blob depolamadan kaldırmak istediğiniz her içerik veritabanlarının altındaki **devre dışı bırak** düğmesine tıklayın. 
 5. Nesneleri SharePoint 'ten silin ve sonra yeniden yükleyin.
 
-Alternatif olarak, `RBS Migrate()` SharePoint 'e dahil olan Microsoft PowerShell cmdlet 'ini de kullanabilirsiniz. Daha fazla bilgi için bkz. [KÇY içine veya dışına Içerik geçirme](https://technet.microsoft.com/library/ff628255.aspx).
+Alternatif olarak, `RBS Migrate()` SharePoint 'e dahil olan Microsoft PowerShell cmdlet 'ini de kullanabilirsiniz. Daha fazla bilgi için bkz. [KÇY içine veya dışına Içerik geçirme](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14)).
 
 Blobları içerik veritabanına geri taşıdıktan sonra sonraki adıma gidin: [bağdaştırıcıyı kaldırın](#uninstall-the-adapter).
 
@@ -258,8 +258,8 @@ Blob 'Ları SQL Server içerik veritabanlarına geri taşıdıktan sonra, ShareP
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073
-[2]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
-[4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
-[5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/library/ff943565.aspx
+[2]: /SharePoint/administration/rbs-planning
+[3]: /previous-versions/office/sharepoint-server-2010/ff628583(v=office.14)
+[4]: /previous-versions/office/sharepoint-foundation-2010/ff628569(v=office.14)
+[5]: /SharePoint/administration/rbs-planning
+[8]: /SharePoint/administration/maintain-rbs

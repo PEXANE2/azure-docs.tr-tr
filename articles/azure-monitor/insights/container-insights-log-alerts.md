@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici 'deki uyarıları günlüğe kaydet |
 description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU kullanımı için nasıl özel günlük uyarıları oluşturacağınız açıklanır.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e9b0e01ca4c0ccb24d0d1b04a4d17ec06db253b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995251"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966260"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den günlük uyarıları oluşturma
 
@@ -17,7 +17,7 @@ Kapsayıcılar için Azure Izleyici, yönetilen veya otomatik olarak yönetilen 
 - Küme düğümlerinde CPU veya bellek kullanımı bir eşiği aştığında
 - Bir denetleyici içindeki herhangi bir kapsayıcıdaki CPU veya bellek kullanımı, karşılık gelen kaynak üzerinde ayarlanan sınıra kıyasla bir eşiği aşarsa
 - *NotReady* durum düğümü sayıları
-- *Başarısız*, *bekleyen*, *Bilinmeyen*, *çalışan*veya *başarılı* Pod-aşama sayıları
+- *Başarısız*, *bekleyen*, *Bilinmeyen*, *çalışan* veya *başarılı* Pod-aşama sayıları
 - Küme düğümlerindeki boş disk alanı bir eşiği aştığında
 
 Yüksek CPU veya bellek kullanımı veya küme düğümlerinde düşük boş disk alanı için uyarı vermek üzere, bir ölçüm uyarısı veya ölçüm ölçüm uyarısı oluşturmak için belirtilen sorguları kullanın. Ölçüm uyarıları günlük uyarılarından daha düşük gecikme süresine sahip olsa da, günlük uyarıları gelişmiş sorgulama ve daha büyük gelişmiş algoritmaların mümkündür sağlar. Günlük uyarı sorguları, *Now* işlecini kullanarak ve bir saat geri dönerek bir tarih saatini mevcut ile karşılaştırır. (Kapsayıcılar için Azure Izleyici tüm tarihleri Eşgüdümlü Evrensel Saat (UTC) biçiminde depolar.)
@@ -180,7 +180,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-Aşağıdaki sorgu, bir durumu *Ready* ve *NotReady*olan tüm düğümleri ve sayıları döndürür.
+Aşağıdaki sorgu, bir durumu *Ready* ve *NotReady* olan tüm düğümleri ve sayıları döndürür.
 
 ```kusto
 let endDateTime = now();
@@ -207,14 +207,14 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-Aşağıdaki sorgu tüm aşamalara göre Pod aşama sayısını döndürüyor: *başarısız*, *bekleyen*, *bilinmiyor*, *çalışıyor*veya *başarılı*.  
+Aşağıdaki sorgu tüm aşamalara göre Pod aşama sayısını döndürüyor: *başarısız*, *bekleyen*, *bilinmiyor*, *çalışıyor* veya *başarılı*.  
 
 ```kusto
-let endDateTime = now();
-    let startDateTime = ago(1h);
-    let trendBinSize = 1m;
-    let clusterName = '<your-cluster-name>';
-    KubePodInventory
+let endDateTime = now(); 
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubePodInventory
     | where TimeGenerated < endDateTime
     | where TimeGenerated >= startDateTime
     | where ClusterName == clusterName
@@ -224,13 +224,13 @@ let endDateTime = now();
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),
                     SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
                     FailedCount = sumif(1, PodStatus =~ 'Failed')
-                 by ClusterName, bin(TimeGenerated, trendBinSize)
+                by ClusterName, bin(TimeGenerated, trendBinSize)
     ) on ClusterName, TimeGenerated
     | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
     | project TimeGenerated,
@@ -244,7 +244,7 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->*Bekleyen*, *başarısız*veya *Bilinmeyen*gibi bazı Pod aşamalarda uyarı almak için sorgunun son satırını değiştirin. Örneğin, *FailedCount* kullanım durumunda uyarı almak için: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>*Bekleyen*, *başarısız* veya *Bilinmeyen* gibi bazı Pod aşamalarda uyarı almak için sorgunun son satırını değiştirin. Örneğin, *FailedCount* kullanım durumunda uyarı almak için: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
 Aşağıdaki sorgu kullanılan %90 boş alanı aşan küme düğümleri disklerini döndürür. Küme KIMLIĞINI almak için, önce aşağıdaki sorguyu çalıştırın ve değeri `ClusterId` özelliğinden kopyalayın:
 
@@ -282,7 +282,7 @@ Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kul
 >
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Azure portal, **Log Analytics çalışma alanlarını**arayıp seçin.
+2. Azure portal, **Log Analytics çalışma alanlarını** arayıp seçin.
 3. Log Analytics çalışma alanları listenizde, kapsayıcılar için Azure Izleyicisini destekleyen çalışma alanını seçin. 
 4. Sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure günlük sorgularını yazmak ve yürütmek için bu sayfayı kullanın.
 5. **Günlükler** sayfasında, daha önce belirtilen [sorgulardan](#resource-utilization-log-search-queries) birini **arama sorgusu** alanına yapıştırın ve sonra sonuçları doğrulamak için **Çalıştır** ' ı seçin. Bu adımı gerçekleştirmeyin ve **+ Yeni uyarı** seçeneği seçilecek şekilde kullanılamaz.
@@ -292,14 +292,14 @@ Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kul
 9. Uyarıyı şu şekilde yapılandırın:
 
     1. Aşağı açılan **Tetikleyici** listesinden **Metrik ölçüm**'ü seçin. Ölçüm ölçümü, sorgudaki her bir nesne için belirtilen eşiğin üzerinde bir değer olan bir uyarı oluşturur.
-    1. **Koşul**Için, **büyüktür**' i seçin ve CPU ve bellek kullanımı uyarıları için ilk temel **eşik** olarak **75** girin. Yetersiz disk alanı uyarısı için **90**girin. Ya da ölçütlerinizi karşılayan farklı bir değer girin.
-    1. **Tetikleme uyarısı bölümüne göre** , **ardışık ihlal**' ı seçin. Aşağı açılan listeden **büyüktür**' i seçin ve **2**yazın.
-    1. Kapsayıcı CPU veya bellek kullanımı için bir uyarı yapılandırmak için, **toplama**altında, **kapsayıcıadı**' nı seçin. Küme düğümü düşük disk uyarısını yapılandırmak için **Clusterıd**' yi seçin.
-    1. **Göre değerlendirilen** bölümünde, **Dönem** değerini **60 dakika**olarak ayarlayın. Kural, her 5 dakikada bir çalışır ve geçerli zamandan son bir saat içinde oluşturulan kayıtları döndürür. Olası veri gecikmesi için zaman aralığını geniş bir pencere hesabına ayarlama. Ayrıca, uyarının hiçbir şekilde tetiklendiği yanlış negatifi önlemek için sorgunun verileri döndürdüğünden emin olmanızı sağlar.
+    1. **Koşul** Için, **büyüktür**' i seçin ve CPU ve bellek kullanımı uyarıları için ilk temel **eşik** olarak **75** girin. Yetersiz disk alanı uyarısı için **90** girin. Ya da ölçütlerinizi karşılayan farklı bir değer girin.
+    1. **Tetikleme uyarısı bölümüne göre** , **ardışık ihlal**' ı seçin. Aşağı açılan listeden **büyüktür**' i seçin ve **2** yazın.
+    1. Kapsayıcı CPU veya bellek kullanımı için bir uyarı yapılandırmak için, **toplama** altında, **kapsayıcıadı**' nı seçin. Küme düğümü düşük disk uyarısını yapılandırmak için **Clusterıd**' yi seçin.
+    1. **Göre değerlendirilen** bölümünde, **Dönem** değerini **60 dakika** olarak ayarlayın. Kural, her 5 dakikada bir çalışır ve geçerli zamandan son bir saat içinde oluşturulan kayıtları döndürür. Olası veri gecikmesi için zaman aralığını geniş bir pencere hesabına ayarlama. Ayrıca, uyarının hiçbir şekilde tetiklendiği yanlış negatifi önlemek için sorgunun verileri döndürdüğünden emin olmanızı sağlar.
 
 10. Uyarı kuralını gerçekleştirmek için **bitti** ' yi seçin.
 11. **Uyarı kuralı adı** alanına bir ad girin. Uyarı hakkındaki ayrıntıları sağlayan bir **Açıklama** belirtin. Ve, belirtilen seçeneklerden uygun bir önem derecesi düzeyi seçin.
-12. Uyarı kuralını hemen etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir**için varsayılan değeri kabul edin.
+12. Uyarı kuralını hemen etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir** için varsayılan değeri kabul edin.
 13. Mevcut bir **eylem grubu** seçin veya yeni bir grup oluşturun. Bu adım, bir uyarının tetiklendiği her seferinde aynı eylemlerin alınmasını sağlar. BT veya DevOps işlemleri takımınızın olayları yönetme şeklini temel alarak yapılandırın.
 14. Uyarı kuralını gerçekleştirmek için **Uyarı kuralı oluştur** ' u seçin. Hemen çalıştırılmaya başlar.
 

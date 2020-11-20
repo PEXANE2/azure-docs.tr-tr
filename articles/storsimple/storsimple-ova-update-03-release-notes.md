@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: f56c36f18379449409f4989eab9510da1f686d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8301b45fe778bd3df7fc665db2662ba81d3e644f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397799"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966114"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,3 sürüm notları
 ## <a name="overview"></a>Genel Bakış
@@ -40,7 +40,7 @@ Güncelleştirme 0,3, birincil olarak bir hata düzeltmesini derleme. Bu sürüm
 ## <a name="issues-fixed-in-the-update-03"></a>Güncelleştirme 0,3 ' de düzeltilen sorunlar
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Özellik | Sorun |
+| Hayır. | Öne çıkan özelliği | Sorun |
 | --- | --- | --- |
 | 1 |Yedeklemeler |Önceki sürümde, yedeklemelerin dosya paylaşımında tamamlanmasının başarısız olduğu bir sorun görüldü. Bu sorun oluştuysa, yedekleme işi başarısız olur ve kullanıcıya bildirimde bulunan StorSimple Yöneticisi hizmetinde kritik bir uyarı tetiklenir. Bu sorun, paylaşımlardaki verileri veya verilere erişimi etkilemez. Bu sürümde kök nedeni tanımlandı ve düzeltildi. <br></br> Bu sorunu zaten gördüğünüz paylaşımlara daha etkin bir şekilde uygulanmaz. Bu sorunu yaşayan müşteriler öncelikle güncelleştirme 0,3 ' i uyguladıktan sonra sorunu çözmesi için tam sistem yedeklemesi gerçekleştirmek üzere Microsoft Desteği başvurun. Müşteriler, Microsoft Desteği iletişim yerine, etkilenen paylaşımlar için sağlıklı bir yedekten yeni bir paylaşıma de geri yüklenebilir. |
 | 2 |iSCSI |Önceki sürümde, StorSimple Sanal dizisindeki bir birime veri kopyalanırken birimlerin kaybolacağı bir sorun görüldü. Bu sorun bu sürümde düzeltildi. <br></br> Düzeltmeler yalnızca yeni oluşturulan birimlerde geçerli olur. Düzeltmeler zaten bu sorunu görmekte olan birimlere geriye dönük olarak uygulanmaz. Müşterilerin klasik Azure portalı aracılığıyla etkilenen birimleri çevrimiçi hale getirmek, bu birimler için bir yedekleme gerçekleştirmesi ve sonra bu birimleri yeni birimlere geri yüklemesi önerilir. |
@@ -48,7 +48,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 ## <a name="known-issues-in-the-update-03"></a>Güncelleştirme 0,3 ' de bilinen sorunlar
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir. 
 
-| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |
@@ -66,11 +66,10 @@ Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti v
 | **May.** |Dosya sunucusu |Bir klasördeki bir dosya ile ilişkili alternatif veri akışı (ADS) varsa, reklamlar olağanüstü durum kurtarma, kopyalama ve öğe düzeyinde kurtarma aracılığıyla yedeklenmez veya geri yüklenmez. | |
 
 ## <a name="next-step"></a>Sonraki adım
-StorSimple Sanal diziniz üzerinde [0,3 güncelleştirmesini yükler](storsimple-ova-install-update-01.md) .
+StorSimple Sanal diziniz üzerinde [0,3 güncelleştirmesini yükler](./storsimple-virtual-array-install-update-06.md) .
 
 ## <a name="references"></a>Başvurular
 Daha eski bir sürüm notuna mi bakıyorsunuz? Şuraya gidin: 
 
 * [StorSimple Sanal dizisi güncelleştirme 0,1 ve 0,2 sürüm notları](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Sanal dizisi genel kullanılabilirlik sürüm notları](./storsimple-virtual-array-update-06-release-notes.md)
