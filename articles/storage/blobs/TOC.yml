@@ -733,8 +733,10 @@
           items:
             - name: Data Lake Storage 1. Nesil’den geçirme
               href: data-lake-storage-migrate-gen1-to-gen2.md
-            - name: Şirket içi HDFS depolama alanına geçiş
+            - name: Bir HDFS mağazasını çevrimdışı olarak geçirme
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
+            - name: Bir HDFS mağazasını çevrimiçi olarak geçirme
+              href: migrate-gen2-wandisco-live-data-platform.md
         - name: Yönetme
           items:
             - name: .NET

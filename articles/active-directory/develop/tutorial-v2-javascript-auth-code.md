@@ -12,17 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216139"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980227"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Öğretici: Kullanıcı oturum açma ve kimlik doğrulama kod akışı kullanarak JavaScript tek sayfalı uygulama (SPA) Microsoft Graph API 'sini çağırma
 
-Bu öğreticide, JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanan bir JavaScript tek sayfalı uygulamanın (SPA) nasıl oluşturulacağı gösterilmektedir:
+Bu öğreticide, PCE ile yetkilendirme kodu akışını kullanarak, kullanıcılar ve Microsoft Graph çağıran bir JavaScript tek sayfalı uygulama (SPA) oluşturacaksınız. Oluşturduğunuz SPA, JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanır.
 
+Bu öğreticide:
 > [!div class="checklist"]
 > * PCE ile OAuth 2,0 yetkilendirme kodu akışını gerçekleştirme
 > * Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açın
@@ -31,7 +32,7 @@ Bu öğreticide, JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı
 
 MSAL.js 2,0, örtük izin akışı yerine tarayıcıda yetkilendirme kodu akışını destekleyerek MSAL.js 1,0 ' de geliştirilir. MSAL.js **2,0, örtük akışı desteklemez.**
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir kod Düzenleyicisi
@@ -118,13 +119,13 @@ Artık SPA 'larınızı karşılamak için küçük bir Web sunucusu var. Öğre
 ```
 msal-spa-tutorial/
 ├── app
-│   ├── authConfig.js
-│   ├── authPopup.js
-│   ├── authRedirect.js
-│   ├── graphConfig.js
-│   ├── graph.js
-│   ├── index.html
-│   └── ui.js
+│   ├── authConfig.js
+│   ├── authPopup.js
+│   ├── authRedirect.js
+│   ├── graphConfig.js
+│   ├── graph.js
+│   ├── index.html
+│   └── ui.js
 └── server.js
 ```
 
@@ -324,10 +325,10 @@ const tokenRequest = {
   - Ana (veya *küresel*) Azure bulutu için girin `https://login.microsoftonline.com` .
   - **Ulusal** bulutlar için (örneğin, Çin), [Ulusal bulutlarda](authentication-national-cloud.md)uygun değerleri bulabilirsiniz.
 - `Enter_the_Tenant_info_here` aşağıdakilerden biri olmalıdır:
-  - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı**ile değiştirin. Örneğin, `contoso.microsoft.com`.
-  - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri ile değiştirin `organizations` .
-  - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri ile değiştirin `common` .
-  - *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri ile değiştirin `consumers` .
+  - Uygulamanız *bu kuruluş dizinindeki hesapları* destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** ile değiştirin. Örneğin, `contoso.microsoft.com`.
+  - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları* destekliyorsa, bu değeri ile değiştirin `organizations` .
+  - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları* destekliyorsa, bu değeri ile değiştirin `common` .
+  - *Yalnızca kişisel Microsoft hesaplarına* yönelik desteği kısıtlamak için bu değeri ile değiştirin `consumers` .
 - `Enter_the_Redirect_Uri_Here`, `http://localhost:3000` değeridir.
 
 `authority`Genel Azure bulutu kullanıyorsanız, *authConfig.js* değer şuna benzer olmalıdır:
@@ -336,7 +337,7 @@ const tokenRequest = {
 authority: "https://login.microsoftonline.com/common",
 ```
 
-Hala *uygulama* klasöründe, *graphConfig.js*adlı bir dosya oluşturun. Uygulamanızı Microsoft Graph API çağrısı için yapılandırma parametrelerini sağlamak üzere aşağıdaki kodu ekleyin:
+Hala *uygulama* klasöründe, *graphConfig.js* adlı bir dosya oluşturun. Uygulamanızı Microsoft Graph API çağrısı için yapılandırma parametrelerini sağlamak üzere aşağıdaki kodu ekleyin:
 
 ```javascript
 // Add the endpoints here for Microsoft Graph API services you'd like to use.
@@ -547,7 +548,7 @@ function readMail() {
 
 Bir Kullanıcı ilk kez **oturum aç** düğmesini seçtiğinde, `signIn` yöntemi `loginPopup` kullanıcının oturum açmasını çağırır. `loginPopup`Yöntemi, kullanıcının kimlik bilgilerini sormak ve doğrulamak Için *Microsoft Identity platform uç noktasıyla* bir açılır pencere açar. Başarılı bir oturum açma işleminden sonra, *msal.js* [yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)başlatır.
 
-Bu noktada, bir PCE korumalı yetkilendirme kodu CORS korumalı belirteç uç noktasına gönderilir ve belirteçler için değiştirilir. Uygulamanız tarafından bir KIMLIK belirteci, erişim belirteci ve yenileme belirteci alınır ve *msal.js*tarafından işlenir ve belirteçlerde yer alan bilgiler önbelleğe alınır.
+Bu noktada, bir PCE korumalı yetkilendirme kodu CORS korumalı belirteç uç noktasına gönderilir ve belirteçler için değiştirilir. Uygulamanız tarafından bir KIMLIK belirteci, erişim belirteci ve yenileme belirteci alınır ve *msal.js* tarafından işlenir ve belirteçlerde yer alan bilgiler önbelleğe alınır.
 
 KIMLIK belirteci, kullanıcı hakkındaki, görünen adı gibi temel bilgileri içerir. KIMLIK belirteci tarafından verilen herhangi bir veriyi kullanmayı planlıyorsanız, belirtecin uygulamanız için geçerli bir kullanıcıya verildiğini güvence altına almak için arka uç sunucunuz tarafından *doğrulanmalıdır* .
 
@@ -602,7 +603,7 @@ function callMSGraph(endpoint, token, callback) {
 }
 ```
 
-Bu öğreticide oluşturulan örnek uygulamada, `callMSGraph()` yöntemi, `GET` bir belirteç gerektiren korumalı bir kaynağa karşı http isteği oluşturmak için kullanılır. İstek daha sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine*ekler. Bu öğreticide oluşturulan örnek uygulamada, korunan kaynak, oturum açan kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API *Me* uç noktasıdır.
+Bu öğreticide oluşturulan örnek uygulamada, `callMSGraph()` yöntemi, `GET` bir belirteç gerektiren korumalı bir kaynağa karşı http isteği oluşturmak için kullanılır. İstek daha sonra içeriği çağırana döndürür. Bu yöntem, alınan belirteci *http yetkilendirme üst bilgisine* ekler. Bu öğreticide oluşturulan örnek uygulamada, korunan kaynak, oturum açan kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API *Me* uç noktasıdır.
 
 ## <a name="test-your-application"></a>Uygulamanızı test etme
 
@@ -619,23 +620,23 @@ Uygulamanın oluşturulmasını tamamladınız ve artık Node.js Web sunucusunu 
 
 Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Oturum açma iletişim kutusunu görüntüleyen Web tarayıcısı":::
 
 ### <a name="provide-consent-for-application-access"></a>Uygulama erişimi için onay sağlayın
 
 Uygulamanızda ilk kez oturum açtığınızda profilinize erişim vermeniz ve oturumunuzu açmanız istenir:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Web tarayıcısında görünen içerik iletişim kutusu":::
 
 İstenen izinleri kabul ediyorsanız web uygulamaları, başarılı bir oturum açmayı belirten Kullanıcı adınızı görüntüler:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Web tarayıcısında başarılı bir oturum açma işleminin sonuçları":::
 
 ### <a name="call-the-graph-api"></a>Graph API çağırın
 
 Oturum açtıktan sonra, Microsoft Graph API 'sine yapılan çağrıdan gelen yanıtta döndürülen Kullanıcı profili bilgilerini görüntülemek için **profil** görüntüle ' yi seçin:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Tarayıcıda görünen Microsoft Graph profil bilgileri":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Kapsamlar ve temsilci izinleri hakkında daha fazla bilgi
 

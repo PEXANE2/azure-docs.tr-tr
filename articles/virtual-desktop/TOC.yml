@@ -96,7 +96,7 @@
       href: app-attach.md
     - name: Microsoft Teams’i kullanma
       href: teams-on-wvd.md
-    - name: Azure Multi-Factor Authentication’ı ayarlama
+    - name: Azure AD Multi-Factor Authentication’ı ayarlama
       href: set-up-mfa.md
     - name: Otomatik güncelleştirmeleri yapılandırma
       href: configure-automatic-updates.md

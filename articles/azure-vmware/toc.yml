@@ -42,7 +42,7 @@
       href: concepts-storage.md
     - name: Özel bulutlar için erişim ve kimlik
       href: concepts-identity.md
-    - name: Rol tabanlı erişim denetimi
+    - name: vSphere rol tabanlı erişim denetimi
       href: concepts-role-based-access-control.md
     - name: Özel bulutları izleme ve onarma
       href: concepts-monitor-repair-private-cloud.md

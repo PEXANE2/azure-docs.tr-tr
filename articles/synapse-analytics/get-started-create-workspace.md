@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: c15750a7a63293994ff7c6b68cb85a5066acee90
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592456"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981145"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -30,18 +30,18 @@ Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığ
 1. [Azure Portal](https://portal.azure.com)açın ve en üstteki **SYNAPSE** için arama yapın.
 1. Arama sonuçlarında **Hizmetler** altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
 1. Çalışma alanı oluşturmak için **Ekle** ' yi seçin.
-1. **Temel bilgiler** bölümünde tercih ettiğiniz **abonelik** , **kaynak grubu** , **bölge** girin ve ardından bir çalışma alanı adı seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
-1. **Data Lake Storage Gen 2** ' yi seçmek için gidin. 
+1. **Temel bilgiler** bölümünde tercih ettiğiniz **abonelik**, **kaynak grubu**, **bölge** girin ve ardından bir çalışma alanı adı seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
+1. **Data Lake Storage Gen 2**' yi seçmek için gidin. 
 1. **Yeni oluştur** ' a tıklayın ve **contosolake** olarak adlandırın.
 1. **Dosya sistemi** ' ne tıklayın ve **kullanıcıları** adlandırın. Bu, **Kullanıcılar** adlı bir kapsayıcı oluşturur
 1. Çalışma alanı, bu depolama hesabını Spark tabloları ve Spark uygulama günlükleri için "birincil" depolama hesabı olarak kullanacaktır.
-1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
+1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
 
 ## <a name="open-synapse-studio"></a>SYNAPSE Studio 'Yu açın
 
 Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak için iki yol vardır:
 
-* [Azure Portal](https://portal.azure.com)SYNAPSE çalışma alanınızı açın. **Genel bakış** bölümünün üst kısmında, **SYNAPSE Studio 'yu Başlat** ' ı seçin.
+* [Azure Portal](https://portal.azure.com)SYNAPSE çalışma alanınızı açın. **Genel bakış** bölümünün üst kısmında, **SYNAPSE Studio 'yu Başlat**' ı seçin.
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
 
 ## <a name="create-a-dedicated-sql-pool"></a>Adanmış bir SQL havuzu oluşturma
@@ -50,7 +50,7 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 1. **Yeni** ' yi seçin
 1. **SQL havuzu adı** için **SQLPOOL1** seçin
 1. **Performans düzeyi** için **DW100C** seçin
-1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Adanmış SQL havuzunuz birkaç dakika içinde hazırlanacaktır. Adanmış SQL havuzunuz, **SQLPOOL1** olarak da bilinen ayrılmış bir SQL havuzu veritabanıyla ilişkilidir.
+1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Adanmış SQL havuzunuz birkaç dakika içinde hazırlanacaktır. Adanmış SQL havuzunuz, **SQLPOOL1** olarak da bilinen ayrılmış bir SQL havuzu veritabanıyla ilişkilidir.
 
 Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kullanır. Daha sonra maliyetleri azaltmak için havuzu duraklatabilirsiniz.
 
@@ -61,11 +61,11 @@ Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kull
 1. **Apache Spark havuz adı** için **Spark1** girin.
 1. **Düğüm boyutu** için **küçük** girin.
 1. **Düğüm sayısı** için en az 3 ve en fazla 3 olarak ayarlayın
-1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Apache Spark havuzunuz birkaç saniye içinde hazırlanacaktır.
+1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Apache Spark havuzunuz birkaç saniye içinde hazırlanacaktır.
 
 Spark havuzu, Azure SYNAPSE 'in kaç Spark kaynağı kullandığını söyler. Yalnızca kullandığınız kaynaklar için ödeme yaparsınız. Havuzu kullanmayı etkin bir şekilde durdurduğunuzda, kaynakların otomatik olarak zaman aşımına uğrar ve geri dönüştürülür.
 
-## <a name="the-serverless-sql-pool"></a>Sunucusuz SQL havuzu
+## <a name="the-built-in-serverless-sql-pool"></a>Yerleşik sunucusuz SQL havuzu
 
 Her çalışma alanı, **yerleşik** olarak adlandırılan önceden oluşturulmuş bir havuz ile gelir. Bu havuz silinemiyor. Sunucusuz SQL havuzu, Azure SYNAPSE 'da sunucusuz bir SQL havuzu oluşturmak veya yönetmek zorunda kalmadan SQL ile çalışmanıza olanak sağlar. Adanmış SQL havuzlarının aksine, sunucusuz SQL havuzunun faturalandırılması, sorguyu yürütmek için kullanılan kaynak sayısını değil, sorguyu çalıştırmak için taranan veri miktarına bağlıdır.
 

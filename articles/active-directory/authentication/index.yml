@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 17775be39e534d0825596973452dabc13054ee8d
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: d484600da9be9d84b6af7ad31754ea86bf6b6873
+  ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91968234"
+  ms.lasthandoff: 11/18/2020
+  ms.locfileid: "94838060"
 landingContent:
 - title: Kimlik doğrulaması hakkında
   linkLists:
@@ -51,21 +51,21 @@ landingContent:
       url: howto-sspr-deployment.md
     - text: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
       url: howto-sspr-windows.md
-- title: Azure Multi-Factor Authentication’ı etkinleştirme
+- title: Azure AD Multi-Factor Authentication’ı etkinleştirme
   linkLists:
   - linkListType: concept
     links:
-    - text: Azure Multi-Factor Authentication nasıl çalışır?
+    - text: Azure AD Multi-Factor Authentication nasıl çalışır?
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Azure Multi-Factor Authentication’ı etkinleştirme
+    - text: Azure AD Multi-Factor Authentication’ı etkinleştirme
       url: tutorial-enable-azure-mfa.md
-    - text: Risk tabanlı Azure Multi-Factor Authentication'ı etkinleştirme
+    - text: Risk tabanlı Azure AD Multi-Factor Authentication'ı etkinleştirme
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Azure Multi-Factor Authentication için dağıtım kılavuzu
+    - text: Azure AD Multi-Factor Authentication için dağıtım kılavuzu
       url: howto-mfa-getstarted.md
     - text: Şirket içi uygulamaları tümleştirmek için NPS uzantısını kullanma
       url: howto-mfa-nps-extension.md

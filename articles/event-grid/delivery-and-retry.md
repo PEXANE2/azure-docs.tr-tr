@@ -3,18 +3,21 @@ title: Azure Event Grid teslimi ve yeniden dene
 description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edilmemiş iletileri nasıl işlediğini açıklar.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 483a868022d4ae8f7c564e51344dfbede4314232
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042956"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981111"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
 Bu makalede, teslimin onaylanmaması durumunda Azure Event Grid olayların nasıl işleyeceği açıklanır.
 
-Event Grid dayanıklı teslim sağlar. Her bir abonelik için her iletiyi en az bir kez sunar. Olaylar, her aboneliğin kayıtlı uç noktasına hemen gönderilir. Bir uç nokta bir olayın alındığını kabul etmezse, olayın yeniden denenmesini Event Grid.
+Event Grid dayanıklı teslim sağlar. Her bir abonelik için her iletiyi **en az bir kez** sunar. Olaylar, her aboneliğin kayıtlı uç noktasına hemen gönderilir. Bir uç nokta bir olayın alındığını kabul etmezse, olayın yeniden denenmesini Event Grid.
+
+> [!NOTE]
+> Event Grid olay tesliminin sırasını garanti etmez, bu nedenle abone onları sıra dışı alabilir. 
 
 ## <a name="batched-event-delivery"></a>Toplu olay teslimi
 

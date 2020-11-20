@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 73fa295c0c0d30cb0797820baaf2a4b03a1b7c99
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 96e6b7a672e2967403626cb9ba7db87fc4dd795c
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783462"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980210"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -33,13 +33,13 @@ Depolama hesabınız için özel uç noktalar kullanmak şunları yapmanızı sa
 
 Özel uç nokta, [sanal ağınızdaki](../../virtual-network/virtual-networks-overview.md) (VNet) bir Azure hizmeti için özel bir ağ arabirimidir. Depolama hesabınız için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve depolama ağınızdaki istemciler arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve depolama hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.
 
-VNet 'teki uygulamalar, **diğer durumlarda kullandıkları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak** , Özel uç nokta üzerinden depolama hizmetine sorunsuz bir şekilde bağlanabilir. Özel uç noktalar, REST ve SMB dahil olmak üzere depolama hesabı tarafından desteklenen tüm protokollerle kullanılabilir.
+VNet 'teki uygulamalar, **diğer durumlarda kullandıkları aynı bağlantı dizelerini ve yetkilendirme mekanizmalarını kullanarak**, Özel uç nokta üzerinden depolama hizmetine sorunsuz bir şekilde bağlanabilir. Özel uç noktalar, REST ve SMB dahil olmak üzere depolama hesabı tarafından desteklenen tüm protokollerle kullanılabilir.
 
 Özel uç noktalar, [hizmet uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)kullanan alt ağlarda oluşturulabilir. Bu nedenle, bir alt ağdaki istemciler, hizmet uç noktalarını kullanarak diğerlerine erişmek için özel uç nokta kullanarak bir depolama hesabına bağlanabilir.
 
 Sanal ağınızda depolama hizmeti için bir özel uç nokta oluşturduğunuzda depolama hesabı sahibine onaylaması için bir onay isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda depolama hesabının sahibiyseniz, bu onay isteği otomatik olarak onaylanır.
 
-Depolama hesabı sahipleri, [Azure Portal](https://portal.azure.com)depolama hesabı Için ' *Özel uç noktalar* ' sekmesi aracılığıyla izin isteklerini ve özel uç noktaları yönetebilir.
+Depolama hesabı sahipleri, [Azure Portal](https://portal.azure.com)depolama hesabı Için '*Özel uç noktalar*' sekmesi aracılığıyla izin isteklerini ve özel uç noktaları yönetebilir.
 
 > [!TIP]
 > Yalnızca özel uç nokta aracılığıyla depolama hesabınıza erişimi kısıtlamak istiyorsanız, depolama güvenlik duvarını genel uç nokta üzerinden erişimi reddedecek veya denetlemeye yönelik şekilde yapılandırın.
@@ -52,6 +52,7 @@ Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden eri�
 
 > [!TIP]
 > RA-GRS hesaplarında daha iyi okuma performansı için depolama hizmetinin ikincil örneği için ayrı bir özel uç nokta oluşturun.
+> Genel amaçlı v2 (Standart veya Premium) depolama hesabı oluşturduğunuzdan emin olun.
 
 Coğrafi olarak yedekli depolama için yapılandırılmış bir depolama hesabıyla ikincil bölgeye okuma erişimi için, hizmetin birincil ve ikincil örnekleri için ayrı özel uç noktalara ihtiyacınız vardır. **Yük devretme** için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretmeden sonra otomatik olarak yeni birincil örneğe bağlanır. Depolama artıklığı seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](storage-redundancy.md).
 
@@ -67,13 +68,13 @@ Depolama hesabınız için özel bir uç nokta oluşturma hakkında daha ayrınt
 Özel uç nokta kullanan bir sanal ağdaki istemciler, genel uç noktaya bağlanan istemciler olarak depolama hesabı için aynı bağlantı dizesini kullanmalıdır. VNet 'ten gelen bağlantıları özel bir bağlantı üzerinden depolama hesabına otomatik olarak yönlendirmek için DNS çözümünden yararlanıyoruz.
 
 > [!IMPORTANT]
-> Başka türlü kullandığınızda, Özel uç noktaları kullanarak depolama hesabına bağlanmak için aynı bağlantı dizesini kullanın. Lütfen ' *Privatelink* ' alt etki alanı URL 'sini kullanarak depolama hesabına bağlanmayın.
+> Başka türlü kullandığınızda, Özel uç noktaları kullanarak depolama hesabına bağlanmak için aynı bağlantı dizesini kullanın. Lütfen '*Privatelink*' alt etki alanı URL 'sini kullanarak depolama hesabına bağlanmayın.
 
 Varsayılan olarak, Özel uç noktalara yönelik gerekli güncelleştirmelerle VNet 'e bağlı [Özel BIR DNS bölgesi](../../dns/private-dns-overview.md) oluşturacağız. Ancak, kendi DNS sunucunuzu kullanıyorsanız, DNS yapılandırmanızda ek değişiklikler yapmanız gerekebilir. Aşağıdaki [DNS değişikliklerinin](#dns-changes-for-private-endpoints) bölümünde, Özel uç noktalar için gereken güncelleştirmeler açıklanmaktadır.
 
 ## <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
 
-Özel bir uç nokta oluşturduğunuzda, depolama hesabı için DNS CNAME kaynak kaydı, ' *Privatelink* ' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile ' *Privatelink* ' alt etki alanına karşılık gelen [özel bir DNS bölgesi](../../dns/private-dns-overview.md)de oluşturacağız.
+Özel bir uç nokta oluşturduğunuzda, depolama hesabı için DNS CNAME kaynak kaydı, '*Privatelink*' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile '*Privatelink*' alt etki alanına karşılık gelen [özel bir DNS bölgesi](../../dns/private-dns-overview.md)de oluşturacağız.
 
 Depolama uç noktası URL 'sini VNet dışından özel uç noktayla çözdüğünde, depolama hizmetinin genel uç noktasına dönüşür. Özel uç noktayı barındıran VNet 'ten çözümlendiğinde, depolama uç noktası URL 'SI özel uç noktanın IP adresine çözümlenir.
 
@@ -96,7 +97,7 @@ Daha önce belirtildiği gibi, depolama güvenlik duvarını kullanarak genel u�
 
 Bu yaklaşım, Özel uç noktaları barındıran VNet 'teki istemciler ve VNet dışındaki istemciler için **aynı bağlantı dizesini kullanarak** depolama hesabına erişim sağlar.
 
-Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler depolama hesabı uç noktası için FQDN 'yi özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek üzere yapılandırmanız veya ' *StorageAccountA.Privatelink.blob.Core.Windows.net* ' için bir kayıtları özel uç nokta IP adresi ile yapılandırmanız gerekir.
+Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler depolama hesabı uç noktası için FQDN 'yi özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek üzere yapılandırmanız veya '*StorageAccountA.Privatelink.blob.Core.Windows.net*' için bir kayıtları özel uç nokta IP adresi ile yapılandırmanız gerekir.
 
 > [!TIP]
 > Özel veya şirket içi bir DNS sunucusu kullanırken, DNS sunucunuzu, ' Privatelink ' alt etki alanındaki depolama hesabı adını özel uç nokta IP adresine çözümlemek üzere yapılandırmanız gerekir. Bunu, sanal ağın özel DNS bölgesine ' Privatelink ' alt etki alanı temsilcisi seçerek veya DNS sunucunuzda DNS bölgesi yapılandırarak ve DNS A kayıtlarını ekleyerek yapabilirsiniz.
@@ -106,7 +107,7 @@ Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları 
 | Depolama hizmeti        | Bölge adı                            |
 | :--------------------- | :----------------------------------- |
 | Blob hizmeti           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| Data Lake Storage 2. Nesil | `privatelink.dfs.core.windows.net`   |
 | Dosya hizmeti           | `privatelink.file.core.windows.net`  |
 | Kuyruk hizmeti          | `privatelink.queue.core.windows.net` |
 | Tablo hizmeti          | `privatelink.table.core.windows.net` |

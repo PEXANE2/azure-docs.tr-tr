@@ -504,14 +504,16 @@
                   href: ./spark/synapse-spark-sql-pool-import-export.md
 - name: Synapse Link
   items:
+    - name: Genel Bakış
+      items:
+        - name: Azure Cosmos DB için Synapse Link
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Hızlı Başlangıçlar
       items:
         - name: Cosmos DB için Synapse Link’e bağlanma
           href: quickstart-connect-synapse-link-cosmos-db.md
     - name: Kavramlar
       items:
-        - name: Azure Cosmos DB için Synapse Link
-          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Analiz Mağazasına Genel Bakış
           href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Desteklenen Synapse Link özellikleri
@@ -967,7 +969,7 @@
   items:
     - name: Genel Bakış
       items:
-        - name: Synapse Analytics’te makine öğrenmesi nedir?
+        - name: Azure Synapse’te makine öğrenmesi nedir?
           href: machine-learning/what-is-machine-learning.md
     - name: Hızlı başlangıçlar
       items:

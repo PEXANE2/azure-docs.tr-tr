@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306948"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981196"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
 
@@ -34,12 +34,12 @@ Install-Module -Name Az.Maintenance
 
 Yerel olarak yüklüyorsanız, PowerShell komut dosyanızı yönetici olarak açtığınızdan emin olun.
 
-Ayrıca, *Güvenilmeyen bir depodan*yüklemek istediğinizi onaylamanız istenebilir. `Y`Modülünü yüklemek için yazın veya **Evet** ' i seçin.
+Ayrıca, *Güvenilmeyen bir depodan* yüklemek istediğinizi onaylamanız istenebilir. `Y`Modülünü yüklemek için yazın veya **Evet** ' i seçin.
 
 
 ## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturun
 
-Yapılandırmanız için kapsayıcı olarak bir kaynak grubu oluşturun. Bu örnekte, *eastus*içinde *myMaintenanceRG* adlı bir kaynak grubu oluşturulur. Kullanmak istediğiniz bir kaynak grubunuz zaten varsa, bu bölümü atlayabilir ve örneklerin geri kalanında kaynak grubu adını sahipsiz olarak değiştirebilirsiniz.
+Yapılandırmanız için kapsayıcı olarak bir kaynak grubu oluşturun. Bu örnekte, *eastus* içinde *myMaintenanceRG* adlı bir kaynak grubu oluşturulur. Kullanmak istediğiniz bir kaynak grubunuz zaten varsa, bu bölümü atlayabilir ve örneklerin geri kalanında kaynak grubu adını sahipsiz olarak değiştirebilirsiniz.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -67,13 +67,7 @@ Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>Zamanlanan pencere ile bakım yapılandırması oluşturma (önizlemede)
-
-
-> [!IMPORTANT]
-> Zamanlanan pencere özelliği şu anda genel önizlemededir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Zamanlanan pencere ile bakım yapılandırması oluşturma
 
 Azure 'un kaynaklarınıza güncelleştirmeleri uygulayabilmesi durumunda zamanlanmış bir pencereyle bakım yapılandırması oluşturmak için New-AzMaintenanceConfiguration kullanın. Bu örnek, her ayın dördüncü Pazartesi günü 5 saatlik zamanlanan bir pencere ile myConfig adlı bir bakım yapılandırması oluşturur. Zamanlanmış bir pencere oluşturduktan sonra güncelleştirmeleri el ile uygulamanız gerekmez.
 
@@ -91,8 +85,13 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > Bakım **süresi** *2 saat* veya daha uzun olmalıdır. Bakım **tekrarlamaları** , 35 gün içinde en az bir kez gerçekleşmelidir.
 
-Bakım **yinelemesi** günlük, haftalık veya aylık zamanlamalar olarak ifade edilebilir. Günlük zamanlama örnekleri şunlardır: gün, recurEvery: 3Days. Haftalık zamanlama örnekleri şunlardır: 3hafta, recurEvery: hafta Cumartesi, Pazar. Aylık zamanlama örnekleri şunlardır: month day23, day24, Recureçok: ay son Pazar, recurEvery: aylık dördüncü Pazartesi.
-
+Bakım **yinelemesi** şöyle ifade edilebilir:
+ | Değer | Örnek |
+      |-------|-------------|
+      | Her | recurEvery: Day **veya** Recurevery: 3days | 
+      | haftalık | Yeniden Renklendir: 3hafta **veya** yeniden Renklendir: hafta Cumartesi, Pazar | 
+      | aylık | recurEvery: month day23, day24 **veya** recurevery: ay son Pazar **veya** Recurevery: ay dördüncü Pazartesi | 
+      
 
 ## <a name="assign-the-configuration"></a>Yapılandırmayı ata
 

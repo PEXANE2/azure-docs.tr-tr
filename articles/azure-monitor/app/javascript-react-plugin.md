@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 3a11f77384c520bed9824841269be4ad998adba4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3348654a83b6d0930d10e1f58e07455623b5861d
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056209"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981094"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>JavaScript SDK 'Sı için Application Insights eklentisi
 
@@ -32,15 +32,17 @@ npm install @microsoft/applicationinsights-react-js
 
 ## <a name="basic-usage"></a>Temel kullanım
 
+Application Insights bir bağlantı başlatın:
+
 ```javascript
-import React from 'react';
+// AppInsights.js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
-import { ReactPlugin, withAITracking } from '@microsoft/applicationinsights-react-js';
-import { createBrowserHistory } from "history";
+import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
+import { createBrowserHistory } from 'history';
 
 const browserHistory = createBrowserHistory({ basename: '' });
-var reactPlugin = new ReactPlugin();
-var appInsights = new ApplicationInsights({
+const reactPlugin = new ReactPlugin();
+const appInsights = new ApplicationInsights({
     config: {
         instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
         extensions: [reactPlugin],
@@ -50,6 +52,15 @@ var appInsights = new ApplicationInsights({
     }
 });
 appInsights.loadAppInsights();
+export { reactPlugin, appInsights };
+```
+
+Üzerinde Application Insights etkinleştirmek için bileşeninizi daha yüksek sıralı bileşen işleviyle sarın:
+
+```javascript
+import React from 'react';
+import { withAITracking } from '@microsoft/applicationinsights-react-js';
+import { reactPlugin, appInsights } from './AppInsights';
 
 // To instrument various React components usage tracking, apply the `withAITracking` higher-order
 // component function.
@@ -58,13 +69,12 @@ class MyComponent extends React.Component {
     ...
 }
 
-export default withAITracking(reactPlugin,appInsights, MyComponent);
-
+export default withAITracking(reactPlugin, appInsights, MyComponent);
 ```
 
 ## <a name="configuration"></a>Yapılandırma
 
-| Adı    | Varsayılan | Açıklama                                                                                                    |
+| Ad    | Varsayılan | Description                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | geçmiş | null    | Yönlendirici geçmişini tepki verin. Daha fazla bilgi için bkz. [tepki verme yönlendiricisi paketi belgeleri](https://reactrouter.com/web/api/history). Geçmiş nesnesine bileşenler dışında nasıl erişebileceğinizi öğrenmek için bkz. [tepki verme yönlendiricisi hakkında SSS](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -84,6 +94,127 @@ Ayrıca, gereksinimlerinize göre rapor ve görselleştirmeler oluşturmak için
 
 > [!NOTE]
 > Yeni özel ölçümlerin Azure portalında görünmesi 10 dakikaya kadar sürebilir.
+
+## <a name="using-react-hooks"></a>Tepki kancalarını kullanma
+
+Yanıt verme [kancaları](https://reactjs.org/docs/hooks-reference.html) , sınıf tabanlı tepki verme bileşenlerine bağlı olmadan bir tepki verme uygulamasındaki durum ve yaşam döngüsü yönetimine yaklaşımlar. Application Insights tepki veren eklentisi, daha yüksek sıralı bileşen yaklaşımına benzer bir şekilde çalışan çok sayıda kanca tümleştirmelerini sağlar.
+
+### <a name="using-react-context"></a>Tepki verme bağlamı kullanma
+
+Application Insights 'e yönelik yanıt verme kancaları, bunun için bir içeren bir en boy [bağlamı](https://reactjs.org/docs/context.html) kullanmak üzere tasarlanmıştır. Bağlam kullanmak için Application Insights yukarıda olarak başlatın ve bağlam nesnesini içeri aktarın:
+
+```javascript
+import React from "react";
+import { AppInsightsContext } from "@microsoft/applicationinsights-react-js";
+import { reactPlugin } from "./AppInsights";
+
+const App = () => {
+    return (
+        <AppInsightsContext.Provider value={reactPlugin}>
+            /* your application here */
+        </AppInsightsContext.Provider>
+    );
+};
+```
+
+Bu bağlam sağlayıcısı `useContext` , Application Insights tüm alt bileşenleri içindeki bir kanca olarak kullanılabilir hale getirir.
+
+```javascript
+import React from "react";
+import { useAppInsightsContext } from "@microsoft/applicationinsights-react-js";
+
+const MyComponent = () => {
+    const appInsights = useAppInsightsContext();
+    
+    appInsights.trackMetric("Component 'MyComponent' is in use");
+    
+    return (
+        <h1>My Component</h1>
+    );
+}
+export default MyComponent;
+```
+
+### `useTrackMetric`
+
+`useTrackMetric`Kanca, `withAITracking` bileşen yapısına ek bir bileşen eklemeden daha yüksek sıralı bileşenin işlevselliğini çoğaltır. Kanca iki bağımsız değişken alır, ilk olarak Application Insights örneğidir (kanca içinden elde edilebilir `useAppInsightsContext` ) ve izleme bileşeni için bir tanımlayıcı (örneğin adı).
+
+```javascript
+import React from "react";
+import { useAppInsightsContext, useTrackMetric } from "@microsoft/applicationinsights-react-js";
+
+const MyComponent = () => {
+    const appInsights = useAppInsightsContext();
+    const trackComponent = useTrackMetric(appInsights, "MyComponent");
+    
+    return (
+        <h1 onHover={trackComponent} onClick={trackComponent}>My Component</h1>
+    );
+}
+export default MyComponent;
+```
+
+Daha yüksek sıralı bileşen gibi çalışır, ancak bir bileşen yaşam döngüsü yerine kancalar yaşam döngüsü olaylarına yanıt verir. Belirli etkileşimler üzerinde çalışması gereken bir sorun varsa, kanca Kullanıcı olaylarına açıkça sağlanması gerekir.
+
+### `useTrackEvent`
+
+Kanca, bir `useTrackEvent` uygulamanın izlenmesi gerekebilecek, düğme tıklama veya DIĞER API çağrısı gibi özel olayları izlemek için kullanılır. İki bağımsız değişken alır, ilki Application Insights örneğidir (kanca içinden elde edilebilir `useAppInsightsContext` ) ve olay için bir ad.
+
+```javascript
+import React, { useState, useEffect } from "react";
+import { useAppInsightsContext, useTrackEvent } from "@microsoft/applicationinsights-react-js";
+
+const ProductCart = () => {
+    const appInsights = useAppInsightsContext();
+    const trackCheckout = useTrackEvent(appInsights, "Checkout");
+    const trackCartUpdate = useTrackEvent(appInsights, "Cart Updated");
+    const [cart, setCart] = useState([]);
+    
+    useEffect(() => {
+        trackCartUpdate({ cartCount: cart.length });
+    }, [cart]);
+    
+    const performCheckout = () => {
+        trackCheckout();
+        // submit data
+    };
+    
+    return (
+        <div>
+            <ul>
+                <li>Product 1 <button onClick={() => setCart([...cart, "Product 1"])}>Add to Cart</button>
+                <li>Product 2 <button onClick={() => setCart([...cart, "Product 2"])}>Add to Cart</button>
+                <li>Product 3 <button onClick={() => setCart([...cart, "Product 3"])}>Add to Cart</button>
+                <li>Product 4 <button onClick={() => setCart([...cart, "Product 4"])}>Add to Cart</button>
+            </ul>
+            <button onClick={performCheckout}>Checkout</button>
+        </div>
+    );
+}
+export default MyComponent;
+```
+
+Kanca kullanıldığında, Application Insights ' de depolandığında olaya ek veri eklemek için bir veri yükü sağlayabilirsiniz.
+
+## <a name="react-error-boundaries"></a>Hata sınırlarına tepki verme
+
+[Hata sınırları](https://reactjs.org/docs/error-boundaries.html) , yanıt veren bir uygulama içinde oluştuğunda bir özel durumu düzgün bir şekilde işlemek için bir yol sağlar ve bu tür bir hata oluştuğunda özel durumun günlüğe alınması gerekir. Application Insights için tepki sağlayan eklenti, hata oluştuğunda otomatik olarak günlüğe kaydedilecek bir hata sınır bileşeni sağlar.
+
+```javascript
+import React from "react";
+import { reactPlugin } from "./AppInsights";
+import { AppInsightsErrorBoundary } from "@microsoft/applicationinsights-react-js";
+
+const App = () => {
+    return (
+        <AppInsightsErrorBoundary onError={() => <h1>I believe something went wrong</h1>} appInsights={reactPlugin}>
+            /* app here */
+        </AppInsightsErrorBoundary>
+    );
+};
+```
+
+, `AppInsightsErrorBoundary` Kendisine iki props geçirilmesini gerektirir, `ReactPlugin` uygulama için oluşturulan örnek ve bir hata oluştuğunda işlenecek bir bileşen. İşlenmemiş bir hata oluştuğunda, `trackException` hata sınırına verilen bilgilerle çağrılır ve `onError` bileşen görüntülenir.
 
 ## <a name="sample-app"></a>Örnek uygulama
 

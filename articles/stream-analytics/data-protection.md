@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074259"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980516"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
@@ -63,7 +63,7 @@ Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşa
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 
-1.  **Analytics**   > Sonuçlar listesinden analiz **Stream Analytics işi** ' ni seçin   . 
+1.  **Analytics**   > Sonuçlar listesinden analiz **Stream Analytics işi**' ni seçin   . 
 
 1. Stream Analytics işi sayfasını, ad, bölge ve ölçek gibi gerekli ayrıntılarla doldurun. 
 
@@ -73,7 +73,7 @@ Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşa
 
    ![Özel veri depolama hesabı ayarları](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>Depolanan özel veri varlıkları
+## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>Stream Analytics tarafından depolanan özel veri varlıkları
 
 Stream Analytics tarafından kalıcı olması gereken tüm özel veriler depolama hesabınızda depolanır. Özel veri varlıkları örnekleri şunları içerir: 
 

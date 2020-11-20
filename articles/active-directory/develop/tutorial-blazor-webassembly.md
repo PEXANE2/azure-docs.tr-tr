@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628076"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979887"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Öğretici: kullanıcılarda oturum açın ve Blazor WebAssembly uygulamasından korunan API 'yi çağırın
 
-Blazor WebAssembly (alab), .NET ile etkileşimli istemci tarafı Web uygulamaları oluşturmaya yönelik tek sayfalı bir uygulama çerçevesidir. Bu öğreticide, Microsoft Identity platformunu kullanarak ve uygulamanızı Azure Active Directory (Azure AD) ile kaydederek bir Blazor ıSTREAM uygulamasındaki Microsoft Graph kimlik doğrulaması ve verileri alma hakkında bilgi edineceksiniz.
+Bu öğreticide, kullanıcıları oturum açan ve Microsoft Identity platformunu kullanarak Microsoft Graph verileri alan ve uygulamanızı Azure Active Directory (Azure AD) kaydeden bir Blazor WebAssembly uygulaması oluşturacaksınız.
 
 Ayrıca [Blazor Server için bir öğretici](tutorial-blazor-server.md)sunuyoruz. 
 
-Bu öğreticide şunları yapacaksınız:
+Bu öğreticide:
 
 > [!div class="checklist"]
 >
@@ -37,10 +37,10 @@ Bu öğreticide şunları yapacaksınız:
 
 Kimlik doğrulaması için Azure Active Directory (Azure AD) kullanan her uygulamanın Azure AD 'ye kayıtlı olması gerekir. Şu belirtimlere sahip [bir uygulamayı kaydetme](quickstart-register-app.md) bölümündeki yönergeleri izleyin:
 
-- **Desteklenen hesap türleri** için **yalnızca bu kuruluş dizinindeki hesaplar** ' ı seçin.
+- **Desteklenen hesap türleri** için **yalnızca bu kuruluş dizinindeki hesaplar**' ı seçin.
 - **Yeniden yönlendirme URI 'si** açılan öğesini **Web** olarak ayarlayın ve girin `https://localhost:5001/authentication/login-callback` . Kestrel üzerinde çalışan bir uygulamanın varsayılan bağlantı noktası 5001 ' dir. Uygulama farklı bir bağlantı noktasında kullanılabiliyorsa, yerine bu bağlantı noktası numarasını belirtin `5001` .
 
-Kaydolduktan sonra, **kimlik doğrulama**  >  **örtük izni** ' nda, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını işaretleyin ve ardından **Kaydet** düğmesini seçin.
+Kaydolduktan sonra, **kimlik doğrulama**  >  **örtük izni**' nda, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını işaretleyin ve ardından **Kaydet** düğmesini seçin.
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>.NET Core CLI kullanarak uygulamayı oluşturun
 
@@ -84,13 +84,13 @@ Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygula
 
 İlk olarak, `Mail.Read` Azure AD 'nin kullanıcıların e-postasına erişim isteyeceğini bilmesi için uygulamanın kaydına API iznini ekleyin.
 
-1. Azure portal, **uygulama kayıtları** ' de Uygulamanızı seçin.
-1. **Yönet** altında **API izinleri** ' ni seçin.
-1. Microsoft Graph **izin Ekle** ' yi seçin  >  **Microsoft Graph**.
-1. **Temsilci izinleri** ' ni seçin, sonra **posta. Read** iznini arayıp seçin.
-1. **Izin Ekle** ' yi seçin.
+1. Azure portal, **uygulama kayıtları**' de Uygulamanızı seçin.
+1. **Yönet** altında **API izinleri**' ni seçin.
+1. Microsoft Graph **izin Ekle**' yi seçin  >  **Microsoft Graph**.
+1. **Temsilci izinleri**' ni seçin, sonra **posta. Read** iznini arayıp seçin.
+1. **Izin Ekle**' yi seçin.
 
-Ardından, aşağıdaki,, Netstandard 2.1 **ItemGroup** 'daki projenizin *. csproj* dosyasına aşağıdakini ekleyin. Bu, bir sonraki adımda özel HttpClient oluşturmanıza olanak sağlayacak.
+Ardından, aşağıdaki,, Netstandard 2.1 **ItemGroup**'daki projenizin *. csproj* dosyasına aşağıdakini ekleyin. Bu, bir sonraki adımda özel HttpClient oluşturmanıza olanak sağlayacak.
 
 ```xml
 <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.7" />

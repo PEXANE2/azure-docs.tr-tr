@@ -2,21 +2,21 @@
 title: Azure Event Grid coğrafi olağanüstü durum kurtarma | Microsoft Docs
 description: Azure Event Grid coğrafi olağanüstü durum kurtarmayı (GeoDR) otomatik olarak nasıl desteklediğini açıklar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/19/2020
+ms.openlocfilehash: 10beaf0ae25f3ed9b7bcda5961a89494b18b84d9
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105855"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980871"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure Event Grid 'de sunucu tarafı coğrafi olağanüstü durum kurtarma
 Event Grid artık yalnızca yeni, ancak var olan tüm etki alanları, konular ve olay abonelikleri için değil, meta verilere yönelik otomatik coğrafi bir olağanüstü durum kurtarma (GeoDR) vardır. Bir Azure bölgesinin tamamı kapalıysa Event Grid, tüm olayla ilgili altyapı meta verilerlerinizin eşleştirilmiş bir bölgeyle eşitlenmesi zaten olur. Yeni olaylarınız, sizin tarafınızdan araya girmeden yeniden akışa sunulacaktır. 
 
 Olağanüstü durum kurtarma iki ölçüm ile ölçülür:
 
-- [Kurtarma noktası hedefi (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): kaybolmuş olabilecek verilerin dakikası veya saatleri.
-- [Kurtarma süresi hedefi (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): hizmetin dakika cinsinden bir süre olması olabilir.
+- Kurtarma noktası hedefi (RPO): kaybolmuş olabilecek verilerin dakikası veya saatleri.
+- Kurtarma süresi hedefi (RTO): hizmetin dakika veya saat sayısı.
 
 Event Grid otomatik yük devretmede, meta verileriniz (olay abonelikleri vb.) ve verileriniz (olaylar) için farklı RPOs ve RTOs vardır. Aşağıdakilerden farklı belirtilere ihtiyacınız varsa, [Konu durumu API 'lerini kullanarak kendi istemci tarafı yük devrelerinizi](custom-disaster-recovery.md)de uygulayabilirsiniz.
 

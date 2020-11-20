@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168282"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979972"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -93,11 +93,11 @@ Azure Izleyici 'de, değişiklik Analizi Ayrıca self servis **Tanılama ve soru
 
 Uygulama değişikliği analizi, Web uygulamasındaki tek başına bir algılayıcı olan sorunları tanılamanıza ve çözmenize yardımcı olur. Ayrıca **uygulama Kilitlenmelerinde** ve **Web uygulaması, algılayıcıları**'nda da toplanır. Sorunları Tanıla ve çöz aracını girerken, **Microsoft. ChangeAnalysis** kaynak sağlayıcısı otomatik olarak kaydedilir. Web uygulamasını Konuk değişiklik izlemeyi etkinleştirmek için bu yönergeleri izleyin.
 
-1. **Kullanılabilirlik ve performans ' ı**seçin.
+1. **Kullanılabilirlik ve performans ' ı** seçin.
 
     !["Kullanılabilirlik ve performans" sorun giderme seçeneklerinin ekran görüntüsü](./media/change-analysis/availability-and-performance.png)
 
-2. **Uygulama değişikliklerini**seçin. Özellik **uygulama Kilitlenmelerinde**da kullanılabilir.
+2. **Uygulama değişikliklerini** seçin. Özellik **uygulama Kilitlenmelerinde** da kullanılabilir.
 
    !["Uygulama kilitlenmeler" düğmesinin ekran görüntüsü](./media/change-analysis/application-changes.png)
 
@@ -172,9 +172,9 @@ foreach ($webapp in $webapp_list)
 ## <a name="troubleshoot"></a>Sorun giderme
 
 ### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Microsoft. Change Analysis Resource sağlayıcısını değişiklik geçmişi sekmesinden kaydettirme sorunu yaşıyor
-Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçmişini ilk kez görüntülediğinizde, **Microsoft. ChangeAnalysis**adlı bir kaynak sağlayıcısını otomatik olarak kaydettiğini görürsünüz. Nadir durumlarda, aşağıdaki nedenlerden dolayı başarısız olabilir:
+Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçmişini ilk kez görüntülediğinizde, **Microsoft. ChangeAnalysis** adlı bir kaynak sağlayıcısını otomatik olarak kaydettiğini görürsünüz. Nadir durumlarda, aşağıdaki nedenlerden dolayı başarısız olabilir:
 
-- **Microsoft. ChangeAnalysis kaynak sağlayıcısını kaydetmek için yeterli izniniz**yok. Bu hata iletisi, geçerli abonelikteki rolünüzün onunla ilişkili **Microsoft. support/Register/Action** kapsamına sahip olmadığı anlamına gelir. Bu, aboneliğin sahibi değilseniz ve bir iş arkadaşıyla paylaşılan erişim izinlerine sahip değilseniz meydana gelebilir. Yani, bir kaynak grubuna erişimi görüntüleme. Bunu yapmak için, **Microsoft. ChangeAnalysis** kaynak sağlayıcısı 'nı kaydetmek üzere aboneliğinizin sahibine başvurabilirsiniz. Bu, abonelikler üzerinden Azure portal yapılabilir **| Kaynak sağlayıcıları** ve ```Microsoft.ChangeAnalysis``` Kullanıcı arabiriminde arama yapın, veya Azure PowerShell ya da Azure CLI aracılığıyla kaydolun.
+- **Microsoft. ChangeAnalysis kaynak sağlayıcısını kaydetmek için yeterli izniniz** yok. Bu hata iletisi, geçerli abonelikteki rolünüzün onunla ilişkili **Microsoft. support/Register/Action** kapsamına sahip olmadığı anlamına gelir. Bu, aboneliğin sahibi değilseniz ve bir iş arkadaşıyla paylaşılan erişim izinlerine sahip değilseniz meydana gelebilir. Yani, bir kaynak grubuna erişimi görüntüleme. Bunu yapmak için, **Microsoft. ChangeAnalysis** kaynak sağlayıcısı 'nı kaydetmek üzere aboneliğinizin sahibine başvurabilirsiniz. Bu, abonelikler üzerinden Azure portal yapılabilir **| Kaynak sağlayıcıları** ve ```Microsoft.ChangeAnalysis``` Kullanıcı arabiriminde arama yapın, veya Azure PowerShell ya da Azure CLI aracılığıyla kaydolun.
 
     Kaynak sağlayıcısını PowerShell aracılığıyla Kaydet: 
     ```PowerShell
@@ -183,8 +183,9 @@ Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçm
     ```
 
 - **Microsoft. ChangeAnalysis kaynak sağlayıcısı kaydettirilemedi**. Bu ileti, kaynak sağlayıcısını kaydetmek için Kullanıcı arabirimi gönderme isteği olarak hemen başarısız olan bir şeydir ve izin sorunuyla ilgili değildir. Büyük olasılıkla, geçici bir internet bağlantısı sorunu olabilir. Sayfayı yenilemeyi ve internet bağlantınızı kontrol etmeyi deneyin. Hata devam ederse, iletişime geçin changeanalysishelp@microsoft.com
+- **Microsoft. ChangeAnalysis kaynak sağlayıcısı ile sorgulama başarısız oldu** *, Azure Use aboneliği desteklenmiyor, değişiklikler yalnızca aboneliğin ana kiracısında kullanılabilir*. Değişiklik Analizi kaynak sağlayıcısı 'nın, ev kiracısında olmayan kullanıcılar için Azure ışıklı kullanım aboneliği aracılığıyla kaydedilmesi için bir sınırlama vardır. Yakın gelecekte bu sınırlamanın giderilmesi beklenir. Sizin için bir engelleyici sorun varsa, hizmet sorumlusu oluşturmayı ve erişime izin vermek üzere rolü açıkça atamayı içeren bir geçici çözüm vardır.  changeanalysishelp@microsoft.comHakkında daha fazla bilgi edinmek için iletişim kurun.
 
-- **Bu, beklenenden uzun sürüyor**. Bu ileti, kaydın 2 dakikadan uzun sürmesi anlamına gelir. Bu olağan dışı bir şeydir, ancak yanlış bir sorun olduğu anlamına gelmez. Abonelikler 'e gidebilirsiniz **| ** **Microsoft. changeanalysis** kaynak sağlayıcısı kayıt durumunu denetlemek için kaynak sağlayıcısı. Kullanıcı arabirimini kullanarak, yardımcı olup olmadığını görmek için kaydını silip yeniden kaydedin veya yenileyin. Sorun devam ederse destek 'e başvurun changeanalysishelp@microsoft.com .
+- **Bu, beklenenden uzun sürüyor**. Bu ileti, kaydın 2 dakikadan uzun sürmesi anlamına gelir. Bu olağan dışı bir şeydir, ancak yanlış bir sorun olduğu anlamına gelmez. Abonelikler 'e gidebilirsiniz **|** **Microsoft. changeanalysis** kaynak sağlayıcısı kayıt durumunu denetlemek için kaynak sağlayıcısı. Kullanıcı arabirimini kullanarak, yardımcı olup olmadığını görmek için kaydını silip yeniden kaydedin veya yenileyin. Sorun devam ederse destek 'e başvurun changeanalysishelp@microsoft.com .
     ![RP kaydı çok uzun sürüyor sorunlarını giderme](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
 ![Sorun giderme araçları seçiliyken bir sanal makine için sorunları Tanıla ve çöz aracının ekran görüntüsü.](./media/change-analysis/vm-dnsp-troubleshootingtools.png)

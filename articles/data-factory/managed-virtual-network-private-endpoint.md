@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317067"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980387"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -73,6 +73,11 @@ Sahip bağlantıyı onayladığında, özel bağlantı oluşturulur. Aksi takdir
 
 Yalnızca onaylanan bir durumdaki yönetilen özel uç nokta, belirli bir özel bağlantı kaynağına trafik gönderebilir.
 
+## <a name="interactive-authoring"></a>Etkileşimli yazma
+Etkileşimli yazma özellikleri, test bağlantısı, klasör listesi ve tablo listesi, şema al ve Önizleme verileri gibi işlevler için kullanılır. ADF tarafından yönetilen sanal ağdaki bir Azure Integration Runtime oluştururken veya düzenlerken etkileşimli yazma özelliğini etkinleştirebilirsiniz. Arka uç hizmeti, etkileşimli yazma işlevleri için işlem ön ayırmasını alacak. Aksi takdirde, işlem, daha fazla zaman alacak herhangi bir etkileşimli işlem gerçekleştirildiğinde tahsis edilir. Etkileşimli yazma için yaşam süresi (TTL) 60 dakikadır. Bu, son etkileşimli yazma işleminin 60 dakika sonra otomatik olarak devre dışı bırakılacağından oluşur.
+
+![Etkileşimli yazma](./media/managed-vnet/interactive-authoring.png)
+
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 ### <a name="supported-data-sources"></a>Desteklenen Veri Kaynakları
 ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak için aşağıdaki veri kaynaklarının altında desteklenir.
@@ -98,7 +103,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Batı ABD 2
 - Orta Güney ABD
 - Central US
-- North Europe
+- Kuzey Avrupa
 - West Europe
 - Güney Birleşik Krallık
 - Güneydoğu Asya

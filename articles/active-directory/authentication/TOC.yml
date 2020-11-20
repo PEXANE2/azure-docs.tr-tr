@@ -9,7 +9,7 @@
   items:
     - name: Kendi kendine parola sıfırlamayı etkinleştirme
       href: tutorial-enable-sspr.md
-    - name: Azure Multi-Factor Authentication’ı etkinleştirme
+    - name: Azure AD Multi-Factor Authentication’ı etkinleştirme
       href: tutorial-enable-azure-mfa.md
     - name: Şirket içine parola geri yazmayı etkinleştirme
       href: tutorial-enable-sspr-writeback.md
@@ -80,7 +80,7 @@
           href: howto-sspr-authenticationdata.md
         - name: Windows istemcileri için SSPR
           href: howto-sspr-windows.md
-    - name: Azure Multi-Factor Authentication
+    - name: Azure AD Multi-Factor Authentication
       items:
         - name: Dağıtım kılavuzu
           href: howto-mfa-getstarted.md
@@ -108,7 +108,7 @@
               href: howto-mfa-nps-extension.md
             - name: NPS uzantısı için gelişmiş yapılandırma
               href: howto-mfa-nps-extension-advanced.md
-            - name: Azure VPN ve Azure MFA
+            - name: Azure VPN ve Azure AD MFA
               href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Uzak Masaüstü Ağ Geçidi
               href: howto-mfa-nps-extension-rdg.md

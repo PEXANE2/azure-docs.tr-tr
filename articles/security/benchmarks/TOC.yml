@@ -61,10 +61,14 @@
       href: security-baselines-overview.md
     - name: API Management güvenlik temeli
       href: ../../api-management/security-baseline.md
+    - name: App Service güvenlik temeli
+      href: ../../app-service/security-baseline.md
     - name: Application Gateway güvenlik temeli
       href: ../../application-gateway/security-baseline.md
     - name: Otomasyon güvenlik temeli
       href: ../../automation/security-baseline.md
+    - name: Azure Danışmanı güvenlik temeli
+      href: ../../advisor/security-baseline.md
     - name: Azure Backup güvenlik temeli
       href: ../../backup/security-baseline.md
     - name: Redis için Azure Cache güvenlik temeli
@@ -97,6 +101,8 @@
       href: ../../frontdoor/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
       href: ../../azure-functions/security-baseline.md
+    - name: Azure Information Protection güvenlik temeli
+      href: /azure/information-protection/security-baseline
     - name: Azure IoT Hub güvenlik temeli
       href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes Service güvenlik temeli

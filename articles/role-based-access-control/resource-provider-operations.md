@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649152"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980924"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -81,7 +81,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blok Zinciri** |
+| **Blok zinciri** |
 | [Microsoft. Blockzinciri](#microsoftblockchain) |
 | **AI + makine öğrenimi** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -93,7 +93,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. ıotcentral](#microsoftiotcentral) |
 | [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs) |
 | [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights) |
-| **Karma Gerçeklik** |
+| **Karma gerçeklik** |
 | [Microsoft. ıotspaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Tümleştirme** |
@@ -843,6 +843,7 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Read | Azure Güvenlik Duvarı NetworkRuleCollection 'ı alır |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Write | CreatesOrUpdates Azure Güvenlik Duvarı NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Delete | Azure Güvenlik Duvarı NetworkRuleCollection 'ı siler |
+> | Microsoft. Network/azureWebCategories/Read | Azure Web kategorilerini alır |
 > | Microsoft. Network/bastionHosts/okuma | Bir savunma ana bilgisayarı alır |
 > | Microsoft. Network/Bastionkonakları/yazma | Savunma Konağı oluşturma veya güncelleştirme |
 > | Microsoft. Network/Bastionkonakları/silme | Bir savunma konağını siler |
@@ -1242,6 +1243,8 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Read | Sanal hub 'ın bir hub BGP bağlantısı alt kaynağını alır |
 > | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Write | Sanal hub 'ın bir hub BGP bağlantısı alt kaynağını oluşturur veya güncelleştirir |
 > | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Delete | Sanal hub 'ın bir hub BGP bağlantısı alt kaynağını siler |
+> | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Advertisedrotalar/Action | Bir virtualrouter tanıtılan yolları alır |
+> | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Öğrennedroutes/eylem | Virtualrouter öğrenilen yollarını alır |
 > | Microsoft. Network/Virtualhub 'Ları/hubRouteTables/Read | Sanal hub 'ın bir rota tablosu alt kaynağını alır |
 > | Microsoft. Network/Virtualhub 'Ları/hubRouteTables/Write | Sanal hub 'ın bir rota tablosu alt kaynağını oluşturur veya güncelleştirir |
 > | Microsoft. Network/Virtualhub 'Ları/hubRouteTables/Delete | Sanal hub 'ın bir rota tablosu alt kaynağını siler |
@@ -1329,6 +1332,9 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/vpngateway/startpacketcapture/Action | Bağlı kaynakla VPN Gateway paket yakalamayı Başlat |
 > | Microsoft. Network/vpngateway/stoppacketcapture/Action | SasURL ile VPN Gateway paket yakalamayı durdur |
 > | Microsoft. Network/vpngateway/listvpnconnectionshegizli/Action | Bir VpnGateway 'de bir bağlantı kümesinin tümü veya bir alt kümesi için bağlantı durumunu alır |
+> | Microsoft. Network/Vpngateway/natRules/Read | Bir NAT kuralı kaynağı alır |
+> | Microsoft. Network/Vpngateway/natRules/Write | NAT kuralı kaynağı koyar |
+> | Microsoft. Network/Vpngateway/natRules/Delete | NAT kuralı kaynağını siler |
 > | Microsoft. Network/Vpngateway/vpnConnections/Read | Bir VpnConnection alır. |
 > | Microsoft. Network/Vpngateway/vpnConnections/Write | Bir VpnConnection koyar. |
 > | Microsoft. Network/Vpngateway/vpnConnections/Delete | Bir VpnConnection 'ı siler. |
@@ -1934,6 +1940,9 @@ Azure hizmeti: [Azure Maps](../azure-maps/index.yml)
 > | Microsoft. Maps/hesaplar/Sil | Haritalar hesabını silin. |
 > | Microsoft. Haritalar/hesaplar/listKeys/ACTION | Liste haritaları hesap anahtarları. |
 > | Microsoft. Maps/accounts/regenerateKey/ACTION | Yeni haritalar hesabı birincil veya ikincil anahtarı oluşturun. |
+> | Microsoft. Maps/hesaplar/oluşturucular/yazma | Oluşturucu oluşturun veya güncelleştirin. |
+> | Microsoft. Maps/hesaplar/oluşturucular/okuma | Bir Oluşturucu alın. |
+> | Microsoft. Maps/hesaplar/oluşturucular/silme | Oluşturucuyu silin. |
 > | Microsoft. Haritalar/hesaplar/eventGridFilters/Delete | Event Grid filtresini silin. |
 > | Microsoft. Maps/accounts/Eventgridfilter/Read | Event Grid filtresi al |
 > | Microsoft. Maps/accounts/Eventgridfilter/Write | Event Grid bir filtre oluşturun veya güncelleştirin. |
@@ -2103,6 +2112,7 @@ Azure hizmeti: [Azure SignalR hizmeti](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/Locations/checknameavaılabılıty/Action | Bir adın yeni bir SignalR hizmeti ile kullanım için kullanılabilir olup olmadığını denetler |
 > | Microsoft. SignalRService/Locations/operationresults/SignalR/Read | Konum tabanlı zaman uyumsuz işlemin sonucunu sorgulama |
 > | Microsoft. SignalRService/Locations/Operationdurumlarının/operationId/Read | Konum tabanlı zaman uyumsuz işlemin durumunu sorgulama |
+> | Microsoft. SignalRService/Locations/Operationdurumlarının/SignalR/Read | Konum tabanlı zaman uyumsuz işlemin durumunu sorgulama |
 > | Microsoft. SignalRService/konumlar/kullanımlar/okuma | Azure SignalR hizmeti için kota kullanımlarını edinme |
 > | Microsoft. SignalRService/operationresults/Read | Sağlayıcı düzeyindeki zaman uyumsuz işlemin sonucunu sorgulama |
 > | Microsoft. SignalRService/işlemler/okuma | Azure SignalR hizmeti için işlemleri listeleyin. |
@@ -2610,6 +2620,7 @@ Azure hizmeti: [App Service](../app-service/index.yml), [Azure işlevleri](../az
 > | Microsoft. Web/staticSites/GetUser/Action | Bir kullanıcının statik site bilgilerini alın |
 > | Microsoft. Web/staticSites/listgizlilikler/Action | Statik bir sitenin gizli dizilerini listeleyin |
 > | Microsoft. Web/staticSites/resetapikey/eylem | Statik site için API anahtarını sıfırlayın |
+> | Microsoft. Web/staticSites/zipdeploy/ACTION | Sıkıştırılmış içerikten statik bir site dağıtma |
 > | Microsoft. Web/staticSites/authproviders/listusers/Action | Bir statik site için kullanıcıları listeleyin |
 > | Microsoft. Web/staticSites/authproviders/Kullanıcı/silme | Statik site için bir kullanıcıyı silme |
 > | Microsoft. Web/staticSites/authproviders/Kullanıcı/yazma | Bir kullanıcıyı statik site için güncelleştirme |
@@ -2617,6 +2628,7 @@ Azure hizmeti: [App Service](../app-service/index.yml), [Azure işlevleri](../az
 > | Microsoft. Web/staticSites/Build/Delete | Statik site için bir derlemeyi silme |
 > | Microsoft. Web/staticSites/derlemeler/listfunctionappsettings/Action | Statik site derlemesi için işlev uygulama ayarlarını listeleme |
 > | Microsoft. Web/staticSites/derlemeler/listappsettings/Action | Statik site derlemesi için uygulama ayarlarını listeleme |
+> | Microsoft. Web/staticSites/derlemeler/zipdeploy/Action | Sıkıştırılmış içerikten statik bir site derlemesi dağıtma |
 > | Microsoft. Web/staticSites/derlemeler/yapılandırma/yazma | Statik site derlemesi için uygulama ayarları oluşturma veya güncelleştirme |
 > | Microsoft. Web/staticSites/config/Write | Statik site için uygulama ayarları oluşturma veya güncelleştirme |
 > | Microsoft. Web/staticSites/customdomains/Write | Statik site için özel etki alanı oluşturma |
@@ -3931,6 +3943,8 @@ Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure 
 > | Microsoft. SQL/Locations/Serveryönetimtoroperationresults/Read | Sunucu Azure Active Directory yönetici işlemi sonuçları |
 > | Microsoft. SQL/konumlar/serverKeyAzureAsyncOperation/Read | Saydam veri şifreleme sunucusu anahtarlarında devam eden işlemleri alır |
 > | Microsoft. SQL/konumlar/serverKeyOperationResults/Read | Saydam veri şifreleme sunucusu anahtarlarında devam eden işlemleri alır |
+> | Microsoft. SQL/konumlar/serverTrustGroupAzureAsyncOperation/Read | Sunucu güven grubu zaman uyumsuz işleminin durumunu al |
+> | Microsoft. SQL/Locations/serverTrustGroupOperationResults/Read | Sunucu güven grubu işleminin sonucunu al |
 > | Microsoft. SQL/konumlar/serverTrustGroups/Write | Belirtilen parametrelerle bir sunucu güven grubu oluşturur |
 > | Microsoft. SQL/konumlar/serverTrustGroups/Delete | Mevcut SQL Server güven grubunu siler |
 > | Microsoft. SQL/konumlar/serverTrustGroups/Read | Mevcut SQL Server güven gruplarını döndürür |
@@ -3946,12 +3960,12 @@ Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure 
 > | Microsoft. SQL/Locations/virtualNetworkRulesAzureAsyncOperation/Read | Belirtilen sanal ağ kurallarının ayrıntılarını döndürür Azure zaman uyumsuz işlemi  |
 > | Microsoft. SQL/konumlar/virtualNetworkRulesOperationResults/Read | Belirtilen sanal ağ kuralları işleminin ayrıntılarını döndürür  |
 > | Microsoft. SQL/ManagedInstances/tdeCertificates/ACTION | TDE sertifikası oluştur/güncelleştir |
-> | Microsoft. SQL/ManagedInstances/Joınservertrustgroup/Action | Kullanıcının sunucu güven grubuna katılmasına izin verilip verilmeyeceğini belirleme |
+> | Microsoft. SQL/ManagedInstances/yük devretme/eylem | Müşteri tarafından başlatılan yönetilen örnek yük devretme. |
+> | Microsoft. SQL/ManagedInstances/Joınservertrustgroup/Action | Kullanıcının yönetilen sunucuyu bir sunucu güven grubuna katılmasına izin verilip verilmeyeceğini belirleme |
 > | Microsoft. SQL/ManagedInstances/Export/Action | Sistem veritabanını ve SMK anahtarını dışarı aktarma |
 > | Microsoft. SQL/ManagedInstances/Read | Yönetilen örneklerin listesini döndürün veya belirtilen yönetilen örnek için özellikleri alır. |
 > | Microsoft. SQL/ManagedInstances/Write | Belirtilen parametrelerle yönetilen bir örnek oluşturur veya belirtilen yönetilen örnek için özellikleri veya etiketleri güncelleştirir. |
 > | Microsoft. SQL/ManagedInstances/Delete | Varolan bir yönetilen örneği siler. |
-> | Microsoft. SQL/ManagedInstances/yük devretme/eylem | Müşteri tarafından başlatılan yönetilen örnek yük devretme. |
 > | Microsoft. SQL/ManagedInstances/Administrators/Read | Yönetilen örnek yöneticilerinin bir listesini alır. |
 > | Microsoft. SQL/ManagedInstances/Administrators/Write | Yönetilen örnek yöneticisini belirtilen parametrelerle oluşturur veya güncelleştirir. |
 > | Microsoft. SQL/ManagedInstances/Administrators/Delete | Yönetilen örneğin mevcut bir yöneticisini siler. |
@@ -4100,11 +4114,11 @@ Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure 
 > | Microsoft. SQL/Servers/veritabanları/dataMaskingPolicies/Rules/Delete | Belirli bir veritabanı için veri maskeleme ilkesi kuralını Sil |
 > | Microsoft. SQL/Servers/veritabanları/dataWarehouseQueries/Read | Seçili sorgu KIMLIĞI için veri ambarı dağıtım sorgu bilgilerini döndürür |
 > | Microsoft. SQL/Servers/veritabanları/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Seçilen adım KIMLIĞI için veri ambarı sorgusunun dağıtılmış sorgu adımı bilgilerini döndürür |
-> | Microsoft. SQL/Servers/veritabanları/dataWarehouseUserActivities/okundu | Çalışan ve askıya alınmış sorguları içeren bir Azure SYNAPSE Analytics adanmış SQL havuzunun Kullanıcı etkinliklerini alır |
+> | Microsoft. SQL/Servers/veritabanları/dataWarehouseUserActivities/okundu | Çalışan ve askıya alınmış sorguları içeren bir SQL veri ambarı örneğinin Kullanıcı etkinliklerini alır |
 > | Microsoft. SQL/Servers/veritabanları/extendedAuditingSettings/Read | Belirli bir veritabanında yapılandırılan genişletilmiş blob denetim ilkesinin ayrıntılarını alma |
 > | Microsoft. SQL/Servers/veritabanları/extendedAuditingSettings/Write | Belirli bir veritabanı için genişletilmiş blob denetim ilkesini değiştirme |
-> | Microsoft. SQL/Servers/veritabanları/uzantılar/okuma | Veritabanı için uzantıların bir koleksiyonunu alır. |
-> | Microsoft. SQL/Servers/veritabanları/uzantılar/yazma | Belirli bir veritabanı için uzantıyı değiştirme |
+> | Microsoft. SQL/Servers/veritabanları/uzantılar/yazma | Veritabanı uzantısı işlemini gerçekleştirir. |
+> | Microsoft. SQL/Servers/veritabanları/uzantılar/okuma | Veritabanı uzantılarını al işlemi. |
 > | Microsoft. SQL/Servers/Databases/Extensions/ımporbir Sionoperationresults/Read | Devam eden içeri aktarma işlemlerini alır |
 > | Microsoft. SQL/Servers/veritabanları/geoBackupPolicies/okuma | Belirli bir veritabanı için coğrafi yedekleme ilkeleri alma |
 > | Microsoft. SQL/Servers/veritabanları/geoBackupPolicies/Write | Veritabanı coğrafi yedekleme ilkesi oluşturma veya güncelleştirme |
@@ -4681,7 +4695,7 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/okuma | Stream Analytics Işi dönüşümünü oku |
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/yazma | Stream Analytics Işi dönüşümünü yaz |
 
-## <a name="blockchain"></a>Blok Zinciri
+## <a name="blockchain"></a>Blok zinciri
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
@@ -5140,6 +5154,7 @@ Azure hizmeti: bilişsel [Hizmetler](../cognitive-services/index.yml)
 > | Microsoft. Biliveservices/accounts/TextAnalytics/Entities/Action | API, belirli bir belgedeki bilinen varlıkların ve genel adlandırılmış varlıkların ( \" kişi \" , \" Konum \" , \" kuruluş \" vb.) listesini döndürür. |
 > | Microsoft. Biliveservices/accounts/TextAnalytics/keyphrases/Action | API, giriş metnindeki önemli konuşma noktalarını belirten dizelerin bir listesini döndürür. |
 > | Microsoft. Biliveservices/hesaplar/TextAnalytics/yaklaşım/eylem | API, 0 ile 1 arasında sayısal bir puan döndürür.<br>1’e yakın puanlar pozitif yaklaşımı, 0’a yakın puanlar ise negatif yaklaşımı gösterir.<br>0,5 puanı, yaklaşım eksikliğinden (ör.<br>bir FACTOID Bildirisi). |
+> | Microsoft. Biliveservices/accounts/TextAnalytics/Analyze/Action | Analiz için metin belgelerinin bir koleksiyonunu gönderebilirsiniz. Yürütülecek bir veya daha fazla benzersiz görev belirtin. |
 > | Microsoft. Biliveservices/accounts/Textçeviri/algılama/eylem | Bir metin parçasının dilini tanımlar. |
 > | Microsoft. Biliveservices/accounts/TextTranslation/breakcümlesini/Action | Tümce sınırlarının metin parçasına konumlandırılmasını belirler. |
 > | Microsoft. Biliveservices/accounts/Textçevirisi/çevir/eylem | Metni çevirir. |
@@ -5501,24 +5516,24 @@ Azure hizmeti: [Notification Hubs](../notification-hubs/index.yml)
 > | Microsoft. Notificationhub 'Lar/ad alanları/Checbcertificate sertifikası/eylem | Bir ad alanı içinde belirli bir NotificationHub adının kullanılabilir olup olmadığını denetler. |
 > | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/yazma | Ad alanı düzeyinde yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları, birincil ve Ikincil anahtarlar güncelleştirilebilen olabilir. |
 > | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/okuma | Ad alanı yetkilendirme kuralları açıklaması listesini alın. |
-> | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/silme | Ad alanı yetkilendirme kuralını silin. Varsayılan ad alanı yetkilendirme kuralı silinemez.  |
+> | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/silme | Ad alanı yetkilendirme kuralını silin. Varsayılan ad alanı yetkilendirme kuralı silinemez. |
 > | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/ListKeys/Action | Ad alanına bağlantı dizesi al |
 > | Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules/regenerateKeys/ACTION | Ad alanı yetkilendirme kuralı birincil/Ikincil anahtarı yeniden oluştur, yeniden oluşturulması gereken anahtarı belirtin |
-> | Microsoft. Notificationhub 'Lar/ad alanları/diagnosticSettings/Read | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
-> | Microsoft. Notificationhub 'Lar/ad alanları/diagnosticSettings/Write | Ad alanı Tanılama ayarları kaynak açıklamalarının listesini al |
-> | Microsoft. Notificationhub 'Lar/ad alanları/logDefinitions/Read | Ad alanı günlükleri kaynak açıklamalarının listesini al |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/yazma | Bir Bildirim Hub 'ı oluşturun ve özelliklerini güncelleştirin. Özellikleri genellikle PNS kimlik bilgilerini içerir. Yetkilendirme kuralları ve TTL |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/okuma | Bildirim Hub 'ı kaynak açıklamalarının listesini al |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar/silme | Bildirim Hub 'ı kaynağını Sil |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Action | Bildirim Hub 'ı yetkilendirme kurallarının listesini alın |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/pnsCredentials/Action | Tüm Notification Hub 'ı kimlik bilgilerini alın. Bu, WNS, MPNS, APNS, GCM ve Baidu kimlik bilgilerini içerir |
-> | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/debugSend/Action | Test anında iletme bildirimi gönderin. |
+> | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/debugSend/Action | 10 eşleşen cihaza bir test anında iletme bildirimi gönderin. |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Write | Bildirim Hub 'ı yetkilendirme kuralları oluşturun ve özelliklerini güncelleştirin. Yetkilendirme kuralları erişim hakları, birincil ve Ikincil anahtarlar güncelleştirilebilen olabilir. |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Read | Bildirim Hub 'ı yetkilendirme kurallarının listesini alın |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/Delete | Bildirim Hub 'ı yetkilendirme kurallarını Sil |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/ListKeys/Action | Bağlantı dizesini Bildirim Hub 'ına al |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules/regenerateKeys/ACTION | Bildirim Hub 'ı yetkilendirme kuralı birincil/Ikincil anahtarı yeniden oluşturma, yeniden oluşturulması gereken anahtarı belirtin |
 > | Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar/metricDefinitions/okuma | Ad alanı ölçümleri kaynak açıklamalarının listesini al |
+> | Microsoft. Notificationhub 'Lar/ad alanları/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Read | Ad alanı tanılama ayarlarını al |
+> | Microsoft. Notificationhub 'Lar/ad alanları/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Ad alanı tanılama ayarlarını oluştur veya güncelleştir |
+> | Microsoft. Notificationhub 'Lar/ad alanları/sağlayıcılar/Microsoft. Insights/logDefinitions/okuma | Ad alanı için kullanılabilir günlükleri alır |
 > | Microsoft. Notificationhub 'Lar/operationResults/Read | Notification Hubs sağlayıcısı için işlem sonuçlarını döndürür |
 > | Microsoft. Notificationhub 'Lar/işlemler/okuma | Notification Hubs sağlayıcısı için desteklenen işlemlerin listesini döndürür |
 
@@ -5566,7 +5581,25 @@ Azure hizmeti: [Azure uzamsal bağlantıları](../spatial-anchors/index.yml)
 > | Eylem | Açıklama |
 > | --- | --- |
 > | Microsoft. MixedReality/Register/ACTION | Karma Gerçeklik kaynak sağlayıcısı için bir abonelik kaydeder. |
+> | Microsoft. MixedReality/Unregister/eylem | Karma Gerçeklik kaynak sağlayıcısı için bir aboneliğin kaydını siler. |
+> | Microsoft. MixedReality/Locations/checknameavaılabılıty/Read | Ad kullanılabilirliğini denetler |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/Delete | Bir nesne anlama hesabı |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/ListKeys/Action | Bir nesnenin bir hesabı anlama anahtarını listeleme |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/Read | Bir nesne anlama hesabı özelliklerini okuyun |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/regeneratekeys/Action | Bir nesne için anahtarları yeniden oluşturma bir hesabı anlama |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/Write | Bir nesne anlama hesabı özelliklerini güncelleştirme |
+> | Microsoft. MixedReality/işlemler/okuma | Microsoft Mixed Reality için kullanılabilir işlemleri listeleyin |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/Delete | Uzaktan işleme hesabını silme |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/ListKeys/Action | Uzaktan işleme hesabının anahtarlarını Listele |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/okuma | Uzaktan işleme hesabının özelliklerini okuyun |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/regeneratekeys/ACTION | Uzaktan işleme hesabının anahtarlarını yeniden oluştur |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/Write | Uzaktan işleme hesabının özelliklerini güncelleştirme |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/anahtarlar/okuma | Uzaktan işleme hesabının anahtarlarını okuyun |
 > | Microsoft. MixedReality/remoteRenderingAccounts/Providers/Microsoft. Insights/metricDefinitions/Read | Microsoft. MixedReality/remoteRenderingAccounts için kullanılabilir ölçümleri alır |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/ListKeys/Action | Uzamsal bağlayıcı hesabının anahtarlarını listeleyin |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/Read | Uzamsal bağlayıcı hesabının özelliklerini okuyun |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/regeneratekeys/Action | Uzamsal bağlayıcı hesabının anahtarlarını yeniden oluştur |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/anahtarlar/okuma | Uzamsal bağlayıcı hesabının anahtarlarını okuma |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Read | Microsoft. MixedReality/spatialAnchorsAccounts için tanılama ayarını alır |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Write | Microsoft. MixedReality/spatialAnchorsAccounts için tanılama ayarını oluşturur veya güncelleştirir |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/metricDefinitions/okuma | Microsoft. MixedReality/spatialAnchorsAccounts için kullanılabilir ölçümleri alır |
@@ -5931,6 +5964,11 @@ Azure hizmeti: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/okuma | Rolleri listeler veya alır |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/Write | Rolleri oluşturur veya güncelleştirir |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/Delete | Rolleri siler |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/addons/Read | ArmApiRes_addons listeler veya alır |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/addons/Read | ArmApiRes_addons listeler veya alır |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/addons/Write | ArmApiRes_addons oluşturur veya güncelleştirir |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/eklentiler/Sil | ArmApiRes_addons siler |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roller/addons/operationResults/Read | İşlem sonucunu listeler veya alır |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Roles/monitoringConfig/Write | İzleme yapılandırmasını oluşturur veya güncelleştirir |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Roles/monitoringConfig/Delete | İzleme yapılandırmasını siler |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Roles/monitoringConfig/Read | İzleme yapılandırmasını listeler veya alır |
@@ -6543,65 +6581,65 @@ Azure hizmeti: [Key Vault](../key-vault/index.yml)
 > | Microsoft. Keykasası/managedHSMs/Delete | Yönetilen bir HSM 'yi silme |
 > | Microsoft. Keykasası/işlemler/okuma | Microsoft. Keykasası kaynak sağlayıcısında kullanılabilir işlemleri listeler |
 > | Microsoft. Keykasası/Kasaults/okuma | Anahtar kasasının özelliklerini görüntüleme |
-> | Microsoft. Keykasası/Vaults/yazma | Yeni bir Anahtar Kasası oluşturun veya var olan bir anahtar kasasının özelliklerini güncelleştirin |
-> | Microsoft. Keykasası/kasa/silme | Bir anahtar kasasını silme |
+> | Microsoft. Keykasası/Vaults/yazma | Yeni bir Anahtar Kasası oluşturur veya var olan bir anahtar kasasının özelliklerini güncelleştirir. Bazı özellikler için daha fazla izin gerekebilir. |
+> | Microsoft. Keykasası/kasa/silme | Bir anahtar kasasını siler |
 > | Microsoft. Keykasası/Vaults/dağıtım/eylem | Azure kaynaklarını dağıttığınızda bir anahtar kasasındaki gizli dizileri erişimine izin sağlar |
-> | Microsoft. Keykasası/Vaults/accessPolicies/Write | Mevcut bir erişim ilkesini birleştirerek veya değiştirerek veya bir kasaya yeni bir erişim ilkesi ekleyerek güncelleştirin. |
+> | Microsoft. Keykasası/Vaults/accessPolicies/Write | Var olan bir erişim ilkesini birleştirerek veya değiştirerek veya anahtar kasasına yeni bir erişim ilkesi ekleyerek güncelleştirir. |
 > | Microsoft. Keykasası/Vaults/eventGridFilters/Read | Microsoft. Keykasasına Key Vault için bir EventGrid aboneliğinin görüntülendiğini bildirir |
 > | Microsoft. Keykasası/Vaults/eventGridFilters/Write | Microsoft. Keykasasında Key Vault yeni bir EventGrid aboneliğinin oluşturulduğunu bildirir |
 > | Microsoft. Keykasası/Vaults/eventGridFilters/Delete | Microsoft. Keykasasına Key Vault için bir EventGrid aboneliğinin silinmekte olduğunu bildirir |
 > | Microsoft. Keykasası/Vaults/anahtarlar/okuma | Belirtilen bir kasadaki anahtarları listeleyin veya belirtilen anahtarın geçerli sürümünü okuyun. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/yazma | Yeni bir anahtar oluşturun veya var olan bir anahtarı güncelleştirin. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/yazma | Mevcut değilse yeni bir anahtarın ilk sürümünü oluşturur. Zaten varsa, var olan anahtar herhangi bir değişiklik yapılmadan döndürülür. Bu API sonraki sürümleri oluşturmaz ve var olan anahtarları güncelleştirmez. |
 > | Microsoft. Keykasası/Vaults/anahtarlar/sürümler/okuma | Belirtilen bir anahtarın sürümlerini listeleyin veya bir anahtarın belirtilen sürümünü okuyun. |
 > | Microsoft. Keykasası/Kasaults/gizlilikler/Read | Gizli anahtar özelliklerini görüntüleyin, ancak değerini değil. |
-> | Microsoft. Keykasası/kasa/gizli dizi/yazma | Yeni bir gizli dizi oluşturun veya var olan bir parolanın değerini güncelleştirin. |
+> | Microsoft. Keykasası/kasa/gizli dizi/yazma | Yeni bir gizli dizi oluşturur veya var olan bir gizli anahtar değerini güncelleştirir. |
 > | **DataAction** | **Açıklama** |
 > | Microsoft. Keykasası/Vaults/certificatecas/Delete | Sertifikayı vereni Sil |
 > | Microsoft. Keykasası/Vaults/certificatecas/Read | Sertifikayı vereni oku |
 > | Microsoft. Keykasası/Vaults/certificatecas/Write | Sertifikayı veren yaz |
 > | Microsoft. Keykasası/Vaults/certificatecontacts/Write | Sertifika kişisini Yönet |
-> | Microsoft. Keykasaları/kasaları/sertifikaları/silme | Bir sertifikayı silin. |
+> | Microsoft. Keykasaları/kasaları/sertifikaları/silme | Bir sertifikayı siler. Tüm sürümler silinir. |
 > | Microsoft. Keykasası/Kasaults/sertifikalar/okuma | Belirtilen bir anahtar kasasındaki sertifikaları listeleyin veya bir sertifika hakkında bilgi alın. |
-> | Microsoft. Keykasası/Kasaults/sertifikalar/yedekleme/eylem | Bir sertifikanın yedek dosyasını oluşturun. Dosya, aynı aboneliğin Key Vault sertifikayı geri yüklemek için kullanılabilir. Kısıtlamalar uygulanabilir. |
+> | Microsoft. Keykasası/Kasaults/sertifikalar/yedekleme/eylem | Bir sertifikanın yedek dosyasını oluşturur. Dosya, aynı aboneliğin Key Vault sertifikayı geri yüklemek için kullanılabilir. Kısıtlamalar uygulanabilir. |
 > | Microsoft. Keykasası/Kasaults/sertifikalar/temizleme/eylem | Bir sertifikayı temizler, kurtarılamaz hale getirir. |
 > | Microsoft. Keykasası/Kasaults/sertifikalar/güncelleştirme/eylem | Verilen sertifikayla ilişkili belirtilen öznitelikleri güncelleştirir. |
-> | Microsoft. Keykasası/Kasaults/sertifikalar/oluşturma/eylem | Yeni bir sertifika oluşturur. |
-> | Microsoft. Keykasası/Kasaults/sertifikalar/içeri/veya eylem | Özel bir anahtarı içeren mevcut geçerli bir sertifikayı Azure Key Vault içine aktarır. İçeri aktarılacak sertifika PFX veya ped biçiminde olabilir. |
+> | Microsoft. Keykasası/Kasaults/sertifikalar/oluşturma/eylem | Yeni bir sertifika oluşturur. Sertifika yoksa, ilk sürüm oluşturulur. Aksi takdirde, yeni bir sürüm oluşturulur. |
+> | Microsoft. Keykasası/Kasaults/sertifikalar/içeri/veya eylem | Özel anahtar içeren mevcut geçerli bir sertifikayı içeri aktarır.<br>İçeri aktarılacak sertifika PFX veya ped biçiminde olabilir.<br>Sertifika Key Vault yoksa, ilk sürüm belirtilen içerikle oluşturulur.<br>Aksi halde, belirtilen içerikle yeni bir sürüm oluşturulur. |
 > | Microsoft. Keykasası/Vaults/sertifikalar/kurtarma/eylem | Silinen sertifikayı kurtarır. İşlem, silme işleminin ters çevrilmesini gerçekleştirir. İşlem, geçici silme için etkin olan kasaların yanı sıra saklama aralığı sırasında da verilmeli. |
-> | Microsoft. Keykasası/Kasaults/sertifikalar/geri yükleme/eylem | Yedeklenen sertifikayı ve tüm sürümlerini bir kasaya geri yükler. |
+> | Microsoft. Keykasası/Kasaults/sertifikalar/geri yükleme/eylem | Bir sertifikayı ve tüm sürümlerini Key Vault tarafından oluşturulan bir yedekleme dosyasından geri yükler. |
 > | Microsoft. Keykasası/Vaults/anahtarlar/okuma | Belirtilen kasadaki anahtarları listeleyin veya bir anahtarın özelliklerini ve genel malzemesini okuyun.<br>Asimetrik anahtarlar için bu işlem ortak anahtarı kullanıma sunar ve imzayı şifrelemek ve doğrulamak gibi ortak anahtar algoritmaları gerçekleştirme olanağını içerir.<br>Özel anahtarlar ve simetrik anahtarlar hiçbir şekilde gösterilmez. |
 > | Microsoft. Keykasası/Vaults/anahtarlar/güncelleştirme/eylem | Verilen anahtarla ilişkili belirtilen öznitelikleri güncelleştirir. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/oluşturma/eylem | Yeni bir anahtar oluşturur. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/içeri/veya eylem | Dışarıdan oluşturulan bir anahtarı içeri aktarır, depolar ve istemciye anahtar parametreleri ve öznitelikler döndürür. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/oluşturma/eylem | Yeni bir anahtar oluşturur. Anahtar yoksa, ilk sürüm oluşturulur. Aksi halde, belirtilen değere sahip yeni bir sürüm oluşturulur. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/içeri/veya eylem | Dışarıdan oluşturulan bir anahtarı içeri aktarır. Anahtar yoksa, ilk sürüm içe aktarılan malzemeyle oluşturulur. Aksi takdirde, içeri aktarılan malzemeyle yeni bir sürüm oluşturulur. |
 > | Microsoft. Keykasası/Vaults/anahtarlar/kurtarma/eylem | Silinen anahtarı kurtarır. İşlem, silme işleminin ters çevrilmesini gerçekleştirir. İşlem, geçici silme için etkin olan kasaların yanı sıra saklama aralığı sırasında da verilmeli. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/geri yükleme/eylem | Yedeklenen anahtarı ve tüm sürümlerini bir kasaya geri yükler. |
-> | Microsoft. Keykasası/Kasaults/anahtarlar/silme | Bir anahtarı silin. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/yedekleme/eylem | Bir anahtarın yedekleme dosyasını oluşturun. Dosya, aynı aboneliğin Key Vault anahtarı geri yüklemek için kullanılabilir. Kısıtlamalar uygulanabilir. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/geri yükleme/eylem | Key Vault tarafından oluşturulan bir yedekleme dosyasından bir anahtarı ve tüm sürümlerini geri yükler. |
+> | Microsoft. Keykasası/Kasaults/anahtarlar/silme | Bir anahtarı siler. Tüm sürümler silinir. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/yedekleme/eylem | Bir anahtarın yedek dosyasını oluşturur. Dosya, aynı aboneliğin Key Vault anahtarı geri yüklemek için kullanılabilir. Kısıtlamalar uygulanabilir. |
 > | Microsoft. Keykasası/Vaults/anahtarlar/Temizleme/eylem | Bir anahtarı temizler ve kurtarılamaz hale getirir. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/şifreleme/eylem | Bir anahtar ile düz metin şifreleyin. Anahtar asimetrik ise, bu işlemin okuma erişimi olan sorumlular tarafından gerçekleştirilebileceğini unutmayın. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/şifre çözme/eylem | Şifreli olarak bir anahtarla şifresini çözün. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/Wrap/eylem | Bir simetrik anahtarı Key Vault anahtarla sarın. Key Vault anahtarı asimetrik ise, bu işlemin okuma erişimiyle gerçekleştirilebileceğini unutmayın. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/sarmalama/eylem | Bir simetrik anahtarı Key Vault anahtarla sarmalayın. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/imzala/eylem | Karma bir anahtarla imzalayın. |
-> | Microsoft. Keykasası/Vaults/anahtarlar/doğrulama/eylem | Karmayı doğrulayın. Anahtar asimetrik ise, bu işlemin okuma erişimi olan sorumlular tarafından gerçekleştirilebileceğini unutmayın. |
-> | Microsoft. Keykasaları/kasaları/gizli dizileri/silme | Gizli dizi silin. |
-> | Microsoft. Keykasası/kasa/gizli dizi/yedekleme/eylem | Gizli dizi yedekleme dosyasını oluşturun. Dosya, aynı aboneliğin bir Key Vault gizli anahtarı geri yüklemek için kullanılabilir. Kısıtlamalar uygulanabilir. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/şifreleme/eylem | Bir anahtarla düz metin şifreler. Anahtar asimetrik ise, bu işlemin okuma erişimi olan sorumlular tarafından gerçekleştirilebileceğini unutmayın. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/şifre çözme/eylem | Bir anahtarla şifreli metin şifresini çözer. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/Wrap/eylem | Bir simetrik anahtarı Key Vault anahtarla kaydırır. Key Vault anahtarı asimetrik ise, bu işlemin okuma erişimi olan sorumlular tarafından gerçekleştirilebileceğini unutmayın. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/sarmalama/eylem | Bir simetrik anahtarın Key Vault anahtarla sarmalanmış olduğunu kaldırır. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/imzala/eylem | Bir ileti özetini (karma) bir anahtarla imzalar. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/doğrulama/eylem | Bir ileti özetinin (karma) imzasını bir anahtarla doğrular. Anahtar asimetrik ise, bu işlemin okuma erişimi olan sorumlular tarafından gerçekleştirilebileceğini unutmayın. |
+> | Microsoft. Keykasaları/kasaları/gizli dizileri/silme | Gizli dizi siler. Tüm sürümler silinir. |
+> | Microsoft. Keykasası/kasa/gizli dizi/yedekleme/eylem | Gizli anahtar dosyasının yedek dosyasını oluşturur. Dosya, aynı aboneliğin bir Key Vault gizli anahtarı geri yüklemek için kullanılabilir. Kısıtlamalar uygulanabilir. |
 > | Microsoft. Keykasası/kasa/gizli dizileri/Temizleme/eylem | Gizli bir parolayı temizler ve kurtarılamaz hale getirir. |
 > | Microsoft. Keykasası/Kasaults/gizlilikler/Update/Action | Verilen gizli dizi ile ilişkili belirtilen öznitelikleri güncelleştirir. |
 > | Microsoft. Keykasası/Kasaults/gizlilikler/Recover/ACTION | Silinen parolayı kurtarır. İşlem, silme işleminin ters çevrilmesini gerçekleştirir. İşlem, geçici silme için etkin olan kasaların yanı sıra saklama aralığı sırasında da verilmeli. |
-> | Microsoft. Keykasası/kasa/gizli dizileri/geri yükleme/eylem | Yedeklenen gizli dizi ve tüm sürümlerini bir kasaya geri yükler. |
+> | Microsoft. Keykasası/kasa/gizli dizileri/geri yükleme/eylem | Bir parolayı ve tüm sürümlerini Key Vault tarafından oluşturulan bir yedekleme dosyasından geri yükler. |
 > | Microsoft. Keykasası/Vaults/gizlilikler/readMetadata/Action | Gizli dizi özelliklerini listeleyin veya görüntüleyin, ancak değerini değil. |
-> | Microsoft. Keykasası/Vaults/gizlilikler/getSecret/eylem | Gizli dizi değerini alın. |
-> | Microsoft. Keykasası/Vaults/gizlilikler/setSecret/eylem | Yeni gizli dizi oluştur. |
+> | Microsoft. Keykasası/Vaults/gizlilikler/getSecret/eylem | Gizli dizi değerini alır. |
+> | Microsoft. Keykasası/Vaults/gizlilikler/setSecret/eylem | Gizli dizi değerini ayarlar. Gizli dizi yoksa, ilk sürüm oluşturulur. Aksi halde, belirtilen değere sahip yeni bir sürüm oluşturulur. |
 > | Microsoft. Keykasası/Kasaults/storageaccounts/Read | Yönetilen depolama hesaplarının ve SAS 'nin tanımını okuyun. |
-> | Microsoft. Keykasası/Kasaults/storageaccounts/set/ACTION | Yönetilen bir depolama hesabının tanımını oluşturun veya güncelleştirin. |
+> | Microsoft. Keykasası/Kasaults/storageaccounts/set/ACTION | Yönetilen bir depolama hesabının tanımını oluşturur veya güncelleştirir. |
 > | Microsoft. Keykasası/Kasaults/storageaccounts/Delete | Yönetilen depolama hesabının tanımını silin. |
-> | Microsoft. Keykasası/Vaults/storageaccounts/Backup/Action | Yönetilen depolama hesabı ve bunun SAS (paylaşılan erişim Imzası) tanımının bir yedeğini oluşturun. |
+> | Microsoft. Keykasası/Vaults/storageaccounts/Backup/Action | Yönetilen depolama hesabı ve SAS (paylaşılan erişim Imzası) tanımının yedek dosyasını oluşturur. |
 > | Microsoft. Keykasası/Kasaults/storageaccounts/Temizleme/eylem | Yönetilen depolama hesabı veya SAS (paylaşılan erişim Imzası) için geçici olarak silinen tanımı temizleyin. |
 > | Microsoft. Keykasası/Vaults/storageaccounts/RegenerateKey/ACTION | Yönetilen bir depolama hesabının erişim anahtarını yeniden oluşturun. |
 > | Microsoft. Keykasası/Vaults/storageaccounts/Recover/Action | Yönetilen depolama hesabı veya SAS (paylaşılan erişim Imzası) için geçici olarak silinen tanımı kurtarın. |
-> | Microsoft. Keykasası/Kasaults/storageaccounts/restore/ACTION | Yönetilen bir depolama hesabının tanımını ve SAS (paylaşılan erişim Imzası) ' nu geri yükler. |
-> | Microsoft. Keykasası/Kasaults/storageaccounts/SAS/set/ACTION | Yönetilen bir depolama hesabı için SAS (paylaşılan erişim Imzası) tanımını oluşturun veya güncelleştirin. |
+> | Microsoft. Keykasası/Kasaults/storageaccounts/restore/ACTION | Yönetilen bir depolama hesabının tanımını ve SAS (paylaşılan erişim Imzası) Key Vault tarafından oluşturulan bir yedekleme dosyasından geri yükler. |
+> | Microsoft. Keykasası/Kasaults/storageaccounts/SAS/set/ACTION | Yönetilen depolama hesabı için SAS (paylaşılan erişim Imzası) tanımını oluşturur veya güncelleştirir. |
 > | Microsoft. Keykasası/Kasaults/storageaccounts/SAS/Delete | Yönetilen depolama hesabı için SAS (paylaşılan erişim Imzası) tanımını silin. |
 
 ### <a name="microsoftsecurity"></a>Microsoft.Security
@@ -6618,6 +6656,9 @@ Azure hizmeti: [Güvenlik Merkezi](../security-center/index.yml)
 > | Microsoft. Security/advancedThreatProtectionSettings/Read | Kaynak için Gelişmiş tehdit koruması ayarlarını alır |
 > | Microsoft. Security/advancedThreatProtectionSettings/Write | Kaynak için Gelişmiş tehdit koruması ayarlarını güncelleştirir |
 > | Microsoft. Security/alerts/Read | Tüm kullanılabilir güvenlik uyarılarını alır |
+> | Microsoft. Security/alertsSuppressionRules/Read | Tüm kullanılabilir güvenlik uyarısı gizleme kuralını alır |
+> | Microsoft. Security/alertsSuppressionRules/Write | Yeni bir güvenlik uyarısı gizleme kuralı oluşturur veya var olan bir kuralı güncelleştirir |
+> | Microsoft. Security/alertsSuppressionRules/Delete | Güvenlik Uyarısı gizleme kuralını Sil |
 > | Microsoft. Security/Applicationwhitedökümler/okuma | Uygulama allowdökümler alır |
 > | Microsoft. Security/Applicationwhitedökümler/Write | Yeni bir uygulama allowlist oluşturur veya mevcut olanı güncelleştirir |
 > | Microsoft. Security/assessmentMetadata/Read | Aboneliğinizde kullanılabilir güvenlik değerlendirmesi meta verilerini alın |
@@ -6651,6 +6692,8 @@ Azure hizmeti: [Güvenlik Merkezi](../security-center/index.yml)
 > | Microsoft. güvenlik/konumlar/uyarılar/okuma | Tüm kullanılabilir güvenlik uyarılarını alır |
 > | Microsoft. güvenlik/konumlar/uyarılar/kapat/eylem | Güvenlik uyarısını kapat |
 > | Microsoft. güvenlik/konumlar/uyarılar/etkinleştir/eylem | Güvenlik uyarısını etkinleştirme |
+> | Microsoft. güvenlik/konumlar/uyarılar/çözümle/eylem | Güvenlik uyarısını çözümle |
+> | Microsoft. güvenlik/konumlar/uyarılar/benzetim/eylem | Güvenlik Uyarısı benzetimi yap |
 > | Microsoft. Security/Locations/Jağaccesspolicies/Read | Tam zamanında ağ erişim ilkelerini alır |
 > | Microsoft. Security/Locations/Jağaccesspolicies/Write | Yeni bir tam zamanında ağ erişim ilkesi oluşturur veya var olan bir ağı güncelleştirir |
 > | Microsoft. Security/Locations/Jağaccesspolicies/Delete | Tam zamanında ağ erişim ilkesini siler |
@@ -6665,6 +6708,10 @@ Azure hizmeti: [Güvenlik Merkezi](../security-center/index.yml)
 > | Microsoft. Security/pricler/okuma | Kapsamın fiyatlandırma ayarlarını alır |
 > | Microsoft. Security/pricler/Write | Kapsamın fiyatlandırma ayarlarını güncelleştirir |
 > | Microsoft. Security/pricler/Delete | Kapsamın fiyatlandırma ayarlarını siler |
+> | Microsoft. Security/secureScoreControlDefinitions/Read | Güvenli Puanlama denetim tanımı al |
+> | Microsoft. Security/secureScoreControls/Read | Aboneliğiniz için hesaplanmış güvenli puan denetimi alın |
+> | Microsoft. Security/Securesçekirdekler/okuma | Aboneliğiniz için hesaplanmış güvenli puanı alın |
+> | Microsoft. Security/Securesçekirdekler/secureScoreControls/Read | Güvenli puan hesaplamanıza yönelik hesaplanmış güvenli Puanlama denetimini alın |
 > | Microsoft. Security/securityContacts/Read | Güvenlik ilgili kişisini alır |
 > | Microsoft. Security/securityContacts/Write | Güvenlik ilgili kişisini güncelleştirir |
 > | Microsoft. Security/securityContacts/Delete | Güvenlik ilgili kişisini siler |
@@ -6676,6 +6723,12 @@ Azure hizmeti: [Güvenlik Merkezi](../security-center/index.yml)
 > | Microsoft. Security/securityStatusesSummaries/Read | Kapsam için güvenlik durumları özetlerini alır |
 > | Microsoft. Security/Settings/Read | Kapsamın ayarlarını alır |
 > | Microsoft. Security/Settings/Write | Kapsamın ayarlarını güncelleştirir |
+> | Microsoft. Security/Sqlıngılments/baselineRules/Action | Taban çizgisine kural sonucunun bir listesini ekleyin. |
+> | Microsoft. Security/sqlSecurity, Ersments/baselineRules/Read | Veritabanlarının taban çizgisini döndürün (taban çizgisine eklenen tüm kurallar) veya belirtilen kural KIMLIĞI için bir kural temel sonuçları alın. |
+> | Microsoft. Security/sqlSecurity, Ersments/baselineRules/Write | Kural temel sonucunu değiştirin. |
+> | Microsoft. Security/sqlSecurity, Ersments/baselineRules/Delete | Kural sonucunu taban çizgisinden kaldırın. |
+> | Microsoft. Security/Sqlgüvenlik açılanları/taramalar/okuma | Güvenlik açığı değerlendirmesi tarama kayıtlarının listesini döndürün veya belirtilen tarama KIMLIĞI için tarama kaydını alın. |
+> | Microsoft. Security/sqlSecurity, sactive/taramalar/scanResults/Read | Güvenlik açığı değerlendirme kuralı sonuçlarının listesini döndürün veya belirtilen kural KIMLIĞI için kural sonucunu alın. |
 > | Microsoft. Security/Tasks/Read | Tüm kullanılabilir güvenlik önerilerini alır |
 > | Microsoft. Security/Webapplicationgüvenlik duvarları/okuma | Web uygulaması güvenlik duvarlarını alır |
 > | Microsoft. Security/Webapplicationgüvenlik duvarları/yazma | Yeni bir Web uygulaması güvenlik duvarı oluşturur veya mevcut olanı güncelleştirir |
@@ -6732,7 +6785,8 @@ Azure hizmeti: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. Securityınsights/veri bağlayıcıları/yazma | Bir veri bağlayıcısını güncelleştirir |
 > | Microsoft. Securityınsights/veri bağlayıcıları/silme | Bir veri bağlayıcısını siler |
 > | Microsoft. Securityınsights/varlıklar/okuma | Sentinel varlıkları grafiğini alır |
-> | Microsoft. Securityınsights/varlıklar/zaman çizelgesi/eylem | Belirli bir Aralık için varlık zaman çizelgesini alır |
+> | Microsoft. Securityınsights/varlıklar/gettimeline/Action | Belirli bir Aralık için varlık zaman çizelgesini alır |
+> | Microsoft. Securityınsights/varlıklar/Getınsights/eylem | Belirli bir Aralık için varlık öngörülerini alır |
 > | Microsoft. Securityınsights/varlıklar/ilişkiler/okuma | Varlıkla ilgili kaynaklar arasında bir ilişki alır |
 > | Microsoft. Securityınsights/varlıklar/ilişkiler/yazma | Varlıkla ilgili kaynaklar arasındaki ilişkiyi güncelleştirir |
 > | Microsoft. Securityınsights/varlıklar/ilişkiler/Sil | Varlıkla ilgili kaynaklar arasındaki ilişkiyi siler |
@@ -8699,6 +8753,7 @@ Azure hizmeti: [maliyet yönetimi + faturalandırma](../cost-management-billing/
 > | Microsoft. faturalandırma/billingAccounts/Billingabonelikleri/okuma |  |
 > | Microsoft. faturalandırma/billingAccounts/Billingabonelikleri/taşıma/eylem |  |
 > | Microsoft. faturalandırma/billingAccounts/Billingabonelikleri/Validatemoveuygunluk/eylem |  |
+> | Microsoft. faturalandırma/billingAccounts/Billingabonelikleri/downloadDocuments/Action | Listeden indirme bağlantısını kullanarak fatura indir |
 > | Microsoft. faturalandırma/billingAccounts/müşteriler/okuma |  |
 > | Microsoft. faturalandırma/billingAccounts/müşteriler/billingPermissions/Read |  |
 > | Microsoft. faturalandırma/billingAccounts/departmanlar/okuma |  |
@@ -8712,7 +8767,6 @@ Azure hizmeti: [maliyet yönetimi + faturalandırma](../cost-management-billing/
 > | Microsoft. faturalandırma/billingAccounts/ürünler/Move/Action |  |
 > | Microsoft. faturalandırma/billingAccounts/ürünler/Validatemoveuygunluk/eylem |  |
 > | Microsoft. faturalandırma/departmanlar/okuma |  |
-> | Microsoft. faturalandırma/faturalar/indir/eylem | Listeden indirme bağlantısını kullanarak fatura indir |
 > | Microsoft. faturalandırma/faturalar/indir/eylem | Listeden indirme bağlantısını kullanarak fatura indir |
 > | Microsoft. faturalandırma/işlemler/okuma |  |
 
@@ -9338,69 +9392,76 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 > | Eylem | Açıklama |
 > | --- | --- |
 > | Microsoft. RecoveryServices/Register/Action | Belirtilen kaynak sağlayıcısı için aboneliği kaydeder |
-> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
+> | Microsoft. recoveryservices/Locations/backupPreValidateProtection/Action |  |
+> | Microsoft. recoveryservices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
+> | Microsoft. recoveryservices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
 > | Microsoft. RecoveryServices/Locations/Allocatedamga/eylem | AllocateStamp, hizmet tarafından kullanılan iç işlemdir |
 > | Microsoft. RecoveryServices/Locations/Checknameavaılabılıty/Action | Kaynak adının kullanılabilirliğini denetle, kaynak adının kullanılabilir olup olmadığını denetlemek için bir API 'dir |
 > | Microsoft. RecoveryServices/konumlar/allocatedStamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Locations/Backupkorunabilir/Write | Yedekleme korumalı öğesi oluştur |
-> | Microsoft. RecoveryServices/Locations/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
+> | Microsoft. recoveryservices/Locations/Backupkorunabilir/Write | Yedekleme korumalı öğesi oluştur |
+> | Microsoft. recoveryservices/Locations/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
 > | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
 > | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupJobsExport/eylem | Işleri dışarı aktar |
-> | Microsoft. RecoveryServices/Vaults/backupSecurityPIN/Action | Kurtarma Hizmetleri Kasası için güvenlik PIN bilgilerini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
+> | Microsoft. recoveryservices/Vaults/backupCrossRegionRestore/Action | Çapraz bölge korumalı öğeler için kurtarma noktalarını geri yükleyin. |
+> | Microsoft. recoveryservices/Vaults/backupCrrJob/eylem | Kurtarma Hizmetleri Kasası için ikincil bölgedeki çapraz bölge geri yükleme Işi ayrıntılarını alın. |
+> | Microsoft. recoveryservices/Vaults/backupCrrJobs/eylem | Kurtarma Hizmetleri Kasası için ikincil bölgedeki çapraz bölge geri yükleme Işlerini listeleyin. |
+> | Microsoft. recoveryservices/Vaults/backupJobsExport/eylem | Işleri dışarı aktar |
+> | Microsoft. recoveryservices/Vaults/backupSecurityPIN/Action | Kurtarma Hizmetleri Kasası için güvenlik PIN bilgilerini döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
 > | Microsoft. RecoveryServices/Vaults/Write | Kasa oluşturma işlemi, ' kasa ' türünde bir Azure kaynağı oluşturur |
 > | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
 > | Microsoft. RecoveryServices/Vaults/Delete | Kasayı Sil işlemi, ' kasa ' türündeki belirtilen Azure kaynağını siler |
-> | Microsoft. RecoveryServices/Vaults/backupconfig/Read | Kurtarma Hizmetleri Kasası için yapılandırmayı döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupconfig/Write | Kurtarma Hizmetleri Kasası için yapılandırmayı güncelleştirir. |
-> | Microsoft. RecoveryServices/Vaults/backupEncryptionConfigs/Read | Yedekleme kaynağı şifreleme yapılandırmasını alır. |
-> | Microsoft. RecoveryServices/Vaults/backupEncryptionConfigs/Write | Yedekleme kaynak şifreleme yapılandırmasını güncelleştirir |
-> | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionhedefini/silme | Yedekleme koruma hedefini silme |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionamacını/Write | Yedekleme koruma hedefi oluşturma |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/operationResults/Read | İşlemin durumunu döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/operationsStatus/Read | İşlemin durumunu döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/Delete | Kayıtlı kapsayıcıyı siler |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/sorgu/eylem | Bir kapsayıcı içindeki iş yükleri için sorgulama yap |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/okuma | Tüm kayıtlı kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/Write | Kayıtlı bir kapsayıcı oluşturur |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/operationResults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/operationsStatus/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin durumunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/korunabilir/yedekleme/eylem | Korumalı öğe için yedekleme gerçekleştirir. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Sil | Korumalı öğeyi siler |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationResults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationsStatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/provisionInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarma sağla |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı öğeler için kurtarma noktalarını alın. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/geri yükleme/eylem | Korumalı öğeler için kurtarma noktalarını geri yükleyin. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/revokeInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarmayı iptal et |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/iptal/eylem | Işi iptal et |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/Read | Tüm Iş nesnelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/operationResults/Read | Iş Işleminin sonucunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/operationsStatus/Read | Iş Işleminin durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupOperationResults/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi sonucunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Delete | Koruma Ilkesini silme |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Read | Tüm koruma Ilkelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Write | Koruma Ilkesi oluşturur |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/Read | Tüm korunabilir öğelerin listesini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupProtectionContainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
-> | Microsoft. RecoveryServices/Vaults/backupstorageconfig/Read | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupstorageconfig/Write | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını güncelleştirir. |
-> | Microsoft. RecoveryServices/Vaults/backupUsageSummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupAadProperties/Read | Çapraz bölge geri yüklemesi için üçüncü bölgede kimlik doğrulama için AAD özelliklerini alın. |
+> | Microsoft. recoveryservices/Vaults/backupconfig/Read | Kurtarma Hizmetleri Kasası için yapılandırmayı döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupconfig/Write | Kurtarma Hizmetleri Kasası için yapılandırmayı güncelleştirir. |
+> | Microsoft. recoveryservices/Vaults/backupCrrOperationResults/Read | Kurtarma Hizmetleri Kasası için CRR Işlem sonucunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupCrrOperationsStatus/Read | Kurtarma Hizmetleri Kasası için CRR Işlem durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupEncryptionConfigs/Read | Yedekleme kaynağı şifreleme yapılandırmasını alır. |
+> | Microsoft. recoveryservices/Vaults/backupEncryptionConfigs/Write | Yedekleme kaynak şifreleme yapılandırmasını güncelleştirir |
+> | Microsoft. recoveryservices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/Backupprotectionhedefini/silme | Yedekleme koruma hedefini silme |
+> | Microsoft. recoveryservices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/Backupprotectionamacını/Write | Yedekleme koruma hedefi oluşturma |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/operationResults/Read | İşlemin durumunu döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/operationsStatus/Read | İşlemin durumunu döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/Delete | Kayıtlı kapsayıcıyı siler |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/sorgu/eylem | Bir kapsayıcı içindeki iş yükleri için sorgulama yap |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/okuma | Tüm kayıtlı kapsayıcıları döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/Write | Kayıtlı bir kapsayıcı oluşturur |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/operationResults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/operationsStatus/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin durumunu alır. |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/korunabilir/yedekleme/eylem | Korumalı öğe için yedekleme gerçekleştirir. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/Sil | Korumalı öğeyi siler |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationResults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationsStatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/accessToken/eylem | Bölgeler arası geri yükleme için AccessToken alın. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/provisionInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarma sağla |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı öğeler için kurtarma noktalarını alın. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/geri yükleme/eylem | Korumalı öğeler için kurtarma noktalarını geri yükleyin. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/revokeInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarmayı iptal et |
+> | Microsoft. recoveryservices/Vaults/backupJobs/iptal/eylem | Işi iptal et |
+> | Microsoft. recoveryservices/Vaults/backupJobs/Read | Tüm Iş nesnelerini döndürür |
+> | Microsoft. recoveryservices/Vaults/backupJobs/operationResults/Read | Iş Işleminin sonucunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupJobs/operationsStatus/Read | Iş Işleminin durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupOperationResults/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi sonucunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/Delete | Koruma Ilkesini silme |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/Read | Tüm koruma Ilkelerini döndürür |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/Write | Koruma Ilkesi oluşturur |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
+> | Microsoft. recoveryservices/Vaults/Backupkorunabilir/Read | Tüm korunabilir öğelerin listesini döndürür. |
+> | Microsoft. recoveryservices/Vaults/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupProtectionContainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
+> | Microsoft. recoveryservices/Vaults/backupstorageconfig/Read | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupstorageconfig/Write | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını güncelleştirir. |
+> | Microsoft. recoveryservices/Vaults/backupUsageSummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
 > | Microsoft. RecoveryServices/Vaults/sertifikalar/yazma | Kaynak sertifikası güncelleştirme işlemi kaynak/kasa kimlik bilgisi sertifikasını güncelleştirir. |
 > | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
 > | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Write | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
@@ -9409,14 +9470,14 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
 > | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/okuma | Kurtarma Hizmetleri Kasası bildirim yapılandırmasını alır. |
 > | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/Write | Kurtarma Hizmetleri kasasına e-posta bildirimlerini yapılandırır. |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/Delete | Birkaç dakika bekleyip işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft Desteği'ne başvurun. |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/okuma | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/doğrulama/eylem | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/yazma | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/operationsStatus/Read | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/privateEndpointConnections/Delete | Özel uç nokta isteklerini silin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
-> | Microsoft. RecoveryServices/Vaults/privateEndpointConnections/Write | Özel uç nokta isteklerini onaylayın veya reddedin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
-> | Microsoft. RecoveryServices/Vaults/privateEndpointConnections/operationsStatus/Read | Özel bir uç nokta bağlantısı için işlem durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/Delete | Birkaç dakika bekleyip işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft Desteği'ne başvurun. |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/okuma | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/doğrulama/eylem | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/yazma | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/operationsStatus/Read | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/privateEndpointConnections/Delete | Özel uç nokta isteklerini silin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
+> | Microsoft. recoveryservices/Vaults/privateEndpointConnections/Write | Özel uç nokta isteklerini onaylayın veya reddedin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
+> | Microsoft. recoveryservices/Vaults/privateEndpointConnections/operationsStatus/Read | Özel bir uç nokta bağlantısı için işlem durumunu döndürür. |
 > | Microsoft. RecoveryServices/Vaults/registeredIdentities/Write | Hizmet kapsayıcısını Kaydet işlemi, bir kapsayıcıyı kurtarma hizmeti 'ne kaydetmek için kullanılabilir. |
 > | Microsoft. RecoveryServices/Vaults/registeredIdentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
 > | Microsoft. RecoveryServices/Kasaults/registeredIdentities/Delete | Kapsayıcı kaydını silme işlemi, bir kapsayıcının kaydını silmek için kullanılabilir. |
@@ -9532,7 +9593,7 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/Vaults/replicationVaultSettings/Read | Her birini okuyun  |
 > | Microsoft. RecoveryServices/Vaults/replicationVaultSettings/Write | Oluşturma veya güncelleştirme  |
 > | Microsoft. RecoveryServices/Vaults/replicationvCenters/Read | Tüm sanal merkezleri okuyun |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | Microsoft. recoveryservices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
 > | Microsoft. RecoveryServices/kasaults/kullanımlar/okuma | Tüm kasa kullanımlarını okuyun |
 > | Microsoft. RecoveryServices/Vaults/vaultTokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
 

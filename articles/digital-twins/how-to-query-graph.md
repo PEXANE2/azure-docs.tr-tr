@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperfq2
-ms.openlocfilehash: 6533cbde10dfc924bd982357def859229eb1714a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9aa1156da48ba39672d59858d0640619581329ee
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963173"
+ms.locfileid: "94981128"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -277,7 +277,7 @@ Bir TWINS dizisi oluşturup işleçle sorgulama yaparak ihtiyacınız olan sorgu
 
 Örneğin, *binaların* *katlara* ve *katlara* *Oda* içerdiği bir senaryoyu düşünün. Sık kullanılan bir bina içindeki odaları aramak için bu adımları takip etmenin bir yolu vardır.
 
-1. İlişkiye göre binaları bulun `contains`
+1. İlişkiye göre binanın yüzleri bulun `contains` .
 
     ```sql
     SELECT Floor

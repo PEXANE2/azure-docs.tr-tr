@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/27/2020
-ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331983"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981213"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
 
@@ -26,7 +26,7 @@ Bu makalede, Istek tetikleyicisi kullanılarak mantıksal uygulamanızda çağr�
 
 Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkında daha fazla bilgi için, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL), [Azure Active Directory açma kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml), mantıksal uygulamanızı Azure API Management ile gösterme veya gelen çağrıları yapan IP adreslerini kısıtlama gibi) hakkında daha fazla bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -36,7 +36,7 @@ Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkın
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş bir mantıksal uygulama oluşturun ve açın.
 
-1. Arama kutusunda, **yerleşik** ' i seçin. Arama kutusuna `request` filtreniz olarak yazın. Tetikleyiciler listesinden **BIR http isteği alındığında** öğesini seçin.
+1. Arama kutusunda, **yerleşik**' i seçin. Arama kutusuna `request` filtreniz olarak yazın. Tetikleyiciler listesinden **BIR http isteği alındığında** öğesini seçin.
 
    ![Istek tetikleyicisini bul ve Seç](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -75,7 +75,7 @@ Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkın
 
    Veya örnek yük sağlayarak bir JSON şeması oluşturabilirsiniz:
 
-   1. **İstek** tetikleyicisinde, **şema oluşturmak Için örnek yük kullan** ' ı seçin.
+   1. **İstek** tetikleyicisinde, **şema oluşturmak Için örnek yük kullan**' ı seçin.
 
    1. **Örnek BIR JSON yükü girin veya yapıştırın** kutusuna örnek yükünüzü girin, örneğin:
 
@@ -90,7 +90,7 @@ Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkın
       }
       ```
 
-   1. Hazırsanız, **bitti** ' yi seçin.
+   1. Hazırsanız, **bitti**' yi seçin.
 
       **Istek GÖVDESI JSON şeması** kutusu artık oluşturulan şemayı gösterir.
 
@@ -104,15 +104,15 @@ Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkın
 
    * **Http post URL 'si** kutusunun sağında **URL 'yi Kopyala** (dosyaları Kopyala simgesi) öğesini seçin.
 
-   * Bu GÖNDERI çağrısını yapın:
+   * Istek tetikleyicisinin beklediği yöntemi kullanarak bu çağrıyı yapın. Bu örnek yöntemini kullanır `POST` :
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
    * Mantıksal uygulamanızın **genel bakış** bölmesinden geri çağırma URL 'sini kopyalayın.
 
-     1. Mantıksal uygulamanızın menüsünde **genel bakış** ' ı seçin.
+     1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin.
 
-     1. **Özet** bölümünde **tetikleyici geçmişini göster** ' i seçin.
+     1. **Özet** bölümünde **tetikleyici geçmişini göster**' i seçin.
 
         ![Azure portal uç nokta URL 'sini al](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
@@ -124,9 +124,9 @@ Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkın
 
 ## <a name="select-expected-request-method"></a>Beklenen istek metodunu seçin
 
-Varsayılan olarak, Istek tetikleyicisi bir POST isteği bekler. Yalnızca tek bir yöntem beklemeniz için farklı bir yöntem belirtebilirsiniz.
+Varsayılan olarak, Istek tetikleyicisi bir istek bekler `POST` . Ancak, çağıranın kullanması gereken farklı bir yöntem belirtebilirsiniz, ancak yalnızca tek bir yöntem.
 
-1. Istek tetikleyicisinde **yeni parametre Ekle** listesini açın ve bu özelliği tetikleyicisine ekleyen **Yöntem** ' i seçin.
+1. Istek tetikleyicisinde **yeni parametre Ekle** listesini açın ve bu özelliği tetikleyicisine ekleyen **Yöntem**' i seçin.
 
    ![Tetikleyiciye "method" özelliği Ekle](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
 
@@ -160,15 +160,15 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 1. Istek tetikleyicisi altında, parametre değerini kullanmak istediğiniz eylemi ekleyin. Bu örnekte, **Yanıt** eylemini ekleyin.
 
-   1. İstek tetikleyicisi altında **yeni adım**  >  **Eylem Ekle** ' yi seçin.
+   1. İstek tetikleyicisi altında **yeni adım**  >  **Eylem Ekle**' yi seçin.
    
    1. **Eylem seçin** altında, arama kutusuna `response` filtreniz olarak girin. Eylemler listesinden, **Yanıt** eylemini seçin.
 
 1. `triggerOutputs()`Parametre değerini alan ifadeyi oluşturmak için aşağıdaki adımları izleyin:
 
-   1. Dinamik içerik listesi görünecek şekilde yanıt eyleminin **gövde** özelliğinin içine tıklayın ve **ifade** ' i seçin.
+   1. Dinamik içerik listesi görünecek şekilde yanıt eyleminin **gövde** özelliğinin içine tıklayın ve **ifade**' i seçin.
 
-   1. **İfade** kutusuna bu ifadeyi girip `parameter-name` parametre adınızla değiştirin ve **Tamam** ' ı seçin.
+   1. **İfade** kutusuna bu ifadeyi girip `parameter-name` parametre adınızla değiştirin ve **Tamam**' ı seçin.
 
       `triggerOutputs()['queries']['parameter-name']`
 
@@ -217,7 +217,7 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 ### <a name="accept-values-through-a-relative-path"></a>Değerleri göreli bir yol üzerinden kabul et
 
-1. Istek tetikleyicisinde **yeni parametre Ekle** listesini açın ve bu özelliği **tetikleyiciye ekleyen göreli yol** ' ı seçin.
+1. Istek tetikleyicisinde **yeni parametre Ekle** listesini açın ve bu özelliği **tetikleyiciye ekleyen göreli yol**' ı seçin.
 
    ![Tetikleyiciye "göreli yol" özelliği Ekle](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
@@ -227,7 +227,7 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 1. Istek tetikleyicisi altında, parametre değerini kullanmak istediğiniz eylemi ekleyin. Bu örnekte, **Yanıt** eylemini ekleyin.
 
-   1. İstek tetikleyicisi altında **yeni adım**  >  **Eylem Ekle** ' yi seçin.
+   1. İstek tetikleyicisi altında **yeni adım**  >  **Eylem Ekle**' yi seçin.
 
    1. **Eylem seçin** altında, arama kutusuna `response` filtreniz olarak girin. Eylemler listesinden, **Yanıt** eylemini seçin.
 
@@ -262,7 +262,7 @@ Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek 
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Uç nokta URL 'SI aracılığıyla mantıksal uygulama çağırma
 
-Uç noktasını oluşturduktan sonra, `POST` uç noktanın tam URL 'sine BIR https isteği göndererek mantıksal uygulamayı tetikleyebilirsiniz. Logic Apps, doğrudan erişimli uç noktalar için yerleşik desteğe sahiptir.
+Uç noktasını oluşturduktan sonra, uç noktanın tam URL 'sine bir HTTPS isteği göndererek mantıksal uygulamayı tetikleyebilirsiniz. Logic Apps, doğrudan erişimli uç noktalar için yerleşik desteğe sahiptir.
 
 <a name="generated-tokens"></a>
 
@@ -304,9 +304,9 @@ Istek tetikleyicisinde bir JSON şeması sağladığınızda, mantıksal uygulam
 
 İstekleri alabilen diğer mantıksal uygulamaları ekleyerek, mantıksal uygulamanıza iş akışları iç içe yerleştirebilirsiniz. Bu mantıksal uygulamaları eklemek için aşağıdaki adımları izleyin:
 
-1. Başka bir mantıksal uygulamayı çağırmak istediğiniz adım altında **yeni adım**  >  **Eylem Ekle** ' yi seçin.
+1. Başka bir mantıksal uygulamayı çağırmak istediğiniz adım altında **yeni adım**  >  **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin** altında, **yerleşik** ' i seçin. Arama kutusuna `logic apps` filtreniz olarak yazın. Eylemler listesinden **Logic Apps iş akışı** Seç ' i seçin.
+1. **Eylem seçin** altında, **yerleşik**' i seçin. Arama kutusuna `logic apps` filtreniz olarak yazın. Eylemler listesinden **Logic Apps iş akışı** Seç ' i seçin.
 
    ![Geçerli mantıksal uygulamanın içinde iç içe mantıksal uygulama](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -360,7 +360,7 @@ Yanıtlar şu özelliklere sahiptir:
 | **Gövde** | `body` | Bir dize, JSON nesnesi veya hatta önceki adımdan başvurulan ikili içerik olabilecek bir gövde nesnesi |
 ||||
 
-Yanıt eyleminin JSON tanımını ve mantıksal uygulamanızın tamamlanmış JSON tanımını görüntülemek için mantıksal uygulama Tasarımcısı araç çubuğunda **kod görünümü** ' nü seçin.
+Yanıt eyleminin JSON tanımını ve mantıksal uygulamanızın tamamlanmış JSON tanımını görüntülemek için mantıksal uygulama Tasarımcısı araç çubuğunda **kod görünümü**' nü seçin.
 
 ``` json
 "Response": {
@@ -384,7 +384,7 @@ Yanıt eyleminin JSON tanımını ve mantıksal uygulamanızın tamamlanmış JS
 
 #### <a name="q-what-about-url-security"></a>S: URL güvenliği hakkında ne olacak?
 
-Y **: Azure** , [paylaşılan ERIŞIM imzasını (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak mantıksal uygulama geri çağırma URL 'lerini güvenli şekilde oluşturur. Bu imza bir sorgu parametresi olarak geçirilir ve mantıksal uygulamanızın çalıştırılabilmesi için önce doğrulanması gerekir. Azure, mantıksal uygulama başına bir gizli anahtar birleşimi, tetikleyici adı ve gerçekleştirilen işlem ile imza oluşturur. Bu nedenle, gizli mantıksal uygulama anahtarına birisi erişemediği takdirde, geçerli bir imza üretemiyor.
+Y **: Azure**, [paylaşılan ERIŞIM imzasını (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak mantıksal uygulama geri çağırma URL 'lerini güvenli şekilde oluşturur. Bu imza bir sorgu parametresi olarak geçirilir ve mantıksal uygulamanızın çalıştırılabilmesi için önce doğrulanması gerekir. Azure, mantıksal uygulama başına bir gizli anahtar birleşimi, tetikleyici adı ve gerçekleştirilen işlem ile imza oluşturur. Bu nedenle, gizli mantıksal uygulama anahtarına birisi erişemediği takdirde, geçerli bir imza üretemiyor.
 
 > [!IMPORTANT]
 > Üretim ve daha yüksek güvenlik sistemleri için aşağıdaki nedenlerden dolayı mantıksal uygulamanızı doğrudan tarayıcıdan çağırmayı önemle tavsiye ederiz:
@@ -396,7 +396,7 @@ Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkın
 
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>S: çağrılabilir uç noktaları başka bir şekilde yapılandırabilir miyim?
 
-Y **: Evet** , HTTPS uç noktaları [Azure API Management](../api-management/api-management-key-concepts.md)aracılığıyla daha gelişmiş yapılandırmayı destekler. Bu hizmet ayrıca Logic Apps, özel etki alanı adları ayarlama, daha fazla kimlik doğrulama yöntemi kullanma ve daha fazlasını içeren tüm API 'lerinizi sürekli olarak yönetmenize olanak sağlar. Örneğin:
+Y **: Evet**, HTTPS uç noktaları [Azure API Management](../api-management/api-management-key-concepts.md)aracılığıyla daha gelişmiş yapılandırmayı destekler. Bu hizmet ayrıca Logic Apps, özel etki alanı adları ayarlama, daha fazla kimlik doğrulama yöntemi kullanma ve daha fazlasını içeren tüm API 'lerinizi sürekli olarak yönetmenize olanak sağlar. Örneğin:
 
 * [İstek yöntemini değiştirme](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [İsteğin URL segmentlerini değiştirme](../api-management/api-management-transformation-policies.md#RewriteURL)

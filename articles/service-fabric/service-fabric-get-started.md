@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 8593858580da1358dc84d9c25420fe2a95680251
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: ff8af09e88c9c0d2af63070396824471af3ceeca
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330232"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980839"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "94330232"
 
 Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için Service Fabric çalışma zamanını, SDK'yı ve araçları yükleyin. Ayrıca, SDK 'da bulunan [Windows PowerShell betiklerinin yürütülmesini de etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="supported-operating-system-versions"></a>Desteklenen işletim sistemi sürümleri
 
@@ -62,8 +62,8 @@ Yalnızca SDK'yı yüklemeniz gerekiyorsa bu paketi yükleyebilirsiniz:
 
 Geçerli sürümler şunlardır:
 
-* Service Fabric SDK ve araçlar 4.1.458
-* Service Fabric Runtime 7.1.458
+* Service Fabric SDK ve araçlar 4.2.434
+* Service Fabric Runtime 7.2.434
 
 Desteklenen sürümlerin listesi için bkz. [Service Fabric sürümleri](service-fabric-versions.md)
 

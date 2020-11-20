@@ -10,6 +10,10 @@
       href: tutorial-deploy-hsm-cli.md
     - name: PowerShell kullanarak HSM'leri mevcut sanal ağa dağıtma
       href: tutorial-deploy-hsm-powershell.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Azure PowerShell ile Azure Ayrılmış HSM oluşturma
+      href: quickstart-create-hsm-powershell.md
 - name: Kavramlar
   items:
     - name: Yüksek kullanılabilirlik

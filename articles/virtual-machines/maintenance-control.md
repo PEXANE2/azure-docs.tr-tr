@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4b9dec0fe684e002fadbac2db375c354db2b6d01
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978620"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981179"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Platform güncelleştirmelerini bakım denetimiyle yönetme 
 
@@ -23,12 +23,13 @@ Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilg
 Bakım denetimi ile şunları yapabilirsiniz:
 - Toplu güncelleştirmeler tek bir güncelleştirme paketine sahiptir.
 - Güncelleştirmelerin uygulanması için 35 güne kadar bekleyin. 
-- [Azure işlevleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)'ni kullanarak bakım pencereniz için platform güncelleştirmelerini otomatikleştirin.
+- Bir bakım zamanlaması yapılandırarak veya [Azure işlevleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)'ni kullanarak platform güncelleştirmelerini otomatikleştirin.
 - Bakım yapılandırması abonelikler ve kaynak grupları arasında çalışır. 
 
 ## <a name="limitations"></a>Sınırlamalar
 
 - VM 'Lerin [ayrılmış bir konakta](./dedicated-hosts.md)olması veya [yalıtılmış bir VM boyutu](isolation.md)kullanılarak oluşturulması gerekir.
+- Bir bakım zamanlaması bildirilirse, en az 2 saat olması gerekir.
 - 35 gün sonra, bir güncelleştirme otomatik olarak uygulanır.
 - Kullanıcının, **kaynak katılımcısı** erişimi olmalıdır.
 

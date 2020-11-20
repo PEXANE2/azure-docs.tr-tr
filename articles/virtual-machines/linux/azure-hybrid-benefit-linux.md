@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916483"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980890"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı: Linux Sanal Makineleri için nasıl uygulanır
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Azure Hibrit Avantajı, önceden var olan Red hat veya SUSE yazılım aboneliğinizi kullanarak şirket içi Red Hat Enterprise Linux (RHEL) ve SUSE Linux Enterprise Server (SLES) sanal makinelerinizi (VM) Azure 'a daha kolay bir şekilde geçirebilmesini sağlar. Bu avantajla, yazılım ücreti RHEL veya SLES Aboneliğiniz kapsamında olduğu için yalnızca sanal makinenizin altyapı maliyetleri için ödeme yaparsınız. Bu avantaj, tüm RHEL ve SLES Market (PAYG) görüntüleri için geçerlidir.
 
@@ -146,6 +146,35 @@ Y: Hayır. VM 'niz üzerinde çalışan ile yanlış eşleşen bir lisans türü
 *S: Red Hat bulut erişimi ile kaydoldum, ancak yine de RHEL VM 'lerimin avantajını etkinleştiremedik. Ne yapmalıyım?*
 
 Y: Red Hat bulut erişimi aboneliğinin, Red Hat 'ten Azure 'a yayılması biraz zaman alabilir. Bir iş gününden sonra hatayı görmeye devam ediyorsanız, Microsoft destek 'e başvurun.
+
+*S: RHEL BYOS "altın görüntü" kullanarak bir VM dağıttım. Bu görüntülerin faturalandırmasını BYOS 'den PAYG 'ye dönüştürebilir miyim?*
+
+Y: Hayır. Azure Hibrit Avantajı yalnızca Kullandıkça Öde görüntülerinde dönüştürmeyi destekler.
+
+*S: RHEL BYOS "altın görüntü" kullanarak bir VM dağıttım. Bu görüntülerin faturalandırmasını BYOS 'den PAYG 'ye dönüştürebilir miyim?*
+
+Y: Hayır. Azure Hibrit Avantajı yalnızca Kullandıkça Öde görüntülerinde dönüştürmeyi destekler.
+
+*S: kendi RHEL görüntüsünden on-Prem görüntüsünden (ASR veya başka türlü) Azure 'a yükledim. Bu görüntülerin faturalandırmasını BYOS 'den PAYG 'ye dönüştürebilir miyim?*
+
+Y: Hayır. Azure Hibrit Avantajı özelliği, günümüzde yalnızca RHEL ve SLES Market görüntüleri için kullanılabilir. 
+
+*S: market RHEL ve SLES SAP görüntülerinden dağıtılan VM 'lerde Azure Hibrit Avantajı kullanabilir miyim?*
+
+Y: Evet, bunu yapabilirsiniz. Market RHEL ve SLES SAP görüntülerinden dağıtılan VM 'lerin dönüştürmeleri için RHEL VM 'Leri için ' RHEL_BYOS ' lisans türünü ve ' SLES_BYOS ' kullanabilirsiniz.
+
+*S: RHEL ve SLES için sanal makine ölçek kümesi (VMSS) üzerinde Azure Hibrit Avantajı kullanabilir miyim?*
+
+Y: Hayır, oluşturamazsınız. VMSS, şu anda RHEL ve SLES için Azure Hibrit Avantajı kapsamında değil.
+
+*S: RHEL ve SLES için ayrılmış örnekler (RIS) üzerinde Azure Hibrit Avantajı kullanabilir miyim?*
+
+Y: Hayır, oluşturamazsınız. Şu anda RHEL ve SLES için Azure Hibrit Avantajı, RIS 'nin kapsamında değildir.
+
+*S: RHEL görüntülerinde SQL Server için dağıtılan bir sanal makinede Azure Hibrit Avantajı kullanabilir miyim?*
+
+Y: Hayır, oluşturamazsınız. Bunları desteklemeye yönelik bir plan yoktur.
+ 
 
 ## <a name="common-issues"></a>Genel sorunlar
 Bu bölüm, karşılaşılan yaygın sorunların ve hafifletme adımlarının bir listesini içerir.
