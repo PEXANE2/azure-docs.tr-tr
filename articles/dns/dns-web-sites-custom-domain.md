@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 151d5f083fe0e945b330d65095c908be93e3330f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316390"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952956"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Öğretici: Bir web uygulaması için özel etki alanında DNS kaydı oluşturma 
 
@@ -29,7 +29,7 @@ Bunu yapmak için üç kayıt oluşturmanız gerekir:
 
 Azure'daki web uygulamanız için bir A kaydı oluşturduğunuzda web uygulamasının IP adresi her değiştiğinde bu A kaydının da değiştirilmesi gerektiğini unutmayın.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Özel etki alanınız için A ve TXT kaydı oluşturma
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Azure DNS'de bir DNS bölgesi oluşturun ve bölgeyi kayıt kuruluşunuzda Azure DNS'ye devredin.
 
-   1. DNS bölgesi oluşturmak için [DNS bölgesi oluşturma](dns-getstarted-create-dnszone.md) sayfasındaki adımları izleyin.
+   1. DNS bölgesi oluşturmak için [DNS bölgesi oluşturma](./dns-getstarted-powershell.md) sayfasındaki adımları izleyin.
    2. Bölgenizi Azure DNS'ye devretmek için [DNS etki alanı devretme](dns-delegate-domain-azure-dns.md) sayfasındaki adımları izleyin.
 
 Bölge oluşturduktan ve Azure DNS'ye devrettikten sonra özel etki alanınız için kayıt oluşturabilirsiniz.
@@ -174,7 +174,7 @@ Bir tarayıcı açıp `http://www.<your domainname>` ve `http://<you domain name
 > [!NOTE]
 > Ön eki eklediğinizden emin olun `http://` , aksi takdirde tarayıcınız sizin için BIR URL öngörme girişiminde bulunabilir!
 
-İki URL'de de aynı sayfayı görmeniz gerekir. Örneğin:
+İki URL'de de aynı sayfayı görmeniz gerekir. Örnek:
 
 ![Contoso uygulama hizmeti](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

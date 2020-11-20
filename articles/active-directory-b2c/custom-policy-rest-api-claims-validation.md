@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30273c0103d8a0fde12b1b7c6f66d16dd4ea84cb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089528"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951936"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>İzlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin
 
@@ -28,7 +28,7 @@ Bu senaryoda, kullanıcıların Azure AD B2C kaydolma sayfasına bağlılık pro
 
 Ayrıca, etkileşimi bir düzenleme adımı olarak tasarlayabilirler. Bu, REST API ekranda verileri doğrulamadan ve her zaman talepler döndürecek şekilde uygundur. Daha fazla bilgi için bkz. [Izlenecek yol: Azure AD B2C Kullanıcı yolculuğunda düzenleme adımı olarak REST API talep alışverişlerinde tümleştirme](custom-policy-rest-api-claims-exchange.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 - [Azure AD B2C özel ilkenizde REST API talep değişimlerinin nasıl tümleştirileceğini](custom-policy-rest-api-intro.md)öğrenin.
@@ -65,7 +65,7 @@ Doğrulama başarısız olursa, REST API JSON öğesiyle bir HTTP 409 (Conflict)
 }
 ```
 
-REST API uç noktasının kurulumu Bu makalenin kapsamı dışındadır. Bir [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-reference) örneği oluşturduk. [GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)'Daki tüm Azure işlev koduna erişebilirsiniz.
+REST API uç noktasının kurulumu Bu makalenin kapsamı dışındadır. Bir [Azure işlevleri](../azure-functions/functions-reference.md) örneği oluşturduk. [GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)'Daki tüm Azure işlev koduna erişebilirsiniz.
 
 ## <a name="define-claims"></a>Talepleri tanımlama
 
@@ -229,15 +229,15 @@ Promosyon kodu talebini bağlı olan taraf uygulamasına geri döndürmek için,
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
-1. **Kimlik deneyimi çerçevesini**seçin.
-1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz ilke dosyalarını karşıya yükleyin: *TrustFrameworkExtensions.xml*ve *SignUpOrSignin.xml*. 
+1. **Kimlik deneyimi çerçevesini** seçin.
+1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz ilke dosyalarını karşıya yükleyin: *TrustFrameworkExtensions.xml* ve *SignUpOrSignin.xml*. 
 1. Karşıya yüklediğiniz kaydolma veya oturum açma ilkesini seçin ve **Şimdi Çalıştır** düğmesine tıklayın.
 1. Bir e-posta adresi kullanarak kaydolabilirsiniz.
 1. **Şimdi kaydolun** bağlantısına tıklayın.
-1. **Bağlılık programı kimliğinizle**1234 yazın ve **devam**' a tıklayın. Bu noktada, bir doğrulama hata iletisi almalısınız.
+1. **Bağlılık programı kimliğinizle** 1234 yazın ve **devam**' a tıklayın. Bu noktada, bir doğrulama hata iletisi almalısınız.
 1. Başka bir değere değiştirip **devam**' a tıklayın.
 1. Uygulamanıza geri gönderilen belirteç `promoCode` talebi içerir.
 

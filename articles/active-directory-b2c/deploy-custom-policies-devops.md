@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4dd9f98f174144cef455157162694a470aa1065f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363938"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951780"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
 
@@ -29,7 +29,7 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 1. Azure işlem hattı yapılandırma
 
 > [!IMPORTANT]
-> Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)bakın.
+> Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](/graph/api/overview?toc=.%252fref%252ftoc.json&view=graph-rest-beta)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -40,13 +40,13 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 
 ## <a name="client-credentials-grant-flow"></a>İstemci kimlik bilgileri verme akışı
 
-Burada açıklanan senaryo, OAuth 2,0 [istemci kimlik bilgileri verme akışını](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md)kullanarak Azure Pipelines ve Azure AD B2C arasındaki hizmetten hizmete yapılan çağrıların kullanımını sağlar. Bu verme akışı, Azure Pipelines (gizli istemci) gibi bir Web hizmetinin başka bir Web hizmetini çağırırken kimlik doğrulaması yapmak yerine kendi kimlik bilgilerini kullanmasına izin verir (Bu durumda, Microsoft Graph API 'SI). Azure Pipelines, etkileşimli olmayan bir belirteci edinir ve sonra Microsoft Graph API 'sine istek yapar.
+Burada açıklanan senaryo, OAuth 2,0 [istemci kimlik bilgileri verme akışını](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)kullanarak Azure Pipelines ve Azure AD B2C arasındaki hizmetten hizmete yapılan çağrıların kullanımını sağlar. Bu verme akışı, Azure Pipelines (gizli istemci) gibi bir Web hizmetinin başka bir Web hizmetini çağırırken kimlik doğrulaması yapmak yerine kendi kimlik bilgilerini kullanmasına izin verir (Bu durumda, Microsoft Graph API 'SI). Azure Pipelines, etkileşimli olmayan bir belirteci edinir ve sonra Microsoft Graph API 'sine istek yapar.
 
 ## <a name="register-an-application-for-management-tasks"></a>Yönetim görevleri için bir uygulamayı kaydetme
 
 [Önkoşullardan](#prerequisites)bahsedildiği gibi, PowerShell betiklerinizin (Azure Pipelines tarafından yürütülen), kiracınızdaki kaynaklara erişmek için kullanabileceği bir uygulama kaydına ihtiyacınız vardır.
 
-Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, **Microsoft Graph**  >  **Policy**  >  uygulama kaydının **API izinleri** içinde Microsoft Graph Policy**Policy. ReadWrite. TrustFramework** izninin verildiğinden emin olun.
+Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, **Microsoft Graph**  >  **Policy**  >  uygulama kaydının **API izinleri** içinde Microsoft Graph Policy **Policy. ReadWrite. TrustFramework** izninin verildiğinden emin olun.
 
 Bir yönetim uygulamasını kaydetme hakkında yönergeler için bkz. [Microsoft Graph Azure AD B2C yönetme](microsoft-graph-get-started.md).
 
@@ -57,10 +57,10 @@ Kayıtlı bir yönetim uygulaması ile, ilke dosyalarınız için bir depo yapı
 1. Azure DevOps Services kuruluşunuzda oturum açın.
 1. [Yeni bir proje oluşturun][devops-create-project] veya var olan bir projeyi seçin.
 1. Projenizde, **Repos** ' a gidin ve **dosyalar** sayfasını seçin. Mevcut bir depoyu seçin veya bu alıştırma için bir tane oluşturun.
-1. *B2CAssets*adlı bir klasör oluşturun. Gerekli yer tutucu dosyasını *README.MD* olarak adlandırın ve dosyayı **işleyin** . İsterseniz bu dosyayı daha sonra kaldırabilirsiniz.
-1. Azure AD B2C ilkesi dosyalarınızı *B2CAssets* klasörüne ekleyin. Bu, *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*ve oluşturduğunuz diğer ilkeleri içerir. Daha sonraki bir adımda kullanmak üzere her bir Azure AD B2C ilkesi dosyasının dosya adını kaydedin (PowerShell betiği bağımsız değişkenleri olarak kullanılırlar).
-1. Deponun kök dizininde *betikler* adlı bir klasör oluşturun, yer tutucu dosyasını *DeployToB2c.ps1*olarak adlandırın. Bu noktada dosyayı kaydetme, daha sonraki bir adımda yapacaksınız.
-1. Aşağıdaki PowerShell betiğini *DeployToB2c.ps1*yapıştırın, sonra dosyayı **yürütün** . Betik, Azure AD 'den bir belirteç alır ve *B2CAssets* klasörünün içindeki ilkeleri Azure AD B2C kiracınıza yüklemek IÇIN Microsoft Graph API 'sini çağırır.
+1. *B2CAssets* adlı bir klasör oluşturun. Gerekli yer tutucu dosyasını *README.MD* olarak adlandırın ve dosyayı **işleyin** . İsterseniz bu dosyayı daha sonra kaldırabilirsiniz.
+1. Azure AD B2C ilkesi dosyalarınızı *B2CAssets* klasörüne ekleyin. Bu, *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml* ve oluşturduğunuz diğer ilkeleri içerir. Daha sonraki bir adımda kullanmak üzere her bir Azure AD B2C ilkesi dosyasının dosya adını kaydedin (PowerShell betiği bağımsız değişkenleri olarak kullanılırlar).
+1. Deponun kök dizininde *betikler* adlı bir klasör oluşturun, yer tutucu dosyasını *DeployToB2c.ps1* olarak adlandırın. Bu noktada dosyayı kaydetme, daha sonraki bir adımda yapacaksınız.
+1. Aşağıdaki PowerShell betiğini *DeployToB2c.ps1* yapıştırın, sonra dosyayı **yürütün** . Betik, Azure AD 'den bir belirteç alır ve *B2CAssets* klasörünün içindeki ilkeleri Azure AD B2C kiracınıza yüklemek IÇIN Microsoft Graph API 'sini çağırır.
 
     ```PowerShell
     [Cmdletbinding()]
@@ -115,14 +115,14 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 
 1. Azure DevOps Services kuruluşunuzda oturum açın ve projenize gidin.
 1. Projenizde işlem **hatları**  >  **Releases**  >  **Yeni işlem hattı**' nı seçin.
-1. **Şablon seç**altında **boş iş**' ı seçin.
-1. Bir **aşama adı**girin, örneğin *DeployCustomPolicies*, sonra bölmeyi kapatın.
-1. **Yapıt Ekle**' yi seçin ve **kaynak türü**altında **Azure deposu**' nu seçin.
+1. **Şablon seç** altında **boş iş**' ı seçin.
+1. Bir **aşama adı** girin, örneğin *DeployCustomPolicies*, sonra bölmeyi kapatın.
+1. **Yapıt Ekle**' yi seçin ve **kaynak türü** altında **Azure deposu**' nu seçin.
     1. PowerShell betiği ile doldurulmuş *betikler* klasörünü içeren kaynak depoyu seçin.
-    1. Varsayılan bir **dal**seçin. Önceki bölümde yeni bir depo oluşturduysanız, varsayılan dal *ana öğe*olur.
-    1. Varsayılan daldan varsayılan **Sürüm** ayarını *en son*bırakın.
+    1. Varsayılan bir **dal** seçin. Önceki bölümde yeni bir depo oluşturduysanız, varsayılan dal *ana öğe* olur.
+    1. Varsayılan daldan varsayılan **Sürüm** ayarını *en son* bırakın.
     1. Depo için bir **kaynak diğer adı** girin. Örneğin, *policydeposu*. Diğer ada boşluk eklemeyin.
-1. **Ekle** 'yi seçin
+1. **Ekle**’yi seçin
 1. İşlem hattını, amacını yansıtacak şekilde yeniden adlandırın. Örneğin, *özel ilke Işlem hattı dağıtın*.
 1. İşlem hattı yapılandırmasını kaydetmek için **Kaydet** ' i seçin.
 
@@ -144,7 +144,7 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 Sonra, bir ilke dosyası dağıtmak için bir görev ekleyin.
 
 1. **Görevler** sekmesini seçin.
-1. **Aracı**işini seçin ve ardından **+** Aracı işine bir görev eklemek için artı işaretini () seçin.
+1. **Aracı** işini seçin ve ardından **+** Aracı işine bir görev eklemek için artı işaretini () seçin.
 1. **PowerShell**'i arayın ve seçin. "Azure PowerShell," "hedef makinelerde PowerShell" veya başka bir PowerShell girişi seçmeyin.
 1. Yeni eklenen **PowerShell betiği** görevi ' ni seçin.
 1. PowerShell betiği görevi için aşağıdaki değerleri girin:
@@ -154,14 +154,14 @@ Sonra, bir ilke dosyası dağıtmak için bir görev ekleyin.
     * **Betik yolu**: üç noktayı seçin (**_..._* _) _Scripts * klasörüne gidin ve *DeployToB2C.ps1* dosyasını seçin.
     * **Değişkenlerinden**
 
-        **Bağımsız değişkenler**için aşağıdaki değerleri girin. `{alias-name}`Önceki bölümde belirttiğiniz diğer adla değiştirin.
+        **Bağımsız değişkenler** için aşağıdaki değerleri girin. `{alias-name}`Önceki bölümde belirttiğiniz diğer adla değiştirin.
 
         ```PowerShell
         # Before
         -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/TrustFrameworkBase.xml
         ```
 
-        Örneğin, belirttiğiniz diğer ad *Policydeppo*ise, bağımsız değişken satırı şu şekilde olmalıdır:
+        Örneğin, belirttiğiniz diğer ad *Policydeppo* ise, bağımsız değişken satırı şu şekilde olmalıdır:
 
         ```PowerShell
         # After
@@ -211,10 +211,10 @@ Bir yayının sıraya alınmış olduğunu belirten bir bildirim başlığı gö
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-* [İstemci kimlik bilgilerini kullanan hizmetten hizmete çağrılar](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
-* [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)
+* [İstemci kimlik bilgilerini kullanan hizmetten hizmete çağrılar](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+* [Azure DevOps Services](/azure/devops/user-guide/?view=azure-devops)
 
 <!-- LINKS - External -->
-[devops]: https://docs.microsoft.com/azure/devops/?view=azure-devops
-[devops-create-project]:  https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops
-[devops-pipelines]: https://docs.microsoft.com/azure/devops/pipelines
+[devops]: /azure/devops/?view=azure-devops
+[devops-create-project]:  /azure/devops/organizations/projects/create-project?view=azure-devops
+[devops-pipelines]: /azure/devops/pipelines

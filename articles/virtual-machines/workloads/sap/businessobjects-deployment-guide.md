@@ -9,19 +9,20 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 9d1759e5b809bc40e63fb6024fb7f107ad347da6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094478"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951293"
 ---
-# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure 'da SAP BusinessObjects bı platformu planlama ve uygulama kılavuzu
+# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure’da SAP BusinessObjects İş Zekası platformu planlama ve uygulama kılavuzu
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -137,7 +138,7 @@ Bı platformunda CMS ve denetim veri deposu için veritabanı gerekir ve bu, [SA
 
 - MaxDB
 
-Bu belgede, **Azure SQL veritabanı Ile Windows üzerinde SAP bobi platformu** dağıtmaya yönelik yönergeler ve **Linux üzerinde MySQL için Azure veritabanı ile SAP bobi platformu**dağıtımı gösterilmektedir. Azure 'da SAP BusinessObjects bı platformunu çalıştırmak için de önerilen yaklaşımımız.
+Bu belgede, **Azure SQL veritabanı Ile Windows üzerinde SAP bobi platformu** dağıtmaya yönelik yönergeler ve **Linux üzerinde MySQL için Azure veritabanı ile SAP bobi platformu** dağıtımı gösterilmektedir. Azure 'da SAP BusinessObjects bı platformunu çalıştırmak için de önerilen yaklaşımımız.
 
 ## <a name="sizing"></a>Boyutlandırma
 

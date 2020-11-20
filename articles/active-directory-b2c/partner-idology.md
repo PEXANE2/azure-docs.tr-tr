@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07a8f785cf2b9a64f3acb9f44c4fca5023c4fcf3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259331"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953755"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile IDology yapılandırma öğreticisi 
 
@@ -67,13 +67,13 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
 
 Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.
 
 ### <a name="part-2---configure-the-api"></a>Bölüm 2-API 'YI yapılandırma 
 
-Uygulama ayarları, [Azure 'da App Service yapılandırılabilir](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Bu yöntemde, ayarlar bir depoya denetlenmeden güvenle yapılandırılabilir. REST API için aşağıdaki ayarları sağlamanız gerekir:
+Uygulama ayarları, [Azure 'da App Service yapılandırılabilir](../app-service/configure-common.md#configure-app-settings). Bu yöntemde, ayarlar bir depoya denetlenmeden güvenle yapılandırılabilir. REST API için aşağıdaki ayarları sağlamanız gerekir:
 
 | Uygulama ayarları | Kaynak | Notlar |
 | :-------- | :------------| :-----------|
@@ -119,9 +119,9 @@ Uygulama ayarları, [Azure 'da App Service yapılandırılabilir](https://docs.m
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
-1. Azure AD B2C kiracıyı açın ve **ilkeler**altında **Kullanıcı akışları**' nı seçin.
+1. Azure AD B2C kiracıyı açın ve **ilkeler** altında **Kullanıcı akışları**' nı seçin.
 
-2. Daha önce oluşturduğunuz **Kullanıcı akışınızı**seçin.
+2. Daha önce oluşturduğunuz **Kullanıcı akışınızı** seçin.
 
 3. **Kullanıcı akışını Çalıştır** ' ı seçin ve ayarları seçin:
 
@@ -137,7 +137,7 @@ Uygulama ayarları, [Azure 'da App Service yapılandırılabilir](https://docs.m
 
 6. Oturum açma akışına gidin.
 
-7. IDology bulmaca, **devam et**girdikten sonra görüntülenir.
+7. IDology bulmaca, **devam et** girdikten sonra görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -145,5 +145,4 @@ Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
 - [Azure AD B2C'deki özel ilkeler](custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md?tabs=applications) 
-
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md?tabs=applications)

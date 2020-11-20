@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68965008"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954095"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple cihazınızda 10 GbE ağ arabirimleri için desteklenen donanım
 
@@ -73,7 +73,7 @@ Mellanox, StorSimple cihazınızda 10 GbE ağ arabirimleri gibi Mellanox ağı a
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Mellanox tarafından desteklenen kablolar ve modüller
 Aşağıdaki tabloda, Mellanox tarafından desteklenen kablolar ve modüller listelenmiştir. Bunlar Microsoft tarafından sınanmamıştır, ancak büyük olasılıkla StorSimple cihazınıza göre çalışmalardır.
 
-| S. Hayır. | Hız | Model | Açıklama | Marka |
+| S. Hayır. | Hız | Model | Description | Marka |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |Pasif bakır kablo SFP + 10 GB/s 1m |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |Pasif bakır kablo SFP + 10 GB/s 2m |Arista |
@@ -114,7 +114,7 @@ Aşağıdaki tabloda, Mellanox tarafından desteklenen kablolar ve modüller lis
 ### <a name="switches-supported-by-mellanox"></a>Mellanox tarafından desteklenen anahtarlar
 Aşağıdaki tabloda, Mellanox tarafından desteklenen anahtarlar listelenmektedir. Bunlar Microsoft tarafından sınanmamıştır, ancak büyük olasılıkla StorSimple cihazınıza göre çalışmalardır.
 
-| S. Hayır. | Hız | Model | Açıklama | Marka |
+| S. Hayır. | Hız | Model | Description | Marka |
 | --- | --- | --- | --- | --- |
 | 1. |Noktalı |516733-B21 |HP ProCurve 6120XG 10GbE Ethernet dikey pencere anahtarı |HP |
 | 2. |Noktalı |538113-B21 |HP 10GbE Pass-Through modülü (PTM) |HP |
@@ -125,5 +125,4 @@ Aşağıdaki tabloda, Mellanox tarafından desteklenen anahtarlar listelenmekted
 | 7. |1GbE |6120G |HP ProCurve 6120G/XG 1GbE anahtar dikey penceresi |HP |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[StorSimple donanım bileşenleri ve durumu hakkında daha fazla bilgi edinin](storsimple-monitor-hardware-status.md).
-
+[StorSimple donanım bileşenleri ve durumu hakkında daha fazla bilgi edinin](./storsimple-8000-monitor-hardware-status.md).

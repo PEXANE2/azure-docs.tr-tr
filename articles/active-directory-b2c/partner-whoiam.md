@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293168"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953551"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Whoıam yapılandırma öğreticisi
 
@@ -30,7 +30,7 @@ Başlamak için şunlar gerekir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .
+- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](./tutorial-create-tenant.md) .
 
 - Bir Whoıam [deneme hesabı](https://www.whoiam.ai/contact-us/).
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Whoıam ile Azure AD B2C tümleştirme mimarisinin diyagramı.](media/partner-whoiam/whoiam-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı, kimlik sağlayıcısı olarak Azure AD B2C kullanan bir uygulamaya kaydolma veya oturum açma isteğini başlatmak için bir sayfaya ulaşır.
 | 2. | Kimlik doğrulamanın bir parçası olarak Kullanıcı, e-posta veya telefonunun sahipliğini doğrulamayı ister veya sesini bir biyometrik doğrulama faktörü olarak kullanır.  
@@ -72,7 +72,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
     - [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): ayarları depolamak ve almak için kullanılır.
 
-    - [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications) (isteğe bağlı): hem API hem de yönetici portalında oturum açmak için kullanılır.
+    - [Application Insights](../azure-monitor/app/app-insights-overview.md) (isteğe bağlı): hem API hem de yönetici portalında oturum açmak için kullanılır.
 
 3. BRIMS API ve BRIMS yönetim portalını Azure ortamınızda dağıtın.
 
@@ -82,15 +82,15 @@ Whoıam 'in BRIMS hakkında daha fazla bilgi için [ürün belgelerine](https://
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
-1. Azure AD B2C kiracıyı açın. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. Azure AD B2C kiracıyı açın. **İlkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
 
 2. Daha önce oluşturduğunuz **Signupsignın**' ı seçin.
 
 3. **Kullanıcı akışını Çalıştır** ' ı seçin ve ardından:
 
-   a. **Uygulama**için kayıtlı uygulamayı (örnek JWT) seçin.
+   a. **Uygulama** için kayıtlı uygulamayı (örnek JWT) seçin.
 
-   b. **Yanıt URL 'si**için **yeniden yönlendirme URL**'sini seçin.
+   b. **Yanıt URL 'si** için **yeniden yönlendirme URL**'sini seçin.
 
    c. **Kullanıcı akışını Çalıştır**' ı seçin.
 
@@ -102,6 +102,6 @@ Whoıam 'in BRIMS hakkında daha fazla bilgi için [ürün belgelerine](https://
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

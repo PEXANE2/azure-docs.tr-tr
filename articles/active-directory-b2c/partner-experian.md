@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29116d880a51444eb45a351e2118a07d13873043
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259382"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953857"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Experian yapılandırma öğreticisi
 
@@ -42,7 +42,7 @@ Başlamak için şunlar gerekir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .
+- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](./tutorial-create-tenant.md) .
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -58,7 +58,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Experian mimarisi için ekran görüntüsü-diyagram](media/partner-experian/experian-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolma seçer ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -77,14 +77,14 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
 
 >[!NOTE]
 >Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.
 
 ### <a name="part-2---deploy-the-client-certificate"></a>Bölüm 2-istemci sertifikasını dağıtma
 
-Experian API çağrısı bir istemci sertifikası tarafından korunur. Bu istemci sertifikası, Experian tarafından sağlanacak. Bu [belgede](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)bahsedilen yönergeleri izleyerek, sertifikanın Azure App Service 'e yüklenmesi gerekir. Örnek ilke, işlemdeki şu anahtar adımlarını kullanır:
+Experian API çağrısı bir istemci sertifikası tarafından korunur. Bu istemci sertifikası, Experian tarafından sağlanacak. Bu [belgede](../app-service/environment/certificates.md#private-client-certificate)bahsedilen yönergeleri izleyerek, sertifikanın Azure App Service 'e yüklenmesi gerekir. Örnek ilke, işlemdeki şu anahtar adımlarını kullanır:
 
 - Sertifikayı güncelleştirin
 
@@ -92,7 +92,7 @@ Experian API çağrısı bir istemci sertifikası tarafından korunur. Bu istemc
 
 ### <a name="part-3---configure-the-api"></a>3. kısım-API 'YI yapılandırma
 
-Uygulama ayarları [Azure 'Daki App Service 'te yapılandırılabilir](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Bu yöntemde, ayarlar bir depoya denetlenmeden güvenle yapılandırılabilir. REST API için aşağıdaki ayarları sağlamanız gerekir:
+Uygulama ayarları [Azure 'Daki App Service 'te yapılandırılabilir](../app-service/configure-common.md#configure-app-settings). Bu yöntemde, ayarlar bir depoya denetlenmeden güvenle yapılandırılabilir. REST API için aşağıdaki ayarları sağlamanız gerekir:
 
 | Uygulama ayarları | Kaynak | Notlar |
 | :-------- | :------------| :-----------|
@@ -110,7 +110,7 @@ Uygulama ayarları [Azure 'Daki App Service 'te yapılandırılabilir](https://d
 
 ### <a name="part-4---create-api-policy-keys"></a>4. Bölüm-API ilkesi anahtarları oluşturma
 
-Bu [belgeye](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) başvurun ve API Kullanıcı adı için bir tane olmak üzere iki ilke anahtarı oluşturun, diğeri de daha önce http temel kimlik doğrulaması IÇIN tanımladığınız API parolasıdır.
+Bu [belgeye](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys) başvurun ve API Kullanıcı adı için bir tane olmak üzere iki ilke anahtarı oluşturun, diğeri de daha önce http temel kimlik doğrulaması IÇIN tanımladığınız API parolasıdır.
 
 >[!NOTE]
 >İlkeleri daha sonra yapılandırmak için anahtarlar gerekir.
@@ -133,7 +133,7 @@ Belirtilen [özel ilkelerde](https://github.com/azure-ad-b2c/partner-integration
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>Bölüm 6-Azure AD B2C ilkesini yapılandırma
 
-Azure AD B2C kiracınızı ayarlama ve ilkeleri yapılandırma hakkında yönergeler için bu [belgeye](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) başvurun.
+Azure AD B2C kiracınızı ayarlama ve ilkeleri yapılandırma hakkında yönergeler için bu [belgeye](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) başvurun.
 
 >[!NOTE]
 >Bu örnek ilke [yerel hesaplar başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)temel alır.
@@ -143,9 +143,9 @@ Azure AD B2C kiracınızı ayarlama ve ilkeleri yapılandırma hakkında yönerg
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
-1. Azure AD B2C kiracıyı açın ve Ilkeler altında **Kullanıcı akışları ' nı**seçin.
+1. Azure AD B2C kiracıyı açın ve Ilkeler altında **Kullanıcı akışları ' nı** seçin.
 
-2. Daha önce oluşturduğunuz **Kullanıcı akışınızı**seçin.
+2. Daha önce oluşturduğunuz **Kullanıcı akışınızı** seçin.
 
 3. **Kullanıcı akışını Çalıştır** ' ı seçin ve ayarları seçin:
 
@@ -167,6 +167,6 @@ Azure AD B2C kiracınızı ayarlama ve ilkeleri yapılandırma hakkında yönerg
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259145"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953568"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Saviynt yapılandırma öğreticisi
 
@@ -36,7 +36,7 @@ Başlamak için şunlar gerekir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- [Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Kiracı, Azure aboneliğinize bağlı.
+- [Azure AD B2C kiracısı](./tutorial-create-tenant.md). Kiracı, Azure aboneliğinize bağlı.
 
 - Bir Saviynt [aboneliği](https://saviynt.com/contact-us/)
 
@@ -48,13 +48,13 @@ Saviynt tümleştirmesi aşağıdaki bileşenleri içerir:
 
 - [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) : Kullanıcı yaşam döngüsü yönetimi ve Azure AD B2C kullanıcıların yönetimine yönelik ayrıntılı bir yönetim sağlayan kimlik idare platformu.  
 
-- [MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api) – bu apı, Azure AD B2C kullanıcıları ve Azure AD B2C erişimini yönetmek için Saviynt arabirimlerini sağlar.
+- [MICROSOFT Graph API](/graph/use-the-api) – bu apı, Azure AD B2C kullanıcıları ve Azure AD B2C erişimini yönetmek için Saviynt arabirimlerini sağlar.
 
 Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Saviynt mimari diyagramını gösteren resim](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Yetkilendirilmiş bir yönetici, Saviynt aracılığıyla Azure AD B2C Kullanıcı yönetme işlemini başlatır.
 | 2. | Saviynt, yetkilendirilmiş yönetici belirli bir işlemi yapabiliyorsanız yetkilendirme altyapısını doğrular.
@@ -69,7 +69,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 1. Saviynt hesabı oluşturmak için [Saviynt](https://saviynt.com/contact-us/) başvurun
 
-2. Temsilcili yönetim ilkeleri oluşturun ve kullanıcıları farklı rollerle [yönetici temsilcileri](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-concept-delegation) olarak atayın.
+2. Temsilcili yönetim ilkeleri oluşturun ve kullanıcıları farklı rollerle [yönetici temsilcileri](../active-directory/users-groups-roles/roles-concept-delegation.md) olarak atayın.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Saviynt ile Azure AD B2C yapılandırma
 
@@ -79,7 +79,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-3. Azure portal arama yapın ve **Azure AD B2C**seçin.
+3. Azure portal arama yapın ve **Azure AD B2C** seçin.
 
 4. Yeni **uygulama kayıtları**  >  **kayıt**' ı seçin.
 
@@ -104,7 +104,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
     >[!NOTE]
     > Daha sonra istemci parolası gerekir.
 
-14. **Genel Bakış ' a** gidin ve **Istemci KIMLIĞINI** ve **Kiracı kimliğini**alın.
+14. **Genel Bakış ' a** gidin ve **Istemci KIMLIĞINI** ve **Kiracı kimliğini** alın.
 
 15. Saviynt 'de kurulumu tamamlaması için kiracı KIMLIĞI, istemci KIMLIĞI ve istemci gizli anahtarı gerekir.
 
@@ -113,7 +113,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 Aşağıdaki adımlarda, Azure AD B2C içinde Kullanıcı silme işlemlerini gerçekleştirmek için Saviynt nasıl etkinleştirileceği açıklanmaktadır.
 
 >[!NOTE]
->[Yönetici rollerine hizmet sorumlusu erişimi vermeden önce riski değerlendirin.](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+>[Yönetici rollerine hizmet sorumlusu erişimi vermeden önce riski değerlendirin.](../active-directory/develop/app-objects-and-service-principals.md)
 
 1. MSOnline PowerShell modülünün en son sürümünü bir Windows iş istasyonuna/sunucusuna yükler.
 
@@ -133,8 +133,8 @@ Saviynt uygulama kiracınıza gidin ve Kullanıcı yaşam döngüsü yönetimini
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)
 
-- [Web API uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory-b2c/add-web-api-application)
+- [Web API uygulaması oluşturma](./add-web-api-application.md)

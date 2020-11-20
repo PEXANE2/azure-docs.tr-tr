@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 10/14/2020
+ms.date: 11/19/2020
 ms.author: victorh
-ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566580"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952140"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
 
@@ -53,7 +53,7 @@ Bu genel ilke contoso.com ve fabrikam.com için uygundur, ancak oturum açma bil
 
 Adatum.com/payments URI 'SI, dikkatli olmanız gereken yerdir. Bu nedenle, bu URI üzerinde başka bir ilke uygulayın ve tüm kuralları etkin bırakın ve ayrıca tüm dışlamaları kaldırın.
 
-Bu örnekte, iki site için geçerli olan genel bir ilkeniz vardır. Tek bir site için geçerli olan bir site başına ilkeniz ve ardından belirli bir yol tabanlı kural için geçerli olan URI başına bir ilke vardır. Bu örnek için ilgili PowerShell için site başına ve URI başına ilkeler oluşturma bölümüne bakın.
+Bu örnekte, iki site için geçerli olan genel bir ilkeniz vardır. Tek bir site için geçerli olan bir site başına ilkeniz ve ardından belirli bir yol tabanlı kural için geçerli olan URI başına bir ilke vardır. Bu örnek için ilgili PowerShell için [Azure PowerShell kullanarak site başına WAF Ilkelerini yapılandırma](per-site-policies.md) konusuna bakın.
 
 ## <a name="existing-waf-configurations"></a>Var olan WAF yapılandırması
 

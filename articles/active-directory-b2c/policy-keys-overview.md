@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670102"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953364"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'deki ilke anahtarlarına genel bakış
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C), tümleştiği hizmetlerle güven sağ
  Bu makalede, Azure AD B2C tarafından kullanılan ilke anahtarları hakkında bilmeniz gerekenler açıklanmaktadır.
 
 > [!NOTE]
-> Şu anda, ilke anahtarlarının yapılandırması yalnızca [özel ilkelerle](active-directory-b2c-get-started-custom.md) sınırlıdır.
+> Şu anda, ilke anahtarlarının yapılandırması yalnızca [özel ilkelerle](./custom-policy-get-started.md) sınırlıdır.
 
 **İlke anahtarları** menüsündeki Azure Portal hizmetler arasında güven oluşturmak için gizli dizileri ve sertifikaları yapılandırabilirsiniz. Anahtarlar simetrik veya asimetrik olabilir. *Simetrik* şifreleme veya özel anahtar şifrelemesi, verileri şifrelemek ve şifrelerini çözmek için paylaşılan bir gizliliğin kullanıldığı yerdir. *Asimetrik* şifreleme veya ortak anahtar şifrelemesi, yalnızca Azure AD B2C bilinen bağlı olan taraf uygulamasıyla ve özel anahtarlarla paylaşılan ortak anahtarlardan oluşan, anahtar çiftleri kullanan bir şifreleme sistemidir.
 
@@ -38,9 +38,9 @@ Azure AD B2C içindeki ilke anahtarlarına yönelik en üst düzey kaynak, **ana
 
 | Öznitelik |  Gerekli | Açıklamalar |
 | --- | --- |--- |
-| `use` | Evet | Kullanım: ortak anahtarın amaçlanan kullanımını tanımlar. Verileri şifreleme `enc` veya veri üzerindeki imzayı doğrulama `sig` .|
-| `nbf`| Hayır | Etkinleştirme tarihi ve saati. |
-| `exp`| Hayır | Sona erme tarihi ve saati. |
+| `use` | Yes | Kullanım: ortak anahtarın amaçlanan kullanımını tanımlar. Verileri şifreleme `enc` veya veri üzerindeki imzayı doğrulama `sig` .|
+| `nbf`| No | Etkinleştirme tarihi ve saati. |
+| `exp`| No | Sona erme tarihi ve saati. |
 
 Anahtar etkinleştirme ve süre sonu değerlerini PKI standartlarınıza göre ayarlamayı öneririz. Güvenlik veya ilke nedenleriyle bu sertifikaları düzenli aralıklarla döndürmenize gerek duyabilirsiniz. Örneğin, tüm sertifikalarınızı her yıl döndürmek için bir ilkenize sahip olabilirsiniz.
 
@@ -63,21 +63,21 @@ Azure AD B2C anahtar kümesi birden fazla anahtara sahipse, aşağıdaki ölçü
   - Geçerli tarih ve saat bir anahtarın etkinleştirme tarihinden daha büyükse, Azure AD B2C anahtarı etkinleştirir ve önceki etkin anahtarı kullanmayı durdurur.
 - Geçerli anahtarın sona erme saati geçtiğinde ve anahtar kapsayıcısı, geçerli *olmayan* ve *süresi* dolmadan yeni bir anahtar içeriyorsa, yeni anahtar otomatik olarak etkin hale gelir.
 - Geçerli anahtarın sona erme süresi geçtiğinde ve anahtar kapsayıcısı, geçerli *olmayan* ve *süresi* dolmadan yeni bir *anahtar içermiyorsa,* Azure AD B2C süresi doldu anahtarını kullanamaz. Azure AD B2C, özel ilkenizin bağımlı bir bileşeni içinde bir hata mesajı oluşturacak. Bu sorundan kaçınmak için, etkinleştirme ve sona erme tarihleri için bir güvenlik ağı olarak varsayılan bir anahtar oluşturabilirsiniz.
-- OpenID Connect iyi bilinen yapılandırma uç noktasının anahtarın uç noktası (JWKS URI), anahtar, [Jwtissuer Technical profile](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile)içinde başvuruluyorsa, anahtar kapsayıcısında yapılandırılan anahtarları yansıtır. OıDC kitaplığı kullanan bir uygulama, belirteçleri doğrulamak için doğru anahtarları kullandığından emin olmak üzere bu meta verileri otomatik olarak getirecek. Daha fazla bilgi için [Microsoft kimlik doğrulama kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/msal-b2c-overview)'nı nasıl kullanacağınızı öğrenin. Bu, her zaman en son belirteç imzalama anahtarlarını otomatik olarak getirir.
+- OpenID Connect iyi bilinen yapılandırma uç noktasının anahtarın uç noktası (JWKS URI), anahtar, [Jwtissuer Technical profile](./jwt-issuer-technical-profile.md)içinde başvuruluyorsa, anahtar kapsayıcısında yapılandırılan anahtarları yansıtır. OıDC kitaplığı kullanan bir uygulama, belirteçleri doğrulamak için doğru anahtarları kullandığından emin olmak üzere bu meta verileri otomatik olarak getirecek. Daha fazla bilgi için [Microsoft kimlik doğrulama kitaplığı](../active-directory/develop/msal-b2c-overview.md)'nı nasıl kullanacağınızı öğrenin. Bu, her zaman en son belirteç imzalama anahtarlarını otomatik olarak getirir.
 
 ## <a name="policy-key-management"></a>İlke anahtarı yönetimi
 
-Bir anahtar kapsayıcısı içinde geçerli etkin anahtarı almak için Microsoft Graph API [getActiveKey](https://docs.microsoft.com/graph/api/trustframeworkkeyset-getactivekey) uç noktasını kullanın.
+Bir anahtar kapsayıcısı içinde geçerli etkin anahtarı almak için Microsoft Graph API [getActiveKey](/graph/api/trustframeworkkeyset-getactivekey) uç noktasını kullanın.
 
 İmzalama ve şifreleme anahtarları eklemek veya silmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
-1. Genel Bakış sayfasında, **ilkeler** altında **kimlik deneyimi çerçevesi** ' ni seçin.
+1. Genel Bakış sayfasında, **ilkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Ilke anahtarlarını** seçin 
-    1. Yeni bir anahtar eklemek için **Ekle** ' yi seçin.
-    1. Yeni bir anahtarı kaldırmak için, anahtarı seçin ve **Sil** ' i seçin. Anahtarı silmek için, silinecek anahtar kapsayıcısının adını yazın. Azure AD B2C, anahtarı silecek ve son ek. bak ile anahtarın bir kopyasını oluşturacak.
+    1. Yeni bir anahtar eklemek için **Ekle**' yi seçin.
+    1. Yeni bir anahtarı kaldırmak için, anahtarı seçin ve **Sil**' i seçin. Anahtarı silmek için, silinecek anahtar kapsayıcısının adını yazın. Azure AD B2C, anahtarı silecek ve son ek. bak ile anahtarın bir kopyasını oluşturacak.
 
 ### <a name="replace-a-key"></a>Bir anahtarı değiştirme
 
@@ -89,10 +89,3 @@ Anahtar kümesi içindeki anahtarlar değiştirilebilir veya kaldırılabilir. V
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Anahtar kümesi](microsoft-graph-operations.md#trust-framework-policy-keyset) ve [ilke anahtarları](microsoft-graph-operations.md#trust-framework-policy-key) dağıtımını otomatik hale getirmek için Microsoft Graph nasıl kullanacağınızı öğrenin.
-
-
-
-
-
-
-

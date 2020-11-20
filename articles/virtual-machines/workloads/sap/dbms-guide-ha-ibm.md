@@ -3,16 +3,17 @@ title: Azure sanal makinelerinde (VM) IBM DB2 HADR 'yi ayarlama | Microsoft Docs
 description: Azure sanal makinelerinde (VM) IBM DB2 LUW ile yüksek kullanılabilirlik sağlayın.
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 88a84cd90efb42ea096cad647d75f1c3736426f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146432"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951324"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği
 
@@ -131,7 +132,7 @@ Seçilen işletim sisteminin IBM DB2 LUW için IBM/SAP tarafından desteklendiğ
 
 ## <a name="create-the-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
     
-Bu IBM DB2 sunucusu için temel bir Paceoluşturucu kümesi oluşturmak için bkz. [Azure 'da SUSE Linux Enterprise Server ayarlama][sles-pacemaker]. 
+Bu IBM DB2 sunucusu için temel bir Paceoluşturucu kümesi oluşturmak için bkz. [Azure 'da SUSE Linux Enterprise Server ayarlama][sles-pacemaker]. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>IBM DB2 LUW ve SAP ortamını yükler
 
@@ -174,8 +175,8 @@ SAP homojen sistem kopyalama yordamını kullanarak bekleme veritabanı sunucusu
 
    > [!NOTE]
    > Azure ve Paceyapıcısı 'e özgü yükleme ve yapılandırma için: SAP yazılım sağlama Yöneticisi aracılığıyla yükleme yordamı sırasında IBM DB2 LUW için yüksek kullanılabilirlik hakkında açık bir soru vardır:
-   >+ **IBM DB2 pureScale**öğesini seçmeyin.
-   >+ **Çoklu platformlar IÇIN IBM Tivoli sistem otomasyonu yüklemeyi**seçmeyin.
+   >+ **IBM DB2 pureScale** öğesini seçmeyin.
+   >+ **Çoklu platformlar IÇIN IBM Tivoli sistem otomasyonu yüklemeyi** seçmeyin.
    >+ **Küme yapılandırma dosyalarını üret**' i seçmeyin.
 
    Linux Paceyapıcısı için bir SBD cihazı kullandığınızda, aşağıdaki DB2 HADR parametrelerini ayarlayın:
@@ -308,7 +309,7 @@ Aşağıdaki öğelerin ön eki vardır:
 
 **[A]** pacemaker yapılandırması için Önkoşullar:
 1. Db2stop ile Kullanıcı DB2 ile her iki veritabanı sunucusunu da kapatın \<sid> .
-1. DB2 kullanıcısının Kabuk ortamını \<sid> */bin/ksh*olarak değiştirin. Yast aracını kullanmanızı öneririz. 
+1. DB2 kullanıcısının Kabuk ortamını \<sid> */bin/ksh* olarak değiştirin. Yast aracını kullanmanızı öneririz. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker yapılandırması
@@ -403,7 +404,7 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 
    b. Yeni ön uç IP havuzunun adını girin (örneğin, **DB2-bağlantı**).
 
-   c. **Atamayı** **statik**olarak AYARLAYıN ve başlangıçta tanımlanan IP adresini **sanal IP** adresi olarak girin.
+   c. **Atamayı** **statik** olarak AYARLAYıN ve başlangıçta tanımlanan IP adresini **sanal IP** adresi olarak girin.
 
    d. **Tamam**’ı seçin.
 
@@ -429,7 +430,7 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 
    b. Yeni sistem durumu araştırmasının adını girin (örneğin, **DB2-HP**).
 
-   c. Protokol ve bağlantı noktası **62500**olarak **TCP** ' yi seçin. **Aralık** değerini **5**olarak ayarlayın ve **sağlıksız eşik** değerini **2**olarak ayarlayın.
+   c. Protokol ve bağlantı noktası **62500** olarak **TCP** ' yi seçin. **Aralık** değerini **5** olarak ayarlayın ve **sağlıksız eşik** değerini **2** olarak ayarlayın.
 
    d. **Tamam**’ı seçin.
 
@@ -441,7 +442,7 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 
    c. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **DB2-ön uç**) seçin.
 
-   d. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası *veritabanı iletişim bağlantı noktasını*girin.
+   d. **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası *veritabanı iletişim bağlantı noktasını* girin.
 
    e. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
 
@@ -572,8 +573,8 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **CRM kaynak geçişi \<res_name> \<host> :** konum kısıtlamaları oluşturur ve ele geçirimiyle ilgili sorunlara neden olabilir
-- **CRM kaynağı Temizleme \<res_name> **: konum kısıtlamalarını temizler
-- **CRM kaynağı Temizleme \<res_name> **: kaynağın tüm hatalarını temizler
+- **CRM kaynağı Temizleme \<res_name>**: konum kısıtlamalarını temizler
+- **CRM kaynağı Temizleme \<res_name>**: kaynağın tüm hatalarını temizler
 
 ### <a name="test-the-fencing-agent"></a>Sınırlama aracısını test etme
 

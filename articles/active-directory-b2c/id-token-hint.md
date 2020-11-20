@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132083"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951664"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir KIMLIK belirteci ipucu teknik profili tanımlama
 
@@ -129,14 +129,14 @@ Belirteç Verenin kullandığı anahtarın Azure AD B2C ilke anahtarlarınızın
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. Genel Bakış sayfasında, **ilkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
+1. Genel Bakış sayfasında, **ilkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Ilke anahtarlarını** seçin 
 1. **El ile**' yi seçin.
-1. **Ad**için öğesini kullanın `IdTokenHintKey` .  
+1. **Ad** için öğesini kullanın `IdTokenHintKey` .  
    Ön ek `B2C_1A_` otomatik olarak eklenebilir.
 1. **Gizli** kutusunda, daha önce oluşturduğunuz oturum açma anahtarını girin.
-1. **Anahtar kullanımı**için **şifreleme**kullanın.
+1. **Anahtar kullanımı** için **şifreleme** kullanın.
 1. **Oluştur**’u seçin.
 1. Anahtarı oluşturduğunuzdan emin olun `B2C_1A_IdTokenHintKey` .
 
@@ -189,7 +189,7 @@ Bkz. [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-build
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>Adım 1. Otomatik olarak imzalanan sertifika hazırlama
 
-Henüz bir sertifikanız yoksa, bu nasıl yapılır kılavuzunda otomatik olarak imzalanan bir sertifika kullanabilirsiniz. Windows 'da, bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 'ini kullanabilirsiniz.
+Henüz bir sertifikanız yoksa, bu nasıl yapılır kılavuzunda otomatik olarak imzalanan bir sertifika kullanabilirsiniz. Windows 'da, bir sertifika oluşturmak için PowerShell 'in [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 'ini kullanabilirsiniz.
 
 Otomatik olarak imzalanan bir sertifika oluşturmak için bu PowerShell komutunu çalıştırın. `-Subject`Bağımsız değişkeni, uygulamanız için uygun şekilde değiştirin ve kiracı adı Azure AD B2C. Ayrıca, `-NotAfter` sertifika için farklı bir süre sonu belirtmek üzere tarihi de ayarlayabilirsiniz.
 

@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62803bd450db351290bbc12d650d23a4148a4536
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855378"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951205"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama
 
@@ -259,9 +260,9 @@ Azure altyapısını hazırlamak için aşağıdakileri yapın:
 * Windows Server 2016 kullanırken, [Azure bulut tanığını][deploy-cloud-witness]yapılandırmanızı öneririz.
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Scale-Out dosya sunucusu kümesini el ile dağıtma 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Scale-Out dosya sunucusu kümesini el ile dağıtma 
 
-Aşağıdaki kodu yürüterek, Microsoft Scale-Out dosya sunucusu kümesini [Azure 'daki blog depolama alanları doğrudan][ms-blog-s2d-in-azure]bölümünde açıklandığı gibi el ile dağıtabilirsiniz:  
+Aşağıdaki kodu yürüterek, Microsoft Scale-Out dosya sunucusu kümesini [Azure 'daki blog depolama alanları doğrudan][ms-blog-s2d-in-azure]bölümünde açıklandığı gibi el ile dağıtabilirsiniz:  
 
 
 ```powershell
@@ -315,10 +316,10 @@ Yönetilen diskleri kullanmanızı öneririz.
 _**Şekil 1**: yönetilen disklerle Scale-Out dosya sunucusu Kaynak Yöneticisi şablonu için Kullanıcı arabirimi ekranı_
 
 Şablonda şunları yapın:
-1. **VM sayısı** kutusunda, en az **2**sayısını girin.
+1. **VM sayısı** kutusunda, en az **2** sayısını girin.
 2. **VM disk sayısı** kutusuna en az **3** disk sayısı (2 disk + 1 yedek disk = 3 disk) girin.
-3. **SOFS adı** kutusuna SAP Küresel Ana bilgisayar ağ adı, **sapglobalhost**yazın.
-4. **Paylaşma adı** kutusuna, **sapmnt**dosya paylaşma adını girin.
+3. **SOFS adı** kutusuna SAP Küresel Ana bilgisayar ağ adı, **sapglobalhost** yazın.
+4. **Paylaşma adı** kutusuna, **sapmnt** dosya paylaşma adını girin.
 
 ### <a name="use-unmanaged-disks"></a>Yönetilmeyen diskleri kullanma
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844635"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953032"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C bir Python web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -49,25 +49,25 @@ Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
 
 Önkoşulların bir parçası olarak tamamladığınız ikinci öğreticide, Azure AD B2C bir Web uygulaması kaydettiniz. Bu öğreticide kod örneğiyle iletişimi etkinleştirmek için uygulama kaydına bir yanıt URL 'SI (yeniden yönlendirme URI 'SI olarak da bilinir) ekleyin.
 
-Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları**öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
-1. **Web**altında **URI Ekle** bağlantısını seçin ve `http://localhost:5000/getAToken` metin kutusuna girin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+1. **Web** altında **URI Ekle** bağlantısını seçin ve `http://localhost:5000/getAToken` metin kutusuna girin.
 1. **Kaydet**’i seçin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'si**altında, ekleyin `http://localhost:5000/getAToken` .
+1. **Yanıt URL 'si** altında, ekleyin `http://localhost:5000/getAToken` .
 1. **Kaydet**’i seçin.
 * * *
 
@@ -121,7 +121,7 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 ```
 
 > [!WARNING]
-> Kod parçacığı açıklamalarında belirtildiği gibi, uygulama kodunuzda gizli dizileri **düz metin olarak saklamadığımızda** önerilir. Sabit kodlanmış değişken *yalnızca kolaylık sağlamak*için kod örneğinde kullanılır. Bir ortam değişkeni veya Azure Key Vault gibi bir gizli depo kullanmayı deneyin.
+> Kod parçacığı açıklamalarında belirtildiği gibi, uygulama kodunuzda gizli dizileri **düz metin olarak saklamadığımızda** önerilir. Sabit kodlanmış değişken *yalnızca kolaylık sağlamak* için kod örneğinde kullanılır. Bir ortam değişkeni veya Azure Key Vault gibi bir gizli depo kullanmayı deneyin.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
@@ -162,13 +162,13 @@ Bu örnek uygulama kaydolma, oturum açma ve parola sıfırlama 'yı destekler. 
 
     Geçerli bir e-posta adresi kullanın ve doğrulama kodunu kullanarak doğrulamayı gerçekleştirin. Parola ayarlayın. İstenen öznitelikler için değerleri girin.
 
-    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Yerel olarak çalışan Python Flask Web uygulamasını gösteren Web tarayıcısı":::
+    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Azure AD B2C Kullanıcı akışı tarafından görünen kaydolma sayfası":::
 
 1. Azure AD B2C dizininde yerel bir hesap oluşturmak için **Oluştur** ' u seçin.
 
 **Oluştur**' u seçtiğinizde, uygulama, oturum açmış kullanıcının adını gösterir.
 
-:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="Yerel olarak çalışan Python Flask Web uygulamasını gösteren Web tarayıcısı":::
+:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="Oturum açmış kullanıcıyla Python Flask Web uygulamasını gösteren Web tarayıcısı":::
 
 Oturum açma sınamasını yapmak isterseniz, oturum **kapatma** bağlantısını seçin ve **oturum açın** ' ı seçin ve kaydolduğunuzda girdiğiniz e-posta adresi ve parolayla oturum açın.
 

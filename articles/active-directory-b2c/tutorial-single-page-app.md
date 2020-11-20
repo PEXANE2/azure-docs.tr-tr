@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6daf2da5b5bac051ac110ff15ed2c44971300a30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421048"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953109"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
@@ -53,38 +53,38 @@ Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
 
 Önkoşulların bir parçası olarak tamamladığınız [ikinci öğreticide](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa) , Azure AD B2C bir tek sayfalı uygulama kaydettiniz. Bu öğreticide kod örneğiyle iletişimi etkinleştirmek için uygulama kaydına bir yanıt URL 'SI (yeniden yönlendirme URI 'SI olarak da bilinir) ekleyin.
 
-Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations-auth-code-flow"></a>[Uygulama kayıtları (kimlik doğrulama kodu akışı)](#tab/app-reg-auth/)
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C** ' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *spaapp1* uygulamasını seçin.
 1. **Tek sayfalı uygulama** altında **URI Ekle** bağlantısını seçin ve girin `http://localhost:6420` .
-1. **Kaydet** ’i seçin.
-1. **Genel bakış** 'ı seçin.
+1. **Kaydet**’i seçin.
+1. **Genel bakış**'ı seçin.
 1. Tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
 #### <a name="app-registrations-implicit-flow"></a>[Uygulama kayıtları (örtük akış)](#tab/app-reg-implicit/)
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C** ' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *spaapp1* uygulamasını seçin.
 1. **Tek sayfalı uygulama** altında **URI Ekle** bağlantısını seçin ve girin `http://localhost:6420` .
-1. **Örtük izin** ' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** için henüz seçili değilse onay kutularını seçin ve ardından **Kaydet** ' i seçin.
-1. **Genel bakış** 'ı seçin.
+1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** için henüz seçili değilse onay kutularını seçin ve ardından **Kaydet**' i seçin.
+1. **Genel bakış**'ı seçin.
 1. Tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C** ' i arayıp seçin.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *spaapp1* uygulamasını seçin.
 1. **Yanıt URL 'si** altında, ekleyin `http://localhost:6420` .
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 1. Özellikler sayfasında, **uygulama kimliğini** kaydedin. Uygulama KIMLIĞI ' ni, tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde sonraki bir adımda kullanırsınız.
 
 * * *
@@ -141,7 +141,7 @@ Elde edilen kodunuz aşağıdakine benzer görünmelidir:
 
 #### <a name="auth-code-flow-sample"></a>[Kimlik doğrulama kod akışı örneği](#tab/review-auth/)
 
-*authConfig.js* :
+*authConfig.js*:
 
 ```javascript
 const msalConfig = {
@@ -165,7 +165,7 @@ const tokenRequest = {
 };
 ```
 
-*policies.js* :
+*policies.js*:
 
 ```javascript
 const b2cPolicies = {
@@ -189,7 +189,7 @@ const b2cPolicies = {
 }
 ```
 
-*apiConfig.js* :
+*apiConfig.js*:
 
 ```javascript
 const apiConfig = {
@@ -200,7 +200,7 @@ const apiConfig = {
 
 #### <a name="implicit-flow-sample"></a>[Örtük akış örneği](#tab/review-implicit/)
 
-*authConfig.js* :
+*authConfig.js*:
 
 ```javascript
 const msalConfig = {
@@ -224,7 +224,7 @@ const tokenRequest = {
 };
 ```
 
-*policies.js* :
+*policies.js*:
 
 ```javascript
 const b2cPolicies = {
@@ -247,7 +247,7 @@ const b2cPolicies = {
 }
 ```
 
-*apiConfig.js* :
+*apiConfig.js*:
 
 ```javascript
 const apiConfig = {
@@ -304,7 +304,7 @@ Bu örnek uygulama kaydolma, oturum açma ve parola sıfırlama 'yı destekler. 
 
 1. Azure AD B2C dizininde yerel bir hesap oluşturmak için **Oluştur** ' u seçin.
 
-**Oluştur** ' u seçtiğinizde, uygulama, oturum açmış kullanıcının adını gösterir.
+**Oluştur**' u seçtiğinizde, uygulama, oturum açmış kullanıcının adını gösterir.
 
 :::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Oturum açmış kullanıcı ile tek sayfalı uygulamayı gösteren Web tarayıcısı":::
 

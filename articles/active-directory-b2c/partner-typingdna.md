@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: edbc944e77d2483d32574f8044c72fc3d1292e2a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6f62675d27310a15c434baba8e3451a3cd81f058
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840443"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953534"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Azure Active Directory B2C TypingDNA yapılandırma öğreticisi
 
@@ -36,7 +36,7 @@ Bu kılavuzda, Azure Active Directory B2C ' de bir örnek çevrimiçi ödeme uyg
 
 2. Kullanıcı sayfayı gönderdiğinde, TypingDNA kitaplığı kullanıcının yazma özelliğini hesaplacaktır. Bundan sonra, Azure AD B2C işlenen gizli bir metin alanına bilgileri ekleyin. Bu alan CSS ile gizlidir.  
 
-    Örnek, JavaScript ve CSS değişiklikleriyle birlikte [HTML dosyaları içerir](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) ve `api.selfasserted.tdnasignin` ve `api.selfasserted.tdnasignup` içerik tanımları tarafından başvurulur. HTML dosyalarınızı barındırmak için [sayfa içeriğini barındırma](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#hosting-the-page-content) bölümüne bakın.
+    Örnek, JavaScript ve CSS değişiklikleriyle birlikte [HTML dosyaları içerir](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) ve `api.selfasserted.tdnasignin` ve `api.selfasserted.tdnasignup` içerik tanımları tarafından başvurulur. HTML dosyalarınızı barındırmak için [sayfa içeriğini barındırma](./custom-policy-ui-customization.md#hosting-the-page-content) bölümüne bakın.
 
 3. Azure AD B2C artık Kullanıcı kimlik bilgilerini gönderdiğinde talep paketi içinde yazma düzenine sahiptir. Bu verileri TypingDNA REST API uç noktasına geçirmek için bir API (sizinki) çağrısı yapılmalıdır. Bu API, [örneğe dahildir (typingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
 4. Orta katman API 'SI daha sonra, yazma deseninin verilerini TypingDNA REST API 'e geçirir. Kaydolma sırasında kullanıcının mevcut olmadığını onaylamak için [Kullanıcı uç noktası](https://api.typingdna.com/index.html#api-API_Services-GetUser) çağrılır ve sonra kullanıcının ilk yazma modelini kaydetmek için [model kaydet](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) uç noktası çağırılır.
@@ -160,7 +160,7 @@ Bu eşikler kullanım durumunda ayarlanmalıdır.
 
 1. [Typingdna-API arabirimini](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) tercih ettiğiniz barındırma sağlayıcıınızda barındırın
 2. `apiKey` `apiSecret` [TYPINGDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) çözümünde ve Içindeki tüm örnekleri typingdna panonuzdaki kimlik bilgileriyle değiştirin
-3. [Buradakı](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) CORS gereksinimlerini takip eden SAĞLAYıCııNıZDA HTML dosyalarını barındırın.
+3. [Buradakı](./custom-policy-ui-customization.md#3-configure-cors) CORS gereksinimlerini takip eden SAĞLAYıCııNıZDA HTML dosyalarını barındırın.
 4. `api.selfasserted.tdnasignup`Dosyasındaki ve içerik tanımlarının loaduri öğelerini `api.selfasserted.tdnasignin` `TrustFrameworkExtensions.xml` sırasıyla barındırılan HTML dosyalarınızın URI 'siyle değiştirin.
 5. **Azure Portal** Azure AD dikey penceresinde kimlik deneyimi ÇERÇEVESI altında B2C ilke anahtarı oluşturun. Seçeneğini kullanın `Generate` ve bu anahtarı adlandırın `tdnaHashedId` .
 6. İlke dosyalarında Tenantıd 'yi değiştirme
@@ -194,6 +194,6 @@ Bu eşikler kullanım durumunda ayarlanmalıdır.
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [AAD B2C özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [AAD B2C özel ilkeler](./custom-policy-overview.md)
 
-- [AAD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [AAD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

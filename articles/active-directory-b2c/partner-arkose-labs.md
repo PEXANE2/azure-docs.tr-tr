@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170233"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953891"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Arkoo Labs yapılandırma öğreticisi
 
 Bu öğreticide, Arkoo Labs ile Azure AD B2C kimlik doğrulamasını tümleştirmeyi öğrenin. Arkoo Labs, kuruluşlara bot saldırılarına, hesap hileli saldırıları ve sahte hesap açılışlarına karşı yardımcı olur.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
@@ -66,17 +66,17 @@ Bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
 4.  **Ekle**'yi seçin.
 
-5.  **Kaynak grubu**altında **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve ardından **Tamam**' ı seçin.
+5.  **Kaynak grubu** altında  **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve ardından **Tamam**' ı seçin.
 
 6. Depolama hesabı için bir ad girin. Seçtiğiniz ad Azure’da benzersiz olmalı, uzunluğu 3 ile 24 karakter arasında olmalı ve yalnızca sayı ile küçük harf içermelidir.
 
 7. Depolama hesabının konumunu seçin veya varsayılan konumu kabul edin.
 
-8. Diğer tüm varsayılan değerleri kabul et  **&**  >  **Oluştur**' u seçin.
+8. Diğer tüm varsayılan değerleri kabul et   **&**  >  **Oluştur**' u seçin.
 
 9. Depolama hesabı oluşturulduktan sonra  **Kaynağa Git**' i seçin.
 
-#### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+#### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 1. Depolama hesabının genel bakış sayfasında,  **Bloblar**' ı seçin.
 
@@ -88,15 +88,15 @@ Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir UR
 
 1. Menüsünde  **CORS**' yi seçin.
 
-2.   **Izin verilen çıkış noktaları**için girin  `https://your-tenant-name.b2clogin.com` . Kiracı adınızı Azure AD B2C kiracınızın adıyla değiştirin. Örneğin  `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanın.
+2.   **Izin verilen çıkış noktaları** için girin  `https://your-tenant-name.b2clogin.com` . Kiracı adınızı Azure AD B2C kiracınızın adıyla değiştirin. Örneğin  `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanın.
 
-3.  **Izin verilen Yöntemler**için **Al**, **koy**ve **Seçenekler**' i seçin.
+3.  **Izin verilen Yöntemler** için  **Al**, **koy** ve  **Seçenekler**' i seçin.
 
-4. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
+4. **Izin verilen üst bilgiler** için bir yıldız işareti (*) girin.
 
-5.  **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
+5.  **Gösterilen üstbilgiler** için bir yıldız işareti (*) girin.
 
-6. **Maksimum yaş**için 200 girin.
+6. **Maksimum yaş** için 200 girin.
 
    ![Arkoo Labs kaydolma ve oturum açma](media/partner-arkose-labs/signup-signin-arkose.png)
 
@@ -106,9 +106,9 @@ Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir UR
 
 Git Bash 'i indirin ve aşağıdaki adımları izleyin:
 
-1. "Tebrikler!" iletisiyle [bir Web uygulaması oluşturmak](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)için yönergeleri izleyin.İlk PHP uygulamanızı App Service "ekranlar için dağıttık.
+1. "Tebrikler!" iletisiyle [bir Web uygulaması oluşturmak](../app-service/quickstart-php.md)için yönergeleri izleyin.İlk PHP uygulamanızı App Service "ekranlar için dağıttık.
 
-2. Yerel klasörünüzü açın ve **index. php** dosyasını **Verify-Token. php**olarak yeniden adlandırın.
+2. Yerel klasörünüzü açın ve **index. php** dosyasını **Verify-Token. php** olarak yeniden adlandırın.
 
 3. Yeni yeniden adlandırılmış Verify-Token. php dosyasını açın ve:
 
@@ -138,25 +138,25 @@ Git Bash 'i indirin ve aşağıdaki adımları izleyin:
 
 5. index.html dosyasını yukarıda oluşturulan BLOB depolama alanına yükleyin.
 
-6. **Depolama**  >  **kapsayıcısı**  >  **karşıya yükleme**bölümüne gidin.
+6. **Depolama**  >  **kapsayıcısı**  >  **karşıya yükleme** bölümüne gidin.
 
 #### <a name="set-up-azure-ad-b2c"></a>Azure AD B2C ayarlama
 
 > [!NOTE]
 > Henüz bir tane yoksa, Azure aboneliğinize bağlı [bir Azure AD B2C kiracı oluşturun](tutorial-create-tenant.md) .
 
-1. [Buradaki](tutorial-create-user-flows.md)bilgilere göre bir Kullanıcı akışı oluşturun. **Kullanıcı akışını test**etme bölümüne geldiğinizde durun.
+1. [Buradaki](tutorial-create-user-flows.md)bilgilere göre bir Kullanıcı akışı oluşturun. **Kullanıcı akışını test** etme bölümüne geldiğinizde durun.
 
 2. [Kullanıcı akışındaki](user-flow-javascript-overview.md)JavaScript 'i etkinleştirin.
 
-3. Aynı kullanıcı akışı sayfasında özel sayfa URL 'sini etkinleştirin: **Kullanıcı akışına**git  >  **sayfa düzeni**  >  **özel sayfa içeriğini kullan**  =  **Evet**  >  **özel sayfa URL 'si Ekle**.
+3. Aynı kullanıcı akışı sayfasında özel sayfa URL 'sini etkinleştirin: **Kullanıcı akışına** git  >  **sayfa düzeni**  >  **özel sayfa içeriğini kullan**  =  **Evet**  >  **özel sayfa URL 'si Ekle**.
 Bu özel sayfa URL 'SI, BLOB depolama içindeki index.html dosyasının konumundan alınır  
 
    ![Arkoo Labs depolama URL 'sini gösteren ekran görüntüsü](media/partner-arkose-labs/arkose-storage-url.png)
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
-1. Azure AD B2C kiracıyı açın ve **ilkeler**altında **Kullanıcı akışları**' nı seçin.
+1. Azure AD B2C kiracıyı açın ve **ilkeler** altında **Kullanıcı akışları**' nı seçin.
 
 2. Daha önce oluşturduğunuz Kullanıcı akışınızı seçin.
 

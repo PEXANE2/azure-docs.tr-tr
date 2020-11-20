@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0edd85ea4478ac95ea854b73717056d52a9098b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f7f6d643586897924c5efaddd7d1f229ba8d85dc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647571"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952463"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory için self servis kaydolma nedir?
 
@@ -76,6 +76,12 @@ Bu iki parametre, self servis kaydolma üzerinde daha kesin denetim tanımlamak 
 Aşağıdaki akış çizelgesi, bu parametrelerin farklı birleşimlerini ve dizin ve self servis kaydolma koşullarını açıklamaktadır.
 
 ![Self Servis kaydolma denetimlerinin akış çizelgesi](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+
+Bu ayarın ayrıntıları, Get-MsolCompanyInformation aşağıdaki PowerShell cmdlet 'i tarafından alınabilir. Bu konuda daha fazla bilgi edinmek için bkz. [Get-Msolcompanyınformation](/powershell/module/msonline/get-msolcompanyinformation?view=azureadps-1.0)
+
+```powershell
+    Get-MsolCompanyInformation | Select AllowEmailVerifiedUsers, AllowAdHocSubscriptions
+```
 
 Bu parametrelerin nasıl kullanılacağına ilişkin daha fazla bilgi ve örnekler için bkz. [set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 

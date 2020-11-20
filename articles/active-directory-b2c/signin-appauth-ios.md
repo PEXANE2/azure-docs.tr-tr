@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384949"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953313"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS uygulaması kullanarak oturum açma
 
 Microsoft kimlik platformu OAuth2 ve OpenID Connect gibi açık standartlar kullanır. Açık bir standart protokol kullanmak, hizmetlerimizle tümleştirilecek bir kitaplığı seçerken daha fazla geliştirici seçeneği sunar. Geliştiricilere Microsoft Identity platformu 'na bağlanan uygulamalar yazma konusunda yardımcı olmak için bu izlenecek yolu ve diğer diğerlerini sağladık. [RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) uygulayan çoğu kitaplık Microsoft Identity platformu 'na bağlanabilir.
 
 > [!WARNING]
-> Microsoft üçüncü taraf kitaplıklar için düzeltmeler sağlamaz ve bu kitaplıkların gözden geçirilmesini yapılmamış demektir. Bu örnek, Azure AD B2C ile temel senaryolarda uyumluluk için test edilmiş AppAuth adlı bir üçüncü taraf kitaplığı kullanmaktır. Sorunlar ve özellik istekleri kitaplığın açık kaynaklı projesine yönlendirilmelidir. Daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)bakın.
+> Microsoft üçüncü taraf kitaplıklar için düzeltmeler sağlamaz ve bu kitaplıkların gözden geçirilmesini yapılmamış demektir. Bu örnek, Azure AD B2C ile temel senaryolarda uyumluluk için test edilmiş AppAuth adlı bir üçüncü taraf kitaplığı kullanmaktır. Sorunlar ve özellik istekleri kitaplığın açık kaynaklı projesine yönlendirilmelidir. Daha fazla bilgi için [Bu makaleye](../active-directory/develop/reference-v2-libraries.md)bakın.
 >
 >
 
@@ -45,8 +45,8 @@ Ayrıca, daha sonraki bir adımda kullanmak üzere özel yeniden yönlendirme UR
 ## <a name="create-your-user-flows"></a>Kullanıcı akışlarınızı oluşturun
 Azure AD B2C, her kullanıcı deneyimi bir [Kullanıcı akışı](user-flow-overview.md)tarafından tanımlanır. Bu uygulama bir kimlik deneyimi içerir: Birleşik bir oturum açma ve kaydolma. Kullanıcı akışını oluştururken şunları yaptığınızdan emin olun:
 
-* **Kaydolma öznitelikleri**altında, öznitelik **görünen adını**seçin.  Başka öznitelikler de seçebilirsiniz.
-* **Uygulama talepleri**bölümünde, talep **görünen adını** ve **kullanıcının nesne kimliğini**seçin. Diğer talepler ' i de seçebilirsiniz.
+* **Kaydolma öznitelikleri** altında, öznitelik **görünen adını** seçin.  Başka öznitelikler de seçebilirsiniz.
+* **Uygulama talepleri** bölümünde, talep **görünen adını** ve **kullanıcının nesne kimliğini** seçin. Diğer talepler ' i de seçebilirsiniz.
 * Her Kullanıcı akışının **adını** oluşturduktan sonra kopyalayın. Kullanıcı akışını kaydettiğinizde, Kullanıcı akış adınızın öneki vardır `b2c_1_` .  Kullanıcı akış adının daha sonra olması gerekir.
 
 Kullanıcı akışlarınızı oluşturduktan sonra uygulamanızı oluşturmaya hazırsınız demektir.

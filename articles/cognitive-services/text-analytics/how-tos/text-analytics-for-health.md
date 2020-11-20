@@ -8,38 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: e7f017c1f3dc189af2b0fc053912decca3459478
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363876"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952769"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
-
-> [!NOTE]
-> Sistem durumu kapsayıcısı için Metin Analizi yakın zamanda güncelleştirildi. Son değişiklikler hakkında daha fazla [bilgi için bkz. yenilikler.](../whats-new.md) Listelenen güncelleştirmeleri kullanmak için en son kapsayıcıyı çekmeyi unutmayın.
 
 > [!IMPORTANT] 
 > Sistem durumu Metin Analizi, "olduğu gıbı" ve "tüm hatalarıyla bırlıkte" sağlanmış bir önizleme özelliğidir. Bu nedenle, **sistem durumu için metin analizi (Önizleme) herhangi bir üretim kullanımı için uygulanmamalıdır veya dağıtılmamalıdır.** Sağlık durumu için Metin Analizi, bir tıbbi cihaz, klinik destek, tanılama aracı ya da tanılama, sağlama, azaltma, işleme veya önlemeye yönelik başka bir teknoloji veya Microsoft tarafından bu amaçla kullanılması amaçlanan bir lisans ya da hak sağlanmaz. Bu özellik, profesyonel tıp önerisi veya sağlık görüşlerine, tanılama, işleme ya da sağlık uzmanı 'nın klinik yargılarına veya bu şekilde kullanılmamalıdır. Müşteri, sistem durumu için Metin Analizi herhangi bir kullanım işleminden yalnızca sorumludur. Microsoft, sağlık veya yetenek ile bağlantılı olarak belirtilen herhangi bir malzeme için Metin Analizi, herhangi bir kişinin sistem durumunu veya tıbbi gereksinimlerini karşılamasını garanti etmez. 
 
 
-Sistem durumu Metin Analizi, Doktor notları, disşarj özetleri, klinik belgeler ve elektronik sistem durumu kayıtları gibi yapılandırılmamış metinlerden ilgili tıbbi bilgileri çıkaran ve etiketleyen kapsayıcılı bir hizmettir.  
+Sistem durumu Metin Analizi, Doctor 'ın notları, disşarj özetleri, klinik belgeler ve elektronik sistem durumu kayıtları gibi yapılandırılmamış metinlerden ilgili tıbbi bilgileri çıkaran ve etiketleyen Metin Analizi API'si hizmetinin bir özelliğidir.  Bu hizmeti kullanmanın iki yolu vardır: 
+
+* Web tabanlı API (zaman uyumsuz) 
+* Bir Docker kapsayıcısı (zaman uyumlu)   
 
 ## <a name="features"></a>Özellikler
 
-Sistem durumu kapsayıcısı için Metin Analizi Şu anda adlandırılmış varlık tanıma (NER), ilişki ayıklama, varlık olumsuzlama ve kendi geliştirme ortamınızda, belirli güvenlik ve veri idare gereksinimlerinizi karşılayan Ingilizce metin için varlık bağlama işlemini gerçekleştiriyor.
+Sistem durumu için Metin Analizi, adlandırılmış varlık tanıma (NER), ilişki ayıklama, varlık olumsuzlama ve Ingilizce metin üzerinde varlık bağlantısı kurarak yapılandırılmamış klinik ve Biyotıp metninde Öngörüler elde etmeyi sağlar.
 
-#### <a name="named-entity-recognition"></a>[Adlandırılmış varlık tanıma](#tab/ner)
+### <a name="named-entity-recognition"></a>[Adlandırılmış varlık tanıma](#tab/ner)
 
 Adlandırılmış varlık tanıma, bir veya daha fazla anlamsal tür ile ilişkilendirilebilen (örn. tanılama, yollara adı, belirti/işaret veya yaş gibi), yapılandırılmamış metinde belirtilen kelimeleri ve tümceleri algılar.
 
 > [!div class="mx-imgBorder"]
 > ![Sağlık durumu](../media/ta-for-health/health-named-entity-recognition.png)
 
-#### <a name="relation-extraction"></a>[İlişki ayıklama](#tab/relation-extraction)
+### <a name="relation-extraction"></a>[İlişki ayıklama](#tab/relation-extraction)
 
 İlişki ayıklama metinde bahsedilen kavramlar arasındaki anlamlı bağlantıları tanımlar. Örneğin, bir koşul adı bir saat ile ilişkilendirerek bir "koşul süresi" ilişkisi bulunur. 
 
@@ -47,7 +48,7 @@ Adlandırılmış varlık tanıma, bir veya daha fazla anlamsal tür ile ilişki
 > ![Sağlık YENIDEN](../media/ta-for-health/health-relation-extraction.png)
 
 
-#### <a name="entity-linking"></a>[Varlık Bağlama](#tab/entity-linking)
+### <a name="entity-linking"></a>[Varlık Bağlama](#tab/entity-linking)
 
 Varlık bağlama, metinde bahsedilen adlandırılmış varlıkları, önceden tanımlanmış bir kavram veritabanında bulunan kavramlara ilişkilendirerek ayrı varlıkların ayırt düzeyini ortadan kaldırarak ayırt ediyor. Örneğin, Birleşik Tıbbi dil sistemi (UMLS).
 
@@ -56,7 +57,7 @@ Varlık bağlama, metinde bahsedilen adlandırılmış varlıkları, önceden ta
 
 Sistem durumu Metin Analizi Birleşik Tıbbi dil sistemi ([Umls](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) Metaeşanlamlılar bilgi kaynağında bulunan sağlık ve biotıbbi sözcük dağarcıklarını bağlamayı destekler.
 
-#### <a name="negation-detection"></a>[Algılama Olumsuzlaştırma](#tab/negation-detection) 
+### <a name="negation-detection"></a>[Algılama Olumsuzlaştırma](#tab/negation-detection) 
 
 Tıbbi içeriğin anlamı, yanlış tanılanıyor durumunda önemli bir engel olabilecek Olumsuzlaştırma gibi değiştiricilerin büyük ölçüde etkilenir. Sistem durumu Metin Analizi, metinde bahsedilen farklı varlıkların algılanmasını desteklemiyor. 
 
@@ -67,173 +68,189 @@ Tıbbi içeriğin anlamı, yanlış tanılanıyor durumunda önemli bir engel ol
 
 Desteklenen varlıkların tam listesi için sistem durumu için Metin Analizi tarafından döndürülen [varlık kategorilerine](../named-entity-types.md?tabs=health) bakın.
 
-## <a name="supported-languages"></a>Desteklenen diller
+### <a name="supported-languages-and-regions"></a>Desteklenen diller ve bölgeler
 
-Sistem durumu Metin Analizi yalnızca Ingilizce dil belgelerini destekler.
+Sistem durumu Metin Analizi yalnızca Ingilizce dil belgelerini destekler. 
 
-## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
+Sistem durumu barındırılan Web API 'SI için Metin Analizi Şu anda yalnızca şu bölgelerde kullanılabilir: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.
 
-Kapsayıcıya erişim istemek için bilişsel [Hizmetler kapsayıcıları istek formunu](https://aka.ms/csgate) doldurun ve iletin. Şu anda, sistem durumu kullanımı için Metin Analizi faturalandırılmaz. 
+## <a name="request-access-to-the-public-preview"></a>Genel önizlemeye erişim isteyin
 
-[!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
+Sistem durumu genel önizlemesi için Metin Analizi erişim istemek için bilişsel [Hizmetler istek formunu](https://aka.ms/csgate) doldurun ve iletin. Sistem durumu kullanımı için Metin Analizi faturalandırılmaz. 
 
-[!INCLUDE [Authenticate to the container registry](../../../../includes/cognitive-services-containers-access-registry.md)]
+Form, siz, şirketiniz ve kapsayıcısını kullanacağınız kullanıcı senaryosu hakkında bilgi ister. Formu gönderdikten sonra, Azure bilişsel hizmetler ekibi bunu gözden geçirir ve bir karar vererek size e-posta ile gönderilir.
 
-## <a name="install-the-container"></a>Kapsayıcıyı yükler
+> [!IMPORTANT]
+> * Formunda, bir Azure aboneliği KIMLIĞIYLE ilişkili bir e-posta adresi kullanmanız gerekir.
+> * Kullandığınız Azure kaynağının, onaylanan Azure abonelik KIMLIĞIYLE oluşturulmuş olması gerekir. 
+> * Microsoft 'tan uygulamanızın durumuyla ilgili güncelleştirmeler için e-postanızı (hem gelen kutusu hem de önemsiz klasörler) denetleyin.
 
-Kapsayıcıyı yükleyip çalıştırmak için birden çok yol vardır. 
+## <a name="using-the-docker-container"></a>Docker kapsayıcısını kullanma 
 
-- Bir Metin Analizi kaynağı oluşturmak için [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) kullanın ve kapsayıcınızı almak Için Docker 'ı kullanın.
-- Kaynak dağıtımı kapsayıcı yapılandırmasını otomatikleştirmek için aşağıdaki PowerShell ve [Azure CLI](/cli/azure/?view=azure-cli-latest) betikleri kullanın.
+Kendi ortamınızda sistem durumu kapsayıcısı için Metin Analizi çalıştırmak için, [kapsayıcıyı indirmek ve yüklemek üzere aşağıdaki yönergeleri](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare)izleyin.
 
-### <a name="install-the-container-using-azure-web-app-for-containers"></a>Azure Kapsayıcılar için Web App kullanarak kapsayıcıyı yüklerken
+## <a name="using-the-client-library"></a>İstemci kitaplığını kullanma
 
-Azure [kapsayıcılar için Web App](https://azure.microsoft.com/services/app-service/containers/) , bulutta kapsayıcılar çalıştırmak için adanmış bir Azure kaynağıdır. Otomatik ölçeklendirme, Docker kapsayıcıları ve Docker Compose desteği, HTTPS desteği ve çok daha fazlası gibi kullanıma hazır özellikleri getirir.
-
-> [!NOTE]
-> Azure Web App 'i kullanarak bir etki alanını otomatik olarak şu biçimde alacaksınız `<appservice_name>.azurewebsites.net`
-
-Aboneliğinizi ve HTTPS üzerinden kapsayıcı görüntüsünü kullanarak bir Kapsayıcılar için Web App oluşturmak için Azure CLı kullanarak bu PowerShell betiğini çalıştırın. İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.
-
-```bash
-$subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
-$resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
-                                           #    and AppSerivce to be attached to.
-$resources_location = ""                   # This is the location you wish the AppServicePlan to be deployed to.
-                                           #    You can use the "az account list-locations -o table" command to
-                                           #    get the list of available locations and location code names.
-$appservice_plan_name = ""                 # This is the AppServicePlan name you wish to have.
-$appservice_name = ""                      # This is the AppService resource name you wish to have.
-$TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
-$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
-
-az login
-az account set -s $subscription_name
-az appservice plan create -n $appservice_plan_name -g $resource_group_name --is-linux -l $resources_location --sku P3V2
-az webapp create -g $resource_group_name -p $appservice_plan_name -n $appservice_name -i $DOCKER_IMAGE_NAME -s $DOCKER_REGISTRY_SERVER_USERNAME -w $DOCKER_REGISTRY_SERVER_PASSWORD
-az webapp config appsettings set -g $resource_group_name -n $appservice_name --settings Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
-
-# Once deployment complete, the resource should be available at: https://<appservice_name>.azurewebsites.net
-```
-
-### <a name="install-the-container-using-azure-container-instance"></a>Azure Container Instance kullanarak kapsayıcıyı yükler
-
-Ayrıca, dağıtımı kolaylaştırmak için bir Azure Container Instance (acı) kullanabilirsiniz. ACI, yönetilen, sunucusuz bir Azure ortamında Docker kapsayıcılarını isteğe bağlı olarak çalıştırmanıza olanak tanıyan bir kaynaktır. 
-
-Azure portal kullanarak ACI kaynağını dağıtma adımları için bkz. [Azure Container Instances nasıl kullanılır](text-analytics-how-to-use-container-instances.md) . Ayrıca, kapsayıcı görüntüsünü kullanarak aboneliğinizde bir ACI oluşturacak olan Azure CLı kullanarak aşağıdaki PowerShell betiğini de kullanabilirsiniz.  İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.  ACI kaynağı başına en fazla CPU sayısı sınırı nedeniyle, her istek için 5 ' ten fazla büyük belge (yaklaşık 5000 karakter) göndermeyi düşünüyorsanız bu seçeneği seçmeyin.
-Kullanılabilirlik bilgileri için [acı bölgesel destek](../../../container-instances/container-instances-region-availability.md) makalesine bakın. 
-
-> [!NOTE] 
-> Azure Container Instances Builtin Domains için HTTPS desteği eklemeyin. HTTPS gerekiyorsa, sertifika oluşturma ve bir etki alanını kaydetme dahil olmak üzere el ile yapılandırmanız gerekir. Bunu, aşağıdaki NGıNX ile yapmak için yönergeler bulabilirsiniz.
-
-```bash
-$subscription_name = ""                    # The name of the subscription you want you resource to be created on.
-$resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
-                                           # and AppService to be attached to.
-$resources_location = ""                   # This is the location you wish the web app to be deployed to.
-                                           # You can use the "az account list-locations -o table" command to
-                                           # Get the list of available locations and location code names.
-$azure_container_instance_name = ""        # This is the AzureContainerInstance name you wish to have.
-$TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
-$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
-$DNS_LABEL = ""                            # This is the DNS label name you wish your ACI will have
-$DOCKER_REGISTRY_LOGIN_SERVER = "containerpreview.azurecr.io"
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
-
-az login
-az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
-
-# Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
-```
-
-### <a name="secure-aci-connectivity"></a>Güvenli acı bağlantısı
-
-Varsayılan olarak, kapsayıcı API 'SI ile acı kullanılırken bir güvenlik sağlanmaz. Bunun nedeni genellikle kapsayıcıların bir ağ köprüsü tarafından dışından korunan Pod 'ın bir parçası olarak çalışacaktır. Ancak, kapsayıcı uç noktasını özel olarak tutarak bir kapsayıcıyı öne bakan bir bileşenle değiştirebilirsiniz. Aşağıdaki örneklerde, HTTPS/SSL ve istemci sertifikası kimlik doğrulamasını desteklemek için bir giriş ağ geçidi olarak [NGINX](https://www.nginx.com) kullanılmaktadır.
-
-> [!NOTE]
-> NGıNX açık kaynaklı, yüksek performanslı bir HTTP sunucusudur ve proxy 'dir. Bir NGıNX kapsayıcısı, tek bir kapsayıcı için bir TLS bağlantısını sonlandırmak üzere kullanılabilir. Daha karmaşık NGıNX girişi tabanlı TLS sonlandırma çözümleri de mümkündür.
-
-#### <a name="set-up-nginx-as-an-ingress-gateway"></a>Giriş ağ geçidi olarak NGıNX ayarlama
-
-NGıNX, çalışma zamanında özellikleri etkinleştirmek için [yapılandırma dosyalarını](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) kullanır. Başka bir hizmet için TLS sonlandırmasını etkinleştirmek üzere TLS bağlantısını sonlandırmak ve  `proxy_pass` hizmet için bir adres belirtmek üzere BIR SSL sertifikası belirtmeniz gerekir. Aşağıda bir örnek verilmiştir.
+Metin Analizi istemci kitaplığının en son sürümü, istemci nesnesi kullanarak sistem durumu için Metin Analizi çağırmanızı sağlar. Başvuru belgelerine başvurun ve GitHub 'daki örneklere bakın:
+* [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+* [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+* [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
 
 
-> [!NOTE]
-> `ssl_certificate` NGıNX kapsayıcısının yerel dosya sistemi içinde bir yol belirtilmesini bekler. İçin belirtilen adres, `proxy_pass` NGıNX kapsayıcısının ağı içinden kullanılabilir olmalıdır.
 
-NGıNX kapsayıcısı, içindeki içindeki tüm dosyaları `_.conf_` `/etc/nginx/conf.d/` http yapılandırma yoluna yükleyecek.
+## <a name="sending-a-rest-api-request"></a>REST API isteği gönderiliyor 
 
-```nginx
-server {
-  listen              80;
-  return 301 https://$host$request_uri;
-}
-server {
-  listen              443 ssl;
-  # replace with .crt and .key paths
-  ssl_certificate     /cert/Local.crt;
-  ssl_certificate_key /cert/Local.key;
+### <a name="preparation"></a>Hazırlık
 
-  location / {
-    proxy_pass http://cognitive-service:5000;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Real-IP  $remote_addr;
-  }
+Sistem durumu Metin Analizi, üzerinde çalışmaya daha az miktarda metin verdiğiniz zaman daha yüksek kaliteli bir sonuç üretir. Bu, daha büyük metin blokları üzerinde daha iyi sonuç veren anahtar tümceciği ayıklama gibi bazı diğer Metin Analizi özelliklerden daha tersidir. Bu işlemlerden en iyi sonuçları elde etmek için, girişleri uygun şekilde yeniden ayarlamayı göz önünde bulundurun.
+
+Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil. 
+
+Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Bir koleksiyonda izin verilen en fazla belge sayısı için kavramlar bölümündeki [veri limitleri](../concepts/data-limits.md?tabs=version-3) makalesine bakın. Koleksiyon, istek gövdesinde gönderilir.
+
+### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>Barındırılan zaman uyumsuz Web API 'SI için API isteğini yapılandırma
+
+Hem kapsayıcı hem de barındırılan Web API 'SI için bir POST isteği oluşturmanız gerekir. İstediğiniz bölgedeki barındırılan Web API 'sine hızlı bir şekilde bir POST isteği oluşturmak ve göndermek için [sistem durumu BARıNDıRıLAN API başvurusu için metin analizi](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) [Postman](text-analytics-how-to-call-api.md)'ı, bir kıvrımlı komutu veya **API test konsolunu** kullanabilirsiniz. 
+
+Aşağıda, sistem sağlığı API isteğinin GÖNDERI gövdesinde Metin Analizi eklenmiş bir JSON dosyası örneği verilmiştir:
+
+```json
+example.json
+
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Subject was administered 100mg remdesivir intravenously over a period of 120 min"
+    }
+  ]
 }
 ```
 
-#### <a name="example-docker-compose-file"></a>Örnek Docker Compose dosyası
+### <a name="hosted-asynchronous-web-api-response"></a>Barındırılan zaman uyumsuz Web API yanıtı 
 
-Aşağıdaki örnek, NGıNX ve sistem durumu kapsayıcıları için Metin Analizi dağıtmak üzere bir [Docker Compose](https://docs.docker.com/compose/reference/overview) dosyasının nasıl oluşturulacağını gösterir:
+Bu POST isteği, zaman uyumsuz işlem için bir iş göndermek üzere kullanıldığından, yanıt nesnesinde bir metin yok.  Ancak, iş ve çıkış durumunu denetlemek için bir GET isteği oluşturmak üzere yanıt üst bilgilerinde işlem konumu ANAHTARıNıN değeri gereklidir.  POST isteğinin yanıt üstbilgisindeki Operation-location ANAHTARıNıN değerine bir örnek aşağıda verilmiştir:
 
-```yaml
-version: "3.7"
-services:
-  cognitive-service:
-    image: {IMAGE_ID}
-    ports:
-      - 5000:5000
-    environment:
-      - eula=accept
-      - billing={ENDPOINT_URI}
-      - apikey={API_KEY}
-      - Logging:Disk:Format=json
-    volumes:
-        # replace with path to logs folder
-      - <path-to-logs-folder>:/output
-  nginx:
-    image: nginx
-    ports:
-      - 443:443
-    volumes:
-        # replace with paths for certs and conf folders
-      - <path-to-certs-folder>:/cert
-      - <path-to-conf-folder>:/etc/nginx/conf.d/
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/health/jobs/<jobID>`
+
+İş durumunu denetlemek için POST yanıtının Operation-location anahtar üstbilgisi değerindeki URL 'ye bir GET isteği yapın.  Aşağıdaki durumlar, bir işin durumunu yansıtmak için kullanılır: `NotStarted` , `running` ,,,, `succeeded` `failed` `rejected` `cancelling` , ve `cancelled` .  
+
+`NotStarted` `running` Get ISTEĞIYLE aynı URL 'ye BIR Delete http çağrısını içeren veya durumu ile bir işi iptal edebilirsiniz.  [Sistem durumu BARıNDıRıLAN API başvurusu için metin analizi](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob), silme çağrısı hakkında daha fazla bilgi bulunabilir.
+
+Bir GET isteğinin yanıtı örneği aşağıda verilmiştir.  Çıkışın, `expirationDateTime` çıktının temizlenmeden sonra geçen süre (örneğin, işin oluşturulduğu zamandan itibaren 24 saat) geçtiğinde, çıktının alınması için kullanılabilir olduğunu lütfen unutmayın.
+
+```json
+{
+    "jobId": "b672c6f5-7c0d-4783-ba8c-4d0c47213454",
+    "lastUpdateDateTime": "2020-11-18T01:45:00Z",
+    "createdDateTime": "2020-11-18T01:44:55Z",
+    "expirationDateTime": "2020-11-19T01:44:55Z",
+    "status": "succeeded",
+    "errors": [],
+    "results": {
+        "documents": [
+            {
+                "id": "1",
+                "entities": [
+                    {
+                        "offset": 25,
+                        "length": 5,
+                        "text": "100mg",
+                        "category": "Dosage",
+                        "confidenceScore": 1.0,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 31,
+                        "length": 10,
+                        "text": "remdesivir",
+                        "category": "MedicationName",
+                        "confidenceScore": 1.0,
+                        "isNegated": false,
+                        "links": [
+                            {
+                                "dataSource": "UMLS",
+                                "id": "C4726677"
+                            },
+                            {
+                                "dataSource": "MSH",
+                                "id": "C000606551"
+                            },
+                            {
+                                "dataSource": "NCI",
+                                "id": "C152185"
+                            },
+                            {
+                                "dataSource": "NCI_FDA",
+                                "id": "3QKI37EEHE"
+                            }
+                        ]
+                    },
+                    {
+                        "offset": 42,
+                        "length": 13,
+                        "text": "intravenously",
+                        "category": "MedicationRoute",
+                        "confidenceScore": 1.0,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 56,
+                        "length": 4,
+                        "text": "over",
+                        "category": "Time",
+                        "confidenceScore": 0.87,
+                        "isNegated": false
+                    },
+                    {
+                        "offset": 73,
+                        "length": 7,
+                        "text": "120 min",
+                        "category": "Time",
+                        "confidenceScore": 0.99,
+                        "isNegated": false
+                    }
+                ],
+                "relations": [
+                    {
+                        "relationType": "DosageOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/0",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "RouteOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/2",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "TimeOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/3",
+                        "target": "#/results/documents/0/entities/1"
+                    },
+                    {
+                        "relationType": "TimeOfMedication",
+                        "bidirectional": false,
+                        "source": "#/results/documents/0/entities/4",
+                        "target": "#/results/documents/0/entities/1"
+                    }
+                ],
+                "warnings": []
+            }
+        ],
+        "errors": [],
+        "modelVersion": "2020-09-03"
+    }
+}
 ```
 
-Bu Docker Compose dosyasını başlatmak için, dosyanın kök düzeyindeki bir konsoldan aşağıdaki komutu yürütün:
 
-```bash
-docker-compose up
-```
+### <a name="structure-the-api-request-for-the-container"></a>Kapsayıcı için API isteğini yapılandırma
 
-Daha fazla bilgi için, [NGıNX SSL sonlandırmasına](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)ilişkin NGINX belgeleri bölümüne bakın.
-
-
-## <a name="example-api-request"></a>Örnek API isteği
-Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar.  Ayrıca, bir kapsayıcı içinde, **tanıtımı** kapsayıcının uç noktasına eklenerek erişilebilen bir görselleştirme aracı sağladık, örneğin:
-
-```bash
-http://<serverURL>:5000/demo
-```
-
-Değişkeni uygun değerle değiştirerek dağıttığınız kapsayıcıya bir sorgu göndermek için aşağıdaki örnek kıvrımlı isteği kullanın `serverURL` .
+Dağıttığınız kapsayıcıya bir sorgu göndermek için [Postman](text-analytics-how-to-call-api.md) veya örnek kıvrımlı isteği kullanabilirsiniz ve `serverURL` değişkeni uygun değerle değiştirin.  Kapsayıcının URL 'sindeki API sürümünün barındırılan API 'den farklı olduğunu aklınızda yapın.
 
 ```bash
 curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
@@ -261,9 +278,9 @@ example.json
 }
 ```
 
-## <a name="api-response-body"></a>API yanıt gövdesi
+### <a name="container-response-body"></a>Kapsayıcı yanıt gövdesi
 
-Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir örneğidir:
+Aşağıdaki JSON, Kapsayıcılı zaman uyumlu çağrıdan sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir örneğidir:
 
 ```json
 {
@@ -273,81 +290,65 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
             "entities": [
                 {
                     "id": "0",
-                    "offset": 17,
-                    "length": 11,
-                    "text": "itchy sores",
-                    "category": "SymptomOrSign",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "entities": [
-                {
-                    "id": "0",
-                    "offset": 11,
-                    "length": 4,
-                    "text": "50mg",
+                    "offset": 25,
+                    "length": 5,
+                    "text": "100mg",
                     "category": "Dosage",
                     "confidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
                     "id": "1",
-                    "offset": 16,
-                    "length": 8,
-                    "text": "benadryl",
+                    "offset": 31,
+                    "length": 10,
+                    "text": "remdesivir",
                     "category": "MedicationName",
                     "confidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
                             "dataSource": "UMLS",
-                            "id": "C0700899"
-                        },
-                        {
-                            "dataSource": "CHV",
-                            "id": "0000044903"
-                        },
-                        {
-                            "dataSource": "MMSL",
-                            "id": "899"
+                            "id": "C4726677"
                         },
                         {
                             "dataSource": "MSH",
-                            "id": "D004155"
+                            "id": "C000606551"
                         },
                         {
                             "dataSource": "NCI",
-                            "id": "C300"
+                            "id": "C152185"
                         },
                         {
-                            "dataSource": "NCI_DTP",
-                            "id": "NSC0033299"
-                        },
-                        {
-                            "dataSource": "PDQ",
-                            "id": "CDR0000039163"
-                        },
-                        {
-                            "dataSource": "PSY",
-                            "id": "05760"
-                        },
-                        {
-                            "dataSource": "RXNORM",
-                            "id": "203457"
+                            "dataSource": "NCI_FDA",
+                            "id": "3QKI37EEHE"
                         }
                     ]
                 },
                 {
                     "id": "2",
-                    "offset": 32,
-                    "length": 11,
-                    "text": "twice daily",
-                    "category": "Frequency",
+                    "offset": 42,
+                    "length": 13,
+                    "text": "intravenously",
+                    "category": "MedicationRoute",
                     "confidenceScore": 1.0,
+                    "isNegated": false
+                },
+                {
+                    "id": "3",
+                    "offset": 56,
+                    "length": 4,
+                    "text": "over",
+                    "category": "Time",
+                    "confidenceScore": 0.87,
+                    "isNegated": false
+                },
+                {
+                    "id": "4",
+                    "offset": 73,
+                    "length": 7,
+                    "text": "120 min",
+                    "category": "Time",
+                    "confidenceScore": 0.99,
                     "isNegated": false
                 }
             ],
@@ -355,26 +356,38 @@ Aşağıdaki JSON, sistem durumu API 'SI yanıt gövdesi için Metin Analizi bir
                 {
                     "relationType": "DosageOfMedication",
                     "bidirectional": false,
-                    "source": "#/documents/1/entities/0",
-                    "target": "#/documents/1/entities/1"
+                    "source": "#/documents/0/entities/0",
+                    "target": "#/documents/0/entities/1"
                 },
                 {
-                    "relationType": "FrequencyOfMedication",
+                    "relationType": "RouteOfMedication",
                     "bidirectional": false,
-                    "source": "#/documents/1/entities/2",
-                    "target": "#/documents/1/entities/1"
+                    "source": "#/documents/0/entities/2",
+                    "target": "#/documents/0/entities/1"
+                },
+                {
+                    "relationType": "TimeOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/0/entities/3",
+                    "target": "#/documents/0/entities/1"
+                },
+                {
+                    "relationType": "TimeOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/0/entities/4",
+                    "target": "#/documents/0/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-07-24"
+    "modelVersion": "2020-09-03"
 }
 ```
 
 ### <a name="negation-detection-output"></a>Algılama çıkışının Olumsuzlaştırma
 
-Değilleme algılama kullanılırken, bazı durumlarda tek bir olumsuzlama bir kez birkaç terim ele alabilir. Tanınan bir varlığın değilleme, JSON çıktısında bayrağın Boolean değeri tarafından temsil edilir `isNegated` :
+Değilleme algılama kullanılırken, bazı durumlarda tek bir olumsuzlama bir kez birkaç terim ele alabilir. Tanınan bir varlığın değilleme, JSON çıktısında bayrağın Boolean değeri tarafından temsil edilir `isNegated` , örneğin:
 
 ```json
 {

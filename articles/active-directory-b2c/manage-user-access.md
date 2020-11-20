@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51a66d74750afa6c46dba7fa442477e85effb2d6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102060"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951630"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Kullanıcı erişimini yönetme
 
@@ -36,7 +36,7 @@ Bir Kullanıcı küçük olarak tanımlanmışsa, Azure AD B2C Kullanıcı akı�
 
 - **İmzalı BIR JWT id_token uygulamaya geri gönderin**: Kullanıcı dizine kaydedilir ve uygulamaya bir belirteç döndürülür. Uygulama daha sonra iş kuralları uygulanarak devam eder. Örneğin, uygulama bir ebeveyn onay işlemiyle devam edebilir. Bu yöntemi kullanmak için, uygulamadan **Agegroup** ve **consentProvidedForMinor** taleplerini almayı seçin.
 
-- **Uygulamaya imzasız BIR JSON belirteci gönderin**: Azure AD B2C, uygulamayı kullanıcının küçük olduğunu ve kullanıcının ebeveyn onayı durumunu sağladığını bildirir. Uygulama daha sonra iş kuralları uygulanarak devam eder. JSON belirteci, uygulama ile başarılı bir kimlik doğrulamasını tamamlamaz. Uygulamanın kimliği, **e-posta**, **Agegroup**ve **consentProvidedForMinor**içerebilen JSON **belirtecine dahil edilen**talebe göre kimliği doğrulanmamış kullanıcıyı işlemesi gerekir.
+- **Uygulamaya imzasız BIR JSON belirteci gönderin**: Azure AD B2C, uygulamayı kullanıcının küçük olduğunu ve kullanıcının ebeveyn onayı durumunu sağladığını bildirir. Uygulama daha sonra iş kuralları uygulanarak devam eder. JSON belirteci, uygulama ile başarılı bir kimlik doğrulamasını tamamlamaz. Uygulamanın kimliği, **e-posta**, **Agegroup** ve **consentProvidedForMinor** içerebilen JSON **belirtecine dahil edilen** talebe göre kimliği doğrulanmamış kullanıcıyı işlemesi gerekir.
 
 - **Kullanıcıyı engelle**: bir Kullanıcı küçük ise ve ebeveyn onayı sağlanmadıysa Azure AD B2C, kullanıcıyı engellendikleri konusunda bilgilendirir. Hiçbir belirteç verilmez, erişim engellenir ve Kullanıcı hesabı bir kayıt yolculuğu sırasında oluşturulmaz. Bu bildirimi uygulamak için, kullanıcıyı bilgilendirmek ve uygun seçenekleri sunmak üzere uygun bir HTML/CSS içerik sayfası sağlarsınız. Yeni kayıtlar için uygulama için başka bir eylem gerekmez.
 
@@ -46,7 +46,7 @@ Uygulama yönetmeliklerinize bağlı olarak, ebeveyn onayı yetişkin olarak do�
 
 Aşağıda, ebeveyn onayını toplamak için bir Kullanıcı akışı örneği verilmiştir:
 
-1. Bir [MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api) işlemi, kullanıcıyı küçük olarak tanımlar ve Kullanıcı verilerini, IMZASıZ bir JSON belirteci biçiminde uygulamaya döndürür.
+1. Bir [MICROSOFT Graph API](/graph/use-the-api) işlemi, kullanıcıyı küçük olarak tanımlar ve Kullanıcı verilerini, IMZASıZ bir JSON belirteci biçiminde uygulamaya döndürür.
 
 2. Uygulama JSON belirtecini işler ve küçük bir ekran gösterir ve bu, ebeveyn onayı 'nın gerekli olduğunu ve bir üst çevrimiçi onay isteğini ister.
 
@@ -54,9 +54,9 @@ Aşağıda, ebeveyn onayını toplamak için bir Kullanıcı akışı örneği v
 
 4. Uygulama, onayı iptal etmek için küçük bir seçenek sunar.
 
-5. Küçük ya da yetişkin iptal edildiğinde, **consentProvidedForMinor** **değiştirmek için Microsoft Graph**API 'si kullanılabilir. Alternatif olarak, uygulama, onayı iptal edilmiş bir ikincil silme işlemi de seçebilir. Kullanıcı akışının, kimliği doğrulanmış alt öğe (veya ikincil hesabı kullanan üst) onayı iptal edebilmesi için, bu, isteğe bağlı olarak özelleştirilebilir. Azure AD B2C kayıtları **reddedildi**olarak **consentProvidedForMinor** .
+5. Küçük ya da yetişkin iptal edildiğinde, **consentProvidedForMinor** **değiştirmek için Microsoft Graph** API 'si kullanılabilir. Alternatif olarak, uygulama, onayı iptal edilmiş bir ikincil silme işlemi de seçebilir. Kullanıcı akışının, kimliği doğrulanmış alt öğe (veya ikincil hesabı kullanan üst) onayı iptal edebilmesi için, bu, isteğe bağlı olarak özelleştirilebilir. Azure AD B2C kayıtları **reddedildi** olarak **consentProvidedForMinor** .
 
-**Ligalagegroupclassification**, **ConsentProvidedForMinor**ve **agegroup**hakkında daha fazla bilgi için bkz. [Kullanıcı kaynak türü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Özel öznitelikler hakkında daha fazla bilgi için bkz. [Tüketicileriniz hakkında bilgi toplamak için özel öznitelikler kullanma](user-flow-custom-attributes.md). Microsoft Graph API 'sini kullanarak genişletilmiş öznitelikleri adresleyerek, özniteliğin uzun sürümünü kullanmanız gerekir (örneğin, *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*).
+**Ligalagegroupclassification**, **ConsentProvidedForMinor** ve **agegroup** hakkında daha fazla bilgi için bkz. [Kullanıcı kaynak türü](/graph/api/resources/user). Özel öznitelikler hakkında daha fazla bilgi için bkz. [Tüketicileriniz hakkında bilgi toplamak için özel öznitelikler kullanma](user-flow-custom-attributes.md). Microsoft Graph API 'sini kullanarak genişletilmiş öznitelikleri adresleyerek, özniteliğin uzun sürümünü kullanmanız gerekir (örneğin, *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*).
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Doğum tarihi ve ülke/bölge verileri toplama
 
@@ -66,7 +66,7 @@ Uygulamalar, kayıt sırasında tüm kullanıcılardan Doğum tarihini (DOB) ve 
 
 Aşağıdaki adımlarda, kullanıcının Doğum tarihinden sonra **Agegrubunu** hesaplamak için kullanılan mantık gösterilmektedir:
 
-1. Ülke/bölge kodunu listedeki ülke/bölge kodu ile bulmayı deneyin. Ülke/bölge bulunamazsa, **varsayılana**geri dönün.
+1. Ülke/bölge kodunu listedeki ülke/bölge kodu ile bulmayı deneyin. Ülke/bölge bulunamazsa, **varsayılana** geri dönün.
 
 2. Ülke/bölge öğesinde **MinorConsent** düğümü varsa:
 
@@ -76,12 +76,12 @@ Aşağıdaki adımlarda, kullanıcının Doğum tarihinden sonra **Agegrubunu** 
 
 3. Ülke/bölge öğesinde **MinorNoConsentRequired** düğümü varsa, **MinorNoConsentRequired**' deki değeri kullanarak 2A ve 2B adımlarını yineleyin. 2B çıkışı, en az Doğum tarihi kullanıcının Doğum tarihinden önce ise, **MinorNoConsentRequired** döndürür.
 
-4. Hiçbir hesaplama true döndürürse, hesaplama **yetişkin**döndürür.
+4. Hiçbir hesaplama true döndürürse, hesaplama **yetişkin** döndürür.
 
 Bir uygulama, başka yöntemlerle güvenilir bir şekilde DOB veya ülke/bölge verileri toplanmışsa, bu bilgileri kullanarak uygulama kullanıcı kaydını güncelleştirmek için Graph API kullanabilir. Örnek:
 
-- Bir kullanıcının yetişkin olduğu bilindiğinde, bir **yetişme**değeri olan **agegroup** adlı dizin özniteliğini güncelleştirin.
-- Bir kullanıcının küçük olduğu bilindiğinde, dizin özniteliği **Agegroup** değerini bir **Minor** değeri ile güncelleştirin ve **consentProvidedForMinor**olarak ayarlayın.
+- Bir kullanıcının yetişkin olduğu bilindiğinde, bir **yetişme** değeri olan **agegroup** adlı dizin özniteliğini güncelleştirin.
+- Bir kullanıcının küçük olduğu bilindiğinde, dizin özniteliği **Agegroup** değerini bir **Minor** değeri ile güncelleştirin ve **consentProvidedForMinor** olarak ayarlayın.
 
 DOB verilerini toplama hakkında daha fazla bilgi için bkz. [Azure AD B2C yaş geçişi kullanma](basic-age-gating.md).
 
@@ -99,9 +99,9 @@ Aşağıdaki adımlar kullanım koşullarını nasıl yönetebileceğinizi anlat
 
 3. Azure AD B2C kullanım koşullarını ve kullanıcının kabulünü depolar. Graph API, yanıtı kaydetmek için kullanılan uzantı özniteliğini okuyarak herhangi bir kullanıcının durumunu sorgulamak için kullanabilirsiniz (örneğin, **Termsofusetestupdatedatetime**' ı okuyun). Hem yerleşik hem de özel Kullanıcı akışlarını kullanarak bunu yapabilirsiniz.
 
-4. Kabul tarihini, kullanım koşullarının en son sürümünün tarihine göre karşılaştırarak, güncelleştirilmiş kullanım koşullarının kabul edilmesi gerekir. Yalnızca özel bir Kullanıcı akışı kullanarak tarihleri karşılaştırabilirsiniz. **Extension_termsOfUseConsentDateTime**genişletilmiş özniteliği kullanın ve değeri **Termsofusetextupdatedatetime**talebiyle karşılaştırın. Kabul eski ise, otomatik olarak onaylanan bir ekran görüntüleyerek yeni bir kabul zorlayın. Aksi takdirde, ilke mantığını kullanarak erişimi engelleyin.
+4. Kabul tarihini, kullanım koşullarının en son sürümünün tarihine göre karşılaştırarak, güncelleştirilmiş kullanım koşullarının kabul edilmesi gerekir. Yalnızca özel bir Kullanıcı akışı kullanarak tarihleri karşılaştırabilirsiniz. **Extension_termsOfUseConsentDateTime** genişletilmiş özniteliği kullanın ve değeri **Termsofusetextupdatedatetime** talebiyle karşılaştırın. Kabul eski ise, otomatik olarak onaylanan bir ekran görüntüleyerek yeni bir kabul zorlayın. Aksi takdirde, ilke mantığını kullanarak erişimi engelleyin.
 
-5. Kabulünün sürüm numarasını kabul edilen en son sürüm numarasıyla karşılaştırarak, güncelleştirilmiş kullanım koşullarının kabul edilmesini gerektir. Yalnızca özel bir Kullanıcı akışı kullanarak sürüm numaralarını karşılaştırabilirsiniz. Genişletilmiş öznitelik **extension_termsOfUseConsentDateTime**kullanın ve değeri **extension_termsOfUseConsentVersion**talebiyle karşılaştırın. Kabul eski ise, otomatik olarak onaylanan bir ekran görüntüleyerek yeni bir kabul zorlayın. Aksi takdirde, ilke mantığını kullanarak erişimi engelleyin.
+5. Kabulünün sürüm numarasını kabul edilen en son sürüm numarasıyla karşılaştırarak, güncelleştirilmiş kullanım koşullarının kabul edilmesini gerektir. Yalnızca özel bir Kullanıcı akışı kullanarak sürüm numaralarını karşılaştırabilirsiniz. Genişletilmiş öznitelik **extension_termsOfUseConsentDateTime** kullanın ve değeri **extension_termsOfUseConsentVersion** talebiyle karşılaştırın. Kabul eski ise, otomatik olarak onaylanan bir ekran görüntüleyerek yeni bir kabul zorlayın. Aksi takdirde, ilke mantığını kullanarak erişimi engelleyin.
 
 Kullanım Koşulları kabul etme koşullarını aşağıdaki senaryolar altında yakalayabilirsiniz:
 

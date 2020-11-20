@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396782"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951647"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Ağ Izleyicisi sorunlarını giderme ile VPN ağ geçitlerini izleme
 
@@ -51,7 +51,7 @@ Bu senaryoya başlamadan önce, aşağıdaki önkoşulların olması gerekir:
 
 ### <a name="create-the-runbook"></a>Runbook 'u oluşturma
 
-Örneği yapılandırmanın ilk adımı, runbook 'u oluşturmaktır. Bu örnek, bir farklı çalıştır hesabı kullanır. Farklı Çalıştır hesapları hakkında bilgi edinmek için bkz. [Azure farklı çalıştır hesabı Ile runbook 'Ları kimlik doğrulama](../automation/automation-create-runas-account.md)
+Örneği yapılandırmanın ilk adımı, runbook 'u oluşturmaktır. Bu örnek, bir farklı çalıştır hesabı kullanır. Farklı Çalıştır hesapları hakkında bilgi edinmek için bkz. [Azure farklı çalıştır hesabı Ile runbook 'Ları kimlik doğrulama](../automation/manage-runas-account.md)
 
 ### <a name="step-1"></a>1. Adım
 
@@ -73,7 +73,7 @@ Runbook 'u oluşturmak için **hızlı oluştur**' un altında **yeni runbook ol
 
 ### <a name="step-4"></a>4. Adım
 
-Bu adımda, runbook 'a bir ad veriyoruz; Örneğin, **Get-VPNGatewayStatus**olarak adlandırılır. Runbook 'a açıklayıcı bir ad vermek ve standart PowerShell adlandırma standartlarını izleyen bir ad vermek için önerilir. Bu örnek için Runbook türü **PowerShell**, diğer seçenekler ise grafik, PowerShell iş akışı ve grafik PowerShell iş akışıdır.
+Bu adımda, runbook 'a bir ad veriyoruz; Örneğin, **Get-VPNGatewayStatus** olarak adlandırılır. Runbook 'a açıklayıcı bir ad vermek ve standart PowerShell adlandırma standartlarını izleyen bir ad vermek için önerilir. Bu örnek için Runbook türü **PowerShell**, diğer seçenekler ise grafik, PowerShell iş akışı ve grafik PowerShell iş akışıdır.
 
 ![Runbook dikey penceresi][4]
 
@@ -170,7 +170,7 @@ Yeni bir zamanlamanın oluşturulması gerekir. **Runbook 'a bir zamanlama bağl
 - **Başlar** -bu değer, zamanlamanın tetiklediği zamanı oluşturan Tarih, saat ve saat diliminin bir birleşimidir.
 - **Yinelenme** -bu değer zamanlamaları tekrarlamayı belirler.  Geçerli değerler **bir kez** veya **yineleniyor**.
 - Zamanlamanın saat, gün, hafta veya ay içinde her yineleme aralığını **Yinele** .
-- **Süre sonu ayarla** -değer, zamanlamanın süresinin dolacağını belirler. **Evet** veya **Hayır**olarak ayarlanabilir. Evet seçilirse geçerli bir tarih ve saat sağlanmalıdır.
+- **Süre sonu ayarla** -değer, zamanlamanın süresinin dolacağını belirler. **Evet** veya **Hayır** olarak ayarlanabilir. Evet seçilirse geçerli bir tarih ve saat sağlanmalıdır.
 
 > [!NOTE]
 > Bir runbook 'un her saatten daha sık çalışmasını istiyorsanız, farklı aralıklarda (15, 30, saat sonra 45 dakika) birden çok zamanlama oluşturulması gerekir

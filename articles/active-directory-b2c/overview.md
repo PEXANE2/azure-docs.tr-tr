@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91396544"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953959"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C nedir?
 
@@ -79,17 +79,17 @@ WoodGrove Market, müşterilerinin mağaza ile sahip olduğu ilişkiye göre çe
 
 * **Bireysel** müşteriler, bir sosyal kimlik sağlayıcısı ya da bir e-posta adresi ve parola gibi bireysel hesaplarla kaydolabilir veya oturum açabilir.
 * **İş** müşterileri, kurumsal kimlik bilgileriyle kaydolabilir veya oturum açabilir.
-* **Iş ortakları** ve satıcılar, satış için ürünlerle Market 'e sahip Market 'i sağlayan bireylerdir. İş ortağı kimliği [Azure ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)tarafından sağlanır.
+* **Iş ortakları** ve satıcılar, satış için ürünlerle Market 'e sahip Market 'i sağlayan bireylerdir. İş ortağı kimliği [Azure ACTIVE DIRECTORY B2B](../active-directory/external-identities/what-is-b2b.md)tarafından sağlanır.
 
 ![Bireysel (B2C), iş (B2C) ve iş ortağı (B2B) oturum açma sayfaları](./media/overview/woodgrove-overview.png)
 
 ### <a name="authenticate-individual-customers"></a>Bireysel müşterilerin kimliklerini doğrulama
 
-Bir müşteri **Kişisel hesabınızla oturum açma**seçtiğinde, Azure AD B2C tarafından barındırılan özelleştirilmiş bir oturum açma sayfasına yönlendirilir. Aşağıdaki görüntüde, WoodGrove Market Web sitesini görüntülemek için Kullanıcı arabirimini (UI) özelleştirdik. WoodGrove müşterilerinin, kimlik doğrulama deneyiminin Azure AD B2C tarafından barındırılıp güvenliği farkında olmalıdır.
+Bir müşteri **Kişisel hesabınızla oturum açma** seçtiğinde, Azure AD B2C tarafından barındırılan özelleştirilmiş bir oturum açma sayfasına yönlendirilir. Aşağıdaki görüntüde, WoodGrove Market Web sitesini görüntülemek için Kullanıcı arabirimini (UI) özelleştirdik. WoodGrove müşterilerinin, kimlik doğrulama deneyiminin Azure AD B2C tarafından barındırılıp güvenliği farkında olmalıdır.
 
 ![Azure AD B2C tarafından barındırılan özel WoodGrove oturum açma sayfası](./media/overview/sign-in.png)
 
-WoodGrove, müşterilerinin kimlik sağlayıcısı olarak Google, Facebook veya Microsoft hesaplarını kullanarak kaydolmalarına ve oturum açmasına olanak tanır. Ya da, *yerel hesap*olarak adlandırılan öğeleri oluşturmak için e-posta adresini ve parolasını kullanarak kaydolabilir.
+WoodGrove, müşterilerinin kimlik sağlayıcısı olarak Google, Facebook veya Microsoft hesaplarını kullanarak kaydolmalarına ve oturum açmasına olanak tanır. Ya da, *yerel hesap* olarak adlandırılan öğeleri oluşturmak için e-posta adresini ve parolasını kullanarak kaydolabilir.
 
 Bir müşteri **Kişisel hesabınızla kaydolun** ve **Şimdi kaydolun**, özel bir kaydolma sayfası sunulur.
 
@@ -103,7 +103,7 @@ Bir e-posta adresi girdikten ve **doğrulama kodu gönder**' i seçtikten sonra,
 
 ### <a name="authenticate-business-customers"></a>İş müşterilerinin kimliklerini doğrulama
 
-Bir müşteri, **iş müşterileri**altındaki seçeneklerden birini seçtiğinde, WoodGrove Market web sitesi bireysel müşteriler için olduğundan farklı bir Azure AD B2C ilkesi çağırır.
+Bir müşteri, **iş müşterileri** altındaki seçeneklerden birini seçtiğinde, WoodGrove Market web sitesi bireysel müşteriler için olduğundan farklı bir Azure AD B2C ilkesi çağırır.
 
 Bu ilke, kullanıcıya kaydolma ve oturum açma için kurumsal kimlik bilgilerini kullanma seçeneği sunar. WoodGrove örneğinde, kullanıcılardan herhangi bir iş veya okul hesabıyla oturum açması istenir. Bu ilke, dünyanın herhangi bir Microsoft 365 müşteriyle Azure AD B2C federasyona eklemek için [çok kiracılı bir Azure AD uygulaması](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) ve `/common` Azure AD uç noktası kullanır.
 
@@ -111,7 +111,7 @@ Bu ilke, kullanıcıya kaydolma ve oturum açma için kurumsal kimlik bilgilerin
 
 **Tedarikçi hesabınız Ile oturum açma** , Azure Active Directory B2B's işbirliği işlevlerini kullanır. Azure AD B2B, iş ortağı kimliklerini yönetmek için Azure Active Directory bir özellik ailesidir. Bu kimlikler, Azure AD B2C korunan uygulamalara erişim için Azure Active Directory federe olabilir.
 
-[Azure ACTIVE DIRECTORY B2B 'de Konuk Kullanıcı erişimi olan](../active-directory/b2b/what-is-b2b.md)Azure AD B2B hakkında daha fazla bilgi edinin.
+[Azure ACTIVE DIRECTORY B2B 'de Konuk Kullanıcı erişimi olan](../active-directory/external-identities/what-is-b2b.md)Azure AD B2B hakkında daha fazla bilgi edinin.
 
 <!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
 ### Sample code

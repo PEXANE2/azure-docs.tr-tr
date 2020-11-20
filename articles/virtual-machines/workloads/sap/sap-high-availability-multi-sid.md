@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6945be2d9a5d7cd56556c7d89998b21efe26d80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d9e611ea3bd1243ef93bd5731199c549ed7e431
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314088"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951307"
 ---
 # <a name="create-a-high-availability-sap-netweaver-multi-sid-configuration"></a>Yüksek kullanılabilirliğe sahip SAP NetWeaver çoklu SID yapılandırması oluşturma
 
@@ -242,7 +243,7 @@ Bu yordamda, WSFC küme makinelerine zaten SIOS Dataman yüklediğinizi varsayı
 Üst düzey yordam aşağıdaki gibidir:
 
 1. [SAP ilk küme düğümünü yükler][sap-ha-guide-9.1.2].  
- Bu adımda, **mevcut wsfc küme düğümü 1**üzerinde yüksek kullanılabilirliğe sahıp bır ascs/SCS örneğiyle SAP 'yi yüklüyorsunuz.
+ Bu adımda, **mevcut wsfc küme düğümü 1** üzerinde yüksek kullanılabilirliğe sahıp bır ascs/SCS örneğiyle SAP 'yi yüklüyorsunuz.
 
 2. [ASCS/SCS ÖRNEĞININ SAP profilini değiştirin][sap-ha-guide-9.1.3].
 

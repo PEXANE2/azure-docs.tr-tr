@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214932"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952089"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeni Uygulama kayıtları deneyimi
 
@@ -59,7 +59,7 @@ Yeni deneyimde, aşağıdaki seçeneklerden bir destek hesabı türü seçersini
 
 Farklı hesap türlerini anlamak için, oluşturma deneyiminde seçmeme **Yardım** et ' i seçin.
 
-Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak oluşturulmuştur. Bu uygulamalar için, hesap türü **herhangi bir kimlik sağlayıcısında veya kuruluş dizininde (Kullanıcı akışları olan kullanıcıların kimliğini doğrulamak için) hesaplar**olarak ayarlanır.
+Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak oluşturulmuştur. Bu uygulamalar için, hesap türü **herhangi bir kimlik sağlayıcısında veya kuruluş dizininde (Kullanıcı akışları olan kullanıcıların kimliğini doğrulamak için) hesaplar** olarak ayarlanır.
 > [!NOTE]
 > Bu uygulama için kullanıcıların kimliğini doğrulamak üzere Kullanıcı akışlarını Azure AD B2C çalıştırabilmek için bu seçenek gereklidir. [Kullanıcı akışlarla kullanım için bir uygulamayı kaydetmeyi öğrenin.](tutorial-register-applications.md)
 
@@ -91,14 +91,14 @@ Yeniden yönlendirme URI 'Lerinin, Web veya public (mobil ve Masaüstü) bir uyg
 
 ## <a name="application-certificates--secrets"></a>Uygulama sertifikaları & gizlilikler
 
-Yeni deneyimde **anahtarlar**yerine, sertifikaları ve gizli dizileri yönetmek için **Sertifikalar & gizlilikler** dikey penceresini kullanırsınız. Sertifikalar & gizlilikler, uygulamaların bir Web adreslenebilir konumda (HTTPS şeması kullanarak) belirteçleri alırken kendilerini kimlik doğrulama hizmetine tanımlamasına olanak tanır. Azure AD 'de kimlik doğrulanırken istemci kimlik bilgisi senaryoları için istemci parolası yerine bir sertifika kullanmanızı öneririz. Sertifikalar Azure AD B2C karşı kimlik doğrulaması yapmak için kullanılamaz.
+Yeni deneyimde **anahtarlar** yerine, sertifikaları ve gizli dizileri yönetmek için **Sertifikalar & gizlilikler** dikey penceresini kullanırsınız. Sertifikalar & gizlilikler, uygulamaların bir Web adreslenebilir konumda (HTTPS şeması kullanarak) belirteçleri alırken kendilerini kimlik doğrulama hizmetine tanımlamasına olanak tanır. Azure AD 'de kimlik doğrulanırken istemci kimlik bilgisi senaryoları için istemci parolası yerine bir sertifika kullanmanızı öneririz. Sertifikalar Azure AD B2C karşı kimlik doğrulaması yapmak için kullanılamaz.
 
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C kiracılarda geçerli değil Özellikler
 Aşağıdaki Azure AD uygulama kayıt özellikleri Azure AD B2C kiracılarda geçerli değildir veya kullanılabilir değildir:
 - **Roller ve yöneticiler** -Azure AD B2C için şu anda kullanılamıyor.
 - **Marka** -UI/UX özelleştirmesi, **Şirket markası** deneyiminde veya bir Kullanıcı akışının parçası olarak yapılandırılmıştır. [Azure Active Directory B2C içinde Kullanıcı arabirimini özelleştirmeyi](customize-ui-overview.md)öğrenin.
-- **Yayımcı etki alanı doğrulaması** -uygulamanız, doğrulanmış bir etki alanı olmayan *. onmicrosoft.com*tarihinde kaydedilir. Ayrıca, yayımcı etki alanı birincil olarak Kullanıcı izni vermek için kullanılır ve bu, Kullanıcı kimlik doğrulaması için Azure AD B2C uygulamalar için geçerlidir. [Yayımcı etki alanı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
+- **Yayımcı etki alanı doğrulaması** -uygulamanız, doğrulanmış bir etki alanı olmayan *. onmicrosoft.com* tarihinde kaydedilir. Ayrıca, yayımcı etki alanı birincil olarak Kullanıcı izni vermek için kullanılır ve bu, Kullanıcı kimlik doğrulaması için Azure AD B2C uygulamalar için geçerlidir. [Yayımcı etki alanı hakkında daha fazla bilgi edinin](../active-directory/develop/howto-configure-publisher-domain.md).
 - **Belirteç yapılandırması** -belirteç, bir uygulama yerine Kullanıcı akışının bir parçası olarak yapılandırılır.
 - **Hızlı başlangıç** deneyimi şu anda Azure AD B2C kiracılar için kullanılamaz.
 <!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->

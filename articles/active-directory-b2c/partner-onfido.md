@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48fc8533ee1fd206e69e16d4c03e4b4acf047135
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259229"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953704"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Onfido yapılandırma öğreticisi
 
@@ -30,7 +30,7 @@ Başlamak için şunlar gerekir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .
+- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](./tutorial-create-tenant.md) .
 
 - Bir Onfido [deneme hesabı](https://onfido.com/signup/).
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![onfido mimarisi için ekran görüntüsü-diyagram](media/partner-onfido/onfido-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolun ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar. Azure AD B2C barındırılan onfido istemci uygulaması, Kullanıcı bilgilerini kontrol eder.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -74,7 +74,7 @@ Onfido hakkında daha fazla bilgi için bkz. [ONFIDO API belgeleri](https://docu
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-- Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+- Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
 - Kurulum CORS, **Izin verilen kaynağı** https://{your_tenant_name}. b2clogin. com olarak ekleyin
 
 >[!NOTE]
@@ -82,7 +82,7 @@ Onfido hakkında daha fazla bilgi için bkz. [ONFIDO API belgeleri](https://docu
 
 #### <a name="adding-sensitive-configuration-settings"></a>Hassas yapılandırma ayarları ekleme
 
-Uygulama ayarları [Azure 'Daki App Service](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)'te yapılandırılabilir. App Service, ayarların bir depoya denetlenmeden güvenli bir şekilde yapılandırılmasını sağlar. REST API 'SI aşağıdaki ayarlara ihtiyaç duyuyor:
+Uygulama ayarları [Azure 'Daki App Service](../app-service/configure-common.md#configure-app-settings)'te yapılandırılabilir. App Service, ayarların bir depoya denetlenmeden güvenli bir şekilde yapılandırılmasını sağlar. REST API 'SI aşağıdaki ayarlara ihtiyaç duyuyor:
 
 | Uygulama ayarı adı | Kaynak | Notlar |
 |:-------------------------|:-------|:-------|
@@ -92,15 +92,15 @@ Uygulama ayarları [Azure 'Daki App Service](https://docs.microsoft.com/azure/ap
 
 #### <a name="configure-your-storage-location"></a>Depolama konumunuzu yapılandırın
 
-1. [Depolama hesabınızda bir BLOB depolama kapsayıcısı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) ayarlayın
+1. [Depolama hesabınızda bir BLOB depolama kapsayıcısı](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) ayarlayın
 
 2. Kullanıcı arabirimi dosyalarını [Kullanıcı arabirimi klasöründen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) blob kapsayıcınıza depolayın.
 
 3. Aşağıdaki yönergeleri izleyerek, oluşturduğunuz depolama kapsayıcısına CORS erişimi sağlar:
 
-   a. **Ayarlar**  > **izin verildi kaynağına**gidin, girin `https://{your_tenant_name}.b2clogin.com` . Kiracı adınızı Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, https://fabrikam.b2clogin.com . Kiracı adınızı girerken tüm küçük harfleri kullanın.
+   a. **Ayarlar**  > **izin verildi kaynağına** gidin, girin `https://{your_tenant_name}.b2clogin.com` . Kiracı adınızı Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, https://fabrikam.b2clogin.com . Kiracı adınızı girerken tüm küçük harfleri kullanın.
 
-   b. **Izin verilen Yöntemler**için `GET` ve seçin `PUT` .
+   b. **Izin verilen Yöntemler** için `GET` ve seçin `PUT` .
 
    c. **Kaydet**’i seçin.
 
@@ -110,7 +110,7 @@ Uygulama ayarları [Azure 'Daki App Service](https://docs.microsoft.com/azure/ap
 
 2. Her bir HTML dosyasını açın.
 
-3. {Size-UI-blob-Container-URL} ' i, UI **ocean_blue**, **dağ**ve **varlıklar** klasörlerinizin bulunduğu URL ile bulur ve değiştirin
+3. {Size-UI-blob-Container-URL} ' i, UI **ocean_blue**, **dağ** ve **varlıklar** klasörlerinizin bulunduğu URL ile bulur ve değiştirin
 
 4. {The-ara-api-URL}} öğesini ara API App Service 'in URL 'siyle bulun ve değiştirin.
 
@@ -118,7 +118,7 @@ Uygulama ayarları [Azure 'Daki App Service](https://docs.microsoft.com/azure/ap
 
 1. Kullanıcı arabirimi dosyalarını Kullanıcı arabirimi klasöründen blob kapsayıcınıza depolayın.
 
-2. Dosyalarınızı ve erişim izinlerinizi yönetmek için [Azure Depolama Gezgini](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks) kullanın.
+2. Dosyalarınızı ve erişim izinlerinizi yönetmek için [Azure Depolama Gezgini](../virtual-machines/disks-use-storage-explorer-managed-disks.md) kullanın.
 
 ### <a name="part-3---configure-azure-ad-b2c"></a>Bölüm 3-Azure AD B2C yapılandırma
 
@@ -135,14 +135,14 @@ Belirtilen [özel ilkelerde](https://github.com/azure-ad-b2c/partner-integration
 | {your_tenant_extensions_appid}                         | Kiracının depolama uygulamasının uygulama KIMLIĞI                                      | 01234567-89ab-cdef-0123-456789ABCDEF         |
 | {your_tenant_extensions_app_objectid}                  | Kiracınızın depolama uygulamasının nesne KIMLIĞI                                   | 01234567-89ab-cdef-0123-456789ABCDEF         |
 | {your_app_insights_instrumentation_key} | App Insights örneğiniz için izleme anahtarı *| 01234567-89ab-cdef-0123-456789ABCDEF|
-|{your_ui_file_base_url}| UI **ocean_blue**, **dağ**ve **varlıklar** klasörlerinizin bulunduğu konumun URL 'si | https://yourstorage.blob.core.windows.net/UI/|
+|{your_ui_file_base_url}| UI **ocean_blue**, **dağ** ve **varlıklar** klasörlerinizin bulunduğu konumun URL 'si | https://yourstorage.blob.core.windows.net/UI/|
 | {your_app_service_URL}                                 | Ayarladığınız App Service 'in URL 'SI                                             | `https://yourapp.azurewebsites.net`          |
 
 * App Insights farklı bir kiracıda olabilir. Bu adım isteğe bağlıdır. Gerekli değilse, ilgili teknisyen ve düzenleme adımlarını kaldırın.
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>Bölüm 4-Azure AD B2C ilkesini yapılandırma
 
-Azure AD B2C kiracınızı ayarlama ve ilkeleri yapılandırma hakkında yönergeler için bu [belgeye](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) başvurun.
+Azure AD B2C kiracınızı ayarlama ve ilkeleri yapılandırma hakkında yönergeler için bu [belgeye](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) başvurun.
 
 >[!NOTE]
 > En iyi uygulama olarak, müşterilerin öznitelik koleksiyonu sayfasına onay bildirimi eklemesini öneririz. Kimlik doğrulaması için bilgilerin üçüncü taraf hizmetlere gönderileceğini kullanıcılara bildirin.
@@ -169,6 +169,6 @@ Azure AD B2C kiracınızı ayarlama ve ilkeleri yapılandırma hakkında yönerg
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

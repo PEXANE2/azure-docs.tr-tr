@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385748"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953942"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWıN tabanlı bir Web API 'sini b2clogin.com 'e geçirme
 
@@ -29,7 +29,7 @@ Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenleri (Ka
 > [!NOTE]
 > Bu makale, şu anda dağıtılmış olan API 'Ler ve uygulama `login.microsoftonline.com` ve önerilen uç noktaya geçirmek isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir `b2clogin.com` . Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -42,7 +42,7 @@ Bu makaledeki adımlarla devam etmeden önce aşağıdaki Azure AD B2C kaynaklar
 Mevcut Kullanıcı akışlarınızdan birini seçerek başlayın:
 
 1. [Azure portal](https://portal.azure.com) Azure AD B2C kiracınıza gidin
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin
+1. **İlkeler** altında **Kullanıcı akışları ' nı (ilkeler)** seçin
 1. Mevcut bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır** ' ı seçin.
 1. Sayfanın üst kısmındaki **Kullanıcı akış başlığını Çalıştır** bölümünde, bu kullanıcı akışı Için OpenID Connect bulma uç noktasına gitmek üzere köprüyü seçin.
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu belirtmek için kodu güncelleştirin.
 
 1. Visual Studio 'da **B2C-WebAPI-DotNet. sln** çözümünü açın
-1. **Taskservice** projesinde, Düzenleyicinizde *taskservice \\ App_Start \\ * * Startup.auth.cs** * dosyasını açın
+1. **Taskservice** projesinde, Düzenleyicinizde * taskservice \\ App_Start \\ **Startup.auth.cs** _ dosyasını açın
 1. Aşağıdaki `using` yönergeyi dosyanın en üstüne ekleyin:
 
     `using System.Collections.Generic;`
@@ -107,7 +107,7 @@ Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu
     };
     ```
 
-`TokenValidationParameters` , MSAL.NET tarafından sağlanır ve *Startup.auth.cs*içindeki kodun sonraki bölümünde owın ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
+`TokenValidationParameters` , MSAL.NET tarafından sağlanır ve _Startup. auth. cs * içindeki kodun sonraki bölümünde OWıN ara yazılımı tarafından kullanılır. Birden çok geçerli veren belirtildiğinde, OWıN uygulama işlem hattı, her iki belirteç uç hattının de geçerli verenler olduğunu fark eder.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -123,7 +123,7 @@ Daha önce belirtildiği gibi, diğer OWIN kitaplıkları genellikle birden çok
 
 Artık Web API 'niz tarafından desteklenen URI 'Ler sayesinde, Web uygulamanızı b2clogin.com uç noktasından belirteçleri alması için güncelleştirmeniz gerekir.
 
-Örneğin, `ida:AadInstance` **taskwebapp** projesinin *taskwebapp \\ * * Web.config** * dosyasındaki değeri değiştirerek, örnek Web uygulamasını yeni uç noktayı kullanacak şekilde yapılandırabilirsiniz.
+Örneğin, `ida:AadInstance` _ taskwebapp * * projesinin *taskwebapp \\ **Web.config** _ dosyasındaki* değeri değiştirerek, örnek Web uygulamasını yeni uç noktayı kullanacak şekilde yapılandırabilirsiniz.
 
 `ida:AadInstance`TaskWebApp *Web.config* değerini, yerine başvuru olacak şekilde değiştirin `{your-b2c-tenant-name}.b2clogin.com` `login.microsoftonline.com` .
 
@@ -154,6 +154,6 @@ Azure AD B2C tarafından yayılan farklı güvenlik belirteçleri türleri hakk�
 [sample-repo]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi
 
 <!-- LINKS - Internal -->
-[katana]: https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/
-[validissuers]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
-[tokenvalidationparameters]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
+[katana]: /aspnet/aspnet/overview/owin-and-katana/
+[validissuers]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
+[tokenvalidationparameters]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters

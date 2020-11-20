@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300454"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954078"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>8000 serisi cihaz sorunlarını gidermek için StorSimple Tanılama aracını kullanın
 
@@ -332,7 +332,7 @@ Bu test, ağ arabirimlerinin, bağlantı noktalarının, DNS ve NTP sunucu bağl
 * Portalda VERI 2-5 etkin değildir.
 * DNS sunucusu yapılandırması geçerli ve cihaz DNS sunucusu aracılığıyla bağlanabilir.
 * NTP sunucusu bağlantısı da iyi bir şekilde yapılır.
-* 80 ve 443 bağlantı noktaları açıktır. Ancak bağlantı noktası 9354 engellenir. [Sistem ağ gereksinimlerine](storsimple-system-requirements.md)bağlı olarak, bu bağlantı noktasını Service Bus iletişimi için açmanız gerekir.
+* 80 ve 443 bağlantı noktaları açıktır. Ancak bağlantı noktası 9354 engellenir. [Sistem ağ gereksinimlerine](./storsimple-8000-system-requirements.md)bağlı olarak, bu bağlantı noktasını Service Bus iletişimi için açmanız gerekir.
 * TLS/SSL sertifikası geçerli.
 * Cihaz, depolama hesabına bağlanabilir: _myss8000storageacct_.
 * Sunucuları güncelleştirme bağlantısı geçerlidir.
@@ -388,7 +388,7 @@ Bu aracı kullanmak için aşağıdaki adımları gerçekleştirin:
 
     Tanılama aracı tarafından bildirilen okuma-yazma gecikme süreleri yüksekse:
 
-    1. Blob Hizmetleri için Depolama Analizi yapılandırın ve Azure Storage hesabının gecikme sürelerini anlamak için çıktıyı çözümleyin. Ayrıntılı yönergeler için [depolama Analizi etkinleştirme ve yapılandırma](../storage/common/storage-enable-and-view-metrics.md)' ya gidin. Bu gecikme süreleri de yüksek ve StorSimple tanılama aracından aldığınız sayılarla karşılaştırmalarda, Azure depolama ile bir hizmet isteğini günlüğe yazmanız gerekir.
+    1. Blob Hizmetleri için Depolama Analizi yapılandırın ve Azure Storage hesabının gecikme sürelerini anlamak için çıktıyı çözümleyin. Ayrıntılı yönergeler için [depolama Analizi etkinleştirme ve yapılandırma](../storage/blobs/monitor-blob-storage.md)' ya gidin. Bu gecikme süreleri de yüksek ve StorSimple tanılama aracından aldığınız sayılarla karşılaştırmalarda, Azure depolama ile bir hizmet isteğini günlüğe yazmanız gerekir.
 
     2. Depolama hesabı gecikmeleri düşükse, ağınızdaki gecikme sorunlarını araştırmak için ağ yöneticinize başvurun.
 
@@ -414,10 +414,10 @@ Controller0>
 
 Aşağıda, sistem bilgileri 'ndeki çeşitli Windows PowerShell parametrelerinin ne şekilde eşlendiğini açıklayan bir tablo verilmiştir. 
 
-| PowerShell parametresi    | Açıklama  |
+| PowerShell parametresi    | Description  |
 |-------------------------|------------------|
 | Örnek Kimliği             | Her denetleyicinin benzersiz bir tanımlayıcısı veya onunla ilişkili bir GUID 'SI vardır.|
-| Adı                    | Cihaz dağıtımı sırasında Azure portal tarafından yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır. |
+| Name                    | Cihaz dağıtımı sırasında Azure portal tarafından yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır. |
 | Model                   | StorSimple 8000 serisi cihazınızın modeli. Model 8100 veya 8600 olabilir.|
 | SerialNumber            | Cihaz seri numarası fabrikada atanır ve 15 karakter uzunluğundadır. Örneğin, 8600-SHX0991003G44HT şunu gösterir:<br> 8600 – cihaz modelidir.<br>SHX – üretim sitesidir.<br> 0991003-belirli bir üründür. <br> G44HT-son 5 basamak, benzersiz seri numaraları oluşturmak için artırılır. Bu sıralı bir küme olmayabilir.|
 | TimeZone                | Cihaz dağıtımı sırasında Azure portal yapılandırılan cihaz saat dilimi.|
@@ -440,6 +440,6 @@ Aşağıda, sistem bilgileri 'ndeki çeşitli Windows PowerShell parametrelerini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Invoke-HcsDiagnostics cmdlet 'inin sözdizimini](https://technet.microsoft.com/library/mt795371.aspx)öğrenin.
+* [Invoke-HcsDiagnostics cmdlet 'inin sözdizimini](/previous-versions/windows/powershell-scripting/mt795371(v=wps.630))öğrenin.
 
-* StorSimple cihazınızda [dağıtım sorunlarını giderme](storsimple-troubleshoot-deployment.md) hakkında daha fazla bilgi edinin.
+* StorSimple cihazınızda [dağıtım sorunlarını giderme](./storsimple-8000-troubleshoot-deployment.md) hakkında daha fazla bilgi edinin.

@@ -12,18 +12,18 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9485fb09d3ac7684ba91bcd37720a0e55603404b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383946"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952735"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
 Azure Active Directory B2C (Azure AD B2C) B2C kaynakları, belirteçleri verilen belirteçler ve yönetici erişimi hakkındaki etkinlik bilgilerini içeren denetim günlüklerini yayar. Bu makalede, denetim günlüklerinde bulunan bilgilere kısa bir genel bakış ve Azure AD B2C kiracınız için bu verilere nasıl erişecağınız hakkında yönergeler sunulmaktadır.
 
-Denetim günlüğü olayları yalnızca **yedi gün**boyunca tutulur. Daha uzun bir bekletme dönemi istiyorsanız, aşağıda gösterilen yöntemlerden birini kullanarak günlüklerinizi indirmeyi ve depolamayı planlayın.
+Denetim günlüğü olayları yalnızca **yedi gün** boyunca tutulur. Daha uzun bir bekletme dönemi istiyorsanız, aşağıda gösterilen yöntemlerden birini kullanarak günlüklerinizi indirmeyi ve depolamayı planlayın.
 
 > [!NOTE]
 > Azure portal **Azure Active Directory** veya **Azure AD B2C** sayfaların **Kullanıcılar** bölümü altında bireysel Azure AD B2C uygulamaları için Kullanıcı oturum açma işlemlerini göremezsiniz. Oturum açma olayları Kullanıcı etkinliğini gösterir, ancak kullanıcının oturum açmadığı B2C uygulamasına geri alınamaz. Bu makalenin ilerleyen bölümlerinde açıklandığı gibi, Denetim günlüklerini bu şekilde kullanmanız gerekir.
@@ -32,7 +32,7 @@ Denetim günlüğü olayları yalnızca **yedi gün**boyunca tutulur. Daha uzun 
 
 Denetim günlüklerinde **B2C** kategorisi aşağıdaki etkinlik türlerini içerir:
 
-|Etkinlik türü |Açıklama  |
+|Etkinlik türü |Description  |
 |---------|---------|
 |Yetkilendirme |Bir kullanıcının B2C kaynaklarına (örneğin, B2C ilkeleri listesine erişen bir yönetici) erişmesine yönelik yetkilendirmeyle ilgili etkinlikler.         |
 |Dizin |Bir yönetici Azure portal kullanarak oturum açtığında alınan dizin öznitelikleriyle ilgili etkinlikler. |
@@ -66,7 +66,7 @@ Etkinlik ayrıntıları paneli aşağıdaki ilgili bilgileri içerir:
 Azure portal, Azure AD B2C kiracınızdaki denetim günlüğü olaylarına erişim sağlar.
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
-1. Azure AD B2C kiracınızı içeren dizine geçin ve **Azure AD B2C**gidin.
+1. Azure AD B2C kiracınızı içeren dizine geçin ve **Azure AD B2C** gidin.
 1. Sol menüdeki **Etkinlikler** ' in altında, **Denetim günlükleri**' ni seçin.
 
 Son yedi gün içinde günlüğe kaydedilen etkinlik olaylarının listesi görüntülenir.
@@ -84,7 +84,7 @@ Etkinlik olaylarının listesini bir virgülle ayrılmış değerler (CSV) dosya
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Azure AD Raporlama API 'SI ile denetim günlüklerini alın
 
-Denetim günlükleri, Azure Active Directory için diğer etkinliklerle aynı işlem hattına yayımlanır, bu nedenle [Azure Active Directory Raporlama API 'si](https://docs.microsoft.com/graph/api/directoryaudit-list)üzerinden erişilebilirler. Daha fazla bilgi için bkz. [Azure Active Directory Raporlama API 'si ile çalışmaya başlama](../active-directory/reports-monitoring/concept-reporting-api.md).
+Denetim günlükleri, Azure Active Directory için diğer etkinliklerle aynı işlem hattına yayımlanır, bu nedenle [Azure Active Directory Raporlama API 'si](/graph/api/directoryaudit-list)üzerinden erişilebilirler. Daha fazla bilgi için bkz. [Azure Active Directory Raporlama API 'si ile çalışmaya başlama](../active-directory/reports-monitoring/concept-reporting-api.md).
 
 ### <a name="enable-reporting-api-access"></a>Raporlama API 'SI erişimini etkinleştir
 

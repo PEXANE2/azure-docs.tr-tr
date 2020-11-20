@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07897823a3ba3b83e240e8e8dc005ea13b036fce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215423"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952055"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C kullanılabilecek uygulama türleri
  
@@ -91,7 +91,7 @@ Bu akıştan faydalanmak için, uygulamanız [MSAL.js 2. x](https://github.com/A
 ![Tek sayfalı uygulamalar-kimlik doğrulama](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
 
 ### <a name="implicit-grant-flow"></a>Örtük verme akışı
-- [OAuth 2,0 örtük akış](implicit-flow-single-page-application.md). [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)gibi bazı çerçeveler yalnızca örtük izin akışını destekler. Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci**döndürmez. 
+- [OAuth 2,0 örtük akış](implicit-flow-single-page-application.md). [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)gibi bazı çerçeveler yalnızca örtük izin akışını destekler. Örtük verme akışı, uygulamanın **kimlik** ve **erişim** belirteçleri almasına izin verir. Yetkilendirme kodu akışından farklı olarak, örtük verme akışı bir **yenileme belirteci** döndürmez. 
 
 Bu kimlik doğrulama akışı, elektron ve tepki verme gibi platformlar arası JavaScript çerçeveleri kullanan uygulama senaryoları içermez. Bu senaryolar, yerel platformlarla etkileşim için daha fazla yetenek gerektirir.
 
@@ -141,7 +141,7 @@ Uzun süre çalışan süreçler içeren veya bir kullanıcının varlığı olm
 
 OAuth 2,0 istemci kimlik bilgileri verme akışı şu anda Azure AD B2C kimlik doğrulama hizmeti tarafından doğrudan desteklenmese de, Azure AD 'yi kullanarak istemci kimlik bilgileri akışını ve Azure AD B2C kiracınızdaki bir uygulama için Microsoft Identity platform/Token uç noktasını ayarlayabilirsiniz. Azure AD B2C kiracı, Azure AD kurumsal kiracılar ile bazı işlevleri paylaşır.
 
-İstemci kimlik bilgileri akışını ayarlamak için, bkz. [Azure Active Directory v 2.0 ve OAuth 2,0 istemci kimlik bilgileri akışı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds). Başarılı bir kimlik doğrulaması, Azure AD [belirteç başvurusunda](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)açıklandığı gıbı Azure AD tarafından kullanılabilmesi için biçimlendirilen belirtecin alınmasına neden olur.
+İstemci kimlik bilgileri akışını ayarlamak için, bkz. [Azure Active Directory v 2.0 ve OAuth 2,0 istemci kimlik bilgileri akışı](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Başarılı bir kimlik doğrulaması, Azure AD [belirteç başvurusunda](../active-directory/develop/id-tokens.md)açıklandığı gıbı Azure AD tarafından kullanılabilmesi için biçimlendirilen belirtecin alınmasına neden olur.
 
 Bir yönetim uygulamasını kaydetme hakkında yönergeler için bkz. [Microsoft Graph Azure AD B2C yönetme](microsoft-graph-get-started.md).
 
@@ -155,7 +155,7 @@ Bu zincirli web API'si senaryosu, temsili akış olarak da bilinen OAuth 2.0 JWT
 
 Azure AD B2C uygulamalarını şu yollarla düzenlemeyin:
 
--  [Uygulama kayıt portalı](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)gibi diğer uygulama yönetim portallarında.
+- [Uygulama Kayıt Portalı](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) gibi diğer uygulama yanıt portallarında.
 - Graph API veya PowerShell kullanma.
 
 Azure AD B2C uygulamayı Azure portal dışında düzenlerseniz, bu, hatalı bir uygulama haline gelir ve Azure AD B2C artık kullanılamaz. Uygulamayı silin ve yeniden oluşturun.

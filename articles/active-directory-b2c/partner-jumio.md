@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259280"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953670"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Jumio yapılandırma öğreticisi
 
@@ -28,7 +28,7 @@ Başlamak için şunlar gerekir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- Azure aboneliğinize bağlı bir [Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .
+- Azure aboneliğinize bağlı bir [Azure AD B2C kiracısı](./tutorial-create-tenant.md) .
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -46,7 +46,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Jumio ile Azure AD B2C tümleştirme mimarisinin diyagramı.](./media/partner-jumio/jumio-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı oturum açmak veya hesap oluşturmak için kaydolmak üzere bir sayfaya ulaşır. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C, orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -65,7 +65,7 @@ Bir Jumıo hesabı oluşturduktan sonra, Azure AD B2C yapılandırmak için hesa
 
 ### <a name="deploy-the-api"></a>API 'YI dağıtma
 
-Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) bir Azure hizmetine dağıtın. [Bu yönergeleri](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek kodu Visual Studio 'dan yayımlayabilirsiniz.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) bir Azure hizmetine dağıtın. [Bu yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek kodu Visual Studio 'dan yayımlayabilirsiniz.
 
 >[!NOTE]
 >Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.
@@ -85,7 +85,7 @@ Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tre
 
    Daha sonra sertifika için belirtilen konuma verilir ``{your-local-path}`` .
 
-3. [Bu makaledeki](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#upload-a-private-certificate)yönergeleri izleyerek Azure App Service sertifikayı içeri aktarın.
+3. [Bu makaledeki](../app-service/configure-ssl-certificate.md#upload-a-private-certificate)yönergeleri izleyerek Azure App Service sertifikayı içeri aktarın.
 
 ### <a name="create-a-signingencryption-key"></a>İmzalama/şifreleme anahtarı oluşturma
 
@@ -102,7 +102,7 @@ Dizeyi oluşturmak için aşağıdaki PowerShell betiğini kullanın:
 
 ### <a name="configure-the-api"></a>API 'YI yapılandırma
 
-[Azure App Service içinde uygulama ayarlarını yapılandırabilirsiniz](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Bu yöntemle ayarları bir depoya iade etmeden güvenli bir şekilde yapılandırabilirsiniz. REST API için aşağıdaki ayarları sağlamanız gerekir:
+[Azure App Service içinde uygulama ayarlarını yapılandırabilirsiniz](../app-service/configure-common.md#configure-app-settings). Bu yöntemle ayarları bir depoya iade etmeden güvenli bir şekilde yapılandırabilirsiniz. REST API için aşağıdaki ayarları sağlamanız gerekir:
 
 | Uygulama ayarları | Kaynak | Notlar |
 | :-------- | :------------| :-----------|
@@ -118,7 +118,7 @@ Dizeyi oluşturmak için aşağıdaki PowerShell betiğini kullanın:
 
 ### <a name="deploy-the-ui"></a>Kullanıcı arabirimini dağıtma
 
-1. [Depolama hesabınızda bir BLOB depolama kapsayıcısı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)ayarlayın.
+1. [Depolama hesabınızda bir BLOB depolama kapsayıcısı](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)ayarlayın.
 
 2. Kullanıcı arabirimi dosyalarını blob kapsayıcısındaki [Kullanıcı arabirimi klasöründen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/UI) depolayın.
 
@@ -139,7 +139,7 @@ Dizeyi oluşturmak için aşağıdaki PowerShell betiğini kullanın:
 
 1. Ilkeler klasöründeki [Azure AD B2C ilkesine](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies) gidin.
 
-2. [LocalAccounts başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)indirmek için [Bu makaleyi](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) izleyin.
+2. [LocalAccounts başlangıç paketini](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)indirmek için [Bu makaleyi](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) izleyin.
 
 3. Azure AD B2C kiracı için ilkeyi yapılandırın.
 
@@ -148,15 +148,15 @@ Dizeyi oluşturmak için aşağıdaki PowerShell betiğini kullanın:
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
-1. Azure AD B2C kiracıyı açın. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. Azure AD B2C kiracıyı açın. **İlkeler** altında **kimlik deneyimi çerçevesi**' ni seçin.
 
 2. Daha önce oluşturduğunuz **Signupsignın**' ı seçin.
 
 3. **Kullanıcı akışını Çalıştır** ' ı seçin ve ardından:
 
-   a. **Uygulama**için kayıtlı uygulamayı (örnek JWT) seçin.
+   a. **Uygulama** için kayıtlı uygulamayı (örnek JWT) seçin.
 
-   b. **Yanıt URL 'si**için **yeniden yönlendirme URL**'sini seçin.
+   b. **Yanıt URL 'si** için **yeniden yönlendirme URL**'sini seçin.
 
    c. **Kullanıcı akışını Çalıştır**' ı seçin.
 
@@ -168,6 +168,6 @@ Dizeyi oluşturmak için aşağıdaki PowerShell betiğini kullanın:
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

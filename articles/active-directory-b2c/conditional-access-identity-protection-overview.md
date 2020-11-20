@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 921d9e2138c8aa9c09535a673a7cd2d32e9cddad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f4a71740c487896208a3da7bf35bb39899c56937
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271590"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952072"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C için kimlik koruması ve koşullu erişim
 
@@ -35,7 +35,7 @@ Azure AD 'de [kimlik koruması](../active-directory/identity-protection/overview
 Kimlik koruması riski algılama ile koşullu erişim ilkelerini eşleştirerek, riskli kimlik doğrulamaları için uygun ilke eylemiyle yanıt verebilirsiniz.
 
 - **Uygulamalarınız ve müşteri tabanınız için kimlik doğrulama risklerine yeni bir görünürlük düzeyi kazanın**. Azure AD ve Microsoft hesabı genelinde milyarlarca aylık kimlik doğrulama sinyalleriyle, risk algılama algoritmaları artık yerel tüketici veya vatandaşlık kimlik doğrulamalarınız için kimlik doğrulamaları düşük, orta veya yüksek riskli olarak işaretleyecektir.
-- **Kendi Uyarlamalı kimlik doğrulamasını yapılandırarak riskleri otomatik olarak**çözün. Belirtilen uygulamalar için, çok faktörlü kimlik doğrulamasında (MFA) olduğu gibi, belirli bir kullanıcı kümesinin ikinci bir kimlik doğrulama faktörü sağlaması gerekir. Veya, algılanan risk düzeyine bağlı olarak erişimi engelleyebilirsiniz. Diğer Azure AD B2C deneyimleriyle birlikte, sonuçta elde edilen son kullanıcı deneyimini kuruluşunuzun sesiyle, stiliyle ve markasına göre özelleştirebilirsiniz. Kullanıcı erişim sağlayamıyorsa, risk azaltma alternatifleri de gösterebilirsiniz.
+- **Kendi Uyarlamalı kimlik doğrulamasını yapılandırarak riskleri otomatik olarak** çözün. Belirtilen uygulamalar için, çok faktörlü kimlik doğrulamasında (MFA) olduğu gibi, belirli bir kullanıcı kümesinin ikinci bir kimlik doğrulama faktörü sağlaması gerekir. Veya, algılanan risk düzeyine bağlı olarak erişimi engelleyebilirsiniz. Diğer Azure AD B2C deneyimleriyle birlikte, sonuçta elde edilen son kullanıcı deneyimini kuruluşunuzun sesiyle, stiliyle ve markasına göre özelleştirebilirsiniz. Kullanıcı erişim sağlayamıyorsa, risk azaltma alternatifleri de gösterebilirsiniz.
 - **Konuma, gruplara ve uygulamalara göre erişimi denetleyin**.Koşullu erişim, risk tabanlı olmayan durumları denetlemek için de kullanılabilir. Örneğin, belirli bir uygulamaya erişen müşterilere MFA gerektirebilir veya belirtilen coğrafi cihazlardan erişimi engelleyebilirsiniz.
 - **Azure AD B2C Kullanıcı akışları ve kimlik deneyimi çerçevesi özel Ilkeleriyle tümleştirin**. Mevcut özelleştirilmiş deneyimlerinizi kullanın ve koşullu erişim ile arabirim için gereken denetimleri ekleyin. Ayrıca, bilgi tabanlı erişim veya kendi tercih ettiğiniz MFA sağlayıcınız gibi erişim vermek için gelişmiş senaryolar da uygulayabilirsiniz.
 
@@ -60,7 +60,7 @@ Azure AD B2C, yerleşik Kullanıcı akışlarından koşullu erişim koşulları
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Koşullu erişim ilkelerini, Microsoft Graph API ile Azure AD B2C de yönetebilirsiniz. Ayrıntılar için bkz. [koşullu erişim belgeleri](../active-directory/conditional-access/overview.md) ve [Microsoft Graph başvurusu](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md).
+Koşullu erişim ilkelerini, Microsoft Graph API ile Azure AD B2C de yönetebilirsiniz. Ayrıntılar için bkz. [koşullu erişim belgeleri](../active-directory/conditional-access/overview.md) ve [Microsoft Graph başvurusu](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

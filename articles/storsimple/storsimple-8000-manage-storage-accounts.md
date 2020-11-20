@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978722"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951749"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Depolama hesabı kimlik bilgilerinizi yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -55,7 +55,7 @@ Gerçekleştirilebileceği depolama hesaplarıyla ilgili en yaygın görevler ş
 StorSimple cihazlarınızla kullanılabilecek üç tür depolama hesabı vardır.
 
 * **Otomatik olarak oluşturulan depolama hesapları** – ad ' yi önerdiğinde, bu depolama hesabı türü, hizmet ilk oluşturulduğunda otomatik olarak oluşturulur. Bu depolama hesabının nasıl oluşturulduğu hakkında daha fazla bilgi edinmek için bkz. 1. Adım: Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md)bölümünde [Yeni bir hizmet oluşturma](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) . 
-* **Hizmet aboneliğindeki depolama hesapları** : Bunlar, hizmet ile aynı abonelikle ilişkili Azure depolama hesaplarıdır. Bu depolama hesaplarının nasıl oluşturulduğu hakkında daha fazla bilgi edinmek için bkz. [Azure depolama hesapları hakkında](../storage/common/storage-create-storage-account.md). 
+* **Hizmet aboneliğindeki depolama hesapları** : Bunlar, hizmet ile aynı abonelikle ilişkili Azure depolama hesaplarıdır. Bu depolama hesaplarının nasıl oluşturulduğu hakkında daha fazla bilgi edinmek için bkz. [Azure depolama hesapları hakkında](../storage/common/storage-account-create.md). 
 * **Hizmet aboneliği dışındaki depolama hesapları** : Bunlar, hizmetiniz ile ilişkilendirilmemiş ve hizmet oluşturulmadan önce büyük olasılıkla var olan Azure depolama hesaplarıdır.
 
 ## <a name="add-a-storage-account"></a>Depolama hesabı ekleme
@@ -80,7 +80,7 @@ Azure depolama hesabı kimlik bilgilerini eklemek için aşağıdaki yordamları
 3. **Ekle**'ye tıklayın.
 4. **Depolama hesabı kimlik bilgisi ekle** dikey penceresinde aşağıdakileri yapın:
    
-    1. **Abonelik**için **diğer**' i seçin.
+    1. **Abonelik** için **diğer**' i seçin.
    
     2. Azure depolama hesabı kimlik bilgilerinizin adını belirtin.
    
@@ -90,7 +90,7 @@ Azure depolama hesabı kimlik bilgilerini eklemek için aşağıdaki yordamları
    
     5. **Ekle**'ye tıklayın. Depolama hesabı kimlik bilgisi başarıyla oluşturulduktan sonra bilgilendirilirsiniz.
 
-5. Yeni oluşturulan depolama hesabı kimlik bilgileri, **depolama hesabı kimlik bilgileri**altındaki StorSimple yapılandırma Aygıt Yöneticisi hizmeti dikey penceresinde görüntülenir.
+5. Yeni oluşturulan depolama hesabı kimlik bilgileri, **depolama hesabı kimlik bilgileri** altındaki StorSimple yapılandırma Aygıt Yöneticisi hizmeti dikey penceresinde görüntülenir.
    
 
 
@@ -157,7 +157,7 @@ Bu değişikliğin StorSimple Aygıt Yöneticisi hizmetini bilgilendirmek için,
 
     ![anahtarları Synchronize](./media/storsimple-8000-manage-storage-accounts/syncaccesskey1.png)
 
-3. Tıklayın **... Daha fazla** ve ardından, **döndürmek için eşitleme erişim anahtarını**seçin.   
+3. Tıklayın **... Daha fazla** ve ardından, **döndürmek için eşitleme erişim anahtarını** seçin.   
 
     ![anahtarları Synchronize 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
@@ -179,4 +179,3 @@ Anahtar başarıyla eşitlendikten sonra size bildirimde bulunulacaktır.
 ## <a name="next-steps"></a>Sonraki adımlar
 * [StorSimple güvenliği](storsimple-8000-security.md)hakkında daha fazla bilgi edinin.
 * StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
-

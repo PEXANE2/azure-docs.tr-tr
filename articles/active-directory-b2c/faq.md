@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4db3c58da791a5cad5fc3b9c98f245202d8119e2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 384f178481f7a6ff202d5363ba09c242b1fc366d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054772"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951800"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -90,7 +90,7 @@ Geçiş aracınızı yazmak için Microsoft Graph API 'sini kullanabilirsiniz. A
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C yerel hesaplar için hangi parola Kullanıcı akışı kullanılır?
 
-Yerel hesaplar için Azure AD B2C parolası Kullanıcı akışı, Azure AD ilkesini temel alır. Azure AD B2C's kaydolma, kaydolma veya oturum açma ve parola sıfırlama Kullanıcı akışları "güçlü" parola gücünü kullanır ve herhangi bir parolayı sona ermez. Daha ayrıntılı bilgi için bkz. [Azure Active Directory parola ilkeleri ve kısıtlamaları](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy).
+Yerel hesaplar için Azure AD B2C parolası Kullanıcı akışı, Azure AD ilkesini temel alır. Azure AD B2C's kaydolma, kaydolma veya oturum açma ve parola sıfırlama Kullanıcı akışları "güçlü" parola gücünü kullanır ve herhangi bir parolayı sona ermez. Daha ayrıntılı bilgi için bkz. [Azure Active Directory parola ilkeleri ve kısıtlamaları](../active-directory/authentication/concept-sspr-policy.md).
 
 Hesap kilitlenmelerini ve parolaları hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C tehditler ve veriler için tehditleri yönetme](threat-management.md).
 
@@ -104,7 +104,7 @@ Hayır, güvenlik nedenleriyle Azure AD B2C sayfalar iFrame içinde açılamaz. 
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C, Microsoft Dynamics gibi CRM sistemleriyle birlikte çalışıyor mu?
 
-Microsoft Dynamics 365 Portalı ile tümleştirme kullanılabilir. [Kimlik doğrulaması için Azure AD B2C kullanmak üzere Dynamics 365 portalını yapılandırma](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c)konusuna bakın.
+Microsoft Dynamics 365 Portalı ile tümleştirme kullanılabilir. [Kimlik doğrulaması için Azure AD B2C kullanmak üzere Dynamics 365 portalını yapılandırma](/dynamics365/customer-engagement/portals/azure-ad-b2c)konusuna bakın.
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Azure AD B2C SharePoint şirket içi 2016 veya önceki bir sürümü ile çalışıyor mu?
 
@@ -112,7 +112,7 @@ Azure AD B2C, SharePoint dış iş ortağı-paylaşım senaryosu için tasarlanm
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Dış kimlikleri yönetmek için Azure AD B2C veya B2B kullanmalıdır mi?
 
-Dış kimlik senaryolarınıza uygun özellikleri uygulama hakkında daha fazla bilgi edinmek için [Azure AD 'de B2B işbirliğinin ve B2C 'nin nasıl karşılaştırılacağını](../active-directory/b2b/compare-with-b2c.md) okuyun.
+Dış kimlik senaryolarınıza uygun özellikleri uygulama hakkında daha fazla bilgi edinmek için [Azure AD 'de B2B işbirliğinin ve B2C 'nin nasıl karşılaştırılacağını](../active-directory/external-identities/compare-with-b2c.md) okuyun.
 
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C raporlama ve denetleme özellikleri ne sağlar? Azure AD Premium ile aynı mı?
 
@@ -134,13 +134,13 @@ Evet, bkz. [dil özelleştirmesi](user-flow-language-customization.md). 36 dil i
 
 Azure AD B2C kiracınızı silmek için aşağıdaki adımları izleyin.
 
-Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalar (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalar (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi*olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
+1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi* olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. Azure AD B2C kiracınızdaki tüm **Kullanıcı akışlarını (ilkeleri)** silin.
 1. **Uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar** sekmesini seçin.
 1. Kaydolduysanız tüm uygulamaları silin.
@@ -148,8 +148,8 @@ Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalar (e
 1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 1. Her bir kullanıcıyı sırasıyla seçin (Şu anda oturum açmış olduğunuz *abonelik yönetici* kullanıcısını hariç tut). Sayfanın alt kısmındaki **Sil** ' i seçin ve istendiğinde **Evet** ' i seçin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
-1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
-1. **Yönet**altında **Özellikler** ' i seçin.
+1. **Yönet** altında **Kullanıcı ayarları**' nı seçin.
+1. **Yönet** altında **Özellikler** ' i seçin.
 1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
@@ -157,20 +157,20 @@ Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalar (e
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi*olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
+1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi* olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. Azure AD B2C kiracınızdaki tüm **Kullanıcı akışlarını (ilkeleri)** silin.
 1. Azure AD B2C kiracınızda kayıtlı olan tüm **uygulamaları (eski)** silin.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 1. Her bir kullanıcıyı sırasıyla seçin (Şu anda oturum açmış olduğunuz *abonelik yönetici* kullanıcısını hariç tut). Sayfanın alt kısmındaki **Sil** ' i seçin ve istendiğinde **Evet** ' i seçin.
-1. **Yönet**'in altında **Uygulama kayıtları**nı seçin.
+1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
 1. **Tüm uygulamaları görüntüle** seçeneğini belirleyin
-1. **B2C-Extensions-App**adlı uygulamayı seçin, **Sil**' i seçin ve istendiğinde **Evet** ' i seçin.
-1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
-1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
-1. **Yönet**altında **Özellikler** ' i seçin.
+1. **B2C-Extensions-App** adlı uygulamayı seçin, **Sil**' i seçin ve istendiğinde **Evet** ' i seçin.
+1. **Yönet** altında **Kullanıcı ayarları**' nı seçin.
+1. Varsa, **LinkedIn hesap bağlantıları** altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
+1. **Yönet** altında **Özellikler** ' i seçin.
 1. **Azure kaynakları için erişim yönetimi**'nin altında **Evet**'i ve sonra da **Kaydet**'i seçin.
 1. Azure portal oturumunuzu kapatıp erişiminizi yenilemek için yeniden oturum açın.
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
