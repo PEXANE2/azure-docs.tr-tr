@@ -112,11 +112,11 @@
         - name: Azure Veritabanı Geçiş Kılavuzu
           href: 'https://aka.ms/datamigration'
         - name: Data Migration Yardımcısı
-          href: 'https://aka.ms/dma'
+          href: /sql/dma/dma-overview
         - name: SQL Server Geçiş Yardımcısı
-          href: 'https://aka.ms/ssma'
+          href: /sql/ssma/sql-server-migration-assistant
         - name: Veritabanı Yükseltme Deneyimi Yardımcısı
-          href: 'https://aka.ms/dea-docs'
+          href: /sql/dea/database-experimentation-assistant-overview
         - name: Veri Erişimi Geçiş Araç Seti
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: Sorun çözümü ve bilinen sorunlar

@@ -96,7 +96,7 @@
           items:
             - name: Azure portal
               href: tutorial-design-database-using-portal.md
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: tutorial-design-database-using-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -116,8 +116,6 @@
           href: sample-scripts-azure-cli.md
         - name: Java bağlantı havuzu
           href: sample-scripts-java-connection-pooling.md
-        - name: Azure İlkesi yerleşik ilkeler
-          href: ./policy-reference.md
     - name: Kavramlar
       items:
         - name: Sunucular
@@ -156,6 +154,9 @@
               href: concepts-azure-ad-authentication.md
             - name: Altyapıyı çift şifreleme
               href: concepts-infrastructure-double-encryption.md
+            - name: Azure İlkesi’ne göre güvenlik denetimleri
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Güvenlik temeli
               href: security-baseline.md
         - name: Planlı bakım
@@ -246,7 +247,7 @@
             - name: Azure portal
               href: howto-restore-server-portal.md
               displayName: 'restore server,backup'
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-restore-server-cli.md
               displayName: 'restore server, backup'
             - name: Azure PowerShell
@@ -277,7 +278,7 @@
             - name: Azure portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -296,7 +297,7 @@
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
               displayName: 'storage, business continuity , downtime, cli'
             - name: Azure PowerShell
@@ -404,7 +405,7 @@
             - name: Azure portal
               href: howto-restart-server-portal.md
               displayName: restart
-            - name: Azure CLI’si
+            - name: Azure CLI
               href: howto-restart-server-cli.md
               displayName: restart
             - name: Azure PowerShell
@@ -565,7 +566,7 @@
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
@@ -573,6 +574,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Yönetim saklı yordamları
       href: reference-stored-procedures.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Dağıtım şablonları

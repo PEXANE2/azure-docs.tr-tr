@@ -8,6 +8,10 @@
   items:
     - name: Toplanan ad alanını planlama
       href: hpc-cache-namespace.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Ön koşullar

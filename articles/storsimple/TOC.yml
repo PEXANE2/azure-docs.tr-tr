@@ -352,19 +352,19 @@
             - name: Güncelleştirme 1
               href: storsimple-update1-release-notes.md
             - name: Güncelleştirme 0.3
-              href: storsimple-february-2015-release-notes.md
+              href: ./index.yml
             - name: Güncelleştirme 0.2
-              href: storsimple-january-2015-release-notes.md
+              href: ./index.yml
             - name: Güncelleştirme 0.1
-              href: storsimple-october-2014-release-notes.md
+              href: ./index.yml
             - name: Sürüm - GA
-              href: storsimple-july-2014-release-notes.md
+              href: ./index.yml
     - name: Başvuru
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/storsimple'
+          href: /rest/api/storsimple
         - name: StorSimple cmdlet’leri için Windows PowerShell
-          href: 'https://technet.microsoft.com/library/dn688168.aspx'
+          href: /powershell/module/hcs/?viewFallbackFrom=winserverr2-ps
         - name: Resource Manager şablonu
           href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple Data Manager
@@ -398,7 +398,7 @@
     - name: Sürüm notları
       items:
         - name: StorSimple sürüm notları
-          href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
+          href: ./storsimple-virtual-array-update-04-release-notes.md
         - name: CSP sürüm notları
           href: 'https://partner.microsoft.com/Support/whats-new'
         - name: 'CSP için StorSimple: SSS'
@@ -412,13 +412,13 @@
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Pazarlama blogu
-      href: 'https://blogs.technet.com/b/cis/'
+      href: /archive/blogs/cis/
     - name: Pazarlama
       href: 'https://azure.microsoft.com/services/storsimple/'
     - name: StorSimple Desteği seçenekleri
       href: storsimple-8000-support-options.md
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-storsimple.html'
+      href: /answers/topics/azure-storsimple.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: Fiyatlandırma hesaplayıcı
@@ -426,7 +426,7 @@
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=storsimple'
     - name: Destek blogu
-      href: 'https://docs.microsoft.com/archive/blogs/storsimple/'
+      href: /archive/blogs/storsimple/
     - name: Üçüncü taraf bildirimleri
       href: 'https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip'
     - name: Videolar

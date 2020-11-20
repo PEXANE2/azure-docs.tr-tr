@@ -90,6 +90,10 @@
           href: migrate-appliance.md
         - name: Çoğaltma aleti gereksinimleri
           href: migrate-replication-appliance.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Azure Geçişi aleti mimarisi
       href: migrate-appliance-architecture.md
     - name: Hyper-V geçiş mimarisi

@@ -57,8 +57,12 @@
       href: concept-security-alerts.md
     - name: Özelleştirilebilir güvenlik uyarıları
       href: concept-customizable-security-alerts.md
-    - name: Güvenlik önerileri
-      href: concept-recommendations.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik önerileri
+          href: concept-recommendations.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Taban çizgisi
       href: concept-baseline.md
     - name: Olay toplama

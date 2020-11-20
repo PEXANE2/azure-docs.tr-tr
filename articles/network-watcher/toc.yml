@@ -69,17 +69,17 @@
     - name: Bağlantı İzleyicisi’ne geçiş
       items:
         - name: Ağ Performansı İzleyicisi’nden
-          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+          href: migrate-to-connection-monitor-from-network-performance-monitor.md
         - name: Bağlantı İzleyicisi’nden (Klasik)
-          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
+          href: migrate-to-connection-monitor-from-connection-monitor-classic.md
     - name: VM ağ sorunlarını tanılama
       items:
         - name: VM uzantıları yükleme
           items:
             - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
             - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
         - name: Bir yönlendirme sorununu tanılama
           items:
             - name: Azure PowerShell
@@ -88,7 +88,7 @@
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Giden bağlantı sorunlarını tanılama
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
@@ -184,14 +184,14 @@
     - name: Bir konum ile Azure bölgesi arasındaki göreli gecikme süresini belirleme
       href: view-relative-latencies.md
     - name: Ağ performansı izleyicisi
-      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
     - name: Kaynakları taşıma
       items:
         - name: Ağ İzleyicisi Kaynaklarını Taşıma
           href: resource-move.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/network/watcher
     - name: Azure PowerShell
       href: /powershell/module/az.network/#network_watcher
@@ -214,7 +214,7 @@
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: Hizmet güncelleştirmeleri

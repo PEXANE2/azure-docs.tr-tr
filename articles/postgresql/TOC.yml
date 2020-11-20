@@ -106,8 +106,6 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
-        - name: Azure İlkesi yerleşik ilkeler
-          href: ./policy-reference.md
     - name: Kavramlar
       items:
         - name: Sunucular
@@ -147,6 +145,9 @@
             - name: Altyapıyı çift şifreleme
               href: concepts-infrastructure-double-encryption.md
               displayName: 'security, infrastructure encryption'
+            - name: Azure İlkesi’ne göre güvenlik denetimleri
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Güvenlik temeli
               href: security-baseline.md
         - name: Ağ
@@ -638,6 +639,9 @@
       href: /rest/api/postgresql
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin
