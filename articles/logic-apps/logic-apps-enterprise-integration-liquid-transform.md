@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716682"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992718"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Azure Logic Apps 'de haritalar olarak sıvı şablonları kullanarak JSON ve XML dönüştürme
 
-Mantıksal uygulamalarınızda temel JSON dönüştürmeleri gerçekleştirmek istediğinizde, JSON **oluşturma** veya **ayrıştırma**gibi yerel [veri işlemlerini](../logic-apps/logic-apps-perform-data-operations.md) kullanabilirsiniz. Yinelemeler, denetim akışları ve değişkenler gibi öğelere sahip olan JSON dönüşümlerine gelişmiş ve karmaşık JSON için, [sıvı](https://shopify.github.io/liquid/) açık kaynak şablon dilini kullanarak bu dönüşümleri tanımlayan şablonlar oluşturun ve kullanın. Ayrıca, örneğin JSON-Text, XML-JSON ve XML 'den metne [diğer dönüşümler de gerçekleştirebilirsiniz](#other-transformations).
+Mantıksal uygulamalarınızda temel JSON dönüştürmeleri gerçekleştirmek istediğinizde, JSON **oluşturma** veya **ayrıştırma** gibi yerel [veri işlemlerini](../logic-apps/logic-apps-perform-data-operations.md) kullanabilirsiniz. Yinelemeler, denetim akışları ve değişkenler gibi öğelere sahip olan JSON dönüşümlerine gelişmiş ve karmaşık JSON için, [sıvı](https://shopify.github.io/liquid/) açık kaynak şablon dilini kullanarak bu dönüşümleri tanımlayan şablonlar oluşturun ve kullanın. Ayrıca, örneğin JSON-Text, XML-JSON ve XML 'den metne [diğer dönüşümler de gerçekleştirebilirsiniz](#other-transformations).
 
 Mantıksal uygulamanızda bir sıvı dönüştürmesi gerçekleştirebilmek için önce istediğiniz eşlemeyi tanımlayan bir likit şablon oluşturmanız gerekir. Ardından, şablonu [tümleştirme hesabınıza](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) [bir eşleme olarak yüklersiniz](../logic-apps/logic-apps-enterprise-integration-maps.md) . Mantıksal uygulamanıza **JSON 'Yı JSON-likit** eylemini ekleyerek, kullanılacak eyleme yönelik harita olarak sıvı şablonu ' nu seçebilirsiniz.
 
@@ -80,7 +80,7 @@ Bu makalede, bu görevlerin nasıl tamamlanacağı gösterilmektedir:
 
    ![Tümleştirme hesabı seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-1. **Genel bakış** bölmesinde, **Bileşenler**altında **haritalar**' ı seçin.
+1. **Genel bakış** bölmesinde, **Bileşenler** altında **haritalar**' ı seçin.
 
     !["Haritalar" kutucuğunu seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-maps-tile.png)
 
@@ -150,9 +150,9 @@ Bu makalede, bu görevlerin nasıl tamamlanacağı gösterilmektedir:
 
     Dotlikit, JSON 'u yerel olarak anlamıyor, bu nedenle ters eğik çizgi karakteri ( `\` ) ve diğer tüm ayrılmış JSON karakterlerini attığınızdan emin olun.
 
-  * Şablonunuz [likit filtreler](https://shopify.github.io/liquid/basics/introduction/#filters)kullanıyorsa, cümle büyük/ *küçük harf*kullanan [dotlikit ve C# adlandırma kurallarını](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing)izlediğinizden emin olun. Tüm sıvı dönüştürmeleri için, şablonunuzda filtre adlarında Ayrıca tümce büyük/küçük harf de kullandığınızdan emin olun. Aksi takdirde, filtreler çalışmaz.
+  * Şablonunuz [likit filtreler](https://shopify.github.io/liquid/basics/introduction/#filters)kullanıyorsa, cümle büyük/ *küçük harf* kullanan [dotlikit ve C# adlandırma kurallarını](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing)izlediğinizden emin olun. Tüm sıvı dönüştürmeleri için, şablonunuzda filtre adlarında Ayrıca tümce büyük/küçük harf de kullandığınızdan emin olun. Aksi takdirde, filtreler çalışmaz.
 
-    Örneğin, filtresini kullandığınızda, öğesini `replace` kullanın `Replace` `replace` . Aynı kural, [Dotsıvı online](http://dotliquidmarkup.org/try-online)'da örnekleri denerseniz geçerli olur. Daha fazla bilgi için bkz. [Shopify sıvı Filters](https://shopify.dev/docs/themes/liquid/reference/filters) ve [dotsıvı sıvı Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). Shopify belirtimi her bir filtreye yönelik örnekleri içerir, bu nedenle karşılaştırma için bu örnekleri Dotlikit ' de deneyebilirsiniz [-çevrimiçi deneyin](https://dotliquidmarkup.org/try-online).
+    Örneğin, filtresini kullandığınızda, öğesini `replace` kullanın `Replace` `replace` . Aynı kural, [Dotsıvı online](http://dotliquidmarkup.org/try-online)'da örnekleri denerseniz geçerli olur. Daha fazla bilgi için bkz. [Shopify sıvı Filters](https://shopify.dev/docs/themes/liquid/reference/filters) ve [dotsıvı sıvı Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). Shopify belirtimi her bir filtreye yönelik örnekleri içerir, bu nedenle karşılaştırma için bu örnekleri Dotlikit ' de deneyebilirsiniz [-çevrimiçi deneyin](http://dotliquidmarkup.org/try-online).
 
   * `json`Shopify uzantı filtrelerinden gelen filtre Şu anda [dotlikit içinde uygulanmıyor](https://github.com/dotliquid/dotliquid/issues/384). Genellikle, bu filtreyi JSON dize ayrıştırması için metin çıktısı hazırlamak üzere kullanabilirsiniz, ancak bunun yerine filtreyi kullanmanız gerekir `Replace` .
 
@@ -244,7 +244,7 @@ Bu örnek için kullanılan likit şablon aşağıda verilmiştir:
 
 * [Shopify sıvı dili ve örnekleri](https://shopify.github.io/liquid/basics/introduction/)
 * [Dotlikit](http://dotliquidmarkup.org/)
-* [Dotsıvı-çevrimiçi deneyin](https://dotliquidmarkup.org/try-online)
+* [Dotsıvı-çevrimiçi deneyin](http://dotliquidmarkup.org/try-online)
 * [Dotsıvı GitHub](https://github.com/dotliquid/dotliquid)
 * [Dotlikit GitHub sorunları](https://github.com/dotliquid/dotliquid/issues/)
 * [Haritalar](../logic-apps/logic-apps-enterprise-integration-maps.md) hakkında daha fazla bilgi edinin

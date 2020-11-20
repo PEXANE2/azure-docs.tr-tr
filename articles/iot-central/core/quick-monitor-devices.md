@@ -3,18 +3,17 @@ title: Hızlı başlangıç-Azure IoT Central cihazlarınızı Izleyin
 description: Hızlı başlangıç-bir operatör olarak, cihazlarınızı izlemek için Azure IoT Central uygulamanızı nasıl kullanacağınızı öğrenin.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: af5683bf253e26ab928e46059f9af9d2ab8af3bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4485e4f8e873b1b49dc3d6df72eb04a1cbe8c17
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987345"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992785"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Hızlı başlangıç: cihazlarınızı izlemek için Azure IoT Central kullanma
 
@@ -28,29 +27,29 @@ Başlamadan önce, önceki üç hızlı başlangıç [Oluştur Azure IoT Central
 
 ## <a name="receive-a-notification"></a>Bildirim alma
 
-Azure IoT Central, e-posta iletileri halinde cihazlara ilişkin bildirimler gönderir. Oluşturucu, bağlı bir cihaz algılayıcısındaki sıcaklık bir eşiği aştığında bildirim göndermek için bir kural ekledi. Oluşturucunun bildirim almayı seçtiği hesaba gönderilen e-postaları kontrol edin.
+Azure IoT Central, e-posta iletileri halinde cihazlara ilişkin bildirimler gönderir. Bir Oluşturucu olarak, bağlı bir cihaz sensördeki nem bir eşiği aştığında bir işlece bildirim göndermek için bir kural eklediniz. Bir operatör olarak, e-postalarınızı bildirimler için kontrol edersiniz.
 
 Cihaz hızlı başlangıç [için kuralları yapılandırma ve eylemlerin](quick-configure-rules.md) sonunda aldığınız e-posta iletisini açın. E-postada, cihazın bağlantısını seçin:
 
-![Uyarı bildirimi e-postası](media/quick-monitor-devices/email.png)
+:::image type="content" source="media/quick-monitor-devices/email.png" alt-text="Bildirim e-postasını gösteren ekran görüntüsü":::
 
 Önceki hızlı başlangıçlarda oluşturduğunuz sanal cihaz için **genel bakış** görünümü tarayıcınızda açılır:
 
-![Bildirim e-posta iletisini tetikleyen cihaz](media/quick-monitor-devices/dashboard.png)
+:::image type="content" source="media/quick-monitor-devices/dashboard.png" alt-text="Bildirimi tetikleyen cihaza genel bakış gösteren ekran görüntüsü":::
 
 ## <a name="investigate-an-issue"></a>Sorun araştırma
 
-Bir operatör olarak, **genel bakış**, **hakkında**ve **Komutlar** görünümlerinde cihaz hakkındaki bilgileri görüntüleyebilirsiniz. Oluşturucu cihaz bilgilerini düzenlemeniz ve cihaz özelliklerini ayarlamanız için bir **cihaz yönetme** görünümü oluşturdu.
+Bir operatör olarak, **genel bakış**, **hakkında** ve **Komutlar** görünümlerinde cihaz hakkındaki bilgileri görüntüleyebilirsiniz. Oluşturucu cihaz bilgilerini düzenlemeniz ve cihaz özelliklerini ayarlamanız için bir **cihaz yönetme** görünümü oluşturdu.
 
-Panodaki grafik, cihaz sıcaklığının bir çizimini gösterir. Cihaz sıcaklığının çok yüksek olduğuna karar verirsiniz.
+Panodaki grafik, cihaz nem boyutunu gösterir. Cihaz nem oranı çok yüksek olduğuna karar verirsiniz.
 
 ## <a name="remediate-an-issue"></a>Sorunu düzeltme
 
 Cihazda bir değişiklik yapmak için **Cihazı yönet** sayfasını kullanın.
 
-Cihaz soğuk olan **fan hızını** 500 olarak değiştirin. Cihazı güncelleştirmek için **Kaydet** ' i seçin. Cihaz, ayarlar değişikliğini onayladığında, özelliğin durumu **eşitlenmiş**olarak değişir:
+Cihazın sıcak olması için **hedef sıcaklığını** 80 olarak değiştirin ve nem sayısını azaltın. Cihazı güncelleştirmek için **Kaydet** ' i seçin. Cihaz, ayarlar değişikliğini onayladığında, özelliğin durumu **eşitlenmiş** olarak değişir:
 
-![Ayarları güncelleştirme](media/quick-monitor-devices/change-settings.png)
+:::image type="content" source="media/quick-monitor-devices/change-settings.png" alt-text="Cihaz için güncelleştirilmiş hedef sıcaklık ayarını gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
