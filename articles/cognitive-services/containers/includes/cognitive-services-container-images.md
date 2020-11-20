@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 3f2611c9535b9721cccadf35e56bdd21a3020257
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2c2ebe9b419100163ae55c1be85dd1464904e841
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677456"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979555"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
@@ -89,9 +89,8 @@ Daha önce, geçitli önizleme kapsayıcıları `containerpreview.azurecr.io` de
 |--|--|--|
 | [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | V 2.0 'ı oku | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | V 3.1 'i oku | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
-| [Görüntü İşleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container) | Uzamsal Analiz | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
+| [Görüntü İşleme](../../computer-vision/spatial-analysis-container.md) | Uzamsal Analiz | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=ctts) | Özel metin okuma | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=lid) | Dil Algılama | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=ntts) | Sinir metin okuma | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech` |
 | [Sistem durumu için Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Sistem durumu için Metin Analizi | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |
-
