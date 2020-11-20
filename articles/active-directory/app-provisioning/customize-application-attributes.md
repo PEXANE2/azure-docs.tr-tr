@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441962"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955540"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Öğretici-Kullanıcı sağlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -136,11 +136,11 @@ Desteklenen özniteliklerin listesi düzenlenirken aşağıdaki özellikler sağ
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCıM uyumlu bir uygulamaya özel uzantı özniteliği sağlama
 SCıM RFC, çekirdek Kullanıcı ve grup şeması tanımlar, Ayrıca, şema uzantılarının uygulamanızın ihtiyaçlarını karşılamasına izin verir. Bir SCıM uygulamasına özel bir öznitelik eklemek için:
-   1. [Azure Active Directory portalında](https://aad.portal.azure.com)oturum açın, **Kurumsal uygulamalar** ' ı seçin, uygulamanızı seçin ve **sağlama** ' yı seçin.
+   1. [Azure Active Directory portalında](https://aad.portal.azure.com)oturum açın, **Kurumsal uygulamalar**' ı seçin, uygulamanızı seçin ve **sağlama**' yı seçin.
    2. **Eşlemeler** altında, özel bir öznitelik eklemek istediğiniz nesneyi (Kullanıcı veya grup) seçin.
-   3. Sayfanın alt kısmındaki **Gelişmiş seçenekleri göster** ' i seçin.
-   4. **Appname için öznitelik listesini düzenle** ' yi seçin.
-   5. Öznitelik listesinin en altında, belirtilen alanlara özel öznitelikle ilgili bilgileri girin. Sonra **öznitelik Ekle** ' yi seçin.
+   3. Sayfanın alt kısmındaki **Gelişmiş seçenekleri göster**' i seçin.
+   4. **Appname için öznitelik listesini düzenle**' yi seçin.
+   5. Öznitelik listesinin en altında, belirtilen alanlara özel öznitelikle ilgili bilgileri girin. Sonra **öznitelik Ekle**' yi seçin.
 
 SCıM uygulamaları için, öznitelik adı aşağıdaki örnekte gösterilen modele uymalıdır. "CustomExtensionName" ve "CustomAttribute" uygulamanızın gereksinimlerine göre özelleştirilebilir. Örneğin: urn: IETF: params: SCIM: schemas: Extension: CustomExtensionName: 2.0: User: CustomAttribute 
 
@@ -202,7 +202,7 @@ Uygulamanıza bir kullanıcı için roller sağlamak üzere aşağıdaki adımla
   - **Dikkate alınması gereken noktalar**
     - Bir kullanıcıya birden çok rolün atanmadığından emin olun. Hangi rolün sağlanacağı garanti edilemez.
     
-  - **Örnek çıkış** 
+  - **Örnek istek (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ Uygulamanıza bir kullanıcı için roller sağlamak üzere aşağıdaki adımla
    }
    ```
   
+  - **Örnek çıkış (Düzeltme Eki)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+Düzeltme ekinde ve POSTADAKI istek biçimi farklı. POST ve PATCH 'in aynı biçimde gönderildiğinden emin olmak için [burada](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)açıklanan özellik bayrağını kullanabilirsiniz. 
+
 - **Approleatamasınscomplex** 
   - **Ne zaman kullanılır:** Bir kullanıcı için birden çok rol sağlamak üzere Approleatamamentscomplex ifadesini kullanın. 
   - **Nasıl yapılandırılır:** Roller için yeni bir öznitelik eklemek üzere yukarıda açıklanan desteklenen özniteliklerin listesini düzenleyin: 

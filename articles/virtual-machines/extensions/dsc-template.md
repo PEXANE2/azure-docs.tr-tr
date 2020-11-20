@@ -8,17 +8,18 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38fcd069fa6a3e8582dcd96b2bd0b4074986de7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511169"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955812"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla istenen durum yapılandırma uzantısı
 
@@ -81,7 +82,7 @@ Daha fazla bilgi için bkz. [Virtualmachineextension sınıfı](/dotnet/api/micr
 ## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Windows sanal makine ölçek kümeleri için şablon örneği
 
 Bir sanal makine ölçek kümesi düğümünün **Virtualmachineprofile, extensionprofile** özniteliğine sahip bir **Özellikler** bölümü vardır.
-**Uzantılar**altında DSC uzantısının ayrıntılarını ekleyin.
+**Uzantılar** altında DSC uzantısının ayrıntılarını ekleyin.
 
 DSC Uzantısı varsayılan uzantı özelliklerini devralır.
 Daha fazla bilgi için bkz. [VirtualMachineScaleSetExtension Class](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
@@ -177,9 +178,9 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 
 ## <a name="details"></a>Ayrıntılar
 
-| Özellik adı | Tür | Açıklama |
+| Özellik adı | Tür | Description |
 | --- | --- | --- |
-| Settings. wmfVersion |string |Sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin **en son** olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler **4,0**, **5,0**, **5,1**ve **en son**değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en**sonuncusudur. |
+| Settings. wmfVersion |string |Sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin **en son** olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler **4,0**, **5,0**, **5,1** ve **en son** değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en** sonuncusudur. |
 | settings.configacation. URL |string |DSC yapılandırması. zip dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, **protectedSettings.configurationUrlSasToken** özelliğini SAS belirtecinizin değerine ayarlayın. **settings.configuration. Script** veya **settings.configuration. Function** tanımlanırsa bu özellik gereklidir. Bu özellikler için herhangi bir değer verilmezse, uzantı konum Configuration Manager (LCM) meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
 | settings.configuration. betiği |string |DSC yapılandırmanızın tanımını içeren betiğin dosya adını belirtir. Bu betik, **settings.configuration. URL** özelliği tarafından belirtilen URL 'den indirilen. zip dosyasının kök klasöründe olmalıdır. **settings.configuration. URL** veya **settings.configuration. Script** tanımlanmışsa bu özellik gereklidir. Bu özellikler için hiçbir değer verilmezse, uzantı, LCM meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
 | settings.configuration. Function |string |DSC yapılandırmanızın adını belirtir. Adlı yapılandırma, **settings.configuration. Script** tarafından tanımlanan betiğe eklenmelidir. **settings.configuration. URL** veya **settings.configuration. Function** tanımlanırsa bu özellik gereklidir. Bu özellikler için hiçbir değer verilmezse, uzantı, LCM meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
@@ -196,12 +197,12 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 Aşağıdaki değerler hakkında daha fazla bilgi için bkz. [yerel Configuration Manager temel ayarları](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Yalnızca aşağıdaki tabloda listelenen LCM özelliklerini yapılandırmak için DSC Uzantısı varsayılan yapılandırma komut dosyasını kullanabilirsiniz.
 
-| Özellik adı | Tür | Açıklama |
+| Özellik adı | Tür | Description |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Gerekli özellik. Bir düğüm için bir PowerShell kimlik bilgisi nesnesinin parolası olarak Azure Automation hizmetine kaydolmak üzere kullanılan anahtarı belirtir. Bu değer, Otomasyon hesabına yönelik **ListKeys 'i al** yöntemi kullanılarak otomatik olarak bulunabilir.  [Örneğe](#example-using-referenced-azure-automation-registration-values)bakın. |
 | settings.configurationArguments. RegistrationUrl |string |Gerekli özellik. Düğümün kaydolmaya çalıştığı Otomasyon uç noktasının URL 'sini belirtir. Bu değer, Otomasyon hesabında **başvuru** yöntemi kullanılarak otomatik olarak bulunabilir. |
 | settings.configurationArguments. NodeConfigurationName |string |Gerekli özellik. Düğüme atanacak Otomasyon hesabındaki düğüm yapılandırmasını belirtir. |
-| settings.configurationArguments.ConfigurationMode |string |LCM modunu belirtir. Geçerli seçenekler **Applyonly**, **Applyandmonitor**ve **applyandadutocorrect**içerir.  Varsayılan değer **Applyandmonitor**' dır. |
+| settings.configurationArguments.ConfigurationMode |string |LCM modunu belirtir. Geçerli seçenekler **Applyonly**, **Applyandmonitor** ve **applyandadutocorrect** içerir.  Varsayılan değer **Applyandmonitor**' dır. |
 | settings.configurationArguments. RefreshFrequencyMins | Int32 | LCM 'nin güncelleştirmeler için Otomasyon hesabını ne sıklıkta kontrol etmek için deneme sayısını belirtir.  Varsayılan değer **30**' dur.  Minimum değer **15**' tir. |
 | settings.configurationArguments.ConfigUrationmodefısmins | Int32 | LCM 'nin geçerli yapılandırmayı ne sıklıkta doğrulayacağını belirtir. Varsayılan değer **15**' tir. Minimum değer **15**' tir. |
 | settings.configurationArguments. Rebootnodeifgerekiyordu | boolean | Bir DSC işlemi istediğinde bir düğümün otomatik olarak yeniden başlatılıp başlatılmayacağını belirtir. Varsayılan değer **false**'dur. |
@@ -294,7 +295,7 @@ Aşağıdaki örnek, Azure Otomasyonu hesap özelliklerine başvurarak ve birinc
 
 ## <a name="update-from-a-previous-format"></a>Önceki bir biçimden Güncelleştir
 
-Uzantının önceki biçimindeki tüm ayarlar (ve genel Özellikler **ModulesUrl**, **modulesource**, **moduleversion**, **configurationfunction**, **sastoken**veya **Özellikler**), uzantının geçerli biçimine otomatik olarak uyum sağlar.
+Uzantının önceki biçimindeki tüm ayarlar (ve genel Özellikler **ModulesUrl**, **modulesource**, **moduleversion**, **configurationfunction**, **sastoken** veya **Özellikler**), uzantının geçerli biçimine otomatik olarak uyum sağlar.
 Yalnızca daha önce olduğu gibi çalışır.
 
 Aşağıdaki şemada, önceki ayarlar şemasının nasıl göründüğünü gösterilmektedir:
@@ -393,7 +394,7 @@ Tüm URL 'Lerin, uzantının uzak makinede erişebileceği geçerli konumlara ç
 
 **Sorun**: *configurationarguments* özelliği bir **karma tablo** nesnesine çözümlenemiyor.
 
-**Çözüm**: *configurationarguments* özelliğini bir **karma tablo**yapın.
+**Çözüm**: *configurationarguments* özelliğini bir **karma tablo** yapın.
 Yukarıdaki örneklerde belirtilen biçimi izleyin. Tırnak işaretleri, virgüller ve küme ayraçları için izleyin.
 
 ### <a name="duplicate-configurationarguments"></a>Yinelenen ConfigurationArguments

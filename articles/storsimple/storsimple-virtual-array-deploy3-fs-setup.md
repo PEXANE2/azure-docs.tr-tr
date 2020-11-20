@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977587"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956832"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal aracılığıyla dosya sunucusu olarak ayarlama
 ![Bir sanal diziyi dağıtmak için gereken adımları gösteren diyagram. Üçüncü adımın ilk bölümü dosya sunucusu olarak ayarlanır ve vurgulanır.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -31,7 +31,7 @@ ms.locfileid: "91977587"
 
 Bu makalede ilk kurulum 'un nasıl gerçekleştirileceği, StorSimple dosya sunucunuzun nasıl kaydedileceği, cihaz kurulumunun nasıl tamamlanacağı ve SMB paylaşımları oluşturup bağlanmakta olduğu açıklanır. Bu, sanal dizinizi bir dosya sunucusu veya bir Iscsı sunucusu olarak tamamen dağıtmak için gereken dağıtım öğreticilerinin serisinin son makaledir.
 
-Kurulum ve yapılandırma işleminin tamamlanması yaklaşık 10 dakika sürebilir. Bu makaledeki bilgiler yalnızca StorSimple Sanal dizisinin dağıtımı için geçerlidir. StorSimple 8000 serisi cihazların dağıtımı için şuraya gidin: [güncelleştirme 2 çalıştıran storsimple 8000 serisi cihazınızı dağıtma](storsimple-deployment-walkthrough-u2.md).
+Kurulum ve yapılandırma işleminin tamamlanması yaklaşık 10 dakika sürebilir. Bu makaledeki bilgiler yalnızca StorSimple Sanal dizisinin dağıtımı için geçerlidir. StorSimple 8000 serisi cihazların dağıtımı için şuraya gidin: [güncelleştirme 2 çalıştıran storsimple 8000 serisi cihazınızı dağıtma](./storsimple-8000-deployment-walkthrough-u2.md).
 
 ## <a name="setup-prerequisites"></a>Kurulum önkoşulları
 StorSimple Sanal dizinizi yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
@@ -49,21 +49,21 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
    
    `https://<ip-address of network interface>`
    
-   Önceki adımda belirtilen bağlantı URL 'sini kullanın. Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir hata görürsünüz. **Bu Web sayfasına devam et ' e**tıklayın.
+   Önceki adımda belirtilen bağlantı URL 'sini kullanın. Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir hata görürsünüz. **Bu Web sayfasına devam et ' e** tıklayın.
    
    ![Bir güvenlik sertifikası sorununu bildiren tarayıcı penceresinin ekran görüntüsü. Biri Web sitesi ve biri kullanıcının giriş sayfası için olmak üzere iki bağlantı görünür.](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. Sanal dizinizdeki Web Kullanıcı arabiriminde **Storsimpleadmin**olarak oturum açın. Adım 3 ' te değiştirdiğiniz cihaz yönetici parolasını girin: [Hyper-V ' d a StorSimple Sanal dizisi sağlama](storsimple-virtual-array-deploy2-provision-hyperv.md) bölümünde veya [VMware 'de StorSimple Sanal dizisi sağlama](storsimple-virtual-array-deploy2-provision-vmware.md)bölümünde sanal diziyi başlatma.
+2. Sanal dizinizdeki Web Kullanıcı arabiriminde **Storsimpleadmin** olarak oturum açın. Adım 3 ' te değiştirdiğiniz cihaz yönetici parolasını girin: [Hyper-V ' d a StorSimple Sanal dizisi sağlama](storsimple-virtual-array-deploy2-provision-hyperv.md) bölümünde veya [VMware 'de StorSimple Sanal dizisi sağlama](storsimple-virtual-array-deploy2-provision-vmware.md)bölümünde sanal diziyi başlatma.
    
    ![StorSimple oturum açma sayfasının ekran görüntüsü. StorSimpleAdmin Kullanıcı adı görünür ve bir parola kutusu belirsiz karakterlerle doldurulur.](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
-3. **Giriş** sayfasına yönlendirilirsiniz. Bu sayfada, StorSimple Aygıt Yöneticisi hizmetiyle sanal diziyi yapılandırmak ve kaydetmek için gereken çeşitli ayarlar açıklanmaktadır. **Ağ ayarları**, **Web proxy ayarları**ve **zaman ayarları** isteğe bağlıdır. Yalnızca **cihaz ayarları** ve **bulut ayarları**gereklidir.
+3. **Giriş** sayfasına yönlendirilirsiniz. Bu sayfada, StorSimple Aygıt Yöneticisi hizmetiyle sanal diziyi yapılandırmak ve kaydetmek için gereken çeşitli ayarlar açıklanmaktadır. **Ağ ayarları**, **Web proxy ayarları** ve **zaman ayarları** isteğe bağlıdır. Yalnızca **cihaz ayarları** ve **bulut ayarları** gereklidir.
    
    ![Giriş sayfasının ekran görüntüsü. Metin, cihazın yapılandırılmadığını belirtir. Birçok farklı ayar türüne bağlantı görünür.](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
-4. Ağ **ayarları** sayfasında, **ağ arabirimleri**altında, veri 0 sizin için otomatik olarak yapılandırılır. Her ağ arabirimi, IP adresini otomatik olarak almak için varsayılan olarak ayarlanır (DHCP). Bu nedenle, bir IP adresi, alt ağ ve ağ geçidi otomatik olarak atanır (hem IPv4 hem de IPv6 için).
+4. Ağ **ayarları** sayfasında, **ağ arabirimleri** altında, veri 0 sizin için otomatik olarak yapılandırılır. Her ağ arabirimi, IP adresini otomatik olarak almak için varsayılan olarak ayarlanır (DHCP). Bu nedenle, bir IP adresi, alt ağ ve ağ geçidi otomatik olarak atanır (hem IPv4 hem de IPv6 için).
    
    ![Internet protokolünün çeşitli sürümleri için yapılandırılmış IP adreslerini gösteren ağ ayarları sayfasının ekran görüntüsü.](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
    Cihazı sağlama sırasında birden fazla ağ arabirimi eklediyseniz, bunları buradan yapılandırabilirsiniz. Ağ arabiriminizi yalnızca IPv4 olarak veya hem IPv4 hem de IPv6 olarak yapılandırabileceğinizi aklınızda bulabilirsiniz. Yalnızca IPv6 konfigürasyonları desteklenmez.
-5. Cihazınız bulut depolama hizmeti sağlayıcılarınız ile iletişim kurmaya çalıştığında veya dosya sunucusu olarak yapılandırıldığında cihazınızı ada göre çözümlemek için kullanıldığından, DNS sunucuları gereklidir. **Ağ ayarları** sayfasında, **DNS sunucuları**altında:
+5. Cihazınız bulut depolama hizmeti sağlayıcılarınız ile iletişim kurmaya çalıştığında veya dosya sunucusu olarak yapılandırıldığında cihazınızı ada göre çözümlemek için kullanıldığından, DNS sunucuları gereklidir. **Ağ ayarları** sayfasında, **DNS sunucuları** altında:
    
    1. Birincil ve ikincil DNS sunucusu otomatik olarak yapılandırılır. Statik IP adreslerini yapılandırmayı seçerseniz, DNS sunucuları belirtebilirsiniz. Yüksek kullanılabilirlik için, birincil ve ikincil bir DNS sunucusu yapılandırmanızı öneririz.
    2. Ağ ayarlarını uygulamak ve doğrulamak için **Uygula** ' ya tıklayın.
@@ -71,7 +71,7 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
    
    1. Cihazınıza benzersiz bir **ad** atayın. Bu ad 1-15 karakter olabilir ve harf, rakam ve kısa çizgi içerebilir.
    2. Oluşturmakta olduğunuz cihaz türü için **dosya sunucusu** simgesine tıklayın :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png"::: . **Type** Bir dosya sunucusu, paylaşılan klasörler oluşturmanıza izin verir.
-   3. Cihazınız bir dosya sunucusu olduğundan, cihazı bir etki alanına eklemeniz gerekir. Bir **etki alanı adı**girin.
+   3. Cihazınız bir dosya sunucusu olduğundan, cihazı bir etki alanına eklemeniz gerekir. Bir **etki alanı adı** girin.
    4. **Uygula**’ya tıklayın.
 7. Bir iletişim kutusu görüntülenir. Etki alanı kimlik bilgilerinizi belirtilen biçimde girin. Onay simgesine tıklayın. Etki alanı kimlik bilgileri doğrulanır. Kimlik bilgileri yanlışsa bir hata iletisi görürsünüz.
    
@@ -91,8 +91,8 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
    **Web proxy** sayfasında:
    
    1. **Web proxy URL 'sini** şu biçimde sağlayın: *http:// &lt; Host-ıp adresi veya FQDN &gt; :P ort sayı*. HTTPS URL 'Lerinin desteklenmediğini unutmayın.
-   2. **Kimlik doğrulamasını** **temel** veya **yok**olarak belirtin.
-   3. Kimlik doğrulaması kullanıyorsanız, ayrıca bir **Kullanıcı adı** ve **parola**sağlamanız gerekir.
+   2. **Kimlik doğrulamasını** **temel** veya **yok** olarak belirtin.
+   3. Kimlik doğrulaması kullanıyorsanız, ayrıca bir **Kullanıcı adı** ve **parola** sağlamanız gerekir.
    4. **Uygula**’ya tıklayın. Bu, yapılandırılmış Web proxy ayarlarını doğrular ve uygular.
 10. (İsteğe bağlı olarak) cihazınız için saat dilimi ve birincil ve ikincil NTP sunucuları gibi zaman ayarlarını yapılandırın. Cihazınızın bulut hizmeti sağlayıcılarınız ile kimlik doğrulaması yapabilmesi için zaman eşitlemesini gerektiğinden NTP sunucuları gereklidir.
     
@@ -107,16 +107,16 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
 11. Cihazınız için bulut ayarlarını yapılandırın. Bu adımda, yerel cihaz yapılandırmasını tamamlayacaksınız ve cihazı StorSimple Aygıt Yöneticisi hizmetinize kaydedecaksınız.
     
     1. 2. adımda aldığınız **hizmet kayıt anahtarını** girin: StorSimple Sanal dizisi için [hizmet kayıt anahtarını alın](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) .
-    2. Bu hizmete kayıt ilk cihazınız ise, **hizmet veri şifreleme anahtarı**görüntülenir. Bu anahtarı kopyalayın ve güvenli bir konuma kaydedin. Bu anahtar, StorSimple Aygıt Yöneticisi hizmetiyle ek cihazlar kaydetmek için hizmet kayıt anahtarıyla birlikte gereklidir. 
+    2. Bu hizmete kayıt ilk cihazınız ise, **hizmet veri şifreleme anahtarı** görüntülenir. Bu anahtarı kopyalayın ve güvenli bir konuma kaydedin. Bu anahtar, StorSimple Aygıt Yöneticisi hizmetiyle ek cihazlar kaydetmek için hizmet kayıt anahtarıyla birlikte gereklidir. 
        
        Bu hizmete kaydolduğunuz ilk cihaz bu değilse, hizmet veri şifreleme anahtarını sağlamanız gerekir. Daha fazla bilgi için yerel Web Kullanıcı arabiriminizdeki [hizmet veri şifreleme anahtarını](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) edinme bölümüne bakın.
     3. **Kaydet**’e tıklayın. Bu işlem cihazı yeniden başlatacak. Cihaz başarıyla kaydedilmeden önce 2-3 dakika beklemeniz gerekebilir. Cihaz yeniden başlatıldıktan sonra oturum açma sayfasına yönlendirilirsiniz.
        
        ![Bulut ayarları sayfasının ekran görüntüsü. Kayıt anahtarı ve şifreleme anahtarı kutuları doldurulmuştur, ancak değerler redaksiyonu yapılır.](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
-12. Azure portalına dönün. **Tüm kaynaklara**gidin, storsimple Aygıt Yöneticisi hizmetinizi arayın.
+12. Azure portalına dönün. **Tüm kaynaklara** gidin, storsimple Aygıt Yöneticisi hizmetinizi arayın.
     
     ![Azure portal tüm kaynaklar sayfasının ekran görüntüsü. Bir Aygıt Yöneticisi hizmeti vurgulanır.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
-13. Filtrelenmiş listede, StorSimple Aygıt Yöneticisi hizmetinizi seçin ve ardından **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, cihazın hizmete başarıyla bağlandığını ve durumu **ayarlamaya hazırlanıyor**olduğunu doğrulayın.
+13. Filtrelenmiş listede, StorSimple Aygıt Yöneticisi hizmetinizi seçin ve ardından **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, cihazın hizmete başarıyla bağlandığını ve durumu **ayarlamaya hazırlanıyor** olduğunu doğrulayın.
     
     ![Dağıtma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
@@ -124,7 +124,7 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
 Gerekli cihaz kurulumunu tamamlamak için [Azure Portal](https://portal.azure.com/) aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Cihazı dosya sunucusu olarak yapılandırmak için
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve  **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, yeni oluşturduğunuz cihazı seçin. Bu cihaz, **ayarlamaya hazırlanıyor**olarak görünür.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve  **yönetim > cihazlar**' a gidin. **Cihazlar** dikey penceresinde, yeni oluşturduğunuz cihazı seçin. Bu cihaz, **ayarlamaya hazırlanıyor** olarak görünür.
    
    ![Dosya sunucusunu yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Cihaza tıklayın ve cihazın kuruluma hazırlandığını belirten bir başlık iletisi görürsünüz.
@@ -134,11 +134,11 @@ Gerekli cihaz kurulumunu tamamlamak için [Azure Portal](https://portal.azure.co
    
    1. Dosya sunucusu adı otomatik olarak doldurulur.
     
-   2. Bulut depolama şifrelemesi 'nin **etkin**olarak ayarlandığından emin olun. Bu, buluta gönderilen tüm verileri şifreler. 
+   2. Bulut depolama şifrelemesi 'nin **etkin** olarak ayarlandığından emin olun. Bu, buluta gönderilen tüm verileri şifreler. 
     
    3. Şifreleme için Kullanıcı tanımlı anahtarla 256 bitlik bir AES anahtarı kullanılır. Bir 32 karakter anahtarı belirtip anahtarı onaylamak için yeniden girin. Anahtarı daha sonra başvurmak üzere bir anahtar yönetim uygulamasına kaydedin.
     
-   4. Aygıtınızla kullanılacak depolama hesabı kimlik bilgilerini belirtmek için **gerekli ayarları Yapılandır** ' a tıklayın. Yapılandırılmış depolama hesabı kimlik bilgileri yoksa **Yeni Ekle** ' ye tıklayın. **Kullandığınız depolama hesabının blok bloblarını desteklediğinden emin olun. Sayfa Blobları desteklenmez.** [Blok Blobları ve sayfa Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)hakkında daha fazla bilgi.
+   4. Aygıtınızla kullanılacak depolama hesabı kimlik bilgilerini belirtmek için **gerekli ayarları Yapılandır** ' a tıklayın. Yapılandırılmış depolama hesabı kimlik bilgileri yoksa **Yeni Ekle** ' ye tıklayın. **Kullandığınız depolama hesabının blok bloblarını desteklediğinden emin olun. Sayfa Blobları desteklenmez.** [Blok Blobları ve sayfa Blobları](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)hakkında daha fazla bilgi.
    
       ![Dosya sunucusunu yapılandırma 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. **Depolama hesabı kimlik bilgileri ekleme** dikey penceresinde aşağıdakileri yapın: 
@@ -163,7 +163,7 @@ Gerekli cihaz kurulumunu tamamlamak için [Azure Portal](https://portal.azure.co
    
    ![Bir dosya sunucusu 5B yapılandırma](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
-   Cihaz durumu da **çevrimiçi**olarak değişir.
+   Cihaz durumu da **çevrimiçi** olarak değişir.
    
    ![Dosya sunucusunu yapılandırma 5c](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
@@ -182,7 +182,7 @@ Paylaşım oluşturmak için [Azure portalında](https://portal.azure.com/) aşa
     
    2. Paylaşıma yönelik isteğe bağlı bir **Açıklama** . Açıklama, paylaşma sahiplerini belirlemesine yardımcı olur.
     
-   3. Paylaşıma yönelik bir **tür** . Tür katmanlı veya **yerel olarak sabitlenmiş**olabilir **, katmanlı varsayılan** olarak. Yerel garanti, düşük gecikme süreleri ve daha yüksek performans gerektiren iş yükleri için **yerel olarak sabitlenmiş** bir paylaşımın seçin. Diğer tüm veriler için **katmanlı** bir paylaşma seçin.
+   3. Paylaşıma yönelik bir **tür** . Tür katmanlı veya **yerel olarak sabitlenmiş** olabilir **, katmanlı varsayılan** olarak. Yerel garanti, düşük gecikme süreleri ve daha yüksek performans gerektiren iş yükleri için **yerel olarak sabitlenmiş** bir paylaşımın seçin. Diğer tüm veriler için **katmanlı** bir paylaşma seçin.
       Yerel olarak sabitlenmiş bir paylaşımın sağlanması bol alanla ve paylaşımdaki birincil verilerin cihaza yerel olarak kalmasını ve buluta taşımamasını sağlar. Diğer yandan katmanlı bir paylaşımın ölçülü kaynak sağlanmış olur. Katmanlı bir paylaşma oluşturduğunuzda alanın %10 ' u yerel katmanda sağlanır ve alanın %90 ' unun bulutta sağlanması gerekir. Örneğin, 1 TB 'lik bir birim sağladıysanız, 100 GB yerel alanda yer alır ve veri katmanları sırasında bulutta 900 GB kullanılır. Bu da, cihazdaki tüm yerel alanı kapatdıysanız katmanlı bir paylaşma sağlayacağınızı gösterir.
    
    4. **Varsayılan tam Izinleri ayarla** alanında, kullanıcıya veya bu paylaşıma erişen gruba izinleri atayın. *John \@ contoso.com* biçimindeki Kullanıcı veya Kullanıcı grubu adını belirtin. Yönetici ayrıcalıklarının bu paylaşımlara erişmesine izin vermek için bir Kullanıcı grubu (tek bir kullanıcı yerine) kullanmanızı öneririz. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bu izinlerde değişiklik yapabilirsiniz.
@@ -203,7 +203,7 @@ Paylaşım oluşturmak için [Azure portalında](https://portal.azure.com/) aşa
 Şimdi, önceki adımda oluşturduğunuz bir veya daha fazla paylaşımlara bağlanmanız gerekir. Bu adımları, StorSimple Sanal diziniz ile bağlantılı Windows Server konağında gerçekleştirin.
 
 #### <a name="to-connect-to-the-share"></a>Paylaşıma bağlanmak için
-1. :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png":::+ R tuşuna basın. Çalıştır penceresinde, dosya sunucusu *adını* dosya sunucunuza atadığınız cihaz adı ile değiştirerek yol olarak *&#92;&#92;&lt; dosya sunucusu adını &gt; * belirtin. **Tamam**'a tıklayın.
+1. :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png":::+ R tuşuna basın. Çalıştır penceresinde, dosya sunucusu *adını* dosya sunucunuza atadığınız cihaz adı ile değiştirerek yol olarak *&#92;&#92;&lt; dosya sunucusu adını &gt;* belirtin. **Tamam** düğmesine tıklayın.
    
    ![Çalıştır iletişim kutusunun ekran görüntüsü. Aç kutusu, dosya sunucusunun başında bir yol ile doldurulur.](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Bu, dosya Gezgini 'ni açar. Artık oluşturduğunuz paylaşımları klasörler olarak görebiliyor olmalısınız. İçeriğini görmek için paylaşımı (klasörü) seçin ve çift tıklayın.
@@ -213,4 +213,3 @@ Paylaşım oluşturmak için [Azure portalında](https://portal.azure.com/) aşa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [StorSimple Sanal dizinizi yönetmek](storsimple-ova-web-ui-admin.md)için yerel Web Kullanıcı arabirimini nasıl kullanacağınızı öğrenin.
-

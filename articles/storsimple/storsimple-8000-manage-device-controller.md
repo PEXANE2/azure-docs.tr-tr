@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513943"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957002"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple cihaz denetleyicilerinizi yönetin
 
@@ -61,7 +61,7 @@ Cihaz denetleyicilerinizi Azure portal yönetmek için aşağıdaki adımları g
 2. **Ayarlar > denetleyicileri**' ne gidin.
    
     ![StorSimple cihaz denetleyicilerinin sağlıklı olduğunu doğrulayın](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. **Denetleyiciler** dikey penceresinde, cihazlarınızın her iki denetleyicisinin durumunun **sağlıklı**olduğunu doğrulayın. Bir denetleyici seçin, sağ tıklayın ve ardından **Yeniden Başlat** veya **Kapat**' ı seçin.
+3. **Denetleyiciler** dikey penceresinde, cihazlarınızın her iki denetleyicisinin durumunun **sağlıklı** olduğunu doğrulayın. Bir denetleyici seçin, sağ tıklayın ve ardından **Yeniden Başlat** veya **Kapat**' ı seçin.
 
     ![Yeniden Başlat veya StorSimple cihaz denetleyicilerini Kapat ' ı seçin](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
@@ -117,7 +117,7 @@ Microsoft Azure StorSimple cihazınızı fabrika varsayılan ayarlarına sıfır
    
     `Reset-HcsFactoryDefault`
    
-    Tek bir denetleyiciyi sıfırlamak için, parametresiyle  [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) cmdlet 'ini kullanın `-scope` .)
+    Tek bir denetleyiciyi sıfırlamak için, parametresiyle  [Reset-HcsFactoryDefault](/previous-versions/windows/powershell-scripting/dn688132(v=wps.630)) cmdlet 'ini kullanın `-scope` .)
    
     Sistem birden çok kez yeniden başlatılacak. Sıfırlama başarıyla tamamlandığında size bildirilir. Sistem modeline bağlı olarak, 8100 bir cihaz için 45-60 dakika sürebilir ve bu işlemi tamamlaması 8600 için 60-90.
    
@@ -161,4 +161,3 @@ Bu bölümde, StorSimple cihaz denetleyicilerini yönetme hakkında sık sorulan
 ## <a name="next-steps"></a>Sonraki adımlar
 * StorSimple cihaz denetleyicilerinizde Bu öğreticide listelenen yordamları kullanarak çözemayacağınızı sorun yaşarsanız [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md).
 * StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Aygıt Yöneticisi hizmetini kullanarak StorSimple cihazınızı yönetin](storsimple-8000-manager-service-administration.md)sayfasına gidin.
-

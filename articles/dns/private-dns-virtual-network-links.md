@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646770"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954350"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Sanal ağ bağlantısı nedir?
 
@@ -23,7 +23,7 @@ Bir sanal ağı, bir kayıt sanal ağı veya bir çözümleme sanal ağı olarak
 
 ## <a name="registration-virtual-network"></a>Kayıt sanal ağı
 
-Özel bir DNS bölgesi ve bir sanal ağ arasında [bağlantı oluşturduğunuzda](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) , sanal MAKINELER için DNS kayıtlarının yeniden [kaydedilmesini](./private-dns-autoregistration.md) açma seçeneğiniz vardır. Bu seçeneği belirlerseniz, sanal ağ özel DNS bölgesi için bir kayıt sanal ağı olur. Ağda dağıttığınız sanal makineler için bir DNS kaydı otomatik olarak oluşturulur. Sanal ağda zaten dağıttığınız sanal makineler için DNS kayıtları oluşturulur. Sanal ağ perspektifinden, özel DNS bölgesi söz konusu sanal ağın kayıt bölgesi olur.
+Özel bir DNS bölgesi ve bir sanal ağ arasında [bağlantı oluşturduğunuzda](./private-dns-getstarted-portal.md#link-the-virtual-network) , sanal MAKINELER için DNS kayıtlarının yeniden [kaydedilmesini](./private-dns-autoregistration.md) açma seçeneğiniz vardır. Bu seçeneği belirlerseniz, sanal ağ özel DNS bölgesi için bir kayıt sanal ağı olur. Ağda dağıttığınız sanal makineler için bir DNS kaydı otomatik olarak oluşturulur. Sanal ağda zaten dağıttığınız sanal makineler için DNS kayıtları oluşturulur. Sanal ağ perspektifinden, özel DNS bölgesi söz konusu sanal ağın kayıt bölgesi olur.
 Bir özel DNS bölgesinin birden çok kayıt sanal ağı olabilir, ancak her sanal ağın kendisiyle ilişkili tam olarak bir kayıt bölgesi olabilir.
 
 ## <a name="resolution-virtual-network"></a>Çözümleme sanal ağı
@@ -33,7 +33,7 @@ Bir özel DNS bölgesinin birden çok çözünürlükte sanal ağı olabilir ve 
 
 ## <a name="limits"></a>Sınırlar
 
-Kaç tane kayıt ve çözüm ağı olduğunu anlamak için özel DNS bölgelerine nasıl bağlayabileceğinizi [Azure DNS sınırlara](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) bakın
+Kaç tane kayıt ve çözüm ağı olduğunu anlamak için özel DNS bölgelerine nasıl bağlayabileceğinizi [Azure DNS sınırlara](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits) bakın
 
 ## <a name="other-considerations"></a>Diğer önemli noktalar
 
@@ -43,13 +43,13 @@ Kaç tane kayıt ve çözüm ağı olduğunu anlamak için özel DNS bölgelerin
 
 * Özel bir DNS bölgesi altındaki her sanal ağ bağlantısı, özel DNS bölgesinin bağlamı içinde benzersiz bir ada sahip olmalıdır. Farklı özel DNS bölgelerinde aynı ada sahip bağlantılara sahip olabilirsiniz.
 
-* Bir sanal ağ bağlantısı oluşturduktan sonra, sanal ağ bağlantısı kaynağının "bağlantı durumu" alanını denetleyin. Sanal ağın boyutuna bağlı olarak, bağlantının işlem yapılmadan ve bağlantı durumunun *tamamlandı*olarak değiştiği birkaç dakika sürebilir.
+* Bir sanal ağ bağlantısı oluşturduktan sonra, sanal ağ bağlantısı kaynağının "bağlantı durumu" alanını denetleyin. Sanal ağın boyutuna bağlı olarak, bağlantının işlem yapılmadan ve bağlantı durumunun *tamamlandı* olarak değiştiği birkaç dakika sürebilir.
 
 * Bir sanal ağı sildiğinizde, farklı özel DNS bölgelerinde onunla ilişkili tüm sanal ağ bağlantıları ve otomatik kaydedilmiş DNS kayıtları otomatik olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) kullanarak bir sanal ağı özel bir DNS bölgesine bağlamayı öğrenin
+* [Azure Portal](./private-dns-getstarted-portal.md#link-the-virtual-network) kullanarak bir sanal ağı özel bir DNS bölgesine bağlamayı öğrenin
 
 * [Azure PowerShell](./private-dns-getstarted-powershell.md) veya [Azure CLI](./private-dns-getstarted-cli.md)kullanarak Azure DNS bir özel bölge oluşturmayı öğrenin.
 

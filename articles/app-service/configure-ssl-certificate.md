@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149078"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956509"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -105,6 +105,8 @@ Zaten çalışan bir App Service sertifikanız varsa şunları yapabilirsiniz:
 
 - [Sertifikayı App Service Içine aktarın](#import-certificate-into-app-service).
 - [Sertifikayı](#manage-app-service-certificates), yenileme, yeniden anahtarlama ve dışarı aktarma gibi yönetin.
+> [!NOTE]
+> App Service sertifikaları Şu anda Azure Ulusal bulutlarında desteklenmez.
 
 ### <a name="start-certificate-order"></a>Sertifika sırasını Başlat
 
@@ -164,13 +166,13 @@ Son adımda kullandığınız **sertifika yapılandırma** sayfasından **2. Ad�
 > - **App Service** -etki alanı aynı abonelikte bir App Service uygulamasına zaten eşlendiğinde en kullanışlı seçenektir. App Service uygulamasının etki alanı sahipliğini zaten doğruladığından emin olma özelliğinden yararlanır.
 > - **Etki alanı** - [Azure 'dan satın aldığınız App Service etki alanını](manage-custom-dns-buy-domain.md)doğrulayın. Azure, doğrulama TXT kaydını sizin için otomatik olarak ekler ve işlemi tamamlar.
 > - **Posta** -etki alanı yöneticisine bir e-posta göndererek etki alanını doğrulayın. Seçeneğini belirlediğinizde yönergeler sağlanır.
-> - **El ile** -bir HTML sayfası (yalnızca**Standart** SERTIFIKA) veya bir DNS TXT kaydı kullanarak etki alanını doğrulayın. Seçeneğini belirlediğinizde yönergeler sağlanır.
+> - **El ile** -bir HTML sayfası (yalnızca **Standart** SERTIFIKA) veya bir DNS TXT kaydı kullanarak etki alanını doğrulayın. Seçeneğini belirlediğinizde yönergeler sağlanır.
 
 ### <a name="import-certificate-into-app-service"></a>Sertifikayı App Service içeri aktar
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
-Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anahtar sertifikaları (. pfx)**  >  **içeri aktarma App Service sertifikası**seçin.
+Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anahtar sertifikaları (. pfx)**  >  **içeri aktarma App Service sertifikası** seçin.
 
 ![App Service App Service sertifikayı içeri aktar](./media/configure-ssl-certificate/import-app-service-cert.png)
 
@@ -254,7 +256,7 @@ Birleştirilmiş sertifika için _mergedcertificate.crt_ adlı bir dosya oluştu
 
 Birleştirilmiş TLS/SSL sertifikanızı, Sertifika isteğinizin oluşturulduğu özel anahtarla dışarı aktarın.
 
-Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. _ &lt; Özel anahtar dosyası>_ ve _ &lt; birleştirilmiş-sertifika-dosya>_ yer tutucuları özel anahtarınıza ve birleştirilmiş sertifika dosyanıza yönelik yollarla değiştirin.
+Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. _&lt; Özel anahtar dosyası>_ ve _&lt; birleştirilmiş-sertifika-dosya>_ yer tutucuları özel anahtarınıza ve birleştirilmiş sertifika dosyanıza yönelik yollarla değiştirin.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
@@ -292,7 +294,7 @@ Ortak Sertifikalar *. cer* biçiminde desteklenir.
 
 Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **genel Sertifikalar (. cer)**  >  **ortak anahtar sertifikasını karşıya yükle**' ye tıklayın.
 
-**Ad**alanına sertifika için bir ad yazın. **Cer sertifika dosyası**' nda, cer dosyanızı seçin.
+**Ad** alanına sertifika için bir ad yazın. **Cer sertifika dosyası**' nda, cer dosyanızı seçin.
 
 **Karşıya Yükle**'ye tıklayın.
 
@@ -368,7 +370,7 @@ App Service sertifikasını silme işlemi son ve geri alınamaz. App Service Ser
 
 [App Service sertifikaları](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) sayfasında sertifikayı seçin ve ardından sol gezinti bölmesinde **kilitler** ' ı seçin.
 
-Kilit türü **silme**ile sertifikanıza yönelik kilidi bulun. Sağ tarafta **Sil**' i seçin.
+Kilit türü **silme** ile sertifikanıza yönelik kilidi bulun. Sağ tarafta **Sil**' i seçin.
 
 ![App Service sertifikası için kilidi Sil](./media/configure-ssl-certificate/delete-lock-app-service-cert.png)
 
@@ -378,11 +380,11 @@ Artık App Service sertifikasını silebilirsiniz. Sol gezinmede **genel bakış
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 

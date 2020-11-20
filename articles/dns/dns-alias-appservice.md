@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710550"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954520"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
 
@@ -26,7 +26,7 @@ Bu makalede, etki alanı tepesinde için bir diğer ad kaydı oluşturmayı ve W
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 
@@ -67,10 +67,10 @@ Her bir App Service planında bir tane olmak üzere iki Web uygulaması oluştur
 
 Şimdi Web Apps için IP adresi ve ana bilgisayar adı ' nı aklınızda olmanız gerekir.
 
-1. Kaynak grubunuzu açın ve ilk Web uygulamanızı (Bu örnekte**App-01** ) seçin.
+1. Kaynak grubunuzu açın ve ilk Web uygulamanızı (Bu örnekte **App-01** ) seçin.
 2. Sol sütunda **Özellikler**' i seçin.
-3. **URL 'nin**altındaki adresi ve **giden IP adresleri** altındaki listedeki ilk IP adresini aklınızda yapın. Traffic Manager bitiş noktalarınızı yapılandırırken bu bilgileri daha sonra kullanacaksınız.
-4. **App-02**için yineleyin.
+3. **URL 'nin** altındaki adresi ve **giden IP adresleri** altındaki listedeki ilk IP adresini aklınızda yapın. Traffic Manager bitiş noktalarınızı yapılandırırken bu bilgileri daha sonra kullanacaksınız.
+4. **App-02** için yineleyin.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
@@ -115,13 +115,13 @@ Her iki Web uygulaması için özel bir etki alanı ekleyin.
 
 1. Kaynak grubunuzu açın ve ilk Web uygulamanızı seçin.
 2. Sol sütunda **özel etki alanları**' nı seçin.
-3. **Özel etki alanları**altında **özel etki alanı Ekle**' yi seçin.
-4. **Özel etki alanı**altında, özel etki alanı adınızı yazın. Örneğin, contoso.com.
+3. **Özel etki alanları** altında **özel etki alanı Ekle**' yi seçin.
+4. **Özel etki alanı** altında, özel etki alanı adınızı yazın. Örneğin, contoso.com.
 5. **Doğrula**'yı seçin.
 
-   Etki alanınız, **ana bilgisayar adı kullanılabilirliği** ve **etki alanı sahipliğinin**yanında doğrulamayı geçmelidir ve yeşil onay işaretlerini göstermelidir.
+   Etki alanınız, **ana bilgisayar adı kullanılabilirliği** ve **etki alanı sahipliğinin** yanında doğrulamayı geçmelidir ve yeşil onay işaretlerini göstermelidir.
 5. **Özel etki alanı ekle**'yi seçin.
-6. **Siteye atanan ana bilgisayar adları**altındaki yeni ana bilgisayar adını görmek için tarayıcınızı yenileyin. Sayfadaki yenileme her zaman değişiklikleri hemen göstermez.
+6. **Siteye atanan ana bilgisayar adları** altındaki yeni ana bilgisayar adını görmek için tarayıcınızı yenileyin. Sayfadaki yenileme her zaman değişiklikleri hemen göstermez.
 7. İkinci Web uygulamanız için bu yordamı tekrarlayın.
 
 ## <a name="add-the-alias-record-set"></a>Diğer ad kayıt kümesini ekleme
@@ -134,7 +134,7 @@ Her iki Web uygulaması için özel bir etki alanı ekleyin.
 
    |Ad  |Tür  |Diğer ad kayıt kümesi  |Diğer ad türü  |Azure kaynağı|
    |---------|---------|---------|---------|-----|
-   |@     |A|Evet|Azure kaynağı|Traffic Manager-profiliniz|
+   |@     |A|Yes|Azure kaynağı|Traffic Manager-profiliniz|
 
 
 ## <a name="test-your-web-apps"></a>Web uygulamalarınızı test etme
@@ -158,6 +158,6 @@ Diğer ad kayıtları hakkında daha fazla bilgi için aşağıdaki makalelere b
 
 - [Öğretici: Azure genel IP adresine başvurmak için diğer ad kaydı yapılandırma](tutorial-alias-pip.md)
 - [Öğretici: Traffic Manager ile tepe etki alanı adlarını desteklemek için diğer ad kaydı yapılandırma](tutorial-alias-tm.md)
-- [DNS SSS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [DNS SSS](./dns-faq.md#alias-records)
 
 Etkin bir DNS adını nasıl geçirebileceğinizi öğrenmek için bkz. [Azure App Service için etkin BIR DNS adı geçirme](../app-service/manage-custom-dns-migrate-domain.md).

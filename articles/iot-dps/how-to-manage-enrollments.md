@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 06c355b913d5b786455cae20d1a57eb8c63c3ee1
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843023"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954571"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure portal cihaz kayıtlarını yönetme
 
@@ -91,5 +91,3 @@ Cihazınızın herhangi bir IoT Hub 'ına sağlanması gerekmeyen durumlarda, a�
 1. Eylem tamamlandığında, girdinizi cihaz kayıtları listesinden kaldırıldığını görürsünüz. 
  
     ![Portalda kaydı kaldırma](./media/how-to-manage-enrollments/remove-enrollment.png)
-
-

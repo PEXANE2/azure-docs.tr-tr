@@ -7,13 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 91ef218abc51cbdf079fd9e1baa8eb2b907087df
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089052"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954214"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -21,10 +20,9 @@ Bu makalede, Azure Spring Cloud geliştirme sorunlarını gidermeye yönelik yö
 
 ## <a name="availability-performance-and-application-issues"></a>Kullanılabilirlik, performans ve uygulama sorunları
 
-::: zone pivot="programming-language-java"
 ### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Uygulamam başlatılamıyor (örneğin, uç nokta bağlanamaz veya birkaç yeniden denemeden sonra bir 502 döndürür)
 
-Günlükleri Azure Log Analytics dışarı aktarın. Yay uygulama günlüklerinin tablosu *Appplatformlogsforspring*olarak adlandırılır. Daha fazla bilgi edinmek için bkz. [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](diagnostic-services.md).
+Günlükleri Azure Log Analytics dışarı aktarın. Yay uygulama günlüklerinin tablosu *Appplatformlogsforspring* olarak adlandırılır. Daha fazla bilgi edinmek için bkz. [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](diagnostic-services.md).
 
 Günlüklerinizin şu hata iletisi görünebilir:
 
@@ -38,21 +36,21 @@ Hizmet bağlamaları Ayrıca uygulama başlatma hatalarıyla da neden olabilir. 
 
 > "Java. Sql. SQLException: sunucu saat dilimi değeri ' Eşgüdümlü Evrensel Saat ' tanınmıyor veya birden çok saat dilimini temsil ediyor."
 
-Bu hatayı onarmak için MySQL örneğinizin bölümüne gidin `server parameters` ve `time_zone` değeri *sistemden* *+ 0:00*olarak değiştirin.
+Bu hatayı onarmak için MySQL örneğinizin bölümüne gidin `server parameters` ve `time_zone` değeri *sistemden* *+ 0:00* olarak değiştirin.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Uygulamam kilitleniyor veya beklenmeyen bir hata oluşturuyor
 
 Uygulama kilitlenmelerinden hata ayıklaması yaparken, uygulamanın çalışma durumunu ve bulma durumunu denetleyerek başlatın. Bunu yapmak için, tüm uygulamaların durumlarının _çalışır_ durumda olduğundan emin olmak Için Azure Portal _uygulama yönetimi_ _' ne gidin._
 
-* Durum _çalışıyor_ ancak bulma durumu _güncel_değilse, ["Uygulamam kaydedilemedi"](#my-application-cant-be-registered) bölümüne gidin.
+* Durum _çalışıyor_ ancak bulma durumu _güncel_ değilse, ["Uygulamam kaydedilemedi"](#my-application-cant-be-registered) bölümüne gidin.
 
-* Bulma durumu çalışıyorsa, uygulamanın sistem durumunu denetlemek için _Ölçümler ' e_gidin. Aşağıdaki ölçümleri inceleyin:
+* Bulma durumu çalışıyorsa, uygulamanın sistem durumunu denetlemek için _Ölçümler ' e_ gidin. Aşağıdaki ölçümleri inceleyin:
 
 
   - `TomcatErrorCount` (_Tomcat. Global. Error_): tüm Spring Application özel durumları burada sayılır. Bu sayı büyükse, uygulama günlüklerinizi incelemek için Azure Log Analytics 'ye gidin.
 
-  - `AppMemoryMax` (_JVM. Memory. Max_): uygulama için kullanılabilir maksimum bellek miktarı. Miktar tanımsız olabilir veya tanımlanmışsa zaman içinde değişebilir. Tanımlı ise, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşittir. Ancak, `OutOfMemoryError` ayrılan *> kullanılan*belleği artırmayı denerse, *<= Max* hala doğru olsa bile, bellek ayırma bir iletiyle başarısız olabilir. Böyle bir durumda, parametresini kullanarak en büyük yığın boyutunu artırmayı deneyin `-Xmx` .
+  - `AppMemoryMax` (_JVM. Memory. Max_): uygulama için kullanılabilir maksimum bellek miktarı. Miktar tanımsız olabilir veya tanımlanmışsa zaman içinde değişebilir. Tanımlı ise, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşittir. Ancak, `OutOfMemoryError` ayrılan *> kullanılan* belleği artırmayı denerse, *<= Max* hala doğru olsa bile, bellek ayırma bir iletiyle başarısız olabilir. Böyle bir durumda, parametresini kullanarak en büyük yığın boyutunu artırmayı deneyin `-Xmx` .
 
   - `AppMemoryUsed` (_JVM. Memory. kullanılan_): uygulama tarafından şu anda kullanılmakta olan bellek miktarı (bayt cinsinden). Normal bir Java uygulaması için, bu ölçüm serisi, bellek kullanımı artmasıyla küçük artışlarla arttığı ve azaldıkça ve daha sonra model yinelenirse bir *testere dişi* modelini oluşturur. Bu ölçüm serisi, Java sanal makinesi içindeki çöp toplama işlemi nedeniyle, koleksiyon eylemlerinin testere dişi deseninin düştüğini gösterdiği yerdir.
     
@@ -69,7 +67,6 @@ Uygulama kilitlenmelerinden hata ayıklaması yaparken, uygulamanın çalışma 
 
 
 Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md).
-::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Uygulamam yüksek CPU kullanımı veya yüksek bellek kullanımıyla karşılaşıyor
 
@@ -81,7 +78,7 @@ Hangi durumun geçerli olduğunu belirlemek için aşağıdakileri yapın:
 
 1. **Ölçümler**' e gidin ve ardından **hizmet CPU kullanımı yüzdesi** ya da **kullanılan hizmet belleği**' nı seçin.
 2. İzlemek istediğiniz uygulamayı belirtmek için bir **App =** Filter ekleyin.
-3. Ölçümleri **örneğe**göre Böl.
+3. Ölçümleri **örneğe** göre Böl.
 
 *Tüm örnekler* yüksek CPU veya bellek kullanımı yaşıyorsa, uygulamayı ÖLÇEKLENDIRMENIZ veya CPU ya da bellek kullanımını ölçeklendirmeniz gerekir. Daha fazla bilgi için bkz. [öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme](spring-cloud-tutorial-scale-manual.md).
 
@@ -93,7 +90,6 @@ Tüm örnekler çalışıyor ve çalışıyorsa, uygulama günlüklerinizi sorgu
 
 Azure Log Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md). [Kusto sorgu dilini](/azure/kusto/query/)kullanarak günlükleri sorgulayın.
 
-::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Spring uygulamanızı Azure Spring Cloud 'a dağıtmaya yönelik denetim listesi
 
 Uygulamanızı eklemeden önce, aşağıdaki ölçütlere uyduğundan emin olun:
@@ -105,7 +101,6 @@ Uygulamanızı eklemeden önce, aşağıdaki ölçütlere uyduğundan emin olun:
 * JVM parametrelerinin beklenen değerleri vardır.
 * Katıştırılmış _yapılandırma sunucusu_ ve _Spring Service kayıt defteri_ hizmetlerini uygulama paketinden devre dışı bırakmanız veya kaldırmanız önerilir.
 * _Hizmet Bağlama_ aracılığıyla bağlanacak Azure kaynakları varsa, hedef kaynakların çalıştığından emin olun.
-::: zone-end
 
 ## <a name="configuration-and-management"></a>Yapılandırma ve Yönetim
 
@@ -124,7 +119,6 @@ Azure yay bulut hizmeti örneğini Kaynak Yöneticisi şablonunu kullanarak ayar
 
 Azure Spring Cloud Service örneğinin adı, altında bir alt etki alanı adı istemek için kullanılır, bu `azureapps.io` nedenle ad var olan bir adla çakışırsa kurulum başarısız olur. Etkinlik günlüklerinde daha fazla ayrıntı bulabilirsiniz.
 
-::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-net-core-app"></a>.NET Core uygulamasını dağıtamıyorum
 
 .NET Core Steeltoe uygulamasının bir *. zip* dosyasını Azure portal veya Kaynak Yöneticisi şablonunu kullanarak karşıya yükleyemezsiniz.
@@ -132,9 +126,7 @@ Azure Spring Cloud Service örneğinin adı, altında bir alt etki alanı adı i
 [Azure CLI](/cli/azure/get-started-with-azure-cli)kullanarak uygulama paketinizi dağıttığınızda, Azure CLI dağıtım ilerlemesini düzenli aralıklarla yoklar ve sonunda dağıtım sonucunu görüntüler.
 
 Uygulamanızın doğru *. zip* dosya biçiminde paketlendiğinden emin olun. Doğru paketlenmemişse, işlem yanıt vermeyi durdurur veya bir hata iletisi alırsınız.
-::: zone-end
 
-::: zone pivot="programming-language-java"
 ### <a name="i-cant-deploy-a-jar-package"></a>JAR paketini dağıtamıyorum
 
 Java arşiv dosyası (JAR)/Source paketini Azure portal veya Kaynak Yöneticisi şablonunu kullanarak karşıya yükleyemezsiniz.
@@ -218,7 +210,7 @@ Adlı alt düğümü arayın `systemEnvironment` .  Bu düğüm, uygulamanızın
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Uygulamamın ölçütlerini veya günlüklerini bulamıyorum
 
-Uygulama durumlarının _çalıştığından_ ve _en güncel_olduğundan emin olmak için **uygulama yönetimi** 'ne gidin.
+Uygulama durumlarının _çalıştığından_ ve _en güncel_ olduğundan emin olmak için **uygulama yönetimi** 'ne gidin.
 
 Uygulama paketinizdeki _JMX_ 'in etkin olduğunu görmek için işaretleyin. Bu özellik yapılandırma özelliği ile etkinleştirilebilir `spring.jmx.enabled=true` .  
 
@@ -232,7 +224,6 @@ Uygulama paketinizdeki _JMX_ 'in etkin olduğunu görmek için işaretleyin. Bu 
 ```
 
 Uygulama günlüklerinizin bir depolama hesabına arşivlenmesi, ancak Azure Log Analytics 'e gönderilmemesi durumunda, [çalışma alanınızı doğru şekilde ayarlayıp ayarlamadığını](../azure-monitor/learn/quick-create-workspace.md)kontrol edin. Ücretsiz bir Azure Log Analytics katmanı kullanıyorsanız, [ücretsiz katmanın bir hizmet düzeyi sözleşmesi (SLA) sağlamayacağını](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)unutmayın.
-::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 12eed6aeccffe854810e9c2ddc8a5c4e59b8c312
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337942"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955336"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -40,7 +40,7 @@ Bir model tanımı içinde, üst düzey kod öğesi bir **arabirimdir**. Bu, mod
 Bir DTDL model arabirimi, aşağıdaki alanlardan her birinin sıfır, bir veya bir çoğunu içerebilir:
 * **Özellik** özellikleri, bir varlığın durumunu temsil eden veri alanlarıdır (birçok nesne odaklı programlama dilinde özellikler gibi). Özellikler depolamayı yedekliyor ve herhangi bir zamanda okunabilir.
 * **Telemetri** -telemetri alanları ölçümleri ve olayları temsil eder ve genellikle cihaz algılayıcı ayarlarını göstermek için kullanılır. Özelliklerden farklı olarak, telemetri dijital bir ikizi depolanmaz; Bu, gerçekleşdikleri sırada işlenmesi gereken bir dizi zamana bağlanan veri olaydır. Özellik ve telemetri arasındaki farklılıklar hakkında daha fazla bilgi için aşağıdaki [*Özellikler vs. telemetri*](#properties-vs-telemetry) bölümüne bakın.
-* **Bileşen** -bileşenler, model arabiriminizi başka arabirimlerin bir derlemesi olarak oluşturmanıza olanak tanır. Bir bileşene örnek olarak, bir *Telefon* için model tanımlarken kullanılan, önde gelen bir *Kamera* arabirimi (ve başka bir bileşen arabirimi *arkakamerası* ) bulunur. İlk olarak, kendi modeli gibi *Frontcamera* için bir arabirim tanımlamanız gerekir ve ardından *Telefon* tanımlarken buna başvurabilirsiniz.
+* **Bileşen** -bileşenler, model arabiriminizi başka arabirimlerin bir derlemesi olarak oluşturmanıza olanak tanır. Bir bileşene örnek olarak, bir *Telefon* için model tanımlarken kullanılan, önde gelen bir *Kamera* arabirimi (ve başka bir bileşen arabirimi *arkakamerası*) bulunur. İlk olarak, kendi modeli gibi *Frontcamera* için bir arabirim tanımlamanız gerekir ve ardından *Telefon* tanımlarken buna başvurabilirsiniz.
 
     Çözümünüzün integral bir parçası olan, ancak ayrı bir kimlik gerektirmeyen ve ikizi grafının bağımsız olarak oluşturulması, silinmesi veya yeniden düzenlenmesinin gerekli olmadığı bir şeyi betimleyen bir bileşen kullanın. Varlıkların ikizi grafiğinde bağımsız olarak var olmasını istiyorsanız, bunları farklı modellerdeki ayrı dijital ikgörüleri olarak temsil edin, *ilişkilerin* bağlanır (bkz. sonraki madde işareti).
     
@@ -144,10 +144,10 @@ Modelin alanları şunlardır:
 | `@type` | Açıklanmakta olan bilgi türünü tanımlar. Bir arabirim için tür *arabirimdir*. |
 | `@context` | JSON belgesi [bağlamını](https://niem.github.io/json/reference/json-ld/context/) ayarlar. Modeller kullanmalıdır `dtmi:dtdl:context;2` . |
 | `displayName` | seçim İsterseniz modele kolay bir ad vermenizi sağlar. |
-| `contents` | Kalan tüm arabirim verileri, öznitelik tanımlarının bir dizisi olarak buraya yerleştirilir. Her öznitelik `@type` , açıkladığı arabirim bilgilerinin sıralamasını belirlemek için bir ( *özellik* , *telemetri* , *komut* , *ilişki* veya *bileşen* ) ve ardından gerçek özniteliği tanımlayan bir özellikler kümesi (örneğin, `name` ve `schema` bir *özelliği* tanımlamak) sağlamalıdır. |
+| `contents` | Kalan tüm arabirim verileri, öznitelik tanımlarının bir dizisi olarak buraya yerleştirilir. Her öznitelik `@type` , açıkladığı arabirim bilgilerinin sıralamasını belirlemek için bir (*özellik*, *telemetri*, *komut*, *ilişki* veya *bileşen*) ve ardından gerçek özniteliği tanımlayan bir özellikler kümesi (örneğin, `name` ve `schema` bir *özelliği* tanımlamak) sağlamalıdır. |
 
 > [!NOTE]
-> Bileşen *arabiriminin (Bu* örnekteki), kendisini kullanan arabirimle ( *Planet* ) aynı dizide tanımlandığını unutmayın. Bu şekilde, arabirimin bulunması için API çağrılarında bu şekilde tanımlanması gerekir.
+> Bileşen *arabiriminin (Bu* örnekteki), kendisini kullanan arabirimle (*Planet*) aynı dizide tanımlandığını unutmayın. Bu şekilde, arabirimin bulunması için API çağrılarında bu şekilde tanımlanması gerekir.
 
 ### <a name="possible-schemas"></a>Olası şemalar
 
@@ -224,7 +224,11 @@ Devralma uygulandıktan sonra, genişletme arabirimi tüm devralma zincirinden t
 
 Genişletme arabirimi üst arabirimlerin tanımlarından hiçbirini değiştiremez; yalnızca bunlara eklenebilir. Ayrıca, kendi üst arabirimlerinde tanımlanmış bir özelliği (özellikler aynı olarak tanımlanmış olsa bile) yeniden tanımlayamazsınız. Örneğin, bir üst arabirim bir `double` özellik *kütle* tanımlıyorsa, genişletme arabirimi de olsa bile bir *yığın* Bildirimi içeremez `double` .
 
-## <a name="validating-models"></a>Modelleri doğrulama
+## <a name="best-practices-for-designing-models"></a>Model tasarlamak için en iyi uygulamalar
+
+Ortamınızdaki varlıkları yansıtmak için modeller tasarlarken, geleceğe bakmak ve tasarımınızın [sorgu](concepts-query-language.md) etkilerine ilişkin etkilerini göz önünde bulundurmanız yararlı olabilir. Grafik geçiş işleminden büyük sonuç kümelerinden kaçınacak şekilde Özellikler tasarlamak isteyebilirsiniz. Tek bir sorguda tek düzeyli ilişkiler olarak yanıtlanacak ilişkileri modellemek de isteyebilirsiniz.
+
+### <a name="validating-models"></a>Modelleri doğrulama
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 

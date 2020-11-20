@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 85b681cbeb1b06784529e321c9e907ab2bdecb73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489617"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954656"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS ölçümleri ve uyarıları
 Azure DNS, Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlayan DNS etki alanları için bir barındırma hizmetidir. Bu makalede Azure DNS hizmetine yönelik ölçümler ve uyarılar açıklanmaktadır.
@@ -47,7 +47,7 @@ Bu ölçümü görüntülemek için Azure portal Monitor sekmesinden ölçümler
 *Şekil: Azure DNS sorgu birimi ölçümleri*
 
 ### <a name="record-set-count"></a>Kayıt kümesi sayısı
-*Kayıt kümesi sayısı* ölçümü, DNS bölgeniz Için Azure DNS kayıt kümesi sayısını gösterir. Bölgeniz tanımlı tüm kayıt kümeleri sayılır. Ölçüm birimi sayılır ve toplama tüm kayıt kümelerinin en fazla sayısıdır. Bu ölçümü görüntülemek için Azure portal **Monitor** sekmesinden **ölçümler (Önizleme)** gezgin deneyimi ' ni seçin. **Kaynak** AÇıLAN listesinden DNS bölgenizi seçin, **kayıt kümesi sayısı** ölçümünü seçin ve ardından **toplama**olarak **Max** ' ı seçin. Ölçüm Gezgini deneyimi ve grafik hakkında daha fazla bilgi için bkz. [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-charts.md). 
+*Kayıt kümesi sayısı* ölçümü, DNS bölgeniz Için Azure DNS kayıt kümesi sayısını gösterir. Bölgeniz tanımlı tüm kayıt kümeleri sayılır. Ölçüm birimi sayılır ve toplama tüm kayıt kümelerinin en fazla sayısıdır. Bu ölçümü görüntülemek için Azure portal **Monitor** sekmesinden **ölçümler (Önizleme)** gezgin deneyimi ' ni seçin. **Kaynak** AÇıLAN listesinden DNS bölgenizi seçin, **kayıt kümesi sayısı** ölçümünü seçin ve ardından **toplama** olarak **Max** ' ı seçin. Ölçüm Gezgini deneyimi ve grafik hakkında daha fazla bilgi için bkz. [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-charts.md). 
 
 ![Kayıt kümesi sayısı](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -62,7 +62,7 @@ Azure DNS ' de *kayıt kümesi kapasitesi kullanım* ölçümü, bir DNS bölges
 *Şekil: Azure DNS kayıt kümesi kapasite kullanım ölçümleri*
 
 ## <a name="alerts-in-azure-dns"></a>Azure DNS uyarılar
-Azure Izleyici, kullanılabilir ölçüm değerlerine karşı uyarı verebilir özelliğini sağlar. DNS ölçümleri yeni uyarı yapılandırma deneyiminde kullanılabilir. [Azure izleyici uyarıları belgelerinde](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)ayrıntılı olarak açıklandığı gibi, kaynak olarak DNS Bölgesi ' ni seçebilir, ölçüm sinyali türünü seçebilir ve uyarı mantığını ve **Dönem** ve **Sıklık**gibi diğer parametreleri yapılandırabilirsiniz. Uyarı koşulunun karşılandığı zaman, uyarının Seçili eylemler aracılığıyla teslim edileceği bir [eylem grubu](../azure-monitor/platform/action-groups.md) tanımlayabilirsiniz. Azure Izleyici ölçümleri için uyarı yapılandırma hakkında daha fazla bilgi için bkz. [Azure izleyici kullanarak uyarı oluşturma, görüntüleme ve yönetme](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
+Azure Izleyici, kullanılabilir ölçüm değerlerine karşı uyarı verebilir özelliğini sağlar. DNS ölçümleri yeni uyarı yapılandırma deneyiminde kullanılabilir. [Azure izleyici uyarıları belgelerinde](../azure-monitor/platform/alerts-metric.md)ayrıntılı olarak açıklandığı gibi, kaynak olarak DNS Bölgesi ' ni seçebilir, ölçüm sinyali türünü seçebilir ve uyarı mantığını ve **Dönem** ve **Sıklık** gibi diğer parametreleri yapılandırabilirsiniz. Uyarı koşulunun karşılandığı zaman, uyarının Seçili eylemler aracılığıyla teslim edileceği bir [eylem grubu](../azure-monitor/platform/action-groups.md) tanımlayabilirsiniz. Azure Izleyici ölçümleri için uyarı yapılandırma hakkında daha fazla bilgi için bkz. [Azure izleyici kullanarak uyarı oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-metric.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure DNS](dns-overview.md)hakkında daha fazla bilgi edinin.

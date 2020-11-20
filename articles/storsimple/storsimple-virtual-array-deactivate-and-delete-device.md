@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513608"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956781"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Sanal Dizisini devre dışı bırakma ve silme
 
@@ -30,7 +30,7 @@ StorSimple Sanal dizisini devre dışı bıraktıktan sonra, cihazla ilgili Stor
 * Cihazı devre dışı bırakma 
 * Devre dışı bırakılmış bir cihazı silme
 
-Bu makaledeki bilgiler yalnızca StorSimple Sanal dizileri için geçerlidir. 8000 serisi hakkında daha fazla bilgi için, [bir cihazı devre dışı bırakma veya silme](storsimple-deactivate-and-delete-device.md)bölümüne gidin.
+Bu makaledeki bilgiler yalnızca StorSimple Sanal dizileri için geçerlidir. 8000 serisi hakkında daha fazla bilgi için, [bir cihazı devre dışı bırakma veya silme](./storsimple-8000-deactivate-and-delete-device.md)bölümüne gidin.
 
 ## <a name="when-to-deactivate"></a>Ne zaman devre dışı bırakılacak?
 
@@ -90,5 +90,4 @@ Cihazı silmek için aşağıdaki adımları gerçekleştirin.
 
 * Yük devretme hakkında daha fazla bilgi için, [StorSimple Sanal diziniz Için yük devretme ve olağanüstü durum kurtarma](storsimple-virtual-array-failover-dr.md)bölümüne gidin.
 
-* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Aygıt Yöneticisi hizmetini kullanarak StorSimple Sanal dizinizi yönetin](storsimple-virtual-array-manager-service-administration.md). 
-
+* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Aygıt Yöneticisi hizmetini kullanarak StorSimple Sanal dizinizi yönetin](storsimple-virtual-array-manager-service-administration.md).

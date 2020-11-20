@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
-ms.openlocfilehash: e6b8708edeeb4b3b69dab82265d13db2a4c22e08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41699625b7062daa005e6908ce9e4249dd86f1fa
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87051655"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956407"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>SAP NetWeaver için Red Hat Enterprise Linux üzerinde Azure Sanal Makineler'de GlusterFS
 
@@ -43,7 +44,7 @@ ms.locfileid: "87051655"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 Bu makalede, sanal makinelerin nasıl dağıtılacağı, sanal makinelerin nasıl yapılandırılacağı ve yüksek oranda kullanılabilir bir SAP sisteminin paylaşılan verilerini depolamak için kullanılabilecek bir GlusterFS kümesinin nasıl yükleneceği açıklanır.
-Bu kılavuzda, NW1 ve NW2 adlı iki SAP sistemi tarafından kullanılan GlusterFS 'nin nasıl ayarlanacağı açıklanır. Örnekteki kaynakların (örneğin, sanal makineler, sanal ağlar) adları, kaynak öneki **glust**ile [SAP dosya sunucusu şablonunu][template-file-server] kullandığınızı varsayar.
+Bu kılavuzda, NW1 ve NW2 adlı iki SAP sistemi tarafından kullanılan GlusterFS 'nin nasıl ayarlanacağı açıklanır. Örnekteki kaynakların (örneğin, sanal makineler, sanal ağlar) adları, kaynak öneki **glust** ile [SAP dosya sunucusu şablonunu][template-file-server] kullandığınızı varsayar.
 
 Önce aşağıdaki SAP notlarını ve kağıtları okuyun
 
@@ -98,7 +99,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    4. Yönetici Kullanıcı adı, yönetici parolası veya SSH anahtarı  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    5. Alt ağ KIMLIĞI  
-      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/** &lt; abonelik kimliği &gt; **/ResourceGroups/** &lt; kaynak grubu adı &gt; **/Providers/Microsoft.Network/virtualNetworks/** &lt; sanal ağ adı &gt; **/Subnets/** &lt; alt ağ adı &gt; ** gibi görünüyor
+      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/**&lt; abonelik kimliği &gt;**/ResourceGroups/**&lt; kaynak grubu adı &gt;**/Providers/Microsoft.Network/virtualNetworks/**&lt; sanal ağ adı &gt;**/Subnets/**&lt; alt ağ adı &gt;** gibi görünüyor
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 

@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ada83f6fa1b57f8dd72d591b6625f25e9a2388
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079583"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955863"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration uzantısı işleyicisine giriş
 
@@ -108,7 +109,7 @@ Cmdlet 'in oluşturduğu. ps1 yapılandırma betiği Arşiv klasörünün kökü
 Kaynak Yöneticisi DSC Uzantısı cmdlet 'leri hakkında önemli bilgiler:
 
 - Azure Resource Manager cmdlet 'leri zaman uyumludur.
-- *Resourcegroupname*, *VMName*, *ArchiveStorageAccountName*, *Version*ve *Location* parametrelerinin hepsi gereklidir.
+- *Resourcegroupname*, *VMName*, *ArchiveStorageAccountName*, *Version* ve *Location* parametrelerinin hepsi gereklidir.
 - *ArchiveResourceGroupName* isteğe bağlı bir parametredir. Depolama Hesabınız VM 'nin oluşturulduğu sunucudan farklı bir kaynak grubuna aitse, bu parametreyi belirtebilirsiniz.
 - Uzantı işleyicisini **, kullanılabilir** olduğunda en son sürüme otomatik olarak güncelleştirmek için otomatik güncelleştirme anahtarını kullanın. Bu parametrenin yeni bir WMF sürümü yayınlandığında VM 'de yeniden başlatmalara neden olma olasılığı vardır.
 
@@ -185,19 +186,19 @@ Portal aşağıdaki girişi toplar:
 
 - **Yapılandırma modülleri veya betiği**: Bu alan zorunludur (form [varsayılan yapılandırma betiği](#default-configuration-script)için güncelleştirilmemiş). Yapılandırma modülleri ve betikler, bir yapılandırma betiğine sahip bir. ps1 dosyası veya kökte. ps1 yapılandırma betiği içeren bir. zip dosyası gerektirir. Bir. zip dosyası kullanıyorsanız, tüm bağımlı kaynakların. zip içindeki modül klasörlerine dahil olması gerekir. . Zip dosyasını, Azure PowerShell SDK 'ya dahil olan **Publish-AzureVMDscConfiguration-OutputArchivePath** cmdlet 'ini kullanarak oluşturabilirsiniz. . Zip dosyası, Kullanıcı BLOB depolama alanına yüklenir ve bir SAS belirteci tarafından güvenli hale getirilir.
 
-- **Modülün nitelikli adı**: bir. ps1 dosyasına birden çok yapılandırma işlevi ekleyebilirsiniz. Configuration. ps1 betiğinin adını \\ ve ardından yapılandırma işlevinin adını girin. Örneğin,. ps1 betiğinizin adı configuration.ps1 varsa ve yapılandırma **ıisınstall**ise, **configuration.ps1 \iisınstall**yazın.
+- **Modülün nitelikli adı**: bir. ps1 dosyasına birden çok yapılandırma işlevi ekleyebilirsiniz. Configuration. ps1 betiğinin adını \\ ve ardından yapılandırma işlevinin adını girin. Örneğin,. ps1 betiğinizin adı configuration.ps1 varsa ve yapılandırma **ıisınstall** ise, **configuration.ps1 \iisınstall** yazın.
 
-- **Yapılandırma bağımsız değişkenleri**: yapılandırma işlevi bağımsız değişkenler alırsa, bunları **argumentName1 = değer1, argumentName2 = değer2**biçiminde girin. Bu biçim, PowerShell cmdlet 'lerinde veya Kaynak Yöneticisi şablonlarda yapılandırma bağımsız değişkenlerinin kabul edildiği farklı bir biçimdir.
+- **Yapılandırma bağımsız değişkenleri**: yapılandırma işlevi bağımsız değişkenler alırsa, bunları **argumentName1 = değer1, argumentName2 = değer2** biçiminde girin. Bu biçim, PowerShell cmdlet 'lerinde veya Kaynak Yöneticisi şablonlarda yapılandırma bağımsız değişkenlerinin kabul edildiği farklı bir biçimdir.
 
 - **Yapılandırma VERILERI PSD1 dosyası**: yapılandırmanız için bir yapılandırma veri dosyası gerekiyorsa `.psd1` , bu alanı kullanarak veri dosyasını seçin ve Kullanıcı BLOB depolama alanına yükleyin. Yapılandırma veri dosyası, BLOB depolama alanındaki bir SAS belirteci ile korunmuş olur.
 
-- **WMF sürümü**: sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin en son olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler 4,0, 5,0, 5,1 ve en son değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en**sonuncusudur.
+- **WMF sürümü**: sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin en son olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler 4,0, 5,0, 5,1 ve en son değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en** sonuncusudur.
 
 - **Veri toplama**: uzantının telemetri toplayıp toplayacağını belirler. Daha fazla bilgi için bkz. [Azure DSC Uzantısı veri toplama](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/).
 
 - **Sürüm**: yüklenecek DSC uzantısının sürümünü belirtir. Sürümler hakkında bilgi için bkz. [DSC Uzantısı sürüm geçmişi](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
-- Alt **sürümü otomatik Yükselt**: Bu alan cmdlet **'lerde otomatik güncelleştirme anahtarına eşlenir** ve uzantının yükleme sırasında en son sürüme otomatik olarak güncelleştirilmesini sağlar. **Evet** seçeneği, uzantı işleyicisinin kullanılabilir en son sürümü kullanmasını ve **Hayır** 'ın, belirtilen **sürümü** yüklemeye zormasını sağlar. Hayır **Evet** veya **Hayır** seçeneği belirlendiğinde **Hayır**seçeneği belirlenmeyecektir.
+- Alt **sürümü otomatik Yükselt**: Bu alan cmdlet **'lerde otomatik güncelleştirme anahtarına eşlenir** ve uzantının yükleme sırasında en son sürüme otomatik olarak güncelleştirilmesini sağlar. **Evet** seçeneği, uzantı işleyicisinin kullanılabilir en son sürümü kullanmasını ve **Hayır** 'ın, belirtilen **sürümü** yüklemeye zormasını sağlar. Hayır **Evet** veya **Hayır** seçeneği belirlendiğinde **Hayır** seçeneği belirlenmeyecektir.
 
 ## <a name="logs"></a>Günlükler
 

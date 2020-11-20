@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744143"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956118"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için StorSimple Aygıt Yöneticisi hizmetini dağıtma
 
@@ -36,7 +36,7 @@ StorSimple Aygıt Yöneticisi hizmetiyle ilgili ortak görevler şunlardır:
 * Hizmet kayıt anahtarı alma
 * Hizmet kayıt anahtarını yeniden üret
 
-Bu öğreticide, önceki görevlerden her birinin nasıl gerçekleştirileceği açıklanmaktadır. Bu makalede yer alan bilgiler yalnızca StorSimple Sanal dizileri için geçerlidir. StorSimple 8000 serisi hakkında daha fazla bilgi için, [StorSimple Yöneticisi hizmetini dağıtma](storsimple-manage-service.md)konusuna gidin.
+Bu öğreticide, önceki görevlerden her birinin nasıl gerçekleştirileceği açıklanmaktadır. Bu makalede yer alan bilgiler yalnızca StorSimple Sanal dizileri için geçerlidir. StorSimple 8000 serisi hakkında daha fazla bilgi için, [StorSimple Yöneticisi hizmetini dağıtma](./storsimple-8000-manage-service.md)konusuna gidin.
 
 ## <a name="create-a-service"></a>Hizmet oluşturma
 
@@ -89,12 +89,12 @@ Hizmet listesi yenilenir.
  ![Güncelleştirilmiş hizmet listesi](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>Hizmet kayıt anahtarı alma
-Bir hizmeti başarıyla oluşturduktan sonra StorSimple cihazınızı hizmete kaydetmeniz gerekir. İlk StorSimple cihazınızı kaydetmek için hizmet kayıt anahtarına ihtiyacınız olacaktır. Mevcut bir StorSimple hizmetine ek cihazları kaydetmek için, kayıt anahtarı ve hizmet veri şifreleme anahtarı (kayıt sırasında ilk cihazda oluşturulur) gerekir. Hizmet veri şifreleme anahtarı hakkında daha fazla bilgi için bkz. [StorSimple Security](storsimple-security.md). Hizmetiniz için **anahtarlar** dikey penceresine erişerek kayıt anahtarını alabilirsiniz.
+Bir hizmeti başarıyla oluşturduktan sonra StorSimple cihazınızı hizmete kaydetmeniz gerekir. İlk StorSimple cihazınızı kaydetmek için hizmet kayıt anahtarına ihtiyacınız olacaktır. Mevcut bir StorSimple hizmetine ek cihazları kaydetmek için, kayıt anahtarı ve hizmet veri şifreleme anahtarı (kayıt sırasında ilk cihazda oluşturulur) gerekir. Hizmet veri şifreleme anahtarı hakkında daha fazla bilgi için bkz. [StorSimple Security](./storsimple-8000-security.md). Hizmetiniz için **anahtarlar** dikey penceresine erişerek kayıt anahtarını alabilirsiniz.
 
 Hizmet kayıt anahtarını almak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-get-the-service-registration-key"></a>Hizmet kayıt anahtarını almak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde ** &gt; Yönetim** **anahtarlar**' a gidin.
+1. **StorSimple aygıt yöneticisi** dikey penceresinde **&gt; Yönetim** **anahtarlar**' a gidin.
    
    ![Anahtarlar dikey penceresi](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **Anahtarlar** dikey penceresinde bir hizmet kayıt anahtarı görüntülenir. Kopyala simgesini kullanarak kayıt anahtarını kopyalayın. 
@@ -107,7 +107,7 @@ Anahtar dönüşü yapmanız gerekiyorsa veya hizmet yöneticileri listesi deği
 Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-regenerate-the-service-registration-key"></a>Hizmet kayıt anahtarını yeniden oluşturmak için
-1. **StorSimple aygıt yöneticisi** dikey penceresinde ** &gt; Yönetim** **anahtarlar**' a gidin.
+1. **StorSimple aygıt yöneticisi** dikey penceresinde **&gt; Yönetim** **anahtarlar**' a gidin.
    
    ![Anahtarlar dikey penceresi yeniden](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **Anahtarlar** dikey penceresinde yeniden **Oluştur**' a tıklayın.
@@ -125,4 +125,3 @@ Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları ger
 ## <a name="next-steps"></a>Sonraki adımlar
 * StorSimple Sanal dizisi ile [çalışmaya başlama](storsimple-virtual-array-deploy1-portal-prep.md) hakkında bilgi edinin.
 * [StorSimple cihazınızı yönetmeyi](storsimple-ova-web-ui-admin.md)öğrenin.
-

@@ -5,16 +5,17 @@ services: virtual-machines-linux
 author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421082"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956033"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -84,7 +85,7 @@ Linux Tanılama uzantısı Python 2 gerektirir. Sanal makineniz, varsayılan ola
  - Ubuntu, debir: `apt-get install -y python2`
  - SUSE `zypper install -y python2`
 
-Python2 yürütülebilir dosyası *Python* 'un diğer adı olmalıdır. Aşağıda, bu diğer adı ayarlamak için kullanabileceğiniz bir yöntem verilmiştir:
+Python2 yürütülebilir dosyası *Python*'un diğer adı olmalıdır. Aşağıda, bu diğer adı ayarlamak için kullanabileceğiniz bir yöntem verilmiştir:
 
 1. Mevcut diğer adları kaldırmak için aşağıdaki komutu çalıştırın.
  
@@ -198,7 +199,7 @@ Korumalı veya ortak ayarlarınızı değiştirdikten sonra aynı komutu çalı�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Uzantının önceki sürümlerinden geçiş
 
-Uzantının en son sürümü **3,0** ' dir. **Tüm eski sürümler (2. x) kullanım dışıdır ve 31 temmuz 2018 tarihinde veya sonrasında yayımdan kaldırılmış olabilir**.
+Uzantının en son sürümü **3,0**' dir. **Tüm eski sürümler (2. x) kullanım dışıdır ve 31 temmuz 2018 tarihinde veya sonrasında yayımdan kaldırılmış olabilir**.
 
 > [!IMPORTANT]
 > Bu uzantı, uzantının yapılandırmasındaki son değişiklikleri tanıtır. Uzantının güvenliğini artırmak için bu tür bir değişiklik yapılmıştır; Sonuç olarak, 2. x ile geriye dönük uyumluluk korunamadı. Ayrıca, bu uzantının uzantı yayımcısı 2. x sürümleri için yayımcıdan farklıdır.
@@ -228,7 +229,7 @@ Bu yapılandırma bilgileri kümesi, genel görünümden korunması gereken hass
 }
 ```
 
-Ad | Değer
+Name | Değer
 ---- | -----
 storageAccountName | Verilerin uzantı tarafından yazıldığı depolama hesabının adı.
 storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutu 'na sahiptir `https://core.windows.net` . Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
@@ -604,7 +605,7 @@ TransfersPerSecond | Saniye başına okuma veya yazma işlemi
 
 Tüm dosya sistemleri genelinde toplanmış değerler, ayarıyla elde edilebilir `"condition": "IsAggregate=True"` . "/Mnt" gibi belirli bir bağlı dosya sisteminin değerleri ayarıyla elde edilebilir `"condition": 'Name="/mnt"'` . 
 
-**Note** : JSON yerine Azure portalını kullanıyorsanız, doğru koşul alanı formu adı = '/mnt ' olur
+**Note**: JSON yerine Azure portalını kullanıyorsanız, doğru koşul alanı formu adı = '/mnt ' olur
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>Disk sınıfı için yerleşik ölçümler
 

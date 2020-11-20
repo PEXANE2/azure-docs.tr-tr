@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31f690277675650323763a7bc6872ad736f5776c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181f226a4d7aa37ffd8c667db4736a96450e2be5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837015"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955965"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma
 Azure Tanılama uzantısı, Windows tabanlı bir Azure sanal makinesinde izleme ve tanılama özellikleri sağlar. Uzantıyı Azure Resource Manager şablonun bir parçası olarak ekleyerek sanal makinede bu özellikleri etkinleştirebilirsiniz. Bir sanal makine şablonunun parçası olarak herhangi bir uzantı ekleme hakkında daha fazla bilgi için bkz. [VM uzantılarına sahip Azure Resource Manager şablonları yazma](../windows/template-description.md#extensions) . Bu makalede, Azure Tanılama uzantısını bir Windows sanal makine şablonuna nasıl ekleyebileceğiniz açıklanır.  
@@ -62,7 +63,7 @@ Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmas
 ]
 ```
 
-Diğer bir yaygın kural, uzantı yapılandırmasını, sanal makinenin kaynaklar düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımda, uzantı ile sanal makine arasında *ad* ve *tür* değerleriyle açık bir şekilde hiyerarşik ilişki belirtmeniz gerekir. Örneğin: 
+Diğer bir yaygın kural, uzantı yapılandırmasını, sanal makinenin kaynaklar düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımda, uzantı ile sanal makine arasında *ad* ve *tür* değerleriyle açık bir şekilde hiyerarşik ilişki belirtmeniz gerekir. Örnek: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -79,7 +80,7 @@ Sanal Makine Ölçek Kümeleri için, uzantı yapılandırması *Virtualmachinep
 
 *Typehandlerversion* , kullanmak istediğiniz uzantının sürümünü belirtir. *Oto Upgrademinorversion* alt sürümünün **true** olarak ayarlanması, mevcut uzantının en son ikincil sürümünü almanızı sağlar. Her zaman yeni özellikler ve hata düzeltmeleriyle birlikte kullanılabilir en son tanılama uzantısını kullanmak için her zaman her zaman **true** *olarak ayarlamanız önerilir* . 
 
-*Settings* öğesi, uzantıya (bazen genel yapılandırma olarak adlandırılır) ayarlanabilir ve geri okuyabilen yapılandırma özelliklerini içerir. *Xmlcfg* özelliği, tanılama Aracısı tarafından toplanan tanılama günlükleri, performans sayaçları ve XML tabanlı yapılandırmayı içerir. XML şemasının kendisi hakkında daha fazla bilgi için bkz. [Tanılama yapılandırma şeması](../../azure-monitor/platform/diagnostics-extension-schema-windows.md) . Ortak bir uygulama, gerçek xml yapılandırmasını Azure Resource Manager şablonunda bir değişken olarak depolayıp, sonra *xmlcfg*için değer ayarlamak üzere bunları birleştirir ve Base64 olarak kodlayayöneliktir. XML 'i değişkenlerde nasıl depolayacağınızı öğrenmek için [Tanılama yapılandırma değişkenleri](#diagnostics-configuration-variables) bölümüne bakın. *Storageaccount* özelliği, tanılama verilerinin aktarıldığı depolama hesabının adını belirtir. 
+*Settings* öğesi, uzantıya (bazen genel yapılandırma olarak adlandırılır) ayarlanabilir ve geri okuyabilen yapılandırma özelliklerini içerir. *Xmlcfg* özelliği, tanılama Aracısı tarafından toplanan tanılama günlükleri, performans sayaçları ve XML tabanlı yapılandırmayı içerir. XML şemasının kendisi hakkında daha fazla bilgi için bkz. [Tanılama yapılandırma şeması](../../azure-monitor/platform/diagnostics-extension-schema-windows.md) . Ortak bir uygulama, gerçek xml yapılandırmasını Azure Resource Manager şablonunda bir değişken olarak depolayıp, sonra *xmlcfg* için değer ayarlamak üzere bunları birleştirir ve Base64 olarak kodlayayöneliktir. XML 'i değişkenlerde nasıl depolayacağınızı öğrenmek için [Tanılama yapılandırma değişkenleri](#diagnostics-configuration-variables) bölümüne bakın. *Storageaccount* özelliği, tanılama verilerinin aktarıldığı depolama hesabının adını belirtir. 
 
 *Protectedsettings* içindeki Özellikler (bazen özel yapılandırma olarak adlandırılır) ayarlanabilir, ancak ayarlandıktan sonra geri okunamaz. *Protectedsettings* 'in salt yazılır olması, tanılama verilerinin yazıldığı depolama hesabı anahtarı gibi gizli dizileri depolamanın yararlı olmasını sağlar.    
 

@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184729"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956203"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure portalı aracılığıyla StorSimple Sanal Diziniz için olağanüstü durum kurtarma ve cihaz yükü devretme
 
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, başka bir sanal diziye yük devretmek için ayrıntılı adımlar da dahil olmak üzere Microsoft Azure StorSimple Sanal diziniz için olağanüstü durum kurtarma açıklanmaktadır. Yük devretme, verilerinizi veri merkezindeki bir *kaynak* cihazdan *hedef* cihaza taşımanızı sağlar. Hedef cihaz aynı veya farklı bir coğrafi konumda bulunabilir. Cihaz yük devretmesi tüm cihaza yöneliktir. Yük devretme sırasında kaynak cihaz için bulut verileri, hedef cihazın sahipliğini değiştirir.
 
-Bu makale yalnızca StorSimple Sanal dizileri için geçerlidir. 8000 serisi bir cihazın yükünü devretmek için, [StorSimple cihazınızın cihaz yük devretmesi ve olağanüstü durum kurtarma](storsimple-device-failover-disaster-recovery.md)bölümüne gidin.
+Bu makale yalnızca StorSimple Sanal dizileri için geçerlidir. 8000 serisi bir cihazın yükünü devretmek için, [StorSimple cihazınızın cihaz yük devretmesi ve olağanüstü durum kurtarma](./storsimple-8000-device-failover-disaster-recovery.md)bölümüne gidin.
 
 ## <a name="what-is-disaster-recovery-and-device-failover"></a>Olağanüstü durum kurtarma ve cihaz yük devretmesi nedir?
 
-Olağanüstü durum kurtarma (DR) senaryosunda, birincil cihaz çalışmayı durduruyor. Bu senaryoda, başarısız cihazla ilişkili bulut verilerini başka bir cihaza taşıyabilirsiniz. Birincil cihazı *kaynak* olarak kullanabilir ve *hedef*olarak başka bir cihaz belirtebilirsiniz. Bu işlem, *Yük devretme*olarak adlandırılır. Yük devretme sırasında, kaynak cihazdaki tüm birimler veya Paylaşımlar sahipliği değiştirir ve hedef cihaza aktarılır. Verilerin filtrelemesine izin verilmez.
+Olağanüstü durum kurtarma (DR) senaryosunda, birincil cihaz çalışmayı durduruyor. Bu senaryoda, başarısız cihazla ilişkili bulut verilerini başka bir cihaza taşıyabilirsiniz. Birincil cihazı *kaynak* olarak kullanabilir ve *hedef* olarak başka bir cihaz belirtebilirsiniz. Bu işlem, *Yük devretme* olarak adlandırılır. Yük devretme sırasında, kaynak cihazdaki tüm birimler veya Paylaşımlar sahipliği değiştirir ve hedef cihaza aktarılır. Verilerin filtrelemesine izin verilmez.
 
 DR, ısı haritası tabanlı katmanlama ve izleme kullanılarak tam bir cihaz geri yüklemesi olarak modellenir. Bir ısı haritası, okuma ve yazma desenlerine göre verilere bir ısı değeri atanarak tanımlanır. Bu ısı haritası daha sonra en düşük ısı verisi öbeklerini önce buluta, yüksek ısı (en çok kullanılan) verilerini yerel katmanda parçalar. Bir DR sırasında StorSimple, verileri buluttan geri yüklemek ve yeniden oluşturmak için ısı haritasını kullanır. Cihaz, son son yedekteki tüm birimleri/paylaşımları (dahili olarak belirlendiği şekilde) getirir ve bu yedeklemeden geri yükleme gerçekleştirir. Sanal dizi tüm DR sürecini düzenler.
 
@@ -126,7 +126,7 @@ Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki ad�
 6. Devre dışı bırakma başlatılır. Devre dışı bırakma işlemi başarıyla tamamlandıktan sonra bir bildirim alırsınız.
    
     ![Cihazın devre dışı bırakıldığını gösteren bir ilerleme çubuğunun ekran görüntüsü.](./media/storsimple-virtual-array-failover-dr/failover2.png)
-7. Cihazlar sayfasında, cihaz durumu artık **devre dışı**olarak değiştirilir.
+7. Cihazlar sayfasında, cihaz durumu artık **devre dışı** olarak değiştirilir.
     ![Cihazlar sayfasının ekran görüntüsü. Devre dışı bırakılmış olarak listelenen durum dahil, devre dışı bırakılmış cihazın özellikleri görüntülenir.](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. **Cihazlar** dikey penceresinde, yük devretme için devre dışı bırakılmış kaynak cihazı seçin ve tıklayın. 
 9. **Cihaz panosu** dikey penceresinde **Yük devret**' e tıklayın. 
@@ -134,7 +134,7 @@ Bir hedef StorSimple Sanal cihazına cihaz geri yüklemek için aşağıdaki ad�
     
     1. Kaynak cihaz alanı otomatik olarak doldurulur. Kaynak cihaz için toplam veri boyutunu aklınızda yapın. Veri boyutu, hedef cihazdaki kullanılabilir kapasiteden daha az olmalıdır. Kaynak cihazla ilişkili cihaz adı, toplam kapasite ve yük devredilen paylaşımların adları gibi ayrıntıları gözden geçirin.
 
-    2. Kullanılabilir cihazların açılan listesinden bir **hedef cihaz**seçin. Yalnızca yeterli kapasiteye sahip cihazlar açılan listede görüntülenir.
+    2. Kullanılabilir cihazların açılan listesinden bir **hedef cihaz** seçin. Yalnızca yeterli kapasiteye sahip cihazlar açılan listede görüntülenir.
 
     3. **Bu işlemin hedef cihaza veri yük devredebildiğini anladım**. 
 
@@ -181,4 +181,3 @@ Yalnızca bir olağanüstü durum yaşanmadan önce kayıtlı olan StorSimple ci
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Yerel Web Kullanıcı arabirimini kullanarak StorSimple Sanal dizinizi yönetme](storsimple-ova-web-ui-admin.md)hakkında daha fazla bilgi edinin.
-

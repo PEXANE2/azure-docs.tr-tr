@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540935"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955421"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP iş yükü için Azure Depolama türleri
 Azure 'da yetenekler, verimlilik, gecikme ve fiyatlara göre büyük ölçüde farklı depolama türlerine sahiptir. Bazı depolama türleri veya SAP senaryolarında sınırlı kullanılabilir değildir. Ancak, birkaç Azure depolama türü, belirli SAP iş yükü senaryoları için uygundur veya iyileştirilmiştir. Özellikle SAP HANA için, bazı Azure Depolama türleri SAP HANA kullanım için sertifikalandıralındı. Bu belgede, farklı depolama türlerini inceleyeceğiz ve SAP iş yükleri ve SAP bileşenleriyle yeteneklerini ve kullanılabilirliğini anladık.
@@ -273,7 +274,7 @@ ANF depolamanın ek yerleşik işlevleri:
 - Anlık görüntülerden ANF birimlerinin kopyalanması
 - Birimleri anlık görüntülerden geri yükle (yaslama geri çevir)
 
-**Özet** : Azure NetApp FILES, NFS ve SMB birimleri veya paylaşımları dağıtmaya izin veren, Hana sertifikalı düşük gecikmeli bir depodır. Depolama, birimin GiB kapasitesi başına doğrusal bir şekilde farklı verimlilik ve ıOPS sağlayan üç farklı hizmet düzeyiyle gelir. ANF depolaması, bekleyen bir düğümle SAP HANA genişleme senaryolarına dağıtım yapmak için etkinleştiriliyor. Depolama alanı,/sapmnt veya SAP Genel aktarım dizini için gerektiğinde dosya paylaşımları sağlamaya uygundur. ANF depolama, yerel NetApp işlevselliği olarak kullanılabilen işlev kullanılabilirliğiyle birlikte gelir.  
+**Özet**: Azure NetApp FILES, NFS ve SMB birimleri veya paylaşımları dağıtmaya izin veren, Hana sertifikalı düşük gecikmeli bir depodır. Depolama, birimin GiB kapasitesi başına doğrusal bir şekilde farklı verimlilik ve ıOPS sağlayan üç farklı hizmet düzeyiyle gelir. ANF depolaması, bekleyen bir düğümle SAP HANA genişleme senaryolarına dağıtım yapmak için etkinleştiriliyor. Depolama alanı,/sapmnt veya SAP Genel aktarım dizini için gerektiğinde dosya paylaşımları sağlamaya uygundur. ANF depolama, yerel NetApp işlevselliği olarak kullanılabilen işlev kullanılabilirliğiyle birlikte gelir.  
 
 
 

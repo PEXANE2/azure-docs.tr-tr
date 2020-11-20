@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742256"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954129"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizdeki paylaşımları veya birimleri yedekleyin
 
@@ -28,7 +28,7 @@ ms.locfileid: "91742256"
 
 StorSimple Sanal dizisi, bir dosya sunucusu veya bir Iscsı sunucusu olarak yapılandırılabilen bir karma bulut depolaması şirket içi sanal cihazdır. Sanal dizi, kullanıcının cihazdaki tüm paylaşımların veya birimlerin zamanlanan ve el ile yedeklerini oluşturmasına izin verir. Dosya sunucusu olarak yapılandırıldığında, öğe düzeyinde kurtarmaya de izin verir. Bu öğreticide, sanal dizinizdeki silinmiş bir dosyayı geri yüklemek için zamanlanmış ve el ile yedeklemeler oluşturma ve öğe düzeyinde kurtarma gerçekleştirme işlemleri açıklanmaktadır.
 
-Bu öğretici yalnızca StorSimple Sanal dizileri için geçerlidir. 8000 serisi hakkında bilgi için, [8000 serisi cihaz için yedekleme oluşturma](storsimple-manage-backup-policies-u2.md) sayfasına gidin
+Bu öğretici yalnızca StorSimple Sanal dizileri için geçerlidir. 8000 serisi hakkında bilgi için, [8000 serisi cihaz için yedekleme oluşturma](./storsimple-8000-manage-backup-policies-u2.md) sayfasına gidin
 
 ## <a name="back-up-shares-and-volumes"></a>Paylaşımları ve birimleri yedekleme
 
@@ -46,7 +46,7 @@ StorSimple Sanal diziniz, belirtilen gün (22:30) ile başlayan bir varsayılan 
 
 #### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Varsayılan yedekleme ilkesinin başlangıç saatini değiştirmek için
 
-1. **Cihazlara**gidin. StorSimple Aygıt Yöneticisi hizmetinize kayıtlı cihazların listesi görüntülenir. 
+1. **Cihazlara** gidin. StorSimple Aygıt Yöneticisi hizmetinize kayıtlı cihazların listesi görüntülenir. 
    
     ![cihazlara git](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
@@ -66,7 +66,7 @@ Zamanlanan yedeklemelere ek olarak, cihaz verilerinin el ile (isteğe bağlı) y
 
 #### <a name="to-create-a-manual-backup"></a>El ile yedekleme oluşturmak için
 
-1. **Cihazlara**gidin. Cihazınızı seçin ve seçili satırda en sağdaki **.** .. öğesine sağ tıklayın. Bağlam menüsünden **yedek al**' ı seçin.
+1. **Cihazlara** gidin. Cihazınızı seçin ve seçili satırda en sağdaki **.** .. öğesine sağ tıklayın. Bağlam menüsünden **yedek al**' ı seçin.
    
     ![Yedekleme al 'a git](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
@@ -82,7 +82,7 @@ Zamanlanan yedeklemelere ek olarak, cihaz verilerinin el ile (isteğe bağlı) y
    
     ![yedekleme işi oluşturuldu](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Yedeklemelerin ilerlemesini izlemek ve iş ayrıntılarına bakmak için bildirime tıklayın. Böylece  **iş ayrıntılarına**gidersiniz.
+3. Yedeklemelerin ilerlemesini izlemek ve iş ayrıntılarına bakmak için bildirime tıklayın. Böylece  **iş ayrıntılarına** gidersiniz.
    
      ![yedekleme işi ayrıntıları](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
@@ -100,7 +100,7 @@ Mevcut yedekleri görüntülemek için Azure portal aşağıdaki adımları ger�
     ![Yedekleme kataloğuna git](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. Filtreleme için kullanılacak aşağıdaki ölçütleri belirtin:
    
-   - **Zaman aralığı** – **1 saat**, son **24 saat**, son **7 gün**, son **30 gün**, **geçmiş yıl**ve **özel tarih**olabilir.
+   - **Zaman aralığı** – **1 saat**, son **24 saat**, son **7 gün**, son **30 gün**, **geçmiş yıl** ve **özel tarih** olabilir.
     
    - **Cihazlar** : storsimple Aygıt Yöneticisi hizmetinize kayıtlı dosya sunucuları veya iSCSI sunucuları listesinden seçim yapın.
    
@@ -115,4 +115,3 @@ Mevcut yedekleri görüntülemek için Azure portal aşağıdaki adımları ger�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [StorSimple Sanal dizinizi yönetme](storsimple-ova-web-ui-admin.md)hakkında daha fazla bilgi edinin.
-

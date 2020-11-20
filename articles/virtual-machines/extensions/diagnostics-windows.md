@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837032"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955982"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Windows çalıştıran bir sanal makinede Azure Tanılama etkinleştirmek için PowerShell 'i kullanma
 
@@ -97,8 +98,8 @@ Yapılandırmanın aşağıdakileri içermesi için güncelleştirilmesi gerekir
 
 * **Ölçümler** öğesinin *RESOURCEID* ÖZNITELIĞININ VM 'nin kaynak kimliğiyle güncelleştirilmesi gerekir.
   
-  * Kaynak KIMLIĞI şu model kullanılarak oluşturulabilir: "/Subscriptions/{*VM ile abonelik için ABONELIK kimliği*}/ResourceGroups/{VM 'nin*resourcegroup Name*}/Providers/Microsoft.COMPUTE/virtualMachines/{*VM Name*}".
-  * Örneğin, VM 'nin çalıştığı aboneliğin abonelik KIMLIĞI **11111111-1111-1111-1111-111111111111**ise kaynak grubunun kaynak grubu adı **myresourcegroup**olur ve VM adı **Mywindowsvm**ise, *RESOURCEID* değeri şöyle olacaktır:
+  * Kaynak KIMLIĞI şu model kullanılarak oluşturulabilir: "/Subscriptions/{*VM ile abonelik için ABONELIK kimliği*}/ResourceGroups/{VM 'nin *resourcegroup Name*}/Providers/Microsoft.COMPUTE/virtualMachines/{*VM Name*}".
+  * Örneğin, VM 'nin çalıştığı aboneliğin abonelik KIMLIĞI **11111111-1111-1111-1111-111111111111** ise kaynak grubunun kaynak grubu adı **myresourcegroup** olur ve VM adı **Mywindowsvm** ise, *RESOURCEID* değeri şöyle olacaktır:
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >

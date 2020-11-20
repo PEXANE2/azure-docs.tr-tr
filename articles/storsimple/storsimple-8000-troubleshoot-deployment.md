@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187073"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956900"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple cihaz dağıtımı sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -46,12 +46,12 @@ Aşağıdaki bölümler, StorSimple cihazını ilk kez yapılandırırken karş�
 ## <a name="first-time-setup-wizard-process"></a>İlk kez Kurulum Sihirbazı işlemi
 Aşağıdaki adımlarda Kurulum Sihirbazı işlemi özetlenmektedir. Ayrıntılı kurulum bilgileri için bkz. Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md).
 
-1. Geri kalan adımlarda size yol gösterecek Kurulum Sihirbazı 'nı başlatmak için [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) cmdlet 'ini çalıştırın. 
+1. Geri kalan adımlarda size yol gösterecek Kurulum Sihirbazı 'nı başlatmak için [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) cmdlet 'ini çalıştırın. 
 2. Ağı yapılandırma: Kurulum Sihirbazı, StorSimple cihazınızda VERI 0 ağ arabirimi için ağ ayarlarını yapılandırmanıza olanak tanır. Bu ayarlar aşağıdakileri içerir:
-   * Sanal IP (VIP), alt ağ maskesi ve ağ geçidi – [set-Hcsnetınterface](https://technet.microsoft.com/library/dn688161.aspx) cmdlet 'i arka planda yürütülür. StorSimple cihazınızda VERI 0 ağ arabirimi için IP adresini, alt ağ maskesini ve ağ geçidini yapılandırır.
-   * Birincil DNS sunucusu – [set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için DNS ayarlarını yapılandırır.
-   * NTP sunucusu: [set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için NTP sunucu ayarlarını yapılandırır.
-   * İsteğe bağlı Web proxy – [set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için Web proxy yapılandırmasını ayarlar ve etkinleştirilir.
+   * Sanal IP (VIP), alt ağ maskesi ve ağ geçidi – [set-Hcsnetınterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) cmdlet 'i arka planda yürütülür. StorSimple cihazınızda VERI 0 ağ arabirimi için IP adresini, alt ağ maskesini ve ağ geçidini yapılandırır.
+   * Birincil DNS sunucusu – [set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için DNS ayarlarını yapılandırır.
+   * NTP sunucusu: [set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için NTP sunucu ayarlarını yapılandırır.
+   * İsteğe bağlı Web proxy – [set-HcsWebProxy](/previous-versions/windows/powershell-scripting/dn688154(v=wps.630)) cmdlet 'i arka planda yürütülür. StorSimple çözümünüz için Web proxy yapılandırmasını ayarlar ve etkinleştirilir.
 3. Parolayı ayarlayın: sonraki adım, Cihaz Yöneticisi parolasını ayarladır.
    Cihaz Yöneticisi parolası, cihazınızda oturum açmak için kullanılır. Varsayılan cihaz parolası **Password1**’dir.
         
@@ -139,7 +139,7 @@ Cihazı kaydetmek için Microsoft Azure çalıştıran StorSimple Aygıt Yöneti
 | 9 |Uyarı: cihaz etkinleştirilemedi. Cihaz yöneticiniz ve StorSimple Snapshot Manager parolalar değişmemiştir. |Kayıt başarısız olursa, Cihaz Yöneticisi ve StorSimple Snapshot Manager parolaları değiştirilmez. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>StorSimple dağıtımlarının sorunlarını gidermeye yönelik araçlar
-StorSimple, StorSimple çözümünüzün sorunlarını gidermek için kullanabileceğiniz çeşitli araçlar içerir. Bu modüller şunlardır:
+StorSimple, StorSimple çözümünüzün sorunlarını gidermek için kullanabileceğiniz çeşitli araçlar içerir. Bunlar:
 
 * Destek paketleri ve cihaz günlükleri.
 * Sorun giderme için özel olarak tasarlanan cmdlet 'ler.
@@ -157,7 +157,7 @@ Destek paketi, Microsoft Desteği ekibine cihaz sorunlarını giderme konusunda 
    2. **Eylemler** bölmesinde, **kaydedilmiş günlüğü aç** ' a tıklayın ve etbir/ETW biçimindeki (destek paketi) günlük dosyalarının üzerine gelin. Artık dosyayı görüntüleyebilirsiniz. Dosyayı açtıktan sonra sağ tıklayıp dosyayı metin olarak kaydedebilirsiniz.
       
       > [!IMPORTANT]
-      > Bu dosyaları Windows PowerShell 'de açmak için **Get-WinEvent** cmdlet 'ini de kullanabilirsiniz. Daha fazla bilgi için Windows PowerShell cmdlet başvurusu belgelerindeki [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) bölümüne bakın.
+      > Bu dosyaları Windows PowerShell 'de açmak için **Get-WinEvent** cmdlet 'ini de kullanabilirsiniz. Daha fazla bilgi için Windows PowerShell cmdlet başvurusu belgelerindeki [Get-WinEvent](/powershell/module/microsoft.powershell.diagnostics/get-winevent) bölümüne bakın.
      
 5. Günlükler Olay Görüntüleyicisi açıldığında, cihaz yapılandırmasıyla ilgili sorunları içeren aşağıdaki günlüklere bakın:
    
@@ -184,12 +184,12 @@ Bir ilk kez cihaz dağıtımı için ağ arabirimlerini yapılandırdığınızd
 1. StorSimple için Windows PowerShell başlatın ve ardından yazın `Get-NetAdapter` . 
 2. `Get-NetAdapter`Ağ arabiriminizdeki durumu anlamak için cmdlet 'in çıkışını ve aşağıdaki yönergeleri kullanın.
    
-   * Arabirim sağlıklı ve etkinse, **Ifındex** durumu **yukarı**olarak gösterilir.
-   * Arabirim sağlıklı ancak fiziksel olarak bağlı değilse (bir ağ kablosu ile) **Ifındex** **devre dışı**olarak gösterilir.
-   * Arabirim sağlıklı ancak etkinleştirilmemişse, **Ifındex** durumu **Notas**olarak gösterilir.
+   * Arabirim sağlıklı ve etkinse, **Ifındex** durumu **yukarı** olarak gösterilir.
+   * Arabirim sağlıklı ancak fiziksel olarak bağlı değilse (bir ağ kablosu ile) **Ifındex** **devre dışı** olarak gösterilir.
+   * Arabirim sağlıklı ancak etkinleştirilmemişse, **Ifındex** durumu **Notas** olarak gösterilir.
    * Arabirim yoksa, bu listede görünmez. StorSimple Aygıt Yöneticisi hizmeti kullanıcı arabirimi bu arabirimi yine de başarısız bir durumda göstermeye devam eder.
 
-Bu cmdlet 'in nasıl kullanılacağı hakkında daha fazla bilgi için, Windows PowerShell cmdlet başvurusunda [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) sayfasına gidin.
+Bu cmdlet 'in nasıl kullanılacağı hakkında daha fazla bilgi için, Windows PowerShell cmdlet başvurusunda [Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps) sayfasına gidin.
 
 Aşağıdaki bölümlerde, cmdlet 'inin çıkış örnekleri gösterilmektedir `Get-NetAdapter` .
 
@@ -284,7 +284,7 @@ HCSNODE0      outlook.com     132.245.92.194
    * ErrorCode. Cıdevicedecommissioned – bu, cihazın devre dışı bırakıldığını gösterir.
    * ErrorCode. DeviceNotReady – bu, cihazın bakım modunda olduğunu gösterir.
    * ErrorCode. DeviceNotReady – bu, cihazın çevrimiçi olmadığını gösterir.
-3. StorSimple Aygıt Yöneticisi hizmetinin çalıştığını doğrulayın ( [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) cmdlet 'ini kullanın). Hizmet çalışmıyorsa, aşağıdaki hatalarla karşılaşabilirsiniz:
+3. StorSimple Aygıt Yöneticisi hizmetinin çalıştığını doğrulayın ( [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) cmdlet 'ini kullanın). Hizmet çalışmıyorsa, aşağıdaki hatalarla karşılaşabilirsiniz:
    
    * ErrorCode. CiSApplianceAgentNotOnline
    * ErrorCode. Cıpowershellscripthcserror – bu, Get-ClusterResource çalıştırdığınızda bir özel durum olduğunu gösterir.
@@ -308,7 +308,7 @@ HCSNODE0      outlook.com     132.245.92.194
 
 CiSCommandletLog0Curr. errlog ve CiSAgentsvc0Curr. errlog günlük dosyaları, özel durum ayrıntıları gibi daha fazla bilgiye sahip olacaktır.
 
-Cmdlet 'in nasıl kullanılacağı hakkında daha fazla bilgi için, Windows PowerShell başvuru belgelerindeki [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) ' a gidin.
+Cmdlet 'in nasıl kullanılacağı hakkında daha fazla bilgi için, Windows PowerShell başvuru belgelerindeki [Test-HcsmConnection](/previous-versions/windows/powershell-scripting/dn715782(v=wps.630)) ' a gidin.
 
 > [!IMPORTANT]
 > Bu cmdlet 'i hem etkin hem de pasif denetleyici için çalıştırabilirsiniz.
@@ -553,5 +553,5 @@ Hatanın nedeni aşağıdakilerden biri olabilir:
 
 <!--Link references-->
 
-[1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
-[2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx 
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379547(v=ws.10)
+[2]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd392266(v=ws.10)

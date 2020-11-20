@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b2576669357aae7e5fe423515933c2ce4a23a7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82926241"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954486"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS diğer ad kayıtlarına genel bakış
 
@@ -79,4 +79,4 @@ Diğer ad kayıtları hakkında daha fazla bilgi için aşağıdaki makalelere b
 
 - [Öğretici: Azure genel IP adresine başvurmak için diğer ad kaydı yapılandırma](tutorial-alias-pip.md)
 - [Öğretici: Traffic Manager ile tepe etki alanı adlarını desteklemek için diğer ad kaydı yapılandırma](tutorial-alias-tm.md)
-- [DNS SSS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [DNS SSS](./dns-faq.md#alias-records)

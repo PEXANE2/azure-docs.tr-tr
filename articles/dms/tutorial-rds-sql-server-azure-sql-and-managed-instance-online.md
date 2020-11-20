@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 12725c28c3e128317301bc51f9ce93f76021cc2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249667dfa8c0491027f0244d4aa5e49d19399ab0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291376"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955047"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>Öğretici: Azure SQL veritabanı 'na veya DMS kullanarak çevrimiçi Azure SQL yönetilen örneğine RDS SQL Server geçirme
 
-Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını bir RDS SQL Server örneğinden [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/) 'Na veya [Azure SQL yönetilen örneği](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) 'ne en az kapalı kalma süresiyle geçirebilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak SQL veritabanı 'na veya SQL yönetilen örneği SQL Server 2012 (veya üzeri) bir RDS SQL Server örneğine geri yüklenen **Adventureworks2012** veritabanını geçirmiş olursunuz.
+Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını bir RDS SQL Server örneğinden [Azure SQL veritabanı](/azure/sql-database/) 'Na veya [Azure SQL yönetilen örneği](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) 'ne en az kapalı kalma süresiyle geçirebilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak SQL veritabanı 'na veya SQL yönetilen örneği SQL Server 2012 (veya üzeri) bir RDS SQL Server örneğine geri yüklenen **Adventureworks2012** veritabanını geçirmiş olursunuz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure SQL veritabanı veya SQL yönetilen örneği için bir veritabanı oluşturun. 
 > * Data Migration Yardımcısı'nı kullanarak örnek şemayı geçirme.
@@ -43,17 +43,17 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu makalede, RDS SQL Server 'den SQL veritabanı 'na veya bir SQL yönetilen örneğine çevrimiçi geçiş açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 * Bir [RDS SQL Server veritabanı](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)oluşturun.
-* [Azure Portal Azure SQL veritabanı 'nda bir veritabanı oluşturun](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) veya [SQL yönetilen örneği 'nde bir veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)oluşturun ve ardından **AdventureWorks2012**adlı boş bir veritabanı oluşturun. 
+* [Azure Portal Azure SQL veritabanı 'nda bir veritabanı oluşturun](../azure-sql/database/single-database-create-quickstart.md) veya [SQL yönetilen örneği 'nde bir veritabanı](../azure-sql/managed-instance/instance-create-quickstart.md)oluşturun ve ardından **AdventureWorks2012** adlı boş bir veritabanı oluşturun. 
 * [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 3.3 veya sonraki bir sürümünü indirip yükleyin.
-* Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure Sanal Ağ oluşturun. SQL yönetilen örneği 'ne geçiş yapıyorsanız, SQL yönetilen örneği için kullanılan aynı sanal ağda, ancak farklı bir alt ağda, DMS örneğini oluşturmaya dikkat edin.  Alternatif olarak, DMS için farklı bir sanal ağ kullanırsanız, iki sanal ağ arasında bir sanal ağ eşlemesi oluşturmanız gerekir. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
+* Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure Sanal Ağ oluşturun. SQL yönetilen örneği 'ne geçiş yapıyorsanız, SQL yönetilen örneği için kullanılan aynı sanal ağda, ancak farklı bir alt ağda, DMS örneğini oluşturmaya dikkat edin.  Alternatif olarak, DMS için farklı bir sanal ağ kullanırsanız, iki sanal ağ arasında bir sanal ağ eşlemesi oluşturmanız gerekir. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](../virtual-network/index.yml)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 
     > [!NOTE]
-    > Sanal ağ kurulumu sırasında, Microsoft 'a ağ eşlemesi ile ExpressRoute kullanırsanız, hizmetin sağlanacağı alt ağa aşağıdaki hizmet [uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ekleyin:
+    > Sanal ağ kurulumu sırasında, Microsoft 'a ağ eşlemesi ile ExpressRoute kullanırsanız, hizmetin sağlanacağı alt ağa aşağıdaki hizmet [uç noktalarını](../virtual-network/virtual-network-service-endpoints-overview.md) ekleyin:
     >
     > * Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası vb.)
     > * Depolama uç noktası
@@ -61,10 +61,10 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
     >
     > Azure veritabanı geçiş hizmeti internet bağlantısı olmadığından bu yapılandırma gereklidir. 
 
-* Sanal ağ ağ güvenlik grubu kurallarınızın, Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
-* [Windows Güvenlik Duvarınızı veritabanı altyapısı erişimi](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) için yapılandırın.
+* Sanal ağ ağ güvenlik grubu kurallarınızın, Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/virtual-network-vnet-plan-design-arm.md)makalesine bakın.
+* [Windows Güvenlik Duvarınızı veritabanı altyapısı erişimi](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) için yapılandırın.
 * Azure Veritabanı Geçiş Hizmeti'ne kaynak SQL Server erişimi sağlamak için Windows güvenlik duvarınızı açın. Varsayılan ayarlarda 1433 numaralı TCP bağlantı noktası kullanılır.
-* SQL veritabanı için, Azure veritabanı geçiş hizmeti 'nin hedef veritabanına erişimine izin vermek üzere sunucu düzeyinde bir [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
+* SQL veritabanı için, Azure veritabanı geçiş hizmeti 'nin hedef veritabanına erişimine izin vermek üzere sunucu düzeyinde bir [güvenlik duvarı kuralı](../azure-sql/database/firewall-configure.md) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
 * Kaynak RDS SQL Server örneğine bağlanmak için kullanılan kimlik bilgilerinin, "processadmin" sunucu rolünün bir üyesi olan bir hesapla ilişkili olduğundan ve geçirilecek tüm veritabanlarında "db_owner" veritabanı rollerinin bir üyesi olduğundan emin olun.
 * Hedef veritabanına bağlanmak için kullanılan kimlik bilgilerinin SQL veritabanı 'ndaki hedef veritabanında DENETIM VERITABANı iznine sahip olduğundan ve SQL yönetilen örneğindeki bir veritabanına geçiş yapıyorsanız sysadmin rolünün bir üyesi olduğundan emin olun.
 * Kaynak RDS SQL Server sürümü SQL Server 2012 ve üzeri olmalıdır. SQL Server örneğinizin sürümünü belirlemek için [SQL Server ve bileşenlerinin sürümünü ve güncelleştirme düzeyini belirleme](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) başlıklı makaleye bakın.
@@ -94,13 +94,13 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
     select * from sys.triggers
     DISABLE TRIGGER (Transact-SQL)
     ```
-    Daha fazla bilgi için [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) makalesine bakın.
+    Daha fazla bilgi için [DISABLE TRIGGER (Transact-SQL)](/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) makalesine bakın.
 
 ## <a name="migrate-the-sample-schema"></a>Örnek şemayı geçirme
 Şemayı geçirmek için DMA 'Yı kullanın.
 
 > [!NOTE]
-> DMA 'da bir geçiş projesi oluşturmadan önce, önkoşullardan bahsedildiği gibi SQL veritabanı veya SQL yönetilen örneği 'nde zaten bir veritabanı sağladığınızdan emin olun. Bu öğreticinin amaçları doğrultusunda, veritabanının adının **AdventureWorks2012**olduğu varsayılır, ancak istediğiniz adı belirtebilirsiniz.
+> DMA 'da bir geçiş projesi oluşturmadan önce, önkoşullardan bahsedildiği gibi SQL veritabanı veya SQL yönetilen örneği 'nde zaten bir veritabanı sağladığınızdan emin olun. Bu öğreticinin amaçları doğrultusunda, veritabanının adının **AdventureWorks2012** olduğu varsayılır, ancak istediğiniz adı belirtebilirsiniz.
 
 **AdventureWorks2012** şemasını geçirmek için aşağıdaki adımları uygulayın:
 
@@ -171,7 +171,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
     Sanal ağ, Azure veritabanı geçiş hizmeti 'ni, kaynak SQL Server ve hedef SQL veritabanı ya da SQL yönetilen örneği erişimi sağlar.
 
-    Azure portal sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
+    Azure portal sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](../virtual-network/quick-create-portal.md)makalesine bakın.
 
 6. Fiyatlandırma katmanı seçin; Bu çevrimiçi geçiş için Premium fiyatlandırma katmanını seçtiğinizden emin olun.
 
@@ -194,7 +194,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
      ![Azure Veritabanı Geçiş Hizmeti örneğinizi bulma](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-instance-search.png)
 
 3. +**Yeni Geçiş Projesi**'ni seçin.
-4. **Yeni geçiş projesi** ekranında, proje için bir ad belirtin, **kaynak sunucu türü** metin kutusunda, **AWS RDS SQL Server**seçin, **hedef sunucu türü** metin kutusunda **Azure SQL veritabanı**' nı seçin.
+4. **Yeni geçiş projesi** ekranında, proje için bir ad belirtin, **kaynak sunucu türü** metin kutusunda, **AWS RDS SQL Server** seçin, **hedef sunucu türü** metin kutusunda **Azure SQL veritabanı**' nı seçin.
 
     > [!NOTE]
     > Hedef sunucu türü için, SQL veritabanına geçiş için **Azure SQL veritabanı** ' nı ve ayrıca SQL yönetilen örneği ' ni seçin.
@@ -248,7 +248,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
     ![Tabloları seçme](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 
-4. Aşağıdaki **Gelişmiş çevrimiçi geçiş ayarlarını**ayarladıktan sonra **Kaydet**' i seçin.
+4. Aşağıdaki **Gelişmiş çevrimiçi geçiş ayarlarını** ayarladıktan sonra **Kaydet**' i seçin.
 
     | Ayar | Açıklama |
     | ------------- | ------------- |
@@ -288,13 +288,13 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 2. **Bekleyen değişiklikler** sayacı **0** değerini gösterene kadar bekleyerek kaynak veritabanına gelen tüm işlemleri durdurduğunuzdan emin olun.
 3. **Onayla**'yı ve ardından, **Uygula**'yı seçin.
-4. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, uygulamalarınızı yeni hedef veritabanına bağlayın.
+4. Veritabanı geçiş durumu **tamamlandı** olarak görüntülendiğinde, uygulamalarınızı yeni hedef veritabanına bağlayın.
 
     ![Etkinlik Durumu - tamamlandı](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure 'a çevrimiçi geçişler gerçekleştirirken oluşan bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi için [çevrimiçi geçişlerle Ilgili bilinen sorunlar ve geçici çözümler](known-issues-azure-sql-online.md)makalesine bakın.
-* Veritabanı geçiş hizmeti hakkında daha fazla bilgi için [veritabanı geçiş hizmeti nedir?](https://docs.microsoft.com/azure/dms/dms-overview)makalesine bakın.
-* SQL veritabanı hakkında daha fazla bilgi için [SQL veritabanı hizmeti nedir?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)makalesine bakın.
-* SQL yönetilen örnekleri hakkında daha fazla bilgi için [SQL yönetilen örneği nedir](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview)makalesine bakın.
+* Veritabanı geçiş hizmeti hakkında daha fazla bilgi için [veritabanı geçiş hizmeti nedir?](./dms-overview.md)makalesine bakın.
+* SQL veritabanı hakkında daha fazla bilgi için [SQL veritabanı hizmeti nedir?](../azure-sql/database/sql-database-paas-overview.md)makalesine bakın.
+* SQL yönetilen örnekleri hakkında daha fazla bilgi için [SQL yönetilen örneği nedir](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)makalesine bakın.

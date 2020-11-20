@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/02/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a91be0798dc67bfb751807b385d638343b89562b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365304"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957053"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -50,6 +50,10 @@ Adlandırılmış varlık tanıma (NER), kişiler, konumlar, kuruluşlar, miktar
 ## <a name="use-containers"></a>Kapsayıcıları kullanma
 
 [Metin analizi kapsayıcıları,](how-tos/text-analytics-how-to-install-containers.md) araştırma METNI ve API 'yi kullanarak bir şirket içi çözüm olarak kullanın. Bu Docker kapsayıcıları, önemli ifadeleri ayıklamanızı, dili tespit etmeyi ve verilerinize yakın yaklaşımı analiz etmenize olanak tanır.
+
+## <a name="asynchronous-operations"></a>Zaman uyumsuz işlemler
+
+`/analyze`Uç noktası, metin Analizi API'si, ner ve anahtar tümceciği ayıklama gibi seçme özelliklerini [zaman uyumsuz](how-tos/text-analytics-how-to-call-api.md)olarak kullanmanıza olanak sağlar.
 
 ## <a name="typical-workflow"></a>Tipik iş akışı
 

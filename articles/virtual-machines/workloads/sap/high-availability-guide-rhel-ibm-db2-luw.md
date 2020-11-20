@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: d613da4d9abdfe22fc20f1b74da41e4a65cbff33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: be455de2a1f8aebc7327af4741e0652a4be76665
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151578"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956441"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik
 
@@ -144,7 +145,7 @@ Seçilen işletim sisteminin IBM DB2 LUW için IBM/SAP tarafından desteklendiğ
 
 ## <a name="create-the-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
     
-Bu IBM DB2 sunucusu için temel bir Paceoluşturucu kümesi oluşturmak için bkz. [Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama][rhel-pcs-azr]. 
+Bu IBM DB2 sunucusu için temel bir Paceoluşturucu kümesi oluşturmak için bkz. [Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama][rhel-pcs-azr]. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>IBM DB2 LUW ve SAP ortamını yükler
 
@@ -197,8 +198,8 @@ Birincil IBM DB2 LUW veritabanı örneğini ayarlamak için:
    
 > [!NOTE]
 > Azure ve Paceyapıcısı 'e özgü yükleme ve yapılandırma için: SAP yazılım sağlama Yöneticisi aracılığıyla yükleme yordamı sırasında IBM DB2 LUW için yüksek kullanılabilirlik hakkında açık bir soru vardır:
->+ **IBM DB2 pureScale**öğesini seçmeyin.
->+ **Çoklu platformlar IÇIN IBM Tivoli sistem otomasyonu yüklemeyi**seçmeyin.
+>+ **IBM DB2 pureScale** öğesini seçmeyin.
+>+ **Çoklu platformlar IÇIN IBM Tivoli sistem otomasyonu yüklemeyi** seçmeyin.
 >+ **Küme yapılandırma dosyalarını üret**' i seçmeyin.
 >![SAP SWPM-DB2 HA seçenekleri](./media/high-availability-guide-rhel-ibm-db2-luw/swpm-db2ha-opt.png)
 
@@ -337,7 +338,7 @@ Aşağıdaki öğelerin ön eki vardır:
 
 **[A]** pacemaker yapılandırması için Önkoşul:
 1. Db2stop ile Kullanıcı DB2 ile her iki veritabanı sunucusunu da kapatın \<sid> .
-1. DB2 kullanıcısının Kabuk ortamını \<sid> */bin/ksh*olarak değiştirin:
+1. DB2 kullanıcısının Kabuk ortamını \<sid> */bin/ksh* olarak değiştirin:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
@@ -413,7 +414,7 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 
    b. Yeni ön uç IP havuzunun adını girin (örneğin, **DB2-bağlantı**).
 
-   c. **Atamayı** **statik**olarak AYARLAYıN ve başlangıçta tanımlanan IP adresini **sanal IP** adresi olarak girin.
+   c. **Atamayı** **statik** olarak AYARLAYıN ve başlangıçta tanımlanan IP adresini **sanal IP** adresi olarak girin.
 
    d. **Tamam**’ı seçin.
 
@@ -439,7 +440,7 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 
    b. Yeni sistem durumu araştırmasının adını girin (örneğin, **DB2-HP**).
 
-   c. Protokol ve bağlantı noktası **62500**olarak **TCP** ' yi seçin. **Aralık** değerini **5**olarak ayarlayın ve **sağlıksız eşik** değerini **2**olarak ayarlayın.
+   c. Protokol ve bağlantı noktası **62500** olarak **TCP** ' yi seçin. **Aralık** değerini **5** olarak ayarlayın ve **sağlıksız eşik** değerini **2** olarak ayarlayın.
 
    d. **Tamam**’ı seçin.
 
@@ -451,7 +452,7 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 
    c. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **DB2-ön uç**) seçin.
 
-   d. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası *veritabanı iletişim bağlantı noktasını*girin.
+   d. **Protokolü** **TCP** olarak ayarlayın ve bağlantı noktası *veritabanı iletişim bağlantı noktasını* girin.
 
    e. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
 
@@ -616,8 +617,8 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
 
 - **bilgisayar kaynak taşıma \<res_name> <host> :** konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
-- **bilgisayar kaynağı Temizleme \<res_name> **: konum kısıtlamalarını temizler
-- **bilgisayar kaynağı Temizleme \<res_name> **: kaynağın tüm hatalarını temizler
+- **bilgisayar kaynağı Temizleme \<res_name>**: konum kısıtlamalarını temizler
+- **bilgisayar kaynağı Temizleme \<res_name>**: kaynağın tüm hatalarını temizler
 
 ### <a name="test-a-manual-takeover"></a>El ile devralmayı test etme
 
@@ -646,7 +647,7 @@ Daemon Status:
   pacemaker: active/disabled
   pcsd: active/enabled</code></pre>
 
-Yük devretmeden sonra, *az-idb01*tarihinde hizmeti yeniden başlatabilirsiniz.
+Yük devretmeden sonra, *az-idb01* tarihinde hizmeti yeniden başlatabilirsiniz.
 <pre><code>systemctl start  pacemaker</code></pre>
 
 
