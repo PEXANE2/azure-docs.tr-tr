@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: c41e9fe1f197334bce27241ab9f28309c92f7e0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316554"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025952"
 ---
 # <a name="testing-for-luis-devops"></a>LUSıS DevOps için test etme
 
@@ -25,10 +25,10 @@ Testler [CI/CD iş akışlarının](luis-concept-devops-automation.md)kritik bir
 Sürekli Tümleştirme iş akışlarında gerçekleştirmeniz gereken bir LUO uygulaması için iki farklı test türü vardır:
 
 - **Birim testleri** -lusıs uygulamanızın önemli işlevlerini doğrulayan görece basit testler. Belirli bir test ututi için beklenen amaç ve beklenen varlıklar döndürüldüğünde bir birim testi geçer. Test çalıştırmasının başarıyla tamamlanabilmesi için tüm birim testlerinin başarılı olması gerekir.  
-Bu tür bir test, [luın portalında](https://www.luis.ai/)yapabileceğiniz [etkileşimli teste](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test) benzerdir.
+Bu tür bir test, [luın portalında](https://www.luis.ai/)yapabileceğiniz [etkileşimli teste](./luis-concept-test.md) benzerdir.
 
 - **Toplu iş testleri** -Batch testi, performansını ölçmek için geçerli eğitilen modelinize yönelik kapsamlı bir sınamadır. Birim testlerinin aksine toplu işlem testi başarılı olmaz | başarısız test. Toplu iş testi ile beklendiğinde, her testin beklenen amacı ve beklenen varlıkları döndürmesi gerekir. Bunun yerine, bir Batch testi uygulamanızdaki her bir amaç ve varlığın doğruluğunu görüntülemenize ve iyileştirmeler yaparken zaman içinde karşılaştırmanıza yardımcı olur.  
-Bu tür bir test, LUO portalında etkileşimli olarak gerçekleştirebileceğiniz [Batch testi](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) ile aynıdır.
+Bu tür bir test, LUO portalında etkileşimli olarak gerçekleştirebileceğiniz [Batch testi](./luis-concept-batch-test.md) ile aynıdır.
 
 Projenizin başından birim testi kullanabilirsiniz. Toplu iş testi, LUSıS uygulamanızın şemasını geliştirdikten ve doğruluğunu iyileştirmek için çalışmanız durumunda yalnızca bir değerden oluşur.
 
@@ -42,7 +42,7 @@ Bir test kümesi yazdığınızda, tanımlamanız gereken her bir test için:
 * Beklenen amaç
 * Beklenen varlıklar.
 
-Bir test grubunu JSON biçimli bir dosyada tanımlamak için LUO [Batch dosyası sözdizimini](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-syntax-template-for-intents-with-entities) kullanın. Örneğin:
+Bir test grubunu JSON biçimli bir dosyada tanımlamak için LUO [Batch dosyası sözdizimini](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) kullanın. Örnek:
 
 ```JSON
 [
@@ -76,7 +76,7 @@ Her birim testinde, belirli bir test utterliği için şunları yapabilirsiniz:
 
 * Doğru amacın döndürüldüğünü test edin
 * ' Anahtar ' varlıklarının, çözümünüz için kritik olan ' ın döndürüldüğünden test ediliyor.
-* Amaç ve varlıkların [tahmin puanının](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score) tanımladığınız eşiği aştığını test edin. Örneğin, amaç için tahmin puanı 0,75 ' ı aşarsa yalnızca bir testin geçtiğini göz önünde bulundurmaya karar verebilirsiniz.
+* Amaç ve varlıkların [tahmin puanının](./luis-concept-prediction-score.md) tanımladığınız eşiği aştığını test edin. Örneğin, amaç için tahmin puanı 0,75 ' ı aşarsa yalnızca bir testin geçtiğini göz önünde bulundurmaya karar verebilirsiniz.
 
 Birim testlerinde, anahtar varlıklarınızın tahmin yanıtında döndürüldüğünü test etmek ve hatalı pozitif sonuçları yoksaymak için bu iyi bir fikirdir. *Hatalı pozitif* durumlar, tahmin yanıtında bulunan ancak testiniz için beklenen sonuçlarda tanımlanmayan varlıklardır. Yanlış pozitifleri yoksayarak, birim testlerini yazmak daha az bir işlem yapar, ancak çözümünüz için anahtar olan verilerin bir tahmin yanıtında döndürüldüğünden teste odaklanmanıza odaklanmaya devam edersiniz.
 
@@ -85,15 +85,15 @@ Birim testlerinde, anahtar varlıklarınızın tahmin yanıtında döndürüldü
 
 #### <a name="designing-batch-tests"></a>Batch testlerini tasarlama
 
-Batch test kümeleri, tüm amaçlar genelinde ve LUSıS uygulamanızdaki tüm varlıklarda test etmek için tasarlanan çok sayıda test çalışması içermelidir. Batch test kümesi tanımlama hakkında bilgi için bkz. [LUA portalında Batch test etme](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) .
+Batch test kümeleri, tüm amaçlar genelinde ve LUSıS uygulamanızdaki tüm varlıklarda test etmek için tasarlanan çok sayıda test çalışması içermelidir. Batch test kümesi tanımlama hakkında bilgi için bkz. [LUA portalında Batch test etme](./luis-concept-batch-test.md) .
 
 ### <a name="running-tests"></a>Testleri çalıştırma
 
 Lua portalı etkileşimli test konusunda yardımcı olacak özellikler sunar:
 
-* [**Etkileşimli test**](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test) , örnek bir değer göndermenize ve lu, tanınan amaçlardan ve varlıklardan yanıt almanıza olanak sağlar. Testin başarısını görsel inceleme ile doğrularsınız.
+* [**Etkileşimli test**](./luis-concept-test.md) , örnek bir değer göndermenize ve lu, tanınan amaçlardan ve varlıklardan yanıt almanıza olanak sağlar. Testin başarısını görsel inceleme ile doğrularsınız.
 
-* [**Toplu işlem**](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) testi, etkin eğitilen sürümünüzü, tahmin doğruluğunu ölçecek şekilde doğrulamak için giriş olarak bir toplu işlem test dosyası kullanır. Batch testi, etkin sürümünüzde her bir amaç ve varlığın doğruluğunu görüntülemenize yardımcı olur ve sonuçları grafik ile görüntüler.
+* [**Toplu işlem**](./luis-concept-batch-test.md) testi, etkin eğitilen sürümünüzü, tahmin doğruluğunu ölçecek şekilde doğrulamak için giriş olarak bir toplu işlem test dosyası kullanır. Batch testi, etkin sürümünüzde her bir amaç ve varlığın doğruluğunu görüntülemenize yardımcı olur ve sonuçları grafik ile görüntüler.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Otomatikleştirilmiş derleme iş akışında testleri çalıştırma
 
@@ -109,7 +109,7 @@ LUO portalında kullanılabilen test özellikleri yayımlanmış bir uç nokta g
 
 > [!TIP]
 > * Kendi test çözümünüzü uygulamadıysanız ve bir uç noktaya test alma işlemleri göndermek için kod yazıyorsanız, LUSıS yazma anahtarını kullanıyorsanız, izin verilen işlem hızının 5 TPS ile sınırlı olduğunu unutmayın. Gönderme oranını kısıtlama ya da bunun yerine bir tahmin anahtarı kullanın.
-> * Bir uç noktaya test sorguları gönderirken, `log=false` tahmin isteğinizin sorgu dizesinde kullanmayı unutmayın. Bu, test dıklarınızın LUIN tarafından günlüğe kaydedilmeyeceğini ve LUSıS [etkin öğrenme](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) özelliği tarafından sunulan uç nokta uttersları gözden geçirme listesinde sonlandırılmasını ve sonuç olarak, uygulamanızın eğitim mühendislerine yanlışlıkla eklenmemesini sağlar.
+> * Bir uç noktaya test sorguları gönderirken, `log=false` tahmin isteğinizin sorgu dizesinde kullanmayı unutmayın. Bu, test dıklarınızın LUIN tarafından günlüğe kaydedilmeyeceğini ve LUSıS [etkin öğrenme](./luis-concept-review-endpoint-utterances.md) özelliği tarafından sunulan uç nokta uttersları gözden geçirme listesinde sonlandırılmasını ve sonuç olarak, uygulamanızın eğitim mühendislerine yanlışlıkla eklenmemesini sağlar.
 
 #### <a name="running-unit-tests-at-the-command-line-and-in-cicd-workflows"></a>Birim testlerini komut satırında ve CI/CD iş akışlarında çalıştırma
 
@@ -123,13 +123,13 @@ NLU 'yı kullanabilirsiniz [. ](https://github.com/microsoft/NLU.DevOps) Komut s
 NLU 'yı de kullanabilirsiniz. Komut satırında Batch testlerini çalıştırmak için DevOps paketi.
 
 * NLU kullanın. Testleri bir test dosyasından bir uç noktaya göndermek ve gerçek tahmin sonuçlarını birim testleriyle aynı bir dosyada yakalamak için DevOps [test komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) .
-* NLU kullanın. Uygulamanızın performansını ölçmek için [performans testi modundaki](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) DevOps [Compare komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) , uygulamanızın performansını temel bir performans karşılaştırmasına karşı karşılaştırabilir. Örneğin, en son işlemeden ana veya geçerli yayına yönelik sonuçlar. Performans testi modunda `compare` komut, JSON biçiminde NUnit test çıktısı ve [Batch test sonuçları](https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#batch-test) üretir.
+* NLU kullanın. Uygulamanızın performansını ölçmek için [performans testi modundaki](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) DevOps [Compare komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) , uygulamanızın performansını temel bir performans karşılaştırmasına karşı karşılaştırabilir. Örneğin, en son işlemeden ana veya geçerli yayına yönelik sonuçlar. Performans testi modunda `compare` komut, JSON biçiminde NUnit test çıktısı ve [Batch test sonuçları](./luis-glossary.md#batch-test) üretir.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUSıS belirleyici olmayan eğitim ve test üzerindeki etkisi
 
 LUSıS, amaç gibi bir modele eğitim yaparken, hem pozitif veri ister. bu modelin kullanımına *yönelik geçerli olmayan* model ve negatif veri verilerine yönelik uygulamayı eğmede sağladığınız etiketli eğitim dıklarınız. Eğitim sırasında, Lua, diğer modeller için sağladığınız tüm pozitif verilerden bir modelin negatif verilerini oluşturur, ancak bazı durumlarda bir veri dengesizliği üretebilirler. Bu dengesizliği önlemek için, LUSıS daha iyi bir dengeli eğitim kümesi, geliştirilmiş model performansı ve daha hızlı eğitim süresi için en iyi hale getirilmiş bir değer olan negatif verilerin bir alt kümesini örnekliyor.
 
-Bu belirleyici olmayan eğitimin sonucu, [farklı eğitim oturumları arasında](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score), genellikle [tahmin puanının](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score) yüksek olmadığı amaçlar ve/veya varlıklar arasında biraz farklı bir tahmin yanıtı elde edebilir.
+Bu belirleyici olmayan eğitimin sonucu, [farklı eğitim oturumları arasında](./luis-concept-prediction-score.md), genellikle [tahmin puanının](./luis-concept-prediction-score.md) yüksek olmadığı amaçlar ve/veya varlıklar arasında biraz farklı bir tahmin yanıtı elde edebilir.
 
 Test amacıyla oluşturmakta olduğunuz LUO uygulama sürümleri için belirleyici olmayan eğitimi devre dışı bırakmak istiyorsanız, ayarı olarak ayarlanmış olan [Sürüm Ayarları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 'sini kullanın `UseAllTrainingData` `true` .
 

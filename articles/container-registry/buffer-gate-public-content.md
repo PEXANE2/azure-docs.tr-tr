@@ -4,13 +4,13 @@ description: Docker Hub 'ından ve diğer ortak içeriklerden ortak görüntüle
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 10/29/2020
-ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/20/2020
+ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347531"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024747"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Azure Container Registry ortak içeriği yönetme
 
@@ -26,6 +26,8 @@ Doğru denetimler olmadan, ortak kayıt defteri içeriğine bağımlılıklar ol
 ## <a name="authenticate-with-docker-hub"></a>Docker Hub ile kimlik doğrulama
 
 İlk adım olarak, bir derleme veya dağıtım iş akışının parçası olarak Docker Hub 'ından ortak görüntüler çekiyorsanız, anonim bir çekme isteği yapmak yerine [bir Docker Hub hesabı kullanarak kimlik doğrulaması](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) yapmanızı öneririz.
+
+Sık sık anonim çekme istekleri yaparken, bu hataları engellemek için Docker hata ile benzer `ERROR: toomanyrequests: Too Many Requests.` veya `You have reached your pull rate limit.` Bu hata için kimlik doğrulaması yapabilirsiniz.
 
 > [!NOTE]
 > 2 Kasım [2020 ' den itibaren geçerli olan](https://docs.docker.com/docker-hub/download-rate-limit) Docker Hub 'a yönelik anonim ve kimliği doğrulanmış Istekler, Docker Ücretsiz plan hesaplarından ve sırasıyla IP adresi ve DOCKER ID tarafından zorlanır. 
@@ -46,21 +48,21 @@ App Service ve Azure Container Instances dahil olmak üzere çeşitli Azure Hizm
 
 **App Service**
 
-* **Görüntü kaynağı** : Docker Hub
-* **Depo erişimi** : özel
-* **Oturum aç** : \<Docker Hub username>
-* **Parola** : \<Docker Hub token>
+* **Görüntü kaynağı**: Docker Hub
+* **Depo erişimi**: özel
+* **Oturum aç**: \<Docker Hub username>
+* **Parola**: \<Docker Hub token>
 
 Ayrıntılar için bkz. [Docker Hub kimliği doğrulanmış çeker App Service](https://azure.github.io/AppService/2020/10/15/Docker-Hub-authenticated-pulls-on-App-Service.html).
 
 **Azure Container Instances**
 
-* **Görüntü kaynağı** : Docker Hub veya diğer kayıt defteri
-* **Görüntü türü** : özel
-* **Görüntü kayıt defteri oturum açma sunucusu** : Docker.io
-* **Görüntü kayıt defteri Kullanıcı adı** : \<Docker Hub username>
-* **Görüntü kayıt defteri parolası** : \<Docker Hub token>
-* **Görüntü** : Docker.io/ \<repo name\> :\<tag>
+* **Görüntü kaynağı**: Docker Hub veya diğer kayıt defteri
+* **Görüntü türü**: özel
+* **Görüntü kayıt defteri oturum açma sunucusu**: Docker.io
+* **Görüntü kayıt defteri Kullanıcı adı**: \<Docker Hub username>
+* **Görüntü kayıt defteri parolası**: \<Docker Hub token>
+* **Görüntü**: Docker.io/ \<repo name\> :\<tag>
 
 ## <a name="import-images-to-an-azure-container-registry"></a>Azure Container Registry 'ye görüntü aktarma
  

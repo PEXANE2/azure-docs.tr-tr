@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566257"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025900"
 ---
 # <a name="set-up-web-endpoints"></a>Web uç noktalarını ayarlama
 
@@ -49,17 +49,17 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
    | Üst Bilgiler | Anahtar: app, Değer: applicationId değerinin ilk 8 basamağını kullanın | İstek üst bilgisine eklenecek üst bilgi parametreleri.|
 
     > [!NOTE]
-    > - Örnek web uç noktası [Azure İşlevi](https://docs.microsoft.com/azure/azure-functions/) kullanılarak oluşturulmuştur ve televizyon ile vantilatörün cihaz durumunu kaydeden bir veritabanına bağlıdır
+    > - Örnek web uç noktası [Azure İşlevi](../../azure-functions/index.yml) kullanılarak oluşturulmuştur ve televizyon ile vantilatörün cihaz durumunu kaydeden bir veritabanına bağlıdır
     > - Önerilen üst bilgi yalnızca örnek uç nokta için gereklidir
     > - Üst bilgi değerinin örnek uç noktada benzersiz olmasını sağlamak için applicationId değerinizin ilk 8 basamağını kullanın
-    > - Gerçek dünyada web uç noktası, cihazlarınızı yöneten [IOT hub'ının](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) uç noktası olabilir
+    > - Gerçek dünyada web uç noktası, cihazlarınızı yöneten [IOT hub'ının](../../iot-hub/about-iot-hub.md) uç noktası olabilir
 
-1. **Kaydet** ’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 ## <a name="call-web-endpoints"></a>Web uç noktalarını çağırma
 
-1. **TurnOnOff** komutuna gidin, tamamlama kuralının altında **ConfirmationResponse** öğesini ve ardından **Eylem ekle** 'yi seçin.
-1. **Yeni eylem türü** 'nün altında **Web uç noktasını çağır** 'ı seçin
+1. **TurnOnOff** komutuna gidin, tamamlama kuralının altında **ConfirmationResponse** öğesini ve ardından **Eylem ekle**'yi seçin.
+1. **Yeni eylem türü**'nün altında **Web uç noktasını çağır**'ı seçin
 1. **Eylemi Düzenle - Uç Noktaları** bölümünde oluşturduğumuz web uç noktası olan **UpdateDeviceState** girişini seçin.  
 1. **Yapılandırma** alanına aşağıdaki değerleri girin: 
    > [!div class="mx-imgBorder"]
@@ -74,9 +74,9 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
     > [!NOTE]
     > - Önerilen sorgu parametreleri yalnızca örnek uç nokta için gereklidir
 
-1. **Başarılı Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder** 'i seçin.
+1. **Başarılı Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder**'i seçin.
     
-    **Basit düzenleyici** 'ye `{SubjectDevice} is {OnOff}` yazın.
+    **Basit düzenleyici**'ye `{SubjectDevice} is {OnOff}` yazın.
    
    > [!div class="mx-imgBorder"]
    > ![Yürütme için başarı eylemini gösteren ekran görüntüsü.](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -88,9 +88,9 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
    > [!NOTE]
    > - Dilerseniz `{YourWebEndpointName.FieldName}` kullanarak HTTP yanıtındaki alanlara doğrudan erişim sağlayabilirsiniz. Örnek: `{UpdateDeviceState.TV}`
 
-1. **Başarısız Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder** 'i seçin
+1. **Başarısız Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder**'i seçin
 
-    **Basit düzenleyici** 'ye `Sorry, {WebEndpointErrorMessage}` yazın.
+    **Basit düzenleyici**'ye `Sorry, {WebEndpointErrorMessage}` yazın.
 
    > [!div class="mx-imgBorder"]
    > ![Web uç noktası çağırma - Başarısız Olduğunda](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
@@ -122,7 +122,7 @@ Ancak çoğu durumda etkinliği istemci uygulamasına yalnızca web uç noktası
 1. Çağrı web uç noktasını düzenleyin: 
     1. **Yapılandırma** bölümünde **Sorgu Parametreleri** değerinin `item={SubjectDevice}&&value={OnOff}` olduğundan emin olun
     1. **Başarılı Olduğunda** bölümünde **Yürütülecek eylem** değerini **Etkinliği istemciye gönder** olarak değiştirin
-    1. Aşağıdaki JSON kodunu **Etkinlik İçeriği** 'ne kopyalayın
+    1. Aşağıdaki JSON kodunu **Etkinlik İçeriği**'ne kopyalayın
    ```json
    {
       "type": "event",

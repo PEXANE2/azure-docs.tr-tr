@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 8d70a7b44893ba9c9a0cc2d1d01c65e8e1584e0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393396"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024491"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Azure Active Directory bir kaynak uygulaması kaydetme
 
@@ -37,73 +37,7 @@ az ad sp create --id 4f6778d8-5aef-43dc-a1ff-b073724b9495
 
 ## <a name="fhir-server-for-azure"></a>Azure için FHıR sunucusu
 
-Azure için açık kaynaklı FHıR sunucusunu kullanıyorsanız, kaynak uygulamasını kaydetmek için aşağıdaki adımları izleyin.
-
-### <a name="app-registrations-in-azure-portal"></a>Azure portal Uygulama kayıtları
-
-1. [Azure portalda](https://portal.azure.com) sol taraftaki gezinti panelinden **Azure Active Directory** ’ye tıklayın.
-
-2. **Azure Active Directory** dikey penceresinde **uygulama kayıtları** ' e tıklayın:
-
-    ![Azure portal. Yeni uygulama kaydı.](media/how-to-aad/portal-aad-new-app-registration.png)
-
-3. **Yeni kayda** tıklayın.
-
-### <a name="add-a-new-application-registration"></a>Yeni bir uygulama kaydı ekleyin
-
-Yeni uygulamanın ayrıntılarını girin. Görünen ad için belirli bir gereksinim yoktur, ancak FHıR sunucusunun URI 'sine ayarlanması, bulmayı kolaylaştırır:
-
-![Yeni uygulama kaydı](media/how-to-aad/portal-aad-register-new-app-registration-NAME.png)
-
-### <a name="set-identifier-uri-and-define-scopes"></a>Tanımlayıcı URI 'SI ayarlama ve kapsamları tanımlama
-
-Kaynak uygulamanın, kaynağa erişim isteğinde bulunan istemcilerin kullanabileceği bir tanımlayıcı URI 'SI (uygulama KIMLIĞI URI 'SI) vardır. Bu değer, `aud` erişim belirtecinin talebini dolduracaktır. Bu URI 'yi FHıR sunucunuzun URI 'SI olacak şekilde ayarlamanız önerilir. FHıR uygulamalarında akıllı için, *hedef kitle* , fhır sunucusunun URI 'si olduğu varsayılır.
-
-1. **API 'Yi kullanıma** sunma
-
-2. *Uygulama kimliği URI 'sinin* yanındaki **Ayarla** ' ya tıklayın.
-
-3. Tanımlayıcı URI 'sini girin ve **Kaydet** ' e tıklayın. İyi bir tanımlayıcı URI 'SI, FHıR sunucunuzun URI 'SI olmalıdır.
-
-4. **Kapsam Ekle** ' ye tıklayın ve API 'niz için tanımlamak istediğiniz kapsamları ekleyin. Gelecekte kaynak uygulamanıza izin vermek için en az bir kapsam eklemeniz gerekir. Eklemek istediğiniz belirli kapsamınız yoksa, user_impersonation kapsam olarak ekleyebilirsiniz.
-
-![Hedef kitle ve kapsam](media/how-to-aad/portal-aad-register-new-app-registration-AUD-SCOPE.png)
-
-### <a name="define-application-roles"></a>Uygulama rollerini tanımlama
-
-FHIR için Azure API ve Azure için OSS FHıR sunucusu, rol tabanlı erişim denetimi için [Azure Active Directory Uygulama rollerini](/azure/architecture/multitenant-identity/app-roles) kullanır. FHıR sunucu API 'niz için hangi rollerin kullanılabilir olduğunu tanımlamak için, kaynak uygulamanın [bildirimini](/azure/active-directory/active-directory-application-manifest/)açın:
-
-1. **Bildirim** ' e tıklayın:
-
-    ![Uygulama rolleri](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
-
-2. `appRoles`Özelliğinde, kullanıcılar veya uygulamalar istediğiniz rolleri ekleyin:
-
-    ```json
-    "appRoles": [
-      {
-        "allowedMemberTypes": [
-          "User",
-          "Application"
-        ],
-        "description": "FHIR Server Administrators",
-        "displayName": "admin",
-        "id": "1b4f816e-5eaf-48b9-8613-7923830595ad",
-        "isEnabled": true,
-        "value": "admin"
-      },
-      {
-        "allowedMemberTypes": [
-          "User"
-        ],
-        "description": "Users who can read",
-        "displayName": "reader",
-        "id": "c20e145e-5459-4a6c-a074-b942bbd4cfe1",
-        "isEnabled": true,
-        "value": "reader"
-      }
-    ],
-    ```
+Azure için açık kaynaklı FHıR sunucusunu kullanıyorsanız, bir kaynak uygulamasını kaydetmek için [GitHub](https://github.com/microsoft/fhir-server/blob/master/docs/Register-Resource-Application.md) deposunda bulunan adımları izleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

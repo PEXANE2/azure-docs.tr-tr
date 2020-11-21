@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541790"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026002"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Amaç ve varlıklar ile söylenişi metinlerinde veri ayıklama
 LUO, kullanıcının doğal dil dıklarından bilgi almanıza olanak tanır. Bilgiler, bir program, uygulama veya sohbet bot tarafından işlem gerçekleştirmek üzere kullanılabilecek şekilde ayıklanır. Aşağıdaki bölümlerde, veri ve varlıklardan JSON örnekleri ile hangi verilerin döndürüldüğünü öğrenin.
@@ -232,9 +232,9 @@ Bir ad, neredeyse tüm harflerin ve sözcüklerin bir birleşimi olabileceğinde
 
 ### <a name="names-of-people"></a>Kişilerin adları
 
-Kişilerin adı, dile ve kültüre bağlı olarak bazı hafif biçimlendirmeye sahip olabilir. Önceden oluşturulmuş bir **[PersonName](luis-reference-prebuilt-person.md)** varlığı veya ad ve soyadı [rollerine](luis-concept-roles.md) sahip **[basit bir varlık](luis-concept-entity-types.md#simple-entity)** kullanın.
+Kişilerin adı, dile ve kültüre bağlı olarak bazı hafif biçimlendirmeye sahip olabilir. Önceden oluşturulmuş bir **[PersonName](luis-reference-prebuilt-person.md)** varlığı veya ad ve soyadı rollerine sahip **[basit bir varlık](luis-concept-entity-types.md)** kullanın.
 
-Basit varlığı kullanırsanız, farklı uzunluklarda Farklı uzunluklardaki ilk ve son adı kullanan örneklere ve hiçbir türlü amaç dahil olmak üzere tüm amaçlar genelinde dikkat edilecek örneklere sahip olun. Doğru tahmin edilemeyen adların etiketlenmesi için düzenli olarak uç nokta utslarını [gözden geçirin](luis-how-to-review-endoint-utt.md) .
+Basit varlığı kullanırsanız, farklı uzunluklarda Farklı uzunluklardaki ilk ve son adı kullanan örneklere ve hiçbir türlü amaç dahil olmak üzere tüm amaçlar genelinde dikkat edilecek örneklere sahip olun. Doğru tahmin edilemeyen adların etiketlenmesi için düzenli olarak uç nokta utslarını [gözden geçirin](./luis-how-to-review-endpoint-utterances.md) .
 
 ### <a name="names-of-places"></a>Yerlerin adları
 
@@ -242,17 +242,17 @@ Konum adları, şehir, ilçe, eyalet, eyalet ve ülke/bölge gibi bir şekilde a
 
 ### <a name="new-and-emerging-names"></a>Yeni ve gelişen adlar
 
-Bazı uygulamaların, ürünler veya şirketler gibi yeni ve gelişmekte olan adları bulabilmeleri gerekir. Bu tür adlar, veri ayıklamanın en zor türüdür. **[Basit bir varlıkla](luis-concept-entity-types.md#simple-entity)** başlayın ve [tümcecik listesi](luis-concept-feature.md)ekleyin. Doğru tahmin edilemeyen adların etiketlenmesi için düzenli olarak uç nokta utslarını [gözden geçirin](luis-how-to-review-endoint-utt.md) .
+Bazı uygulamaların, ürünler veya şirketler gibi yeni ve gelişmekte olan adları bulabilmeleri gerekir. Bu tür adlar, veri ayıklamanın en zor türüdür. **[Basit bir varlıkla](luis-concept-entity-types.md#simple-entity)** başlayın ve [tümcecik listesi](luis-concept-feature.md)ekleyin. Doğru tahmin edilemeyen adların etiketlenmesi için düzenli olarak uç nokta utslarını [gözden geçirin](./luis-how-to-review-endpoint-utterances.md) .
 
 ## <a name="patternany-entity-data"></a>Model. tüm varlık verileri
 
 [Desen. any](reference-entity-pattern-any.md) , varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur. Düzenin uygulanması için, düzende kullanılan varlığın bulunması gerekir.
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
-[Yayımlama](luis-how-to-publish-app.md#sentiment-analysis)sırasında yaklaşım Analizi YAPıLANDıRıLıRSA, lusıs JSON yanıtı yaklaşım analizini içerir. [Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.
+[Yayımlama](luis-how-to-publish-app.md#sentiment-analysis)sırasında yaklaşım Analizi YAPıLANDıRıLıRSA, lusıs JSON yanıtı yaklaşım analizini içerir. [Metin analizi](../text-analytics/index.yml) belgelerindeki yaklaşım analizi hakkında daha fazla bilgi edinin.
 
 ## <a name="key-phrase-extraction-entity-data"></a>Anahtar tümceciği ayıklama varlığı verileri
-[Anahtar tümceciği ayıklama varlığı](luis-reference-prebuilt-keyphrase.md) , [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)tarafından sunulan, utterance 'teki anahtar tümceleri döndürür.
+[Anahtar tümceciği ayıklama varlığı](luis-reference-prebuilt-keyphrase.md) , [metin analizi](../text-analytics/index.yml)tarafından sunulan, utterance 'teki anahtar tümceleri döndürür.
 
 ## <a name="data-matching-multiple-entities"></a>Birden çok varlıkla eşleşen veriler
 

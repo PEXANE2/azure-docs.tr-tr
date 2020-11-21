@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e680bc601b7f230314c1063523a003e95a849c0a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987074"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024407"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 
@@ -48,7 +48,9 @@ Her bir konsorsiyum üye dağıtımı şunları içerir:
 * Günlük ve performans istatistikleri toplamak için Azure Izleyici
 * Özel VNET 'lerde VPN bağlantılarına izin vermek için sanal ağ geçidi (isteğe bağlı)
 
-Varsayılan olarak, RPC ve eşleme uç noktalarına, abonelikler ve bulutlar arasında basitleştirilmiş bağlantı sağlamak için genel IP üzerinden erişilebilir. Uygulama düzeyi erişim denetimleri için, eşlik 'nın izinleri sözleşmeleri ' ni kullanabilirsiniz. Platformlar arası bağlantı için VNet ağ geçitlerinden yararlanan VPN arkasında dağıtılan ağlar desteklenir. VPN ve VNet dağıtımları daha karmaşık olduğundan, bir çözümü prototip oluştururken bir genel IP modeliyle başlamak isteyebilirsiniz.
+Varsayılan olarak, RPC ve eşleme uç noktalarına, genelinde Basitleştirilmiş bağlantıyı etkinleştirmek için genel IP üzerinden erişilebilir
+
+Abonelikler ve bulutlar. Uygulama düzeyi erişim denetimleri için, [eşlik 'nın izinleri sözleşmeleri](https://openethereum.github.io/Permissioning.html)' ni kullanabilirsiniz. Platformlar arası bağlantı için VNet ağ geçitlerinden yararlanan VPN arkasında dağıtılan ağlar desteklenir. VPN ve VNet dağıtımları daha karmaşık olduğundan, bir çözümü prototip oluştururken bir genel IP modeliyle başlamak isteyebilirsiniz.
 
 Docker Kapsayıcıları güvenilirlik ve modülarfor için kullanılır. Azure Container Registry, her dağıtımın parçası olarak sürümlü görüntüleri barındırmak ve barındırmak için kullanılır. Kapsayıcı görüntüleri aşağıdakilerden oluşur:
 
@@ -685,7 +687,7 @@ Akıllı sözleşmeniz dağıtıldığına göre, bir işlevi çağırmak için 
 
 ## <a name="webassembly-wasm-support"></a>WebAssembly (ıSSTREAM) desteği
 
-WebAssembly desteği yeni dağıtılan PoA ağlarında zaten etkin. Bu, transpiles (Rust, C, C++) tarafından Web-Assembly bir dilde akıllı anlaşma geliştirmesini sağlar. Daha fazla bilgi için bkz. [eşlik teknik eğitimi](https://github.com/paritytech/pwasm-tutorial).
+WebAssembly desteği yeni dağıtılan PoA ağlarında zaten etkin. Bu, transpiles (Rust, C, C++) tarafından Web-Assembly bir dilde akıllı anlaşma geliştirmesini sağlar. Daha fazla bilgi için bkz.. [Weelsembly 'e eşlik genel bakış](https://openethereum.github.io/WebAssembly-Home.html) [Tutorial from Parity Tech](https://github.com/paritytech/pwasm-tutorial)
 
 ## <a name="faq"></a>SSS
 

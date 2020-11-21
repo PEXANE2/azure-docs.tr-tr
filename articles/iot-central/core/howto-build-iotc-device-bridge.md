@@ -9,18 +9,18 @@ ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
 ms.custom: device-developer
-ms.openlocfilehash: fb6029a91714ed0229876bbaf6bb0790565be29c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fc8ea41e804344735cfa2400d5d763622d8811c8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427832"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026259"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Diğer IoT bulutlarını IoT Central için bağlamak üzere IoT Central cihaz Köprüsü oluşturun
 
 *Bu konu, Yöneticiler için geçerlidir.*
 
-IoT Central cihaz Köprüsü, Sigfox, parçacık, nesnelerin ağını ve diğer bulutlarınızı IoT Central uygulamanıza bağlayan açık kaynaklı bir çözümdür. Sigfox 'un düşük güç düzeyi alan ağına bağlı varlık izleme cihazları mı yoksa parçacık cihaz bulutu üzerinde hava kalitesi izleme cihazlarını mı kullandığınızı ya da TTN 'de SOIL nemi izleme cihazlarını kullanarak, IoT Central cihaz köprüsünü kullanarak IoT Central gücünden doğrudan yararlanabilirsiniz. Cihaz Köprüsü, cihazlarınızın diğer bulutlara gönderdiği verileri IoT Central uygulamanıza ileterek, diğer IoT bulutlarını IoT Central bağlar. IoT Central uygulamanızda kurallar oluşturabilir ve bu verilerde analiz çalıştırabilir, Microsoft Flow ve Azure Logic Apps 'te iş akışları oluşturabilir, bu verileri dışarı aktarabilir ve çok daha fazlasını yapabilirsiniz. GitHub 'dan [IoT Central cihaz Köprüsü](https://aka.ms/iotcentralgithubdevicebridge) al
+IoT Central cihaz Köprüsü, Sigfox, parçacık, nesnelerin ağını ve diğer bulutlarınızı IoT Central uygulamanıza bağlayan açık kaynaklı bir çözümdür. Sigfox 'un düşük güç düzeyi alan ağına bağlı varlık izleme cihazları mı yoksa parçacık cihaz bulutu üzerinde hava kalitesi izleme cihazlarını mı kullandığınızı ya da TTN 'de SOIL nemi izleme cihazlarını kullanarak, IoT Central cihaz köprüsünü kullanarak IoT Central gücünden doğrudan yararlanabilirsiniz. Cihaz Köprüsü, cihazlarınızın diğer bulutlara gönderdiği verileri IoT Central uygulamanıza ileterek, diğer IoT bulutlarını IoT Central bağlar. IoT Central uygulamanızda kurallar oluşturabilir ve bu verilerde analiz çalıştırabilir, Power otomatikleştirin ve Azure Logic Apps 'te iş akışları oluşturabilir, bu verileri dışarı aktarabilir ve çok daha fazlasını yapabilirsiniz. GitHub 'dan [IoT Central cihaz Köprüsü](https://aka.ms/iotcentralgithubdevicebridge) al
 
 ## <a name="what-is-it-and-how-does-it-work"></a>Nedir ve nasıl çalışır?
 IoT Central cihaz Köprüsü, GitHub 'daki açık kaynaklı bir çözümdür. Azure aboneliğinize birkaç Azure kaynağı olan özel bir Azure Resource Manager şablonu dağıtan bir "Azure 'a dağıt" düğmesine sahip olmaya başlamaya hazırız. Kaynaklar şunları içerir:

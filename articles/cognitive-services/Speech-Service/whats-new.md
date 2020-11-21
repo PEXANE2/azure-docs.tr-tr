@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410785"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024798"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Konuşma hizmeti: docs 'taki yenilikler
 
@@ -38,17 +38,17 @@ Konuşma hizmeti, konuşma SDK 'Sı, konuşma cihazları SDK 'Sı, konuşma CLı
 
 * [Konuşma SDK 'sı ses giriş akışı API 'si](how-to-use-audio-input-streams.md) -bir saniyede izin verilen örnek güncelleştirildi.
 * Konuşmadan metne eklenen amaç-C yönergeleri [Için otomatik dil algılama](how-to-automatic-language-detection.md) .
-* [Konuşma tanıma modu seçin](how-to-choose-recognition-mode.md) -belgelere JavaScript yönergeleri eklendi.
+* [Konuşma tanıma modu seçin](./get-started-speech-to-text.md) -belgelere JavaScript yönergeleri eklendi.
 * [RHEL/CentOS 7 for Speech SDK](how-to-configure-rhel-centos-7.md) -iyileştirilmiş kurulum yönergeleri yapılandırın.
-* Belgelere [konuşmadan metne](how-to-phrase-lists.md) eklenen JavaScript yönergelerinin tümcecik listeleri.
-* [Hızlı başlangıç: Python 'da (Önizleme) uzun biçimli ses Için zaman uyumsuz sen,](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) genel sinir sesler ve ilişkili parametreler desteğiyle güncelleştirildi.
-* [Hızlı başlangıç: ses dosyasındaki konuşmayı tanıma](quickstarts/speech-to-text-from-file.md) -belgelere JavaScript yönergeleri eklendi.
-* [Hızlı başlangıç: mikrofona mikrofona eklenen bir go ve JavaScript yönergelerinden konuşmayı tanıyın](quickstarts/speech-to-text-from-microphone.md ) .
+* Belgelere [konuşmadan metne](./get-started-speech-to-text.md) eklenen JavaScript yönergelerinin tümcecik listeleri.
+* [Hızlı başlangıç: Python 'da (Önizleme) uzun biçimli ses Için zaman uyumsuz sen,](./long-audio-api.md) genel sinir sesler ve ilişkili parametreler desteğiyle güncelleştirildi.
+* [Hızlı başlangıç: ses dosyasındaki konuşmayı tanıma](./get-started-speech-to-text.md) -belgelere JavaScript yönergeleri eklendi.
+* [Hızlı başlangıç: mikrofona mikrofona eklenen bir go ve JavaScript yönergelerinden konuşmayı tanıyın](./get-started-speech-to-text.md) .
 * [Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md) -belgelere JavaScript yönergeleri eklendi.
 * [Hızlı başlangıç: Language Understanding (LUU) ile konuşmayı, amaçları ve varlıkları tanıma](quickstarts/intent-recognition.md)
 * [Hızlı başlangıç: geliştirme ortamını ayarlama](quickstarts/setup-platform.md) -belgelere JavaScript yönergeleri eklendi.
-* [Hızlı başlangıç: bir ses dosyasına konuşmayı Sentezleştirme](quickstarts/text-to-speech-audio-file.md) -belgelere JavaScript yönergeleri eklendi.
-* [Hızlı başlangıç: belgelere konuşmacıyı eklenen bir JavaScript yönergelerine Sentezleştirme](quickstarts/text-to-speech.md) .
+* [Hızlı başlangıç: bir ses dosyasına konuşmayı Sentezleştirme](./get-started-text-to-speech.md) -belgelere JavaScript yönergeleri eklendi.
+* [Hızlı başlangıç: belgelere konuşmacıyı eklenen bir JavaScript yönergelerine Sentezleştirme](./get-started-text-to-speech.md) .
 * [Anahtar sözcük nedir?](custom-keyword-overview.md) -Başlangıç içeriği ve bağlantıları güncelleştirildi.
 * Konuşmadan metne eklenen JavaScript ve amaç-C yönergelerinin belgelerine [yönelik kaynak dilini belirtin](how-to-specify-source-language.md) .
 
@@ -58,7 +58,7 @@ Bu sorunlar Mayıs 'ta açılmıştır. Bu tabloda, bu sorunu açan kullanıcı 
 
 Bu tablo aylık olarak güncelleştirilir ve yalnızca Mayıs 'ta açılan sorunları yansıtır.  
 
-|ID|Kullanıcı|Açıklama|Makta|Durum|Tür|
+|ID|Kullanıcı|Description|Makta|Durum|Tür|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|Bot 'ın uç noktası eksik olduğundan etkinlik bırakıldı|2020-05-31|Kapatıldı|Sorun|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Yanlış yayımlama bot adımları|2020-05-31|Aç|Sorun|

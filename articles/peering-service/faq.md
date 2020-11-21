@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 55c5e6c5b718dc2de295b9b4418ddc8607a69f8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95ce90dbbf47ffe527fe6f25704d9cd28b834ea9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84872053"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026704"
 ---
 # <a name="peering-service-faq"></a>Eşleme hizmeti hakkında SSS
 
@@ -36,7 +36,7 @@ A. Evet, müşteriler bunu yapabilir. İş ve işletimsel gereksinimlerinize uya
 
 **Ç. Microsoft Edge PoP nedir?**
 
-A. Bu, Microsoft 'un diğer ağlarla bağlanacağı fiziksel bir konumdur. Microsoft Edge PoP konumunda, Azure ön kapısı ve Azure CDN gibi hizmetler barındırılır. Daha fazla bilgi için bkz. [Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-features).
+A. Bu, Microsoft 'un diğer ağlarla bağlanacağı fiziksel bir konumdur. Microsoft Edge PoP konumunda, Azure ön kapısı ve Azure CDN gibi hizmetler barındırılır. Daha fazla bilgi için bkz. [Azure CDN](../cdn/cdn-features.md).
 
 ## <a name="peering-service-unique-characteristics"></a>Eşleme hizmeti: benzersiz özellikler
 

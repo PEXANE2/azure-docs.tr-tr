@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs en son Azure. Messaging. EventHubs pa
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c0f5a5fb45ee45cb9b7e399dc39ad29406b15dc
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7962e28ecdc7e2c04fefeb0faf6feb5b730d979c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579003"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024543"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs-.NET (Azure. Messaging. EventHubs) ile olayları gönderme ve olayları alma 
 Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
@@ -19,7 +19,7 @@ Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kul
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure Event Hubs yeni başladıysanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
@@ -34,12 +34,12 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
 1. Visual Studio 2019’u başlatın. 
-1. **Yeni proje oluştur** ' u seçin. 
-1. **Yeni proje oluştur** iletişim kutusunda, aşağıdaki adımları uygulayın: Bu iletişim kutusunu görmüyorsanız menüdeki **Dosya** ' yı seçin, **Yeni** ' yi seçin ve ardından **Proje** ' yi seçin. 
+1. **Yeni proje oluştur**' u seçin. 
+1. **Yeni proje oluştur** iletişim kutusunda, aşağıdaki adımları uygulayın: Bu iletişim kutusunu görmüyorsanız menüdeki **Dosya** ' yı seçin, **Yeni**' yi seçin ve ardından **Proje**' yi seçin. 
     1. Programlama dili için **C#** ' ı seçin.
     1. Uygulamanın türü için **konsol** ' ı seçin. 
     1. Sonuçlar listesinden **konsol uygulaması (.NET Core)** seçeneğini belirleyin. 
-    1. Ardından **İleri** ' yi seçin. 
+    1. Ardından **İleri**' yi seçin. 
 
         ![Yeni proje iletişim kutusu](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
 1. Proje adı için **Eventhubssender** yazın, çözüm adı olarak **Eventhubsquickstart** yazın ve ardından projeyi oluşturmak için **Tamam** ' ı seçin. 
@@ -113,7 +113,7 @@ Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .
 > [!WARNING]
 > Bu kodu Azure Stack hub 'da çalıştırırsanız, belirli bir depolama API sürümünü hedefetmediğiniz takdirde çalışma zamanı hatalarıyla karşılaşırsınız. Bunun nedeni, Event Hubs SDK 'sının Azure 'da kullanılabilen ve Azure Stack hub platformunda kullanılamayan en son Azure Storage API 'sini kullanması nedeniyle oluşur. Azure Stack hub, Azure 'da genel kullanıma sunulan farklı bir Storage blob SDK sürümü destekleyebilir. Azure blog depolamayı bir denetim noktası deposu olarak kullanıyorsanız, [Azure Stack hub derlemesi için desteklenen Azure depolama API sürümünü](/azure-stack/user/azure-stack-acs-differences?#api-version) denetleyin ve bu sürümü kodunuzda hedefleyin. 
 >
-> Örneğin, Azure Stack hub sürümü 2005 üzerinde çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2019-02-02 ' dir. Event Hubs SDK istemci kitaplığı, varsayılan olarak Azure 'da kullanılabilen en yüksek sürümü (SDK 'nın sürümü sırasında 2019-07-07) kullanır. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2019-02-02 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için [GitHub 'da bu örneğe](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)bakın. 
+> Örneğin, Azure Stack hub sürümü 2005 üzerinde çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2019-02-02 ' dir. Event Hubs SDK istemci kitaplığı, varsayılan olarak Azure 'da kullanılabilen en yüksek sürümü (SDK 'nın sürümü sırasında 2019-07-07) kullanır. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2019-02-02 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için [GitHub 'da bu örneğe](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)bakın. 
  
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure depolama ve BLOB kapsayıcısı oluşturma
@@ -128,9 +128,9 @@ Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kull
 
 ### <a name="create-a-project-for-the-receiver"></a>Alıcı için proje oluşturma
 
-1. Çözüm Gezgini penceresinde **Eventhubquickstart** çözümüne sağ tıklayın, **Ekle** ' nin üzerine gelin ve **Yeni proje** ' yi seçin. 
-1. **Konsol uygulaması (.NET Core)** seçeneğini belirleyin ve **İleri** ' yi seçin. 
-1. **Proje adı** olarak **Eventhubsalıcı** girin ve **Oluştur** ' u seçin. 
+1. Çözüm Gezgini penceresinde **Eventhubquickstart** çözümüne sağ tıklayın, **Ekle**' nin üzerine gelin ve **Yeni proje**' yi seçin. 
+1. **Konsol uygulaması (.NET Core)** seçeneğini belirleyin ve **İleri**' yi seçin. 
+1. **Proje adı** olarak **Eventhubsalıcı** girin ve **Oluştur**' u seçin. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet paketini ekleme
 
@@ -218,7 +218,7 @@ Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kull
 1. Projeyi derleyin ve hata olmadığından emin olun.
 
     > [!NOTE]
-    > Daha bilgilendirici açıklamalarla tüm kaynak kodu için [GitHub 'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample01_HelloWorld.cs)bakın.
+    > Daha bilgilendirici açıklamalarla tüm kaynak kodu için [GitHub 'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample01_HelloWorld.md)bakın.
 6. Alıcı uygulamasını çalıştırın. 
 1. Olayın alındığını belirten bir ileti görmeniz gerekir. 
 

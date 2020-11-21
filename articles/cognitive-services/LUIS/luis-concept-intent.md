@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536112"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025917"
 ---
 # <a name="intents-in-your-luis-app"></a>LUSıS uygulamanızdaki amaçlar
 
@@ -32,7 +32,7 @@ Seyahat uygulaması amaçları   |   Örnek konuşmalar   |
 Tüm uygulamalar, geri dönüş amacı olan önceden tanımlanmış "[none](#none-intent)" hedefi ile gelir.
 
 ## <a name="prebuilt-domains-provide-intents"></a>Önceden oluşturulmuş etki alanları amaçları sağlar
-Tanımladığınız amaçlardan ek olarak, önceden oluşturulan hedefleri [önceden oluşturulmuş etki alanlarından](luis-how-to-use-prebuilt-domains.md)birini kullanarak kullanabilirsiniz.
+Tanımladığınız amaçlardan ek olarak, önceden oluşturulan hedefleri [önceden oluşturulmuş etki alanlarından](./howto-add-prebuilt-models.md)birini kullanarak kullanabilirsiniz.
 
 ## <a name="return-all-intents-scores"></a>Tüm Amaçlar puanlarını döndür
 Tek bir amaç için bir söylenişi atarsınız. Luara, uç noktada bir söylenişi aldığında, varsayılan olarak o zaman için en üst amacı döndürür.
@@ -59,7 +59,7 @@ Kullanıcının _amacı_ , checkhava durumu () işlevine yapılan bir çağrı g
 
 ## <a name="prebuilt-domain-intents"></a>Önceden oluşturulmuş etki alanı amaçları
 
-[Önceden oluşturulan etki alanları](luis-how-to-use-prebuilt-domains.md) , utterlerle amaçlar sağlar.
+[Önceden oluşturulan etki alanları](./howto-add-prebuilt-models.md) , utterlerle amaçlar sağlar.
 
 ## <a name="none-intent"></a>Amaç yok
 

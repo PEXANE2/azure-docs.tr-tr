@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e9eca3bb230bbfc969a5a429f664e602ad0d78b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6d6a392d25aa96ab9b4dbb7763b37c1021db71aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888326"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026293"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure ön kapısı için Azure Güvenlik temeli
 
@@ -202,7 +202,7 @@ Müşterinin özniteliği ve ağ yapılandırması değişikliklerini yakalamak,
 
 ## <a name="logging-and-threat-detection"></a>Günlüğe kaydetme ve tehdit algılama
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması: günlüğe kaydetme ve tehdit algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması: günlüğe kaydetme ve tehdit algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Azure ağ etkinlikleri için günlüğe kaydetmeyi etkinleştirme
 
@@ -338,7 +338,7 @@ Ayrıca, etiketleri kullanarak kaynakları işaretleyin ve Azure kaynaklarını 
 
 ## <a name="posture-and-vulnerability-management"></a>Posture ve güvenlik açığı yönetimi
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması: Posture ve güvenlik açığı yönetimi](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması: Posture ve güvenlik açığı yönetimi](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>BD-3: işlem kaynakları için güvenli yapılandırma oluşturma
 
@@ -409,7 +409,7 @@ Başvurulan bağlantılarda daha fazla bilgi bulunabilir.
 
 - [Azure güvenlik temelleri-Azure veri güvenliği, şifreleme ve depolama](../security/fundamentals/encryption-overview.md)
 
-- [Azure Güvenlik kıyaslaması-veri koruma](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure Güvenlik kıyaslaması-veri koruma](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -437,7 +437,7 @@ Segmentleme stratejisinin ağ güvenliği, kimlik ve erişim modelleri ve uygula
 
 **Rehberlik**: bireysel varlıklarınızda ve barındırdıkları ortamda riskleri sürekli olarak ölçün ve azaltır. Yayımlanan uygulamalar, ağ giriş ve çıkış noktaları, Kullanıcı ve yönetici uç noktaları gibi yüksek değerli varlıkların ve yüksek oranda sunulan saldırı yüzeylerinin önceliklerini belirleyin.
 
-- [Azure Güvenlik kıyaslaması-Posture ve güvenlik açığı yönetimi](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure Güvenlik kıyaslaması-Posture ve güvenlik açığı yönetimi](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -479,7 +479,7 @@ Başvurulan bağlantılarda daha fazla bilgi bulunabilir.
 
 - [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Güvenlik kıyaslaması-ağ güvenliği](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure Güvenlik kıyaslaması-ağ güvenliği](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure ağ güvenliğine genel bakış](../security/fundamentals/network-overview.md)
 
@@ -505,9 +505,9 @@ Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartl
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
-- [Azure Güvenlik kıyaslaması-kimlik yönetimi](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure Güvenlik kıyaslaması-kimlik yönetimi](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure Güvenlik kıyaslaması-ayrıcalıklı erişim](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure Güvenlik kıyaslaması-ayrıcalıklı erişim](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -539,9 +539,9 @@ Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartl
 
 Başvurulan bağlantılarda daha fazla bilgi bulunabilir.
 
-- [Azure Güvenlik kıyaslaması-günlüğe kaydetme ve tehdit algılama](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure Güvenlik kıyaslaması-günlüğe kaydetme ve tehdit algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Güvenlik kıyaslaması-olay yanıtı](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Güvenlik kıyaslaması-olay yanıtı](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure Güvenlik En Iyi Yöntem 4-Işlem. Bulut için olay yanıtı Işlemini Güncelleştir](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

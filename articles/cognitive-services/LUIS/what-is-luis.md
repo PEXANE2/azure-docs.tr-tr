@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 242d131e79966ebdb286a20f75d20f91f5fa7406
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4034f9b7a5a9ec856134e27b422736e2c98f04a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334659"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025200"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
@@ -50,7 +50,7 @@ Luz, doğal dil işleme AI 'nin bir alt kümesi olan NLU biçiminde [yapay zeka 
 
 LUSıS uygulamanız, etki alanına özgü doğal dil modeli içerir. LUIS uygulamasını önceden oluşturulmuş bir etki alanı modeliyle başlatabilir, kendi modelinizi oluşturabilir veya önceden oluşturulmuş etki alanının belirli bölümlerini kendi özel bilgilerinizle karıştırabilirsiniz.
 
-* **Önceden oluşturulmuş model**: LUIS amaç, konuşma ve önceden oluşturulmuş varlık içeren birçok önceden oluşturulmuş etki alanı modeline sahiptir. Önceden oluşturulmuş modelin amaçlarını ve konuşmalarını kullanmak zorunda kalmadan önceden oluşturulmuş varlıkları kullanabilirsiniz. [Önceden oluşturulmuş etki alanı modelleri](luis-how-to-use-prebuilt-domains.md "Önceden oluşturulmuş etki alanı modelleri"), tasarımın tamamını içerir ve LUIS hizmetini kullanmaya başlamak için ideal bir yoldur.
+* **Önceden oluşturulmuş model**: LUIS amaç, konuşma ve önceden oluşturulmuş varlık içeren birçok önceden oluşturulmuş etki alanı modeline sahiptir. Önceden oluşturulmuş modelin amaçlarını ve konuşmalarını kullanmak zorunda kalmadan önceden oluşturulmuş varlıkları kullanabilirsiniz. [Önceden oluşturulmuş etki alanı modelleri](./howto-add-prebuilt-models.md "Önceden oluşturulmuş etki alanı modelleri"), tasarımın tamamını içerir ve LUIS hizmetini kullanmaya başlamak için ideal bir yoldur.
 
 * **Özel model** LUO, amaçları ve varlıkları dahil kendi özel modellerinizi belirlemek için size çeşitli yollar sağlar. Varlıklar, makine öğrenimi varlıklarını, belirli veya değişmez varlıkları ve makine öğrenimi ve değişmez değer birleşimini içerir.
 
@@ -116,7 +116,7 @@ LUIS'i hızlı ve kolay bir şekilde botla birlikte kullanmanızı sağlayacak u
 
 ## <a name="integrate-with-a-bot"></a>Bir bot ile tümleştirme
 
-[Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") Ile [Azure bot hizmetini](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0 "Azure bot hizmeti") kullanarak bir sohbet bot oluşturun ve dağıtın. Grafik arabirim Aracı, [besteci](https://docs.microsoft.com/composer/ "Oluşturucu")veya üst bot senaryoları için tasarlanan [çalışan bot örnekleri](https://github.com/microsoft/BotBuilder-Samples "çalışan bot örnekleri") ile tasarım ve geliştirme.
+[Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") Ile [Azure bot hizmetini](/azure/bot-service/?view=azure-bot-service-4.0 "Azure bot hizmeti") kullanarak bir sohbet bot oluşturun ve dağıtın. Grafik arabirim Aracı, [besteci](/composer/ "Oluşturucu")veya üst bot senaryoları için tasarlanan [çalışan bot örnekleri](https://github.com/microsoft/BotBuilder-Samples "çalışan bot örnekleri") ile tasarım ve geliştirme.
 
 ## <a name="integrate-with-other-cognitive-services"></a>Diğer bilişsel hizmetlerle tümleştirin
 
@@ -138,8 +138,8 @@ LUO, var olan LUSıS kaynaklarınızın bir parçası olarak Metin Analizi işle
 * [Tahmin uç noktasını sorgulayın](luis-get-started-get-intent-from-browser.md "Tahmin uç noktasını sorgulama").
 * LUSıS için [Geliştirici kaynakları](developer-reference-resource.md "Geliştirici kaynakları") .
 
-[bot-framework]: https://docs.microsoft.com/bot-framework/
-[flow]: https://docs.microsoft.com/connectors/luis/
+[bot-framework]: /bot-framework/
+[flow]: /connectors/luis/
 [authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
 [endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

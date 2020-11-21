@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921427"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025183"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Çok cihazlı konuşma (Önizleme) nedir?
 
 **Çoklu cihaz konuşması** , birden fazla istemci arasında konuşma veya metin konuşması oluşturmayı ve aralarında gönderilen iletileri koordine etmelerini kolaylaştırır.
 
-**Çok cihazlı konuşmadan**şunları yapabilirsiniz:
+**Çok cihazlı konuşmadan** şunları yapabilirsiniz:
 
 - Birden fazla istemciyi aynı konuşmaya bağlayın ve bunların aralarında ileti gönderme ve alma yönetimini yönetin.
 - Her bir istemciden kolayca ses aktarabilir ve isteğe bağlı çeviri ile dökümü diğer kullanıcılara gönderin.
@@ -72,7 +72,7 @@ Her istemci, ses veya anlık ileti gönderebilir. Hizmet, sesi metne dönüştü
 
 ## <a name="overview-of-conversation-host-and-participant"></a>Konuşmaya, konağa ve katılımcıya genel bakış
 
-**Konuşma** , bir kullanıcının diğer katılan kullanıcıların katılması için başlattığı bir oturumdur. Tüm istemciler, beş harfli **konuşma kodunu**kullanarak konuşmaya bağlanır.
+**Konuşma** , bir kullanıcının diğer katılan kullanıcıların katılması için başlattığı bir oturumdur. Tüm istemciler, beş harfli **konuşma kodunu** kullanarak konuşmaya bağlanır.
 
 Her konuşma aşağıdakileri içeren meta veriler oluşturur:
 -    Görüşmenin başladığı ve sona erdiği zaman damgaları
@@ -100,12 +100,12 @@ Bir konuşmada iki tür Kullanıcı vardır:  **ana bilgisayar** ve **katılımc
 
 ## <a name="language-support"></a>Dil desteği
 
-Bir konuşma oluştururken veya katılırken, her kullanıcının bir **birincil dil**seçmesi gerekir: ' de anlık iletileri konuşmaları ve gönderebilecekleri dil ve ayrıca diğer kullanıcıların iletilerini göreceği dil.
+Bir konuşma oluştururken veya katılırken, her kullanıcının bir **birincil dil** seçmesi gerekir: ' de anlık iletileri konuşmaları ve gönderebilecekleri dil ve ayrıca diğer kullanıcıların iletilerini göreceği dil.
 
 İki tür dil vardır: **konuşmadan metne** ve **salt metin**:
 - Kullanıcı, birincil dili olarak bir **konuşmaya metin** dili seçerse, konuşmada hem konuşma hem de metin girişi kullanılabilir.
 
-- Kullanıcı **yalnızca metin** dilini seçerse, yalnızca metin girişi kullanabilir ve konuşmada anında ileti gönderebilecektir. Yalnızca metin dilleri, metin çevirisi için desteklenen dillerdir, ancak metinden konuşmaya değildir. [Dil desteği](supported-languages.md) sayfasında kullanılabilir dilleri görebilirsiniz.
+- Kullanıcı **yalnızca metin** dilini seçerse, yalnızca metin girişi kullanabilir ve konuşmada anında ileti gönderebilecektir. Yalnızca metin dilleri, metin çevirisi için desteklenen dillerdir, ancak metinden konuşmaya değildir. [Dil desteği](./language-support.md) sayfasında kullanılabilir dilleri görebilirsiniz.
 
 Birincil dilinden ayrı olarak her katılımcı, görüşmeyi çevirmek için ek diller de belirtebilir.
 
@@ -119,7 +119,7 @@ Aşağıda, kullanıcının seçtiğiniz birincil dile bağlı olarak çok cihaz
 | Konuşmayı çevir | ✔️ | ✔️ |
 
 > [!NOTE]
-> Konuşmayı metne dönüştürme ve metin çevirisi dillerinin listesi için bkz. [desteklenen diller](supported-languages.md).
+> Konuşmayı metne dönüştürme ve metin çevirisi dillerinin listesi için bkz. [desteklenen diller](./language-support.md).
 
 
 

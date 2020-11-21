@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934455"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024781"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows 'da sesli yardımcılar uygulama
 
@@ -30,15 +30,15 @@ Bu kılavuzda, Windows üzerinde bir ses Yardımcısı oluşturmaya yönelik ön
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Mikrofonun kullanılabilir ve erişilebilir olduğundan emin olun, sonra durumunu izleyin
 
-MVA 'nın, bir ses etkinleştirmesini algılayabilmesi için bir mikrofonun mevcut ve erişilebilir olması gerekir. Sırasıyla mikrofon gizlilik erişimi, cihaz varlığı ve cihaz durumu (birim ve sessiz gibi) için denetim sağlamak üzere [Appcapability](https://docs.microsoft.com/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [Deviceizleyici](https://docs.microsoft.com/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)ve [MediaCapture](https://docs.microsoft.com/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) sınıflarını kullanın.
+MVA 'nın, bir ses etkinleştirmesini algılayabilmesi için bir mikrofonun mevcut ve erişilebilir olması gerekir. Sırasıyla mikrofon gizlilik erişimi, cihaz varlığı ve cihaz durumu (birim ve sessiz gibi) için denetim sağlamak üzere [Appcapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [Deviceizleyici](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)ve [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) sınıflarını kullanın.
 
 ### <a name="register-the-application-with-the-background-service"></a>Uygulamayı arka plan hizmetine kaydetme
 
-MVA 'nın uygulamayı arka planda başlatması için, uygulamanın arka plan hizmetine kayıtlı olması gerekir. Arka plan hizmeti kaydı için [buradaki](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)tam kılavuza bakın.
+MVA 'nın uygulamayı arka planda başlatması için, uygulamanın arka plan hizmetine kayıtlı olması gerekir. Arka plan hizmeti kaydı için [buradaki](/windows/uwp/launch-resume/register-a-background-task)tam kılavuza bakın.
 
 ### <a name="unlock-the-limited-access-feature"></a>Sınırlı erişim özelliğinin kilidini aç
 
-Ses Yardımcısı özelliğinin kilidini açmak için Microsoft tarafından sağlanmış sınırlı erişim özelliği anahtarınızı kullanın. Bunu yapmak için Windows SDK ' den [Limitedaccessfeature](https://docs.microsoft.com/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) sınıfını kullanın.
+Ses Yardımcısı özelliğinin kilidini açmak için Microsoft tarafından sağlanmış sınırlı erişim özelliği anahtarınızı kullanın. Bunu yapmak için Windows SDK ' den [Limitedaccessfeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) sınıfını kullanın.
 
 ### <a name="register-the-keyword-for-the-application"></a>Uygulamanın anahtar sözcüğünü kaydetme
 
@@ -86,7 +86,7 @@ Ses Aracısı uygulaması sesle etkinleştirildikten sonra, bir sonraki adım an
 
 ### <a name="retrieve-activation-audio"></a>Etkinleştirme sesini al
 
-Bir [Audiograph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) oluşturun ve ' a geçirin `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Bu işlem *, anahtar sözcüğünün algılanmadan önce*, sesin ses arabelleğini yaklaşık 3 saniye sonra başlayacak şekilde yükler. Bu ek önde gelen ses, çok sayıda anahtar sözcük uzunluğu ve hoparlör hızını karşılamak için eklenmiştir. Ardından ses grafiğindeki miktar ' dan [başlatılan](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) olayı işleyin.
+Bir [Audiograph](/uwp/api/windows.media.audio.audiograph) oluşturun ve ' a geçirin `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Bu işlem *, anahtar sözcüğünün algılanmadan önce*, sesin ses arabelleğini yaklaşık 3 saniye sonra başlayacak şekilde yükler. Bu ek önde gelen ses, çok sayıda anahtar sözcük uzunluğu ve hoparlör hızını karşılamak için eklenmiştir. Ardından ses grafiğindeki miktar ' dan [başlatılan](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) olayı işleyin.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -118,7 +118,7 @@ Aşağıdaki adımlarda, uygulama yaşam döngüsünü yönetmeye yönelik örne
 
 Kilit deneyimlerinin üzerinde tasarlanmasına ilişkin yönergeler için [en iyi yöntemler kılavuzunu](windows-voice-assistants-best-practices.md)ziyaret edin.
 
-Bir uygulama kilidin üzerine bir görünüm gösterdiğinde, "bilgi noktası modunda" olduğu kabul edilir. Bilgi noktası modu kullanan bir uygulamayı uygulama hakkında daha fazla bilgi için bilgi [noktası modu belgelerine](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)bakın.
+Bir uygulama kilidin üzerine bir görünüm gösterdiğinde, "bilgi noktası modunda" olduğu kabul edilir. Bilgi noktası modu kullanan bir uygulamayı uygulama hakkında daha fazla bilgi için bilgi [noktası modu belgelerine](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access)bakın.
 
 ### <a name="transitioning-above-lock"></a>Kilidin üzerine geçme
 
@@ -149,7 +149,7 @@ Ses etkinleştirme gizlilik ayarları sayfasındaki uygulama girişi, kilit işl
 Kilidi önceki veya sonraki bir sırada kullanarak uygulamayı programlı bir şekilde kapatmak için API 'yi kullanın `WindowService.CloseWindow()` . Bu, OnSuspend dahil olmak üzere tüm UWP yaşam döngüsü yöntemlerini tetikleyip uygulamanın `ConversationalAgentSession` kapatılmadan önce örneğinin atılarak çalışmasına izin verir.
 
 > [!NOTE]
-> Uygulama, [aşağıdaki kilit örneğinin](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)kapanmadan kapatılabilir. Bu durumda, yukarıdaki kilit görünümünün "temizlenmesi" gerekir. Bu, ekranın kilidinin açılması durumunda, yukarıdaki kilit görünümünü işlemeyi deneyecek olay işleyicileri veya görevler olmamasını sağlar.
+> Uygulama, [aşağıdaki kilit örneğinin](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)kapanmadan kapatılabilir. Bu durumda, yukarıdaki kilit görünümünün "temizlenmesi" gerekir. Bu, ekranın kilidinin açılması durumunda, yukarıdaki kilit görünümünü işlemeyi deneyecek olay işleyicileri veya görevler olmamasını sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

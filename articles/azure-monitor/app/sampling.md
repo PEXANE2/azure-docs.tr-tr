@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4c5000adb2339d3fd0f828781a60f75c75894b5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168605"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024424"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -25,7 +25,7 @@ Portalda ölçüm sayıları sunulduklarında, bunlar hesap örneklemesi içine 
 * Sabit hızlı örnekleme, ASP.NET, ASP.NET Core, Java (hem aracı hem de SDK) ve Python için Application Insights SDK 'larının son sürümlerinde kullanılabilir.
 * Alma örnekleme, Application Insights hizmeti uç noktasında çalışmaktadır. Yalnızca başka bir örnekleme etkin olmadığında geçerlidir. SDK, telemetrinizi örnekleyerek alma örneklemesini devre dışı bırakılır.
 * Web uygulamaları için, özel olayları günlüğe kaydeder ve bir olay kümesinin birlikte tutulup tutulmayacağından emin olmanız gerekiyorsa, olayların aynı değere sahip olması gerekir `OperationId` .
-* Analiz sorguları yazarsanız, [örnekleme hesabı](../log-query/aggregations.md)almalısınız. Özellikle de kayıtları saymak yerine, kullanmanız gerekir `summarize sum(itemCount)` .
+* Analiz sorguları yazarsanız, [örnekleme hesabı](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)almalısınız. Özellikle de kayıtları saymak yerine, kullanmanız gerekir `summarize sum(itemCount)` .
 * Performans ölçümleri ve özel ölçümler de dahil olmak üzere bazı telemetri türleri, örnekleme 'nın etkin olup olmamasına bakılmaksızın her zaman tutulur.
 
 Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme türleri özetlenmektedir:
@@ -78,7 +78,7 @@ Hedef birime ulaşmak için, oluşturulan telemetrinin bazıları atılır. Anca
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    Uyarlamalı algoritmaların **her bir sunucu konağında**toplanmasını sağlayan [mantıksal işlemlerin](./correlation.md#data-model-for-telemetry-correlation) hedef oranı. Web uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, Application Insights portalındaki hedef trafik ücretine devam etmek için küçültün.
+    Uyarlamalı algoritmaların **her bir sunucu konağında** toplanmasını sağlayan [mantıksal işlemlerin](./correlation.md#data-model-for-telemetry-correlation) hedef oranı. Web uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, Application Insights portalındaki hedef trafik ücretine devam etmek için küçültün.
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   

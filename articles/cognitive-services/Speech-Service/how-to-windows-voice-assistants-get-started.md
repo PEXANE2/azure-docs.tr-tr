@@ -10,32 +10,32 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 4ea2f88b02738645af3f8fc32d5fdb99168a1122
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997386"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026497"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows 'da sesli yardımcılar ile çalışmaya başlama
 
 Bu kılavuz, Windows üzerinde bir ses Yardımcısı geliştirmeye başlama adımlarında size yol gösterecektir.
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
 
 Windows için bir ses Yardımcısı geliştirmeye başlamak için uygun geliştirme ortamınıza sahip olduğunuzdan emin olmanız gerekir.
 
-- **Visual Studio:**    [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition veya üstünü yüklemeniz gerekir
-- **Windows sürümü**: Windows Insider hızlı halka Windows derlemesi ve Windows SDK Windows Insider sürümü olan bir bilgisayar.Bu örnek kod, Windows SDK 19018 kullanarak Windows Insider sürüm derlemesi 19025.vb_release_analog .191112-1600 üzerinde çalıştığı için doğrulanır.Belirtilen sürümlerin üzerindeki tüm derleme veya SDK uyumlu olmalıdır.
-- **UWP geliştirme araçları**: Visual Studio 'da Evrensel Windows platformu geliştirme iş yükü.Makinenizi UWP uygulamaları geliştirmeye hazırlamak için UWP tarafından [Kurulum](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) sayfasına bakın.
+- **Visual Studio:** [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition veya üstünü yüklemeniz gerekir
+- **Windows sürümü**: Windows Insider hızlı halka Windows derlemesi ve Windows SDK Windows Insider sürümü olan bir bilgisayar. Bu örnek kod, Windows SDK 19018 kullanarak Windows Insider sürüm derlemesi 19025.vb_release_analog .191112-1600 üzerinde çalıştığı için doğrulanır. Belirtilen sürümlerin üzerindeki tüm derleme veya SDK uyumlu olmalıdır.
+- **UWP geliştirme araçları**: Visual Studio 'da Evrensel Windows platformu geliştirme iş yükü. Makinenizi UWP uygulamaları geliştirmeye hazırlamak için UWP tarafından [Kurulum](/windows/uwp/get-started/get-set-up) sayfasına bakın.
 - **Çalışan bir mikrofon ve ses çıkışı**
 
 ## <a name="obtain-resources-from-microsoft"></a>Microsoft 'tan kaynak alma
 
 Windows üzerinde tamamen özelleştirilmiş bir ses Aracısı için gereken bazı kaynaklar, Microsoft kaynakları gerektirir. [UWP Voice Yardımcısı örneği](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) , ilk geliştirme ve test için bu kaynakların örnek sürümlerini sağlar; bu nedenle ilk geliştirme için bu bölüm gereksizdir.
 
-- **Anahtar sözcük modeli:**   Ses etkinleştirme, bir. bin dosyası biçiminde Microsoft 'tan bir anahtar sözcük modeli gerektirir. UWP ses Yardımcısı örneğinde verilen. bin dosyası "contoso" anahtar sözcüğü üzerinde eğitilir.
-- **Sınırlı erişim özelliği belirteci:** Konuşma seslerine mikrofon seslerine erişim sağlanması nedeniyle, bu dosyalar sınırlı erişim özelliği kısıtlamalarına göre korunur.Sınırlı bir erişim özelliğini kullanmak için, Microsoft 'tan uygulamanızın paket kimliğine bağlanmış sınırlı bir erişim özelliği belirteci edinmeniz gerekir.
+- **Anahtar sözcük modeli:** Ses etkinleştirme, bir. bin dosyası biçiminde Microsoft 'tan bir anahtar sözcük modeli gerektirir. UWP ses Yardımcısı örneğinde verilen. bin dosyası "contoso" anahtar sözcüğü üzerinde eğitilir.
+- **Sınırlı erişim özelliği belirteci:** Konuşma seslerine mikrofon seslerine erişim sağlanması nedeniyle, bu dosyalar sınırlı erişim özelliği kısıtlamalarına göre korunur. Sınırlı bir erişim özelliğini kullanmak için, Microsoft 'tan uygulamanızın paket kimliğine bağlanmış sınırlı bir erişim özelliği belirteci edinmeniz gerekir.
 
 ## <a name="establish-a-dialog-service"></a>İletişim hizmeti oluşturma
 
@@ -48,8 +48,8 @@ Tüm ses Yardımcısı deneyimi için, uygulamanın bir iletişim hizmetine ihti
 
 Bunlar doğrudan hat konuşmayı kullanarak temel bir iletişim hizmeti oluşturma gereksinimleridir.
 
-- **Konuşma Hizmetleri aboneliği:** Konuşmadan metne ve metinden konuşmaya dönüştürme için bilişsel konuşma Hizmetleri için bir abonelik. Konuşma hizmetlerini [buradan](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)ücretsiz olarak deneyin.
-- **Bot Framework bot:**  Ses girişini ve çıktıyı etkinleştirmek üzere [doğrudan hat konuşmaya](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) abone olmak Için, bot Framework sürüm 4,2 veya üzeri kullanılarak oluşturulan bir bot. [Bu kılavuz](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk) , "yankı bot" oluşturmak için adım adım yönergeler içerir ve bunu doğrudan konuşmaya yönlendirmek üzere abone olur. Ayrıca, özelleştirilmiş bir bot oluşturma adımları için [buraya](https://blog.botframework.com/2018/05/07/build-a-microsoft-bot-framework-bot-with-the-bot-builder-sdk-v4/) gidebilirsiniz ve sonra da "Echo bot" yerine yeni bir bot 'a abone olmak için [buradaki](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk) adımları takip edebilirsiniz.
+- **Konuşma Hizmetleri aboneliği:** Konuşmadan metne ve metinden konuşmaya dönüştürme için bilişsel konuşma Hizmetleri için bir abonelik. Konuşma hizmetlerini [buradan](./overview.md#try-the-speech-service-for-free)ücretsiz olarak deneyin.
+- **Bot Framework bot:**  Ses girişini ve çıktıyı etkinleştirmek üzere [doğrudan hat konuşmaya](./direct-line-speech.md) abone olmak Için, bot Framework sürüm 4,2 veya üzeri kullanılarak oluşturulan bir bot. [Bu kılavuz](./tutorial-voice-enable-your-bot-speech-sdk.md) , "yankı bot" oluşturmak için adım adım yönergeler içerir ve bunu doğrudan konuşmaya yönlendirmek üzere abone olur. Ayrıca, özelleştirilmiş bir bot oluşturma adımları için [buraya](https://blog.botframework.com/2018/05/07/build-a-microsoft-bot-framework-bot-with-the-bot-builder-sdk-v4/) gidebilirsiniz ve sonra da "Echo bot" yerine yeni bir bot 'a abone olmak için [buradaki](./tutorial-voice-enable-your-bot-speech-sdk.md) adımları takip edebilirsiniz.
 
 ## <a name="try-out-the-sample-app"></a>Örnek uygulamayı deneyin
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 2939b3b3beac55b537c1dcf844f702a0ad73f06e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d8dee086f55c5596af50245b5271d98536eb7e57
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478618"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026208"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak çok kiracılı bir veritabanı tasarlama
 
@@ -276,4 +276,4 @@ Yukarıdaki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gel
 Bu öğreticide, bir hiper ölçek (Citus) sunucu grubu sağlamayı öğrendiniz. Bu ağa psql ile bağlanırsınız, bir şema oluşturdunuz ve dağıtılmış veriler. Kiracılar içindeki ve içindeki verileri sorgulamayı ve kiracı başına şemayı özelleştirmeyi öğrendiniz.
 
 - Sunucu grubu [düğüm türleri](./concepts-hyperscale-nodes.md) hakkında bilgi edinin
-- Sunucu grubunuz için en iyi [ilk boyutu](howto-hyperscale-scaling.md#picking-initial-size) belirleme
+- Sunucu grubunuz için en iyi [ilk boyutu](howto-hyperscale-scale-initial.md) belirleme

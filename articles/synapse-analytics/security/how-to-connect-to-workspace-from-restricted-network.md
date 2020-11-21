@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637141"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024474"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Kısıtlanmış bir ağdan çalışma alanı kaynaklarına bağlanma
 
@@ -21,9 +21,9 @@ Kuruluşunuzun kısıtlanmış ağını yöneten bir BT Yöneticisi olduğunuzu 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure SYNAPSE Analytics çalışma alanı** : Azure SYNAPSE Analytics 'ten bir tane oluşturabilirsiniz. 4. adımda çalışma alanı adının olması gerekir.
-* **Kısıtlı ağ** : BT Yöneticisi, kuruluş için kısıtlı ağı korur ve ağ ilkesini yapılandırma iznine sahiptir. Adım 3 ' te sanal ağ adı ve alt ağı gerekir.
+* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure SYNAPSE Analytics çalışma alanı**: Azure SYNAPSE Analytics 'ten bir tane oluşturabilirsiniz. 4. adımda çalışma alanı adının olması gerekir.
+* **Kısıtlı ağ**: BT Yöneticisi, kuruluş için kısıtlı ağı korur ve ağ ilkesini yapılandırma iznine sahiptir. Adım 3 ' te sanal ağ adı ve alt ağı gerekir.
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>1. Adım: kısıtlanmış ağa ağ giden güvenlik kuralları ekleme
@@ -38,9 +38,9 @@ Aşağıdaki ekran görüntüsünde Azure Resource Manager giden kuralı için A
 
 ![Hizmet etiketi ayrıntılarının Azure Resource Manager ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
-Diğer üç kuralı oluştururken, **hedef hizmet etiketinin** değerini **Azurefrontkapısı. ön uç** , **AzureActiveDirectory** veya **AzureMonitor** ile değiştirin.
+Diğer üç kuralı oluştururken, **hedef hizmet etiketinin** değerini **Azurefrontkapısı. ön uç**, **AzureActiveDirectory** veya **AzureMonitor** ile değiştirin.
 
-Daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](/azure/virtual-network/service-tags-overview.md).
+Daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](/azure/virtual-network/service-tags-overview).
 
 ## <a name="step-2-create-private-link-hubs"></a>2. Adım: özel bağlantı hub 'ları oluşturma
 
@@ -53,7 +53,7 @@ Sonra, Azure portal özel bağlantı hub 'ları oluşturun. Portalda bunu bulmak
 
 ## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>3. Adım: ağ geçidiniz için özel bir uç nokta oluşturma
 
-Azure SYNAPSE Analytics Studio Gateway 'e erişmek için Azure portal özel bir uç nokta oluşturmanız gerekir. Portalda bunu bulmak için *özel bağlantı* aratın. **Özel bağlantı merkezinde** **Özel uç nokta oluştur** ' u seçin ve ardından oluşturmak için gerekli bilgileri girin. 
+Azure SYNAPSE Analytics Studio Gateway 'e erişmek için Azure portal özel bir uç nokta oluşturmanız gerekir. Portalda bunu bulmak için *özel bağlantı* aratın. **Özel bağlantı merkezinde** **Özel uç nokta oluştur**' u seçin ve ardından oluşturmak için gerekli bilgileri girin. 
 
 > [!Note]
 > **Bölge** değerinin, Azure SYNAPSE Analytics çalışma alanınızın bulunduğu bir değerle aynı olduğundan emin olun.
@@ -67,7 +67,7 @@ Azure SYNAPSE Analytics Studio Gateway 'e erişmek için Azure portal özel bir 
 **Yapılandırma** sekmesinde: 
 * **Sanal ağ** için, kısıtlı sanal ağ adını seçin.
 * **Alt ağ** için, kısıtlı sanal ağın alt ağını seçin. 
-* **Özel DNS bölgesi Ile tümleştirme** için **Evet** ' i seçin.
+* **Özel DNS bölgesi Ile tümleştirme** için **Evet**' i seçin.
 
 ![Özel uç nokta oluşturma, yapılandırma sekmesinin ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-3.png)
 
@@ -84,7 +84,7 @@ Bunların oluşturulması, önceki adımda bitiş noktasını oluşturma ile ben
 
 **Kaynak** sekmesinde:
 
-* **Kaynak türü** için **Microsoft. SYNAPSE/çalışma alanları** ' nı seçin.
+* **Kaynak türü** için **Microsoft. SYNAPSE/çalışma alanları**' nı seçin.
 * **Kaynak** için, daha önce oluşturduğunuz çalışma alanı adını seçin.
 * **Hedef alt kaynak** için uç nokta türünü seçin:
   * **SQL, SQL** havuzunda SQL sorgu yürütme içindir.
@@ -99,7 +99,7 @@ Bunların oluşturulması, önceki adımda bitiş noktasını oluşturma ile ben
 Azure SYNAPSE Analytics Studio çalışma alanındaki Depolama Gezgini ile bağlantılı depolamaya erişmek için bir özel uç nokta oluşturmanız gerekir. Bunun adımları 3. adımdan benzerdir. 
 
 **Kaynak** sekmesinde:
-* **Kaynak türü** için **Microsoft. SYNAPSE/storageaccounts** ' ı seçin.
+* **Kaynak türü** için **Microsoft. SYNAPSE/storageaccounts**' ı seçin.
 * **Kaynak** için, daha önce oluşturduğunuz depolama hesabı adını seçin.
 * **Hedef alt kaynak** için uç nokta türünü seçin:
   * **BLOB** , Azure Blob depolama içindir.

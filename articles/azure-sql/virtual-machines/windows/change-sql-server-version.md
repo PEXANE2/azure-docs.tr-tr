@@ -14,12 +14,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a0ecc36d78ffde002dac971a749889104ff10073
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b9223ffc564620804b36f6f0e71602b3888a9f42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556463"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025387"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 'de SQL Server sürümünün yerinde değiştirilmesi
 
@@ -27,7 +27,7 @@ ms.locfileid: "94556463"
 
 Bu makalede, Microsoft Azure bir Windows sanal makinesinde (VM) Microsoft SQL Server sürümünün nasıl değiştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server yerinde yükseltmesi yapmak için aşağıdaki koşullar geçerlidir:
 
@@ -62,12 +62,12 @@ SQL Server sürümünü yükseltmek için, SQL Server [yükseltme yolunu destekl
 
 1. İşlemi başlamadan önce sistem (tempdb hariç) ve kullanıcı veritabanları dahil veritabanlarını yedekleyin. Ayrıca, Azure Backup Hizmetleri 'ni kullanarak uygulamayla tutarlı bir VM düzeyi yedekleme de oluşturabilirsiniz.
 1. SQL Server yükleme medyasından Setup.exe başlatın.
-1. Yükleme Sihirbazı SQL Server yükleme merkezini başlatır. Mevcut bir SQL Server örneğini yükseltmek için, gezinti bölmesinde **yükleme** ' yi seçin ve ardından **SQL Server önceki bir sürümünden Yükselt** ' i seçin.
+1. Yükleme Sihirbazı SQL Server yükleme merkezini başlatır. Mevcut bir SQL Server örneğini yükseltmek için, gezinti bölmesinde **yükleme** ' yi seçin ve ardından **SQL Server önceki bir sürümünden Yükselt**' i seçin.
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="SQL Server sürümünü yükseltmek için seçim":::
 
-1. **Ürün anahtarı** sayfasında, SQL Server ücretsiz sürümüne yükseltme yapıp kullanmayacağınızı veya ürünün üretim sürümü IÇIN bir PID anahtarınız olduğunu göstermek için bir seçenek belirleyin. Daha fazla bilgi için, bkz. [SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-155) ve [desteklenen sürüm ve sürüm yükseltmeleri (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades).
-1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt** ' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Komple** bir sayfa, yükseltmenin tamamlandığını doğrulayacaktır. Yükseltme için adım adım bir yordam için, [Tüm yordama](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure)bakın.
+1. **Ürün anahtarı** sayfasında, SQL Server ücretsiz sürümüne yükseltme yapıp kullanmayacağınızı veya ürünün üretim sürümü IÇIN bir PID anahtarınız olduğunu göstermek için bir seçenek belirleyin. Daha fazla bilgi için, bkz. [SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15) ve [desteklenen sürüm ve sürüm yükseltmeleri (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades).
+1. **Yükseltmeye hazırlanma** sayfasına ulaşana kadar **İleri** ' yi seçin ve ardından **Yükselt**' i seçin. Değişiklik etkinleşirken kurulum penceresi birkaç dakika yanıt vermeyi durdurabilir. **Komple** bir sayfa, yükseltmenin tamamlandığını doğrulayacaktır. Yükseltme için adım adım bir yordam için, [Tüm yordama](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure)bakın.
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Tüm sayfa":::
 
@@ -118,7 +118,7 @@ SQL Server sürümünü değiştirdikten sonra, SQL Server sürümünü görünt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

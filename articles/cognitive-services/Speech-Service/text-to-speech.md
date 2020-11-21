@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Metinden konuşmaya
-ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357463"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024526"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
@@ -31,7 +31,7 @@ Bu genel bakışta, uygulamanızın, araçların veya cihazların metni insan be
 
 ## <a name="core-features"></a>Temel Özellikler
 
-* Konuşma birleştirme-standart, sinir veya özel sesler kullanarak metin okumayı dönüştürmek için [konuşma SDK 'sını](quickstarts/text-to-speech-audio-file.md) veya [REST API](rest-text-to-speech.md) kullanın.
+* Konuşma birleştirme-standart, sinir veya özel sesler kullanarak metin okumayı dönüştürmek için [konuşma SDK 'sını](./get-started-text-to-speech.md) veya [REST API](rest-text-to-speech.md) kullanın.
 
 * Zaman uyumsuz birleştirme uzun seslidir-metin okuma dosyalarını 10 dakikadan uzun zaman uyumsuz bir şekilde birleştirmek için [uzun ses API](long-audio-api.md) 'sini kullanın (örneğin, ses defterleri veya seminerler). Konuşma SDK 'Sı veya konuşmadan metne REST API kullanarak senkinden farklı olarak, yanıtlar gerçek zamanlı olarak döndürülmez. Beklentiler, isteklerin zaman uyumsuz olarak gönderilmesi, yanıtların yoklandığının ve hizmetten kullanıma hazır hale getirilme sesinin indirilmesinden kaynaklandır. Yalnızca özel sinir sesleri desteklenir.
 

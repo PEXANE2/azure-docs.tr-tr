@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988230"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026157"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
 
-Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilgisayarlara güncelleştirmelerin ne zaman uygulanacağına karar vermenizi sağlar. Bu konu, bakım denetimi için Azure PowerShell seçeneklerini içerir. Bakım denetimini, sınırlamalarını ve diğer yönetim seçeneklerini kullanmanın avantajları hakkında daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](maintenance-control.md).
+Bakım denetimi, yalıtılmış sanal makinelerinizin ve Azure adanmış konaklarınızın konak altyapısına platform güncelleştirmelerinin ne zaman uygulanacağını belirlemenize olanak sağlar. Bu konu, bakım denetimi için Azure PowerShell seçeneklerini içerir. Bakım denetimini, sınırlamalarını ve diğer yönetim seçeneklerini kullanmanın avantajları hakkında daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](maintenance-control.md).
  
 ## <a name="enable-the-powershell-module"></a>PowerShell modülünü etkinleştir
 
@@ -86,9 +86,9 @@ $config = New-AzMaintenanceConfiguration `
 > Bakım **süresi** *2 saat* veya daha uzun olmalıdır. Bakım **tekrarlamaları** , 35 gün içinde en az bir kez gerçekleşmelidir.
 
 Bakım **yinelemesi** günlük, haftalık veya aylık olarak ifade edilebilir. Bazı örnekler şunlardır:
- - günlük-"recurEvery: Day" **veya** "Recurevery: 3days" 
- - haftalık-"recurEvery: 3Haftaları" **veya** "Recurevery: hafta Cumartesi, Pazar" 
- - aylık-"recurEvery: month day23, day24" **veya** "recurevery: ay son Pazar" **veya** "Recurevery: ay dördüncü Pazartesi"  
+ - **günlük**-recurevery "gün" **veya** "3gün" 
+ - **haftalık**-recureçok "3hafta" **veya** "hafta Cumartesi, Pazar" 
+ - **aylık**-recurevery "month day23, day24" **veya** "ay son Pazar" **veya** "aylık dördüncü Pazartesi"  
       
 
 ## <a name="assign-the-configuration"></a>Yapılandırmayı ata

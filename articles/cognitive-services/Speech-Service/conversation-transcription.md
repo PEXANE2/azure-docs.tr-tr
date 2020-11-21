@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487797"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025002"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Toplantılar (Önizleme) ile görüşme dökümü nedir?
 
-Konuşma dökümü, her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz olarak dökümünü sağlamak için konuşma tanımayı, konuşmacı tanımayı ve tümce oluşturma işlevini her konuşmacı (daha da _bilinen) birleştiren_bir [konuşmaya metin](speech-to-text.md) çözümüdür. Konuşma dökümü, kimin ne olduğunu ve ne zaman söylediklerini belirlemek için konuşmalarda hoparlörleri ayırt eder ve geliştiricilerin çok oyunculu bir savunma gerçekleştiren uygulamalarına konuşmadan metin eklemesini kolaylaştırır.
+Konuşma dökümü, her konuşmacının gerçek zamanlı ve/veya zaman uyumsuz olarak dökümünü sağlamak için konuşma tanımayı, konuşmacı tanımayı ve tümce oluşturma işlevini her konuşmacı (daha da _bilinen) birleştiren_ bir [konuşmaya metin](speech-to-text.md) çözümüdür. Konuşma dökümü, kimin ne olduğunu ve ne zaman söylediklerini belirlemek için konuşmalarda hoparlörleri ayırt eder ve geliştiricilerin çok oyunculu bir savunma gerçekleştiren uygulamalarına konuşmadan metin eklemesini kolaylaştırır.
 
 ## <a name="key-features"></a>Önemli özellikler
 
@@ -54,7 +54,7 @@ Bu, konuşma dökümünü nasıl çalıştığına ilişkin üst düzey bir gene
 
 ## <a name="expected-inputs"></a>Beklenen girişler
 
-- **Çok kanallı ses akışı** – belirtim ve tasarım ayrıntıları için bkz. [MICROSOFT Speech cihaz SDK mikrofonu](https://aka.ms/cts/microphone). Daha fazla bilgi edinmek veya bir geliştirme seti satın almak için bkz. [Microsoft Speech cihaz SDK 'Sını alma](https://aka.ms/cts/getsdk).
+- **Çok kanallı ses akışı** – belirtim ve tasarım ayrıntıları için bkz. [MICROSOFT Speech cihaz SDK mikrofonu](./speech-devices-sdk-microphone.md). Daha fazla bilgi edinmek veya bir geliştirme seti satın almak için bkz. [Microsoft Speech cihaz SDK 'Sını alma](./get-speech-devices-sdk.md).
 - **Kullanıcı ses örnekleri** – konuşma dökümü, konuşmadan önce Kullanıcı profilleri gerektirir. Her kullanıcıdan ses kayıtları toplamanız gerekir, sonra da ses doğrulamak ve Kullanıcı profilleri oluşturmak için kayıtları [Imza oluşturma hizmetine](https://aka.ms/cts/signaturegenservice) göndermeniz gerekir.
 
 > [!NOTE]

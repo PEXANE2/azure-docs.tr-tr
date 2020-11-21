@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: dpalled
-ms.openlocfilehash: 2cf86ed4fd4305a37d27bf7a88e8493821ef085c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3460cd8a88733ede041f6c0635ba40797675ed03
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629106"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025336"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 ' de uzun veri türü desteği ekleniyor
 
 Uzun veri türü desteğinin eklenmesi, sayısal verileri yalnızca Azure Time Series Insights Gen2 ortamlarında depolamanıza ve dizinliyoruz. Bir Gen1 ortamınız varsa, bu değişiklikleri yoksayabilirsiniz.
 
-Bölgenize bağlı olarak, 29 Haziran veya 30 Haziran 2020 ' den başlayarak, verileriniz **uzun** ve **çift**olarak dizinlenir.  Bu değişiklik hakkında sorularınız veya endişeleriniz varsa Azure portal aracılığıyla bir destek bileti iletin ve bu iletişimin bahsetmesi gerekir.
+Bölgenize bağlı olarak, 29 Haziran veya 30 Haziran 2020 ' den başlayarak, verileriniz **uzun** ve **çift** olarak dizinlenir.  Bu değişiklik hakkında sorularınız veya endişeleriniz varsa Azure portal aracılığıyla bir destek bileti iletin ve bu iletişimin bahsetmesi gerekir.
 
 Aşağıdaki durumlardan herhangi biriyle etkileniyorsanız önerilen değişiklikleri yapın:
 
@@ -42,11 +42,11 @@ IoT çözümünüze ve kısıtlamalarına bağlı olarak, Azure Time Series Insi
 - Preemptively tüm sayısal etiketler için önerilen değişiklikleri yapabilirsiniz.
 - Şemayı daha iyi anlamak ve araştırmak için bir olay alt kümesini geçici olarak depolamaya yönlendirebilirsiniz.
 
-Olayları depolamak için Azure Event Hubs [olay yakalamayı](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) açın veya IoT Hub Azure Blob depolama alanına [yönlendirin](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) .
+Olayları depolamak için Azure Event Hubs [olay yakalamayı](../event-hubs/event-hubs-capture-overview.md) açın veya IoT Hub Azure Blob depolama alanına [yönlendirin](../iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint) .
 
-Veriler ayrıca [Olay Hub 'ı Gezgini](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)aracılığıyla veya [olay işleyicisi ana bilgisayarı](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)kullanılarak da gözlemlenebilir.
+Veriler ayrıca [Olay Hub 'ı Gezgini](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)aracılığıyla veya [olay işleyicisi ana bilgisayarı](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md#receive-events)kullanılarak da gözlemlenebilir.
 
-IoT Hub kullanıyorsanız yerleşik uç noktaya nasıl erişildiği [yerleşik uç noktadan cihazdan buluta Iletileri oku](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) bölümüne gidin.
+IoT Hub kullanıyorsanız yerleşik uç noktaya nasıl erişildiği [yerleşik uç noktadan cihazdan buluta Iletileri oku](../iot-hub/iot-hub-devguide-messages-read-builtin.md) bölümüne gidin.
 
 > [!NOTE]
 > Önerilen değişiklikleri yapmazsanız kesintiye uğramazsınız. Örneğin, sorgu API 'Leri veya Time Series Insights Gezgini aracılığıyla erişilen etkilenen Time Series Insights değişkenleri **null** döndürür (yani, Gezgin 'de veri göstermez).
@@ -64,9 +64,9 @@ IoT Hub kullanıyorsanız yerleşik uç noktaya nasıl erişildiği [yerleşik u
 - **propertyValue_double**
 - **propertyValue_long**
 
-Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de önceden alınan (ve gelecek) sayısal veriler, üzerine kopyalanmaz.
+Tamsayı verileriniz **propertyValue_long** yazar. **PropertyValue_double** ' de önceden alınan (ve gelecek) sayısal veriler, üzerine kopyalanmaz.
 
-**PropertyValue** özelliği için bu iki sütun arasında verileri sorgulamak istiyorsanız, TSX 'inizdeki **birleşim ()** skaler işlevini kullanmanız gerekir. İşlev, aynı **veri türünün** bağımsız değişkenlerini kabul eder ve bağımsız değişken listesindeki ilk null olmayan değeri döndürür. Daha fazla bilgi için bkz. [Gen2 Data Access concepts Azure Time Series Insights](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
+**PropertyValue** özelliği için bu iki sütun arasında verileri sorgulamak istiyorsanız, TSX 'inizdeki **birleşim ()** skaler işlevini kullanmanız gerekir. İşlev, aynı **veri türünün** bağımsız değişkenlerini kabul eder ve bağımsız değişken listesindeki ilk null olmayan değeri döndürür. Daha fazla bilgi için bkz. [Gen2 Data Access concepts Azure Time Series Insights](/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
 
 #### <a name="variable-definition-in-tsx---numeric"></a>TSX 'de değişken tanımı-sayısal
 
@@ -78,7 +78,7 @@ Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de 
 
 [![Ekran görüntüsü, PropertyValue değişkeni için bir özel değer olan sayısal olan yeni bir değişken Ekle iletişim kutusu gösterir.](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)olarak da kullanabilirsiniz.
+**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](/rest/api/time-series-insights/reference-time-series-expression-syntax)olarak da kullanabilirsiniz.
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>TSX sorgu API 'Leri kullanarak satır içi değişken tanımı-sayısal
 
@@ -126,7 +126,7 @@ Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de 
 }
 ```
 
-**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)olarak da kullanabilirsiniz.
+**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](/rest/api/time-series-insights/reference-time-series-expression-syntax)olarak da kullanabilirsiniz.
 
 > [!NOTE]
 > Bu değişkenleri, kullanılabilecek her yerde güncelleştirmenizi öneririz. Bu konumlar zaman serisi modeli, Kaydedilen sorgular ve Power BI bağlayıcı sorgularını içerir.
@@ -145,9 +145,9 @@ Tamsayı verileriniz **propertyValue_long**yazar. **PropertyValue_double** ' de 
 
 [![Ekran görüntüsü, özel bir değere sahip olan PropertyValue değişkeni için yeni değişken Ekle iletişim kutusunu gösterir.](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)olarak da kullanabilirsiniz.
+**Birleşim ($Event. PropertyValue. Double, toDouble ($Event. PropertyValue. Long))** özel [zaman serisi ifadesi](/rest/api/time-series-insights/preview#time-series-expression-and-syntax)olarak da kullanabilirsiniz.
 
-Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) , **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
+Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](/rest/api/time-series-insights/reference-time-series-expression-syntax) , **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>TSX sorgu API 'Leri kullanarak satır içi değişken tanımı-kategorik
 
@@ -227,7 +227,7 @@ Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerek
 }
 ```
 
-Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax), **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
+Kategorik değişkenler yine de değerin bir tamsayı türünde olmasını gerektirir. Özel [zaman serisi ifadesinde](/rest/api/time-series-insights/reference-time-series-expression-syntax), **birleşim ()** Içindeki tüm bağımsız değişkenlerin **veri** türü **Long** türünde olmalıdır.
 
 > [!NOTE]
 > Bu değişkenleri, kullanılabilecek her yerde güncelleştirmenizi öneririz. Bu konumlar zaman serisi modeli, Kaydedilen sorgular ve Power BI bağlayıcı sorgularını içerir.

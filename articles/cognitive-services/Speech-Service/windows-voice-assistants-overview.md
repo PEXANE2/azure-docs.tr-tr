@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997452"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024764"
 ---
 # <a name="voice-assistants-on-windows"></a>Windows üzerinde sesli yardımcılar
 
@@ -37,7 +37,7 @@ Kullanıcı bir anahtar sözcüğü kulakça, sistem üzerindeki yazılım veya 
 
 ### <a name="registration"></a>Kayıt
 
-Bir sesi etkinleştirilmiş bir uygulama ilk kez çalıştırıldığında, konuşma API 'Leri aracılığıyla uygulama KIMLIĞI ve anahtar sözcük bilgilerini kaydeder. AAR, genel eşlemede tüm konfigürasyonları, sistemdeki donanım veya yazılım anahtar sözcük kasalarıyla kaydederek uygulamanın anahtar sözcüğünü algılamasına izin verir. Uygulama, [arka plan hizmeti ile de kaydedilir](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task).
+Bir sesi etkinleştirilmiş bir uygulama ilk kez çalıştırıldığında, konuşma API 'Leri aracılığıyla uygulama KIMLIĞI ve anahtar sözcük bilgilerini kaydeder. AAR, genel eşlemede tüm konfigürasyonları, sistemdeki donanım veya yazılım anahtar sözcük kasalarıyla kaydederek uygulamanın anahtar sözcüğünü algılamasına izin verir. Uygulama, [arka plan hizmeti ile de kaydedilir](/windows/uwp/launch-resume/register-a-background-task).
 
 Bu, bir uygulamanın bir kez çalıştırılıncaya ve kaydın tamamlanmasını izin verildiğinde, bir uygulamanın sesle etkinleştirimeyeceği anlamına gelir.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeb90e8e064c44f4d17f920261ed58310f0e55f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023134"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025710"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Özel bir komut uygulaması yazarken hata ayıklama hataları
 
@@ -24,7 +24,7 @@ Bu makalede, özel komutlar uygulaması oluştururken hata ayıkladığınızda 
 ## <a name="errors-when-creating-an-application"></a>Uygulama oluştururken hatalar
 Özel komutlar Ayrıca, özel komutlar uygulaması oluştururken [Luo](https://www.luis.ai/) 'da bir uygulama oluşturur. 
 
-[Lusıs, yazma kaynağı başına 500 uygulama kısıtlar](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits). Zaten 500 uygulamasına sahip bir yazma kaynağı kullanıyorsanız, LUSıS uygulamasının oluşturulması başarısız olabilir. 
+[Lusıs, yazma kaynağı başına 500 uygulama kısıtlar](../luis/luis-limits.md). Zaten 500 uygulamasına sahip bir yazma kaynağı kullanıyorsanız, LUSıS uygulamasının oluşturulması başarısız olabilir. 
 
 Seçili LUSıS yazma kaynağında 500 'den az uygulama olduğundan emin olun. Aksi takdirde, yeni bir LUSıS Authoring Resource oluşturabilir, başka birine geçebilir veya LUSıS uygulamalarınızı temizlemeyi deneyebilirsiniz.  
 
@@ -53,15 +53,15 @@ LUIN yerleşik Evet/Hayır amacı vardır. Yalnızca "Yes", "Hayır" ile örnek 
 
 | Sözcükle | Farklılıklar | 
 | ------- | --------- | 
-| Evet | Emin olun, tamam |
-| Hayır | Nope, değil | 
+| Yes | Emin olun, tamam |
+| No | Nope, değil | 
 
 ### <a name="common-sample-sentences"></a>Ortak örnek cümleler
 Özel komutlar, farklı komutlar arasında paylaşılan ortak örnek cümlelere izin vermez. Bir komutta bazı örnek cümleler zaten başka bir komutta tanımlanmışsa, bir uygulamanın eğitimi başarısız olabilir. 
 
 Farklı komutlar arasında paylaşılan ortak örnek cümleler olmadığından emin olun. 
 
-Örnek cümlelerinizi farklı komutlarda dengelemenin en iyi uygulaması için [lusıs en iyi uygulaması](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)' na bakın.
+Örnek cümlelerinizi farklı komutlarda dengelemenin en iyi uygulaması için [lusıs en iyi uygulaması](../luis/luis-concept-best-practices.md)' na bakın.
 
 ### <a name="empty-sample-sentences"></a>Boş örnek cümleler
 Her komut için en az bir örnek cümle olması gerekir.
@@ -82,7 +82,7 @@ Benzer birçok örnek cümle varsa, bir parametre tanımlayın, bunları bir dü
 | Uçuş kitabı | Bir {araç} kitabı |
 | Bir TAXI defteri | Bir {araç} kitabı |
 
-LUSıS eğitiminin en iyi uygulaması için [lusıs en iyi uygulaması](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)' na bakın.
+LUSıS eğitiminin en iyi uygulaması için [lusıs en iyi uygulaması](../luis/luis-concept-best-practices.md)' na bakın.
 
 ## <a name="cant-update-luis-key"></a>LUSıS anahtarı güncelleştirilemiyor
 ### <a name="reassign-to-e0-authoring-resource"></a>E0 Authoring Resource öğesine yeniden ata

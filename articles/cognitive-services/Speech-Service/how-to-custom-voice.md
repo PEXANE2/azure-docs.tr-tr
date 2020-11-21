@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056695"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025087"
 ---
 # <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
@@ -42,7 +42,7 @@ Aşağıdaki diyagramda [özel ses portalını](https://aka.ms/customvoice)kulla
 Sinir ses özelleştirme özelliği şu anda seçili müşterilerle sınırlı olan genel önizlemededir. Başlamak için bu [uygulama formunu](https://go.microsoft.com/fwlink/?linkid=2108737) doldurun.
 
 > [!NOTE]
-> Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak, bireyler ve topluluğu 'in haklarını korumaktır. Bu nedenle, özel sinir Voice tüm müşterilerin genel kullanımına açık değildir. Teknolojiden yalnızca uygulamalarınız incelendikten ve bunu etlenmiş ICS ilkelerimize göre hizalı olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Uygulama geçişi sürecimiz](https://aka.ms/custom-neural-gating-overview)hakkında daha fazla bilgi edinin.
+> Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak, bireyler ve topluluğu 'in haklarını korumaktır. Bu nedenle, özel sinir Voice tüm müşterilerin genel kullanımına açık değildir. Teknolojiden yalnızca uygulamalarınız incelendikten ve bunu etlenmiş ICS ilkelerimize göre hizalı olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Uygulama geçişi sürecimiz](./concepts-gating-overview.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 
@@ -62,7 +62,7 @@ Bir Azure hesabı ve bir konuşma hizmeti aboneliği oluşturduktan sonra, özel
 
 Veriler, modeller, testler ve uç noktalar gibi içerikler, özel ses portalındaki **Projeler** halinde düzenlenmiştir. Her proje, oluşturmak istediğiniz sesin ülke/dil ve cinsiyetine özgüdür. Örneğin, Birleşik Devletler (en-US) içinde Ingilizce kullanan çağrı merkezinizin sohbet botları için kadın sesi için bir proje oluşturabilirsiniz.
 
-İlk projenizi oluşturmak için, **metinden konuşmaya/özel ses** sekmesini seçin ve ardından **Yeni proje**' ye tıklayın. Projenizi oluşturmak için sihirbaz tarafından sunulan yönergeleri izleyin. Projeyi oluşturduktan sonra dört sekme görürsünüz: **veri**, **eğitim**, **Test**ve **dağıtım**. Her bir sekmeyi nasıl kullanacağınızı öğrenmek için [sonraki adımlarda](#next-steps) sunulan bağlantıları kullanın.
+İlk projenizi oluşturmak için, **metinden konuşmaya/özel ses** sekmesini seçin ve ardından **Yeni proje**' ye tıklayın. Projenizi oluşturmak için sihirbaz tarafından sunulan yönergeleri izleyin. Projeyi oluşturduktan sonra dört sekme görürsünüz: **veri**, **eğitim**, **Test** ve **dağıtım**. Her bir sekmeyi nasıl kullanacağınızı öğrenmek için [sonraki adımlarda](#next-steps) sunulan bağlantıları kullanın.
 
 > [!IMPORTANT]
 > [Özel ses portalı](https://aka.ms/custom-voice) yakın zamanda güncelleştirildi! CRIS.ai portalında veya API 'lerle önceki veriler, modeller, testler ve yayımlanmış uç noktalar oluşturduysanız, bu eski varlıklara bağlanmak için yeni portalda yeni bir proje oluşturmanız gerekir.

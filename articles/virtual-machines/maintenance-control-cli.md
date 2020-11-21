@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/20/2020
+ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94cd649df9da6b36ac484d4fc1e6acef7a21bb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528185"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026174"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Bakım denetimi ve Azure CLı ile güncelleştirmeleri denetleme
 
-Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilgisayarlara güncelleştirmelerin ne zaman uygulanacağına karar vermenizi sağlar. Bu konu, bakım denetimi için Azure CLı seçeneklerini içerir. Bakım denetimini, sınırlamalarını ve diğer yönetim seçeneklerini kullanmanın avantajları hakkında daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](maintenance-control.md).
+Bakım denetimi, yalıtılmış sanal makinelerinizin ve Azure adanmış konaklarınızın konak altyapısına platform güncelleştirmelerinin ne zaman uygulanacağını belirlemenize olanak sağlar. Bu konu, bakım denetimi için Azure CLı seçeneklerini içerir. Bakım denetimini, sınırlamalarını ve diğer yönetim seçeneklerini kullanmanın avantajları hakkında daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](maintenance-control.md).
 
 ## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturun
 
@@ -28,14 +28,14 @@ az group create \
    --name myMaintenanceRG
 az maintenance configuration create \
    -g myMaintenanceRG \
-   --name myConfig \
-   --maintenanceScope host\
+   --resource-name myConfig \
+   --maintenance-scope host\
    --location eastus
 ```
 
 Daha sonra kullanmak için çıktıdan yapılandırma KIMLIĞINI kopyalayın.
 
-Kullanarak, `--maintenanceScope host` bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
+Kullanılarak `--maintenance-scope host` , bakım yapılandırmasının konak altyapısında güncelleştirmeleri denetlemek için kullanılması sağlanır.
 
 Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, kaynak grubunuz için benzersiz olmalıdır.
 
@@ -44,6 +44,30 @@ Kullanarak kullanılabilir bakım yapılandırması için sorgulama yapabilirsin
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Zamanlanan pencere ile bakım yapılandırması oluşturma
+Ayrıca, Azure 'un kaynaklarınıza güncelleştirmeleri uygulayabilmesi için zamanlanmış bir pencere de bildirebilirsiniz. Bu örnek, her ayın dördüncü Pazartesi günü 5 saatlik zamanlanan bir pencere ile myConfig adlı bir bakım yapılandırması oluşturur. Zamanlanmış bir pencere oluşturduktan sonra güncelleştirmeleri el ile uygulamanız gerekmez.
+
+```azurecli-interactive
+az maintenance configuration create \
+   -g myMaintenanceRG \
+   --resource-name myConfig \
+   --maintenance-scope host \
+   --location eastus \
+   --maintenance-window-duration "05:00" \
+   --maintenance-window-recur-every "Month Fourth Monday" \
+   --maintenance-window-start-date-time "2020-12-30 08:00" \
+   --maintenance-window-time-zone "Pacific Standard Time"
+```
+
+> [!IMPORTANT]
+> Bakım **süresi** *2 saat* veya daha uzun olmalıdır. Bakım **tekrarlamaları** , 35 gün içinde en az bir kez gerçekleşmelidir.
+
+Bakım yinelemesi günlük, haftalık veya aylık olarak ifade edilebilir. Bazı örnekler şunlardır:
+- **günlük**-bakım-pencere-yineleme-her: "gün" **veya** "3gün"
+- **haftalık**-bakım-pencere-yineleme-her: "3hafta" **veya** "hafta Cumartesi, Pazar"
+- **aylık**-bakım-pencere-yineleme-her: "ay day23, day24" **veya** "ay son Pazar" **veya** "aylık dördüncü Pazartesi"
+
 
 ## <a name="assign-the-configuration"></a>Yapılandırmayı ata
 
@@ -251,7 +275,7 @@ az maintenance applyupdate get \
 az maintenance configuration delete \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
    -g myResourceGroup \
-   --name myConfig
+   --resource-name myConfig
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

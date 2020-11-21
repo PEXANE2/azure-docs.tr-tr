@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511947"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024373"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki işlevleri kullanma
 
@@ -38,7 +38,7 @@ Diğer bir sorguya diğer adını ekleyerek bir işlev kullanın. Diğer tablola
 Bir işleve parametreler ekleyerek belirli değişkenler için değer sağlayabilmenizi sağlayabilirsiniz. Şu anda parametrelere sahip bir işlev oluşturmanın tek yolu Kaynak Yöneticisi şablonunu kullanmaktır. Bir örnek için bkz. [Azure izleyici 'de günlük sorguları için Kaynak Yöneticisi şablonu örnekleri](../samples/resource-manager-log-queries.md#parameterized-function) .
 
 ## <a name="example"></a>Örnek
-Aşağıdaki örnek sorgu, son gün içinde bildirilen tüm eksik güvenlik güncelleştirmelerini döndürür. Bu sorguyu, _security_updates_last_day_diğer adıyla bir işlev olarak kaydedin. 
+Aşağıdaki örnek sorgu, son gün içinde bildirilen tüm eksik güvenlik güncelleştirmelerini döndürür. Bu sorguyu, _security_updates_last_day_ diğer adıyla bir işlev olarak kaydedin. 
 
 ```Kusto
 Update
@@ -56,10 +56,10 @@ security_updates_last_day | where Title contains "SQL"
 ## <a name="next-steps"></a>Sonraki adımlar
 Bkz. Azure Izleyici günlük sorgularını yazmak için diğer dersler:
 
-- [Dize işlemleri](string-operations.md)
-- [Tarih ve saat işlemleri](datetime-operations.md)
-- [Toplama işlevleri](aggregations.md)
-- [Gelişmiş toplamalar](advanced-aggregations.md)
-- [JSON ve veri yapıları](json-data-structures.md)
-- [Birleştirme](joins.md)
-- [Grafikler](charts.md)
+- [Dize işlemleri](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)
+- [Tarih ve saat işlemleri](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#date-and-time-operations)
+- [Toplama işlevleri](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)
+- [Gelişmiş toplamalar](/azure/data-explorer/write-queries#advanced-aggregations)
+- [JSON ve veri yapıları](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#json-and-data-structures)
+- [Birleştirme](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)
+- [Grafik](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#charts)

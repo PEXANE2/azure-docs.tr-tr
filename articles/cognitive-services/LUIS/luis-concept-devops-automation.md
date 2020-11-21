@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324816"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025985"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUSıS DevOps için sürekli tümleştirme ve sürekli teslim iş akışları
 
@@ -27,9 +27,9 @@ Kaynak kod Yönetimi (SCM) sisteminizde, otomatik derleme işlem hatlarını aş
 
 **CI/CD iş akışı** , iki tamamlayıcı geliştirme işlemini birleştirir:
 
-* [Sürekli tümleştirme](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI), paylaşılan bir depodaki kodu sık sık yürüten ve üzerinde otomatik bir yapı gerçekleştiren mühendislik uygulamasıdır. Otomatikleştirilmiş bir [Test](luis-concept-devops-testing.md) yaklaşımıyla eşleştirilmiş, sürekli tümleştirme her güncelleştirme Için, luaşağı kaynağın hala geçerli olduğunu ve bir Luo uygulamasına içeri aktarılabildiğini ve ayrıca eğitilen uygulamanın çözümünüz için gereken amaçları ve varlıkları tanıyabileceğini doğrulayan bir test grubu geçirmemizi sağlar.
+* [Sürekli tümleştirme](/azure/devops/learn/what-is-continuous-integration) (CI), paylaşılan bir depodaki kodu sık sık yürüten ve üzerinde otomatik bir yapı gerçekleştiren mühendislik uygulamasıdır. Otomatikleştirilmiş bir [Test](luis-concept-devops-testing.md) yaklaşımıyla eşleştirilmiş, sürekli tümleştirme her güncelleştirme Için, luaşağı kaynağın hala geçerli olduğunu ve bir Luo uygulamasına içeri aktarılabildiğini ve ayrıca eğitilen uygulamanın çözümünüz için gereken amaçları ve varlıkları tanıyabileceğini doğrulayan bir test grubu geçirmemizi sağlar.
 
-* [Sürekli teslim](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD), sürekli tümleştirme kavramını, uygulamayı daha ayrıntılı test yapabileceğiniz bir ortama otomatik olarak dağıtmak için daha fazla kullanır. CD, değişikliklerden en kısa sürede ortaya çıkan ve ayrıca test kapsamımızda boşluklar hakkında bilgi edinmek için sık görülen tüm sorunlar hakkında daha önce öğrenmemizi sağlar.
+* [Sürekli teslim](/azure/devops/learn/what-is-continuous-delivery) (CD), sürekli tümleştirme kavramını, uygulamayı daha ayrıntılı test yapabileceğiniz bir ortama otomatik olarak dağıtmak için daha fazla kullanır. CD, değişikliklerden en kısa sürede ortaya çıkan ve ayrıca test kapsamımızda boşluklar hakkında bilgi edinmek için sık görülen tüm sorunlar hakkında daha önce öğrenmemizi sağlar.
 
 Sürekli tümleştirme ve sürekli teslimin amacı, "ana her zaman shiprilebilir,". Bir LUSıS uygulaması için bu, gerekirse, Ana daldaki bir sürümü alıp üretime sevk ettiğimiz anlamına gelir.
 
@@ -41,7 +41,7 @@ LUSıS için Otomasyon iş akışları oluşturmak üzere aşağıdaki araçlar�
 
 * [Bot Framework Tools lusıs](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) , lusıs uygulamaları ve sürümleri ile çalışmak, eğitme, test etme ve onları lusıs hizmeti içinde yayımlamaktır.
 
-* [Azure 'da](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) Azure aboneliklerini sorgulama, lusıs yazma ve tahmin anahtarları getirme ve otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) oluşturma.
+* [Azure 'da](/cli/azure/?view=azure-cli-latest) Azure aboneliklerini sorgulama, lusıs yazma ve tahmin anahtarları getirme ve otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](/cli/azure/ad/sp?view=azure-cli-latest) oluşturma.
 
 * [NLU. ](https://github.com/microsoft/NLU.DevOps) [Bir lusıs uygulamasını test](luis-concept-devops-testing.md) etmek ve test sonuçlarını çözümlemek için DevOps aracı.
 
@@ -70,7 +70,7 @@ Bu iş akışı:
 * LUSıS uygulama sürümünü eğitme ve yayımlama.
 
   > [!NOTE]
-  > [Otomatikleştirilmiş derleme iş akışında testleri çalıştırma](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) bölümünde açıklandığı gıbı, NLU gibi araçların test edilen lusıs uygulama sürümünü yayımlamanız gerekir. DevOps buna erişebilir. Lua, bir LUO uygulaması için yalnızca iki adet adlandırılmış yayın yuvası, *hazırlama* ve *üretimi* destekler, ancak aynı zamanda [bir sürümü doğrudan ve bir](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) sürüme [göre sorgulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-api-v3#changes-by-slot-name-and-version-name)de yapabilirsiniz. Adlandırılmış yayımlama yuvalarını kullanmayla sınırlı olmamak için Otomasyon iş akışlarınızda doğrudan sürüm yayımlamayı kullanın.
+  > [Otomatikleştirilmiş derleme iş akışında testleri çalıştırma](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) bölümünde açıklandığı gıbı, NLU gibi araçların test edilen lusıs uygulama sürümünü yayımlamanız gerekir. DevOps buna erişebilir. Lua, bir LUO uygulaması için yalnızca iki adet adlandırılmış yayın yuvası, *hazırlama* ve *üretimi* destekler, ancak aynı zamanda [bir sürümü doğrudan ve bir](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) sürüme [göre sorgulama](./luis-migration-api-v3.md#changes-by-slot-name-and-version-name)de yapabilirsiniz. Adlandırılmış yayımlama yuvalarını kullanmayla sınırlı olmamak için Otomasyon iş akışlarınızda doğrudan sürüm yayımlamayı kullanın.
 
 * Tüm [birim testlerini](luis-concept-devops-testing.md)çalıştırın.
 
@@ -84,13 +84,13 @@ Bu iş akışı:
 
 Bir CI/CD iş akışındaki CD işi, derleme ve otomatik birim testlerinin başarısı üzerinde koşullu olarak çalışır. İşi, LUO uygulamasını daha fazla test yapabileceğiniz bir ortama otomatik olarak dağıtmaktır.
 
-LUSıS uygulamanızın ne kadar iyi dağıtılacağı konusunda önerilen bir çözüm yoktur ve projeniz için uygun olan işlemi uygulamanız gerekir. [Luın DevOps şablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) deposu, [Yeni Luo uygulama sürümünü](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) *Üretim* yayımlama yuvasına yayımlamak için kullanabileceğiniz basit bir çözüm uygular. Bu, basit bir kurulum için uygundur. Ancak, *geliştirme*, *hazırlama* ve *UAT*gibi farklı üretim ortamlarının sayısını aynı anda desteklemeniz gerekiyorsa, uygulama başına iki adet adlandırılmış yayımlama yuvası sınırı yetersizdir.
+LUSıS uygulamanızın ne kadar iyi dağıtılacağı konusunda önerilen bir çözüm yoktur ve projeniz için uygun olan işlemi uygulamanız gerekir. [Luın DevOps şablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) deposu, [Yeni Luo uygulama sürümünü](./luis-how-to-publish-app.md) *Üretim* yayımlama yuvasına yayımlamak için kullanabileceğiniz basit bir çözüm uygular. Bu, basit bir kurulum için uygundur. Ancak, *geliştirme*, *hazırlama* ve *UAT* gibi farklı üretim ortamlarının sayısını aynı anda desteklemeniz gerekiyorsa, uygulama başına iki adet adlandırılmış yayımlama yuvası sınırı yetersizdir.
 
 Uygulama sürümünü dağıtmaya yönelik diğer seçenekler şunlardır:
 
 * Uygulama sürümünü doğrudan sürüm uç noktasında yayımlanmış bırakın ve doğrudan sürüm uç noktasıyla gerektiği şekilde aşağı akış üretim ortamlarını yapılandırmak için bir işlem uygulayın.
 * Her üretim ortamları için farklı LUSıS uygulamalarını koruyun ve `.lu` uygulamayı hedef üretim ortamına YÖNELIK Luo uygulamasında yeni bir sürüme aktarmak, eğitme ve yayımlamak için Otomasyon adımlarını yazın.
-* Sınanan LUSıS uygulama sürümünü bir [lusıs Docker kapsayıcısına](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto?tabs=v3) AKTARıN ve Lusıs kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)'a dağıtın.
+* Sınanan LUSıS uygulama sürümünü bir [lusıs Docker kapsayıcısına](./luis-container-howto.md?tabs=v3) AKTARıN ve Lusıs kapsayıcısını Azure [Container Instances](../../container-instances/index.yml)'a dağıtın.
 
 ## <a name="release-management"></a>Yayın yönetimi
 

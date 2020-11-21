@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 198ba23920179e71e095e498ee2173d7f0111d42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400188"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026738"
 ---
 # <a name="azure-peering-service-overview"></a>Azure eşleme hizmetine genel bakış
 
@@ -45,10 +45,10 @@ Eşleme hizmeti:
 Eşleme hizmeti, Azure ExpressRoute veya bir VPN ürünü gibi özel bir bağlantı ürünü değildir.
 
 > [!NOTE]
-> ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute belgeleri](https://docs.microsoft.com/azure/expressroute/).
+> ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute belgeleri](../expressroute/index.yml).
 >
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 Microsoft 365, Dynamics 365 ve diğer Microsoft SaaS Hizmetleri, birden fazla Microsoft veri merkezinde barındırılır ve herhangi bir coğrafi konumdan erişilebilir. Microsoft Global Network 'ün, hizmet sağlayıcıları aracılığıyla bir son kullanıcıya bağlanabildiği dünyanın her yerindeki Microsoft Edge varlık noktası (PoP) konumları vardır. 
 
@@ -57,7 +57,7 @@ Microsoft ve iş ortağı hizmeti sağlayıcıları, bir eşleme hizmeti bağlan
 ![Microsoft ağı ve genel bağlantı](./media/peering-service-about/peering-service-background-final.png)
 
 > [!NOTE]
-> Microsoft Global Network hakkında daha fazla bilgi için bkz. [Microsoft Global Network](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+> Microsoft Global Network hakkında daha fazla bilgi için bkz. [Microsoft Global Network](../networking/microsoft-global-network.md).
 >
 
 ## <a name="why-use-peering-service"></a>Neden eşleme hizmeti kullanmalıyım?

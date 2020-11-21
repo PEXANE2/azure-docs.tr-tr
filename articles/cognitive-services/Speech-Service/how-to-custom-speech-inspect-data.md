@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319143"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025642"
 ---
 # <a name="inspect-custom-speech-data"></a>Özel Konuşma verilerini inceleme
 
 > [!NOTE]
-> Bu sayfa, [özel konuşma tanıma için test verilerini hazırlama](how-to-custom-speech-test-data.md) okuduğunuzu ve İnceleme için bir veri kümesi yüklediğinizi varsayar.
+> Bu sayfa, [özel konuşma tanıma için test verilerini hazırlama](./how-to-custom-speech-test-and-train.md) okuduğunuzu ve İnceleme için bir veri kümesi yüklediğinizi varsayar.
 
 Özel Konuşma Tanıma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanınma kalitesini görsel olarak incelemenize olanak sağlayan araçlar sağlar. [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)karşıya yüklenen sesi kayıttan yürütebilir ve belirtilen tanınma sonucunun doğru olup olmadığını belirleyebilirsiniz. Bu araç, Microsoft 'un temel konuşma konuşmadan metin modelinin kalitesini incelemenize, eğitilen özel bir modeli incelemenize veya iki model ile döküm karşılaştırmanıza yardımcı olur.
 
@@ -31,11 +31,11 @@ Bu belgede, Microsoft 'un temel konuşma konuşmadan metin modelinin ve/veya eğ
 Bir test oluşturmak için aşağıdaki yönergeleri izleyin:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. **Test > > [proje adı] Özel Konuşma Tanıma > konuşmadan metne**gidin.
+2. **Test > > [proje adı] Özel Konuşma Tanıma > konuşmadan metne** gidin.
 3. **Test Ekle**' ye tıklayın.
 4. **İnceleme kalitesi (yalnızca ses verileri)** seçeneğini belirleyin. Teste bir ad, açıklama verin ve ses veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**’a tıklayın.
+6. **Oluştur**'a tıklayın.
 
 Bir test başarıyla oluşturulduktan sonra, bir modelin belirttiğiniz ses veri kümesini nasıl oluşturduğunu veya iki modelden gelen sonuçları yan yana nasıl karşılaştırabileceğiniz hakkında bilgi alabilirsiniz.
 
@@ -43,7 +43,7 @@ Bir test başarıyla oluşturulduktan sonra, bir modelin belirttiğiniz ses veri
 
 ## <a name="side-by-side-model-comparisons"></a>Yan yana model karşılaştırmaları
 
-Test durumu _başarılı_olduğunda testin ayrıntılarını görmek için test öğesi adına tıklayın. Bu ayrıntı sayfasında, veri kümenizdeki tüm bildirimler listelenir ve karşılaştırdığınız iki modelin tanınma sonuçları gösterilir.
+Test durumu _başarılı_ olduğunda testin ayrıntılarını görmek için test öğesi adına tıklayın. Bu ayrıntı sayfasında, veri kümenizdeki tüm bildirimler listelenir ve karşılaştırdığınız iki modelin tanınma sonuçları gösterilir.
 
 Yan yana karşılaştırmayı incelemeye yardımcı olması için ekleme, silme ve değiştirme gibi çeşitli hata türlerini değiştirebilirsiniz. Her sütunda ses dinlemek ve tanıma sonuçlarını karşılaştırmak yoluyla (insan tarafından etiketlenmiş bir konum ve iki konuşmadan metne ait sonuçları gösterir), hangi modelin ihtiyaçlarınıza uygun olduğunu ve iyileştirmelerin gerekli olduğunu belirtebilirsiniz.
 
@@ -60,7 +60,7 @@ Döküm düzenleyicisini kullanmaya yönelik tek gereksinim, ses verilerinin kar
 
 ### <a name="import-datasets-to-editor"></a>Veri kümelerini düzenleyiciye aktar
 
-Verileri düzenleyiciye aktarmak için öncelikle **Özel Konuşma Tanıma > [projeniz] > düzenleyiciye**gidin.
+Verileri düzenleyiciye aktarmak için öncelikle **Özel Konuşma Tanıma > [projeniz] > düzenleyiciye** gidin.
 
 ![Düzenleyici sekmesi](media/custom-speech/custom-speech-editor-detail.png)
 
@@ -104,4 +104,4 @@ Verilere aktarılmış dosyalar, yepyeni bir veri kümesi olarak kullanılır ve
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [Özel Konuşma Tanıma için test verilerini hazırlama](how-to-custom-speech-test-data.md)
+- [Özel Konuşma Tanıma için test verilerini hazırlama](./how-to-custom-speech-test-and-train.md)

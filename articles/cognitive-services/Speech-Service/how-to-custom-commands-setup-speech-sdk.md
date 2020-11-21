@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360132"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026036"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Konuşma SDK 'sını kullanarak bir istemci uygulamasıyla tümleştirme
 
@@ -25,7 +25,7 @@ Bu makalede, bir UWP uygulamasında çalışan konuşma SDK 'sından yayımlanm�
 - Özel bir komut uygulaması yayımlama ve uygulama tanımlayıcısı (uygulama KIMLIĞI)
 - Özel komutlar uygulamanızla iletişim kurmasını sağlamak için konuşma SDK 'sını kullanarak bir Evrensel Windows Platformu (UWP) istemci uygulaması oluşturun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. Özel bir komutlar uygulaması oluşturmadıysanız, hızlı başlangıçlardan sonra bunu yapabilirsiniz:
 > [!div class = "checklist"]
@@ -35,7 +35,7 @@ Ayrıca şunları da yapmanız gerekir:
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) veya üzeri. Bu kılavuz, Visual Studio 2019 ' i temel alır.
 > * Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](overview.md#try-the-speech-service-for-free) veya [Azure Portal](https://portal.azure.com) oluşturun
-> * [Cihazınızı geliştirme için etkinleştirme](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
+> * [Cihazınızı geliştirme için etkinleştirme](/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. Adım: özel komutlar uygulaması yayımlama
 
@@ -43,7 +43,7 @@ Ayrıca şunları da yapmanız gerekir:
 1. **Ayarlar**' a gidin, **Luo kaynağı** ' nı seçin.
 1. **Tahmin kaynağı** atanmamışsa, bir sorgu tahmin tuşu seçin veya yeni bir tane oluşturun
 
-    Bir uygulamayı yayımlamadan önce sorgu tahmin anahtarı her zaman gereklidir. LUSıS kaynakları hakkında daha fazla bilgi için bkz. [Lusıs kaynağı oluşturma](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+    Bir uygulamayı yayımlamadan önce sorgu tahmin anahtarı her zaman gereklidir. LUSıS kaynakları hakkında daha fazla bilgi için bkz. [Lusıs kaynağı oluşturma](../luis/luis-how-to-azure-subscription.md)
 
 1. Düzenle komutlarına geri dönün, **Yayımla** ' yı seçin.
 
@@ -406,9 +406,9 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 
 ## <a name="try-it-out"></a>Deneyin
 
-1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme **Build Solution** ' ı seçin. Kodun hatasız derlenmesi gerekir.
 
-1. **Debug**  >  Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
+1. **Debug**  >  Uygulamayı başlatmak için hata **ayıklamayı Başlat** ' ı seçin (veya **F5** tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
    ![C# ' de örnek UWP Sanal Yardımcısı uygulaması-hızlı başlangıç](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 

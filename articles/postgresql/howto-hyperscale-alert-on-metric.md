@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909922"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026463"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı-hiper ölçek (Citus) ölçümlerinde uyarıları ayarlamak için Azure portal kullanın
 
@@ -26,7 +26,7 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 * Web kancası çağırın.
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portalı](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure İzleyici REST API'si](/rest/api/monitor/metricalerts)
 
@@ -41,9 +41,13 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
 4. **Kural oluştur** sayfası aşağıda gösterildiği gibi açılır. Gereken bilgileri doldurun:
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Uyarı kurallarını seçin" ni seçin.
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Ölçüm uyarısı formu Ekle":::
+
+5. **Koşul** bölümünde **Ekle**' yi seçin.
+
+6. Uyarı almak için sinyaller listesinden bir ölçüm seçin. Bu örnekte, "depolama alanı yüzdesi" ni seçin.
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Uyarı kurallarını seçin":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Ekran görüntüsü, çeşitli sinyalleri görüntüleyebileceğiniz sinyal mantığını Yapılandır sayfasını gösterir.":::
 
 7. Uyarı mantığını yapılandırın:
 
@@ -54,17 +58,25 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
    
    Tamamlandığında **bitti** ' yi seçin.
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Uyarı kurallarını seçin" formunu bir ad, kısa ad, abonelik ve kaynak grubuyla doldurun.
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Ekran görüntüsü, uyarı mantığını yapılandırabileceğiniz bölmeyi gösterir.":::
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Uyarı kurallarını seçin" ni seçin.
+8. Uyarı üzerinde bildirim almak üzere yeni bir grup oluşturmak için **eylem grupları** bölümünde **Yeni oluştur** ' u seçin.
+
+9. "Eylem grubu Ekle" formunu bir ad, kısa ad, abonelik ve kaynak grubuyla doldurun.
+
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Ekran görüntüsü, tanımlanan değerleri girebileceğiniz eylem Ekle Grup formunu gösterir.":::
+
+10. **E-posta/SMS/Push/Voice** eylem türünü yapılandırın.
+    
+    Abonelik sahiplerine, katkıda bulunanlar ve okuyucular için bildirim göndermek üzere "e-posta Azure Resource Manager rolü" ni seçin.
    
     Tamamlandığında **Tamam ' ı** seçin.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Uyarı kurallarını seçin":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Ekran görüntüsü e-posta/S g/t/ses bölmesini gösterir.":::
 
 11. Bir uyarı kuralı adı, açıklaması ve önem derecesi belirtin.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Uyarı kurallarını seçin"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Ekran görüntüsü Uyarı ayrıntıları bölmesini gösterir."::: 
 
 12. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' u seçin.
 
@@ -89,8 +101,8 @@ Bir uyarı oluşturduktan sonra, bunu seçebilir ve aşağıdaki eylemleri gerç
 Disk, alan sınırına yaklaşırsa, daha fazla boş alan almak için şu teknikleri deneyin:
 
 * Veri saklama ilkesini gözden geçirin. Mümkünse, eski verileri soğuk depolamaya taşıyın.
-* Sunucu grubuna [düğüm eklemeyi](howto-hyperscale-scaling.md#add-worker-nodes) ve parçaları yeniden dengelemeyi düşünün. Yeniden dengeleme, verileri daha fazla bilgisayar arasında dağıtır.
-* Çalışan düğümlerinin [kapasitesini büyümeye](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) devam edin. Her çalışan en fazla 2 TiB depolama alanına sahip olabilir. Ancak düğüm ekleme işlemi daha hızlı tamamlandığından düğümlerin yeniden boyutlandırılması için düğüm ekleme denenmelidir.
+* Sunucu grubuna [düğüm eklemeyi](howto-hyperscale-scale-grow.md#add-worker-nodes) ve parçaları yeniden dengelemeyi düşünün. Yeniden dengeleme, verileri daha fazla bilgisayar arasında dağıtır.
+* Çalışan düğümlerinin [kapasitesini büyümeye](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) devam edin. Her çalışan en fazla 2 TiB depolama alanına sahip olabilir. Ancak düğüm ekleme işlemi daha hızlı tamamlandığından düğümlerin yeniden boyutlandırılması için düğüm ekleme denenmelidir.
 
 ### <a name="cpu-usage"></a>CPU kullanımı
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207198"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024390"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure İzleyici’de günlük sorgularını kullanmaya başlama
 
@@ -83,7 +83,7 @@ SecurityEvent
 
 Bu çok fazla sonuç döndürebilse de biraz zaman alabilir. Yukarıdaki sorgu *Tüm* securityevent tablosunu TimeGenerated sütununa göre sıralar. Analiz portalı, görüntüyü yalnızca 10.000 kaydı gösterecek şekilde sınırlandırır. Bu yaklaşım en uygun değildir.
 
-Yalnızca en son 10 kaydı almanın en iyi yolu, **en üstte**yer alan ve tüm tabloyu sunucu tarafında sıralayan ve en üstteki kayıtları döndüren ilk kullanmaktır:
+Yalnızca en son 10 kaydı almanın en iyi yolu, **en üstte** yer alan ve tüm tabloyu sunucu tarafında sıralayan ve en üstteki kayıtları döndüren ilk kullanmaktır:
 
 ```Kusto
 SecurityEvent
@@ -98,7 +98,7 @@ Azalan varsayılan sıralama sıralamasıdır ve genellikle **DESC** bağımsız
 ## <a name="where-filtering-on-a-condition"></a>Burada: bir koşula göre filtreleme
 Filtreler, kendi adlarıyla gösterildiği gibi, verileri belirli bir koşula göre filtreleyin. Bu, sorgu sonuçlarını ilgili bilgilerle sınırlamanın en yaygın yoludur.
 
-Bir sorguya filtre eklemek için **WHERE** işlecini ve ardından bir veya daha fazla koşulu kullanın. Örneğin, aşağıdaki sorgu yalnızca _Level_ eşittir _8_olan *securityevent* kayıtlarını döndürür:
+Bir sorguya filtre eklemek için **WHERE** işlecini ve ardından bir veya daha fazla koşulu kullanın. Örneğin, aşağıdaki sorgu yalnızca _Level_ eşittir _8_ olan *securityevent* kayıtlarını döndürür:
 
 ```Kusto
 SecurityEvent
@@ -114,7 +114,7 @@ Filtre koşullarını yazarken aşağıdaki ifadeleri kullanabilirsiniz:
 | !=, <> | Eşitsizlik denetimi<br>(her iki ifade de aynıdır) | `Level != 4` |
 | *and*, *or* | Koşullar arasında kullanılması gereklidir| `Level == 16 or CommandLine != ""` |
 
-Birden çok koşula göre filtrelemek için, **ve**şunları kullanabilirsiniz:
+Birden çok koşula göre filtrelemek için, **ve** şunları kullanabilirsiniz:
 
 ```Kusto
 SecurityEvent
@@ -130,7 +130,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Değerler farklı türlerde olabilir, bu nedenle doğru türde karşılaştırma gerçekleştirmek için bunları atamalısınız. Örneğin, SecurityEvent *düzeyi* sütunu dize türündedir, bu yüzden sayısal işleçleri kullanabilmeniz için önce *int* veya *Long*gibi sayısal bir türe dönüştürmeniz gerekir: `SecurityEvent | where toint(Level) >= 10`
+> Değerler farklı türlerde olabilir, bu nedenle doğru türde karşılaştırma gerçekleştirmek için bunları atamalısınız. Örneğin, SecurityEvent *düzeyi* sütunu dize türündedir, bu yüzden sayısal işleçleri kullanabilmeniz için önce *int* veya *Long* gibi sayısal bir türe dönüştürmeniz gerekir: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Bir zaman aralığı belirtin
 
@@ -171,8 +171,8 @@ Yukarıdaki örnek bu çıktıyı oluşturur:
 Ayrıca, sütunları yeniden adlandırmak ve yenilerini tanımlamak için **projeyi** de kullanabilirsiniz. Aşağıdaki örnek, aşağıdakileri yapmak için projesini kullanır:
 
 * Yalnızca *bilgisayar* ve *TimeGenerated* orijinal sütunları seçin.
-* *Etkinlik* sütununu *eventdetails*olarak görüntüler.
-* *EventCode*adlı yeni bir sütun oluşturun. Alt **dize ()** Işlevi, etkinlik alanından yalnızca ilk dört karakteri almak için kullanılır.
+* *Etkinlik* sütununu *eventdetails* olarak görüntüler.
+* *EventCode* adlı yeni bir sütun oluşturun. Alt **dize ()** Işlevi, etkinlik alanından yalnızca ilk dört karakteri almak için kullanılır.
 
 
 ```Kusto
@@ -215,7 +215,7 @@ Perf
 | summarize avg(CounterValue) by Computer
 ```
 
-Ne yazık ki, farklı performans sayaçlarını birlikte karmalıyoruz, bu sorgunun sonuçları anlamsız bir şekilde düşüktür. Bunu daha anlamlı hale getirmek için, her bir *CounterName* ve *bilgisayar*birleşimi için ortalamayı ayrı olarak hesaplamalıdır:
+Ne yazık ki, farklı performans sayaçlarını birlikte karmalıyoruz, bu sorgunun sonuçları anlamsız bir şekilde düşüktür. Bunu daha anlamlı hale getirmek için, her bir *CounterName* ve *bilgisayar* birleşimi için ortalamayı ayrı olarak hesaplamalıdır:
 
 ```Kusto
 Perf
@@ -226,7 +226,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Bir zaman sütunuyla özetleme
 Gruplandırma sonuçları ayrıca bir zaman sütununa veya başka bir sürekli değere göre de yapılabilir. Yalnızca özetleme `by TimeGenerated` , benzersiz değerler olduğundan zaman aralığı boyunca her bir milisaniyelik için gruplar oluşturur. 
 
-Sürekli değerleri temel alan gruplar oluşturmak için, **bin**kullanarak aralığı yönetilebilir birimlere bölmek en iyisidir. Aşağıdaki sorgu, belirli bir bilgisayardaki boş belleği (*kullanılabilir MBayt*) ölçen *performans* kayıtlarını analiz eder. Son 7 günde her bir 1 saatlik dönemin ortalama değerini hesaplar:
+Sürekli değerleri temel alan gruplar oluşturmak için, **bin** kullanarak aralığı yönetilebilir birimlere bölmek en iyisidir. Aşağıdaki sorgu, belirli bir bilgisayardaki boş belleği (*kullanılabilir MBayt*) ölçen *performans* kayıtlarını analiz eder. Son 7 günde her bir 1 saatlik dönemin ortalama değerini hesaplar:
 
 ```Kusto
 Perf 
@@ -244,7 +244,7 @@ Perf
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure izleyici günlük sorgularında dizelerle birlikte çalışan](string-operations.md)bir günlük sorgusunda dize verileri kullanma hakkında daha fazla bilgi edinin.
-- [Azure izleyici günlük sorgularında gelişmiş toplamalar](advanced-aggregations.md)içeren bir günlük sorgusunda veri toplama hakkında daha fazla bilgi edinin.
-- [Azure izleyici günlük sorgularında birleşimlerle](joins.md)birden çok tablodan veri birleştirmeyi öğrenin.
+- [Azure izleyici günlük sorgularında dizelerle birlikte çalışan](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)bir günlük sorgusunda dize verileri kullanma hakkında daha fazla bilgi edinin.
+- [Azure izleyici günlük sorgularında gelişmiş toplamalar](/azure/data-explorer/write-queries#advanced-aggregations)içeren bir günlük sorgusunda veri toplama hakkında daha fazla bilgi edinin.
+- [Azure izleyici günlük sorgularında birleşimlerle](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)birden çok tablodan veri birleştirmeyi öğrenin.
 - [KQL dil başvurusunda](/azure/kusto/query/)tüm kusto sorgu dilinin belgelerini alın.

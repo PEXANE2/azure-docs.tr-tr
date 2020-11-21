@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e0b9ac3f16a170bb14925b555e8894cb10080488
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658579"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026191"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLı kullanarak özel bağlantı hizmeti oluşturma
 Bu makalede Azure CLı kullanarak Azure 'da özel bir bağlantı hizmeti oluşturma gösterilmektedir.
@@ -79,7 +79,7 @@ Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yan�
 ```
 ### <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
 
-Bu örnekte, sanal makine oluşturmayı kapsamıyoruz. Hızlı başlangıç: yük dengeleyici için arka uç sunucular olarak kullanılacak iki sanal makine oluşturmak üzere [Azure CLI kullanarak VM 'lerin yükünü dengelemek için bir iç yük dengeleyici oluşturma](/load-balancer/quickstart-load-balancer-standard-internal-cli#create-backend-servers) ' daki adımları izleyebilirsiniz. 
+Bu örnekte, sanal makine oluşturmayı kapsamıyoruz. Hızlı başlangıç: yük dengeleyici için arka uç sunucular olarak kullanılacak iki sanal makine oluşturmak üzere [Azure CLI kullanarak VM 'lerin yükünü dengelemek için bir iç yük dengeleyici oluşturma](/azure/load-balancer/quickstart-load-balancer-standard-internal-cli) ' daki adımları izleyebilirsiniz. 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Alt ağda özel bağlantı hizmeti ağ ilkelerini devre dışı bırak 

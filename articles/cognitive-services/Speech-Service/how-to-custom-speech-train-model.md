@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 34c0703ee7c335ca904a21bcce6ed44abc6dc13f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9193da2f3841bb94aa395399c31d7fe826c395e0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555796"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025608"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Özel Konuşma Tanıma modeli eğitme ve dağıtma
 
@@ -33,13 +33,13 @@ Bir temel modelde tanınma sorunlarıyla karşılaşırsanız, özel bir modeli 
 
 ## <a name="train-and-evaluate-a-model"></a>Modeli eğitme ve değerlendirme
 
-Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](how-to-custom-speech-test-data.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
+Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](./how-to-custom-speech-test-and-train.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
 2. **Konuşmayı metne > Özel Konuşma Tanıma > [proje adı] eğitim >**.
-3. **Modeli eğitme** ' ye tıklayın.
+3. **Modeli eğitme**' ye tıklayın.
 4. Ardından, eğitime bir **ad** ve **Açıklama** sağlayın.
-5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel** ' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.
+5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.
 6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ses + insan etiketli döküm veri kümesi seçin.
 7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi gerçekleştirmeyi tercih edebilirsiniz. Bu adım isteğe bağlıdır.
 8. Özel modelinizi derlemek için **Oluştur** ' u seçin.
@@ -61,7 +61,7 @@ Sonra, **uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve
 > [!NOTE]
 > Kullanım koşullarını ve fiyatlandırma ayrıntılarını kabul etmek zorunda kalmazsınız.
 
-Sonra **Oluştur** ' u seçin. Bu eylem sizi **dağıtım** sayfasına döndürür. Tablo artık özel uç noktanıza karşılık gelen bir giriş içerir. Uç noktanın durumu geçerli durumunu gösterir. Özel modellerinizi kullanarak yeni bir uç noktanın örneklendirilecek 30 dakikaya kadar zaman alabilir. Dağıtımın durumu **tamamlandığında** , uç nokta kullanıma kullanılır.
+Sonra **Oluştur**' u seçin. Bu eylem sizi **dağıtım** sayfasına döndürür. Tablo artık özel uç noktanıza karşılık gelen bir giriş içerir. Uç noktanın durumu geçerli durumunu gösterir. Özel modellerinizi kullanarak yeni bir uç noktanın örneklendirilecek 30 dakikaya kadar zaman alabilir. Dağıtımın durumu **tamamlandığında**, uç nokta kullanıma kullanılır.
 
 Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak görünür. Uç nokta anahtarı, uç nokta URL 'SI ve örnek kod gibi uç noktanıza özgü bilgileri göstermek için bağlantıya tıklayın.
 
@@ -77,6 +77,6 @@ Günlüğe kaydetme verileri, **uç nokta > ayrıntıları** altında indirilebi
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [Verilerinizi hazırlayın ve test edin](how-to-custom-speech-test-data.md)
+- [Verilerinizi hazırlayın ve test edin](./how-to-custom-speech-test-and-train.md)
 - [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 - [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)

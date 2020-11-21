@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579479"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026670"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -23,7 +23,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |------------------------------|----------|-------------|---------------|
-|[Dizin oluşturucular, veri kaynakları ve becerileri üzerinde müşteri tarafından yönetilen anahtar şifrelemesi](search-security-manage-encryption-keys.md) | Güvenlik | Bu ek, müşteri tarafından yönetilen şifrelemeyi, bir arama hizmeti tarafından oluşturulan ve yönetilen tüm varlık aralığı üzerinde genişletir. CMK desteğinin Microsoft tarafından gerçekleştirilen ve yönetilen temel şifrelemenin üzerine ek bir şifreleme katmanı ekleyeceğini unutmayın. | REST API 'si kullanılarak genel kullanıma sunuldu-sürüm = 2020-06-30 |  
+|[Dizin oluşturucular, veri kaynakları ve becerileri üzerinde müşteri tarafından yönetilen anahtar şifrelemesi](search-security-manage-encryption-keys.md) | Güvenlik | Bu ek, müşteri tarafından yönetilen şifrelemeyi, bir arama hizmeti tarafından oluşturulan ve yönetilen tüm varlık aralığı üzerinde genişletir. Müşteri tarafından yönetilen anahtar desteğinin, Microsoft tarafından gerçekleştirilen ve yönetilen temel şifrelemenin üzerine ek bir şifreleme katmanı ekleyeceğini unutmayın. | REST API 'si kullanılarak genel kullanıma sunuldu-sürüm = 2020-06-30 |  
 
 ## <a name="september-2020"></a>Eylül 2020
 
@@ -41,7 +41,7 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun, ardından
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
-| [Çift şifreleme](search-security-overview.md#encryption) | Güvenlik | Yeni Arama hizmetlerinde müşteri tarafından yönetilen anahtar (CMK) şifrelemesini yapılandırarak depolama katmanında çift şifrelemeyi etkinleştirin. Yeni bir hizmet oluşturun,, [müşteri tarafından yönetilen anahtarları](search-security-manage-encryption-keys.md) dizinlere veya eş anlamlı Maps 'a yapılandırın ve uygulayın ve bu içerik üzerinde çift şifrelemeden yararlanın. | 1 Ağustos 2020 ' den sonra oluşturulan tüm Arama hizmetlerinde, bu bölgelerde genel kullanıma sunulmuştur: Batı ABD 2, Doğu ABD, Orta Güney ABD, US Gov Virginia, US Gov Arizona. Hizmeti oluşturmak için Portal, yönetim REST API 'Leri veya SDK 'Ları kullanın. |
+| [Çift şifreleme](search-security-overview.md#encryption) | Güvenlik | Yeni Arama hizmetlerinde müşteri tarafından yönetilen anahtar şifrelemesini yapılandırarak depolama katmanında çift şifrelemeyi etkinleştirin. Yeni bir hizmet oluşturun,, [müşteri tarafından yönetilen anahtarları](search-security-manage-encryption-keys.md) dizinlere veya eş anlamlı Maps 'a yapılandırın ve uygulayın ve bu içerik üzerinde çift şifrelemeden yararlanın. | 1 Ağustos 2020 ' den sonra oluşturulan tüm Arama hizmetlerinde, bu bölgelerde genel kullanıma sunulmuştur: Batı ABD 2, Doğu ABD, Orta Güney ABD, US Gov Virginia, US Gov Arizona. Hizmeti oluşturmak için Portal, yönetim REST API 'Leri veya SDK 'Ları kullanın. |
 
 ## <a name="july-2020"></a>Temmuz 2020
 

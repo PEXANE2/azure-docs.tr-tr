@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 609bd01e8dcb0e9202d1d9dbe1d1fc1a01cac550
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 71097f13fffbbe5cb57a69c98fb0ab272e16af5c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368290"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026310"
 ---
 # <a name="features"></a>Özellikler
 
@@ -49,7 +49,7 @@ Desteklenen en son sürüm: `4.0.1`
 | Sayfalamayı                         | Kısmi   | Kısmi   | Kısmi   | `self` ve `next` desteklenir                     |
 | aracıların                 | Hayır        | Hayır        | Hayır        |                                                     |
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Arayın
 
 Tüm arama parametresi türleri desteklenir. 
 
@@ -100,8 +100,8 @@ Tüm arama parametresi türleri desteklenir.
 |-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Kısmi        | Kısmi   | Kısmi        |   `_sort=_lastUpdated` desteklenir       |
 | `_count`                | Yes       | Yes       | Yes       | `_count` 100 karakterle sınırlıdır. 100 'den yüksek olarak ayarlandıysa, yalnızca 100 döndürülür ve pakete bir uyarı döndürülür. |
-| `_include`              | Hayır        | Yes       | Hayır        |         |
-| `_revinclude`           | Hayır        | Yes       | Hayır        | Dahil edilen öğeler 100 ile sınırlıdır. |
+| `_include`              | Yes       | Yes       | Yes       |Dahil edilen öğeler 100 ile sınırlıdır. PaaS ve OSS 'e dahil et Cosmos DB şunları içermez: yineleme desteği.|
+| `_revinclude`           | Yes       | Yes       | Yes       | Dahil edilen öğeler 100 ile sınırlıdır. PaaS ve OSS 'e dahil et Cosmos DB şunları içermez: yineleme desteği.|
 | `_summary`              | Kısmi   | Kısmi   | Kısmi   | `_summary=count` desteklenir |
 | `_total`                | Kısmi   | Kısmi   | Kısmi   | _total = ve _total = doğru      |
 | `_elements`             | Yes       | Yes       | Yes       |         |
@@ -132,6 +132,27 @@ Cosmos DB, genel olarak dağıtılmış çok modelli (SQL API, MongoDB API 'SI v
 FHıR sunucusu, Access Control için [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) kullanır. Özellikle, yapılandırma parametresi olarak ayarlanmışsa Role-Based Access Control (RBAC) zorlanır `FhirServer:Security:Enabled` `true` ve `/metadata` Fhır sunucusuna yönelik tüm isteklerin (hariç) `Authorization` istek üst bilgisi olarak ayarlanmış olması gerekir `Bearer <TOKEN>` . Belirtecin, talepte tanımlanan bir veya daha fazla rol içermesi gerekir `roles` . Belirteç belirtilen kaynakta belirtilen eyleme izin veren bir rol içeriyorsa, bir isteğe izin verilir.
 
 Şu anda, belirli bir rolün izin verilen eylemleri API üzerinde *Global olarak* uygulanır.
+
+## <a name="service-limits"></a>Hizmet sınırlamaları
+
+* [**Istek birimleri (ru)**](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) -Azure API için Portal 'da fhır için en fazla 10.000 ru yapılandırabilirsiniz. En az 400 RUs veya 10 ru/GB olmak üzere, hangisi daha büyükse gereklidir. 10.000 ' den fazla ru 'ya ihtiyacınız varsa, bu artış için bir destek bileti koyabilirsiniz. Kullanılabilir en yüksek değer 1.000.000 ' dir.
+
+* **Eş zamanlı bağlantılar** ve **örnekler** -gün içinde, kümedeki iki örnek üzerinde beş eş zamanlı bağlantınız vardır (Toplam 10 eşzamanlı istek için). Daha fazla eşzamanlı istek gerektiğini düşünüyorsanız, gereksinimlerinize ilişkin ayrıntılarla bir destek bileti açın.
+
+* **Paket boyutu** -her paket 500 öğe ile sınırlıdır.
+
+* **Veri boyutu** -veri/belge her bırı 2 MB 'tan biraz daha az olmalıdır.
+
+## <a name="performance-expectations"></a>Performans beklentileri
+
+Sistemin performansı, RUs sayısına, eşzamanlı bağlantılara ve gerçekleştirdiğiniz işlem türüne (put, Post, vb.) bağlıdır. Aşağıda, yapılandırılmış RUs 'e göre beklediklerinize ilişkin bazı genel aralıklar verilmiştir. Genel olarak, performans, ru 'daki bir artış ile doğrusal şekilde ölçeklendirilir:
+
+| RUs | Kaynak/sn |
+|----------|---------------|
+| 400      | 5-10          |
+| 1.000    | 100-150       |
+| 10,000   | 225-400       |
+| 100.000  | 2500-4000   |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

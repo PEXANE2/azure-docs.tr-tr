@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121026"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024509"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -41,7 +41,7 @@ Microsoft Translator 'a yönelik istekler, isteğin kaynaklandığı yere en yak
 
 İsteğin belirli bir Azure Coğrafya tarafından işlenmesine zorlamak için API isteğindeki genel uç noktasını istenen bölgesel uç noktaya değiştirin:
 
-|Açıklama|Azure Coğrafya|Temel URL|
+|Description|Azure Coğrafya|Temel URL|
 |:--|:--|:--|
 |Azure|Genel (bölgesel olmayan)|   api.cognitive.microsofttranslator.com|
 |Azure|Birleşik Devletler|   api-nam.cognitive.microsofttranslator.com|
@@ -54,7 +54,7 @@ Azure bilişsel hizmetler 'de Translator veya bilişsel [Hizmetler çoklu hizmet
 
 Aboneliğinizin kimliğini doğrulamak için kullanabileceğiniz üç üst bilgi vardır. Bu tablo, her birinin nasıl kullanıldığını açıklar:
 
-|Üst bilgiler|Açıklama|
+|Üst Bilgiler|Description|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Gizli anahtarınızı geçirmektir bilişsel hizmetler aboneliğiyle kullanın*.<br/>Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
 |Yetkilendirme|*Kimlik doğrulama belirteci geçirçalışıyorsanız bilişsel hizmetler aboneliğiyle kullanın.*<br/>Değer, taşıyıcı belirtecidir: `Bearer <token>` .|
@@ -67,7 +67,7 @@ Aboneliğinizin kimliğini doğrulamak için kullanabileceğiniz üç üst bilgi
 
 [Küresel bir çevirmen kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)kullandığınızda, çeviriciyi çağırmak için bir üst bilgi eklemeniz gerekir.
 
-|Üst bilgiler|Açıklama|
+|Üst Bilgiler|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
 
@@ -86,7 +86,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 [Bölgesel bir çevirmen kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)kullandığınızda.
 Çeviriciyi çağırmanız gereken 2 üst bilgi vardır.
 
-|Üst bilgiler|Açıklama|
+|Üst Bilgiler|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
 |OCP-apim-Subscription-Region| Değer, çevirmen kaynağının bölgesidir. |
@@ -108,7 +108,7 @@ Bilişsel hizmetin çoklu hizmet kaynağını kullandığınızda. Bu, birden ç
 
 Birden çok hizmet gizli anahtarı kullandığınızda, isteğinize iki kimlik doğrulama üst bilgisi eklemeniz gerekir. Çeviriciyi çağırmanız gereken 2 üst bilgi vardır.
 
-|Üst bilgiler|Açıklama|
+|Üst Bilgiler|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, çok hizmet kaynağınız için Azure gizli anahtarı ' dır.|
 |OCP-apim-Subscription-Region| Değer, çoklu hizmet kaynağının bölgesidir. |
@@ -147,13 +147,13 @@ Bir kimlik doğrulama belirteci 10 dakika için geçerlidir. Çevirmene birden �
 
 ## <a name="virtual-network-support"></a>Sanal Ağ desteği
 
-Translator hizmeti artık Azure genel bulutunun tüm bölgelerinde sanal ağ (VNET) özellikleri ile kullanılabilir. Sanal ağı etkinleştirmek için lütfen bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Translator hizmeti artık Azure genel bulutunun tüm bölgelerinde sanal ağ (VNET) özellikleri ile kullanılabilir. Sanal ağı etkinleştirmek için lütfen bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma](../../cognitive-services-virtual-networks.md?tabs=portal). 
 
 Bu özelliği etkinleştirdikten sonra, çeviriciyi çağırmak için özel uç noktasını kullanmanız gerekir. Küresel çevirmen uç noktasını ("api.cognitive.microsofttranslator.com") kullanamazsınız ve bir erişim belirteciyle kimlik doğrulaması yapılamaz.
 
 Bir [çevirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) oluşturup seçili ağlardan ve özel uç noktalardan erişime izin verdikten sonra özel uç noktayı bulabilirsiniz.
 
-|Üst bilgiler|Açıklama|
+|Üst Bilgiler|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Değer, Translator aboneliğiniz için Azure gizli anahtarı ' dır.|
 |OCP-apim-Subscription-Region| Değer, çevirmen kaynağının bölgesidir. Kaynak ise bu değer isteğe bağlıdır `global`|
@@ -188,7 +188,7 @@ Standart hata yanıtı, ad/değer çifti adlı bir JSON nesnesidir `error` . De�
 ```
 Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları şunlardır:
 
-| Kod | Açıklama |
+| Kod | Description |
 |:----|:-----|
 | 400000| İstek girişlerinden biri geçerli değil.|
 | 400001| "Scope" parametresi geçersiz.|
@@ -230,13 +230,13 @@ Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır
 | 503000| Hizmet geçici olarak kullanılamıyor. Lütfen yeniden deneyin. Hata devam ederse, hatayı tarih/saat ile, X-RequestId yanıt başlığından istek tanımlayıcısını ve X-Clienttraceıd istek başlığından istemci tanımlayıcısını bildirin.|
 
 ## <a name="metrics"></a>Ölçümler 
-Ölçümler, aşağıdaki ekran görüntüsünde gösterildiği gibi ölçümler bölümünde Azure portal, çevirmen kullanım ve kullanılabilirlik bilgilerini görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [veri ve platform ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Ölçümler, aşağıdaki ekran görüntüsünde gösterildiği gibi ölçümler bölümünde Azure portal, çevirmen kullanım ve kullanılabilirlik bilgilerini görüntülemenize olanak sağlar. Daha fazla bilgi için bkz. [veri ve platform ölçümleri](../../../azure-monitor/platform/data-platform-metrics.md).
 
 ![Çevirmen ölçümleri](../media/translatormetrics.png)
 
 Bu tablo, kullanılabilir ölçümleri, çeviri API çağrılarını izlemek için nasıl kullanıldıklarından ilgili açıklama ile listeler.
 
-| Ölçümler | Açıklama |
+| Ölçümler | Description |
 |:----|:-----|
 | Toplam çağrılar| Toplam API çağrısı sayısı.|
 | TotalTokenCalls| Kimlik doğrulama belirteci kullanılarak belirteç hizmeti aracılığıyla yapılan toplam API çağrısı sayısı.|

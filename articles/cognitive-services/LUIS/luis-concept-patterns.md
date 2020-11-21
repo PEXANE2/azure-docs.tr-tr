@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 44a7a89740be3d6d502c5d22c79b46582034d88a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cda71c6e825ff27ba9b03e1306ccb287663e8613
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535976"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025968"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Desenler tahmin doğruluğunu geliştirir
 Desenler, birkaç söylenme çok benzer olduğunda doğruluğu artırmak için tasarlanmıştır.  Bir desen, çok daha fazla sayıda daha fazla bilgi sağlamadan bir amaç için daha fazla doğruluk elde etmenizi sağlar.
@@ -48,7 +48,7 @@ Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlan
 Birden çok kuralı tek bir düzende daraltarak, geliştirilmiş varlık tahminini görmeyi beklememeniz gerekmez. Basit varlıkların tetiklenmesi için, bu tür varlıkları eklemeniz veya liste varlıklarını kullanmanız gerekir, ancak sizin düzeniniz tetikleymeyecektir.
 
 ## <a name="patterns-use-entity-roles"></a>Desenler varlık rollerini kullanır
-Bir Desendeki iki veya daha fazla varlık bağlamsal olarak ilişkiliyse, desenler hakkında bağlamsal bilgileri ayıklamak için, desenler varlık [rollerini](luis-concept-roles.md) kullanır.
+Bir Desendeki iki veya daha fazla varlık bağlamsal olarak ilişkiliyse, desenler hakkında bağlamsal bilgileri ayıklamak için, desenler varlık [rollerini](./luis-concept-entity-types.md) kullanır.
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Desenler içeren ve olmayan tahmin puanları
 Yeterli sayıda örnek utterde verilince, LUSıS, desenler olmadan tahmin güvenini artırabilir. Desenler, çok sayıda söyleyme sağlamak zorunda kalmadan güvenirlik Puanını artırır.
@@ -63,7 +63,7 @@ Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içer
 
 [!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 [En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="pattern-syntax"></a>Desen söz dizimi

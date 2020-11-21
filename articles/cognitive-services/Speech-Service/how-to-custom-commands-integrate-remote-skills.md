@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565747"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025883"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Özel komutlar uygulamasını uzak bir yetenek olarak dışarı aktar
 
 Bu makalede, özel bir komut uygulamasını uzak bir yetenek olarak dışarı aktarmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!div class="checklist"]
-> * [Bot Framework beceriyi anlama](https://aka.ms/speech/cc-skill-overview)
+> * [Bot Framework beceriyi anlama](/azure/bot-service/skills-conceptual)
 > * [Yetenek bildirimini anlama](https://aka.ms/speech/cc-skill-manifest)
-> * [Bir bot Framework bot 'tan yetenek çağırma](https://aka.ms/speech/cc-skill-consumer)
+> * [Bir bot Framework bot 'tan yetenek çağırma](/azure/bot-service/skills-about-skill-consumers)
 > * Varolan özel komutlar uygulaması. Özel bir komut uygulamanız yoksa,- [hızlı başlangıç: özel komutlar kullanarak bir ses Yardımcısı oluşturma](quickstart-custom-commands-application.md) ile deneyin
 
 ## <a name="custom-commands-as-remote-skills"></a>Uzak beceriler olarak özel komutlar
@@ -35,7 +35,7 @@ Bu makalede, özel bir komut uygulamasını uzak bir yetenek olarak dışarı ak
 ## <a name="configure-an-application-to-be-exposed-as-a-remote-skill"></a>Bir uygulamayı uzak bir yetenek olarak sunulacak şekilde yapılandırma
 
 ### <a name="application-level-settings"></a>Uygulama düzeyi ayarları
-1. Sol bölmede **Ayarlar**  >  **uzak beceriler** ' ı seçin.
+1. Sol bölmede **Ayarlar**  >  **uzak beceriler**' ı seçin.
 1. **Uzaktan becerileri etkin yap özelliği** açık olarak ayarlayın.
 
 ### <a name="authentication-to-skills"></a>Becerilerle kimlik doğrulaması
@@ -53,7 +53,7 @@ Uzak yetenekler üzerinden hangi komutları dışarı aktarmak istediğinizi se�
 
 1. Bir komutu yetenekler üzerinde göstermek için **yetenekler Için etkinleştir komutlarının** altında **Yeni bir komutu etkinleştir** ' i seçin.
 1. Açılan menüden, eklemeyi düşündüğünüz komutu seçin.
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="configure-triggering-utterances-for-commands"></a>Komutlar için tetikleme tetiklemesini yapılandırma
 Özel komutlar, SÖYLERE tetikleme becerileri oluşturmak için komutlar için yapılandırılan örnek cümleleri kullanır. Bu **tetikleme tetiklenmesi** , **dağıtıcı** bölümü [**yetenek bildirimini**](https://microsoft.github.io/botframework-solutions/skills/handbook/manifest/)oluşturmak için kullanılacaktır.
@@ -64,11 +64,11 @@ Yazar olarak, becerilerin tetiklenmesi için kullanılan **örnek cümlelerinizi
     > [!div class="mx-imgBorder"]
     > ![Yetenek için etkin bir komutu düzenleme](media/custom-commands/skill-edit-enabled-command.png)
 
-1. Ardından, atlamak istediğiniz örnek cümlelerde **right click**  >  **örnek tümceyi devre dışı bırak** ' a sağ tıklayın.
+1. Ardından, atlamak istediğiniz örnek cümlelerde **right click**  >  **örnek tümceyi devre dışı bırak**' a sağ tıklayın.
     > [!div class="mx-imgBorder"]
     > ![Örnekleri devre dışı bırak](media/custom-commands/skill-disable-example-sentences.png)
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 1. Bu pencerede yeni bir örnek ekleyemiyorum fark edeceksiniz. Bunu yapmanız gereken bir sorun varsa, ayarlar bölümünden çık bölümüne ilerleyin ve Accordion **komutlarından** ilgili komutu seçin. Bu noktada, **örnek cümleler** bölümüne yeni giriş ekleyebilirsiniz. Bu değişiklik, komut için uzak beceriler ayarları değerine otomatik olarak yansıtılır.
 
 > [!IMPORTANT]

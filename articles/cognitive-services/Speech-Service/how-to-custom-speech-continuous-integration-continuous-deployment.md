@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555830"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025676"
 ---
 # <a name="cicd-for-custom-speech"></a>Özel Konuşma Tanıma için CI/CD
 
 Eğitim ve test verilerine güncelleştirmeler uyguladığınızda Özel Konuşma Tanıma modellerinin sürekli gelişmesini sağlamak için otomatik eğitim, test ve sürüm yönetimi uygulayın. CI/CD iş akışlarının etkili bir şekilde uygulanması sayesinde, en iyi performanslı Özel Konuşma Tanıma modeli için uç noktanın her zaman kullanılabilir olduğundan emin olabilirsiniz.
 
-[Sürekli tümleştirme](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI), paylaşılan bir depodaki güncelleştirmeleri sık sık kaydetme ve üzerinde otomatik derleme gerçekleştirme Mühendisliği uygulamasıdır. Özel Konuşma Tanıma için CI iş akışları, veri kaynaklarından yeni bir modeli eğitme ve yeni modelde otomatik test gerçekleştirerek, önceki modelden daha iyi bir performans gerçekleştirdiğinden emin olur.
+[Sürekli tümleştirme](/azure/devops/learn/what-is-continuous-integration) (CI), paylaşılan bir depodaki güncelleştirmeleri sık sık kaydetme ve üzerinde otomatik derleme gerçekleştirme Mühendisliği uygulamasıdır. Özel Konuşma Tanıma için CI iş akışları, veri kaynaklarından yeni bir modeli eğitme ve yeni modelde otomatik test gerçekleştirerek, önceki modelden daha iyi bir performans gerçekleştirdiğinden emin olur.
 
-[Sürekli teslim](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD), CI işleminden modeller alır ve iyileştirilmiş her özel konuşma tanıma modeli için bir uç nokta oluşturur. CD, uç noktaların çözümlerle tümleştirilerek kolayca kullanılabilmesini sağlar.
+[Sürekli teslim](/azure/devops/learn/what-is-continuous-delivery) (CD), CI işleminden modeller alır ve iyileştirilmiş her özel konuşma tanıma modeli için bir uç nokta oluşturur. CD, uç noktaların çözümlerle tümleştirilerek kolayca kullanılabilmesini sağlar.
 
 Özel CI/CD çözümleri mümkündür, ancak sağlam, önceden oluşturulmuş bir çözüm için GitHub eylemlerini kullanarak CI/CD iş akışlarını yürüten [konuşma DevOps şablon deposunu](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)kullanın.
 
@@ -73,7 +73,7 @@ Eğitim verilerine yönelik bir güncelleştirme bir modelin tanınmasını iyil
 
 Özel Konuşma Tanıma için CI/CD Otomasyonu iş akışları için aşağıdaki araçları kullanın:
 
-- Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) , Azure hizmet sorumlusu kimlik doğrulaması oluşturma, Azure aboneliklerini sorgulama ve test sonuçlarını Azure Blob 'da depolama.
+- Azure [CLI](/cli/azure/?view=azure-cli-latest) , Azure hizmet sorumlusu kimlik doğrulaması oluşturma, Azure aboneliklerini sorgulama ve test sonuçlarını Azure Blob 'da depolama.
 - Konuşma hizmeti ile komut satırından veya otomatik bir iş akışından etkileşimde bulunmak için [Azure konuşma CLI](spx-overview.md) .
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>GitHub eylemlerini kullanarak Özel Konuşma Tanıma için DevOps çözümü

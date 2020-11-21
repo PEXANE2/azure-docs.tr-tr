@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0e67d0ae4d875699b26fdcd30093b0c2bf373458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48316d571eac835dd5d4ec7d225048f4fdcdf237
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282995"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026616"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Nasıl yapılır: konuşma SDK 'Sı ile bir ses giriş cihazı seçme
 
@@ -392,5 +392,5 @@ JavaScript 'te, Media cihazlarını numaralandırmak ve geçirilecek bir cihaz K
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Akustik modelleri özelleştirme](how-to-customize-acoustic-models.md)
-- [Dil modellerini özelleştirme](how-to-customize-language-model.md)
+- [Akustik modelleri özelleştirme](./how-to-custom-speech-train-model.md)
+- [Dil modellerini özelleştirme](./how-to-custom-speech-train-model.md)

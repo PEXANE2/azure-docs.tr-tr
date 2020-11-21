@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261593"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026327"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için ses örneklerini kaydetme
 
@@ -71,7 +71,7 @@ Betiğinizdeki söyleme, her yerden gelebilir: kurgu, kurgu, yöneticileriyle, h
 
 Aradıklarınızın aynı kaynaktan gelmesi veya aynı kaynak türüyle olması gerekmez. Bunlar, birbirleriyle aynı şey yapmamaları bile gerekmez. Ancak, konuşma uygulamanızda, tümceleri ayarla (örneğin, "başarıyla oturum açtınız") seçeneğini kullanacaksanız, bunları betiğe eklediğinizden emin olun. Bu, özel sesinize pronouncing bu tümceciklerin iyi bir olasılığını sağlar. Birleştirilmiş konuşma yerine bir kayıt kullanmaya karar vermeniz gerekiyorsa, zaten aynı sesle sahip olacaksınız.
 
-Tutarlılık, sesli tatatçın seçilmesi durumunda önemli olsa da, iyi bir betiğin Hallmark. Betiğinizin çeşitli tümce uzunluklarına, yapılarına ve Moods 'e sahip birçok farklı sözcük ve cümle içermesi gerekir. Dildeki her ses birden çok kez ve çeşitli bağlamlarda ( *Fonetik kapsam*olarak adlandırılır) temsil edilmelidir.
+Tutarlılık, sesli tatatçın seçilmesi durumunda önemli olsa da, iyi bir betiğin Hallmark. Betiğinizin çeşitli tümce uzunluklarına, yapılarına ve Moods 'e sahip birçok farklı sözcük ve cümle içermesi gerekir. Dildeki her ses birden çok kez ve çeşitli bağlamlarda ( *Fonetik kapsam* olarak adlandırılır) temsil edilmelidir.
 
 Ayrıca, metin, belirli bir sesin yazma sırasında temsil edilebilmesi için tüm yolları içermelidir ve her bir sesi cümlelerde farklı yerlere yerleştirebilir. Bildirim temelli cümleler ve soruların her ikisi de uygun bir şekilde dahil edilmelidir ve okunmalıdır.
 
@@ -92,7 +92,7 @@ Temel bir betik biçimi üç sütun içerir:
 ![Örnek betik](media/custom-voice/script.png)
 
 > [!NOTE]
-> Kısa kesimlerdeki çoğu Studios kaydı, *alır*olarak bilinir. Her alma, genellikle 10 ila 24 utlik içerir. Alma numarasını daha sonra bulmak için yeterli olduğunu dikkate almak yeterlidir. Daha uzun kayıtlar oluşturmak için tercih edilen bir Studio 'da kayıt yapıyorsanız, bunun yerine zaman kodu ' nu aklınızda bulabilirsiniz. Studio, belirgin bir zaman görüntüsüne sahip olacaktır.
+> Kısa kesimlerdeki çoğu Studios kaydı, *alır* olarak bilinir. Her alma, genellikle 10 ila 24 utlik içerir. Alma numarasını daha sonra bulmak için yeterli olduğunu dikkate almak yeterlidir. Daha uzun kayıtlar oluşturmak için tercih edilen bir Studio 'da kayıt yapıyorsanız, bunun yerine zaman kodu ' nu aklınızda bulabilirsiniz. Studio, belirgin bir zaman görüntüsüne sahip olacaktır.
 
 Not yazmak için her satırdan sonra yeterli boş alan bırakın. Sayfalar arasında herhangi bir söylenme olmadığından emin olun. Sayfaları Sayın ve komut dosyanızı kağıdın bir tarafında yazdırın.
 
@@ -104,7 +104,7 @@ Telif hakkı yasaları kapsamında, bir aktörün, telif haklı metinlerin okunm
 
 Neyse ki, bu sorunlardan tamamen kaçınmak mümkündür. İzin veya lisans olmadan kullanabileceğiniz birçok metin kaynağı vardır.
 
-|Metin kaynağı|Açıklama|
+|Metin kaynağı|Description|
 |-|-|
 |[CMU arctik yapı](http://festvox.org/cmu_arctic/)|Telif hakkı dışında çalışarak, özellikle konuşma seniş projelerinde kullanılmak üzere 1100 tümce hakkında. Harika bir başlangıç noktası.|
 |Artık işe yarar<br>Telif hakkı altında|Genellikle 1923 ' dan önce yayımlanır. Ingilizce için [Project Gutenberg](https://www.gutenberg.org/) , bu tür binlerce çalışma sunar. Dil modern Ingilizce 'ye yakın olacağı için daha yeni bir işe odaklanmak isteyebilirsiniz.|
@@ -138,7 +138,7 @@ Kayıt donanımını çalışan kişi (mühendis), kayıt standardından (bir *T
 
 Kayıt, 80-DB sinyalden gürültü oranına veya daha iyi bir amaca sahip olabilecek olabildiğince az gürültü içermelidir.
 
-"Stand" içinde bir sessizlik kaydına yakın bir şekilde dinleme yapın ve nedeni ortadan kaldırın. Yaygın gürültü kaynakları hava uygulamaları, akıcı oresan ışığı, yakındaki yolların trafiği ve ekipman fanı (hatta dizüstü bilgisayarların fanları olabilir). Mikrofonlar ve kablolar, yakın bir AC kablolarından (genellikle bir Hum veya Buzz) elektrik gürültüsü alabilir. Bir baz, donatımın birden fazla elektrik devresine takılmasından kaynaklanan bir *taban döngüsü*nedeniyle de oluşabilir.
+"Stand" içinde bir sessizlik kaydına yakın bir şekilde dinleme yapın ve nedeni ortadan kaldırın. Yaygın gürültü kaynakları hava uygulamaları, akıcı oresan ışığı, yakındaki yolların trafiği ve ekipman fanı (hatta dizüstü bilgisayarların fanları olabilir). Mikrofonlar ve kablolar, yakın bir AC kablolarından (genellikle bir Hum veya Buzz) elektrik gürültüsü alabilir. Bir baz, donatımın birden fazla elektrik devresine takılmasından kaynaklanan bir *taban döngüsü* nedeniyle de oluşabilir.
 
 > [!TIP]
 > Bazı durumlarda, bir Equalizer veya bir gürültü azaltma yazılımı eklentisini, kendi kaynağında durmak her zaman en iyi şekilde durdurmak üzere kayıtınızdan paraziti kaldırmaya yardımcı olabilir.
@@ -211,7 +211,7 @@ Her dosyayı dikkatle dinleyin. Bu aşamada, kayıt sırasında kaçırılmış 
 
 Kaydetmeden önce her bir dosyayı 16 bit ve örnek bir 16 kHz değerine dönüştürüp, Studio chatter ' yi kaydettiğinizde ikinci kanalı kaldırın. Dosyaları betiğinizdeki söylenişi numarasıyla adlandırarak, her dosyayı WAV biçiminde kaydedin.
 
-Son olarak, her bir WAV dosyasını karşılık gelen utterance 'in bir metin sürümüyle *ilişkilentiğiniz* döküm oluşturun. [Özel ses yazı tiplerinin oluşturulması](how-to-customize-voice-font.md) , gerekli biçimin ayrıntılarını içerir. Metni doğrudan betiğinizden kopyalayabilirsiniz. Ardından, WAV dosyalarının ve metin dökümü 'nin bir ZIP dosyasını oluşturun.
+Son olarak, her bir WAV dosyasını karşılık gelen utterance 'in bir metin sürümüyle *ilişkilentiğiniz* döküm oluşturun. [Özel ses yazı tiplerinin oluşturulması](./how-to-custom-voice-create-voice.md) , gerekli biçimin ayrıntılarını içerir. Metni doğrudan betiğinizden kopyalayabilirsiniz. Ardından, WAV dosyalarının ve metin dökümü 'nin bir ZIP dosyasını oluşturun.
 
 Daha sonra ihtiyacınız olması durumunda özgün kayıtları güvenli bir yerde arşivleyin. Betiğinizi ve notlarınızı de koruyun.
 
@@ -220,4 +220,4 @@ Daha sonra ihtiyacınız olması durumunda özgün kayıtları güvenli bir yerd
 Kayıtlarınızı karşıya yüklemeye ve özel sesinizi oluşturmaya hazırsınız.
 
 > [!div class="nextstepaction"]
-> [Özel ses yazı tipleri oluşturma](how-to-customize-voice-font.md)
+> [Özel ses yazı tipleri oluşturma](./how-to-custom-voice-create-voice.md)

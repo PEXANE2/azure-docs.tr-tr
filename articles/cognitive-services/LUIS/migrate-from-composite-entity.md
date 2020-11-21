@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5c3ac14af6eb863daa9eadd32727f4fb53d2185f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46e9ece70d9f980065c719ee1205eb46591b45c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322866"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025251"
 ---
 # <a name="upgrade-composite-entity-to-machine-learning-entity"></a>Bileşik varlığı makine öğrenimi varlığına yükseltme
 
@@ -29,7 +29,7 @@ Yükseltme işlemi:
     * Alt varlık bileşik içinde _ve_ ayrı bir varlık (örneğin, örnek olarak etiketlenir) olarak kullanılırsa, bir varlık olarak sürüme ve yeni makine öğrenimi varlığına bir alt varlık olarak eklenir.
     * Alt varlık bir rol kullanıyorsa, her rol aynı ada sahip bir alt varlığa dönüştürülür.
     * Alt varlık makine öğrenimi olmayan bir varlıktır (normal ifade, liste varlığı veya önceden oluşturulmuş varlık), aynı ada sahip yeni bir alt varlık oluşturulur ve yeni alt varlık, gerekli özelliği eklenen makine olmayan öğrenme varlığını kullanan bir özelliğe sahiptir.
-* Adlar korunur, ancak aynı alt varlık/eşdüzey düzeyde benzersiz olmalıdır. [Benzersiz adlandırma sınırlarına](luis-boundaries.md#name-uniqueness)bakın.
+* Adlar korunur, ancak aynı alt varlık/eşdüzey düzeyde benzersiz olmalıdır. [Benzersiz adlandırma sınırlarına](./luis-limits.md#name-uniqueness)bakın.
 * Örnek söyleylerdeki Etiketler, alt varlıklar ile yeni makine öğrenimi varlığına geçiş yaptı.
 
 Modelinizin değişikliğini anlamak için aşağıdaki grafiği kullanın:
@@ -38,7 +38,7 @@ Modelinizin değişikliğini anlamak için aşağıdaki grafiği kullanın:
 |--|--|--|
 |Bileşik varlık|yapıda makine öğrenimi varlığı|Her iki nesne de üst nesnelerdir.|
 |Kompozit 'ın alt varlığı **basit bir varlıktır**|alt varlık|Her iki nesne de alt nesnelerdir.|
-|Kompozit 'ın alt varlığı, sayı gibi **önceden oluşturulmuş bir varlıktır**|Sayı gibi önceden oluşturulmuş varlık adına sahip alt varlık ve alt varlık, kısıtlama seçeneği _true_olarak ayarlanan önceden oluşturulmuş sayı varlığı _özelliğine_ sahiptir.|alt varlık, alt varlık düzeyinde kısıtlaması olan özelliği içerir.|
+|Kompozit 'ın alt varlığı, sayı gibi **önceden oluşturulmuş bir varlıktır**|Sayı gibi önceden oluşturulmuş varlık adına sahip alt varlık ve alt varlık, kısıtlama seçeneği _true_ olarak ayarlanan önceden oluşturulmuş sayı varlığı _özelliğine_ sahiptir.|alt varlık, alt varlık düzeyinde kısıtlaması olan özelliği içerir.|
 |Kompozit 'ın alt varlığı sayı gibi **önceden oluşturulmuş varlıktır** ve önceden oluşturulmuş varlık bir **role** sahiptir|rol adına sahip alt varlık ve alt varlık, kısıtlama seçeneği true olarak ayarlanan önceden oluşturulmuş sayı varlığı özelliğine sahiptir.|alt varlık, alt varlık düzeyinde kısıtlaması olan özelliği içerir.|
 |Rol|alt varlık|Rol adı, alt varlık adı olur. Alt varlık, makine öğrenimi varlığının doğrudan bir alt öğesi.|
 

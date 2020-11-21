@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf9f9ca5b8690a38c6e5aa6f519378c0a2e3a4f2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88137057"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026446"
 ---
 # <a name="distribute-and-modify-tables"></a>Tabloları dağıtma ve değiştirme
 
@@ -140,11 +140,11 @@ Yeni bir tablo, kendi Yapılacaklar grubu olan diğer kullanıcılarla ilişkili
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-İlişkisiz tabloları kendi birlikte bulundurma gruplarına bölmek, aynı gruptaki parçalar birlikte taşınabilmesi gerektiğinden parça [yeniden dengeleme](howto-hyperscale-scaling.md#rebalance-shards) performansını geliştirir.
+İlişkisiz tabloları kendi birlikte bulundurma gruplarına bölmek, aynı gruptaki parçalar birlikte taşınabilmesi gerektiğinden parça [yeniden dengeleme](howto-hyperscale-scale-rebalance.md) performansını geliştirir.
 
 Tablolar gerçekten ilişkili olduğunda (örneğin, birleştirildiklerinde), bunları açıkça eklemek mantıklı olabilir. Uygun birlikte bulundurmaya yönelik kazanç, herhangi bir yeniden dengeleme yükünden daha önemlidir.
 
-Birden çok tabloyu açık bir şekilde birleştirmek için, bir tane dağıtın ve ardından diğerlerini birlikte bulundurma grubuna koyun. Örneğin:
+Birden çok tabloyu açık bir şekilde birleştirmek için, bir tane dağıtın ve ardından diğerlerini birlikte bulundurma grubuna koyun. Örnek:
 
 ```postgresql
 -- distribute stores

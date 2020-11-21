@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
-ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0580c96f5bf78f0444b2bb39088f2a417fd658
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82781762"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025070"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>Mikrofon Dizisini yapılandırma
 
-Bu makalede, bir [mikrofon dizisinin](https://aka.ms/sdsdk-microphone)nasıl yapılandırılacağını öğreneceksiniz. Bu, çalışma açısını ayarlamayı ve konuşma cihazları SDK 'Sı için hangi mikrofonun kullanıldığını seçmenizi içerir.
+Bu makalede, bir [mikrofon dizisinin](./speech-devices-sdk-microphone.md)nasıl yapılandırılacağını öğreneceksiniz. Bu, çalışma açısını ayarlamayı ve konuşma cihazları SDK 'Sı için hangi mikrofonun kullanıldığını seçmenizi içerir.
 
-Konuşma cihazları SDK 'Sı, [kılavuzumuza](https://aka.ms/sdsdk-microphone)göre tasarlanan bir mikrofon dizisiyle en iyi şekilde çalışmaktadır. Mikrofon dizisi yapılandırması, Işletim sistemi tarafından sağlanabilir veya aşağıdaki yöntemlerden biri aracılığıyla sağlanabilir.
+Konuşma cihazları SDK 'Sı, [kılavuzumuza](./speech-devices-sdk-microphone.md)göre tasarlanan bir mikrofon dizisiyle en iyi şekilde çalışmaktadır. Mikrofon dizisi yapılandırması, Işletim sistemi tarafından sağlanabilir veya aşağıdaki yöntemlerden biri aracılığıyla sağlanabilir.
 
 Konuşma cihazları SDK 'Sı başlangıçta, sabit bir yapılandırma kümesinden seçim yaparak mikrofon dizilerini destekler.
 
@@ -44,12 +44,12 @@ Konuşma cihazları SDK 'sında Microsoft ses yığını yalnızca 16 KHz 'ın t
 ## <a name="linux"></a>Linux
 Linux 'ta, mikrofon geometrisi bilgisinin sağlanması gerekir. `DeviceGeometry`Ve kullanımı `SelectedGeometry` desteklenmeye devam eder. Ayrıca, özelliği kullanılarak JSON dosyası aracılığıyla da kullanılabilir `MicArrayGeometryConfigFile` . Windows 'a benzer şekilde, beamoluşturan aralığı JSON dosyası tarafından sağlanarak yapılabilir.
 
-Kullanılarak bir mikrofon dizisi belirtilirse `AudioConfig::FromMicrophoneInput` , belirtilen mikrofonu kullanırız. Bir mikrofon belirtilmemişse veya `AudioConfig::FromDefaultMicrophoneInput` çağrılırsa, *varsayılan*adlı alsa cihazından kayıt yaptık. Varsayılan olarak, *varsayılan* olarak her zaman kart 0 cihaz 0 ' a işaret eder, ancak kullanıcılar bu `asound.conf` dosyayı dosyada değiştirebilir. 
+Kullanılarak bir mikrofon dizisi belirtilirse `AudioConfig::FromMicrophoneInput` , belirtilen mikrofonu kullanırız. Bir mikrofon belirtilmemişse veya `AudioConfig::FromDefaultMicrophoneInput` çağrılırsa, *varsayılan* adlı alsa cihazından kayıt yaptık. Varsayılan olarak, *varsayılan* olarak her zaman kart 0 cihaz 0 ' a işaret eder, ancak kullanıcılar bu `asound.conf` dosyayı dosyada değiştirebilir. 
 
 Konuşma cihazları SDK 'sında Microsoft ses yığını yalnızca 16 KHz 'ın tam sayı olan örnek ücretler için altörnekleme destekler. Ayrıca, aşağıdaki biçimler desteklenir: 32-bit IEEE little endian float, 32-bit little endian işaretli int, 24 bit little endian imzalı int, 16 bit little endian imzalı tamsayı ve 8 bit işaretli tamsayı.
 
 ## <a name="android"></a>Android
-Şu anda yalnızca [Roobo v1](speech-devices-sdk-android-quickstart.md) , konuşma cihazları SDK 'sı tarafından desteklenir. Bu davranış önceki sürümlerden farklıdır, çünkü Now `MicArrayGeometryConfigFile` özelliği, beamoluşturan aralığı IÇEREN json dosyasını belirtmek için kullanılabilir.
+Şu anda yalnızca [Roobo v1](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android) , konuşma cihazları SDK 'sı tarafından desteklenir. Bu davranış önceki sürümlerden farklıdır, çünkü Now `MicArrayGeometryConfigFile` özelliği, beamoluşturan aralığı IÇEREN json dosyasını belirtmek için kullanılabilir.
 
 ## <a name="microphone-array-configuration-json"></a>Mikrofon dizisi yapılandırma JSON
 

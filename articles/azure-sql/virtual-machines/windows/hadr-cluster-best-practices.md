@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 446731e084084ca301b350f6fec0c4065485a40f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564574"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026633"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi yöntemleri (Azure VM'leri üzerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Sunucu başına tek bir NIC (küme düğümü) ve tek bir alt ağ kullanın. Azu
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Yük devretme kümesi ağ eşiklerini ayarlama
 
-SQL Server AlwaysOn ile Azure VM 'lerinde Windows Yük devretme kümesi düğümlerini çalıştırırken, küme ayarını daha gevşek bir izleme durumuna değiştirme önerilir.  Bu, kümeyi daha kararlı ve güvenilir hale getirir.  Bunun hakkında daha fazla bilgi için, bkz. [IaaS SQL AlwaysOn-ayarlama yük devretme kümesi ağ eşikleri](/windows-server/troubleshoot/iaas-sql-failover-cluser).
+SQL Server AlwaysOn ile Azure VM 'lerinde Windows Yük devretme kümesi düğümlerini çalıştırırken, küme ayarını daha gevşek bir izleme durumuna değiştirme önerilir.  Bu, kümeyi daha kararlı ve güvenilir hale getirir.  Bunun hakkında daha fazla bilgi için, bkz. [IaaS SQL AlwaysOn-ayarlama yük devretme kümesi ağ eşikleri](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 ## <a name="quorum"></a>Çekirdeğin
 
@@ -60,7 +60,7 @@ Disk tanığı olarak bir Azure Paylaşılan diski yapılandırın.
 Başlamak için bkz. [disk tanığını yapılandırma](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Desteklenen işletim sistemi** : tümü   
+**Desteklenen işletim sistemi**: tümü   
 
 
 ### <a name="cloud-witness"></a>Bulut tanığı
@@ -70,7 +70,7 @@ Bulut tanığı, küme çekirdeği üzerinde oy sağlamak için Microsoft Azure 
 Başlamak için bkz. [bulut tanığını yapılandırma](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp).
 
 
-**Desteklenen işletim sistemi** : Windows Server 2016 ve üzeri   
+**Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
 
 
 ### <a name="file-share-witness"></a>Dosya paylaşımı tanığı
@@ -82,7 +82,7 @@ Azure dosya paylaşımından kullanacaksanız, [Premium dosya paylaşımının b
 Başlamak için bkz. [dosya paylaşma tanığını yapılandırma](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Desteklenen işletim sistemi** : Windows Server 2012 ve üzeri   
+**Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
 
 ## <a name="connectivity"></a>Bağlantı
 
@@ -108,9 +108,9 @@ Yük dengeleyiciyi kullanırken hafif bir yük devretme gecikmesi vardır, çün
 
 Başlamak için, [Yük devretme kümesi örneği](failover-cluster-instance-vnn-azure-load-balancer-configure.md) veya bir [kullanılabilirlik grubu](availability-group-vnn-azure-load-balancer-configure.md) için Azure Load Balancer yapılandırmayı öğrenin
 
-**Desteklenen işletim sistemi** : tümü   
-**Desteklenen SQL sürümü** : tümü   
-**Desteklenen HADR çözümü** : yük devretme kümesi örneği ve kullanılabilirlik grubu   
+**Desteklenen işletim sistemi**: tümü   
+**Desteklenen SQL sürümü**: tümü   
+**Desteklenen HADR çözümü**: yük devretme kümesi örneği ve kullanılabilirlik grubu   
 
 
 ### <a name="distributed-network-name-dnn"></a>Dağıtılmış Ağ Adı (DNN)
@@ -128,9 +128,9 @@ Mümkün olduğunda bir yük dengeleyicide dağıtılmış ağ adı önerilir:
 
 Başlamak için, [bir yük devretme kümesi örneği](failover-cluster-instance-distributed-network-name-dnn-configure.md) veya bir [kullanılabilirlik grubu](availability-group-distributed-network-name-dnn-listener-configure.md) için dağıtılmış ağ adı kaynağı yapılandırmayı öğrenin
 
-**Desteklenen işletim sistemi** : Windows Server 2016 ve üzeri   
-**Desteklenen SQL sürümü** : SQL Server 2019 CU2 uygulamazsanız (FCI) ve SQL Server 2019 CU8 (AG)   
-**Desteklenen HADR çözümü** : yük devretme kümesi örneği ve kullanılabilirlik grubu   
+**Desteklenen işletim sistemi**: Windows Server 2016 ve üzeri   
+**Desteklenen SQL sürümü**: SQL Server 2019 CU2 uygulamazsanız (FCI) ve SQL Server 2019 CU8 (AG)   
+**Desteklenen HADR çözümü**: yük devretme kümesi örneği ve kullanılabilirlik grubu   
 
 
 ## <a name="limitations"></a>Sınırlamalar

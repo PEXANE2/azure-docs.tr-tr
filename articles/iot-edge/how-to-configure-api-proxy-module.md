@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f7536034eeac8548304f6a7f861910a99cd72a27
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447965"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024679"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Ağ Geçidi hiyerarşi senaryonuz için API proxy modülünü yapılandırma (Önizleme)
 
@@ -50,7 +50,7 @@ API proxy modülü, yaygın senaryoları destekleyen ve özelleştirmeye izin ve
 
 Şu anda varsayılan ortam değişkenleri şunlardır:
 
-| Ortam değişkeni | Açıklama |
+| Ortam değişkeni | Description |
 | -------------------- | ----------- |
 | `PROXY_CONFIG_ENV_VAR_LIST` | Güncelleştirmek istediğiniz tüm değişkenleri virgülle ayrılmış bir listede listeleyin. Bu adım yanlışlıkla yanlış yapılandırma ayarlarını değiştirmeyi engeller.
 | `NGINX_DEFAULT_PORT` | NGINX proxy 'sinin dinlediği bağlantı noktasını değiştirir. Bu ortam değişkenini güncelleştirirseniz, seçtiğiniz bağlantı noktasının de modül dockerfile modülünde açık olduğundan ve dağıtım bildiriminde bir bağlantı noktası bağlaması olarak bildiriminin bulunduğundan emin olun.<br><br>Varsayılan değer 443 ' dir.<br><br>Azure Marketi 'nden dağıtıldığında, edgeHub modülüyle çakışmaları engellemek için varsayılan bağlantı noktası 8000 olarak güncelleştirilir. Daha fazla bilgi için bkz. [açık bağlantı noktalarını küçültün](#minimize-open-ports). |
@@ -121,7 +121,7 @@ Bu kullanım örneği, [ağ geçitlerini kullanarak IoT Edge cihazları hiyerar�
 * API proxy modülü
   * Aşağıdaki ortam değişkenlerini yapılandırın:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | `DOCKER_REQUEST_ROUTE_ADDRESS` | Kayıt defteri modül adı ve açık bağlantı noktası. Örneğin, `registry:5000`. |
     | `NGINX_DEFAULT_PORT` | NGINX proxy 'sinin, aşağı akış cihazlarındaki istekler için dinlediği bağlantı noktası. Örneğin, `8000`. |
@@ -147,7 +147,7 @@ Aşağıdaki modülü bu senaryo için **daha düşük bir katmanda** yapıland�
 * API proxy modülü
   * Aşağıdaki ortam değişkenlerini yapılandırın:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | `NGINX_DEFAULT_PORT` | NGINX proxy 'sinin, aşağı akış cihazlarındaki istekler için dinlediği bağlantı noktası. Örneğin, `8000`. |
 
@@ -179,7 +179,7 @@ Bu senaryo, blob oluşturmayı ve karşıya yüklemeyi işlemek için üst katma
 * API proxy modülü
   * Aşağıdaki ortam değişkenlerini yapılandırın:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | `BLOB_UPLOAD_ROUTE_ADDRESS` | Blob Storage modül adı ve açık bağlantı noktası. Örneğin, `azureblobstorageoniotedge:1102`. |
     | `NGINX_DEFAULT_PORT` | NGINX proxy 'sinin, aşağı akış cihazlarındaki istekler için dinlediği bağlantı noktası. Örneğin, `8000`. |
@@ -205,7 +205,7 @@ Aşağıdaki modülü bu senaryo için **daha düşük bir katmanda** yapıland�
 * API proxy modülü
   * Aşağıdaki ortam değişkenlerini yapılandırın:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | `NGINX_DEFAULT_PORT` | NGINX proxy 'sinin, aşağı akış cihazlarındaki istekler için dinlediği bağlantı noktası. Örneğin, `8000`. |
 
@@ -228,7 +228,7 @@ Aşağıdaki modülü bu senaryo için **daha düşük bir katmanda** yapıland�
 Destek paketini veya günlük dosyasını üst katmanda bulunan BLOB depolama modülüne yüklemek için aşağıdaki adımları kullanın:
 
 1. Azure Depolama Gezgini veya REST API 'Lerini kullanarak bir blob kapsayıcısı oluşturun. Daha fazla bilgi için bkz. [IoT Edge Azure Blob Storage ile verileri kenarda depolama](how-to-store-data-blob.md).
-1. [IoT Edge dağıtımlarından günlükleri alma](how-to-retrieve-iot-edge-logs.md)bölümündeki adımlara göre bir günlük veya destek paketi karşıya yüklemesi isteyin, ancak `$upstream` BLOB depolama modülü adresinin yerine etki alanı adını ve açık ara sunucu bağlantı noktasını kullanın. Örneğin:
+1. [IoT Edge dağıtımlarından günlükleri alma](how-to-retrieve-iot-edge-logs.md)bölümündeki adımlara göre bir günlük veya destek paketi karşıya yüklemesi isteyin, ancak `$upstream` BLOB depolama modülü adresinin yerine etki alanı adını ve açık ara sunucu bağlantı noktasını kullanın. Örnek:
 
    ```json
    {
@@ -263,7 +263,7 @@ API proxy modülü bir ara sunucu yapılandırmasını ayrıştırdığında, ö
 
 Ara sunucu yapılandırmasını dinamik olarak güncelleştirmek için aşağıdaki adımları kullanın:
 
-1. Yapılandırma dosyanızı yazın. Bu varsayılan şablonu, başvuru olarak kullanabilirsiniz: [nginx_default_config. conf](hhttps://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
+1. Yapılandırma dosyanızı yazın. Bu varsayılan şablonu, başvuru olarak kullanabilirsiniz: [nginx_default_config. conf](https://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
 1. Yapılandırma dosyasının metnini kopyalayın ve Base64 'e dönüştürün.
 1. Kodlanmış yapılandırma dosyasını `proxy_config` module ikizi istenen özelliğinin değeri olarak yapıştırın.
 

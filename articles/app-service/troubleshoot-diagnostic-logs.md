@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: a4670da5f5e89a4e020e26d1d704f172b8ab0864
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99a3c9a9c26eebe8dfdf11baf718fd13f7539607
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968324"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025285"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -192,9 +192,11 @@ Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilm
 | AppServiceEnvironmentPlatformLogs | Yes | YOK | Evet | Yes | App Service Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
 | AppServiceAuditLogs | Yes | Yes | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
 | AppServiceFileAuditLogs | Yes | Yes | TBA dili | TBA dili | Site içeriğinde yapılan dosya değişiklikleri; yalnızca Premium katmanı ve üzeri için kullanılabilir |
-| AppServiceAppLogs | ASP .NET | ASP .NET | Java s & Tomcat resimleri | Java s & Tomcat resimleri | Uygulama günlükleri |
+| AppServiceAppLogs | ASP .NET | ASP .NET | Java s & Tomcat resimleri <sup>1</sup> | Java s & Tomcat resimleri <sup>1</sup> | Uygulama günlükleri |
 | AppServiceIPSecAuditLogs  | Yes | Yes | Yes | Yes | IP kurallarından gelen istekler |
 | AppServicePlatformLogs  | TBA dili | Yes | Yes | Yes | Kapsayıcı işlem günlükleri |
+
+<sup>1</sup> Java SE uygulamaları için uygulama ayarlarına "$WEBSITE _AZMON_PREVIEW_ENABLED" ekleyin ve bunu 1 veya doğru olarak ayarlayın.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)

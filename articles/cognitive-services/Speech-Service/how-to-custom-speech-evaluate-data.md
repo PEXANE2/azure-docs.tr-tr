@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: affbf57fcda5ff9fb56e148c2fa8769e7aa775e6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555813"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025659"
 ---
-# <a name="evaluate-and-improve-custom-speech-accuracy"></a>Özel Konuşma Tanıma doğruluğu değerlendirin ve geliştirir
+# <a name="evaluate-and-improve-custom-speech-accuracy"></a>Özel Konuşma Tanıma’nın doğruluğunu değerlendime ve iyileştirme
 
 Bu makalede, Microsoft 'un konuşma-metin modellerinin veya kendi özel modellerinizin doğruluğunu nasıl ölçeceğinizi ve artıracağınızı öğreneceksiniz. Ses + insan etiketli Döküm verileri, doğruluk sınaması için gereklidir ve 5 saatlik temsili ses sağlanmalıdır.
 
@@ -53,10 +53,10 @@ Modelleri yan yana değerlendirmek için:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
 2. **Test > > [proje adı] Özel Konuşma Tanıma > konuşmadan metne** gidin.
-3. **Test Ekle** ' ye tıklayın.
-4. **Doğruluğu değerlendir** ' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
+3. **Test Ekle**' ye tıklayın.
+4. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur** 'a tıklayın.
+6. **Oluştur**'a tıklayın.
 
 Testiniz başarıyla oluşturulduktan sonra sonuçları yan yana karşılaştırabilirsiniz.
 
@@ -114,7 +114,7 @@ Bu ayrıntıları göz önünde bulundurun:
 
 ### <a name="add-new-words-with-pronunciation"></a>Telaffuz ile yeni sözcükler ekleme
 
-Oluşturulan veya yüksek ölçüde özelleştirilmiş kelimelerin benzersiz söylenişleri olabilir. Bu sözcükler, sözcüğün pronounce daha küçük bir sözcüğe bölüneceği durumlarda tanınabilmesi için tanınabilir. Örneğin, **Xbox** , Pronounce as **X kutusunu** tanımak için. Bu yaklaşım genel doğruluğu artırmaz, ancak bu anahtar sözcüklerin tanınmasını artırabilir.
+Oluşturulan veya yüksek ölçüde özelleştirilmiş kelimelerin benzersiz söylenişleri olabilir. Bu sözcükler, sözcüğün pronounce daha küçük bir sözcüğe bölüneceği durumlarda tanınabilmesi için tanınabilir. Örneğin, **Xbox**, Pronounce as **X kutusunu** tanımak için. Bu yaklaşım genel doğruluğu artırmaz, ancak bu anahtar sözcüklerin tanınmasını artırabilir.
 
 > [!NOTE]
 > Bu teknik, şu anda yalnızca bazı diller için kullanılabilir. Ayrıntılar için [konuşmayı metne](language-support.md) dönüştürme bölümüne bakın.
@@ -136,5 +136,5 @@ Aşağıdaki tabloda, ses tanıma senaryoları gösterilmektedir ve yukarıda li
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Verilerinizi hazırlayın ve test edin](how-to-custom-speech-test-data.md)
+* [Verilerinizi hazırlayın ve test edin](./how-to-custom-speech-test-and-train.md)
 * [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 0aba809fd18dfd74a344a32b2335aba9426c9845
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496990"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026070"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Geçiş Kılavuzu: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -68,13 +68,13 @@ Veri kaynakları bulunana sonra, geçiş engelleyicileri veya uyumluluk sorunlar
 Veritabanı geçiş değerlendirmesini kullanarak ortamınızı değerlendirmek için aşağıdaki adımları izleyin: 
 
 1. [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)öğesini açın. 
-1. **Dosya** ' yı ve ardından **Yeni değerlendirme** ' yı seçin. 
+1. **Dosya** ' yı ve ardından **Yeni değerlendirme**' yı seçin. 
 1. Bir proje adı belirtin, kaynak sunucu türü olarak SQL Server öğesini seçin ve ardından hedef sunucu türü olarak Azure SQL yönetilen örneği ' ni seçin. 
 1. Oluşturmak istediğiniz değerlendirme raporlarının türlerini seçin. Örneğin, veritabanı uyumluluğu ve özellik eşliği. Değerlendirme türüne göre, kaynak SQL Server gereken izinler farklı olabilir.  DMA, değerlendirmeyi çalıştırmadan önce, seçilen Advisor için gereken izinleri vurgulayacaktır.
     - **Özellik eşlik** kategorisi, Azure 'da kullanılabilen kapsamlı bir öneriler kümesi sağlar ve geçiş projenizi planlamada size yardımcı olacak adımları ortadan bir şekilde sunar. (sysadmin izinleri gereklidir)
     - **Uyumluluk sorunları** kategorisi, geçişi engelleyebilen kısmen desteklenen veya desteklenmeyen özellik uyumluluğu sorunlarını ( `CONNECT SQL` , `VIEW SERVER STATE` ve `VIEW ANY DEFINITION` gerekli izinleri) belirler.
 1. SQL Server için kaynak bağlantısı ayrıntılarını belirtin ve kaynak veritabanına bağlanın.
-1. **Değerlendirmeyi Başlat** ' ı seçin. 
+1. **Değerlendirmeyi Başlat**' ı seçin. 
 1. İşlem tamamlandığında, geçiş engelleme ve özellik eşlik sorunları için değerlendirme raporlarını seçin ve gözden geçirin. Değerlendirme raporu, kuruluşunuzdaki diğer ekiplerle veya personelle paylaşılabilen bir dosyaya da aktarılabilir. 
 1. Geçiş sonrası çabalarını en aza indiren veritabanı uyumluluk düzeyini belirleme.  
 1. Şirket içi iş yükünüz için en iyi Azure SQL yönetilen örnek SKU 'sunu belirler. 
@@ -99,7 +99,7 @@ Bir SQL yönetilen örneği üzerinde iş yükünüzün performansını SQL Serv
 
 ### <a name="create-sql-managed-instance"></a>SQL Yönetilen Örnek oluşturma 
 
-Bulma ve değerlendirme aşamasındaki bilgilere bağlı olarak, uygun boyutta bir hedef SQL yönetilen örneği oluşturun. [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)veya bir [Azure Resource Manager (ARM) şablonu](/../../managed-instance/create-template-quickstart.md)kullanarak bunu yapabilirsiniz. 
+Bulma ve değerlendirme aşamasındaki bilgilere bağlı olarak, uygun boyutta bir hedef SQL yönetilen örneği oluşturun. [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)veya bir [Azure Resource Manager (ARM) şablonu](/azure/azure-sql/managed-instance/create-template-quickstart)kullanarak bunu yapabilirsiniz. 
 
 
 ## <a name="migrate"></a>Geçiş
@@ -117,11 +117,11 @@ DMS kullanarak geçişler gerçekleştirmek için aşağıdaki adımları izleyi
 1. Bu işlemi ilk kez gerçekleştiriyorsanız, aboneliğinize **Microsoft. DataMigration** kaynak sağlayıcısını kaydedin.
 1. Seçtiğiniz bir konumda (tercihen, hedef Azure SQL yönetilen örneğinizle aynı bölgede) bir Azure veritabanı geçiş hizmeti örneği oluşturun ve var olan bir sanal ağı seçin ya da DMS örneğinizi barındırmak için yeni bir tane oluşturun.
 1. DMS örneğinizi oluşturduktan sonra yeni bir geçiş projesi oluşturun ve kaynak sunucu türünü **SQL Server** ve hedef sunucu türünü **Azure SQL veritabanı yönetilen örneği** olarak belirtin. Proje oluşturma dikey penceresinde etkinlik türünü seçin-çevrimiçi veya çevrimdışı veri geçişi. 
-1.  Geçiş **kaynağı** ayrıntıları sayfasında kaynak SQL Server ayrıntılarını ve hedef Azure SQL yönetilen örnek ayrıntılarını **geçiş hedefi** ayrıntıları sayfasında belirtin. **İleri** ’yi seçin.
+1.  Geçiş **kaynağı** ayrıntıları sayfasında kaynak SQL Server ayrıntılarını ve hedef Azure SQL yönetilen örnek ayrıntılarını **geçiş hedefi** ayrıntıları sayfasında belirtin. **İleri**’yi seçin.
 1. Geçirmek istediğiniz veritabanını seçin. 
 1. Veritabanı yedekleme dosyalarınızı içeren **SMB ağ paylaşımının** belirtilmesi için yapılandırma ayarları sağlayın. Ağ paylaşımıyla erişebilen DMS ile Windows Kullanıcı kimlik bilgilerini kullanın. **Azure depolama hesabınızın ayrıntılarını** sağlayın. 
-1. Geçiş özetini gözden geçirin ve **geçişi Çalıştır** ' ı seçin. Daha sonra geçiş etkinliğini izleyebilir ve veritabanı geçişinizin ilerlemesini denetleyebilirsiniz.
-1. Veritabanı geri yüklendikten sonra **tam geçişi Başlat** ' ı seçin. Geçiş işlemi, SMB ağ paylaşımında kullanılabilir duruma getirildikten sonra kuyruk günlüğü yedeklemesini kopyalar ve hedefe geri yükler. 
+1. Geçiş özetini gözden geçirin ve **geçişi Çalıştır**' ı seçin. Daha sonra geçiş etkinliğini izleyebilir ve veritabanı geçişinizin ilerlemesini denetleyebilirsiniz.
+1. Veritabanı geri yüklendikten sonra **tam geçişi Başlat**' ı seçin. Geçiş işlemi, SMB ağ paylaşımında kullanılabilir duruma getirildikten sonra kuyruk günlüğü yedeklemesini kopyalar ve hedefe geri yükler. 
 1. Kaynak veritabanınıza gelen tüm trafiği durdurun ve bağlantı dizesini yeni Azure SQL yönetilen örnek veritabanına güncelleştirin. 
 
 Bu geçiş seçeneğinin ayrıntılı bir adım adım öğretici için bkz. [DMS kullanarak Azure SQL yönetilen örneği 'ne çevrimiçi SQL Server geçirme](/azure/dms/tutorial-sql-server-managed-instance-online). 
@@ -142,16 +142,16 @@ Aşağıdaki diyagramda, işleme ilişkin üst düzey bir genel bakış sunulmak
 
 Yedekleme ve geri yükleme kullanarak geçiş yapmak için şu adımları izleyin: 
 
-1. Veritabanınızı Azure Blob depolama alanına yedekleyin. Örneğin [SQL Server Management Studio](/ssms/download-sql-server-management-studio-ssms)içindeki [URL 'ye yedekleme](/sql/relational-databases/backup-restore/sql-server-backup-to-url) kullanın. SQL Server 2012 SP1 CU2 UYGULAMAZSANıZ ' den önceki veritabanlarını desteklemek için [Microsoft Azure aracını](https://go.microsoft.com/fwlink/?LinkID=324399) kullanın. 
+1. Veritabanınızı Azure Blob depolama alanına yedekleyin. Örneğin [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)içindeki [URL 'ye yedekleme](/sql/relational-databases/backup-restore/sql-server-backup-to-url) kullanın. SQL Server 2012 SP1 CU2 UYGULAMAZSANıZ ' den önceki veritabanlarını desteklemek için [Microsoft Azure aracını](https://go.microsoft.com/fwlink/?LinkID=324399) kullanın. 
 1. SQL Server Management Studio kullanarak Azure SQL yönetilen örneğinizi bağlayın. 
-1. Veritabanı yedeklemelerinizle Azure Blob depolama hesabınıza erişmek için paylaşılan erişim Imzasını kullanarak bir kimlik bilgisi oluşturun. Örneğin:
+1. Veritabanı yedeklemelerinizle Azure Blob depolama hesabınıza erişmek için paylaşılan erişim Imzasını kullanarak bir kimlik bilgisi oluşturun. Örnek:
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
-1. Azure Storage blob kapsayıcısından yedeklemeyi geri yükleyin. Örneğin: 
+1. Azure Storage blob kapsayıcısından yedeklemeyi geri yükleyin. Örnek: 
 
     ```sql
    RESTORE DATABASE [TargetDatabaseName] FROM URL =
@@ -191,10 +191,10 @@ Veriler hedef ortama geçirildikten sonra, daha önce kaynağı tüketen tüm uy
 
 Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur:
 
-1. **Doğrulama testleri geliştirme** : veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
-1. **Test ortamını ayarlama** : test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
-1. **Doğrulama testlerini Çalıştır** : doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
-1. **Performans testlerini Çalıştır** : kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
+1. **Doğrulama testleri geliştirme**: veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
+1. **Test ortamını ayarlama**: test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
+1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
+1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
 
    > [!NOTE]
    > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 

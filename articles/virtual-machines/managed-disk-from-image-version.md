@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 40d3ff736194c4634b949af52ee7b09db20dd06d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576368"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026140"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Görüntü sürümünden yönetilen disk oluşturma
 
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-`source`Değişkeni görüntü sürümünün kimliği olarak ayarlayın, ardından, yönetilen diski oluşturmak için [az disk Create](//cli/azure/disk#az_disk_create) kullanın. 
+`source`Değişkeni görüntü sürümünün kimliği olarak ayarlayın, ardından, yönetilen diski oluşturmak için [az disk Create](/cli/azure/disk?view=azure-cli-latest#az_disk_create) kullanın. 
 
 Bu örnekte, *EastUS* bölgesinde *myresourcegroup* adlı bir kaynak grubunda yer alan *mymanagedosdisk* adlı bir yönetilen disk oluşturmak için görüntü sürümünün işletim sistemi diskini dışarı aktardık. 
 
