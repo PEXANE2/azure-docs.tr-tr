@@ -1,5 +1,5 @@
 - name: Azure Synapse (çalışma alanları önizlemesi)
-  href: sql-data-warehouse/index.yml
+  href: overview-what-is.md
 - name: Azure Synapse’e (eski adıyla SQL DW) geçiş
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Genel Bakış
@@ -7,10 +7,8 @@
     - name: Azure Synapse nedir?
       href: overview-what-is.md
       displayName: overview
-    - name: Kopya kağıdı
-      href: overview-cheat-sheet.md
-    - name: SSS
-      href: overview-faq.md
+    - name: Terminoloji
+      href: overview-terminology.md
     - name: Sürüm notları
       href: release-notes.md
 - name: Hızlı Başlangıçlar

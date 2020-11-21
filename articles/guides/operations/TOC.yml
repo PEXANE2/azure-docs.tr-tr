@@ -32,24 +32,24 @@
               href: ../../site-recovery/azure-to-azure-quickstart.md
     - name: Öğreticiler
       items:
-        - name: Virtual Machines
+        - name: Sanal Makineler
           items:
             - name: Windows VM oluşturma ve yönetme
               href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Linux VM oluşturma ve yönetme
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Jenkins CI/CD İşlem Hattı
-              href: /azure/developer/jenkins/pipeline-with-github-and-docker?toc=%252fazure%252fguides%252foperations%252ftoc.json
+              href: /azure/developer/jenkins/pipeline-with-github-and-docker?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: VM'lerde yük dengeleme
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Azure Resource Manager şablonları yazma
-              href: ../../azure-resource-manager/templates/template-syntax.md?toc=%252fazure%252fguides%252foperations%252ftoc.json
+              href: ../../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: VM’leri Ölçekli Olarak Yedekleme
               href: ../../backup/tutorial-backup-vm-at-scale.md
     - name: Nasıl Yapılır Kılavuzları
       items:
         - name: Azure faturanızı ve günlük kullanım verilerinizi indirme
-          href: ../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md?toc=%252fazure%252fguides%252foperations%252ftoc.json
+          href: ../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
     - name: Kaynaklar
       items:
         - name: Azure Ürün Kataloğu

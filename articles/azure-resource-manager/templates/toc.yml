@@ -19,7 +19,7 @@
             - name: Bilişsel Arama
               href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Bilişsel Hizmetler
-              href: ../../cognitive-services/create-account-resource-manager-template.md?toc=%252fazure%252fazure-resource-manager%252ftemplates%252ftoc.json
+              href: ../../cognitive-services/create-account-resource-manager-template.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: Veri Bilimi Sanal Makinesi
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
@@ -52,7 +52,7 @@
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blok zinciri
           items:
-            - name: Blok zinciri
+            - name: Blok Zinciri
               href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: İşlem
           items:

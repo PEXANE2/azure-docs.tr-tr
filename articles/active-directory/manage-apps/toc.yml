@@ -201,7 +201,7 @@
             - name: PingAccess kullanarak Uygulama Ara Sunucusu ile tümleştirme
               href: application-proxy-ping-access-publishing-guide.md
             - name: Azure AD Domain Services ile tümleştirme
-              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
             - name: Power BI ile tümleştirme
               href: application-proxy-integrate-with-power-bi.md
             - name: Cloud App Security ile tümleştirme
@@ -281,7 +281,7 @@
 - name: Kaynaklar
   items:
     - name: Geliştiriciler için destek ve yardım seçenekleri
-      href: ../develop/developer-support-help-options.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Azure geri bildirim forumu
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Soru-Cevap soru sayfası

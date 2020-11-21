@@ -78,7 +78,7 @@
     - name: Sarkan DNS ve alt etki alanı adı ele geçirme
       href: subdomain-takeover.md
     - name: Güvenli karma ağ mimarisi
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
 - name: IaaS güvenliği
   items:
     - name: Microsoft Kötü Amaçlı Yazılımdan Korunma
@@ -118,7 +118,7 @@
         - name: Güvenlik denetim listesi
           href: database-security-checklist.md
     - name: Depolama güvenliği kılavuzu
-      href: ../../storage/blobs/security-recommendations.md?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
     - name: Müşteri Kasası
       href: customer-lockbox-overview.md
     - name: Müşteri Kasası güvenlik temeli

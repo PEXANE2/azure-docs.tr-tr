@@ -23,7 +23,7 @@
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Translator’a kaydolma
-          href: translator-text-how-to-signup.md
+          href: ./translator-how-to-signup.md
         - name: V3 Metin API’sine geçiş
           href: migrate-to-v3.md
         - name: Küfür filtresi ekleme

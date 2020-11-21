@@ -13,9 +13,9 @@
     - name: Ansible
       items:
         - name: Ansible playbook’u çalıştırma
-          href: /azure/developer/ansible/getting-started-cloud-shell?bc=%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcloud-shell%252ftoc.json
+          href: /azure/developer/ansible/getting-started-cloud-shell?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
         - name: Azure dinamik envanterlerinizi yönetme
-          href: /azure/developer/ansible/dynamic-inventory-configure?bc=%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcloud-shell%252ftoc.json
+          href: /azure/developer/ansible/dynamic-inventory-configure?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
     - name: Terraform
       items:
         - name: Yürütme planı oluşturma
@@ -46,7 +46,7 @@
   href: troubleshooting.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure
     - name: Azure PowerShell
       href: /powershell/azure

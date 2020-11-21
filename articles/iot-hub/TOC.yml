@@ -9,7 +9,7 @@
   items:
     - name: Telemetri gönderme
       items:
-        - name: Kullanmaya başlayın
+        - name: başlarken
           href: quickstart-send-telemetry-cli.md
         - name: C
           href: quickstart-send-telemetry-c.md
@@ -176,15 +176,15 @@
         - name: Güvenlik temeli
           href: security-baseline.md
         - name: Öneriler
-          href: ../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/security-recommendations.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Baştan sona güvenlik
-          href: ../iot-fundamentals/iot-security-ground-up.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-ground-up.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: En iyi güvenlik uygulamaları
-          href: ../iot-fundamentals/iot-security-best-practices.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-best-practices.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Güvenlik mimarisi
-          href: ../iot-fundamentals/iot-security-architecture.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-architecture.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: IoT dağıtımınızın güvenliğini sağlama
-          href: ../iot-fundamentals/iot-security-deployment.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-deployment.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -426,7 +426,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

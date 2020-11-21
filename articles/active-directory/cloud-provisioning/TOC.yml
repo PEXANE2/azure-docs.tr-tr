@@ -19,7 +19,7 @@
 - name: Kavramlar
   items:
     - name: Parola karması eşitleme nedir?
-      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: 'Azure AD şemasını, özniteliklerini ve ifadelerini anlama'
       href: concept-attributes.md
     - name: Azure Active Directory’de Öznitelik Eşlemeleri için İfadeler Yazma
@@ -63,10 +63,10 @@
 - name: Başvuru
   items:
     - name: Azure AD Connect bulut sağlama aracısı sürüm geçmişi
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Azure AD Connect bulut sağlama hakkında SSS
       href: reference-cloud-provisioning-faq.md
     - name: Eşitlenen öznitelikler
-      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Temel Active Directory ve Azure AD ortamı
       href: tutorial-basic-ad-azure.md

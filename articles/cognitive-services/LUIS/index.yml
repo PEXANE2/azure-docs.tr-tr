@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) Belgeleri
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) hizmeti, bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlar. LUIS, geliştiricilerin doğal dilde kullanıcı girdisi alabilen ve bu girdiden anlam çıkarabilen uygulamalar derlemesini sağlamak için makine öğrenimini kullanır.
-  ms.openlocfilehash: 3bae2e6e0a79dbc0106dc71a9510aa4dc318650c
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92364193"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95019390"
 landingContent:
 - title: Language Understanding (LUIS) hakkında
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
     - text: Örnek ifadelerle amaç ekleme
       url: luis-how-to-add-intents.md
     - text: Varlık ekleme
-      url: luis-how-to-add-example-utterances.md
+      url: ./luis-how-to-add-entities.md
     - text: Tümcecik listesi özelliğini ekleme
       url: luis-how-to-add-features.md
 - title: Sürüm, eğitme, test ve yayımlama
@@ -78,7 +78,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Sürüm oluşturma
-      url: luis-concept-version.md
+      url: ./luis-concept-app-iteration.md
     - text: Etkileşimli test
       url: luis-concept-test.md
     - text: Toplu işe testi
@@ -110,15 +110,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: REST kullanarak C# ile
-      url: luis-get-started-cs-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: REST kullanarak Go ile
-      url: luis-get-started-go-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: REST kullanarak Java ile
-      url: luis-get-started-java-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: REST kullanarak Node.js ile
-      url: luis-get-started-node-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: REST kullanarak Python ile
-      url: luis-get-started-python-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
 - title: Başvuru
   linkLists:
   - linkListType: reference
