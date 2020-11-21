@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5b6233c0978f15aad94b7f66f8935c2d6f6f1c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f13a20232fab61dc082c1b12b7ddaa11807554
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666968"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016199"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 kullanım örnekleri
 
@@ -52,13 +52,13 @@ Müşteriler, varlık ile ilgili sorunları hızlı bir şekilde tanılamaya yö
 
 Azure Time Series Insights Gen2 ' de depolanan verilerle etkileşimde bulunmak için üç temel yol vardır:
 
-* Kullanmaya başlamanın ilk ve en kolay yolu Azure Time Series Insights Gen2 Explorer ' dır. Bunu kullanarak tüm IoT verilerinizi tek bir yerde hızla görselleştirebilirsiniz. Verilerinize ilişkin eğilimleri belirlemenize yardımcı olması için ısı haritası gibi araçlar sağlar. Ayrıca bir perspektif görünümü de sağlar. Tek bir panoda bir veya daha fazla Azure Time Series Insights Gen2 ortamından en fazla dört görünüm karşılaştırmak için bunu kullanın. Pano size tüm konumlarınızın zaman serisi verilerinin bir görünümünü sunar. [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md)hakkında daha fazla bilgi edinin. Ortamınızı planlamak için [Azure Time Series Insights Gen2 planlamayı](./time-series-insights-update-plan.md)okuyun.
+* Kullanmaya başlamanın ilk ve en kolay yolu Azure Time Series Insights Gen2 Explorer ' dır. Bunu kullanarak tüm IoT verilerinizi tek bir yerde hızla görselleştirebilirsiniz. Verilerinize ilişkin eğilimleri belirlemenize yardımcı olması için ısı haritası gibi araçlar sağlar. Ayrıca bir perspektif görünümü de sağlar. Tek bir panoda bir veya daha fazla Azure Time Series Insights Gen2 ortamından en fazla dört görünüm karşılaştırmak için bunu kullanın. Pano size tüm konumlarınızın zaman serisi verilerinin bir görünümünü sunar. [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md)hakkında daha fazla bilgi edinin. Ortamınızı planlamak için [Azure Time Series Insights Gen2 planlamayı](./how-to-plan-your-environment.md)okuyun.
 
 * Başlangıç yapmanın ikinci yolu, Web uygulamanıza güçlü grafikler ve grafikler eklemek için JavaScript SDK 'sını kullanmaktır. Yalnızca birkaç satır kodla, güçlü sorgular yazabilirsiniz. Çizgi grafiklerini, pasta grafiklerini, çubuk grafiklerini, ısı haritalarını, veri kılavuzlarını ve daha fazlasını doldurmak için bunları kullanın. Bu öğelerin tümü SDK kullanılarak kullanıma hazır. SDK Ayrıca Azure Time Series Insights Gen2 sorgu API 'Lerini de soyutlar. Bunları, bir panoda göstermek istediğiniz verileri sorgulamak için SQL benzeri koşullar yazmak üzere kullanabilirsiniz. Karma sunum katmanı çözümleri için Azure Time Series Insights Gen2 parametreli URL 'Ler sunar. Verilerle ilgili ayrıntılı bilgi için Azure Time Series Insights Gen2 Explorer ile sorunsuz bağlantı noktaları sağlar.
 
   * JavaScript SDK 'Sı hakkında daha fazla bilgi edinmek için [js istemci kitaplığı](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) ve [örnek istemci](https://github.com/Microsoft/tsiclient) belgeleri hakkında bilgi edinin.
 
-  * [Azure Time Series Insights Gen2 Explorer 'da verileri görselleştirmeyi](time-series-insights-update-explorer.md)Inceleyerek URL 'leri ve yeni kullanıcı arabirimini paylaşma hakkında daha fazla bilgi edinin.
+  * [Azure Time Series Insights Gen2 Explorer 'da verileri görselleştirmeyi](./concepts-ux-panels.md)Inceleyerek URL 'leri ve yeni kullanıcı arabirimini paylaşma hakkında daha fazla bilgi edinin.
 
 * Başlangıç yapmanın üçüncü yolu Azure Time Series Insights Gen2 ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Azure Time Series Insights Gen2,,, ve gibi zamana bağlı işleçlere sahiptir `from` `to` `first` `last` . ,,,,, `average` `sum` `min` `max` `time-weighted average` `time-weighted sum` , Vb. toplamaları ve dönüştürmeleri vardır. Ayrıca filtrelemeye, aritmetik ve Boole işleçlerine, skalar işlevlere vb. izin verir. Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Onları, anormal görselleştirmelere göre doldurmak için kullanın.
 
@@ -100,6 +100,6 @@ Azure Time Series Insights Gen2, IoT verileri ile gelişmiş analizler arasında
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md)hakkında daha fazla bilgi edinin.
-* Ortamınızı planlamak için [Azure Time Series Insights Gen2 en iyi yöntemlerini](./time-series-insights-update-plan.md) okuyun.
+* [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md)hakkında daha fazla bilgi edinin.
+* Ortamınızı planlamak için [Azure Time Series Insights Gen2 en iyi yöntemlerini](./how-to-plan-your-environment.md) okuyun.
 * [Örnek istemci](https://github.com/Microsoft/tsiclient) belgelerini okuyun.

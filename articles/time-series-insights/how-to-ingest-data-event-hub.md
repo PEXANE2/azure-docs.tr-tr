@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d672da30a4d81ead9115fc6b829c35aeab3ee6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596251"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016828"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Azure Time Series Insights ortamınıza bir olay hub 'ı olay kaynağı ekleme
 
@@ -25,9 +25,9 @@ Bu makalede, Azure Event Hubs verileri Azure Time Series Insights ortamınıza o
 > [!NOTE]
 > Bu makalede açıklanan adımlar, hem Azure Time Series Insights Gen 1 hem de Gen 2 ortamlarının Azure Time Series Insights uygular.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- [Azure Time Series Insights ortamı oluşturma](./time-series-insights-update-create-environment.md)bölümünde açıklandığı gibi bir Azure Time Series Insights ortamı oluşturun.
+- [Azure Time Series Insights ortamı oluşturma](./tutorials-set-up-tsi-environment.md)bölümünde açıklandığı gibi bir Azure Time Series Insights ortamı oluşturun.
 - Bir olay hub'ı oluşturun. [Azure Portal kullanarak Event Hubs ad alanı ve Olay Hub 'ı oluşturun](../event-hubs/event-hubs-create.md).
 - Olay Hub 'ına, etkin ileti olayları gönderilmesi gerekir. [.NET Framework kullanarak olayları Azure Event Hubs gönderme](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)hakkında bilgi edinin.
 - Azure Time Series Insights ortamının tüketebileceği Olay Hub 'ında adanmış bir tüketici grubu oluşturun. Her bir Azure Time Series Insights olay kaynağı, başka bir tüketici ile paylaşılmayan kendi adanmış bir tüketici grubuna sahip olmalıdır. Birden çok okuyucu aynı tüketici grubundan olayları tükettiği takdirde, tüm okuyucular hatalara neden olabilir. Olay Hub 'ı başına 20 Tüketici grubu sınırı vardır. Ayrıntılar için [Event Hubs programlama kılavuzunu](../event-hubs/event-hubs-programming-guide.md)okuyun.
@@ -38,7 +38,7 @@ Uygulamalar, Azure Event Hubs verileri çekmek için tüketici gruplarını kull
 
 Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
-1. [Azure Portal](https://portal.azure.com), Olay Hub 'ınızın ad alanının **genel bakış** bölmesinden Olay Hub örneğinizi bulun ve açın. **> Event Hubs varlıkları** seçin veya örneğinizi **ad**altında bulun.
+1. [Azure Portal](https://portal.azure.com), Olay Hub 'ınızın ad alanının **genel bakış** bölmesinden Olay Hub örneğinizi bulun ve açın. **> Event Hubs varlıkları** seçin veya örneğinizi **ad** altında bulun.
 
     [![Olay Hub 'ı ad alanınızı açın](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
@@ -48,7 +48,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
    Aksi takdirde, mevcut bir tüketici grubunu seçin ve sonraki bölüme atlayın.
 
-1. **Tüketici grupları** sayfasında, **ad**için yeni bir benzersiz değer girin.  Azure Time Series Insights ortamında yeni bir olay kaynağı oluştururken aynı adı kullanın.
+1. **Tüketici grupları** sayfasında, **ad** için yeni bir benzersiz değer girin.  Azure Time Series Insights ortamında yeni bir olay kaynağı oluştururken aynı adı kullanın.
 
 1. **Oluştur**’u seçin.
 
@@ -64,9 +64,9 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. Bu Azure Time Series Insights ortamı için benzersiz olan **olay kaynağı adı** için bir değer girin, örneğin `Contoso-TSI-Gen 1-Event-Hub-ES` .
 
-1. **Kaynak**Için **Olay Hub**'ı ' nı seçin.
+1. **Kaynak** Için **Olay Hub**'ı ' nı seçin.
 
-1. **Içeri aktarma seçeneği**için uygun değerleri seçin:
+1. **Içeri aktarma seçeneği** için uygun değerleri seçin:
 
    - Aboneliklerinizden birinde mevcut bir olay hub 'ınız varsa, **kullanılabilir aboneliklerden Olay Hub 'ını kullan**' ı seçin. Bu seçenek en kolay yaklaşımdır.
 
@@ -113,7 +113,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Verilerin güvenliğini sağlamak için [veri erişim Ilkeleri tanımlayın](time-series-insights-data-access.md) .
+- Verilerin güvenliğini sağlamak için [veri erişim Ilkeleri tanımlayın](./concepts-access-policies.md) .
 
 - [Olayları](time-series-insights-send-events.md) olay kaynağına gönderin.
 

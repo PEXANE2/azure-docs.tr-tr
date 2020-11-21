@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442064"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013025"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -38,6 +38,10 @@ Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıt
     * __Sanal ağınızın arkasındaki çalışma alanı için Azure Container Registry__
 
     Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+
+## <a name="limitations"></a>Sınırlamalar
+
+* Yeni bir çalışma alanı oluştururken, çalışma alanının otomatik olarak gerektirdiği Azure hizmetlerini oluşturmasına izin verebilir veya mevcut hizmetleri sağlayabilirsiniz. Mevcut hizmetleri sağlarken, bu hizmetlerin hepsi çalışma alanıyla aynı Azure aboneliğinde olmalıdır.
 
 ## <a name="workspace-resource-manager-template"></a>Çalışma alanı Kaynak Yöneticisi şablonu
 
@@ -549,8 +553,8 @@ New-AzResourceGroupDeployment `
    * Bölge: kaynakların oluşturulacağı Azure bölgesini seçin.
    * Çalışma alanı adı: oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Yalnızca alfasayısal karakterler ve '-' içerebilir.
    * Konum: kaynakların oluşturulacağı konumu seçin.
-1. __Gözden geçir + oluştur__ ’u seçin.
-1. __Gözden geçir + oluştur__ ekranında, listelenen hüküm ve koşulları kabul edin ve __Oluştur__ ' u seçin.
+1. __Gözden geçir + oluştur__’u seçin.
+1. __Gözden geçir + oluştur__ ekranında, listelenen hüküm ve koşulları kabul edin ve __Oluştur__' u seçin.
 
 Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 

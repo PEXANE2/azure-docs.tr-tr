@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629657"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015672"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Azure IoT Edge yayımlayın ve abone olun
 
@@ -209,7 +209,7 @@ IoT Edge MQTT aracısına nasıl bağlanacağınızı anladığınıza göre, ö
 
 ## <a name="publish-and-subscribe-on-user-defined-topics"></a>Kullanıcı tanımlı konularda yayımlayın ve abone olun
 
-Bu makalede, bir konuya abone olan **sub_client** adlı bir istemciyi ve bir konuya yayımlayan **pub_client** adlı başka bir istemciyi kullanacaksınız. [Simetrik anahtar kimlik doğrulamasını](how-to-authenticate-downstream-device.md#symmetric-key-authentication) kullanacağız, ancak aynı şekilde [x. 509.440 otomatik imzalı kimlik doğrulama](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) veya [x. 509.440 otomatik imzalı kimlik](./how-to-authenticate-downstream-device.md#x509-self-signed-authentication)doğrulamasıyla yapılabilir.
+Bu makalede, bir konuya abone olan **sub_client** adlı bir istemciyi ve bir konuya yayımlayan **pub_client** adlı başka bir istemciyi kullanacaksınız. [Simetrik anahtar kimlik doğrulamasını](how-to-authenticate-downstream-device.md#symmetric-key-authentication) kullanacağız, ancak aynı şekilde [x. 509.440 otomatik imzalı kimlik doğrulama](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) veya [x. 509.440 CA-imzalı kimlik](./how-to-authenticate-downstream-device.md#x509-ca-signed-authentication)doğrulamasıyla yapılabilir.
 
 ### <a name="create-publisher-and-subscriber-clients"></a>Yayımcı ve abone istemcileri oluşturma
 

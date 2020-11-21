@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 2c46bb2233fe38380dd5ba19804791c7c9f3da91
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 2f33369c013e2ff56b7fb745ddb0fc959793f12a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517351"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016165"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Azure sanal ağındaki bir IPv4 uygulamasına IPv6 ekleme-Azure CLı
 
 Bu makalede, Azure CLı kullanarak bir Standart Load Balancer için Azure sanal ağında IPv4 Genel IP adresi kullanan bir uygulamaya IPv6 adresleri ekleme işlemi gösterilmektedir. Yerinde yükseltme, bir sanal ağ ve alt ağ, IPv4 + ıPV6 ön uç yapılandırmalarına sahip bir Standart Load Balancer, bir IPv4 + IPv6 yapılandırması, ağ güvenlik grubu ve genel IP 'leri olan NIC 'Ler içeren VM 'Ler içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu makalede [hızlı başlangıç: bir standart Load Balancer oluşturma-Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)bölümünde açıklandığı gibi standart Load Balancer dağıttığınız varsayılmaktadır.
 
@@ -93,13 +93,13 @@ IPv6 adres aralıklarını sanal ağa ve yük dengeleyiciyi barındıran alt ağ
 az network vnet update \
 --name myVnet  \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/16"  "ace:cab:deca::/48"
+--address-prefixes  "10.0.0.0/16"  "2001:db8:deca::/48"
 
 az network vnet subnet update \
 --vnet-name myVnet \
 --name mySubnet \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/24"  "ace:cab:deca:deed::/64"  
+--address-prefixes  "10.0.0.0/24"  "2001:db8:deca:deed::/64"  
 ```
 
 ## <a name="add-ipv6-configuration-to-nics"></a>NIC 'lere IPv6 yapılandırması ekleme
@@ -141,7 +141,7 @@ az network nic ip-config create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal 'de IPv6 çift yığın sanal ağını görüntüleme
 
 IPv6 çift yığın sanal ağını Azure portal içinde aşağıdaki gibi görüntüleyebilirsiniz:
-1. Portalın arama çubuğunda *Myvnet* ' i girin.
+1. Portalın arama çubuğunda *Myvnet*' i girin.
 2. Arama sonuçlarında **Myvnet** göründüğünde seçin. Bu, *Myvnet* adlı çift yığın sanal ağının **genel bakış** sayfasını başlatır. Çift yığın sanal ağı, *Mysubnet* adlı çift yığın alt ağında bulunan IPv4 ve IPv6 yapılandırmalarına sahip üç NIC 'yi gösterir.
 
   ![Azure 'da IPv6 çift yığın sanal ağı](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)

@@ -10,25 +10,29 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 7de78a52482b2f07cb4e5e036509e0f9e402a3f4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: aa85822b433e2d8128df9ae3664411ea3fcddec4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576283"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012921"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
 
 Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 * **Yerel ortamınızdan** bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)gerekir.
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)KULLANıYORSANıZ, CLI tarayıcı aracılığıyla erişilir ve bulutta bulunur.
+
+## <a name="limitations"></a>Sınırlamalar
+
+* Yeni bir çalışma alanı oluştururken, çalışma alanının otomatik olarak gerektirdiği Azure hizmetlerini oluşturmasına izin verebilir veya mevcut hizmetleri sağlayabilirsiniz. Mevcut hizmetleri sağlarken, bu hizmetlerin hepsi çalışma alanıyla aynı Azure aboneliğinde olmalıdır.
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>CLı 'yı Azure aboneliğinize bağlama
 
@@ -71,7 +75,7 @@ Azure Machine Learning çalışma alanı aşağıdaki Azure hizmetlerine veya va
 | Hizmet | Var olan bir örneği belirtecek parametre |
 | ---- | ---- |
 | **Azure Kaynak grubu** | `-g <resource-group-name>`
-| **Azure depolama hesabı** | `--storage-account <service-id>` |
+| **Azure Depolama Hesabı** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
@@ -189,7 +193,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 > [!IMPORTANT]
 > Var olan tüm kaynakları belirtmeniz gerekmez. Bir veya daha fazla belirtebilirsiniz. Örneğin, var olan bir depolama hesabı belirtebilirsiniz ve çalışma alanı diğer kaynakları oluşturur.
 
-+ **Azure depolama hesabı** : `az storage account show --name <storage-account-name> --query "id"`
++ **Azure depolama hesabı**: `az storage account show --name <storage-account-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve depolama hesabınızın KIMLIĞIDIR:
 
@@ -198,7 +202,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
     > [!IMPORTANT]
     > Mevcut bir Azure Depolama hesabını kullanmak istiyorsanız, bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının _varsayılan_ depolama hesabıyla Premium Depolama veya hiyerarşik ad alanı desteklenmez. Premium Storage veya sıradüzensel ad alanını _varsayılan olmayan_ depolama hesaplarıyla birlikte kullanabilirsiniz.
 
-+ **Azure Application Insights** :
++ **Azure Application Insights**:
 
     1. Application Insights uzantısını yükler:
 
@@ -216,13 +220,13 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve anahtar kasanızın KIMLIĞIDIR:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve kapsayıcı kayıt defterinin KIMLIĞIDIR:
 

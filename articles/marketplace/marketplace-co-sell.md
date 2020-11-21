@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/17/2020
-ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.date: 11/20/2020
+ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738535"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016342"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -85,6 +85,13 @@ Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Orta�
         :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Bu görüntüde, bir ortak satış incelemesi istemek için CED açılan menüsü gösterilmektedir.":::
 
     Bu işlem, işlemi gerçekleştirmek için sizi size ulaşacak.
+
+## <a name="see-your-offers-co-sell-status"></a>Teklifinizin ortak satış durumunu görün
+
+[Iş Ortağı Merkezi 'Nde ortak satış seçeneği](./partner-center-portal/commercial-marketplace-co-sell.md)sunan teklifler için, teklifin Genel Bakış sayfasında teklifinizin geçerli ortak satış durumunu görebilirsiniz:
+
+ :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Bu görüntüde, tekliflerin geçerli ortak satış durumu gösterilmektedir.":::
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

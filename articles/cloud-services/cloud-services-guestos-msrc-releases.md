@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5a5e448660583204d424358e571c4bfb74890e8d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e84342bff0d2bbc3b034afc1b3c5e8a7dc4a9eb1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737838"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015536"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
@@ -29,10 +29,10 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-11 |  [4586793]  |  En son birikimli güncelleştirme | 6,25 | 10 Kasım 2020 |
+|  Rel 20-11 OOB |  [4594442]  |  En son birikimli güncelleştirme | 6,25 | 17 Kasım 2020 |
+|  Rel 20-11 OOB |  [4594441]  |  En son birikimli güncelleştirme | 5,49 | 19 Kasım 2020 |
 |  Rel 20-11 |  [4580325]  |  Flash güncelleştirmesi | 3,91, 4,84, 5,49, 6,25 | 13 Ekim 2020 |
 |  Rel 20-11 |  [4586768]  |  IE toplu güncelleştirmesi | 2,104, 3,91, 4,84 | 10 Kasım 2020 |
-|  Rel 20-11 |  [4586830]  |  En son birikimli güncelleştirme | 5,49 | 10 Kasım 2020 |
 |  Rel 20-11 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 2,104 | 10 Kasım 2020 |
 |  Rel 20-11 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 2,104 | 10 Kasım 2020 |
 |  Rel 20-11 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 4,84 | 10 Kasım 2020 |
@@ -52,10 +52,10 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 |  Rel 20-11 |  [4494175]  |  Mikro kod | 5,49 | 1 Eyl, 2020 |
 |  Rel 20-11 |  [4494174]  |  Mikro kod | 6,25 | Eyl 3, 2020 |
 
-[4586793]: https://support.microsoft.com/kb/4586793
+[4594442]: https://support.microsoft.com/kb/4594442
+[4594441]: https://support.microsoft.com/kb/4594441
 [4580325]: https://support.microsoft.com/kb/4580325
 [4586768]: https://support.microsoft.com/kb/4586768
-[4586830]: https://support.microsoft.com/kb/4586830
 [4578952]: https://support.microsoft.com/kb/4578952
 [4578955]: https://support.microsoft.com/kb/4578955
 [4578953]: https://support.microsoft.com/kb/4578953

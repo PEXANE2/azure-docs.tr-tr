@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595528"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016760"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman Serisi Kimliği seçmek için en iyi uygulamalar
 
@@ -32,11 +32,11 @@ Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman seri
 > * *Sabit* bir özellik: oluşturulduktan sonra değiştirilemez.
 
 > [!TIP]
-> Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla ***ıothub-Connection-Device-ID***olacaktır.
+> Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla ***ıothub-Connection-Device-ID** _ olur.
 
 İzlenecek en iyi anahtar uygulamalar şunlardır:
 
-* Birçok farklı değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
+_ Çok sayıda benzersiz değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
 * Zaman serisi KIMLIĞI, [zaman serisi modelinizin](./concepts-model-overview.md)yaprak düğüm düzeyinde benzersiz olmalıdır.
 * Zaman serisi KIMLIĞININ Özellik adı dizesinin karakter sınırı 128 ' dir. Zaman serisi KIMLIĞININ Özellik değeri için, karakter sınırı 1.024 ' dir.
 * Zaman serisi KIMLIĞI için benzersiz bir özellik değeri eksikse, null değer olarak değerlendirilir ve Benzersizlik kısıtlamasının aynı kuralına uyar.
@@ -53,15 +53,15 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 ### <a name="example-1-time-series-id-with-a-unique-key"></a>Örnek 1: benzersiz bir anahtarla zaman serisi KIMLIĞI
 
 * Varlıkların eski varlıkları var. Her birinin benzersiz bir anahtarı vardır.
-* Bir filo özelliği **DeviceID**tarafından benzersiz şekilde tanımlanır. Başka bir Fleet için, Unique özelliği **ObjectID**' dir. Ne filo, diğer filo 'in benzersiz özelliğini içermez. Bu örnekte, benzersiz anahtarlar olarak iki anahtar, **DeviceID** ve **ObjectID**seçersiniz.
+* Bir filo özelliği **DeviceID** tarafından benzersiz şekilde tanımlanır. Başka bir Fleet için, Unique özelliği **ObjectID**' dir. Ne filo, diğer filo 'in benzersiz özelliğini içermez. Bu örnekte, benzersiz anahtarlar olarak iki anahtar, **DeviceID** ve **ObjectID** seçersiniz.
 * Null değerleri kabul ediyoruz ve bir özelliğin olay yükünde varlık olmaması, null değer olarak sayılır. Bu aynı zamanda, her olay kaynağındaki verilerin benzersiz bir zaman serisi KIMLIĞI olduğu iki olay kaynağına veri göndermeyi işlemenin uygun yoludur.
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Örnek 2: bileşik bir anahtarla zaman serisi KIMLIĞI
 
 * Birden çok özelliği, varlıkların aynı yakıt kapsamında benzersiz olmasını gerektirir.
-* Her odada akıllı binalar ve sensörler dağıtımı sunuyoruz. Her odada, genellikle **Sensorıd**için aynı değerlere sahip olursunuz. Örnekler şunlardır **sensor1**, **Sensor2**ve **SENSOR3**.
-* Binasında, **Flrrm**özelliğindeki sitelerde zemin ve oda numaraları çakışıyor. Bu sayıların **1a**, **2B**ve **3A**gibi değerleri vardır.
-* **Redmond**, **Barselona**ve **Tokyo**gibi değerleri içeren bir özellik, **konum**vardır. Benzersizlik oluşturmak için aşağıdaki üç özelliği zaman serisi KIMLIK anahtarlarınız olarak belirlersiniz: **Sensorıd**, **flrrm**ve **Location**.
+* Her odada akıllı binalar ve sensörler dağıtımı sunuyoruz. Her odada, genellikle **Sensorıd** için aynı değerlere sahip olursunuz. Örnekler şunlardır **sensor1**, **Sensor2** ve **SENSOR3**.
+* Binasında, **Flrrm** özelliğindeki sitelerde zemin ve oda numaraları çakışıyor. Bu sayıların **1a**, **2B** ve **3A** gibi değerleri vardır.
+* **Redmond**, **Barselona** ve **Tokyo** gibi değerleri içeren bir özellik, **konum** vardır. Benzersizlik oluşturmak için aşağıdaki üç özelliği zaman serisi KIMLIK anahtarlarınız olarak belirlersiniz: **Sensorıd**, **flrrm** ve **Location**.
 
 Örnek Ham olay:
 
@@ -86,4 +86,4 @@ Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz:
 
 * Olayların nasıl depolanacağını anlamak için [JSON düzleştirme ve kaçış kurallarını](./concepts-json-flattening-escaping-rules.md) okuyun.
 
-* [Azure Time Series Insights Gen2 ortamınızı](./time-series-insights-update-plan.md)planlayın.
+* [Azure Time Series Insights Gen2 ortamınızı](./how-to-plan-your-environment.md)planlayın.

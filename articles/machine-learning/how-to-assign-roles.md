@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961235"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012968"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -27,7 +27,7 @@ Bu makalede, erişimi (yetkilendirme) bir Azure Machine Learning çalışma alan
 >
 > * [Azure Kubernetes küme kaynaklarına erişimi denetleme](../aks/azure-ad-rbac.md)
 > * [Kubernetes yetkilendirmesi için Azure RBAC kullanma](../aks/manage-azure-rbac.md)
-> * [Blob verilerine erişmek için Azure RBAC kullanma](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [Blob verilerine erişmek için Azure RBAC kullanma](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 > [!WARNING]
 > Bazı rollerin uygulanması, diğer kullanıcılar için Azure Machine Learning Studio 'daki UI işlevselliğini sınırlayabilir. Örneğin, bir kullanıcının rolü bir işlem örneği oluşturma yeteneğine sahip değilse, bir işlem örneği oluşturma seçeneği Studio 'da kullanılamaz. Bu davranış beklenmektedir ve kullanıcının erişim reddedildi hatası döndürecek işlemler gerçekleştirmeye engel olur.

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 089c59c041110209e55cc3fb10b1c5adf54bd13e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6d85498b0e76997a1f0f989f4ea0f30acc0e8443
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538283"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013727"
 ---
 # <a name="face-detection-with-computer-vision"></a>Görüntü İşleme ile yüz algılama
 
 Görüntü İşleme, görüntü içindeki insan yüzlerini algılayabilir ve algılanan her yüz için yaş, cinsiyet ve dikdörtgen oluşturabilir. 
 
 > [!NOTE]
-> Bu özellik ayrıca Azure [yüz](/azure/cognitive-services/face/) hizmeti tarafından sunulur. Yüz tanıma ve poz algılama gibi daha ayrıntılı yüz analizi için bu alternatif bölümüne bakın. 
+> Bu özellik ayrıca Azure [yüz](../face/index.yml) hizmeti tarafından sunulur. Yüz tanıma ve poz algılama gibi daha ayrıntılı yüz analizi için bu alternatif bölümüne bakın. 
 
 ## <a name="face-detection-examples"></a>Yüz algılama örnekleri
 

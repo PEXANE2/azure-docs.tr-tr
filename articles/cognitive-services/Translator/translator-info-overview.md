@@ -12,26 +12,26 @@ ms.date: 09/11/2020
 ms.author: swmachan
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, metin çevirisi, makine çevirisi, çeviri hizmeti
-ms.openlocfilehash: 32ae7f75c1b953e8af7dfef83c1971c2f78b0b62
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8016c79cbe7f78bdaa18274f8873548e3982df2f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90530344"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016487"
 ---
 # <a name="what-is-the-translator-service"></a>Çevirmen hizmeti nedir?
 
-Çevirici, bulut tabanlı bir makine çevirisi hizmetidir ve akıllı uygulamalar oluşturmak için kullanılan bilişsel API 'lerin Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/?pivot=products&panel=ai) ailesinin bir parçasıdır. Translator, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilebilen kolay bir işlemdir. [70 ' den fazla dilde](languages.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır ve metin çevirisi için herhangi bir işletim sistemiyle herhangi bir donanım platformunda kullanılabilir.
+Çevirici, bulut tabanlı bir makine çevirisi hizmetidir ve akıllı uygulamalar oluşturmak için kullanılan bilişsel API 'lerin Azure bilişsel [Hizmetler](../../index.yml?panel=ai&pivot=products) ailesinin bir parçasıdır. Translator, uygulamalarınızda, Web sitelerinde, araçlarınızla ve çözümlerinde tümleştirilebilen kolay bir işlemdir. [70 ' den fazla dilde](./language-support.md)çok dilli kullanıcı deneyimleri eklemenize olanak tanır ve metin çevirisi için herhangi bir işletim sistemiyle herhangi bir donanım platformunda kullanılabilir.
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator Hakkında
 
 Çevirmen, bir dizi Microsoft ürününü ve hizmetini güçlendirir ve kendi uygulamaları ve iş akışlarında dünya çapındaki binlerce işletme tarafından kullanılır ve bu da içeriğinin küresel bir hedef kitleye ulaşmasını sağlar.
 
-Çevirmen ile desteklenen konuşma çevirisi, [Azure konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/)aracılığıyla da kullanılabilir. Translator Konuşma Çevirisi API'si ve Özel Konuşma Tanıma hizmetten işlevselliği Birleşik ve tamamen özelleştirilebilir bir hizmette birleştirir. 
+Çevirmen ile desteklenen konuşma çevirisi, [Azure konuşma hizmeti](../speech-service/index.yml)aracılığıyla da kullanılabilir. Translator Konuşma Çevirisi API'si ve Özel Konuşma Tanıma hizmetten işlevselliği Birleşik ve tamamen özelleştirilebilir bir hizmette birleştirir. 
 
 ## <a name="language-support"></a>Dil desteği
 
-Translator, metin çevirisi, alfabede, dil algılama ve sözlükler için çok dil desteği sağlar. Listenin tamamı için [dil desteği](language-support.md) sayfasını inceleyebilir veya listeye [REST API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) üzerinden program aracılığıyla erişebilirsiniz.  
+Translator, metin çevirisi, alfabede, dil algılama ve sözlükler için çok dil desteği sağlar. Listenin tamamı için [dil desteği](language-support.md) sayfasını inceleyebilir veya listeye [REST API](./reference/v3-0-languages.md) üzerinden program aracılığıyla erişebilirsiniz.  
 
 ## <a name="microsoft-translator-neural-machine-translation"></a>Microsoft Translator Sinirsel Makine Çevirisi
 
@@ -49,11 +49,11 @@ NMT modelleri API'nin temelindedir ve son kullanıcılara görünür değildir. 
 
 Custom Translator sayesinde, kendi işletmenizde veya sektörünüzde kullanılan terminolojiyi işleyebilen çeviri sistemleri oluşturabilirsiniz. Özelleştirilmiş çeviri sisteminiz daha sonra, kategori parametresini kullanarak, düzenli çevirici aracılığıyla, mevcut uygulama, iş akışlarınız ve Web siteleriniz arasında birden çok cihaz türü arasında kolayca tümleşecek.
 
-[Özel çevirici](customization.md)hakkında daha fazla bilgi edinin.
+[Özel Çeviri](customization.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Erişim anahtarı için [kaydolun](translator-text-how-to-signup.md) .
+- Erişim anahtarı için [kaydolun](./translator-how-to-signup.md) .
 - Translator hizmetini hızlı bir şekilde çağırmak için hızlı [Başlangıç](quickstart-translator.md) Öğreticimizi deneyin.
-- [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) , API 'ler için teknik belgeler sağlar.
+- [API başvurusu](./reference/v3-0-reference.md) , API 'ler için teknik belgeler sağlar.
 - [Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

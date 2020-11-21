@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 14b4e7217b6e902023e5e82f8dbd404e43b36ef0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1616a0149ae56de8afe0e9ab485af4bf76326d86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676160"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014620"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR kapsayıcılarına geçiş
 
@@ -35,7 +35,7 @@ Okuma v 3.1 kapsayıcısı Görüntü İşleme API'si sürüm 3 ' ü kullanır v
 * `/vision/v3.1-preview.2/read/analyze`
 * `/vision/v3.1-preview.2/read/syncAnalyze`
 
-Uygulamalarınızı bulut tabanlı okuma API 'sinin sürüm 3 ' ü kullanacak şekilde güncelleştirme hakkında ayrıntılı bilgi için bkz. [v3 REST API geçiş kılavuzu görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/upgrade-api-versions) . Bu bilgiler kapsayıcı için de geçerlidir. Eşitleme işlemlerinin yalnızca kapsayıcılar için desteklendiğini unutmayın.
+Uygulamalarınızı bulut tabanlı okuma API 'sinin sürüm 3 ' ü kullanacak şekilde güncelleştirme hakkında ayrıntılı bilgi için bkz. [v3 REST API geçiş kılavuzu görüntü işleme](./upgrade-api-versions.md) . Bu bilgiler kapsayıcı için de geçerlidir. Eşitleme işlemlerinin yalnızca kapsayıcılar için desteklendiğini unutmayın.
 
 ## <a name="memory-requirements"></a>Bellek gereksinimleri
 

@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: konuşma çevirisi
-ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630080"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015214"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
@@ -48,13 +48,13 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 
 ## <a name="migration-guides"></a>Geçiş kılavuzları
 
-Uygulamalarınız, araçlar veya ürünleriniz [Translator konuşma çevirisi API'si](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview)kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
+Uygulamalarınız, araçlar veya ürünleriniz [Translator konuşma çevirisi API'si](./how-to-migrate-from-translator-speech-api.md)kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
 
 * [Translator Konuşma Çevirisi API'si konuşma hizmetine geçirme](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Konuşma SDK'sı](speech-sdk-reference.md)
+* [Konuşma SDK'sı](./speech-sdk.md)
 * [Konuşma Cihazları SDK’sı](speech-devices-sdk.md)
 * [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
 * [REST API: metinden konuşmaya](rest-text-to-speech.md)

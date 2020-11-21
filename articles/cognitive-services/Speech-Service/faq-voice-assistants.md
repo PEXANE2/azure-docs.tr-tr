@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d399507499a320116ff1c732a1ffc0ad84b5731
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74110349"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015451"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Sesli yardımcılar hakkında sık sorulan sorular
 
-Bu belgede sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](support.md)göz atın.
+Bu belgede sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)göz atın.
 
 ## <a name="general"></a>Genel
 
@@ -35,9 +35,9 @@ Y **:** [özel komutlar (Önizleme)](custom-commands.md) , görev tamamlama sena
 
 Y **:** Özel komutlar (Önizleme) uygulaması veya temel bot Framework bot oluşturmaya başlamak için en iyi yol.
 
-- [Özel komutlar (Önizleme) uygulaması oluşturma](quickstart-custom-speech-commands-create-new.md)
-- [Temel bir bot Framework bot oluşturma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [Bir bot 'ı doğrudan hat konuşma kanalına bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Özel komutlar (Önizleme) uygulaması oluşturma](./quickstart-custom-commands-application.md)
+- [Temel bir bot Framework bot oluşturma](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Bir bot 'ı doğrudan hat konuşma kanalına bağlama](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hata Ayıklama
 
@@ -62,7 +62,7 @@ Y **:** Aboneliğinizi Azure portal yönetirken, lütfen _bilişsel_ **Hizmetler
 Y **:** Bu hata, yardımcınızla ses Yardımcısı hizmeti arasında bir iletişim sorunu olduğunu gösterir.
 
 - Özel komutlar (Önizleme) için, özel komutlar (Önizleme) uygulamanızın yayımlandığından emin olun
-- Doğrudan hat konuşması için, [bot 'Unuzu doğrudan hat konuşma kanalına bağladığınıza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), bot 'Unuza [akış protokolü desteği](https://aka.ms/botframework/addstreamingprotocolsupport) (ilgili Web yuva desteğiyle) eklemiş olduğunuzdan emin olun ve ardından, bot 'un kanaldan gelen isteklere yanıt verdiğini denetleyin.
+- Doğrudan hat konuşması için, [bot 'Unuzu doğrudan hat konuşma kanalına bağladığınıza](/azure/bot-service/bot-service-channel-connect-directlinespeech), bot 'Unuza [akış protokolü desteği](/azure/bot-service/directline-speech-bot) (ilgili Web yuva desteğiyle) eklemiş olduğunuzdan emin olun ve ardından, bot 'un kanaldan gelen isteklere yanıt verdiğini denetleyin.
 
 **S: Bu kod hala çalışmıyor ve/veya kullanırken farklı bir hata alıyorum `DialogServiceConnector` . Ne yapmam gerekir?**
 

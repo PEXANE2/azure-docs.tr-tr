@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538759"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013744"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -138,7 +138,7 @@ Başarılı bir JSON yanıtı örneğine bakın:
 ## <a name="supported-languages-for-print-text"></a>Yazdırma metni için desteklenen diller
 [Okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) , yazdırılan metnin Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde ayıklanmasından sonra desteklenir.
 
-OCR destekli dillerin tam listesi için [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) bölümüne bakın.
+OCR destekli dillerin tam listesi için [desteklenen diller](./language-support.md#optical-character-recognition-ocr) bölümüne bakın.
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Okuma 3,2 Preview Basitleştirilmiş Çince ve Japonca ekler
 [Okuma 3,2 API genel önizlemesi](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) , Basitleştirilmiş Çince ve Japonca desteği ekler. Senaryonuz daha fazla dil desteklemelidir gerektiriyorsa, [OCR API 'si](#ocr-api) bölümüne bakın. 
@@ -150,7 +150,7 @@ Okuma işlemi şu anda yalnızca Ingilizce dilinde el yazısı metinleri ayıkla
 [3. x okuma REST API](./QuickStarts/CSharp-hand-text.md) , çoğu müşteri için tercih edilen seçenektir ve bu, kullanıma hazır hale getirerek tümleştirme ve hızlı üretkenlik açısından çok daha hızlı bir şekilde sağlanır. Müşterilerinizin gereksinimlerine odaklanmanız durumunda Azure ve Görüntü İşleme Hizmeti tanıtıcı ölçeği, performansı, veri güvenliği ve uyumluluk gereksinimlerini karşılamanız gerekir.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Docker kapsayıcılarıyla şirket içinde dağıtma
-[Docker kapsayıcısını oku (Önizleme)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) , yeni OCR özelliklerini kendi yerel ortamınızda dağıtmanıza olanak sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
+[Docker kapsayıcısını oku (Önizleme)](./computer-vision-how-to-install-containers.md) , yeni OCR özelliklerini kendi yerel ortamınızda dağıtmanıza olanak sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
 
 ## <a name="example-outputs"></a>Örnek çıktılar
 
@@ -186,7 +186,7 @@ Okuma API 'SI, genellikle karışık dil belgeleri olarak bilinen birden çok fa
 
 ## <a name="ocr-api"></a>OCR APı 'SI
 
-[OCR API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) , daha eski bir tanıma modeli kullanır, yalnızca görüntüleri destekler ve algılanan metinle anında dönerek zaman uyumlu olarak yürütülür. [OCR desteklenen dillere](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) bakın ve ardından API 'yi okuyun.
+[OCR API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) , daha eski bir tanıma modeli kullanır, yalnızca görüntüleri destekler ve algılanan metinle anında dönerek zaman uyumlu olarak yürütülür. [OCR desteklenen dillere](./language-support.md#optical-character-recognition-ocr) bakın ve ardından API 'yi okuyun.
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 

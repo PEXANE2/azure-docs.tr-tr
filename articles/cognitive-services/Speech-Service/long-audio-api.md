@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a538deb3b7da19261e1bc2b7c0d29f35315f786
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167768"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015422"
 ---
 # <a name="long-audio-api-preview"></a>Uzun ses API 'SI (Önizleme)
 
@@ -27,7 +27,7 @@ Uzun ses API 'sinin ek avantajları:
 * Sesleri hiçbiri gerçek zamanlı toplu iş modunda birleştirdiğinden ses uç noktası dağıtmanız gerekmez.
 
 > [!NOTE]
-> Uzun ses API 'SI artık [genel sinir seslerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) ve [özel sinir seslerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)desteklemektedir.
+> Uzun ses API 'SI artık [genel sinir seslerini](./language-support.md#neural-voices) ve [özel sinir seslerini](./how-to-custom-voice.md#custom-neural-voices)desteklemektedir.
 
 ## <a name="workflow"></a>İş akışı
 
@@ -44,7 +44,7 @@ Metin dosyanızı hazırlarken şunları yaptığınızdan emin olun:
 * Düz metin (. txt) ya da SSML metni (. txt)
 * , [Bayt sıra Işaretiyle UTF-8 olarak kodlanır (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)
 * ZIP değil tek bir dosyadır
-* SSML metni için düz metin veya 400 [faturalanabilir karakter](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) için 400 karakterden daha uzun ve 10.000 ' den az paragraf içeriyor
+* SSML metni için düz metin veya 400 [faturalanabilir karakter](./text-to-speech.md#pricing-note) için 400 karakterden daha uzun ve 10.000 ' den az paragraf içeriyor
   * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
   * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüleyin
 > [!NOTE]
@@ -107,14 +107,14 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
-**Publicvoice** parametresi **true**ise, Voice genel sinir sestir. Aksi takdirde, özel sinir sestir.
+**Publicvoice** parametresi **true** ise, Voice genel sinir sestir. Aksi takdirde, özel sinir sestir.
 
 ### <a name="convert-text-to-speech"></a>Metni konuşmaya Dönüştür
 
 Bir giriş metin dosyasını düz metin veya SSML metninde hazırlayın ve ardından aşağıdaki kodu ekleyin `voice_synthesis_client.py` :
 
 > [!NOTE]
-> ' concatenateResult ', isteğe bağlı bir parametredir. Bu parametre ayarlanmamışsa, her paragraf için ses çıkışları oluşturulacaktır. Ayrıca, parametresini ayarlayarak sesos 'yi 1 çıkışa ekleyebilirsiniz. Varsayılan olarak, Ses çıktısı Riff-16khz-16bit-mono-PCM olarak ayarlanır. Desteklenen ses çıkışları hakkında daha fazla bilgi için bkz. [ses çıkış biçimleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
+> ' concatenateResult ', isteğe bağlı bir parametredir. Bu parametre ayarlanmamışsa, her paragraf için ses çıkışları oluşturulacaktır. Ayrıca, parametresini ayarlayarak sesos 'yi 1 çıkışa ekleyebilirsiniz. Varsayılan olarak, Ses çıktısı Riff-16khz-16bit-mono-PCM olarak ayarlanır. Desteklenen ses çıkışları hakkında daha fazla bilgi için bkz. [ses çıkış biçimleri](#audio-output-formats).
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -278,14 +278,14 @@ Aşağıdaki tabloda, REST API HTTP yanıt kodlarının ve iletilerinin ayrınt�
 |        | 404 | Voice sensııd tanımında belirtilen model bulunamıyor: {ModelId}. | {ModelId} ' ın doğru olduğundan emin olun. |
 |        | 429 | Etkin ses sensimi sınırını aşıyor. Lütfen bazı isteklerin bitmesini bekleyin. | Sunucunun her bir Azure hesabı için en fazla 120 istek çalıştırmasına ve sıraya alma yapmasına izin verilir. Lütfen bekleyin ve bazı istekler tamamlanana kadar yeni istek gönderilmesini önleyin. |
 | Tümü       | 429 | Çok fazla istek var. | İstemcinin her bir Azure hesabı için saniyede en fazla 5 istek göndermesine izin verilir. Lütfen saniye başına istek miktarını azaltın. |
-| Sil    | 400 | Ses birleştirme görevi hala kullanımda. | Yalnızca **Tamamlanan** veya **başarısız**olan istekleri silebilirsiniz. |
+| Sil    | 400 | Ses birleştirme görevi hala kullanımda. | Yalnızca **Tamamlanan** veya **başarısız** olan istekleri silebilirsiniz. |
 | GetById   | 404 | Belirtilen varlık bulunamıyor. | Sen, ID 'nin doğru olduğundan emin olun. |
 
 ## <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
 
 Uzun ses API 'SI, benzersiz uç noktaları olan birden çok bölgede kullanılabilir.
 
-| Bölge | Uç Noktası |
+| Region | Uç Nokta |
 |--------|----------|
 | Doğu Avustralya | `https://australiaeast.customvoice.api.speech.microsoft.com` |
 | Orta Kanada | `https://canadacentral.customvoice.api.speech.microsoft.com` |

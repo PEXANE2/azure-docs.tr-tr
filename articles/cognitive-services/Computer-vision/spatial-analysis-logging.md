@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496105"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014586"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -51,7 +51,7 @@ Girişi
 Çıkışı
 1. Azure İzleyici
 
-Sağlanan uzamsal analiz telegraf modülü, uzamsal analiz kapsayıcısı tarafından sunulan tüm telemetri verilerini Azure Izleyici 'ye yayımlar. Aboneliğinize Azure Izleyici ekleme hakkında bilgi için bkz. [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) .
+Sağlanan uzamsal analiz telegraf modülü, uzamsal analiz kapsayıcısı tarafından sunulan tüm telemetri verilerini Azure Izleyici 'ye yayımlar. Aboneliğinize Azure Izleyici ekleme hakkında bilgi için bkz. [Azure izleyici](../../azure-monitor/overview.md) .
 
 Azure Izleyici 'yi ayarladıktan sonra, modülün telemetri göndermesini sağlayan kimlik bilgileri oluşturmanız gerekir. Yeni bir hizmet sorumlusu oluşturmak için Azure portal kullanabilir veya bir tane oluşturmak için aşağıdaki Azure CLı komutunu kullanabilirsiniz.
 
@@ -103,9 +103,9 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 ### <a name="system-health-events"></a>Sistem durumu olayları
 
-| Olay Adı | Açıklama|
+| Olay Adı | Description|
 |------|---------|
-|archon_exit    |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu*olarak değiştirdiğinde gönderilir.  |
+|archon_exit    |Kullanıcı, uzamsal analiz modülü durumunun *çalışmayı* *durduruldu* olarak değiştirdiğinde gönderilir.  |
 |archon_error   |Kapsayıcının içindeki işlemlerden herhangi biri kilitleniyorsa gönderilir. Bu kritik bir hatadır.  |
 |Inputrate  |Grafiğin video girişini işleme hızıdır. Her 5 dakikada bir raporlanır. | 
 |OutputRate     |Grafiğin AI öngörülerini çıkış hızı. Her 5 dakikada bir raporlanır. |
@@ -121,7 +121,7 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge cihaz sorunlarını giderme
 
-`iotedge`Çalışan modüllerin durumunu ve günlüklerini denetlemek için komut satırı aracını kullanabilirsiniz. Örneğin:
+`iotedge`Çalışan modüllerin durumunu ve günlüklerini denetlemek için komut satırı aracını kullanabilirsiniz. Örnek:
 * `iotedge list`: Çalışan modüllerin listesini raporlar. 
   İle ilgili hataları daha fazla kontrol edebilirsiniz `iotedge logs edgeAgent` . `iotedge`Takıldığında, ile yeniden başlatmayı deneyebilirsiniz`iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -199,7 +199,7 @@ IoT Edge portalından cihazınızı ve ardından **Tanılama** modülünü seçi
 **Azure Blob depolamaya yükleme yapılandırma**
 
 1. Henüz yapmadıysanız, kendi Azure Blob depolama hesabınızı oluşturun.
-2. Azure portal depolama hesabınızın **bağlantı dizesini** alın. **Erişim anahtarlarına**yer alır.
+2. Azure portal depolama hesabınızın **bağlantı dizesini** alın. **Erişim anahtarlarına** yer alır.
 3. Uzamsal analiz günlükleri şu dosya adı biçimiyle *rtcvlogs* adlı bir BLOB depolama kapsayıcısına otomatik olarak yüklenir: `{CONTAINER_NAME}/{START_TIME}-{END_TIME}-{QUERY_TIME}.log` .
 
 ```json
@@ -216,7 +216,7 @@ Günlükler, modüldeki IoT Edge yöntemi ile isteğe bağlı olarak karşıya y
 
 
 1. IoT Hub Portal sayfanıza gidin, **Edge cihazları**' nı seçin, sonra cihazınızı ve tanılama modülünüzü seçin. 
-2. Modülün ayrıntılar sayfasına gidin ve **_doğrudan yöntem_*_ sekmesine tıklayın.
+2. Modülün ayrıntılar sayfasına gidin ve **_doğrudan yöntem_* _ sekmesine tıklayın.
 3. `getRTCVLogs`Yöntem adı üzerine tür ve yük içindeki bir JSON biçim dizesi. `{}`Boş bir yük olan yazabilirsiniz. 
 4. Bağlantı ve yöntem zaman aşımlarını ayarlayın ve _ * Invoke yöntemi * * ' ye tıklayın.
 5. Hedef kapsayıcınızı seçin ve **günlük sözdizimi** bölümünde açıklanan parametreleri kullanarak bir yük JSON dizesi oluşturun. İsteği gerçekleştirmek için **Invoke yöntemi** ' ne tıklayın.
@@ -224,7 +224,7 @@ Günlükler, modüldeki IoT Edge yöntemi ile isteğe bağlı olarak karşıya y
 >[!NOTE]
 > `getRTCVLogs`Yöntemi boş bir yük ile çağırmak, cihaza dağıtılan tüm kapsayıcıların bir listesini döndürür. Yöntem adı büyük/küçük harfe duyarlıdır. Yanlış bir yöntem adı verildiyse 501 hatası alırsınız.
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Izleyici telemetri raporu":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="GetRTCVLogs yöntemini çağırma ":::
 ![getRTCVLogs doğrudan yöntem sayfası](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -232,7 +232,7 @@ Günlükler, modüldeki IoT Edge yöntemi ile isteğe bağlı olarak karşıya y
 
 Aşağıdaki tabloda, günlükleri sorgularken kullanabileceğiniz parametreler listelenmektedir.
 
-| Sözcükle | Açıklama | Varsayılan değer |
+| Sözcükle | Description | Varsayılan değer |
 |--|--|--|
 | StartTime | İstenen günlük başlangıç zamanı, milisaniye cinsinden UTC. | `-1`, kapsayıcının çalışma zamanının başlangıcı. `[-1.-1]`Zaman aralığı olarak kullanıldığında, API son bir saatten günlükleri döndürür.|
 | EndTime | İstenen günlük bitiş saati (milisaniye olarak UTC). | `-1`, geçerli saat. `[-1.-1]`Zaman aralığı kullanıldığında, API son bir saatten günlükleri döndürür. |
@@ -243,9 +243,9 @@ Aşağıdaki tabloda, günlükleri sorgularken kullanabileceğiniz parametreler 
 
 Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 
-| Sözcükle | Açıklama|
+| Sözcükle | Description|
 |--|--|
-|DoPost| *True* ya da *false*. Günlüklerin karşıya yüklenip yüklenmediğini belirtir. Günlükleri karşıya yüklememe seçeneğini belirlediğinizde, API bilgileri "**zaman uyumlu**_" döndürür. Günlükleri karşıya yüklemeyi seçtiğinizde, API, istek geçerliyse 200 döndürür ve günlükleri _*_zaman uyumsuz_*_ olarak karşıya yüklemeye başlar.|
+|DoPost| *True* ya da *false*. Günlüklerin karşıya yüklenip yüklenmediğini belirtir. Günlükleri karşıya yüklememe seçeneğini belirlediğinizde, API bilgileri "**zaman uyumlu** _" döndürür. Günlükleri karşıya yüklemeyi seçtiğinizde, API, istek geçerliyse 200 döndürür ve günlükleri _*_zaman uyumsuz_*_ olarak karşıya yüklemeye başlar.|
 |TimeFilter| Günlüklere uygulanan zaman filtresi.|
 |ValueFilters| Günlüklere uygulanan anahtar sözcük filtreleri. |
 |Ilişkin| Yöntem yürütme başlangıç zamanı. |
@@ -316,8 +316,8 @@ Azure Stack Edge cihazınızın durumunu hata ayıklama ve doğrulamaya yönelik
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Kubernetes API uç noktasına erişin. 
 
-1. Cihazınızın yerel kullanıcı arabiriminde _*cihazlar** sayfasına gidin. 
-2. **Cihaz uç noktaları**altında Kubernetes API hizmet uç noktasını kopyalayın. Bu uç nokta aşağıdaki biçimde bir dizedir: `https://compute..[device-IP-address]` .
+1. Cihazınızın yerel kullanıcı arabiriminde _ *cihazlar** sayfasına gidin. 
+2. **Cihaz uç noktaları** altında Kubernetes API hizmet uç noktasını kopyalayın. Bu uç nokta aşağıdaki biçimde bir dizedir: `https://compute..[device-IP-address]` .
 3. Uç nokta dizesini kaydedin. Bunu daha sonra `kubectl` Kubernetes kümesine erişmek üzere yapılandırırken kullanacaksınız.
 
 ### <a name="connect-to-powershell-interface"></a>PowerShell arabirimine Bağlan
@@ -326,7 +326,7 @@ Uzaktan, bir Windows istemcisinden bağlanın. Kubernetes kümesi oluşturuldukt
 
 > [!TIP]
 > * Başlamadan önce, Windows istemcinizin Windows PowerShell 5,0 veya sonraki bir sürümünü çalıştırdığından emin olun.
-> * PowerShell, [Linux üzerinde de kullanılabilir](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux).
+> * PowerShell, [Linux üzerinde de kullanılabilir](/powershell/scripting/install/installing-powershell-core-on-linux).
 
 1. Yönetici olarak bir Windows PowerShell oturumu çalıştırın. 
     1. Windows Uzaktan Yönetimi hizmetinin istemciniz üzerinde çalıştığından emin olun. Komut istemine yazın `winrm quickconfig` .
@@ -357,7 +357,7 @@ Kubernetes kümesi oluşturulduktan sonra, `kubectl` kümeye erişmek için komu
     New-HcsKubernetesNamespace -Namespace
     ```
 
-2. Bir kullanıcı oluşturun ve bir yapılandırma dosyası alın. Bu komut, Kubernetes kümesi için yapılandırma bilgilerini çıktısını alacak. Bu bilgileri kopyalayın ve *config*adlı bir dosyaya kaydedin. Dosyayı bir dosya uzantısı olarak kaydetmeyin.
+2. Bir kullanıcı oluşturun ve bir yapılandırma dosyası alın. Bu komut, Kubernetes kümesi için yapılandırma bilgilerini çıktısını alacak. Bu bilgileri kopyalayın ve *config* adlı bir dosyaya kaydedin. Dosyayı bir dosya uzantısı olarak kaydetmeyin.
     
     ```powershell
     New-HcsKubernetesUser -UserName
@@ -397,7 +397,7 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 |Komut  |Açıklama  |
 |---------|---------|
-|`Get-HcsKubernetesUserConfig -AseUser`     | Bir Kubernetes yapılandırma dosyası oluşturur. Komutunu kullanırken, bilgileri *config*adlı bir dosyaya kopyalayın. Dosyayı dosya uzantısıyla kaydetme.        |
+|`Get-HcsKubernetesUserConfig -AseUser`     | Bir Kubernetes yapılandırma dosyası oluşturur. Komutunu kullanırken, bilgileri *config* adlı bir dosyaya kopyalayın. Dosyayı dosya uzantısıyla kaydetme.        |
 | `Get-HcsApplianceInfo` | Cihazınız hakkında bilgi döndürür. |
 | `Enable-HcsSupportAccess` | Destek oturumu başlatmak için erişim kimlik bilgileri oluşturur. |
 

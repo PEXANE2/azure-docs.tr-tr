@@ -4,12 +4,12 @@ description: App Service uygulamanızdan iş süreçlerini çağırmayı öğren
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397445"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014671"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Öğretici: App Service e-posta gönderin ve diğer iş süreçlerini çağırın
 
@@ -54,11 +54,11 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 
 ## <a name="create-the-logic-app"></a>Mantıksal uygulama oluşturma
 
-1. [Azure Portal](https://portal.azure.com), [mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)bölümündeki yönergeleri izleyerek boş bir mantıksal uygulama oluşturun. **Logic Apps tasarımcısını**gördüğünüzde Bu öğreticiye geri dönün.
-1. Logic Apps Tasarımcısı ' nın giriş sayfasında, **ortak bir tetikleyiciden başlayarak**bir **http isteği alındığında** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com), [mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)bölümündeki yönergeleri izleyerek boş bir mantıksal uygulama oluşturun. **Logic Apps tasarımcısını** gördüğünüzde Bu öğreticiye geri dönün.
+1. Logic Apps Tasarımcısı ' nın giriş sayfasında, **ortak bir tetikleyiciden başlayarak** bir **http isteği alındığında** ' ı seçin.
 
     ![Bir H T T isteği alındığında, ile Logic Apps tasarımcı için giriş sayfasını gösteren ekran görüntüsü.](./media/tutorial-send-email/receive-http-request.png)
-1. **Http isteğinin alındığı zaman**iletişim kutusunda, **şema oluşturmak Için örnek yük kullan**' ı seçin.
+1. **Http isteğinin alındığı zaman** iletişim kutusunda, **şema oluşturmak Için örnek yük kullan**' ı seçin.
 
     ![Bir g/ç isteği oluştur iletişim kutusu ve seçilen şema için örnek yükü Kullan seçili olan ekran görüntüsü. ](./media/tutorial-send-email/generate-schema-with-payload.png)
 
@@ -103,9 +103,9 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 
 1. **Yeni parametre Ekle** açılan menüsünde **Konu** ve **gövde**' yi seçin.
 
-1. **Konu** metin kutusuna tıklayın ve aynı şekilde **görev**' i seçin. İmleç hala **Konu** kutusuna, *oluşturuldu*yazın. 
+1. **Konu** metin kutusuna tıklayın ve aynı şekilde **görev**' i seçin. İmleç hala **Konu** kutusuna, *oluşturuldu* yazın. 
 
-1. **Gövdeye**tıklayın ve aynı şekilde, **son**' u seçin. İmleci **süresi** sola taşı ve *Bu iş öğesinin son tarihini*yazın.
+1. **Gövdeye** tıklayın ve aynı şekilde, **son**' u seçin. İmleci **süresi** sola taşı ve *Bu iş öğesinin son tarihini* yazın.
 
     > [!TIP]
     > HTML içeriğini doğrudan e-posta gövdesinde düzenlemek istiyorsanız, Logic Apps tasarımcı penceresinin en üstündeki **kod görünümü** ' nü seçin. Yalnızca dinamik içerik kodunu koruduğunuzdan emin olun (örneğin, `@{triggerBody()?['due']}` )
@@ -153,7 +153,7 @@ Bir örnek görmek için aşağıdaki tercih edilen dil/çerçeve sekmesine tık
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-ASP.NET ' de, HTTP POST 'u [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
+ASP.NET ' de, HTTP POST 'u [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örnek:
 
 ```csharp
 // requires using System.Net.Http;
@@ -178,7 +178,7 @@ Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'DA SQL veritaba
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-ASP.NET Core ' de, HTTP gönderisini [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
+ASP.NET Core ' de, HTTP gönderisini [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örnek:
 
 ```csharp
 // requires using System.Net.Http;
@@ -206,7 +206,7 @@ Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de bir ASP.NE
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-Node.js, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örneğin:
+Node.js, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örnek:
 
 ```javascript
 // Requires npm install --save axios
@@ -233,7 +233,7 @@ Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da bir Node.js 
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-PHP 'de, HTTP POST 'u [guzzle](http://docs.guzzlephp.org/en/stable/index.html)ile kolayca gönderebilirsiniz. Örneğin:
+PHP 'de, HTTP POST 'u [guzzle](http://docs.guzzlephp.org/en/stable/index.html)ile kolayca gönderebilirsiniz. Örnek:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -265,7 +265,7 @@ Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da BIR php ve M
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Python 'da HTTP POST 'u [isteklerle](https://pypi.org/project/requests/)kolayca gönderebilirsiniz. Örneğin:
+Python 'da HTTP POST 'u [isteklerle](https://pypi.org/project/requests/)kolayca gönderebilirsiniz. Örnek:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -296,7 +296,7 @@ Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de PostgreSQL
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-Ruby 'de, HTTP POST 'u [Jsonclient](https://www.rubydoc.info/gems/httpclient/JSONClient)ile kolayca gönderebilirsiniz. Örneğin:
+Ruby 'de, HTTP POST 'u JSONClient ile kolayca gönderebilirsiniz. Örnek:
 
 ```ruby
 clnt = JSONClient.new

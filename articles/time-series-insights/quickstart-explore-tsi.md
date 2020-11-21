@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/02/2020
-ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666543"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016233"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Hızlı başlangıç: Azure Time Series Insights Gen2 demo ortamını keşfet
 
@@ -38,24 +38,24 @@ Azure Time Series Insights Gen2 Explorer geçmiş verileri ve kök neden analizi
 
 ## <a name="work-with-historical-data"></a>Geçmiş verilerle çalışma
 
-1. **Contoso bitki 1**' de rüzgar türbin **W7**bölümüne bakın.  
+1. **Contoso bitki 1**' de rüzgar türbin **W7** bölümüne bakın.  
 
    1. Görünüm aralığını **1/1/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
    1. Bir algılayıcı seçmek için **contoso bitki 1**  >  **W7**  >  **Generator sistem**  >  **generatorspeed**' i seçin. Ardından, gösterilen değerleri gözden geçirin.
 
       [![Contoso tesis 1 ' de W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
-1. Contoso, Rüzgar Turbin **W7**içinde bir yangın buldu. Opın ons, yangın ne olduğuna ilişkin farklılık gösterir. Azure Time Series Insights Gen2 ' de, yangın sırasında etkinleştirilen yangın uyarı algılayıcısı görüntülenir.
+1. Contoso, Rüzgar Turbin **W7** içinde bir yangın buldu. Opın ons, yangın ne olduğuna ilişkin farklılık gösterir. Azure Time Series Insights Gen2 ' de, yangın sırasında etkinleştirilen yangın uyarı algılayıcısı görüntülenir.
 
    1. Görünüm aralığını **3/9/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
-   1. **Güvenlik sistemi**  >  **firealert**öğesini seçin.
+   1. **Güvenlik sistemi**  >  **firealert** öğesini seçin.
 
       [![Contoso, Rüzgar Turbin W7 'de bir yangın buldu](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. Ne olduğunu anlamak için yangın süresi etrafında diğer olayları gözden geçirin. Yağ baskısı ve etkin uyarılar, yalnızca yangın 'tan önce.
 
    1. **Sıklık sistem**  >  **Hidrolik licoilbasıncı**' nı seçin.
-   1. **Aralıklı sistem**  >  **activewarning**öğesini seçin.
+   1. **Aralıklı sistem**  >  **activewarning** öğesini seçin.
 
       [![Aynı anda diğer olayları gözden geçirme](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
@@ -79,7 +79,7 @@ Azure Time Series Insights Gen2 ve algılayıcı telemetrisi kullanarak, geçmi�
 
 ## <a name="root-cause-analysis"></a>Kök neden analizi
 
-1. Bazı senaryolar, verilerdeki ipuçlarına yönelik gelişmiş analizler gerektirir. **6/25**tarihinde Windmill **W6** seçin.
+1. Bazı senaryolar, verilerdeki ipuçlarına yönelik gelişmiş analizler gerektirir. **6/25** tarihinde Windmill **W6** seçin.
 
     1. Görünüm aralığını **6/1/17 20:00:00.00 olarak 7/1/17 20:00:00.00 (UTC)** olarak değiştirin.
     1. **Contoso bitki 1**  >  **W6**  >  **güvenlik sistemi**  >  **VoltageActuatorSwitchWarning**' nı seçin.
@@ -89,8 +89,8 @@ Azure Time Series Insights Gen2 ve algılayıcı telemetrisi kullanarak, geçmi�
 1. Uyarı, oluşturucunun gerilimiyle ilgili bir sorun olduğunu gösterir. Oluşturucunun genel güç çıkışı, geçerli aralıktaki normal parametreler içindedir. Zaman sıklığımızı artırarak başka bir model ortaya çıktı. Bir bırakma kapalı olur.
 
     1. **VoltageActuatorSwitchWarning** algılayıcısı 'nı kaldırın.
-    1. **Generator sistem**  >  **activepower**öğesini seçin.
-    1. Aralığı **3B**olarak değiştirin.
+    1. **Generator sistem**  >  **activepower** öğesini seçin.
+    1. Aralığı **3B** olarak değiştirin.
 
        [![Aralığı 3B olarak değiştirme](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
@@ -102,7 +102,7 @@ Azure Time Series Insights Gen2 ve algılayıcı telemetrisi kullanarak, geçmi�
 
 1. Diğer algılayıcı veri noktaları, daha fazla bağlam sağlamak için eklenebilir. Daha fazla algılayıcı, sorunun anlaşılmasından daha fazla bilgi sahibi. Gerçek değerleri göstermek için bir işaret bırakmaya izin verin.
 
-    1. **Oluşturucu sistemi**' ni seçin ve ardından üç algılayıcı seçin **: GridVoltagePhase1**, **GridVoltagePhase2**ve **GridVoltagePhase3**.
+    1. **Oluşturucu sistemi**' ni seçin ve ardından üç algılayıcı seçin **: GridVoltagePhase1**, **GridVoltagePhase2** ve **GridVoltagePhase3**.
     1. Görünür alandaki son veri noktasında bir işaretleyici bırakın.
 
        [![İşaretleyici bırak](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
@@ -127,9 +127,9 @@ Hızlı başlangıcı tamamladığınıza göre, oluşturduğunuz kaynakları te
 Kendi Azure Time Series Insights Gen2 ortamınızı oluşturmaya hazırsınız. Başlamak için:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 ortamınızı planlayın](time-series-insights-update-plan.md)
+> [Azure Time Series Insights Gen2 ortamınızı planlayın](./how-to-plan-your-environment.md)
 
 Tanıtım ve özelliklerini kullanmayı öğrenin:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 Explorer](time-series-insights-update-explorer.md)
+> [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md)

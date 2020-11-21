@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313544"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016267"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 
@@ -68,7 +68,7 @@ Azure SYNAPSE Analytics portalından Spark havuzuna (Önizleme) güncelleştirme
    
 2.  Azure portal Azure SYNAPSE Analytics çalışma alanınızı başlatın.
 
-3.  Ana Gezinti panelinden **Yönet** ' i seçin ve ardından **Apache Spark havuzları** ' nı seçin.
+3.  Ana Gezinti panelinden **Yönet** ' i seçin ve ardından **Apache Spark havuzları**' nı seçin.
    
 4. Tek bir Spark havuzu seçin ve sayfanın  **paketler** bölümündeki dosya seçicisini kullanarak ortam yapılandırma dosyasını karşıya yükleyin.
 
@@ -92,9 +92,9 @@ Bir kitaplığı bir Spark havuzuna (Önizleme) doğrudan Azure portal yüklemek
 Doğru kitaplıkların doğru sürümlerinin yüklenip yüklenmediğini doğrulamak için aşağıdaki kodu çalıştırın
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>Python paketlerini güncelleştirme
 Paketler, oturumlar arasında dilediğiniz zaman eklenebilir veya değiştirilebilir. Yeni bir paket yapılandırma dosyası karşıya yüklendiğinde, bu, var olan paketlerin ve sürümlerin üzerine yazar.  

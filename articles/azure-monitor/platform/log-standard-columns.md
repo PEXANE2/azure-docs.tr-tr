@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104249"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014229"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde standart sütunlar
 Azure Izleyici günlüklerindeki veriler, her biri benzersiz bir sütun kümesine sahip belirli bir veri türüne sahip bir [Log Analytics çalışma alanında veya Application Insights uygulamasında bir kayıt kümesi olarak depolanır](./data-platform-logs.md). Birçok veri türü, birden çok tür genelinde ortak olan standart sütunlara sahip olacaktır. Bu makale, bu sütunları açıklar ve bunları sorgularda nasıl kullanabileceğinizi gösteren örnekler sağlar.
@@ -48,7 +48,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_Timerecelmiş
-** \_ Timerectitim** sütunu, Azure bulutundaki Azure izleyici alma noktası tarafından kaydın alındığı tarih ve saati içerir. Bu, veri kaynağı ve bulut arasındaki gecikme sorunlarını belirlemek için yararlı olabilir. Bir örneğin, bir aracıdan alınan verilerle gecikmeye neden olan bir ağ sorunu olabilir. Daha fazla ayrıntı için bkz. [Azure izleyici 'de günlük verisi alma süresi](data-ingestion-time.md) .
+**\_ Timerectitim** sütunu, Azure bulutundaki Azure izleyici alma noktası tarafından kaydın alındığı tarih ve saati içerir. Bu, veri kaynağı ve bulut arasındaki gecikme sorunlarını belirlemek için yararlı olabilir. Bir örneğin, bir aracıdan alınan verilerle gecikmeye neden olan bir ağ sorunu olabilir. Daha fazla ayrıntı için bkz. [Azure izleyici 'de günlük verisi alma süresi](data-ingestion-time.md) .
 
 Aşağıdaki sorgu, bir aracıdan gelen olay kayıtları için saate göre ortalama gecikme süresini verir. Bu, aracıdan buluta kadar olan süreyi ve kayıt sorgularının günlük sorguları için kullanılabilir olması için toplam süreyi içerir.
 
@@ -74,11 +74,11 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ID
-** \_ ItemId** sütunu, kayıt için benzersiz bir tanımlayıcı tutar.
+**\_ ItemId** sütunu, kayıt için benzersiz bir tanımlayıcı tutar.
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-** \_ RESOURCEID** sütunu, kaydın ilişkilendirildiği kaynak için benzersiz bir tanımlayıcı tutar. Bu, sorgunuzu yalnızca belirli bir kaynaktaki kayıtlarla birleştirmek veya ilgili verileri birden çok tablo genelinde birleştirmek için kullanabileceğiniz standart bir sütun sağlar.
+**\_ RESOURCEID** sütunu, kaydın ilişkilendirildiği kaynak için benzersiz bir tanımlayıcı tutar. Bu, sorgunuzu yalnızca belirli bir kaynaktaki kayıtlarla birleştirmek veya ilgili verileri birden çok tablo genelinde birleştirmek için kullanabileceğiniz standart bir sütun sağlar.
 
 Azure kaynakları için **_ResourceId** değeri [Azure kaynak kimliği URL 'sidir](../../azure-resource-manager/templates/template-functions-resource.md). Sütun şu anda Azure kaynaklarıyla sınırlıdır, ancak şirket içi bilgisayarlar gibi Azure dışındaki kaynaklara genişletilir.
 
@@ -124,7 +124,7 @@ union withsource = tt *
 `union withsource = tt *`Veri türlerindeki taramaların yürütülmesi pahalı olduğundan bu sorguları dikkatli bir şekilde kullanın.
 
 ## <a name="_isbillable"></a>\_Miktarbirimi
-** \_ Ifaturalanabilir** sütun, alınan verilerin faturalandırılabilir olup olmadığını belirtir. ** \_ Ifaturalanabilir** değerine eşit olan veriler `false` ücretsiz olarak toplanır ve Azure hesabınıza faturalandırılmaz.
+**\_ Ifaturalanabilir** sütun, alınan verilerin faturalandırılabilir olup olmadığını belirtir. **\_ Ifaturalanabilir** değerine eşit olan veriler `false` ücretsiz olarak toplanır ve Azure hesabınıza faturalandırılmaz.
 
 ### <a name="examples"></a>Örnekler
 Faturalanan veri türlerini gönderen bilgisayarların listesini almak için aşağıdaki sorguyu kullanın:
@@ -151,7 +151,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-** \_ Billedsize** sütunu, ** \_ ısfaturalandırılabilir** değeri true ise Azure hesabınıza faturalandırılacak verilerin bayt cinsinden boyutunu belirtir.
+**\_ Billedsize** sütunu, **\_ ısfaturalandırılabilir** değeri true ise Azure hesabınıza faturalandırılacak verilerin bayt cinsinden boyutunu belirtir.
 
 
 ### <a name="examples"></a>Örnekler
@@ -211,4 +211,4 @@ union withsource = tt *
 
 - [Azure izleyici günlük verilerinin nasıl depolandığı](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Günlük sorgularını yazarken](../log-query/get-started-queries.md)bir ders alın.
-- [Günlük sorgularında tabloları birleştirme](../log-query/joins.md)konusunda bir ders alın.
+- [Günlük sorgularında tabloları birleştirme](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)konusunda bir ders alın.

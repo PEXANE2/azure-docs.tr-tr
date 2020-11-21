@@ -8,30 +8,32 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/13/2020
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616102"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013005"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Çalışma alanınızı özel DNS sunucusuyla kullanma
 
-Bir sanal ağla Azure Machine Learning kullanırken, [DNS ad çözümlemesini işlemenin birkaç yolu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)vardır. Varsayılan olarak, Azure, çalışma alanınız ve özel uç noktanız için ad çözümlemesini otomatik olarak işler. Bunun yerine _kendi özel DNS sunucunuzu kullanıyorsanız_ , çalışma alanı için el ile DNS girdileri oluşturmanız gerekir.
+Özel bir uç nokta ile Azure Machine Learning çalışma alanı kullanırken, [DNS ad çözümlemesini işlemek için birkaç yol](../private-link/private-endpoint-dns.md)vardır. Varsayılan olarak, Azure, çalışma alanınız ve özel uç noktanız için ad çözümlemesini otomatik olarak işler. Bunun yerine _kendi özel DNS sunucunuzu kullanıyorsanız_, çalışma alanı için el ile DNS girdileri oluşturmanız gerekir.
 
 > [!IMPORTANT]
 > Bu makalede, bu girdilerin yalnızca tam etki alanı adını (FQDN) ve IP adreslerini bulmak için DNS kayıtlarını yapılandırma hakkında bilgi sağlamayan bilgiler yer alır. Kayıt ekleme hakkında bilgi edinmek için DNS yazılımınızın belgelerine bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Kendı DNS sunucunuzu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)kullanan bir Azure sanal ağı.
 
 - Özel uç noktası olan bir Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 - [Eğitim & çıkarımı sırasında ağ yalıtımının](./how-to-network-security-overview.md)kullanılmasıyla ilgili benzerlik.
+
+- [Azure özel uç nokta DNS bölge yapılandırmasıyla](../private-link/private-endpoint-dns.md) benzerlik
 
 - İsteğe bağlı olarak, [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -43,7 +45,7 @@ Aşağıdaki liste, çalışma alanınız ve özel uç nokta tarafından kullan�
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
 * Bir işlem örneği oluşturursanız, `<instance-name>.<region>.instances.azureml.ms` çalışma alanı özel uç noktasının özel IP 'si ile için bir giriş de eklemeniz gerekir.
 
     > [!NOTE]
@@ -70,7 +72,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 # <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com), Azure Machine Learning __çalışma alanınızı__ seçin.
-1. __Ayarlar__ bölümünde, __Özel uç nokta bağlantıları__ ' nı seçin.
+1. __Ayarlar__ bölümünde, __Özel uç nokta bağlantıları__' nı seçin.
 1. Görüntülenen __Özel uç nokta__ sütunundaki bağlantıyı seçin.
 1. Çalışma alanı özel uç noktası için tam etki alanı adlarının (FQDN) ve IP adreslerinin listesi sayfanın en altında bulunur.
 

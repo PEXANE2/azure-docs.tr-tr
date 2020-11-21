@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1ef317ee3917172d0de204adafe5d5bf21a2a9ac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976377"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014518"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmette güncel kalmak için bu sayfaya yer işareti ekleyin.
 
-## <a name="october-2020"></a>2020 Ekim
+## <a name="october-2020"></a>Ekim 2020
 
 ### <a name="computer-vision-api-v31-ga"></a>Görüntü İşleme API'si v 3.1 GA
 
@@ -80,7 +80,7 @@ Artık görüntülerden yazdırılmış veya el yazısı metin ayıklamak için 
 * Ayıklanan her sözcüğün Güvenirlik puanı
 * Ek dil parametresiyle hem Ispanyolca hem de Ingilizce diller için destek
 
-3,0 API 'sini kullanmaya başlamak için [Extract metin hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) başlangıcını izleyin.
+3,0 API 'sini kullanmaya başlamak için [Extract metin hızlı](./quickstarts/csharp-hand-text.md?tabs=version-3) başlangıcını izleyin.
 
 ## <a name="cognitive-service-updates"></a>Bilişsel hizmet güncelleştirmeleri
 

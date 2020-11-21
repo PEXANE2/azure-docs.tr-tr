@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312311"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012911"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -52,7 +52,7 @@ Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangı�
     - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)yükler.
     - [Azure MACHINE LEARNING rl SDK 'sını](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py)yükler:`pip install --upgrade azureml-contrib-reinforcementlearning`
     - Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.
-    - Dağıtılmış pekiştirmeye dayalı öğrenimi için kullanılan ağ bağlantı noktalarını açmak için sanal ağ [Kurulum Not defterini](https://aka.ms/azure-rl-env-setup) çalıştırın.
+    - Dağıtılmış pekiştirmeye dayalı öğrenimi için kullanılan ağ bağlantı noktalarını açmak için sanal ağı çalıştırın.
 
 
 ## <a name="how-to-train-a-pong-playing-agent"></a>Pong-çalıyor aracısını eğitme

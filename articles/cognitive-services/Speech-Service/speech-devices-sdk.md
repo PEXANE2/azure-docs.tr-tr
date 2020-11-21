@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 560c156c8e2c3d69c099b2ad573fa0d214f3f80b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0309329b37436022dc88f8951853c4bb09a2c080
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355083"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015282"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Konuşma cihazları SDK 'Sı nedir?
 
@@ -29,9 +29,9 @@ Konuşma cihazları SDK 'Sı şunları yapmanıza yardımcı olabilir:
 
 Konuşma cihazları SDK 'sı [konuşma SDK 'sını](speech-sdk.md)kullanır. Sesi [konuşma hizmetine](overview.md)göndermek için cihazın mikrofon dizisiyle gelişmiş ses işleme algoritmalarınızı kullanma. Gürültü gizleme, yankı iptali, beamoluşturan ve dertal beration aracılığıyla doğru ve çok alan [konuşma tanıma özelliği](speech-to-text.md) sağlar.
 
-Ayrıca, kendi [özelleştirilmiş anahtar kelime](speech-devices-sdk-create-kws.md)sahip çevresel aygıtlar oluşturmak Için konuşma cihazları SDK 'sını de kullanabilirsiniz. Özel bir anahtar sözcük, markanız için benzersiz olan bir kullanıcı etkileşimini Başlatan bir ipucu sağlar.
+Ayrıca, kendi [özelleştirilmiş anahtar kelime](./custom-keyword-basics.md)sahip çevresel aygıtlar oluşturmak Için konuşma cihazları SDK 'sını de kullanabilirsiniz. Özel bir anahtar sözcük, markanız için benzersiz olan bir kullanıcı etkileşimini Başlatan bir ipucu sağlar.
 
-Konuşma cihazları SDK 'Sı, [sesli yardımcılar](https://aka.ms/bots/speech/va), sürücü temelli sıralama sistemleri, [konuşma dökümü](conversation-transcription-service.md)ve akıllı hoparlörler gibi çeşitli ses özellikli senaryolara izin vermez. Kullanıcılara bir metin ile yanıt verebilir, varsayılan veya [özel bir sesle](how-to-customize-voice-font.md)geri konuşabilirsiniz, arama sonuçları sağlayabilir, diğer dillere [çevirebilir](speech-translation.md) ve daha fazlasını yapabilirsiniz. Neleri geliştirdiklerinizi görmek için ileri bakıyoruz!
+Konuşma cihazları SDK 'Sı, [sesli yardımcılar](./voice-assistants.md), sürücü temelli sıralama sistemleri, [konuşma dökümü](./conversation-transcription.md)ve akıllı hoparlörler gibi çeşitli ses özellikli senaryolara izin vermez. Kullanıcılara bir metin ile yanıt verebilir, varsayılan veya [özel bir sesle](./how-to-custom-voice-create-voice.md)geri konuşabilirsiniz, arama sonuçları sağlayabilir, diğer dillere [çevirebilir](speech-translation.md) ve daha fazlasını yapabilirsiniz. Neleri geliştirdiklerinizi görmek için ileri bakıyoruz!
 
 ## <a name="get-the-speech-devices-sdk"></a>Konuşma Cihazları SDK’sını edinme
 

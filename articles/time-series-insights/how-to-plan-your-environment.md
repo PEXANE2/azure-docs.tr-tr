@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598119"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016794"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamınızı planlayın
 
@@ -45,7 +45,7 @@ Sağlama sürecinin bir parçası olarak, bir ısınma deposunu etkinleştirmek 
 Isınma mağazasındaki sorgular ücretsizdir, ancak soğuk depodaki sorgular maliyetlendirilir. Sorgu desenlerinizi anlamanız ve ısınma Mağazası yapılandırmanızı buna göre planlamanız önemlidir. En son veriler üzerinde etkileşimli analizler 'in, ısınma mağazalarınızın yanı sıra, uzun süreli eğilimler soğuk bir şekilde bulunmasını öneririz.
 
 > [!NOTE]
-> Isınma verilerinizi sorgulama hakkında daha fazla bilgi edinmek için [API başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)okuyun.
+> Isınma verilerinizi sorgulama hakkında daha fazla bilgi edinmek için [API başvurusunu](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)okuyun.
 
 Başlamak için üç ek öğe gereklidir:
 
@@ -64,7 +64,7 @@ Yeni bir Azure Time Series Insights ortamı oluşturmak için bir zaman serisi K
 > [!IMPORTANT]
 > Zaman serisi kimlikleri *daha sonra değiştirilemez*. Son seçim ve ilk kullanmadan önce her birini doğrulayın.
 
-Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, [zaman SERISI kimliği ve alım kuralları seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md) okuyun. [Ingestion rules](concepts-json-flattening-escaping-rules.md)
+Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, [zaman SERISI kimliği ve alım kuralları seçmek üzere en iyi uygulamaları](./how-to-select-tsid.md) okuyun. [Ingestion rules](concepts-json-flattening-escaping-rules.md)
 
 **Timestamp** özelliği de önemlidir. Olay kaynaklarını eklediğinizde bu özelliği belirleyebilirsiniz. Her olay kaynağında, olay kaynaklarını zaman içinde izlemek için kullanılan isteğe bağlı bir zaman damgası özelliği vardır. Zaman damgası değerleri büyük/küçük harfe duyarlıdır ve her bir olay kaynağının tek bir belirtimine biçimlendirilmelidir.
 
@@ -74,7 +74,7 @@ Boş bırakıldığında, olayın IoT Hub sırada sıraya alındığı veya Olay
 
 Artık Azure Time Series Insights ortamınızın zaman serisi modelini yapılandırabilirsiniz. Yeni model IoT verilerini bulmayı ve çözümlemeyi kolaylaştırır. Zaman serisi verilerinin listesini alma, bakım ve zenginleştirmeye olanak sağlar ve tüketiciye yönelik veri kümelerini hazırlamaya yardımcı olur. Model, benzersiz kaynağı türler ve hiyerarşiler olarak bilinen değişkenlerle ilişkilendiren bir örnekle eşlenen zaman serisi kimliklerini kullanır. Daha fazla bilgi edinmek için [zaman serisi modeline](./concepts-model-overview.md) genel bakış konusunu okuyun.
 
-Model dinamiktir, bu nedenle herhangi bir zamanda derlenebilir. Hızlı bir başlangıç yapmak için, Azure Time Series Insights verileri dağıtmadan önce derleyin ve karşıya yükleyin. Modelinizi derlemek için [zaman serisi modelini kullanın](/azure/time-series-insights/concepts-model-overview)' ı okuyun.
+Model dinamiktir, bu nedenle herhangi bir zamanda derlenebilir. Hızlı bir başlangıç yapmak için, Azure Time Series Insights verileri dağıtmadan önce derleyin ve karşıya yükleyin. Modelinizi derlemek için [zaman serisi modelini kullanın](./concepts-model-overview.md)' ı okuyun.
 
 Birçok müşteri için, zaman serisi modeli mevcut bir varlık modeliyle veya ERP sistemiyle eşlenir. Mevcut bir modeliniz yoksa, hızlı bir şekilde çalışmaya başlaması için önceden oluşturulmuş bir kullanıcı deneyimi [sağlanır](https://github.com/Microsoft/tsiclient) . Bir modelin size nasıl yardımcı olabileceğini öğrenmek için [örnek Tanıtım ortamını](https://insights.timeseries.azure.com/preview/demo)görüntüleyin.
 

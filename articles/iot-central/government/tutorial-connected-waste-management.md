@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a7f5ec0231612a2cee2a9435144c886527c228e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972423"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014484"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
 
@@ -58,7 +58,7 @@ Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için
 2. Aşağıdaki alanlarla **Yeni uygulama** oluşturma formunu açacak **uygulama oluştur**' a tıklayın:
     * **Uygulama adı**. Varsayılan olarak, uygulama *bağlı çöp yönetimini* ve ardından IoT Central oluşturduğu BENZERSIZ bir kimlik dizesini kullanır. İsteğe bağlı olarak, kolay bir uygulama adı seçin. Uygulama adını daha sonra değiştirebilirsiniz.
     * **URL** : isteğe bağlı olarak, istediğiniz URL 'yi seçebilirsiniz. URL 'YI daha sonra değiştirebilirsiniz. 
-    * Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
+    * Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi* girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
     Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central.md).
 
@@ -69,7 +69,7 @@ Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için
     ![Azure IoT Central bağlı faturalandırma bilgileri oluşturma](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-6. Artık Azure IoT Central **bağlı çöp yönetimi şablonunu**kullanarak bağlı bir çöp yönetimi uygulaması oluşturdunuz. 
+6. Artık Azure IoT Central **bağlı çöp yönetimi şablonunu** kullanarak bağlı bir çöp yönetimi uygulaması oluşturdunuz. 
 
 Tebrikler! Yeni oluşturduğunuz uygulamanız önceden yapılandırılmış olarak gelir:
 * Örnek işleç panoları
@@ -81,7 +81,7 @@ Tebrikler! Yeni oluşturduğunuz uygulamanız önceden yapılandırılmış olar
 Bu sizin uygulamanız ve dilediğiniz zaman değiştirebilirsiniz. Şimdi uygulamayı araştırıp bazı özelleştirmeler yapalim.  
 
 ## <a name="explore-and-customize-operator-dashboard"></a>Operatör panosunu keşfet ve özelleştirme 
-Uygulamayı oluşturduktan sonra, **geniş bir atık bağlantılı çöp yönetimi panosuna**olursunuz.
+Uygulamayı oluşturduktan sonra, **geniş bir atık bağlantılı çöp yönetimi panosuna** olursunuz.
 
    ![Bağlı çöp yönetimi panosu](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
 
@@ -92,18 +92,18 @@ Bir Oluşturucu olarak, işleçler için panoda görünümler oluşturabilir ve 
 
 Pano farklı kutucuk türlerinden oluşur:
 
-* ***Geniş dünya atık yardımcı programı resim kutucuğu***: panodaki ilk kutucuk, kurgusal bir atık yardımcı programın "geniş dünya atık" bir görüntü kutucuğudur. Kutucuğu özelleştirebilir ve kendi görüntünüzü yerleştirebilir veya kaldırabilirsiniz. 
+* ***Geniş dünya atık yardımcı programı resim kutucuğu** _: panodaki ilk kutucuk, kurgusal bir atık yardımcı programın "geniş dünya atık" bir görüntü kutucuğudur. Kutucuğu özelleştirebilir ve kendi görüntünüzü yerleştirebilir veya kaldırabilirsiniz. 
 
-* ***Çöp kutusu resim kutucuğu***: bir açıklayıcı metinle birlikte izlenmekte olan cihazın görsel gösterimini oluşturmak için görüntü ve içerik kutucukları kullanabilirsiniz. 
+_ ***Çöp kutusu resim kutucuğu** _: bir açıklayıcı metinle birlikte izlenmekte olan cihazın görsel gösterimini oluşturmak için görüntü ve içerik kutucukları kullanabilirsiniz. 
 
-* ***Doldur DÜZEYI KPI kutucuğu***: kutucuk, bir çöp kutusu içindeki bir *Fill level* algılayıcısı tarafından bildirilen bir değeri görüntüler. Bir çöp kutusu ölçüm *düzeyi* ve *oçi ölçümü* ya da *ağırlığı* gibi diğer sensörlere uzaktan izlenebilirler. Bir operatör çöp toplama kamyonu dağıtma gibi eylem gerçekleştirebilir. 
+_ ***Fill level KPI kutucuğu** _: kutucuk bir çöp kutusu içinde _Fill Level * algılayıcısı tarafından bildirilen bir değeri görüntüler. Bir çöp kutusu ölçüm *düzeyi* ve *oçi ölçümü* ya da *ağırlığı* gibi diğer sensörlere uzaktan izlenebilirler. Bir operatör çöp toplama kamyonu dağıtma gibi eylem gerçekleştirebilir. 
 
-*  ***Çöp izleme alanı Haritası***: eşleme, Azure IoT Central 'da doğrudan yapılandırabileceğiniz Azure haritalar 'ı kullanıyor. Harita kutucuğu cihaz konumunu görüntülüyor. Haritanın üzerine gelin ve yakınlaştırma, büyütme veya genişletme gibi harita üzerindeki denetimleri deneyin.
+*  ***Çöp izleme alanı Haritası** _: eşleme, Azure IoT Central 'da doğrudan yapılandırabileceğiniz Azure Maps kullanıyor. Harita kutucuğu cihaz konumunu görüntülüyor. Haritanın üzerine gelin ve yakınlaştırma, büyütme veya genişletme gibi harita üzerindeki denetimleri deneyin.
 
      ![Bağlı çöp yönetimi Pano eşlemesi](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
 
-* ***Doldur, oçi, ağırlık düzeyi çubuk grafik**: bir veya birden çok cihaz telemetri verilerini bir çubuk grafikte görselleştirebilirsiniz. Çubuk grafiği de genişletebilirsiniz.  
+_ ***Fill, oçi, ağırlık düzeyi çubuk grafiği**: bir çubuk grafikte bir veya birden çok cihaz telemetri verisi görselleştirebilirsiniz. Çubuk grafiği de genişletebilirsiniz.  
 
   ![Bağlı çöp yönetimi Pano çubuğu grafiği](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
 
@@ -114,7 +114,7 @@ Pano farklı kutucuk türlerinden oluşur:
 ### <a name="customize-dashboard"></a>Panoyu özelleştirme 
 
 Oluşturucu olarak, işleçler için panodaki görünümleri özelleştirebilirsiniz. Şunları deneyebilirsiniz:
-1. **Geniş dünya bağlantılı çöp kutusu yönetim panosunu**özelleştirmek için **Düzenle** ' ye tıklayın. **Düzen** menüsüne tıklayarak panoyu özelleştirebilirsiniz. Pano **düzenleme** modundayken, yeni kutucuk ekleyebilir veya 
+1. **Geniş dünya bağlantılı çöp kutusu yönetim panosunu** özelleştirmek için **Düzenle** ' ye tıklayın. **Düzen** menüsüne tıklayarak panoyu özelleştirebilirsiniz. Pano **düzenleme** modundayken, yeni kutucuk ekleyebilir veya 
 
     ![Panoyu Düzenleme](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
 
@@ -135,7 +135,7 @@ Cihaz şablonunu görüntülemek için:
 
 2. Cihaz şablonları listesinde **bağlı çöp kutusu**' nu göreceksiniz. Ada tıklayarak açın.
 
-3. Cihaz şablonu özellikleri hakkında bilgi edinin. Bu konuda, *Fill level*, *oçi ölçümü*, *Ağırlık*, *konum*ve diğerleri gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
+3. Cihaz şablonu özellikleri hakkında bilgi edinin. Bu konuda, *Fill level*, *oçi ölçümü*, *Ağırlık*, *konum* ve diğerleri gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
 
    ![Bağlı çöp kutusu cihaz şablonunun ayrıntılarını gösteren ekran görüntüsü](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -161,7 +161,7 @@ Aşağıdakileri özelleştirmeyi deneyin:
 
   ![Cihaz şablonu görünümleri](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
-### <a name="publish"></a>Yayımla 
+### <a name="publish"></a>Yayımlama 
 
 * Herhangi bir değişiklik yaptıysanız, cihaz şablonunu **yayımlamayı** unutmayın. 
 
@@ -189,7 +189,7 @@ IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal cihazla
 * **Cihaz özellikleri** sekmesini ve **cihaz panosu** sekmesini bulun. 
 
 > [!NOTE]
-> Tüm sekmelerin **cihaz şablonu görünümlerinden**yapılandırıldığını unutmayın.
+> Tüm sekmelerin **cihaz şablonu görünümlerinden** yapılandırıldığını unutmayın.
 
 ### <a name="add-new-devices"></a>Yeni cihaz ekle
 
@@ -197,7 +197,7 @@ IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal cihazla
 
 ## <a name="explore-and-configure-rules"></a>Kuralları keşfet ve yapılandırma
 
-Azure IoT Central 'de cihaz Telemetriyi otomatik olarak izlemek için kurallar oluşturabilir ve bir veya daha fazla koşul karşılandığında eylemleri tetikleyebilirsiniz. Eylemler e-posta bildirimleri göndermeyi, Microsoft Flow eylemi tetiklemeyi veya diğer hizmetlere veri göndermek için bir Web kancası eylemini içerebilir.
+Azure IoT Central 'de cihaz Telemetriyi otomatik olarak izlemek için kurallar oluşturabilir ve bir veya daha fazla koşul karşılandığında eylemleri tetikleyebilirsiniz. Eylemler e-posta bildirimleri göndermeyi, Power otomatikleştir eylemini tetiklemeyi veya diğer hizmetlere veri göndermek için bir Web kancası eylemini içerebilir.
 
 **Bağlı çöp yönetimi** uygulamasının dört örnek kuralı vardır.
 
@@ -218,9 +218,9 @@ Azure IoT Central 'de cihaz Telemetriyi otomatik olarak izlemek için kurallar o
 
 ### <a name="create-an-email-action"></a>E-posta eylemi oluşturma
 Kuralın Eylemler listesinde bir e-posta eylemi yapılandırmak için:
-1. **+ E-posta**seçeneğini belirleyin. 
+1. **+ E-posta** seçeneğini belirleyin. 
 2. Eylem için kolay **görünen ad** olarak *yüksek pH uyarısı* girin.
-3. **' Deki**IoT Central hesabınızla ilişkili e-posta adresini girin. 
+3. **' Deki** IoT Central hesabınızla ilişkili e-posta adresini girin. 
 4. İsteğe bağlı olarak, e-posta metnine dahil etmek için bir Note girin.
 5. Eylemi gerçekleştirmek için **bitti** ' yi seçin.
 6. Yeni kuralı kaydetmek ve etkinleştirmek için **Kaydet** ' i seçin. 
@@ -247,8 +247,8 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 
 ### <a name="to-change-the-application-theme"></a>Uygulama temasını değiştirmek için:
 
-1. **Yönetim > uygulamanızı özelleştirmek için yöneticinize**gidin.
-3. **Uygulama logosu**olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini kullanın.
+1. **Yönetim > uygulamanızı özelleştirmek için yöneticinize** gidin.
+3. **Uygulama logosu** olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini kullanın.
 4. Tarayıcı sekmelerinde görünecek bir **tarayıcı simgesi** görüntüsü seçmek için **Değiştir** düğmesini kullanın.
 5. Varsayılan **tarayıcı renklerini** , HTML onaltılık renk kodları ekleyerek de değiştirebilirsiniz.
 

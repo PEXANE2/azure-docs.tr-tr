@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31219fda04095d48b55165f59c27f3dee85485a9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843647"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014841"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows sanal masaüstünde kiracı ve konak havuzu oluşturma (klasik)
 
@@ -49,7 +49,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **Neden:** Azure Active Directory örneğinde Windows sanal masaüstüne izin verilmedi.
 
-**Çözüm:** izin vermek için [Bu kılavuzu izleyin](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) .
+**Çözüm:** izin vermek için [Bu kılavuzu izleyin](./tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) .
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcının yönetim hizmetini sorgulama yetkisi yok
 
@@ -140,9 +140,9 @@ Etkinlik günlüğündeki hatayı görüntülemek için:
 
 Azure Resource Manager şablonlarının ve PowerShell DSC 'nin başarısız dağıtımlarıyla ilgili sorunları gidermek için bu yönergeleri izleyin.
 
-1. [Azure Resource Manager ile dağıtım Işlemlerini görüntüleme](../../azure-resource-manager/resource-manager-deployment-operations.md)kullanarak dağıtımdaki hataları gözden geçirin.
-2. Dağıtımda hata yoksa, [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüle](../../azure-resource-manager/resource-group-audit.md)' yi kullanarak etkinlik günlüğündeki hataları gözden geçirin.
-3. Hata tanımlandıktan sonra, sorunu gidermek için [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](../../azure-resource-manager/resource-manager-common-deployment-errors.md) bölümündeki hata iletisini ve kaynakları kullanın.
+1. [Azure Resource Manager ile dağıtım Işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)kullanarak dağıtımdaki hataları gözden geçirin.
+2. Dağıtımda hata yoksa, [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüle](../../azure-resource-manager/management/view-activity-logs.md)' yi kullanarak etkinlik günlüğündeki hataları gözden geçirin.
+3. Hata tanımlandıktan sonra, sorunu gidermek için [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](../../azure-resource-manager/templates/common-deployment-errors.md) bölümündeki hata iletisini ve kaynakları kullanın.
 4. Önceki dağıtım sırasında oluşturulan tüm kaynakları silin ve şablonu yeniden dağıtma işlemini yeniden deneyin.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu.... \<hostname> /JoinDomain

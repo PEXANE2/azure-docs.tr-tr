@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8841c55d8f276f048db53a531bd2e9218e498b34
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566594"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016505"
 ---
 # <a name="request-limits-for-translator"></a>Çevirmen için istek sınırları
 
@@ -52,17 +52,17 @@ Bu sınırlara ulaşan veya daha fazla bilgi alırsanız veya kısa bir süre i�
 | S3/C3 | 120.000.000 karakter/saat |
 | S4/C4 | 200.000.000 karakter/saat |
 
-[Çok hizmet abonelikleri](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) limitleri S1 katmanıyla aynı.
+[Çok hizmet abonelikleri](./reference/v3-0-reference.md#authentication) limitleri S1 katmanıyla aynı.
 
 Bu sınırlar, Microsoft 'un standart çeviri modelleriyle kısıtlıdır. Özel çevirici kullanan özel çeviri modelleri saniyede 1.800 karakter ile sınırlıdır.
 
 ## <a name="latency"></a>Gecikme süresi
 
-Özel modeller kullanılırken, çevirmen, Standart modeller ve 120 saniye kullanarak en fazla 15 saniye gecikme süresine sahiptir. Genellikle, *100 karakter içindeki metin* yanıtları 150 milisaniyelik ile 300 milisaniyeye döndürülür. Özel çevirmen modelleri sürekli istek hızında benzer gecikme özelliklerine sahiptir ve istek hızlarınız aralıklı olduğunda daha yüksek bir gecikme süresine sahip olabilir. Yanıt süreleri, istek ve dil çiftinin boyutuna bağlı olarak değişir. Bu zaman diliminde bir çeviri veya [hata yanıtı](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) almazsanız lütfen kodunuzu, ağ bağlantınızı kontrol edin ve yeniden deneyin. 
+Özel modeller kullanılırken, çevirmen, Standart modeller ve 120 saniye kullanarak en fazla 15 saniye gecikme süresine sahiptir. Genellikle, *100 karakter içindeki metin* yanıtları 150 milisaniyelik ile 300 milisaniyeye döndürülür. Özel çevirmen modelleri sürekli istek hızında benzer gecikme özelliklerine sahiptir ve istek hızlarınız aralıklı olduğunda daha yüksek bir gecikme süresine sahip olabilir. Yanıt süreleri, istek ve dil çiftinin boyutuna bağlı olarak değişir. Bu zaman diliminde bir çeviri veya [hata yanıtı](./reference/v3-0-reference.md#errors) almazsanız lütfen kodunuzu, ağ bağlantınızı kontrol edin ve yeniden deneyin. 
 
 ## <a name="sentence-length-limits"></a>Tümce uzunluğu sınırları
 
-[Breakcümlesi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) işlevini kullanırken, cümle uzunluğu 275 karakterle sınırlıdır. Bu diller için özel durumlar mevcuttur:
+[Breakcümlesi](./reference/v3-0-break-sentence.md) işlevini kullanırken, cümle uzunluğu 275 karakterle sınırlıdır. Bu diller için özel durumlar mevcuttur:
 
 | Dil | Kod | Karakter sınırı |
 |----------|------|-----------------|
@@ -81,4 +81,4 @@ Bu sınırlar, Microsoft 'un standart çeviri modelleriyle kısıtlıdır. Özel
 
 * [Fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Bölgesel kullanılabilirlik](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [v3 Translator başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [v3 Translator başvurusu](./reference/v3-0-reference.md)

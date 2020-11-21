@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 7d31649e18f8cc687a9716c8ecafe556fa250de6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 14b9429de5432680e5203e392827efa32e2a2a38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377896"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015405"
 ---
 # <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
-Konuşma hizmeti, konuşmadan metne, metinden konuşmaya ve konuşma çevirisi için tek bir Azure aboneliğine yönelik bir birleşme hizmetidir. Konuşma [CLI](spx-overview.md), [konuşma SDK 'Sı](speech-sdk-reference.md), [konuşma cihazları SDK 'Sı](https://aka.ms/sdsdk-quickstart), [konuşma Studio](https://speech.microsoft.com/)veya [REST API 'leri](rest-apis.md)ile uygulamalarınızı, araçları ve cihazlarınızı kolayca yapabilirsiniz.
+Konuşma hizmeti, konuşmadan metne, metinden konuşmaya ve konuşma çevirisi için tek bir Azure aboneliğine yönelik bir birleşme hizmetidir. Konuşma [CLI](spx-overview.md), [konuşma SDK 'Sı](./speech-sdk.md), [konuşma cihazları SDK 'Sı](./speech-devices-sdk-quickstart.md?pivots=platform-android), [konuşma Studio](https://speech.microsoft.com/)veya [REST API 'leri](#reference-docs)ile uygulamalarınızı, araçları ve cihazlarınızı kolayca yapabilirsiniz.
 
 > [!IMPORTANT]
 > Konuşma hizmeti Bing Konuşma API'si ve Translator Konuşma Çevirisi değiştirdi. Geçiş yönergeleri için _geçiş_ bölümüne bakın.
@@ -28,25 +28,25 @@ Aşağıdaki özellikler konuşma hizmetinin bir parçasıdır. Her bir özellik
 
 | Hizmet | Özellik | Açıklama | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [Konuşmayı metne dönüştürme](speech-to-text.md) | Gerçek zamanlı konuşmayı metne dönüştürme | Konuşmadan metne dönüştürme veya ses akışlarını veya yerel dosyaları, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı metne dönüştürür. Kullanıcı amaçlarını [Language Understanding (lusıs)](https://docs.microsoft.com/azure/cognitive-services/luis/) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Konuşmayı metne dönüştürme](speech-to-text.md) | Gerçek zamanlı konuşmayı metne dönüştürme | Konuşmadan metne dönüştürme veya ses akışlarını veya yerel dosyaları, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı metne dönüştürür. Kullanıcı amaçlarını [Language Understanding (lusıs)](../luis/index.yml) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. | [Evet](./speech-sdk.md) | [Evet](#reference-docs) |
 | | [Toplu iş konuşmayı metne dönüştürme](batch-transcription.md) | Toplu iş konuşmayı metne dönüştürme, Azure Blob depolamada depolanan büyük hacimde konuşma ses verilerinin zaman uyumsuz konuşmadan metne dökümünü sağlar. Konuşma sesini metne dönüştürmenin yanı sıra, toplu konuşma tanıma özelliği de, yaklaşım ve yaklaşım analizi için de izin verir. | No | [Evet](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | | [Çok cihazlı konuşma](multi-device-conversation.md) | Konuşma ve çeviri için kolay destek sayesinde konuşma veya metin tabanlı iletiler göndermek için bir konuşmadaki birden çok cihaza veya istemciye bağlanın| Yes | Hayır |
-| | [Konuşma dökümü](conversation-transcription-service.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Yes | Hayır |
+| | [Konuşma dökümü](./conversation-transcription.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Yes | Hayır |
 | | [Özel Konuşma Tanıma modelleri oluşturma](#customize-your-speech-experience) | Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. | No | [Evet](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| [Metin okuma](text-to-speech.md) | Metin okuma | Metin okuma [, konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md)kullanarak giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür. Standart sesler ve sinir sesler arasından seçim yapın (bkz. [dil desteği](language-support.md)). | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [Özel sesler oluşturma](#customize-your-speech-experience) | Markanızı veya ürününüzün benzersiz özel ses yazı tiplerini oluşturun. | No | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Konuşma Çevirisi](speech-translation.md) | Konuşma çevirisi | Konuşma çevirisi, uygulamalarınıza, araçlara ve cihazlara gerçek zamanlı, çok dilli konuşma çevirisi sağlar. Konuşmayı konuşmaya dönüştürme ve konuşmadan metne çevirme için bu hizmeti kullanın. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | No |
+| [Metin okuma](text-to-speech.md) | Metin okuma | Metin okuma [, konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md)kullanarak giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür. Standart sesler ve sinir sesler arasından seçim yapın (bkz. [dil desteği](language-support.md)). | [Evet](./speech-sdk.md) | [Evet](#reference-docs) |
+| | [Özel sesler oluşturma](#customize-your-speech-experience) | Markanızı veya ürününüzün benzersiz özel ses yazı tiplerini oluşturun. | No | [Evet](#reference-docs) |
+| [Konuşma Çevirisi](speech-translation.md) | Konuşma çevirisi | Konuşma çevirisi, uygulamalarınıza, araçlara ve cihazlara gerçek zamanlı, çok dilli konuşma çevirisi sağlar. Konuşmayı konuşmaya dönüştürme ve konuşmadan metne çevirme için bu hizmeti kullanın. | [Evet](./speech-sdk.md) | No |
 | [Ses yardımcıları](voice-assistants.md) | Ses yardımcıları | Konuşma hizmetini kullanan sesli yardımcılar, geliştiricilerin uygulamalar ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Ses Yardımcısı hizmeti, bir cihaz ile bir yardımcı uygulama arasında hızlı ve güvenilir bir etkileşim sağlar ve bu sayede, görev tamamlama için bir aygıt ve doğrudan hat konuşma kanalı veya tümleşik özel komutlar (Önizleme) hizmeti kullanılır. | [Evet](voice-assistants.md) | No |
-| [Konuşmacı Tanıma](speaker-recognition-overview.md) | Konuşmacı doğrulama & kimliği | Konuşmacı Tanıma hizmeti, kendi benzersiz ses özelliklerine göre hoparlörleri doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. | Yes | [Evet](https://docs.microsoft.com/rest/api/speakerrecognition/) |
+| [Konuşmacı Tanıma](speaker-recognition-overview.md) | Konuşmacı doğrulama & kimliği | Konuşmacı Tanıma hizmeti, kendi benzersiz ses özelliklerine göre hoparlörleri doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. | Yes | [Evet](/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 ## <a name="try-the-speech-service-for-free"></a>Konuşma tanıma hizmetini ücretsiz olarak deneyin
 
-Aşağıdaki adımlar için hem Microsoft hesabı hem de bir Azure hesabınızın olması gerekir. Bir Microsoft hesabı yoksa, [Microsoft hesabı portalında](https://account.microsoft.com/account)ücretsiz bir ücret karşılığında kaydolabilirsiniz. **Microsoft hesabıyla oturum açın** ' yi seçin ve ardından oturum açmak Istendiğinde **Microsoft hesabı oluştur** ' u seçin. Yeni Microsoft hesabı oluşturup doğrulamak için adımları izleyin.
+Aşağıdaki adımlar için hem Microsoft hesabı hem de bir Azure hesabınızın olması gerekir. Bir Microsoft hesabı yoksa, [Microsoft hesabı portalında](https://account.microsoft.com/account)ücretsiz bir ücret karşılığında kaydolabilirsiniz. **Microsoft hesabıyla oturum açın** ' yi seçin ve ardından oturum açmak Istendiğinde **Microsoft hesabı oluştur**' u seçin. Yeni Microsoft hesabı oluşturup doğrulamak için adımları izleyin.
 
-Microsoft hesabı aldıktan sonra [Azure kaydolma sayfasına](https://azure.microsoft.com/free/ai/)gidin, **ücretsiz Başlat** ' ı seçin ve Microsoft hesabı kullanarak yeni bir Azure hesabı oluşturun. [Azure Ücretsiz hesabına kaydolma hakkında](https://www.youtube.com/watch?v=GWT2R1C_uUU)bir video aşağıda verilmiştir.
+Microsoft hesabı aldıktan sonra [Azure kaydolma sayfasına](https://azure.microsoft.com/free/ai/)gidin, **ücretsiz Başlat**' ı seçin ve Microsoft hesabı kullanarak yeni bir Azure hesabı oluşturun. [Azure Ücretsiz hesabına kaydolma hakkında](https://www.youtube.com/watch?v=GWT2R1C_uUU)bir video aşağıda verilmiştir.
 
 > [!NOTE]
 > Ücretsiz bir Azure hesabı için kaydolduğunuzda, 30 güne kadar geçerli olan ücretli bir konuşma hizmeti aboneliğine uygulayabileceğiniz hizmet kredisi $200 ile gelir. Krediniz 30 gün sonunda çalıştırıldığında veya sona erdiğinde Azure hizmetleriniz devre dışı bırakılır. Azure hizmetlerini kullanmaya devam etmek için hesabınızı yükseltmeniz gerekir. Daha fazla bilgi için bkz. [Azure ücretsiz hesabınızı yükseltme](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription). 
@@ -59,22 +59,22 @@ Azure hesabınıza bir konuşma hizmeti kaynağı (ücretsiz veya ücretli katma
 
 1. Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Portalın sol üst kısmında **kaynak oluştur** ' u seçin. **Kaynak oluştur** ' u görmüyorsanız, ekranın sol üst köşesindeki daraltılan menüyü seçerek her zaman bulabilirsiniz.
+1. Portalın sol üst kısmında **kaynak oluştur** ' u seçin. **Kaynak oluştur**' u görmüyorsanız, ekranın sol üst köşesindeki daraltılan menüyü seçerek her zaman bulabilirsiniz.
 
 1. **Yeni** pencerede, arama kutusuna "konuşma" YAZıN ve ENTER tuşuna basın.
 
-1. Arama sonuçlarında **konuşma** ' yı seçin.
+1. Arama sonuçlarında **konuşma**' yı seçin.
 
    ![Konuşma Arama sonuçları](media/index/speech-search.png)
 
-1. **Oluştur** ' u seçin, sonra:
+1. **Oluştur**' u seçin, sonra:
 
    - Yeni kaynağınız için benzersiz bir ad verin. Ad, aynı hizmete bağlı birden çok abonelik arasında ayrım yapmanıza yardımcı olur.
    - Ücretlerin nasıl faturalandırıldığını belirlemek için yeni kaynağın ilişkilendirildiği Azure aboneliğini seçin. Azure portal [Azure aboneliğinin nasıl oluşturulacağı hakkında](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal) giriş aşağıda verilmiştir.
    - Kaynağın kullanılacağı [bölgeyi](regions.md) seçin. Azure, dünya çapındaki birçok bölgede genel olarak kullanılabilen küresel bir bulut platformudur. En iyi performansı elde etmek için, size en yakın olan veya uygulamanızın çalıştığı yerde bir bölge seçin. Konuşma hizmeti kullanılabilirliği farklı bölgelerden farklılık gösterir. Kaynağı desteklenen bir bölgede oluşturduğunuzdan emin olun. Bkz. [konuşma Hizmetleri için bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation).
    - Ücretsiz (F0) ya da ücretli (S0) fiyatlandırma katmanını seçin. Her katmana yönelik fiyatlandırma ve kullanım kotaları hakkında tam bilgi için, **tam fiyatlandırma ayrıntılarını görüntüle** ' yi seçin veya [konuşma Hizmetleri fiyatlandırmasına](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)bakın. Kaynaklarla ilgili sınırlar için bkz. Azure bilişsel [Hizmetler sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits).
    - Bu konuşma aboneliği için yeni bir kaynak grubu oluşturun veya aboneliği var olan bir kaynak grubuna atayın. Kaynak grupları, çeşitli Azure aboneliklerinizi düzenli halde tutmanıza yardımcı olur.
-   - **Oluştur** ’u seçin. Bu işlem sizi dağıtıma genel bakış ve dağıtım ilerleme durumu iletilerini görüntüleyecek şekilde götürür.  
+   - **Oluştur**’u seçin. Bu işlem sizi dağıtıma genel bakış ve dağıtım ilerleme durumu iletilerini görüntüleyecek şekilde götürür.  
 <!--
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
@@ -87,9 +87,9 @@ Tamamlanmış bir dağıtımın anahtarlarını ve bölgesini bulmak için şu a
 
 1. Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. **Tüm kaynaklar** ' ı seçin ve bilişsel hizmetler kaynağınızın adını seçin.
+2. **Tüm kaynaklar**' ı seçin ve bilişsel hizmetler kaynağınızın adını seçin.
 
-3. Sol bölmede, **kaynak yönetimi** altında **anahtarlar ve uç nokta** ' ı seçin.
+3. Sol bölmede, **kaynak yönetimi** altında **anahtarlar ve uç nokta**' ı seçin.
 
 Her abonelik iki anahtara sahiptir; uygulamanızda herhangi bir anahtarı kullanabilirsiniz. Kod düzenleyicinize veya başka bir konuma bir anahtar kopyalamak/yapıştırmak için, her anahtarın yanındaki Kopyala düğmesini seçin, pencereler arasında Pano içeriğini istenen konuma yapıştırın.
 
@@ -104,15 +104,15 @@ Her biri temel tasarım desenleri öğretmek ve kodu 10 dakikadan kısa bir sür
 
 * [Konuşmayı metne dönüştürmeye yönelik hızlı başlangıç](get-started-speech-to-text.md)
 * [Metin okuma için hızlı başlangıç](get-started-text-to-speech.md)
-* [Konuşma çevirisine hızlı başlangıç](speech-translation-basics.md)
+* [Konuşma çevirisine hızlı başlangıç](./get-started-speech-translation.md)
 * [Amaç tanıma hızlı başlangıcı](quickstarts/intent-recognition.md)
-* [Konuşmacı Tanıma hızlı başlangıç](speaker-recognition-basics.md)
+* [Konuşmacı Tanıma hızlı başlangıç](./get-started-speaker-recognition.md)
 
 Konuşma hizmetini kullanmaya başlama şansınız olduktan sonra, çeşitli senaryoları nasıl çözeceğinizi gösteren öğreticilerimizi deneyin.
 
 - [Öğretici: konuşma SDK 'Sı ve LUU, C ile konuşma amaçlarını tanıma #](how-to-recognize-intents-from-speech-csharp.md)
 - [Öğretici: konuşma SDK 'Sı ile sesinizi etkinleştirme, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [Öğretici: metin çevirmek, yaklaşımı çözümlemek ve çevrilmiş metni konuşmaya dönüştürmek için bir Flask uygulaması oluşturun, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+- [Öğretici: metin çevirmek, yaklaşımı çözümlemek ve çevrilmiş metni konuşmaya dönüştürmek için bir Flask uygulaması oluşturun, REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
 
 ## <a name="get-sample-code"></a>Örnek kodu alma
 
@@ -129,14 +129,14 @@ Konuşma hizmeti yerleşik modellerle iyi çalışmaktadır, ancak ürününüz�
 
 Diğer ürünler, sağlık veya sigorta gibi belirli amaçlar için ayarlanan konuşma modellerini sunar, ancak herkese eşit olarak erişilebilir. Azure konuşma 'da özelleştirme, başka bir kullanıcı veya müşteri tarafından kullanılamayan *benzersiz rekabet avantajlarınızın* bir parçası haline gelir. Diğer bir deyişle, modelleriniz özel ve yalnızca kullanım için özel olarak ayarlanmıştır.
 
-| Konuşma Hizmeti | Platform | Açıklama |
+| Konuşma Hizmeti | Platform | Description |
 | -------------- | -------- | ----------- |
 | Konuşmayı Metne Dönüştürme | [Özel Konuşma Tanıma](https://aka.ms/customspeech) | Konuşma tanıma modellerini gereksinimlerinize ve kullanılabilir verilerinize göre özelleştirin. Konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelme. |
 | Metin Okuma | [Özel ses](https://aka.ms/customvoice) | Kullanılabilir konuşma verilerinizle Metin Okuma uygulamalarınız için tanınabilir, kendine özgü bir ses oluşturun. Ses çıkışlarını bir dizi parametre kümesini ayarlayarak daha fazla hassas ayarlamalar yapabilirsiniz. |
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-- [Konuşma SDK'sı](speech-sdk-reference.md)
+- [Konuşma SDK'sı](./speech-sdk.md)
 - [Konuşma Cihazları SDK’sı](speech-devices-sdk.md)
 - [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
 - [REST API: metinden konuşmaya](rest-text-to-speech.md)
@@ -145,5 +145,5 @@ Diğer ürünler, sağlık veya sigorta gibi belirli amaçlar için ayarlanan ko
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Konuşmaya metne Başlarken](speech-to-text-basics.md) 
+> [Konuşmaya metne Başlarken](./get-started-speech-to-text.md) 
 >  [Metinden konuşmaya çalışmaya başlama](get-started-text-to-speech.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bb66d8a197a33d6d0ad46502b510662f43ea1ca
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988570"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015367"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -30,7 +30,7 @@ Konuşmayı metne REST API kullanmadan önce aşağıdakileri göz önünde bulu
 Daha uzun bir ses gönderdiğinizde uygulamanız için bir gereklilik varsa, [konuşma SDK 'sını](speech-sdk.md) veya [toplu iş dökümü](batch-transcription.md)gibi dosya tabanlı REST API kullanmayı düşünün.
 
 > [!TIP]
-> Kamu Bulutu (FairFax) uç noktaları için Azure Kamu [belgelerini](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) inceleyin.
+> Kamu Bulutu (FairFax) uç noktaları için Azure Kamu [belgelerini](../../azure-government/compare-azure-government-global-azure.md) inceleyin.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -307,5 +307,5 @@ Telaffuz değerlendirmesi ile tipik bir yanıt:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
-- [Akustik modelleri özelleştirme](how-to-customize-acoustic-models.md)
-- [Dil modellerini özelleştirme](how-to-customize-language-model.md)
+- [Akustik modelleri özelleştirme](./how-to-custom-speech-train-model.md)
+- [Dil modellerini özelleştirme](./how-to-custom-speech-train-model.md)

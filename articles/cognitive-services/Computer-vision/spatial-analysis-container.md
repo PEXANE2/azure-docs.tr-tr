@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357122"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014603"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
@@ -34,7 +34,7 @@ Uzamsal analiz kapsayıcısını çalıştırmak için, [NVIDIA Tesla T4 GPU 'su
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge cihazı](#tab/azure-stack-edge)
 
-Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak donanım ve bir AI özellikli sınır bilgi işlem aygıtıdır. Ayrıntılı hazırlık ve kurulum yönergeleri için [Azure Stack Edge belgelerine](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)bakın.
+Azure Stack Edge, ağ veri aktarımı özelliklerine sahip bir hizmet olarak donanım ve bir AI özellikli sınır bilgi işlem aygıtıdır. Ayrıntılı hazırlık ve kurulum yönergeleri için [Azure Stack Edge belgelerine](../../databox-online/azure-stack-edge-deploy-prep.md)bakın.
 
 #### <a name="desktop-machine"></a>[Masaüstü makinesi](#tab/desktop-machine)
 
@@ -59,7 +59,7 @@ Bu makalede, aşağıdaki yazılım paketlerini indirip yükleyeceksiniz. Ana bi
 * [NVIDIA grafik sürücüleri](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) ve [NVIDIA CUDA araç seti](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * [NVıDıA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) için yapılandırma (çok işlem hizmeti).
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) ve [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) çalışma zamanı.
+* [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) çalışma zamanı.
 
 ---
 
@@ -93,31 +93,31 @@ Ana bilgisayarınız için bir Azure Stack Edge cihazı kullanmanız önerilir. 
  
 Uzamsal analiz, bir AI çözümünü çalıştırmak için Azure Stack ucunun işlem özelliklerini kullanır. İşlem özelliklerini etkinleştirmek için aşağıdakileri yaptığınızdan emin olun: 
 
-* Azure Stack Edge cihazınızı [bağladınız ve etkinleştirdiniz](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate) . 
+* Azure Stack Edge cihazınızı [bağladınız ve etkinleştirdiniz](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md) . 
 * Cihaza erişmek için PowerShell 5,0 veya sonraki bir sürümünü çalıştıran bir Windows istemci sisteminiz vardır.  
 * Bir Kubernetes kümesi dağıtmak için, Azure Stack Edge cihazınızı [Azure Portal](https://portal.azure.com/) **Yerel Kullanıcı arabirimi** aracılığıyla yapılandırmanız gerekir: 
   1. Azure Stack Edge cihazınızda işlem özelliğini etkinleştirin. İşlem özelliğini etkinleştirmek için, cihazınızın web arabirimindeki **işlem** sayfasına gidin. 
-  2. İşlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin ve ardından **Etkinleştir** ' e tıklayın. Bu, cihazınızda bu ağ arabiriminde bir sanal anahtar oluşturur.
+  2. İşlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin ve ardından **Etkinleştir**' e tıklayın. Bu, cihazınızda bu ağ arabiriminde bir sanal anahtar oluşturur.
   3. Kubernetes sınama düğümü IP adreslerini ve Kubernetes dış hizmetler IP adreslerini boş bırakın.
-  4. **Uygula** 'ya tıklayın. Bu işlem, iki dakika sürebilir. 
+  4. **Uygula**’ya tıklayın. Bu işlem, iki dakika sürebilir. 
 
 ![İşlem yapılandırma](media/spatial-analysis/configure-compute.png)
 
 ### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>Bir uç işlem rolü ayarlama ve bir IoT Hub kaynağı oluşturma
 
-[Azure Portal](https://portal.azure.com/), Azure Stack Edge kaynağına gidin. **Genel bakış** sayfasında veya gezinti listesinde **Edge COMPUTE Başlarken** düğmesine tıklayın.  **Uç Işlem yapılandırma**   kutucuğunda **Yapılandır** ' ı tıklatın. 
+[Azure Portal](https://portal.azure.com/), Azure Stack Edge kaynağına gidin. **Genel bakış** sayfasında veya gezinti listesinde **Edge COMPUTE Başlarken** düğmesine tıklayın.  **Uç Işlem yapılandırma**   kutucuğunda **Yapılandır**' ı tıklatın. 
 
 ![Bağlantı](media/spatial-analysis/configure-edge-compute-tile.png)
 
  **Edge Işlem yapılandırma**   sayfasında, mevcut bir IoT Hub seçin veya yenisini oluşturmayı seçin. Varsayılan olarak, bir IoT Hub kaynağı oluşturmak için standart (S1) Fiyatlandırma Katmanı kullanılır. Boş bir katman IoT Hub kullanmak için, bir tane oluşturun ve ardından seçin. IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır 
 
-**Oluştur** 'a tıklayın. IoT Hub kaynak oluşturma birkaç dakika sürebilir. IoT Hub kaynağı oluşturulduktan sonra, yeni yapılandırmayı göstermek için **Edge işlem bölmesini Yapılandır** ' ı güncellecektir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda yapılandırmayı **görüntüle** ' yi seçin   .
+**Oluştur**'a tıklayın. IoT Hub kaynak oluşturma birkaç dakika sürebilir. IoT Hub kaynağı oluşturulduktan sonra, yeni yapılandırmayı göstermek için **Edge işlem bölmesini Yapılandır** ' ı güncellecektir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda yapılandırmayı **görüntüle** ' yi seçin   .
 
 Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Azure IoT Edge çalışma zamanı IoT Edge cihazda zaten çalışıyor.            
 
 > [!NOTE]
 > * Şu anda yalnızca Linux platformu IoT Edge cihazlar için desteklenir. Azure Stack Edge cihazında sorun giderme konusunda yardım için bkz. [günlük ve sorun giderme](spatial-analysis-logging.md) makalesi.
-> * Bir proxy sunucusu üzerinden iletişim kurmak üzere bir IoT Edge cihazının nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için bkz. bir [IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)
+> * Bir proxy sunucusu üzerinden iletişim kurmak üzere bir IoT Edge cihazının nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için bkz. bir [IoT Edge cihazını bir ara sunucu üzerinden iletişim kurmak Için yapılandırma](../../iot-edge/how-to-configure-proxy-support.md#azure-portal)
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Azure Stack Edge üzerinde MPS 'yi etkinleştirme 
 
@@ -129,7 +129,7 @@ Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bi
     winrm quickconfig
     ```
     
-    Bir güvenlik duvarı özel durumu hakkında uyarı görürseniz, ağ bağlantı türünü denetleyin ve [Windows Uzaktan Yönetimi](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) belgelerine bakın.
+    Bir güvenlik duvarı özel durumu hakkında uyarı görürseniz, ağ bağlantı türünü denetleyin ve [Windows Uzaktan Yönetimi](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) belgelerine bakın.
 
 3. Cihaz IP adresine bir değişken atayın. 
     
@@ -246,7 +246,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Ana bilgisayarda Azure IoT Edge yapılandırma
 
-Uzamsal analiz kapsayıcısını ana bilgisayara dağıtmak için standart (S1) veya ücretsiz (F0) fiyatlandırma katmanını kullanarak bir [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) hizmeti örneği oluşturun. Ana bilgisayarınız Azure Stack bir kenar ise, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanın.
+Uzamsal analiz kapsayıcısını ana bilgisayara dağıtmak için standart (S1) veya ücretsiz (F0) fiyatlandırma katmanını kullanarak bir [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) hizmeti örneği oluşturun. Ana bilgisayarınız Azure Stack bir kenar ise, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanın.
 
 Azure IoT Hub 'nin bir örneğini oluşturmak için Azure CLı 'yi kullanın. Parametreleri uygun yerlerde değiştirin. Alternatif olarak, Azure IoT Hub [Azure Portal](https://portal.azure.com/)oluşturabilirsiniz.
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) sürüm 1.0.9 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin:
+Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) sürüm 1.0.9 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin:
 
 Ubuntu Server 18,04:
 ```bash
@@ -292,7 +292,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Sonra, bir [bağlantı dizesi](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)kullanarak ana bilgisayarı IoT Hub örneğiniz IoT Edge bir cihaz olarak kaydedin.
+Sonra, bir [bağlantı dizesi](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)kullanarak ana bilgisayarı IoT Hub örneğiniz IoT Edge bir cihaz olarak kaydedin.
 
 IoT Edge cihazını Azure IoT Hub bağlamanız gerekir. Bağlantı dizesini daha önce oluşturduğunuz IoT Edge cihazdan kopyalamanız gerekir. Alternatif olarak, Azure CLı 'de aşağıdaki komutu çalıştırabilirsiniz.
 
@@ -306,7 +306,7 @@ Ana bilgisayarda  `/etc/iotedge/config.yaml` düzenlenmek üzere açın. `ADD DE
 sudo systemctl restart iotedge
 ```
 
-Uzamsal analiz kapsayıcısını, [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) veya [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli)'Dan ana bilgisayar üzerinde IoT modülü olarak dağıtın. Portalı kullanıyorsanız, görüntü URI 'sini Azure Container Registry konumuna ayarlayın. 
+Uzamsal analiz kapsayıcısını, [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) veya [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md)'Dan ana bilgisayar üzerinde IoT modülü olarak dağıtın. Portalı kullanıyorsanız, görüntü URI 'sini Azure Container Registry konumuna ayarlayın. 
 
 Azure CLı kullanarak kapsayıcıyı dağıtmak için aşağıdaki adımları kullanın.
 
@@ -335,7 +335,7 @@ Aşağıdaki tabloda IoT Edge modülü tarafından kullanılan çeşitli ortam d
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
-[Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179) için dağıtım bildirimini veya kendi ayarlarınızı ve işlem seçiminizi içeren [bir masaüstü makinesini](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) güncelleştirdiğinizde, kapsayıcıyı bir IoT Edge modülü olarak ana bilgisayara DAĞıTMAK için aşağıdaki [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) komutunu kullanabilirsiniz.
+[Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179) için dağıtım bildirimini veya kendi ayarlarınızı ve işlem seçiminizi içeren [bir masaüstü makinesini](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) güncelleştirdiğinizde, kapsayıcıyı bir IoT Edge modülü olarak ana bilgisayara DAĞıTMAK için aşağıdaki [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) komutunu kullanabilirsiniz.
 
 ```azurecli
 az login
@@ -366,14 +366,14 @@ Kapsayıcıyı bağlı kameraları kullanacak şekilde yapılandırmak, işlemle
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Dağıtımı yeniden dağıtma veya silme
 
-Dağıtımı güncelleştirmeniz gerekiyorsa, önceki dağıtımlarınızın başarılı bir şekilde dağıtıldığından emin olun veya tamamlanmamış IoT Edge cihaz dağıtımlarını silmeniz gerekir. Aksi takdirde, bu dağıtımlar devam eder ve sistem hatalı durumda bırakılır. Azure portal veya [Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)'yi kullanabilirsiniz.
+Dağıtımı güncelleştirmeniz gerekiyorsa, önceki dağıtımlarınızın başarılı bir şekilde dağıtıldığından emin olun veya tamamlanmamış IoT Edge cihaz dağıtımlarını silmeniz gerekir. Aksi takdirde, bu dağıtımlar devam eder ve sistem hatalı durumda bırakılır. Azure portal veya [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)'yi kullanabilirsiniz.
 
 ## <a name="use-the-output-generated-by-the-container"></a>Kapsayıcı tarafından oluşturulan çıktıyı kullanın
 
 Kapsayıcı tarafından oluşturulan çıktıyı tüketmeye başlamak istiyorsanız aşağıdaki makalelere bakın:
 
-*   Azure IoT Hub uç noktasına bağlanmak ve olayları almak için seçtiğiniz programlama diline yönelik Azure Event hub SDK 'sını kullanın. Daha fazla bilgi için bkz. [yerleşik uç noktadan cihazdan buluta Iletileri okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) . 
-*   Azure IoT Hub, olayları diğer uç noktalara göndermek veya olayları Azure Blob depolama alanına kaydetmek için Ileti yönlendirme ayarlayın, vb. Daha fazla bilgi için bkz. [IoT Hub Ileti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) . 
+*   Azure IoT Hub uç noktasına bağlanmak ve olayları almak için seçtiğiniz programlama diline yönelik Azure Event hub SDK 'sını kullanın. Daha fazla bilgi için bkz. [yerleşik uç noktadan cihazdan buluta Iletileri okuma](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+*   Azure IoT Hub, olayları diğer uç noktalara göndermek veya olayları Azure Blob depolama alanına kaydetmek için Ileti yönlendirme ayarlayın, vb. Daha fazla bilgi için bkz. [IoT Hub Ileti yönlendirme](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Kayıtlı bir video dosyası ile uzamsal analizler çalıştırma
 
@@ -381,7 +381,7 @@ Hem kayıtlı hem de canlı video ile uzamsal analizler kullanabilirsiniz. Kayı
     1. **Güvenli aktarımı** **devre dışı** olarak değiştirme
     2. **BLOB genel erişimine Izin ver** özelliğinin **etkin** olarak değiştirilmesi
 
-**Kapsayıcı** bölümüne gidin ve yeni bir kapsayıcı oluşturun ya da var olan bir kapsayıcıyı kullanın. Ardından, video dosyasını kapsayıcıya yükleyin. Karşıya yüklenen dosyanın dosya ayarlarını genişletin ve **SAS oluştur** ' u seçin. **Süre sonu tarihini** , test dönemini kapsayacak kadar uzun bir süre ayarladığınızdan emin olun. **Izin verilen protokolleri** *http* olarak ayarlama ( *https* desteklenmez).
+**Kapsayıcı** bölümüne gidin ve yeni bir kapsayıcı oluşturun ya da var olan bir kapsayıcıyı kullanın. Ardından, video dosyasını kapsayıcıya yükleyin. Karşıya yüklenen dosyanın dosya ayarlarını genişletin ve **SAS oluştur**' u seçin. **Süre sonu tarihini** , test dönemini kapsayacak kadar uzun bir süre ayarladığınızdan emin olun. **Izin verilen protokolleri** *http* olarak ayarlama (*https* desteklenmez).
 
 **SAS belirteci oluştur ve URL** 'yi tıklatın ve BLOB SAS URL 'sini kopyalayın. Başlangıcını `https` `http` ve video oynatmayı destekleyen bir tarayıcıda URL 'yi test etme ve test etme ile değiştirin.
 
@@ -411,7 +411,7 @@ Uzamsal analiz modülü video dosyasını tüketmeye başlayacak ve sürekli ola
 
 Kapsayıcıyı başlatırken veya çalıştırırken sorunlarla karşılaşırsanız, genel sorunların adımları için bkz. [telemetri ve sorun giderme](spatial-analysis-logging.md) . Bu makale ayrıca günlükleri oluşturma ve toplama ve sistem durumunu toplama hakkındaki bilgileri de içerir.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Uzamsal analiz kapsayıcısı Azure hesabınızdaki bir Görüntü İşleme kaynağı kullanarak Azure 'a faturalandırma bilgilerini gönderir. Genel önizlemede uzamsal analiz kullanımı Şu anda ücretsizdir. 
 

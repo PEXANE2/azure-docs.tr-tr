@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3528ff790f16b5ec759989966ab35b8bad6565a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b465d0b3c28c50a8aa85247a14e189d4586a47
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629463"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016284"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -36,11 +36,11 @@ Bir Kullanıcı sorumlusu için veri erişimi sağlamak üzere bu adımları izl
 
     [![Veri erişim Ilkesi seçme ve ekleme](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
-1. **Kullanıcı Seç ' i**seçin. Eklemek istediğiniz kullanıcıyı bulmak için Kullanıcı adını veya e-posta adresini arayın. Seçimi onaylamak için **Seç** ' i seçin.
+1. **Kullanıcı Seç ' i** seçin. Eklemek istediğiniz kullanıcıyı bulmak için Kullanıcı adını veya e-posta adresini arayın. Seçimi onaylamak için **Seç** ' i seçin.
 
     [![Eklenecek bir kullanıcı seçin](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
-1. **Rol Seç ' i**seçin. Kullanıcı için uygun erişim rolünü seçin:
+1. **Rol Seç ' i** seçin. Kullanıcı için uygun erişim rolünü seçin:
 
     * Kullanıcının başvuru verilerini değiştirmesine ve kaydedilmiş sorguları ve perspektifleri ortamın diğer kullanıcılarıyla paylaşmasına izin vermek istiyorsanız **katılımcı** ' ı seçin.
 
@@ -60,7 +60,7 @@ Bir Kullanıcı sorumlusu için veri erişimi sağlamak üzere bu adımları izl
 
 ## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Başka bir Azure AD kiracısından konuk erişimi sağlama
 
-`Guest`Rol bir yönetim rolü değil. Bir kiracıdan diğerine davet edilen bir hesap için kullanılan bir terimdir. Konuk hesabı kiracının dizinine davet edildikten sonra, aynı erişim denetimine diğer tüm hesap gibi uygulanabilirler. Access Control (ıAM) dikey penceresini kullanarak Azure Time Series Insights ortamına yönetim erişimi verebilirsiniz. Ya da veri erişim Ilkeleri dikey penceresi aracılığıyla ortamdaki verilere erişim izni verebilirsiniz. Azure Active Directory (Azure AD) kiracı konuk erişimi hakkında daha fazla bilgi için [Azure Portal Add Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)' nı okuyun.
+`Guest`Rol bir yönetim rolü değil. Bir kiracıdan diğerine davet edilen bir hesap için kullanılan bir terimdir. Konuk hesabı kiracının dizinine davet edildikten sonra, aynı erişim denetimine diğer tüm hesap gibi uygulanabilirler. Access Control (ıAM) dikey penceresini kullanarak Azure Time Series Insights ortamına yönetim erişimi verebilirsiniz. Ya da veri erişim Ilkeleri dikey penceresi aracılığıyla ortamdaki verilere erişim izni verebilirsiniz. Azure Active Directory (Azure AD) kiracı konuk erişimi hakkında daha fazla bilgi için [Azure Portal Add Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları](../active-directory/external-identities/add-users-administrator.md)' nı okuyun.
 
 Başka bir kiracıdan bir Azure AD kullanıcısına Azure Time Series Insights ortamına konuk erişimi sağlamak için aşağıdaki adımları izleyin.
 
@@ -76,11 +76,11 @@ Başka bir kiracıdan bir Azure AD kullanıcısına Azure Time Series Insights o
 
     [![Onay kabarcığun görünmesini ara](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
-1. Yeni oluşturulan Konuk kullanıcıyı eklemek için Time Series Insights ortamınıza geri dönün. Verilere erişim **Izni ver**altında açıklandığı gibi **veri erişim ilkeleri** ' ne tıklayın. **Kullanıcı**' yı seçin. Eklemek istediğiniz kullanıcıyı bulmak için davet ettiğiniz Konuk kullanıcının e-posta adresini arayın. Sonra, seçimi onaylamak için öğesini **seçin** .
+1. Yeni oluşturulan Konuk kullanıcıyı eklemek için Time Series Insights ortamınıza geri dönün. Verilere erişim **Izni ver** altında açıklandığı gibi **veri erişim ilkeleri** ' ne tıklayın. **Kullanıcı**' yı seçin. Eklemek istediğiniz kullanıcıyı bulmak için davet ettiğiniz Konuk kullanıcının e-posta adresini arayın. Sonra, seçimi onaylamak için öğesini **seçin** .
 
     [![Kullanıcıyı seçin ve seçimi onaylayın](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
-1. **Rol Seç ' i**seçin. Konuk Kullanıcı için uygun erişim rolünü seçin:
+1. **Rol Seç ' i** seçin. Konuk Kullanıcı için uygun erişim rolünü seçin:
 
     * Kullanıcının başvuru verilerini değiştirmesine ve kaydedilmiş sorguları ve perspektifleri ortamın diğer kullanıcılarıyla paylaşmasına izin vermek istiyorsanız **katılımcı** ' ı seçin.
 
@@ -124,4 +124,4 @@ Başka bir kiracıdan bir Azure AD kullanıcısına Azure Time Series Insights o
 
 * Azure Active Directory uygulama kaydı adımları için [kimlik doğrulaması ve yetkilendirmeyi](time-series-insights-authentication-and-authorization.md) okuyun.
 
-* [Azure Time Series Insights Gezgini ' nde ortamınızı](./time-series-insights-update-explorer.md)görüntüleyin.
+* [Azure Time Series Insights Gezgini ' nde ortamınızı](./concepts-ux-panels.md)görüntüleyin.

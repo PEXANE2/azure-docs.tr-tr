@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c59b5646e011afa6b8487e8145a1cb07e6e2a8ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207491"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015601"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Azure Izleyici günlük sorgusuna splunk
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, splunk ile Azure Izleyici günlükleri arasındaki kavraml
  | Dağıtım birimi  | cluster |  cluster |  Azure Izleyici, rastgele çapraz küme sorgularına izin verir. Splunk değildir. |
  | Veri önbellekleri |  demet  |  Önbelleğe alma ve bekletme ilkeleri |  Verilerin süresini ve önbelleğe alma düzeyini denetler. Bu ayar, sorguların ve dağıtım maliyetinin performansını doğrudan etkiler. |
  | Verilerin mantıksal bölümü  |  dizin  |  database  |  Verilerin mantıksal olarak ayrılmasını sağlar. Her iki uygulama da birleşimlere ve bu bölümlerde birleştirme yapmasına izin verir. |
- | Yapılandırılmış olay meta verileri | Yok | tablo |  Splunk, olay meta verisinin arama diline açık bir kavram içermez. Azure Izleyici günlüklerinde sütunları olan bir tablo kavramı vardır. Her olay örneği bir satıra eşlenir. |
+ | Yapılandırılmış olay meta verileri | YOK | table |  Splunk, olay meta verisinin arama diline açık bir kavram içermez. Azure Izleyici günlüklerinde sütunları olan bir tablo kavramı vardır. Her olay örneği bir satıra eşlenir. |
  | Veri kaydı | event | satır |  Yalnızca terminoloji değişikliği. |
  | Veri kaydı özniteliği | alan |  sütun |  Azure Izleyici 'de, bu tablo yapısının bir parçası olarak önceden tanımlanmıştır. Splunk 'de, her olayın kendi alan kümesi vardır. |
  | Türler | x |  x |  Azure Izleyici veri türleri sütunlarda ayarlandığı şekilde daha açıktır. Her ikisinin de, JSON desteği dahil olmak üzere veri türleri ve kabaca eşdeğer veri türleri kümesiyle dinamik olarak çalışma yeteneği vardır. |
@@ -65,7 +65,7 @@ Aşağıdaki bölümlerde, splunk ve Azure Izleyici arasında farklı işleçler
 > [!NOTE]
 > Aşağıdaki örnekte, splunk alan _kuralı_ , Azure izleyici 'deki bir tabloyla eşlenir ve splunk 'ın varsayılan zaman damgası, günlük Analizi _ingestion_time ()_ sütunuyla eşlenir.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Arayın
 Splunk 'de, `search` anahtar sözcüğünü atlayabilir ve tırnak işareti olmayan bir dize belirtebilirsiniz. Azure Izleyici 'de, her sorguyu ile başlatmanız gerekir `find` ; tırnak içine alınmış olmayan bir dize bir sütun adıdır ve arama değeri tırnak içine alınmış bir dize olmalıdır. 
 
 | | İşleç | Örnek |
@@ -123,7 +123,7 @@ Splunk şuna benzer bir işlece sahip görünmüyor `project-away` . Alan alanla
 | **Azure İzleyici** | **Proje**<br>**Proje-dışarıda** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>Toplama
-Farklı toplama işlevleri için [Azure izleyici günlük sorgularındaki toplamalara](aggregations.md) bakın.
+Farklı toplama işlevleri için [Azure izleyici günlük sorgularındaki toplamalara](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations) bakın.
 
 | | İşleç | Örnek |
 |:---|:---|:---|
@@ -139,7 +139,7 @@ Splunk 'da JOIN önemli sınırlamalara sahiptir. Alt sorgu 10000 sonuçlý bir 
 | **Splunk** | **ayrılma** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
 | **Azure İzleyici** | **ayrılma** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 
-### <a name="sort"></a>Sıralama
+### <a name="sort"></a>Sırala
 Splunk 'da artan düzende sıralamak için işlecini kullanmanız gerekir `reverse` . Azure Izleyici Ayrıca, ne zaman null, sonunda veya sonda yerleştirileceğini tanımlamayı destekler.
 
 | | İşleç | Örnek |

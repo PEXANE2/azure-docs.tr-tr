@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972365"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014501"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central su kalitesinde izleme uygulaması oluşturma
 
@@ -56,7 +56,7 @@ Bu bölümde, su kalite izleme uygulaması oluşturmak için Azure IoT Central *
 
     * **Uygulama adı**: varsayılan olarak, uygulama adı **su kalite izleme** ' dir ve sonrasında Azure IoT Central 'nın oluşturduğu benzersiz bir kimlik dizesidir. İsterseniz, bir görünen ad girebilir veya uygulama adını daha sonra değiştirebilirsiniz.
     * **URL**: istediğiniz URL 'yi gırebılır veya URL değerini daha sonra değiştirebilirsiniz.
-    * Azure aboneliğiniz varsa **Dizin**, **Azure aboneliği**ve **bölge**değerlerini girin. Aboneliğiniz yoksa **7 günlük ücretsiz denemeyi** açabilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.
+    * Azure aboneliğiniz varsa **Dizin**, **Azure aboneliği** ve **bölge** değerlerini girin. Aboneliğiniz yoksa **7 günlük ücretsiz denemeyi** açabilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.
 
     Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [uygulama oluşturma](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) hızlı başlangıcı.
 
@@ -137,8 +137,8 @@ Aşağıdaki cihaz şablonu ayarlarını özelleştirme alıştırması:
 
 1. Cihaz şablonu menüsünde **Özelleştir**' i seçin.
 1. **Sıcaklık** telemetri türüne gidin.
-1. **Görünen ad** değerini **bildirilen sıcaklık**olarak değiştirin.
-1. Ölçüm birimini değiştirin veya **En düşük değer** ve **en büyük değeri**ayarlayın.
+1. **Görünen ad** değerini **bildirilen sıcaklık** olarak değiştirin.
+1. Ölçüm birimini değiştirin veya **En düşük değer** ve **en büyük değeri** ayarlayın.
 1. **Kaydet**’i seçin.
 
 #### <a name="add-a-cloud-property"></a>Bulut özelliği Ekle
@@ -180,7 +180,7 @@ Uygulama şablonundan oluşturduğunuz su kalitesinde izleme uygulamasının iki
 1. **Cihaz özellikleri** sekmesini ve **cihaz panosu** sekmesini bulun.
 
 > [!NOTE]
-> Tüm sekmeler **cihaz şablonu görünümlerinden**yapılandırıldı.
+> Tüm sekmeler **cihaz şablonu görünümlerinden** yapılandırıldı.
 
 ### <a name="add-new-devices"></a>Yeni cihaz ekle
 
@@ -188,7 +188,7 @@ Yeni bir cihaz eklemek için **cihazlar** sekmesinde **+ Yeni** ' yi seçin.
 
 ## <a name="explore-and-configure-rules"></a>Kuralları keşfet ve yapılandırma
 
-Azure IoT Central, cihaz telemetrisini otomatik olarak izleyen kurallar oluşturabilirsiniz. Bu kurallar, koşullarından herhangi biri karşılandığında bir eylemi tetikler. Olası bir işlem e-posta bildirimleri göndermektir. Diğer olasılıklar, diğer hizmetlere veri göndermek için bir Microsoft Flow eylemi veya Web kancası eylemi içerir.
+Azure IoT Central, cihaz telemetrisini otomatik olarak izleyen kurallar oluşturabilirsiniz. Bu kurallar, koşullarından herhangi biri karşılandığında bir eylemi tetikler. Olası bir işlem e-posta bildirimleri göndermektir. Diğer olasılıklar, diğer hizmetlere veri göndermek için bir Power otomatikleştir eylemi veya bir Web kancası eylemi içerir.
 
 Oluşturduğunuz su kalitesinde izleme uygulamasının önceden yapılandırılmış iki kuralı vardır.
 
@@ -206,7 +206,7 @@ Oluşturduğunuz su kalitesinde izleme uygulamasının önceden yapılandırılm
 
 Sonra, kurala bir e-posta eylemi ekleyin:
 
-1. **+ E-posta**seçeneğini belirleyin.
+1. **+ E-posta** seçeneğini belirleyin.
 1. **Görünen ad** kutusunda, **yüksek pH uyarısı**' nı girin.
 1. **To** kutusuna Azure IoT Central hesabınızla ilişkili e-posta adresini girin.
 1. İsteğe bağlı olarak, e-posta metnine dahil etmek için bir Note girin.
@@ -232,16 +232,16 @@ Azure IoT Central işleri sayesinde, güncelleştirmeleri cihaz veya bulut özel
 Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz.
 
 1. Uygulamanızı **Özelleştir ' i seçin**  >  **Customize your application**.
-1. **Uygulama logosu**altında, logo olarak karşıya yüklenecek görüntüyü seçmek için **Değiştir** ' i seçin.
+1. **Uygulama logosu** altında, logo olarak karşıya yüklenecek görüntüyü seçmek için **Değiştir** ' i seçin.
 1. Tarayıcı **simgesinde**, tarayıcı sekmelerinde görüntülenen görüntüyü seçmek için **Değiştir** ' i seçin.
-1. **Tarayıcı renkleri**altında, varsayılan değerleri HTML onaltılık renk kodlarıyla değiştirebilirsiniz.
-1. **Temanın**değerini değiştirmek için **Ayarlar** ' ı seçin.
+1. **Tarayıcı renkleri** altında, varsayılan değerleri HTML onaltılık renk kodlarıyla değiştirebilirsiniz.
+1. **Temanın** değerini değiştirmek için **Ayarlar** ' ı seçin.
 
    ![Uygulamanızı özelleştirme](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
 ### <a name="update-the-application-image"></a>Uygulama görüntüsünü güncelleştirme
 
-1. **Yönetim**  >  **uygulaması ayarlarını**seçin.
+1. **Yönetim**  >  **uygulaması ayarlarını** seçin.
 
 1. Uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçmek için **Görüntü Seç** düğmesini kullanın.
 

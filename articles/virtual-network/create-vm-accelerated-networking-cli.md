@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0b0b2cbf3fc637d7ad53be911c0171f6bb971bc6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 31d833d1a6e9c7715ca13582c09f5f72564d683a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896132"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016148"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLı kullanarak hızlandırılmış ağ ile Linux sanal makinesi oluşturma
 
@@ -51,7 +51,7 @@ Aşağıdaki dağıtımlar Azure galerisindeki kutudan çıkar:
 * **Geribağlantı noktaları çekirdeki "uzat"**
 * **Red Hat uyumlu çekirdek ile Oracle Linux 7,4 ve üzeri (RHCK)**
 * **UEK sürüm 5 ile Oracle Linux 7,5 ve üzeri**
-* **FreeBSD 10,4, 11,1 & 12,0**
+* **FreeBSD 10,4, 11,1 & 12,0 veya üzeri**
 
 ## <a name="limitations-and-constraints"></a>Sınırlamalar ve kısıtlamalar
 
@@ -87,7 +87,7 @@ Sanal makine oluşturulduktan sonra, [hızlandırılmış ağ oluşturma özelli
 ## <a name="cli-creation"></a>CLı oluşturma
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup* , *MYNIC* ve *myvm* dahil olmak üzere örnek parametre adları.
+En son [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *MYNIC* ve *myvm* dahil olmak üzere örnek parametre adları.
 
 [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *merkezileştirme* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
@@ -160,7 +160,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>VM oluşturma ve NIC 'yi iliştirme
 VM oluştururken, ile oluşturduğunuz NIC 'i belirtin `--nics` . [Linux hızlandırılmış ağlarda](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)listelenen bir boyut ve dağıtım seçin. 
 
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, UbuntuLTS görüntüsü ile *Myvm* ADLı bir VM ve hızlandırılmış ağı destekleyen bir boyut oluşturur ( *Standard_DS4_v2* ):
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, UbuntuLTS görüntüsü ile *Myvm* ADLı bir VM ve hızlandırılmış ağı destekleyen bir boyut oluşturur (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \
@@ -200,10 +200,10 @@ ssh azureuser@<your-public-ip-address>
 
 Bash kabuğundan, `uname -r` çekirdek sürümünün aşağıdaki sürümlerden biri veya daha fazlası olduğunu girin ve onaylayın:
 
-* **Ubuntu 16,04** : 4.11.0-1013
-* **SLES SP3** : 4.4.92-6.18
-* **RHEL** : 7.4.2017120423
-* **CentOS** : 7.4.20171206
+* **Ubuntu 16,04**: 4.11.0-1013
+* **SLES SP3**: 4.4.92-6.18
+* **RHEL**: 7.4.2017120423
+* **CentOS**: 7.4.20171206
 
 
 Mellanox VF cihazının VM 'ye komutuyla açık olduğunu doğrulayın `lspci` . Döndürülen çıkış aşağıdaki çıktıya benzer:

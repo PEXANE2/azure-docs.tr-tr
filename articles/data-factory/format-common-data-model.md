@@ -1,18 +1,18 @@
 ---
 title: Common Data Model biçimi
 description: Ortak veri modeli meta veri sistemini kullanarak verileri dönüştürme
-author: djpmsft
+author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.author: daperlov
-ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/20/2020
+ms.author: makromer
+ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636417"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015180"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory ortak veri modeli biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +38,7 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Biçimlendir | Biçim olmalıdır `cdm` | yes | `cdm` | biçim |
-| Meta veri biçimi | Verilerin Varlık başvurusunun bulunduğu yer. CDM sürüm 1,0 kullanıyorsanız, bildirim ' ı seçin. 1,0 öncesi bir CDM sürümü kullanıyorsanız, üzerinde model.js' yi seçin. | Evet | `'manifest'` veya `'model'` | manifestType |
+| Meta veri biçimi | Verilerin Varlık başvurusunun bulunduğu yer. CDM sürüm 1,0 kullanıyorsanız, bildirim ' ı seçin. 1,0 öncesi bir CDM sürümü kullanıyorsanız, üzerinde model.js' yi seçin. | Yes | `'manifest'` veya `'model'` | manifestType |
 | Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | yes | Dize | Biçimlendiri |
 | Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | yes | Dize | folderPath |
 | Bildirim dosyası: varlık yolu | Kök klasör içindeki varlığın klasör yolu | hayır | Dize | entityPath |
@@ -52,7 +52,11 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 | Corpus varlığı | Varlık başvurusunun yolu | yes | Dize | varlık |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
-Kaynak dönüşümünüze kullanmak istediğiniz varlık tanımı, veri klasörünüz ile aynı dizinde bulunuyorsa, "Corpus 'tan varlık kullan" seçeneğini kaldırabilir ve varlık başvurunuz olarak kullanmak istediğiniz varlığın varlığını yazmanız yeterlidir.
+Kaynak ve havuz dönüşümlerindeki "varlık başvurusu" nı seçerken, varlık başvurunuz konumu için bu üç seçenekten birini seçebilirsiniz:
+
+* Yerel, zaten ADF tarafından kullanılmakta olan bildirim dosyasında tanımlanan varlığı kullanır
+* Özel, ADF 'nin kullandığı bildirim dosyasından farklı bir varlık bildirim dosyasını işaret etmesini ister
+* Standart, içinde tutulan CDM varlıklarının standart kitaplığından bir varlık başvurusu kullanacaktır ```Github``` .
 
 ### <a name="sink-settings"></a>Havuz ayarları
 

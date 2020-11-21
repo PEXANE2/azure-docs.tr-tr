@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48cde51ee9941f705aa848d121c419a8f0c9ad1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399712"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013716"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
 
@@ -25,7 +25,7 @@ Kiracı modeli (Microsoft 365 verilerle Özel Konuşma Tanıma), kuruluşunuzun 
 > [!IMPORTANT]
 > Kuruluşunuz kiracı modeli hizmetini kullanarak kaydolur, konuşma hizmeti kuruluşunuzun dil modeline erişebilir. Model, kuruluşunuzdaki herkes tarafından görülemeyen Microsoft 365 Genel Grup e-postalarından ve belgelerinden oluşturulur. Kuruluşunuzun Yöneticisi, yönetici portalından kuruluş genelindeki dil modelinin kullanımını açabilir veya kapatabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Microsoft 365 Yönetim merkezini kullanarak kiracı modeline kaydolma
@@ -56,13 +56,13 @@ Kiracı model örneğini devre dışı bırakmak için:
 
 Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağına ve onunla ilişkili abonelik anahtarına ihtiyacınız vardır.
 
-1. [Azure Portal](https://aka.ms/azureportal)’ında oturum açın.
+1. [Azure portalında](https://aka.ms/azureportal) oturum açın.
 1. **Kaynak oluştur**’u seçin.
-1. **Arama** kutusuna **konuşma**yazın.
+1. **Arama** kutusuna **konuşma** yazın.
 1. Sonuçlar listesinde **konuşma**' yı seçin ve ardından **Oluştur**' u seçin.
 1. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Şunlardan emin olun:
-   * **Konum** **eastus** veya **westus**olarak ayarlanır.
-   * **Fiyatlandırma katmanı** **S0**olarak ayarlanır.
+   * **Konum** **eastus** veya **westus** olarak ayarlanır.
+   * **Fiyatlandırma katmanı** **S0** olarak ayarlanır.
 1. **Oluştur**’u seçin.
 
    Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı, kaynağınızın **genel bakış** bölümünde bulunabilir.
@@ -99,13 +99,13 @@ Kiracı modeli örneğiniz hazırlandığınızda, aşağıdakileri yaparak dağ
 
 1. **Dağıt**'ı seçin.
 
-   Modeliniz dağıtıldığında, durum *dağıtıldı*olarak değişir.
+   Modeliniz dağıtıldığında, durum *dağıtıldı* olarak değişir.
 
 ## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Konuşma SDK 'sını kullanarak kiracı modelinizi kullanın
 
 Modelinizi dağıttığınıza göre, artık bunu konuşma SDK 'Sı ile kullanabilirsiniz. Bu bölümde, Azure Active Directory (Azure AD) kimlik doğrulaması kullanarak konuşma hizmetini çağırmak için örnek kod kullanırsınız.
 
-C# ' de konuşma SDK 'sını çağırmak için kullanacağınız koda göz atalım. Bu örnekte, kiracı modelinizi kullanarak konuşma tanımayı gerçekleştirirsiniz. Bu kılavuz, platformunuzun zaten ayarlandığı varsayılır. Kurulum Yardımı 'na ihtiyacınız varsa bkz. [hızlı başlangıç: konuşmayı tanıma, C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+C# ' de konuşma SDK 'sını çağırmak için kullanacağınız koda göz atalım. Bu örnekte, kiracı modelinizi kullanarak konuşma tanımayı gerçekleştirirsiniz. Bu kılavuz, platformunuzun zaten ayarlandığı varsayılır. Kurulum Yardımı 'na ihtiyacınız varsa bkz. [hızlı başlangıç: konuşmayı tanıma, C# (.NET Core)](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore).
 
 Bu kodu projenize kopyalayın:
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5be99ba09032020abf777c80307e347658a6e037
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2b5a34e8f3e7132a16ad3683b846d57e9ece2cb6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470837"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015499"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak konuşmacı tanıma için temel tasarım düzenlerini öğrenirsiniz; örneğin:
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) . Bu örnekte, bir [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) . Bu örnekte, bir [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
 
 `westus`Hizmet için desteklenen tek bölge olduğu için bölgenin olarak ayarlandığını unutmayın.
 
@@ -70,7 +70,7 @@ public class Program
 
 ## <a name="text-dependent-verification"></a>Metne bağımlı doğrulama
 
-Konuşmacı Doğrulama, konuşmacının bilinen veya **kayıtlı** bir sesle eşleştiğini onaylama işlemidir. İlk adım, bir ses profilini **kaydetmek** ve bu sayede hizmetin gelecekteki sesli örnekleri karşılaştırmak için bir şey olması gerekir. Bu örnekte, profili, hem kayıt hem de doğrulama için kullanılmak üzere belirli bir geçiş ifadesi gerektiren **metne bağlı** bir strateji kullanarak kaydedetirsiniz. Desteklenen geçiş tümceciklerin listesi için [başvuru belgelerine](https://docs.microsoft.com/rest/api/speakerrecognition/) bakın.
+Konuşmacı Doğrulama, konuşmacının bilinen veya **kayıtlı** bir sesle eşleştiğini onaylama işlemidir. İlk adım, bir ses profilini **kaydetmek** ve bu sayede hizmetin gelecekteki sesli örnekleri karşılaştırmak için bir şey olması gerekir. Bu örnekte, profili, hem kayıt hem de doğrulama için kullanılmak üzere belirli bir geçiş ifadesi gerektiren **metne bağlı** bir strateji kullanarak kaydedetirsiniz. Desteklenen geçiş tümceciklerin listesi için [başvuru belgelerine](/rest/api/speakerrecognition/) bakın.
 
 `Program`Bir ses profili kaydetmek için Sınıfınıza aşağıdaki işlevi oluşturarak başlayın.
 
@@ -230,9 +230,9 @@ Verified voice profile for speaker Your Name, score is 0.849409
 
 ## <a name="speaker-identification"></a>Konuşmacı belirleme
 
-Konuşmacı kimliği, belirli bir kayıtlı ses grubundan **kimin** konuşduğunu tespit etmek için kullanılır. Bu işlem, tek bir profile karşı doğrulama yerine, aynı anda birden çok ses profiline karşı, ana fark ile **metin bağımsız doğrulamaya**çok benzer.
+Konuşmacı kimliği, belirli bir kayıtlı ses grubundan **kimin** konuşduğunu tespit etmek için kullanılır. Bu işlem, tek bir profile karşı doğrulama yerine, aynı anda birden çok ses profiline karşı, ana fark ile **metin bağımsız doğrulamaya** çok benzer.
 
-`IdentificationEnroll`Birden çok ses profilini kaydetmek için bir işlev oluşturun. Her profil için kayıt işlemi, **metin bağımsız doğrulama**için kayıt işlemiyle aynıdır ve her profil için 20 saniyelik ses gerektirir. Bu işlev, dizelerin listesini kabul eder `profileNames` ve listedeki her ad için yeni bir ses profili oluşturur. İşlevi `VoiceProfile` bir konuşmacı tanımlamak için bir sonraki işlevde kullandığınız nesne listesini döndürür.
+`IdentificationEnroll`Birden çok ses profilini kaydetmek için bir işlev oluşturun. Her profil için kayıt işlemi, **metin bağımsız doğrulama** için kayıt işlemiyle aynıdır ve her profil için 20 saniyelik ses gerektirir. Bu işlev, dizelerin listesini kabul eder `profileNames` ve listedeki her ad için yeni bir ses profili oluşturur. İşlevi `VoiceProfile` bir konuşmacı tanımlamak için bir sonraki işlevde kullandığınız nesne listesini döndürür.
 
 ```csharp
 public static async Task<List<VoiceProfile>> IdentificationEnroll(SpeechConfig config, List<string> profileNames, Dictionary<string, string> profileMapping)

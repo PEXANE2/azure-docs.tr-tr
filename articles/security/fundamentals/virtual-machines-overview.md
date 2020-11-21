@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409799"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014773"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
 Bu makale, sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sağlar.
@@ -108,16 +108,16 @@ Kuruluşunuzun BCDR stratejisinin önemli bir kısmı, planlı ve plansız kesin
 
 Site Recovery:
 
-* **BCDR stratejinizi basitleştirir** : Site Recovery, tek bir konumdan birden çok iş iş yükünün ve uygulamanın çoğaltma, yük devretme ve kurtarma işlemlerini kolayca yapmayı kolaylaştırır. Site Recovery, çoğaltma ve yük devretme işlemlerini düzenler, ancak uygulama verilerinizi engellemez veya onunla ilgili herhangi bir bilgi vermez.
-* **Esnek çoğaltma sağlar** : Site Recovery kullanarak Hyper-V sanal makinelerinde, VMware sanal makinelerinde ve Windows/Linux fiziksel sunucularında çalışan iş yüklerini çoğaltabilirsiniz.
-* **Yük devretmeyi ve kurtarmayı destekler** : Site Recovery, üretim ortamlarını etkilemeden olağanüstü durum kurtarma detaylarını desteklemek için test yük devretmesi sağlar. Ayrıca, beklenen kesintilere yönelik olarak sıfır veri kaybı sunan planlanan yük devretmeler veya beklenmeyen olağanüstü durumlar için minimum düzeyde veri kaybıyla sonuçlanan (çoğaltma sıklığına bağlı olarak) planlanmamış yük devretmeler çalıştırabilirsiniz. Yük devretmeden sonra, birincil sitelerinize geri dönebilirsiniz. Yük devretme işlemini özelleştirebilmeniz ve çok katmanlı uygulamaları kurtarabilmeniz için Site Recovery, betikleri ve Azure otomasyonu çalışma kitaplarını içeren kurtarma planları sunar.
-* **İkincil veri merkezlerini ortadan kaldırır** : ikincil bir şirket içi siteye veya Azure 'a çoğaltabilirsiniz. Olağanüstü durum kurtarma için Azure 'un bir hedef olarak kullanılması, ikincil bir sitenin korunmasının maliyetini ve karmaşıklığını ortadan kaldırır. Çoğaltılan veriler Azure depolama 'da depolanır.
-* **Mevcut BCDR teknolojileriyle tümleştirilir** : diğer uygulamaların BCDR özellikleriyle Site Recovery iş ortakları. Örneğin, kurumsal iş yüklerinin SQL Server arka ucunun korunmasına yardımcı olmak için Site Recovery kullanabilirsiniz. Bu, kullanılabilirlik gruplarının yük devretmesini yönetmek için SQL Server her zaman açık için yerel destek içerir.
+* **BCDR stratejinizi basitleştirir**: Site Recovery, tek bir konumdan birden çok iş iş yükünün ve uygulamanın çoğaltma, yük devretme ve kurtarma işlemlerini kolayca yapmayı kolaylaştırır. Site Recovery, çoğaltma ve yük devretme işlemlerini düzenler, ancak uygulama verilerinizi engellemez veya onunla ilgili herhangi bir bilgi vermez.
+* **Esnek çoğaltma sağlar**: Site Recovery kullanarak Hyper-V sanal makinelerinde, VMware sanal makinelerinde ve Windows/Linux fiziksel sunucularında çalışan iş yüklerini çoğaltabilirsiniz.
+* **Yük devretmeyi ve kurtarmayı destekler**: Site Recovery, üretim ortamlarını etkilemeden olağanüstü durum kurtarma detaylarını desteklemek için test yük devretmesi sağlar. Ayrıca, beklenen kesintilere yönelik olarak sıfır veri kaybı sunan planlanan yük devretmeler veya beklenmeyen olağanüstü durumlar için minimum düzeyde veri kaybıyla sonuçlanan (çoğaltma sıklığına bağlı olarak) planlanmamış yük devretmeler çalıştırabilirsiniz. Yük devretmeden sonra, birincil sitelerinize geri dönebilirsiniz. Yük devretme işlemini özelleştirebilmeniz ve çok katmanlı uygulamaları kurtarabilmeniz için Site Recovery, betikleri ve Azure otomasyonu çalışma kitaplarını içeren kurtarma planları sunar.
+* **İkincil veri merkezlerini ortadan kaldırır**: ikincil bir şirket içi siteye veya Azure 'a çoğaltabilirsiniz. Olağanüstü durum kurtarma için Azure 'un bir hedef olarak kullanılması, ikincil bir sitenin korunmasının maliyetini ve karmaşıklığını ortadan kaldırır. Çoğaltılan veriler Azure depolama 'da depolanır.
+* **Mevcut BCDR teknolojileriyle tümleştirilir**: diğer uygulamaların BCDR özellikleriyle Site Recovery iş ortakları. Örneğin, kurumsal iş yüklerinin SQL Server arka ucunun korunmasına yardımcı olmak için Site Recovery kullanabilirsiniz. Bu, kullanılabilirlik gruplarının yük devretmesini yönetmek için SQL Server her zaman açık için yerel destek içerir.
 
 Daha fazla bilgi edinin:
 
 * [Azure Site Recovery nedir?](../../site-recovery/site-recovery-overview.md)
-* [Azure Site Recovery nasıl çalışır?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Azure Site Recovery nasıl çalışır?](/azure/site-recovery/azure-to-azure-architecture)
 * [Hangi iş yükleri Azure Site Recovery korumalıdır?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Sanal ağ

@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4b4a1e601a5a0dbf5e56fc1d930e14150f27fee3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: a441d1d22f938e1d1e05aea547929fa3b315d406
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398241"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012896"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Machine Learning ile eğitim modelleriniz olduğunda özel bi
 
 Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlar. Azure Machine Learning ortamlarını Ayrıca, korunan [Azure Machine Learning taban görüntülerinin](https://github.com/Azure/AzureML-Containers) veya kendi [özel yansımalarından](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)biri gibi farklı bir temel görüntü belirtmek için de kullanabilirsiniz. Özel temel görüntüler, kendi bağımlılıklarınızı yakından yönetmenize ve eğitim işleri çalıştırırken bileşen sürümleri üzerinde daha sıkı bir denetim sürdürmenize imkan tanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kodu şu ortamlardan birinde çalıştırın:
 
@@ -138,7 +138,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>Eğitim işinizi yapılandırma
 
-Bu öğretici için [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/train/fastai/pets-resnet34/train.py)'da *train.py* eğitim betiğini kullanın. Uygulamada, herhangi bir özel eğitim betiği alabilir ve Azure Machine Learning olduğu gibi çalıştırabilirsiniz.
+Bu öğretici için [GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py)'da *train.py* eğitim betiğini kullanın. Uygulamada, herhangi bir özel eğitim betiği alabilir ve Azure Machine Learning olduğu gibi çalıştırabilirsiniz.
 
 `ScriptRunConfig`İşinizi istenen [işlem hedefinde](how-to-set-up-training-targets.md)çalıştırmak üzere yapılandırmak için bir kaynak oluşturun.
 

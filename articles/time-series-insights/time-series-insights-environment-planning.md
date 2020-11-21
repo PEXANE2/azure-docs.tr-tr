@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569446"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016216"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 ortamınızı planlayın
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Time Series Insights Gen1 ortamınızı beklenen giriş oran�
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 Azure Time Series Insights kullanmaya başlamak için, ne kadar veri göndermeyi beklediğinizi ve verilerinizi ne kadar süreyle depolamanız gerektiğini biliyorsanız bu en iyisidir.  
 
@@ -56,7 +56,7 @@ Azure Time Series Insights ortamınızda **veri saklama süresi** ayarını değ
 Azure Time Series Insights iki mod vardır:
 
 - En güncel veriler için bir mod en iyi duruma getirir. Örnek ile kullanılabilir son verileri bırakarak **eski verileri temizlemeye** yönelik bir ilke uygular. Bu mod, varsayılan olarak açık olur.
-- Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldı davranışı**olarak seçildiğinde yeni verilerin görüntülenmesini önler.
+- Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldı davranışı** olarak seçildiğinde yeni verilerin görüntülenmesini önler.
 
 Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasındaki iki mod arasında geçiş yapabilirsiniz.
 
@@ -67,7 +67,7 @@ Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasında
 
 1. [Azure Portal](https://portal.azure.com), Time Series Insights ortamınızı seçin.
 
-1. **Time Series Insights ortamı** bölmesinde, **Ayarlar**altında **depolama yapılandırması**' nı seçin.
+1. **Time Series Insights ortamı** bölmesinde, **Ayarlar** altında **depolama yapılandırması**' nı seçin.
 
 1. **Veri saklama süresi (gün cinsinden)** kutusuna 1 ile 400 arasında bir değer girin.
 
@@ -92,7 +92,7 @@ Kısıtlama ve gecikme süresi, dakika başına kapasite içinde bir rol oynar. 
 
 Örneğin, tek bir S1 SKU 'SU varsa, verileri dakikada 720 olay hızında ve veri hızının 1.440 olay veya daha kısa bir süre içinde bir saatten kısa bir süre boyunca artışlar durumunda ortamınızda belirgin bir gecikme yoktur. Ancak, bir saatten uzun bir süre boyunca 1.440 olayı aşarsanız, görselde görselleştirilen ve sorgu için kullanılabilen verilerdeki gecikme süresi büyük olasılıkla yaşanacaktır.
 
-Ne kadar veri göndermeyi beklediğinizi önceden bilmiyor olabilirsiniz. Bu durumda, [azure IoT Hub](../iot-hub/iot-hub-metrics.md) ve [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) için veri telemetrisini Azure Portal aboneliğinizde bulabilirsiniz. Telemetri, ortamınızı nasıl sağlayacağınızı belirlemenize yardımcı olabilir. Telemetrisini görüntülemek için ilgili olay kaynağı için Azure portal **ölçümler** bölmesini kullanın. Olay kaynak ölçümlerinizi anladıysanız, Azure Time Series Insights ortamınızı daha verimli bir şekilde planlamak ve temin edebilirsiniz.
+Ne kadar veri göndermeyi beklediğinizi önceden bilmiyor olabilirsiniz. Bu durumda, [azure IoT Hub](../iot-hub/monitor-iot-hub.md) ve [Azure Event Hubs](/archive/blogs/cloud_solution_architect/using-the-azure-rest-apis-to-retrieve-event-hub-metrics) için veri telemetrisini Azure Portal aboneliğinizde bulabilirsiniz. Telemetri, ortamınızı nasıl sağlayacağınızı belirlemenize yardımcı olabilir. Telemetrisini görüntülemek için ilgili olay kaynağı için Azure portal **ölçümler** bölmesini kullanın. Olay kaynak ölçümlerinizi anladıysanız, Azure Time Series Insights ortamınızı daha verimli bir şekilde planlamak ve temin edebilirsiniz.
 
 ### <a name="calculate-ingress-requirements"></a>Giriş gereksinimlerini hesapla
 
@@ -128,6 +128,6 @@ Azure Time Series Insights ' de başvuru verilerinizi oluşturma, karşıya yük
 
 - [Azure Portal yeni bir Azure Time Series Insights ortamı](time-series-insights-get-started.md)oluşturarak başlayın.
 
-- Azure Time Series Insights [bir Event Hubs olay kaynağı eklemeyi](time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin.
+- Azure Time Series Insights [bir Event Hubs olay kaynağı eklemeyi](./how-to-ingest-data-event-hub.md) öğrenin.
 
-- [IoT Hub olay kaynağını yapılandırma](time-series-insights-how-to-add-an-event-source-iothub.md)hakkında bilgi edinin.
+- [IoT Hub olay kaynağını yapılandırma](./how-to-ingest-data-iot-hub.md)hakkında bilgi edinin.

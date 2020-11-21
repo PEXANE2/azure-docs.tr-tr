@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667818"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016726"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>Yeni ortamlar için JSON düzleştirme ve kaçış kurallarında yaklaşan değişiklikler
 
@@ -44,17 +44,17 @@ Nesne dizileri her zaman düzleştirilir ve birden çok olay üretir. | Bir dizi
 
 Yeni dağıtım kurallarından her türlü yeni dağıtımın eşleşmesi gerekir. Örneğin, TS KIMLIĞINIZ ise, `telemetry_tagId` `telemetry.tagId` ortam TS kimliği olarak yapılandırmak için tüm Azure Resource Manager şablonlarını veya Otomatik Dağıtım betiklerini güncelleştirmeniz gerekir. Ayrıca, iç içe geçmiş JSON 'daki olay kaynağı zaman damgaları için de bu değişikliği yapmanız gerekir
 
-### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Yükleriniz iç içe geçmiş JSON veya özel karakterler içeriyorsa ve yazma [zaman serisi model](.\time-series-insights-update-tsm.md) değişkeni ifadelerini otomatikleştirin
+### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Yükleriniz iç içe geçmiş JSON veya özel karakterler içeriyorsa ve yazma [zaman serisi model](./concepts-model-overview.md) değişkeni ifadelerini otomatikleştirin
 
-Yeni giriş kurallarını eşleştirmek için [Typesbatchput](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) çalıştıran istemci kodunuzu güncelleştirin. Örneğin, önceki bir [zaman serisi ifadesini](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) `"value": {"tsx": "$event.series_value.Double"}` aşağıdaki seçeneklerden birine güncelleştirmeniz gerekir:
+Yeni giriş kurallarını eşleştirmek için [Typesbatchput](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) çalıştıran istemci kodunuzu güncelleştirin. Örneğin, önceki bir [zaman serisi ifadesini](/rest/api/time-series-insights/reference-time-series-expression-syntax) `"value": {"tsx": "$event.series_value.Double"}` aşağıdaki seçeneklerden birine güncelleştirmeniz gerekir:
 
 * `"value": {"tsx": "$event.series.value.Double"}`
 * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Time Series Insights Gen2 Storage ve ınress](./time-series-insights-update-storage-ingress.md)hakkında bilgi edinin.
+* [Azure Time Series Insights Gen2 Storage ve ınress](./concepts-ingestion-overview.md)hakkında bilgi edinin.
 
 * [Zaman serisi sorgu API 'lerini](./concepts-query-overview.md)kullanarak verilerinizi sorgulamayı öğrenin.
 
-* [Yeni zaman serisi ifade sözdizimi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)hakkında daha fazla bilgi edinin.
+* [Yeni zaman serisi ifade sözdizimi](/rest/api/time-series-insights/reference-time-series-expression-syntax)hakkında daha fazla bilgi edinin.

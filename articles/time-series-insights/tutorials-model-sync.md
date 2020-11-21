@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
-ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02a6e3eb2aef4a02c90360b2016e64af579081
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91346390"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014739"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins ve Time Series Insights 2. Nesil arasında model eşitlemesi
 
-Bu makalede, Azure dijital TWINS 'teki (ADT) varlık modelini Azure Time Series Insights (TSI) ' deki varlık modeline dönüştürmek için kullanılan en iyi uygulamalar ve araçlar açıklanmaktadır.  Bu makale, Azure dijital TWINS 'in Azure Time Series Insights ile tümleştirilmesini açıklayan iki bölümlü bir öğretici serisinin ikinci parçasıdır. Azure dijital TWINS 'in Time Series Insights ile tümleştirilmesi, dijital TWINS 'in Telemetriler ve hesaplanmış özelliklerinin geçmişini arşivlemeyi ve izlemeyi mümkün. Bu öğretici serisi, Azure dijital TWINS ile Time Series Insights tümleştirmeye çalışan geliştiricilere yönelik olarak tasarlanmıştır. 1. bölüm,  [Azure dijital TWINS 'den gerçek zamanlı seri verileri Time Series Insights ve buna getiren veri işlem hattının](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) oluşturulmasına ve Bu öğreticinin ikinci bölümünde, Azure Digital TWINS ve Time Series Insights arasındaki varlık modeli eşitlemesini açıklamaktadır. Bu öğreticide, zaman serisi KIMLIĞI (TS KIMLIĞI) için adlandırma kuralını seçme ve oluşturma ve zaman serisi modelinde (TSD) hiyerarşileri el ile oluşturma konusunda en iyi yöntemler açıklanmaktadır.
+Bu makalede, Azure dijital TWINS 'teki (ADT) varlık modelini Azure Time Series Insights (TSI) ' deki varlık modeline dönüştürmek için kullanılan en iyi uygulamalar ve araçlar açıklanmaktadır.  Bu makale, Azure dijital TWINS 'in Azure Time Series Insights ile tümleştirilmesini açıklayan iki bölümlü bir öğretici serisinin ikinci parçasıdır. Azure dijital TWINS 'in Time Series Insights ile tümleştirilmesi, dijital TWINS 'in Telemetriler ve hesaplanmış özelliklerinin geçmişini arşivlemeyi ve izlemeyi mümkün. Bu öğretici serisi, Azure dijital TWINS ile Time Series Insights tümleştirmeye çalışan geliştiricilere yönelik olarak tasarlanmıştır. 1. bölüm,  [Azure dijital TWINS 'den gerçek zamanlı seri verileri Time Series Insights ve buna getiren veri işlem hattının](../digital-twins/how-to-integrate-time-series-insights.md) oluşturulmasına ve Bu öğreticinin ikinci bölümünde, Azure Digital TWINS ve Time Series Insights arasındaki varlık modeli eşitlemesini açıklamaktadır. Bu öğreticide, zaman serisi KIMLIĞI (TS KIMLIĞI) için adlandırma kuralını seçme ve oluşturma ve zaman serisi modelinde (TSD) hiyerarşileri el ile oluşturma konusunda en iyi yöntemler açıklanmaktadır.
 
 ## <a name="choosing-a-time-series-id"></a>Zaman serisi KIMLIĞI seçme
 
@@ -29,7 +29,7 @@ Zaman serisi KIMLIĞI, Time Series Insights Varlıkları tanımlamak için kulla
 
 ## <a name="contextualizing-time-series"></a>Bir zaman serisini al
 
-Time Series Insights içindeki verilerin (çoğunlukla doğası açısından uzamsal) şeması, varlık hiyerarşileri aracılığıyla elde edilir ve aynı şekilde, Time Series Insights Gezgini 'ndeki ağaç görünümü aracılığıyla verilerin kolay bir şekilde gezinilmesi için kullanılır. Zaman serisi türleri ve Hiyerarşiler, Time Series Insights zaman serisi modeli (TSD) kullanılarak tanımlanır. TSD 'daki türler, ağaç görünümünü Time Series Insights Gezgini 'nde oluşturmak için hiyerarşi düzeyleri ve örnek alan değerleri kullanıldığında değişkenleri tanımlamaya yardımcı olur. TSD hakkında daha fazla bilgi için [çevrimiçi Time Series Insights belgelerine](https://docs.microsoft.com/azure/time-series-insights/concepts-model-overview)bakın.
+Time Series Insights içindeki verilerin (çoğunlukla doğası açısından uzamsal) şeması, varlık hiyerarşileri aracılığıyla elde edilir ve aynı şekilde, Time Series Insights Gezgini 'ndeki ağaç görünümü aracılığıyla verilerin kolay bir şekilde gezinilmesi için kullanılır. Zaman serisi türleri ve Hiyerarşiler, Time Series Insights zaman serisi modeli (TSD) kullanılarak tanımlanır. TSD 'daki türler, ağaç görünümünü Time Series Insights Gezgini 'nde oluşturmak için hiyerarşi düzeyleri ve örnek alan değerleri kullanıldığında değişkenleri tanımlamaya yardımcı olur. TSD hakkında daha fazla bilgi için [çevrimiçi Time Series Insights belgelerine](./concepts-model-overview.md)bakın.
 
 Azure dijital TWINS 'de, varlıklar arasındaki bağlantı, ikizi ilişkiler kullanılarak ifade edilir. İkizi ilişkiler yalnızca bağlı varlıkların bir grafiktir. Ancak zaman serisi öngörüleri içinde, varlıklar arasındaki ilişkiler doğası gereği hiyerarşik bir şekilde yapılır. Diğer bir deyişle, varlıklar bir üst-alt tür od ilişkisini paylaşır ve bir ağaç yapısı kullanılarak temsil edilir. Azure dijital TWINS 'deki ilişki bilgilerini Time Series Insights hiyerarşilere dönüştürmek için Azure dijital TWINS 'den ilgili hiyerarşik ilişkileri seçmemiz gerekir. Azure dijital TWINS, dijital Ikizi tanım dili (DTDL) adlı bir açık standart, modelleme dili kullanır. DTDL modellerinde JSON-LD adlı bir JSON değişkeni kullanılarak açıklanmıştır. Belirtile ilgili tüm ayrıntılar için [Dtdl belgelerine](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) bakın.
 
@@ -82,7 +82,7 @@ Aşağıdaki kod parçacığında, istemci uygulamasının Azure dijital TWINS A
 
 > [!Note]
 >
-> Bu kod parçacığı örneği, okuyucuların öğreticinin [01 bölümünü](https://docs.microsoft.com/azure/digital-twins/tutorial-end-to-end#set-up-the-sample-function-app) öğrenmekte olduğunu ve bu kod değişikliğinin "ProcessHubToDTEvents" işlevi içinde yapıldığını varsayar.
+> Bu kod parçacığı örneği, okuyucuların öğreticinin [01 bölümünü](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) öğrenmekte olduğunu ve bu kod değişikliğinin "ProcessHubToDTEvents" işlevi içinde yapıldığını varsayar.
 
 ```csharp
 if (propertyPath.Equals("/Flow"))
@@ -114,7 +114,7 @@ relationship for " + twinId);
 
 ## <a name="updating-instance-fields-using-apis"></a>API 'Leri kullanarak örnek alanlarını güncelleştirme
 
-Öğreticinin bu bölümünde, Azure dijital TWINS 'te oluşturma, TWINS silme veya TWINS arasındaki ilişkilerde değişiklik yapmak ve Time Series Insights modeli API 'Lerini kullanarak örnek alanları ve hiyerarşileri güncelleştirmek gibi değişiklikleri modelleyerek nasıl yapılacağı açıklanmaktadır. Time Series Insights modeli güncelleştirme yöntemi genellikle Azure işlevleri aracılığıyla gerçekleştirilir. Azure dijital TWINS 'de, ikizi ekleme veya silme gibi olay bildirimleri, Azure işlevlerine beslenebilir Event Hubs gibi bir aşağı akış hizmeti olabilir. Olay Yönlendirme ve filtreleme hakkında daha fazla ayrıntı [burada](https://docs.microsoft.com/azure/digital-twins/how-to-manage-routes-portal)açıklanmıştır.  Bu bölümün geri kalanında, Azure Digital TWINS 'te ikizi ekleme (bir tür model değişikliği) karşılığında Time Series Insights modeli güncelleştirmek için Azure işlevlerinde Time Series Insights modeli API 'Lerinin kullanılması açıklanmaktadır.
+Öğreticinin bu bölümünde, Azure dijital TWINS 'te oluşturma, TWINS silme veya TWINS arasındaki ilişkilerde değişiklik yapmak ve Time Series Insights modeli API 'Lerini kullanarak örnek alanları ve hiyerarşileri güncelleştirmek gibi değişiklikleri modelleyerek nasıl yapılacağı açıklanmaktadır. Time Series Insights modeli güncelleştirme yöntemi genellikle Azure işlevleri aracılığıyla gerçekleştirilir. Azure dijital TWINS 'de, ikizi ekleme veya silme gibi olay bildirimleri, Azure işlevlerine beslenebilir Event Hubs gibi bir aşağı akış hizmeti olabilir. Olay Yönlendirme ve filtreleme hakkında daha fazla ayrıntı [burada](../digital-twins/how-to-manage-routes-portal.md)açıklanmıştır.  Bu bölümün geri kalanında, Azure Digital TWINS 'te ikizi ekleme (bir tür model değişikliği) karşılığında Time Series Insights modeli güncelleştirmek için Azure işlevlerinde Time Series Insights modeli API 'Lerinin kullanılması açıklanmaktadır.
 
 ### <a name="receiving-and-identifying-twin-addition-event-notification"></a>İkizi ek olay bildirimi alma ve tanımlama
 
@@ -227,4 +227,4 @@ private async Task<TimeSeriesInstance> AddHierarchyToInstanceAsync(TimeSeriesIns
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Üçüncü öğreticilerde, Time Series Insights API 'Lerini kullanarak Azure dijital TWINS 'ten geçmiş verilerin nasıl sorgulanalınacağını gösterirsiniz. Sürmekte olan bir çalışmadır ve bölüm hazırlanmaya devam eder. Bu sırada, okuyucuların [Time Series Insights veri sorgusu API 'si belgelerine](https://docs.microsoft.com/azure/time-series-insights/concepts-query-overview)başvurması önerilir.
+Üçüncü öğreticilerde, Time Series Insights API 'Lerini kullanarak Azure dijital TWINS 'ten geçmiş verilerin nasıl sorgulanalınacağını gösterirsiniz. Sürmekte olan bir çalışmadır ve bölüm hazırlanmaya devam eder. Bu sırada, okuyucuların [Time Series Insights veri sorgusu API 'si belgelerine](./concepts-query-overview.md)başvurması önerilir.

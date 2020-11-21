@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 1a7204fea1a77dbca57ffc7d512f81e46c4d3b5f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873402"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012945"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
@@ -27,6 +27,10 @@ Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler de�
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 * Python SDK 'yı kullanıyorsanız SDK 'yı [yükler](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+
+## <a name="limitations"></a>Sınırlamalar
+
+* Yeni bir çalışma alanı oluştururken, çalışma alanının otomatik olarak gerektirdiği Azure hizmetlerini oluşturmasına izin verebilir veya mevcut hizmetleri sağlayabilirsiniz. Mevcut hizmetleri sağlarken, bu hizmetlerin hepsi çalışma alanıyla aynı Azure aboneliğinde olmalıdır.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 

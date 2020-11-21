@@ -6,20 +6,22 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77368313"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015706"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Web uygulaması güvenlik duvarı v2 özel kurallarını oluşturma ve kullanma Application Gateway
 
 Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, Web uygulamaları için koruma sağlar. Bu koruma, Open Web Application Security Project (OWASP) çekirdek kural kümesi (CCR) tarafından sağlanır. Bazı durumlarda, özel gereksinimlerinizi karşılamak için kendi özel kurallarınızı oluşturmanız gerekebilir. WAF özel kuralları hakkında daha fazla bilgi için bkz. [özel Web uygulaması güvenlik duvarı kurallarına genel bakış](custom-waf-rules-overview.md).
 
 Bu makalede, v2 WAF 'niz ile oluşturabileceğiniz ve kullanabileceğiniz bazı örnek özel kurallar gösterilmektedir. Azure PowerShell kullanarak bir WAF 'yi özel bir kuralla dağıtmayı öğrenmek için, bkz. [Azure PowerShell kullanarak Web uygulaması güvenlik duvarı özel kurallarını yapılandırma](configure-waf-custom-rules.md).
+
+Bu makalede gösterilen JSON parçacıkları bir [Applicationgatewaywebapplicationfirewallpolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) kaynağından türetilir.
 
 >[!NOTE]
 > Uygulama ağ geçidiniz WAF katmanını kullanmıyor ise, uygulama ağ geçidini WAF katmanına yükseltme seçeneği sağ bölmede görüntülenir.
@@ -229,7 +231,7 @@ Karşılık gelen yukarı ve kuralları: `SecRule REMOTE_ADDR "@ipMatch 192.168.
 
 ## <a name="example-4"></a>Örnek 4
 
-Bu örnekte, 192.168.5.0/24 aralığında User-Agent *evbot*ve trafik engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, 192.168.5.0/24 aralığından User-Agent üst bilgi **ve** IP *adreslerinin her ikisi de eşleştiriliyorsa* , istek engelleniyorsa emin olur.
+Bu örnekte, 192.168.5.0/24 aralığında User-Agent *evbot* ve trafik engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, 192.168.5.0/24 aralığından User-Agent üst bilgi **ve** IP *adreslerinin her ikisi de eşleştiriliyorsa* , istek engelleniyorsa emin olur.
 
 Logic: p **ve** q
 
@@ -301,7 +303,7 @@ Buna karşılık gelen JSON şu şekildedir:
 
 ## <a name="example-5"></a>Örnek 5
 
-Bu örnekte, isteğin *192.168.5.0/24*IP adresi aralığının dışında veya Kullanıcı Aracısı dizesinin *Chrome* olmadığından (Kullanıcı Chrome tarayıcısını kullanmıyor anlamına gelir) engellemek isteyebilirsiniz. Bu mantık **veya**kullandığından, iki koşul aşağıdaki örnekte görüldüğü gibi ayrı kurallarda bulunur. trafiği engellemek için *myrule1* ve *myrule2* öğelerinin her ikisinin de eşleşmesi gerekir.
+Bu örnekte, isteğin *192.168.5.0/24* IP adresi aralığının dışında veya Kullanıcı Aracısı dizesinin *Chrome* olmadığından (Kullanıcı Chrome tarayıcısını kullanmıyor anlamına gelir) engellemek isteyebilirsiniz. Bu mantık **veya** kullandığından, iki koşul aşağıdaki örnekte görüldüğü gibi ayrı kurallarda bulunur. trafiği engellemek için *myrule1* ve *myrule2* öğelerinin her ikisinin de eşleşmesi gerekir.
 
 Logic: **Not** (p **ve** q) = **not** p değil **veya** q değil.
 

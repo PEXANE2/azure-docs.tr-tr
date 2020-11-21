@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 18e90bcfe7238ae998ac677a9d7eebef0ffa8939
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a4848f5e8b542d80b382abe39f4882a26e0f534c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874262"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015689"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Sertifika hatalarını giderme
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 > [!NOTE]
 > &#8220;{0} , {1} ,..., {n} &#8221;, konumsal parametreleri gösterir. Konumsal parametreler, kullanmakta olduğunuz sertifikalara göre değerleri alır.
 
-| Hata Kodu | Açıklama |
+| Hata Kodu | Description |
 |---|---|
 | CertificateManagement_UntrustedCertificate | Konu adı olan sertifikada {0} sertifika zinciri kopuk. Bu sertifikayı karşıya yüklemeden önce imzalama zinciri sertifikasını karşıya yükleyin.|
 | CertificateManagement_DeviceNotRegistered| Cihazınız etkinleştirilmemiş. Yalnızca etkinleştirme sonrasında bir destek sertifikası yükleyebilirsiniz.|
@@ -58,7 +58,6 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 | Certificateımportfailure | Parmak izine sahip sertifika {0} düğümde içeri aktarılmadı {1} . Sorun devam ederse Microsoft Desteği başvurun. |
 | CertificateApplyFailure | Parmak izine sahip sertifika {0} düğümde uygulanmadı {1} . Sorun devam ederse Microsoft Desteği başvurun.|
 | Nonominal olarak erişilebilir | Üzerindeki sertifika doğrulanamadı {0} . Sistem donanımını ve yazılım sistem durumunu denetleyin.|
-| HATA KODUNU AL | Bu sertifika için özel anahtara erişilemiyor. Desteklenen bir sertifika kullandığınızdan emin olun. Yalnızca Microsoft RSA/SChannel Şifreleme sağlayıcısı desteklenir. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

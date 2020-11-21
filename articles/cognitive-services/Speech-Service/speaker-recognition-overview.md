@@ -12,12 +12,12 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Konuşmacı Tanıma, ses Biyometri
-ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844583"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015333"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>Konuşmacı Tanıma (Önizleme) nedir?
 
@@ -70,10 +70,10 @@ Tüm bilişsel hizmetler kaynaklarında olduğu gibi, konuşmacı tanıma hizmet
 | Hangi ses biçimleri destekleniyor? | Mono 16 bit, 16kHz PCM kodlamalı WAV |
 | Yanıtları **kabul etme** ve **reddetme** doğru değil, eşiği nasıl ayarlayabilirim? | En iyi eşik, senaryolarla yüksek oranda farklılık gösterdiğinden, API varsayılan 0,5 eşiğini temel alarak "kabul et" veya "Reddet" i belirler. Gelişmiş kullanıcılardan, varsayılan kararı geçersiz kılması ve sonucun kendi senaryonuz temelinde ince ayar yapılması önerilir. |
 | Bir konuşmacıyı birden çok kez kaydedebilir misiniz? | Evet, metne bağlı doğrulama için konuşmacıyı 50 kez kaydedebilirsiniz. Metinden bağımsız doğrulama veya konuşmacı tanımlama için, 300 saniyelik sesle kaydolabilirsiniz. |
-| Azure 'da hangi veriler depolanır? | Kayıt sesi, Ses profili [silinene](speaker-recognition-basics.md#deleting-voice-profile-enrollments)kadar hizmette depolanır. Tanıma ses örnekleri korunmaz veya depolanmaz. |
+| Azure 'da hangi veriler depolanır? | Kayıt sesi, Ses profili [silinene](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments)kadar hizmette depolanır. Tanıma ses örnekleri korunmaz veya depolanmaz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> * Uygulamalarınızda kullanabileceğiniz yaygın Tasarım desenlerinin bir çalıştırma için konuşmacı tanıma [temel kavramları makalesini](speaker-recognition-basics.md) doldurun.
+> * Uygulamalarınızda kullanabileceğiniz yaygın Tasarım desenlerinin bir çalıştırma için konuşmacı tanıma [temel kavramları makalesini](./get-started-speaker-recognition.md) doldurun.
 > * Metnin bağımsız konuşmacı doğrulaması için [video öğreticisine](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) bakın.

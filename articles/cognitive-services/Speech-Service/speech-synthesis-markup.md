@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9ed4e47cf946827e2e4b9aaeb14d9668e96aeaa5
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: e76612c6c1b83ddb7e88377824902fe6290e7aaf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873786"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015248"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -243,7 +243,7 @@ Yukarıdaki değişiklikler tümce düzeyinde uygulanır ve stiller ve rol oynat
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
-| Ses                   | Stil                     | Açıklama                                                 |
+| Ses                   | Stil                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Haber teslimi için resmi, güvenilir ve yetkili bir tonu ifade eder |
 |                         | `style="newscast-casual"` | Genel haber teslimi için çok yönlü ve sıradan bir tonu ifade eder        |
@@ -383,7 +383,7 @@ Bu SSML kod parçacığı, `role` XiaomoNeural için rol oynamasını değiştir
 | `strength` | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>lemenize</li><li>x-Strong</li></ul> | İsteğe Bağlı |
 | `time` | Saniye veya milisaniye cinsinden duraklamanın mutlak süresini belirtir, bu değer 5 000ms 'den az ayarlanmalıdır. Geçerli değerler örnekleri `2s` ve `500ms` | İsteğe Bağlı |
 
-| Gücüyle                      | Açıklama |
+| Gücüyle                      | Description |
 |-------------------------------|-------------|
 | Hiçbiri veya hiçbir değer sağlanmazsa | 0 MS        |
 | x-zayıf                        | 250 MS      |
@@ -587,7 +587,7 @@ Ayrıca, kısaltmasının veya kısaltılmış dönemin doğrudan bekleninizi de
 
 Özel sözlük dosyası hakkında daha fazla bilgi için bkz. [telaffuz sözlüğü belirtim (PLS) sürüm 1,0](https://www.w3.org/TR/pronunciation-lexicon/).
 
-Sonra, özel sözlük dosyanızı yayımlayın. Bu dosyanın nerede depolanabileceği konusunda kısıtlamalar olmadığı sürece [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)kullanmanızı öneririz.
+Sonra, özel sözlük dosyanızı yayımlayın. Bu dosyanın nerede depolanabileceği konusunda kısıtlamalar olmadığı sürece [Azure Blob depolamayı](../../storage/blobs/storage-quickstart-blobs-portal.md)kullanmanızı öneririz.
 
 Özel sözlüğü yayımladıktan sonra SSML 'nizden buna başvurabilirsiniz.
 

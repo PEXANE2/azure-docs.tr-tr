@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6c899b4f0dd7a3b91521c6d78b531d1c804ac105
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653547"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015316"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Konuşma hizmeti kapsayıcıları hakkında sık sorulan sorular (SSS)
 
@@ -98,7 +98,7 @@ Microsoft 'a ödenen bakım maliyeti hizmet düzeyine ve hizmetin içeriğine ba
 
 **Cevap:** `speech_recognition_language=<YOUR_LANGUAGE>` Karbon istemci kullanılıyorsa istekte açıkça yapılandırılması gerekir.
 
-Örneğin:
+Örnek:
 
 ```python
 if not recognize_once(
@@ -324,7 +324,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>Çeşitli ses dosyaları için hangi modu kullanmalıyım?</b>
 </summary>
 
-**Cevap:** [Python kullanan bir hızlı başlangıç](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python). Docs sitesinde bağlantılı diğer dilleri bulabilirsiniz.
+**Cevap:** [Python kullanan bir hızlı başlangıç](./get-started-speech-to-text.md?pivots=programming-language-python). Docs sitesinde bağlantılı diğer dilleri bulabilirsiniz.
 
 Etkileşimli, konuşmaya ve dikte etmeyi açıklığa kavuşturun; Bu, hizmetimizin konuşma isteğini işleyeceği belirli bir yöntemi belirtmenin gelişmiş bir yoludur. Ne yazık ki, şirket içi kapsayıcılar için tam URI 'yi belirtmemiz gerekir (yerel makine içerdiğinden), bu nedenle bu bilgiler soyutlamadan sızdırıldık. Bu konuda daha fazla kullanılabilir hale getirmek için SDK ekibi ile çalışıyoruz.
 

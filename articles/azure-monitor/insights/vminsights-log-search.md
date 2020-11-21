@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325194"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015604"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
 
@@ -30,7 +30,7 @@ Belirli bir zaman aralığında belirtilen bir işlem ve bilgisayar için birden
 
 ### <a name="connections-and-ports"></a>Bağlantılar ve bağlantı noktaları
 
-Bağlantı ölçümleri özelliği, Azure Izleyici günlükleri-VMConnection ve VMBoundPort 'ta iki yeni tablo tanıtır. Bu tablolar bir makineye yönelik bağlantılar (gelen ve giden) ve bunlar üzerinde açık/etkin olan sunucu bağlantı noktaları hakkında bilgi sağlar. Connectionmetric Ayrıca bir zaman penceresi sırasında belirli bir ölçümü elde etmek için bir yol sağlayan API 'Ler aracılığıyla da sunulur. Bir dinleme yuvasında *kabul edilmeden* kaynaklanan TCP bağlantıları gelen, belırlı bir IP ve bağlantı noktasına *bağlanarak* oluşturulanlar gidendir. Bir bağlantının yönü, **gelen** veya **giden**olarak ayarlanabilen Direction özelliği ile temsil edilir. 
+Bağlantı ölçümleri özelliği, Azure Izleyici günlükleri-VMConnection ve VMBoundPort 'ta iki yeni tablo tanıtır. Bu tablolar bir makineye yönelik bağlantılar (gelen ve giden) ve bunlar üzerinde açık/etkin olan sunucu bağlantı noktaları hakkında bilgi sağlar. Connectionmetric Ayrıca bir zaman penceresi sırasında belirli bir ölçümü elde etmek için bir yol sağlayan API 'Ler aracılığıyla da sunulur. Bir dinleme yuvasında *kabul edilmeden* kaynaklanan TCP bağlantıları gelen, belırlı bir IP ve bağlantı noktasına *bağlanarak* oluşturulanlar gidendir. Bir bağlantının yönü, **gelen** veya **giden** olarak ayarlanabilen Direction özelliği ile temsil edilir. 
 
 Bu tablolardaki kayıtlar, Dependency Agent tarafından bildirilen verilerden oluşturulur. Her kayıt, 1 dakikalık bir zaman aralığı üzerindeki bir gözlemi temsil eder. TimeGenerated özelliği zaman aralığının başlangıcını gösterir. Her kayıt, ilgili varlığın, yani bağlantının veya bağlantı noktasının yanı sıra söz konusu varlıkla ilişkili ölçümleri belirlemek için bilgiler içerir. Şu anda yalnızca IPv4 üzerinden TCP kullanılarak gerçekleşen ağ etkinliği raporlanır. 
 
@@ -88,7 +88,7 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabil
 1. Bir işlem aynı IP adresinde ancak birden çok ağ arabiriminden bağlantı kabul ederse, her arabirim için ayrı bir kayıt raporlanır. 
 2. Joker IP içeren kayıtlar hiçbir etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğunu göstermek için dahil edilmiştir.
 3. Ayrıntı ve veri hacmini azaltmak için, belirli bir IP adresi ile eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol) olduğunda joker IP 'si olan kayıtlar atlanır. Joker karakter bir IP kaydı atlandığında, belirli IP adresine sahip ıyaya Cardbind kaydı özelliği, bağlantı noktasının raporlama makinesinin her arabiriminden açığa çıkardığını göstermek için "true" olarak ayarlanır.
-4. Yalnızca belirli bir arabirime bağlı olan bağlantı noktalarında ıyalar Cardbind *değeri false*olarak ayarlanmıştır.
+4. Yalnızca belirli bir arabirime bağlı olan bağlantı noktalarında ıyalar Cardbind *değeri false* olarak ayarlanmıştır.
 
 #### <a name="naming-and-classification"></a>Adlandırma ve sınıflandırma
 
@@ -111,11 +111,11 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 | Özellik | Açıklama |
 |:--|:--|
 |MaliciousIp |Remoteıp adresi |
-|Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem*değerlerinden biridir.   |
-|Açıklama |Gözlemlenen tehdit açıklaması. |
+|Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem* değerlerinden biridir.   |
+|Description |Gözlemlenen tehdit açıklaması. |
 |TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 |Güvenilirlik |Değerler *0 – 100*' dir. |
-|Önem Derecesi |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
+|Önem derecesi |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
 |FirstReportedDateTime |Sağlayıcı göstergeyi ilk kez raporladı. |
 |LastReportedDateTime |Göstergenin Interflow tarafından en son görüldüğü zaman. |
 |IsActive |Göstergelerin *true* veya *false* değeriyle devre dışı bırakıldığını gösterir. |
@@ -131,7 +131,7 @@ VMBoundPort içindeki her kayıt aşağıdaki alanlar tarafından tanımlanır:
 | Özellik | Açıklama |
 |:--|:--|
 |İşleme | Bağlantı noktasının ilişkilendirildiği işlemin kimliği (veya işlem grupları).|
-|IP | Bağlantı noktası IP adresi (joker IP, *0.0.0.0*olabilir) |
+|IP | Bağlantı noktası IP adresi (joker IP, *0.0.0.0* olabilir) |
 |Bağlantı noktası |Bağlantı noktası numarası |
 |Protokol | Protokol.  Örnek, *TCP* veya *UDP* (yalnızca *TCP* Şu anda desteklenmektedir).|
  
@@ -149,8 +149,8 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabil
 
 - Bir işlem aynı IP adresinde ancak birden çok ağ arabiriminden bağlantı kabul ederse, her arabirim için ayrı bir kayıt raporlanır.  
 - Joker IP içeren kayıtlar hiçbir etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğunu göstermek için dahil edilmiştir. 
-- Ayrıntı ve veri hacmini azaltmak için, belirli bir IP adresi ile eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol) olduğunda joker IP 'si olan kayıtlar atlanır. Joker karakter IP kaydı atlandığında, belirli IP adresine sahip kayıt için *ıyaya Cardbind* özelliği *true*olarak ayarlanır.  Bu, bağlantı noktasının raporlama makinesinin her arabiriminden açığa çıkardığını gösterir. 
-- Yalnızca belirli bir arabirime bağlı olan bağlantı noktalarında ıyalar Cardbind *değeri false*olarak ayarlanmıştır. 
+- Ayrıntı ve veri hacmini azaltmak için, belirli bir IP adresi ile eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol) olduğunda joker IP 'si olan kayıtlar atlanır. Joker karakter IP kaydı atlandığında, belirli IP adresine sahip kayıt için *ıyaya Cardbind* özelliği *true* olarak ayarlanır.  Bu, bağlantı noktasının raporlama makinesinin her arabiriminden açığa çıkardığını gösterir. 
+- Yalnızca belirli bir arabirime bağlı olan bağlantı noktalarında ıyalar Cardbind *değeri false* olarak ayarlanmıştır. 
 
 ### <a name="vmcomputer-records"></a>VMComputer kayıtları
 
@@ -233,7 +233,7 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 |Grup | İşlem grubu adı. Aynı gruptaki süreçler mantıksal olarak ilişkilidir, ör. aynı ürün veya sistem bileşeninin bir parçasıdır. |
 |StartTime | İşlem havuzu başlangıç zamanı |
 |FirstPid | İşlem havuzundaki ilk PID |
-|Açıklama | İşlem açıklaması |
+|Description | İşlem açıklaması |
 |CompanyName | Şirketin adı |
 |InternalName | İç ad |
 |ProductName | Ürünün adı |
@@ -442,7 +442,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |Kaynak | *vm.azm.ms* |
 |Ad Alanı | Performans sayacının kategorisi | 
-|Adı | Performans sayacının adı |
+|Name | Performans sayacının adı |
 |Val | Toplanan değer | 
 |Etiketler | Kayıtla ilgili ayrıntılar. Farklı kayıt türleriyle kullanılan etiketler için aşağıdaki tabloya bakın.  |
 |AgentId | Her bilgisayar aracısının benzersiz tanımlayıcısı |
@@ -475,5 +475,5 @@ Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan per
 
 * Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../log-query/get-started-portal.md) inceleyin.
 
-* [Arama sorguları yazma](../log-query/search-queries.md)hakkında bilgi edinin.
+* [Arama sorguları yazma](/azure/azure-monitor/log-query/get-started-queries)hakkında bilgi edinin.
 

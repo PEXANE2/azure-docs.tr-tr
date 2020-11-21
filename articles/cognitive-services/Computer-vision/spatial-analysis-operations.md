@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d1b6e20bf2decfe051e79e073736f71181260fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628222"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014552"
 ---
 # <a name="spatial-analysis-operations"></a>Uzamsal analiz işlemleri
 
@@ -23,7 +23,7 @@ Uzamsal analiz kamera cihazlarından gelen gerçek zamanlı akış videosunun an
 
 Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -32,18 +32,18 @@ Uzamsal analiz kapsayıcısı aşağıdaki işlemleri uygular:
 
 Tüm yukarıdaki işlemler, `.debug` işlenmekte oldukları gibi video çerçevelerini görselleştirme özelliğine sahip olan sürümde de mevcuttur. `xhost +`Video çerçevelerinin ve olaylarının görselleştirilmesini sağlamak için ana bilgisayarda çalıştırmanız gerekir.
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. Debug | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. Debug | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
 | biliveservices. Vision. spatialanalysis-personcrossingçokgen. Debug | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br> Kişi bölgeyi kesen ve yönlü bilgi sağlayan bir _Personlineevent_ olayı yayar. |
 | biliveservices. Vision. spatialanalysis-persondistance. Debug | İnsanlar bir uzaklık kuralını ihlal ediyor. <br> Her uzaklık ihlalinin konumuyla düzenli aralıklarla bir _personDistanceEvent_ yayar. |
 
-Uzamsal analiz, video AI modülü olarak [canlı video analizi](https://aka.ms/lva-spatial-analysis) ile de çalıştırılabilir. 
+Uzamsal analiz, video AI modülü olarak [canlı video analizi](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) ile de çalıştırılabilir. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| İşlem tanımlayıcısı| Açıklama|
+| İşlem tanımlayıcısı| Description|
 |---------|---------|
 | biliveservices. Vision. spatialanalysis-PersonCount. livevideoanalytics | Kameranın görünüm alanındaki belirli bir bölgedeki kişileri sayar. <br> Sayı değiştiğinde ilk bir _personcountevent_ olayını ve sonra da _personcountevent_ olaylarını yayar.  |
 | biliveservices. Vision. spatialanalysis-personcrossingline. livevideoanalytics | Bir kişinin, kameranın görünüm alanındaki belirli bir satırı ne zaman kesişdiğini izler. <br>Kişi çizgiyi kesen ve yön bilgisi sağlayan bir _Personlineevent_ olayı yayar. 
@@ -57,7 +57,7 @@ Canlı video analizi işlemleri de `.debug` (örneğin, biliveservices. Vision. 
 
 Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 
-| İşlem parametreleri| Açıklama|
+| İşlem parametreleri| Description|
 |---------|---------|
 | İşlem KIMLIĞI | Yukarıdaki tablodan Işlem tanımlayıcısı.|
 | enabled | Boolean: true veya false|
@@ -88,7 +88,7 @@ Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -121,7 +121,7 @@ Bu, bir satırı yapılandıran SPACEANALYTICS_CONFIG parametresi için bir JSON
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `lines` | list| Satır listesi.|
 | `name` | string| Bu satır için kolay ad.|
@@ -152,7 +152,7 @@ Bu, bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresine yönelik JSO
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -163,7 +163,7 @@ Bu, bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresine yönelik JSO
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Biliveservices. Vision. spatialanalysis-persondistance için bölge yapılandırması
 
-Bu, **biliveservices. Vision. spatialanalysis-persondistance**için bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresi IÇIN bir JSON girişi örneğidir. Bu işlem için birden çok bölge yapılandırabilirsiniz.
+Bu, **biliveservices. Vision. spatialanalysis-persondistance** için bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresi IÇIN bir JSON girişi örneğidir. Bu işlem için birden çok bölge yapılandırabilirsiniz.
 
 ```json
 {
@@ -184,7 +184,7 @@ Bu, **biliveservices. Vision. spatialanalysis-persondistance**için bir bölgeyi
 }
 ```
 
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
@@ -328,7 +328,7 @@ Bu işlem tarafından bir olay çıkışı için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
@@ -341,7 +341,7 @@ Bu işlem tarafından bir olay çıkışı için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
@@ -421,7 +421,7 @@ Bu işlem tarafından algılanan algılamalar için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
@@ -623,7 +623,7 @@ Bu işlem tarafından algılanan algılamalar için örnek JSON.
 | SourceInfo alan adı | Tür| Description|
 |---------|---------|---------|
 | `id` | dize| Kamera KIMLIĞI|
-| `timestamp` | date| JSON yükünün ne zaman yayıldığını UTC tarihi|
+| `timestamp` | tarih| JSON yükünün ne zaman yayıldığını UTC tarihi|
 | `width` | int | Video çerçevesi genişliği|
 | `height` | int | Video çerçeve yüksekliği|
 | `frameId` | int | Çerçeve tanımlayıcısı|
@@ -638,8 +638,8 @@ Bu işlem tarafından algılanan algılamalar için örnek JSON.
 
 Uzamsal analiz algılama veya olaylarını uygulamanızla tümleştirmek isteyebilirsiniz. Göz önünde bulundurmanız gereken birkaç yaklaşım aşağıda verilmiştir: 
 
-* Azure IoT Hub uç noktasına bağlanmak ve olayları almak için seçtiğiniz programlama diline yönelik Azure Event hub SDK 'sını kullanın. Daha fazla bilgi için bkz. [yerleşik uç noktadan cihazdan buluta Iletileri okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) . 
-* Olayları diğer uç noktalara göndermek veya olayları veri depolamaya kaydetmek için Azure IoT Hub **Ileti yönlendirmeyi** ayarlayın. Daha fazla bilgi için bkz. [IoT Hub Ileti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) . 
+* Azure IoT Hub uç noktasına bağlanmak ve olayları almak için seçtiğiniz programlama diline yönelik Azure Event hub SDK 'sını kullanın. Daha fazla bilgi için bkz. [yerleşik uç noktadan cihazdan buluta Iletileri okuma](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+* Olayları diğer uç noktalara göndermek veya olayları veri depolamaya kaydetmek için Azure IoT Hub **Ileti yönlendirmeyi** ayarlayın. Daha fazla bilgi için bkz. [IoT Hub Ileti yönlendirme](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 * Olayları geldikçe ve görselleştirmeler oluştururken gerçek zamanlı olarak işlemek için bir Azure Stream Analytics işi ayarlayın. 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Uzamsal analiz işlemlerini ölçekte dağıtma (birden çok kamera)
@@ -725,7 +725,7 @@ GPU 'ların en iyi performansını ve kullanımını sağlamak için, grafik ör
       }
   }
   ```
-| Ad | Tür| Açıklama|
+| Ad | Tür| Description|
 |---------|---------|---------|
 | `batch_size` | int | İşlemde kullanılacak kameraları sayısını belirtir. |
 
