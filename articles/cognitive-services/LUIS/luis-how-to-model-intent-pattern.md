@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 914ca77b18d0469c3ea926848be4c60aab04c9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5e1cc5cdda921e63315c2904d560b7ad3939776
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539113"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018863"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Tahmin doğruluğunu artırmak için desenler ekleme
-Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sırası ve Word seçimindeki bir düzeni açığa çıkarmaya yönelik tahmin doğruluğunu artırmak için bir [desen](luis-concept-patterns.md) kullanın. Desenler, konumunu belirtmek için özel [sözdizimini](luis-concept-patterns.md#pattern-syntax) kullanır: [varlıklar](luis-concept-entity-types.md), varlık [rolleri](luis-concept-roles.md)ve isteğe bağlı metin.
+Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sırası ve Word seçimindeki bir düzeni açığa çıkarmaya yönelik tahmin doğruluğunu artırmak için bir [desen](luis-concept-patterns.md) kullanın. Desenler, konumunu belirtmek için özel [sözdizimini](luis-concept-patterns.md#pattern-syntax) kullanır: [varlıklar](luis-concept-entity-types.md), varlık [rolleri](./luis-concept-entity-types.md)ve isteğe bağlı metin.
 
 > [!CAUTION]
 > Desenler, alt varlıklar değil yalnızca makine öğrenimi varlık üst öğelerini içerir.
@@ -26,7 +26,7 @@ Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sıras
 
 1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
 1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
-1. Sol panelde, **uygulama performansını iyileştirme**altında **desenler** ' i seçin.
+1. Sol panelde, **uygulama performansını iyileştirme** altında **desenler** ' i seçin.
 
 1. Model için doğru amacı seçin.
 
@@ -35,7 +35,7 @@ Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sıras
     > [!div class="mx-imgBorder"]
     > ![Düzenin varlık ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Varlığınız bir [rol](luis-concept-roles.md)içeriyorsa, rolü tek bir iki nokta üst üste ile, örneğin, `:` varlık adından sonra belirtin `{Location:Origin}` . Varlıkların rollerinin listesi bir listede görüntülenir. Rolü seçin ve ardından ENTER ' u seçin.
+    Varlığınız bir [rol](./luis-concept-entity-types.md)içeriyorsa, rolü tek bir iki nokta üst üste ile, örneğin, `:` varlık adından sonra belirtin `{Location:Origin}` . Varlıkların rollerinin listesi bir listede görüntülenir. Rolü seçin ve ardından ENTER ' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Role sahip varlığın ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-4.png)

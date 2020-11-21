@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541348"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018796"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -60,7 +60,7 @@ Bot Framework kullanıyorsanız, v7 Bing Yazım Denetimi veya LUSıS uygulama Au
 
 ### <a name="bing-spell-check"></a>Bing Yazım Denetimi
 
-Bu API v3 tahmin uç noktasında desteklenmez-yazım düzeltmeleri için v2 API tahmini uç noktasını kullanmaya devam edin. V3 API kullanırken yazım denetimi yapmanız gerekiyorsa, istemci uygulamanın [Bing yazım denetimi](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API 'sini çağırmasını ve metni LUSıS API 'sine göndermeden önce doğru yazımla değiştirmesini sağlayabilirsiniz.
+Bu API v3 tahmin uç noktasında desteklenmez-yazım düzeltmeleri için v2 API tahmini uç noktasını kullanmaya devam edin. V3 API kullanırken yazım denetimi yapmanız gerekiyorsa, istemci uygulamanın [Bing yazım denetimi](../bing-spell-check/overview.md) API 'sini çağırmasını ve metni LUSıS API 'sine göndermeden önce doğru yazımla değiştirmesini sağlayabilirsiniz.
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework ve Azure bot hizmeti istemci uygulamaları
 
@@ -162,9 +162,9 @@ Response JSON şeması değişiklikleri için izin ver:
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Varlıkların, utterlerdeki yerleşimini işaretleme
 
-**V2 sürümünde**bir varlık ve ile bir utterlik olarak işaretlendi `startIndex` `endIndex` .
+**V2 sürümünde** bir varlık ve ile bir utterlik olarak işaretlendi `startIndex` `endIndex` .
 
-**V3 'de**varlık ve ile işaretlenir `startIndex` `entityLength` .
+**V3 'de** varlık ve ile işaretlenir `startIndex` `entityLength` .
 
 #### <a name="access-instance-for-entity-metadata"></a>`$instance`Varlık meta verileri erişimi
 
@@ -227,7 +227,7 @@ V2 'de, varlık _varlık adı_ tarafından nesnenin özelliği olarak rolüyle t
 ]
 ```
 
-V3 'de, rolün tahmini rol için olması durumunda varlığa _varlık rolü_başvurulur:
+V3 'de, rolün tahmini rol için olması durumunda varlığa _varlık rolü_ başvurulur:
 
 ```JSON
 "entities":{

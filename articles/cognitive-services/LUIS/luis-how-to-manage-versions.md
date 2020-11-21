@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b93e9fd4047ee3731ef6fe4652bb92ce5145987d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540872"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018829"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Hazırlama veya üretim uygulamalarını etkilemeden düzenlemek ve test etmek için sürümleri kullanın
 
-Sürümler, farklı modeller oluşturmanıza ve yayımlamanıza olanak sağlar. Modelde değişiklik yapmadan önce geçerli etkin modeli uygulamanın farklı bir [sürümüne](luis-concept-version.md) kopyalamak iyi bir uygulamadır.
+Sürümler, farklı modeller oluşturmanıza ve yayımlamanıza olanak sağlar. Modelde değişiklik yapmadan önce geçerli etkin modeli uygulamanın farklı bir [sürümüne](./luis-concept-app-iteration.md) kopyalamak iyi bir uygulamadır.
 
 Etkin sürüm, amaç, varlıklar, Özellikler ve desenlerle HALSıS portalı **derleme** bölümünde düzenlemekte olduğunuz sürümdür. Yazma API 'Lerini kullanırken, sürüme özgü REST API çağrısı rotadaki sürümü içerdiğinden, etkin sürümü ayarlamanız gerekmez.
 
@@ -66,4 +66,3 @@ Uygulamanızın bir veya bir `.json` sürümünü içeri aktarabilirsiniz `.lu` 
 * Bir sürümü **silmek** için listeden bir sürüm seçin ve ardından araç çubuğundan **Sil** ' i seçin. **Tamam**'ı seçin.
 * Bir sürümü **yeniden adlandırmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **Yeniden Adlandır** ' ı seçin. Yeni ad girin ve **bitti**' yi seçin.
 * Bir sürümü **dışarı aktarmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **uygulamayı dışarı aktar** ' ı seçin. Bir yedekleme için dışarı aktarmak için JSON veya LU seçin ya da kaynak denetimine kaydetmek için, [Bu uygulamayı BIR lusıs kapsayıcısında kullanmak](luis-container-howto.md)üzere **kapsayıcı için dışarı aktar** ' ı seçin.
-

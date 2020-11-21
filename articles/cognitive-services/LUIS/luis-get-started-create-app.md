@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/13/2020
-ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128211"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019169"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önce
 
 ### <a name="create-an-application"></a>Uygulama oluşturma
 
-Bir uygulama oluşturmak için  **+ Yeni uygulama** ' ya tıklayın. 
+Bir uygulama oluşturmak için  **+ Yeni uygulama**' ya tıklayın. 
 
 Görüntülenen pencerede, aşağıdaki bilgileri girin:
 
@@ -33,17 +33,17 @@ Görüntülenen pencerede, aşağıdaki bilgileri girin:
 |---------|---------|
 |AName     | Uygulamanız için bir ad. Örneğin, "ana Otomasyon".        |
 |Kültür     | Uygulamanızın anladığı ve kulakça dili.   |
-|Açıklama | Uygulamanız için bir açıklama.
+|Description | Uygulamanız için bir açıklama.
 |Tahmin kaynağı | Sorgu alacak tahmin kaynağı. |
 
-**Bitti** ’yi seçin.
+**Bitti**'yi seçin.
 
 >[!NOTE]
 >Uygulama oluşturduktan sonra kültür değiştirilemez.
 
 ## <a name="add-prebuilt-domain"></a>Önceden oluşturulmuş etki alanını ekleme
 
-1. Sol gezinti bölmesinde, **önceden oluşturulmuş etki alanları** ' nı seçin.
+1. Sol gezinti bölmesinde, **önceden oluşturulmuş etki alanları**' nı seçin.
 1. **Homeautomation** için arama yapın.
 1. HomeAutomation kartında **etki alanı Ekle** ' yi seçin.
 
@@ -57,14 +57,14 @@ Görüntülenen pencerede, aşağıdaki bilgileri girin:
 1. HomeAutomation etki alanı amaçlarını görmek için sol gezinti menüsünde **amaçlar** ' ı seçin. Ve gibi örnek bir örnek vardır `HomeAutomation.QueryState`     `HomeAutomation.SetDevice` .
 
     > [!NOTE]
-    > **Hiçbiri** , tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz.
+    > **Hiçbiri**, tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz.
 
 1. **HomeAutomation.TurnOff** amacını seçin. Amaç, varlıklarla etiketlenmiş örnek bir listesini içerir.
 
     > [!div class="mx-imgBorder"]
     > [![HomeAutomation.TurnOff amacının ekran görüntüsü](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff amacının ekran görüntüsü")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
-1. Uygulamanın varlıklarını görüntülemek istiyorsanız, **varlıklar** ' ı seçin. Örneğin, **Homeautomation. aygıtadı** gibi varlıklardan birine tıklarsanız, onunla ilişkili değerlerin bir listesini görürsünüz. 
+1. Uygulamanın varlıklarını görüntülemek istiyorsanız, **varlıklar**' ı seçin. Örneğin, **Homeautomation. aygıtadı** gibi varlıklardan birine tıklarsanız, onunla ilişkili değerlerin bir listesini görürsünüz. 
  
     :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="Görüntü alternatif metni" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
@@ -77,9 +77,9 @@ Uygulamanızı eğittikten sonra test edebilirsiniz.
 
 1. Sağ üst gezinmede **Test** ' i seçin.
 
-1. Etkileşimli test bölmesine benzer bir test söyliği yazın `Turn off the lights` ve ENTER tuşuna basın. Örneğin *ışıkları devre dışı bırakın* .
+1. Etkileşimli test bölmesine benzer bir test söyliği yazın `Turn off the lights` ve ENTER tuşuna basın. Örneğin *ışıkları devre dışı bırakın*.
 
-    Bu örnekte, `Turn off the lights` **Homeautomation. turnoff** 'un en üst Puanlama hedefi olarak doğru şekilde tanımlanır.
+    Bu örnekte, `Turn off the lights` **Homeautomation. turnoff**'un en üst Puanlama hedefi olarak doğru şekilde tanımlanır.
 
     ![Konuşmanın vurgulandığı Test paneli ekran görüntüsü](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
@@ -98,7 +98,7 @@ Bir sohbet bot veya diğer istemci uygulamasında bir LUO tahmini almak için, u
 
 1. Pencerenin sağ üst köşesinde **Yayımla** ' yı seçin.
 
-1. **Üretim** yuvasını seçin ve **bitti** ' yi seçin.
+1. **Üretim** yuvasını seçin ve **bitti**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uç noktada bir HALSıS yayımlama ekran görüntüsü](media/howto-publish/publish-app-popup.png)
@@ -223,4 +223,4 @@ Bir sohbet bot veya diğer istemci uygulamasında bir LUO tahmini almak için, u
 Uç noktayı kod ile çağırabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Kod kullanarak bir LUIS uç noktasını çağırma](luis-get-started-cs-get-intent.md)
+> [Kod kullanarak bir LUIS uç noktasını çağırma](./luis-get-started-get-intent-from-rest.md)

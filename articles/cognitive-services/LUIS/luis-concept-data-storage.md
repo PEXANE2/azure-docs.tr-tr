@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018041"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019220"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUSıS) bilişsel hizmetler 'de veri depolama ve kaldırma
 LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar. Bu veriler 30 gün boyunca depolanır. 
@@ -26,8 +26,8 @@ Kullanıcılar, uygulamayı [dışarı](luis-how-to-start-new-app.md#export-app)
 
 Utterslar iki farklı yerde depolanabilir. 
 
-* **Yazma işlemi**sırasında, yazmalar oluşturulur ve amaç içinde depolanır. Başarılı bir Lua uygulaması için amaçlarla ilgili bir amaç gereklidir. Uygulama yayımlandıktan ve uç noktada sorguları aldıktan sonra, uç nokta isteğinin QueryString, `log=false` uç nokta ile depolandığını belirler. Uç nokta depolanıyorsa, bu, **Gözden geçirme uç noktası utaları** bölümünde, portalın **Build** bölümünde bulunan etkin öğrenme utslerini bir parçası haline gelir. 
-* **Uç nokta konutlerini gözden geçirdikten**ve bir amaca yönelik olarak bir e-posta eklediğinizde, söylenişi artık incelenmek üzere uç nokta çeşidinin bir parçası olarak depolanmaz. Uygulamanın hedefleri için eklenmiştir. 
+* **Yazma işlemi** sırasında, yazmalar oluşturulur ve amaç içinde depolanır. Başarılı bir Lua uygulaması için amaçlarla ilgili bir amaç gereklidir. Uygulama yayımlandıktan ve uç noktada sorguları aldıktan sonra, uç nokta isteğinin QueryString, `log=false` uç nokta ile depolandığını belirler. Uç nokta depolanıyorsa, bu, **Gözden geçirme uç noktası utaları** bölümünde, portalın **Build** bölümünde bulunan etkin öğrenme utslerini bir parçası haline gelir. 
+* **Uç nokta konutlerini gözden geçirdikten** ve bir amaca yönelik olarak bir e-posta eklediğinizde, söylenişi artık incelenmek üzere uç nokta çeşidinin bir parçası olarak depolanmaz. Uygulamanın hedefleri için eklenmiştir. 
 
 <a name="utterances-in-an-intent"></a>
 
@@ -55,7 +55,7 @@ Geçirdiyseniz, hesabınızı silebilirsiniz ve tüm uygulamalarınız, örnek d
 Hesap silme, **Ayarlar** sayfasından kullanılabilir. **Ayarlar** sayfasına ulaşmak için sağ üst gezinti çubuğundan hesap adınızı seçin.
 
 ## <a name="delete-an-authoring-resource"></a>Bir yazma kaynağını silme
-[Bir yazma kaynağına geçiş](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)yaptıysanız, kaynağın kendisini Azure Portal silmek, bu kaynakla ilişkili tüm uygulamalarınızı, örnek dıklarıyla ve günlükleriyle birlikte silecek. Veriler kalıcı olarak silinmeden önce 90 gün boyunca tutulur.    
+[Bir yazma kaynağına geçiş](./luis-migration-authoring.md)yaptıysanız, kaynağın kendisini Azure Portal silmek, bu kaynakla ilişkili tüm uygulamalarınızı, örnek dıklarıyla ve günlükleriyle birlikte silecek. Veriler kalıcı olarak silinmeden önce 90 gün boyunca tutulur.    
 
 Kaynağınızı silmek için [Azure Portal](https://ms.portal.azure.com/#home) gıdın ve lusıs Authoring Resource ' ı seçin. **Genel bakış** sekmesine gidin ve sayfanın üst kısmındaki **Sil** düğmesine tıklayın. Ardından kaynağınızın silindiğini doğrulayın. 
 

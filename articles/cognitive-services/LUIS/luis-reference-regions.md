@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: a591a8d0df751c071a17b1d77febdb3607a1b53d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f7c6c3f9c3f468c7b55baf2b0cc45c094d693de5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555779"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018659"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Yazma ve yayımlama bölgeleri ve ilişkili anahtarlar
 
@@ -27,7 +27,7 @@ Bölgeye göre üç LUı yazma portalı vardır. Aynı bölgede yazmanız ve yay
 |[au.luis.ai][au.luis.ai] |Avustralya| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai] |Avrupa|`westeurope`|
 
-Yazma bölgeleri, [Yük devretme bölgelerini eşleştirilmiştir](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Yazma bölgeleri, [Yük devretme bölgelerini eşleştirilmiştir](../../best-practices-availability-paired-regions.md).
 
 <a name="regions-and-azure-resources"></a>
 
@@ -102,7 +102,7 @@ Diğer bölgelere yayımlamak için yalnızca LUSıS uygulamaları oluşturursun
 
 Her bölgenin yük devretmek için bir ikincil bölgesi vardır. Avrupa, Avrupa ve Avustralya 'Nın içinde devredilmekte ve Avustralya 'Nın içinde devredildi.
 
-Yazma bölgeleri, [Yük devretme bölgelerini eşleştirilmiştir](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Yazma bölgeleri, [Yük devretme bölgelerini eşleştirilmiştir](../../best-practices-availability-paired-regions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

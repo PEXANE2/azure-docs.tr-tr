@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324714"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018812"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUO 'NUN birkaç sınır alanı vardır. Birincisi, LUSıS 'deki amaçları, varlıkları ve özellikleri denetleyen [model limiti](#model-limits)olur. İkinci alan, anahtar türüne göre [Kota sınırlamalarıdır](#key-limits) . Limitlerin üçüncü alanı, LUSıS Web sitesini denetlemeye yönelik [klavye birleşimidir](#keyboard-controls) . Bir dördüncü alan, LUıS Authoring Web sitesi ve LUıS [uç nokta](luis-glossary.md#endpoint) API 'leri arasındaki [Dünya bölgesi eşlemesidir](luis-reference-regions.md) .
@@ -32,16 +32,16 @@ Uygulamanız LUSıS model sınırlarını aşarsa, bir [lusıs dağıtım](luis-
 | [Liste varlıkları](./luis-concept-entity-types.md) | Üst: 50, alt: 20.000 öğeleri. Kurallı ad, en fazla * varsayılan karakter maks. Eş anlamlı değerlerde uzunluk kısıtlaması yok. |
 | [makine öğrenimi varlıkları + roller](./luis-concept-entity-types.md):<br> bileşik<br>MPLE<br>varlık rolü|İlk olarak Kullanıcı isabetlerinin sınırlarını sınırlayan 100 üst varlık veya 330 varlıklarının bir sınırı. Rol, bu sınırın amacı için bir varlık olarak sayılır. Örnek, bir basit varlık olan, 2 rol içeren bir Composite örnektir: 1 bileşik + 1 basit + 2 rol = 4 varlıkların 330.<br>Alt varlıklar 5 düzeyden fazla iç içe olabilir.|
 |Özellik olarak model oluşturma| Belirli bir modelde 10 model olması için bir özellik olarak kullanılabilecek maksimum model sayısı. Belirli bir modelin 10 ifade listesi olması için bir özellik olarak kullanılan en fazla tümcecik listesi sayısı.|
-| [Önizleme-dinamik liste varlıkları](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|sorgu tahmin uç noktası isteği başına 2 adet ~ 1k liste|
+| [Önizleme-dinamik liste varlıkları](./luis-migration-api-v3.md)|sorgu tahmin uç noktası isteği başına 2 adet ~ 1k liste|
 | [Desenler](luis-concept-patterns.md)|Uygulama başına 500 desen.<br>Maksimum model uzunluğu 400 karakterdir.<br>3 model. her model için tüm varlıklar<br>Düzende en fazla 2 iç içe isteğe bağlı metin|
 | [Model. any](./luis-concept-entity-types.md)|Uygulama başına 100, 3 model. her tür varlık |
 | [Tümcecik listesi][phrase-list]|500 ifade listesi. bir özellik sınırı olarak model nedeniyle 10 genel ifade listesi. Değiştirilebilir olmayan tümcecik listesi en fazla 5.000 tümcecik içerir. Değiştirilebilir tümcecik listesinin en fazla 50.000 tümceciği vardır. 500.000 tümcecikte uygulama başına en fazla toplam tümcecik sayısı.|
-| [Önceden oluşturulmuş varlıklar](./luis-prebuilt-entities.md) | sınır yok|
+| [Önceden oluşturulmuş varlıklar](./howto-add-prebuilt-models.md) | sınır yok|
 | [Normal ifade varlıkları](./luis-concept-entity-types.md)|20 varlık<br>en fazla 500 karakter. normal ifade varlık düzenine göre|
-| [Roller](luis-concept-roles.md)|Uygulama başına 300 rol. varlık başına 10 rol|
+| [Roller](./luis-concept-entity-types.md)|Uygulama başına 300 rol. varlık başına 10 rol|
 | [İfade][utterances] | 500 karakter<br><br>Bu karakter sınırından daha uzun bir metin varsa, LUYA girişi yapmadan önce uttertans segmentlendirilecektir ve her segment için tek bir amaç yanıtı alırsınız. Noktalama işaretleri ve konuşma için uzun duraklama gibi birlikte çalıştığınız açık kesmeler vardır.|
 | [Utterance örnekleri][utterances] | Uygulama başına 15.000-amaç başına düşen sayıda sınır yoktur<br><br>Uygulamayı daha fazla örnekle eğmeniz gerekiyorsa, bir [dağıtım](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) modeli yaklaşımı kullanın. Tek bir veya daha fazla amaç ile ayrı bir LUSıS uygulamasını (alt uygulamalar olarak bilinir), bir veya daha fazla amaç ile eğitebilirsiniz ve ardından her bir alt LUP uygulamasının, tahmin isteğini doğru alt uygulamaya yönlendirecek bir dağıtım uygulaması eğitin. |
-| [Sürümler](luis-concept-version.md)| Uygulama başına 100 sürüm |
+| [Sürümler](./luis-concept-app-iteration.md)| Uygulama başına 100 sürüm |
 | [Sürüm adı][luis-how-to-manage-versions] | 128 karakter |
 
 * Varsayılan karakter en fazla 50 karakterdir.
@@ -108,20 +108,20 @@ Yaklaşım bilgilerini sağlayan yaklaşım [Analizi tümleştirmesi](luis-how-t
 
 ## <a name="keyboard-controls"></a>Klavye denetimleri
 
-|Klavye girişi | Açıklama |
+|Klavye girişi | Description |
 |--|--|
 |Denetim + E|utterslar listesindeki belirteçler ve varlıklar arasında geçiş yapar|
 
 ## <a name="website-sign-in-time-period"></a>Web sitesi oturum açma zamanı dönemi
 
-Oturum açma erişiminiz **60 dakikaya**yöneliktir. Bu süre dolduktan sonra bu hatayı alırsınız. Yeniden oturum açmanız gerekiyor.
+Oturum açma erişiminiz **60 dakikaya** yöneliktir. Bu süre dolduktan sonra bu hatayı alırsınız. Yeniden oturum açmanız gerekiyor.
 
-[luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing
-[intents]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent
-[phrase-list]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature
-[utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-utterance
-[luis-how-to-manage-versions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions
+[luis-get-started-create-app]: ./luis-get-started-create-app.md
+[batch-testing]: ./luis-concept-test.md#batch-testing
+[intents]: ./luis-concept-intent.md
+[phrase-list]: ./luis-concept-feature.md
+[utterances]: ./luis-concept-utterance.md
+[luis-how-to-manage-versions]: ./luis-how-to-manage-versions.md
 [pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
 <!-- TBD: fix this link -->
 [speech-to-intent-pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/

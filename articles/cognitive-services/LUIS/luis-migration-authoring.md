@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 455c7d66748740ae6e2cc11c6a44bbf30c1cbced
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536061"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018846"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -40,7 +40,7 @@ Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS 
 * Sahipleri, geçişe bildirmek üzere ortak kişilere e-posta göndermeleri istenir.
 * Uygulama üzerinde ortak çalışan bir çalışmasanız, uygulamalar sizinle geçiş uygulamacaktır.
 * Bir sahibin, ortak çalışanların geçirildiğini bilmesi için bir yol yoktur.
-* Geçiş, otomatik olarak ortak bir şekilde toplanmaz ve Azure yazma kaynağına taşıyabilir veya eklemez. Uygulama sahibi, geçişten sonra bu adımı tamamlaması gereken bir uygulamadır. Bu adım [, Azure yazma kaynağı için izinler](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate)gerektirir.
+* Geçiş, otomatik olarak ortak bir şekilde toplanmaz ve Azure yazma kaynağına taşıyabilir veya eklemez. Uygulama sahibi, geçişten sonra bu adımı tamamlaması gereken bir uygulamadır. Bu adım [, Azure yazma kaynağı için izinler](./luis-how-to-collaborate.md)gerektirir.
 * Azure kaynağına ortak çalışanlar atandıktan sonra, uygulamalara erişmek için geçirilmesi gerekir. Aksi takdirde, uygulamaları yazmak için erişimleri olmaz.
 * Geçirilen bir Kullanıcı, uygulamanın ortak çalışan olarak eklenemez.
 * Başka bir kullanıcının sahip olduğu uygulamalara atanan tahmin anahtarlarınız varsa, bu, hem sahip hem de ortak çalışan için geçişi engeller. Bu makalenin ilerleyen kısımlarındaki önerilere bakın.
@@ -163,7 +163,7 @@ Geçiş işleminden sonra, sahibi olduğunuz tüm LUO uygulamalarınız artık t
 
 Uygulamalarınızı LUE portalında düzenlemeyle çalışmaya devam etmek için yazma kaynağının anahtarını bilmeniz gerekmez.
 
-Uygulamalarınızı programlama yoluyla düzenlemeyi planlıyorsanız, yazma anahtarı değerleri gerekir. Bu değerler, **Manage**  >  LUA portalındaki**Azure kaynaklarını** Yönet sayfasında görüntülenir. Bunlar ayrıca kaynağın **anahtarlar** sayfasındaki Azure Portal de mevcuttur. Ayrıca, daha fazla yazma kaynağı oluşturabilir ve bunları aynı sayfadan atayabilirsiniz.
+Uygulamalarınızı programlama yoluyla düzenlemeyi planlıyorsanız, yazma anahtarı değerleri gerekir. Bu değerler, **Manage**  >  LUA portalındaki **Azure kaynaklarını** Yönet sayfasında görüntülenir. Bunlar ayrıca kaynağın **anahtarlar** sayfasındaki Azure Portal de mevcuttur. Ayrıca, daha fazla yazma kaynağı oluşturabilir ve bunları aynı sayfadan atayabilirsiniz.
 
  > [!div class="mx-imgBorder"]
  > ![Yazma kaynaklarını yönetmek için sayfa](./media/migrate-authoring-key/manage-authoring-resource-2.png)
@@ -174,7 +174,7 @@ Uygulamalarınızı programlama yoluyla düzenlemeyi planlıyorsanız, yazma ana
 
 Yazma kaynağınız üzerinde [katkıda bulunanlar eklemeyi](luis-how-to-collaborate.md) öğrenin. Katkıda bulunanlar, bu kaynaktaki tüm uygulamalara erişebilir.
 
-Kaynak için **Access Control (IAM)** sayfasında Azure Portal yazma kaynağına katkıda bulunanlar ekleyebilirsiniz. Daha fazla bilgi için bkz. [katılımcı erişimi ekleme](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
+Kaynak için **Access Control (IAM)** sayfasında Azure Portal yazma kaynağına katkıda bulunanlar ekleyebilirsiniz. Daha fazla bilgi için bkz. [uygulamanıza katkıda bulunanlar ekleme](luis-how-to-collaborate.md).
 
 > [!Note]
 > LUSıS uygulamasının sahibi geçirilmiş ve Azure kaynağına katkıda bulunan çalışanı olarak eklediyseniz, ortak çalışan, aynı zamanda geçirilmediği sürece uygulamaya erişemez.
@@ -229,7 +229,7 @@ Geçiş yapmayı denediğinizde, ancak açılan listede Azure aboneliğinizi bul
 * Geçerli aboneliğinizle ilişkili doğru kiracıda olduğunuzdan emin olun. Bu araç çubuğunda, Kiracılarınızın Avatarınızın soluna kadar olan kiracılar arasında geçiş yapabilirsiniz: bir ![ araç çubuğu, kiracılar arasında geçiş yapabilirsiniz](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Var olan bir yazma kaynağınız varsa ancak **mevcut yazma kaynağını kullan** seçeneğini belirlediğinizde bu kaynağı bulamıyorsanız:
-* Kaynağınız, oturum açtığınız portaldan farklı bir konumda oluşturulmuş olabilir. [Lusıs yazma bölgelerini ve portallarını](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)denetleyin.
+* Kaynağınız, oturum açtığınız portaldan farklı bir konumda oluşturulmuş olabilir. [Lusıs yazma bölgelerini ve portallarını](./luis-reference-regions.md#luis-authoring-regions)denetleyin.
 * Bunun yerine LUO portalından yeni bir kaynak oluşturun.
 
 **Yeni yazma kaynağı oluştur** seçeneğini belirlerseniz geçiş işlemi "kullanıcının Azure bilgileri alınamadı, daha sonra yeniden deneyin" hata iletisiyle başarısız olur.

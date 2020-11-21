@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dcfff005eaaac034f5fed13b6d4d18e20d2afae
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078138"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018982"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Bekleyen verilerin hizmet şifrelemesini Language Understanding
 
@@ -32,7 +32,7 @@ Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme ana
 
 Ayrıca kendi anahtarlarınız ile aboneliğinizi yönetme seçeneği de vardır. Kendi anahtarını getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlar (CMK), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
-Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault’u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Bilişsel hizmetler kaynağı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault’u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Bilişsel hizmetler kaynağı ve Anahtar Kasası aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md).
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Language Understanding için müşteri tarafından yönetilen anahtarlar
 
@@ -44,7 +44,7 @@ Müşteri tarafından yönetilen anahtarları kullanma yeteneği istemek için,�
 
 E0 katmanını mevcut/önceden oluşturulmuş uygulamalarla kullanırken bazı sınırlamalar vardır:
 
-* Bir E0 kaynağına geçiş engellenir. Kullanıcılar, yalnızca uygulamalarını F0 kaynaklarına geçirebilecektir. Var olan bir kaynağı F0 'e geçirdikten sonra, E0 katmanında yeni bir kaynak oluşturabilirsiniz. [Buradan geçiş](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)hakkında daha fazla bilgi edinin.  
+* Bir E0 kaynağına geçiş engellenir. Kullanıcılar, yalnızca uygulamalarını F0 kaynaklarına geçirebilecektir. Var olan bir kaynağı F0 'e geçirdikten sonra, E0 katmanında yeni bir kaynak oluşturabilirsiniz. [Buradan geçiş](./luis-migration-authoring.md)hakkında daha fazla bilgi edinin.  
 * Uygulamaları bir E0 kaynağına taşımak engellenir. Bu sınırlamaya yönelik bir çözüm, mevcut uygulamanızı dışarı aktarmak ve bir E0 kaynağı olarak içeri aktarmasıdır.
 * Bing yazım denetimi özelliği desteklenmez.
 * Uygulamanız E0 ise, son kullanıcı trafiğinin günlüğe kaydedilmesi devre dışı bırakılır.
@@ -59,19 +59,19 @@ Bilişsel hizmetler şifrelemesi için Azure Key Vault ile müşteri tarafından
 
 - [Bilişsel hizmetler şifrelemesi için Key Vault Azure portal ile müşteri tarafından yönetilen anahtarları yapılandırın](../Encryption/cognitive-services-encryption-keys-portal.md)
 
-Müşteri tarafından yönetilen anahtarların etkinleştirilmesi, bir Azure AD 'nin bir özelliği olan bir sistem tarafından atanmış yönetilen kimliği de etkinleştirir. Sistem tarafından atanan yönetilen kimlik etkinleştirildikten sonra, bu kaynak Azure Active Directory kaydedilir. Kaydolduktan sonra yönetilen kimliğe, müşteri tarafından yönetilen anahtar kurulumu sırasında seçilen Key Vault erişim verilir. [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında daha fazla bilgi edinebilirsiniz.
+Müşteri tarafından yönetilen anahtarların etkinleştirilmesi, bir Azure AD 'nin bir özelliği olan bir sistem tarafından atanmış yönetilen kimliği de etkinleştirir. Sistem tarafından atanan yönetilen kimlik etkinleştirildikten sonra, bu kaynak Azure Active Directory kaydedilir. Kaydolduktan sonra yönetilen kimliğe, müşteri tarafından yönetilen anahtar kurulumu sırasında seçilen Key Vault erişim verilir. [Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!IMPORTANT]
 > Sistem tarafından atanan yönetilen kimlikleri devre dışı bırakırsanız, anahtar kasasına erişim kaldırılır ve müşteri anahtarlarıyla şifrelenen verilere artık erişilemeyecektir. Bu verilere bağımlı olan özellikler çalışmayı durdurur.
 
 > [!IMPORTANT]
-> Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez. Azure portal müşteri tarafından yönetilen anahtarları yapılandırırken, bir yönetilen kimlik, kapakların altında otomatik olarak atanır. Daha sonra aboneliği, kaynak grubunu veya kaynağı bir Azure AD dizininden diğerine taşırsanız, kaynakla ilişkili yönetilen kimlik yeni kiracıya aktarılmaz, bu nedenle müşterinin yönettiği anahtarlar artık çalışmayabilir. Daha fazla bilgi için bkz. SSS 'de **Azure AD dizinleri arasında bir abonelik aktarma** [ve Azure kaynakları için yönetilen kimliklerle ilgili bilinen sorunlar](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories).  
+> Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez. Azure portal müşteri tarafından yönetilen anahtarları yapılandırırken, bir yönetilen kimlik, kapakların altında otomatik olarak atanır. Daha sonra aboneliği, kaynak grubunu veya kaynağı bir Azure AD dizininden diğerine taşırsanız, kaynakla ilişkili yönetilen kimlik yeni kiracıya aktarılmaz, bu nedenle müşterinin yönettiği anahtarlar artık çalışmayabilir. Daha fazla bilgi için bkz. SSS 'de **Azure AD dizinleri arasında bir abonelik aktarma** [ve Azure kaynakları için yönetilen kimliklerle ilgili bilinen sorunlar](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).  
 
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde depola
 
 Müşteri tarafından yönetilen anahtarları etkinleştirmek için, anahtarlarınızı depolamak üzere bir Azure Key Vault kullanmanız gerekir. Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirmeniz gerekir.
 
-Bilişsel hizmetler şifrelemesiyle yalnızca 2048 boyutundaki RSA anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) **Key Vault anahtarlar** .
+Bilişsel hizmetler şifrelemesiyle yalnızca 2048 boyutundaki RSA anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/general/about-keys-secrets-certificates.md) **Key Vault anahtarlar** .
 
 ### <a name="rotate-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları döndür
 
@@ -81,9 +81,9 @@ Anahtarın döndürülmesi kaynaktaki verilerin yeniden şifrelenmesini tetiklem
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>Müşterinin yönettiği anahtarlara erişimi iptal etme
 
-Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShell veya Azure CLı kullanın. Daha fazla bilgi için bkz. PowerShell veya [Azure Key Vault clı](https://docs.microsoft.com/cli/azure/keyvault) [Azure Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault//) . Erişim iptal edildiğinde bilişsel hizmetler kaynağındaki tüm verilere erişimi etkin bir şekilde engeller. Bu, şifreleme anahtarına bilişsel hizmetler tarafından erişilemez.
+Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShell veya Azure CLı kullanın. Daha fazla bilgi için bkz. PowerShell veya [Azure Key Vault clı](/cli/azure/keyvault) [Azure Key Vault](/powershell/module/az.keyvault//) . Erişim iptal edildiğinde bilişsel hizmetler kaynağındaki tüm verilere erişimi etkin bir şekilde engeller. Bu, şifreleme anahtarına bilişsel hizmetler tarafından erişilemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [LUSıS hizmeti Customer-Managed anahtar Isteği formu](https://aka.ms/cogsvc-cmk)
-* [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault hakkında daha fazla bilgi edinin](../../key-vault/general/overview.md)

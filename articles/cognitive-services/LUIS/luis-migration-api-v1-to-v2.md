@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541331"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018761"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUSıS uygulamaları için API v1-v2 geçiş kılavuzu
 Sürüm 1 [uç noktası](https://aka.ms/v1-endpoint-api-docs) ve [yazma](https://aka.ms/v1-authoring-api-docs) API 'leri kullanım dışıdır. Sürüm 2 [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) ve [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın.
 
 ## <a name="new-azure-regions"></a>Yeni Azure bölgeleri
-LUıS, LUıS API 'Leri için belirtilen yeni [bölgelere](https://aka.ms/LUIS-regions) sahiptir. LUSıS, bölge grupları için farklı bir portal sağlar. Uygulamanın, sorgulamak istediğiniz bölgede yazılması gerekir. Uygulamalar bölgeleri otomatik olarak geçirmez. Uygulamayı bir bölgeden dışarı aktarıp yeni bir bölgede kullanılabilir olması için başka bir bölgeden içeri aktarırsınız.
+LUıS, LUıS API 'Leri için belirtilen yeni [bölgelere](./luis-reference-regions.md) sahiptir. LUSıS, bölge grupları için farklı bir portal sağlar. Uygulamanın, sorgulamak istediğiniz bölgede yazılması gerekir. Uygulamalar bölgeleri otomatik olarak geçirmez. Uygulamayı bir bölgeden dışarı aktarıp yeni bir bölgede kullanılabilir olması için başka bir bölgeden içeri aktarırsınız.
 
 ## <a name="authoring-route-changes"></a>Rota değişikliklerini yazma
 Yazma API yolu, **API** yolunu kullanarak **Program** rotası kullanılarak değiştirilir.
@@ -132,7 +132,7 @@ LUıS meta verilerini döndüren bazı API 'Ler yeni adlara sahiptir.
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Örnek", "öner" olarak yeniden adlandırıldı
-LUO, modeli geliştirebilecek mevcut [uç nokta dıklarından](luis-how-to-review-endpoint-utterances.md) gelen söylenme önerisinde bulunur. Önceki sürümde, bu **örnek**olarak adlandırılmıştır. Yeni sürümde, ad örnekten **önerecek**şekilde değiştirilir. Bu, LUSıS Web sitesinde **[Gözden geçirme uç noktası utbotları](luis-how-to-review-endpoint-utterances.md)** olarak adlandırılır.
+LUO, modeli geliştirebilecek mevcut [uç nokta dıklarından](luis-how-to-review-endpoint-utterances.md) gelen söylenme önerisinde bulunur. Önceki sürümde, bu **örnek** olarak adlandırılmıştır. Yeni sürümde, ad örnekten **önerecek** şekilde değiştirilir. Bu, LUSıS Web sitesinde **[Gözden geçirme uç noktası utbotları](luis-how-to-review-endpoint-utterances.md)** olarak adlandırılır.
 
 | sürüm | yol |
 |--|--|
@@ -143,7 +143,7 @@ LUO, modeli geliştirebilecek mevcut [uç nokta dıklarından](luis-how-to-revie
 
 
 ## <a name="create-app-from-prebuilt-domains"></a>Önceden oluşturulmuş etki alanlarından uygulama oluşturma
-Önceden [oluşturulmuş etki alanları](luis-how-to-use-prebuilt-domains.md) önceden tanımlanmış bir etki alanı modeli sağlar. Önceden oluşturulmuş etki alanları, genel etki alanları için LUSıS uygulamanızı hızlı bir şekilde geliştirmenize olanak tanır. Bu API, önceden oluşturulmuş bir etki alanını temel alan yeni bir uygulama oluşturmanıza olanak tanır. Yanıt, yeni AppID 'dir.
+Önceden [oluşturulmuş etki alanları](./howto-add-prebuilt-models.md) önceden tanımlanmış bir etki alanı modeli sağlar. Önceden oluşturulmuş etki alanları, genel etki alanları için LUSıS uygulamanızı hızlı bir şekilde geliştirmenize olanak tanır. Bu API, önceden oluşturulmuş bir etki alanını temel alan yeni bir uygulama oluşturmanıza olanak tanır. Yanıt, yeni AppID 'dir.
 
 |v2 yolu|ü|
 |--|--|
@@ -154,7 +154,7 @@ LUO, modeli geliştirebilecek mevcut [uç nokta dıklarından](luis-how-to-revie
 Aktarılan 1. x uygulamasının JSON 'ı, [luın][LUIS] 2,0 'e aktarmadan önce değiştirmeniz gereken bazı alanlara sahiptir.
 
 ### <a name="prebuilt-entities"></a>Önceden oluşturulmuş varlıklar
-[Önceden oluşturulmuş varlıklar](luis-prebuilt-entities.md) değiştirilmiştir. V2 önceden oluşturulmuş varlıkları kullandığınızdan emin olun. Bu, DateTime yerine [datetimeV2](luis-reference-prebuilt-datetimev2.md)kullanmayı içerir.
+[Önceden oluşturulmuş varlıklar](./howto-add-prebuilt-models.md) değiştirilmiştir. V2 önceden oluşturulmuş varlıkları kullandığınızdan emin olun. Bu, DateTime yerine [datetimeV2](luis-reference-prebuilt-datetimev2.md)kullanmayı içerir.
 
 ### <a name="actions"></a>Eylemler
 Actions özelliği artık geçerli değil. Boş olmalıdır
@@ -169,4 +169,4 @@ Bkz. [LUSıS API yanıt kodları](luis-reference-response-codes.md).
 
 LUıS [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) ve [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'lerine yönelik mevcut Rest ÇAĞRıLARıNı güncelleştirmek için v2 API belgelerini kullanın.
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LUIS]: ./luis-reference-regions.md

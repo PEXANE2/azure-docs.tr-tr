@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540923"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018914"
 ---
 # <a name="add-contributors-to-your-app"></a>Uygulamanıza katkıda bulunanlar ekleyin
 
@@ -66,7 +66,7 @@ Bir LUO uygulamasına katkıda bulunanlar/ortak çalışanlar eklerseniz, tam e-
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory kaynakları
 
-Kuruluşunuzda [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) kullanıyorsanız, Language UNDERSTANDING (lusıs), BASIS kullanmak istediklerinde kullanıcılarınızın erişimi hakkındaki bilgilere izin ister. LUBUNUN gerektirdiği kaynaklar en az düzeydedir.
+Kuruluşunuzda [Azure Active Directory](../../active-directory/index.yml) (Azure AD) kullanıyorsanız, Language UNDERSTANDING (lusıs), BASIS kullanmak istediklerinde kullanıcılarınızın erişimi hakkındaki bilgilere izin ister. LUBUNUN gerektirdiği kaynaklar en az düzeydedir.
 
 Yönetici onayı olan veya yönetici onayı gerektirmeyen bir hesapla kaydolmayı denediğinizde ayrıntılı açıklamayı görürsünüz, örneğin yönetici onayı:
 
@@ -87,7 +87,7 @@ Kiracı yöneticisinin, Azure AD 'de LUO 'NUN kullanılmasına erişim izni olan
 
 Kiracı Yöneticisi yalnızca belirli kullanıcıların LUSıS kullanmasını istiyorsa, olası birçok çözüm vardır:
 * "Yönetici onayı" (Azure AD 'nin tüm kullanıcılarına onay) verme, ancak ardından kurumsal uygulama özellikleri altında "Kullanıcı Ataması gerekli" olarak ayarlanır ve son olarak yalnızca istenen kullanıcıları uygulamaya atayın/ekleyin. Bu yöntemde, yönetici uygulamaya "yönetici onayı" sağlamaya devam eder, ancak buna erişebilen kullanıcıları denetlemek mümkündür.
-* İkinci bir çözüm, her kullanıcıya onay sağlamak için [Microsoft Graph Azure AD kimlik ve erişim YÖNETIMI API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) 'sini kullanmaktır.
+* İkinci bir çözüm, her kullanıcıya onay sağlamak için [Microsoft Graph Azure AD kimlik ve erişim YÖNETIMI API](/graph/azuread-identity-access-management-concept-overview) 'sini kullanmaktır.
 
 Azure Active Directory Kullanıcıları ve onayı hakkında daha fazla bilgi edinin:
 * [Uygulamanızı](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) bir Kullanıcı kümesiyle sınırlayın

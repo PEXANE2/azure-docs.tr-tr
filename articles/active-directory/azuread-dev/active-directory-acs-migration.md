@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eda648a4d00a0ab4a51c66510060ce16421972ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055384"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020019"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
 
@@ -103,7 +103,7 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
 
     Örneğin, ad alanlarından biri contoso-test ise şuraya gidin `https://contoso-test.accesscontrol.windows.net`
 
-2. **Güven ilişkileri**altında, ACS kullanımdan kaldırma tarafından etkilenecek uygulamaların listesini görmek Için **bağlı olan taraf uygulamaları** ' nı seçin.
+2. **Güven ilişkileri** altında, ACS kullanımdan kaldırma tarafından etkilenecek uygulamaların listesini görmek Için **bağlı olan taraf uygulamaları** ' nı seçin.
 3. Sahip olduğunuz diğer tüm ACS ad alanı (ler) için 1-2 adımlarını yineleyin.
 
 ## <a name="retirement-schedule"></a>Emeklilik zamanlaması
@@ -148,7 +148,7 @@ Access Control tarafından verilen belirteçleri kabul eden her bir Microsoft bu
 
 SharePoint 2013, 2016 ve SharePoint Online müşterileri, bulutta, şirket içinde ve hibrit senaryolarında kimlik doğrulama amacıyla ACS 'yi uzun süredir kullandı. Bazı SharePoint özellikleri ve kullanım durumları, ACS kullanımdan kaldırılırken etkilenir, diğerleri bu durumdan etkilenmez. Aşağıdaki tabloda, ACS 'den yararlanan en popüler SharePoint özelliklerinden bazıları için geçiş kılavuzu özetlenmektedir:
 
-| Özellik | Rehber |
+| Öne çıkan özelliği | Rehber |
 | ------- | -------- |
 | Azure AD 'de kullanıcıların kimliğini doğrulama | Daha önce Azure AD, kimlik doğrulaması için SharePoint için gereken SAML 1,1 belirteçlerini desteklemediğinden ACS, SharePoint 'in Azure AD belirteç biçimleriyle uyumlu hale getirilen bir aracı olarak kullanılmıştı. Artık [SharePoint 'i şirket içi uygulama Azure AD uygulaması Galeri kullanarak doğrudan Azure AD 'ye bağlayabilirsiniz](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Şirket içi SharePoint 'te sunucudan sunucuya kimlik doğrulaması & uygulama kimlik doğrulaması](/SharePoint/security-for-sharepoint-server/authentication-overview) | ACS emekliliğinizi etkilemez; değişiklik gerekmiyor. | 
@@ -287,7 +287,7 @@ Bu durumlarda, Web uygulamanızı başka bir bulut kimlik doğrulama hizmetine g
 
 ![Bu görüntüde ping kimlik logosu gösterilmektedir](./media/active-directory-acs-migration/rsz-ping.png)
 
-[Ping kimliği](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için [ping 'un ACS kullanımdan kaldırma kılavuzuna](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) bakın.
+[Ping kimliği](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için [ping 'un ACS kullanımdan kaldırma kılavuzuna](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) bakın.
 
 Ping kimliği ve Auth0 ile çalışmamız, tüm Access Control müşterilerinin uygulama ve hizmetleri için Access Control geçiş için gereken iş miktarını en aza indiren bir geçiş yoluna sahip olmasını sağlamaktır.
 
@@ -351,7 +351,7 @@ Bu durumlarda, Web uygulamanızı başka bir bulut kimlik doğrulama hizmetine g
 [Auth0](https://auth0.com/acs) , [Access Control müşterileri için üst düzey geçiş kılavuzu](https://auth0.com/acs)oluşturmuş ve ACS 'nin oluşturduğu neredeyse her özelliği desteklediği esnek bir bulut kimlik hizmetidir.
 
 ![Bu görüntüde ping kimlik logosu ](./media/active-directory-acs-migration/rsz-ping.png)
- [ping KIMLIĞI](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için [ping 'un ACS kullanımdan kaldırma kılavuzuna](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) bakın.
+ [ping KIMLIĞI](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için [ping 'un ACS kullanımdan kaldırma kılavuzuna](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) bakın.
 
 Ping kimliği ve Auth0 ile çalışmamız, tüm Access Control müşterilerinin uygulama ve hizmetleri için Access Control geçiş için gereken iş miktarını en aza indiren bir geçiş yoluna sahip olmasını sağlamaktır.
 

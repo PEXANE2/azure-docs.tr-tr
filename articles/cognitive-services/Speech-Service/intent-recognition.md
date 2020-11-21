@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: Amaç tanıma
-ms.openlocfilehash: 0d718459e0fd0ea410232d3a165b560aa8c59cd1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174646"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018710"
 ---
 # <a name="what-is-intent-recognition"></a>Amaç tanıma nedir?
 
@@ -29,7 +29,7 @@ Amaç tanımayı kullanarak, uygulamalarınız, araçları ve cihazlarınız, LU
 
 * LUIS, konuşmadaki amaçları tanımak için Konuşma hizmetiyle tümleştirilir. Konuşma hizmeti aboneliğine ihtiyacınız yoktur; LUIS yeterlidir.
 * Konuşma amacı tanıma, SDK ile tümleşiktir. Konuşma hizmetiyle bir LUO anahtarı kullanabilirsiniz.
-* Konuşma SDK 'Sı aracılığıyla amaç tanıma, [luya tarafından desteklenen bölgelerin bir alt kümesiyle sunulur](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#intent-recognition).
+* Konuşma SDK 'Sı aracılığıyla amaç tanıma, [luya tarafından desteklenen bölgelerin bir alt kümesiyle sunulur](./regions.md#intent-recognition).
 
 ## <a name="get-started"></a>başlarken
 
@@ -39,8 +39,8 @@ Amaç tanımayı kullanmaya başlamak için [hızlı](quickstarts/intent-recogni
 
 Amaç tanıma için örnek kod:
 
-* [Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)
-* [C için konuşma SDK 'sını kullanarak konuşma amaçlarını tanıma #](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)
+* [Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma](../luis/luis-get-started-create-app.md)
+* [C için konuşma SDK 'sını kullanarak konuşma amaçlarını tanıma #](./how-to-recognize-intents-from-speech-csharp.md)
 * [C 'de Unity kullanarak amaç tanıma ve diğer konuşma Hizmetleri #](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/speechrecognizer)
 * [Python için konuşma SDK 'sını kullanarak hedefleri tanıma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
 * [Windows 'da C++ için konuşma SDK 'sını kullanan amaç tanıma ve diğer konuşma Hizmetleri](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console)
@@ -49,7 +49,7 @@ Amaç tanıma için örnek kod:
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Konuşma SDK'sı](speech-sdk-reference.md)
+* [Konuşma SDK'sı](./speech-sdk.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006814"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018299"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
@@ -46,7 +46,7 @@ Azure Izleyici, Windows sanal masaüstü verilerini analiz etmenizi ve sanal mak
 Log Analytics kullanabilmeniz için önce bir çalışma alanı oluşturmanız gerekir. Bunu yapmak için, aşağıdaki iki makaleden birindeki yönergeleri izleyin:
 
 - Azure portal kullanmayı tercih ediyorsanız, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md).
-- PowerShell 'i tercih ediyorsanız, bkz. [PowerShell ile Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace-posh.md).
+- PowerShell 'i tercih ediyorsanız, bkz. [PowerShell ile Log Analytics çalışma alanı oluşturma](../azure-monitor/platform/powershell-workspace-configuration.md).
 
 Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) bölümündeki yönergeleri izleyin:
 
@@ -83,7 +83,7 @@ Yeni bir nesne için Log Analytics ayarlamak için:
 6. **Kaydet**’i seçin.
 
 >[!NOTE]
->Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs-collect-storage.md).
+>Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 ## <a name="how-to-access-log-analytics"></a>Log Analytics erişme
 
@@ -91,9 +91,9 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics çalışma alanındaki Log Analytics erişim
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
-2. **Log Analytics çalışma alanı**araması yapın.
+2. **Log Analytics çalışma alanı** araması yapın.
 
 3. Hizmetler ' in altında **Log Analytics çalışma alanları**' nı seçin.
 
@@ -105,16 +105,16 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 
 1. Azure portalda oturum açma
 
-2. **İzleme**araması yapın ve seçin.
+2. **İzleme** araması yapın ve seçin.
 
-3. **Günlükleri**seçin.
+3. **Günlükleri** seçin.
 
 4. Sorgunuzun kapsamını ayarlamak için günlük sayfasındaki yönergeleri izleyin.
 
 5. Tanılamayı sorgulamaya hazırlanın. Tüm tanılama tablolarının "WVD" öneki vardır.
 
 >[!NOTE]
->Azure Izleyici günlüklerinde depolanan tablolar hakkında daha ayrıntılı bilgi için bkz. [Azure izleyici veri refti](https://docs.microsoft.com/azure/azure-monitor/reference/). Windows sanal masaüstü ile ilgili tüm tablolar "WVD" olarak etiketlenir.
+>Azure Izleyici günlüklerinde depolanan tablolar hakkında daha ayrıntılı bilgi için bkz. [Azure izleyici veri refti](/azure/azure-monitor/reference/). Windows sanal masaüstü ile ilgili tüm tablolar "WVD" olarak etiketlenir.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Tanılama olaylarını göndermek için temposunda
 
@@ -130,13 +130,13 @@ Bağlantı etkinlikleri için yalnızca bu ara durumdaki raporları Log Analytic
 
 Azure Izleyici Log Analytics Kullanıcı arabirimi aracılığıyla örnek sorgulara erişin:
 1. Log Analytics çalışma alanınıza gidin ve ardından **Günlükler**' i seçin. Örnek sorgu Kullanıcı arabirimi otomatik olarak gösterilir.
-1. Filtreyi **Kategori**olarak değiştirin.
+1. Filtreyi **Kategori** olarak değiştirin.
 1. Kullanılabilir sorguları gözden geçirmek için **Windows sanal masaüstü 'nü** seçin.
 1. Seçili sorguyu çalıştırmak için **Çalıştır** ' ı seçin.
 
-[Azure izleyici Log Analytics kayıtlı sorgularda](../azure-monitor/log-query/saved-queries.md)örnek sorgu arabirimi hakkında daha fazla bilgi edinin.
+[Azure izleyici Log Analytics kayıtlı sorgularda](../azure-monitor/log-query/example-queries.md)örnek sorgu arabirimi hakkında daha fazla bilgi edinin.
 
-Aşağıdaki sorgu listesi, tek bir kullanıcı için bağlantı bilgilerini veya sorunları incelemenizi sağlar. Bu sorguları [Log Analytics sorgu düzenleyicisinde](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
+Aşağıdaki sorgu listesi, tek bir kullanıcı için bağlantı bilgilerini veya sorunları incelemenizi sağlar. Bu sorguları [Log Analytics sorgu düzenleyicisinde](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
 
 
 Tek bir kullanıcıya ait tüm bağlantıları bulmak için:

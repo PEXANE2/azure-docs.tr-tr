@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a7dd67387a541ff62bfa85a7afc2f1bbf31c6180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724bc80f8887ff2c47db93ecfc4cd2e20be7e7f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596434"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020053"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>C Sharp kullanarak Azure Time Series Insights Gen1 ortamından veri sorgulama
 
 > [!CAUTION]
 > Bu bir Gen1 makaledir.
 
-Bu C# örneği, Azure Time Series Insights Gen1 ortamlarından verileri sorgulamak için [Gen1 sorgu API 'lerinin](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) nasıl kullanılacağını gösterir.
+Bu C# örneği, Azure Time Series Insights Gen1 ortamlarından verileri sorgulamak için [Gen1 sorgu API 'lerinin](/rest/api/time-series-insights/gen1-query) nasıl kullanılacağını gösterir.
 
 > [!TIP]
 > Gen1 C# kod örneklerini şurada görüntüleyin: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
@@ -37,22 +37,22 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 * Bu alınan erişim belirtecini `Authorization` Sonraki sorgu API 'si isteklerinin üst bilgisinde geçirme.
 
 * Örnek, HTTP isteklerinin ' de nasıl yapıldığını gösteren Gen1 sorgu API 'lerinin her birini çağırır:
-  * Kullanıcının erişimi olan ortamları döndürmesi için [ortamlar API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api)
-  * [Ortam kullanılabilirliği API 'sini al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
-  * Ortam meta verilerini almak için [ortam meta verileri API 'Sini alma](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api)
-  * [Ortam olayları API 'SI al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
-  * [Ortam toplamaları API 'SI al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
+  * Kullanıcının erişimi olan ortamları döndürmesi için [ortamlar API 'Si al](/rest/api/time-series-insights/gen1-query-api#get-environments-api)
+  * [Ortam kullanılabilirliği API 'sini al](/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
+  * Ortam meta verilerini almak için [ortam meta verileri API 'Sini alma](/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api)
+  * [Ortam olayları API 'SI al](/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
+  * [Ortam toplamaları API 'SI al](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
 
 * Gen1 sorgu API 'Leriyle nasıl etkileşim kuracağınızı öğrenmek için WSS 'yi kullanarak:
 
-  * [Ortam olaylarını akışlı API al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
-  * [Ortam toplamlarını akışlı API al](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
+  * [Ortam olaylarını akışlı API al](/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
+  * [Ortam toplamlarını akışlı API al](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
 
 ## <a name="prerequisites-and-setup"></a>Önkoşullar ve kurulum
 
 Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
-1. [Bir Gen1 Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) .
+1. [Bir Gen1 Azure Time Series Insights ortamı sağlayın](./time-series-insights-get-started.md) .
 1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın.
 1. Gerekli proje bağımlılıklarını yükler.
 1. Her **#DUMMY #** öğesini uygun ortam tanımlayıcısı ile değiştirerek aşağıdaki örnek kodu düzenleyin.
@@ -82,7 +82,7 @@ C# örnek koduna erişmek için lütfen [Azure Time Series Insights](https://git
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api)okuyun.
+* Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](/rest/api/time-series-insights/gen1-query-api)okuyun.
 
 * Time Series Insights için [istemci SDK 'sını kullanarak bir JavaScript uygulamasının nasıl bağlanacağını](https://github.com/microsoft/tsiclient) okuyun.
 Azure-Samples/Azure-Time-Series-Insights/Gen1-Sample/CSharp-TSİ-Gen1-Sample/program. cs

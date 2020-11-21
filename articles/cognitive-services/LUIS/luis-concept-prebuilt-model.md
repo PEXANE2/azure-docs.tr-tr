@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 32755ea9dccd2a7d4a0e727c7a006491d5ea3521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6642e59c2957b298d54bc587853752b9fce74686
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535892"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019152"
 ---
 # <a name="prebuilt-models"></a>Önceden oluşturulmuş modeller
 
@@ -32,7 +32,7 @@ LUSıS, üç tür önceden oluşturulmuş model sağlar. Her bir model uygulaman
 
 ## <a name="prebuilt-domains"></a>Önceden oluşturulmuş etki alanları
 
-Language Understanding (LUU), etki alanları ya da istemci uygulamalarının ortak kategorileri için birlikte çalışan, önceden eğitilen [amaçlar](luis-how-to-add-intents.md) ve [varlık](luis-concept-entity-types.md) modelleri olan önceden *oluşturulmuş etki alanları*sağlar. 
+Language Understanding (LUU), etki alanları ya da istemci uygulamalarının ortak kategorileri için birlikte çalışan, önceden eğitilen [amaçlar](luis-how-to-add-intents.md) ve [varlık](luis-concept-entity-types.md) modelleri olan önceden *oluşturulmuş etki alanları* sağlar. 
 
 Önceden oluşturulmuş etki alanları, LUSıS Uygulamanıza eklenmeye hazır hale gelir. Önceden oluşturulmuş bir etki alanının amaçları ve varlıkları uygulamanıza eklendikten sonra tamamen özelleştirilebilir. 
 
@@ -61,4 +61,4 @@ Uygulamanıza önceden oluşturulmuş bir varlık dahil edildiğinde, tahminleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamanıza [önceden oluşturulmuş varlıklar eklemeyi](luis-prebuilt-entities.md) öğrenin.
+Uygulamanıza [önceden oluşturulmuş varlıklar eklemeyi](./howto-add-prebuilt-models.md) öğrenin.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 69f2048da0b4690d9de72e96e296edbd55c4cd9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66df23466694fe8b9caea4e56565cde6d8fd7416
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309464"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018965"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>LUSıS uygulama şemanızı konu etki alanı ve veri ayıklama ile planlayın
 
@@ -21,7 +21,7 @@ Bir LUSıS uygulama şeması, konu [etki alanınız](luis-glossary.md#domain)ile
 Bir LUSıS uygulaması, konu etki alanı etrafında ortalanır. Örneğin, Bilet, fışıklar, otel ve Kiralama otomobillerini işleyen bir seyahat uygulamasına sahip olabilirsiniz. Başka bir uygulama uygulamayla ilgili içerik sunabilir, uygunluk çalışmalarını izleme ve amaçları ayarlama. Etki alanını tanımlamak, etki alanınız için uygun olan kelimeleri veya tümceleri bulmanıza yardımcı olur.
 
 > [!TIP]
-> LUSıS birçok yaygın senaryo için [önceden oluşturulmuş etki alanları](luis-how-to-use-prebuilt-domains.md) sunar. Önceden oluşturulmuş bir etki alanını uygulamanız için başlangıç noktası olarak kullanıp kullananağınızın olup olmadığını kontrol edin.
+> LUSıS birçok yaygın senaryo için [önceden oluşturulmuş etki alanları](./howto-add-prebuilt-models.md) sunar. Önceden oluşturulmuş bir etki alanını uygulamanız için başlangıç noktası olarak kullanıp kullananağınızın olup olmadığını kontrol edin.
 
 ## <a name="identify-your-intents"></a>Amaçlarınızı tanımla
 
@@ -49,7 +49,7 @@ Daha fazla bilgi için bkz. [lusıs uygulamaları için iyi BIR değer anlama](l
 Uygulamanızda hangi varlıkların kullanılacağını belirlerken, nesne türleri arasındaki ilişkileri yakalamak için farklı türde varlıkların olduğunu aklınızda bulundurun. [Luve Içindeki varlıklar](luis-concept-entity-types.md) , farklı türler hakkında daha fazla ayrıntı sağlar.
 
 > [!TIP]
-> LUSıS, yaygın, konuşma Kullanıcı senaryolarında [önceden oluşturulmuş varlıklar](luis-prebuilt-entities.md) sunmaktadır. Önceden oluşturulmuş varlıkları, uygulama geliştirme için bir başlangıç noktası olarak kullanmayı düşünün.
+> LUSıS, yaygın, konuşma Kullanıcı senaryolarında [önceden oluşturulmuş varlıklar](./howto-add-prebuilt-models.md) sunmaktadır. Önceden oluşturulmuş varlıkları, uygulama geliştirme için bir başlangıç noktası olarak kullanmayı düşünün.
 
 ## <a name="resolution-with-intent-or-entity"></a>Amaç veya varlıkla ilgili çözüm mi var?
 
@@ -79,4 +79,3 @@ Ayıklamanın, alt varlıklara özellikler eklemesine yardımcı olmak. Kullanı
 
 > [!div class="nextstepaction"]
 > [LUSıS geliştirme lifecylce öğrenme](luis-concept-app-iteration.md)
-

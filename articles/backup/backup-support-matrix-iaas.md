@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 650c239423db23bcd4329ab38080b82809fa4f09
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cff5c68803d0930bbf3310a385ffa0132bcbb3b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842184"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95017035"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -50,7 +50,7 @@ Aylık/yıllık yedekleme| Azure VM Uzantısı ile yedeklenirken desteklenmez. Y
 Otomatik saat ayarlaması | Desteklenmez.<br/><br/> Azure Backup, bir VM yedeklenirken gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.<br/><br/>  İlkeyi gerektiği şekilde el ile değiştirin.
 [Karma yedekleme için güvenlik özellikleri](./backup-azure-security-feature.md) |Güvenlik özelliklerini devre dışı bırakma desteklenmiyor.
 Makine süresi değişmiş olan VM 'yi yedekleme | Desteklenmez.<br/><br/> Makine saati, bu VM için yedeklemeyi etkinleştirdikten sonra gelecek bir tarih-saat olarak değiştirilirse, zaman değişikliği geri döndürülse bile, başarılı yedekleme garantisi garanti edilmez.
-[Sanal makine ölçek kümelerinde](../virtual-machine-scale-sets/overview.md) Azure VM 'leri | [Düzenleme modu](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) 3 olarak ayarlanan VM 'ler için yedekleme ve geri yükleme desteklenir. <br><br>Kullanılabilirlik kümeleri desteklenmez.
+[Sanal makine ölçek kümelerinde](../virtual-machine-scale-sets/overview.md) Azure VM 'leri |Kullanılabilirlik kümeleri desteklenmez.
 
 ## <a name="operating-system-support-windows"></a>İşletim sistemi desteği (Windows)
 
@@ -140,7 +140,7 @@ Farklı sanal ağdaki VM 'yi geri yükleme |Destekleniyor.<br/><br/> Sanal ağı
 VM boyutu |En az 2 CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boyutu.<br/><br/> [Daha fazla bilgi edinin.](../virtual-machines/sizes.md)
 [Kullanılabilirlik kümelerinde](../virtual-machines/availability.md#availability-sets) VM 'leri yedekleme | Destekleniyor.<br/><br/> Hızlı bir şekilde VM oluşturma seçeneğini kullanarak kullanılabilir bir küme içindeki bir VM 'yi geri alamazsınız. Bunun yerine, VM 'yi geri yükledikten sonra diski geri yükler ve bir VM dağıtmak ya da bir diski geri yüklemek için kullanın ve var olan bir diski değiştirmek için kullanın.
 [Karma kullanım avantajı (hub)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) Ile dağıtılan VM 'leri yedekleme | Destekleniyor.
-[Ölçek kümesine](../virtual-machine-scale-sets/overview.md) dağıtılan VM 'leri yedekleme |Destekleniyor. Hata etki alanı için [Orchestration modu](../virtual-machine-scale-sets/orchestration-modes.md) 2 olarak ayarlanmalıdır. Kullanılabilirlik kümesi desteklenmiyor.
+[Ölçek kümesine](../virtual-machine-scale-sets/overview.md) dağıtılan VM 'leri yedekleme |Destekleniyor. Kullanılabilirlik kümesi desteklenmiyor.
 [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) 'Nden dağıtılan VM 'leri yedekleme<br/><br/> (Microsoft, üçüncü taraf tarafından yayımlandı) |Destekleniyor.<br/><br/> VM desteklenen bir işletim sistemi çalıştırıyor olmalıdır.<br/><br/> SANAL makinede dosyaları kurtarırken, yalnızca uyumlu bir işletim sistemine (önceki veya sonraki bir işletim sistemini değil) geri yükleyebilirsiniz. VM olarak desteklenen Azure Market VM 'lerini, satın alma bilgileri gerekli olduğundan geri yüklemeyin. Bunlar yalnızca disk olarak geri yüklenir.
 Özel görüntüden dağıtılan VM 'Leri yedekleme (üçüncü taraf) |Destekleniyor.<br/><br/> VM desteklenen bir işletim sistemi çalıştırıyor olmalıdır.<br/><br/> SANAL makinede dosyaları kurtarırken, yalnızca uyumlu bir işletim sistemine (önceki veya sonraki bir işletim sistemini değil) geri yükleyebilirsiniz.
 Azure 'a geçirilen VM 'Leri yedekleme| Destekleniyor.<br/><br/> VM 'yi yedeklemek için, geçirilen makinede VM aracısının yüklü olması gerekir.

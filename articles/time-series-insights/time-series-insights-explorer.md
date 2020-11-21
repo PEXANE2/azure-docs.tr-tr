@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568642"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020121"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Gezgini
 
@@ -40,13 +40,13 @@ Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip anali
 >[!NOTE]
 >Yukarıdaki <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Azure IoT çözüm Hızlandırıcısını kullanarak Azure Time Series Insights</a> kullanmaya başlama" videosunu yürütün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Time Series Insights Gezginini kullanabilmeniz için şunları yapmanız gerekir:
 
 - Azure Time Series Insights ortamı oluşturun. Daha fazla bilgi için [Azure Time Series Insights ile çalışmaya başlama](./time-series-insights-get-started.md)makalesini okuyun.
-- Ortamda hesabınıza [erişim sağlayın](time-series-insights-data-access.md) .
-- Bir [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) veya [Olay Hub](time-series-insights-how-to-add-an-event-source-eventhub.md) 'ı olay kaynağı ekleyin.
+- Ortamda hesabınıza [erişim sağlayın](./concepts-access-policies.md) .
+- Bir [IoT Hub](./how-to-ingest-data-iot-hub.md) veya [Olay Hub](./how-to-ingest-data-event-hub.md) 'ı olay kaynağı ekleyin.
 
 ## <a name="explore-and-query-data"></a>Verileri keşfet ve sorgulama
 
@@ -115,7 +115,7 @@ Olay kaynağınızı Azure Time Series Insights ortamınıza bağlama sırasınd
 
 1. Olayları araştırdığınızda veya sağ tıkladıktan sonra **Olaylar** paneli kullanılabilir hale getirilir. Burada, tüm ham olaylarınızı gözden geçirebilir ve olaylarınızı JSON veya CSV dosyaları olarak dışarı aktarabilirsiniz. Azure Time Series Insights tüm ham verileri depolar.
 
-    [![Olaylar](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
+    [![Ekinlikler](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. Desenleri ve sütun istatistiklerini göstermek için olayları araştırdıktan sonra **İstatistikler** sekmesini seçin.
 

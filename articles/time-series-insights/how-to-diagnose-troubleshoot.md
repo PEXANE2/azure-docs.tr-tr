@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653766"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016845"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamını tanılama ve sorun giderme
 
@@ -39,7 +39,7 @@ Verilerinizin [Azure Time Series Insights Gen2 Explorer](https://insights.timese
 
 - Olay kaynak verileriniz JSON biçiminde değil.
 
-    Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için [desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
+    Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için [desteklenen JSON şekillerini](./concepts-json-flattening-escaping-rules.md)okuyun.
 
 - Olay kaynak anahtarınıza gerekli bir izin eksik.
 
@@ -61,13 +61,13 @@ Verilerinizin [Azure Time Series Insights Gen2 Explorer](https://insights.timese
 
 - Sağlama sırasında belirtilen zaman serisi KIMLIĞI özelliği yanlış, eksik veya null.
 
-    Bu sorun, ortamı sağlama sırasında zaman serisi KIMLIĞI özelliği yanlış yapılandırılmışsa meydana gelebilir. Daha fazla bilgi için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. Şu anda, mevcut bir Time Series Insights ortamını farklı bir zaman serisi KIMLIĞI kullanacak şekilde güncelleştiremezsiniz.
+    Bu sorun, ortamı sağlama sırasında zaman serisi KIMLIĞI özelliği yanlış yapılandırılmışsa meydana gelebilir. Daha fazla bilgi için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./how-to-select-tsid.md)okuyun. Şu anda, mevcut bir Time Series Insights ortamını farklı bir zaman serisi KIMLIĞI kullanacak şekilde güncelleştiremezsiniz.
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>Sorun: bazı veriler gösteriliyor, ancak bazıları eksik
 
 Zaman serisi KIMLIĞI olmadan veri gönderiyor olabilirsiniz.
 
-- Bu sorun, yük içindeki zaman serisi KIMLIĞI alanı olmadan olayları gönderdiğinizde meydana gelebilir. Daha fazla bilgi için [desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
+- Bu sorun, yük içindeki zaman serisi KIMLIĞI alanı olmadan olayları gönderdiğinizde meydana gelebilir. Daha fazla bilgi için [desteklenen JSON şekillerini](./concepts-json-flattening-escaping-rules.md)okuyun.
 - Bu sorun, ortamınız kısıtlanmakta olduğu için meydana gelebilir.
 
     > [!NOTE]
@@ -111,7 +111,7 @@ Zaman damgası özelliği açıkça belirtilmemişse, varsayılan zaman damgası
 
 - Time Series Insights S1 veya S2 ortamına erişim sağlayabilirsiniz.
 
-   Zaman serisi modelleri yalnızca Kullandıkça Öde ortamlarında desteklenir. S1 veya S2 ortamınıza Time Series Insights Gen2 Explorer 'dan erişme hakkında daha fazla bilgi için, [Gezgin 'de verileri görselleştirme](./time-series-insights-update-explorer.md)makalesini okuyun.
+   Zaman serisi modelleri yalnızca Kullandıkça Öde ortamlarında desteklenir. S1 veya S2 ortamınıza Time Series Insights Gen2 Explorer 'dan erişme hakkında daha fazla bilgi için, [Gezgin 'de verileri görselleştirme](./concepts-ux-panels.md)makalesini okuyun.
 
    [![Ortamda olay yok.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -121,7 +121,7 @@ Zaman damgası özelliği açıkça belirtilmemişse, varsayılan zaman damgası
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>Sorun: Gen2 Explorer 'daki tüm örneklerim üst öğeye sahip değil
 
-Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluşabilir. Daha fazla bilgi için [zaman serisi modelleriyle çalışma](/azure/time-series-insights/time-series-insights-overview)hakkında bilgi edinin.
+Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluşabilir. Daha fazla bilgi için [zaman serisi modelleriyle çalışma](./time-series-insights-overview.md)hakkında bilgi edinin.
 
   [![Üst öğe olmayan örnekler bir uyarı görüntüler.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,8 +135,8 @@ Power BI Desktop içinde Power BI bağlayıcısının en son sürümünü kullan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Zaman serisi modelleriyle çalışma](/azure/time-series-insights/time-series-insights-overview)hakkında bilgi edinin.
+- [Zaman serisi modelleriyle çalışma](./time-series-insights-overview.md)hakkında bilgi edinin.
 
-- [Desteklenen JSON şekilleri](./how-to-shape-query-json.md)hakkında bilgi edinin.
+- [Desteklenen JSON şekilleri](./concepts-json-flattening-escaping-rules.md)hakkında bilgi edinin.
 
-- Azure Time Series Insights Gen2 ' de [planlamayı ve limitleri](./time-series-insights-update-plan.md) gözden geçirin.
+- Azure Time Series Insights Gen2 ' de [planlamayı ve limitleri](./how-to-plan-your-environment.md) gözden geçirin.

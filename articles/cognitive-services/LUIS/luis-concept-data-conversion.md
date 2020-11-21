@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b305be693f59b65a62570f656a0132f4f03cf099
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42a9caff0433808734ee853cbad90a2088bf4e1e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541807"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019254"
 ---
 # <a name="convert-data-format-of-utterances"></a>Söyleyenlerdeki veri biçimlerini Dönüştür
 LUO, tahmine göre bir kullanıcı için aşağıdaki dönüştürmeleri sağlar "
@@ -26,7 +26,7 @@ LUO, tahmine göre bir kullanıcı için aşağıdaki dönüştürmeleri sağlar
 Konuşmadan metne, LUSıS ile tümleştirme olarak sunulmaktadır.
 
 ### <a name="intent-conversion-concepts"></a>Amaç dönüştürme kavramları
-Luo 'da konuşmayı metne dönüştürme, bir uç noktaya konuşmalar göndermenizi ve bir LUSıS tahmini yanıtı almanızı sağlar. İşlem, LUSıS ile [konuşma](https://docs.microsoft.com/azure/cognitive-services/Speech) hizmetinin bir Tümleştirmesidir. Bir [öğreticide](../speech-service/how-to-recognize-intents-from-speech-csharp.md)konuşma amacı hakkında daha fazla bilgi edinin.
+Luo 'da konuşmayı metne dönüştürme, bir uç noktaya konuşmalar göndermenizi ve bir LUSıS tahmini yanıtı almanızı sağlar. İşlem, LUSıS ile [konuşma](/azure/cognitive-services/Speech) hizmetinin bir Tümleştirmesidir. Bir [öğreticide](../speech-service/how-to-recognize-intents-from-speech-csharp.md)konuşma amacı hakkında daha fazla bilgi edinin.
 
 ### <a name="key-requirements"></a>Önemli gereksinimler
 Bu tümleştirme için bir **Bing Konuşma API'si** anahtarı oluşturmanız gerekmez. Azure portal oluşturulan **Language Understanding** anahtarı bu tümleştirme için geçerlidir. Ludo başlangıç anahtarını kullanmayın.
@@ -41,4 +41,3 @@ Bilgi için bkz. [anahtar sınırları](luis-limits.md#key-limits) .
 
 > [!div class="nextstepaction"]
 > [Verileri ayıklama](luis-concept-data-extraction.md)
-

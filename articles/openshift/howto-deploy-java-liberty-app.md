@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikro profil, açık-Liberty, WebSphere-Liberty, Aro, OpenShift, Red Hat
-ms.openlocfilehash: ee4baf8eed26a43728fa52289bce86108c9e8c4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94415319"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018401"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 kümesinde açık Liberty/WebSphere özgürlük ile Java uygulaması dağıtma
 
@@ -64,8 +64,8 @@ Yerleşik kapsayıcı kayıt defterini etkinleştirme adımlarını tamamladıkt
 ### <a name="create-an-openshift-namespace-for-the-java-app"></a>Java uygulaması için bir OpenShift ad alanı oluşturma
 
 1. Kimlik bilgilerini kullanarak tarayıcınızdan OpenShift Web konsolunda oturum açın `kubeadmin` .
-2. **Yönetim**  >  **ad alanları**  >  **ad alanı oluştur** ' a gidin.
-3. `open-liberty-demo` **Ad** için girin ve daha sonra gösterildiği gibi **Oluştur** ' u seçin.
+2. **Yönetim**  >  **ad alanları**  >  **ad alanı oluştur**' a gidin.
+3. `open-liberty-demo` **Ad** için girin ve daha sonra gösterildiği gibi **Oluştur**' u seçin.
 
    ![ad alanı oluştur](./media/howto-deploy-java-liberty-app/create-namespace.png)
 
@@ -74,7 +74,7 @@ Yerleşik kapsayıcı kayıt defterini etkinleştirme adımlarını tamamladıkt
 Görüntü yönetiminin yanı sıra, **AAD-User** Ayrıca, Aro 4 kümesinin demo projesindeki kaynakları yönetmek için de yönetim izinleri verilecektir.  OpenShift CLı ' de oturum açın ve bu adımları izleyerek **AAD-User** ' a gerekli ayrıcalıkları verin.
 
 1. Kimlik bilgilerini kullanarak tarayıcınızdan OpenShift Web konsolunda oturum açın `kubeadmin` .
-1. Web konsolunun sağ üst kısmında, oturum açmış kullanıcının bağlam menüsünü genişletin ve ardından **login komutunu Kopyala** ' yı seçin.
+1. Web konsolunun sağ üst kısmında, oturum açmış kullanıcının bağlam menüsünü genişletin ve ardından **login komutunu Kopyala**' yı seçin.
 1. Gerekirse, aynı kullanıcıyla yeni bir sekme penceresinde oturum açın.
 1. **Görüntüleme belirtecini** seçin.
 1. Aşağıda gösterildiği gibi, aşağıda belirtilen değeri **Bu belirteçle** panoya kopyalayın ve bir kabukta çalıştırın.
@@ -97,7 +97,7 @@ Kümeye oluşturup bağlandıktan sonra, açık serbest bağlantı Işlecini yü
 1. Kimlik bilgilerini kullanarak tarayıcınızdan OpenShift Web konsolunda oturum açın `kubeadmin` .
 2. **İşleçler**  >  **OperatorHub** ' e gidin ve **Açık serbest bir operatör işleci** arayın.
 3. Arama sonuçlarından **serbest bir Işleç açın** ' ı seçin.
-4. **Yükle** ’yi seçin.
+4. **Yükle**’yi seçin.
 5. Açılan menü **Işleci oluşturma** öğesinde, **yükleme modu** için **kümedeki tüm ad alanlarını (varsayılan)** , **güncelleştirme kanalının** **Beta** ve **onay stratejisi** için **Otomatik** ' i işaretleyin:
 
    ![Açık serbest bir operatör Işleci için işleç aboneliği oluştur](./media/howto-deploy-java-liberty-app/install-operator.png)
@@ -126,7 +126,7 @@ Uygulamayı açık serbest durumda çalıştırmak için, [Liberty Maven eklenti
    [INFO] Source compilation was successful.
    ```
 
-1. [http://localhost:9080/](http://localhost:9080/)Uygulama giriş sayfasını ziyaret etmek için tarayıcınızda açın. Uygulama aşağıdaki resme benzer şekilde görünür:
+1. `http://localhost:9080/`Uygulama giriş sayfasını ziyaret etmek için tarayıcınızda açın. Uygulama aşağıdaki resme benzer şekilde görünür:
 
    ![JavaEE Cafe Web Kullanıcı arabirimi](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
 1. Uygulamayı durdurmak ve özgürlük sunucusunu açmak için **Control-C** tuşlarına basın.
@@ -164,7 +164,7 @@ Kapsayıcılı uygulamayı uzak bir kümeye dağıtmadan önce, çalışıp çal
 
 1. `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0`Konsolunuza çalıştırın.
 2. Serbest bir sunucunun başlamasını ve uygulamanın başarıyla dağıtılmasını bekleyin.
-3. [http://localhost:9080/](http://localhost:9080/)Uygulama giriş sayfasını ziyaret etmek için tarayıcınızda açın.
+3. `http://localhost:9080/`Uygulama giriş sayfasını ziyaret etmek için tarayıcınızda açın.
 4. Uygulamayı ve serbest sunucuyu durdurmak için **Control-C** tuşlarına basın.
 
 ### <a name="push-the-image-to-the-container-image-registry"></a>Görüntüyü kapsayıcı görüntüsü kayıt defterine gönderme
@@ -181,7 +181,7 @@ Uygulamanın durumunu tatmin ediyorsanız, aşağıdaki yönergeleri izleyerek y
    > [!NOTE]
    > Burada oturum açmak için kullandığınız kullanıcı adını ve parolayı bir yere göz atın. Bu Kullanıcı adı ve parola, bu ve diğer makalelerdeki diğer eylemler için yönetici olarak çalışır.
 1. Aşağıdaki adımları kullanarak OpenShift CLı ile oturum açın.  Tartışma için bu işlem olarak bilinir `oc login` .
-   1. Web konsolunun sağ üst kısmında, oturum açmış kullanıcının bağlam menüsünü genişletin ve ardından **login komutunu Kopyala** ' yı seçin.
+   1. Web konsolunun sağ üst kısmında, oturum açmış kullanıcının bağlam menüsünü genişletin ve ardından **login komutunu Kopyala**' yı seçin.
    1. Gerekirse, aynı kullanıcıyla yeni bir sekme penceresinde oturum açın.
    1. **Görüntüleme belirtecini** seçin.
    1. Aşağıda gösterildiği gibi, aşağıda belirtilen değeri **Bu belirteçle** panoya kopyalayın ve bir kabukta çalıştırın.
@@ -233,17 +233,17 @@ Artık, ön koşullar aracılığıyla çalışırken oluşturduğunuz Azure Red
 Serbest uygulamaları yönetmek için açık serbest bir operatör kullandığımızda, "Openlibertince" türünde *özel kaynak tanımının* bir örneğini oluşturuyoruz. Işleci daha sonra dağıtım için gerekli olan OpenShift kaynaklarını yönetmenin tüm yönlerini ele alır.
 
 1. Azure AD kullanıcısının kimlik bilgilerini kullanarak, tarayıcınızdan OpenShift Web konsolunda oturum açın.
-1. **Giriş** ' i genişletin, **Projeler**  >  **Açık-Liberty-demo** ' i seçin.
+1. **Giriş**' i genişletin, **Projeler**  >  **Açık-Liberty-demo**' i seçin.
 1. **Operatörler**  >  **yüklü işleçlere** gidin.
-1. Sayfanın ortasında, **serbest bir Işleç aç** ' ı seçin.
-1. Sayfanın ortasında, **serbest bir uygulama aç** ' ı seçin.  Kullanıcı arabirimindeki öğelerin gezinmesi, kullanımdaki teknolojilerin gerçek kapsama hiyerarşisini yansıtır.
+1. Sayfanın ortasında, **serbest bir Işleç aç**' ı seçin.
+1. Sayfanın ortasında, **serbest bir uygulama aç**' ı seçin.  Kullanıcı arabirimindeki öğelerin gezinmesi, kullanımdaki teknolojilerin gerçek kapsama hiyerarşisini yansıtır.
    <!-- Diagram source https://github.com/Azure-Samples/open-liberty-on-aro/blob/master/diagrams/aro-java-containment.vsdx -->
    ![ARO Java kapsama](./media/howto-deploy-java-liberty-app/aro-java-containment.png)
 1. **Openlibertfail oluştur** ' u seçin
 1. Oluşturulan YAML 'yi, ' de bulunan sizinkilerle değiştirin `<path-to-repo>/2-simple/openlibertyapplication.yaml` .
-1. **Oluştur** ’u seçin. OpenLibertyApplications listesine döndürülürsünüz.
-1. **JavaEE-Café-Simple** ' ı seçin.
-1. Sayfanın ortasında **kaynaklar** ' ı seçin.
+1. **Oluştur**’u seçin. OpenLibertyApplications listesine döndürülürsünüz.
+1. **JavaEE-Café-Simple**' ı seçin.
+1. Sayfanın ortasında **kaynaklar**' ı seçin.
 1. Tabloda, **yol** **türüyle** **JavaEE-Café-Simple** bağlantısını seçin.
 1. Açılan sayfada, **konumun** altındaki bağlantıyı seçin.
 
@@ -254,10 +254,10 @@ Uygulama giriş sayfasını tarayıcıda açıldığını görürsünüz.
 Uygulama ile işiniz bittiğinde, uygulamayı açık vardiyadan silmek için aşağıdaki adımları izleyin.
 
 1. Sol gezinti bölmesinde **işleçler** için girişi genişletin.
-1. **Yüklü işleçler** ' ı seçin.
+1. **Yüklü işleçler**' ı seçin.
 1. **Açık serbest bir işleç** seçin.
-1. Sayfanın ortasında, **serbest bir uygulama aç** ' ı seçin.
-1. Dikey üç nokta (üç dikey nokta) seçin ve **OpenLiberty uygulamasını Sil** ' i seçin.
+1. Sayfanın ortasında, **serbest bir uygulama aç**' ı seçin.
+1. Dikey üç nokta (üç dikey nokta) seçin ve **OpenLiberty uygulamasını Sil**' i seçin.
 
 ### <a name="deploy-the-application-from-cli"></a>Uygulamayı CLı 'dan dağıtma
 

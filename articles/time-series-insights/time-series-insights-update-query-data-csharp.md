@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81725a28102caf0d69a9fb303eaccdcf2151587d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667852"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020036"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>C Sharp kullanarak Azure Time Series Insights Gen2 ortamından veri sorgulama
 
-Bu C# örneği, Azure Time Series Insights Gen2 ortamlarındaki [Gen2 veri erişimi API 'lerinden](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) nasıl veri sorgulanacağını gösterir.
+Bu C# örneği, Azure Time Series Insights Gen2 ortamlarındaki [Gen2 veri erişimi API 'lerinden](/rest/api/time-series-insights/reference-data-access-overview) nasıl veri sorgulanacağını gösterir.
 
 > [!TIP]
 > Gen2 C# kod örneklerini şurada görüntüleyin: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
@@ -33,22 +33,22 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 * [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)kullanarak Azure Active Directory aracılığıyla erişim belirteci alma.
 * Bu alınan erişim belirtecini `Authorization` sonraki veri ERIŞIMI API isteklerinin üst bilgisinde geçirme.
 * Örnek, HTTP isteklerinin aşağıdakilere nasıl yapıldığını gösteren bir konsol arabirimi sağlar:
-  * [Gen2 ortamları API 'SI](https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis)
-    * [Ortamların kullanılabilirlik API 'Sini al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability) ve [olay şeması API 'si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
-  * [Gen2 sorgu API 'SI](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)
-    * [Olayları al API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), [seri API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)ve [toplama serisi API 'si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-  * [Zaman serisi modeli API 'Leri](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-    * [Hiyerarşilerin API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) ve [hiyerarşileri al Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-    * [Türleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) ve [türler Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-    * [Örnekleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) ve [örnekleri Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+  * [Gen2 ortamları API 'SI](/rest/api/time-series-insights/reference-environments-apis)
+    * [Ortamların kullanılabilirlik API 'Sini al](/rest/api/time-series-insights/dataaccessgen2/query/getavailability) ve [olay şeması API 'si al](/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
+  * [Gen2 sorgu API 'SI](/rest/api/time-series-insights/reference-query-apis)
+    * [Olayları al API 'si](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), [seri API 'Si al](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)ve [toplama serisi API 'si al](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+  * [Zaman serisi modeli API 'Leri](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+    * [Hiyerarşilerin API](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) ve [hiyerarşileri al Batch API 'si](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+    * [Türleri al API](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) ve [türler Batch API 'si](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+    * [Örnekleri al API](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) ve [örnekleri Batch API 'si](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
 
-* Gelişmiş [arama](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#search-features) ve [TSX](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) özellikleri.
+* Gelişmiş [arama](/rest/api/time-series-insights/reference-model-apis#search-features) ve [TSX](/rest/api/time-series-insights/reference-time-series-expression-syntax) özellikleri.
 
 ## <a name="prerequisites-and-setup"></a>Önkoşullar ve kurulum
 
 Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
-1. [Bir Gen2 Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) .
+1. [Bir Gen2 Azure Time Series Insights ortamı sağlayın](./how-to-provision-manage.md#create-the-environment) .
 1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın.
 1. Azure Time Series Insights Gen2 istemci bağımlılıklarını oluşturmak için [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) , [README.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) içinde belirtilen şekilde çalıştırın.
 1. Çözümü açın `TSIPreviewDataPlaneclient.sln` ve `DataPlaneClientSampleApp` Visual Studio 'da varsayılan proje olarak ayarlayın.
@@ -65,7 +65,7 @@ Visual Studio 'nun en yeni sürümünü kullanmanız önerilir:
 
 **Build**  >  **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin.
 
-Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örneğin:
+Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örnek:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 
@@ -80,6 +80,6 @@ C# örnek koduna erişmek için lütfen [Azure Time Series Insights](https://git
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)okuyun.
+* Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](/rest/api/time-series-insights/reference-query-apis)okuyun.
 
 * Azure Time Series Insights için [istemci SDK 'sını kullanarak bir JavaScript uygulamasının nasıl bağlanacağını](https://github.com/microsoft/tsiclient) okuyun.

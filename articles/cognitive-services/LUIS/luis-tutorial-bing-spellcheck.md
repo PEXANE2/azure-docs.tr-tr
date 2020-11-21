@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 120852c3e66594b1cf5cd28bb52ce06634211060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d2a1702ea131e9b1b4bf5e586f4290db3aff7ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541110"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018778"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Yanlış yazılmış kelimeleri Bing Yazım Denetimi düzeltin
 
@@ -97,4 +97,4 @@ Bing Yazım Denetimi API'si v7 hizmetini kullanmak istemiyorsanız, doğru ve ya
 [Yayımlama](luis-how-to-publish-app.md) sayfasında **Bing yazım denetimcisini etkinleştir** onay kutusu bulunur. Bu, anahtarı oluşturmak ve uç nokta URL 'sinin nasıl değiştirileceğini anlamak için kolaylık sağlar. Her bir yazımla ilgili yazım düzeltilmesi için doğru uç nokta parametrelerini yine de kullanmanız gerekir.
 
 > [!div class="nextstepaction"]
-> [Örnek araslar hakkında daha fazla bilgi edinin](luis-how-to-add-example-utterances.md)
+> [Örnek araslar hakkında daha fazla bilgi edinin](./luis-how-to-add-entities.md)

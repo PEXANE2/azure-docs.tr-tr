@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: fb0c29fb68d0bcd2405cc031008c1c8e5035476f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569398"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020087"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>C Sharp kullanarak Azure Time Series Insights Gen 1 ortamı için başvuru verilerini yönetme
 
 > [!CAUTION]
 > Bu bir Gen1 makaledir.
 
-Bu makalede, MSAL.NET Gen 1 [başvuru VERI YÖNETIMI apı](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)Azure Time Series Insights 'SINE programlı API istekleri yapmak Için C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory nasıl birleştirileceğini gösterilmektedir.
+Bu makalede, MSAL.NET Gen 1 [başvuru VERI YÖNETIMI apı](/rest/api/time-series-insights/gen1-reference-data-api)Azure Time Series Insights 'SINE programlı API istekleri yapmak Için C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory nasıl birleştirileceğini gösterilmektedir.
 
 > [!TIP]
 > ' Deki GA C# kod örneklerini görüntüleyin [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
@@ -32,9 +32,9 @@ Bu makalede, MSAL.NET Gen 1 [başvuru VERI YÖNETIMI apı](https://docs.microsof
 
 Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
-* [Msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **publicclientapplication**kullanarak bir erişim belirteci alınıyor.
-* Gen 1 [başvuru veri yönetimi API 'sine](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)KARŞı sıralı oluşturma, okuma, GÜNCELLEŞTIRME ve silme işlemleri.
-* [Ortak hata kodları](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling)dahil ortak yanıt kodları.
+* [Msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **publicclientapplication** kullanarak bir erişim belirteci alınıyor.
+* Gen 1 [başvuru veri yönetimi API 'sine](/rest/api/time-series-insights/gen1-reference-data-api)KARŞı sıralı oluşturma, okuma, GÜNCELLEŞTIRME ve silme işlemleri.
+* [Ortak hata kodları](/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling)dahil ortak yanıt kodları.
 
     Başvuru Veri Yönetimi API 'SI her öğeyi ayrı ayrı işler ve bir öğe ile bir hata, diğerlerinin başarıyla tamamlanmasını engellemez. Örneğin, isteğiniz 100 öğe içeriyorsa ve bir öğede hata varsa, 99 öğe yazılır ve bir öğe reddedilir.
 
@@ -42,7 +42,7 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
-1. [Bir gen 1 Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. [Bir gen 1 Azure Time Series Insights ortamı sağlayın](./time-series-insights-get-started.md
 ) .
 
 1. Ortamınızda [bir başvuru veri kümesi oluşturun](time-series-insights-add-reference-data-set.md) . Aşağıdaki başvuru veri şemasını kullanın:
@@ -51,7 +51,7 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
    | --- | --- |
    | uuid | Dize |
 
-1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın. `http://localhost:8080/` **Yeniden yönlendirme URI 'si**olarak kullanın.
+1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın. `http://localhost:8080/` **Yeniden yönlendirme URI 'si** olarak kullanın.
 
 1. Gerekli proje bağımlılıklarını yükler.
 
@@ -313,4 +313,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [VERI YÖNETIMI API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) başvurusu belgelerini Gen 1 başvurusu ile okuyun.
+* [VERI YÖNETIMI API](/rest/api/time-series-insights/gen1-reference-data-api) başvurusu belgelerini Gen 1 başvurusu ile okuyun.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: a16267b0bc5d9b550c73dc4e1dafee8304ec0237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541830"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019322"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Dil anlama (LUSıS) uygulaması oluşturmak için en iyi uygulamalar
 LUSıS uygulamanızı derlemek için uygulama yazma işlemini kullanın:
@@ -87,7 +87,7 @@ Makine tarafından öğrenilen varlıklar, diğer varlıkları özellikler olara
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Uygulamanızı sürümleriyle tekrarlayarak oluşturma
 
-Her yazma döngüsünün, var olan sürümden klonlanan yeni bir [Sürüm](luis-concept-version.md)içinde olması gerekir.
+Her yazma döngüsünün, var olan sürümden klonlanan yeni bir [Sürüm](./luis-concept-app-iteration.md)içinde olması gerekir.
 
 ## <a name="do-build-for-model-decomposition"></a>Model ayrıştırma için derleme yap
 

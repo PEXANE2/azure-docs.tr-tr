@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d47abaade13958b4e28d3ad5f62b88e8a53e89a9
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: a910edfbbe1ad07dca806026396c506f7e90e6e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917850"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019441"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Geçişe genel bakış: Azure VM 'lerinde SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, SQL Server veritabanınızı Azure VM 'lerinde SQL Server 
 
 |**Yöntem** | **En düşük kaynak sürümü** | **En düşük hedef sürüm** | **Kaynak yedekleme boyutu kısıtlaması** |  **Notlar** |
 | --- | --- | --- | --- | --- |
-| [Azure Geçişi](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM depolama sınırı](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Bir Azure sanal makinesinde SQL Server örneğine olduğu gibi, mevcut SQL Server. , 35.000 adede kadar VM 'ye kadar geçiş iş yüklerini ölçeklendirebilir. <br /><br /> Kaynak sunucu, sunucu verilerinin eşitlenmesi sırasında çevrimiçi ve hizmet isteklerine devam eder, kapalı kalma süresini en aza indirir. <br /><br /> **Otomasyon & betiği oluşturma**: [Azure Site Recovery betikler](../../../migrate/how-to-migrate-at-scale.md) ve [ölçeklendirme ve Azure için planlama](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale) örnekleri|
+| [Azure Geçişi](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM depolama sınırı](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Bir Azure sanal makinesinde SQL Server örneğine olduğu gibi, mevcut SQL Server. , 35.000 adede kadar VM 'ye kadar geçiş iş yüklerini ölçeklendirebilir. <br /><br /> Kaynak sunucu, sunucu verilerinin eşitlenmesi sırasında çevrimiçi ve hizmet isteklerine devam eder, kapalı kalma süresini en aza indirir. <br /><br /> **Otomasyon & betiği oluşturma**: [Azure Site Recovery betikler](../../../migrate/how-to-migrate-at-scale.md) ve [ölçeklendirme ve Azure için planlama](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale) örnekleri|
 
 ## <a name="migrate"></a>Geçiş  
 

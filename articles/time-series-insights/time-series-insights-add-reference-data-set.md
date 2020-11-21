@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dc759bb9af852fab5313686ebaffefda9220f45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614249"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020155"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Azure portal kullanarak Azure Time Series Insights Gen1 ortamınız için bir başvuru veri kümesi oluşturun
 
@@ -77,7 +77,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
    [![Başvuru verilerini gözden geçirin](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. Kabul edilen veri türünü anlamak için her sütunu gözden geçirin ve gerekirse veri türünü değiştirin.  Sütun başlığındaki veri türü sembolünü seçin: **#** Double (sayısal veriler) Için **T | ** Boolean için F veya dize Için **ABC** .
+1. Kabul edilen veri türünü anlamak için her sütunu gözden geçirin ve gerekirse veri türünü değiştirin.  Sütun başlığındaki veri türü sembolünü seçin: **#** Double (sayısal veriler) Için **T |** Boolean için F veya dize Için **ABC** .
 
    [![Sütun başlıklarında veri türleri ' ni seçin.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -102,12 +102,12 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
     [![Satırları karşıya yükleyin ve verileri onaylayın.](media/add-reference-data-set/confirm-upload-reference-data.png)](media/add-reference-data-set/confirm-upload-reference-data.png#lightbox)
 
-    Sayfada tamamlanan karşıya yükleme onaylanır ve ileti **başarıyla karşıya yüklendi**iletisi görüntülenir.
+    Sayfada tamamlanan karşıya yükleme onaylanır ve ileti **başarıyla karşıya yüklendi** iletisi görüntülenir.
 
     > [!WARNING]
     > Başvuru veri kümeleri arasında paylaşılan sütunlarda veya özelliklerde **yinelenen özellik adı** karşıya yükleme hatası görüntülenir. Hata, başvuru veri kümelerinin başarıyla karşıya yüklenmesini engellemez. Yinelenen özellik adını paylaşan satırlar birleştirilerek kaldırılabilir.
 
-1. Gerektiğinde daha fazla başvuru verisi değeri eklemek için **satır ekle**, **satırları toplu al**veya **sütun Ekle** ' yi seçin.
+1. Gerektiğinde daha fazla başvuru verisi değeri eklemek için **satır ekle**, **satırları toplu al** veya **sütun Ekle** ' yi seçin.
 
     [![Satır ekleyin, satırları toplu içe aktarın veya bir sütun ekleyin.](media/add-reference-data-set/add-row-or-bulk-upload.png)](media/add-reference-data-set/add-row-or-bulk-upload.png#lightbox)
 
@@ -121,4 +121,4 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 - [Başvuru verilerini programlamayla yönetin](time-series-insights-manage-reference-data-csharp.md).
 
-- Tüm API başvurusu için [başvuru verileri API 'si](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) belgesini okuyun.
+- Tüm API başvurusu için [başvuru verileri API 'si](/rest/api/time-series-insights/gen1-reference-data-api) belgesini okuyun.

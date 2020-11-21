@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930705"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018316"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirme
 
@@ -20,7 +20,7 @@ ms.locfileid: "91930705"
 
 Çoklu izleyici deneyimi ve ses yeniden yönlendirme gibi bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirmek, kullanıcılarınız için gereksinimlerinize göre en iyi deneyimi sunmanızı sağlar. Windows sanal masaüstündeki RDP özelliklerini, Azure portal kullanarak veya **Update-AzWvdHostPool** cmdlet 'inde *-customrdpproperty* parametresini kullanarak özelleştirebilirsiniz.
 
-Desteklenen özelliklerin tam listesi ve bunların varsayılan değerleri için bkz. [desteklenen RDP dosyası ayarları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
+Desteklenen özelliklerin tam listesi ve bunların varsayılan değerleri için bkz. [desteklenen RDP dosyası ayarları](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext) .
 
 ## <a name="default-rdp-file-properties"></a>Varsayılan RDP dosyası özellikleri
 
@@ -32,7 +32,7 @@ RDP dosyaları varsayılan olarak aşağıdaki özelliklere sahiptir:
 |Sürücü yeniden yönlendirmeleri etkin|Sürücüler, pano, yazıcılar, COM bağlantı noktaları ve akıllı kartlar|Sürücüler, pano ve Yazıcılar|
 |Uzak ses modu|Yerel olarak oynat|Yerel olarak oynat|
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, PowerShell modülünüzü ayarlamak ve Azure 'da oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izleyin.
 

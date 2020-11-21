@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328888"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018384"
 ---
 # <a name="configure-device-redirections"></a>Cihaz yeniden yönlendirmelerini yapılandırma
 
@@ -19,11 +19,11 @@ Windows sanal masaüstü ortamınız için cihaz yeniden yönlendirmelerini yap�
 
 ## <a name="supported-device-redirections"></a>Desteklenen cihaz yeniden yönlendirmeleri
 
-Her istemci farklı cihaz yeniden yönlendirmelerini destekler. [İstemcileri,](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) her istemci için desteklenen cihaz yeniden yönlendirmeleri tam listesine göre karşılaştırın.
+Her istemci farklı cihaz yeniden yönlendirmelerini destekler. [İstemcileri,](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) her istemci için desteklenen cihaz yeniden yönlendirmeleri tam listesine göre karşılaştırın.
 
 ## <a name="customizing-rdp-properties-for-a-host-pool"></a>Bir konak havuzu için RDP özelliklerini özelleştirme
 
-PowerShell veya Azure portal kullanarak bir konak havuzu için RDP özelliklerini özelleştirme hakkında daha fazla bilgi edinmek için, [RDP özelliklerine](customize-rdp-properties.md)göz atın. Desteklenen RDP özelliklerinin tam listesi için bkz. [desteklenen RDP dosyası ayarları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context).
+PowerShell veya Azure portal kullanarak bir konak havuzu için RDP özelliklerini özelleştirme hakkında daha fazla bilgi edinmek için, [RDP özelliklerine](customize-rdp-properties.md)göz atın. Desteklenen RDP özelliklerinin tam listesi için bkz. [desteklenen RDP dosyası ayarları](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext).
 
 ## <a name="setup-device-redirections"></a>Cihaz yeniden yönlendirmeleri ayarlama
 
@@ -78,7 +78,7 @@ COM bağlantı noktası yeniden yönlendirmeyi yapılandırmak için aşağıdak
 
 İkinci olarak, kullanıcının yerel cihazında aşağıdaki grup ilkesi ayarlayın:
 
-- **Computer Configuration**  >  **Policies** >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Uzak Masaüstü Hizmetleri**  >  **Uzak Masaüstü bağlantısı istemci**  >  **RemoteFX USB cihaz yeniden yönlendirmesi**Yönetim Şablonları bilgisayar yapılandırma ilkelerine gidin.
+- **Computer Configuration**  >  **Policies** >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Uzak Masaüstü Hizmetleri**  >  **Uzak Masaüstü bağlantısı istemci**  >  **RemoteFX USB cihaz yeniden yönlendirmesi** Yönetim Şablonları bilgisayar yapılandırma ilkelerine gidin.
 - **Bu bilgisayardan desteklenen diğer REMOTEFX USB CIHAZLARıNıN RDP yönlendirmesine Izin verir**' i seçin.
 - **Etkin** seçeneğini belirleyin ve ardından **RemoteFX USB yeniden yönlendirme erişimi hakları kutusunda Yöneticiler ve kullanıcılar** ' ı seçin.
 - **Tamam**’ı seçin.

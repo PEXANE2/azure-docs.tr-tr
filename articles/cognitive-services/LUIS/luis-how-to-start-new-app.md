@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
-ms.openlocfilehash: fcc803e87b2efd3e94b90eb17258ab3bb156359f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541450"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018897"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUSıS portalında yeni bir LUO uygulaması oluşturma
 Bir LUSıS uygulaması oluşturmanın birkaç yolu vardır. LUIS portalında veya LUıS yazma [API 'leri](developer-reference-resource.md)aracılığıyla bir LUIS uygulaması oluşturabilirsiniz.
@@ -24,7 +24,7 @@ Bir LUSıS uygulaması oluşturmanın birkaç yolu vardır. LUIS portalında vey
 Portalda çeşitli yollarla yeni bir uygulama oluşturabilirsiniz:
 
 * Boş bir uygulamayla başlayın ve amaçlar, utbotslar ve varlıklar oluşturun.
-* Boş bir uygulama ile başlayın ve [önceden oluşturulmuş bir etki alanı](luis-how-to-use-prebuilt-domains.md)ekleyin.
+* Boş bir uygulama ile başlayın ve [önceden oluşturulmuş bir etki alanı](./howto-add-prebuilt-models.md)ekleyin.
 * Bir veya daha fazla `.lu` `.json` Amaç, utde ve varlık içeren bir dosyadan bir Luo uygulamasını içeri aktarın.
 
 ## <a name="using-the-authoring-apis"></a>Yazma API 'Lerini kullanma
@@ -43,7 +43,7 @@ Yazma API 'Leriyle birkaç yolla yeni bir uygulama oluşturabilirsiniz:
 
 ## <a name="create-new-app-in-luis"></a>LUSıS 'de yeni uygulama oluşturma
 
-1. **Uygulamalarım** sayfasında **aboneliğinizi**seçin ve **kaynağı** yazıp **+ Oluştur**' a tıklayın. 
+1. **Uygulamalarım** sayfasında **aboneliğinizi** seçin ve **kaynağı** yazıp **+ Oluştur**' a tıklayın. 
 
 > [!div class="mx-imgBorder"]
 > ![LUIS uygulamalarının listesi](./media/create-app-in-portal.png)
@@ -75,4 +75,4 @@ Bağlam araç çubuğu diğer eylemleri sağlar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama tasarımınızda amaç algılama, [yeni amaçlar oluşturma](luis-how-to-add-intents.md)ve örnek ekleme dahil olmak üzere. Uygulama tasarımınız yalnızca veri ayıklama ise, None amacına örnek bir değer ekleyin, daha sonra [varlıklar oluşturun](luis-how-to-add-example-utterances.md)ve bu varlıklarla örnek utbotları etiketleyin.
+Uygulama tasarımınızda amaç algılama, [yeni amaçlar oluşturma](luis-how-to-add-intents.md)ve örnek ekleme dahil olmak üzere. Uygulama tasarımınız yalnızca veri ayıklama ise, None amacına örnek bir değer ekleyin, daha sonra [varlıklar oluşturun](./luis-how-to-add-entities.md)ve bu varlıklarla örnek utbotları etiketleyin.

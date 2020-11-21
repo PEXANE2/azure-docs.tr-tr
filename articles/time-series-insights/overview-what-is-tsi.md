@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fa0416db440e6433829b8077b6988eeaa6a596ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8fdbb42d06f26849d14e093c340c6d2457ee6ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667070"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020104"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 nedir?
 
@@ -83,7 +83,7 @@ Bu temel Endüstriyel IoT özelliklerine giriş ile Azure Time Series Insights G
 | IoT ölçeğinde zaman serisi verileri için çok katmanlı depolama | Verilerin içe aktarılmasıyla ilgili bir paylaşılan veri işleme işlem hattı sayesinde, verileri hem normal hem de soğuk depolara aktarabilirsiniz. Büyük hacimli verileri depolamak için etkileşimli sorgular ve soğuk mağaza için ısınma mağazasını kullanın. Yüksek performanslı varlık tabanlı sorgulardan nasıl yararlanabilmeniz hakkında daha fazla bilgi için bkz. [sorgular](./concepts-query-overview.md). |
 | Ham telemetri eklemek ve varlık tabanlı Öngörüler türetmeye yönelik zaman serisi modeli | Tarih serisi modelini, zaman serisi verileriniz için örnekler, hiyerarşiler, türler ve değişkenler oluşturmak için kullanabilirsiniz. Zaman serisi modeli hakkında daha fazla bilgi edinmek için bkz. [zaman serisi modeli](./concepts-model-overview.md).  |
 | Diğer veri çözümleriyle sorunsuz ve sürekli tümleştirme | Azure Time Series Insights Gen2 soğuk deposundaki veriler açık kaynaklı Apache Parquet dosyalarında [depolanır](./concepts-storage.md) . Bu, iş zekası, gelişmiş makine öğrenimi ve tahmine dayalı analiz gibi senaryolar için diğer veri çözümleri, 1 veya 3. taraf ile veri tümleştirmeyi sağlar. |
-| Neredeyse gerçek zamanlı veri araştırması | [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md) Kullanıcı deneyimi, alma işlem hattı aracılığıyla tüm veri akışı için görselleştirme sağlar. Bir olay kaynağını bağlandıktan sonra olay verilerini görüntüleyebilir, keşfedebilir ve sorgulayabilirsiniz. Bu şekilde, bir cihazın verileri beklendiği gibi yayıp yaymadığını doğrulayabilirsiniz. Ayrıca, bir IoT varlığını sistem durumu, üretkenlik ve genel verimlilik için izleyebilirsiniz. |
+| Neredeyse gerçek zamanlı veri araştırması | [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md) Kullanıcı deneyimi, alma işlem hattı aracılığıyla tüm veri akışı için görselleştirme sağlar. Bir olay kaynağını bağlandıktan sonra olay verilerini görüntüleyebilir, keşfedebilir ve sorgulayabilirsiniz. Bu şekilde, bir cihazın verileri beklendiği gibi yayıp yaymadığını doğrulayabilirsiniz. Ayrıca, bir IoT varlığını sistem durumu, üretkenlik ve genel verimlilik için izleyebilirsiniz. |
 | Genişletilebilirlik ve Tümleştirme | Power BI Bağlayıcısı tümleştirmesi, **dışa aktarma** seçeneği aracılığıyla doğrudan zaman serisi Gezgin Kullanıcı deneyiminde kullanılabilir ve müşterilerin kendi Kullanıcı deneyimimizde oluşturdukları zaman serisi sorgularını doğrudan Power BI masaüstüne dışarı aktarıp zaman serisi GRAFIKLERINI diğer bı analizlerinin yanı sıra görüntülemesini sağlar. Bu, IoT zaman serisi dahil çeşitli veri kaynaklarından analizler üzerinde tek bir cam bölmesi sunarak Power BI yatırım yapan endüstriyel IoT kuruluşları için bir yeni senaryolar sınıfına açar. |
 | Azure Time Series Insights Gen2 platformunda oluşturulan özel uygulamalar | Azure Time Series Insights Gen2, [JavaScript SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)destekler. SDK, sorgulara zengin denetimler ve Basitleştirilmiş erişim sağlar. İş ihtiyaçlarınıza uygun Azure Time Series Insights Gen2 en üstünde özel IoT uygulamaları oluşturmak için SDK 'Yı kullanın. Ayrıca, verileri özel IoT uygulamalarına yönlendirmek için doğrudan Azure Time Series Insights Gen2 [sorgu API 'lerini](./concepts-query-overview.md) de kullanabilirsiniz. |
 
@@ -92,9 +92,9 @@ Bu temel Endüstriyel IoT özelliklerine giriş ile Azure Time Series Insights G
 Azure Time Series Insights Gen2 kullanmaya başlama:
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç kılavuzu](./time-series-insights-update-quickstart.md)
+> [Hızlı başlangıç kılavuzu](./quickstart-explore-tsi.md)
 
 Kullanım örnekleri hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 kullanım örnekleri](./time-series-insights-update-use-cases.md)
+> [Azure Time Series Insights Gen2 kullanım örnekleri](./overview-use-cases.md)

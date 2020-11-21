@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 7599a0c7b48bdc371d851ec20282af82e77783bf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505317"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018350"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için grafik işlem birimi (GPU) hızlandırmasını yapılandırma
 
@@ -23,27 +23,27 @@ GPU ile iyileştirilmiş bir Azure sanal makinesi oluşturmak, konak havuzunuza 
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Uygun bir GPU iyileştirilmiş Azure sanal makine boyutu seçin
 
-Azure 'un [NV serisi](/azure/virtual-machines/nv-series), [NVv3-Series](/azure/virtual-machines/nvv3-series)veya [NVv4 serisi](/azure/virtual-machines/nvv4-series) VM boyutlarından birini seçin. Bunlar uygulama ve masaüstü sanallaştırma için uyarlanmış ve uygulamaların ve Windows Kullanıcı arabiriminin GPU hızlandırılmasını sağlamak için tasarlanmıştır. Konak havuzunuzun sağ seçimi, belirli uygulama iş yükleriniz, istenen kullanıcı deneyimi kalitesi ve maliyet dahil olmak üzere çeşitli etkenlere bağlıdır. Genel olarak, daha büyük ve daha yetenekli GPU 'Lar belirli bir kullanıcı yoğunluğu üzerinde daha iyi bir kullanıcı deneyimi sunar. daha küçük ve kısmi GPU boyutları, maliyet ve kalite üzerinde daha ayrıntılı denetim sağlar.
+Azure 'un [NV serisi](../virtual-machines/nv-series.md), [NVv3-Series](../virtual-machines/nvv3-series.md)veya [NVv4 serisi](../virtual-machines/nvv4-series.md) VM boyutlarından birini seçin. Bunlar uygulama ve masaüstü sanallaştırma için uyarlanmış ve uygulamaların ve Windows Kullanıcı arabiriminin GPU hızlandırılmasını sağlamak için tasarlanmıştır. Konak havuzunuzun sağ seçimi, belirli uygulama iş yükleriniz, istenen kullanıcı deneyimi kalitesi ve maliyet dahil olmak üzere çeşitli etkenlere bağlıdır. Genel olarak, daha büyük ve daha yetenekli GPU 'Lar belirli bir kullanıcı yoğunluğu üzerinde daha iyi bir kullanıcı deneyimi sunar. daha küçük ve kısmi GPU boyutları, maliyet ve kalite üzerinde daha ayrıntılı denetim sağlar.
 
 >[!NOTE]
 >Azure 'un NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Leri, Windows sanal masaüstü oturumu konakları için genellikle uygun değildir. Bu VM 'Ler, NVıDıA CUDA ile oluşturulan özel, yüksek performanslı bilgi işlem veya makine öğrenimi araçları için tasarlanmıştır. NVıDıA GPU 'Lar ile genel uygulama ve Masaüstü hızlandırma, NVıDıA GRID lisanslaması gerektirir; Bu, Azure tarafından önerilen VM boyutları için sağlanır, ancak NC/ND serisi VM 'Ler için ayrı olarak düzenlenmelidir.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Bir konak havuzu oluşturun, sanal makinenizi sağlayın ve bir uygulama grubu yapılandırın
 
-Seçtiğiniz boyuttaki bir VM 'yi kullanarak yeni bir konak havuzu oluşturun. Yönergeler için bkz. [öğretici: Azure Portal bir konak havuzu oluşturma](/azure/virtual-desktop/create-host-pools-azure-marketplace).
+Seçtiğiniz boyuttaki bir VM 'yi kullanarak yeni bir konak havuzu oluşturun. Yönergeler için bkz. [öğretici: Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
 
 Windows sanal masaüstü, aşağıdaki işletim sistemlerinde GPU hızlandırmalı işleme ve kodlamayı destekler:
 
 * Windows 10 sürüm 1511 veya daha yenisi
 * Windows Server 2016 veya daha yenisi
 
-Ayrıca, yeni bir konak havuzu oluştururken otomatik olarak oluşturulan varsayılan masaüstü uygulama grubunu ("Masaüstü uygulama grubu" adlı) kullanmanız gerekir. Yönergeler için bkz. [öğretici: Windows sanal masaüstü için uygulama gruplarını yönetme](/azure/virtual-desktop/manage-app-groups).
+Ayrıca, yeni bir konak havuzu oluştururken otomatik olarak oluşturulan varsayılan masaüstü uygulama grubunu ("Masaüstü uygulama grubu" adlı) kullanmanız gerekir. Yönergeler için bkz. [öğretici: Windows sanal masaüstü için uygulama gruplarını yönetme](./manage-app-groups.md).
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Sanal makinenize desteklenen grafik sürücülerini yükler
 
-Windows sanal masaüstündeki Azure N serisi VM 'lerin GPU yetilerinden yararlanmak için uygun grafik sürücülerini yüklemelisiniz. Uygun grafik satıcısından sürücüleri el ile veya bir Azure VM uzantısı kullanarak yüklemek için [desteklenen işletim sistemleri ve sürücüler](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) bölümündeki yönergeleri izleyin.
+Windows sanal masaüstündeki Azure N serisi VM 'lerin GPU yetilerinden yararlanmak için uygun grafik sürücülerini yüklemelisiniz. Uygun grafik satıcısından sürücüleri el ile veya bir Azure VM uzantısı kullanarak yüklemek için [desteklenen işletim sistemleri ve sürücüler](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers) bölümündeki yönergeleri izleyin.
 
-Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. NVıDıA GPU 'lara sahip Azure NV serisi sanal makineleri için yalnızca [NVıDıA kılavuz sürücüleri](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)ve NVIDIA Tesla (CUDA) sürücüleri, genel amaçlı uygulamalar ve Masaüstü BILGISAYARLAR için GPU hızlandırmasını destekler.
+Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. NVıDıA GPU 'lara sahip Azure NV serisi sanal makineleri için yalnızca [NVıDıA kılavuz sürücüleri](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)ve NVIDIA Tesla (CUDA) sürücüleri, genel amaçlı uygulamalar ve Masaüstü BILGISAYARLAR için GPU hızlandırmasını destekler.
 
 Sürücü yüklemesinden sonra, bir VM yeniden başlatması gerekir. Grafik sürücülerinin başarıyla yüklendiğini doğrulamak için yukarıdaki yönergelerdeki doğrulama adımlarını kullanın.
 
@@ -53,7 +53,7 @@ Varsayılan olarak, çoklu oturum yapılandırmalarında çalışan uygulamalar 
 
 1. Yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak VM 'nin masaüstüne bağlanın.
 2. Başlat menüsünü açın ve grup ilkesi düzenleyicisini açmak için "gpedit. msc" yazın.
-3. **Computer Configuration**  >  **Yönetim Şablonları** ,  >  **Windows Components**  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **uzak oturum ortamı** Uzak Masaüstü oturumu ana bilgisayarı Windows bileşenleri Uzak Masaüstü Hizmetleri Bilgisayar Yapılandırması ' na gidin.
+3. **Computer Configuration**  >  **Yönetim Şablonları**,  >  **Windows Components**  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **uzak oturum ortamı** Uzak Masaüstü oturumu ana bilgisayarı Windows bileşenleri Uzak Masaüstü Hizmetleri Bilgisayar Yapılandırması ' na gidin.
 4. İlke ' yi seçin **tüm Uzak Masaüstü Hizmetleri oturumları için donanım grafik bağdaştırıcılarını kullanın** ve bu ilkeyi, uzak oturumda GPU oluşturmayı etkinleştirmek için **etkin** olarak ayarlayın.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını yapılandırma
@@ -92,7 +92,7 @@ Genellikle 3B modelleme, CAD/CAM ve video uygulamaları gibi yüksek kare hızl�
 
 Uygulamaların işleme için GPU 'YU kullandığını doğrulamak için aşağıdakilerden birini deneyin:
 
-* NVıDıA GPU ile Azure VM 'Leri için, `nvidia-smi` uygulamalarınızı ÇALıŞTıRıRKEN GPU kullanımını denetlemek üzere [Sürücü yüklemesini doğrulama](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) bölümünde açıklandığı gibi yardımcı programını kullanın.
+* NVıDıA GPU ile Azure VM 'Leri için, `nvidia-smi` uygulamalarınızı ÇALıŞTıRıRKEN GPU kullanımını denetlemek üzere [Sürücü yüklemesini doğrulama](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation) bölümünde açıklandığı gibi yardımcı programını kullanın.
 * Desteklenen işletim sistemi sürümlerinde, Görev Yöneticisi 'Ni kullanarak GPU kullanımını kontrol edebilirsiniz. Uygulamaların GPU 'YU kullanıp kullanmadığını görmek için "performans" sekmesindeki GPU 'YU seçin.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını doğrulama
@@ -115,5 +115,5 @@ Uzak Masaüstü 'Nün tam ekran ekran kodlaması kullandığını doğrulamak i�
 
 Bu yönergelerin tek bir oturum konağında (bir VM) GPU hızlandırmalı ve üzerinde çalışıyor olması gerekir. Daha büyük bir konak havuzu genelinde GPU hızlandırmayı etkinleştirmeye yönelik bazı ek noktalar:
 
-* Bir dizi sanal makinede sürücü yüklemeyi ve güncelleştirmeleri basitleştirmek için bir [VM Uzantısı](/azure/virtual-machines/extensions/overview) kullanmayı düşünün. NVıDıA GPU 'Lar içeren VM 'Ler için [NVıDıA GPU sürücü uzantısını](/azure/virtual-machines/extensions/hpccompute-gpu-windows) kullanın ve AMD GPU 'Lar Ile VM 'Ler IÇIN [AMD GPU sürücü uzantısını](/azure/virtual-machines/extensions/hpccompute-amd-gpu-windows) kullanın.
-* Bir dizi sanal makine genelinde Grup ilkesi yapılandırmasını basitleştirmek için Active Directory grup ilkesi kullanmayı düşünün. Active Directory etki alanında grup ilkesi dağıtma hakkında daha fazla bilgi için bkz. [Grup İlkesi nesneleriyle çalışma](https://go.microsoft.com/fwlink/p/?LinkId=620889).
+* Bir dizi sanal makinede sürücü yüklemeyi ve güncelleştirmeleri basitleştirmek için bir [VM Uzantısı](../virtual-machines/extensions/overview.md) kullanmayı düşünün. NVıDıA GPU 'Lar içeren VM 'Ler için [NVıDıA GPU sürücü uzantısını](../virtual-machines/extensions/hpccompute-gpu-windows.md) kullanın ve AMD GPU 'Lar Ile VM 'Ler IÇIN [AMD GPU sürücü uzantısını](../virtual-machines/extensions/hpccompute-amd-gpu-windows.md) kullanın.
+* Bir dizi sanal makine genelinde Grup ilkesi yapılandırmasını basitleştirmek için Active Directory grup ilkesi kullanmayı düşünün. Active Directory etki alanında grup ilkesi dağıtma hakkında daha fazla bilgi için bkz. [Grup İlkesi nesneleriyle çalışma](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731212(v=ws.11)).

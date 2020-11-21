@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316401"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019084"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
 
@@ -29,7 +29,7 @@ Kullanıcıların girebileceği düşündüklerini toplayın. Aynı şeyi göste
 
 ## <a name="how-to-choose-varied-utterances"></a>Değişen detersliği seçme
 
-LUSıS modelinize [örnek eklemeler ekleyerek](luis-how-to-add-example-utterances.md) ilk kez başladıysanız göz önünde bulundurmanız gereken bazı ilkeler aşağıda verilmiştir.
+LUSıS modelinize [örnek eklemeler ekleyerek](./luis-how-to-add-entities.md) ilk kez başladıysanız göz önünde bulundurmanız gereken bazı ilkeler aşağıda verilmiştir.
 
 ### <a name="utterances-arent-always-well-formed"></a>Utterslar her zaman iyi biçimlendirilmemiş
 
@@ -128,7 +128,7 @@ Geliştiriciler, bir [tahmin uç noktası](luis-how-to-azure-subscription.md) UR
 
 Modelinize eğitilen, yayımladım ve [uç nokta](luis-glossary.md#endpoint) sorgularını aldıktan sonra, Luo tarafından önerilen noktaları [gözden geçirin](luis-how-to-review-endpoint-utterances.md) . LUO, amaç veya varlık için düşük puanları olan uç nokta dıklarını seçer.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 [En iyi uygulamaları](luis-concept-best-practices.md) gözden geçirin ve bunları düzenli yazma döngünüzün bir parçası olarak uygulayın.
 
@@ -147,5 +147,4 @@ Tüm olay verilerini bulmak için bir olay varlığı istediyseniz, `fair` ilk u
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanıcı araslarını anlamak için bir LUO uygulamasını eğitme hakkında daha fazla bilgi için bkz. [örnek ekleme](luis-how-to-add-example-utterances.md) .
-
+Kullanıcı araslarını anlamak için bir LUO uygulamasını eğitme hakkında daha fazla bilgi için bkz. [örnek ekleme](./luis-how-to-add-entities.md) .

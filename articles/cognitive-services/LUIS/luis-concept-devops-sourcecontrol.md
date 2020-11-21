@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990576"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019203"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
 
@@ -18,7 +18,7 @@ Language Understanding (LUU) uygulaması geliştiren yazılım mühendisleri, bu
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>LUIS için kaynak denetimi ve dal stratejileri
 
-DevOps başarısının başarımının, [kaynak denetimi](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)olduğuna göre önemli faktörlerden biridir. Kaynak denetim sistemi, geliştiricilerin kod üzerinde işbirliği yapmasına ve değişiklikleri izlemesine olanak sağlar. Dalların kullanımı, geliştiricilerin kod tabanının farklı sürümleri arasında geçiş yapmasına ve takımın diğer üyelerinden bağımsız olarak çalışmasına izin verir. Geliştiriciler bir daldan diğerine güncelleştirme önermek üzere bir [çekme isteği](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) oluşturduğunda veya değişiklikler birleştirildiğinde, bu, [Otomatik derlemeler](luis-concept-devops-automation.md) için kod oluşturmak ve sürekli test etmek üzere tetikler olabilir.
+DevOps başarısının başarımının, [kaynak denetimi](/azure/devops/user-guide/source-control?view=azure-devops)olduğuna göre önemli faktörlerden biridir. Kaynak denetim sistemi, geliştiricilerin kod üzerinde işbirliği yapmasına ve değişiklikleri izlemesine olanak sağlar. Dalların kullanımı, geliştiricilerin kod tabanının farklı sürümleri arasında geçiş yapmasına ve takımın diğer üyelerinden bağımsız olarak çalışmasına izin verir. Geliştiriciler bir daldan diğerine güncelleştirme önermek üzere bir [çekme isteği](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) oluşturduğunda veya değişiklikler birleştirildiğinde, bu, [Otomatik derlemeler](luis-concept-devops-automation.md) için kod oluşturmak ve sürekli test etmek üzere tetikler olabilir.
 
 Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak denetim sistemindeki değişiklikleri izlerken bir LUO uygulaması geliştirebilir ve bu yazılım mühendisliği en iyi yöntemlerini takip edebilirsiniz:
 
@@ -42,13 +42,13 @@ Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak deneti
 
 ## <a name="source-control"></a>Kaynak denetimi
 
-Kaynak kod yönetimi sisteminde bir LUO uygulamasının [uygulama şeması tanımını](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) korumak için, uygulamanın [LUI biçimi ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  gösterimini kullanın. `.lu` biçimlendirme `.json` , okunabilir olduğundan, PR 'ler 'de değişiklikleri daha kolay hale getirmek ve gözden geçirmek daha kolay hale getiren biçim için tercih edilir.
+Kaynak kod yönetimi sisteminde bir LUO uygulamasının [uygulama şeması tanımını](./app-schema-definition.md) korumak için, uygulamanın [LUI biçimi ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  gösterimini kullanın. `.lu` biçimlendirme `.json` , okunabilir olduğundan, PR 'ler 'de değişiklikleri daha kolay hale getirmek ve gözden geçirmek daha kolay hale getiren biçim için tercih edilir.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Luo uygulamasını Lui biçimini kullanarak kaydetme
 
 Bir LUO uygulamasını `.lu` biçimde kaydetmek ve kaynak denetimi altına yerleştirmek için:
 
-- Şunlardan biri: [uygulama sürümünü](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#other-actions) `.lu` [Lusıs portalından](https://www.luis.ai/) dışarı aktarın ve kaynak denetimi deponuza ekleyin
+- Şunlardan biri: [uygulama sürümünü](./luis-how-to-manage-versions.md#other-actions) `.lu` [Lusıs portalından](https://www.luis.ai/) dışarı aktarın ve kaynak denetimi deponuza ekleyin
 
 - YA da: bir `.lu` lusıs uygulaması için dosya oluşturmak ve kaynak denetimi deponuza eklemek için bir metin düzenleyicisi kullanın
 
@@ -58,9 +58,9 @@ Bir LUO uygulamasını `.lu` biçimde kaydetmek ve kaynak denetimi altına yerle
 
 ### <a name="build-the-luis-app-from-source"></a>Kaynaktan LUSıS uygulamasını oluşturma
 
-Bir LUSıS uygulaması için kaynaktan *derleme* yapmak, kaynağı içeri aktararak [sürümü eğitmek](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) ve [yayımlamak](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app)için [Yeni bir Luo uygulama `.lu` sürümü oluşturma](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) anlamına gelir. Bunu, LUO portalında veya komut satırında yapabilirsiniz:
+Bir LUSıS uygulaması için kaynaktan *derleme* yapmak, kaynağı içeri aktararak [sürümü eğitmek](./luis-how-to-train.md) ve [yayımlamak](./luis-how-to-publish-app.md)için [Yeni bir Luo uygulama `.lu` sürümü oluşturma](./luis-how-to-manage-versions.md#import-version) anlamına gelir. Bunu, LUO portalında veya komut satırında yapabilirsiniz:
 
-- Kaynak denetiminden uygulamanın [ `.lu` sürümünü içeri aktarmak](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) ve uygulamayı [eğit](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) ve [yayımlamak](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) için Luo portalını kullanın.
+- Kaynak denetiminden uygulamanın [ `.lu` sürümünü içeri aktarmak](./luis-how-to-manage-versions.md#import-version) ve uygulamayı [eğit](./luis-how-to-train.md) ve [yayımlamak](./luis-how-to-publish-app.md) için Luo portalını kullanın.
 
 - Uygulamanın sürümünü kaynak denetiminden bir LUO uygulamasına [aktarmak](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) ve uygulamayı eğitme ve yayımlama için, komut satırında veya bir CI/CD Iş akışında [luya Için bot Framework komut satırı arabirimini](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) kullanın `.lu` . [train](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) [publish](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)
 
@@ -72,7 +72,7 @@ LUSıS uygulamanız için aşağıdaki dosya türleri kaynak denetimi altında t
 
 - [Birim testi tanım dosyaları](luis-concept-devops-testing.md#writing-tests) (utterslar ve beklenen sonuçlar)
 
-- Performans testi için kullanılan [toplu işlem test dosyaları](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) (utterslar ve beklenen sonuçlar)
+- Performans testi için kullanılan [toplu işlem test dosyaları](./luis-concept-batch-test.md#batch-file-format) (utterslar ve beklenen sonuçlar)
 
 ### <a name="credentials-and-keys-are-not-checked-in"></a>Kimlik bilgileri ve anahtarlar iade edilmedi
 
@@ -81,7 +81,7 @@ Abonelik anahtarlarını veya benzer gizli değerleri, deponuzda, yetkisiz perso
 - LUSıS yazma ve tahmin anahtarları
 - LUSıS yazma ve tahmin uç noktaları
 - Azure abonelik anahtarları
-- Otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) belirteci gibi erişim belirteçleri
+- Otomasyon kimlik doğrulaması için kullanılan bir Azure [hizmet sorumlusu](/cli/azure/ad/sp?view=azure-cli-latest) belirteci gibi erişim belirteçleri
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Gizli dizileri güvenli bir şekilde yönetme stratejileri
 
@@ -92,7 +92,7 @@ Gizli dizileri güvenli bir şekilde yönetme stratejileri şunları içerir:
 
 ## <a name="branching-and-merging"></a>Dallandırma ve birleştirme
 
-Git gibi dağıtılmış sürüm denetim sistemleri, ekip üyelerinin başkalarıyla paylaşılan geliştirme dallarından kod değişikliklerini yayımlama, paylaşma, gözden geçirme ve yineleme konusunda esneklik sağlar. Takımınız için uygun olan bir [Git Dallanma stratejisi](https://docs.microsoft.com/azure/devops/repos/git/git-branching-guidance) benimseyin.
+Git gibi dağıtılmış sürüm denetim sistemleri, ekip üyelerinin başkalarıyla paylaşılan geliştirme dallarından kod değişikliklerini yayımlama, paylaşma, gözden geçirme ve yineleme konusunda esneklik sağlar. Takımınız için uygun olan bir [Git Dallanma stratejisi](/azure/devops/repos/git/git-branching-guidance) benimseyin.
 
 Hangi dallanma stratejinizin olduğuna göre, bunların tümünün önemli bir prensibi, takım üyelerinin, bir *özellik dalında* çözüm üzerinde diğer dallarda yer alan iş 'ten bağımsız olarak çalışabilmesini sağlayabilir.
 
@@ -110,7 +110,7 @@ Geliştiriciler bir LUO uygulamasındaki güncelleştirmeler üzerinde diğer da
 
 1. Ana daldan bir özellik dalı oluşturma (dal stratejinize, genellikle ana veya geliştirme) göre.
 
-1. LUO portalında ("*dev Branch App*") yalnızca özellik dalındaki işi desteklemek için [Yeni bir Luo uygulaması oluşturun](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-start-new-app) .
+1. LUO portalında ("*dev Branch App*") yalnızca özellik dalındaki işi desteklemek için [Yeni bir Luo uygulaması oluşturun](./luis-how-to-start-new-app.md) .
 
    * `.lu`Çözümünüz için kaynak dalınızda zaten mevcutsa, bu, projede daha önce başka bir dalda yapıldıktan sonra kaydedildiğinden, dosyayı içeri aktararak dev Branch lusıs uygulamanızı oluşturun `.lu` .
 
@@ -120,11 +120,11 @@ Geliştiriciler bir LUO uygulamasındaki güncelleştirmeler üzerinde diğer da
 
 1. Güncelleştirmeleri test et-geliştirme dalı uygulamanızı test etme hakkında daha fazla bilgi için bkz. [Lusıs DevOps Için test etme](luis-concept-devops-testing.md) .
 
-1. Geliştirme Dalı uygulamanızın etkin sürümünü `.lu` [sürümler listesinden](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions)dışa aktarın.
+1. Geliştirme Dalı uygulamanızın etkin sürümünü `.lu` [sürümler listesinden](./luis-how-to-manage-versions.md)dışa aktarın.
 
 1. Güncelleştirmelerinizi iade edin ve güncelleştirmelerinizin eş incelemesini gözden geçirin. GitHub kullanıyorsanız, bir [çekme isteği](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)oluşturacaksınız.
 
-1. Değişiklikler onaylandığında, güncelleştirmeleri ana dalda birleştirin. Bu noktada, *ana Luo* uygulamasının yeni bir [sürümünü](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions) , yönetici olarak güncelleştirilmiş kullanarak oluşturacaksınız `.lu` . Sürüm adını ayarlamayla ilgili konular için bkz. sürüm [oluşturma](#versioning) .
+1. Değişiklikler onaylandığında, güncelleştirmeleri ana dalda birleştirin. Bu noktada, *ana Luo* uygulamasının yeni bir [sürümünü](./luis-how-to-manage-versions.md) , yönetici olarak güncelleştirilmiş kullanarak oluşturacaksınız `.lu` . Sürüm adını ayarlamayla ilgili konular için bkz. sürüm [oluşturma](#versioning) .
 
 1. Özellik dalı silindiğinde, özellik dalı çalışması için oluşturduğunuz dev dalı LUO uygulamasını silmek iyi bir fikirdir.
 
@@ -144,9 +144,9 @@ Aynı özellik dalında çalışan birden çok geliştiricisi aynı anda destekl
 
 - [Geliştiriciler bağımsız dallardan çalışarak](#developers-can-work-from-independent-branches)yukarıda açıklanan kalıbı izlerseniz, bu dal geliştirmeyi desteklemek için BENZERSIZ bir Luo uygulaması kullanacaktır. Bu ' dev Branch ' LUO uygulaması, özellik dalında çalışmaya başlayan geliştirme ekibinin ilk üyesi tarafından oluşturulacaktır.
 
-- [Takım üyelerini](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate) GELIŞTIRME dalı lusıs uygulamasına katkıda bulunan olarak ekleyin.
+- [Takım üyelerini](./luis-how-to-collaborate.md) GELIŞTIRME dalı lusıs uygulamasına katkıda bulunan olarak ekleyin.
 
-- Özellik dalı işi tamamlandığında, dev dalı LUO uygulamasının etkin sürümünü `.lu` [sürümler listesinden](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions)dışarı aktarın, güncelleştirilmiş `.lu` dosyayı depoya kaydedin ve DEĞIŞIKLIKLERI iade edin ve PR 'yi gözden geçirin.
+- Özellik dalı işi tamamlandığında, dev dalı LUO uygulamasının etkin sürümünü `.lu` [sürümler listesinden](./luis-how-to-manage-versions.md)dışarı aktarın, güncelleştirilmiş `.lu` dosyayı depoya kaydedin ve DEĞIŞIKLIKLERI iade edin ve PR 'yi gözden geçirin.
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Yeniden temellendirme veya birleştirme ile bir daldaki değişiklikleri diğerine ekleme
 
@@ -183,7 +183,7 @@ Luu biçimindeki bir LUO uygulaması, gözden geçirime uygun bir PR 'deki deği
 
 ## <a name="versioning"></a>Sürüm Oluşturma
 
-Bir uygulama, [Azure bot hizmetinde](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](https://docs.microsoft.com/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
+Bir uygulama, [Azure bot hizmetinde](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](../speech-service/overview.md)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
 
 Ana dala yönelik Lua uygulamasının bir sürüm oluşturma düzeni uygulanmış olması gerekir. `.lu`BIR Luo uygulaması için güncelleştirmelerini ana öğe olarak birleştirdiğinizde, bu güncelleştirilmiş kaynağı, ana dal IÇIN Luo uygulamasındaki yeni bir sürüme içeri aktarırsınız.
 
@@ -195,7 +195,7 @@ Sürüm numarası her güncelleştirme, son basamakla artırılır.
 
 Birincil/ikincil sürüm, LUSıS uygulama işlevindeki değişikliklerin kapsamını göstermek için kullanılabilir:
 
-* Ana sürüm: yeni bir [Amaç](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent) veya [varlık](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-entity-types) desteği gibi önemli bir değişiklik
+* Ana sürüm: yeni bir [Amaç](./luis-concept-intent.md) veya [varlık](./luis-concept-entity-types.md) desteği gibi önemli bir değişiklik
 * İkincil sürüm: önemli yeni eğitim sonrası gibi geriye dönük uyumlu küçük bir değişiklik
 * Build: işlev değişikliği yok, yalnızca farklı bir derleme.
 

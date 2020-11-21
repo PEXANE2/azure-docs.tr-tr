@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 5c5276f11da687f14630bafd007532d172ef3737
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990814"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020291"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,6 +80,7 @@ Azure SQL veritabanı için sanal ağ kuralları özelliği aşağıdaki sınır
 
 - Sanal ağ hizmet uç noktalarını Azure SQL veritabanı 'na açmak, MySQL ve PostgreSQL Azure hizmetleri için uç noktaların de kullanılmasına olanak sağlar. Bununla birlikte uç noktalar ile, uç noktalarından MySQL veya PostgreSQL örneklerine bağlanma girişimleri başarısız olabilir.
   - Temel neden MySQL ve PostgreSQL 'in büyük olasılıkla yapılandırılmış bir sanal ağ kuralı yoktur. MySQL ve PostgreSQL için Azure veritabanı için bir sanal ağ kuralı yapılandırmanız gerekir ve bağlantı başarılı olur.
+  - Zaten özel uç noktalarla yapılandırılmış bir SQL mantıksal sunucusunda VNet güvenlik duvarı kurallarını **tanımlamak için,** **ortak ağ erişimini reddet** olarak ayarlayın.
 
 - Güvenlik duvarında, IP adresi aralıkları aşağıdaki ağ öğelerine uygulanır, ancak sanal ağ kuralları şunları içermez:
   - [Siteden siteye (S2S) sanal özel ağ (VPN)][vpn-gateway-indexmd-608y]
