@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea7ea08fc07a895bc038b27701d7038a5f76c26f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88925450"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097825"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
 > * [Geliştirme ortamınızı ayarlama ve boş bir proje oluşturma](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * [Doğrudan hat konuşma kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
+> * [Doğrudan hat konuşma kanalına](/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 > 
   > [!NOTE]
@@ -277,7 +277,7 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde
    > Lütfen [sesli Yardımcılar için desteklenen bölgeler listesine](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
    > [!NOTE]
-   > Botunuzu yapılandırma hakkında daha fazla bilgi için, [doğrudan hat konuşma kanalının](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bot Framework belgelerine bakın.
+   > Botunuzu yapılandırma hakkında daha fazla bilgi için, [doğrudan hat konuşma kanalının](/azure/bot-service/bot-service-channel-connect-directlinespeech)bot Framework belgelerine bakın.
 
 1. Dizeleri ve, `YourSpeechSubscriptionKey` `YourServiceRegion` konuşma aboneliğiniz ve [bölgeniz](~/articles/cognitive-services/speech-service/regions.md)için kendi değerlerinizle değiştirin.
 
@@ -369,9 +369,9 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde
 
 Artık uygulamanızı oluşturmaya ve konuşma hizmetini kullanarak özel ses yardımcınızı test etmeye hazır olursunuz.
 
-1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme **Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1. **Debug**  >  Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
+1. **Debug**  >  Uygulamayı başlatmak için hata **ayıklamayı Başlat** ' ı seçin (veya **F5** tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
    ![C# ' de örnek UWP ses Yardımcısı uygulaması-hızlı başlangıç](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 

@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 5e83650bc9861f982c4905e26fbb674abbd4de97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c341ba20ece26e15255faf086e5bd2904fbaa797
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135771"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097662"
 ---
-Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
+Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
-Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](../get-started.md) hesabı gerekir.
+Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler](../overview.md#try-the-speech-service-for-free) hesabı gerekir.
 
 Örnek uygulamanın kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -24,18 +24,18 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
 - Cihaza güç sağlamak için [geliştirme setiniz](../get-speech-devices-sdk.md) ile birlikte sunulan yönergeleri izleyin.
 
-- [Konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download)en son sürümünü indirin ve. zip dosyasını çalışma dizininize ayıklayın.
+- [Konuşma cihazları SDK 'sının](../speech-devices-sdk.md)en son sürümünü indirin ve. zip dosyasını çalışma dizininize ayıklayın.
 
   > [!NOTE]
   > Bu hızlı başlangıçta, uygulamanın C:\SDSDK\Android-Sample-Release 'e ayıklanacağı varsayılmaktadır
 
-- [Konuşma hizmetine yönelik bir Azure abonelik anahtarı](../get-started.md) almak için
+- [Konuşma hizmetine yönelik bir Azure abonelik anahtarı](../overview.md#try-the-speech-service-for-free) almak için
 
 - Konuşma dökümünü kullanmayı planlıyorsanız, [döngüsel bir mikrofon cihazı](../get-speech-devices-sdk.md) kullanmanız gerekir ve bu özellik şu anda yalnızca "en-US" ve "zh-CN" bölgelerinde, "merkezde ABD" ve "eastasıya" olarak kullanılabilir. Konuşma dökümünü kullanmak için bu bölgelerden birinde bir konuşma anahtarınız olmalıdır.
 
-- Kullanıcı dıklarından amaçları (veya eylemleri) belirlemek için konuşma hizmetini kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (Luu)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) aboneliğine sahip olmanız gerekir. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs, C# ile konuşma amaçlarını tanıma](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
+- Kullanıcı dıklarından amaçları (veya eylemleri) belirlemek için konuşma hizmetini kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (Luu)](../../luis/luis-how-to-azure-subscription.md) aboneliğine sahip olmanız gerekir. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs, C# ile konuşma amaçlarını tanıma](../how-to-recognize-intents-from-speech-csharp.md).
 
-  [Basit BIR luya modeli oluşturabilir](https://docs.microsoft.com/azure/cognitive-services/luis/) veya örnek lusıs modelini kullanabilirsiniz, üzerinde LUIS-example.js. Örnek LUSıS modeli, [konuşma cihazları SDK 'sı indirme sitesinden](https://aka.ms/sdsdk-luis)edinilebilir. Modelinizin JSON dosyasını [Lue portalına](https://www.luis.ai/home)yüklemek için **Yeni uygulama al** ' ı seçin ve ardından json dosyasını seçin.
+  [Basit BIR luya modeli oluşturabilir](../../luis/index.yml) veya örnek lusıs modelini kullanabilirsiniz, üzerinde LUIS-example.js. Örnek LUSıS modeli, [konuşma cihazları SDK 'sı indirme sitesinden](https://aka.ms/sdsdk-luis)edinilebilir. Modelinizin JSON dosyasını [Lue portalına](https://www.luis.ai/home)yüklemek için **Yeni uygulama al**' ı seçin ve ardından json dosyasını seçin.
 
 - [Android Studio](https://developer.android.com/studio/) ve [vysor](https://vysor.io/download/) 'u bilgisayarınıza yükleyip.
 
@@ -47,7 +47,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
 1. Cihazınızın **cihaz Seç** altında listelenmesi gerekir. Cihazın yanındaki **Görünüm** düğmesini seçin.
 
-1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve ardından **Ayarlar**  >  **WLAN** ' ı seçin.
+1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve ardından **Ayarlar**  >  **WLAN**' ı seçin.
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
    >
    > ![Vysor dosya klasörü](../media/speech-devices-sdk/qsg-10.png)
    >
-   > **Ayarlar** 'ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi**  >  **Gelişmiş WLAN** ' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
+   > **Ayarlar**'ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi**  >  **Gelişmiş WLAN**' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
    >
    > ![Vysor MAC adresi](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -70,7 +70,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
 1. Android Studio başlatın.
 
-1. **Var olan Android Studio projesini aç** 'ı seçin.
+1. **Var olan Android Studio projesini aç**'ı seçin.
 
    ![Android Studio var olan bir projeyi açın](../media/speech-devices-sdk/qsg-5.png)
 
@@ -122,7 +122,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 1. Varsayılan anahtar sözcüğü "bilgisayar" dır. "Makine" veya "yardımcı" gibi, belirtilen diğer anahtar sözcüklerden birini de deneyebilirsiniz. Bu alternatif anahtar sözcüklerin kaynak dosyaları, anahtar sözcük klasöründe konuşma cihazları SDK 'snda bulunur. Örneğin, C:\SDSDK\Android-Sample-Release\keyword\Computer "bilgisayar" anahtar sözcüğü için kullanılan dosyaları içerir.
 
    > [!TIP]
-   > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](../speech-devices-sdk-create-kws.md).
+   > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](../custom-keyword-basics.md).
 
    Yeni bir anahtar sözcük kullanmak için ' de aşağıdaki iki satırı güncelleştirin `MainActivity.java` ve anahtar sözcük paketini uygulamanıza kopyalayın. Örneğin, anahtar sözcük paketinden ' MACHINE ' anahtar sözcüğünü kullanmak için kws-machine.zip:
 
@@ -162,7 +162,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
    ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](../media/speech-devices-sdk/qsg-8.png)
 
-1. Yeni konuşma dökümü tanıtımı ' nı deneyin. ' Start Session ' ile bir kopyasını başlatın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa cihazdaki bir dosyaya yerleştirilebilir `/video/participants.properties` . Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription-service.md)konusuna bakın.
+1. Yeni konuşma dökümü tanıtımı ' nı deneyin. ' Start Session ' ile bir kopyasını başlatın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa cihazdaki bir dosyaya yerleştirilebilir `/video/participants.properties` . Ses imzasını oluşturmak için, [konuşmalar (SDK)](../how-to-use-conversation-transcription.md)konusuna bakın.
 
    ![Demo konuşma dökümü uygulaması](../media/speech-devices-sdk/qsg-15.png)
 

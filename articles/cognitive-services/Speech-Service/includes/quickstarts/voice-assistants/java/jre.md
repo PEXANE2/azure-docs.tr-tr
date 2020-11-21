@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 38e6bae69710dc9e1dbc8789ee9ccb636193c7f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ee14b94977b3152e0aab853fa3919a739d0dfdd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80671889"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097254"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
 > * [Geliştirme ortamınızı ayarlama ve boş bir proje oluşturma](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
-> * [Doğrudan hat konuşma kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
+> * [Doğrudan hat konuşma kanalına](/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
   > [!NOTE]
@@ -115,7 +115,7 @@ Ayrıca, günlüğü etkinleştirmek için _pom.xml_ dosyasını aşağıdaki ba
 
 1. `main`Yönteminde, öncelikle uygulamanızı yapılandırıp `DialogServiceConfig` bir örnek oluşturmak için kullanırsınız `DialogServiceConnector` . Bu örnek, bot 'unuzla etkileşim kurmak için doğrudan hat konuşma kanalına bağlanır. `AudioConfig`Ses girişi kaynağını belirtmek için de bir örnek kullanılır. Bu örnekte, varsayılan mikrofon ile birlikte kullanılır `AudioConfig.fromDefaultMicrophoneInput()` .
 
-   - Dizeyi `YourSubscriptionKey` , [Bu Web sitesinden](~/articles/cognitive-services/speech-service/get-started.md)alabileceğiniz abonelik anahtarınızla değiştirin.
+   - Dizeyi `YourSubscriptionKey` , [Bu Web sitesinden](../../../../overview.md#try-the-speech-service-for-free)alabileceğiniz abonelik anahtarınızla değiştirin.
    - Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/speech-service/regions.md) ile değiştirin.
 
    > [!NOTE]
@@ -434,7 +434,7 @@ Ayrıca, günlüğü etkinleştirmek için _pom.xml_ dosyasını aşağıdaki ba
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
-F11 ' i seçin veya **Run**  >  **hata ayıklamayı**Çalıştır ' ı seçin.
+F11 ' i seçin veya **Run**  >  **hata ayıklamayı** Çalıştır ' ı seçin.
 Konsol "bir şeyi söyleyin" iletisini görüntüler.
 Bu noktada, bot 'ın anlayabilmesi için Ingilizce bir tümcecik veya cümle konuşun. Konuşmanızı, bot 'unuza göre tanınıp işlendiği doğrudan hat konuşma kanalı aracılığıyla sizin bot 'a iletilir. Yanıt bir etkinlik olarak döndürülür. Bot 'niz bir yanıt olarak konuşma döndürürse, ses, sınıfı kullanılarak geri yürütülür `AudioPlayer` .
 

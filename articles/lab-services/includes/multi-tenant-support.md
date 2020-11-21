@@ -3,15 +3,15 @@ author: Julia
 ms.author: juliako
 ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: a07e4c8ae222aa2a1f6ce43fd1dabe193f8cf6e8
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: d2eff2720d4a8d7b18bb52c827c86bc883ff1dfb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148298"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095077"
 ---
-Birden çok Azure AD kiracısından oluşan bir yönetici veya laboratuvar sahibiyseniz, Azure Lab Services portalından kiracılar arasında gezinebilirsiniz (sağ üst köşede). 
+İki veya daha fazla Azure AD kiracısından bir yönetici veya laboratuvar sahibi rolüne sahipseniz, aşağıdaki ekran görüntüsünde gösterildiği gibi sağ üstteki denetimi seçerek Azure Lab Services portalındaki kiracılar arasında geçiş yapabilirsiniz: 
 
-![Bir kiracı seçin](../media/multi-tenant-support/picker.png)
+![Azure Lab Services portalındaki kiracılar arasında geçiş için denetimin ekran görüntüsü.](../media/multi-tenant-support/picker.png)
 
-Bir kiracı seçtiğinizde, sol üst köşedeki Azure Active Directory (Azure AD) kiracınızda bir laboratuvar hesabı seçin.
+Bir Azure AD kiracısı seçtikten sonra sol üstteki denetimi seçerek laboratuvar hesabınıza gidin.

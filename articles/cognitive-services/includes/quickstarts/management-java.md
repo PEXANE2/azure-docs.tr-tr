@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 346854d5990ac6861bd4eb93914bb1745b90bfa5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7fc96127d4449cfe0333ba81532d3c5c4ec19fe
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321608"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098484"
 ---
-[Başvuru belgeleri](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
+[Başvuru belgeleri](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Paket (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,7 +42,7 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-Bir **DSL**seçmeniz Istendiğinde, **Kotlin**' ı seçin.
+Bir **DSL** seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
 Çalışma dizininizden aşağıdaki komutu çalıştırın:
 
@@ -74,7 +74,7 @@ dependencies {
 
 ### <a name="import-libraries"></a>Kitaplıkları içeri aktarma
 
-Yeni **src/Main/Java** klasörüne gidin ve *Management. Java*adlı bir dosya oluşturun. Bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki deyimleri ekleyin `import` :
+Yeni **src/Main/Java** klasörüne gidin ve *Management. Java* adlı bir dosya oluşturun. Bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki deyimleri ekleyin `import` :
 
 [!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_imports)]
 
@@ -126,7 +126,7 @@ Aşağıdaki yöntem verilen kaynak grubundan belirtilen kaynağı siler.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Yönetim SDK 'Sı başvuru belgeleri](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
-* [Azure bilişsel hizmetler nedir?](../../Welcome.md)
+* [Azure Yönetim SDK 'Sı başvuru belgeleri](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
+* [Azure bilişsel hizmetler nedir?](../../what-are-cognitive-services.md)
 * [Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama](../../authentication.md)
 * [Azure portalını kullanarak yeni kaynak oluşturma](../../cognitive-services-apis-create-account.md)
