@@ -82,9 +82,9 @@
     - name: Veri erişim izni verme
       href: concepts-access-policies.md
     - name: Event Hubs'a bağlanma
-      href: time-series-insights-how-to-add-an-event-source-eventhub.md
+      href: ./how-to-ingest-data-event-hub.md
     - name: IoT Hub'a bağlanma
-      href: time-series-insights-how-to-add-an-event-source-iothub.md
+      href: ./how-to-ingest-data-iot-hub.md
     - name: Şablonları kullanarak kaynakları yönetme
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure Time Series Insights 2. Nesil
@@ -138,45 +138,45 @@
     - name: Time Series Insights
       items:
         - name: REST API'lere genel bakış
-          href: 'https://docs.microsoft.com/rest/api/time-series-insights/'
+          href: /rest/api/time-series-insights/
         - name: Veri Erişimi 2. Nesil
           items:
             - name: Genel Bakış
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview'
+              href: /rest/api/time-series-insights/reference-data-access-overview
             - name: Ortamlar API’leri
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis'
+              href: /rest/api/time-series-insights/reference-environments-apis
             - name: Model API’leri
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis'
+              href: /rest/api/time-series-insights/reference-model-apis
             - name: Sorgu API'leri
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis'
+              href: /rest/api/time-series-insights/reference-query-apis
             - name: Zaman Serisi İfadesi (TSX)
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax'
+              href: /rest/api/time-series-insights/reference-time-series-expression-syntax
             - name: API Sınırları
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits'
+              href: /rest/api/time-series-insights/reference-api-limits
         - name: Veri Erişimi 1. Nesil
           items:
             - name: Genel Bakış
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1'
+              href: /rest/api/time-series-insights/gen1
             - name: Sorgu
               items:
                 - name: Sorgu
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query'
+                  href: /rest/api/time-series-insights/gen1-query
                 - name: API
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api'
+                  href: /rest/api/time-series-insights/gen1-query-api
                 - name: Sözdizimi
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax'
+                  href: /rest/api/time-series-insights/gen1-query-syntax
             - name: Başvuru Verileri API'si
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api'
+              href: /rest/api/time-series-insights/gen1-reference-data-api
     - name: İstemci SDK’sı
       items:
         - name: JavaScript İstemci SDK’sı
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest'
+      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
-      href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Müşteri verisi istekleri
       href: time-series-insights-customer-data-requests.md
     - name: Geliştirici kaynakları
@@ -188,7 +188,7 @@
         - name: Barındırılan istemci örnekleri
           href: 'https://tsiclientsample.azurewebsites.net/'
         - name: Azure IoT kod örnekleri
-          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+          href: /samples/browse/?term=iot
     - name: Fiyatlandırma ve kullanılabilirlik
       items:
         - name: Fiyatlandırma
@@ -202,7 +202,7 @@
         - name: Azure destek seçenekleri
           href: 'https://azure.microsoft.com/support/options/'
         - name: Azure IoT desteği ve yardım seçenekleri
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+          href: ../iot-fundamentals/iot-support-help.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
         - name: MSDN forumu
