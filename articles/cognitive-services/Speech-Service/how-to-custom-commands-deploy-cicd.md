@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839257"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021839"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Azure DevOps ile Sürekli Dağıtım
 
@@ -25,7 +25,7 @@ Bu makalede, özel komutlar uygulamalarınız için sürekli dağıtımı ayarla
 > [!div class = "checklist"]
 > * Geliştirme için özel bir komutlar uygulaması (geliştirme)
 > * Üretim için özel bir komutlar uygulaması (üretim)
-> * [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) için kaydolun
+> * [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) için kaydolun
 
 ## <a name="exportimportpublish"></a>Dışarı/Içeri aktarma/yayımlama
 
@@ -99,7 +99,7 @@ Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github
 
 ## <a name="deploy-from-source-code"></a>Kaynak koddan dağıt
 
-Uygulamanızın tanımını bir depoda tutmak istiyorsanız, kaynak kodundaki dağıtımlar için betikler sağlıyoruz. Betikler Bash içinde olduğundan, Windows kullanıyorsanız, [Linux alt sistemini](https://docs.microsoft.com/windows/wsl/install-win10)yüklemeniz gerekir.
+Uygulamanızın tanımını bir depoda tutmak istiyorsanız, kaynak kodundaki dağıtımlar için betikler sağlıyoruz. Betikler Bash içinde olduğundan, Windows kullanıyorsanız, [Linux alt sistemini](/windows/wsl/install-win10)yüklemeniz gerekir.
 
 Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/custom-commands)barındırılır. Bash dizinindeki betikleri deponuza kopyalayın. Aynı yolu koruduğunuzdan emin olun.
 
@@ -110,7 +110,7 @@ Betikler bilişsel [Hizmetler ses Yardımcısı-özel komutlarda](https://github
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Bağımsız değişkenler | Açıklama |
+    | Arguments | Description |
     | ------- | --------------- | ----------- |
     | region | uygulamanın bölgesi (örn. westus2). |
     | subscriptionkey | konuşma kaynağınızın abonelik anahtarı. |

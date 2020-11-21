@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: a1f633548ed36320f40e485f540923c8e3045a99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0839d2c734418824952f37cb177490e56e1133c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460875"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023318"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON Düzleştirme, Kaçış ve Dizi İşleme
 
@@ -22,18 +22,18 @@ Azure Time Series Insights Gen2 ortamınız, belirli bir adlandırma kuralları 
 
 > [!IMPORTANT]
 >
-> * [Zaman SERISI kimliği özelliğini](time-series-insights-update-how-to-id.md) ve/veya olay kaynağı [zaman damgası özellikleri 'ni (ies)](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)seçmeden önce aşağıdaki kuralları gözden geçirin. TS KIMLIĞINIZ veya zaman Damgalarınız iç içe geçmiş bir nesne içindeyse veya aşağıdaki özel karakterlerden birini içeriyorsa, sağladığınız Özellik adının, giriş kuralları uygulandıktan *sonra* sütun adıyla eşleştiğinden emin olmanız önemlidir. [Aşağıdaki örneğe](concepts-json-flattening-escaping-rules.md#example-b) bakın.
+> * [Zaman SERISI kimliği özelliğini](./how-to-select-tsid.md) ve/veya olay kaynağı [zaman damgası özellikleri 'ni (ies)](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)seçmeden önce aşağıdaki kuralları gözden geçirin. TS KIMLIĞINIZ veya zaman Damgalarınız iç içe geçmiş bir nesne içindeyse veya aşağıdaki özel karakterlerden birini içeriyorsa, sağladığınız Özellik adının, giriş kuralları uygulandıktan *sonra* sütun adıyla eşleştiğinden emin olmanız önemlidir. [Aşağıdaki örneğe](concepts-json-flattening-escaping-rules.md#example-b) bakın.
 
-| Kural | Örnek JSON | [Zaman serisi Ifadesi söz dizimi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Parquet içindeki özellik sütunu adı
+| Kural | Örnek JSON | [Zaman serisi Ifadesi söz dizimi](/rest/api/time-series-insights/reference-time-series-expression-syntax) | Parquet içindeki özellik sütunu adı
 |---|---|---|---|
 | Azure Time Series Insights Gen2 veri türü, sütun adınızın sonuna "_" olarak eklenir \<dataType\> | ```"type": "Accumulated Heat"``` | `$event.type.String` |`type_string` |
 | Olay kaynağı [zaman damgası özelliği](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) , depolama alanında "timestamp" olarak ve UTC 'de depolanan değer olarak Azure Time Series Insights Gen2 kaydedilir. Olay kaynak (ler) zaman damgası özelliğini çözümünüzün ihtiyaçlarını karşılayacak şekilde özelleştirebilirsiniz, ancak sıcak ve soğuk depolamada sütun adı "timestamp" olur. Olay kaynak zaman damgası olmayan diğer tarih saat JSON özellikleri, yukarıdaki kuralda belirtildiği gibi sütun adında "_datetime" ile kaydedilir.  | ```"ts": "2020-03-19 14:40:38.318"``` |  `$event.$ts` | `timestamp` |
 | Özel karakterleri içeren JSON özelliği adları. [\ ve ', [' ve '] kullanılarak atlanmalıdır  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
 | [' Ve '] içinde, tek tırnak ve ters eğik çizgiler için ek kaçış var. Tek bir teklif \ ' olarak yazılır ve şu şekilde bir ters eğik çizgi yazılacak \\\ | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
 | İç içe geçmiş JSON nesneleri, ayırıcı olarak bir noktayla düzleştirilir. 10 düzeyden fazla iç içe geçme destekleniyor. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long``$event['series']['value'].Long`veya`$event.series['value'].Long` |  `series.value_long` |
-| Temel türlerin dizileri dinamik tür olarak depolanır |  ```"values": [154, 149, 147]``` | Dinamik türler yalnızca [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınabilir | `values_dynamic` |
+| Temel türlerin dizileri dinamik tür olarak depolanır |  ```"values": [154, 149, 147]``` | Dinamik türler yalnızca [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınabilir | `values_dynamic` |
 | Nesneler içeren diziler, nesne içeriğine bağlı olarak iki davranışa sahiptir: TS ID 'ler veya TimeStamp Özelliği (lar) bir dizideki nesneler içindeyse, dizi ilk JSON yükünün birden çok olay üretmesiyle ilgili olarak alınır. Bu, birden çok olayı tek bir JSON yapısında toplu hale getirmenizi sağlar. Dizi eşleri olan üst düzey özellikler her bir untoplaal nesnesiyle kaydedilir. TS KIMLIĞINIZ ve zaman Damgalarınız dizi içinde *değilse* , dinamik tür olarak tümü kaydedilir. | Aşağıda [A](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b)ve [C](concepts-json-flattening-escaping-rules.md#example-c) örneklerine bakın
-| Karışık öğeleri içeren diziler düzleştirilmez. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dinamik türler yalnızca [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınabilir | `values_dynamic` |
+| Karışık öğeleri içeren diziler düzleştirilmez. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dinamik türler yalnızca [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınabilir | `values_dynamic` |
 | 512 karakter JSON Özellik adı sınırlıdır. Ad 512 karakteri aşarsa, 512 olarak kesilir ve ' _< ' diyez kodu ' > ' eklenir. Bunun aynı zamanda, iç içe geçmiş bir nesne yolu belirten nesne düzleştirilerek birleştirilmiş özellik adları için de geçerli olduğunu **unutmayın** . |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>Diziler için çift davranışı anlama
@@ -44,7 +44,7 @@ Ancak, bazı durumlarda, nesne içeren diziler yalnızca diğer değerlerin bağ
 
 ### <a name="how-to-know-if-my-array-of-objects-will-produce-multiple-events"></a>Nesne dizimin birden çok olay üretmesi durumunda nasıl anlaşılır
 
-Bir veya daha fazla zaman serisi KIMLIĞI özellikleri bir dizideki nesneler içinde iç içe ise *veya* olay kaynağı zaman damgası özelliği iç içe ise, alma altyapısı, birden çok olay oluşturmak için onu böler. TS KIMLIĞINIZ ve/veya zaman Damgalarınız için verdiğiniz Özellik adları yukarıdaki düzleştirme kurallarını izlemelidir ve bu nedenle JSON 'nizin şeklini gösterir. Aşağıdaki örneklere bakın ve [zaman SERISI kimliği özelliği seçme](time-series-insights-update-how-to-id.md) kılavuzundaki kılavuza göz atın.
+Bir veya daha fazla zaman serisi KIMLIĞI özellikleri bir dizideki nesneler içinde iç içe ise *veya* olay kaynağı zaman damgası özelliği iç içe ise, alma altyapısı, birden çok olay oluşturmak için onu böler. TS KIMLIĞINIZ ve/veya zaman Damgalarınız için verdiğiniz Özellik adları yukarıdaki düzleştirme kurallarını izlemelidir ve bu nedenle JSON 'nizin şeklini gösterir. Aşağıdaki örneklere bakın ve [zaman SERISI kimliği özelliği seçme](./how-to-select-tsid.md) kılavuzundaki kılavuza göz atın.
 
 ### <a name="example-a"></a>Örnek A
 

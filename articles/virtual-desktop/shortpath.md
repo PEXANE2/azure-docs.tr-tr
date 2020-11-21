@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701798"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023148"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows sanal masaüstü RDP ShortPath (Önizleme)
 
@@ -36,7 +36,7 @@ RDP ShortPath, RDP çoklu aktarım yeteneklerini genişletdi. Ters Connect taş�
 
 UDP bağlantı noktası 3390 yalnızca, ters bağlantı aktarımı üzerinden kimliği doğrulanan gelen ShortPath trafiği için kullanılır. RDP ShortPath dinleyicisi, ters bağlantı oturumuyla eşleşmedikleri takdirde dinleyiciye yapılan tüm bağlantı girişimlerini yoksayar.
 
-RDP ShortPath, oturum ana bilgisayarının sertifikalarını kullanarak istemci ile oturum ana bilgisayarı arasında bir TLS bağlantısı kullanır. Varsayılan olarak, RDP şifrelemesi için kullanılan sertifika, dağıtım sırasında işletim sistemi tarafından kendi kendine oluşturulmuştur. İsterseniz, müşteriler kuruluş sertifika yetkilisi tarafından verilen merkezi olarak yönetilen sertifikalar dağıtabilir. Sertifika yapılandırma hakkında daha fazla bilgi için bkz. [Windows Server belgeleri](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations.md).
+RDP ShortPath, oturum ana bilgisayarının sertifikalarını kullanarak istemci ile oturum ana bilgisayarı arasında bir TLS bağlantısı kullanır. Varsayılan olarak, RDP şifrelemesi için kullanılan sertifika, dağıtım sırasında işletim sistemi tarafından kendi kendine oluşturulmuştur. İsterseniz, müşteriler kuruluş sertifika yetkilisi tarafından verilen merkezi olarak yönetilen sertifikalar dağıtabilir. Sertifika yapılandırma hakkında daha fazla bilgi için bkz. [Windows Server belgeleri](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 
 ## <a name="rdp-shortpath-connection-sequence"></a>RDP Shortfılepath bağlantı sırası
 
@@ -187,7 +187,7 @@ Olası değerler şunlardır:
 * **0** -Kullanıcı bağlantısı RDP shortfılepath kullanmıyor
 * **1** -Kullanıcı bağlantısı RDP shortfılepath kullanıyor
   
-Aşağıdaki sorgu listesi, bağlantı bilgilerini incelemenizi sağlar. Bu sorguyu [Log Analytics sorgu düzenleyicisinde](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
+Aşağıdaki sorgu listesi, bağlantı bilgilerini incelemenizi sağlar. Bu sorguyu [Log Analytics sorgu düzenleyicisinde](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)çalıştırabilirsiniz. Her sorgu için, `userupn` aramak istediğiniz kullanıcının UPN 'si ile değiştirin.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d66c02b58da295c74a38fb921a081cc4036763a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73836780"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021924"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>Özel sinir ses geçişi genel bakış
 
@@ -28,7 +28,7 @@ Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak, müşter
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>Özel sinir sesi dağıtma Kılavuzu
 
 - [Sorumlu dağıtıma yönelik yönergeler](concepts-guidelines-responsible-deployment-synthetic.md): Araştırmamıza göre en iyi önerilerimiz
-- [Sesli taçnelerin açıklanması](https://aka.ms/disclosure-voice-talent): BT 'nin kullanım konusundaki teknolojiyi öğrenmek için bilmeniz gerekenler hakkında bilgi edinmek ve bilgilendirmek
+- [Sesli taçnelerin açıklanması](/legal/cognitive-services/speech-service/disclosure-voice-talent): BT 'nin kullanım konusundaki teknolojiyi öğrenmek için bilmeniz gerekenler hakkında bilgi edinmek ve bilgilendirmek
 - [Açıklama tasarımı](concepts-disclosure-guidelines.md): kullanıcıların yapay bir sesin kullanıldığını ve hizmetinize güvenmesini bilmesi için deneyimler tasarlama
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Özel sinir Voice neden geçişli bir teknoloji
@@ -41,11 +41,11 @@ Bizim bizim amacımız, kişilerin ve topluluğu 'ın haklarını korumaktır. b
 
 Özel sinir Voice Service 'e erişim, Microsoft 'un bu geçişli önizleme sırasında sınırlı sayıda müşteriyi desteklemeye yönelik uygunluk ölçütlerinizle, dileyici sürecimize ve kullanılabilirliğine göre kendi takdirine tabidir.
 
-Uygulama sürecinin bir parçası olarak, sesli taçanın [Ifşa edilmesi için](https://aka.ms/disclosure-voice-talent)bir ses yazı tipi oluşturmadan önce sesli tatatdan açık yazılı izin almak üzere yürütmeniz gerekir. Ayrıca, ses yazı tipini dağıttığınızda uygulamanız, hizmetin [yapay yapısını kullanıcılara açıklayacaktır](concepts-disclosure-guidelines.md) , hizmet koşullarınızda Microsoft yapay konuşma hizmetine atılarak bulunmak ve hizmet kullanıcılarının Microsoft ile sorun bildirme ve ayrıntıları paylaşma olanağı sağlayan bir geri bildirim kanalını destekleyecektir. [Burada](https://aka.ms/custom-neural-code-of-conduct)Kullanım koşullarımız hakkında daha fazla bilgi edinin.
+Uygulama sürecinin bir parçası olarak, sesli taçanın [Ifşa edilmesi için](/legal/cognitive-services/speech-service/disclosure-voice-talent)bir ses yazı tipi oluşturmadan önce sesli tatatdan açık yazılı izin almak üzere yürütmeniz gerekir. Ayrıca, ses yazı tipini dağıttığınızda uygulamanız, hizmetin [yapay yapısını kullanıcılara açıklayacaktır](concepts-disclosure-guidelines.md) , hizmet koşullarınızda Microsoft yapay konuşma hizmetine atılarak bulunmak ve hizmet kullanıcılarının Microsoft ile sorun bildirme ve ayrıntıları paylaşma olanağı sağlayan bir geri bildirim kanalını destekleyecektir. [Burada](/legal/cognitive-services/speech-service/tts-code-of-conduct)Kullanım koşullarımız hakkında daha fazla bilgi edinin.
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Seslendiren kişinin açıklaması](https://aka.ms/disclosure-voice-talent)
+* [Seslendiren kişinin açıklaması](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
 

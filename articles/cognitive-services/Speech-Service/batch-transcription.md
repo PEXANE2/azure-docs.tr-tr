@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b9ed43019e7af0cb810c3e0fc849281a458a43e1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345508"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023642"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -46,7 +46,7 @@ Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kıl
 >[!NOTE]
 > Toplu iş dökümünü kullanmak için, konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz abonelik anahtarları (F0) çalışmaz. Daha fazla bilgi için bkz. [fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-Modelleri özelleştirmeyi planlıyorsanız, [akustik özelleştirme](how-to-customize-acoustic-models.md) ve [dil özelleştirme](how-to-customize-language-model.md)bölümündeki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model konumuyla ihtiyacınız vardır. Modelin ayrıntılarını inceleyebileceğiniz zaman model konumunu alabilirsiniz ( `self` özellik). Toplu iş dökümü hizmeti için dağıtılan özel bir uç nokta *gerekli değildir* .
+Modelleri özelleştirmeyi planlıyorsanız, [akustik özelleştirme](./how-to-custom-speech-train-model.md) ve [dil özelleştirme](./how-to-custom-speech-train-model.md)bölümündeki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model konumuyla ihtiyacınız vardır. Modelin ayrıntılarını inceleyebileceğiniz zaman model konumunu alabilirsiniz ( `self` özellik). Toplu iş dökümü hizmeti için dağıtılan özel bir uç nokta *gerekli değildir* .
 
 >[!NOTE]
 > REST API bir parçası olarak toplu Iş dökümü, gözden geçirmeyi teşvik ettiğimiz bir [Kotalar ve sınırlar](speech-services-quotas-and-limits.md#batch-transcription)kümesine sahiptir. Toplu geçiş yeteneğinin çok sayıda ses dosyası olmasını verimli bir şekilde sağlamak için, istek başına birden çok dosya göndermeyi veya bir BLOB depolama kapsayıcısını, bu dosyanın dökümünü alacak şekilde bir BLOB depolama kapsayıcısına işaret etmenizi öneririz. Hizmet, dosyaları aynı anda azaltma süresini azaltır. Tek bir istekte birden çok dosya kullanılması çok basittir ve kolay bir şekilde [yapılandırma](#configuration) bölümüne bakın. 
@@ -182,7 +182,7 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
 
 ### <a name="storage"></a>Depolama
 
-Toplu iş dökümü, genel olarak görünen bir internet URI 'sinden ses okuyabilir ve [Azure Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)Ile SAS URI 'si kullanarak ses okuyabilir veya döküm yazabilirsiniz.
+Toplu iş dökümü, genel olarak görünen bir internet URI 'sinden ses okuyabilir ve [Azure Blob depolama](../../storage/blobs/storage-blobs-overview.md)Ile SAS URI 'si kullanarak ses okuyabilir veya döküm yazabilirsiniz.
 
 ## <a name="batch-transcription-result"></a>Toplu iş dökümü sonucu
 

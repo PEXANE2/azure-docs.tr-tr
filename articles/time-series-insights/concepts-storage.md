@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b512a80fcfc26efbe5c008884509aebfd86ed3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460837"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020853"
 ---
 # <a name="data-storage"></a>Veri Depolama
 
@@ -27,7 +27,7 @@ Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda, aşağıdaki se�
 
 * Soğuk veri depolama:
   * Ortamınız için seçtiğiniz abonelikte ve bölgede yeni bir Azure depolama kaynağı oluşturun.
-  * Önceden var olan bir Azure depolama hesabı ekleyin. Bu seçenek yalnızca bir Azure Resource Manager [şablonundan](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)dağıtarak kullanılabilir ve Azure Portal görünmez.
+  * Önceden var olan bir Azure depolama hesabı ekleyin. Bu seçenek yalnızca bir Azure Resource Manager [şablonundan](/azure/templates/microsoft.timeseriesinsights/allversions)dağıtarak kullanılabilir ve Azure Portal görünmez.
 * Sıcak veri depolama:
   * Bir sıcak mağaza isteğe bağlıdır ve sağlama sırasında veya sonrasında etkinleştirilebilir veya devre dışı bırakılabilir. Daha sonraki bir zamanda yarı depolamayı etkinleştirmeye karar verirseniz ve soğuk deponuzda zaten veri varsa, beklenen davranışı anlamak için aşağıdaki [bölümü gözden](concepts-storage.md#warm-store-behavior) geçirin. Yarı depolama veri saklama süresi 7 ile 31 gün arasında yapılandırılabilir ve bu da gerektiğinde ayarlanabilir.
 
@@ -40,14 +40,14 @@ Bir olay alındığı zaman, hem ısınma deposunda hem de soğuk depoda dizinle
 
 ## <a name="data-availability"></a>Veri kullanılabilirliği
 
-En iyi sorgu performansı için Gen2 bölümler ve dizinler verileri Azure Time Series Insights. Veriler, Dizin oluşturulduktan sonra hem normal (etkinse) hem de soğuk depodan sorgu için kullanılabilir hale gelir. Alınan veri miktarı ve bölüm başına aktarım hızı, kullanılabilirliği etkileyebilir. En iyi performansa yönelik olay kaynağı [verimlilik sınırlamalarını](./concepts-streaming-ingress-throughput-limits.md) ve [en iyi uygulamaları](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) gözden geçirin. Ayrıca, ortamınızda veri işleme sorunları yaşıyorsa bildirim almak için bir gecikme [uyarısı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) da yapılandırabilirsiniz.
+En iyi sorgu performansı için Gen2 bölümler ve dizinler verileri Azure Time Series Insights. Veriler, Dizin oluşturulduktan sonra hem normal (etkinse) hem de soğuk depodan sorgu için kullanılabilir hale gelir. Alınan veri miktarı ve bölüm başına aktarım hızı, kullanılabilirliği etkileyebilir. En iyi performansa yönelik olay kaynağı [verimlilik sınırlamalarını](./concepts-streaming-ingress-throughput-limits.md) ve [en iyi uygulamaları](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) gözden geçirin. Ayrıca, ortamınızda veri işleme sorunları yaşıyorsa bildirim almak için bir gecikme [uyarısı](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) da yapılandırabilirsiniz.
 
 > [!IMPORTANT]
 > Veriler kullanılabilir hale gelmeden önce 60 saniyeye kadar bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen Azure portal bir destek bileti gönderebilirsiniz.
 
 ## <a name="warm-store"></a>Sıcak mağaza
 
-Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md), [Azure Time Series Insights TSI Explorer](./time-series-insights-update-explorer.md)veya [Power BI Bağlayıcısı](./how-to-connect-power-bi.md)aracılığıyla kullanılabilir. Sıcak mağaza sorguları ücretsizdir ve kota yoktur, ancak 30 eşzamanlı istek [sınırı](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) vardır.
+Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./concepts-query-overview.md), [Azure Time Series Insights TSI Explorer](./concepts-ux-panels.md)veya [Power BI Bağlayıcısı](./how-to-connect-power-bi.md)aracılığıyla kullanılabilir. Sıcak mağaza sorguları ücretsizdir ve kota yoktur, ancak 30 eşzamanlı istek [sınırı](/rest/api/time-series-insights/reference-api-limits#query-apis---limits) vardır.
 
 ### <a name="warm-store-behavior"></a>Sıcak mağaza davranışı
 
@@ -77,9 +77,9 @@ Sorgu performansı ve veri kullanılabilirliği sağlamak için, Azure Time Seri
 
 #### <a name="accessing-cold-store-data"></a>Soğuk mağaza verilerine erişme
 
-[Azure Time Series Insights Gezgini](./time-series-insights-update-explorer.md) ve [zaman serisi sorgu API 'lerinde](./time-series-insights-update-tsq.md)verilerinize erişmenin yanı sıra, verilerinize doğrudan soğuk deposunda depolanan Parquet dosyalarından de erişmek isteyebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
+[Azure Time Series Insights Gezgini](./concepts-ux-panels.md) ve [zaman serisi sorgu API 'lerinde](./concepts-query-overview.md)verilerinize erişmenin yanı sıra, verilerinize doğrudan soğuk deposunda depolanan Parquet dosyalarından de erişmek isteyebilirsiniz. Örneğin, bir Jupyter not defterindeki verileri okuyabilir, dönüştürebilir ve temizleyebilir, ardından Azure Machine Learning modelinizi aynı Spark iş akışında eğitebilmeniz için bunu kullanabilirsiniz.
 
-Verilere doğrudan Azure Storage hesabınızdan erişmek için, Azure Time Series Insights Gen2 verilerinizi depolamak için kullanılan hesaba okuma erişiminizin olması gerekir. Daha sonra seçili verileri, aşağıda açıklanan Parquet dosyasının oluşturulma zamanına göre, `PT=Time` [Parquet dosya biçimi](#parquet-file-format-and-folder-structure) bölümünde bulabilirsiniz.  Depolama Hesabınıza yönelik okuma erişiminin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/storage-manage-access-to-resources.md).
+Verilere doğrudan Azure Storage hesabınızdan erişmek için, Azure Time Series Insights Gen2 verilerinizi depolamak için kullanılan hesaba okuma erişiminizin olması gerekir. Daha sonra seçili verileri, aşağıda açıklanan Parquet dosyasının oluşturulma zamanına göre, `PT=Time` [Parquet dosya biçimi](#parquet-file-format-and-folder-structure) bölümünde bulabilirsiniz.  Depolama Hesabınıza yönelik okuma erişiminin etkinleştirilmesi hakkında daha fazla bilgi için bkz. [depolama hesabı kaynaklarınıza erişimi yönetme](../storage/blobs/anonymous-read-access-configure.md).
 
 #### <a name="data-deletion"></a>Veri silme
 
@@ -123,6 +123,6 @@ Azure Time Series Insights Gen2 olayları, aşağıdaki gibi, Parquet dosya içe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri modelleme](./time-series-insights-update-tsm.md)hakkında bilgi edinin.
+* [Veri modelleme](./concepts-model-overview.md)hakkında bilgi edinin.
 
-* [Azure Time Series Insights Gen2 ortamınızı](./time-series-insights-update-plan.md)planlayın.
+* [Azure Time Series Insights Gen2 ortamınızı](./how-to-plan-your-environment.md)planlayın.

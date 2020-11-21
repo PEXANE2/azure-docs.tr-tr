@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ada9c06f0befbea4b9aa85f95651e96dec595b7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83584748"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021295"
 ---
 # <a name="translator-30-dictionary-lookup"></a>Translator 3,0: sözlük arama
 
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
-| Sorgu parametresi  | Açıklama |
+| Sorgu parametresi  | Description |
 | ------ | ----------- |
 | api-sürümü <img width=200/>   | **Gerekli parametre**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` |
 | Kaynak | **Gerekli parametre**.<br/>Giriş metninin dilini belirtir. Kaynak dili, kapsamda bulunan [desteklenen dillerden](./v3-0-languages.md) biri olmalıdır `dictionary` . |
@@ -42,9 +42,9 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 İstek üstbilgileri şunları içerir:
 
-| Üst bilgiler  | Açıklama |
+| Üst Bilgiler  | Description |
 | ------ | ----------- |
-| Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
+| Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
 | İçerik Türü | **Gerekli istek üst bilgisi**.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json` . |
 | İçerik Uzunluğu   | **Gerekli istek üst bilgisi**.<br/>İstek gövdesinin uzunluğu. |
 | X-Clienttraceıd   | **Isteğe bağlı**.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı sorgu parametresini kullanarak izleme KIMLIĞINI sorgu dizesine eklerseniz, bu üstbilgiyi atlayabilirsiniz `ClientTraceId` . |
@@ -80,7 +80,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
     * `posTag`: Bu terimi bir konuşma parçası etiketiyle ilişkilendiren bir dize.
 
-        | Etiket adı | Açıklama  |
+        | Etiket adı | Description  |
         |----------|--------------|
         | SIF      | Sıfatlar   |
         | ADV      | Zarflar      |

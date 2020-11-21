@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34d340881e4f612544f4b3d68d3c1f3da598cab3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75908926"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023437"
 ---
 # <a name="internet-peering-overview"></a>Internet eşlemesi genel bakış
 
@@ -41,7 +41,7 @@ Azure PowerShell veya Portal kullanarak Microsoft ile eşleme isteyebilirsiniz. 
 * Tüm bağlantılarınız için durum ve bant genişliği verilerini izleyin.
 * Azure Cloud Services erişmek için aynı aboneliği kullanabilirsiniz.
 
-Zaten Microsoft ile eşlemeler oluşturduysanız, bunlar **eski**eşlemeler olarak adlandırılır. Bu tür eşlemeleri, yukarıdaki avantajlardan yararlanmak için Azure kaynağı olarak yönetmeyi tercih edebilirsiniz. Yeni bir eşleme isteği göndermek veya eski eşlemeyi Azure kaynağına dönüştürmek için aşağıdaki **sonraki adımlar** bölümündeki bağlantıları izleyin.
+Zaten Microsoft ile eşlemeler oluşturduysanız, bunlar **eski** eşlemeler olarak adlandırılır. Bu tür eşlemeleri, yukarıdaki avantajlardan yararlanmak için Azure kaynağı olarak yönetmeyi tercih edebilirsiniz. Yeni bir eşleme isteği göndermek veya eski eşlemeyi Azure kaynağına dönüştürmek için aşağıdaki **sonraki adımlar** bölümündeki bağlantıları izleyin.
 
 ## <a name="peering-policy"></a>Eşleme ilkesi
 Microsoft, seçmeli, ancak genellikle açık eşleme ilkesine sahiptir. Eşler, performans, yetenek ve karşılıklı avantajlara göre seçilir ve belirli teknik, ticari ve yasal gereksinimlere tabidir. Ayrıntılar için bkz. [eşleme ilkesi](policy.md).
@@ -53,4 +53,4 @@ Eşleme hakkında sık sorulan sorular için bkz. [Internet eşlemesi-SSS](faqs.
 
 * Microsoft ile doğrudan eşleme ayarlama adımları hakkında bilgi edinmek için [doğrudan eşleme izlenecek yolu](walkthrough-direct-all.md) izleyin
 * Exchange eşlemesini Microsoft ile ayarlama adımları hakkında bilgi edinmek için [Exchange eşleme](walkthrough-exchange-all.md) Kılavuzu ' nu izleyin.
-* Azure'un diğer başlıca [ağ özelliklerinden](https://docs.microsoft.com/azure/networking/networking-overview) bazıları hakkında bilgi edinin.
+* Azure'un diğer başlıca [ağ özelliklerinden](../networking/networking-overview.md) bazıları hakkında bilgi edinin.

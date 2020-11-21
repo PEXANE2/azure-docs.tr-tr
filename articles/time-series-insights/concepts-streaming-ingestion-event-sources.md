@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6bc238389ac470e6127a582eb174ec7bc438e36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e83cca79a4dc99533ab17cca7e96e1ac802d598
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650877"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020802"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 olay kaynakları
 
@@ -27,7 +27,7 @@ Olayların UTF-8 kodlu JSON olarak gönderilmesi gerekir.
 
 ## <a name="create-or-edit-event-sources"></a>Olay kaynakları oluşturma veya düzenleme
 
-Olay kaynak kaynağınız, Azure Time Series Insights Gen2 ortamınız veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir. Ortamınızın olay kaynaklarını oluşturmak, düzenlemek veya kaldırmak için [Azure Portal](time-series-insights-update-create-environment.md#create-a-preview-payg-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [ARM şablonları](time-series-insights-manage-resources-using-azure-resource-manager-template.md)ve [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) kullanabilirsiniz.
+Olay kaynak kaynağınız, Azure Time Series Insights Gen2 ortamınız veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir. Ortamınızın olay kaynaklarını oluşturmak, düzenlemek veya kaldırmak için [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [ARM şablonları](time-series-insights-manage-resources-using-azure-resource-manager-template.md)ve [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) kullanabilirsiniz.
 
 Bir olay kaynağını bağladığınızda, Azure Time Series Insights Gen2 ortamınız, en eski olayla başlayarak IoT veya Olay Hub 'ınızda depolanmış olan tüm olayları okur.
 
@@ -45,7 +45,7 @@ Bir olay kaynağını bağladığınızda, Azure Time Series Insights Gen2 ortam
 
 - Ortamınızın [işleme hızı sınırının](./concepts-streaming-ingress-throughput-limits.md) ötesine geçmeyin ve bölüm sayısı sınırı yoktur.
 
-- Ortamınız verileri işlerken sorunlarla karşılaşıyorsa bildirim almak için bir gecikme [uyarısı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) yapılandırın.
+- Ortamınız verileri işlerken sorunlarla karşılaşıyorsa bildirim almak için bir gecikme [uyarısı](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) yapılandırın.
 
 - Yalnızca neredeyse gerçek zamanlı ve en son veriler için akış alımı kullanın, geçmiş verileri akışa alma desteklenmez.
 
@@ -64,7 +64,7 @@ Geçmiş verileri içeri aktarmak için akış işlem hattının kullanılması 
 
 ## <a name="event-source-timestamp"></a>Olay kaynağı zaman damgası
 
-Bir olay kaynağını yapılandırırken zaman damgası KIMLIĞI özelliği sağlamanız istenir. Zaman damgası özelliği, olayları zamana göre izlemek için kullanılır. [sorgu API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) ve Azure Time Series Insights Explorer 'da dizi çizmek için $event. $TS olarak kullanılacak süredir. Oluşturma zamanında hiçbir özellik sağlanmazsa veya bir olayda Timestamp özelliği eksikse, olayın IoT Hub veya Olay Hub 'Ları sıraya alınan süre varsayılan olarak kullanılır. Zaman damgası özellik değerleri UTC olarak depolanır.
+Bir olay kaynağını yapılandırırken zaman damgası KIMLIĞI özelliği sağlamanız istenir. Zaman damgası özelliği, olayları zamana göre izlemek için kullanılır. [sorgu API 'lerinde](/rest/api/time-series-insights/dataaccessgen2/query/execute) ve Azure Time Series Insights Explorer 'da dizi çizmek için $event. $TS olarak kullanılacak süredir. Oluşturma zamanında hiçbir özellik sağlanmazsa veya bir olayda Timestamp özelliği eksikse, olayın IoT Hub veya Olay Hub 'Ları sıraya alınan süre varsayılan olarak kullanılır. Zaman damgası özellik değerleri UTC olarak depolanır.
 
 Genel olarak, kullanıcılar zaman damgası özelliğini özelleştirmeyi ve algılayıcı ya da etiketin varsayılan Merkez sıraya alma süresini kullanmak yerine okumayı oluşturduğu zamanı kullanması için kabul edecektir. Bu özellikle, cihazlarda aralıklı bağlantı kaybı olduğunda ve bir toplu işlem gecikmeli ileti Azure Time Series Insights Gen2 'e iletildiğinde gereklidir.
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c0b399f84e793d9e762c89dbbd1901bb5a95f26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397768"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024339"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
-Bu SSS 'de sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](support.md)göz atın.
+Bu SSS 'de sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)göz atın.
 
 ## <a name="general"></a>Genel
 
@@ -29,7 +29,7 @@ Y **: temel bir model**, Microsoft 'a ait veriler kullanılarak eğitilmiştir v
 
 **S: bir temel modeli kullanmak istersem nereden başlayabilirim?**
 
-**A**: ilk olarak bir [abonelik anahtarı](overview.md#try-the-speech-service-for-free)alın. Önceden dağıtılan taban çizgisi modellerine REST çağrıları yapmak isterseniz [REST API 'lerine](rest-apis.md)bakın. WebSockets kullanmak istiyorsanız [SDK 'yı indirin](speech-sdk.md).
+**A**: ilk olarak bir [abonelik anahtarı](overview.md#try-the-speech-service-for-free)alın. Önceden dağıtılan taban çizgisi modellerine REST çağrıları yapmak isterseniz [REST API 'lerine](./overview.md#reference-docs)bakın. WebSockets kullanmak istiyorsanız [SDK 'yı indirin](speech-sdk.md).
 
 **S: her zaman özel bir konuşma modeli mi kullanmam gerekir?**
 
@@ -39,23 +39,23 @@ Portalda temel ve özelleştirilmiş modeller dağıtabilir ve ardından bunlarl
 
 **S: veri kümesi veya modelim için işleme tamamlandığında nasıl öğrenebilirim?**
 
-Y **: Şu**anda, tablodaki modelin veya veri kümesinin durumu bilinmenin tek yoludur. İşlem tamamlandığında durum **başarılı**olur.
+Y **: Şu** anda, tablodaki modelin veya veri kümesinin durumu bilinmenin tek yoludur. İşlem tamamlandığında durum **başarılı** olur.
 
 **S: birden fazla model oluşturabilir miyim?**
 
-**A**Y: koleksiyonunuzda sahip olduğunuz model sayısında sınır yoktur.
+**A** Y: koleksiyonunuzda sahip olduğunuz model sayısında sınır yoktur.
 
 **S: bir hata yaptık. Nasıl yaparım? veri içeri aktarma veya model oluşturma işlemini iptal ediyor mu?**
 
-Y **: Şu anda, bir akustik**veya dil uyarlama işlemini geri alamazsınız. İçeri aktarılan verileri ve modelleri, Terminal durumundayken silebilirsiniz.
+Y **: Şu anda, bir akustik** veya dil uyarlama işlemini geri alamazsınız. İçeri aktarılan verileri ve modelleri, Terminal durumundayken silebilirsiniz.
 
 **S: arama ve dikte modeliyle konuşma modeli arasındaki fark nedir?**
 
-Y **: konuşma**hizmetinde birden fazla temel model arasından seçim yapabilirsiniz. Konuşma modeli, konuşma stilinde konuşulan konuşmayı tanımayı yararlı olur. Bu model, bu telefon görüşmeleri için idealdir. Arama ve dikte modeli, sesli tetiklenen uygulamalar için idealdir. Evrensel model, her iki senaryoyu ele almak için amaçlar 'in yeni bir modelidir. Evrensel model şu anda çoğu yerel olarak konuşma modelinin kalite düzeyinin üzerinde veya üzerinde.
+Y **: konuşma** hizmetinde birden fazla temel model arasından seçim yapabilirsiniz. Konuşma modeli, konuşma stilinde konuşulan konuşmayı tanımayı yararlı olur. Bu model, bu telefon görüşmeleri için idealdir. Arama ve dikte modeli, sesli tetiklenen uygulamalar için idealdir. Evrensel model, her iki senaryoyu ele almak için amaçlar 'in yeni bir modelidir. Evrensel model şu anda çoğu yerel olarak konuşma modelinin kalite düzeyinin üzerinde veya üzerinde.
 
 **S: var olan modelmi güncelleştirebilir (model yığınlama)?**
 
-Y **: varolan**bir modeli güncelleştiremezsiniz. Bir çözüm olarak, eski veri kümesini yeni veri kümesiyle ve readapt ile birleştirin.
+Y **: varolan** bir modeli güncelleştiremezsiniz. Bir çözüm olarak, eski veri kümesini yeni veri kümesiyle ve readapt ile birleştirin.
 
 Eski veri kümesi ve yeni veri kümesi tek bir. zip dosyasında (akustik veriler için) veya bir. txt dosyasında (dil verileri için) birleştirilmelidir. Uyarlama tamamlandığında yeni, güncelleştirilmiş modelin yeni bir uç nokta almak için yeniden dağıtılması gerekir
 
@@ -67,7 +67,7 @@ Temel V 1.0 içeren bir model uyardıysanız ve dağıttıysanız, bu dağıtım
 
 **S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
 
-Y **: modeller**yerel olarak indirilemez ve yürütülemez.
+Y **: modeller** yerel olarak indirilemez ve yürütülemez.
 
 **S: isteklerim günlüğe kaydediliyor mi?**
 
@@ -79,7 +79,7 @@ Y **: bkz**. [konuşma Hizmetleri kotaları ve limitleri](speech-services-quotas
 
 **S: çift kanallı ses için nasıl ücret ödersiniz?**
 
-Y: her **bir**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), her bir dosyanın süresi üzerinden ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz. Fiyatlandırma hakkında ayrıntılı bilgi için lütfen Azure bilişsel [Hizmetler fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)bakın.
+Y: her **bir** kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), her bir dosyanın süresi üzerinden ücretlendirilirsiniz. Her bir kanalla çoğullanmış tek bir dosya gönderirseniz, tek dosya süresince ücretlendirilirsiniz. Fiyatlandırma hakkında ayrıntılı bilgi için lütfen Azure bilişsel [Hizmetler fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)bakın.
 
 > [!IMPORTANT]
 > Özel konuşma hizmetini kullanmanızı engelleyen başka gizlilik endişeleriniz varsa, destek kanallarından birine başvurun.
@@ -106,15 +106,15 @@ Y **: Hayır**. Şu anda yalnızca sıkıştırılmamış metin dosyalarına izi
 
 **S: ne kadar akustik verilere ihtiyacım var?**
 
-Y **: 30**dakika ile bir saat ve akustik veri arasında başlangıç yapmanız önerilir.
+Y **: 30** dakika ile bir saat ve akustik veri arasında başlangıç yapmanız önerilir.
 
 **S: hangi verileri toplamalıyım?**
 
-Y **: uygulama**senaryosuna yakın olan verileri toplayın ve mümkün olduğunca büyük küçük harf kullanın. Veri toplama, hedef uygulamayla ve kullanıcılarla cihaz ya da cihaz, ortam ve tür hoparlörleriyle eşleşmelidir. Genel olarak, verileri mümkün olduğunca geniş bir hoparlörden toplayabilirsiniz.
+Y **: uygulama** senaryosuna yakın olan verileri toplayın ve mümkün olduğunca büyük küçük harf kullanın. Veri toplama, hedef uygulamayla ve kullanıcılarla cihaz ya da cihaz, ortam ve tür hoparlörleriyle eşleşmelidir. Genel olarak, verileri mümkün olduğunca geniş bir hoparlörden toplayabilirsiniz.
 
 **S: akustik verileri nasıl toplamalıyım?**
 
-Y **: tek başına bir veri**toplama uygulaması oluşturabilir veya raf dışı ses kaydı yazılımını kullanabilirsiniz. Ayrıca, uygulamanızın ses verilerini günlüğe kaydettiği ve ardından verileri kullandığı bir sürümünü de oluşturabilirsiniz.
+Y **: tek başına bir veri** toplama uygulaması oluşturabilir veya raf dışı ses kaydı yazılımını kullanabilirsiniz. Ayrıca, uygulamanızın ses verilerini günlüğe kaydettiği ve ardından verileri kullandığı bir sürümünü de oluşturabilirsiniz.
 
 **S: verileri kendi kendinize uyarlama konusunda bir işlem yapmam gerekir mi?**
 
@@ -140,17 +140,17 @@ Y **: sonuçlar**, taban çizgisi modeliyle özelleştirdiğiniz model arasında
 
 **S: bir geliştirme olup olmadığını görmek için bir temel modelin WER özelliğini Nasıl yaparım?.**
 
-Y **: çevrimdışı**test sonuçları özel modelin taban çizgisi doğruluğunu ve taban çizgisinin iyileştirmesini gösterir.
+Y **: çevrimdışı** test sonuçları özel modelin taban çizgisi doğruluğunu ve taban çizgisinin iyileştirmesini gösterir.
 
 ## <a name="creating-a-language-model"></a>Dil modeli oluşturma
 
 **S: ne kadar metin verisi karşıya yüklenemem gerekir?**
 
-Y **: uygulamanızda**kullanılan sözlük ve tümceciklerin başlangıç dili modellerinden farklı olmasına bağlıdır. Tüm yeni kelimeler, bu sözcüklerin kullanımının mümkün olduğu sayıda örnek sağlamak yararlı olur. Uygulamanızda kullanılan yaygın ifadeler için, dil verilerinde ifadeler de dahil olmak üzere, sisteme bu koşulları da dinleyebildiğini söylediğinden de yararlı olur. Dil veri kümesinde en az 100 ve genellikle birkaç yüz ya da daha fazla utlik olması yaygındır. Ayrıca, bazı sorgu türlerinin diğerlerinden daha yaygın olması bekleniyorsa, ortak sorguların birden çok kopyasını veri kümesine ekleyebilirsiniz.
+Y **: uygulamanızda** kullanılan sözlük ve tümceciklerin başlangıç dili modellerinden farklı olmasına bağlıdır. Tüm yeni kelimeler, bu sözcüklerin kullanımının mümkün olduğu sayıda örnek sağlamak yararlı olur. Uygulamanızda kullanılan yaygın ifadeler için, dil verilerinde ifadeler de dahil olmak üzere, sisteme bu koşulları da dinleyebildiğini söylediğinden de yararlı olur. Dil veri kümesinde en az 100 ve genellikle birkaç yüz ya da daha fazla utlik olması yaygındır. Ayrıca, bazı sorgu türlerinin diğerlerinden daha yaygın olması bekleniyorsa, ortak sorguların birden çok kopyasını veri kümesine ekleyebilirsiniz.
 
 **S: yalnızca bir sözcük listesini karşıya yükleyebilir miyim?**
 
-Y **: sözcüklerin bir listesini**karşıya yüklemek, sözcükleri sözlüğüne ekler, ancak sözcüklerin tipik olarak nasıl kullanıldığını sisteme öğretmez. Tam veya kısmi bir şekilde (kullanıcıların söyledikleri nesnelerin cümleler veya tümceleri), dil modelinin yeni kelimeleri ve nasıl kullanıldığını öğrenebilirsiniz. Özel dil modeli yalnızca sisteme yeni sözcükler eklemek için değil, aynı zamanda uygulamanız için bilinen sözcüklerin olasılığını ayarlamak için de uygundur. Tam dıklarýn sağlanması sistemin daha iyi öğrenilmesine yardımcı olur.
+Y **: sözcüklerin bir listesini** karşıya yüklemek, sözcükleri sözlüğüne ekler, ancak sözcüklerin tipik olarak nasıl kullanıldığını sisteme öğretmez. Tam veya kısmi bir şekilde (kullanıcıların söyledikleri nesnelerin cümleler veya tümceleri), dil modelinin yeni kelimeleri ve nasıl kullanıldığını öğrenebilirsiniz. Özel dil modeli yalnızca sisteme yeni sözcükler eklemek için değil, aynı zamanda uygulamanız için bilinen sözcüklerin olasılığını ayarlamak için de uygundur. Tam dıklarýn sağlanması sistemin daha iyi öğrenilmesine yardımcı olur.
 
 ## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>Kiracı modeli (Microsoft 365 verilerle Özel Konuşma Tanıma)
 

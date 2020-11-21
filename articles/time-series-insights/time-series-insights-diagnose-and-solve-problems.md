@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530145"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023284"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 ortamınızda sorunları tanılayın ve çözün
 
@@ -37,7 +37,7 @@ Bu makalede Azure Time Series Insights ortamınızda karşılaşabileceğiniz so
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Neden: olay kaynak verileri JSON biçiminde değil
 
-Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz. [desteklenen JSON şekilleri](./concepts-json-flattening-escaping-rules.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Neden B: olay kaynak anahtarında gerekli bir izin eksik
 
@@ -85,7 +85,7 @@ Bir olay hub 'ından iletileri gösteren bir ortam düşünün. 67.000 ileti hak
 
 Kapasitesi 3 olan bir S1 SKU ortamı, her dakikada yalnızca 2.100 olay alabilir (her gün 1.000.000 olay 700 = ayda, üç birim için dakikada olay = 2.100 olay).
 
-Düzleştirme mantığının nasıl çalıştığını yüksek düzeyde anlamak için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+Düzleştirme mantığının nasıl çalıştığını yüksek düzeyde anlamak için bkz. [desteklenen JSON şekilleri](./concepts-json-flattening-escaping-rules.md).
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Aşırı azaltma için önerilen çözümler
 
@@ -111,7 +111,7 @@ Azure Time Series Insights artık verileri geri alma, ancak olaylar hala IoT Hub
 
 Bu sorun, olay kaynağınızı oluştururken girilen anahtar artık geçerli olmadığında oluşur. Hub 'ınızda telemetri görürsünüz ancak Azure Time Series Insights Ileti alınmadı. Anahtarın yeniden oluşturulup üretilmediğini bilmiyorsanız, "ad alanı yetkilendirme kuralları oluşturma veya güncelleştirme" için Olay Hub 'ının etkinlik günlüğünde arama yapabilirsiniz. IoT Hub 'ı için "ıothub kaynağı oluşturma veya güncelleştirme" araması yapın.
 
-Azure Time Series Insights ortamınızı yeni anahtarla güncelleştirmek için, hub kaynağınızı Azure portal açın ve yeni anahtarı kopyalayın. Azure Time Series Insights kaynağına gidin ve **olay kaynaklarını**seçin:
+Azure Time Series Insights ortamınızı yeni anahtarla güncelleştirmek için, hub kaynağınızı Azure portal açın ve yeni anahtarı kopyalayın. Azure Time Series Insights kaynağına gidin ve **olay kaynaklarını** seçin:
 
    [![Olay kaynaklarını seçin](media/diagnose-and-solve-problems/update-hub-key-step-1.png)](media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
 
@@ -127,7 +127,7 @@ Zaman damgası özelliği adının büyük/küçük harfe duyarlı olduğunu unu
 
 Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışmasını sağlamanın en kolay yolu Azure Time Series Insights Gezginini kullanmaktır. Azure Time Series Insights Gezgini ' nde, grafiği kullanarak, zaman damgası özellik adını girdikten sonra bir süre seçin. Seçime sağ tıklayın ve ardından **olayları keşfet**' i seçin.
 
-İlk sütun üst bilgisi, zaman damgası özelliğinin adı olmalıdır. Sözcük **zaman damgasının**yanında **($TS)** görüntülenir.
+İlk sütun üst bilgisi, zaman damgası özelliğinin adı olmalıdır. Sözcük **zaman damgasının** yanında **($TS)** görüntülenir.
 
 Aşağıdaki değerler gösterilmez:
 

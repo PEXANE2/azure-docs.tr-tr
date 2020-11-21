@@ -9,19 +9,19 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: d504cbe9c2ac9046a34187d4a5576385b1f73bbe
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 982ca04237d16979d65260a040f5aed783822ac7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518118"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023233"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Öğretici: Azure Time Series Insights Gen1 ortamı oluşturma
 
 > [!CAUTION]
 > Bu bir Gen1 makaledir.
 
-Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Series Insights ortamı oluşturma sürecinde size rehberlik eder. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Series Insights ortamı oluşturma sürecinde size rehberlik eder. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -76,7 +76,7 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
    [![Cihaz benzetimi çözümünü sağlama](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını bildiren iki güncelleştirme görüntülenir.
+1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya** taşındığını bildiren iki güncelleştirme görüntülenir.
 
    >[!IMPORTANT]
    > Çözüm hızlandırıcıyı henüz girmeyin! Daha sonra geri döneceksiniz, bu Web sayfasını açık tutun.
@@ -101,18 +101,18 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
    Parametre|Açıklama
    ---|---
-   **Ortam adı** | Azure Time Series Insights ortamı için benzersiz bir ad seçin. Adlar Azure Time Series Insights Gezgini ve [sorgu API 'leri](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)tarafından kullanılır.
+   **Ortam adı** | Azure Time Series Insights ortamı için benzersiz bir ad seçin. Adlar Azure Time Series Insights Gezgini ve [sorgu API 'leri](/rest/api/time-series-insights/gen1-query)tarafından kullanılır.
    **Abonelik** | Abonelikler, Azure kaynaklarına yönelik kapsayıcılardır. Azure Time Series Insights ortamını oluşturmak için bir abonelik seçin.
    **Kaynak grubu** | Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. Mevcut bir kaynak grubunu seçin veya Azure Time Series Insights ortam kaynağı için yeni bir tane oluşturun.
    **Konum** | Azure Time Series Insights ortamınız için bir veri merkezi bölgesi seçin. Ek gecikmeyi önlemek için, diğer IoT kaynaklarıyla aynı bölgede Azure Time Series Insights ortamı oluşturun.
    **Katman** | Gerekli aktarım hızını seçin. **S1**' i seçin.
-   **Kapasite** | Kapasite, seçilen SKU ile ilişkili giriş hızına ve depolama kapasitesine uygulanan çarpandır. Oluşturulduktan sonra kapasiteyi değiştirebilirsiniz. **1**kapasitesini seçin.
+   **Kapasite** | Kapasite, seçilen SKU ile ilişkili giriş hızına ve depolama kapasitesine uygulanan çarpandır. Oluşturulduktan sonra kapasiteyi değiştirebilirsiniz. **1** kapasitesini seçin.
 
    İşiniz bittiğinde sonraki adıma geçmek için **Sonraki: olay kaynağı** ' nı seçin.
 
    [![Azure Time Series Insights ortam kaynağı oluşturma](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
-1. Şimdi, Azure Time Series Insights ortamını Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına bağlayın. **Hub seçin seçeneğini** belirleyin `Select existing` . Daha sonra, **IoT Hub adı**ayarlanırken Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ını seçin.
+1. Şimdi, Azure Time Series Insights ortamını Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına bağlayın. **Hub seçin seçeneğini** belirleyin `Select existing` . Daha sonra, **IoT Hub adı** ayarlanırken Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ını seçin.
 
    [![Azure Time Series Insights ortamını oluşturulan IoT Hub 'ına bağlama](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
@@ -142,7 +142,7 @@ IoT Hub ile birlikte, sanal cihaz telemetrisini oluşturmak ve iletmek için bir
    ---|---
    **Hedef IoT Hub'ı** | **Önceden sağlanmış IoT Hub kullan**' ı seçin.
    **Cihaz modeli** | **Chiller**'i seçin.
-   **Cihaz sayısı**  | `10` **Miktar**altında girin.
+   **Cihaz sayısı**  | `10` **Miktar** altında girin.
    **Telemetri sıklığı** | `10`Saniyeleri girin.
    **Benzetim süresi** | **Bitiş: '** i seçin ve `5` dakikaları girin.
 
@@ -150,7 +150,7 @@ IoT Hub ile birlikte, sanal cihaz telemetrisini oluşturmak ve iletmek için bir
 
    [![Cihaz benzetimi ayarı](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
 
-1. Simülasyon çalışırken saniyede **toplam ileti** ve **mesaj** , yaklaşık olarak her 10 saniyede bir güncelleştirme güncelleştiğine dikkat edin. Simülasyon yaklaşık 5 dakikada bir sona erer ve sizi **simülasyon kurulumuna**döndürür.
+1. Simülasyon çalışırken saniyede **toplam ileti** ve **mesaj** , yaklaşık olarak her 10 saniyede bir güncelleştirme güncelleştiğine dikkat edin. Simülasyon yaklaşık 5 dakikada bir sona erer ve sizi **simülasyon kurulumuna** döndürür.
 
    [![Cihaz benzetimi çalışıyor](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
 

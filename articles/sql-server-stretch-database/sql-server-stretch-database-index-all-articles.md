@@ -13,38 +13,38 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: f4dcec5e58cb10850e22d3006b0ecd41f6d013fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b4a90a4e082cbe8fc0f2da1a87b6860cfb66a4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86202281"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024220"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Azure SQL Server Stretch Database hizmeti için tüm konular
-Bu konu, Azure 'un **SQL Server Stretch Database** hizmetine doğrudan uygulanan tüm konuları listeler. Geçerli ilgilendiğiniz konuları bulmak için **CTRL + F**kullanarak bu Web sayfasında anahtar sözcükler için arama yapabilirsiniz.
+Bu konu, Azure 'un **SQL Server Stretch Database** hizmetine doğrudan uygulanan tüm konuları listeler. Geçerli ilgilendiğiniz konuları bulmak için **CTRL + F** kullanarak bu Web sayfasında anahtar sözcükler için arama yapabilirsiniz.
 
 ## <a name="get-started"></a>başlarken
 | Başlık | Açıklama |
 |:--- |:--- |
-|[Stretch Database Advisor 'ı çalıştırarak Stretch Database veritabanlarını ve tabloları tanımla](sql-server-stretch-database-identify-databases.md) |Stretch Database aday olan veritabanları ve tabloları nasıl tanımlayacağınızı öğrenin. |
-|[Stretch Database için sınırlamalar](sql-server-stretch-database-limitations.md) |Stretch Database için sınırlamalar hakkında bilgi edinin. |
-|[Stretch Database’e genel bakış](sql-server-stretch-database-overview.md) |Stretch Database’in soğuk verilerinizi şeffaf ve güvenli bir şekilde Microsoft Azure bulutuna nasıl geçirdiğini öğrenin. |
-|[Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak kullanmaya başlama](sql-server-stretch-database-wizard.md) |Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak, bir veritabanının Stretch Database için nasıl yapılandırılacağını öğrenin. |
+|[Stretch Database Advisor 'ı çalıştırarak Stretch Database veritabanlarını ve tabloları tanımla](/sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor) |Stretch Database aday olan veritabanları ve tabloları nasıl tanımlayacağınızı öğrenin. |
+|[Stretch Database için sınırlamalar](/sql/sql-server/stretch-database/limitations-for-stretch-database) |Stretch Database için sınırlamalar hakkında bilgi edinin. |
+|[Stretch Database’e genel bakış](/sql/sql-server/stretch-database/stretch-database) |Stretch Database’in soğuk verilerinizi şeffaf ve güvenli bir şekilde Microsoft Azure bulutuna nasıl geçirdiğini öğrenin. |
+|[Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak kullanmaya başlama](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard) |Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak, bir veritabanının Stretch Database için nasıl yapılandırılacağını öğrenin. |
 
 ## <a name="enable"></a>Etkinleştir
 | Başlık | Açıklama |
 |:--- |:--- |
-|[Stretch Database‘i bir veritabanı için etkinleştirme](sql-server-stretch-database-enable-database.md) |Stretch Database için bir veritabanını yapılandırmayı öğrenin. |
-|[Stretch Database’i bir tablo için etkinleştirme](sql-server-stretch-database-enable-table.md) |Stretch Database için bir tablo yapılandırmayı öğrenin. |
-|[Filtre işlevi kullanarak geçirilecek satırları seçin (Stretch Database)](sql-server-stretch-database-predicate-function.md) |Filtre işlevi kullanarak geçirilecek satırları seçme hakkında bilgi edinin. |
+|[Stretch Database‘i bir veritabanı için etkinleştirme](/sql/sql-server/stretch-database/enable-stretch-database-for-a-database) |Stretch Database için bir veritabanını yapılandırmayı öğrenin. |
+|[Stretch Database’i bir tablo için etkinleştirme](/sql/sql-server/stretch-database/enable-stretch-database-for-a-table) |Stretch Database için bir tablo yapılandırmayı öğrenin. |
+|[Filtre işlevi kullanarak geçirilecek satırları seçin (Stretch Database)](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database) |Filtre işlevi kullanarak geçirilecek satırları seçme hakkında bilgi edinin. |
 
 ## <a name="manage"></a>Yönetme
 | Başlık | Açıklama |
 |:--- |:--- |
-|[Stretch Database devre dışı bırak ve uzak verileri geri getir](sql-server-stretch-database-disable.md) |Bir tablo için Stretch Database devre dışı bırakmayı ve isteğe bağlı olarak uzak verileri geri getirmeyi öğrenin. |
-|[Stretch Database’i yönetme ve sorun giderme](sql-server-stretch-database-manage.md) |Stretch Database yönetme ve sorunlarını giderme hakkında bilgi edinin. |
-|[Veri geçişini izleme ve sorun giderme (Stretch Database)](sql-server-stretch-database-monitor.md) |Veri geçişinin durumunu izlemeyi öğrenin. |
-|[Veri geçişini duraklatma ve devam ettirme (Stretch Database)](sql-server-stretch-database-pause.md) |Azure 'a veri geçirmeyi duraklatmayı veya sürdürmeyi öğrenin. |
+|[Stretch Database devre dışı bırak ve uzak verileri geri getir](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data) |Bir tablo için Stretch Database devre dışı bırakmayı ve isteğe bağlı olarak uzak verileri geri getirmeyi öğrenin. |
+|[Stretch Database’i yönetme ve sorun giderme](/sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database) |Stretch Database yönetme ve sorunlarını giderme hakkında bilgi edinin. |
+|[Veri geçişini izleme ve sorun giderme (Stretch Database)](/sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database) |Veri geçişinin durumunu izlemeyi öğrenin. |
+|[Veri geçişini duraklatma ve devam ettirme (Stretch Database)](/sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database) |Azure 'a veri geçirmeyi duraklatmayı veya sürdürmeyi öğrenin. |
 
 ## <a name="security"></a>Güvenlik
 | Başlık | Açıklama |
@@ -55,6 +55,5 @@ Bu konu, Azure 'un **SQL Server Stretch Database** hizmetine doğrudan uygulanan
 ## <a name="backup-and-recovery"></a>Yedekleme ve kurtarma
 | Başlık | Açıklama |
 |:--- |:--- |
-|[Esnetme özellikli veritabanlarını yedekleme](sql-server-stretch-database-backup.md) |Esnetme özellikli veritabanlarını nasıl yedekleyeceğinizi öğrenin \- . |
-|[Esnetme özellikli veritabanlarını geri yükleme](sql-server-stretch-database-restore.md) |Esnetme özellikli veritabanlarını nasıl geri yükleyeceğinizi öğrenin \- . |
-
+|[Esnetme özellikli veritabanlarını yedekleme](/sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database) |Esnetme özellikli veritabanlarını nasıl yedekleyeceğinizi öğrenin \- . |
+|[Esnetme özellikli veritabanlarını geri yükleme](/sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database) |Esnetme özellikli veritabanlarını nasıl geri yükleyeceğinizi öğrenin \- . |

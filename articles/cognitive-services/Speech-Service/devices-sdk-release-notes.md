@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af66f2ec56551a5177cd9323d216e9bf4b0c41be
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212505"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021856"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Sürüm notları: konuşma cihazları SDK 'Sı
 
@@ -27,13 +27,13 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 - [Urdaha ıyı DDK](http://www.urbetter.com/products_56/278.html)desteği.
 - [Ses Yardımcısı](https://aka.ms/sdsdk-speaker)örneğimizde kullanılan [GGEC konuşmacı](https://aka.ms/sdsdk-download-speaker) için ikili dosyalar yayınlandı.
 - Raspberry Pi ve benzer cihazlarda Linux [ARM32](https://aka.ms/sdsdk-download-linux-arm32) ve [Linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64) için ikili dosyalar yayınlandı.
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.11.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.11.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 
 ## <a name="speech-devices-sdk-190"></a>Konuşma cihazları SDK 1.9.0:
 
 - [Urdaha ıyı DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64) için ilk ikililer sağlanır.
 - Roobo v1 artık konuşma SDK 'Sı için Maven kullanıyor
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.9.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.9.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 
 ## <a name="speech-devices-sdk-170"></a>Konuşma cihazları SDK 1.7.0:
 
@@ -44,22 +44,22 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 - Aynı konuşma/amaç tanıyıcı nesnesini kullanarak çok yönlü tanıma desteği.
 - İşlem, tanıma durdurulduğunda işlemin yanıt vermemesine neden olan sorunu geçici olarak düzeltir.
 - Örnek uygulamalar artık dosyanın biçimini göstermek için örnek katılımcılar. Properties dosyası içerir.
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.7.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.7.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 
 ## <a name="speech-devices-sdk-160"></a>Konuşma cihazları SDK 1.6.0:
 
-- Ortak [örnek uygulamayla](https://aka.ms/sdsdk-download) Windows ve Linux 'Ta [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) 'yi destekleme
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.6.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- Ortak [örnek uygulamayla](./speech-devices-sdk.md) Windows ve Linux 'Ta [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) 'yi destekleme
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.6.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 
 ## <a name="speech-devices-sdk-151"></a>Konuşma cihazları SDK 1.5.1:
 
-- Örnek uygulamada [konuşma dökümünü](conversation-transcription-service.md) dahil edin.
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.5.1 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- Örnek uygulamada [konuşma dökümünü](./conversation-transcription.md) dahil edin.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.5.1 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 
 ## <a name="speech-devices-sdk-150-2019-may-release"></a>Konuşma cihazları SDK 1.5.0:2019-yayın Mayıs
 
 - Konuşma cihazları SDK 'Sı artık GA ve artık geçişli bir önizleme değildir.
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.5.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.5.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 - Yeni anahtar sözcük teknolojisi önemli kalite iyileştirmeleri getirir, bkz. son değişiklikler.
 - Geliştirilmiş en fazla alan tanıma için yeni ses işleme işlem hattı.
 
@@ -70,30 +70,30 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 
 ## <a name="speech-devices-sdk-140-2019-apr-release"></a>Konuşma cihazları SDK 1.4.0:2019-Nis sürümü
 
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.4.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.4.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 
 ## <a name="speech-devices-sdk-131-2019-mar-release"></a>Konuşma cihazları SDK 1.3.1:2019-Mar sürümü
 
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.3.1 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.3.1 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 - Anahtar sözcük işleme güncelleştirildi, bkz. son değişiklikler.
 - Örnek uygulama, konuşma tanıma ve çeviri için dil seçimi ekler.
 
 **Yeni değişiklikler**
 
-- [Anahtar sözcük yükleme](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) basitleştirildi, artık uygulamanın bir parçasıdır ve cihaza ayrı yükleme gerektirmez.
+- [Anahtar sözcük yükleme](./custom-keyword-basics.md) basitleştirildi, artık uygulamanın bir parçasıdır ve cihaza ayrı yükleme gerektirmez.
 - Anahtar sözcük tanıma değiştirilmiştir ve iki olay desteklenir.
   - `RecognizingKeyword,` konuşma sonucu 'nın (doğrulanmamış) anahtar sözcük metnini içerdiğini belirtir.
   - `RecognizedKeyword`, anahtar sözcük tanımanın verilen anahtar sözcüğü tanımayı tamamladığını gösterir.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Konuşma cihazları SDK 1.1.0:2018-kas sürümü
 
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.1.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.1.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 - En fazla alan konuşma tanıma doğruluğu, gelişmiş ses işleme algoritmamıza göre geliştirildi.
 - Örnek uygulama, Çince konuşma tanıma desteği ekledi.
 
 ## <a name="speech-devices-sdk-101-2018-oct-release"></a>Konuşma cihazları SDK 1.0.1:2018-eki açılan sürümü
 
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.0.1 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 1.0.1 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](./releasenotes.md)bakın.
 - Konuşma tanıma doğruluğu, geliştirilmiş ses işleme algoritmamıza göre iyileştirilen
 - Tek bir sürekli tanıma ses oturumu hatası düzeltildi.
 
@@ -105,7 +105,7 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>Konuşma cihazları SDK 0.5.0:2018-Ağu yayını
 
 - Ses işleme kodundaki bir hatayı düzelterek konuşma tanımanın doğruluğu geliştirilmiştir.
-- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 0.5.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release)bakın.
+- [Konuşma SDK](./speech-sdk.md) bileşeni 0.5.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release)bakın.
 
 ## <a name="speech-devices-sdk-0212733-2018-may-release"></a>Konuşma cihazları SDK 0.2.12733:2018-yayın Mayıs
 

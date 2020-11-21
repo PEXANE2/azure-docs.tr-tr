@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 654d7b4ddb332906aba330da20d42a0e16ec79e6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461813"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021448"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Izleyici ile neler izlenir?
 Bu makalede, Azure Izleyici tarafından izlenen farklı uygulama ve hizmetler açıklanır. 
@@ -126,7 +126,6 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Yönetilen Uygulamalar  | Hayır | Hayır | Hayır |  |
 |Haritalar  | Hayır | Hayır | Hayır |  |
 |Media Services | Yes | Yes | Hayır |  |
-|Microsoft Flow | Hayır | Hayır | Hayır |  |
 |Microsoft Yönetilen Masaüstü | Hayır | Hayır | Hayır |  |
 |Microsoft PowerApps | Hayır | Hayır | Hayır |  |
 |Microsoft Social Engagement | Hayır | Hayır | Hayır |  |
@@ -137,6 +136,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Notification Hubs | Yes | Hayır | Hayır |  |
 |Açık Veri Kümeleri | Hayır | Hayır | Hayır |  |
 |İlke | Hayır | Hayır | Hayır |  |
+|Power Automate | Hayır | Hayır | Hayır |  |
 |Power BI Embedded | Yes | Yes | Hayır |  |
 |Özel Bağlantı | Hayır | Hayır | Hayır |  |
 |Proje biriktirme Iletişim platformu | Hayır | Hayır | Hayır |  |
@@ -145,7 +145,7 @@ Aşağıdaki tabloda Azure hizmetleri ve Azure Izleyici 'de topladıkları veril
 |Kaynak Grafı | Hayır | Hayır | Hayır |  |
 |Resource Manager | Hayır | Hayır | Hayır |  |
 |Perakende arama-Bing tarafından | Hayır | Hayır | Hayır |  |
-|Arama | Yes | Yes | Hayır |  |
+|Arayın | Yes | Yes | Hayır |  |
 |Service Bus | Yes | Yes | Hayır |  |
 |Service Fabric | Hayır | Yes | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için aracı gereklidir.  |
 |Kaydolma portalı | Hayır | Hayır | Hayır |  |

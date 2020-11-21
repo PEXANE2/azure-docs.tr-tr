@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322062"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023199"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir?
 
@@ -71,7 +71,7 @@ Aşağıdaki işletim sistemlerini destekliyoruz, bu nedenle dağıtmayı planla
 
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
 
-* Bir [Azure Active Directory](/azure/active-directory/).
+* Bir [Azure Active Directory](../active-directory/index.yml).
 * Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bunu, Azure AD Connect (Hibrit kuruluşlar için) veya Azure AD Domain Services (karma veya bulut kurumları için) kullanarak yapılandırabilirsiniz.
   * Azure Active Directory ile eşitlenmiş bir Windows Server AD. Kullanıcı Windows Server AD 'den kaynaklıdır ve Windows sanal masaüstü VM 'si Windows Server AD etki alanına katılır.
   * Azure Active Directory ile eşitlenmiş bir Windows Server AD. Kullanıcı Windows Server AD 'den kaynaklıdır ve Windows sanal masaüstü VM 'si Azure AD Domain Services etki alanına katılır.
@@ -85,7 +85,7 @@ Windows sanal masaüstüne bağlanmak için Kullanıcı gereksinimleri:
 
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
 
-* [Standart etki alanına katılmış](../active-directory-domain-services/active-directory-ds-comparison.md) veya [karma ad 'ye katılmış](../active-directory/devices/hybrid-azuread-join-plan.md). Sanal makineler Azure AD 'ye katılmış olamaz.
+* [Standart etki alanına katılmış](../active-directory-domain-services/compare-identity-solutions.md) veya [karma ad 'ye katılmış](../active-directory/devices/hybrid-azuread-join-plan.md). Sanal makineler Azure AD 'ye katılmış olamaz.
 * Aşağıdaki [desteklenen işletim sistemi görüntülerinden](#supported-virtual-machine-os-images)birini çalıştırın.
 
 >[!NOTE]
@@ -101,7 +101,7 @@ En iyi performans için, ağınızın aşağıdaki gereksinimleri karşıladığ
 * Masaüstleri ve uygulamalar barındıran VM 'Ler Yönetim hizmetine bağlandığında ağ trafiği ülke/bölge kenarlıklarının dışına akabilir.
 * Ağ performansını iyileştirmek için, oturum ana bilgisayarının VM 'lerinin yönetim hizmeti ile aynı Azure bölgesinde birlikte bulunmasını öneririz.
 
-[Mimari](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)belgelerimizin kurumsal Için Windows sanal masaüstü 'nün tipik bir mimari kurulumunu görebilirsiniz.
+[Mimari](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)belgelerimizin kurumsal Için Windows sanal masaüstü 'nün tipik bir mimari kurulumunu görebilirsiniz.
 
 ## <a name="supported-remote-desktop-clients"></a>Desteklenen uzak masaüstü istemcileri
 

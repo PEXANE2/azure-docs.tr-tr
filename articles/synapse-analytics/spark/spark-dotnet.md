@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fbf4eab55ec2cf8e4f0e27969ca4a22eb1f27ad
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 753c7ff48960711cbedbf6b5d8644a26502dd413
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578626"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023751"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın
 
@@ -74,9 +74,11 @@ Azure SYNAPSE Analytics Not defterinizde Apache Spark için .NET kullanmak istiy
 
 ### <a name="install-nuget-packages-in-notebooks"></a>NuGet paketlerini not defterlerine yükler
 
-NuGet paketinin adından önce sembolünü kullanarak, seçtiğiniz NuGet paketlerini Not defterinize yükleyebilirsiniz `#r` . Aşağıdaki diyagramda bir örnek gösterilmektedir:
+`#r nuget`NuGet paketinin adından önce MAGIC komutunu kullanarak, seçtiğiniz NuGet paketlerini Not defterinize yükleyebilirsiniz. Aşağıdaki diyagramda bir örnek gösterilmektedir:
 
 ![Spark .NET Not defteri NuGet paketini yüklemek için #r kullanmayı gösteren ekran görüntüsü](./media/apache-spark-development-using-notebooks/synapse-spark-dotnet-notebook-nuget.png)
+
+Not defterlerinde NuGet paketleri ile çalışma hakkında daha fazla bilgi edinmek için bkz. [.net etkileşimli belgeleri](https://github.com/dotnet/interactive/blob/main/docs/nuget-overview.md).
 
 ### <a name="net-for-apache-spark-c-kernel-features"></a>Apache Spark C# çekirdek özellikleri için .NET
 

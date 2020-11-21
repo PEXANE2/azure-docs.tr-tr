@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761099"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024237"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Öğretici: Azure static Web Apps 'de Blazor ile statik bir Web uygulaması oluşturma
 
@@ -33,7 +33,7 @@ Azure statik Web Apps, sunucusuz bir arka uç tarafından desteklenen statik Web
 
 Bu öğreticide öne çıkan uygulama üç farklı Visual Studio projeden oluşur:
 
-- **API**: statik uygulamaya Hava durumu BILGILERI sağlayan API uç noktasını uygulayan C# Azure işlevleri uygulaması. , [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs) Nesne dizisini döndürür `WeatherForecast` .
+- **API**: statik uygulamaya Hava durumu BILGILERI sağlayan API uç noktasını uygulayan C# Azure işlevleri uygulaması. **Dalgalı değer işlevi** bir nesne dizisi döndürür `WeatherForecast` .
 
 - **İstemci**: ön uç Blazor Web derleme projesi. Tüm yolların _index.html_ dosyasına sunulmasını sağlamak için bir [geri dönüş yolu](#fallback-route) uygulanır.
 
@@ -79,7 +79,7 @@ Artık depo oluşturulduğuna göre Azure portal bir statik Web uygulaması olu�
 
 _Temel bilgiler_ bölümünde yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Blazor uygulamasını Tamam":::
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Temel bilgiler sekmesi":::
 
 1. _Azure aboneliğinizi_ seçin
 1. Yeni bir _kaynak grubu_ seçin veya oluşturun
@@ -91,7 +91,7 @@ _Temel bilgiler_ bölümünde yeni uygulamanızı yapılandırıp bir GitHub dep
 
 GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Blazor uygulamasını Tamam":::
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Depo ayrıntıları":::
 
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-First-static-blazor-App** ' i seçin
@@ -103,17 +103,17 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
     - _Derleme ön ayarları_ açılır listesinden **Blazor** ' ı seçin ve tüm varsayılan değerleri saklayın.
 
-1. **Gözden geçir ve oluştur**’u seçin.
+1. **Gözden geçir + oluştur**’u seçin.
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="Blazor uygulamasını Tamam":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="İnceleme oluştur düğmesi":::
 
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Blazor uygulamasını Tamam":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Oluştur düğmesi":::
 
 1. **Kaynağa git**’i seçin.
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Blazor uygulamasını Tamam":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Kaynağa git düğmesi":::
 
 ## <a name="view-the-website"></a>Web sitesini görüntüleme
 
@@ -123,7 +123,7 @@ Yeni statik sitenize gidebilmeniz için önce dağıtım derlemesinin çalışt�
 
 Statik Web Apps genel bakış penceresinde web uygulamanızla etkileşime başlamanıza yardımcı olacak bir dizi bağlantı görüntülenir.
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Blazor uygulamasını Tamam":::
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Genel bakış penceresi":::
 
 1. Yazılı başlığa tıkladığınızda, _GitHub eylemlerinizin durumunu denetlemek için buraya tıklayın_ . Bu işlem sizi deponuza karşı çalışan GitHub eylemlerine götürür. Dağıtım işinin tamamlandığını doğruladıktan sonra, oluşturulan URL aracılığıyla Web sitenize gidebilirsiniz.
 

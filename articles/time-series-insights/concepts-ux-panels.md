@@ -10,26 +10,26 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfbbdd1b30cba74cf4f63d6b5e84c2e616e1a0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653800"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020989"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
 
 Bu makalede Azure Time Series Insights Gen2 [demo ortamında](https://insights.timeseries.azure.com/preview/demo)kullanılabilen çeşitli özellikler ve seçenekler açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Time Series Insights Gezginini kullanmaya başlamak için şunları yapmanız gerekir:
 
-* Sağlanmış bir Azure Time Series Insights Gen2 ortamı vardır. [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) öğreticisini okuyarak bir örnek sağlama hakkında daha fazla bilgi edinin.
-* Hesap için oluşturduğunuz Azure Time Series Insights Gen2 ortamına [veri erişimi sağlar](./time-series-insights-data-access.md) . Başkalarının yanı sıra kendinize de erişim sağlayabilirsiniz.
+* Sağlanmış bir Azure Time Series Insights Gen2 ortamı vardır. [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) öğreticisini okuyarak bir örnek sağlama hakkında daha fazla bilgi edinin.
+* Hesap için oluşturduğunuz Azure Time Series Insights Gen2 ortamına [veri erişimi sağlar](./concepts-access-policies.md) . Başkalarının yanı sıra kendinize de erişim sağlayabilirsiniz.
 * Ortama veri göndermek için Azure Time Series Insights Gen2 ortamına bir olay kaynağı ekleyin:
-  * [Bir olay hub 'ına nasıl bağlanacağınızı](./time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin
-  * [IoT Hub 'ına nasıl bağlanacağınızı](./time-series-insights-how-to-add-an-event-source-iothub.md) öğrenin
+  * [Bir olay hub 'ına nasıl bağlanacağınızı](./how-to-ingest-data-event-hub.md) öğrenin
+  * [IoT Hub 'ına nasıl bağlanacağınızı](./how-to-ingest-data-iot-hub.md) öğrenin
 
 ## <a name="explore-the-azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezginini keşfet
 
@@ -133,7 +133,7 @@ Burada, **Çakışan bir grafiğe** örnek verilmiştir:
 
   [![Çakışan grafik seçeneği](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-**Diğer eylemler** düğmesi, **indirmeyi CSV olarak**görüntülemek, **Power BI bağlanmak**, **grafik verilerini tablo olarak göstermek**ve **Ham olaylar seçeneklerini araştırmak** için genişler.
+**Diğer eylemler** düğmesi, **indirmeyi CSV olarak** görüntülemek, **Power BI bağlanmak**, **grafik verilerini tablo olarak göstermek** ve **Ham olaylar seçeneklerini araştırmak** için genişler.
 
   [![Diğer eylemler seçeneği](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
@@ -160,7 +160,7 @@ Azure Time Series Insights Gen2 ile çalışırken, önce bir zaman aralığı s
 
 1. **Dış tarih aralığı kaydırıcı denetimi**: bitiş tarihi aralığını seçmek için uç nokta denetimlerini kullanın. Bu, iç tarih aralığı denetiminizdeki kullanılabilir olacak.
 
-1. **Zaman aralığı kaydırıcı denetimi**: son **30 dakika**, **son 12 saat**veya **özel bir Aralık**gibi önceden ayarlanmış zaman aralığı seçimleri arasında hızlıca geçiş yapmak için bunu kullanın. Bu değerin değiştirilmesi, Aralık boyutu kaydırıcı aracında ele alınan kullanılabilir Aralık aralıklarını de değiştirir.
+1. **Zaman aralığı kaydırıcı denetimi**: son **30 dakika**, **son 12 saat** veya **özel bir Aralık** gibi önceden ayarlanmış zaman aralığı seçimleri arasında hızlıca geçiş yapmak için bunu kullanın. Bu değerin değiştirilmesi, Aralık boyutu kaydırıcı aracında ele alınan kullanılabilir Aralık aralıklarını de değiştirir.
 
    [![Seçim paneline ve](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
@@ -221,7 +221,7 @@ Azure Time Series Insights Gen2 terms Düzenleyicisi paneli aşağıdaki paramet
 | `IN` | Dize, bool, Double, DateTime, TimeSpan, NULL | Tüm işlenenler aynı türde veya NULL sabit olmalıdır. |
 | `HAS` | Dize | Sağ tarafta yalnızca sabit dize sabit değerlerine izin verilir. Boş dize ve NULL değerlerine izin verilmez. |
 
-Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek için, okuma [zaman serisi ifadesi (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek için, okuma [zaman serisi ifadesi (TSX)](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 ### <a name="examples-of-where-clauses"></a>WHERE yan tümcelerinin örnekleri
 
@@ -233,7 +233,7 @@ Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek
 
   [![Sorgulanan ve filtrelenmiş görünüm bir](media/v2-update-explorer/s1-s2-preview-filtered-view.png)](media/v2-update-explorer/s1-s2-preview-filtered-view.png#lightbox)
 
-Aşağıdaki görüntüde gösterildiği gibi görünür simgesini seçerek grafik panelinde öğeleri görüntüleyebilir ve gizleyebilirsiniz. Sorguları tamamen kaldırmak için kırmızı **X**seçeneğini belirleyin.
+Aşağıdaki görüntüde gösterildiği gibi görünür simgesini seçerek grafik panelinde öğeleri görüntüleyebilir ve gizleyebilirsiniz. Sorguları tamamen kaldırmak için kırmızı **X** seçeneğini belirleyin.
 
   [![Sorgulanan ve filtrelenmiş bir seçeneği iptal et](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
@@ -245,4 +245,4 @@ Aşağıdaki görüntüde gösterildiği gibi görünür simgesini seçerek graf
 
 * Azure Time Series Insights Gen2 'de [veri modelleme](./concepts-model-overview.md) hakkında bilgi edinin.
 
-* Ortamınızı [tanılamayı ve sorun gidermeyi](./time-series-insights-update-how-to-troubleshoot.md) öğrenin.
+* Ortamınızı [tanılamayı ve sorun gidermeyi](./how-to-diagnose-troubleshoot.md) öğrenin.

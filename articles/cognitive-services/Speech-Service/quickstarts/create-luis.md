@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f547b353091cc81816f0974fced8d4dc836d22b2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391613"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023829"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Hızlı başlangıç: bir LUSıS uç noktası anahtarı alma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
@@ -35,9 +35,9 @@ LUSıS üç tür anahtar kullanır:
 |--------|-------|
 |Yazma|LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar|
 |Başlangıç|LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar|
-|Uç Noktası |Belirli bir Lua uygulamasına erişim yetkisi verir|
+|Uç Nokta |Belirli bir Lua uygulamasına erişim yetkisi verir|
 
-Bu öğretici için uç nokta anahtar türüne ihtiyacınız vardır. Öğretici, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneğini kullanır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
+Bu öğretici için uç nokta anahtar türüne ihtiyacınız vardır. Öğretici, [önceden oluşturulmuş giriş Otomasyonu uygulama](../../luis/luis-get-started-create-app.md) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneğini kullanır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 
 Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma hizmeti tümleştirmesini etkinleştirmez ve bu öğreticiyle çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu öğretici için ücretsiz abonelik katmanını kullanabilirsiniz.
 
@@ -50,9 +50,9 @@ Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](http
 1. Aşağı kaydırarak **kaynaklar ve anahtarlar** bölümüne gidin ve **kaynak ata**' yı seçin.
 1. **Uygulamanıza anahtar ata** iletişim kutusunda aşağıdaki değişiklikleri yapın:
 
-   * **Kiracı**altında **Microsoft**' u seçin.
-   * **Abonelik adı**bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
-   * **Anahtar**altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
+   * **Kiracı** altında **Microsoft**' u seçin.
+   * **Abonelik adı** bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
+   * **Anahtar** altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
 
    Kısa süre içinde yeni abonelik sayfanın altındaki tabloda görüntülenir.
 

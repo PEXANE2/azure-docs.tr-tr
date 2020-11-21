@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9abd1f305e47eca743dc9274e0ec1f0a950dd6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588607"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021278"
 ---
 # <a name="translator-30-languages"></a>Translator 3,0: Diller
 
@@ -34,7 +34,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 <table width="100%">
   <th width="20%">Sorgu parametresi</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>api-sürümü</td>
     <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` .</td>
@@ -48,8 +48,8 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 İstek üst bilgileri:
 
 <table width="100%">
-  <th width="20%">Üst bilgiler</th>
-  <th>Açıklama</th>
+  <th width="20%">Üst Bilgiler</th>
+  <th>Description</th>
   <tr>
     <td>Accept-Language</td>
     <td>*Isteğe bağlı istek üst bilgisi*.<br/>Kullanıcı arabirimi dizelerinde kullanılacak dil. Yanıttaki alanlardan bazıları dilin veya bölge adlarının adlarıdır. Bu adların döndürüleceği dili tanımlamak için bu parametreyi kullanın. Dil, iyi biçimlendirilmiş bir BCP 47 Language etiketi sağlayarak belirtilir. Örneğin, `fr` Fransızca 'da ad istemek için değerini kullanın veya `zh-Hant` geleneksel Çince 'de ad istemek için değeri kullanın.<br/>Adlar, hedef dil belirtilmediğinde veya yerelleştirme kullanılabilir olmadığında Ingilizce dilinde sağlanır.
@@ -229,8 +229,8 @@ Desteklenen dillerin listesi sıklıkla değişmeyecektir. Ağ bant genişliğin
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
 <table width="100%">
-  <th width="20%">Üst bilgiler</th>
-  <th>Açıklama</th>
+  <th width="20%">Üst Bilgiler</th>
+  <th>Description</th>
   <tr>
     <td>Özelliği</td>
     <td>İstenen desteklenen diller grupları için varlık etiketinin geçerli değeri. Sonraki istekleri daha verimli hale getirmek için, istemci `ETag` değeri bir `If-None-Match` başlık alanında gönderebilir.
@@ -248,7 +248,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 <table width="100%">
   <th width="20%">Durum Kodu</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Başarılı.</td>
@@ -275,7 +275,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
 </table> 
 
-Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator başvurusu sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
+Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator başvurusu sayfasında](./v3-0-reference.md#errors)bulunabilir. 
 
 ## <a name="examples"></a>Örnekler
 

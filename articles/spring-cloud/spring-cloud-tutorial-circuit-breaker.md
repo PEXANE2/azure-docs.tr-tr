@@ -7,18 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0edcdbfec07c032f095cc03eb91be8cf0785b58a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 53884c2f6d9f2e8cbb5676e9ac10e8fb15ed919e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844855"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024288"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Azure Spring Cloud ile devre kesici panosunu kullanma
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java
 
-::: zone pivot="programming-language-java"
 Yay [bulutu Netflix Turbin](https://github.com/Netflix/Turbine) , birden çok [hyte x](https://github.com/Netflix/Hystrix) ölçüm akışını toplamak için yaygın olarak kullanılır. böylece, akışlar hyçabax Panosu kullanılarak tek bir görünümde izlenebilir. Bu öğreticide, Azure Spring Cloud 'da nasıl kullanılacağı gösterilmektedir.
 > [!NOTE]
 > Netflix Hyçabax birçok mevcut yay bulutu uygulamasında yaygın olarak kullanılır, ancak artık etkin bir geliştirme aşamasındadır. Yeni proje geliştiriyorsanız, bunun yerine [resilience4j](https://github.com/resilience4j/resilience4j)gibi Spring Cloud devre kesici uygulamalarını kullanın. Bu öğreticide gösterilen türbin 'ten farklı olarak, yeni yay bulutu devre kesici çerçevesi, ölçüm verileri işlem hattının tüm uygulamalarını mikro ölçüm olarak birleştirir. Azure Spring Cloud 'da mikro ölçüm 'i desteklemeye devam ediyoruz, bu nedenle bu öğretici bu öğreticide ele alınmayacak.
@@ -84,4 +83,4 @@ Bir Web uygulaması olarak Hyçabax panosu üzerinde çalışıyor olmalıdır `
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure CLı üzerinde bir hizmet örneği sağlama](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
 * [Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama](./spring-cloud-tutorial-prepare-app-deployment.md)
-::: zone-end
+

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a61dd6c17ad4d11c6dd7294c9a4f96270748c16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630670"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021771"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 içinde zaman serisi modeli
 
@@ -24,7 +24,7 @@ Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights Gen2
 > [!TIP]
 >
 > * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
-> * Azure Time Series Insights gezginini kullanarak [zaman serisi modeliyle nasıl çalışacağınızı](/azure/time-series-insights/how-to-edit-your-model) öğrenin.
+> * Azure Time Series Insights gezginini kullanarak [zaman serisi modeliyle nasıl çalışacağınızı](./how-to-edit-your-model.md) öğrenin.
 
 ## <a name="summary"></a>Özet
 
@@ -61,7 +61,7 @@ Zaman serisi bağlamı 'nı yönetmeyi basit ve kolay hale getirmek için amaç 
 
 * Skaler işlevler, toplama işlemleri vb. kullanarak hesaplamalar veya formüller yazın ve yönetin.
 * Gezinti, arama ve başvuruyu etkinleştirmek için üst-alt ilişkilerini tanımlayın.
-* *Örnek alanları*olarak tanımlanan örneklerle ilişkili özellikleri tanımlayın ve bunları hiyerarşi oluşturmak için kullanın.
+* *Örnek alanları* olarak tanımlanan örneklerle ilişkili özellikleri tanımlayın ve bunları hiyerarşi oluşturmak için kullanın.
 
 ### <a name="components"></a>Bileşenler
 
@@ -75,15 +75,15 @@ Bu bileşenler, zaman serisi modeli belirtmek ve verilerinizi düzenlemek için 
 
 [![Zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Bir zaman serisi modeli [Azure Time Series Insights Gezgini](/azure/time-series-insights/concepts-model-overview)aracılığıyla oluşturulup yönetilebilir. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)aracılığıyla yönetilebilir.
+Bir zaman serisi modeli [Azure Time Series Insights Gezgini]()aracılığıyla oluşturulup yönetilebilir. Zaman serisi modeli ayarları, [model ayarları API 'si](/rest/api/time-series-insights/reference-model-apis)aracılığıyla yönetilebilir.
 
 ## <a name="time-series-model-instances"></a>Zaman serisi model örnekleri
 
 Zaman serisi model *örnekleri* , zaman serisinin kendi sanal temsilleridir.
 
-Çoğu durumda, örnekler otomatik olarak **DeviceID** veya **AssetID**tarafından tanımlanır ve bu, zaman serisi kimlikleri olarak kaydedilir.
+Çoğu durumda, örnekler otomatik olarak **DeviceID** veya **AssetID** tarafından tanımlanır ve bu, zaman serisi kimlikleri olarak kaydedilir.
 
-Örneklere, zaman serisi KIMLIĞI, tür, ad, açıklama, hiyerarşiler ve örnek alanları gibi *örnek özellikleri*olarak adlandırılan açıklayıcı bilgiler vardır. En azından, örnek özellikleri hiyerarşi bilgilerini içerir.
+Örneklere, zaman serisi KIMLIĞI, tür, ad, açıklama, hiyerarşiler ve örnek alanları gibi *örnek özellikleri* olarak adlandırılan açıklayıcı bilgiler vardır. En azından, örnek özellikleri hiyerarşi bilgilerini içerir.
 
 *Örnek alanları* , hiyerarşi düzeyleri ve üretici, işleç vb. değerleri içerebilen açıklayıcı bilgilerin bir koleksiyonudur.
 
@@ -95,13 +95,13 @@ Azure Time Series Insights Gen2 ortamı için bir olay kaynağı yapılandırıl
 
 ### <a name="instance-properties"></a>Örnek özellikleri
 
-Örnekler **Timeseriesıd**, **TypeId**, **Name**, **Description**, **hierarchyıds**ve **ınstancefields**tarafından tanımlanır. Her örnek yalnızca bir *türe*ve bir veya daha fazla *hiyerarşilere*eşlenir.
+Örnekler **Timeseriesıd**, **TypeId**, **Name**, **Description**, **hierarchyıds** ve **ınstancefields** tarafından tanımlanır. Her örnek yalnızca bir *türe* ve bir veya daha fazla *hiyerarşilere* eşlenir.
 
 | Özellik | Açıklama |
 | --- | ---|
 | Timeseriesıd | Örneğin ilişkilendirildiği zaman serisinin benzersiz KIMLIĞI. Çoğu durumda, örnekler DeviceID veya assetId gibi bir özellik tarafından benzersiz şekilde tanımlanır. Bazı durumlarda, 3 ' e kadar özellik birleştiren daha belirli bir bileşik KIMLIK kullanılabilir. |
 | Türü | Örneğin ilişkilendirildiği zaman serisi modeli türünün büyük/küçük harfe duyarlı benzersiz dize KIMLIĞI. Varsayılan olarak, bulunan tüm yeni örnekler varsayılan bir türle ilişkili alır.
-| name | **Name** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. **Ad** yoksa, varsayılan olarak **Timeseriesıd değerini**alır. Bir ad sağlanmışsa, **Timeseriesıd** [yine de kullanılabilir.](time-series-insights-update-explorer.md#4-time-series-well) |
+| name | **Name** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. **Ad** yoksa, varsayılan olarak **Timeseriesıd değerini** alır. Bir ad sağlanmışsa, **Timeseriesıd** [yine de kullanılabilir.](./concepts-ux-panels.md#4-time-series-well) |
 | açıklama | Örneğin metin açıklaması. |
 | Hierarchyıds | Örneğin hangi hiyerarşilerin ait olduğunu tanımlar. |
 | ınstancefields | Bir örneğin ve bir örneği tanımlayan herhangi bir statik verinin özellikleri. Bunlar hiyerarşi veya hiyerarşi dışı özelliklerin değerlerini tanımlar, Ayrıca, arama işlemlerini gerçekleştirmek için dizin oluşturmayı da destekler. |
@@ -129,7 +129,7 @@ Azure Time Series Insights Gen2 ortamı için bir olay kaynağı yapılandırıl
 ```
 
 > [!TIP]
-> Örnek API oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)okuyun.
+> Örnek API oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](./concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](/rest/api/time-series-insights/reference-model-apis#instances-api)okuyun.
 
 ## <a name="time-series-model-hierarchies"></a>Zaman serisi model hiyerarşileri
 
@@ -143,7 +143,7 @@ Verilen bir Azure Time Series Insights Gen2 ortamında birden çok hiyerarşi ya
 
 ### <a name="hierarchy-definition"></a>Hiyerarşi tanımı
 
-Hiyerarşiler hiyerarşi **kimliği**, **ad**ve **kaynak**tarafından tanımlanır.
+Hiyerarşiler hiyerarşi **kimliği**, **ad** ve **kaynak** tarafından tanımlanır.
 
 | Özellik | Açıklama |
 | ---| ---|
@@ -186,7 +186,7 @@ Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 * `ManufactureDate` üst ve alt öğesi olan bir hiyerarşiyi tanımlar `year` `month` . Her biri `ManufactureDate` birden çok içerebilir `years` , bu da birden fazla bulunabilir `months` .
 
 > [!TIP]
-> Hiyerarşi API 'SI oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api)okuyun.
+> Hiyerarşi API 'SI oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](/rest/api/time-series-insights/reference-model-apis#hierarchies-api)okuyun.
 
 ### <a name="hierarchy-example"></a>Hiyerarşi örneği
 
@@ -216,7 +216,7 @@ Bu **hiyerarşinin** `building` , `floor` , ve hiyerarşisinde `room` **ınstanc
 | ID4 | "derleniyor" = "1000", "Floor" = "10"  |
 | ID5 | Hiçbir "derleme", "kat" veya "Oda" ayarlanmamış. |
 
-**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat*ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights Explorer](time-series-insights-update-explorer.md) 'ın **H1** hiyerarşisinin bir parçası olarak görüntülenir.
+**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat* ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights Explorer](./concepts-ux-panels.md) 'ın **H1** hiyerarşisinin bir parçası olarak görüntülenir.
 
 Bunlar, belirtilen veri hiyerarşisine uygun olmadıkları için, *üst öğe olmayan örnekler* altında sınıflandırılmaktadır.
 
@@ -224,18 +224,18 @@ Bunlar, belirtilen veri hiyerarşisine uygun olmadıkları için, *üst öğe ol
 
 Zaman serisi model *türleri* , hesaplamalar yapmak için değişkenler veya formüller tanımlamanıza yardımcı olur. Türler belirli bir örnekle ilişkilendirilir.
 
-Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir zaman serisi model örneği, *Ortalama sıcaklık*, *en az sıcaklık*ve *en fazla sıcaklık*değişkenleriyle oluşan *sıcaklık algılayıcısı*türünde olabilir.
+Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir zaman serisi model örneği, *Ortalama sıcaklık*, *en az sıcaklık* ve *en fazla sıcaklık* değişkenleriyle oluşan *sıcaklık algılayıcısı* türünde olabilir.
 
 [Contoso rüzgar grubu gösterimi](https://insights.timeseries.azure.com/preview/samples) , ilgili örneklerle Ilişkili çeşitli zaman serisi modeli türlerini görselleştirir.
 
 [![Zaman serisi model türü örneği](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> API oluşturma, okuma, güncelleştirme ve silme (CRUD) türleri için, [veri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api).
+> API oluşturma, okuma, güncelleştirme ve silme (CRUD) türleri için, [veri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](/rest/api/time-series-insights/reference-model-apis#types-api).
 
 ### <a name="type-properties"></a>Tür özellikleri
 
-Zaman serisi model türleri **kimlik**, **ad**, **Açıklama**ve **değişkenler**tarafından tanımlanır.
+Zaman serisi model türleri **kimlik**, **ad**, **Açıklama** ve **değişkenler** tarafından tanımlanır.
 
 | Özellik | Açıklama |
 | ---| ---|
@@ -288,7 +288,7 @@ Zaman serisi model türlerinde, olaylar üzerinde formül ve hesaplama kurallar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Modeli API 'Ler aracılığıyla düzenleme hakkında daha fazla bilgi için [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) başvuru belgelerini okuyun.
+* Modeli API 'Ler aracılığıyla düzenleme hakkında daha fazla bilgi için [zaman serisi modeli](/rest/api/time-series-insights/reference-model-apis) başvuru belgelerini okuyun.
 
 * [Zaman serisi model değişkenleriyle](./concepts-variables.md) oluşturabileceğiniz formülleri ve hesaplamaları keşfet
 

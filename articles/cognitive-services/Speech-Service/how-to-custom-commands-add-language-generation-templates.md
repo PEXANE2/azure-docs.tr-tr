@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c5e3474d3992108ef61d34e745bc63c1f7a713
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85307961"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020955"
 ---
 # <a name="add-language-generation-templates-for-speech-responses"></a>Konuşma yanıtları için dil oluşturma şablonları ekleme
 
@@ -34,7 +34,7 @@ Aşağıdaki makalelerde bulunan adımları tamamlamış olmanız gerekir:
 
 ## <a name="language-generation-templates-overview"></a>Dil üretimi şablonlarına genel bakış
 
-Özel komutlar şablonları, BotFramework 'in [LG şablonlarını](https://aka.ms/speech/cc-lg-format)temel alır. Özel komutlar gerektiğinde yeni bir LG şablonu oluşturduğundan (yani, parametrelerde veya eylemlerdeki konuşma yanıtları için) LG şablonunun adını belirtmeniz gerekmez. Bu nedenle, şablonunuzu şöyle tanımlamak yerine şunları yapın:
+Özel komutlar şablonları, BotFramework 'in [LG şablonlarını](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)temel alır. Özel komutlar gerektiğinde yeni bir LG şablonu oluşturduğundan (yani, parametrelerde veya eylemlerdeki konuşma yanıtları için) LG şablonunun adını belirtmeniz gerekmez. Bu nedenle, şablonunuzu şöyle tanımlamak yerine şunları yapın:
 
  ```
     # CompletionAction
@@ -51,7 +51,7 @@ Yalnızca adı olmayan şablonun gövdesini aşağıdaki gibi tanımlamanız ger
 
 Bu değişiklik, istemciye gönderilen konuşma yanıtlarının çeşitlemesini tanıtır. Bu nedenle, aynı utterlik için ilgili konuşma yanıtı, belirtilen seçeneklerin dışında rastgele kullanıma sunulur.
 
-LG şablonlarından yararlanmak, uyarlamalı ifadeler kullanan komutlar için karmaşık konuşma yanıtları tanımlamanızı da sağlar. Daha fazla ayrıntı için [LG şablonları biçimine](https://aka.ms/speech/cc-lg-format) bakabilirsiniz. Varsayılan olarak özel komutlar, aşağıdaki küçük farklılıklar ile tüm özellikleri destekler:
+LG şablonlarından yararlanmak, uyarlamalı ifadeler kullanan komutlar için karmaşık konuşma yanıtları tanımlamanızı da sağlar. Daha fazla ayrıntı için [LG şablonları biçimine](/azure/bot-service/file-format/bot-builder-lg-file-format#templates) bakabilirsiniz. Varsayılan olarak özel komutlar, aşağıdaki küçük farklılıklar ile tüm özellikleri destekler:
 
 * LG şablonları varlıklarda $ {entityName} olarak temsil edilir. Özel komutlarda varlıkları kullanmıyoruz, ancak parametreler $ {parameterName} veya {parameterName} gösterimlerden biriyle değişken olarak kullanılabilir
 * Şablon kompozisyonu ve genişletmesi özel komutlarda desteklenmez. Bunun nedeni, dosyayı doğrudan düzenlememelisiniz `.lg` , ancak yalnızca otomatik olarak oluşturulan şablonların yanıtları.
@@ -110,8 +110,8 @@ Uygulamanızı aşağıdaki şekilde **eğitme** ve **Test** etme. Şablon değe
 > ![Parametrelere sahip örnek cümleler](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - **Genel sesler**için **sinir türleri** yalnızca belirli bölgelerde kullanılabilir. Kullanılabilirliği denetlemek için [bölgeye/uç noktaya göre standart ve sinir seslikleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)bölümüne bakın.
-> - **Özel sesler**Için özel ses projesi sayfasından oluşturulabilirler. Bkz. [özel sesle çalışmaya başlama](./how-to-custom-voice.md).
+> - **Genel sesler** için **sinir türleri** yalnızca belirli bölgelerde kullanılabilir. Kullanılabilirliği denetlemek için [bölgeye/uç noktaya göre standart ve sinir seslikleri](./regions.md#standard-and-neural-voices)bölümüne bakın.
+> - **Özel sesler** Için özel ses projesi sayfasından oluşturulabilirler. Bkz. [özel sesle çalışmaya başlama](./how-to-custom-voice.md).
 
 Artık uygulama, varsayılan ses yerine seçili sesle yanıt verir.
 

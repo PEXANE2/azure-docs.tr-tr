@@ -6,12 +6,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327213"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021380"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUSıS) içinde yapay zeka
 
@@ -38,7 +38,7 @@ Doğal dil işleme, LUSıS uygulamanız için aşağıdaki yollarla kullanılabi
 * LUŞU 'da yapılandırılabilir NLP yönleri:
     * [Simgeleştirme](luis-language-support.md#tokenization)
     * Morphology-Aksanlar, noktalama işaretleri ve Word Forms [API ayarları](luis-reference-application-settings.md)
-* Şu gibi diğer bilişsel [Hizmetler](../Welcome.md) tarafından sunulan sorgu utterliğini ön veya sonrası işleme:
+* Şu gibi diğer bilişsel [Hizmetler](../what-are-cognitive-services.md) tarafından sunulan sorgu utterliğini ön veya sonrası işleme:
     * [İde](../translator/translator-info-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>Doğal dil anlama (NLU)

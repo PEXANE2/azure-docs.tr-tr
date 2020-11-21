@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305865"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021958"
 ---
 # <a name="get-started-with-custom-keyword"></a>Özel Anahtar Sözcük ile çalışmaya başlama
 
@@ -39,7 +39,7 @@ Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. H
 
 1. [Özel anahtar sözcük](https://aka.ms/sdsdk-wakewordportal) sayfasında **Yeni bir proje** oluşturun. 
 
-1. Bir **ad** , isteğe bağlı bir **Açıklama** girin ve dili seçin. Dil başına bir proje gerekir ve şu anda dille sınırlı destek vardır `en-US` .
+1. Bir **ad**, isteğe bağlı bir **Açıklama** girin ve dili seçin. Dil başına bir proje gerekir ve şu anda dille sınırlı destek vardır `en-US` .
 
     ![Anahtar sözcük projenizi açıkla](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -47,9 +47,9 @@ Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. H
 
     ![Anahtar sözcük projenizi seçin](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. Yeni bir anahtar sözcük modeli oluşturmak için **modeli eğitme** ' ye tıklayın.
+1. Yeni bir anahtar sözcük modeli oluşturmak için **modeli eğitme**' ye tıklayın.
 
-1. Model için bir **ad** , isteğe bağlı bir **Açıklama** ve istediğiniz **anahtar sözcüğü** girin ve ardından **İleri** ' ye tıklayın. Etkin anahtar sözcük seçme [yönergelerine](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) bakın.
+1. Model için bir **ad** , isteğe bağlı bir **Açıklama** ve istediğiniz **anahtar sözcüğü** girin ve ardından **İleri**' ye tıklayın. Etkin anahtar sözcük seçme [yönergelerine](./custom-keyword-overview.md#choose-an-effective-keyword) bakın.
 
     ![Anahtar keliinizi girin](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -79,4 +79,4 @@ Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. H
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Konuşma CIHAZLARı SDK hızlı başlangıç](https://aka.ms/sdsdk-quickstart)ile özel anahtar keliinizi test edin.
+[Konuşma CIHAZLARı SDK hızlı başlangıç](./speech-devices-sdk-quickstart.md?pivots=platform-android)ile özel anahtar keliinizi test edin.

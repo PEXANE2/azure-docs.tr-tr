@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394960"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021023"
 ---
 # <a name="securing-azure-sql-edge"></a>Azure SQL Edge güvenliğini sağlama
 
@@ -34,14 +34,14 @@ Platform güvenliğini uygulamak, yetkisiz kullanıcıları ağdan tutmaya başl
 - Azure SQL Edge için kullanılan ana bilgisayar bağlantı noktalarını belirtme ve kısıtlama
 - Doğru erişim denetiminin Azure SQL Edge verilerini barındıran tüm veri birimlerine uygulandığından emin olmak. 
 
-Azure SQL Edge ağ protokolleri ve TDS uç noktaları hakkında daha fazla bilgi için [ağ protokolleri ve tds uç noktaları](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))konusuna bakın.
+Azure SQL Edge ağ protokolleri ve TDS uç noktaları hakkında daha fazla bilgi için [ağ protokolleri ve tds uç noktaları](/previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))konusuna bakın.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme 
+## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme 
 
 ### <a name="authentication"></a>Kimlik Doğrulaması  
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL Edge Şu anda yalnızca `SQL Authentication` mekanizmayı desteklemektedir.
 
-- *SQL kimlik doğrulaması* :
+- *SQL kimlik doğrulaması*:
 
     SQL kimlik doğrulaması, Kullanıcı adı ve parola kullanarak Azure SQL Edge 'e bağlanılırken bir kullanıcının kimlik doğrulamasını ifade eder. SQL Edge dağıtımı sırasında SQL **sa** oturum açma parolasının belirtilmesi gerekir. Bundan sonra, ek SQL oturum açmaları ve kullanıcılar, kullanıcıların Kullanıcı adı ve parola kullanarak bağlanmasına olanak tanıyan Sunucu Yöneticisi tarafından oluşturulabilir.
 

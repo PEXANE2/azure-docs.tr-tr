@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 58da5c73ea2674bbbd1536a163e163aa0ff31d96
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521297"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020938"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Öğretici: bir Azure Time Series Insights Gen2 ortamı ayarlama
 
 Bu öğretici, bir Azure Time Series Insights Gen2 *Kullandıkça Öde* (PAYG) ortamı oluşturma sürecinde size rehberlik eder.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -61,7 +61,7 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
 
    [![Cihaz benzetimi çözümünü sağlayın.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya**taşındığını bildiren iki bildirim görüntülenir.
+1. Sağlama tamamlandıktan sonra, dağıtım durumunun **sağlamadan** **başlamaya** taşındığını bildiren iki bildirim görüntülenir.
 
    >[!IMPORTANT]
    > Çözüm hızlandırıcıyı henüz girmeyin! Daha sonra geri döneceksiniz, bu Web sayfasını açık tutun.
@@ -91,8 +91,8 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya Azure Time Series Insights Gen2 ortam kaynağı için yeni bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. En iyi uygulama, cihaz simülatörü tarafından oluşturulan diğer IoT kaynaklarıyla aynı kaynak grubunu kullanmaktır. |
     | **Konum** | Azure Time Series Insights Gen2 ortamınız için bir veri merkezi bölgesi seçin. Ek gecikme süresini önlemek için, Azure Time Series Insights Gen2 ortamınızı cihaz simülatörü tarafından oluşturulan IoT Hub 'ınız ile aynı bölgede oluşturmak en iyisidir. |
     | **Katman** |  **Gen2 (L1)** seçeneğini belirleyin. Bu, Azure Time Series Insights Gen2 ürünü için SKU 'dır. |
-    | **Zaman serisi KIMLIĞI Özellik adı** | Zaman serisi örneklerinizi benzersiz bir şekilde tanımlayan değerleri içeren bir özelliğin adını girin. Zaman serisi KIMLIĞI olarak **özellik adı** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için, **_ıothub-Connection-Device-id_*_ yazın. Birleşik zaman serisi kimliği gibi zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md)okuyun. |
-    | _*Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
+    | **Zaman serisi KIMLIĞI Özellik adı** | Zaman serisi örneklerinizi benzersiz bir şekilde tanımlayan değerleri içeren bir özelliğin adını girin. Zaman serisi KIMLIĞI olarak **özellik adı** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için, **_ıothub-Connection-Device-id_* _ yazın. Birleşik zaman serisi kimliği gibi zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için, [zaman SERISI kimliği seçmek üzere en iyi uygulamaları](./how-to-select-tsid.md)okuyun. |
+    | _ *Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
     | **Depolama hesabı türü** | Yeni bir depolama hesabı için depolama türünü seçin. StorageV2 önerilir|
     | **Depolama hesabı çoğaltma** | Yeni bir depolama hesabı için depolama türünü seçin. Konum seçiminize bağlı olarak, LRS, GRS ve ZRS arasından seçim yapabilirsiniz. Bu öğretici için LRS 'yi seçebilirsiniz|
     | **Hiyerarşik ad alanı** |Bu seçenek, StorageV2 olacak depolama türünü seçtiğinizde seçilebilir. Varsayılan olarak devre dışıdır. Bu öğreticide, varsayılan *devre dışı* durumunda bırakabilirsiniz|
@@ -111,11 +111,11 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
    | --- | --- |
    | **Olay kaynağı oluşturulsun mu?** | **Evet**’i seçin.|
    | **Ad** | Olay kaynağı adı için benzersiz bir değer girin. |
-   | **Kaynak türü** | **IoT Hub**seçin. |
-   | **Bir hub seçin** | **Varolanı Seç ' i**seçin. |
+   | **Kaynak türü** | **IoT Hub** seçin. |
+   | **Bir hub seçin** | **Varolanı Seç ' i** seçin. |
    | **Abonelik** | Cihaz simülatörü için kullandığınız aboneliği seçin. |
    | **IoT Hub adı** | Cihaz simülatörü için oluşturduğunuz IoT Hub adını seçin. |
-   | **IoT Hub erişim ilkesi** | **İothubowner**öğesini seçin. |
+   | **IoT Hub erişim ilkesi** | **İothubowner** öğesini seçin. |
    | **IoT Hub Tüketici grubu** | **Yeni**' yi seçin, benzersiz bir ad girin ve **+ Ekle**' yi seçin. Tüketici grubu Azure Time Series Insights Gen2 içinde benzersiz bir değer olmalıdır. |
    | **TimeStamp Özelliği** | Bu değer, gelen telemetri verilerinizde **zaman damgası** özelliğini tanımlamak için kullanılır. Bu öğretici için bu kutuyu boş bırakın. Bu simülatör, Azure Time Series Insights Gen2 varsayılan olarak IoT Hub gelen zaman damgasını kullanır. |
 
@@ -143,7 +143,7 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
 
    1. Kimlik bilgilerinizin listelendiğini doğrulayın:
 
-      Kimlik bilgileriniz listelenmiyorsa, kimlik bilgileriniz için Ekle ve ara ' yı seçerek ortama erişmek için kendinize izin vermeniz gerekir. İzinleri ayarlama hakkında daha fazla bilgi edinmek için bkz. [veri erişimi izni](./time-series-insights-data-access.md)okuma.
+      Kimlik bilgileriniz listelenmiyorsa, kimlik bilgileriniz için Ekle ve ara ' yı seçerek ortama erişmek için kendinize izin vermeniz gerekir. İzinleri ayarlama hakkında daha fazla bilgi edinmek için bkz. [veri erişimi izni](./concepts-access-policies.md)okuma.
 
 ## <a name="stream-data"></a>Veri akışı yapma
 
@@ -165,9 +165,9 @@ Artık Azure Time Series Insights Gen2 ortamınızı dağıttığınıza göre, 
         | --- | --- |
         | **Ad** | Simülatör için benzersiz bir ad girin. |
         | **Açıklama** | Bir tanım girin. |
-        | **Benzetim süresi** | Süresiz olarak **çalışacak**şekilde ayarlayın. |
-        | **Cihaz modeli** | + **Cihaz türü Ekle** ' ye tıklayın <br />**Ad**: **Asansör**girin. <br />**Tutar**: **3**girin. <br /> Kalan varsayılan değerleri bırakın |
-        | **Hedef IoT Hub'ı** | **Önceden sağlanmış IoT Hub kullanılacak**şekilde ayarlayın. |
+        | **Benzetim süresi** | Süresiz olarak **çalışacak** şekilde ayarlayın. |
+        | **Cihaz modeli** | + **Cihaz türü Ekle** ' ye tıklayın <br />**Ad**: **Asansör** girin. <br />**Tutar**: **3** girin. <br /> Kalan varsayılan değerleri bırakın |
+        | **Hedef IoT Hub'ı** | **Önceden sağlanmış IoT Hub kullanılacak** şekilde ayarlayın. |
 
         [![Parametreleri yapılandırın ve başlatın.](media/v2-update-provision/tsi-launch-solution-accelerator.png)](media/v2-update-provision/tsi-launch-solution-accelerator.png#lightbox)
 
@@ -177,7 +177,7 @@ Artık Azure Time Series Insights Gen2 ortamınızı dağıttığınıza göre, 
 
 ## <a name="analyze-data"></a>Verileri çözümleme
 
-Bu bölümde, [Azure Time Series Insights Gen2 Gezginini](./time-series-insights-update-explorer.md)kullanarak zaman serisi verilerinizde temel analiz gerçekleştirirsiniz.
+Bu bölümde, [Azure Time Series Insights Gen2 Gezginini](./concepts-ux-panels.md)kullanarak zaman serisi verilerinizde temel analiz gerçekleştirirsiniz.
 
 1. [Azure Portal](https://portal.azure.com/)kaynak sayfasından URL 'yi seçerek Azure Time Series Insights Gen2 Explorer 'a gidin.
 
@@ -193,13 +193,13 @@ Bu bölümde, [Azure Time Series Insights Gen2 Gezginini](./time-series-insights
 
     [![Ortalama sıcaklığı göstermek için menü komutuyla birlikte seçili zaman serisi örneği.](media/v2-update-provision/select-instance-and-temperature.png)](media/v2-update-provision/select-instance-and-temperature.png#lightbox)
 
-    Bir zaman serisi grafiği görüntülenir. **Aralığı** **30 saniye**olarak değiştirin.
+    Bir zaman serisi grafiği görüntülenir. **Aralığı** **30 saniye** olarak değiştirin.
 
 1. Bu grafikte gösterildiği gibi, üçü de görüntülemek için önceki adımı diğer iki zaman serisi örneğiyle tekrarlayın:
 
     [![Tüm zaman serileri için grafik.](media/v2-update-provision/tsi-explorer-add-three-instances.png)](media/v2-update-provision/tsi-explorer-add-three-instances.png#lightbox)
 
-1. Sağ üst köşedeki zaman aralığı seçicisini seçin. Burada, belirli başlangıç ve bitiş zamanlarını milisaniyeye doğru seçebilirsiniz veya **en son 30 dakika**gibi önceden yapılandırılmış seçenekler arasından seçim yapabilirsiniz. Varsayılan saat dilimini de değiştirebilirsiniz.
+1. Sağ üst köşedeki zaman aralığı seçicisini seçin. Burada, belirli başlangıç ve bitiş zamanlarını milisaniyeye doğru seçebilirsiniz veya **en son 30 dakika** gibi önceden yapılandırılmış seçenekler arasından seçim yapabilirsiniz. Varsayılan saat dilimini de değiştirebilirsiniz.
 
     [![Zaman aralığını son 30 dakikaya ayarlayın.](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png)](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png#lightbox)
 
@@ -228,7 +228,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
         | Parametre | Eylem |
         | --- | --- |
-        | **Ad** | **Ort sıcaklık**girin. |
+        | **Ad** | **Ort sıcaklık** girin. |
         | **Tür** | **Sayısal** seçin |
         | **Değer** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
@@ -237,7 +237,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
         | Parametre | Eylem |
         | --- | --- |
-        | **Ad** | **Ortalama titreşim**girin. |
+        | **Ad** | **Ortalama titreşim** girin. |
         | **Tür** | **Sayısal** seçin |
         | **Değer** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
@@ -246,7 +246,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
         | Parametre | Eylem |
         | --- | --- |
-        | **Ad** | **Kat**girin. |
+        | **Ad** | **Kat** girin. |
         | **Tür** | **Kategorik** seçin |
         | **Değer** | Önayar arasından seç: **kat (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Kategoriler** | <span style="text-decoration: underline">Etiketi</span>   -  <span style="text-decoration: underline">Değerler</span> <br /> Düşük: 1, 2, 3, 4 <br /> Orta: 5, 6, 7, 8, 9 <br /> Üst: 10, 11, 12, 13, 14, 15 |
@@ -265,20 +265,20 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
         | Parametre | Eylem |
         | --- | ---|
-        | **Ad** | **Konum hiyerarşisini**girin. |
+        | **Ad** | **Konum hiyerarşisini** girin. |
         |**Düzeyler**| **Ülkeyi** ilk düzeyin adı olarak girin <br /> **+ Düzey Ekle** seçeneğini belirleyin <br /> İkinci düzey için **şehir** girin ve ardından **+ düzey Ekle** ' yi seçin. <br /> Üçüncü ve son düzeyin adı olarak **oluşturma** girin |
 
    1. **Kaydet**’i seçin.
 
         [![Yeni hiyerarşinizi Model görünümünde görüntüleyin.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
-1. **Örneklere**gidin.
+1. **Örneklere** gidin.
 
     1. En sağdaki **Eylemler** altında, ilk örneği aşağıdaki değerlerle düzenlemek için kurşun kalem simgesini seçin:
 
         | Parametre | Eylem |
         | --- | --- |
-        | **Tür** | **Asansör**öğesini seçin. |
+        | **Tür** | **Asansör** öğesini seçin. |
         | **Ad** | **Asansör 1** girin|
         | **Açıklama** | **Asansör 1 Için örnek** girin |
 
@@ -288,7 +288,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | --- | --- |
         | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
         | **Ülke** | **USA** girin |
-        | **Şehir** | **Seattle** girin |
+        | **Baş** | **Seattle** girin |
         | **Yapım** | **Space iğne** girin |
 
     1. **Kaydet**’i seçin.
@@ -299,35 +299,35 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Tür** | **Asansör**öğesini seçin. |
+    | **Tür** | **Asansör** öğesini seçin. |
     | **Ad** | **Asansör 2** girin|
     | **Açıklama** | **Asansör Için örnek girin 2** |
     | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
-    | **Şehir** | **Seattle** girin |
+    | **Baş** | **Seattle** girin |
     | **Yapım** | **Pasifik bilimi merkezini** girin |
 
     **Asansör 3 için:**
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Tür** | **Asansör**öğesini seçin. |
+    | **Tür** | **Asansör** öğesini seçin. |
     | **Ad** | **Asansör 3** girin|
     | **Açıklama** | **Asansör 3 Için örnek** girin |
     | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
-    | **Şehir** | **New York** girin |
+    | **Baş** | **New York** girin |
     | **Yapım** | **Empire durum oluşturmayı** girin |
 
     [![Güncelleştirilmiş örnekleri görüntüleyin.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)
 
-1. Grafik bölmesini görüntülemek için **Çözümle** sekmesine geri gidin. **Konum hiyerarşisi**altında, zaman serisi örneklerini göstermek için tüm hiyerarşi düzeylerini genişletin:
+1. Grafik bölmesini görüntülemek için **Çözümle** sekmesine geri gidin. **Konum hiyerarşisi** altında, zaman serisi örneklerini göstermek için tüm hiyerarşi düzeylerini genişletin:
 
     [![Tüm hiyerarşileri grafik görünümünde görüntüleyin.](media/v2-update-provision/iot-solution-accelerator-view-hierarchies.png)](media/v2-update-provision/iot-solution-accelerator-view-hierarchies.png#lightbox)
 
-1. **Pasifik bilimi merkezi**altında, **Asansör 2**zaman serisi örneğini seçin ve sonra **ortalama sıcaklığı göster**' i seçin.
+1. **Pasifik bilimi merkezi** altında, **Asansör 2** zaman serisi örneğini seçin ve sonra **ortalama sıcaklığı göster**' i seçin.
 
-1. Aynı örnek için, **Asansör 2**Için **tabanı göster**' i seçin.
+1. Aynı örnek için, **Asansör 2** Için **tabanı göster**' i seçin.
 
     Kategorik değişkeniniz sayesinde, Asansör üst, alt ve orta kat üzerinde ne kadar zaman harcadığını belirleyebilirsiniz.
 

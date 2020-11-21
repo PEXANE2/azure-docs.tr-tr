@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425123"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021992"
 ---
 # <a name="disclosure-design-patterns"></a>Tasarım desenlerini açıklama
 Yapay sesli deneyiminize yönelik doğru [Açıklama düzeyini](concepts-disclosure-guidelines.md#disclosure-assessment)&#39;ve potansiyel tasarım düzenlerini araştırmak için uygun bir zaman&#39;.
@@ -241,17 +241,17 @@ Sorunsuz bir şekilde başarısız olan bir fırsat olarak açıklama kullanın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 - [Microsoft bot yönergeleri](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana tasarım yönergeleri](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP konuşma tasarım yönergeleri](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows Mixed Reality sesli komut yönergeleri](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana tasarım yönergeleri](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP konuşma tasarım yönergeleri](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows Mixed Reality sesli komut yönergeleri](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
+* [Sesli Taçanın açıklanması](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Geçişi genel bakış](concepts-gating-overview.md)
 * [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
+* [Sesli Taçanın açıklanması](/legal/cognitive-services/speech-service/disclosure-voice-talent)

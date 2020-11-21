@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630160"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021975"
 ---
 # <a name="speech-service-for-telephony-data"></a>Telefon verileri için konuşma hizmeti
 
@@ -60,7 +60,7 @@ Bir destek çağrısının yüzde 35 ' unun, konuşmasız bir süre arayabiliriz
 
 ### <a name="translation"></a>Çeviri
 
-Bazı şirketler, dağıtım yöneticilerinin müşterilerinin dünya çapında deneyimlerini anlayabilmesi için yabancı dil destek çağrılarından çevrilmiş yazılı betikler sağlamaya devam eder. [Çeviri](/azure/cognitive-services/speech-service/speech-translation) olanaklarımız unsurpassed. Çok sayıda yerel ayar için ses-ses veya ses-metin çevirisi yapabilirsiniz.
+Bazı şirketler, dağıtım yöneticilerinin müşterilerinin dünya çapında deneyimlerini anlayabilmesi için yabancı dil destek çağrılarından çevrilmiş yazılı betikler sağlamaya devam eder. [Çeviri](./speech-translation.md) olanaklarımız unsurpassed. Çok sayıda yerel ayar için ses-ses veya ses-metin çevirisi yapabilirsiniz.
 
 ### <a name="text-to-speech"></a>Metin Okuma
 
@@ -70,7 +70,7 @@ Uçtan uca gecikme süresi, [konuşmadan metne](speech-to-text.md), [Luo](https:
 
 Yeni seslerimiz de insan seslerinden ayırt edilemez. Kendi seslerimizi kullanarak botumuzu benzersiz kişiliğine aktarabilirsiniz.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Arayın
 
 Analize ait başka bir zımba, belirli bir olay veya deneyimin gerçekleştiği etkileşimleri belirlemektir. Bu genellikle iki yaklaşımdan biriyle yapılır; kullanıcının bir tümceciği ve sistem yanıt verdiğini veya bir analistdeki bir senaryoyu tanımlayan mantıksal deyimler kümesi oluşturabileceğiniz daha yapılandırılmış bir sorgu ya da her çağrının bu sorgu kümesine göre dizine alınması için bir ad hoc arama. İyi bir arama örneği, ubititous uyumluluk deyimidir "Bu çağrı kalite amacıyla kaydedilecek... ". Birçok şirket, aracıların gerçekten kaydedilmeden önce bu vazgeçme belgesi müşterilere bu bildirimi sağladığından emin olmak ister. Çoğu analiz sistemi, sorgu/arama algoritmalarıyla bulunan davranışları eğilim özelliğine sahiptir ve bu eğilimleri raporlamak, son olarak bir analiz sisteminin en önemli işlevlerinden biridir. Bilişsel [Hizmetler dizini](https://azure.microsoft.com/services/cognitive-services/directory/search/) sayesinde uçtan uca çözümünüz, dizin oluşturma ve arama özellikleri ile önemli ölçüde iyileştirilen olabilir.
 
@@ -94,7 +94,7 @@ Tipik bir çözüm bu hizmetleri kullanır:
 
 - Konuşma hizmeti konuşmayı metne eklemek için kullanılır. Toplu Iş dökümü API 'sini kullanmak için konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz abonelikler (F0) çalışmayacak.
 - [Azure depolama](https://azure.microsoft.com/services/storage/) , telefon verilerini depolamak Için ve toplu iş dökümü API 'si tarafından döndürülen döküm dosyaları için kullanılır. Bu depolama hesabı, özellikle yeni dosyaların eklendiği zaman için bildirimleri kullanmalıdır. Bu bildirimler, döküm işleminin tetiklenmesi için kullanılır.
-- [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/) , her kayıt için paylaşılan erişim IMZALARı (SAS) URI 'si oluşturmak için KULLANıLıR ve http post isteğini bir döküm başlatacak şekilde tetikler. Ayrıca, Azure Işlevleri, toplu Iş dökümü API 'sini kullanarak döküm alma ve silme istekleri oluşturmak için kullanılır.
+- [Azure işlevleri](../../azure-functions/index.yml) , her kayıt için paylaşılan erişim IMZALARı (SAS) URI 'si oluşturmak için KULLANıLıR ve http post isteğini bir döküm başlatacak şekilde tetikler. Ayrıca, Azure Işlevleri, toplu Iş dökümü API 'sini kullanarak döküm alma ve silme istekleri oluşturmak için kullanılır.
 
 Dahili olarak, Microsoft Müşteri çağrılarını toplu Iş modunda desteklemek için yukarıdaki teknolojileri kullanıyoruz.
 :::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="Toplu Iş modunda Microsoft Müşteri çağrılarını desteklemek için kullanılan teknolojiler.":::
@@ -111,7 +111,7 @@ Dahili olarak, aşağıdaki diyagramda gösterildiği gibi gerçek zamanlı Micr
 
 ## <a name="a-word-on-ivrs"></a>IRS üzerinde bir kelime
 
-Konuşma hizmeti, [konuşma SDK 'sı](speech-sdk.md) veya [REST API](rest-apis.md)kullanılarak herhangi bir çözüme kolayca tümleştirilebilir. Ancak, çağrı merkezi dökümü ek teknolojiler gerektirebilir. Genellikle, bir ıVR sistemi ve Azure arasında bir bağlantı gereklidir. Bu tür bileşenleri sunmuyoruz, ancak bir ıVR bağlantısının ne olduğunu bir açıklama bulabilirsiniz.
+Konuşma hizmeti, [konuşma SDK 'sı](speech-sdk.md) veya [REST API](./overview.md#reference-docs)kullanılarak herhangi bir çözüme kolayca tümleştirilebilir. Ancak, çağrı merkezi dökümü ek teknolojiler gerektirebilir. Genellikle, bir ıVR sistemi ve Azure arasında bir bağlantı gereklidir. Bu tür bileşenleri sunmuyoruz, ancak bir ıVR bağlantısının ne olduğunu bir açıklama bulabilirsiniz.
 
 Birçok IR veya telefon hizmet ürünü (Genesys veya AudioCodes gibi), bir Azure hizmetine gelen ve giden ses geçişini etkinleştirmek için yararlanılabilir olabilecek tümleştirme özellikleri sunar. Temel olarak, özel bir Azure hizmeti telefon araması oturumlarını (çağrı başlatma veya çağrı bitişi gibi) tanımlamak için belirli bir arabirim sağlayabilir ve konuşma hizmeti ile kullanılan gelen akış sesini almak için bir WebSocket API 'SI sunar. Konuşma ve bot Framework ile bağlantılar gibi giden yanıtlar, Microsoft 'un metin okuma hizmeti ile birlikte bulunabilir ve kayıttan yürütme için ıVR 'ye döndürülür.
 
@@ -121,12 +121,12 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 
  Konuşma hizmeti yerleşik modellerle iyi şekilde çalışacaktır. Bununla birlikte, ürününüzün veya ortamınızın deneyimini daha fazla özelleştirmek ve ayarlamak isteyebilirsiniz. Özelleştirme seçenekleri, akustik model ayarlamalarından markanızla ilgili benzersiz ses yazı tiplerine kadar değişir. Özel bir model oluşturduktan sonra, onu gerçek zamanlı veya toplu modda konuşma hizmeti özelliklerinden herhangi biriyle kullanabilirsiniz.
 
-| Konuşma hizmeti | Model | Açıklama |
+| Konuşma hizmeti | Model | Description |
 | -------------- | ----- | ----------- |
-| Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
-|                | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
-|                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş terimleri işlemek için faydalıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir dosya olan bir telaffuz dosyasıdır `.txt` . |
-| Metin okuma | [Ses tipi](how-to-customize-voice-font.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |
+| Konuşmayı metne dönüştürme | [Akustik model](./how-to-custom-speech-train-model.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
+|                | [Dil modeli](./how-to-custom-speech-train-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
+|                | [Söyleniş modeli](./how-to-custom-speech-train-model.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş terimleri işlemek için faydalıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir dosya olan bir telaffuz dosyasıdır `.txt` . |
+| Metin okuma | [Ses tipi](./how-to-custom-voice-create-voice.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |
 
 ## <a name="sample-code"></a>Örnek kod
 
@@ -138,7 +138,7 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-- [Konuşma SDK'sı](speech-sdk-reference.md)
+- [Konuşma SDK'sı](./speech-sdk.md)
 - [Konuşma Cihazları SDK’sı](speech-devices-sdk.md)
 - [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
 - [REST API: metinden konuşmaya](rest-text-to-speech.md)

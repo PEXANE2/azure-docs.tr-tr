@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83849391"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023454"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internet eşlemesi ve Eşleme Hizmeti
 
@@ -53,5 +53,5 @@ Sık sorulan sorular için bkz. [eşleme hizmeti-SSS](service-faqs.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Eşleme hizmeti](https://docs.microsoft.com/azure/peering-service/)ile ilgili müşteri avantajları hakkında daha fazla bilgi edinin.
+* [Eşleme hizmeti](../peering-service/index.yml)ile ilgili müşteri avantajları hakkında daha fazla bilgi edinin.
 * [Eşleme hizmeti iş ortağı](walkthrough-peering-service-all.md)Kılavuzu 'Ndaki eşleme hizmeti için doğrudan eşlemeyi etkinleştirme adımları hakkında bilgi edinin.

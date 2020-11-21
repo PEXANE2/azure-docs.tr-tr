@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 126a8e48a8db1c41299a7cb7a34f172342110667
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084422"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023131"
 ---
 # <a name="host-pool-creation"></a>Konak havuzu oluşturma
 
@@ -57,9 +57,9 @@ Neden: Bu hata genellikle aboneliği 1 Azure Active Directory (AD) kiracısında
 
 Azure Resource Manager şablonlarının ve PowerShell DSC 'nin başarısız dağıtımlarıyla ilgili sorunları gidermek için bu yönergeleri izleyin.
 
-1. [Azure Resource Manager ile dağıtım Işlemlerini görüntüleme](../azure-resource-manager/resource-manager-deployment-operations.md)kullanarak dağıtımdaki hataları gözden geçirin.
-2. Dağıtımda hata yoksa, [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüle](../azure-resource-manager/resource-group-audit.md)' yi kullanarak etkinlik günlüğündeki hataları gözden geçirin.
-3. Hata tanımlandıktan sonra, sorunu gidermek için [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](../azure-resource-manager/resource-manager-common-deployment-errors.md) bölümündeki hata iletisini ve kaynakları kullanın.
+1. [Azure Resource Manager ile dağıtım Işlemlerini görüntüleme](../azure-resource-manager/templates/deployment-history.md)kullanarak dağıtımdaki hataları gözden geçirin.
+2. Dağıtımda hata yoksa, [kaynaklardaki eylemleri denetlemek için etkinlik günlüklerini görüntüle](../azure-resource-manager/management/view-activity-logs.md)' yi kullanarak etkinlik günlüğündeki hataları gözden geçirin.
+3. Hata tanımlandıktan sonra, sorunu gidermek için [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](../azure-resource-manager/templates/common-deployment-errors.md) bölümündeki hata iletisini ve kaynakları kullanın.
 4. Önceki dağıtım sırasında oluşturulan tüm kaynakları silin ve şablonu yeniden dağıtma işlemini yeniden deneyin.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu.... \<hostname> /JoinDomain
@@ -85,7 +85,7 @@ Ham hata örneği:
 
 **2. Çözüm:** Bkz. [hata: etki alanı adı](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) , [oturum ana makinesi yapılandırmasında](troubleshoot-vm-configuration.md)çözümlenmiyor.
 
-**Neden 3:** Sanal ağ (VNET) DNS yapılandırmanız **varsayılan**olarak ayarlanır.
+**Neden 3:** Sanal ağ (VNET) DNS yapılandırmanız **varsayılan** olarak ayarlanır.
 
 Bunu yapmak için aşağıdaki işlemleri yapın:
 

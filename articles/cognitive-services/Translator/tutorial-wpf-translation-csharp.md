@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef5384abd63dcd9aeb4789dc4955f4b80068d330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88921248"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023625"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Öğretici: WPF ile bir çeviri uygulaması oluşturma
 
-Bu öğreticide, tek bir abonelik anahtarıyla metin çevirisi, dil algılama ve yazım denetimi için Azure bilişsel hizmetler 'i kullanan bir [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) uygulaması oluşturacaksınız. Özellikle, uygulamanız çevirmenden ve [Bing yazım denetimi](https://azure.microsoft.com/services/cognitive-services/spell-check/)API 'leri çağıracaktır.
+Bu öğreticide, tek bir abonelik anahtarıyla metin çevirisi, dil algılama ve yazım denetimi için Azure bilişsel hizmetler 'i kullanan bir [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) uygulaması oluşturacaksınız. Özellikle, uygulamanız çevirmenden ve [Bing yazım denetimi](https://azure.microsoft.com/services/cognitive-services/spell-check/)API 'leri çağıracaktır.
 
 WPF nedir? Masaüstü istemci uygulamaları oluşturan bir UI çerçevesidir. WPF geliştirme platformu, uygulama modeli, kaynaklar, denetimler, grafikler, düzen, veri bağlama, belgeler ve güvenlik dahil olmak üzere çok sayıda uygulama geliştirme özelliği destekler. .NET Framework bir alt kümesidir, bu nedenle daha önce ASP.NET veya Windows Forms kullanarak .NET Framework ile uygulamalar oluşturduysanız, programlama deneyiminin tanıdık olması gerekir. WPF, uygulama programlamaya yönelik bildirim temelli bir model sağlamak için Genişletilebilir uygulama biçimlendirme dili 'ni (XAML) kullanır. Bu, gelecek bölümlerde gözden geçireceğiz.
 
@@ -40,16 +40,16 @@ Bu liste, bu öğreticide kullanılan bilişsel hizmetleri içerir. Her bir öze
 
 | Hizmet | Özellik | Açıklama |
 |---------|---------|-------------|
-| Çevirmen | [Dilleri al](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Metin çevirisi için desteklenen dillerin tüm listesini alın. |
-| Çevirmen | [Çevir](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Metni 70 ' den fazla dile çevirin. |
-| Çevirmen | [Acağı](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Giriş metninin dilini tespit edin. Algılama için güvenirlik puanı içerir. |
-| Bing Yazım Denetimi | [Yazım Denetimi](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Çeviri doğruluğunu artırmak için yazım hatalarını düzeltin. |
+| Translator | [Dilleri al](./reference/v3-0-languages.md) | Metin çevirisi için desteklenen dillerin tüm listesini alın. |
+| Translator | [Çevir](./reference/v3-0-translate.md) | Metni 70 ' den fazla dile çevirin. |
+| Translator | [Acağı](./reference/v3-0-detect.md) | Giriş metninin dilini tespit edin. Algılama için güvenirlik puanı içerir. |
+| Bing Yazım Denetimi | [Yazım Denetimi](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Çeviri doğruluğunu artırmak için yazım hatalarını düzeltin. |
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce şunlar gerekir:
 
-* Azure bilişsel hizmetler aboneliği. [Bilişsel hizmetler anahtarı alın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource).
+* Azure bilişsel hizmetler aboneliği. [Bilişsel hizmetler anahtarı alın](../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource).
 * Bir Windows makinesi
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) -Community veya Enterprise
 
@@ -83,14 +83,14 @@ Nesneleri seri hale getirmek ve seri durumdan çıkarmak için ve HTTP istekleri
 1. **Derlemeler** sekmesi, başvuru için kullanılabilen tüm .NET Framework derlemeleri listeler. Başvuruları aramak için sağ üst köşedeki arama çubuğunu kullanın.
    ![Derleme başvuruları Ekle](media/add-assemblies-2019.png)
 1. Projeniz için aşağıdaki başvuruları seçin:
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Runtime.Serialization](/dotnet/api/system.runtime.serialization)
+   * [System.Web](/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System. Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System. Windows](/dotnet/api/system.windows)
 1. Bu başvuruları projenize ekledikten sonra, **başvuru Yöneticisi**'ni kapatmak için **Tamam** ' a tıklayabilirsiniz.
 
 > [!NOTE]
-> Derleme başvuruları hakkında daha fazla bilgi edinmek istiyorsanız bkz. [nasıl yapılır: başvuru Yöneticisi 'ni kullanarak başvuru ekleme veya kaldırma](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Derleme başvuruları hakkında daha fazla bilgi edinmek istiyorsanız bkz. [nasıl yapılır: başvuru Yöneticisi 'ni kullanarak başvuru ekleme veya kaldırma](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
 ### <a name="install-newtonsoftjson"></a>NewtonSoft.Jsburaya yüklensin
 
@@ -115,7 +115,7 @@ Biz oluşturduğumuzun bir bakalım.
 
 Kullanıcı arabirimi şu bileşenleri içerir:
 
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Metin çevirisi için Microsoft Translator tarafından desteklenen dillerin listesini görüntüler. Kullanıcı çeviri yaptığı kaynak dili seçer. |
 | `ToLanguageComboBox` | ComboBox | Aynı dil listesini ile görüntüler `FromComboBox` , ancak kullanıcının çevirdiğini dili seçmek için kullanılır. |
@@ -251,7 +251,7 @@ Tüm projemiz sınıfında kapsüllenir `MainWindow : Window` . Abonelik anahtar
 
 Bu kod bloğunda, çeviri için kullanılabilir diller hakkında bilgi içeren iki üye değişkeni bildirdik:
 
-| Değişken | Tür | Açıklama |
+| Değişken | Tür | Description |
 |----------|------|-------------|
 |`languageCodes` | Dizeler dizisi |Dil kodlarını önbelleğe alır. Translator hizmeti dilleri belirlemek için kısa kodlar kullanır (örneğin İngilizce için `en`). |
 |`languageCodesAndTitles` | Sıralanmış sözlük | Kullanıcı arabirimindeki "kolay anlaşılır" adları, API’de kullanılan kısa kodlarla eşleştirir. Büyük küçük harf kullanımından bağımsız olarak alfabetik sırayla tutulur. |
@@ -269,7 +269,7 @@ Son olarak, çeviri dillerini almak ve uygulamanın kullanıcı arabirimimizin a
 Bu bölümde, `GET` çeviri için kullanılabilen dillerin bir listesini istediğimizden sonra diller kaynağına bir istek oluşturacağız.
 
 > [!NOTE]
-> Diller kaynağı, dil desteğini Şu sorgu parametreleriyle filtrelemenizi sağlar: alfabe, sözlük ve çeviri. Daha fazla bilgi için bkz. [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Diller kaynağı, dil desteğini Şu sorgu parametreleriyle filtrelemenizi sağlar: alfabe, sözlük ve çeviri. Daha fazla bilgi için bkz. [API başvurusu](./reference/v3-0-languages.md).
 
 Daha fazla ilerleyebilmemiz için, diller kaynağı çağrısı için örnek çıktıya göz atalım:
 
@@ -560,7 +560,7 @@ Yapmanız gereken son şey, Kullanıcı arabirimimizin **çevir** düğmesine t�
    }
    ```
 
-İlk adım, "Kimden" ve "to" dillerini ve kullanıcının formumuza girdiği metni almak için kullanılır. Kaynak dili **Algıla**olarak ayarlandıysa, `DetectLanguage()` kaynak metnin dilini belirlemek için çağrılır. Metin, çeviricisinin desteklemediği bir dilde olabilir. Bu durumda, kullanıcıyı bilgilendirmek için bir ileti görüntüler ve metni çevirmeden geri döndürün.
+İlk adım, "Kimden" ve "to" dillerini ve kullanıcının formumuza girdiği metni almak için kullanılır. Kaynak dili **Algıla** olarak ayarlandıysa, `DetectLanguage()` kaynak metnin dilini belirlemek için çağrılır. Metin, çeviricisinin desteklemediği bir dilde olabilir. Bu durumda, kullanıcıyı bilgilendirmek için bir ileti görüntüler ve metni çevirmeden geri döndürün.
 
 Kaynak dil İngilizce ise (belirtilerek veya algılanarak), metnin yazımını `CorrectSpelling()` ile denetleyin ve düzeltmeleri uygulayın. Düzeltilen metin, kullanıcının bir düzeltmenin yapıldığını görmesi için metin alanına geri eklenir.
 
@@ -581,4 +581,4 @@ Bu proje için kaynak kodu GitHub ' da kullanılabilir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Microsoft Translator başvurusu](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Microsoft Translator başvurusu](./reference/v3-0-reference.md)

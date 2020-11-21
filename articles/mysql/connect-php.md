@@ -7,17 +7,17 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: ae767905e24e2d7ddf3b8e12ec77b1efe782cf85
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b93bc4d1adfa2787f14106707b3848ebfe5c57bc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535614"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021210"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için PHP kullanma
 Bu hızlı başlangıçta [PHP](https://secure.php.net/manual/intro-whatis.php) uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıç için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
@@ -30,7 +30,7 @@ Bu hızlı başlangıç için şunlar gerekir:
     | **Hizmet uç noktasını yapılandır** | Genel | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
     | **Özel bağlantıyı Yapılandır** | Özel | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- [Veritabanı ve yönetici olmayan kullanıcı oluşturma](/howto-create-users?tabs=single-server)
+- [Veritabanı ve yönetici olmayan kullanıcı oluşturma](/azure/mysql/howto-create-users?tabs=single-server)
 - İşletim sisteminiz için en son PHP sürümünü yükler
     - [MacOS üzerinde PHP](https://secure.php.net/manual/install.macosx.php)
     - [Linux üzerinde PHP](https://secure.php.net/manual/install.unix.php)
@@ -43,11 +43,11 @@ Bu hızlı başlangıç için şunlar gerekir:
 Aşağıdaki adımları izleyerek Azure portal veritabanı sunucusu bağlantı bilgilerini alabilirsiniz:
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. MySQL için Azure veritabanları sayfasına gidin. **MySQL Için Azure veritabanı** 'nı arayabilir ve seçebilirsiniz.
+2. MySQL için Azure veritabanları sayfasına gidin. **MySQL Için Azure veritabanı**'nı arayabilir ve seçebilirsiniz.
 :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="MySQL için Azure veritabanı 'nı bulun":::
 
-2. MySQL sunucunuzu (örneğin, **demosunucum** ) seçin.
-3. **Genel bakış** sayfasında sunucu **adı** ' nın yanında tam sunucu adını ve **Sunucu Yöneticisi oturum açma adı** ' nın yanındaki yönetici kullanıcı adını kopyalayın. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
+2. MySQL sunucunuzu (örneğin, **demosunucum**) seçin.
+3. **Genel bakış** sayfasında sunucu **adı** ' nın yanında tam sunucu adını ve **Sunucu Yöneticisi oturum açma adı**' nın yanındaki yönetici kullanıcı adını kopyalayın. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
 
 > [!IMPORTANT]
 > - Parolanızı unuttuysanız [parolayı sıfırlayabilirsiniz](./howto-create-manage-server-portal.md#update-admin-password).

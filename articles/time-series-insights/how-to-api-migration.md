@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078247"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020734"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Yeni Azure Time Series Insights Gen2 API sürümlerine geçiş
 
@@ -24,9 +24,9 @@ ms.locfileid: "92078247"
 Ortak Önizlemedeki bir Azure Time Series Insights Gen2 ortamı oluşturduysanız (16 Temmuz 2020 ' den önce), bu makalede açıklanan adımları izleyerek, lütfen TSI ortamınızı, API 'lerin yeni genel sürümlerini kullanacak şekilde güncelleştirin. Bu değişiklik, Azure Time Series Insights Gen1 sürümünü kullanan kullanıcıları etkilemez.
 
 > [!IMPORTANT]
-> Bu makalede açıklanan güncelleştirmeler yalnızca, TSI ortamınızın kullandığı API sürümlerini yükseltir. Bu değişiklik, Gen2 ortamları için sunulan yeni [JSON düzleştirme ve kaçış kurallarından](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) bağımsız değildir.
+> Bu makalede açıklanan güncelleştirmeler yalnızca, TSI ortamınızın kullandığı API sürümlerini yükseltir. Bu değişiklik, Gen2 ortamları için sunulan yeni [JSON düzleştirme ve kaçış kurallarından](./concepts-json-flattening-escaping-rules.md) bağımsız değildir.
 
-Yeni API sürümü `2020-07-31` ve güncelleştirilmiş bir [zaman serisi ifade sözdizimi](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)kullanır.
+Yeni API sürümü `2020-07-31` ve güncelleştirilmiş bir [zaman serisi ifade sözdizimi](/rest/api/time-series-insights/reference-time-series-expression-syntax)kullanır.
 
 Kullanıcıların, API uç noktalarına çağrılar yapan ortam [zaman serisi model değişkenlerini](./concepts-variables.md), kayıtlı sorguları, Power BI sorguları ve özel araçları geçirmeli. Geçiş işlemiyle ilgili sorularınız veya endişeleriniz varsa Azure portal aracılığıyla bir destek bileti iletin ve bu belgeden bahsedin.
 
@@ -42,7 +42,7 @@ Kullanıcıların [zaman serisi modeli değişkenlerini](./concepts-variables.md
 
 1. Zaman serisi model değişkenleriniz ve kayıtlı sorgular tarafından kullanılan söz dizimini güncelleştirmek için gezgin tarafından istenir.
 
-    [![İsteme](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![İstem](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     Bildirimi yanlışlıkla kapatırsanız, bildirim panelinde bulunabilir.
 
@@ -84,28 +84,28 @@ Sorguları yeni API sürümünü ve yeni zaman serisi Ifade sözdizimini kullana
 
 - Zaman serisi modeli API 'Leri
   - Model ayarları API 'Leri
-    - [Al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
-    - [Güncelleştirme](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
+    - [Al](/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Güncelleştirme](/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - Örnek API 'Leri
-    - [Tüm toplu Işlemler](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
-    - [Liste](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
-    - [Ara](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
-    - [Önerme](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
+    - [Tüm toplu Işlemler](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+    - [Liste](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
+    - [Ara](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
+    - [Önerme](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - Hiyerarşi API 'Leri
-    - [Tüm toplu Işlemler](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-    - [Liste](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
+    - [Tüm toplu Işlemler](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+    - [Liste](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
   - Türler API 'Leri
-    - [Silme, Işlemleri al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-    - [Liste](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
+    - [Silme, Işlemleri al](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+    - [Liste](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-Aşağıdaki REST uç noktaları için, API sürümünü `2020-07-31` URI 'de olarak güncelleştirmeniz ve özelliğin tüm tekrarlarının `tsx` Güncelleştirilmiş [zaman serisi ifadesi sözdizimini](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)kullanmasını sağlamak zorundasınız.
+Aşağıdaki REST uç noktaları için, API sürümünü `2020-07-31` URI 'de olarak güncelleştirmeniz ve özelliğin tüm tekrarlarının `tsx` Güncelleştirilmiş [zaman serisi ifadesi sözdizimini](/rest/api/time-series-insights/reference-time-series-expression-syntax)kullanmasını sağlamak zorundasınız.
 
 - Türler API 'Leri
-  - [Put Işlemi](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
+  - [Put Işlemi](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
 - Sorgu API'leri
-  - [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
-  - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
-  - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+  - [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
+  - [GetSeries](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
+  - [GetAggregateSeries](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
 ### <a name="examples"></a>Örnekler
 
@@ -358,7 +358,7 @@ Alternatif olarak, `value` de olabilir `coalesce($event['Temp'].Double, toDouble
 
 #### <a name="invalidinput"></a>Invalidınput
 
-Aşağıdaki hatayı görürseniz yeni API sürümünü () kullanıyorsunuz, `2020-07-31` ancak TSX sözdizimi güncelleştirilmedi. Lütfen yukarıdaki [zaman serisi Ifadesi sözdizimini](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) ve geçiş örneklerini inceleyin. `tsx`API isteğini yeniden göndermeden önce tüm özelliklerin doğru güncelleştirildiğinden emin olun.
+Aşağıdaki hatayı görürseniz yeni API sürümünü () kullanıyorsunuz, `2020-07-31` ancak TSX sözdizimi güncelleştirilmedi. Lütfen yukarıdaki [zaman serisi Ifadesi sözdizimini](/rest/api/time-series-insights/reference-time-series-expression-syntax) ve geçiş örneklerini inceleyin. `tsx`API isteğini yeniden göndermeden önce tüm özelliklerin doğru güncelleştirildiğinden emin olun.
 
 ```JSON
 {

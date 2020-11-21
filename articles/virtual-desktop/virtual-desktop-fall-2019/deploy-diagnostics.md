@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691420"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023080"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows sanal masaüstü (klasik) Tanılama aracını dağıtma
 
@@ -94,10 +94,10 @@ PowerShell betiğini çalıştırmak için:
 2.  [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** betiğini çalıştırın.
 3. Parametreler için aşağıdaki değerleri girin:
 
-    - **Resourcegroupname**için kaynak grubunun adını girin.
-    - **Loganaliz Ticsçalışmaadı**için Log Analytics çalışma alanınız için benzersiz bir ad girin.
-    - **Konum**için, kullanmakta olduğunuz Azure bölgesini girin.
-    - **Abonelikler**' in altında Azure Portal bulabileceğiniz **Azure abonelik kimliğini**girin.
+    - **Resourcegroupname** için kaynak grubunun adını girin.
+    - **Loganaliz Ticsçalışmaadı** için Log Analytics çalışma alanınız için benzersiz bir ad girin.
+    - **Konum** için, kullanmakta olduğunuz Azure bölgesini girin.
+    - **Abonelikler**' in altında Azure Portal bulabileceğiniz **Azure abonelik kimliğini** girin.
 
 4. Yönetici erişimine sahip bir kullanıcının kimlik bilgilerini girin.
 5. Azure portal aynı kullanıcının kimlik bilgileriyle oturum açın.
@@ -121,7 +121,7 @@ Bu bölüm, önceki bölümde PowerShell betiği olmadan oluşturulan mevcut bir
     -   İşlemci bilgileri ( \* ) \\ İşlemci Zamanı
     -   Oturum başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş gecikmesi
 
-[Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](/azure/azure-monitor/platform/data-sources-performance-counters)performans sayaçları hakkında daha fazla bilgi edinin.
+[Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](../../azure-monitor/platform/data-sources-performance-counters.md)performans sayaçları hakkında daha fazla bilgi edinin.
 
 >[!NOTE]
 >Yapılandırdığınız tüm ek sayaçlar, Tanılama Aracı 'nda gösterilmez. Tanılama aracında görünmesini sağlamak için aracın yapılandırma dosyasını yapılandırmanız gerekir. Bunu gelişmiş yönetimle birlikte nasıl yapacağınız hakkında yönergeler, daha sonraki bir tarihte GitHub 'da kullanılabilir.
@@ -135,7 +135,7 @@ Tanılama aracını dağıtmaya devam etmeden önce, Azure Active Directory uygu
 Uygulama kaydlarınızın API izinlerine sahip olduğundan emin olmak için:
 
 1. Bir tarayıcı açın ve [Azure Portal](https://portal.azure.com/) Yönetici hesabınızla bağlanın.
-2. **Azure Active Directory**gidin.
+2. **Azure Active Directory** gidin.
 3. **Uygulama kayıtları** gidin ve **tüm uygulamalar**' ı seçin.
 4. [Azure Active Directory uygulama kaydı oluşturma](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)' nın 5. adımında girdiğiniz aynı uygulama ADıYLA Azure AD uygulama kaydınızı bulun.
 
@@ -144,7 +144,7 @@ Uygulama kaydlarınızın API izinlerine sahip olduğundan emin olmak için:
 Log Analytics çalışma alanınızın önceden yapılandırılmış Windows performans sayaçlarına sahip olduğundan emin olmak için:
 
 1. [Azure Portal](https://portal.azure.com/), yapılandırılmış Windows performans sayaçlarını gözden geçirmek için **Log Analytics çalışma alanları** ' na gidin.
-2. **Ayarlar**altında **Gelişmiş ayarlar**' ı seçin.
+2. **Ayarlar** altında **Gelişmiş ayarlar**' ı seçin.
 3. Bundan sonra, **veri**  >  **Windows performans sayaçları**' na gidin.
 4. Aşağıdaki sayaçların önceden yapılandırılmış olduğundan emin olun:
 
@@ -162,7 +162,7 @@ VM 'lerin sistem durumunu görüntüleyebilmek için Log Analytics bağlantısı
 2. Log Analytics çalışma alanınıza gidin.
 3. Sol bölmede, çalışma alanı veri kaynakları altında **sanal makineler**' i seçin.
 4. Bağlanmak istediğiniz VM 'nin adını seçin.
-5. **Bağlan**'ı seçin.
+5. **Bağlan**’ı seçin.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -204,7 +204,7 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 
 Tanılama aracını kullanıcılarınız için kullanılabilir hale gelmeden önce, aşağıdaki izinlere sahip olduklarından emin olun:
 
-- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](/azure/azure-monitor/platform/roles-permissions-security).
+- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../../azure-monitor/platform/roles-permissions-security.md).
 -  Kullanıcıların ayrıca Windows sanal masaüstü kiracısı (RDS okuyucu rolü) için okuma erişimine ihtiyacı vardır. Daha fazla bilgi için bkz. [Windows sanal masaüstü 'Nde temsilci erişimi](delegated-access-virtual-desktop-2019.md).
 
 Kullanıcılarınıza aşağıdaki bilgileri de vermeniz gerekir:

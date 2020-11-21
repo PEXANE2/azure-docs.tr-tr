@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6dcd2005971927de30ca96173cb2bdb063e46663
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397448"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024152"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme
 
@@ -22,7 +22,7 @@ Azure Otomasyonu, Log Analytics çalışma alanınıza runbook iş durumu ve iş
 * Otomasyon hesaplarında işlerin ilişkilendirilmesi.
 * Runbook sonuçlarınızı, runbook iş durumunu ve diğer ilgili anahtar göstergelerini veya ölçümlerini görselleştirmek için özel görünümleri ve arama sorgularını kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak için şunlar gerekir:
 
@@ -41,7 +41,7 @@ Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak i
     Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
     ```
 
-2. **RESOURCEID**değerini kopyalayın.
+2. **RESOURCEID** değerini kopyalayın.
 
 3. Log Analytics çalışma alanınızın kaynak KIMLIĞINI bulmak için aşağıdaki komutu kullanın:
 
@@ -50,7 +50,7 @@ Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak i
     Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
     ```
 
-4. **RESOURCEID**değerini kopyalayın.
+4. **RESOURCEID** değerini kopyalayın.
 
 Belirli bir kaynak grubundan sonuçları döndürmek için `-ResourceGroupName` parametresini ekleyin. Daha fazla bilgi için bkz. [Get-AzResource](/powershell/module/az.resources/get-azresource).
 
@@ -58,7 +58,7 @@ Yukarıdaki komutların çıktısında birden fazla otomasyon hesabınız veya �
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure portal **Otomasyon hesapları** sayfasından Otomasyon hesabınızı seçin.
-1. Seçilen Otomasyon hesabının sayfasında, **Hesap ayarları**altında **Özellikler**' i seçin.
+1. Seçilen Otomasyon hesabının sayfasında, **Hesap ayarları** altında **Özellikler**' i seçin.
 1. **Özellikler** sayfasında aşağıda gösterilen ayrıntıları göz önünde bulabilirsiniz.
 
     ![Otomasyon hesabı özellikleri](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
@@ -95,7 +95,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak etiketlenen ik
 | ResultDescription |Runbook işi sonuç durumu. Olası değerler şunlardır:<br>- İş başlatıldı<br>- İş Başarısız Oldu<br>- İş Tamamlandı |
 | CorrelationId |Runbook işinin bağıntı GUID 'SI. |
 | ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak KIMLIĞI. |
-| kaynak grubundaki | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
+| SubscriptionId | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
 | adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | Kaynak sağlayıcısı. Değer MICROSOFT. Otomasyon. |
 | ResourceType | Kaynak türü. Değer AUTOMATIONACCOUNTS değeridir. |
@@ -117,7 +117,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde olarak etiketlenen ik
 | ResultDescription |Runbook 'tan çıkış akışını içeren açıklama. |
 | CorrelationId |Runbook işinin bağıntı GUID 'SI. |
 | ResourceId |Runbook 'un Azure Otomasyonu hesabı kaynak KIMLIĞI. |
-| kaynak grubundaki | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
+| SubscriptionId | Otomasyon hesabı için Azure aboneliği GUID 'ı. |
 | adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | Kaynak sağlayıcısı. Değer MICROSOFT. Otomasyon. |
 | ResourceType | Kaynak türü. Değer AUTOMATIONACCOUNTS değeridir. |
@@ -177,9 +177,9 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>JSON nesnesine dönüştürülen iş durumu çıkışını filtrele
 
-Son olarak, Otomasyon günlüğü verilerinin, Log Analytics hizmetindeki tabloya nasıl yazıldığı ve bu durumda `AzureDiagnostics` JSON özelliklerinin ayrı alanlara artık bölünememesi gibi bir davranışı değiştirdik. Runbook 'unuzu JSON biçimindeki nesneleri ayrı sütunlar olarak biçimlendirmek üzere yapılandırdıysanız, bu özelliklere erişmek için sorgularınızın bu alanı bir JSON nesnesine ayrıştırmak üzere yeniden yapılandırılması gerekir. Bu, bilinen bir yoldaki belirli bir JSON öğesine erişmek için [parseJSON](../azure-monitor/log-query/json-data-structures.md#parsejson) kullanılarak gerçekleştirilir.
+Son olarak, Otomasyon günlüğü verilerinin, Log Analytics hizmetindeki tabloya nasıl yazıldığı ve bu durumda `AzureDiagnostics` JSON özelliklerinin ayrı alanlara artık bölünememesi gibi bir davranışı değiştirdik. Runbook 'unuzu JSON biçimindeki nesneleri ayrı sütunlar olarak biçimlendirmek üzere yapılandırdıysanız, bu özelliklere erişmek için sorgularınızın bu alanı bir JSON nesnesine ayrıştırmak üzere yeniden yapılandırılması gerekir. Bu, bilinen bir yoldaki belirli bir JSON öğesine erişmek için [parseJSON](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) kullanılarak gerçekleştirilir.
 
-Örneğin, bir runbook, çıkış akışındaki *Resultdescription* özelliğini birden çok alan içeren JSON biçiminde biçimlendirir. **Durum**adlı bir alanda belirtilen başarısız durumda olan işlerinizin durumunu aramak Için, *Resultdescription* durumunu **başarısız**olarak aramak üzere bu örnek sorguyu kullanın:
+Örneğin, bir runbook, çıkış akışındaki *Resultdescription* özelliğini birden çok alan içeren JSON biçiminde biçimlendirir. **Durum** adlı bir alanda belirtilen başarısız durumda olan işlerinizin durumunu aramak Için, *Resultdescription* durumunu **başarısız** olarak aramak üzere bu örnek sorguyu kullanın:
 
 ```kusto
 AzureDiagnostics

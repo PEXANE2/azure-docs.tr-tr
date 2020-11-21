@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842643"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023165"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -62,7 +62,7 @@ Daha fazla bilgi edinmek için bkz. [Azure aboneliğinizi Güvenlik Merkezi stan
 
 ### <a name="improve-your-secure-score"></a>Güvenlik Puanınızı İyileştirme
 
-Güvenli puan, genel güvenliği iyileştirmeye yönelik öneriler ve en iyi uygulama önerileri sağlar. Bu öneriler, en önemli olanları seçmenize yardımcı olmak için önceliklendirilir ve hızlı onarım seçenekleri olası güvenlik açıklarını hızla gidermeye yardımcı olur. Bu öneriler zaman içinde günceldir ve ortamınızın güvenliğini sağlamanın en iyi yolları hakkında sizi güncel tutar. Daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'Nde güvenli puanınızı geliştirme](../security-center/security-center-secure-score.md).
+Güvenli puan, genel güvenliği iyileştirmeye yönelik öneriler ve en iyi uygulama önerileri sağlar. Bu öneriler, en önemli olanları seçmenize yardımcı olmak için önceliklendirilir ve hızlı onarım seçenekleri olası güvenlik açıklarını hızla gidermeye yardımcı olur. Bu öneriler zaman içinde günceldir ve ortamınızın güvenliğini sağlamanın en iyi yolları hakkında sizi güncel tutar. Daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'Nde güvenli puanınızı geliştirme](../security-center/secure-score-security-controls.md).
 
 ## <a name="windows-virtual-desktop-security-best-practices"></a>Windows sanal masaüstü güvenlik en iyi uygulamaları
 
@@ -74,13 +74,13 @@ Windows sanal masaüstündeki tüm kullanıcılar ve yöneticiler için Multi-Fa
 
 ### <a name="enable-conditional-access"></a>Koşullu erişimi etkinleştir
 
-[Koşullu erişimin](../active-directory/conditional-access/best-practices.md) etkinleştirilmesi, kullanıcılara Windows sanal masaüstü ortamınıza erişim vermeden önce riskleri yönetmenizi sağlar. Hangi kullanıcılara erişim izni vereceğinize karar verirken, kullanıcının ne olduğunu, oturum açmasını ve hangi cihazdan kullandığını da düşünmeniz önerilir.
+[Koşullu erişimin](../active-directory/conditional-access/overview.md) etkinleştirilmesi, kullanıcılara Windows sanal masaüstü ortamınıza erişim vermeden önce riskleri yönetmenizi sağlar. Hangi kullanıcılara erişim izni vereceğinize karar verirken, kullanıcının ne olduğunu, oturum açmasını ve hangi cihazdan kullandığını da düşünmeniz önerilir.
 
 ### <a name="collect-audit-logs"></a>Denetim günlüklerini topla
 
 Denetim günlüğü toplamayı etkinleştirmek, Windows sanal masaüstü ile ilgili Kullanıcı ve yönetici etkinliğini görüntülemenize olanak sağlar. Anahtar denetim günlüklerine bazı örnekler şunlardır:
 
--   [Azure Etkinlik Günlüğü](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure Etkinlik Günlüğü](../azure-monitor/platform/activity-log.md)
 -   [Etkinlik günlüğünü Azure Active Directory](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Oturum Konakları](../azure-monitor/platform/agent-windows.md)
@@ -93,7 +93,7 @@ Bir dağıtım modeli seçerken, uzak kullanıcılara tüm sanal masaüstlerine 
 
 ### <a name="monitor-usage-with-azure-monitor"></a>Azure Izleyici ile kullanımı izleme
 
-[Azure izleyici](https://azure.microsoft.com/services/monitor/)Ile Windows sanal masaüstü hizmetinizin kullanımını ve kullanılabilirliğini izleyin. Hizmet etkileyen bir olay olduğunda bildirim almak için Windows sanal masaüstü hizmetinin [hizmet durumu uyarılarını](../service-health/alerts-activity-log-service-notifications.md) oluşturmayı düşünün.
+[Azure izleyici](https://azure.microsoft.com/services/monitor/)Ile Windows sanal masaüstü hizmetinizin kullanımını ve kullanılabilirliğini izleyin. Hizmet etkileyen bir olay olduğunda bildirim almak için Windows sanal masaüstü hizmetinin [hizmet durumu uyarılarını](../service-health/alerts-activity-log-service-notifications-portal.md) oluşturmayı düşünün.
 
 ## <a name="session-host-security-best-practices"></a>Oturum Ana bilgisayarı güvenlik en iyi uygulamaları
 

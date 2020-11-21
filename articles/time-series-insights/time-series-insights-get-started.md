@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61af7922318514a7b86a349d1970c59d4d168d85
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569450"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023335"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Azure portal yeni bir Azure Time Series Insights Gen1 ortamı oluşturma
 
@@ -60,7 +60,7 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
 
    [![Bildirimleri izleyin](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-1. Kaynağa **genel bakış**bölümünde dağıtım yapılandırma ayarlarınızı doğrulayın.
+1. Kaynağa **genel bakış** bölümünde dağıtım yapılandırma ayarlarınızı doğrulayın.
 
    [![Panoya Azure Time Series Insights PIN oluşturma](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
@@ -68,9 +68,9 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ortamınızın güvenliğini sağlamak için [veri erişim Ilkeleri tanımlayın](time-series-insights-data-access.md) .
+* Ortamınızın güvenliğini sağlamak için [veri erişim Ilkeleri tanımlayın](./concepts-access-policies.md) .
 
-* Azure Time Series Insights ortamınıza [bir olay hub 'ı olay kaynağı ekleyin](time-series-insights-how-to-add-an-event-source-eventhub.md) .
+* Azure Time Series Insights ortamınıza [bir olay hub 'ı olay kaynağı ekleyin](./how-to-ingest-data-event-hub.md) .
 
 * [Olayları](time-series-insights-send-events.md) olay kaynağına gönderin.
 

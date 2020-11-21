@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 41d7fe8e22b39d8755f86e5ee490aa6e7dff97fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cbe4d44f5e1c8b34a3d7bb9d05b9546f320b81c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330630"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023485"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Öğretici: Azure bilişsel hizmetler ile bir Flask uygulaması derleme
 
@@ -60,11 +60,11 @@ Bu öğretici için ihtiyacınız olan yazılım ve abonelik anahtarlarını gö
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Hesap oluşturma ve kaynaklara abone olma
 
 Daha önce belirtildiği gibi, bu öğretici için üç abonelik anahtarına ihtiyacınız olacak. Bu, için Azure hesabınızda bir kaynak oluşturmanız gerektiği anlamına gelir:
-* Çevirmen
+* Translator
 * Metin Analizi
 * Konuşma Hizmetleri
 
-Kaynak oluşturmak için adım adım yönergeler için Azure portal bilişsel [Hizmetler hesabı oluşturma '](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yı kullanın.
+Kaynak oluşturmak için adım adım yönergeler için Azure portal bilişsel [Hizmetler hesabı oluşturma '](../cognitive-services-apis-create-account.md) yı kullanın.
 
 > [!IMPORTANT]
 > Bu öğreticide, lütfen kaynaklarınızı Batı ABD bölgesinde oluşturun. Farklı bir bölge kullanıyorsanız, Python dosyalarınızın her birinde temel URL 'YI ayarlamanız gerekir.
@@ -475,7 +475,7 @@ Uygulamayı sonlandırmak için **Ctrl + c** tuşlarına basın ve ardından son
 
 ## <a name="analyze-sentiment"></a>Yaklaşımı analiz etme
 
-[Metin Analizi API'si](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) , yaklaşım analizi gerçekleştirmek, metinden anahtar ifadeleri ayıklamak veya kaynak dilini algılamak için kullanılabilir. Bu uygulamada, girilen metnin pozitif, nötr veya negatif olduğunu anlamak için yaklaşım analizini kullanacağız. API, 0 ile 1 arasında sayısal bir puan döndürür. 1 ' e yakın puan pozitif yaklaşımı gösterir ve 0 ' a yakın puan negatif yaklaşımı gösterir.
+[Metin Analizi API'si](../text-analytics/overview.md) , yaklaşım analizi gerçekleştirmek, metinden anahtar ifadeleri ayıklamak veya kaynak dilini algılamak için kullanılabilir. Bu uygulamada, girilen metnin pozitif, nötr veya negatif olduğunu anlamak için yaklaşım analizini kullanacağız. API, 0 ile 1 arasında sayısal bir puan döndürür. 1 ' e yakın puan pozitif yaklaşımı gösterir ve 0 ' a yakın puan negatif yaklaşımı gösterir.
 
 Bu bölümde birkaç şey yapacağız:
 
@@ -659,7 +659,7 @@ Uygulamayı sonlandırmak için **Ctrl + c** tuşlarına basın ve ardından son
 
 ## <a name="convert-text-to-speech"></a>Metin okumayı dönüştürme
 
-[Metin okuma API 'si](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) , uygulamanızın metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesini sağlar. Hizmet standart, sinir ve özel sesleri destekler. Örnek uygulamamız, tam bir liste için kullanılabilir seslerin her birini kullanır, bkz. [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech).
+[Metin okuma API 'si](../speech-service/text-to-speech.md) , uygulamanızın metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesini sağlar. Hizmet standart, sinir ve özel sesleri destekler. Örnek uygulamamız, tam bir liste için kullanılabilir seslerin her birini kullanır, bkz. [desteklenen diller](../speech-service/language-support.md#text-to-speech).
 
 Bu bölümde birkaç şey yapacağız:
 
@@ -954,7 +954,7 @@ Belirtilen sunucu adresine gidin. Giriş alanına metin yazın, bir dil seçin v
 > [!TIP]
 > Yaptığınız değişiklikler görüntülenmiyorsa veya uygulama, istediğiniz şekilde çalışmazsa, Önbelleğinizi temizlemeyi veya bir özel/geçersiz bir pencere açmayı deneyin.
 
-Bu, çevirileri gerçekleştiren, yaklaşımı çözümleyen ve sentezlenmiş konuşmayı karşılayan bir çalışan uygulamanız vardır. Uygulamayı sonlandırmak için **Ctrl + c** tuşlarına basın. Diğer Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/)'i kullanıma aldığınızdan emin olun.
+Bu, çevirileri gerçekleştiren, yaklaşımı çözümleyen ve sentezlenmiş konuşmayı karşılayan bir çalışan uygulamanız vardır. Uygulamayı sonlandırmak için **Ctrl + c** tuşlarına basın. Diğer Azure bilişsel [Hizmetler](../index.yml)'i kullanıma aldığınızdan emin olun.
 
 ## <a name="get-the-source-code"></a>Kaynak kodunu alma
 
@@ -962,6 +962,6 @@ Bu proje için kaynak kodu [GitHub](https://github.com/MicrosoftTranslator/Text-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Çevirmen başvurusu](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Çevirmen başvurusu](./reference/v3-0-reference.md)
 * [Metin Analizi API'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [Metin okuma API başvurusu](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [Metin okuma API başvurusu](../speech-service/rest-text-to-speech.md)

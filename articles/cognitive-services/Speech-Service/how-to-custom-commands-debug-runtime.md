@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023032"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021805"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Özel bir komut uygulaması çalıştırırken hata ayıklama hataları
 
@@ -58,9 +58,9 @@ Bağlantı sorunlarını giderme hakkında daha fazla bilgi için, referans [Win
 
 - Uygulamayı portalda test ediyorsanız, iptal açıklaması doğrudan görüntülenir ve bir hata earcon oynar. 
 
-- Uygulamayı [Windows Voice Assistant istemcisiyle](./how-to-custom-commands-developer-flow-test.md)çalıştırıyorsanız bir hata earcon oynar. **Etkinlik günlükleri**altında **olay: cancelleddialog** ' a ulaşabilirsiniz.
+- Uygulamayı [Windows Voice Assistant istemcisiyle](./how-to-custom-commands-developer-flow-test.md)çalıştırıyorsanız bir hata earcon oynar. **Etkinlik günlükleri** altında **olay: cancelleddialog** ' a ulaşabilirsiniz.
 
-- İstemci uygulaması örnek [istemci uygulamamızı (konuşma SDK 'sı ile)](./how-to-custom-commands-setup-speech-sdk.md)takip ediyorsanız, bir hata earcon oynatabilir. **Durum**altında **olay: cancelleddialog** ' a ulaşabilirsiniz.
+- İstemci uygulaması örnek [istemci uygulamamızı (konuşma SDK 'sı ile)](./how-to-custom-commands-setup-speech-sdk.md)takip ediyorsanız, bir hata earcon oynatabilir. **Durum** altında **olay: cancelleddialog** ' a ulaşabilirsiniz.
 
 - Kendi istemci uygulamanızı oluşturuyorsanız, istenen günlüklerinizi her zaman, CancelledDialog olaylarını işleyecek şekilde tasarlayabilirsiniz.
 
@@ -86,13 +86,13 @@ Language Understanding (LUA), kaynak kullanımı için sınırlara sahiptir. Gen
 
     Özel komutlar uygulamanıza bir tahmin kaynağı ekleyin: 
     1. **Ayarlar**, lusıs kaynağı 'na gidin
-    1. **Tahmin**kaynağından bir tahmin kaynağı seçin veya **Yeni kaynak oluştur** ' a tıklayın. 
+    1. **Tahmin** kaynağından bir tahmin kaynağı seçin veya **Yeni kaynak oluştur** ' a tıklayın. 
 
 - LUSıS tahmin kaynağınız sınırı aşıyor
 
     F0 tahmini kaynağınız varsa, 10 bin/ay, 5 sorgu/saniye sınırına sahip olur.
 
-LUSıS kaynak limitleri hakkında daha fazla bilgi için, [Language Understanding kaynak kullanımı ve limiti](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits) ' ne bakın
+LUSıS kaynak limitleri hakkında daha fazla bilgi için, [Language Understanding kaynak kullanımı ve limiti](../luis/luis-limits.md#resource-usage-and-limits) ' ne bakın
 
 ### <a name="connection-to-the-recognizer-failed"></a>Tanıyıcıya bağlantı başarısız oldu
 Genellikle Language Understanding (LUSıS) tanıyıcı için geçici bağlantı hatası anlamına gelir. Yeniden deneyin ve sorun çözümlenmelidir.
@@ -123,7 +123,7 @@ Beklenmeyen yanıtlar birden çok şeyin oluşmasına neden olabilir. Başlamak 
 
     İki komut benzer hedefleri ve örnek cümleleri paylaşıyorsa, LUSıS tanıma doğruluğu etkilenebilir. Komut işlevlerini ve örnek cümleleri mümkün olduğunca farklı hale getirmek için deneyebilirsiniz.
 
-    Tanıma doğruluğunu iyileştirmeye yönelik en iyi yöntem için, [lusıs en iyi uygulaması](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)' na bakın.
+    Tanıma doğruluğunu iyileştirmeye yönelik en iyi yöntem için, [lusıs en iyi uygulaması](../luis/luis-concept-best-practices.md)' na bakın.
 
 - İletişim kutusu iptal edildi
     

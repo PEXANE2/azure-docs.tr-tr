@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 05/28/2019
-ms.author: Kevin
+ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 878b272e2a1a0e1d5a00a9c2028a6803b6d95383
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91568965"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023795"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
 
@@ -49,7 +49,7 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
    ![boş veri ambarı oluşturma](./media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-3. **Temel bilgiler**için aboneliğinizi, kaynak grubunuzu, SQL havuzu adınızı ve sunucu adını sağlayın:
+3. **Temel bilgiler** için aboneliğinizi, kaynak grubunuzu, SQL havuzu adınızı ve sunucu adını sağlayın:
 
    | Ayar | Önerilen değer | Açıklama |
    | :------ | :-------------- | :---------- |
@@ -60,13 +60,13 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
    ![veri ambarı temel ayrıntıları oluşturma](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
-4. **Performans düzeyi**altında, isteğe bağlı olarak yapılandırmanızı bir kaydırıcı ile değiştirmek için **performans düzeyi seç** ' i seçin.
+4. **Performans düzeyi** altında, isteğe bağlı olarak yapılandırmanızı bir kaydırıcı ile değiştirmek için **performans düzeyi seç** ' i seçin.
 
    ![veri ambarı performans düzeyini değiştirme](./media/create-data-warehouse-portal/create-sql-pool-performance-level.png)  
 
    Performans düzeyleri hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'te Işlem yönetme](sql-data-warehouse-manage-compute-overview.md).
 
-5. **Ek ayarlar**' ı seçin, **var olan verileri kullan**bölümünde örnek veritabanı olarak AdventureWorksDW oluşturulacak şekilde **Sample** ' ı seçin.
+5. **Ek ayarlar**' ı seçin, **var olan verileri kullan** bölümünde örnek veritabanı olarak AdventureWorksDW oluşturulacak şekilde **Sample** ' ı seçin.
 
     ![mevcut verileri kullan seçeneğini belirleyin](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
 

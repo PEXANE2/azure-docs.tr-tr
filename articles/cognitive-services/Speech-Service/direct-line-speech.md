@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357650"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021890"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech nedir?
 
@@ -37,9 +37,9 @@ Ayrıca, kod çalıştırıp API 'Leri hızla öğrenmenizi sağlayacak hızlı 
 
 | Hızlı Başlangıç | Platform | API başvurusu |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Gözat](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Gözat](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Gözat](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Gözat](/dotnet/api/microsoft.cognitiveservices.speech) |
+| Java | Windows, macOS, Linux | [Gözat](/java/api/com.microsoft.cognitiveservices.speech) |
+| Java | Android | [Gözat](/java/api/com.microsoft.cognitiveservices.speech) |
 
 ## <a name="sample-code"></a>Örnek kod
 
@@ -50,21 +50,21 @@ Bir ses Yardımcısı oluşturmaya yönelik örnek kod GitHub ' da kullanılabil
 
 ## <a name="customization"></a>Özelleştirme
 
-Konuşma hizmeti kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](speech-devices-sdk-create-kws.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
+Konuşma hizmeti kullanılarak oluşturulan sesli yardımcılar, [konuşmadan metne](speech-to-text.md), [metinden konuşmaya](text-to-speech.md)ve [özel anahtar sözcük seçimi](./custom-keyword-basics.md)için kullanılabilen özelleştirme seçeneklerinin tam aralığını kullanabilir.
 
 > [!NOTE]
-> Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
+> Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](./language-support.md)).
 
-Ses yardımcıları için doğrudan hat konuşmayı ve ilgili işlevselliği, [sanal yardımcı çözümü ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)için ideal bir ektir. Doğrudan hat konuşması uyumlu bir bot ile çalışabilse de, bu kaynaklar yüksek kaliteli konuşma deneyimleri için yeniden kullanılabilir bir temel ve hızla çalışmaya başlamak için ortak destekleyici beceriler ve modeller sağlar.
+Ses yardımcıları için doğrudan hat konuşmayı ve ilgili işlevselliği, [sanal yardımcı çözümü ve kurumsal şablon](/azure/bot-service/bot-builder-enterprise-template-overview)için ideal bir ektir. Doğrudan hat konuşması uyumlu bir bot ile çalışabilse de, bu kaynaklar yüksek kaliteli konuşma deneyimleri için yeniden kullanılabilir bir temel ve hızla çalışmaya başlamak için ortak destekleyici beceriler ve modeller sağlar.
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Konuşma SDK'sı](speech-sdk-reference.md)
-* [Azure Bot Hizmeti](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Konuşma SDK'sı](./speech-sdk.md)
+* [Azure Bot Hizmeti](/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](overview.md#try-the-speech-service-for-free)
 * [Konuşma SDK 'sını alın](speech-sdk.md)
-* [Temel bot oluşturma ve dağıtma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Temel bot oluşturma ve dağıtma](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Sanal yardımcı çözümü ve kurumsal şablonu al](https://github.com/Microsoft/AI)

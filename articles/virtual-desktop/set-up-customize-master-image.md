@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433713"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023403"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -31,7 +31,7 @@ Görüntüyü yerel bir konuma indirdikten sonra, kopyaladığınız VHD ile VM 
 
 Kopyalanmış VHD ile bir VM oluşturmak için:
 
-1. **Yeni sanal makine sihirbazını**açın.
+1. **Yeni sanal makine sihirbazını** açın.
 
 2. Üretimi Belirle sayfasında **1. kuşak**' i seçin.
 
@@ -88,8 +88,8 @@ Windows Defender 'ın belirli dosyaları taramayla hariç tutmak üzere nasıl y
 
 Yerel grup ilkesi aracılığıyla otomatik güncelleştirmeleri devre dışı bırakmak için:
 
-1. ** \\ \\ Windows bileşenleri \\ Windows Update Yönetim Şablonları yerel Grup İlkesi Düzenleyicisi**açın.
-2. **Otomatik güncelleştirmeyi yapılandır** ' a sağ tıklayın ve **devre dışı**olarak ayarlayın.
+1. **\\ \\ Windows bileşenleri \\ Windows Update Yönetim Şablonları yerel Grup İlkesi Düzenleyicisi** açın.
+2. **Otomatik güncelleştirmeyi yapılandır** ' a sağ tıklayın ve **devre dışı** olarak ayarlayın.
 
 Otomatik güncelleştirmeleri devre dışı bırakmak için komut isteminde aşağıdaki komutu da çalıştırabilirsiniz.
 
@@ -111,10 +111,10 @@ Bir konak havuzundaki tüm VM 'Ler aynı güvenlik grubunun parçası olduğunda
 
 Saat dilimlerini yeniden yönlendirmek için:
 
-1. Active Directory sunucusunda, **Grup İlkesi Yönetim Konsolu**açın.
+1. Active Directory sunucusunda, **Grup İlkesi Yönetim Konsolu** açın.
 2. Etki alanınızı ve grup ilkesi nesnelerini genişletin.
 3. Grup İlkesi ayarları için oluşturduğunuz **Grup İlkesi nesnesine** sağ tıklayın ve **Düzenle**' yi seçin.
-4. **Grup İlkesi Yönetimi Düzenleyicisi**, **Computer Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri**Yönetim Şablonları  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **Cihaz ve kaynak yeniden yönlendirme**Uzak Masaüstü Hizmetleri Uzak Masaüstü oturumu ana bilgisayarı bilgisayar yapılandırma ilkeleri ' ne gidin.
+4. **Grup İlkesi Yönetimi Düzenleyicisi**, **Computer Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri** Yönetim Şablonları  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **Cihaz ve kaynak yeniden yönlendirme** Uzak Masaüstü Hizmetleri Uzak Masaüstü oturumu ana bilgisayarı bilgisayar yapılandırma ilkeleri ' ne gidin.
 5. **Saat dilimi yeniden yönlendirmesine Izin ver** ayarını etkinleştirin.
 
 Ayrıca, saat dilimlerini yeniden yönlendirmek için ana görüntüde bu komutu çalıştırabilirsiniz:
@@ -125,7 +125,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>Depolama alanını devre dışı bırak
 
-Windows 10 Enterprise veya Windows 10 Enterprise çoklu oturum kullanan Windows sanal masaüstü oturumu ana bilgisayarı için depolama alanını devre dışı bırakmayı öneririz. Aşağıdaki ekran görüntüsünde gösterildiği gibi, **depolama**alanının altındaki ayarlar menüsünde depolama alanını devre dışı bırakabilirsiniz:
+Windows 10 Enterprise veya Windows 10 Enterprise çoklu oturum kullanan Windows sanal masaüstü oturumu ana bilgisayarı için depolama alanını devre dışı bırakmayı öneririz. Aşağıdaki ekran görüntüsünde gösterildiği gibi, **depolama** alanının altındaki ayarlar menüsünde depolama alanını devre dışı bırakabilirsiniz:
 
 > [!div class="mx-imgBorder"]
 > ![Ayarlar altında depolama menüsünün ekran görüntüsü. "Depolama algılama" seçeneği devre dışıdır.](media/storagesense.png)
@@ -138,7 +138,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>Ek dil desteği ekle
 
-Bu makale, dil ve bölge desteğinin nasıl yapılandırılacağını kapsamaz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makale, dil ve bölge desteğinin nasıl yapılandırılacağını kapsamaz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Windows yansımalarına dil ekleme](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [İsteğe bağlı özellikler](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
@@ -189,7 +189,7 @@ Aşağıdaki yönergeler, ana görüntünüzü bir Azure depolama hesabına nas�
 
 1. Henüz yapmadıysanız VM görüntüsünü (VHD) sabit olarak dönüştürün. Görüntüyü Sabitsiz dönüştürmezseniz, görüntüyü başarıyla oluşturamazsınız.
 
-2. VHD 'YI Depolama hesabınızdaki bir blob kapsayıcısına yükleyin. [Depolama Gezgini aracı](https://azure.microsoft.com/features/storage-explorer/)ile hızlıca karşıya yükleyebilirsiniz. Depolama Gezgini aracı hakkında daha fazla bilgi edinmek için [Bu makaleye](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)bakın.
+2. VHD 'YI Depolama hesabınızdaki bir blob kapsayıcısına yükleyin. [Depolama Gezgini aracı](https://azure.microsoft.com/features/storage-explorer/)ile hızlıca karşıya yükleyebilirsiniz. Depolama Gezgini aracı hakkında daha fazla bilgi edinmek için [Bu makaleye](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)bakın.
 
     > [!div class="mx-imgBorder"]
     > ![Microsoft Azure Depolama Gezgini aracının arama penceresinin ekran görüntüsü. ". Vhd veya VHDX dosyalarını sayfa Blobları olarak yükle (önerilir)" onay kutusu seçilidir.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
