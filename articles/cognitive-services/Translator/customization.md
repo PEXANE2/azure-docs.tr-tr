@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368942"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238097"
 ---
 # <a name="customize-your-text-translations"></a>Metin çevirilerinizi özelleştirin
 
@@ -38,28 +38,6 @@ Sistem ayrıca belge düzeyinde paralel olan ancak tümce düzeyinde henüz hiza
 Uygun tür ve eğitim verisi miktarı verildiğinde, 5 ile 10 arasında kazanç beklenmez veya özel çevirici kullanarak çeviri kalitesine daha fazla BLEU noktası gelir.
 
 Kullanılabilir verilere göre çeşitli özelleştirme düzeyleri hakkında daha fazla ayrıntı için [özel çevirmen kullanıcı kılavuzunda](./custom-translator/overview.md)bulabilirsiniz.
-
-
-## <a name="microsoft-translator-hub"></a>Microsoft Translator hub 'ı
-
-> [!NOTE]
-> Eski Microsoft Translator hub 'ı 17 Mayıs 2019 tarihinde kullanımdan kaldırılacaktır. [Önemli geçiş bilgilerini ve tarihlerini görüntüleyin](https://www.microsoft.com/translator/business/hub/).  
-
-## <a name="custom-translator-versus-hub"></a>Özel Translator ile hub karşılaştırması
-
-| Özellik | Hub | Özel Çevirmen |
-| ------- | :-: | :---------------: |
-|Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
-| Metin API 'SI sürümü    | Yalnızca v2    | Yalnızca v3 |
-| SMT özelleştirmesi    | Yes    | Hayır |
-| NMT özelleştirmesi    | Hayır    | Yes |
-| Yeni Birleşik konuşma Hizmetleri özelleştirmesi    | Hayır    | Yes |
-| [Izleme yok](https://www.aka.ms/notrace) | Yes    | Yes |
-
-## <a name="collaborative-translations-framework"></a>İşbirliğine dayalı Çeviriler çerçevesi
-
-> [!NOTE]
-> 1 Şubat 2018 itibariyle, AddTranslation () ve AddTranslationArray (), Translator v 2.0 ile birlikte kullanılamaz. Bu yöntemler başarısız olur ve hiçbir şey yazılmaz. Translator v 3.0 bu yöntemleri desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

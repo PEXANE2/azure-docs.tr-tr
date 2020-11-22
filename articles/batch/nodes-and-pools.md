@@ -2,17 +2,17 @@
 title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 11/20/2020
+ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537620"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243078"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
-Azure Batch bir iş akışında, bir *işlem düğümü* (veya *düğümü* ), uygulamanızın iş yükünün bir bölümünü işleyen bir sanal makinedir. *Havuz* , uygulamanızın üzerinde çalışacağı bu düğümlerin bir koleksiyonudur. Bu makalede düğümler ve havuzlar hakkında daha fazla bilgi verilmektedir ve bunları bir Azure Batch iş akışında oluşturma ve kullanma konusunda dikkat edilecek noktalar açıklanmaktadır.
+Azure Batch bir iş akışında, bir *işlem düğümü* (veya *düğümü*), uygulamanızın iş yükünün bir bölümünü işleyen bir sanal makinedir. *Havuz* , uygulamanızın üzerinde çalışacağı bu düğümlerin bir koleksiyonudur. Bu makalede düğümler ve havuzlar hakkında daha fazla bilgi verilmektedir ve bunları bir Azure Batch iş akışında oluşturma ve kullanma konusunda dikkat edilecek noktalar açıklanmaktadır.
 
 ## <a name="nodes"></a>Düğümler
 
@@ -40,7 +40,7 @@ Bir havuza eklenen her düğüme benzersiz bir ad ve IP adresi atanır. Bir dü�
 
 Bir havuz yalnızca içinde oluşturulduğu Batch hesabı tarafından kullanılabilir. Bir Batch hesabı, çalıştırılacağı uygulamaların kaynak gereksinimlerini karşılamak için birden çok havuz oluşturabilir.
 
-Havuz el ile veya yapılacak işleri belirttiğinizde Batch hizmeti tarafından otomatik olarak oluşturulabilir. Bir havuz oluşturduğunuzda aşağıdaki öznitelikleri belirtebilirsiniz:
+Havuz el ile veya yapılacak işleri belirttiğinizde [Batch hizmeti tarafından otomatik olarak](#autopools) oluşturulabilir. Bir havuz oluşturduğunuzda aşağıdaki öznitelikleri belirtebilirsiniz:
 
 - [Düğüm işletim sistemi ve sürümü](#operating-system-and-version)
 - [Düğüm türü ve hedef düğüm sayısı](#node-type-and-target)
@@ -127,7 +127,7 @@ Bir [otomatik ölçeklendirme formülü](batch-automatic-scaling.md#autoscale-fo
 
 - **Zaman ölçümleri** belirtilen saat sayısınca beş dakikada bir toplanan istatistikleri temel alır.
 - **Kaynak ölçümleri** CPU kullanımı, bant genişliği kullanımı, bellek kullanımı ve düğüm sayısını temel alır.
-- **Görev ölçümleri** ; *Etkin* (kuyruğa alınmış) *Çalışıyor* veya *Tamamlandı* gibi görev durumlarını temel alır.
+- **Görev ölçümleri**; *Etkin* (kuyruğa alınmış) *Çalışıyor* veya *Tamamlandı* gibi görev durumlarını temel alır.
 
 Otomatik ölçeklendirme bir havuzdaki işlem düğümlerinin sayısını azalttığında, azaltma işlemi sırasında çalışan görevlerin nasıl ele alınacağını göz önünde bulundurmanız gerekir. Toplu Işlem buna uyum sağlamak için formüllerinize dahil ettiğiniz [*düğüm ayırmayı kaldırma seçeneğini*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) sağlar. Örneğin, çalışmakta olan görevlerin hemen durdurulacağını, ardından başka bir düğüm üzerinde yeniden kuyruğa alınacağını veya düğüm havuzdan kaldırılmadan önce bitmesine izin verileceğini belirtebilirsiniz. Düğüm ayırmayı kaldırma seçeneğini olarak ayarlamanın `taskcompletion` veya `retaineddata` Tüm görevler tamamlanana kadar havuz yeniden boyutlandırma işlemlerini önlemesine veya sırasıyla tüm görev saklama dönemlerinin süresi dolmaya engel olacağını unutmayın.
 
@@ -184,6 +184,10 @@ Spektrumun bir ucunda, gönderdiğiniz her iş için bir havuz oluşturabilir ve
 Spektrumun diğer ucunda, işlerin hemen başlatılması en yüksek önceliğe sahipse işler gönderilmeden önce bir havuz oluşturabilir ve bu havuzun düğümlerini kullanıma sunabilirsiniz. Bu senaryoda görevler hemen başlayabilir, ancak görevlerin atanmasını beklerken düğümler boşta kalmaya devam edebilir.
 
 Birleşik yaklaşım genellikle bir değişkeni işlemek için kullanılır, ancak devam eden yük. Birden çok işin gönderildiği bir havuzunuz olabilir ve iş yüküne göre düğüm sayısını yukarı veya aşağı ölçeklendirebilirler. Mevcut yüke bağlı olarak reaktif bir şekilde ya da yük öngörülebiliyorsa proaktif olarak bu işlemi yapabilirsiniz. Daha fazla bilgi için bkz. [Otomatik ölçeklendirme ilkesi](#automatic-scaling-policy).
+
+## <a name="autopools"></a>Oto havuzları
+
+Bir [oto havuzu](/rest/api/batchservice/job/add#autopoolspecification) , bir iş gönderildiğinde, havuzda çalışacak işlerden önce oluşturulması yerine Batch hizmeti tarafından oluşturulan bir havuzudur. Batch hizmeti, belirttiğiniz özelliklere göre bir oto havuzunun ömrünü yönetir. Çoğu zaman, bu havuzlar işleri tamamlandıktan sonra otomatik olarak silinecek şekilde ayarlanır.
 
 ## <a name="security-with-certificates"></a>Sertifikalar ile güvenlik
 

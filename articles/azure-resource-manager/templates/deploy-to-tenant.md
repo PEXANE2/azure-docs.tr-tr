@@ -2,13 +2,13 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/20/2020
+ms.openlocfilehash: 65a5e90616f8883b338d22fa31eee6932452b5fd
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668688"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95242671"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM şablonlarıyla kiracı dağıtımları
 
@@ -36,11 +36,19 @@ Yönetim grupları oluşturmak için şunu kullanın:
 
 * [Yönetim grupları](/azure/templates/microsoft.management/managementgroups)
 
+Abonelik oluşturmak için şunu kullanın:
+
+* [deyim](/azure/templates/microsoft.subscription/aliases)
+
 Maliyetleri yönetmek için şunu kullanın:
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [yönergelerin](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [ınvoicesections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
+
+Portalı yapılandırmak için şunu kullanın:
+
+* [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
 
 ## <a name="schema"></a>Şema
 
@@ -123,12 +131,12 @@ ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakk
 
 ## <a name="deployment-scopes"></a>Dağıtım kapsamları
 
-Bir yönetim grubuna dağıtırken, kaynakların dağıtımını yapabilirsiniz:
+Bir kiracıya dağıtırken kaynakların dağıtımını yapabilirsiniz:
 
 * Kiracı
 * kiracının içindeki yönetim grupları
 * Aboneliklerin
-* kaynak grupları (iki iç içe dağıtım aracılığıyla)
+* kaynak grupları
 * [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
 
 Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
@@ -155,6 +163,14 @@ Kiracıdaki bir aboneliği hedeflemek için, iç içe geçmiş bir dağıtım ve
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
 
+### <a name="scope-to-resource-group"></a>Kapsam-kaynak grubu
+
+Ayrıca, kiracının içindeki kaynak gruplarını hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+
+Kiracının içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir dağıtım kullanın. `subscriptionId`Ve özelliklerini ayarlayın `resourceGroup` . Kaynak grubunun konumunda dağıtıldığından, iç içe dağıtım için bir konum ayarlamazsanız.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
+
 ## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
 
 Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
@@ -165,71 +181,15 @@ Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip me
 
 ## <a name="create-management-group"></a>Yönetim grubu oluşturma
 
-[Aşağıdaki şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) bir yönetim grubu oluşturur.
+Aşağıdaki şablon bir yönetim grubu oluşturur.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mgName": {
-      "type": "string",
-      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('mgName')]",
-      "properties": {
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
 ## <a name="assign-role"></a>Rol atama
 
-[Aşağıdaki şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) , kiracı kapsamına bir rol atar.
+Aşağıdaki şablon, kiracı kapsamına bir rol atar.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "principalId if the user that will be given contributor access to the resourceGroup"
-      }
-    },
-    "roleDefinitionId": {
-      "type": "string",
-      "defaultValue": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
-      "metadata": {
-        "description": "roleDefinition for the assignment - default is owner"
-      }
-    }
-  },
-  "variables": {
-    // This creates an idempotent guid for the role assignment
-    "roleAssignmentName": "[guid('/', parameters('principalId'), parameters('roleDefinitionId'))]"
-  },
-  "resources": [
-    {
-      "name": "[variables('roleAssignmentName')]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-04-01-preview",
-      "properties": {
-        "roleDefinitionId": "[tenantResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "/"
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

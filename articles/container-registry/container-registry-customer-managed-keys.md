@@ -4,12 +4,12 @@ description: Azure Container Registry 'nizin geri kalanı hakkında bilgi edinin
 ms.topic: article
 ms.date: 11/17/2020
 ms.custom: ''
-ms.openlocfilehash: d145e861859d08b644683ea870a48fe9ef8fa459
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024850"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95255029"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar kullanarak kayıt defterini şifreleme
 
@@ -47,7 +47,7 @@ Kayıt defteri şifrelemesini müşteri tarafından yönetilen bir anahtarla yap
 * **Anahtar sürümünü el ile güncelleştirme** -kayıt defteri şifrelemesi için bir anahtarın belirli bir sürümünü kullanmak üzere, müşteri tarafından yönetilen bir anahtarla kayıt defteri şifrelemesini etkinleştirdiğinizde bu anahtar sürümünü belirtin. Bir kayıt defteri belirli bir anahtar sürümüyle şifrelendiğinde, Azure Container Registry, müşteri tarafından yönetilen anahtarı el ile döndürünceye kadar bu sürümü şifreleme için kullanır.
 
 > [!NOTE]
-> Şu anda, müşteri tarafından yönetilen anahtar sürümünü otomatik olarak güncelleştirmek için kayıt defterini yapılandırmak üzere yalnızca Azure CLı 'yı kullanabilirsiniz. Şifrelemeyi etkinleştirmek için portalını kullanırken, anahtar sürümünü güncelleştirmeniz gerekir.
+> Şu anda, müşteri tarafından yönetilen anahtar sürümünü otomatik olarak güncelleştirmek için kayıt defterini yapılandırmak üzere yalnızca Azure CLı 'yı kullanabilirsiniz. Şifrelemeyi etkinleştirmek için portalını kullanırken, anahtar sürümünü el ile güncelleştirmeniz gerekir.
 
 Ayrıntılar için, bu makalenin sonraki kısımlarında yer alarak anahtar KIMLIĞI, anahtar sürümü ve [güncelleştirme anahtarı sürümünü](#update-key-version) [seçin](#choose-key-id-with-or-without-key-version) bölümüne bakın.
 

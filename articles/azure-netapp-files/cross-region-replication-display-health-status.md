@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709050"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249861"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>Çoğaltma ilişkisinin uygunluk durumunu görüntüleme 
 
@@ -51,12 +51,13 @@ ms.locfileid: "90709050"
     ![Çoğaltma sistem durumu](../media/azure-netapp-files/cross-region-replication-health-status.png)
 
 > [!NOTE] 
-> Çoğaltma ilişkisi, önceki çoğaltma işleri tamamlanmadıysa sistem durumunu *sağlıksız* olarak gösterir. Bu durum, daha düşük bir aktarım penceresiyle (örneğin, büyük bir birim için on dakikalık bir aktarım süresi) aktarılmakta olan büyük birimlerin bir sonucudur. Bu durumda, ilişki durumu *aktarma* ve sistem durumunun *sağlıksız*olduğunu gösterir.
+> Çoğaltma ilişkisi, önceki çoğaltma işleri tamamlanmadıysa sistem durumunu *sağlıksız* olarak gösterir. Bu durum, daha düşük bir aktarım penceresiyle (örneğin, büyük bir birim için on dakikalık bir aktarım süresi) aktarılmakta olan büyük birimlerin bir sonucudur. Bu durumda, ilişki durumu *aktarma* ve sistem durumunun *sağlıksız* olduğunu gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 * [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
+* [Birim çoğaltmaları veya birimleri silme](cross-region-replication-delete.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 

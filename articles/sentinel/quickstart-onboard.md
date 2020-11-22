@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 21e0cfd56a37304d1ec333f8713894504282541f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660670"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95248654"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanıma alma
 
@@ -41,7 +41,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
 ### <a name="geographical-availability-and-data-residency"></a>Coğrafi kullanılabilirlik ve veri yerleşimi
 
-- Azure Sentinel, Çin ve Almanya (Sovereign) bölgeleri hariç Log Analytics herhangi bir [ga bölgesindeki](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) çalışma alanlarında çalıştırılabilir. 
+- Azure Sentinel, Çin ve Almanya (Sovereign) bölgeleri hariç [Log Analytics çoğu GA](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) bölgesindeki çalışma alanlarında çalıştırılabilir. Bazen yeni Log Analytics bölgelerinin Sentinel hizmeti 'nin eklenmesi biraz zaman alabilir. 
 
 - Olaylar, yer işaretleri ve analiz kuralları gibi Azure Sentinel tarafından oluşturulan veriler, müşterinin Log Analytics çalışma alanlarından kaynaklanan bazı müşteri verilerini içerebilir. Bu Azure Sentinel tarafından oluşturulan veriler, çalışma alanının bulunduğu coğrafi tabloya göre aşağıdaki tabloda listelenen Coğrafya içine kaydedilir:
 
@@ -63,7 +63,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
    ![Hizmet arama](./media/quickstart-onboard/search-product.png)
 
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 
 1. Kullanmak istediğiniz çalışma alanını seçin veya yeni bir tane oluşturun. Azure Sentinel 'i birden fazla çalışma alanında çalıştırabilirsiniz, ancak veriler tek bir çalışma alanına yalıtılmış olur.
 

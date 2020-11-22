@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa7292d423d8b716ffd75a1a20431fb5a79bbf96
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650126"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237349"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Bulut sağlama sorunlarını giderme
 
@@ -124,40 +124,17 @@ Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin
 
 ### <a name="log-files"></a>Günlük dosyaları
 
-Varsayılan olarak aracı mümkün olduğunca az hata iletisi ve yığın izleme bilgisi yarar. Bu izleme günlüklerini *C:\programdata\microsoft\azure AD Connect sağlama programı \ Trace* klasöründe bulabilirsiniz.
+Varsayılan olarak aracı mümkün olduğunca az hata iletisi ve yığın izleme bilgisi yarar. Bu izleme günlüklerini **C:\programdata\microsoft\azure AD Connect sağlama programı \ Trace** klasöründe bulabilirsiniz.
 
 Aracıyla ilgili sorunları gidermeye yönelik ek ayrıntılar toplamak için aşağıdaki adımları izleyin.
 
-1. Hizmeti durdurma **Microsoft Azure AD sağlama aracısını bağlama**.
-1. Özgün yapılandırma dosyasının bir kopyasını oluşturun: *C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config*.
-1. Var olan `<system.diagnostics>` bölümü aşağıdaki ile değiştirin ve tüm izleme Iletileri *ProvAgentTrace. log* dosyasına gider.
+1.  [Burada](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)açıklandığı gibi AADCloudSyncTools PowerShell modülünü yükler.
+2. `Export-AADCloudSyncToolsLogs`Bilgileri yakalamak için PowerShell cmdlet 'ini kullanın.  Veri koleksiyonunuzu ince ayar yapmak için aşağıdaki anahtarları kullanabilirsiniz.
+      - Yalnızca ayrıntılı günlükleri yakalamadan geçerli günlükleri dışarı aktarmak için SkipVerboseTrace (varsayılan = false)
+      - Farklı bir yakalama süresi belirtmek için TracingDurationMins (varsayılan = 3 dakika)
+      - Farklı bir çıkış yolu belirtmek için OutputPath (varsayılan = kullanıcının belgeleri)
 
-   ```xml
-     <system.diagnostics>
-         <sources>
-         <source name="AAD Connect Provisioning Agent">
-             <listeners>
-             <add name="console"/>
-             <add name="etw"/>
-             <add name="textWriterListener"/>
-             </listeners>
-         </source>
-         </sources>
-         <sharedListeners>
-         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
-         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
-             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
-         </add>
-         <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
-         </sharedListeners>
-     </system.diagnostics>
-    
-   ```
-1. Hizmeti başlatın **Microsoft Azure AD sağlama aracısına bağlanın**.
-1. Dosya ve hata ayıklama sorunlarını ayıklamak için aşağıdaki komutu kullanın. 
-    ```
-    Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
-    ```
+
 ## <a name="object-synchronization-problems"></a>Nesne eşitleme sorunları
 
 Aşağıdaki bölümde, nesne eşitlemeyle ilgili sorun giderme hakkında bilgiler yer almaktadır.
@@ -203,6 +180,22 @@ Durumu seçerek, karantinaya alma hakkında daha fazla bilgi görebilirsiniz. Ha
   Aşağıdaki isteği kullanın:
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+
+## <a name="repairing-the-the-cloud-sync-service-account"></a>Bulut eşitleme hizmeti hesabını onarma
+Bulut eşitleme hizmeti hesabını onarmanız gerekiyorsa, kullanabilirsiniz `Repair-AADCloudSyncToolsAccount` .  
+
+
+   1.  Başlamak için [burada](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) özetlenen yükleme adımlarını kullanın ve ardından kalan adımlara devam edin.
+   2.  Yönetici ayrıcalıklarına sahip bir Windows PowerShell oturumunda aşağıdakileri yazın veya kopyalayıp yapıştırın: 
+    ```
+    Connect-AADCloudSyncTools
+    ```  
+   3. Azure AD Genel yönetici kimlik bilgilerinizi girin
+   4. Aşağıdakileri yazın veya kopyalayıp yapıştırın: 
+    ```
+    Repair-AADCloudSyncToolsAccount
+    ```  
+   5. Bu işlem tamamlandıktan sonra hesabın başarıyla onarıldığı bildirilmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

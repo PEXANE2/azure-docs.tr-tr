@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660092"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237485"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Hızlı başlangıç: SYNAPSE SQL ile toplu yükleme
 
@@ -39,7 +39,8 @@ Artık SYNAPSE Studio içindeki aşağıdaki alanlara basit bir sağ tıklama il
 
 ### <a name="steps"></a>Adımlar
 
-1. Kaynak depolama konumu panelinden depolama hesabını ve yükleme yaptığınız dosyayı veya klasörü seçin. Sihirbaz, Parquet dosyalarını otomatik olarak algılamaya çalışacaktır. Parquet dosya türü onaylanmazsa, ayrılmış metin (CSV) varsayılan olarak kullanılacaktır. 
+1. Kaynak depolama konumu panelinden depolama hesabını ve yükleme yaptığınız dosyayı veya klasörü seçin. Sihirbaz, Parquet dosyalarını otomatik olarak algılamaya çalışacaktır. Parquet dosya türü onaylanmazsa, ayrılmış metin (CSV) varsayılan olarak kullanılacaktır.
+
    ![Kaynak konumu seçme](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Reddedilen satırları (hata dosyası) yazmak istediğiniz depolama hesabı da dahil olmak üzere dosya biçimi ayarlarını seçin. Şu anda yalnızca CSV ve Parquet dosyaları desteklenir.

@@ -6,33 +6,33 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 236670cb59a98ee097baaeb35174489d66e6e786
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424413"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253379"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC kimlik doğrulaması-REST API başvurusu
 
-HTTP isteklerinin kimliği, **HMAC-SHA256** kimlik doğrulaması şeması kullanılarak doğrulanabilir. Bu istekler TLS üzerinden aktarılmalıdır.
+HMAC-SHA256 kimlik doğrulama şemasını kullanarak HTTP isteklerinin kimliğini doğrulayabilirsiniz. (HMAC, karma tabanlı ileti kimlik doğrulama koduna başvurur.) Bu istekler TLS üzerinden aktarılmalıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Credential** - \<Access Key ID\>
 - **Gizli** -Base64 kodu çözülmüş erişim anahtarı değeri. ``base64_decode(<Access Key Value>)``
 
-Kimlik bilgileri (' ID ' olarak da anılır) ve gizli anahtar (' Value ' olarak da bilinir) değerlerinin, [Azure Portal](https://portal.azure.com) veya [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)kullanılarak yapılabilecek Azure uygulama yapılandırma örneğinden alınması gerekir.
+Kimlik bilgileri (Ayrıca denir `id` ) ve gizli dizi (Ayrıca denir `value` ) değerlerinin Azure Uygulama yapılandırması örneğinden alınması gerekir. Bunu, [Azure Portal](https://portal.azure.com) veya [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)kullanarak yapabilirsiniz.
 
 Kimlik doğrulaması için gereken tüm HTTP üstbilgilerini içeren her isteği sağlayın. Gerekli olan en düşük değer şunlardır:
 
-|  İstek Başlığı | Açıklama  |
+|  İstek üst bilgisi | Açıklama  |
 | --------------- | ------------ |
-| **Konak** | Internet ana bilgisayarı ve bağlantı noktası numarası. Bkz. bölüm  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2) |
-| **Date** | İsteğin kaynaklandığı tarih ve saat. Geçerli GMT 'den 15 dakikadan daha uzun olamaz. Değer, [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1) bölümünde açıklandığı gıbı bir http tarihidir
-| **x-MS-Tarih** | Yukarıdaki gibi ```Date``` . Aracı istek üstbilgisine doğrudan erişe, ```Date``` veya bir ara sunucu tarafından değişiklik yaptığında bunun yerine kullanılabilir. ```x-ms-date```Ve ```Date``` her ikisi de sağlanmışsa, ```x-ms-date``` öncelik alır. |
+| **Konak** | Internet ana bilgisayarı ve bağlantı noktası numarası. Daha fazla bilgi için bkz. Section  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2). |
+| **Date** | İsteğin kaynaklandığı tarih ve saat. Geçerli Eşgüdümlü Evrensel saatten (Greenwich saati) 15 dakikadan daha uzun olamaz. Değer, [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1)bölümünde açıklandığı gıbı bir http tarihidir.
+| **x-MS-Tarih** | Yukarıdaki gibi ```Date``` . Aracı, ```Date``` istek üstbilgisine doğrudan erişe, ya da bir proxy tarafından değişiklik yaptığında bunun yerine kullanabilirsiniz. ```x-ms-date```Ve ```Date``` her ikisi de sağlanmışsa, ```x-ms-date``` öncelik alır. |
 | **x-MS-Content-SHA256** | istek gövdesinin Base64 kodlamalı SHA256 karması. Gövde olmasa bile bunun sağlanması gerekir. ```base64_encode(SHA256(body))```|
-| **Yetkilendirme** | **HMAC-SHA256** şeması için gereken kimlik doğrulama bilgileri. Biçim ve Ayrıntılar aşağıda açıklanmıştır. |
+| **Yetkilendirme** | HMAC-SHA256 şeması için gereken kimlik doğrulama bilgileri. Biçim ve Ayrıntılar Bu makalenin ilerleyen kısımlarında açıklanmıştır. |
 
 **Örnek:**
 
@@ -49,20 +49,20 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Bağımsız Değişken | Açıklama  |
+|  Bağımsız Değişken | Description  |
 | ------ | ------ |
-| **HMAC-SHA256** | Yetkilendirme düzeni _(gerekli)_ |
-| **Kimlik Bilgisi** | Imzayı hesaplamak için kullanılan erişim anahtarının KIMLIĞI. _istenir_ |
-| **SignedHeaders** | İmzaya eklenen HTTP Istek üstbilgileri. _istenir_ |
-| **İmza** | **dizeden oturum açma için** Base64 kodlamalı HMACSHA256. _istenir_|
+| **HMAC-SHA256** | Yetkilendirme düzeni. _istenir_ |
+| **Kimlik Bilgisi** | İmzayı hesaplamak için kullanılan erişim anahtarının KIMLIĞI. _istenir_ |
+| **SignedHeaders** | İmzaya eklenen HTTP istek üstbilgileri. _istenir_ |
+| **İmza** | Dizeden oturum açma Için Base64 kodlamalı HMACSHA256. _istenir_|
 
 ### <a name="credential"></a>Kimlik Bilgisi
 
-**İmzayı** hesaplamak için kullanılan ERIŞIM anahtarının kimliği.
+İmzayı hesaplamak için kullanılan erişim anahtarının KIMLIĞI.
 
 ### <a name="signed-headers"></a>İmzalı üstbilgiler
 
-İsteği imzalamak için gereken noktalı virgülle ayrılmış HTTP istek üst bilgisi adları. Bu HTTP üstbilgileri istekle birlikte doğru şekilde sağlanmalıdır. **Boşluk kullanmayın**.
+İsteği imzalamak için gereken, noktalı virgülle ayrılmış HTTP istek üst bilgisi adları. Bu HTTP üstbilgileri istekle birlikte doğru şekilde sağlanmalıdır. Boşluk kullanmayın.
 
 ### <a name="required-http-request-headers"></a>Gerekli HTTP istek üstbilgileri
 
@@ -76,7 +76,7 @@ x-MS-Date; ana bilgisayar; x-MS-Content-SHA256; ```Content-Type``` ;```Accept```
 
 ### <a name="signature"></a>İmza
 
-Tarafından tanımlanan erişim anahtarını kullanarak **dizenin imzalanmasına** yönelik Base64 kodlamalı HMACSHA256 karması `Credential` .
+Dizeden oturum açma Için Base64 kodlamalı HMACSHA256 karması. Tarafından tanımlanan erişim anahtarını kullanır `Credential` .
 ```base64_encode(HMACSHA256(String-To-Sign, Secret))```
 
 ### <a name="string-to-sign"></a>Dizeden Imzala
@@ -87,11 +87,11 @@ _Dizeden Imzalanacak =_
 
 **HTTP_METHOD** + ' \n ' + **path_and_query** + ' \n ' + **signed_headers_values**
 
-|  Bağımsız Değişken | Açıklama  |
+|  Bağımsız Değişken | Description  |
 | ------ | ------ |
-| **HTTP_METHOD** | İstekle birlikte kullanılan, üst üstelenmiş HTTP yöntemi adı. Bkz. [Bölüm 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) |
-|**path_and_query** | İstek mutlak URI yolu ve sorgu dizesi birleştirme. Bkz. [bölüm 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).
-| **signed_headers_values** | **Signedheaders** içinde LISTELENEN tüm http istek üst bilgilerinin noktalı virgülle ayrılmış değerleri. Biçim **Signedheaders** anlam ' i izler. |
+| **HTTP_METHOD** | İstekle birlikte kullanılan büyük harfli HTTP yöntemi adı. Daha fazla bilgi için bkz. [Bölüm 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
+|**path_and_query** | İstek mutlak URI yolu ve sorgu dizesi birleştirme. Daha fazla bilgi için bkz. [bölüm 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).
+| **signed_headers_values** | İçinde listelenen tüm HTTP istek üst bilgilerinin noktalı virgülle ayrılmış değerleri `SignedHeaders` . Biçim `SignedHeaders` semantiğini izler. |
 
 **Örnek:**
 
@@ -110,16 +110,18 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
-**Neden:** HMAC-SHA256 düzenine sahip yetkilendirme isteği üst bilgisi sağlanmadı.
-**Çözüm:** Geçerli ```Authorization``` http istek üst bilgisi sağlayın
+**Neden:** HMAC-SHA256 şeması ile yetkilendirme isteği üst bilgisi sağlanmamış.
+
+**Çözüm:** Geçerli bir ```Authorization``` http istek üst bilgisi sağlayın.
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="The access token has expired", Bearer
 ```
 
-**Neden:** ```Date``` veya ```x-ms-date``` istek üst bilgisi, GEÇERLI GMT zamanından 15 dakikadan daha uzun.
-**Çözüm:** Doğru tarih ve saati belirtin
+**Neden:** ```Date``` veya ```x-ms-date``` istek üst bilgisi, geçerli Eşgüdümlü Evrensel saatten (Greenwich saati) 15 dakikadan fazla.
+
+**Çözüm:** Doğru tarih ve saati belirtin.
 
 
 ```http
@@ -127,14 +129,14 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid access token date", Bearer
 ```
 
-**Neden:** Eksik veya geçersiz ```Date``` veya ```x-ms-date``` istek üst bilgisi
+**Neden:** Eksik veya geçersiz ```Date``` ya da ```x-ms-date``` istek üst bilgisi.
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="[Credential][SignedHeaders][Signature] is required", Bearer
 ```
 
-**Neden:** İstek üstbilgisinden gerekli bir parametre eksik ```Authorization```
+**Neden:** İstek üstbilgisinden gerekli bir parametre eksik ```Authorization``` .
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -142,7 +144,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid C
 ```
 
 **Neden:** Belirtilen [ ```Host``` ]/[erişim anahtarı kimliği] bulunamadı.
-**Çözüm:** ```Credential``` ```Authorization``` İstek üstbilgisinin parametresini denetleyin ve bunun geçerli bir ERIŞIM anahtarı kimliği olduğundan emin olun. ```Host```Üstbilginin kayıtlı hesaba işaret ettiğini doğrulayın.
+
+**Çözüm:** ```Credential``` ```Authorization``` İstek üstbilgisinin parametresini denetleyin. Bunun geçerli bir erişim anahtarı KIMLIĞI olduğundan emin olun ve ```Host``` üstbilginin kayıtlı hesaba işaret ettiğini doğrulayın.
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -150,15 +153,17 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid S
 ```
 
 **Neden:** ```Signature``` Belirtilen sunucunun beklediği ile eşleşmiyor.
-**Çözüm:** ' In doğru olduğundan emin olun ```String-To-Sign``` . ```Secret```' In doğru ve düzgün şekilde kullanıldığından emin olun (kullanılmadan önce Base64 kodu çözülür). **Örnekler** bölümüne bakın.
+
+**Çözüm:** ' In doğru olduğundan emin olun ```String-To-Sign``` . ```Secret```' In doğru ve düzgün şekilde kullanıldığından emin olun (kullanılmadan önce Base64 kodu çözülür).
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Signed request header 'xxx' is not provided", Bearer
 ```
 
-**Neden:** Başlıktaki parametre için istenen istek üst bilgisi eksik ```SignedHeaders``` ```Authorization``` .
-**Çözüm:** Gerekli üst bilgiyi doğru değere sağlayın.
+**Neden:** Başlıktaki parametre için gereken istek üst bilgisi eksik ```SignedHeaders```  ```Authorization``` .
+
+**Çözüm:** Gerekli üst bilgiyi doğru değerle sağlayın.
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -166,13 +171,14 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 ```
 
 **Neden:** İçinde eksik parametre ```SignedHeaders``` .
-**Çözüm:** **Imzalı üst bilgi** en düşük gereksinimlerini denetleyin.
+
+**Çözüm:** Imzalı üst bilgi en düşük gereksinimlerini denetleyin.
 
 ## <a name="code-snippets"></a>Kod parçacıkları
 
 ### <a name="javascript"></a>JavaScript
 
-*Önkoşullar* : [şifreleme-js](https://code.google.com/archive/p/crypto-js/)
+*Önkoşullar*: [şifreleme-js](https://code.google.com/archive/p/crypto-js/)
 
 ```js
 function signRequest(host, 
@@ -362,7 +368,7 @@ import (
     "time"
 )
 
-//SignRequest Setup the auth header for accessing Azure AppConfiguration service
+//SignRequest Setup the auth header for accessing Azure App Configuration service
 func SignRequest(id string, secret string, req *http.Request) error {
     method := req.Method
     host := req.URL.Host
@@ -537,7 +543,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 ### <a name="bash"></a>Bash
 
-*Önkoşullar* :
+*Önkoşullar*:
 
 | Önkoşul | Komut | Test edilen sürümler |
 | ------------ | ------- | --------------- |

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb322805ac3368dd6ed8e193875e083b27195e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695291"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237654"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect bulut sağlama aracısını yükleme
 Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yükleme işleminde ve bu dosyayı ilk olarak Azure portal nasıl yapılandıracağınız açıklanmaktadır.
@@ -25,38 +25,46 @@ Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yük
 >Aşağıdaki yükleme yönergeleri tüm [önkoşulların](how-to-prerequisites.md) karşılandığını varsayar.
 
 Azure AD Connect sağlamayı yükleme ve yapılandırma aşağıdaki adımlarda gerçekleştirilir:
-    
+
+- [Grup tarafından yönetilen hizmet hesapları](#group-managed-service-accounts) 
 - [Aracıyı yükleme](#install-the-agent)
 - [Aracı yüklemesini doğrulama](#verify-agent-installation)
+
+
+## <a name="group-managed-service-accounts"></a>Grup Tarafından Yönetilen Hizmet Hesapları
+Grup tarafından yönetilen hizmet hesabı, otomatik parola yönetimi, Basitleştirilmiş hizmet asıl adı (SPN) yönetimi, yönetimi diğer yöneticilere devretmek ve ayrıca bu işlevselliği birden çok sunucuya genişleten bir yönetilen etki alanı hesabıdır.  Azure AD Connect bulut eşitlemesi, aracıyı çalıştırmak için Grup tarafından yönetilen bir hizmet hesabının kullanımını destekler ve önerir.  Bir gMSA hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+
+
+### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>Mevcut bir aracıyı gMSA hesabını kullanacak şekilde yükseltme
+Mevcut bir aracıyı yükleme sırasında oluşturulan gMSA hesabını kullanacak şekilde yükseltmek için, AADConnectProvisioningAgent.msi çalıştırarak aracı hizmetini en son sürüme güncelleştirmeniz yeterlidir.  Bu işlem hizmeti en son sürüme yükseltir.  Şimdi Yükleme Sihirbazı 'nı yeniden çalıştırın ve istendiğinde hesabı oluşturmak için kimlik bilgilerini sağlayın.
+
 
 
 ## <a name="install-the-agent"></a>Aracıyı yükleme
 Aracıyı yüklemek için aşağıdaki adımları izleyin.
 
-1. Kurumsal Yönetici izinleriyle kullanacağınız sunucuda oturum açın.
-1. Azure portal oturum açın ve **Azure Active Directory**' a gidin.
-1. Sol menüden **Azure AD Connect**' yi seçin.
-1. **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin  >  **tüm aracıları gözden geçirin**.
-1. Azure AD Connect sağlama aracısını Azure portal indirin.
-
+ 1. Kurumsal Yönetici izinleriyle kullanacağınız sunucuda oturum açın.
+ 2. Azure portal oturum açın ve **Azure Active Directory**' a gidin.
+ 3. Sol menüden **Azure AD Connect**' yi seçin.
+ 4. **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin  >  **tüm aracıları gözden geçirin**.
+ 5. Azure AD Connect sağlama aracısını Azure portal indirin.
    ![Şirket içi aracıyı indir](media/how-to-install/install-9.png)</br>
-1. Azure AD Connect sağlama yükleyicisini (AADConnectProvisioningAgent. Installer) çalıştırın.
-1. **Microsoft Azure AD Connect aracı paketi** ekranında, lisans koşullarını kabul edin ve **yüklemeyi** seçin.
-
+ 6. Azure AD Connect sağlama yükleyicisi AADConnectProvisioningAgent.msi çalıştırın.
+ 7. **Microsoft Azure AD Connect aracı paketi** ekranında, lisans koşullarını kabul edin ve **yüklemeyi** seçin.
    ![Microsoft Azure AD bağlama Aracısı paketi ekranı](media/how-to-install/install-1.png)</br>
-
-1. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır. Azure AD Genel Yönetici hesabınızla oturum açın.
-1. **Bağlan Active Directory** ekranında **Dizin Ekle**' yi seçin. Ardından Active Directory Yönetici hesabınızla oturum açın. Bu işlem, şirket içi dizininizi ekler. **İleri**’yi seçin.
-
-   ![Active Directory ekranına Bağlan](media/how-to-install/install-3.png)</br>
-
-1. **Yapılandırma tamamlanma** ekranında **Onayla**' yı seçin. Bu işlem aracıyı kaydeder ve yeniden başlatır.
-
-   ![Yapılandırma tamamlanma ekranı](media/how-to-install/install-4a.png)</br>
-
-1. Bu işlem tamamlandıktan sonra, **Aracı yapılandırmanızın başarıyla doğrulandığını görürsünüz.** **Çıkış**' ı seçin.
-
-   ![Çıkış düğmesi](media/how-to-install/install-5.png)</br>
+ 8. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır. Azure AD Genel Yönetici hesabınızla oturum açın.
+ 9. **Hizmet hesabını Yapılandır ekranında** , **gMSA oluştur** ' u veya **özel gMSA kullanın**' ı seçin.  Aracının hesap oluşturmasına izin verirseniz, provAgentgMSA $ olarak adlandırılır. **Özel gMSA kullan** 'ı belirtirseniz, bu hesabı sağlamanız istenir.
+ 10. Aracı hizmetini çalıştırmak için kullanılacak grup tarafından yönetilen hizmet hesabını oluşturmak için etki alanı yöneticisi kimlik bilgilerini girin. **İleri**’ye tıklayın.  
+   ![GMSA oluştur](media/how-to-install/install-12.png)</br>
+ 11. **Bağlan Active Directory** ekranında **Dizin Ekle**' yi seçin. Ardından Active Directory Yönetici hesabınızla oturum açın. Bu işlem, şirket içi dizininizi ekler. 
+ 12. İsteğe bağlı olarak, etki alanı **denetleyicisi önceliğini Seç** ' i seçerek ve etki alanı denetleyicilerinin listesini sipariş ederek aracının kullanacağı etki alanı denetleyicileri tercihini yönetebilirsiniz.   **Tamam** düğmesine tıklayın.
+  ![Etki alanı denetilicileri siparişi](media/how-to-install/install-2a.png)</br>
+ 13. **İleri**’yi seçin.
+  ![Active Directory ekranına Bağlan](media/how-to-install/install-3a.png)</br>
+ 14.  **Aracı yükleme** ekranında ayarları ve oluşturulacak hesabı onaylayın ve **Onayla**' ya tıklayın.
+  ![Settngs doğrulayın](media/how-to-install/install-11.png)</br>
+ 15. Bu işlem tamamlandıktan sonra, **Aracı yüklemenizin tamamlandığını** görmeniz gerekir. **Çıkış**' ı seçin.
+  ![Yapılandırma tamamlanma ekranı](media/how-to-install/install-4a.png)</br>
 1. Hala ilk **Microsoft Azure AD Connect sağlama Aracısı paketi** ekranını görüyorsanız, **Kapat**' ı seçin.
 
 ## <a name="verify-agent-installation"></a>Aracı yüklemesini doğrulama
@@ -68,7 +76,7 @@ Aracının Azure tarafından görüldüğünü doğrulamak için aşağıdaki ad
 1. Azure portalında oturum açın.
 1. Sol tarafta **Azure Active Directory**  >  **Azure AD Connect**' yı seçin. Merkezinde **Yönet sağlama (Önizleme)** öğesini seçin.
 
-   ![Azure portalı](media/how-to-install/install-6.png)</br>
+   ![Azure portal](media/how-to-install/install-6.png)</br>
 
 1.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' i seçin.
 
@@ -91,6 +99,7 @@ Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
 >[!IMPORTANT]
 >Aracı yüklendi, ancak kullanıcıları eşitlemeye başlamadan önce yapılandırılması ve etkinleştirilmesi gerekir. Yeni bir aracı yapılandırmak için bkz. [Azure AD Connect bulut tabanlı sağlama için yeni yapılandırma oluşturma](how-to-configure.md).
+
 
 
 

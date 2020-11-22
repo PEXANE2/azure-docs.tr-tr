@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916874"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254672"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -38,7 +38,7 @@ Bu makalede, Batch ile gerçek yaşam deneyimlerine bağlı olarak Azure Batch h
 
 ### <a name="pool-lifetime-and-billing"></a>Havuz ömrü ve faturalama
 
-Havuz ömrü, havuz yapılandırmasına uygulanan ayırma ve seçenekler yöntemine bağlı olarak farklılık gösterebilir. Havuzlar, zaman içinde herhangi bir zamanda, havuzda rastgele bir yaşam süresine ve farklı sayıda işlem düğümüne sahip olabilir. Havuzdaki işlem düğümlerini açıkça veya hizmet tarafından sunulan özellikler aracılığıyla (otomatik ölçeklendirme veya otomatik havuz) yönetmek sizin sorumluluğunuzdadır.
+Havuz ömrü, havuz yapılandırmasına uygulanan ayırma ve seçenekler yöntemine bağlı olarak farklılık gösterebilir. Havuzlar, zaman içinde herhangi bir zamanda, havuzda rastgele bir yaşam süresine ve farklı sayıda işlem düğümüne sahip olabilir. Havuzdaki işlem düğümlerini açıkça veya hizmet tarafından sunulan özellikler aracılığıyla ([Otomatik ölçeklendirme](nodes-and-pools.md#automatic-scaling-policy) veya [Otomatik havuz](nodes-and-pools.md#autopools)) yönetmek sizin sorumluluğunuzdadır.
 
 - **Havuzları güncel tutun.**
     [En son düğüm Aracısı güncelleştirmelerini ve hata düzeltmelerini](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)aldığınızdan emin olmak için havuzlarınızı her bir ayda bir sıfır olacak şekilde yeniden boyutlandırın. Havuzunuz, yeniden oluşturulup 0 işlem düğümlerine yeniden boyutlandırılana kadar düğüm Aracısı güncelleştirmeleri almaz. Havuzunuzu yeniden oluşturmadan veya yeniden boyutlandırabilmeniz için, [düğümler](#nodes) bölümünde anlatıldığı gibi, hata ayıklama amacıyla herhangi bir düğüm Aracısı günlüğünü indirmeniz önerilir.
@@ -93,7 +93,7 @@ Varsayılan bir [etkin iş ve iş zamanlaması kotası](batch-quota-limit.md#res
 
 ### <a name="save-task-data"></a>Görev verilerini Kaydet
 
-İşlem düğümleri doğası gereği daha kısa. Yığın içinde otomatik havuz ve otomatik ölçeklendirme gibi birçok özellik vardır ve bu da düğümlerin kaybolmasını kolaylaştırır. Düğümler havuzdan ayrıldığında (bir yeniden boyutlandırma veya havuz silme nedeniyle), bu düğümlerdeki tüm dosyalar da silinir. Bu nedenle, bir görev tamamlanmadan önce üzerinde çalıştığı düğümün çıkışını ve kalıcı bir depoya taşımalıdır. Benzer şekilde, bir görev başarısız olursa, dayanıklı bir depoya hatayı tanılamak için gereken günlükleri taşımalıdır.
+İşlem düğümleri doğası gereği daha kısa. Yığın içinde [Otomatik havuz](nodes-and-pools.md#autopools) ve [Otomatik ölçeklendirme](nodes-and-pools.md#automatic-scaling-policy) gibi birçok özellik vardır ve bu da düğümlerin kaybolmasını kolaylaştırır. Düğümler bir havuzdan ayrıldığında (bir yeniden boyutlandırma veya havuz silme nedeniyle), bu düğümlerdeki tüm dosyalar da silinir. Bu nedenle, bir görev tamamlanmadan önce üzerinde çalıştığı düğümün çıkışını ve kalıcı bir depoya taşımalıdır. Benzer şekilde, bir görev başarısız olursa, dayanıklı bir depoya hatayı tanılamak için gereken günlükleri taşımalıdır.
 
 Toplu işlem, Azure depolama 'yı kullanarak verileri [OutputFiles](batch-task-output-files.md)aracılığıyla karşıya yüklemeyi, ayrıca çeşitli paylaşılan dosya sistemlerini de veya kendi görevlerinizde karşıya yüklemeyi gerçekleştirmek için tümleşik destek içerir.
 

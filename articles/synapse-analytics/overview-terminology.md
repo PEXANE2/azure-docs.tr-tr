@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: e78c31b3e7c309c0c55895c764fa29589dd15dbd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4d69c1d69de63dc0d4c3c8f8e46e73f9efc72933
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026850"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95244727"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure SYNAPSE Analytics terminolojisi
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Bu Azure SYNAPSE Analytics terminolojisi, hizmetin temel kavramları ve önemli komutların size kılavuzluk eden bir kılavuzdur. Bu makale, hem yeni öğrenenlere hem de temel Azure SYNAPSE terminolojisine ilişkin vurgulamaları isteyen kişilere yardımcı olur.
+Bu belge, Azure SYNAPSE Analytics 'in temel kavramlarında size rehberlik eder.
 
 ## <a name="basics"></a>Temel bilgiler
 
@@ -28,16 +28,18 @@ Bu Azure SYNAPSE Analytics terminolojisi, hizmetin temel kavramları ve önemli 
 
 Bir çalışma alanı SQL ve Apache Spark ile analiz gerçekleştirmenize olanak tanır. SQL ve Spark Analytics için kullanılabilen kaynaklar SQL ve Spark **havuzlarında** düzenlenir. 
 
+## <a name="linked-services"></a>Bağlı hizmetler
+
 Bir çalışma alanı, herhangi bir sayıda **bağlı hizmeti** içerebilir ve bu, dış kaynaklara bağlanmak için çalışma alanı için gereken bağlantı bilgilerini tanımlayan bağlantı dizelerini içerir.
 
-## <a name="synapse-sql-terminology"></a>SYNAPSE SQL terminolojisi
+## <a name="synapse-sql"></a>Synapse SQL
 
 **SYNAPSE SQL** , SYNAPSE çalışma alanında T-SQL tabanlı analizler yapabilme olanağıdır. SYNAPSE SQL 'in iki tüketim modeli vardır: adanmış ve sunucusuz.  Adanmış model için **ADANMıŞ SQL havuzları** kullanın. Bir çalışma alanı bu havuzlardan herhangi bir sayıda olabilir. Sunucusuz modeli kullanmak için **SUNUCUSUZ SQL havuzlarını** kullanın. Her çalışma alanı bu havuzlardan birine sahiptir.
 
 * **SQL isteği** -bir sorgu gibi işlem, adanmış SQL havuzu veya SUNUCUSUZ SQL havuzu aracılığıyla çalışır.
 * **SQL betiği** -bir dosyaya kaydedilen SQL komutlarının kümesi. Bir SQL betiği bir veya daha fazla SQL deyimi içerebilir. Adanmış SQL havuzu veya sunucusuz SQL havuzu aracılığıyla SQL isteklerini çalıştırmak için kullanılabilir.
 
-## <a name="apache-spark-for-synapse-terminology"></a>SYNAPSE terminolojisi için Apache Spark
+## <a name="apache-spark-for-synapse"></a>SYNAPSE için Apache Spark
 
 Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **sunucusuz Apache Spark havuzları** oluşturun ve kullanın.
 
@@ -48,7 +50,7 @@ Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **sunucusuz A
 * , Scala, PySpark, C# ve mini SQL destekleyen **Not defteri** -etkileşimli ve reaktif veri bilimi ve mühendislik arabirimi.
 * **Spark iş tanımı** -kodu ve bağımlılıklarını içeren derleme jar ile Spark işi göndermek için arabirim.
 
-## <a name="pipelines-terminology"></a>Ardışık düzen terminolojisi
+## <a name="pipelines"></a>Pipelines
 
 * **Veri tümleştirme** -çeşitli kaynaklar arasında veri alma ve çalışma alanı içinde veya çalışma alanı dışında çalışan etkinlikleri düzenleme özelliğini sağlar.
 * **Veri akışı** -büyük veri dönüştürmesi yapmak için hiçbir kodlamaya gerek olmadan tam bir görsel deneyim sağlar. Tüm iyileştirme ve yürütme işlemleri sunucusuz bir biçimde işlenir.

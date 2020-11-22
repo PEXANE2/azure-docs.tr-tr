@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 83384dd24141cfeb7b03f388e6e3505fea8f496e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d3812cb27d2d9ea7a49038f566f8b4cc5d779172
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221086"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241701"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme
 
@@ -51,9 +51,9 @@ Bu öğretici, Visual Studio için Data Lake Araçları’nın yüklü olmasın�
 
 1. Visual Studio'yu açın.
 
-1. **Sunucu Gezgini** Sunucu Gezgini **göster**' i seçerek açın  >  **Server Explorer**.
+1. **Görünüm** Data Lake Analytics Gezginini seçerek **Data Lake Analytics Gezginini** açın  >  **Data Lake Analytics Explorer**.
 
-1. **Azure**' a sağ tıklayıp **Microsoft Azure aboneliğine Bağlan**' ı seçin. **Hesabınızda oturum açmak için**yönergeleri izleyin.
+1. **Azure**' a sağ tıklayıp **Microsoft Azure aboneliğine Bağlan**' ı seçin. **Hesabınızda oturum açmak için** yönergeleri izleyin.
 
 1. **Sunucu Gezgini**' de **Azure**  >  **Data Lake Analytics**' nı seçin. Data Lake Analytics hesaplarınızın listesini görürsünüz.
 
@@ -80,13 +80,13 @@ OUTPUT @a
 
 1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
-1. **U-SQL proje** türünü seçin ve ardından **İleri**' yi seçin. **Yeni projenizi yapılandırın**bölümünde **Oluştur**' u seçin.
+1. **U-SQL proje** türünü seçin ve ardından **İleri**' yi seçin. **Yeni projenizi yapılandırın** bölümünde **Oluştur**' u seçin.
 
    Visual Studio, bir **Script. usql** dosyası içeren bir çözüm oluşturur.
 
 1. Betiği [Ilk U-SQL betiğinizden](#write-your-first-u-sql-script) **Script. usql** penceresine yapıştırın.
 
-1. **Çözüm Gezgini**, **Script. usql**öğesine sağ tıklayın ve **betiği gönder**' i seçin.
+1. **Çözüm Gezgini**, **Script. usql** öğesine sağ tıklayın ve **betiği gönder**' i seçin.
 
 1. **Işi gönder**' de Data Lake Analytics hesabınızı seçin ve **Gönder**' i seçin.
 

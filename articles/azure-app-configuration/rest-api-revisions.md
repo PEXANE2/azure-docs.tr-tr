@@ -6,25 +6,24 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 7d1990d6bc524a69de2b22b4f7c5aeec88c3ce9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424482"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246393"
 ---
 # <a name="key-value-revisions"></a>Anahtar-değer düzeltmeleri
 
-api sürümü: 1,0
+*Anahtar-değer düzeltmesi* , anahtar-değer kaynağının geçmiş gösterimini tanımlar. Düzeltmeler ücretsiz katman depoları için 7 gün sonra veya Standart katman depoları için 30 gün sonra sona erer. Düzeltmeler işlemi destekler `List` .
 
-**Anahtar-değer düzeltmesi** , anahtar-değer kaynağının geçmiş gösterimini tanımlar. Düzeltmeler ücretsiz katman depoları için 7 gün sonra veya Standart katman depoları için 30 gün sonra sona erer. Düzeltmeler aşağıdaki işlemleri destekler:
+Tüm işlemler için ``key`` isteğe bağlı bir parametredir. Atlanırsa, herhangi bir anahtar gerekir.
 
-- Liste
+Tüm işlemler için ``label`` isteğe bağlı bir parametredir. Atlanırsa, herhangi bir etiketi belirtir.
 
-Tüm işlemler için ``key`` isteğe bağlı bir parametredir. Atlanırsa, **herhangi bir** anahtar gerekir.
-Tüm işlemler için ``label`` isteğe bağlı bir parametredir. Atlanırsa, **herhangi bir** etiketi belirtir.
+Bu makale, API sürüm 1,0 için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
@@ -62,7 +61,7 @@ Accept-Ranges: items
 
 ## <a name="pagination"></a>Sayfalandırma
 
-Döndürülen öğe sayısı yanıt sınırını aşarsa, sonuç sayfalandırılır. İsteğe bağlı ``Link`` yanıt üst bilgisini izleyin ve ``rel="next"`` gezinme için kullanın.  Alternatif olarak, içerik özellik biçiminde bir sonraki bağlantı sağlar ``@nextLink`` .
+Döndürülen öğe sayısı yanıt sınırını aşarsa, sonuç sayfalandırılır. İsteğe bağlı ``Link`` yanıt üst bilgisini izleyin ve ``rel="next"`` gezinme için kullanın. Alternatif olarak, içerik özellik biçiminde bir sonraki bağlantı sağlar ``@nextLink`` .
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -88,7 +87,7 @@ Link: <{relative uri}>; rel="next"
 
 ## <a name="list-subset-of-revisions"></a>Düzeltmelerin alt kümesini Listele
 
-`Range`İstek üst bilgisini kullanın. Yanıt bir `Content-Range` üst bilgi içerecektir. Sunucu istenen aralığı karşılayamaz, HTTP `416` (RangeNotSatisfiable) ile yanıt verir
+`Range`İstek üst bilgisini kullanın. Yanıt, bir `Content-Range` üst bilgisi içeriyor. Sunucu istenen aralığı karşılayamaz, HTTP () ile yanıt verir `416` `RangeNotSatisfiable` .
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -135,9 +134,11 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="reserved-characters"></a>Ayrılmış karakterler
 
+Ayrılan karakterler şunlardır:
+
 `*`, `\`, `,`
 
-Ayrılmış bir karakter değerin bir parçasıysa, kullanılarak kaçışlı olması gerekir `\{Reserved Character}` . Ayrılmayan karakterlere de kaçışmış olabilir.
+Ayrılmış bir karakter değerin bir parçasıysa, kullanılarak kaçışılması gerekir `\{Reserved Character}` . Ayrılmayan karakterlere de kaçışmış olabilir.
 
 ### <a name="filter-validation"></a>Filtre doğrulaması
 
@@ -160,19 +161,19 @@ Content-Type: application/problem+json; charset=utf-8
 
 ### <a name="examples"></a>Örnekler
 
-- Tümü
+- Bütün
 
     ```http
     GET /revisions
     ```
 
-- Anahtar adının **ABC** ile başladığı öğeler
+- Anahtar adının **ABC** ile başladığı öğeler:
 
     ```http
     GET /revisions?key=abc*&api-version={api-version}
     ```
 
-- Anahtar adının **ABC** ya da **xyz** olduğu ve Etiketler **Üretim** 'nin bulunduğu öğeler
+- Anahtar adının **ABC** ya da **xyz** olduğu ve Etiketler **Üretim**'nin bulunduğu öğeler:
 
     ```http
     GET /revisions?key=abc,xyz&label=*prod*&api-version={api-version}
@@ -180,15 +181,15 @@ Content-Type: application/problem+json; charset=utf-8
 
 ## <a name="request-specific-fields"></a>Belirli alanlar iste
 
-İsteğe bağlı `$select` sorgu dizesi parametresini kullanın ve istenen alanların virgülle ayrılmış listesini sağlayın. `$select`Parametresi atlanırsa, yanıt varsayılan kümesini içerir.
+İsteğe bağlı `$select` sorgu dizesi parametresini kullanın ve istenen alanların virgülle ayrılmış bir listesini sağlayın. `$select`Parametresi atlanırsa, yanıt varsayılan kümesini içerir.
 
 ```http
 GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/1.1
 ```
 
-## <a name="time-based-access"></a>Time-Based erişim
+## <a name="time-based-access"></a>Zamana dayalı erişim
 
-Sonucun bir önceki zamanda bulunduğu gösterimi elde edin. Bkz. bölüm [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1)
+Sonucun bir önceki zamanda bulunduğu gösterimi elde edin. Daha fazla bilgi için bkz. [kaynak durumlarına Time-Based erişim Için HTTP çerçevesi--Memento](https://tools.ietf.org/html/rfc7089#section-2.1), Section 2.1.1.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1

@@ -7,33 +7,38 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695189"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237264"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
 
-
-
 ## <a name="cloud-provisioning-agent-requirements"></a>Bulut sağlama Aracısı gereksinimleri
 Bulut sağlamasını Azure AD Connect kullanmak için aşağıdakiler gerekir:
-    
+
+- Aracı hizmetini çalıştırmak için Azure AD Connect Cloud Sync gMSA (grup yönetilen hizmet hesabı) oluşturmak için etki alanı yöneticisi veya kuruluş yöneticisi kimlik bilgileri. 
 - Azure AD kiracınız için konuk kullanıcı olmayan bir karma kimlik yöneticisi hesabı.
 - Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.  Bu sunucu, [Active Directory Yönetim Katmanı modelini](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)temel alan bir katman 0 sunucusu olmalıdır.
 - Şirket içi güvenlik duvarı konfigürasyonları.
 
->[!NOTE]
->Sağlama Aracısı Şu anda yalnızca Ingilizce dil sunucularına yüklenebilir. İngilizce olmayan bir sunucuya Ingilizce dil paketi yüklemek geçerli bir geçici çözüm değildir ve aracının yüklenememesi ile sonuçlanır. 
+## <a name="group-managed-service-accounts"></a>Grup Tarafından Yönetilen Hizmet Hesapları
+Grup tarafından yönetilen hizmet hesabı, otomatik parola yönetimi, Basitleştirilmiş hizmet asıl adı (SPN) yönetimi, yönetimi diğer yöneticilere devretmek ve ayrıca bu işlevselliği birden çok sunucuya genişleten bir yönetilen etki alanı hesabıdır.  Azure AD Connect bulut eşitlemesi destekler ve aracıyı çalıştırmak için gMSA kullanır.  Bu hesabı oluşturmak için kurulum sırasında yönetici kimlik bilgileri istenir.  Hesap (domain\provAgentgMSA $) olarak görünür.  Bir gMSA hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
-Belgenin geri kalanı, bu Önkoşullar için adım adım yönergeler sağlar.
+### <a name="prerequisites-for-gmsa"></a>GMSA önkoşulları:
+1.  GMSA etki alanı ormanındaki Active Directory şemasının Windows Server 2012 ' e güncelleştirilmesi gerekir
+2.  Bir etki alanı denetleyicisindeki [POWERSHELL RSAT modülleri](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
+3.  Etki alanındaki en az bir etki alanı denetleyicisinin Windows Server 2012 çalıştırması gerekir.
+4.  Aracının yüklenmekte olduğu etki alanına katılmış bir sunucunun Windows Server 2012 veya üzeri olması gerekir.
+
+Mevcut bir aracıyı gMSA hesabı kullanmak üzere yükseltmeyle ilgili adımlar için bkz. [Grup yönetilen hizmet hesapları](how-to-install.md#group-managed-service-accounts).
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
 
@@ -57,7 +62,9 @@ Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını
         | --- | --- |
         | **80** | TLS/SSL sertifikası doğrulanırken sertifika iptal listelerini (CRL 'Ler) indirir.  |
         | **443** | Hizmetle tüm giden iletişimi işler. |
+        |**8082**|Yükleme için gereklidir ve yönetim API 'sini yapılandırmak istiyorsanız.  Bu bağlantı noktası, aracı yüklendikten ve API 'yi kullanmayı planlamadıysanız kaldırılabilir.   |
         | **8080** (isteğe bağlı) | Aracılar 443, 8080 numaralı bağlantı noktası kullanılamıyorsa, her 10 dakikada bir bu durumu bağlantı noktası üzerinden raporlar. Bu durum Azure AD portalında görüntülenir. |
+   
      
    - Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
    - Güvenlik duvarınız veya ara sunucunuz güvenli sonekler belirtmenize izin veriyorsa, \* . msappproxy.net ve. ServiceBus.Windows.net öğesine bağlantı ekleyin \* . Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
@@ -66,6 +73,8 @@ Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını
 
 >[!NOTE]
 > Bulut sağlama aracısının Windows Server Core 'a yüklenmesi desteklenmez.
+
+
 
 
 ### <a name="additional-requirements"></a>Ek gereksinimler
@@ -91,24 +100,6 @@ TLS 1,2 ' i etkinleştirmek için aşağıdaki adımları izleyin.
 
 1. Sunucuyu yeniden başlatın.
 
-## <a name="known-limitations"></a>Bilinen sınırlamalar
-Aşağıda bilinen sınırlamalar verilmiştir:
-
-### <a name="delta-synchronization"></a>Delta Eşitleme
-
-- Delta eşitleme için Grup kapsamı filtrelemesi 1500 taneden fazla üyeyi desteklemez
-- Grup kapsamı filtresinin bir parçası olarak kullanılan bir grubu sildiğinizde, grubun üyesi olan kullanıcılar silinmez. 
-- Kapsam içindeki OU veya grubu yeniden adlandırdığınızda, Delta eşitlemesi kullanıcıları kaldırmaz
-
-### <a name="provisioning-logs"></a>Sağlama Günlükleri
-- Sağlama günlükleri, oluşturma ve güncelleştirme işlemleri arasında açıkça ayrım içermez.  Bir güncelleştirme için oluşturma işlemi ve bir oluşturma için güncelleştirme işlemi görebilirsiniz.
-
-### <a name="cross-domain-references"></a>Çapraz etki alanı başvuruları
-- Başka bir etki alanında üye başvuruları olan kullanıcılarınız varsa, bu kullanıcı için geçerli etki alanı eşitlemenizden bir parçası olarak eşitlenmez. 
-- (Örnek: eşitlemekte olduğunuz kullanıcının Yöneticisi etki alanı B ' dedir ve Kullanıcı etki alanı A 'dedir. Hem A hem de B etki alanını eşitlerken, Bunlar eşitlenir, ancak Kullanıcı Yöneticisi üzerinden taşınmaz.
-
-### <a name="group-re-naming-or-ou-re-naming"></a>Grup yeniden adlandırma veya OU yeniden adlandırma
-- Belirli bir yapılandırma için kapsamda olan AD ' de bir grubu veya OU 'yu yeniden adlandırırsanız, bulut sağlama işi AD 'deki ad değişikliğini tanıyamaz. İş karantinaya alınmayacak ve sağlıklı olmaya devam edecek
 
 
 

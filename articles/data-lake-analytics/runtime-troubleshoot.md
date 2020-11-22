@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216275"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241616"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Çalışma zamanı değişiklikleri nedeniyle U-SQL çalışma zamanı hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
 
@@ -33,7 +33,7 @@ Geçmiş işlerinizin, Visual Studio 'nun iş tarayıcısı veya Azure portal i�
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Tüm Işleri görüntüle**' yi seçin. Hesaptaki tüm etkin ve son tamamlanan işlerin bir listesi görüntülenir.
-3. İsteğe bağlı olarak, **zaman aralığı**, **Iş adı**ve **Yazar** değerlerine göre işleri bulmanıza yardımcı olması için **filtre** ' ye tıklayın.
+3. İsteğe bağlı olarak, **zaman aralığı**, **Iş adı** ve **Yazar** değerlerine göre işleri bulmanıza yardımcı olması için **filtre** ' ye tıklayın.
 4. Tamamlanan işlerde kullanılan çalışma zamanını görebilirsiniz.
 
 ![Geçmiş bir işin çalışma zamanı sürümünü görüntüleme](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
@@ -49,9 +49,23 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 Karşılaşabileceğiniz iki olası çalışma zamanı sürümü sorunu vardır:
 
-1. Bir komut dosyası veya bazı Kullanıcı kodu, bir sürümden bir sonrakine kadar davranış değiştiriyor. Bu tür önemli değişiklikler normalde sürüm notları yayınlanmasıyla zaman önce iletilir. Bu tür bir son değişiklik yaşarsanız, bu davranışı raporlamak için lütfen Microsoft Desteği başvurun (henüz açıklanmamıştır) ve işlerinizi eski çalışma zamanı sürümüne göre gönderebilirsiniz.
+1. Bir komut dosyası veya bazı Kullanıcı kodu, bir sürümden bir sonrakine kadar davranış değiştiriyor. Bu tür önemli değişiklikler normalde sürüm notları yayınlanmasıyla zaman önce iletilir. Bu tür bir son değişiklik yaşarsanız, bu bölme davranışını raporlamak için Microsoft Desteği başvurun (henüz açıklanmamıştır) ve işlerinizi eski çalışma zamanı sürümüne göre gönderebilirsiniz.
 
-2. Hesabınız için sabitlenmiş ve bu çalışma zamanının bir süre sonra kaldırılmasıyla, varsayılan olmayan bir çalışma zamanını açıkça veya örtük olarak kullanıyorsunuz. Eksik çalışma zamanları ile karşılaşırsanız, lütfen betikleri geçerli varsayılan çalışma zamanına göre çalışacak şekilde yükseltin. Ek zamana ihtiyacınız varsa lütfen Microsoft Desteği başvurun
+2. Hesabınız için sabitlenmiş ve bu çalışma zamanının bir süre sonra kaldırılmasıyla, varsayılan olmayan bir çalışma zamanını açıkça veya örtük olarak kullanıyorsunuz. Eksik çalışma zamanları ile karşılaşırsanız, betikleri geçerli varsayılan çalışma zamanıyla çalışacak şekilde yükseltin. Ek zamana ihtiyacınız varsa Microsoft Desteği başvurun
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+* Bir USQL betiğine dosya sürüm 12.0.3 veya onende Newtonsoft.Jsbaşvurmak, aşağıdaki derleme hatasına neden olur:
+
+    *"Üzgünüz; Data Lake Analytics hesabınızda çalışan işler muhtemelen daha yavaş çalışacak veya tamamlanmayacak. Beklenmeyen bir sorun, bu işlevselliği Azure Data Lake Analytics hesabınıza otomatik olarak geri yüklememizi engellemektedir. Araştırmak için Azure Data Lake mühendislerle iletişim kuruldu. "*  
+
+    Çağrı yığınının nerede içereceği:  
+    `System.IndexOutOfRangeException: Index was outside the bounds of the array.`  
+    `at Roslyn.Compilers.MetadataReader.PEFile.CustomAttributeTableReader.get_Item(UInt32 rowId)`  
+    `...`
+
+    **Çözüm**: lütfen Newtonsoft.Jsv 12.0.2 veya daha düşük bir dosya üzerinde kullanın.
+
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files için çoğaltma eşlemesi oluştur | Microsoft Docs
+title: Azure NetApp Files için birim çoğaltması oluştur | Microsoft Docs
 description: Çapraz bölge çoğaltmasını ayarlamak için Azure NetApp Files birim çoğaltma eşlemesi oluşturmayı açıklar.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709057"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249946"
 ---
-# <a name="create-replication-peering-for-azure-netapp-files"></a>Azure NetApp Files için çoğaltma eşlemesi oluştur
+# <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files için birim çoğaltması oluşturma
 
 > [!IMPORTANT]
 > Bölgeler arası çoğaltma özelliği şu anda genel önizlemededir. [Azure NetApp Files çapraz bölge çoğaltma eklenebileceğinizi gönderimi sayfası](https://aka.ms/anfcrrpreviewsignup)aracılığıyla özelliğe erişmek için bir eklenebileceğinizi isteği göndermeniz gerekir. Bölgeler arası çoğaltma özelliğini kullanmadan önce Azure NetApp Files ekibinden bir resmi onay e-postası bekleyin.
@@ -113,5 +113,6 @@ NFS protokolü için, dışarı aktarma ilkesi kurallarının dışarı aktarmay
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
+* [Birim çoğaltmaları veya birimleri silme](cross-region-replication-delete.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a0d474208f11c203ca65e9ac296fa381d8633a8b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663919"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238403"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Ortamı oluşturma
 
@@ -48,7 +48,7 @@ ASEv3 yalnızca select bölgelerinde sunulur. Önizleme, GA 'ye doğru bir şeki
 
 ## <a name="creating-an-ase-in-the-portal"></a>Portalda ATıCı oluşturma
 
-1. Bir ASEv3 oluşturmak için Market 'te **App Service ortamı v3**'yi arayın.  
+1. Bir ASEv3 oluşturmak için Market 'te **App Service ortamı (Önizleme)** aratın.  
 2. Temel bilgiler: aboneliği seçin, kaynak grubunu seçin veya oluşturun ve ATıCı 'nizin adını girin.  Ao adı ayrıca Ao 'nun etki alanı soneki için de kullanılacaktır.  Ao adınız *contoso* ise, etki alanı son eki *contoso.appserviceenvironment.net* olacaktır.  Bu ad, ASE 'nin dağıtıldığı VNET tarafından kullanılan Azure DNS özel bölgesinde otomatik olarak ayarlanır. 
 
     ![Temel App Service Ortamı Oluştur sekmesi](./media/creation/creation-basics.png)

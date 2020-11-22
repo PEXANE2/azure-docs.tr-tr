@@ -1,32 +1,32 @@
 ---
-title: Azure uygulama yapılandırma REST API-Key-Value
+title: Azure Uygulama yapılandırması REST API-anahtar-değer
 description: Azure Uygulama Yapılandırması ' nı kullanarak anahtar değerleriyle çalışmaya yönelik başvuru sayfaları REST API
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 50d97a330507e9361674776acf29d1007ee5bf58
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f89b3f2fa4805eeb2fd9f9d511c8f228b98139ac
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424383"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241038"
 ---
-# <a name="key-values"></a>Key-Values
+# <a name="key-values"></a>Anahtar değerler
 
-api sürümü: 1,0
+Anahtar değeri, benzersiz birleşimi tarafından tanımlanan bir kaynaktır `key`  +  `label` . `label` isteğe bağlıdır. Anahtar-değer etiketi olmadan açık bir şekilde başvurmak için "\ 0" (URL kodlamalı ``%00`` ) kullanın. Her işlemin ayrıntılarına bakın.
 
-Anahtar değeri, benzersiz birleşimi tarafından tanımlanan bir kaynaktır `key`  +  `label` . `label` isteğe bağlıdır. Etiket olmadan bir anahtar değerine açıkça başvurmak için "\ 0" (URL kodlamalı ``%00`` ) kullanın. Her işlemin ayrıntılarına bakın.
+Bu makale, API sürüm 1,0 için geçerlidir.
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 - Al
 - Birden çok Listele
 - Ayarla
 - Sil
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
@@ -45,10 +45,10 @@ Anahtar değeri, benzersiz birleşimi tarafından tanımlanan bir kaynaktır `ke
 }
 ```
 
-## <a name="get-key-value"></a>Key-Value al
+## <a name="get-key-value"></a>Anahtar-değer al
 
-**Gerekli:** ``{key}`` , ``{api-version}``  
-*Isteğe bağlı:* ``label`` Atlanırsa, etiket olmadan bir anahtar değeri gelir
+Gerekli: ``{key}`` , ``{api-version}``  
+İsteğe bağlı: ``label`` (atlanırsa, etiket olmadan bir anahtar-değer anlamına gelir.)
 
 ```http
 GET /kv/{key}?label={label}&api-version={api-version}
@@ -87,7 +87,7 @@ HTTP/1.1 404 Not Found
 
 ## <a name="get-conditionally"></a>Al (koşullu)
 
-İstemci önbelleğini geliştirmek için, `If-Match` veya `If-None-Match` istek üst bilgilerini kullanın. `etag`Bağımsız değişken, anahtar gösteriminin bir parçasıdır. Bkz. [bölüm 14,24 ve 14,26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+İstemci önbelleğini geliştirmek için, `If-Match` veya `If-None-Match` istek üst bilgilerini kullanın. `etag`Bağımsız değişken, anahtar gösteriminin bir parçasıdır. Daha fazla bilgi için bkz. [bölümler 14,24 ve 14,26](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
 Aşağıdaki istek, yalnızca geçerli gösterim belirtilen değerle eşleşmiyorsa anahtar değerini alır `etag` :
 
@@ -109,12 +109,9 @@ veya
 HTTP/1.1 200 OK
 ```
 
-## <a name="list-key-values"></a>Liste Key-Values
+## <a name="list-key-values"></a>Anahtar değerlerini listeleme
 
-Bkz. ek seçenekler için **filtreleme**
-
-*Isteğe bağlı:* ``key`` -belirtilmemişse, **herhangi bir** anahtar anlamına gelir.
-*Isteğe bağlı:* ``label`` -belirtilmemişse, **herhangi bir** etiketi belirtir.
+İsteğe bağlı: ``key`` (belirtilmemişse, herhangi bir anahtar anlamına gelir.) İsteğe bağlı: ``label`` (belirtilmemişse, herhangi bir etiketi gösterir.)
 
 ```http
 GET /kv?label=*&api-version={api-version} HTTP/1.1
@@ -126,6 +123,8 @@ GET /kv?label=*&api-version={api-version} HTTP/1.1
 HTTP/1.1 200 OK
 Content-Type: application/vnd.microsoft.appconfig.kvset+json; charset=utf-8
 ```
+
+Ek seçenekler için, bu makalenin devamındaki "filtreleme" bölümüne bakın.
 
 ## <a name="pagination"></a>Sayfalandırma
 
@@ -183,7 +182,7 @@ GET /kv?key={key}&label={label}&api-version={api-version}
 
 `_`, `\`, `,`
 
-Ayrılmış bir karakter değerin bir parçasıysa, kullanılarak kaçışlı olması gerekir `\{Reserved Character}` . Ayrılmayan karakterlere de kaçışmış olabilir.
+Ayrılmış bir karakter değerin bir parçasıysa, kullanılarak kaçışılması gerekir `\{Reserved Character}` . Ayrılmayan karakterlere de kaçışmış olabilir.
 
 ***Filtre doğrulaması** _
 
@@ -226,15 +225,15 @@ _ *Örnekleri**
 
 ## <a name="request-specific-fields"></a>Belirli alanlar iste
 
-İsteğe bağlı `$select` sorgu dizesi parametresini kullanın ve istenen alanların virgülle ayrılmış listesini sağlayın. `$select`Parametresi atlanırsa, yanıt varsayılan kümesini içerir.
+İsteğe bağlı `$select` sorgu dizesi parametresini kullanın ve istenen alanların virgülle ayrılmış bir listesini sağlayın. `$select`Parametresi atlanırsa, yanıt varsayılan kümesini içerir.
 
 ```http
 GET /kv?$select=key,value&api-version={api-version} HTTP/1.1
 ```
 
-## <a name="time-based-access"></a>Time-Based erişim
+## <a name="time-based-access"></a>Zamana dayalı erişim
 
-Sonucun bir önceki zamanda bulunduğu gösterimi elde edin. Bkz. bölüm [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1). Sayfalandırma hala yukarıda tanımlanan şekilde desteklenmektedir.
+Sonucun bir önceki zamanda bulunduğu gösterimi elde edin. Daha fazla bilgi için bkz. Section [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1). Sayfalandırma hala bu makalede daha önce tanımlanan şekilde desteklenmektedir.
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -260,8 +259,8 @@ Link: <{relative uri}>; rel="original"
 
 ## <a name="set-key"></a>Anahtar ayarla
 
-- **Gerekli:**``{key}``
-- *Isteğe bağlı:* ``label`` -belirtilmemişse veya Label = %00 etiketi olmayan KV öğesini belirtir.
+- Gerekli: ``{key}``
+- İsteğe bağlı: ``label`` (belirtilmemişse veya etiket = %00, etiket olmadan anahtar değeri gerektirir.)
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -325,7 +324,7 @@ Content-Type: application/problem+json; charset="utf-8"
 Yarış durumlarını engellemek için, `If-Match` veya `If-None-Match` istek üst bilgilerini kullanın. `etag`Bağımsız değişken, anahtar gösteriminin bir parçasıdır.
 `If-Match`Veya `If-None-Match` atlanırsa, işlem koşulsuz olur.
 
-Aşağıdaki yanıt, yalnızca geçerli temsil belirtilen ile eşleşiyorsa değeri güncelleştirir `etag`
+Aşağıdaki yanıt, yalnızca geçerli temsil belirtilen ile eşleşiyorsa değeri güncelleştirir `etag` :
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -333,7 +332,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json
 If-Match: "4f6dd610dd5e4deebc7fbaef685fb903"
 ```
 
-Aşağıdaki yanıt, yalnızca *geçerli temsil belirtilen* ile eşleşmezse değeri güncelleştirir `etag`
+Aşağıdaki yanıt, yalnızca geçerli temsil belirtilen ile eşleşmezse değeri güncelleştirir `etag` :
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -349,7 +348,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json;
 If-Match: "*"
 ```
 
-Aşağıdaki istek yalnızca *bir gösterim mevcut değilse değeri* ekler:
+Aşağıdaki istek yalnızca bir gösterim mevcut değilse değeri ekler:
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -373,8 +372,8 @@ HTTP/1.1 412 PreconditionFailed
 
 ## <a name="delete"></a>Sil
 
-- **Gerekli:** `{key}` , `{api-version}`
-- *Isteğe bağlı:* `{label}` -belirtilmemişse veya Label = %00 etiketi olmayan KV öğesini belirtir.
+- Gerekli: `{key}` , `{api-version}`
+- İsteğe bağlı: `{label}` (belirtilmemişse veya etiket = %00, etiket olmadan anahtar değeri gerektirir.)
 
 ```http
 DELETE /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -396,4 +395,4 @@ HTTP/1.1 204 No Content
 
 ## <a name="delete-key-conditionally"></a>Anahtarı sil (koşullu)
 
-**Set anahtarına benzer (koşullu)**
+Bu makalenin önceki kısımlarında "anahtar ayarlama (koşullu)" bölümüne benzer.

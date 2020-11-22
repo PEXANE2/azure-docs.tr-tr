@@ -1,33 +1,31 @@
 ---
 title: Azure Uygulama yapılandırması REST API-sürüm oluşturma
-description: Azure Uygulama yapılandırması 'nı kullanarak sürüm oluşturma için başvuru sayfaları REST API
+description: Azure Uygulama Yapılandırması ' nı kullanarak sürüm oluşturma için başvuru sayfaları REST API
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 90d131cdc7c496853f2520951c95b9903d69f8fb
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3a7f50b26d59501d2be3a0147fe89919819b50e6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424474"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246376"
 ---
 # <a name="versioning"></a>Sürüm Oluşturma
 
-api sürümü: 1,0
-
-Her istemci isteğinin sorgu dizesi parametresi olarak açık API sürümü sağlaması gerekir. Örnek: `https://{myconfig}.azconfig.io/kv?api-version=1.0`
+Her istemci isteğinin sorgu dizesi parametresi olarak açık bir API sürümü sağlaması gerekir. Örneğin: `https://{myconfig}.azconfig.io/kv?api-version=1.0`.
 
 `api-version` SemVer (ana. Minor) biçiminde ifade edilir. Aralık veya sürüm anlaşması desteklenmez.
 
-## <a name="error-response"></a>Hata yanıtı
+Bu makale, API sürüm 1,0 için geçerlidir.
 
 Aşağıda, istenen API sürümü eşleştirilemezse sunucu tarafından döndürülen olası hata yanıtlarının Özeti özetlenmektedir.
 
-### <a name="api-version-unspecified"></a>API sürümü belirtilmedi
+## <a name="api-version-unspecified"></a>API sürümü belirtilmedi
 
-İstemci bir API sürümü sağlamadan istek yaptığında gerçekleşir.
+Bu hata, bir istemci bir API sürümü sağlamadan istek yaptığında oluşur.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -41,9 +39,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="unsupported-api-version"></a>Desteklenmeyen API sürümü
+## <a name="unsupported-api-version"></a>Desteklenmeyen API sürümü
 
-İstemci tarafından istenen API sürümü, sunucu tarafından desteklenen API sürümlerinden hiçbiriyle eşleşmediği zaman gerçekleşir.
+Bu hata, bir istemci istenen API sürümü sunucu tarafından desteklenen API sürümlerinden hiçbiriyle eşleşmediği zaman oluşur.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -57,9 +55,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="invalid-api-version"></a>Geçersiz API sürümü
+## <a name="invalid-api-version"></a>Geçersiz API sürümü
 
-İstemci bir API sürümü ile istek yaptığında, ancak değer yanlış biçimlendirilmediğinde veya sunucu tarafından ayrıştırılamadığından gerçekleşir.
+Bu hata, bir istemci bir API sürümüyle istek yaptığında oluşur, ancak değer hatalı biçimlendirilmiş veya sunucu tarafından ayrıştırılamaz.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -73,9 +71,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="ambiguous-api-version"></a>Belirsiz API sürümü
+## <a name="ambiguous-api-version"></a>Belirsiz API sürümü
 
-İstemci, sunucu için belirsiz bir API sürümü istediğinde gerçekleşir. Örneğin, birden çok farklı değer.
+Bu hata, istemci sunucuya belirsiz bir API sürümü istediğinde (örneğin, birden çok farklı değer) oluşur.
 
 ```http
 HTTP/1.1 400 Bad Request

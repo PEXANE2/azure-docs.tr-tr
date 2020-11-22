@@ -1,38 +1,38 @@
 ---
 title: Azure uygulama yapılandırma REST API-Azure Active Directory yetkilendirme
-description: Azure Uygulama yapılandırmasında yetkilendirme için Azure Active Directory REST API kullanarak kullanın
+description: REST API kullanarak Azure Uygulama yapılandırmasına karşı yetkilendirme için Azure Active Directory kullanın
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: bebab7c06062726f7b5c7868f984cadda3b4c98e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 89c51e69a4274affcecb4d967deb96dcebcfd70f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424412"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253380"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Azure Active Directory yetkilendirmesi-REST API başvurusu
 
-Azure Active Directory (Azure AD) kimlik doğrulaması kullanıldığında, yetkilendirme, Azure rol tabanlı Access Control (RBAC) tarafından işlenir. Azure RBAC, kaynaklara erişim izni vermek için kullanıcıların rollere atanmasını gerektirir. Her rol, role atanan kullanıcıların gerçekleştirebilmesini sağlayacak bir dizi eylem içerir.
+Azure Active Directory (Azure AD) kimlik doğrulaması kullandığınızda, yetkilendirme rol tabanlı erişim denetimi (RBAC) tarafından işlenir. RBAC, kaynaklara erişim izni vermek için kullanıcılardan rollere atanmasını gerektirir. Her rol, role atanan kullanıcıların gerçekleştirebilmesini sağlayan bir dizi eylem içerir.
 
 ## <a name="roles"></a>Roller
 
-Aşağıdaki roller, varsayılan olarak Azure aboneliklerinde kullanılabilen yerleşik rollerdir:
+Aşağıdaki roller varsayılan olarak Azure aboneliklerinde kullanılabilir:
 
-- **Azure Uygulama yapılandırması veri sahibi** : Bu rol, tüm işlemlere tam erişim sağlar.
-- **Azure uygulama yapılandırma veri okuyucusu** : Bu rol, okuma işlemlerine izin vermez.
+- **Azure Uygulama yapılandırması veri sahibi**: Bu rol, tüm işlemlere tam erişim sağlar.
+- **Azure uygulama yapılandırma veri okuyucusu**: Bu rol, okuma işlemlerine izin vermez.
 
 ## <a name="actions"></a>Eylemler
 
 Roller, bu role atanan kullanıcıların gerçekleştirebileceği eylemlerin bir listesini içerir. Azure Uygulama yapılandırması aşağıdaki eylemleri destekler:
 
-- `Microsoft.AppConfiguration/configurationStores/keyValues/read`: Bu eylem, uygulama yapılandırma anahtar-değer kaynakları için/KV ve/Labels. okuma erişimine izin verir.
+- `Microsoft.AppConfiguration/configurationStores/keyValues/read`: Bu eylem, uygulama yapılandırması anahtar-değer kaynaklarına okuma erişimi sağlar, örneğin/kV ve/Labels.
 - `Microsoft.AppConfiguration/configurationStores/keyValues/write`: Bu eylem, uygulama yapılandırma anahtar-değer kaynaklarına yazma erişimine izin verir.
-- `Microsoft.AppConfiguration/configurationStores/keyValues/delete`: Bu eylem, uygulama yapılandırma anahtar-değer kaynaklarının silinmesine izin verir. Bir kaynağın silinmesi, silinen anahtar değerini geri döndürdüğünü unutmayın.
+- `Microsoft.AppConfiguration/configurationStores/keyValues/delete`: Bu eylem, uygulama yapılandırma anahtar-değer kaynaklarının silinmesine izin verir. Bir kaynağın silinmesinin, silinen anahtar değerini döndürdüğünü unutmayın.
 
-## <a name="errors"></a>Hatalar
+## <a name="error"></a>Hata
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>Rol atamalarını yönetme
 
-Rol atamalarının yönetilmesi, tüm Azure hizmetlerinde standart olan [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) yordamları kullanılarak yapılır. Bunu Azure CLı, PowerShell, Azure portal ve daha fazlası aracılığıyla yapmak mümkündür. Rol atamalarının nasıl yapılacağı hakkında resmi belgeler [burada](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)bulunabilir.
+Rol atamalarını, tüm Azure hizmetlerinde standart olan [RBAC yordamlarını](https://docs.microsoft.com/azure/role-based-access-control/overview) kullanarak yönetebilirsiniz. Bunu Azure CLı, PowerShell ve Azure portal aracılığıyla yapabilirsiniz. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).

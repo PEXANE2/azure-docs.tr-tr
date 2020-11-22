@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce5658fb79a893e0aca9d78faf090a886a2ee591
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ad5147971fc42e65e4621c8a3f0a98e01f2e0339
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651473"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237314"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Öğretici: tek bir Azure AD kiracısı ile tek bir ormanı tümleştirme
 
@@ -56,7 +56,7 @@ Bu öğreticide oluşturduğunuz ortamı, test için veya bulut sağlaması hakk
 2. Yalnızca bulutta bulunan genel yönetici kimlik bilgilerini kullanarak Azure portal oturum açın.
 3. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect**' a tıklayın ve ortadaki **sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
 
-   ![Azure portalı](media/how-to-install/install-6.png)
+   ![Azure portal](media/how-to-install/install-6.png)
 
 4. **Aracıyı indir**' e tıklayın.
 5. Azure AD Connect sağlama aracısını çalıştırın.
@@ -67,7 +67,7 @@ Bu öğreticide oluşturduğunuz ortamı, test için veya bulut sağlaması hakk
 7. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır.  Azure AD Genel Yönetici hesabınızla oturum açın.  IE artırılmış güvenlik etkinse, bu, oturum açma 'nın engellenmesini unutmayın.  Bu durumda, yükleme işlemini kapatın, Sunucu Yöneticisi IE artırılmış güvenliği devre dışı bırakın ve **AAD Connect sağlama Aracısı sihirbazına** tıklayarak yüklemeyi yeniden başlatın.
 8. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve ardından Active Directory etki alanı Yönetici hesabınızla oturum açın.  Not: etki alanı yönetici hesabında parola değiştirme gereksinimleri olmamalıdır. Parolanın süresi dolarsa veya değişirse, aracıyı yeni kimlik bilgileriyle yeniden yapılandırmanız gerekecektir. Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.
 
-   !["Connect Active Directory" ekranının ekran görüntüsü.](media/how-to-install/install-3.png)
+   !["Connect Active Directory" ekranının ekran görüntüsü.](media/how-to-install/install-3a.png)
 
 9. **Yapılandırma Tamam** ekranında **Onayla**' ya tıklayın.  Bu işlem aracıyı kaydedip yeniden başlatacak.
 
@@ -130,7 +130,7 @@ Artık şirket içi dizinimizde bulunan kullanıcıların Azure AD kiracımızda
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) adresine gidin
 2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.</br>
-   ![Doğru](media/tutorial-single-forest/verify-1.png)</br>
+   ![Doğrulama](media/tutorial-single-forest/verify-1.png)</br>
 
 Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanımak için kullanabileceğiniz bir karma kimlik ortamı oluşturdunuz.
 

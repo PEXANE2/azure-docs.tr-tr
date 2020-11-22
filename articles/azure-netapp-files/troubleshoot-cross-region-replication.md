@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745692"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95239559"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Bölgeler arası çoğaltma sorunlarını giderme
 
@@ -50,6 +50,12 @@ Bu makalede, Azure NetApp Files için çapraz bölge çoğaltma sorunlarını gi
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     Çoğaltmanın kesildiğini veya başlatılmamış olduğunu veya boşta olduğunu (başlatılamadı) doğrulayın.    |
 |     `Cannot delete   source replication`    |     Kaynak taraftan çoğaltma silinmesine izin verilmiyor. Hedef taraftan çoğaltmayı sildiğinizden emin olun.    |
+
+## <a name="errors-deleting-volume"></a>Birim silme hataları
+
+|     Hata İletisi    |     Çözüm    |
+|-|-|
+| `Volume is a member of an active volume replication relationship`  |  Birimi silmeden önce çoğaltmayı silin. Bkz. [çoğaltmaları silme](cross-region-replication-delete.md). Bu işlem, birimin çoğaltmasını silmeden önce eşlemeyi kesmeniz gerekir. |
 | `Volume with replication cannot be deleted`  |  Birimi silmeden önce çoğaltmayı silin. Bkz. [çoğaltmaları silme](cross-region-replication-delete.md). Bu işlem, birimin çoğaltmasını silmeden önce eşlemeyi kesmeniz gerekir. 
 
 ## <a name="errors-resyncing-volume"></a>Birim yeniden eşitleniyor hata
@@ -69,7 +75,7 @@ Bu makalede, Azure NetApp Files için çapraz bölge çoğaltma sorunlarını gi
 
 * [Bölgeler arası çoğaltma](cross-region-replication-introduction.md)
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
-* [Çoğaltma eşlemesi oluşturma](cross-region-replication-create-peering.md)
+* [Birim çoğaltması oluştur](cross-region-replication-create-peering.md)
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)

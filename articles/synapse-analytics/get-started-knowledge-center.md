@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685435"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254247"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>SYNAPSE bilgi merkezini araştırma
 
@@ -33,8 +33,8 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 ## <a name="overview"></a>Genel Bakış
 
 **Bilgi Merkezi** , üç şey yapmanıza olanak sağlar:
-* **Örnekleri hemen kullanın**. Bu seçenek, analiz işlemini mümkün olduğunca hızlı şekilde görmek için en iyi duruma getirilmiştir. SYNAPSE 'in nasıl çalıştığına ilişkin hızlı bir örnek istiyorsanız bu seçeneği belirleyin.
-* **Tarayıcı kullanılabilir örneği**. Bu seçenek, örnek veri kümelerini bağlamanızı ve SQL betikleri, Not defterleri ve işlem hatları biçiminde örnek kod eklemenizi sağlar.
+* **Örnekleri hemen kullanın**. SYNAPSE 'in nasıl çalıştığına ilişkin hızlı bir örnek istiyorsanız bu seçeneği belirleyin.
+* **Galeriye gözatamazsınız**. Bu seçenek, örnek veri kümelerini bağlamanızı ve SQL betikleri, Not defterleri ve işlem hatları biçiminde örnek kod eklemenizi sağlar.
 * **Tur SYNAPSE Studio**. Bu seçenek sizi SYNAPSE Studio 'nun temel bölümlerinin kısa bir turuna götürür. Daha önce SYNAPSE Studio 'Yu kullanmadıysanız bu kullanışlıdır.
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Sunucusuz SQL havuzuyla blob depolamayı keşfetme
@@ -47,7 +47,7 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 1. Çalıştır'a tıklayın. Seçtiğiniz metni çalıştıracaktır.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Daha fazla NYC TAXI verisi yükleniyor
-1. **Bilgi merkezine** gidin, **kullanılabilir örneklere git 'e** tıklayın 
+1. **Bilgi merkezine** gidin, **Galeriye** git 'e tıklayın 
 1. Üstteki **SQL betikleri** sekmesini seçin
 1. **New York Taxicab veri kümesini yükle** ' yi seçin
 1. **Girişler** altında, **var olan bir havuzu seçin** öğesini seçin ve **SQLDB1** seçin

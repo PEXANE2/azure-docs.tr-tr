@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265478"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247243"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma
 
@@ -74,7 +74,7 @@ Active Directory grupları için Grup adlarını yayma Azure Active Directory ya
 
 ## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>SSO yapılandırması kullanarak SAML uygulamaları için belirteçlere grup talepleri ekleme
 
-Galeri veya Galeri dışı bir SAML uygulamasının grup taleplerini yapılandırmak için, **Kurumsal uygulamaları**açın, listede uygulamaya tıklayın, **Çoklu oturum açma yapılandırması**' nı seçin ve ardından **Kullanıcı öznitelikleri & talepler**' i seçin.
+Galeri veya Galeri dışı bir SAML uygulamasının grup taleplerini yapılandırmak için, **Kurumsal uygulamaları** açın, listede uygulamaya tıklayın, **Çoklu oturum açma yapılandırması**' nı seçin ve ardından **Kullanıcı öznitelikleri & talepler**' i seçin.
 
 **Grup talebi ekle** ' ye tıklayın  
 
@@ -144,10 +144,11 @@ Geçerli değerler:
 |----------|-------------|
 | **Bütün** | Güvenlik gruplarını, dağıtım listelerini ve rolleri yayar |
 | **"SecurityGroup"** | Kullanıcının gruplar talebinde üyesi olduğu güvenlik gruplarını yayar |
-| **"DirectoryRole** | Kullanıcıya Dizin rolleri atanırsa, bunlar ' WDS ' talebi olarak dağıtılır (gruplar talebi yayınlanmaz) |
-| **"ApplicationGroup** | Yalnızca uygulamaya açıkça atanmış olan grupları yayar ve Kullanıcı |
+| **"DirectoryRole"** | Kullanıcıya Dizin rolleri atanırsa, bunlar ' WDS ' talebi olarak dağıtılır (gruplar talebi yayınlanmaz) |
+| **ApplicationGroup** | Yalnızca uygulamaya açıkça atanmış olan grupları yayar ve Kullanıcı |
+| **Seçim** | Hiçbir grup döndürülmedi. (Büyük/küçük harf olmaması bu nedenle, hiçbiri de işe yarar ve doğrudan uygulama bildiriminde ayarlanabilir.) |
 
-   Örneğin:
+   Örnek:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"

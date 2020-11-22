@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709033"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243146"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları 
 
@@ -38,12 +38,14 @@ Azure NetApp Files [birim çapraz bölge çoğaltma işlevini kullanma](cross-re
 * Anlık görüntüden oluşturulan kaynak birimler için birim çoğaltmasını yapılandırma işlemi şu anda desteklenmiyor.
 * Çapraz bölge çoğaltmasını ayarladıktan sonra, çoğaltma işlemi kaynak birim ve hedef birim arasında başvurular sağlamak için *anlık görüntü anlık görüntüleri* oluşturur. Her artımlı aktarım için yeni bir tane oluşturulduğunda, ek yük yansıtma anlık görüntüleri otomatik olarak gösterilir. Çoğaltma ilişkisi ve birimi silinene kadar anlık görüntü yansıtma anlık görüntülerini silemezsiniz. 
 * Çoğaltma ilişkisi etkin veya bozuk olduğunda ve ayrıca çoğaltma ilişkisi silindikten sonra, bir çoğaltma ilişkisinin kaynak hacminde el ile anlık görüntüleri silebilirsiniz. Hedef birim için el ile anlık görüntüleri, çoğaltma ilişkisi kesilene kadar silemezsiniz.
+* Çoğaltma hedefi birimi oluşturulmadan önce alınmış bir anlık görüntüye döndüremezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Çoğaltma eşlemesi oluşturma](cross-region-replication-create-peering.md)
+* [Birim çoğaltması oluştur](cross-region-replication-create-peering.md)
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
+* [Birim çoğaltmaları veya birimleri silme](cross-region-replication-delete.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 
 

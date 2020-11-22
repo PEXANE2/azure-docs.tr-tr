@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947991"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247702"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics kümesine genel bakış (Önizleme)
 
@@ -69,7 +69,7 @@ Stream Analytics kümeleriniz, seçilen SU kapasitesine göre ücretlendirilir. 
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>Hangi giriş ve çıkışları Stream Analytics kümeme göre özel olarak bağlayabilirim?
 
-Stream Analytics, çeşitli giriş ve çıkış türlerini destekler. Azure özel bağlantılarını destekleyen bu hizmetlerden herhangi biri, işlerinize özel olarak bağlanabilir. Kümenizde, işlerin giriş ve çıkış kaynaklarına erişmesine izin veren [Özel uç noktalar oluşturabilirsiniz](private-endpoints.md) .
+Stream Analytics, çeşitli giriş ve çıkış türlerini destekler. Kümenizde, işlerin giriş ve çıkış kaynaklarına erişmesine izin veren [Özel uç noktalar oluşturabilirsiniz](private-endpoints.md) . Şu anda Azure SQL veritabanı, Azure depolama, Azure Data Lake Storage 2., Azure Olay Hub 'ı ve Azure Service Bus desteklenen hizmetlerdir ve diğer türler yakında eklenecektir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

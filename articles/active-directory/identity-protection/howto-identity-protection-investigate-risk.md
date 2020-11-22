@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463952"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95251102"
 ---
 # <a name="how-to-investigate-risk"></a>Nasıl Yapılır: Riski araştırma
 
-Kimlik koruması, kuruluşların ortamlarında kimlik risklerini araştırmak için kullanabilecekleri üç rapor sağlar. Bu raporlar **riskli kullanıcılar**, **riskli oturum**açmalar ve **risk algılamaları**. Olayların araştırılması, güvenlik stratejinizde zayıf noktaları daha iyi anlamak ve tanımlamak için önemli bir anahtardır.
+Kimlik koruması, kuruluşların ortamlarında kimlik risklerini araştırmak için kullanabilecekleri üç rapor sağlar. Bu raporlar **riskli kullanıcılar**, **riskli oturum** açmalar ve **risk algılamaları**. Olayların araştırılması, güvenlik stratejinizde zayıf noktaları daha iyi anlamak ve tanımlamak için önemli bir anahtardır.
 
 Tüm üç rapor, içindeki olayların indirilemelerine izin verir. Azure portal dışında daha fazla analiz için CSV biçimi. Riskli kullanıcılar ve riskli oturum açma işlemleri raporları, en son 2500 girişin indirilemelerine izin verir, ancak risk algılamaları raporu en son 5000 kayıtları indirmeye izin verir.
 
 Kuruluşlar, verileri bir kuruluş olarak erişimi olabilecek diğer kaynaklarla toplamak için Microsoft Graph API tümleştirmelerinden yararlanabilir.
 
-**Azure Portal**  >  **Azure Active Directory**  >  **güvenlik**bölümünde üç rapor bulunur.
+**Azure Portal**  >  **Azure Active Directory**  >  **güvenlik** bölümünde üç rapor bulunur.
 
 ## <a name="navigating-the-reports"></a>Raporlarda gezinme
 
@@ -90,6 +90,10 @@ Risk algılamaları raporu tarafından sağlanabilecek bilgiler ile yöneticiler
 - Microsoft Cloud App Security (MCAS) ' den daha fazla ayrıntı için bağlantı.
 
 Yöneticiler daha sonra toplanan bilgilere göre eylemler gerçekleştirmek için kullanıcının risk veya oturum açma raporuna geri dönerek seçim yapabilir.
+
+> [!NOTE] 
+> Sistemimiz, risk Kullanıcı risk puanına katkıda bulunan risk olayının hatalı pozitif sonuçlar olduğunu algılayabilir veya Kullanıcı riski bir MFA istemi veya güvenli parola değişikliğini tamamlama gibi ilke zorlamasıyla düzeltildi. Bu nedenle sistemimiz risk durumunu ortadan açacağız ve "AI onaylı oturum açma güvenli" risk ayrıntısı, artık kullanıcının riskine neden olmaz. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

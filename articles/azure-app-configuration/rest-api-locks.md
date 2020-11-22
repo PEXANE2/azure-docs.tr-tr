@@ -1,37 +1,35 @@
 ---
 title: Azure uygulama yapılandırma REST API-kilitler
-description: Azure Uygulama yapılandırması ile anahtar-değer kilitleri ile çalışmaya yönelik başvuru sayfaları REST API
+description: Azure Uygulama Yapılandırması ' nı kullanarak anahtar-değer kilitleri ile çalışmaya yönelik başvuru sayfaları REST API
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4949db646c54d75f60d29d3c631d0f4ee8d7c26e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e63b48f2119c48cd43717acee7b13b1701e0032
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424514"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241276"
 ---
 # <a name="locks"></a>Kilitler
 
-api sürümü: 1,0
-
-Bu API, anahtar-değer kaynağı için kilit/kilit açma semantiğini sağlar. Aşağıdaki işlemleri destekler:
+Bu API (sürüm 1,0) anahtar-değer kaynağı için kilit ve kilit açma semantiğini sağlar. Aşağıdaki işlemleri destekler:
 
 - Kilit yerleştir
 - Kilidi Kaldır
 
-Varsa, `label` açık bir etiket değeri (joker karakter **değil** ) olmalıdır. Tüm işlemler için isteğe bağlı bir parametredir. Atlanırsa, etiket olmaz.
+Varsa, `label` açık bir etiket değeri (joker karakter değil) olmalıdır. Tüm işlemler için bu, isteğe bağlı bir parametredir. Atlanırsa, etiket olmaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="lock-key-value"></a>Kilit Key-Value
+## <a name="lock-key-value"></a>Anahtar-değer kilitle
 
-- **Gerekli:** ``{key}`` , ``{api-version}``  
-- *Isteğe bağlı:*``label``
+- Gerekli: ``{key}`` , ``{api-version}``  
+- Seçim ``label``
 
 ```http
 PUT /locks/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -63,10 +61,10 @@ Anahtar değeri yoksa, aşağıdaki yanıt döndürülür:
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="unlock-key-value"></a>Key-Value kilidini aç
+## <a name="unlock-key-value"></a>Anahtar-değer kilidini aç
 
-- **Gerekli:** ``{key}`` , ``{api-version}``  
-- *Isteğe bağlı:*``label``
+- Gerekli: ``{key}`` , ``{api-version}``  
+- Seçim ``label``
 
 ```http
 DELETE /locks/{key}?label={label}?api-version={api-version} HTTP/1.1
@@ -98,7 +96,7 @@ Anahtar değeri yoksa, aşağıdaki yanıt döndürülür:
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="conditional-lockunlock"></a>Koşullu kilit/kilit açma
+## <a name="conditional-lock-and-unlock"></a>Koşullu kilit ve kilit açma
 
 Yarış durumlarını engellemek için, `If-Match` veya `If-None-Match` istek üst bilgilerini kullanın. `etag`Bağımsız değişken, anahtar gösteriminin bir parçasıdır. `If-Match`Veya `If-None-Match` atlanırsa, işlem koşulsuz olur.
 

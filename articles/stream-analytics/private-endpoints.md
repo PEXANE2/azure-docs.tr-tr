@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: b3ad0da1f910556c172c519faf953d4075647955
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 36d26195e78c74ed7b976cfdd48e1e965bca872b
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109060"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249793"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics kümesinde özel uç noktalar oluşturma ve silme
 
 Kümede çalıştırılan Azure Stream Analytics işlerinizi bir güvenlik duvarının veya Azure Sanal Ağ'ın (VNet) ardındaki giriş ve çıkış kaynaklarına bağlayabilirsiniz. İlk olarak, Stream Analytics kümenizde Azure Event Hub veya Azure SQL Veritabanı gibi bir kaynak için özel uç nokta oluşturursunuz. Ardından girişinizden veya çıkışınızdan özel uç nokta bağlantısını onaylayın.
 
-Bağlantıyı onayladıktan sonra, Stream Analytics kümenizde çalışan tüm işler kaynağa özel uç nokta aracılığıyla erişebilir. Bu makalede Stream Analytics kümesinde özel uç noktaların nasıl oluşturulduğu ve silindiği gösterilir.
+Bağlantıyı onayladıktan sonra, Stream Analytics kümenizde çalışan tüm işler kaynağa özel uç nokta aracılığıyla erişebilir. Bu makalede Stream Analytics kümesinde özel uç noktaların nasıl oluşturulduğu ve silindiği gösterilir. Azure SQL veritabanı, Azure depolama, Azure Data Lake Storage 2., Azure Olay Hub 'ı ve Azure Service Bus için özel uç noktalar oluşturabilirsiniz. Diğer hizmetler için özel uç noktalar yakında eklenecektir. 
 
 ## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>Stream Analytics kümesinde özel uç nokta oluşturma
 
@@ -27,7 +27,7 @@ Bu bölümde, Stream Analytics kümesinde özel bir uç nokta oluşturmayı öğ
 
 1. Azure portal Stream Analytics kümenizi bulun ve seçin.
 
-1. **Ayarlar**altında **Özel uç noktalar**' ı seçin.
+1. **Ayarlar** altında **Özel uç noktalar**' ı seçin.
 
 1. Özel uç nokta **Ekle** ' yi seçin ve özel bir uç nokta aracılığıyla güvenli bir şekilde erişmek istediğiniz kaynağı seçmek için aşağıdaki bilgileri girin.
 
@@ -52,7 +52,7 @@ Bu bölümde, Stream Analytics kümesinde özel bir uç nokta oluşturmayı öğ
 
 1. Azure portal Stream Analytics kümenizi bulun ve seçin.
 
-1. **Ayarlar**altında **Özel uç noktalar**' ı seçin.
+1. **Ayarlar** altında **Özel uç noktalar**' ı seçin.
 
 1. Silmek istediğiniz özel uç noktayı seçin ve **Sil**' i seçin.
 

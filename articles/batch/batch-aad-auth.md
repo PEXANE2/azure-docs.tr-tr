@@ -4,12 +4,12 @@ description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi de
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920517"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95252649"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -144,7 +144,7 @@ Aşağıdaki Azure RBAC işlemleri için bir Azure AD kullanıcısına, gruba ve
 - Microsoft.Batch/batchAccounts/Read (herhangi bir okuma işlemi için)
 - Microsoft.Batch/batchAccounts/listKeys/Action (herhangi bir işlem için)
 
-Özel roller, Batch hesabı kimlik bilgileri (paylaşılan anahtar) değil, Azure AD tarafından kimliği doğrulanmış kullanıcılar içindir. Batch hesabı kimlik bilgilerinin Batch hesabına tam izin vermesini unutmayın. Ayrıca, oto havuzunu kullanan işlerin havuz düzeyi izinleri gerektirdiğini de unutmayın.
+Özel roller, Batch hesabı kimlik bilgileri (paylaşılan anahtar) değil, Azure AD tarafından kimliği doğrulanmış kullanıcılar içindir. Batch hesabı kimlik bilgilerinin Batch hesabına tam izin vermesini unutmayın. Ayrıca, [oto havuzunu](nodes-and-pools.md#autopools) kullanan işlerin havuz düzeyi izinleri gerektirdiğini de unutmayın.
 
 > [!NOTE]
 > Bazı rol atamalarının eylem alanında belirtilmesi gerekir, ancak diğerleri DataAction alanında belirtilmesi gerekir. Daha fazla bilgi için bkz. [Azure Kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftbatch).
