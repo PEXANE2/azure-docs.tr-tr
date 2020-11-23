@@ -1,17 +1,17 @@
 ---
 title: Aracılar için Kaynak Yöneticisi şablonu örnekleri
-description: Azure Izleyici 'de Log Analytics Aracısı ve tanılama uzantısı dağıtmak ve yapılandırmak için örnek Azure Resource Manager şablonları.
+description: Azure Izleyici 'de sanal makine aracılarını dağıtmaya ve yapılandırmaya yönelik örnek Azure Resource Manager şablonları.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 8b0673e534826acb5ff2d3747053f58fb39ff285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 00d6635b7bb322d28f0fe3df509ce0cb03e19f3d
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83854453"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95308673"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Azure Izleyici 'de aracıların Kaynak Yöneticisi şablon örnekleri
 Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısını](../platform/log-analytics-agent.md) ve [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) dağıtmak ve yapılandırmak üzere örnek [Azure Resource Manager şablonlar](../../azure-resource-manager/templates/template-syntax.md) bulunur. Her örnek, şablona sağlanacak örnek değerleri içeren bir şablon dosyası ve bir parametre dosyası içerir.
@@ -19,10 +19,218 @@ Bu makalede, Azure Izleyici 'de sanal makineler için [Log Analytics aracısın�
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
-## <a name="windows-log-analytics-agent"></a>Windows Log Analytics Aracısı
+## <a name="azure-monitor-agent-preview"></a>Azure Izleyici Aracısı (Önizleme)
+Bu bölümdeki örnekler, Windows ve Linux aracılarında Azure Izleyici Aracısı (Önizleme). Bu, aracıyı Azure 'daki sanal makinelere yüklemeyi ve ayrıca Azure Arc özellikli sunucuları 'nı içerir. 
+
+### <a name="windows-azure-virtual-machine"></a>Microsoft Azure sanal makinesi
+Aşağıdaki örnek Azure Izleyici aracısını bir Windows Azure sanal makinesine yüklemektedir.
+
+#### <a name="template-file"></a>Şablon dosyası
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "typeHandlerVersion": "1.0",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Parametre dosyası
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-virtual-machine"></a>Linux Azure sanal makinesi
+Aşağıdaki örnek, Azure Izleyici aracısını bir Linux Azure sanal makinesine yüklemektedir.
+
+#### <a name="template-file"></a>Şablon dosyası
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "typeHandlerVersion": "1.5",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Parametre dosyası
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="windows-azure-arc-enabled-server"></a>Microsoft Azure Arc etkin sunucu
+Aşağıdaki örnek, Azure Izleyici aracısını bir Windows Azure Arc etkin sunucusuna yüklemektedir.
+
+#### <a name="template-file"></a>Şablon dosyası
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Parametre dosyası
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-arc-enabled-server"></a>Linux Azure yay etkin sunucusu
+Aşağıdaki örnek, Azure Izleyici aracısını bir Linux Azure yay etkin sunucusuna yüklemektedir.
+
+#### <a name="template-file"></a>Şablon dosyası
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Parametre dosyası
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+## <a name="log-analytics-agent"></a>Log Analytics aracısı
+Bu bölümdeki örnekler, Azure 'daki Windows ve Linux sanal makinelerine Log Analytics aracısını yükler ve bir Log Analytics çalışma alanına bağlayın.
+
+###  <a name="windows"></a>Windows
 Aşağıdaki örnek, Log Analytics aracısını bir Windows Azure sanal makinesine yüklemektedir. Bu, [Windows için Log Analytics sanal makine uzantısı](../../virtual-machines/extensions/oms-windows.md)etkinleştirilerek yapılır.
 
-### <a name="template-file"></a>Şablon dosyası
+#### <a name="template-file"></a>Şablon dosyası
 
 ```json
 {
@@ -90,7 +298,7 @@ Aşağıdaki örnek, Log Analytics aracısını bir Windows Azure sanal makinesi
 
 ```
 
-### <a name="parameter-file"></a>Parametre dosyası
+#### <a name="parameter-file"></a>Parametre dosyası
 
 ```json
 {
@@ -114,10 +322,10 @@ Aşağıdaki örnek, Log Analytics aracısını bir Windows Azure sanal makinesi
 ```
 
 
-## <a name="linux-log-analytics-agent"></a>Linux Log Analytics Aracısı
+### <a name="linux"></a>Linux
 Aşağıdaki örnek, bir Linux Azure sanal makinesine Log Analytics aracısını yüklemektedir. Bu, [Windows için Log Analytics sanal makine uzantısı](../../virtual-machines/extensions/oms-linux.md)etkinleştirilerek yapılır.
 
-### <a name="template-file"></a>Şablon dosyası
+#### <a name="template-file"></a>Şablon dosyası
 
 ```json
 {
@@ -184,7 +392,7 @@ Aşağıdaki örnek, bir Linux Azure sanal makinesine Log Analytics aracısını
 }
 ```
 
-### <a name="parameter-file"></a>Parametre dosyası
+#### <a name="parameter-file"></a>Parametre dosyası
 
 ```json
 {
@@ -209,10 +417,13 @@ Aşağıdaki örnek, bir Linux Azure sanal makinesine Log Analytics aracısını
 
 
 
-## <a name="windows-diagnostic-extension"></a>Windows Tanılama uzantısı
+## <a name="diagnostic-extension"></a>Tanılama uzantısı
+Bu bölümdeki örnekler, tanılama uzantısını Azure 'daki Windows ve Linux sanal makinelerine yükler ve veri toplama için yapılandırır.
+
+### <a name="windows"></a>Windows
 Aşağıdaki örnek, bir Windows Azure sanal makinesinde tanılama uzantısının etkinleştirilir ve yapılandırır. Yapılandırma hakkında ayrıntılı bilgi için bkz. [Windows Tanılama uzantısı şeması](../platform/diagnostics-extension-schema-windows.md).
 
-### <a name="template-file"></a>Şablon dosyası
+#### <a name="template-file"></a>Şablon dosyası
 
 ```json
 {
@@ -345,7 +556,7 @@ Aşağıdaki örnek, bir Windows Azure sanal makinesinde tanılama uzantısını
 }
 ```
 
-### <a name="parameter-file"></a>Parametre dosyası
+#### <a name="parameter-file"></a>Parametre dosyası
 
 ```json
 {
@@ -374,10 +585,10 @@ Aşağıdaki örnek, bir Windows Azure sanal makinesinde tanılama uzantısını
 }
 ```
 
-## <a name="linux-diagnostic-setting"></a>Linux Tanılama ayarı
+### <a name="linux"></a>Linux
 Aşağıdaki örnek, bir Linux Azure sanal makinesinde tanılama uzantısını sunar ve yapılandırır. Yapılandırma hakkında ayrıntılı bilgi için bkz. [Windows Tanılama uzantısı şeması](../../virtual-machines/extensions/diagnostics-linux.md).
 
-### <a name="template-file"></a>Şablon dosyası
+#### <a name="template-file"></a>Şablon dosyası
 
 ```json
 {
@@ -565,7 +776,7 @@ Aşağıdaki örnek, bir Linux Azure sanal makinesinde tanılama uzantısını s
 }
 ```
 
-### <a name="parameter-file"></a>Parametre dosyası
+#### <a name="parameter-file"></a>Parametre dosyası
 
 ```json
 {

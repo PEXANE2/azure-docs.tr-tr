@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: fd131798352aaccaea66c242e92d550c98d7c86f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687165"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318108"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>Veri toplama kurallarını kullanarak VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)
 [VM'ler için Azure izleyici Konuk sistem durumu](vminsights-health-overview.md) , düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, veri toplama kurallarını kullanarak birden çok sanal makine genelinde varsayılan izlemenin nasıl değiştirileceği açıklanır.
@@ -20,7 +20,7 @@ ms.locfileid: "94687165"
 ## <a name="monitors"></a>İzleyiciler
 Bir sanal makinenin sistem durumu, izleyicilerinin her birinden [sistem durumu toplamasına](vminsights-health-overview.md#health-rollup-policy) göre belirlenir. Aşağıdaki tabloda gösterildiği gibi VM'ler için Azure İzleyici Konuk durumunda iki tür izleyici vardır.
 
-| İzleyici | Açıklama |
+| İzleyici | Description |
 |:---|:---|
 | Birim izleyicisi | Bir kaynağın veya uygulamanın bazı yönlerini ölçer. Bu, kaynağın performansını veya kullanılabilirliğini belirlemede bir performans sayacı denetleniyor olabilir. |
 | Toplam Izleyici | Tek bir toplu sistem durumu sağlamak için birden çok izleyici gruplandırır. Bir toplam izleyici, bir veya daha fazla birim İzleyicisi ve diğer toplama izleyicileri içerebilir. |
@@ -30,7 +30,7 @@ VM'ler için Azure İzleyici Konuk sistem durumu tarafından kullanılan izleyic
 ## <a name="monitor-properties"></a>İzleme özellikleri
 Aşağıdaki tabloda, her monitörde yapılandırılabilecek özellikler açıklanmaktadır.
 
-| Özellik | İzleyiciler | Açıklama |
+| Özellik | İzleyiciler | Description |
 |:---|:---|:---|
 | Etkin | Toplama<br>Birim | Doğru ise, durum İzleyicisi hesaplanır ve sanal makinenin durumuna katkıda bulunur. Uyarı uyarısının etkin olduğunu tetikleyebilirler. |
 | Uyarı | Toplama<br>Birim | True ise, uygun olmayan bir duruma geçirildiğinde izleyici için bir uyarı tetiklenir. Yanlışsa, izleyicinin durumu yine de bir uyarı tetikleyebilen sanal makinenin sistem durumuna katkıda bulunur. |
@@ -57,7 +57,7 @@ Aşağıdaki tabloda her izleyici için varsayılan yapılandırma listelenmekte
 ## <a name="overrides"></a>Geçersiz Kılmalar
 Bir *geçersiz kılma* , izleyicinin bir veya daha fazla özelliğini değiştirir. Örneğin, bir geçersiz kılma varsayılan olarak etkinleştirilen bir izleyiciyi devre dışı bırakabilir, izleyici için uyarı ölçütlerini tanımlayabilir veya izleyicinin kritik eşiğini değiştirebilir. 
 
-Geçersiz kılmalar bir [veri toplama kuralında (DCR)](../platform/data-collection-rule-overview.md)tanımlanır. Farklı geçersiz kılmalar kümesiyle birden çok DTU oluşturabilir ve bunları birden çok sanal makineye uygulayabilirsiniz. [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](../platform/data-collection-rule-azure-monitor-agent.md#dcr-associations)bölümünde açıklandığı gibi bir ilişki oluşturarak sanal MAKINEYE bir DCR uygularsınız.
+Geçersiz kılmalar bir [veri toplama kuralında (DCR)](../platform/data-collection-rule-overview.md)tanımlanır. Farklı geçersiz kılmalar kümesiyle birden çok DTU oluşturabilir ve bunları birden çok sanal makineye uygulayabilirsiniz. [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](../platform/data-collection-rule-azure-monitor-agent.md#data-collection-rule-associations)bölümünde açıklandığı gibi bir ilişki oluşturarak sanal MAKINEYE bir DCR uygularsınız.
 
 
 ## <a name="multiple-overrides"></a>Birden çok geçersiz kılma

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95139c862b82a85dbf7f50aef021ad71c5c8210f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: cffa6b1200b7236b3c0a3e48b50c58275cf4c57b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629453"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95316629"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -24,7 +24,7 @@ Bu nasıl yapılır Kılavuzu ' nu okumadan önce [Azure dosya eşitleme ağ kon
 ## <a name="overview"></a>Genel Bakış
 Azure Dosya Eşitleme, Windows sunucunuz, Azure dosya paylaşımınız ve diğer birçok Azure hizmeti arasında, eşitleme grubunuzda açıklandığı gibi verileri eşitlemek için bir Orchestration hizmeti görevi görür. Azure Dosya Eşitleme düzgün şekilde çalışması için sunucularınızı aşağıdaki Azure hizmetleriyle iletişim kuracak şekilde yapılandırmanız gerekecektir:
 
-- Azure Depolama
+- Azure Storage
 - Azure Dosya Eşitleme
 - Azure Resource Manager
 - Kimlik doğrulama hizmetleri
@@ -100,6 +100,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | **Azure Depolama** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Sunucu bir dosyayı indirdiğinde, sunucu bu veri hareketini depolama hesabındaki Azure dosya paylaşımından doğrudan görüşüp daha verimli bir şekilde gerçekleştirir. Sunucuda yalnızca hedeflenen dosya paylaşımında erişime izin veren bir SAS anahtarı vardır. |
 | **Azure Dosya Eşitleme** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | İlk sunucu kaydından sonra, sunucu, bu bölgedeki Azure Dosya Eşitleme hizmet örneği için bölgesel bir URL alır. Sunucu, eşitlemesini işleme örneği ile doğrudan ve verimli bir şekilde iletişim kurmak için URL 'YI kullanabilir. |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Azure Dosya Eşitleme aracısı yüklendikten sonra, Azure Dosya Eşitleme hizmeti ve Azure dosya paylaşımıyla iletişim kurmak için gereken ara sertifikaları indirmek için PKI URL 'SI kullanılır. Bir sertifikanın durumunu denetlemek için OCSP URL 'SI kullanılır. |
+| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | Azure Dosya Eşitleme aracısı yüklendikten sonra, Microsoft Update URL 'Leri Azure Dosya Eşitleme Aracısı güncelleştirmelerini indirmek için kullanılır. |
 
 > [!Important]
 > . Afs.azure.net trafiğine izin verirken &ast; trafik yalnızca eşitleme hizmeti için mümkündür. Bu etki alanını kullanan başka bir Microsoft hizmeti yok.
@@ -116,7 +117,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | Genel | Brezilya Güney | https: \/ /brazilsouth01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-brazilsouth01.AFS.Azure.net |
 | Genel | Orta Kanada | https: \/ /canadacentral01.AFS.Azure.net<br>https: \/ /Kailani-CAC.One.Microsoft.com | Doğu Kanada | https: \/ /TM-canadacentral01.AFS.Azure.net<br>https: \/ /TM-Kailani-CAC.One.Microsoft.com |
 | Genel | Doğu Kanada | https: \/ /canadaeast01.AFS.Azure.net<br>https: \/ /Kailani-CAE.One.Microsoft.com | Orta Kanada | https: \/ /TM-canadaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani.CAE.One.Microsoft.com |
-| Genel | Central India | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.Microsoft.com | Güney Hindistan | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.Microsoft.com |
+| Genel | Orta Hindistan | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.Microsoft.com | Güney Hindistan | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.Microsoft.com |
 | Genel | Central US | https: \/ /centralus01.AFS.Azure.net<br>https: \/ /Kailani-cus.One.Microsoft.com | Doğu ABD 2 | https: \/ /TM-centralus01.AFS.Azure.net<br>https: \/ /TM-Kailani-cus.One.Microsoft.com |
 | Genel | Doğu Asya | https: \/ /eastasia01.AFS.Azure.net<br>https: \/ /kailani11.One.Microsoft.com | Güneydoğu Asya | https: \/ /TM-eastasia01.AFS.Azure.net<br>https: \/ /TM-kailani11.One.Microsoft.com |
 | Genel | Doğu ABD | https: \/ /eastus01.AFS.Azure.net<br>https: \/ /kailani1.One.Microsoft.com | Batı ABD | https: \/ /TM-eastus01.AFS.Azure.net<br>https: \/ /TM-kailani1.One.Microsoft.com |
@@ -130,7 +131,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | Genel | Orta Kuzey ABD | https: \/ /northcentralus01.AFS.Azure.net | Orta Güney ABD | https: \/ /TM-northcentralus01.AFS.Azure.net |
 | Genel | Kuzey Avrupa | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.Microsoft.com | West Europe | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.Microsoft.com |
 | Genel | Orta Güney ABD | https: \/ /southcentralus01.AFS.Azure.net | Orta Kuzey ABD | https: \/ /TM-southcentralus01.AFS.Azure.net |
-| Genel | Güney Hindistan | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Central India | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
+| Genel | Güney Hindistan | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Orta Hindistan | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
 | Genel | Güneydoğu Asya | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.Microsoft.com | Doğu Asya | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.Microsoft.com |
 | Genel | Güney Birleşik Krallık | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKS.One.Microsoft.com | Batı Birleşik Krallık | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKS.One.Microsoft.com |
 | Genel | Batı Birleşik Krallık | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-UKW.One.Microsoft.com | Güney Birleşik Krallık | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKW.One.Microsoft.com |

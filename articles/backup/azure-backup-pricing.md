@@ -42,7 +42,7 @@ Azure Backup ile Azure VM'lerini veya şirket içi sunucuları yedekleme maliyet
 
   - Veri değişim sıklığının artması, yedeklenecek verilerin de artacağı anlamına gelir
 
-  - Dosya sunucuları için **Düşük** veya **Orta** , veritabanları için ise **Yüksek** seçeneğini belirleyin
+  - Dosya sunucuları için **Düşük** veya **Orta**, veritabanları için ise **Yüksek** seçeneğini belirleyin
 
   - **Veri değişim sıklığı yüzdesini** biliyorsanız **Kendi yüzde değerinizi girin** seçeneğini kullanabilirsiniz
 
@@ -60,17 +60,17 @@ Azure Backup ile Azure VM'lerini veya şirket içi sunucuları yedekleme maliyet
 
     - Bu seçenek, disklerde depolanan anlık görüntüleri kullanarak son yedi güne ait verileri hızlı bir şekilde geri yüklemenizi sağlar.
 
-- **İsteğe bağlı** : Seçmeli Disk Yedeklemesi
+- **İsteğe bağlı**: Seçmeli Disk Yedeklemesi
 
   - Azure VM'lerini yedeklerken **Seçmeli Disk Yedeklemesi** seçeneğini kullanıyorsanız **Diski Hariç Tut** seçeneğini belirleyerek yedeklemeden hariç tutulan disklerin boyuta göre yüzdesini girin. Örneğin her birinde 200 GB kullanılan alan bulunan üç diske bağlı bir VM varsa ve bu disklerin ikisini yedeklemeden hariç tutmak istiyorsanız %66,7 yazın.
 
-- **İsteğe bağlı** : Yedekleme Alanı Yedekliliği
+- **İsteğe bağlı**: Yedekleme Alanı Yedekliliği
 
-  - Bu değer, yedekleme verilerinizin gönderildiği Depolama Hesabının yedeklilik durumunu belirtir. En yüksek kullanılabilirlik için **GRS** 'yi seçmeniz önerilir. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını sağlayan bu seçenek, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde yedeklemeye ihtiyaç duymayan geliştirme veya test ortamlarını yedekliyorsanız yedeklilik ayarını **LRS** olarak değiştirebilirsiniz. Yedekleriniz için [Bölgeler Arası Geri Yükleme](backup-azure-arm-restore-vms.md#cross-region-restore) etkinleştirildiğinde karşılaşacağınız maliyetleri anlamak istiyorsanız sayfadaki **RAGRS** seçeneğini belirleyin.
+  - Bu değer, yedekleme verilerinizin gönderildiği Depolama Hesabının yedeklilik durumunu belirtir. En yüksek kullanılabilirlik için **GRS**'yi seçmeniz önerilir. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını sağlayan bu seçenek, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde yedeklemeye ihtiyaç duymayan geliştirme veya test ortamlarını yedekliyorsanız yedeklilik ayarını **LRS** olarak değiştirebilirsiniz. Yedekleriniz için [Bölgeler Arası Geri Yükleme](backup-azure-arm-restore-vms.md#cross-region-restore) etkinleştirildiğinde karşılaşacağınız maliyetleri anlamak istiyorsanız sayfadaki **RAGRS** seçeneğini belirleyin.
 
-- **İsteğe bağlı** : Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın
+- **İsteğe bağlı**: Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın
 
-  - Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet** 'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
+  - Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet**'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
 
 ## <a name="estimate-costs-for-backing-up-sql-servers-in-azure-vms"></a>Azure VM'lerindeki SQL sunucularını yedeklemek için tahmini maliyetleri hesaplama
 
@@ -114,13 +114,13 @@ Azure Backup ile Azure VM'lerinde çalışan SQL sunucularını yedekleme maliye
 
   - "Yıllık" yedekleri ne kadar süreyle bekletmek istiyorsunuz? (yıl)
 
-- **İsteğe bağlı** : Yedekleme Alanı Yedekliliği
+- **İsteğe bağlı**: Yedekleme Alanı Yedekliliği
 
-  - Bu değer, yedekleme verilerinizin gönderildiği Depolama Hesabının yedeklilik durumunu belirtir. En yüksek kullanılabilirlik için **GRS** 'yi seçmeniz önerilir. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını sağlayan bu seçenek, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde yedeklemeye ihtiyaç duymayan geliştirme veya test ortamlarını yedekliyorsanız yedeklilik ayarını **LRS** olarak değiştirebilirsiniz.
+  - Bu değer, yedekleme verilerinizin gönderildiği Depolama Hesabının yedeklilik durumunu belirtir. En yüksek kullanılabilirlik için **GRS**'yi seçmeniz önerilir. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını sağlayan bu seçenek, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde yedeklemeye ihtiyaç duymayan geliştirme veya test ortamlarını yedekliyorsanız yedeklilik ayarını **LRS** olarak değiştirebilirsiniz.
 
-- **İsteğe bağlı** : Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın
+- **İsteğe bağlı**: Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın
 
-  - Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet** 'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
+  - Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet**'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
 
 ## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Azure VM'lerindeki SAP HANA sunucularını yedeklemek için tahmini maliyetleri hesaplama
 
@@ -144,25 +144,25 @@ Azure Backup ile Azure VM'lerinde çalışan SAP HANA sunucularını yedekleme m
   - "Haftalık" yedekleri ne kadar süreyle bekletmek istiyorsunuz? (hafta)
   - "Aylık" yedekleri ne kadar süreyle bekletmek istiyorsunuz? (ay)
   - "Yıllık" yedekleri ne kadar süreyle bekletmek istiyorsunuz? (yıl)
-- **İsteğe bağlı** : Yedekleme Alanı Yedekliliği
+- **İsteğe bağlı**: Yedekleme Alanı Yedekliliği
   
-  - Bu değer, yedekleme verilerinizin gönderildiği Depolama Hesabının yedeklilik durumunu belirtir. En yüksek kullanılabilirlik için **GRS** 'yi seçmeniz önerilir. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını sağlayan bu seçenek, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde yedeklemeye ihtiyaç duymayan geliştirme veya test ortamlarını yedekliyorsanız yedeklilik ayarını **LRS** olarak değiştirebilirsiniz.
-- **İsteğe bağlı** : Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın
+  - Bu değer, yedekleme verilerinizin gönderildiği Depolama Hesabının yedeklilik durumunu belirtir. En yüksek kullanılabilirlik için **GRS**'yi seçmeniz önerilir. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını sağlayan bu seçenek, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde yedeklemeye ihtiyaç duymayan geliştirme veya test ortamlarını yedekliyorsanız yedeklilik ayarını **LRS** olarak değiştirebilirsiniz.
+- **İsteğe bağlı**: Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın
   
-  - Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet** 'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
+  - Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet**'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
   
 ## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklemek için tahmini maliyetleri hesaplama
 
 Azure Backup tarafından sunulan [anlık görüntü tabanlı yedekleme çözümünü](azure-file-share-backup-overview.md) kullanarak Azure dosya paylaşımlarını yedeklemek için tahmini maliyetlerini hesaplamak isterseniz aşağıdaki parametreleri kullanmanız gerekir:
 
-- Yedeklemek istediğiniz dosya paylaşımlarının boyutu ( **GB** ).
+- Yedeklemek istediğiniz dosya paylaşımlarının boyutu (**GB**).
 
 - Birden çok depolama hesabında bulunan dosya paylaşımlarını yedeklemek istiyorsanız yukarıdaki dosya boyutuna sahip olan dosya paylaşımlarını barındıran depolama hesabı sayısını belirtin.
 
 - Yedeklemek istediğiniz dosya paylaşımlarındaki beklenen veri değişim sıklığı. <br>Değişim sıklığı, verilerdeki değişiklik miktarını belirtir ve anlık görüntü depolama boyutunu doğrudan etkiler. Örneğin bir dosya paylaşımında yedeklenecek 200 GB veri varsa ve her gün 10 GB değişiklik yapılıyorsa günlük veri değişim sıklığı %5 olur.
   - Veri değişim sıklığının yüksek olması, dosya paylaşımının içeriğindeki günlük veri değişikliği miktarının yüksek olduğunu belirtir ve bu durumda değişiklik anlık görüntüsü (yalnızca veri değişikliklerini yakalar) boyutu daha yüksek olacaktır.
   - Dosya paylaşımınızın özelliklerine ve kullanım durumuna göre Düşük (%1), Orta (%3) veya Yüksek (%5) seçeneklerinden birini belirleyin.
-  - Dosya paylaşımınızın **Veri değişim sıklığı yüzdesini** biliyorsanız açılan menüden **Kendi yüzde değerinizi girin** 'i seçebilirsiniz. Günlük, haftalık, aylık ve yıllık veri değişim sıklığı değerlerini (% olarak) belirtin.
+  - Dosya paylaşımınızın **Veri değişim sıklığı yüzdesini** biliyorsanız açılan menüden **Kendi yüzde değerinizi girin**'i seçebilirsiniz. Günlük, haftalık, aylık ve yıllık veri değişim sıklığı değerlerini (% olarak) belirtin.
 
 - Yedeklenen dosya paylaşımını barındıran depolama hesabının türü (standart veya premium) ve depolama yedekliliği ayarı. <br>Azure dosya paylaşımlarına yönelik mevcut yedekleme çözümünde anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır. Dolayısıyla anlık görüntüler için geçerli depolama ücretleri, yedeklenen dosya paylaşımı ile anlık görüntüleri barındıran depolama hesabının türüne ve yedeklilik ayarına göre belirlenen anlık görüntü fiyatlandırması üzerinden Azure Dosyalar faturanıza eklenir.
 
@@ -174,8 +174,8 @@ Azure Backup tarafından sunulan [anlık görüntü tabanlı yedekleme çözüm�
 
   Her bir kategoride desteklenen maksimum bekletme değerleri için [Azure dosya paylaşımı destek tablosuna](azure-file-share-support-matrix.md#retention-limits) bakın.
 
-- **İsteğe bağlı** : Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın.
-  - Tahmin aracında GB başına anlık görüntü depolama maliyeti ile korumalı örnek maliyeti için belirtilen varsayılan değerler, Doğu ABD bölgesine aittir. Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet** 'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
+- **İsteğe bağlı**: Bölgeye özgü fiyatlandırmayı değiştirin veya indirimli fiyatları uygulayın.
+  - Tahmin aracında GB başına anlık görüntü depolama maliyeti ile korumalı örnek maliyeti için belirtilen varsayılan değerler, Doğu ABD bölgesine aittir. Farklı bir bölge için veya indirimli fiyatlar üzerinden maliyet tahmininde bulunmak isterseniz **Farklı bir bölge için tahminde bulunmayı denemek ister misiniz?** seçeneğinde **Evet**'i seçin ve tahminleri çalıştırmak istediğiniz fiyatları girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

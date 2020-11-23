@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919700"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315592"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -54,7 +54,7 @@ Azure Izleyici aracısının genel önizlemesi sırasında aşağıdaki sınırl
 
 - Azure Izleyici Aracısı, VM'ler için Azure İzleyici ve Azure Güvenlik Merkezi gibi çözümleri ve öngörüleri desteklemez. Şu anda desteklenen tek senaryo, yapılandırdığınız veri toplama kurallarını kullanarak veri topluyor. 
 - Veri toplama kurallarının, hedef olarak kullanılan Log Analytics çalışma alanıyla aynı bölgede oluşturulması gerekir.
-- Şu anda yalnızca Azure sanal makineleri desteklenmektedir. Şirket içi sanal makineler, sanal makine ölçek kümeleri, sunucular için yay, Azure Kubernetes hizmeti ve diğer işlem kaynağı türleri şu anda desteklenmemektedir.
+- Azure sanal makineleri ve Azure yay özellikli sunucular Şu anda desteklenmektedir. Sanal Makine Ölçek Kümeleri, Azure Kubernetes hizmeti ve diğer bilgi işlem kaynağı türleri şu anda desteklenmemektedir.
 - Sanal makinenin aşağıdaki HTTPS uç noktalarına erişimi olmalıdır:
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -94,50 +94,8 @@ Azure Izleyici Aracısı herhangi bir anahtar gerektirmez, bunun yerine [sistem 
 ## <a name="networking"></a>Ağ
 Azure Izleyici Aracısı, Azure hizmet etiketlerini (AzureMonitor ve AzureResourceManager etiketleri gerekir) destekler, ancak henüz Azure Izleyici özel bağlantı kapsamları veya doğrudan proxy 'ler ile çalışmaz.
 
-## <a name="install-the-azure-monitor-agent"></a>Azure Izleyici aracısını yükler
-Azure Izleyici Aracısı, aşağıdaki tablodaki ayrıntılarla bir [Azure VM Uzantısı](../../virtual-machines/extensions/overview.md) olarak uygulanır. 
-
-| Özellik | Windows | Linux |
-|:---|:---|:---|
-| Publisher | Microsoft. Azure. Monitor  | Microsoft. Azure. Monitor |
-| Tür      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1,0 | 1,5 |
-
-PowerShell veya CLı kullanarak aşağıdakini içeren sanal makine aracılarını yüklemek için yöntemlerden birini kullanarak Azure Izleyici aracısını yükler. Alternatif olarak, [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)bölümünde açıklanan yordamla portalı kullanarak Azure aboneliğinizdeki sanal makinelerde aracı yükleyebilir ve veri toplamayı yapılandırabilirsiniz.
-
-### <a name="windows"></a>Windows
-
-# <a name="cli"></a>[CLI](#tab/CLI1)
-
-```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
-
-```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
-```
----
-
-
-### <a name="linux"></a>Linux
-
-# <a name="cli"></a>[CLI](#tab/CLI2)
-
-```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
-
-```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
-```
----
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Windows ve Linux sanal makinelerine [Azure izleyici Aracısı 'Nı yükler](azure-monitor-agent-install.md) .
 - Aracıdan veri toplamak ve Azure Izleyici 'ye göndermek için [bir veri toplama kuralı oluşturun](data-collection-rule-azure-monitor-agent.md) .

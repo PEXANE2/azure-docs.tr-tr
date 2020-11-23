@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107972"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315541"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Izleyici 'de veri toplama kuralları (Önizleme)
 Veri toplama kuralları (DCR), Azure Izleyici 'ye gelen verileri tanımlar ve verilerin nereye gönderileceğini veya depolanacağını belirtir. Bu makalede, içerik ve yapısı ve bunlarla nasıl oluşturabileceğiniz ve bunlarla çalışma gibi veri toplama kurallarına genel bir bakış sunulmaktadır.
@@ -49,19 +49,7 @@ Her veri kaynağının bir veri kaynağı türü vardır. Her tür, her veri kay
 
 
 ## <a name="limits"></a>Sınırlar
-Aşağıdaki tabloda, her bir veri toplama kuralı için geçerli olan sınırlar listelenmektedir.
-
-| Sınır | Değer |
-|:---|:---|
-| Maksimum veri kaynağı sayısı | 10 |
-| Performans sayacında en fazla sayaç tanımlayıcısı sayısı | 100 |
-| Syslog 'da maksimum tesis adı sayısı | 20 |
-| Olay günlüğündeki en fazla XPath sorgusu sayısı | 100 |
-| Maksimum veri akışı sayısı | 10 |
-| En fazla veri akışı sayısı | 10 |
-| En fazla uzantı sayısı | 10 |
-| Uzantı ayarlarının en büyük boyutu | 32 KB |
-| Maksimum Log Analytics çalışma alanı sayısı | 10 |
+Her veri toplama kuralına uygulanan sınırlar için bkz. [Azure izleyici hizmet limitleri](../service-limits.md#data-collection-rules).
 
 
 ## <a name="create-a-dcr"></a>DCR oluşturma

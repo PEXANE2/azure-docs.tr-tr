@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2020
+ms.date: 11/21/2020
 ms.author: memildin
-ms.openlocfilehash: 79dcc645ecff00b3189dc90dcf34e042a78ed318
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949335"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95320984"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -39,6 +39,8 @@ Kasım 'daki güncelleştirmeler şunlardır:
 - [NıST SP 800 171 R2, güvenlik merkezi 'nin mevzuat uyumluluk panosuna eklendi](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [Öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)
 - [Otomatik sağlama deneyimi geliştirildi ve genişletildi](#auto-provisioning-experience-improved-and-expanded)
+- [Güvenli puan, sürekli dışarı aktarma (Önizleme) ile kullanılabilir](#secure-score-is-now-available-in-continuous-export-preview)
+- ["Makinelerinizde sistem güncelleştirmeleri yüklenmelidir" önerisi artık alt öneriler içeriyor](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir
 
@@ -103,6 +105,41 @@ Artık otomatik sağlamayı yapılandırabilirsiniz:
 - Yeni Microsoft bağımlılık Aracısı
 
 [Azure Güvenlik Merkezi 'Nden otomatik sağlama aracıları ve uzantıları](security-center-enable-data-collection.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>Güvenli puan, sürekli dışarı aktarma (Önizleme) ile kullanılabilir
+
+Güvenli puanı sürekli dışa aktarma ile Azure Event Hubs veya bir Log Analytics çalışma alanına gerçek zamanlı olarak yaptığınız değişiklikleri yazabilirsiniz. Bu özelliği şu şekilde kullanın:
+
+- Dinamik raporlarla zaman içindeki güvenli puanınızı izleyin
+- güvenli Puanlama verilerini Azure Sentinel 'e (veya başka bir SıEM) aktarma
+- Bu verileri, kuruluşunuzda güvenli puanı izlemek için zaten kullanmakta olabileceğiniz işlemlerle tümleştirin
+
+[Güvenlik Merkezi verilerinin sürekli olarak nasıl dışarı aktarılacağı](continuous-export.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>"Makinelerinizde sistem güncelleştirmeleri yüklenmelidir" önerisi artık alt öneriler içeriyor
+
+**Sistem güncelleştirmelerinin, makinelerinizde yüklü olması** önerilir. Yeni sürüm, eksik olan her güncelleştirme için alt öneriler içerir ve aşağıdaki geliştirmeleri getirir:
+
+- Azure portal Azure Güvenlik Merkezi sayfalarında yeniden tasarlanan bir deneyim. **Makinelerinizde sistem güncelleştirmeleri** için öneri ayrıntıları sayfası, aşağıda gösterildiği gibi bulguları listesini içerir. Tek bir bulma seçtiğinizde, Ayrıntılar bölmesi düzeltme bilgilerinin bağlantısını ve etkilenen kaynakların listesini açar.
+
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="Güncelleştirilmiş öneri için Portal deneyimindeki alt önerilerden birini açma":::
+
+- Azure Kaynak grafiğinden (ARG) öneri için verileri zenginleştirir. Bağımsız değişken, verimli kaynak araştırması sağlamak için tasarlanan bir Azure hizmetidir. Ortamınızı etkin bir şekilde yönetebilmeniz için, belirli bir abonelik kümesi genelinde ölçeği sorgulamak için bağımsız değişkeni kullanabilirsiniz. 
+
+    Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz.
+
+    Daha önce, bu öneriyi bağımsız değişken ' de sorguladıysanız, yalnızca bir makinenin bir makinede düzeltilme ihtiyacı vardır. Aşağıdaki gelişmiş sürümü sorgusu, tüm eksik sistem güncelleştirmelerini makineye göre gruplanmış olarak döndürür.
+
+    ```kusto
+    securityresources
+    | where type =~ "microsoft.security/assessments/subassessments"
+    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+    | where properties.status.code == "Unhealthy"
+    ```
+
+
 
 ## <a name="october-2020"></a>Ekim 2020
 

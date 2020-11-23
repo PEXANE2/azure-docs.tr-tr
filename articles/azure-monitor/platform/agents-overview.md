@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/20/2020
-ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 11/21/2020
+ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312423"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95323227"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Izleyici aracılarına genel bakış
 
@@ -32,22 +32,22 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 
 ### <a name="windows-agents"></a>Windows aracıları
 
-| | Azure Izleyici Aracısı (Önizleme) | Tanılama<br>Uzantı (WAD) | Log Analytics<br>aracı | Bağımlılık<br>aracı |
+| | Azure Izleyici Aracısı (Önizleme) | Tanılamalar<br>Uzantı (WAD) | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|:---|
-| **Desteklenen ortamlar** | Azure | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
+| **Desteklenen ortamlar** | Azure<br>Diğer bulut (Azure ARC)<br>Şirket içi (Azure ARC)  | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | 
 | **Aracı gereksinimleri**  | Yok | Yok | Yok | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Olay Günlükleri<br>Performans | Olay Günlükleri<br>ETW olayları<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>.NET uygulama günlükleri<br>Kilitlenme bilgi dökümleri<br>Aracı tanılama günlükleri | Olay Günlükleri<br>Performans<br>Dosya tabanlı Günlükler<br>IIS günlükleri<br>Öngörüler ve çözümler<br>Diğer hizmetler | İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Depolama<br>Azure Izleyici ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure İzleyici Ölçümleri | Azure Storage<br>Azure İzleyici Ölçümleri<br>Olay Hub'ı | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
 | **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | Ölçüm gezgini | VM'ler için Azure İzleyici<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM'ler için Azure İzleyici<br>Hizmet Eşlemesi |
 
 ### <a name="linux-agents"></a>Linux aracıları
 
-| | Azure Izleyici Aracısı (Önizleme) | Tanılama<br>Uzantı (LAD) | Telegraf<br>aracı | Log Analytics<br>aracı | Bağımlılık<br>aracı |
+| | Azure Izleyici Aracısı (Önizleme) | Tanılamalar<br>Uzantı (LAD) | Telegraf<br>aracı | Log Analytics<br>aracı | Bağımlılık<br>aracı |
 |:---|:---|:---|:---|:---|:---|
-| **Desteklenen ortamlar** | Azure | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
+| **Desteklenen ortamlar** | Azure<br>Diğer bulut (Azure ARC)<br>Şirket içi (yay yay) | Azure | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi | Azure<br>Diğer bulut<br>Şirket içi |
 | **Aracı gereksinimleri**  | Yok | Yok | Yok | Yok | Log Analytics Aracısı gerektirir |
 | **Toplanan veriler** | Syslog<br>Performans | Syslog<br>Performans | Performans | Syslog<br>Performans| İşlem bağımlılıkları<br>Ağ bağlantısı ölçümleri |
-| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure Izleyici ölçümleri | Azure Depolama<br>Olay Hub'ı | Azure Izleyici ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
+| **Gönderilen veriler** | Azure İzleyici Günlükleri<br>Azure İzleyici Ölçümleri | Azure Storage<br>Olay Hub'ı | Azure İzleyici Ölçümleri | Azure İzleyici Günlükleri | Azure İzleyici Günlükleri<br>(Log Analytics Aracısı aracılığıyla) |
 | **Hizmetler ve**<br>**özelliklerinde**<br>**Destek** | Log Analytics<br>Ölçüm gezgini | | Ölçüm gezgini | VM'ler için Azure İzleyici<br>Log Analytics<br>Azure Otomasyonu<br>Azure Güvenlik Merkezi<br>Azure Sentinel | VM'ler için Azure İzleyici<br>Hizmet Eşlemesi |
 
 
@@ -56,7 +56,7 @@ Aşağıdaki tablolarda, Windows ve Linux için Azure Izleyici aracılarıyla il
 
 Şunları yapmanız gerekirse Azure Izleyici aracısını kullanın:
 
-- Azure 'da, diğer bulutlarda veya Şirket içindeki herhangi bir sanal makineden Konuk günlükleri ve ölçümleri toplayın. (Azure yalnızca önizlemededir.)
+- Azure 'da, diğer bulutlarda veya Şirket içindeki herhangi bir sanal makineden Konuk günlükleri ve ölçümleri toplayın. (Azure 'un dışındaki sanal makineler için Azure Arc gerekir.) 
 - Azure izleyici günlüklerine veri gönderme ve Azure izleyici ile analiz için Azure izleyici ölçümleri. 
 - Arşivlenmek üzere verileri Azure depolama 'ya gönderin.
 - [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md)kullanarak üçüncü taraf araçlara veri gönderme.
@@ -179,7 +179,7 @@ Aşağıdaki tablolarda, Azure Izleyici aracıları tarafından desteklenen işl
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
 | Ubuntu 20,04 LTS                                         |   | X |   |   |
-| Ubuntu 18,04 LTS                                         | X | X | X | X |
+| Ubuntu 18.04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
 | Ubuntu 14,04 LTS                                         |   | X |   | X |
 
@@ -196,7 +196,7 @@ Bağımlılık Aracısı çekirdek düzeyinde çalıştığından, destek de çe
 |                    | 6,9     | 2.6.32-696  |
 | CentOSPlus         | 6,10    | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
 |                    | 6,9     | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-| Ubuntu Server      | 18,04   | 5.3.0-1020<br>5,0 (Azure tarafından ayarlanmış çekirdek dahil)<br>4,18* <br> 4,15* |
+| Ubuntu Server      | 18,04   | 5.3.0-1020<br>5,0 (Azure tarafından ayarlanmış çekirdek dahil)<br>4,18 *<br> 4,15* |
 |                    | 16.04.3 | 4,15. * |
 |                    | 16,04   | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
 | SUSE Linux 12 Enterprise Server | 12 SP4 | 4,12. * (Azure tarafından ayarlanmış çekirdek dahil) |

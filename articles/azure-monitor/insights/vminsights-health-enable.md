@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 6033ca5b0eaf6845d14407832c776dd8e006226b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687150"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318142"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Konuk sistem durumunu VM'ler için Azure İzleyici etkinleştirme (Önizleme)
 VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, aboneliğinizde bu özelliğin nasıl etkinleştirileceği ve her sanal makine için konuk izlemenin nasıl etkinleştirileceği açıklanır.
@@ -24,12 +24,18 @@ VM'ler için Azure İzleyici Konuk sistem durumu, genel önizlemede aşağıdaki
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 veya üzeri
 - Sanal makinenin aşağıdaki bölgelerden birinde bulunması gerekir:
+  - Doğu Avustralya
   - Avustralya Güneydoğu
+  - Orta Hindistan
   - Central US
   - Doğu ABD
   - Doğu ABD 2
   - EUAP Doğu ABD 2
+  - Almanya Orta Batı
+  - Doğu Japonya
+  - Orta Kuzey ABD
   - Kuzey Avrupa
+  - Orta Güney ABD
   - Güneydoğu Asya
   - Güney Birleşik Krallık
   - West Europe
@@ -40,7 +46,7 @@ VM'ler için Azure İzleyici Konuk sistem durumu, genel önizlemede aşağıdaki
   - EUAP Doğu ABD 2
   - Batı Avrupa Bölgesi
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Sanal makinenin VM'ler için Azure İzleyici için eklendi olması gerekir.
 - Ekleme adımlarının yürütüldüğü kullanıcının, sanal makine ve veri toplama kuralının bulunduğu aboneliğe en az katkıda bulunan düzeyinde erişimi olmalıdır.
