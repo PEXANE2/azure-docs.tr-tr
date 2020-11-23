@@ -945,6 +945,8 @@
               href: oracle-migrate-cosmos-db-blitzz.md
             - name: Geçirme - Blitzz kullanarak Apache Cassandra'dan Cassandra API'ye
               href: cassandra-migrate-cosmos-db-blitzz.md
+            - name: Geçirme - Databricks kullanarak Apache Cassandra'dan Cassandra API'ye
+              href: cassandra-migrate-cosmos-db-databricks.md
         - name: Akışı değiştirme
           href: cassandra-change-feed.md
         - name: Kapsayıcı oluşturma - Cassandra API

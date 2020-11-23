@@ -191,6 +191,8 @@
           href: use-managed-identities-environments.md
         - name: Ortamlar için güvenlik uyarıları
           href: environment-security-alerts.md
+        - name: Uygulama merkezli ortam oluşturma
+          href: create-application-centric-environment.md
     - name: Yeniden kullanılabilir şablonları yönetme
       items:
         - name: Özel görüntülerle formülleri karşılaştırma

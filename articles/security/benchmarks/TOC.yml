@@ -81,6 +81,8 @@
       href: /azure/data-explorer/security-baseline
     - name: Azure Data Factory güvenlik temeli
       href: ../../data-factory/security-baseline.md
+    - name: Azure Veri Paylaşımı güvenlik temeli
+      href: ../../data-share/security-baseline.md
     - name: MySQL için Azure Veritabanı güvenlik temeli
       href: ../../mysql/security-baseline.md
     - name: MariaDB için Azure Veritabanı güvenlik temeli
@@ -91,6 +93,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks güvenlik temeli
       href: /azure/databricks/scenarios/security-baseline
+    - name: IoT için Azure Defender güvenlik temeli
+      href: ../../defender-for-iot/security-baseline.md
     - name: Azure DNS güvenlik temeli
       href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs güvenlik temeli
@@ -101,18 +105,24 @@
       href: ../../frontdoor/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
       href: ../../azure-functions/security-baseline.md
+    - name: Azure HPC Önbelleği güvenlik temeli
+      href: ../../hpc-cache/security-baseline.md
     - name: Azure Information Protection güvenlik temeli
       href: /azure/information-protection/security-baseline
     - name: Azure IoT Hub güvenlik temeli
       href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes Service güvenlik temeli
       href: ../../aks/security-baseline.md
+    - name: Azure Lighthouse güvenlik temeli
+      href: ../../lighthouse/security-baseline.md
     - name: Azure Load Balancer güvenlik temeli
       href: ../../load-balancer/security-baseline.md
     - name: Azure İzleyici güvenlik temeli
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning güvenlik temeli
       href: ../../machine-learning/security-baseline.md
+    - name: Azure Geçişi Öğrenme güvenlik temeli
+      href: ../../migrate/security-baseline.md
     - name: Azure İlkesi güvenlik temeli
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Özel Bağlantı güvenlik temeli
