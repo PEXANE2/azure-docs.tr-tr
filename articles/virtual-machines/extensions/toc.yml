@@ -79,7 +79,7 @@
     - name: Azure İzleyici
       items:
         - name: Azure İzleyici aracısı
-          href: ../../azure-monitor/platform/azure-monitor-agent-overview.md?#install-the-azure-monitor-agent
+          href: ../../azure-monitor/platform/azure-monitor-agent-install.md
         - name: Tanılama uzantısı
           items:
             - name: Linux
