@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b3ea370a686e272a1d8ea201dd953fc09c1098ee
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: de25aafcfefee195e8d674c60ebdbaf79cb1ae10
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628195"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95406912"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -36,7 +36,7 @@ GitHub 'daki örneklere da katkıda bulunabilirsiniz. Nasıl yapılacağını ö
 
 Bu örnekler, Microsoft Identity platform ile güvenliği sağlanmış tek sayfalı bir uygulamanın nasıl yazılacağını gösterir. Bu örnekler MSAL.js sahip olan türleri kullanır.
 
-| Platform | Açıklama | Bağlantı |
+| Platform | Description | Bağlantı |
 | -------- | --------------------- | -------- |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | SPA çağrıları Microsoft Graph |[JavaScript-graphapı-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) gösterilmektedir | SPA, kimlik doğrulama kod akışı kullanan Microsoft Graph çağırır/PKI CE |[JavaScript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
@@ -59,10 +59,12 @@ Aşağıdaki örneklerde, kullanıcıların oturum açmasını sağlayan Web uyg
 | ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | Geliştiricilerin Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ile tümleştirilmiş uygulamalarınızı Azure Active Directory (Azure AD) ile güvenli ve güvenli bir şekilde nasıl geçirebileceğinizi öğrenmek için [Azure AD uygulama geçişi PlayBook 'a AD FS](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) | |
 | ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET hızlı başlangıç](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openıdconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-Yönetici-kısıtlı-kapsamlar-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph-eğitim-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  | [MS-Identity-B2C-Java-Servlet-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [MS-Identity-Python-Flask-WebApp-kimlik doğrulaması](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | [Python Flask Web uygulaması](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) oturum açan kullanıcılar öğreticisi                   | [Python Flask Web uygulaması](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) oturum açan kullanıcılar ve çağrılar Graph öğreticisi |
 | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  | B2C ile [Python Flask Web uygulaması](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md) oturum açlar                    |  |
 | ![Bu görüntüde Ruby logosu gösterilmektedir](media/sample-v2-code/logo_ruby.png) |                   | [MSGraph-eğitim-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
+
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Masaüstü ve mobil ortak istemci uygulamaları
 
@@ -80,7 +82,7 @@ Aşağıdaki örneklerde, Microsoft Graph API 'sine veya bir kullanıcı adına 
 | Masaüstü (konsol)   | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png) | [Kullanıcı Adı/Parola](msal-authentication-flows.md#usernamepassword) |[MS-Identity-Python-Masaüstü](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
 | Mobil (Android, iOS, UWP)   | ![Bu görüntüde .NET/C# (Xamarin) logosu gösterilir](media/sample-v2-code/logo_xamarin.png) | [Yetkilendirme kodu](msal-authentication-flows.md#authorization-code) |[Xamarin-Native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
 | Mobil (iOS)       | ![Bu görüntüde iOS/amaç-C veya Swift gösterilmektedir](media/sample-v2-code/logo_iOS.png) | [Yetkilendirme kodu](msal-authentication-flows.md#authorization-code) |[iOS-Swift-ObjC-Native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [iOS-Native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
-| Masaüstü (macOS)       | macOS | [Yetkilendirme kodu](msal-authentication-flows.md#authorization-code) |[macOS-Swift-ObjC-Native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
+| Masaüstü (macOS)       | Mac OS | [Yetkilendirme kodu](msal-authentication-flows.md#authorization-code) |[macOS-Swift-ObjC-Native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
 | Mobil (Android-Java)   | ![Bu resimde Android logosu gösterilir](media/sample-v2-code/logo_Android.png) | [Yetkilendirme kodu](msal-authentication-flows.md#authorization-code) |  [Android-Java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
 | Mobil (Android-Kotlin)   | ![Bu resimde Android logosu gösterilir](media/sample-v2-code/logo_Android.png) | [Yetkilendirme kodu](msal-authentication-flows.md#authorization-code) |  [Android-Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
 
@@ -109,7 +111,7 @@ Aşağıdaki örnek, bir Web tarayıcısı olmadan cihazda çalışan ortak bir 
 
 Aşağıdaki örneklerde, uygulamanızın herhangi bir Azure Active Directory (Azure AD) kiracısından oturum açma işlemlerini kabul etmek üzere nasıl yapılandırılacağı gösterilmektedir. Uygulamanızı *çok kiracılı* olarak yapılandırmak, birçok kuruluşa bir **hizmet olarak yazılım** (SaaS) uygulaması sunabilmeniz anlamına gelir. böylece, kullanıcıların kendi hesabını kullanmaya gerek duyduktan sonra uygulamanızda oturum açabilmelerini sağlayabilirsiniz.
 
-| Platform | Açıklama | Bağlantı |
+| Platform | Description | Bağlantı |
 | -------- | --------------------- | -------- |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) gösterilmektedir | Çok kiracılı SPA çağrıları Graph API |[MS-Identity-JavaScript-angular-Spa-ASPNET-WebApi-Multitenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Bu görüntüde angular logosu ](media/sample-v2-code/logo_angular.png) [(msal-angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir | Çok kiracılı SPA, çok kiracılı özel Web API 'sini çağırır |[MS-Identity-JavaScript-angular-Spa-ASPNET-WebApi-Multitenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

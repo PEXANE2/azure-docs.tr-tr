@@ -839,9 +839,9 @@
             - name: Azure Event Hubs ve Azure Depolama
               href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
             - name: Spring Boot Başlatıcı’yı kullanma
-              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
             - name: Spring Data geliştirici kılavuzu
-              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
             - name: ODBC sürücüsü
               href: odbc-driver.md
     - name: Başvuru
@@ -958,7 +958,7 @@
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-cassandra.md
         - name: Mağaza ve Spring Verilerini yönetme
-          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: Cassandra ve Spark
           items:
             - name: Giriş
@@ -1094,7 +1094,7 @@
         - name: Sorgu performansı sorunlarını giderme
           href: mongodb-troubleshoot-query.md
         - name: Mağaza ve Spring Verilerini yönetme
-          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: MongoDB uzantı komutları
           href: mongodb-custom-commands.md
           displayName: custom commands
@@ -1175,7 +1175,7 @@
         - name: Graf verilerini görselleştirme
           href: graph-visualization.md
         - name: Mağaza ve Spring Verilerini yönetme
-          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: Resource Manager şablonlarını kullanarak yönetme
           href: templates-samples-gremlin.md
           displayName: ARM

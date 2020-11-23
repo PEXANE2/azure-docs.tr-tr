@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611104"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95406608"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
-Bu öğreticide Microsoft Identity platformunu kullanarak, uzun süreli ve etkileşimli olmayan bir işlemle Microsoft iş müşterilerinin verilerine nasıl erişebileceğinizi öğreneceksiniz. Örnek Daemon, bir erişim belirteci almak için [OAuth2 istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) kullanır. Arka plan programı daha sonra [Microsoft Graph](https://graph.microsoft.io) çağırmak ve kurumsal verilere erişmek için belirtecini kullanır.
+Bu öğreticide, Microsoft Graph API 'sini çağırmak için bir erişim belirteci almak üzere OAuth 2,0 istemci kimlik bilgilerini kullanmayı gösteren bir ASP.NET Daemon Web uygulaması indirip çalıştırırsınız.
+
+Bu öğreticide:
 
 > [!div class="checklist"]
 > * Bir Daemon uygulamasını Microsoft Identity platformu ile tümleştirme
@@ -98,9 +100,9 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>İstemci uygulamasını kaydetme (DotNet-Web-Daemon-v2)
 
 1. Geliştiriciler için Microsoft Identity platformunda [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-1. **Yeni kayıt**seçeneğini belirleyin.
+1. **Yeni kayıt** seçeneğini belirleyin.
 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
-   - **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin **DotNet-Web-Daemon-v2**yazın.
+   - **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin **DotNet-Web-Daemon-v2** yazın.
    - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
    - **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'lerini girin:
        - **https://localhost:44316/**
@@ -112,11 +114,11 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Sonra:
    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44316/Account/EndSession** .
    - **Gelişmiş ayarlar**  >  **örtük verme** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. Sonra:
 
-   1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli**anahtarı),
-   1. **1 yılda**, **2 yıl içinde**bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
+   1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli** anahtarı),
+   1. **1 yılda**, **2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
    1. **Ekle** düğmesini seçin.
    1. Anahtar değeri göründüğünde güvenli bir konuma kopyalayın ve kaydedin. Bu anahtar daha sonra Visual Studio 'da projeyi yapılandırmak için gereklidir. Bu bir kez daha gösterilmez veya başka yollarla alınabilir.
 1. Uygulama için sayfa listesinde, **API izinleri**' ni seçin. Sonra:
@@ -128,7 +130,7 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Örneği Azure AD kiracınızı kullanacak şekilde yapılandırın
 
-Aşağıdaki adımlarda, **ClientID** "uygulama kimliği" veya **AppID**ile aynıdır.
+Aşağıdaki adımlarda, **ClientID** "uygulama kimliği" veya **AppID** ile aynıdır.
 
 Projeleri yapılandırmak için Visual Studio 'da çözümü açın.
 
@@ -171,9 +173,9 @@ Bu örnek için ilgili kod aşağıdaki dosyalardır:
 ## <a name="re-create-the-sample-app"></a>Örnek uygulamayı yeniden oluşturma
 
 1. Visual Studio 'da yeni bir **visual C#** **ASP.NET Web uygulaması (.NET Framework)** projesi oluşturun.
-1. Sonraki ekranda, **MVC** proje şablonunu seçin. Daha sonra bir Web API denetleyicisi ekleyeceğiniz için **Web API 'si**için klasör ve çekirdek başvurular da ekleyin. Projenin seçili kimlik doğrulama modunu varsayılan: **kimlik doğrulaması yok**olarak bırakın.
+1. Sonraki ekranda, **MVC** proje şablonunu seçin. Daha sonra bir Web API denetleyicisi ekleyeceğiniz için **Web API 'si** için klasör ve çekirdek başvurular da ekleyin. Projenin seçili kimlik doğrulama modunu varsayılan: **kimlik doğrulaması yok** olarak bırakın.
 1. **Çözüm Gezgini** penceresinde projeyi seçin ve **F4** tuşunu seçin.
-1. Proje Özellikleri ' nde **SSL etkin** ' i **true**olarak ayarlayın. **SSL URL 'sindeki**bilgileri aklınızda edin. Azure portal bu uygulamanın kaydını yapılandırırken ihtiyacınız olacak.
+1. Proje Özellikleri ' nde **SSL etkin** ' i **true** olarak ayarlayın. **SSL URL 'sindeki** bilgileri aklınızda edin. Azure portal bu uygulamanın kaydını yapılandırırken ihtiyacınız olacak.
 1. Aşağıdaki ASP.NET OWIN ara yazılım NuGet paketlerini ekleyin:
    - Microsoft. Owin. Security. ActiveDirectory
    - Microsoft.Owin.Security.Cookies
@@ -182,19 +184,19 @@ Bu örnek için ilgili kod aşağıdaki dosyalardır:
    - Microsoft.Owin.Security.OpenIdConnect
    - Microsoft. Identity. Client
 1. **App_Start** klasöründe:
-   1. **Startup.auth.cs**adlı bir sınıf oluşturun.
-   1. Kaldırın **. ** Ad alanı adından App_Start.
+   1. **Startup.auth.cs** adlı bir sınıf oluşturun.
+   1. Kaldırın **.** Ad alanı adından App_Start.
    1. **Başlangıç** sınıfının kodunu, örnek uygulamanın aynı dosyasındaki kodla değiştirin.
    Tüm sınıf tanımını aldığınızdan emin olun. Tanım, **ortak sınıf başlatmasının** **genel kısmi sınıf başlatması** olarak değişir.
-1. **Startup.auth.cs**Içinde, Visual Studio IntelliSense tarafından önerilen **using** deyimlerini ekleyerek eksik başvuruları çözün.
+1. **Startup.auth.cs** Içinde, Visual Studio IntelliSense tarafından önerilen **using** deyimlerini ekleyerek eksik başvuruları çözün.
 1. Projeye sağ tıklayın, **Ekle**' yi ve ardından **sınıf**' ı seçin.
-1. Arama kutusuna **Owın**girin. **Owın başlangıç sınıfı** seçim olarak görünür. Bunu seçin ve sınıfı **Startup.cs**olarak adlandırın.
-1. **Startup.cs**' de, **Başlangıç** sınıfının kodunu örnek uygulamanın aynı dosyasındaki kodla değiştirin. Yine, tanımın **ortak sınıf başlatmasından** **genel kısmi sınıf başlatmaya**değiştiği unutulmamalıdır.
-1. **Modeller** klasöründe, **MsGraphUser.cs**adlı yeni bir sınıf ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
-1. **Accountcontroller**adlı yeni bir **MVC 5 denetleyici-boş** örnek ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
-1. **Usercontroller**adlı yeni bir **MVC 5 denetleyici-boş** örnek ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
-1. **Synccontroller**adlı yeni BIR **Web API 2 denetleyicisi (boş** örnek) ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
-1. Kullanıcı arabirimi için **Views\account** klasöründe, **grantpermissions**, **Index**ve **useruyuşmazlığını**adlı üç **boş (model olmadan) görüntüleme** örnekleri ekleyin. **Views\user** klasörüne bir adlandırılmış **Dizin** ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+1. Arama kutusuna **Owın** girin. **Owın başlangıç sınıfı** seçim olarak görünür. Bunu seçin ve sınıfı **Startup.cs** olarak adlandırın.
+1. **Startup.cs**' de, **Başlangıç** sınıfının kodunu örnek uygulamanın aynı dosyasındaki kodla değiştirin. Yine, tanımın **ortak sınıf başlatmasından** **genel kısmi sınıf başlatmaya** değiştiği unutulmamalıdır.
+1. **Modeller** klasöründe, **MsGraphUser.cs** adlı yeni bir sınıf ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+1. **Accountcontroller** adlı yeni bir **MVC 5 denetleyici-boş** örnek ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+1. **Usercontroller** adlı yeni bir **MVC 5 denetleyici-boş** örnek ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+1. **Synccontroller** adlı yeni BIR **Web API 2 denetleyicisi (boş** örnek) ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
+1. Kullanıcı arabirimi için **Views\account** klasöründe, **grantpermissions**, **Index** ve **useruyuşmazlığını** adlı üç **boş (model olmadan) görüntüleme** örnekleri ekleyin. **Views\user** klasörüne bir adlandırılmış **Dizin** ekleyin. Uygulamayı örnekteki aynı adlı dosyanın içeriğiyle değiştirin.
 1. **Paylaşılan \_ Layout. cshtml** ve **Home\ındex.cshtml** güncellerini, çeşitli görünümleri birbirine doğru şekilde bağlamak için güncelleştirin.
 
 ## <a name="deploy-the-sample-to-azure"></a>Örneği Azure 'a dağıtma
@@ -207,10 +209,10 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Bir Azure Web sitesinde DotNet-Web-Daemon-v2 oluşturma ve yayımlama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşeden **Kaynak oluştur**'u seçin.
-1. **Web**  >  **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net**olarak adlandırın.
-1. **Abonelik**, **kaynak grubu**ve **App Service planı ve konum**bilgilerini seçin. **Işletim sistemi** **Windows**ve **Yayımlama** **kodudur**.
+1. **Web**  >  **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net** olarak adlandırın.
+1. **Abonelik**, **kaynak grubu** ve **App Service planı ve konum** bilgilerini seçin. **Işletim sistemi** **Windows** ve **Yayımlama** **kodudur**.
 1. **Oluştur** ' u seçin ve App Service 'in oluşturulmasını bekleyin.
 1. **Dağıtım başarılı** bildirimini aldığınızda, yeni oluşturulan App Service 'e gitmek Için **Kaynağa Git** ' i seçin.
 1. Web sitesi oluşturulduktan sonra **panoyu panoda** bulun ve App Service 'In **genel bakış** ekranını açmak için seçin.
@@ -222,7 +224,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 1. **Yapılandır**'ı seçin.
 1. **Bağlantı** sekmesinde, hedef URL 'yi "https" kullanacak şekilde güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . **İleri**’yi seçin.
 1. **Ayarlar** sekmesinde, **Kurumsal kimlik doğrulamasını etkinleştir** ' in temizlenmiş olduğundan emin olun.
-1. **Kaydet**’i seçin. Ana ekranda **Yayımla** ' yı seçin.
+1. **Kaydet**'i seçin. Ana ekranda **Yayımla** ' yı seçin.
 
 Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir tarayıcı açacak. Projenin varsayılan Web sayfasını görürseniz, yayın başarılı olmuştur.
 

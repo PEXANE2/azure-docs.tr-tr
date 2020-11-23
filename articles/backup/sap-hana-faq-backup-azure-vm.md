@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 24eb4abaaabe166ceb3e6bdb99f9446d398d03a1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686115"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95400216"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -52,6 +52,10 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>SAP HANA SDC 'den MDC 'ye geçirdikten sonra yedeklemeler çalışır mi?
 
 Sorun giderme kılavuzunun [Bu bölümüne](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) bakın.
+
+### <a name="what-should-be-done-while-upgrading-within-the-same-version"></a>Aynı sürüm içinde yükseltilirken ne yapılmalı?
+
+Sorun giderme kılavuzunda [Bu bölüme](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm) bakın.
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Azure HANA yedekleme, sanal bir makine değil sanal IP 'ye (yük dengeleyici) göre ayarlanabilir mi?
 

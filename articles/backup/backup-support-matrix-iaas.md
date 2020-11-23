@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cff5c68803d0930bbf3310a385ffa0132bcbb3b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2c38af9a2e1c4c71bb2d5661758f663efe13a946
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95017035"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95414088"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -160,7 +160,7 @@ Veri diski boyutu | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm disk
 Depolama türü | Standart HDD, Standart SSD Premium SSD.
 Yönetilen diskler | Destekleniyor.
 Şifrelenmiş diskler | Destekleniyor.<br/><br/> Azure disk şifrelemesi ile etkinleştirilen Azure VM 'Leri yedeklenebilir (Azure AD uygulaması ile veya olmadan).<br/><br/> Şifrelenmiş VM 'Ler dosya/klasör düzeyinde kurtarılamaz. Tüm VM 'yi kurtarmanız gerekir.<br/><br/> Azure Backup tarafından zaten korunan VM 'lerde şifrelemeyi etkinleştirebilirsiniz.
-Yazma Hızlandırıcısı etkin olan diskler | Desteklenmez.<br/><br/> Azure Backup, yedekleme sırasında etkin Yazma Hızlandırıcısı (WA) olan diskleri otomatik olarak dışlar. Yedeklendiklerinden, bu diskleri VM kurtarma noktalarından geri alamazsınız. <br><br> **Önemli dikkat**: WA diskleri olan sanal makinelerin başarılı bir yedekleme için internet bağlantısı olması gerekir (Bu diskler yedeklemeden dışlansa bile).
+Yazma Hızlandırıcısı etkin olan diskler | 23 Kasım 2020 itibariyle Kore Orta (KRC) ve Güney Afrika Kuzey (SAN) bölgelerinde desteklenir.<br/><br/> Azure Backup, yedekleme sırasında (WA) yazma özelliği etkinleştirilmiş disklere sahip sanal makineleri yedekedecektir.  
 Yinelenen yinelenenleri kaldırma & VM 'Leri/diskleri geri yükleme | Azure Backup Yinelenenleri kaldırmayı desteklemez. Daha fazla bilgi için bu [makaleye](./backup-support-matrix.md#disk-deduplication-support) bakın <br/> <br/>  -Azure Backup kurtarma hizmetleri kasasındaki VM 'lerde yinelenmez <br/> <br/>  -Geri yükleme sırasında yinelenenleri kaldırma durumunda VM 'Ler varsa, kasa biçimi anlamadığından dosyalar geri yüklenemez. Ancak, tam VM geri yükleme işlemini başarıyla gerçekleştirebilirsiniz.
 Korumalı VM 'ye disk ekleme | Destekleniyor.
 Korumalı VM 'de diski yeniden boyutlandır | Destekleniyor.
@@ -208,10 +208,10 @@ Veri güvenliği:
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | ![Yes][green] | ![Yes][green]
-Azure VM’leri | ![Yes][green] | ![Yes][green]
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+DPM/MABS olmayan şirket içi Windows makineleri | ![Evet][green] | ![Evet][green]
+Azure VM’leri | ![Evet][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="vm-compression-support"></a>VM sıkıştırma desteği
 
@@ -224,8 +224,8 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
 Azure VM’leri | NA | NA
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

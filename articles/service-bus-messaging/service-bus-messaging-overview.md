@@ -2,13 +2,13 @@
 title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus yüksek düzeyde bir genel bakış sunulmaktadır.
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/20/2020
+ms.openlocfilehash: febb25474f84819b0afc9ab1f9af96e93489ab54
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87501483"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95415295"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 
@@ -43,7 +43,7 @@ Kuyruklarda bulunan iletiler, varış noktasında sıralanır ve zaman damgalan�
 
 Konuların birden fazla ve bağımsız abonesi olabilir. Bir konu başlığının bir abonesi konu başlığına gönderilen her iletinin bir kopyasını alabilir. Abonelikler, varlıklar olarak adlandırılır. Abonelikler devam edebilir, ancak süreleri dolacak veya oto silebilir.
 
-Tek tek aboneliklerin, bir konuya gönderilen tüm iletileri almasını istemeyebilirsiniz. Bu durumda, isteğe bağlı *eylemleri*tetikleyen koşulları tanımlamak için *kurallar* ve *Filtreler* kullanabilirsiniz. Belirtilen iletileri filtreleyebilir ve ileti özelliklerini ayarlayabilir ya da değiştirebilirsiniz. Daha fazla bilgi için bkz. [Konu filtreleri ve eylemleri](topic-filters.md).
+Tek tek aboneliklerin, bir konuya gönderilen tüm iletileri almasını istemeyebilirsiniz. Bu durumda, isteğe bağlı *eylemleri* tetikleyen koşulları tanımlamak için *kurallar* ve *Filtreler* kullanabilirsiniz. Belirtilen iletileri filtreleyebilir ve ileti özelliklerini ayarlayabilir ya da değiştirebilirsiniz. Daha fazla bilgi için bkz. [Konu filtreleri ve eylemleri](topic-filters.md).
 
 ## <a name="advanced-features"></a>Gelişmiş özellikler
 
@@ -75,7 +75,7 @@ Bir kuyruk veya abonelik istemcisi daha sonra bir ileti almayı erteleyebilirsin
 
 ### <a name="transactions"></a>İşlemler
 
-İşlem iki veya daha fazla işlemi bir *yürütme kapsamında*gruplandırır. Service Bus, tek bir işlemin kapsamındaki tek bir mesajlaşma varlığına karşı işlemleri gruplamayı destekler. İleti varlığı bir kuyruk, konu veya abonelik olabilir. Daha fazla bilgi için bkz. [Service Bus işlem Işlemeye genel bakış](service-bus-transactions.md).
+İşlem iki veya daha fazla işlemi bir *yürütme kapsamında* gruplandırır. Service Bus, tek bir işlemin kapsamındaki tek bir mesajlaşma varlığına karşı işlemleri gruplamayı destekler. İleti varlığı bir kuyruk, konu veya abonelik olabilir. Daha fazla bilgi için bkz. [Service Bus işlem Işlemeye genel bakış](service-bus-transactions.md).
 
 ### <a name="filtering-and-actions"></a>Filtreleme ve eylemler
 
@@ -89,30 +89,47 @@ Boştayken otomatik silme, bir kuyruğun otomatik olarak silineceği bir boşta 
 
 Bir hata, istemcinin bir gönderme işleminin sonucu hakkında şüpheli olmasına neden olabilir. Yinelenen algılama, gönderenin aynı iletiyi yeniden göndermesini sağlar. Başka bir seçenek de sıranın veya konunun yinelenen kopyaları atmaları için kullanılır. Daha fazla bilgi için bkz. [yinelenen algılama](duplicate-detection.md).
 
-### <a name="security-protocols"></a>Güvenlik protokolleri
-<a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
-
-Service Bus, [paylaşılan erişim imzaları](service-bus-sas.md) (SAS), [Azure rol tabanlı erişim denetımı (Azure RBAC)](authenticate-application.md) ve [Azure kaynakları için Yönetilen kimlikler](service-bus-managed-service-identity.md)gibi güvenlik protokollerini destekler.
-
 ### <a name="geo-disaster-recovery"></a>Coğrafi olağanüstü durum kurtarma
 
-Azure bölgeleri veya veri merkezleri bir kesinti yaşadığında, Coğrafi olağanüstü durum kurtarma veri işlemenin başka bir bölge veya veri merkezinde devam etmesini olanaklı kılar. Daha fazla bilgi için bkz. [Azure Service Bus coğrafi olağanüstü durum kurtarma](service-bus-geo-dr.md).
+Azure bölgeleri veya veri merkezleri kapalı kalma süresi yaşdığında, coğrafi olarak dağıtılmış olağanüstü durum kurtarma özelliği veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesine olanak sağlar. Daha fazla bilgi için bkz. [Azure Service Bus coğrafi olağanüstü durum kurtarma](service-bus-geo-dr.md).
 
 ### <a name="security"></a>Güvenlik
 
-Service Bus, standart [AMQP 1.0](service-bus-amqp-overview.md) ve [HTTP/REST](/rest/api/servicebus/) protokollerini destekler.
+Service Bus, standart [AMQP 1,0](service-bus-amqp-overview.md) ve [http/Rest](/rest/api/servicebus/) protokollerini ve aktarım düzeyi güvenliği (TLS) dahil olmak üzere ilgili güvenlik tesislerini destekler. İstemciler, Service Bus yerel [paylaşılan erişim imza](service-bus-sas.md) modeli veya [Azure Active Directory](service-bus-authentication-and-authorization.md) rol tabanlı güvenlik ile, normal hizmet hesapları ya da Azure tarafından yönetilen kimlikler kullanılarak erişim için yetkilendirilir. 
+
+İstenmeyen trafiğe karşı koruma için Service Bus, bir IP filtreleme güvenlik duvarı ve Azure ile şirket içi sanal ağlarla tümleştirme dahil olmak üzere bir dizi [ağ güvenlik özelliği](network-security.md)sağlar.
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
-Service Bus [.net](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master)ve [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client)için istemci kitaplıklarını destekler.
+Tam olarak desteklenen Service Bus istemci kitaplıkları Azure SDK ile kullanılabilir.
+
+- [.NET için Azure Service Bus](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
+- [Java için Azure Service Bus kitaplıkları](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [Java JMS 2,0 için Azure Service Bus sağlayıcısı](how-to-use-java-message-service-20.md)
+- [JavaScript ve TypeScript için Azure Service Bus modülleri](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
+- [Python için Azure Service Bus kitaplıkları](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+
+[Azure Service Bus ' birincil protokol amqp 1,0](service-bus-amqp-overview.md) ve herhangi bir amqp 1,0 uyumlu protokol istemcisinden kullanılabilir. Çeşitli açık kaynaklı AMQP istemcilerinin, Service Bus birlikte çalışabilirliği açıkça gösteren örnekleri vardır. Lütfen AMQP 1,0 istemcileri ile Service Bus ' özelliklerinin nasıl kullanılacağını anlamak için [amqp 1,0 protokol kılavuzunu](service-bus-amqp-protocol-guide.md) gözden geçirin.
+
+| Dil | Kitaplık |
+| --- | --- |
+| Java | [Apache Qpid proton-J](https://qpid.apache.org/proton/index.html) |
+| C/C++ |[Azure uAMQP C](https://github.com/azure/azure-uamqp-c/), [Apache Qpid proton-C](https://qpid.apache.org/proton/index.html) |
+| Python |[Python Için Azure uAMQP](https://github.com/azure/azure-uamqp-python/), [Apache Qpid proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
+| PHP | [PHP için Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
+| Ruby | [Apache Qpid proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
+| Başlayın | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache Qpıd proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
+| C#/F #/VB | [AMQP .net Lite](https://github.com/Azure/amqpnetlite), [Apache NMS AMQP](https://github.com/apache/activemq-nms-amqp)|
+| JavaScript/Node | [Rhea](https://github.com/grs/rhea) |
 
 ## <a name="integration"></a>Tümleştirme
 
-Service Bus, aşağıdaki Azure hizmetleriyle tam olarak tümleşiktir:
+Service Bus, birçok Microsoft ve Azure hizmeti ile tam olarak tümleştirilir, örneğin:
 
 * [Event Grid](https://azure.microsoft.com/services/event-grid/)
 * [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure İşlevleri](https://azure.microsoft.com/services/functions/)
+* [Power Platformu](https://powerplatform.microsoft.com/)
 * [Dynamics 365](https://dynamics.microsoft.com)
 * [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)
 

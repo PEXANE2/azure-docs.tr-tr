@@ -2,23 +2,25 @@
 title: Azure Service Bus AMQP 1,0 'ye Genel Bakış
 description: Azure Service Bus bir açık standart protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) nasıl destekleyeceğinizi öğrenin.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/20/2020
+ms.openlocfilehash: a643869d7d89b287e899b1eab89c5b9ec11856e5
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066347"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95396816"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği
-Azure Service Bus bulut hizmeti ve [Windows Server için şirket içi Service Bus (Service Bus 1,1)](/previous-versions/service-bus-archive/dn282144(v=azure.100)) , gelişmiş ileti sıraya alma Protokolü (amqp) 1,0 ' i destekler. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar. Farklı diller ve çerçeveler kullanılarak oluşturulan ve farklı işletim sistemlerinde çalışan bileşenleri kullanarak uygulamalar oluşturabilirsiniz. Tüm bu bileşenler Service Bus bağlanabilir ve yapılandırılmış iş iletilerini verimli bir şekilde ve tam Aslına göre sorunsuz şekilde değiştirebilir.
+Azure Service Bus bulut hizmeti, [Gelişmiş Ileti sıraya alma Protokolü (AMQP) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) ' i birincil iletişim yöntemi olarak kullanır. Microsoft, sektördeki iş ortaklarıyla, hem müşteriler hem de rekabet eden mesajlaşma aracılarında, [Oasin AMQP Technical komite](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)' de geliştirilen yeni uzantılarla, AMQP 'yi geçmiş yılda geliştirme ve geliştirme olanağı elde etti. AMQP 1,0, bir ISO ve ıEC Standard ([ıso 19464:20149](https://www.iso.org/standard/64955.html)). 
+
+AMQP, satıcı tarafsız ve uygulamayla bağımsız bir açık standart protokol kullanarak platformlar arası, karma uygulamalar oluşturmanıza olanak sağlar. Farklı diller ve çerçeveler kullanılarak oluşturulan ve farklı işletim sistemlerinde çalışan bileşenleri kullanarak uygulamalar oluşturabilirsiniz. Tüm bu bileşenler Service Bus bağlanabilir ve yapılandırılmış iş iletilerini verimli bir şekilde ve tam Aslına göre sorunsuz şekilde değiştirebilir.
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Giriş: AMQP 1,0 nedir ve neden önemlidir?
-Geleneksel olarak, ileti yönelimli ara yazılım ürünleri, istemci uygulamaları ve aracılar arasındaki iletişim için özel protokoller kullandı. Bu, belirli bir satıcının mesajlaşma Aracısı 'nı seçtiğinizde, istemci uygulamalarınızı bu aracıya bağlamak için söz konusu satıcının kitaplıklarını kullanmanız gerektiğini gösterir. Bu, bir uygulamanın farklı bir ürüne taşıma ile bağlantılı tüm uygulamalarda kod değişiklikleri gerektirdiğinden bu satıcının bir ölçüde bağımlılığını elde ediyor. 
+Geleneksel olarak, ileti yönelimli ara yazılım ürünleri, istemci uygulamaları ve aracılar arasındaki iletişim için özel protokoller kullandı. Bu, belirli bir satıcının mesajlaşma Aracısı 'nı seçtiğinizde, istemci uygulamalarınızı bu aracıya bağlamak için söz konusu satıcının kitaplıklarını kullanmanız gerektiğini gösterir. Bu, bir uygulamanın farklı bir ürüne taşıma ile bağlantılı tüm uygulamalarda kod değişiklikleri gerektirdiğinden bu satıcının bir ölçüde bağımlılığını elde ediyor. Java Community 'de, Java Ileti hizmeti (JMS) gibi dile özgü API standartları ve yay çerçevesinin soyutlamaları, alleviated bir sorun olduğunu, ancak çok dar bir özellik kapsamına sahip olan ve geliştiricilerin diğer dilleri kullanarak dışlamalarını sağlayan bir özelliktir.
 
-Ayrıca, farklı satıcılardan gelen mesajlaşma aracılarını bağlamak daha da karmaşık. Bu genellikle, iletileri bir sistemden diğerine taşımak ve özel ileti biçimleri arasında çeviri yapmak için uygulama düzeyinde köprü oluşturmayı gerektirir. Bu, yaygın bir gereksinimdir; Örneğin, daha eski farklı sistemlere yeni bir Birleşik arabirim sağlamanız veya bir birleşmeyi izleyen BT sistemlerini tümleştirmeniz gerekir.
+Ayrıca, farklı satıcılardan gelen mesajlaşma aracılarını bağlamak daha da karmaşık. Bu genellikle, iletileri bir sistemden diğerine taşımak ve özel ileti biçimleri arasında çeviri yapmak için uygulama düzeyinde köprü oluşturmayı gerektirir. Bu, yaygın bir gereksinimdir; Örneğin, daha eski farklı sistemlere yeni bir Birleşik arabirim sağlamanız veya bir birleşmeyi izleyen BT sistemlerini tümleştirmeniz gerekir. AMQP, aracıların doğrudan bağlanmasına olanak sağlar. Örneğin, [Apache Qpid gönderme yönlendiricisi](https://qpid.apache.org/components/dispatch-router/index.html) gibi yönlendiricileri veya [Kbbitmq](service-bus-integrate-with-rabbitmq.md)gibi bir aracı yerel "shovels" gibi yönlendiricileri kullanarak.
 
-Yazılım endüstrisi, hızlı hareketli bir iş; yeni programlama dilleri ve uygulama çerçeveleri bazen bewildering hızda tanıtılmıştır. Benzer şekilde, BT sistemlerinin gereksinimleri zaman içinde geliştikçe, geliştiriciler en son Platform özelliklerinden faydalanmak ister. Ancak, bazı durumlarda, seçili mesajlaşma satıcısı bu platformları desteklemez. Mesajlaşma protokolleri özel olduğundan başkalarının bu yeni platformlar için kitaplık sağlaması mümkün değildir. Bu nedenle, mesajlaşma ürününü kullanmaya devam edebilmeniz için ağ geçitleri veya köprüler oluşturma gibi yaklaşımları kullanmanız gerekir.
+Yazılım endüstrisi, hızlı hareketli bir iş; yeni programlama dilleri ve uygulama çerçeveleri bazen bewildering hızda tanıtılmıştır. Benzer şekilde, BT sistemlerinin gereksinimleri zaman içinde geliştikçe, geliştiriciler en son Platform özelliklerinden faydalanmak ister. Ancak, bazı durumlarda, seçili mesajlaşma satıcısı bu platformları desteklemez. Mesajlaşma protokolleri özel ise başkalarının bu yeni platformlar için kitaplık sağlaması mümkün değildir. Bu nedenle, mesajlaşma ürününü kullanmaya devam edebilmeniz için ağ geçitleri veya köprüler oluşturma gibi yaklaşımları kullanmanız gerekir.
 
 Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0 geliştirmesi bu sorunlar tarafından ele alınmıştır. Çoğu finansal hizmetler firmadan kaynaklanan JP Morgan Chase adresinden kaynaklandığından, ileti odaklı ara yazılım kullanıcıları ağır kullanıcılardır. Amaç basittir: farklı diller, çerçeveler ve işletim sistemleri kullanılarak oluşturulan bileşenleri kullanarak ileti tabanlı uygulamalar oluşturmaya olanak tanıyan bir açık standart mesajlaşma Protokolü oluşturmak için, hepsi bir dizi sağlayıcıdan alınan en iyi bileşen bileşenlerini kullanarak.
 
@@ -40,6 +42,8 @@ AMQP 1,0, her iki teknoloji tedarikçisinden ve Son Kullanıcı firmasından 20 
 * **Teknoloji satıcıları**: Axway yazılımı, Huawei Technologies, IIT Software, ınetco sistemleri, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, Progress Software, Red hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
 * **Kullanıcı firmaları**: Amerika Bankası, kredi Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
 
+[OASIN AMQP Technical komite] ( https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) Red Hat ve Microsoft 'un geçerli sandalyesi).
+
 Açık standartların yaygın olarak alıntı yapılan avantajlarından bazıları şunlardır:
 
 * Satıcı kilitlemeye daha az şans
@@ -50,7 +54,7 @@ Açık standartların yaygın olarak alıntı yapılan avantajlarından bazılar
 * Daha düşük ve yönetilebilir risk
 
 ## <a name="amqp-10-and-service-bus"></a>AMQP 1,0 ve Service Bus
-Azure Service Bus ' de AMQP 1,0 desteği, artık Service Bus sıraya alma ve verimli bir ikili protokol kullanarak bir dizi platformda Aracılı mesajlaşma özelliklerini yayımlama/abone olabileceğiniz anlamına gelir. Ayrıca, bir dil, çerçeve ve işletim sistemi karışımı kullanılarak oluşturulan bileşenlerden oluşan uygulamalar oluşturabilirsiniz.
+Azure Service Bus ' de AMQP 1,0 desteği, Service Bus Kuyruklama özelliğinden yararlanarak verimli bir ikili protokol kullanarak bir dizi platformdan Aracılı mesajlaşma özelliklerini yayımlayıp abone olabileceğiniz anlamına gelir. Ayrıca, bir dil, çerçeve ve işletim sistemi karışımı kullanılarak oluşturulan bileşenlerden oluşan uygulamalar oluşturabilirsiniz.
 
 Aşağıdaki şekilde, Linux üzerinde çalışan Java istemcilerinin, Windows üzerinde çalışan standart Java Ileti hizmeti (JMS) API 'SI ve .NET istemcileri kullanılarak yazılmış, AMQP 1,0 kullanılarak Service Bus aracılığıyla Exchange iletileri kullanılarak yazıldığı örnek bir dağıtım gösterilmektedir.
 
@@ -58,32 +62,40 @@ Aşağıdaki şekilde, Linux üzerinde çalışan Java istemcilerinin, Windows �
 
 **Şekil 1: Service Bus ve AMQP 1,0 kullanarak platformlar arası mesajlaşma gösteren örnek dağıtım senaryosu**
 
-Şu anda aşağıdaki istemci kitaplıklarının Service Bus ile çalışması bilinmektedir:
+Azure SDK aracılığıyla kullanılabilen tüm desteklenen Service Bus istemci kitaplıkları AMQP 1,0 kullanır.
+
+- [.NET için Azure Service Bus](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
+- [Java için Azure Service Bus kitaplıkları](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [Java JMS 2,0 için Azure Service Bus sağlayıcısı](how-to-use-java-message-service-20.md)
+- [JavaScript ve TypeScript için Azure Service Bus modülleri](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
+- [Python için Azure Service Bus kitaplıkları](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+
+Ayrıca, herhangi bir AMQP 1,0 uyumlu protokol yığınından Service Bus kullanabilirsiniz:
 
 | Dil | Kitaplık |
 | --- | --- |
-| Java |Apache Qpid Java Ileti hizmeti (JMS) istemcisi<br/>IıT Software SwiftMQ Java istemcisi |
-| C |Apache Qpid proton-C |
-| PHP |Apache Qpid proton-PHP |
-| Python |Apache Qpid Proton-Python |
-| C# |AMQP .NET Lite |
+| Java | [Apache Qpid proton-J](https://qpid.apache.org/proton/index.html) |
+| C/C++ |[Azure uAMQP C](https://github.com/azure/azure-uamqp-c/), [Apache Qpid proton-C](https://qpid.apache.org/proton/index.html) |
+| Python |[Python Için Azure uAMQP](https://github.com/azure/azure-uamqp-python/), [Apache Qpid proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
+| PHP | [PHP için Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
+| Ruby | [Apache Qpid proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
+| Başlayın | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache Qpıd proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
+| C#/F #/VB | [AMQP .net Lite](https://github.com/Azure/amqpnetlite), [Apache NMS AMQP](https://github.com/apache/activemq-nms-amqp)|
+| JavaScript/Node | [Rhea](https://github.com/grs/rhea) |
 
 **Şekil 2: AMQP 1,0 istemci kitaplıklarının tablosu**
 
 ## <a name="summary"></a>Özet
 * AMQP 1,0, platformlar arası karma uygulamalar oluşturmak için kullanabileceğiniz açık ve güvenilir bir mesajlaşma protokolüdür. AMQP 1,0, bir OASSıS standardıdır.
-* AMQP 1,0 desteği artık Azure Service Bus ve Windows Server için Service Bus (Service Bus 1,1) kullanılabilir. Fiyatlandırma, mevcut protokollerle aynıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla bilgi edinmeye hazır mısınız? Aşağıdaki bağlantıları ziyaret edin:
 
 * [AMQP ile .NET 'ten Service Bus kullanma]
 * [AMQP ile Java 'dan Service Bus kullanma]
-* [Bir Azure Linux sanal makinesine Apache Qpid proton-C yükleme]
-* [Windows Server için Service Bus AMQP]
+* [Azure Linux VM 'de Apache Qpid proton-C yükleniyor]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [AMQP ile .NET 'ten Service Bus kullanma]: service-bus-amqp-dotnet.md
 [AMQP ile Java 'dan Service Bus kullanma]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[Bir Azure Linux sanal makinesine Apache Qpid proton-C yükleme]: 
-[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)
+[Azure Linux VM 'ye Apache Qpid proton-C yükleniyor]:: 

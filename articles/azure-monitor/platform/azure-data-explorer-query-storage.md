@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: b3ab711f6d324c6d49eda0dccd88a3f2ac939eb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461592"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411572"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'den aktarılmış verileri sorgulama (Önizleme)
 Azure Izleyici 'den bir Azure depolama hesabına veri aktarma, düşük maliyetli bekletme ve günlükleri farklı bölgelere yeniden tahsis etme olanağı sağlar. Log Analytics çalışma alanlarınızdan aktarılmış verileri sorgulamak için Azure Veri Gezgini kullanın. Yapılandırıldıktan sonra, çalışma alanlarınızdan bir Azure depolama hesabına gönderilen desteklenen tablolar Azure Veri Gezgini için bir veri kaynağı olarak kullanılabilir.
@@ -43,7 +43,7 @@ Azure Veri Gezgini Azure depolama hesabına bağlamak için [dış tabloları](/
 
 Bir başvuru oluşturmak için, dışarıya aktarılmış tablonun şemasını gerekir. Tablonun sütunlarını ve veri türlerini içeren bu bilgileri almak için Log Analytics [GetSchema](/azure/data-explorer/kusto/query/getschemaoperator) işlecini kullanın.
 
-:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Azure Veri Gezgini veri sorgulama akışını verdi.":::
+:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Tablo şeması Log Analytics.":::
 
 Artık çıktıyı, dış tablo oluşturmak için kusto sorgusu oluşturmak üzere kullanabilirsiniz.
 [Azure depolama veya Azure Data Lake dış tablolar oluşturma ve değiştirme](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake)bölümündeki yönergelerin ardından, JSON biçiminde bir dış tablo oluşturun ve ardından sorguyu Azure Veri Gezgini veritabanından çalıştırın.
@@ -56,12 +56,12 @@ Aşağıdaki PowerShell betiği tablo ve eşleme için [oluşturma](/azure/data-
 ```powershell
 PARAM(
     $resourcegroupname, #The name of the Azure resource group
-    $TableName, # The log lanlyics table you wish to convert to external table
+    $TableName, # The Log Analytics table you wish to convert to external table
     $MapName, # The name of the map
     $subscriptionId, #The ID of the subscription
-    $WorkspaceId, # The log lanlyics WorkspaceId
-    $WorkspaceName, # The log lanlyics workspace name
-    $BlobURL, # The Blob URL where to save
+    $WorkspaceId, # The Log Analytics WorkspaceId
+    $WorkspaceName, # The Log Analytics workspace name
+    $BlobURL, # The Blob URL where the data is saved
     $ContainerAccessKey, # The blob container Access Key (Option to add a SAS url)
     $ExternalTableName = $null # The External Table name, null to use the same name
 )
@@ -116,12 +116,13 @@ Write-Host -ForegroundColor Green $createMapping
 
 Aşağıdaki görüntüde çıktının bir örneği gösterilir.
 
-:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="Azure Veri Gezgini veri sorgulama akışını verdi.":::
+:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="ExternalTable komut çıktısı oluştur.":::
 
 [![Örnek çıkış](media/azure-data-explorer-query-storage/external-table-create-command-output.png)](media/azure-data-explorer-query-storage/external-table-create-command-output.png#lightbox)
 
 >[!TIP]
->Tablo ve eşleme oluşturmak için Azure Veri Gezgini istemci aracındaki betiğin çıktısını kopyalayın, yapıştırın ve çalıştırın.
+>* Tablo ve eşleme oluşturmak için Azure Veri Gezgini istemci aracındaki betiğin çıktısını kopyalayın, yapıştırın ve çalıştırın.
+>* Kapsayıcının içindeki tüm verileri kullanmak istiyorsanız, betiği değiştirebilir ve URL 'YI '; ' olarak değiştirebilirsiniz https://your.blob.core.windows.net/containername SecKey '
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Azure Veri Gezgini aktarılmış verileri sorgulama 
 

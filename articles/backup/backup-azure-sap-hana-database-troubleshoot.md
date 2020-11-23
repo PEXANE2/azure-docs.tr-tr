@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377693"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411334"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -153,7 +153,7 @@ Yeni VM 'de yedeklemeleri etkinleştirmek için şu adımları izleyin:
 - Yeni işletim sistemi sürümü, SDC veya MDC sürümünün şu anda [Azure Backup tarafından desteklendiğinden](sap-hana-backup-support-matrix.md#scenario-support) emin olun
 - Veritabanı için [verileri tutma ile korumayı durdur](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
 - Yükseltme veya güncelleştirme gerçekleştirme
-- Ön kayıt betiğini yeniden çalıştırın. Genellikle, yükseltme işlemi gerekli rolleri kaldırır. Kayıt öncesi betiği çalıştırıldığında, tüm gerekli rollerin doğrulanması yardımcı olur
+- Ön kayıt betiğini yeniden çalıştırın. Genellikle, yükseltme işlemi [gerekli rolleri](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)kaldırabilir. Ön kayıt betiğini çalıştırmak, tüm gerekli rolleri doğrulamaya yardımcı olur.
 - Veritabanı için korumayı yeniden deneyin
 
 ## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SID 'de değişiklik yapmadan SDC 'den MDC 'ye yükseltme
@@ -187,7 +187,7 @@ SDC 'den MDC 'ye yükseltme, SID değişikliğine neden olacak şekilde aşağı
 Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir veya daha fazlasını denetleyin:
 
 - Tüm işlemler (yedekleme, geri yükleme ve yapılandırma gibi) VM 'de şu hata kodlarından biriyle başarısız oluyor: **Workloadextensionnoterişilebilen, Usererrorworkloadextensionnotyüklü, Workloadextensionnotsun, WorkloadExtensionDidntDequeueMsg**.
-- Yedekleme öğesi için **yedekleme durum** alanı **erişilebilir değil**olarak gösteriyorsa, aynı durum oluşmasına neden olabilecek diğer tüm nedenleri inceleyin:
+- Yedekleme öğesi için **yedekleme durum** alanı **erişilebilir değil** olarak gösteriyorsa, aynı durum oluşmasına neden olabilecek diğer tüm nedenleri inceleyin:
 
   - VM 'de yedeklemeyle ilgili işlemler gerçekleştirme izninin bulunmaması
   - VM kapatılıyor, bu nedenle yedeklemeler gerçekleşmiyor
