@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: contperfq2
-ms.openlocfilehash: 8482ba608ee5fcefb006234b339cd9b711a38020
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 55607527ced2e5d93a61cfd85477758482f18daa
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445311"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495432"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
 
@@ -40,13 +40,13 @@ Azure IoT gezgin aracını kullanmak için şunlar gerekir:
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT Gezginini Kullanma
 
-Bir cihaz için kendi cihazınızı bağlayabilirsiniz ya da örnek sanal cihazlardan birini kullanabilirsiniz. Farklı dillerde yazılmış bazı örnek sanal cihazlarda bkz. IoT Hub hızlı başlangıçlara [örnek ıot Tak ve kullan cihaz uygulaması bağlama](quickstart-connect-device-node.md) .
+Bir cihaz için kendi cihazınızı bağlayabilirsiniz ya da örnek sanal cihazlardan birini kullanabilirsiniz. Farklı dillerde yazılmış bazı örnek sanal cihazlarda, IoT Hub hızlı başlangıç [için örnek ıot Tak ve kullan cihaz uygulamasına bağlanma](quickstart-connect-device.md) bölümüne bakın.
 
 ### <a name="connect-to-your-hub"></a>Hub 'ınıza bağlanın
 
-Azure IoT Gezginini ilk kez çalıştırdığınızda IoT Hub 'ınızın bağlantı dizesi istenir. Bağlantı dizesini ekledikten sonra **Bağlan** ' ı seçin. Bağlantı dizesini güncelleştirerek, aracın ayarlarını başka bir IoT Hub 'ına geçiş yapmak için kullanabilirsiniz.
+Azure IoT Gezginini ilk kez çalıştırdığınızda IoT Hub 'ınızın bağlantı dizesi istenir. Bağlantı dizesini ekledikten sonra **Bağlan**' ı seçin. Bağlantı dizesini güncelleştirerek, aracın ayarlarını başka bir IoT Hub 'ına geçiş yapmak için kullanabilirsiniz.
 
-IoT Tak ve Kullan cihazının model tanımı, genel depoda, bağlı cihazda veya yerel bir klasörde depolanır. Varsayılan olarak, araç genel depoda ve bağlı cihazınızda model tanımınızı arar. Kaynak ekleyebilir ve kaldırabilir veya **Ayarlar** ' da kaynakların önceliğini yapılandırabilirsiniz:
+IoT Tak ve Kullan cihazının model tanımı, genel depoda, bağlı cihazda veya yerel bir klasörde depolanır. Varsayılan olarak, araç genel depoda ve bağlı cihazınızda model tanımınızı arar. Kaynak ekleyebilir ve kaldırabilir veya **Ayarlar**' da kaynakların önceliğini yapılandırabilirsiniz:
 
 Kaynak eklemek için:
 
@@ -78,7 +78,7 @@ Araç IoT Hub 'ınıza bağlandıktan sonra, IoT Hub 'ınıza kayıtlı cihaz ki
 
 ### <a name="device"></a>Cihaz
 
-Bu bölümde **cihaz kimliği** ,  **cihaz ikizi** , **telemetri** , **doğrudan yöntem** , **buluttan cihaza ileti** , **modül kimliği**  sekmeleri bulunur.
+Bu bölümde **cihaz kimliği**,  **cihaz ikizi**, **telemetri**, **doğrudan yöntem**, **buluttan cihaza ileti**, **modül kimliği**  sekmeleri bulunur.
 
 - [Cihaz kimlik bilgilerini](../iot-hub/iot-hub-devguide-identity-registry.md) **cihaz kimliği** sekmesinden görüntüleyebilir ve güncelleştirebilirsiniz.
 - Device [ikizi](../iot-hub/iot-hub-devguide-device-twins.md) bilgilerine **Device ikizi** sekmesinden erişebilirsiniz.
@@ -109,7 +109,7 @@ Cihaz hub 'a bir **model kimliği** kullanarak bağlıysa, araç, **model kimli�
 1. Cihaza gönderilecek yükün önizlemesini görüntüleyin.
 1. Değişikliği gönder.
 
-Bir değişiklik gönderdikten sonra, güncelleştirme durumunu takip edebilirsiniz: **eşitleniyor** , **başarılı** veya **hata**. Eşitleme tamamlandığında, **bildirilen özellik** sütununda, özelliğinin yeni değerini görürsünüz. Eşitleme tamamlanmadan önce diğer sayfalara gittiğinizde, güncelleştirme tamamlandığında araç sizi size bildirir. Ayrıca, bildirim geçmişini görmek için aracın bildirim merkezini de kullanabilirsiniz.
+Bir değişiklik gönderdikten sonra, güncelleştirme durumunu takip edebilirsiniz: **eşitleniyor**, **başarılı** veya **hata**. Eşitleme tamamlandığında, **bildirilen özellik** sütununda, özelliğinin yeni değerini görürsünüz. Eşitleme tamamlanmadan önce diğer sayfalara gittiğinizde, güncelleştirme tamamlandığında araç sizi size bildirir. Ayrıca, bildirim geçmişini görmek için aracın bildirim merkezini de kullanabilirsiniz.
 
 #### <a name="commands"></a>Komutlar
 

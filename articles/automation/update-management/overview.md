@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: abcc2b60fd796a80342fe48c3c9027388660476a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360794"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488156"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -132,7 +132,7 @@ Güncelleştirme Yönetimi, bu bölümde açıklanan kaynakları kullanır. Gün
 
 Güncelleştirme Yönetimi etkinleştirdikten sonra, Log Analytics çalışma alanınıza doğrudan bağlı tüm Windows makineleri, Güncelleştirme Yönetimi destekleyen runbook 'ları destekleyecek şekilde otomatik olarak karma Runbook Worker olarak yapılandırılır.
 
-Güncelleştirme Yönetimi tarafından yönetilen her bir Windows makinesi, Otomasyon hesabı için bir sistem karma çalışanı grubu olarak karma çalışan grupları bölmesinde listelenir. Gruplar, `Hostname FQDN_GUID` adlandırma kuralını kullanır. Bu grupları hesabınızdaki runbook 'lar ile hedefleyebilirsiniz. Denerseniz, deneme başarısız olur. Bu gruplar yalnızca Güncelleştirme Yönetimi desteklemeye yöneliktir. Karma Runbook Worker olarak yapılandırılmış Windows makinelerin listesini görüntüleme hakkında daha fazla bilgi edinmek için bkz. [karma runbook çalışanlarını görüntüleme](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers).
+Güncelleştirme Yönetimi tarafından yönetilen her bir Windows makinesi, Otomasyon hesabı için bir sistem karma çalışanı grubu olarak karma çalışan grupları bölmesinde listelenir. Gruplar, `Hostname FQDN_GUID` adlandırma kuralını kullanır. Bu grupları hesabınızdaki runbook 'lar ile hedefleyebilirsiniz. Denerseniz, deneme başarısız olur. Bu gruplar yalnızca Güncelleştirme Yönetimi desteklemeye yöneliktir. Karma Runbook Worker olarak yapılandırılmış Windows makinelerin listesini görüntüleme hakkında daha fazla bilgi edinmek için bkz. [karma runbook çalışanlarını görüntüleme](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers).
 
 Güncelleştirme Yönetimi ve karma runbook çalışanı grup üyeliği için aynı hesabı kullanırsanız Otomasyon Runbook 'larını desteklemek için Otomasyon hesabınızdaki karma Runbook Worker grubuna Windows makinesini ekleyebilirsiniz. Bu işlev, karma Runbook Worker 'ın 7.2.12024.0 sürümüne eklenmiştir.
 
@@ -158,7 +158,7 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenir | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 | --- | --- | --- |
 | Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |

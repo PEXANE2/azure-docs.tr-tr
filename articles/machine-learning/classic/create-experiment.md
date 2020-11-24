@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81842fb3a9a68e818a3e8c94aa6db690cb1d94f5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307978"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486288"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Hızlı başlangıç: Machine Learning Studio (klasik) ilk veri bilimi denemenizi oluşturma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
+**Uygulama hedefi:** ![ Bu bir onay işaretidir ve bu makalenin Machine Learning Studio (klasik) için geçerli olduğu anlamına gelir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ Bu bir X ' dir ve bu makalenin Azure Machine Learning için geçerli olduğu anlamına gelir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -55,7 +55,7 @@ Bu veri kümesi; marka, model, teknik belirtimler ve fiyat gibi bilgiler dahil o
 
 Veri kümesini denemenize aşağıdaki gibi aktarabilirsiniz.
 
-1. Machine Learning Studio (klasik) penceresinin altında **+ Yeni** ' ye tıklayarak yeni bir deneme oluşturun. **Deneme**  >   **boş deneme** ' yı seçin.
+1. Machine Learning Studio (klasik) penceresinin altında **+ Yeni** ' ye tıklayarak yeni bir deneme oluşturun. **Deneme**  >   **boş deneme**' yı seçin.
 
 1. Denemenize tuvalin üzerinde görebileceğiniz bir varsayılan ad verilir. Bu adı seçerek anlamlı bir adla değiştirin, örneğin, **Otomobil fiyat tahmini**. Adın benzersiz olması gerekmez.
 
@@ -65,7 +65,7 @@ Veri kümesini denemenize aşağıdaki gibi aktarabilirsiniz.
 
     ![Otomobil veri kümesini bulun ve deneme tuvaline sürükleyin](./media/create-experiment/type-automobile.png)
 
-Bu verilerin nasıl göründüğünü görmek için, otomobil veri kümesinin altındaki çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir** ' i seçin.
+Bu verilerin nasıl göründüğünü görmek için, otomobil veri kümesinin altındaki çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir**' i seçin.
 
 ![Çıkış bağlantı noktasına tıklayın ve “Görselleştir”i seçin](./media/create-experiment/select-visualize.png)
 
@@ -78,7 +78,7 @@ Bu veri kümesinde, her satır bir otomobil ve her bir otomobil ile ilişkili de
 
 ![Veri görselleştirme penceresinde otomobil verilerini görüntüleme](./media/create-experiment/visualize-auto-data.png)
 
-Sağ üst köşedeki " **x** " işaretine tıklayarak görselleştirme penceresini kapatın.
+Sağ üst köşedeki "**x**" işaretine tıklayarak görselleştirme penceresini kapatın.
 
 ## <a name="prepare-the-data"></a>Verileri hazırlama
 
@@ -97,9 +97,9 @@ Genellikle bir veri kümesi analiz edilmeden önce biraz ön işleme gerekir. Ç
 
 1. [Select Columns in Dataset (Veri Kümesinde Sütun Seçme)][select-columns] modülüne tıklayın ve **Özellikler** bölmesinde **Sütun seçiciyi başlat** seçeneğine tıklayın.
 
-   - Sol tarafta **Kurallar ile** ’ye tıklayın
-   - **Şununla Başla** altında **Tüm sütunlar** ’a tıklayın. Bu kurallar, tüm sütunları (dışlamak üzere yaptığımız sütunlar hariç) doğrudan [veri kümesindeki sütunları doğrudan seçer][select-columns] .
-   - Açılan menülerden **Hariç Tut** ve **sütun adlarını** seçerek metin kutusuna tıklayın. Sütun listesi görüntülenir. **Normalleştirilmiş kayıplar** ’ı seçin; böylece metin kutusuna eklenir.
+   - Sol tarafta **Kurallar ile**’ye tıklayın
+   - **Şununla Başla** altında **Tüm sütunlar**’a tıklayın. Bu kurallar, tüm sütunları (dışlamak üzere yaptığımız sütunlar hariç) doğrudan [veri kümesindeki sütunları doğrudan seçer][select-columns] .
+   - Açılan menülerden **Hariç Tut** ve **sütun adlarını** seçerek metin kutusuna tıklayın. Sütun listesi görüntülenir. **Normalleştirilmiş kayıplar**’ı seçin; böylece metin kutusuna eklenir.
    - Sütun seçiciyi kapatmak için onay işareti (Tamam) düğmesine tıklayın (sağ alt köşedeki).
 
      ![Sütun seçiciyi başlatın ve "normalized-losses" sütununu hariç tutun](./media/create-experiment/launch-column-selector.png)
@@ -113,11 +113,11 @@ Genellikle bir veri kümesi analiz edilmeden önce biraz ön işleme gerekir. Ç
 
      ![Açıklama eklemek için bir modüle çift tıklayın](./media/create-experiment/add-comment.png)
 
-1. [Eksik Verileri Temizleme][clean-missing-data] modülünü deneme tuvaline sürükleyin ve bunu [Veri Kümesindeki Sütunları Seçme][select-columns] modülüne bağlayın. **Özellikler** bölmesinde, **Temizleme modu** altında **Tüm satırı kaldır** ’ı seçin. Bu seçenekler eksik değerleri olan satırları kaldırarak verileri temizlemek için [eksik verileri doğrudan temizler][clean-missing-data] . Modüle çift tıklayın ve "Eksik değerli satırları kaldır" yorumunu yazın.
+1. [Eksik Verileri Temizleme][clean-missing-data] modülünü deneme tuvaline sürükleyin ve bunu [Veri Kümesindeki Sütunları Seçme][select-columns] modülüne bağlayın. **Özellikler** bölmesinde, **Temizleme modu** altında **Tüm satırı kaldır**’ı seçin. Bu seçenekler eksik değerleri olan satırları kaldırarak verileri temizlemek için [eksik verileri doğrudan temizler][clean-missing-data] . Modüle çift tıklayın ve "Eksik değerli satırları kaldır" yorumunu yazın.
 
     !["Eksik Verileri Temizleme" için temizleme modunu "Tüm satırı kaldır" olarak ayarlayın](./media/create-experiment/set-remove-entire-row.png)
 
-1. Sayfanın en altında yer alan **ÇALIŞTIR** 'a tıklayarak denemeyi çalıştırın.
+1. Sayfanın en altında yer alan **ÇALIŞTIR**'a tıklayarak denemeyi çalıştırın.
 
     Deneme çalıştırma bittiğinde, tüm modüllerin başarıyla tamamlandığını göstermek için yeşil bir onay işareti bulunur. Sağ üst köşede **Çalıştırma tamamlandı** durumunun olduğuna da dikkat edin.
 
@@ -126,7 +126,7 @@ Genellikle bir veri kümesi analiz edilmeden önce biraz ön işleme gerekir. Ç
 > [!TIP]
 > Denemeyi neden şimdi çalıştırdık? Deneme çalıştırılarak, verilerimizin sütun tanımları [Veri Kümesindeki Sütunları Seçme][select-columns] modülü ve [Eksik Verileri Temizleme][clean-missing-data] modülü aracılığıyla veri kümesinden geçer. Bu, [Eksik Verileri Temizleme][clean-missing-data] öğesine bağladığımız modüllerin de aynı bilgilere sahip olacağı anlamına gelir.
 
-Şimdi veri temizleme. Temizlenen veri kümesini görüntülemek istiyorsanız [Eksik Verileri Temizleme][clean-missing-data] modülünün sol çıkış bağlantı noktasına tıklayın ve **Görselleştir** 'i seçin. **Normalleştirilmiş kayıplar** sütununun artık dahil olmadığına ve eksik değerlerin yok olduğuna dikkat edin.
+Şimdi veri temizleme. Temizlenen veri kümesini görüntülemek istiyorsanız [Eksik Verileri Temizleme][clean-missing-data] modülünün sol çıkış bağlantı noktasına tıklayın ve **Görselleştir**'i seçin. **Normalleştirilmiş kayıplar** sütununun artık dahil olmadığına ve eksik değerlerin yok olduğuna dikkat edin.
 
 Artık veriler temizlendiğine göre, tahmine dayalı modelde hangi özellikleri kullanacağımızı belirtmeye hazırız.
 
@@ -148,9 +148,9 @@ Veri kümemizdeki bir alt özellikler kümesini kullanan bir model oluşturalım
 
 1. **Properties (Özellikler)** bölmesindeki **Launch column selector (Sütun seçiciyi başlat)** seçeneğine tıklayın.
 
-1. **Kurallar ile** ’ye tıklayın.
+1. **Kurallar ile**’ye tıklayın.
 
-1. **Şununla Başla** altında **Sütun yok** ’a tıklayın. Filtre satırında, **Dahil et** ve **sütun adları** öğelerini seçin ve metin kutusunda sütun adları listemizi seçin. Bu filtre, modülün belirttiğimiz durumlar haricinde herhangi bir sütundan (özellik) geçmeyecektir.
+1. **Şununla Başla** altında **Sütun yok**’a tıklayın. Filtre satırında, **Dahil et** ve **sütun adları** öğelerini seçin ve metin kutusunda sütun adları listemizi seçin. Bu filtre, modülün belirttiğimiz durumlar haricinde herhangi bir sütundan (özellik) geçmeyecektir.
 
 1. Onay işareti (Tamam) düğmesine tıklayın.
 
@@ -163,7 +163,7 @@ Bu modül, bir sonraki adımda kullanacağımız öğrenme algoritmasına geçir
 Artık veriler hazır olduğuna göre, tahmine dayalı bir model oluşturmak için eğitim ve test etme gerekir. Modeli eğitmek ve sonra fiyatları tahmin etmeye ne kadar yaklaştığını görmek üzere modeli test etmek için verilerimizi kullanacağız.
 <!-- For now, don't worry about *why* we need to train and then test a model.-->
 
-*Sınıflandırma* ve *regresyon* , denetimli makine öğrenimi algoritmasının iki türüdür. Sınıflandırma; renk gibi (kırmızı, mavi veya yeşil) tanımlanmış bir kategori kümesinden yanıt tahmin eder. Bir sayıyı tahmin etmek için regresyon kullanılır.
+*Sınıflandırma* ve *regresyon*, denetimli makine öğrenimi algoritmasının iki türüdür. Sınıflandırma; renk gibi (kırmızı, mavi veya yeşil) tanımlanmış bir kategori kümesinden yanıt tahmin eder. Bir sayıyı tahmin etmek için regresyon kullanılır.
 
 Bir sayı olan fiyatı tahmin etmek istediğimizden bir regresyon algoritması kullanırız. Bu örnekte, *Doğrusal regresyon* modeli kullanacağız.
 
@@ -174,7 +174,7 @@ Verilerimizi modeli eğitmek ve verileri ayrı eğitim ve test kümelerine ayır
 
 1. [Verileri Bölme][split] modülünü seçip deneme tuvaline sürükleyin ve bunu son [Veri Kümesindeki Sütunları Seçme][select-columns] modülüne bağlayın.
 
-1. Seçmek için [Verileri Bölme][split] modülüne tıklayın. **İlk çıkış veri kümesinde satır kesiri** ’ni bulun (tuvalin sağ tarafında **Özellikler** bölmesinde) ve 0,75 olarak ayarlayın. Bu şekilde, modeli eğitmek için verilerin yüzde 75'ini kullanıp test etmek için yüzde 25'ini ayıracağız.
+1. Seçmek için [Verileri Bölme][split] modülüne tıklayın. **İlk çıkış veri kümesinde satır kesiri**’ni bulun (tuvalin sağ tarafında **Özellikler** bölmesinde) ve 0,75 olarak ayarlayın. Bu şekilde, modeli eğitmek için verilerin yüzde 75'ini kullanıp test etmek için yüzde 25'ini ayıracağız.
 
     !["Verileri Bölme" modülünün bölüm kesirini 0,75 olarak ayarlayın](./media/create-experiment/set-split-data-percentage.png)
 
@@ -183,7 +183,7 @@ Verilerimizi modeli eğitmek ve verileri ayrı eğitim ve test kümelerine ayır
 
 1. Denemeyi çalıştırın. Deneme çalıştırıldığında [Veri Kümesindeki Sütunları Seçme][select-columns] ve [Verileri Bölme][split] modüllerinin sütun tanımlarını sonra ekleyeceğimiz modüllere geçirmesine olanak sağlanır.  
 
-1. Öğrenme algoritmasını seçmek için, tuvalin solundaki modül paletindeki **Machine Learning** kategorisini genişletin ve ardından **Modeli Başlat** 'ı genişletin. Böylece makine öğrenimi algoritmalarını başlatmak için kullanılabilecek çeşitli modül kategorileri görüntülenir. Bu deneme için, **Regresyon** kategorisinin altında [Doğrusal Regresyon][linear-regression] modülünü seçin ve bunu deneme tuvaline sürükleyin. (Modülü bulmak için palet Arama kutusuna “doğrusal regresyon” da yazabilirsiniz.)
+1. Öğrenme algoritmasını seçmek için, tuvalin solundaki modül paletindeki **Machine Learning** kategorisini genişletin ve ardından **Modeli Başlat**'ı genişletin. Böylece makine öğrenimi algoritmalarını başlatmak için kullanılabilecek çeşitli modül kategorileri görüntülenir. Bu deneme için, **Regresyon** kategorisinin altında [Doğrusal Regresyon][linear-regression] modülünü seçin ve bunu deneme tuvaline sürükleyin. (Modülü bulmak için palet Arama kutusuna “doğrusal regresyon” da yazabilirsiniz.)
 
 1. [Modeli Eğitme][train-model] modülünü bulup deneme tuvaline sürükleyin. [Doğrusal Regresyon][linear-regression] modülünün çıkışını [Modeli Eğitme][train-model] modülünün sol girişine bağlayın ve [Verileri Bölme][split] modülünün eğitim verileri çıkışını (sol bağlantı noktası) [Modeli Eğitme][train-model] modülünün sağ girişine bağlayın.
 
@@ -219,17 +219,17 @@ Verilerimizin yüzde 75'ini kullanarak modeli eğittiğimize göre, modelimizin 
 
 1. Denemeyi çalıştırın.
 
-[Model Değerlendirme][evaluate-model] modülünden çıkışı görüntülemek için, çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir** 'i seçin.
+[Model Değerlendirme][evaluate-model] modülünden çıkışı görüntülemek için, çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir**'i seçin.
 
 ![Deneme için değerlendirme sonuçları](./media/create-experiment/evaluation-results.png)
 
 Modelimiz için aşağıdaki istatistikler gösterilir:
 
-- **Mean Absolute Error (Ortalama Mutlak Hata)** (MAE): Mutlak hataların ortalaması ( *hata* , tahmin edilen değer ile gerçek değer arasındaki farktır).
+- **Mean Absolute Error (Ortalama Mutlak Hata)** (MAE): Mutlak hataların ortalaması (*hata*, tahmin edilen değer ile gerçek değer arasındaki farktır).
 - **Root Mean Squared Error (Kök Ortalama Karesi Alınmış Hata)** (RMSE): Test veri kümesinde yapılan tahminlerin karesi alınmış hata ortalamasının kare kökü.
-- **Relative Absolute Error (Göreli Mutlak Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak hataların mutlak farka göreli ortalaması.
-- **Relative Squared Error (Göreli Karesi Alınmış Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki karesi alınmış hataların karesi alınmış farka göreli ortalaması.
-- **Coefficient of Determination (Determinasyon Katsayısı)** : **R karesi alınmış değer** olarak da bilinen ve modelin verilere ne kadar iyi uyumlu olduğunu gösteren istatistik ölçümleridir.
+- **Relative Absolute Error (Göreli Mutlak Hata)**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak hataların mutlak farka göreli ortalaması.
+- **Relative Squared Error (Göreli Karesi Alınmış Hata)**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki karesi alınmış hataların karesi alınmış farka göreli ortalaması.
+- **Coefficient of Determination (Determinasyon Katsayısı)**: **R karesi alınmış değer** olarak da bilinen ve modelin verilere ne kadar iyi uyumlu olduğunu gösteren istatistik ölçümleridir.
 
 Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. Daha küçük olan bir değer, tahminlerin gerçek değerlerle daha yakından eşleştiğini gösterir. **Coefficient of Determination (Determinasyon Katsayısı)** değeri bire (1.0) ne kadar yakınsa tahminler o kadar iyi olur.
 

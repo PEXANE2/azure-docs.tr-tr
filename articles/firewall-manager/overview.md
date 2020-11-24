@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596684"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95489703"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -25,7 +25,7 @@ Güvenlik Duvarı Yöneticisi, iki ağ mimarisi türü için güvenlik yönetimi
    [Azure sanal WAN hub](../virtual-wan/virtual-wan-about.md#resources) 'ı, hub ve bağlı bileşen mimarilerini kolayca oluşturmanıza olanak tanıyan, Microsoft tarafından yönetilen bir kaynaktır. Güvenlik ve yönlendirme ilkeleri böyle bir hub ile ilişkilendirildiğinde, bu, *[güvenli bir sanal hub](secured-virtual-hub.md)* olarak adlandırılır. 
 - **Hub sanal ağı**
 
-   Bu, kendi oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağı. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, *hub sanal ağı*olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı Ilkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren sanal ağları eşleyebilir. Ayrıca, herhangi bir bağlı ağa eşlenmeyen tek başına sanal ağlarda güvenlik duvarlarını yönetebilirsiniz.
+   Bu, kendi oluşturduğunuz ve yönettiğiniz standart bir Azure sanal ağı. Güvenlik ilkeleri böyle bir hub ile ilişkilendirildiğinde, *hub sanal ağı* olarak adlandırılır. Şu anda yalnızca Azure Güvenlik Duvarı Ilkesi desteklenir. İş yükü sunucularınızı ve hizmetlerinizi içeren sanal ağları eşleyebilir. Ayrıca, herhangi bir bağlı ağa eşlenmeyen tek başına sanal ağlarda güvenlik duvarlarını yönetebilirsiniz.
 
 *Güvenli sanal hub* ve *hub sanal ağ* mimarilerinin ayrıntılı bir karşılaştırması Için bkz. [Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?](vhubs-and-vnets.md).
 
@@ -76,7 +76,7 @@ Azure Güvenlik Duvarı Ilkeleri bölgeler arasında kullanılabilir. Örneğin,
 
 Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 
-|Sorun  |Açıklama  |Risk azaltma  |
+|Sorun  |Description  |Risk azaltma  |
 |---------|---------|---------|
 |Trafik bölme|Microsoft 365 ve Azure genel PaaS trafiği bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse, iş ortağı hizmeti aracılığıyla tüm Azure genel PaaS ve Microsoft 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
 |Bölge başına bir güvenli sanal hub|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz.|Bir bölgede birden çok sanal WAN oluşturun.|
@@ -89,7 +89,8 @@ Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 |Uygulama kuralları, özel DNS (Önizleme) yapılandırılmış güvenli bir hub 'da başarısız olur.|Özel DNS (Önizleme), zorunlu tünelleme etkin olan güvenli hub dağıtımları ve hub sanal ağ dağıtımları içinde çalışmaz.|Araştırma bölümünde çözüm.|
 |DDoS koruma standardı, güvenli sanal hub 'lar ile desteklenmiyor|DDoS koruma standardı Vwan ile tümleştirilmiştir.|Araştırılıyor|
 |Etkinlik günlükleri tam olarak desteklenmiyor|Güvenlik duvarı ilkesi Şu anda etkinlik günlüklerini desteklemiyor.|Araştırılıyor|
-|SNAT özel IP adresi aralıklarını yapılandırma|Azure Güvenlik duvarı ilkesi yapılandırılmışsa [özel IP aralığı ayarları](../firewall/snat-private-range.md) yoksayılır. Varsayılan Azure Güvenlik Duvarı davranışı, hedef IP adresi [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda, SNAT ağ kuralları olmadığı durumlarda kullanılır.|Araştırılıyor
+|SNAT özel IP adresi aralıklarını yapılandırma|Azure Güvenlik duvarı ilkesi yapılandırılmışsa [özel IP aralığı ayarları](../firewall/snat-private-range.md) yoksayılır. Varsayılan Azure Güvenlik Duvarı davranışı, hedef IP adresi [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda, SNAT ağ kuralları olmadığı durumlarda kullanılır.|Araştırılıyor|
+|Güvenlik Duvarı güvenlik duvarı Ilkesi kullanacak şekilde geçirildiğinde bazı güvenlik duvarı ayarları geçirilmez|Azure Güvenlik Duvarı Ilkesine geçiş yaptığınızda Kullanılabilirlik Alanları ve SNAT özel adresler geçirilmez.|Araştırılıyor| 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

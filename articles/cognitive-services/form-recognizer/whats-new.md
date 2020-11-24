@@ -9,16 +9,42 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c9287e9661172480292a2214b231e7e5dac9c32f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 92eda77d03e547e814cac85f5ac8bb03b552d135
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912252"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95506567"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
 Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirmeleri, düzeltmeler ve belge güncelleştirmeleriyle güncel kalmak için bu makaleyi kullanın.
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="new-features"></a>Yeni özellikler
+
+- **Yeni önceden oluşturulmuş fatura modeli** -yeni önceden oluşturulmuş fatura modeli, müşterilerin çeşitli biçimlerde faturalar almasını ve fatura işlemenin otomatikleştirilmesi için yapılandırılmış verileri döndürmesini sağlar. Güçlü optik karakter tanıma (OCR) olanaklarımızı, fatura ile ilgili ayrıntılı öğrenme modellerini anlamak için, gelişmiş bir deyişle, önemli bilgileri Ingilizce olarak birleştirir. Metin, tablo ve müşteri, satıcı, fatura KIMLIĞI, fatura son tarihi, toplam, ödenecek süre, vergi tutarı, sevk edilecek, fatura vb. gibi bilgileri ayıklar.
+
+  > [Önceden oluşturulmuş fatura modeli hakkında daha fazla bilgi edinin](concept-invoices.md)
+
+  :::image type="content" source="./media/invoice-example.jpg" alt-text="Fatura örneği" lightbox="./media/invoice-example.jpg":::
+
+- **Gelişmiş tablo ayıklama** -form tanıyıcı artık güçlü optik karakter tanıma (OCR) yeteneklerini derin bir öğrenme tablosu ayıklama modeliyle birleştiren gelişmiş tablo ayıklama özelliği sağlıyor. Form tanıyıcı, birleştirilmiş sütunları, satırları, kenarlıkları ve daha fazlasını içeren karmaşık tablolar da dahil olmak üzere tablolardan verileri ayıklayabilir. 
+ 
+  :::image type="content" source="./media/tables-example.jpg" alt-text="tablolar örneği" lightbox="./media/tables-example.jpg":::
+
+ 
+  > [Düzen ayıklama hakkında daha fazla bilgi edinin](concept-layout.md)
+
+- **Desteklenen yeni dil: Japonca** -şu yeni diller artık desteklenmektedir: `AnalyzeLayout` ve için `AnalyzeCustomForm` : Japonca ( `ja` ). [Dil desteği](language-support.md)
+- **Metin çizgisi stili belirtme (el yazısı/yazdırma) (yalnızca Latin dilleri)** -form tanıyıcı `appearance` , her metin satırının bir güven puanı ile birlikte el ile yazılmış tarzına göre bir nesne sınıflandırılmasına neden olur. Bu özellik yalnızca Latin dilleri için desteklenir.
+- **Kalite geliştirmeleri** -tek basamaklı ayıklama geliştirmeleri dahil ayıklama geliştirmeleri.
+- **Form tanıyıcı örnek etiketleme aracında yeni bir TRY-It-Out özelliği** , önceden oluşturulmuş fatura, giriş ve iş kartı modellerini ve Düzen API 'Sini, tanıyıcı örnek etiketleme aracını kullanarak denemenize olanak tanır. Verilerinizin herhangi bir kod yazmadan ayıklanmasını görün.
+
+  > [Form tanıyıcı örnek aracını deneyin](https://fott-preview.azurewebsites.net/)
+
+  ![FOTT örneği](./media/fott-preview.jpg)
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -30,11 +56,11 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 - **REST API başvuru kullanılabilir** - [v 2.1-Preview. 1 başvurusunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) görüntüleyin 
 - **İngilizce 'nin yanı sıra desteklenen yeni diller** [şunlardır:](language-support.md) `Layout` ve için `Train Custom Model` : Ingilizce ( `en` ), Çince (Basitleştirilmiş) (), Felemenkçe (), Fransızca (), Almanca (), İtalyanca (), `zh-Hans` `nl` `fr` `de` `it` Portekizce () `pt` ve İspanyolca ( `es` ).
 - **Onay kutusu/seçim işareti algılama** – form tanıyıcı, onay kutuları ve radyo düğmeleri gibi seçim işaretlerinin algılanmasını ve ayıklanmasını destekler. Seçim işaretleri ' de ayıklanır `Layout` ve artık, `Train Custom Model`  -  seçim işaretleri için anahtar değer çiftlerini ayıklamak üzere _etiketlerle eğitme_ ' de etiketleyebilir ve eğitebilirsiniz. 
-- **Model oluşturma** , birden çok modelin tek BIR model kimliğiyle oluşturulmasına ve çağrılmasına izin verir. Bir belge, oluşturulmuş bir model KIMLIĞIYLE analiz edilecek şekilde gönderildiğinde, ilk olarak doğru özel modele yönlendirmek için bir sınıflandırma adımı yapılır. Model oluşturma, `Train Custom Model`  -  _etiketlerle eğitebilir_ .
-- **Model adı** daha kolay yönetim ve izleme için özel modellerinize kolay bir ad ekleyin.
+- **Model oluşturma** -birden çok modelin tek BIR model kimliğiyle oluşturulmasına ve çağrılmasına izin verir. Bir belge, oluşturulmuş bir model KIMLIĞIYLE analiz edilecek şekilde gönderildiğinde, ilk olarak doğru özel modele yönlendirmek için bir sınıflandırma adımı yapılır. Model oluşturma, `Train Custom Model`  -  _etiketlerle eğitebilir_.
+- **Model adı** -daha kolay yönetim ve izleme için özel modellerinize kolay bir ad ekleyin.
 - Ingilizce, dil iş kartlarında ortak alanların ayıklanması için **[Iş kartları için önceden oluşturulmuş yeni model](concept-business-cards.md)** .
 - **[Önceden oluşturulmuş alındılar Için yeni yerel ayarlar](concept-receipts.md)** en-US, destek artık en-au, en-CA, en-GB, en-ın için kullanılabilir
-- İçin **kalite iyileştirmeleri** `Layout` , `Train Custom Model`  -  _Etiketler olmadan eğitme_ ve _etiketlerle eğitme_ .
+- İçin **kalite iyileştirmeleri** `Layout` , `Train Custom Model`  -  _Etiketler olmadan eğitme_ ve _etiketlerle eğitme_.
 
 
 **v 2.0** aşağıdaki güncelleştirmeyi içerir:
@@ -53,22 +79,22 @@ GitHub 'da **yeni örnekler** mevcuttur.
 
 ### <a name="new-features"></a>Yeni özellikler
 
-* **v 2.0 başvurusu kullanılabilir** [V 2.0 API başvurusunu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) ve [.net](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet), [Python](/python/api/overview/azure/?view=azure-python), [Java](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)ve [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest)için güncelleştirilmiş SDK 'ları görüntüleyin.
-* **Tablo geliştirmeleri ve ayıklama geliştirmeleri** , özellikle, _Etiketler olmadan özel eğitime_ göre tablo üst bilgilerini ve yapılarını öğrenme özelliği olan doğruluk geliştirmelerini ve tablo dışlamalarını içerir. 
+* **v 2.0 başvurusu kullanılabilir** - [.net](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet), [Python](/python/api/overview/azure/?view=azure-python), [Java](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)ve [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest)için [v 2.0 API başvurusunu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) ve güncelleştirilmiş SDK 'ları görüntüleyin.
+* **Tablo geliştirmeleri ve ayıklama geliştirmeleri** -özellikle, _Etiketler olmadan özel eğilelerde_ Tablo üstbilgilerini ve yapıları öğrenme özelliğini içeren doğruluk iyileştirmeleri ve tablo dışlamaları geliştirmeleri içerir. 
 
-* **Para birimi desteği** Genel para birimi sembollerini algılama ve ayıklama.
-* **Azure gov** Form tanıyıcı artık Azure gov 'de de kullanılabilir.
-* **Gelişmiş güvenlik özellikleri** : 
-   * **Kendi anahtarınızı getirin**  Form tanıyıcı, buluta kalıcı yapıldığında verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlar (CMK)](./form-recognizer-encryption-of-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
+* **Para birimi desteği** -genel para birimi simgelerinin algılanması ve ayıklanması.
+* **Azure gov** -form tanıyıcı artık Azure gov 'de de kullanılabilir.
+* **Gelişmiş güvenlik özellikleri**: 
+   * **Kendi anahtar** formu tanıyıcı, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlar (CMK)](./form-recognizer-encryption-of-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
    * **Özel uç noktalar** – [özel bir bağlantı üzerinden verilerinize güvenli](../../private-link/private-link-overview.md) bir şekilde erişmek için bir sanal ağ (VNet) sağlar.
 
 
 ## <a name="june-2020"></a>Haziran 2020
 
 ### <a name="new-features"></a>Yeni özellikler
-* **Istemci SDK 'Larına Copymodel API 'si eklendi** Artık bir abonelikten diğerine model kopyalamak için istemci SDK 'larını kullanabilirsiniz. Bu özellikle ilgili genel bilgiler için bkz. [yedekleme ve kurtarma modelleri](./disaster-recovery.md) .
-* **Azure Active Directory tümleştirme** Artık SDK 'larda form tanıyıcı istemci nesnelerinizin kimliğini doğrulamak için Azure AD kimlik bilgilerinizi kullanabilirsiniz.
-* **SDK 'ya özgü değişiklikler** Bu, hem küçük özellik eklemeleri hem de son değişiklikleri içerir. Daha fazla bilgi için bkz. SDK changelog.
+* **Istemci SDK 'larına eklenen Copymodel API 'si** -artık bir abonelikten diğerine model kopyalamak Için istemci SDK 'larını kullanabilirsiniz. Bu özellikle ilgili genel bilgiler için bkz. [yedekleme ve kurtarma modelleri](./disaster-recovery.md) .
+* **Azure Active Directory tümleştirme** -artık SDK 'Larda form tanıyıcı istemci nesnelerinizin kimliğini doğrulamak IÇIN Azure AD kimlik bilgilerinizi kullanabilirsiniz.
+* **SDK 'ya özgü değişiklikler** -bu, hem küçük özellik eklemeleri hem de son değişiklikleri içerir. Daha fazla bilgi için bkz. SDK changelog.
   * [C# SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Python SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
   * [Java SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -77,7 +103,7 @@ GitHub 'da **yeni örnekler** mevcuttur.
 ## <a name="april-2020"></a>Nisan 2020
 
 ### <a name="new-features"></a>Yeni özellikler
-* **Form TANıYıCı API v 2.0 genel önizlemesi Için SDK desteği** Bu ay, form tanıyıcı v 2.0 (Önizleme) sürümü için bir önizleme SDK 'Sı eklemek üzere hizmet desteğimizi genişlettik. Seçtiğiniz dille çalışmaya başlamak için aşağıdaki bağlantıları kullanın: 
+* **Form TANıYıCı API v 2.0 genel önizlemesi Için SDK desteği** -bu ay, form tanıyıcı v 2.0 (Önizleme) sürümü için bir önizleme SDK 'sı eklemek üzere hizmet desteğimizi genişlettik. Seçtiğiniz dille çalışmaya başlamak için aşağıdaki bağlantıları kullanın: 
    * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)
    * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)
    * [Python SDK'sı](/python/api/overview/azure/ai-formrecognizer-readme?view=azure-python-preview)
@@ -91,7 +117,7 @@ GitHub 'da **yeni örnekler** mevcuttur.
 
 ### <a name="security-improvements"></a>Güvenlik iyileştirmeleri
 
-* Müşteri tarafından yönetilen anahtarlar artık Formtanıyıcı için kullanılabilir. Daha fazla bilgi için bkz. [rest for form tanıyıcı Için veri şifreleme](./form-recognizer-encryption-of-data-at-rest.md).
+* Customer-Managed anahtarlar artık Formtanıyıcı için kullanılabilir. Daha fazla bilgi için bkz. [rest for form tanıyıcı Için veri şifreleme](./form-recognizer-encryption-of-data-at-rest.md).
 * Azure Active Directory ile Azure kaynaklarına erişim için Yönetilen kimlikler kullanın. Daha fazla bilgi için bkz. [yönetilen kimliklere erişim yetkisi verme](../authentication.md#authorize-access-to-managed-identities).
 
 ## <a name="march-2020"></a>Mart 2020 
@@ -111,9 +137,9 @@ GitHub 'da **yeni örnekler** mevcuttur.
   Bu özelliği nasıl kullanacağınızı öğrenmek için bkz. [örnek etiketleme araç](./quickstarts/label-tool.md#specify-tag-value-types) Kılavuzu.
 
 
-* **Tablo görselleştirme** Örnek etiketleme aracı artık belgede tanınan tabloları görüntülüyor. Bu, etiketlemeye ve Analiz etmeden önce, belgeden tanınan ve ayıklanan tabloları görüntülemenize olanak sağlar. Bu özellik katmanlar seçeneği kullanılarak değiştirilebilir/kapatılabilir.
+* **Tablo görselleştirme** Örnek etiketleme aracı artık belgede tanınan tabloları görüntülüyor. Bu özellik, etiketlemeye ve Analiz etmeden önce, belgeden tanınan ve ayıklanan tabloları görüntülemenize olanak sağlar. Bu özellik katmanlar seçeneği kullanılarak değiştirilebilir/kapatılabilir.
 
-  Bu, tabloların nasıl tanındığını ve ayıklanacağını gösteren bir örnektir:
+  Aşağıdaki görüntü, tabloların nasıl tanındığını ve ayıklanacağını gösteren bir örnektir:
 
   > [!div class="mx-imgBorder"]
   > ![Örnek etiketleme aracını kullanarak tablo görselleştirme](./media/whats-new/formre-table-viz.png)
@@ -144,7 +170,7 @@ Bu sürümde, tanıyıcı 2,0 (Önizleme) formu tanıtılmıştır. Aşağıdaki
 ### <a name="new-features"></a>Yeni özellikler
 
 * **Özel model**
-  * **Etiketlerle eğitme** Artık el ile etiketlenmiş verileri olan özel bir modeli eğitebilirsiniz. Bu, daha iyi çalışan modellerle sonuçlanır ve anahtar içermeyen karmaşık formlarla veya formlarla çalışan modeller oluşturabilir.
+  * **Etiketlerle eğitme** Artık el ile etiketlenmiş verileri olan özel bir modeli eğitebilirsiniz. Bu yöntem, daha iyi çalışan modellerle sonuçlanır ve anahtar içermeyen karmaşık formlarla veya formlarla çalışan modeller oluşturabilir.
   * **Zaman uyumsuz API** Zaman uyumsuz API çağrılarını, büyük veri kümelerini ve dosyalarını eğitmek ve analiz etmek için kullanabilirsiniz.
   * **TIFF dosyası desteği** Artık TIFF belgelerinden eğitim alabilir ve verileri ayıklayabilirsiniz.
   * **Ayıklama doğruluk iyileştirmeleri**

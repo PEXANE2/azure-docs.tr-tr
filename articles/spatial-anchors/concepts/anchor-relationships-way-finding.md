@@ -1,19 +1,19 @@
 ---
 title: Sabit nokta ilişkileri ve yol bulma
 description: Bağlantı ilişkilerinin arkasındaki kavramsal model hakkında bilgi edinin. Bir alan içindeki çıpası bağlamayı ve bir yol bulma senaryosunu karşılamak için yakındaki API 'yi kullanmayı öğrenin.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006010"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496894"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarını ve bağlama ilişkilerini ve yolunu bulma
 
@@ -32,7 +32,7 @@ Bağlı bağlayıcıları bunlar gibi durumlarda kullanabilirsiniz:
 
 ## <a name="set-up-way-finding"></a>Yöntemi ayarlama-bulma
 
-Gözetimi sağlayan bir uygulama, kılavuz sağlamak için *yol bulma yöntemini*kullanıyor. Yöntem-bulma işlemi, sırayla gezinmede farklılık açabilir. Açılan gezinmede, kullanıcılar duvarlar, kapıların ve katlar arasında kılavuzluk eder. Yöntemle, Kullanıcı hedefin genel yönü hakkında ipuçları alır. Ancak alanın çıkarım veya bilgisi, kullanıcının hedef yapıya göre gezinmenize de yardımcı olur.
+Gözetimi sağlayan bir uygulama, kılavuz sağlamak için *yol bulma yöntemini* kullanıyor. Yöntem-bulma işlemi, sırayla gezinmede farklılık açabilir. Açılan gezinmede, kullanıcılar duvarlar, kapıların ve katlar arasında kılavuzluk eder. Yöntemle, Kullanıcı hedefin genel yönü hakkında ipuçları alır. Ancak alanın çıkarım veya bilgisi, kullanıcının hedef yapıya göre gezinmenize de yardımcı olur.
 
 Bir yöntem bulma deneyimi oluşturmak için ilk olarak deneyim için bir alan hazırlayın ve kullanıcıların etkileşime gileceği bir uygulama geliştirin. Bunlar kavramsal adımlardır:
 
@@ -40,7 +40,7 @@ Bir yöntem bulma deneyimi oluşturmak için ilk olarak deneyim için bir alan h
 2. **Bağlantı bağlantıları**: uzamsal bağlayıcı oluşturmak için seçili konumları ziyaret edin. Bunu, Son Kullanıcı uygulamasının bir yönetici modunda veya tamamen farklı bir uygulamada yapabilirsiniz. Her bir bağlayıcıyı birbirine bağlayacaksınız veya birbirleriyle ilişkilendirirsiniz. Hizmet bu ilişkileri korur.
 3. **Son Kullanıcı deneyimini başlatın**: kullanıcılar, seçili konumlardan hiçbirinde olabilecek bir tutturucu bulmak için uygulamayı çalıştırır. Genel tasarımınız, kullanıcıların deneyimi girebilecekleri konumları belirlemelidir.
 4. **Yakın bağlayıcıları bul**: Kullanıcı bir tutturucu bulduktan sonra, uygulama yakındaki bağlantıları isteyebilir. Bu yordam, cihaz ve bu bağlantılar arasında bir poz döndürür.
-5. **Kullanıcıya kılavuzluk**edin: uygulama, kullanıcının genel yönü ve mesafesi hakkında rehberlik sağlamak için bu bağlayıcıların her birine ait pozları kullanabilir. Örneğin, uygulamadaki kamera akışı, aşağıdaki görüntüde gösterildiği gibi her bir olası hedefi temsil eden bir simge ve ok gösterebilir.
+5. **Kullanıcıya kılavuzluk** edin: uygulama, kullanıcının genel yönü ve mesafesi hakkında rehberlik sağlamak için bu bağlayıcıların her birine ait pozları kullanabilir. Örneğin, uygulamadaki kamera akışı, aşağıdaki görüntüde gösterildiği gibi her bir olası hedefi temsil eden bir simge ve ok gösterebilir.
 6. **Kılavuzu daraltın**: Kullanıcı yönergede olduğu gibi, uygulama cihaz ile hedef bağlantı noktası arasında düzenli olarak yeni bir poz hesaplayabilir. Uygulama, kullanıcının hedefe ulaşmaya yardımcı olan kılavuz ipuçlarını iyileştirmeye devam etmektedir.
 
     ![Uygulamanın yol bulma kılavuzunu nasıl gösterebileceğine ilişkin bir örnek](./media/meeting-spot.png)

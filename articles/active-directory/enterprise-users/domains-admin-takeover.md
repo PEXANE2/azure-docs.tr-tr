@@ -6,7 +6,6 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
 ms.date: 11/15/2020
@@ -14,12 +13,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0472b2adb3213338b9fbc4e3a17a2c3444eb113
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 314ad3838fdc35925df20f651b80e4eeecd207db
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647588"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503588"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory’de yönetilmeyen bir dizini yönetici olarak devralma
 
@@ -144,12 +143,12 @@ cmdlet | Kullanım
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    Örneğin:
+    Örnek:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Bu komuttan döndürülen değeri (zorluk) kopyalayın. Örneğin:
+4. Bu komuttan döndürülen değeri (zorluk) kopyalayın. Örnek:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -160,7 +159,7 @@ cmdlet | Kullanım
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Örneğin:
+   Örnek:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force

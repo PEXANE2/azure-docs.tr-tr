@@ -7,19 +7,18 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: enterprise-users
 ms.topic: how-to
 ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: be40a3cea5aa7abfa257c4e5a2db61c514892dd5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647724"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503632"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory kiracı silme
 
@@ -56,7 +55,7 @@ Azure AD kuruluşunuzu yapılandırdığınızda, kuruluşunuz için Azure AD Pr
 
 Deneme Microsoft 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değil) bekleneceği için aşağıdaki tabloya bakın. Microsoft 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. My [Data ve Access for Business aboneliğMicrosoft 365 im sona erdiğinde ne olur?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
-Abonelik durumu | Veriler | Veri erişimi
+Abonelik durumu | Veri | Veri erişimi
 ----- | ----- | -----
 Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Microsoft 365 dosyalara veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır 
 Zaman aşımına uğradı (30 gün) | Tüm veriler erişilebilir| Kullanıcıların Microsoft 365 dosyalara veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
@@ -110,7 +109,7 @@ Mevcut olan Self Servis kaydolma ürünleri ve hizmetleri hakkında daha fazla b
 
 Deneme Microsoft 365 aboneliğinin süresi dolarsa (ücretli Iş ortağı/CSP, Kurumsal Anlaşma veya toplu lisanslama dahil değil) bekleneceği için aşağıdaki tabloya bakın. Microsoft 365 veri saklama ve abonelik yaşam döngüsü hakkında daha fazla bilgi için bkz. My [Data ve Access for Business aboneliğMicrosoft 365 im sona erdiğinde ne olur?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
-Ürün durumu | Veriler | Veri erişimi
+Ürün durumu | Veri | Veri erişimi
 ------------- | ---- | --------------
 Etkin (deneme için 30 gün) | Tüm veriler erişilebilir | Kullanıcıların Self Servis kaydolma ürününe, dosyalarına veya uygulamalarına normal erişimi vardır<br>Yöneticilerin Microsoft 365 yönetim merkezine ve kaynaklarına normal erişimi vardır
 Silindi | Silinen veriler | Kullanıcılar self servis kaydolma ürününe, dosyalarına veya uygulamalarına erişemez<br>Yöneticiler Microsoft 365 yönetim merkezine erişerek diğer abonelikleri satın alabilir ve yönetebilir

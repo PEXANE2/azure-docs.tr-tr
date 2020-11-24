@@ -7,19 +7,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc0429ae4507172e95618bc95e6a2c51034d352
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bf5a06cf906084e3f87d5f56748476a26587ff17
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379332"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95490740"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -309,8 +308,8 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Aşağıdaki ipuçları, kuralı düzgün şekilde kullanmanıza yardımcı olabilir.
 
-- **Yönetıcı kimliği** , YÖNETICININ nesne kimliğidir. Bu, yöneticinin **profilinde**bulunabilir.
-- Kuralın çalışması için, **yönetici** özelliğinin kuruluşunuzdaki kullanıcılar için doğru ayarlandığından emin olun. Kullanıcının **profilindeki**geçerli değeri kontrol edebilirsiniz.
+- **Yönetıcı kimliği** , YÖNETICININ nesne kimliğidir. Bu, yöneticinin **profilinde** bulunabilir.
+- Kuralın çalışması için, **yönetici** özelliğinin kuruluşunuzdaki kullanıcılar için doğru ayarlandığından emin olun. Kullanıcının **profilindeki** geçerli değeri kontrol edebilirsiniz.
 - Bu kural yalnızca yöneticinin doğrudan raporlarını destekler. Diğer bir deyişle, yöneticinin doğrudan raporlarının *ve* raporlarının bulunduğu bir grup oluşturamazsınız.
 - Bu kural diğer üyelik kurallarıyla birleştirilemez.
 

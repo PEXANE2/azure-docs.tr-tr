@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 4fd7a24edffbfb63adc830ddb83b45997743ad42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421643"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486305"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
 
@@ -72,5 +72,5 @@ Bir cihaz Oluşturucu olarak IoT Tak ve Kullan destekleyen bir IoT donanım ür�
 
 IoT Tak ve Kullan 'ye genel bir bakış edinolduğunuza göre, önerilen sonraki adım hızlı başlangıçlardan birini denemektedir:
 
-- [Bir cihazı IoT Hub bağlama (C)](./quickstart-connect-device-c.md)
-- [Çözümünüzden bir cihazla etkileşim kurma (Node.js)](./quickstart-service-node.md)
+- [IoT Hub’a cihaz bağlama](./quickstart-connect-device.md)
+- [Çözümünüzden bir cihazla etkileşim kurma](./quickstart-service.md)

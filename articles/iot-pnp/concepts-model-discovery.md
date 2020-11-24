@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445583"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495296"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan modellerini kullanma
 
@@ -125,7 +125,7 @@ Yeni bir cihaz bağlantısı için model KIMLIĞINI tanımladıktan sonra aşağ
 
 1. Bağlı cihazın model tanımını kullanarak, cihazın yeteneklerini sıralayabilirsiniz.
 
-1. Cihazın numaralandırılmış yeteneklerini kullanarak, kullanıcıların [cihazla etkileşime](quickstart-service-node.md)girmesine izin verebilirsiniz.
+1. Cihazın numaralandırılmış yeteneklerini kullanarak, kullanıcıların [cihazla etkileşime](quickstart-service.md)girmesine izin verebilirsiniz.
 
 ### <a name="custom-store"></a>Özel mağaza
 
@@ -137,12 +137,12 @@ Yeni bir cihaz bağlantısı için model KIMLIĞINI tanımladıktan sonra aşağ
 
 1. Bağlı cihazın model tanımını kullanarak, cihazın yeteneklerini sıralayabilirsiniz. 
 
-1. Cihazın numaralandırılmış yeteneklerini kullanarak, kullanıcıların [cihazla etkileşime](quickstart-service-node.md)girmesine izin verebilirsiniz.  
+1. Cihazın numaralandırılmış yeteneklerini kullanarak, kullanıcıların [cihazla etkileşime](quickstart-service.md)girmesine izin verebilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 IoT çözümünde IoT Tak ve Kullan modellerini nasıl tümleştirileceğini öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
 
-- [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service-node.md)
+- [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service.md)
 - [IoT dijital Ikizi REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Gezgini](howto-use-iot-explorer.md)

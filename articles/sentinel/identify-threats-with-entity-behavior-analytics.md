@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658800"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494786"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
 
@@ -88,7 +88,7 @@ Bu meydana gelme riskini en aza indirmek için, tüm uyarı sağlayıcılarını
 Aşağıdaki varlık türleri şu anda Azure Sentinel 'de tanımlanmıştır:
 
 - Kullanıcı hesabı (hesap)
-- Konak
+- Yönetici
 - IP adresi (IP)
 - Kötü Amaçlı Yazılımlar
 - Dosya
@@ -205,7 +205,7 @@ Kullanıcı eşi meta verilerini görselleştirmek için Azure Sentinel GitHub d
 
 İzin analizi, bir saldırgan tarafından kurumsal bir varlığın güvenliğinin tehlikeye atması olasılığını belirlemesine yardımcı olur. Bu etki, varlığın "envanter" yarıçapını de bilinir. Güvenlik analistleri, bu bilgileri, araştırmalar ve olay işleme önceliklerini belirlemek için kullanabilir.
 
-Azure Sentinel, kullanıcının doğrudan veya gruplar ya da hizmet sorumluları aracılığıyla erişebileceği Azure aboneliklerini değerlendirerek, belirli bir kullanıcı tarafından Azure kaynakları için tutulan doğrudan ve geçişli erişim haklarını belirler. Bu bilgilerin yanı sıra kullanıcının Azure AD güvenlik grubu üyeliğinin tam listesi, **UserAccessAnalytics** tablosunda depolanır. Aşağıdaki ekran görüntüsünde, UserAccessAnalytics tablosundaki bir örnek satır gösterilmektedir ve Kullanıcı Alex Johnson. **Kaynak varlık** Kullanıcı veya hizmet sorumlusu hesabıdır ve **hedef varlık** , kaynak varlığın erişimi olan kaynaktır. **Erişim düzeyi** ve **erişim türü** değerleri, hedef varlığın erişim denetimi modeline bağlıdır. Alex 'ın Azure aboneliği *contoso oteller kiracısına* katkıda bulunan erişimine sahip olduğunu görebilirsiniz. Aboneliğin erişim denetimi modeli RBAC 'dir.   
+Azure Sentinel, kullanıcının doğrudan veya gruplar ya da hizmet sorumluları aracılığıyla erişebileceği Azure aboneliklerini değerlendirerek, belirli bir kullanıcı tarafından Azure kaynakları için tutulan doğrudan ve geçişli erişim haklarını belirler. Bu bilgilerin yanı sıra kullanıcının Azure AD güvenlik grubu üyeliğinin tam listesi, **UserAccessAnalytics** tablosunda depolanır. Aşağıdaki ekran görüntüsünde, UserAccessAnalytics tablosundaki bir örnek satır gösterilmektedir ve Kullanıcı Alex Johnson. **Kaynak varlık** Kullanıcı veya hizmet sorumlusu hesabıdır ve **hedef varlık** , kaynak varlığın erişimi olan kaynaktır. **Erişim düzeyi** ve **erişim türü** değerleri, hedef varlığın erişim denetimi modeline bağlıdır. Alex 'ın Azure aboneliği *contoso oteller kiracısına* katkıda bulunan erişimine sahip olduğunu görebilirsiniz. Aboneliğin erişim denetimi modeli, Azure RBAC ' dir.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Kullanıcı erişimi Analizi tablosunun ekran görüntüsü":::
 

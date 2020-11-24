@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 11/18/2020
 ms.author: victorh
-ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087552"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95502189"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Güvenlik duvarı kurallarını yapılandırma
 Azure Güvenlik duvarında NAT kurallarını, ağ kurallarını ve uygulama kurallarını yapılandırabilirsiniz. Kural koleksiyonları, kural türüne göre öncelik sırasına göre işlenir ve 100 ' den 65.000 ' ye kadar daha yüksek sayılara daha düşük sayılar. Bir kural koleksiyonu adı yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt çizgi ile bitmelidir. En büyük ad uzunluğu 80 karakterdir.
@@ -26,7 +26,13 @@ Azure Güvenlik duvarında NAT kurallarını, ağ kurallarını ve uygulama kura
 
 ### <a name="network-rules-and-applications-rules"></a>Ağ kuralları ve uygulama kuralları
 
-Ağ kurallarını ve uygulama kurallarını yapılandırırsanız, ağ kuralları uygulama kurallarından önce öncelik sırasına göre uygulanır. Kurallar sonlandırılıyor. Bu nedenle bir ağ kuralında eşleşme bulunursa, başka hiçbir kural işlenmez.  Ağ kuralı eşleşmesi yoksa ve protokol HTTP, HTTPS veya MSSQL ise, paket daha sonra öncelik sırasıyla uygulama kuralları tarafından değerlendirilir. Hala eşleşme bulunamazsa paket, [altyapı kuralı koleksiyonuna](infrastructure-fqdns.md)göre değerlendirilir. Ardından hala eşleşme yoksa paket varsayılan olarak reddedilir.
+Ağ kurallarını ve uygulama kurallarını yapılandırırsanız, ağ kuralları uygulama kurallarından önce öncelik sırasına göre uygulanır. Kurallar sonlandırılıyor. Bu nedenle bir ağ kuralında eşleşme bulunursa, başka hiçbir kural işlenmez.  Ağ kuralı eşleşmesi yoksa ve protokol HTTP, HTTPS veya MSSQL ise, paket daha sonra öncelik sırasıyla uygulama kuralları tarafından değerlendirilir. Hala eşleşme bulunamazsa paket, [altyapı kuralı koleksiyonuna](infrastructure-fqdns.md)göre değerlendirilir. Hala eşleşme yoksa, paket varsayılan olarak reddedilir.
+
+#### <a name="network-rule-protocol"></a>Ağ kuralı Protokolü
+
+Ağ kuralları **TCP**, **UDP**, **ICMP** veya **herhangi bir** IP protokolü için yapılandırılabilir. Herhangi bir IP protokolü, [Internet atanmış numaralar yetkilisi (IANA) protokol numaraları](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) belgesinde tanımlanan tüm IP protokollerini içerir. Bir hedef bağlantı noktası açıkça yapılandırıldıysa, kural bir TCP + UDP kuralına çevrilir.
+
+9 Kasım 2020 tarihinden önce, **herhangi bir** **TCP** veya **UDP** ya da **ICMP**. Bu nedenle, protokol = any ve hedef bağlantı noktaları = ' * ' ile bu tarihten önce bir kural yapılandırmış olabilirsiniz. Gerçekten tanımlanmış olan herhangi bir IP protokolüne izin vermeyi düşünmüyorsanız, istediğiniz protokolleri (TCP, UDP veya ıCMP) açıkça yapılandırmak için kuralı değiştirin.
 
 ## <a name="inbound-connectivity"></a>Gelen bağlantı
 
@@ -51,15 +57,15 @@ Eşleşen bir ağ kuralı nedeniyle google.com bağlantısına izin verilir.
 
 |name  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
 |---------|---------|---------|---------|----------|----------|--------|
-|Web 'e izin ver     |TCP|IP adresi|*|IP adresi|*|80,443
+|Web 'e izin ver     |TCP|IP Adresi|*|IP Adresi|*|80,443
 
 **Uygulama kuralı**
 
 - Eylem: Reddet
 
-|name  |Kaynak türü  |Kaynak  |Protokol: bağlantı noktası|Hedef FQDN 'Ler|
+|name  |Kaynak türü  |Kaynak  |Protokol:Bağlantı Noktası|Hedef FQDN 'Ler|
 |---------|---------|---------|---------|----------|----------|
-|Reddet-Google     |IP adresi|*|http: 80, https: 443|google.com
+|Reddet-Google     |IP Adresi|*|http: 80, https: 443|google.com
 
 **Sonuç**
 
@@ -77,7 +83,7 @@ Daha *yüksek öncelikli bir* ağ kuralı koleksiyonu ENGELLEDIĞI için SSH tra
 
 |name  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
 |---------|---------|---------|---------|----------|----------|--------|
-|SSH 'ye izin ver     |TCP|IP adresi|*|IP adresi|*|22
+|SSH 'ye izin ver     |TCP|IP Adresi|*|IP Adresi|*|22
 
 **Ağ kuralı koleksiyonu 2**
 
@@ -87,7 +93,7 @@ Daha *yüksek öncelikli bir* ağ kuralı koleksiyonu ENGELLEDIĞI için SSH tra
 
 |name  |Protokol  |Kaynak türü  |Kaynak  |Hedef türü  |Hedef adres  |Hedef bağlantı noktaları|
 |---------|---------|---------|---------|----------|----------|--------|
-|Deny-SSH     |TCP|IP adresi|*|IP adresi|*|22
+|Deny-SSH     |TCP|IP Adresi|*|IP Adresi|*|22
 
 **Sonuç**
 

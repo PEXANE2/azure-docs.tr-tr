@@ -7,22 +7,22 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421473"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500280"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Öğretici: IoT Tak ve Kullan modülünü bağlama (C#)
 
 Bu öğreticide, bir genel IoT Tak ve Kullan [modülünün](../iot-hub/iot-hub-devguide-module-twins.md)nasıl bağlanacağı gösterilmektedir.
 
-Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında bir IoT Tak ve Kullan aygıtıdır ve model KIMLIĞI tarafından tanımlanan dijital TWINS tanım dili (DTDL) modelinde açıklanan özellikleri ve yöntemleri uygular. Cihazların DTDL ve model KIMLIĞINI kullanma hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan Geliştirici Kılavuzu](./concepts-developer-guide-device-csharp.md). Modüller model kimliklerini ve DTDL modellerini aynı şekilde kullanır.
+Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında bir IoT Tak ve Kullan aygıtıdır ve model KIMLIĞI tarafından tanımlanan dijital TWINS tanım dili (DTDL) modelinde açıklanan özellikleri ve yöntemleri uygular. Cihazların DTDL ve model KIMLIĞINI kullanma hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan Geliştirici Kılavuzu](./concepts-developer-guide-device.md). Modüller model kimliklerini ve DTDL modellerini aynı şekilde kullanır.
 
 IoT Tak ve Kullan modülünün nasıl uygulanacağını göstermek için bu öğreticide, termostat C# cihaz örneğini genel bir modüle nasıl dönüştürebileceğiniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -37,11 +37,11 @@ My **-module-Module adlı bir** modül ekleyin **:**
 
 1. Azure IoT Gezgini aracında, **My-Module-Device** cihazına gidin.
 
-1. **Modül kimliği** ' ni seçin ve **+ Ekle** ' yi seçin.
+1. **Modül kimliği**' ni seçin ve **+ Ekle**' yi seçin.
 
-1. Modül kimlik adı olarak **My-Module** ' i girin ve **Kaydet** ' i seçin.
+1. Modül kimlik adı olarak **My-Module** ' i girin ve **Kaydet**' i seçin.
 
-1. Modül kimlikleri listesinde **My-Module** ' i seçin. Ardından birincil bağlantı dizesini kopyalayın. Bu modülün Bu bağlantı dizesini daha sonra bu öğreticide kullanacaksınız.
+1. Modül kimlikleri listesinde **My-Module**' i seçin. Ardından birincil bağlantı dizesini kopyalayın. Bu modülün Bu bağlantı dizesini daha sonra bu öğreticide kullanacaksınız.
 
 1. **Module ikizi** sekmesini seçin ve istenen veya bildirilen özelliklerden olmadığına dikkat edin:
 
@@ -96,9 +96,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. *Azure-iot-SDK-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* proje dosyasını Visual Studio 2019 ' de açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | Dizisi |
     | IOTHUB_MODULE_CONNECTION_STRING | Daha önce bir nota yaptığınız modül bağlantı dizesi |
@@ -171,9 +171,9 @@ Hizmet SDK 'Ları, bağlı IoT Tak ve Kullan cihazların ve modüllerinin model 
 
 1. Visual Studio 'nun başka bir örneğinde, *Azure-iot-SDK-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* projesini açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | My-Module-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |
@@ -238,4 +238,4 @@ Azure IoT gezgin aracını kullanarak şunları görebilirsiniz:
 Bu öğreticide, IoT Hub 'a modüllerle bir IoT Tak ve Kullan cihazını nasıl bağlayadığınızı öğrendiniz. IoT Tak ve Kullan cihaz modelleri hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [IoT Tak ve Kullan modelleme Geliştirici Kılavuzu](./concepts-developer-guide-device-csharp.md)
+> [IoT Tak ve Kullan modelleme Geliştirici Kılavuzu](./concepts-developer-guide-device.md)

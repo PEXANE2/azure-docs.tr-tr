@@ -1,19 +1,19 @@
 ---
 title: Sık sorulan sorular
 description: Azure uzamsal bağlayıcı hizmeti hakkında SSS.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 05/18/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: eb02de25cfcb0dde01699c1169d03f0d822c4ae2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097414"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487376"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
@@ -55,7 +55,7 @@ Y **:** Tüm veriler, Microsoft tarafından yönetilen bir veri şifreleme anaht
 
 **S: Azure uzamsal bağlayıcıları kullanılırken bir ortamla ilgili hangi bilgiler iletilir ve hizmete depolanır? Aktarılan ve depolanan ortamın resimleri mı var?**
 
-Y **: bağlantıları**oluştururken veya bulmada, ortamın resimleri, cihazda türetilmiş bir biçimde işlenir. Bu türetilmiş biçim öğesine iletilir ve hizmete depolanır.
+Y **: bağlantıları** oluştururken veya bulmada, ortamın resimleri, cihazda türetilmiş bir biçimde işlenir. Bu türetilmiş biçim öğesine iletilir ve hizmete depolanır.
 
 Saydamlığın sağlanması için bir ortamın görüntüsü ve türetilmiş seyrek nokta bulutu aşağıda verilmiştir. Nokta bulutu, hizmet üzerinde aktarılan ve depolanan ortamın geometrik temsilini gösterir. Seyrek nokta bulutundaki her bir nokta için, bu noktanın görsel özelliklerinin karmasını ilettik ve depolarız. Karma, herhangi bir piksel verisini içermez, ancak içermez.
 

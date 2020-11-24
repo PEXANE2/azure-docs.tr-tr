@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913203"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492219"
 ---
 # <a name="receipt-concepts"></a>Makbuz kavramları
 
@@ -57,6 +57,13 @@ Makbuz API 'SI aşağıdaki bilgileri de döndürür:
 * OCR ham metni (tüm alındı için OCR ayıklanan metin çıktısı)
 * Her bir değer, çizgi ve sözcük için sınırlayıcı kutu
 
+## <a name="try-it-out"></a>Deneyin
+
+Form tanıyıcı alındı hizmetini denemek için çevrimiçi örnek UI aracına gidin:
+
+> [!div class="nextstepaction"]
+> [Önceden oluşturulmuş modelleri deneyin](https://fott-preview.azurewebsites.net/)
+
 ## <a name="input-requirements"></a>Giriş gereksinimleri
 
 [!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
@@ -64,7 +71,7 @@ Makbuz API 'SI aşağıdaki bilgileri de döndürür:
 ## <a name="supported-locales"></a>Desteklenen yerel ayarlar 
 
 * **Önceden oluşturulmuş makbuz v 2.0** (GA), en-US yerel ayarında satış alındılarını destekler
-* **Önceden oluşturulmuş makbuz v 2.1-Önizleme. 1** (Genel Önizleme) aşağıdaki en fazla ön ek ayarlar için ek destek ekler: 
+* **Önceden oluşturulmuş makbuz v 2.1-Önizleme. 2** (Genel Önizleme) aşağıdaki en fazla ön ek ayarlar için ek destek ekler: 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -73,12 +80,12 @@ Makbuz API 'SI aşağıdaki bilgileri de döndürür:
   > [!NOTE]
   > Dil girişi 
   >
-  > Önceden oluşturulmuş makbuz v 2.1-Preview. 1, ek Ingilizce pazarlardan bir makbuz yerel ayarı belirtmek için isteğe bağlı bir istek parametresine sahiptir. Avustralya (EN-AU), Kanada (EN-CA), Büyük Britanya (EN-GB) ve Hindistan (EN-ın) ile Ingilizce olan satış alındıları için, iyileştirilmiş sonuçları elde etmek üzere yerel ayarı belirtebilirsiniz. V 2.1-Preview. 1 ' de bir yerel ayar belirtilmemişse, model varsayılan olarak EN-US modeline ayarlanır.
+  > Önceden oluşturulmuş makbuz v 2.1-Önizleme. 2, ek Ingilizce pazarlardan bir makbuz yerel ayarı belirtmek için isteğe bağlı bir istek parametresine sahiptir. Avustralya (EN-AU), Kanada (EN-CA), Büyük Britanya (EN-GB) ve Hindistan (EN-ın) ile Ingilizce olan satış alındıları için, iyileştirilmiş sonuçları elde etmek üzere yerel ayarı belirtebilirsiniz. V 2.1-Preview içinde yerel ayar belirtilmemişse, model varsayılan olarak EN-US modeline ayarlanır.
 
 
 ## <a name="the-analyze-receipt-operation"></a>Alındısı Analizi işlemi
 
-[Analiz alma alındısı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) , giriş olarak bir görüntünün GÖRÜNTÜSÜNÜ veya PDF alır ve ilgilendiğiniz ve metnin değerlerini ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
+[Analiz alma alındısı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) , giriş olarak bir görüntünün GÖRÜNTÜSÜNÜ veya PDF alır ve ilgilendiğiniz ve metnin değerlerini ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
@@ -86,7 +93,7 @@ Makbuz API 'SI aşağıdaki bilgileri de döndürür:
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Analiz alma sonucunu al işlemi
 
-İkinci adım, [analiz alma sonucunu Al işlemini çağıralım](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult) . Bu işlem, alındı bilgisi çözümleme işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
+İkinci adım, [analiz alma sonucunu Al işlemini çağıralım](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) . Bu işlem, alındı bilgisi çözümleme işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
 
 |Alan| Tür | Olası değerler |
 |:-----|:----:|:----|

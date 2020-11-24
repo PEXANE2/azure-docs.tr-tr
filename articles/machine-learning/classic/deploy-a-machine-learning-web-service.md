@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322837"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495211"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmeti dağıtma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
+**Uygulama hedefi:** ![ Bu bir onay işaretidir ve bu makalenin Machine Learning Studio (klasik) için geçerli olduğu anlamına gelir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ Bu bir X ' dir ve bu makalenin Azure Machine Learning için geçerli olduğu anlamına gelir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Azure Machine Learning Studio (klasik), tahmine dayalı analitik çözüm oluşturmanıza ve test etmenize olanak sağlar. Daha sonra çözümü bir Web hizmeti olarak dağıtabilirsiniz.
@@ -89,11 +89,11 @@ Bu eğitim denemesini tahmine dayalı bir deneyle dönüştürdüğünüzde, bu 
   
     Örneğin, bu örnekte örnek veri kümesinde eksik değerler olabilir, bu nedenle bunlarla başa çıkmak için bir [Temizleme eksik veri][clean-missing-data] modülü eklenmiştir. Ayrıca, örnek veri kümesi, modeli eğitmek için gerekli olmayan sütunları içerir. Bu nedenle, veri akışından bu ek sütunları hariç tutmak için DataSet modülünde bir [Select sütunları][select-columns] eklenmiştir. Puanlama için Web hizmeti üzerinden gönderilecek verilerin eksik değerlere sahip olmadığını biliyorsanız, [eksik veri modülünü Temizleme][clean-missing-data] seçeneğini kaldırabilirsiniz. Ancak, [veri kümesi modülündeki sütunları seç][select-columns] , eğitilen modelin beklediği veri sütunlarını tanımlamaya yardımcı olduğundan, Bu modülün kalması gerekir.
 
-* **Eğitme** -bu modüller modeli eğiteiçin kullanılır. **Web hizmeti ayarla** ' ya tıkladığınızda, bu modüller, eğitilen modeli içeren tek bir modülle değiştirilmiştir. Bu yeni modül, modül paleti 'nin **eğitilen modeller** bölümüne kaydedilir.
+* **Eğitme** -bu modüller modeli eğiteiçin kullanılır. **Web hizmeti ayarla**' ya tıkladığınızda, bu modüller, eğitilen modeli içeren tek bir modülle değiştirilmiştir. Bu yeni modül, modül paleti 'nin **eğitilen modeller** bölümüne kaydedilir.
 
 * **Puan** -Bu örnekte, veri akışını test verilerine ve eğitim verilerine bölmek Için [bölünmüş veri][split] modülü kullanılır. Tahmine dayalı deneyde artık eğitim duymuyoruz, bu nedenle [bölünmüş veriler][split] kaldırılabilir. Benzer şekilde, ikinci [puan modeli][score-model] modülü ve [modeli değerlendir][evaluate-model] modülü, sonuçları test verileriyle karşılaştırmak için kullanılır; bu nedenle, bu modüller tahmine dayalı deneyde gerekli değildir. Ancak, kalan [puan modeli][score-model] modülü, Web hizmeti aracılığıyla bir puan sonucu döndürmek için gereklidir.
 
-Aşağıda, **Web hizmeti ayarla** ' yı tıkladıktan sonra örneğimiz şöyle görünür:
+Aşağıda, **Web hizmeti ayarla**' yı tıkladıktan sonra örneğimiz şöyle görünür:
 
 ![Dönüştürülmüş tahmine dayalı deneme](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
@@ -138,7 +138,7 @@ Aşağıdaki adımlarda, tahmine dayalı bir denemeyi yeni bir Web hizmeti olara
 
 Tahmine dayalı denemenin hazırlandığına göre, bunu yeni (Kaynak Yöneticisi tabanlı) bir Azure Web hizmeti olarak dağıtabilirsiniz. Kullanıcılar, Web hizmetini kullanarak modelinize veri gönderebilir ve model tahmine dayalı olarak döndürülür.
 
-Tahmine dayalı denemenize dağıtmak için deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın. Deneme çalışmayı tamamladıktan sonra **Web Hizmeti Dağıt** ' a tıklayın ve **Web Hizmeti Dağıt [Yeni]** ' yi seçin.  Machine Learning Studio (klasik) Web hizmeti portalının dağıtım sayfası açılır.
+Tahmine dayalı denemenize dağıtmak için deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın. Deneme çalışmayı tamamladıktan sonra **Web Hizmeti Dağıt** ' a tıklayın ve **Web Hizmeti Dağıt [Yeni]**' yi seçin.  Machine Learning Studio (klasik) Web hizmeti portalının dağıtım sayfası açılır.
 
 > [!NOTE] 
 > Yeni bir Web hizmeti dağıtmak için, Web hizmetini dağıttığınız abonelikte yeterli izinlere sahip olmanız gerekir. Daha fazla bilgi için, [Azure Machine Learning Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme](manage-new-webservice.md)makalesine bakın. 
@@ -149,7 +149,7 @@ Deneme dağıtımı sayfasında, Web hizmeti için bir ad girin.
 Fiyatlandırma planı seçin. Mevcut bir fiyatlandırma planınız varsa, bunu seçebilirsiniz; Aksi takdirde hizmet için yeni bir fiyat planı oluşturmanız gerekir.
 
 1. **Fiyat planı** açılan penceresinde, mevcut bir planı seçin veya **Yeni plan Seç** seçeneğini belirleyin.
-2. **Plan adı** ' nda, faturanızda planı tanımlayacak bir ad yazın.
+2. **Plan adı**' nda, faturanızda planı tanımlayacak bir ad yazın.
 3. **Aylık plan katmanlarından** birini seçin. Varsayılan bölgeniz ve Web hizmetiniz için plan katmanları varsayılan olarak bu bölgeye dağıtılır.
 
 **Dağıt** ' a tıklayın ve Web hizmetiniz Için **hızlı başlangıç** sayfası açılır.
@@ -164,17 +164,17 @@ Yeni Web hizmetinizi test etmek için ortak görevler altında **Web hizmeti tes
 
 RR 'ler test sayfası, deneme için tanımladığınız girdileri, çıkışları ve genel parametreleri görüntüler. Web hizmetini test etmek için, girişler için uygun değerleri el ile girebilir veya test değerlerini içeren bir virgülle ayrılmış değer (CSV) biçimli dosya sağlayabilirsiniz.
 
-RR 'leri kullanarak test etmek için liste görünümü modundan, girişler için uygun değerleri girin ve **Test isteği-yanıtı** ' na tıklayın. Tahmin sonuçlarınız, sol taraftaki çıktı sütununda görüntülenir.
+RR 'leri kullanarak test etmek için liste görünümü modundan, girişler için uygun değerleri girin ve **Test isteği-yanıtı**' na tıklayın. Tahmin sonuçlarınız, sol taraftaki çıktı sütununda görüntülenir.
 
 ![Web hizmetinizi test etmek için uygun değerleri girin](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-BES 'yı test etmek için **Batch** ' e tıklayın. Toplu Işlem testi sayfasında, girişte bulunan Araştır ' a tıklayın ve uygun örnek değerleri içeren bir CSV dosyası seçin. Bir CSV dosyanız yoksa ve Machine Learning Studio (klasik) kullanarak tahmine dayalı denemeniz oluşturduysanız, tahmine dayalı denemenize yönelik veri kümesini indirebilir ve kullanabilirsiniz.
+BES 'yı test etmek için **Batch**' e tıklayın. Toplu Işlem testi sayfasında, girişte bulunan Araştır ' a tıklayın ve uygun örnek değerleri içeren bir CSV dosyası seçin. Bir CSV dosyanız yoksa ve Machine Learning Studio (klasik) kullanarak tahmine dayalı denemeniz oluşturduysanız, tahmine dayalı denemenize yönelik veri kümesini indirebilir ve kullanabilirsiniz.
 
-Veri kümesini indirmek için Machine Learning Studio (klasik) öğesini açın. Tahmine dayalı denemenizi açın ve denemenizin girişine sağ tıklayın. Bağlam menüsünden **veri kümesi** ' ni seçin ve ardından **İndir** ' i seçin.
+Veri kümesini indirmek için Machine Learning Studio (klasik) öğesini açın. Tahmine dayalı denemenizi açın ve denemenizin girişine sağ tıklayın. Bağlam menüsünden **veri kümesi** ' ni seçin ve ardından **İndir**' i seçin.
 
 ![Veri kümesini Studio (klasik) tuvalinden indirin](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
-**Test** ' e tıklayın. Toplu yürütme işinin durumu, **Test toplu işleri** altında sağ tarafta görüntülenir.
+**Test**' e tıklayın. Toplu yürütme işinin durumu, **Test toplu işleri** altında sağ tarafta görüntülenir.
 
 ![Web hizmeti portalı ile Batch yürütme işinizi test etme](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
@@ -194,7 +194,7 @@ Machine Learning Studio (klasik) Web hizmetine erişme hakkında daha fazla bilg
 
 ### <a name="manage-your-new-web-service"></a>Yeni Web hizmetinizi yönetin
 
-Yeni Web hizmetlerinizi, Machine Learning Studio (klasik) Web Hizmetleri portalını kullanarak yönetebilirsiniz. [Ana portal sayfasında](https://services.azureml.net/), **Web Hizmetleri** ' ne tıklayın. Web Hizmetleri sayfasından bir hizmeti silebilir veya kopyalayabilirsiniz. Belirli bir hizmeti izlemek için, hizmete tıklayın ve ardından **Pano** ' ya tıklayın. Web hizmetiyle ilişkili toplu işleri izlemek için **Batch Istek günlüğü** ' ne tıklayın.
+Yeni Web hizmetlerinizi, Machine Learning Studio (klasik) Web Hizmetleri portalını kullanarak yönetebilirsiniz. [Ana portal sayfasında](https://services.azureml.net/), **Web Hizmetleri**' ne tıklayın. Web Hizmetleri sayfasından bir hizmeti silebilir veya kopyalayabilirsiniz. Belirli bir hizmeti izlemek için, hizmete tıklayın ve ardından **Pano**' ya tıklayın. Web hizmetiyle ilişkili toplu işleri izlemek için **Batch Istek günlüğü**' ne tıklayın.
 
 ### <a name="deploy-your-new-web-service-to-multiple-regions"></a><a id="multi-region"></a> Yeni Web hizmetinizi birden çok bölgeye dağıtma
 
@@ -206,33 +206,33 @@ Fiyatlandırma bölgeye özeldir, bu nedenle Web hizmetini dağıtacağınız he
 
 1. [Microsoft Azure Machine Learning Web hizmetlerinde](https://services.azureml.net/)oturum açın.
 2. **Planlar** menü seçeneğine tıklayın.
-3. Görünüm üzerinden planlar sayfasında **Yeni** ' ye tıklayın.
+3. Görünüm üzerinden planlar sayfasında **Yeni**' ye tıklayın.
 4. **Abonelik** açılan menüsünde, yeni planın bulunacağı aboneliği seçin.
 5. **Bölge** açılan listesinden yeni plan için bir bölge seçin. Seçilen bölge için plan seçenekleri, sayfanın **plan seçenekleri** bölümünde görüntülenecektir.
 6. **Kaynak grubu** açılır listesinden plan için bir kaynak grubu seçin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 7. **Plan adı** ' nda planın adını yazın.
 8. **Plan seçenekleri** altında, yeni plan için faturalandırma düzeyine tıklayın.
-9. **Oluştur** 'a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Web hizmetini başka bir bölgeye dağıtma
 
 1. Microsoft Azure Machine Learning Web Hizmetleri sayfasında, **Web Hizmetleri** menü seçeneğine tıklayın.
 2. Yeni bir bölgeye dağıttığınız Web hizmetini seçin.
-3. **Kopyala** ' ya tıklayın.
-4. **Web hizmeti adı** ' nda, Web hizmeti için yeni bir ad yazın.
-5. **Web hizmeti açıklamasında** , Web hizmeti için bir açıklama yazın.
+3. **Kopyala**' ya tıklayın.
+4. **Web hizmeti adı**' nda, Web hizmeti için yeni bir ad yazın.
+5. **Web hizmeti açıklamasında**, Web hizmeti için bir açıklama yazın.
 6. **Abonelik** açılan menüsünde, yeni Web hizmetinin bulunacağı aboneliği seçin.
 7. **Kaynak grubu** açılır listesinden Web hizmeti için bir kaynak grubu seçin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 8. **Bölge** açılan listesinden, Web hizmetinin dağıtılacağı bölgeyi seçin.
 9. **Depolama hesabı** açılan menüsünde, Web hizmetinin kaydedileceği bir depolama hesabı seçin.
 10. **Fiyat planı** açılan menüsünde, adım 8 ' de seçtiğiniz bölgede bir plan seçin.
-11. **Kopyala** ' ya tıklayın.
+11. **Kopyala**' ya tıklayın.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>Bunu klasik Web hizmeti olarak dağıtma
 
 Tahmine dayalı deneme yeterli şekilde hazırlandığına göre, bunu klasik bir Azure Web hizmeti olarak dağıtabilirsiniz. Kullanıcılar, Web hizmetini kullanarak modelinize veri gönderebilir ve model tahmine dayalı olarak döndürülür.
 
-Tahmine dayalı denemenize dağıtmak için deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın ve ardından **Web Hizmeti Dağıt** ' a tıklayın. Web hizmeti ayarlanır ve Web hizmeti panosuna yerleştirdiniz.
+Tahmine dayalı denemenize dağıtmak için deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın ve ardından **Web Hizmeti Dağıt**' a tıklayın. Web hizmeti ayarlanır ve Web hizmeti panosuna yerleştirdiniz.
 
 ![Web hizmetinizi Studio 'dan dağıtma (klasik)](./media/publish-a-machine-learning-web-service/figure-2.png)
 
@@ -240,7 +240,7 @@ Tahmine dayalı denemenize dağıtmak için deneme tuvalinin alt kısmındaki **
 
 Web hizmetini Machine Learning Studio (klasik) Web Hizmetleri portalında veya Machine Learning Studio (klasik) test edebilirsiniz.
 
-Istek yanıtı Web hizmetini test etmek için Web hizmeti panosundaki **Test** düğmesine tıklayın. Bir iletişim kutusu açılır ve hizmet için giriş verilerini ister. Bunlar, Puanlama denemesine göre beklenen sütunlardır. Bir veri kümesi girin ve ardından **Tamam** ' a tıklayın. Web hizmeti tarafından oluşturulan sonuçlar panonun en altında görüntülenir.
+Istek yanıtı Web hizmetini test etmek için Web hizmeti panosundaki **Test** düğmesine tıklayın. Bir iletişim kutusu açılır ve hizmet için giriş verilerini ister. Bunlar, Puanlama denemesine göre beklenen sütunlardır. Bir veri kümesi girin ve ardından **Tamam**' a tıklayın. Web hizmeti tarafından oluşturulan sonuçlar panonun en altında görüntülenir.
 
 Daha önce yeni Web hizmeti bölümünde gösterildiği gibi Azure Machine Learning Studio (klasik) Web Hizmetleri portalında hizmetinizi test etmek için **Test** önizleme bağlantısına tıklayabilirsiniz.
 
@@ -250,7 +250,7 @@ Toplu yürütme hizmetini test etmek için **Test** önizleme bağlantısı ' na
 
 **Yapılandırma** sayfasında, hizmetin görünen adını değiştirebilir ve bir açıklama verebilirsiniz. Ad ve açıklama, Web hizmetlerinizi yönettiğiniz [Azure Portal](https://portal.azure.com/) görüntülenir.
 
-Giriş **şeması** , **Çıkış ŞEMASı** ve **Web hizmeti parametresi** altındaki her bir sütun için bir dize girerek giriş verileriniz, çıkış verileriniz ve Web hizmeti parametreleriniz için bir açıklama sağlayabilirsiniz. Bu açıklamalar, Web hizmeti için sunulan örnek kod belgelerinde kullanılır.
+Giriş **şeması**, **Çıkış ŞEMASı** ve **Web hizmeti parametresi** altındaki her bir sütun için bir dize girerek giriş verileriniz, çıkış verileriniz ve Web hizmeti parametreleriniz için bir açıklama sağlayabilirsiniz. Bu açıklamalar, Web hizmeti için sunulan örnek kod belgelerinde kullanılır.
 
 Web hizmetinize erişildiğinde gördüğünüz herhangi bir başarısızlığı tanılamak için günlüğe kaydetmeyi etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Machine Learning Studio (klasik) Web Hizmetleri için günlüğü etkinleştirme](web-services-logging.md).
 
@@ -275,7 +275,7 @@ Daha fazla bilgi için, bkz. [Azure Machine Learning Studio (klasik) çalışma 
 ## <a name="update-the-web-service"></a>Web hizmetini güncelleştirme
 Web hizmetinizde, modeli ek eğitim verileriyle güncelleştirmek ve özgün Web hizmetinin üzerine yazarak yeniden dağıtmak gibi değişiklikler yapabilirsiniz.
 
-Web hizmetini güncelleştirmek için, Web hizmetini dağıtmak için kullandığınız özgün tahmine dayalı denemeyi açın ve **farklı kaydet** ' e tıklayarak düzenlenebilir bir kopya oluşturun. Değişikliklerinizi yapın ve ardından **Web Hizmeti Dağıt** ' a tıklayın.
+Web hizmetini güncelleştirmek için, Web hizmetini dağıtmak için kullandığınız özgün tahmine dayalı denemeyi açın ve **farklı kaydet**' e tıklayarak düzenlenebilir bir kopya oluşturun. Değişikliklerinizi yapın ve ardından **Web Hizmeti Dağıt**' a tıklayın.
 
 Bu denemeyi daha önce dağıttığınıza göre, mevcut hizmeti (Klasik Web hizmeti) veya güncelleştirme (yeni Web hizmeti) üzerine yazmak isteyip istemediğiniz sorulur. **Evet** veya **Güncelleştir** ' i tıklatmak, mevcut Web hizmetini sonlandırır ve yeni tahmine dayalı denemeyi dağıttığı yerde dağıtılır.
 

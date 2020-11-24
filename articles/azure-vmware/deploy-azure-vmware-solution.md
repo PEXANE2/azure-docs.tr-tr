@@ -4,12 +4,12 @@ description: Azure VMware çözümü özel bulutu 'nı dağıtmak için planlama
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 11/09/2020
-ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 47fc894fa1d6204a1bc2c912da7fcbb2394627fa
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336344"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484228"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -30,7 +30,7 @@ Bu makalede, Azure VMware çözümünü dağıtmak için [planlama bölümündek
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
 >[!NOTE]
->Bu adıma uçtan uca genel bakış için [Azure VMware çözümü: dağıtım](https://www.youtube.com/embed/1JLB3L2WDWI) videosunu görüntüleyin. 
+>Bu adıma uçtan uca genel bakış için [Azure VMware çözümü: dağıtım](https://www.youtube.com/embed/gng7JjxgayI) videosunu görüntüleyin.
 
 ## <a name="create-the-jump-box"></a>Sıçrama kutusunu oluşturma
 
@@ -67,7 +67,7 @@ Bu örnekte, 10.74.72.0/22 ağı dağıtım sırasında giriştir/24 ağı türe
 
 Önceki adımda oluşturduğunuz sıçrama kutusunda oturum açın. Oturum açtıktan sonra bir Web tarayıcısı açın ve git ve NSX-T Yönetici konsoluna gidin ve oturum açın.  
 
-VCenter ve NSX-T yönetici konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçip **genel bakış** görünümünde **kimlik > varsayılan** ' ı seçin. 
+VCenter ve NSX-T yönetici konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçip **genel bakış** görünümünde **kimlik > varsayılan**' ı seçin. 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Azure VMware çözümünde bir ağ kesimi oluşturma
 

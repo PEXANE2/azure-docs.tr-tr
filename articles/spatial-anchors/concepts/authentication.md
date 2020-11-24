@@ -1,20 +1,20 @@
 ---
-title: Kimlik doğrulama ve yetkilendirme
+title: Kimlik doğrulaması ve yetkilendirme
 description: Bir uygulama veya hizmetin Azure uzamsal bağlayıcıların kimliğini doğrulayabileceği çeşitli yollar ve uzamsal Tutturucuların erişimini geçit halinde denetleyebilmeniz gereken denetim düzeylerini öğrenin.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 10/08/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242356"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484619"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -97,20 +97,20 @@ Azure Active Directory kullanıcıları hedefleyen uygulamalar için, Kullanıc�
 **Azure portal**
 1.    Uygulamanızı Azure AD 'ye yerel bir uygulama olarak kaydedin. Kayıt kapsamında, uygulamanızın çok kiracılı olup olmayacağını belirlemeniz gerekir. Ayrıca, uygulamanız için izin verilen yeniden yönlendirme URL 'Lerini sağlamanız gerekir.
 1.  **API izinleri** sekmesine gidin.
-2.  **Izin Ekle** ' yi seçin.
+2.  **Izin Ekle**' yi seçin.
     1.  **Kuruluşumun kullandığı API** 'Lerde **karma gerçeklik kaynak sağlayıcısını** seçin.
     2.  **Temsilci izinleri** seçin.
     3.  **Mixedreality** altında **mixedreality. SignIn** ' ı seçin.
-    4.  **Izin Ekle** ' yi seçin.
-3.  **Yönetici Izni ver** ' i seçin.
+    4.  **Izin Ekle**' yi seçin.
+3.  **Yönetici Izni ver**' i seçin.
 
 2. Uygulamanıza veya kullanıcılarınıza kaynağınızın erişimini verin:
    1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
    2.    **Erişim denetimi (IAM)** sekmesine gidin.
-   3.    **Rol ataması ekle** ’yi seçin.
+   3.    **Rol ataması ekle**’yi seçin.
    1.    [Bir rol seçin](#azure-role-based-access-control).
    2.    **Seç** kutusunda, erişim atamak istediğiniz kullanıcıların, grupların ve/veya uygulamaların adlarını girin.
-   3.    **Kaydet** ’i seçin.
+   3.    **Kaydet**'i seçin.
 
 **Kodunuzda**
 1.    MSAL ' de **ISTEMCI kimliği** ve **redirecturı** PARAMETRELERI için kendi Azure AD uygulamanızın uygulama KIMLIĞI ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
@@ -174,28 +174,28 @@ Azure AD erişim belirteci [msal](../../active-directory/develop/msal-overview.m
 
 **Azure portal**
 1.    Uygulamanızı Azure AD 'ye kaydedin:
-        1.    Azure portal **Azure Active Directory** ' i seçin ve **uygulama kayıtları** ' yı seçin.
+        1.    Azure portal **Azure Active Directory**' i seçin ve **uygulama kayıtları**' yı seçin.
         2.    **Yeni kayıt** seçeneğini belirleyin.
-        3.    Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. **Oluştur** ’u seçin.
-2.    Uygulamada, **Ayarlar** ' ı seçin ve ardından **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve ardından **Ekle** ' yi seçin. Gizli anahtar değerini kaydettiğinizden emin olun. Web hizmetinizin koduna dahil etmeniz gerekir.
+        3.    Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. **Oluştur**’u seçin.
+2.    Uygulamada, **Ayarlar**' ı seçin ve ardından **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve ardından **Ekle**' yi seçin. Gizli anahtar değerini kaydettiğinizden emin olun. Web hizmetinizin koduna dahil etmeniz gerekir.
 3.    Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
         1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
         2.    **Erişim denetimi (IAM)** sekmesine gidin.
-        3.    **Rol ataması ekle** ’yi seçin.
+        3.    **Rol ataması ekle**’yi seçin.
         4.    [Bir rol seçin](#azure-role-based-access-control).
         5.    **Seç** kutusunda, erişim atamak istediğiniz uygulamaların adını veya adlarını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydedin ve her birine ayrı bir rol atayın. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
 
               > [!NOTE]
-              > **Rol ataması Ekle** bölmesinde, **erişim ata** ' da **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** ' nı seçin.
+              > **Rol ataması Ekle** bölmesinde, **erişim ata**' da **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
 
-        6.    **Kaydet** ’i seçin.
+        6.    **Kaydet**'i seçin.
 
 **Kodunuzda**
 
 >[!NOTE]
 > GitHub 'da bulunan hizmet örneğini kullanabilirsiniz.
 
-1.    MSAL ' de **ISTEMCI kimliği** , **gizli anahtar** ve **redirecturı** parametreleri olarak kendi Azure AD uygulamanızın uygulama kimliği, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
+1.    MSAL ' de **ISTEMCI kimliği**, **gizli anahtar** ve **redirecturı** parametreleri olarak kendi Azure AD uygulamanızın uygulama kimliği, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
 2.    Kiracı KIMLIĞINI MSAL ' deki **yetkili** parametresinde kendı Azure AD kiracı kimliğiniz olarak ayarlayın.
 3.    Belirteç isteğiniz içinde, **kapsamı** **" `https://sts.<account-domain>//.default` "** olarak ayarlayın. burada, `<account-domain>` Azure uzamsal bağlayıcı hesabınızın **hesap etki alanı** ile değiştirilmiştir. Doğu ABD 2 hesabı etki alanındaki bir Azure uzamsal bağlayıcı hesabı için örnek kapsam **" `https://sts.mixedreality.azure.com//.default` "** dir.
 

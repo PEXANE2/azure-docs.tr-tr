@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516824"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95485401"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Öğretici: Blazor Server sohbet uygulaması oluşturma
 
@@ -24,7 +24,7 @@ Bu öğreticide bir Blazor sunucu uygulamasını nasıl derleyip değiştireceğ
 > * Visual Studio 'da Azure App Service hızlı dağıtım.
 > * Yerel SignalR hizmetini Azure SignalR hizmetine geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [.NET Core 3,0 SDK 'sını](https://dotnet.microsoft.com/download/dotnet-core/3.0) (sürüm >= 3.0.100) yükler
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 'yi (sürüm >= 16,3) yükler
 > Visual Studio 2019 Preview sürümü Ayrıca, daha yeni .Net Core sürümünü hedefleyen en son Blazor Server uygulama şablonuyla serbest bırakılıyor.
@@ -39,7 +39,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    
    Visual Studio 'da yeni proje oluştur-> Blazor App-> (uygulamayı adlandırın ve bir klasör seçin)-> Blazor Server uygulamasını seçin. Visual Studio 'Nun hedef çerçevesini doğru bir şekilde tanımasını sağlamak için .NET Core SDK 3.0 + ' ın zaten yüklü olduğundan emin olun.
 
-   [![blazor-sohbet-oluştur ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
+   [![Yeni proje oluştur ' da, Blazor uygulama şablonları seçilidir. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
    
    Veya cmd Çalıştır
    ```dotnetcli
@@ -355,7 +355,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
 
 1. Uygulamayı çalıştırmak için <kbd>F5</kbd> ' e tıklayın. Aşağıdaki gibi sohbet edebilirsiniz.
 
-   [![blazor-sohbet ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   [![Bob ve Ayla arasında animasyonlu sohbet gösterilmektedir. Ayla Merhaba, Bob Merhaba diyor. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
    
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsblazor)
 
@@ -375,13 +375,13 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    * Belirli hedef: tüm **Azure App Service** türleri desteklenir.
    * App Service: yeni bir tane oluşturun veya var olan bir App Service 'i seçin.
 
-   [![blazor-chat-profil ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
+   [![Animasyon, Azure seçimini hedef olarak gösterir ve ardından Azure uygulaması özel hedef olarak oluşur. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
 
 1. Azure SignalR hizmeti bağımlılığı ekleme
 
    Yayımlama profili oluşturulduktan sonra, **hizmet bağımlılıkları** altında önerilen bir ileti görebilirsiniz. Yeni oluşturmak veya panelde mevcut Azure SignalR hizmetini seçmek için **Yapılandır** ' a tıklayın.
 
-   [![blazor-sohbet-bağımlılık ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
+   [![Yayımla ' da, Yapılandır bağlantısı vurgulanır. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
    Azure 'da, uygulamanızı otomatik olarak Azure SignalR hizmetine geçiş yapmak için hizmet bağımlılığı aşağıdaki işlemleri yapar.
 
@@ -391,7 +391,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    * Gizli dizileri Yapılandır deposu, seçtiğiniz seçeneğe bağlıdır.
    * `appsettings`Uygulamanızın hedefini seçtiğiniz Azure SignalR hizmetini oluşturmak için yapılandırma ekleyin.
 
-   [![blazor-chat-bağımlılık-Özet ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
+   [![Değişikliklerin özeti hakkında onay kutuları, tüm bağımlılıkları seçmek için kullanılır. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
 
 1. Uygulamayı yayımlama
 
@@ -400,7 +400,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    > Azure App Service dağıtım başlangıç gecikmesi nedeniyle sayfa ilk kez ziyaret etmeyebilir ve biraz gecikme sağlamak için sayfayı yenilemeyi deneyin.
    > Bunun yanı sıra, trafiği Azure SignalR hizmetine zaten yönlendirdiğini doğrulamak için tarayıcı hata ayıklayıcısı modunu <kbd>F12</kbd> ile birlikte kullanabilirsiniz.
 
-   [![blazor-sohbet-Azure ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   [![Blazor SignalR sohbet örneğinin adınız için bir metin kutusu ve bir sohbet başlatmak Için sohbet! düğmesi vardır. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
    
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qsblazor)
 

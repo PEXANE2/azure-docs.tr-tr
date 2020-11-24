@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517310"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498478"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel'de izinler
 
@@ -54,11 +54,11 @@ Belirli iş gereksinimlerine sahip kullanıcılara görevlerini gerçekleştirme
 
 - Tehditlere yönelik yanıtları otomatik hale getirmek için PlayBook 'lar ile çalışma
 
-    Azure Sentinel otomatik tehdit yanıtı için **PlayBook 'ları** kullanır. Playbooks **Azure Logic Apps**kurulmuştur ve ayrı bir Azure kaynağıdır. Güvenlik işlemleri takımınızın belirli üyelerine, güvenlik düzenleme, otomasyon ve yanıt (SOAR) işlemleri için Logic Apps kullanma yeteneği atamak isteyebilirsiniz. PlayBook 'ları kullanmaya açık izin atamak için [Logic App katılımcısı](../role-based-access-control/built-in-roles.md#logic-app-contributor) rolünü veya [mantıksal uygulama işletmeni](../role-based-access-control/built-in-roles.md#logic-app-operator) rolünü kullanabilirsiniz.
+    Azure Sentinel otomatik tehdit yanıtı için **PlayBook 'ları** kullanır. Playbooks **Azure Logic Apps** kurulmuştur ve ayrı bir Azure kaynağıdır. Güvenlik işlemleri takımınızın belirli üyelerine, güvenlik düzenleme, otomasyon ve yanıt (SOAR) işlemleri için Logic Apps kullanma yeteneği atamak isteyebilirsiniz. PlayBook 'ları kullanmaya açık izin atamak için [Logic App katılımcısı](../role-based-access-control/built-in-roles.md#logic-app-contributor) rolünü veya [mantıksal uygulama işletmeni](../role-based-access-control/built-in-roles.md#logic-app-operator) rolünü kullanabilirsiniz.
 
 - Veri kaynaklarını Azure Sentinel 'e bağlama
 
-    Bir kullanıcının **veri bağlayıcıları**eklemesi Için, Azure Sentinel çalışma alanında Kullanıcı yazma izinlerini atamanız gerekir. Ayrıca, ilgili bağlayıcı sayfasında listelendiği gibi her bağlayıcı için gerekli ek izinleri göz önünde bulabilirsiniz.
+    Bir kullanıcının **veri bağlayıcıları** eklemesi Için, Azure Sentinel çalışma alanında Kullanıcı yazma izinlerini atamanız gerekir. Ayrıca, ilgili bağlayıcı sayfasında listelendiği gibi her bağlayıcı için gerekli ek izinleri göz önünde bulabilirsiniz.
 
 - Olayları atayan Konuk kullanıcılar
 
@@ -91,7 +91,7 @@ Aşağıdaki tabloda Azure Sentinel'deki roller ve izin verilen eylemler özetle
 
 - Ya da yerine, Azure yerleşik rollerini kullanarak Azure Sentinel için Azure özel rolleri oluşturabilirsiniz. Azure Sentinel için Azure özel rolleri, [Azure Sentinel 'e](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) ve [Azure Log Analytics kaynaklarına](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)özel izinler temelinde diğer [Azure özel rollerini](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)oluşturduğunuz şekilde oluşturulur.
 
-- Log Analytics gelişmiş rol tabanlı erişim denetimini Azure Sentinel çalışma alanınızdaki veriler arasında kullanabilirsiniz. Bu, hem veri türü tabanlı Azure RBAC hem de kaynak merkezli Azure RBAC içerir. Log Analytics rolleri hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerini ve çalışma alanlarını yönetme](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- Azure Sentinel çalışma alanınızdaki veriler genelinde gelişmiş Log Analytics Azure rol tabanlı erişim denetimini kullanabilirsiniz. Bu, hem veri türü tabanlı Azure RBAC hem de kaynak merkezli Azure RBAC içerir. Log Analytics rolleri hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerini ve çalışma alanlarını yönetme](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f13230c7bd88a9c3cf043fc1881a34f6b7ce6fe7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046477"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495330"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>IoT Tak Çalıştır dijital ikizlerini anlama
 
@@ -40,7 +40,7 @@ Dijital bir ikizi, özelliğin geçerli ve istenen durumunun birleştirilmiş bi
 
 JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanları içerir:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | `$dtId` | Cihazın dijital ikizi KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış dize |
 | `{propertyName}` | JSON içindeki bir özelliğin değeri |
@@ -382,6 +382,6 @@ content-encoding:utf-8
 Artık dijital TWINS hakkında bilgi edindiğinize göre, bazı ek kaynaklar aşağıda verilmiştir:
 
 - [IoT Tak ve Kullan Digital ikizi API 'Lerini kullanma](howto-manage-digital-twin.md)
-- [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service-node.md)
+- [Çözümünüzden bir cihazla etkileşim kurma](quickstart-service.md)
 - [IoT dijital Ikizi REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Gezgini](howto-use-iot-explorer.md)

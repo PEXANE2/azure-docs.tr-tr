@@ -1,19 +1,19 @@
 ---
 title: Unity için Azure uzamsal bağlayıcıları 'nı yükler
 description: Azure uzamsal bağlayıcıları kullanmak için Unity projesi yapılandırma
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530434"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496961"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity projesinde Azure uzamsal bağlayıcılarını yapılandırma
 
@@ -54,8 +54,8 @@ Unity için Azure uzamsal bağlantıları şu anda Unity paket yöneticisi (UPD)
 
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>Yalnızca Android: mainTemplate. Gradle dosyasını yapılandırma
 
-1. **Edit**  >  **Proje ayarları**  >  **oynatıcıyı**Düzenle ' ye gidin.
-2. **Oynatıcı ayarları**Için **Inspector panelinde** **Android** simgesini seçin.
+1. **Edit**  >  **Proje ayarları**  >  **oynatıcıyı** Düzenle ' ye gidin.
+2. **Oynatıcı ayarları** Için **Inspector panelinde** **Android** simgesini seçin.
 3. **Derleme** bölümünün altında özel **ana Gradle şablonu** onay kutusunu işaretleyerek, üzerinde özel bir Gradle şablonu oluşturun `Assets\Plugins\Android\mainTemplate.gradle` .
 4. `mainTemplate.gradle`Dosyanızı bir metin düzenleyicisinde açın.
 5. `dependencies`Bölümünde aşağıdaki bağımlılıkları yapıştırın:

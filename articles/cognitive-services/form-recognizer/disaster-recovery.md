@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718824"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486526"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Form tanıyıcı modellerinizi yedekleme ve kurtarma
 
@@ -26,7 +26,7 @@ Copy API 'SI, bir form tanıyıcı hesabından veya diğer kullanıcılara, dest
 
 Uygulamanız veya işiniz, form tanıyıcı özel modelinin kullanımına bağımlıysa, modelinizi başka bir bölgedeki başka bir form tanıyıcı hesabına kopyalamanızı öneririz. Bölgesel bir kesinti oluşursa, modelinize kopyalandığı bölgeye erişebilirsiniz.
 
-##  <a name="prerequisites"></a>Ön koşullar
+##  <a name="prerequisites"></a>Önkoşullar
 
 1. Farklı Azure bölgelerindeki Azure kaynaklarını iki form tanıyıcı. Bunlar yoksa, Azure portal gidin ve yeni bir form tanıyıcı kaynağı oluşturun <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" " target="_blank"> Yeni bir form tanıyıcı kaynağı oluşturun <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 1. Form tanıyıcı kaynağınızın abonelik anahtarı, uç nokta URL 'SI ve abonelik KIMLIĞI. Bu değerleri, Azure portal kaynağın **genel bakış** sekmesinde bulabilirsiniz.
@@ -41,7 +41,7 @@ Uygulamanız veya işiniz, form tanıyıcı özel modelinin kullanımına bağı
 1. İşlem başarılı olana kadar ilerleme URL 'sini sorgulamak için kaynak kaynak kimlik bilgilerinizi kullanacaksınız. Yeni modelin durumunu almak için hedef kaynaktaki yeni model KIMLIĞINI de sorgulayabilirsiniz.
 
 > [!CAUTION]
-> Copy API 'SI Şu anda [oluşturulmuş özel modeller](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)Için model kimliklerini desteklemiyor. Model oluşturma, v 2.1-Preview. 1 Preview sürümündeki bir önizleme özelliğidir. 
+> Copy API 'SI Şu anda [oluşturulmuş özel modeller](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)Için model kimliklerini desteklemiyor. Model oluşturma, v 2.1-Preview. 2 Önizleme sürümünde bir önizleme özelliğidir. 
 
 ## <a name="generate-copy-authorization-request"></a>Kopya yetkilendirme isteği oluştur
 

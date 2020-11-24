@@ -8,17 +8,16 @@ manager: daveba
 ms.date: 11/17/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e89793ed8404bf36f2857f228d94fdf2a8828d43
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e51dc4ff61069bffadc4f95caee9e0f3c76d88ec
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984269"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488479"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory 'de Konuk erişim izinlerini (Önizleme) kısıtlama
 
@@ -47,7 +46,7 @@ Mevcut Azure portal denetimlerinde Konuk Kullanıcı izinleri için değişiklik
 
     ![Azure AD dış işbirliği ayarları sayfası](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. **Kaydet**’i seçin. Konuk kullanıcılar için değişikliklerin etkili olması 15 dakika kadar sürebilir.
+1. **Kaydet**'i seçin. Konuk kullanıcılar için değişikliklerin etkili olması 15 dakika kadar sürebilir.
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Microsoft Graph API 'siyle güncelleştirme
 

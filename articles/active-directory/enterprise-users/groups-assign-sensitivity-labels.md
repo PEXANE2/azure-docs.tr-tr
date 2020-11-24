@@ -7,19 +7,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: enterprise-users
 ms.topic: how-to
 ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30dea57310fb040d8fa5f52e1d8576c2dd08504
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 08abd6938990f5300639a56fb487d910bf8000b3
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650844"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488870"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 gruplara duyarlılık etiketleri atama
 
@@ -136,7 +135,7 @@ Etiketler, mevcut bir gruba etiket atama ile aynı adımları kullanarak herhang
 1. **Grupları** seçin.
 1. **Tüm gruplar** sayfasında, etiketlemek istediğiniz grubu seçin.
 1. Seçili grubun sayfasında, **Özellikler** ' i seçin ve listeden yeni bir duyarlılık etiketi seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Yayınlanmış etiketlere yapılan grup ayarı değişiklikleri gruplar üzerinde güncelleştirilmiyor
 

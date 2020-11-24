@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bb46bc18469638416ff76f84516498e0076c85fd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636869"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500331"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>Azure HDInsight 'ta confluent şema kayıt defteriyle Apache Kafka
 
@@ -34,17 +34,17 @@ Bu bölümde, bir sanal ağ içinde bir Edge düğümü olan bir HDInsight Yöne
 
 1. Azure 'da oturum açmak ve Kaynak Yöneticisi şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
+    [![Azure’a dağıtın](./media/schema-registry/hdi-deploy-to-azure1.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json)
 
 1. Özel dağıtım şablonunda, alanları aşağıda açıklandığı gibi doldurun:
 
     |Özellik |Açıklama |
     |---|---|
     |Abonelik|Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin.|
-    |Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur** ' u seçin.|
+    |Kaynak grubu|Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
     |Region|Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.|
     |Küme Adı|Genel olarak benzersiz bir ad girin. Ya da varsayılan adı kullanmak için olduğu gibi bırakın.|
-    |Küme Oturum Açma Kullanıcı Adı|Kullanıcı adını belirtin, varsayılan olarak **admin** ' dir.|
+    |Küme Oturum Açma Kullanıcı Adı|Kullanıcı adını belirtin, varsayılan olarak **admin**' dir.|
     |Küme Oturum Açma Parolası|Parolayı girin.|
     |SSH Kullanıcı adı|Kullanıcı adını belirtin, varsayılan olarak **sshuser**.|
     |SSH parolası|Parolayı girin.|
@@ -113,7 +113,7 @@ Bu bölümde, kenar düğümüne yüklediğimiz confluent Kafka şema kayıt def
     debug=true
     ```
 
-1. Dosyayı kaydetmek için **CTRL + X** , **Y** kullanın ve ardından **girin**.
+1. Dosyayı kaydetmek için **CTRL + X**, **Y** kullanın ve ardından **girin**.
 
 1. Şema kayıt defteri ' ni başlatın ve güncelleştirilmiş şema kayıt defteri özellikleri dosyasını kullanmak için işaretleyin. Aşağıdaki komutları yürütün:
 
@@ -215,7 +215,7 @@ Bu bölümde, standart girişten gelen verileri okuyacağız ve bir biçimde Kaf
     }
     ```
 
-    **Kafka avro konsol üreticisi** 'ni başlatmak için aşağıdaki komutu kullanın:
+    **Kafka avro konsol üreticisi**'ni başlatmak için aşağıdaki komutu kullanın:
 
     ```bash
     /usr/bin/kafka-avro-console-producer     --broker-list $KAFKABROKERS     --topic agkafkaschemareg     --property parse.key=true --property key.schema='{"type" : "int", "name" : "id"}'     --property value.schema='{ "type" : "record", "name" : "example_schema", "namespace" : "com.example", "fields" : [ { "name" : "cust_id", "type" : "int", "doc" : "Id of the customer account" }, { "name" : "year", "type" : "int", "doc" : "year of expense" }, { "name" : "expenses", "type" : {"type": "array", "items": "float"}, "doc" : "Expenses for the year" } ], "doc:" : "A basic schema for storing messages" }'

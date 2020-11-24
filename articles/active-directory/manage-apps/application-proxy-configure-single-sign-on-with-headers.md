@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 61bff59114d25b2f3167a34100ec2f742036bb90
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663913"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503177"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Azure AD Uygulaması Proxy (Önizleme) ile şirket içi uygulamalar için üst bilgi tabanlı çoklu oturum açma
 
@@ -85,7 +85,7 @@ Aşağıdaki tabloda, uygulama proxy 'Si ile desteklenen üst bilgi tabanlı kim
 ## <a name="test-your-app"></a>Uygulamanızı test etme 
 
 Tüm bu adımları tamamladığınızda, uygulamanız çalışıyor ve kullanılabilir olmalıdır. Uygulamayı test etmek için: 
-1. Bir tarayıcı açın ve uygulama proxy 'si ayarlarından **dış URL**'ye gidin   . 
+1. Daha önce önbelleğe alınmış üstbilgilerin temizlendiğinden emin olmak için yeni bir tarayıcı veya özel tarayıcı penceresi açın. Ardından, uygulama proxy 'si ayarlarından **dış URL**'ye gidin   .
 2. Uygulamaya atadığınız test hesabıyla oturum açın. SSO kullanarak uygulamayı yükleyip oturum açabilirseniz, iyi bir uygulamadır! 
 
 

@@ -1,20 +1,20 @@
 ---
 title: Kaba yeniden yerelleştirme
 description: Size yakın olan bağlantıları bulmak için kaba yeniden yerelleştirme kullanma hakkında bilgi edinin.
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/18/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a65b2ca4ba9f1912adeaf60df123bcd3c8833bd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003193"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496911"
 ---
 # <a name="coarse-relocalization"></a>Kaba yeniden yerelleştirme
 
@@ -659,7 +659,7 @@ Aşağıdaki tabloda, desteklenen her platformda toplanan algılayıcı verileri
 
 |                 | HoloLens | Android | iOS |
 |-----------------|----------|---------|-----|
-| **YUVASı**         | Yok | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
+| **YUVASı**         | YOK | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
 | **WiFi**        | Her 3 saniyede bir taramanın yaklaşık bir hızda desteklenir | Destekleniyor. WiFi taramaları, API düzeyi 28 ile başlayarak 2 dakikada bir 4 çağrı ile kısıtlanır. Android 10 ' dan azaltma, Geliştirici ayarları menüsünden devre dışı bırakılabilir. Daha fazla bilgi için bkz. [Android belgeleri][5]. | Yok-ortak API yok |
 | **BLO işaretleri** | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı |
 
