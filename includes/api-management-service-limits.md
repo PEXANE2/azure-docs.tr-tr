@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 5c36a541c9380596884252efcba4a9c0ca2be33f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92082134"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562687"
 ---
 | Kaynak | Sınır |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -44,4 +44,4 @@ ms.locfileid: "92082134"
 <sup>7</sup> CA sertifikaları, tüketim katmanında desteklenmez.<br/>
 <sup>8</sup> Bu sınır yalnızca tüketim katmanı için geçerlidir. Bu kategorilerde diğer katmanlara yönelik bir sınır yoktur.<br/>
 <sup>9</sup> Yalnızca tüketim katmanı için geçerlidir. En fazla 2048 bayt uzunluğunda sorgu dizesi içerir.<br/>
-<sup>10</sup> Şirket içinde barındırılan ağ geçitleri yalnızca geliştirici ve Premium katmanlarda desteklenir. Sınır, [kendinden konak ağ geçidi kaynaklarının](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway)sayısı için geçerlidir. Bu sınırı artırmak için lütfen [desteğe](https://azure.microsoft.com/support/options/)başvurun. Şirket içinde barındırılan bir ağ geçidi kaynağıyla ilişkili düğümlerin (veya çoğaltmaların) sayısının Premium katmanda sınırsız olduğunu ve geliştirici katmanındaki tek bir düğümde bulunduğunu unutmayın.
+<sup>10</sup> Şirket içinde barındırılan ağ geçitleri yalnızca geliştirici ve Premium katmanlarda desteklenir. Sınır, [kendinden konak ağ geçidi kaynaklarının](/rest/api/apimanagement/2019-12-01/gateway)sayısı için geçerlidir. Bu sınırı artırmak için lütfen [desteğe](https://azure.microsoft.com/support/options/)başvurun. Şirket içinde barındırılan bir ağ geçidi kaynağıyla ilişkili düğümlerin (veya çoğaltmaların) sayısının Premium katmanda sınırsız olduğunu ve geliştirici katmanındaki tek bir düğümde bulunduğunu unutmayın.
