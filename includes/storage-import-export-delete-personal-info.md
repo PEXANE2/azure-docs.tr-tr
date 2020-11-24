@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-policy
 author: craigshoemaker
 ms.service: azure-policy
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 137aca7c6c857ee6e833c359b710e1c1848d15ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188584"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560436"
 ---
 ## <a name="deleting-personal-information"></a>Kişisel bilgileri silme
 
@@ -37,7 +37,7 @@ Kişisel bilgiler içeri/dışarı aktarma hizmeti (portal ve API aracılığıy
 
 Kişisel iletişim bilgileri aşağıdaki yollarla silinebilir:
 
-- İşle kaydedilen veriler işle birlikte silinir. Kullanıcılar işleri el ile silebilir ve tamamlanan işler, 90 gün sonra otomatik olarak silinir. REST API veya Azure portal aracılığıyla işleri el ile silebilirsiniz. Azure portal işi silmek için içeri/dışarı aktarma işinize gidin ve komut çubuğundan *Sil* ' e tıklayın. İçeri/dışarı aktarma işini REST API aracılığıyla silme hakkında daha fazla bilgi için [içeri/dışarı aktarma Işini silme](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)bölümüne bakın.
+- İşle kaydedilen veriler işle birlikte silinir. Kullanıcılar işleri el ile silebilir ve tamamlanan işler, 90 gün sonra otomatik olarak silinir. REST API veya Azure portal aracılığıyla işleri el ile silebilirsiniz. Azure portal işi silmek için içeri/dışarı aktarma işinize gidin ve komut çubuğundan *Sil* ' e tıklayın. İçeri/dışarı aktarma işini REST API aracılığıyla silme hakkında daha fazla bilgi için [içeri/dışarı aktarma Işini silme](/previous-versions/azure/storage/common/storage-import-export-cancelling-and-deleting-jobs)bölümüne bakın.
 
 - Portalda kaydedilen iletişim bilgileri portal ayarları silinerek kaldırılabilir. Aşağıdaki adımları izleyerek Portal ayarlarını silebilirsiniz:
   - [Azure portalında](https://portal.azure.com) oturum açın.

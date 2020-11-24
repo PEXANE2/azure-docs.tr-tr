@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: tanmaygore
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e9af5aa57da9db8c54ef3119fffbf8a5809aefd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507302"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563122"
 ---
 Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik 'dan Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ siteden siteye ağ geçitleri kullanılarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır. [Azure Resource Manager özellikleri ve avantajları](../articles/azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -40,7 +40,7 @@ Bu klasik IaaS kaynakları geçiş sırasında desteklenir
 
 | Hizmet | Yapılandırma |
 | --- | --- |
-| Azure AD Domain Services | [Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
+| Azure AD Domain Services | [Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar](../articles/active-directory-domain-services/migrate-from-classic-vnet.md) |
 
 ## <a name="supported-scopes-of-migration"></a>Desteklenen geçiş kapsamları
 İşlem, ağ ve depolama kaynaklarının geçişini tamamlamaya yönelik dört farklı yol vardır:
@@ -83,7 +83,7 @@ Depolama hesabınızda ilişkili disk veya sanal makine verisi yoksa ve yalnızc
 Aşağıdaki ekran görüntüleri Azure portal kullanarak klasik bir depolama hesabını Azure Resource Manager depolama hesabına nasıl yükselteceğiniz göstermektedir:
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Depolama hesabınıza gidin.
-3. **Ayarlar** bölümünde **ARM 'ye geçir ' e**tıklayın.
+3. **Ayarlar** bölümünde **ARM 'ye geçir ' e** tıklayın.
 4. Geçiş olasılığı 'nı öğrenmek için **Doğrula** 'ya tıklayın.
 5. Doğrulama başarılı olursa, geçirilen bir depolama hesabı oluşturmak için **hazırla** ' ya tıklayın.
 6. Geçişi onaylamak için **Evet** yazın ve geçişi tamamlamak için **Yürüt** ' e tıklayın.
@@ -129,7 +129,7 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 | İşlem | Web/çalışan rollerini içeren bulut Hizmetleri | Bu şu anda desteklenmiyor. |
 | İşlem | Birden fazla kullanılabilirlik kümesi veya birden çok kullanılabilirlik kümesi içeren bulut hizmetleri. |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce sanal makineleri aynı Kullanılabilirlik kümesine taşıyın. |
 | İşlem | Azure Güvenlik Merkezi uzantısı olan VM | Azure Güvenlik Merkezi, güvenliğini izlemek ve uyarıları yükseltmek için sanal makinelerinizdeki uzantıları otomatik olarak kurar. Bu uzantılar genellikle abonelikte Azure Güvenlik Merkezi ilkesi etkinse otomatik olarak yüklenir. Sanal makineleri geçirmek için, abonelikteki Güvenlik Merkezi ilkesini devre dışı bırakın ve bu, güvenlik merkezi izleme uzantısını sanal makinelerden kaldırır. |
-| İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) yönergeleri izleyin.  |
+| İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](../articles/virtual-machines/migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) yönergeleri izleyin.  |
 | İşlem | Azure Site Recovery uzantılı VM | Bu uzantılar Azure Site Recovery hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Site Recovery ile kullanılan depolama alanı geçişi çalışır, ancak geçerli çoğaltma etkilenecek. Depolama geçişten sonra VM çoğaltmasını devre dışı bırakıp etkinleştirmeniz gerekir. |
 | Ağ |Sanal makineler ve web/çalışan rolleri içeren sanal ağlar |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce web/çalışan rollerini kendi sanal ağına taşıyın. Klasik sanal ağ geçirildikten sonra geçirilmiş Azure Resource Manager sanal ağı, daha önce olduğu gibi benzer yapılandırmalar elde etmek için klasik sanal ağla eşlenebilir.|
 | Ağ | Klasik Express Route devreleri |Bu şu anda desteklenmiyor. IaaS geçişine başlamadan önce bu devrelerin Azure Resource Manager geçirilmesi gerekir. Daha fazla bilgi edinmek için bkz. [ExpressRoute devreleri klasik 'dan Kaynak Yöneticisi dağıtım modeline taşıma](../articles/expressroute/expressroute-move.md).|

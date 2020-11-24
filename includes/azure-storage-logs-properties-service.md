@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 6d90b4b68f1f9f4a0fcd20c1d371a32759449fab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b18687c0a6f3e48d94431e88be8ae8137c9dcdb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711634"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563044"
 ---
 | Özellik | Açıklama |
 |:--- |:---|
@@ -33,12 +33,12 @@ ms.locfileid: "91711634"
 |**contentLengthHeader** | Depolama hizmetine gönderilen isteğin Içerik uzunluğu üstbilgisinin değeri. İstek başarılı olduysa, bu değer requestBodySize değerine eşittir. Bir istek başarısız olursa, bu değer requestBodySize eşit olmayabilir veya boş olabilir. |
 |**tlsVersion** | İstek bağlantısında kullanılan TLS sürümü. Örneğin: `TLS 1.2`. |
 |**Smbtreeconnectıd** | Sunucu Ileti bloğu ( **SMB) ağaç** bağlantı zamanında oluşturulmuştur. Örnek: `0x3` |
-|**smbPersistentHandleID** | Ağ yeniden bağlandığında SMB2 oluşturma isteğinden kalıcı tanıtıcı KIMLIĞI.  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Kalıcı**. Örnek: `0x6003f` |
-|**Smbvolatilehandleıd** | Ağ yeniden bağlandığında geri dönüştürülecek bir SMB2 CREATE isteğinden geçici tanıtıcı KIMLIĞI.  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Geçici**. Örnek: `0xFFFFFFFF00000065` |
+|**smbPersistentHandleID** | Ağ yeniden bağlandığında SMB2 oluşturma isteğinden kalıcı tanıtıcı KIMLIĞI.  [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Kalıcı**. Örnek: `0x6003f` |
+|**Smbvolatilehandleıd** | Ağ yeniden bağlandığında geri dönüştürülecek bir SMB2 CREATE isteğinden geçici tanıtıcı KIMLIĞI.  [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 olarak SMB2_FILEID olarak başvurulur **. Geçici**. Örnek: `0xFFFFFFFF00000065` |
 |**Smbmessageıd** | Bağlantı göreli **MessageID**. Örnek: `0x3b165` |
 |**Smbalacaklı Tstüketilen** | 64K birimi olarak istek tarafından tüketilen giriş veya çıkış. Örnek: `0x3` |
 |**smbCommandDetail** | Genel istek türü yerine bu özel istek hakkında daha fazla bilgi. Örnek: `0x2000 bytes at offset 0xf2000` |
 |**Smbfileıd** | Dosya veya dizinle ilişkili **FileId** .  Kabaca bir NTFS FileId 'ye benzer. Örnek: `0x9223442405598953` |
 |**Smbsessionıd** | Oturum Kurulum zamanında SMB2 **SessionID** oluşturuldu. Örnek: `0x8530280128000049` |
-|**Smbcommandana uint32** | **SMB2_HEADER. Command**içindeki değer. Şu anda bu sayı 0 ile 18 arasında bir sayıdır. Örnek: `0x6` |
+|**Smbcommandana uint32** | **SMB2_HEADER. Command** içindeki değer. Şu anda bu sayı 0 ile 18 arasında bir sayıdır. Örnek: `0x6` |
 |**smbCommandMinor** | Doğru yerde, **Smbcommandana**'nin alt sınıfı. Örnek: `DirectoryCloseAndDelete` |

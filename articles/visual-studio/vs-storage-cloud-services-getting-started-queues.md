@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94f248edfebd6c6fedb78a54eee220c0ef38b4ab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017626"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545876"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure Kuyruk Depolama ve Visual Studio’ya bağlı hizmetleri kullanmaya başlama (bulut hizmeti projeleri)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "89017626"
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir bulut hizmetleri projesinde bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra Visual Studio 'Da Azure kuyruk depolama hizmetini kullanmaya nasıl başlacağınız açıklanır.
 
-Kodda bir sıranın nasıl oluşturulacağını göstereceğiz. Ayrıca, sıra iletilerini ekleme, değiştirme, okuma ve kaldırma gibi temel kuyruk işlemlerini nasıl gerçekleştireceğiniz de göstereceğiz. Örnekler C# kodunda yazılır ve [.NET için Microsoft Azure depolama Istemci kitaplığını](https://msdn.microsoft.com/library/azure/dn261237.aspx)kullanır.
+Kodda bir sıranın nasıl oluşturulacağını göstereceğiz. Ayrıca, sıra iletilerini ekleme, değiştirme, okuma ve kaldırma gibi temel kuyruk işlemlerini nasıl gerçekleştireceğiniz de göstereceğiz. Örnekler C# kodunda yazılır ve [.NET için Microsoft Azure depolama Istemci kitaplığını](/previous-versions/azure/dn261237(v=azure.100))kullanır.
 
 **Bağlı hizmetler ekleme** işlemi, projenizdeki Azure depolama 'ya erişmek Için uygun NuGet paketlerini yükleyerek depolama hesabı için bağlantı dizesini proje yapılandırma dosyalarınıza ekler.
 
@@ -69,7 +69,7 @@ Visual Studio Cloud Services projelerindeki kuyruklara erişmek için, Azure kuy
 **Note:** Aşağıdaki örneklerde kodun önünde yukarıdaki kodu kullanın.
 
 ## <a name="create-a-queue-in-code"></a>Kodda kuyruk oluşturma
-Kuyruğu kodda oluşturmak için, **Createifnotexists**öğesine bir çağrı eklemeniz yeterlidir.
+Kuyruğu kodda oluşturmak için, **Createifnotexists** öğesine bir çağrı eklemeniz yeterlidir.
 
 ```csharp
 // Create the CloudQueue if it does not exist
@@ -150,7 +150,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Ortak Azure kuyruğu API 'Leriyle Async-Await modelini kullanma
-Bu örnek, Async-Await deseninin ortak Azure kuyruğu API 'Leri ile nasıl kullanılacağını gösterir. Örnek, verilen yöntemlerin her birinin zaman uyumsuz sürümünü çağırır, bu, her yöntemin **zaman uyumsuz** onarma sonrasında görülebilir. Zaman uyumsuz bir yöntem kullanıldığında, zaman uyumsuz-await deseninin, çağrı tamamlanana kadar yerel yürütmeyi askıya alır. Bu davranış, performans sorunlarını önlemeye yardımcı olan ve uygulamanızın genel yanıt hızını geliştiren geçerli iş parçacığının diğer işleri yapmasına izin verir. .NET’te Zaman Uyumsuz-Bekleme yönteminin kullanılması ile ilgili daha fazla ayrıntı için bkz. [Zaman Uyumsuz ve Bekleme (C# ve Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
+Bu örnek, Async-Await deseninin ortak Azure kuyruğu API 'Leri ile nasıl kullanılacağını gösterir. Örnek, verilen yöntemlerin her birinin zaman uyumsuz sürümünü çağırır, bu, her yöntemin **zaman uyumsuz** onarma sonrasında görülebilir. Zaman uyumsuz bir yöntem kullanıldığında, zaman uyumsuz-await deseninin, çağrı tamamlanana kadar yerel yürütmeyi askıya alır. Bu davranış, performans sorunlarını önlemeye yardımcı olan ve uygulamanızın genel yanıt hızını geliştiren geçerli iş parçacığının diğer işleri yapmasına izin verir. .NET’te Zaman Uyumsuz-Bekleme yönteminin kullanılması ile ilgili daha fazla ayrıntı için bkz. [Zaman Uyumsuz ve Bekleme (C# ve Visual Basic)](/previous-versions/hh191443(v=vs.140)).
 
 ```csharp
 // Create a message to put in the queue
@@ -179,4 +179,3 @@ messageQueue.Delete();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-

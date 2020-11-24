@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8579efcee45e08fec3331df8f55b61618edb4f4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e687b172b49fec5f77615e332d0a2204162c43
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000422"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545791"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure tablo depolama ve Visual Studio’ya bağlı hizmetleri kullanmaya başlama (bulut hizmeti projeleri)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -28,11 +28,11 @@ Bu makalede, Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullana
 
 Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Hizmet, Azure bulutu içinden ve dışından kimliği doğrulanmış çağrıları kabul eden bir NoSQL veri deposu olur. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
 
-Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler C \# koduna yazılır ve [.net için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
+Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler C \# koduna yazılır ve [.net için Microsoft Azure depolama istemci kitaplığı](/previous-versions/azure/dn261237(v=azure.100))' nı kullanır.
 
-**Note:** Azure depolama 'ya çağrı gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](https://msdn.microsoft.com/library/hh191443.aspx) . Aşağıdaki kod zaman uyumsuz programlama yöntemlerinin kullanıldığını varsayar.
+**Note:** Azure depolama 'ya çağrı gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](/previous-versions/hh191443(v=vs.140)) . Aşağıdaki kod zaman uyumsuz programlama yöntemlerinin kullanıldığını varsayar.
 
-* Tabloları programlama yoluyla düzenleme hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Tablo Depolamayı kullanmaya başlama](../storage/storage-dotnet-how-to-use-tables.md) .
+* Tabloları programlama yoluyla düzenleme hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/tutorial-develop-table-dotnet.md) .
 * Azure depolama hakkında genel bilgi için bkz. [depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/) .
 * Azure Cloud Services hakkında genel bilgi için bkz. [Cloud Services belgeleri](https://azure.microsoft.com/documentation/services/cloud-services/) .
 * ASP.NET uygulamalarını programlama hakkında daha fazla bilgi için bkz. [ASP.net](https://www.asp.net) .
@@ -101,7 +101,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Varlıklar ile ilgili tablo işlemleri, daha önce "koddaki erişim tabloları" içinde oluşturduğunuz **Cloudtable** nesnesi kullanılarak yapılır. **Tableoperation** nesnesi yapılacak işlemi temsil eder. Aşağıdaki kod örneği, **Cloudtable** nesnesinin ve **customerentity** nesnesinin nasıl oluşturulduğunu gösterir. İşlemi hazırlamak için, müşteri varlığını tabloya eklemek üzere bir **Tableoperation** oluşturulur. Son olarak, işlem **CloudTable.ExecuteAsync**çağırarak yürütülür.
+Varlıklar ile ilgili tablo işlemleri, daha önce "koddaki erişim tabloları" içinde oluşturduğunuz **Cloudtable** nesnesi kullanılarak yapılır. **Tableoperation** nesnesi yapılacak işlemi temsil eder. Aşağıdaki kod örneği, **Cloudtable** nesnesinin ve **customerentity** nesnesinin nasıl oluşturulduğunu gösterir. İşlemi hazırlamak için, müşteri varlığını tabloya eklemek üzere bir **Tableoperation** oluşturulur. Son olarak, işlem **CloudTable.ExecuteAsync** çağırarak yürütülür.
 
 ```csharp
 // Create a new customer entity.
@@ -118,7 +118,7 @@ await peopleTable.ExecuteAsync(insertOperation);
 
 
 ## <a name="insert-a-batch-of-entities"></a>Toplu işlem varlık yerleştirme
-Tek bir yazma işleminde bir tabloya birden çok varlık ekleyebilirsiniz. Aşağıdaki kod örneği iki varlık nesnesi oluşturur ("Jeff Smith" ve "Ben Smith"), bunları Insert metodunu kullanarak bir **Tablebatchoperation** nesnesine ekler ve sonra **CloudTable.ExecuteBatchAsync**öğesini çağırarak işlemi başlatır.
+Tek bir yazma işleminde bir tabloya birden çok varlık ekleyebilirsiniz. Aşağıdaki kod örneği iki varlık nesnesi oluşturur ("Jeff Smith" ve "Ben Smith"), bunları Insert metodunu kullanarak bir **Tablebatchoperation** nesnesine ekler ve sonra **CloudTable.ExecuteBatchAsync** öğesini çağırarak işlemi başlatır.
 
 ```csharp
 // Create the batch operation.
@@ -215,4 +215,3 @@ else
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-

@@ -4,17 +4,17 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338332eb90fda9afe7655f9f2ad19ed726419b6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188427"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563659"
 ---
 ### <a name="to-configure-and-register-the-device"></a>Cihazı yapılandırmak ve kaydetmek için
 1. StorSimple cihazı seri konsolunuzdaki Windows PowerShell arabirimine erişin. Talimatlar için bkz. [Cihaz seri konsoluna bağlanmak için PuTTY kullanma](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console). **Yordamı hatasız takip ettiğinizden emin olun; aksi taktirde konsola erişemezsiniz.**
 2. Açılan oturumda, komut istemi almak için bir kez **ENTER** tuşuna basın.
-3. Cihazınızda ayarlamak istediğiniz dili seçmeniz istenecektir. Dili belirtin ve ardından **ENTER**tuşuna basın.
+3. Cihazınızda ayarlamak istediğiniz dili seçmeniz istenecektir. Dili belirtin ve ardından **ENTER** tuşuna basın.
    
     ![StorSimple cihazı yapılandırma ve kaydetme 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
 4. Verilen seri konsol menüsünde **Tam erişimle oturum açmak** için 1 seçeneğini belirleyin.
@@ -43,7 +43,7 @@ ms.locfileid: "67188427"
    4. İsteğe bağlı olarak, Web Proxy sunucunuzu yapılandırın.
       
       > [!IMPORTANT]
-      > Web ara sunucusunun yapılandırması isteğe bağlı olsa bir web ara sunucu kullanıyorsanız, burada yalnızca bunu yapılandırabileceğinizi unutmayın. Daha fazla bilgi için [Cihazınız için web ara sunucusunu yapılandırma](../articles/storsimple/storsimple-configure-web-proxy.md)’ya gidin.
+      > Web ara sunucusunun yapılandırması isteğe bağlı olsa bir web ara sunucu kullanıyorsanız, burada yalnızca bunu yapılandırabileceğinizi unutmayın. Daha fazla bilgi için [Cihazınız için web ara sunucusunu yapılandırma](../articles/storsimple/storsimple-8000-configure-web-proxy.md)’ya gidin.
      
 6. Kurulum sihirbazından çıkmak için CTRL + C tuşlarına basın.
 8. Cihazı Microsoft Azure Kamu portalına işaret etmek için aşağıdaki cmdlet 'i çalıştırın (varsayılan olarak klasik Genel Azure portalına işaret ettiğinden). Bu, her iki denetleyici de yeniden başlatılır. Her bir denetleyicinin yeniden başlatıldığını görebilmeniz için her iki denetleyicide aynı anda bağlanmak üzere iki PuTTY oturumu kullanmanızı öneririz.
@@ -86,4 +86,3 @@ ms.locfileid: "67188427"
         Birkaç dakika sonra cihaz yine de çevrimdışıysa, güvenlik duvarı ağınızın [StorSimple cihazınız için ağ gereksinimlerinde](../articles/storsimple/storsimple-8000-system-requirements.md) açıklandığı şekilde yapılandırıldığından emin olun.
        
         StorSimple Cihaz Yöneticisi Hizmeti ile cihazlar arasındaki iletişim için hizmet veri yolu tarafından kullanılan 9354 bağlantı noktasının giden iletişim için açık olduğunu doğrulayın.
-

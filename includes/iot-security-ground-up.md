@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050499"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562974"
 ---
 Nesnelerin İnterneti (IoT), dünya çapındaki işletmeler için benzersiz güvenlik, gizlilik ve uyumluluk sorunları doğurur. Bu sorunların yazılım etrafında ve nasıl uygulandıklarını gösteren geleneksel siber teknolojisinin aksine, IoT ve fiziksel çalışma LDS yakınlarından ne olur? IoT çözümlerini korumak, cihazların güvenli şekilde sağlanması, bu cihazlar ile bulut arasında güvenli bağlantı sağlanması ve işlem ve depolama sırasında buluttaki veri korumasının güvenliğini sağlamayı gerektirir. Bununla birlikte, bu işlevselliğe göre çalışarak kaynak kısıtlı cihazlar, dağıtımların coğrafi dağıtımı ve bir çözüm içinde çok sayıda cihaz vardır.
 
@@ -39,11 +39,11 @@ Güvenlik, gizlilik, saydamlık ve uyumluluk sorunları söz konusu olduğunda, 
 
 Microsoft Azure, verilerinizin korunması ve gizliliği için sektör lideri taahhütte, tümleşik bulut hizmetlerinin sürekli büyüyen bir koleksiyonunu (analiz, makine öğrenimi, depolama, güvenlik, ağ iletişimi ve Web) birleştiren tam bir bulut çözümü sunar. Microsoft 'un [ihlal](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) etme stratejisi, saldırıları taklit eden, Azure 'un algılaması yeteneğini test etmeyi, gelişmekte olan tehditlere karşı korumayı ve ihlallerden kurtulmasını sağlayan, özel bir *Red ekibi* kullanır. Microsoft 'un [küresel olay yanıtı](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity) ekibi, saldırıları ve kötü amaçlı etkinliklerin etkilerini azaltmak için saatin etrafında çalışmaktadır. Takım, olay yönetimi, iletişim ve kurtarma için kurulan yordamları izler ve iç ve dış iş ortakları ile keşfedilebilir ve öngörülebilir arabirimler kullanır.
 
-Microsoft 'un sistemleri sürekli yetkisiz giriş algılama ve önleme, hizmet saldırısı önleme, düzenli sızma testi ve tehditleri belirlemenize ve hafifletmeye yardımcı olan adli araçları sağlar. [Multi-Factor Authentication](../articles/active-directory/authentication/multi-factor-authentication.md) , son kullanıcıların ağa erişmesi için ek bir güvenlik katmanı sağlar. Hem uygulama hem de ana bilgisayar sağlayıcısı için Microsoft, erişim denetimi, izleme, kötü amaçlı yazılımdan koruma, güvenlik açığı taraması, düzeltme ekleri ve yapılandırma yönetimini sunmaktadır.
+Microsoft 'un sistemleri sürekli yetkisiz giriş algılama ve önleme, hizmet saldırısı önleme, düzenli sızma testi ve tehditleri belirlemenize ve hafifletmeye yardımcı olan adli araçları sağlar. [Multi-Factor Authentication](../articles/active-directory/authentication/concept-mfa-howitworks.md) , son kullanıcıların ağa erişmesi için ek bir güvenlik katmanı sağlar. Hem uygulama hem de ana bilgisayar sağlayıcısı için Microsoft, erişim denetimi, izleme, kötü amaçlı yazılımdan koruma, güvenlik açığı taraması, düzeltme ekleri ve yapılandırma yönetimini sunmaktadır.
 
 Çözüm Hızlandırıcıları, Azure platformunda yerleşik olarak bulunan güvenlik ve gizliliğinizin yanı sıra, tüm Microsoft yazılımlarının güvenli geliştirilmesi ve çalışması için SDL ve OSA işlemleriyle birlikte yararlanır. Bu yordamlar, herhangi bir çözümün güvenliğine temel olarak altyapı koruması, ağ koruması ve kimlik ve yönetim özellikleri sağlar.
 
-[IoT Çözüm Hızlandırıcıları](../articles/iot-fundamentals/iot-introduction.md) içindeki [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) , cihaz başına güvenlik kimlik bilgileri ve erişim denetimi kullanarak IoT cihazları ile [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) ve [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) gibi Azure hizmetleri arasında güvenilir ve güvenli çift yönlü iletişim sağlayan, tam olarak yönetilen bir hizmet sunar.
+[IoT Çözüm Hızlandırıcıları](../articles/iot-fundamentals/iot-introduction.md) içindeki [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) , cihaz başına güvenlik kimlik bilgileri ve erişim denetimi kullanarak IoT cihazları ile [Azure Machine Learning](../articles/machine-learning/classic/index.yml) ve [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) gibi Azure hizmetleri arasında güvenilir ve güvenli çift yönlü iletişim sağlayan, tam olarak yönetilen bir hizmet sunar.
 
 Azure IoT çözüm hızlandırıcılarına yerleşik olarak bulunan güvenlik ve gizlilik özelliklerini en iyi şekilde iletmek için, bu makale, paketi üç birincil güvenlik alanına ayırır.
 
@@ -89,7 +89,7 @@ Kullanıcı kimlik doğrulaması ve yetkilendirme için Azure Active Directory (
 
 Veriler bulutta olduktan sonra, Kullanıcı tanımlı herhangi bir iş akışında işlenebilir ve depolanabilir. Verilerin her bir kısmına erişim, kullanılan depolama hizmetine bağlı olarak Azure Active Directory ile denetlenir.
 
-IoT altyapısı tarafından kullanılan tüm anahtarlar, güvenli depolamada bulutta depolanır ve bu durumda, anahtarların yeniden sağlanması gerekir. Veriler [Azure Cosmos DB](../articles/cosmos-db/introduction.md) veya [SQL veritabanı](../articles/sql-database/sql-database-faq.md)'nda depolanabilir ve bu sayede istenen güvenlik düzeyinin tanımı etkinleştirilebilir. Ayrıca Azure, herhangi bir yetkisiz erişim veya yetkisiz erişim konusunda sizi uyarmak için verilerinize yönelik tüm erişimleri izleyip denetlemek için bir yol sağlar.
+IoT altyapısı tarafından kullanılan tüm anahtarlar, güvenli depolamada bulutta depolanır ve bu durumda, anahtarların yeniden sağlanması gerekir. Veriler [Azure Cosmos DB](../articles/cosmos-db/introduction.md) veya [SQL veritabanı](../articles/azure-sql/database/sql-database-paas-overview.md)'nda depolanabilir ve bu sayede istenen güvenlik düzeyinin tanımı etkinleştirilebilir. Ayrıca Azure, herhangi bir yetkisiz erişim veya yetkisiz erişim konusunda sizi uyarmak için verilerinize yönelik tüm erişimleri izleyip denetlemek için bir yol sağlar.
 
 ## <a name="conclusion"></a>Sonuç
 

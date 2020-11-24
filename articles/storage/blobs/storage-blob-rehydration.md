@@ -9,19 +9,19 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035153"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545944"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
 
 Blob, arşiv erişim katmanında olduğunda çevrimdışı olarak kabul edilir ve okunamaz veya değiştirilemez. Blob meta verileri çevrimiçi ve kullanılabilir durumda kalır ve bu da blobu ve özelliklerini listelemenize olanak sağlar. Blob verilerini okuma ve değiştirme yalnızca sık erişimli veya seyrek erişimli gibi çevrimiçi katmanlarla kullanılabilir. Arşiv erişim katmanında depolanan verileri almak ve erişmek için iki seçenek vardır.
 
-1. [Arşivlenmiş bir blob 'u çevrimiçi katmana yeniden](#rehydrate-an-archived-blob-to-an-online-tier) doldurma- [BLOB katmanını ayarla](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) işlemini kullanarak katmanını değiştirerek sık veya seyrek erişimli bir arşiv blobu.
-2. [Arşivlenmiş bir blobu çevrimiçi katmana kopyalama](#copy-an-archived-blob-to-an-online-tier) - [BLOB kopyalama](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemini kullanarak arşiv blobunun yeni bir kopyasını oluşturun. Farklı bir blob adı ve sık erişimli veya seyrek erişimli hedef katmanı belirtin.
+1. [Arşivlenmiş bir blob 'u çevrimiçi katmana yeniden](#rehydrate-an-archived-blob-to-an-online-tier) doldurma- [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini kullanarak katmanını değiştirerek sık veya seyrek erişimli bir arşiv blobu.
+2. [Arşivlenmiş bir blobu çevrimiçi katmana kopyalama](#copy-an-archived-blob-to-an-online-tier) - [BLOB kopyalama](/rest/api/storageservices/copy-blob) işlemini kullanarak arşiv blobunun yeni bir kopyasını oluşturun. Farklı bir blob adı ve sık erişimli veya seyrek erişimli hedef katmanı belirtin.
 
  Katmanlar hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md).
 
@@ -31,7 +31,7 @@ Blob, arşiv erişim katmanında olduğunda çevrimdışı olarak kabul edilir v
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Arşivlenmiş blobu çevrimiçi katmana kopyalama
 
-Arşiv blobundan yeniden doldurma yapmak istemiyorsanız, bir [blobu kopyalama](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemi yapabilirsiniz. İş üzerinde çalışmanız için çevrimiçi sık erişimli veya seyrek erişimli katmanda yeni bir blob oluşturulduğunda, özgün Blobun arşiv 'de değiştirilmemiş olarak kalır. Blobu kopyalama işleminde, blob kopyanızın oluşturulmasını istediğiniz önceliği belirtmek için isteğe bağlı *x-MS-rehibulunan öncelik* özelliğini standart veya yüksek olarak ayarlayabilirsiniz.
+Arşiv blobundan yeniden doldurma yapmak istemiyorsanız, bir [blobu kopyalama](/rest/api/storageservices/copy-blob) işlemi yapabilirsiniz. İş üzerinde çalışmanız için çevrimiçi sık erişimli veya seyrek erişimli katmanda yeni bir blob oluşturulduğunda, özgün Blobun arşiv 'de değiştirilmemiş olarak kalır. Blobu kopyalama işleminde, blob kopyanızın oluşturulmasını istediğiniz önceliği belirtmek için isteğe bağlı *x-MS-rehibulunan öncelik* özelliğini standart veya yüksek olarak ayarlayabilirsiniz.
 
 Bir Blobun arşivden kopyalanması, seçili olan yeniden doldurma önceliğine bağlı olarak tamamlanması saatler sürebilir. Arka planda **kopyalama blobu** işlemi, seçili hedef katmanda yeni bir çevrimiçi blob oluşturmak için Arşiv kaynak blobunu okur. Blob 'ları listelediğinizde yeni blob görünebilir, ancak kaynak arşiv blobundan okuma tamamlanana ve veriler yeni çevrimiçi hedef bloba yazıldıktan sonra veriler kullanılamaz. Yeni blob bağımsız bir kopya olarak ve üzerinde yapılan herhangi bir değişiklik veya silme, kaynak Arşivi blob 'unu etkilemez.
 
@@ -63,7 +63,7 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure portal, **tüm kaynakları**arayıp seçin.
+1. Azure portal, **tüm kaynakları** arayıp seçin.
 
 1. Depolama hesabınızı seçin.
 
@@ -73,7 +73,7 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 
 1. **Sık** veya **seyrek erişimli erişim** katmanını seçin. 
 
-1. **Standart** veya **yüksek**bir yeniden doldurma önceliği seçin.
+1. **Standart** veya **yüksek** bir yeniden doldurma önceliği seçin.
 
 1. Alt kısımdaki **Kaydet** ' i seçin.
 

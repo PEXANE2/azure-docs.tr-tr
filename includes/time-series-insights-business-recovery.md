@@ -5,16 +5,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.date: 07/09/2020
-ms.openlocfilehash: de5d3f8f32e928c77ffd6028ec764793ab7229ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495355"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563307"
 ---
 ## <a name="business-disaster-recovery"></a>İş olağanüstü durum kurtarma
 
-Bu bölümde, bir olağanüstü durum meydana gelirse ( *iş olağanüstü durum kurtarma*olarak bilinir) uygulamaların ve hizmetlerin çalışır durumda tutulması Azure Time Series Insights özellikleri açıklanmaktadır.
+Bu bölümde, bir olağanüstü durum meydana gelirse ( *iş olağanüstü durum kurtarma* olarak bilinir) uygulamaların ve hizmetlerin çalışır durumda tutulması Azure Time Series Insights özellikleri açıklanmaktadır.
 
 ### <a name="high-availability"></a>Yüksek kullanılabilirlik
 
@@ -22,10 +22,10 @@ Azure hizmeti olarak Azure Time Series Insights, Azure bölge düzeyinde artıkl
 
 Azure (ve ayrıca tüm Azure Time Series Insights örnekleri için de kullanılabilir) ile sağlanan diğer yüksek kullanılabilirlik özellikleri şunlardır:
 
-- **Yük devretme**: Azure, [coğrafi çoğaltma ve yük dengeleme](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)sağlar.
-- **Veri geri yükleme** ve **depolama kurtarma**: Azure, [verileri korumak ve kurtarmak için çeşitli seçenekler](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)sunar.
-- **Azure Site Recovery**: Azure [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)aracılığıyla Site Recovery özellikleri sağlar.
-- **Azure Backup**: [Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) hem şirket Içi hem de Azure VM 'lerinin bulut yedeklemesini destekler.
+- **Yük devretme**: Azure, [coğrafi çoğaltma ve yük dengeleme](/azure/architecture/resiliency/recovery-loss-azure-region)sağlar.
+- **Veri geri yükleme** ve **depolama kurtarma**: Azure, [verileri korumak ve kurtarmak için çeşitli seçenekler](/azure/architecture/resiliency/recovery-data-corruption)sunar.
+- **Azure Site Recovery**: Azure [Azure Site Recovery](../articles/site-recovery/index.yml)aracılığıyla Site Recovery özellikleri sağlar.
+- **Azure Backup**: [Azure Backup](../articles/backup/backup-architecture.md) hem şirket Içi hem de Azure VM 'lerinin bulut yedeklemesini destekler.
 
 Cihazlarınız ve kullanıcılarınız için küresel ve çapraz bölge yüksek kullanılabilirlik sağlamak üzere ilgili Azure özelliklerini etkinleştirdiğinizden emin olun.
 
@@ -36,9 +36,9 @@ Cihazlarınız ve kullanıcılarınız için küresel ve çapraz bölge yüksek 
 
 Bazı Azure IoT Hizmetleri, yerleşik iş olağanüstü durum kurtarma özelliklerini de içerir:
 
-- Azure IoT Hub, bölge içi artıklık içeren [yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr)
-- [Azure Event Hubs ilkeleri](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Azure depolama artıklığı](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- Azure IoT Hub, bölge içi artıklık içeren [yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma](../articles/iot-hub/iot-hub-ha-dr.md)
+- [Azure Event Hubs ilkeleri](../articles/event-hubs/event-hubs-geo-dr.md)
+- [Azure Depolama yedekliliği](../articles/storage/common/storage-redundancy.md)
 
 Diğer hizmetlerle Azure Time Series Insights tümleştirme, ek olağanüstü durum kurtarma olanakları sağlar. Örneğin, Olay Hub 'ınıza gönderilen telemetri, yedek bir Azure Blob depolama veritabanına kalıcı olabilir.
 
@@ -55,10 +55,10 @@ Genel olarak, bir Azure Time Series Insights ortamını yinelemek için en iyi y
 
 Yinelenen bir ortam oluşturmak için:
 
-1. İkinci bir bölgede bir ortam oluşturun. Daha fazla bilgi için [Azure Portal yeni Azure Time Series Insights ortamı oluştur](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)' u okuyun.
+1. İkinci bir bölgede bir ortam oluşturun. Daha fazla bilgi için [Azure Portal yeni Azure Time Series Insights ortamı oluştur](../articles/time-series-insights/time-series-insights-get-started.md)' u okuyun.
 1. Olay kaynağınız için ikinci bir ayrılmış Tüketici grubu oluşturun.
 1. Bu olay kaynağını yeni ortama bağlayın. İkinci adanmış tüketici grubunu seçtiğinizden emin olun.
-1. Azure Time Series Insights [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) ve [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) belgelerini gözden geçirin.
+1. Azure Time Series Insights [IoT Hub](../articles/time-series-insights/how-to-ingest-data-iot-hub.md) ve [Event Hubs](../articles/time-series-insights/concepts-access-policies.md) belgelerini gözden geçirin.
 
 Bir olay oluşursa:
 
@@ -71,5 +71,4 @@ Bir olay oluşursa:
 > * Bir gecikme da oluşabilir.
 > * İşlemler tekrar yönlendirilmesiyle ileti işleme içindeki bir kopan ani meydana gelebilir.
 > 
-> Daha fazla bilgi için [Azure Time Series Insights gecikme süresini azaltır](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
-
+> Daha fazla bilgi için [Azure Time Series Insights gecikme süresini azaltır](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md).

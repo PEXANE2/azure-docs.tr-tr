@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79500191"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563252"
 ---
 1. İstemci sertifikalarını, bu [noktadan sıteye VPN istemci](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) makalesinde gösterildiği gibi Windows 10 istemcisine yükler. Sertifika, geçerli kullanıcı deposunda olmalıdır.
 
-1. [Windows 10 Istemci her zaman VPN bağlantılarında yapılandırma](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)bölümündeki yönergeleri izleyerek PowerShell, Configuration Manager veya Intune aracılığıyla Always on VPN istemcisini yapılandırın.
+1. [Windows 10 Istemci her zaman VPN bağlantılarında yapılandırma](/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)bölümündeki yönergeleri izleyerek PowerShell, Configuration Manager veya Intune aracılığıyla Always on VPN istemcisini yapılandırın.
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>Kullanıcı tüneli için örnek yapılandırma
 
 Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 istemcisindeki yerel makine deposuna yükledikten sonra, aşağıdaki örnekleri kullanarak bir istemci cihaz tüneli yapılandırın:
 
-1. Aşağıdaki metni kopyalayın ve *usercert.ps1*olarak kaydedin:
+1. Aşağıdaki metni kopyalayın ve *usercert.ps1* olarak kaydedin:
 
    ```
    Param(
@@ -75,7 +75,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Aşağıdaki metni kopyalayın ve *usercert.ps1*aynı klasöre *VPNProfile.xml* olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin:
+1. Aşağıdaki metni kopyalayın ve *usercert.ps1* aynı klasöre *VPNProfile.xml* olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -128,6 +128,6 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    ```
    
    ![Machineccerttest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. **VPN ayarları**altında **usertest** girişini bulun ve sonra **Bağlan**' ı seçin.
+1. **VPN ayarları** altında **usertest** girişini bulun ve sonra **Bağlan**' ı seçin.
 
 1. Bağlantı başarılı olursa, her zaman açık Kullanıcı tüneli başarıyla yapılandırdınız.

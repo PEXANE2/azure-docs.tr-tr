@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5c2763112b1aa2d58f5dc57cea72a3d0bdea961e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563656"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545678"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
@@ -57,6 +57,17 @@ Arka uçınızdan IP Access Control listesini, yalnızca ön kapı giden IP adre
 
 Azure 'da WAF İlkeleri uygulanırken iki seçenek vardır. Azure ön kapısına sahip WAF, küresel olarak dağıtılmış bir uç güvenlik çözümüdür. Application Gateway ile WAF, bölgesel ve adanmış bir çözümdür. Genel performans ve güvenlik gereksinimlerinize göre bir çözüm seçmenizi öneririz. Daha fazla bilgi için bkz. [Azure 'un uygulama teslim paketiyle Yük Dengeleme](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md).
 
+## <a name="whats-the-recommended-approach-to-enabling-waf-on-front-door"></a>Ön kapıda WAF 'yi etkinleştirmek için önerilen yaklaşım nedir?
+
+Var olan bir uygulamada WAF 'yi etkinleştirdiğinizde, WAF kurallarının tehdit olarak yasal trafiği algılaması durumunda yanlış pozitif algılamalar olması yaygındır. Kullanıcılarınıza bir etkinin riskini en aza indirmek için aşağıdaki işlemi yapmanızı öneririz:
+
+* Bu işlem sırasında çalışırken WAF 'nin istekleri engellemediğinden emin olmak için WAF [ **algılama** modunda](./waf-front-door-create-portal.md#change-mode) etkinleştirin.
+  > [!IMPORTANT]
+  > Bu işlem, önceliğin uygulamanızın kullanıcılarına olumsuz şekilde en aza indirme durumunda, yeni veya var olan bir çözümde WAF 'nin nasıl etkinleştirileceğini açıklar. Saldırı veya kaldırılmadıysa tehdidi kapsamında, bunun yerine WAF 'yi **önlemeye** hemen dağıtmak ve ayarlama sürecini kullanarak WAF 'yi zaman içinde izlemek ve ayarlamak isteyebilirsiniz. Bu muhtemelen yasal trafikten bazılarının engellenmesine neden olur, bu nedenle yalnızca tehdit altında olduğunuzda bunu yapmanız önerilir.
+* [WAF ayarlamaya yönelik kılavuzumuzu](./waf-front-door-tuning.md)izleyin. Bu işlem, tanılama günlüğünü etkinleştirmenizi, günlükleri düzenli olarak incelemenizi ve kural dışlamaları ve diğer azaltıcı etkenleri eklemenizi gerektirir.
+* Meşru bir trafiğin engellenmediğinden memnun kalana kadar bu bütün işlemi tekrarlayın, günlükleri düzenli olarak kontrol edin. İşlemin tamamı birkaç hafta sürebilir. İdeal olarak, yaptığınız her ayarlama değişikliğinden sonra daha az yanlış pozitif algılama görmeniz gerekir.
+* Son olarak, WAF 'yi **önleme modunda** etkinleştirin.
+* Üretimde WAF 'yi çalıştırırken bile, diğer yanlış pozitif algılamaları belirlemek için günlükleri izlemeye devam etmelisiniz. Günlükleri düzenli olarak gözden geçirmek, engellenen tüm gerçek saldırı girişimlerini belirlemenize de yardımcı olur.
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Tümleştirilen tüm platformlarda aynı WAF özelliklerini destekliyor musunuz?
 

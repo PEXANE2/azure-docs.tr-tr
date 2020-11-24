@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 7ddceb2808874e531cfda81e5a9ce74be3a4fab4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 951dbb6c1a44e3c081f682db49458be165e9e930
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517097"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563285"
 ---
 ## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
 
@@ -42,7 +42,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 + [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8 veya 11. 
++ [Java geliştirici seti](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8 veya 11. 
 
 + [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288334"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545967"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
@@ -31,7 +31,7 @@ Sayfa Blobları yalnızca **sık** erişimli erişim katmanını **kullanabilir,
 
 ## <a name="sample-use-cases"></a>Kullanım örnekleri
 
-Azure IaaS disklerinden başlayarak sayfa Blobları için birkaç kullanım durumu tartışalım. Azure sayfa Blobları, Azure IaaS için sanal diskler platformunun omurgası. Hem Azure işletim sistemi hem de veri diskleri, verilerin Azure depolama platformunda sürekli olarak kalıcı olduğu sanal diskler olarak uygulanır ve daha sonra en yüksek performans için sanal makinelere dağıtılır. Azure diskleri, Hyper-V [VHD biçiminde](https://technet.microsoft.com/library/dd979539.aspx) kalıcı hale getirilir ve Azure Storage 'da bir [Sayfa Blobu](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) olarak depolanır. Sayfa Blobları, Azure IaaS VM 'Leri için sanal disklerin kullanılmasına ek olarak, SQL verilerini depolamak için şu anda sayfa Blobları kullanan PaaS ve DBaaS senaryolarını da etkinleştirir ve bu veritabanı için hızlı rastgele okuma yazma işlemlerini etkinleştirir. Ortak video düzenlemesi uygulamalarına yönelik paylaşılan medya erişimi için bir PaaS hizmetiniz varsa, sayfa Blobları medyadaki rastgele konumlara hızlı erişim sağlar. Aynı medyayı birden çok kullanıcı tarafından hızlı ve verimli bir şekilde düzenlemenizi ve birleştirmeyi de sağlar. 
+Azure IaaS disklerinden başlayarak sayfa Blobları için birkaç kullanım durumu tartışalım. Azure sayfa Blobları, Azure IaaS için sanal diskler platformunun omurgası. Hem Azure işletim sistemi hem de veri diskleri, verilerin Azure depolama platformunda sürekli olarak kalıcı olduğu sanal diskler olarak uygulanır ve daha sonra en yüksek performans için sanal makinelere dağıtılır. Azure diskleri, Hyper-V [VHD biçiminde](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10)) kalıcı hale getirilir ve Azure Storage 'da bir [Sayfa Blobu](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) olarak depolanır. Sayfa Blobları, Azure IaaS VM 'Leri için sanal disklerin kullanılmasına ek olarak, SQL verilerini depolamak için şu anda sayfa Blobları kullanan PaaS ve DBaaS senaryolarını da etkinleştirir ve bu veritabanı için hızlı rastgele okuma yazma işlemlerini etkinleştirir. Ortak video düzenlemesi uygulamalarına yönelik paylaşılan medya erişimi için bir PaaS hizmetiniz varsa, sayfa Blobları medyadaki rastgele konumlara hızlı erişim sağlar. Aynı medyayı birden çok kullanıcı tarafından hızlı ve verimli bir şekilde düzenlemenizi ve birleştirmeyi de sağlar. 
 
 Azure Site Recovery, Azure Backup gibi birinci taraf Microsoft hizmetlerinin yanı sıra birçok üçüncü taraf geliştirici, sayfa blobunun REST arabirimini kullanarak sektör lideri yeniliklere sahiptir. Azure 'da uygulanan benzersiz senaryolardan bazıları aşağıda verilmiştir: 
 
@@ -47,7 +47,7 @@ Sayfa Blobları ile sunulan depolama türlerinin her ikisi de kendi fiyatlandır
 
 ### <a name="rest-api"></a>REST API
 
-[Sayfa bloblarını kullanarak geliştirmeye](storage-dotnet-how-to-use-blobs.md)başlamak için aşağıdaki belgeye başvurun. Örnek olarak, .NET için depolama Istemci kitaplığı 'nı kullanarak sayfa bloblarına erişme bölümüne bakın. 
+[Sayfa bloblarını kullanarak geliştirmeye](./storage-quickstart-blobs-dotnet.md)başlamak için aşağıdaki belgeye başvurun. Örnek olarak, .NET için depolama Istemci kitaplığı 'nı kullanarak sayfa bloblarına erişme bölümüne bakın. 
 
 Aşağıdaki diyagramda hesap, kapsayıcılar ve sayfa Blobları arasındaki genel ilişkiler açıklanmaktadır.
 
@@ -63,7 +63,7 @@ Aşağıdaki diyagramda hesap, kapsayıcılar ve sayfa Blobları arasındaki gen
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Bir Sayfa Blobu oluşturmak için ilk olarak, aşağıdaki örnekte gösterildiği gibi, depolama hesabınız için blob depolamaya (Şekil 1 ' de *pbaccount* ) birlikte **Storagecredentialsaccountandkey** NESNESIYLE erişmek için temel URI Ile bir **cloudblobclient** nesnesi oluşturacağız. Örnek daha sonra **Cloudblobcontainer** nesnesine bir başvuru oluşturmayı ve daha önce mevcut değilse kapsayıcıyı ( *testvhd* 'ler) oluşturmayı gösterir. Daha sonra **Cloudblobcontainer** nesnesini kullanarak erişmek için Sayfa Blobu adını (OS4. vhd) belirterek **cloudpageblob** nesnesine bir başvuru oluşturun. Sayfa Blobu oluşturmak için, oluşturulacak blob 'un en büyük boyutunu geçirerek [Cloudpageblob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)' ı çağırın. *Blobsize* , 512 baytlık bir katı olmalıdır.
+Bir Sayfa Blobu oluşturmak için ilk olarak, aşağıdaki örnekte gösterildiği gibi, depolama hesabınız için blob depolamaya (Şekil 1 ' de *pbaccount* ) birlikte **Storagecredentialsaccountandkey** NESNESIYLE erişmek için temel URI Ile bir **cloudblobclient** nesnesi oluşturacağız. Örnek daha sonra **Cloudblobcontainer** nesnesine bir başvuru oluşturmayı ve daha önce mevcut değilse kapsayıcıyı (*testvhd*'ler) oluşturmayı gösterir. Daha sonra **Cloudblobcontainer** nesnesini kullanarak erişmek için Sayfa Blobu adını (OS4. vhd) belirterek **cloudpageblob** nesnesine bir başvuru oluşturun. Sayfa Blobu oluşturmak için, oluşturulacak blob 'un en büyük boyutunu geçirerek [Cloudpageblob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)' ı çağırın. *Blobsize* , 512 baytlık bir katı olmalıdır.
 
 ```csharp
 using Microsoft.Azure;

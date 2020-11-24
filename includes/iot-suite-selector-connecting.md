@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-suite
 author: dominicbetts
 ms.service: iot-suite
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4b93685160250a5abe7c050db89978ae8ceb1a9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188807"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563818"
 ---
 > [!div class="op_single_selector"]
 > * [Windows üzerinde C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -21,7 +21,7 @@ ms.locfileid: "67188807"
 > * [Raspberry Pi üzerinde C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (genel)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Raspberry Pi üzerinde Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)
 
 Bu öğreticide, uzaktan Izleme [çözüm hızlandırıcısına](../articles/iot-accelerators/about-iot-accelerators.md)aşağıdaki Telemetriyi gönderen bir **Chiller** cihazı uygulamalısınız:
 
@@ -29,7 +29,7 @@ Bu öğreticide, uzaktan Izleme [çözüm hızlandırıcısına](../articles/iot
 * Basınç
 * Nem oranı
 
-Kolaylık olması için kod, **Chiller**için örnek telemetri değerleri üretir. Gerçek Sensörlerinizi cihazınıza bağlayarak ve gerçek telemetri göndererek örneği genişletebilirsiniz.
+Kolaylık olması için kod, **Chiller** için örnek telemetri değerleri üretir. Gerçek Sensörlerinizi cihazınıza bağlayarak ve gerçek telemetri göndererek örneği genişletebilirsiniz.
 
 Örnek cihaz ayrıca:
 
@@ -54,13 +54,13 @@ Uzaktan Izleme çözümünün dağıtım işlemi tamamlandığında, tarayıcın
 ### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Cihazınızı uzaktan Izleme çözümüne ekleme
 
 > [!NOTE]
-> Çözümünüze zaten bir cihaz eklediyseniz, bu adımı atlayabilirsiniz. Ancak, sonraki adım cihaz Bağlantı dizenizi gerektirir. Bir cihazın bağlantı dizesini [Azure Portal](https://portal.azure.com) veya [az IoT](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI aracını kullanarak alabilirsiniz.
+> Çözümünüze zaten bir cihaz eklediyseniz, bu adımı atlayabilirsiniz. Ancak, sonraki adım cihaz Bağlantı dizenizi gerektirir. Bir cihazın bağlantı dizesini [Azure Portal](https://portal.azure.com) veya [az IoT](/cli/azure/iot?view=azure-cli-latest) CLI aracını kullanarak alabilirsiniz.
 
 Bir cihazın çözüm hızlandırıcısına bağlanması için, geçerli kimlik bilgilerini kullanarak IoT Hub kendisini tanımlaması gerekir. Cihazı çözüme eklerken bu kimlik bilgilerini içeren cihaz bağlantı dizesini kaydetme şansınız vardır. Bu öğreticide daha sonra istemci uygulamanıza cihaz bağlantı dizesini dahil edersiniz.
 
 Uzaktan Izleme çözümünüze bir cihaz eklemek için, çözümdeki **Device Explorer** sayfasında aşağıdaki adımları izleyin:
 
-1. **+ Yeni cihaz**' ı seçin ve ardından **cihaz türü**olarak **Gerçek** öğesini seçin:
+1. **+ Yeni cihaz**' ı seçin ve ardından **cihaz türü** olarak **Gerçek** öğesini seçin:
 
     ![Gerçek cihaz ekleme](media/iot-suite-selector-connecting/devicesprovision.png)
 
@@ -68,7 +68,7 @@ Uzaktan Izleme çözümünüze bir cihaz eklemek için, çözümdeki **Device Ex
 
     ![Cihaz seçeneklerini belirleyin](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. **Uygula**'yı seçin. Ardından **CIHAZ kimliği**, **birincil anahtar**ve **bağlantı dizesi birincil anahtar** değerlerini bir yere unutmayın:
+1. **Uygula**'yı seçin. Ardından **CIHAZ kimliği**, **birincil anahtar** ve **bağlantı dizesi birincil anahtar** değerlerini bir yere unutmayın:
 
     ![Kimlik bilgilerini al](media/iot-suite-selector-connecting/credentials.png)
 
@@ -78,4 +78,4 @@ Artık, uzaktan Izleme çözüm hızlandırıcısına gerçek bir cihaz ekledini
 
 * Cihazın çözüme rapor bildirdiği Özellikler. Örneğin, bir **chilcihazı** üretici yazılımı ve konumuyla ilgili bilgileri raporlar.
 * Cihazın çözüme gönderdiği telemetri türleri. Örneğin, bir **chilcihazı** sıcaklık, nem ve basınç değerlerini gönderir.
-* Çözümden, cihazda çalıştırmak için zamanlayabilirsiniz. Örneğin, bir **chilcihazı** , **reboot**, **firmwareupdate**, **acil Gencyvalverelease**ve **ıncreasebasınç** yöntemleri uygulamalıdır.
+* Çözümden, cihazda çalıştırmak için zamanlayabilirsiniz. Örneğin, bir **chilcihazı** , **reboot**, **firmwareupdate**, **acil Gencyvalverelease** ve **ıncreasebasınç** yöntemleri uygulamalıdır.

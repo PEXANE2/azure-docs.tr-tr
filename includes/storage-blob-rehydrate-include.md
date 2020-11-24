@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,14 +10,14 @@ ms.subservice: blobs
 ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
-ms.openlocfilehash: 53d2d47143c5a2cefbd50faca9a02af18ffae315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a369eb7000fb8622a69f4205ffcc232ae9c9d242
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84754650"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545943"
 ---
-Arşiv depolama birimindeki verileri okumak için katmanı önce sık erişimli veya seyrek erişimli blob katmanı olarak değiştirmeniz gerekir. Bu işleme yeniden doldurma denir ve tamamlanması saat sürebilir. En iyi yeniden doldurma performansı için büyük blob boyutları öneririz. Birkaç küçük blobu aynı anda yeniden doldurmak süreyi uzatabilir. Şu anda iki adet yeniden doldurma önceliği vardır, yüksek ve standart. Bu, bir [BLOB katmanı kümesi](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) veya [BLOB kopyalama](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işleminde isteğe bağlı *x-MS-rehite-Priority* özelliği aracılığıyla ayarlanabilir.
+Arşiv depolama birimindeki verileri okumak için katmanı önce sık erişimli veya seyrek erişimli blob katmanı olarak değiştirmeniz gerekir. Bu işleme yeniden doldurma denir ve tamamlanması saat sürebilir. En iyi yeniden doldurma performansı için büyük blob boyutları öneririz. Birkaç küçük blobu aynı anda yeniden doldurmak süreyi uzatabilir. Şu anda iki adet yeniden doldurma önceliği vardır, yüksek ve standart. Bu, bir [BLOB katmanı kümesi](/rest/api/storageservices/set-blob-tier) veya [BLOB kopyalama](/rest/api/storageservices/copy-blob) işleminde isteğe bağlı *x-MS-rehite-Priority* özelliği aracılığıyla ayarlanabilir.
 
 * **Standart öncelik**: yeniden doldurma isteği alındığı sırada işlenir ve 15 saate kadar sürebilir.
 * **Yüksek öncelik**: yeniden doldurma isteğine standart isteklerden öncelikli olarak öncelik verilecek ve boyutu on GB 'ın altındaki nesneler için 1 saat altında bitecektir. 
@@ -27,4 +27,4 @@ Arşiv depolama birimindeki verileri okumak için katmanı önce sık erişimli 
 >
 > En yüksek öncelik, blob boyutuna ve geçerli talebe bağlı olarak 1 saatten uzun sürebilir. Yüksek öncelikli isteklerin standart öncelik istekleri üzerinden öncelikli olması garanti edilir.
 
-Yeniden doldurma isteği başlatıldıktan sonra iptal edilemez. Yeniden doldurma işlemi sırasında, *x-MS-Access-Tier* blob özelliği çevrimiçi bir katmana yeniden doldurma tamamlanana kadar arşiv olarak gösterilmeye devam edecektir. Yeniden doldurma durumunu ve ilerlemesini onaylamak için, [BLOB özelliklerini al](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties) ' ı çağırıp *x-MS-Archive-Status* ve *x-MS-rehibulunan öncelikli* blob özelliklerini kontrol edebilirsiniz. Arşiv durumu, yeniden doldurma hedef katmanına bağlı olarak "rehion-to-Hot" veya "rehion-with-soğuk" olarak okunabilir. Yeniden doldurma önceliği, "yüksek" veya "standart" hızını gösterecektir. Tamamlandıktan sonra, arşiv durumu ve yeniden doldurma önceliği özellikleri kaldırılır ve erişim katmanı blobu özelliği seçili sık veya seyrek katmanı yansıtacak şekilde güncelleştirilir.
+Yeniden doldurma isteği başlatıldıktan sonra iptal edilemez. Yeniden doldurma işlemi sırasında, *x-MS-Access-Tier* blob özelliği çevrimiçi bir katmana yeniden doldurma tamamlanana kadar arşiv olarak gösterilmeye devam edecektir. Yeniden doldurma durumunu ve ilerlemesini onaylamak için, [BLOB özelliklerini al](/rest/api/storageservices/get-blob-properties) ' ı çağırıp *x-MS-Archive-Status* ve *x-MS-rehibulunan öncelikli* blob özelliklerini kontrol edebilirsiniz. Arşiv durumu, yeniden doldurma hedef katmanına bağlı olarak "rehion-to-Hot" veya "rehion-with-soğuk" olarak okunabilir. Yeniden doldurma önceliği, "yüksek" veya "standart" hızını gösterecektir. Tamamlandıktan sonra, arşiv durumu ve yeniden doldurma önceliği özellikleri kaldırılır ve erişim katmanı blobu özelliği seçili sık veya seyrek katmanı yansıtacak şekilde güncelleştirilir.

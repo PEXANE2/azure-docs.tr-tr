@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684441"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563426"
 ---
 Azure paylaşılan diskler, yönetilen bir diski birden çok sanal makineye (VM) aynı anda iliştirmeye olanak sağlayan, Azure tarafından yönetilen disklere yönelik yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
 
@@ -41,7 +41,7 @@ Paylaşılan diskler çeşitli işletim sistemlerini destekler. Desteklenen işl
 
 ### <a name="windows"></a>Windows
 
-Azure paylaşılan diskler Windows Server 2008 ve daha yeni sürümlerde desteklenir. Çoğu Windows tabanlı kümeleme, küme düğümü iletişimi için tüm çekirdek altyapıyı işleyen WSFC üzerinde oluşturulur ve uygulamalarınızın paralel erişim desenlerinden yararlanmasını sağlar. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV dışı seçenekleri etkinleştirir. Ayrıntılar için bkz. [Yük devretme kümesi oluşturma](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
+Azure paylaşılan diskler Windows Server 2008 ve daha yeni sürümlerde desteklenir. Çoğu Windows tabanlı kümeleme, küme düğümü iletişimi için tüm çekirdek altyapıyı işleyen WSFC üzerinde oluşturulur ve uygulamalarınızın paralel erişim desenlerinden yararlanmasını sağlar. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV dışı seçenekleri etkinleştirir. Ayrıntılar için bkz. [Yük devretme kümesi oluşturma](/windows-server/failover-clustering/create-failover-cluster).
 
 WSFC üzerinde çalışan bazı popüler uygulamalar şunlardır:
 
