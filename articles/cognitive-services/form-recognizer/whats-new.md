@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 92eda77d03e547e814cac85f5ac8bb03b552d135
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95506567"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736620"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -38,13 +38,13 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
   > [Düzen ayıklama hakkında daha fazla bilgi edinin](concept-layout.md)
 
 - **Desteklenen yeni dil: Japonca** -şu yeni diller artık desteklenmektedir: `AnalyzeLayout` ve için `AnalyzeCustomForm` : Japonca ( `ja` ). [Dil desteği](language-support.md)
-- **Metin çizgisi stili belirtme (el yazısı/yazdırma) (yalnızca Latin dilleri)** -form tanıyıcı `appearance` , her metin satırının bir güven puanı ile birlikte el ile yazılmış tarzına göre bir nesne sınıflandırılmasına neden olur. Bu özellik yalnızca Latin dilleri için desteklenir.
+- **Metin çizgisi stil göstergesi (el ile/diğer) (yalnızca Latin dilleri)** -form tanıyıcı `appearance` , her metin satırının bir güvenilirlik puanıyla birlikte el ile yazılmış tarzına göre bir nesne sınıflandırılmasına neden olur. Bu özellik yalnızca Latin dilleri için desteklenir.
 - **Kalite geliştirmeleri** -tek basamaklı ayıklama geliştirmeleri dahil ayıklama geliştirmeleri.
 - **Form tanıyıcı örnek etiketleme aracında yeni bir TRY-It-Out özelliği** , önceden oluşturulmuş fatura, giriş ve iş kartı modellerini ve Düzen API 'Sini, tanıyıcı örnek etiketleme aracını kullanarak denemenize olanak tanır. Verilerinizin herhangi bir kod yazmadan ayıklanmasını görün.
 
   > [Form tanıyıcı örnek aracını deneyin](https://fott-preview.azurewebsites.net/)
 
-  ![FOTT örneği](./media/fott-preview.jpg)
+  ![FOTT örneği](./media/ui-preview.jpg)
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -85,7 +85,7 @@ GitHub 'da **yeni örnekler** mevcuttur.
 * **Para birimi desteği** -genel para birimi simgelerinin algılanması ve ayıklanması.
 * **Azure gov** -form tanıyıcı artık Azure gov 'de de kullanılabilir.
 * **Gelişmiş güvenlik özellikleri**: 
-   * **Kendi anahtar** formu tanıyıcı, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen müşteri tarafından yönetilen anahtarlar (CMK)](./form-recognizer-encryption-of-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
+   * **Kendi anahtar** formu tanıyıcı, buluta kalıcı hale geldiğinde verilerinizi otomatik olarak şifreler ve kuruluşunuzun güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Ayrıca, aboneliğinizi kendi şifreleme anahtarlarınız ile yönetebilirsiniz. [Kendi anahtarını getir (BYOK) olarak da bilinen, müşteri tarafından yönetilen anahtarlar](./form-recognizer-encryption-of-data-at-rest.md), erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.  
    * **Özel uç noktalar** – [özel bir bağlantı üzerinden verilerinize güvenli](../../private-link/private-link-overview.md) bir şekilde erişmek için bir sanal ağ (VNet) sağlar.
 
 

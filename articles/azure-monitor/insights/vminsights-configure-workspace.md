@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530123"
+ms.locfileid: "95750543"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma
 VM'ler için Azure İzleyici, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM'ler için Azure İzleyici için yapılandırılacak.
@@ -38,7 +38,7 @@ Tek bir abonelik, gereksinimlerinize bağlı olarak herhangi bir sayıda çalı�
 Aşağıdaki yöntemlerden herhangi birini kullanarak yeni bir Log Analytics çalışma alanı oluşturabilirsiniz. Ortamınızda kullanmanız gereken çalışma alanı sayısını ve erişim stratejisini nasıl tasarlayacağınızı belirlemek için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../platform/design-logs-deployment.md) .
 
 
-* [Azure portalı](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
@@ -80,7 +80,7 @@ Bir Log Analytics çalışma alanının VM'ler için Azure İzleyici ile kullan�
 ### <a name="azure-portal"></a>Azure portal
 Azure portal kullanarak var olan bir çalışma alanını yapılandırmak için üç seçenek vardır. Her biri aşağıda açıklanmıştır.
 
-Tek bir çalışma alanını yapılandırmak için **diğer ekleme seçeneklerini** belirleyin ve ardından **bir çalışma alanı yapılandırın**. Bir abonelik ve çalışma alanı seçin ve ardından **Yapılandır**' a tıklayın.
+Tek bir çalışma alanını yapılandırmak için **Azure izleyici** menüsünde **sanal makineler** seçeneğine gidin, **diğer ekleme seçeneklerini** belirleyin ve ardından **bir çalışma alanı yapılandırın**. Bir abonelik ve çalışma alanı seçin ve ardından **Yapılandır**' a tıklayın.
 
 [![Çalışma alanını yapılandırma](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

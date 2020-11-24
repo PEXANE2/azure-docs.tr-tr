@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c2e691d673b385d597957cf5a4ce3c3f18ba466
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511547"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741738"
 ---
 # <a name="form-recognizer-layout-service"></a>Form tanıyıcı düzen hizmeti
 
@@ -86,11 +86,10 @@ Düzen belgelerden (PDF, TIFF) ve görüntülerden (jpg, PNG, BMP) tabloları ay
 
 Düzen Ayrıca belgelerden seçim işaretlerini de ayıklar. Ayıklanan seçim işaretleri sınırlayıcı kutusu, güvenirlik ve durumu (seçili/seçilmemiş) içerir. Seçim işareti bilgileri `"readResults"` JSON çıktısının bölümünde ayıklanır. 
 
-<<< seçim işaretleri ekleme örnekleri>>>
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bir [Biçim tanıyıcı örnek kullanıcı arabirimini kullanarak kendi düzen ayıklayıcınızı](https://fott-preview.azurewebsites.net/) deneyin
+- Seçtiğiniz dilde düzenleri çıkarmaya başlamak için [form tanıyıcı istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
 - Ya da Python ve REST API kullanarak düzen verilerinin ayıklanmasını uygulamak için [düzen verilerini](./QuickStarts/python-layout.md) ayıklama hızlı başlangıcını izleyin.
 
 ## <a name="see-also"></a>Ayrıca bkz.

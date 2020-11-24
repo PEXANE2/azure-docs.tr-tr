@@ -2,14 +2,14 @@
 title: Azure Batch havuzundaki işlem düğümlerini otomatik ölçeklendirme
 description: Havuzdaki işlem düğümlerinin sayısını dinamik olarak ayarlamak için bir bulut havuzunda otomatik ölçeklendirmeyi etkinleştirin.
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849801"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737301"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -135,6 +135,9 @@ Batch hizmetindeki ölçümleri temel alan ayarlamalar yapmak için, bu hizmet t
 > [!TIP]
 > Bu salt okunurdur hizmet tanımlı değişkenler, her biriyle ilişkili verilere erişmek için çeşitli yöntemler sağlayan *nesnelerdir* . Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [örnek veri alma](#obtain-sample-data) bölümüne bakın.
 
+> [!NOTE]
+> `$RunningTasks`Bir zaman noktasında çalışan görev sayısına göre ölçeklendirirken ve `$ActiveTasks` çalışmak üzere kuyruğa alınan görev sayısına göre ölçeklendirilirken kullanın.
+
 ## <a name="types"></a>Türler
 
 Otomatik ölçeklendirme formülleri aşağıdaki türleri destekler:
@@ -186,7 +189,7 @@ Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 | TimeInterval *işleci* TimeInterval |<, <=, = =, >=, >,! = |double |
 | Çift *işleç* Double |&&,  &#124;&#124; |double |
 
-Üçlü işleç () ile bir Double test edilirken `double ? statement1 : statement2` , sıfır dışında bir değer **true**ve sıfır **false 'tur**.
+Üçlü işleç () ile bir Double test edilirken `double ? statement1 : statement2` , sıfır dışında bir değer **true** ve sıfır **false 'tur**.
 
 ## <a name="functions"></a>İşlevler
 
@@ -214,7 +217,7 @@ Bir otomatik ölçeklendirme formülü tanımlarken, önceden tanımlanmış bu 
 | Time (dize dateTime = "") |timestamp |Hiçbir parametre geçirilmemişse, geçerli zamanın zaman damgasını veya varsa dateTime dizesinin zaman damgasını döndürür. Desteklenen dateTime biçimleri W3C-DTF ve RFC 1123 ' dir. |
 | Val (doubleVec v, Double ı) |double |Bir başlangıç dizini olan, vektör v 'de i konumunda olan öğenin değerini döndürür. |
 
-Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örneğin:
+Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örnek:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -226,7 +229,7 @@ Bir formül tanımlarken hem kaynak hem de görev ölçümlerini kullanabilirsin
 
 <table>
   <tr>
-    <th>Ölçüm</th>
+    <th>Metric</th>
     <th>Açıklama</th>
   </tr>
   <tr>
@@ -309,7 +312,7 @@ Bunu yapmak için, `GetSample(interval look-back start, interval look-back end)`
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örneğin:
+Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örnek:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -326,7 +329,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 Örnek kullanılabilirliğinde bir gecikme olabileceğinden, her zaman bir dakikadan daha eski bir geri arama başlangıç saatine sahip bir zaman aralığı belirtmeniz gerekir. Örneklerin sistem aracılığıyla yayılması yaklaşık bir dakika sürer, bu nedenle aralıktaki örnekler `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` kullanılamayabilir. Yine, `GetSample()` belirli bir örnek yüzdesi gereksinimini zorlamak için Percentage parametresini kullanabilirsiniz.
 
 > [!IMPORTANT]
-> ** *Yalnızca* `GetSample(1)` Otomatik ölçeklendirme formüllerinizde bağlı olmasını önlemenize**kesinlikle tavsiye ederiz. Bunun nedeni, `GetSample(1)` temel olarak Batch hizmetine, "sizin ne kadar süre önce ne kadar süreyle elde ettiğinize bakılmaksızın" sahip olduğunuz son örneği bana vermektir. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. Kullanıyorsanız `GetSample(1)` , formülün bağımlı olduğu tek veri noktası değil daha büyük bir deyimin parçası olduğundan emin olun.
+> ***Yalnızca* `GetSample(1)` Otomatik ölçeklendirme formüllerinizde bağlı olmasını önlemenize** kesinlikle tavsiye ederiz. Bunun nedeni, `GetSample(1)` temel olarak Batch hizmetine, "sizin ne kadar süre önce ne kadar süreyle elde ettiğinize bakılmaksızın" sahip olduğunuz son örneği bana vermektir. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. Kullanıyorsanız `GetSample(1)` , formülün bağımlı olduğu tek veri noktası değil daha büyük bir deyimin parçası olduğundan emin olun.
 
 ## <a name="write-an-autoscale-formula"></a>Bir otomatik ölçeklendirme formülü yaz
 
@@ -381,7 +384,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> ' I seçerseniz, formül dizelerinde hem açıklamaları hem de satır sonlarını ekleyebilirsiniz.
+> ' I seçerseniz, formül dizelerinde hem açıklamaları hem de satır sonlarını ekleyebilirsiniz. Ayrıca, eksik noktalı virgüllerin, değerlendirme hatalarına neden olabileceğini unutmayın.
 
 ## <a name="automatic-scaling-interval"></a>Otomatik ölçeklendirme aralığı
 
@@ -423,7 +426,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Otomatik ölçeklendirme etkinleştirilmiş bir havuz oluşturduğunuzda, **createpool**çağrısında _targetlownodes_ parametresini veya _targetlowprioritynodes_ parametresini belirtmeyin. Bunun yerine, havuzda **etkin** ve **oto scaleformula** özelliklerini belirtin. Bu özelliklerin değerleri her düğüm türünün hedef sayısını tespit.
+> Otomatik ölçeklendirme etkinleştirilmiş bir havuz oluşturduğunuzda, **createpool** çağrısında _targetlownodes_ parametresini veya _targetlowprioritynodes_ parametresini belirtmeyin. Bunun yerine, havuzda **etkin** ve **oto scaleformula** özelliklerini belirtin. Bu özelliklerin değerleri her düğüm türünün hedef sayısını tespit.
 >
 > Otomatik ölçeklendirme etkinleştirilmiş bir havuzu el ile yeniden boyutlandırmak için (örneğin, [Batchclient. PoolOperations. ResizePoolAsync](/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync)ile), önce havuzda otomatik ölçeklendirmeyi devre dışı bırakmanız, sonra yeniden boyutlandırılması gerekir.
 
@@ -473,7 +476,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Mevcut bir havuzda otomatik ölçeklendirmeyi etkinleştir
 
-Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örneğin:
+Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örnek:
 
 - [Batchclient. PoolOperations. Enableoto Scaleasync](/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync) (Batch .net)
 - [Bir havuzda otomatik ölçeklendirmeyi etkinleştir](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) (REST API)
@@ -625,7 +628,7 @@ Batch .NET 'te [cloudpool. otomatik Scalerun](/dotnet/api/microsoft.azure.batch.
 
 REST API, [bir havuz hakkında bilgi alma](/rest/api/batchservice/get-information-about-a-pool) isteği, otomatik ölçeklendirme çalıştırma bilgilerini [Otomatik](/rest/api/batchservice/get-information-about-a-pool) olarak otomatik ölçeklendirme özelliğini içeren havuz hakkındaki bilgileri döndürür.
 
-Aşağıdaki C# örneği, havuz _mypool_üzerinde çalışan son otomatik ölçeklendirme hakkında bilgi yazdırmak için Batch .net kitaplığını kullanır.
+Aşağıdaki C# örneği, havuz _mypool_ üzerinde çalışan son otomatik ölçeklendirme hakkında bilgi yazdırmak için Batch .net kitaplığını kullanır.
 
 ```csharp
 await Cloud pool = myBatchClient.PoolOperations.GetPoolAsync("myPool");

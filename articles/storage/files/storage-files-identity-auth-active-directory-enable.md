@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 9dc6433170144635ad05033d110f448cf314179b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2214dbc9dcbd4ba7728065ee45471e9f94b9e513
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628858"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95740004"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
@@ -24,7 +24,7 @@ Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale 
 
 - Azure dosyaları için kullanılan AD DS kimlikleri şirket içi AD DS kimlik doğrulaması Azure AD ile eşitlenmelidir. Parola karması eşitleme isteğe bağlıdır. 
 - Azure Dosya Eşitleme tarafından yönetilen Azure dosya paylaşımlarını destekler.
-- , RC4-HMAC ve [AES 256 şifrelemesi](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)ile ad ile Kerberos kimlik doğrulamasını destekler. AES 128 Kerberos şifrelemesi henüz desteklenmiyor.
+- , RC4-HMAC ve [AES 256 şifrelemesi](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)ile ad ile Kerberos kimlik doğrulamasını destekler. AES 256 şifreleme desteği şu anda ada <= 15 karakter uzunluğunda depolama hesaplarıyla sınırlıdır. AES 128 Kerberos şifrelemesi henüz desteklenmiyor.
 - Çoklu oturum açma deneyimini destekler.
 - Yalnızca Windows 7 veya Windows Server 2008 R2 'den daha yeni işletim sistemi sürümlerinde çalıştırılan istemcilerde desteklenir.
 - Yalnızca depolama hesabının kaydedildiği AD ormanına göre desteklenir. Azure dosya paylaşımlarına yalnızca AD DS kimlik bilgileriyle, varsayılan olarak tek bir ormandaki erişebilirsiniz. Azure dosya paylaşımınıza farklı bir ormandan erişmeniz gerekiyorsa, uygun orman güveninin yapılandırıldığından emin olun, Ayrıntılar için [SSS](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) bölümüne bakın.
@@ -38,7 +38,7 @@ SMB üzerinden Azure dosya paylaşımları için AD DS etkinleştirdiğinizde, A
 > - [Şirket içi dosya sunucularını Azure dosyaları ile değiştirme (dosyalar ve AD kimlik doğrulaması için özel bağlantı kurulumu dahil)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [Azure dosyalarını Windows sanal masaüstü için profil kapsayıcısı olarak kullanma (AD kimlik doğrulaması ve FsLogix yapılandırmasında kurulum dahil)](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmeden önce, aşağıdaki önkoşulları tamamladığınızdan emin olun: 
 

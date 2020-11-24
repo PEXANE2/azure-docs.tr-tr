@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: ecc25af19694c0befdd24b041807e2067db4f13b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 163947268d79a0297eef3f3f6e97187a0aef6994
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886949"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95738151"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -144,10 +144,10 @@ Azure Almanya ve Azure Çin 21Vianet gibi özel bulutlar Şu anda kullanım içi
 Dizininizde en az sayıda Azure AD Premium P2 lisansa sahip olduğunuzdan emin olun:
 
 - Erişim paketi **isteyebilen** üye kullanıcıları.
-- Erişim <u>paketi isteyen üye</u> ve Konuk kullanıcılar.
-- Bir erişim paketi için <u>istekleri</u> onaylayan üye ve Konuk kullanıcılar.
+- Erişim <u>paketi isteyen üye</u> kullanıcıları.
+- Bir erişim paketi için <u>istekleri</u> onaylayan üye kullanıcıları.
 - Bir erişim paketi için <u>atamaları gözden geçirebilen</u> üye kullanıcıları. 
-- Erişim paketine <u>doğrudan atamaya</u> sahip olan üye ve Konuk kullanıcılar.
+- Erişim paketine <u>doğrudan atamaya</u> sahip üye kullanıcıları.
 
 Konuk kullanıcılar için lisanslama gereksinimlerine bağlı olarak, kullanmakta olduğunuz [lisanslama modeline](../external-identities/external-identities-pricing.md) bağlıdır. Ancak, aşağıdaki konuk kullanıcıların etkinlikleri Azure AD Premium P2 kullanımı olarak kabul edilir:
 - Erişim <u>paketi isteyen Konuk</u> kullanıcılar. 

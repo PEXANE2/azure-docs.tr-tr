@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: ed767055c1227d39fc29ac77a44c96b19030ad28
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8033117d9e3c31f8aa9bba06afb7c3b1b7bba67f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535869"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751037"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>MySQL sunucu sürümleri için desteklenen Azure veritabanı
 
@@ -46,7 +46,7 @@ Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek
 ## <a name="managing-updates-and-upgrades"></a>Güncelleştirmeleri ve yükseltmeleri yönetme
 Hizmet, hata düzeltme sürümü güncelleştirmeleri için düzeltme eki uygulamayı otomatik olarak yönetir. Örneğin, 5.7.20 yükle to 5.7.21.  
 
-Şu anda alt ve ana sürüm yükseltmeleri desteklenmez. Örneğin MySQL 5.6'dan MySQL 5.7'ye yükseltme desteklenmez. 5.6'dan 5.7'ye yükseltmek isterseniz [döküm alın ve bunu yeni altyapı sürümüyle oluşturulmuş bir sunucuya geri yükleyin](./concepts-migrate-dump-restore.md).
+Ana sürüm yükseltmesi şu anda, MySQL v 5.6 'dan v 5.7 'e yükseltmeler için hizmet tarafından desteklenmektedir. Daha ayrıntılı bilgi için bkz. [ana sürüm yükseltmeleri gerçekleştirme](how-to-major-version-upgrade.md). 5,7 ' den 8,0 ' ye yükseltmek istiyorsanız, yeni altyapı sürümüyle oluşturulmuş bir sunucuya [döküm ve geri yükleme](./concepts-migrate-dump-restore.md) işlemleri yapmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

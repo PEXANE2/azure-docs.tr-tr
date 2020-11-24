@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533285"
+ms.locfileid: "95736550"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -276,7 +276,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 ```
 
 > [!IMPORTANT]
-> Kısa ömürlü IŞLETIM sistemiyle VM ve örnek görüntülerini VM önbelleğinin boyutuna dağıtabilirsiniz. AKS durumunda, varsayılan işletim sistemi disk yapılandırması 100GiB kullanır, bu da 100 GiB 'den büyük bir önbelleğe sahip bir VM boyutuna ihtiyacınız olduğu anlamına gelir. Varsayılan Standard_DS2_v2, 86 GiB önbellek boyutuna sahiptir ve bu değer yeterince büyük değildir. Standard_DS3_v2, yeterince büyük olan 172 GiB önbellek boyutuna sahiptir. Ayrıca, kullanarak işletim sistemi diskinin varsayılan boyutunu azaltabilirsiniz `--node-osdisk-size` . AKS görüntülerinin en küçük boyutu 30GiB ' dir. 
+> Kısa ömürlü IŞLETIM sistemiyle VM ve örnek görüntülerini VM önbelleğinin boyutuna dağıtabilirsiniz. AKS durumunda, varsayılan işletim sistemi disk yapılandırması 128GB kullanır, bu da 128 GB 'den büyük bir VM boyutuna ihtiyacınız olduğu anlamına gelir. Varsayılan Standard_DS2_v2, 86GB önbellek boyutuna sahiptir ve bu değer yeterince büyük değildir. Standard_DS3_v2, 17 GB boyutunda bir önbellek boyutuna sahiptir ve bu değer yeterince büyük olur. Ayrıca, kullanarak işletim sistemi diskinin varsayılan boyutunu azaltabilirsiniz `--node-osdisk-size` . AKS görüntülerinin en küçük boyutu 30 ' dır. 
 
 Ağ bağlantılı işletim sistemi diskleri ile düğüm havuzları oluşturmak istiyorsanız, belirterek bunu yapabilirsiniz `--node-osdisk-type Managed` .
 

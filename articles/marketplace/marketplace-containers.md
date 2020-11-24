@@ -7,24 +7,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/04/2020
-ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/30/2020
+ms.openlocfilehash: 83c575aa40b80d9a8e39263e89a5e7860c8f8774
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484350"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741670"
 ---
-# <a name="publishing-guide-for-container-offers"></a>Kapsayıcı teklifleri için Yayımlama Kılavuzu
+# <a name="publishing-guide-for-azure-container-offers"></a>Azure Container tekliflerini Yayımlama Kılavuzu
 
-Kapsayıcı, kapsayıcı görüntünüzü Azure Market 'Te yayımlamanıza yardımcı olur. Bu teklifin gereksinimlerini anlamak için bu kılavuzu kullanın. 
+Azure Container, kapsayıcı görüntünüzü Azure Marketi 'Nde yayımlamanıza yardımcı olur. Bu teklif türü için gereksinimleri anlamak için bu kılavuzu kullanın.
 
-Kapsayıcı teklifleri, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan işlem teklifleridir. Kullanıcının gördüğü listeleme seçeneği "Şimdi al" dır.
+Azure Container teklifleri, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan işlem teklifleridir. Kullanıcının gördüğü listeleme seçeneği "Şimdi al" dır.
 
-Çözümünüz bir Kubernetes tabanlı Azure Container Service örneği olarak ayarlanan bir Docker kapsayıcı görüntüsü olduğunda *kapsayıcı* teklif türünü kullanın. 
+Çözümünüz bir Kubernetes tabanlı Azure Container örneği olarak ayarlanmış bir Docker kapsayıcı görüntüsü olduğunda, Azure Container teklif türünü kullanın.
 
 > [!NOTE]
-> Kubernetes tabanlı Azure Container Service örneklerinin örnekleri olan Azure Kubernetes hizmeti veya Azure Container Instances, Kubernetes tabanlı bir kapsayıcı çalışma zamanı için Azure müşterilerinin seçimi.  
+> Azure Container Instance, Azure 'da bir kapsayıcı çalıştırmanın en hızlı ve en basit yolu olan bir çalışma zamanı Docker örneğidir. Bu örnek, herhangi bir sanal makineyi yönetmek zorunda kalmadan ve daha yüksek düzeyde bir hizmeti benimsemeniz gerekmez. Kapsayıcı örnekleri doğrudan Azure 'a dağıtılabilir veya Azure Kubernetes Hizmetleri veya Azure Kubernetes hizmet altyapısı tarafından ayarlanabilir.  
 
 Microsoft şu anda ücretsiz ve kendi lisansını getir (KLG) lisanslama modellerini desteklemektedir.
 
@@ -39,9 +39,6 @@ Microsoft şu anda ücretsiz ve kendi lisansını getir (KLG) lisanslama modelle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Henüz yapmadıysanız, [Azure Marketi ile bulut işletmenizi nasıl büyütireceğinizi](https://azuremarketplace.microsoft.com/sell)öğrenin.
+- Bir kapsayıcı teklifi için teknik varlıkları hazırlamak üzere bkz. [Azure Container teknik varlıkları oluşturma](create-azure-container-technical-assets.md).
 
-Iş Ortağı Merkezi 'nde çalışmaya kaydolmak ve başlamak için:
-
-- Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi ' nde oturum açın](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-- Daha fazla bilgi için bkz. [Azure Container teklifi oluşturma](./partner-center-portal/create-azure-container-offer.md) .
+- Azure Container teklifi oluşturmak için daha fazla bilgi için bkz. [Azure Market 'te Azure Container teklifi oluşturma](create-azure-container-offer.md) .

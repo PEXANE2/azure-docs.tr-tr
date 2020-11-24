@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti hakkında bilgi edinin.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 48447959f0a60baf8802a9939612bf0d536c2557
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5a003fc740d08c24af301a6c7ad06cc342530c56
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314760"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746889"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -18,7 +18,7 @@ Bu makalede, Azure geçişi hizmetine hızlı bir genel bakış sunulmaktadır.
 Azure geçişi, Azure şirket içi sunucuları, altyapısı, uygulamaları ve verileri değerlendirmek ve bu uygulamalara geçiş yapmak için merkezi bir merkez sağlar. Şunları sağlar:
 
 - **Birleşik geçiş platformu**: Azure 'a geçişinizi başlatmak, çalıştırmak ve izlemek için tek bir portal.
-- **Araç aralığı**: değerlendirme ve geçiş için bir dizi araç. Azure geçiş araçları arasında sunucu değerlendirmesi ve Azure geçişi: sunucu geçişi bulunur. Azure geçişi, diğer Azure hizmetleri ve araçlarıyla ve bağımsız yazılım satıcısı (ISV) teklifleriyle de tümleştirilir.
+- **Araç aralığı**: değerlendirme ve geçiş için bir dizi araç. Azure geçiş araçları, Azure geçişi: Sunucu değerlendirmesi ve Azure geçişi: sunucu geçişi içerir. Azure geçişi, diğer Azure hizmetleri ve araçlarıyla ve bağımsız yazılım satıcısı (ISV) teklifleriyle de tümleştirilir.
 - **Değerlendirme ve geçiş**: Azure geçiş hub 'ında şunları değerlendirebileceğiniz ve geçirebilirsiniz:
     - **Sunucular**: şirket içi sunucuları değerlendirin ve Azure sanal makinelerine veya Azure VMware çözümüne (AVS) (Önizleme) geçirin.
     - **Veritabanları**: şirket içi veritabanlarını değerlendirin ve BUNLARı Azure SQL veritabanı 'NA veya SQL yönetilen örneği 'ne geçirin.
@@ -82,9 +82,9 @@ Azure geçişi: sunucu geçiş aracı, Azure 'a geçiş yapmanıza yardımcı ol
 
 **Geçiş** | **Ayrıntılar**
 --- | ---
-Şirket içi VMware sanal makineleri | Aracısız veya aracı tabanlı geçiş kullanarak VM 'Leri Azure 'a geçirin.<br/><br/> Aracısız geçiş için sunucu geçişi, şirket içinde dağıttığınız bir Azure geçiş gereci kullanır. Sunucu değerlendirmesi için kullandığınız gereç türü vardır.<br/><br/> Sunucu değerlendirmesi, aracı tabanlı geçiş için bir çoğaltma gereci kullanır.
-Şirket içi Hyper-V VM'leri | VM 'Leri Azure 'a geçirin.<br/><br/> Sunucu değerlendirmesi, geçiş için Hyper-V konağına yüklenen sağlayıcı aracılarını kullanır.
-Şirket içi fiziksel sunucular | Fiziksel makineleri Azure 'a geçirebilirsiniz. Ayrıca, diğer sanallaştırılmış makineleri ve diğer genel bulutlardan VM 'Leri geçiş amacıyla sanal makineler olarak düşünerek geçirebilirsiniz. | Sunucu değerlendirmesi geçiş için bir çoğaltma gereci kullanır.
+Şirket içi VMware sanal makineleri | Aracısız veya aracı tabanlı geçiş kullanarak VM 'Leri Azure 'a geçirin.<br/><br/> Aracısız geçiş için sunucu geçişi, VMware VM 'lerinin bulunması ve değerlendirmesi için sunucu değerlendirmesi tarafından da kullanılabilen aynı Azure geçiş gerecini kullanır.<br/><br/> Sunucu geçişi, aracı tabanlı geçiş için bir çoğaltma gereci kullanır.
+Şirket içi Hyper-V VM'leri | VM 'Leri Azure 'a geçirin.<br/><br/> Sunucu geçişi, geçiş için Hyper-V konağına yüklenen sağlayıcı aracılarını kullanır.
+Şirket içi fiziksel sunucular | Fiziksel makineleri Azure 'a geçirebilirsiniz. Ayrıca, diğer sanallaştırılmış makineleri ve diğer genel bulutlardan VM 'Leri geçiş amacıyla fiziksel sunucu olarak düşünerek geçirebilirsiniz. | Sunucu geçişi geçiş için bir çoğaltma gereci kullanır.
 
 
 ## <a name="selecting-assessment-and-migration-tools"></a>Değerlendirme ve geçiş araçlarını seçme

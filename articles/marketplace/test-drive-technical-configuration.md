@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629912"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751122"
 ---
 # <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
 
@@ -34,11 +34,13 @@ Microsoft, hizmet sağlama ve sağlamayı kaldırma işlemlerini barındırarak 
 
 - **Örnek URL** (gerekli) – müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (örneğin, `https://testdrive.crm.dynamics.com` ).
 
-- **Örnek Web API URL 'si** (gerekli) – Microsoft 365 hesabınızda oturum açarak ve **Ayarlar**  >  **Özelleştirme**  >  **Geliştirici kaynakları**  >  **örneği Web API 'si (hizmet kök URL 'si)** ' ne giderek Dynamics 365 örneğiniz için Web API URL 'sini alın, burada bulunan URL 'yi kopyalayın (örneğin, `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **Örnek Web API URL 'si** (gerekli) – Microsoft 365 hesabınızda oturum açarak ve **Ayarlar**  >  **Özelleştirme**  >  **Geliştirici kaynakları**  >  **örneği Web API 'si (hizmet kök URL 'si)**' ne giderek Dynamics 365 örneğiniz için Web API URL 'sini alın, burada bulunan URL 'yi kopyalayın (örneğin, `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Rol adı** (gerekli) – özel Dynamics 365 test sürücünüzde tanımladığınız güvenlik rolü adını belirtin, bu, test sürücüleri sırasında kullanıcıya atanır (örneğin, test-sürücü-rolü).
 
-Test sürüşü için Dynamics 365 ortamınızı ayarlama ve kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlama konusunda AppSource iznini verme hakkında yardım için [Bu yönergeleri](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)izleyin.
+Test sürüşü için Dynamics 365 ortamınızı ayarlama ve kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlama konusunda AppSource iznini verme hakkında yardım için [Bu yönergeleri](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)izleyin.
+
+Barındırılan test sürücünüzü listeleme ve yapılandırmaya yönelik adım adım yönergeler için lütfen [barındırılan test sürücüsü Için ayrıntılı yapılandırma](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) sayfasını ziyaret edin.
 
 ## <a name="logic-app-test-drive"></a>Mantıksal uygulama sınama sürücüsü
 
@@ -68,13 +70,13 @@ Microsoft 'un test sürücüsünü sizin adınıza dağıtmasına izin vermek i�
 
 - **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir) – Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](../cost-management-billing/manage/create-subscription.md) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde, abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
 
-- **Azure AD KIRACı kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler** ' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, etki alanı adı adresinizi kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+- **Azure AD KIRACı kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, etki alanı adı adresinizi kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 - **Azure AD kiracı adı** (dinamik 365 için gereklidir) – Azure ACTIVE DIRECTORY (ad) adınızı girin. Bu adı bulmak için sağ üst köşedeki [Azure Portal](https://portal.azure.com/)oturum açın, kiracı adınız hesap adınızın altında listelenecektir.
 
-- **Azure AD uygulama kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **uygulama kayıtları** ' yı SEÇIN ve listelenen **uygulama kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
+- **Azure AD uygulama kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)girin). Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı SEÇIN ve listelenen **uygulama kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
 
-- **Azure AD uygulama istemci parolası** (gerekli) – Azure AD uygulamanızın [Istemci gizli](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol menüdeki **Azure Active Directory** sekmesini seçin, **uygulama kayıtları** ' i seçin ve test sürücüsü uygulamanızı seçin. Ardından, **Sertifikalar ve gizlilikler** ' ı seçin **, yeni istemci parolası** ' nı seçin, bir açıklama girin, **süresi dolmasın** ' ı seçin ve **Ekle** ' yi **Never** Değeri kopyalamadığınızdan emin olun. Değeri kopyalamamadan önce sayfadan ayrılmayın.
+- **Azure AD uygulama istemci parolası** (gerekli) – Azure AD uygulamanızın [Istemci gizli](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)anahtarını girin. Bu değeri bulmak için [Azure Portal](https://portal.azure.com/)oturum açın. Sol menüdeki **Azure Active Directory** sekmesini seçin, **uygulama kayıtları**' i seçin ve test sürücüsü uygulamanızı seçin. Ardından, **Sertifikalar ve gizlilikler**' ı seçin **, yeni istemci parolası**' nı seçin, bir açıklama girin, **süresi dolmasın**' ı seçin ve **Ekle**' yi **Never** Değeri kopyalamadığınızdan emin olun. Değeri kopyalamamadan önce sayfadan ayrılmayın.
 
 ## <a name="test-drive-listings"></a>Test sürücü listeleri
 
@@ -92,6 +94,8 @@ Iş Ortağı Merkezi 'nde **Test** sürücüsü sekmesinde bulunan **Test sürü
   - **Küçük resim** (533 x 324 piksel) – görüntü, PNG biçiminde olmalıdır.
 
 Şu anda Iş Ortağı Merkezi 'nde test sürücünüzü oluşturuyorsanız, devam etmeden önce **Taslağı kaydet** ' i seçin.
+
+Barındırılan test sürücünüzü listeleme ve yapılandırmaya yönelik adım adım yönergeler için lütfen [barındırılan test sürücüsü Için ayrıntılı yapılandırma](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) sayfasını ziyaret edin.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

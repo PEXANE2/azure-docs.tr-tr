@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 366826e591ed131ca63dc94eae994773217438d1
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511570"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736688"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form tanıyıcı önceden oluşturulmuş fatura modeli
 
@@ -74,7 +74,7 @@ JSON çıktısı 3 bölümden oluşur:
 
 Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkış yanıtında bir faturadan ayıklanan alanlar aşağıda verilmiştir (aşağıdaki çıktı bu [örnek faturayı](./media/sample-invoice.jpg)kullanır)  
 
-|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
+|Ad| Tür | Açıklama | Metin | Değer (standartlaştırılmış çıkış) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | string | Faturalandırılmakta olan müşteri | Microsoft Corp |  |
 | CustomerId | string | Müşterinin başvuru KIMLIĞI | CıD-12345 |  |
@@ -107,7 +107,8 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Kendi faturanız ve örneklerinizi [form tanıyıcı örnek Kullanıcı arabiriminde](https://fott-preview.azurewebsites.net/)deneyin.
-- Ya da, Python ve REST API kullanarak fatura verilerini ayıklamayı uygulamak için [fatura verilerini ayıklama](./QuickStarts/python-invoices.md) hızlı başlangıcını izleyin.
+- Form tanıyıcı ile seçtiğiniz dilde bir fatura işleme uygulaması yazmaya başlamak için [form tanıyıcı istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+- Ya da, Python ve REST API kullanarak fatura verilerini ayıklamayı uygulamak için [fatura verilerini ayıklama](./quickstarts/python-invoices.md) hızlı başlangıcını izleyin.
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Form Tanıma nedir?](./overview.md)

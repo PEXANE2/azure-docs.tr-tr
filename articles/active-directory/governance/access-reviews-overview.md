@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096011"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743166"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -74,10 +74,18 @@ Gözden geçirmek istediğinize bağlı olarak, Azure AD erişim gözden geçirm
 
 Dizininiz, aşağıdaki görevleri gerçekleştiren çalışanların sayısı kadar en az sayıda Azure AD Premium P2 lisansı gerektirir:
 
-- Gözden geçirenler olarak atanan üye ve Konuk kullanıcılar
-- Kendi kendine İnceleme gerçekleştiren üye ve Konuk kullanıcılar
-- Erişim gözden geçirmesi gerçekleştiren Grup sahipleri
-- Erişim gözden geçirmesi gerçekleştiren uygulama sahipleri
+-   Gözden geçirenler olarak atanan üye kullanıcıları
+-   Kendi kendine İnceleme gerçekleştiren üye kullanıcıları
+-   Erişim gözden geçirmesi gerçekleştiren Grup sahipleri olarak üye kullanıcılar
+-   Erişim gözden geçirmesi gerçekleştiren uygulama sahipleri olarak üye kullanıcılar
+
+Konuk kullanıcılar için lisanslama gereksinimlerine bağlı olarak, kullanmakta olduğunuz lisanslama modeline bağlıdır. Ancak, aşağıdaki konuk kullanıcıların etkinlikleri Azure AD Premium P2 kullanımı olarak kabul edilir:
+
+-   Gözden geçirenler olarak atanan Konuk kullanıcılar
+-   Kendi kendine İnceleme gerçekleştiren Konuk kullanıcılar
+-   Erişim gözden geçirmesi gerçekleştiren Grup sahipleri olarak Konuk kullanıcılar
+-   Erişim gözden geçirmesi gerçekleştiren uygulama sahipleri olarak Konuk kullanıcılar
+
 
 Azure AD Premium P2 lisansları, erişim gözden geçirmeleri kuran, ayarları yapılandıran veya kararların kararlarını uygulayan genel yönetici veya Kullanıcı Yöneticisi rollerine sahip kullanıcılar için gerekli **değildir** .
 

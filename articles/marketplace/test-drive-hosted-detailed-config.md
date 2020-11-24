@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 0765c05e08dda782c084775fb83b22a52558fa0d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491622"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751258"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Barındırılan test sürücüleri için ayrıntılı yapılandırma
 
@@ -23,13 +23,13 @@ Bu makalede, Dynamics 365 for Customer Engagement veya Operations için Dynamics
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/)' nde oturum açın.
 2. Yukarıdaki bağlantıya erişemiyorsanız, uygulamanızı yayımlamak için [buraya](https://appsource.microsoft.com/partners/list-an-app) bir istek göndermeniz gerekir. İsteği gözden geçirdikten sonra, yayımlama işlemini başlatmak için size erişim hakkı vermiş olursunuz.
 3. **Müşteri için mevcut bir dynamics 365** teklif teklifi bulun veya yeni bir **Dynamics 365 müşteri katılımı** teklifi oluşturun.
-4. **Sınama sürücüsünü etkinleştir** onay kutusunu seçin ve bir **test sürücüsü türü** seçin (aşağıdaki madde işaretine bakın) ve ardından **Kaydet** ' i seçin.
+4. **Sınama sürücüsünü etkinleştir** onay kutusunu seçin ve bir **test sürücüsü türü** seçin (aşağıdaki madde işaretine bakın) ve ardından **Kaydet**' i seçin.
 
     [![' Test sürücüsünü etkinleştir ' onay kutusu seçiliyor.](media/test-drive/enable-test-drive-check-box.png)](media/test-drive/enable-test-drive-check-box.png#lightbox)
 
     - **Test sürücüsü türü** – **Microsoft hosted (müşteri için Dynamics 365, PowerApps &)** seçeneğini belirleyin. Bu, Microsoft 'un Kullanıcı hazırlama ve sağlamayı kaldırma sınama sürücüsünü gerçekleştiren hizmeti barındırdığını ve bakımını gerçekleştireceğini belirtir.
 
-5. [Bu yönergeleri](https://github.com/Microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)kullanarak kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlamayı kaldırma iznini Microsoft AppSource verin. Bu adımda, aşağıda bahsedilen **Azure AD UYGULAMASı kimliği** ve **Azure AD uygulaması anahtar** değerlerini oluşturacaksınız.
+5. [Bu yönergeleri](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)kullanarak kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlamayı kaldırma iznini Microsoft AppSource verin. Bu adımda, aşağıda bahsedilen **Azure AD UYGULAMASı kimliği** ve **Azure AD uygulaması anahtar** değerlerini oluşturacaksınız.
 6. **Sınama sürücüsü teknik yapılandırma** sayfasında bu alanları doldurun.
 
     [![Sınama sürücüsü teknik yapılandırma sayfası.](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)
@@ -63,7 +63,7 @@ Bu makalede, Dynamics 365 for Customer Engagement veya Operations için Dynamics
 
 2. Yukarıdaki bağlantıya erişemiyorsanız, uygulamanızı yayımlamak için [buraya](https://appsource.microsoft.com/partners/list-an-app) bir istek göndermeniz gerekir. İsteği gözden geçirdikten sonra, yayımlama işlemini başlatmak için size erişim hakkı vermiş olursunuz.
 3. Mevcut bir **dynamics 365 Operations** teklifi bulun veya yeni bir **Dynamics 365 for Operations** teklifi oluşturun.
-4. **Sınama sürücüsünü etkinleştir** onay kutusunu seçin ve bir **test sürücüsü türü** seçin (aşağıdaki madde işaretine bakın) ve ardından **Kaydet** ' i seçin.
+4. **Sınama sürücüsünü etkinleştir** onay kutusunu seçin ve bir **test sürücüsü türü** seçin (aşağıdaki madde işaretine bakın) ve ardından **Kaydet**' i seçin.
 
     [![' Test sürücüsünü etkinleştir ' onay kutusunu seçin.](media/test-drive/enable-test-drive-check-box-operations.png)](media/test-drive/enable-test-drive-check-box-operations.png#lightbox)
 

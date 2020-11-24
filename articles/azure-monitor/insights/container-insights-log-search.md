@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici günlüklerini sorgulama | Microsoft 
 description: Kapsayıcılar için Azure Izleyici ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: a540ae828b14f231b3b327b714876550cc744a7e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 08c42fab84cb5180497f8da4f077b9bd82283ad4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994022"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95747688"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
 
@@ -16,7 +16,7 @@ Kapsayıcılar için Azure Izleyici, kapsayıcı konakları ve kapsayıcıların
 
 ## <a name="container-records"></a>Kapsayıcı kayıtları
 
-Aşağıdaki tabloda, kapsayıcılar için Azure Izleyici tarafından toplanan kayıtların ayrıntıları verilmiştir. 
+Aşağıdaki tabloda, kapsayıcılar için Azure Izleyici tarafından toplanan kayıtların ayrıntıları verilmiştir. Sütun açıklamalarının bir listesi için bkz. [Containerınventory](/azure/azure-monitor/reference/tables/containerinventory) ve [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) tabloları için başvuru.
 
 | Veriler | Veri kaynağı | Veri türü | Alanlar |
 |------|-------------|-----------|--------|

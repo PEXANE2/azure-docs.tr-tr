@@ -3,12 +3,12 @@ title: Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0 | Microsof
 description: Azure Service Bus ve Event Hubs AMQP 1,0 ifadelerine ve açıklamasına yönelik protokol Kılavuzu
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 32e71211ed1574cade0567f7944b154eea062b24
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396884"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736723"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0
 
@@ -42,7 +42,7 @@ AMQP 1,0 protokolü genişletilebilir olacak şekilde tasarlanmıştır ve yeten
 
 Bu bölümde, bağlantı, oturum ve bağlantı oluşturmayı ve kuyruklar, konular ve abonelikler gibi Service Bus varlıklara ve bunlara ileti aktarmayı içeren Azure Service Bus ile AMQP 1,0 temel kullanımı açıklanmaktadır.
 
-AMQP 'nin nasıl çalıştığı hakkında bilgi edinmek için en yetkili Kaynak AMQP 1,0 belirtimidir, ancak bu belirtim, protokolü öğretmek için tam olarak kılavuz uygulamaya yazıldı. Bu bölüm, Service Bus AMQP 1,0 ' i nasıl kullandığını açıklamak için gereken çok sayıda terminoloji konusuna odaklanır. AMQP 'ye daha kapsamlı bir giriş ve AMQP 1,0 hakkında daha geniş bir açıklama için [Bu video kursu][this video course]inceleyebilirsiniz.
+AMQP 'nin nasıl çalıştığı hakkında bilgi edinmek için en yetkili Kaynak [amqp 1,0 belirtimidir](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html), ancak bu belirtim, protokolü öğretmek için tam olarak kılavuz uygulamaya yazıldı. Bu bölüm, Service Bus AMQP 1,0 ' i nasıl kullandığını açıklamak için gereken çok sayıda terminoloji konusuna odaklanır. AMQP 'ye daha kapsamlı bir giriş ve AMQP 1,0 hakkında daha geniş bir açıklama için [Bu video kursu][this video course]inceleyebilirsiniz.
 
 ### <a name="connections-and-sessions"></a>Bağlantılar ve oturumlar
 
@@ -67,7 +67,7 @@ Oturumlarda pencere tabanlı akış denetim modeli vardır; bir oturum oluşturu
 
 Bu pencere tabanlı model, yaklaşık olarak pencere tabanlı akış denetimi için TCP kavramıyla benzerdir, ancak yuva içindeki oturum düzeyindedir. Protokolün çok eş zamanlı oturumlara izin verme kavramı, yüksek öncelikli trafiğin, üst düzey bir hızlı kulvar üzerinde olduğu gibi, daha fazla kısıtlanmış normal trafikle devam edebilmesi için vardır.
 
-Azure Service Bus Şu anda her bağlantı için tam olarak bir oturum kullanır. En büyük Service Bus çerçeve boyutu Service Bus standart ve Event Hubs için 262.144 bayttır (256-K bayt). Service Bus Premium için 1.048.576 (1 MB) olur. Service Bus herhangi bir oturum düzeyi daraltma penceresi uygulamaz, ancak bağlantı düzeyi akış denetimi kapsamında pencereyi düzenli olarak sıfırlar ( [sonraki bölüme](#links)bakın).
+Azure Service Bus Şu anda her bağlantı için tam olarak bir oturum kullanır. En büyük Service Bus çerçeve boyutu Service Bus standart için 262.144 bayttır (256-K bayt). Service Bus Premium ve Event Hubs için 1.048.576 (1 MB) olur. Service Bus herhangi bir oturum düzeyi daraltma penceresi uygulamaz, ancak bağlantı düzeyi akış denetimi kapsamında pencereyi düzenli olarak sıfırlar ( [sonraki bölüme](#links)bakın).
 
 Bağlantılar, kanallar ve oturumlar kısa ömürlü. Temeldeki bağlantı daraltıladıysanız, bağlantılar, TLS tüneli, SASL yetkilendirme bağlamı ve oturumlarının yeniden kurulması gerekir.
 

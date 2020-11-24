@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b66d0f20959d196fddeb8356d8171573f1243b58
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 940955c8ace956354a2747f5ad21430620c2a9d1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842286"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744577"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -415,17 +415,16 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-Azure 'da barındırılan düğümlerdeki veriler için __Azure aboneliği başına__ alınan verilerin **boyutunu** alabilir, abonelik kimliğini şu `_ResourceId` şekilde alın:
+Azure 'da barındırılan düğümlerdeki veriler için, __Azure aboneliği başına__ alınan verilerin **boyutunu** alabilir, `_SubscriptionId` özelliği şu şekilde kullanabilirsiniz:
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| extend subscriptionId = tostring(split(_ResourceId, "/")[2]) 
-| summarize BillableDataBytes = sum(BillableDataBytes) by subscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
-Benzer şekilde, kaynak grubuna göre veri hacmi almak için bu şöyle olacaktır:
+Kaynak grubuna göre veri hacmi almak için şu ayrıştırılabilir `_ResourceId` :
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -482,7 +481,7 @@ Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 | Performans sayaçları       | [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) şöyle değiştirin: <br> - Koleksiyonun sıklığını azaltın <br> - Performans sayaçlarının sayısını azaltın |
 | Olay günlükleri                 | [Olay günlüğü yapılandırmasını](data-sources-windows-events.md) şöyle değiştirin: <br> - Toplanan olay günlüklerinin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *Bilgi* düzeyindeki olayları toplamayın |
 | Syslog                     | [Syslog yapılandırmasını](data-sources-syslog.md) şu şekilde değiştirin: <br> - Toplanan tesislerin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneği *Bilgi* ve *Hata Ayıklama* düzeyindeki olayları toplamayın |
-| AzureDiagnostics           | Aşağıdaki amaçlarla kaynak günlüğü koleksiyonunu değiştirin: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
+| AzureDiagnostics           | [Kaynak günlük koleksiyonunu](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal) Değiştir: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
 | Çözüm ihtiyacı olmayan bilgisayarlardan toplanan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Düğüm başına fiyatlandırma katmanında düğümleri faturalandırılan alma

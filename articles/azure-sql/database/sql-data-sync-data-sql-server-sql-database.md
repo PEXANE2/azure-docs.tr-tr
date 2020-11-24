@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 01c5d4395eb584631efb9b3b956b9a987e46b0db
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540629"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736485"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -73,15 +73,15 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 - **Veri değişikliklerini izleme:** Veri eşitleme, INSERT, Update ve DELETE tetikleyicilerini kullanarak değişiklikleri izler. Değişiklikler, Kullanıcı veritabanındaki bir yan tabloya kaydedilir. BULK INSERT varsayılan olarak Tetikleyicileri tetikleyeceğini unutmayın. FIRE_TRIGGERS belirtilmemişse, hiçbir ekleme tetikleyicisi yürütülmez. Veri eşitleme 'nin Bu eklemeleri izleyebilmesi için FIRE_TRIGGERS seçeneğini ekleyin. 
 - **Veriler eşitleniyor:** Veri eşitleme, hub ve bağlı bileşen modelinde tasarlanmıştır. Hub her üyeyle tek tek eşitlenir. Hub 'daki değişiklikler üyeye indirilir ve Üyeden yapılan değişiklikler hub 'a yüklenir.
 - **Çakışmalar çözümleniyor:** Veri eşitleme, çakışma çözümü, *Merkez WINS* veya *üye WINS* için iki seçenek sunar.
-  - *Merkez WINS* ' i seçerseniz, hub 'daki değişiklikler her zaman üyenin değişikliklerinin üzerine yazar.
-  - *Üye WINS* ' i seçerseniz, üyedeki değişiklikler hub 'daki değişiklikler üzerine yazılır. Birden fazla üye varsa, son değer öncelikle hangi üyenin eşitlendiği üzerinde değişir.
+  - *Merkez WINS*' i seçerseniz, hub 'daki değişiklikler her zaman üyenin değişikliklerinin üzerine yazar.
+  - *Üye WINS*' i seçerseniz, üyedeki değişiklikler hub 'daki değişiklikler üzerine yazılır. Birden fazla üye varsa, son değer öncelikle hangi üyenin eşitlendiği üzerinde değişir.
 
 ## <a name="compare-with-transactional-replication"></a>Işlemsel çoğaltma ile karşılaştırın
 
 | | Data Sync | İşlem Çoğaltması |
 |---|---|---|
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
-| **Dezavantajlar** | -5 En düşük eşitlemeler arasındaki sıklık<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
+| **Dezavantajlar** | -İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
 ## <a name="get-started"></a>başlarken 
 
@@ -157,7 +157,7 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Hizmet ve veritabanı boyutlarına ilişkin sınırlamalar
 
-| **Boyutlarına**                                                  | **Sınırlı**              | **Geçici çözüm**              |
+| **Boyutlarına**                                                  | **Sınır**              | **Geçici çözüm**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Herhangi bir veritabanının ait olduğu en fazla eşitleme grubu sayısı.       | 5                      |                             |
 | Tek bir eşitleme grubundaki en fazla uç nokta sayısı              | 30                     |                             |
@@ -166,7 +166,6 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 | Bir eşitleme grubundaki tablolar                                          | 500                    | Birden çok eşitleme grubu oluşturma |
 | Bir eşitleme grubundaki tablodaki sütunlar                              | 1000                   |                             |
 | Tablodaki veri satırı boyutu                                        | 24 MB                  |                             |
-| En düşük eşitleme sıklığı aralığı (önceki eşitleme başlangıcından bu yana)     | 5 dakika              |                             |
 
 > [!NOTE]
 > Yalnızca bir eşitleme grubu varsa, tek bir eşitleme grubunda 30 ' a kadar uç nokta olabilir. Birden fazla eşitleme grubu varsa, tüm eşitleme gruplarındaki bitiş noktalarının toplam sayısı 30 ' u aşamaz. Bir veritabanı birden çok eşitleme grubuna aitse, birden fazla uç nokta olarak sayılır.

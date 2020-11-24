@@ -4,12 +4,12 @@ description: Web Apps, sanal makine ölçek kümeleri ve Cloud Services için Az
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fdb3588833dd9bcf989e020cd1dd861c6e28f37
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327064"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95745325"
 ---
 # <a name="best-practices-for-autoscale"></a>Otomatik ölçeklendirme için en iyi uygulamalar
 Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](../../api-management/api-management-key-concepts.md)için geçerlidir.
@@ -74,6 +74,9 @@ Bu durumda
 4. Otomatik ölçeklendirmeyi ölçekleme kuralı, ölçeklendirilmesi durumunda son durumu tahmin eder. Örneğin, 60 x 3 (geçerli örnek sayısı) = 180/2 (ölçeği azaltılabilen son örnek sayısı) = 90. Bu nedenle otomatik ölçeklendirme, ölçeği yeniden genişletmek zorunda olduğundan ölçeklendirmez. Bunun yerine, ölçeklendirmeyi aşağı atlar.
 5. Otomatik ölçeklendirme sonraki sefer, CPU 50 'e düşmeye devam eder. Yeniden tahmin eder-50 x 3 örnek = 150/2 örnek = 75, bu, 80 genişletme eşiğinin altında, 2 örneğe başarıyla ölçeklenir.
 
+> [!NOTE]
+> Otomatik ölçeklendirme motoru, hedef örnek sayısına ölçeklendirilmesi sonucu olarak flama gerçekleşirse, aynı zamanda geçerli sayı ile hedef sayısı arasında farklı sayıda örneğe ölçeklendirmeye çalışır. Bu aralıkta Flam gerçekleşmezse, otomatik ölçeklendirme yeni hedefle ölçek işlemine devam eder.
+
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Özel ölçümler için eşik değerleri ölçeklendirme konusunda dikkat edilmesi gerekenler
  Depolama veya Service Bus kuyruğu uzunluğu ölçümü gibi özel ölçümler için eşik, geçerli örnek sayısı başına kullanılabilen ortalama ileti sayısıdır. Bu ölçüm için eşik değerini dikkatle seçin.
 
@@ -115,7 +118,7 @@ Benzer şekilde, otomatik ölçeklendirme varsayılan profile geri geçtiğinde,
 
 Bir profilde birden çok kural ayarlamanız gerektiği durumlar vardır. Aşağıdaki otomatik ölçeklendirme kuralları, birden çok kural ayarlandığında otomatik ölçeklendirme motoru tarafından kullanılır.
 
-*Ölçek Genişletme*sırasında, herhangi bir kural karşılanıyorsa otomatik ölçeklendirme çalışır.
+*Ölçek Genişletme* sırasında, herhangi bir kural karşılanıyorsa otomatik ölçeklendirme çalışır.
 *Ölçeklendirmede*, otomatik ölçeklendirme tüm kuralların karşılanmasını gerektirir.
 
 Göstermek için, aşağıdaki dört otomatik ölçeklendirme kuralına sahip olduğunu varsayalım:
@@ -143,6 +146,8 @@ Aşağıdaki koşullardan biri gerçekleşirse otomatik ölçeklendirme etkinlik
 * Otomatik Ölçeklendirme hizmeti bir ölçeklendirme eylemi alamaz.
 * Otomatik Ölçeklendirme hizmeti için ölçümler, ölçek kararı vermek üzere kullanılamaz.
 * Ölçümler, bir ölçek kararı vermek için yeniden kullanılabilir (kurtarma).
+* Otomatik ölçeklendirme, ölçeklendirme denemesini algılar ve iptal eder. Bu durumda bir günlük türü görürsünüz `Flapping` . Bunu görürseniz, eşiklerinizin çok dar olup olmadığını göz önünde bulundurun.
+* Otomatik ölçeklendirme flamı algılar, ancak hala başarıyla ölçeklenebiliyor. Bu durumda bir günlük türü görürsünüz `FlappingOccurred` . Bunu görürseniz, otomatik ölçeklendirme motoru ölçeklendirmeyi denedi (örn. 4 örneklerden 2 ' ye kadar), ancak bunun flama neden olacağını belirledi. Bunun yerine, otomatik ölçeklendirme motoru farklı sayıda örneğe ölçeklendirildi (ör. 2 yerine 3 örnek kullanılıyor), bu nedenle bu sayıda örneğe ölçeklendirildi.
 
 Otomatik ölçeklendirme altyapısının sistem durumunu izlemek için bir etkinlik günlüğü uyarısı da kullanabilirsiniz. Aboneliğinizde [tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) veya [aboneliğinizde başarısız olan tüm otomatik ölçeklendirme ölçeği ölçeğini/ölçeği genişletme işlemlerini izlemek](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)Için bir etkinlik günlüğü uyarısı oluşturma örnekleri verilmiştir.
 

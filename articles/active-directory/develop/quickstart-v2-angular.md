@@ -12,18 +12,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515554"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95750782"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
 Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıcılara nasıl oturum açıp Microsoft Graph çağırabileceğinizi gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirtecinin nasıl alınacağını gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/).
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 > 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
 > 1. Yeni [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) bölmesini Azure Portal açın.
-> 1. Uygulamanız için bir ad girin ve ardından **Kaydet** ' i seçin.
+> 1. Uygulamanız için bir ad girin ve ardından **Kaydet**' i seçin.
 > 1. Hızlı başlangıç bölmesine gidin ve angular hızlı başlangıcını görüntüleyin. Yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 >
 > ### <a name="option-2-manual-register-and-manually-configure-the-application-and-code-sample"></a>Seçenek 2 (el ile): uygulamayı ve kod örneğini kaydetme ve el ile yapılandırma
@@ -100,12 +100,12 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Uygulama kaydlarınızın **genel bakış** sayfasında bu, **uygulamanızın (istemci) kimlik** değeridir. |
 >|Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).|
->|Enter_the_Tenant_Info_Here| Aşağıdaki seçeneklerden birine ayarlayın: uygulamanız *bu kuruluş dizinindeki hesapları* destekliyorsa, bu değeri dizin (KIRACı) kimliği veya kiracı adı (örneğin, **contoso.Microsoft.com** ) ile değiştirin. Uygulamanız *herhangi bir kuruluş dizinindeki hesapları* destekliyorsa, bu değeri **kuruluşlar** ile değiştirin. Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları* destekliyorsa, bu değeri **ortak** ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına* yönelik desteği kısıtlamak için bu değeri **tüketicilerle** değiştirin. |
+>|Enter_the_Tenant_Info_Here| Aşağıdaki seçeneklerden birine ayarlayın: uygulamanız *bu kuruluş dizinindeki hesapları* destekliyorsa, bu değeri dizin (KIRACı) kimliği veya kiracı adı (örneğin, **contoso.Microsoft.com**) ile değiştirin. Uygulamanız *herhangi bir kuruluş dizinindeki hesapları* destekliyorsa, bu değeri **kuruluşlar** ile değiştirin. Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları* destekliyorsa, bu değeri **ortak** ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına* yönelik desteği kısıtlamak için bu değeri **tüketicilerle** değiştirin. |
 >|Enter_the_Redirect_Uri_Here|İle değiştirin **http://localhost:4200** .|
->|Önbellekelocation  | Seçim Kimlik doğrulama durumu için tarayıcı depolamayı ayarlayın. Varsayılan değer **sessionStorage** ' dır.   |
+>|Önbellekelocation  | Seçim Kimlik doğrulama durumu için tarayıcı depolamayı ayarlayın. Varsayılan değer **sessionStorage**' dır.   |
 >|Storeauthstateıncookie  | Seçim Kimlik doğrulama isteği durumunu depolayan kitaplığı belirler. Tarayıcı tanımlama bilgilerinde kimlik doğrulama akışlarını doğrulamak için bu durum gereklidir. Bu tanımlama bilgisi, Internet Explorer ve Edge 'in bu iki tarayıcıyı kapsayacak şekilde ayarlanır. Daha fazla ayrıntı için bkz. [bilinen sorunlar](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 > > [!TIP]
-> > **Uygulama (istemci) Kimliği** , **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
+> > **Uygulama (istemci) Kimliği**, **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
 
 Kullanılabilir yapılandırılabilir seçenekler hakkında daha fazla bilgi için bkz. [istemci uygulamalarını başlatma](msal-js-initializing-client-applications.md).
 
@@ -127,10 +127,10 @@ Node.js kullanıyorsanız:
    ```
 
 1. **http://localhost:4200/** adresine göz atın.
-1. **Oturum aç** ' ı seçin.
+1. **Oturum aç**' ı seçin.
 1. Microsoft Graph çağırmak için **profil** ' i seçin.
 
-Tarayıcı uygulamayı yükledikten sonra **oturum aç** ' ı seçin. İlk kez oturum açmaya başladığınızda, uygulamanın profilinize erişmesine izin vermek için onayınızı sağlamanız ve oturumunuzu açmanız istenir. Başarıyla oturum açtıktan sonra **profil** ' i seçin ve Kullanıcı profili bilgileriniz sayfada görüntülenir.
+Tarayıcı uygulamayı yükledikten sonra **oturum aç**' ı seçin. İlk kez oturum açmaya başladığınızda, uygulamanın profilinize erişmesine izin vermek için onayınızı sağlamanız ve oturumunuzu açmanız istenir. Başarıyla oturum açtıktan sonra **profil**' i seçin ve Kullanıcı profili bilgileriniz sayfada görüntülenir.
 
 ## <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
 

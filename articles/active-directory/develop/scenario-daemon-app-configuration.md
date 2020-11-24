@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6864502a9d338a786e1e77dbf9888a7818bb94e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444172"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748657"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -34,11 +34,11 @@ Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
 ## <a name="configure-the-authority"></a>Yetkilendirmeyi yapılandırma
 
-Daemon uygulamaları, temsilci izinleri yerine uygulama izinleri kullanır. Bu nedenle, desteklenen hesap türü herhangi bir kuruluş dizininde veya kişisel Microsoft hesabı (örneğin, Skype, Xbox, Outlook.com) bir hesap olamaz. Bir Microsoft kişisel hesabına yönelik bir Daemon uygulamasına izin vermek için kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar* ' ı seçmeniz gerekir.
+Daemon uygulamaları, temsilci izinleri yerine uygulama izinleri kullanır. Bu nedenle, desteklenen hesap türü herhangi bir kuruluş dizininde veya kişisel Microsoft hesabı (örneğin, Skype, Xbox, Outlook.com) bir hesap olamaz. Bir Microsoft kişisel hesabına yönelik bir Daemon uygulamasına izin vermek için kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar*' ı seçmeniz gerekir.
 
-Bu nedenle, uygulama yapılandırmasında belirtilen yetki kiralanmalıdır (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
+Uygulama yapılandırmasında belirtilen yetkilinin kiralanmalıdır (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
 
-ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız, kullanabilirsiniz `organizations` . Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için bkz. [Tüm kiracı için Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Ayrıca, MSAL 'de Şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
+Çok müşterili bir araç sağlamak istiyor olsa da, **not** `common` hizmet, `organizations` hangi kiracının kullanılması gerektiğini güvenilir bir şekilde çıkarmadığı için bu AKıŞA değil, Kiracı kimliği veya etki alanı adı kullanmanız gerekir.
 
 ## <a name="configure-and-instantiate-the-application"></a>Uygulamayı yapılandırma ve oluşturma
 

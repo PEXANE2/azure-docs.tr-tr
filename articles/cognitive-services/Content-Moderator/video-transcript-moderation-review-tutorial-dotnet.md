@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ad689c746a0f4d7232e7f61982fb8c4f735cbe34
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912846"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737811"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Öğretici: Video ve transkript denetimi
 
@@ -35,7 +35,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) Web sitesine kaydolun ve özel etiketler oluşturun. Bu adımla ilgili yardıma ihtiyacınız varsa [etiketleri kullanma](./review-tool-user-guide/configure.md#tags) bölümüne bakın.
+- [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) Web sitesine kaydolun ve tanımlamak istediğiniz özellikler için özel etiketler oluşturun. Bu adımla ilgili yardıma ihtiyacınız varsa [etiketleri kullanma](./review-tool-user-guide/configure.md#tags) bölümüne bakın.
 
     ![Video denetleme özel etiketlerinin ekran görüntüsü](images/video-tutorial-custom-tags.png)
 - Örnek uygulamayı çalıştırmak için bir Azure hesabına, bir Azure Media Services kaynağına, bir Azure Content Moderator kaynağına ve Azure Active Directory kimlik bilgilerine sahip olmanız gerekir. Bu kaynakları alma hakkında yönergeler için bkz. [video denetleme API](video-moderation-api.md) Kılavuzu.
@@ -57,7 +57,7 @@ Dosyayı düzenleyin `App.config` ve tarafından gösterilen Active Directory ki
 
 ## <a name="examine-the-main-code"></a>Ana kodu inceleyin
 
-`Program.cs` içindeki `Program` sınıfı, video denetim uygulamasına ana giriş noktasıdır.
+_Program.cs_ Içindeki sınıf **programı** , video denetleme uygulamasının ana giriş noktasıdır.
 
 ### <a name="methods-of-program-class"></a>Program sınıfının yöntemleri
 
@@ -116,7 +116,7 @@ Aşağıdaki bölümlerde `ProcessVideo()` tarafından çağrılan tek tek işle
 Ağ trafiğini en aza indirmek için, uygulama video dosyalarını H.264 (MPEG-4 AVC) biçimine dönüştürür ve en çok 640 piksel genişliğe ölçeklendirir. Yüksek verimliliği (sıkıştırma oranı) nedeniyle H.264 codec bileşeni önerilir. Sıkıştırma, Visual Studio çözümünün `Lib` klasörüne eklenmiş olan ücretsiz `ffmpeg` komut satırı aracı kullanılarak yapılır. Giriş dosyaları, en yaygın kullanılan video dosyası biçimleri ve codec bileşenleri de dahil olmak üzere `ffmpeg` tarafından desteklenen herhangi bir biçimde olabilir.
 
 > [!NOTE]
-> Komut satırı seçeneklerini kullanarak programı başlattığınızda, denetim için gönderilecek vide dosyalarını içeren dizini belirtirsiniz. Bu dizinde yer alan ve `.mp4` dosya adı uzantısına sahip olan dosyaların tümü işlenir. Diğer dosya adı uzantılarını işlemek için, `Program.cs` dosyasında `Main()` yöntemini istenen uzantıları içerecek şekilde güncelleştirin.
+> Komut satırı seçeneklerini kullanarak programı başlattığınızda, denetim için gönderilecek vide dosyalarını içeren dizini belirtirsiniz. Bu dizinde yer alan ve `.mp4` dosya adı uzantısına sahip olan dosyaların tümü işlenir. Diğer dosya adı uzantılarını işlemek için `Main()` _program.cs_ içindeki yöntemi istenen uzantıları içerecek şekilde güncelleştirin.
 
 Tek video dosyasını sıkıştıran kod `AMSComponent.cs` içinde `AmsComponent` sınıfıdır. Bu işlevden sorumlu olan yöntem, burada gösterilen `CompressVideo()` yöntemidir.
 
@@ -138,7 +138,7 @@ Bu yöntem sıkıştırılmış çıkış dosyasının adını döndürür.
 
 ## <a name="upload-and-moderate-the-video"></a>Videoyu karşıya yükleme ve orta
 
-Videonun Content Moderation hizmeti tarafından işlenebilmesi için önce Azure Media Services'de depolanması gerekir. `Program.cs` içindeki `Program` sınıfının, videoyu karşıya yüklemek için kullanılan akış isteğini temsil eden bir nesnenin döndürüldüğü kısa bir `CreateVideoStreamingRequest()` yöntemi vardır.
+Videonun Content Moderation hizmeti tarafından işlenebilmesi için önce Azure Media Services'de depolanması gerekir. _Program.cs_ içindeki **Program** sınıfının, `CreateVideoStreamingRequest()` videoyu karşıya yüklemek için kullanılan akış isteğini temsil eden bir nesne döndüren kısa bir yöntemi vardır.
 
 [!code-csharp[CreateVideoStreamingRequest](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=120-133)]
 
@@ -228,7 +228,7 @@ Video denetimi işinin sonucu (Bkz. [video denetimine hızlı başlangıç](vide
 
 ## <a name="create-a-human-review"></a>İnsan incelemesi oluşturma
 
-Denetleme işlemi videodaki anahtar karelerin listesini ve ses parçalarının transkriptini döndürür. Sonraki adım, insan yöneticileri için Content Moderator gözden geçirme aracında bir gözden geçirme oluşturmaktır. `Program.cs` dosyasında `ProcessVideo()` yöntemine döndüğünüzde, `CreateVideoReviewInContentModerator()` yöntemine yapılan çağrıyı görürsünüz. Bu yöntem `VideoReviewAPI.cs` içinde yer alan `videoReviewApi` sınıfındadır ve aşağıda gösterilmiştir.
+Denetleme işlemi videodaki anahtar karelerin listesini ve ses parçalarının transkriptini döndürür. Sonraki adım, insan yöneticileri için Content Moderator gözden geçirme aracında bir gözden geçirme oluşturmaktır. `ProcessVideo()` _Program.cs_' deki yönteme geri dönerek yöntemine yapılan çağrıyı görürsünüz `CreateVideoReviewInContentModerator()` . Bu yöntem `VideoReviewAPI.cs` içinde yer alan `videoReviewApi` sınıfındadır ve aşağıda gösterilmiştir.
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 

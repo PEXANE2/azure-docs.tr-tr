@@ -13,16 +13,16 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611121"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746736"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Öğretici: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph çağırma
 
-Bu öğreticide, bir iOS veya macOS uygulamasını Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Uygulama bir kullanıcıya oturum açacaktır, Microsoft Graph API 'sini çağırmak için bir erişim belirteci alır ve Microsoft Graph API 'sine bir istek yapar.
+Bu öğreticide, kullanıcıları imzalamak ve Microsoft Graph API 'sini çağırmak için bir erişim belirteci almak üzere Microsoft Identity platformu ile tümleştirilen bir iOS veya macOS uygulaması oluşturacaksınız.
 
 Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder. Bu öğretici hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımlar iki platform arasında farklıdır.
 
@@ -63,10 +63,10 @@ Bu öğreticide oluşturduğunuz uygulamanın tamamlanmış bir sürümünü ind
 ## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
 1. Xcode ' u açın ve **Yeni bir Xcode projesi oluştur**' u seçin.
-2. İOS uygulamaları için **iOS**  >  **tek görünüm uygulaması** ' nı seçin ve **İleri ' yi**seçin.
-3. MacOS uygulamaları için **MacOS**  >  **Cocoa uygulaması** ' nı seçin ve **İleri ' yi**seçin.
+2. İOS uygulamaları için **iOS**  >  **tek görünüm uygulaması** ' nı seçin ve **İleri ' yi** seçin.
+3. MacOS uygulamaları için **MacOS**  >  **Cocoa uygulaması** ' nı seçin ve **İleri ' yi** seçin.
 4. Bir ürün adı belirtin.
-5. **Dili** **Swift** olarak ayarlayın ve ileri ' **yi**seçin.
+5. **Dili** **Swift** olarak ayarlayın ve ileri ' **yi** seçin.
 6. Uygulamanızı oluşturmak için bir klasör seçin ve **Oluştur**' u seçin.
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
@@ -78,9 +78,9 @@ Bu öğreticide oluşturduğunuz uygulamanın tamamlanmış bir sürümünü ind
 5. **Kaydol** ' u seçin
 6. Görüntülenen bölmenin **Yönet** bölümünde **kimlik doğrulaması**' nı seçin.
 
-7. Yeni uygulama kayıt deneyimini açmak için ekranın üst kısmındaki **Yeni deneyimi deneyin** ' i seçin ve ardından **+ Yeni kayıt**  >  **+ Platform**  >  **iOS/MacOS**Ekle ' yi seçin.
+7. Yeni uygulama kayıt deneyimini açmak için ekranın üst kısmındaki **Yeni deneyimi deneyin** ' i seçin ve ardından **+ Yeni kayıt**  >  **+ Platform**  >  **iOS/MacOS** Ekle ' yi seçin.
     - Projenizin paket KIMLIĞINI girin. Kodu indirdiyseniz, bu `com.microsoft.identitysample.MSALiOS` . Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
-8. `Configure`Uygulamanızı daha sonra yapılandırırken girmeniz Için **msal yapılandırma** sayfasında görünen **msal yapılandırmasını** seçin ve kaydedin. **Bitti** seçeneğini belirleyin.
+8. `Configure`Uygulamanızı daha sonra yapılandırırken girmeniz Için **msal yapılandırma** sayfasında görünen **msal yapılandırmasını** seçin ve kaydedin. **Bitti**'yi seçin.
 
 ## <a name="add-msal"></a>MSAL Ekle
 
@@ -158,7 +158,7 @@ Yukarıda değiştirmeniz gereken tek değer, `kClientID` [Uygulama Kimliğiniz]
 
 ## <a name="configure-xcode-project-settings"></a>Xcode proje ayarlarını yapılandırma
 
-Proje **imzalama & olanaklarınız**için yeni bir anahtarlık grubu ekleyin. Anahtarlık grubu, `com.microsoft.adalcache` iOS ve `com.microsoft.identity.universalstorage` MacOS üzerinde olmalıdır.
+Proje **imzalama & olanaklarınız** için yeni bir anahtarlık grubu ekleyin. Anahtarlık grubu, `com.microsoft.adalcache` iOS ve `com.microsoft.identity.universalstorage` MacOS üzerinde olmalıdır.
 
 ![Anahtarlık grubunun nasıl ayarlanacağını gösteren Xcode Kullanıcı arabirimi](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro-keychainShare.png)
 
@@ -424,7 +424,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ```
 
-**Xcode 11**KULLANıYORSANıZ, msal geri çağırma işlemini yerine içine yerleştirmeniz gerekir `SceneDelegate.swift` .
+**Xcode 11** KULLANıYORSANıZ, msal geri çağırma işlemini yerine içine yerleştirmeniz gerekir `SceneDelegate.swift` .
 Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
 
 ```swift
@@ -724,7 +724,7 @@ Belirteç önbelleğe almayı etkinleştirmek için:
 
 1. Uygulamanızın düzgün şekilde imzalandığından emin olun
 1. Xcode proje ayarlarınıza gidin > **Yetenekler sekmesi**  >  **Anahtarlık paylaşımını etkinleştir**
-1. **+** Aşağıdaki **Anahtarlık gruplarından**birini seçin ve girin:
+1. **+** Aşağıdaki **Anahtarlık gruplarından** birini seçin ve girin:
     - Işlemine `com.microsoft.adalcache`
     - MacOS `com.microsoft.identity.universalstorage`
 
