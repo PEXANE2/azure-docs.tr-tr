@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 1b76413bb78baa211fee3aebe37075188ec8c69e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f9a828b78dc5ba6bdbc77e22daa75be4182015f0
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531959"
+ms.locfileid: "95805705"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Depolama Gezgini’ni Azure Dosya depolama ile kullanma
 
@@ -31,7 +31,7 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 - [Depolama Gezgini’ni indirip yükleme](https://www.storageexplorer.com/)
 
-- [Azure depolama hesabına veya hizmetine bağlanma](//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Azure depolama hesabına veya hizmetine bağlanma](/azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Dosya Paylaşımı oluşturma
 
@@ -47,7 +47,7 @@ Aşağıdaki adımlar, Depolama Gezgini içinde bir dosya paylaşımı oluşturm
 
     ![Dosya Paylaşımı Oluşturma](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. **Dosya Paylaşımları** klasörünün altında bir metin kutusu görünür. Dosya paylaşımınızın adını girin. Dosya paylaşımlarını adlandırmayla ilgili kural ve kısıtlamaların listesi için [Paylaşım adlandırma kuralları](//azure/storage/storage-dotnet-how-to-use-blobs) bölümüne bakın.
+1. **Dosya Paylaşımları** klasörünün altında bir metin kutusu görünür. Dosya paylaşımınızın adını girin. Dosya paylaşımlarını adlandırmayla ilgili kural ve kısıtlamaların listesi için [Paylaşım adlandırma kuralları](/azure/storage/storage-dotnet-how-to-use-blobs) bölümüne bakın.
 
     ![Paylaşımı adlandırma](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -77,7 +77,7 @@ Aşağıdaki adımlar, Depolama Gezgini’ndeki bir dosya paylaşımının içer
 
 ## <a name="delete-a-file-share"></a>Dosya paylaşımını silme
 
-Dosya paylaşımları kolayca oluşturulabilir ve gerektiğinde silinebilir. (Dosyaları tek tek silmek için [Bir dosya paylaşımındaki dosyaları yönetme](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) bölümüne bakın.)
+Dosya paylaşımları kolayca oluşturulabilir ve gerektiğinde silinebilir. (Dosyaları tek tek silmek için [Bir dosya paylaşımındaki dosyaları yönetme](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) bölümüne bakın.)
 
 Aşağıdaki adımlar, Depolama Gezgini içinde bir dosya paylaşımı silme işlemini göstermektedir:
 
@@ -97,7 +97,7 @@ Aşağıdaki adımlar, Depolama Gezgini içinde bir dosya paylaşımı silme iş
 
 ## <a name="copy-a-file-share"></a>Dosya paylaşımını kopyalama
 
-Depolama Gezgini’ni kullanarak bir dosya paylaşımını panoya kopyalayabilir, ardından bu dosya paylaşımını başka bir depolama hesabına yapıştırabilirsiniz. (Dosyaları tek tek kopyalamak için [Bir dosya paylaşımındaki dosyaları yönetme](//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) bölümüne bakın.)
+Depolama Gezgini’ni kullanarak bir dosya paylaşımını panoya kopyalayabilir, ardından bu dosya paylaşımını başka bir depolama hesabına yapıştırabilirsiniz. (Dosyaları tek tek kopyalamak için [Bir dosya paylaşımındaki dosyaları yönetme](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) bölümüne bakın.)
 
 Aşağıdaki adımlar, dosya paylaşımını bir depolama hesabından diğerine kopyalama işlemini göstermektedir.
 
@@ -117,7 +117,7 @@ Aşağıdaki adımlar, dosya paylaşımını bir depolama hesabından diğerine 
 
 ## <a name="get-the-sas-for-a-file-share"></a>Dosya paylaşımı için SAS alma
 
-[Paylaşılan erişim imzası (SAS)](//azure/storage/storage-dotnet-shared-access-signature-part-1), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Başka bir deyişle, hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan, depolama hesabınızdaki nesnelere belirli bir süre için ve belirli bir izin kümesiyle sınırlı istemci izinleri verebilirsiniz.
+[Paylaşılan erişim imzası (SAS)](/azure/storage/storage-dotnet-shared-access-signature-part-1), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Başka bir deyişle, hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan, depolama hesabınızdaki nesnelere belirli bir süre için ve belirli bir izin kümesiyle sınırlı istemci izinleri verebilirsiniz.
 
 Aşağıdaki adımlar, bir dosya paylaşımı için SAS oluşturma işlemini göstermektedir:+
 

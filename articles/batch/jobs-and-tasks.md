@@ -2,13 +2,13 @@
 title: Azure Batch iş ve görevler
 description: İşler ve görevler hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/23/2020
+ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955378"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808584"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch iş ve görevler
 
@@ -18,15 +18,17 @@ Azure Batch, bir *görev* bir hesaplama birimini temsil eder. *İş* , bu görev
 
 İş bir görev koleksiyonudur. Bir havuzdaki işlem düğümleri üzerindeki görevleri tarafından hesaplamanın nasıl gerçekleştirildiğini yönetir.
 
-Bir iş, çalışmanın çalıştırılacağı [havuzu](nodes-and-pools.md#pools) belirler. Her iş için yeni havuz oluşturabilir veya çok sayıda iş için bir havuz kullanabilirsiniz. Bir iş zamanlaması ile ilişkili her iş için veya bir iş zamanlaması ile ilişkili tüm işler için havuz oluşturabilirsiniz.
+Bir iş, çalışmanın çalıştırılacağı [havuzu](nodes-and-pools.md#pools) belirler. Her iş için yeni havuz oluşturabilir veya çok sayıda iş için bir havuz kullanabilirsiniz. Bir iş [zamanlaması](#scheduled-jobs)ile ilişkili her iş için bir havuz veya bir iş zamanlamasıyla ilişkili tüm işler için bir havuz oluşturabilirsiniz.
 
 ### <a name="job-priority"></a>İş önceliği
 
-Oluşturduğunuz işlere isteğe bağlı bir iş önceliği atayabilirsiniz. Batch hizmeti bir hesaptaki iş zamanlama sırasını belirlemek üzere işin öncelik değerini kullanır ([zamanlanmış iş](#scheduled-jobs) ile karıştırılmamalıdır). Öncelik değeri, -1000 en düşük öncelik ve 1000 en yüksek öncelik olmak üzere, -1000 ile 1000 aralığındadır. Bir işin önceliğini güncelleştirmek için [İşin önceliklerini güncelleştirme](/rest/api/batchservice/job/update) işlemini (Batch REST) ya da [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) özelliğini (Batch .NET) çağırabilirsiniz.
+Oluşturduğunuz işlere isteğe bağlı bir iş önceliği atayabilirsiniz. Batch hizmeti, her havuzda zamanlama sırasını (iş içerisindeki tüm görevler için) anlamak üzere işin öncelik değerini kullanır.
 
-Aynı hesapta, yüksek öncelikli işlerin düşük öncelikli işlere göre zamanlama üstünlüğü vardır. Bir hesaptaki yüksek öncelik değerine sahip iş farklı bir hesaptaki düşük öncelik değerine sahip başka bir işe karşı zamanlama üstünlüğüne sahip değildir. Çalışmakta olan düşük öncelikli işlerdeki görevler engellenmez.
+Bir işin önceliğini güncelleştirmek için, [bir iş işleminin özelliklerini güncelleştirme](/rest/api/batchservice/job/update) (Batch REST) ya da [Cloudjob. Priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .net) öğesini çağırın. Öncelik değerleri-1000 (en düşük öncelik) ile 1000 (en yüksek öncelik) arasındadır.
 
-Havuzlardaki iş zamanlaması bağımsızdır. Farklı havuzlar arasında, ilişkili havuzunda boşta düğüm eksikliği olması durumunda yüksek öncelikli işin önce zamanlanacağı kesin değildir. Aynı havuzda, aynı öncelik değerine sahip işlerin zamanlanma şansı eşittir.
+Aynı havuz içinde, yüksek öncelikli işlerin düşük öncelikli işlere göre zamanlama önceliği vardır. Zaten çalışmakta olan düşük öncelikli işlerde bulunan görevler, daha yüksek öncelikli bir işteki görevler tarafından yok edilir. Aynı öncelik düzeyine sahip işlerin zamanlanabileceği eşittir ve görev yürütmenin sıralaması tanımlanmamıştır.
+
+Tek bir havuzda çalışan yüksek öncelikli değere sahip bir iş, ayrı bir havuzda veya farklı bir Batch hesabında çalışan işlerin zamanlamasını etkilemez. İş önceliği, iş gönderildiğinde oluşturulan, [oto havuzlar](nodes-and-pools.md#autopools)için uygulanmaz.
 
 ### <a name="job-constraints"></a>İş kısıtlamaları
 
@@ -39,9 +41,9 @@ Havuzlardaki iş zamanlaması bağımsızdır. Farklı havuzlar arasında, iliş
 
 İstemci uygulamanız bir işe görevler ekleyebilir ya da bir [iş yöneticisi görevi](#job-manager-task) belirtebilirsiniz. Bir iş yöneticisi görevi havuzdaki işlem düğümlerinden birinde çalıştırılan görevle birlikte bir iş için gereken görevleri oluşturmak üzere gerekli bilgileri içerir. İş Yöneticisi görevi özellikle Batch tarafından işlenir; iş oluşturulduktan hemen sonra kuyruğa alınır ve başarısız olursa yeniden başlatılır. İş tarafından oluşturulan işler için iş Yöneticisi görevi [gerekir, çünkü](#scheduled-jobs)iş örneği oluşturulmadan önce görevleri tanımlamanın tek yoludur.
 
-Varsayılan olarak, işteki tüm görevler tamamlandığında iş etkin durumda kalır. Bu davranışı, işteki tüm görevler tamamlandığında işin otomatik olarak sonlandırılacağı şekilde değiştirebilirsiniz. Görevlerin hepsi tamamlanmış durumdayken işi otomatik olarak sonlandırmak için, işin **onAllTasksComplete** özelliğini (Batch .NET’te [OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob)) *terminatejob* olarak ayarlayın.
+Varsayılan olarak, işteki tüm görevler tamamlandığında iş etkin durumda kalır. Bu davranışı, işteki tüm görevler tamamlandığında işin otomatik olarak sonlandırılacağı şekilde değiştirebilirsiniz. Tüm görevleri tamamlandı durumundaysa işi otomatik olarak sonlandırmak için işin **onalltaskscompleted** özelliğini (Batch .net 'Te [onalltaskscompleted](/dotnet/api/microsoft.azure.batch.cloudjob) ) `terminatejob` * ' olarak ayarlayın.
 
-Batch hizmeti, tüm görevlerinin tamamlanması için görev *içermeyen* bir işi kabul eder. Bu nedenle, bu seçenek genellikle [iş yöneticisi görevi](#job-manager-task) ile kullanılır. İş yöneticisi olmadan otomatik iş sonlandırmayı kullanmak istiyorsanız başlangıçta yeni işin **onAllTasksComplete** özelliğini *noaction* olarak ayarlamanız ve işe görev eklemeyi bitirdiğinizde bu ayarı *terminatejob* olarak değiştirmeniz gerekir.
+Batch hizmeti, tüm görevlerinin tamamlanması için görev *içermeyen* bir işi kabul eder. Bu nedenle, bu seçenek genellikle [iş yöneticisi görevi](#job-manager-task) ile kullanılır. İş Yöneticisi olmadan otomatik iş sonlandırmasını kullanmak istiyorsanız, başlangıçta yeni bir işin **Onalltasksfinished** özelliğini olarak ayarlamanız `noaction` , sonra da `terminatejob` işe görev eklemeyi bitirdikten sonra bunu * ' olarak ayarlamanız gerekir.
 
 ### <a name="scheduled-jobs"></a>Zamanlanan işler
 
@@ -147,7 +149,7 @@ Görev bağımlılıkları ile aşağıdaki gibi senaryoları yapılandırabilir
 
 - *görevB**görevA*’ya bağlıdır (*görevB*, *görevA* tamamlanana kadar yürütülmeye başlamaz).
 - *görevC* hem *görevA* hem de *görevB* ’ye bağlıdır.
-- *Taskd* , çalıştırılmadan önce *1* ile *10*arasındaki görevler gibi bir dizi göreve bağlıdır.
+- *Taskd* , çalıştırılmadan önce *1* ile *10* arasındaki görevler gibi bir dizi göreve bağlıdır.
 
 Daha fazla ayrıntı için bkz. [Azure Batch görev bağımlılıkları](batch-task-dependencies.md) ve [Azure-Batch-Samples](https://github.com/Azure-Samples/azure-batch-samples) GitHub deposundaki [taskdependencies](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies) kodu örneği.
 

@@ -2,13 +2,13 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 65a5e90616f8883b338d22fa31eee6932452b5fd
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.date: 11/24/2020
+ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95242671"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95807644"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM şablonlarıyla kiracı dağıtımları
 
@@ -129,6 +129,14 @@ ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakk
 * [GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın](deploy-to-azure-button.md)
 * [ARM şablonlarını Cloud Shell dağıtma](deploy-cloud-shell.md)
 
+## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
+
+Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir. [Abonelik](deploy-to-subscription.md) ve [Yönetim grubu](deploy-to-management-group.md) dağıtımları da bir konum gerektirir. [Kaynak](deploy-to-resource-group.md) grubu dağıtımları için, kaynak grubunun konumu dağıtım verilerini depolamak için kullanılır.
+
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
+
+Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Örneğin, **deployment1** adına sahip bir kiracı dağıtımı oluşturursanız, daha sonra **deployment1** adında bir dağıtım **oluşturalım**, ancak **westus**. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
+
 ## <a name="deployment-scopes"></a>Dağıtım kapsamları
 
 Bir kiracıya dağıtırken kaynakların dağıtımını yapabilirsiniz:
@@ -153,7 +161,7 @@ Bu bölümde, farklı kapsamların nasıl ayarlanacağı gösterilmektedir. Bu f
 
 Kiracıdaki bir yönetim grubunu hedeflemek için, iç içe geçmiş bir dağıtım ekleyin ve `scope` özelliğini belirtin.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,18,22":::
 
 ### <a name="scope-to-subscription"></a>Abonelik kapsamı
 
@@ -161,7 +169,7 @@ Ayrıca, Kiracıdaki abonelikleri de hedefleyebilirsiniz. Şablonu dağıtan kul
 
 Kiracıdaki bir aboneliği hedeflemek için, iç içe geçmiş bir dağıtım ve `subscriptionId` özelliğini kullanın.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="9,10,18":::
 
 ### <a name="scope-to-resource-group"></a>Kapsam-kaynak grubu
 
@@ -170,14 +178,6 @@ Ayrıca, kiracının içindeki kaynak gruplarını hedefleyebilirsiniz. Şablonu
 Kiracının içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir dağıtım kullanın. `subscriptionId`Ve özelliklerini ayarlayın `resourceGroup` . Kaynak grubunun konumunda dağıtıldığından, iç içe dağıtım için bir konum ayarlamazsanız.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
-
-## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
-
-Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
-
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy** varsayılan dağıtım adını oluşturur.
-
-Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
 ## <a name="create-management-group"></a>Yönetim grubu oluşturma
 

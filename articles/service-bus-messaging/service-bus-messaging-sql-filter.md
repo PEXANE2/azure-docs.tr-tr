@@ -1,22 +1,23 @@
 ---
-title: Azure Service Bus SQLFilter sözdizimi başvurusu | Microsoft Docs
-description: Bu makalede, SQLFilter dilbilgisi hakkında ayrıntılar sağlanmaktadır. Bir SqlFilter, SQL-92 standardının bir alt kümesini destekler.
+title: Azure Service Bus abonelik kuralı SQL filtresi sözdizimi | Microsoft Docs
+description: Bu makalede SQL filtresi dilbilgisinde ayrıntılar sağlanmaktadır. SQL filtresi, SQL-92 standardının bir alt kümesini destekler.
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 11/24/2020
+ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888479"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805627"
 ---
-# <a name="sqlfilter-syntax"></a>SQLFilter söz dizimi
+# <a name="subscription-rule-sql-filter-syntax"></a>Abonelik kuralı SQL filtresi sözdizimi
 
-*Sqlfilter* nesnesi [sqlfilter sınıfının](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)bir örneğidir ve bir Ile karşılaştırılarak değerlendirilen bir SQL dil tabanlı filtre ifadesini temsil eder [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . Bir SqlFilter, SQL-92 standardının bir alt kümesini destekler.  
+*SQL filtresi* , Service Bus konu abonelikleri için kullanılabilir filtre türlerinden biridir. Bu, SQL-92 standardının bir alt kümesini içeren bir metin deyimidir. Filtre ifadeleri, bir `sqlExpression` Azure Resource Manager şablonundaki bir Service Bus ' sqlFilter ' özelliğinin öğesi `Rule` veya Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` komutunun [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) bağımsız değişkeni ve ABONELIK kurallarının yönetilmesine izin veren çeşitli SDK işlevleri ile birlikte kullanılır.
+
+Service Bus Premium, JMS 2,0 API 'SI aracılığıyla [JMS SQL ileti seçici söz dizimini](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) da destekler.
+
   
- Bu konuda, SqlFilter dilbilgisinde ayrıntıları listelenmektedir.  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -324,4 +325,7 @@ Bir C# örneği için bkz. [GitHub 'Da konu filtreleri örneği](https://github.
 
 - [SQLFilter sınıfı (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter sınıfı (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction sınıfı](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SqlFilter sınıfı (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [az ServiceBus konu abonelik kuralı](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2370f76bacb8645f1b343da4f056c8bcf06a26dd
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014229"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95796715"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde standart sütunlar
 Azure Izleyici günlüklerindeki veriler, her biri benzersiz bir sütun kümesine sahip belirli bir veri türüne sahip bir [Log Analytics çalışma alanında veya Application Insights uygulamasında bir kayıt kümesi olarak depolanır](./data-platform-logs.md). Birçok veri türü, birden çok tür genelinde ortak olan standart sütunlara sahip olacaktır. Bu makale, bu sütunları açıklar ve bunları sorgularda nasıl kullanabileceğinizi gösteren örnekler sağlar.
@@ -80,7 +80,7 @@ search *
 ## <a name="_resourceid"></a>\_ResourceId
 **\_ RESOURCEID** sütunu, kaydın ilişkilendirildiği kaynak için benzersiz bir tanımlayıcı tutar. Bu, sorgunuzu yalnızca belirli bir kaynaktaki kayıtlarla birleştirmek veya ilgili verileri birden çok tablo genelinde birleştirmek için kullanabileceğiniz standart bir sütun sağlar.
 
-Azure kaynakları için **_ResourceId** değeri [Azure kaynak kimliği URL 'sidir](../../azure-resource-manager/templates/template-functions-resource.md). Sütun şu anda Azure kaynaklarıyla sınırlıdır, ancak şirket içi bilgisayarlar gibi Azure dışındaki kaynaklara genişletilir.
+Azure kaynakları için **_ResourceId** değeri [Azure kaynak kimliği URL 'sidir](../../azure-resource-manager/templates/template-functions-resource.md). Sütun, [Azure Arc](../../azure-arc/overview.md) kaynakları dahil olmak üzere Azure kaynaklarıyla veya alma SıRASıNDA kaynak kimliğini belirten özel günlüklere sınırlıdır.
 
 > [!NOTE]
 > Bazı veri türlerinde zaten Azure Kaynak KIMLIĞI veya abonelik KIMLIĞI gibi en az parçalar içeren alanlar var. Bu alanlar geriye dönük uyumluluk için tutulurken, daha tutarlı olacağı için _ResourceId çapraz bağıntı gerçekleştirmek üzere kullanılması önerilir.
@@ -111,17 +111,47 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-Aşağıdaki sorgu **_ResourceId** ayrıştırır ve Azure aboneliği başına faturalanan veri birimlerini toplar.
+Aşağıdaki sorgu **_ResourceId** ayrıştırır ve Azure Kaynak grubu başına faturalanan veri birimlerini toplar.
 
 ```Kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by resourceGroup | sort by Bytes nulls last 
 ```
 
 `union withsource = tt *`Veri türlerindeki taramaların yürütülmesi pahalı olduğundan bu sorguları dikkatli bir şekilde kullanın.
+
+\_ResourceID sütununu ayrıştırarak SubscriptionID sütununun ayıklanması her zaman daha etkilidir \_ .
+
+## <a name="_substriptionid"></a>\_SubstriptionId
+**\_ SubscriptionID** sütunu, kaydın ILIŞKILENDIRILDIĞI kaynağın abonelik kimliğini içerir. Bu, sorgunuzu yalnızca belirli bir aboneliğin kayıtlarına veya farklı aboneliklerin karşılaştırılacağı şekilde kapsamını atamak için kullanabileceğiniz standart bir sütun sağlar.
+
+Azure kaynakları için **__SubscriptionId** değeri, [Azure kaynak kimliği URL](../../azure-resource-manager/templates/template-functions-resource.md)'sinin abonelik bölümüdür. Sütun, [Azure Arc](../../azure-arc/overview.md) kaynakları dahil olmak üzere Azure kaynaklarıyla veya alma SıRASıNDA kaynak kimliğini belirten özel günlüklere sınırlıdır.
+
+> [!NOTE]
+> Bazı veri türlerinde Azure abonelik KIMLIĞI içeren alanlar zaten var. Bu alanlar geriye dönük uyumluluk için tutulurken, \_ daha tutarlı olacağı için SubscriptionID sütununun, çapraz bağıntı gerçekleştirmek üzere kullanılması önerilir.
+### <a name="examples"></a>Örnekler
+Aşağıdaki sorgu belirli bir aboneliğin bilgisayarları için performans verilerini inceler. 
+
+```Kusto
+Perf 
+| where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
+| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
+```
+
+Aşağıdaki sorgu **_ResourceId** ayrıştırır ve Azure aboneliği başına faturalanan veri birimlerini toplar.
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _SubscriptionId | sort by Bytes nulls last 
+```
+
+`union withsource = tt *`Veri türlerindeki taramaların yürütülmesi pahalı olduğundan bu sorguları dikkatli bir şekilde kullanın.
+
 
 ## <a name="_isbillable"></a>\_Miktarbirimi
 **\_ Ifaturalanabilir** sütun, alınan verilerin faturalandırılabilir olup olmadığını belirtir. **\_ Ifaturalanabilir** değerine eşit olan veriler `false` ücretsiz olarak toplanır ve Azure hesabınıza faturalandırılmaz.
@@ -168,8 +198,7 @@ Abonelik başına alınan faturalandırılabilir olayların boyutunu görmek iç
 ```Kusto
 union withsource=table * 
 | where _IsBillable == true 
-| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId | sort by Bytes nulls last 
 ```
 
 Kaynak grubu başına alınan faturalandırılabilir olayların boyutunu görmek için aşağıdaki sorguyu kullanın:
@@ -178,7 +207,7 @@ Kaynak grubu başına alınan faturalandırılabilir olayların boyutunu görmek
 union withsource=table * 
 | where _IsBillable == true 
 | parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
 
 ```
 

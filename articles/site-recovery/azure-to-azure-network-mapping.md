@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069501"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811639"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Sanal ağlar için ağ eşlemesini ve IP adresini ayarlama
 
 Bu makalede, farklı Azure bölgelerinde bulunan iki Azure sanal ağı örneğinin (VNet 'ler) nasıl eşleneceğini ve ağlar arasında IP adreslemenin nasıl ayarlanacağı açıklanır. Ağ eşleme, çoğaltmayı etkinleştirme sırasında kaynak ağa göre hedef ağ seçimi için varsayılan bir davranış sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Ağları eşleştirmadan önce kaynak ve hedef Azure bölgelerinde [Azure sanal](../virtual-network/virtual-networks-overview.md) ağlarına sahip olmanız gerekir. 
 
@@ -85,7 +85,7 @@ Farklı adres alanı | Hedef alt ağdaki bir sonraki kullanılabilir IP adresi h
 **Hedef ağ** | **Ayrıntılar**
 --- | ---
 Hedef ağ yük devretme VNet | -Hedef IP adresi aynı IP adresiyle statik olacak. <br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir. Örneğin: kaynak IP adresi 10.0.0.19 ise ve yük devretme ağı 10.0.0.0/24 aralığını kullanıyorsa, hedef VM 'ye atanan sonraki IP adresi 10.0.0.254 olur.
-Hedef ağ yük devretme VNet değil | -Hedef IP adresi aynı IP adresiyle statik olacak.<br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir.<br/><br/> Örneğin: kaynak statik IP adresi 10.0.0.19 ise ve yük devretme, 10.0.0.0/24 aralığına sahip yük devretme ağı olmayan bir ağ üzerinde ise, hedef statik IP adresi varsa 10.0.0.0.19 olur ve aksi takdirde 10.0.0.254 olur.
+Hedef ağ yük devretme VNet değil | -Hedef IP adresi aynı IP adresiyle statik olacak.<br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir.<br/><br/> Örneğin: kaynak statik IP adresi 10.0.0.19 ise ve yük devretme, 10.0.0.0/24 aralığına sahip yük devretme ağı olmayan bir ağ üzerinde ise, hedef statik IP adresi varsa 10.0.0.19 olur ve aksi takdirde 10.0.0.254 olur.
 
 - Yük devretme VNet, olağanüstü durum kurtarmayı ayarlarken seçtiğiniz hedef ağ olur.
 - Yük devretme testi için her zaman üretim dışı bir ağ kullanmanızı öneririz.

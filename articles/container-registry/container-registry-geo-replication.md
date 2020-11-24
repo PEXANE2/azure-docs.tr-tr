@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486881"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810059"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry coğrafi çoğaltma
 
@@ -18,9 +18,9 @@ Yerel bir varlık ya da etkin bir yedekleme isteyen şirketler, birden çok Azur
 
 Coğrafi olarak çoğaltılmış bir kayıt defteri aşağıdaki avantajları sağlar:
 
-* Tek bir kayıt defteri/görüntü/etiket adları birden çok bölgede kullanılabilir
-* Bölgesel dağıtımlardan ağa yakın kayıt defteri erişimi
-* Görüntüler, kapsayıcı ana bilgisayarınızla aynı bölgede bulunan çoğaltılmış yerel bir kayıt defterinden çekildiğinden ek çıkış ücretleri uygulanmaz
+* Tek kayıt defteri, resim ve etiket adları birden çok bölgede kullanılabilir
+* Ağ, kayıt defteri erişimini kapatma ile bölgesel dağıtımların performansını ve güvenilirliğini geliştirme
+* Kapsayıcı konağınız ile aynı veya yakın bölgede yerel, çoğaltılan bir kayıt defterinden görüntü katmanları çekerek veri aktarımı maliyetlerini azaltın
 * Birden çok bölgede kayıt defterinin tek noktadan yönetimi
 
 > [!NOTE]
@@ -57,7 +57,8 @@ Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajl
 
 * Tüm bölgelerde tek bir kayıt defterini yönetme: `contoso.azurecr.io`
 * Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetin: `contoso.azurecr.io/public/products/web:1.2`
-* Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. Bölgesel [Web kancalarını](container-registry-webhook.md) belirli çoğaltmalarda olayları bilgilendirmek üzere yapılandırabilirsiniz.
+* Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. ACR yalnızca benzersiz katmanları çoğaltır, bölgeler arasında veri aktarımını azaltır. 
+* Belirli çoğaltmalarda olayları bilgilendirmek için bölgesel [Web kancalarını](container-registry-webhook.md) yapılandırın.
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma
 
@@ -87,7 +88,7 @@ Bir çoğaltma yapılandırmak için yeşil bir altıon seçin, sonra **Oluştur
 
 Ek çoğaltmalar yapılandırmak için, diğer bölgelerin yeşil altılarını seçin ve ardından **Oluştur**' a tıklayın.
 
-ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye başlar. Tamamlandıktan sonra Portal, *Ready*olarak yansıtır. Portaldaki çoğaltma durumu otomatik olarak güncelleştirmez. Güncelleştirilmiş durumu görmek için Yenile düğmesini kullanın.
+ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye başlar. Tamamlandıktan sonra Portal, *Ready* olarak yansıtır. Portaldaki çoğaltma durumu otomatik olarak güncelleştirmez. Güncelleştirilmiş durumu görmek için Yenile düğmesini kullanın.
 
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>Coğrafi olarak çoğaltılan kayıt defteri kullanma konuları
 
@@ -131,7 +132,7 @@ Görüntüleri gönderirken en yakın çoğaltma ile DNS çözümlemesini iyile�
 
 Coğrafi olarak çoğaltılan bir kayıt defteriyle ilgili sorunları gidermek için, bir veya daha fazla çoğaltma için Traffic Manager yönlendirmeyi geçici olarak devre dışı bırakmak isteyebilirsiniz. Azure CLı sürüm 2,8 ' den başlayarak, `--region-endpoint-enabled` çoğaltılan bölge oluştururken veya güncelleştirdiğinizde bir seçenek (Önizleme) yapılandırabilirsiniz. ' A bir çoğaltma seçeneğini belirlediğinizde `--region-endpoint-enabled` `false` , Traffic Manager artık Docker Push veya çekme isteklerini bu bölgeye yönlendirmez. Varsayılan olarak, tüm çoğaltmalar için yönlendirme etkindir ve tüm çoğaltmalar genelinde veri eşitlemesi yönlendirmenin etkin veya devre dışı olup olmadığını meydana getirebilir.
 
-Mevcut bir çoğaltmaya yönlendirmeyi devre dışı bırakmak için öncelikle kayıt defterindeki çoğaltmaları listelemek üzere [az ACR çoğaltma listesini][az-acr-replication-list] çalıştırın. Ardından, [az ACR çoğaltma güncelleştirmesini][az-acr-replication-update] çalıştırın ve `--region-endpoint-enabled false` belirli bir çoğaltma için ayarlayın. Örneğin, *myregistry*içinde *westus* çoğaltması için ayarı yapılandırmak için:
+Mevcut bir çoğaltmaya yönlendirmeyi devre dışı bırakmak için öncelikle kayıt defterindeki çoğaltmaları listelemek üzere [az ACR çoğaltma listesini][az-acr-replication-list] çalıştırın. Ardından, [az ACR çoğaltma güncelleştirmesini][az-acr-replication-update] çalıştırın ve `--region-endpoint-enabled false` belirli bir çoğaltma için ayarlayın. Örneğin, *myregistry* içinde *westus* çoğaltması için ayarı yapılandırmak için:
 
 ```azurecli
 # Show names of existing replications

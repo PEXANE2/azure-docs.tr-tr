@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 1616a0149ae56de8afe0e9ab485af4bf76326d86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0ae7bb9acde3cc8552a23db12d208a82ba0fb2f3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014620"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95800871"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR kapsayıcılarına geçiş
 
@@ -29,11 +29,11 @@ Görüntü İşleme okuma OCR kapsayıcısının 2. sürümünü kullanıyorsan�
 
 ## <a name="api-changes"></a>API değişiklikleri
 
-Okuma v 3.1 kapsayıcısı Görüntü İşleme API'si sürüm 3 ' ü kullanır ve aşağıdaki uç noktalara sahiptir:
+Read v 3.2 kapsayıcısı Görüntü İşleme API'si sürüm 3 ' ü kullanır ve aşağıdaki uç noktalara sahiptir:
 
-* `/vision/v3.1-preview.2/read/analyzeResults/{operationId}`
-* `/vision/v3.1-preview.2/read/analyze`
-* `/vision/v3.1-preview.2/read/syncAnalyze`
+* `/vision/v3.2-preview.1/read/analyzeResults/{operationId}`
+* `/vision/v3.2-preview.1/read/analyze`
+* `/vision/v3.2-preview.1/read/syncAnalyze`
 
 Uygulamalarınızı bulut tabanlı okuma API 'sinin sürüm 3 ' ü kullanacak şekilde güncelleştirme hakkında ayrıntılı bilgi için bkz. [v3 REST API geçiş kılavuzu görüntü işleme](./upgrade-api-versions.md) . Bu bilgiler kapsayıcı için de geçerlidir. Eşitleme işlemlerinin yalnızca kapsayıcılar için desteklendiğini unutmayın.
 
@@ -43,7 +43,7 @@ Gereksinimler ve öneriler, 29 satır ve toplam 803 karakter içeren taranmış 
 
 |Kapsayıcı  |Minimum | Önerilen  |
 |---------|---------|------|
-|Okuma 3,1-Önizleme | 8 çekirdek, 16 GB bellek         | 8 çekirdek, 24 GB bellek |
+|Okuma 3,2-Önizleme | 8 çekirdek, 16 GB bellek         | 8 çekirdek, 24 GB bellek |
 
 Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 

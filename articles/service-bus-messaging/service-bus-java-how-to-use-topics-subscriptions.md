@@ -1,455 +1,233 @@
 ---
-title: Java ile Azure Service Bus konuları ve abonelikleri kullanma
-description: Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın.
+title: Java ile Azure Service Bus konuları ve abonelikleri kullanma (Azure-mesajlaşma-ServiceBus)
+description: Bu hızlı başlangıçta, bir Azure Service Bus konuya ileti göndermek ve sonra bu konuya yönelik aboneliklerden ileti almak için Azure-Messaging-ServiceBus paketini kullanarak Java kodu yazın.
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: b255c825e0576e983c821234c531a9442baf654b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: 2e32213b5d2e405a48df4b3c89115fbd0bb90c43
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88065769"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805842"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Hızlı başlangıç: Java ile Service Bus konuları ve abonelikleri kullanma
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Azure Service Bus konuya ileti gönderme ve aboneliklerden konuya ileti alma (Java)
+Bu hızlı başlangıçta, bir Azure Service Bus konuya ileti göndermek ve sonra bu konuya yönelik aboneliklerden ileti almak için Azure-Messaging-ServiceBus paketini kullanarak Java kodu yazın.
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
-
-Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın. 
+> [!IMPORTANT]
+> Bu hızlı başlangıç, yeni Azure-mesajlaşma-ServiceBus paketini kullanır. Eski Azure-ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Azure-ServiceBus kullanarak Ileti gönderme ve alma](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-2. Hızlı Başlangıç bölümündeki adımları uygulayın: Azure portal kullanarak aşağıdaki görevleri yapmak için [Service Bus konu başlığı ve konuya yönelik abonelikler oluşturun](service-bus-quickstart-topics-subscriptions-portal.md) :
-    1. Service Bus **ad alanı**oluşturun.
-    2. **Bağlantı dizesini**alın.
-    3. Ad alanında bir **Konu** oluşturun.
-    4. Ad alanındaki konuya **üç abonelik** oluşturun.
-3. [Java Için Azure SDK][Azure SDK for Java].
+- Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
+- Hızlı başlangıçtaki adımları izleyin [: konuya bir Service Bus konu ve abonelik oluşturmak için Azure Portal kullanın](service-bus-quickstart-topics-subscriptions-portal.md). Bağlantı dizesi, konu adı ve abonelik adı ' nı aklınızda edin. Bu hızlı başlangıç için yalnızca bir abonelik kullanacaksınız. 
+- [Java Için Azure SDK][Azure SDK for Java]'yı yükler. Çakışan Küreler kullanıyorsanız, Java için Azure SDK 'sını içeren [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] yükleyebilirsiniz. Ardından, projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz. IntelliJ kullanıyorsanız, bkz. [Azure Toolkit for IntelliJ yüklemesi](/azure/developer/java/toolkit-for-intellij/installation). 
 
-## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
-Bu örneği oluşturmadan önce [Java Için Azure SDK 'sını][Azure SDK for Java] yüklediğinizden emin olun. Çakışan Küreler kullanıyorsanız, Java için Azure SDK 'sını içeren [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] yükleyebilirsiniz. Ardından projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz:
-
-![Çakışan Küreler projenize Java için Microsoft Azure kitaplıkları ekleyin](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
-
-Ayrıca, aşağıdaki JARs öğesini Java derleme yoluna eklemeniz gerekir:
-
-- gson-2.6.2 critical. jar
-- Commons-cli-1.4. jar
-- Proton-j-0.21.0. jar
-
-**Main** yöntemine sahip bir sınıf ekleyin ve ardından `import` Java dosyasının en üstüne aşağıdaki deyimleri ekleyin:
-
-```java
-import com.google.gson.reflect.TypeToken;
-import com.microsoft.azure.servicebus.*;
-import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
-import com.google.gson.Gson;
-import static java.nio.charset.StandardCharsets.*;
-import java.time.Duration;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.Function;
-import org.apache.commons.cli.*;
-import org.apache.commons.cli.DefaultParser;
-```
 
 ## <a name="send-messages-to-a-topic"></a>Konu başlığına ileti gönderme
-Bir **Topicclient** nesnesi oluşturmak için **Main** yöntemini güncelleştirin ve Service Bus konusuna zaman uyumsuz olarak örnek iletileri gönderen bir yardımcı yöntemi çağırın.
+Bu bölümde, bir Java konsol projesi oluşturacak ve oluşturduğunuz konuya ileti göndermek için kod ekleyeceksiniz. 
 
-> [!NOTE] 
-> - `<NameOfServiceBusNamespace>` yerine Service Bus ad alanınızın adını yazdığınızdan emin olun. 
-> - `<AccessKey>`Ad alanınız için erişim anahtarıyla değiştirin.
+### <a name="create-a-java-console-project"></a>Java konsol projesi oluşturma
+Çakışan Küreler veya tercih ettiğiniz bir aracı kullanarak bir Java projesi oluşturun. 
 
-```java
-public class MyServiceBusTopicClient {
+### <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
+Azure Service Bus kitaplığına bir başvuru ekleyin. Service Bus için Java istemci kitaplığı, [Maven merkezi deposunda](https://search.maven.org/search?q=a:azure-messaging-servicebus)bulunabilir. Bu kitaplığa, Maven proje dosyanızda aşağıdaki bağımlılık bildirimini kullanarak başvurabilirsiniz:
 
-    static final Gson GSON = new Gson();
-    
-    public static void main(String[] args) throws Exception, ServiceBusException {
-        // TODO Auto-generated method stub
-
-        TopicClient sendClient;
-        String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
-        sendClient = new TopicClient(new ConnectionStringBuilder(connectionString, "BasicTopic"));       
-        sendMessagesAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
-    }
-
-    static CompletableFuture<Void> sendMessagesAsync(TopicClient sendClient) {
-        List<HashMap<String, String>> data =
-                GSON.fromJson(
-                        "[" +
-                                "{'name' = 'Einstein', 'firstName' = 'Albert'}," +
-                                "{'name' = 'Heisenberg', 'firstName' = 'Werner'}," +
-                                "{'name' = 'Curie', 'firstName' = 'Marie'}," +
-                                "{'name' = 'Hawking', 'firstName' = 'Steven'}," +
-                                "{'name' = 'Newton', 'firstName' = 'Isaac'}," +
-                                "{'name' = 'Bohr', 'firstName' = 'Niels'}," +
-                                "{'name' = 'Faraday', 'firstName' = 'Michael'}," +
-                                "{'name' = 'Galilei', 'firstName' = 'Galileo'}," +
-                                "{'name' = 'Kepler', 'firstName' = 'Johannes'}," +
-                                "{'name' = 'Kopernikus', 'firstName' = 'Nikolaus'}" +
-                                "]",
-                        new TypeToken<List<HashMap<String, String>>>() {
-                        }.getType());
-
-        List<CompletableFuture> tasks = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++) {
-            final String messageId = Integer.toString(i);
-            Message message = new Message(GSON.toJson(data.get(i), Map.class).getBytes(UTF_8));
-            message.setContentType("application/json");
-            message.setLabel("Scientist");
-            message.setMessageId(messageId);
-            message.setTimeToLive(Duration.ofMinutes(2));
-            System.out.printf("Message sending: Id = %s\n", message.getMessageId());
-            tasks.add(
-                    sendClient.sendAsync(message).thenRunAsync(() -> {
-                        System.out.printf("\tMessage acknowledged: Id = %s\n", message.getMessageId());
-                    }));
-        }
-        return CompletableFuture.allOf(tasks.toArray(new CompletableFuture<?>[tasks.size()]));
-    }
-}
+```xml
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-messaging-servicebus</artifactId>
+    <version>7.0.0-beta.7</version>
+</dependency>
 ```
 
-Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Bir konuda tutulan ileti sayısında bir sınır yoktur, ancak bir konu tarafından tutulan iletilerin toplam boyutu için bir sınır vardır. Bu konu başlığı boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir.
+### <a name="add-code-to-send-messages-to-the-topic"></a>Konuya ileti göndermek için kod ekleme
+1. `import`Java dosyasının konusunun aşağıdaki deyimlerini ekleyin. 
 
-## <a name="how-to-receive-messages-from-a-subscription"></a>Abonelikten ileti alma
-Üç abonelik için üç **Subscriptionclient** nesnesi oluşturmak üzere **Main** yöntemini güncelleştirin ve Service Bus konusunun iletileri zaman uyumsuz olarak alan bir yardımcı yöntemi çağırın. Örnek kod, **Basictopic** adlı bir konu ve **Subscription1**, **Subscription2**ve **Subscription3**adlı üç abonelik oluşturduğunuzu varsayar. Bunlar için farklı adlar kullandıysanız, kodu test etmeden önce güncelleştirin. 
+    ```java
+    import com.azure.messaging.servicebus.*;
+    import com.azure.messaging.servicebus.models.*;
+    import java.util.concurrent.TimeUnit;
+    import java.util.function.Consumer;
+    import java.util.Arrays;
+    import java.util.List;
+    ```    
+5. Sınıfında, bağlantı dizesini ve konu adını aşağıda gösterildiği gibi tutacak değişkenleri tanımlayın: 
+
+    ```java
+    static String connectionString = "<NAMESPACE CONNECTION STRING>";
+    static String topicName = "<TOPIC NAME>";    
+    static String subName = "<SUBSCRIPTION NAME>";
+    ```
+
+    `<NAMESPACE CONNECTION STRING>`Service Bus ad alanınız için bağlantı dizesiyle değiştirin. Ve, `<TOPIC NAME>` konusunun adıyla değiştirin.
+3. `sendMessage`Konuya bir ileti göndermek için sınıfında adlı bir yöntem ekleyin. 
+
+    ```java
+        static void sendMessage()
+    {
+        // create a Service Bus Sender client for the queue 
+        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
+                .connectionString(connectionString)
+                .sender()
+                .topicName(topicName)
+                .buildClient();
+        
+        // send one message to the topic
+        senderClient.sendMessage(new ServiceBusMessage("Hello, World!"));
+        System.out.println("Sent a single message to the topic: " + topicName);        
+    }
+    ```
+1. `createMessages`İleti listesi oluşturmak için sınıfında adlı bir yöntem ekleyin. Genellikle, bu iletileri uygulamanızın farklı bölümlerinden alırsınız. Burada, örnek mesajların bir listesini oluşturacağız.
+
+    ```java
+    static List<ServiceBusMessage> createMessages()
+    {
+        // create a list of messages and return it to the caller
+        ServiceBusMessage[] messages = {
+                new ServiceBusMessage("First message"),
+                new ServiceBusMessage("Second message"),
+                new ServiceBusMessage("Third message")
+        };
+        return Arrays.asList(messages);
+    }
+    ```
+1. `sendMessageBatch`Oluşturduğunuz konuya ileti göndermek için yöntemi adlı bir yöntem ekleyin. Bu yöntem, `ServiceBusSenderClient` konusu için bir oluşturur, `createMessages` ileti listesini almak için yöntemini çağırır, bir veya daha fazla toplu işi hazırlar ve toplu işleri konuya gönderir. 
 
 ```java
-public class MyServiceBusTopicClient {
+    static void sendMessageBatch()
+    {
+        // create a Service Bus Sender client for the topic 
+        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
+                .connectionString(connectionString)
+                .sender()
+                .topicName(topicName)
+                .buildClient();
 
-    static final Gson GSON = new Gson();
-    
-    public static void main(String[] args) throws Exception, ServiceBusException {
-        SubscriptionClient subscription1Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription1"), ReceiveMode.PEEKLOCK);
-        SubscriptionClient subscription2Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription2"), ReceiveMode.PEEKLOCK);
-        SubscriptionClient subscription3Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription3"), ReceiveMode.PEEKLOCK);        
-
-        registerMessageHandlerOnClient(subscription1Client);
-        registerMessageHandlerOnClient(subscription2Client);
-        registerMessageHandlerOnClient(subscription3Client);
-    }
-    
-    static void registerMessageHandlerOnClient(SubscriptionClient receiveClient) throws Exception {
-
-        // register the RegisterMessageHandler callback
-        IMessageHandler messageHandler = new IMessageHandler() {
-            // callback invoked when the message handler loop has obtained a message
-            public CompletableFuture<Void> onMessageAsync(IMessage message) {
-                // receives message is passed to callback
-                if (message.getLabel() != null &&
-                        message.getContentType() != null &&
-                        message.getLabel().contentEquals("Scientist") &&
-                        message.getContentType().contentEquals("application/json")) {
-
-                    byte[] body = message.getBody();
-                    Map scientist = GSON.fromJson(new String(body, UTF_8), Map.class);
-
-                    System.out.printf(
-                            "\n\t\t\t\t%s Message received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s, \n\t\t\t\t\t\tEnqueuedTimeUtc = %s," +
-                                    "\n\t\t\t\t\t\tExpiresAtUtc = %s, \n\t\t\t\t\t\tContentType = \"%s\",  \n\t\t\t\t\t\tContent: [ firstName = %s, name = %s ]\n",
-                            receiveClient.getEntityPath(),
-                            message.getMessageId(),
-                            message.getSequenceNumber(),
-                            message.getEnqueuedTimeUtc(),
-                            message.getExpiresAtUtc(),
-                            message.getContentType(),
-                            scientist != null ? scientist.get("firstName") : "",
-                            scientist != null ? scientist.get("name") : "");
-                }
-                return receiveClient.completeAsync(message.getLockToken());
+        // Creates an ServiceBusMessageBatch where the ServiceBus.
+        ServiceBusMessageBatch messageBatch = senderClient.createMessageBatch();        
+        
+        // create a list of messages
+        List<ServiceBusMessage> listOfMessages = createMessages();
+        
+        // We try to add as many messages as a batch can fit based on the maximum size and send to Service Bus when
+        // the batch can hold no more messages. Create a new batch for next set of messages and repeat until all
+        // messages are sent.        
+        for (ServiceBusMessage message : listOfMessages) {
+            if (messageBatch.tryAddMessage(message)) {
+                continue;
             }
+
+            // The batch is full, so we create a new batch and send the batch.
+            senderClient.sendMessages(messageBatch);
+            System.out.println("Sent a batch of messages to the topic: " + topicName);
             
-            public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
-                System.out.printf(exceptionPhase + "-" + throwable.getMessage());
+            // create a new batch
+            messageBatch = senderClient.createMessageBatch();
+
+            // Add that message that we couldn't before.
+            if (!messageBatch.tryAddMessage(message)) {
+                System.err.printf("Message is too large for an empty batch. Skipping. Max size: %s.", messageBatch.getMaxSizeInBytes());
+            }
+        }
+
+        if (messageBatch.getCount() > 0) {
+            senderClient.sendMessages(messageBatch);
+            System.out.println("Sent a batch of messages to the topic: " + topicName);
+        }
+
+        //close the client
+        senderClient.close();
+    }
+```
+
+## <a name="receive-messages-from-a-subscription"></a>Bir abonelikten ileti alma
+Bu bölümde, bir aboneliğden konuya ileti almak için kod ekleyeceksiniz. 
+
+1. `receiveMessages`Abonelikten ileti almak için adlı bir yöntem ekleyin. Bu yöntem `ServiceBusProcessorClient` , iletileri işlemek için bir işleyici ve hataları işlemek için başka bir tane belirterek abonelik için bir oluşturur. Ardından, işlemciyi başlatır, birkaç saniye bekler, alınan iletileri yazdırır ve sonra işlemciyi durdurup kapatır.
+
+    ```java
+    // handles received messages
+    static void receiveMessages() throws InterruptedException
+    {
+        // Consumer that processes a single message received from Service Bus
+        Consumer<ServiceBusReceivedMessageContext> messageProcessor = context -> {
+            ServiceBusReceivedMessage message = context.getMessage();
+            System.out.println("Received message: " + message.getBody().toString() + " from the subscription: " + subName);
+        };
+
+        // Consumer that handles any errors that occur when receiving messages
+        Consumer<Throwable> errorHandler = throwable -> {
+            System.out.println("Error when receiving messages: " + throwable.getMessage());
+            if (throwable instanceof ServiceBusReceiverException) {
+                ServiceBusReceiverException serviceBusReceiverException = (ServiceBusReceiverException) throwable;
+                System.out.println("Error source: " + serviceBusReceiverException.getErrorSource());
             }
         };
 
- 
-        receiveClient.registerMessageHandler(
-                    messageHandler,
-                    // callback invoked when the message handler has an exception to report
-                // 1 concurrent call, messages aren't auto-completed, auto-renew duration
-                new MessageHandlerOptions(1, false, Duration.ofMinutes(1)));
+        // Create an instance of the processor through the ServiceBusClientBuilder
+        ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
+            .connectionString(connectionString)
+            .processor()
+            .topicName(topicName)
+            .subscriptionName(subName)
+            .processMessage(messageProcessor)
+            .processError(errorHandler)
+            .buildProcessorClient();
 
+        System.out.println("Starting the processor");
+        processorClient.start();
+
+        TimeUnit.SECONDS.sleep(10);
+        System.out.println("Stopping and closing the processor");
+        processorClient.close();        
     }
-}
-```
+    ```
+2. `main` `sendMessage` , `sendMessageBatch` , Ve `receiveMessages` yöntemlerini çağırmak ve throw metodunu güncelleştirin `InterruptedException` .     
 
-## <a name="run-the-program"></a>Programı çalıştırma
+    ```java
+    public static void main(String[] args) throws InterruptedException {        
+        sendMessage();
+        sendMessageBatch();
+        receiveMessages();
+    }   
+    ```
+
+## <a name="run-the-app"></a>Uygulamayı çalıştırma
 Aşağıdaki çıktıya benzer çıktıyı görmek için programı çalıştırın:
 
-```java
-Message sending: Id = 0
-Message sending: Id = 1
-Message sending: Id = 2
-Message sending: Id = 3
-Message sending: Id = 4
-Message sending: Id = 5
-Message sending: Id = 6
-Message sending: Id = 7
-Message sending: Id = 8
-Message sending: Id = 9
-    Message acknowledged: Id = 0
-    Message acknowledged: Id = 9
-    Message acknowledged: Id = 7
-    Message acknowledged: Id = 8
-    Message acknowledged: Id = 5
-    Message acknowledged: Id = 6
-    Message acknowledged: Id = 3
-    Message acknowledged: Id = 2
-    Message acknowledged: Id = 4
-    Message acknowledged: Id = 1
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 0, 
-                        SequenceNumber = 11, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Albert, name = Einstein ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 0, 
-                        SequenceNumber = 11, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Albert, name = Einstein ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 9, 
-                        SequenceNumber = 12, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Nikolaus, name = Kopernikus ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 8, 
-                        SequenceNumber = 13, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Johannes, name = Kepler ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 0, 
-                        SequenceNumber = 11, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Albert, name = Einstein ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 9, 
-                        SequenceNumber = 12, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Nikolaus, name = Kopernikus ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 7, 
-                        SequenceNumber = 14, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Galileo, name = Galilei ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 9, 
-                        SequenceNumber = 12, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Nikolaus, name = Kopernikus ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 8, 
-                        SequenceNumber = 13, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Johannes, name = Kepler ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 6, 
-                        SequenceNumber = 15, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Michael, name = Faraday ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 8, 
-                        SequenceNumber = 13, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Johannes, name = Kepler ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 7, 
-                        SequenceNumber = 14, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Galileo, name = Galilei ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 5, 
-                        SequenceNumber = 16, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Niels, name = Bohr ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 7, 
-                        SequenceNumber = 14, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Galileo, name = Galilei ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 6, 
-                        SequenceNumber = 15, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Michael, name = Faraday ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 4, 
-                        SequenceNumber = 17, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Isaac, name = Newton ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 6, 
-                        SequenceNumber = 15, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Michael, name = Faraday ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 5, 
-                        SequenceNumber = 16, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Niels, name = Bohr ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 3, 
-                        SequenceNumber = 18, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Steven, name = Hawking ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 5, 
-                        SequenceNumber = 16, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Niels, name = Bohr ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 4, 
-                        SequenceNumber = 17, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Isaac, name = Newton ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 2, 
-                        SequenceNumber = 19, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Marie, name = Curie ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 4, 
-                        SequenceNumber = 17, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Isaac, name = Newton ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 3, 
-                        SequenceNumber = 18, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Steven, name = Hawking ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 1, 
-                        SequenceNumber = 20, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Werner, name = Heisenberg ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 2, 
-                        SequenceNumber = 19, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Marie, name = Curie ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 3, 
-                        SequenceNumber = 18, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Steven, name = Hawking ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 2, 
-                        SequenceNumber = 19, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Marie, name = Curie ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 1, 
-                        SequenceNumber = 20, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Werner, name = Heisenberg ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 1, 
-                        SequenceNumber = 20, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Werner, name = Heisenberg ]
+```console
+Sent a batch of messages to the topic: mytopic
+Starting the processor
+Received message: First message from the subscription: mysub
+Received message: Second message from the subscription: mysub
+Received message: Third message from the subscription: mysub
+Stopping and closing the processor
 ```
 
-> [!NOTE]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
+Azure portal Service Bus ad alanının **genel bakış** sayfasında **gelen** ve **giden** ileti sayısını görebilirsiniz. Bir dakika beklemeniz gerekebilir ve en son değerleri görmek için sayfayı yenilemeniz gerekebilir. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Gelen ve giden ileti sayısı" lightbox="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png":::
+
+Orta alt bölmedeki **konular** sekmesine geçin ve konunun **Service Bus konu** sayfasını görmek için konuyu seçin. Bu sayfada, **iletiler** grafiğinde dört gelen ve dört giden ileti görmeniz gerekir. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png" alt-text="Gelen ve giden iletiler" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png":::
+
+`receiveMessages` `main` Yöntemi çağırın ve uygulamayı yeniden çalıştırırsanız, **Service Bus konu** sayfasında, 8 gelen ileti (4 yeni), ancak dört giden ileti görürsünüz. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png" alt-text="Konu başlığı sayfası güncelleştirildi" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png":::
+
+Bu sayfada, bir abonelik seçerseniz **Service Bus abonelik** sayfasına ulaşabilirsiniz. Etkin ileti sayısını, atılacak ileti sayısını ve daha fazlasını bu sayfada görebilirsiniz. Bu örnekte, henüz bir alıcı tarafından alınmayan dört etkin ileti vardır. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png" alt-text="Etkin ileti sayısı" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için bkz. [Service Bus kuyruklar, konular ve abonelikler][Service Bus queues, topics, and subscriptions].
+Aşağıdaki belgelere ve örneklere bakın:
+
+- [Java için Azure Service Bus istemci kitaplığı-Benioku](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
+- [GitHub’daki örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
+- [Java API'si başvurusu](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview&preserve-view=true)
+
 
 [Azure SDK for Java]: /java/api/overview/azure/
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
@@ -458,6 +236,3 @@ Daha fazla bilgi için bkz. [Service Bus kuyruklar, konular ve abonelikler][Serv
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
-[0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
-[2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png
-[3]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-09.png

@@ -5,31 +5,20 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 ms.author: victorh
-ms.openlocfilehash: 650cf1e9b0e9fbbadc5a783cad844898698bf017
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 73a07af0fa98adf66d6104f1ab545d31a0cfd6d7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509749"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95802020"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Güvenlik Duvarı Yöneticisi ilkesine genel bakış
 
 Güvenlik Duvarı Ilkesi NAT, ağ ve uygulama kuralı koleksiyonlarını ve tehdit bilgileri ayarlarını içeren bir Azure kaynağıdır. Bu, güvenli sanal hub 'Larda ve hub sanal ağlarında bulunan birden çok Azure Güvenlik Duvarı örneği genelinde kullanılabilen küresel bir kaynaktır. İlkeler bölgeler ve abonelikler arasında çalışır.
 
 ![Azure Güvenlik Duvarı Yöneticisi ilkesi](media/policy-overview/policy-overview.png)
-
-## <a name="availability"></a>Kullanılabilirlik
-
-Güvenlik Duvarı Ilkesi, yüksek oranda kullanılabilir ve otomatik olarak çoğaltılan bir kaynaktır. Nadir bir bölgesel olağanüstü durum oluşursa, güvenlik duvarı Ilkesi Azure eşlenmiş bölgelere yük devretmeyi devreder. Hem zaman uyumlu hem de zaman uyumsuz işlemler için Azure birincil bölgesine kurtarma işlemleri sonrası yük devretme. 
-
-Eşleştirilmiş bölgeler aşağıdakiler dahil olmak üzere çeşitli avantajlar sağlar:
-- en az 300 mil ile ayrılmış fiziksel yalıtım
-- olağanüstü durumdan daha hızlı kurtarma
-- Coğrafya tarafından uygulanan için toplantı verileri yerleştirme gereksinimleri
-
-Eşleştirilmiş bölgeler hakkında daha fazla bilgi için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](../best-practices-availability-paired-regions.md).
 
 ## <a name="policy-creation-and-association"></a>İlke oluşturma ve ilişkilendirme
 

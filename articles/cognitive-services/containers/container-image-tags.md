@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 90ac4891dbca34ff2d9bdb9653e27ad2a495b317
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 09a83c28d07540b8ecd813e7ab2f10ceee891d7a
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021261"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95792981"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları
 
@@ -52,6 +52,17 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 
 # <a name="latest-version"></a>[En son sürüm](#tab/current)
 
+İçin sürüm notları `3.2-preview.1` :
+
+* Yeni v 3.2 kapsayıcısı
+
+| Resim etiketleri                    | Notlar |
+|-------------------------------|:------|
+| `latest`                      |       |
+| `3.2-preview.1` |  |
+
+# <a name="previous-versions"></a>[Önceki sürümler](#tab/previous)
+
 İçin sürüm notları `v2.0.013250001-amd64-preview` :
 
 * Kapsayıcı için bellek kullanımını daha da azaltın.
@@ -59,13 +70,6 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 * Redsıs önbelleği ayarlandığında ve `ResultExpirationPeriod` 0 olarak ayarlandığında, eksik sonuçlar düzeltildi.
 * 26MB için istek gövdesi boyut sınırlamasını kaldır. Kapsayıcı artık >26MB dosyalarını kabul edebilir.
 * Konsol günlüğüne zaman damgası ve derleme sürümü ekleyin.
-
-| Resim etiketleri                    | Notlar |
-|-------------------------------|:------|
-| `latest`                      |       |
-| `2.0.013250001-amd64-preview` |  |
-
-# <a name="previous-versions"></a>[Önceki sürümler](#tab/previous)
 
 İçin sürüm notları `1.1.013050001-amd64-preview`
 
@@ -88,6 +92,7 @@ Bu kapsayıcı görüntüsünde aşağıdaki Etiketler kullanılabilir. Ayrıca 
 
 | Resim etiketleri                    | Notlar |
 |-------------------------------|:------|
+| `2.0.013250001-amd64-preview` |       |
 | `1.1.013050001-amd64-preview` |       |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |

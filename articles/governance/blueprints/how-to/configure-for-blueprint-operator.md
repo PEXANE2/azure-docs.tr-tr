@@ -1,14 +1,14 @@
 ---
 title: Ortamınızı Blueprint Işleci için ayarlama
 description: Azure ortamınızı Blueprint Işleci Azure yerleşik rolüyle kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
-ms.date: 08/27/2020
+ms.date: 11/24/2020
 ms.topic: how-to
-ms.openlocfilehash: ae881ac6d0714401f8c80e880b4d288f594b7cf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db8450516feab2fae4136f549959a29b006059aa
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535795"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95804912"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Ortamınızı Blueprint İşleci için yapılandırma
 
@@ -28,11 +28,13 @@ Birinci adım, şema atamak için şema **operatörü** rolünü hesaba veya gü
 
 Şema tanımı, sistem tarafından atanan veya Kullanıcı tarafından atanan yönetilen kimlikleri kullanabilir. Ancak, **şema operatörü** rolünü kullanırken, şema tanımının Kullanıcı tarafından atanan yönetilen kimlik kullanacak şekilde yapılandırılması gerekir. Ayrıca, şema **operatörü** rolüne verilen hesap veya güvenlik grubuna kullanıcı tarafından atanan yönetilen kimlik Için **yönetilen kimlik operatörü** rolü verilmelidir. Bu izin olmadan, şema atamaları izin eksikliği nedeniyle başarısız olur.
 
-1. Atanan bir şema tarafından kullanılmak üzere [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
+1. Atanan bir Blueprint tarafından kullanılmak üzere [Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) .
+
+1. Kullanıcı tarafından atanan yönetilen kimliğe, hedeflenen kapsamın şema tanımının gerektirdiği herhangi bir rol veya izin verin.
 
 1. Hesap veya güvenlik grubuna **yönetilen kimlik işlecinin** [rol atamasını ekleyin](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) . Rol atamasını Kullanıcı tarafından atanan yeni yönetilen kimliğe kapsam.
 
-1. **Şema operatörü**olarak, Kullanıcı tarafından atanan yeni yönetilen kimliği kullanan [bir şema atayın](../create-blueprint-portal.md#assign-a-blueprint) .
+1. **Şema operatörü** olarak, Kullanıcı tarafından atanan yeni yönetilen kimliği kullanan [bir şema atayın](../create-blueprint-portal.md#assign-a-blueprint) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

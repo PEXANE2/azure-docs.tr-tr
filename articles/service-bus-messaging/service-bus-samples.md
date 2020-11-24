@@ -3,32 +3,46 @@ title: Azure Service Bus mesajlaşma örneklerine genel bakış
 description: Service Bus mesajlaşma örnekleri, Azure Service Bus mesajlaşma 'daki temel özellikleri gösterir. GitHub 'daki örneklere bağlantılar sağlar.
 author: spelluru
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 10/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 2f2392630c0023c8d6321a5716075a65e8127dd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8729d0a947ebf2fd918a478fb3354e6d84fe1e3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326278"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95803097"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus mesajlaşma örnekleri
 Service Bus mesajlaşma örnekleri, [Service Bus mesajlaşma](https://azure.microsoft.com/services/service-bus/)'daki temel özellikleri gösterir. Şu anda örnekleri aşağıdaki yerlerde bulabilirsiniz:
 
-| Programlama dili | SDK veya örnek konumu |
+## <a name="net-samples"></a>.NET örnekleri
+
+| Paket | Örnek konumu | 
+| ------- | ---------------- | 
+| Azure. Messaging. ServiceBus (en son) | https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/ | 
+| Microsoft. Azure. ServiceBus (eski) |  https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus |
+
+## <a name="java-samples"></a>Java örnekleri
+| Paket | Örnek konumu | 
+| ------- | ---------------- | 
+| Azure-mesajlaşma-ServiceBus (en son) | https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/ |
+| Azure-ServiceBus (eski) | https://github.com/Azure/azure-service-bus/tree/master/samples/Java |
+
+## <a name="python-samples"></a>Python örnekleri
+| Paket | Örnek konumu |
 | -------------------- | ----------------------- |
-| .NET, Java ve yönetim | https://github.com/Azure/azure-service-bus/ |
-| Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples |
-| Python | https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus |
-| Başlayın| https://github.com/Azure/azure-service-bus-go/ |
+| Azure. ServiceBus | https://docs.microsoft.com/samples/azure/azure-sdk-for-python/servicebus-samples/ |
 
-## <a name="service-bus-explorer"></a>Service Bus Explorer
+## <a name="javascript-samples"></a>JavaScript örnekleri
+| Paket | Örnek konumu | 
+| ------- | ---------------- | 
+| Azure/Service-Bus | https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/ | 
 
-Ayrıca, [Service Bus Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer) GitHub üzerinde barındırılan bir örnektir ve bu da bir Service Bus hizmet ad alanına bağlanmanıza ve mesajlaşma varlıklarını kolayca yönetmenize olanak sağlar. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ve mesajlaşma varlıklarını ve geçiş hizmetlerini test etme özelliğini sağlar. [GitHub](https://github.com/paolosalvatori/ServiceBusExplorer)'daki tam Service Bus gezgin kaynağını ve belgelerini bulabilirsiniz.
+## <a name="go-samples"></a>Örneklere git
+| Paket | Örnek konumu | 
+| ------- | ---------------- | 
+| Azure-Service-Bus-go | https://github.com/Azure/azure-service-bus-go/ |
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="management-samples"></a>Yönetim örnekleri
+Yönetim örneklerini GitHub ' da bulabilirsiniz https://github.com/Azure/azure-service-bus/tree/master/samples/Management .
 
-Service Bus kavramsal genel bakış için aşağıdaki konulara bakın.
-
-* [Service Bus mesajlaşma hizmetine genel bakış](service-bus-messaging-overview.md)
-* [Service Bus mimarisi](./service-bus-messaging-overview.md)

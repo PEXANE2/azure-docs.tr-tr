@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b06024b7dc25f37f75c71b822f6aeea32c3e26a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07c04274829530942bab0e3267200f6524c4ddc7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509057"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95793414"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -40,15 +40,15 @@ Karma Runbook Worker rolü, desteklenen Linux işletim sistemi için [Log Analyt
 
 ### <a name="supported-linux-operating-systems"></a>Desteklenen Linux işletim sistemleri
 
-Karma Runbook Worker özelliği aşağıdaki dağıtımları destekler:
+Karma Runbook Worker özelliği aşağıdaki dağıtımları destekler. Tüm işletim sistemleri x64 olarak kabul edilir. x86, herhangi bir işletim sistemi için desteklenmez.
 
-* Amazon Linux 2012,09-2015,09 (x64)
-* CentOS Linux 5, 6 ve 7 (x64)
-* Oracle Linux 5, 6 ve 7 (x64)
-* Red Hat Enterprise Linux Server 5, 6 ve 7 (x64)
-* De, GNU/Linux 6, 7 ve 8 (x64)
-* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS ve 18,04 (x64)
-* SUSE Linux Enterprise Server 12 (x64)
+* Amazon Linux 2012,09-2015,09
+* CentOS Linux 5, 6 ve 7
+* Oracle Linux 5, 6 ve 7
+* Red Hat Enterprise Linux Server 5, 6 ve 7
+* Borçlu GNU/Linux 6, 7 ve 8
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS ve 18,04 LTS
+* SUSE Linux Enterprise Server 12
 
 ### <a name="minimum-requirements"></a>Minimum gereksinimler
 

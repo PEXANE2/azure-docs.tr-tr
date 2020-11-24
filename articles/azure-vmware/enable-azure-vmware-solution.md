@@ -3,12 +3,12 @@ title: Azure VMware Çözüm kaynağınızı etkinleştirme
 description: Azure VMware Çözüm kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla ana bilgisayar isteyebilirsiniz.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 68f8fe38c67ec5ddad7cf662a7996330ee2a1e73
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967372"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95794724"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Çözüm kaynağını etkinleştirme
 [Azure VMware Çözüm](introduction.md) kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla ana bilgisayar isteyebilirsiniz.
@@ -64,7 +64,7 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, konaklarınızın ayrıl
 CSP 'Ler, müşterileri için Azure VMware çözümünü etkinleştirmek üzere [Microsoft Iş ortağı merkezini](https://partner.microsoft.com) kullanmalıdır. 
 
    >[!IMPORTANT] 
-   >Azure VMware çözüm hizmeti çok kiracılı bir ortam sağlamıyor ve bu nedenle barındırma iş ortakları henüz desteklenmiyor. 
+   >Azure VMware çözüm hizmeti bir çoklu kiracı gerekli değil. Bunu gerektiren barındırma iş ortakları desteklenmez. 
 
 1. **Iş Ortağı Merkezi**'Nde, **müşteriler** alanına erişmek için **CSP** 'yi seçin.
 
@@ -113,13 +113,16 @@ Azure planı yapılandırıldıktan ve gerekli vSphere RBAC izinleri bir CSP ola
    >[!IMPORTANT] 
    >Zaten mevcut bir Azure VMware çözümünüz varsa ve ek konaklar isterseniz, Konakları ayırmak için beş iş gününe ihtiyacımız olduğunu lütfen unutmayın. 
 
-1. Azure planına eklendikten ve kota etkinleştirildikten sonra, müşteri veya iş ortağı Yöneticisi Azure portal aracılığıyla bir Azure VMware çözümü özel bulutu dağıtabilir. Konaklarınızı sağlayabilmeniz için önce **Microsoft. AVS** kaynak sağlayıcısını Azure Portal kaydettiğinizden emin olun.  
+1. Abonelik hizmet sağlayıcısı tarafından yönetiliyorsa, yönetim ekibinin, Iş Ortağı Merkezi 'nden (Aobo) **adına yeniden yönetici** kullanarak Azure Portal erişmesi gerekir. Azure portal bir [Cloud Shell](../cloud-shell/overview.md) örneği başlatın ve **Microsoft. AVS** kaynak sağlayıcısını kaydedin ve Azure VMware çözümü özel bulutunun dağıtımına devam edin.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
    ```
 
    Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
+
+1. Abonelik doğrudan müşteri tarafından yönetiliyorsa **Microsoft. AVS** kaynak sağlayıcısı 'nın kaydı abonelikte yeterli izinlere sahip bir kullanıcı tarafından yapılmalıdır, daha fazla ayrıntı ve kaynak sağlayıcısını kaydetme yolları için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md) . 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

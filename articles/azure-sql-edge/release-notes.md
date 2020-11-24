@@ -9,17 +9,32 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/22/2020
-ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.date: 11/24/2020
+ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395045"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808617"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
 Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiştiğini açıklanmaktadır.
+
+## <a name="azure-sql-edge---101"></a>Azure SQL Edge-1.0.1
+
+### <a name="sql-engine-build-number---15020001553"></a>SQL altyapısı derleme numarası-15.0.2000.1553
+
+### <a name="whats-new"></a>Yenilikler
+
+- Hesaplanan sütunlarda Datebucket ifadesi tanımlı izin ver
+
+### <a name="fixes"></a>Düzeltmeler
+
+- Saklama ilkesi sınırsız zaman aşımı ile etkin olarak tablo bırakma için bekletme Ilkesi onarımı
+- Akış ve bekletme Ilkesi özellikleri için DacFx dağıtımında destek 
+- SAS URL 'sindeki iç içe geçmiş klasörden dağıtımı etkinleştirmek için DacFx dağıtım onarımı 
+- Hata iletilerinde uzun sütun adlarını desteklemek için düzeltilmesi tahmın eder
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM)
 

@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 201ea38c6feabbda2576d8480a9983f00d62d175
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 14892b114f3bb8a0bb6c07f7cdd01a174b931cf9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191265"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810621"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Azure CLı kullanarak Service Bus bir ad alanı ve kuyruk oluşturma
 Bu hızlı başlangıçta, Azure CLı kullanarak bir Service Bus ad alanı ve kuyruk oluşturma gösterilmektedir. Ayrıca, bir istemci uygulamanın sıraya/kuyruğa ileti göndermek/almak için kullanabileceği yetkilendirme kimlik bilgilerinin nasıl alınacağını gösterir. 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, Azure portal oturum açtıktan sonra başlatabilmeniz
 
 ## <a name="provision-resources"></a>Kaynak sağlama
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Aşağıdaki görüntüde gösterilen simgeyi seçerek Azure Cloud Shell başlatın. CloudShell **PowerShell** modundaysa **Bash** moduna geçin. 
+2. Aşağıdaki görüntüde gösterilen simgeyi seçerek Azure Cloud Shell başlatın. Cloud Shell **PowerShell** modundaysa **Bash** moduna geçin. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell Başlat":::
 3. Bir Azure Kaynak grubu oluşturmak için aşağıdaki komutu çalıştırın. İsterseniz kaynak grubu adını ve konumunu güncelleştirin. 
@@ -56,7 +56,7 @@ Bu makalede, ad alanında bir Service Bus ad alanı ve bir sıra oluşturdunuz. 
 
 - [.NET](service-bus-dotnet-get-started-with-queues.md)
 - [Java](service-bus-java-how-to-use-queues.md)
-- [JavaScript](service-bus-nodejs-how-to-use-queues-new-package.md)
+- [JavaScript](service-bus-nodejs-how-to-use-queues.md)
 - [Python](service-bus-python-how-to-use-queues.md)
 - [PHP](service-bus-php-how-to-use-queues.md)
 - [Ruby](service-bus-ruby-how-to-use-queues.md)

@@ -1,20 +1,19 @@
 ---
-title: Azure Service Bus 'de SQLRuleAction söz dizimi başvurusu
-description: Bu makale, SQLRuleAction söz dizimi için bir başvuru sağlar. Eylemler, aracılı bir iletiyle gerçekleştirilen SQL dil tabanlı söz dizimine yazılır.
+title: Azure Service Bus abonelik kuralı SQL eylemi sözdizimi | Microsoft Docs
+description: Bu makale, SQL kuralı eylem sözdizimi için bir başvuru sağlar. Eylemler, bir iletiyle gerçekleştirilen SQL dil tabanlı söz dizimine yazılır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: a156a9d8f18a7763f03c63b56681fa25ce6de289
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341574"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808836"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus için SQLRuleAction söz dizimi başvurusu
+# <a name="subscription-rule-sql-action-syntax"></a>Abonelik kuralı SQL eylemi sözdizimi
 
-Bir *Sqlruleaction* , [sqlruleaction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) sınıfının bir örneğidir ve bir [brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)öğesine karşı gerçekleştirilen SQL dil tabanlı sözdiziminde yazılmış eylemlerin kümesini temsil eder.   
+Bir ileti bir abonelik kuralı filtresi tarafından seçildikten sonra ileti meta verilerini işlemek için bir *SQL eylemi* kullanılır. Bu, SQL-92 standardının bir alt kümesini içeren bir metin deyimidir. Eylem ifadeleri `sqlExpression` , bir Azure Resource Manager şablonundaki bir Service Bus ' Action ' özelliğinin öğesi `Rule` veya Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` komutunun [`--action-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) bağımsız değişkeni ve ABONELIK kurallarının yönetilmesine izin veren çeşitli SDK işlevleri ile birlikte kullanılır.
   
-Bu makalede, SQL kuralı eylem dilbilgisinde ayrıntıları listelenmektedir.  
   
 ```  
 <statements> ::=
@@ -52,7 +51,7 @@ Bu makalede, SQL kuralı eylem dilbilgisinde ayrıntıları listelenmektedir.
     [<scope> .] <property_name>
 ``` 
   
-## <a name="arguments"></a>Bağımsız değişkenler  
+## <a name="arguments"></a>Arguments  
   
 -   `<scope>` , kapsamını belirten isteğe bağlı bir dizedir `<property_name>` . Geçerli değerler veya ' dir `sys` `user` . `sys`Değer, `<property_name>` [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olan sistem kapsamını gösterir. `user` Kullanıcı kapsamını `<property_name>` , [aracılı Edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user` belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
   
@@ -72,7 +71,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ```  
   
-### <a name="arguments"></a>Bağımsız değişkenler  
+### <a name="arguments"></a>Arguments  
  `<regular_identifier>` , aşağıdaki normal ifade tarafından temsil edilen bir dizedir:  
   
 ```  
@@ -136,7 +135,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Bağımsız değişkenler  
+### <a name="arguments"></a>Arguments  
   
 -   `<integer_constant>` , tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak depolanır `System.Int64` ve aynı aralığı izler.  
   
@@ -211,5 +210,9 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SQLRuleAction sınıfı](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter sınıfı](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction sınıfı (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction sınıfı (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [SqlRuleAction sınıfı (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
+- [az ServiceBus konu abonelik kuralı](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

@@ -1,400 +1,275 @@
 ---
-title: Azure Service Bus kuyrukları ile çalışmaya başlama | Microsoft Docs
-description: Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
-ms.topic: conceptual
+title: Azure Service Bus kuyruklarında çalışmaya başlama (Azure. Messaging. ServiceBus)
+description: Bu öğreticide, bir Service Bus kuyruğundan ileti göndermek ve ileti almak için bir .NET Core C# uygulaması oluşturacaksınız.
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 06/23/2020
+ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cff2b8a8a0f6aefad43737aeb6fe63d40facac05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59dd1dadc7d037ff253812e4d3e1a1955d98e944
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021672"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95809126"
 ---
-# <a name="get-started-with-service-bus-queues"></a>Service Bus kuyrukları ile çalışmaya başlama
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (.NET)
+Bu öğreticide, **Azure. Messaging. ServiceBus** paketini kullanarak bir Service Bus kuyruğuna ileti göndermek ve ileti almak için bir .NET Core konsol uygulaması oluşturacaksınız. 
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!Important]
+> Bu hızlı başlangıç, yeni Azure. Messaging. ServiceBus paketini kullanır. Eski Microsoft. Azure. ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Microsoft. Azure. ServiceBus paketini kullanarak olay gönderme ve alma](service-bus-dotnet-get-started-with-queues-legacy.md).
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs).
-- [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
+## <a name="prerequisites"></a>Önkoşullar
+
+- [Visual Studio 2019](https://www.visualstudio.com/vs)
 - Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-- Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
+- Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin. Service Bus ad alanınız ve oluşturduğunuz **kuyruğun** adı için **bağlantı dizesini** aklınızda edin.
 
-  - Service Bus kuyruklara hızlı genel bakış konusunu okuyun.
-  - Service Bus ad alanı oluşturun.
-  - Bağlantı dizesini alın.
-  - Service Bus kuyruğu oluşturun.
-
-## <a name="send-messages-to-the-queue"></a>Kuyruğa ileti gönderme
-
-Kuyruğa ileti göndermek için, Visual Studio'yu kullanarak bir C# konsol uygulaması yazın.
+## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
+Bu hızlı başlangıç bölümünde, kuyruğa ileti göndermek için bir C# .NET Core konsol uygulaması oluşturacaksınız.
 
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
-
-Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun. Bu örnek, uygulama *Coresenderapp*' i adlandırır.
+Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun. 
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet paketi ekleme
 
 1. Yeni oluşturulan projeye sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
-1. **Gözat**'ı seçin. **[Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** araması yapın ve seçin.
+1. **Gözat**'ı seçin. **[Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)** araması yapın ve seçin.
 1. Yüklemeyi **gerçekleştirmek için yükleme** ' yi seçin ve ardından NuGet Paket Yöneticisi ' ni kapatın.
 
-    ![NuGet paketi seçme][nuget-pkg]
-
-### <a name="write-code-to-send-messages-to-the-queue"></a>Kuyruğa ileti göndermek için kod yazma
+### <a name="add-code-to-send-messages-to-the-queue"></a>Kuyruğa ileti göndermek için kod ekleme
 
 1. *Program.cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
-    using System.Text;
-    using System.Threading;
+    using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
+    
+    using Azure.Messaging.ServiceBus;
     ```
 
 1. `Program`Sınıfında, aşağıdaki değişkenleri bildirin:
 
     ```csharp
-    const string ServiceBusConnectionString = "<your_connection_string>";
-    const string QueueName = "<your_queue_name>";
-    static IQueueClient queueClient;
+        static string connectionString = "<NAMESPACE CONNECTION STRING>";
+        static string queueName = "<QUEUE NAME>";
     ```
 
-    Ad alanı için Bağlantı dizenizi değişken olarak girin `ServiceBusConnectionString` . Sıra adınızı girin.
-
-1. `Main()`Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. `SendMessagesAsync()`Kuyruğa ileti göndermek için bir sonraki adımda ekleyeceğiniz yöntemi çağırır. 
-
-    ```csharp
-    public static async Task Main(string[] args)
-    {    
-        const int numberOfMessages = 10;
-        queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Send messages.
-        await SendMessagesAsync(numberOfMessages);
-
-        Console.ReadKey();
-
-        await queueClient.CloseAsync();
-    }
-    ```
-1. Doğrudan yönteminden sonra `MainAsync()` , `SendMessagesAsync()` tarafından belirtilen ileti sayısını gönderme işini yapan aşağıdaki yöntemi ekleyin `numberOfMessagesToSend` (Şu anda 10 ' a ayarlanır):
+    `<NAMESPACE CONNECTION STRING>`Service Bus ad alanınız için bağlantı dizesiyle değiştirin. Ve öğesini `<QUEUE NAME>` kuyruğun adıyla değiştirin.     
+2. Kuyruğa bir ileti gönderen adlı adlı bir yöntem ekleyin `SendMessageAsync` . 
 
     ```csharp
-    static async Task SendMessagesAsync(int numberOfMessagesToSend)
-    {
-        try
+        static async Task SendMessageAsync()
         {
-            for (var i = 0; i < numberOfMessagesToSend; i++)
+            // create a Service Bus client 
+            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
             {
-                // Create a new message to send to the queue.
-                string messageBody = $"Message {i}";
-                var message = new Message(Encoding.UTF8.GetBytes(messageBody));
+                // create a sender for the queue 
+                ServiceBusSender sender = client.CreateSender(queueName);
 
-                // Write the body of the message to the console.
-                Console.WriteLine($"Sending message: {messageBody}");
+                // create a message that we can send
+                ServiceBusMessage message = new ServiceBusMessage("Hello world!");
 
-                // Send the message to the queue.
-                await queueClient.SendAsync(message);
+                // send the message
+                await sender.SendMessageAsync(message);
+                Console.WriteLine($"Sent a single message to the queue: {queueName}");
             }
         }
-        catch (Exception exception)
-        {
-            Console.WriteLine($"{DateTime.Now} :: Exception: {exception.Message}");
-        }
-    }
     ```
+1. `CreateMessages`Sınıfına bir sıra (.NET kuyruğu) oluşturmak için adlı bir yöntem ekleyin `Program` . Genellikle, bu iletileri uygulamanızın farklı bölümlerinden alırsınız. Burada, örnek iletiler için bir kuyruk oluşturacağız.
 
-*Program.cs* dosyanız şöyle görünmelidir.
-
-```csharp
-namespace CoreSenderApp
-{
-    using System;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
-
-    class Program
-    {
-        // Connection String for the namespace can be obtained from the Azure portal under the 
-        // 'Shared Access policies' section.
-        const string ServiceBusConnectionString = "<your_connection_string>";
-        const string QueueName = "<your_queue_name>";
-        static IQueueClient queueClient;
-
-        public static async Task Main(string[] args)
-        {    
-            const int numberOfMessages = 10;
-            queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-    
-            Console.WriteLine("======================================================");
-            Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-            Console.WriteLine("======================================================");
-    
-            // Send messages.
-            await SendMessagesAsync(numberOfMessages);
-    
-            Console.ReadKey();
-    
-            await queueClient.CloseAsync();
-        }
-
-        static async Task SendMessagesAsync(int numberOfMessagesToSend)
+    ```csharp
+        static Queue<ServiceBusMessage> CreateMessages()
         {
-            try
+            // create a queue containing the messages and return it to the caller
+            Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
+            messages.Enqueue(new ServiceBusMessage("First message"));
+            messages.Enqueue(new ServiceBusMessage("Second message"));
+            messages.Enqueue(new ServiceBusMessage("Third message"));
+            return messages;
+        }
+    ```
+1. Sınıfına adlı bir yöntem ekleyin `SendMessageBatchAsync` `Program` ve aşağıdaki kodu ekleyin. Bu yöntem bir ileti kuyruğu alır ve bir veya daha fazla toplu işi Service Bus kuyruğuna gönderecek şekilde hazırlar. 
+
+    ```csharp
+        static async Task SendMessageBatchAsync()
+        {
+            // create a Service Bus client 
+            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
             {
-                for (var i = 0; i < numberOfMessagesToSend; i++)
+                // create a sender for the queue 
+                ServiceBusSender sender = client.CreateSender(queueName);
+
+                // get the messages to be sent to the Service Bus queue
+                Queue<ServiceBusMessage> messages = CreateMessages();
+
+                // total number of messages to be sent to the Service Bus queue
+                int messageCount = messages.Count;
+
+                // while all messages are not sent to the Service Bus queue
+                while (messages.Count > 0)
                 {
-                    // Create a new message to send to the queue
-                    string messageBody = $"Message {i}";
-                    var message = new Message(Encoding.UTF8.GetBytes(messageBody));
+                    // start a new batch 
+                    using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
 
-                    // Write the body of the message to the console
-                    Console.WriteLine($"Sending message: {messageBody}");
+                    // add the first message to the batch
+                    if (messageBatch.TryAddMessage(messages.Peek()))
+                    {
+                        // dequeue the message from the .NET queue once the message is added to the batch
+                        messages.Dequeue();
+                    }
+                    else
+                    {
+                        // if the first message can't fit, then it is too large for the batch
+                        throw new Exception($"Message {messageCount - messages.Count} is too large and cannot be sent.");
+                    }
 
-                    // Send the message to the queue
-                    await queueClient.SendAsync(message);
+                    // add as many messages as possible to the current batch
+                    while (messages.Count > 0 && messageBatch.TryAddMessage(messages.Peek()))
+                    {
+                        // dequeue the message from the .NET queue as it has been added to the batch
+                        messages.Dequeue();
+                    }
+        
+                    // now, send the batch
+                    await sender.SendMessagesAsync(messageBatch);
+        
+                    // if there are any remaining messages in the .NET queue, the while loop repeats 
                 }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine($"{DateTime.Now} :: Exception: {exception.Message}");
+
+                Console.WriteLine($"Sent a batch of {messageCount} messages to the topic: {queueName}");
             }
         }
-    }
-}
-```
-
-Programı çalıştırın ve Azure portal denetleyin.
-
-Sıra **Essentials 'ı**göstermek için ad alanı **genel bakış** penceresinde kuyruğunuzun adını seçin.
-
-![Sayı ve boyut ile alınan iletiler][queue-message]
-
-Kuyruğun **etkin ileti sayısı** değeri artık **10**' dur. Bu gönderen uygulamayı iletileri almadan her çalıştırdığınızda, bu değer 10 artar.
-
-Kuyruğun geçerli boyutu, uygulamanın sıraya ileti eklemesi her seferinde **Essentials** 'daki **geçerli** değeri arttırır.
-
-Sonraki bölümde bu iletilerin nasıl alınacağını açıklanmaktadır.
-
-## <a name="receive-messages-from-the-queue"></a>Kuyruktan ileti alma
-
-Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core)** uygulaması oluşturun. Gönderen uygulaması için yaptığınız gibi **Microsoft. Azure. ServiceBus** NuGet paketini yükleyebilirsiniz.
-
-### <a name="write-code-to-receive-messages-from-the-queue"></a>Kuyruktan ileti almak için kod yazma
-
-1. *Program.cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
-
-    ```csharp
-    using System;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
     ```
-
-1. `Program`Sınıfında, aşağıdaki değişkenleri bildirin:
-
-    ```csharp
-    const string ServiceBusConnectionString = "<your_connection_string>";
-    const string QueueName = "<your_queue_name>";
-    static IQueueClient queueClient;
-    ```
-
-    Ad alanı için Bağlantı dizenizi değişken olarak girin `ServiceBusConnectionString` . Sıra adınızı girin.
-
-1. `Main()` yöntemini aşağıdaki kod ile değiştirin:
+1. `Main()`Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. Tek bir ileti ve sıraya toplu bir ileti göndermek için gönderme yöntemlerini çağırır. 
 
     ```csharp
-    static void Main(string[] args)
-    {
-        MainAsync().GetAwaiter().GetResult();
-    }
-
-    static async Task MainAsync()
-    {
-        queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Register QueueClient's MessageHandler and receive messages in a loop
-        RegisterOnMessageHandlerAndReceiveMessages();
-
-        Console.ReadKey();
-
-        await queueClient.CloseAsync();
-    }
-    ```
-
-1. Doğrudan yönteminden sonra `MainAsync()` , ileti işleyicisini kaydeden ve gönderen uygulama tarafından gönderilen iletileri alan aşağıdaki yöntemi ekleyin:
-
-    ```csharp
-    static void RegisterOnMessageHandlerAndReceiveMessages()
-    {
-        // Configure the message handler options in terms of exception handling, number of concurrent messages to deliver, etc.
-        var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
+        static async Task Main()
         {
-            // Maximum number of concurrent calls to the callback ProcessMessagesAsync(), set to 1 for simplicity.
-            // Set it according to how many messages the application wants to process in parallel.
-            MaxConcurrentCalls = 1,
+            // send a message to the queue
+            await SendMessageAsync();
 
-            // Indicates whether the message pump should automatically complete the messages after returning from user callback.
-            // False below indicates the complete operation is handled by the user callback as in ProcessMessagesAsync().
-            AutoComplete = false
-        };
-
-        // Register the function that processes messages.
-        queueClient.RegisterMessageHandler(ProcessMessagesAsync, messageHandlerOptions);
-    }
+            // send a batch of messages to the queue
+            await SendMessageBatchAsync();
+        }
     ```
+5. Uygulamayı çalıştırın. Aşağıdaki iletileri görmeniz gerekir. 
 
-1. Önceki metottan hemen sonra, alınan mesajları işlemek için aşağıdaki `ProcessMessagesAsync()` metodunu ekleyin:
+    ```console
+    Sent a single message to the queue: myqueue
+    Sent a batch of messages to the queue: myqueue
+    ```       
+1. Azure portal, aşağıdaki adımları izleyin:
+    1. Service Bus ad alanına gidin. 
+    1. **Genel bakış** sayfasında, alt orta bölmedeki kuyruğu seçin. 
+    1. **Temel** bileşenler bölümündeki değerlere dikkat edin.
+
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png" alt-text="Sayı ve boyut ile alınan iletiler" lightbox="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png":::
+
+    Aşağıdaki değerlere dikkat edin:
+    - Kuyruğun **etkin ileti sayısı** değeri artık **4**' dir. Bu gönderen uygulamayı iletileri almadan her çalıştırdığınızda, bu değer 4 ' ü arttırır.
+    - Kuyruğun geçerli boyutu, uygulamanın sıraya ileti eklemesi her seferinde **Essentials** 'daki **geçerli** değeri arttırır.
+    - Alt **ölçümler** bölümündeki **iletiler** grafiğinde, kuyruk için dört gelen ileti olduğunu görebilirsiniz. 
+
+## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
+Bu bölümde, kuyruktan ileti almak için kod ekleyeceksiniz.
+
+1. `Program`İletileri ve hataları işleyen sınıfa aşağıdaki yöntemleri ekleyin. 
 
     ```csharp
-    static async Task ProcessMessagesAsync(Message message, CancellationToken token)
-    {
-        // Process the message.
-        Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{Encoding.UTF8.GetString(message.Body)}");
-
-        // Complete the message so that it is not received again.
-        // This can be done only if the queue Client is created in ReceiveMode.PeekLock mode (which is the default).
-        await queueClient.CompleteAsync(message.SystemProperties.LockToken);
-
-        // Note: Use the cancellationToken passed as necessary to determine if the queueClient has already been closed.
-        // If queueClient has already been closed, you can choose to not call CompleteAsync() or AbandonAsync() etc.
-        // to avoid unnecessary exceptions.
-    }
-    ```
-
-1. Son olarak, olası özel durumları işlemek için aşağıdaki metodu ekleyin:
-
-    ```csharp
-    // Use this handler to examine the exceptions received on the message pump.
-    static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
-    {
-        Console.WriteLine($"Message handler encountered an exception {exceptionReceivedEventArgs.Exception}.");
-        var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
-        Console.WriteLine("Exception context for troubleshooting:");
-        Console.WriteLine($"- Endpoint: {context.Endpoint}");
-        Console.WriteLine($"- Entity Path: {context.EntityPath}");
-        Console.WriteLine($"- Executing Action: {context.Action}");
-        return Task.CompletedTask;
-    }
-    ```
-
-*Program.cs* dosyanız şu şekilde görünmelidir:
-
-```csharp
-namespace CoreReceiverApp
-{
-    using System;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.ServiceBus;
-
-    class Program
-    {
-        // Connection String for the namespace can be obtained from the Azure portal under the 
-        // 'Shared Access policies' section.
-        const string ServiceBusConnectionString = "<your_connection_string>";
-        const string QueueName = "<your_queue_name>";
-        static IQueueClient queueClient;
-
-        static void Main(string[] args)
+        // handle received messages
+        static async Task MessageHandler(ProcessMessageEventArgs args)
         {
-            MainAsync().GetAwaiter().GetResult();
+            string body = args.Message.Body.ToString();
+            Console.WriteLine($"Received: {body}");
+
+            // complete the message. messages is deleted from the queue. 
+            await args.CompleteMessageAsync(args.Message);
         }
 
-        static async Task MainAsync()
+        // handle any errors when receiving messages
+        static Task ErrorHandler(ProcessErrorEventArgs args)
         {
-            queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-            Console.WriteLine("======================================================");
-            Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
-            Console.WriteLine("======================================================");
-
-            // Register QueueClient's MessageHandler and receive messages in a loop
-            RegisterOnMessageHandlerAndReceiveMessages();
- 
-            Console.ReadKey();
-
-            await queueClient.CloseAsync();
-        }
-
-        static void RegisterOnMessageHandlerAndReceiveMessages()
-        {
-            // Configure the MessageHandler Options in terms of exception handling, number of concurrent messages to deliver etc.
-            var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
-            {
-                // Maximum number of Concurrent calls to the callback `ProcessMessagesAsync`, set to 1 for simplicity.
-                // Set it according to how many messages the application wants to process in parallel.
-                MaxConcurrentCalls = 1,
-
-                // Indicates whether MessagePump should automatically complete the messages after returning from User Callback.
-                // False below indicates the Complete will be handled by the User Callback as in `ProcessMessagesAsync` below.
-                AutoComplete = false
-            };
-
-            // Register the function that will process messages
-            queueClient.RegisterMessageHandler(ProcessMessagesAsync, messageHandlerOptions);
-        }
-
-        static async Task ProcessMessagesAsync(Message message, CancellationToken token)
-        {
-            // Process the message
-            Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{Encoding.UTF8.GetString(message.Body)}");
-
-            // Complete the message so that it is not received again.
-            // This can be done only if the queueClient is created in ReceiveMode.PeekLock mode (which is default).
-            await queueClient.CompleteAsync(message.SystemProperties.LockToken);
-
-            // Note: Use the cancellationToken passed as necessary to determine if the queueClient has already been closed.
-            // If queueClient has already been Closed, you may chose to not call CompleteAsync() or AbandonAsync() etc. calls 
-            // to avoid unnecessary exceptions.
-        }
-
-        static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
-        {
-            Console.WriteLine($"Message handler encountered an exception {exceptionReceivedEventArgs.Exception}.");
-            var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
-            Console.WriteLine("Exception context for troubleshooting:");
-            Console.WriteLine($"- Endpoint: {context.Endpoint}");
-            Console.WriteLine($"- Entity Path: {context.EntityPath}");
-            Console.WriteLine($"- Executing Action: {context.Action}");
+            Console.WriteLine(args.Exception.ToString());
             return Task.CompletedTask;
         }
-    }
-}
+    ```
+1. Sınıfına adlı bir yöntem ekleyin `ReceiveMessagesAsync` `Program` ve ileti almak için aşağıdaki kodu ekleyin. 
+
+    ```csharp
+        static async Task ReceiveMessagesAsync()
+        {
+            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
+            {
+                // create a processor that we can use to process the messages
+                ServiceBusProcessor processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+
+                // add handler to process messages
+                processor.ProcessMessageAsync += MessageHandler;
+
+                // add handler to process any errors
+                processor.ProcessErrorAsync += ErrorHandler;
+
+                // start processing 
+                await processor.StartProcessingAsync();
+
+                Console.WriteLine("Wait for a minute and then press any key to end the processing");
+                Console.ReadKey();
+
+                // stop processing 
+                Console.WriteLine("\nStopping the receiver...");
+                await processor.StopProcessingAsync();
+                Console.WriteLine("Stopped receiving messages");
+            }
+        }
+    ```
+1. Yönteminden yöntemine bir çağrı ekleyin `ReceiveMessagesAsync` `Main` . `SendMessagesAsync`Yalnızca ileti alma sınamasını yapmak istiyorsanız yöntemine açıklama ekleyin. Bunu yapmazsanız, kuyruğa başka dört ileti gönderildiğini görürsünüz. 
+
+    ```csharp
+        static async Task Main()
+        {
+            // send a message to the queue
+            await SendMessageAsync();
+
+            // send a batch of messages to the queue
+            await SendMessageBatchAsync();
+
+            // receive message from the queue
+            await ReceiveMessagesAsync();
+        }
+    ```
+
+## <a name="run-the-app"></a>Uygulamayı çalıştırma
+Uygulamayı çalıştırın. Bir dakika bekleyip ileti almayı durdurmak için herhangi bir tuşa basın. Aşağıdaki çıktıyı görmeniz gerekir (anahtar için ara çubuğu). 
+
+```console
+Sent a single message to the queue: myqueue
+Sent a batch of messages to the queue: myqueue
+Wait for a minute and then press any key to end the processing
+Received: Hello world!
+Received: First message in the batch
+Received: Second message in the batch
+Received: Third message in the batch
+Received: Hello world!
+Received: First message in the batch
+Received: Second message in the batch
+Received: Third message in the batch
+
+Stopping the receiver...
+Stopped receiving messages
 ```
 
-Programı çalıştırın ve portalı tekrar denetleyin. **Etkin ileti sayısı** ve **geçerli** değerler artık **0**' dır.
+Portalı yeniden kontrol edin. 
 
-![İletiler alındıktan sonra kuyruğa al][queue-message-receive]
+- **Etkin ileti sayısı** ve **geçerli** değerler artık **0**' dır.
+- Alt **ölçümler** bölümündeki **iletiler** grafiğinde, sıra için sekiz gelen ileti ve sekiz giden ileti olduğunu görebilirsiniz. 
 
-Tebrikler! Artık bir kuyruk oluşturdunuz, bu kuyruğa bir ileti kümesi gönderdiniz ve bu iletileri aynı kuyruktan almış oldunuz.
-
-> [!NOTE]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus Gezgini kullanıcıların bir Service Bus ad alanına kolayca bağlanmasına ve mesajlaşma varlıklarını yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konuları, kuyrukları, abonelikleri, geçiş hizmetlerini, Bildirim Hub 'larını ve Olay Hub 'larını test etme özelliğini sağlar.
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="Etkin iletiler ve alındıktan sonra Boyutlandır" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
+Aşağıdaki belgelere ve örneklere bakın:
 
-Service Bus mesajlaşmasının daha gelişmiş özelliklerini gösteren [örneklerin bulunduğu GitHub depomuza](https://github.com/Azure/azure-service-bus/tree/master/samples) göz atın.
-
-<!--Image references-->
-
-[nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
-[queue-message]: ./media/service-bus-dotnet-get-started-with-queues/messages-sent-to-essentials.png
-[queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive-in-essentials.png
+- [.NET için Azure Service Bus istemci kitaplığı-Benioku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
+- [GitHub’daki örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
+- [.NET API'si başvurusu](https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus?view=azure-dotnet-preview&preserve-view=true)
 
