@@ -139,7 +139,7 @@
           href: understand-spark-code-concepts.md
     - name: U-SQL işlerinin sorunlarını giderme
       items:
-        - name: U-SQL çalışma zamanı hatalarını giderme
+        - name: U-SQL çalışma zamanı hatalarını ve bilinen sorunları giderme
           href: runtime-troubleshoot.md
         - name: .NET yükseltmesi sorunlarını giderme
           href: dotnet-upgrade-troubleshoot.md

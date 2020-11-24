@@ -69,8 +69,12 @@
       href: ../../automation/security-baseline.md
     - name: Azure Danışmanı güvenlik temeli
       href: ../../advisor/security-baseline.md
+    - name: Azure Uygulama Yapılandırması güvenlik temeli
+      href: ../../azure-app-configuration/security-baseline.md
     - name: Azure Backup güvenlik temeli
       href: ../../backup/security-baseline.md
+    - name: Azure Bastion güvenlik temeli
+      href: ../../bastion/security-baseline.md
     - name: Redis için Azure Cache güvenlik temeli
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Azure Bilişsel Arama güvenlik temeli
@@ -201,5 +205,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: Sanal Ağ güvenlik temeli
       href: ../../virtual-network/security-baseline.md
+    - name: Sanal Ağ Adres Çevirisi güvenlik temeli
+      href: ../../virtual-network/nat-security-baseline.md
     - name: VPN Gateway güvenlik temeli
       href: ../../vpn-gateway/security-baseline.md

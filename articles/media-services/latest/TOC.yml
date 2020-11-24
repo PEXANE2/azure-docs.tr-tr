@@ -270,9 +270,13 @@
     - name: Dönüşüm ve iş oluşturma
       items:
         - name: Dönüşüm oluşturma
-          href: cli-create-transform.md
+          href: how-to-create-transform.md
         - name: REST ile temel ses dönüşümü oluşturma
           href: how-to-create-basic-audio-transform.md
+        - name: REST ile bir copyAllBitrateNonInterleaved dönüşümü oluşturma
+          href: how-to-create-copyallbitratenoninterleaved-transform.md
+        - name: REST ile kodlama olmadan video kopyalama
+          href: how-to-create-copy-video-audio-transform.md
         - name: İş oluşturma
           href: cli-create-jobs.md
         - name: Yerel dosya ve .NET ile iş girişi oluşturma

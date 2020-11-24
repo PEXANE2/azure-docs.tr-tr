@@ -51,6 +51,8 @@
       href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
     - name: Cihaz modülü bağlama
       href: tutorial-migrate-device-to-module.md
+    - name: Önizleme - Time Series Insights 2. Nesil ile verileri bağlama ve analiz etme
+      href: tutorial-configure-tsi.md
 - name: Kavramlar
   items:
     - name: Mimari

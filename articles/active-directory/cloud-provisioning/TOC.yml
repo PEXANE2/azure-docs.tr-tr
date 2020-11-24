@@ -62,10 +62,12 @@
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: Başvuru
   items:
-    - name: Azure AD Connect bulut sağlama aracısı sürüm geçmişi
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Azure AD Connect Bulut Eşitleme aracısı sürüm geçmişi
+      href: reference-version-history.md
     - name: Azure AD Connect bulut sağlama hakkında SSS
       href: reference-cloud-provisioning-faq.md
+    - name: AADCloudSyncTools PowerShell Module
+      href: reference-powershell.md
     - name: Eşitlenen öznitelikler
       href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Temel Active Directory ve Azure AD ortamı

@@ -539,6 +539,8 @@
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Safari’de ITP’yi işleme
           href: reference-third-party-cookies-spas.md
+        - name: Sürekli Erişim Değerlendirmesi API’lerini kullanma
+          href: app-resilience-continuous-access-evaluation.md
     - name: Uygulama yapılandırması
       displayName: App configuration
       items:

@@ -75,6 +75,8 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: IntelliJ kullanarak uygulamaları dağıtma
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: Azure PowerShell ile Azure Spring Cloud dağıtma
+          href: spring-cloud-howto-deploy-powershell.md
     - name: Yapılandırma
       items:
         - name: 'Uygulamayı başlatma, durdurma ve silme'

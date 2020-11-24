@@ -31,7 +31,7 @@
       href: tutorial-create-validate-nat-gateway-portal.md
 - name: Örnekler
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -95,8 +95,10 @@
           href: public-ip-security-baseline.md
     - name: Güvenlik
       items:
-        - name: Güvenlik temeli
+        - name: Sanal ağ güvenlik temeli
           href: security-baseline.md
+        - name: Sanal ağ adres çevirisi güvenlik temeli
+          href: nat-security-baseline.md
         - name: Ağ güvenlik grupları
           items:
             - name: Genel bakış
@@ -426,7 +428,7 @@
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

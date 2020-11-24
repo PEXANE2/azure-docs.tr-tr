@@ -67,6 +67,8 @@
           href: ./ag/application-gateway-waf-faq.md
     - name: Front Door
       items:
+        - name: Ayarlama
+          href: ./afds/waf-front-door-tuning.md
         - name: Özel kurallar
           href: ./afds/waf-front-door-custom-rules.md
         - name: Dışlama listesi

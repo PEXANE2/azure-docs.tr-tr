@@ -97,13 +97,13 @@
       href: dynamic-change-volume-service-level.md
     - name: Bölgeler arası çoğaltmayı yönetme
       items:
-        - name: Çoğaltma eşlemesi oluşturma
+        - name: Birim çoğaltması oluşturma
           href: cross-region-replication-create-peering.md
         - name: Çoğaltma ilişkisinin uygunluk durumunu görüntüleme
           href: cross-region-replication-display-health-status.md
         - name: Olağanüstü durum kurtarmayı yönetme
           href: cross-region-replication-manage-disaster-recovery.md
-        - name: Çoğaltmaları silme
+        - name: Birim çoğaltmalarını veya birimleri silme
           href: cross-region-replication-delete.md
     - name: Geliştirme
       items:

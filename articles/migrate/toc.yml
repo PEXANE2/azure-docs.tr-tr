@@ -32,10 +32,12 @@
           href: tutorial-discover-gcp.md
     - name: Değerlendirme
       items:
-        - name: VMware VM’lerini Azure VM’lerine geçiş için değerlendirme
-          href: tutorial-assess-vmware-azure-vm.md
-        - name: VMware VM’lerini AVS'ye geçiş için değerlendirme
-          href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: VMware VM’lerini değerlendirme
+          items:
+            - name: VMware VM’lerini Azure VM’lerine geçiş için değerlendirme
+              href: tutorial-assess-vmware-azure-vm.md
+            - name: VMware VM’lerini AVS'ye geçiş için değerlendirme
+              href: tutorial-assess-vmware-azure-vmware-solution.md
         - name: Hyper-V VM’lerini Azure'a geçiş için değerlendirme
           href: tutorial-assess-hyper-v.md
         - name: Fiziksel sunucuları Azure’a geçiş için değerlendirme
@@ -44,19 +46,19 @@
           href: tutorial-assess-aws.md
         - name: GCP örneklerini Azure’a geçiş için değerlendirme
           href: tutorial-assess-gcp.md
-        - name: İçeri aktarılan sunucuları değerlendirme
+        - name: İçeri aktarılan sunucuları Azure’a geçiş için değerlendirme
           href: tutorial-discover-import.md
     - name: Geçiş
       items:
         - name: VMware VM’leri geçirme
           items:
-            - name: VMware VM’lere yönelik geçiş seçenekleri hakkında
+            - name: VMware VM’lere yönelik geçiş seçenekleri
               href: server-migrate-overview.md
-            - name: VMware VM'leri aracısız geçiş ile geçirme - Azure portal
+            - name: Aracısız geçiş ile geçirme (portal)
               href: tutorial-migrate-vmware.md
-            - name: VMware VM'leri aracı tabanlı geçiş ile geçirme
+            - name: Aracı tabanlı geçiş ile geçirme
               href: tutorial-migrate-vmware-agent.md
-            - name: VMware VM'leri aracısız geçiş ile geçirme - PowerShell
+            - name: Aracısız geçiş ile geçirme (PowerShell)
               href: tutorial-migrate-vmware-powershell.md
         - name: Hyper-V VM’leri Azure’a Geçirme
           href: tutorial-migrate-hyper-v.md
@@ -68,128 +70,150 @@
           href: tutorial-migrate-gcp-virtual-machines.md
 - name: Kavramlar
   items:
-    - name: Geçiş planı oluşturma
-      href: concepts-migration-planning.md
-    - name: Destek matrisleri
+    - name: Genel
       items:
-        - name: Genel destek
+        - name: Azure Geçişi desteği
           href: migrate-support-matrix.md
-        - name: VMware değerlendirme desteği
+        - name: Azure Geçişi için güvenlik temeli
+          href: security-baseline.md
+    - name: Bulma
+      items:
+        - name: VMware bulma desteği
           href: migrate-support-matrix-vmware.md
-        - name: VMware geçiş desteği
-          href: migrate-support-matrix-vmware-migration.md
-        - name: Hyper-V değerlendirme desteği
+        - name: Hyper-V bulma desteği
           href: migrate-support-matrix-hyper-v.md
-        - name: Hyper-V geçiş desteği
-          href: migrate-support-matrix-hyper-v-migration.md
-        - name: Fiziksel sunucu değerlendirme desteği
+        - name: Fiziksel sunucu bulma desteği
           href: migrate-support-matrix-physical.md
-        - name: Fiziksel sunucu geçiş desteği
-          href: migrate-support-matrix-physical-migration.md
         - name: Azure Geçişi aleti gereksinimleri
           href: migrate-appliance.md
+        - name: Azure Geçişi aleti mimarisi
+          href: migrate-appliance-architecture.md
+        - name: Bağımlılık analizine genel bakış
+          href: concepts-dependency-visualization.md
+    - name: Değerlendirme
+      items:
+        - name: Değerlendirmelere genel bakış (Azure VM’lerine geçiş)
+          href: concepts-assessment-calculation.md
+        - name: Değerlendirmeye genel bakış (AVS’ye geçiş)
+          href: concepts-azure-vmware-solution-assessment-calculation.md
+        - name: Değerlendirme için en iyi deneyimler
+          href: best-practices-assessment.md
+    - name: Geçiş
+      items:
+        - name: Geçiş planı oluşturma
+          href: concepts-migration-planning.md
+        - name: VMware geçiş desteği
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Hyper-V geçiş desteği
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: Fiziksel sunucu geçiş desteği
+          href: migrate-support-matrix-physical-migration.md
         - name: Çoğaltma aleti gereksinimleri
           href: migrate-replication-appliance.md
-    - name: Güvenlik
-      items:
-        - name: Güvenlik temeli
-          href: security-baseline.md
-    - name: Azure Geçişi aleti mimarisi
-      href: migrate-appliance-architecture.md
-    - name: Hyper-V geçiş mimarisi
-      href: hyper-v-migration-architecture.md
-    - name: VMware aracı tabanlı geçiş mimarisi
-      href: agent-based-migration-architecture.md
-    - name: Değerlendirmeye genel bakış (Azure VM’lerine geçiş)
-      href: concepts-assessment-calculation.md
-    - name: Değerlendirmeye genel bakış (AVS’ye geçiş)
-      href: concepts-azure-vmware-solution-assessment-calculation.md
-    - name: Değerlendirmeler için en iyi yöntemler
-      href: best-practices-assessment.md
-    - name: Bağımlılık analizine genel bakış
-      href: concepts-dependency-visualization.md
+        - name: Hyper-V geçiş mimarisi
+          href: hyper-v-migration-architecture.md
+        - name: VMware aracı tabanlı geçiş mimarisi
+          href: agent-based-migration-architecture.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Geçişi projelerini oluşturma ve yönetme
       href: create-manage-projects.md
-    - name: İlk kez araç ekleme
-      href: how-to-add-tool-first-time.md
     - name: ISV araçlarıyla çalışmaya hazırlanma/Movere
       href: prepare-isv-movere.md
-    - name: Değerlendirme araçları ekleme
-      href: how-to-assess.md
-    - name: Azure Geçişi aletini dağıtma
+    - name: Bulma
       items:
-        - name: Aleti şablonla dağıtma (VMware)
-          href: how-to-set-up-appliance-vmware.md
-        - name: Aleti şablonla dağıtma (Hyper-V)
-          href: how-to-set-up-appliance-hyper-v.md
-        - name: Aleti betikle dağıtma (VMware/Hyper-V)
-          href: deploy-appliance-script.md
-        - name: Fiziksel sunucular için alet dağıtma
-          href: how-to-set-up-appliance-physical.md
-        - name: Azure Kamu'da alet dağıtma
-          href: deploy-appliance-script-government.md
-    - name: VMware VM’leri için bulma kapsamını sınırlama
-      href: set-discovery-scope.md
-    - name: Uygulamaları/rolleri/özellikleri bulma
-      href: how-to-discover-applications.md
-    - name: Değerlendirme için grup makineleri
-      href: how-to-create-a-group.md
-    - name: Makine bağımlılıklarını analiz etme (aracı tabanlı)
-      href: how-to-create-group-machine-dependencies.md
-    - name: Makine bağımlılıklarını analiz etme (aracısız)
-      href: how-to-create-group-machine-dependencies-agentless.md
-    - name: Azure VM değerlendirmesi oluşturma
-      href: how-to-create-assessment.md
-    - name: AVS değerlendirmesi oluşturma
-      href: how-to-create-azure-vmware-solution-assessment.md
-    - name: SQL Server veritabanını değerlendirme
-      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
-    - name: Bir değerlendirmeyi özelleştirme
-      href: how-to-modify-assessment.md
-    - name: Geçiş araçları ekleme
-      href: how-to-migrate.md
-    - name: VMware VM’lerini SSE ve CMK ile şifrelenmiş Azure VM’lerine geçirme
-      href: how-to-migrate-vmware-vms-with-cmk-disks.md
-    - name: Windows 2003 sunucularını geçişe hazırlama
-      href: prepare-windows-server-2003-migration.md
-    - name: Makineleri geçişe hazırlama
-      href: prepare-for-migration.md
-    - name: Azure Geçişi projesini silme
-      href: how-to-delete-project.md
-    - name: Önceki sürümle çalışma
-      href: migrate-v1.md
-    - name: Ölçek değerlendirmesi ve geçiş
+        - name: Azure Geçişi aletini dağıtma
+          items:
+            - name: Aleti şablonla dağıtma (VMware)
+              href: how-to-set-up-appliance-vmware.md
+            - name: Aleti şablonla dağıtma (Hyper-V)
+              href: how-to-set-up-appliance-hyper-v.md
+            - name: Aleti betikle dağıtma (VMware/Hyper-V)
+              href: deploy-appliance-script.md
+            - name: Fiziksel sunucular için alet dağıtma
+              href: how-to-set-up-appliance-physical.md
+            - name: Azure Kamu'da alet dağıtma
+              href: deploy-appliance-script-government.md
+        - name: VMware VM’leri için bulma kapsamını sınırlama
+          href: set-discovery-scope.md
+        - name: Uygulamaları/rolleri/özellikleri bulma
+          href: how-to-discover-applications.md
+        - name: Makine bağımlılıklarını analiz etme (aracı tabanlı)
+          href: how-to-create-group-machine-dependencies.md
+        - name: Makine bağımlılıklarını analiz etme (aracısız)
+          href: how-to-create-group-machine-dependencies-agentless.md
+    - name: Değerlendirme
       items:
-        - name: Çok sayıda VMware VM’sini değerlendirme
-          href: scale-vmware-assessment.md
-        - name: Çok sayıda Hyper-V VM’sini değerlendirme
-          href: scale-hyper-v-assessment.md
-        - name: Çok sayıda fiziksel sunucuyu değerlendirme
-          href: scale-physical-assessment.md
-        - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme
-          href: how-to-migrate-at-scale.md
-        - name: VMware geçişini otomatikleştirme
-          href: how-to-automate-migration.md
-        - name: Geçiş örnekleri (Contoso serisi)
-          href: contoso-migration-overview.md
+        - name: Değerlendirme araçları ekleme
+          href: how-to-assess.md
+        - name: Değerlendirme için grup makineleri
+          href: how-to-create-a-group.md
+        - name: Azure VM değerlendirmesi oluşturma
+          href: how-to-create-assessment.md
+        - name: AVS değerlendirmesi oluşturma
+          href: how-to-create-azure-vmware-solution-assessment.md
+        - name: SQL Server veritabanını değerlendirme
+          href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
+        - name: Bir değerlendirmeyi özelleştirme
+          href: how-to-modify-assessment.md
+        - name: Ölçeklendirme değerlendirmesi
+          items:
+            - name: Çok sayıda VMware VM’sini değerlendirme
+              href: scale-vmware-assessment.md
+            - name: Çok sayıda Hyper-V VM’sini değerlendirme
+              href: scale-hyper-v-assessment.md
+            - name: Çok sayıda fiziksel sunucuyu değerlendirme
+              href: scale-physical-assessment.md
+    - name: Geçiş
+      items:
+        - name: Geçiş araçları ekleme
+          href: how-to-migrate.md
+        - name: Makineleri geçişe hazırlama
+          href: prepare-for-migration.md
+        - name: VMware VM’leri geçirme
+          items:
+            - name: VMware VM’lerini şifrelenmiş Azure VM’lerine geçirme
+              href: how-to-migrate-vmware-vms-with-cmk-disks.md
+            - name: Windows 2003 sunucularını geçişe hazırlama
+              href: prepare-windows-server-2003-migration.md
+        - name: Geçişi ölçeklendirme
+          items:
+            - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme
+              href: how-to-migrate-at-scale.md
+            - name: VMware geçişini otomatikleştirme
+              href: how-to-automate-migration.md
+    - name: Yönetme
+      items:
+        - name: Azure Geçişi projesini silme
+          href: how-to-delete-project.md
+        - name: Azure Geçişi’nin önceki sürümleriyle çalışma
+          href: migrate-v1.md
 - name: Sorun giderme
   items:
-    - name: Azure Geçişi sorunlarını giderme
-      href: troubleshoot-general.md
-    - name: Azure Geçişi projeleri sorunlarını giderme
-      href: troubleshoot-project.md
-    - name: Azure Geçişi aleti/bulma sorunlarını giderme
-      href: troubleshoot-appliance-discovery.md
-    - name: Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
-      href: troubleshoot-assessment.md
-    - name: Aracısız VMware geçişindeki çoğaltma sorunlarını giderme
-      href: troubleshoot-changed-block-tracking-replication.md
+    - name: Genel
+      items:
+        - name: Azure Geçişi sorunlarını giderme
+          href: troubleshoot-general.md
+        - name: Azure Geçişi projeleri sorunlarını giderme
+          href: troubleshoot-project.md
+    - name: Bulma
+      items:
+        - name: Azure Geçişi aleti/bulma sorunlarını giderme
+          href: troubleshoot-appliance-discovery.md
+    - name: Değerlendirme
+      items:
+        - name: Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
+          href: troubleshoot-assessment.md
+    - name: Geçiş
+      items:
+        - name: Aracısız VMware geçişindeki çoğaltma sorunlarını giderme
+          href: troubleshoot-changed-block-tracking-replication.md
 - name: Kaynaklar
   items:
     - name: Bulut Benimseme Çerçevesi kapsamında geçiş
       href: /azure/cloud-adoption-framework/migrate/
+    - name: Contoso geçiş örnekleri
+      href: /azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-overview
     - name: REST API
       href: /rest/api/migrate/
     - name: Resource Manager şablonu
