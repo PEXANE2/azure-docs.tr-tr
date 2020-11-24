@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174153"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758922"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
 
@@ -41,14 +41,16 @@ Geçici silme işlemi çalışma alanı kaynağını siler ve ilişkili kullanı
 > [!NOTE] 
 > Azure Otomasyonu hesabınız gibi yüklü çözümler ve bağlı hizmetler, silme sırasında çalışma alanından kalıcı olarak kaldırılır ve kurtarılamaz. Çalışma alanını önceden yapılandırılmış durumuna getirmek için kurtarma işleminden sonra bunların yeniden yapılandırılması gerekir.
 
-Bir çalışma alanını [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
+Bir çalışma alanını [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0&preserve-view=true), [REST API](/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
 
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
-2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
+2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
 3. Log Analytics çalışma alanları listesinde bir çalışma alanı seçin ve orta bölmenin en üstündeki **Sil**  ' e tıklayın.
-4. Çalışma alanına geçen hafta boyunca veri alımını gösteren bir onay sayfası görüntülenir. Onaylamak için çalışma alanının adını yazın ve ardından **Sil**' e tıklayın.
+4. Çalışma alanına geçen hafta boyunca veri alımını gösteren bir onay sayfası görüntülenir. 
+5. Daha sonra kurtarma seçeneğini kaldırarak çalışma alanını kalıcı olarak silmek istiyorsanız, **çalışma alanını kalıcı olarak sil** onay kutusunu seçin.
+6. Onaylamak için çalışma alanının adını yazın ve ardından **Sil**' e tıklayın.
 
    ![Çalışma alanının Silinmesini Onayla](media/delete-workspace/workspace-delete.png)
 
@@ -60,11 +62,12 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="permanent-workspace-delete"></a>Kalıcı çalışma alanı silme
 Geçici silme yöntemi, aynı ayarlar ve çalışma alanı adıyla bir dağıtımı tekrarlamanız gereken geliştirme ve test gibi bazı senaryolara uygun olmayabilir. Bu gibi durumlarda, çalışma alanınızı kalıcı olarak silebilir ve geçici silme dönemini "geçersiz kılabilirsiniz". Kalıcı çalışma alanı silme işlemi çalışma alanı adını serbest bırakır ve aynı adı kullanarak yeni bir çalışma alanı oluşturabilirsiniz.
 
-
 > [!IMPORTANT]
 > Kalıcı çalışma alanı silme işlemini, geri döndürülemez bu yana dikkatli bir şekilde kullanın, çalışma alanınızı ve verilerini kurtaramayacağız.
 
-Çalışma alanınızı kalıcı olarak silmek için '-ForceDelete ' etiketini ekleyin. '-ForceDelete ' seçeneği şu anda az. Operationalınsights 2.3.0 veya üzeri ile kullanılabilir. 
+Azure portal kullanarak bir çalışma alanını kalıcı olarak silmek için, **Sil** düğmesine tıklamadan önce **çalışma alanını kalıcı olarak sil** onay kutusunu seçin.
+
+PowerShell kullanarak bir çalışma alanını kalıcı olarak silmek için, çalışma alanınızı kalıcı olarak silmek üzere '-ForceDelete ' etiketini ekleyin. '-ForceDelete ' seçeneği şu anda az. Operationalınsights 2.3.0 veya üzeri ile kullanılabilir. 
 
 ```powershell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
@@ -78,12 +81,12 @@ Veri, yapılandırma ve bağlı aracılar dahil olmak üzere geçici silme döne
 - Abonelik Kimliği
 - Kaynak grubu adı
 - Çalışma alanı adı
-- Bölge
+- Region
 
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
-2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin. Seçili kapsamda bulunan çalışma alanlarının listesini görürsünüz.
+2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin. Seçili kapsamda bulunan çalışma alanlarının listesini görürsünüz.
 3. En üstteki menüden **kurtar** ' a tıklayarak geçici bir şekilde kurtarılabilen, geçici silme durumunda bulunan çalışma alanları içeren bir sayfa açın.
 
    ![Menü çubuğunda kurtarma vurgulanmış şekilde Azure portal Log Analytics çalışma alanları ekranının ekran görüntüsü.](media/delete-workspace/recover-menu.png)
@@ -115,6 +118,6 @@ Bir çalışma alanını silmek için en az *Log Analytics katkıda bulunan* izi
     1. Çalışma alanınızı [kurtarın](#recover-workspace) .
     2. Çalışma alanınızı [kalıcı olarak silin](#permanent-workspace-delete) .
     3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.
-* *Kaynak bulunamadığını*gösteren bir 204 yanıt kodu görürseniz, neden çalışma alanını silme işlemini kullanmayı ardışık olarak deniyor olabilir. 204 boş bir yanıt olduğundan, genellikle kaynağın bulunmadığı anlamına gelir; bu nedenle silme işlemi hiçbir şey yapılmadan tamamlanır.
+* *Kaynak bulunamadığını* gösteren bir 204 yanıt kodu görürseniz, neden çalışma alanını silme işlemini kullanmayı ardışık olarak deniyor olabilir. 204 boş bir yanıt olduğundan, genellikle kaynağın bulunmadığı anlamına gelir; bu nedenle silme işlemi hiçbir şey yapılmadan tamamlanır.
   Silme çağrısı arka uçta başarıyla tamamlandıktan sonra, çalışma alanını geri yükleyebilir ve daha önce önerilen yöntemlerden birindeki kalıcı silme işlemini tamamlayabilirsiniz.
 

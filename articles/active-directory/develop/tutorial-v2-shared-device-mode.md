@@ -13,16 +13,16 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2aa786f78d3e730bb351d1fa84b0c7fbb32d6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981d3a0c5d01d70625fc0d022318c5bc866f23a0
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611240"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95756409"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Öğretici: Android uygulamanızda paylaşılan cihaz modunu kullanma
 
-Bu öğreticide, bir Android uygulaması için paylaşılan cihaz modunu ayarlama ve destekleme konusunda hem geliştiriciler hem de kiracı yöneticileri için rehberlik sunulmaktadır.
+Bu öğreticide, Android geliştiricileri ve Azure Active Directory (Azure AD) kiracı yöneticileri, Android uygulamasında paylaşılan cihaz modunu etkinleştirmek için gereken kod, kimlik doğrulayıcı uygulaması ve kiracı ayarları hakkında bilgi sağlar.
 
 Bu öğreticide:
 
@@ -226,7 +226,7 @@ Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [Uygulamanız�
 
 **Bu değişikliği bana yap** ' ı seçmeniz ve ardından hızlı başlangıç için Azure Portal için gereken değerleri sağlamanız gerekir. Bu işlem tamamlandığında, ihtiyacınız olan tüm yapılandırma dosyalarını oluşturacağız.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="Azure portal hızlı başlangıçta proje sayfanızı yapılandırma":::
 
 ## <a name="set-up-a-tenant"></a>Kiracı ayarlama
 
@@ -242,25 +242,25 @@ Google Play mağazasından Microsoft Authenticator uygulamasını indirin. Uygul
 
 Authenticator uygulamasını başlatın ve ana hesap sayfasına gidin. **Hesap Ekle** sayfasını gördüğünüzde, cihazı paylaşılan duruma getirmek için hazırsınız demektir.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Kimlik doğrulayıcı hesap ekleme ekranı":::
 
-Sağ menü çubuğunu kullanarak **Ayarlar** bölmesine gidin. **İş & okul hesapları**altında **cihaz kaydı** ' nı seçin.
+Sağ menü çubuğunu kullanarak **Ayarlar** bölmesine gidin. **İş & okul hesapları** altında **cihaz kaydı** ' nı seçin.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Doğrulayıcı ayarları ekranı":::
 
 Bu düğmeye tıkladığınızda, cihaz kişilerine erişim yetkisi vermeniz istenir. Bunun nedeni, Android 'in cihazdaki hesap Tümleştirmesidir. **İzin ver**' i seçin.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Doğrulayıcı erişim onayı ekranına izin ver":::
 
 Bulut Cihaz Yöneticisi, kurumsal e-postalarını, **paylaşılan bir cihaz olarak girin veya kaydeder**. Ardından **paylaşılan cihaz olarak kaydet** düğmesine tıklayın ve kimlik bilgilerini girin.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Uygulamadaki cihaz kayıt ekranı":::
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="Microsoft oturum açma sayfasını gösteren uygulama ekran görüntüsü":::
 
 Cihaz artık paylaşılan modda.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Paylaşılan cihaz modunu etkin gösteren uygulama ekranı":::
 
  Cihazdaki tüm oturum açma işlemleri ve oturum açma işlemleri genel olacaktır, yani MSAL ve cihazdaki Microsoft Authenticator tümleştirilmiş tüm uygulamalar için geçerlidir. Artık, paylaşılan cihaz modu özelliklerini kullanan cihaza uygulamalar dağıtabilirsiniz.
 
@@ -268,13 +268,13 @@ Cihaz artık paylaşılan modda.
 
 Paylaşılan moda bir cihaz yerleştirdikten sonra, kuruluşunuz tarafından bilinir ve kuruluş kiracınızda izlenir. Paylaşılan cihazlarınızı, Azure portal Azure Active Directory dikey penceresinde bulunan **JOIN türüne** bakarak görüntüleyebilirsiniz.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="Azure portal gösterilen tüm cihazlar bölmesi":::
 
 ## <a name="running-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
 Örnek uygulama, kuruluşunuzun Graph API çağıramayacak basit bir uygulamadır. İlk çalıştırmada, uygulama çalışan hesabınıza yeni olduğu için onay istenir.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Uygulama yapılandırma bilgisi ekranı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

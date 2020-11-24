@@ -5,18 +5,18 @@ description: Microsoft Identity platformu tarafından zorlanan yeniden yönlendi
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/29/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331864"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752804"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları
 
@@ -32,7 +32,7 @@ Yeniden yönlendirme URI 'SI veya yanıt URL 'SI, uygulama başarıyla yetkilend
 
 Bu tablo, Microsoft Identity platformunda bir uygulama kaydına ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısını gösterir.
 
-| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Description |
+| Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Açıklama |
 |--------------------------|---------------------------------|-------------|
 | Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | `signInAudience`uygulama bildirimindeki alan *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
 | Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | `signInAudience`uygulama bildirimindeki alan *Azureadandpersonmicrosoftaccount* olarak ayarlandı |
@@ -51,25 +51,32 @@ Azure Active Directory (Azure AD) uygulama modeli, herhangi bir kuruluşun Azure
 
 Her [RFC 8252 bölümü 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) ve [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), "geridöngü" veya "localhost" yeniden yönlendirme URI 'leri iki özel dikkat ile gelir:
 
-1. `http` Yeniden yönlendirme cihazdan hiçbir şekilde ayrılmadığından URI şemaları kabul edilebilir. Bu nedenle, her ikisi de kabul edilebilir:
-    - `http://127.0.0.1/myApp`
-    - `https://127.0.0.1/myApp`
-1. Yerel uygulamalar için genellikle gerekli olan kısa ömürlü bağlantı noktası aralıkları nedeniyle, bir yeniden yönlendirme URI 'sini eşleştirmek amacıyla bağlantı noktası bileşeni (örneğin, `:5001` veya `:443` ) yok sayılır. Sonuç olarak, bunların tümü eşdeğer olarak kabul edilir:
-    - `http://127.0.0.1/MyApp`
-    - `http://127.0.0.1:1234/MyApp`
-    - `http://127.0.0.1:5000/MyApp`
-    - `http://127.0.0.1:8080/MyApp`
+1. `http` Yeniden yönlendirme cihazdan hiçbir şekilde ayrılmadığından URI şemaları kabul edilebilir. Bu nedenle, bu URI 'lerin her ikisi de kabul edilebilir:
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. Yerel uygulamalar için genellikle gerekli olan kısa ömürlü bağlantı noktası aralıkları nedeniyle, bir yeniden yönlendirme URI 'sini eşleştirmek amacıyla bağlantı noktası bileşeni (örneğin, `:5001` veya `:443` ) yok sayılır. Sonuç olarak, bu URI 'lerin tümü eşdeğer olarak kabul edilir:
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
 
 Geliştirme açısından, bu birkaç şey anlamına gelir:
 
 * Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin, a `web` -, `native` -veya `spa` -Type yeniden yönlendirmesi).
 
     Aynı uygulama kaydında farklı kimlik doğrulama akışları kullanmak istediğinizde özellikle önemlidir, örneğin hem yetkilendirme kodu verme hem de dolaylı akış. Her yeniden yönlendirme URI 'siyle doğru yanıt davranışını ilişkilendirmek için, oturum açma sunucusu yeniden yönlendirme URI 'Leri arasında ayrım yapabilmelidir ve yalnızca bağlantı noktası farklı olduğunda bunu yapamaz.
-* Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://127.0.0.1/MyWebApp` eşleşmez `http://127.0.0.1/MyNativeApp` .
+* Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://localhost/MyWebApp` eşleşmez `http://localhost/MyNativeApp` .
 * IPv6 geri döngü adresi ( `[::1]` ) Şu anda desteklenmiyor.
-* Uygulamanızın, yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından kırılmasını engellemek için, `127.0.0.1` yeniden yönlendirme URI 'SINDEKI IP sabit geri döngü adresini yerine kullanın `localhost` .
 
-    `http`ŞEMAYı IP sabit değeri geri döngü adresiyle kullanmak için `127.0.0.1` , şu anda [uygulama bildiriminde](reference-app-manifest.md) [replyurlswithtype](reference-app-manifest.md#replyurlswithtype-attribute) özniteliğini değiştirmelisiniz.
+#### <a name="prefer-127001-over-localhost"></a>Localhost üzerinden 127.0.0.1 tercih et
+
+Uygulamanızın, yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından kırılmasını engellemek için, `127.0.0.1` yeniden yönlendirme URI 'SINDEKI IP sabit geri döngü adresini yerine kullanın `localhost` . Örneğin, `https://127.0.0.1`.
+
+Ancak, düzeni kullanan bir geri döngü tabanlı yeniden yönlendirme URI 'SI eklemek için Azure portal **yeniden yönlendirme URI 'leri** metin kutusunu kullanamazsınız `http` :
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="İzin verilmeyen HTTP tabanlı geri döngü yeniden yönlendirme URI 'sini gösteren Azure portal hata iletişim kutusu":::
+
+Geri döngü adresiyle düzeni kullanan bir yeniden yönlendirme URI 'SI eklemek için `http` `127.0.0.1` , şu anda [uygulama bildiriminde](reference-app-manifest.md) [replyurlswithtype](reference-app-manifest.md#replyurlswithtype-attribute) özniteliğini değiştirmelisiniz.
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Yeniden yönlendirme URI 'Lerinde Joker karakterlere yönelik kısıtlamalar
 

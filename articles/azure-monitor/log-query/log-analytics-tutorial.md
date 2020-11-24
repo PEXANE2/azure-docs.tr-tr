@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: bd6ba091b3715741af929613600a59511e7cdb0b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 16292999bf8c01615a9125ffaa9f93fc4b2a8ec2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94498380"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95756222"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics öğreticisi
 Log Analytics, Azure Izleyici günlükleri tarafından toplanan verilerden günlük sorgularını düzenlemek ve çalıştırmak ve sonuçları etkileşimli olarak analiz etmek için Azure portal bir araçtır. Belirli ölçütlere uyan kayıtları almak, eğilimleri belirlemek, desenleri analiz etmek ve verilerinize çeşitli Öngörüler sağlamak için Log Analytics sorguları kullanabilirsiniz. 
@@ -23,7 +23,7 @@ Bu öğretici Log Analytics arabiriminde size rehberlik eder, bazı temel sorgul
 > * Basit sorgular yazma ve çalıştırma ve sorgular için zaman aralığını değiştirme
 > * Sorgu sonuçlarını filtreleme, sıralama ve gruplama
 > * Sorgu sonuçlarının görsellerini görüntüleme, değiştirme ve paylaşma
-> * Sorguları ve sonuçları kaydetme, yükleme, dışarı aktarma ve kopyalama
+> * Sorguları ve sonuçları yükleme, dışarı aktarma ve kopyalama
 
 > [!IMPORTANT]
 > Bu öğretici, sorgunun kendisiyle çalışmak yerine bir sorgu oluşturmak ve çalıştırmak için Log Analytics özelliklerini kullanır. Bir sorgu oluşturmak ve başka bir örnek sorgu kullanmak için Log Analytics özelliklerden yararlanabilirsiniz. Sorguların sözdizimini öğrenmeye ve sorgunun kendisini doğrudan düzenlemeyle çalışmaya başladığınızda [kusto sorgu dili öğreticisine](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)gidin. Bu öğretici, bu öğreticide öğrentireceğinizi pek çok özellikten yararlanarak Log Analytics düzenleyebileceğiniz ve çalıştırabileceğiniz birkaç örnek sorgu üzerinde yol gösterir.
@@ -61,7 +61,7 @@ Sonuçlara sahip olduğumuz hakkında bilgi alabilirsiniz. Sorgu tarafından dö
 
 ## <a name="filter"></a>Filtre
 
-Döndürülen kayıt sayısını azaltmak için sorguya bir filtre ekleyelim. Sol bölmedeki **filtre** sekmesini seçin. Bu, sonuçları filtrelemek için kullanabileceğiniz sorgu sonuçlarında farklı sütunlar gösterir. Bu sütunlardaki en üstteki değerler bu değere sahip kayıt sayısıyla birlikte görüntülenir. **CategoryValue** ' ın altında **Yönetim** ' e tıklayın ve ardından **& Çalıştır** ' ı uygulayın 
+Döndürülen kayıt sayısını azaltmak için sorguya bir filtre ekleyelim. Sol bölmedeki **filtre** sekmesini seçin. Bu, sonuçları filtrelemek için kullanabileceğiniz sorgu sonuçlarında farklı sütunlar gösterir. Bu sütunlardaki en üstteki değerler bu değere sahip kayıt sayısıyla birlikte görüntülenir. **CategoryValue** ' ın altında **Yönetim** ' e tıklayın ve ardından **& Çalıştır**' ı uygulayın 
 
 [![Sorgu bölmesi](media/log-analytics-tutorial/query-pane.png)](media/log-analytics-tutorial/query-pane.png#lightbox)
 
@@ -79,7 +79,7 @@ Varsayılan olarak, sorgu son 24 saat için kayıtlar formunu döndürür. **Zam
 
 
 ## <a name="multiple-query-conditions"></a>Birden çok sorgu koşulu
-Başka bir filtre koşulu ekleyerek sonuçlarımızı daha fazla azaltalım. Bir sorgu tam olarak istediğiniz kayıt kümesini hedeflemek için herhangi bir sayıda filtre içerebilir. **ActivityStatusValue** altında **Success** ' ı seçin ve **Çalıştır & Uygula** ' ya tıklayın. 
+Başka bir filtre koşulu ekleyerek sonuçlarımızı daha fazla azaltalım. Bir sorgu tam olarak istediğiniz kayıt kümesini hedeflemek için herhangi bir sayıda filtre içerebilir. **ActivityStatusValue** altında **Success** ' ı seçin ve **Çalıştır & Uygula**' ya tıklayın. 
 
 [![Sorgu sonuçları birden çok filtre](media/log-analytics-tutorial/query-results-filter-02.png)](media/log-analytics-tutorial/query-results-filter-02.png#lightbox)
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912336"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95757429"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Öğretici: AI Oluşturucu ile form işleme uygulaması oluşturma
 
@@ -40,10 +40,10 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 ## <a name="create-a-form-processing-project"></a>Form işleme projesi oluşturma
 
 1. [Power Apps](https://make.powerapps.com/) veya [Power otomatikleştirmeye](https://flow.microsoft.com/signin)gidin ve kuruluş hesabınızla oturum açın.
-1. Sol bölmede **AI Oluşturucu**  >  **derlemesi** ' ni seçin.
+1. Sol bölmede **AI Oluşturucu**  >  **derlemesi**' ni seçin.
 1. **Form işleme** kartını seçin.
 1. Modelinize bir ad yazın.
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="upload-and-analyze-documents"></a>Belgeleri karşıya yükleme ve analiz etme
 
@@ -61,9 +61,9 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ### <a name="upload-your-documents"></a>Belgelerinizi karşıya yükleme
 
-1. **Belge ekle** 'yi seçin, en az beş belge seçin ve ardından **Karşıya yükle** 'yi seçin.
-1. Karşıya yükleme tamamlandıktan sonra **Kapat** ' ı seçin.
-1. Ardından **Çözümle** ' yi seçin.
+1. **Belge ekle**'yi seçin, en az beş belge seçin ve ardından **Karşıya yükle**'yi seçin.
+1. Karşıya yükleme tamamlandıktan sonra **Kapat**' ı seçin.
+1. Ardından **Çözümle**' yi seçin.
 
 > [!NOTE] 
 > Bu belgeleri karşıya yükledikten sonra aralarından bazılarını kaldırabilir veya yenilerini yükleyebilirsiniz.
@@ -89,8 +89,8 @@ Alan seçimi sayfasında, sizin için gereken alanları seçersiniz:
 
     Algılanan bir alana tıkladığınızda, aşağıdaki bilgiler görüntülenir:
 
-    - **Alan adı** : algılanan alanın etiketinin adı.
-    - **Alan değeri** : algılanan alanın değeri.
+    - **Alan adı**: algılanan alanın etiketinin adı.
+    - **Alan değeri**: algılanan alanın değeri.
 
 > [!div class="mx-imgBorder"]
 > ![etiketleme sayfası](./media/tutorial-ai-builder/select-fields-page.png)
@@ -101,16 +101,16 @@ Etiketlemek istediğiniz alan model tarafından otomatik olarak algılanmadıysa
 
 ## <a name="train-your-model"></a>Modelinizi eğitme
 
-1. Seçtiğiniz form alanlarını denetlemek için **İleri** 'yi seçin. Her şey yolunda görünüyorsa modelinizi eğitmek için **Eğit** 'i seçin.
+1. Seçtiğiniz form alanlarını denetlemek için **İleri**'yi seçin. Her şey yolunda görünüyorsa modelinizi eğitmek için **Eğit**'i seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Eğitim sayfası](./media/tutorial-ai-builder/summary-train-page.png)
-1. Eğitim tamamlandıktan sonra **Eğitim tamamlandı** ekranında **Ayrıntılar sayfasına git** 'i seçin.
+1. Eğitim tamamlandıktan sonra **Eğitim tamamlandı** ekranında **Ayrıntılar sayfasına git**'i seçin.
 ## <a name="quick-test-your-model"></a>Modelinizi hızlıca test etme
 
 Ayrıntılar sayfasında modelinizi yayımlamadan veya kullanmadan önce test edebilirsiniz:
 
-1. Ayrıntılar sayfasında **Hızlı test** 'i seçin.
+1. Ayrıntılar sayfasında **Hızlı test**'i seçin.
 2. Test dosyanızı karşıya yüklemek için bir belgeyi sürükleyip bırakabilir veya **cihazımın karşıya yükle** ' yi seçebilirsiniz. Hızlı test sonuçları birkaç saniye içinde görüntüler.
 3. Başka bir testi çalıştırmak veya işiniz bittiğinde **kapatmak** Için **baştan başla** ' yı seçebilirsiniz.
 
