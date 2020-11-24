@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983601"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522677"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure İzleyici’den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
 
 Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına inmek ve desenleri belirlemek için izleme verilerinizi çözümlemenize yardımcı olabilir. Kullandığınız araca bağlı olarak, görselleştirmeleri kuruluşunuzun içindeki ve dışındaki diğer kullanıcılarla paylaşma seçeneğiniz de olabilir.
 
-## <a name="workbooks"></a>Çalışma Kitapları
+## <a name="workbooks"></a>Çalışma kitapları
 [Çalışma kitapları](./platform/workbooks-overview.md) , ekip içinde verileriniz, araştırılması ve işbirliği hakkında ayrıntılı Öngörüler sağlayan etkileşimli belgelerdir. Çalışma kitaplarının yararlı olduğu belirli örnekler, sorun giderme kılavuzlarından ve olay postmordıtem.
 
 ![Diyagram, sayfa görünümlerinin çözümlenmesi, kullanımı ve sayfada harcanan süre dahil olmak üzere bir çalışma kitabından birkaç sayfanın ekran görüntülerini gösterir.](media/visualizations/workbook.png)
@@ -49,7 +49,7 @@ Panolar oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
 - Azure ile derin tümleştirme. Görselleştirmeler, Ölçüm Gezgini, Log Analytics ve Application Insights dahil olmak üzere birden çok Azure sayfasında bulunan panolara sabitlenebilir.
 - Hem ölçümleri hem de günlükleri destekler.
 - [Ölçüm Gezgini](platform/metrics-charts.md), [günlük sorguları](log-query/log-query-overview.md)ve Application Insights ' deki [haritalar](app/app-map.md) ve kullanılabilirliğin çıktısı dahil olmak üzere birden fazla kaynaktaki verileri birleştirin.
-- Kişisel veya paylaşılan panolar için seçeneği. Azure [rol tabanlı kimlik doğrulaması (RBAC)](../role-based-access-control/overview.md)ile tümleşiktir.
+- Kişisel veya paylaşılan panolar için seçeneği. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)ile tümleşiktir.
 - Otomatik yenileme. Ölçüm yenileme, en az beş dakikalık zaman aralığına bağlıdır. Belirli bir görselleştirmede "Yenile" simgesine tıklayarak veya tam panoyu yenileyerek isteğe bağlı el ile yenileme seçeneği ile her saat yenileme günlüğü.
 - Zaman damgası ve özel parametrelerle Parametrized ölçüm panoları.
 - Esnek düzen seçenekleri.

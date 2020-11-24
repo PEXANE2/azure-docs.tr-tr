@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2987cd1ff8c678f7079e13e8b9bc657817c066f1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737504"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531381"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Özel Uç Nokta bağlantısını yönetme
 Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüketmesi için hizmet sağlayıcısına bir bağlantı isteyebildiğini bir onay çağrı akışı modelinde çalışmaktadır. Hizmet sağlayıcı, tüketicinin bağlanmasına izin verip vermeyeceğine karar verebilir. Azure özel bağlantısı, hizmet sağlayıcılarının kaynakları üzerinde özel uç nokta bağlantısını yönetmesine olanak sağlar. Bu makale, Özel uç nokta bağlantılarının nasıl yönetileceği hakkında yönergeler sağlar.
@@ -20,8 +20,8 @@ Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüke
 ![Özel uç noktaları yönetme](media/manage-private-endpoint/manage-private-endpoint.png)
 
 Özel bağlantı hizmeti tüketicisinin aralarından seçim yapabileceğiniz iki bağlantı onay yöntemi vardır:
-- **Otomatik**: hizmet tüketicisinin hizmet sağlayıcı kaynağında RBAC izinleri varsa, tüketici otomatik onay yöntemini seçebilir. Bu durumda, istek hizmet sağlayıcı kaynağına ulaştığında, hizmet sağlayıcısından herhangi bir işlem yapmanız gerekmez ve bağlantı otomatik olarak onaylanır. 
-- **El ile**: aksine, hizmet tüketicisinin hizmet sağlayıcı kaynağında RBAC izinleri yoksa, tüketici el ile onay yöntemini seçebilir. Bu durumda, bağlantı isteği **bekliyor**olarak hizmet kaynaklarında görüntülenir. Bağlantı kurulamamadan önce hizmet sağlayıcının isteği el ile onaylaması de istenir. El ile yapılan durumlarda, hizmet tüketicisi hizmet sağlayıcısına daha fazla bağlam sağlama isteğine sahip bir ileti de belirtebilir. Hizmet sağlayıcısı tüm özel uç nokta bağlantılarında arasından seçim yapmak için aşağıdaki seçeneklere sahiptir: **Onaylandı**, **Reddet**, **Kaldır**.
+- **Otomatik**: hizmet TÜKETİCİSİNDE hizmet sağlayıcı KAYNAĞıNDA Azure RBAC izinleri varsa, tüketici otomatik onay yöntemini seçebilir. Bu durumda, istek hizmet sağlayıcı kaynağına ulaştığında, hizmet sağlayıcısından herhangi bir işlem yapmanız gerekmez ve bağlantı otomatik olarak onaylanır. 
+- **El ile**: hizmet tüketicisinin hizmet sağlayıcı KAYNAĞıNDA Azure RBAC izinleri yoksa, tüketici el ile onay yöntemini seçebilir. Bu durumda, bağlantı isteği **bekliyor** olarak hizmet kaynaklarında görüntülenir. Bağlantı kurulamamadan önce hizmet sağlayıcının isteği el ile onaylaması de istenir. El ile yapılan durumlarda, hizmet tüketicisi hizmet sağlayıcısına daha fazla bağlam sağlama isteğine sahip bir ileti de belirtebilir. Hizmet sağlayıcısı tüm özel uç nokta bağlantılarında arasından seçim yapmak için aşağıdaki seçeneklere sahiptir: **Onaylandı**, **Reddet**, **Kaldır**.
 
 Aşağıdaki tabloda, çeşitli hizmet sağlayıcısı eylemleri ve özel uç noktalar için ortaya çıkan bağlantı durumları gösterilmektedir.  Hizmet sağlayıcı ayrıca, Özel uç nokta bağlantısının bağlantı durumunu daha sonra tüketici müdahalesi olmadan değiştirebilir. Bu eylem, tüketici tarafındaki uç noktanın durumunu güncelleştirir. 
 
@@ -38,7 +38,7 @@ Aşağıdaki tabloda, çeşitli hizmet sağlayıcısı eylemleri ve özel uç no
 Portal, Azure PaaS kaynaklarında özel uç nokta bağlantılarını yönetmek için tercih edilen yöntemdir. Şu anda Azure PaaS kaynakları üzerinde bağlantıları yönetmek için PowerShell/CLı desteğiniz yok.
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 2. Özel bağlantı merkezi ' ne gidin.
-3. **Kaynaklar**altında, Özel uç nokta bağlantılarını yönetmek istediğiniz kaynak türünü seçin.
+3. **Kaynaklar** altında, Özel uç nokta bağlantılarını yönetmek istediğiniz kaynak türünü seçin.
 4. Kaynak tipinin her biri için, onunla ilişkili özel uç nokta bağlantılarının sayısını görüntüleyebilirsiniz. Kaynakları gerektiği gibi filtreleyebilirsiniz.
 5. Özel uç nokta bağlantılarını seçin.  Listelenen bağlantılar altında, yönetmek istediğiniz bağlantıyı seçin. 
 6. En üstteki seçeneklerden birini seçerek bağlantının durumunu değiştirebilirsiniz.

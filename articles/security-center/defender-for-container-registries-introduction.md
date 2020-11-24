@@ -7,18 +7,20 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145829"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95529997"
 ---
-# <a name="introduction-to-azure-defender-for-container-registries"></a>Kapsayıcı kayıt defterleri için Azure Defender 'a giriş
+# <a name="introduction-to-azure-defender-for-container-registries"></a>Kapsayıcı kayıt defterleri için Azure Defender’a giriş
 
 Azure Container Registry (ACR), Azure dağıtımları için kapsayıcı görüntülerinizi merkezi bir kayıt defterinde depolayan ve yöneten, yönetilen ve özel bir Docker kayıt defteri hizmetidir. Bu, açık kaynaklı Docker kayıt defteri 2,0 ' i temel alır.
 
 Aboneliğinizdeki tüm Azure Resource Manager tabanlı kayıt defterlerine karşı korumak için abonelik düzeyinde **kapsayıcı kayıt defterleri Için Azure Defender** 'ı etkinleştirin. Güvenlik Merkezi daha sonra kayıt defterine gönderilen, kayıt defterine aktarılan ve son 30 gün içinde çekilen görüntüleri tarar. Bu özellik görüntü başına ücretlendirilir.
+
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>Azure Defender 'ın kapsayıcı kayıt defterleri 'nin avantajları nelerdir?
 
@@ -71,7 +73,7 @@ Görüntü kayıt defterinden çekilir. Daha sonra, bilinen güvenlik açıklar�
 Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Tarama sonuçlarını REST API aracılığıyla alabilir miyim?
-Evet. Sonuçlar [alt değerlendirmeler REST API 'si](/rest/api/securitycenter/subassessments/list/)altındadır. Ayrıca, tüm kaynaklarınız için kusto benzeri API olan Azure Kaynak Grafiği 'ni (ARG) kullanabilirsiniz: bir sorgu belirli bir taramayı getirebilir.
+Evet. Sonuçlar [Alt Değerlendirmeler REST API’si](/rest/api/securitycenter/subassessments/list/) altında yer alır. Ayrıca, tüm kaynaklarınız için kusto benzeri API olan Azure Kaynak Grafiği 'ni (ARG) kullanabilirsiniz: bir sorgu belirli bir taramayı getirebilir.
 
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Hangi kayıt defteri türleri taranır? Hangi türler faturalandırılır?
 Azure Defender tarafından kapsayıcı kayıt defterleri için desteklenen kapsayıcı kayıt defterleri türlerinin listesi için bkz. [kullanılabilirlik](defender-for-container-registries-usage.md#availability).

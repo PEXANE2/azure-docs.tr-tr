@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
-ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096e4e3ecbcedaec674e074a2baccbb336e03c94
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847015"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524207"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>FHıR için yerel RBAC 'yi yapılandırma 
 
@@ -23,7 +23,7 @@ Bu makalede, FHıR için Azure API 'sinin, veri düzlemi erişimini yönetmek i�
 
 ## <a name="add-service-principal"></a>Hizmet sorumlusu ekleme
 
-Yerel RBAC, FHıR sunucunuza bir dış Azure Active Directory kiracı kullanmanıza olanak sağlar. RBAC sisteminin bu Kiracıdaki grup üyeliklerini denetlemesine izin vermek için, FHıR için Azure API 'sinin kiracıda bir hizmet sorumlusu olmalıdır. Bu hizmet sorumlusu, FHıR için Azure API 'SI dağıtmış olan aboneliklerde bulunan kiracılarda otomatik olarak oluşturulur, ancak kiracınızın kendisine bağlı bir aboneliği yoksa, bir kiracı yöneticisinin aşağıdaki komutlardan biriyle bu hizmet sorumlusunu oluşturması gerekir:
+Yerel RBAC, FHıR sunucunuza bir dış Azure Active Directory kiracı kullanmanıza olanak sağlar. Yerel RBAC sisteminin bu Kiracıdaki grup üyeliklerini denetlemesine izin vermek için, FHıR için Azure API 'sinin kiracıda bir hizmet sorumlusu olmalıdır. Bu hizmet sorumlusu, FHıR için Azure API 'SI dağıtmış olan aboneliklerde bulunan kiracılarda otomatik olarak oluşturulur, ancak kiracınızın kendisine bağlı bir aboneliği yoksa, bir kiracı yöneticisinin aşağıdaki komutlardan biriyle bu hizmet sorumlusunu oluşturması gerekir:
 
 `Az`PowerShell modülünü kullanma:
 

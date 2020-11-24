@@ -1,17 +1,17 @@
 ---
 title: Azure Red Hat OpenShift 4 küme destek ilkesi
-description: Red Hat OpenShift 4 için destek ilkesi gereksinimlerini anlayın.
+description: Red Hat OpenShift 4 için destek ilkesi gereksinimlerini anlama
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: e396cfa032a3030467b2e2318d61393713894cd4
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/23/2020
+ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628229"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521147"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift destek ilkesi
 
@@ -23,7 +23,7 @@ Azure Red Hat OpenShift 4 kümelerine yönelik belirli yapılandırmalarda, küm
 ## <a name="cluster-configuration-requirements"></a>Küme yapılandırma gereksinimleri
 
 * Tüm OpenShift kümesi işleçleri yönetilen bir durumda kalmalıdır. Küme işleçleri listesi, çalıştırılarak döndürülür `oc get clusteroperators` .
-* Kümenin en az bir çalışan düğümü olmalıdır. Küme çalışanlarını sıfıra ölçeklendirmeyin.
+* Kümenin en az iki çalışan düğümü olmalıdır. Küme çalışanlarını sıfıra ölçeklendirmeyin veya düzgün bir küme kapatması yapmayı deneyin.
 * Prometheus ve Alertmanager hizmetlerini kaldırmayın veya değiştirmeyin.
 * Service Alertmanager kurallarını kaldırmayın.
 * Azure Red Hat OpenShift hizmet günlüğü 'nü (MDSD pods) kaldırmayın veya değiştirmeyin.

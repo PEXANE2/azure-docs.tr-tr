@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317863"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531364"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Özel blob çıkış bölümlendirme Azure Stream Analytics
 
@@ -25,15 +25,15 @@ Azure Stream Analytics özel alanlar veya öznitelikler ve özel tarih saat yolu
 
 ### <a name="partition-key-options"></a>Bölüm anahtarı seçenekleri
 
-Giriş verilerini bölümlemek için kullanılan bölüm anahtarı veya sütun adı, kısa çizgi, alt çizgi ve boşluk içeren alfasayısal karakterler içerebilir. Diğer adlarla birlikte kullanılmamışsa, iç içe geçmiş alanları bölüm anahtarı olarak kullanmak mümkün değildir. Bölüm anahtarı NVARCHAR (MAX) olmalıdır.
+Giriş verilerini bölümlemek için kullanılan bölüm anahtarı veya sütun adı, kısa çizgi, alt çizgi ve boşluk içeren alfasayısal karakterler içerebilir. Diğer adlarla birlikte kullanılmamışsa, iç içe geçmiş alanları bölüm anahtarı olarak kullanmak mümkün değildir. Bölüm anahtarı NVARCHAR (MAX), BIGINT, FLOAT veya BIT (1,2 uyumluluk düzeyi veya üzeri) olmalıdır. Daha fazla bilgi için bkz. [Azure Stream Analytics veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Örnek
 
-Bir işin, oturumları belirlemek için bir sütun **client_id** içeren bir dış video oyun hizmetine bağlı canlı kullanıcı oturumlarından giriş verileri aldığını varsayalım. Verileri **client_id**göre bölümlemek Için blob yol deseninin alanını, bir iş oluştururken blob çıkış özelliklerine bir **{client_id}** bölüm belirteci içerecek şekilde ayarlayın. Çeşitli **client_id** değerleri olan veriler Stream Analytics iş aracılığıyla akar, çıkış verileri her klasör için tek bir **client_id** değerine göre ayrı klasörlere kaydedilir.
+Bir işin, oturumları belirlemek için bir sütun **client_id** içeren bir dış video oyun hizmetine bağlı canlı kullanıcı oturumlarından giriş verileri aldığını varsayalım. Verileri **client_id** göre bölümlemek Için blob yol deseninin alanını, bir iş oluştururken blob çıkış özelliklerine bir **{client_id}** bölüm belirteci içerecek şekilde ayarlayın. Çeşitli **client_id** değerleri olan veriler Stream Analytics iş aracılığıyla akar, çıkış verileri her klasör için tek bir **client_id** değerine göre ayrı klasörlere kaydedilir.
 
 ![İstemci kimlikli yol deseninin](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-Benzer şekilde, iş girişi her bir sensör **sensor_id**sahip milyonlarca sensörden veri algılayıcısı ise, her algılayıcı verisini farklı klasörlere bölümlemek Için yol deseninin **{sensor_id}** olması gerekir.  
+Benzer şekilde, iş girişi her bir sensör **sensor_id** sahip milyonlarca sensörden veri algılayıcısı ise, her algılayıcı verisini farklı klasörlere bölümlemek Için yol deseninin **{sensor_id}** olması gerekir.  
 
 
 REST API kullanarak, bu istek için kullanılan JSON dosyasının çıkış bölümü aşağıdaki gibi görünebilir:  
@@ -48,7 +48,7 @@ Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob
 
 ![Blob içeriği](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
-Çıkış yolundaki çıktıyı bölümlemek için kullanılan sütun **client_id**olduğundan, blobdaki her kaydın klasör adıyla eşleşen bir **client_id** sütunu olduğunu unutmayın.
+Çıkış yolundaki çıktıyı bölümlemek için kullanılan sütun **client_id** olduğundan, blobdaki her kaydın klasör adıyla eşleşen bir **client_id** sütunu olduğunu unutmayın.
 
 ### <a name="limitations"></a>Sınırlamalar
 
@@ -63,6 +63,8 @@ Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob
 
 3. Bir giriş akışı 8000 altında bölüm anahtarı kardinalitesi olan kayıtlardan oluşuyorsa, kayıtlar mevcut bloblara eklenir ve gerektiğinde yalnızca yeni blob 'lar oluşturulur. Kardinalite 8000 üzerinde ise, var olan Blobların yazılacağı garantisi yoktur ve aynı bölüm anahtarına sahip rastgele sayıda kayıt için yeni Bloblar oluşturulmaz.
 
+4. Blob çıktısı [sabit olarak yapılandırılırsa](../storage/blobs/storage-blob-immutable-storage.md)Stream Analytics, veri her gönderilirken yeni bir blob oluşturur.
+
 ## <a name="custom-datetime-path-patterns"></a>Özel DateTime yol desenleri
 
 Özel tarih saat yolu desenleri, Hive akış kuralları ile hizalanan bir çıkış biçimi belirtmenize olanak sağlar. bu sayede Azure HDInsight 'a veri gönderme ve aşağı akış işleme için Azure Databricks Azure Stream Analytics sağlarsınız. Özel tarih saat yolu desenleri, `datetime` BLOB çıktınızın yol ön eki alanındaki anahtar sözcüğü kullanılarak kolayca uygulanır, Biçim belirleyicisi ile birlikte. Örneğin, `{datetime:yyyy}`.
@@ -71,7 +73,7 @@ Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob
 
 Aşağıdaki biçim belirteci belirteçleri özel tarih saat biçimlerini elde etmek için tek başına veya birlikte kullanılabilir:
 
-|Biçim belirteci   |Açıklama   |Sonuç örnek zaman 2018-01-02T10:06:08|
+|Biçim belirteci   |Description   |Sonuç örnek zaman 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: yyyy}|Dört basamaklı bir sayı olarak yıl|2018|
 |{DateTime: dd}|01 ile 12 arasında bir ay|01|

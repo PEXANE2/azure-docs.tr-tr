@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828787"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521011"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Depolama Gezgini sürüm notları
 
@@ -86,7 +86,7 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
 * Yönetilen disk özellikleri Azure Stack desteklenmez.
 * Bir disk karşıya yükleme veya yapıştırma başarısız olursa ve hatadan önce yeni bir disk oluşturulduysa Depolama Gezgini, diski sizin için silmez.
 * Bir disk karşıya yüklemeyi veya yapıştırmayı iptal ettiğinizde, yeni diski bozuk bir durumda bırakmak mümkündür. Bu durumda, yeni diski silmeniz veya disk API 'Lerini el ile arayarak diskin içeriğini artık bozulmayacak şekilde değiştirmeniz gerekir.
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](./storage/common/storage-explorer-troubleshooting.md) .
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
 * Mac için VS 'yi kullanırsanız ve şimdiye kadar özel bir AAD yapılandırması oluşturduysanız, oturum açamayabilirsiniz. Sorunu geçici olarak çözmek için ~/içeriğini silin. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
 * Azurite, tüm depolama API 'Lerini henüz tam olarak uygulamamıştır. Bu nedenle, geliştirme depolaması için Azurite kullanılırken beklenmeyen hatalar veya davranışlar olabilir.
@@ -108,7 +108,7 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) bakın.
 
 ## <a name="previous-releases"></a>Önceki sürümler
 
@@ -176,7 +176,7 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
   * Diskin anlık görüntüsünü oluşturma
 
 Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzCopy ile v10 arasındaki tarafından desteklenmektedir.
-* Depolama Gezgini artık Linux üzerinde Snap Store aracılığıyla yüklenebilirler. Snap Store aracılığıyla yüklediğinizde, .NET Core dahil olmak üzere tüm bağımlılıklar sizin için yüklenir! Şu anda Depolama Gezgini Ubuntu ve CentOS üzerinde iyi çalıştığını doğruladık. Diğer Linux kaldırmalar üzerinde Snap mağazasından yükleme sorunlarıyla karşılaşırsanız lütfen [GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Snap mağazasından yükleme hakkında daha fazla bilgi edinmek için [Başlarken kılavuzumuza](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux)bakın. #68
+* Depolama Gezgini artık Linux üzerinde Snap Store aracılığıyla yüklenebilirler. Snap Store aracılığıyla yüklediğinizde, .NET Core dahil olmak üzere tüm bağımlılıklar sizin için yüklenir! Şu anda Depolama Gezgini Ubuntu ve CentOS üzerinde iyi çalıştığını doğruladık. Diğer Linux kaldırmalar üzerinde Snap mağazasından yükleme sorunlarıyla karşılaşırsanız lütfen [GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Snap mağazasından yükleme hakkında daha fazla bilgi edinmek için [Başlarken kılavuzumuza](./vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux)bakın. #68
 * Özelliği ADLS 2. kullanıcılar için daha yararlı hale getirmek amacıyla tasarlanan Azure Active Directory (Azure AD) ile birlikte iliştirilecek iki önemli değişiklik yapılmıştır:
   * Artık iliştirmekte olduğunuz kaynağın bulunduğu kiracıyı seçersiniz. Bu, artık kaynağın aboneliğine RBAC erişiminizin olması gerekmediği anlamına gelir.
   * Bir ADLS 2. blob kapsayıcısı iliştiriyorsanız, artık kapsayıcıda belirli bir yola ekleyebilirsiniz.
@@ -202,7 +202,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Bir disk karşıya yüklemeyi veya yapıştırmayı iptal ettiğinizde, yeni diski bozuk bir durumda bırakmak mümkündür. Bu durumda, yeni diski silmeniz veya disk API 'Lerini el ile arayarak diskin içeriğini artık bozulmayacak şekilde değiştirmeniz gerekir.
 * Bir disk karşıya yüklemeyi veya yapıştırmayı iptal ettiğinizde, yeni diski bozuk bir durumda bırakmak mümkündür. Bu durumda, yeni diski silmeniz veya disk API 'Lerini el ile arayarak diskin içeriğini artık bozulmayacak şekilde değiştirmeniz gerekir.
 * AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](./storage/common/storage-explorer-troubleshooting.md) .
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
 * Mac için VS 'yi kullanırsanız ve şimdiye kadar özel bir AAD yapılandırması oluşturduysanız, oturum açamayabilirsiniz. Sorunu geçici olarak çözmek için ~/içeriğini silin. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
 * Azurite, tüm depolama API 'Lerini henüz tam olarak uygulamamıştır. Bu nedenle, geliştirme depolaması için Azurite kullanılırken beklenmeyen hatalar veya davranışlar olabilir.
@@ -224,7 +224,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) bakın.
 
 
 ## <a name="version-1100"></a>Sürüm 1.10.0
@@ -250,7 +250,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     * Diskin anlık görüntüsünü oluşturma
 
     Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzCopy ile v10 arasındaki tarafından desteklenmektedir.
-* Depolama Gezgini artık Linux üzerinde Snap Store aracılığıyla yüklenebilirler. Snap Store aracılığıyla yüklediğinizde, .NET Core dahil olmak üzere tüm bağımlılıklar sizin için yüklenir! Şu anda Depolama Gezgini Ubuntu ve CentOS üzerinde iyi çalıştığını doğruladık. Diğer Linux kaldırmalar üzerinde Snap mağazasından yükleme sorunlarıyla karşılaşırsanız lütfen [GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Snap mağazasından yükleme hakkında daha fazla bilgi edinmek için [Başlarken kılavuzumuza](https://aka.ms/storageexplorer/snapinformation)bakın. [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Depolama Gezgini artık Linux üzerinde Snap Store aracılığıyla yüklenebilirler. Snap Store aracılığıyla yüklediğinizde, .NET Core dahil olmak üzere tüm bağımlılıklar sizin için yüklenir! Şu anda Depolama Gezgini Ubuntu ve CentOS üzerinde iyi çalıştığını doğruladık. Diğer Linux kaldırmalar üzerinde Snap mağazasından yükleme sorunlarıyla karşılaşırsanız lütfen [GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Snap mağazasından yükleme hakkında daha fazla bilgi edinmek için [Başlarken kılavuzumuza](./vs-azure-tools-storage-manage-with-storage-explorer.md)bakın. [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
 * Özelliği ADLS 2. kullanıcılar için daha yararlı hale getirmek amacıyla tasarlanan Azure Active Directory (Azure AD) ile birlikte iliştirilecek iki önemli değişiklik yapılmıştır: * artık iliştirmekte olduğunuz kaynağın bulunduğu kiracıyı seçersiniz. Bu, artık kaynağın aboneliğine RBAC erişiminizin olması gerekmediği anlamına gelir.
         * Bir ADLS 2. blob kapsayıcısı iliştiriyorsanız, artık kapsayıcıda belirli bir yola iliştirebilirsiniz.
 * ADLS 2. dosya ve klasörler için ACL 'Leri yönetirken, Depolama Gezgini artık ACL 'lerdeki varlıkların kolay adlarını gösterecektir. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
@@ -276,7 +276,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Bir disk karşıya yükleme veya yapıştırma başarısız olursa ve hatadan önce yeni bir disk oluşturulduysa Depolama Gezgini, diski sizin için silmez.
 * Bir disk karşıya yüklemeyi veya yapıştırmayı iptal ettiğinizde, yeni diski bozuk bir durumda bırakmak mümkündür. Bu durumda, yeni diski silmeniz veya disk API 'Lerini el ile arayarak diskin içeriğini artık bozulmayacak şekilde değiştirmeniz gerekir.
 * AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](./storage/common/storage-explorer-troubleshooting.md) .
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
 * Mac için VS 'yi kullanırsanız ve şimdiye kadar özel bir AAD yapılandırması oluşturduysanız, oturum açamayabilirsiniz. Sorunu geçici olarak çözmek için ~/içeriğini silin. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
 * Azurite, tüm depolama API 'Lerini henüz tam olarak uygulamamıştır. Bu nedenle, geliştirme depolaması için Azurite kullanılırken beklenmeyen hatalar veya davranışlar olabilir.
@@ -298,7 +298,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) bakın.
 
 ## <a name="version-190"></a>Sürüm 1.9.0
 7/1/2019
@@ -334,7 +334,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
 * AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](./storage/common/storage-explorer-troubleshooting.md) .
 * Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
 * Mac için VS 'yi kullanırsanız ve şimdiye kadar özel bir AAD yapılandırması oluşturduysanız, oturum açamayabilirsiniz. Sorunu geçici olarak çözmek için ~/içeriğini silin. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
@@ -356,7 +356,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) bakın.
 
 ## <a name="version-181"></a>Sürüm 1.8.1
 5/13/2019
@@ -391,7 +391,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
 * AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](./storage/common/storage-explorer-troubleshooting.md) .
 * Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
 * Mac için VS 'yi kullanırsanız ve şimdiye kadar özel bir AAD yapılandırması oluşturduysanız, oturum açamayabilirsiniz. Sorunu geçici olarak çözmek için ~/içeriğini silin. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
@@ -413,7 +413,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) bakın.
 
 ## <a name="version-180"></a>Sürüm 1.8.0
 01.05.2019
@@ -443,7 +443,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
 * AzCopy olmayan bir blob indirmesi gerçekleştirirken, büyük dosyalar için MD5 doğrulanmaz. Bunun nedeni, depolama SDK 'sindeki bir hatadır. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](./storage/common/storage-explorer-troubleshooting.md) .
 * Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
 * Mac için VS 'yi kullanırsanız ve şimdiye kadar özel bir AAD yapılandırması oluşturduysanız, oturum açamayabilirsiniz. Sorunu geçici olarak çözmek için ~/içeriğini silin. IdentityService/AadConfigurations. Bunu yapmak sizi engellemez, bu sorunla ilgili yorum yapın.
@@ -465,7 +465,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) bakın.
+* Linux üzerinde Depolama Gezgini çalıştırmak için öncelikle bazı bağımlılıkların yüklenmesi gerekir. Daha fazla bilgi için Depolama Gezgini [sorun giderme kılavuzuna](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) bakın.
 
 ## <a name="version-170"></a>Sürüm 1.7.0
 3/5/2019
@@ -499,7 +499,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 
 ### <a name="known-issues"></a>Bilinen Sorunlar
 
-* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* RBAC kullanılırken, depolama kaynaklarınıza erişebilmek için Depolama Gezgini bazı yönetim katmanı izinleri gerektirir. Daha fazla bilgi için bkz. [sorun giderme kılavuzu](./storage/common/storage-explorer-troubleshooting.md) .
 * Bir proxy 'nin arkasında ADLS 2. Bloblarına erişme girişimi başarısız olabilir.
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
 * Bir blob kapsayıcısı gibi SAS URI 'SI aracılığıyla bağlı bir kaynağın ayrılması, diğer eklerin doğru şekilde görüntülenmesini engelleyen bir hataya neden olabilir. Bu sorunu geçici olarak çözmek için Grup düğümünü yenilemeniz yeterlidir. Daha fazla bilgi için bkz. #537.
@@ -559,7 +559,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
         
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
+* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
 * Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
   * Kapsayıcılar oluşturma ve silme
   * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
@@ -628,7 +628,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
         
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
+* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
 * Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
   * Kapsayıcılar oluşturma ve silme
   * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
@@ -683,7 +683,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
+* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
 * Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
   * Kapsayıcılar oluşturma ve silme
   * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
@@ -1144,7 +1144,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 
 ### <a name="new"></a>Yeni
 * Depolama Gezgini artık Azurite kullanımını desteklemektedir. Note: Azurite bağlantısı, varsayılan geliştirme uç noktalarına sabit olarak kodlanmıştır.
-* Depolama Gezgini artık yalnızca blob ve GPV2 depolama hesapları için erişim katmanlarını desteklemektedir. [Buradaki](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)erişim katmanları hakkında daha fazla bilgi edinin.
+* Depolama Gezgini artık yalnızca blob ve GPV2 depolama hesapları için erişim katmanlarını desteklemektedir. [Buradaki](./storage/blobs/storage-blob-storage-tiers.md)erişim katmanları hakkında daha fazla bilgi edinin.
 * Bir SAS oluşturulurken başlangıç zamanı artık gerekli değildir.
 
 ### <a name="fixes"></a>Düzeltmeler
@@ -1204,7 +1204,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Depolama Gezgini geri bildirim artık GitHub üzerinde yer alır. Sol alt kısımdaki geri bildirim düğmesine tıklayarak veya ' a giderek sorunlar sayfamıza ulaşabilirsiniz [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) . Önerilerde bulunmak, sorun bildirmek, sorular sormak veya başka bir geri bildirim formu bırakmak için ücretsiz bir fikir vardır.
 * TLS/SSL sertifikası sorunlarıyla çalışıyorsanız ve sorunlu sertifikayı bulamıyorsanız, artık komut satırından Depolama Gezgini başlatabilirsiniz `--ignore-certificate-errors` . Bu bayrağıyla başlatıldığında Depolama Gezgini, TLS/SSL sertifikası hatalarını yoksayar.
 * Artık BLOB ve dosya öğeleri için bağlam menüsünde bir ' Indir ' seçeneği vardır.
-* Geliştirilmiş erişilebilirlik ve ekran okuyucu desteği. Erişilebilirlik özelliklerini kullanıyorsanız daha fazla bilgi için [Erişilebilirlik belgelerimize](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) bakın.
+* Geliştirilmiş erişilebilirlik ve ekran okuyucu desteği. Erişilebilirlik özelliklerini kullanıyorsanız daha fazla bilgi için [Erişilebilirlik belgelerimize](./vs-azure-tools-storage-explorer-accessibility.md) bakın.
 * Depolama Gezgini artık elektron 1.8.3 birden fazla kullanıyor
 
 ### <a name="breaking-changes"></a>Hataya Neden Olan Değişiklikler

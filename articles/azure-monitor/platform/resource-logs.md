@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2f46440a4214e298bc6d2f3b9c2b5680437ead7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143914"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522711"
 ---
 # <a name="azure-resource-logs"></a>Azure kaynak günlükleri
 Azure Kaynak günlükleri, bir Azure kaynağı içinde gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan [Platform günlüklerdir](platform-logs-overview.md) . Kaynak günlüklerinin içeriği, Azure hizmeti ve kaynak türüne göre farklılık gösterir. Kaynak günlükleri varsayılan olarak toplanmaz. Azure [Izleyici günlükleri](data-platform-logs.md)ile kullanmak için kaynak günlüklerini bir Log Analytics çalışma alanına göndermek üzere her bir Azure kaynağı için bir tanılama ayarı oluşturmanız gerekir, Azure 'un dışından iletmek için Azure Event Hubs veya arşivlenmek üzere Azure Storage.
@@ -54,7 +54,7 @@ AzureDiagnostics tablosu şöyle görünür:
 | ... |
 
 ### <a name="resource-specific"></a>Kaynağa özgü
-Bu modda, seçilen çalışma alanındaki tek tablolar, tanılama ayarında seçilen her kategori için oluşturulur. Bu yöntem, günlük sorgularındaki verilerle çalışmayı çok daha kolay hale getiren, şemaların ve yapısının daha iyi keşfedilmesini sağlayan, hem alma gecikmesi hem de sorgu sürelerinde performansı artıran ve belirli bir tabloda RBAC hakları verme olanağı sağladığından önerilir. Tüm Azure hizmetleri sonunda Resource-Specific moduna geçirilir. 
+Bu modda, seçilen çalışma alanındaki tek tablolar, tanılama ayarında seçilen her kategori için oluşturulur. Bu yöntem, günlük sorgularındaki verilerle çalışmayı çok daha kolay hale getiren, şemaların ve yapısının daha iyi keşfedilmesini sağlayan, hem alma gecikmesi hem de sorgu sürelerinde performansı artıran ve belirli bir tabloda Azure RBAC hakları verme olanağı sağladığından önerilir. Tüm Azure hizmetleri sonunda Resource-Specific moduna geçirilir. 
 
 Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
  

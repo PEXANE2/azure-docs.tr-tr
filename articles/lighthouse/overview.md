@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse nedir?
 description: Azure Athouse, hizmet sağlayıcılarının daha yüksek otomasyon ve verimlilik özelliklerine sahip müşterileri için yönetilen hizmetler sunmasına olanak tanır.
-ms.date: 10/19/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: a76606ff48a09c0c31584882e3d2aa164ec97325
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203798"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528831"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse nedir?
 
@@ -36,6 +36,9 @@ Azure ışıklı kullanımı, katılım ve yönetimin kolaylaştırılmasına ya
 - **Yeni Azure Portal deneyimler**: Azure Portal içindeki [ **müşteriler** sayfasında](how-to/view-manage-customers.md) , platformlar arası bilgileri görüntüleyin. Karşılık gelen bir [ **hizmet** sağlayıcı sayfası](how-to/view-manage-service-providers.md) , müşterilerin hizmet sağlayıcı erişimini görüntülemesine ve yönetmesine olanak tanır.
 - **Azure Resource Manager şablonları**: [temsilci atanmış müşteri kaynakları](how-to/onboard-customer.md) eklemek ve [platformlar arası yönetim görevlerini gerçekleştirmek](samples/index.md)için ARM şablonlarını kullanın.
 - **Azure Marketi 'Nde yönetilen hizmet teklifleri**: [hizmetlerinizi müşterilere](concepts/managed-services-offers.md) özel veya genel tekliflerle sunun ve bunları otomatik olarak Azure açık thouse 'a ekleyin.
+
+> [!TIP]
+> Benzer bir teklif olan [Microsoft 365 ışıklı](https://techcommunity.microsoft.com/t5/small-and-medium-business-blog/announcing-microsoft-365-lighthouse-for-managed-service/ba-p/1698181)bir sunum, BT iş ortaklarının Microsoft 365 müşterilerinin ölçeklendirilmesine ekleme, izleme ve yönetme konusunda yardımcı olur. Açık Microsoft 365 kullanımı Şu anda özel önizlemededir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

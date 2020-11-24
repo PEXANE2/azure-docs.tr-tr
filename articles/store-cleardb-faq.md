@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: ced4e920936ad94c3d4140d51d5e7d4e867ee848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecb3a150de8c19d390cafbd163f287520c3a91d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196080"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519054"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service ile ClearDB MySql veritabanları için SSS
 Bu SSS, Azure Web Apps için ClearDB MySQL veritabanlarını kullanma ve satın alma hakkında sık sorulan soruları yanıtlar.
@@ -33,7 +33,7 @@ Bu hizmetle ilgili en son bilgiler için bkz. [ClearDB](https://w2.cleardb.net/)
 Azure 'da MySQL barındırmak için çeşitli diğer seçenekleriniz vardır:
 * [MySQL için Azure Veritabanı](https://azure.microsoft.com/services/mysql/)
 * [Azure VM üzerinde çalışan MySQL kümesi](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [Azure VM 'de çalışan tek MySQL örneği](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure VM 'de çalışan tek MySQL örneği](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json)
 
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Azure Marketi 'nde Web uygulaması + MySQL şablonu için bir kredi kartına ihtiyacım var mı?
@@ -48,7 +48,7 @@ Bu, kullanmakta olduğunuz aboneliğin türüne bağlıdır. Yaygın olarak kull
 Varsayılan veritabanı seçeneği Titan 'dir ve bu $3,50 ' dir. Veritabanı oluşturma sırasında maliyeti göstermedik ve istemediğiniz bir veritabanını yanlışlıkla satın alabilirsiniz. Deneyimi geliştirmenin bir yolunu bulmaya çalışıyoruz ancak kaynakların dağıtımını başlatmadan önce Web **uygulaması ve veritabanı** için tüm seçtiğiniz fiyatlandırma katmanlarını denetlemeniz gerekir.
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>Kendi Azure sanal makinmda MySQL çalıştırıyorum. Azure Web uygulamamı veritabanıma bağlanabilir miyim?
-Evet. Web uygulamanızı, Azure VM 'niz Web uygulamanıza uzaktan erişim verdiği sürece veritabanınıza bağlayabilirsiniz. Daha fazla bilgi için bkz. [bir sanal makineye MySQL 'ı Install](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Evet. Web uygulamanızı, Azure VM 'niz Web uygulamanıza uzaktan erişim verdiği sürece veritabanınıza bağlayabilirsiniz. Daha fazla bilgi için bkz. [bir sanal makineye MySQL 'ı Install](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json).
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Hangi ülkelerde/bölgelerde ClearDB Premium MySQL kümeleri desteklenir?
 ClearDB Premium MySQL kümeleri, dünya çapındaki tüm Azure bölgelerinde Hindistan, Avustralya, Brezilya Güney ve Çin dışında kullanılabilir.
@@ -108,4 +108,3 @@ Dolaylı EA müşterileri, Enterprise Portal **abonelikleri Yönet** sayfasında
 
 ## <a name="more-information"></a>Daha fazla bilgi
 [Azure Market Hakkında SSS](https://azure.microsoft.com/marketplace/faq/)
-

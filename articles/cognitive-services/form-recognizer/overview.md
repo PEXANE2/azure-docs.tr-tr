@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Otomatik veri işleme, belge işleme, otomatik veri girişi, form işleme
-ms.openlocfilehash: 8b790da9eaa17cbb0fbdcbcc49682786deb319a0
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492170"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519532"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -30,9 +30,9 @@ Form tanıyıcı aşağıdaki hizmetlerden oluşur:
 * **[Düzen API 'si](#layout-api)** -metin, seçim işaretleri ve tablo yapılarını, belgelerden sınırlayıcı kutu koordinatlarıyla birlikte ayıklayın.
 * **[Özel modeller](#custom-models)** -metin, anahtar/değer çiftleri, seçim işaretleri ve formlardan tablo verilerini ayıklar. Bu modeller kendi verileriniz ile eğitilmiş olduğundan, formlarınıza göre uyarlanmıştır.
 * **[Önceden oluşturulmuş modeller](#prebuilt-models)** -önceden oluşturulmuş modeller kullanarak benzersiz form türlerinden veri ayıklayın. Şu anda aşağıdaki önceden oluşturulmuş modeller mevcuttur
-    * [Faturalar](./concept-invoices.md) 
+    * [Faturalar](./concept-invoices.md)
     * [Satış alındıları](./concept-receipts.md)
-    * [Kartvizitler](./concept-business-cards.md) 
+    * [Kartvizitler](./concept-business-cards.md)
 
 
 ## <a name="try-it-out"></a>Deneyin
@@ -50,7 +50,7 @@ Form tanıyıcı hizmetini denemek için çevrimiçi örnek UI aracına gidin:
 
 ---
 
-Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)) ve bir [form tanıyıcı kaynak](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) uç noktası ve anahtarına ihtiyacınız olacaktır. 
+Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)) ve bir [form tanıyıcı kaynak](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) uç noktası ve anahtarına ihtiyacınız olacaktır.
 
 ## <a name="layout-api"></a>Düzen API 'SI
 
@@ -125,8 +125,6 @@ Formlarınızın verileri çıkarmaya başlamak için [örnek form tanıyıcı a
     * [Alma verilerini Ayıkla-Python](quickstarts/python-receipts.md)
   * Kartvizitlerden veri ayıklama
     * [İş kartı verilerini Ayıkla-Python](quickstarts/python-business-cards.md)
- 
-
 
 ### <a name="review-the-rest-apis"></a>REST API 'Leri gözden geçirme
 
@@ -153,6 +151,10 @@ Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.d
 ## <a name="input-requirements"></a>Giriş gereksinimleri
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
+
+Şirket içinde API özelliklerini dağıtmak için [form tanıyıcı kapsayıcıları (Önizleme) kullanın](form-recognizer-container-howto.md) . Bu Docker kapsayıcısı, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmanızı sağlar.
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 

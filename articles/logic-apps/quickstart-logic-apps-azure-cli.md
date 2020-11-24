@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
-ms.date: 10/28/2020
-ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.date: 11/23/2020
+ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099071"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509466"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Logic Apps oluşturma ve yönetme
 
 Bu hızlı başlangıçta, [Azure clı Logic Apps uzantısı](/cli/azure/ext/logic/logic) () kullanılarak mantıksal uygulamalar oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir `az logic` . Komut satırından, bir mantıksal uygulama iş akışı tanımı için JSON dosyasını kullanarak bir mantıksal uygulama oluşturabilirsiniz. Daha sonra `list` , `show` (), ve gibi işlemleri `get` `update` `delete` komut satırından çalıştırarak mantıksal uygulamanızı yönetebilirsiniz.
 
 > [!WARNING]
-> Azure CLı Logic Apps uzantısı Şu anda *deneysel* ve *müşteri desteği kapsamında değil* . Özellikle uzantıyı üretim ortamlarında kullanmayı seçerseniz, bu CLı uzantısını dikkatle kullanın.
+> Azure CLı Logic Apps uzantısı Şu anda *deneysel* ve *müşteri desteği kapsamında değil*. Özellikle uzantıyı üretim ortamlarında kullanmayı seçerseniz, bu CLı uzantısını dikkatle kullanın.
 
 Logic Apps yeni başladıysanız, [Visual Studio 'da](quickstart-create-logic-apps-with-visual-studio.md)ve [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)' de ilk Logic [Azure Portal](quickstart-create-first-logic-app-workflow.md)Apps oluşturmayı da öğrenebilirsiniz.
 
@@ -92,7 +92,7 @@ Komutunuz aşağıdaki [gerekli parametreleri](/cli/azure/ext/logic/logic/workfl
 | --------- | ----- | ----------- |
 | İş akışı tanımı | `--definition` | Mantıksal uygulamanızın [iş akışı tanımına](#workflow-definition)sahıp bir JSON dosyası. |
 | Konum | `--location -l` | Mantıksal uygulamanızın bulunduğu Azure bölgesi. |
-| Ad | `--name -n` | Mantıksal uygulamanızın adı. Ad yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi () `_` , parantez ( `()` ) ve nokta () içerebilir `.` . Ad aynı zamanda bölgeler genelinde benzersiz olmalıdır. |
+| Name | `--name -n` | Mantıksal uygulamanızın adı. Ad yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi () `_` , parantez ( `()` ) ve nokta () içerebilir `.` . Ad aynı zamanda bölgeler genelinde benzersiz olmalıdır. |
 | Kaynak grubu adı | `--resource-group -g` | Mantıksal uygulamanızı oluşturmak istediğiniz [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) . Mantıksal uygulamanız için henüz bir tane yoksa, başlamadan önce [bir kaynak grubu oluşturun](#example---create-resource-group) . |
 
 Mantıksal uygulamanızın erişim denetimleri, uç noktaları, tümleştirme hesabı, tümleştirme hizmeti ortamı, durum ve kaynak etiketlerinizi yapılandırmak için ek [isteğe bağlı parametreleri](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) de ekleyebilirsiniz.

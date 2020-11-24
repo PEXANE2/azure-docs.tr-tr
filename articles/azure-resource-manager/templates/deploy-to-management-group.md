@@ -2,13 +2,13 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 084ab69f463334569d37efd9187bfe587bfc524d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/23/2020
+ms.openlocfilehash: 54d4c096fab09bf31e121a7aae0eed3d2462e0c4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668942"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519889"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM şablonlarıyla yönetim grubu dağıtımları
 
@@ -113,7 +113,8 @@ Bir yönetim grubuna dağıtırken, kaynakların dağıtımını yapabilirsiniz:
 * işlemin hedef yönetim grubu
 * Kiracıdaki başka bir yönetim grubu
 * Yönetim grubundaki abonelikler
-* Yönetim grubundaki kaynak grupları (iki iç içe dağıtım aracılığıyla)
+* Yönetim grubundaki kaynak grupları
+* kaynak grubu için kiracı
 * [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
 
 Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
@@ -142,11 +143,25 @@ Yönetim grubu içinde bir aboneliği hedeflemek için, iç içe geçmiş bir da
 
 ### <a name="scope-to-resource-group"></a>Kapsam-kaynak grubu
 
-Bu abonelik içindeki bir kaynak grubunu hedeflemek için, iki iç içe dağıtım ekleyin. İlki kaynak grubuna sahip aboneliği hedefler. İkincisi, özelliği ayarlayarak kaynak grubunu hedefler `resourceGroup` .
+Ayrıca, yönetim grubu içindeki kaynak gruplarını da hedefleyebilirsiniz. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+Yönetim grubu içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir dağıtım kullanın. `subscriptionId`Ve özelliklerini ayarlayın `resourceGroup` . Kaynak grubunun konumunda dağıtıldığından, iç içe dağıtım için bir konum ayarlamazsanız.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="9,10,18":::
 
 Bir abonelikte kaynak grubu oluşturmaya ve bu kaynak grubuna bir depolama hesabı dağıtmaya yönelik bir yönetim grubu dağıtımı kullanmak için, bkz. [aboneliğe ve kaynak grubuna dağıtım](#deploy-to-subscription-and-resource-group).
+
+### <a name="scope-to-tenant"></a>Kapsam-kiracı
+
+Kümesini olarak ayarlayarak kiracıya kaynak oluşturabilirsiniz `scope` `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
+
+Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
+
+Ya da kapsamını `/` Yönetim grupları gibi bazı kaynak türleri için olarak ayarlayabilirsiniz.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
 
 ## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
 
@@ -234,77 +249,79 @@ Yönetim grubu düzeyi dağıtımından, yönetim grubu içinde bir aboneliği h
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "nestedsubId": {
-      "type": "string"
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "nestedsubId": {
+            "type": "string"
+        },
+        "nestedRG": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "nestedLocation": {
+            "type": "string"
+        }
     },
-    "nestedRG": {
-      "type": "string"
-    },
-    "storageAccountName": {
-      "type": "string"
-    },
-    "nestedLocation": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "[parameters('nestedLocation')]",
-      "subscriptionId": "[parameters('nestedSubId')]",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
-          },
-          "variables": {
-          },
-          "resources": [
-            {
-              "type": "Microsoft.Resources/resourceGroups",
-              "apiVersion": "2020-06-01",
-              "name": "[parameters('nestedRG')]",
-              "location": "[parameters('nestedLocation')]",
-            },
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedSubRG",
-              "resourceGroup": "[parameters('nestedRG')]",
-              "dependsOn": [
-                "[parameters('nestedRG')]"
-              ],
-              "properties": {
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedSub",
+            "location": "[parameters('nestedLocation')]",
+            "subscriptionId": "[parameters('nestedSubId')]",
+            "properties": {
                 "mode": "Incremental",
                 "template": {
-                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                  "contentVersion": "1.0.0.0",
-                  "resources": [
-                    {
-                      "type": "Microsoft.Storage/storageAccounts",
-                      "apiVersion": "2019-04-01",
-                      "name": "[parameters('storageAccountName')]",
-                      "location": "[parameters('nestedLocation')]",
-                      "sku": {
-                        "name": "Standard_LRS"
-                      }
-                    }
-                  ]
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                    },
+                    "variables": {
+                    },
+                    "resources": [
+                        {
+                            "type": "Microsoft.Resources/resourceGroups",
+                            "apiVersion": "2020-06-01",
+                            "name": "[parameters('nestedRG')]",
+                            "location": "[parameters('nestedLocation')]"
+                        }
+                    ]
                 }
-              }
             }
-          ]
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedRG",
+            "subscriptionId": "[parameters('nestedSubId')]",
+            "resourceGroup": "[parameters('nestedRG')]",
+            "dependsOn": [
+                "nestedSub"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.Storage/storageAccounts",
+                            "apiVersion": "2019-04-01",
+                            "name": "[parameters('storageAccountName')]",
+                            "location": "[parameters('nestedLocation')]",
+                            "kind": "StorageV2",
+                            "sku": {
+                                "name": "Standard_LRS"
+                            }
+                        }
+                    ]
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
 ```
 

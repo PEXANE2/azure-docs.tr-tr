@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: b439dcfc755f0113ffabf792850a2bd0fbcf322e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: cbbec71ff8ab762ea0da764a7db9459123850271
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996523"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530242"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hatalarını ayıklama
 Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](./app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](./asp-net-exceptions.md) üzerinde görünür.
@@ -39,7 +39,7 @@ Snapshot Debugger etkinleştirdiyseniz, anlık görüntüleri görmüyorsanız, 
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
-Anlık görüntülere erişim, rol tabanlı erişim denetimiyle (RBAC) korunur. Anlık görüntüyü incelemek için önce bir abonelik sahibi tarafından gerekli role eklenmeniz gerekir.
+Anlık görüntülere erişim, Azure rol tabanlı erişim denetimi (Azure RBAC) tarafından korunur. Anlık görüntüyü incelemek için önce bir abonelik sahibi tarafından gerekli role eklenmeniz gerekir.
 
 > [!NOTE]
 > Sahipler ve katkıda bulunanlar bu role otomatik olarak sahip değildir. Anlık görüntüleri görüntülemek istiyorlarsa, kendilerini role eklemesi gerekir.

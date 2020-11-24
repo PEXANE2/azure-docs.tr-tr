@@ -4,12 +4,12 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullan
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6fdd2d0a97357a2126ff37c0840b1f7da2859da5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 45ed931f734e874e81af837fff5c4a326349cb21
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682681"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530191"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
@@ -26,7 +26,7 @@ Bu yönergeler, Kubernetes kümenize yönetim erişiminin yanı sıra Kullanıc�
 
 Bu makalede, kümeden canlı veriler (Önizleme) özelliğinin erişimini denetlemek için kimlik doğrulamanın nasıl yapılandırılacağı açıklanmaktadır:
 
-- Rol tabanlı erişim denetimi (RBAC) etkin AKS kümesi
+- Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) etkin AKS kümesi
 - Tümleşik AKS kümesi Azure Active Directory.
 
 >[!NOTE]
@@ -39,20 +39,20 @@ Canlı veriler (Önizleme) özellikleri, komut satırı aracıyla aynı şekilde
 Azure portal, bir Azure Active Directory kümesi için oturum açma kimlik bilgilerinizi doğrulamanızı ve küme oluşturma sırasında sizi istemci kayıt kurulumuna yönlendirmenizi ister (Bu makalede yeniden yapılandırılır). Bu davranış, tarafından gereken kimlik doğrulama sürecine benzerdir `kubectl` .
 
 >[!NOTE]
->Kümenizin yetkilendirmesi, Kubernetes tarafından ve ile yapılandırılan güvenlik modeliyle yönetilir. Bu özelliğe erişen kullanıcılar, çalıştırmaya benzer Kubernetes yapılandırmasını (*kubeconfig*) indirme izni gerektirir `az aks get-credentials -n {your cluster name} -g {your resource group}` . Bu yapılandırma dosyası, RBAC yetkilendirmesi etkin olmayan Azure RBAC özellikli ve AKS kümelerinde **Azure Kubernetes hizmet kümesi Kullanıcı rolü** için yetkilendirme ve kimlik doğrulama belirtecini içerir. AKS Azure Active Directory (AD) SAML tabanlı çoklu oturum açma özelliği etkinken Azure AD ve istemci kayıt ayrıntıları hakkında bilgi içerir.
+>Kümenizin yetkilendirmesi, Kubernetes tarafından ve ile yapılandırılan güvenlik modeliyle yönetilir. Bu özelliğe erişen kullanıcılar, çalıştırmaya benzer Kubernetes yapılandırmasını (*kubeconfig*) indirme izni gerektirir `az aks get-credentials -n {your cluster name} -g {your resource group}` . Bu yapılandırma dosyası, Kubernetes RBAC yetkilendirmesi etkin olmayan Azure RBAC özellikli ve AKS kümelerinde **Azure Kubernetes hizmet kümesi Kullanıcı rolü** için yetkilendirme ve kimlik doğrulama belirtecini içerir. AKS Azure Active Directory (AD) SAML tabanlı çoklu oturum açma özelliği etkinken Azure AD ve istemci kayıt ayrıntıları hakkında bilgi içerir.
 
 >[!IMPORTANT]
 >Bu özelliklerin kullanıcıları indirmek ve bu özelliği kullanmak için [Azure Kubernetes küme kullanıcı rolünü](../../role-based-access-control/built-in-roles.md) kümeye gerektirir `kubeconfig` . Kullanıcılar bu özelliği kullanmak için kümeye katılımcı **erişimi gerektirmez.**
 
-## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>RBAC özellikli kümeler ile clusterMonitoringUser kullanma
+## <a name="using-clustermonitoringuser-with-kubernetes-rbac-enabled-clusters"></a>Kubernetes RBAC özellikli kümeler ile clusterMonitoringUser kullanma
 
-Kubernetes Kullanıcı rolünün [RBAC yetkilendirmesini etkinleştirdikten](#configure-kubernetes-rbac-authorization) sonra **Kümekullanıcısına** canlı veriler (Önizleme) özelliğine bağlanmasına izin vermek için ek yapılandırma değişiklikleri uygulama gereksinimini ortadan kaldırmak için, aks, **clustermonitoringuser** adlı yeni bir Kubernetes kümesi rolü bağlamayı eklemiştir. Bu küme rolü bağlamasında, Kubernetes API 'sine ve Canlı veriler (Önizleme) özelliğinin kullanılmasıyla ilgili uç noktalara erişmek için gerekli tüm izinler bulunur.
+Kubernetes [RBAC yetkilendirmesini etkinleştirdikten](#configure-kubernetes-rbac-authorization) sonra Kubernetes Kullanıcı rolünün **Kümekullanıcısına** canlı veriler (Önizleme) özelliğine bağlanmasına izin vermek için ek yapılandırma değişiklikleri uygulama gereksinimini ortadan kaldırmak için, aks, **clustermonitoringuser** adlı yeni bir Kubernetes kümesi rol bağlaması eklemiştir. Bu küme rolü bağlamasında, Kubernetes API 'sine ve Canlı veriler (Önizleme) özelliğinin kullanılmasıyla ilgili uç noktalara erişmek için gerekli tüm izinler bulunur.
 
 Bu yeni kullanıcıyla canlı veriler (Önizleme) özelliğini kullanmak için AKS küme kaynağında [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolünün bir üyesi olmanız gerekir. Etkin olduğunda kapsayıcılar için Azure Izleyici, varsayılan olarak bu kullanıcı kullanılarak kimlik doğrulaması yapacak şekilde yapılandırılmıştır. ClusterMonitoringUser rolü bağlama bir kümede yoksa, **clusteruser** bunun yerine kimlik doğrulaması için kullanılır.
 
 AKS, bu yeni rol bağlamasını Ocak 2020 ' de yayımlamıştır, bu yüzden Ocak 2020 ' den önce oluşturulan kümeler buna sahip değildir. Ocak 2020 tarihinden önce oluşturulmuş bir kümeniz varsa, yeni **Clustermonitoringuser** , küme ÜZERINDE bir put işlemi gerçekleştirerek veya kümede, küme sürümünü güncelleştirme gıbı bir put işlemi gerçekleştiren başka bir işlem gerçekleştirerek mevcut bir kümeye eklenebilir.
 
-## <a name="kubernetes-cluster-without-rbac-enabled"></a>RBAC etkin olmayan Kubernetes kümesi
+## <a name="kubernetes-cluster-without-kubernetes-rbac-enabled"></a>Kubernetes RBAC etkin olmayan Kubernetes kümesi
 
 Kubernetes RBAC yetkilendirmesi ile yapılandırılmayan veya Azure AD çoklu oturum açma ile tümleştirilmiş bir Kubernetes kümeniz varsa, bu adımları izlemeniz gerekmez. Bunun nedeni, RBAC olmayan bir yapılandırmada varsayılan olarak yönetici izinlerinizin olması olabilir.
 
@@ -108,7 +108,7 @@ Azure AD istemci kaydı, Azure portal yetkilendirme sayfalarını güvenilir bir
 Kubernetes 'te gelişmiş güvenlik kurulumu hakkında daha fazla bilgi için [Kubernetes belgelerini](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)gözden geçirin.
 
 >[!NOTE]
->Yeni bir RBAC etkin küme oluşturuyorsanız, bkz. [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme](../../aks/azure-ad-integration-cli.md) ve Azure AD kimlik doğrulamasını yapılandırma adımlarını izleyin. İstemci uygulamasını oluşturma adımları sırasında, bu bölümdeki bir notta, aşağıdaki 3. adımda belirtilenler için Azure Izleyici için oluşturmanız gereken iki yeniden yönlendirme URL 'Si vurgulanmaktadır.
+>Yeni bir Kubernetes RBAC özellikli küme oluşturuyorsanız, bkz. [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme](../../aks/azure-ad-integration-cli.md) ve Azure AD kimlik doğrulamasını yapılandırma adımlarını izleyin. İstemci uygulamasını oluşturma adımları sırasında, bu bölümdeki bir notta, aşağıdaki 3. adımda belirtilenler için Azure Izleyici için oluşturmanız gereken iki yeniden yönlendirme URL 'Si vurgulanmaktadır.
 
 ### <a name="client-registration-reconfiguration"></a>İstemci kaydı yeniden yapılandırması
 
@@ -134,7 +134,7 @@ Kubernetes 'te gelişmiş güvenlik kurulumu hakkında daha fazla bilgi için [K
 Canlı veriler (Önizleme) özelliğine erişebilmek için her Azure AD hesabına, Kubernetes içindeki uygun API 'lere izin verilmelidir. Azure Active Directory hesabı verme adımları, [Kubernetes RBAC kimlik doğrulaması](#configure-kubernetes-rbac-authorization) bölümünde açıklanan adımlara benzerdir. YAML yapılandırma şablonunu kümenize uygulamadan önce, **kümeuser** 'ın altındaki **clusterrolebinding** öğesini istenen kullanıcıyla değiştirin.
 
 >[!IMPORTANT]
->RBAC bağlamasını verdiğiniz kullanıcı aynı Azure AD kiracısında ise, userPrincipalName öğesine göre izinler atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve objectID özelliğini kullanın.
+>İçin Kubernetes RBAC bağlamaya verdiğiniz kullanıcı aynı Azure AD kiracısında ise, userPrincipalName temelinde izinleri atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve objectID özelliğini kullanın.
 
 AKS küme **Kümerolü bağlamalarınızı** yapılandırma hakkında daha fazla yardım için bkz. [Kubernetes RBAC bağlaması oluşturma](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding).
 

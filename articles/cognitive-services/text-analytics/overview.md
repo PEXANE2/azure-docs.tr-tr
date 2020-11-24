@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: a91be0798dc67bfb751807b385d638343b89562b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957053"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519413"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -47,9 +47,14 @@ Dil algılama, bir [giriş metninin yazıldığı dili algılayabilir](how-tos/t
 
 Adlandırılmış varlık tanıma (NER), kişiler, konumlar, kuruluşlar, miktarlar ve Iyi bilinen varlıkların de tanınabilmesi ve Web üzerinde daha fazla bilgi ile bağlanması halinde, metinlerinizde [varlıkları tanımlayabilir ve kategorilere ayırabilirsiniz](how-tos/text-analytics-how-to-entity-linking.md) .
 
-## <a name="use-containers"></a>Kapsayıcıları kullanma
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
 
-[Metin analizi kapsayıcıları,](how-tos/text-analytics-how-to-install-containers.md) araştırma METNI ve API 'yi kullanarak bir şirket içi çözüm olarak kullanın. Bu Docker kapsayıcıları, önemli ifadeleri ayıklamanızı, dili tespit etmeyi ve verilerinize yakın yaklaşımı analiz etmenize olanak tanır.
+Şirket içinde API özelliklerini dağıtmak için [metin analizi kapsayıcıları kullanın](how-tos/text-analytics-how-to-install-containers.md) . Bu Docker kapsayıcıları, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmayı sağlar. Metin Analizi aşağıdaki kapsayıcıları sunmaktadır:
+
+* yaklaşım Analizi
+* anahtar tümceciği ayıklama (Önizleme)
+* dil algılama (Önizleme)
+* Sistem durumu için Metin Analizi (Önizleme)
 
 ## <a name="asynchronous-operations"></a>Zaman uyumsuz işlemler
 

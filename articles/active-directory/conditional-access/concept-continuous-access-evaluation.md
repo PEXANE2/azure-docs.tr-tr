@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837626"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520671"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -26,7 +26,9 @@ Müşteriler, ağ konumu veya kimlik bilgisi hırsızlığı gibi ilke ve bu de�
 
 İlke ihlallerine veya güvenlik sorunlarına yönelik zamanında yanıt, Azure AD gibi belirteç verenler ve Exchange Online gibi bağlı olan taraf arasında "konuşma" gerektirir. Bu iki yönlü konuşma bize iki önemli özellik sunar. Bağlı olan taraf, bir istemci gibi yeni bir konumdan geldiği ve belirteç verenine söyleme işlemleri fark edebilir. Ayrıca, izin verilen tarafa, hesap uzlaşması, disablement veya diğer endişeler nedeniyle belirli bir kullanıcı için belirteçleri kullanmayı durdurmasına söylemek için bir yol sağlar. Bu konuşmaya yönelik mekanizma, sürekli erişim değerlendirmesi (CAE). Amaç gerçek zamanlı olacak şekilde Yanıtlandı, ancak bazı durumlarda, olay yayma süresi nedeniyle 15 dakikaya varan gecikme süresi gözlemlenebilir.
 
-Sürekli erişim değerlendirmesinin ilk uygulamasını Exchange, takımlar ve SharePoint Online 'a odaklanır. 
+Sürekli erişim değerlendirmesinin ilk uygulamasını Exchange, takımlar ve SharePoint Online 'a odaklanır.
+
+Uygulamalarınızı CAE 'yi kullanacak şekilde hazırlamak için bkz. [uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'leri kullanma](/develop/app-resilience-continuous-access-evaluation.md).
 
 ### <a name="key-benefits"></a>Önemli avantajlar
 

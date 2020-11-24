@@ -3,24 +3,26 @@ title: Azure Otomasyonu 'nda Linux karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızdaki Linux tabanlı makinelerde runbook 'ları çalıştırmak için bir Azure Otomasyonu karma Runbook Worker nasıl yükleneceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: c84f168104be4ba4cb8af2e31be82eed0e2ae83a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b06024b7dc25f37f75c71b822f6aeea32c3e26a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205193"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509057"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
-Runbook 'u doğrudan rolü barındıran makinede ve bu yerel kaynakları yönetmek için ortamdaki kaynaklara karşı çalıştırmak için Azure Automation 'ın karma Runbook Worker özelliğini kullanabilirsiniz. Linux hibrit Runbook Worker, runbook 'ları, yükseltme gerektiren komutları çalıştırmak için yükseltilebilir özel bir kullanıcı olarak yürütür. Azure Otomasyonu runbook 'ları depolar ve yönetir ve ardından bunları bir veya daha fazla belirlenen makineye gönderir. Bu makalede karma Runbook Worker 'ın bir Linux makinesine nasıl yükleneceği, çalışanın nasıl kaldırılacağı ve karma Runbook Worker grubunun nasıl kaldırılacağı açıklanır.
+Azure 'un [etkin](../azure-arc/servers/overview.md)olduğu sunucular da dahil olmak üzere runbook 'Ları doğrudan Azure 'Da veya Azure dışı makinede çalıştırmak Için Azure Otomasyonu 'Nun Kullanıcı karma Runbook Worker özelliğini kullanabilirsiniz. Rolü barındıran makineden veya sunucudan, bu yerel kaynakları yönetmek için Runbook 'ları doğrudan bu ve ortamdaki kaynaklara karşı çalıştırabilirsiniz.
+
+Linux hibrit Runbook Worker, runbook 'ları, yükseltme gerektiren komutları çalıştırmak için yükseltilebilir özel bir kullanıcı olarak yürütür. Azure Otomasyonu runbook 'ları depolar ve yönetir ve ardından bunları bir veya daha fazla belirlenen makineye gönderir. Bu makalede karma Runbook Worker 'ın bir Linux makinesine nasıl yükleneceği, çalışanın nasıl kaldırılacağı ve karma Runbook Worker grubunun nasıl kaldırılacağı açıklanır.
 
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
+Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun.
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics çalışma alanı
 
@@ -28,23 +30,9 @@ Karma Runbook Worker rolü, rolü yüklemek ve yapılandırmak için bir Azure I
 
 Azure Izleyici Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin.
 
-Bir çalışma alanınız varsa, ancak Otomasyon hesabınıza bağlı değilse, Otomasyon özelliğinin etkinleştirilmesi, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınızda Azure Otomasyonu özelliklerinden birini etkinleştirdiğinizde, özellikle [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) veya [değişiklik izleme ve envanterinde](change-tracking/overview.md), çalışan bileşenleri otomatik olarak aracı makinesine gönderilir.
-
-Güncelleştirme Yönetimi özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
-
-```powershell-interactive
-    Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
-```
-
-Değişiklik İzleme ve envanter özelliğini çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
-
-```powershell-interactive
-    Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
-```
-
 ### <a name="log-analytics-agent"></a>Log Analytics aracısı
 
-Karma Runbook Worker rolü, desteklenen Linux işletim sistemi için [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) gerek duyar.
+Karma Runbook Worker rolü, desteklenen Linux işletim sistemi için [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) gerek duyar. Azure dışında barındırılan sunucular veya makineler için, [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak Log Analytics aracısını yükleyebilirsiniz.
 
 >[!NOTE]
 >Linux için Log Analytics aracısını yükledikten sonra, `sudoers.d` klasörün veya sahip olduğu izinleri değiştirmemelisiniz. Sudo izni, karma Runbook Worker 'ın altında çalıştığı kullanıcı bağlamı olan **nxautomation** hesabı için gereklidir. İzinler kaldırılmamalıdır. Bunu belirli klasörler veya komutlarla kısıtlamak, bir değişikliğe neden olabilir.
@@ -54,17 +42,17 @@ Karma Runbook Worker rolü, desteklenen Linux işletim sistemi için [Log Analyt
 
 Karma Runbook Worker özelliği aşağıdaki dağıtımları destekler:
 
-* Amazon Linux 2012,09-2015,09 (x86/x64)
-* CentOS Linux 5, 6 ve 7 (x86/x64)
-* Oracle Linux 5, 6 ve 7 (x86/x64)
-* Red Hat Enterprise Linux Server 5, 6 ve 7 (x86/x64)
-* De, GNU/Linux 6, 7 ve 8 (x86/x64)
-* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)
-* SUSE Linux Enterprise Server 12 (x86/x64)
+* Amazon Linux 2012,09-2015,09 (x64)
+* CentOS Linux 5, 6 ve 7 (x64)
+* Oracle Linux 5, 6 ve 7 (x64)
+* Red Hat Enterprise Linux Server 5, 6 ve 7 (x64)
+* De, GNU/Linux 6, 7 ve 8 (x64)
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS ve 18,04 (x64)
+* SUSE Linux Enterprise Server 12 (x64)
 
 ### <a name="minimum-requirements"></a>Minimum gereksinimler
 
-Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
+Bir Linux sistemi ve Kullanıcı karma Runbook Worker için en düşük gereksinimler şunlardır:
 
 * İki çekirdek
 * 4 GB RAM
@@ -80,6 +68,13 @@ Linux karma Runbook Worker için en düşük gereksinimler şunlardır:
 | **İsteğe bağlı paket** | **Açıklama** | **En düşük sürüm**|
 | PowerShell Core | PowerShell runbook 'larını çalıştırmak için PowerShell Core 'un yüklenmesi gerekir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
 
+### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>Karma Runbook Worker grubuna makine ekleme
+
+Çalışan makineyi, Otomasyon hesaplarınızdan birindeki bir karma Runbook Worker grubuna ekleyebilirsiniz. Güncelleştirme Yönetimi tarafından yönetilen sistem karma Runbook Worker 'ı barındıran makinelerde, karma Runbook Worker grubuna eklenebilirler. Ancak hem Güncelleştirme Yönetimi hem de karma runbook çalışanı grup üyeliği için aynı Otomasyon hesabını kullanmanız gerekir.
+
+>[!NOTE]
+>Azure Otomasyonu [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) , sistem karma runbook çalışanını güncelleştirme yönetimi için etkinleştirilmiş bir Azure veya Azure dışı makineye otomatik olarak yüklüyor. Ancak, bu çalışan Otomasyon hesabınızdaki herhangi bir karma Runbook Worker grubuna kayıtlı değildir. Runbook 'larınızı bu makinelerde çalıştırmak için, onları karma Runbook Worker grubuna eklemeniz gerekir. Bir gruba eklemek için [bir Linux hibrit Runbook Worker Install](#install-a-linux-hybrid-runbook-worker) bölümünün altındaki 4. adımı izleyin.
+
 ## <a name="supported-linux-hardening"></a>Desteklenen Linux sağlamlaştırma
 
 Aşağıdakiler henüz desteklenmemektedir:
@@ -92,7 +87,7 @@ Linux hibrit runbook çalışanları, Azure Otomasyonu 'nda sınırlı sayıda r
 
 |Runbook türü | Desteklenir |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Evet |
 |PowerShell |Evet<sup>1</sup> |
 |PowerShell İş Akışı |Hayır |
 |Grafik |Hayır |
@@ -100,15 +95,40 @@ Linux hibrit runbook çalışanları, Azure Otomasyonu 'nda sınırlı sayıda r
 
 <sup>1</sup> PowerShell runbook 'ları, Linux makinesinde PowerShell Core 'un yüklü olmasını gerektirir. Yükleme hakkında bilgi edinmek için bkz. [Linux üzerinde PowerShell Core yükleme](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
+### <a name="network-configuration"></a>Ağ yapılandırması
+
+Karma Runbook Worker ağ gereksinimleri için bkz. [ağınızı yapılandırma](automation-hybrid-runbook-worker.md#network-planning).
+
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Linux karma Runbook Worker 'ı yükler
 
 Bir Linux karma runbook çalışanı yüklemek ve yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
-1. Log Analytics aracısını hedef makineye dağıtın.
+1. Yükseltilmiş bir PowerShell komut isteminde aşağıdaki komutu çalıştırarak veya [Azure portal](https://portal.azure.com)Cloud Shell Log Analytics çalışma alanınızda Azure Otomasyonu çözümünü etkinleştirin:
 
-    * Azure VM 'Leri için [Linux için sanal makine uzantısını](../virtual-machines/extensions/oms-linux.md)kullanarak linux için Log Analytics aracısını yüklersiniz. Uzantı Log Analytics aracısını Azure sanal makinelerine yükleyip, sanal makineleri bir Azure Resource Manager şablonu veya Azure CLı kullanarak mevcut bir Log Analytics çalışma alanına kaydeder. Aracı yüklendikten sonra, sanal makine Otomasyon hesabınızdaki bir karma Runbook Worker grubuna eklenebilir.
+    ```powershell
+    Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resourceGroupName> -WorkspaceName <workspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
+    ```
 
-    * Azure dışı VM 'Ler için [Linux bilgisayarlarını Azure 'A bağlama](../azure-monitor/platform/agent-linux.md) bölümünde açıklanan dağıtım seçeneklerini kullanarak linux için Log Analytics aracısını yüklersiniz. Bu işlemi, ortamınızda birden fazla çalışan eklemek için birden çok makine için yineleyebilirsiniz. Aracı yüklendikten sonra, VM 'Ler Otomasyon hesabınızdaki bir karma Runbook Worker grubuna eklenebilir.
+2. Log Analytics aracısını hedef makineye dağıtın.
+
+    * Azure VM 'Leri için [Linux için sanal makine uzantısını](../virtual-machines/extensions/oms-linux.md)kullanarak linux için Log Analytics aracısını yüklersiniz. Uzantı Log Analytics aracısını Azure sanal makinelerine yükleyip sanal makineleri mevcut bir Log Analytics çalışma alanına kaydeder. [ *Linux* veya *Windows* VM 'leri için dağıtım Log Analytics aracısını](../governance/policy/samples/built-in-policies.md#monitoring) atamak üzere bir Azure Resource Manager şablonu, Azure CLI veya Azure İlkesi kullanabilirsiniz. Aracı yüklendikten sonra, makine Otomasyon hesabınızdaki bir karma Runbook Worker grubuna eklenebilir.
+
+    * Azure dışı makineler için, [Azure Arc etkin sunucularını](../azure-arc/servers/overview.md)kullanarak Log Analytics aracısını yükleyebilirsiniz. Yay özellikli sunucular, aşağıdaki yöntemleri kullanarak Log Analytics aracısının dağıtılmasını destekler:
+
+        - VM uzantıları çerçevesini kullanma.
+
+            Azure Arc etkin sunucuları 'ndaki bu özellik, Azure olmayan bir Windows ve/veya Linux sunucusuna Log Analytics Agent VM uzantısını dağıtmanıza olanak tanır. SANAL makine uzantıları, karma makinelerinizde veya Arc etkin sunucularla yönetilen sunucularda aşağıdaki yöntemler kullanılarak yönetilebilir:
+
+            - [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
+            - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
+            - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
+            - Azure [Kaynak Yöneticisi şablonları](../azure-arc/servers/manage-vm-extensions-template.md)
+
+        - Azure Ilkesi 'ni kullanma.
+
+            Bu yaklaşımı kullanarak, Arc etkin sunucusunda Log Analytics aracısının yüklü olup olmadığını denetlemek için Azure Ilke [dağıtma Log Analytics aracısını Linux veya Windows Azure Arc makineler](../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine kullanırsınız. Aracı yüklü değilse, bir düzeltme görevi kullanarak otomatik olarak dağıtır. Alternatif olarak, makineleri VM'ler için Azure İzleyici ile izlemeyi planlıyorsanız, bunun yerine Log Analytics aracısını yüklemek ve yapılandırmak için [VM'ler için Azure izleyici etkinleştir](../governance/policy/samples/built-in-initiatives.md#monitoring) girişim kullanın.
+
+        Azure Ilkesini kullanarak Windows veya Linux için Log Analytics Aracısı yüklemenizi öneririz.
 
     > [!NOTE]
     > Istenen durum yapılandırması (DSC) ile karma Runbook Worker rolünü destekleyen makinelerin yapılandırmasını yönetmek için, makineleri DSC düğümleri olarak eklemeniz gerekir.
@@ -116,29 +136,29 @@ Bir Linux karma runbook çalışanı yüklemek ve yapılandırmak için aşağı
     > [!NOTE]
     > Linux hibrit Worker yüklemesi sırasında karşılık gelen sudo izinleri olan [nxautomation hesabı](automation-runbook-execution.md#log-analytics-agent-for-linux) bulunmalıdır. Çalışanı yüklemeye çalışırsanız ve hesap yoksa veya uygun izinlere sahip değilse, yükleme başarısız olur.
 
-2. Aracının çalışma alanına rapor ettiğini doğrulayın.
+3. Aracının çalışma alanına rapor ettiğini doğrulayın.
 
     Linux için Log Analytics Aracısı, makineleri bir Azure Izleyici Log Analytics çalışma alanına bağlar. Aracıyı makinenize yükleyip çalışma alanınıza bağladığınızda, karma Runbook Worker için gereken bileşenleri otomatik olarak indirir.
 
     Aracı birkaç dakika sonra Log Analytics çalışma alanınıza başarıyla bağlandığında, çalışma alanına sinyal verisi gönderdiğini doğrulamak için aşağıdaki sorguyu çalıştırabilirsiniz.
 
     ```kusto
-    Heartbeat 
+    Heartbeat
     | where Category == "Direct Agent"
     | where TimeGenerated > ago(30m)
     ```
 
     Arama sonuçlarında, makineye bağlı olduğunu ve hizmete raporlanmasını belirten, makinenin sinyal kayıtlarını görmeniz gerekir. Varsayılan olarak, her aracı atanmış çalışma alanına bir sinyal kaydını iletir.
 
-3. Makineyi karma Runbook Worker grubuna eklemek için aşağıdaki komutu çalıştırın,, ve parametrelerinin değerlerini belirtin `-w` `-k` `-g` `-e` .
+4. Makineyi karma Runbook Worker grubuna eklemek için aşağıdaki komutu çalıştırın,, ve parametrelerinin değerlerini belirtin `-w` `-k` `-g` `-e` .
 
     Parametreler için gereken bilgileri `-k` ve `-e` Otomasyon hesabınızdaki **anahtarlar** sayfasından alabilirsiniz. Sayfanın sol tarafındaki **Hesap ayarları** bölümünün altında bulunan **anahtarlar** ' ı seçin.
 
     ![Anahtarları Yönet sayfası](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-    * Parametresi için `-e` , **URL**değerini kopyalayın.
+    * Parametresi için `-e` , **URL** değerini kopyalayın.
 
-    * Parametresi için `-k` , **BIRINCIL erişim anahtarı**değerini kopyalayın.
+    * Parametresi için `-k` , **BIRINCIL erişim anahtarı** değerini kopyalayın.
 
     * Parametresi için `-g` , yeni Linux hibrit Runbook Worker 'ın katılması gereken karma Runbook Worker grubunun adını belirtin. Bu grup Otomasyon hesabında zaten mevcutsa, geçerli makine buna eklenir. Bu grup yoksa, bu ad ile oluşturulur.
 
@@ -148,7 +168,7 @@ Bir Linux karma runbook çalışanı yüklemek ve yapılandırmak için aşağı
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <logAnalyticsworkspaceId> -k <automationSharedKey> -g <hybridGroupName> -e <automationEndpoint>
    ```
 
-4. Komut tamamlandıktan sonra, Otomasyon hesabınızdaki karma çalışan grupları sayfasında yeni grup ve üye sayısı gösterilir. Bu, var olan bir gruptur, üye sayısı artırılır. Karma çalışan grupları sayfasında listeden grubu seçebilir ve **hibrit çalışanlar** kutucuğunu seçebilirsiniz. Karma çalışanlar sayfasında, grubun her bir üyesini listede görürsünüz.
+5. Betik tamamlandıktan sonra dağıtımı doğrulayın. Otomasyon hesabınızdaki **karma runbook çalışanı grupları** sayfasında, **Kullanıcı karma runbook çalışanları grubu** sekmesinde, yeni veya mevcut grup ve üye sayısını gösterir. Mevcut bir gruptur, üye sayısı artırılır. Sayfadaki listeden grubu seçebilirsiniz, sol taraftaki menüden **hibrit çalışanlar**' ı seçin. **Karma çalışanlar** sayfasında, grubun her bir üyesini listelendiğini görebilirsiniz.
 
     > [!NOTE]
     > Bir Azure VM için Linux için Log Analytics sanal makine uzantısı kullanıyorsanız, `autoUpgradeMinorVersion` `false` otomatik yükseltme sürümleri için ayarı, karma Runbook Worker ile sorun oluşmasına neden olabilir. Uzantıyı el ile yükseltme hakkında bilgi edinmek için bkz. [Azure CLI dağıtımı](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
@@ -161,7 +181,7 @@ Varsayılan olarak, Linux karma runbook çalışanları imza doğrulaması gerek
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
  ```
 
-## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-linux-machine"></a><a name="remove-linux-hybrid-runbook-worker"></a>Karma runbook çalışanını şirket içi Linux makinesinden kaldırma
+## <a name="remove-the-hybrid-runbook-worker"></a><a name="remove-linux-hybrid-runbook-worker"></a>Karma runbook çalışanını kaldırma
 
 `ls /var/opt/microsoft/omsagent`Çalışma alanı kimliğini almak Için karma Runbook Worker üzerinde komutunu kullanabilirsiniz. Çalışma alanı KIMLIĞI ile adlandırılan bir klasör oluşturulur.
 

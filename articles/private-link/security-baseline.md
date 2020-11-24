@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1f9e4fd2f7f55f916743074b57f89788c0d32f7d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 636bc3c64dcd15ead36a9a4e969e802d49895dca
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427500"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522252"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure özel bağlantısı için Azure Güvenlik temeli
 
@@ -28,7 +28,7 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../security/benchm
 
 Kritik kaynaklardaki değişiklikler gerçekleşirken tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -68,7 +68,7 @@ Ayrıca kurumsal iş gereksinimlerine bağlı olarak, Azure Sentinel veya bir ü
 
 - [Azure Izleyici ile platform günlükleri ve ölçümleri toplama](../azure-monitor/platform/diagnostic-settings.md)
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view)
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Özel bağlantı için günlüğe kaydetme ve Izleme](private-link-overview.md#logging-and-monitoring)
 
@@ -96,7 +96,7 @@ Diğer bir seçenek de Azure Sentinel veya üçüncü taraf bir SıEM üzerinde 
 
 - [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics çalışma alanını anlayın](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics çalışma alanını anlayın](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
 
@@ -142,7 +142,7 @@ Kurumsal iş gereksinimlerinize bağlı olarak Azure Sentinel 'e ve şirket içi
 
 Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity Management Azure Active Directory (Azure AD) kullanarak tam zamanında/tam erişimi etkinleştirin ve Azure Resource Manager.
 
-- [Privileged Identity Management hakkında daha fazla bilgi edinin](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management hakkında daha fazla bilgi edinin](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -188,7 +188,7 @@ Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity M
 
 **Rehberlik**: riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure Active Directory (Azure AD) risk algılamaları özelliğini kullanın. Güvenlik Merkezi risk algılama, Azure Izleyici 'ye uyarı verebilir ve eylem gruplarını kullanarak özel uyarı/bildirim yapılandırır.
 
-- [Azure Güvenlik Merkezi risk algılamalarını anlama (şüpheli etkinlik)](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure Güvenlik Merkezi risk algılamalarını anlama (şüpheli etkinlik)](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -222,7 +222,7 @@ Ayrıca, Microsoft Hizmetleri için ayrıcalıklı rolleri Privileged Identity M
 
 **Rehberlik**: Azure Active Directory eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemeleri kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir.
 
-- [Azure AD raporlamayı anlama](/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](../active-directory/reports-monitoring/index.yml)
 
 - [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
@@ -248,7 +248,7 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturup Log Analyti
 
 Daha fazla araştırma için Azure Sentinel 'e veri alma.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -270,11 +270,11 @@ Daha fazla araştırma için Azure Sentinel 'e veri alma.
 
 Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla Azure kaynaklarına erişimi denetleme.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -348,7 +348,7 @@ Kiracınızda uygun (okuma) izinleriniz olduğundan ve aboneliklerinizdeki kayna
 
 **Rehberlik**: verileri bir taksonomi halinde mantıksal olarak düzenlemek için meta verileri kullanarak Azure kaynaklarına Etiketler uygulayın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -360,11 +360,11 @@ Kiracınızda uygun (okuma) izinleriniz olduğundan ve aboneliklerinizdeki kayna
 
 Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -418,7 +418,7 @@ Ayrıca, aboneliklerdeki kaynakları sorgulamak/saptamak için Azure Kaynak graf
 
 - [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/index.md)
 
 - [Özel bağlantı için Azure ilke örneği yerleşik bileşenleri](../governance/policy/samples/built-in-policies.md)
 
@@ -634,7 +634,7 @@ Müşteri, olayın gerçekleştiği Azure kaynakları ve ortamının önem derec
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 
-- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -706,5 +706,5 @@ Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik kıyaslaması](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik kıyaslaması](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

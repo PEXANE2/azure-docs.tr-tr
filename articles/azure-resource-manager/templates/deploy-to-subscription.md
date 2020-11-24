@@ -2,13 +2,13 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/23/2020
+ms.openlocfilehash: c87f6fa590e1f769816fb0ee3cba3aad1997de15
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668886"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519872"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>ARM şablonlarıyla abonelik dağıtımları
 
@@ -131,20 +131,28 @@ ARM şablonları dağıtmaya yönelik dağıtım komutları ve seçenekleri hakk
 Bir aboneliğe dağıtırken, kaynakların dağıtımını yapabilirsiniz:
 
 * işlemin hedef aboneliği
-* abonelik içindeki kaynak grupları
+* Kiracıdaki tüm abonelikler
+* abonelik veya diğer abonelikler içindeki kaynak grupları
+* abonelik için kiracı
 * [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
 
-Hedef abonelikten farklı bir aboneliğe dağıtamazsınız. Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
+Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
 
 Bu bölümde, farklı kapsamların nasıl ayarlanacağı gösterilmektedir. Bu farklı kapsamları tek bir şablonda birleştirebilirsiniz.
 
-### <a name="scope-to-subscription"></a>Abonelik kapsamı
+### <a name="scope-to-target-subscription"></a>Hedef aboneliğin kapsamı
 
 Kaynakları hedef aboneliğe dağıtmak için bu kaynakları şablonun kaynaklar bölümüne ekleyin.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
 
 Aboneliğe dağıtım örnekleri için bkz. [kaynak grupları oluşturma](#create-resource-groups) ve [ilke tanımı atama](#assign-policy-definition).
+
+### <a name="scope-to-other-subscription"></a>Kapsamı diğer aboneliğe
+
+Kaynakları, işlemden abonelikten farklı bir aboneliğe dağıtmak için, iç içe geçmiş bir dağıtım ekleyin. Özelliğini, `subscriptionId` dağıtmak istediğiniz ABONELIĞIN kimliği olarak ayarlayın. `location`İç içe dağıtım için özelliği ayarlayın.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-sub.json" highlight="9,10,14":::
 
 ### <a name="scope-to-resource-group"></a>Kapsam-kaynak grubu
 
@@ -153,6 +161,18 @@ Abonelik içindeki bir kaynak grubuna kaynak dağıtmak için, iç içe geçmiş
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
 
 Kaynak grubuna dağıtım örneği için bkz. [kaynak grubu ve kaynakları oluşturma](#create-resource-group-and-resources).
+
+### <a name="scope-to-tenant"></a>Kapsam-kiracı
+
+Kümesini olarak ayarlayarak kiracıya kaynak oluşturabilirsiniz `scope` `/` . Şablonu dağıtan kullanıcının [kiracıya dağıtmak için gerekli erişimi](deploy-to-tenant.md#required-access)olmalıdır.
+
+Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
+
+Ya da kapsamını `/` Yönetim grupları gibi bazı kaynak türleri için olarak ayarlayabilirsiniz.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
 
 ## <a name="deployment-location-and-name"></a>Dağıtım konumu ve adı
 

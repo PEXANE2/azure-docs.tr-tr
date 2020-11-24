@@ -2,33 +2,38 @@
 title: VMware HCX ağ kesimleri
 description: VMware HCX için dört ağ gerekir.
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 8137b4383d2a243d53db317db6f5a78b3bc68e67
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.date: 11/23/2020
+ms.openlocfilehash: 48894c532c97b70cde1473fb8b81f406ded70343
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173623"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95529743"
 ---
 <!-- Used in avs-production-ready-deployment.md and tutorial-deploy-vmware-hcx.md -->
 
 VMware HCX için dört ağ gerekir:
 
-- **Yönetim ağı:** Genellikle, bu, vSphere kümesinde kullanılan yönetim ağsıdır. En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. (Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyaç duyabilirsiniz.)
+- **Yönetim ağı:** Genellikle, bu, vSphere kümesinde kullanılan yönetim ağsıdır. En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyacınız bulunabilir.
 
-- **vMotion ağı:** Genellikle, vSphere kümesi üzerinde vMotion için kullanılan ağ aynıdır.  En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. (Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyaç duyabilirsiniz.)  
+   > [!NOTE]
+   > Önerdiğimiz Yöntem bir/26 ağı oluşturuyor. Bir/26 ağda, en fazla 10 hizmet kafesi ve 60 ağ Extender (hizmet ağı başına-1) kullanabilirsiniz. Azure VMware Çözüm özel bulutlarını kullanarak her ağ genişletici için sekiz ağ uzatabilirsiniz.
+   >
+   
+- **vMotion ağı:** Genellikle, vSphere kümesi üzerinde vMotion için kullanılan ağ aynıdır.  En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyacınız bulunabilir.  
 
    VMotion ağı dağıtılmış bir sanal anahtarda veya vSwitch0 üzerinde kullanıma sunulmalıdır. Aksi takdirde, ortamı değiştirin.
 
    > [!NOTE]
-   > Bu ağ yönlendirilmemişse (özel), bu Tamam ' dır.
+   > Bu ağ özel (yönlendirilmeyen) olabilir.
 
-- **Yukarı bağlantı ağı:** VMware HCX yukarı ağı için yeni bir ağ oluşturmak ve bağlantı noktası grubu aracılığıyla vSphere kümenize genişletmek istiyorsunuz. En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. (Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyaç duyabilirsiniz.)  
-
-   > [!NOTE]
-   > Önerilen yöntem bir/29 ağ oluşturmaktır, ancak herhangi bir ağ boyutu olur.
-
-- **Çoğaltma ağı:** VMware HCX çoğaltması için yeni bir ağ oluşturmak ve bu ağı bir bağlantı noktası grubu aracılığıyla vSphere kümenize genişletmek istiyorsunuz. En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. (Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyaç duyabilirsiniz.)
+- **Yukarı bağlantı ağı:** VMware HCX yukarı ağı için yeni bir ağ oluşturmak ve bağlantı noktası grubu aracılığıyla vSphere kümenize genişletmek istiyorsunuz. En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyacınız bulunabilir.  
 
    > [!NOTE]
-   > Önerilen yöntem bir/29 ağ oluşturmaktır, ancak herhangi bir ağ boyutu olur.
+   > Önerdiğimiz Yöntem bir/26 ağı oluşturuyor. Bir/26 ağda, en fazla 10 hizmet kafesi ve 60 ağ Extender (hizmet ağı başına-1) kullanabilirsiniz. Azure VMware Çözüm özel bulutlarını kullanarak her ağ genişletici için sekiz ağ uzatabilirsiniz.
+   >
+   
+- **Çoğaltma ağı:** Bu isteğe bağlıdır. VMware HCX çoğaltması için yeni bir ağ oluşturmak ve bu ağı bir bağlantı noktası grubu aracılığıyla vSphere kümenize genişletmek istiyorsunuz. En azından, VMware HCX için bu ağ segmentinde iki IP 'yi tanımla. Dağıtımınıza bağlı olarak daha büyük sayılara ihtiyacınız bulunabilir.
+
+   > [!NOTE]
+   > Bu yapılandırma yalnızca şirket içi küme ana bilgisayarları adanmış bir çoğaltma VMkernel ağı kullanması durumunda mümkündür.  Şirket içi kümenizin tanımlı bir adanmış çoğaltma VMkernel ağı yoksa, bu ağı oluşturmaya gerek yoktur.

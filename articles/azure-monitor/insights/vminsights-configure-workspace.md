@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747698"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95530123"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma
 VM'ler için Azure İzleyici, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM'ler için Azure İzleyici için yapılandırılacak.
@@ -53,7 +53,7 @@ VM'ler için Azure İzleyici, herhangi bir bölgedeki sanal makineleri izleyebil
 - Orta Güney ABD
 - Doğu ABD
 - Doğu ABD 2
-- Central US
+- Orta ABD
 - Orta Kuzey ABD
 - US Gov az
 - US Gov VA
@@ -68,7 +68,7 @@ VM'ler için Azure İzleyici, herhangi bir bölgedeki sanal makineleri izleyebil
 - Doğu Avustralya
 - Güneydoğu Avustralya
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 VM'ler için Azure İzleyici özellikleri etkinleştirmek ve bu özelliklere erişmek için, çalışma alanında [Log Analytics katkıda bulunan rolüne](../platform/manage-access.md#manage-access-using-azure-permissions) sahip olmanız gerekir. Performansı, sistem durumunu ve eşleme verilerini görüntülemek için, Azure VM için [izleme okuyucu rolüne](../platform/roles-permissions-security.md#built-in-monitoring-roles) sahip olmanız gerekir. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanlarını yönetme](../platform/manage-access.md).
 
 ## <a name="add-vminsights-solution-to-workspace"></a>Çalışma alanına Vminsıghts çözümü ekleme
@@ -77,7 +77,7 @@ Bir Log Analytics çalışma alanının VM'ler için Azure İzleyici ile kullan�
 > [!NOTE]
 > *Vminsıghts* çözümünü çalışma alanına eklediğinizde, çalışma alanına bağlı olan tüm mevcut sanal makineler, verileri ınsightsölçümlerini gönderecek şekilde başlayacaktır. Diğer veri türleri için veriler, çalışma alanına bağlı mevcut sanal makinelere Dependency Agent ekleyene kadar toplanmaz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 Azure portal kullanarak var olan bir çalışma alanını yapılandırmak için üç seçenek vardır. Her biri aşağıda açıklanmıştır.
 
 Tek bir çalışma alanını yapılandırmak için **diğer ekleme seçeneklerini** belirleyin ve ardından **bir çalışma alanı yapılandırın**. Bir abonelik ve çalışma alanı seçin ve ardından **Yapılandır**' a tıklayın.

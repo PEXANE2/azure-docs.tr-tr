@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604487"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533064"
 ---
 # <a name="modify-target-settings"></a>Hedef ayarlarını değiştirme
 
@@ -41,11 +41,11 @@ Değiştirebileceğiniz yapılandırma ayarları tabloda özetlenmiştir.
 **VM SKU** | Hedef VM için kullanılacak [VM türü](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (hedef bölgede kullanılabilir).<br/><br/> Seçilen hedef VM, kaynak VM 'den küçük olmamalıdır.
 **Ağ kaynakları** | Sanal ağlar (VNet) için seçenekler/ağ güvenlik grupları/ağ arabirimleri:<br/><br/> -Hedef bölgede aynı ada sahip yeni bir kaynak oluşturun.<br/><br/> -Hedef bölgede farklı bir ada sahip yeni bir kaynak oluşturun.<br/><br/> -Hedef bölgede var olan bir ağ kaynağını kullanın.<br/><br/> Yeni bir hedef kaynak oluşturursanız, değiştirdiğiniz ayarların dışında, kaynak kaynakla aynı ayarları atanır.
 **Genel IP adresi adı** | Adı belirtin.
-**Genel IP adresi SKU 'SU** | [SKU 'yu](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)belirtin.
-**Genel IP adresi bölgesi** | Standart genel IP adresleri için [bölgeyi](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) belirtin.<br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli**olarak girin.
+**Genel IP adresi SKU 'SU** | [SKU 'yu](../virtual-network/public-ip-addresses.md#sku)belirtin.
+**Genel IP adresi bölgesi** | Standart genel IP adresleri için [bölgeyi](../virtual-network/public-ip-addresses.md#standard) belirtin.<br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli** olarak girin.
 **Yük dengeleyici adı** | Adı belirtin.
 **Yük dengeleyici SKU 'SU** | Temel veya standart. Standart kullanmanızı öneririz.
-**Yük dengeleyici bölgesi** | Yük Dengeleyici için bir bölge belirtin. <br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli**olarak girin.
+**Yük dengeleyici bölgesi** | Yük Dengeleyici için bir bölge belirtin. <br/><br/> Bölgenin yedekli olmasını istiyorsanız **bölge yedekli** olarak girin.
 **Kaynak bağımlılıkları** | Her bağımlılık için seçenekler:<br/><br/>-Kaynak, hedef bölgeye taşınacak kaynak bağımlı kaynakları kullanır.<br/><br/> -Kaynak, hedef bölgede bulunan farklı bağımlı kaynakları kullanır. Bu durumda, hedef bölgedeki herhangi bir benzer kaynak arasından seçim yapabilirsiniz.
 
 ### <a name="edit-vm-target-settings"></a>VM hedef ayarlarını Düzenle

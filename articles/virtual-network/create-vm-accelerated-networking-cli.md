@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 31d833d1a6e9c7715ca13582c09f5f72564d683a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016148"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533370"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLı kullanarak hızlandırılmış ağ ile Linux sanal makinesi oluşturma
 
@@ -48,7 +48,7 @@ Aşağıdaki dağıtımlar Azure galerisindeki kutudan çıkar:
 * **RHEL 7,4 veya üzeri**
 * **CentOS 7,4 veya üzeri**
 * **CoreOS Linux**
-* **Geribağlantı noktaları çekirdeki "uzat"**
+* **Geribağlantı noktaları çekirdeği, "Buster" veya üzeri ile "uzat"**
 * **Red Hat uyumlu çekirdek ile Oracle Linux 7,4 ve üzeri (RHCK)**
 * **UEK sürüm 5 ile Oracle Linux 7,5 ve üzeri**
 * **FreeBSD 10,4, 11,1 & 12,0 veya üzeri**

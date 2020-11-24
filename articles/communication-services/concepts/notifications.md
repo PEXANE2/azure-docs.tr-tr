@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f4de7268f3384f86b7090dfe18576347311e048e
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888683"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519362"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
@@ -77,7 +77,8 @@ Portalda Azure Communication Services kaynağınız ' ne gidin. Iletişim Hizmet
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure Portal 'daki anında Iletme bildirimleri ayarlarını gösteren ekran görüntüsü.":::
 
 > [!NOTE]
-> Azure Bildirim Hub 'ı bağlantı dizesi güncelleştirilirse, Iletişim Hizmetleri kaynağının de güncellenmesi gerekiyor.
+> Azure Bildirim Hub 'ı bağlantı dizesi güncelleştirilirse, Iletişim Hizmetleri kaynağının de güncellenmesi gerekiyor.  
+Hub 'ın bağlantılı olduğu herhangi bir değişiklik, veri düzlemine (bir bildirim gönderilirken) en uzun süre içinde yansıtılır ``10`` . Bu, daha önce gönderilen bildirimler **varsa** hub ilk kez bağlandığında da geçerlidir.
 
 #### <a name="device-registration"></a>Cihaz kaydı 
 

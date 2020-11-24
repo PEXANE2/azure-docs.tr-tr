@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399134"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521538"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET ile blob özelliklerini ve meta verileri yönetme
 
@@ -126,7 +126,7 @@ Meta verileri bir blob veya kapsayıcı kaynağında bir veya daha fazla ad-değ
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 ---
 
-Meta veri adı/değer çiftleri geçerli HTTP başlıklardır ve HTTP üst bilgilerini yöneten tüm kısıtlamalara uymalıdır. Meta veri adları geçerli HTTP üst bilgisi adları ve geçerli C# tanımlayıcıları olmalıdır, yalnızca ASCII karakterler içerebilir ve büyük/küçük harfe duyarsız olarak değerlendirilmelidir. [Base64 kodlama](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) veya [URL-](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) ASCII olmayan karakterler içeren meta veri değerlerini kodla.
+Meta veri adı/değer çiftleri geçerli HTTP başlıklardır ve HTTP üst bilgilerini yöneten tüm kısıtlamalara uymalıdır. Meta veri adları geçerli HTTP üst bilgisi adları ve geçerli C# tanımlayıcıları olmalıdır, yalnızca ASCII karakterler içerebilir ve büyük/küçük harfe duyarsız olarak değerlendirilmelidir. [Base64 kodlama](/dotnet/api/system.convert.tobase64string) veya [URL-](/dotnet/api/system.web.httputility.urlencode) ASCII olmayan karakterler içeren meta veri değerlerini kodla.
 
 Meta verilerinizin adı, C# tanımlayıcıları için adlandırma kurallarına uygun olmalıdır. Meta veri adları, oluşturulduklarında kullanılan durumu korur, ancak ayarlandığında veya okurken büyük/küçük harfe duyarsızdır. Bir kaynak için aynı adı kullanan iki veya daha fazla meta veri üstbilgisi gönderilirse Azure Blob depolama, 400 (Hatalı Istek) HTTP hata kodunu döndürür.
 

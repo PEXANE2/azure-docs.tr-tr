@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: yüz tanıma, yüz tanıma yazılımı, yüz analizi, yüz eşleştirme, yüz tanıma uygulaması, görüntüye göre arama, yüz tanıma arama
-ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911452"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532265"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure yüz hizmeti nedir?
 
@@ -76,9 +76,9 @@ Bir veritabanını oluşturup eğitdikten sonra, yeni bir algılanan yüz ile gr
 
 Kişi kimliği hakkında daha fazla bilgi için, [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya API başvurusunu [Tanımla](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) belgelerine bakın.
 
-## <a name="containers"></a>Kapsayıcılar
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
 
-Bir standartlaştırılmış Docker kapsayıcısını verilerinize yaklaştırarak yüzeyleri tespit etmek, tanımak ve tanımlamak için [yüz kapsayıcısını kullanın](face-how-to-install-containers.md) .
+Şirket içinde API özelliklerini dağıtmak için [yüz kapsayıcısını (Önizleme) kullanın](face-how-to-install-containers.md) . Bu Docker kapsayıcısı, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmanızı sağlar.
 
 ## <a name="sample-apps"></a>Örnek uygulamalar
 

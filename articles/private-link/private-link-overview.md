@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 1ce0368bb86134bd52473b80eabbfaf87e36148d
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ce3903bad4f7e4675406956ddedbc9011a6d2be8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939656"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522269"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -21,7 +21,7 @@ Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve
 Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağını de dolaşır. Hizmetinizi genel İnternet 'e sunma artık gerekli değildir. Kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda oluşturabilir ve müşterilerinize iletebilirsiniz. Azure özel bağlantısını kullanarak kurulum ve tüketim, Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
 
 > [!IMPORTANT]
-> Azure özel bağlantısı artık genel kullanıma sunulmuştur. Hem özel uç nokta hem de özel bağlantı hizmeti (Standart yük dengeleyicinin arkasındaki hizmet) genel kullanıma sunulmuştur. Farklı zamanlamalarda Azure özel bağlantısına farklı Azure PaaS da eklenecektir. Özel bağlantıdaki Azure PaaS 'nin doğru durumu için bu makaledeki [kullanılabilirliği](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) denetle bölümüne bakın. Bilinen sınırlamalar için bkz. [Özel uç nokta](private-endpoint-overview.md#limitations) ve [özel bağlantı hizmeti](private-link-service-overview.md#limitations). 
+> Azure özel bağlantısı artık genel kullanıma sunulmuştur. Hem özel uç nokta hem de özel bağlantı hizmeti (Standart yük dengeleyicinin arkasındaki hizmet) genel kullanıma sunulmuştur. Farklı zamanlamalarda Azure özel bağlantısına farklı Azure PaaS da eklenecektir. Özel bağlantıdaki Azure PaaS 'nin doğru durumu için bu makaledeki [kullanılabilirliği](#availability) denetle bölümüne bakın. Bilinen sınırlamalar için bkz. [Özel uç nokta](private-endpoint-overview.md#limitations) ve [özel bağlantı hizmeti](private-link-service-overview.md#limitations). 
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 Azure özel bağlantısı aşağıdaki avantajları sağlar:  
@@ -43,33 +43,33 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Standart Azure Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri  | Standart Load Balancer destekleniyor | GA <br/> [Özel bağlantı hizmeti oluşturmayı öğrenin.](create-private-link-service-portal.md) |
 | Azure Blob depolama (Data Lake Storage 2. dahil)       |  Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [BLOB depolama için özel bir uç nokta oluşturmayı öğrenin.](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Dosyaları | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri      | |   GA <br/> [Azure dosyaları ağ uç noktaları oluşturmayı öğrenin.](../storage/files/storage-files-networking-endpoints.md)   |
-| Azure Dosya Eşitleme | Tüm ortak bölgeler      | |   GA <br/> [Azure dosyaları ağ uç noktaları oluşturmayı öğrenin.](/azure/storage/files/storage-sync-files-networking-endpoints)   |
+| Azure Dosya Eşitleme | Tüm ortak bölgeler      | |   GA <br/> [Azure dosyaları ağ uç noktaları oluşturmayı öğrenin.](../storage/files/storage-sync-files-networking-endpoints.md)   |
 | Azure Kuyruk Depolama       |  Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Kuyruk depolaması için özel bir uç nokta oluşturmayı öğrenin.](tutorial-private-endpoint-storage-portal.md) |
 | Azure Tablo depolama       |  Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Tablo depolaması için özel bir uç nokta oluşturmayı öğrenin.](tutorial-private-endpoint-storage-portal.md)  |
-|  Azure SQL Veritabanı         | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri      |  Ara sunucu [bağlantı ilkesi](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) için desteklenir | GA <br/> [Azure SQL için özel uç nokta oluşturmayı öğrenin](create-private-endpoint-portal.md)      |
-|Azure Synapse Analytics (eski adı SQL Veri Ambarı)| Tüm ortak bölgeler <br/> Tüm kamu bölgeleri |  Ara sunucu [bağlantı ilkesi](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) için desteklenir |GA <br/> [Azure SYNAPSE Analytics için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|Azure Cosmos DB|  Tüm ortak bölgeler<br/> Tüm kamu bölgeleri</br> Tüm Çin bölgeleri | |GA <br/> [Cosmos DB için özel uç nokta oluşturmayı öğrenin.](create-private-endpoint-cosmosdb-portal.md)|
-|  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri     | Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir | GA <br/> [PostgreSQL için Azure veritabanı için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  MySQL için Azure Veritabanı         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri      |  | GA <br/> [MySQL için Azure veritabanı için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri     |  | GA <br/> [MariaDB için Azure veritabanı için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
-|  Azure Key Vault         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri      |  | GA   <br/> [Azure Key Vault için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
-|Azure Kubernetes hizmeti-Kubernetes API 'SI | Tüm ortak bölgeler      |  | GA   <br/> [Azure Kubernetes hizmeti için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|Azure Search | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri | Özel modda hizmet ile desteklenir | GA   <br/> [Azure Search için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/search/service-create-private-endpoint)    |
-|Azure Container Registry | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri    | Kapsayıcı kayıt defterinin Premium katmanıyla desteklenir. [Katmanlar için seçin](https://docs.microsoft.com/azure/container-registry/container-registry-skus)| GA   <br/> [Azure Container Registry için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
-|Azure Uygulama Yapılandırması | Tüm ortak bölgeler      |  | Önizleme  </br> [Azure Uygulama yapılandırması için özel bir uç nokta oluşturmayı öğrenin](https://docs.microsoft.com/azure/azure-app-configuration/concept-private-endpoint) |
-|Azure Backup | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri   |  | GA   <br/> [Azure Backup için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/backup/private-endpoints)   |
-|Azure Event Hub | Tüm ortak bölgeler<br/>Tüm kamu bölgeleri      |   | GA   <br/> [Azure Olay Hub 'ı için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
-|Azure Service Bus | Tüm ortak bölgeler<br/>Tüm kamu bölgeleri  | Azure Service Bus Premium katmanıyla desteklenir. [Katmanlar için seçin](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [Azure Service Bus için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
-|Azure Geçişi | Tüm ortak bölgeler      |  | Önizleme <br/> [Azure Relay için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/azure-relay/private-link-service)  |
-|Azure Event Grid| Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  | GA   <br/> [Azure Event Grid için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | Tüm ortak bölgeler      | PremiumV2, PremiumV3 veya Function Premium planıyla desteklenir  | GA   <br/> [Azure Web Apps için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal)   |
-|Azure Machine Learning | Tüm ortak bölgeler    |  | GA   <br/> [Azure Machine Learning için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| Azure Otomasyonu  | Tüm ortak bölgeler |  | Önizleme </br> [Azure Otomasyonu için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/automation/how-to/private-link-security)| |
-| Azure IoT Hub | Tüm ortak bölgeler    |  | GA   <br/> [Azure IoT Hub için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
-| Azure SignalR | DOĞU ABD, GÜNEY ORTA ABD,<br/>Batı ABD 2, tüm Çin bölgeleri      |  | Önizleme   <br/> [Azure SignalR için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/azure-signalr/howto-private-endpoints)   |
-| Azure İzleyici <br/>(Log Analytics & Application Insights) | Tüm ortak bölgeler      |  | GA   <br/> [Azure Izleyici için özel bir uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-| Azure Batch | Dışındaki tüm ortak bölgeler: Almanya Orta, Almanya kuzeydoğu <br/> Tüm kamu bölgeleri  | | GA <br/> [Azure Batch için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/batch/private-connectivity) |
-|Azure Data Factory | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri    | Kimlik bilgilerinin bir Azure Anahtar Kasası 'nda depolanması gerekir| GA   <br/> [Azure Data Factory için özel uç nokta oluşturmayı öğrenin.](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)   |
+|  Azure SQL Veritabanı         | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri      |  Ara sunucu [bağlantı ilkesi](../azure-sql/database/connectivity-architecture.md#connection-policy) için desteklenir | GA <br/> [Azure SQL için özel uç nokta oluşturmayı öğrenin](create-private-endpoint-portal.md)      |
+|Azure Synapse Analytics (eski adı SQL Veri Ambarı)| Tüm ortak bölgeler <br/> Tüm kamu bölgeleri |  Ara sunucu [bağlantı ilkesi](../azure-sql/database/connectivity-architecture.md#connection-policy) için desteklenir |GA <br/> [Azure SYNAPSE Analytics için özel uç nokta oluşturmayı öğrenin.](../azure-sql/database/private-endpoint-overview.md)|
+|Azure Cosmos DB|  Tüm ortak bölgeler<br/> Tüm kamu bölgeleri</br> Tüm Çin bölgeleri | |GA <br/> [Cosmos DB için özel uç nokta oluşturmayı öğrenin.](./tutorial-private-endpoint-cosmosdb-portal.md)|
+|  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri     | Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir | GA <br/> [PostgreSQL için Azure veritabanı için özel uç nokta oluşturmayı öğrenin.](../postgresql/concepts-data-access-and-security-private-link.md)      |
+|  MySQL için Azure Veritabanı         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri      |  | GA <br/> [MySQL için Azure veritabanı için özel bir uç nokta oluşturmayı öğrenin.](../mysql/concepts-data-access-security-private-link.md)     |
+|  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri     |  | GA <br/> [MariaDB için Azure veritabanı için özel bir uç nokta oluşturmayı öğrenin.](../mariadb/concepts-data-access-security-private-link.md)      |
+|  Azure Key Vault         | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri      |  | GA   <br/> [Azure Key Vault için özel uç nokta oluşturmayı öğrenin.](../key-vault/general/private-link-service.md)   |
+|Azure Kubernetes hizmeti-Kubernetes API 'SI | Tüm ortak bölgeler      |  | GA   <br/> [Azure Kubernetes hizmeti için özel bir uç nokta oluşturmayı öğrenin.](../aks/private-clusters.md)   |
+|Azure Search | Tüm ortak bölgeler <br/> Tüm kamu bölgeleri | Özel modda hizmet ile desteklenir | GA   <br/> [Azure Search için özel uç nokta oluşturmayı öğrenin.](../search/service-create-private-endpoint.md)    |
+|Azure Container Registry | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri    | Kapsayıcı kayıt defterinin Premium katmanıyla desteklenir. [Katmanlar için seçin](../container-registry/container-registry-skus.md)| GA   <br/> [Azure Container Registry için özel uç nokta oluşturmayı öğrenin.](../container-registry/container-registry-private-link.md)   |
+|Azure Uygulama Yapılandırması | Tüm ortak bölgeler      |  | Önizleme  </br> [Azure Uygulama yapılandırması için özel bir uç nokta oluşturmayı öğrenin](../azure-app-configuration/concept-private-endpoint.md) |
+|Azure Backup | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri   |  | GA   <br/> [Azure Backup için özel uç nokta oluşturmayı öğrenin.](../backup/private-endpoints.md)   |
+|Azure Event Hub | Tüm ortak bölgeler<br/>Tüm kamu bölgeleri      |   | GA   <br/> [Azure Olay Hub 'ı için özel bir uç nokta oluşturmayı öğrenin.](../event-hubs/private-link-service.md)  |
+|Azure Service Bus | Tüm ortak bölgeler<br/>Tüm kamu bölgeleri  | Azure Service Bus Premium katmanıyla desteklenir. [Katmanlar için seçin](../service-bus-messaging/service-bus-premium-messaging.md) | GA   <br/> [Azure Service Bus için özel uç nokta oluşturmayı öğrenin.](../service-bus-messaging/private-link-service.md)    |
+|Azure Geçişi | Tüm ortak bölgeler      |  | Önizleme <br/> [Azure Relay için özel uç nokta oluşturmayı öğrenin.](../azure-relay/private-link-service.md)  |
+|Azure Event Grid| Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  | GA   <br/> [Azure Event Grid için özel uç nokta oluşturmayı öğrenin.](../event-grid/network-security.md) |
+|Azure Web Apps | Tüm ortak bölgeler      | PremiumV2, PremiumV3 veya Function Premium planıyla desteklenir  | GA   <br/> [Azure Web Apps için özel bir uç nokta oluşturmayı öğrenin.](./tutorial-private-endpoint-webapp-portal.md)   |
+|Azure Machine Learning | Tüm ortak bölgeler    |  | GA   <br/> [Azure Machine Learning için özel uç nokta oluşturmayı öğrenin.](../machine-learning/how-to-configure-private-link.md)   |
+| Azure Otomasyonu  | Tüm ortak bölgeler |  | Önizleme </br> [Azure Otomasyonu için özel bir uç nokta oluşturmayı öğrenin.](../automation/how-to/private-link-security.md)| |
+| Azure IoT Hub | Tüm ortak bölgeler    |  | GA   <br/> [Azure IoT Hub için özel bir uç nokta oluşturmayı öğrenin.](../iot-hub/virtual-network-support.md) |
+| Azure SignalR | DOĞU ABD, GÜNEY ORTA ABD,<br/>Batı ABD 2, tüm Çin bölgeleri      |  | Önizleme   <br/> [Azure SignalR için özel uç nokta oluşturmayı öğrenin.](../azure-signalr/howto-private-endpoints.md)   |
+| Azure İzleyici <br/>(Log Analytics & Application Insights) | Tüm ortak bölgeler      |  | GA   <br/> [Azure Izleyici için özel bir uç nokta oluşturmayı öğrenin.](../azure-monitor/platform/private-link-security.md)   | 
+| Azure Batch | Dışındaki tüm ortak bölgeler: Almanya Orta, Almanya kuzeydoğu <br/> Tüm kamu bölgeleri  | | GA <br/> [Azure Batch için özel uç nokta oluşturmayı öğrenin.](../batch/private-connectivity.md) |
+|Azure Data Factory | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri<br/>Tüm Çin bölgeleri    | Kimlik bilgilerinin bir Azure Anahtar Kasası 'nda depolanması gerekir| GA   <br/> [Azure Data Factory için özel uç nokta oluşturmayı öğrenin.](../data-factory/data-factory-private-link.md)   |
 
 
 
@@ -109,4 +109,3 @@ SLA için bkz. [Azure özel bağlantısı Için SLA](https://azure.microsoft.com
 - [Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma](create-private-link-service-portal.md)
 
 
- 

@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: c8afc4f15f421a7b60b95d09b954e7742c24c66e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040041"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519685"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure Cloud Foundry için ilk uygulamanızı dağıtın
 
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 Artık, bir uygulamayı dağıtırken yeni kuruluş ve alanda otomatik olarak oluşturulur. Yeni kuruluş/alan üzerinde şu anda hiçbir uygulama olmadığını doğrulamak için, `cf apps` yeniden yazın.
 
 > [!NOTE] 
-> Org 'ler ve boşluklar ve rol tabanlı erişim denetimi (RBAC) için nasıl kullanılabilecekleri hakkında daha fazla bilgi için [Cloud Foundry belgelerine][cf-orgs-spaces-docs]bakın.
+> Org 'ler ve boşluklar hakkında daha fazla bilgi ve Cloud Foundry rol tabanlı erişim denetimi (Cloud Foundry RBAC) için nasıl kullanılabilecekleri hakkında daha fazla bilgi için [Cloud Foundry belgelerine][cf-orgs-spaces-docs]bakın.
 
 ## <a name="deploy-an-application"></a>Uygulama dağıtma
 

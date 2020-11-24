@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508038"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522354"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Uç Nokta nedir?
 
@@ -28,7 +28,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |Alt ağ    |  Sanal bir ağdan özel IP adresleri dağıtmak ve ayırmak için alt ağ. Alt ağ gereksinimleri için, bu makaledeki sınırlamalar bölümüne bakın.         |
 |Özel bağlantı kaynağı    |   Kullanılabilir türler listesinden kaynak KIMLIĞI veya diğer ad kullanarak bağlanacak özel bağlantı kaynağı. Bu kaynağa gönderilen tüm trafik için benzersiz bir ağ tanımlayıcısı oluşturulacak.       |
 |Hedef alt kaynak   |      Bağlanılacak alt kaynak. Her özel bağlantı kaynağı türü, tercihe göre seçim yapmak için farklı seçeneklere sahiptir.    |
-|Bağlantı onay yöntemi    |  Otomatik veya el ile. Rol tabanlı erişim denetimi (RBAC) izinlerine bağlı olarak, Özel uç noktanız otomatik olarak onaylanabilir. RBAC olmadan bir özel bağlantı kaynağına bağlanmaya çalışırsanız, kaynağın sahibinin bağlantıyı onaylamasını sağlamak için el ile yöntemini kullanın.        |
+|Bağlantı onay yöntemi    |  Otomatik veya el ile. Azure rol tabanlı erişim denetimi (Azure RBAC) izinlerine bağlı olarak, Özel uç noktanız otomatik olarak onaylanabilir. Bir özel bağlantı kaynağına Aure olmadan bağlanmaya çalışırsanız, kaynağın sahibinin bağlantıyı onaylamasını sağlamak için el ile yöntemini kullanın.        |
 |İstek Iletisi     |  İstenen bağlantıların el ile onaylanabilmesi için bir ileti belirtebilirsiniz. Bu ileti, belirli bir isteği tanımlamak için kullanılabilir.        |
 |Bağlantı durumu   |   Özel uç noktanın etkin olup olmadığını belirten bir salt okunurdur özelliği. Trafiği göndermek için yalnızca onaylanan durumdaki özel uç noktalar kullanılabilir. Kullanılabilir ek durumlar: <br>-**Onaylandı**: bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.</br><br>-**Bekliyor**: bağlantı el ile oluşturuldu ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.</br><br>-**Reddedildi**: bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.</br><br>-Bağlantı **kesildi**: bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı. Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. </br>|
 
@@ -45,9 +45,9 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
  
 - Aynı özel bağlantı kaynağı kullanılarak birden çok özel uç nokta oluşturulabilir. Ortak bir DNS sunucusu yapılandırması kullanan tek bir ağ için önerilen uygulama, DNS çözünürlüğünde yinelenen girişlerin veya çakışmaların oluşmaması için belirli bir özel bağlantı kaynağı için tek bir özel uç nokta kullanmaktır. 
  
-- Aynı sanal ağ içindeki aynı veya farklı alt ağlarda birden çok özel uç nokta oluşturulabilir. Bir abonelikte oluşturabileceğiniz özel uç noktalar sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Aynı sanal ağ içindeki aynı veya farklı alt ağlarda birden çok özel uç nokta oluşturulabilir. Bir abonelikte oluşturabileceğiniz özel uç noktalar sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
-- Özel bağlantı kaynağından gelen aboneliğin Ayrıca, Micosoft. Network kaynak sağlayıcısına kayıtlı olması gerekir. Ayrıntılar için bkz. [Azure kaynak sağlayıcıları](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+- Özel bağlantı kaynağından gelen aboneliğin Ayrıca, Micosoft. Network kaynak sağlayıcısına kayıtlı olması gerekir. Ayrıntılar için bkz. [Azure kaynak sağlayıcıları](../azure-resource-manager/management/resource-providers-and-types.md).
 
  
 ## <a name="private-link-resource"></a>Özel bağlantı kaynağı 
@@ -81,7 +81,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/çalışma alanları    | çalışma alanı |
 |**SignalR** | Microsoft. SignalRService/SignalR    | signalR |
 |**Azure İzleyici** | Microsoft. Insights/privateLinkScopes    | azuremonitor |
-|**Bilişsel hizmetler** | (Microsoft. Biliveservices/hesapları    | account |
+|**Bilişsel Hizmetler** | (Microsoft. Biliveservices/hesapları    | account |
 |**Azure Dosya Eşitleme** | Microsoft. Storagessync/storageSyncServices    | 'Nin |
     
   
@@ -136,7 +136,7 @@ Aşağıdaki tabloda özel uç noktalar kullanılırken bilinen kısıtlamaları
 - [Portalı kullanarak SQL veritabanı için özel bir uç nokta oluşturma](create-private-endpoint-portal.md)
 - [PowerShell kullanarak SQL veritabanı için özel bir uç nokta oluşturma](create-private-endpoint-powershell.md)
 - [CLı kullanarak SQL veritabanı için özel bir uç nokta oluşturma](create-private-endpoint-cli.md)
-- [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma](create-private-endpoint-storage-portal.md)
+- [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma](./tutorial-private-endpoint-storage-portal.md)
 - [Portalı kullanarak Azure Cosmos hesabı için özel bir uç nokta oluşturma](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell kullanarak kendi özel bağlantı hizmetinizi oluşturun](create-private-link-service-powershell.md)
 - [Portalı kullanarak PostgreSQL için Azure veritabanı için kendi özel bağlantısını oluşturun-tek sunucu](../postgresql/howto-configure-privatelink-portal.md)

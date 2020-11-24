@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 15026c378c4c399915e99b0910f1e6518f5adfc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c8ed791fc9496e67acdcfbfafddad9170ac47535
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151866"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522592"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Izleyici için Azure Güvenlik temeli
 
@@ -324,7 +324,7 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Rehberlik**: ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Azure Izleyicinize erişim düzeyini ve uygulamalarınızın ve kurumsal ortamlarınızın talep ettiği ilgili kaynakları kısıtlayabilirsiniz. Azure Izleyici 'ye erişimi, Azure Active Directory rol tabanlı erişim denetimi aracılığıyla denetleyebilirsiniz.
+**Rehberlik**: ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Azure Izleyicinize erişim düzeyini ve uygulamalarınızın ve kurumsal ortamlarınızın talep ettiği ilgili kaynakları kısıtlayabilirsiniz. Azure Izleyici 'ye erişimi Azure rol tabanlı erişim denetimi aracılığıyla denetleyebilirsiniz.
 
 - [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
@@ -361,7 +361,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
 
-**Kılavuz**: Azure izleyici erişimini yönetmek için Azure rol tabanlı erişim denetimi 'NI (RBAC) kullanın.
+**Kılavuz**: Azure izleyici erişimini yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın.
 
 - [Azure Izleyici 'de roller, izinler ve güvenlik](platform/roles-permissions-security.md)
 
@@ -529,7 +529,7 @@ Canlı akış APM özellikleri kullanıyorsanız, izleme anahtarına ek olarak k
 
 - [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Güvenlik önerileri-bir başvuru kılavuzu](../security-center/recommendations-reference.md)
+- [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -685,7 +685,7 @@ Depolama hesaplarına yüklenen kötü amaçlı yazılımları algılamak için 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Kılavuz**: özel Azure ilkeleri, Azure Resource Manager şablonları gibi kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure DevOps kullanın. Azure DevOps 'da yönettiğiniz kaynakları korumak için, belirli kullanıcılara, yerleşik güvenlik gruplarına veya Azure DevOps ile tümleşikse veya TFS ile tümleşikse Active Directory Azure Active Directory (Azure AD) içinde tanımlanan gruplara izin verebilir veya vermeyebilirsiniz.   Müşteri tarafından yönetilen anahtarları korumak için rol tabanlı erişim denetimi kullanın. 
+**Kılavuz**: özel Azure ilkeleri, Azure Resource Manager şablonları gibi kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure DevOps kullanın. Azure DevOps 'da yönettiğiniz kaynakları korumak için, belirli kullanıcılara, yerleşik güvenlik gruplarına veya Azure DevOps ile tümleşikse veya TFS ile tümleşikse Active Directory Azure Active Directory (Azure AD) içinde tanımlanan gruplara izin verebilir veya vermeyebilirsiniz.   Müşteri tarafından yönetilen anahtarları korumak için Azure rol tabanlı erişim denetimi kullanın. 
 
 Ayrıca, anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault Soft-Delete ve Temizleme korumasını etkinleştirin. Azure Resource Manager şablon yedeklemelerini depolamak için Azure depolama kullanılıyorsa, Bloblar veya blob anlık görüntüleri silindiğinde verilerinizi kaydetmek ve kurtarmak için geçici silme özelliğini etkinleştirin. 
 

@@ -9,17 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bca2f0229a15f44ff8f3589a9c1e80032036b97c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325023"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507208"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 'de Azure Machine Learning Studio (klasik) kullanmaya başlama
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
-
+**Uygulama hedefi:** ![ Bu bir onay işaretidir ve bu makalenin Machine Learning Studio (klasik) için geçerli olduğu anlamına gelir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ Bu bir X ' dir ve bu makalenin Azure Machine Learning için geçerli olduğu anlamına gelir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 <!-- Stephen F Elston, Ph.D. -->
 Bu öğreticide, R kodu oluşturmak, test etmek ve yürütmek için Azure Machine Learning Studio (klasik) kullanmayı öğreneceksiniz. Sonunda, tamamlanmış bir tahmin çözümünüz olacaktır.
@@ -122,9 +121,9 @@ Bu kodun son satırını şu anda anlamıyorsanız, okumaya devam edin. Bu makal
 
 RStudio, R için yaygın olarak kullanılan bir IDE 'dir. Bu kılavuzda kullanılan R kodundan bazılarını düzenlemek, test etmek ve hatalarını ayıklamak için RStudio kullanacağız. R kodu test edildikten ve hazırlanıyor, RStudio düzenleyicisinden bir Machine Learning Studio (klasik) [yürütme R betik][execute-r-script] modülüne kesip yapıştırabilirsiniz.
 
-Masaüstü makinenizde R programlama dili yüklü değilse, bunu şimdi yapın. Açık kaynaklı R dilinin ücretsiz indirmeleri, [kapsamlı r Arşivi ağı 'nda (CRAN)](https://www.r-project.org/)bulunabilir. Windows, Mac OS ve Linux/UNIX için İndirilenler vardır. Yakın bir yansıtma seçin ve indirme yönergelerini izleyin. Ayrıca, CRAN birçok yararlı analiz ve veri işleme paketi içerir.
+Masaüstü makinenizde R programlama dili yüklü değilse, bunu şimdi yapın. Açık kaynaklı R dilinin ücretsiz indirmeleri, [kapsamlı r Arşivi ağı 'nda (CRAN)](https://www.r-project.org/)bulunabilir. Windows, macOS ve Linux/UNIX için İndirilenler mevcuttur. Yakın bir yansıtma seçin ve indirme yönergelerini izleyin. Ayrıca, CRAN birçok yararlı analiz ve veri işleme paketi içerir.
 
-RStudio 'ya yeni başladıysanız Masaüstü sürümünü indirip yüklemelisiniz. Rstudio 'da Windows, Mac OS ve Linux/UNIX için RStudio İndirmeleri [bulabilirsiniz.](http://www.rstudio.com/products/RStudio/) Masaüstü makinenize RStudio 'Yu yüklemek için belirtilen yönergeleri izleyin.
+RStudio 'ya yeni başladıysanız Masaüstü sürümünü indirip yüklemelisiniz. Rstudio 'da Windows, macOS ve Linux/UNIX için RStudio İndirmeleri [bulabilirsiniz.](http://www.rstudio.com/products/RStudio/) Masaüstü makinenize RStudio 'Yu yüklemek için belirtilen yönergeleri izleyin.
 
 Rstudio [IDE 'Yi kullanarak](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)rstudio 'ya bir öğreticiye giriş sunulmaktadır.
 
@@ -143,7 +142,7 @@ Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https:/
 **csdairydata.csv** dosyasını Machine Learning Studio (klasik) içine yükleyerek başlayacağız.
 
 1. Machine Learning Studio (klasik) ortamınızı başlatın.
-1. Ekranın sol alt kısmındaki **+ Yeni** ' yi seçin ve **veri kümesi** ' ni seçin.
+1. Ekranın sol alt kısmındaki **+ Yeni** ' yi seçin ve **veri kümesi**' ni seçin.
 1. **Yerel dosya ' dan** seçim yapın ve ardından dosyayı seçmek için **Araştır** ' ı seçin.
 1. Veri kümesinin türü olarak **üst bilgi (. csv) Ile genel CSV dosyasını** seçtiğinizden emin olun.
 1. Onay işaretini seçin.
@@ -153,14 +152,14 @@ Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https:/
 
 Artık Machine Learning Studio (klasik) ' de bazı verileriniz olduğuna göre, analiz yapmak için bir deneme oluşturuyoruz.  
 
-1. Ekranın sol alt kısmındaki **+ Yeni** ' **yi seçin ve**  >  **boş deneme** ' yı seçin.
+1. Ekranın sol alt kısmındaki **+ Yeni** ' **yi seçin ve**  >  **boş deneme**' yı seçin.
 1. Sayfanın üst kısmındaki başlıkta **oluşturulan** denemeyi seçerek ve değiştirerek denemenizi adlandırın. Örneğin, bunu **CA süt analiziyle** değiştirin.
-1. Deneme sayfasının sol tarafında, **kaydedilmiş veri kümeleri**  >  **veri kümelerim** ' i seçin. Daha önce karşıya yüklediğiniz **cadairydata.csv** dosyasını görmeniz gerekir.
+1. Deneme sayfasının sol tarafında, **kaydedilmiş veri kümeleri**  >  **veri kümelerim**' i seçin. Daha önce karşıya yüklediğiniz **cadairydata.csv** dosyasını görmeniz gerekir.
 1. **csdairydata.csv veri kümesini** deneme üzerine sürükleyin.
 1. Sol bölmenin üst kısmındaki **deneme öğelerini ara** kutusuna [Yürüt R betiği][execute-r-script]girin. Modül arama listesinde görünür.
 1. [Yürüt R betiği][execute-r-script] modülünü paletle sürükleyin.
-1. **csdairydata.csv veri kümesinin** çıkışını, [Execute R betiğinin][execute-r-script]en soldaki giriş ( **dataSet1** ) öğesine bağlayın.
-1. **Kaydet** ’i seçin.
+1. **csdairydata.csv veri kümesinin** çıkışını, [Execute R betiğinin][execute-r-script]en soldaki giriş (**dataSet1**) öğesine bağlayın.
+1. **Kaydet**'i seçin.
 
 Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
@@ -169,7 +168,7 @@ Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
 #### <a name="check-on-the-data"></a>Verileri denetleyin
 
-Deneyimize yüklediğimiz verilere göz atalım. Deneyde **cadairydata.csv veri kümesinin** çıkışını seçin ve **Görselleştir** ' i seçin. Bu özete benzer bir şey görmeniz gerekir.
+Deneyimize yüklediğimiz verilere göz atalım. Deneyde **cadairydata.csv veri kümesinin** çıkışını seçin ve **Görselleştir**' i seçin. Bu özete benzer bir şey görmeniz gerekir.
 
 ![cadairydata.csv veri kümesinin özetini gösteren ekran görüntüsü.](./media/r-quickstart/fig4.png)
 
@@ -241,7 +240,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. `source()` [R betik modülünün yürütülmesi][execute-r-script] için kod penceresine ZIP dosya adınızı içeren işlevi girin. Bu durumda, girdik `source("src/simpleplot.R")` .
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**'i seçin.
 
 Bu adımlar tamamlandıktan sonra, deneme çalıştırıldığında r betiği [Yürüt][execute-r-script] dosyası ZIP dosyasında yürütülür. Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
@@ -313,7 +312,7 @@ DataSet2 girişinin davranışı DataSet1 ile aynıdır. Bu girişi kullanarak, 
 maml.mapOutputPort('cadairydata')
 ```
 
-Denemeyi çalıştırdıktan sonra, result DataSet1 çıkış bağlantı noktasını seçin ve ardından **Görselleştir** ' i seçin. Bu örneğe benzer bir şey görmeniz gerekir.
+Denemeyi çalıştırdıktan sonra, result DataSet1 çıkış bağlantı noktasını seçin ve ardından **Görselleştir**' i seçin. Bu örneğe benzer bir şey görmeniz gerekir.
 
 ![California süt verilerinin çıktısının görselleştirmesini gösteren ekran görüntüsü.](./media/r-quickstart/fig7.png)
 
@@ -323,7 +322,7 @@ Bu çıktı, tam olarak beklendiğimiz gibi girişle aynı şekilde görünür.
 
 [Yürütme R betiği][execute-r-script] modülünün cihaz çıktısı iletileri ve grafik çıktısını içerir. R 'deki standart çıkış ve standart hata iletileri R cihaz çıkış bağlantı noktasına gönderilir.
 
-R cihaz çıkışını görüntülemek için, bağlantı noktasını seçin ve ardından **Görselleştir** ' i seçin. Burada R betiğindeki standart çıkış ve standart hata görüyoruz.
+R cihaz çıkışını görüntülemek için, bağlantı noktasını seçin ve ardından **Görselleştir**' i seçin. Burada R betiğindeki standart çıkış ve standart hata görüyoruz.
 
 ![R cihaz bağlantı noktasındaki Standart çıktıyı ve standart hatayı gösteren ekran görüntüsü.](./media/r-quickstart/fig8.png)
 
@@ -1276,11 +1275,11 @@ Bu sonuçlardan, modele mevsimsel faktörleri eklemenin, RMS hatasını önemli 
 
 RStudio iyi şekilde belgelenmiştir. İşte, başlamanızı sağlamak için RStudio belgelerinin önemli bölümlerine bazı bağlantılar verilmiştir.
 
-* **Proje oluşturma** : R kodunuzu, rstudio 'yu kullanarak projeler halinde düzenleyebilir ve yönetebilirsiniz. Daha fazla bilgi için bkz. [projeleri kullanma](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Bu yönergeleri izleyin ve R kodu örnekleri için bu makaledeki bir proje oluşturun.
-* **R kodunu düzenleyin ve yürütün** : rstudio, r kodunu düzenlemek ve çalıştırmak için tümleşik bir ortam sağlar. Daha fazla bilgi için bkz. [kodu düzenlemede ve yürütülüyor](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
-* **Hata ayıklama** : rstudio güçlü hata ayıklama özellikleri içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [RStudio Ile hata ayıklama](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Kesme noktası sorun giderme özellikleri hakkında bilgi için bkz. [kesme noktası sorun giderme](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
+* **Proje oluşturma**: R kodunuzu, rstudio 'yu kullanarak projeler halinde düzenleyebilir ve yönetebilirsiniz. Daha fazla bilgi için bkz. [projeleri kullanma](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Bu yönergeleri izleyin ve R kodu örnekleri için bu makaledeki bir proje oluşturun.
+* **R kodunu düzenleyin ve yürütün**: rstudio, r kodunu düzenlemek ve çalıştırmak için tümleşik bir ortam sağlar. Daha fazla bilgi için bkz. [kodu düzenlemede ve yürütülüyor](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
+* **Hata ayıklama**: rstudio güçlü hata ayıklama özellikleri içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [RStudio Ile hata ayıklama](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Kesme noktası sorun giderme özellikleri hakkında bilgi için bkz. [kesme noktası sorun giderme](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
-## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla okuma
+## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla bilgi
 
 Bu R programlama öğreticisi, Machine Learning Studio (klasik) ile R dilini kullanmak için ihtiyaç duyduğunuz temel bilgileri içerir. R hakkında bilginiz yoksa, CRAN üzerinde iki giriş vardır:
 

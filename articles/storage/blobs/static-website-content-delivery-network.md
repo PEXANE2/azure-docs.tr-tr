@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465227"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527335"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Statik bir Web sitesini Azure CDN tümleştirme
 
@@ -63,7 +63,7 @@ Statik Web siteniz için Azure CDN doğrudan depolama hesabınızdan etkinleşti
 
 Bir nesneyi Azure CDN'de artık önbelleğe almak istemiyorsanız, aşağıdaki adımlardan birini uygulayabilirsiniz:
 
-* Kapsayıcıyı genel yerine özel yapma. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](storage-manage-access-to-resources.md).
+* Kapsayıcıyı genel yerine özel yapma. Daha fazla bilgi için bkz. [Kapsayıcılara ve bloblara anonim okuma erişimini yönetme](./anonymous-read-access-configure.md).
 * Azure portalı kullanarak CDN uç noktasını devre dışı bırakın veya silin.
 * Barındırılan hizmetinizi nesne için isteklere artık yanıt vermeyecek şekilde değiştirin.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 14b9429de5432680e5203e392827efa32e2a2a38
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015405"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528899"
 ---
 # <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
@@ -29,15 +29,15 @@ Aşağıdaki özellikler konuşma hizmetinin bir parçasıdır. Her bir özellik
 | Hizmet | Özellik | Açıklama | SDK | REST |
 |---------|---------|-------------|-----|------|
 | [Konuşmayı metne dönüştürme](speech-to-text.md) | Gerçek zamanlı konuşmayı metne dönüştürme | Konuşmadan metne dönüştürme veya ses akışlarını veya yerel dosyaları, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı metne dönüştürür. Kullanıcı amaçlarını [Language Understanding (lusıs)](../luis/index.yml) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. | [Evet](./speech-sdk.md) | [Evet](#reference-docs) |
-| | [Toplu iş konuşmayı metne dönüştürme](batch-transcription.md) | Toplu iş konuşmayı metne dönüştürme, Azure Blob depolamada depolanan büyük hacimde konuşma ses verilerinin zaman uyumsuz konuşmadan metne dökümünü sağlar. Konuşma sesini metne dönüştürmenin yanı sıra, toplu konuşma tanıma özelliği de, yaklaşım ve yaklaşım analizi için de izin verir. | No | [Evet](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| | [Çok cihazlı konuşma](multi-device-conversation.md) | Konuşma ve çeviri için kolay destek sayesinde konuşma veya metin tabanlı iletiler göndermek için bir konuşmadaki birden çok cihaza veya istemciye bağlanın| Yes | Hayır |
-| | [Konuşma dökümü](./conversation-transcription.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Yes | Hayır |
-| | [Özel Konuşma Tanıma modelleri oluşturma](#customize-your-speech-experience) | Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. | No | [Evet](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| | [Toplu iş konuşmayı metne dönüştürme](batch-transcription.md) | Toplu iş konuşmayı metne dönüştürme, Azure Blob depolamada depolanan büyük hacimde konuşma ses verilerinin zaman uyumsuz konuşmadan metne dökümünü sağlar. Konuşma sesini metne dönüştürmenin yanı sıra, toplu konuşma tanıma özelliği de, yaklaşım ve yaklaşım analizi için de izin verir. | Hayır | [Evet](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| | [Çok cihazlı konuşma](multi-device-conversation.md) | Konuşma ve çeviri için kolay destek sayesinde konuşma veya metin tabanlı iletiler göndermek için bir konuşmadaki birden çok cihaza veya istemciye bağlanın| Evet | Hayır |
+| | [Konuşma dökümü](./conversation-transcription.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Evet | Hayır |
+| | [Özel Konuşma Tanıma modelleri oluşturma](#customize-your-speech-experience) | Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. | Hayır | [Evet](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | [Metin okuma](text-to-speech.md) | Metin okuma | Metin okuma [, konuşma birleştirme biçimlendirme dili (SSML)](speech-synthesis-markup.md)kullanarak giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür. Standart sesler ve sinir sesler arasından seçim yapın (bkz. [dil desteği](language-support.md)). | [Evet](./speech-sdk.md) | [Evet](#reference-docs) |
-| | [Özel sesler oluşturma](#customize-your-speech-experience) | Markanızı veya ürününüzün benzersiz özel ses yazı tiplerini oluşturun. | No | [Evet](#reference-docs) |
-| [Konuşma Çevirisi](speech-translation.md) | Konuşma çevirisi | Konuşma çevirisi, uygulamalarınıza, araçlara ve cihazlara gerçek zamanlı, çok dilli konuşma çevirisi sağlar. Konuşmayı konuşmaya dönüştürme ve konuşmadan metne çevirme için bu hizmeti kullanın. | [Evet](./speech-sdk.md) | No |
-| [Ses yardımcıları](voice-assistants.md) | Ses yardımcıları | Konuşma hizmetini kullanan sesli yardımcılar, geliştiricilerin uygulamalar ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Ses Yardımcısı hizmeti, bir cihaz ile bir yardımcı uygulama arasında hızlı ve güvenilir bir etkileşim sağlar ve bu sayede, görev tamamlama için bir aygıt ve doğrudan hat konuşma kanalı veya tümleşik özel komutlar (Önizleme) hizmeti kullanılır. | [Evet](voice-assistants.md) | No |
-| [Konuşmacı Tanıma](speaker-recognition-overview.md) | Konuşmacı doğrulama & kimliği | Konuşmacı Tanıma hizmeti, kendi benzersiz ses özelliklerine göre hoparlörleri doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. | Yes | [Evet](/rest/api/speakerrecognition/) |
+| | [Özel sesler oluşturma](#customize-your-speech-experience) | Markanızı veya ürününüzün benzersiz özel ses yazı tiplerini oluşturun. | Hayır | [Evet](#reference-docs) |
+| [Konuşma Çevirisi](speech-translation.md) | Konuşma çevirisi | Konuşma çevirisi, uygulamalarınıza, araçlara ve cihazlara gerçek zamanlı, çok dilli konuşma çevirisi sağlar. Konuşmayı konuşmaya dönüştürme ve konuşmadan metne çevirme için bu hizmeti kullanın. | [Evet](./speech-sdk.md) | Hayır |
+| [Ses yardımcıları](voice-assistants.md) | Ses yardımcıları | Konuşma hizmetini kullanan sesli yardımcılar, geliştiricilerin uygulamalar ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Ses Yardımcısı hizmeti, bir cihaz ile bir yardımcı uygulama arasında hızlı ve güvenilir bir etkileşim sağlar ve bu sayede, görev tamamlama için bir aygıt ve doğrudan hat konuşma kanalı veya tümleşik özel komutlar (Önizleme) hizmeti kullanılır. | [Evet](voice-assistants.md) | Hayır |
+| [Konuşmacı Tanıma](speaker-recognition-overview.md) | Konuşmacı doğrulama & kimliği | Konuşmacı Tanıma hizmeti, kendi benzersiz ses özelliklerine göre hoparlörleri doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. | Evet | [Evet](/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
@@ -134,6 +134,17 @@ Diğer ürünler, sağlık veya sigorta gibi belirli amaçlar için ayarlanan ko
 | Konuşmayı Metne Dönüştürme | [Özel Konuşma Tanıma](https://aka.ms/customspeech) | Konuşma tanıma modellerini gereksinimlerinize ve kullanılabilir verilerinize göre özelleştirin. Konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelme. |
 | Metin Okuma | [Özel ses](https://aka.ms/customvoice) | Kullanılabilir konuşma verilerinizle Metin Okuma uygulamalarınız için tanınabilir, kendine özgü bir ses oluşturun. Ses çıkışlarını bir dizi parametre kümesini ayarlayarak daha fazla hassas ayarlamalar yapabilirsiniz. |
 
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
+
+Şirket içi API özelliklerini dağıtmak için [konuşma hizmeti kapsayıcıları kullanın](speech-container-howto.md) . Bu Docker kapsayıcıları, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmayı sağlar. Konuşma hizmeti aşağıdaki kapsayıcıları sunar:
+
+* Standart konuşmayı metne dönüştürme
+* Özel Konuşma Tanıma metin
+* Standart metin okuma
+* Sinir metin okuma
+* Özel metin okuma (Önizleme)
+* Konuşma Dil Algılama (Önizleme)
+
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
 - [Konuşma SDK'sı](./speech-sdk.md)
@@ -141,6 +152,7 @@ Diğer ürünler, sağlık veya sigorta gibi belirli amaçlar için ayarlanan ko
 - [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
 - [REST API: metinden konuşmaya](rest-text-to-speech.md)
 - [REST API: toplu Iş dökümü ve özelleştirme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3417b59d0be9e285f8793ef598abb7f98bda7549
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419980"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527998"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>OpenShift 4 üzerinde Azure Red Hat 'te ağ oluşturma
 
@@ -98,7 +98,7 @@ Aşağıdaki ağ ayarları Azure Red Hat OpenShift 4 ' te kullanılabilir:
     * "Genel"-API sunucusuna dış ağlar tarafından erişilebilir.
     * "Özel"-API sunucusu, ana alt ağdan özel bir IP atamıştır, yalnızca bağlı ağlar (eşlenen sanal ağlar, kümedeki diğer alt ağlar) kullanılarak erişilebilir. Müşterinin adına özel bir DNS bölgesi oluşturulacaktır.
 * Giriş **görünürlüğü** - [az Aro Create komutunu](tutorial-create-cluster.md#create-the-cluster)çalıştırırken API görünürlüğünü ayarlayın.
-    * "Genel" yollar varsayılan olarak genel Azure Standart Load Balancer (Bu değiştirilebilir).
+    * "Genel" yollar varsayılan olarak bir genel Standart Load Balancer (Bu değiştirilebilir).
     * "Özel" yollar varsayılan olarak iç yük dengeleyiciye (bu değişebilir).
 
 ## <a name="network-security-groups"></a>Ağ güvenlik grupları

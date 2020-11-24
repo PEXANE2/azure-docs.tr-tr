@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635152"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527828"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>FHıR için Azure API nedir &reg; ?
 
@@ -24,7 +24,7 @@ FHıR için Azure API, bulutta bir yönetilen hizmet olarak platform (PaaS) ile 
 - Yüksek performans, düşük gecikme süresi
 - Uyumlu bir bulut ortamında korunan durum verilerinin (FI) güvenli yönetimi
 - Mobil ve Web uygulamaları için FHıR 'de akıllı
-- Role-Based Access Control (RBAC) ile kendi verilerinizi ölçeklendirerek denetleme
+- Rol tabanlı erişim denetimi (RBAC) ile kendi verilerinizi ölçekli olarak denetleme
 - Her veri deposu içinde erişim, oluşturma, değiştirme ve okuma için günlük izlemeyi denetleme
 
 FHıR için Azure API 'SI, bulutun esnek ölçeğinden yararlanmak üzere bir FHıR hizmetini yalnızca dakikalar içinde oluşturup dağıtmanıza olanak tanır.  Yalnızca ihtiyacınız olan aktarım hızı ve depolama alanı için ödeme yaparsınız. FHıR için Azure API 'YI destekleyen Azure Hizmetleri, yönettiğiniz veri kümelerinin ne olduğuna bakılmaksızın hızlı performans için tasarlanmıştır.
@@ -53,7 +53,7 @@ FHıR için Azure API 'yi kullanmak, okuma, yazma, arama ve diğer işlevler iç
 
 ### <a name="control-data-access-at-scale"></a>Ölçekte veri erişimini denetleme
 
-Verilerinizi kontrol edersiniz. Role-Based Access Control (RBAC), verilerinizin nasıl depolandığını ve erişildiğini yönetmenizi sağlar.  Artırılmış güvenlik sağlar ve yönetim iş yükünü azaltarak, ortamınız için oluşturduğunuz rol tanımlarına göre oluşturduğunuz veri kümelerine kimlerin erişebileceğini belirlersiniz.  
+Verilerinizi kontrol edersiniz. Rol tabanlı erişim denetimi (RBAC), verilerinizin nasıl depolandığını ve erişildiğini yönetmenizi sağlar.  Artırılmış güvenlik sağlar ve yönetim iş yükünü azaltarak, ortamınız için oluşturduğunuz rol tanımlarına göre oluşturduğunuz veri kümelerine kimlerin erişebileceğini belirlersiniz.  
 
 ### <a name="audit-logs-and-tracking"></a>Denetim günlükleri ve izleme 
 

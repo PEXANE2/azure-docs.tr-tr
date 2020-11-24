@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bda92667cfc3afb44a55adf3f3c12798a734ddc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612770"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522728"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure etkinlik günlüğü olay şeması
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan herhangi bir abonelik düzeyindeki olay hakkında öngörüler sağlar. Bu makalede etkinlik günlüğü kategorileri ve her biri için şema açıklanmaktadır. 
@@ -40,17 +40,17 @@ Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli 
 
 | Kategori | Açıklama |
 |:---|:---|
-| [Yönetim](#administrative-category) | Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluşturma, güncelleştirme, silme ve eylem işlemlerinin kaydını içerir. Yönetim olayları örnekleri arasında _sanal makine oluşturma_ ve _ağ güvenlik grubu silme_sayılabilir.<br><br>Kaynak Yöneticisi kullanarak bir kullanıcı veya uygulama tarafından gerçekleştirilen her eylem, belirli bir kaynak türündeki işlem olarak modellenir. İşlem türü _yazma_, _silme_veya _eylem_ise, bu işlemin hem başlangıç hem de başarı veya başarısızlık kayıtları yönetim kategorisine kaydedilir. Yönetim olayları, bir abonelikte rol tabanlı erişim denetimine yapılan tüm değişiklikleri de içerir. |
-| [Hizmet Durumu](#service-health-category) | Azure 'da oluşan hizmet durumu olaylarının kaydını içerir. Doğu ABD bir hizmet sistem durumu olay SQL Azure bir örnek _kapalı kalma süresi yaşıyor_. <br><br>Hizmet durumu olayları altı değişen elikler halinde gelir: _eylem gereklidir_, _yardımlı kurtarma_, _olay_, _bakım_, _bilgi_veya _güvenlik_. Bu olaylar yalnızca abonelikte olaydan etkilenecek bir kaynağınız varsa oluşturulur.
-| [Kaynak Durumu](#resource-health-category) | Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu olayının kaydını içerir. Kaynak Durumu olayına bir örnek, _sanal makine sistem durumu kullanılamaz olarak değişir_.<br><br>Kaynak Durumu olaylar şu dört sistem durumunu temsil edebilir: _kullanılabilir_, _kullanılamaz_, _düşürülmüş_ve _bilinmiyor_. Ayrıca, Kaynak Durumu olaylar _platform tarafından başlatılmış_ veya _Kullanıcı tarafından başlatılmış_olarak kategorize edilebilir. |
-| [Uyarı](#alert-category) | Azure uyarıları için etkinleştirme kaydını içerir. _Son 5 dakika boyunca, myVM 'deki% CPU 'su %80_üzerinde bir uyarı olayına bir örnektir.|
+| [Yönetim](#administrative-category) | Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluşturma, güncelleştirme, silme ve eylem işlemlerinin kaydını içerir. Yönetim olayları örnekleri arasında _sanal makine oluşturma_ ve _ağ güvenlik grubu silme_ sayılabilir.<br><br>Kaynak Yöneticisi kullanarak bir kullanıcı veya uygulama tarafından gerçekleştirilen her eylem, belirli bir kaynak türündeki işlem olarak modellenir. İşlem türü _yazma_, _silme_ veya _eylem_ ise, bu işlemin hem başlangıç hem de başarı veya başarısızlık kayıtları yönetim kategorisine kaydedilir. Yönetim olayları, bir abonelikte Azure rol tabanlı erişim denetimi değişikliklerini de içerir. |
+| [Hizmet Durumu](#service-health-category) | Azure 'da oluşan hizmet durumu olaylarının kaydını içerir. Doğu ABD bir hizmet sistem durumu olay SQL Azure bir örnek _kapalı kalma süresi yaşıyor_. <br><br>Hizmet durumu olayları altı değişen elikler halinde gelir: _eylem gereklidir_, _yardımlı kurtarma_, _olay_, _bakım_, _bilgi_ veya _güvenlik_. Bu olaylar yalnızca abonelikte olaydan etkilenecek bir kaynağınız varsa oluşturulur.
+| [Kaynak Durumu](#resource-health-category) | Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu olayının kaydını içerir. Kaynak Durumu olayına bir örnek, _sanal makine sistem durumu kullanılamaz olarak değişir_.<br><br>Kaynak Durumu olaylar şu dört sistem durumunu temsil edebilir: _kullanılabilir_, _kullanılamaz_, _düşürülmüş_ ve _bilinmiyor_. Ayrıca, Kaynak Durumu olaylar _platform tarafından başlatılmış_ veya _Kullanıcı tarafından başlatılmış_ olarak kategorize edilebilir. |
+| [Uyarı](#alert-category) | Azure uyarıları için etkinleştirme kaydını içerir. _Son 5 dakika boyunca, myVM 'deki% CPU 'su %80_ üzerinde bir uyarı olayına bir örnektir.|
 | [Otomatik Ölçeklendirme](#autoscale-category) | Aboneliğinizde tanımladığınız otomatik ölçeklendirme ayarlarına bağlı olarak, otomatik ölçeklendirme altyapısının işlemiyle ilgili olayların kaydını içerir. Otomatik ölçeklendirme olayına bir örnek, _Otomatik ölçeklendirme ölçeği artırma eylemi başarısız oldu_. |
 | [Öneri](#recommendation-category) | Azure Advisor 'ın öneri olaylarını içerir. |
 | [Güvenlik](#security-category) | Azure Güvenlik Merkezi tarafından oluşturulan uyarıların kaydını içerir. Bir güvenlik olayına örnek olarak, _şüpheli çift uzantı dosyası yürütülür_. |
-| [İlke](#policy-category) | Azure Ilkesi tarafından gerçekleştirilen tüm etki eylemi işlemlerinin kayıtlarını içerir. Ilke olayları örnekleri _Denetim_ ve _reddetme_içerir. Ilke tarafından gerçekleştirilen her eylem, bir kaynaktaki işlem olarak modellenir. |
+| [İlke](#policy-category) | Azure Ilkesi tarafından gerçekleştirilen tüm etki eylemi işlemlerinin kayıtlarını içerir. Ilke olayları örnekleri _Denetim_ ve _reddetme_ içerir. Ilke tarafından gerçekleştirilen her eylem, bir kaynaktaki işlem olarak modellenir. |
 
 ## <a name="administrative-category"></a>Yönetim kategorisi
-Bu kategori, Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluşturma, güncelleştirme, silme ve eylem işlemlerinin kaydını içerir. Bu kategoride göreceğiniz olay türlerine örnek olarak "sanal makine oluştur" ve "ağ güvenlik grubunu sil" gibi Kaynak Yöneticisi kullanarak bir kullanıcı veya uygulama tarafından gerçekleştirilen her eylem, belirli bir kaynak türü üzerinde işlem olarak modellenir. İşlem türü yazma, silme veya eylem ise, bu işlemin hem başlangıç hem de başarı veya başarısızlık kayıtları yönetim kategorisine kaydedilir. Yönetim kategorisi, bir abonelikte rol tabanlı erişim denetimine yapılan tüm değişiklikleri de içerir.
+Bu kategori, Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluşturma, güncelleştirme, silme ve eylem işlemlerinin kaydını içerir. Bu kategoride göreceğiniz olay türlerine örnek olarak "sanal makine oluştur" ve "ağ güvenlik grubunu sil" gibi Kaynak Yöneticisi kullanarak bir kullanıcı veya uygulama tarafından gerçekleştirilen her eylem, belirli bir kaynak türü üzerinde işlem olarak modellenir. İşlem türü yazma, silme veya eylem ise, bu işlemin hem başlangıç hem de başarı veya başarısızlık kayıtları yönetim kategorisine kaydedilir. Yönetim kategorisi, bir abonelikte Azure rol tabanlı erişim denetimi değişikliklerini de içerir.
 
 ### <a name="sample-event"></a>Örnek olay
 ```json
@@ -141,9 +141,9 @@ Bu kategori, Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluştu
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
-| yetkilendirme |Etkinliğin RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
+| yetkilendirme |Etkinliğin Azure RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
 | yapana |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. |
 | lardan |Şu değerlerden biri: "admin", "Operation" |
 | belirt |Kaynak Yöneticisi içinde bu işlemi gerçekleştirmek için kullanıcının veya uygulamanın kimliğini doğrulamak üzere Active Directory tarafından kullanılan JWT belirteci. |
@@ -288,7 +288,7 @@ Bu kategori, Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu o
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Her zaman "Yönetici, Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -381,7 +381,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/alertRules |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -407,7 +407,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 Özellikler alanı, uyarı olayının kaynağına göre farklı değerler içerecektir. İki ortak uyarı olay sağlayıcısı, etkinlik günlüğü uyarıları ve ölçüm uyarılarıdır.
 
 #### <a name="properties-for-activity-log-alerts"></a>Etkinlik günlüğü uyarıları özellikleri
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | Properties. SubscriptionID | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan abonelik KIMLIĞI. |
 | Properties. Eventdataıd | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan olay veri KIMLIĞI. |
@@ -418,7 +418,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 | Properties. Status | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan durum.|
 
 #### <a name="properties-for-metric-alerts"></a>Ölçüm uyarıları özellikleri
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | özelliklerinin. RuleUri | Ölçüm uyarı kuralının kaynak KIMLIĞI. |
 | özelliklerinin. RuleName | Ölçüm uyarı kuralının adı. |
@@ -491,7 +491,7 @@ Bu kategori, aboneliğinizde tanımladığınız otomatik ölçeklendirme ayarla
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/oto Scalesettings |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -581,7 +581,7 @@ Bu kategori, Azure Güvenlik Merkezi tarafından oluşturulan uyarıların kayd�
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -662,7 +662,7 @@ Bu kategori, hizmetleriniz için oluşturulan tüm yeni önerilerin kaydını i�
 
 ```
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -687,7 +687,7 @@ Bu kategori, hizmetleriniz için oluşturulan tüm yeni önerilerin kaydını i�
 
 ## <a name="policy-category"></a>İlke kategorisi
 
-Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından gerçekleştirilen tüm etki eylemi işlemlerinin kayıtlarını içerir. Bu kategoride göreceğiniz olay türlerine örnek olarak _Denetim_ ve _reddetme_dahildir. Ilke tarafından gerçekleştirilen her eylem, bir kaynaktaki işlem olarak modellenir.
+Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından gerçekleştirilen tüm etki eylemi işlemlerinin kayıtlarını içerir. Bu kategoride göreceğiniz olay türlerine örnek olarak _Denetim_ ve _reddetme_ dahildir. Ilke tarafından gerçekleştirilen her eylem, bir kaynaktaki işlem olarak modellenir.
 
 ### <a name="sample-policy-event"></a>Örnek Ilke olayı
 
@@ -772,9 +772,9 @@ Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından ger�
 
 ### <a name="policy-event-property-descriptions"></a>İlke olayı Özellik açıklamaları
 
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
-| yetkilendirme | Etkinliğin RBAC özelliklerinin dizisi. Yeni kaynaklar için bu işlem, değerlendirmeyi tetikleyen isteğin bir sonucudur. Mevcut kaynaklar için, eylem "Microsoft. resources/Checkpolicyuyumluluk/Read" olur. |
+| yetkilendirme | Etkinliğin Azure RBAC özellikleri dizisi. Yeni kaynaklar için bu işlem, değerlendirmeyi tetikleyen isteğin bir sonucudur. Mevcut kaynaklar için, eylem "Microsoft. resources/Checkpolicyuyumluluk/Read" olur. |
 | yapana | Yeni kaynaklar için, bir dağıtımı Başlatan kimlik. Mevcut kaynaklar için Microsoft Azure Policy Insights RP 'nin GUID 'SI. |
 | lardan | İlke olayları yalnızca "Işlem" kanalını kullanır. |
 | belirt | Kaynak Yöneticisi içinde bu işlemi gerçekleştirmek için kullanıcının veya uygulamanın kimliğini doğrulamak üzere Active Directory tarafından kullanılan JWT belirteci. |
@@ -812,19 +812,19 @@ Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akı�
 
 | Kaynak günlükleri şema özelliği | Etkinlik günlüğü REST API şeması özelliği | Notlar |
 | --- | --- | --- |
-| saat | eventTimestamp |  |
+| time | eventTimestamp |  |
 | resourceId | resourceId | SubscriptionID, resourceType, resourceGroupName, RESOURCEID tarafından algılanır. |
 | operationName | operationName. Value |  |
 | category | İşlem adının parçası | İşlem türü ayırıcıları-"yaz"/"Sil"/"Action" |
 | resultType | durum. değer | |
 | resultSignature | alt durum. değer | |
 | resultDescription | açıklama |  |
-| durationMs | Yok | Her zaman 0 |
+| durationMs | YOK | Her zaman 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | talepler ve yetkilendirme özellikleri |  |
 | Düzey | Düzey |  |
-| location | Yok | Olayın işlendiği konum. *Bu, kaynağın konumu değildir, ancak bunun yerine olayın işlendiği yerdir. Bu özellik gelecekteki bir güncelleştirmede kaldırılacaktır.* |
+| location | YOK | Olayın işlendiği konum. *Bu, kaynağın konumu değildir, ancak bunun yerine olayın işlendiği yerdir. Bu özellik gelecekteki bir güncelleştirmede kaldırılacaktır.* |
 | Özellikler | Properties. eventProperties |  |
 | Properties. eventCategory | category | Properties. eventCategory yoksa, Kategori "Administrative" dır |
 | Properties. eventName | eventName |  |

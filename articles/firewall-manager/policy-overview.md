@@ -5,20 +5,31 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 34134f2c790851d34db7b5327aa76350d54d137d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650cf1e9b0e9fbbadc5a783cad844898698bf017
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075472"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509749"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Güvenlik Duvarı Yöneticisi ilkesine genel bakış
 
-Güvenlik duvarı ilkesi NAT, ağ ve uygulama kuralı koleksiyonlarının yanı sıra tehdit bilgileri ayarlarını içeren bir Azure kaynağıdır. Bu, güvenli sanal hub 'Larda ve hub sanal ağlarında bulunan birden çok Azure Güvenlik Duvarı örneği genelinde kullanılabilen küresel bir kaynaktır. İlkeler bölgeler ve abonelikler arasında çalışır.
+Güvenlik Duvarı Ilkesi NAT, ağ ve uygulama kuralı koleksiyonlarını ve tehdit bilgileri ayarlarını içeren bir Azure kaynağıdır. Bu, güvenli sanal hub 'Larda ve hub sanal ağlarında bulunan birden çok Azure Güvenlik Duvarı örneği genelinde kullanılabilen küresel bir kaynaktır. İlkeler bölgeler ve abonelikler arasında çalışır.
 
 ![Azure Güvenlik Duvarı Yöneticisi ilkesi](media/policy-overview/policy-overview.png)
+
+## <a name="availability"></a>Kullanılabilirlik
+
+Güvenlik Duvarı Ilkesi, yüksek oranda kullanılabilir ve otomatik olarak çoğaltılan bir kaynaktır. Nadir bir bölgesel olağanüstü durum oluşursa, güvenlik duvarı Ilkesi Azure eşlenmiş bölgelere yük devretmeyi devreder. Hem zaman uyumlu hem de zaman uyumsuz işlemler için Azure birincil bölgesine kurtarma işlemleri sonrası yük devretme. 
+
+Eşleştirilmiş bölgeler aşağıdakiler dahil olmak üzere çeşitli avantajlar sağlar:
+- en az 300 mil ile ayrılmış fiziksel yalıtım
+- olağanüstü durumdan daha hızlı kurtarma
+- Coğrafya tarafından uygulanan için toplantı verileri yerleştirme gereksinimleri
+
+Eşleştirilmiş bölgeler hakkında daha fazla bilgi için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](../best-practices-availability-paired-regions.md).
 
 ## <a name="policy-creation-and-association"></a>İlke oluşturma ve ilişkilendirme
 
@@ -34,7 +45,7 @@ Yeni ilkeler sıfırdan oluşturulabilir veya var olan ilkelerden devralınabili
 
 Boş olmayan üst ilkelerle oluşturulan ilkeler, tüm kural koleksiyonlarını üst ilkeden alırlar. Bir üst ilkeden devralınan ağ kuralı koleksiyonları, yeni bir ilkenin bir parçası olarak tanımlanan ağ kuralı koleksiyonlarının üzerine her zaman öncelik atanır. Aynı mantık, uygulama kuralı koleksiyonları için de geçerlidir. Bununla birlikte, devralma ne olursa olsun, ağ kuralı koleksiyonları her zaman uygulama kuralı koleksiyonlarından önce işlenir.
 
-Tehdit bilgileri modu üst ilkeden de devralınır. Bu davranışı geçersiz kılmak için tehdit bilgileri modınızı farklı bir değere ayarlayabilirsiniz, ancak bunu devre dışı bırakabilirsiniz. Yalnızca daha sıkı bir değerle geçersiz kılmak mümkündür. Örneğin, ana ilkeniz **yalnızca uyarı**olarak ayarlandıysa, bu yerel ilkeyi **uyarı ve reddetme**için yapılandırabilirsiniz.
+Tehdit bilgileri modu üst ilkeden de devralınır. Bu davranışı geçersiz kılmak için tehdit bilgileri modınızı farklı bir değere ayarlayabilirsiniz, ancak bunu devre dışı bırakabilirsiniz. Yalnızca daha sıkı bir değerle geçersiz kılmak mümkündür. Örneğin, ana ilkeniz **yalnızca uyarı** olarak ayarlandıysa, bu yerel ilkeyi **uyarı ve reddetme** için yapılandırabilirsiniz.
 
 Tehdit zekası modu gibi tehdit bilgileri izin verilenler listesi üst ilkeden devralınır. Alt ilke, izin verilenler listesine ek IP adresleri ekleyebilir.
 

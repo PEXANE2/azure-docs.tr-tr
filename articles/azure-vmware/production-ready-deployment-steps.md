@@ -3,12 +3,12 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888989"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95529742"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -48,7 +48,7 @@ Azure VMware çözümünü dağıttığınızda kullanmak istediğiniz boyut kon
 
 ## <a name="number-of-hosts"></a>Ana bilgisayar sayısı
 
-Azure VMware Çözüm özel bulutuna dağıtmak istediğiniz ana bilgisayar sayısını tanımlayın.  En küçük düğüm sayısı üç, küme başına en fazla 16 ' dır.  Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut ve kümeler](concepts-private-clouds-clusters.md#clusters) belgeleri.
+Azure VMware Çözüm özel bulutuna dağıtmak istediğiniz ana bilgisayar sayısını tanımlayın.  En az sayıda ana bilgisayar vardır ve en yüksek değer, küme başına 16 ' dır.  Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut ve kümeler](concepts-private-clouds-clusters.md#clusters) belgeleri.
 
 İlk dağıtım numarasının ötesine gitmeniz gerekiyorsa, her zaman kümeyi genişletebilirsiniz.
 

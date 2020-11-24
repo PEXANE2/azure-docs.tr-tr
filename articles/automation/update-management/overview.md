@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: abcc2b60fd796a80342fe48c3c9027388660476a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488156"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528253"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -76,10 +76,10 @@ Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygula
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2 (RTM ve SP1 standart)| Güncelleştirme Yönetimi, bu işletim sistemi için değerlendirmeleri ve düzeltme eki uygulamayı destekler. [Karma Runbook Worker](../automation-windows-hrw-install.md) , Windows Server 2008 R2 için desteklenir. |
-|CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir. Sınıflandırma tabanlı düzeltme eki `yum` , CentOS 'ıN RTM sürümlerindeki güvenlik verilerini döndürmesini gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux üzerinde sınıflandırmaları güncelleştirme](view-update-assessments.md#linux).          |
-|Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
+|CentOS 6 ve 7 (x64)      | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir. Sınıflandırma tabanlı düzeltme eki `yum` , CentOS 'ıN RTM sürümlerindeki güvenlik verilerini döndürmesini gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux üzerinde sınıflandırmaları güncelleştirme](view-update-assessments.md#linux).          |
+|Red Hat Enterprise 6 ve 7 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
-|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 (x86/x64)      |Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.         |
+|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 (x64)      |Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.         |
 
 > [!NOTE]
 > Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi aracılığıyla yönetilebilir. Güncelleştirme Yönetimi, temel görüntüde değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerinin aynı anda güncelleştirilebilmesi için güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir. [Değişiklik izleme ve stoğa Azure dışı bir makine ekleme](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)altındaki adımları izleyerek sanal makine ölçek kümeleri için düğüm ekleyebilirsiniz.

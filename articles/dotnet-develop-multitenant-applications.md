@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395983"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524105"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure’da Çok Müşterili Uygulamalar
 Çok kiracılı bir uygulama, "ayrı kiracılardaki kullanıcıların uygulamayı kendi kendine yaptığı gibi görüntülemesine izin veren paylaşılan bir kaynaktır. Çok kiracılı bir uygulamaya kendisini hedefleyen tipik bir senaryo, farklı kiracılardan uygulamanın tüm kullanıcılarının Kullanıcı deneyimini özelleştirmek ve aksi takdirde aynı temel iş gereksinimlerine sahip olması olabilir. Büyük çoklu kiracı uygulamalarına örnek olarak Microsoft 365, Outlook.com ve visualstudio.com verilebilir.
@@ -30,7 +30,7 @@ Bir uygulama sağlayıcısının perspektifinden, çok kiracılı avantajların 
 Aşağıda, bir sağlayıcının perspektifinden en önemli hedeflerin ve gereksinimlerin bir listesi verilmiştir.
 
 * **Sağlama**: uygulama için yeni kiracılar sağlayabiliyor olmanız gerekir.  Çok sayıda kiracıya sahip çok müşterili uygulamalarda, genellikle self servis sağlamayı etkinleştirerek bu işlemin otomatikleştirilmesi gerekir.
-* Bakım **: birden**çok kiracı tarafından kullanılırken uygulamayı yükseltebilmeniz ve başka bakım görevleri gerçekleştirmeniz gerekir.
+* Bakım **: birden** çok kiracı tarafından kullanılırken uygulamayı yükseltebilmeniz ve başka bakım görevleri gerçekleştirmeniz gerekir.
 * **İzleme**: herhangi bir sorunu belirlemek ve sorunlarını gidermek için her zaman uygulamayı izleyebilmelisiniz. Bu, her kiracının uygulamayı nasıl kullandığını izlemeyi içerir.
 
 Uygun şekilde uygulanmış çok kiracılı bir uygulama, kullanıcılara aşağıdaki avantajları sağlar.
@@ -43,7 +43,7 @@ Uygun şekilde uygulanmış çok kiracılı bir uygulama, kullanıcılara aşağ
 
 Kısaca, yüksek düzeyde ölçeklenebilir bir hizmet sağlamak için göz önünde bulundurmanız gereken birçok önemli işlem olmakla kalmaz, çok sayıda çok kiracılı uygulamalarda ortak olan birçok hedef ve gereksinim de vardır. Bazıları belirli senaryolarla ilgili olmayabilir ve tek tek hedeflerin ve gereksinimlerin önemi her senaryoya göre farklılık gösterir. Çok müşterili uygulamanın bir sağlayıcısı olarak, kiracının amaçlarını ve gereksinimlerini, kârlılığı, faturalandırmayı, birden çok hizmet düzeyini, sağlamayı, bakım izlemeyi ve Otomasyonu toplantısı gibi hedefler ve gereksinimler de vardır.
 
-Çok kiracılı bir uygulamayla ilgili ek tasarım konuları hakkında daha fazla bilgi için bkz. [Azure 'Da çok kiracılı bir uygulama barındırma][Hosting a Multi-Tenant Application on Azure]. Çok kiracılı hizmet olarak yazılım (SaaS) veritabanı uygulamalarının ortak veri mimarisi düzenlerine ilişkin bilgi için bkz. [Azure SQL Veritabanı ile Çok Kiracılı SaaS Uygulamaları için Tasarım Düzenleri](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+Çok kiracılı bir uygulamayla ilgili ek tasarım konuları hakkında daha fazla bilgi için bkz. [Azure 'Da çok kiracılı bir uygulama barındırma][Hosting a Multi-Tenant Application on Azure]. Çok kiracılı hizmet olarak yazılım (SaaS) veritabanı uygulamalarının ortak veri mimarisi düzenlerine ilişkin bilgi için bkz. [Azure SQL Veritabanı ile Çok Kiracılı SaaS Uygulamaları için Tasarım Düzenleri](./azure-sql/database/saas-tenancy-app-design-patterns.md). 
 
 Azure, çok kiracılı bir sistem tasarlarken karşılaşılan önemli sorunları ele almak için birçok özellik sağlar.
 
@@ -92,5 +92,5 @@ Azure, uygulama için yeni kiracılar sağlamaya yönelik çeşitli yollar sağl
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure]: https://msdn.microsoft.com/library/hh534480.aspx
+[Hosting a Multi-Tenant Application on Azure]: /previous-versions/msp-n-p/hh534480(v=pandp.10)
 [Designing Multitenant Applications on Azure]: https://msdn.microsoft.com/library/windowsazure/hh689716

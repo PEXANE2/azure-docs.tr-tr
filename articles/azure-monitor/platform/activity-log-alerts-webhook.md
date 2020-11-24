@@ -4,12 +4,12 @@ description: Bir etkinlik günlüğü uyarısı etkinleşdiğinde bir Web kancas
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 0ebaf7f0cc52ac131573226dfff5516581745c67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104283"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522796"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -269,7 +269,7 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 | resourceGroupName |Etkilenen kaynak için kaynak grubunun adı. |
 | properties |`<Key, Value>` `Dictionary<String, String>` Olayla ilgili ayrıntıları içeren çiftler (yani,) kümesi. |
 | event |Olay hakkında meta veriler içeren öğe. |
-| yetkilendirme |Olayın Role-Based Access Control özellikleri. Bu özellikler genellikle eylemi, rolü ve kapsamı içerir. |
+| yetkilendirme |Etkinliğin Azure rol tabanlı erişim denetimi özellikleri. Bu özellikler genellikle eylemi, rolü ve kapsamı içerir. |
 | category |Etkinliğin kategorisi. Desteklenen değerler arasında yönetim, uyarı, güvenlik, ServiceHealth ve öneri bulunur. |
 | yapana |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. Belirli sistem çağrıları için null olabilir. |
 | correlationId |Genellikle dize biçimindeki bir GUID. CorrelationId 'ye sahip olaylar aynı daha büyük eyleme aittir ve genellikle bir CorrelationId paylaşır. |
