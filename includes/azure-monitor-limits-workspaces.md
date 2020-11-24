@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e206c12a85cfbaed3297f2a44bf0a5d694c2d170
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2ed5cbc8c855d2f81986964c93009d75ed28fb8e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92324249"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556541"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -33,7 +33,7 @@ ms.locfileid: "92324249"
 | Ücretsiz katmanı  | 10 | Bu sınır arttırılamıyor. |
 | Diğer tüm katmanlar | Sınır yok | Bir kaynak grubu içindeki kaynak sayısıyla ve abonelik başına kaynak grubu sayısına göre sınırlandırılırsınız. |
 
-**Azure Portal**
+**Azure portalı**
 
 | Kategori | Sınır | Yorumlar |
 |:---|:---|:---|
@@ -73,4 +73,4 @@ Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet vere
 Alma sınırlarına ulaştığınızda bildirim kuralları oluşturmak üzere uyarı kuralları oluşturmak için bkz. [Azure izleyici 'de Log Analytics çalışma alanının sistem durumunu izleme](../articles/azure-monitor/platform/monitor-workspace.md) .
 
 >[!NOTE]
->Log Analytics kullanmaya ne kadar süre kullandığınıza bağlı olarak eski fiyatlandırma katmanlarına erişiminiz olabilir. [Eski Log Analytics fiyatlandırma katmanları](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)hakkında daha fazla bilgi edinin. 
+>Log Analytics kullanmaya ne kadar süre kullandığınıza bağlı olarak eski fiyatlandırma katmanlarına erişiminiz olabilir. [Eski Log Analytics fiyatlandırma katmanları](../articles/azure-monitor/platform/manage-cost-storage.md#legacy-pricing-tiers)hakkında daha fazla bilgi edinin.

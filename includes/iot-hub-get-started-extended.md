@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: bd08812f83413a997ce655d68d866b145b20dcef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b9b540e53c46eae0dfbe9dd9c3ed91cd7506a9d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75912509"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557054"
 ---
 ## <a name="extended-iot-scenarios"></a>Genişletilmiş IoT senaryoları
 
@@ -24,7 +24,7 @@ Diğer Azure hizmetlerini ve araçlarını kullanın. Cihazınızı IoT Hub'a ba
 | [IoT Hub iletilerini yönetme](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub uzantısı|
 | [IoT cihazınızı yönetme](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLı ve IoT uzantısı    |
 | [IoT cihazınızı yönetme](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Hub uzantısı|
-| [IoT Hub iletilerini Azure depolamaya kaydetme](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure tablo depolama                |
+| [IoT Hub iletilerini Azure depolamaya kaydetme](../articles/iot-hub/tutorial-routing.md#route-to-a-storage-account)  | Azure tablo depolama                |
 | [Algılayıcı verilerini görselleştirme](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
 | [Algılayıcı verilerini görselleştirme](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
 | [Algılayıcı verileri ile hava durumu tahmini](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
@@ -32,4 +32,4 @@ Diğer Azure hizmetlerini ve araçlarını kullanın. Cihazınızı IoT Hub'a ba
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticileri tamamladıktan sonra [Geliştirici Kılavuzu](../articles/iot-hub/iot-hub-devguide.md)’nda IOT Hub'ın özelliklerini incelemeye devam edebilirsiniz. 
+Bu öğreticileri tamamladıktan sonra [Geliştirici Kılavuzu](../articles/iot-hub/iot-hub-devguide.md)’nda IOT Hub'ın özelliklerini incelemeye devam edebilirsiniz.

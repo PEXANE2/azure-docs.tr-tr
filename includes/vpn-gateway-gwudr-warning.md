@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 09/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 97fde67c3ac7649418ed0239a2c7aa4f1a4b3f96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf9d4c3fd96df83361e7d9aa89ba702d37265ec6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81275052"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554812"
 ---
-GatewaySubnet üzerinde 0.0.0.0/0 hedefi ve NSG 'ler içeren Kullanıcı tanımlı rotalar **desteklenmez**. Bu yapılandırmayla oluşturulan ağ geçitlerinin oluşturulması engellenir. Ağ geçitlerinin düzgün çalışması için yönetim denetleyicilerine erişimi olması gerekir. Ağ geçidinin kullanılabilirliğini sağlamak için, GatewaySubnet üzerinde [BGP yol yayılması](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) "Enabled" olarak ayarlanmalıdır. Devre dışı olarak ayarlanırsa, ağ geçidi çalışmaz.
+GatewaySubnet üzerinde 0.0.0.0/0 hedefi ve NSG 'ler içeren Kullanıcı tanımlı rotalar **desteklenmez**. Bu yapılandırmayla oluşturulan ağ geçitlerinin oluşturulması engellenir. Ağ geçitlerinin düzgün çalışması için yönetim denetleyicilerine erişimi olması gerekir. Ağ geçidinin kullanılabilirliğini sağlamak için, GatewaySubnet üzerinde [BGP yol yayılması](../articles/virtual-network/virtual-networks-udr-overview.md#border-gateway-protocol) "Enabled" olarak ayarlanmalıdır. Devre dışı olarak ayarlanırsa, ağ geçidi çalışmaz.

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6684c4269f14b91ded651dadff3f0a2e0878a4f2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91025371"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558471"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Özel IPsec/IKE ilkesi tüm Azure VPN Gateway SKU’larında desteklenir mi?
 Özel IPSec/ıKE ilkesi, temel SKU dışında tüm Azure SKU 'Larında desteklenir.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Bir bağlantıda kaç tane ilke belirtebilirim?
-Belirli bir bağlantı için yalnızca ***bir*** ilke birleşimi belirtebilirsiniz.
+Belirli bir bağlantı için yalnızca ***bir** _ ilke kombinasyonu belirtebilirsiniz.
 
 ### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>Bir bağlantıda kısmi bir ilke belirtebilir miyim? (örneğin IPsec olmadan yalnızca IKE algoritmaları)
 Hayır, hem IKE (Ana Mod) hem de IPsec (Hızlı Mod) için tüm algoritmaları ve parametreleri belirtmeniz gerekir. Kısmi ilke belirtimine izin verilmez.
@@ -27,7 +27,7 @@ Hayır, hem IKE (Ana Mod) hem de IPsec (Hızlı Mod) için tüm algoritmaları v
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Özel ilkede desteklenen algoritmalar ve anahtar güçleri nelerdir?
 Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilecek şifreleme algoritmaları ve anahtar güçleri listelenmiştir. Her alan için bir seçeneği belirlemeniz gerekir.
 
-| **IPsec/IKEv2**  | **Seçenekler**                                                                   |
+| _ *IPSec/Ikev2**  | **Seçenekler**                                                                   |
 | ---              | ---                                                                           |
 | IKEv2 Şifrelemesi | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2 Bütünlüğü  | SHA384, SHA256, SHA1, MD5                                                     |
@@ -107,7 +107,7 @@ Varsayılan DPD zaman aşımı 45 saniyedir. Her bir IPSec veya VNet-VNet bağla
 Hayır. IPsec/IKE ilkesi yalnızca Azure VPN ağ geçitleri aracılığıyla kurulan S2S VPN ve VNet-VNet bağlantılarında çalışır.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Nasıl yaparım? IKEv1 veya Ikev2 protokol türüyle bağlantı oluşturulsun mu?
-Temel SKU, standart SKU ve diğer [eski SKU 'lar](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku)hariç tüm ROUTEBASED VPN türü SKU 'larında IKEv1 bağlantısı oluşturulabilir. Bağlantılar oluştururken, IKEv1 veya Ikev2 bağlantı protokolü türünü belirtebilirsiniz. Bağlantı protokolü türü belirtmezseniz, Ikev2 varsayılan seçenek olarak kullanılır. Daha fazla bilgi için bkz. [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) belgeleri. SKU türleri ve IKEv1/Ikev2 desteği için bkz. [ağ geçitlerini ilke tabanlı VPN cihazlarına bağlama](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+Temel SKU, standart SKU ve diğer [eski SKU 'lar](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#gwsku)hariç tüm ROUTEBASED VPN türü SKU 'larında IKEv1 bağlantısı oluşturulabilir. Bağlantılar oluştururken, IKEv1 veya Ikev2 bağlantı protokolü türünü belirtebilirsiniz. Bağlantı protokolü türü belirtmezseniz, Ikev2 varsayılan seçenek olarak kullanılır. Daha fazla bilgi için bkz. [PowerShell cmdlet](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) belgeleri. SKU türleri ve IKEv1/Ikev2 desteği için bkz. [ağ geçitlerini ilke tabanlı VPN cihazlarına bağlama](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>IKEv1 ve IKEv2 bağlantıları arasında aktarım yapılmasına izin veriliyor mu?
 Evet. IKEv1 ve IKEv2 bağlantıları arasındaki aktarım desteklenir.

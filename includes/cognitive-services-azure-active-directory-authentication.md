@@ -4,18 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010963"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554708"
 ---
-## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulama
+## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulaması
 
 > [!IMPORTANT]
 > 1. Şu anda **yalnızca** Görüntü İşleme API'si, Yüz Tanıma API'si, metin Analizi API'si, modern okuyucu, form tanıyıcı, anomali algılayıcısı ve Bing Özel Arama, Azure ACTIVE DIRECTORY (AAD) kullanarak kimlik doğrulaması desteği hariç tüm Bing hizmetleri.
-> 2. AAD kimlik doğrulamasının her zaman Azure kaynağınızın özel alt etki alanı adıyla birlikte kullanılması gerekir. [Bölgesel uç noktalar](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) AAD kimlik doğrulamasını desteklemez.
+> 2. AAD kimlik doğrulamasının her zaman Azure kaynağınızın özel alt etki alanı adıyla birlikte kullanılması gerekir. [Bölgesel uç noktalar](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) AAD kimlik doğrulamasını desteklemez.
 
 Önceki bölümlerde, tek hizmet veya çok sunuculu bir abonelik anahtarı kullanarak Azure bilişsel hizmetler 'de nasıl kimlik doğrulaması yapılacağını gösterdik. Bu anahtarlar geliştirmeye başlamak için hızlı ve kolay bir yol sağlarken, Azure rol tabanlı erişim denetimi (Azure RBAC) gerektiren daha karmaşık senaryolara kısa süreli olarak düşmektedir. Azure Active Directory (AAD) kullanarak kimlik doğrulaması yapmak için gereklere göz atalım.
 
@@ -23,15 +23,15 @@ Aşağıdaki bölümlerde, bir alt etki alanı oluşturmak, roller atamak ve Azu
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>Özel alt etki alanı ile kaynak oluşturma
 
-İlk adım özel bir alt etki alanı oluşturmaktır. Özel alt etki alanı adı olmayan mevcut bir bilişsel hizmetler kaynağını kullanmak istiyorsanız, kaynağınız için özel alt etki alanını etkinleştirmek üzere bilişsel [Hizmetler özel alt etki alanları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) ' nda yer alan yönergeleri izleyin.
+İlk adım özel bir alt etki alanı oluşturmaktır. Özel alt etki alanı adı olmayan mevcut bir bilişsel hizmetler kaynağını kullanmak istiyorsanız, kaynağınız için özel alt etki alanını etkinleştirmek üzere bilişsel [Hizmetler özel alt etki alanları](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources) ' nda yer alan yönergeleri izleyin.
 
-1. Azure Cloud Shell açarak başlayın. Ardından [bir abonelik seçin](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
+1. Azure Cloud Shell açarak başlayın. Ardından [bir abonelik seçin](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Ardından, özel bir alt etki alanı ile bilişsel [Hizmetler kaynağı oluşturun](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) . Alt etki alanı adının genel olarak benzersiz olması gerekir ve örneğin: ".", "!", "," gibi özel karakterler içermemelidir.
+2. Ardından, özel bir alt etki alanı ile bilişsel [Hizmetler kaynağı oluşturun](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) . Alt etki alanı adının genel olarak benzersiz olması gerekir ve örneğin: ".", "!", "," gibi özel karakterler içermemelidir.
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
 > [!NOTE]
 > Azure rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun.
 
-1. İlk olarak, bir [AAD uygulaması](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)kaydedelim.
+1. İlk olarak, bir [AAD uygulaması](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)kaydedelim.
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
 
    Bir sonraki adımda **ApplicationId** 'ye ihtiyacınız olacak.
 
-2. Ardından, AAD uygulaması için [bir hizmet sorumlusu oluşturmanız](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) gerekir.
+2. Ardından, AAD uygulaması için [bir hizmet sorumlusu oluşturmanız](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) gerekir.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
    >[!NOTE]
    > Azure portal bir uygulamayı kaydettiğinizde, bu adım sizin için tamamlanır.
 
-3. Son adım, "bilişsel [Hizmetler kullanıcısı" rolünün](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) hizmet sorumlusuna atanması (kaynağa kapsamlı olarak). Rol atayarak, bu kaynağa hizmet sorumlusu erişimi vermiş olursunuz. Aboneliğinizdeki birden fazla kaynağa aynı hizmet sorumlusu erişimi verebilirsiniz.
+3. Son adım, "bilişsel [Hizmetler kullanıcısı" rolünün](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) hizmet sorumlusuna atanması (kaynağa kapsamlı olarak). Rol atayarak, bu kaynağa hizmet sorumlusu erişimi vermiş olursunuz. Aboneliğinizdeki birden fazla kaynağa aynı hizmet sorumlusu erişimi verebilirsiniz.
    >[!NOTE]
    > Hizmet sorumlusu objectID, uygulamanın ObjectID değil kullanılır.
    > ACCOUNT_ID, oluşturduğunuz bilişsel hizmetler hesabının Azure Kaynak Kimliği olacaktır. Azure Kaynak Kimliği ' ni kaynağın "Özellikler" bölümünde bulabilirsiniz Azure portal.
@@ -119,16 +119,16 @@ Alternatif olarak, hizmet sorumlusu bir sertifikayla kimlik doğrulaması yapabi
 
 ## <a name="authorize-access-to-managed-identities"></a>Yönetilen kimliklere erişim yetkisi verme
  
-Bilişsel hizmetler, [Azure kaynakları için yönetilen kimliklerle](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Azure kaynakları için Yönetilen kimlikler, Azure sanal makinelerinde (VM), işlev uygulamalarında, sanal makine ölçek kümelerinde ve diğer hizmetlerde çalışan uygulamalardan Azure AD kimlik bilgilerini kullanarak bilişsel hizmetler kaynaklarına erişim yetkisi verebilir. Azure AD kimlik doğrulamasıyla birlikte Azure kaynakları için Yönetilen kimlikler kullanarak, kimlik bilgilerini bulutta çalışan uygulamalarınızla depolamaktan kaçınabilirsiniz.  
+Bilişsel hizmetler, [Azure kaynakları için yönetilen kimliklerle](../articles/active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Azure kaynakları için Yönetilen kimlikler, Azure sanal makinelerinde (VM), işlev uygulamalarında, sanal makine ölçek kümelerinde ve diğer hizmetlerde çalışan uygulamalardan Azure AD kimlik bilgilerini kullanarak bilişsel hizmetler kaynaklarına erişim yetkisi verebilir. Azure AD kimlik doğrulamasıyla birlikte Azure kaynakları için Yönetilen kimlikler kullanarak, kimlik bilgilerini bulutta çalışan uygulamalarınızla depolamaktan kaçınabilirsiniz.  
 
 ### <a name="enable-managed-identities-on-a-vm"></a>VM 'de yönetilen kimlikleri etkinleştirme
 
 VM 'nizden bilişsel hizmetler kaynaklarına erişim yetkisi vermek üzere Azure kaynakları için Yönetilen kimlikler kullanabilmeniz için, VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure kaynakları için yönetilen kimliklerin nasıl etkinleştirileceği hakkında bilgi edinmek için bkz.:
 
-- [Azure portalındaki](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-- [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-- [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-- [Azure Resource Manager istemci kitaplıkları](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+- [Azure portalındaki](../articles/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+- [Azure PowerShell](../articles/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure CLI](../articles/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Azure Resource Manager şablonu](../articles/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager istemci kitaplıkları](../articles/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../articles/active-directory/managed-identities-azure-resources/overview.md).

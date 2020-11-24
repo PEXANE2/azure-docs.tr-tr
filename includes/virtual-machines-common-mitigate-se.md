@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8594ce713a8675505e0ee3051018b05992b160a9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73935867"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558241"
 ---
 **Son belge güncelleştirmesi**: 12 kasım 2019 10:00 PST.
 
@@ -21,9 +21,9 @@ Kurgusal yürütme yan kanal saldırıları olarak bilinen [Yeni BIR CPU güvenl
 
 Microsoft, tüm bulut hizmetlerimiz üzerinde azaltmalar dağıttı. Azure çalıştıran ve müşteri iş yüklerini birbirinden yalıtan altyapı korunur. Yani aynı altyapıyı kullanan potansiyel bir saldırgan, bu güvenlik açıklarını kullanarak uygulamanıza saldırır.
 
-Azure, müşteri etkisini en aza indirmek ve yeniden başlatmalar gereksinimini ortadan kaldırmak için mümkün olduğunda [bakım işlemlerini koruyan bellek](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot) kullanıyor. Azure, konakta sistem genelinde güncelleştirmeler yaparken ve müşterilerimizi koruduğunuz bu yöntemlerle yararlanmaya devam edecektir.
+Azure, müşteri etkisini en aza indirmek ve yeniden başlatmalar gereksinimini ortadan kaldırmak için mümkün olduğunda [bakım işlemlerini koruyan bellek](../articles/virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#maintenance-that-doesnt-require-a-reboot) kullanıyor. Azure, konakta sistem genelinde güncelleştirmeler yaparken ve müşterilerimizi koruduğunuz bu yöntemlerle yararlanmaya devam edecektir.
 
-Güvenliğin Azure 'un her yönüyle tümleştirildiği hakkında daha fazla bilgi için [Azure Güvenlik belgeleri](https://docs.microsoft.com/azure/security/) sitesinde bulabilirsiniz. 
+Güvenliğin Azure 'un her yönüyle tümleştirildiği hakkında daha fazla bilgi için [Azure Güvenlik belgeleri](../articles/security/index.yml) sitesinde bulabilirsiniz. 
 
 > [!NOTE] 
 > Bu belge ilk yayımlandığında, bu güvenlik açığı sınıfının birden çok varyantı duyurulmuştur. Microsoft, müşterilerimizi korumak ve rehberlik sağlamak için büyük ölçüde yatırım yapmaya devam etmektedir. Bu sayfa, daha fazla düzeltme yapmaya devam ettiğimiz için güncelleştirilir. 
@@ -43,7 +43,7 @@ Diğer Azure müşterilerinin Azure üzerinde çalışan uygulamalarınızı yal
 
 | Olanak | Önerilen Eylem  |
 |----------|---------------------|
-| Azure Cloud Services  | [Otomatik güncelleştirmeyi](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) etkinleştirin veya en yeni Konuk işletim sistemini çalıştırdığınız emin olun. |
+| Azure Cloud Services  | [Otomatik güncelleştirmeyi](../articles/cloud-services/cloud-services-how-to-configure-portal.md) etkinleştirin veya en yeni Konuk işletim sistemini çalıştırdığınız emin olun. |
 | Azure Linux Sanal Makineleri | İşletim sistemi sağlayıcınızdan güncelleştirmeleri yükler. Daha fazla bilgi için bu belgenin devamındaki [Linux](#linux) bölümüne bakın. |
 | Azure Windows Sanal Makineleri  | En son güvenlik paketini yükler.
 | Diğer Azure PaaS hizmetleri | Bu hizmetleri kullanan müşteriler için gerekli bir işlem yoktur. Azure, işletim sistemi sürümlerinizi otomatik olarak güncel tutar. |
@@ -57,7 +57,7 @@ Ek güvenlik özelliklerinin önerildiği örnek senaryolar:
 - SANAL makinenizin içinde çalışmak için güvenmediğiniz koda izin verebilirsiniz.  
     - *Örneğin, müşterilerinizin uygulamanızın içinde yürütebileceğiniz bir ikili veya betiği karşıya yüklemesine izin vereceksiniz*. 
 - Güvensiz olmayan kullanıcıların, düşük ayrıcalıklı hesaplar kullanarak sanal makinenizde oturum açmasına izin verebilirsiniz.   
-    - *Örneğin, düşük ayrıcalıklı bir kullanıcının Uzak Masaüstü veya SSH kullanarak sanal makinelerinizdeki birinde oturum açmasına izin*verebilirsiniz.  
+    - *Örneğin, düşük ayrıcalıklı bir kullanıcının Uzak Masaüstü veya SSH kullanarak sanal makinelerinizdeki birinde oturum açmasına izin* verebilirsiniz.  
 - Güvenilmeyen kullanıcıların, iç içe sanallaştırma aracılığıyla uygulanan sanal makinelere erişmesine izin verebilirsiniz.  
     - *Örneğin, Hyper-V konağını denet, ancak VM 'leri güvenilmeyen kullanıcılara ayırırsınız*. 
 
@@ -72,7 +72,7 @@ Güvenilmeyen kod çalıştırıyorsanız, VM 'niz veya bulut hizmetiniz içinde
 Bu ek güvenlik özelliklerinin etkinleştirilmesi için hedef işletim sisteminizin güncel olması gerekir. Birçok sayıda kurgusal yürütme tarafı kanal azaltmaları varsayılan olarak etkinken, burada açıklanan ek özellikler el ile etkinleştirilmelidir ve performans etkisine neden olabilir. 
 
 
-**1. Adım: sanal makinede hiper iş parçacığı devre dışı bırakma** -hiper iş PARÇACıKLı bir sanal makinede güvenilmeyen kod çalıştıran müşterilerin hiper iş parçacığı devre dışı bırakılması veya hiper iş PARÇACıKLı bir VM boyutuna taşınması gerekir. Hiper iş parçacıklı VM boyutlarının bir listesi için [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/windows/acu) başvurun (vCPU ile çekirdekli oran 2:1 ' dir). VM 'nizin hiper iş parçacığı oluşturma özelliğinin etkin olup olmadığını denetlemek için lütfen VM 'nin içinden Windows komut satırını kullanarak aşağıdaki komut dosyasına bakın.
+**1. Adım: sanal makinede hiper iş parçacığı devre dışı bırakma** -hiper iş PARÇACıKLı bir sanal makinede güvenilmeyen kod çalıştıran müşterilerin hiper iş parçacığı devre dışı bırakılması veya hiper iş PARÇACıKLı bir VM boyutuna taşınması gerekir. Hiper iş parçacıklı VM boyutlarının bir listesi için [Bu belgeye](../articles/virtual-machines/acu.md) başvurun (vCPU ile çekirdekli oran 2:1 ' dir). VM 'nizin hiper iş parçacığı oluşturma özelliğinin etkin olup olmadığını denetlemek için lütfen VM 'nin içinden Windows komut satırını kullanarak aşağıdaki komut dosyasına bakın.
 
 `wmic`Etkileşimli arabirimi girmek için yazın. Ardından, VM 'deki fiziksel ve mantıksal işlemci miktarını görüntülemek için aşağıdaki adımları yazın.
 
@@ -108,10 +108,10 @@ Windows OS support for TAA mitigation is enabled: True
 **3. adım**: çekirdek sanal adres GÖLGELEME (Kvas) ve dal hedefi ekleme (BTı) işletim sistemi desteğini etkinleştirmek için, kayıt defteri anahtarlarını kullanarak korumaları etkinleştirmek üzere [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) içindeki yönergeleri izleyin `Session Manager` . Yeniden başlatma gerekiyor.
 
 
-**4. adım**: [iç içe sanallaştırma](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) kullanan dağıtımlar (yalnızca D3 ve E3): Bu yönergeler Hyper-V konağı olarak kullandığınız VM 'nin içinde geçerlidir.
+**4. adım**: [iç içe sanallaştırma](../articles/virtual-machines/windows/nested-virtualization.md) kullanan dağıtımlar (yalnızca D3 ve E3): Bu yönergeler Hyper-V konağı olarak kullandığınız VM 'nin içinde geçerlidir.
 
 1.  Kayıt defteri anahtarlarını kullanarak korumaları etkinleştirmek için [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) içindeki yönergeleri izleyin `MinVmVersionForCpuBasedMitigations` .
-2.  `Core` [Buradaki](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)yönergeleri izleyerek hiper yönetici Zamanlayıcı türünü olarak ayarlayın.
+2.  `Core` [Buradaki](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)yönergeleri izleyerek hiper yönetici Zamanlayıcı türünü olarak ayarlayın.
 
 
 ### <a name="linux"></a>Linux
@@ -119,7 +119,7 @@ Windows OS support for TAA mitigation is enabled: True
 <a name="linux"></a>İçinde ek güvenlik özellikleri kümesinin etkinleştirilmesi, hedef işletim sisteminin tamamen güncel olmasını gerektirir. Bazı azaltmaları varsayılan olarak etkinleştirilir. Aşağıdaki bölümde, varsayılan olarak kapalı olan ve/veya donanım desteği 'ne (mikro kod) bağlı olan özellikler açıklanmaktadır. Bu özelliklerin etkinleştirilmesi performans etkisine neden olabilir. Daha fazla yönerge için işletim sistemi sağlayıcınızın belgelerine başvurun
 
 
-**1. Adım: sanal makinede hiper iş parçacığı devre dışı bırakma** -hiper iş PARÇACıKLı bir sanal makinede güvenilmeyen kod çalıştıran müşterilerin hiper iş parçacığı devre dışı bırakılması veya hiper iş PARÇACıKLı bir VM 'ye taşınması gerekir.  Hiper iş parçacıklı VM boyutlarının bir listesi için [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/linux/acu) başvurun (vCPU ile çekirdekli oran 2:1 ' dir). Hiper iş parçacıklı bir VM çalıştırıp çalıştıracağınızı denetlemek için `lscpu` LINUX VM 'de komutunu çalıştırın. 
+**1. Adım: sanal makinede hiper iş parçacığı devre dışı bırakma** -hiper iş PARÇACıKLı bir sanal makinede güvenilmeyen kod çalıştıran müşterilerin hiper iş parçacığı devre dışı bırakılması veya hiper iş PARÇACıKLı bir VM 'ye taşınması gerekir.  Hiper iş parçacıklı VM boyutlarının bir listesi için [Bu belgeye](../articles/virtual-machines/acu.md) başvurun (vCPU ile çekirdekli oran 2:1 ' dir). Hiper iş parçacıklı bir VM çalıştırıp çalıştıracağınızı denetlemek için `lscpu` LINUX VM 'de komutunu çalıştırın. 
 
 İse `Thread(s) per core = 2` hiper iş parçacığı oluşturma etkinleştirilmiştir. 
 
@@ -179,11 +179,3 @@ Bu makalede birçok modern işlemciyi etkileyen aşağıdaki kurgusal yürütme 
 
 İşlem eşitleme uzantıları (Intel® TSX) Işlem zaman uyumsuz Iptali:  
 - [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) – TSX Işlem zaman uyumsuz iptali (taa)
-
-
-
-
-
-
-
-

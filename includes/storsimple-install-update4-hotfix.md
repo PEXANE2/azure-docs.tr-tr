@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 89ad3dfffa82f062ef8bc808da19440adfa32f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc42c22579346c272ee5a6f41147e6b5b09643ba
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050286"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553371"
 ---
 #### <a name="to-download-hotfixes"></a>Düzeltmeleri indirmek için
 
@@ -101,7 +101,7 @@ Normal mod düzeltmelerini yüklemek ve doğrulamak için aşağıdaki adımlar�
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    * `HcsSoftwareVersion: 6.3.9600.17820`
    
-     Güncelleştirme uygulandıktan sonra sürüm numarası değişmezse, düzeltmenin uygulanamadığı anlamına gelir. Bunu görmeniz durumunda daha fazla yardım için lütfen [Microsoft Desteği](../articles/storsimple/storsimple-contact-microsoft-support.md)’ne başvurun.
+     Güncelleştirme uygulandıktan sonra sürüm numarası değişmezse, düzeltmenin uygulanamadığı anlamına gelir. Bunu görmeniz durumunda daha fazla yardım için lütfen [Microsoft Desteği](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)’ne başvurun.
      
      > [!IMPORTANT]
      > Sonraki güncelleştirmeyi uygulamadan önce etkin denetleyiciyi cmdlet üzerinden yeniden başlatmanız gerekir `Restart-HcsController` .
@@ -169,7 +169,7 @@ Disk üretici yazılımı güncelleştirmelerini yüklemek için aşağıdaki y�
     ```
 
 3. `Get-HcsUpdateStatus` komutunu kullanarak yükleme ilerleme durumunu izleyin. `RunInProgress` değeri `False` olarak değiştiğinde güncelleştirme tamamlanır.
-4. Yükleme tamamlandıktan sonra, bakım modu düzeltmesinin yüklendiği denetleyici yeniden başlatılır. Seçenek 1 olarak oturum açın, **tam erişimle oturum açın**ve disk üretici yazılımı sürümünü doğrulayın. Şunu yazın:
+4. Yükleme tamamlandıktan sonra, bakım modu düzeltmesinin yüklendiği denetleyici yeniden başlatılır. Seçenek 1 olarak oturum açın, **tam erişimle oturum açın** ve disk üretici yazılımı sürümünü doğrulayın. Şunu yazın:
    
    `Get-HcsFirmwareVersion`
    
@@ -267,4 +267,3 @@ Disk üretici yazılımı güncelleştirmelerini yüklemek için aşağıdaki y�
    `Exit-HcsMaintenanceMode`
 
 5. Bakım modundan çıktığınızda denetleyiciler yeniden başlatılır. Disk üretici yazılımı güncelleştirmeleri başarıyla uygulanıp cihaz bakım modundan çıktıktan sonra, klasik Azure portalına geri dönün. Yüklediğiniz bakım modu güncelleştirmeleri, 24 saat boyunca portalda gösterilmeyebilir.
-

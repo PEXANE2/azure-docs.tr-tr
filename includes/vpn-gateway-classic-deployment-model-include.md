@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1afb139e060d57c5a098f3730a65ec76a3eefb4e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 621ac11531a77342204bbbd8628aaa5c11fb88cd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103212"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562651"
 ---
 > [!NOTE]
-> Bu makale klasik dağıtım modeli için hazırlanmıştır. Azure'da yeniyseniz, bunun yerine Resource Manager dağıtım modeli kullanmanız önerilir. Resource Manager dağıtım modeli en güncel dağıtım modelidir ve klasik dağıtım modelinden daha fazla seçenek ile özellik uyumluluğu sunar. Dağıtım modelleri hakkında daha fazla bilgi için bkz. [Dağıtım modellerini anlama](../articles/resource-manager-deployment-model.md).
+> Bu makale klasik dağıtım modeli için hazırlanmıştır. Azure'da yeniyseniz, bunun yerine Resource Manager dağıtım modeli kullanmanız önerilir. Resource Manager dağıtım modeli en güncel dağıtım modelidir ve klasik dağıtım modelinden daha fazla seçenek ile özellik uyumluluğu sunar. Dağıtım modelleri hakkında daha fazla bilgi için bkz. [Dağıtım modellerini anlama](../articles/azure-resource-manager/management/deployment-models.md).
 > 
 > Bu makalenin Kaynak Yöneticisi sürümü için, açılır listeden veya soldaki içindekiler tablosundan seçin.
 >

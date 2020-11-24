@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6e0612a017650f0c6e4c9f63d9a5fd097b0b92c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89303994"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557486"
 ---
 ## <a name="update-resources"></a>Kaynakları güncelleştirme
 
 Nelerin güncelleştirilemeyebilir hakkında bazı sınırlamalar vardır. Aşağıdaki öğeler güncelleştirilemeyebilir: 
 
 Paylaşılan görüntü Galerisi:
-- Açıklama
+- Description
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Açıklama
+- Description
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -36,7 +36,7 @@ Görüntü sürümü:
 
 Çoğaltma bölgelerini eklemeyi planlıyorsanız, kaynak yönetilen görüntüyü silmeyin. Kaynak yönetilen görüntü, görüntü sürümünü ek bölgelere çoğaltmak için gereklidir. 
 
-Bir galerinin açıklamasını güncelleştirmek için [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)komutunu kullanın.
+Bir galerinin açıklamasını güncelleştirmek için [Update-AzGallery](/powershell/module/az.compute/update-azgallery)komutunu kullanın.
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-Bu örnek, görüntü tanımımız için son kullanım tarihini güncelleştirmek üzere [Update-Azgallerımagedefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) öğesinin nasıl kullanılacağını gösterir.
+Bu örnek, görüntü tanımımız için son kullanım tarihini güncelleştirmek üzere [Update-Azgallerımagedefinition](/powershell/module/az.compute/update-azgalleryimagedefinition) öğesinin nasıl kullanılacağını gösterir.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-Bu örnek, bu görüntü sürümünün *en son* görüntü olarak kullanılmasını dışlamak için [Update-azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) ' ın nasıl kullanılacağını gösterir.
+Bu örnek, bu görüntü sürümünün *en son* görüntü olarak kullanılmasını dışlamak için [Update-azgallerımageversion](/powershell/module/az.compute/update-azgalleryimageversion) ' ın nasıl kullanılacağını gösterir.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -65,7 +65,7 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
-Bu örnek, [Update-Azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) ' ın bu görüntü sürümünü *en son* görüntü için göz önünde bulundurmak için nasıl kullanılacağını gösterir.
+Bu örnek, [Update-Azgallerımageversion](/powershell/module/az.compute/update-azgalleryimageversion) ' ın bu görüntü sürümünü *en son* görüntü için göz önünde bulundurmak için nasıl kullanılacağını gösterir.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -103,4 +103,3 @@ Remove-AzGallery `
 
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-

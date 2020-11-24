@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines-windows
 author: rothja
 manager: craigg
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050440"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561397"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV tümleştirmesi için hazırlanma
 SQL Server VM yapılandırmak üzere Azure Key Vault tümleştirmesini kullanmak için birkaç önkoşul vardır: 
@@ -38,7 +38,7 @@ En son Azure PowerShell modülünü yüklediğinizden emin olun. Daha fazla bilg
 
 İlk olarak, aboneliğinizde bir [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) olması gerekir. Birçok avantaj arasında, bu, belirli kullanıcılar ve uygulamalar için anahtar kasanıza izin vermenizi sağlar.
 
-Sonra, bir uygulamayı AAD ile kaydedin. Bu size, sanal makinenizin ihtiyaç duyduğu anahtar kasanıza erişimi olan bir hizmet sorumlusu hesabı sağlar. Azure Key Vault makalesinde, bu adımları [bir uygulamayı Azure Active Directory Ile kaydet](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory) bölümünde bulabilir veya [Bu blog gönderisinin](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx) **uygulama için kimlik Al bölümünde** ekran görüntüleriyle ilgili adımları görebilirsiniz. Bu adımları tamamlamadan önce, daha sonra SQL VM 'niz üzerinde Azure Key Vault tümleştirmeyi etkinleştirdiğinizde gerekli olan bu kayıt sırasında aşağıdaki bilgileri toplamanız gerekir.
+Sonra, bir uygulamayı AAD ile kaydedin. Bu size, sanal makinenizin ihtiyaç duyduğu anahtar kasanıza erişimi olan bir hizmet sorumlusu hesabı sağlar. Azure Key Vault makalesinde, bu adımları [bir uygulamayı Azure Active Directory Ile kaydet](../articles/key-vault/general/manage-with-cli2.md#registering-an-application-with-azure-active-directory) bölümünde bulabilir veya [Bu blog gönderisinin](/archive/blogs/kv/azure-key-vault-step-by-step) **uygulama için kimlik Al bölümünde** ekran görüntüleriyle ilgili adımları görebilirsiniz. Bu adımları tamamlamadan önce, daha sonra SQL VM 'niz üzerinde Azure Key Vault tümleştirmeyi etkinleştirdiğinizde gerekli olan bu kayıt sırasında aşağıdaki bilgileri toplamanız gerekir.
 
 * Uygulama eklendikten sonra, **kayıtlı** uygulama dikey PENCERESINDE **uygulama kimliğini** (AAD ClientID veya AppID olarak da bilinir) bulun.
     Uygulama KIMLIĞI daha sonra Azure Key Vault tümleştirmesini etkinleştirmek için PowerShell betiğindeki **$spName** (hizmet asıl adı) parametresine atanır.
@@ -51,10 +51,10 @@ Sonra, bir uygulamayı AAD ile kaydedin. Bu size, sanal makinenizin ihtiyaç duy
 
 * Uygulama KIMLIĞI ve gizli anahtar, SQL Server bir kimlik bilgisi oluşturmak için de kullanılacaktır.
 
-* Bu yeni uygulama KIMLIĞINI (veya istemci KIMLIĞI) aşağıdaki erişim izinlerine sahip olacak şekilde yetkilendirmelisiniz: **Get**, **wrapKey**, **unwrapKey**. Bu, [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'i ile yapılır. Daha fazla bilgi için bkz. [Azure Key Vault genel bakış](../articles/key-vault/key-vault-overview.md).
+* Bu yeni uygulama KIMLIĞINI (veya istemci KIMLIĞI) aşağıdaki erişim izinlerine sahip olacak şekilde yetkilendirmelisiniz: **Get**, **wrapKey**, **unwrapKey**. Bu, [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'i ile yapılır. Daha fazla bilgi için bkz. [Azure Key Vault genel bakış](../articles/key-vault/general/overview.md).
 
 ### <a name="create-a-key-vault"></a><a id="createkeyvault"></a> Anahtar Kasası oluşturma
-SANAL makinenizde şifreleme için kullanacağınız anahtarları depolamak üzere Azure Key Vault kullanmak için bir anahtar kasasına erişmeniz gerekir. Anahtar kasanızı henüz yüklemediyseniz [Azure Key Vault kullanmaya](../articles/key-vault/key-vault-overview.md) başlama makalesindeki adımları izleyerek bir tane oluşturun. Bu adımları tamamlamadan önce, bu ayarlama sırasında, daha sonra SQL VM 'niz üzerinde Azure Key Vault tümleştirmesinin etkinleştirilmesi için gereken bazı bilgiler vardır.
+SANAL makinenizde şifreleme için kullanacağınız anahtarları depolamak üzere Azure Key Vault kullanmak için bir anahtar kasasına erişmeniz gerekir. Anahtar kasanızı henüz yüklemediyseniz [Azure Key Vault kullanmaya](../articles/key-vault/general/overview.md) başlama makalesindeki adımları izleyerek bir tane oluşturun. Bu adımları tamamlamadan önce, bu ayarlama sırasında, daha sonra SQL VM 'niz üzerinde Azure Key Vault tümleştirmesinin etkinleştirilmesi için gereken bazı bilgiler vardır.
 
 ```azurepowershell
 New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'

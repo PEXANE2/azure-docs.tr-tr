@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a0db3ee9f32be35e62accc5df7b92697a883df20
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad9f3a115ed226b492a08dae29db61029d9098eb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83778278"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557276"
 ---
 Depolama hesabı, Azure dosya paylaşımını veya bloblar veya sorgular gibi diğer depolama kaynaklarını dağıtabileceğiniz, paylaşılan bir depolama havuzudur. Bir depolama hesabında sınırsız sayıda paylaşım olabilir. Bir paylaşım, depolama hesabının kapasite limitlerine kadar sınırsız sayıda dosyayı depolayabilir.
 
@@ -24,13 +24,13 @@ Depolama hesabı oluşturmak için:
     ![Kaynak araması iletişim kutusunda, depolama hesabı girişinin nasıl göründüğüne dair ekran görüntüsü](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
 1. **Ad** alanına *mystorageacct* komutunu yazın ve benzersiz bir ad olduğunu belirten yeşil onay işareti görüntüleninceye kadar komutun sonuna birkaç rastgele sayı yazın. Depolama hesabı adı tamamen küçük harflerden oluşmalı ve genel olarak benzersiz olmalıdır. Depolama hesabınızın adını not edin. Daha sonra bu adı kullanacaksınız. 
-1. **Dağıtım modelinde**, **Kaynak Yöneticisi**varsayılan değerini bırakın. Azure Resource Manager ve klasik dağıtım modeli arasındaki farklılıklar hakkında daha fazla bilgi edinmek için bkz. [Dağıtım modellerini ve kaynaklarınızın durumunu anlama](../articles/azure-resource-manager/management/deployment-models.md).
-1. **Performans**altında varsayılan değeri **Standart**olarak tutun.
+1. **Dağıtım modelinde**, **Kaynak Yöneticisi** varsayılan değerini bırakın. Azure Resource Manager ve klasik dağıtım modeli arasındaki farklılıklar hakkında daha fazla bilgi edinmek için bkz. [Dağıtım modellerini ve kaynaklarınızın durumunu anlama](../articles/azure-resource-manager/management/deployment-models.md).
+1. **Performans** altında varsayılan değeri **Standart** olarak tutun.
     
     > [!NOTE]
     > Bu hızlı başlangıç standart bir dosya paylaşımı oluşturur, ancak Premium dosya paylaşımlarını kullanmak istiyorsanız, bunun yerine **Premium** ' u seçin.
 
-1. **Hesap türü** bölümünde **StorageV2** seçeneğini belirleyin. Farklı türlerde depolama hesapları hakkında daha fazla bilgi edinmek için bkz. [Azure depolama hesaplarını anlama](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+1. **Hesap türü** bölümünde **StorageV2** seçeneğini belirleyin. Farklı türlerde depolama hesapları hakkında daha fazla bilgi edinmek için bkz. [Azure depolama hesaplarını anlama](../articles/storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
     > [!NOTE]
     > Bu hızlı başlangıçta, genel amaçlı bir v2 hesabı oluşturulur. Premium dosya paylaşımlarını kullanmak isterseniz, bunun yerine **FileStorage** ' ı seçin.

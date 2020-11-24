@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73034555"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556704"
 ---
 Bir sistem tasarlarken, bu sisteme yönelik olası tehditleri anlamak ve sistem tasarlandıkça ve uygun hale getirebileceği için uygun savunma savunmaları eklemek önemlidir. Bir saldırganın bir sistemin güvenliğinin nasıl tehlikeye alamadığını anlamak için, ürünü güvenlikle birlikte Başlat ' dan tasarlamak önemlidir.
 
@@ -72,7 +72,7 @@ Tehdit modelinin dört temel öğesi şunlardır:
 
 * Dış varlıklar (sistemle etkileşime sahip ancak uygulama denetimi altında değil, örnek kullanıcıları ve uydu akışlarını içerir)
 
-Mimari diyagramdaki tüm öğeler çeşitli tehditlere tabidir; Bu makalede, Ilerleme. [Tehdit modellemesini tekrar okuyun ve](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) ilerleme öğeleri hakkında daha fazla bilgi edinin.
+Mimari diyagramdaki tüm öğeler çeşitli tehditlere tabidir; Bu makalede, Ilerleme. [Tehdit modellemesini tekrar okuyun ve](/archive/blogs/larryosterman/threat-modeling-again-stride) ilerleme öğeleri hakkında daha fazla bilgi edinin.
 
 Uygulama diyagramının farklı öğeleri belirli bir Ilerleme tehditlerine tabidir:
 
@@ -265,7 +265,7 @@ Ara fiziksel denetim yüzeyleri, bir eşdeğer işlevin uzaktan başlatılabilec
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
 * [Microsoft Azure IoT başvuru mimarisi](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

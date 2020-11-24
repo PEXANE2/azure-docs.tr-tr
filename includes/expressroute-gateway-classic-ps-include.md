@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c05eb88df27ba9e71c0f61bad75457d893a7ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188105"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559827"
 ---
 > [!NOTE]
 > Bu örnekler, S2S/ExpressRoute ile birlikte bulunan yapılandırmalara uygulanmaz.
@@ -25,7 +25,7 @@ Klasik kaynak modeli kullanarak bir sanal ağa ağ geçidi eklediğinizde ağ ge
 
 ### <a name="download-the-network-configuration-file"></a>Ağ yapılandırma dosyasını indir
 
-1. [Ağ yapılandırma dosyası makalesindeki adımları](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) kullanarak ağ yapılandırma dosyasını indirin. Dosyayı bir metin düzenleyicisi kullanarak açın.
+1. [Ağ yapılandırma dosyası makalesindeki adımları](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file) kullanarak ağ yapılandırma dosyasını indirin. Dosyayı bir metin düzenleyicisi kullanarak açın.
 2. Dosyasına bir yerel ağ sitesi ekleyin. Herhangi bir geçerli adres ön ekini kullanabilirsiniz. VPN ağ geçidi için herhangi bir geçerli IP adresi ekleyebilirsiniz. Bu bölümdeki adres değerleri ExpressRoute işlemleri için kullanılmaz, ancak dosya doğrulaması için gereklidir. Örnekte, "Branch1" sitenin adıdır. Farklı bir ad kullanabilirsiniz, ancak dosyanın ağ geçidi bölümünde aynı değeri kullandığınızdan emin olabilirsiniz.
 
    ```

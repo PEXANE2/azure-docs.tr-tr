@@ -4,16 +4,16 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: c71f35a06d904b45cb014d5199197220b57cf230
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95422ace63c9f79583de5a2c86d777ad4d0a8834
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79485994"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553620"
 ---
-`deploymentconfig.json`Belgedeki girişler [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
+`deploymentconfig.json`Belgedeki girişler [AksWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
-| JSON varlığı | Yöntem parametresi | Açıklama |
+| JSON varlığı | Yöntem parametresi | Description |
 | ----- | ----- | ----- |
 | `computeType` | NA | Bilgi işlem hedefi. AKS için değer olmalıdır `aks` . |
 | `autoScaler` | NA | Otomatik ölçeklendirme için yapılandırma öğelerini içerir. Bkz. otomatik Scaler tablosu. |

@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c158145de6ce729d8a7060152b19fb14b63d58
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67133624"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558475"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Azure Resource Manager isteklerinin kimliğini doğrulamak için hazırlanma
 Azure Active Directory (AD) ile [Azure Resource Manager][lnk-authenticate-arm] kullanarak kaynaklarda gerçekleştirdiğiniz tüm işlemlerin kimlik doğrulamasını yapmanız gerekir. Bunu yapılandırmanın en kolay yolu PowerShell veya Azure CLı kullanmaktır.
@@ -41,8 +41,8 @@ Aşağıdaki adımlarda, PowerShell kullanarak bir AD uygulaması için parola k
 3. Yer tutucuları değiştirerek aşağıdaki komutu kullanarak yeni bir Azure Active Directory uygulaması oluşturun:
    
    * **{Display Name}:** uygulamanız Için **MySampleApp** gibi bir görünen ad
-   * **{Giriş sayfası URL 'si}:** uygulamanızın ana sayfasının **http: \/ /MySampleApp/Home**gibi URL 'si. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
-   * **{Uygulama tanımlayıcısı}:** **Http: \/ /MySampleApp**gibi benzersiz bir tanımlayıcı. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
+   * **{Giriş sayfası URL 'si}:** uygulamanızın ana sayfasının **http: \/ /MySampleApp/Home** gibi URL 'si. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
+   * **{Uygulama tanımlayıcısı}:** **Http: \/ /MySampleApp** gibi benzersiz bir tanımlayıcı. Bu URL 'nin gerçek bir uygulamayı göstermesi gerekmez.
    * **{Password}:** Uygulamanızda kimlik doğrulaması için kullandığınız bir parola.
      
      ```powershell
@@ -64,9 +64,9 @@ Aşağıdaki adımlarda, PowerShell kullanarak bir AD uygulaması için parola k
 Artık özel C# uygulamanızdan kimlik doğrulaması yapmanızı sağlayan Azure AD uygulamasını oluşturmayı tamamladınız. Bu öğreticide daha sonra aşağıdaki değerlere ihtiyacınız vardır:
 
 * TenantId
-* kaynak grubundaki
+* SubscriptionId
 * ApplicationID
 * Parola
 
-[lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
+[lnk-authenticate-arm]: /rest/api/
 [lnk-powershell-install]: /powershell/azure/install-az-ps

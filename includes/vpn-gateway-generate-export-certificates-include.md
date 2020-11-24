@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 946ff043828034340ae3273fc0629e32de755540
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061666"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559812"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Otomatik olarak imzalanan kök sertifika oluşturma
 
-Otomatik olarak imzalanan bir kök sertifika oluşturmak için New-SelfSignedCertificate cmdlet 'ini kullanın. Ek parametre bilgileri için, bkz. [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Otomatik olarak imzalanan bir kök sertifika oluşturmak için New-SelfSignedCertificate cmdlet 'ini kullanın. Ek parametre bilgileri için, bkz. [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 1. Windows 10 veya Windows Server 2016 çalıştıran bir bilgisayardan yükseltilmiş ayrıcalıklarla bir Windows PowerShell konsolu açın. Bu örnekler, "TRY It" Azure Cloud Shell çalışmaz. Bu örnekleri yerel olarak çalıştırmanız gerekir.
-1. Otomatik olarak imzalanan kök sertifika oluşturmak için aşağıdaki örneği kullanın. Aşağıdaki örnek, ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' ' a otomatik olarak yüklenen ' P2SRootCert ' adlı otomatik olarak imzalanan bir kök sertifika oluşturur. Sertifikayı *certmgr. msc* ' yi açarak veya *Kullanıcı sertifikalarını yönettiğinizde* görüntüleyebilirsiniz.
+1. Otomatik olarak imzalanan kök sertifika oluşturmak için aşağıdaki örneği kullanın. Aşağıdaki örnek, ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' ' a otomatik olarak yüklenen ' P2SRootCert ' adlı otomatik olarak imzalanan bir kök sertifika oluşturur. Sertifikayı *certmgr. msc*' yi açarak veya *Kullanıcı sertifikalarını yönettiğinizde* görüntüleyebilirsiniz.
 
    Cmdlet 'ini kullanarak oturum açın `Connect-AzAccount` . Ardından, gerekli değişikliklerle aşağıdaki örneği çalıştırın.
 
@@ -39,7 +39,7 @@ Noktadan Siteye bağlantı kullanarak bir sanal ağa bağlanan her istemci bilgi
 
 Aşağıdaki adımlarda, otomatik olarak imzalanan kök sertifikadan bir istemci sertifikası oluşturma işleminde size yol gösterilmektedir. Aynı kök sertifikadan birden çok istemci sertifikası oluşturabilirsiniz. Aşağıdaki adımları kullanarak istemci sertifikaları oluşturduğunuzda, istemci sertifikası sertifikayı oluşturmak için kullandığınız bilgisayara otomatik olarak yüklenir. İstemci sertifikasını başka bir istemci bilgisayara yüklemek istiyorsanız sertifikayı dışarı aktarabilirsiniz.
 
-Örnekler, bir yılda süresi dolan bir istemci sertifikası oluşturmak için New-SelfSignedCertificate cmdlet 'ini kullanır. İstemci sertifikası için farklı bir süre sonu değeri ayarlama gibi ek parametre bilgileri için, bkz. [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Örnekler, bir yılda süresi dolan bir istemci sertifikası oluşturmak için New-SelfSignedCertificate cmdlet 'ini kullanır. İstemci sertifikası için farklı bir süre sonu değeri ayarlama gibi ek parametre bilgileri için, bkz. [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1---powershell-console-session-still-open"></a>Örnek 1-PowerShell konsol oturumu hala açık
 

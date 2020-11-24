@@ -4,33 +4,33 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: d8c6b79dca97de3dd46eb9c677f2c94191f276b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89304029"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561811"
 ---
 Bir olay hub 'ı olay akışına gönderilen olaya yanıt vermek için işlev tetikleyicisini kullanın. Tetikleyiciyi ayarlamak için temeldeki Olay Hub 'ına okuma erişiminizin olması gerekir. İşlev tetiklendiğinde, işleve geçirilen ileti bir dize olarak yazılır.
 
 ## <a name="scaling"></a>Ölçeklendirme
 
-Olay tetiklenen bir işlevin her örneği tek bir [Eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) örneği tarafından desteklenir. Tetikleyici (Event Hubs tarafından desteklenir) yalnızca bir [Eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) örneğinin belirli bir bölüm üzerinde kira almasını sağlar.
+Olay tetiklenen bir işlevin her örneği tek bir [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor) örneği tarafından desteklenir. Tetikleyici (Event Hubs tarafından desteklenir) yalnızca bir [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor) örneğinin belirli bir bölüm üzerinde kira almasını sağlar.
 
 Örneğin, aşağıdaki gibi bir olay hub 'ı göz önünde bulundurun:
 
 * 10 Bölüm
 * 1.000 olay, her bölümde 100 ileti ile tüm bölümler arasında eşit olarak dağıtılır
 
-İşleviniz ilk etkinleştirildiğinde, işlevin yalnızca bir örneği vardır. İlk işlev örneğini arayalım `Function_0` . `Function_0`İşlevin tüm on bölümde kira tutan [Eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) ' un tek bir örneği vardır. Bu örnek, 0-9 bölümlerinden olayları okuyor. Bu noktadan sonra aşağıdakilerden biri olur:
+İşleviniz ilk etkinleştirildiğinde, işlevin yalnızca bir örneği vardır. İlk işlev örneğini arayalım `Function_0` . `Function_0`İşlevin tüm on bölümde kira tutan [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor) ' un tek bir örneği vardır. Bu örnek, 0-9 bölümlerinden olayları okuyor. Bu noktadan sonra aşağıdakilerden biri olur:
 
 * **Yeni işlev örnekleri gerekli değildir**: `Function_0` işlevler ölçekleme mantığı yürürlüğe girmeden önce tüm 1.000 olaylarını işleyebilir. Bu durumda, tüm 1.000 iletileri tarafından işlenir `Function_0` .
 
-* **Ek bir işlev örneği eklendi**: işlevleri ölçeklendirme mantığı, `Function_0` işleyebileceğinden daha fazla ileti olduğunu belirlerse, yeni bir işlev uygulama örneği ( `Function_1` ) oluşturulur. Bu yeni işlevin aynı zamanda [Eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)ilişkili bir örneği de vardır. Temeldeki Event Hubs, yeni bir konak örneğinin okunmuş iletileri denediğinden emin olup, bu yük, konak örnekleri genelinde bölümleri dengeler. Örneğin, 0-4 bölümlerine `Function_0` ve bölümleri 5-9 ' e atanabilir `Function_1` .
+* **Ek bir işlev örneği eklendi**: işlevleri ölçeklendirme mantığı, `Function_0` işleyebileceğinden daha fazla ileti olduğunu belirlerse, yeni bir işlev uygulama örneği ( `Function_1` ) oluşturulur. Bu yeni işlevin aynı zamanda [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor)ilişkili bir örneği de vardır. Temeldeki Event Hubs, yeni bir konak örneğinin okunmuş iletileri denediğinden emin olup, bu yük, konak örnekleri genelinde bölümleri dengeler. Örneğin, 0-4 bölümlerine `Function_0` ve bölümleri 5-9 ' e atanabilir `Function_1` .
 
 * **N daha fazla işlev örneği eklendi**: işlevlerin ölçeklendirilmesi mantığı, her ikisinin de `Function_0` `Function_1` işleyebileceğinden daha fazla ileti olduğunu belirlerse, yeni `Functions_N` işlev uygulama örnekleri oluşturulur.  Uygulamalar, `N` Olay Hub 'ı bölümlerinin sayısından daha büyük olan noktada oluşturulur. Bizim örneğimizde, bu durumda örneklerin tamamında Event Hubs yeniden yük dengeler `Function_0` . `Functions_9`
 
-Ölçeklendirme gerçekleştiğinde, `N` örnekler Olay Hub 'ı bölümlerinin sayısından daha büyük bir sayıdır. Bu model, [Eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) örneklerinin diğer örneklerden kullanılabilir hale geldiklerinden, bölümler üzerinde kilitler elde etmek için kullanılabilir olmasını sağlamak için kullanılır. Yalnızca işlev örneği yürütüldüğünde kullanılan kaynaklar için ücretlendirilirsiniz. Diğer bir deyişle, bu aşırı sağlama için ücretlendirilirsiniz.
+Ölçeklendirme gerçekleştiğinde, `N` örnekler Olay Hub 'ı bölümlerinin sayısından daha büyük bir sayıdır. Bu model, [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor) örneklerinin diğer örneklerden kullanılabilir hale geldiklerinden, bölümler üzerinde kilitler elde etmek için kullanılabilir olmasını sağlamak için kullanılır. Yalnızca işlev örneği yürütüldüğünde kullanılan kaynaklar için ücretlendirilirsiniz. Diğer bir deyişle, bu aşırı sağlama için ücretlendirilirsiniz.
 
 Tüm işlev yürütmesi tamamlandığında (hata ile veya hatasız), denetim noktaları ilişkili depolama hesabına eklenir. İade etme işlemi başarılı olduğunda, tüm 1.000 iletileri hiçbir zaman geri alınamaz.
 
@@ -343,7 +343,7 @@ Tam bir örnek için bkz. [Trigger-C# örneği](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java [işlevleri çalışma zamanı kitaplığından](https://docs.microsoft.com/java/api/overview/azure/functions/runtime), değeri Olay Hub 'ından gelen parametrelerde [Eventhubtrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) ek açıklamasını kullanın. Bu ek açıklamaların bulunduğu parametreler, bir olay geldiğinde işlevin çalışmasına neden olur. Bu ek açıklama, kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir `Optional<T>` .
+Java [işlevleri çalışma zamanı kitaplığından](/java/api/overview/azure/functions/runtime), değeri Olay Hub 'ından gelen parametrelerde [Eventhubtrigger](/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) ek açıklamasını kullanın. Bu ek açıklamaların bulunduğu parametreler, bir olay geldiğinde işlevin çalışmasına neden olur. Bu ek açıklama, kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir `Optional<T>` .
 
 ---
 
@@ -351,7 +351,7 @@ Java [işlevleri çalışma zamanı kitaplığından](https://docs.microsoft.com
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `EventHubTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `eventHubTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -366,11 +366,11 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 ## <a name="event-metadata"></a>Olay meta verileri
 
-Event Hubs tetikleyicisi çeşitli [meta veri özellikleri](../articles/azure-functions/./functions-bindings-expressions-patterns.md)sağlar. Meta veri özellikleri, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [eventdata](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) sınıfından gelir.
+Event Hubs tetikleyicisi çeşitli [meta veri özellikleri](../articles/azure-functions/./functions-bindings-expressions-patterns.md)sağlar. Meta veri özellikleri, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [eventdata](/dotnet/api/microsoft.servicebus.messaging.eventdata) sınıfından gelir.
 
-|Özellik|Tür|Açıklama|
+|Özellik|Tür|Description|
 |--------|----|-----------|
-|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` örneği.|
+|`PartitionContext`|[PartitionContext](/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` örneği.|
 |`EnqueuedTimeUtc`|`DateTime`|UTC olarak sıraya alınan zaman.|
 |`Offset`|`string`|Olay Hub 'ı bölüm akışına göre verilerin uzaklıkları. Bu, Event Hubs akışı içindeki bir olayın işaretçisi veya tanımlayıcısıdır. Tanımlayıcı, Event Hubs akışının bir bölümü içinde benzersizdir.|
 |`PartitionKey`|`string`|Olay verilerinin gönderileceği bölüm.|

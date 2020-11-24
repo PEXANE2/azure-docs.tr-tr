@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: eaf2c2e2c1954ae848c280adf4f1ae81ffc79ee8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397011cfd862607932f671c1f2cacd25513bdeb2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779899"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560927"
 ---
 Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izleme anahtarı başına bazı sınırlar vardır. Limitler seçtiğiniz [fiyatlandırma planına](https://azure.microsoft.com/pricing/details/application-insights/) bağlıdır.
 
@@ -21,7 +21,7 @@ Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izlem
 | --- | --- | --- |
 | Günlük toplam veri | 100 GB | Bir uç ayarlayarak verileri azaltabilirsiniz. Daha fazla veri gerekiyorsa, portalda 1.000 GB 'a kadar olan limiti artırabilirsiniz. 1.000 GB 'tan büyük kapasiteler için adresine e-posta gönderin AIDataCap@microsoft.com .
 | Azaltma | 32.000 olay/saniye | Sınır bir dakika içinde ölçülür.
-| Veri saklama | 90 gün | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/app/analytics.md) ve [Ölçüm Gezgini](../articles/azure-monitor/app/metrics-explorer.md) içindir.
+| Veri saklama | 90 gün | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/log-query/log-query-overview.md) ve [Ölçüm Gezgini](../articles/azure-monitor/platform/metrics-charts.md) içindir.
 | [Çok adımlı kullanılabilirlik testi](../articles/azure-monitor/app/availability-multistep.md) ayrıntılı sonuçlarını saklama | 90 gün | Bu kaynak her adımın ayrıntılı sonuçlarını verir.
 | En fazla olay boyutu | 64.000.000 bayt |
 | Özellik ve ölçüm adı uzunluğu | 150 | Bkz. [tür şemaları](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a442b5de7a256dd8bcf47da741bd41894709c3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74085284"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554439"
 ---
 Microsoft Azure bulut hizmeti ile ilgili sorunları tanılamak, sorunlar oluşması durumunda hizmetin günlük dosyalarının sanal makinelerde toplanmasını gerektirir. Bir veya daha fazla bulut hizmeti sanal makinelerinden (her iki web rolünden ve çalışan rolünden) tek seferlik bir günlük koleksiyonu gerçekleştirmek ve toplanan dosyaları bir sanal makineye uzaktan oturum açmadan bir Azure depolama hesabına aktarmak için AzureLogCollector uzantısını isteğe bağlı olarak kullanabilirsiniz.
 
@@ -44,7 +44,7 @@ Her iki koleksiyon modunda, aşağıdaki yapının bir koleksiyonu kullanılarak
 * Azure PowerShell. Bkz. Install [Azure PowerShell](/powershell/azure/install-az-ps)] for Install yönergeleri.
 
 ## <a name="add-the-extension"></a>Uzantıyı ekleme
-AzureLogCollector uzantısını eklemek için [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlet 'Lerini veya [hizmet yönetimi REST API 'lerini](https://msdn.microsoft.com/library/ee460799.aspx) kullanabilirsiniz.
+AzureLogCollector uzantısını eklemek için [Microsoft Azure PowerShell](/previous-versions/azure/dn495240(v=azure.100)) cmdlet 'Lerini veya [hizmet yönetimi REST API 'lerini](/previous-versions/azure/ee460799(v=azure.100)) kullanabilirsiniz.
 
 Cloud Services için, var olan Azure PowerShell cmdlet 'i, **set-AzureServiceExtension**, bulut hizmeti rol örneklerinde uzantıyı etkinleştirmek için kullanılabilir. Bu cmdlet aracılığıyla bu uzantı her etkinleştirildiğinde, seçilen rollerin seçili rol örneklerinde günlük koleksiyonu tetiklenir.
 
@@ -528,4 +528,3 @@ else
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Artık günlüklerinizi tek bir basit konumdan inceleyebilir veya kopyalayabilirsiniz.
-

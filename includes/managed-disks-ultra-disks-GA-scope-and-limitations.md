@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413163"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558574"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -40,12 +40,12 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Doğu Avustralya     |Üç kullanılabilirlik bölgesi         |
 |Güneydoğu Asya    |Üç kullanılabilirlik bölgesi        |
 |Kanada Orta *     |Üç kullanılabilirlik bölgesi          |
-|Central US     |Üç kullanılabilirlik bölgesi          |
+|Orta ABD     |Üç kullanılabilirlik bölgesi          |
 |Doğu ABD     |Üç kullanılabilirlik bölgesi          |
 |Doğu ABD 2     |Üç kullanılabilirlik bölgesi         |
 |Orta Fransa    |İki kullanılabilirlik bölgesi        |
 |Doğu Japonya    |Üç kullanılabilirlik bölgesi        |
-|North Europe    |Üç kullanılabilirlik bölgesi        |
+|Kuzey Avrupa    |Üç kullanılabilirlik bölgesi        |
 |Güney Birleşik Krallık    |Üç kullanılabilirlik bölgesi        |
 |West Europe    | Üç kullanılabilirlik bölgesi|
 |Batı ABD 2    |Üç kullanılabilirlik bölgesi|
@@ -67,7 +67,7 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Her VM boyutu, Ultra disklerle desteklenen her bölgede kullanılabilir değildir.
 - Yalnızca veri diskleri olarak kullanılabilir. 
-- Varsayılan olarak 4k fiziksel sektör boyutunu destekler. 512E sektör boyutu genel kullanıma açık bir teklif olarak kullanılabilir, ancak bu, [için kaydolmanız](https://aka.ms/ultradisk512e)gerekir. Çoğu uygulama 4k kesim boyutlarına sahiptir ancak bazıları 512 bayt kesim boyutu gerektirir. Bir örnek Oracle Database, 4k yerel disklerini desteklemek için Release 12,2 veya üzeri bir sürümü gerektirir. Daha eski Oracle DB sürümleri için 512 baytlık sektör boyutu gereklidir.
+- Varsayılan olarak 4k fiziksel sektör boyutunu destekler. 512E sektör boyutu genel kullanıma açık bir teklif olarak kullanılabilir (kaydolma gerekmez), ancak şu anda yalnızca CLı veya PowerShell kullanılarak kullanılabilir. Çoğu uygulama 4k kesim boyutlarına sahiptir ancak bazıları 512 bayt kesim boyutu gerektirir. Bir örnek Oracle Database, 4k yerel disklerini desteklemek için Release 12,2 veya üzeri bir sürümü gerektirir. Daha eski Oracle DB sürümleri için 512 baytlık sektör boyutu gereklidir.
 - Yalnızca boş disk olarak oluşturulabilir.
 - Şu anda disk anlık görüntülerini, VM görüntülerini, kullanılabilirlik kümelerini, Azure adanmış Konakları veya Azure disk şifrelemesini desteklememektedir.
 - Şu anda Azure Backup veya Azure Site Recovery tümleştirmeyi desteklemez.

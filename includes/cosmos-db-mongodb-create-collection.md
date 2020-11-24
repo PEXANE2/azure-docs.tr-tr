@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cosmos-db
 author: LuisBosquez
 ms.service: cosmos-db
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
-ms.openlocfilehash: 8d12645bd302a7ea808f13c07e2a72f66846bad7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 37cdb6b466417add8dae69464304ce2f32247c8d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85121453"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555797"
 ---
 Artık, MongoDB veritabanı ve kapsayıcısı için bir Azure Cosmos DB API 'SI oluşturmak üzere Azure portal Veri Gezgini aracı 'nı kullanabilirsiniz. 
 
-1. Yeni **Veri Gezgini**  >  **kapsayıcı**seçin. 
+1. Yeni **Veri Gezgini**  >  **kapsayıcı** seçin. 
     
     **Kapsayıcı Ekle** alanı en sağda görüntülenir, görmek için sağa kaydırmanız gerekebilir.
 
@@ -28,9 +28,9 @@ Artık, MongoDB veritabanı ve kapsayıcısı için bir Azure Cosmos DB API 'SI 
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
     |**Veritabanı Kimliği**|veritabanı|Yeni veritabanının adı olarak *DB* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?` boşluk içeremez veya sonunda boşluk olamaz. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
-    |**İşleme hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz. Ayrıca, gerektiğinde dinamik olarak arttırmayı ve azaltmanızı sağlayan bir RU/sn aralığı sağlayacak [Otomatik ölçeklendirme modunu](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale)da seçebilirsiniz.| 
+    |**İşleme hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz. Ayrıca, gerektiğinde dinamik olarak arttırmayı ve azaltmanızı sağlayan bir RU/sn aralığı sağlayacak [Otomatik ölçeklendirme modunu](../articles/cosmos-db/provision-throughput-autoscale.md)da seçebilirsiniz.| 
     |**Koleksiyon KIMLIĞI**|Coll|`coll`Yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
-    |**Depolama kapasitesi**|Sabit (10 GB)|Bu uygulama için *sabit (10 GB)* girin. *Sınırsız*seçeneğini belirlerseniz, `Shard Key` tüm ekli öğelerin gerekli olacağı bir oluşturmanız gerekecektir.|
-    |**Parça anahtarı**| /_id| Bu makalede açıklanan örnek bir parça anahtarı kullanmaz, bu nedenle  */_id* olarak ayarlamak, otomatik olarak üretilen kimliği alanını parça anahtarı olarak kullanır. Bölümlendirme olarak da bilinen parça hakkında daha fazla bilgi için [Azure Cosmos DB Bölümlemede](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview)|
+    |**Depolama kapasitesi**|Sabit (10 GB)|Bu uygulama için *sabit (10 GB)* girin. *Sınırsız* seçeneğini belirlerseniz, `Shard Key` tüm ekli öğelerin gerekli olacağı bir oluşturmanız gerekecektir.|
+    |**Parça anahtarı**| /_id| Bu makalede açıklanan örnek bir parça anahtarı kullanmaz, bu nedenle  */_id* olarak ayarlamak, otomatik olarak üretilen kimliği alanını parça anahtarı olarak kullanır. Bölümlendirme olarak da bilinen parça hakkında daha fazla bilgi için [Azure Cosmos DB Bölümlemede](../articles/cosmos-db/partitioning-overview.md)|
         
     **Tamam**’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.

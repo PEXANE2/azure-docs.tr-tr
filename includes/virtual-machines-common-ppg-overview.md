@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daed8dc62fdfd86ecf785a0bfd83b2b6c0b4cc03
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377164"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554822"
 ---
 VM 'Lerin tek bir bölgeye yerleştirilmesi, örnekler arasındaki fiziksel mesafeyi azaltır. Bunları tek bir kullanılabilirlik alanına koymak, bunları fiziksel olarak bir araya getirir. Ancak, Azure ayak izi büyüdükçe, tek bir kullanılabilirlik alanı birden fazla fiziksel veri merkezine yayılabilir ve bu da uygulamanızı etkileyen bir ağ gecikme süresi oluşmasına neden olabilir. 
 
@@ -66,7 +66,7 @@ Yakınlık yerleştirme gruplarınızın hizalama durumunu denetlemek için aşa
 
     - **Hizalanmış**: kaynak, yakınlık yerleşimi grubunun gecikme süresi içinde.
 
-    - **Bilinmiyor**: VM kaynaklarından en az biri serbest bırakıldı. Başarılı bir şekilde yeniden başlattıktan sonra durum **hizalı**öğesine geri döner.
+    - **Bilinmiyor**: VM kaynaklarından en az biri serbest bırakıldı. Başarılı bir şekilde yeniden başlattıktan sonra durum **hizalı** öğesine geri döner.
 
     - **Hizalanmamış**: en az bir VM kaynağı yakınlık yerleşimi grubuyla hizalı değil. Hizalı olmayan belirli kaynaklar, üyelik bölümünde ayrı olarak da çağrılacaktır
 
@@ -81,8 +81,8 @@ Bir yakınlık yerleşimi grubu ise `Not Aligned` , etkilenen kaynakları başla
 
 Dağıtım kısıtlamalarından dolayı bir ayırma hatası varsa, etkilenen yakınlık yerleşimi grubundaki tüm kaynakları (hizalanmış kaynaklar dahil) ilk olarak iptal etmeniz ve sonra hizalamayı geri yüklemek için yeniden başlatmanız gerekebilir.
 
-## <a name="best-practices"></a>En iyi uygulamalar 
-- En düşük gecikme süresi için, hızlandırılmış ağlarla birlikte yakınlık yerleştirme gruplarını kullanın. Daha fazla bilgi için bkz. [hızlandırılmış ağ Ile Linux sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [hızlandırılmış ağ ile Windows sanal makinesi oluşturma](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="best-practices"></a>Önerilen uygulamalar 
+- En düşük gecikme süresi için, hızlandırılmış ağlarla birlikte yakınlık yerleştirme gruplarını kullanın. Daha fazla bilgi için bkz. [hızlandırılmış ağ Ile Linux sanal makinesi oluşturma](../articles/virtual-network/create-vm-accelerated-networking-cli.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) veya [hızlandırılmış ağ ile Windows sanal makinesi oluşturma](../articles/virtual-network/create-vm-accelerated-networking-powershell.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 - Tüm VM boyutlarını tek bir şablonda dağıtın. İhtiyaç duyduğunuz tüm VM SKU 'Larını ve boyutlarını desteklemeyen donanımlarda sahanın önüne geçmek için, tüm uygulama katmanlarını tek bir şablona dahil edin, böylece bunların hepsi aynı anda dağıtılacaktır.
 - Dağıtımınızı PowerShell, CLı veya SDK kullanarak yaparsanız, bir ayırma hatası alabilirsiniz `OverconstrainedAllocationRequest` . Bu durumda, mevcut tüm VM 'Leri durdurup serbest bırakabilir ve dağıtım betiğindeki sırayı, başarısız olan VM SKU 'SU/boyutlarına başlayacak şekilde değiştirmelisiniz. 
 - VM 'lerden silinen mevcut bir yerleştirme grubunu yeniden kullandığınızda, VM 'Leri eklemeden önce silme işleminin tam tamamlanmasını bekleyin.

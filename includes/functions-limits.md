@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 37a61e270f95ffdc420536046e0ce1eda1e489b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 826fccad043b067ce86d5f56eaebc6ee48b532d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391509"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556913"
 ---
 | Kaynak |[Tüketim planı](../articles/azure-functions/functions-scale.md#consumption-plan)|[Premium planı](../articles/azure-functions/functions-scale.md#premium-plan)|[Adanmış plan](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ ms.locfileid: "85391509"
 | En fazla istek boyutu (MB)<sup>3</sup> | 100 | 100 | 100 | 100 | Kümeye bağlıdır |
 | En fazla sorgu dizesi uzunluğu<sup>3</sup> | 4096 | 4096 | 4096 | 4096 | Kümeye bağlıdır |
 | En fazla istek URL uzunluğu<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | Kümeye bağlıdır |
-|Örnek başına [acu](../articles/virtual-machines/windows/acu.md) | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [AKS fiyatlandırması](https://azure.microsoft.com/pricing/details/container-service/) |
+|Örnek başına [acu](../articles/virtual-machines/acu.md) | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [AKS fiyatlandırması](https://azure.microsoft.com/pricing/details/container-service/) |
 | Maksimum bellek (örnek başına GB) | 1,5 | 3,5-14 | 1,75-14 | 3,5-14 | Herhangi bir düğüm desteklenir |
 | Plan başına işlev uygulamaları |100 |100 |sınırsız<sup>4</sup> | unbounded | unbounded |
 | [App Service planları](../articles/app-service/overview-hosting-plans.md) | [bölge](https://azure.microsoft.com/global-infrastructure/regions/) başına 100 |kaynak grubu başına 100 |kaynak grubu başına 100 | - | - |

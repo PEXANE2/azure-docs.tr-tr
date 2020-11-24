@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
-ms.openlocfilehash: 83e046ca97ceee249e707e30f478fad89345f4de
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ff5d04a2923f16c763e1529ecb365f60d6275ca2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504038"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562610"
 ---
 ### <a name="general-query-limits"></a>Genel sorgu limitleri
 
-| Sınır | Açıklama |
+| Sınır | Description |
 |:---|:---|
-| Sorgu dili | Azure Izleyici, Azure Veri Gezgini ile aynı [kusto sorgu dilini](/azure/kusto/query/) kullanır. Azure Izleyici 'de desteklenmeyen KQL dil öğelerine yönelik [Azure İzleyici günlüğü sorgu dili farklılıkları](../articles/azure-monitor/log-query/data-explorer-difference.md) bölümüne bakın. |
+| Sorgu dili | Azure Izleyici, Azure Veri Gezgini ile aynı [kusto sorgu dilini](/azure/kusto/query/) kullanır. Azure Izleyici 'de desteklenmeyen KQL dil öğelerine yönelik [Azure İzleyici günlüğü sorgu dili farklılıkları](/azure/data-explorer/kusto/query/) bölümüne bakın. |
 | Azure bölgeleri | Veri, birden çok Azure bölgesindeki çalışma alanlarını Log Analytics yayıldığında günlük sorguları aşırı yük yaşar. Ayrıntılar için bkz. [sorgu sınırları](../articles/azure-monitor/log-query/scope.md#query-scope-limits) . |
 | Kaynaklar arası sorgular | Tek bir sorgudaki maksimum Application Insights kaynak sayısı ve Log Analytics çalışma alanı 100 ile sınırlıdır.<br>Görünüm tasarımcısında çapraz kaynak sorgusu desteklenmez.<br>Log uyarılarındaki çapraz kaynak sorgusu, yeni scheduledQueryRules API 'sinde desteklenir.<br>Ayrıntılar için bkz. [çapraz kaynak sorgu sınırları](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) . |
 
@@ -27,7 +27,7 @@ ms.locfileid: "94504038"
 Azure Izleyici, çok fazla sayıda sorgu gönderen kullanıcılara karşı koruma için birkaç azaltma sınırlarına sahiptir. Bu davranış, sistem arka uç kaynaklarını aşırı yükleyebilir ve hizmet yanıt hızını düşürebilir. Aşağıdaki sınırlar, müşterilerin kesintileri karşı korumak ve tutarlı hizmet düzeyi sağlamak için tasarlanmıştır. Kullanıcı kısıtlama ve sınırları yalnızca Extreme kullanım senaryosunu etkileyecek şekilde tasarlanmıştır ve tipik kullanım için uygun olmamalıdır.
 
 
-| Measure | Kullanıcı başına sınır | Açıklama |
+| Measure | Kullanıcı başına sınır | Description |
 |:---|:---|:---|
 | Eşzamanlı sorgular | 5 | Kullanıcı için çalıştırılan 5 sorgu varsa, tüm yeni sorgular Kullanıcı başına eşzamanlılık kuyruğuna yerleştirilir. Çalışan sorgulardan biri sona erdiğinde, sonraki sorgu kuyruktan çekilir ve başlatılır. Bu, uyarı kurallarından sorgu içermez.
 | Eşzamanlılık kuyruğundaki süre | 3 dakika | Bir sorgu, başlatılmadan 3 dakikadan uzun bir süre içinde yer alıyorsa, kod 429 ile bir HTTP hatası yanıtıyla sonlandırılır. |

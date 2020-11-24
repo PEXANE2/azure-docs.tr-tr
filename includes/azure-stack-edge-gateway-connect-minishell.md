@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/12/2019
 ms.author: alkohli
-ms.openlocfilehash: f69f3ed4a439deec58d4e5d30cefe48c4834cd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f93f4d4e3295a0f08ac2e9f3e5826d3c8e6f6e4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89087186"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562237"
 ---
 İstemci işletim sistemine bağlı olarak, cihaza uzaktan bağlanma yordamları farklıdır.
 
@@ -58,11 +58,11 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
 
 Bağlanmak için kullanacağınız Linux istemcisinde:
 
-- SSH uzaktan iletişim özelliğini almak için GitHub 'dan [Linux için en son PowerShell Core 'U yükler](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) . 
+- SSH uzaktan iletişim özelliğini almak için GitHub 'dan [Linux için en son PowerShell Core 'U yükler](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) . 
 - [Yalnızca `gss-ntlmssp` NTLM modülünden paketi yükler](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu istemcileri için aşağıdaki komutu kullanın:
     - `sudo apt-get install gss-ntlmssp`
 
-Daha fazla bilgi için [SSH üzerinden PowerShell uzaktan iletişimi](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)konusuna gidin.
+Daha fazla bilgi için [SSH üzerinden PowerShell uzaktan iletişimi](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)konusuna gidin.
 
 NFS istemcisinden uzaktan bağlanmak için aşağıdaki adımları izleyin.
 

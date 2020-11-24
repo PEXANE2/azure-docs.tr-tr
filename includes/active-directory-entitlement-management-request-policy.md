@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 239fcc1e57cb4bd56a8704f8a840689d44617fcf
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93029532"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556994"
 ---
 ## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
@@ -33,9 +33,9 @@ Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesini sağlamak is
     | **Tüm Üyeler (konuklar hariç)** | Dizininizdeki tüm üye kullanıcılarının bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. Bu seçenek, dizininize davet ettiğiniz tüm konuk kullanıcılarını içermez. |
     | **Tüm kullanıcılar (konuklar dahil)** | Dizininizdeki tüm üye kullanıcılarının ve konuk kullanıcıların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. |
 
-    Konuk kullanıcılar, [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md)ile dizininize davet edilen dış kullanıcılara başvurur. Üye kullanıcılar ve Konuk kullanıcılar arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../articles/active-directory/fundamentals/users-default-permissions.md).
+    Konuk kullanıcılar, [Azure AD B2B](../articles/active-directory/external-identities/what-is-b2b.md)ile dizininize davet edilen dış kullanıcılara başvurur. Üye kullanıcılar ve Konuk kullanıcılar arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
-1. **Belirli kullanıcılar ve gruplar** ' ı seçtiyseniz, **Kullanıcı ve Grup Ekle** ' ye tıklayın.
+1. **Belirli kullanıcılar ve gruplar**' ı seçtiyseniz, **Kullanıcı ve Grup Ekle**' ye tıklayın.
 
 1. Kullanıcıları ve grupları seç bölmesinde, eklemek istediğiniz kullanıcıları ve grupları seçin.
 
@@ -47,10 +47,10 @@ Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesini sağlamak is
 
 ## <a name="for-users-not-in-your-directory"></a>Dizininizde bulunmayan kullanıcılar için
 
- **Dizininizde olmayan kullanıcılar** , başka BIR Azure ad dizini veya etki alanındaki kullanıcılara başvurur. Bu kullanıcılar henüz dizininize davet edilmemiş olabilir. Azure AD dizinleri **işbirliği kısıtlamalarında** davetlere izin verecek şekilde yapılandırılmalıdır. Daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../articles/active-directory/b2b/delegate-invitations.md).
+ **Dizininizde olmayan kullanıcılar** , başka BIR Azure ad dizini veya etki alanındaki kullanıcılara başvurur. Bu kullanıcılar henüz dizininize davet edilmemiş olabilir. Azure AD dizinleri **işbirliği kısıtlamalarında** davetlere izin verecek şekilde yapılandırılmalıdır. Daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../articles/active-directory/external-identities/delegate-invitations.md).
 
 > [!NOTE]
-> Henüz, isteğiniz onaylanmış veya otomatik olarak onaylanan dizininizde olmayan bir kullanıcı için bir Konuk Kullanıcı hesabı oluşturulur. Konuk davet edilecek, ancak davet e-postası almacaktır. Bunun yerine, bunlara erişim paketi ataması teslim edildiğinde bir e-posta gönderilir. Varsayılan olarak, Konuk kullanıcının artık herhangi bir erişim paketi ataması olmadığında, son atamasının süresi dolduğunda veya iptal edildiğinden, bu Konuk Kullanıcı hesabının oturum açması engellenir ve daha sonra silinir. Konuk kullanıcılarınızın, hiçbir erişim paketi ataması olmasa bile dizininizden sonsuza kadar kalmasını istiyorsanız, Yetkilendirme Yönetimi yapılandırmanızın ayarlarını değiştirebilirsiniz. Konuk Kullanıcı nesnesi hakkında daha fazla bilgi için, [Azure ACTIVE DIRECTORY B2B işbirliği kullanıcısının özelliklerine](../articles/active-directory/b2b/user-properties.md)bakın.
+> Henüz, isteğiniz onaylanmış veya otomatik olarak onaylanan dizininizde olmayan bir kullanıcı için bir Konuk Kullanıcı hesabı oluşturulur. Konuk davet edilecek, ancak davet e-postası almacaktır. Bunun yerine, bunlara erişim paketi ataması teslim edildiğinde bir e-posta gönderilir. Varsayılan olarak, Konuk kullanıcının artık herhangi bir erişim paketi ataması olmadığında, son atamasının süresi dolduğunda veya iptal edildiğinden, bu Konuk Kullanıcı hesabının oturum açması engellenir ve daha sonra silinir. Konuk kullanıcılarınızın, hiçbir erişim paketi ataması olmasa bile dizininizden sonsuza kadar kalmasını istiyorsanız, Yetkilendirme Yönetimi yapılandırmanızın ayarlarını değiştirebilirsiniz. Konuk Kullanıcı nesnesi hakkında daha fazla bilgi için, [Azure ACTIVE DIRECTORY B2B işbirliği kullanıcısının özelliklerine](../articles/active-directory/external-identities/user-properties.md)bakın.
 
 Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek istiyorsanız aşağıdaki adımları izleyin:
 
@@ -78,10 +78,10 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
 
     İşbirliği yapmak istediğiniz kuruluş listede yoksa, yöneticinizden onu bağlı bir kuruluş olarak eklemesini isteyebilirsiniz. Daha fazla bilgi için bkz. [bağlı kuruluş ekleme](../articles/active-directory/governance/entitlement-management-organization.md).
 
-1. Bağlı Kuruluşlarınızın tümünü seçtikten sonra **Seç** ' e tıklayın.
+1. Bağlı Kuruluşlarınızın tümünü seçtikten sonra **Seç**' e tıklayın.
 
     > [!NOTE]
-    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../articles/active-directory/b2b/allow-deny-list.md).
+    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../articles/active-directory/external-identities/allow-deny-list.md).
 
 1. [Onay](#approval) bölümüne atlayın.
 
@@ -89,7 +89,7 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
 
 Erişim isteklerini atlamak ve yöneticilerin bu erişim paketine belirli kullanıcıları doğrudan atamasını sağlamak istiyorsanız bu adımları izleyin. Kullanıcıların erişim paketini istemesi gerekmez. Yaşam döngüsü ayarlarını ayarlamaya devam edebilirsiniz, ancak hiçbir istek ayarı yoktur.
 
-1. **Erişim Isteyebilen kullanıcılar** bölümünde Hiçbiri ' ne tıklayın **(yalnızca yönetici doğrudan atamaları** ).
+1. **Erişim Isteyebilen kullanıcılar** bölümünde Hiçbiri ' ne tıklayın **(yalnızca yönetici doğrudan atamaları**).
 
     ![Erişim paketi-Istekler-hiçbiri yönetici yalnızca doğrudan atamalar](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
@@ -143,9 +143,9 @@ Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için 
 
     Yönetici, **yönetici** özniteliği kullanılarak Yetkilendirme Yönetimi tarafından bulunur. Öznitelik, kullanıcının Azure AD 'deki profilidir. Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. **Belirli onaylayanları Seç** ' i seçtiyseniz, dizininizdeki bir veya daha fazla Kullanıcı ya da grubun onaylayanlarını seçmek Için **onaylayan Ekle** ' ye tıklayın.
+1. **Belirli onaylayanları Seç**' i seçtiyseniz, dizininizdeki bir veya daha fazla Kullanıcı ya da grubun onaylayanlarını seçmek Için **onaylayan Ekle** ' ye tıklayın.
 
-1. Kararın altındaki kutuda **kaç gün içinde yapılmalıdır?** , bir onaylayanın bu erişim paketi için bir isteği gözden geçirmesi gereken gün sayısını belirtin.
+1. Kararın altındaki kutuda **kaç gün içinde yapılmalıdır?**, bir onaylayanın bu erişim paketi için bir isteği gözden geçirmesi gereken gün sayısını belirtin.
 
     Bu süre içinde bir istek onaylanmamışsa, otomatik olarak reddedilir. Kullanıcının erişim paketi için başka bir istek göndermesi gerekir.
 
@@ -182,7 +182,7 @@ Alternatif onaylayanlar belirterek, ilk veya ikinci onaylayanlardan isteği onay
 Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şekilde listeliyoruz. Lütfen birinci, ikinci ve alternatif onaylayanlar olacak farklı kişi kümelerini listediğinizden emin olun.
 Örneğin, Gamze ve emre 'yi Ilk onaylayan olarak listeleniyorsa, alternatif onaylayanlar olarak Carol ve Davde listesini listeleyin. Bir erişim paketine alternatif onaylayanlar eklemek için aşağıdaki adımları kullanın:
 
-1. Ilk onaylayanın, Ikinci onaylayan veya her ikisinde de **Gelişmiş istek ayarlarını göster** ' e tıklayın.
+1. Ilk onaylayanın, Ikinci onaylayan veya her ikisinde de **Gelişmiş istek ayarlarını göster**' e tıklayın.
 
     ![Erişim paketi-Ilke-Gelişmiş istek ayarlarını göster](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
@@ -206,7 +206,7 @@ Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şe
 
     ![Yeni istekleri ve atamaları etkinleştirme seçeneğini gösteren ekran görüntüsü.](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. **İleri** ’ye tıklayın.
+1. **İleri**’ye tıklayın.
 
 ## <a name="add-requestor-information-preview-to-an-access-package"></a>Bir erişim paketine Istek sahibi bilgilerini (Önizleme) ekleme
 
@@ -216,21 +216,21 @@ Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şe
 
     ![Erişim paketi-Ilke-Istek sahibi bilgilerini etkinleştir ayarı](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
 
-1. Kendi yerelleştirme seçeneklerinizi eklemek isterseniz, **Yerelleştirme Ekle** ' ye tıklayın.
+1. Kendi yerelleştirme seçeneklerinizi eklemek isterseniz, **Yerelleştirme Ekle**' ye tıklayın.
     1. **Soru için yerelleştirmeler Ekle** bölmesinde, soruyu yerelleştirçalıştığınız dilin **dil kodunu** seçin.
     1. Yapılandırdığınız dilde soruyu **yerelleştirilmiş metin** kutusuna yazın.
-    1. Gerekli tüm yerelleştirmeleri ekledikten sonra **Kaydet** ' e tıklayın.
+    1. Gerekli tüm yerelleştirmeleri ekledikten sonra **Kaydet**' e tıklayın.
 
     ![Erişim paketi-Ilke-yerelleştirilmiş metni yapılandırın](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
 
-1. İstek sahipleri 'ın yanıtlamasını istediğiniz **Yanıt biçimini** seçin. Yanıt biçimleri şunlardır: *kısa metin* , *Çoklu seçim* ve *uzun metin* .
+1. İstek sahipleri 'ın yanıtlamasını istediğiniz **Yanıt biçimini** seçin. Yanıt biçimleri şunlardır: *kısa metin*, *Çoklu seçim* ve *uzun metin*.
  
     ![Erişim paketi-Ilke-birden çok seçim yanıtı biçimini görüntüle ve Düzenle ' yi seçin](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
 1. Birden çok seçim seçilirse, yanıt seçeneklerini yapılandırmak için **görüntüle ve Düzenle** düğmesine tıklayın.
     1. Görüntüleme ve düzenleme sorusunu seçtikten sonra, **görünüm/düzenleme sorusu** bölmesini açar.
     1. **Yanıt değerleri** kutularında soruyu yanıtlarken istek sahibine vermek istediğiniz yanıt seçeneklerini yazın.
-    1. İhtiyaç duyduğunuz sayıda yanıtı yazın ve **Kaydet** ' e tıklayın.
+    1. İhtiyaç duyduğunuz sayıda yanıtı yazın ve **Kaydet**' e tıklayın.
     
     ![Erişim paketi-Ilke-birden çok seçim seçeneği girin](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
   

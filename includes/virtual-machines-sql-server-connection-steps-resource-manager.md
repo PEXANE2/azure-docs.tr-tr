@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51dc04fbef8d09878f33d7fda6f15039d3afba3e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188326"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557154"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>Genel IP adresi için DNS etiketi yapılandırma
 
@@ -24,7 +24,7 @@ DNS etiketi oluşturmak için önce portalda **Virtual Machines**’i seçin. Ö
 
     ![genel ip adresi](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
 
-1. Genel IP adresinizin özelliklerinde**Yapılandırma**’yı genişletin.
+1. Genel IP adresinizin özelliklerinde **Yapılandırma**’yı genişletin.
 
 1. DNS etiket adı girin. Bu ad, SQL Server VM'nize bağlanmak için IP adresi yerine doğrudan kullanılabilen bir Kayıttır.
 
@@ -34,7 +34,7 @@ DNS etiketi oluşturmak için önce portalda **Virtual Machines**’i seçin. Ö
 
 ### <a name="connect-to-the-database-engine-from-another-computer"></a>Başka bir bilgisayardan Veritabanı Altyapısına bağlanma
 
-1. İnternet'e bağlı bir bilgisayarda SQL Server Management Studio’yu (SSMS) açın. SQL Server Management Studio’nuz yoksa [buradan](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) indirebilirsiniz.
+1. İnternet'e bağlı bir bilgisayarda SQL Server Management Studio’yu (SSMS) açın. SQL Server Management Studio’nuz yoksa [buradan](/sql/ssms/download-sql-server-management-studio-ssms) indirebilirsiniz.
 
 1. **Sunucuya Bağlan** veya **Veritabanı Altyapısına Bağlan** iletişim kutusunda **Sunucu adı** değerini düzenleyin. Sanal makinenin IP adresini veya tam DNS adını girin (önceki görevde saptanmıştır). Ayrıca bir virgül ekleyebilir ya da SQL Server'ın TCP bağlantı noktasını sağlayabilirsiniz. Örneğin, `mysqlvmlabel.eastus.cloudapp.azure.com,1433`.
 

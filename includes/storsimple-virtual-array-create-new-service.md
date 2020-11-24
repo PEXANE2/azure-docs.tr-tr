@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 7bdbfd8ffd44f9515ae4df20c55b09c8a0adcaef
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1be6a654962b513cfcf755d45e562b86067e7b25
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376000"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555519"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
 
 1.  Microsoft hesabı kimlik bilgilerinizi kullanarak bu URL 'de Azure portal oturum açın: <https://portal.azure.com/> . Cihazı kamu portalında dağıtıyorsanız şurada oturum açın: <https://portal.azure.us/>
 
-2.  Azure Portal **+ kaynak** &gt; **depolaması** &gt; **StorSimple Sanal serisi** ' ne tıklayın.
+2.  Azure Portal **+ kaynak** &gt; **depolaması** &gt; **StorSimple Sanal serisi**' ne tıklayın.
 
     ![Yeni hizmet oluştur](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 
@@ -29,13 +29,13 @@ ms.locfileid: "93376000"
 
     2.  Açılan listeden bir **Abonelik** seçin. Abonelik fatura hesabınıza bağlıdır. Bu alan bir aboneliğiniz olmadığı sürece yoktur.
 
-    3.  **Kaynak grubu** için var olanı seçin veya yeni bir grup oluşturun. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](/azure/azure-resource-manager/management/manage-resource-groups-portal).
+    3.  **Kaynak grubu** için var olanı seçin veya yeni bir grup oluşturun. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
     4.  Hizmetiniz için bir **Konum** sağlayın. Hangi bölgede hangi hizmetlerin kullanılabildiği hakkında daha fazla bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services) . Genel olarak, cihazınızı dağıtmak istediğiniz coğrafi bölgeye en yakın **konumu** seçin. Aşağıdakilerin de etkili olmasını isteyebilirsiniz:
 
         -   Azure 'da StorSimple aygıtınızla dağıtmayı planladığınız mevcut iş yükleriniz varsa, bu veri merkezini kullanmanızı öneririz.
 
-        -   StorSimple Aygıt Yöneticisi ve Azure Storage iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir. Bir Azure depolama hesabı oluşturmak için Azure portal Azure Storage ' a gidin ve [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)bölümünde açıklanan adımları izleyin. Bu hesabı oluşturduktan sonra, [Hizmet için yeni bir depolama hesabı yapılandırma](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service) konusundaki adımları uygulayarak bunu StorSimple Cihaz Yöneticisi hizmetine ekleyin.
+        -   StorSimple Aygıt Yöneticisi ve Azure Storage iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir. Bir Azure depolama hesabı oluşturmak için Azure portal Azure Storage ' a gidin ve [depolama hesabı oluşturma](../articles/storage/common/storage-account-create.md)bölümünde açıklanan adımları izleyin. Bu hesabı oluşturduktan sonra, [Hizmet için yeni bir depolama hesabı yapılandırma](../articles/storsimple/storsimple-virtual-array-manage-storage-accounts.md#add-a-storage-account-credential) konusundaki adımları uygulayarak bunu StorSimple Cihaz Yöneticisi hizmetine ekleyin.
 
         -   Sanal cihazı kamu portalında dağıtıyorsanız, StorSimple Aygıt Yöneticisi hizmeti ABD Iowa ve ABD Virginia konumlarında kullanılabilir.
 
@@ -43,10 +43,8 @@ ms.locfileid: "93376000"
 
     6.  Panonuzda bu hizmetin hızlı bağlantısının olmasını istiyorsanız **Panoya sabitle** seçeneğini işaretleyin.
 
-    7.  StorSimple Cihaz Yöneticisi’ni oluşturmak için **Oluştur** ’a tıklayın.
+    7.  StorSimple Cihaz Yöneticisi’ni oluşturmak için **Oluştur**’a tıklayın.
 
         ![Yeni hizmet oluştur 2](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
 **Hizmet** giriş sayfasına yönlendirilirsiniz. Hizmetin oluşturulması birkaç dakika sürer. Hizmet sorunsuz oluşturulduktan sonra, uygun şekilde size bildirilir ve hizmetin durumu **Etkin** olarak değişir.
-
-

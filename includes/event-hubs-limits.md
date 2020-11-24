@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 320fa542f2b786f0a256c22f2d2eb299c476dcae
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94362753"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557082"
 ---
 Aşağıdaki tablolarda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlamalar sağlanmaktadır. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -42,17 +42,17 @@ Aşağıdaki tabloda, temel ve Standart katmanlar için farklı olabilecek sın�
 | Olay Hub 'ı başına Tüketici grubu sayısı | &nbsp; |1 |20 |
 | Ad alanı başına AMQP bağlantısı sayısı | Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. |100 |5.000|
 | Olay verilerinin maksimum bekletme süresi | &nbsp; |1 gün |1-7 gün |
-| En fazla üretilen iş birimi |Bu sınırın aşılması verilerinizin kısıtlanmasına neden olur ve [sunucu meşgul özel durumu](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)oluşturur. Standart katman için daha fazla sayıda üretilen iş birimi istemek üzere bir [destek isteği](/azure/azure-portal/supportability/how-to-create-azure-support-request)dosyası. [Ek üretilen iş birimleri](../articles/event-hubs/event-hubs-auto-inflate.md) , taahhüt edilen satın alma esasına göre 20 blok halinde kullanılabilir. |20 | 20 | 
+| En fazla üretilen iş birimi |Bu sınırın aşılması verilerinizin kısıtlanmasına neden olur ve [sunucu meşgul özel durumu](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)oluşturur. Standart katman için daha fazla sayıda üretilen iş birimi istemek üzere bir [destek isteği](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)dosyası. [Ek üretilen iş birimleri](../articles/event-hubs/event-hubs-auto-inflate.md) , taahhüt edilen satın alma esasına göre 20 blok halinde kullanılabilir. |20 | 20 | 
 
 ## <a name="dedicated-tier-vs-standard-tier"></a>Adanmış katman ve Standart katman karşılaştırması
 Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fiyatla faturalandırılır. Adanmış katman, standart planın tüm özelliklerini sunar, ancak yoğun iş yükleri olan müşterilere yönelik kurumsal ölçekli kapasite ve sınırlara sahiptir. 
 
-Azure portal kullanarak adanmış Event Hubs kümesi oluşturma hakkında bu [belgeye](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal) başvurun.
+Azure portal kullanarak adanmış Event Hubs kümesi oluşturma hakkında bu [belgeye](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) başvurun.
 
 | Özellik | Standart | Ayrılmış |
 | --- |:---|:---|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
-| Ad alanları |  1 | CU başına 50 |
+| Ad Alanları |  1 | CU başına 50 |
 | Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
 | Giriş olayları | Milyon olay başına ödeme | Dahil |
 | İleti boyutu | 1.000.000 bayt | 1.000.000 bayt |
@@ -83,8 +83,3 @@ Azure portal kullanarak adanmış Event Hubs kümesi oluşturma hakkında bu [be
 | Şema kayıt defterinin (ad alanı) mega bayt cinsinden boyutu | 25 |  1024 |
 | Bir şema kayıt defterindeki veya ad alanındaki şema gruplarının sayısı | 1-varsayılan grup hariç | 1000 |
 | Tüm şema gruplarındaki şema sürümlerinin sayısı | 25 | 10000 |
-
-
-
-
-

@@ -5,12 +5,12 @@ ms.subservice: cloud-provisioning
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
-ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d95e40623f17a39145778a2fc067dccc68fd872
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79504292"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560178"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Çoklu oturum açmayı etkinleştirme adımları
 Bulut sağlama, çoklu oturum açma ile birlikte kullanılabilir.  Şu anda aracı yüklendiğinde SSO 'yu etkinleştirmek için bir seçenek yoktur, ancak aşağıdaki adımları kullanarak SSO 'yu etkinleştirebilir ve kullanabilirsiniz. 
@@ -23,7 +23,7 @@ Bulut sağlama, çoklu oturum açma ile birlikte kullanılabilir.  Şu anda arac
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>2. Adım: sorunsuz SSO PowerShell modülünü Içeri aktarma
 
-1. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
+1. [Azure AD PowerShell](/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
 2. `%programfiles%\Microsoft Azure Active Directory Connect`Klasöre gidin.
 3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
 

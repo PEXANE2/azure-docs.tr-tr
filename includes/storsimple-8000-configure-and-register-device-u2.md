@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 56514f5dcf4bfe205ef46ee64dcf4dcf638d4f62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee92e145acd981bb8c84b43986b90306b994c262
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188576"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561090"
 ---
 #### <a name="to-configure-and-register-the-device"></a>Cihazı yapılandırmak ve kaydetmek için
 
@@ -17,7 +17,7 @@ ms.locfileid: "67188576"
 
 2. Açılan oturumda, komut istemi almak için bir kez **ENTER** tuşuna basın.
 
-3. Cihazınızda ayarlamak istediğiniz dili seçmeniz istenecektir. Dili belirtin ve ardından **ENTER**tuşuna basın.
+3. Cihazınızda ayarlamak istediğiniz dili seçmeniz istenecektir. Dili belirtin ve ardından **ENTER** tuşuna basın.
 
 4. Verilen seri konsol menüsünde **Tam erişimle oturum açmak** için 1 seçeneğini belirleyin.
      Cihazınız için en düşük gerekli ağ ayarlarını yapılandırmak için 5-12 arası adımları tamamlayın. **Bu yapılandırma adımları, cihazın etkin denetleyicisinde gerçekleştirilmelidir.** Seri konsol menüsü, bant iletisindeki denetleyici durumunu belirtir. Etkin denetleyiciye bağlı değilseniz, bağlantıyı kesip etkin denetleyiciye bağlayın.
@@ -98,7 +98,7 @@ ms.locfileid: "67188576"
 
     ```
 
-12. Cihaz kaydedildikten sonra Hizmet Verileri Şifreleme anahtarı görüntülenir. Bu anahtarı kopyalayın ve güvenli bir konuma kaydedin. **StorSimple Cihaz Yöneticisi hizmetiyle ek cihazlar kaydetmek için hizmet kayıt anahtarıyla birlikte bu anahtar da gerekecektir.** Bu anahtar hakkında daha fazla bilgi için bkz. [StorSimple güvenliği](../articles/storsimple/storsimple-security.md).
+12. Cihaz kaydedildikten sonra Hizmet Verileri Şifreleme anahtarı görüntülenir. Bu anahtarı kopyalayın ve güvenli bir konuma kaydedin. **StorSimple Cihaz Yöneticisi hizmetiyle ek cihazlar kaydetmek için hizmet kayıt anahtarıyla birlikte bu anahtar da gerekecektir.** Bu anahtar hakkında daha fazla bilgi için bkz. [StorSimple güvenliği](../articles/storsimple/storsimple-8000-security.md).
     
     ![StorSimple kayıt cihazı 7](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup1.png)
     
@@ -117,4 +117,3 @@ ms.locfileid: "67188576"
         Cihaz durumunun **Kuruluma hazır** hale gelmesi için birkaç dakika beklemeniz gerekebilir.
        
         Cihaz bu listede görünmüyorsa, güvenlik duvarı ağınızın [StorSimple cihazınız için ağ gereksinimlerinde](../articles/storsimple/storsimple-8000-system-requirements.md) açıklandığı şekilde yapılandırıldığından emin olun. StorSimple Cihaz Yöneticisi hizmeti ile cihazlar arasındaki iletişim için hizmet veri yolu tarafından kullanılan 9354 bağlantı noktasının giden iletişim için açık olduğunu doğrulayın.
-

@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: ab179c5f0c56a7d6fd2ebd41e13d27a832512b54
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 4c03ef942896dda63f678018cdd257024cfbb6d4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358089"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557492"
 ---
 Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
 
-[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu komut, kaynak grubunu ve Azure dijital TWINS örneğini kaldırır.
+[Azure Cloud Shell](https://shell.azure.com)kullanarak, [az Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) komutuyla bir kaynak grubundaki tüm Azure kaynaklarını silebilirsiniz. Bu komut, kaynak grubunu ve Azure dijital TWINS örneğini kaldırır.
 
 > [!IMPORTANT]
 > Silinen kaynak grupları geri alınamaz. Kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun.

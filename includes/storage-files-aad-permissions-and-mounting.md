@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4773446ec0007ffbed99bc01939d1f92f5823d99
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779255"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556123"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Kimliğe erişim izinleri atama
 
@@ -77,7 +77,7 @@ az role assignment create --role "<role-name>" --assignee <user-principal-name> 
 
 RBAC ile paylaşma düzeyi izinleri atadıktan sonra, kök, dizin veya dosya düzeyinde uygun NTFS izinleri atamanız gerekir. Bir kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey ağ geçidi olarak paylaşma düzeyi izinleri düşünün. NTFS izinleri, kullanıcının dizin veya dosya düzeyinde hangi işlemleri yapabileceğini belirlemek için daha ayrıntılı bir düzeyde davranır.
 
-Azure dosyaları, tüm NTFS temel ve gelişmiş izinleri kümesini destekler. Windows Dosya Gezgini 'ni kullanarak veya Windows [ıacl](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) komutunu çalıştırarak bir Azure dosya PAYLAŞıMıNDAKI dizin ve dosyalarda NTFS izinlerini görüntüleyebilir ve yapılandırabilirsiniz. 
+Azure dosyaları, tüm NTFS temel ve gelişmiş izinleri kümesini destekler. Windows Dosya Gezgini 'ni kullanarak veya Windows [ıacl](/windows-server/administration/windows-commands/icacls) veya [set-ACL](/powershell/module/microsoft.powershell.security/set-acl) komutunu çalıştırarak bir Azure dosya PAYLAŞıMıNDAKI dizin ve dosyalarda NTFS izinlerini görüntüleyebilir ve yapılandırabilirsiniz. 
 
 NTFS 'yi üst Kullanıcı izinleriyle yapılandırmak için, etki alanına katılmış VM 'nizden depolama hesabı anahtarınızı kullanarak paylaşıma bağlamanız gerekir. Bir sonraki bölümdeki yönergeleri izleyerek bir Azure dosya paylaşımından komut isteminden bağlama yapın ve NTFS izinlerini uygun şekilde yapılandırın.
 
@@ -108,7 +108,7 @@ else
 
 ```
 
-Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, lütfen [Windows 'Ta Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
+Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, lütfen [Windows 'Ta Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](../articles/storage/files/storage-files-faq.md#on-premises-access) sunuyoruz. 
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Windows Dosya Gezgini ile NTFS izinlerini yapılandırma
@@ -122,7 +122,7 @@ Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalar
 5. Yeni Kullanıcı ekleme istemi penceresinde, izin vermek istediğiniz hedef Kullanıcı adını **Seçilecek nesne adlarını girin** kutusuna girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
 7.    **Tamam**’ı seçin.
 8.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
-9.    **Uygula**’yı seçin.
+9.    **Apply** (Uygula) seçeneğini belirleyin.
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Iacl 'lerle NTFS izinlerini yapılandırma
 
@@ -132,7 +132,7 @@ Kök dizin dahil olmak üzere, dosya paylaşımındaki tüm dizin ve dosyalara t
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-NTFS izinlerini ve desteklenen farklı türlerdeki izinleri ayarlamak için ıacl 'leri kullanma hakkında daha fazla bilgi için bkz. [ıacl 'ler için komut satırı başvurusu](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
+NTFS izinlerini ve desteklenen farklı türlerdeki izinleri ayarlamak için ıacl 'leri kullanma hakkında daha fazla bilgi için bkz. [ıacl 'ler için komut satırı başvurusu](/windows-server/administration/windows-commands/icacls).
 
 ## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Etki alanına katılmış bir VM 'den dosya paylaşma bağlama
 
@@ -142,7 +142,7 @@ Aşağıdaki görüntüde gösterildiği gibi, izin verdiğiniz Azure AD kimliğ
 
 ![Kullanıcı kimlik doğrulaması için Azure AD oturum açma ekranını gösteren ekran görüntüsü](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Azure dosya paylaşımından bağlama için aşağıdaki komutu kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kimliğiniz doğrulandıktan sonra depolama hesabı anahtarını, şirket içi AD DS kimlik bilgilerini veya Azure AD DS kimlik bilgilerini sağlamanız gerekmez. Çoklu oturum açma deneyimi, şirket içi AD DS veya Azure AD DS kimlik doğrulaması için desteklenir. AD DS kimlik bilgileriyle bağlama sorunları yaşıyorsanız, kılavuz için bkz. [Windows 'Da Azure dosyaları sorunlarını giderme](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) .
+Azure dosya paylaşımından bağlama için aşağıdaki komutu kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kimliğiniz doğrulandıktan sonra depolama hesabı anahtarını, şirket içi AD DS kimlik bilgilerini veya Azure AD DS kimlik bilgilerini sağlamanız gerekmez. Çoklu oturum açma deneyimi, şirket içi AD DS veya Azure AD DS kimlik doğrulaması için desteklenir. AD DS kimlik bilgileriyle bağlama sorunları yaşıyorsanız, kılavuz için bkz. [Windows 'Da Azure dosyaları sorunlarını giderme](../articles/storage/files/storage-troubleshoot-windows-file-connection-problems.md) .
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445

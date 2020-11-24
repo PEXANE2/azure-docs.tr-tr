@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: application-insights
 author: mrbullwinkle
 ms.service: application-insights
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
-ms.openlocfilehash: bb9f398643007271935a434e22978e555e002232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76176c72ad77341d7db1c8f4158a90836b74a91c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779388"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556188"
 ---
 Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izleme anahtarı başına bazı sınırlar vardır. Limitler seçtiğiniz [fiyatlandırma planına](https://azure.microsoft.com/pricing/details/application-insights/) bağlıdır.
 
@@ -21,7 +21,7 @@ Uygulama başına ölçüm sayısı ve olay başına, diğer bir deyişle, izlem
 | --- | --- | --- |
 | Günlük toplam veri | 100 GB | Bir uç ayarlayarak verileri azaltabilirsiniz. Daha fazla veri gerekiyorsa, portalda 1.000 GB 'a kadar olan limiti artırabilirsiniz. 1.000 GB 'tan büyük kapasiteler için adresine e-posta gönderin AIDataCap@microsoft.com .
 | Azaltma | 32.000 olay/saniye | Sınır bir dakika içinde ölçülür.
-| Veri saklama | [30-730 gün](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)  | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/app/analytics.md) ve [Ölçüm Gezgini](../articles/azure-monitor/app/metrics-explorer.md) içindir.
+| Veri saklama | [30-730 gün](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Bu kaynak [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/log-query/log-query-overview.md) ve [Ölçüm Gezgini](../articles/azure-monitor/platform/metrics-charts.md) içindir.
 | [Çok adımlı kullanılabilirlik testi](../articles/azure-monitor/app/availability-multistep.md) ayrıntılı sonuçlarını saklama | 90 gün | Bu kaynak her adımın ayrıntılı sonuçlarını verir.
 | Maksimum telemetri öğesi boyutu | 64 kB |
 | Toplu iş başına maksimum telemetri öğesi | 64 K |

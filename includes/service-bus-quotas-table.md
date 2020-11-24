@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764d75872eb1bad0647235cd70f9984ebd7789bd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779228"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554590"
 ---
 Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri listelenmektedir. Service Bus yönelik fiyatlandırma ve diğer kotalar hakkında daha fazla bilgi için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -21,11 +21,11 @@ Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri lis
 | --- | --- | --- | --- |
 | Azure aboneliği başına en fazla temel veya standart ad alanı sayısı |Ad Alanı |Ek temel veya standart ad alanları için sonraki istekler Azure portal tarafından reddedilir. |100|
 | Azure aboneliği başına en fazla Premium ad alanı sayısı |Ad Alanı |Ek Premium ad alanları için sonraki istekler Portal tarafından reddedilir. |100 |
-| Kuyruk veya konu boyutu |Varlık |Sıra veya konu oluşturulduktan sonra tanımlanır. <br/><br/> Sonraki gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |1, 2, 3, 4 GB veya 5 GB.<br /><br />Premium SKU 'sunda ve [bölümlendirme](/azure/service-bus-messaging/service-bus-partitioning) ETKINLEŞTIRILMIŞ standart SKU 'da en büyük sıra veya konu boyutu 80 GB 'tır. |
+| Kuyruk veya konu boyutu |Varlık |Sıra veya konu oluşturulduktan sonra tanımlanır. <br/><br/> Sonraki gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |1, 2, 3, 4 GB veya 5 GB.<br /><br />Premium SKU 'sunda ve [bölümlendirme](../articles/service-bus-messaging/service-bus-partitioning.md) ETKINLEŞTIRILMIŞ standart SKU 'da en büyük sıra veya konu boyutu 80 GB 'tır. |
 | Bir ad alanındaki eşzamanlı bağlantı sayısı |Ad Alanı |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. REST işlemleri, eşzamanlı TCP bağlantılarına doğru sayılmaz. |NET mesajlaşma: 1.000.<br /><br />AMQP: 5.000. |
 | Bir kuyruk, konu veya abonelik varlığındaki eşzamanlı alma isteği sayısı |Varlık |Sonraki alma istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. Bu kota, bir konudaki tüm abonelikler arasında eş zamanlı alma işlemlerinin Birleşik sayısı için geçerlidir. |5.000 |
 | Ad alanı başına konu veya kuyruk sayısı |Ad Alanı |Ad alanındaki yeni bir konunun veya kuyruğun oluşturulması için sonraki istekler reddedilir. Sonuç olarak, [Azure Portal][Azure portal]ile yapılandırıldıysa bir hata iletisi oluşturulur. Yönetim API 'sinden çağrılırsa, çağıran kod tarafından bir özel durum alınır. |Temel veya Standart katman için 10.000. Bir ad alanındaki konuların ve kuyrukların toplam sayısı 10.000 ' e eşit veya ondan küçük olmalıdır. <br/><br/>Premium katmanı için, 1.000 ileti birimi başına (MU). Maksimum sınır 4.000 ' dir. |
-| Ad alanı başına [bölümlenmiş konuların veya kuyrukların](/azure/service-bus-messaging/service-bus-partitioning) sayısı |Ad Alanı |Ad alanındaki yeni bir bölümlenmiş konunun veya kuyruğun oluşturulması için sonraki istekler reddedilir. Sonuç olarak, [Azure Portal][Azure portal]ile yapılandırıldıysa bir hata iletisi oluşturulur. Yönetim API 'sinden çağrılırsa, **QuotaExceededException** özel durumu çağıran kod tarafından alınır. |Temel ve Standart katmanlar: 100.<br/><br/>Bölümlenmiş varlıklar [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) katmanda desteklenmez.<br/><br />Her bölümlenmiş kuyruk veya konu, ad alanı başına 1.000 varlık kotasına doğru sayılır. |
+| Ad alanı başına [bölümlenmiş konuların veya kuyrukların](../articles/service-bus-messaging/service-bus-partitioning.md) sayısı |Ad Alanı |Ad alanındaki yeni bir bölümlenmiş konunun veya kuyruğun oluşturulması için sonraki istekler reddedilir. Sonuç olarak, [Azure Portal][Azure portal]ile yapılandırıldıysa bir hata iletisi oluşturulur. Yönetim API 'sinden çağrılırsa, **QuotaExceededException** özel durumu çağıran kod tarafından alınır. |Temel ve Standart katmanlar: 100.<br/><br/>Bölümlenmiş varlıklar [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) katmanda desteklenmez.<br/><br />Her bölümlenmiş kuyruk veya konu, ad alanı başına 1.000 varlık kotasına doğru sayılır. |
 | Herhangi bir mesajlaşma varlığı yolunun en büyük boyutu: kuyruk veya konu |Varlık |- |260 karakter. |
 | Herhangi bir mesajlaşma varlığı adının en büyük boyutu: ad alanı, abonelik veya abonelik kuralı |Varlık |- |50 karakter. |
 | [ILETI kimliğinin](/dotnet/api/microsoft.azure.servicebus.message.messageid) en büyük boyutu | Varlık |- | 128 |

@@ -10,17 +10,17 @@ ms.custom: develop apps
 ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
-ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b06004143d4a1ec5a2808e21b1f78833e410c195
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188451"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557375"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure portal bağlantı dizesini alın
 İstemci programınızın Azure SQL veritabanı ile etkileşim kurması için gerekli olan bağlantı dizesini almak için [Azure Portal](https://portal.azure.com/) kullanın.
 
-1. **Tüm hizmetler**  >  **SQL veritabanlarını**seçin.
+1. **Tüm hizmetler**  >  **SQL veritabanlarını** seçin.
 
 2. **SQL veritabanları** dikey penceresinin sol üst kısmındaki filtre metin kutusuna veritabanınızın adını girin.
 
@@ -38,7 +38,7 @@ ms.locfileid: "67188451"
 
 8. Tek bir biçimde veya başka bir biçimde, bağlantı dizesi bilgilerini istemci program kodunuza yapıştırın.
 
-Daha fazla bilgi için bkz. [bağlantı dizeleri ve yapılandırma dosyaları](https://msdn.microsoft.com/library/ms254494.aspx).
+Daha fazla bilgi için bkz. [bağlantı dizeleri ve yapılandırma dosyaları](/dotnet/framework/data/adonet/connection-strings-and-configuration-files).
 
 <!-- Image references. -->
 

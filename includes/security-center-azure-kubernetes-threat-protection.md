@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 06/30/2020
 ms.topic: include
-ms.openlocfilehash: 1b650fa5a0e9ba2f7019e6e67690d9d1fd65e72a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 051cd8646718c17c288b06a535d35e1eed5e9259
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894906"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555048"
 ---
 Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
 
@@ -20,7 +20,7 @@ Güvenlik Merkezi, farklı düzeylerde tehdit koruması sağlar:
     >[!IMPORTANT]
     > Aracıları konaklarınıza yüklememeyi seçerseniz, yalnızca tehdit koruması avantajları ve güvenlik uyarılarının bir alt kümesini alırsınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
 
-    AKS konak düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)bakın.
+    AKS konak düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](../articles/security-center/alerts-reference.md#alerts-containerhost)bakın.
 
 
 * **Aks kümesi düzeyi (Kubernetes Için Azure Defender tarafından sağlanır)** -küme düzeyinde tehdit koruması, Kubernetes 'ın denetim günlüklerini çözümlemeye dayanır. Bu **aracısız** izlemeyi etkinleştirmek Için Azure Defender 'ı etkinleştirin. Bu düzeyde uyarı oluşturmak için, güvenlik merkezi AKS tarafından yönetilen Hizmetleri AKS tarafından alınan günlükleri kullanarak izler. Bu düzeydeki olay örnekleri, sunulan Kubernetes panoları, yüksek ayrıcalıklı rollerin oluşturulmasını ve hassas takmaları oluşturmayı içerir.
@@ -28,7 +28,7 @@ Güvenlik Merkezi, farklı düzeylerde tehdit koruması sağlar:
     >[!NOTE]
     > Güvenlik Merkezi, Azure Kubernetes hizmet eylemleri ve abonelik ayarlarında Kubernetes seçeneği etkinleştirildikten sonra gerçekleşen dağıtımlar için güvenlik uyarıları oluşturur. 
 
-    AKS küme düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)bakın.
+    AKS küme düzeyi uyarılarının bir listesi için, [Uyarı tablosuna](../articles/security-center/alerts-reference.md#alerts-akscluster)bakın.
 
 Ayrıca, güvenlik araştırmacıları küresel takımımız tehdidi sürekli olarak izler. Bulundukları gibi kapsayıcıya özgü uyarıları ve güvenlik açıklarını ekler.
 

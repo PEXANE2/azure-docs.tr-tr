@@ -4,15 +4,15 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80986804"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555961"
 ---
 ## <a name="create-a-ruby-application"></a>Ruby uygulaması oluşturma
-Yönergeler için bkz. [Azure 'Da Ruby uygulaması oluşturma](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).
+Yönergeler için bkz. [Azure 'Da Ruby uygulaması oluşturma](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
 Service Bus kullanmak için, depolama REST hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içeren Azure Ruby paketini indirip kullanın.

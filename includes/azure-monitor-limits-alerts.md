@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 33d701fe8dc19b3deaa05cf6f10643bdb1059aa1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 1e4ae81c85d8de22bc87f22538c85cdc4c15b79c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505764"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554380"
 ---
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
 | Ölçüm uyarıları (klasik) |Abonelik başına 100 etkin uyarı kuralı. | Destek çağırma |
-| Ölçüm uyarıları |Azure genel, Azure Çin 21Vianet ve Azure Kamu bulutlarında abonelik başına 5.000 etkin uyarı kuralı. Bu sınıra ulaşdıysanız, [aynı türde birden çok kaynak uyarısı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)kullanıp kullanmayacağını keşfedebilirsiniz.   | Desteği arayın. |
+| Ölçüm uyarıları |Azure genel, Azure Çin 21Vianet ve Azure Kamu bulutlarında abonelik başına 5.000 etkin uyarı kuralı. Bu sınıra ulaşdıysanız, [aynı türde birden çok kaynak uyarısı](../articles/azure-monitor/platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)kullanıp kullanmayacağını keşfedebilirsiniz.   | Desteği arayın. |
 | Etkinlik günlüğü uyarıları | Abonelik başına 100 etkin uyarı kuralı. | Varsayılan ile aynı |
 | Günlük uyarıları | Abonelik başına 512 etkin uyarı kuralı. Kaynak başına 200 etkin uyarı kuralı. | Destek çağırma |
 | Eylem grupları |Abonelik başına 2.000 eylem grubu. | Destek çağırma |

@@ -6,16 +6,16 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 63b74675a9b0d3480c90c7414e82658705796e7c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5f604847faf01d1b267e6cbb73481d57ef397bd9
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438855"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95557453"
 ---
 Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -28,26 +28,27 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanı
 
 ### <a name="creating-the-xcode-project"></a>Xcode projesi oluşturma
 
-Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablonunu seçin. Bu öğretici [swiftuı çerçevesini](https://developer.apple.com/xcode/swiftui/)kullanır, bu nedenle **dili** **Swift** ve **Kullanıcı arabirimine** **swiftuı**olarak ayarlamanız gerekir. Bu hızlı başlangıç sırasında test oluşturuyoruz. **Testleri dahil etme**seçeneğinin işaretini kaldırın.
+Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablonunu seçin. Bu öğretici [swiftuı çerçevesini](https://developer.apple.com/xcode/swiftui/)kullanır, bu nedenle **dili** **Swift** ve **Kullanıcı arabirimine** **swiftuı** olarak ayarlamanız gerekir. Bu hızlı başlangıç sırasında test oluşturuyoruz. **Testleri dahil etme** seçeneğinin işaretini kaldırın.
 
 :::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 'da yeni proje penceresini gösteren ekran görüntüsü.":::
 
-### <a name="install-the-package"></a>Paketi yükler
+### <a name="install-the-package-and-dependencies-with-cocoapods"></a>CocoaPods ile paketi ve bağımlılıkları yükler
 
-İstemci kitaplığı ve bağımlılıklarını (AzureCore. Framework ve AzureCommunication. Framework) çağıran Azure Iletişim hizmetlerini projenize ekleyin.
+1. Uygulamanız için şöyle bir pod dosyası oluşturun:
 
-> [!NOTE]
-> AzureCommunicationCalling SDK sürümü ile bir bash betiği bulacaksınız `BuildAzurePackages.sh` . Çalıştırma sırasında betik, bir `sh ./BuildAzurePackages.sh` sonraki adımda örnek uygulamada içeri aktarılması gereken oluşturulan çerçeve paketlerinin yolunu verecektir. Betiği çalıştırmadan önce bunu yapmadıysanız Xcode komut satırı araçlarını ayarlamanız gerekeceğini unutmayın: Xcode 'u başlatın, "Tercihler-> konumları" öğesini seçin. Komut satırı araçları için Xcode sürümünüzü seçin. **BuildAzurePackages.sh betiği yalnızca Xcode 11,5 ve üzeri sürümlerde kullanılabilir**
+   ```
+   platform :ios, '13.0'
+   use_frameworks!
 
-1. İOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni [indirin](https://github.com/Azure/Communication/releases) .
-2. Xcode 'da proje dosyanıza tıklayın ve proje ayarları düzenleyicisini açmak için derleme hedefini seçin.
-3. **Genel** sekmesinde, **çerçeveler, kitaplıklar ve katıştırılmış içerik** bölümüne gidin ve **"+"** simgesine tıklayın.
-4. İletişim kutusunun sol alt tarafında, açılan **Dosya Ekle**' yi kullanın, sıkıştırılmış olmayan istemci kitaplığı paketinin **AzureCommunicationCalling. Framework** dizinine gidin.
-    1. **Azurecore. Framework** ve **AzureCommunication. Framework**eklemek için son adımı yineleyin.
-5. Proje ayarları düzenleyicisinin **derleme ayarları** sekmesini açın ve **arama yolları** bölümüne gidin. **AzureCommunicationCalling. Framework**içeren dizin için yeni bir **çerçeve arama yolları** girişi ekleyin.
-    1. Bağımlılıkları içeren klasöre işaret eden başka bir Framework arama yolları girişi ekleyin.
+   target 'AzureCommunicationCallingSample' do
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.5'
+     pod 'AzureCommunication', '~> 1.0.0-beta.5'
+     pod 'AzureCore', '~> 1.0.0-beta.5'
+   end
+   ```
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Xcode 'da yeni proje penceresini gösteren ekran görüntüsü.":::
+2. `pod install` öğesini çalıştırın.
+3. Öğesini `.xcworkspace` Xcode ile açın.
 
 ### <a name="request-access-to-the-microphone"></a>Mikrofona erişim isteyin
 
@@ -74,9 +75,9 @@ Yapının uygulamasını, bir `ContentView` kullanıcının bir çağrıyı baş
 ```swift
 struct ContentView: View {
     @State var callee: String = ""
-    @State var callClient: ACSCallClient?
-    @State var callAgent: ACSCallAgent?
-    @State var call: ACSCall?
+    @State var callClient: CallClient?
+    @State var callAgent: CallAgent?
+    @State var call: Call?
 
     var body: some View {
         NavigationView {
@@ -125,7 +126,7 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Bir `CallAgent` Kullanıcı erişim belirtecine sahip bir örnek başlatın, bu da çağrı yapıp almamızı sağlar. Aşağıdaki kodu `onAppear` **ContentView. Swift**içindeki geri aramaya ekleyin:
+Bir `CallAgent` Kullanıcı erişim belirtecine sahip bir örnek başlatın, bu da çağrı yapıp almamızı sağlar. Aşağıdaki kodu `onAppear` **ContentView. Swift** içindeki geri aramaya ekleyin:
 
 ```swift
 var userCredential: CommunicationUserCredential?
@@ -136,7 +137,7 @@ do {
     return
 }
 
-self.callClient = ACSCallClient()
+self.callClient = CallClient()
 
 // Creates the call agent
 self.callClient?.createCallAgent(userCredential) { (agent, error) in
@@ -165,13 +166,13 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUser(identifier: self.callee)]
-            self.call = self.callAgent?.call(callees, options: ACSStartCallOptions())
+            self.call = self.callAgent?.call(callees, options: StartCallOptions())
         }
     }
 }
 ```
 
-Ayrıca, `ACSStartCallOptions` çağrının başlangıç seçeneklerini ayarlamak için içindeki özellikleri de kullanabilirsiniz (yani, mikrofonun sesini kapalı olarak başlatmaya izin verir).
+Ayrıca, `StartCallOptions` çağrının başlangıç seçeneklerini ayarlamak için içindeki özellikleri de kullanabilirsiniz (yani, mikrofonun sesini kapalı olarak başlatmaya izin verir).
 
 ## <a name="end-a-call"></a>Çağrıyı Sonlandır
 
@@ -180,7 +181,7 @@ Ayrıca, `ACSStartCallOptions` çağrının başlangıç seçeneklerini ayarlama
 ```swift
 func endCall()
 {    
-    self.call!.hangup(ACSHangupOptions()) { (error) in
+    self.call!.hangup(HangupOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }
@@ -192,7 +193,7 @@ func endCall()
 
 **Ürün**  >  **çalıştırması** ' nı seçerek veya (&#8984;-R) klavye kısayolunu kullanarak uygulamanızı iOS simülatörü üzerinde oluşturabilir ve çalıştırabilirsiniz.
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Xcode 'da yeni proje penceresini gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Hızlı başlangıç uygulamasına yönelik nihai görünüm":::
 
 Metin alanına bir kullanıcı KIMLIĞI sağlayarak ve **çağrıya başla** düğmesine dokunarak gıden bir VoIP çağrısı yapabilirsiniz. Çağırmak `8:echo123` sizi bir Echo bot ile bağlar, bu, başlamak ve ses cihazlarınızın çalıştığını doğrulamak için harika bir yoldur. 
 

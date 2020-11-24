@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 ms.topic: include
 ms.custom: include file
 services: time-series-insights
@@ -9,24 +9,24 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f203357d29d450f5b34593952f611f025b14ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665829"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554968"
 ---
-1. [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Azure Active Directory seçin.
+1. [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt** uygulama kayıtları Azure Active Directory seçin.
 
    [![Azure Active Directory yeni uygulama kaydı](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
     Uygulamanız kaydedildikten sonra burada listelenecektir.
 
-1. Uygulamaya bir ad verin ve yalnızca API 'ye erişebilen **Desteklenen hesap türlerini** belirtmek için **bu kuruluş dizinindeki hesapları** seçin. [Ortak bir istemci uygulaması](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri)oluşturuyorsanız, geçerli bir yeniden yönlendirme URI 'si ekleyin ve ardından **kaydolun**.
+1. Uygulamaya bir ad verin ve yalnızca API 'ye erişebilen **Desteklenen hesap türlerini** belirtmek için **bu kuruluş dizinindeki hesapları** seçin. [Ortak bir istemci uygulaması](../articles/active-directory/develop/msal-client-application-configuration.md#redirect-uri)oluşturuyorsanız, geçerli bir yeniden yönlendirme URI 'si ekleyin ve ardından **kaydolun**.
 
    [![Uygulamayı Azure Active Directory oluşturma](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
-1. Önemli Azure Active Directory uygulama bilgileri, listelenen uygulamanızın **genel bakış** dikey penceresinde görüntülenir. **Sahip olunan uygulamalar**altında uygulamanızı seçin ve **genel bakış**' a tıklayın.
+1. Önemli Azure Active Directory uygulama bilgileri, listelenen uygulamanızın **genel bakış** dikey penceresinde görüntülenir. **Sahip olunan uygulamalar** altında uygulamanızı seçin ve **genel bakış**' a tıklayın.
 
    [![Uygulama KIMLIĞINI kopyalama](media/time-series-insights-aad-registration/active-directory-copy-application-id.png)](media/time-series-insights-aad-registration/active-directory-copy-application-id.png#lightbox)
 
@@ -46,12 +46,12 @@ ms.locfileid: "91665829"
 
     1. **Yeniden yönlendirme URI 'leri** , kimlik doğrulama isteği tarafından sağlanan adresle eşleşmelidir:
 
-        * Yerel bir geliştirme ortamında barındırılan uygulamalar için **ortak istemci (mobil & Masaüstü)** öğesini seçin. **Ortak Istemciyi** **Evet**olarak ayarladığınızdan emin olun.
+        * Yerel bir geliştirme ortamında barındırılan uygulamalar için **ortak istemci (mobil & Masaüstü)** öğesini seçin. **Ortak Istemciyi** **Evet** olarak ayarladığınızdan emin olun.
         * Azure App Service barındırılan Single-Page uygulamalar için **Web**' i seçin.
 
     1. **Oturum kapatma URL 'sinin** uygun olup olmadığını belirleme.
 
-    1. **Erişim belirteçlerini** veya **kimlik belirteçlerini**denetleyerek örtük izin akışını etkinleştirin.
+    1. **Erişim belirteçlerini** veya **kimlik belirteçlerini** denetleyerek örtük izin akışını etkinleştirin.
 
     [![Yeniden yönlendirme URI 'Leri oluşturma](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
@@ -66,7 +66,7 @@ ms.locfileid: "91665829"
    > [!NOTE]
    > Bunun yerine bir sertifikayı içeri aktarma olanağınız vardır. Gelişmiş güvenlik için bir sertifika önerilir. Bir sertifika kullanmak için **sertifikayı karşıya yükle**' yi seçin.
 
-1. Azure Active Directory uygulamanızın Azure Time Series Insights ilişkilendirin. **API izinlerini**seçin  >  **Add a permission**  >  **Kuruluşumun kullandığı izin API 'leri**ekleyin.
+1. Azure Active Directory uygulamanızın Azure Time Series Insights ilişkilendirin. **API izinlerini** seçin  >  **Add a permission**  >  **Kuruluşumun kullandığı izin API 'leri** ekleyin.
 
     [![Azure Active Directory uygulamanızla bir API 'YI ilişkilendirme](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

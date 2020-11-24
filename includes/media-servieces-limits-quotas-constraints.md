@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 84aa07ef282dd7100043f7e9bfcc97cb3b3673a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755954"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556451"
 ---
 > [!NOTE]
 > Düzeltilmeyen kaynaklar için, kotalarda artış istemek üzere bir destek bileti açın. Daha yüksek limitleri elde etmeye yönelik bir denemede ek Azure Media Services hesapları oluşturmayın.
@@ -81,7 +81,7 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 | Akış İlkeleri | 100 <sup>(6)</sup> |
 | Tek seferde bir varlıkla ilişkili benzersiz akış Konumlandırıcı | 100<sup>(7)</sup> (Sabit) |
 
-<sup>6</sup> özel bir [akış Ilkesi](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Her bir akış bulucu için yeni bir akış Ilkesi oluşturmamalısınız.
+<sup>6</sup> özel bir [akış Ilkesi](/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Her bir akış bulucu için yeni bir akış Ilkesi oluşturmamalısınız.
 
 <sup>7</sup> akış Konumlandırıcı, Kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Ayrı kullanıcılara farklı erişim hakları vermek için Digital Rights Management (DRM) çözümlerini kullanın.
 
@@ -94,4 +94,4 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 
 ### <a name="support-ticket"></a>Destek bileti
 
-Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların ortaya çıkarılmasını isteyebilirsiniz. İsteğe bağlı istenen kota değişiklikleri, kullanım örneği senaryoları ve gerekli bölgeler üzerinde ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın** .
+Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların ortaya çıkarılmasını isteyebilirsiniz. İsteğe bağlı istenen kota değişiklikleri, kullanım örneği senaryoları ve gerekli bölgeler üzerinde ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın**.

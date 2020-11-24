@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 2b2c2a8f471aba36592f76caf46b7d26d7e3bb31
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f222d4a7f4724506112a47eff61ccc48354dd622
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755868"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554225"
 ---
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı yok
 
-Ağ geçidi bağlantınız yoksa ve IP adresi önekleri eklemek veya kaldırmak istiyorsanız, yerel ağ geçidini oluşturmak için kullandığınız [az network local-gateway create](https://docs.microsoft.com/cli/azure/network/local-gateway) komutunu kullanın. VPN cihazının ağ geçidi IP adresini güncelleştirmek için de bu komutu kullanabilirsiniz. Geçerli ayarların üzerine yazmak için yerel ağ geçidinizin mevcut adını kullanın. Farklı bir ad kullanırsanız mevcut olanın üzerine yazmak yerine yeni bir yerel ağ geçidi oluşturursunuz.
+Ağ geçidi bağlantınız yoksa ve IP adresi önekleri eklemek veya kaldırmak istiyorsanız, yerel ağ geçidini oluşturmak için kullandığınız [az network local-gateway create](/cli/azure/network/local-gateway) komutunu kullanın. VPN cihazının ağ geçidi IP adresini güncelleştirmek için de bu komutu kullanabilirsiniz. Geçerli ayarların üzerine yazmak için yerel ağ geçidinizin mevcut adını kullanın. Farklı bir ad kullanırsanız mevcut olanın üzerine yazmak yerine yeni bir yerel ağ geçidi oluşturursunuz.
 
 Her değişiklik yaptığınızda, yalnızca değiştirmek istediğiniz ön ekler değil ön ek listesinin tamamı belirtilmelidir. Yalnızca kalmasını istediğiniz ön ekleri belirtin. Bu durumda, söz konusu ön ekler 10.0.0.0/24 ve 20.0.0.0/24’tür.
 
@@ -27,7 +27,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 
 
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı var
 
-Bir ağ geçidi bağlantınız varsa ve IP adresi önekleri eklemek veya kaldırmak istiyorsanız önekleri [az network local-gateway update](https://docs.microsoft.com/cli/azure/network/local-gateway) komutunu kullanarak güncelleştirebilirsiniz. Bunun sonucunda, VPN bağlantınızda kesinti oluşur. IP adresi öneklerini değiştirirken, VPN ağ geçidini silmeniz gerekmez.
+Bir ağ geçidi bağlantınız varsa ve IP adresi önekleri eklemek veya kaldırmak istiyorsanız önekleri [az network local-gateway update](/cli/azure/network/local-gateway) komutunu kullanarak güncelleştirebilirsiniz. Bunun sonucunda, VPN bağlantınızda kesinti oluşur. IP adresi öneklerini değiştirirken, VPN ağ geçidini silmeniz gerekmez.
 
 Her değişiklik yaptığınızda, yalnızca değiştirmek istediğiniz ön ekler değil ön ek listesinin tamamı belirtilmelidir. Bu örnekte, 10.0.0.0/24 ve 20.0.0.0/24 zaten mevcuttur. 30.0.0.0/24 ve 40.0.0.0/24 öneklerini ekliyor ve güncelleştirirken 4 öneki de belirtiyoruz.
 

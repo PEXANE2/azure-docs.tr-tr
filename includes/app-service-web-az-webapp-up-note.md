@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: app-service
 author: msangapu
 ms.service: app-service
@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 02/27/2019
 ms.author: msangapu
 ms.custom: include file
-ms.openlocfilehash: 8b5be0a438d9c5bb1fd0596368327c53a2d6c31f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 08458bd170707b28c69fdad1d8aa115a7ad245a5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "67189047"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559560"
 ---
 > [!NOTE]
 > `az webapp up` komutu şu eylemleri gerçekleştirir:
 >
->- Varsayılan bir [kaynak grubu](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)oluşturun.
+>- Varsayılan bir [kaynak grubu](/cli/azure/group?view=azure-cli-latest#az-group-create)oluşturun.
 >
->- Varsayılan bir [App Service planı](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)oluşturun.
+>- Varsayılan bir [App Service planı](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)oluşturun.
 >
->- Belirtilen ada sahip [bir uygulama oluşturun](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) .
+>- Belirtilen ada sahip [bir uygulama oluşturun](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) .
 >
->- [ZIP](https://docs.microsoft.com/azure/app-service/deploy-zip) dosyalarını geçerli çalışma dizininden uygulamaya dağıtın.
+>- [ZIP](../articles/app-service/deploy-zip.md) dosyalarını geçerli çalışma dizininden uygulamaya dağıtın.
 >

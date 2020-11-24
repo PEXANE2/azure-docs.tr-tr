@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: media-services
 author: Juliako
 ms.service: media-services
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1327ac49920af353d6adbbe592ab4189417e60e8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79461223"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557020"
 ---
 ## <a name="use-cli-shell"></a>CLı kabuğu kullanma
 
-CLı komutlarını yürütmek için [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) kullanılması önerilir. **Cloud Shell** , bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz ve etkileşimli bir kabuktur. Yaygın kullanılan Azure araçları hesabınızla kullanmanız için Cloud Shell'de önceden yüklenir ve yapılandırılır. Bu hizmet, çalışma şeklinize en uygun kabuk deneyimini seçme esnekliği sunar. Linux kullanıcıları Bash deneyimini, Windows kullanıcıları da PowerShell deneyimini seçebilir.
+CLı komutlarını yürütmek için [Azure Cloud Shell](../articles/cloud-shell/overview.md?view=azure-cli-latest) kullanılması önerilir. **Cloud Shell** , bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz ve etkileşimli bir kabuktur. Yaygın kullanılan Azure araçları hesabınızla kullanmanız için Cloud Shell'de önceden yüklenir ve yapılandırılır. Bu hizmet, çalışma şeklinize en uygun kabuk deneyimini seçme esnekliği sunar. Linux kullanıcıları Bash deneyimini, Windows kullanıcıları da PowerShell deneyimini seçebilir.
 
-CLı 'yi yerel olarak da yükleyebilirsiniz. Platformunuza ilişkin yönergeler için bkz. [Azure CLI 'Yı yüklemeyin](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+CLı 'yi yerel olarak da yükleyebilirsiniz. Platformunuza ilişkin yönergeler için bkz. [Azure CLI 'Yı yüklemeyin](/cli/azure/install-azure-cli) .
 
-### <a name="sign-in"></a>Oturum aç
+### <a name="sign-in"></a>Oturum açın
 
 CLı 'nın yerel yüklemesinin kullanılması için Azure 'da oturum açmak gerekir. Azure Cloud Shell için bu adım gerekli değildir. Komutuyla oturum açın `az login` .
 
@@ -29,11 +29,11 @@ CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum a�
 
 ### <a name="specify-location-of-files"></a>Dosyaların konumunu belirtin
 
-Birçok Media Services CLı komutu bir dosya adı ile bir parametre geçirmenize izin verir. **Cloud Shell**kullanıyorsanız, dosyanızı CloudDrive 'A (bash veya PowerShell kullanarak) yükleyebilirsiniz. 
+Birçok Media Services CLı komutu bir dosya adı ile bir parametre geçirmenize izin verir. **Cloud Shell** kullanıyorsanız, dosyanızı CloudDrive 'A (bash veya PowerShell kullanarak) yükleyebilirsiniz. 
 
 ![Dosyaları karşıya yükleme]
 
-Yerel bir CLı veya **Cloud Shell**kullanıyor olmanıza bakılmaksızın, kullanmakta olduğunuz işletim sistemine veya Cloud Shell (bash veya PowerShell) göre dosya yolunu belirtmeniz gerekir. Aşağıda bazı örnekler verilmiştir:
+Yerel bir CLı veya **Cloud Shell** kullanıyor olmanıza bakılmaksızın, kullanmakta olduğunuz işletim sistemine veya Cloud Shell (bash veya PowerShell) göre dosya yolunu belirtmeniz gerekir. Aşağıda bazı örnekler verilmiştir:
 
 Dosyanın göreli yolu (tüm işletim sistemi)
 
