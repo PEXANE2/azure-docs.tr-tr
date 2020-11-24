@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676785"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544794"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Bulut depolama uygulamasını izleme ve sorunlarını giderme
 
@@ -37,11 +37,11 @@ Depolama hesaplarından günlük kaydı ve ölçümler, Azure portalındaki **Ta
 
 ## <a name="turn-on-logging-and-metrics"></a>Günlük kaydını ve ölçümleri açma
 
-Sol menüden **Kaynak Grupları** ’nı seçin, **myResourceGroup** seçeneğini belirleyin ve sonra kaynak listesinden depolama hesabınızı seçin.
+Sol menüden **Kaynak Grupları**’nı seçin, **myResourceGroup** seçeneğini belirleyin ve sonra kaynak listesinden depolama hesabınızı seçin.
 
-**Tanılama ayarları (klasik)** bölümünde **Durum** ’u **Açık** olarak ayarlayın. **Blob özellikleri** ’nin altındaki tüm seçeneklerin etkinleştirildiğinden emin olun.
+**Tanılama ayarları (klasik)** bölümünde **Durum**’u **Açık** olarak ayarlayın. **Blob özellikleri**’nin altındaki tüm seçeneklerin etkinleştirildiğinden emin olun.
 
-İşlem tamamlandığında **Kaydet** ’e tıklayın
+İşlem tamamlandığında **Kaydet**’e tıklayın
 
 ![Günlük ve ölçümleri açmak için yapılandırma ayarlarını içeren bölümü vurgulayan ekran görüntüsü.](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -53,7 +53,7 @@ Uyarılar, bir eşiği ihlal eden bir ölçüm temelinde yöneticilere e-posta g
 
 **İzleme** bölümünde **Uyarılar (klasik)** öğesini seçin.
 
-**Ölçüm uyarısı ekle (klasik)** öğesini seçin ve gerekli bilgileri kullanarak **Kural ekle** formunu doldurun. **Ölçüm** açılan menüsünden `SASClientOtherError` öğesini seçin. Uyarınızın ilk hatada tetiklenmesi için **Koşul** açılan menüsünden **Büyük veya eşit** 'i seçin.
+**Ölçüm uyarısı ekle (klasik)** öğesini seçin ve gerekli bilgileri kullanarak **Kural ekle** formunu doldurun. **Ölçüm** açılan menüsünden `SASClientOtherError` öğesini seçin. Uyarınızın ilk hatada tetiklenmesi için **Koşul** açılan menüsünden **Büyük veya eşit**'i seçin.
 
 ![Tanılama bölmesi](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
@@ -83,23 +83,23 @@ Aşağıdaki görüntü, önceki örnekle birlikte çalıştırılan benzetimi y
 
 Depolama günlükleri, verileri, depolama hesabınızdaki **$logs** adlı bir blob kapsayıcısında blob kümeleri halinde depolar. Hesabınızdaki tüm blob kapsayıcılarını listelerseniz bu kapsayıcı gösterilmez, ancak doğrudan erişirseniz içeriklerini görebilirsiniz.
 
-Bu senaryoda, Azure depolama hesabınızla etkileşim kurmak için [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)’ı kullanırsınız.
+Bu senaryoda, Azure depolama hesabınızla etkileşim kurmak için [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)’ı kullanırsınız.
 
 ### <a name="download-microsoft-message-analyzer"></a>Microsoft Message Analyzer’ı indirme
 
-[Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer)’ı indirip uygulamayı yükleyin.
+[Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer)’ı indirip uygulamayı yükleyin.
 
 Uygulamayı başlatın ve **File**  >  **Open**  >  **diğer dosya kaynaklarından** Dosya Aç ' ı seçin.
 
-**Dosya Seçici** iletişim kutusunda **+ Azure Bağlantısı Ekle** ’yi seçin. **Depolama hesabı adı** ve **hesap anahtarı** bilgilerinizi girin ve **Tamam** ’a tıklayın.
+**Dosya Seçici** iletişim kutusunda **+ Azure Bağlantısı Ekle**’yi seçin. **Depolama hesabı adı** ve **hesap anahtarı** bilgilerinizi girin ve **Tamam**’a tıklayın.
 
 ![Microsoft Message Analyzer - Azure Depolama Bağlantısı Ekle İletişim Kutusu](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
-Bağlandıktan sonra, günlük bloblarını görüntülemek için depolama ağacı görünümündeki kapsayıcıları genişletin. En son günlüğü seçin ve **Tamam** ’a tıklayın.
+Bağlandıktan sonra, günlük bloblarını görüntülemek için depolama ağacı görünümündeki kapsayıcıları genişletin. En son günlüğü seçin ve **Tamam**’a tıklayın.
 
 ![Microsoft Ileti Çözümleyicisi 'ni gösteren ve seçili günlük dosyasını vurgulayan ekran görüntüsü.](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
-**Yeni Oturum** iletişim kutusunda **Başlat** ’a tıklayarak günlüğünüzü görüntüleyin.
+**Yeni Oturum** iletişim kutusunda **Başlat**’a tıklayarak günlüğünüzü görüntüleyin.
 
 Günlük açıldıktan sonra depolama olaylarını görüntüleyebilirsiniz. Aşağıdaki görüntüde gördüğünüz gibi, depolama hesabında tetiklenen bir `SASClientOtherError` oldu. Depolama günlük kaydı hakkında ek bilgi için [Depolama Analizi](../common/storage-analytics.md)’ni ziyaret edin.
 

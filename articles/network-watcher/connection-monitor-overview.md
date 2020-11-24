@@ -1,5 +1,5 @@
 ---
-title: Azure 'da bağlantı Izleyicisi (Önizleme) | Microsoft Docs
+title: Azure 'da bağlantı Izleyicisi | Microsoft Docs
 description: Dağıtılmış bir ortamdaki ağ iletişimini izlemek için bağlantı Izleyicisini nasıl kullanacağınızı öğrenin.
 services: network-watcher
 documentationcenter: na
@@ -12,24 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 11/23/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: cb24cc55844d7c42d68e75d6f6ef947b1315a306
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c5c3f8dedad47a819ce3648a0b81ffa3e65a1a1e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984371"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544896"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme (Önizleme)
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme
 
 Bağlantı Izleyicisi, Azure ağ Izleyicisi 'nde birleştirilmiş uçtan uca bağlantı izleme sağlar. Bağlantı Izleyicisi özelliği karma ve Azure bulut dağıtımlarını destekler. Ağ Izleyicisi, Azure dağıtımlarınız için bağlantı ile ilgili ölçümleri izlemek, tanılamak ve görüntülemek için araçlar sağlar.
 
-> [!IMPORTANT]
-> Bağlantı Izleyicisi Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Bağlantı Izleyicisi için bazı kullanım durumları aşağıda verilmiştir:
+Bağlantı Izleyicisi için bazı kullanım durumları aşağıda verilmiştir:
 
 - Ön uç Web sunucusu sanal makinesi, çok katmanlı bir uygulamadaki bir veritabanı sunucusu VM 'si ile iletişim kurar. İki VM arasındaki ağ bağlantısını kontrol etmek istiyorsunuz.
 - Doğu ABD bölgesindeki VM 'Lerin Orta ABD bölgesindeki sanal makinelere ping işlemi olmasını ve bölgeler arası ağ gecikmelerinin karşılaştırmasını istiyorsunuz.
@@ -274,7 +271,7 @@ Bağlantı Izleyicisi deneyiminden önce oluşturulan bağlantı izleyicilerinde
 
 Ölçümleri kullandığınızda, kaynak türünü Microsoft. Network/networkWatchers/Connectionmonitörleri olarak ayarlayın
 
-| Ölçüm | Görünen ad | Birim | Toplama türü | Description | Boyutlar |
+| Metric | Görünen ad | Birim | Toplama türü | Description | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Yoklama başarısız oldu | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
 | AverageRoundtripMs | Ort. gidiş dönüş süresi (MS) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 7/14/2020
-ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/19/2020
+ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630303"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537144"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications Bağımsız Yazılım Satıcısı (ISV) Connect Programı katılım kılavuzu
 
@@ -38,10 +38,10 @@ Bu programa katılım, [Business Applications eki](https://aka.ms/bizappsisvadde
 > Bu adım, hesabınızın yasal sözleşmeleri imzalamasını sağlamak için Iş Ortağı Merkezi 'nde bir *sahip* veya *yönetici* rolü gerektirir.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
-1. **Ayarlar** (dişli simgesi) ve ardından **Geliştirici ayarları** ' nı seçin.
+1. **Hesap ayarlarını**> **ayarları** (dişli simgesi) seçin.
 1. **Anlaşmaları** seçin.
 1. Sürüm bağlantısını seçin ve sözleşmeyi görüntüleyin.
-1. Sözleşmeyi kabul edip kabul etmek için **sözleşmeyi kabul et** ' i seçin.
+1. Sözleşmeyi kabul edip kabul etmek için **sözleşmeyi kabul et**' i seçin.
 
 ## <a name="set-up-your-billing-information"></a>Faturalandırma bilgilerinizi ayarlama
 
@@ -51,12 +51,12 @@ Business Applications ISV Connect programı için faturalandırma bilgilerini ay
 > Bu adım, hesap için Iş Ortağı Merkezi 'nde faturalama bilgilerini güncelleştirmek üzere bir *sahip* veya *yönetici* rolü gerektirir.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
-1. **Ayarlar** (dişli simgesi) ve ardından **Geliştirici ayarları** ' nı seçin.
-1. **Hesap ayarları** altında **Faturalandırma profili** ' ni seçin.
+1. **Hesap ayarlarını**> **ayarları** (dişli simgesi) seçin.
+1. **Kuruluş profili** altında **Faturalandırma profili** ' ni ve ardından **Geliştirici** sekmesini seçin.
 1. Yasal varlığınızdan doldurulan birincil iletişim ve fatura bilgilerini gözden geçirin.
-1. Değişiklik yapmak için **Güncelleştir** ' i seçin.
+1. Değişiklik yapmak için **Güncelleştir**' i seçin.
 1. Uygulanabiliyorsa, vergi KIMLIĞI/KDV KIMLIK ayarları ' nı belirtin.
-1. Değişikliklerinizi kaydetmek için **Güncelleştir** ' i seçin.
+1. Değişikliklerinizi kaydetmek için **Güncelleştir**' i seçin.
 
 > [!NOTE]
 > Faturalandırma profilinizi dilediğiniz zaman güncelleştirebilirsiniz. Ancak, *Şirket adı* ve fatura adresi *ülkesi* daha sonra değiştirilemez.

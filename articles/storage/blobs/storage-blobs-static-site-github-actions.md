@@ -9,22 +9,22 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3adbc0a2d55a2adc2ab7c1f82b0a358542eefc2a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842456"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543115"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Azure Storage 'da statik Web sitenizi dağıtmak için bir GitHub eylemleri iş akışı ayarlama
 
 Bir Azure depolama hesabına statik bir site dağıtmak için bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın. GitHub eylemleri iş akışını ayarladıktan sonra, sitenizin kodunda değişiklik yaptığınızda sitenizi GitHub 'dan otomatik olarak Azure 'a dağıtabilirsiniz.
 
 > [!NOTE]
-> [Azure statik Web Apps](https://docs.microsoft.com/azure/static-web-apps/)kullanıyorsanız, El Ile GitHub eylemleri iş akışını ayarlamanıza gerek yoktur.
+> [Azure statik Web Apps](../../static-web-apps/index.yml)kullanıyorsanız, El Ile GitHub eylemleri iş akışını ayarlamanıza gerek yoktur.
 > Azure statik Web Apps, sizin için otomatik olarak bir GitHub eylemleri iş akışı oluşturur. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure aboneliği ve GitHub hesabı. 
 
@@ -187,4 +187,4 @@ Statik Web siteniz ve GitHub deponuz artık gerekmiyorsa, kaynak grubunu ve GitH
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure statik Web Apps hakkında bilgi edinin](https://docs.microsoft.com/azure/static-web-apps/)
+> [Azure statik Web Apps hakkında bilgi edinin](../../static-web-apps/index.yml)

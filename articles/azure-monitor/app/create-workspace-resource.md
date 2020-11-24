@@ -3,18 +3,18 @@ title: Yeni bir Azure Izleyici Application Insights çalışma alanı tabanlı k
 description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı kaynakları etkinleştirmek için gereken adımlar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945422"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536923"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynakları
 
 Çalışma alanı tabanlı kaynaklar Application Insights ve Log Analytics arasında tam tümleştirmeyi destekler. Artık Application Insights telemetrinizi ortak bir Log Analytics çalışma alanına göndermenizi seçebilirsiniz. Bu, uygulama, altyapı ve platform günlüklerinin tek bir birleştirilmiş konumda tutulması sırasında tüm Log Analytics özelliklerine tam erişim sağlar.
 
-Bu ayrıca kaynaklarınız genelinde ortak Role-Based Access Control (RBAC) sağlar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
+Bu Ayrıca, kaynaklarınız genelinde ortak Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
 
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu Log Analytics çalışma alanı üzerinden faturalandırılır. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
@@ -81,7 +81,7 @@ Aynı durum, ASP.NET ve ASP.NET Core için Visual Studio 'daki Application Insig
 
 ## <a name="creating-a-resource-automatically"></a>Otomatik olarak kaynak oluşturma
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle şunu çalıştırmanız gerekir:
 
@@ -207,7 +207,7 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 
 > [!NOTE]
 > Şu anda telemetri dışarı aktarma için ek ücret alınmaz. Bu özellik için fiyatlandırma bilgileri, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)kullanıma sunulacaktır.  Faturalandırma başlamadan önce Bildirimler gönderilir. Bildirim süresinden sonra kullanmaya devam etmeyi tercih etmeniz gerekir <feature name> , ilgili ücret üzerinden faturalandırılırsınız. 
- 
+ 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

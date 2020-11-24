@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
-ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194330"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539065"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Eşleştirilmiş Azure Bölgeleri
 
@@ -43,7 +43,7 @@ Hayır. Belirli bir Azure hizmeti bölgesel bir çifte bağlı olsa da, diğer h
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Azure bölgesel çiftlerinin kullanılması gerekir mi?
 
-Hayır. Müşteriler, Azure 'un bölgesel çiftlerine bağlı kalmadan dayanıklı bir hizmeti mimarileri artırmak için Azure hizmetlerinden yararlanabilir.  Bununla birlikte, [yalıtımdan](./security/fundamentals/isolation-choices.md) faydalanmak ve [kullanılabilirliği](./availability-zones/az-overview.md)geliştirmek için iş sürekliliği olağanüstü durum kurtarma (BCDR) ' i bölgesel çiftler arasında yapılandırmanızı öneririz. Birden çok etkin bölgeyi destekleyen uygulamalarda mümkün olduğunca bölge çiftindeki her iki bölgenin de kullanılmasını öneririz. Bu, uygulamalar için en iyi kullanılabilirliği ve olağanüstü durum durumunda en düşük kurtarma süresini sağlar. Mümkün olduğunda, uygulamanızı [en yüksek dayanıklılık](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) ve [olağanüstü durum kurtarma](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)kolaylığı için tasarlayın.
+Hayır. Müşteriler, Azure 'un bölgesel çiftlerine bağlı kalmadan dayanıklı bir hizmeti mimarileri artırmak için Azure hizmetlerinden yararlanabilir.  Bununla birlikte, [yalıtımdan](./security/fundamentals/isolation-choices.md) faydalanmak ve [kullanılabilirliği](./availability-zones/az-overview.md)geliştirmek için iş sürekliliği olağanüstü durum kurtarma (BCDR) ' i bölgesel çiftler arasında yapılandırmanızı öneririz. Birden çok etkin bölgeyi destekleyen uygulamalarda mümkün olduğunca bölge çiftindeki her iki bölgenin de kullanılmasını öneririz. Bu, uygulamalar için en iyi kullanılabilirliği ve olağanüstü durum durumunda en düşük kurtarma süresini sağlar. Mümkün olduğunda, uygulamanızı [en yüksek dayanıklılık](/azure/architecture/framework/resiliency/overview) ve [olağanüstü durum kurtarma](/azure/architecture/framework/resiliency/backup-and-recovery)kolaylığı için tasarlayın.
 
 ## <a name="azure-regional-pairs"></a>Azure bölgesel çiftleri
 
@@ -56,7 +56,7 @@ Hayır. Müşteriler, Azure 'un bölgesel çiftlerine bağlı kalmadan dayanıkl
 | Kanada |Orta Kanada |Doğu Kanada |
 | Çin |Kuzey Çin |Doğu Çin|
 | Çin |Çin Kuzey 2 |Çin Doğu 2|
-| Avrupa |Kuzey Avrupa (Irlanda) |Batı Avrupa (Hollanda) |
+| Avrupa |Kuzey Avrupa (İrlanda) |Batı Avrupa (Hollanda) |
 | Fransa |Orta Fransa|Güney Fransa|
 | Almanya |Orta Almanya |Kuzeydoğu Almanya |
 | Hindistan |Orta Hindistan |Güney Hindistan |
@@ -64,11 +64,11 @@ Hayır. Müşteriler, Azure 'un bölgesel çiftlerine bağlı kalmadan dayanıkl
 | Japonya |Doğu Japonya |Batı Japonya |
 | Güney Kore |Güney Kore - Orta |Güney Kore - Güney |
 | Kuzey Amerika |Doğu ABD |Batı ABD |
-| Kuzey Amerika |Doğu ABD 2 |Central US |
+| Kuzey Amerika |Doğu ABD 2 |Orta ABD |
 | Kuzey Amerika |Orta Kuzey ABD |Orta Güney ABD |
 | Kuzey Amerika |Batı ABD 2 |Orta Batı ABD |
 | Norveç | Norveç Doğu | Norveç Batı |
-| Güney Afrika | Güney Afrika Kuzey |Güney Afrika Batı |
+| Güney Afrika | Güney Afrika - Kuzey |Güney Afrika - Batı |
 | İsviçre | İsviçre Kuzey |İsviçre Batı |
 | Birleşik Krallık |Batı Birleşik Krallık |Güney Birleşik Krallık |
 | Birleşik Arap Emirlikleri | BAE Kuzey | BAE Orta
@@ -94,9 +94,9 @@ Aşağıdaki görüntüde olağanüstü durum kurtarma için bölgesel çift kul
 
 1. **Azure işlem (IaaS)** – bir olağanüstü durum sırasında kaynakların başka bir bölgede kullanılabilmesini sağlamak için daha önce ek işlem kaynakları sağlamalısınız. Daha fazla bilgi için bkz. [Azure dayanıklılık Teknik Kılavuzu](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md). 
 
-2. **Azure depolama** -yönetilen diskler kullanıyorsanız, Azure Backup [çapraz bölge yedeklemeleri](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) hakkında bilgi edinin ve Azure Site Recovery ile [sanal makineleri](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) bir bölgeden diğerine çoğaltma. Depolama hesapları kullanıyorsanız, coğrafi olarak yedekli depolama (GRS), bir Azure depolama hesabı oluşturulduğunda varsayılan olarak yapılandırılır. GRS ile, verileriniz birincil bölgede otomatik olarak üç kez ve eşleştirilmiş bölgede üç kez çoğaltılır. Daha fazla bilgi için bkz. [Azure Storage artıklık seçenekleri](storage/common/storage-redundancy.md).
+2. **Azure depolama** -yönetilen diskler kullanıyorsanız, Azure Backup [çapraz bölge yedeklemeleri](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) hakkında bilgi edinin ve Azure Site Recovery ile [sanal makineleri](./site-recovery/azure-to-azure-tutorial-enable-replication.md) bir bölgeden diğerine çoğaltma. Depolama hesapları kullanıyorsanız, coğrafi olarak yedekli depolama (GRS), bir Azure depolama hesabı oluşturulduğunda varsayılan olarak yapılandırılır. GRS ile, verileriniz birincil bölgede otomatik olarak üç kez ve eşleştirilmiş bölgede üç kez çoğaltılır. Daha fazla bilgi için bkz. [Azure Storage artıklık seçenekleri](storage/common/storage-redundancy.md).
 
-3. **Azure SQL veritabanı** – Azure SQL veritabanı coğrafi çoğaltma ile, işlemlerin zaman uyumsuz çoğaltmasını dünyanın herhangi bir bölgesine yapılandırabilirsiniz; Ancak, bu kaynakları birçok olağanüstü durum kurtarma senaryosunda eşleştirilmiş bir bölgeye dağıtmanızı öneririz. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda coğrafi çoğaltma](sql-database/sql-database-geo-replication-overview.md).
+3. **Azure SQL veritabanı** – Azure SQL veritabanı coğrafi çoğaltma ile, işlemlerin zaman uyumsuz çoğaltmasını dünyanın herhangi bir bölgesine yapılandırabilirsiniz; Ancak, bu kaynakları birçok olağanüstü durum kurtarma senaryosunda eşleştirilmiş bir bölgeye dağıtmanızı öneririz. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda coğrafi çoğaltma](./azure-sql/database/auto-failover-group-overview.md).
 
 4. **Azure Resource Manager**: Resource Manager doğal olarak bölgeler arasında bileşenlerin mantıksal yalıtımını sağlar. Bu, bir bölgedeki mantıksal hataların diğer etkileri daha az olabilir.
 

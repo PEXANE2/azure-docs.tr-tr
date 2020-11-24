@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061622"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542822"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Öğretici: Azure SQL veritabanı kaynaklarını başka bir bölgeye taşıma
 
@@ -22,7 +22,7 @@ Bu öğreticide Azure SQL veritabanlarının ve elastik havuzların [Azure Kayna
 > [!NOTE]
 > Azure Kaynak taşıyıcısı Şu anda önizleme aşamasındadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Önkoşulları ve gereksinimleri denetleyin.
@@ -43,22 +43,22 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 -  Taşımak istediğiniz kaynakları içeren abonelikte *sahip* erişiminizin olduğunu denetleyin.
     - Azure aboneliğindeki belirli bir kaynak ve hedef çifti için ilk kez kaynak eklediğinizde, kaynak taşıyıcısı abonelik tarafından güvenilen [sistem tarafından atanan bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (eski adıyla yönetilen hizmet tanımlaması (MSI)) oluşturur.
     - Kimliği oluşturmak ve gerekli rolü (katkıda bulunan ya da kaynak abonelikte Kullanıcı erişimi Yöneticisi) atamak için, kaynak eklemek için kullandığınız hesabın abonelikte *sahip* izinleri olması gerekir. Azure rolleri hakkında [daha fazla bilgi edinin](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) .
-- Aboneliğin, hedef bölgede taşıdığınız kaynakları oluşturmak için yeterli kotası olması gerekir. Kota içermiyorsa [ek sınırlamalar isteyin](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+- Aboneliğin, hedef bölgede taşıdığınız kaynakları oluşturmak için yeterli kotası olması gerekir. Kota içermiyorsa [ek sınırlamalar isteyin](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Kaynakları taşıdığınız hedef Bölgeyle ilişkili fiyatlandırmayı ve ücretleri doğrulayın. Size yardımcı olması için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
     
 
 ## <a name="check-sql-requirements"></a>SQL gereksinimlerini denetleme
 
 1. Başka bir bölgeye geçmek için hangi veritabanı/elastik havuz özelliklerinin desteklendiğini [denetleyin](support-matrix-move-region-sql.md) .
-2. Hedef bölgede, her kaynak sunucu için bir hedef sunucu oluşturun. [Daha fazla bilgi edinin](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users).
+2. Hedef bölgede, her kaynak sunucu için bir hedef sunucu oluşturun. [Daha fazla bilgi edinin](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users).
 4. Veritabanları, saydam veri şifrelemesi (TDE) ile şifrelenirse ve Azure Key Vault ' de kendi şifreleme anahtarınızı kullanıyorsanız, anahtar kasalarını başka bir bölgeye taşımayı [öğrenin](../key-vault/general/move-region.md) .
 5. SQL Data Sync etkinse, üye veritabanlarının taşınması desteklenir. Taşıma işleminden sonra SQL Data Sync 'i yeni hedef veritabanına ayarlamanız gerekir.
-6. Taşımadan önce Gelişmiş veri güvenliği ayarlarını kaldırın. Taşıdıktan sonra, hedef bölgedeki SQL Server düzeyinde [ayarları yapılandırın](/azure/sql-database/sql-database-advanced-data-security) .
-7. Denetim etkinse, taşıdıktan sonra ilkeler varsayılana sıfırlanır. Taşıma işleminden sonra [denetimi tekrar ayarlayın](/azure/sql-database/sql-database-auditing) .
-7. Kaynak veritabanının yedekleme bekletme ilkeleri hedef veritabanına taşınır. Taşıma işleminden sonra ayarları değiştirme hakkında [daha fazla bilgi edinin](/azure/sql-database/sql-database-long-term-backup-retention-configure ) .
-8. Taşıma işleminden önce sunucu düzeyi güvenlik duvarı kurallarını kaldırın. Veritabanı düzeyinde güvenlik duvarı kuralları, taşıma sırasında kaynak sunucudan hedef sunucuya kopyalanır. Taşıma işleminden sonra hedef bölgede SQL Server için [güvenlik duvarı kuralları ayarlayın](/azure/sql-database/sql-database-server-level-firewall-rule) .
-9. Taşımadan önce, oto ayarlama ayarlarını kaldırın. Taşıdıktan sonra tekrar [ayarlamayı ayarlayın](/azure/sql-database/sql-database-automatic-tuning-enable) .
-10. Taşımadan önce veritabanı uyarı ayarlarını kaldırın. Taşıdıktan sonra [sıfırlayın](/azure/sql-database/sql-database-insights-alerts-portal) .
+6. Taşımadan önce Gelişmiş veri güvenliği ayarlarını kaldırın. Taşıdıktan sonra, hedef bölgedeki SQL Server düzeyinde [ayarları yapılandırın](../azure-sql/database/azure-defender-for-sql.md) .
+7. Denetim etkinse, taşıdıktan sonra ilkeler varsayılana sıfırlanır. Taşıma işleminden sonra [denetimi tekrar ayarlayın](../azure-sql/database/auditing-overview.md) .
+7. Kaynak veritabanının yedekleme bekletme ilkeleri hedef veritabanına taşınır. Taşıma işleminden sonra ayarları değiştirme hakkında [daha fazla bilgi edinin](../azure-sql/database/long-term-backup-retention-configure.md) .
+8. Taşıma işleminden önce sunucu düzeyi güvenlik duvarı kurallarını kaldırın. Veritabanı düzeyinde güvenlik duvarı kuralları, taşıma sırasında kaynak sunucudan hedef sunucuya kopyalanır. Taşıma işleminden sonra hedef bölgede SQL Server için [güvenlik duvarı kuralları ayarlayın](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) .
+9. Taşımadan önce, oto ayarlama ayarlarını kaldırın. Taşıdıktan sonra tekrar [ayarlamayı ayarlayın](../azure-sql/database/automatic-tuning-enable.md) .
+10. Taşımadan önce veritabanı uyarı ayarlarını kaldırın. Taşıdıktan sonra [sıfırlayın](../azure-sql/database/alerts-insights-configure-portal.md) .
     
 ## <a name="select-resources"></a>Kaynakları seçin
 
@@ -67,7 +67,7 @@ Taşımak istediğiniz kaynakları seçin.
 - Seçili kaynak bölgedeki herhangi bir kaynak grubunda, desteklenen herhangi bir kaynak türünü seçebilirsiniz.
 - Kaynakları kaynak bölgeyle aynı abonelikte yer alan bir hedef bölgeye taşırsınız. Aboneliği değiştirmek istiyorsanız, kaynaklar taşındıktan sonra bunu yapabilirsiniz.
 
-1. Azure portal, *kaynak taşıyıcısı*için arama yapın. Ardından, **Hizmetler**' ın altında **Azure Kaynak taşıyıcısı**' ı seçin.
+1. Azure portal, *kaynak taşıyıcısı* için arama yapın. Ardından, **Hizmetler**' ın altında **Azure Kaynak taşıyıcısı**' ı seçin.
 
      ![Azure portal kaynak taşıyıcısı için arama sonuçları](./media/tutorial-move-region-sql/search.png)
 
@@ -75,19 +75,19 @@ Taşımak istediğiniz kaynakları seçin.
 
     ![Başka bir bölgeye taşınacak kaynakları ekleme düğmesi](./media/tutorial-move-region-sql/get-started.png)
 
-3. Kaynak **taşıma**  >  **kaynağı + hedef**bölümünde, kaynak aboneliğini ve bölgeyi seçin.
-4. **Hedef**bölümünde, kaynakları taşımak istediğiniz bölgeyi seçin. Ardından **İleri**'ye tıklayın.
+3. Kaynak **taşıma**  >  **kaynağı + hedef** bölümünde, kaynak aboneliğini ve bölgeyi seçin.
+4. **Hedef** bölümünde, kaynakları taşımak istediğiniz bölgeyi seçin. Ardından **İleri**'ye tıklayın.
 
     ![Kaynak ve hedef bölge seçme sayfası](./media/tutorial-move-region-sql/source-target.png)
 
-6. **Taşınacak kaynaklar**bölümünde **kaynakları seç**' e tıklayın.
-7. **Kaynakları seçin**bölümünde kaynakları seçin. Yalnızca taşıma için desteklenen kaynaklar ekleyebilirsiniz. Sonra da **Bitti**’ye tıklayın.
+6. **Taşınacak kaynaklar** bölümünde **kaynakları seç**' e tıklayın.
+7. **Kaynakları seçin** bölümünde kaynakları seçin. Yalnızca taşıma için desteklenen kaynaklar ekleyebilirsiniz. Sonra da **Bitti**’ye tıklayın.
 
     ![Taşınacak SQL kaynaklarını seçmek için sayfa](./media/tutorial-move-region-sql/select-resources.png)
 
-8. **Taşınacak kaynaklar**bölümünde **İleri**' ye tıklayın.
+8. **Taşınacak kaynaklar** bölümünde **İleri**' ye tıklayın.
 
-9. **Gözden geçir + Ekle**bölümünde kaynak ve hedef ayarlarını kontrol edin. Taşıma hakkındaki meta verilerin, meta veri bölgesinde bu amaçla oluşturulmuş bir kaynak grubunda depolandığını anladığınızdan emin olun.
+9. **Gözden geçir + Ekle** bölümünde kaynak ve hedef ayarlarını kontrol edin. Taşıma hakkındaki meta verilerin, meta veri bölgesinde bu amaçla oluşturulmuş bir kaynak grubunda depolandığını anladığınızdan emin olun.
 
 
     ![Ayarları gözden geçirmek ve taşımaya devam etmek için sayfa](./media/tutorial-move-region-sql/review.png)
@@ -134,11 +134,11 @@ Hedef bölgede bir hedef SQL Server atayın ve taşımayı yürütün.
 
     
 > [!NOTE]
-> Kaynak SQL Server durum, *taşıma taşıma bekleniyor*olarak değişir. 
+> Kaynak SQL Server durum, *taşıma taşıma bekleniyor* olarak değişir. 
 
 ### <a name="commit-the-sql-server-move"></a>SQL Server taşımayı Yürüt
 
-1. **Bölgeler arasında**içinde SQL Server seçin ve ardından **taşımayı Yürüt**' e tıklayın.
+1. **Bölgeler arasında** içinde SQL Server seçin ve ardından **taşımayı Yürüt**' e tıklayın.
 2. **Kaynakları kaydet**' de, **Yürüt**' e tıklayın.
 
     ![SQL Server taşımayı tamamlamak için sayfa](./media/tutorial-move-region-sql/commit-sql-server.png)
@@ -159,7 +159,7 @@ Kaynak SQL Server taşındığında, diğer kaynakları taşımaya hazırlanabil
 
     ![Kaynakları hazırlama düğmesi](./media/tutorial-move-region-sql/prepare-elastic.png)
 
-2. **Kaynakları hazırlama**bölümünde **hazırla**' ya tıklayın.
+2. **Kaynakları hazırlama** bölümünde **hazırla**' ya tıklayın.
 3. Bildirimler hazırlama işleminin başarılı olduğunu gösterip **Yenile**' ye tıklayın.
 
 > [!NOTE]
@@ -171,7 +171,7 @@ Kaynak SQL Server taşındığında, diğer kaynakları taşımaya hazırlanabil
 
     ![Seçili kaynakları hazırlama düğmesi](./media/tutorial-move-region-sql/prepare-db.png)
 
-2. **Kaynakları hazırlama**bölümünde **hazırla**' ya tıklayın.
+2. **Kaynakları hazırlama** bölümünde **hazırla**' ya tıklayın.
 3. Bildirimler hazırlama işleminin başarılı olduğunu gösterip **Yenile**' ye tıklayın.
 
 > [!NOTE]
@@ -185,7 +185,7 @@ Elastik havuzda veritabanlarını hazırlamak için, elastik havuz bir işlem *t
 #### <a name="initiate-move---elastic-pool"></a>Move-elastik havuzu Başlat
 
 1. **Bölgeler arasında**, kaynak elastik havuzu ' nu (demo-test1-elaçıkartma havuzu) seçin ve ardından **taşımayı Başlat**' a tıklayın.
-2. **Kaynakları taşıma**bölümünde, **taşımayı Başlat**' a tıklayın.
+2. **Kaynakları taşıma** bölümünde, **taşımayı Başlat**' a tıklayın.
 
     
     ![Elastik havuz taşımayı başlatma düğmesi](./media/tutorial-move-region-sql/initiate-elastic.png)
@@ -198,8 +198,8 @@ Elastik havuzda veritabanlarını hazırlamak için, elastik havuz bir işlem *t
 
 #### <a name="prepare-database"></a>Veritabanını hazırla
 
-1. **Bölgeler arası**bölümünde veritabanını (demo-test2-SQLDB) seçin ve ardından **hazırla**' ya tıklayın.
-2. **Kaynakları hazırlama**bölümünde **hazırla**' ya tıklayın.
+1. **Bölgeler arası** bölümünde veritabanını (demo-test2-SQLDB) seçin ve ardından **hazırla**' ya tıklayın.
+2. **Kaynakları hazırlama** bölümünde **hazırla**' ya tıklayın.
 
     ![Elastik havuzda veritabanını hazırlama düğmesi](./media/tutorial-move-region-sql/prepare-database-elastic.png) 
 
@@ -210,8 +210,8 @@ Hazırlama sırasında hedef veritabanı hedef bölgede oluşturulur ve veri ço
 ## <a name="move-databases"></a>Veritabanlarını taşıma
 
 Veritabanlarını taşımaya başlayın.
-1. **Bölgeler arasında**, durum **başlatma taşıma bekleyen**kaynaklar ' ı seçin. Sonra **taşımayı Başlat**' a tıklayın.
-2. **Kaynakları taşıma**bölümünde, **taşımayı Başlat**' a tıklayın.
+1. **Bölgeler arasında**, durum **başlatma taşıma bekleyen** kaynaklar ' ı seçin. Sonra **taşımayı Başlat**' a tıklayın.
+2. **Kaynakları taşıma** bölümünde, **taşımayı Başlat**' a tıklayın.
 
     ![Taşımayı başlatacak sayfa](./media/tutorial-move-region-sql/initiate-move.png)
 
@@ -225,15 +225,15 @@ Veritabanlarını taşımaya başlayın.
 
 İlk taşıma işleminden sonra, taşımayı yürütmek mi yoksa atmak mi istediğinize karar verebilirsiniz. 
 
-- **At**: test ediyorsanız ve kaynak kaynağı gerçekten taşımak istemiyorsanız bir taşımayı atmak isteyebilirsiniz. Taşımayı atmak, kaynağı **başlatma bekleyen**bir durumuna döndürür.
-- **COMMIT**: COMMIT, hedef bölgeye taşıma işlemini tamamlar. İşlem tamamlandıktan sonra kaynak kaynak, **bekleyen silme kaynağı**durumunda olur ve silmek istediğinize karar verebilirsiniz.
+- **At**: test ediyorsanız ve kaynak kaynağı gerçekten taşımak istemiyorsanız bir taşımayı atmak isteyebilirsiniz. Taşımayı atmak, kaynağı **başlatma bekleyen** bir durumuna döndürür.
+- **COMMIT**: COMMIT, hedef bölgeye taşıma işlemini tamamlar. İşlem tamamlandıktan sonra kaynak kaynak, **bekleyen silme kaynağı** durumunda olur ve silmek istediğinize karar verebilirsiniz.
 
 
 ## <a name="discard-the-move"></a>Taşımayı at 
 
 Taşımayı aşağıdaki şekilde atabilirsiniz:
 
-1. **Bölgeler arasında**, durum **işlemede taşıma bekleyen**kaynaklar ' ı seçin ve **taşımayı at**' a tıklayın.
+1. **Bölgeler arasında**, durum **işlemede taşıma bekleyen** kaynaklar ' ı seçin ve **taşımayı at**' a tıklayın.
 2. **Taşımayı at**' da **at**' a tıklayın.
 3. Bildirim çubuğunda taşıma ilerlemesini izleyin.
 

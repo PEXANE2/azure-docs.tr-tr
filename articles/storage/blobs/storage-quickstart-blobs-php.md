@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: af35927abfa491891dffe2c2397d6daf8c1ccde2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87835757"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543128"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP kullanarak nesneleri Azure Blob depolama içine/dışına aktarma
 Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için PHP'yi nasıl kullanabileceğinizi öğreneceksiniz. 
@@ -91,7 +91,7 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 **blobClient** kapsayıcı nesnesini oluşturduktan sonra, ilgilendiğiniz belirli bir blobu işaret eden **Block** blob nesnesini oluşturabilirsiniz. Daha sonra karşıya yükleme, indirme ve kopyalama gibi işlemler gerçekleştirebilirsiniz.
 
 > [!IMPORTANT]
-> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 Bu bölümde Azure depolama istemcisi örneği kurdunuz, blob hizmeti nesnesini oluşturdunuz, yeni bir kapsayıcı oluşturdunuz ve kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarladınız. Bu kapsayıcının adı **quickstartblobs**’dur. 
 

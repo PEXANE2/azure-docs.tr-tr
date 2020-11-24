@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176f12a0a06a5bcae601463e30189bc139d3531f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89670797"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543859"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>PowerShell 'deki bölgeler arasında kaynakları taşıma
 
@@ -25,7 +25,7 @@ Azure Kaynak taşıyıcısı 'nde PowerShell kullanarak Azure kaynaklarını far
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Azure aboneliğinizin kaynak taşıyıcısı erişimi olmalıdır ve abonelik için [sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) veya [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) izinlerine sahip olmanız gerekir.
+- Azure aboneliğinizin kaynak taşıyıcısı erişimi olmalıdır ve abonelik için [sahip](../role-based-access-control/built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) izinlerine sahip olmanız gerekir.
 - Kaynak taşıyıcısı değişiklikleri ve yükseltmeleri izlemediği için, devam etmeden önce kaynaklarda gerekli değişiklikleri yapın.
 - Kaynakları PowerShell ile taşıdığınızda, şu anda herhangi bir hedef bölge ayarını düzenleyemezsiniz. Bu ayarları doğrudan portalda değiştirin.
 - Bir taşıma koleksiyonuna kaynak eklediğinizde, bunları başka bir bölgeye taşımaya hazırlanarak, taşıma hakkındaki meta veriler amaç için oluşturulan bir kaynak grubunda depolanır. Şu anda bu kaynak grubu Doğu ABD 2 veya Kuzey Avrupa bölgelerinde bulunabilir. Azure kaynakları, bu bölgelerden birinde bulunan meta veriler kullanılarak tüm ortak bölgeler arasında taşınabilir.
@@ -346,8 +346,8 @@ Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGr
 
 İlk taşıma işleminden sonra, taşımayı yürütmek mi yoksa atmak mi istediğinize karar verebilirsiniz. 
 
-- **At**: test ediyorsanız bir taşıma atabilir ve kaynak kaynağı gerçekten taşımak istemezsiniz. Taşımayı atmak, kaynağı *başlatma bekleyen*bir durumuna döndürür. Ardından, gerekirse taşımayı yeniden başlatabilirsiniz.
-- **COMMIT**: COMMIT, hedef bölgeye taşıma işlemini tamamlar. İşlem tamamlandıktan sonra kaynak kaynak, *bekleyen silme kaynağı*durumunda olur ve silmek istediğinize karar verebilirsiniz.
+- **At**: test ediyorsanız bir taşıma atabilir ve kaynak kaynağı gerçekten taşımak istemezsiniz. Taşımayı atmak, kaynağı *başlatma bekleyen* bir durumuna döndürür. Ardından, gerekirse taşımayı yeniden başlatabilirsiniz.
+- **COMMIT**: COMMIT, hedef bölgeye taşıma işlemini tamamlar. İşlem tamamlandıktan sonra kaynak kaynak, *bekleyen silme kaynağı* durumunda olur ve silmek istediğinize karar verebilirsiniz.
 
 ### <a name="discard"></a>Vazgeç
 

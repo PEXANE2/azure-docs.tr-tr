@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 7acd287964d25cc7e98c11ec1986c73d8ae265da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104147"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536685"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure İzleyici'deki günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -23,7 +23,7 @@ Bu makalede, ' ye erişim verme dahil olmak üzere günlüklere erişimi yönetm
 * Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak belirli kaynaklardan günlük verilerine erişmesi gereken kullanıcılar ( [kaynak bağlamı](design-logs-deployment.md#access-mode) olarak da bilinir)
 * Azure RBAC kullanarak çalışma alanındaki belirli bir tablodaki günlük verilerine erişmesi gereken kullanıcılar.
 
-RBAC ve erişim stratejilerinin çevresindeki günlük kavramlarını anlamak için, [Azure Izleyici günlükleri dağıtımınızı tasarlama](design-logs-deployment.md) konusunu okuyun
+Azure RBAC ve erişim stratejileri etrafında günlük kavramlarını anlamak için, [Azure Izleyici günlükleri dağıtımınızı tasarlama](design-logs-deployment.md) konusunu okuyun
 
 ## <a name="configure-access-control-mode"></a>Erişim denetimi modunu yapılandırma
 
@@ -48,7 +48,7 @@ Bu ayarı, çalışma alanının **Özellikler** sayfasından değiştirebilirsi
 
 ![Çalışma alanı erişim modunu değiştir](media/manage-access/change-access-control-mode.png)
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 Abonelikteki tüm çalışma alanları için erişim denetimi modunu incelemek üzere aşağıdaki komutu kullanın:
 
@@ -144,7 +144,7 @@ Log Analytics okuyucu rolü aşağıdaki Azure eylemlerini içerir:
 
 *Log Analytics Katkıda Bulunan* rolünün üyeleri aşağıdakileri yapabilir:
 
-* *Log Analytics okuyucu rolünün*tüm ayrıcalıklarını içerir ve bu da kullanıcının tüm izleme verilerini okumasına izin verir
+* *Log Analytics okuyucu rolünün* tüm ayrıcalıklarını içerir ve bu da kullanıcının tüm izleme verilerini okumasına izin verir
 * Otomasyon hesapları oluşturma ve yapılandırma
 * Yönetim çözümlerini ekleme ve kaldırma
 
@@ -194,9 +194,9 @@ Kullanıcılar, kaynak bağlamı erişimi kullanarak bir çalışma alanından g
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Örnekler:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Kaynak için tüm günlük verilerini görüntüleme olanağı.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Tanılama ayarını bu kaynak için günlükleri ayarlamaya izin verecek şekilde yapılandırma özelliği. |
 
-`/read`izin genellikle, yerleşik okuyucu ve katkıda bulunan rolleri gibi _ \* /Read veya_ Permissions içeren bir rolden verilir _\*_ . [Reader](../../role-based-access-control/built-in-roles.md#reader) [Contributor](../../role-based-access-control/built-in-roles.md#contributor) Belirli eylemler veya adanmış yerleşik roller içeren özel roller bu izni içermeyebilir.
+`/read`izin genellikle, yerleşik okuyucu ve katkıda bulunan rolleri gibi _\* /Read veya_ Permissions içeren bir rolden verilir _\*_ . [Reader](../../role-based-access-control/built-in-roles.md#reader) [Contributor](../../role-based-access-control/built-in-roles.md#contributor) Belirli eylemler veya adanmış yerleşik roller içeren özel roller bu izni içermeyebilir.
 
-Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağıdaki [tablo başına erişim denetimi tanımlama](#table-level-rbac) bölümüne bakın.
+Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağıdaki [tablo başına erişim denetimi tanımlama](#table-level-azure-rbac) bölümüne bakın.
 
 ## <a name="custom-role-examples"></a>Özel rol örnekleri
 
@@ -239,15 +239,15 @@ Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağı
 
     * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `*/read` , okuyucu rolüne atanır veya `Microsoft.Insights/logs/*/read` . 
 
-## <a name="table-level-rbac"></a>Tablo düzeyi RBAC
+## <a name="table-level-azure-rbac"></a>Tablo düzeyinde Azure RBAC
 
-**Tablo DÜZEYI RBAC** , diğer izinlerin yanı sıra bir Log Analytics çalışma alanındaki verilere daha ayrıntılı denetim tanımlamanızı sağlar. Bu denetim, yalnızca belirli bir kullanıcı kümesi için erişilebilen belirli veri türlerini tanımlamanızı sağlar.
+**Tablo düzeyi Azure RBAC** , diğer izinlerin yanı sıra bir Log Analytics çalışma alanındaki verilere daha ayrıntılı denetim tanımlamanızı sağlar. Bu denetim, yalnızca belirli bir kullanıcı kümesi için erişilebilen belirli veri türlerini tanımlamanızı sağlar.
 
 Çalışma alanındaki belirli [tablolara](./data-platform-logs.md) erişim sağlamak için [Azure özel rolleriyle](../../role-based-access-control/custom-roles.md) tablo erişim denetimi uygulayabilirsiniz. Bu roller, kullanıcının [erişim modundan](design-logs-deployment.md#access-mode)bağımsız olarak, çalışma alanı bağlamı veya kaynak bağlamı [erişim denetimi modlarıyla](design-logs-deployment.md#access-control-mode) çalışma alanlarına uygulanır.
 
 Tablo erişim denetimine erişimi tanımlamak için aşağıdaki eylemlerle [özel bir rol](../../role-based-access-control/custom-roles.md) oluşturun.
 
-* Bir tabloya erişim vermek için, rol tanımının **Eylemler** bölümüne ekleyin. İzin verilen **eylemlerden**erişimi çıkarmak Için, **NotActions** bölümüne dahil edin.
+* Bir tabloya erişim vermek için, rol tanımının **Eylemler** bölümüne ekleyin. İzin verilen **eylemlerden** erişimi çıkarmak Için, **NotActions** bölümüne dahil edin.
 * Tüm tabloları belirtmek için Microsoft. Operationalınsights/Workspaces/Query/* kullanın.
 
 Örneğin, _sinyal_ ve _AzureActivity_ tablolarına erişimi olan bir rol oluşturmak için aşağıdaki eylemleri kullanarak özel bir rol oluşturun:
@@ -302,7 +302,7 @@ Bazen özel Günlükler, belirli bir kaynakla doğrudan ilişkili olmayan kaynak
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Bir kullanıcıya, _ \* /Read_ eylemini içeren standart okuyucu veya katkıda bulunan rollerle genel okuma izni verildiyse, tablo başına erişim denetimini geçersiz kılar ve tüm günlük verilerine erişim sağlar.
+* Bir kullanıcıya, _\* /Read_ eylemini içeren standart okuyucu veya katkıda bulunan rollerle genel okuma izni verildiyse, tablo başına erişim denetimini geçersiz kılar ve tüm günlük verilerine erişim sağlar.
 * Bir kullanıcıya tablo başına erişim verildiyse ancak başka izinler yoksa, API 'den günlük verilerine erişebilecek ancak Azure portal. Azure portal erişim sağlamak için, temel rolü olarak Log Analytics okuyucu kullanın.
 * Aboneliğin yöneticileri ve sahipleri, diğer izin ayarlarından bağımsız olarak tüm veri türlerine erişebilir.
 * Çalışma alanı sahipleri, tablo başına erişim denetimi için diğer kullanıcılar gibi davranır.

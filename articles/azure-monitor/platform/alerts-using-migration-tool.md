@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358670"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536039"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Klasik uyarı kurallarınızı geçirmek için gönüllü geçiş aracını kullanın
 
@@ -51,7 +51,7 @@ Klasik uyarı kurallarınızın Azure portal geçişini tetiklemek için aşağ�
 
     ![Ekran görüntüsü, uyarı kurallarını geçir sayfasını gösterir.](media/alerts-migration/migration-landing.png "Kuralları geçir")
 
-    Aracı kullanılarak geçirilebilen tüm abonelikler geçişe **hazırlanıyor**olarak işaretlenir.
+    Aracı kullanılarak geçirilebilen tüm abonelikler geçişe **hazırlanıyor** olarak işaretlenir.
 
     > [!NOTE]
     > Geçiş Aracı, klasik uyarı kuralları kullanan tüm aboneliklerde aşamalar halinde kullanıma alınıyor. Piyasaya sürülmeye yönelik erken aşamalarda, geçiş için yok olarak işaretlenmiş bazı abonelikler görebilirsiniz.
@@ -77,13 +77,13 @@ Klasik uyarı kurallarınızın Azure portal geçişini tetiklemek için aşağ�
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Aboneliğim neden geçiş için yok olarak listelendi?
 
-Geçiş Aracı, aşamalar halinde müşterilere kullanıma alınıyor. Erken aşamalarda, aboneliklerinizin çoğu veya hepsi **geçiş için hazırlanma**olarak işaretlenebilir. 
+Geçiş Aracı, aşamalar halinde müşterilere kullanıma alınıyor. Erken aşamalarda, aboneliklerinizin çoğu veya hepsi **geçiş için hazırlanma** olarak işaretlenebilir. 
 
 Bir abonelik geçişe hazır hale geldiğinde, aboneliğin sahibi aracın kullanılabildiğini belirten bir e-posta iletisi alır. Bu ileti için bir göz atın.
 
 ### <a name="who-can-trigger-the-migration"></a>Geçişi kimlerin tetikleyebilen?
 
-Abonelik düzeyinde kendisine atanmış Izleme katılımcısı rolü olan kullanıcılar geçişi tetikleyebiliyor. [Geçiş işlemi için Role-Based Access Control hakkında daha fazla bilgi edinin](alerts-understand-migration.md#who-can-trigger-the-migration).
+Abonelik düzeyinde kendisine atanmış Izleme katılımcısı rolü olan kullanıcılar geçişi tetikleyebiliyor. [Geçiş işlemi Için Azure rol tabanlı erişim denetimi hakkında daha fazla bilgi edinin](alerts-understand-migration.md#who-can-trigger-the-migration).
 
 ### <a name="how-long-will-the-migration-take"></a>Geçiş ne kadar sürer?
 

@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714818"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544760"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -59,7 +59,7 @@ Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir den
 
 Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Azure Storage uygulamanızı kısıtsalken, hizmet 503 (sunucu meşgul) veya 500 (Işlem zaman aşımı) hata kodları döndürmeye başlar. Ölçeklenebilirlik hedefleri sınırları içinde kalarak bu hatalardan kaçınmak, uygulamanızın performansını artırmanın önemli bir parçasıdır.
 
-Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](../queues/scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>En fazla depolama hesabı sayısı
 
@@ -112,7 +112,7 @@ Bu tür işlemlerin sıklığını azaltmak için bazı en iyi yöntemleri izley
 - Hesaplar, kapsayıcılar, Bloblar, tablolar ve kuyruklar için kullandığınız adlandırma kuralını inceleyin. Gereksinimlerinize en uygun bir karma işlevi kullanarak hesap, kapsayıcı veya blob adlarını üç basamaklı bir karmaya önek olarak kabul etmeyi düşünün.
 - Verilerinizi zaman damgaları veya sayısal tanımlayıcılar kullanarak düzenlediğinizde, salt bir Append (veya yalnızca sonuna kadar) trafik deseninin kullanmadığınız emin olun. Bu desenler, Aralık tabanlı bölümleme sistemi için uygun değildir. Bu desenler, tek bir bölüme giden ve sistemi etkin yük dengelemeden sınırlayan tüm trafiğe yol açabilir.
 
-    Örneğin, *YYYYMMDD*gibi bir zaman damgasıyla blob kullanan günlük işlemlere sahipseniz, bu günlük işlem için tüm trafik tek bir bölüm sunucusu tarafından sunulan tek bir bloba yönlendirilir. Blob başına limitlerin ve bölüm başına limitlerinin gereksinimlerinizi karşılayıp karşılamadığını düşünün ve gerekirse bu işlemi birden çok bloba bölmek için göz önünde bulundurun. Benzer şekilde, zaman serisi verilerini Tablolarınızda depolarsanız, tüm trafik anahtar ad alanının son bölümüne yönlendirilebilir. Sayısal kimlikler kullanıyorsanız, KIMLIĞI üç basamaklı bir karma ile önek yapın. Zaman damgaları kullanıyorsanız, zaman damgasına önek olarak saniye değerini ekleyin, örneğin, *ssyyyymmdd*. Uygulamanız düzenli olarak listeleme ve sorgulama işlemleri gerçekleştiriyorsa, sorgu sayısını sınırlayan bir karma işlev seçin. Bazı durumlarda, rastgele bir ön ek yeterli olabilir.
+    Örneğin, *YYYYMMDD* gibi bir zaman damgasıyla blob kullanan günlük işlemlere sahipseniz, bu günlük işlem için tüm trafik tek bir bölüm sunucusu tarafından sunulan tek bir bloba yönlendirilir. Blob başına limitlerin ve bölüm başına limitlerinin gereksinimlerinizi karşılayıp karşılamadığını düşünün ve gerekirse bu işlemi birden çok bloba bölmek için göz önünde bulundurun. Benzer şekilde, zaman serisi verilerini Tablolarınızda depolarsanız, tüm trafik anahtar ad alanının son bölümüne yönlendirilebilir. Sayısal kimlikler kullanıyorsanız, KIMLIĞI üç basamaklı bir karma ile önek yapın. Zaman damgaları kullanıyorsanız, zaman damgasına önek olarak saniye değerini ekleyin, örneğin, *ssyyyymmdd*. Uygulamanız düzenli olarak listeleme ve sorgulama işlemleri gerçekleştiriyorsa, sorgu sayısını sınırlayan bir karma işlev seçin. Bazı durumlarda, rastgele bir ön ek yeterli olabilir.
   
 - Azure depolama 'da kullanılan bölümleme şeması hakkında daha fazla bilgi için bkz. [Azure Storage: güçlü tutarlılığı olan yüksek oranda kullanılabilir bir bulut depolama hizmeti](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
@@ -195,7 +195,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 Diğer programlama dilleri için, bağlantı sınırının nasıl ayarlanacağını öğrenmek için belgelere bakın.  
 
-Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)' a bakın.  
+Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](/archive/blogs/darrenj/web-services-concurrent-connections)' a bakın.  
 
 ### <a name="increase-minimum-number-of-threads"></a>En az iş parçacığı sayısını artır
 
@@ -213,7 +213,7 @@ Paralellik performansı performans için harika olsa da, sınırsız paralellik 
 
 ## <a name="client-libraries-and-tools"></a>İstemci kitaplıkları ve araçları
 
-En iyi performans için, her zaman Microsoft tarafından sunulan en son istemci kitaplıklarını ve araçları kullanın. Azure depolama istemci kitaplıkları, çeşitli diller için kullanılabilir. Azure depolama, PowerShell ve Azure CLı 'yı da destekler. Microsoft bu istemci kitaplıklarını ve araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının çoğunu dahili olarak işlemesini sağlar. Daha fazla bilgi için bkz. [Azure depolama başvurusu belgeleri](/azure/storage/#reference).
+En iyi performans için, her zaman Microsoft tarafından sunulan en son istemci kitaplıklarını ve araçları kullanın. Azure depolama istemci kitaplıkları, çeşitli diller için kullanılabilir. Azure depolama, PowerShell ve Azure CLı 'yı da destekler. Microsoft bu istemci kitaplıklarını ve araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının çoğunu dahili olarak işlemesini sağlar.
 
 ## <a name="handle-service-errors"></a>Hizmet hatalarını işleme
 
@@ -243,11 +243,11 @@ Aynı depolama hesabı içindeki verileri kopyalamak için [BLOB kopyalama](/res
 
 ### <a name="use-azcopy"></a>AzCopy’yi kullanma
 
-AzCopy komut satırı yardımcı programı, blob 'ların depolama hesaplarına, üzerinden ve bunların tamamında toplu aktarımı için basit ve verimli bir seçenektir. AzCopy, bu senaryo için iyileştirilmiştir ve yüksek aktarım ücretleri elde edebilir. AzCopy sürüm 10, `Put Block From URL` depolama hesapları arasında blob verilerini kopyalamak için işlemi kullanır. Daha fazla bilgi için bkz. [AzCopy ile v10 arasındaki kullanarak Azure depolama 'ya veri kopyalama veya taşıma](/azure/storage/common/storage-use-azcopy-v10).  
+AzCopy komut satırı yardımcı programı, blob 'ların depolama hesaplarına, üzerinden ve bunların tamamında toplu aktarımı için basit ve verimli bir seçenektir. AzCopy, bu senaryo için iyileştirilmiştir ve yüksek aktarım ücretleri elde edebilir. AzCopy sürüm 10, `Put Block From URL` depolama hesapları arasında blob verilerini kopyalamak için işlemi kullanır. Daha fazla bilgi için bkz. [AzCopy ile v10 arasındaki kullanarak Azure depolama 'ya veri kopyalama veya taşıma](../common/storage-use-azcopy-v10.md).  
 
 ### <a name="use-azure-data-box"></a>Azure Data Box kullan
 
-Büyük hacimli verileri blob depolamaya aktarmak için Azure Data Box ailesini çevrimdışı aktarımlar için kullanmayı düşünün. Microsoft tarafından sağlanan Data Box cihazları zamana, ağ kullanılabilirliğine veya maliyetlere göre sınırlı olduğunuzda büyük miktarlarda verileri Azure 'a taşımak için iyi bir seçimdir. Daha fazla bilgi için bkz. [Azure veri kutusu belgeleri](/azure/databox/).
+Büyük hacimli verileri blob depolamaya aktarmak için Azure Data Box ailesini çevrimdışı aktarımlar için kullanmayı düşünün. Microsoft tarafından sağlanan Data Box cihazları zamana, ağ kullanılabilirliğine veya maliyetlere göre sınırlı olduğunuzda büyük miktarlarda verileri Azure 'a taşımak için iyi bir seçimdir. Daha fazla bilgi için bkz. [Azure veri kutusu belgeleri](../../databox/index.yml).
 
 ## <a name="content-distribution"></a>İçerik dağıtımı
 

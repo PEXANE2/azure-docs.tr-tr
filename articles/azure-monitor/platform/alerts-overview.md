@@ -4,12 +4,12 @@ description: Azure 'da uyarı konusuna genel bakış. Uyarılar, klasik uyarıla
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108805"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536056"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure'da uyarılara genel bakış 
 
@@ -72,7 +72,7 @@ Belirli kaynaklar (sanal makineler gibi) için, uyarı kuralının hedefi olarak
 
 ## <a name="manage-alerts"></a>Uyarıları yönetme
 
-Bir uyarının durumunu, çözüm sürecinde nerede olduğunu belirtmek için ayarlayabilirsiniz. Uyarı kuralında belirtilen ölçütler karşılandığında, bir uyarı oluşturulur veya tetiklenir ve *Yeni*durumuna sahiptir. Bir uyarıyı onayladığınızda ve kapattığınızda durumu değiştirebilirsiniz. Tüm durum değişiklikleri uyarının geçmişine depolanır.
+Bir uyarının durumunu, çözüm sürecinde nerede olduğunu belirtmek için ayarlayabilirsiniz. Uyarı kuralında belirtilen ölçütler karşılandığında, bir uyarı oluşturulur veya tetiklenir ve *Yeni* durumuna sahiptir. Bir uyarıyı onayladığınızda ve kapattığınızda durumu değiştirebilirsiniz. Tüm durum değişiklikleri uyarının geçmişine depolanır.
 
 Aşağıdaki uyarı durumları desteklenir.
 
@@ -80,9 +80,9 @@ Aşağıdaki uyarı durumları desteklenir.
 |:---|:---|
 | Yeni | Sorun algılandı ve henüz gözden geçirilmedi. |
 | Onaylandı | Bir yönetici uyarıyı inceetti ve üzerinde çalışmaya başladı. |
-| Kapalı | Sorun çözüldü. Bir uyarı kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
+| Kapatıldı | Sorun çözüldü. Bir uyarı kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
-*Uyarı durumu* , *izleyici koşulunun*farklıdır ve bağımsızdır. Uyarı durumu Kullanıcı tarafından ayarlanır. İzleme koşulu sistem tarafından ayarlanır. Bir uyarı tetiklendiğinde, uyarının izleyici koşulu *' tetiklenir '* olarak ayarlanır ve Uyarının tetiklenmesine neden olan temeldeki koşul temizler, izleme koşulu *' çözüldü '* olarak ayarlanır. 
+*Uyarı durumu* , *izleyici koşulunun* farklıdır ve bağımsızdır. Uyarı durumu Kullanıcı tarafından ayarlanır. İzleme koşulu sistem tarafından ayarlanır. Bir uyarı tetiklendiğinde, uyarının izleyici koşulu *' tetiklenir '* olarak ayarlanır ve Uyarının tetiklenmesine neden olan temeldeki koşul temizler, izleme koşulu *' çözüldü '* olarak ayarlanır. 
 
 Uyarı durumu Kullanıcı tarafından değiştirilene kadar değiştirilmez. [Uyarılarınızın ve akıllı grupların durumunu değiştirme hakkında](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)bilgi edinin.
 
@@ -152,7 +152,7 @@ Sayfanın en üstündeki açılan menülerde aşağıdaki değerleri seçerek g�
 | Kaynak grubu | Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 | Kaynak türü | Bir veya daha fazla kaynak türü seçin. Yalnızca seçilen türdeki hedefleri olan uyarılar görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
 | Kaynak | Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
-| Önem Derecesi | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+| Önem derecesi | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | İzleme koşulu | Bir izleyici koşulu seçin veya tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Uyarı durumu | Bir uyarı durumu seçin veya tüm durumların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Hizmeti izle | Bir hizmet seçin veya tüm hizmetleri dahil etmek için **Tümü** ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
@@ -171,11 +171,11 @@ Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 |:---|:---|
 | Özet | Uyarı hakkındaki özellikleri ve diğer önemli bilgileri görüntüler. |
 | Geçmiş | Uyarı tarafından gerçekleştirilen her eylemi ve uyarıya yapılan tüm değişiklikleri listeler. Şu anda durum değişiklikleriyle sınırlı. |
-| Tanılama | Uyarının dahil olduğu akıllı grup hakkında bilgi. *Uyarı sayısı* , akıllı gruba dahil edilen uyarı sayısını ifade eder. Son 30 gün içinde oluşturulan aynı akıllı gruptaki diğer uyarıları, uyarılar listesi sayfasındaki zaman filtreinne olursa olsun içerir. Ayrıntılarını görüntülemek için bir uyarı seçin. |
+| Tanılamalar | Uyarının dahil olduğu akıllı grup hakkında bilgi. *Uyarı sayısı* , akıllı gruba dahil edilen uyarı sayısını ifade eder. Son 30 gün içinde oluşturulan aynı akıllı gruptaki diğer uyarıları, uyarılar listesi sayfasındaki zaman filtreinne olursa olsun içerir. Ayrıntılarını görüntülemek için bir uyarı seçin. |
 
-## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Uyarı örneklerinizin rol tabanlı erişim denetimi (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac-for-your-alert-instances"></a>Uyarı örneklerinizin Azure rol tabanlı erişim denetimi (Azure RBAC)
 
-Uyarı örneklerinin tüketimine ve yönetimine yönelik olarak kullanıcının Azure yerleşik rollerinin, [katkıda](../../role-based-access-control/built-in-roles.md#monitoring-contributor) bulunan veya [izleme okuyucularından](../../role-based-access-control/built-in-roles.md#monitoring-reader)birine sahip olmasını gerektirir. Bu roller her bir Azure Resource Manager kapsamında, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine için katkıda bulunan erişimi izmışsa `ContosoVM1` , bu kullanıcı yalnızca üzerinde oluşturulan uyarıları kullanabilir ve yönetebilir `ContosoVM1` .
+Uyarı örneklerinin tüketimine ve yönetimine yönelik olarak kullanıcının Azure yerleşik rollerinin, [katkıda](../../role-based-access-control/built-in-roles.md#monitoring-contributor) bulunan veya [izleme okuyucularından](../../role-based-access-control/built-in-roles.md#monitoring-reader)birine sahip olmasını gerektirir. Bu roller, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar her Azure Resource Manager kapsamında desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine için katkıda bulunan erişimi izmışsa `ContosoVM1` , bu kullanıcı yalnızca üzerinde oluşturulan uyarıları kullanabilir ve yönetebilir `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Uyarı örneklerinizi programlama yoluyla yönetme
 

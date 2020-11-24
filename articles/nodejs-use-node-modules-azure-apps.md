@@ -14,19 +14,19 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f61f08f32ebb2b721846d3c3017405af99421104
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077127"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542227"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure uygulamalarıyla Node.js Modüllerini kullanma
 Bu belge, Azure 'da barındırılan uygulamalarla Node.js modülleri kullanma hakkında rehberlik sağlar. Uygulamanızın belirli bir modülün belirli bir sürümünü kullanmasını ve Azure ile yerel modüller kullanmasını sağlamaya yönelik rehberlik sağlar.
 
 Dosyalar üzerinde **package.js** ve **npm-shrinkwrap.js** Node.js modüller kullanmayı zaten biliyorsanız, aşağıdaki bilgiler bu makalede ele alındıklarla ilgili hızlı bir Özet sağlar:
 
-* Azure App Service dosyalar ** üzerindepackage.js** ve **npm-shrinkwrap.js** anlama ve bu dosyalardaki girişlere göre modüller yükleyebilir.
+* Azure App Service dosyalar **üzerindepackage.js** ve **npm-shrinkwrap.js** anlama ve bu dosyalardaki girişlere göre modüller yükleyebilir.
 
 * Azure Cloud Services, dağıtım paketinin bir parçası olarak dahil edilecek tüm modüllerin geliştirme ortamında ve **düğüm \_ modülleri** dizininde yüklü olmasını bekler. Cloud Services dosyalar üzerinde **package.js** veya **npm-shrinkwrap.js** kullanarak modül yükleme desteğini etkinleştirmek mümkündür; Ancak, bu yapılandırma, bulut hizmeti projeleri tarafından kullanılan varsayılan betiklerin özelleştirilmesini gerektirir. Bu ortamın nasıl yapılandırılacağı hakkında bir örnek için, [düğüm modüllerini dağıtmaktan kaçınmak üzere NPM yüklemesini çalıştırmak Için Azure başlangıç görevi](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) ' ne bakın
 
@@ -57,7 +57,7 @@ Azure App Service tüm yerel modülleri desteklemez ve belirli önkoşullara sah
 
 **package.js** dosyadaki en üst düzey bağımlılıklarını belirtmenin bir yolu, barındırma platformunun, uygulamanın bir parçası olarak **düğüm \_ modülleri** klasörünü içermesini gerektirmek yerine, bağımlılıkları yükleyebilmeleri için bir yoldur. Uygulama dağıtıldıktan sonra, dosyadaki **package.js** ayrıştırmak ve listelenen tüm bağımlılıkları yüklemek için **NPM install** komutu kullanılır.
 
-Geliştirme sırasında, modül yüklerken **--** Kaydet, **--Save-dev**veya **--Save-isteğe bağlı** parametrelerini, dosya **package.js** otomatik olarak bir modüle eklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [NPM-Install](https://docs.npmjs.com/cli/install).
+Geliştirme sırasında, modül yüklerken **--** Kaydet, **--Save-dev** veya **--Save-isteğe bağlı** parametrelerini, dosya **package.js** otomatik olarak bir modüle eklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [NPM-Install](https://docs.npmjs.com/cli/install).
 
 Dosyadaki **package.js** olası bir sorun yalnızca en üst düzey bağımlılıkların sürümünü belirttiğinden emin değildir. Yüklü her modül, bağımlı olduğu modüllerin sürümünü gösterebilir veya belirtemez ve bu nedenle, geliştirmede kullanılandan farklı bir bağımlılık zinciriyle bitebilmeniz mümkündür.
 
@@ -89,6 +89,6 @@ Azure ile Node.js modüllerinin nasıl kullanılacağını anladığınıza gör
 
 Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](/azure/developer/javascript/).
 
-[specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
+[specify the Node.js version]: ./app-service/overview.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md
 [Custom Website Deployment Scripts with Kudu]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo

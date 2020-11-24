@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 517de5c4003655c5fea2f2e7949fb513b1a3c381
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 950fcdc5cd6a5bbf3fa61ebd5e23be89691c4370
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842439"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535801"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -43,7 +43,7 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 ## <a name="destinations"></a>Hedefler
 Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. 
 
-| Hedef | Açıklama |
+| Hedef | Description |
 |:---|:---|
 | [Log Analytics çalışma alanı](design-logs-deployment.md) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
 | [Olay hub’ları](../../event-hubs/index.yml) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar.  |
@@ -52,7 +52,7 @@ Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderil
 
 ### <a name="destination-requirements"></a>Hedef gereksinimleri
 
-Tanılama ayarları oluşturulmadan önce tanılama ayarının tüm hedefleri oluşturulmalıdır. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğundan, hedefin kaynak göndermesi ile aynı abonelikte olması gerekmez. Aşağıdaki tabloda, tüm bölgesel kısıtlamalar dahil olmak üzere her bir hedef için benzersiz gereksinimler verilmiştir.
+Tanılama ayarları oluşturulmadan önce tanılama ayarının tüm hedefleri oluşturulmalıdır. Ayarı yapılandıran kullanıcının her iki aboneliğe da uygun Azure RBAC erişimi olduğu sürece, hedefin kaynakla aynı abonelikte olması gerekmez. Aşağıdaki tabloda, tüm bölgesel kısıtlamalar dahil olmak üzere her bir hedef için benzersiz gereksinimler verilmiştir.
 
 | Hedef | Gereksinimler |
 |:---|:---|

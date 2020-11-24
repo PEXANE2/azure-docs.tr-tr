@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 64856d0c9a06f57eb25a0cbc9279d1c09992f0d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 97795b2a693b68d1bd73a00f7b3e5ee3d4679545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147586"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522133"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir depolama hesabına bağlanma
 
@@ -53,7 +53,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Kaynak Grubu   | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Doğu ABD** seçin |
+    | Region           | **Doğu ABD** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -63,7 +63,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     |--------------------|----------------------------|
     | IPv4 adres alanı | **10.1.0.0/16** girin |
 
-5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
+5. **Alt ağ adı** altında, **varsayılan** sözcük ' ı seçin.
 
 6. **Alt ağı Düzenle**' de şu bilgileri girin:
 
@@ -72,17 +72,17 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Alt ağ adı | **Mysubnet** girin |
     | Alt ağ adres aralığı | **10.1.0.0/24** girin |
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Güvenlik** sekmesini seçin.
 
-9. **Bastionhost**altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+9. **Bastionhost** altında **Etkinleştir**' i seçin. Bu bilgileri girin:
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
     | Savunma adı | **Mybastionhost** girin |
     | AzureBastionSubnet adres alanı | **10.1.1.0/24** girin |
-    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad**Için **Mybastionıp**girin. </br> **Tamam**’ı seçin. |
+    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad** Için **Mybastionıp** girin. </br> **Tamam**’ı seçin. |
 
 
 8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
@@ -105,7 +105,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Bölge | **Doğu ABD** seçin |
+    | Region | **Doğu ABD** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -128,7 +128,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | NIC ağ güvenlik grubu | **Temel**|
     | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
    
-5. **Gözden geçir + oluştur**’u seçin. 
+5. **Gözden geçir ve oluştur**’u seçin. 
   
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -136,7 +136,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
 
 Bu bölümde, bir depolama hesabı oluşturacak ve özel uç noktayı yapılandıracaksınız.
 
-1. Sol taraftaki menüde, **kaynak**  >  **depolama**  >  **depolama hesabı**oluştur ' u veya arama kutusunda **depolama hesabı** ara ' yı seçin.
+1. Sol taraftaki menüde, **kaynak**  >  **depolama**  >  **depolama hesabı** oluştur ' u veya arama kutusunda **depolama hesabı** ara ' yı seçin.
 
 2. **Depolama hesabı oluştur** ' un **temel kavramlar** sekmesinde aşağıdaki bilgileri girin veya seçin:
 
@@ -146,7 +146,7 @@ Bu bölümde, bir depolama hesabı oluşturacak ve özel uç noktayı yapıland�
     | Abonelik | Azure aboneliğinizi seçin |
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
-    | Depolama hesabı adı | **Mystorageaccount**değerini girin. Ad kullanılamıyorsa, benzersiz bir ad girin. |
+    | Depolama hesabı adı | **Mystorageaccount** değerini girin. Ad kullanılamıyorsa, benzersiz bir ad girin. |
     | Konum | **Doğu ABD** seçin |
     | Performans | Varsayılan **Standart** kalsın |
     | Hesap türü | Varsayılan depolamayı bırak **(genel amaçlı v2)** |
@@ -188,7 +188,7 @@ Bu bölümde, bir depolama hesabı oluşturacak ve özel uç noktayı yapıland�
 
 13. Depolama hesabının **Ayarlar** bölümünde **erişim anahtarları**' nı seçin.
 
-14. **KEY1**için **bağlantı dizesinde** Kopyala ' yı seçin.
+14. **KEY1** için **bağlantı dizesinde** Kopyala ' yı seçin.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Özel uç nokta ile bağlantıyı sına
 
@@ -200,7 +200,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 3. **Myvm**' yi seçin.
 
-4. **Myvm**için genel bakış sayfasında **Bağlan** ' ı **seçin.**
+4. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
 5. Mavi **kullanımı** savunma düğmesini seçin.
 
@@ -222,7 +222,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
     Depolama hesabı adı için **10.1.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
-9. [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) sanal makineye yükler.
+9. [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) sanal makineye yükler.
 
 10. **Microsoft Azure Depolama Gezgini** yüklendikten sonra **son** ' u seçin.  Uygulamayı açmak için kutuyu işaretli bırakın.
 
@@ -232,15 +232,15 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 13. **Görünen ad**' daki önceki adımlardan depolama hesabı adınızı girin.
 
-14. **Bağlantı dizesi**altındaki kutuya, bağlantı dizesini önceki adımlarda kopyaladığınız depolama hesabından yapıştırın.
+14. **Bağlantı dizesi** altındaki kutuya, bağlantı dizesini önceki adımlarda kopyaladığınız depolama hesabından yapıştırın.
 
 15. **İleri**’yi seçin.
 
-16. **Bağlantı özetinde**ayarların doğru olduğundan emin olun.  
+16. **Bağlantı özetinde** ayarların doğru olduğundan emin olun.  
 
-17. **Bağlan**'ı seçin.
+17. **Bağlan**’ı seçin.
 
-18. **Myvm**bağlantısını kapatın.
+18. **Myvm** bağlantısını kapatın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726362"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523272"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Hızlı Başlangıç: Ruby kullanarak blobları yükleme, indirme ve listeleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok blobla
 Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* Rubygeı paketini kullanarak [Ruby Için Azure depolama kitaplığı](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage): 
+* Rubygeı paketini kullanarak [Ruby Için Azure depolama kitaplığı](): 
 
     ```
     gem install azure-storage-blob
@@ -90,7 +90,7 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 Bulut Blob kapsayıcısına sahip olduğunuzda, dilediğiniz bloba işaret eden **Block** blob nesnesi oluşturabilir ve karşıya yükleme, indirme ve kopyalama işlemleri gerçekleştirebilirsiniz.
 
 > [!IMPORTANT]
-> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 Bu bölümde Azure depolama istemcisi örneği kurdunuz, blob hizmeti nesnesini oluşturdunuz, yeni bir kapsayıcı oluşturdunuz ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarladınız. Bu kapsayıcının adı **quickstartblobs**’dur. 
 
@@ -189,7 +189,7 @@ Blob depolama ile Ruby geliştirmeye yönelik şu ek kaynaklara bakın:
 Bu hızlı başlangıçta, dosyaları Ruby kullanarak yerel bir disk ve Azure blob depolama arasında aktarmayı öğrendiniz. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, Blob depolama nasıl yapılır öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Blob Depolama İşlemleri Nasıl Yapılır](./storage-ruby-how-to-use-blob-storage.md)
+> [Blob Depolama İşlemleri Nasıl Yapılır]()
 
 
 Depolama Gezgini ve Bloblar hakkında daha fazla bilgi için bkz. [Azure Blob depolama kaynaklarını Depolama Gezgini'yle yönetme](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

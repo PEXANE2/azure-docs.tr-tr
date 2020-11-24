@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 18222573956f5ff3e9c617602902374b114328da
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555626"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534509"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
@@ -296,7 +296,7 @@ VM'ler için Azure İzleyici içeriği yeniden yapılandırmak için yeni ve gü
 
 ### <a name="logs"></a>Günlükler
 - [Azure Log Analytics çalışma alanını silme ve kurtarma](platform/delete-workspace.md) -PowerShell komutu eklendi. Sorun giderme güncelleştirildi.
-- RBAC bölümünde izin verilmeyen tablolar için [Azure izleyici 'de Log Analytics çalışma alanlarını yönetin](platform/manage-access.md) .
+- Azure RBAC bölümünde izin verilmeyen tablolar için [Azure izleyici 'de Log Analytics çalışma alanlarını yönetin](platform/manage-access.md) .
 - [Azure Izleyici günlükleri için kullanımı ve maliyetleri yönetme](platform/manage-cost-storage.md) -veri boyutunun hesaplanmasıyla ilgili ek ayrıntılar. Veri birimi uyarılarını yapılandırma güncelleştirildi. Azure Sentinel tarafından toplanan Güvenlik verileriyle ilgili ayrıntılar. Veri ucunun açıklaması.
 - [Azure Izleyici günlüklerini Azure Logic Apps ve Power otomatikleştir tarafından eklenen bağlayıcı limitleriyle kullanın](platform/logicapp-flow-connector.md) .
 
@@ -476,7 +476,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 - [Azure Ölçüm Gezgini](platform/metrics-charts.md) ile eklenen toplama bölümünün gelişmiş özellikleri.
 
-### <a name="workbooks"></a>Çalışma Kitapları
+### <a name="workbooks"></a>Çalışma kitapları
 
 - [Azure Izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi şablonu eklendi.
 
@@ -571,7 +571,7 @@ Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok gü
 
 #### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 
-- [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirin](../aks/azure-ad-integration-cli.md) bir istemci uygulaması oluşturmak için RBAC özellikli kümeyi desteklemek üzere Azure izleyicisini, kapsayıcılar Için Azure izleyiciyi destekleyecek şekilde tümleştirin.
+- [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirin](../aks/azure-ad-integration-cli.md) ve KUBERNETES RBAC özellikli kümeyi desteklemek üzere bir istemci uygulaması oluşturmak Için Azure izleyicisini, kapsayıcılar Için Azure izleyicisini destekleyecek şekilde tümleştirin.
 
 #### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
 

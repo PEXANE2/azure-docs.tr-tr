@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49203195bf7746d0bff1b9543d1641f69ab23359
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170709"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542686"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby 'de ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -48,27 +48,27 @@ TwiML, bir çağrıyı veya SMS 'nin nasıl işleyeceğini bildiren bir Twilio X
 Tüm TwiML belgelerinin `<Response>` kök öğesi vardır. Buradan, Twilio fiillerini kullanarak uygulamanızın davranışını tanımlayabilirsiniz.
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML fiilleri
-Twilio fiilleri, Twilio **ne yapılacağını söyleyen**XML etiketlerdir. Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** . 
+Twilio fiilleri, Twilio **ne yapılacağını söyleyen** XML etiketlerdir. Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için **&lt; söyleyin &gt;** . 
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir.
 
-* ** &lt; Çevir &gt; **: çağrıyı başka bir telefona bağlar.
-* ** &lt; Topla &gt; **: telefon tuş takımında girilen sayısal rakamları toplar.
-* ** &lt; Kapat &gt; **: bir çağrıyı sonlandırır.
-* ** &lt; Oynat &gt; **: bir ses dosyası çalar.
-* ** &lt; Duraklat &gt; **: belirtilen saniye sayısı için sessizce bekler.
-* ** &lt; Kayıt &gt; **: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
-* ** &lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
-* ** &lt; Reddet &gt; **: Twilio numaranızı Faturalandırmadan gelen çağrıyı reddeder
-* ** &lt; Deyin &gt; **: bir çağrıda yapılan metni konuşmaya dönüştürür.
-* ** &lt; SMS &gt; **: SMS iletisi gönderir.
+* **&lt; Çevir &gt;**: çağrıyı başka bir telefona bağlar.
+* **&lt; Topla &gt;**: telefon tuş takımında girilen sayısal rakamları toplar.
+* **&lt; Kapat &gt;**: bir çağrıyı sonlandırır.
+* **&lt; Oynat &gt;**: bir ses dosyası çalar.
+* **&lt; Duraklat &gt;**: belirtilen saniye sayısı için sessizce bekler.
+* **&lt; Kayıt &gt;**: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
+* **&lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
+* **&lt; Reddet &gt;**: Twilio numaranızı Faturalandırmadan gelen çağrıyı reddeder
+* **&lt; Deyin &gt;**: bir çağrıda yapılan metni konuşmaya dönüştürür.
+* **&lt; SMS &gt;**: SMS iletisi gönderir.
 
 Twilio fiilleri, öznitelikleri ve TwiML hakkında daha fazla bilgi için bkz. [twiml][twiml]. Twilio API 'SI hakkında daha fazla bilgi için bkz. [TWILIO API][twilio_api].
 
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio hesabı oluşturma
 Bir Twilio hesabı almaya hazırsanız, [TRY Twilio][try_twilio]' de kaydolun. Ücretsiz bir hesapla başlayabilir ve hesabınızı daha sonra yükseltebilirsiniz.
 
-Bir Twilio hesabı için kaydolduğunuzda, uygulamanız için ücretsiz telefon numarası alırsınız. Ayrıca hesap SID 'SI ve kimlik doğrulama belirteci de alacaksınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap SID 'SI ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci**etiketli alanlarda [Twilio hesabı sayfasında][twilio_account]görüntülenebilir.
+Bir Twilio hesabı için kaydolduğunuzda, uygulamanız için ücretsiz telefon numarası alırsınız. Ayrıca hesap SID 'SI ve kimlik doğrulama belirteci de alacaksınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap SID 'SI ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci** etiketli alanlarda [Twilio hesabı sayfasında][twilio_account]görüntülenebilir.
 
 ### <a name="verify-phone-numbers"></a><a id="VerifyPhoneNumbers"></a>Telefon numaralarını doğrulama
 Twilio tarafından verilen sayının yanı sıra, sizin oluşturduğunuz (örneğin, cep telefonunuz veya ev telefonu numaranız) sayıları uygulamalarınızda kullanmak üzere da doğrulayabilirsiniz. 
@@ -206,4 +206,4 @@ Twilio hizmetinin temellerini öğrendiğinize göre artık daha fazla bilgi edi
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
-[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app
+[azure_vm_setup]: /previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app

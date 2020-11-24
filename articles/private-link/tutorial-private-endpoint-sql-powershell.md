@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 36b952131c2050230de89064adc586c5a2851b65
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146460"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544097"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Öğretici-Azure özel uç nokta kullanarak Azure SQL Server 'a bağlanma-Azure PowerShell
 
@@ -270,7 +270,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 3. **CreateSQLEndpointTutorial-RG** seçin.
 
-4. **Myvm** ' yi seçin.
+4. **Myvm**' yi seçin.
 
 5. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
@@ -295,37 +295,37 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
     SQL Server adı için **10.0.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
 
-10. **Myvm** 'de [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) 'yi yükler.
+10. **Myvm**'de [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) 'yi yükler.
 
 11. **SQL Server Management Studio** açın.
 
-12. **Sunucuya Bağlan** ' da bu bilgileri girin veya seçin:
+12. **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Sunucu türü | **Veritabanı Altyapısı** ’nı seçin.|
+    | Sunucu türü | **Veritabanı Altyapısı**’nı seçin.|
     | Sunucu adı | **\<sql-server-name> . Database.Windows.net** girin |
-    | Kimlik doğrulaması | **SQL Server Kimlik Doğrulaması** 'nı seçin. |
+    | Kimlik doğrulaması | **SQL Server Kimlik Doğrulaması**'nı seçin. |
     | Kullanıcı adı | Sunucu oluşturma sırasında girdiğiniz kullanıcı adını girin |
     | Parola | Sunucu oluşturma sırasında girdiğiniz parolayı girin |
-    | Parolayı unutmayın | **Evet** ’i seçin. |
+    | Parolayı unutmayın | **Evet**’i seçin. |
 
-13. **Bağlan** ’ı seçin.
+13. **Bağlan**’ı seçin.
 
 14. Sol menüden veritabanlarına gözatamazsınız.
 
-15. I **Mysqldatabase** 'dan bilgi oluşturun veya sorgulayın.
+15. I **Mysqldatabase**'dan bilgi oluşturun veya sorgulayın.
 
-16. **Myvm** 'e yönelik savunma bağlantısını kapatın. 
+16. **Myvm**'e yönelik savunma bağlantısını kapatın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, SQL Server ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin: 
 
 1. Portalın üst kısmındaki **arama** kutusuna **CreateSQLEndpointTutorial-RG** girin ve arama sonuçlarından **CreateSQLEndpointTutorial-RG** seçeneğini belirleyin. 
 
-2. **Kaynak grubunu sil** 'i seçin. 
+2. **Kaynak grubunu sil**'i seçin. 
 
-3. **Kaynak grubu adını yazmak** için **CreateSQLEndpointTutorial-RG** girin ve **Sil** ' i seçin.
+3. **Kaynak grubu adını yazmak** için **CreateSQLEndpointTutorial-RG** girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

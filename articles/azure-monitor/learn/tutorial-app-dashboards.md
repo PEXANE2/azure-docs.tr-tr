@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperfq1
-ms.openlocfilehash: 1a83385c7f384f7727a0fd10e238c6511950abfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31dd33bd8805ffcc677d5f0e98e81f2fa9e91ee2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612717"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537059"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights’ı kullanarak özel KPI panoları oluşturma
 
@@ -132,7 +132,7 @@ Azure Application Insights günlükleri, toplanan Application Insights tüm veri
 ## <a name="share-dashboard"></a>Panoyu paylaş
 
 1. Yaptığınız değişiklikleri yayımlamak için panonun en üstünde bulunan **paylaşma** ' yı seçin.
-2. İsteğe bağlı olarak panoya erişebilecek belirli kullanıcıları tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Role-Based Access Control kullanarak Azure panoları paylaşma](../../azure-portal/azure-portal-dashboard-share-access.md).
+2. İsteğe bağlı olarak panoya erişebilecek belirli kullanıcıları tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Azure 'un rol tabanlı erişim denetimi kullanarak Azure panoları paylaşma](../../azure-portal/azure-portal-dashboard-share-access.md).
 3. **Yayımla**’yı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

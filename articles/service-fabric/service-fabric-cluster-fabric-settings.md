@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648234"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542652"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -112,7 +112,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, varsayılan değer None|Dinamik|[0,0-1,0] aralığında yüzde veya sayı olarak boş düğüm sayısı belirterek kümeyi ele almak için gereken boş düğüm sayısını belirler >= 1,0 |
 
-## <a name="diagnostics"></a>Tanılama
+## <a name="diagnostics"></a>Tanılamalar
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
@@ -141,6 +141,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |IsEnabled|bool, varsayılan değer FALSE|Statik|DnsService 'i etkinleştirilir/devre dışı bırakır. DnsService varsayılan olarak devre dışıdır ve bu yapılandırmaya olanak tanımak için ayarlanması gerekir. |
 |PartitionPrefix|dize, varsayılan değer "--"|Statik|Bölümlenmiş hizmetler için DNS sorgularındaki bölüm öneki dize değerini denetler. Değer: <ul><li>Bir DNS sorgusunun parçası olacağı için RFC uyumlu olmalıdır.</li><li>'. ' Noktası, DNS son ek davranışı ile nokta kesintiye uğratan olarak bir nokta içermemelidir.</li><li>5 karakterden daha uzun olmamalıdır.</li><li>Boş bir dize olamaz.</li><li>PartitionPrefix ayarı geçersiz kılınırsa, PartitionSuffix geçersiz kılınmalıdır ve tam tersi de geçerlidir.</li></ul>Daha fazla bilgi için bkz [. DNS hizmeti Service Fabric.](service-fabric-dnsservice.md).|
 |PartitionSuffix|dize, varsayılan değer ""|Statik|Bölümlenmiş hizmetler için DNS sorgularında bölüm soneki dize değerini denetler. Değer: <ul><li>Bir DNS sorgusunun parçası olacağı için RFC uyumlu olmalıdır.</li><li>'. ' Noktası, DNS son ek davranışı ile nokta kesintiye uğratan olarak bir nokta içermemelidir.</li><li>5 karakterden daha uzun olmamalıdır.</li><li>PartitionPrefix ayarı geçersiz kılınırsa, PartitionSuffix geçersiz kılınmalıdır ve tam tersi de geçerlidir.</li></ul>Daha fazla bilgi için bkz [. DNS hizmeti Service Fabric.](service-fabric-dnsservice.md). |
+|Retrygeçişli Enterrors|Bool, varsayılan değer doğru|Statik|Ayar, DnsService 'ten Service Fabric API 'Leri çağırırken yeniden deneme yeteneklerini denetler. Etkinleştirildiğinde, geçici bir hata oluşursa 3 kez yeniden dener.|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -423,7 +424,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Azurestoraymagemaxconnections | Int, varsayılan değer 5000 ' dir |Dinamik|Azure depolama 'ya yönelik eşzamanlı bağlantı sayısı üst sınırı. |
 |Azurestomingemaxworkerthreads | Int, varsayılan değer 25 ' tir |Dinamik|Paralel olarak en fazla çalışan iş parçacığı sayısı. |
 |Azurestooygeoperationtimeout | Saniye cinsinden süre, varsayılan değer 6000 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. XSTORE işleminin tamamlanabilmesi için zaman aşımı. |
-|CleanupApplicationPackageOnProvisionSuccess|bool, varsayılan değer FALSE |Dinamik|Başarılı bir sağlama sırasında uygulama paketi otomatik temizlemeyi etkinleştirilir veya devre dışı bırakır.<br/> *En iyi yöntem kullanmaktır `true` .*
+|CleanupApplicationPackageOnProvisionSuccess|bool, varsayılan değer doğru |Dinamik|Başarılı bir sağlama sırasında uygulama paketi otomatik temizlemeyi etkinleştirilir veya devre dışı bırakır.
 |CleanupUnusedApplicationTypes|Bool, varsayılan değer FALSE |Dinamik|Bu yapılandırma etkinleştirilirse, kullanılmamış olan en son üç sürümü atlayarak kullanılmayan uygulama türü sürümlerinin kaydını otomatik olarak kaldırmak için izin verir. Otomatik Temizleme, bu belirli uygulama türü için başarılı sağlama sonunda tetiklenir ve ayrıca tüm uygulama türleri için günde bir kez düzenli olarak çalışır. Atlanacak kullanılmayan sürüm sayısı "MaxUnusedAppTypeVersionsToKeep" parametresi kullanılarak yapılandırılabilir. <br/> *En iyi yöntem kullanmaktır `true` .*
 |DisableChecksumValidation | Bool, varsayılan değer false |Statik| Bu yapılandırma, uygulama sağlama sırasında sağlama toplamı doğrulamasını etkinleştirmemizi veya devre dışı bırakmanızı sağlar. |
 |DisableServerSideCopy | Bool, varsayılan değer false |Statik|Bu yapılandırma, uygulama sağlama sırasında Imate uygulama paketinin sunucu tarafı kopyasını etkinleştirilir veya devre dışı bırakır. |
@@ -520,6 +521,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Oto algılayıcısı Tavailablereso,|bool, varsayılan değer doğru|Statik|Bu yapılandırma, bu yapılandırma true olarak ayarlandığında, düğüm üzerindeki kullanılabilir kaynakların otomatik olarak algılanmasını tetikler (CPU ve bellek). Kullanıcı hatalı düğüm kapasiteleri belirtse veya bu yapılandırma false olarak ayarlandıysa, kullanıcının hatalı düğüm kapasiteleri belirttiğimiz bir uyarı izliyoruz; Ancak bunlar düzeltilmeyecektir; kullanıcının, gerçekten sahip olduğu veya kapasitesi tanımsız olan > olarak belirtilen kapasiteye sahip olmasını istediği anlamına gelir; Sınırsız kapasite kabul eder |
 |BalancingDelayAfterNewNode | Saniye cinsinden süre, varsayılan değer 120 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Yeni bir düğüm ekledikten sonra bu süre içinde etkinlikleri dengelemeyi başlatma. |
 |BalancingDelayAfterNodeDown | Saniye cinsinden süre, varsayılan değer 120 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Düğüm azaltma olayından sonra bu süre içinde etkinlikleri dengelemeyi başlatmayın. |
+|BlockNodeInUpgradeConstraintPriority | Int, varsayılan değer 0 ' dır |Dinamik|Kapasite kısıtlamasının önceliğini belirler: 0: Hard; 1: geçici; negatif: yoksay  |
 |CapacityConstraintPriority | Int, varsayılan değer 0 ' dır | Dinamik|Kapasite kısıtlamasının önceliğini belirler: 0: Hard; 1: geçici; negatif: yoksay. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, varsayılan değer 20 ' dir | Dinamik|Tanılama gerçekleştirilmeden ve sistem durumu uyarıları yayınlanmadan önce, Resourcedengeleyiciden çıkarılan hareketlerin kaç kez bırakılacağını tanımlar. Negatif: Bu koşul altına hiçbir uyarı yayınlanmadı. |
 |ConstraintFixPartialDelayAfterNewNode | Saniye cinsinden süre, varsayılan değer 120 ' dir |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. Yeni bir düğüm eklendikten sonra bu süre içinde FaultDomain ve UpgradeDomain kısıtlama ihlallerini Düzelmeyin. |
@@ -585,8 +587,8 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |GracefulReplicaShutdownMaxDuration|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (120)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Sistemin kapalı durumda kalmış çoğaltmaları olan hizmet konaklarını sonlandırmadan önce bekleyeceği süre. Bu değer 0 olarak ayarlanırsa çoğaltmalar kapanmaz.|
 |NodeDeactivationMaxReplicaCloseDuration | Saniye cinsinden süre, varsayılan değer 900 ' dir |Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Düğümün devre dışı bırakılması sırasında kapanmakta olan çoğaltmaları olan hizmet konaklarını sonlandırmadan önce sistemin bekleyeceği süre. |
 |Dönemsiz Apislowtraceınterval | Saniye cinsinden süre, varsayılan değer 5 dakikadır |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. Dönemapislowtraceınterval, API izleyicisinin yavaş API çağrılarının geri yükleneceği aralığı tanımlar. |
-|ReplicaChangeRoleFailureRestartThreshold|int, varsayılan değer 10 ' dur|Dinamik| Tamsayı. Birincil yükseltme sırasında, otomatik risk azaltma eyleminden (çoğaltma yeniden başlatma) uygulanacak API hatalarının sayısını belirtin. |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, varsayılan değer 2147483647 ' dir|Dinamik| Tamsayı. Birincil yükseltme sırasında, uyarı durumu raporunun oluşturulmadan önce API hatası sayısını belirtin.|
+|ReplicaChangeRoleFailureRestartThreshold|int, varsayılan değer 10 ' dur|Dinamik| Gir. Birincil yükseltme sırasında, otomatik risk azaltma eyleminden (çoğaltma yeniden başlatma) uygulanacak API hatalarının sayısını belirtin. |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, varsayılan değer 2147483647 ' dir|Dinamik| Gir. Birincil yükseltme sırasında, uyarı durumu raporunun oluşturulmadan önce API hatası sayısını belirtin.|
 |ServiceApiHealthDuration | Saniye cinsinden süre, varsayılan değer 30 dakikadır |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. ServiceApiHealthDuration, hizmet API 'sinin sağlıksız bir şekilde raporlamamız için ne kadar süre bekleyeceğini tanımlar. |
 |ServiceReconfigurationApiHealthDuration | Saniye cinsinden süre, varsayılan değer 30 ' dur |Dinamik| Zaman aralığı değerini saniye cinsinden belirtin. ServiceReconfigurationApiHealthDuration, sağlıksız bir şekilde raporlamamız için bir hizmet API 'sinin ne kadar süre bekletireceğinizi tanımlar. Bu, kullanılabilirliği etkileyen API çağrıları için geçerlidir.|
 

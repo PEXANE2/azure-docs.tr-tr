@@ -3,18 +3,18 @@ title: Azure Izleyici Application Insights klasik kaynağını çalışma alanı
 description: Azure monitörünüzü Application Insights klasik kaynağınızı yeni çalışma alanı tabanlı modele yükseltmek için gereken adımlar hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930596"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536532"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynaklarına geçirin
 
 Bu kılavuz, klasik Application Insights kaynağını çalışma alanı tabanlı bir kaynağa geçirme sürecinde size yol gösterecektir. Çalışma alanı tabanlı kaynaklar Application Insights ve Log Analytics arasında tam tümleştirmeyi destekler. Çalışma alanı tabanlı kaynaklar, uygulama, altyapı ve platform günlüklerini tek bir birleştirilmiş konumda tutarken [Azure izleyici 'nin en son özelliklerine](#new-capabilities) erişmenize olanak sağlayan ortak bir Log Analytics çalışma alanına Application Insights telemetri gönderir.
 
-Çalışma alanı tabanlı kaynaklar, kaynaklarınızın tamamında ortak Role-Based Access Control (RBAC) sunar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
+Çalışma alanı tabanlı kaynaklar, kaynaklarınızın tamamında ortak Azure rol tabanlı erişim denetimi (Azure RBAC) sunar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
 
 **Çalışma alanı tabanlı kaynaklar şu anda tüm ticari bölgelerde ve Azure ABD kamu 'da kullanılabilir**
 
@@ -33,7 +33,7 @@ Bu kılavuz, klasik Application Insights kaynağını çalışma alanı tabanlı
 Çalışma alanı tabanlı bir kaynağa geçiş yaptığınızda, klasik kaynağınızın depolamadan yeni çalışma alanı tabanlı depolamaya veri aktarılmaz. Geçiş yapmak için seçilirse, klasik kaynak verilerinize erişimi korurken yeni verilerin bir Log Analytics çalışma alanına yazıldığı konum değiştirilir. 
 
 Klasik kaynak verileriniz devam eder ve klasik Application Insights kaynağınızın bekletme ayarlarına tabidir. Tüm yeni veri taşıma sonrası geçiş, ilişkili Log Analytics çalışma alanının [bekletme ayarlarına](../platform/manage-cost-storage.md#change-the-data-retention-period) tabi olacaktır, bu da [veri türüne göre farklı saklama ayarlarını](../platform/manage-cost-storage.md#retention-by-data-type)destekler.
-Geçiş işlemi **kalıcıdır ve**geri alınamaz. Bir kaynağı çalışma alanı tabanlı Application Insights geçirdiğinizde, her zaman çalışma alanı tabanlı bir kaynak olur. Ancak, geçiş yaptıktan sonra, hedef çalışma alanını gereken sıklıkta değiştirebilirsiniz. 
+Geçiş işlemi **kalıcıdır ve** geri alınamaz. Bir kaynağı çalışma alanı tabanlı Application Insights geçirdiğinizde, her zaman çalışma alanı tabanlı bir kaynak olur. Ancak, geçiş yaptıktan sonra, hedef çalışma alanını gereken sıklıkta değiştirebilirsiniz. 
 
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu [Log Analytics çalışma alanı üzerinden faturalandırılır](../platform/manage-cost-storage.md) . Geçiş işleminden önce klasik Application Insights kaynağına alınan veriler üzerinde 90 günden daha fazla veri bekletme seçtiyseniz, veri saklama bu Application Insights kaynağı üzerinden faturalandırılmaya devam edecektir. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
@@ -51,7 +51,7 @@ Var olan bir kaynağı geçirmeniz gerekmiyorsa ve bunun yerine yeni bir çalı�
 - Çalışma alanı tabanlı kaynaklar için sürekli dışarı aktarma desteklenmez ve devre dışı bırakılmalıdır.
 Geçiş işlemi tamamlandıktan sonra, bir depolama hesabına veya Azure Olay Hub 'ına akış olarak veri arşivlemeyi yapılandırmak için [tanılama ayarlarını](../platform/diagnostic-settings.md) kullanabilirsiniz.  
 
-- **General**  >  Log Analytics çalışma alanınız için genel**kullanım altında ve tahmini maliyet**  >  **veri saklama** ' nın altında bulunan geçerli bekletme ayarlarını denetleyin. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler. Şu anda varsayılan 90 günden daha uzun bir süre için Application Insights verileri depoluuyorsanız ve bu daha büyük saklama süresini saklamak istiyorsanız çalışma alanı bekletme ayarlarınızı ayarlamanız gerekebilir.
+- **General**  >  Log Analytics çalışma alanınız için genel **kullanım altında ve tahmini maliyet**  >  **veri saklama** ' nın altında bulunan geçerli bekletme ayarlarını denetleyin. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler. Şu anda varsayılan 90 günden daha uzun bir süre için Application Insights verileri depoluuyorsanız ve bu daha büyük saklama süresini saklamak istiyorsanız çalışma alanı bekletme ayarlarınızı ayarlamanız gerekebilir.
 
 ## <a name="migrate-your-resource"></a>Kaynağınızı geçirin
 
@@ -209,7 +209,7 @@ Application Insights kaynak bölmesinde **Özellikler**  >  **çalışma alanın
 
 **Hata iletisi:** *Seçili çalışma alanı, çalışma alanı tabanlı erişim moduyla yapılandırıldı. Bazı APM özellikleri etkilenebilir. Başka bir çalışma alanı seçin veya çalışma alanı ayarlarında kaynak tabanlı erişime izin verin. CLı kullanarak bu hatayı geçersiz kılabilirsiniz.* 
 
-Çalışma alanı tabanlı Application Insights kaynağınızın düzgün çalışması için, hedef Log Analytics çalışma alanınızın erişim denetimi modunu **kaynak veya çalışma alanı izinleri** ayarına değiştirmeniz gerekir. Bu ayar, **Özellikler**  >  **erişim denetimi modu**altında Log Analytics çalışma alanı kullanıcı arabiriminde bulunur. Ayrıntılı yönergeler için bkz. [erişim denetimi modu kılavuzunu yapılandırma Log Analytics](../platform/manage-access.md#configure-access-control-mode). Erişim denetimi modiniz özel **çalışma alanı izinleri** ayarı olarak ayarlandıysa, portal geçiş deneyimi aracılığıyla geçiş engellenmeye devam eder.
+Çalışma alanı tabanlı Application Insights kaynağınızın düzgün çalışması için, hedef Log Analytics çalışma alanınızın erişim denetimi modunu **kaynak veya çalışma alanı izinleri** ayarına değiştirmeniz gerekir. Bu ayar, **Özellikler**  >  **erişim denetimi modu** altında Log Analytics çalışma alanı kullanıcı arabiriminde bulunur. Ayrıntılı yönergeler için bkz. [erişim denetimi modu kılavuzunu yapılandırma Log Analytics](../platform/manage-access.md#configure-access-control-mode). Erişim denetimi modiniz özel **çalışma alanı izinleri** ayarı olarak ayarlandıysa, portal geçiş deneyimi aracılığıyla geçiş engellenmeye devam eder.
 
 Erişim denetimi modunu geçerli hedef çalışma alanınızın güvenlik nedenleriyle değiştirememek için, geçiş için kullanmak üzere yeni bir Log Analytics çalışma alanı oluşturmanızı öneririz. 
 
@@ -223,7 +223,7 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 
     ![Sürekli dışa aktarma menü öğesi](./media/convert-classic-resource/continuous-export.png)
 
-2. **Devre dışı bırak**seçeneğini belirleyin.
+2. **Devre dışı bırak** seçeneğini belirleyin.
 
     ![Sürekli dışarı aktarma devre dışı düğmesi](./media/convert-classic-resource/disable.png)
 
@@ -237,7 +237,7 @@ Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynakla
 
 Geçirmeden önce herhangi bir değişiklik yapmanız gerekmez, ancak bu ileti geçerli Application Insights bekletme ayarlarınızın varsayılan 90 günlük bekletme dönemine ayarlamadığında sizi uyarır. Bu uyarı iletisi, yeni verileri geçirmeden ve almadan önce Log Analytics çalışma alanınızın bekletme ayarlarını değiştirmek isteyebileceğiniz anlamına gelir. 
 
-**General**  >  Log Analytics kullanıcı arabiriminden genel**kullanım ve tahmini maliyet**  >  **veri saklama** altında Log Analytics için geçerli bekletme ayarlarınızı kontrol edebilirsiniz. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler.
+**General**  >  Log Analytics kullanıcı arabiriminden genel **kullanım ve tahmini maliyet**  >  **veri saklama** altında Log Analytics için geçerli bekletme ayarlarınızı kontrol edebilirsiniz. Bu ayar, Application Insights kaynağınızı geçirdikten sonra yeni verilerin ne kadar süreyle depolanabileceğini etkiler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

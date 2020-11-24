@@ -1,5 +1,5 @@
 ---
-title: Ağ Performansı İzleyicisi 'den bağlantı Izleyicisi 'ne (Önizleme) geçiş
+title: Ağ Performansı İzleyicisi bağlantı Izleyicisi 'ne geçir
 titleSuffix: Azure Network Watcher
 description: Ağ Performansı İzleyicisi 'den bağlantı Izleyicisine geçiş yapmayı öğrenin.
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 38ea682b4f3894f373d16908b942b4fa578741c4
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: cd0d4c2dc550beef1b5fceb373a4cb96ed75a172
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985816"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544505"
 ---
-# <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>Ağ Performansı İzleyicisi 'den bağlantı Izleyicisi 'ne (Önizleme) geçiş
+# <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Ağ Performansı İzleyicisi bağlantı Izleyicisi 'ne geçir
 
 Ağ Performansı İzleyicisi (NPM) ' den yeni, iyileştirilmiş bağlantı Izleyicisine, tek tıklamayla ve sıfır kapalı kalma süresine sahip testleri geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için bkz. [Bağlantı İzleyicisi](./connection-monitor-overview.md).
 
-> [!IMPORTANT]
-> Bağlantı Izleyicisi Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
 > Yalnızca hizmet bağlantı Izleyicisi 'ndeki testler bağlantı Izleyicisine geçirilebilir.

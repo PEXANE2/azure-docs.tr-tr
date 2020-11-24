@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 5c9d7faebe7fefdddbf194e3a9ad36b4644115e0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8ca670049b49500e6b6310bca25cb78ded31a294
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746455"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537858"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure depolama 'da statik bir Web sitesi barındırma
 
@@ -38,15 +38,15 @@ Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bi
 
 4. Depolama hesabı için statik Web sitesi barındırmayı etkinleştirmek üzere **etkin** ' i seçin.
 
-5. **Dizin belgesi adı** alanında, bir varsayılan dizin sayfası (örneğin: *index.html* ) belirtin. 
+5. **Dizin belgesi adı** alanında, bir varsayılan dizin sayfası (örneğin: *index.html*) belirtin. 
 
    Varsayılan dizin sayfası, bir Kullanıcı statik Web sitenizin köküne gittiğinde görüntülenir.  
 
-6. **Hata belgesi yolu** alanında, varsayılan bir hata sayfası (örneğin: *404.html* ) belirtin. 
+6. **Hata belgesi yolu** alanında, varsayılan bir hata sayfası (örneğin: *404.html*) belirtin. 
 
    Varsayılan hata sayfası, bir Kullanıcı statik Web sitenizde mevcut olmayan bir sayfaya gitmeye çalıştığında görüntülenir.
 
-7. **Kaydet** ’e tıklayın. Azure portal artık statik Web sitesi uç noktanızı görüntülüyor. 
+7. **Kaydet**’e tıklayın. Azure portal artık statik Web sitesi uç noktanızı görüntülüyor. 
 
     ![Depolama hesabı için statik Web sitesi barındırmayı etkinleştirme](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -54,9 +54,9 @@ Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bi
 
 <a id="cli"></a>
 
-[Azure Command-Line arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak statik Web sitesi barındırmayı etkinleştirebilirsiniz.
+[Azure Command-Line arabirimi 'ni (CLI)](/cli/azure/?view=azure-cli-latest)kullanarak statik Web sitesi barındırmayı etkinleştirebilirsiniz.
 
-1. İlk olarak, [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , Windows PowerShell gibi bir komut konsol uygulaması açın.
+1. İlk olarak, [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](/cli/azure/install-azure-cli?view=azure-cli-latest) , Windows PowerShell gibi bir komut konsol uygulaması açın.
 
 2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi statik Web sitenizi barındıracak depolama hesabının aboneliğine ayarlayın.
 
@@ -136,7 +136,7 @@ Azure PowerShell modülünü kullanarak statik Web sitesi barındırmayı etkinl
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Bu yönergeler, Azure portal görüntülenen Depolama Gezgini sürümünü kullanarak dosyaları karşıya yükleme işleminin nasıl yapılacağını gösterir. Ancak, Azure portal dışında çalışan [Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) sürümünü de kullanabilirsiniz. Hesabınızın **$Web** kapsayıcısına dosya yükleyebileceğiniz [AzCopy](../common/storage-use-azcopy-v10.md), PowerShell, CLI veya herhangi bir özel uygulama kullanabilirsiniz. Visual Studio Code kullanarak dosyaları karşıya yükleyen adım adım bir öğretici için bkz. [öğretici: blob depolamada statik bir Web sitesi barındırma](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+Bu yönergeler, Azure portal görüntülenen Depolama Gezgini sürümünü kullanarak dosyaları karşıya yükleme işleminin nasıl yapılacağını gösterir. Ancak, Azure portal dışında çalışan [Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) sürümünü de kullanabilirsiniz. Hesabınızın **$Web** kapsayıcısına dosya yükleyebileceğiniz [AzCopy](../common/storage-use-azcopy-v10.md), PowerShell, CLI veya herhangi bir özel uygulama kullanabilirsiniz. Visual Studio Code kullanarak dosyaları karşıya yükleyen adım adım bir öğretici için bkz. [öğretici: blob depolamada statik bir Web sitesi barındırma](./storage-blob-static-website-host.md).
 
 1. **Depolama Gezgini (önizleme)** öğesini seçin.
 
@@ -151,7 +151,7 @@ Bu yönergeler, Azure portal görüntülenen Depolama Gezgini sürümünü kulla
    ![İçerik türlerini denetle](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > Depolama Gezgini, bu özelliği, gibi `text/html` yaygın olarak tanınan uzantılar için otomatik olarak ayarlar `.html` . Ancak, bazı durumlarda bunu kendiniz ayarlamanız gerekecektir. Bu özelliği ' ye ayarlamazsanız tarayıcı, `text/html` kullanıcılardan içeriği işlemek yerine dosyayı indirmesini ister. Bu özelliği ayarlamak için, dosyaya sağ tıklayın ve ardından **Özellikler** ' e tıklayın.
+   > Depolama Gezgini, bu özelliği, gibi `text/html` yaygın olarak tanınan uzantılar için otomatik olarak ayarlar `.html` . Ancak, bazı durumlarda bunu kendiniz ayarlamanız gerekecektir. Bu özelliği ' ye ayarlamazsanız tarayıcı, `text/html` kullanıcılardan içeriği işlemek yerine dosyayı indirmesini ister. Bu özelliği ayarlamak için, dosyaya sağ tıklayın ve ardından **Özellikler**' e tıklayın.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -173,7 +173,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 > [!NOTE]
 > Azure CLı 'nin konum yüklemesini kullanıyorsanız, yerel bilgisayarınızdaki herhangi bir konumun yolunu kullanabilirsiniz (örneğin: `C:\myFolder` .
 >
-> Azure Cloud Shell kullanıyorsanız, Cloud Shell görünür bir dosya paylaşımıyla başvurulmalıdır. Bu konum, bulut paylaşımının kendisi veya Cloud Shell oluşturduğunuz var olan bir dosya paylaşımının dosya paylaşımıdır. Bunu nasıl yapacağınızı öğrenmek için bkz. [Azure Cloud Shell dosyaları kalıcı hale](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)getirme.
+> Azure Cloud Shell kullanıyorsanız, Cloud Shell görünür bir dosya paylaşımıyla başvurulmalıdır. Bu konum, bulut paylaşımının kendisi veya Cloud Shell oluşturduğunuz var olan bir dosya paylaşımının dosya paylaşımıdır. Bunu nasıl yapacağınızı öğrenmek için bkz. [Azure Cloud Shell dosyaları kalıcı hale](../../cloud-shell/persisting-shell-storage.md)getirme.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -204,7 +204,7 @@ Sitenizin sayfalarını bir tarayıcıdan, Web sitesinin genel URL 'sini kullana
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen bölmede, **statik Web sitesi** ' ni seçin. Sitenizin URL 'SI **birincil uç nokta** alanında görüntülenir.
+Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen bölmede, **statik Web sitesi**' ni seçin. Sitenizin URL 'SI **birincil uç nokta** alanında görüntülenir.
 
 ![Azure depolama statik Web siteleri ölçümleri ölçümü](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
@@ -249,7 +249,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
    > [!NOTE]
    > Ölçüm verileri farklı ölçüm API 'Lerine bağlanarak oluşturulur. Portal yalnızca verileri döndüren üyelere odaklanmak için yalnızca belirli bir zaman çerçevesinde kullanılan API üyelerini görüntüler. Gerekli API üyesini seçebildiğinizden emin olmak için ilk adım zaman çerçevesini genişletmelidir.
 
-2. Zaman çerçevesi düğmesine tıklayın, bir zaman dilimi seçin ve ardından **Uygula** ' ya tıklayın.
+2. Zaman çerçevesi düğmesine tıklayın, bir zaman dilimi seçin ve ardından **Uygula**' ya tıklayın.
 
    ![Azure depolama statik Web siteleri ölçümleri zaman aralığı](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -279,4 +279,3 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Statik Web siteniz ile özel bir etki alanı yapılandırmayı öğrenin. Bkz. [özel bir etki alanını Azure Blob depolama uç noktası Ile eşleme](storage-custom-domain-name.md).
-

@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726450"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544658"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Hızlı Başlangıç: Go kullanarak blobları yükleme, indirme ve listeleme
 
@@ -108,7 +108,7 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 ContainerURL'niz olduğunda, bir bloba işaret eden **BlobURL** nesnesini başlatabilir ve karşıya yükleme, indirme ve kopyalama gibi işlemler yapabilirsiniz.
 
 > [!IMPORTANT]
-> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 Bu bölümde, yeni bir kapsayıcı oluşturursunuz. Bu, **quickstartblobs-[random string]** adlı kapsayıcıdır. 
 
@@ -149,9 +149,9 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 
 Bloba dosya yüklemek için, **os.Open** kullanarak dosyayı açın. Ardından, dosyayı belirtilen yola yüklemek için REST API'lerden birini kullanabilirsiniz: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
-Alternatif olarak, SDK alt düzey REST API'lerinin üstüne yapılandırılmış [üst düzey API'ler](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) sağlar. Örnek vermek gerekirse, ***UploadFileToBlockBlob*** işlevi, aktarım hızını iyileştirmek için StageBlock (PutBlock) işlemlerini kullanarak bir dosyayı öbekler halinde eşzamanlı olarak karşıya yükler. Dosya 256 MB'den küçükse, aktarımı tek işlemde tamamlamak için onun yerine Upload (PutBlob) kullanır.
+Alternatif olarak, SDK alt düzey REST API'lerinin üstüne yapılandırılmış [üst düzey API'ler](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) sağlar. Örnek olarak, **_Uploadfiletoblockblob_* _ işlevi, aktarım hızını iyileştirmek için bir dosyayı aynı anda parçalara yüklemek üzere stageblock (putblock) işlemlerini kullanır. Dosya 256 MB'den küçükse, aktarımı tek işlemde tamamlamak için onun yerine Upload (PutBlob) kullanır.
 
-Aşağıdaki örnek, dosyayı **quickstartblobs-[randomstring]** adlı kapsayıcınıza yükler.
+Aşağıdaki örnek, dosyayı _ * quickstartblobları-[randomstring] * * adlı kapsayıcıya yükler.
 
 ```go
 // Create a file to test the upload and download.

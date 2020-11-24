@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a5d685e49d941d7b6febbc220cdbfbcb631c4496
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 17e01844463b6d18bd7d2c3b56ee86d938682b8e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746372"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536328"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -149,6 +149,10 @@ Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir.
 Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
 ### <a name="secure-webhook"></a>Güvenli Web Kancası
+
+> [!NOTE]
+> Web kancası eyleminin kullanılması için hedef Web kancası uç noktasının, uyarının ayrıntılarının başarıyla çalışması gerekmez veya POST işleminin bir parçası olarak sağlanmış olan uyarı bağlamı bilgilerini ayrıştırmaktan emin olmanız gerekir. Web kancası uç noktası, uyarı bağlamı bilgilerini kendi kendine işleyemez, Web kancasının beklenen veri biçimiyle eşleşecek şekilde uyarı bağlamı bilgilerini özel bir şekilde işlemek için bir [mantıksal uygulama eylemi](./action-groups-logic-app.md) gibi bir çözüm kullanabilirsiniz.
+
 Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../../active-directory/develop/v2-overview.md).
 
 1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. [korumalı Web API 'si: uygulama kaydı](../../active-directory/develop/scenario-protected-web-api-app-registration.md).
@@ -259,6 +263,10 @@ Bir eylem grubunda sınırlı sayıda ses eylemi olabilir.
 Desteklenen ülkeler/bölgeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir.
 
 ### <a name="webhook"></a>Web Kancası
+
+> [!NOTE]
+> Web kancası eyleminin kullanılması için hedef Web kancası uç noktasının, uyarının ayrıntılarının başarıyla çalışması gerekmez veya POST işleminin bir parçası olarak sağlanmış olan uyarı bağlamı bilgilerini ayrıştırmaktan emin olmanız gerekir. Web kancası uç noktası, uyarı bağlamı bilgilerini kendi kendine işleyemez, Web kancasının beklenen veri biçimiyle eşleşecek şekilde uyarı bağlamı bilgilerini özel bir şekilde işlemek için bir [mantıksal uygulama eylemi](./action-groups-logic-app.md) gibi bir çözüm kullanabilirsiniz.
+
 Web kancaları aşağıdaki kurallar kullanılarak işlenir
 - Bir Web kancası çağrısı en fazla 3 kez denendi.
 - Zaman aşımı süresi içinde bir yanıt alınmadığında veya aşağıdaki HTTP durum kodlarından biri döndürülürse, çağrı yeniden denenir: 408, 429, 503 veya 504.

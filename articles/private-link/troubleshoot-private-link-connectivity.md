@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539476"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544318"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Özel Bağlantı hizmeti bağlantı sorunlarını giderme
 
@@ -37,7 +37,7 @@ Azure özel bağlantısı ile Azure depolama, Azure Cosmos DB ve Azure SQL verit
 
 ## <a name="deployment-troubleshooting"></a>Dağıtım sorunlarını giderme
 
-Özel bağlantı hizmetiniz için tercih ettiğiniz alt ağdan kaynak IP adresini seçmemekte olduğunuz, sorun giderme durumları için [özel bağlantı hizmetinde ağ Ilkelerini devre dışı bırakma](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) hakkındaki bilgileri gözden geçirin.
+Özel bağlantı hizmetiniz için tercih ettiğiniz alt ağdan kaynak IP adresini seçmemekte olduğunuz, sorun giderme durumları için [özel bağlantı hizmetinde ağ Ilkelerini devre dışı bırakma](./disable-private-link-service-network-policy.md) hakkındaki bilgileri gözden geçirin.
 
 Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicies** ayarının devre dışı bırakıldığından emin olun.
 
@@ -47,7 +47,7 @@ Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicie
 
 1. Kaynağa göz atarak özel bağlantı yapılandırmasını gözden geçirin.
 
-    a. **Özel bağlantı merkezine**gidin.
+    a. **Özel bağlantı merkezine** gidin.
 
       ![Özel bağlantı merkezi](./media/private-link-tsg/private-link-center.png)
 
@@ -59,11 +59,11 @@ Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicie
 
     d. Özel uç nokta bağlantılarını gözden geçirin.
      - Bağlantı Aradığınız özel uç noktanın **onaylanmış** bir bağlantı durumuyla listelendiğinden emin olun.
-     - Durum **Beklemede**ise, seçin ve onaylayın.
+     - Durum **Beklemede** ise, seçin ve onaylayın.
 
        ![Özel uç nokta bağlantıları](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - Adı seçerek bağlanmakta olduğunuz özel uç noktaya gidin. Bağlantı durumunun **Onaylandı**olarak göründüğünden emin olun.
+     - Adı seçerek bağlanmakta olduğunuz özel uç noktaya gidin. Bağlantı durumunun **Onaylandı** olarak göründüğünden emin olun.
 
        ![Özel uç nokta bağlantısına genel bakış](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
@@ -87,9 +87,9 @@ Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicie
        ![Yük dengeleyici bilgilerini doğrulama](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
      - Yük dengeleyici ayarlarının beklentileriniz uyarınca yapılandırıldığından emin olun.
-       - **Ön uç IP yapılandırmasını**gözden geçirin.
-       - **Arka uç havuzlarını**inceleyin.
-       - **Yük Dengeleme kurallarını**gözden geçirin.
+       - **Ön uç IP yapılandırmasını** gözden geçirin.
+       - **Arka uç havuzlarını** inceleyin.
+       - **Yük Dengeleme kurallarını** gözden geçirin.
 
        ![Yük dengeleyici özelliklerini doğrulama](./media/private-link-tsg/pls-ilb-properties.png)
 
@@ -99,10 +99,10 @@ Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicie
        - Bağlantı, Yük Dengeleme kurallarına göre onu arka uç havuzuna yapıyorsa, yük dengeleyici çalışır.
        - Ayrıca, yük dengeleyici aracılığıyla verilerin akan olup olmadığını görmek için Azure Izleyici aracılığıyla yük dengeleyici ölçümünü gözden geçirebilirsiniz.
 
-1. Verilerin akan olup olmadığını görmek için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) 'yi kullanın.
+1. Verilerin akan olup olmadığını görmek için [Azure izleyici](../azure-monitor/overview.md) 'yi kullanın.
 
     a. Özel bağlantı hizmeti kaynağında **ölçümler**' i seçin.
-     - **Bayt cinsinden** veya **giden**baytları seçin.
+     - **Bayt cinsinden** veya **giden** baytları seçin.
      - Özel bağlantı hizmetine bağlanmaya çalıştığınızda verilerin akışa alındığını görün. Yaklaşık 10 dakikalık bir gecikme süresi bekler.
 
        ![Özel bağlantı hizmeti ölçümlerini doğrulama](./media/private-link-tsg/pls-metrics.png)
@@ -111,5 +111,5 @@ Kaynak IP adresini seçtiğiniz alt ağ için **Privatelinkservicenetworkpolicie
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- * [Özel bağlantı hizmeti (CLı) oluşturma](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
+ * [Özel bağlantı hizmeti (CLı) oluşturma](./create-private-link-service-cli.md)
  * [Azure özel uç nokta sorun giderme kılavuzu](troubleshoot-private-endpoint-connectivity.md)

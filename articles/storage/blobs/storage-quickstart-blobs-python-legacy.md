@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: a01b6e644ce3afda451d94d3e00eda278a645adf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34205caf03d2f2d7255f75ea6203c5572c4c429b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87851333"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523316"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme
 
@@ -137,7 +137,7 @@ block_blob_service.set_container_acl(
 Bulut Blobu kapsayıcınız olduktan sonra, ilgilendiğiniz bloba işaret eden **CloudBlockBlob** nesnesinin örneğini oluşturun. Ardından blobu gerektiği gibi karşıya yükleyebilir, indirebilir ve kopyalayabilirsiniz.
 
 > [!IMPORTANT]
-> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcı ve BLOB adları hakkında daha fazla bilgi için bkz. [kapsayıcıları, Blobları ve meta verileri adlandırma ve başvuru](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcı ve BLOB adları hakkında daha fazla bilgi için bkz. [kapsayıcıları, Blobları ve meta verileri adlandırma ve başvuru](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ### <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
 
@@ -145,7 +145,7 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 
 Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola `create_blob_from_path` yöntemiyle yükleyebilirsiniz. 
 
-Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak sistem karşıya yükleme ve blob adı *local_file_name*olarak depolar. Bu örnek, dosyayı adlı kapsayıcıya yükler `quickstartblobs` :
+Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak sistem karşıya yükleme ve blob adı *local_file_name* olarak depolar. Bu örnek, dosyayı adlı kapsayıcıya yükler `quickstartblobs` :
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -216,7 +216,7 @@ BLOB depolama ile Python geliştirme hakkında daha fazla bilgi için şu ek kay
 
 ### <a name="client-library-reference-and-samples"></a>İstemci kitaplığı başvurusu ve örnekleri
 
-- Python istemci kitaplığı hakkında daha fazla bilgi için bkz. [Python Için Azure depolama kitaplıkları](https://docs.microsoft.com/python/api/overview/azure/storage).
+- Python istemci kitaplığı hakkında daha fazla bilgi için bkz. [Python Için Azure depolama kitaplıkları](/python/api/overview/azure/storage).
 - Python istemci kitaplığı kullanılarak yazılmış [Blob depolama örneklerini](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) araştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

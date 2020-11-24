@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698079"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533285"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -237,47 +237,28 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 Normal Gen1 düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--aks-custom-headers` .
 
 
-## <a name="ephemeral-os-preview"></a>Kısa ömürlü işletim sistemi (Önizleme)
+## <a name="ephemeral-os"></a>Kısa ömürlü işletim sistemi
 
-Varsayılan olarak, bir Azure sanal makinesi için işletim sistemi diski, sanal makinenin başka bir konağa yeniden konumlandırılması gereken veri kaybını önlemek için Azure depolama 'ya otomatik olarak çoğaltılır. Ancak, kapsayıcılar yerel durumunun kalıcı olmasını sağlayacak şekilde tasarlanmadığından, bu davranış, daha yavaş düğüm sağlama ve daha yüksek okuma/yazma gecikme süresi dahil olmak üzere bazı dezavantajları sağlarken sınırlı bir değer sunar.
+Varsayılan olarak, Azure bir sanal makinenin işletim sistemi diskini otomatik olarak Azure depolama 'ya çoğaltarak veri kaybını önlemek için VM 'nin başka bir konağa yeniden konumlandırılması gerekir. Ancak, kapsayıcılar yerel durumunun kalıcı olmasını sağlayacak şekilde tasarlanmadığından, bu davranış, daha yavaş düğüm sağlama ve daha yüksek okuma/yazma gecikme süresi dahil olmak üzere bazı dezavantajları sağlarken sınırlı bir değer sunar.
 
 Bunun aksine, kısa ömürlü işletim sistemi diskleri yalnızca, geçici bir disk gibi yalnızca ana makine üzerinde depolanır. Bu, daha hızlı okuma/yazma gecikmesi sağlar ve daha hızlı düğüm ölçekleme ve küme yükseltmeleriyle birlikte.
 
 Geçici disk gibi, daha kısa bir işletim sistemi diski sanal makinenin fiyatına dahildir, bu nedenle ek depolama ücreti ödemeniz gerekmez.
 
-Özelliği kaydedin `EnableEphemeralOSDiskPreview` :
+> [!IMPORTANT]
+>Bir kullanıcı işletim sistemi için açıkça yönetilen diskler istemediğinde, belirli bir nodepool yapılandırması için mümkünse AKS varsayılan olarak geçici işletim sistemi olarak çalışır.
 
-```azurecli
-az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
-```
+Kısa ömürlü IŞLETIM sistemi kullanılırken, işletim sistemi diski VM önbelleğine sığacak olmalıdır. VM önbelleğinin boyutları, GÇ üretilen iş ("GiB 'de önbellek boyutu") yanındaki parantez içinde [Azure belgelerinde](../virtual-machines/dv3-dsv3-series.md) kullanılabilir.
 
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Örnek olarak, varsayılan işletim sistemi disk boyutu olan 100 GB 'lık varsayılan VM boyutunu Standard_DS2_v2 kullanmak, bu VM boyutu, kısa ömürlü işletim sistemi destekler ancak yalnızca 86GB önbellek boyutuna sahiptir. Kullanıcı açıkça belirtilmemişse, bu yapılandırma varsayılan olarak yönetilen diskler olarak belirtilebilir. Bir kullanıcı açık olarak geçici bir işletim sistemi isteğinde bulunursa, doğrulama hatası alırlar.
 
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
-```
+Bir Kullanıcı, 60GB işletim sistemi diski ile aynı Standard_DS2_v2 isterse, bu yapılandırma varsayılan olarak kısa ömürlü işletim sistemi: 60 GB istenen boyutu, 86GB 'ın en yüksek önbellek boyutundan daha küçüktür.
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+100 GB işletim sistemi diski olan Standard_D8s_v3 kullanarak, bu VM boyutu, kısa ömürlü işletim sistemi destekler ve 200 GB önbellek alanı içerir. Bir kullanıcı işletim sistemi disk türünü belirtmezse, nodepool varsayılan olarak kısa ömürlü işletim sistemi alır. 
 
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
+Kısa ömürlü işletim sistemi, Azure CLı 'nin en az sürüm 2.15.0 gerektirir.
 
-Kısa ömürlü işletim sistemi, aks-Preview CLı uzantısının en az sürüm 0.4.63 gerektirir.
-
-Aks-Preview CLı uzantısını yüklemek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-Aks-Preview CLı uzantısını güncelleştirmek için aşağıdaki Azure CLı komutlarını kullanın:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Yeni kümelerde kısa ömürlü işletim sistemi kullan (Önizleme)
+### <a name="use-ephemeral-os-on-new-clusters"></a>Yeni kümelerde kısa ömürlü işletim sistemi kullan
 
 Kümeyi, küme oluşturulduğunda kısa ömürlü işletim sistemi disklerini kullanacak şekilde yapılandırın. `--node-osdisk-type`Yeni küme için işletim sistemi disk türü olarak kısa ömürlü işletim sistemi ayarlamak için bayrağını kullanın.
 
@@ -285,9 +266,9 @@ Kümeyi, küme oluşturulduğunda kısa ömürlü işletim sistemi disklerini ku
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Ağa bağlı işletim sistemi disklerini kullanarak düzenli bir küme oluşturmak istiyorsanız, özel `--node-osdisk-type` etiketi atlayarak veya belirterek bunu yapabilirsiniz `--node-osdisk-type=Managed` . Ayrıca, aşağıdaki şekilde daha kısa ömürlü işletim sistemi düğüm havuzları eklemeyi de seçebilirsiniz.
+Ağa bağlı işletim sistemi disklerini kullanarak düzenli bir küme oluşturmak isterseniz, bunu belirterek yapabilirsiniz `--node-osdisk-type=Managed` . Ayrıca, aşağıdaki şekilde daha kısa ömürlü işletim sistemi düğüm havuzları eklemeyi de seçebilirsiniz.
 
-### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Mevcut kümelerde kısa ömürlü işletim sistemi kullan (Önizleme)
+### <a name="use-ephemeral-os-on-existing-clusters"></a>Mevcut kümelerde kısa ömürlü işletim sistemi kullan
 Kısa ömürlü işletim sistemi disklerini kullanmak için yeni bir düğüm havuzu yapılandırın. `--node-osdisk-type`Bu düğüm havuzu için işletim sistemi disk türü olarak işletim sistemi disk türü olarak ayarlamak için bayrağını kullanın.
 
 ```azurecli
@@ -297,7 +278,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 > [!IMPORTANT]
 > Kısa ömürlü IŞLETIM sistemiyle VM ve örnek görüntülerini VM önbelleğinin boyutuna dağıtabilirsiniz. AKS durumunda, varsayılan işletim sistemi disk yapılandırması 100GiB kullanır, bu da 100 GiB 'den büyük bir önbelleğe sahip bir VM boyutuna ihtiyacınız olduğu anlamına gelir. Varsayılan Standard_DS2_v2, 86 GiB önbellek boyutuna sahiptir ve bu değer yeterince büyük değildir. Standard_DS3_v2, yeterince büyük olan 172 GiB önbellek boyutuna sahiptir. Ayrıca, kullanarak işletim sistemi diskinin varsayılan boyutunu azaltabilirsiniz `--node-osdisk-size` . AKS görüntülerinin en küçük boyutu 30GiB ' dir. 
 
-Ağa bağlı işletim sistemi diskleri ile düğüm havuzları oluşturmak istiyorsanız, özel etiketi atlayarak bunu yapabilirsiniz `--node-osdisk-type` .
+Ağ bağlantılı işletim sistemi diskleri ile düğüm havuzları oluşturmak istiyorsanız, belirterek bunu yapabilirsiniz `--node-osdisk-type Managed` .
 
 ## <a name="custom-resource-group-name"></a>Özel kaynak grubu adı
 

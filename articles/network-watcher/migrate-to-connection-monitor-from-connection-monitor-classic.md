@@ -1,5 +1,5 @@
 ---
-title: Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne (Önizleme) geçiş
+title: Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne geçiş
 titleSuffix: Azure Network Watcher
 description: Bağlantı İzleyicisi 'nden bağlantı Izleyicisi 'ne geçiş yapmayı öğrenin.
 services: network-watcher
@@ -10,22 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985799"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522966"
 ---
-# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>Bağlantı Izleyicisi 'nden bağlantı Izleyicisi 'ne (Önizleme) geçiş (klasik)
+# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Bağlantı izleyiciden bağlantı Izleyicisine geçiş (klasik)
 
-Var olan bağlantı izleyicilerini yalnızca birkaç tıklamayla ve sıfır kapalı kalma süresiyle yeni, geliştirilmiş bağlantı Izleyicisine (Önizleme) geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için bkz. [Bağlantı İzleyicisi](./connection-monitor-overview.md).
-
-> [!IMPORTANT]
-> Bağlantı Izleyicisi Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Mevcut bağlantı izleyicilerini yeni, geliştirilmiş bağlantı Izleyicilerine yalnızca birkaç tıklamayla ve sıfır kapalı kalma süresiyle geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için bkz. [Bağlantı İzleyicisi](./connection-monitor-overview.md).
 
 ## <a name="key-points-to-note"></a>Önemli noktaları göz önünde
 
@@ -33,7 +29,7 @@ Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
 
 * Aracılar ve güvenlik duvarı ayarları olduğu gibi çalışır. Değişiklik gerekmiyor. 
 * Mevcut bağlantı izleyicileri > test grubu > test biçiminde bağlantı Izleyicisine eşlenir. **Düzenle**' yi seçerek, yeni bağlantı izleyicisinin özelliklerini görüntüleyip değiştirebilir, bağlantı izleyicisinde değişiklik yapmak için bir şablon indirebilir ve Azure Resource Manager aracılığıyla gönderebilirsiniz. 
-* Ağ Izleyicisi uzantısına sahip Azure sanal makineleri, hem çalışma alanına hem de ölçümlere veri gönderir. Bağlantı Izleyicisi, verileri eski ölçümler (ProbesFailedPercent ve AverageRoundtripMs) yerine yeni ölçümler (ChecksFailedPercent [Preview] ve Roundroundtimems [Preview]) üzerinden kullanılabilir hale getirir. 
+* Ağ Izleyicisi uzantısına sahip Azure sanal makineleri, hem çalışma alanına hem de ölçümlere veri gönderir. Bağlantı Izleyicisi, verileri eski ölçümler (ProbesFailedPercent ve AverageRoundtripMs) yerine yeni ölçümler (ChecksFailedPercent ve Roundüçlü MS) üzerinden kullanılabilir hale getirir. 
 * Veri izleme:
    * **Uyarılar**: otomatik olarak yeni ölçümlere geçirilir.
    * **Panolar ve tümleştirmeler**: ölçüm kümesinin el ile düzenlenmesine gerek vardır. 

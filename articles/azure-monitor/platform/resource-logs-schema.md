@@ -4,12 +4,12 @@ description: Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şem
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 791f95dc75c55c7a5c7c26d0719e186245713fba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2a66f90043e0f544dd86d2ab1245a3d8cbaff3d5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543419"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534577"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure Kaynak günlükleri için ortak ve hizmete özgü şema
 
@@ -23,24 +23,24 @@ Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `catego
 
 ## <a name="top-level-common-schema"></a>Üst düzey ortak şema
 
-| Name | Gerekli/İsteğe Bağlı | Açıklama |
+| Name | Gerekli/İsteğe Bağlı | Description |
 |---|---|---|
 | time | Gerekli | Olayın zaman damgası (UTC). |
 | resourceId | Gerekli | Olayı veren kaynağın kaynak KIMLIĞI. Kiracı Hizmetleri için bu,/Tenants/Tenant-id/Providers/Provider-nameformundadır. |
 | Değerine | Kiracı günlükleri için gereklidir | Bu olayın bağlı olduğu Active Directory kiracının kiracı KIMLIĞI. Bu özellik yalnızca kiracı düzeyindeki Günlükler için kullanılır, kaynak düzeyinde günlüklerde görünmez. |
-| operationName | Gerekli | Bu olayla temsil edilen işlemin adı. Olay bir RBAC işlemini gösteriyorsa, bu RBAC işlem adıdır (örneğin, Microsoft. Storage/storageAccounts/blobServices/blob/Read). Genellikle Kaynak Yöneticisi bir işlem biçiminde modellenmiştir, bunlar gerçek belgelenmiş Kaynak Yöneticisi işlemleri () olmasalar bile `Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>` |
-| operationVersion | İsteğe bağlı | OperationName bir API kullanılarak gerçekleştirildiyse (örneğin,), işlemle ilişkili api sürümü `http://myservice.windowsazure.net/object?api-version=2016-06-01` . Bu işleme karşılık gelen bir API yoksa, sürüm, gelecekte işlemle ilişkili özellikler, bu işlemin sürümünü temsil eder. |
+| operationName | Gerekli | Bu olayla temsil edilen işlemin adı. Olay bir Azure RBAC işlemini gösteriyorsa, bu Azure RBAC işlem adıdır (örneğin, Microsoft. Storage/storageAccounts/blobServices/blob/Read). Genellikle Kaynak Yöneticisi bir işlem biçiminde modellenmiştir, bunlar gerçek belgelenmiş Kaynak Yöneticisi işlemleri () olmasalar bile `Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>` |
+| operationVersion | İsteğe Bağlı | OperationName bir API kullanılarak gerçekleştirildiyse (örneğin,), işlemle ilişkili api sürümü `http://myservice.windowsazure.net/object?api-version=2016-06-01` . Bu işleme karşılık gelen bir API yoksa, sürüm, gelecekte işlemle ilişkili özellikler, bu işlemin sürümünü temsil eder. |
 | category | Gerekli | Etkinliğin günlük kategorisi. Kategori, belirli bir kaynaktaki günlükleri etkinleştirebilmeniz veya devre dışı bırakabilmeniz için gereken ayrıntı düzeyi. Bir olayın Özellikler blobu içinde görünen özellikler, belirli bir günlük kategorisi ve kaynak türü içinde aynıdır. Tipik günlük kategorileri "Audit" "Işletimsel" "yürütme" ve "Istek" dir. |
-| resultType | İsteğe bağlı | Etkinliğin durumu. Tipik değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
-| resultSignature | İsteğe bağlı | Etkinliğin alt durumu. Bu işlem bir REST API çağrısına karşılık geliyorsa, bu alan karşılık gelen REST çağrısının HTTP durum kodudur. |
-| resultDescription | İsteğe bağlı | Bu işlemin statik metin açıklaması (örneğin, "depolama dosyası Al"). |
-| durationMs | İsteğe bağlı | İşlem süresi (milisaniye cinsinden). |
-| callerIpAddress | İsteğe bağlı | İşlem, genel olarak kullanılabilir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
-| correlationId | İsteğe bağlı | Bir dizi ilgili olayı gruplamak için kullanılan GUID. Genellikle, iki olay aynı operationName öğesine, ancak iki farklı durum (örneğin, "başlatılmış" ve "başarılı") varsa, aynı bağıntı KIMLIĞINI paylaşır. Bu, olaylar arasındaki diğer ilişkileri de temsil edebilir. |
-| identity | İsteğe bağlı | İşlemi gerçekleştiren kullanıcının veya uygulamanın kimliğini açıklayan bir JSON blobu. Bu alan genellikle Active Directory 'den yetkilendirme ve talepler/JWT belirtecini içerir. |
-| Düzey | İsteğe bağlı | Etkinliğin önem düzeyi. Bilgilendirici, uyarı, hata veya kritik bir olmalıdır. |
-| location | İsteğe bağlı | Olayı yayan kaynak bölgesi, örneğin "Doğu ABD" veya "Fransa Güney" |
-| properties | İsteğe bağlı | Bu belirli olay kategorisiyle ilgili genişletilmiş özellikler. Tüm özel/benzersiz özellikler şemanın "Bölüm B" içinde yerleştirilmelidir. |
+| resultType | İsteğe Bağlı | Etkinliğin durumu. Tipik değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
+| resultSignature | İsteğe Bağlı | Etkinliğin alt durumu. Bu işlem bir REST API çağrısına karşılık geliyorsa, bu alan karşılık gelen REST çağrısının HTTP durum kodudur. |
+| resultDescription | İsteğe Bağlı | Bu işlemin statik metin açıklaması (örneğin, "depolama dosyası Al"). |
+| durationMs | İsteğe Bağlı | İşlem süresi (milisaniye cinsinden). |
+| callerIpAddress | İsteğe Bağlı | İşlem, genel olarak kullanılabilir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
+| correlationId | İsteğe Bağlı | Bir dizi ilgili olayı gruplamak için kullanılan GUID. Genellikle, iki olay aynı operationName öğesine, ancak iki farklı durum (örneğin, "başlatılmış" ve "başarılı") varsa, aynı bağıntı KIMLIĞINI paylaşır. Bu, olaylar arasındaki diğer ilişkileri de temsil edebilir. |
+| identity | İsteğe Bağlı | İşlemi gerçekleştiren kullanıcının veya uygulamanın kimliğini açıklayan bir JSON blobu. Bu alan genellikle Active Directory 'den yetkilendirme ve talepler/JWT belirtecini içerir. |
+| Düzey | İsteğe Bağlı | Etkinliğin önem düzeyi. Bilgilendirici, uyarı, hata veya kritik bir olmalıdır. |
+| location | İsteğe Bağlı | Olayı yayan kaynak bölgesi, örneğin "Doğu ABD" veya "Fransa Güney" |
+| properties | İsteğe Bağlı | Bu belirli olay kategorisiyle ilgili genişletilmiş özellikler. Tüm özel/benzersiz özellikler şemanın "Bölüm B" içinde yerleştirilmelidir. |
 
 ## <a name="service-specific-schemas"></a>Hizmete özgü şemalar
 

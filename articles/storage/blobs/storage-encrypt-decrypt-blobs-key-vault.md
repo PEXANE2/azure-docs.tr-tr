@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458391"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544454"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Öğretici-Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme
 
@@ -236,8 +236,8 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-C# ile Microsoft Azure Depolama kullanma hakkında daha fazla bilgi için bkz. [.NET için Microsoft Azure depolama Istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+C# ile Microsoft Azure Depolama kullanma hakkında daha fazla bilgi için bkz. [.NET için Microsoft Azure depolama Istemci kitaplığı](/previous-versions/azure/dn261237(v=azure.100)).
 
-Blob REST API hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx).
+Blob REST API hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](/rest/api/storageservices/Blob-Service-REST-API).
 
-Microsoft Azure Depolama hakkında en son bilgiler için [Microsoft Azure depolama ekibi bloguna](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)gidin.
+Microsoft Azure Depolama hakkında en son bilgiler için [Microsoft Azure depolama ekibi bloguna](/archive/blogs/windowsazurestorage/)gidin.

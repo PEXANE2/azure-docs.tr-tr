@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a817c12a367d7c14f693389920e49b368a35cc06
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411397"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522881"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde arttırırken, sorgu performansınızı ciddi ölçüde iyileştirebileceğiniz bazı durumlar vardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -133,7 +133,7 @@ SecurityEvent
 
 [JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) ve [özetleme](/azure/kusto/query/summarizeoperator) komutları, büyük bir VERI kümesini işlerken yüksek CPU kullanımına neden olabilir. Karmaşıklığı, özetleme olarak ya da JOIN özniteliği olarak kullanılan sütunların *kardinalite* olarak adlandırılan olası değer sayısıyla doğrudan ilgilidir `by` . Katılmayı ve özetlemeyi açıklama ve iyileştirme için bkz. belge makaleleri ve iyileştirme ipuçları.
 
-Örneğin, **CounterPath** her zaman **CounterName** ve **ObjectName** 'e eşlenmiş olduğundan aşağıdaki sorgular tam olarak aynı sonucu üretir. İkinci bir, toplama boyutu daha küçük olduğu için daha verimlidir:
+Örneğin, **CounterPath** her zaman **CounterName** ve **ObjectName**'e eşlenmiş olduğundan aşağıdaki sorgular tam olarak aynı sonucu üretir. İkinci bir, toplama boyutu daha küçük olduğu için daha verimlidir:
 
 ```Kusto
 //less efficient
@@ -342,7 +342,7 @@ Perf
 ) on Computer
 ```
 
-Bir hata oluşması durumunda, en son oluşumu bulmak için [arg_max ()](/azure/kusto/query/arg-max-aggfunction) kullanıldığında oluşan yaygın bir durumdur. Örneğin:
+Bir hata oluşması durumunda, en son oluşumu bulmak için [arg_max ()](/azure/kusto/query/arg-max-aggfunction) kullanıldığında oluşan yaygın bir durumdur. Örnek:
 
 ```Kusto
 Perf
@@ -463,7 +463,7 @@ Paralellik 'i azaltan sorgu davranışları şunlardır:
 - Seri hale getirme [işleci](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [önceki ()](/azure/kusto/query/prevfunction)ve [Row](/azure/kusto/query/rowcumsumfunction) işlevleri gibi serileştirme ve pencere işlevlerinin kullanımı. Bu durumlarda zaman serisi ve Kullanıcı Analizi işlevleri kullanılabilir. Şu işleçler sorgu sonunda değilse, verimsiz serileştirme de oluşabilir: [Range](/azure/kusto/query/rangeoperator), [Sort](/azure/kusto/query/sortoperator), [Order](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
 -    [DCount ()](/azure/kusto/query/dcount-aggfunction) toplama işlevinin kullanımı, sistemi farklı değerlerin merkezi kopyasına sahip olacak şekilde zorlar. Verilerin ölçeği yüksek olduğunda, doğruluğu azaltmak için DCount işlevi isteğe bağlı parametrelerini kullanmayı deneyin.
 -    Birçok durumda, [JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) işleci genel paralellik düşürür. Performans sorunlu olduğunda bir alternatif olarak karışık katılmayı inceleyin.
--    Kaynak kapsamı sorgularında, ön yürütme RBAC denetimleri çok fazla sayıda Azure rol ataması olduğu durumlarda düşebilir. Bu, daha uzun bir denetim oluşmasına neden olabilir ve bu da daha fazla paralellik sağlar. Örneğin, bir sorgu binlerce kaynağın bulunduğu bir abonelikte yürütülür ve her bir kaynağın abonelik veya kaynak grubunda değil kaynak düzeyinde birçok rol ataması vardır.
+-    Kaynak kapsamı sorgularında, ön yürütme Kubernetes RBAC veya Azure RBAC denetimleri çok fazla sayıda Azure rol ataması olduğu durumlarda olabilir. Bu, daha uzun bir denetim oluşmasına neden olabilir ve bu da daha fazla paralellik sağlar. Örneğin, bir sorgu binlerce kaynağın bulunduğu bir abonelikte yürütülür ve her bir kaynağın abonelik veya kaynak grubunda değil kaynak düzeyinde birçok rol ataması vardır.
 -    Bir sorgu küçük veri öbeklerini işlerse, sistem çok sayıda işlem düğümüne yayılmadığından paralelliği düşük olur.
 
 

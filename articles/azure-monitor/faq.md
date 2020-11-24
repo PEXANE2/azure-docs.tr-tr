@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841912"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536294"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -412,7 +412,7 @@ Genellikle yeni bölgedeki kaynak için el ile yeniden oluşturulması veya gün
 - Özel panoları ve çalışma kitaplarını yeniden oluşturun. 
 - Herhangi bir özel günlük/ölçüm uyarısı kapsamını yeniden oluşturun veya güncelleştirin. 
 - Kullanılabilirlik uyarılarını yeniden oluşturun.
-- Kullanıcılarınızın yeni kaynağa erişmesi için gerekli olan tüm özel Role-Based Access Control (RBAC) ayarlarını yeniden oluşturun. 
+- Kullanıcılarınızın yeni kaynağa erişmesi için gerekli olan tüm özel Azure rol tabanlı erişim denetimi (Azure RBAC) ayarlarını yeniden oluşturun. 
 - Alma örnekleme, veri saklama, günlük uç ve özel ölçümler ile ilgili ayarları çoğaltın. Bu ayarlar, **kullanım ve tahmini maliyetler** bölmesi aracılığıyla denetlenir.
 - [Sürüm ek açıklamaları](/azure/azure-monitor/app/annotations), [canlı ölçümler güvenli denetim kanalı](app/live-stream.md#secure-the-control-channel) vb. gibi API anahtarlarına bağlı olan herhangi bir tümleştirme Yeni API anahtarları oluşturmanız ve ilişkili tümleştirmeyi güncelleştirmeniz gerekecektir. 
 - Klasik kaynaklarda sürekli dışarı aktarmanın yeniden yapılandırılması gerekir.
@@ -680,9 +680,9 @@ Containerınventory tablosu, hem durdurulan hem de çalışan kapsayıcılar hak
 
 **Microsoft. operationsmanagement Için eksik abonelik kaydı** hatası alırsanız, çalışma alanının tanımlandığı abonelikte **Microsoft. operationsmanagement** kaynak sağlayıcısını kaydederek bu sorunu çözebilirsiniz. Bunun nasıl yapılacağını gösteren belgeler [burada](../azure-resource-manager/templates/error-register-resource-provider.md)bulunabilir.
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>RBAC etkin AKS kümeleri için destek var mı?
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Kubernetes RBAC etkinleştirilmiş AKS kümeleri için destek var mı?
 
-Kapsayıcı Izleme çözümü RBAC 'yi desteklemez, ancak kapsayıcılar için Azure Izleyici ile desteklenir. Çözüm ayrıntıları sayfası, bu kümelerin verilerini gösteren dikey pencerelerde doğru bilgileri göstermez.
+Kapsayıcı Izleme çözümü Kubernetes RBAC 'yi desteklemez, ancak kapsayıcılar için Azure Izleyici ile desteklenir. Çözüm ayrıntıları sayfası, bu kümelerin verilerini gösteren dikey pencerelerde doğru bilgileri göstermez.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Nasıl yaparım?, KUIN-System ad alanındaki kapsayıcılar için günlük toplamayı Held aracılığıyla etkinleştirmek istiyor musunuz?
 

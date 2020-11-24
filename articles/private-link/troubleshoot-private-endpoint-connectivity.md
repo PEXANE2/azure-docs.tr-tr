@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77538543"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522339"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure Özel Uç Nokta bağlantı sorunlarını giderme
 
@@ -39,7 +39,7 @@ Tüm olağan yapılandırmaların, Özel uç nokta kurulumlarınızla bağlantı
 
 1. Kaynağa göz atarak özel uç nokta yapılandırmasını gözden geçirin.
 
-    a. **Özel bağlantı merkezine**gidin.
+    a. **Özel bağlantı merkezine** gidin.
 
       ![Özel bağlantı merkezi](./media/private-endpoint-tsg/private-link-center.png)
 
@@ -50,16 +50,16 @@ Tüm olağan yapılandırmaların, Özel uç nokta kurulumlarınızla bağlantı
     c. Tanılama yapmak istediğiniz özel uç noktayı filtreleyin ve seçin.
 
     d. Sanal ağ ve DNS bilgilerini gözden geçirin.
-     - Bağlantı durumunun **onaylandığını**doğrulayın.
+     - Bağlantı durumunun **onaylandığını** doğrulayın.
      - VM 'nin özel uç noktaları barındıran sanal ağa bağlantısı olduğundan emin olun.
      - FQDN bilgilerinin (kopya) ve özel IP adresinin atandığından emin olun.
     
        ![Sanal ağ ve DNS yapılandırması](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-1. Verilerin akan olup olmadığını görmek için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) 'yi kullanın.
+1. Verilerin akan olup olmadığını görmek için [Azure izleyici](../azure-monitor/overview.md) 'yi kullanın.
 
     a. Özel uç nokta kaynağında, **İzle**' yi seçin.
-     - **Veri Içindeki verileri** veya **verileri**seçin. 
+     - **Veri Içindeki verileri** veya **verileri** seçin. 
      - Özel uç noktaya bağlanmaya çalıştığınızda verilerin akışa alındığını görün. Yaklaşık 10 dakikalık bir gecikme süresi bekler.
     
        ![Özel uç nokta telemetrisini doğrulama](./media/private-endpoint-tsg/private-endpoint-monitor.png)
@@ -93,7 +93,7 @@ Tüm olağan yapılandırmaların, Özel uç nokta kurulumlarınızla bağlantı
        - Özel DNS bölgesi kaydının mevcut olup olmadığını denetleyin. Mevcut değilse, oluşturun.
      - Özel DNS kullanıyorsanız:
        - Özel DNS ayarlarınızı gözden geçirin ve DNS yapılandırmasının doğru olduğunu doğrulayın.
-       Rehberlik için bkz. [Özel uç noktaya genel bakış: DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
+       Rehberlik için bkz. [Özel uç noktaya genel bakış: DNS yapılandırması](./private-endpoint-overview.md#dns-configuration).
 
     b. Ağ güvenlik grupları (NSG 'ler) veya Kullanıcı tanımlı rotalar nedeniyle bağlantı başarısız olursa:
      - NSG giden kurallarını gözden geçirin ve trafiğe izin vermek için uygun giden kuralları oluşturun.
@@ -107,5 +107,5 @@ Tüm olağan yapılandırmaların, Özel uç nokta kurulumlarınızla bağlantı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- * [Güncelleştirilmiş alt ağda özel bir uç nokta oluşturma (Azure portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
+ * [Güncelleştirilmiş alt ağda özel bir uç nokta oluşturma (Azure portal)](./create-private-endpoint-portal.md)
  * [Azure özel bağlantısı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md)

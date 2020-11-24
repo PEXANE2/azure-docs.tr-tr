@@ -2,62 +2,82 @@
 title: Azure geçişi 'nde değerlendirme araçları ekleme
 description: Azure geçişi 'nde değerlendirme araçları eklemeyi öğrenin.
 ms.topic: how-to
-ms.date: 04/26/2020
-ms.openlocfilehash: 5dee9ec2210bf6e04255b07cf641ced6807c8b5a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 11/23/2020
+ms.openlocfilehash: 17113d167476c62a97031721b73183d0b0da18af
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317358"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535039"
 ---
 # <a name="add-assessment-tools"></a>Değerlendirme araçları ekleme
 
 Bu makalede, [Azure geçişi](./migrate-services-overview.md)'nde değerlendirme araçlarının nasıl ekleneceği açıklanmaktadır. 
 
-- Bir değerlendirme aracı eklemek isterseniz ve henüz bir Azure geçişi projeniz yoksa, bu [makaleye](how-to-add-tool-first-time.md)uyun.
+- Bir değerlendirme aracı eklemek isterseniz ve henüz bir Azure geçişi projeniz yoksa, bu [makaleye](create-manage-projects.md)uyun.
 - Değerlendirme için bir ISV aracı veya Movere eklediyseniz, araçla çalışmaya hazırlanmak için [adımları izleyin](prepare-isv-movere.md).
 
 ## <a name="select-an-assessment-scenario"></a>Değerlendirme senaryosu seçin
 
-1. Azure geçişi projesinde **Genel Bakış ' a**tıklayın.
-2. Kullanmak istediğiniz değerlendirme senaryosunu seçin:
+1. Azure geçişi projesinde **Genel Bakış ' a** tıklayın.
+2. Değerlendirme senaryosunu seçin:
 
     - Azure 'a geçiş için makineleri ve iş yüklerini bulup değerlendirmek üzere **sunucuları değerlendir ve geçir**' i seçin.
     - Şirket içi SQL Server veritabanlarını değerlendirmek için **veritabanlarını değerlendir ve geçir**' i seçin.
-    - Şirket içi Web uygulamalarını değerlendirmek için **Web uygulamalarını değerlendir ve geçir**' i seçin.
+    - Şirket içi Web uygulamalarını değerlendirmek veya geçirmek için **daha fazla Web Apps keşfet**' i seçin  >  **Web Apps**.
+    - Sanal Masaüstü altyapınızı değerlendirmek için **daha fazla**  >  **sanal masaüstü altyapısını** keşfet ' i seçin.
 
-    ![Değerlendirme senaryosu](./media/how-to-assess/assess-scenario.png)
+    ![Değerlendirme senaryosu seçme seçenekleri](./media/how-to-assess/assess-scenario.png)
 
 ## <a name="select-a-server-assessment-tool"></a>Sunucu değerlendirmesi aracı seçin 
 
-1. **Sunucuları değerlendir ve geçir**' e tıklayın.
-2. **Azure geçişi-sunucularında**, bir değerlendirme aracı eklemediyseniz, değerlendirme **araçları**' nın altında, değerlendirme **Aracı eklemek için buraya tıklayın '** ı seçin. Değerlendirme araçlarını zaten eklediyseniz, **daha fazla değerlendirme aracı ekle**' de **Değiştir**' i seçin.
 
-    > [!NOTE]
-    > Farklı bir projeye gitmeniz gerekiyorsa, **Azure geçişi-sunucular**' da, **farklı bir geçiş projesinin ayrıntılarını gör**' ün yanındaki **buraya tıklayın**' e tıklayın.
+1. Araç ekleme:
 
-3. **Azure geçişi**' nde, kullanmak istediğiniz değerlendirme aracını seçin.
+    - Portalda **sunucuları değerlendir ve geçir** seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız, Azure geçişi sunucu değerlendirmesi aracı projeye otomatik olarak eklenir. Diğer değerlendirme araçları eklemek için **, bkz.** **değerlendirme araçları**' nın yanında, **daha fazla araç ekle**' yi seçin.
+    
+         ![Ek değerlendirme araçları ekleme düğmesi](./media/how-to-assess/add-assessment-tool.png)
 
-    - Azure geçişi sunucu değerlendirmesi kullanıyorsanız, değerlendirmeleri doğrudan Azure geçişi projesinde ayarlayabilir, çalıştırabilir ve görüntüleyebilirsiniz.
-    - Farklı bir değerlendirme aracı kullanıyorsanız, siteleri için belirtilen bağlantıya gidin ve değerlendirdikleri yönergelere uygun olarak değerlendirmeyi çalıştırın.
+    - Farklı bir seçenek kullanarak bir proje oluşturduysanız ve henüz herhangi bir değerlendirme aracı yoksa, **sunucular**  >  **değerlendirmesi araçları**' nda **buraya tıklayın ' ı** seçin.
+
+        ![İlk değerlendirme aracı eklenecek düğme](./media/how-to-assess/no-assessment-tool.png)
+
+2. **Azure geçişi**  >  **ekleme araçları**' nda, eklemek istediğiniz araçları seçin. Ardından **araç ekle**' yi seçin.
+
+    ![Listeden değerlendirme araçlarını seçin](./media/how-to-assess/select-assessment-tool.png)
+
 
 
 ## <a name="select-a-database-assessment-tool"></a>Bir veritabanı değerlendirmesi aracı seçin
 
-1. **Veritabanlarını değerlendir ve geçir** ' e tıklayın
-2. **Veritabanları**' nda **araç ekle**' ye tıklayın.
-3. Bir araç ekleyin > **değerlendirme aracı**' nı seçin, veritabanınızı değerlendirmek için kullanmak istediğiniz aracı seçin.
+1. Araç ekleme:
+
+    - Portalda **veritabanını değerlendir ve geçir** seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız, veritabanı değerlendirmesi aracı projeye otomatik olarak eklenir. Ek değerlendirme araçları eklemek için, bkz. **değerlendirme araçları**' nın **yanında,** **daha fazla araç ekle**' yi seçin.
+
+    - Farklı bir seçenek kullanarak bir proje oluşturduysanız ve henüz hiç veritabanı değerlendirme araçlarına sahip değilseniz, **veritabanları**  >  **değerlendirme araçları**'nda **buraya tıklayın ' ı** seçin.
+
+2. **Azure geçişi**  >  **ekleme araçları**' nda, eklemek istediğiniz araçları seçin. Ardından **araç ekle**' yi seçin.
+
+    ![Listeden veritabanı değerlendirmesi araçlarını seçin](./media/how-to-assess/select-database-assessment-tool.png)
+
 
 ## <a name="select-a-web-app-assessment-tool"></a>Bir Web uygulaması değerlendirme aracı seçin
 
-1. **Web uygulamalarını değerlendir ve geçir**' e tıklayın.
-2. Azure App Service geçiş aracının bağlantısını izleyin. Geçiş aracını kullanarak şunları yapın:
+Portalda **daha fazla keşfet** webapps seçeneğini kullanarak bir Azure geçişi projesi oluşturduysanız  >  **WebApps** , Web uygulaması değerlendirme aracı projeye otomatik olarak eklenir. 
 
-    - **Uygulamaları çevrimiçi değerlendirin**: Azure App Service Geçiş Yardımcısı kullanarak, ortak bir URL 'si ile uygulamaları değerlendirmenizi sağlayabilirsiniz.
-    - **.Net/php**: iç .net ve PHP uygulamaları için Geçiş Yardımcısı indirebilir ve çalıştırabilirsiniz.
 
+1. Web uygulaması değerlendirme aracı projede değilse, **Web Apps**  >  **değerlendirme araçları**' nda **buraya tıklayın ' ı** seçin.
+    
+    ![Web uygulaması değerlendirme araçları ekleme](./media/how-to-assess/no-web-app-assessment-tool.png)
+
+
+2. **Azure geçişi**  >  **ekleme araçları**' nda Web uygulaması değerlendirme aracı ' nı seçin. Ardından **araç ekle**' yi seçin.
+
+    ![Listeden veritabanı geçiş aracını seçin](./media/how-to-assess/select-web-app-assessment-tool.png)
+
+ 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[VMware](./tutorial-discover-vmware.md) VM 'Leri, [Hyper-V](./tutorial-discover-hyper-v.md)veya [fiziksel sunucular](./tutorial-discover-physical.md) için Azure geçişi sunucu değerlendirmesini kullanarak bir değerlendirme deneyin
+[VMware](./tutorial-discover-vmware.md) VM 'Leri, [Hyper-V](./tutorial-discover-hyper-v.md)veya [fiziksel sunucular](./tutorial-discover-physical.md) için Azure geçişi sunucu değerlendirmesi aracı 'nı kullanarak değerlendirme için şirket içi makineleri bulma

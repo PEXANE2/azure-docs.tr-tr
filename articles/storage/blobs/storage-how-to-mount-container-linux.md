@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 297595c6c4a9c82c3d0293f2cea2db66ea9ca54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180414"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544403"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama
 
@@ -23,12 +23,12 @@ ms.locfileid: "89180414"
 Bu kılavuzda, blobsigortası kullanma ve Linux üzerinde bir BLOB depolama kapsayıcısı bağlama ve verilere erişme işlemlerinin nasıl yapılacağı gösterilir. Blobsigortası hakkında daha fazla bilgi edinmek için, [blobsigortası deposundaki](https://github.com/Azure/azure-storage-fuse)ayrıntıları okuyun.
 
 > [!WARNING]
-> Blobsigortası yalnızca istekleri [BLOB REST API 'lerine](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)çevirdiğinden %100 POSIX uyumluluğunu garanti etmez. Örneğin, yeniden adlandırma işlemleri POSIX içinde atomik, ancak blobsigortası içinde değildir.
+> Blobsigortası yalnızca istekleri [BLOB REST API 'lerine](/rest/api/storageservices/blob-service-rest-api)çevirdiğinden %100 POSIX uyumluluğunu garanti etmez. Örneğin, yeniden adlandırma işlemleri POSIX içinde atomik, ancak blobsigortası içinde değildir.
 > Yerel dosya sistemi ve blobsigortası arasındaki farkların tam listesi için [blobsigortası kaynak kodu deposunu](https://github.com/azure/azure-storage-fuse)ziyaret edin.
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Linux 'ta blobsigortası 'yi yükler
-Blobsigortası ikilileri, Ubuntu ve RHEL dağıtımları için [Linux Için Microsoft yazılım depoları](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) 'nda bulunur. Bu dağıtımlara blobsigortası yüklemek için, listeden depolardan birini yapılandırın. Ayrıca, dağıtım için bir ikili dosya yoksa, [Azure depolama yükleme adımlarını](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) izleyerek kaynak koddan ikili dosyaları da oluşturabilirsiniz.
+Blobsigortası ikilileri, Ubuntu ve RHEL dağıtımları için [Linux Için Microsoft yazılım depoları](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) 'nda bulunur. Bu dağıtımlara blobsigortası yüklemek için, listeden depolardan birini yapılandırın. Ayrıca, dağıtım için bir ikili dosya yoksa, [Azure depolama yükleme adımlarını](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) izleyerek kaynak koddan ikili dosyaları da oluşturabilirsiniz.
 
 Blobsigortası, Ubuntu 14,04, 16,04 ve 18,04 üzerine yüklemeyi destekler. Dağıtılan sürümlerden birine sahip olduğunuzdan emin olmak için bu komutu çalıştırın:
 ```
@@ -36,7 +36,7 @@ lsb_release -a
 ```
 
 ### <a name="configure-the-microsoft-package-repository"></a>Microsoft paket deposunu yapılandırma
-[Linux paket deposunu Microsoft ürünleri için](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)yapılandırın.
+[Linux paket deposunu Microsoft ürünleri için](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)yapılandırın.
 
 Örnek olarak, bir Enterprise Linux 6 dağıtımında:
 ```bash
@@ -144,5 +144,4 @@ echo "hello world" > test/blob.txt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Blobsigortası giriş sayfası](https://github.com/Azure/azure-storage-fuse#blobfuse)
-* [Blobsigortası sorunlarını raporla](https://github.com/Azure/azure-storage-fuse/issues) 
-
+* [Blobsigortası sorunlarını raporla](https://github.com/Azure/azure-storage-fuse/issues)

@@ -4,12 +4,12 @@ description: Etkinlik günlüğünde belirli olaylar meydana geldiğinde SMS, We
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86516133"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536090"
 ---
 # <a name="alerts-on-activity-log"></a>Etkinlik günlüğü uyarıları
 
@@ -40,7 +40,7 @@ Etkinlik günlüğü uyarıları bazı yaygın seçeneklere sahiptir:
     - Abonelik düzeyi: Örneğin, bir abonelikteki tüm sanal makineler (veya) bir abonelikteki tüm kaynaklar
 - **Kaynak grubu**: varsayılan olarak, uyarı kuralı kapsamda tanımlanan hedefle aynı kaynak grubuna kaydedilir. Kullanıcı, uyarı kuralının saklanacağı kaynak grubunu da tanımlayabilir.
 - **Kaynak türü**: Kaynak Yöneticisi uyarının hedefi için tanımlı ad alanı.
-- **İşlem adı**: Role-Based Access Control için kullanılan [Azure Resource Manager işlem](../../role-based-access-control/resource-provider-operations.md) adı. Azure Resource Manager kayıtlı olmayan işlemler, etkinlik günlüğü uyarı kuralında kullanılamaz.
+- **İşlem adı**: Azure rol tabanlı erişim denetimi Için kullanılan [Azure Kaynak Sağlayıcısı işlem](../../role-based-access-control/resource-provider-operations.md) adı. Azure Resource Manager kayıtlı olmayan işlemler, etkinlik günlüğü uyarı kuralında kullanılamaz.
 - **Düzey**: etkinliğin önem derecesi (bilgilendirici, uyarı, hata veya kritik).
 - **Durum**: etkinliğin durumu, genellikle başlatıldı, başarısız veya başarılı.
 - **Olay tarafından başlatılan**: "arayan" olarak da bilinir. İşlemi gerçekleştiren kullanıcının e-posta adresi veya Azure Active Directory tanımlayıcısı.

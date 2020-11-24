@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f920a937f4b9b51f9babd03ed0fb42dd3c7775d8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2477107105b6dbcab96db8d44ac982554dc0c48d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217798"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543179"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Hızlı başlangıç: blob oluşturmak için Azure Depolama Gezgini kullanma
 
@@ -78,7 +78,7 @@ Yüklenecek dosyaları veya klasörü seçin. **Blob türü**'nü seçin. **Ekle
 
 ## <a name="manage-snapshots"></a>Anlık görüntüleri yönetme
 
-Azure Depolama Gezgini, bloblarınızın [anlık görüntülerini](storage-blob-snapshots.md) almanızı ve görüntülemenizi sağlar. Bir blobun anlık görüntüsünü almak için bloba sağ tıklayıp **Anlık Görüntü Oluştur**'u seçin. Bir blobun anlık görüntülerini görüntülemek için bloba sağ tıklayıp **Ekran Görüntülerini Yönet**'i seçin. Geçerli sekmede blobun ekran görüntülerinin listesi gösterilir.
+Azure Depolama Gezgini, bloblarınızın [anlık görüntülerini](./snapshots-overview.md) almanızı ve görüntülemenizi sağlar. Bir blobun anlık görüntüsünü almak için bloba sağ tıklayıp **Anlık Görüntü Oluştur**'u seçin. Bir blobun anlık görüntülerini görüntülemek için bloba sağ tıklayıp **Ekran Görüntülerini Yönet**'i seçin. Geçerli sekmede blobun ekran görüntülerinin listesi gösterilir.
 
 ![Microsoft Azure Depolama Gezgini blob 'ların listesini gösteren ekran görüntüsü.](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 
@@ -99,4 +99,4 @@ Paylaşılan Erişim İmzaları (SAS) Depolama Gezgini'nden alınabilir. Depolam
 Bu hızlı başlangıçta, dosyaları **Azure Depolama Gezgini** kullanarak yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, Blob depolama nasıl yapılır öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Blob Depolama İşlemleri Nasıl Yapılır](storage-how-to-use-blobs-powershell.md)
+> [Blob Depolama İşlemleri Nasıl Yapılır](./storage-quickstart-blobs-powershell.md)

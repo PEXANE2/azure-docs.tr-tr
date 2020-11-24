@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.openlocfilehash: d28a3a304a42ec82ff18ad7f5e72518e2b77ec29
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8cfe44b9433ee1daac028253aa45c97804c88ae5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280879"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544114"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Öğretici-Azure özel uç noktası kullanarak Azure SQL Server 'a bağlanma-Azure CLı
 
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel olarak özel bağlantı kaynaklarıyla iletişim kurmasını sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir sanal ağ ve savunma ana bilgisayarı oluşturun.
@@ -260,7 +260,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 3. **CreateSQLEndpointTutorial-RG** seçin.
 
-4. **Myvm** ' yi seçin.
+4. **Myvm**' yi seçin.
 
 5. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
@@ -285,28 +285,28 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
     SQL Server adı için **10.0.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
 
-10. **Myvm** 'de [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) 'yi yükler.
+10. **Myvm**'de [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) 'yi yükler.
 
 11. **SQL Server Management Studio** açın.
 
-12. **Sunucuya Bağlan** ' da bu bilgileri girin veya seçin:
+12. **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Sunucu türü | **Veritabanı Altyapısı** ’nı seçin.|
+    | Sunucu türü | **Veritabanı Altyapısı**’nı seçin.|
     | Sunucu adı | **\<sql-server-name> . Database.Windows.net** girin |
-    | Kimlik doğrulaması | **SQL Server Kimlik Doğrulaması** 'nı seçin. |
+    | Kimlik doğrulaması | **SQL Server Kimlik Doğrulaması**'nı seçin. |
     | Kullanıcı adı | Sunucu oluşturma sırasında girdiğiniz kullanıcı adını girin |
     | Parola | Sunucu oluşturma sırasında girdiğiniz parolayı girin |
-    | Parolayı unutmayın | **Evet** ’i seçin. |
+    | Parolayı unutmayın | **Evet**’i seçin. |
 
-13. **Bağlan** ’ı seçin.
+13. **Bağlan**’ı seçin.
 
 14. Sol menüden veritabanlarına gözatamazsınız.
 
-15. I **Mysqldatabase** 'dan bilgi oluşturun veya sorgulayın.
+15. I **Mysqldatabase**'dan bilgi oluşturun veya sorgulayın.
 
-16. **Myvm** 'e yönelik savunma bağlantısını kapatın. 
+16. **Myvm**'e yönelik savunma bağlantısını kapatın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 

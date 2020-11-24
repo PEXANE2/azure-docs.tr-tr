@@ -1,6 +1,6 @@
 ---
-title: GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırma | Microsoft Docs
-description: Bu makale, GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırmayla ilgili yönergeler sağlar.
+title: GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırma
+description: Bu makalede, Linux 'ta GUID bölümleme tablosu (GPT) bölümünün bulunduğu bir işletim sistemi diskini yeniden boyutlandırmayla ilgili yönergeler sağlanır.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,17 +14,17 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 99b723322ce7636edce3ae5b59a69b96e288ca24
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3565b165c669af3566667d9bdfa401d15fcce101
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392699"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544165"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırma
 
 > [!NOTE]
-> Bu senaryo yalnızca GUID bölümleme tablosu (GPT) bölümü olan işletim sistemi diskleri için geçerlidir.
+> Bu makale yalnızca bir GUID bölümleme tablosu (GPT) bölümü olan işletim sistemi diskleri için geçerlidir.
 
 Bu makalede, Linux 'ta GPT bölümü olan bir işletim sistemi diskinin boyutunu artırma işlemi açıklanır. 
 
@@ -78,14 +78,14 @@ Aşağıdaki yönergeler, Linux onaylı dağıtımlar için geçerlidir.
 
 ### <a name="ubuntu"></a>Ubuntu
 
-Ubuntu 16. x ve 18. x içindeki işletim sistemi diskinin boyutunu artırmak için:
+Ubuntu 16 ' da işletim sistemi diskinin boyutunu artırmak için. *x* ve 18. *x*:
 
 1. VM'yi durdurun.
 1. Portaldan işletim sistemi diskinin boyutunu artırın.
 1. VM 'yi yeniden başlatın ve ardından VM 'de bir **kök** Kullanıcı olarak oturum açın.
 1. İşletim sistemi diskinin artık daha fazla dosya sistemi boyutunu görüntülediğini doğrulayın.
 
-Aşağıdaki örnekte gösterildiği gibi, işletim sistemi diski portaldan 100 GB 'a yeniden boyutlandırıldı. **/Dev/sda1** dosya sistemi **/** artık 97 GB görüntülüyor.
+Aşağıdaki örnekte, işletim sistemi diski portaldan 100 GB 'a yeniden boyutlandırıldı. **/Dev/sda1** dosya sistemi **/** artık 97 GB görüntülüyor.
 
 ```
 user@myvm:~# df -Th
@@ -110,21 +110,21 @@ SUSE 12 SP4'TE işletim sistemi diskinin boyutunu artırmak için, SAP için SUS
 1. Portaldan işletim sistemi diskinin boyutunu artırın.
 1. VM’yi yeniden başlatın.
 
-VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
+VM yeniden başlatıldığında şu adımları uygulayın:
 
-1. Aşağıdaki komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
+1. Şu komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
 
    ```
    # sudo -i
    ```
 
-1. Bölümü yeniden boyutlandırmak için kullanılacak **growpart** paketini yüklemek için aşağıdaki komutu kullanın:
+1. Bölümü yeniden boyutlandırmak için kullanacağınız **growpart** paketini yüklemek için aşağıdaki komutu kullanın:
 
    ```
    # zypper install growpart
    ```
 
-1. `lsblk`FileSystem ("/") köküne takılmış bölümü bulmak için komutunu kullanın. Bu örnekte, SDA cihazının 4. bölümüne bağlı olduğunu görüyoruz.
+1. `lsblk`Dosya sisteminin köküne takılan bölümü bulmak için komutunu kullanın ( **/** ). Bu durumda, **sda** cihaz Bölüm 4 ' ün bağlı olduğunu görüyoruz **/** :
 
    ```
    # lsblk
@@ -138,7 +138,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    └─sdb1   8:17   0    4G  0 part /mnt/resource
    ```
 
-1. `growpart`Önceki adımda bulunan bölüm numarasını kullanarak komutu kullanarak gerekli bölümü yeniden boyutlandırın.
+1. `growpart`Önceki adımda belirlenen komutu ve bölüm numarasını kullanarak gerekli bölümü yeniden boyutlandırın:
 
    ```
    # growpart /dev/sda 4
@@ -177,7 +177,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
 1. Dosya sistemi türüne göre, dosya sistemini yeniden boyutlandırmak için uygun komutları kullanın.
    
-   **XFS** için aşağıdaki komutu kullanın:
+   **XFS** için şu komutu kullanın:
    
    ```
    #xfs_growfs /
@@ -200,13 +200,13 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    data blocks changed from 7470331 to 12188923
    ```
    
-   **Ext4** için aşağıdaki komutu kullanın:
+   **Ext4** için şu komutu kullanın:
    
    ```
    #resize2fs /dev/sda4
    ```
    
-1. Aşağıdaki komutu kullanarak **df** için daha fazla dosya sistemi boyutunu doğrulayın:
+1. Bu komutu kullanarak **df** için daha fazla dosya sistemi boyutunu doğrulayın:
    
    ```
    #df -Thl
@@ -233,13 +233,13 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
 ### <a name="rhel-with-lvm"></a>LVM ile RHEL
 
-1. Aşağıdaki komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
+1. Şu komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
 
    ```bash
    [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. `lsblk`FileSystem ("/") köküne hangi mantıksal birimin (LV) bağlı olduğunu bulmak için komutunu kullanın. Bu durumda, **_rootvg-rootlv_*_ ' nin _* / üzerine takıldığını** görüyoruz.  Başka bir dosya sistemi isteniyorsa, bu belge aracılığıyla LV ve bağlama noktasını değiştirin.
+1. `lsblk`Dosya sisteminin köküne hangi mantıksal birimin (LV) bağlı olduğunu () öğrenmek için komutunu kullanın **/** . Bu durumda, **rootvg-rootlv** 'nin bağlı olduğunu görüyoruz **/** . Başka bir dosya sistemi istiyorsanız, bu makale boyunca LV ve bağlama noktasını yerine koyun.
 
    ```shell
    [root@dd-rhel7vm ~]# lsblk -f
@@ -258,7 +258,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       └─rootvg-rootlv     xfs                 4f3e6f40-61bf-4866-a7ae-5c6a94675193   /
    ```
 
-1. Kök bölümü içeren LVM birim grubunda boş alan olup olmadığını denetleyin.  Boş alan varsa, **12** . adıma atlayın
+1. Kök bölümü içeren LVM birim grubunda (VG) boş alan olup olmadığını denetleyin. Boş alan varsa, 12. adıma atlayın.
 
    ```bash
    [root@dd-rhel7vm ~]# vgdisplay rootvg
@@ -284,17 +284,15 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    VG UUID               lPUfnV-3aYT-zDJJ-JaPX-L2d7-n8sL-A9AgJb
    ```
 
-   Bu örnekte, satır **boş PE/boyut** , birim grubunda 38.02 GB boş olduğunu belirtir.  Birim grubuna boşluk eklenmeden önce disk yeniden boyutlandırma gerekmez
+   Bu örnekte, satır **ÜCRETSIZ PE/boyut** , birim grubunda 38,02 GB boş alan olduğunu gösterir. Birim grubuna alan eklemeden önce diski yeniden boyutlandırmanıza gerek yoktur.
 
-1. RHEL 7. x içindeki işletim sistemi diskinin boyutunu LVM ile artırmak için:
+1. RHEL 7 ' de işletim sistemi diskinin boyutunu artırmak için. LVM ile *x* :
 
    1. VM'yi durdurun.
    1. Portaldan işletim sistemi diskinin boyutunu artırın.
    1. VM’yi başlatın.
 
-1. VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
-
-   1. İşletim sistemi diskinin boyutunu artırmak için gerekli olan **growpart** komutunu sağlamak için **Cloud-utils-growpart** paketini yükler.
+1. VM yeniden başlatıldığında, işletim sistemi diskinin boyutunu artırmanız gereken komutu edinmek için **Cloud-utils-growpart** paketini yüklemeniz `growpart` gerekir.
 
       Bu paket, Azure Marketi görüntülerinin çoğunda önceden yüklenir.
 
@@ -302,14 +300,14 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
       ```
 
-1. Fiziksel VG adlı birim grubunda (VG), **pvscan** komutuyla hangi disk ve bölümün LVM fiziksel BIRIMLERINI (BD) bulundurduğunu belirleme.  **[]** Ayraçları arasında listelenen boyut ve boş alanı göz önünde atın.
+1. Komutunu kullanarak, hangi disk ve bölümün, **rootvg** adlı birim grubunda LVM fiziksel birimini veya BIRIMLERINI (BD) bulundurduğunu saptayın `pvscan` . Köşeli ayraçlar (**[** ve **]**) arasında listelenen boyut ve boş alanı aklınızda bırakın.
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
      PV /dev/sda4   VG rootvg          lvm2 [<63.02 GiB / <38.02 GiB free]
    ```
 
-1. **Lsblk** ile bölümün boyutunu doğrulayın.  Göz atın 
+1. Kullanarak bölümün boyutunu doğrulayın `lsblk` . 
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -323,14 +321,14 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. **Growpart** , cihaz adı ve bölüm numarası kullanarak bu BD içeren bölümü genişletin.  Bu işlem, cihazdaki tüm boş alanı kullanmak için belirtilen bölümü genişletir.
+1. Bu BD içeren bölümü `growpart` , cihaz adını ve bölüm numarasını kullanarak genişletin. Bu işlem, cihazdaki tüm boş alanı kullanmak için belirtilen bölümü genişletir.
 
    ```bash
    [root@dd-rhel7vm ~]# growpart /dev/sda 4
    CHANGED: partition=4 start=2054144 old: size=132161536 end=134215680 new: size=199272414 end=201326558
    ```
 
-1. Bölümün, **lsblk** komutuyla beklenen boyuta yeniden boyutlandırıldığından emin olun.  Örnekte sda4, 63G 'den 95G 'ye değiştirildiğine dikkat edin.
+1. Komutu yeniden kullanarak, bölümün beklenen boyuta yeniden boyutlandırıldığından emin olun `lsblk` . Örnek **sda4** , 63 gb 'den 95 GB 'ye değiştiği konusunda dikkat edin.
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -344,7 +342,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. Yeni genişletilen bölümün geri kalanını kullanmak için BD 'i genişletin
+1. Yeni genişletilen bölümün geri kalanını kullanmak için BD ' i genişletin:
 
    ```bash
    [root@dd-rhel7vm ~]# pvresize /dev/sda4
@@ -352,14 +350,14 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    1 physical volume(s) resized or updated / 0 physical volume(s) not resized
    ```
 
-1. BD 'in yeni boyutunu, orijinal **[boyut/boş]** değerleriyle karşılaştırarak beklenen boyutta olduğunu doğrulayın.
+1. BD 'in yeni boyutunun beklenen boyut olduğunu ve özgün **[boyut/serbest]** değerleriyle karşılaştırarak emin olun:
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
    PV /dev/sda4   VG rootvg          lvm2 [<95.02 GiB / <70.02 GiB free]
    ```
 
-1. İstenen mantıksal birimi (LV) istenen miktarda genişleterek, birim grubundaki tüm boş alan olması gerekmez.  Aşağıdaki örnekte **/dev/mapper/rootvg-rootlv** , aşağıdaki KOMUTLA 2 GB Ila 12 GB (10 GB 'lık artış) olarak yeniden boyutlandırılıyor. Bu komut ayrıca dosya sistemini yeniden boyutlandıracaktır.
+1. İstenen mantıksal birimi (LV) istediğiniz miktara göre genişletin. Miktarın birim grubundaki tüm boş alan olması gerekmez. Aşağıdaki örnekte, **/dev/mapper/rootvg-rootlv** 2 GB Ila 12 GB (10 GB 'lık artış) olarak yeniden boyutlandırılır. Bu komut ayrıca dosya sistemini yeniden boyutlandıracaktır.
 
    ```bash
    [root@dd-rhel7vm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
@@ -383,7 +381,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    data blocks changed from 524288 to 3145728
    ```
 
-1. Lvresize komutu, LV içindeki dosya sistemi için uygun yeniden boyutlandırma komutunu otomatik olarak çağırır. ' A bağlı olan **/dev/mapper/rootvg-rootlv** 'nin, **/** aşağıdaki komutu kullanarak daha fazla dosya sistemi boyutuna sahip olup olmadığını doğrulayın:
+1. `lvresize`Komut, LV içindeki dosya sistemi için uygun yeniden boyutlandırma komutunu otomatik olarak çağırır. Bu komutu kullanarak, bağlı olan **/dev/mapper/rootvg-rootlv**'nin, **/** Artırılmış bir dosya sistemi boyutuna sahip olup olmadığını denetleyin:
 
    ```shell
    [root@dd-rhel7vm ~]# df -Th /
@@ -399,26 +397,27 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    ```
 
 > [!NOTE]
-> Diğer herhangi bir mantıksal birimi yeniden boyutlandırmak için aynı yordamı kullanmak için, adım **12** ' de **LV** adı ' nı değiştirin.
+> Diğer herhangi bir mantıksal birimi yeniden boyutlandırmak için aynı yordamı kullanmak için, adım 12 ' de LV adı ' nı değiştirin.
 
 ### <a name="rhel-raw"></a>RHEL RAW
 >[!NOTE]
 >İşletim sistemi disk boyutunu arttırmadan önce her zaman sanal makinenin anlık görüntüsünü alın.
 
-RHEL içindeki işletim sistemi diskinin boyutunu ham bölümle artırmak için:
+Bir RHEL RAW bölümünde işletim sistemi diskinin boyutunu artırmak için:
 
-VM'yi durdurun.
-Portaldan işletim sistemi diskinin boyutunu artırın.
-VM’yi başlatın.
-VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
+1. VM'yi durdurun.
+1. Portaldan işletim sistemi diskinin boyutunu artırın.
+1. VM’yi başlatın.
 
-1. Aşağıdaki komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
+VM yeniden başlatıldığında şu adımları uygulayın:
+
+1. Şu komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
  
    ```
    sudo su
    ```
 
-1. İşletim sistemi diskinin boyutunu artırmak için gereken **gptfdisk** paketini yükler.
+1. İşletim sistemi diskinin boyutunu artırmanız gereken **gptfdisk** paketini yüklemeniz gerekir:
 
    ```
    yum install gdisk -y
@@ -429,70 +428,71 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
     gdisk -l /dev/sda
     ```
 
-1. Bölüm türünü bildiren ayrıntıları görürsünüz. GPT olduğundan emin olun. Kök bölümü belirler. Önyükleme bölümünü (BIOS önyükleme bölümü) ve sistem bölümünü değiştirme veya silme (' EFı sistem bölümü ')
+1. Bölüm türünü bildiren ayrıntıları görürsünüz. GPT olduğundan emin olun. Kök bölümü belirler. Önyükleme bölümünü (BIOS önyükleme bölümü) veya sistem bölümünü (EFı sistem bölümü) değiştirmeyin veya silmeyin.
 
-1. Bölümlemeyi ilk kez başlatmak için aşağıdaki komutu kullanın. 
+1. Bölümlemeyi ilk kez başlatmak için bu komutu kullanın: 
     ```
     gdisk /dev/sda
     ```
 
-1. Şimdi bir sonraki komuta (' komut:?) soran bir ileti görürsünüz. yardım için '). 
+1. Sonraki komutu sizden isteyen bir ileti görürsünüz: `Command: ? for help` . **W** tuşunu seçin:
 
    ```
    w
    ```
 
-1. Şöyle bir uyarı alacaksınız "uyarı! İkincil üst bilgi diskte çok erken yerleştirilmiş! Bu sorunu düzeltmek istiyor musunuz? (E/H): ". ' Y ' tuşuna basmanız gerekir
+1. Şu iletiyi alırsınız: `Warning! Secondary header is placed too early on the disk! Do you want to
+correct this problem? (Y/N)` . **Y** anahtarını seçin: 
 
    ```
    Y
    ```
 
-1. Son denetimlerin tamamlandığını bildiren ve onay isteyen bir ileti görmeniz gerekir. ' Y ' tuşuna basın
+1. Nihai denetimlerin tamamlandığını ve onay istendiğini belirten bir ileti görmeniz gerekir. **Y** anahtarını seçin:
 
    ```
    Y
    ```
 
-1. Partaraştırması komutu kullanılarak her şeyin doğru şekilde gerçekleştiğini denetleyin
+1. `partprobe`Her şeyin doğru olup olmadığını denetlemek için komutunu kullanın:
 
    ```
    partprobe
    ```
 
-1. Yukarıdaki adımlarda ikincil GPT üstbilgisinin sonuna yerleştirilmiş olması gerekir. Sonraki adım, GDisk aracını tekrar kullanarak yeniden boyutlandırma sürecini başlatmakta. Aşağıdaki komutu kullanın.
+1. İkincil GPT üstbilgisinin sonuna yerleştirildiğinden emin olmak için önceki adımları tamamladınız. Sonra, aracı tekrar kullanarak yeniden boyutlandırma sürecini başlatın `gdisk` . Aşağıdaki komutu kullanın:
 
    ```
    gdisk /dev/sda
    ```
-1. Komut menüsünde, bölüm listesini görmek için ' p ' tuşuna basın. Kök bölümü (adımlarda, sda2 kök bölüm olarak kabul edilir) ve önyükleme bölümünü (adımlarda, sda3, önyükleme bölümü olarak kabul edilir) belirler 
+1. Komut menüsünde, bölüm listesini görmek için **p** anahtarını seçin. Kök bölümü belirler. (Bu adımlarda, **sda2** kök bölüm olarak kabul edilir.) Önyükleme bölümünü belirler. (Bu adımlarda, **sda3** önyükleme bölümü olarak kabul edilir.) 
 
    ```
    p
    ```
-    ![Kök bölüm ve önyükleme bölümü](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+    ![Kök bölümü ve önyükleme bölümünü gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
 
-1. Bölümü silmek için ' a basın ve önyükleme için atanan bölüm numarasını seçin (Bu örnekte, ' 3 ')
+1. Bölümü silmek için **d** anahtarını seçin. Ardından, önyükleme bölümüne atanan bölüm numarasını seçin. (Bu örnekte **3**' ün olması gerekir.)
    ```
    d
    3
    ```
-1. Bölümü silmek için ' a basın ve önyükleme için atanan bölüm numarasını seçin (Bu örnekte, ' 2 ' olur)
+1. Bölümü silmek için **d** anahtarını seçin. Önyükleme bölümüne atanan bölüm numarasını seçin. (Bu örnekte, **2**' dir.)
    ```
    d
    2
    ```
-    ![Kök bölümü ve önyükleme bölümünü Sil](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+    ![Kök ve önyükleme bölümlerini silme adımlarını gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
 
-1. Kök bölümü artan boyut ile yeniden oluşturmak için, ' n ' tuşuna basın, daha önce kök için sildiğiniz bölüm numarasını (Bu örnek için ' 2 ') girin ve Ilk kesimi ' varsayılan değer ', son sektör ' son sektör değeri-önyükleme boyutu kesimi ' (Bu durumda, 2MB önyüklemesine karşılık gelen ' 4096 ') ve onaltılık kod ' 8300 ' olarak seçin
+1. Kök bölümü daha yüksek boyutla yeniden oluşturmak için **n** anahtarını seçin ve daha önce kök için sildiğiniz bölüm numarasını (Bu örnekte **2** ) girin. `Default Value`İlk kesim için seçin. `Last sector value -  boot size sector`Son kesim için seçin ( `4096` Bu durumda, 2 MB önyüklemesine karşılık gelir). `8300`Onaltılık kod için seçin.
    ```
    n
    2
    (Enter default)
-   (Calculateed value of Last sector value - 4096)
+   (Calculated value of Last sector value - 4096)
    8300
    ```
-1. Önyükleme bölümünü yeniden oluşturmak için ' n ' tuşuna basın, daha önce önyükleme için sildiğiniz bölüm numarasını (Bu örnek için ' 3 ') girin ve Ilk kesimi ' varsayılan değer ', son kesim ' varsayılan değer ' ve onaltılık kod ' EF02 ' olarak seçin
+1. Önyükleme bölümünü yeniden oluşturmak için **n** anahtarını seçin ve daha önce önyükleme için sildiğiniz bölüm numarasını (Bu örnekte **3** ) girin. `Default Value`İlk kesim ve son sektör için seçin. `EF02`Onaltılık kod için seçin.
    ```
    n
    3
@@ -501,28 +501,28 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    EF02
    ```
 
-1. Değişiklikleri ' w ' komutuyla yazın ve ' Y ' tuşuna basın
+1. Komutunu kullanarak değişiklikleri yazın `w` ve ardından `Y` değişiklikleri onaylamak için seçin:
    ```
    w
    Y
    ```
-1. Disk kararlılığını denetlemek için ' partaraştırması ' komutunu çalıştırın
+1. `partprobe`Disk kararlılığını denetlemek için komutunu çalıştırın:
    ```
    partprobe
    ```
-1. VM 'yi yeniden başlatın ve kök bölüm boyutu artmıştır
+1. VM 'yi yeniden başlatın. Kök bölüm boyutu artmalıdır.
    ```
    reboot
    ```
 
-   ![Yeni kök bölüm ve önyükleme bölümü](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+   ![Önyükleme bölümünü yeniden oluşturma adımlarını gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
 
-1. Yeniden boyutlandırmak için bölümdeki xfs_growfs komutunu çalıştırın
+1. `xfs_growfs`Yeniden boyutlandırmak için bölümde komutunu çalıştırın:
    ```
    xfs_growfs /dev/sda2
    ```
 
-   ![XFS büyüme FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+   ![Xfs_growfs çalıştırmanın sonucunu gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

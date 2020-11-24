@@ -13,17 +13,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a55791544bf2b2f17ba189f7e4aca498469c365b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2a1f970a97616fbc38a2f5d274998596992d4a45
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503134"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522082"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
 Azure Active Directory (Azure AD) ' de, Kullanıcı veya cihaz özelliklerine göre grup üyeliğini Belirleme kurallarını kullanabilirsiniz. Bu makalede, Azure portal bir dinamik grup için nasıl bir kural ayarlanacağı açıklanır.
-Dinamik üyelik güvenlik grupları veya Microsoft 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Microsoft 365 Gruplar yalnızca Kullanıcı grupları olabilir.
+Dinamik üyelik güvenlik grupları veya Microsoft 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Microsoft 365 Gruplar yalnızca Kullanıcı grupları olabilir. Dinamik grupları kullanmak için Azure AD Premium P1 lisansı gerekir. Daha fazla ayrıntı için bkz. [gruplar Için dinamik üyelik kuralları](https://docs.microsoft.com/azure/active-directory/enterprise-users/groups-dynamic-membership) . 
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal kural Oluşturucu
 
@@ -79,7 +79,7 @@ Girdiğiniz kural geçerli değilse, kuralın neden işlenmediği hakkında bir 
 
 ## <a name="turn-on-or-off-welcome-email"></a>Hoş geldiniz e-postasını aç veya kapat
 
-Yeni bir Microsoft 365 Grubu oluşturulduğunda, gruba eklenen kullanıcılar bir hoş geldiniz e-posta bildirimi gönderilir. Daha sonra, bir kullanıcının veya cihazın herhangi bir özniteliği değişirse, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)'de devre dışı bırakabilirsiniz.
+Yeni bir Microsoft 365 Grubu oluşturulduğunda, gruba eklenen kullanıcılar bir hoş geldiniz e-posta bildirimi gönderilir. Daha sonra, bir kullanıcının veya cihazın herhangi bir özniteliği değişirse, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Ayrıca eklenen kullanıcılar da hoş geldiniz bildirimini alır. Bu davranışı [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps&preserve-view=true)'de devre dışı bırakabilirsiniz.
 
 ## <a name="check-processing-status-for-a-rule"></a>Bir kural için işleme durumunu denetleme
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 315ea9b683ccd583f5c29c7527013f0d924336f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88006fb354af2673496c6476090d7f73c8a005e6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061894"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543009"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Azure VM 'lerini başka bir bölgedeki kullanılabilirlik bölgesine taşıma
 
@@ -30,12 +30,12 @@ Bu makalede, Azure sanal makinelerini (ve ilgili ağ/depolama kaynaklarını) [A
 
 VM 'Leri aynı bölgedeki farklı bir kullanılabilirlik bölgesine taşımak istiyorsanız, [Bu makaleyi gözden geçirin](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Taşımak istediğiniz kaynakların bulunduğu abonelikte *sahip* erişimi bulunur.
     - Bir Azure aboneliğinde belirli bir kaynak ve hedef eşleme için ilk kez kaynak eklediğinizde, kaynak taşıyıcısı abonelik tarafından güvenilen [sistem tarafından atanan bir yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (eski adıyla yönetilen hizmet tanımlaması (MSI)) oluşturur.
     - Kimliği oluşturmak ve gerekli rolü (katkıda bulunan ya da kaynak abonelikte Kullanıcı erişimi Yöneticisi) atamak için, kaynak eklemek için kullandığınız hesabın abonelikte *sahip* izinleri olması gerekir. Azure rolleri hakkında [daha fazla bilgi edinin](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) .
-- Aboneliğin, hedef bölgede kaynak kaynakları oluşturmak için yeterli kotası olması gerekir. Değilse, ek sınırlamalar isteyin. [Daha fazla bilgi edinin](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+- Aboneliğin, hedef bölgede kaynak kaynakları oluşturmak için yeterli kotası olması gerekir. Değilse, ek sınırlamalar isteyin. [Daha fazla bilgi edinin](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - VM 'Leri taşıdığınız hedef Bölgeyle ilişkili fiyatlandırmayı ve ücretleri doğrulayın. Size yardımcı olması için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
     
 
@@ -70,16 +70,16 @@ Taşımak istediğiniz kaynakları seçin.
 
     ![Kullanmaya başlamak için düğme](./media/move-region-availability-zone/get-started.png)
 
-3. Kaynak **taşıma**  >  **kaynağı + hedef**bölümünde, kaynak aboneliğini ve bölgeyi seçin.
-4. **Hedef**bölümünde, VM 'leri taşımak istediğiniz bölgeyi seçin. Ardından **İleri**'ye tıklayın.
+3. Kaynak **taşıma**  >  **kaynağı + hedef** bölümünde, kaynak aboneliğini ve bölgeyi seçin.
+4. **Hedef** bölümünde, VM 'leri taşımak istediğiniz bölgeyi seçin. Ardından **İleri**'ye tıklayın.
 
      ![Kaynak ve hedef abonelik/bölge doldurulacak sayfa](./media/move-region-availability-zone/source-target.png)
 
-6. **Taşınacak kaynaklar**bölümünde **kaynakları seç**' e tıklayın.
-7. **Kaynakları seçin**bölümünde VM 'yi seçin. Yalnızca taşıma için desteklenen kaynaklar ekleyebilirsiniz. Sonra da **Bitti**’ye tıklayın. **Taşınacak kaynaklar**bölümünde **İleri**' ye tıklayın.
+6. **Taşınacak kaynaklar** bölümünde **kaynakları seç**' e tıklayın.
+7. **Kaynakları seçin** bölümünde VM 'yi seçin. Yalnızca taşıma için desteklenen kaynaklar ekleyebilirsiniz. Sonra da **Bitti**’ye tıklayın. **Taşınacak kaynaklar** bölümünde **İleri**' ye tıklayın.
 
     ![Taşınacak VM 'Leri seçmek için sayfa](./media/move-region-availability-zone/select-vm.png)
-8. **Gözden geçir + Ekle**bölümünde kaynak ve hedef ayarlarını kontrol edin.
+8. **Gözden geçir + Ekle** bölümünde kaynak ve hedef ayarlarını kontrol edin.
 
     ![Ayarları gözden geçirmek ve taşımaya devam etmek için sayfa](./media/move-region-availability-zone/review.png)
 
@@ -114,12 +114,12 @@ Bildirime tıkladıktan sonra, kaynaklar **bölgeler arası** sayfasında görü
 
 VM 'Leri hazırlayabilmeniz ve taşıyabilmeniz için önce kaynak kaynak grubunun hedef bölgede mevcut olması gerekir. 
 
-### <a name="prepare-to-move-the-source-resource-group"></a>Kaynak kaynak grubunu taşımaya hazırlanma
+### <a name="prepare-to-move-the-source-resource-group"></a>Çıkış kaynak grubunu taşımaya hazırlama
 
 Aşağıdaki şekilde hazırlayın:
 
 1. **Bölgeler arasında**, **hazırlama**> kaynak kaynak grubunu seçin.
-2. **Kaynakları hazırlama**bölümünde **hazırla**' ya tıklayın.
+2. **Kaynakları hazırlama** bölümünde **hazırla**' ya tıklayın.
 
     ![Kaynak kaynak grubunu hazırlama düğmesi](./media/move-region-availability-zone/prepare-resource-group.png)
 
@@ -134,7 +134,7 @@ Aşağıdaki şekilde hazırlayın:
 
 Taşımayı aşağıdaki gibi başlatın:
 
-1. **Bölgeler arası**bölümünde kaynak grubunu seçerek **taşımayı başlatın** >
+1. **Bölgeler arası** bölümünde kaynak grubunu seçerek **taşımayı başlatın** >
 2. LN **Move kaynakları**, **taşımayı Başlat**' a tıklayın. Kaynak grubu, *devam eden bir taşıma* durumuna geçer.
 3. Taşıma başlatıldıktan sonra, hedef kaynak grubu oluşturulan ARM şablonuna göre oluşturulur. Kaynak kaynak grubu, bir *tamamlama taşıma bekleme* durumuna geçer.
 
@@ -194,8 +194,8 @@ Kaynak kaynak grubu taşındığına göre, diğer kaynakları taşımaya hazır
 
 Kaynaklar hazırlandıktan sonra, şimdi taşımayı başlatabilirsiniz. 
 
-1. **Bölgeler arasında**, durum *başlatma taşıma bekleyen*kaynaklar ' ı seçin. Sonra **taşımayı Başlat** ' a tıklayın.
-2. **Kaynakları taşıma**bölümünde, **taşımayı Başlat**' a tıklayın.
+1. **Bölgeler arasında**, durum *başlatma taşıma bekleyen* kaynaklar ' ı seçin. Sonra **taşımayı Başlat** ' a tıklayın.
+2. **Kaynakları taşıma** bölümünde, **taşımayı Başlat**' a tıklayın.
 
     ![Kaynak taşımayı başlatma sayfası](./media/move-region-availability-zone/initiate-move.png)
 
@@ -214,14 +214,14 @@ Kaynaklar hazırlandıktan sonra, şimdi taşımayı başlatabilirsiniz.
 
 İlk taşıma işleminden sonra, taşımayı yürütmek mi yoksa atmak mi istediğinize karar verebilirsiniz. 
 
-- **At**: test ediyorsanız bir taşıma atabilir ve kaynak kaynağı gerçekten taşımak istemezsiniz. Taşımayı atmak, kaynağı *başlatma bekleyen*bir durumuna döndürür.
-- **COMMIT**: COMMIT, hedef bölgeye taşıma işlemini tamamlar. İşlem tamamlandıktan sonra kaynak kaynak, *bekleyen silme kaynağı*durumunda olur ve silmek istediğinize karar verebilirsiniz.
+- **At**: test ediyorsanız bir taşıma atabilir ve kaynak kaynağı gerçekten taşımak istemezsiniz. Taşımayı atmak, kaynağı *başlatma bekleyen* bir durumuna döndürür.
+- **COMMIT**: COMMIT, hedef bölgeye taşıma işlemini tamamlar. İşlem tamamlandıktan sonra kaynak kaynak, *bekleyen silme kaynağı* durumunda olur ve silmek istediğinize karar verebilirsiniz.
 
 ## <a name="discard-the-move"></a>Taşımayı at 
 
 Taşımayı aşağıdaki şekilde atabilirsiniz:
 
-1. **Bölgeler arasında**, durum *işlemede taşıma bekleyen*kaynaklar ' ı seçin ve **taşımayı at**' a tıklayın.
+1. **Bölgeler arasında**, durum *işlemede taşıma bekleyen* kaynaklar ' ı seçin ve **taşımayı at**' a tıklayın.
 2. **Taşımayı at**' da **at**' a tıklayın.
 3. Bildirim çubuğunda taşıma ilerlemesini izleyin.
  
@@ -233,7 +233,7 @@ Taşımayı aşağıdaki şekilde atabilirsiniz:
 
 Taşıma işlemini tamamlamak istiyorsanız, taşımayı yürütün. 
 
-1. **Bölgeler arasında**, durum *işlemede taşıma bekleyen*kaynaklar ' ı seçin ve **taşımayı Yürüt**' e tıklayın.
+1. **Bölgeler arasında**, durum *işlemede taşıma bekleyen* kaynaklar ' ı seçin ve **taşımayı Yürüt**' e tıklayın.
 2. **Kaynakları kaydet**' de, **Yürüt**' e tıklayın.
 
     ![Taşıma işlemini sonlandırmak için kaynakları yürütmek için sayfa](./media/move-region-availability-zone/commit-resources.png)

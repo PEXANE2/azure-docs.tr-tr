@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832441"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523289"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)
 
@@ -51,7 +51,7 @@ Bu Bloblar *kapsayıcı/sanal klasör/blob adı* öneki kullanılarak ayrılır.
 Blob dizin etiketleri, depolama hesabınızda yeni veya mevcut nesnelere uygulanabilen anahtar-değer öznitelikleridir. [BLOB 'U koy](/rest/api/storageservices/put-blob), [PUT blok listesi](/rest/api/storageservices/put-block-list)veya [kopyalama blobu](/rest/api/storageservices/copy-blob) işlemlerini ve isteğe bağlı üstbilgiyi kullanarak karşıya yükleme işlemi sırasında dizin etiketlerini belirtebilirsiniz `x-ms-tags` . Depolama hesabınızda zaten bloblarınız varsa, bir biçimli XML belgesini istek gövdesinde Dizin etiketleriyle geçirerek [BLOB etiketlerini ayarla](/rest/api/storageservices/set-blob-tags) ' yı çağırın.
 
 > [!IMPORTANT]
-> Blob dizini etiketlerini ayarlama, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) tarafından ve BLOB 'un etiketlerine (SAS izni) erişim izni olan bir paylaşılan erişim imzasına sahip herkes tarafından gerçekleştirilebilir `t` .
+> Blob dizini etiketlerini ayarlama, [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) tarafından ve BLOB 'un etiketlerine (SAS izni) erişim izni olan bir paylaşılan erişim imzasına sahip herkes tarafından gerçekleştirilebilir `t` .
 >
 > Ayrıca, izni olan RBAC kullanıcıları `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` Bu işlemi gerçekleştirebilir.
 
@@ -87,7 +87,7 @@ Aşağıdaki sınırlar blob dizin etiketleri için geçerlidir:
 Blob dizin etiketleri, blob verileriyle birlikte bir alt kaynak olarak depolanır ve temel alınan blob veri içeriğinden bağımsız olarak alınabilir. Tek bir Blobun blob dizin etiketleri, [BLOB etiketlerini al](/rest/api/storageservices/get-blob-tags) işlemiyle alınabilir. Parametreli [Blobları Listele](/rest/api/storageservices/list-blobs) işlemi, `include:tags` BLOB Dizin etiketleriyle birlikte bir kapsayıcı içindeki tüm Blobları da döndürür.
 
 > [!IMPORTANT]
-> Blob dizini etiketlerini alma ve listeleme, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) tarafından ve BLOB 'un etiketlerine (SAS izni) erişim izni olan bir paylaşılan erişim imzası olan herkese karşı gerçekleştirilebilir `t` .
+> Blob dizini etiketlerini alma ve listeleme, [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) tarafından ve BLOB 'un etiketlerine (SAS izni) erişim izni olan bir paylaşılan erişim imzası olan herkese karşı gerçekleştirilebilir `t` .
 >
 > Ayrıca, izni olan RBAC kullanıcıları `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` Bu işlemi gerçekleştirebilir.
 
@@ -100,7 +100,7 @@ Dizin oluşturma altyapısı, anahtar-değer öznitelerinizi çok boyutlu bir di
 [Etiketlere göre blob bulma](/rest/api/storageservices/find-blobs-by-tags) işlemi, dizin etiketleri belirli bir sorgu ifadesiyle eşleşen filtrelenmiş bir blob kümesi almanızı sağlar. `Find Blobs by Tags` , Depolama hesabınızdaki tüm kapsayıcılar üzerinde filtrelemeyi destekler veya filtrelemeyi yalnızca tek bir kapsayıcıya kapsamını tanımlayabilirsiniz. Tüm Dizin etiketi anahtarları ve değerleri dizeler olduğundan, ilişkisel işleçler bir lexicographic sıralaması kullanır.
 
 > [!IMPORTANT]
-> Blob dizini etiketlerini kullanarak veri bulma işlemi, [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) tarafından ve BLOB 'ları etiketlere (SAS izni) göre bulma izni olan bir paylaşılan erişim imzasına sahip herkes tarafından gerçekleştirilebilir `f` .
+> Blob dizini etiketlerini kullanarak veri bulma işlemi, [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) tarafından ve BLOB 'ları etiketlere (SAS izni) göre bulma izni olan bir paylaşılan erişim imzasına sahip herkes tarafından gerçekleştirilebilir `f` .
 >
 > Ayrıca, izni olan RBAC kullanıcıları `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` Bu işlemi gerçekleştirebilir.
 
@@ -235,7 +235,7 @@ Blob dizin etiketleri, blob verilerine bir alt kaynaktır. Blob 'ları okuma vey
 | [Blob etiketlerini al](/rest/api/storageservices/get-blob-tags)           | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/okuma     |
 | [Blob 'Ları etiketlere göre bul](/rest/api/storageservices/find-blobs-by-tags) | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/filtre/eylem |
 
-Dizin etiketi işlemleri için, temel alınan blob verilerinden ayrı ek izinler gereklidir. [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) rolüne, üç blob Dizin etiketi işlemi için izin verilir. [Depolama Blobu veri okuyucusuna](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) yalnızca ve işlemler için izin verilir `Find Blobs by Tags` `Get Blob Tags` .
+Dizin etiketi işlemleri için, temel alınan blob verilerinden ayrı ek izinler gereklidir. [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) rolüne, üç blob Dizin etiketi işlemi için izin verilir. [Depolama Blobu veri okuyucusuna](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) yalnızca ve işlemler için izin verilir `Find Blobs by Tags` `Get Blob Tags` .
 
 ### <a name="sas-permissions"></a>SAS izinleri
 

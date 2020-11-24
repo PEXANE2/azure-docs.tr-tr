@@ -4,12 +4,12 @@ description: Azure hizmet yönetimi (ASM) veya RDFE dağıtım modelinin Kullan�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8900d238e7542864e3dc53f9d192e579e2c96d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317391"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536702"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
 
@@ -53,7 +53,7 @@ Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emi
 
 Otomatik ölçeklendirme ve ölçümler için mevcut tüm yetenekler yeni API 'Ler aracılığıyla çalışmaya devam edecektir.  
 
-Daha yeni API 'lere geçiş yapmak, tüm izleme hizmetleriniz genelinde tutarlı Role-Based Access Control (RBAC) için destek gibi Kaynak Yöneticisi tabanlı yetenekler ile gelir. Ayrıca ölçümler için ek işlevler elde edersiniz: 
+Daha yeni API 'lere geçiş yapmak, tüm izleme hizmetleriniz genelinde tutarlı Azure rol tabanlı erişim denetimi (Azure RBAC) desteği gibi Kaynak Yöneticisi tabanlı yetenekler ile gelir. Ayrıca ölçümler için ek işlevler elde edersiniz: 
 
 - Boyut desteği
 - tüm hizmetlerde tutarlı 1 dakikalık ölçüm ayrıntı düzeyi 

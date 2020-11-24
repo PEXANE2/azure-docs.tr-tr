@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961796"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95541258"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Blob Dizin etiketlerini (Önizleme) kullanarak Azure Blob depolamada verileri yönetme ve bulma
 
@@ -23,7 +23,7 @@ Blob dizin etiketleri, anahtar-değer etiketi özniteliklerini kullanarak Depola
 > [!NOTE]
 > Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini etiketleriyle Azure blob verilerini yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -38,7 +38,7 @@ Blob dizini önizlemede olduğu için, .NET depolama paketi önizleme NuGet akı
 
 2. NuGet Paket Yöneticisi ' nde, **Azure. Storage. blobu** paketini bulun ve **12.7.0-Preview. 1** sürümünü veya daha yeni sürümünü projenize uygulayın. PowerShell komutunu da çalıştırabilirsiniz: `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
-   Nasıl yapılacağını öğrenmek için bkz. [paket bulma ve yüklemeyi oluşturma](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
+   Nasıl yapılacağını öğrenmek için bkz. [paket bulma ve yüklemeyi oluşturma](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
 3. Aşağıdaki using deyimlerini, kod dosyanızın en üstüne ekleyin.
 
@@ -56,7 +56,7 @@ Blob dizini önizlemede olduğu için, .NET depolama paketi önizleme NuGet akı
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Dizin etiketlerine sahip yeni bir blobu karşıya yükleme
 
-Bu görev, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
+Bu görev, bir [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı Işlemi](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Blob dizini etiketlerini al, ayarla ve Güncelleştir
 
-Blob dizini etiketlerini alma, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
+Blob dizini etiketlerini alma, bir [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [Azure Kaynak sağlayıcısı Işlemi](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
-Blob dizini etiketlerini ayarlama ve güncelleştirme, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
+Blob dizini etiketlerini ayarlama ve güncelleştirme, bir [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı Işlemi](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Blob dizini etiketleriyle verileri filtreleme ve bulma
 
-Bu görev, bir [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [Azure Kaynak sağlayıcısı Işlemi](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
+Bu görev, bir [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [Azure Kaynak sağlayıcısı Işlemi](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) için özel bir Azure rolü aracılığıyla izin verilen bir güvenlik sorumlusu tarafından gerçekleştirilebilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

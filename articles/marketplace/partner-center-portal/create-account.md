@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: e15937797077e3fa46a12e726a3ce690c3979cbd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628790"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542295"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -60,14 +60,14 @@ Yayımcı profiliniz, şirketinizin adını ve MPN KIMLIĞINI içerir. Henüz ya
 
 1. Yayımcı KIMLIĞI oluşturun. Yayımcı KIMLIĞINIZ, şirketinizi ve tekliflerinizi Azure Market ve AppSource 'ta benzersiz şekilde tanımlar.
 
-1. Yayımcı profili bilgilerinizi onayladıktan sonra, hüküm ve koşulları kabul edin ve ardından **kabul et ve devam et** ' i seçerek Iş Ortağı Merkezi hesabınızı oluşturun.
+1. Yayımcı profili bilgilerinizi onayladıktan sonra, hüküm ve koşulları kabul edin ve ardından **kabul et ve devam et**' i seçerek Iş Ortağı Merkezi hesabınızı oluşturun.
 
     > [!IMPORTANT]
     > Bu koşulları kabul etmek için şirketinizin adına işlem yapmaya yetkiniz olmalıdır.
 
     Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. Ticari Market hesabı sol bölmede görüntülenir.
 
-1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için sağ üst köşedeki > **Geliştirici ayarları** programlarında **Ayarlar** (dişli simgesi) seçeneğini belirleyin  >  **Programs**.
+1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için sağ üst köşedeki > **Hesap ayarları** programlarında **Ayarlar** (dişli simgesi) seçeneğini belirleyin  >  **Programs**.
 
 Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. [Ticari Market 'e yeni yayımcılar eklemeye](#add-new-publishers-to-the-commercial-marketplace-program)devam edin.
 
@@ -91,7 +91,7 @@ Microsoft İş Ortağı Ağı hesabınızı kullandığınızda, şirketinizin i
 > Microsoft İş Ortağı Ağı oturum açmak için bir **Hesap Yöneticisi** veya **genel yönetici** rolüne sahip olmanız gerekir.
 
 1. Microsoft İş Ortağı Ağı hesabınızla [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/) 'nde oturum açın.
-1. **Ayarlar**  >  **Geliştirici ayarları**  >  **Programlar**  >  **Başlarken** ' i seçin.
+1. **Ayarlar**  >  **Hesap ayarları**  >  **Programlar**  >  **Başlarken**' i seçin.
 
    Microsoft İş Ortağı Ağı aboneliğinizi algılar ve **Yayımcı profili** bölmesini görüntüler.
 
@@ -103,7 +103,7 @@ Microsoft İş Ortağı Ağı hesabınızı kullandığınızda, şirketinizin i
 
     Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. Ticari Market hesabı sol bölmede görüntülenir.
 
-1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için **Ayarlar**  >  **Geliştirici ayarları**  >  **Programlar** ' ı seçin.
+1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için **Ayarlar**  >  **Hesap ayarları**  >  **Programlar**' ı seçin.
 
 Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. [Ticari Market 'e yeni yayımcılar eklemeye](#add-new-publishers-to-the-commercial-marketplace-program)devam edin.
 
@@ -119,7 +119,7 @@ Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. [Ticar
 Geliştirici programınızdaki aynı hesapla ticari Market programına kaydoldığınızda, Iş Ortağı Merkezi 'nin sol bölmesinde mevcut olan tüm program kayıtlarını görebilirsiniz.
 
 1. Mevcut hesabınızla [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/) ' nde oturum açın.
-1. **Ayarlar**  >  **Geliştirici ayarları**  >  **Programlar**  >  **Başlarken** ' i seçin ve iş e-posta adresinizi girin.
+1. **Ayarlar**  >  **Hesap ayarları**  >  **Programlar**  >  **kullanmaya** başlayın ' ı seçin ve iş e-posta adresinizi girin.
 1. **Yayımcı profili** sayfasındaki ayrıntıları doldurun.
 2. [Microsoft Publisher anlaşmasındaki](https://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları okuyun ve ardından **kabul et '** i seçin ve kayıt bilgilerinizi tamamlamaya devam edin.
 
@@ -128,7 +128,7 @@ Geliştirici programınızdaki aynı hesapla ticari Market programına kaydoldı
 
     Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. Ticari Market hesabı sol bölmede görüntülenir.
 
-1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için **Ayarlar**  >  **Geliştirici ayarları**  >  **Programlar** ' ı seçin.
+1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için **Ayarlar**  >  **Hesap ayarları**  >  **Programlar**' ı seçin.
 
 Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Yayımcı ekleme konusunda yardım için, [ticari Market 'e yeni yayımcılar eklemeye](#add-new-publishers-to-the-commercial-marketplace-program)devam edin.
 
@@ -142,7 +142,7 @@ Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi 
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Ticari Market programına yeni yayımcılar ekleme
 
-Kuruluşun bir ticari Market hesabıyla ilişkilendirilmiş birden çok yayımcısı olabilir. Mevcut bir Kullanıcı, **Ayarlar**  >  **Geliştirici ayarları**  >  **Publisher**  >  **Yayımcı Ekle** ' ye tıklayarak iş ortağı merkezi 'nde oturum açtıktan sonra daha fazla yayımcı ekleyebilir.
+Kuruluşun bir ticari Market hesabıyla ilişkilendirilmiş birden çok yayımcısı olabilir. Mevcut bir Kullanıcı, **Ayarlar**  >  **Hesap ayarları**  >  **kuruluş profili**  >  **tanımlayıcıları**  >  **Yayımcı Ekle** seçeneğini belirleyerek iş ortağı merkezi 'nde oturum açtıktan sonra daha fazla yayımcı ekleyebilir.
 
 >[!NOTE]
 >Yeni bir yayımcı eklemeden önce, iş ortağı Merkezi ' nde oturum açıp **Hesap ayarları** yayımcıları ' nı seçerek mevcut yayımcıların listesini gözden geçirin  >  **Publishers**.
@@ -150,14 +150,14 @@ Kuruluşun bir ticari Market hesabıyla ilişkilendirilmiş birden çok yayımc�
 Aynı Azure Active Directory kiracısından ek kullanıcılar yeni bir yayımcı eklemek için aşağıdaki adımları kullanabilir.
 
 1. [Microsoft Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)' nde kaydolma akışını başlatın.
-2. **İş hesabı Ile oturum aç** ' ı seçin ve iş e-posta adresinizi girin.
+2. **İş hesabı Ile oturum aç**' ı seçin ve iş e-posta adresinizi girin.
 3. **Yayımcı Ekle** düğmesini seçin.
 4. Yayımcıyla ilişkilendirmek istediğiniz MPN KIMLIĞINI seçin.
 5. Formdaki **Yayımcı ayrıntılarını** güncelleştirin.
 
-   * **Yayımcı adı** : teklifle ticari Market 'te görüntülenen ad.  
-   * **PublisherID** : Iş Ortağı Merkezi tarafından yayımcıyı benzersiz olarak tanımlamak için kullanılan bir tanımlayıcı. Bu alanın varsayılan değeri sistemdeki mevcut ve benzersiz bir yayımcı KIMLIĞIYLE eşlenir. Yayımcı KIMLIĞI tekrar kullanılamadığından, bu alanın güncelleştirilmesi gerekir.  
-   * **İletişim bilgileri** : gerektiğinde iletişim bilgilerini güncelleştirin.
+   * **Yayımcı adı**: teklifle ticari Market 'te görüntülenen ad.  
+   * **PublisherID**: Iş Ortağı Merkezi tarafından yayımcıyı benzersiz olarak tanımlamak için kullanılan bir tanımlayıcı. Bu alanın varsayılan değeri sistemdeki mevcut ve benzersiz bir yayımcı KIMLIĞIYLE eşlenir. Yayımcı KIMLIĞI tekrar kullanılamadığından, bu alanın güncelleştirilmesi gerekir.  
+   * **İletişim bilgileri**: gerektiğinde iletişim bilgilerini güncelleştirin.
 
 Bu işlem tamamlandıktan sonra, yeni oluşturulan yayımcıyı yönetmek için sol bölmede listelenen ticari Market hesabına gidin. Ticari Market hesabını görmüyorsanız sayfayı yenileyin. Yeni Yayımcı, **yayımcılar** listesinde görünür.
 

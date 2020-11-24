@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 92ac1887aca8f30c551419ef9149073d79f333a5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7d3bc13dc373cda510153099859cf4cd61b3dd69
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143842"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534543"
 ---
 # <a name="access-control"></a>Erişim denetimi
 
@@ -32,7 +32,7 @@ ms.locfileid: "92143842"
 "Çalışma kitapları katılımcısı" paylaşılan çalışma kitaplarını kaydetmek için bir nesneye "çalışma kitapları/yazma" ayrıcalıklarını ekler.
 Kullanıcıların yalnızca görebileceği özel çalışma kitaplarını kaydedebilmeleri için özel ayrıcalıklar gerekmez.
 
-Özel rol tabanlı erişim denetimi için:
+Özel roller için:
 
 `microsoft.insights/workbooks/write`Paylaşılan çalışma kitaplarını kaydetmek için ekleyin. Daha ayrıntılı bilgi için bkz. [çalışma kitabı katılımcısı](../../role-based-access-control/built-in-roles.md#monitoring-contributor) rolü.
 

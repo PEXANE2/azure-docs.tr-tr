@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/13/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: bilgisayar görme, görüntü işleme uygulamaları, görüntü işleme hizmeti
-ms.openlocfilehash: 1603aa05d8bde6d4c3edba2d49120fa3545d3fd0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014654"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532299"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -90,13 +90,12 @@ Görüntülere uygun küçük resimler oluşturmak üzere söz konusu görüntü
 
 Görüntü İşleme kullanarak bir görüntüdeki [yetişkinlere yönelik içeriği algılayabilir](concept-detecting-adult-content.md) ve farklı sınıflandırmaların güvenilirlik puanlarını getirebilirsiniz. İçerik bayrak belirleme eşiği, tercihlerinize uyum sağlamak için bir kayan ölçekte ayarlanabilir.
 
-## <a name="use-containers"></a>Kapsayıcıları kullanma
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
 
-Şirket içi hizmeti kullanmak için Görüntü İşleme Docker Kapsayıcıları kullanın. Şu anda iki kapsayıcı mevcuttur:
+Şirket içinde API özelliklerini dağıtmak için Görüntü İşleme kapsayıcıları kullanın. Bu Docker kapsayıcıları, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmayı sağlar. Görüntü İşleme aşağıdaki kapsayıcıları sunmaktadır:
 
-* [Görüntü işleme okuma kapsayıcısı](computer-vision-how-to-install-containers.md) görüntülerde yazdırılmış ve el yazısı metinleri tanımanıza olanak sağlar.
-
-* [Görüntü işleme uzamsal analiz kapsayıcısı](spatial-analysis-container.md) , fiziksel ortamlar aracılığıyla insanlar ve bunların hareketleri arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz etmenizi sağlar.
+* [Görüntü işleme okuma OCR kapsayıcısı (Önizleme)](computer-vision-how-to-install-containers.md) , görüntülerde yazdırılmış ve el yazısı metinleri tanımanıza olanak sağlar.
+* [Görüntü işleme uzamsal çözümleme kapsayıcısı (Önizleme)](spatial-analysis-container.md) , gerçek zamanlı akış videosunu çözümleyerek insanlar ile fiziksel ortamlar arasındaki hareket arasındaki uzamsal ilişkileri anlamanıza olanak tanır.
 
 ## <a name="image-requirements"></a>Görüntü gereksinimleri
 

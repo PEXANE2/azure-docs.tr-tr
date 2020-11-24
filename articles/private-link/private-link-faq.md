@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 6ee6d88b5247209d5628c7f85f1985507d53811d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913730"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544216"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92913730"
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Azure özel uç noktası ve Azure özel bağlantı hizmeti nedir?
 
 - **[Azure özel uç](private-endpoint-overview.md)** noktası: Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç noktaları, özel bağlantıyı destekleyen bir Azure PaaS hizmetine veya kendi özel bağlantı hizmetinize bağlanmak için kullanabilirsiniz.
-- **[Azure özel bağlantı hizmeti](private-link-service-overview.md)** : Azure özel bağlantı hizmeti, bir hizmet sağlayıcısı tarafından oluşturulan bir hizmettir. Şu anda bir özel bağlantı hizmeti bir Standart Load Balancer ön uç IP yapılandırmasına bağlanabilir. 
+- **[Azure özel bağlantı hizmeti](private-link-service-overview.md)**: Azure özel bağlantı hizmeti, bir hizmet sağlayıcısı tarafından oluşturulan bir hizmettir. Şu anda bir özel bağlantı hizmeti bir Standart Load Balancer ön uç IP yapılandırmasına bağlanabilir. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Özel bağlantı kullanılırken trafik nasıl gönderiliyor?
 Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 'te geçiş yapmaz. Azure özel bağlantısı müşteri verilerini depolamaz.
@@ -69,8 +69,8 @@ Evet. Bir özel bağlantı hizmeti birden çok özel uç noktasından bağlantı
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Özel bağlantı hizmetimin görünürlüğünü nasıl denetlerim?
 Özel bağlantı hizmetindeki görünürlük yapılandırmasını kullanarak pozlamayı denetleyebilirsiniz. Görünürlük üç ayarı destekler:
 
-- **Hiçbiri** -yalnızca RBAC erişimi olan abonelikler hizmeti bulabilir. 
-- **Restrictive** Yalnızca ONAYLANMıŞ ve RBAC erişimi olan abonelikler hizmeti bulabilir. 
+- **Hiçbiri** -yalnızca Azure RBAC erişimi olan abonelikler hizmeti bulabilir. 
+- **Kısıtlayıcı** -yalnızca onaylanmış ve Azure RBAC erişimi olan abonelikler hizmeti bulabilir. 
 - **Tümü** -herkes hizmeti bulabilir. 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Temel yük dengeleyiciye sahip bir özel bağlantı hizmeti oluşturabilir miyim? 

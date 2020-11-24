@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540799"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542091"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning veri başvurusunu izleme
 
@@ -26,7 +26,7 @@ Bu bölümde, Azure Machine Learning için toplanan otomatik olarak toplanan tü
 
 **Model**
 
-| Ölçüm | Birim | Açıklama |
+| Metric | Birim | Description |
 | ----- | ----- | ----- |
 | Model dağıtılamadı | Count | Başarısız olan model dağıtımı sayısı. |
 | Model dağıtımı başlatıldı | Count | Başlatılan model dağıtımı sayısı. |
@@ -38,7 +38,7 @@ Bu bölümde, Azure Machine Learning için toplanan otomatik olarak toplanan tü
 
 Kota bilgileri yalnızca Azure Machine Learning işlem amaçlıdır.
 
-| Ölçüm | Birim | Açıklama |
+| Metric | Birim | Description |
 | ----- | ----- | ----- |
 | Etkin çekirdekler | Count | Etkin işlem çekirdekleri sayısı. |
 | Etkin düğümler | Count | Etkin düğümlerin sayısı. |
@@ -56,16 +56,16 @@ Kota bilgileri yalnızca Azure Machine Learning işlem amaçlıdır.
 
 **Kaynak**
 
-| Ölçüm | Birim | Açıklama |
+| Metric | Birim | Description |
 | ----- | ----- | ----- |
 | Cpukullanımı | Yüzde | Bir çalıştırma/iş sırasında belirli bir düğüm için CPU 'nun yüzde ne kadarı kullanıldı. Bu ölçüm yalnızca bir düğüm üzerinde bir iş çalışırken yayımlanır. Bir iş, bir veya daha fazla düğüm kullanabilir. Bu ölçüm düğüm başına yayımlanır. |
 | Gpukullanım | Yüzde | Bir çalıştırma/iş sırasında belirli bir düğüm için GPU 'nun ne kadarının kullanıldığı. Bir düğümde bir veya daha fazla GPU bulunabilir. Bu ölçüm, düğüm başına GPU başına yayımlanır. |
 
-**Çalışmaz**
+**Çalıştır**
 
 Eğitim çalıştırmaları hakkında bilgiler.
 
-| Ölçüm | Birim | Açıklama |
+| Metric | Birim | Description |
 | ----- | ----- | ----- |
 | Tamamlanan çalıştırmalar | Count | Tamamlanan çalıştırma sayısı. |
 | Başarısız çalıştırmalar | Count | Başarısız çalıştırmaların sayısı. |
@@ -77,9 +77,9 @@ Eğitim çalıştırmaları hakkında bilgiler.
 
 Azure Machine Learning, ölçümleriyle ilişkili aşağıdaki boyutlara sahiptir.
 
-| Boyut | Açıklama |
+| Boyut | Description |
 | ---- | ---- |
-| Küme Adı | İşlem örneğinin adı. Tüm Kota ölçümleri için kullanılabilir. |
+| Küme Adı | İşlem kümesi kaynağının adı. Tüm Kota ölçümleri için kullanılabilir. |
 | VM ailesi adı | Küme tarafından kullanılan VM ailesi adı. Kota kullanımı yüzdesi için kullanılabilir. |
 | VM önceliği | VM 'nin önceliği. Kota kullanımı yüzdesi için kullanılabilir.
 | CreatedTime | Yalnızca Cpukullanımı ve Gpukullanımı için kullanılabilir. |
@@ -104,7 +104,7 @@ RunType boyutu için geçerli değerler şunlardır:
 
 Aşağıdaki tabloda, etkinlik günlüğünde oluşturulabilecek Azure Machine Learning ilişkili işlemler listelenmiştir.
 
-| İşlem | Açıklama |
+| İşlem | Description |
 |:---|:---|
 | Machine Learning çalışma alanı oluşturur veya güncelleştirir | Çalışma alanı oluşturuldu veya güncelleştirildi |
 | Checkcomputenameavaılabılıty | İşlem adının zaten kullanımda olup olmadığını denetleyin |

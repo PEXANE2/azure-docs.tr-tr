@@ -5,14 +5,14 @@ keywords: Azure, yapay zeka, AI, doğal dil işleme, NLP, doğal dil anlama, NLU
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: b4034f9b7a5a9ec856134e27b422736e2c98f04a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025200"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539269"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
@@ -116,7 +116,7 @@ LUIS'i hızlı ve kolay bir şekilde botla birlikte kullanmanızı sağlayacak u
 
 ## <a name="integrate-with-a-bot"></a>Bir bot ile tümleştirme
 
-[Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") Ile [Azure bot hizmetini](/azure/bot-service/?view=azure-bot-service-4.0 "Azure bot hizmeti") kullanarak bir sohbet bot oluşturun ve dağıtın. Grafik arabirim Aracı, [besteci](/composer/ "Oluşturucu")veya üst bot senaryoları için tasarlanan [çalışan bot örnekleri](https://github.com/microsoft/BotBuilder-Samples "çalışan bot örnekleri") ile tasarım ve geliştirme.
+[Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot Framework") Ile [Azure bot hizmetini](/azure/bot-service/ "Azure bot hizmeti") kullanarak bir sohbet bot oluşturun ve dağıtın. Grafik arabirim Aracı, [besteci](/composer/ "Oluşturucu")veya üst bot senaryoları için tasarlanan [çalışan bot örnekleri](https://github.com/microsoft/BotBuilder-Samples "çalışan bot örnekleri") ile tasarım ve geliştirme.
 
 ## <a name="integrate-with-other-cognitive-services"></a>Diğer bilişsel hizmetlerle tümleştirin
 
@@ -130,6 +130,10 @@ LUO, var olan LUSıS kaynaklarınızın bir parçası olarak Metin Analizi işle
 
 [Portalı](get-started-portal-build-app.md "portal") ve [SDK istemci kitaplıklarını](azure-sdk-quickstart.md "SDK istemci kitaplıkları")kullanarak UYGULAMALı hızlı başlangıçlarla halsıs hakkında bilgi edinin.
 
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
+
+Şirket içinde API özelliklerini dağıtmak için [lusıs kapsayıcılarını kullanın](luis-container-howto.md) . Bu Docker kapsayıcıları, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmayı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

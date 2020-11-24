@@ -3,12 +3,12 @@ title: Görev çalışma zamanı ortam değişkenleri
 description: Azure Batch Analytics için görev çalışma zamanı ortamı değişken Kılavuzu ve başvurusu.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2cab5011eb04586dc361bf1cec9c1f162d70117
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960920"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538538"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Çalışma zamanı ortam değişkenlerini Azure Batch
 
@@ -18,13 +18,13 @@ Batch ile ortam değişkenlerini kullanma hakkında daha fazla bilgi için bkz. 
 
 ## <a name="environment-variable-visibility"></a>Ortam değişkeni görünürlüğü
 
-Bu ortam değişkenleri yalnızca **görev kullanıcısı**bağlamında görünür ve bir görevin yürütüldüğü düğüm üzerindeki kullanıcı hesabıdır. Bir işlem düğümüne Uzak Masaüstü Protokolü (RDP) veya Güvenli Kabuk (SSH) aracılığıyla [uzaktan bağlanıp](./error-handling.md#connect-to-compute-nodes) ortam değişkenlerini listelerseniz bunları *göremezsiniz*. Bunun nedeni, uzak bağlantı için kullanılan kullanıcı hesabının görev tarafından kullanılan hesapla aynı olmamasıdır.
+Bu ortam değişkenleri yalnızca **görev kullanıcısı** bağlamında görünür ve bir görevin yürütüldüğü düğüm üzerindeki kullanıcı hesabıdır. Bir işlem düğümüne Uzak Masaüstü Protokolü (RDP) veya Güvenli Kabuk (SSH) aracılığıyla [uzaktan bağlanıp](./error-handling.md#connect-to-compute-nodes) ortam değişkenlerini listelerseniz bunları *göremezsiniz*. Bunun nedeni, uzak bağlantı için kullanılan kullanıcı hesabının görev tarafından kullanılan hesapla aynı olmamasıdır.
 
 Bir ortam değişkeninin geçerli değerini almak için, `cmd.exe` bir Windows işlem düğümünde veya `/bin/sh` Linux düğümünde başlatın:
 
 `cmd /c set <ENV_VARIABLE_NAME>`
 
-`/bin/sh printenv <ENV_VARIABLE_NAME>`
+`/bin/sh -c "printenv <ENV_VARIABLE_NAME>"`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>Ortam değişkenlerinin komut satırı genişletmesi
 
@@ -32,11 +32,11 @@ Bir ortam değişkeninin geçerli değerini almak için, `cmd.exe` bir Windows i
 
 `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
 
-`/bin/sh -c MyTaskApplication $MY_ENV_VAR`
+`/bin/sh -c "MyTaskApplication $MY_ENV_VAR"`
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-| Değişken adı                     | Açıklama                                                              | Kullanılabilirlik | Örnek |
+| Değişken adı                     | Description                                                              | Kullanılabilirlik | Örnek |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Görevin ait olduğu Batch hesabının adı.                  | Tüm görevler.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch hesabının URL 'SI. | Tüm görevler. | `https://myaccount.westus.batch.azure.com` |

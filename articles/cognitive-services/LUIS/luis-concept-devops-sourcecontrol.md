@@ -4,13 +4,13 @@ description: Kaynak denetimi altında Language Understanding (LUSıS) uygulaman�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 11/18/2020
+ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019203"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535563"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
 
@@ -53,7 +53,7 @@ Bir LUO uygulamasını `.lu` biçimde kaydetmek ve kaynak denetimi altına yerle
 - YA da: bir `.lu` lusıs uygulaması için dosya oluşturmak ve kaynak denetimi deponuza eklemek için bir metin düzenleyicisi kullanın
 
 > [!TIP]
-> Bir LUO uygulamasının JSON dışarı aktarıcısı ile çalışıyorsanız, [Botbuilder-Tools LUSıS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)' yı kullanarak [bunu baaşağı dönüştürebilirsiniz](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) . `--sort`Amaçları ve dıklarınızı alfabetik olarak sıralanmış olduğundan emin olmak için seçeneğini kullanın.  
+> Bir LUO uygulamasının JSON dışarı aktarılmasına çalışıyorsanız, [bunu Luaşağı dönüştürebilirsiniz](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert).  `--sort`Amaçları ve dıklarınızı alfabetik olarak sıralanmış olduğundan emin olmak için seçeneğini kullanın.  
 > **.** Luu portalına YERLEŞTIRILMIŞ lu dışarı aktarma özelliği çıktıyı zaten sıralıyor.
 
 ### <a name="build-the-luis-app-from-source"></a>Kaynaktan LUSıS uygulamasını oluşturma

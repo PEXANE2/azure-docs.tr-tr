@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce0aea6bb257f0a52a843ce53cc904ed0a775dd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760170"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536209"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure Izleyici günlüklerinde denetim sorguları (Önizleme)
 Günlük sorgusu denetim günlükleri Azure Izleyici 'de çalıştırılan günlük sorguları hakkında telemetri sağlar. Bu, bir sorgunun ne zaman çalıştırıldığı, onu kimin çalıştırdığını, hangi aracın kullanıldığını, sorgu metnini ve sorgu yürütmesini açıklayan performans istatistiklerini içerir.
@@ -35,7 +35,7 @@ Aşağıdaki konumlardan birindeki Azure portal bir Log Analytics çalışma ala
 [Log Analytics çalışma alanı Için tanılama ayarından](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-log-analytics-workspace)örnek kaynak yöneticisi şablonu alabilirsiniz.
 
 ## <a name="audit-data"></a>Denetim verileri
-Bir sorgu her çalıştırıldığında bir denetim kaydı oluşturulur. Verileri bir Log Analytics çalışma alanına gönderiyorsanız, bu, *Laquerylogs*adlı bir tabloda depolanır. Aşağıdaki tabloda denetim verilerinin her kaydındaki özellikler açıklanmaktadır.
+Bir sorgu her çalıştırıldığında bir denetim kaydı oluşturulur. Verileri bir Log Analytics çalışma alanına gönderiyorsanız, bu, *Laquerylogs* adlı bir tabloda depolanır. Aşağıdaki tabloda denetim verilerinin her kaydındaki özellikler açıklanmaktadır.
 
 | Alan | Açıklama |
 |:---|:---|
@@ -50,7 +50,7 @@ Bir sorgu her çalıştırıldığında bir denetim kaydı oluşturulur. Veriler
 | QueryTimeRangeEnd     | Sorgu için seçilen zaman aralığının sonu. Bu, sorgunun Log Analytics başladığı ve zaman aralığının saat seçici yerine sorgu içinde belirtildiği gibi belirli senaryolarda doldurulmayabilir.  |
 | QueryText             | Çalıştırılan sorgunun metni. |
 | RequestTarget         | Sorguyu göndermek için API URL 'SI kullanıldı.  |
-| Öğesinden        | Sorgunun çalıştırmak istediği kaynakların listesi. En fazla üç dize dizisi içerir: çalışma alanları, uygulamalar ve kaynaklar. Abonelik veya kaynak grubu ile hedeflenen sorgular, *kaynak*olarak gösterilir. RequestTarget tarafından kapsanan hedefi içerir.<br>Her kaynağın kaynak KIMLIĞI, çözümlenebiliyorsa dahil edilir. Kaynağa erişilirken bir hata döndürülürse bu durum çözülebilir. Bu durumda, sorgudaki belirli metin kullanılacaktır.<br>Sorgu, birden fazla aboneliğe sahip olan bir çalışma alanı adı gibi belirsiz bir ad kullanıyorsa, bu belirsiz ad kullanılacaktır. |
+| Öğesinden        | Sorgunun çalıştırmak istediği kaynakların listesi. En fazla üç dize dizisi içerir: çalışma alanları, uygulamalar ve kaynaklar. Abonelik veya kaynak grubu ile hedeflenen sorgular, *kaynak* olarak gösterilir. RequestTarget tarafından kapsanan hedefi içerir.<br>Her kaynağın kaynak KIMLIĞI, çözümlenebiliyorsa dahil edilir. Kaynağa erişilirken bir hata döndürülürse bu durum çözülebilir. Bu durumda, sorgudaki belirli metin kullanılacaktır.<br>Sorgu, birden fazla aboneliğe sahip olan bir çalışma alanı adı gibi belirsiz bir ad kullanıyorsa, bu belirsiz ad kullanılacaktır. |
 | RequestContextFilters | Sorgu çağrısının bir parçası olarak belirtilen filtre kümesi. En çok üç olası dize dizisi içerir:<br>-ResourceTypes-sorgunun kapsamını sınırlayan kaynak türü<br>-Workspaces-sorguyu sınırlandıran çalışma alanlarının listesi<br>-WorkspaceRegions-sorguyu sınırlamak için çalışma alanı bölgelerinin listesi |
 | Yanıt kodu          | Sorgu gönderildiğinde döndürülen HTTP yanıt kodu. |
 | ResponseDurationMs    | Yanıtın döndürüldüğü zaman.  |
@@ -66,7 +66,7 @@ Bir sorgu her çalıştırıldığında bir denetim kaydı oluşturulur. Veriler
 
 - Sorgular yalnızca bir kullanıcı bağlamında yürütüldüğünde günlüğe kaydedilir. Azure 'da hizmetten hizmete hizmet kaydedilmez. Bu dışlamanın bu iki birincil sorgu kümesi, faturalandırma hesaplamalarında ve otomatik uyarı yürütmelerinin bir özetini kapsar. Uyarılar söz konusu olduğunda, yalnızca zamanlanmış uyarı sorgusunun kendisi günlüğe kaydedilmez; uyarı oluşturma ekranındaki uyarının ilk yürütülmesi bir kullanıcı bağlamında yürütülür ve denetim amacıyla kullanılabilir olacaktır. 
 - Azure Veri Gezgini proxy 'den gelen sorgularda performans istatistikleri kullanılamaz. Bu sorgulara ilişkin diğer tüm veriler yine de doldurulacak.
-- [Dize sabit değerlerini gizleme](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) dizelerindeki *h* ipucu sorgu denetim günlükleri üzerinde bir etkiye sahip olmayacaktır. Sorgular, bir dize belirsizlendirilemeden tamamen gönderildiği şekilde yakalanacaktır. Log Analytics çalışma alanlarında bulunan çeşitli RBAC modlarını kullanarak bu verileri görmek için yalnızca Uyumluluk haklarına sahip olan kullanıcıların bunu yapabilmesini sağlayabilirsiniz.
+- [Dize sabit değerlerini gizleme](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) dizelerindeki *h* ipucu sorgu denetim günlükleri üzerinde bir etkiye sahip olmayacaktır. Sorgular, bir dize belirsizlendirilemeden tamamen gönderildiği şekilde yakalanacaktır. Log Analytics çalışma alanlarında bulunan çeşitli Kubernetes RBAC veya Azure RBAC modlarını kullanarak bu verileri görmek için yalnızca Uyumluluk haklarına sahip olan kullanıcıların bunu yapabilmesini sağlayabilirsiniz.
 - Birden çok çalışma alanındaki verileri içeren sorgular için, sorgu yalnızca kullanıcının erişimi olan çalışma alanlarında yakalanacaktır.
 
 ## <a name="costs"></a>Maliyetler  

@@ -3,12 +3,12 @@ title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşı
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258723"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536362"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
@@ -26,7 +26,7 @@ Her Application Insights kaynak, kullanıma hazır olan ölçümler ile gelir. T
 
 -   Birlikte dağıtılan uygulama bileşenleri için. Genellikle aynı DevOps/Ise kullanıcıları tarafından yönetilen tek bir ekip tarafından geliştirilmiştir.
 -   Bu, yanıt süreleri, panodaki hata oranları gibi ana performans göstergelerini (KPI 'Lar), varsayılan olarak tüm bunların tamamında (Ölçüm Gezgini deneyiminde rol adına göre segmentleyebilirsiniz) bir araya getirir.
--   Rol tabanlı Access Control (RBAC) uygulama bileşenleri arasında farklı bir şekilde yönetmeye gerek yoktur.
+-   Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) uygulama bileşenleri arasında farklı bir şekilde yönetmeye gerek yoktur.
 -   Bileşenler arasında farklı ölçüm uyarısı ölçütlerine gerek yoksa.
 -   Sürekli dışarı aktarmaları bileşenler arasında farklı şekilde yönetmeniz gerekmiyorsa.
 -   Faturalandırma/kotaları bileşenler arasında farklı şekilde yönetmeniz gerekmiyorsa.

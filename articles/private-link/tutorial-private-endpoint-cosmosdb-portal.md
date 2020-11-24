@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145693"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522150"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir Azure Cosmos hesabına bağlanma
 
@@ -53,7 +53,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Kaynak Grubu   | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Bölge           | **Doğu ABD** seçin |
+    | Region           | **Doğu ABD** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -63,7 +63,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     |--------------------|----------------------------|
     | IPv4 adres alanı | **10.1.0.0/16** girin |
 
-5. **Alt ağ adı**altında, **varsayılan**sözcük ' ı seçin.
+5. **Alt ağ adı** altında, **varsayılan** sözcük ' ı seçin.
 
 6. **Alt ağı Düzenle**' de şu bilgileri girin:
 
@@ -72,17 +72,17 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Alt ağ adı | **Mysubnet** girin |
     | Alt ağ adres aralığı | **10.1.0.0/24** girin |
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Güvenlik** sekmesini seçin.
 
-9. **Bastionhost**altında **Etkinleştir**' i seçin. Bu bilgileri girin:
+9. **Bastionhost** altında **Etkinleştir**' i seçin. Bu bilgileri girin:
 
     | Ayar            | Değer                      |
     |--------------------|----------------------------|
     | Savunma adı | **Mybastionhost** girin |
     | AzureBastionSubnet adres alanı | **10.1.1.0/24** girin |
-    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad**Için **Mybastionıp**girin. </br> **Tamam**’ı seçin. |
+    | Genel IP Adresi | **Yeni oluştur**’u seçin. </br> **Ad** Için **Mybastionıp** girin. </br> **Tamam**’ı seçin. |
 
 
 8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
@@ -104,7 +104,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Bölge | **Doğu ABD** seçin |
+    | Region | **Doğu ABD** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -127,7 +127,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | NIC ağ güvenlik grubu | **Temel**|
     | Genel gelen bağlantı noktaları | **Hiçbiri** seçeneğini belirtin. |
    
-5. **Gözden geçir + oluştur**’u seçin. 
+5. **Gözden geçir ve oluştur**’u seçin. 
   
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -135,7 +135,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
 
 Bu bölümde bir Cosmos DB hesabı oluşturacak ve özel uç noktasını yapılandıracaksınız.
 
-1. Sol taraftaki menüde, **Create a resource**  >  **Databases**  >  **Hesap Cosmos DB**kaynak veritabanları oluştur ' u seçin veya arama kutusunda **Cosmos DB hesabı** arayın.
+1. Sol taraftaki menüde, **Create a resource**  >  **Databases**  >  **Hesap Cosmos DB** kaynak veritabanları oluştur ' u seçin veya arama kutusunda **Cosmos DB hesabı** arayın.
 
 2. **Cosmos DB oluşturma hesabı** ' nın **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin:
 
@@ -145,13 +145,13 @@ Bu bölümde bir Cosmos DB hesabı oluşturacak ve özel uç noktasını yapıla
     | Abonelik | Azure aboneliğinizi seçin. |
     | Kaynak Grubu | **myResourceGroup** öğesini seçin. |
     | **Örnek ayrıntıları** |  |
-    | Hesap adı | **Mycosmosdb**girin. Ad kullanılamıyorsa, benzersiz bir ad girin. |
+    | Hesap adı | **Mycosmosdb** girin. Ad kullanılamıyorsa, benzersiz bir ad girin. |
     | API | **Çekirdek (SQL)** öğesini seçin. |
     | Konum | **Doğu ABD**’yi seçin. |
-    | Kapasite modu | Varsayılan **sağlanan aktarım hızını**bırakın. |
-    | Ücretsiz Katman İndirimi Uygula | **Varsayılan olarak**bırakın. |
-    | Coğrafi Yedeklilik | Varsayılan **devre dışı**bırakın. |
-    | Birden Çok Bölgeli Yazmalar | Varsayılan **devre dışı**bırakın. |
+    | Kapasite modu | Varsayılan **sağlanan aktarım hızını** bırakın. |
+    | Ücretsiz Katman İndirimi Uygula | **Varsayılan olarak** bırakın. |
+    | Coğrafi Yedeklilik | Varsayılan **devre dışı** bırakın. |
+    | Birden Çok Bölgeli Yazmalar | Varsayılan **devre dışı** bırakın. |
    
 3. **Ağ** sekmesini seçin veya **Sonraki: ağ** düğmesini seçin.
 
@@ -214,7 +214,7 @@ Bu bölümde bir Cosmos DB hesabı oluşturacak ve özel uç noktasını yapıla
 
 12. Önceki adımlarda oluşturduğunuz depolama hesabını seçin.
 
-14. **BIRINCIL bağlantı dizesinde**Kopyala ' yı seçin.
+14. **BIRINCIL bağlantı dizesinde** Kopyala ' yı seçin.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Özel uç nokta ile bağlantıyı sına
 
@@ -226,7 +226,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 3. **Myvm**' yi seçin.
 
-4. **Myvm**için genel bakış sayfasında **Bağlan** ' ı **seçin.**
+4. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
 5. Mavi **kullanımı** savunma düğmesini seçin.
 
@@ -248,7 +248,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
     Cosmos DB hesap adı için **10.1.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
-9. [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) sanal makineye yükler.
+9. [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) sanal makineye yükler.
 
 10. **Microsoft Azure Depolama Gezgini** yüklendikten sonra **son** ' u seçin.  Uygulamayı açmak için kutuyu işaretli bırakın.
 
@@ -256,17 +256,17 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 12. Depolama Gezgini **Cosmos DB hesaplar** ' da sağ fare düğmesini seçin ve **Cosmos DB Bağlan**' ı seçin.
 
-13. Varsayılan **SQL** ' **i Select API**altında bırakın.
+13. Varsayılan **SQL** ' **i Select API** altında bırakın.
 
-14. **Bağlantı dizesi**altındaki kutuya, bağlantı dizesini önceki adımlarda kopyaladığınız Cosmos DB hesabından yapıştırın.
+14. **Bağlantı dizesi** altındaki kutuya, bağlantı dizesini önceki adımlarda kopyaladığınız Cosmos DB hesabından yapıştırın.
 
 15. **İleri**’yi seçin.
 
-16. **Bağlantı özetinde**ayarların doğru olduğundan emin olun.  
+16. **Bağlantı özetinde** ayarların doğru olduğundan emin olun.  
 
-17. **Bağlan**'ı seçin.
+17. **Bağlan**’ı seçin.
 
-18. **Myvm**bağlantısını kapatın.
+18. **Myvm** bağlantısını kapatın.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

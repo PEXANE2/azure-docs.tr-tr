@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc1f8b8a7c46a3d6ad6f62d93bc91753e42c3ae
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75371947"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545049"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Büyük miktarda rastgele verileri paralel şekilde Azure Depolama’ya yükleme
 
@@ -30,7 +30,7 @@ Azure blob depolama, verilerinizi depolamak için ölçeklenebilir bir hizmet sa
 
 Blob kullanan yüksek performanslı bir uygulama tasarlarken [bölüm adlandırma](../blobs/storage-performance-checklist.md#partitioning) , potansiyel olarak önemli bir faktördür. 4 MIB 'den büyük veya buna eşit blok boyutları için [yüksek aktarım hızı blok Blobları](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) kullanılır ve bölüm adlandırma performansı etkilemez. 4 MiB 'den küçük blok boyutları için Azure depolama, ölçek ve yük dengelemek için Aralık tabanlı bölümleme şeması kullanır. Bu yapılandırma, benzer adlandırma kurallarına veya ön eklere sahip dosyaların aynı bölüme gideceği anlamına gelir. Bu mantık, dosyaların yüklendiği kapsayıcının adını içerir. Bu öğreticide, rastgele oluşturulan içerik ve adlar için GUID’e sahip olan dosyaları kullanırsınız. Bunlar daha sonra rastgele adlarla beş farklı kapsayıcıya yüklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için önceki şu Depolama öğreticisini tamamlamış olmanız gerekir: [Ölçeklenebilir uygulama için sanal makine ve depolama hesabı oluşturma][previous-tutorial].
 
@@ -62,7 +62,7 @@ Uygulamayı çalıştırmak için `dotnet run` yazın. `dotnet` ilk çalıştır
 dotnet run
 ```
 
-Uygulama, beş adet rastgele adlandırılmış kapsayıcı oluşturur ve hazırlama dizinindeki dosyaları depolama hesabına yüklemeye başlar. Uygulama, çalışması sırasında çok sayıda eş zamanlı bağlantıya izin verilmesini sağlamak için en az iş parçacığı sayısını 100 olarak ve [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) değerini de 100 olarak ayarlar.
+Uygulama, beş adet rastgele adlandırılmış kapsayıcı oluşturur ve hazırlama dizinindeki dosyaları depolama hesabına yüklemeye başlar. Uygulama, çalışması sırasında çok sayıda eş zamanlı bağlantıya izin verilmesini sağlamak için en az iş parçacığı sayısını 100 olarak ve [DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) değerini de 100 olarak ayarlar.
 
 İş parçacığı sayısı ve bağlantı sınırı ayarlarının belirlenmesine ek olarak, [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) yöntemi için [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) yapılandırılarak paralellik kullanılır ve MD5 karma doğrulaması devre dışı bırakılır. Dosyalar 100 mb’lık bloklar halinde karşıya yüklenir, bu yapılandırma daha iyi performans sağlar ancak düşük performanslı bir ağ kullanıldığında bir hata varmış gibi 100 mb’lık bloğun tamamı yeniden denendiğinden bu maliyetli olabilir.
 

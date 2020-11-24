@@ -6,12 +6,12 @@ author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335140"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536464"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript uygulamaları için kaynak eşleme desteği
 
@@ -67,7 +67,7 @@ Application Insights kaynağınız ile bağlantılı depolama hesabı veya blob 
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Blob kapsayıcıda gerekli rol tabanlı erişim denetimi (RBAC) ayarları
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>Blob kabınızda gerekli Azure rol tabanlı erişim denetimi (Azure RBAC) ayarları
 
 Bu özelliği kullanan portaldaki herhangi bir kullanıcının blob kapsayıcısına en az bir [Depolama Blobu veri okuyucusu][storage blob data reader] olarak atanması gerekir. Bu rolü, bu özellik aracılığıyla kaynak haritaları kullanacak başka bir kişiye atamanız gerekir.
 

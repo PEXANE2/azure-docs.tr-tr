@@ -1,5 +1,5 @@
 ---
-title: Bağlantı Izleyicisi oluşturma (Önizleme)-Azure portal
+title: Bağlantı Izleyicisi oluşturma-Azure portal
 titleSuffix: Azure Network Watcher
 description: Bu makalede, Azure portal kullanarak bağlantı Izleyicisinde bir izleyicinin nasıl oluşturulacağı açıklanır.
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: f1ba23d53d79587c9d75c1d840c1d3857725d8dd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984388"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545729"
 ---
-# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>Azure portal kullanarak bağlantı Izleyicisi 'nde (Önizleme) bir izleyici oluşturun
+# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal kullanarak bağlantı Izleyicisinde izleyici oluşturma
 
 Kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisini nasıl kullanacağınızı öğrenin. Bu makalede, Azure portal kullanarak nasıl bir izleyici oluşturacağınız açıklanır. Bağlantı Izleyicisi karma ve Azure bulut dağıtımlarını destekler.
 
-> [!IMPORTANT]
-> Bağlantı Izleyicisi Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 

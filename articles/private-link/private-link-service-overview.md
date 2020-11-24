@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27dba675f82c4d34ec793cf492c18b293a6c8c77
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760965"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544267"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
-Azure özel bağlantı hizmeti, Azure özel bağlantısı tarafından desteklenen kendi hizmetinize yapılan başvurudur. [Azure Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md) arkasında çalışan hizmetiniz, özel bağlantı erişimi için etkinleştirilebilir ve böylece hizmetinize ait tüketiciler kendi sanal ağlarına özel olarak erişebilir. Müşterileriniz, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmetle eşleşmekte olabilir. Bu makalede hizmet sağlayıcı tarafı ile ilgili kavramlar açıklanmaktadır. 
+Azure özel bağlantı hizmeti, Azure özel bağlantısı tarafından desteklenen kendi hizmetinize yapılan başvurudur. [Azure Standart Load Balancer](../load-balancer/load-balancer-overview.md) arkasında çalışan hizmetiniz, özel bağlantı erişimi için etkinleştirilebilir ve böylece hizmetinize ait tüketiciler kendi sanal ağlarına özel olarak erişebilir. Müşterileriniz, sanal ağı içinde özel bir uç nokta oluşturabilir ve bu hizmetle eşleşmekte olabilir. Bu makalede hizmet sağlayıcı tarafı ile ilgili kavramlar açıklanmaktadır. 
 
 :::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Özel bağlantı hizmeti iş akışı" border="true":::
 
@@ -57,7 +57,7 @@ Bir tüketici bir bağlantıyı başlattıktan sonra, hizmet sağlayıcı bağla
 |---------|---------|
 |Sağlama durumu (provisioningState)  |Özel bağlantı hizmeti için geçerli sağlama durumunu listeleyen salt okunurdur bir özellik. İlgili sağlama durumları şunlardır: "silme; Başaramadı Baarı Güncelleştiriliyor ". Sağlama durumu "başarılı" olduğunda, özel bağlantı hizmetinizi başarıyla sağlamış olursunuz.        |
 |Diğer ad (diğer ad)     | Diğer ad, hizmetiniz için genel olarak benzersiz bir salt okuma dizesidir. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için kolay paylaşılan bir ad oluşturur. Özel bir bağlantı hizmeti oluşturduğunuzda, Azure hizmetinizin sizinle paylaşabileceğiniz diğer adını oluşturur. Müşterileriniz, hizmetinize bir bağlantı istemek için bu diğer adı kullanabilir.          |
-|Görünürlük (görünürlük)     | Görünürlük, özel bağlantı hizmetiniz için pozlama ayarlarını denetleyen özelliktir. Hizmet sağlayıcıları rol tabanlı erişim denetimi (RBAC) izinleri, kısıtlı bir abonelik kümesi veya tüm Azure abonelikleri ile hizmetleri ile olan Aboneliklerle ilgili pozlamayı tercih edebilir.          |
+|Görünürlük (görünürlük)     | Görünürlük, özel bağlantı hizmetiniz için pozlama ayarlarını denetleyen özelliktir. Hizmet sağlayıcıları, Azure rol tabanlı erişim denetimi (Azure RBAC) izinleri, kısıtlı bir abonelik kümesi veya tüm Azure abonelikleri ile hizmetleri ile olan Aboneliklerle ilgili pozlamayı tercih edebilir.          |
 |Otomatik onay (otomatik onay)    |   Otomatik onay, özel bağlantı hizmetine otomatik erişimi denetler. Otomatik onay listesinde belirtilen abonelikler, bu aboneliklerdeki özel uç noktalardan bir bağlantı istendiğinde otomatik olarak onaylanır.          |
 |Load Balancer ön uç IP yapılandırması (Loadbalancerfrontendıpconfigurations)    |    Özel bağlantı hizmeti bir Standart Load Balancer ön uç IP adresine bağlıdır. Hizmete yönelik tüm trafik, SLB 'nın ön ucunda iletişime geçecektir. Bu trafiği, uygulamalarınızın çalıştığı uygun arka uç havuzlarına yönlendirmek için SLB kurallarını yapılandırabilirsiniz. Yük dengeleyici ön uç IP yapılandırması NAT IP yapılandırmasından farklı.      |
 |NAT IP yapılandırması (ipConfigurations)    |    Bu özellik, özel bağlantı hizmeti için NAT (ağ adresi çevirisi) IP yapılandırmasını ifade eder. NAT IP 'si, bir hizmet sağlayıcısının sanal ağındaki herhangi bir alt ağdan seçilebilir. Özel bağlantı hizmeti, özel bağlantı trafiği üzerinde hedef tarafı NAT kullanır. Bu, kaynak (tüketici tarafı) ve hedef (hizmet sağlayıcı) adres alanı arasında bir IP çakışması olmamasını sağlar. Hedef tarafta (hizmet sağlayıcı tarafı), NAT IP adresi, hizmetiniz tarafından gönderilen tüm paketler için hizmetinize ve hedef IP 'niz tarafından alınan tüm paketlerin kaynak IP 'si olarak görünür.       |
@@ -76,7 +76,7 @@ Bir tüketici bir bağlantıyı başlattıktan sonra, hizmet sağlayıcı bağla
  
 - Tek bir özel bağlantı hizmetine, farklı VNET 'ler, abonelikler ve/veya Active Directory kiracılarına ait birden çok özel uç noktasından erişilebilir. Bağlantı, bağlantı iş akışıyla oluşturulur. 
  
-- Birden çok özel bağlantı hizmeti, farklı ön uç IP yapılandırması kullanılarak aynı Standart Load Balancer oluşturulabilir. Standart Load Balancer ve abonelik başına oluşturabileceğiniz özel bağlantı Hizmetleri sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Birden çok özel bağlantı hizmeti, farklı ön uç IP yapılandırması kullanılarak aynı Standart Load Balancer oluşturulabilir. Standart Load Balancer ve abonelik başına oluşturabileceğiniz özel bağlantı Hizmetleri sayısı için sınırlar vardır. Ayrıntılar için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
  
 - Özel bağlantı hizmeti ile bağlantılı birden fazla NAT IP yapılandırması olabilir. Birden fazla NAT IP yapılandırması seçilmesi hizmet sağlayıcılarının ölçeklendirilmesine yardımcı olabilir. Günümüzde, hizmet sağlayıcıları özel bağlantı hizmeti başına en fazla sekiz NAT IP adresi atayabilir. Her NAT IP adresi ile TCP bağlantılarınız için daha fazla bağlantı noktası atayabilir ve böylece ölçeği değiştirebilirsiniz. Bir özel bağlantı hizmetine birden çok NAT IP adresi ekledikten sonra NAT IP adreslerini silemezsiniz. Bu, NAT IP adreslerini silerken etkin bağlantıların etkilenmemesini sağlamak için yapılır.
 
@@ -95,7 +95,7 @@ Tüm diğer ad:  *ön ek*. {GUıD}. *Region*. Azure. privatelinkservice
 
 ## <a name="control-service-exposure"></a>Hizmet pozlamasını denetleme
 
-Özel bağlantı hizmeti, "görünürlük" ayarı aracılığıyla hizmetinizin görünürlüğünü denetlemeye yönelik seçenekler sağlar. Hizmeti, sahip olduğunuz farklı sanal ağlardan tüketim için özel hale getirebilirsiniz (yalnızca RBAC izinleri), güvenmiş olduğunuz sınırlı bir abonelik kümesiyle olan pozlamayı kısıtlayabilir veya tüm Azure aboneliklerinin özel bağlantı hizmetinde bağlantı istemesi için ortak hale getirebilirsiniz. Görünürlük ayarlarınızda, bir tüketicinin hizmetinize bağlanıp bağlanamacağına karar verirsiniz. 
+Özel bağlantı hizmeti, "görünürlük" ayarı aracılığıyla hizmetinizin görünürlüğünü denetlemeye yönelik seçenekler sağlar. Hizmeti, sahip olduğunuz farklı sanal ağlardan tüketim için özel hale getirebilirsiniz (yalnızca Azure RBAC izinleri), güvendiğiniz sınırlı bir abonelik kümesiyle pozlamayı kısıtlayabilir veya tüm Azure aboneliklerinin özel bağlantı hizmetinde bağlantı istemesi için ortak hale getirebilirsiniz. Görünürlük ayarlarınızda, bir tüketicinin hizmetinize bağlanıp bağlanamacağına karar verirsiniz. 
 
 ## <a name="control-service-access"></a>Denetim hizmeti erişimi
 
