@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
 ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202489"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011991"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute çapraz geçiş API 'leri geliştirme ve Tümleştirme
 
-ExpressRoute Iş ortağı Kaynak Yöneticisi API 'SI ExpressRoute iş ortaklarının, Customer ExpressRoute devreleri 'nin katman 2 ve katman 3 yapılandırmasını yönetmesine olanak tanır. ExpressRoute Iş ortağı Kaynak Yöneticisi API 'SI, **Expressroutecrossconnections**yeni bir kaynak türü sunar. İş ortakları, bu kaynağı Müşteri ExpressRoute devreleri yönetmek için kullanır.
+ExpressRoute Iş ortağı Kaynak Yöneticisi API 'SI ExpressRoute iş ortaklarının, Customer ExpressRoute devreleri 'nin katman 2 ve katman 3 yapılandırmasını yönetmesine olanak tanır. ExpressRoute Iş ortağı Kaynak Yöneticisi API 'SI, **Expressroutecrossconnections** yeni bir kaynak türü sunar. İş ortakları, bu kaynağı Müşteri ExpressRoute devreleri yönetmek için kullanır.
 
 ## <a name="workflow"></a>İş akışı
 
-ExpressRouteCrossConnections kaynağı, ExpressRoute devresine yönelik bir gölge kaynaktır. Bir Azure müşterisi bir ExpressRoute bağlantı hattı oluşturduğunda ve belirli bir ExpressRoute iş ortağı seçtiğinde, Microsoft ortağın Azure ExpressRoute yönetim aboneliğinde bir expressRouteCrossConnections kaynağı oluşturur. Bu durumda, Microsoft ' de expressRouteCrossConnections kaynağını oluşturmak için bir kaynak grubu tanımlar. Kaynak grubu için adlandırma standardı, **Crossconnection-* peeringlocation * * *; Burada PeeringLocation = ExpressRoute konumu. Örneğin, bir müşteri Denver 'de bir ExpressRoute bağlantı hattı oluşturursa, çapraz bağlantı aşağıdaki kaynak grubundaki iş ortağının Azure aboneliğinde oluşturulur: **çapraz**bağlantı oluşturma.
+ExpressRouteCrossConnections kaynağı, ExpressRoute devresine yönelik bir gölge kaynaktır. Bir Azure müşterisi bir ExpressRoute bağlantı hattı oluşturduğunda ve belirli bir ExpressRoute iş ortağı seçtiğinde, Microsoft ortağın Azure ExpressRoute yönetim aboneliğinde bir expressRouteCrossConnections kaynağı oluşturur. Bu durumda, Microsoft ' de expressRouteCrossConnections kaynağını oluşturmak için bir kaynak grubu tanımlar. Kaynak grubu için adlandırma standardı, **Crossconnection-* peeringlocation * * *; Burada PeeringLocation = ExpressRoute konumu. Örneğin, bir müşteri Denver 'de bir ExpressRoute bağlantı hattı oluşturursa, çapraz bağlantı aşağıdaki kaynak grubundaki iş ortağının Azure aboneliğinde oluşturulur: **çapraz** bağlantı oluşturma.
 
 ExpressRoute iş ortakları, expressRouteCrossConnections kaynağına karşı REST işlemleri vererek katman 2 ve katman 3 yapılandırmasını yönetir.
 
@@ -51,7 +51,7 @@ Test eşleme konumları: kukla cihazlar ve bağlantı noktaları, varsayılan ol
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. expressRouteCrossConnections API 'sine erişmek için Dev_Provider aboneliğini kaydedin
 
-ExpressRouteCrossConnections API 'sine erişebilmek için iş ortağı aboneliğinin **Microsoft. Network kaynak sağlayıcısına**kaydedilmesi gerekir. Kayıt işlemini gerçekleştirmek için [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) makalesindeki adımları izleyin.
+ExpressRouteCrossConnections API 'sine erişebilmek için iş ortağı aboneliğinin **Microsoft. Network kaynak sağlayıcısına** kaydedilmesi gerekir. Kayıt işlemini gerçekleştirmek için [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) makalesindeki adımları izleyin.
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Azure Resource Manager REST API çağrılarının kimlik doğrulamasını ayarlama
 

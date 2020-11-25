@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: f56cc5b028f07964236fc42a1ca468aa28aae440
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358088"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011289"
 ---
 Bu makalede Azure Digital TWINS ile çalışmak için öncelikle bir Azure dijital TWINS örneği ve bu uygulamayı kullanmak için gerekli izinleri ayarlamanız gerekir. Önceki çalışmalardan daha önceden ayarlanmış bir Azure dijital TWINS örneğiniz varsa, bu örneği kullanabilirsiniz.
 

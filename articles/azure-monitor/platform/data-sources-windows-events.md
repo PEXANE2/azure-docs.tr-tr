@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
 ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012604"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics aracısıyla Windows olay günlüğü veri kaynaklarını toplama
 Windows olay günlükleri, birçok uygulama Windows olay günlüğü 'ne yazdığından, Windows sanal makinelerinde Log Analytics aracıları için en yaygın [veri kaynaklarından](agent-data-sources.md) biridir.  İzlemeniz gereken uygulamalar tarafından oluşturulan özel günlüklerin belirtilmesine ek olarak, sistem ve uygulama gibi standart günlüklerden olayları toplayabilirsiniz.
@@ -37,7 +37,7 @@ Bir olay günlüğünün adını yazdığınızda Azure Izleyici, ortak olay gü
 Azure Izleyici, olay oluşturulduğu için izlenen bir olay günlüğünden seçilen önem derecesine uyan her olayı toplar.  Aracı, topladığı her olay günlüğündeki yerini kaydeder.  Aracı bir süre çevrimdışı kalırsa, bu olaylar, aracı çevrimdışıyken oluşturulsa bile, son kaldığınız yerden olayları toplar.  Bu olayların, aracı çevrimdışıyken, toplanan olayların üzerine yazılmakta olan olay günlüğü sarılmışsa toplanmaması olası bir olasılık vardır.
 
 >[!NOTE]
->Azure Izleyici SQL Server tarafından oluşturulan denetim olaylarını toplamıyor- *Klasik* veya *Denetim başarısı* *ile anahtar* sözcük, *0xa0000000000000*anahtar sözcüğünü içeren olay kimliği 18453.
+>Azure Izleyici SQL Server tarafından oluşturulan denetim olaylarını toplamıyor- *Klasik* veya *Denetim başarısı* *ile anahtar* sözcük, *0xa0000000000000* anahtar sözcüğünü içeren olay kimliği 18453.
 >
 
 ## <a name="windows-event-records-properties"></a>Windows olay kayıtları özellikleri

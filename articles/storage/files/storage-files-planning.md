@@ -8,19 +8,19 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: a35c34a08dba625b16940d7ec5fb870952dba36b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630252"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011764"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
 
-- **Azure dosya paylaşımının doğrudan bağlanması** : Azure dosyaları sunucu ileti bloğu (SMB) veya ağ dosya SISTEMI (NFS) erişimi SAĞLADıĞıNDAN, işletim sisteminde bulunan standart SMB veya NFS Istemcilerini kullanarak Azure dosya paylaşımlarını şirket içinde veya bulutta bağlayabilirsiniz. Azure dosya paylaşımları sunucusuz olduğundan, üretim senaryolarına yönelik dağıtım, bir dosya sunucusu veya NAS cihazının yönetilmesini gerektirmez. Bu, yazılım düzeltme ekleri uygulamanız veya fiziksel diskleri takas etmeniz gerekmediği anlamına gelir. 
+- **Azure dosya paylaşımının doğrudan bağlanması**: Azure dosyaları sunucu ileti bloğu (SMB) veya ağ dosya SISTEMI (NFS) erişimi SAĞLADıĞıNDAN, işletim sisteminde bulunan standart SMB veya NFS Istemcilerini kullanarak Azure dosya paylaşımlarını şirket içinde veya bulutta bağlayabilirsiniz. Azure dosya paylaşımları sunucusuz olduğundan, üretim senaryolarına yönelik dağıtım, bir dosya sunucusu veya NAS cihazının yönetilmesini gerektirmez. Bu, yazılım düzeltme ekleri uygulamanız veya fiziksel diskleri takas etmeniz gerekmediği anlamına gelir. 
 
-- **Şirket Içi Azure dosya paylaşımını Azure dosya eşitleme Ile önbelleğe alma** : Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu mümkün tutmaya olanak sağlar. Azure Dosya Eşitleme, şirket içi (veya bulut) Windows Server 'ı Azure SMB dosya paylaşımınızın hızlı önbelleğine dönüştürür. 
+- **Şirket Içi Azure dosya paylaşımını Azure dosya eşitleme Ile önbelleğe alma**: Azure dosya eşitleme, kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirirken şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu mümkün tutmaya olanak sağlar. Azure Dosya Eşitleme, şirket içi (veya bulut) Windows Server 'ı Azure SMB dosya paylaşımınızın hızlı önbelleğine dönüştürür. 
 
 Bu makalede öncelikle bir Azure dosya paylaşımının dağıtımı, şirket içi veya bulut istemcisi tarafından doğrudan bağlanması için dağıtım konuları ele alınmaktadır. Azure Dosya Eşitleme dağıtımı planlamak için, bkz. [Azure dosya eşitleme dağıtımı planlama](storage-sync-files-planning.md).
 
@@ -44,9 +44,9 @@ Azure dosya paylaşımlarını depolama hesaplarına dağıttığınızda şunla
 
 ## <a name="identity"></a>Kimlik
 Bir Azure dosya paylaşımında erişim sağlamak için dosya paylaşımının kullanıcısının kimliği doğrulanmalıdır ve paylaşıma erişim yetkisi vardır. Bu, dosya paylaşımıyla erişen kullanıcının kimliğine göre yapılır. Azure dosyaları üç ana kimlik sağlayıcısıyla tümleştirilir:
-- Şirket **içi Active Directory Domain Services (AD DS veya şirket içi AD DS)** : Azure depolama hesapları, bir Windows Server dosya sunucusu veya NAS cihazında olduğu gibi, müşteriye ait, Active Directory Domain Services etki alanına katılmış olabilir. Bir etki alanı denetleyicisini şirket içinde, bir Azure VM 'de, hatta başka bir bulut sağlayıcısında VM olarak dağıtabilirsiniz; Azure dosyaları, etki alanı denetleyicinizin barındırıldığı yere belirsiz. Bir depolama hesabı etki alanına katıldıktan sonra, Son Kullanıcı BILGISAYARıNDA oturum açtıkları kullanıcı hesabıyla bir dosya paylaşımından bağlanabilir. AD tabanlı kimlik doğrulaması, Kerberos kimlik doğrulama protokolünü kullanır.
-- **Azure Active Directory Domain Services (azure AD DS)** : Azure AD DS, Azure kaynakları Için kullanılabilen Microsoft tarafından yönetilen bir etki alanı denetleyicisi sağlar. Depolama hesabınıza Azure AD DS katılma etki alanı, şirkete ait Active Directory etki alanına katılma gibi benzer avantajlar sağlar. Bu dağıtım seçeneği, AD tabanlı izinleri gerektiren uygulama kaldırma ve kaydırma senaryoları için en yararlı seçenektir. Azure AD DS, AD tabanlı kimlik doğrulaması sağladığından, bu seçenek Kerberos kimlik doğrulama protokolünü de kullanır.
-- Azure **depolama hesabı anahtarı** : Azure dosya paylaşımları, bir Azure depolama hesabı anahtarıyla de bağlanabilir. Bir dosya payını bu şekilde bağlamak için, depolama hesabı adı Kullanıcı adı olarak kullanılır ve depolama hesabı anahtarı parola olarak kullanılır. Azure dosya paylaşımının bağlanması için depolama hesabı anahtarını kullanmak, bağlı dosya paylaşımının ACL 'Leri olsa bile paylaşımdaki tüm dosya ve klasörler üzerinde tam izinlere sahip olacağı için etkili bir şekilde bir yönetici işlemidir. SMB üzerinden bağlanacak depolama hesabı anahtarını kullanırken, NTLMv2 kimlik doğrulama protokolü kullanılır.
+- Şirket **içi Active Directory Domain Services (AD DS veya şirket içi AD DS)**: Azure depolama hesapları, bir Windows Server dosya sunucusu veya NAS cihazında olduğu gibi, müşteriye ait, Active Directory Domain Services etki alanına katılmış olabilir. Bir etki alanı denetleyicisini şirket içinde, bir Azure VM 'de, hatta başka bir bulut sağlayıcısında VM olarak dağıtabilirsiniz; Azure dosyaları, etki alanı denetleyicinizin barındırıldığı yere belirsiz. Bir depolama hesabı etki alanına katıldıktan sonra, Son Kullanıcı BILGISAYARıNDA oturum açtıkları kullanıcı hesabıyla bir dosya paylaşımından bağlanabilir. AD tabanlı kimlik doğrulaması, Kerberos kimlik doğrulama protokolünü kullanır.
+- **Azure Active Directory Domain Services (azure AD DS)**: Azure AD DS, Azure kaynakları Için kullanılabilen Microsoft tarafından yönetilen bir etki alanı denetleyicisi sağlar. Depolama hesabınıza Azure AD DS katılma etki alanı, şirkete ait Active Directory etki alanına katılma gibi benzer avantajlar sağlar. Bu dağıtım seçeneği, AD tabanlı izinleri gerektiren uygulama kaldırma ve kaydırma senaryoları için en yararlı seçenektir. Azure AD DS, AD tabanlı kimlik doğrulaması sağladığından, bu seçenek Kerberos kimlik doğrulama protokolünü de kullanır.
+- Azure **depolama hesabı anahtarı**: Azure dosya paylaşımları, bir Azure depolama hesabı anahtarıyla de bağlanabilir. Bir dosya payını bu şekilde bağlamak için, depolama hesabı adı Kullanıcı adı olarak kullanılır ve depolama hesabı anahtarı parola olarak kullanılır. Azure dosya paylaşımının bağlanması için depolama hesabı anahtarını kullanmak, bağlı dosya paylaşımının ACL 'Leri olsa bile paylaşımdaki tüm dosya ve klasörler üzerinde tam izinlere sahip olacağı için etkili bir şekilde bir yönetici işlemidir. SMB üzerinden bağlanacak depolama hesabı anahtarını kullanırken, NTLMv2 kimlik doğrulama protokolü kullanılır.
 
 Şirket içi dosya sunucularından geçiş yapmak veya Azure dosyalarında Windows dosya sunucuları veya NAS gereçleri gibi davranmaya yönelik yeni dosya paylaşımları oluşturmak için, depolama hesabınıza **müşterinin sahip Active Directory olduğu** etki alanına katılma, önerilen seçenektir. Depolama hesabınıza şirkete ait bir Active Directory katılma hakkında daha fazla bilgi edinmek için bkz. [Azure dosyaları Active Directory genel bakış](storage-files-active-directory-overview.md).
 
@@ -63,9 +63,9 @@ Azure dosya paylaşımınıza erişimi engellemeyi kaldırmak için iki ana seç
 
 Technical perspektifinden, Azure dosya paylaşımlarınızı genel uç nokta aracılığıyla bağlamak çok daha kolay olsa da, çoğu müşterinin Azure dosya paylaşımlarını bir ExpressRoute veya VPN bağlantısı üzerinden bağlamaya karar veririz. Bu seçeneklerle bağlama, hem SMB hem de NFS paylaşımlarında mümkündür. Bunu yapmak için, ortamınız için aşağıdakileri yapılandırmanız gerekir:  
 
-- **ExpressRoute, siteden siteye veya noktadan sıteye VPN kullanarak ağ tüneli** : bir sanal ağa tünel oluşturma, 445 bağlantı noktası engellense bile şirket içi Azure dosya paylaşımlarına erişim sağlar.
+- **ExpressRoute, siteden siteye veya noktadan sıteye VPN kullanarak ağ tüneli**: bir sanal ağa tünel oluşturma, 445 bağlantı noktası engellense bile şirket içi Azure dosya paylaşımlarına erişim sağlar.
 - **Özel uç** noktalar: özel uç noktalar, depolama hesabınıza sanal ağın adres alanından ayrılmış bir IP adresi sağlar. Bu, Azure depolama kümelerinin sahip olduğu tüm IP adresi aralıklarına kadar şirket içi ağları açmaya gerek kalmadan ağ tünelini sağlar. 
-- **DNS iletimi** : ŞIRKET içi DNS 'nizi, `storageaccount.file.core.windows.net` Özel uç noktalarınızın IP adresini çözümlemek üzere depolama hesabınızın adını (genel bulut bölgeleri için) çözümlemek üzere yapılandırın.
+- **DNS iletimi**: ŞIRKET içi DNS 'nizi, `storageaccount.file.core.windows.net` Özel uç noktalarınızın IP adresini çözümlemek üzere depolama hesabınızın adını (genel bulut bölgeleri için) çözümlemek üzere yapılandırın.
 
 Azure dosya paylaşımının dağıtımıyla ilişkili ağı planlamak için bkz. [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md).
 
@@ -133,16 +133,16 @@ Genel olarak, Azure dosyaları özellikleri ve diğer hizmetlerle birlikte çal�
 Bir dosya paylaşımının Premium veya standart dosya paylaşımında oluşturulması durumunda, otomatik olarak diğer katmana dönüştüremezsiniz. Başka katmana geçmek istiyorsanız, o katmanda yeni bir dosya paylaşma oluşturmanız ve verileri özgün paylaşımınızdan oluşturduğunuz yeni paylaşıma el ile kopyalamanız gerekir. `robocopy` `rsync` Bu kopyayı gerçekleştirmek için Windows veya MacOS ve Linux için kullanmanızı öneririz.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Premium dosya paylaşımları için sağlamayı anlama
-Premium dosya paylaşımları, sabit bir GiB/ıOPS/verimlilik oranına göre sağlanır. Sağlanan her GiB için, paylaşıma tek bir ıOPS ve 0,1 MIB/s aktarım hızı, her bir paylaşıma göre en fazla sınırlara verilecek. İzin verilen en düşük sağlama, minimum ıOPS/aktarım hızı ile 100 GiB 'dir.
+Premium dosya paylaşımları, sabit bir GiB/ıOPS/verimlilik oranına göre sağlanır. Tüm paylaşım boyutları en düşük taban/aktarım hızı olarak sunulur ve patlama için izin verilir. Sağlanan her GiB için, paylaşıma en düşük ıOPS/aktarım hızı ve bir ıOPS ve 0,1 MIB/sn aktarım hızı, her bir paylaşıma göre en fazla sınırlara çıkarılır. İzin verilen minimum sağlama, minimum ıOPS/aktarım hızı ile 100 GiB 'dir. 
 
-En iyi çaba temelinde, tüm paylaşımlar, 60 dakika veya daha uzun bir süre için, paylaşımın boyutuna bağlı olarak, sağlanan depolama alanına göre üç ıOPS 'ye kadar veri alabilir. Yeni paylaşımlar, sağlanan kapasiteye göre tam patlama kredisi ile başlar.
+Tüm Premium paylaşımlar, en iyi çaba temelinde ücretsiz olarak sunulur. Tüm paylaşım boyutları 4.000 ıOPS 'ye kadar veya sağlanan GiB başına en fazla üç ıOPS 'yi, yani paylaşıma daha büyük bir patlama ıOPS sağlar. Tüm paylaşımlar, en yüksek bir patlama sınırında 60 dakikalık en uzun süre boyunca patlaşmasını destekler. Yeni paylaşımlar, sağlanan kapasiteye göre tam patlama kredisi ile başlar.
 
-Paylaşımlar 1 GiB artışlarla sağlanmalıdır. Minimum boyut 100 GiB, sonraki boyut 101 GiB ve bu şekilde devam eder.
+Paylaşımlar 1 GiB artışlarla sağlanmalıdır. Minimum boyut 100 GiB, sonraki boyut 101 GiB 'dir ve bu şekilde devam eder.
 
 > [!TIP]
-> Taban çizgisi ıOPS = 1 * sağlanan GiB. (En fazla 100.000 ıOPS).
+> Taban çizgisi ıOPS = 400 + 1 * sağlanan GiB. (En fazla 100.000 ıOPS).
 >
-> Patlama sınırı = 3 * temel ıOPS. (En fazla 100.000 ıOPS).
+> Patlama sınırı = MAX (4.000, 3 * temel ıOPS). (sınır en fazla 100.000 ıOPS).
 >
 > çıkış oranı = 60 MIB/s + 0,06 * sağlanan GiB
 >
@@ -156,33 +156,29 @@ Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç ö
 
 |Kapasite (GiB) | Temel ıOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
 |---------|---------|---------|---------|---------|
-|100         | 100     | 300 kadar     | 66   | 44   |
-|500         | 500     | 1.500 kadar   | 90   | 60   |
-|1.024       | 1.024   | 3.072 kadar   | 122   | 81   |
-|5.120       | 5.120   | 15.360 kadar  | 368   | 245   |
-|10.240      | 10.240  | 30.720 kadar  | 675 | 450   |
-|33.792      | 33.792  | 100.000 kadar | 2.088 | 1.392   |
-|51.200      | 51.200  | 100.000 kadar | 3.132 | 2.088   |
+|100         | 500     | 4.000 kadar     | 66   | 44   |
+|500         | 900     | 4.000 kadar  | 90   | 60   |
+|1.024       | 1.424   | 4.000 kadar   | 122   | 81   |
+|5.120       | 5.520   | 15.360 kadar  | 368   | 245   |
+|10.240      | 10.640  | 30.720 kadar  | 675   | 450   |
+|33.792      | 34.192  | 100.000 kadar | 2.088 | 1.392   |
+|51.200      | 51.600  | 100.000 kadar | 3.132 | 2.088   |
 |102.400     | 100.000 | 100.000 kadar | 6.204 | 4.136   |
 
-> [!NOTE]
-> Dosya paylaşımları performansı, diğer birçok etken arasında makine ağ sınırlarına, kullanılabilir ağ bant genişliğine, GÇ boyutlarına ve paralellik özelliklerine tabidir. Örneğin, 8 KiB okuma/yazma GÇ boyutlarına sahip dahili teste bağlı olarak, SMB üzerinden Premium dosya paylaşımıyla bağlantılı tek bir Windows sanal makinesi, *standart F16s_v2* , 20K Okuma IOPS ve 15K Yazma IOPS elde edebilirler. 512 MIB okuma/yazma GÇ boyutları ile aynı VM, 1,1 GiB/sn çıkış ve 370 MIB/s giriş aktarım hızını elde edebilirler. En yüksek performans ölçeğini elde etmek için, yükü birden çok VM arasında yayın. Bazı yaygın performans sorunları ve geçici çözümler için lütfen [sorun giderme kılavuzuna](storage-troubleshooting-files-performance.md) bakın.
+Etkin dosya paylaşımları performansının, diğer birçok etken arasında makine ağ sınırlarına, kullanılabilir ağ bant genişliğine, GÇ boyutlarına ve paralellik 'e tabi olduğunu unutmayın. Örneğin, 8 kıb okuma/yazma GÇ boyutlarına sahip iç teste bağlı olarak, SMB üzerinden çok kanallı etkin olmayan tek bir Windows sanal makinesi, SMB üzerinden Premium dosya paylaşımıyla bağlantılı *standart F16s_v2*, 20K Okuma IOPS ve 15K Yazma IOPS elde edebilirler. 512 MIB okuma/yazma GÇ boyutları ile aynı VM, 1,1 GiB/sn çıkış ve 370 MIB/s giriş aktarım hızını elde edebilirler. Aynı istemci, \~ Premium paylaşımlardaki çok KANALLı SMB etkinse 3x performansını elde edebilir. En yüksek performans ölçeğini elde etmek için, çok [KANALLı SMB 'yi etkinleştirin](storage-files-enable-smb-multichannel.md) ve yükü birden fazla VM arasında yayılır. Bazı yaygın performans sorunları ve geçici çözümler için lütfen çok [kanallı SMB performansı](storage-files-smb-multichannel-performance.md) ve [sorun giderme kılavuzuna](storage-troubleshooting-files-performance.md) bakın.
 
 #### <a name="bursting"></a>Patlaması
-Premium dosya paylaşımları, ıOPS 'yi üç etmene kadar alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Burdıya en iyi çaba temelinde çalışır ve veri bloğu sınırı bir garanti değildir; dosya paylaşımları sınıra *kadar* veri bloğu alabilir.
+İş yükünüz en yüksek talebi karşılamak için ek performansa ihtiyaç duyuyorsa, paylaşımınız, isteğe uyması için ihtiyaç duyması gereken paylaşma performansını sunmak üzere, bir yük çizgisi ıOPS sınırını paylaşmak için patlama kredilerini kullanabilir. Premium dosya paylaşımları, ıOPS 'yi 4.000 ' e kadar veya üç etmene kadar (hangisi daha yüksek bir değere) alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Patlama en iyi çaba temelinde çalışır ve veri bloğu sınırı bir garanti değildir; dosya paylaşımları 60 dakikalık en uzun süre sınırına kadar bir süre *kadar* sürebilir.
 
-Krediler, dosya paylaşımınız için trafik temel ıOPS 'nin altında olduğunda bir patlama demetini biriktir. Örneğin, 100 GiB paylaşımında 100 temel ıOPS vardır. Paylaşımdaki gerçek trafik belirli bir 1 saniyelik Aralık için 40 ıOPS ise 60, kullanılmayan ıOPS, bir patlama demetine alacaklandırılır. Bu krediler daha sonra, işlemler temel IOPS 'yi aştığında kullanılacaktır.
+Krediler, dosya paylaşımınız için trafik temel ıOPS 'nin altında olduğunda bir patlama demetini biriktir. Örneğin, 100 GiB paylaşımında 500 temel ıOPS vardır. Paylaşımdaki gerçek trafik belirli bir 1 saniyelik Aralık için 100 ıOPS ise 400, kullanılmayan ıOPS, bir patlama demetine alacaklandırılır. Benzer şekilde, boş bir 1 TiB paylaşma, 1.424 ıOPS 'de patlama kredisi. Bu krediler daha sonra, işlemler temel ıOPS 'yi aştığında kullanılacaktır.
 
-> [!TIP]
-> Patlama demetini = taban çizgisi ıOPS * 2 * 3600.
-
-Bir paylaşımın temel ıOPS 'yi aşması ve bir patlama demeti içinde krediler olması durumunda, bu, veri bloğu olur. Krediler kaldığı sürece paylaşımlar aşırı denemeye devam edebilir, ancak 50 TiB 'den küçük paylaşımlar yalnızca bir saate kadar olan patlama sınırında kalır. 50 TiB 'den büyük paylaşımlar, bu saat sınırını en fazla iki saate kadar sürebilir, ancak bu, tahakkuk eden patlama kredilerinin sayısına bağlıdır. Taban çizgisi ıOPS 'nin ötesindeki her GÇ bir kredi kullanır ve tüm krediler tüketildikten sonra paylaşımın taban ıOPS değerine geri döneirdi.
+Bir paylaşımın temel ıOPS 'yi aşması ve bir patlama demeti içinde krediler varsa, izin verilen en yüksek patlama oranı üzerinden patlama olur. Bu paylaşımlar, kredilerin en fazla 60 dakikalık süreye kadar sürebileceği ancak bu, tahakkuk eden patlama kredilerinin sayısına göre, yük devretmeye devam edebilir. Taban çizgisi ıOPS 'nin ötesindeki her GÇ bir kredi kullanır ve tüm krediler tüketildikten sonra, paylaşımın taban çizgisi ıOPS 'ye dönüşmesi gerekir.
 
 Paylaşılan kredilerin üç durumu vardır:
 
 - Dosya paylaşımının taban çizgisi ıOPS 'den az kullanıldığı durumlarda tahakkuk edin.
-- Dosya paylaşımının ne zaman olduğu reddediliyor.
-- Kalan sabit, hiçbir kredi yoksa veya temel ıOPS kullanımda olduğunda.
+- Dosya paylaşımının taban çizgisi ıOPS 'den fazla ve patlama modunda ne zaman kullanıldığı reddediliyor.
+- Sabitte, dosya paylaşımının tam olarak taban ıOPS kullanıldığı, hiçbir kredinin tahakkuk et, yoksa kullanıldığı.
 
 Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile başlar. Sunucu tarafından azaltma nedeniyle, paylaşılan ıOPS, temel ıOPS 'nin altında olursa patlama kredileri tahakkuk ettirilmeyecektir.
 

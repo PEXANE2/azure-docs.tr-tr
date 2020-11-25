@@ -13,11 +13,11 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
 ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617652"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012467"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için gereken alt ağ boyutunu & aralığını belirleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,18 +48,18 @@ Alt ağlarınızı gelecekteki örnek dağıtımına ve ölçekleme ihtiyaçlar�
 - Her yönetilen örnek, fiyatlandırma katmanına ve donanım oluşturmaya bağlı olan adres sayısını kullanır
 
 > [!IMPORTANT]
-> Alt ağda herhangi bir kaynak varsa, alt ağ adres aralığını değiştirmek mümkün değildir. Yönetilen örnekleri bir alt ağdan diğerine taşımak de mümkün değildir. Mümkün olduğunda, gelecekteki sorunları engellemek için lütfen daha büyük alt ağları kullanmayı deneyin.
+> Alt ağda kaynak mevcut olması durumunda alt ağ adres aralığını değiştirmek mümkün değildir. Yönetilen örnekleri bir alt ağdan diğerine taşımak mümkün değildir. Mümkün olduğunda, gelecekteki sorunları engellemek için lütfen daha büyük alt ağları kullanmayı deneyin.
 
 GP = genel amaçlı; BC = iş açısından kritik; VC = sanal küme
 
-| **Donanım genel** | **Fiyatlandırma katmanı** | **Azure kullanımı** | **VC kullanımı** | **Örnek kullanımı** | **Toplamda*** |
+| **Donanım genel** | **Fiyatlandırma katmanı** | **Azure kullanımı** | **VC kullanımı** | **Örnek kullanımı** | **Toplam** _ |
 | --- | --- | --- | --- | --- | --- |
 | 4. nesil | GP | 5 | 1 | 5 | 11 |
 | 4. nesil | BC | 5 | 1 | 5 | 11 |
 | 5. nesil | GP | 5 | 6 | 3 | 14 |
 | 5. nesil | BC | 5 | 6 | 5 | 16 |
 
-  \* Toplam sütun alt ağda dağıtıldığında gerçekleştirilecek adreslerin sayısını görüntüler. Alt ağdaki her ek örnek, örnek kullanım sütunuyla temsil edilen adres sayısını ekler. Azure kullanımı sütunuyla temsil edilen adresler birden çok sanal kümede paylaşılır, ancak VC kullanımı sütunuyla temsil edilen adresler bu sanal kümeye yerleştirilmiş örneklerle paylaşılır.
+  \_ Toplam sütun alt ağda dağıtıldığında gerçekleştirilecek adreslerin sayısını görüntüler. Alt ağdaki her ek örnek, örnek kullanım sütunuyla temsil edilen adres sayısını ekler. Azure kullanımı sütunuyla temsil edilen adresler birden çok sanal kümede paylaşılır, ancak VC kullanımı sütunuyla temsil edilen adresler bu sanal kümeye yerleştirilmiş örneklerle paylaşılır.
 
 Güncelleştirme işlemi genellikle sanal küme yeniden boyutlandırmayı gerektirir. Bazı durumlarda, güncelleştirme işlemi sanal küme oluşturmayı gerektirir (daha fazla ayrıntı için [yönetim işlemleri makalesini](sql-managed-instance-paas-overview.md#management-operations)inceleyin). Sanal küme oluşturulması durumunda, gereken ek adres sayısı, bu sanal kümede (örnek kullanım sütunu) yer alan örnekler için gereken adreslerle birlikte toplanan VC kullanım sütunuyla temsil edilen adres sayısına eşittir.
 
@@ -74,12 +74,12 @@ Yukarıda belirtildiği gibi, bazı durumlarda güncelleştirme işlemi sanal k�
 
 Ölçeklendirme işlemi örnekleri sırasında, fiyatlandırma katmanına ve donanım oluşturmaya bağlı ek IP kapasitesi geçici olarak gerekir
 
-| **Donanım genel** | **Fiyatlandırma katmanı** | **Senaryo** | **Ek adresler*** |
+| **Donanım genel** | **Fiyatlandırma katmanı** | **Senaryo** | **Ek adresler** _ |
 | --- | --- | --- | --- |
 | 4. nesil | GP veya BC | Sanal çekirdekleri ölçeklendirme | 5 |
 | 4. nesil | GP veya BC | Depolamayı ölçeklendirme | 5 |
 | 4. nesil | GP veya BC | GP 'den BC veya BC 'e geçiş yapma | 5 |
-| 4. nesil | GP | 5. nesil * öğesine geçme | 9 |
+| 4. nesil | GP | Gen5_ geçiş | 9 |
 | 4. nesil | BC | 5. nesil * öğesine geçme | 11 |
 | 5. nesil | GP | Sanal çekirdekleri ölçeklendirme | 3 |
 | 5. nesil | GP | Depolamayı ölçeklendirme | 0 |

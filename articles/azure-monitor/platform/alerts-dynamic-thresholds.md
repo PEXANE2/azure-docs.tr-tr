@@ -6,11 +6,11 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340096"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012348"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Izleyici 'de dinamik eşiklerle ölçüm uyarıları
 
@@ -61,7 +61,7 @@ Aşağıdaki üç koşuldan birini izleyerek tetiklenecek uyarıyı seçebilirsi
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Dinamik Eşikteki Gelişmiş ayarlar ne anlama geliyor?
 
-**Başarısız dönemler** -dinamik eşikler Ayrıca "uyarıyı tetiklemek için sayı ihlalleri", sistemin bir uyarı oluşturması için belirli bir zaman penceresi içinde gerekli olan en az sayıda sapmaları yapılandırmanıza olanak tanır (varsayılan zaman penceresi 20 dakika içinde dört sapdır). Kullanıcı başarısız dönemleri yapılandırabilir ve başarısız dönemleri ve zaman penceresini değiştirerek ne uyarılmak istediğinizi seçebilir. Bu özellik, geçici ani artışlar tarafından oluşturulan uyarı gürültüsünü azaltır. Örneğin:
+**Başarısız dönemler** -dinamik eşikler Ayrıca "uyarıyı tetiklemek için sayı ihlalleri", sistemin bir uyarı oluşturması için belirli bir zaman penceresi içinde gerekli olan en az sayıda sapmaları yapılandırmanıza olanak tanır (varsayılan zaman penceresi 20 dakika içinde dört sapdır). Kullanıcı başarısız dönemleri yapılandırabilir ve başarısız dönemleri ve zaman penceresini değiştirerek ne uyarılmak istediğinizi seçebilir. Bu özellik, geçici ani artışlar tarafından oluşturulan uyarı gürültüsünü azaltır. Örnek:
 
 Sorun 20 dakika boyunca sürekli olduğunda bir uyarı tetiklemek için, belirli bir dönemde 5 dakikalık gruplandırmada 4 kez, aşağıdaki ayarları kullanın:
 
@@ -108,7 +108,7 @@ Aşağıdaki öğeler, dinamik eşikler kullanarak bu ölçülerden bazıların�
 2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
 
     > [!TIP]
-    > Çoğu kaynak dikey penceresinde, **izleme**altındaki kaynak menüsünde **da uyarılar bulunur** . Ayrıca, burada da uyarı oluşturabilirsiniz.
+    > Çoğu kaynak dikey penceresinde, **izleme** altındaki kaynak menüsünde **da uyarılar bulunur** . Ayrıca, burada da uyarı oluşturabilirsiniz.
 
 3. **Hedef Seç**' e tıklayın, yüklenen bağlam bölmesinde, uyarmak istediğiniz hedef kaynağı seçin. İzlemek istediğiniz kaynağı bulmak için **aboneliği** ve **' sanal makineler ' kaynak türü** açılan listelerini kullanın. Kaynağı bulmak için arama çubuğunu da kullanabilirsiniz.
 
@@ -116,7 +116,7 @@ Aşağıdaki öğeler, dinamik eşikler kullanarak bu ölçülerden bazıların�
 
 5. **' CPU yüzdesi**'ni seçin.
 
-6. İsteğe bağlı olarak, **dönemi** ve **toplamayı**ayarlayarak ölçüyü daraltın. Daha az davranış temsili olduğundan, bu ölçüm türü için ' en yüksek ' toplama türü kullanılması önerilmez. ' Maksimum ' toplama türü statik eşiği daha uygun olabilir.
+6. İsteğe bağlı olarak, **dönemi** ve **toplamayı** ayarlayarak ölçüyü daraltın. Daha az davranış temsili olduğundan, bu ölçüm türü için ' en yüksek ' toplama türü kullanılması önerilmez. ' Maksimum ' toplama türü statik eşiği daha uygun olabilir.
 
 7. Son 6 saat için ölçüm için bir grafik görürsünüz. Uyarı parametrelerini tanımlayın:
     1. **Koşul türü** -' Dynamic ' seçeneğini belirleyin.
@@ -129,7 +129,7 @@ Aşağıdaki öğeler, dinamik eşikler kullanarak bu ölçülerden bazıların�
 
 9. **Bitti**’ye tıklayın.
 
-10. **Uyarı kuralı adı**, **açıklaması**ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+10. **Uyarı kuralı adı**, **açıklaması** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu ekleyin.
 
@@ -145,7 +145,7 @@ Aşağıdaki öğeler, dinamik eşikler kullanarak bu ölçülerden bazıların�
 2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
 
     > [!TIP]
-    > Çoğu kaynak dikey penceresinde, **izleme**altındaki kaynak menüsünde **da uyarılar bulunur** . Ayrıca, burada da uyarı oluşturabilirsiniz.
+    > Çoğu kaynak dikey penceresinde, **izleme** altındaki kaynak menüsünde **da uyarılar bulunur** . Ayrıca, burada da uyarı oluşturabilirsiniz.
 
 3. **Hedef Seç**' e tıklayın, yüklenen bağlam bölmesinde, uyarmak istediğiniz hedef kaynağı seçin. İzlemek istediğiniz kaynağı bulmak için **aboneliği** ve **' Application Insights ' kaynak türü** açılan listelerini kullanın. Kaynağı bulmak için arama çubuğunu da kullanabilirsiniz.
 
@@ -153,7 +153,7 @@ Aşağıdaki öğeler, dinamik eşikler kullanarak bu ölçülerden bazıların�
 
 5. **' Http istek yürütme süresi**'ni seçin.
 
-6. İsteğe bağlı olarak, **dönemi** ve **toplamayı**ayarlayarak ölçüyü daraltın. Daha az davranış temsili olduğundan, bu ölçüm türü için ' en yüksek ' toplama türü kullanılması önerilmez. ' Maksimum ' toplama türü statik eşiği daha uygun olabilir.
+6. İsteğe bağlı olarak, **dönemi** ve **toplamayı** ayarlayarak ölçüyü daraltın. Daha az davranış temsili olduğundan, bu ölçüm türü için ' en yüksek ' toplama türü kullanılması önerilmez. ' Maksimum ' toplama türü statik eşiği daha uygun olabilir.
 
 7. Son 6 saat için ölçüm için bir grafik görürsünüz. Uyarı parametrelerini tanımlayın:
     1. **Koşul türü** -' Dynamic ' seçeneğini belirleyin.
@@ -164,7 +164,7 @@ Aşağıdaki öğeler, dinamik eşikler kullanarak bu ölçülerden bazıların�
 
 9. **Bitti**’ye tıklayın.
 
-10. **Uyarı kuralı adı**, **açıklaması**ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+10. **Uyarı kuralı adı**, **açıklaması** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu ekleyin.
 

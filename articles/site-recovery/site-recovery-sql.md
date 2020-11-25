@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
 ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87824537"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011957"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server için olağanüstü durum kurtarmayı ayarlama
 
@@ -95,7 +95,7 @@ Uygulama ve Web katmanı sanal makineleriyle [bir kurtarma planı oluşturun](si
 
 ### <a name="step-4-conduct-a-test-failover"></a>4. Adım: yük devretme testi yürütme
 
-SQL her zaman açık gibi bazı BCDR teknolojileri, yük devretme testini yerel olarak desteklemez. *Yalnızca bu tür teknolojiler kullanılırken*aşağıdaki yaklaşımı öneririz.
+SQL her zaman açık gibi bazı BCDR teknolojileri, yük devretme testini yerel olarak desteklemez. *Yalnızca bu tür teknolojiler kullanılırken* aşağıdaki yaklaşımı öneririz.
 
 1. Azure 'da kullanılabilirlik grubu çoğaltmasını barındıran VM 'de [Azure Backup](../backup/backup-azure-vms-first-look-arm.md) ayarlayın.
 

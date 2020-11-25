@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082089"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012314"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için TLS şifrelemesini ve kimlik doğrulamasını ayarlama
 
@@ -127,7 +127,7 @@ Artık her bir Kafka Aracısı 'nı bir anahtar deposu ve truststore ile ayarlam
 Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları uygulayın:
 
 1. Azure portal oturum açın ve Azure HDInsight Apache Kafka kümenizi seçin.
-1. **Küme panoları**altında, **ambarı giriş** ' e tıklayarak ambarı Kullanıcı arabirimine gidin.
+1. **Küme panoları** altında, **ambarı giriş** ' e tıklayarak ambarı Kullanıcı arabirimine gidin.
 1. **Kafka Aracısı** altında, **Listeners** özelliğini`PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. **Gelişmiş Kafka-aracı** altında **Security. Inter. Broker. Protocol** özelliğini olarak ayarlayın`SSL`
 

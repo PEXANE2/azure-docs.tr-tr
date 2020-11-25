@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.openlocfilehash: 70c77caebfd8f9bfd36c7384255cf7b66416a379
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454992"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012042"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Öğretici: Darwinbox ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -27,7 +27,7 @@ Bu öğreticide, Darwinbox 'ı Azure Active Directory (Azure AD) ile tümleştir
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ Darwinbox 'ın tümleştirmesini Azure AD 'ye göre yapılandırmak için galeri
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-darwinbox"></a>Darwinbox için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Darwinbox ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Darwinbox 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Darwinbox ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Darwinbox 'daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Darwinbox ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -105,7 +105,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

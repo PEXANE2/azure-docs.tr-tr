@@ -4,11 +4,11 @@ description: Bir ölçek kümesi örneğine (Service Fabric küme düğümü) uz
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268103"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012553"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Sanal makine ölçek kümesi örneğine veya bir küme düğümüne uzaktan Bağlan
 Azure 'da çalışan bir Service Fabric kümesinde, tanımladığınız her küme düğüm türü [bir sanal makine ayrı ölçeğini ayarlar](service-fabric-cluster-nodetypes.md).  Belirli ölçek kümesi örneklerine (küme düğümleri) uzaktan bağlanabilirsiniz.  Tek örnekli VM 'lerden farklı olarak, ölçek kümesi örneklerinin kendi sanal IP adresleri yoktur. Bu, belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi ve bağlantı noktası ararken zor olabilir.

@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 10/22/2020
 ms.author: baanders
 ms.openlocfilehash: 3cb053f9673532ac19e2098678ec341f2f676486
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329545"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011267"
 ---
 İle `DefaultAzureCredential` , örnek, yerel ortamınızda, yerel bir [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) veya Visual Studio ya da Visual Studio Code bir Azure oturum açma gibi kimlik bilgilerini arar. Bu nedenle, örnek için kimlik bilgilerini ayarlamak üzere bu mekanizmalardan biri aracılığıyla *yerel olarak Azure 'da oturum açmanız* gerekir.
 

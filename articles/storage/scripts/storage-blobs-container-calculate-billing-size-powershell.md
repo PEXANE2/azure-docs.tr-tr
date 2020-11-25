@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999539"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010903"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Bir blob kapsayıcısının toplam fatura boyutunu hesaplama
 
@@ -31,7 +31,7 @@ Bu betik, Azure Blob depolama alanındaki bir kapsayıcının boyutunu faturalan
 
 Blob kapsayıcısının toplam boyutu kapsayıcının kendisinin boyutunu ve kapsayıcı altındaki tüm Blobların boyutunu içerir.
 
-Aşağıdaki bölümlerde, depolama kapasitesinin blob kapsayıcıları ve BLOB 'lar için nasıl hesaplandığı açıklanmaktadır.Aşağıdaki bölümde, Len (X), dizedeki karakter sayısını gösterir.
+Aşağıdaki bölümlerde, depolama kapasitesinin blob kapsayıcıları ve BLOB 'lar için nasıl hesaplandığı açıklanmaktadır. Aşağıdaki bölümde, Len (X), dizedeki karakter sayısını gösterir.
 
 ### <a name="blob-containers"></a>Blob kapsayıcıları
 
@@ -120,6 +120,6 @@ Döküm aşağıda verilmiştir:
 
 - Azure depolama faturalandırma hakkında daha fazla bilgi için bkz. [Windows Azure Storage faturalandırmasını anlama](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/).
+- Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 - [Azure depolama Için PowerShell örneklerinde](../blobs/storage-samples-blobs-powershell.md)ek depolama PowerShell betiği örnekleri bulabilirsiniz.

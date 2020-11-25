@@ -6,17 +6,17 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777742"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011056"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Bilgi Bankası oluşturma ve ayarları yönetme
 
 Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sağlayarak bilgi tabanlarınızı yönetmenizi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/cognitive-services/).
@@ -32,7 +32,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
 
     Kaynağı henüz oluşturmadıysanız **QnA hizmeti oluştur**' u seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
 
-    Azure portal kaynağı oluşturmayı tamamladıktan sonra, Soru-Cevap Oluşturma portalına geri dönün, tarayıcı sayfasını yenileyin ve **2. adıma**geçin.
+    Azure portal kaynağı oluşturmayı tamamladıktan sonra, Soru-Cevap Oluşturma portalına geri dönün, tarayıcı sayfasını yenileyin ve **2. adıma** geçin.
 
 1. **Adım 3**' te, etkin dizin, abonelik, hizmet (kaynak) ve hizmette oluşturulan tüm bilgi tabanlarının dilini seçin.
 
@@ -40,7 +40,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
 
 1. **Adım 3**' te bilgi tabanınızı adlandırın `My Sample QnA KB` .
 
-1. **4. adımda**ayarları aşağıdaki tabloyla yapılandırın:
+1. **4. adımda** ayarları aşağıdaki tabloyla yapılandırın:
 
     |Ayar|Değer|
     |--|--|
@@ -73,7 +73,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
        |URL 'YI Sil|Sil simgesini seçerek çöp kutusu ' nu seçerek mevcut URL 'Leri silebilirsiniz.|
        |İçeriği Yenile|Bilgi Bankalarınızın mevcut URL 'lerin en son içeriğini gezinmesi istiyorsanız **Yenile** onay kutusunu seçin. Bu işlem, Bilgi Bankası 'nı en son URL içeriğiyle bir kez güncelleştirir. Bu, güncelleştirmelerin düzenli bir zamanlamasını ayarlamadır.|
        |Dosya ekle|Bilgi bankasını **Yönet**' i seçip, ardından **+ Dosya Ekle** ' yi seçerek bir bilgi tabanının parçası olmak üzere desteklenen bir dosya belgesi ekleyebilirsiniz|
-    |İçeri Aktarma|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
+    |İçeri Aktar|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
     |Güncelleştir|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Ayrıca, gerekirse yönetim katmanını Azure portal de güncelleştirebilirsiniz.
 
   1. Bilgi bankasında değişiklik yapmayı tamamladıktan sonra, değişiklikleri kalıcı hale getirmek için sayfanın sağ üst köşesindeki **Kaydet ve eğit** ' i seçin.
@@ -81,7 +81,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
        ![Kaydet ve eğitme](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
        >[!CAUTION]
-       >**Kaydet ve eğitme**seçmeden önce sayfadan ayrılırsanız tüm değişiklikler kaybedilir.
+       >**Kaydet ve eğitme** seçmeden önce sayfadan ayrılırsanız tüm değişiklikler kaybedilir.
 
 
 

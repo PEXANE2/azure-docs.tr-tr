@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: ee4d3957403e169d41fb9e3befa0d62e4b0d9075
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 493750e69b1fdc935b04d6dc705cfd046b6b086e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597852"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96011668"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Time Series Insights Gen 1 kaynakları oluşturma
 
 > [!CAUTION]
 > Bu bir Gen1 makaledir.
 
-Bu makalede [Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-resource-manager/), PowerShell ve Azure Time Series Insights kaynak sağlayıcısı kullanılarak Azure Time Series Insights kaynaklarının nasıl oluşturulacağı ve dağıtılacağı açıklanır.
+Bu makalede [Azure Resource Manager şablonları](../azure-resource-manager/index.yml), PowerShell ve Azure Time Series Insights kaynak sağlayıcısı kullanılarak Azure Time Series Insights kaynaklarının nasıl oluşturulacağı ve dağıtılacağı açıklanır.
 
 Azure Time Series Insights aşağıdaki kaynakları destekler:
 
@@ -32,7 +32,7 @@ Azure Time Series Insights aşağıdaki kaynakları destekler:
    | Ortam | Azure Time Series Insights ortamı, olay aracılarından okunan, depolanan ve sorgu için kullanılabilir hale getirilen olayların mantıksal gruplandırmasıdır. Daha fazla bilgi için [Azure Time Series Insights ortamınızın planını](time-series-insights-environment-planning.md) okuyun |
    | Olay Kaynağı | Olay kaynağı, Azure Time Series Insights tarafından ortama okuma ve olayları geri almak için gereken bir olay aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub 'ı. |
    | Başvuru veri kümesi | Başvuru veri kümeleri, ortamdaki olaylar hakkında meta veriler sağlar. Başvuru verileri kümelerindeki meta veriler, giriş sırasında olaylarla birleştirilir. Başvuru veri kümeleri, olay anahtarı özelliklerine göre kaynak olarak tanımlanır. Başvuru veri kümesini oluşturan gerçek meta veriler, veri düzlemi API 'Leri aracılığıyla karşıya yüklenir veya değiştirilir. |
-   | Erişim Ilkesi | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve ortamla ilişkili Kaydedilmiş sorguları ve perspektifleri paylaşma izinleri verir. Daha fazla bilgi için [Azure Portal kullanarak Azure Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md) konusunu okuyun |
+   | Erişim Ilkesi | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve ortamla ilişkili Kaydedilmiş sorguları ve perspektifleri paylaşma izinleri verir. Daha fazla bilgi için [Azure Portal kullanarak Azure Time Series Insights ortamına veri erişimi verme](./concepts-access-policies.md) konusunu okuyun |
 
 Kaynak Yöneticisi şablonu, bir kaynak grubundaki kaynakların altyapısını ve yapılandırmasını tanımlayan bir JSON dosyasıdır. Aşağıdaki belgeler şablon dosyalarını daha ayrıntılı bir şekilde anlatmaktadır:
 
@@ -48,7 +48,7 @@ Kaynak Yöneticisi şablonu, bir kaynak grubundaki kaynakların altyapısını v
 
 Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights ortamı oluşturan bir Azure Resource Manager şablonu, bir olay hub 'ından olayları tüketmek üzere yapılandırılmış bir alt olay kaynağı ve ortam verilerine erişim izni veren erişim ilkeleri dağıtımı açıklanmaktadır. Mevcut bir olay hub 'ı belirtilmemişse, dağıtım ile bir tane oluşturulur.
 
-1. [Azure PowerShell kullanmaya](https://docs.microsoft.com/powershell/azure/get-started-azureps)başlama yönergelerini izleyerek Azure PowerShell ' i yükler.
+1. [Azure PowerShell kullanmaya](/powershell/azure/get-started-azureps)başlama yönergelerini izleyerek Azure PowerShell ' i yükler.
 
 1. GitHub 'dan [201-timeseriesınsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) şablonunu kopyalayın veya kopyalayın.
 
@@ -127,7 +127,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights orta
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>PowerShell kullanarak hızlı başlangıç şablonunu yerel olarak dağıtma
 
 > [!IMPORTANT]
-> Aşağıda gösterildiği komut satırı işlemleri [az PowerShell modülünü](https://docs.microsoft.com/powershell/azure/)anlatmaktadır.
+> Aşağıda gösterildiği komut satırı işlemleri [az PowerShell modülünü](/powershell/azure/)anlatmaktadır.
 
 1. PowerShell 'de Azure hesabınızda oturum açın.
 
@@ -151,7 +151,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights orta
 
 1. Mevcut değilse yeni bir kaynak grubu oluşturun.
 
-   - Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örneğin:
+   - Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örnek:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -197,7 +197,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights orta
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    - [Tüm](../azure-resource-manager/templates/deployment-modes.md) bir dağıtımı çalıştırmak Için, **Mode** parametresini **Tamam**olarak ayarlayın:
+    - [Tüm](../azure-resource-manager/templates/deployment-modes.md) bir dağıtımı çalıştırmak Için, **Mode** parametresini **Tamam** olarak ayarlayın:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -255,4 +255,4 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Azure Time Series Insights orta
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- REST API 'Leri kullanarak Azure Time Series Insights kaynaklarını programlı olarak yönetme hakkında bilgi için [Azure Time Series Insights yönetimi](https://docs.microsoft.com/rest/api/time-series-insights-management/)makalesini okuyun.
+- REST API 'Leri kullanarak Azure Time Series Insights kaynaklarını programlı olarak yönetme hakkında bilgi için [Azure Time Series Insights yönetimi](/rest/api/time-series-insights-management/)makalesini okuyun.

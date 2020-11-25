@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871907"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011889"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows ve Linux için Log Analytics aracısını yönetme ve bakımını yapma
 
@@ -22,7 +22,7 @@ Windows ve Linux için Log Analytics Aracısı en son sürüme el ile veya VM 'n
 
 | Ortam | Yükleme yöntemi | Yükseltme yöntemi |
 |--------|----------|-------------|
-| Azure VM | Windows/Linux için Log Analytics Aracısı VM Uzantısı | *Otomatik* olarak, Azure Resource Manager şablonunuzu otomatik olarak varsayılan olarak yükseltilir. bu özelliği otomatik yükseltme özelliğini **yanlış**olarak ayarlayarak geri çevirebilirsiniz. |
+| Azure VM | Windows/Linux için Log Analytics Aracısı VM Uzantısı | *Otomatik* olarak, Azure Resource Manager şablonunuzu otomatik olarak varsayılan olarak yükseltilir. bu özelliği otomatik yükseltme özelliğini **yanlış** olarak ayarlayarak geri çevirebilirsiniz. |
 | Özel Azure VM görüntüleri | Windows/Linux için Log Analytics aracısının el ile yüklenmesi | VM 'Lerin aracının en yeni sürümüne güncelleştirilmesi için Windows Installer paketi veya Linux kendiliğinden ayıklanan ve yüklenebilir kabuk betik paketi çalıştıran komut satırından gerçekleştirilmesi gerekir.|
 | Azure dışı VM 'Ler | Windows/Linux için Log Analytics aracısının el ile yüklenmesi | VM 'Lerin aracının en yeni sürümüne güncelleştirilmesi için Windows Installer paketi veya Linux kendiliğinden ayıklanan ve yüklenebilir kabuk betik paketi çalıştıran komut satırından gerçekleştirilmesi gerekir. |
 
@@ -32,9 +32,9 @@ Bir Windows VM 'deki aracıyı Log Analytics VM uzantısı kullanılarak yüklen
 
 Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızdan Windows aracısının en son sürümünü indirebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
+2. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
 
 3. Log Analytics çalışma alanları listenizde, çalışma alanını seçin.
 
@@ -89,7 +89,7 @@ Bu bölümdeki adımlar, yalnızca Windows aracısını farklı bir çalışma a
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. **Denetim Masası 'nı**açın.
+2. **Denetim Masası 'nı** açın.
 
 3. **Microsoft Monitoring Agent** öğesini seçin ve ardından **Azure Log Analytics** sekmesine tıklayın.
 
@@ -172,7 +172,7 @@ Aracıyı, dağıtımdan sonra bir ara sunucu veya [ağ geçidi Log Analytics](g
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. **Denetim Masası 'nı**açın.
+2. **Denetim Masası 'nı** açın.
 
 3. **Microsoft Monitoring Agent** öğesini seçin ve ardından **proxy ayarları** sekmesine tıklayın.
 
@@ -236,7 +236,7 @@ Komut satırı veya Kurulum Sihirbazı 'nı kullanarak Windows veya Linux Aracı
 3. **Programlar ve Özellikler**' de **Microsoft Monitoring Agent**' a, **Kaldır**' a ve ardından **Evet**' e tıklayın.
 
 >[!NOTE]
->Aracı Kurulum Sihirbazı, Azure portal bir çalışma alanından indirileceği **MMASetup- \<platform\> . exe**dosyasına çift tıklanarak da çalıştırılabilir.
+>Aracı Kurulum Sihirbazı, Azure portal bir çalışma alanından indirileceği **MMASetup- \<platform\> . exe** dosyasına çift tıklanarak da çalıştırılabilir.
 
 #### <a name="uninstall-from-the-command-line"></a>Komut satırından kaldır
 Aracının indirilen dosyası, IExpress ile oluşturulan, kendi içinde bulunan bir yükleme paketidir. Aracının ve destekleyici dosyaların kurulum programı pakette bulunur ve aşağıdaki örnekte gösterilen komut satırı kullanılarak düzgün bir şekilde kaldırılması için ayıklanmalıdır.
@@ -261,7 +261,7 @@ Windows için Log Analytics aracısını bir System Center Operations Manager y�
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. **Denetim Masası 'nı**açın.
+2. **Denetim Masası 'nı** açın.
 
 3. **Microsoft Monitoring Agent** ' a ve ardından **Operations Manager** sekmesine tıklayın.
 
@@ -275,7 +275,7 @@ Windows için Log Analytics aracısını bir System Center Operations Manager y�
 
 8. **Yönetim sunucusu bağlantı noktası** ALANıNA, TCP bağlantı noktası numarasını yazın.
 
-9. **Aracı eylem hesabı**altında, yerel sistem hesabını veya bir yerel etki alanı hesabını seçin.
+9. **Aracı eylem hesabı** altında, yerel sistem hesabını veya bir yerel etki alanı hesabını seçin.
 
 10. **Tamam** ' **a tıklayarak yönetim grubu Ekle** iletişim kutusunu kapatın ve ardından **Tamam** ' a tıklayarak **Microsoft Monitoring Agent Özellikler** iletişim kutusunu kapatın.
 

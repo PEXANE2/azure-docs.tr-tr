@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82190410"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010733"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>Portalı kullanarak yakın yerleştirilen bir grup oluşturma
 
@@ -59,7 +59,7 @@ VM, kullanılabilirlik kümesinin parçasıysa, VM 'Leri eklemeden önce kullan�
 1. VM 'yi seçip VM 'nin sayfasında **Durdur** ' u seçerek ve ardından sanal makineyi durdurmak için **Tamam** ' ı seçerek KULLANıLABILIRLIK kümesindeki her bir VM 'yi serbest bırakın.
 1. Kullanılabilirlik kümesinin sayfasında, tüm VM 'Lerin **durumunun** **durduruldu (serbest bırakıldı)** olarak listelendiğinden emin olun.
 1. Soldaki menüden **Yapılandırma**'yı seçin.
-1. **Yakınlık yerleşimi grubu**altında, açılır listeden bir yerleştirme grubu seçin ve ardından **Kaydet**' i seçin.
+1. **Yakınlık yerleşimi grubu** altında, açılır listeden bir yerleştirme grubu seçin ve ardından **Kaydet**' i seçin.
 1. VM 'lerin listesini yeniden görmek için sol menüden **Genel Bakış ' ı** seçin. 
 1. Kullanılabilirlik kümesindeki her bir VM 'yi seçin ve sonra her VM için sayfada **Başlat** ' ı seçin. 
 
@@ -69,7 +69,7 @@ VM, kullanılabilirlik kümesinin parçasıysa, VM 'Leri eklemeden önce kullan�
 
 1. VM 'nin sayfasında **Durdur**' u seçin.
 1. VM 'nin durumu **durduruldu (serbest bırakıldı)** olarak listeleniyorsa, sol menüde **yapılandırma** ' yı seçin.
-1. **Yakınlık yerleşimi grubu**altında, açılır listeden bir yerleştirme grubu seçin ve ardından **Kaydet**' i seçin.
+1. **Yakınlık yerleşimi grubu** altında, açılır listeden bir yerleştirme grubu seçin ve ardından **Kaydet**' i seçin.
 1. Sol menüden **genel bakış** ' ı seçin ve ardından sanal makineyi yeniden başlatmak için **Başlat** ' ı seçin.
 
  

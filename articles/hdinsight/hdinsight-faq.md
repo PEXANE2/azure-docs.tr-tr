@@ -10,11 +10,11 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547529"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011838"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -272,7 +272,7 @@ Bkz. [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanm
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Kenar düğümüne nasıl bağlanabilirim?
 
-Edge düğümü oluşturduktan sonra, bağlantı noktası 22 ' de SSH kullanarak buna bağlanabilirsiniz. Uç düğümünün adını küme portalından bulabilirsiniz. Adlar *genellikle ile biter* .
+Edge düğümü oluşturduktan sonra, bağlantı noktası 22 ' de SSH kullanarak buna bağlanabilirsiniz. Uç düğümünün adını küme portalından bulabilirsiniz. Adlar *genellikle ile biter*.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Kalıcı betikler neden yeni oluşturulan kenar düğümlerinde otomatik olarak çalışmıyor?
 
@@ -321,7 +321,7 @@ Komutu sanal ağ dışından veya eşlenmiş olmayan bir sanal ağdan çağırı
 > [!NOTE]
 > Kıvrımlı bir parola ister. Küme oturum açma Kullanıcı adı için geçerli bir parola girmeniz gerekir.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>HDInsight kümesini dağıtma maliyeti ne kadar sürer?
 

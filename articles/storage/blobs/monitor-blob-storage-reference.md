@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 8caa39bea2d0d835a94bc95a747f1f870bae3b12
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d33c368c271c4d1809834e2eeac8c4b5c0ba0441
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357547"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011148"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob depolama izleme verileri başvurusu
 
@@ -36,12 +36,12 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 #### <a name="blob-storage"></a>Blob depolama
 
-Bu tabloda [BLOB depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)gösterilmektedir.
+Bu tabloda [BLOB depolama ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)gösterilmektedir.
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------------------- | ----------------- |
-| BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ( [tanım](#metrics-dimensions)) |
-| BlobCount    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ( [tanım](#metrics-dimensions)) |
+| BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ([tanım](#metrics-dimensions)) |
+| BlobCount    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ([tanım](#metrics-dimensions)) |
 | BlobProvisionedSize | Depolama hesabında sağlanan depolama miktarı. Bu ölçüm yalnızca Premium Depolama hesapları için geçerlidir. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama |
 | ContainerCount    | Depolama hesabındaki kapsayıcıların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Dizin kapasitesi     | ADLS 2. hiyerarşik dizin tarafından kullanılan depolama miktarı <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
@@ -66,8 +66,8 @@ Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları des
 
 | Boyut adı | Description |
 | ------------------- | ----------------- |
-| **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob** , **pageblob** ve **Azure Data Lake Storage**. Ekleme Blobları **Blockblob** 'a dahildir. |
-| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık** erişimli: etkin katman</li> <li>**Cool** : Cool Tier</li> <li>**Arşiv** : Arşiv katmanı</li> <li>**Premium** : Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60** : Premium Sayfa Blobu için katman türleri</li> <li>**Standart** : standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan** : genel amaçlı v1 depolama hesabı için katman türü</li> |
+| **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob** ve **Azure Data Lake Storage**. Ekleme Blobları **Blockblob**'a dahildir. |
+| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık** erişimli: etkin katman</li> <li>**Cool**: Cool Tier</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan**: genel amaçlı v1 depolama hesabı için katman türü</li> |
 
 Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerini görmek için boyut değerini belirtmeniz gerekir. Örneğin, başarılı yanıtlar için  **işlem** değerine bakarsanız, **responseType** boyutunu **başarılı** olarak filtrelemeniz gerekir. Blok Blobu için **Blobcount** değerine bakarsanız, **Blobtype** boyutunu **blockblob** ile filtrelemeniz gerekir.
 

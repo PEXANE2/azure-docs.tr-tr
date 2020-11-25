@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
 ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277617"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011532"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Öğretici: Front Door örneğinize özel etki alanı ekleme
 Bu öğreticide Front Door'a özel etki alanı ekleme adımları gösterilmektedir. Uygulama teslimi için Azure ön kapısı kullandığınızda, kendi etki alanı adınızın Son Kullanıcı isteğiniz içinde görünmesini istiyorsanız özel bir etki alanı gereklidir. Görünür bir etki alanınızın olması, müşterileriniz için kolaylık sağlar ve markalama için faydalıdır.
 
 Ön kapı oluşturduktan sonra, varsayılan ön uç Konağı `azurefd.net` Varsayılan olarak arka ucunuzdaki ön kapı içeriğini teslim etmek için URL 'ye eklenir (örneğin, https: \/ /contoso-frontend.azurefd.net/activeusers.htm). Size kolaylık olması için Azure Front Door, varsayılan ana bilgisayar adı özel etki alanı ile ilişkilendirme seçeneği sunar. Bu seçeneği kullanarak URL’nizde Front Door'a ait olan etki alanı adı yerine özel etki alanı ile içerik sunabilirsiniz (örneğin, https:\//www.contoso.com/photo.png). 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - CNAME DNS kaydı oluşturun.
 > - Özel etki alanını Front Door'unuzla ilişkilendirin.
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Ön kapı, [punyıcode](https://en.wikipedia.org/wiki/Punycode) karakterleriyle özel etki **alanlarını desteklemez.** 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı başlangıç: Front Door oluşturma](quickstart-create-front-door.md).
 
@@ -69,11 +69,11 @@ afdverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
-    - Kaynak: afdverify alt etki alanı da dahil olmak üzere özel etki alanı adınızı aşağıdaki biçimde girin: afdverify. _ &lt; özel etki alanı &gt; adı_. Örneğin, afdverify.www.contoso.com.
+    - Kaynak: afdverify alt etki alanı da dahil olmak üzere özel etki alanı adınızı aşağıdaki biçimde girin: afdverify. _&lt; özel etki alanı &gt; adı_. Örneğin, afdverify.www.contoso.com.
 
     - Tür: *CNAME* yazın.
 
-    - Hedef: afdverify alt etki alanı da dahil olmak üzere varsayılan ön kapılı ön uç konağını aşağıdaki biçimde girin: afdverify. _ &lt; uç nokta &gt; adı_. azurefd.net. Örneğin, afdverify.contoso-frontend.azurefd.net.
+    - Hedef: afdverify alt etki alanı da dahil olmak üzere varsayılan ön kapılı ön uç konağını aşağıdaki biçimde girin: afdverify. _&lt; uç nokta &gt; adı_. azurefd.net. Örneğin, afdverify.contoso-frontend.azurefd.net.
 
 4. Yaptığınız değişiklikleri kaydedin.
 
@@ -97,7 +97,7 @@ afdverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
 
     - TTL: *bir saat* seçili olarak bırakın.
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
  
     CNAME girişi DNS kayıtları tablosuna eklenir.
 
@@ -127,7 +127,7 @@ afdverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
 
 Özel etki alanınızın kaydını tamamladıktan sonra özel etki alanının varsayılan Front Door ön uç ana bilgisayar adınıza başvurduğunu doğrulayın.
  
-Tarayıcınızda, özel etki alanını kullanarak dosyanın adresine gidin. Örneğin, özel etki alanınız robotics.contoso.com ise önbelleğe alınan dosyanın URL’si şu URL’ye benzer olmalıdır: http:\//robotics.contoso.com/my-public-container/my-file.jpg. En önde gelen kapıya doğrudan * &lt; ön kapı ana bilgisayarında &gt; *, sonucun aynı olduğunu doğrulayın. azurefd.net.
+Tarayıcınızda, özel etki alanını kullanarak dosyanın adresine gidin. Örneğin, özel etki alanınız robotics.contoso.com ise önbelleğe alınan dosyanın URL’si şu URL’ye benzer olmalıdır: http:\//robotics.contoso.com/my-public-container/my-file.jpg. En önde gelen kapıya doğrudan *&lt; ön kapı ana bilgisayarında &gt;*, sonucun aynı olduğunu doğrulayın. azurefd.net.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Kalıcı özel etki alanını eşleme
@@ -138,7 +138,7 @@ afdverify alt etki alanının Front Door'unuza başarıyla eşlendiğini doğrul
 
 1. Özel etki alanınızın etki alanı sağlayıcısına ait web sitesinde oturum açın.
 
-2. Sağlayıcının belgelerine danışarak veya **etki alanı adı**, **DNS**ya da **ad sunucusu yönetimi**etiketli Web sitesinin bölümlerini arayarak DNS kayıtlarını yönetmeye ilişkin sayfayı bulun. 
+2. Sağlayıcının belgelerine danışarak veya **etki alanı adı**, **DNS** ya da **ad sunucusu yönetimi** etiketli Web sitesinin bölümlerini arayarak DNS kayıtlarını yönetmeye ilişkin sayfayı bulun. 
 
 3. Özel etki alanınız için bir CNAME kaydı girişi oluşturun ve alanları (alan adları değişebilir) aşağıdaki tabloda gösterildiği gibi tamamlayın:
 
@@ -150,7 +150,7 @@ afdverify alt etki alanının Front Door'unuza başarıyla eşlendiğini doğrul
 
    - Tür: *CNAME* yazın.
 
-   - Hedef: Varsayılan Front Door ön uç ana bilgisayar adını girin. Şu biçimde olmalıdır:_ &lt; hostname &gt; _. azurefd.net. Örneğin, contoso-frontend.azurefd.net.
+   - Hedef: Varsayılan Front Door ön uç ana bilgisayar adını girin. Şu biçimde olmalıdır:_&lt; hostname &gt;_. azurefd.net. Örneğin, contoso-frontend.azurefd.net.
 
 4. Yaptığınız değişiklikleri kaydedin.
 
@@ -178,7 +178,7 @@ afdverify alt etki alanının Front Door'unuza başarıyla eşlendiğini doğrul
 
     - TTL: *bir saat* seçili olarak bırakın.
 
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
  
     CNAME girişi DNS kayıtları tablosuna eklenir.
 

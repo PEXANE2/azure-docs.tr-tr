@@ -4,19 +4,19 @@ description: Bu makalede, Azure AKS kümenizi kapsayıcılar için Azure Izleyic
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15ec102632258870745f510a98773f70242118be
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489495"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96011651"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile Azure Kubernetes Service (AKS) ortamınızı izlemeyi durdurma
 
 AKS kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz kümeyi izlemeyi durdurabilirsiniz. Bu makalede, Azure CLı kullanılarak veya belirtilen Azure Resource Manager şablonlarıyla nasıl yapılacağı gösterilmektedir.  
 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Kapsayıcılar için Azure Izleyicisini devre dışı bırakmak için [az aks Disable-addons](/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) komutunu kullanın. Komut, aracıyı küme düğümlerinden kaldırır, çözümü veya daha önce toplanan ve Azure Izleyici kaynağınız içinde depolanan verileri kaldırmaz.  
 
@@ -35,7 +35,7 @@ Bir şablon kullanarak kaynak dağıtma kavramı hakkında bilgi sahibi değilse
 * [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->Şablonun, kümenin aynı kaynak grubunda dağıtılması gerekir. Bu şablonu kullanırken başka özellikleri veya eklentileri atlarsanız, kümeden kaldırılmasına neden olabilir. Örneğin, kümenizde uygulanan RBAC ilkeleri için *Enablertzya* ya da aks kümesi için Etiketler belirtilmişse, *Aksresourcetagvalues* .  
+>Şablonun, kümenin aynı kaynak grubunda dağıtılması gerekir. Bu şablonu kullanırken başka özellikleri veya eklentileri atlarsanız, kümeden kaldırılmasına neden olabilir. Örneğin, kümeinizde uygulanan Kubernetes RBAC ilkesi için *Enablertzya* veya aks kümesi için Etiketler belirtilmişse, *Aksresourcetagvalues* .  
 >
 
 Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.27 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version` . Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
@@ -120,7 +120,7 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
 
     ![Kapsayıcı özellikleri sayfası](media/container-insights-optout/container-properties-page.png)
 
-    **Özellikler** sayfasında, **çalışma alanı kaynak kimliğini**de kopyalayın. Log Analytics çalışma alanını daha sonra silmek istediğinize karar verirseniz bu değer gereklidir. Log Analytics çalışma alanı silindiğinde bu işlemin bir parçası olarak yapılmaz.
+    **Özellikler** sayfasında, **çalışma alanı kaynak kimliğini** de kopyalayın. Log Analytics çalışma alanını daha sonra silmek istediğinize karar verirseniz bu değer gereklidir. Log Analytics çalışma alanı silindiğinde bu işlemin bir parçası olarak yapılmaz.
 
     **Aksresourcetagvalues** değerlerini, aks kümesi için belirtilen varolan etiket değerleriyle eşleşecek şekilde düzenleyin.
 

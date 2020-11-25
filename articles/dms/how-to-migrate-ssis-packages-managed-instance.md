@@ -13,11 +13,11 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: 01370092c5e272fe64f4ffdad577b69d3a532810
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963037"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012161"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services paketlerini Azure SQL yönetilen örneği 'ne geçirme
 SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/paketlerinizi, SQL Server tarafından barındırılan kaynak SSSıSDB 'den Azure SQL yönetilen örneği tarafından barındırılan hedef SSıSDB 'ye geçirmek istiyorsanız, Azure veritabanı geçiş hizmeti 'ni kullanabilirsiniz.
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynak SSIS projelerini/paketlerini değerlendirin.
 > * SSIS projelerini/paketlerini Azure 'a geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -126,7 +126,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
    ![Kaynak Ayrıntıları](media/how-to-migrate-ssis-packages-mi/dms-source-details1.png)
 
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 

@@ -16,11 +16,11 @@ ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841161"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010920"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services kullanarak erişim denetimiyle içerik koruma sistemi tasarlama
 
@@ -349,7 +349,7 @@ Erişim belirteci Azure AD 'den alınır. Başarılı Kullanıcı kimlik doğrul
 
 3. Groupmembershipclaim özelliğinin "Groupmembershipclaim" değerine sahip olması için uygulama bildirim dosyasını güncelleştirin: "All".
 
-4. Oynatıcı Web uygulamasına işaret eden Azure AD uygulamasında, **diğer uygulamalara yönelik izinler**bölümünde, 1. adımda eklenen kaynak uygulamasını ekleyin. **Temsilci izni**altında, **erişim [resource_name]** öğesini seçin. Bu seçenek, Web uygulamasına kaynak uygulamasına erişen erişim belirteçleri oluşturma izni verir. Visual Studio ve Azure Web uygulaması ile geliştirirseniz, Web uygulamasının hem yerel hem de dağıtılan sürümünde bunu yapın.
+4. Oynatıcı Web uygulamasına işaret eden Azure AD uygulamasında, **diğer uygulamalara yönelik izinler** bölümünde, 1. adımda eklenen kaynak uygulamasını ekleyin. **Temsilci izni** altında, **erişim [resource_name]** öğesini seçin. Bu seçenek, Web uygulamasına kaynak uygulamasına erişen erişim belirteçleri oluşturma izni verir. Visual Studio ve Azure Web uygulaması ile geliştirirseniz, Web uygulamasının hem yerel hem de dağıtılan sürümünde bunu yapın.
 
 Azure AD tarafından verilen JWT, işaretçi kaynağına erişmek için kullanılan erişim belirtecidir.
 

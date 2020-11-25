@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 47afaea03e58cf6a24382727c6fc7193fde5abe4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123822"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012110"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics Işinin girdileri ve çıkışları için oturum açma kimlik bilgilerini döndürün
 
@@ -25,12 +25,12 @@ Bu bölümde, BLOB depolama, Event Hubs, SQL veritabanı ve tablo depolama için
 
 ### <a name="blob-storagetable-storage"></a>BLOB depolama/tablo depolama
 1. Azure portal oturum açın > Stream Analytics işi için giriş/çıkış olarak kullandığınız depolama hesabına gidin.    
-2. Ayarlar bölümünde **erişim anahtarları** ' nı açın. İki varsayılan anahtar (KEY1, key2) arasında, işiniz tarafından kullanılmayan birini seçin ve yeniden oluşturun:  
+2. Ayarlar bölümünde **erişim anahtarları**' nı açın. İki varsayılan anahtar (KEY1, key2) arasında, işiniz tarafından kullanılmayan birini seçin ve yeniden oluşturun:  
    ![Depolama hesabı için anahtarları yeniden oluştur](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. Yeni oluşturulan anahtarı kopyalayın.    
 4. Azure portal, **Durdur** ' u seçin ve işin durdurulmasını bekleyin > Stream Analytics işinize gidin.    
 5. Kimlik bilgilerini güncelleştirmek istediğiniz blob/tablo depolama girişini/çıkışını bulun.    
-6. **Depolama hesabı anahtarı** alanını bulun ve yeni oluşturulan anahtarınızı yapıştırın > **Kaydet** ' e tıklayın.    
+6. **Depolama hesabı anahtarı** alanını bulun ve yeni oluşturulan anahtarınızı yapıştırın > **Kaydet**' e tıklayın.    
 7. Değişikliklerinizi kaydettiğinizde bir bağlantı testi otomatik olarak başlayacaktır, Bildirimler sekmesinden görüntüleyebilirsiniz. İki bildirim vardır: biri, güncelleştirmeyi kaydetmeye karşılık gelir ve bağlantıyı test etmek için diğer karşılık gelir:  
    ![Anahtarı düzenledikten sonra bildirimler](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. [Son durdurulma zamanı bölümünden işinizi başlatmaya](#start-your-job-from-the-last-stopped-time) devam edin.
@@ -43,7 +43,7 @@ Bu bölümde, BLOB depolama, Event Hubs, SQL veritabanı ve tablo depolama için
 3. Yeni oluşturulan anahtarı kopyalayın.    
 4. Azure portal, **Durdur** ' u seçin ve işin durdurulmasını bekleyin > Stream Analytics işinize gidin.    
 5. Kimlik bilgilerini güncelleştirmek istediğiniz olay hub 'larının giriş/çıkışını bulun.    
-6. **Olay Hub 'ı Ilke anahtarı** alanını bulun ve yeni oluşturulan anahtarınızı yapıştırın > **Kaydet** ' e tıklayın.    
+6. **Olay Hub 'ı Ilke anahtarı** alanını bulun ve yeni oluşturulan anahtarınızı yapıştırın > **Kaydet**' e tıklayın.    
 7. Değişikliklerinizi kaydettiğinizde bir bağlantı testi otomatik olarak başlayacaktır, başarıyla geçirildiğinden emin olun.    
 8. [Son durdurulma zamanı bölümünden işinizi başlatmaya](#start-your-job-from-the-last-stopped-time) devam edin.
 
@@ -52,7 +52,7 @@ Bu bölümde, BLOB depolama, Event Hubs, SQL veritabanı ve tablo depolama için
 Mevcut bir kullanıcının oturum açma kimlik bilgilerini güncelleştirmek için SQL veritabanı 'na bağlanmanız gerekir. Azure portal veya SQL Server Management Studio gibi bir istemci tarafı aracı kullanarak kimlik bilgilerini güncelleştirebilirsiniz. Bu bölümde Azure portal kullanarak kimlik bilgilerini güncelleştirme işlemi gösterilmektedir.
 
 1. Azure portal oturum açın > Stream Analytics iş için çıktı olarak kullandığınız SQL veritabanına gidin.    
-2. **Veri Gezgini** 'nde, veritabanınıza bağlanın/veritabanınıza bağlanın > Yetkilendirme türünü **SQL Server kimlik doğrulaması** olarak seçin > **oturum açma** ve **parola** ayrıntılarına yazın > Tamam ' **ı** seçin.  
+2. **Veri Gezgini**'nde, veritabanınıza bağlanın/veritabanınıza bağlanın > Yetkilendirme türünü **SQL Server kimlik doğrulaması** olarak seçin > **oturum açma** ve **parola** ayrıntılarına yazın > Tamam ' **ı** seçin.  
    ![SQL veritabanı için kimlik bilgilerini yeniden üret](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. Sorgu sekmesinde, aşağıdaki sorguyu çalıştırarak kullanıcılarınızın parolasını değiştirin (Kullanıcı `<user_name>` adınızla ve yeni parolanızla değiştirdiğinizden emin olun `<new_password>` ):  
@@ -77,7 +77,7 @@ Mevcut bir kullanıcının oturum açma kimlik bilgilerini güncelleştirmek iç
 ## <a name="start-your-job-from-the-last-stopped-time"></a>İşinizi son durdurulma zamanından başlatın
 
 1. İşi başlatmak için işin **genel bakış** bölmesine gidin > **Başlat** ' ı seçin.    
-2. **Son durdurulduğunda** seçin > **Başlat** ' a tıklayın. "Son durdurulma" seçeneğinin yalnızca, daha önce işi çalıştırdıysanız ve bazı çıktılar üretileceğini aklınızda göründüğünü unutmayın. İş, son çıkış değerinin saatine göre yeniden başlatılır.
+2. **Son durdurulduğunda** seçin > **Başlat**' a tıklayın. "Son durdurulma" seçeneğinin yalnızca, daha önce işi çalıştırdıysanız ve bazı çıktılar üretileceğini aklınızda göründüğünü unutmayın. İş, son çıkış değerinin saatine göre yeniden başlatılır.
    ![Stream Analytics işini Başlat](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61443020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012297"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme çözüm hızlandırıcısına IoT Edge paketini içeri aktarın
 
@@ -35,7 +35,7 @@ Dağıtım bildirimini geliştirme ortamınızdan dışarı aktarmak için Azure
 
 1. **IoT Edge bildirim yükle**' ye tıklayın: ![ dağıtım bildirimini indir](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
-1. JSON dosyasını **deploymentmanifest.js**adlı yerel bir dosya olarak kaydedin.
+1. JSON dosyasını **deploymentmanifest.js** adlı yerel bir dosya olarak kaydedin.
 
 Artık dağıtım bildirimini içeren bir dosyanız vardır. Sonraki bölümde, bu bildirimi uzak Izleme çözümüne bir paket olarak içeri aktarırsınız.
 

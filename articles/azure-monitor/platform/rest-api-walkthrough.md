@@ -1,18 +1,18 @@
 ---
-title: Azure Izleme REST API izlenecek yol
+title: Azure İzleme REST API'si adım adım kılavuzu
 description: Kullanılabilir ölçüm tanımlarını ve ölçüm değerlerini almak için isteklerin kimliğini doğrulama ve Azure Izleyici REST API kullanma.
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
 ms.openlocfilehash: 500d5242d5185a8014283918c1f3a22c5c22cf48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325602"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012025"
 ---
-# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Izleme REST API izlenecek yol
+# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure İzleme REST API'si adım adım kılavuzu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -582,7 +582,7 @@ Elde edilen JSON yanıt gövdesi, aşağıdaki örneğe benzer olacaktır:
 Ek bir yaklaşım, Windows makinenizde [Armclient](https://github.com/projectkudu/armclient) kullanmaktır. ARMClient, Azure AD kimlik doğrulamasını (ve sonuç JWT belirtecini) otomatik olarak işler. Aşağıdaki adımlarda, ölçüm verilerini almak için ARMClient kullanımı ana hatlarıyla verilmiştir:
 
 1. [Chocolatey](https://chocolatey.org/) ve [armclient](https://github.com/projectkudu/armclient)'ı yükler.
-2. Bir Terminal penceresinde * oturumarmclient.exe*yazın. Bunu yaptığınızda Azure 'da oturum açmanız istenir.
+2. Bir Terminal penceresinde *oturumarmclient.exe* yazın. Bunu yaptığınızda Azure 'da oturum açmanız istenir.
 3. *Armclient Get [your_resource_id]/Providers/Microsoft.insights/MetricDefinitions? api-Version = 2016-03-01* yazın
 4. *Armclient Get [your_resource_id]/Providers/Microsoft.insights/Metrics? api-Version = 2016-09-01* yazın
 
@@ -652,7 +652,7 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı kullanarak bir Azure depolama hesabının kaynak KIMLIĞINI almak için `az storage account show` Aşağıdaki örnekte gösterildiği gibi komutunu yürütün:
 

@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900285"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012178"
 ---
 # <a name="configure-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yapılandırma
 
-Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de kenar yerinin avantajlarından yararlanmak için optimize edilmiş bir konuşma uygulaması mimarisi oluşturmasına imkan tanır. Artık desteklediğimiz beş konuşma kapsayıcısı, **konuşmadan metne**, **özel konuşmadan metne**, **metin**okuma, **sinir-** metin okuma ve **özel metin okuma özelliğine**sahip.
+Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de kenar yerinin avantajlarından yararlanmak için optimize edilmiş bir konuşma uygulaması mimarisi oluşturmasına imkan tanır. Artık desteklediğimiz beş konuşma kapsayıcısı, **konuşmadan metne**, **özel konuşmadan metne**, **metin** okuma, **sinir-** metin okuma ve **özel metin okuma özelliğine** sahip.
 
 **Konuşma** kapsayıcısı çalışma zamanı ortamı, `docker run` komut bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç komuta [örnek](#example-docker-run-commands) vardır. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır.
 
@@ -50,7 +50,7 @@ Bu ayar aşağıdaki yerde bulunabilir:
 
 - Azure portal: **konuşmaya** genel bakış, etiketli `Endpoint`
 
-| Gerekli | Adı | Veri türü | Açıklama |
+| Gerekli | Name | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | Evet | `Billing` | Dize | Faturalama uç noktası URI 'SI. Faturalandırma URI 'sini alma hakkında daha fazla bilgi için bkz. [gerekli parametreleri toplama](speech-container-howto.md#gathering-required-parameters). Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../cognitive-services-custom-subdomains.md). |
 
@@ -78,10 +78,10 @@ Standart konuşma kapsayıcıları, eğitim veya hizmet verilerini depolamak iç
 
 Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](speech-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir.
 
-| İsteğe Bağlı | Adı | Veri türü | Açıklama |
+| İsteğe Bağlı | Name | Veri türü | Açıklama |
 | -------- | ---- | --------- | ----------- |
 | İzin verilmiyor | `Input` | Dize | Standart konuşma kapsayıcıları bunu kullanmaz. Özel konuşma kapsayıcıları, [birim bağlama](#volume-mount-settings)kullanır.                                                                                    |
-| İsteğe Bağlı | `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output` |
+| İsteğe Bağlı | `Output` | Dize | Çıkış bağlama hedefi. `/output` varsayılan değerdir. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Birim bağlama ayarları
 
@@ -104,7 +104,7 @@ Birim bağlama ayarı üç renk `:` ayrılmış alandan oluşur:
 Bu komut, _C:\ınput_ dizinini ana makine makinesini _/usr/local/modeller_ dizinine bağlar.
 
 > [!IMPORTANT]
-> Birim bağlama ayarları yalnızca **özel konuşma tanıma metin** ve **özel metin okuma** kapsayıcıları için geçerlidir. **Konuşmayı metne**dönüştürme, **sinir metin okuma** ve **metin okuma** kapsayıcıları, toplu takmaları kullanmaz.
+> Birim bağlama ayarları yalnızca **özel konuşma tanıma metin** ve **özel metin okuma** kapsayıcıları için geçerlidir. **Konuşmayı metne** dönüştürme, **sinir metin okuma** ve **metin okuma** kapsayıcıları, toplu takmaları kullanmaz.
 
 ## <a name="example-docker-run-commands"></a>Örnek Docker Run komutları
 

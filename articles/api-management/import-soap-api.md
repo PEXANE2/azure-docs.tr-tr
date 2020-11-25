@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146986"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011073"
 ---
 # <a name="import-soap-api"></a>SOAP API’sini içeri aktarma
 
@@ -39,10 +39,10 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Arka uç API'sini içeri aktarma ve yayımlama
 
 1. Azure portal API Management hizmetinize gidin ve menüden **API 'leri** seçin.
-2. **Yeni API ekleyin** listesinden **WSDL** ’yi seçin.
+2. **Yeni API ekleyin** listesinden **WSDL**’yi seçin.
 
     ![SOAP API’si](./media/import-soap-api/wsdl-api.png)
-3. **WSDL belirtimi** ’nde, SOAP API’nizin bulunduğu URL'yi girin.
+3. **WSDL belirtimi**’nde, SOAP API’nizin bulunduğu URL'yi girin.
 4. **SOAP geçişi** radyo düğmesi, varsayılan olarak seçilir. Bu seçimle API, SOAP olarak sunulur. Tüketicinin SOAP kurallarını kullanması gerekir. API’yi REST’e dönüştürmek istiyorsanız, [SOAP API'yi içeri aktarma ve REST’e dönüştürme](restify-soap-api.md) konusundaki adımları izleyin.
 
     ![Ekran görüntüsü bir W S D L belirtimi girebileceğiniz W S D L 'tan oluştur iletişim kutusunu gösterir.](./media/import-soap-api/pass-through.png)
@@ -50,7 +50,7 @@ Bu makalede şunları öğreneceksiniz:
 
     Şu alanlar, SOAP API’sinde bulunan bilgilerle doldurulur: Görünen ad, Ad, Açıklama.
 6. API URL'si soneki ekleyin. Sonek, bu belirli API’yi bu API Management örneğinde tanımlayan bir addır. Bu API Management örneğinde benzersiz olmalıdır.
-7. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, " *sınırsız* " ürün kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
+7. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "*sınırsız*" ürün kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
 
     Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. API Management örneğini oluşturduysanız, zaten bir yöneticiyseniz, varsayılan olarak her ürüne abone olursunuz.
 
@@ -59,7 +59,7 @@ Bu makalede şunları öğreneceksiniz:
     * **Başlangıç**
     * **Sınırsız**   
 8. Diğer API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
-9. **Oluştur** ’u seçin.
+9. **Oluştur**’u seçin.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>Yönetim portalında yeni API 'YI test etme
 
@@ -70,7 +70,7 @@ Bu makalede şunları öğreneceksiniz:
 3. Bir işlem seçin.
 
     Sayfa, sorgu parametrelerinin ve üst bilgilerin alanlarını görüntüler. Bu API ile ilişkilendirilmiş ürünün abonelik anahtarı için, üst bilgilerden biri "Ocp-Apim-Subscription-Key" üst bilgisidir. API Management örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve anahtar otomatik olarak doldurulur. 
-1. **Gönder** ’e basın.
+1. **Gönder**’e basın.
 
     Arka uç, **200 OK** ve bazı verilerle yanıt verir.
 

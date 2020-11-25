@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839801"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010954"
 ---
 # <a name="how-to-reprovision-devices"></a>Cihazları yeniden sağlama
 
@@ -39,7 +39,7 @@ Aşağıdaki adımlar, bir cihazın kaydı için ayırma ilkesini yapılandırı
 
 2. Kayıtları **Yönet**' e tıklayın ve yeniden sağlama için yapılandırmak istediğiniz kayıt grubuna veya bireysel kaydına tıklayın. 
 
-3. **Cihazları hub 'lara nasıl atamak Istediğinizi seçin**altında, aşağıdaki ayırma ilkelerinden birini seçin:
+3. **Cihazları hub 'lara nasıl atamak Istediğinizi seçin** altında, aşağıdaki ayırma ilkelerinden birini seçin:
 
     * **En düşük gecikme**: Bu ilke, cihaz ve IoT Hub arasındaki en düşük gecikme süresine neden olacak şekilde cihazları bağlantılı IoT Hub atar. Bu seçenek, cihazın konuma göre en yakın IoT Hub 'ı ile iletişim kurmasını sağlar. 
     
@@ -47,7 +47,7 @@ Aşağıdaki adımlar, bir cihazın kaydı için ayırma ilkesini yapılandırı
     
     * **Statik yapılandırma**: Bu ilke, bir cihazın sağlanması için kayıt girişinde istenen IoT Hub listelenmesini gerektirir. Bu ilke, cihazları atamak istediğiniz tek bir özel IoT Hub 'ı atamanıza olanak tanır.
 
-4. **Bu grubun atanabileceği IoT Hub 'Larını seçin**altında ayırma ilkenize dahil etmek Istediğiniz bağlantılı IoT Hub 'larını seçin. İsteğe bağlı olarak, **Yeni bir IoT Hub bağlantısını** kullanarak yeni bir bağlı IoT Hub ekleyin.
+4. **Bu grubun atanabileceği IoT Hub 'Larını seçin** altında ayırma ilkenize dahil etmek Istediğiniz bağlantılı IoT Hub 'larını seçin. İsteğe bağlı olarak, **Yeni bir IoT Hub bağlantısını** kullanarak yeni bir bağlı IoT Hub ekleyin.
 
     **En düşük gecikme süresi** ayırma ilkesiyle, seçtiğiniz hub 'lar cihaz ataması için en yakın hub 'ı belirlemek üzere gecikme süresi değerlendirmesine dahil edilir.
 
@@ -67,11 +67,11 @@ Aşağıdaki adımlar, bir cihazın kaydı için ayırma ilkesini yapılandırı
 
 2. Kayıtları **Yönet**' e tıklayın ve yeniden sağlama için yapılandırmak istediğiniz kayıt grubuna veya bireysel kaydına tıklayın.
 
-3. **Farklı bir IoT Hub 'ına yeniden sağlamak üzere cihaz verilerinin nasıl Işleneceğini seçin**altında, aşağıdaki yeniden sağlama ilkelerinden birini seçin:
+3. **Farklı bir IoT Hub 'ına yeniden sağlamak üzere cihaz verilerinin nasıl Işleneceğini seçin** altında, aşağıdaki yeniden sağlama ilkelerinden birini seçin:
 
     * **Verileri yeniden sağlayın ve geçirin**: Bu ilke, kayıt girişiyle ilişkili cihazlar yeni bir sağlama isteği gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Bu ilk IoT Hub 'ından tüm cihaz durum bilgileri yeni IoT Hub 'ına geçirilir. Geçiş sırasında cihazın durumu **atama** olarak bildirilir
 
-    * **Yeniden sağlama ve ilk yapılandırmaya sıfırlama**: Bu ilke, kayıt girdisiyle ilişkili cihazlar yeni bir sağlama isteği gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Cihaz sağlandığında sağlama hizmeti örneğinin aldığı ilk yapılandırma verileri yeni IoT Hub 'ına sağlanır. Geçiş sırasında cihazın durumu **atama**olarak bildirilir.
+    * **Yeniden sağlama ve ilk yapılandırmaya sıfırlama**: Bu ilke, kayıt girdisiyle ilişkili cihazlar yeni bir sağlama isteği gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Cihaz sağlandığında sağlama hizmeti örneğinin aldığı ilk yapılandırma verileri yeni IoT Hub 'ına sağlanır. Geçiş sırasında cihazın durumu **atama** olarak bildirilir.
 
 4. Değişikliklerinizi temel alarak cihazın yeniden sağlamasını etkinleştirmek için **Kaydet** ' e tıklayın.
 

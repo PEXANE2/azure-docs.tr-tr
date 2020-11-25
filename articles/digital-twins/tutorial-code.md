@@ -8,11 +8,11 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280275"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011311"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -43,7 +43,7 @@ Başlamak için gerekenler:
 
 Azure dijital TWINS örneğiniz ile çalışmaya hazırsanız, istemci uygulama projesini ayarlamaya başlayın. 
 
-Makinenizde bir komut istemi veya başka bir konsol penceresi açın ve bu öğreticide işlerinizi depolamak istediğiniz boş bir proje dizini oluşturun. Dizine istediğiniz her şeyi adlandırın (örneğin, *Digitaltwınscodeöğreticisi* ).
+Makinenizde bir komut istemi veya başka bir konsol penceresi açın ve bu öğreticide işlerinizi depolamak istediğiniz boş bir proje dizini oluşturun. Dizine istediğiniz her şeyi adlandırın (örneğin, *Digitaltwınscodeöğreticisi*).
 
 Yeni dizine gidin.
 
@@ -105,7 +105,7 @@ Uygulamanızın yapması gereken ilk şey, Azure dijital TWINS hizmetinde kimlik
 
 Kimlik doğrulamak için, Azure dijital TWINS örneğinizin *ana bilgisayar adına* ihtiyacınız vardır.
 
-*Program.cs* ' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına* ayarlayın.
+*Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına* ayarlayın.
 
 ```csharp
 string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
@@ -213,7 +213,7 @@ await foreach (DigitalTwinsModelData md in modelDataList)
 }
 ```
 
-**Bu yeni kodu test etmek için programı yeniden çalıştırmadan önce** , programı son kez çalıştırdığınızda modelinizi zaten karşıya yüklediğinize geri çekin. Azure dijital TWINS aynı modeli iki kez karşıya yüklemeye izin vermeyecektir. bu nedenle, aynı modeli yeniden yüklemeye çalışırsanız programın bir özel durum oluşturması gerekir.
+**Bu yeni kodu test etmek için programı yeniden çalıştırmadan önce**, programı son kez çalıştırdığınızda modelinizi zaten karşıya yüklediğinize geri çekin. Azure dijital TWINS aynı modeli iki kez karşıya yüklemeye izin vermeyecektir. bu nedenle, aynı modeli yeniden yüklemeye çalışırsanız programın bir özel durum oluşturması gerekir.
 
 Bu göz önünde bulundurularak, komut pencerenizde bu komutla programı yeniden çalıştırın:
 
@@ -267,7 +267,7 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda, *sampleTwin-0* , *sampleTwin-1* ve *sampleTwin-2* ' nin oluşturulduğu yazdırma iletilerini arayın. 
+Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda, *sampleTwin-0*, *sampleTwin-1* ve *sampleTwin-2* ' nin oluşturulduğu yazdırma iletilerini arayın. 
 
 Sonra, programı yeniden çalıştırın. 
 

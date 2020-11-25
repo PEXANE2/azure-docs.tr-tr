@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720053"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012416"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Gelişmiş machine learning için verileri hazırlama görevleri
 Ön işleme ve temizleme verileri, model eğitimi için bir veri kümesinin kullanılabilmesi için önce gerçekleştirilmesi gereken önemli görevlerdir. Ham veriler genellikle gürültülü ve güvenilir değildir ve eksik değerler olabilir. Modelleme için bu tür verilerin kullanılması yanıltıcı sonuçlar verebilir. Bu görevler, Team Data Science Işleminin (TDSP) bir parçasıdır ve genellikle, gerekli ön işlemden sonra keşfedilmesi ve planlanması için kullanılan bir veri kümesinin ilk araştırmasını izler. TDSP işlemi hakkında daha ayrıntılı yönergeler için, [Team Data Science işleminde](overview.md)özetlenen adımlara bakın.
@@ -39,10 +39,10 @@ Kalite verileri, kalite tahmine dayalı modeller için bir önkoşuldur. "Çöp 
 ## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>Çalışan bazı tipik veri durum ekranları nelerdir?
 Aşağıdakileri denetleyerek verilerin genel kalitesini kontrol edebilirsiniz:
 
-* **Kayıt**sayısı.
+* **Kayıt** sayısı.
 * **Öznitelik** sayısı (veya **özellikleri**).
 * Öznitelik **veri türleri** (nominal, Ordinal veya sürekli).
-* **Eksik değer**sayısı.
+* **Eksik değer** sayısı.
 * **İyi biçimlendirilmiş** veriler.
   * Veriler TSV veya CSV 'de ise, sütun ayırıcılarının ve çizgi ayırıcılarının her zaman sütunları ve satırları doğru şekilde ayırmadığını kontrol edin.
   * Veriler HTML veya XML biçimindeyse, verilerin ilgili standartlarına göre doğru şekilde oluşturulup oluşturulmayacağını kontrol edin.
@@ -57,7 +57,7 @@ Verilerle ilgili sorunları bulduğunuzda, **işleme adımları** gereklidir; bu
 * **Veri temizleme**: eksik değerleri girin, gürültülü verileri ve aykırı değerleri algılayın ve kaldırın.
 * **Veri dönüştürme**: boyutları ve paraziti azaltmak için verileri normalleştirin.
 * **Veri azaltma**: daha kolay veri işleme için örnek veri kayıtları veya öznitelikler.
-* **Veri**ayırma: belirli makine öğrenimi yöntemleriyle kullanım kolaylığı için sürekli öznitelikleri kategorik özniteliklere dönüştürün.
+* **Veri** ayırma: belirli makine öğrenimi yöntemleriyle kullanım kolaylığı için sürekli öznitelikleri kategorik özniteliklere dönüştürün.
 * **Metin Temizleme**: Örneğin, sekmeyle ayrılmış bir veri dosyasındaki katıştırılmış sekmeler, kayıtları kesintiye uğralabilen ekli yeni satırlar gibi, verilerin hizalanmasına neden olabilecek gömülü karakterleri kaldırın.
 
 Aşağıdaki bölümler bu veri işleme adımlarından bazılarını ayrıntılandırır.

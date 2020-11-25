@@ -8,11 +8,11 @@ ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012229"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Öğretici: Azure 'da Node.js ve MongoDB uygulaması oluşturma
 
@@ -43,7 +43,7 @@ ms.locfileid: "92743660"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -102,13 +102,13 @@ MEAN.JS geliştirme ortamı
 Ortam: geliştirme sunucusu:          http://0.0.0.0:3000 veritabanı: MongoDB://localhost/Mean-dev App Version: 0.5.0 MEAN.JS sürümü: 0.5.0--
 </pre>
 
-Bir tarayıcıda `http://localhost:3000` sayfasına gidin. Üst menüde **Kaydol** ’a tıklayın ve bir test kullanıcısı oluşturun. 
+Bir tarayıcıda `http://localhost:3000` sayfasına gidin. Üst menüde **Kaydol**’a tıklayın ve bir test kullanıcısı oluşturun. 
 
 MEAN.js örnek uygulaması, kullanıcı verilerini veritabanında depolar. Kullanıcı oluşturma ve oturum açmada başarılı olursanız, uygulamanız yerel MongoDB veritabanına veri yazıyor demektir.
 
 ![MEAN.js, MongoDB’ye başarıyla bağlanır](./media/tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
 
-Birkaç makale eklemek için **Yönetici > Makaleleri Yönet** ’i seçin.
+Birkaç makale eklemek için **Yönetici > Makaleleri Yönet**’i seçin.
 
 Node.js’yi dilediğiniz zaman durdurmak için, terminalde `Ctrl+C` tuşlarına basın. 
 
@@ -232,7 +232,7 @@ MEAN.JS
 Ortam: üretim sunucusu: http://0.0.0.0:8443 veritabanı: MongoDB:// &lt; cosmosdb-Name &gt; : &lt; PRIMARY-Master-Key &gt; @ &lt; cosmosdb-Name &gt; . Documents.Azure.com:10250/Mean?SSL=true&sslverifycertificate = false uygulama sürümü: 0.5.0 MEAN.JS Version: 0.5.0
 </pre>
 
-Bir tarayıcıda `http://localhost:8443` sayfasına gidin. Üst menüde **Kaydol** ’a tıklayın ve bir test kullanıcısı oluşturun. Kullanıcı oluşturma ve oturum açmada başarılı olursanız, uygulamanız Azure’da Cosmos DB veritabanına veri yazıyor demektir. 
+Bir tarayıcıda `http://localhost:8443` sayfasına gidin. Üst menüde **Kaydol**’a tıklayın ve bir test kullanıcısı oluşturun. Kullanıcı oluşturma ve oturum açmada başarılı olursanız, uygulamanız Azure’da Cosmos DB veritabanına veri yazıyor demektir. 
 
 Terminalde `Ctrl+C` yazarak Node.js’yi durdurun. 
 
@@ -279,7 +279,7 @@ Varsayılan olarak, MEAN.js projesi _config/env/local-production.js_ öğesini G
 
 Uygulama ayarlarını ayarlamak için [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Cloud Shell komutunu kullanın. 
 
-Aşağıdaki örnek, `MONGODB_URI` Azure uygulamanızda bir uygulama ayarı yapılandırır. *\<app-name>* , *\<cosmosdb-name>* Ve *\<primary-master-key>* yer tutucularını değiştirin.
+Aşağıdaki örnek, `MONGODB_URI` Azure uygulamanızda bir uygulama ayarı yapılandırır. *\<app-name>*, *\<cosmosdb-name>* Ve *\<primary-master-key>* yer tutucularını değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
@@ -287,7 +287,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Node.js kodda, tüm ortam değişkenlerine erişecekle tıpkı, [Bu uygulama ayarına ile erişirsiniz](configure-language-nodejs.md#access-environment-variables) `process.env.MONGODB_URI` . 
 
-Yerel MEAN.js deponuzda, üretim ortamına özel yapılandırma içeren _config/env/production.js_ ( _config/env/local-production.js_ değil) dosyasını açın. Varsayılan MEAN.js uygulaması, zaten `MONGODB_URI` ortam değişkenini kullanmak üzere yapılandırılmıştır.
+Yerel MEAN.js deponuzda, üretim ortamına özel yapılandırma içeren _config/env/production.js_ (_config/env/local-production.js_ değil) dosyasını açın. Varsayılan MEAN.js uygulaması, zaten `MONGODB_URI` ortam değişkenini kullanmak üzere yapılandırılmıştır.
 
 ```javascript
 db: {
@@ -335,13 +335,13 @@ Web tarayıcınızı kullanarak dağıtılan uygulamaya gidin.
 http://<app-name>.azurewebsites.net 
 ``` 
 
-Üst menüde **Kaydol** ’a tıklayın ve bir işlevsiz kullanıcı oluşturun. 
+Üst menüde **Kaydol**’a tıklayın ve bir işlevsiz kullanıcı oluşturun. 
 
 Başarılı olursanız ve uygulama otomatik olarak oluşturulan kullanıcıda oturum açarsa, Azure'daki MEAN.js uygulamanızın MongoDB (Cosmos DB) veritabanına bağlantısı vardır. 
 
 ![Azure App Service’te çalışan MEAN.js uygulaması](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-Birkaç makale eklemek için **Yönetici > Makaleleri Yönet** ’i seçin. 
+Birkaç makale eklemek için **Yönetici > Makaleleri Yönet**’i seçin. 
 
 **Tebrikler!** Azure App Service’te veri temelli bir Node.js uygulaması çalıştırıyorsunuz.
 
@@ -454,7 +454,7 @@ node server.js
 
 Bir tarayıcıda `http://localhost:8443` konumuna gidin ve oturum açtığınızdan emin olun.
 
-**Yönetici > Makaleleri Yönet** ’i seçin, ardından **+** düğmesini seçerek bir makale ekleyin.
+**Yönetici > Makaleleri Yönet**’i seçin, ardından **+** düğmesini seçerek bir makale ekleyin.
 
 Artık yeni `Comment` metin kutusunu görebilirsiniz.
 
@@ -505,7 +505,7 @@ Günlük akışı başladıktan sonra, Web trafiği almak için tarayıcıda Azu
 
 Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com) gidin.
 
-Sol menüden **uygulama hizmetleri** ' ne ve ardından Azure uygulamanızın adına tıklayın.
+Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
 ![Azure uygulamasına portal gezintisi](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 

@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935441"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011974"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Örnek: form tanıyıcı özel yeteneği oluşturma
 
 Bu Azure Bilişsel Arama Beceri örneğinde, C# ve Visual Studio kullanarak form tanıyıcı özel becerisi oluşturmayı öğreneceksiniz. Form tanıyıcı, belgeleri analiz eder ve anahtar/değer çiftlerini ve tablo verilerini ayıklar. Form tanıyıcısını [özel beceri arabirimine](cognitive-search-custom-skill-interface.md)sarmalayarak, bu özelliği uçtan uca bir zenginleştirme ardışık düzeninde bir adım olarak ekleyebilirsiniz. İşlem hattı daha sonra belgeleri yükleyebilir ve diğer dönüştürmeleri gerçekleştirebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (herhangi bir sürüm).
 - Aynı türde en az beş form. Bu kılavuzla birlikte sunulan örnek verileri kullanabilirsiniz.
@@ -111,7 +111,7 @@ Aşağıdaki örneğe benzer bir yanıt görmeniz gerekir:
 
 İşlev davranışından memnun kaldığınızda, bunu yayımlayabilirsiniz.
 
-1. Visual Studio 'daki **Çözüm Gezgini** projeye sağ tıklayın ve **Yayımla**' yı seçin. **Yeni**  >  **Yayımlama**oluştur öğesini seçin.
+1. Visual Studio 'daki **Çözüm Gezgini** projeye sağ tıklayın ve **Yayımla**' yı seçin. **Yeni**  >  **Yayımlama** oluştur öğesini seçin.
 1. Zaten Visual Studio 'Yu Azure hesabınıza bağladıysanız **Hesap Ekle...** seçeneğini belirleyin.
 1. Ekrandaki istemleri izleyin. App Service, Azure aboneliği, kaynak grubu, barındırma planı ve kullanmak istediğiniz depolama hesabı için benzersiz bir ad belirtin. Henüz yoksa yeni bir kaynak grubu, yeni bir barındırma planı ve yeni bir depolama hesabı oluşturabilirsiniz. İşiniz bittiğinde **Oluştur**' u seçin.
 1. Dağıtım tamamlandıktan sonra, site URL 'sine dikkat edin. Bu URL, Azure 'daki işlev uygulamanızın adresidir. Geçici bir konuma kaydedin.

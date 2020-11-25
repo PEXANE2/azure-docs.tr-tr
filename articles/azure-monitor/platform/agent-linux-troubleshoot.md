@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375362"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011906"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -92,9 +92,9 @@ Aracının temiz bir şekilde yeniden yüklemesinin çoğu sorunu gidereceğini 
 | NOT_DEFINED | Gerekli bağımlılıklar yüklü olmadığından auoms auditd eklentisi yüklenmeyecek | Auoms yüklemesi başarısız oldu, paket auditd 'yi yükleme. |
 | 2 | Kabuk paketi için geçersiz seçenek belirtildi. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için Çalıştır |
 | 3 | Kabuk paketine hiçbir seçenek sağlanmaz. `sudo sh ./omsagent-*.universal*.sh --help`Kullanım için çalıştırın. |
-| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent- *RPM*. sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent- *Deb*. sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
+| 4 | Geçersiz paket türü veya geçersiz proxy ayarları; omsagent-*RPM*. sh PAKETLERI yalnızca RPM tabanlı sistemlere yüklenebilir ve omsagent-*Deb*. sh paketleri yalnızca, detem tabanlı sistemlere yüklenebilir. [En son sürümden](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)evrensel yükleyiciyi kullanmanız önerilir. Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
 | 5 | Kabuk paketi kök olarak yürütülmelidir veya ekleme sırasında 403 hatası döndürüldü. Komutunu kullanarak komutunu çalıştırın `sudo` . |
-| 6 | Geçersiz Paket mimarisi veya ekleme sırasında 200 hatası döndürüldü. omsagent- *x64.sh paketleri yalnızca 64 bitlik sistemlere yüklenebilir ve omsagent-* x86.sh paketleri yalnızca 32 bit sistemlere yüklenebilir. [En son sürümden](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)mimariniz için doğru paketi indirin. |
+| 6 | Geçersiz Paket mimarisi veya ekleme sırasında 200 hatası döndürüldü. omsagent-*x64.sh paketleri yalnızca 64 bitlik sistemlere yüklenebilir ve omsagent-* x86.sh paketleri yalnızca 32 bit sistemlere yüklenebilir. [En son sürümden](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)mimariniz için doğru paketi indirin. |
 | 17 | OMS paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
 | 19 | OMı paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
 | 20 | SCX paketinin yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |

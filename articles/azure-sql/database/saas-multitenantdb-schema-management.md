@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793305"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011871"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Parçalı çok kiracılı veritabanları kullanan bir SaaS uygulamasında şemayı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Tüm kiracı veritabanlarındaki başvuru verilerini güncelleştirin.
 > * Tüm kiracı veritabanlarındaki bir tabloda bir dizin oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Wingtip biletleri çok kiracılı veritabanı uygulaması zaten dağıtılmalıdır:
     - Yönergeler için, Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını tanıtan ilk öğreticiye bakın:<br />[Azure SQL veritabanı 'nı kullanan, parçalı bir çok kiracılı uygulamayı dağıtın ve araştırın](./saas-multitenantdb-get-started-deploy.md).
@@ -75,8 +75,8 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Bu öğreticide, İş Aracısı veritabanı ve iş Aracısı oluşturmak için PowerShell kullanmanız gerekir. SQL Aracısı tarafından kullanılan MSDB veritabanı gibi, İş Aracısı iş tanımlarını, iş durumunu ve geçmişi depolamak için Azure SQL veritabanı 'nda bir veritabanı kullanır. İş Aracısı oluşturulduktan sonra, işleri hemen oluşturabilir ve izleyebilirsiniz.
 
-1. **PowerShell ISE** 'de açın *... \\ Öğrenme modülleri \\ şema yönetimi \\Demo-SchemaManagement.ps1* .
-2. Betiği çalıştırmak için **F5** 'e basın.
+1. **PowerShell ISE**'de açın *... \\ Öğrenme modülleri \\ şema yönetimi \\Demo-SchemaManagement.ps1*.
+2. Betiği çalıştırmak için **F5**'e basın.
 
 *Demo-SchemaManagement.ps1* betiği, katalog sunucusunda _JobAgent_ adlı bir veritabanı oluşturmak için *Deploy-SchemaManagement.ps1* betiğini çağırır. Betik daha sonra, _JobAgent_ veritabanını bir parametre olarak geçirerek iş aracısını oluşturur.
 
@@ -84,7 +84,7 @@ Bu öğreticide, İş Aracısı veritabanı ve iş Aracısı oluşturmak için P
 
 #### <a name="prepare"></a>Hazırlama
 
-Her kiracının veritabanı, **Venuetype** tablosunda bir mekan türleri kümesi içerir. Her bir mekan türü, bir mekanda barındırılabilecek olayların türünü tanımlar. Bu mekan türleri, kiracı olayları uygulamasında gördüğünüz arka plan görüntülerine karşılık gelir.  Bu alıştırmada, iki ek mekan türü eklemek için tüm veritabanlarına bir güncelleştirme dağıtırsınız: *Otocycle yarış* ve *Yüzme Kulübü* .
+Her kiracının veritabanı, **Venuetype** tablosunda bir mekan türleri kümesi içerir. Her bir mekan türü, bir mekanda barındırılabilecek olayların türünü tanımlar. Bu mekan türleri, kiracı olayları uygulamasında gördüğünüz arka plan görüntülerine karşılık gelir.  Bu alıştırmada, iki ek mekan türü eklemek için tüm veritabanlarına bir güncelleştirme dağıtırsınız: *Otocycle yarış* ve *Yüzme Kulübü*.
 
 İlk olarak, her kiracı veritabanına dahil olan mekan türlerini gözden geçirin. SQL Server Management Studio (SSMS) içindeki kiracı veritabanlarından birine bağlanın ve Venuetype tablosunu inceleyin.  Bu tabloyu, veritabanı sayfasından erişilen Azure portal sorgu düzenleyicisinde da sorgulayabilirsiniz.
 
@@ -109,23 +109,23 @@ Yeni bir iş oluşturmak için, _JobAgent_ veritabanında oluşturulan iş küme
 
 5. Katalog sunucusundaki _JobAgent_ veritabanına bağlanın.
 
-6. SSMS 'de dosyayı açın *... \\ Öğrenme modülleri \\ Şema Yönetimi \\ deployreferencedata. SQL* .
+6. SSMS 'de dosyayı açın *... \\ Öğrenme modülleri \\ Şema Yönetimi \\ deployreferencedata. SQL*.
 
 7. İfadeyi değiştirin: set @User = &lt; user &gt; ve Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını dağıtırken kullanılan Kullanıcı değerini değiştirin.
 
-8. Betiği çalıştırmak için **F5** 'e basın.
+8. Betiği çalıştırmak için **F5**'e basın.
 
 #### <a name="observe"></a>Uyarak
 
 *Deployreferencedata. SQL* komut dosyasında aşağıdaki öğeleri gözlemleyin:
 
-- **SP \_ Add \_ target \_ Group** , hedef grup adı *demoservergroup* ' u oluşturur ve gruba hedef Üyeler ekler.
+- **SP \_ Add \_ target \_ Group** , hedef grup adı *demoservergroup*' u oluşturur ve gruba hedef Üyeler ekler.
 
 - **SP \_ Add \_ target \_ Group \_ member** şu öğeleri ekler:
     - *Sunucu* hedefi üye türü.
         - Bu, kiracılar veritabanlarını içeren *tenants1-MT- &lt; user &gt;* sunucusudur.
         - Sunucu dahil, iş yürütüldüğü sırada mevcut olan kiracı veritabanlarını içerir.
-    - *Katalog-MT- &lt; user &gt;* Server 'da bulunan şablon veritabanı ( *basetenantdb* ) için bir *veritabanı* hedefi üye türü,
+    - *Katalog-MT- &lt; user &gt;* Server 'da bulunan şablon veritabanı (*basetenantdb*) için bir *veritabanı* hedefi üye türü,
     - Daha sonraki bir öğreticide kullanılan *adhocretaşıma* veritabanını dahil etmek için bir *veritabanı* hedefi üye türü.
 
 - **SP \_ Add \_ Job** , *başvuru veri dağıtımı* adlı bir iş oluşturur.
@@ -142,9 +142,9 @@ Bu alıştırma, tüm kiracı veritabanlarındaki başvuru tablosu birincil anah
 
 1. SSMS 'de, *Katalog-MT- &lt; User &gt; . Database.Windows.net* Server 'daki _JobAgent_ veritabanına bağlanın.
 
-2. SSMS 'de açın *... \\ Öğrenme modülleri \\ Şema Yönetimi \\ onlinereindex. SQL* .
+2. SSMS 'de açın *... \\ Öğrenme modülleri \\ Şema Yönetimi \\ onlinereindex. SQL*.
 
-3. Betiği çalıştırmak için **F5** 'e basın.
+3. Betiği çalıştırmak için **F5**'e basın.
 
 #### <a name="observe"></a>Uyarak
 

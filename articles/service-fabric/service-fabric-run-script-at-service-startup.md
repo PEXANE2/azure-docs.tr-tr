@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75464279"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012536"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Yerel kullanıcı veya sistem hesabı olarak bir hizmet başlangıcı komut dosyası çalıştırma
 Bir Service Fabric hizmeti yürütülebilir dosyası başlamadan önce, bazı yapılandırma veya kurulum çalışmaları çalıştırmak gerekebilir.  Örneğin, ortam değişkenlerini yapılandırma. Hizmet yürütülebilir dosyası hizmetin hizmet bildiriminde başlatılmadan önce çalıştırılacak bir betik belirtebilirsiniz. Hizmet kurulumu giriş noktası için bir RunAs ilkesi yapılandırarak, kurulum yürütülebilirinin altında çalıştığı hesabı değiştirebilirsiniz.  Ayrı bir kurulum giriş noktası, yüksek ayrıcalıklı yapılandırmayı kısa bir süre içinde çalıştırmanıza olanak tanır; böylece hizmet ana bilgisayarı yürütülebilir dosyasının uzun süreler boyunca yüksek ayrıcalıklarla çalışması gerekmez.
@@ -18,7 +18,7 @@ Bir Service Fabric hizmeti yürütülebilir dosyası başlamadan önce, bazı ya
 Kurulum giriş noktası ( [hizmet bildiriminde](service-fabric-application-and-service-manifests.md)**setupentrypoint** ), varsayılan olarak, diğer herhangi bir giriş noktasından önce Service Fabric (genellikle *NetworkService* hesabı) ile aynı kimlik bilgileriyle çalışan ayrıcalıklı bir giriş noktasıdır. **Giriş noktası** tarafından belirtilen yürütülebilir dosya genellikle uzun süre çalışan hizmet ana bilgisayarı olur. **Setupentrypoint** yürütülebilir dosyası başarıyla çıktıktan sonra **entryPoint** çalıştırılabilir dosyası çalıştırılır. Ortaya çıkan işlem izlenir ve yeniden başlatılır ve sonlandırıldığında veya kilitlenirse **Setupentrypoint** ile yeniden başlar. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Hizmet kurulumu giriş noktasını yapılandırma
-Aşağıda, Service **Setupentrypoint**içinde *MySetup.bat* bir kurulum betiği belirten, durum bilgisi olmayan bir hizmet için basit bir hizmet bildirimi örneği verilmiştir.  **Bağımsız değişkenler** çalıştırıldığında bağımsız değişkenleri komut dosyasına geçirmek için kullanılır.
+Aşağıda, Service **Setupentrypoint** içinde *MySetup.bat* bir kurulum betiği belirten, durum bilgisi olmayan bir hizmet için basit bir hizmet bildirimi örneği verilmiştir.  **Bağımsız değişkenler** çalıştırıldığında bağımsız değişkenleri komut dosyasına geçirmek için kullanılır.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -131,14 +131,14 @@ Genellikle, başlangıç betiğini yönetici hesabı yerine yerel bir sistem hes
 ```
 
 > [!NOTE]
-> Linux kümeleri için, bir hizmeti veya kurulum giriş noktasını **kök**olarak çalıştırmak Için,  **AccountType** öğesini **LocalSystem**olarak belirtebilirsiniz.
+> Linux kümeleri için, bir hizmeti veya kurulum giriş noktasını **kök** olarak çalıştırmak Için,  **AccountType** öğesini **LocalSystem** olarak belirtebilirsiniz.
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>Kurulum giriş noktasından komut dosyası çalıştırma
 Şimdi, yönetici ayrıcalıkları altında çalıştırmak için projeye bir başlangıç betiği ekleyin. 
 
-Visual Studio 'da, hizmet projesine sağ tıklayın ve *MySetup.bat*adlı yeni bir dosya ekleyin.
+Visual Studio 'da, hizmet projesine sağ tıklayın ve *MySetup.bat* adlı yeni bir dosya ekleyin.
 
-Daha sonra, *MySetup.bat* dosyasının hizmet paketine eklendiğinden emin olun. Varsayılan olarak, bu değildir. Dosyayı seçin, bağlam menüsünü almak için sağ tıklayın ve **Özellikler**' i seçin. Özellikler iletişim kutusunda, **Çıkış Dizinine Kopyala** ' nın **daha yeniyse kopyala**olarak ayarlandığından emin olun. Aşağıdaki ekran görüntüsüne bakın.
+Daha sonra, *MySetup.bat* dosyasının hizmet paketine eklendiğinden emin olun. Varsayılan olarak, bu değildir. Dosyayı seçin, bağlam menüsünü almak için sağ tıklayın ve **Özellikler**' i seçin. Özellikler iletişim kutusunda, **Çıkış Dizinine Kopyala** ' nın **daha yeniyse kopyala** olarak ayarlandığından emin olun. Aşağıdaki ekran görüntüsüne bakın.
 
 ![SetupEntryPoint toplu iş dosyası için Visual Studio CopyToOutput][image1]
 
@@ -161,14 +161,14 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-Ardından, hizmetin dağıtıldığına ve [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)başlatıldığı düğümün adına göz önünde. Örneğin, düğüm 2. Ardından, **testvariable**değerini gösteren out.txt dosyasını bulmak için uygulama örneği çalışma klasörüne gidin. Örneğin, bu hizmet düğüm 2 ' ye dağıtılmışsa, **MyApplicationType**için bu yola gidebilirsiniz:
+Ardından, hizmetin dağıtıldığına ve [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)başlatıldığı düğümün adına göz önünde. Örneğin, düğüm 2. Ardından, **testvariable** değerini gösteren out.txt dosyasını bulmak için uygulama örneği çalışma klasörüne gidin. Örneğin, bu hizmet düğüm 2 ' ye dağıtılmışsa, **MyApplicationType** için bu yola gidebilirsiniz:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>Bir kurulum giriş noktasından PowerShell komutlarını çalıştırma
-PowerShell 'i **Setupentrypoint** noktasından çalıştırmak için, bir PowerShell dosyasına işaret eden bir toplu iş dosyasında **PowerShell.exe** çalıştırabilirsiniz. İlk olarak, hizmet projesine bir PowerShell dosyası ekleyin; örneğin, **MySetup.ps1**. Dosyanın hizmet paketine da dahil olması için *daha yeni bir özellik varsa kopyayı* ayarlamayı unutmayın. Aşağıdaki örnek, **testvariable**adlı bir sistem ortam değişkenini ayarlayan MySetup.ps1 adlı bir PowerShell dosyasını Başlatan bir örnek toplu iş dosyası gösterir.
+PowerShell 'i **Setupentrypoint** noktasından çalıştırmak için, bir PowerShell dosyasına işaret eden bir toplu iş dosyasında **PowerShell.exe** çalıştırabilirsiniz. İlk olarak, hizmet projesine bir PowerShell dosyası ekleyin; örneğin, **MySetup.ps1**. Dosyanın hizmet paketine da dahil olması için *daha yeni bir özellik varsa kopyayı* ayarlamayı unutmayın. Aşağıdaki örnek, **testvariable** adlı bir sistem ortam değişkenini ayarlayan MySetup.ps1 adlı bir PowerShell dosyasını Başlatan bir örnek toplu iş dosyası gösterir.
 
 Bir PowerShell dosyası başlatmak için MySetup.bat:
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011361"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -165,7 +165,7 @@ Application Insights ölçümleri göndermek için API 'yi kullanabilirsiniz `Tr
 
 * Tek değer. Uygulamanızda bir ölçüm gerçekleştirdiğinizde, karşılık gelen değeri Application Insights gönderirsiniz. Örneğin, bir kapsayıcıdaki öğelerin sayısını açıklayan bir ölçümünüzün olduğunu varsayalım. Belirli bir süre boyunca, önce kapsayıcıya üç öğe yerleştirip iki öğeyi kaldırırsınız. Buna uygun olarak, iki kez çağrı yapmanız gerekir `TrackMetric` : önce değeri geçirerek değeri `3` `-2` . Application Insights her iki değeri de sizin adınıza depolar.
 
-* Toplama. Ölçümler ile çalışırken her tek ölçüm çok nadir olur. Bunun yerine, belirli bir süre boyunca ne olduğunu bir Özet önem taşır. Bu tür bir Özet _toplama_olarak adlandırılır. Yukarıdaki örnekte, bu dönemin toplam ölçüm toplamı `1` ve ölçüm değerlerinin sayısı `2` . Toplama yaklaşımını kullanırken, `TrackMetric` zaman aralığı için yalnızca bir kez çağırır ve toplama değerlerini gönderirsiniz. Bu, Application Insights ' ye daha az veri noktası göndererek maliyet ve performans yükünü önemli ölçüde azaltacağından ve ilgili tüm bilgileri almaya devam ederken önerilen yaklaşımdır.
+* Toplama. Ölçümler ile çalışırken her tek ölçüm çok nadir olur. Bunun yerine, belirli bir süre boyunca ne olduğunu bir Özet önem taşır. Bu tür bir Özet _toplama_ olarak adlandırılır. Yukarıdaki örnekte, bu dönemin toplam ölçüm toplamı `1` ve ölçüm değerlerinin sayısı `2` . Toplama yaklaşımını kullanırken, `TrackMetric` zaman aralığı için yalnızca bir kez çağırır ve toplama değerlerini gönderirsiniz. Bu, Application Insights ' ye daha az veri noktası göndererek maliyet ve performans yükünü önemli ölçüde azaltacağından ve ilgili tüm bilgileri almaya devam ederken önerilen yaklaşımdır.
 
 ### <a name="examples"></a>Örnekler
 
@@ -437,7 +437,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örneğin:
+Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örnek:
 
 ```kusto
 exceptions
@@ -500,7 +500,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 Boyut sınırı, `message` özellikleri sınırından çok daha yüksek.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
 
 *C#*
 
@@ -690,7 +690,7 @@ Uygulamanız kullanıcıları hesaplara gruplamadıysanız, hesap için bir tan�
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[Ölçüm Gezgini](../platform/metrics-charts.md), **kullanıcıları, kimliği doğrulanmış**ve **Kullanıcı hesaplarını**sayan bir grafik oluşturabilirsiniz.
+[Ölçüm Gezgini](../platform/metrics-charts.md), **kullanıcıları, kimliği doğrulanmış** ve **Kullanıcı hesaplarını** sayan bir grafik oluşturabilirsiniz.
 
 Ayrıca, belirli kullanıcı adları ve hesapları ile istemci veri noktalarını [arayabilirsiniz](./diagnostic-search.md) .
 
@@ -918,9 +918,9 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 Tek tek telemetri çağrıları, özellik sözlüklerindeki varsayılan değerleri geçersiz kılabilir.
 
-*JavaScript Web Istemcileri Için*JavaScript telemetri başlatıcıları ' nı kullanın.
+*JavaScript Web Istemcileri Için* JavaScript telemetri başlatıcıları ' nı kullanın.
 
-Standart koleksiyon modüllerindeki veriler de dahil olmak üzere *Tüm telemetrisine özellikler eklemek için*, uygulamasını [uygulayın `ITelemetryInitializer` ](./api-filtering-sampling.md#add-properties).
+Standart koleksiyon modüllerindeki veriler de dahil olmak üzere *Tüm telemetrisine özellikler eklemek için*, uygulamasını [uygulayın `ITelemetryInitializer`](./api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Telemetriyi örnekleme, filtreleme ve işleme
 
@@ -952,7 +952,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-*Seçili standart toplayıcıları devre dışı bırakmak*için--örneğin, performans SAYAÇLARı, http istekleri veya bağımlılıklar-- [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)ilgili satırları silin veya not edin. Örneğin, kendi TrackRequest verilerinizi göndermek istiyorsanız bunu yapabilirsiniz.
+*Seçili standart toplayıcıları devre dışı bırakmak* için--örneğin, performans SAYAÇLARı, http istekleri veya bağımlılıklar-- [ApplicationInsights.config](./configuration-with-applicationinsights-config.md)ilgili satırları silin veya not edin. Örneğin, kendi TrackRequest verilerinizi göndermek istiyorsanız bunu yapabilirsiniz.
 
 *Node.js*
 
@@ -960,7 +960,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 telemetry.config.disableAppInsights = true;
 ```
 
-*Seçili standart toplayıcıları devre dışı bırakmak*için--örneğin, performans SAYAÇLARı, http istekleri veya bağımlılıklar--başlatma SıRASıNDA, SDK başlatma kodunuzda zincir yapılandırma yöntemleri:
+*Seçili standart toplayıcıları devre dışı bırakmak* için--örneğin, performans SAYAÇLARı, http istekleri veya bağımlılıklar--başlatma SıRASıNDA, SDK başlatma kodunuzda zincir yapılandırma yöntemleri:
 
 ```javascript
 applicationInsights.setup()
@@ -1063,7 +1063,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
+TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

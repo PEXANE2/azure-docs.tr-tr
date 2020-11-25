@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144682"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011038"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
@@ -193,7 +193,7 @@ Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 de
 
 1. regedit.exe çalıştırın.
 2. Kayıt defteri anahtarına gidin: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
-3. **Duoenabled**adlı yenı bir DWORD değeri oluşturun.
+3. **Duoenabled** adlı yenı bir DWORD değeri oluşturun.
 4. Değerini 1 olarak ayarlayın.
 5. Sunucunuzu yeniden başlatın.
 6. **Varsayılan Web sitenize** gidin ve **bağlamalar**' ın altında, yeni oluşturulan otomatik olarak Imzalanan sertifikayla yeni bir TLS bağlaması oluşturun. 
@@ -231,7 +231,7 @@ Microsoft, sahip veya kendi designee 'den, yazılı izin (e-posta veya başka ya
 Bu hata, Azure Active Directory katılmış bir makineden RDP dosyasını kullanıyorsanız ortaya çıkabilir. Bu sorunu çözmek için şu adımları izleyin:
 
 1. İndirdiğiniz RDP dosyasına sağ tıklayın ve ardından **Düzenle**' yi seçin.
-2. Kullanıcı adından önce önek olarak "&#92;" ekleyin. Örneğin, **Kullanıcı adı**yerine **.\username** kullanın.
+2. Kullanıcı adından önce önek olarak "&#92;" ekleyin. Örneğin, **Kullanıcı adı** yerine **.\username** kullanın.
 
 ## <a name="scaling"></a>Ölçeklendirme
 

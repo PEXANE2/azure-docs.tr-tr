@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546016"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011498"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive için ağ geçidi derinlemesine bakış ve en iyi uygulamalar
 
@@ -56,7 +56,7 @@ Yukarıdaki davranışın bir parçası olarak karşılanması gereken performan
 
 * Büyük **seçim** sorguları yürütürken **LIMIT** yan tümcesini kullanın. **LIMIT** yan tümcesi, istemci konağına bildirilen toplam satırları azaltır. **LIMIT** yan tümcesi yalnızca sonuç üretimini etkiler ve sorgu planını değiştirmez. **LIMIT** yan tümcesini sorgu planına uygulamak için yapılandırmayı kullanın `hive.limit.optimize.enable` . **Sınır** , **x, y** olan bağımsız değişken form sınırı kullanılarak bir uzaklığa birleştirilebilir.
 
-* * *Select \** _ yerine sorguları **Seç** ' i çalıştırırken ilgilendiğiniz sütunlarınızı adlandırın. Daha az sütun seçilmesi, okunan veri miktarını düşürür.
+* **Select \** _ yerine sorguları **Seç** ' i çalıştırırken ilgilendiğiniz sütunlarınızı adlandırın. Daha az sütun seçilmesi, okunan veri miktarını düşürür.
 
 _ Apache Beeline aracılığıyla ilgilendiğiniz sorguyu çalıştırmayı deneyin. Apache Beeline ile sonuç alımı uzun zaman alırsa, dış araçlarla aynı sonuçları alırken gecikmeler olması beklenir.
 
