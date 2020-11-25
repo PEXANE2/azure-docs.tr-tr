@@ -4,11 +4,11 @@ description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yed
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094101"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978378"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -55,7 +55,7 @@ Başlamak için:
 
     ![Kurtarma Hizmetleri listesi](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
 
-3. **Connect-AzAccount**kullanarak Azure hesabınızda oturum açın. Bu cmdlet bir Web sayfasını getirir ve sizden hesap kimlik bilgilerinizi ister:
+3. **Connect-AzAccount** kullanarak Azure hesabınızda oturum açın. Bu cmdlet bir Web sayfasını getirir ve sizden hesap kimlik bilgilerinizi ister:
 
     * Alternatif olarak, **-Credential** parametresini kullanarak, hesap kimlik bilgilerinizi **Connect-azaccount** cmdlet 'ine bir parametre olarak dahil edebilirsiniz.
     * Bir kiracı adına çalışan bir CSP iş ortağıysanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin: **Connect-AzAccount-Tenant "fabrikam.com"**
@@ -78,7 +78,7 @@ Başlamak için:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-    Komut çıkışında, **Registrationstate** **kayıtlı**olarak değiştirilmelidir. Aksi takdirde, **[register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** cmdlet 'ini tekrar çalıştırmanız yeterlidir.
+    Komut çıkışında, **Registrationstate** **kayıtlı** olarak değiştirilmelidir. Aksi takdirde, **[register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** cmdlet 'ini tekrar çalıştırmanız yeterlidir.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -96,7 +96,7 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)veya [bölge yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)kullanabilirsiniz. Aşağıdaki örnek, *testkasasının* **geoyedekli**olarak ayarlandığı **-BackupStorageRedundancy** seçeneğini gösterir.
+3. Kullanılacak depolama yedekliliği türünü belirtin. [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)veya [bölge yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)kullanabilirsiniz. Aşağıdaki örnek, *testkasasının* **geoyedekli** olarak ayarlandığı **-BackupStorageRedundancy** seçeneğini gösterir.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -134,7 +134,7 @@ Sanal makinelerinizi korumak için bir kurtarma hizmetleri Kasası kullanın. Ko
 
 ### <a name="set-vault-context"></a>Kasa bağlamını ayarla
 
-Bir VM 'de korumayı etkinleştirmeden önce, kasa bağlamını ayarlamak için [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext) komutunu kullanın. Kasa bağlamı ayarlandıktan sonra, sonraki tüm cmdlet’ler için geçerli olur. Aşağıdaki örnek, kasadaki *Test*Kasası için kasa bağlamını ayarlar.
+Bir VM 'de korumayı etkinleştirmeden önce, kasa bağlamını ayarlamak için [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext) komutunu kullanın. Kasa bağlamı ayarlandıktan sonra, sonraki tüm cmdlet’ler için geçerli olur. Aşağıdaki örnek, kasadaki *Test* Kasası için kasa bağlamını ayarlar.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "Contoso-docs-rg" | Set-AzRecoveryServicesVaultContext
@@ -208,7 +208,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > Başlangıç saatini yalnızca 30 dakikalık katları olarak sağlamanız gerekir. Yukarıdaki örnekte yalnızca "01:00:00" veya "02:30:00" olabilir. Başlangıç saati "01:15:00" olamaz
 
-Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Örnek, bu değişkenleri bir koruma ilkesi oluştururken *newpolicy*parametrelerini tanımlamak için kullanır.
+Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Örnek, bu değişkenleri bir koruma ilkesi oluştururken *newpolicy* parametrelerini tanımlamak için kullanır.
 
 ```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
@@ -435,7 +435,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 Yedekleme öğesinin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 'ini kullanın. Sonra geri yüklemek için kurtarma noktasını seçin. Hangi kurtarma noktasının kullanılacağı konusunda emin değilseniz, listede en son RecoveryPointType = Apptutarlı noktasını seçmek iyi bir uygulamadır.
 
-Aşağıdaki betikte, **$RP**değişkeni, son yedi gün içindeki seçili yedekleme öğesi için bir kurtarma noktaları dizisidir. Dizi, dizin 0 ' daki en son kurtarma noktasıyla ters sırada sıralanır. Kurtarma noktasını seçmek için standart PowerShell dizisi dizinlemeyi kullanın. Örnekte, $rp [0] en son kurtarma noktasını seçer.
+Aşağıdaki betikte, **$RP** değişkeni, son yedi gün içindeki seçili yedekleme öğesi için bir kurtarma noktaları dizisidir. Dizi, dizin 0 ' daki en son kurtarma noktasıyla ters sırada sıralanır. Kurtarma noktasını seçmek için standart PowerShell dizisi dizinlemeyi kullanın. Örnekte, $rp [0] en son kurtarma noktasını seçer.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -529,7 +529,7 @@ Diskleri geri yükledikten sonra, sanal makineyi diskten oluşturup yapılandır
 > [!NOTE]
 >
 > 1. AzureAz modülü 3.0.0 veya üzeri gereklidir. <br>
-> 2. Geri yüklenen disklerden şifrelenmiş VM 'Ler oluşturmak için Azure rolünüzün, **Microsoft. Keykasası/Vaults/Deploy/ACTION**eylemini gerçekleştirme izni olması gerekir. Rolünüzün bu izni yoksa, bu eylemle özel bir rol oluşturun. Daha fazla bilgi için bkz. [Azure özel rolleri](../role-based-access-control/custom-roles.md). <br>
+> 2. Geri yüklenen disklerden şifrelenmiş VM 'Ler oluşturmak için Azure rolünüzün, **Microsoft. Keykasası/Vaults/Deploy/ACTION** eylemini gerçekleştirme izni olması gerekir. Rolünüzün bu izni yoksa, bu eylemle özel bir rol oluşturun. Daha fazla bilgi için bkz. [Azure özel rolleri](../role-based-access-control/custom-roles.md). <br>
 > 3. Diskleri geri yükledikten sonra, artık yeni bir VM oluşturmak için doğrudan kullanabileceğiniz bir dağıtım şablonu edinebilirsiniz. Şifrelenmiş/şifrelenmemiş olan yönetilen/yönetilmeyen VM 'Ler oluşturmak için farklı PowerShell cmdlet 'lerinin olması gerekmez.<br>
 > <br>
 
@@ -824,7 +824,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 Yedekleme öğesinin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) cmdlet 'ini kullanın. Sonra geri yüklemek için kurtarma noktasını seçin. Hangi kurtarma noktasının kullanılacağı konusunda emin değilseniz, listede en son RecoveryPointType = Apptutarlı noktasını seçmek iyi bir uygulamadır.
 
-Aşağıdaki betikte, **$RP**değişkeni, son yedi gün içindeki seçili yedekleme öğesi için bir kurtarma noktaları dizisidir. Dizi, dizin 0 ' daki en son kurtarma noktasıyla ters sırada sıralanır. Kurtarma noktasını seçmek için standart PowerShell dizisi dizinlemeyi kullanın. Örnekte, $rp [0] en son kurtarma noktasını seçer.
+Aşağıdaki betikte, **$RP** değişkeni, son yedi gün içindeki seçili yedekleme öğesi için bir kurtarma noktaları dizisidir. Dizi, dizin 0 ' daki en son kurtarma noktasıyla ters sırada sıralanır. Kurtarma noktasını seçmek için standart PowerShell dizisi dizinlemeyi kullanın. Örnekte, $rp [0] en son kurtarma noktasını seçer.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
