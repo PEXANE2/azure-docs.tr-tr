@@ -16,11 +16,11 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595974"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971162"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services dinamik şifreleme ile içeriğinizi koruyun
 
@@ -244,7 +244,7 @@ Farklı bir lisans/anahtar teslim hizmeti (Media Services değil) belirtmek isti
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Yalnızca Widevine için olan önceki şablonla aynı. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Yalnızca FairPlay için olan önceki şablonla aynı.  
 
-Örneğin:
+Örnek:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";

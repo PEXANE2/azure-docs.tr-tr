@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533300"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971918"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight üzerinde Apache Hive ve Apache Hadoop kullanarak Twitter verilerini çözümleme
 
@@ -30,27 +30,27 @@ Twitter, her Tweet için verileri bir JavaScript Nesne Gösterimi (JSON) belgesi
 
 1. Bir Web tarayıcısından ' de oturum açın [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Twitter hesabınız yoksa **Şimdi kaydolun** bağlantısını seçin.
 
-2. **Yeni uygulama oluştur** ' u seçin.
+2. **Yeni uygulama oluştur**' u seçin.
 
-3. **Ad** , **Açıklama** , **Web sitesi** girin. **Web sitesi** alanı IÇIN bir URL oluşturabilirsiniz. Aşağıdaki tabloda, kullanılacak bazı örnek değerler gösterilmektedir:
+3. **Ad**, **Açıklama**, **Web sitesi** girin. **Web sitesi** alanı IÇIN bir URL oluşturabilirsiniz. Aşağıdaki tabloda, kullanılacak bazı örnek değerler gösterilmektedir:
 
    | Alan | Değer |
    |--- |--- |
-   | Adı |MyHDInsightApp |
-   | Açıklama |MyHDInsightApp |
-   | Web sitesi |`https://www.myhdinsightapp.com` |
+   | Ad |MyHDInsightApp |
+   | Description |MyHDInsightApp |
+   | Web Sitesi |`https://www.myhdinsightapp.com` |
 
-4. **Evet, kabul** ediyorum ' u seçin ve ardından **Twitter uygulamanızı oluştur** ' u seçin.
+4. **Evet, kabul** ediyorum ' u seçin ve ardından **Twitter uygulamanızı oluştur**' u seçin.
 
-5. **İzinler** sekmesini seçin. Varsayılan izin **salt okunurdur** .
+5. **İzinler** sekmesini seçin. Varsayılan izin **salt okunurdur**.
 
 6. **Anahtarlar ve erişim belirteçleri** sekmesini seçin.
 
-7. **Erişim belirtecimi oluştur** ' u seçin.
+7. **Erişim belirtecimi oluştur**' u seçin.
 
 8. Sayfanın sağ üst köşesindeki **Test OAuth** ' ı seçin.
 
-9. **Tüketici anahtarı** , **Tüketici parolası** , **erişim belirteci** ve **erişim belirteci gizli** anahtarını yazın.
+9. **Tüketici anahtarı**, **Tüketici parolası**, **erişim belirteci** ve **erişim belirteci gizli** anahtarını yazın.
 
 ### <a name="download-tweets"></a>Fazla doldurulabilir yükleme
 
@@ -143,7 +143,7 @@ Aşağıdaki Python kodu Twitter 'dan 10.000 tasarruf sağlar ve **tweets.txt** 
     > [!TIP]  
     > Popüler anahtar sözcükleri izlemek için son satırdaki konular filtresini ayarlayın. Betiği çalıştırdığınız sırada popüler anahtar sözcüklerin kullanılması, verilerin daha hızlı yakalanmasını sağlar.
 
-1. Dosyayı kaydetmek için **CTRL + X** , sonra **Y** kullanın.
+1. Dosyayı kaydetmek için **CTRL + X**, sonra **Y** kullanın.
 
 1. Dosyayı çalıştırmak ve arası dosyaları indirmek için aşağıdaki komutu kullanın:
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749304"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972662"
 ---
 # <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
 
@@ -27,7 +27,7 @@ Tüm bölgeler için konuşma deneyiminize özel yapılandırma gerçekleştirme
 Bölgeleri düşünürken aşağıdaki noktaları göz önünde bulundurun:
 
 * Uygulamanız bir [konuşma SDK 'sı](speech-sdk.md)kullanıyorsa, `westus` bir konuşma yapılandırması oluştururken gibi bölge tanımlayıcısı sağlarsınız.
-* Uygulamanız konuşma hizmeti 'nin [REST API 'lerinden](rest-apis.md)birini kullanıyorsa bölge, istek yaparken kullandığınız uç nokta URI 'sinin bir parçasıdır.
+* Uygulamanız konuşma hizmeti 'nin [REST API 'lerinden](./overview.md#reference-docs)birini kullanıyorsa bölge, istek yaparken kullandığınız uç nokta URI 'sinin bir parçasıdır.
 * Bölge için oluşturulan anahtarlar yalnızca o bölgede geçerlidir. Bunları diğer bölgelerle birlikte kullanmaya çalışmak, kimlik doğrulama hatalarına neden olur.
 
 ## <a name="speech-sdk"></a>Konuşma SDK'sı
@@ -38,7 +38,7 @@ Bölgeleri düşünürken aşağıdaki noktaları göz önünde bulundurun:
 
 Konuşma özelleştirme portalı şurada bulunabilir: https://speech.microsoft.com
 
-Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**için şu bölgelerde kullanılabilir:
+Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya** ve **çeviri** için şu bölgelerde kullanılabilir:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
@@ -48,7 +48,7 @@ Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**iç
 
 Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölgeler şunlardır:
 
-| Genel bölge | Bölge           | Bölge tanımlayıcısı |
+| Genel bölge | Region           | Bölge tanımlayıcısı |
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
@@ -63,13 +63,13 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
 | Güney Amerika | Brezilya Güney     | `brazilsouth`        |
 
-Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
+Bu, [Language Understanding hizmeti (Luo)](../luis/luis-reference-regions.md)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 
 ### <a name="voice-assistants"></a>Ses yardımcıları
 
 [Konuşma SDK 'sı](speech-sdk.md) bu bölgelerde **sesli yardımcı** yeteneklerini destekler:
 
-| Bölge         | Bölge tanımlayıcısı |
+| Region         | Bölge tanımlayıcısı |
 | -------------- | -------------------- |
 | Batı ABD        | `westus`             |
 | Batı ABD 2      | `westus2`            |

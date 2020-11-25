@@ -2,14 +2,14 @@
 title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086768"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972577"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -71,7 +71,7 @@ Properties :
         Team         Compliance
 ```
 
-Zaten etiketlere sahip olan bir kaynağa etiket eklemek için **Update-AzTag**' i kullanın. **-Operation** parametresini **birleştirilecek**şekilde ayarlayın.
+Zaten etiketlere sahip olan bir kaynağa etiket eklemek için **Update-AzTag**' i kullanın. **-Operation** parametresini **birleştirilecek** şekilde ayarlayın.
 
 ```azurepowershell-interactive
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -213,7 +213,7 @@ Belirli bir etiket adı ve değerine sahip kaynak gruplarını almak için şunu
 
 ### <a name="remove-tags"></a>Etiketleri Kaldır
 
-Belirli etiketleri kaldırmak için **Update-AzTag** ve set **-Operation** komutunu **silmek**üzere kullanın. Silmek istediğiniz etiketleri geçirin.
+Belirli etiketleri kaldırmak için **Update-AzTag** ve set **-Operation** komutunu **silmek** üzere kullanın. Silmek istediğiniz etiketleri geçirin.
 
 ```azurepowershell-interactive
 $removeTags = @{"Project"="ECommerce"; "Team"="Web"}
@@ -236,111 +236,204 @@ $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 Remove-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 ### <a name="apply-tags"></a>Etiketleri Uygula
 
-Bir kaynak grubuna veya kaynağa etiket eklerken, varolan etiketlerin üzerine yazabilir veya varolan etiketlere yeni etiketler ekleyebilirsiniz.
+Azure CLı, etiketleri uygulamak için iki komut sunar- [az Tag create](/cli/azure/tag#az_tag_create) ve [az Tag Update](/cli/azure/tag#az_tag_update). Azure CLı 2.10.0 veya sonraki bir sürümü olmalıdır. Sürümünüzü ile denetleyebilirsiniz `az version` . Güncelleştirmek veya yüklemek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
 
-Bir kaynaktaki etiketlerin üzerine yazmak için şunu kullanın:
+**Az Tag create** , kaynak, kaynak grubu veya abonelikteki tüm etiketlerin yerini alır. Komutunu çağırırken etiketlemek istediğiniz varlığın kaynak KIMLIĞINI geçirin.
 
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-Bir kaynaktaki varolan etiketlere bir etiket eklemek için şunu kullanın:
+Aşağıdaki örnek, bir depolama hesabına bir etiket kümesi uygular:
 
 ```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag create --resource-id $resource --tags Dept=Finance Status=Normal
 ```
 
-Bir kaynak grubundaki mevcut etiketlerin üzerine yazmak için şunu kullanın:
+Komut tamamlandığında, kaynağın iki etiketi olduğunu fark edersiniz.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Status": "Normal"
+  }
+},
+```
+
+Komutu yeniden çalıştırırsanız, ancak bu kez farklı etiketler içeriyorsa, önceki etiketlerin kaldırıldığına dikkat edin.
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az tag create --resource-id $resource --tags Team=Compliance Environment=Production
 ```
 
-Bir kaynak grubundaki varolan etiketlere bir etiket eklemek için şunu kullanın:
+```output
+"properties": {
+  "tags": {
+    "Environment": "Production",
+    "Team": "Compliance"
+  }
+},
+```
+
+Zaten etiketlere sahip olan bir kaynağa etiket eklemek için **az Tag Update** kullanın. **--Operation** parametresini **merge** olarak ayarlayın.
 
 ```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
+az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
 ```
 
-Şu anda Azure CLı, aboneliğe Etiketler uygulamak için bir komuta sahip değildir. Ancak, bir aboneliğe etiketleri uygulayan bir ARM şablonu dağıtmak için CLı kullanabilirsiniz. Bkz. [kaynak grupları veya aboneliklerde etiket uygulama](#apply-tags-to-resource-groups-or-subscriptions).
+İki yeni etiketin varolan iki etikete eklendiğinden emin olun.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Normal",
+    "Team": "Compliance"
+  }
+},
+```
+
+Her etiket adı yalnızca bir değere sahip olabilir. Etiket için yeni bir değer sağlarsanız, birleştirme işlemini kullanıyor olsanız bile eski değer değişir. Aşağıdaki örnek durum etiketini normal iken yeşil olarak değiştirir.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Merge --tags Status=Green
+```
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Green",
+    "Team": "Compliance"
+  }
+},
+```
+
+**Değiştirilecek** **--Operation** parametresini ayarladığınızda, varolan Etiketler Yeni Etiketler kümesiyle değiştirilir.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
+```
+
+Kaynak üzerinde yalnızca yeni Etiketler kalır.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123",
+    "Project": "ECommerce",
+    "Team": "Web"
+  }
+},
+```
+
+Aynı komutlar kaynak gruplarıyla veya aboneliklerle de çalışır. Etiketlemek istediğiniz kaynak grubu veya aboneliğin tanımlayıcısını geçirin.
+
+Bir kaynak grubuna yeni bir etiket kümesi eklemek için şunu kullanın:
+
+```azurecli-interactive
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag create --resource-id $group --tags Dept=Finance Status=Normal
+```
+
+Bir kaynak grubunun etiketlerini güncelleştirmek için şunu kullanın:
+
+```azurecli-interactive
+az tag update --resource-id $group --operation Merge --tags CostCenter=00123 Environment=Production
+```
+
+Bir aboneliğe yeni bir etiket kümesi eklemek için şunu kullanın:
+
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag create --resource-id /subscriptions/$sub --tags CostCenter=00123 Environment=Dev
+```
+
+Bir aboneliğin etiketlerini güncelleştirmek için şunu kullanın:
+
+```azurecli-interactive
+az tag update --resource-id /subscriptions/$sub --operation Merge --tags Team="Web Apps"
+```
 
 ### <a name="list-tags"></a>Etiketleri listeleme
 
-Bir kaynağın mevcut etiketlerini görmek için şunu kullanın:
+Bir kaynağın, kaynak grubunun veya aboneliğin etiketlerini almak için [az Tag List](/cli/azure/tag#az_tag_list) komutunu kullanın ve varlık IÇIN kaynak kimliğini geçirin.
+
+Bir kaynağın etiketlerini görmek için şunu kullanın:
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag list --resource-id $resource
 ```
 
-Bir kaynak grubunun mevcut etiketlerini görmek şunu kullanın:
+Bir kaynak grubunun etiketlerini görmek için şunu kullanın:
 
 ```azurecli-interactive
-az group show -n examplegroup --query tags
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag list --resource-id $group
 ```
 
-Bu betik aşağıdaki biçimde veri döndürür:
+Bir aboneliğin etiketlerini görmek için şunu kullanın:
 
-```json
-{
-  "Dept"        : "IT",
-  "Environment" : "Test"
-}
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag list --resource-id /subscriptions/$sub
 ```
 
 ### <a name="list-by-tag"></a>Etikete göre Listele
 
-Belirli bir etiketi ve değeri olan tüm kaynakları almak için şunu kullanın `az resource list` :
+Belirli bir etiket adı ve değeri olan kaynakları almak için şunu kullanın:
 
 ```azurecli-interactive
-az resource list --tag Dept=Finance
+az resource list --tag CostCenter=00123 --query [].name
 ```
 
-Belirli bir etikete sahip kaynak gruplarını almak için şunu kullanın `az group list` :
+Herhangi bir etiket değerine sahip belirli bir etiket adına sahip kaynakları almak için şunu kullanın:
 
 ```azurecli-interactive
-az group list --tag Dept=IT
+az resource list --tag Team --query [].name
+```
+
+Belirli bir etiket adı ve değerine sahip kaynak gruplarını almak için şunu kullanın:
+
+```azurecli-interactive
+az group list --tag Dept=Finance
+```
+
+### <a name="remove-tags"></a>Etiketleri Kaldır
+
+Belirli etiketleri kaldırmak için **az Tag Update** ve set **--Operation** öğesini kullanarak **silin**. Silmek istediğiniz etiketleri geçirin.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
+```
+
+Belirtilen Etiketler kaldırılır.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123"
+  }
+},
+```
+
+Tüm etiketleri kaldırmak için [az Tag Delete](/cli/azure/tag#az_tag_delete) komutunu kullanın.
+
+```azurecli-interactive
+az tag delete --resource-id $resource
 ```
 
 ### <a name="handling-spaces"></a>Boşluk işleme
 
-Etiket adlarınız veya değerleriniz boşluk içeriyorsa, birkaç ek adım uygulamanız gerekir. 
-
-`--tags`Azure CLI 'daki parametreler, dizelerden oluşan bir diziyi içeren bir dizeyi kabul edebilir. Aşağıdaki örnek, etiketlerin boşluk ve kısa çizgi olduğu bir kaynak grubundaki etiketlerin üzerine yazar: 
+Etiket adlarınız veya değerleriniz boşluk içeriyorsa, bunları çift tırnak içine alın.
 
 ```azurecli-interactive
-TAGS=("Cost Center=Finance-1222" "Location=West US")
-az group update --name examplegroup --tags "${TAGS[@]}"
-```
-
-Parametresini kullanarak bir kaynak grubu veya kaynak oluşturduğunuzda veya güncelleştirdiğinizde aynı sözdizimini kullanabilirsiniz `--tags` .
-
-Parametresini kullanarak etiketleri güncelleştirmek için `--set` anahtar ve değeri bir dize olarak geçirmeniz gerekir. Aşağıdaki örnek, bir kaynak grubuna tek bir etiket ekler:
-
-```azurecli-interactive
-TAG="Cost Center='Account-56'"
-az group update --name examplegroup --set tags."$TAG"
-```
-
-Bu durumda, değer bir tire içerdiğinden, etiket değeri tek tırnak işaretleriyle işaretlenir.
-
-Ayrıca, birçok kaynağa Etiketler uygulamanız gerekebilir. Aşağıdaki örnek, Etiketler boşluk içerdiğinde bir kaynak grubundaki tüm etiketleri kaynaklarına uygular:
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
-origIFS=$IFS
-IFS=','
-read -a tagarr <<< "$tags"
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags "${tagarr[@]}" --id $id
-done
-IFS=$origIFS
+az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
 ## <a name="templates"></a>Şablonlar

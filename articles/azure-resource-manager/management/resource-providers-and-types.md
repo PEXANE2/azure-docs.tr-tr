@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426468"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972547"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
 
@@ -45,23 +45,23 @@ Aboneliğinizde kaynak sağlayıcınızdan hala kaynak türleri varsa, bir kayna
 Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Azure portalı menüsünde **Tüm hizmetler** ’i seçin.
+2. Azure portalı menüsünde **Tüm hizmetler**’i seçin.
 
     ![abonelikleri Seç](./media/resource-providers-and-types/select-all-services.png)
 
-3. **Tüm hizmetler** kutusunda, **abonelik** girin ve ardından **abonelikler** ' i seçin.
+3. **Tüm hizmetler** kutusunda, **abonelik** girin ve ardından **abonelikler**' i seçin.
 4. Görüntülenecek abonelik listesinden aboneliği seçin.
 5. **Kaynak sağlayıcıları** ' nı seçin ve kullanılabilir kaynak sağlayıcılarının listesini görüntüleyin.
 
     ![Kaynak sağlayıcılarını göster](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Bir kaynak sağlayıcısını kaydetmek için **Kaydet** ' i seçin. Önceki ekran görüntüsünde, **kayıt** bağlantısı **Microsoft. Blueprint** için vurgulanır.
+6. Bir kaynak sağlayıcısını kaydetmek için **Kaydet**' i seçin. Önceki ekran görüntüsünde, **kayıt** bağlantısı **Microsoft. Blueprint** için vurgulanır.
 
 Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Azure portalı menüsünde **Tüm hizmetler** ’i seçin.
-3. **Tüm hizmetler** kutusunda, **Kaynak Gezgini** ' ni girin ve ardından **Kaynak Gezgini** ' yi seçin.
+2. Azure portalı menüsünde **Tüm hizmetler**’i seçin.
+3. **Tüm hizmetler** kutusunda, **Kaynak Gezgini**' ni girin ve ardından **Kaynak Gezgini**' yi seçin.
 
     ![Tüm hizmetleri seçin](./media/resource-providers-and-types/select-resource-explorer.png)
 

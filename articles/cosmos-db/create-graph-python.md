@@ -10,11 +10,11 @@ ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
 ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972493"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Hızlı başlangıç: Python ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -75,7 +75,7 @@ Bir grafik veritabanı oluşturmadan önce Azure Cosmos DB ile bir Gremlin (Graf
 
 Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıkları, *C:\git-samples\azure-Cosmos-DB-Graph-Python-Getting-Started \\* klasöründeki *Connect.py* dosyasından alınır. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-information) bölümüne atlayabilirsiniz. 
 
-* Gremlin, `client` *Connect.py* 'de satır 104 ' de başlatılır:
+* Gremlin, `client` *Connect.py*'de satır 104 ' de başlatılır:
 
     ```python
     ...
@@ -95,7 +95,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
 Şimdi, Azure portalına dönerek bağlantı bilgilerinizi kopyalayıp uygulamaya ekleyin. Bu ayarlar, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır.
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **anahtarlar** ' ı seçin. 
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **anahtarlar**' ı seçin. 
 
     URI değerinin ilk parçasını kopyalayın.
 
@@ -171,7 +171,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
 Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğe eklenen köşeleri görebilir ve ek veri noktaları ekleyebilirsiniz.
 
-1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini** , **örnek grafik** ' i ve **Graf** ' ı seçin ve ardından **Filtre Uygula** ' yı seçin. 
+1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini**, **örnek grafik**' i ve **Graf**' ı seçin ve ardından **Filtre Uygula**' yı seçin. 
 
    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Ekran görüntüsü, filtre uygulama seçeneğiyle bir P I 'den seçilen grafiği gösterir.":::
 
@@ -197,7 +197,7 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
     > [!NOTE]
     > Bu hızlı başlangıçta bölümlenmemiş bir koleksiyon oluşturun. Ancak koleksiyon oluşturma sırasında bir bölüm anahtarı belirterek bölümlendirilmiş bir koleksiyon oluşturursanız, daha sonra bölüm anahtarını her yeni köşede anahtar olarak eklemeniz gerekir. 
 
-6. **Tamam** ’ı seçin. Ekranın en altındaki **Tamam** seçeneğini görmek için ekranınızı genişletmeniz gerekebilir.
+6. **Tamam**’ı seçin. Ekranın en altındaki **Tamam** seçeneğini görmek için ekranınızı genişletmeniz gerekebilir.
 
 7. **Yeni köşe** ' i yeniden seçin ve ek bir yeni kullanıcı ekleyin. 
 
@@ -212,7 +212,7 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
     cinsiyet|erkek| 
     okul|MIT| 
 
-10. **Tamam** ’ı seçin. 
+10. **Tamam**’ı seçin. 
 
 11. Grafikteki tüm değerleri göstermek için varsayılan filtreyle **Filtre Uygula** düğmesini seçin `g.V()` . Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
 
@@ -226,7 +226,7 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
 
     :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Veri Gezgininde ashley ve rakesh arasında bir bağlantı ekleyin":::
 
-14. Sonuç listesinden **rakesh** ’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
+14. Sonuç listesinden **rakesh**’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
 
     :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Veri Gezgini'nde bağlı iki köşe":::
 

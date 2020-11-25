@@ -11,11 +11,11 @@ ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972683"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Azure SQL veritabanı ile Java ve JDBC kullanma
 
@@ -23,7 +23,7 @@ Bu konu başlığı altında, [Azure SQL veritabanı](/azure/sql-database/)'nda 
 
 JDBC, geleneksel ilişkisel veritabanlarına bağlanmak için standart Java API 'sidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure hesabı. Hiç kimse yoksa [ücretsiz deneme sürümü alın](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](../../cloud-shell/quickstart.md) veya [Azure CLI](/cli/azure/install-azure-cli). Otomatik olarak oturum açabileceksiniz ve ihtiyacınız olan tüm araçlara erişebilmek için Azure Cloud Shell önerilir.
@@ -48,8 +48,8 @@ AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 Yer tutucuları, bu makale boyunca kullanılan aşağıdaki değerlerle değiştirin:
 
 - `<YOUR_DATABASE_NAME>`: Azure SQL veritabanı sunucunuzun adı. Azure genelinde benzersiz olmalıdır.
-- `<YOUR_AZURE_REGION>`: Kullanacağınız Azure bölgesi. `eastus`Varsayılan olarak kullanabilirsiniz, ancak bir bölgeyi yaşadığınız yere yakın bir yerde yapılandırmanızı öneririz. ' İ girerek kullanılabilir bölgelerin tam listesini alabilirsiniz `az account list-locations` .
-- `<AZ_SQL_SERVER_PASSWORD>`: Azure SQL veritabanı sunucunuzun parolası. Bu parola en az sekiz karakter uzunluğunda olmalıdır. Karakterler şu kategorilerden üçünde olmalıdır: Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #,%, vb.).
+- `<YOUR_AZURE_REGION>`: Kullanacağınız Azure bölgesi. Varsayılan olarak `eastus` kullanabilirsiniz ancak bölgeyi, yaşadığınız yere yakın bir yerde yapılandırmanızı öneririz. ' İ girerek kullanılabilir bölgelerin tam listesini alabilirsiniz `az account list-locations` .
+- `<AZ_SQL_SERVER_PASSWORD>`: Azure SQL veritabanı sunucunuzun parolası. Bu parola en az sekiz karakter uzunluğunda olmalıdır. Karakterler şu kategorilerin üçünü de içermelidir: İngilizce büyük harfler, İngilizce küçük harfler, rakamlar (0-9) ve alfasayısal olmayan karakterler (!, $, #, % vb.).
 - `<YOUR_LOCAL_IP_ADDRESS>`: Java uygulamanızı çalıştıracağınız yerel bilgisayarınızın IP adresi. Bunu bulmanın kolay bir yolu, tarayıcınızı [whatismyip.Akamai.com](http://whatismyip.akamai.com/)'e işaret kullanmaktır.
 
 Ardından, aşağıdaki komutu kullanarak bir kaynak grubu oluşturun:
@@ -62,7 +62,7 @@ az group create \
 ```
 
 > [!NOTE]
-> `jq`JSON verilerini göstermek ve daha okunabilir hale getirmek için yardımcı programı kullanıyoruz. Bu yardımcı program, [Azure Cloud Shell](https://shell.azure.com/)varsayılan olarak yüklenir. Bu yardımcı programı beğenmezseniz, `| jq` kullanacağımız tüm komutların bölümünü güvenle kaldırabilirsiniz.
+> `jq`JSON verilerini göstermek ve daha okunabilir hale getirmek için yardımcı programı kullanıyoruz. Bu yardımcı program, [Azure Cloud Shell](https://shell.azure.com/)varsayılan olarak yüklenir. Bu yardımcı programı beğenmezseniz kullanacağımız tüm komutlardan `| jq` bölümünü kaldırabilirsiniz.
 
 ## <a name="create-an-azure-sql-database-instance"></a>Azure SQL veritabanı örneği oluşturma
 
@@ -87,7 +87,7 @@ Bu komut bir Azure SQL veritabanı sunucusu oluşturur.
 
 ### <a name="configure-a-firewall-rule-for-your-azure-sql-database-server"></a>Azure SQL veritabanı sunucunuz için bir güvenlik duvarı kuralı yapılandırma
 
-Azure SQL veritabanı örnekleri varsayılan olarak güvenli hale getirilir. Herhangi bir gelen bağlantıya izin veren bir güvenlik duvarı vardır. Veritabanınızı kullanabilmeniz için, yerel IP adresinin veritabanı sunucusuna erişmesine imkan sağlayacak bir güvenlik duvarı kuralı eklemeniz gerekir.
+Azure SQL veritabanı örnekleri varsayılan olarak güvenli hale getirilir. Gelen bağlantılara izin vermeyen bir güvenlik duvarı vardır. Veritabanınızı kullanabilmeniz için, yerel IP adresinin veritabanı sunucusuna erişmesine imkan sağlayacak bir güvenlik duvarı kuralı eklemeniz gerekir.
 
 Bu makalenin başlangıcında yerel IP adresimizi yapılandırdığınız için, aşağıdaki komutu çalıştırarak sunucunun güvenlik duvarını açabilirsiniz:
 
@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BIT);
 ```
 
-## <a name="code-the-application"></a>Uygulamayı kodlayın
+## <a name="code-the-application"></a>Uygulamayı kodlama
 
 ### <a name="connect-to-the-database"></a>Veritabanına bağlanın
 
