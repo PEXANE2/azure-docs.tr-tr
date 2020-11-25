@@ -10,11 +10,11 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540889"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999935"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için özellikleri kullanın
 
@@ -30,7 +30,7 @@ Bir özelliğin ne zaman ve neden kullanılacağını anlamak için [kavramları
 
 1. **Özellikler** sayfasında **+ Oluştur**' u seçin.
 
-1. **Yeni tümcecik listesi özelliği oluştur** iletişim kutusunda, gibi bir ad girin `Cities` . **Değer** kutusuna, gibi şehirlerin örneklerini girin `Seattle` . Tek seferde bir değer veya virgülle ayrılmış bir değerler kümesi yazabilir ve ardından **ENTER**tuşuna basabilirsiniz.
+1. **Yeni tümcecik listesi özelliği oluştur** iletişim kutusunda, gibi bir ad girin `Cities` . **Değer** kutusuna, gibi şehirlerin örneklerini girin `Seattle` . Tek seferde bir değer veya virgülle ayrılmış bir değerler kümesi yazabilir ve ardından **ENTER** tuşuna basabilirsiniz.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik (tümcecik listesi) şehirleri ekleme ekran görüntüsü](./media/luis-add-features/add-phrase-list-cities.png)
@@ -41,7 +41,7 @@ Bir özelliğin ne zaman ve neden kullanılacağını anlamak için [kavramları
 
 1. Tümcecik listesi, **genel** ayarı olan tüm uygulamaya veya belirli bir modele (amaç veya varlık) uygulanabilir. Tümcecik listesini bir amaç veya varlıktan bir _özellik_ olarak oluşturursanız, geçiş işlemi genel için ayarlanmadı. Bu durumda, iki durumlu özelliğin anlamı, uygulamanın _genel değil_ , bu modelde yalnızca yerel olduğu bir modeldir.
 
-1. **Bitti** seçeneğini belirleyin. Yeni özellik **ml özellikleri** sayfasına eklenir.
+1. **Bitti**'yi seçin. Yeni özellik **ml özellikleri** sayfasına eklenir.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

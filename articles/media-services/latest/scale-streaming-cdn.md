@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057663"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001380"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
 
@@ -32,7 +32,7 @@ Video parçası önbelleğe alındığı sürece popüler içerik doğrudan CDN 
 Ayrıca, uyarlamalı akışın nasıl çalıştığını göz önünde bulundurmanız gerekir. Her bir video parçası kendi varlığı olarak önbelleğe alınır. Örneğin, belirli bir videonun ilk kez nasıl izlenen hakkında düşünün. Görüntüleyici burada yalnızca birkaç saniye izlemeyi atlar ve burada yalnızca, izlenen kişilerin CDN 'de önbelleğe alınması ile ilişkili video parçaları vardır. Uyarlamalı akış sayesinde genellikle 5 ile 7 arasında farklı bit fiyatları vardır. Bir kişi bir bit hızı izlerken ve başka bir kişi farklı bir bit hızı izlerse, her biri CDN 'de ayrı olarak önbelleğe alınır. İki kişi aynı bit hızını izliyor olsa da, farklı protokollerde akış olabilir. Her protokol (HLS, MPEG-DASH, Kesintisiz Akış) ayrı olarak önbelleğe alınır. Böylece her bit hızı ve protokol ayrı olarak önbelleğe alınır ve yalnızca istenen video parçaları önbelleğe alınır.
 
 Test ortamı hariç, hem standart hem de Premium akış uç noktaları için CDN 'nin etkinleştirilmesini öneririz. Her akış uç noktası türü, desteklenen farklı bir üretilen iş sınırına sahiptir.
-Bir akış uç noktası tarafından desteklenen en fazla eşzamanlı akış sayısı için kesin bir hesaplama yapmak zordur, çünkü dikkate almanız gereken çeşitli faktörler vardır. Bu modüller şunlardır:
+Bir akış uç noktası tarafından desteklenen en fazla eşzamanlı akış sayısı için kesin bir hesaplama yapmak zordur, çünkü dikkate almanız gereken çeşitli faktörler vardır. Bunlar:
 
 - Akış için kullanılan maksimum bit hızı
 - Oynatıcı ön arabelleği ve anahtarlama davranışı. Oyuncular, bir kaynaktan kesimleri patlama ve Uyarlamalı bit hızı geçişini hesaplamak için yük hızını kullanmanıza çalışır. Akış uç noktası doygunluğu yakınsa, yanıt süreleri farklılık gösterebilir ve oyuncular daha düşük kalitede geçişe başlayabilir. Bu, akış uç noktası yürütücülerinin yükünü azaltmakta olduğundan, istenmeyen geçiş Tetikleyicileri oluşturarak daha yüksek kalitede ölçeklendirin.
@@ -58,7 +58,7 @@ Daha sonra CDN 'yi devre dışı bırakmak/etkinleştirmek istiyorsanız, akış
 
 Standart akış uç noktası oluşturulduğunda, standart Verizon ile varsayılan olarak yapılandırılır. REST API 'Lerini kullanarak Premium Verizon veya standart Akamai sağlayıcılarını yapılandırabilirsiniz.
 
-Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları için **Verizon 'tan Azure CDN** uygulanır. Premium akış uç noktaları, tüm **Azure CDN fiyatlandırma katmanları ve sağlayıcıları**kullanılarak yapılandırılabilir.
+Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları için **Verizon 'tan Azure CDN** uygulanır. Premium akış uç noktaları, tüm **Azure CDN fiyatlandırma katmanları ve sağlayıcıları** kullanılarak yapılandırılabilir.
 
 > [!NOTE]
 > Azure CDN hakkındaki ayrıntılar için bkz. [CDN 'ye genel bakış](../../cdn/cdn-overview.md).

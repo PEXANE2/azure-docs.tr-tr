@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347854"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000071"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps'te B2B kurumsal tümleştirmeleri için tümleştirme hesabı oluşturma ve yönetme
 
@@ -45,11 +45,11 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/mod
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure ana menüsünde **Kaynak oluştur** 'u seçin. Arama kutusuna filtreniz olarak "tümleştirme hesabı" girin ve **tümleştirme hesabı** ' nı seçin.
+1. Azure ana menüsünde **Kaynak oluştur**'u seçin. Arama kutusuna filtreniz olarak "tümleştirme hesabı" girin ve **tümleştirme hesabı**' nı seçin.
 
    ![Yeni tümleştirme hesabı oluştur](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-1. **Tümleştirme hesabı** altında **Oluştur** ' u seçin.
+1. **Tümleştirme hesabı** altında **Oluştur**' u seçin.
 
    ![Tümleştirme hesabı oluşturmak için "Ekle" yi seçin](./media/logic-apps-enterprise-integration-create-integration-account/add-integration-account.png)
 
@@ -59,15 +59,15 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/mod
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Ad** | Evet | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı, yalnızca harf, rakam, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
-   | **Abonelik** | Evet | <*Azure-abonelik-adı*> | Azure aboneliğinizin adı |
-   | **Kaynak grubu** | Evet | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
-   | **Fiyatlandırma Katmanı** | Evet | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz** ' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps sınırları ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Konum** | Evet | <*Azure-bölge*> | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note** : bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Ad** | Yes | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı, yalnızca harf, rakam, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
+   | **Abonelik** | Yes | <*Azure-abonelik-adı*> | Azure aboneliğinizin adı |
+   | **Kaynak grubu** | Yes | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
+   | **Fiyatlandırma Katmanı** | Yes | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps sınırları ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Konum** | Yes | <*Azure-bölge*> | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note**: bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | No | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
    |||||
 
-1. İşiniz bittiğinde **Oluştur** ' u seçin.
+1. İşiniz bittiğinde **Oluştur**' u seçin.
 
    Dağıtım tamamlandıktan sonra, Azure tümleştirme hesabınızı açar.
 
@@ -160,11 +160,11 @@ Mantıksal uygulamalarınıza B2B yapıtlarınızı içeren bir tümleştirme he
 
 1. [Azure Portal](https://portal.azure.com), var olan bir mantıksal uygulamayı açın veya yeni bir mantıksal uygulama oluşturun.
 
-1. Mantıksal uygulamanızın menüsünde, **Ayarlar** ' ın altında, **iş akışı ayarları** ' nı seçin. **Tümleştirme hesabı** altında, **bir tümleştirme hesabı seç** listesini açın. Mantıksal uygulamanıza bağlanacak tümleştirme hesabını seçin.
+1. Mantıksal uygulamanızın menüsünde, **Ayarlar**' ın altında, **iş akışı ayarları**' nı seçin. **Tümleştirme hesabı** altında, **bir tümleştirme hesabı seç** listesini açın. Mantıksal uygulamanıza bağlanacak tümleştirme hesabını seçin.
 
    ![Tümleştirme hesabınızı seçin](./media/logic-apps-enterprise-integration-create-integration-account/select-integration-account.png)
 
-1. Bağlamayı tamamlaması için **Kaydet** ' i seçin.
+1. Bağlamayı tamamlaması için **Kaydet**' i seçin.
 
    ![Tümleştirme hesabınızı seçmek için nereye kaydedileceğini gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
 
@@ -193,17 +193,17 @@ Bu değişikliği yapmak için Azure portal ya da Azure CLı kullanabilirsiniz.
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Ana Azure Arama kutusuna filtreniz olarak "tümleştirme hesapları" girin ve **tümleştirme hesapları** ' nı seçin.
+1. Ana Azure Arama kutusuna filtreniz olarak "tümleştirme hesapları" girin ve **tümleştirme hesapları**' nı seçin.
 
    ![Tümleştirme hesabını bul](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure, Azure aboneliklerinizdeki tüm tümleştirme hesaplarını gösterir.
 
-1. **Tümleştirme hesapları** altında, taşımak istediğiniz tümleştirme hesabını seçin. Tümleştirme hesabınız menüsünde **genel bakış** ' ı seçin.
+1. **Tümleştirme hesapları** altında, taşımak istediğiniz tümleştirme hesabını seçin. Tümleştirme hesabınız menüsünde **genel bakış**' ı seçin.
 
    ![Tümleştirme hesabı menüsünde "genel bakış" ı seçin](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. Genel Bakış bölmesinde, kullanılabilir daha fazla katmanı listeleyen **fiyatlandırma katmanını Yükselt** ' i seçin. Bir katman seçtiğinizde, değişiklik hemen geçerli olur.
+1. Genel Bakış bölmesinde, kullanılabilir daha fazla katmanı listeleyen **fiyatlandırma katmanını Yükselt**' i seçin. Bir katman seçtiğinizde, değişiklik hemen geçerli olur.
 
 <a name="upgrade-tier-azure-cli"></a>
 
@@ -265,11 +265,11 @@ Mantıksal uygulamanızı başka bir tümleştirme hesabına bağlamak veya art�
 
    ![Mantıksal uygulama bul ve Seç](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-find-logic-app.png)
 
-1. Gezgin başlık çubuğunda **oku/yaz** ' ı seçin.
+1. Gezgin başlık çubuğunda **oku/yaz**' ı seçin.
 
    !["Okuma/yazma" modunu aç](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-read-write.png)
 
-1. **Veri** sekmesinde **Düzenle** ' yi seçin.
+1. **Veri** sekmesinde **Düzenle**' yi seçin.
 
    !["Veri" sekmesinde "Düzenle" yi seçin](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-edit.png)
 
@@ -285,7 +285,7 @@ Mantıksal uygulamanızı başka bir tümleştirme hesabına bağlamak veya art�
    },
    ```
 
-   Örneğin:
+   Örnek:
 
    !["Integrationaccount" nesnesini bul](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 
@@ -305,17 +305,17 @@ Bu görev için, bu bölümdeki veya [Azure CLI](/cli/azure/resource#az-resource
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Ana Azure Arama kutusuna filtreniz olarak "tümleştirme hesapları" girin ve **tümleştirme hesapları** ' nı seçin.
+1. Ana Azure Arama kutusuna filtreniz olarak "tümleştirme hesapları" girin ve **tümleştirme hesapları**' nı seçin.
 
    ![Tümleştirme hesabını bul](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure, Azure aboneliklerinizdeki tüm tümleştirme hesaplarını gösterir.
 
-1. **Tümleştirme hesapları** altında, taşımak istediğiniz tümleştirme hesabını seçin. Tümleştirme hesabınız menüsünde **genel bakış** ' ı seçin.
+1. **Tümleştirme hesapları** altında, taşımak istediğiniz tümleştirme hesabını seçin. Tümleştirme hesabınız menüsünde **genel bakış**' ı seçin.
 
    ![Tümleştirme hesabı menüsünde "genel bakış" ı seçin](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. **Kaynak grubu** veya **abonelik adı** ' nın yanındaki **Değiştir** ' i seçin.
+1. **Kaynak grubu** veya **abonelik adı**' nın yanındaki **Değiştir**' i seçin.
 
    ![Kaynak grubunu veya aboneliği Değiştir](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
 
@@ -323,11 +323,11 @@ Bu görev için, bu bölümdeki veya [Azure CLI](/cli/azure/resource#az-resource
 
 1. Seçiminize bağlı olarak, kaynak grubunu veya aboneliği değiştirmek için şu adımları izleyin:
 
-   * Kaynak grubu: **kaynak grubu** listesinden hedef kaynak grubunu seçin. Ya da farklı bir kaynak grubu oluşturmak için **Yeni kaynak grubu oluştur** ' u seçin.
+   * Kaynak grubu: **kaynak grubu** listesinden hedef kaynak grubunu seçin. Ya da farklı bir kaynak grubu oluşturmak için **Yeni kaynak grubu oluştur**' u seçin.
 
-   * Abonelik: **abonelik** listesinden hedef aboneliği seçin. **Kaynak grubu** listesinden hedef kaynak grubunu seçin. Ya da farklı bir kaynak grubu oluşturmak için **Yeni kaynak grubu oluştur** ' u seçin.
+   * Abonelik: **abonelik** listesinden hedef aboneliği seçin. **Kaynak grubu** listesinden hedef kaynak grubunu seçin. Ya da farklı bir kaynak grubu oluşturmak için **Yeni kaynak grubu oluştur**' u seçin.
 
-1. Yeni kaynak kimlikleri ile güncelleştirene kadar taşınan kaynaklarla ilişkili betiklerin veya araçların çalışmadığına ilişkin emin olmak için onay kutusunu seçin ve ardından **Tamam** ' ı seçin.
+1. Yeni kaynak kimlikleri ile güncelleştirene kadar taşınan kaynaklarla ilişkili betiklerin veya araçların çalışmadığına ilişkin emin olmak için onay kutusunu seçin ve ardından **Tamam**' ı seçin.
 
 1. Bitirdikten sonra, taşınan kaynaklarınızın yeni kaynak kimlikleriyle birlikte tüm komut dosyalarını ve tüm betikleri güncelleştirdiğinizden emin olun.  
 
@@ -337,21 +337,21 @@ Bu görev için, bu bölümdeki adımları izleyerek Azure portal kullanabilirsi
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Ana Azure Arama kutusuna filtreniz olarak "tümleştirme hesapları" girin ve **tümleştirme hesapları** ' nı seçin.
+1. Ana Azure Arama kutusuna filtreniz olarak "tümleştirme hesapları" girin ve **tümleştirme hesapları**' nı seçin.
 
    ![Tümleştirme hesabını bul](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
    Azure, Azure aboneliklerinizdeki tüm tümleştirme hesaplarını gösterir.
 
-1. **Tümleştirme hesapları** altında, silmek istediğiniz tümleştirme hesabını seçin. Tümleştirme hesabınız menüsünde **genel bakış** ' ı seçin.
+1. **Tümleştirme hesapları** altında, silmek istediğiniz tümleştirme hesabını seçin. Tümleştirme hesabınız menüsünde **genel bakış**' ı seçin.
 
    ![Tümleştirme hesabı menüsünde "genel bakış" ı seçin](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
-1. Genel Bakış bölmesinde **Sil** ' i seçin.
+1. Genel Bakış bölmesinde **Sil**' i seçin.
 
    !["Genel bakış" bölmesinde "Sil" i seçin](./media/logic-apps-enterprise-integration-create-integration-account/delete-integration-account.png)
 
-1. Tümleştirme hesabınızı silmek istediğinizi onaylamak için **Evet** ' i seçin.
+1. Tümleştirme hesabınızı silmek istediğinizi onaylamak için **Evet**' i seçin.
 
    ![Silmeyi onaylamak için "Evet" i seçin](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
 

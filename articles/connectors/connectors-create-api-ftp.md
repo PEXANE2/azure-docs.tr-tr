@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999595"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak FTP dosyalarını oluşturma, izleme ve yönetme
 
@@ -29,7 +29,7 @@ FTP sunucusundan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer 
 
 * FTP Bağlayıcısı, yalnızca TLS/SSL üzerinden açık FTP 'yi (FTPS) destekler ve örtük FTPS ile uyumlu değildir.
 
-* Varsayılan olarak, FTP eylemleri *50 MB veya daha küçük*olan dosyaları okuyabilir veya yazabilir. 50 MB 'tan büyük dosyaları işlemek için FTP eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)desteği sağlar. **Dosya Içeriğini al** eylemi örtük olarak parçalama kullanır.
+* Varsayılan olarak, FTP eylemleri *50 MB veya daha küçük* olan dosyaları okuyabilir veya yazabilir. 50 MB 'tan büyük dosyaları işlemek için FTP eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)desteği sağlar. **Dosya Içeriğini al** eylemi örtük olarak parçalama kullanır.
 
 * FTP Tetikleyicileri parçalama desteklemez. Dosya içeriği istenirken Tetikleyiciler yalnızca 50 MB veya daha küçük olan dosyaları seçer. 50 MB 'tan büyük dosyaları almak için şu modele uyun:
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087073437fe9d6159422799c04ce095c0aae5eca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317234"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001261"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama çıkışı bağlamaları
 
@@ -100,6 +100,24 @@ public static void Run(
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+ Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendiğinde kuyruk iletisi oluşturan bir Java işlevini gösterir.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@QueueOutput` değeri kuyruk depolamaya yazılacak olan parametrelerde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>` , burada `T` BIR Pojo 'Nın yerel Java türüdür.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function.js* DOSYADAKI bir http tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, alınan her HTTP isteği için bir kuyruk öğesi oluşturur.
@@ -149,6 +167,79 @@ module.exports = function(context) {
     context.bindings.myQueueItem = ["message 1","message 2"];
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki kod örnekleri, bir HTTP ile tetiklenen işlevden bir sıra iletisinin nasıl çıktısının alınacağını göstermektedir. İçindeki yapılandırma bölümü, `type` `queue` Çıkış bağlamayı tanımlar.
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "Msg",
+      "queueName": "outqueue",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+Bu bağlama yapılandırmasını kullanarak bir PowerShell işlevi kullanarak bir kuyruk iletisi oluşturabilir `Push-OutputBinding` . Bu örnekte, bir sorgu dizesinden veya gövde parametresinden bir ileti oluşturulur.
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+Push-OutputBinding -Name Msg -Value $message
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
+Aynı anda birden çok ileti göndermek için, bir ileti dizisi tanımlayın ve `Push-OutputBinding` Iletileri kuyruk çıkış bağlamasına göndermek için kullanın.
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = @("message1", "message2")
+Push-OutputBinding -Name Msg -Value $message
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -214,24 +305,6 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
- Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendiğinde kuyruk iletisi oluşturan bir Java işlevini gösterir.
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding<String> result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@QueueOutput` değeri kuyruk depolamaya yazılacak olan parametrelerde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>` , burada `T` BIR Pojo 'Nın yerel Java türüdür.
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
@@ -270,14 +343,6 @@ Tüm örnek için bkz. [çıkış örneği](#example).
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Öznitelikler JavaScript tarafından desteklenmez.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Öznitelikler Python tarafından desteklenmez.
-
 # <a name="java"></a>[Java](#tab/java)
 
 `QueueOutput`Ek açıklama, bir işlevin çıktısı olarak bir ileti yazmanızı sağlar. Aşağıdaki örnekte, bir kuyruk iletisi oluşturan HTTP ile tetiklenen bir işlev gösterilmektedir.
@@ -309,13 +374,25 @@ public class HttpTriggerQueueOutput {
 
 `QueueOutput`Ek açıklamayla ilişkili parametre bir [OutputBinding \<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) örneği olarak yazılır.
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
+
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Queue` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -345,7 +422,7 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` * Üzerindefunction.js*özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
+Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` *Üzerindefunction.js* özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
 * JSON olarak seri hale getirilebilir bir nesne
 * `string`
@@ -359,25 +436,29 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 * `ICollector<T>` veya `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Çıkış kuyruğu öğesine, `context.bindings.<NAME>` `<NAME>` * üzerindefunction.js*tanımlanan adla eşleşen WHERE aracılığıyla erişilebilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Bir işlevden sıra iletisini almak için iki seçenek vardır:
-
-- **Dönüş değeri**: `name` * üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
-
-- **Zorunludur**: bir değeri, [Out](/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` kuyruk depolama iletisi olarak kalıcıdır.
-
 # <a name="java"></a>[Java](#tab/java)
 
 [Queueoutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) ek açıklamasını kullanarak bir işlevden sıra iletisini almak için iki seçenek vardır:
 
 - **Dönüş değeri**: ek açıklamanın işleve uygulanması için işlevin dönüş değeri bir kuyruk iletisi olarak kalıcıdır.
 
-- Zorunlu **: ileti**değerini açıkça ayarlamak için, ek açıklamayı türün belirli bir parametresine uygulayın [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, yönteme bir değer geçirilmesi `setValue` değeri bir kuyruk iletisi olarak devam ettirir.
+- Zorunlu **: ileti** değerini açıkça ayarlamak için, ek açıklamayı türün belirli bir parametresine uygulayın [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, yönteme bir değer geçirilmesi `setValue` değeri bir kuyruk iletisi olarak devam ettirir.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Çıkış kuyruğu öğesine, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js* tanımlanan adla eşleşen WHERE aracılığıyla erişilebilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Kuyruk iletisine çıkış, `Push-OutputBinding` dosyadakifunction.jsbağlamanın parametresi tarafından belirlenen adla eşleşen bağımsız değişkenleri geçirdiğiniz yerde kullanılabilir `name` . *function.json*
+
+# <a name="python"></a>[Python](#tab/python)
+
+Bir işlevden sıra iletisini almak için iki seçenek vardır:
+
+- **Dönüş değeri**: `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
+
+- **Zorunludur**: bir değeri, [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) türü olarak belirtilen parametresinin [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` kuyruk depolama iletisi olarak kalıcıdır.
 
 ---
 
@@ -413,7 +494,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |Maxpollingınterval|00:00:01|Sıra yoklamaları arasındaki en uzun Aralık. En az 00:00:00.100 (100 ms) ve 00:01:00 (1 dak) artar.  1. x içinde veri türü milisaniyedir ve 2. x ve üzeri bir TimeSpan 'dir.|
 |visibilityTimeout|00:00:00|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur. |

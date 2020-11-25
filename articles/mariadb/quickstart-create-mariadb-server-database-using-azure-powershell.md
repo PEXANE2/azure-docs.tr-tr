@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 05082ffa891b72b472ed5433282198c61080f073
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537841"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999493"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak MariaDB sunucusu için Azure veritabanı oluşturma
 
 Bu hızlı başlangıçta PowerShell kullanarak bir Azure Kaynak grubunda MariaDB sunucusu için Azure veritabanı oluşturma işlemini açıklanmaktadır. PowerShell 'i kullanarak Azure kaynaklarını etkileşimli olarak veya betikte oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -61,7 +61,7 @@ Aşağıdaki tabloda, cmdlet 'inin yaygın olarak kullanılan parametrelerinin v
 
 |        **Ayar**         | **Örnek değer** |                                                                                                                                                             **Açıklama**                                                                                                                                                              |
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ad                       | mydemoserver     | Azure 'da MariaDB sunucusu için Azure veritabanınızı tanımlayan genel olarak benzersiz bir ad seçin. Sunucu adı yalnızca harf, sayı ve kısa çizgi (-) karakterini içerebilir. Belirtilen tüm büyük karakterler, oluşturma işlemi sırasında otomatik olarak küçük harfe dönüştürülür. 3 ila 63 karakter arası içermelidir. |
+| Name                       | mydemoserver     | Azure 'da MariaDB sunucusu için Azure veritabanınızı tanımlayan genel olarak benzersiz bir ad seçin. Sunucu adı yalnızca harf, sayı ve kısa çizgi (-) karakterini içerebilir. Belirtilen tüm büyük karakterler, oluşturma işlemi sırasında otomatik olarak küçük harfe dönüştürülür. 3 ila 63 karakter arası içermelidir. |
 | ResourceGroupName          | myresourcegroup  | Azure kaynak grubunun adını sağlayın.                                                                                                                                                                                                                                                                                            |
 | Sku                        | GP_Gen5_2        | SKU'nun adı. Toplu olarak **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdekleri** kuralına uyar. SKU parametresi hakkında daha fazla bilgi için bu tablodan sonraki bilgilere bakın.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. 7-35 aralığındadır.                                                                                                                                                                                                                                                                       |
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, cmdlet 'inin yaygın olarak kullanılan parametrelerinin v
 | SslEnforcement             | Etkin          | Bu sunucu için SSL 'nin etkinleştirilmesi gerekip gerekmediğini belirtir. İzin verilen değerler: Etkin, Devre Dışı.                                                                                                                                                                                                                                                 |
 | Storageınmb                | 51200            | Sunucunun depolama kapasitesi (birim olan megabayt kullanılır). Geçerli Storageınmb değeri en az 5120 MB 'dir ve 1024 MB 'lik artışlarla artar. Depolama boyutu sınırları hakkında daha fazla bilgi için bkz. [MariaDB Için Azure veritabanı fiyatlandırma katmanları](./concepts-pricing-tiers.md).                                                                               |
 | Sürüm                    | 5.7              | MariaDB ana sürümü.                                                                                                                                                                                                                                                                                                                 |
-| Yönetici Kullanıcı adı      | myadmin          | Yöneticinin oturum açma kullanıcı adı. Şu değerler kullanılamaz: **azure_superuser** , **admin** , **administrator** , **root** , **guest** veya **public**.                                                                                                                                                                                            |
+| Yönetici Kullanıcı adı      | myadmin          | Yöneticinin oturum açma kullanıcı adı. Şu değerler kullanılamaz: **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Güvenli bir dize biçimindeki yönetici kullanıcının parolası. 8 ile 128 arasında karakter içermelidir. Parolanız şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.                                       |
 
 **SKU** parametresi değeri, aşağıdaki örneklerde gösterildiği gibi **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdeklerini** izler.

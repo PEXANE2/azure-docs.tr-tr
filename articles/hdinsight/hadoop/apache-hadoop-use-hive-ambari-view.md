@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207824"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000530"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight'ta Apache Hadoop ile Apache Ambari Hive Görünümünü Kullanma
 
@@ -62,14 +62,14 @@ HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya ba�
 
     |Deyim | Açıklama |
     |---|---|
-    |TABLOYU BıRAK|Tablonun zaten mevcut olması durumunda tabloyu ve veri dosyasını siler.|
+    |DROP TABLE|Tablonun zaten mevcut olması durumunda tabloyu ve veri dosyasını siler.|
     |DıŞ TABLO OLUŞTUR|Hive içinde yeni bir "External" tablosu oluşturur. Dış tablolar yalnızca Hive içindeki tablo tanımını depolar. Veriler özgün konumda bırakılır.|
     |SATıR BIÇIMI|Verilerin nasıl biçimlendirileceğini gösterir. Bu durumda, her günlükteki alanlar boşlukla ayrılır.|
     |TEXTFILE KONUMU OLARAK DEPOLANDı|Verilerin nerede depolandığını ve metin olarak depolandığını gösterir.|
     |SELECT|T4 sütununun [ERROR] değerini içerdiği tüm satırların sayısını seçer.|
 
    > [!IMPORTANT]  
-   > __Veritabanı__ seçimini __varsayılan__olarak bırakın. Bu belgedeki örnekler, HDInsight 'ta bulunan varsayılan veritabanını kullanır.
+   > __Veritabanı__ seçimini __varsayılan__ olarak bırakın. Bu belgedeki örnekler, HDInsight 'ta bulunan varsayılan veritabanını kullanır.
 
 1. Sorguyu başlatmak için çalışma sayfasının altında **Yürüt** ' ü seçin. Düğme turuncu döner ve metin **durur**.
 
@@ -125,11 +125,11 @@ Hive veritabanı içindeki tablolarla çalışmak için __Tablolar__ sekmesini k
 
 Kullanıcı tanımlı işlevler (UDF) aracılığıyla Hive 'yi genişletebilirsiniz. HiveQL içinde kolayca Modellenmemiş işlevselliği veya mantığı uygulamak için UDF kullanın.
 
-Hive görünümünün en üstündeki **udf** sekmesini kullanarak bir UDF kümesi bildirin ve kaydedin. Bu UDF 'ler **sorgu Düzenleyicisi**ile kullanılabilir.
+Hive görünümünün en üstündeki **udf** sekmesini kullanarak bir UDF kümesi bildirin ve kaydedin. Bu UDF 'ler **sorgu Düzenleyicisi** ile kullanılabilir.
 
 ![Apache Hive görünüm UDF sekmesi görüntüleme](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-**Sorgu düzenleyicisinin**alt kısmında bir **udf Ekle** düğmesi görünür. Bu giriş, Hive görünümünde tanımlanan UDF 'ler için açılan bir liste görüntüler. UDF 'nin seçilmesi, UDF 'yi etkinleştirmek için sorgulamanızı HiveQL deyimleri ekler.
+**Sorgu düzenleyicisinin** alt kısmında bir **udf Ekle** düğmesi görünür. Bu giriş, Hive görünümünde tanımlanan UDF 'ler için açılan bir liste görüntüler. UDF 'nin seçilmesi, UDF 'yi etkinleştirmek için sorgulamanızı HiveQL deyimleri ekler.
 
 Örneğin, aşağıdaki özelliklerle bir UDF tanımladıysanız:
 
@@ -141,7 +141,7 @@ Hive görünümünün en üstündeki **udf** sekmesini kullanarak bir UDF kümes
 
 * UDF sınıf adı: com. myudfs. başar
 
-**Udf 'Leri Ekle** düğmesinin kullanılması, söz konusu kaynak için tanımlanan her UDF için başka bir açılan liste ile **myudfs**adlı bir giriş görüntüler. Bu durumda, **myawesomeudf**. Bu girdiyi seçtiğinizde sorgunun başına aşağıdakiler eklenir:
+**Udf 'Leri Ekle** düğmesinin kullanılması, söz konusu kaynak için tanımlanan her UDF için başka bir açılan liste ile **myudfs** adlı bir giriş görüntüler. Bu durumda, **myawesomeudf**. Bu girdiyi seçtiğinizde sorgunun başına aşağıdakiler eklenir:
 
 ```hiveql
 add jar /myudfs.jar;

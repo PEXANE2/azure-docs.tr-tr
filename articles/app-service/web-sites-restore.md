@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87084866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999408"
 ---
 # <a name="restore-an-app-in-azure"></a>Uygulamanızı Azure’a geri yükleme
 Bu makalede, daha önce yedeklediğiniz [Azure App Service](../app-service/overview.md) bir uygulamayı nasıl geri yükleyeceğiniz gösterilmektedir (bkz. [Azure 'da uygulamanızı yedekleme](manage-backup.md)). Uygulamanızı bağlı veritabanları ile önceki bir duruma geri yükleyebilir veya orijinal uygulamanızın yedeklemelerinden birini temel alan yeni bir uygulama oluşturabilirsiniz. Azure App Service yedekleme ve geri yükleme için aşağıdaki veritabanlarını destekler:
@@ -34,7 +34,7 @@ Yedeklerden geri yükleme, **Standart** ve **Premium** katmanda çalışan uygul
     **Uygulama yedekleme** seçeneği, geçerli uygulamanın tüm mevcut yedeklemelerini gösterir ve kolayca bir seçim yapabilirsiniz.
     **Depolama** seçeneği, mevcut herhangi bir Azure depolama hesabı ve aboneliğinizdeki kapsayıcıdan herhangi BIR yedek ZIP dosyasını seçmenizi sağlar.
     Başka bir uygulamanın yedeklemesini geri yüklemeye çalışıyorsanız, **depolama** seçeneğini kullanın.
-3. Ardından, **geri yükleme hedefinde**uygulama geri yükleme hedefini belirtin.
+3. Ardından, **geri yükleme hedefinde** uygulama geri yükleme hedefini belirtin.
    
     ![Uygulama geri yüklemesi için hedefin nerede belirtildiğinin gösterildiği ekran görüntüsü.](./media/web-sites-restore/022ChooseDestination1.png)
    
@@ -50,7 +50,7 @@ Yedeklerden geri yükleme, **Standart** ve **Premium** katmanda çalışan uygul
    
     Aynı kaynak grubundaki başka bir uygulamaya uygulama yedeklemesini geri yüklemek için **var olan uygulamayı** seçebilirsiniz. Bu seçeneği kullanmadan önce, kaynak grubunuzda zaten uygulama yedeklemesiyle tanımlanmış olan yansıtma veritabanı yapılandırması ile başka bir uygulama oluşturmuş olmanız gerekir. İçeriğinizi uygulamasına geri yüklemek için **Yeni** bir uygulama da oluşturabilirsiniz.
 
-4. **Tamam**'a tıklayın.
+4. **Tamam** düğmesine tıklayın.
 
 <a name="StorageAccount"></a>
 

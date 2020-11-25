@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082758"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000972"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Ekip veri bilimi rol ve görevlerini Işleme
 
@@ -65,7 +65,7 @@ Grup Yöneticisi veya belirlenen bir TDSP Sistem Yöneticisi, TDSP 'yi benimseme
 - Azure DevOps grup projesinde bir **proje şablonu deposu** oluşturur ve Microsoft TDSP ekibi tarafından geliştirilen proje şablonu deposundan bu depoyu ekler. Microsoft TDSP proje şablonu deposu şunları sağlar:
   - Veri, kod ve belge dizinleri dahil **standartlaştırılmış bir dizin yapısı**.
   - Verimli bir veri bilimi işlemine kılavuzluk eden **standartlaştırılmış bir belge şablonları** kümesi.
-- Bir **yardımcı program deposu**oluşturur ve bunu Microsoft TDSP ekibi tarafından geliştirilen yardımcı depodan üretir. Microsoft tarafından sağlanan TDSP yardımcı programı deposu, veri bilimclarının çalışmasını daha verimli hale getirmek için bir dizi kullanışlı yardımcı program sağlar. Microsoft yardımcı programı deposu etkileşimli veri araştırması, analiz, raporlama ve temel modelleme ve raporlama için yardımcı programları içerir.
+- Bir **yardımcı program deposu** oluşturur ve bunu Microsoft TDSP ekibi tarafından geliştirilen yardımcı depodan üretir. Microsoft tarafından sağlanan TDSP yardımcı programı deposu, veri bilimclarının çalışmasını daha verimli hale getirmek için bir dizi kullanışlı yardımcı program sağlar. Microsoft yardımcı programı deposu etkileşimli veri araştırması, analiz, raporlama ve temel modelleme ve raporlama için yardımcı programları içerir.
 - Kuruluş hesabı için **güvenlik denetimi ilkesini** ayarlar.
 
 Ayrıntılı yönergeler için bkz. [veri bilimi ekibi Için Grup Yöneticisi görevleri](group-manager-tasks.md).
@@ -76,7 +76,7 @@ Takım lideri veya belirlenen bir proje yöneticisi, TDSP 'yi benimsemek için a
 
 - Grubun Azure DevOps kuruluşunda bir takım **projesi** oluşturur.
 - Projede **proje şablonu deposunu** oluşturur ve Grup Yöneticisi veya temsilci tarafından ayarlanan grup projesi şablon deposundan bu depoyu oluşturur.
-- **Ekip yardımcı programını**oluşturur, Grup yardımcı programı deposundan bu depoyu oluşturur ve depoya ekibe özel yardımcı programlar ekler.
+- **Ekip yardımcı programını** oluşturur, Grup yardımcı programı deposundan bu depoyu oluşturur ve depoya ekibe özel yardımcı programlar ekler.
 - İsteğe bağlı olarak, takıma yönelik faydalı veri varlıklarını depolamak için [Azure dosya depolama](https://azure.microsoft.com/services/storage/files/) oluşturur. Diğer takım üyeleri, bu paylaşılan bulut dosya deposunu analiz masaüstlerinde bağlayabilir.
 - İsteğe bağlı olarak, Azure dosya depolama alanını ekibin **Dsvm** 'sine bağlar ve buna ekip veri varlıkları ekler.
 - Takım üyeleri ekleyerek ve izinlerini yapılandırarak **güvenlik denetimini** ayarlar.

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895214"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999799"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Öğretici: ekran adımlarıyla Azure Active Directory tümleştirme
 
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı, ScreenSteps ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **ekran adımları** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **ekran adımları** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -124,15 +124,15 @@ Azure AD çoklu oturum açmayı, ScreenSteps ile yapılandırmak için aşağıd
 
 1. Farklı bir Web tarayıcısı penceresinde, ekran adımları şirket sitenizde yönetici olarak oturum açın.
 
-1. **Hesap ayarları** ' na tıklayın.
+1. **Hesap ayarları**' na tıklayın.
 
     ![Hesap yönetimi](./media/screensteps-tutorial/ic778523.png "Hesap yönetimi")
 
-1. **Çoklu oturum açma** ' ya tıklayın.
+1. **Çoklu oturum açma**' ya tıklayın.
 
     !["Çoklu oturum açma" seçili gösteren ekran görüntüsü.](./media/screensteps-tutorial/ic778524.png "Uzaktan kimlik doğrulaması")
 
-1. **Çoklu oturum açma uç noktası oluştur** ' a tıklayın.
+1. **Çoklu oturum açma uç noktası oluştur**' a tıklayın.
 
     ![Uzaktan kimlik doğrulaması](./media/screensteps-tutorial/ic778525.png "Uzaktan kimlik doğrulaması")
 
@@ -142,9 +142,9 @@ Azure AD çoklu oturum açmayı, ScreenSteps ile yapılandırmak için aşağıd
 
     a. **Title** metin kutusuna bir başlık yazın.
 
-    b. **Mod** listesinden **SAML** ' yi seçin.
+    b. **Mod** listesinden **SAML**' yi seçin.
 
-    c. **Oluştur** 'a tıklayın.
+    c. **Oluştur**'a tıklayın.
 
 1. Yeni uç noktayı **düzenleyin** .
 
@@ -154,7 +154,7 @@ Azure AD çoklu oturum açmayı, ScreenSteps ile yapılandırmak için aşağıd
 
     ![Uzaktan kimlik doğrulama uç noktası](./media/screensteps-tutorial/ic778527.png "Uzaktan kimlik doğrulama uç noktası")
 
-    a. **Yenı SAML sertifika dosyasını karşıya yükle** ' ye tıklayın ve ardından Azure Portal ' den indirdiğiniz sertifikayı karşıya yükleyin.
+    a. **Yenı SAML sertifika dosyasını karşıya yükle**' ye tıklayın ve ardından Azure Portal ' den indirdiğiniz sertifikayı karşıya yükleyin.
 
     b. Azure portal **Uzaktan oturum açma URL** metin kutusuna kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -162,7 +162,7 @@ Azure AD çoklu oturum açmayı, ScreenSteps ile yapılandırmak için aşağıd
 
     d. Kullanıcıları sağlandıklarında atamak için bir **Grup** seçin.
 
-    e. **Güncelleştir** ’e tıklayın.
+    e. **Güncelleştir**’e tıklayın.
 
     f. **SAML TÜKETICISI URL** 'sini panoya kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümündeki **oturum açma URL 'si** metin kutusuna yapıştırın.
 
@@ -174,7 +174,7 @@ Azure AD çoklu oturum açmayı, ScreenSteps ile yapılandırmak için aşağıd
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -193,21 +193,21 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur** 'a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, ScreenSteps 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin, sonra da **ekran adımları** ' nı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra da **ekran adımları**' nı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **ekran adımları** ' nı seçin.
+2. Uygulamalar listesinde, **ekran adımları**' nı seçin.
 
     ![Uygulamalar listesinde ScreenSteps bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 

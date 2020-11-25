@@ -4,11 +4,11 @@ description: Azure Işlevlerinde Openapı desteğine genel bakış
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000223"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Işlevlerinde Openapı 2,0 meta veri desteği (Önizleme)
 Azure Işlevlerinde Openapı 2,0 (eski adıyla Swagger) meta veri desteği, bir işlev uygulamasının içine Openapı 2,0 tanımını yazmak için kullanabileceğiniz bir önizleme özelliğidir. Ardından, işlev uygulamasını kullanarak bu dosyayı barındırabilirsiniz.
@@ -65,7 +65,7 @@ Aşağıdaki tablo, oluşturulan Swagger iskelet ile eşlendiği için function.
  Kaynak denetiminden API tanımınızı değiştirmek için kaynak denetimini etkinleştirmeden önce portalda API tanımı barındırmayı etkinleştirmeniz gerekir. Aşağıdaki yönergeleri izleyin:
 
 1. İşlev uygulaması ayarlarınızda **API tanımına (Önizleme)** gidin.
-   1. **API tanımı kaynağını** **işlev**olarak ayarlayın.
+   1. **API tanımı kaynağını** **işlev** olarak ayarlayın.
    1. **API tanımı şablonu oluştur** ' a tıklayın ve ardından daha sonra değiştirmek üzere bir şablon tanımı oluşturmak için **kaydedin** .
    1. API tanımı URL 'nizi ve anahtarınızı aklınızda edin.
 1. [Sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlayın](./functions-continuous-deployment.md#requirements-for-continuous-deployment).

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80874220"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001213"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker kapsayıcılarını yapılandırma 
 
@@ -28,14 +28,14 @@ Bu kapsayıcı aşağıdaki yapılandırma ayarlarına sahiptir:
 
 |Gerekli|Ayar|Amaç|
 |--|--|--|
-|Evet|[ApiKey](#apikey-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
-|Hayır|[ApplicationInsights](#applicationinsights-setting)|, Kapsayıcınıza [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetri desteği eklemenize olanak tanır.|
-|Evet|[Faturalandırma](#billing-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
-|Evet|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
-|Hayır|[Fluentd](#fluentd-settings)|Günlük ve isteğe bağlı olarak ölçüm verilerini Floentd sunucusuna yazın.|
-|Hayır|[Http proxy 'Si](#http-proxy-credentials-settings)|Giden istekler oluşturmak için bir HTTP proxy 'si yapılandırın.|
-|Hayır|[Günlüğe kaydetme](#logging-settings)|, Kapsayıcınız için ASP.NET Core günlük desteği sağlar. |
-|Evet|[Kullan](#mount-settings)|Ana bilgisayardan kapsayıcıya ve kapsayıcıdan, ana bilgisayara geri veri okuma ve yazma.|
+|Yes|[ApiKey](#apikey-setting)|Faturalandırma bilgilerini izlemek için kullanılır.|
+|No|[ApplicationInsights](#applicationinsights-setting)|, Kapsayıcınıza [Azure Application Insights](/azure/application-insights) telemetri desteği eklemenize olanak tanır.|
+|Yes|[Faturalandırma](#billing-setting)|Azure üzerindeki hizmet kaynağının uç nokta URI 'sini belirtir.|
+|Yes|[Sözleşmesi](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
+|No|[Fluentd](#fluentd-settings)|Günlük ve isteğe bağlı olarak ölçüm verilerini Floentd sunucusuna yazın.|
+|No|[Http proxy 'Si](#http-proxy-credentials-settings)|Giden istekler oluşturmak için bir HTTP proxy 'si yapılandırın.|
+|No|[Günlüğe kaydetme](#logging-settings)|, Kapsayıcınız için ASP.NET Core günlük desteği sağlar. |
+|Yes|[Kullan](#mount-settings)|Ana bilgisayardan kapsayıcıya ve kapsayıcıdan, ana bilgisayara geri veri okuma ve yazma.|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting) Ve [`Eula`](#eula-setting) ayarları birlikte kullanılır ve üçü için geçerli değerler sağlamanız gerekir; Aksi takdirde Kapsayıcınız başlatılmaz. Bir kapsayıcı oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalandırma](luis-container-howto.md#billing).
@@ -96,8 +96,8 @@ Aşağıdaki tabloda desteklenen ayarlar açıklanmaktadır.
 
 |Gerekli| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|Evet| `Input` | Dize | Giriş bağlama hedefi. Varsayılan değer: `/input`. Bu, LUSıS paket dosyalarının konumudur. <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Hayır| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer: `/output`. Bu, günlüklerin konumudur. Bu, LUSıS sorgu günlüklerini ve kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Evet| `Input` | Dize | Giriş bağlama hedefi. `/input` varsayılan değerdir. Bu, LUSıS paket dosyalarının konumudur. <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Hayır| `Output` | Dize | Çıkış bağlama hedefi. `/output` varsayılan değerdir. Bu, günlüklerin konumudur. Bu, LUSıS sorgu günlüklerini ve kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Örnek Docker Run komutları
 

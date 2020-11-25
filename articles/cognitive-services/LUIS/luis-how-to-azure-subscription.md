@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07a274bd4ac227b6260f7891b24dad0eacdfb4f7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561531"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999918"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -29,8 +29,8 @@ LUSıS üç tür Azure kaynağına ve Azure olmayan bir kaynağa izin verir:
 
 |Kaynak|Amaç|Bilişsel hizmet `kind`|Bilişsel hizmet `type`|
 |--|--|--|--|
-|Kaynak yazma|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. LUSıS uygulamalarını programlı bir şekilde veya LUSıS portalından [yazmayı düşünüyorsanız BIR lusıs yazma kaynağı oluşturun](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal) . Azure yazma kaynaklarınızı uygulamanıza bağlayabilmeniz için [lusıs hesabınızı geçirmeniz](luis-migration-authoring.md#what-is-migration) gerekir. Kişileri [katkıda bulunan rolü](#contributions-from-other-authors)atayarak yazma kaynağına yönelik izinleri denetleyebilirsiniz. <br><br> LUSıS yazma kaynağı için bir katman kullanılabilir:<br> <ul> <li>Ücretsiz **F0 Authoring Resource** , size aylık 1.000.000 ücretsiz yazma işlemi ve 1.000 ücretsiz test tahmin uç noktası istekleri sağlar. |`LUIS.Authoring`|`Cognitive Services`|
-|Tahmin kaynağı| LUSıS uygulamanızı yayımladıktan sonra, tahmin uç noktası isteklerini sorgulamak için tahmin kaynağını/anahtarını kullanın. İstemci uygulamanızın, yazma veya başlangıç kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin isteklerini yapmadan önce bir LUSıS tahmin kaynağı oluşturun. <br><br> Tahmin kaynağı için iki katman mevcuttur:<br><ul> <li> **Ücretsiz F0 tahmin kaynağı** , aylık 10.000 ücretsiz tahmin uç noktası isteği sağlar.<br> <li> Ücretli katman olan **Standart S0 tahmin kaynağı**. [Fiyatlandırma hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Kaynak yazma|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. LUSıS uygulamalarını programlı bir şekilde veya LUSıS portalından [yazmayı düşünüyorsanız BIR lusıs yazma kaynağı oluşturun](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal) . Azure yazma kaynaklarınızı uygulamanıza bağlayabilmeniz için [lusıs hesabınızı geçirmeniz](luis-migration-authoring.md#what-is-migration) gerekir. Kişileri [katkıda bulunan rolü](#contributions-from-other-authors)atayarak yazma kaynağına yönelik izinleri denetleyebilirsiniz. <br><br> LUSıS yazma kaynağı için bir katman kullanılabilir:<br> <ul> <li>Ücretsiz **F0 Authoring Resource**, size aylık 1.000.000 ücretsiz yazma işlemi ve 1.000 ücretsiz test tahmin uç noktası istekleri sağlar. |`LUIS.Authoring`|`Cognitive Services`|
+|Tahmin kaynağı| LUSıS uygulamanızı yayımladıktan sonra, tahmin uç noktası isteklerini sorgulamak için tahmin kaynağını/anahtarını kullanın. İstemci uygulamanızın, yazma veya başlangıç kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin isteklerini yapmadan önce bir LUSıS tahmin kaynağı oluşturun. <br><br> Tahmin kaynağı için iki katman mevcuttur:<br><ul> <li> **Ücretsiz F0 tahmin kaynağı**, aylık 10.000 ücretsiz tahmin uç noktası isteği sağlar.<br> <li> Ücretli katman olan **Standart S0 tahmin kaynağı**. [Fiyatlandırma hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |Başlangıç/deneme kaynağı|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. Bu kaynak varsayılan olarak, LUO 'da ilk kez oturum açtığınızda başlangıç kaynağı seçeneğini belirlerseniz oluşturulur. Başlangıç anahtarı sonunda kullanım dışı olacaktır. Tüm LUO kullanıcılarının [hesaplarını geçirilmesi](luis-migration-authoring.md#what-is-migration) ve lusıs uygulamalarını bir yazma kaynağına bağlantısı gerekir. Yazma kaynağının aksine, bu kaynak size Azure rol tabanlı erişim denetimi için izinler vermez. <br><br> Yazma kaynağı gibi, başlangıç kaynağı size 1.000.000 ücretsiz yazma işlemi ve 1.000 ücretsiz test tahmin uç noktası istekleri sağlar.|-|Azure kaynağı değil.|
 |[Bilişsel hizmetler çoklu hizmet kaynak anahtarı](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUVE diğer desteklenen bilişsel hizmetler ile paylaşılan sorgu tahmini uç noktası istekleri.|`CognitiveServices`|`Cognitive Services`|
 
@@ -176,7 +176,7 @@ Bir sunucudan sunucuya bir ortama çağırarak, LUSıS tahmin çalışma zamanı
 
 ### <a name="create-resources-in-the-azure-cli"></a>Azure CLı 'de kaynak oluşturma
 
-Her kaynağı ayrı ayrı oluşturmak için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi kullanın.
+Her kaynağı ayrı ayrı oluşturmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi kullanın.
 
 Kaynak `kind` :
 
@@ -213,8 +213,8 @@ Kaynak `kind` :
 Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kaynağı atayabilirsiniz. Aşağıdaki yordam, tüm uygulamaları tek bir yazma kaynağına atar.
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
-1. Sağ üst köşede kullanıcı hesabınızı seçin ve ardından **Ayarlar** ' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve ardından var olan bir yazma kaynağı ' nı seçin. **Kaydet** ’i seçin.
+1. Sağ üst köşede kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle**' yi seçin ve ardından var olan bir yazma kaynağı ' nı seçin. **Kaydet**'i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 
@@ -229,7 +229,7 @@ Bu yordamı, bir yazma veya tahmin kaynağı oluşturmak veya bir uygulamaya ata
     ![Azure kaynakları sayfasını gösteren ekran görüntüsü.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
 1. **Tahmin kaynağı** veya **yazma kaynağı** sekmesinde, **tahmin kaynağı Ekle** veya **yazma kaynağı Ekle** düğmesini seçin.
-1. Doğru kaynağı bulmak için formundaki alanları kullanın ve ardından **Kaydet** ' i seçin.
+1. Doğru kaynağı bulmak için formundaki alanları kullanın ve ardından **Kaydet**' i seçin.
 1. Mevcut bir kaynağınız yoksa pencerenin alt kısmında **Yeni BIR Luo kaynağı oluştur** ' u seçerek bir tane oluşturabilirsiniz.
 
 

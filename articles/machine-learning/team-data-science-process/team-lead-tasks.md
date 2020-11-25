@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321211"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000037"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Takım veri bilimi süreç ekibi üzerinde ekip liderine yönelik görevler
 
@@ -85,13 +85,13 @@ Herhangi bir durumda, takımın, takım üyelerinin hangi şablon ve yardımcı 
 
 Takımınız için ayrı bir proje oluşturmak için:
 
-1. Web tarayıcınızda, sunucunuzun *https: \/ / \<server name> / \<organization name>* URL 'sindeki Azure DevOps kuruluş giriş sayfasına gidin ve **Yeni proje** ' yi seçin. 
+1. Web tarayıcınızda, sunucunuzun *https: \/ / \<server name> / \<organization name>* URL 'sindeki Azure DevOps kuruluş giriş sayfasına gidin ve **Yeni proje**' yi seçin. 
    
    ![Yeni proje seçin](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. **Proje oluştur** iletişim kutusunda, **Proje adı** ' nın altındaki *myTeam* adını girin ve **Gelişmiş** ' i seçin. 
+1. **Proje oluştur** iletişim kutusunda, **Proje adı**' nın altındaki *myTeam* adını girin ve **Gelişmiş**' i seçin. 
    
-1. **Sürüm denetimi** altında **Git** ' i seçin ve **iş öğesi işlemi** altında **çevik** ' i seçin. Ardından **Oluştur** ’u seçin. 
+1. **Sürüm denetimi** altında **Git**' i seçin ve **iş öğesi işlemi** altında **çevik**' i seçin. Ardından **Oluştur**’u seçin. 
    
    ![Proje oluşturma](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
@@ -99,18 +99,18 @@ Takım projesi **Özet** sayfası açılır ve sayfa URL 'si *https: \/ / \<serv
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>MyTeam varsayılan deposunu Ekipçonelikler olarak yeniden adlandırın
 
-1. **MyTeam** Project **Summary** sayfasında, **hangi hizmete başlamak istersiniz?** altında, **Depo** ' yı seçin. 
+1. **MyTeam** Project **Summary** sayfasında, **hangi hizmete başlamak istersiniz?** altında, **Depo**' yı seçin. 
    
    ![Depoları seçin](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
    
 1. **MyTeam** Deposu sayfasında, sayfanın üst kısmındaki **myTeam** deposunu seçin ve açılan listeden **depoları Yönet** ' i seçin. 
    
    ![Depoları Yönet ' i seçin](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
-1. **Proje ayarları** sayfasında, **myTeam** deposunun yanındaki **...** öğesini seçin ve ardından **Depoyu yeniden adlandır** ' ı seçin. 
+1. **Proje ayarları** sayfasında, **myTeam** deposunun yanındaki **...** öğesini seçin ve ardından **Depoyu yeniden adlandır**' ı seçin. 
    
    ![Depoyu yeniden adlandır ' ı seçin](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. **MyTeam Repository 'Yi yeniden adlandır** açılır penceresinde *ekipçlikleri* girin ve **Yeniden Adlandır** ' ı seçin. 
+1. **MyTeam Repository 'Yi yeniden adlandır** açılır penceresinde *ekipçlikleri* girin ve **Yeniden Adlandır**' ı seçin. 
 
 ### <a name="create-the-teamtemplate-repository"></a>TeamTemplate deposunu oluşturma
 
@@ -120,7 +120,7 @@ Takım projesi **Özet** sayfası açılır ve sayfa URL 'si *https: \/ / \<serv
    
    Ya da, **mytakım** projesi **Özeti** sayfasının sol gezinti menüsünden depo ' yı seçin, sayfanın üst kısmındaki bir **depoyu seçin ve** açılan menüden **yeni depo** ' ı seçin.
    
-1. **Yeni depo oluştur** Iletişim kutusunda **tür** altında **Git** ' in seçildiğinden emin olun. **Depo adı** altında *teamtemplate* ' i girip **Oluştur** ' u seçin.
+1. **Yeni depo oluştur** Iletişim kutusunda **tür** altında **Git** ' in seçildiğinden emin olun. **Depo adı** altında *teamtemplate* ' i girip **Oluştur**' u seçin.
    
    ![Depo oluştur](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
    
@@ -136,19 +136,19 @@ Ekip depolarınızı grup yöneticiniz tarafından ayarlanan ortak depoların i�
    
    Varsayılan **Teamtemplate** deposu açılır. 
    
-1. **Teamtemplate boş** sayfasında **içeri aktar** ' ı seçin. 
+1. **Teamtemplate boş** sayfasında **içeri aktar**' ı seçin. 
    
    ![Içeri aktar 'ı seçin](./media/team-lead-tasks/import-repo.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü** olarak **Git** ' i seçin ve **kopya URL** 'si altında grup ortak şablon deponuzun URL 'sini girin. URL *: https: \/ / \<server name> / \<organization name> /_Git/ \<repository name>*. Örneğin: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_Git/GroupProjectTemplate*. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü** olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL *: https: \/ / \<server name> / \<organization name> /_Git/ \<repository name>*. Örneğin: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_Git/GroupProjectTemplate*. 
    
-1. **İçeri aktar** 'ı seçin. Grup şablonu deponuzun içeriği takım şablonu deponuza aktarılır. 
+1. **İçeri aktar**'ı seçin. Grup şablonu deponuzun içeriği takım şablonu deponuza aktarılır. 
    
    ![Grup ortak şablon deposunu içeri aktar](./media/team-lead-tasks/import-repo-2.png)
    
 1. Projenizin **depoları** sayfasının üst kısmında, açılır ve **ekip** oluşturma deposunu seçin.
    
-1. Grup ortak yardımcı programları deponuzun (örneğin, *Grouputilities* ) içeriğini **ekipte** izin deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
+1. Grup ortak yardımcı programları deponuzun (örneğin, *Grouputilities*) içeriğini **ekipte** izin deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
    
 İki takım depolarınızdan her biri artık ilgili grup ortak deposundaki dosyaları içerir. 
 
@@ -158,25 +158,25 @@ Takımınızın belirli ihtiyaçlarını karşılamak üzere ekip depolarınız�
 
 Doğrudan Azure DevOps 'da dosya veya klasörleri değiştirmek, karşıya yüklemek veya oluşturmak için:
 
-1. **MyTeam** Project **Summary** sayfasında, **Repos** ' u seçin. 
+1. **MyTeam** Project **Summary** sayfasında, **Repos**' u seçin. 
    
 1. Sayfanın üst kısmında, özelleştirmek istediğiniz depoyu seçin.
 
 1. Depo dizin yapısında, değiştirmek istediğiniz klasöre veya dosyaya gidin. 
    
-   - Yeni klasör veya dosya oluşturmak için **Yeni** ' nin yanındaki oku seçin. 
+   - Yeni klasör veya dosya oluşturmak için **Yeni**' nin yanındaki oku seçin. 
      
      ![Yeni dosya oluştur](./media/team-lead-tasks/new-file.png)
      
-   - Dosyaları karşıya yüklemek için, **karşıya dosya yükle** ' yi seçin. 
+   - Dosyaları karşıya yüklemek için, **karşıya dosya yükle**' yi seçin. 
      
      ![Dosyaları karşıya yükleme](./media/team-lead-tasks/upload-files.png)
      
-   - Varolan dosyaları düzenlemek için dosyasına gidin ve ardından **Düzenle** ' yi seçin. 
+   - Varolan dosyaları düzenlemek için dosyasına gidin ve ardından **Düzenle**' yi seçin. 
      
      ![Bir dosyayı düzenleme](./media/team-lead-tasks/edit-file.png)
      
-1. Dosya ekledikten veya düzenledikten sonra, **Yürüt** ' ü seçin.
+1. Dosya ekledikten veya düzenledikten sonra, **Yürüt**' ü seçin.
    
    ![Değişiklikleri Kaydet](./media/team-lead-tasks/commit.png)
 
@@ -184,7 +184,7 @@ Yerel makinenizdeki veya DSVM 'nizin depolarıyla çalışmak için, önce depol
 
 Depoları kopyalamak için:
 
-1. **MyTeam** Project **Summary** sayfasında, **Repos** ' ı seçin ve sayfanın en üstünde, kopyalamak istediğiniz depoyu seçin.
+1. **MyTeam** Project **Summary** sayfasında, **Repos**' ı seçin ve sayfanın en üstünde, kopyalamak istediğiniz depoyu seçin.
    
 1. Depo sayfasında sağ üstteki **kopya** ' ı seçin.
    
@@ -240,28 +240,28 @@ Takıma üye eklemek için:
 
 1. Azure DevOps 'da, **myTeam** Project giriş sayfasından sol gezinden **proje ayarları** ' nı seçin. 
    
-1. **Proje ayarları** sol gezinti listesinden **takımlar** ' ı seçin, ardından **takımlar** sayfasında, **myTeam ekibini** seçin. 
+1. **Proje ayarları** sol gezinti listesinden **takımlar**' ı seçin, ardından **takımlar** sayfasında, **myTeam ekibini** seçin. 
    
    ![Takımları yapılandırma](./media/team-lead-tasks/teams.png)
    
-1. **Takım profili** sayfasında **Ekle** ' yi seçin.
+1. **Takım profili** sayfasında **Ekle**' yi seçin.
    
    ![MyTeam ekibine Ekle](./media/team-lead-tasks/add-to-team.png)
    
-1. **Kullanıcı ve Grup Ekle** iletişim kutusunda, gruba eklenecek üyeleri arayıp seçin ve ardından **Değişiklikleri Kaydet** ' i seçin. 
+1. **Kullanıcı ve Grup Ekle** iletişim kutusunda, gruba eklenecek üyeleri arayıp seçin ve ardından **Değişiklikleri Kaydet**' i seçin. 
    
    ![Kullanıcı ve Grup Ekle](./media/team-lead-tasks/add-users.png)
    
 
 Takım üyeleri için izinleri yapılandırmak için:
 
-1. **Proje ayarları** sol gezinti listesinden **izinler** ' i seçin. 
+1. **Proje ayarları** sol gezinti listesinden **izinler**' i seçin. 
    
 1. **İzinler** sayfasında, üye eklemek istediğiniz grubu seçin. 
    
-1. Bu grubun sayfasında, **Üyeler** ' i seçin ve ardından **Ekle** ' yi seçin. 
+1. Bu grubun sayfasında, **Üyeler**' i seçin ve ardından **Ekle**' yi seçin. 
    
-1. **Üyeleri davet et** açılan penceresinde, gruba eklenecek üyeleri arayıp seçin ve ardından **Kaydet** ' i seçin. 
+1. **Üyeleri davet et** açılan penceresinde, gruba eklenecek üyeleri arayıp seçin ve ardından **Kaydet**' i seçin. 
    
    ![Üyelere izin verme](./media/team-lead-tasks/grant-permissions.png)
 

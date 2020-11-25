@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566274"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96000139"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
@@ -95,7 +95,7 @@ Bu hatayı onarmak için [fiyatlandırma katmanınızı](luis-how-to-azure-subsc
 
 Bu hata için çözümler şunlardır:
 
-* [Azure Portal](https://portal.azure.com), Language Understanding kaynağınızın **kaynak yönetimi-> fiyatlandırma katmanında** , fiyatlandırma katmanınızı daha yüksek bir TPS katmanına değiştirin. Kaynağınız Language Understanding uygulamanıza zaten atanmışsa Language Understanding portalında herhangi bir şey yapmanız gerekmez.
+* [Azure Portal](https://portal.azure.com), Language Understanding kaynağınızın **kaynak yönetimi-> fiyatlandırma katmanında**, fiyatlandırma katmanınızı daha yüksek bir TPS katmanına değiştirin. Kaynağınız Language Understanding uygulamanıza zaten atanmışsa Language Understanding portalında herhangi bir şey yapmanız gerekmez.
 *  Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
 
 ### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Bir HTTP 429 hata durum kodu aldım. Nasıl düzeltebilirim?
@@ -108,7 +108,7 @@ Bu durum kodu, işlemleriniz fiyatlandırma katmanınızı aştığında döndü
 
 * En yüksek katmanda değilseniz [fiyatlandırma katmanınızı artırabilirsiniz](luis-how-to-azure-subscription.md#change-the-pricing-tier).
 * Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önde gelen yük dengeleyiciye daha fazla Language Understanding kaynağı ekleyin. Kubernetes veya Docker Compose ile [Language Understanding kapsayıcısı](luis-container-howto.md) bu konuda yardımcı olabilir.
-* Bu durum kodunu aldığınızda, istemci uygulama isteklerinizi sizin uyguladığınız bir [yeniden deneme ilkesiyle](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) geçit olarak kullanabilirsiniz.
+* Bu durum kodunu aldığınızda, istemci uygulama isteklerinizi sizin uyguladığınız bir [yeniden deneme ilkesiyle](/azure/architecture/best-practices/transient-faults#general-guidelines) geçit olarak kullanabilirsiniz.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Uç nokta sorgum beklenmeyen sonuçlar döndürdü. Ne yapmalıyım?
 
@@ -224,7 +224,7 @@ Yazma [anahtarı deneyimine](luis-migration-authoring.md)geçtikten sonra, yazma
 ## <a name="app-management"></a>Uygulama yönetimi
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Kullanıcı Nasıl yaparım? bir günlüğü indirmek mi istiyorsunuz?
-Varsayılan olarak, LUSıS uygulamanız kullanıcılardan gelen günlükleri günlüğe kaydeder. Kullanıcıların LUSıS uygulamanıza gönderdikleri bir günlük günlüğünü indirmek için **uygulamalarım** ' a gidin ve uygulamayı seçin. Bağlam araç çubuğunda, **uç nokta günlüklerini dışarı aktar** ' ı seçin. Günlük, virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
+Varsayılan olarak, LUSıS uygulamanız kullanıcılardan gelen günlükleri günlüğe kaydeder. Kullanıcıların LUSıS uygulamanıza gönderdikleri bir günlük günlüğünü indirmek için **uygulamalarım**' a gidin ve uygulamayı seçin. Bağlam araç çubuğunda, **uç nokta günlüklerini dışarı aktar**' ı seçin. Günlük, virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Utterslar günlüğünü nasıl devre dışı bırakabilirim?
 `log=false`İstemci UYGULAMANıZıN LUL 'yi sorgulamak için kullandığı uç nokta URL 'si ayarını yaparak Kullanıcı çeşidlerini günlüğe kaydetmeyi devre dışı bırakabilirsiniz. Ancak, günlüğü kapatmak, LUL uygulamanızın, [etkin öğrenmeyi](luis-concept-review-endpoint-utterances.md#what-is-active-learning)temel alan, bir yandan gelen performansı ve performansı iyileştirebilme yeteneğini devre dışı bırakır. `log=false`Veri gizliliği sorunları nedeniyle ayarlarsanız, bu kullanıcı aradıklarından bir KAYDıNı lusıs 'den indiremez veya uygulamanızı geliştirmek için bu söyleyenler kullanabilirsiniz.
@@ -274,11 +274,11 @@ Yazma/başlangıç anahtarınız yalnızca bir ay 1000 uç nokta sorgusuna izin 
 
 Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbeti Içindeki testin** dönüşse, `Sorry, my bot code is having an issue` günlüklerinizi kontrol edin:
 
-1. Azure portal, bot için, **bot yönetimi** bölümünde **Oluştur** ' u seçin.
+1. Azure portal, bot için, **bot yönetimi** bölümünde **Oluştur**' u seçin.
 1. Çevrimiçi kod düzenleyicisini açın.
 1. Üstteki, mavi gezinti çubuğunda, bot adını (sağdaki ikinci öğe) seçin.
-1. Sonuç açılan listesinde, **kudu konsolunu aç** ' ı seçin.
-1. **Günlük dosyaları** ' nı ve ardından **uygulama** ' yı seçin. Tüm günlük dosyalarını gözden geçirin. Uygulama klasöründe hatayı görmüyorsanız, **LogFiles** altındaki tüm günlük dosyalarını gözden geçirin.
+1. Sonuç açılan listesinde, **kudu konsolunu aç**' ı seçin.
+1. **Günlük dosyaları**' nı ve ardından **uygulama**' yı seçin. Tüm günlük dosyalarını gözden geçirin. Uygulama klasöründe hatayı görmüyorsanız, **LogFiles** altındaki tüm günlük dosyalarını gözden geçirin.
 1. C# gibi derlenmiş bir dil kullanıyorsanız projenizi yeniden oluşturmayı unutmayın.
 
 > [!Tip]
@@ -286,7 +286,7 @@ Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbeti Içindeki testin** 
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework ile yerel makinede hata ayıklama sırasında sorunu çözün.
 
-Bir bot 'ın yerel hata ayıklaması hakkında daha fazla bilgi edinmek için bkz. [bir bot hata ayıklama](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Bir bot 'ın yerel hata ayıklaması hakkında daha fazla bilgi edinmek için bkz. [bir bot hata ayıklama](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
 
 ## <a name="integrating-luis"></a>LUSıS 'yi tümleştirme
 
@@ -296,7 +296,7 @@ Bir LUSıS şablonu seçer ve şablon bölmesinde **Seç** düğmesini seçersen
 ![LUSıS şablonu Web uygulaması bot bölgesi](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>BOTıN bölgeleri, bot Framework konuşma primi destekler?
-[Konuşma primi](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) yalnızca orta (US) örneğindeki lusıs uygulamaları için desteklenir.
+[Konuşma primi](/bot-framework/bot-service-manage-speech-priming) yalnızca orta (US) örneğindeki lusıs uygulamaları için desteklenir.
 
 ## <a name="api-programming-strategies"></a>API programlama stratejileri
 
@@ -334,4 +334,4 @@ Videolar:
 
 LUO hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 * [LUSıS ile etiketlenmiş Stack Overflow soruları](https://stackoverflow.com/questions/tagged/luis)
-* [Microsoft Q&MSDN Language Understanding Intelligent Services (LUSıS) için soru sayfası](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [Microsoft Q&MSDN Language Understanding Intelligent Services (LUSıS) için soru sayfası](/answers/topics/azure-language-understanding.html)

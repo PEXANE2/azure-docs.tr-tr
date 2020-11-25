@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369956"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999238"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz etme
 Bu makalede, Hyper-V’den Azure’a dağıtım senaryosu için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporunda bulunan sayfalar ele alınmaktadır.
@@ -187,7 +187,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 * 1.025 GB ile 2.048 GB arası P40’tır.
 * 2.049 GB ile 4.095 GB arası P50’dir.
 
-Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet**olarak işaretler \* . Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
+Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet** olarak işaretler \* . Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
 
 **Depolama Türü**: Standart veya Premium.
 
@@ -346,7 +346,7 @@ Her birim için şirket içi depolama gereksinimleri önerisine uyduktan sonra, 
 ### <a name="network-utilization-details-for-each-batch"></a>Her toplu iş için ağ kullanım ayrıntıları 
 Her toplu iş tablosunda, toplu işin ağ kullanımının özeti sağlanır.
 
-**Toplu iş için kullanılabilir bant**genişliği: önceki toplu işin Delta çoğaltma bant genişliği dikkate alındıktan sonra toplu iş için kullanılabilir bant genişliği.
+**Toplu iş için kullanılabilir bant** genişliği: önceki toplu işin Delta çoğaltma bant genişliği dikkate alındıktan sonra toplu iş için kullanılabilir bant genişliği.
 
 **Toplu işin ilk çoğaltması için kullanılabilir yaklaşık bant genişliği**: Toplu işteki sanal makinelerin ilk çoğaltması için kullanılabilir bant genişliği. 
 

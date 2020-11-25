@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74931779"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001074"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory kopyalama etkinliğini kullanarak DB2 verilerini taşıyın
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -80,26 +80,26 @@ Aşağıdaki tabloda, bir DB2 bağlantılı hizmetine özgü JSON özellikleri l
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Bu özellik **OnPremisesDb2**olarak ayarlanmalıdır. |Evet |
-| **Server** |DB2 sunucusunun adı. |Evet |
-| **veritabanınızı** |DB2 veritabanının adı. |Evet |
-| **manızı** |DB2 veritabanındaki şemanın adı. Bu özellik büyük/küçük harfe duyarlıdır. |Hayır |
-| **authenticationType** |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
-| **nitelen** |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı hesabının adı. |Hayır |
-| **parola** |Kullanıcı hesabının parolası. |Hayır |
-| **gatewayName** |Data Factory hizmetinin şirket içi DB2 veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
+| **türüyle** |Bu özellik **OnPremisesDb2** olarak ayarlanmalıdır. |Yes |
+| **Server** |DB2 sunucusunun adı. |Yes |
+| **veritabanınızı** |DB2 veritabanının adı. |Yes |
+| **manızı** |DB2 veritabanındaki şemanın adı. Bu özellik büyük/küçük harfe duyarlıdır. |No |
+| **authenticationType** |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
+| **nitelen** |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı hesabının adı. |No |
+| **parola** |Kullanıcı hesabının parolası. |No |
+| **gatewayName** |Data Factory hizmetinin şirket içi DB2 veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Tüm veri kümesi türleri (Azure SQL, Azure Blob depolama, Azure Tablo depolama, vb.) için **Yapı**, **kullanılabilirlik**ve **ilke** gibi bölümler de benzerdir.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Tüm veri kümesi türleri (Azure SQL, Azure Blob depolama, Azure Tablo depolama, vb.) için **Yapı**, **kullanılabilirlik** ve **ilke** gibi bölümler de benzerdir.
 
-**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. DB2 veri kümesini içeren **Relationaltable**türünde bir veri kümesinin **typeproperties** bölümü aşağıdaki özelliğe sahiptir:
+**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. DB2 veri kümesini içeren **Relationaltable** türünde bir veri kümesinin **typeproperties** bölümü aşağıdaki özelliğe sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | **tableName** |DB2 veritabanı örneğindeki bağlı hizmetin başvurduğu tablonun adı. Bu özellik büyük/küçük harfe duyarlıdır. |Hayır ( **Relationalsource** türünde kopyalama etkinliğinin **sorgu** özelliği belirtilmişse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliği özellikleri
-Kopyalama etkinliklerini tanımlamaya yönelik bölümlerin ve özelliklerin bir listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. **Ad**, **Açıklama**, **giriş** tablosu, **Çıkış** tablosu ve **ilke**gibi kopyalama etkinliği özellikleri tüm etkinlik türleri için kullanılabilir. Etkinliğin **Typeproperties** bölümünde kullanılabilen özellikler her etkinlik türü için farklılık gösterir. Kopyalama etkinliği için özellikler veri kaynağı ve havuz türlerine göre değişir.
+Kopyalama etkinliklerini tanımlamaya yönelik bölümlerin ve özelliklerin bir listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. **Ad**, **Açıklama**, **giriş** tablosu, **Çıkış** tablosu ve **ilke** gibi kopyalama etkinliği özellikleri tüm etkinlik türleri için kullanılabilir. Etkinliğin **Typeproperties** bölümünde kullanılabilen özellikler her etkinlik türü için farklılık gösterir. Kopyalama etkinliği için özellikler veri kaynağı ve havuz türlerine göre değişir.
 
 Kopyalama etkinliği için, kaynak **Relationalsource** (DB2 dahil) türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
@@ -163,7 +163,7 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
 
 Örnek, DB2 içinde, zaman serisi verileri için "timestamp" etiketli bir sütun içeren "MyTable" adlı bir tablo oluşturduğunuzu varsayar.
 
-**External** özelliği "true" olarak ayarlanır. Bu ayar, bu veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Data Factory hizmetine bildirir. **Type** özelliğinin **relationaltable**olarak ayarlandığını unutmayın.
+**External** özelliği "true" olarak ayarlanır. Bu ayar, bu veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Data Factory hizmetine bildirir. **Type** özelliğinin **relationaltable** olarak ayarlandığını unutmayın.
 
 
 ```json
@@ -251,7 +251,7 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
 
 **Kopyalama etkinliği için işlem hattı**
 
-İşlem hattı, belirtilen giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış ve her saat çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. İşlem hattının JSON tanımında, **kaynak** türü **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu "Orders" tablosundan verileri seçer.
+İşlem hattı, belirtilen giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış ve her saat çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. İşlem hattının JSON tanımında, **kaynak** türü **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu "Orders" tablosundan verileri seçer.
 
 ```json
 {
@@ -312,7 +312,7 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | BigInt |Int64 |
 | Gerçek |Tek |
 | Çift |Çift |
-| Kayan |Çift |
+| Float |Çift |
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Sayısal |Ondalık |
@@ -338,7 +338,7 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 | BigInt |Int64 |
 | Gerçek |Tek |
 | Çift |Çift |
-| Kayan |Çift |
+| Float |Çift |
 | Ondalık |Ondalık |
 | DecimalFloat |Ondalık |
 | Sayısal |Ondalık |

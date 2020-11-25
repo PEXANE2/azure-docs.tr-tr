@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513051"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000938"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizi yönetmek için Web Kullanıcı arabirimini kullanma
 ![işlem akışını ayarla](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -77,7 +77,7 @@ Bir günlük paketi, tüm cihaz sorunlarını gidermeye yönelik Microsoft Deste
 4. İndirilen günlük paketini açabilir ve sistem günlük dosyalarını görüntüleyebilirsiniz.
 
 ## <a name="shut-down-and-restart-your-device"></a>Cihazınızı kapatıp yeniden başlatın
-Yerel Web Kullanıcı arabirimini kullanarak sanal cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Yeniden başlatmadan önce, konakta ve daha sonra cihazda bulunan birimleri veya paylaşımları çevrimdışına almanız önerilir. Bu, herhangi bir veri bozulması olasılığını en aza indirir. 
+Sanal cihazınızı yerel web kullanıcı arabirimini kullanarak kapatabilir ya da yeniden başlatabilirsiniz. Yeniden başlatmadan önce, konakta ve daha sonra cihazda bulunan birimleri veya paylaşımları çevrimdışına almanız önerilir. Bu, herhangi bir veri bozulması olasılığını en aza indirir. 
 
 #### <a name="to-shut-down-your-virtual-device"></a>Sanal cihazınızı kapatmak için
 1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **güç ayarları**' na gidin.

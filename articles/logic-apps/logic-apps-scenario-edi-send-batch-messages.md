@@ -8,15 +8,15 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75666678"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000411"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Azure Logic Apps ' deki ticari iş ortakları arasında toplu iş veya grup olarak Exchange EDI iletileri
 
-İşletmeler arası (B2B) senaryolarında, iş ortakları genellikle grupları veya *toplu işleri*değiş tokuş ediyor. Logic Apps bir toplu işleme çözümü oluşturduğunuzda, ticari iş ortaklarına ileti gönderebilir ve bu iletileri toplu işlerle birlikte işleyebilirsiniz. Bu makalede, bir "Batch sender" mantıksal uygulaması ve bir "Batch alıcısı" mantıksal uygulaması oluşturup x12 kullanarak EDI iletilerini nasıl toplu olarak işleyekullanabileceğinizi gösterir. 
+İşletmeler arası (B2B) senaryolarında, iş ortakları genellikle grupları veya *toplu işleri* değiş tokuş ediyor. Logic Apps bir toplu işleme çözümü oluşturduğunuzda, ticari iş ortaklarına ileti gönderebilir ve bu iletileri toplu işlerle birlikte işleyebilirsiniz. Bu makalede, bir "Batch sender" mantıksal uygulaması ve bir "Batch alıcısı" mantıksal uygulaması oluşturup x12 kullanarak EDI iletilerini nasıl toplu olarak işleyekullanabileceğinizi gösterir. 
 
 Toplu x12 iletileri diğer iletileri toplu işleme gibi çalışarak. toplu iş 'e ileti toplayan bir Batch tetikleyicisi ve toplu işe ileti gönderen bir Batch eylemi kullanırsınız. Ayrıca, x12 toplu işlem, iletilerin ticari ortağa veya başka bir hedefe gitmesi için bir x12 kodlama adımı içerir. Batch tetikleyicisi ve eylemi hakkında daha fazla bilgi edinmek için bkz. [Batch işlem iletileri](../logic-apps/logic-apps-batch-process-send-receive-messages.md).
 
@@ -127,7 +127,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
    |----------|-------------|
    | **Yöntem** | Bu listeden **gönderi**' ı seçin. | 
    | **Kullanılmamışsa** | İstek sepeti için bir URI oluşturun ve bu kutuya bu URI 'yi girin. | 
-   | **Gövde** | Bu kutunun içine tıklayın ve dinamik içerik listesi açıldıktan sonra, **sözleşme adına göre toplu kodlama**bölümünde görüntülenen **gövde** belirtecini seçin. <p>**Gövde** belirtecini görmüyorsanız, **sözleşme adına göre Batch kodlama**' nın yanında, **daha fazla göster**' i seçin. | 
+   | **Gövde** | Bu kutunun içine tıklayın ve dinamik içerik listesi açıldıktan sonra, **sözleşme adına göre toplu kodlama** bölümünde görüntülenen **gövde** belirtecini seçin. <p>**Gövde** belirtecini görmüyorsanız, **sözleşme adına göre Batch kodlama**' nın yanında, **daha fazla göster**' i seçin. | 
    ||| 
 
    ![HTTP eylemi ayrıntılarını sağlayın](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)

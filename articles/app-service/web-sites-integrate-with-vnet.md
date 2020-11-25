@@ -8,11 +8,11 @@ ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999476"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
 
@@ -24,7 +24,7 @@ Azure App Service, VNet tümleştirme özelliği üzerinde iki çeşitle sahipti
 
 ## <a name="enable-vnet-integration"></a>VNet tümleştirmesini etkinleştir
 
-1. App Service portalında **ağ** Kullanıcı arabirimine gidin. **VNET tümleştirmesi**altında, **yapılandırmak Için buraya tıklayın ' ı**seçin.
+1. App Service portalında **ağ** Kullanıcı arabirimine gidin. **VNET tümleştirmesi** altında, **yapılandırmak Için buraya tıklayın ' ı** seçin.
 
 1. **VNET Ekle**' yi seçin.
 
@@ -36,7 +36,7 @@ Azure App Service, VNet tümleştirme özelliği üzerinde iki çeşitle sahipti
 
    * VNet aynı bölgedeyse, yeni bir alt ağ oluşturun veya var olan bir boş alt ağ seçin.
    * Başka bir bölgedeki VNet seçmek için, site etkin noktadan bir sanal ağ geçidi sağlanmış olmalıdır.
-   * Klasik VNet ile tümleştirme için, **sanal ağ** açılan listesini seçmek yerine, **bir klasik VNET 'e bağlanmak Için buraya tıklayın ' ı**seçin. İstediğiniz klasik sanal ağı seçin. Hedef VNet 'in Noktadan siteye etkin olarak sağlanmış bir sanal ağ geçidi zaten olmalıdır.
+   * Klasik VNet ile tümleştirme için, **sanal ağ** açılan listesini seçmek yerine, **bir klasik VNET 'e bağlanmak Için buraya tıklayın ' ı** seçin. İstediğiniz klasik sanal ağı seçin. Hedef VNet 'in Noktadan siteye etkin olarak sağlanmış bir sanal ağ geçidi zaten olmalıdır.
 
     ![Klasik VNet seçin][3]
 
@@ -117,10 +117,10 @@ Bölgesel VNet tümleştirmesiyle eşleme kullanırsanız, ek yapılandırma yap
 Ağ Geçidi için gerekli VNet tümleştirmesini eşleme ile kullanırsanız, birkaç ek öğe yapılandırmanız gerekir. Eşleme 'yi uygulamanızla çalışacak şekilde yapılandırmak için:
 
 1. Uygulamanızın bağlandığı VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını eklediğinizde **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **ağ geçidi aktarımına izin verin**.
-1. Bağlı olduğunuz VNet 'e eşlenmekte olan VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını hedef VNet 'e eklediğinizde, **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **uzak ağ geçitlerine izin**verin.
-1. **App Service plan**  >  Portalda**ağ**  >  **VNET tümleştirmesi** Kullanıcı arabirimine App Service plan bölümüne gidin. Uygulamanızın bağlandığı sanal ağı seçin. Yönlendirme bölümünde, uygulamanızın bağlı olduğu VNet ile ilişkilendirilen VNet 'in adres aralığını ekleyin.
+1. Bağlı olduğunuz VNet 'e eşlenmekte olan VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını hedef VNet 'e eklediğinizde, **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **uzak ağ geçitlerine izin** verin.
+1. **App Service plan**  >  Portalda **ağ**  >  **VNET tümleştirmesi** Kullanıcı arabirimine App Service plan bölümüne gidin. Uygulamanızın bağlandığı sanal ağı seçin. Yönlendirme bölümünde, uygulamanızın bağlı olduğu VNet ile ilişkilendirilen VNet 'in adres aralığını ekleyin.
 
-## <a name="manage-vnet-integration"></a>VNet tümleştirmesini yönetme
+## <a name="manage-vnet-integration"></a>Sanal Ağ Tümleştirmesini Yönetme
 
 VNet ile bağlanma ve bağlantı kesilmesi uygulama düzeyindedir. Birden çok uygulama genelinde VNet tümleştirmesini etkileyebilecek işlemler App Service plan düzeyidir. App > **ağ**  >  **VNET tümleştirme** portalından, VNET 'iniz hakkında ayrıntılı bilgi edinebilirsiniz. **App Service plan**  >  **ağı**  >  **VNET tümleştirme** portalındaki App Service plan düzeyinde benzer bilgiler görebilirsiniz.
 

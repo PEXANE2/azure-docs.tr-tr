@@ -4,11 +4,11 @@ description: Bir laboratuvar hesabı oluşturmayı, tüm laboratuar hesapların�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999510"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Laboratuvar hesabı oluşturma ve yönetme
 Azure Lab Services, laboratuvar hesabı, sınıf laboratuvarları gibi yönetilen laboratuvar türleri için bir kapsayıcıdır. Yönetici Azure Lab Services bir laboratuvar hesabı ayarlar ve hesapta laboratuvarları oluşturabileceğiniz laboratuvar sahiplerine erişim sağlar. Bu makalede laboratuvar hesabı oluşturma, tüm laboratuar hesaplarını görüntüleme veya laboratuvar hesabını silme işlemlerinin nasıl yapılacağı açıklanır.
@@ -17,7 +17,7 @@ Azure Lab Services, laboratuvar hesabı, sınıf laboratuvarları gibi yönetile
 Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nasıl bir laboratuvar hesabı oluşturulacağını göstermektedir. 
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar hesapları** ' nı seçin. `*` **Laboratuvar hesapları**' nın yanındaki yıldız () seçeneğini belirlerseniz, Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar hesapları** ' nı seçersiniz.
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar hesapları** ' nı seçin. `*` **Laboratuvar hesapları**' nın yanındaki yıldız () seçeneğini belirlerseniz, Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar** altında **Laboratuvar hesapları** ' nı seçersiniz.
 
     ![Tüm hizmetler-> laboratuvar hesapları](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. **Laboratuvar hesapları** sayfasında, sayfada **Ekle** ' yi veya **Laboratuvar hesabı oluştur** ' u seçin. 
@@ -34,7 +34,7 @@ Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nası
 5. Ileri ' yi seçin: **Gelişmiş** sekmesine gitmek için sayfanın alt kısmındaki **Gelişmiş** ' i seçin ve ardından aşağıdaki adımları uygulayın: 
     1. Var olan bir **paylaşılan görüntü Galerisi** seçin veya bir tane oluşturun. Şablon VM 'yi, başkaları tarafından yeniden kullanılabilmesi için paylaşılan görüntü galerisine kaydedebilirsiniz. Paylaşılan görüntü galerileriyle ilgili ayrıntılı bilgi için, bkz. [Azure Lab Services paylaşılan görüntü Galerisi kullanma](how-to-use-shared-image-gallery.md).
     2. Kullanıcılar bağlantılarını kestikten sonra **Windows sanal makinelerini otomatik olarak kapatmak** isteyip istemediğinizi belirtin. Sanal makinelerin otomatik olarak kapanmadan önce kullanıcının yeniden bağlanmasına ne kadar süre beklemesi gerektiğini belirtin. 
-    3. **Eş sanal ağ**için, laboratuvar ağı için bir eş sanal ağ (VNet) seçin. Bu hesapta oluşturulan Labs seçili VNet 'e bağlı ve seçilen VNet 'teki kaynaklara erişime sahip. Daha fazla bilgi için bkz. [laboratuvarınızın sanal ağını eş bir sanal ağla bağlama](how-to-connect-peer-virtual-network.md).    
+    3. **Eş sanal ağ** için, laboratuvar ağı için bir eş sanal ağ (VNet) seçin. Bu hesapta oluşturulan Labs seçili VNet 'e bağlı ve seçilen VNet 'teki kaynaklara erişime sahip. Daha fazla bilgi için bkz. [laboratuvarınızın sanal ağını eş bir sanal ağla bağlama](how-to-connect-peer-virtual-network.md).    
     8. Laboratuvardaki VM 'Ler için bir **adres aralığı** belirtin. Adres aralığı, sınıfsız etki alanları arası yönlendirme (CıDR) gösteriminde olmalıdır (örnek: 10.20.0.0/23). Laboratuvardaki sanal makineler, bu adres aralığında oluşturulacaktır. Daha fazla bilgi için bkz [. laboratuvardaki VM 'ler için bir adres aralığı belirtme](how-to-connect-peer-virtual-network.md#specify-an-address-range-for-vms-in-the-lab-account)  
 
         > [!NOTE]
@@ -62,7 +62,7 @@ Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nası
 ## <a name="view-lab-accounts"></a>Laboratuvar hesaplarını görüntüleme
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Menüden **tüm kaynaklar** ' ı seçin. 
-3. **Tür**Için **Laboratuvar hesapları** ' nı seçin. 
+3. **Tür** Için **Laboratuvar hesapları** ' nı seçin. 
     Abonelik, kaynak grubu, konumlar ve etiketlere göre de filtre uygulayabilirsiniz. 
 
     ![Tüm kaynaklar-> laboratuvar hesapları](./media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459807"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Öğretici: ınitelemek LMS ile Azure Active Directory tümleştirme
 
@@ -62,13 +62,13 @@ Azure AD 'ye ıniteleme LMS 'nin tümleştirilmesini yapılandırmak için, Gale
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **gereklı LMS**yazın, sonuç panelinden **initelendir** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna, **gereklı LMS** yazın, sonuç panelinden **initelendir** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![sonuçlar listesinde LMS 'yi nitele](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayanarak ıNITELEME LMS ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına dayanarak ıNITELEME LMS ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, LMS 'ye uygun bir şekilde oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için gerekli LMS 'yi kullanarak, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -133,7 +133,7 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
 
 7. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin:
 
-    | Ad | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | --- | --- |
     | e-posta | User. UserPrincipalName |
     | first_name | Kullanıcı. |
@@ -150,7 +150,7 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -223,14 +223,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

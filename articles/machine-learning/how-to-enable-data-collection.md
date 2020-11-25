@@ -12,11 +12,11 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000462"
 ---
 # <a name="collect-data-from-models-in-production"></a>Üretim içindeki modellerden veri toplama
 
@@ -136,7 +136,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 1. Çalışma alanınızı açın.
 
-1. **Depolama** ’yı seçin.
+1. **Depolama**’yı seçin.
 
     [![Depolama seçeneğini belirleyin](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -157,7 +157,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, Blobun **Ayarlar**  >  **erişim anahtarları** ' nı seçerek bulabilirsiniz.
 
-1. **Model veri** kapsayıcısını seçin ve **Düzenle** ' yi seçin.
+1. **Model veri** kapsayıcısını seçin ve **Düzenle**' yi seçin.
 
     [![Power BI Gezgini](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -173,7 +173,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
     [![Power BI Içerik](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. **Tamam** ’ı seçin. Veriler önceden yüklenir.
+1. **Tamam**’ı seçin. Veriler önceden yüklenir.
 
     [![Dosyaları birleştirme Power BI](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
@@ -189,11 +189,11 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 1. Databricks çalışma alanınıza gidin.
 
-1. Databricks çalışma alanınızda **verileri karşıya yükle** ' yi seçin.
+1. Databricks çalışma alanınızda **verileri karşıya yükle**' yi seçin.
 
     [![Databricks veri yükleme seçeneğini belirleme](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. **Yeni tablo oluştur** ' u seçin ve **diğer veri kaynakları** ' nı seçin  >  **Azure Blob Storage**  >  **tablo oluştur Not defteri**.
+1. **Yeni tablo oluştur** ' u seçin ve **diğer veri kaynakları**' nı seçin  >  **Azure Blob Storage**  >  **tablo oluştur Not defteri**.
 
     [![Databricks tablosu oluşturma](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

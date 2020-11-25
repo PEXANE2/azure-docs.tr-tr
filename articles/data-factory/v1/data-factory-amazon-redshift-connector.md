@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443033"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999306"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -34,7 +34,7 @@ Data Factory Şu anda yalnızca Amazon Redshift 'ten [desteklenen bir havuz veri
 > [!TIP]
 > Amazon Redshift 'den büyük miktarlarda veri kopyalarken en iyi performansı elde etmek için, Amazon Simple Storage Service (Amazon S3) aracılığıyla yerleşik Redshift **Unload** komutunu kullanmayı düşünün. Ayrıntılar için bkz. [Amazon Redshift 'tan veri kopyalamak IÇIN kaldırma kullanma](#use-unload-to-copy-data-from-amazon-redshift).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Verileri şirket içi veri deposuna taşıyorsanız, şirket içi bir makineye [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) yükleyebilirsiniz. Şirket içi makine IP adresini kullanarak Amazon Redshift kümesine bir ağ geçidi için erişim izni verin. Yönergeler için bkz. [kümeye erişim yetkisi verme](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Verileri bir Azure veri deposuna taşımak için, [Microsoft Azure veri merkezleri tarafından kullanılan Işlem IP adresi ve SQL aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)bakın.
 
@@ -61,18 +61,18 @@ Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Bu özellik **AmazonRedshift**olarak ayarlanmalıdır. |Evet |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
+| **türüyle** |Bu özellik **AmazonRedshift** olarak ayarlanmalıdır. |Yes |
+| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
 | **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Evet |
-| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Evet |
-| **parola** |Kullanıcı hesabının parolası. |Evet |
+| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
+| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Yes |
+| **parola** |Kullanıcı hesabının parolası. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. **Yapı**, **kullanılabilirlik**ve **ilke** bölümleri tüm veri kümesi türleri için benzerdir. Veri kümesi türlerine örnek olarak Azure SQL, Azure Blob depolama ve Azure Tablo depolama verilebilir.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. **Yapı**, **kullanılabilirlik** ve **ilke** bölümleri tüm veri kümesi türleri için benzerdir. Veri kümesi türlerine örnek olarak Azure SQL, Azure Blob depolama ve Azure Tablo depolama verilebilir.
 
-**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve depodaki verilerin konumu hakkında bilgi sağlar. Amazon Redshift veri kümesini içeren **Relationaltable**türünde bir veri kümesinin **typeproperties** bölümü aşağıdaki özelliklere sahiptir:
+**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve depodaki verilerin konumu hakkında bilgi sağlar. Amazon Redshift veri kümesini içeren **Relationaltable** türünde bir veri kümesinin **typeproperties** bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
@@ -82,13 +82,13 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi iç
 
 Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. **Ad**, **Açıklama**, **giriş** tablosu, **Çıkış** tablosu ve **ilke** özellikleri tüm etkinlik türleri için kullanılabilir. **Typeproperties** bölümünde kullanılabilen özellikler her etkinlik türü için farklılık gösterir. Kopyalama etkinliği için özellikler veri kaynağı ve havuz türlerine göre değişir.
 
-Kopyalama etkinliği için, kaynak **AmazonRedshiftSource**türünde olduğunda aşağıdaki özellikler **typeproperties** bölümünde mevcuttur:
+Kopyalama etkinliği için, kaynak **AmazonRedshiftSource** türünde olduğunda aşağıdaki özellikler **typeproperties** bölümünde mevcuttur:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | **sorgulayamadı** | Verileri okumak için özel sorguyu kullanın. |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
-| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | Hayır |
-| **s3LinkedServiceName** | Bir ara mağaza olarak kullanmak için Amazon S3. Bağlı hizmet, **Awsaccesskey**türünde bir Azure Data Factory adı kullanılarak belirtilir. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
+| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | No |
+| **s3LinkedServiceName** | Bir ara mağaza olarak kullanmak için Amazon S3. Bağlı hizmet, **Awsaccesskey** türünde bir Azure Data Factory adı kullanılarak belirtilir. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 | **bucketName** | Ara verileri depolamak için kullanılacak Amazon S3 demet öğesini gösterir. Bu özellik sağlanmazsa, kopyalama etkinliği otomatik olarak bir demet oluşturur. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 
 Alternatif olarak, **Typeproperties** bölümünde aşağıdaki özelliği Içeren Amazon Redshift Içeren **relationalsource** türünü de kullanabilirsiniz. Bu kaynak türü Redshift **Unload** komutunu desteklemez.
@@ -267,7 +267,7 @@ Bu örnek, bir Amazon Redshift veritabanından Azure Blob depolama alanına nas�
 
 **Azure Redshift kaynağına sahip bir işlem hattındaki etkinliği (RelationalSource türü) ve bir Azure Blob havuzunu kopyalama**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. İşlem hattı her saat çalışacak şekilde zamanlanır. İşlem hattının JSON tanımında, **kaynak** türü **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, son saatten kopyalanacak verileri seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir. İşlem hattı her saat çalışacak şekilde zamanlanır. İşlem hattının JSON tanımında, **kaynak** türü **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, son saatten kopyalanacak verileri seçer.
 
 ```json
 {

@@ -1,19 +1,19 @@
 ---
 title: Swift 'ta kaba yeniden yerelleştirme
 description: Swift 'ta kaba reyerelleştirme kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cc964ca8339e82aa7388aeab8718a6102a23d1b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76546172"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95999779"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Swift 'ta kaba reyerelleştirme kullanarak bağlayıcıları oluşturma ve bulma
 
@@ -27,7 +27,7 @@ ms.locfileid: "76546172"
 
 Azure uzamsal bağlantıları, cihaz üzerinde ilişki oluşturabilir ve algılayıcı verilerini, oluşturduğunuz tutturucularla konumlamayı sağlayabilir. Bu veriler, cihazınızın yakınında yer olup olmadığını hızlı bir şekilde tespit etmek için de kullanılabilir. Daha fazla bilgi için bkz. [kaba yeniden yerelleştirme](../concepts/coarse-reloc.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 

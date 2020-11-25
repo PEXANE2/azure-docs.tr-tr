@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93235886"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999475"
 ---
-Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar**  >  **kudu** ' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar**  >  **konsolu** ' na gidin.
+Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar**  >  **kudu**' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar**  >  **konsolu**' na gidin.
 
 #### <a name="tools"></a>Araçlar
-Yerel Windows uygulamalarında, **ping** , **nslookup** ve **tracert** araçları güvenlik kısıtlamaları nedeniyle konsolda çalışmaz ( [özel Windows kapsayıcılarında](../articles/app-service/quickstart-custom-container.md)çalışırlar). Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için **nameresolver.exe** adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
+Yerel Windows uygulamalarında, **ping**, **nslookup** ve **tracert** araçları güvenlik kısıtlamaları nedeniyle konsolda çalışmaz ( [özel Windows kapsayıcılarında](../articles/app-service/quickstart-custom-container.md)çalışırlar). Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için **nameresolver.exe** adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -51,7 +51,7 @@ Bu öğeler sorunlarınızı yanıtlamazsanız, şunun gibi şeyler için göz a
 **Ağ Geçidi-gerekli VNet tümleştirmesi**
 * , RFC 1918 aralıklarında (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) Noktadan siteye adres aralığıdır mi?
 * Ağ Geçidi portalda mi çalışıyor? Ağ geçidinizin kapalıysa, daha sonra geri getirin.
-* Sertifikalar eşitlenmiş olarak gösteriliyor mu veya ağ yapılandırmasının değiştiğini kuşkulu mı?  Sertifikalarınız eşitlenmemiş veya sanal ağ yapılandırmanızda ASPs 'niz ile eşitlenmemiş bir değişikliğin yapıldığından şüphelenirseniz, **eşitleme ağı** ' nı seçin.
+* Sertifikalar eşitlenmiş olarak gösteriliyor mu veya ağ yapılandırmasının değiştiğini kuşkulu mı?  Sertifikalarınız eşitlenmemiş veya sanal ağ yapılandırmanızda ASPs 'niz ile eşitlenmemiş bir değişikliğin yapıldığından şüphelenirseniz, **eşitleme ağı**' nı seçin.
 * VPN üzerinden çalışıyorsanız, trafiği Azure 'a yönlendirmek için şirket içi ağ geçidi yapılandırılmış mı? Sanal ağınızdaki, şirket içi olmayan uç noktalara ulaşabilseniz, rotalarınızı denetleyin.
 * Hem site hem de ExpressRoute 'a işaret eden bir birlikte bulunma ağ geçidi kullanmayı deniyor musunuz? Birlikte bulunma ağ geçitleri, VNet tümleştirmesinde desteklenmez.
 

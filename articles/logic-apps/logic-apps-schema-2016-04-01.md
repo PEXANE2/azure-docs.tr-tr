@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520724"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000326"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps için şema güncelleştirmeleri-1 Haziran 2016
 
@@ -103,7 +103,7 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 1. Azure portal mantıksal uygulamanızı açın.
 
-2. **Genel Bakış ' a**gidin. Mantıksal uygulama araç çubuğunda **Şemayı Güncelleştir**' i seçin.
+2. **Genel Bakış ' a** gidin. Mantıksal uygulama araç çubuğunda **Şemayı Güncelleştir**' i seçin.
    
    ![Şemayı Güncelleştir ' i seçin][1]
    
@@ -153,7 +153,7 @@ Büyük bir diziyi daha küçük bir öğe kümesine filtrelemek için, yeni `fi
 
 ### <a name="new-trackedproperties-for-actions"></a>Eylemler için yeni ' trackedProperties '
 
-Eylemler artık `trackedProperties` ve özelliklerine eşdüzey olan adlı ek bir özelliğe sahip olabilir `runAfter` `type` . Bu nesne, bir iş akışının parçası olarak yayınlanan Azure tanılama telemetrisine dahil etmek istediğiniz belirli eylem girdilerini veya çıkışları belirtir. Örneğin:
+Eylemler artık `trackedProperties` ve özelliklerine eşdüzey olan adlı ek bir özelliğe sahip olabilir `runAfter` `type` . Bu nesne, bir iş akışının parçası olarak yayınlanan Azure tanılama telemetrisine dahil etmek istediğiniz belirli eylem girdilerini veya çıkışları belirtir. Örnek:
 
 ``` json
 {

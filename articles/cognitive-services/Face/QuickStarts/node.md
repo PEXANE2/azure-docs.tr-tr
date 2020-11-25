@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: f77282502a0032a5b1811e32d9aa47d9b4ede569
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a245dae4405706c37b3c142963d325925d089830
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912829"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001448"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node.js kullanarak görüntüdeki yüzeyleri algılama
 
@@ -60,7 +60,7 @@ Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve dosyayı `node
 node facedetection.js
 ```
 
-Başarılı bir yanıt, yüz verileri kolay okunabilir JSON biçiminde görüntüler. Örneğin:
+Başarılı bir yanıt, yüz verileri kolay okunabilir JSON biçiminde görüntüler. Örnek:
 
 ```json
 [
@@ -88,7 +88,7 @@ Yüz özniteliklerini ayıklamak için, algılama modeli 1 ' i kullanın ve `ret
     },
 ```
 
-Yanıt şimdi yüz öznitelikleri içeriyor. Örneğin:
+Yanıt şimdi yüz öznitelikleri içeriyor. Örnek:
 
 ```json
 [
@@ -274,4 +274,4 @@ Yanıt şimdi yüz öznitelikleri içeriyor. Örneğin:
 Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmetini çağıran bir Node.js betiği yazdı. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Yüz Tanıma API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Yüz Tanıma API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 

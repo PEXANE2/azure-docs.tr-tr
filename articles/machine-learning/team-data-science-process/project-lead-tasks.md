@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321934"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000989"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Işlemindeki proje sağlama görevleri
 
@@ -63,7 +63,7 @@ Takımınızın **myTeam** projesinde bir proje deposu oluşturmak için:
    
    ![Yeni depo Seç](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. **Yeni depo oluştur** Iletişim kutusunda **tür** altında **Git** ' in seçildiğinden emin olun. **Depo adı** bölümüne *DSProject1* girin ve ardından **Oluştur** ' u seçin.
+1. **Yeni depo oluştur** Iletişim kutusunda **tür** altında **Git** ' in seçildiğinden emin olun. **Depo adı** bölümüne *DSProject1* girin ve ardından **Oluştur**' u seçin.
    
    ![Depo oluştur](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
@@ -79,13 +79,13 @@ Proje deponuzu takım şablonu deponuzun içeriğiyle doldurmak için:
    
 1. Sayfanın üst kısmındaki depo adını seçin ve açılan listeden **DSProject1** öğesini seçin.
    
-1. **DSProject1 boş** sayfasında **içeri aktar** ' ı seçin. 
+1. **DSProject1 boş** sayfasında **içeri aktar**' ı seçin. 
    
    ![Içeri aktar 'ı seçin](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü** olarak **Git** ' i seçin ve **kopya URL** 'si altında **teamtemplate** deponuzun URL 'sini girin. URL *: https: \/ / \<server name> / \<organization name> / \<team name> /_Git/ \<team template repository name>*. Örneğin: **https: \/ /dev.Azure.com/DataScienceUnit/myTeam/_Git/TeamTemplate**. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü** olarak **Git** ' i seçin ve **kopya URL**'si altında **teamtemplate** deponuzun URL 'sini girin. URL *: https: \/ / \<server name> / \<organization name> / \<team name> /_Git/ \<team template repository name>*. Örneğin: **https: \/ /dev.Azure.com/DataScienceUnit/myTeam/_Git/TeamTemplate**. 
    
-1. **İçeri aktar** 'ı seçin. Ekip şablonu deponuzun içeriği proje deponuza aktarılır. 
+1. **İçeri aktar**'ı seçin. Ekip şablonu deponuzun içeriği proje deponuza aktarılır. 
    
    ![Takım şablonu deposunu içeri aktar](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 

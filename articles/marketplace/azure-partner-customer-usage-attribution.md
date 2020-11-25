@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628416"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999884"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -74,15 +74,15 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
    * İş ortakları birden çok GUID kaydedebilir.
    * İş ortakları, Market olmayan çözüm şablonları ve teklifleri için GUID 'Leri kaydedebilir.
 
-1. Sağ üst köşedeki **ayarları** (dişli simgesi) > **Hesap ayarları** ' nı seçin.
+1. Sağ üst köşedeki **ayarları** (dişli simgesi) > **Hesap ayarları**' nı seçin.
 
-1. **Kuruluş profili**  >  **tanımlayıcıları** ' nı, **izleme GUID 'si Ekle** ' yi seçin.
+1. **Kuruluş profili**  >  **tanımlayıcıları**' nı, **izleme GUID 'si Ekle**' yi seçin.
 
 1. **GUID** kutusuna izleme GUID 'nizi girin. Ön ek olmadan yalnızca GUID girin `pid-` . **Açıklama** kutusuna teklif adınızı veya açıklamasını girin.
 
 1. Birden fazla GUID kaydetmek için, **izleme GUID 'i yeniden Ekle** ' yi seçin. Sayfada ek kutular görüntülenir.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma
 Birçok iş ortağı çözümü Azure Resource Manager şablonları kullanılarak dağıtılır. Azure Marketi 'nde, GitHub 'da veya hızlı başlangıç olarak kullanılabilen bir Kaynak Yöneticisi şablonunuz varsa, müşteri kullanımı atısyonu 'nı etkinleştirmek için şablonunuzu değiştirme işlemi düz bir işlemdir.
@@ -251,11 +251,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Rapor
 
-Iş Ortağı Merkezi panonuzda () müşteri kullanımı atısyonu için raporu bulabilirsiniz [https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure) . Raporu görmek için Iş ortağı merkezi kimlik bilgilerinizi kullanarak oturum açın. Raporla veya oturum açma ile ilgili herhangi bir sorunla karşılaşırsanız destek al bölümündeki yönergeyi izleyerek bir destek isteği oluşturun.
-
-Raporu görmek için Iş ortağı Ilişki türü açılan listesinde Izlenen şablon ' u seçin.
-
-![Müşteri kullanım attributıon için rapor](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+Iş Ortağı Merkezi panonuzda () müşteri kullanımı atısyonu için raporu bulabilirsiniz [https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview) . Raporu görmek için Iş ortağı merkezi kimlik bilgilerinizi kullanarak oturum açın. Raporla veya oturum açma ile ilgili herhangi bir sorunla karşılaşırsanız, bir [destek isteği](#get-support)oluşturun.
 
 ## <a name="notify-your-customers"></a>Müşterilerinize bildirme
 

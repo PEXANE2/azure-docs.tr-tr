@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/30/2020
 ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280162"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000088"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yükleme
 
@@ -28,10 +28,10 @@ Azure Data Factory kullandığınızda Azure SYNAPSE Analytics 'i kullanmaya art
 
 Azure Data Factory, verileri Azure SYNAPSE Analytics 'e yüklemek için aşağıdaki avantajları sunmaktadır:
 
-* **Kolayca ayarlanabilir** : komut dosyası gerekmeden sezgisel 5 adımlı bir sihirbaz.
-* **Zengin veri deposu desteği** : zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek. Ayrıntılı bir liste için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)tablosuna bakın.
-* **Güvenli ve uyumlu** : veriler HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığı, verilerinizin hiçbir şekilde coğrafi sınır bırakmamasını sağlar.
-* **PolyBase kullanarak benzersiz olmayan performans** : PolyBase, verileri Azure SYNAPSE Analytics 'e taşımanın en etkili yoludur. Azure Blob depolama ve Data Lake Store dahil olmak üzere tüm veri deposu türlerinden yüksek yük hızları elde etmek için hazırlama blobu özelliğini kullanın. (PolyBase, Azure Blob depolamayı ve varsayılan olarak Azure Data Lake Store destekler.) Ayrıntılar için bkz. [etkinlik performansını kopyalama](copy-activity-performance.md).
+* **Kolayca ayarlanabilir**: komut dosyası gerekmeden sezgisel 5 adımlı bir sihirbaz.
+* **Zengin veri deposu desteği**: zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek. Ayrıntılı bir liste için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)tablosuna bakın.
+* **Güvenli ve uyumlu**: veriler HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığı, verilerinizin hiçbir şekilde coğrafi sınır bırakmamasını sağlar.
+* **PolyBase kullanarak benzersiz olmayan performans**: PolyBase, verileri Azure SYNAPSE Analytics 'e taşımanın en etkili yoludur. Azure Blob depolama ve Data Lake Store dahil olmak üzere tüm veri deposu türlerinden yüksek yük hızları elde etmek için hazırlama blobu özelliğini kullanın. (PolyBase, Azure Blob depolamayı ve varsayılan olarak Azure Data Lake Store destekler.) Ayrıntılar için bkz. [etkinlik performansını kopyalama](copy-activity-performance.md).
 
 Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yüklemek_ için Data Factory veri kopyalama aracının nasıl kullanılacağı gösterilmektedir. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz.
 
@@ -47,17 +47,17 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol taraftaki menüden veri ve analiz **kaynak oluştur** ' u seçin  >  **Data + Analytics**  >  **Data Factory** :
+1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >  **Data + Analytics**  >  **Data Factory**:
 
 2. **Yeni Veri Fabrikası** sayfasında, aşağıdaki öğeler için değerler girin:
 
-    * **Ad** : ad Için *Loadsqldwdemo* girin. Veri fabrikanızın adı * genel olarak benzersiz olmalıdır. "Data Factory Name ' LoadSQLDWDemo ' kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory** adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
-    * **Abonelik** : veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
-    * **Kaynak grubu** : açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm** : **V2** 'yi seçin.
-    * **Konum** : veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
+    * **Ad**: ad Için *Loadsqldwdemo* girin. Veri fabrikanızın adı * genel olarak benzersiz olmalıdır. "Data Factory Name ' LoadSQLDWDemo ' kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory** adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
+    * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
+    * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
+    * **Sürüm**: **V2**'yi seçin.
+    * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur** ’u seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz:
 
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -68,55 +68,55 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 
 1. **Başlayalım** sayfasında, Veri Kopyalama aracını açmak için **Veri Kopyala** kutucuğunu seçin.
 
-2. **Özellikler** sayfasında, **görev adı** alanı Için **Copyfromsqltosqldw** ' i belirtin ve **İleri** ' yi seçin.
+2. **Özellikler** sayfasında, **görev adı** alanı Için **Copyfromsqltosqldw** ' i belirtin ve **İleri**' yi seçin.
 
     ![Özellikler sayfası](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
 3. **Kaynak veri deposu** sayfasında, aşağıdaki adımları izleyin:
     >[!TIP]
-    >Bu öğreticide, *SQL kimlik* doğrulamasını kaynak veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-sql-database.md#linked-service-properties) ilgili bölümlere bakın.
+    >Bu öğreticide, *SQL kimlik* doğrulamasını kaynak veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz:*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-sql-database.md#linked-service-properties) ilgili bölümlere bakın.
     >Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](./store-credentials-in-key-vault.md) bakın.
 
-    a. **+ Yeni bağlantı oluştur** ' a tıklayın.
+    a. **+ Yeni bağlantı oluştur**' a tıklayın.
 
-    b. Galeriden **Azure SQL veritabanı** ' nı seçin ve **devam** ' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
+    b. Galeriden **Azure SQL veritabanı** ' nı seçin ve **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
 
     ![Azure SQL veritabanını seçme](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur** ' u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur**' u seçin.
 
     ![Azure SQL veritabanını yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
-    d. Kaynak olarak yeni oluşturulan bağlantılı hizmeti seçin ve **İleri** 'ye tıklayın.
+    d. Kaynak olarak yeni oluşturulan bağlantılı hizmeti seçin ve **İleri**'ye tıklayın.
 
-4. **Verilerin kopyalanacağı tabloları seçin veya özel bir sorgu sayfası kullanın** sayfasında, tabloları filtrelemek Için **SalesLT** girin. Kopyaya ait tüm tabloları kullanmak için **(Tümünü Seç)** kutusunu seçin ve ardından **İleri** ' yi seçin.
+4. **Verilerin kopyalanacağı tabloları seçin veya özel bir sorgu sayfası kullanın** sayfasında, tabloları filtrelemek Için **SalesLT** girin. Kopyaya ait tüm tabloları kullanmak için **(Tümünü Seç)** kutusunu seçin ve ardından **İleri**' yi seçin.
 
     ![Kaynak tabloları Seç](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
-5. **Filtre Uygula** sayfasında ayarlarınızı belirtin veya **İleri** ' yi seçin.
+5. **Filtre Uygula** sayfasında ayarlarınızı belirtin veya **İleri**' yi seçin.
 
 6. **Hedef veri deposu** sayfasında, aşağıdaki adımları izleyin:
     >[!TIP]
-    >Bu öğreticide, *SQL kimlik doğrulamasını* hedef veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-sql-data-warehouse.md#linked-service-properties) ilgili bölümlere bakın.
+    >Bu öğreticide, *SQL kimlik doğrulamasını* hedef veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz:*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-sql-data-warehouse.md#linked-service-properties) ilgili bölümlere bakın.
     >Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](./store-credentials-in-key-vault.md) bakın.
 
     a. Bağlantı eklemek için **+ Yeni bağlantı oluştur** ' a tıklayın
 
-    b. Galeriden **Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı)** seçeneğini belirleyin ve **devam** ' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
+    b. Galeriden **Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı)** seçeneğini belirleyin ve **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
 
     ![Azure SYNAPSE Analytics 'i seçme](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur** ' u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur**' u seçin.
 
     ![Azure SYNAPSE Analytics 'i yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
-    d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri** 'ye tıklayın.
+    d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri**'ye tıklayın.
 
-7. **Tablo eşleme** sayfasında, içeriği gözden geçirin ve **İleri** ' yi seçin. Akıllı tablo eşleştirmesi görüntülenir. Kaynak tablolar, tablo adlarına göre hedef tablolarla eşleştirilir. Hedefte bir kaynak tablosu yoksa, Azure Data Factory varsayılan olarak aynı ada sahip bir hedef tablo oluşturur. Ayrıca, bir kaynak tabloyu var olan bir hedef tabloyla eşleyebilirsiniz.
+7. **Tablo eşleme** sayfasında, içeriği gözden geçirin ve **İleri**' yi seçin. Akıllı tablo eşleştirmesi görüntülenir. Kaynak tablolar, tablo adlarına göre hedef tablolarla eşleştirilir. Hedefte bir kaynak tablosu yoksa, Azure Data Factory varsayılan olarak aynı ada sahip bir hedef tablo oluşturur. Ayrıca, bir kaynak tabloyu var olan bir hedef tabloyla eşleyebilirsiniz.
 
    ![Tablo eşleme sayfası](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-8. **Sütun eşleme** sayfasında, içeriği gözden geçirin ve **İleri** ' yi seçin. Akıllı tablo eşleme, sütun adını temel alır. Tabloları otomatik olarak oluşturalım Data Factory, kaynak ve hedef mağazalar arasında uyumsuzluklar olduğunda veri türü dönüştürme gerçekleşebilir. Kaynak ve hedef sütun arasında desteklenmeyen bir veri türü dönüştürmesi varsa, karşılık gelen tablonun yanında bir hata mesajı görürsünüz.
+8. **Sütun eşleme** sayfasında, içeriği gözden geçirin ve **İleri**' yi seçin. Akıllı tablo eşleme, sütun adını temel alır. Tabloları otomatik olarak oluşturalım Data Factory, kaynak ve hedef mağazalar arasında uyumsuzluklar olduğunda veri türü dönüştürme gerçekleşebilir. Kaynak ve hedef sütun arasında desteklenmeyen bir veri türü dönüştürmesi varsa, karşılık gelen tablonun yanında bir hata mesajı görürsünüz.
 
     ![Sütun eşleme sayfası](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
@@ -126,21 +126,21 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 
     b. **Yeni bağlı hizmet** sayfasında, depolama hesabınızı seçin ve bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
-    c. **Gelişmiş ayarlar** bölümünde, **türü varsayılan kullan** seçeneğinin Işaretini kaldırın ve ardından **İleri** ' yi seçin.
+    c. **Gelişmiş ayarlar** bölümünde, **türü varsayılan kullan** seçeneğinin Işaretini kaldırın ve ardından **İleri**' yi seçin.
 
     ![PolyBase 'i yapılandırma](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-10. **Özet** sayfasında, ayarları gözden geçirin ve **İleri** ' yi seçin.
+10. **Özet** sayfasında, ayarları gözden geçirin ve **İleri**' yi seçin.
 
     ![Özet sayfası](./media/load-azure-sql-data-warehouse/summary-page.png)
 
-11. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici** ’yi seçin. 
+11. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici**’yi seçin. 
  
 12. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. İşlem hattı çalıştırması başarıyla tamamlandığında, etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki **Copyfromsqltosqldw** bağlantısını seçin.
 
     [![İşlem hattı çalıştırmalarını izleme](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
 
-13. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Listeyi yenilemek için **Yenile** ’yi seçin.
+13. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin.
 
     ![Etkinlik çalıştırmalarını izleme](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 

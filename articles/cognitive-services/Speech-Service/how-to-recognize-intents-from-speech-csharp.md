@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93a3adf00203e317be912e3e72de7a3f7ca666c6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918800"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001123"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>C için konuşma SDK 'sını kullanarak konuşma amaçlarını tanıma #
 
-Bilişsel Hizmetler [konuşma SDK 'sı](speech-sdk.md) , **Amaç tanıma**sağlamak IÇIN [Language Understanding hizmeti (Luo)](https://www.luis.ai/home) ile tümleşir. Amaç, kullanıcının yapmak istediği herhangi bir şeydir: uçak rezervasyonu, hava durumuna bakma veya telefon etme. Kullanıcı kendisine hangi terim doğal geliyorsa onu kullanabilir. Machine Learning kullanarak, LUSıS Kullanıcı isteklerini tanımladığınız amaçlar ile eşleştirir.
+Bilişsel Hizmetler [konuşma SDK 'sı](speech-sdk.md) , **Amaç tanıma** sağlamak IÇIN [Language Understanding hizmeti (Luo)](https://www.luis.ai/home) ile tümleşir. Amaç, kullanıcının yapmak istediği herhangi bir şeydir: uçak rezervasyonu, hava durumuna bakma veya telefon etme. Kullanıcı kendisine hangi terim doğal geliyorsa onu kullanabilir. Machine Learning kullanarak, LUSıS Kullanıcı isteklerini tanımladığınız amaçlar ile eşleştirir.
 
 > [!NOTE]
 > LUIS uygulaması tanımak istediğiniz amaçları ve varlıkları tanımlar. Konuşma hizmetini kullanan C# uygulamasından ayrıdır. Bu makalede "app" LUIS uygulaması anlamına gelirken "uygulama" da C# kodu anlamına gelmektedir.
@@ -36,7 +36,7 @@ Bu kılavuzda, cihazınızın mikrofonuna göre Kullanıcı aralarından amaçla
 > - Dosyadan konuşma tanıma
 > - Zaman uyumsuz, olay odaklı sürekli tanıma kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuza başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
@@ -53,9 +53,9 @@ LUSıS üç tür anahtar kullanır:
 | --------- | ----------------------------------------------------- |
 | Yazma | LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar |
 | Başlangıç   | LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar   |
-| Uç Noktası  | Belirli bir Lua uygulamasına erişim yetkisi verir            |
+| Uç Nokta  | Belirli bir Lua uygulamasına erişim yetkisi verir            |
 
-Bu kılavuz için uç nokta anahtar türüne ihtiyacınız vardır. Bu kılavuzda, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneği kullanılmaktadır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
+Bu kılavuz için uç nokta anahtar türüne ihtiyacınız vardır. Bu kılavuzda, [önceden oluşturulmuş giriş Otomasyonu uygulama](../luis/luis-get-started-create-app.md) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneği kullanılmaktadır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 
 Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma hizmeti tümleştirmesini etkinleştirmez ve bu kılavuzla çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu kılavuz için ücretsiz abonelik katmanını kullanabilirsiniz.
 
@@ -68,9 +68,9 @@ Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](http
 1. Aşağı kaydırarak **kaynaklar ve anahtarlar** bölümüne gidin ve **kaynak ata**' yı seçin.
 1. **Uygulamanıza anahtar ata** iletişim kutusunda aşağıdaki değişiklikleri yapın:
 
-   - **Kiracı**altında **Microsoft**' u seçin.
-   - **Abonelik adı**bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
-   - **Anahtar**altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
+   - **Kiracı** altında **Microsoft**' u seçin.
+   - **Abonelik adı** bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
+   - **Anahtar** altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
 
    Kısa süre içinde yeni abonelik sayfanın altındaki tabloda görüntülenir.
 
@@ -86,7 +86,7 @@ Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](http
 
 Ardından, projeye kod eklersiniz.
 
-1. **Çözüm Gezgini**, **program.cs**dosyasını açın.
+1. **Çözüm Gezgini**, **program.cs** dosyasını açın.
 
 1. `using`Dosyanın başındaki deyimlerin bloğunu aşağıdaki bildirimlerle değiştirin:
 
@@ -119,7 +119,7 @@ Ardından, projeye kod eklersiniz.
 
    | Yer tutucu | Şununla değiştir |
    | ----------- | ------------ |
-   | `YourLanguageUnderstandingSubscriptionKey` | LUIS uç nokta anahtarınız. Yine de, bu öğeyi bir "başlangıç anahtarı" değil, Azure panonuzdan almanız gerekir. Bu dosyayı, [BASIS portalındaki](https://www.luis.ai/home)uygulamanızın **anahtarlar ve uç noktalar** sayfasında ( **Yönet**bölümünde) bulabilirsiniz. |
+   | `YourLanguageUnderstandingSubscriptionKey` | LUIS uç nokta anahtarınız. Yine de, bu öğeyi bir "başlangıç anahtarı" değil, Azure panonuzdan almanız gerekir. Bu dosyayı, [BASIS portalındaki](https://www.luis.ai/home)uygulamanızın **anahtarlar ve uç noktalar** sayfasında ( **Yönet** bölümünde) bulabilirsiniz. |
    | `YourLanguageUnderstandingServiceRegion` | LUIS aboneliğinizin içinde bulunduğu bölgenin kısa tanımlayıcısı (örneğin, Batı ABD için `westus`). Bkz. [Bölgeler](regions.md). |
    | `YourLanguageUnderstandingAppId` | LUIS app kimliği. Bu dosyayı, [lusıs portalındaki](https://www.luis.ai/home)uygulamanızın **Ayarlar** sayfasında bulabilirsiniz. |
 
@@ -201,4 +201,4 @@ Daha önce olduğu gibi LUIS uç nokta anahtarınızı, bölgenizi ve app kimli�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: bir mikrofondan konuşmayı tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [Hızlı başlangıç: bir mikrofondan konuşmayı tanıma](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)

@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369412"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999204"
 ---
 # <a name="troubleshoot-the-process-server"></a>İşlem sunucusunda sorun giderme
 
@@ -177,7 +177,7 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. Adım: Azure Blob depolama ile işlem sunucusu bağlantısını denetleme
 
 1. Kaynak İzleyicisi ' de **cbengine.exe**' ı seçin.
-2. **TCP bağlantıları**altında, Işlem sunucusundan Azure depolama 'ya bağlantı olup olmadığını denetleyin.
+2. **TCP bağlantıları** altında, Işlem sunucusundan Azure depolama 'ya bağlantı olup olmadığını denetleyin.
 
   ![cbengine.exe ile Azure Blob depolama URL 'SI arasındaki bağlantıyı gösteren ekran görüntüsü.](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
@@ -199,8 +199,8 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>10. Adım: işlem sunucusu bağlantısını Azure genel IP adresi ile denetleyin
 
-1. İşlem sunucusunda, **%ProgramFiles%\Microsoft Azure Recovery Services fılestemp**bölümünde en son CBEngineCurr. errlog dosyasını açın.
-2. Dosyada, **443**için arama yapın veya dize **bağlantısı girişimi başarısız oldu**.
+1. İşlem sunucusunda, **%ProgramFiles%\Microsoft Azure Recovery Services fılestemp** bölümünde en son CBEngineCurr. errlog dosyasını açın.
+2. Dosyada, **443** için arama yapın veya dize **bağlantısı girişimi başarısız oldu**.
 
   ![Geçici klasörde hata günlükleri](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 
@@ -230,12 +230,12 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 
 ## <a name="step-12-verify-process-server-proxy-settings"></a>12. Adım: işlem sunucusu proxy ayarlarını doğrulama 
 
-1. Proxy sunucusu kullanıyorsanız, proxy sunucusu adının DNS sunucusu tarafından çözümlendiğinden emin olun. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**kayıt defteri anahtarında yapılandırma sunucusunu ayarlarken verdiğiniz değeri denetleyin.
+1. Proxy sunucusu kullanıyorsanız, proxy sunucusu adının DNS sunucusu tarafından çözümlendiğinden emin olun. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings** kayıt defteri anahtarında yapılandırma sunucusunu ayarlarken verdiğiniz değeri denetleyin.
 2. Verileri göndermek için Azure Site Recovery Aracısı tarafından aynı ayarların kullanıldığından emin olun.
 
-    a) **Microsoft Azure Backup**için arama yapın.
+    a) **Microsoft Azure Backup** için arama yapın.
 
-    b) **Microsoft Azure Backup**açın ve **eylem**  >  **Değiştir Özellikler**' i seçin.
+    b) **Microsoft Azure Backup** açın ve **eylem**  >  **Değiştir Özellikler**' i seçin.
 
     c) ara sunucu **yapılandırması** sekmesinde, proxy adresi, kayıt defteri ayarlarında gösterilen ara sunucu adresiyle aynı olmalıdır. Aksi takdirde, aynı adresle değiştirin.
 

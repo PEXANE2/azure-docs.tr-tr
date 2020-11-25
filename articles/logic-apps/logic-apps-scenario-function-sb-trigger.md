@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629742"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000343"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Işlevleri 'ni ve Azure Service Bus kullanarak mantıksal uygulamaları çağırın veya tetikleyin
 
@@ -48,9 +48,9 @@ Bu senaryo için, tetiklemek istediğiniz her mantıksal uygulamayı çalıştı
 
    Bir şemanız yoksa ancak JSON biçiminde bir örnek yüküyle karşılaşırsanız, bu yükün bir şemasını oluşturabilirsiniz.
 
-   1. Istek tetikleyicisinde, **şema oluşturmak için örnek yük kullan** ' ı seçin.
+   1. Istek tetikleyicisinde, **şema oluşturmak için örnek yük kullan**' ı seçin.
 
-   1. **Örnek BIR JSON yükü girin veya yapıştırın** bölümüne örnek yükünüzü girip **bitti** ' yi seçin.
+   1. **Örnek BIR JSON yükü girin veya yapıştırın** bölümüne örnek yükünüzü girip **bitti**' yi seçin.
 
       ![Örnek yük girin](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -100,7 +100,7 @@ Sonra tetikleyici olarak davranan ve kuyruğu dinleyen işlevi oluşturun.
 
 1. Azure portal, zaten açık değilse, işlev uygulamanızı açın ve genişletin. 
 
-1. İşlev uygulamanızın adı altında **işlevler** ' i genişletin. **İşlevler** bölmesinde **yeni işlev** ' ı seçin.
+1. İşlev uygulamanızın adı altında **işlevler**' i genişletin. **İşlevler** bölmesinde **yeni işlev**' ı seçin.
 
    !["Işlevler" i genişletin ve "yeni işlev" ı seçin](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
@@ -114,7 +114,7 @@ Sonra tetikleyici olarak davranan ve kuyruğu dinleyen işlevi oluşturun.
 
      ![Mevcut işlev uygulaması için şablon seçin](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. **Azure Service Bus kuyruğu tetikleyicisi** bölmesinde, Tetikleyiciniz için bir ad girin ve Azure Service Bus SDK dinleyicisini kullanan sıra için **Service Bus bağlantısını** ayarlayın `OnMessageReceive()` ve **Oluştur** ' u seçin.
+1. **Azure Service Bus kuyruğu tetikleyicisi** bölmesinde, Tetikleyiciniz için bir ad girin ve Azure Service Bus SDK dinleyicisini kullanan sıra için **Service Bus bağlantısını** ayarlayın `OnMessageReceive()` ve **Oluştur**' u seçin.
 
 1. Kuyruk iletisini tetikleyici olarak kullanarak, önceden oluşturulmuş mantıksal uygulama uç noktasını çağırmak için temel bir işlev yazın. İşlevinizi yazmadan önce şu hususları gözden geçirin:
 

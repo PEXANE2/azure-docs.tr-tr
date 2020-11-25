@@ -3,18 +3,21 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 11/18/2020
-ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888751"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999645"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
 Bu makalede, Azure VMware çözümünüz özel bulutunuz için şirket içi VMware HCX bağlayıcısının nasıl dağıtılacağı ve yapılandırılacağı gösterilmektedir. VMware HCX ile, VMware iş yüklerinizi Azure VMware çözümüne ve diğer bağlı sitelere çeşitli geçiş türleri aracılığıyla geçirebilirsiniz. Azure VMware çözümü HCX Cloud Manager 'ı dağıttığı ve yapılandıracağından, HCX bağlayıcısını şirket içi VMware veri merkezinizde indirmeniz, etkinleştirmeniz ve yapılandırmanız gerekir.
 
 VMware HCX gelişmiş Bağlayıcısı, Azure VMware çözümünde önceden dağıtılır. En fazla üç site bağlantısını (Şirket içi buluta veya buluta buluta) destekler. Üçten fazla site bağlantısına ihtiyacınız varsa [VMware HCX kurumsal](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) eklentisini etkinleştirmek için bir [destek isteği](https://portal.azure.com/#create/Microsoft.Support) gönderebilirsiniz. Eklenti şu anda önizleme aşamasındadır. 
+
+>[!Note]
+>VMware yapılandırma en yüksek Aracı, şirket içi bağlayıcı ve bulut Yöneticisi arasında en yüksek site çiftlerini 25 olacak şekilde tanımlıyor olsa da, lisans bu işlemi daha gelişmiş ve 10 Enterprise Edition için 3 ile sınırlandırır.
 
 >[!NOTE]
 >VMware HCX Enterprise, Önizleme hizmeti olarak Azure VMware çözümü ile kullanılabilir. Bu ücretsizdir ve bir önizleme hizmeti için hüküm ve koşullara tabidir. VMware HCX Enterprise hizmeti genel kullanıma sunulduğunda, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Ayrıca hizmeti kapatma veya devre dışı bırakma seçeneğiniz de vardır. VMware HCX Enterprise 'tan VMware HCX gelişmiş 'e basit bir düşürme yolu yoktur. Düşürme kararı verirseniz, kapalı kalma süresini yeniden dağıtmanız gerekir.
@@ -44,7 +47,7 @@ Dağıtımınızı hazırlarken aşağıdaki VMware belgelerini incelemenizi ön
 * [VMware HCX için gereken ağ bağlantı noktaları](https://ports.vmware.com/home/VMware-HCX)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 VMware HCX Enterprise kullanmayı planlıyorsanız, Azure VMware Çözüm desteği kanalları aracılığıyla etkinleştirme isteğinde bulunulduğunuzdan emin olun.
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442012"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000836"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından Delta kopyası
 
@@ -42,7 +42,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 
 Şablon aşağıdaki parametreleri tanımlar:
 - *Data_Source_Table_Name* , kaynak veritabanındaki, verileri yüklemek istediğiniz tablodur.
-- *Data_Source_WaterMarkColumn* , yeni veya güncelleştirilmiş satırları tanımlamak için kullanılan kaynak tablodaki sütunun adıdır. Bu sütunun türü genellikle *DateTime*, *Int*veya benzerdir.
+- *Data_Source_WaterMarkColumn* , yeni veya güncelleştirilmiş satırları tanımlamak için kullanılan kaynak tablodaki sütunun adıdır. Bu sütunun türü genellikle *DateTime*, *Int* veya benzerdir.
 - *Data_Destination_Container* , verilerin hedef deponuzda kopyalandığı yerin kök yoludur.
 - *Data_Destination_Directory* , verilerin hedef deponuzda kopyalandığı yerin kökünün altındaki Dizin yoludur.
 - *Data_Destination_Table_Name* , verilerin hedef deponuzda kopyalandığı yerdir ("Azure SYNAPSE Analytics (eskı ADıYLA SQL DW)" veri hedefi olarak seçildiğinde geçerlidir).
@@ -52,7 +52,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
-1. Yüklemek istediğiniz kaynak tabloyu bulun ve yeni veya güncelleştirilmiş satırları tanımlamak için kullanılabilecek yüksek filigranlı sütunu tanımlayın. Bu sütunun türü *DateTime*, *Int*veya benzeri olabilir. Yeni satır eklendikçe bu sütunun değeri artar. Aşağıdaki örnek kaynak tablosundan (data_source_table), *LastModifyTime* sütununu yüksek filigran sütunu olarak kullanabiliriz.
+1. Yüklemek istediğiniz kaynak tabloyu bulun ve yeni veya güncelleştirilmiş satırları tanımlamak için kullanılabilecek yüksek filigranlı sütunu tanımlayın. Bu sütunun türü *DateTime*, *Int* veya benzeri olabilir. Yeni satır eklendikçe bu sütunun değeri artar. Aşağıdaki örnek kaynak tablosundan (data_source_table), *LastModifyTime* sütununu yüksek filigran sütunu olarak kullanabiliriz.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -67,7 +67,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
             9   iiiiiiiii   2017-09-09 09:01:00.000
     ```
     
-2. SQL Server veya Azure SQL veritabanı 'nda, Delta veri yüklemesi için yüksek filigrandaki değeri depolamak üzere bir denetim tablosu oluşturun. Aşağıdaki örnekte, denetim tablosunun adı *su marktable*olur. Bu tabloda, *sulu markdeğer* üst-eşik değerini depolayan sütundur ve türü *DateTime*olur.
+2. SQL Server veya Azure SQL veritabanı 'nda, Delta veri yüklemesi için yüksek filigrandaki değeri depolamak üzere bir denetim tablosu oluşturun. Aşağıdaki örnekte, denetim tablosunun adı *su marktable* olur. Bu tabloda, *sulu markdeğer* üst-eşik değerini depolayan sütundur ve türü *DateTime* olur.
 
     ```sql
             create table watermarktable
@@ -110,15 +110,15 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
   
     ![İşlem hattını gözden geçirme](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. **Saklı yordam**' i seçin. **Saklı yordam adı**için **[dbo] öğesini seçin. [ update_watermark]**. **Parametreyi Içeri aktar**' ı seçin ve ardından **dinamik içerik Ekle**' yi seçin.  
+9. **Saklı yordam**' i seçin. **Saklı yordam adı** için **[dbo] öğesini seçin. [ update_watermark]**. **Parametreyi Içeri aktar**' ı seçin ve ardından **dinamik içerik Ekle**' yi seçin.  
 
     ![Saklı yordam etkinliğini ayarlama](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. ** \@ {Activity (' LookupCurrentWaterMark '). Output. FirstRow. Newsulu markvalue}** içeriğini yazın ve ardından **son**' u seçin.  
+10. **\@ {Activity (' LookupCurrentWaterMark '). Output. FirstRow. Newsulu markvalue}** içeriğini yazın ve ardından **son**' u seçin.  
 
     ![Saklı yordamın parametrelerinin içeriğini yazma](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
-11. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+11. **Hata Ayıkla**' yı seçin, **parametreleri** girin ve ardından **son**' u seçin.
 
     ![* * Hata Ayıkla * * öğesini seçin](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
@@ -136,7 +136,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
 
-14. İşlem hattını yeniden çalıştırmak için **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+14. İşlem hattını yeniden çalıştırmak için **Hata Ayıkla**' yı seçin, **parametreleri** girin ve ardından **son**' u seçin.
 
     Hedefe yalnızca yeni satırların kopyalandığını görürsünüz.
 

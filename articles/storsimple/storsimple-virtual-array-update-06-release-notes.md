@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967032"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000921"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 0,6 sürüm notları
 
@@ -52,7 +52,7 @@ Güncelleştirme 0,6 kritik bir güncelleştirmedir ve hemen dağıtılmalıdır
 
 Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmiştir.
 
-| Hayır. | Öne çıkan özelliği | Sorun |
+| Hayır. | Özellik | Sorun |
 | --- | --- | --- |
 | 1 |Güvenlik| Bu sürüm, kritik Windows güvenlik güncelleştirmeleri içerir. Bu güncelleştirmeyi hemen yüklemenizi öneririz.|
 | 2 |Geri Yükleme| Geri yükleme sırasında geri yükleme işinin tamamlanmasını engelleyecek bir yarış durumu vardı. Hata düzelttiğinde bu yarış durumu ele alınmaktadır.|
@@ -62,7 +62,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 
 Aşağıdaki tabloda, StorSimple Sanal dizisi için bilinen sorunların özeti verilmiştir ve önceki sürümlerden gelen sorunlar sürümü dahildir.
 
-| Hayır. | Öne çıkan özelliği | Sorun | Geçici çözüm/açıklamalar |
+| Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
 | **1.** |Güncelleştirmeler |Önizleme sürümünde oluşturulan sanal cihazlar desteklenen bir genel kullanılabilirlik sürümüne güncelleştirilemez. |Bu sanal cihazlar, olağanüstü durum kurtarma (DR) iş akışı kullanan genel kullanılabilirlik sürümü için yük devretmelidir. |
 | **2.** |Sağlanan veri diski |Belirtilen boyutta bir veri diski sağladıktan ve karşılık gelen StorSimple Sanal cihazını oluşturduktan sonra, veri diskini genişletmemelidir veya küçültmemelidir. Bu durum, cihazın yerel katmanlarında tüm verilerin kaybedilmesine neden olur. | |

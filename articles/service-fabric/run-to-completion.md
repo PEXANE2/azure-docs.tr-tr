@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000275"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
@@ -36,7 +36,7 @@ Bu makaleye devam etmeden önce [Service Fabric uygulama modeli][application-mod
 * **Tür:** **runtocompletion** Şu anda bu öznitelik için izin verilen tek değerdir.
 * **Yeniden Başlat:** Bu öznitelik, hata durumunda ServicePackage 'i kapsayan kod paketlerine uygulanan yeniden başlatma ilkesini belirtir. **Sıfır olmayan çıkış kodu** ile çıkış yapılan bir CodePackage başarısız olduğu kabul edilir. Bu öznitelik için izin verilen değerler **OnFailure** ve **hiçbir** şekilde varsayılan olarak **OnFailure** .
 
-Yeniden başlatma ilkesi **OnFailure**olarak ayarlandığında, herhangi bir CodePackage **(sıfır olmayan çıkış kodu)** başarısız olursa, yinelenen hatalar arasında geri dönerek yeniden başlatılır. Yeniden başlatma ilkesi **hiçbir**şekilde ayarlandığında, herhangi bir CodePackage başarısız olursa, DeployedServicePackage dağıtım durumu **başarısız** olarak Işaretlenir, ancak diğer kod paketlerinin yürütmeye devam etmesine izin verilir. ServicePackage 'i kapsayan tüm kod paketleri başarıyla tamamlanarak **(çıkış kodu 0)** çalışıyorsa, DeployedServicePackage dağıtım durumu **RanToCompletion**olarak işaretlenir. 
+Yeniden başlatma ilkesi **OnFailure** olarak ayarlandığında, herhangi bir CodePackage **(sıfır olmayan çıkış kodu)** başarısız olursa, yinelenen hatalar arasında geri dönerek yeniden başlatılır. Yeniden başlatma ilkesi **hiçbir** şekilde ayarlandığında, herhangi bir CodePackage başarısız olursa, DeployedServicePackage dağıtım durumu **başarısız** olarak Işaretlenir, ancak diğer kod paketlerinin yürütmeye devam etmesine izin verilir. ServicePackage 'i kapsayan tüm kod paketleri başarıyla tamamlanarak **(çıkış kodu 0)** çalışıyorsa, DeployedServicePackage dağıtım durumu **RanToCompletion** olarak işaretlenir. 
 
 ## <a name="complete-example-using-runtocompletion-semantics"></a>RunToCompletion semantiğini kullanarak örnek tamamlama
 
@@ -47,7 +47,7 @@ RunToCompletion semantiğini kullanarak komple bir örneğe bakalım.
 >
 > Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Aşağıdaki ServiceManifest.xml, kapsayıcıları temsil eden iki CodePackage oluşan bir ServicePackage 'i açıklar. *RunToCompletionCodePackage1* yalnızca **stdout** 'a bir ileti kaydeder ve çıkılıyor. *RunToCompletionCodePackage2* bir süre için geri döngü adresine ping atar ve sonra **0**, **1** veya **2**çıkış kodu ile çıkar.
+Aşağıdaki ServiceManifest.xml, kapsayıcıları temsil eden iki CodePackage oluşan bir ServicePackage 'i açıklar. *RunToCompletionCodePackage1* yalnızca **stdout** 'a bir ileti kaydeder ve çıkılıyor. *RunToCompletionCodePackage2* bir süre için geri döngü adresine ping atar ve sonra **0**, **1** veya **2** çıkış kodu ile çıkar.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ Aşağıdaki ServiceManifest.xml, kapsayıcıları temsil eden iki CodePackage o
 </ServiceManifest>
 ```
 
-Aşağıdaki ApplicationManifest.xml, yukarıda açıklanan ServiceManifest.xml dayalı bir uygulamayı açıklar. **OnFailure**yeniden başlatma Ilkesiyle *Windowsruntocompletionservicepackage* için **runtocompletion** **ExecutionPolicy** öğesini belirtir. *Windowsruntocompletionservicepackage*'in etkinleştirilmesinden sonra, bileşen kod paketleri başlatılır. *RunToCompletionCodePackage1* ilk etkinleştirme sırasında başarıyla çıkış olmalıdır. Bununla birlikte, *RunToCompletionCodePackage2* başarısız olabilir **(sıfır olmayan çıkış kodu)**, bu durumda yeniden başlatma ilkesi **OnFailure**olduğundan yeniden başlatılır.
+Aşağıdaki ApplicationManifest.xml, yukarıda açıklanan ServiceManifest.xml dayalı bir uygulamayı açıklar. **OnFailure** yeniden başlatma Ilkesiyle *Windowsruntocompletionservicepackage* için **runtocompletion** **ExecutionPolicy** öğesini belirtir. *Windowsruntocompletionservicepackage*'in etkinleştirilmesinden sonra, bileşen kod paketleri başlatılır. *RunToCompletionCodePackage1* ilk etkinleştirme sırasında başarıyla çıkış olmalıdır. Bununla birlikte, *RunToCompletionCodePackage2* başarısız olabilir **(sıfır olmayan çıkış kodu)**, bu durumda yeniden başlatma ilkesi **OnFailure** olduğundan yeniden başlatılır.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

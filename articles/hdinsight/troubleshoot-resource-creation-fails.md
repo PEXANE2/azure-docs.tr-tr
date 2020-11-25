@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: 2e9f6898dba559f557f49cc0ee9ff39644da243f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287346"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000700"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>Azure HDInsight 'ta kaynak oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -33,15 +33,15 @@ Aboneliğiniz bir bölge için çekirdek sayısını sınırlandıracak şekilde
 
 Kota artırma isteğinde bulunmak için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)gidin ve **Yardım + Destek** ' i seçin.
+1. [Azure Portal](https://portal.azure.com)gidin ve **Yardım + Destek**' i seçin.
 
-1. **Yeni destek isteği** ’ni seçin.
+1. **Yeni destek isteği**’ni seçin.
 
 1. **Yeni destek isteği** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
 
    * **Sorun türü:** **Hizmet ve abonelik sınırlarını (kotalar)** seçin.
    * **Abonelik:** Değiştirmek istediğiniz aboneliği seçin.
-   * **Kota türü:** **HDInsight** ' ı seçin.
+   * **Kota türü:** **HDInsight**' ı seçin.
 
 Daha fazla bilgi için bkz. [Çekirdeği artırmak için destek bileti oluşturma](hdinsight-capacity-planning.md#quotas).
 

@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284468"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000683"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight 'ta betik eylemleri sorunlarını giderme
 
@@ -45,13 +45,13 @@ Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler kü
 
     ![Betik eylemi günlükleri](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    Bu dizin altında Günlükler, **baş düğümüne** , **çalışan düğümü** ve **Zookeeper düğümü** için ayrı olarak düzenlenir. Aşağıdaki örneklere bakın:
+    Bu dizin altında Günlükler, **baş düğümüne**, **çalışan düğümü** ve **Zookeeper düğümü** için ayrı olarak düzenlenir. Aşağıdaki örneklere bakın:
 
-    * **Headnode** : `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Headnode**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Çalışan düğümü** : `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Çalışan düğümü**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper düğümü** : `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper düğümü**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Karşılık gelen konağın tüm **stdout** ve **stderr** depolama hesabına yüklenir. Her betik eylemi için bir **output- \* . txt** ve **Errors- \* . txt** vardır. **Output-*. txt** dosyası, konakta çalıştırılan betiğin URI 'si hakkında bilgiler içerir. Aşağıdaki metin bu bilgilere bir örnektir:
 
@@ -59,7 +59,7 @@ Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler kü
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
     ```
 
-* Yinelenen olarak aynı ada sahip bir betik eylemi kümesi oluşturmanız mümkündür. Bu durumda, ilgili günlükleri **Tarih** klasörü adı temelinde ayırabilirsiniz. Örneğin, bir kümenin klasör yapısı, farklı tarihlerde oluşturulan **MyCluster** , aşağıdaki günlük girdilerine benzer şekilde görünür:
+* Yinelenen olarak aynı ada sahip bir betik eylemi kümesi oluşturmanız mümkündür. Bu durumda, ilgili günlükleri **Tarih** klasörü adı temelinde ayırabilirsiniz. Örneğin, bir kümenin klasör yapısı, farklı tarihlerde oluşturulan **MyCluster**, aşağıdaki günlük girdilerine benzer şekilde görünür:
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 

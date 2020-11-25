@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
 ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83727126"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000887"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -38,7 +38,7 @@ Her yol, bir adres ön eki ve sonraki atlama türünü içerir. Alt ağdan ayrı
 |Varsayılan|0.0.0.0/0                                               |İnternet       |
 |Varsayılan|10.0.0.0/8                                              |Yok           |
 |Varsayılan|192.168.0.0/16                                          |Yok           |
-|Varsayılan|100.64.0.0/10                                           |Hiçbiri           |
+|Varsayılan|100.64.0.0/10                                           |Yok           |
 
 Önceki tabloda listelenen sonraki atlama türleri, Azure’ın listelenen adres ön ekine yönelik giden trafiği nasıl yönlendirdiğini göstermektedir. Sonraki atlama türlerinin açıklamaları:
 
@@ -227,7 +227,7 @@ Her bir yol kimliğinin açıklaması aşağıdaki gibidir:
 1. 10.0.0.0/16, sanal ağ için adres alanında tanımlanmış tek adres alanı olduğundan Azure bu yolu *Virtual-network-1* içindeki tüm alt ağlar için otomatik olarak eklemiştir. Ön ek 0.0.0.0/0’dan uzun olduğu ve diğer yolların herhangi birine ait adres ön ekleri dahilinde olmadığı için, yol ID2’deki kullanıcı tanımlı yol oluşturulmasaydı, 10.0.0.1 ile 10.0.255.254 arasındaki adrese gönderilen trafik sanal ağ içinde yönlendirilirdi. Kullanıcı tanımlı bir yol olan ID2 eklendiğinde, varsayılan yol ile aynı ön eke sahip olduğundan ve kullanıcı tanımlı yollar varsayılan yolları geçersiz kıldığından Azure, *Etkin* olan durumu *Geçersiz* olarak değiştirmiştir. Kullanıcı tanımlı ID2 yolunun içinde bulunduğu yol tablosu *Subnet2* ile ilişkili olmadığından, bu yolun durumu *Subnet2* için hala *Etkin* şeklindedir.
 2. 10.0.0.0/16 adres ön eki için kullanıcı tanımlı yol *Virtual-network-1* sanal ağındaki *Subnet1* alt ağı ile ilişkili olduğunda Azure bu yolu eklemiştir. Adres sanal gereç sanal makinesine atanmış özel IP adresi olduğu için kullanıcı tanımlı yol, sanal gerecin IP adresi olarak 10.0.100.4’ü belirtir. Bu yolun içinde bulunduğu yol tablosu *Subnet2* ile ilişkili değildir, bu nedenle *Subnet2* yol tablosunda görünmez. Bu yol, sanal ağ sonraki atlama türü üzerinden sanal ağ içindeki 10.0.0.1 ve 10.0.255.254 adreslerine trafiği otomatik olarak yönlendiren 10.0.0.0/16 ön eki (ID1) için varsayılan yolu geçersiz kılar. Bu yol, giden tüm trafiği bir sanal gereç üzerinden yönlendirmeye zorlayan [gereksinim](#requirements) 3’ü karşılar.
 3. 10.0.0.0/24 adres ön eki için kullanıcı tanımlı yol *Subnet1* alt ağı ile ilişkili olduğunda Azure bu yolu eklemiştir. 10.0.0.1 ile 10.0.0.254 arasındaki adresleri hedefleyen trafik, ID2 yolundan daha uzun bir ön eke sahip olduğu için önceki kuralda (ID2) belirtilen sanal gerece yönlendirilmek yerine alt ağda kalır. Bu yol *Subnet2* ile ilişkili değildir, bu nedenle *Subnet2* yol tablosunda görünmez. Bu yol, *Subnet1* içindeki trafik için ID2 yolunu etkili bir şekilde geçersiz kılar. Bu yol [gereksinim](#requirements) 3’ü karşılar.
-4. Sanal ağ *Virtual-network-2* ile eşlendiğinde Azure, *Virtual-network-1* içindeki tüm alt ağlar için ID 4 ve 5’teki yolları otomatik olarak eklemiştir. *Virtual-network-2*’nin adres alanında iki adres aralığı bulunur: 10.1.0.0/16 ve 10.2.0.0/16. Bu nedenle Azure her aralık için bir yol eklemiştir. Ön ek 0.0.0.0/0’dan uzun olduğu ve diğer yolların herhangi birine ait adres ön ekleri dahilinde olmadığı için, ID 6 ve 7’deki kullanıcı tanımlı yollar oluşturulmasaydı, 10.1.0.1-10.1.255.254 ile 10.2.0.1-10.2.255.254 arasındaki adrese gönderilen trafik eşlenmiş sanal ağa yönlendirilirdi. ID 6 ve 7’deki yollar ID 4 ve 5’teki yollarla aynı ön eklere sahip olduğundan ve kullanıcı tanımlı yollar varsayılan yolları geçersiz kıldığından bu yollar eklendiğinde Azure, *Etkin* olan durumu *Geçersiz* olarak değiştirmiştir. 4 ve 5. Kimliklerde bulunan Kullanıcı tanımlı yolların bulunduğu yol tablosu, *Subnet2*ile ilişkili olmadığından, kimlik 4 ve 5 ' teki yolların durumu hala *Subnet2*için *etkindir* . [Gereksinim](#requirements) 1’i karşılamak için bir sanal ağ eşlemesi oluşturulmuştur.
+4. Sanal ağ *Virtual-network-2* ile eşlendiğinde Azure, *Virtual-network-1* içindeki tüm alt ağlar için ID 4 ve 5’teki yolları otomatik olarak eklemiştir. *Virtual-network-2*’nin adres alanında iki adres aralığı bulunur: 10.1.0.0/16 ve 10.2.0.0/16. Bu nedenle Azure her aralık için bir yol eklemiştir. Ön ek 0.0.0.0/0’dan uzun olduğu ve diğer yolların herhangi birine ait adres ön ekleri dahilinde olmadığı için, ID 6 ve 7’deki kullanıcı tanımlı yollar oluşturulmasaydı, 10.1.0.1-10.1.255.254 ile 10.2.0.1-10.2.255.254 arasındaki adrese gönderilen trafik eşlenmiş sanal ağa yönlendirilirdi. ID 6 ve 7’deki yollar ID 4 ve 5’teki yollarla aynı ön eklere sahip olduğundan ve kullanıcı tanımlı yollar varsayılan yolları geçersiz kıldığından bu yollar eklendiğinde Azure, *Etkin* olan durumu *Geçersiz* olarak değiştirmiştir. 4 ve 5. Kimliklerde bulunan Kullanıcı tanımlı yolların bulunduğu yol tablosu, *Subnet2* ile ilişkili olmadığından, kimlik 4 ve 5 ' teki yolların durumu hala *Subnet2* için *etkindir* . [Gereksinim](#requirements) 1’i karşılamak için bir sanal ağ eşlemesi oluşturulmuştur.
 5. ID4 ile aynı açıklama.
 6. 10.1.0.0/16 ve 10.2.0.0/16 adres ön ekleri için kullanıcı tanımlı yollar *Subnet1* alt ağı ile ilişkili olduğunda Azure bu yolu ve ID7’deki yolu eklemiştir. Kullanıcı tanımlı yollar varsayılan yolları geçersiz kıldığı için, 10.1.0.1-10.1.255.254 ile 10.2.0.1-10.2.255.254 arasındaki adresleri hedefleyen trafik eşlenmiş sanal ağa yönlendirilmek yerine Azure tarafından bırakılır. Yollar *Subnet2* ile ilişkili değildir, bu nedenle *Subnet2* yol tablosunda görünmez. Yollar *Subnet1*’den ayrılan trafik için ID4 ve ID5 yollarını geçersiz kılar. ID6 ve ID7 yolları, diğer sanal ağı hedefleyen trafiği bırakmaya yönelik [gereksinim](#requirements) 3’ü karşılar.
 7. ID6 ile aynı açıklama.
@@ -249,7 +249,7 @@ Resimdeki *Subnet2* için yol tablosu aşağıdaki yolları içerir:
 |Varsayılan |Etkin |10.10.0.0/16        |Sanal ağ geçidi   |[X.X.X.X]          |
 |Varsayılan |Etkin |0.0.0.0/0           |İnternet                  |                   |
 |Varsayılan |Etkin |10.0.0.0/8          |Yok                      |                   |
-|Varsayılan |Etkin |100.64.0.0/10       |Hiçbiri                      |                   |
+|Varsayılan |Etkin |100.64.0.0/10       |Yok                      |                   |
 |Varsayılan |Etkin |192.168.0.0/16      |Yok                      |                   |
 
 *Subnet2* yol tablosu Azure tarafından oluşturulan tüm varsayılan yolları ve isteğe bağlı VNet eşlemesi ile Sanal ağ geçidi isteğe bağlı yollarını içerir. Sanal ağa ağ geçidi ve eşleme eklendiğinde Azure, sanal ağ içindeki tüm alt ağlara isteğe bağlı yollar eklemiştir. 0.0.0.0/0 adres ön eki için Kullanıcı tanımlı yol *Subnet1*'ye eklendiğinde Azure, 10.0.0.0/8, 192.168.0.0/16 ve 100.64.0.0/10 adres ön eklerinin yollarını *Subnet1* Route tablosundan kaldırdı.  

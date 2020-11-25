@@ -7,18 +7,18 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539150"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000309"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
 
 ## <a name="backup-happens-automatically"></a>Yedekleme otomatik olarak gerçekleşir
 MySQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
 
@@ -39,7 +39,7 @@ Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için b
 Yedekleme saklama süresi bir sunucuda aşağıdaki adımlarla değiştirilebilir:
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. MySQL için Azure veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
-3. Menüde, **Ayarlar** ' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
+3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.
 :::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Yedekleme bekletme süresi arttı":::
 
@@ -55,17 +55,17 @@ MySQL için Azure veritabanı, sunucuyu bir zaman noktasına geri yüklemenize v
 Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 1. Azure portal, MySQL için Azure veritabanı sunucunuzu seçin. 
 
-2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle** ' yi seçin.
+2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle**' yi seçin.
 
    :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="MySQL için Azure veritabanı-genel bakış-geri yükleme düğmesi":::
 
 3. Geri yükleme formunu gereken bilgilerle doldurun:
 
    :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="MySQL için Azure veritabanı-geri yükleme bilgileri":::
-   - **Geri yükleme noktası** : geri yüklemek istediğiniz zaman noktasını seçin.
-   - **Hedef sunucu** : yeni sunucu için bir ad sağlayın.
-   - **Konum** : bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
-   - **Fiyatlandırma katmanı** : bir zaman içinde geri yükleme yaparken bu parametreleri değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
+   - **Geri yükleme noktası**: geri yüklemek istediğiniz zaman noktasını seçin.
+   - **Hedef sunucu**: yeni sunucu için bir ad sağlayın.
+   - **Konum**: bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
+   - **Fiyatlandırma katmanı**: bir zaman içinde geri yükleme yaparken bu parametreleri değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
 
 4. Sunucuyu bir zaman noktasına geri yüklemek üzere geri yüklemek için **Tamam** ' a tıklayın. 
 
@@ -84,7 +84,7 @@ Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VN
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
 Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, MySQL için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
 
-1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları**  >  **MySQL için Azure veritabanı** ' nı seçin.
+1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları**  >  **MySQL için Azure veritabanı**' nı seçin.
 
    :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="MySQL için Azure veritabanı 'na gidin.":::
  
@@ -106,7 +106,7 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Yedekle 'yi seçin.":::
 
-6. Sunucu, **sanal çekirdek** sayısı, **yedekleme saklama süresi** , **yedekleme artıklığı seçeneği** , **altyapı sürümü** ve **yönetici kimlik bilgileri** için varsayılan değerleri sağlar. **Devam** ’ı seçin. 
+6. Sunucu, **sanal çekirdek** sayısı, **yedekleme saklama süresi**, **yedekleme artıklığı seçeneği**, **altyapı sürümü** ve **yönetici kimlik bilgileri** için varsayılan değerleri sağlar. **Devam**’ı seçin. 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Yedeklemeye devam edin.":::
 
@@ -118,7 +118,7 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
 
 8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 
-9. Sunucuyu sağlamak için **Oluştur** ’u seçin. Bu işlem birkaç dakika sürebilir.
+9. Sunucuyu sağlamak için **Oluştur**’u seçin. Bu işlem birkaç dakika sürebilir.
 
 Coğrafi geri yükleme tarafından oluşturulan yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 

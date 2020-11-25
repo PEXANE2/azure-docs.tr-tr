@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108890"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000428"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Ortak uyarı şemasını Logic Apps ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, tüm uyarılarınızı işlemek için ortak uyarı şemasının kul
 [Ortak uyarı şeması](./alerts-common-schema.md) , tüm farklı uyarı türlerinizin genelinde standartlaştırılmış ve GENIŞLETILEBILIR bir JSON şeması sağlar. Ortak uyarı şeması, yararlanılabilir programlı olarak Web kancaları, runbook 'lar ve Logic Apps aracılığıyla yararlıdır. Bu makalede, tüm uyarılarınızı işlemek için tek bir Logic App 'in nasıl yazıldığı gösterilmektedir. Aynı ilkeler diğer programlama yöntemlerine de uygulanabilir. Bu makalede açıklanan mantıksal uygulama, [' Essential ' alanları](alerts-common-schema-definitions.md#essentials)için iyi tanımlanmış değişkenler oluşturur ve ayrıca [Uyarı türüne](alerts-common-schema-definitions.md#alert-context) özgü mantığı nasıl işleyebileceğinizi açıklar.
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu makalede, okuyucunun öğrenildiği varsayılmaktadır 
 * Uyarı kurallarını ayarlama ([ölçüm](./alerts-metric.md), [günlük](./alerts-log.md), [etkinlik günlüğü](./alerts-activity-log.md))

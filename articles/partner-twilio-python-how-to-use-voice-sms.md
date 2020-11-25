@@ -14,11 +14,11 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87850160"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000445"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Python 'da ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -41,21 +41,21 @@ Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Restst
 Twilio API 'sinin önemli yönleri, Twilio Verbs ve Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio fiilleri
-API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** .
+API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için **&lt; söyleyin &gt;** .
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir. [Twilio biçimlendirme dili belgeleri][twiml]aracılığıyla diğer fiiller ve yetenekler hakkında bilgi edinin.
 
-* ** &lt; Çevir &gt; **: çağrıyı başka bir telefona bağlar.
-* ** &lt; Topla &gt; **: telefon tuş takımında girilen sayısal rakamları toplar.
-* ** &lt; Kapat &gt; **: bir çağrıyı sonlandırır.
-* ** &lt; Duraklat &gt; **: belirtilen saniye sayısı için sessizce bekler.
-* ** &lt; Oynat &gt; **: bir ses dosyası çalar.
-* ** &lt; Kuyruk &gt; **: ' i çağıranlar kuyruğuna ekleyin.
-* ** &lt; Kayıt &gt; **: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
-* ** &lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
-* ** &lt; Reddet &gt; **: size faturalandırma olmadan Twilio numaranız için gelen çağrıyı reddeder.
-* ** &lt; Deyin &gt; **: bir çağrıda yapılan metni konuşmaya dönüştürür.
-* ** &lt; SMS &gt; **: SMS iletisi gönderir.
+* **&lt; Çevir &gt;**: çağrıyı başka bir telefona bağlar.
+* **&lt; Topla &gt;**: telefon tuş takımında girilen sayısal rakamları toplar.
+* **&lt; Kapat &gt;**: bir çağrıyı sonlandırır.
+* **&lt; Duraklat &gt;**: belirtilen saniye sayısı için sessizce bekler.
+* **&lt; Oynat &gt;**: bir ses dosyası çalar.
+* **&lt; Kuyruk &gt;**: ' i çağıranlar kuyruğuna ekleyin.
+* **&lt; Kayıt &gt;**: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
+* **&lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
+* **&lt; Reddet &gt;**: size faturalandırma olmadan Twilio numaranız için gelen çağrıyı reddeder.
+* **&lt; Deyin &gt;**: bir çağrıda yapılan metni konuşmaya dönüştürür.
+* **&lt; SMS &gt;**: SMS iletisi gönderir.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML, bir çağrıyı veya SMS 'yi nasıl işleyebileceğini bilgilendirmek için Twilio fiillerini temel alan XML tabanlı yönergelerin bir kümesidir.
@@ -76,7 +76,7 @@ Twilio fiilleri, öznitelikleri ve TwiML hakkında daha fazla bilgi için bkz. [
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio hesabı oluşturma
 Bir Twilio hesabı almaya hazırsanız, [TRY Twilio][try_twilio]' de kaydolun. Ücretsiz bir hesapla başlayabilir ve hesabınızı daha sonra yükseltebilirsiniz.
 
-Bir Twilio hesabı için kaydolduğunuzda, bir hesap SID 'SI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap SID 'SI ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci**etiketli alanlarda [Twilio konsolunda][twilio_console]görüntülenebilir.
+Bir Twilio hesabı için kaydolduğunuzda, bir hesap SID 'SI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap SID 'SI ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci** etiketli alanlarda [Twilio konsolunda][twilio_console]görüntülenebilir.
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Python uygulaması oluşturma
 Twilio hizmetini kullanan ve Azure 'da çalışan bir Python uygulaması, Twilio hizmetini kullanan diğer hiçbir Python uygulamasından farklı değildir. Twilio Hizmetleri REST tabanlı olduğundan ve Python 'dan birkaç şekilde çağrılabilecek olsa da, bu makale [GitHub 'Dan Python Için Twilio kitaplığı][twilio_python]ile Twilio hizmetlerinin nasıl kullanılacağına odaklanacaktır. Python için Twilio kitaplığını kullanma hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] ..
@@ -86,7 +86,7 @@ Twilio hizmetini kullanan ve Azure 'da çalışan bir Python uygulaması, Twilio
 ### <a name="add-an-incoming-rule"></a>Gelen kuralı ekleme
   1. [Ağ güvenlik grubu] [azure_nsg] sayfasına gidin.
   2. Sanal makinenize karşılık gelen ağ güvenlik grubunu seçin.
-  3. **80 numaralı bağlantı noktası**için ekleme ve **giden kuralı** . Herhangi bir adresten gelen bir adrese izin vermeyi unutmayın.
+  3. **80 numaralı bağlantı noktası** için ekleme ve **giden kuralı** . Herhangi bir adresten gelen bir adrese izin vermeyi unutmayın.
 
 ### <a name="set-the-dns-name-label"></a>DNS adı etiketini ayarla
   1. [Genel IP Adresleri] [azure_ips] sayfasına gidin.

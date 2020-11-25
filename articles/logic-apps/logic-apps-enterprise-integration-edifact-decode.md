@@ -9,11 +9,11 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322487"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000020"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps için EDIOLGU iletilerinin kodunu çözün
 
@@ -61,7 +61,7 @@ Kod Çözme EDIFACT ileti bağlayıcısıyla EDI ve iş ortağına özgü özell
 
     ![Tümleştirme hesabı bağlantısı oluşturuldu](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Örneğin:
+    Örnek:
 
     ![Kod çözme için EDIOLGU düz dosya iletisini seçin](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 

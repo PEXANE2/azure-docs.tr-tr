@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000258"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Azure sanal makine olağanüstü durum kurtarma ile hızlandırılmış ağ
 
@@ -24,7 +24,7 @@ Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV
 
 Azure Site Recovery, farklı bir Azure bölgesine yük devredilen Azure sanal makineleri için hızlandırılmış ağ avantajlarından faydalanmanızı sağlar. Bu makalede, Azure Site Recovery ile çoğaltılan Azure sanal makineleri için hızlandırılmış ağı nasıl etkinleştirebileceğinizi anlatmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, şunu anladığınızdan emin olun:
 -   Azure sanal makine [çoğaltma mimarisi](azure-to-azure-architecture.md)

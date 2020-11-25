@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307577"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000649"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Web kancalarını kullanarak ServiceNow ile Azure hizmet durumu uyarıları gönderme
 
@@ -19,7 +19,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 
 1.  Kaydolduğunuzdan ve [ServiceNow](https://www.servicenow.com/) hesabınızda oturum açtığınızdan emin olun.
 
-1.  ServiceNow içindeki **sistem Web Hizmetleri** bölümüne gidin ve **Betikleştirilmiş REST API 'leri**seçin.
+1.  ServiceNow içindeki **sistem Web Hizmetleri** bölümüne gidin ve **Betikleştirilmiş REST API 'leri** seçin.
 
     ![ServiceNow 'daki "komut dosyalı Web hizmeti" bölümü](./media/webhook-alerts/servicenow-sws-section.png)
 
@@ -150,7 +150,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
 1. Yeni bir eylem grubuyla bir uyarı oluşturmak için [Bu makaledeki](./alerts-activity-log-service-notifications-portal.md) 1 ' den 8 ' e kadar olan adımları izleyin.
 
-1. **Eylem**listesinde tanımlayın:
+1. **Eylem** listesinde tanımlayın:
 
     a. **Eylem türü:** *Web kancası*
 
@@ -167,7 +167,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 
 1. Düzenlemek istediğiniz eylem grubunu bulun ve seçin.
 
-1. **Eylem**listesine ekle:
+1. **Eylem** listesine ekle:
 
     a. **Eylem türü:** *Web kancası*
 

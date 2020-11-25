@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-dps
 author: msebolt
 ms.author: v-masebo
@@ -9,11 +9,11 @@ ms.topic: include
 ms.service: iot-dps
 ms.custom: include file
 ms.openlocfilehash: 43355aac18b71f55ce157f7e275e2efd9106acac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "67188494"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001429"
 ---
 > [!div class="op_single_selector"]
 > * [,](../articles/iot-dps/quick-create-simulated-device-x509.md)

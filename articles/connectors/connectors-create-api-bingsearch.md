@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284073"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999612"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Bing Arama sonuçları bulma
 
@@ -52,14 +52,14 @@ Ya da bağlantınız zaten varsa, tetikleyici için gerekli bilgileri sağlayın
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Arama sorgusu | Evet | <*arama sözcükleri*> | Kullanmak istediğiniz arama anahtar sözcüklerini girin. |
-   | Pazara | Evet | <*ayarlar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
-   | Güvenli Arama | Evet | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
-   | Sayı | Hayır | <*sonuç sayısı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
-   | Uzaklık | Hayır | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
+   | Arama sorgusu | Yes | <*arama sözcükleri*> | Kullanmak istediğiniz arama anahtar sözcüklerini girin. |
+   | Pazara | Yes | <*ayarlar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
+   | Güvenli Arama | Yes | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
+   | Count | No | <*sonuç sayısı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
+   | Uzaklık | No | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
    |||||
 
-   Örneğin:
+   Örnek:
 
    ![Tetikleyiciyi ayarla](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -103,11 +103,11 @@ Eylemler listesinden istediğiniz eylemi seçin.
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Arama sorgusu | Evet | <*Arama ifadesi*> | Tetikleyici sonuçlarını sorgulamak için bir ifade girin. Dinamik içerik listesindeki alanlardan seçim yapabilir veya ifade Oluşturucusu ile bir ifade oluşturabilirsiniz. |
-   | Pazara | Evet | <*ayarlar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
-   | Güvenli Arama | Evet | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
-   | Sayı | Hayır | <*sonuç sayısı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
-   | Uzaklık | Hayır | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
+   | Arama sorgusu | Yes | <*Arama ifadesi*> | Tetikleyici sonuçlarını sorgulamak için bir ifade girin. Dinamik içerik listesindeki alanlardan seçim yapabilir veya ifade Oluşturucusu ile bir ifade oluşturabilirsiniz. |
+   | Pazara | Yes | <*ayarlar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
+   | Güvenli Arama | Yes | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
+   | Count | No | <*sonuç sayısı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
+   | Uzaklık | No | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
    |||||
 
    Örneğin, kategori adı "Tech" sözcüğünü içeren bu sonuçların olmasını istediğinizi varsayalım.
@@ -150,12 +150,12 @@ Eylemler listesinden istediğiniz eylemi seçin.
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Bağlantı Adı | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | API Sürümü | Evet | <*API sürümü*> | Varsayılan olarak, Bing Arama API sürümü geçerli sürüme ayarlanır. Daha önceki bir sürümü gerektiği gibi seçebilirsiniz. |
-   | API Anahtarı | Evet | <*API anahtarı*> | Daha önce aldığınız Bing Arama API anahtarı. Anahtarınız yoksa [API anahtarınızı hemen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)alın. |  
+   | Bağlantı Adı | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
+   | API Sürümü | Yes | <*API sürümü*> | Varsayılan olarak, Bing Arama API sürümü geçerli sürüme ayarlanır. Daha önceki bir sürümü gerektiği gibi seçebilirsiniz. |
+   | API Anahtarı | Yes | <*API anahtarı*> | Daha önce aldığınız Bing Arama API anahtarı. Anahtarınız yoksa [API anahtarınızı hemen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)alın. |  
    |||||  
 
-   Örneğin:
+   Örnek:
 
    ![Bağlantı oluşturma](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 

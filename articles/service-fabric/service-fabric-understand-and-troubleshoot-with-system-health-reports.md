@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260187"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000666"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Sorun gidermek için sistem durum raporlarını kullanma
 Azure Service Fabric bileşenleri, kümedeki tüm varlıklarda sistem durumu raporlarını doğrudan kutudan çıkar. Sistem [durumu deposu](service-fabric-health-introduction.md#health-store) , sistem raporlarına göre varlıkları oluşturur ve siler. Ayrıca, bunları varlık etkileşimleri yakalayan bir hiyerarşide düzenler.
@@ -116,7 +116,7 @@ HealthEvents          :
 
 
 ### <a name="certificate-expiration"></a>Sertifika süre sonu
-**System. fabricnode** , düğüm tarafından kullanılan sertifikaların süresi dolmak üzere bir uyarı bildirir. Düğüm başına üç sertifika vardır: **Certificate_cluster**, **Certificate_server**ve **Certificate_default_client**. Süre sonu en az iki hafta sonra, raporun sistem durumu Tamam olur. Süre sonu iki hafta içinde olduğunda, rapor türü bir uyarıdır. Bu olayların TTL 'si sonsuzdur ve düğüm kümeden ayrıldığında kaldırılır.
+**System. fabricnode** , düğüm tarafından kullanılan sertifikaların süresi dolmak üzere bir uyarı bildirir. Düğüm başına üç sertifika vardır: **Certificate_cluster**, **Certificate_server** ve **Certificate_default_client**. Süre sonu en az iki hafta sonra, raporun sistem durumu Tamam olur. Süre sonu iki hafta içinde olduğunda, rapor türü bir uyarıdır. Bu olayların TTL 'si sonsuzdur ve düğüm kümeden ayrıldığında kaldırılır.
 
 * **SourceId**: System. fabricnode
 * **Özellik**: **sertifikayla** başlar ve sertifika türü hakkında daha fazla bilgi içerir.
@@ -126,7 +126,7 @@ HealthEvents          :
 Service Fabric Load Balancer düğüm kapasitesi ihlali algıladığında bir uyarı bildirir.
 
 * **SourceId**: System. PLB
-* **Özellik**: **kapasiteyle**başlar.
+* **Özellik**: **kapasiteyle** başlar.
 * **Sonraki adımlar**: belirtilen ölçümleri denetleyin ve düğümdeki geçerli kapasiteyi görüntüleyin.
 
 ### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Kaynak idare ölçümleri için düğüm kapasitesi uyumsuzluğu
@@ -144,7 +144,7 @@ Uygulama oluşturulduğunda veya güncelleştirilirken raporları Tamam olarak S
 
 * **SourceId**: System.cm
 * **Özellik**: durum.
-* **Sonraki adımlar**: uygulama oluşturulduysa veya güncelleştirilirse, Küme Yöneticisi sistem durumu raporunu içermelidir. Aksi takdirde, bir sorgu vererek uygulamanın durumunu kontrol edin. Örneğin, **Get-ServiceFabricApplication-ApplicationName** *ApplicationName*PowerShell cmdlet 'ini kullanın.
+* **Sonraki adımlar**: uygulama oluşturulduysa veya güncelleştirilirse, Küme Yöneticisi sistem durumu raporunu içermelidir. Aksi takdirde, bir sorgu vererek uygulamanın durumunu kontrol edin. Örneğin, **Get-ServiceFabricApplication-ApplicationName** *ApplicationName* PowerShell cmdlet 'ini kullanın.
 
 Aşağıdaki örnek, **Fabric:/WordCount** uygulamasındaki durum olayını gösterir:
 
@@ -386,7 +386,7 @@ Her çoğaltma için sistem durumu raporu şunları içerir:
 **System. PLB** , bir çoğaltma kısıtlaması ihlali algılarsa bir uyarı bildirir ve tüm bölüm çoğaltmalarını yerleştiremiyor. Rapor ayrıntıları hangi kısıtlamaların ve özelliklerin çoğaltma yerleşimini engellediğini gösterir.
 
 * **SourceId**: System. PLB
-* **Özellik**: **ReplicaConstraintViolation**ile başlar.
+* **Özellik**: **ReplicaConstraintViolation** ile başlar.
 
 ## <a name="replica-system-health-reports"></a>Çoğaltma sistem durumu raporları
 Yeniden yapılandırma aracı bileşenini temsil eden **System. ra**, çoğaltma durumu için yetkilidir.
@@ -425,10 +425,10 @@ Bu özellik, bir çoğaltmayı açmaya çalışırken, bir çoğaltmayı kapatan
 Bu sistem durumu uyarıları, eyleme yerel olarak birkaç kez yeniden denendikten sonra tetiklenir (ilkeye bağlı olarak). Service Fabric en yüksek eşiğe kadar yeniden dener. En fazla eşiğe ulaşıldığında, durumu düzeltmek için işlem yapmayı deneyebilir. Bu girişim, bu düğümdeki eylemde bulunduğu için bu uyarıların temizlenmesine neden olabilir. Örneğin, bir çoğaltma bir düğümde açılmazsa, Service Fabric bir sistem durumu uyarısı oluşturur. Çoğaltma açık olmaya devam ederse, Service Fabric kendi kendine onarım işlevi görür. Bu eylem, aynı işlemi başka bir düğümde denemeyi gerektirebilir. Bu girişim, bu çoğaltma için oluşturulan uyarının temizlenmesine neden olur. 
 
 * **SourceId**: System. ra
-* **Özellik**: **replicaopenstatus**, **Replicaclosestatus**ve **replicachangerolestatus**.
+* **Özellik**: **replicaopenstatus**, **Replicaclosestatus** ve **replicachangerolestatus**.
 * **Sonraki adımlar**: işlemin neden başarısız olduğunu belirlemek için hizmet kodunu veya kilitlenme dökümlerini araştırın.
 
-Aşağıdaki örnek, Open yönteminden alınan bir çoğaltmanın sistem durumunu gösterir `TargetInvocationException` . Açıklama hata noktasını, **Istatefulservicereplica. Open**, **TargetInvocationException**özel durum türünü ve yığın izlemesini içerir.
+Aşağıdaki örnek, Open yönteminden alınan bir çoğaltmanın sistem durumunu gösterir `TargetInvocationException` . Açıklama hata noktasını, **Istatefulservicereplica. Open**, **TargetInvocationException** özel durum türünü ve yığın izlemesini içerir.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -610,7 +610,7 @@ Kullanıcı Hizmeti koduna yapılan bir çağrı yapılandırılan süreden uzun
 * **Özellik**: yavaş API 'nin adı. Açıklama, API 'nin beklenme zamanı hakkında daha fazla ayrıntı sağlar.
 * **Sonraki adımlar**: çağrının beklenenden uzun sürmesinin nedenini araştırın.
 
-Aşağıdaki örnek, **RunAsync**içindeki iptal belirtecini içermeyen güvenilir bir hizmet için System. rap 'deki sistem durumu olayını gösterir:
+Aşağıdaki örnek, **RunAsync** içindeki iptal belirtecini içermeyen güvenilir bir hizmet için System. rap 'deki sistem durumu olayını gösterir:
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
@@ -647,7 +647,7 @@ HealthEvents          :
 
 - **Istatefulservicereplica. ChangeRole (P)**: en yaygın durum, hizmetin öğesinden bir görev döndürmediğinde olur `RunAsync` .
 
-Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğin:
+Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örnek:
 
 - **Ireplicator. catch Upreplicaset**: Bu uyarı iki işlemlerden birini gösterir. Yetersiz çoğaltma yok. Bu durumun bu olup olmadığını görmek için, bir veya daha fazla yeniden yapılandırma için bölümdeki çoğaltmaların çoğaltma durumuna veya System.FM sistem durumu raporuna bakın. Veya çoğaltmalar, işleme işlemleri değildir. PowerShell cmdlet 'i `Get-ServiceFabricDeployedReplicaDetail` Tüm çoğaltmaların ilerlemesini belirlemede kullanılabilir. Sorun, `LastAppliedReplicationSequenceNumber` değeri birincil değerinin arkasında olan çoğaltmalarla birlikte kalıyor `CommittedSequenceNumber` .
 
@@ -678,7 +678,7 @@ Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğ
 **System. NamingService** , bir adlandırma işlemi kabul edilebilir ' den daha uzun sürerse, birincil çoğaltmadaki sistem durumunu raporlar. Adlandırma işlemlerine örnek olarak [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) veya [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)verilebilir. FabricClient altında daha fazla Yöntem bulunabilir. Örneğin, [hizmet yönetimi yöntemleri](/dotnet/api/system.fabric.fabricclient.servicemanagementclient) veya [özellik yönetimi yöntemleri](/dotnet/api/system.fabric.fabricclient.propertymanagementclient)altında bulunabilir.
 
 > [!NOTE]
-> Adlandırma hizmeti, hizmet adlarını kümedeki bir konuma çözer. Kullanıcılar bu hizmeti, hizmet adlarını ve özelliklerini yönetmek için kullanabilir. Bu, Service Fabric bölümlenmiş kalıcı bir hizmettir. Bölümlerden biri, tüm Service Fabric adları ve hizmetleriyle ilgili meta verileri içeren *yetkili sahibini*temsil eder. Service Fabric adları, *ad sahibi* bölümleri olarak adlandırılan farklı bölümlerle eşleştirilir, bu nedenle hizmet Genişletilebilir olur. [Adlandırma hizmeti](service-fabric-architecture.md)hakkında daha fazla bilgi edinin.
+> Adlandırma hizmeti, hizmet adlarını kümedeki bir konuma çözer. Kullanıcılar bu hizmeti, hizmet adlarını ve özelliklerini yönetmek için kullanabilir. Bu, Service Fabric bölümlenmiş kalıcı bir hizmettir. Bölümlerden biri, tüm Service Fabric adları ve hizmetleriyle ilgili meta verileri içeren *yetkili sahibini* temsil eder. Service Fabric adları, *ad sahibi* bölümleri olarak adlandırılan farklı bölümlerle eşleştirilir, bu nedenle hizmet Genişletilebilir olur. [Adlandırma hizmeti](service-fabric-architecture.md)hakkında daha fazla bilgi edinin.
 > 
 > 
 
@@ -791,13 +791,13 @@ Node üzerinde hizmet paketi etkinleştirmesi başarılı olursa sistem., raporl
 * **Sonraki adımlar**: etkinleştirmenin neden başarısız olduğunu araştırın.
 
 ### <a name="code-package-activation"></a>Kod paketi etkinleştirme
-Etkinleştirme başarılı olursa, her kod paketi için sistem. Etkinleştirme başarısız olursa, yapılandırılan bir uyarı bildirir. **CodePackage** , yapılandırılmış **CodePackageHealthErrorThreshold**daha büyük bir hata ile etkinleştirilemez veya sonlanamazsa, barındırma bir hata bildirir. Bir hizmet paketi birden çok kod paketi içeriyorsa, her biri için bir etkinleştirme raporu oluşturulur.
+Etkinleştirme başarılı olursa, her kod paketi için sistem. Etkinleştirme başarısız olursa, yapılandırılan bir uyarı bildirir. **CodePackage** , yapılandırılmış **CodePackageHealthErrorThreshold** daha büyük bir hata ile etkinleştirilemez veya sonlanamazsa, barındırma bir hata bildirir. Bir hizmet paketi birden çok kod paketi içeriyorsa, her biri için bir etkinleştirme raporu oluşturulur.
 
 * **SourceId**: System. Hosting
-* **Özellik**: **codepackageactivation** önekini kullanır ve kod paketinin adını ve giriş noktasını *Codepackageactivation: codepackagename: setupentrypoint/EntryPoint*olarak içerir. Örneğin, **Codepackageactivation: Code: SetupEntryPoint**.
+* **Özellik**: **codepackageactivation** önekini kullanır ve kod paketinin adını ve giriş noktasını *Codepackageactivation: codepackagename: setupentrypoint/EntryPoint* olarak içerir. Örneğin, **Codepackageactivation: Code: SetupEntryPoint**.
 
 ### <a name="service-type-registration"></a>Hizmet türü kaydı
-System., hizmet türü başarıyla kaydedilmişse, raporları Tamam olarak barındırıyor. Kayıt, **Servicetyperyumuristrationtimeout**kullanılarak yapılandırıldığı şekilde zamanında yapılmadıysa bir hata bildirir. Çalışma zamanı kapalıysa, hizmet türünün düğümünden kaydı yapılır ve bir uyarı raporlar.
+System., hizmet türü başarıyla kaydedilmişse, raporları Tamam olarak barındırıyor. Kayıt, **Servicetyperyumuristrationtimeout** kullanılarak yapılandırıldığı şekilde zamanında yapılmadıysa bir hata bildirir. Çalışma zamanı kapalıysa, hizmet türünün düğümünden kaydı yapılır ve bir uyarı raporlar.
 
 * **SourceId**: System. Hosting
 * **Özellik**: **ServiceTypeRegistration** önekini kullanır ve hizmet türü adını içerir. Örneğin, **ServiceTypeRegistration: Filestorezervicetype**.

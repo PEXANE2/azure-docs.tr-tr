@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491452"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001244"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
@@ -97,6 +97,22 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 [Kullanım](#usage) bölümü `myQueueItem` , `name` üzerinde function.jsözelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Aşağıdaki Java örneğinde, tetiklenen iletiyi kuyruğa kaydeden bir depolama kuyruğu tetikleme işlevi gösterilmektedir `myqueuename` .
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function.js* dosyadaki bir kuyruk tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
@@ -141,6 +157,42 @@ module.exports = async function (context, message) {
 ```
 
 [Kullanım](#usage) bölümü `myQueueItem` , `name` üzerinde function.jsözelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, bir tetikleyici aracılığıyla işleve geçirilen bir sıra iletisinin nasıl okunacağını gösterir.
+
+Depolama kuyruğu tetikleyicisi, olarak ayarlandığı dosyada *function.js* tanımlanır `type` `queueTrigger` .
+
+```json
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+*Run.ps1* dosyasındaki kod, `$QueueItem` işlevinizdeki sıra iletisini okumanızı sağlayan olarak bir parametresini bildirir.
+
+```powershell
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
+
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -189,22 +241,6 @@ def main(msg: func.QueueMessage):
 
     logging.info(result)
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Aşağıdaki Java örneğinde, tetiklenen iletiyi kuyruğa kaydeden bir depolama kuyruğu tetikleme işlevi gösterilmektedir `myqueuename` .
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
  ---
 
@@ -270,14 +306,6 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Öznitelikler JavaScript tarafından desteklenmez.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Öznitelikler Python tarafından desteklenmez.
-
 # <a name="java"></a>[Java](#tab/java)
 
 `QueueTrigger`Ek açıklama, işlevi tetikleyen sıraya erişmenizi sağlar. Aşağıdaki örnek, kuyruk iletisini parametresi aracılığıyla işlev için kullanılabilir hale getirir `message` .
@@ -305,13 +333,25 @@ public class QueueTriggerDemo {
 |`queueName`  | Depolama hesabındaki sıra adını bildirir. |
 |`connection` | Depolama hesabı bağlantı dizesine işaret eder. |
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Öznitelikler JavaScript tarafından desteklenmez.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Öznitelikler Python tarafından desteklenmez.
+
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `QueueTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok| Olarak ayarlanmalıdır `queueTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm**| yok | Yalnızca *function.js* dosyasında. Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -327,7 +367,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . Aşağıdaki türlerden birine bağlanabilirsiniz:
 
-* Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır. 
+* Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır.
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -345,17 +385,21 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 ' `CloudQueueMessage` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
+# <a name="java"></a>[Java](#tab/java)
+
+[Queuetrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) ek açıklaması, işlevi tetikleyen kuyruk iletisine erişmenizi sağlar.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js* tanımlanan adla eşleşen bir ile kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Dosyadakifunction.jsbağlama parametresi tarafından belirlenen adla eşleşen dize parametresi aracılığıyla kuyruk iletisine erişin `name` . *function.json*
+
 # <a name="python"></a>[Python](#tab/python)
 
-Sıra iletisine [queuemessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)olarak yazılan parametre aracılığıyla erişin.
-
-# <a name="java"></a>[Java](#tab/java)
-
-[Queuetrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) ek açıklaması, işlevi tetikleyen kuyruk iletisine erişmenizi sağlar.
+Sıra iletisine [queuemessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true)olarak yazılan parametre aracılığıyla erişin.
 
 ---
 
@@ -363,7 +407,7 @@ Sıra iletisine [queuemessage](/python/api/azure-functions/azure.functions.queue
 
 Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [Cloudqueuemessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının üyeleridir.
 
-|Özellik|Tür|Açıklama|
+|Özellik|Tür|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` *üzerindefunction.js* özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
 |`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|

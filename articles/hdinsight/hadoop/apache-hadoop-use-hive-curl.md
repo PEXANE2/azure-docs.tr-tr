@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 956406ec5ac99be5973f1928bbb89db10e68b339
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000513"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>REST kullanarak HDInsight 'ta Apache Hadoop Apache Hive sorguları çalıştırma
 
@@ -31,9 +31,9 @@ Azure HDInsight kümesinde Apache Hadoop ile Apache Hive sorguları çalıştır
 
 ## <a name="base-uri-for-rest-api"></a>REST API için temel URI
 
-HDInsight üzerinde REST API için temel Tekdüzen Kaynak tanımlayıcısı (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır** .  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
+HDInsight üzerinde REST API için temel Tekdüzen Kaynak tanımlayıcısı (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , burada `CLUSTERNAME` kümenizin adıdır.  URI 'Lerinde küme adları **büyük/küçük harfe duyarlıdır**.  URI () öğesinin tam etki alanı adı (FQDN) bölümünde küme adı `CLUSTERNAME.azurehdinsight.net` büyük/küçük harfe duyarsız olsa da, URI 'deki diğer oluşumlar büyük/küçük harfe duyarlıdır.
 
-## <a name="authentication"></a>Kimlik Doğrulama
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Web Hcat ile bir veya daha fazla REST iletişimini kullanırken, HDInsight kümesi yöneticisinin Kullanıcı adını ve parolasını sağlayarak isteklerin kimlik doğrulamasını yapmanız gerekir. REST API’sinin güvenliği [temel kimlik doğrulaması](https://en.wikipedia.org/wiki/Basic_access_authentication) ile sağlanır. Kimlik bilgilerinizin sunucuya güvenli bir şekilde gönderildiğinden emin olmak için, istekleri her zaman güvenli HTTP (HTTPS) kullanarak yapın.
 

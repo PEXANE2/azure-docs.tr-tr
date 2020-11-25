@@ -8,11 +8,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322436"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000360"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Mantıksal uygulamalar için özel durum işleme ve hata günlüğü
 
@@ -96,8 +96,8 @@ Hasta kaydının kaynağını (istek) Dynamics CRM Online portalından günlüğ
 
 1. Dynamics CRM Online 'dan yeni bir randevu kaydı almalıdır.
 
-   CRM 'den gelen tetikleyici, bize **CRM PatentId**, **kayıt türü**, **Yeni veya güncelleştirilmiş kayıt** (yeni veya güncelleştirme Boolean değeri) ve **salesforceıd**sağlar. **Salesforceıd** yalnızca bir güncelleştirme için kullanıldığından null olabilir.
-   CRM **Hatıd** ve **kayıt türü**kullanılarak CRM kaydı alınır.
+   CRM 'den gelen tetikleyici, bize **CRM PatentId**, **kayıt türü**, **Yeni veya güncelleştirilmiş kayıt** (yeni veya güncelleştirme Boolean değeri) ve **salesforceıd** sağlar. **Salesforceıd** yalnızca bir güncelleştirme için kullanıldığından null olabilir.
+   CRM **Hatıd** ve **kayıt türü** kullanılarak CRM kaydı alınır.
 
 2. Daha sonra, mantıksal uygulama Tasarımcısı 'nda gösterildiği gibi Azure Cosmos DB SQL API uygulaması **ınsertlogentry** işleminizi eklememiz gerekiyor.
 
@@ -118,7 +118,7 @@ Hasta kaydının kaynağını (istek) Dynamics CRM Online portalından günlüğ
 > [!NOTE]
 > Aşağıdaki örnekler yalnızca örnektir. Bu öğretici üretimde bir uygulamaya bağlı olduğundan, **kaynak düğümün** değeri bir randevunun zamanlanması ile ilgili özellikleri görüntülemeyebilir. > 
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 
 Aşağıdaki mantıksal uygulama kodu örneği, günlüğün nasıl işleneceğini gösterir.
 
@@ -396,7 +396,7 @@ Yanıtı aldıktan sonra, yanıtı üst mantıksal uygulamaya geri geçirebilirs
 
 ### <a name="error-management-portal"></a>Hata yönetimi portalı
 
-Hataları görüntülemek için Cosmos DB hata kayıtlarını görüntülemek üzere bir MVC web uygulaması oluşturabilirsiniz. **Liste**, **Ayrıntılar**, **düzenleme**ve **silme** işlemleri geçerli sürüme dahildir.
+Hataları görüntülemek için Cosmos DB hata kayıtlarını görüntülemek üzere bir MVC web uygulaması oluşturabilirsiniz. **Liste**, **Ayrıntılar**, **düzenleme** ve **silme** işlemleri geçerli sürüme dahildir.
 
 > [!NOTE]
 > İşlemi Düzenle: Cosmos DB tüm belgeyi değiştirir. **Liste** ve **ayrıntı** görünümlerinde gösterilen kayıtlar yalnızca örneklerdir. Bunlar gerçek hasta randevusu kayıtları değildir.

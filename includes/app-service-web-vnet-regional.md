@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 1a9f468b8e2f9fff20b9b26b8890d485e426b691
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94523735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999473"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -23,18 +23,18 @@ Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
 VNet ile VNet tümleştirmesini aynı bölgede kullandığınızda, aşağıdaki Azure ağ özelliklerini kullanabilirsiniz:
 
-* **Ağ güvenlik grupları (NSG 'ler)** : Tümleştirme alt ağınıza yerleştirilmiş bir NSG ile giden trafiği engelleyebilirsiniz. Uygulama için gelen erişimi sağlamak üzere VNet tümleştirmesini kullanamadığından gelen kuralları uygulanmaz.
-* **Yol tabloları (UDRs)** : istediğiniz yere giden trafik göndermek için tümleştirme alt ağına bir rota tablosu yerleştirebilirsiniz.
+* **Ağ güvenlik grupları (NSG 'ler)**: Tümleştirme alt ağınıza yerleştirilmiş bir NSG ile giden trafiği engelleyebilirsiniz. Uygulama için gelen erişimi sağlamak üzere VNet tümleştirmesini kullanamadığından gelen kuralları uygulanmaz.
+* **Yol tabloları (UDRs)**: istediğiniz yere giden trafik göndermek için tümleştirme alt ağına bir rota tablosu yerleştirebilirsiniz.
 
 Varsayılan olarak, uygulamanız yalnızca sanal ağınıza RFC1918 trafiği yönlendirir. Tüm giden trafiğinizi sanal ağınıza yönlendirmek istiyorsanız WEBSITE_VNET_ROUTE_ALL uygulama ayarını uygulamanıza uygulayın. Uygulama ayarını yapılandırmak için:
 
-1. Uygulama portalınızdaki **yapılandırma** Kullanıcı arabirimine gidin. **Yeni uygulama ayarı** 'nı seçin.
+1. Uygulama portalınızdaki **yapılandırma** Kullanıcı arabirimine gidin. **Yeni uygulama ayarı**'nı seçin.
 1. **Ad** kutusuna **WEBSITE_VNET_ROUTE_ALL** girin ve **değer** kutusuna **1** yazın.
 
    ![Uygulama ayarı sağla][4]
 
-1. **Tamam** ’ı seçin.
-1. **Kaydet** ’i seçin.
+1. **Tamam**’ı seçin.
+1. **Kaydet**’i seçin.
 
 > [!NOTE]
 > Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, tümleştirme alt ağınıza uygulanan NSG 'ler ve UDRs 'ye tabidir. Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, trafiği başka bir yere göndermek için yollar sağlamazsanız, giden adresleriniz hala uygulama özelliklerinde listelenen giden adreslerdir.
@@ -110,5 +110,5 @@ Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılan
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
-[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[VNETnsg]: /azure/virtual-network/security-overview/
+[privateendpoints]: ../articles/app-service/networking/private-endpoint.md

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
 ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490585"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000751"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Izleyici 'de aracı veri kaynaklarını Log Analytics
 Azure Izleyicisinin [Log Analytics](log-analytics-agent.md) aracısına sahip sanal makinelerden topladığı veriler, [Log Analytics çalışma alanında](data-platform-logs.md)yapılandırdığınız veri kaynakları tarafından tanımlanır.   Her veri kaynağı, her tür kendi özellik kümesine sahip olan belirli bir türün kayıtlarını oluşturur.
@@ -40,7 +40,7 @@ Aşağıdaki tabloda, Log Analytics aracısında Şu anda kullanılabilir olan a
 
 
 ## <a name="configuring-data-sources"></a>Veri kaynaklarını yapılandırma
-Log Analytics aracılarının veri kaynaklarını yapılandırmak için Azure portal **Log Analytics çalışma alanları** menüsüne gidin ve bir çalışma alanı seçin. **Gelişmiş ayarlar** ' a ve ardından **veriler** ' e tıklayın. Yapılandırmak istediğiniz veri kaynağını seçin. Yukarıdaki tablodaki bağlantıları, her veri kaynağı ve yapılandırmasındaki ayrıntılar hakkında belgeler için izleyebilirsiniz.
+Log Analytics aracılarının veri kaynaklarını yapılandırmak için Azure portal **Log Analytics çalışma alanları** menüsüne gidin ve bir çalışma alanı seçin. **Gelişmiş ayarlar** ' a ve ardından **veriler**' e tıklayın. Yapılandırmak istediğiniz veri kaynağını seçin. Yukarıdaki tablodaki bağlantıları, her veri kaynağı ve yapılandırmasındaki ayrıntılar hakkında belgeler için izleyebilirsiniz.
 
 Herhangi bir yapılandırma bu çalışma alanına bağlı tüm aracılara dağıtılır.  Bağlı aracıları bu yapılandırmadan dışlayamazsınız.
 
