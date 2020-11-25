@@ -16,11 +16,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365536"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010648"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management ' de Konuk kullanıcıları davet edin ve Azure Kaynak rolleri atayın
 
@@ -61,7 +61,7 @@ Konukları kuruluşa davet edebilmeniz için, Konuk işbirliği ayarlarınızı 
 
     ![İzin, davet ve işbirliği kısıtlama ayarlarını gösteren dış işbirliği ayarları sayfası](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
-1. **Konuk davet eden rolündeki yöneticilerin ve kullanıcıların, davet** etmesini sağlamak Için anahtarı **Evet**olarak ayarlayın.
+1. **Konuk davet eden rolündeki yöneticilerin ve kullanıcıların, davet** etmesini sağlamak Için anahtarı **Evet** olarak ayarlayın.
 
 ## <a name="invite-a-guest-and-assign-a-role"></a>Konuk davet etme ve rol atama
 
@@ -69,7 +69,7 @@ Privileged Identity Management kullanarak, bir konuğa davet edebilir ve bunlar�
 
 1. [Ayrıcalıklı rol yöneticisinin](../roles/permissions-reference.md#privileged-role-administrator) veya [Kullanıcı Yöneticisi](../roles/permissions-reference.md#user-administrator) rolünün üyesi olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure kaynakları**' nı seçin.
 

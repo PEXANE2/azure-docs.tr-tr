@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873719"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010614"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
@@ -95,7 +95,7 @@ availabilityResults
 
     ![Azure Işlevi uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/config.png)
 
-7. Karşılık gelen uygun değerlerle üç yeni uygulama ayarı oluşturun ``AI_APP_ID`` , ``AI_APP_KEY`` ve ``SendGridAPI`` . **Kaydet**’i seçin.
+7. Karşılık gelen uygun değerlerle üç yeni uygulama ayarı oluşturun ``AI_APP_ID`` , ``AI_APP_KEY`` ve ``SendGridAPI`` . **Kaydet**'i seçin.
 
      ![İşlev tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/app-settings.png)
     

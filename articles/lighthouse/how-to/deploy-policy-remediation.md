@@ -4,11 +4,11 @@ description: Azure 'da bir düzeltme görevi kullanan ilkeleri dağıtmak için,
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163263"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010104"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Temsilci bir abonelik içinde düzeltilebilir bir ilke dağıtın
 
@@ -21,7 +21,7 @@ ms.locfileid: "88163263"
 
 Azure 'da bir müşteriyi kullanıma aldığınızda, yönetim kiracınızdaki kullanıcıları, Kullanıcı gruplarını ve hizmet sorumlularını tanımlayan bir parametre dosyası ile birlikte, müşteri kiracısındaki Temsilcili kaynaklara erişebilecek bir [Azure Resource Manager şablonu](onboard-customer.md#create-an-azure-resource-manager-template) kullanırsınız. Parametreleriniz dosyasında, bu kullanıcıların (**PrincipalId**) her birine erişim düzeyini tanımlayan [yerleşik bir rol](../../role-based-access-control/built-in-roles.md) (**roledefinitionıd**) atanır.
 
-**PrincipalId** 'nin müşteri kiracısında yönetilen bir kimlik oluşturmasına izin vermek Için, **roledefinitionıd** değerini **Kullanıcı erişimi Yöneticisi**olarak ayarlamanız gerekir. Bu rol genellikle desteklenmekle birlikte, bu özel senaryoda kullanılabilir ve bu izne sahip kullanıcıların yönetilen kimliklere bir veya daha fazla yerleşik rol atamasını sağlar. Bu roller, **Delegatedrotadefinitionıds** özelliğinde tanımlanmıştır. Kullanıcı erişimi Yöneticisi veya sahibi dışında, burada herhangi bir yerleşik rolü ekleyebilirsiniz.
+**PrincipalId** 'nin müşteri kiracısında yönetilen bir kimlik oluşturmasına izin vermek Için, **roledefinitionıd** değerini **Kullanıcı erişimi Yöneticisi** olarak ayarlamanız gerekir. Bu rol genellikle desteklenmekle birlikte, bu özel senaryoda kullanılabilir ve bu izne sahip kullanıcıların yönetilen kimliklere bir veya daha fazla yerleşik rol atamasını sağlar. Bu roller, **Delegatedrotadefinitionıds** özelliğinde tanımlanmıştır. Kullanıcı erişimi Yöneticisi veya sahibi dışında, burada herhangi bir yerleşik rolü ekleyebilirsiniz.
 
 Müşteri eklendi olduktan sonra, bu yetkilendirmede oluşturulan **PrincipalId** , bu yerleşik rolleri müşteri kiracısındaki yönetilen kimliklere atayabilecektir. Ancak, normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izinleri olmayacaktır.
 
@@ -45,9 +45,9 @@ Yukarıda açıklanan izinlerle Kullanıcı oluşturduktan sonra, Kullanıcı, m
 
 Örneğin, bu [örnekte](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)gösterildiği gibi, müşteri kiracısındaki Azure Key Vault kaynaklarında tanılamayı etkinleştirmek istediğinizi varsayalım. Yönetim kiracısındaki bir kullanıcı uygun izinlerle (yukarıda açıklandığı gibi), bu senaryoyu etkinleştirmek için bir [Azure Resource Manager şablonu](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) dağıtır.
 
-Temsilci olarak kullanılacak ilke atamasının, Azure portal değil, API 'Ler aracılığıyla yapılması gerektiğini unutmayın. Bunu yaparken, **Apiversion** 'ın yeni **Delegatedmanagedıdentityresourceıd** özelliğini içeren **2019-04-01-Preview**olarak ayarlanması gerekir. Bu özellik, müşteri kiracısında bulunan yönetilen bir kimliği (Azure 'un eklendi ile kullanıma yönelik bir abonelik veya kaynak grubu) eklemenize olanak tanır.
+Temsilci olarak kullanılacak ilke atamasının, Azure portal değil, API 'Ler aracılığıyla yapılması gerektiğini unutmayın. Bunu yaparken, **Apiversion** 'ın yeni **Delegatedmanagedıdentityresourceıd** özelliğini içeren **2019-04-01-Preview** olarak ayarlanması gerekir. Bu özellik, müşteri kiracısında bulunan yönetilen bir kimliği (Azure 'un eklendi ile kullanıma yönelik bir abonelik veya kaynak grubu) eklemenize olanak tanır.
 
-Aşağıdaki örnek, bir **Delegatedmanagedıdentityresourceıd**ile bir rol atamasını gösterir.
+Aşağıdaki örnek, bir **Delegatedmanagedıdentityresourceıd** ile bir rol atamasını gösterir.
 
 ```json
 "type": "Microsoft.Authorization/roleAssignments",

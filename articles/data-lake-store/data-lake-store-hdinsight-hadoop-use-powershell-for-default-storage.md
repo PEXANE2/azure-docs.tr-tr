@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103433"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010546"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell kullanarak Azure Data Lake Storage 1. varsayılan depolama alanı olarak HDInsight kümeleri oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portal kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure portalı kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell kullanma (varsayılan depolama için)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell kullanma (ek depolama için)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Kaynak Yöneticisi kullan](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -31,7 +31,7 @@ HDInsight 'ı Data Lake Storage 1. ile kullanmayla ilgili bazı önemli noktalar
 
 HDInsight 'ı PowerShell kullanarak Data Lake Storage 1. çalışacak şekilde yapılandırmak için sonraki beş bölümde yer alarak bulunan yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -77,7 +77,7 @@ Data Lake Storage 1. bir hesap oluşturmak için aşağıdakileri yapın:
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    Şunun gibi bir çıkış görmeniz gerekir:
+    Şunun gibi bir çıktı görmeniz gerekir:
 
     ```output
     ResourceGroupName : hdiadlgrp
@@ -128,7 +128,7 @@ Bu bölümde, HDInsight gibi bir uygulama hizmetinin bir Azure kaynağına eriş
 Data Lake Storage 1. için Active Directory kimlik doğrulaması ayarlamak için aşağıdaki iki bölümde bulunan görevleri gerçekleştirin.
 
 ### <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
-Bu bölümdeki adımlarla devam etmeden önce [Windows SDK](https://dev.windows.com/en-us/downloads) yüklü olduğundan emin olun. Ayrıca, sertifikayı oluşturduğunuz *C:\mycertdir*gibi bir dizin oluşturmuş olmanız gerekir.
+Bu bölümdeki adımlarla devam etmeden önce [Windows SDK](https://dev.windows.com/en-us/downloads) yüklü olduğundan emin olun. Ayrıca, sertifikayı oluşturduğunuz *C:\mycertdir* gibi bir dizin oluşturmuş olmanız gerekir.
 
 1. PowerShell penceresinden Windows SDK yüklediğiniz konuma gidin (genellikle, *C:\Program Files (x86) \Windows Kits\10\bin\x86*) ve otomatik olarak imzalanan bir sertifika ve özel anahtar oluşturmak için [MakeCert][makecert] yardımcı programını kullanın. Aşağıdaki komutları kullanın:
 
@@ -236,7 +236,7 @@ Bu bölümde, varsayılan depolama alanı olarak Data Lake Storage 1. bir HDInsi
     Cmdlet başarıyla tamamlandıktan sonra, küme ayrıntılarını listeleyen bir çıktı görmeniz gerekir.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage 1. kullanmak için HDInsight kümesinde test işleri çalıştırın
-Bir HDInsight kümesini yapılandırdıktan sonra, Data Lake Storage 1. erişebildiğinden emin olmak için test işlerini üzerinde çalıştırabilirsiniz. Bunu yapmak için, * \<cluster root> /example/Data/Sample.log*konumundaki Data Lake Storage 1. ' de zaten bulunan örnek verileri kullanan bir tablo oluşturmak Için örnek bir Hive işi çalıştırın.
+Bir HDInsight kümesini yapılandırdıktan sonra, Data Lake Storage 1. erişebildiğinden emin olmak için test işlerini üzerinde çalıştırabilirsiniz. Bunu yapmak için, *\<cluster root> /example/Data/Sample.log* konumundaki Data Lake Storage 1. ' de zaten bulunan örnek verileri kullanan bir tablo oluşturmak Için örnek bir Hive işi çalıştırın.
 
 Bu bölümde, oluşturduğunuz HDInsight Linux kümesine bir Secure Shell (SSH) bağlantısı yaparsınız ve sonra örnek bir Hive sorgusu çalıştırırsınız.
 

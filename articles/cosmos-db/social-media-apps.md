@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097337"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010325"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB ile sosyal olarak çalışmaya devam edin
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -172,7 +172,7 @@ Kullanıcı bilgilerini örnek olarak ele alalım:
 
 Bu bilgilere bakarak, kritik bilgileri ve hangilerinin olmadığını hızlı bir şekilde tespit edebilir ve bu nedenle "el merdivenini" oluşturursunuz:
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Göreli bir ilişkisel modeli gösteren diyagram" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Bir el der deseninin diyagramı" border="false":::
 
 En küçük adımda, bir kullanıcıyı tanımlayan ve veri çoğaltma için kullanılan en az bilgi parçası olan UserChunk adı verilir. Yinelenen verilerin boyutunu yalnızca "göstereceğiniz" bilgilerle azaltarak, büyük güncelleştirmeler olasılığını azaltabilirsiniz.
 
@@ -239,7 +239,7 @@ Diğer bir kullanılabilir seçenek, Kullanıcı içeriğinizi çözümlemek iç
 
 ## <a name="a-planet-scale-social-experience"></a>Bir Planet-ölçekli sosyal deneyim
 
-En az bir son, ancak önemli olmayan önemli Makale: **ölçeklenebilirlik** ' i ele almalıdır. Bir mimari tasarlarken, her bileşenin kendi kendine ölçeklendirilmesi gerekir. Son olarak daha fazla veri işlemek gerekecektir veya daha büyük bir coğrafi kapsama sahip olmak isteyeceksiniz. Her iki görevi de elde etmek, Cosmos DB ile birlikte bir **anahtar oluşturma deneyimidir** .
+En az bir son, ancak önemli olmayan önemli Makale: **ölçeklenebilirlik**' i ele almalıdır. Bir mimari tasarlarken, her bileşenin kendi kendine ölçeklendirilmesi gerekir. Son olarak daha fazla veri işlemek gerekecektir veya daha büyük bir coğrafi kapsama sahip olmak isteyeceksiniz. Her iki görevi de elde etmek, Cosmos DB ile birlikte bir **anahtar oluşturma deneyimidir** .
 
 Cosmos DB, dinamik bölümlemeyi destekler. Bu, belgenizdeki bir öznitelik olarak tanımlanan belirli bir **bölüm anahtarına** göre otomatik olarak bölümler oluşturur. Doğru bölüm anahtarını tanımlamak, tasarım zamanında yapılmalıdır. Daha fazla bilgi için bkz. [Azure Cosmos DB bölümlendirme](partitioning-overview.md).
 
@@ -249,7 +249,7 @@ Cosmos DB, tüm bölümlerinizde bulunan sorguları ( [toplamalar](https://azure
 
 Zamanla, son olarak trafikte ve kaynak tüketiminize ( [Rus](request-units.md)cinsinden ölçülen veya istek birimlerinde) büyütireceksiniz. Kullanıcı tabanınız büyüdükçe daha sık okuyacaksınız ve yazılacak. Kullanıcı tabanı daha fazla içerik oluşturmaya ve okumaya başlayacaktır. Bu nedenle, **aktarım hızını ölçeklendirmenin** önem taşır. Ru 'nizi kolayca artırabilirsiniz. Azure portal veya [API aracılığıyla komut vererek](/rest/api/cosmos-db/replace-an-offer)bunu birkaç tıklamayla yapabilirsiniz.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Göreli bir ilişkisel modeli gösteren diyagram":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Bölüm anahtarını ölçekleme ve tanımlama":::
 
 Şeyler daha iyi devam etmeleri durumunda ne olur? Başka bir bölge, ülke veya kıtaya ait kullanıcıların platformunuzu fark ettiğini ve uygulamayı kullanmaya başlamasını varsayalım. Harika bir sürpriz!
 
@@ -259,13 +259,13 @@ Cosmos DB, verilerinizi birkaç tıklamayla küresel ve şeffaf bir şekilde [ç
 
 Verilerinizi küresel olarak çoğalttığınızda, istemcilerinizin avantajlarından faydalanabildiğinden emin olmanız gerekir. Web ön ucu kullanıyorsanız veya mobil istemcilerden API 'Lere erişiyorsanız, [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) dağıtabilir ve Azure App Service istediğiniz tüm bölgelerde kopyalayabilir ve bu da genişletilmiş küresel kapsamınızı desteklemek için bir performans yapılandırması kullanabilirsiniz. İstemcileriniz ön uç veya API 'lerinize eriştiğinizde, bu, en yakın App Service yönlendirilir ve bu da yerel Cosmos DB çoğaltmasına bağlanır.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Göreli bir ilişkisel modeli gösteren diyagram" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Sosyal platformunuza genel kapsam ekleme" border="false":::
 
 ## <a name="conclusion"></a>Sonuç
 
 Bu makalede, düşük maliyetli hizmetlerle Azure 'da tamamen sosyal ağlar oluşturma alternatiflerine yönelik bir ışık yer alır. sonuçları, "basamaklı der" adlı çok katmanlı bir depolama çözümünün ve veri dağıtımının kullanımını teşvik göre sunar.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Göreli bir ilişkisel modeli gösteren diyagram" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Sosyal ağ için Azure hizmetleri arasındaki etkileşim diyagramı" border="false":::
 
 Truth, bu tür senaryolar için gümüş bir madde işareti yoktur. Harika deneyimler oluşturmamızı sağlayan harika hizmetler birleşimi tarafından oluşturulan sinerjiden bahsederek denemelerini: harika bir sosyal uygulama sağlamak için Azure Cosmos DB hız ve serbestlik, Azure bilişsel arama gibi birinci sınıf arama çözümünün arkasındaki zeka, Azure App Services 'in, büyük miktarlarda veri ve Azure makinenin analitik gücünü depolama ve güçlü arka plan işlemleri ve Azure SQL veritabanı gibi önemli bir şekilde barındırılmasına olanak sağlar. Süreçlerinize geri bildirimde bulunmak ve doğru içeriği doğru kullanıcılara sunmamıza yardımcı olması için bilgi ve zeka oluşturmayı öğreniyor.
 

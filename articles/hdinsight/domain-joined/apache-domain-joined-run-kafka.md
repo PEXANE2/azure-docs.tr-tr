@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85105949"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010138"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
 
 Kurumsal Güvenlik Paketi (ESP) Apache Kafka kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, `sales` ve `marketingspend` konularına erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etki alanı kullanıcılarını oluşturma
@@ -48,7 +48,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. **Ranger Yönetici Arabirimini** açın.
 
-2. **Kafka**altında ** \<ClusterName> _kafka** seçin. Bir önceden yapılandırılmış ilke listelenebilir.
+2. **Kafka** altında **\<ClusterName> _kafka** seçin. Bir önceden yapılandırılmış ilke listelenebilir.
 
 3. **Yeni Ilke Ekle** ' yi seçin ve aşağıdaki değerleri girin:
 
@@ -218,9 +218,9 @@ Konsolunu kullanarak ESP Kafka ile ilgili konular oluşturmak ve kullanmak için
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla oluşturduğunuz Kafka kümesini silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-1. Üstteki **arama** kutusuna **HDInsight**yazın.
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. Üstteki **arama** kutusuna **HDInsight** yazın.
+1. **Hizmetler** altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
 1. **Sil**'e tıklayın. **Evet**'e tıklayın.
 

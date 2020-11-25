@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 10de2a4a00b716656626082a24ecbd56d0fcc3a4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 99e79e4d094fe6e93510d139d2f4d08f260102df
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127310"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010053"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak genel IP adresi oluşturma
 
@@ -45,13 +45,15 @@ $loc = 'eastus2'
 
 New-AzResourceGroup -Name $rg -Location $loc
 ```
+## <a name="create-public-ip"></a>Genel IP oluştur
+
 ---
 # <a name="standard-sku---using-zones"></a>[**Standart SKU-bölgeleri kullanma**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
 >Aşağıdaki komut API sürüm 2020-08-01 veya üzeri için geçerlidir.  Kullanılmakta olan API sürümü hakkında daha fazla bilgi için lütfen [kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)inceleyin.
 
-**Myresourcegroup**Içinde **Mystandardzrpublicıp** adlı standart bölge-yedekli genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.
+**Myresourcegroup** Içinde **Mystandardzrpublicıp** adlı standart bölge-yedekli genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -68,7 +70,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 > API 'nin 2020-08-01 'den eski sürümleri için, bölgesel olarak yedekli bir IP adresi oluşturmak üzere bölge parametresi belirtmeden yukarıdaki komutu çalıştırın. 
 >
 
-**Myresourcegroup**Içinde **Mystandardzonalpublicıp** adlı bölge 2 standart bir genel IP adresi oluşturmak için aşağıdaki komutu kullanın:
+**Myresourcegroup** Içinde **Mystandardzonalpublicıp** adlı bölge 2 standart bir genel IP adresi oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -89,7 +91,7 @@ Bölgeler için yukarıdaki seçeneklerin yalnızca [kullanılabilirlik alanlar�
 >[!NOTE]
 >Aşağıdaki komut API sürüm 2020-08-01 veya üzeri için geçerlidir.  Kullanılmakta olan API sürümü hakkında daha fazla bilgi için lütfen [kaynak sağlayıcıları ve türleri](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)inceleyin.
 
-**Myresourcegroup**Içinde **mystandardpublicıp** ADıNDA bir standart genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.
+**Myresourcegroup** Içinde **mystandardpublicıp** ADıNDA bir standart genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -106,7 +108,7 @@ Bu seçim tüm bölgelerde geçerlidir ve [kullanılabilirlik alanları](https:/
 
 # <a name="basic-sku"></a>[**Temel SKU**](#tab/option-create-public-ip-basic)
 
-**Myresourcegroup**Içinde **mybasicpublicıp** adlı temel bir statik genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.  Temel genel IP 'Lerde kullanılabilirlik alanları kavramı yoktur.
+**Myresourcegroup** Içinde **mybasicpublicıp** adlı temel bir statik genel IP adresi oluşturmak Için [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) komutunu kullanın.  Temel genel IP 'Lerde kullanılabilirlik alanları kavramı yoktur.
 
 ```azurepowershell-interactive
 ## Variables for the command ##

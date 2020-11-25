@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778628"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010172"
 ---
 # <a name="how-caching-works"></a>Önbelleğe alma nasıl işler?
 
@@ -126,12 +126,12 @@ Aşağıdaki tabloda Azure CDN ürünlerin varsayılan önbelleğe alma davranı
 
 |    | Microsoft: genel web teslimi | Verizon: genel web teslimi | Verizon: DSA | Akamai: genel web teslimi | Akamai: DSA | Akamai: büyük dosya indirme | Akamai: genel veya VOD medya akışı |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Kaynak kabul**       | Evet    | Evet   | Hayır   | Evet    | Hayır   | Evet   | Evet    |
+| **Kaynak kabul**       | Yes    | Yes   | Hayır   | Yes    | Hayır   | Yes   | Yes    |
 | **CDN önbellek süresi** | 2 gün |7 gün | Yok | 7 gün | Yok | 1 gün | 1 yıl |
 
 **Kaynağı** kabul edin: kaynak SUNUCUDAN gelen http yanıtında varsa, desteklenen Cache-Directive üst bilgilerini kabul edilip edilmeyeceğini belirtir.
 
-**CDN önbellek süresi** : bir kaynağın Azure CDN önbelleğe alınma süresini belirtir. Ancak, kabul etme **kaynağı** Evet ise ve kaynak SUNUCUDAN gelen http yanıtı Cache-Directive üstbilgisini içeriyorsa `Expires` `Cache-Control: max-age` , Azure CDN bunun yerine üst bilgi tarafından belirtilen Duration değerini kullanır. 
+**CDN önbellek süresi**: bir kaynağın Azure CDN önbelleğe alınma süresini belirtir. Ancak, kabul etme **kaynağı** Evet ise ve kaynak SUNUCUDAN gelen http yanıtı Cache-Directive üstbilgisini içeriyorsa `Expires` `Cache-Control: max-age` , Azure CDN bunun yerine üst bilgi tarafından belirtilen Duration değerini kullanır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

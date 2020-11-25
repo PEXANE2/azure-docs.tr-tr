@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85505163"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010308"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması
 > [!div class="op_single_selector"]
 > * [Java'yı kullanma](data-lake-store-service-to-service-authenticate-java.md)
 > * [.NET SDK’sını kullanma](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Python’u kullanma](data-lake-store-service-to-service-authenticate-python.md)
-> * [REST API kullanma](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [REST API’sini kullanma](data-lake-store-service-to-service-authenticate-rest-api.md)
 >
 >
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulamas
 ## <a name="create-a-net-application"></a>.NET uygulaması oluşturma
 1. Visual Studio 'da **Dosya** menüsünü, **Yeni**' yi ve ardından **Proje**' yi seçin.
 2. **Konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
-3. **Proje adı**alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
+3. **Proje adı** alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
 
 4. NuGet paketlerini projenize ekleyin.
 
@@ -46,7 +46,7 @@ Bu makalede, Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulamas
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - Bu öğreticide v2.2.12 kullanılır.
 
         ![NuGet kaynağı ekleme](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Yeni bir Azure Data Lake hesabı oluşturun")
-   4. **NuGet Paket Yöneticisi 'ni**kapatın.
+   4. **NuGet Paket Yöneticisi 'ni** kapatın.
 
 5. **Program.cs** öğesini açın, var olan kodu silin ve ardından ad alanlarına başvurular eklemek için aşağıdaki deyimleri ekleyin.
 

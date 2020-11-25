@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010240"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Öğretici: API 'nizi dönüştürme ve koruma
 
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 :::image type="content" source="media/transform-api/api-management-management-console.png" alt-text="Portaldaki ilkeler":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 -   [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.
@@ -58,7 +58,7 @@ Bu bölümde, kullanıcılarınıza göstermek istemediğiniz HTTP üstbilgileri
 
 Özgün yanıt şuna benzer olmalıdır:
 
-:::image type="content" source="media/transform-api/original-response.png" alt-text="Portaldaki ilkeler":::
+:::image type="content" source="media/transform-api/original-response.png" alt-text="Özgün API yanıtı":::
 
 Görebileceğiniz gibi, yanıt **x-ASPNET-Version** ve **x-destekli** üst bilgilerini içerir.
 
@@ -67,12 +67,12 @@ Görebileceğiniz gibi, yanıt **x-ASPNET-Version** ve **x-destekli** üst bilgi
 1. **Demo Conference API**  >  **tasarımı**  >  **tüm işlemler**' i seçin.
 4. **Giden işleme** bölümünde, kod Düzenleyicisi ( **</>** ) simgesini seçin.
 
-   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Portaldaki ilkeler" border="false":::
+   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Giden ilkeye git" border="false":::
 
-1. İmleci ** &lt; giden &gt; ** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
-1. Sağ pencerede, **dönüştürme ilkeleri**altında, **http üst bilgisini** iki kez ayarla ' yı seçin (iki ilke parçacığı eklemek için).
+1. İmleci **&lt; giden &gt;** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
+1. Sağ pencerede, **dönüştürme ilkeleri** altında, **http üst bilgisini** iki kez ayarla ' yı seçin (iki ilke parçacığı eklemek için).
 
-   :::image type="content" source="media/transform-api/transform-api.png" alt-text="Portaldaki ilkeler":::
+   :::image type="content" source="media/transform-api/transform-api.png" alt-text="HTTP üst bilgi ilkesini ayarla":::
 
 1. **\<outbound>** Kodunuzu aşağıdaki gibi görünecek şekilde değiştirin:
 
@@ -81,9 +81,9 @@ Görebileceğiniz gibi, yanıt **x-ASPNET-Version** ve **x-destekli** üst bilgi
    <set-header name="X-AspNet-Version" exists-action="delete" />
    ```
 
-   :::image type="content" source="media/transform-api/set-policy.png" alt-text="Portaldaki ilkeler":::
+   :::image type="content" source="media/transform-api/set-policy.png" alt-text="HTTP üst bilgisini ayarla":::
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>API yanıt gövdesindeki özgün URL’leri, APIM ağ geçidi URL’leri ile değiştirme
 
@@ -98,28 +98,28 @@ Bu bölümde, API 'nin HTTP yanıtının gövdesinde görüntülenen özgün URL
 
     Görebileceğiniz gibi, yanıt özgün arka uç URL 'Lerini içerir:
 
-    :::image type="content" source="media/transform-api/original-response2.png" alt-text="Portaldaki ilkeler":::
+    :::image type="content" source="media/transform-api/original-response2.png" alt-text="Yanıt olarak özgün URL 'Ler":::
 
 
 ### <a name="set-the-transformation-policy"></a>Dönüştürme ilkesi ayarlama
 
-1.  **Tanıtım Konferansı API 'si**  >  **tüm işlemler**  >  **tasarımını**seçin.
+1.  **Tanıtım Konferansı API 'si**  >  **tüm işlemler**  >  **tasarımını** seçin.
 1.  **Giden işleme** bölümünde, kod Düzenleyicisi ( **</>** ) simgesini seçin.
-1.  İmleci ** &lt; giden &gt; ** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
-1.  Sağ taraftaki pencerede, **dönüştürme ilkeleri**altında, **Içerikte maske URL 'leri**' ni seçin. 
-1.  **Kaydet**’i seçin.
+1.  İmleci **&lt; giden &gt;** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
+1.  Sağ taraftaki pencerede, **dönüştürme ilkeleri** altında, **Içerikte maske URL 'leri**' ni seçin. 
+1.  **Kaydet**'i seçin.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Hız sınırı ilkesi ekleyerek (azaltma) bir API’yi koruma
 
 Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nasıl koruma ekleneceği gösterilmektedir. Örneğin API çağrısı oranını, API 'nin geliştiriciler tarafından aşırı kullanılmaması için sınırlamak isteyebilirsiniz. Bu örnekte, her abonelik KIMLIĞI için sınır 15 saniye başına 3 çağrı olarak ayarlanır. 15 saniye sonra geliştirici, API’yi çağırmayı yeniden deneyebilir.
 
-1.  **Tanıtım Konferansı API 'si**  >  **tüm işlemler**  >  **tasarımını**seçin.
+1.  **Tanıtım Konferansı API 'si**  >  **tüm işlemler**  >  **tasarımını** seçin.
 1.  **Gelen işlem** bölümünde, kod Düzenleyicisi ( **</>** ) simgesini seçin.
-1.  İmleci ** &lt; gelen &gt; ** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
+1.  İmleci **&lt; gelen &gt;** öğesinin içine konumlandırın ve sağ üst köşedeki **parçacıkları göster** ' i seçin.
 
-    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Portaldaki ilkeler" border="false":::
+    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Gelen ilkesi ayarlama" border="false":::
 
-1.  Sağ pencerede, **erişim kısıtlama ilkeleri**altında, **anahtar başına çağrı hızını sınırla**' yı seçin.
+1.  Sağ pencerede, **erişim kısıtlama ilkeleri** altında, **anahtar başına çağrı hızını sınırla**' yı seçin.
 1.  **Oran-limit anahtar** kodunuzu ( **\<inbound\>** öğesinde) aşağıdaki kodla değiştirin:
 
     ```
@@ -160,7 +160,7 @@ Bu bölümün geri kalanında, bu makalede ayarladığınız ilke dönüştürme
 
     Görebileceğiniz gibi, üst bilgiler de çıkarılır:
 
-    :::image type="content" source="media/transform-api/final-response1.png" alt-text="Portaldaki ilkeler":::
+    :::image type="content" source="media/transform-api/final-response1.png" alt-text="Atılmış yanıt üstbilgileri":::
 
 ### <a name="test-the-replaced-url"></a>Değiştirilen URL’yi test etme
 
@@ -169,7 +169,7 @@ Bu bölümün geri kalanında, bu makalede ayarladığınız ilke dönüştürme
 
     Gördüğünüz gibi, URL değiştirilmiştir.
 
-    :::image type="content" source="media/transform-api/final-response2.png" alt-text="Portaldaki ilkeler":::
+    :::image type="content" source="media/transform-api/final-response2.png" alt-text="URL 'YI değiştirdi":::
 
 ### <a name="test-the-rate-limit-throttling"></a>Hız sınırını test etme (azaltma)
 
@@ -178,7 +178,7 @@ Bu bölümün geri kalanında, bu makalede ayarladığınız ilke dönüştürme
 
     3 kez isteği gönderdikten sonra, **429 fazla istek** yanıtı alırsınız.
 
-    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Portaldaki ilkeler":::
+    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Çok fazla istek":::
 
 1. 15 saniye bekleyin ve yeniden **Gönder** ' i seçin. Bu defa **200 OK** yanıtını almanız gerekir.
 

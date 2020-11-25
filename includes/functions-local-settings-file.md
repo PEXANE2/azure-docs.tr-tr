@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: ca8d8edd334d89e03624793a35c49971ba8161ec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d944d1d3e9c72471fab2435430a7d13e1770e807
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94884568"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010523"
 ---
 ## <a name="local-settings-file"></a>Yerel ayarlar dosyası
 
@@ -46,7 +46,7 @@ Projeleri yerel olarak çalıştırdığınızda bu ayarlar desteklenir:
 | **`LocalHttpPort`** | Yerel Işlevler Konağı (ve) çalıştırılırken kullanılan varsayılan bağlantı noktasını ayarlar `func host start` `func run` . `--port`Komut satırı seçeneği bu ayarın üzerine gelir. |
 | **`CORS`** | , [Çıkış noktaları arası kaynak paylaşımı (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)için izin verilen kaynakları tanımlar. Kaynaklar, boşluk olmadan virgülle ayrılmış bir liste olarak sağlanır. () Joker değeri \* desteklenir ve bu, herhangi bir kaynaktan gelen isteklere izin verir. |
 | **`CORSCredentials`** |  Olarak ayarlandığında `true` , isteklere izin verir `withCredentials` . |
-| **`ConnectionStrings`** | Bir koleksiyon. İşlev bağlamalarınız tarafından kullanılan bağlantı dizeleri için bu koleksiyonu kullanmayın. Bu koleksiyon, genellikle `ConnectionStrings` [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)gibi bir yapılandırma dosyasının bölümünden bağlantı dizelerini alan çerçeveler tarafından kullanılır. Bu nesnedeki bağlantı dizeleri [System. Data. SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)sağlayıcı türüyle ortama eklenir. Bu koleksiyondaki öğeler, diğer uygulama ayarlarıyla Azure 'da yayımlanmaz. Bu değerleri, `Connection strings` işlev uygulaması ayarlarınızın koleksiyonuna açıkça eklemeniz gerekir. [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)İşlev kodunuzda bir oluşturuyorsanız, bağlantı dizesi değerini portaldaki **uygulama ayarları** ' nda diğer bağlantılarınız ile depolamanız gerekir. |
+| **`ConnectionStrings`** | Bir koleksiyon. İşlev bağlamalarınız tarafından kullanılan bağlantı dizeleri için bu koleksiyonu kullanmayın. Bu koleksiyon, genellikle `ConnectionStrings` [Entity Framework](/ef/ef6/)gibi bir yapılandırma dosyasının bölümünden bağlantı dizelerini alan çerçeveler tarafından kullanılır. Bu nesnedeki bağlantı dizeleri [System. Data. SqlClient](/dotnet/api/system.data.sqlclient)sağlayıcı türüyle ortama eklenir. Bu koleksiyondaki öğeler, diğer uygulama ayarlarıyla Azure 'da yayımlanmaz. Bu değerleri, `Connection strings` işlev uygulaması ayarlarınızın koleksiyonuna açıkça eklemeniz gerekir. [`SqlConnection`](/dotnet/api/system.data.sqlclient.sqlconnection)İşlev kodunuzda bir oluşturuyorsanız, bağlantı dizesi değerini portaldaki **uygulama ayarları** ' nda diğer bağlantılarınız ile depolamanız gerekir. |
 
 Aşağıdaki uygulama ayarları, **`Values`** yerel olarak çalıştırılırken dizisine dahil edilebilir:
 

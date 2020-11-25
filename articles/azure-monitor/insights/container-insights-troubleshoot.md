@@ -4,11 +4,11 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici ile ilgili sorunla
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890369"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010597"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici sorunlarını giderme
 
@@ -23,7 +23,7 @@ Ekleme veya güncelleştirme işlemi sırasında, küme kaynağında **Izleme ö
 Ayrıca, aşağıdaki adımları uygulayarak bu rolü Azure portal el ile de verebilirsiniz:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler** ’e tıklayın. Kaynak listesinde **Kubernetes** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Azure Kubernetes** ' i seçin.
+2. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Kubernetes** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Azure Kubernetes**' i seçin.
 3. Kubernetes kümeleri listesinde, listeden bir tane seçin.
 2. Sol taraftaki menüden **erişim denetimi (IAM)** öğesine tıklayın.
 3. Bir rol ataması eklemek için **+ Ekle** ' yi seçin ve **izleme ölçümleri yayımcısı** rolünü seçin ve yalnızca abonelikte tanımlanan kümeler hizmet sorumluları ' nda sonuçları filtrelemek Için **Seç** kutusu tür **aks** ' i seçin. Bu kümeye özgü listeden birini seçin.
@@ -112,7 +112,7 @@ Kapsayıcılar için Azure Izleyici aracı pods, performans ölçümlerini topla
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Azure olmayan Kubernetes kümesi kapsayıcılar için Azure Izleyici 'de gösterilmiyor
 
-Kapsayıcılar için Azure Izleyici 'de Azure Kubernetes kümesini görüntülemek için, bu Öngörüyi destekleyen Log Analytics çalışma alanında ve kapsayıcı öngörüleri çözüm kaynak **containerınsights ( *çalışma alanı* )** üzerinde okuma erişimi gereklidir.
+Kapsayıcılar için Azure Izleyici 'de Azure Kubernetes kümesini görüntülemek için, bu Öngörüyi destekleyen Log Analytics çalışma alanında ve kapsayıcı öngörüleri çözüm kaynak **containerınsights (*çalışma alanı*)** üzerinde okuma erişimi gereklidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

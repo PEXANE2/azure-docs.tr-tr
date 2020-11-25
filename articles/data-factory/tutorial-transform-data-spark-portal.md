@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81409256"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010155"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de bir Spark etkinliği kullanarak verileri bulutta dönüştürme
 
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,7 +71,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     if __name__ == "__main__":
         main()
     ```
-1. * &lt; StorageAccountName &gt; * ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
+1. *&lt; StorageAccountName &gt;* ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
 1. Azure Blob depolama alanında henüz yoksa **adftutorial** adlı bir kapsayıcı oluşturun. 
 1. **Spark** adlı bir klasör oluşturun.
 1. **Spark** klasörünün altında **script** adlı bir alt klasör oluşturun. 
@@ -93,7 +93,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
       
    ![“Yeni veri fabrikası” bölmesi](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** &lt; adınız &gt; ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
+   Azure veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, **&lt; adınız &gt; ADFTutorialDataFactory** kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
   
    ![Bir ad kullanılamadığında alınan hata](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. **Abonelik** için, veri fabrikasını oluşturmak istediğiniz Azure aboneliğini seçin. 
@@ -149,13 +149,13 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    
    b. **Tür için****İsteğe Bağlı HDInsight**’ın seçili olduğunu onaylayın.
    
-   c. **Azure depolama bağlı hizmeti**için **AzureBlobStorage1**' yi seçin. Bu bağlı hizmeti daha önce oluşturmuştunuz. Farklı bir ad kullandıysanız, doğru adı burada belirtin. 
+   c. **Azure depolama bağlı hizmeti** için **AzureBlobStorage1**' yi seçin. Bu bağlı hizmeti daha önce oluşturmuştunuz. Farklı bir ad kullandıysanız, doğru adı burada belirtin. 
    
    d. **Küme türü** için **spark**’ı seçin.
    
    e. **Hizmet sorumlusu kimliği** için, HDInsight kümesi oluşturma iznine sahip hizmet sorumlusunun kimliğini girin. 
    
-      Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). **Hizmet sorumlusu kimliği** , *uygulama kimliğiyle*eşdeğerdir ve bir **hizmet sorumlusu anahtarı** , bir *istemci parolasının*değeri ile eşdeğerdir.
+      Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). **Hizmet sorumlusu kimliği** , *uygulama kimliğiyle* eşdeğerdir ve bir **hizmet sorumlusu anahtarı** , bir *istemci parolasının* değeri ile eşdeğerdir.
    
    f. **Hizmet sorumlusu anahtarı** için anahtarı girin. 
    
@@ -191,7 +191,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    ![HDInsight bağlı hizmetini belirtme](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. **Betik/Jar** sekmesine geçin ve aşağıdaki adımları tamamlayın: 
 
-   a. **Iş bağlı hizmeti**için **AzureBlobStorage1**' yi seçin.
+   a. **Iş bağlı hizmeti** için **AzureBlobStorage1**' yi seçin.
    
    b. **Depolamaya Gözat**’ı seçin.
 

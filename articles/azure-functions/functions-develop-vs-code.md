@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167908"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010528"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure İşlevleri geliştirme
 
@@ -141,7 +141,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-a-function-to-your-project"></a>Projenize bir işlev ekleyin
 
-Önceden tanımlanmış Işlevler tetikleyici şablonlarından birini kullanarak var olan bir projeye yeni bir işlev ekleyebilirsiniz. Yeni bir işlev tetikleyicisi eklemek için F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: oluşturma işlevi**komutunu arayıp çalıştırın. Tetikleyici türünü seçmek ve tetikleyicinin gerekli özniteliklerini tanımlamak için istemleri izleyin. Tetikleyiciniz bir hizmete bağlanmak için bir erişim anahtarı veya bağlantı dizesi gerektiriyorsa, işlev tetikleyicisi oluşturmadan önce bu uygulamayı hazırlayın.
+Önceden tanımlanmış Işlevler tetikleyici şablonlarından birini kullanarak var olan bir projeye yeni bir işlev ekleyebilirsiniz. Yeni bir işlev tetikleyicisi eklemek için F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: oluşturma işlevi** komutunu arayıp çalıştırın. Tetikleyici türünü seçmek ve tetikleyicinin gerekli özniteliklerini tanımlamak için istemleri izleyin. Tetikleyiciniz bir hizmete bağlanmak için bir erişim anahtarı veya bağlantı dizesi gerektiriyorsa, işlev tetikleyicisi oluşturmadan önce bu uygulamayı hazırlayın.
 
 Bu eylemin sonuçları projenizin diline bağlıdır:
 
@@ -245,7 +245,7 @@ Aşağıdaki adımlar, projenizi gelişmiş oluşturma seçenekleriyle oluşturu
 
     ![İşlev uygulaması ayarları](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. Oturum açmadıysanız **Azure 'Da oturum açmanız**istenir. Ayrıca, **ücretsiz bir Azure hesabı da oluşturabilirsiniz**. Tarayıcıdan oturum açtıktan sonra Visual Studio Code bölümüne geri dönün.
+1. Oturum açmadıysanız **Azure 'Da oturum açmanız** istenir. Ayrıca, **ücretsiz bir Azure hesabı da oluşturabilirsiniz**. Tarayıcıdan oturum açtıktan sonra Visual Studio Code bölümüne geri dönün.
 
 1. Birden çok aboneliğiniz varsa, işlev uygulaması için **bir abonelik seçin** ve sonra da **Azure 'Da yeni işlev uygulaması oluştur ' u seçin... _Gelişmiş_**. Bu _Gelişmiş_ seçenek, Azure 'da oluşturduğunuz kaynaklar üzerinde daha fazla denetim sağlar. 
 
@@ -276,7 +276,7 @@ Aşağıdaki adımlar, projenizi gelişmiş oluşturma seçenekleriyle oluşturu
 
 HTTP ile tetiklenen bir işlevi çağırmak için işlev uygulamanıza dağıtıldığında işlevin URL 'sine ihtiyacınız vardır. Bu URL, gerekli [işlev anahtarlarını](functions-bindings-http-webhook-trigger.md#authorization-keys)içerir. Bu URL 'Leri dağıtılan işlevleriniz için almak üzere uzantısını kullanabilirsiniz.
 
-1. F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: kopyalama işlev URL 'si**komutunu arayıp çalıştırın.
+1. F1 ' i seçerek komut paletini açın ve ardından **Azure işlevleri: kopyalama işlev URL 'si** komutunu arayıp çalıştırın.
 
 1. Azure 'da işlev uygulamanızı ve ardından çağırmak istediğiniz belirli HTTP tetikleyicisini seçmek için istemleri izleyin.
 
@@ -311,7 +311,7 @@ Bu bölümde, depolama bağlantı dizesine bağlanmak ve bu dizeyi almak için [
 
 Depolama hesabı bağlantı dizesini ayarlamak için:
 
-1. Visual Studio 'da **Cloud Explorer**' ı açın, **depolama hesabı ' nı genişletin**  >  **Your Storage Account**ve ardından **Özellikler** ' i seçin ve **birincil bağlantı dizesi** değerini kopyalayın.
+1. Visual Studio 'da **Cloud Explorer**' ı açın, **depolama hesabı ' nı genişletin**  >  **Your Storage Account** ve ardından **Özellikler** ' i seçin ve **birincil bağlantı dizesi** değerini kopyalayın.
 
 2. Projenizde local.settings.jsdosya üzerinde açın ve **AzureWebJobsStorage** anahtarının değerini kopyaladığınız bağlantı dizesi olarak ayarlayın.
 
@@ -359,7 +359,7 @@ Ayrıca, komut paletindeki **Azure işlevleri: yerel ayarı yükle** komutunu ku
 
 Yerel dosya şifrelendiyse, şifresi çözülür, yayımlanır ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir.
 
-Aboneliğinizi, işlev uygulamanızı ve **uygulama ayarlarınızı**genişleterek **Azure: Functions** alanındaki mevcut uygulama ayarlarını görüntüleyin.
+Aboneliğinizi, işlev uygulamanızı ve **uygulama ayarlarınızı** genişleterek **Azure: Functions** alanındaki mevcut uygulama ayarlarını görüntüleyin.
 
 ![İşlev uygulaması ayarlarını Visual Studio Code görüntüle](./media/functions-develop-vs-code/view-app-settings.png)
 

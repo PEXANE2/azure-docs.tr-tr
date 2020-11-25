@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 626f5b67905e5dd89cf8f12460bc2378451614de
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078315"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96010223"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
 
@@ -45,9 +45,9 @@ Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
 
 ## <a name="upgrade-and-scale"></a>Yükseltme ve ölçeklendirme  
 
-Dört katman arasından seçim yapabilirsiniz: **Geliştirici**, **temel**,  **Standart**ve **Premium**. **Geliştirici** katmanı, hizmeti değerlendirmek için kullanılmalıdır; üretim için kullanılmamalıdır. **Geliştirici** katmanının SLA 'sı yok ve bu katmanı ölçeklendiremezsiniz (birim Ekle/Kaldır). 
+Dört katman arasından seçim yapabilirsiniz: **Geliştirici**, **temel**,  **Standart** ve **Premium**. **Geliştirici** katmanı, hizmeti değerlendirmek için kullanılmalıdır; üretim için kullanılmamalıdır. **Geliştirici** katmanının SLA 'sı yok ve bu katmanı ölçeklendiremezsiniz (birim Ekle/Kaldır). 
 
-**Temel**, **Standart**ve **Premium** , SLA 'ya sahip olan ve ölçeklendirilebilen üretim katmanlarıdır. **Temel** katman, SLA ile birlikte en fazla iki birime ölçeklendirilebilir ve **Standart** katman, en fazla dört birime ölçeklenuygulanabilir. **Premium** katmana istediğiniz sayıda birim ekleyebilirsiniz.
+**Temel**, **Standart** ve **Premium** , SLA 'ya sahip olan ve ölçeklendirilebilen üretim katmanlarıdır. **Temel** katman, SLA ile birlikte en fazla iki birime ölçeklendirilebilir ve **Standart** katman, en fazla dört birime ölçeklenuygulanabilir. **Premium** katmana istediğiniz sayıda birim ekleyebilirsiniz.
 
 **Premium** katman, Istenen sayıda Azure bölgesinde tek bir Azure API Management örneği dağıtmanıza olanak sağlar. İlk olarak bir Azure API Management hizmeti oluşturduğunuzda, örnek yalnızca bir birim içerir ve tek bir Azure bölgesinde bulunur. İlk bölge **birincil** bölge olarak atanır. Ek bölgeler kolayca eklenebilir. Bölge eklerken, ayırmak istediğiniz birim sayısını belirtirsiniz. Örneğin, **birincil** bölgede bir biriminiz ve başka bir bölgedeki beş birim olabilir. Birim sayısını her bölgedeki trafiğe uyarlayabilirsiniz. Daha fazla bilgi için bkz. [azure API Management hizmet örneğini birden çok Azure bölgesine dağıtma](api-management-howto-deploy-multi-region.md).
 
@@ -78,6 +78,10 @@ Herhangi bir katmana ve sürümüne yükseltebilir ve buradan indirgeme yapabili
 
 ## <a name="downtime-during-scaling-up-and-down"></a>Ölçeği artırma ve azaltma sırasında kapalı kalma süresi
 Ya da geliştirici katmanına ölçeklendirebilirsiniz kapalı kalma süresi olacaktır. Aksi takdirde, kapalı kalma süresi yoktur. 
+
+## <a name="compute-isolation"></a>İşlem yalıtımı
+Güvenlik gereksinimleriniz [işlem yalıtımı](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)Içeriyorsa, **yalıtılmış** fiyatlandırma katmanını kullanabilirsiniz. Bu katman, bir API Management hizmet örneğinin işlem kaynaklarının tüm fiziksel ana bilgisayarı kullanmasını sağlar ve örneğin ABD Savunma etki düzeyi 5 (IL5) iş yüklerinin desteklenmesi için gereken yalıtım düzeyini sağlar. Yalıtılmış katmana erişim sağlamak için lütfen [bir destek bileti oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

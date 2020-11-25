@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: ad83e7ad5e1ffc03bf7c62df9b28512e19a62100
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739785"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010206"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -33,7 +33,7 @@ Portal Yapılandırması, kullanıcılarınıza birden çok oturum açma sağlay
 
 **İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem Için** **anonim isteklere izin ver (eylem yok)** seçeneğini belirleyin.
 
-Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz her bir sağlayıcının () bir oturum açma bağlantısını ekleyin `/.auth/login/<provider>` . Örneğin:
+Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz her bir sağlayıcının () bir oturum açma bağlantısını ekleyin `/.auth/login/<provider>` . Örnek:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -55,7 +55,7 @@ Kullanıcı oturum açma sonrası eklentisini özel bir URL 'ye yönlendirmek i�
 
 İstemci ile yönlendirilen bir oturum açma bölümünde, uygulama kullanıcıdan sağlayıcıya el ile oturum açar ve ardından kimlik doğrulama belirtecini doğrulama için App Service (bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow)) gönderir. Bu doğrulamanın kendisi, istenen uygulama kaynaklarına erişim hakkı vermez, ancak başarılı bir doğrulama size uygulama kaynaklarına erişmek için kullanabileceğiniz bir oturum belirteci verecektir. 
 
-Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, `/.auth/login/<provider>` doğrulama için belirteci gönderin. Örneğin: 
+Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, `/.auth/login/<provider>` doğrulama için belirteci gönderin. Örnek: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +86,7 @@ Sağlayıcı belirteci başarıyla doğrulandıktan sonra, API, `authenticationT
 }
 ```
 
-Bu oturum belirtecine sahip olduğunuzda, `X-ZUMO-AUTH` http isteklerinize üst bilgi ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örneğin: 
+Bu oturum belirtecine sahip olduğunuzda, `X-ZUMO-AUTH` http isteklerinize üst bilgi ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örnek: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +107,7 @@ Web sayfasında basit bir oturum kapatma bağlantısı şöyle olabilir:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done` . Sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz `post_logout_redirect_uri` . Örneğin:
+Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done` . Sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz `post_logout_redirect_uri` . Örnek:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -170,21 +170,21 @@ Sunucu kodunuzda sağlayıcıya özgü belirteçler istek üstbilgisine eklenir,
 
 Sağlayıcınızın erişim belirtecinin ( [oturum belirteci](#extend-session-token-expiration-grace-period)değil) süresi dolmuşsa, bu belirteci yeniden kullanmadan önce kullanıcıyı yeniden kimlik doğrulaması yapmanız gerekir. `GET`Uygulamanızın uç noktasına bir çağrı yaparak belirteç süre sonundan kaçınabilirsiniz `/.auth/refresh` . Çağrıldığında, App Service kimliği doğrulanmış kullanıcı için [belirteç deposundaki](overview-authentication-authorization.md#token-store) erişim belirteçlerini otomatik olarak yeniler. Uygulama kodunuzun belirteçleri için sonraki istekleri yenilenen belirteçleri alır. Ancak, belirteç yenilemenin çalışması için, belirteç deposu sağlayıcınız için [yenileme belirteçleri](https://auth0.com/learn/refresh-tokens/) içermelidir. Yenileme belirteçlerini almanın yöntemi her sağlayıcı tarafından belgelenmiştir, ancak aşağıdaki liste kısa bir özettir:
 
-- **Google** : `access_type=offline` API çağrın sorgu dizesi parametresini ekleyin `/.auth/login/google` . Mobile Apps SDK kullanıyorsanız, `LogicAsync` aşırı yüklerden birine parametreyi ekleyebilirsiniz (bkz. [Google Refresh belirteçleri](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook** : yenileme belirteçleri sağlamıyor. Uzun süreli belirteçlerin süresi 60 gün içinde doluyor (bkz. [Facebook süre sonu ve erişim belirteçleri uzantısı](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter** : erişim belirteçlerinin süre sonu yok (bkz. [Twitter OAuth SSS](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Microsoft hesabı** : [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md) `wl.offline_access` kapsamı seçin.
-- **Azure Active Directory** : içinde [https://resources.azure.com](https://resources.azure.com) , aşağıdaki adımları uygulayın:
-    1. Sayfanın üst kısmında **oku/yaz** ' ı seçin.
-    2. Sol tarayıcıda, **abonelikler** > * * _\<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın** ' e gidin. 
-    3. **Düzenle** ’ye tıklayın.
+- **Google**: `access_type=offline` API çağrın sorgu dizesi parametresini ekleyin `/.auth/login/google` . Mobile Apps SDK kullanıyorsanız, `LogicAsync` aşırı yüklerden birine parametreyi ekleyebilirsiniz (bkz. [Google Refresh belirteçleri](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Facebook**: yenileme belirteçleri sağlamıyor. Uzun süreli belirteçlerin süresi 60 gün içinde doluyor (bkz. [Facebook süre sonu ve erişim belirteçleri uzantısı](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
+- **Twitter**: erişim belirteçlerinin süre sonu yok (bkz. [Twitter OAuth SSS](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Microsoft hesabı**: [Microsoft hesabı kimlik doğrulaması ayarlarını yapılandırırken](configure-authentication-provider-microsoft.md) `wl.offline_access` kapsamı seçin.
+- **Azure Active Directory**: içinde [https://resources.azure.com](https://resources.azure.com) , aşağıdaki adımları uygulayın:
+    1. Sayfanın üst kısmında **oku/yaz**' ı seçin.
+    2. Sol tarayıcıda, **abonelikler** > * *_\<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın**' e gidin. 
+    3. **Düzenle**’ye tıklayın.
     4. Aşağıdaki özelliği değiştirin. _\<app\_id>_ Erişmek istediğiniz hizmetin Azure Active Directory uygulama kimliğiyle değiştirin.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. **Yerleştir** ' e tıklayın. 
+    5. **Yerleştir**' e tıklayın. 
 
 Sağlayıcınız yapılandırıldıktan sonra, belirteç deposundaki [erişim belirtecinin yenileme belirtecini ve sona erme zamanını bulabilirsiniz](#retrieve-tokens-in-app-code) . 
 
@@ -221,11 +221,11 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Oturum açma hesaplarının etki alanını sınırlayın
 
-Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_ , _Live.com_ ve _hotmail.com_ hesaplarına izin verir. Azure AD, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Ancak, kullanıcılarınızı kendi markalı Azure AD oturum açma sayfanıza (örneğin,) doğrudan hızlandırmak isteyebilirsiniz `contoso.com` . Oturum açma hesaplarının etki alanı adını önermek için aşağıdaki adımları izleyin.
+Hem Microsoft hesabı hem de Azure Active Directory birden çok etki alanından oturum açmanızı sağlar. Örneğin, Microsoft hesabı _Outlook.com_, _Live.com_ ve _hotmail.com_ hesaplarına izin verir. Azure AD, oturum açma hesapları için herhangi bir sayıda özel etki alanı sağlar. Ancak, kullanıcılarınızı kendi markalı Azure AD oturum açma sayfanıza (örneğin,) doğrudan hızlandırmak isteyebilirsiniz `contoso.com` . Oturum açma hesaplarının etki alanı adını önermek için aşağıdaki adımları izleyin.
 
-İçinde [https://resources.azure.com](https://resources.azure.com) , **abonelikler** > * * _\<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın** ' e gidin. 
+İçinde [https://resources.azure.com](https://resources.azure.com) , **abonelikler** > * *_\<subscription\_name_** > **ResourceGroups** > * *_ \<resource\_group\_name> _* * > **sağlayıcıları**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings öğesine tıklayın**' e gidin. 
 
-**Düzenle** ' ye tıklayın, aşağıdaki özelliği değiştirin ve ardından **Yerleştir** ' e tıklayın. İstediğiniz _\<domain\_name>_ etki alanı ile değiştirdiğinizden emin olun.
+**Düzenle**' ye tıklayın, aşağıdaki özelliği değiştirin ve ardından **Yerleştir**' e tıklayın. İstediğiniz _\<domain\_name>_ etki alanı ile değiştirdiğinizden emin olun.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -251,9 +251,9 @@ Herhangi bir Windows uygulaması için, *Web.config* dosyasını düzenleyerek I
 
 1. `https://<app-name>.scm.azurewebsites.net/DebugConsole` sayfasına gidin
 
-1. App Service dosyalarınızın tarayıcı Gezgini ' nde, *site/Wwwroot ' ya* gidin. *Web.config* yoksa, **+**  >  **yeni dosya** ' yı seçerek oluşturun. 
+1. App Service dosyalarınızın tarayıcı Gezgini ' nde, *site/Wwwroot ' ya* gidin. *Web.config* yoksa, **+**  >  **yeni dosya**' yı seçerek oluşturun. 
 
-1. *Web.config* düzenlemek için kurşun kalem ' i seçin. Aşağıdaki yapılandırma kodunu ekleyin ve **Kaydet** ' e tıklayın. *Web.config* zaten varsa, `<authorization>` öğeyi içindeki her şeyi eklemeniz yeterlidir. Öğesinde izin vermek istediğiniz hesapları ekleyin `<allow>` .
+1. *Web.config* düzenlemek için kurşun kalem ' i seçin. Aşağıdaki yapılandırma kodunu ekleyin ve **Kaydet**' e tıklayın. *Web.config* zaten varsa, `<authorization>` öğeyi içindeki her şeyi eklemeniz yeterlidir. Öğesinde izin vermek istediğiniz hesapları ekleyin `<allow>` .
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -269,7 +269,7 @@ Herhangi bir Windows uygulaması için, *Web.config* dosyasını düzenleyerek I
 
 ### <a name="identity-provider-level"></a>Kimlik sağlayıcısı düzeyi
 
-Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örneğin:
+Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örnek:
 
 - [Azure App Service](configure-authentication-provider-aad.md)için, [Kurumsal düzeyde ERIŞIMI](../active-directory/manage-apps/what-is-access-management.md) doğrudan Azure AD 'de yönetebilirsiniz. Yönergeler için bkz. [kullanıcının bir uygulamaya erişimini kaldırma](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - [Google](configure-authentication-provider-google.md)için, bir [kuruluşa](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) ait Google API projeleri yalnızca kuruluşunuzdaki kullanıcılara erişime izin verecek şekilde yapılandırılabilir (bkz. [Google 'ın **OAuth 2,0** destek sayfasını ayarlama](https://support.google.com/cloud/answer/6158849?hl=en)).

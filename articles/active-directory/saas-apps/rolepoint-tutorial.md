@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520685"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Öğretici: RolePoint ile tümleştirme Azure Active Directory
 
@@ -60,7 +60,7 @@ RolePoint 'in Azure AD 'ye tümleştirmesini ayarlamak için Galeriden RolePoint
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **Rolepoint**yazın. Arama sonuçlarında **Rolepoint** ' i seçin ve ardından **Ekle**' yi seçin.
+4. Arama kutusuna **Rolepoint** yazın. Arama sonuçlarında **Rolepoint** ' i seçin ve ardından **Ekle**' yi seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
@@ -146,9 +146,9 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension> ** (Örneğin, BrittaSimon@contoso.com .)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
     1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 

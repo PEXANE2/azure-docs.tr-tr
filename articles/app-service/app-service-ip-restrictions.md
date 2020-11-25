@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576453"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010189"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamalarını ayarlama
 
@@ -38,9 +38,9 @@ Uygulamanıza bir erişim kısıtlama kuralı eklemek için aşağıdakileri yap
 
 1. Azure portalında oturum açın.
 
-1. Sol bölmede **ağ iletişimi** ' ni seçin.
+1. Sol bölmede **ağ iletişimi**' ni seçin.
 
-1. **Ağ** bölmesinde, **erişim kısıtlamaları** ' nın altında, **erişim kısıtlamalarını Yapılandır** ' ı seçin.
+1. **Ağ** bölmesinde, **erişim kısıtlamaları**' nın altında, **erişim kısıtlamalarını Yapılandır**' ı seçin.
 
    ![Azure portal App Service ağ seçenekleri bölmesinin ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -52,25 +52,25 @@ Uygulamanıza bir erişim kısıtlama kuralı eklemek için aşağıdakileri yap
 
 ### <a name="add-an-access-restriction-rule"></a>Erişim kısıtlama kuralı ekleme
 
-Uygulamanıza bir erişim kısıtlama kuralı eklemek için, **erişim kısıtlamaları** bölmesinde **Kural Ekle** ' yi seçin. Bir kural ekledikten sonra, hemen etkili olur. 
+Uygulamanıza bir erişim kısıtlama kuralı eklemek için, **erişim kısıtlamaları** bölmesinde **Kural Ekle**' yi seçin. Bir kural ekledikten sonra, hemen etkili olur. 
 
 Kurallar öncelik sütunundaki en düşük sayıdan **başlayarak öncelik sırasına** göre zorlanır. Tek bir kural ekledikten sonra örtülü *reddetme tümünün* etkin olması gerekir.
 
 **IP kısıtlaması Ekle** bölmesinde, bir kural oluşturduğunuzda şunları yapın:
 
-1. **Eylem** altında **Izin ver** veya **Reddet** ' i seçin.  
+1. **Eylem** altında **Izin ver** veya **Reddet**' i seçin.  
 
    !["IP kısıtlaması Ekle" bölmesinin ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
    
 1. İsteğe bağlı olarak, kuralın adını ve açıklamasını girin.  
 1. **Tür** açılan listesinde, kural türünü seçin.  
 1. **Öncelik** kutusuna bir öncelik değeri girin.  
-1. **Abonelik** , **sanal ağ** ve **alt ağ** aşağı açılan listelerinde, erişimi kısıtlamak istediğinizi seçin.  
+1. **Abonelik**, **sanal ağ** ve **alt ağ** aşağı açılan listelerinde, erişimi kısıtlamak istediğinizi seçin.  
 
 ### <a name="set-an-ip-address-based-rule"></a>IP adresi tabanlı kural ayarlama
 
 Aşağıdaki çeşitle, önceki bölümde özetlenen yordamı izleyin:
-* Adım 3 ' te, **tür** açılan listesinde **IPv4** veya **IPv6** ' yı seçin. 
+* Adım 3 ' te, **tür** açılan listesinde **IPv4** veya **IPv6**' yı seçin. 
 
 Hem IPv4 hem de IPv6 adresleri için sınıfsız Inter-Domain yönlendirme (CıDR) gösteriminde IP adresini belirtin. Bir adres belirtmek için, *1.2.3.4/32* gibi bir şey kullanabilirsiniz; burada ilk dört sekizli IP adresinizi ve */32* ' in maskesini temsil eder. Tüm adresler için IPv4 CıDR gösterimi 0.0.0.0/0 ' dır. CıDR gösterimi hakkında daha fazla bilgi edinmek için bkz. [sınıfsız Inter-Domain yönlendirme](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
@@ -101,7 +101,7 @@ Var olan bir erişim kısıtlama kuralını düzenleyebilir veya silebilirsiniz.
 
 1. Var olan bir erişim kısıtlama kuralını düzenlemeye başlamak için, **erişim kısıtlamaları** sayfasında, düzenlemek istediğiniz kurala çift tıklayın.
 
-1. **IP kısıtlamasını Düzenle** bölmesinde, değişikliklerinizi yapın ve ardından **kuralı Güncelleştir** ' i seçin. Düzenlemeler, öncelik Sıralamalı değişiklikler de dahil olmak üzere hemen etkili olur.
+1. **IP kısıtlamasını Düzenle** bölmesinde, değişikliklerinizi yapın ve ardından **kuralı Güncelleştir**' i seçin. Düzenlemeler, öncelik Sıralamalı değişiklikler de dahil olmak üzere hemen etkili olur.
 
    ![Azure portal var olan bir erişim kısıtlama kuralına ait alanları gösteren "IP kısıtlamasını Düzenle" bölmesinin ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
@@ -112,7 +112,7 @@ Var olan bir erişim kısıtlama kuralını düzenleyebilir veya silebilirsiniz.
 
 ### <a name="delete-a-rule"></a>Kuralı silme
 
-Bir kuralı silmek için, **erişim kısıtlamaları** sayfasında, silmek istediğiniz kuralın yanındaki üç nokta ( **...** ) simgesini seçin ve ardından **Kaldır** ' ı seçin.
+Bir kuralı silmek için, **erişim kısıtlamaları** sayfasında, silmek istediğiniz kuralın yanındaki üç nokta (**...**) simgesini seçin ve ardından **Kaldır**' ı seçin.
 
 !["Erişim kısıtlamaları" sayfasının, silinecek erişim kısıtlama kuralının yanındaki "Kaldır" yan yana gösterildiği ekran görüntüsü.](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -153,7 +153,7 @@ Ayrıca, aşağıdakilerden birini yaparak değerleri el ile de ayarlayabilirsin
 
 * Azure Resource Manager içindeki uygulama yapılandırmasına bir [Azure REST API](/rest/api/azure/) Put işlemi kullanın. Bu bilgilerin Azure Resource Manager konumu:
 
-  management.azure.com/subscriptions/ **ABONELIK kimliği** /ResourceGroups/ **kaynak grupları** /Providers/Microsoft.Web/Sites/ **Web uygulaması adı** /config/Web? api-Version = 2018-02-01
+  management.azure.com/subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grupları**/Providers/Microsoft.Web/Sites/**Web uygulaması adı**/config/Web? api-Version = 2018-02-01
 
 * ARM şablonu kullanın. Örnek olarak, gerekli JSON 'u eklemek için resources.azure.com kullanabilir ve ıpsecurityrestrictions bloğunu düzenleyebilirsiniz.
 

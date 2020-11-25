@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658562"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010070"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
@@ -76,7 +76,7 @@ Aşağıdaki sınırlar bekletme ilkeleri için geçerlidir:
 
 ### <a name="allow-protected-append-blobs-writes"></a>Korumalı ekleme Blobları yazmaları sağlar
 
-Ekleme Blobları, veri bloklarından oluşur ve denetim ve günlük senaryoları için gereken veri ekleme işlemleri için en iyi duruma getirilmiştir. Tasarım, ekleme Blobları yalnızca Blobun sonuna yeni blokların eklenmesine izin verir. Değişiklik yapılarından bağımsız olarak, bir ekleme blobu içindeki mevcut blokların değiştirilmesine veya silinmesine göre temelde izin verilmez. Blob ekleme hakkında daha fazla bilgi için bkz. [BLOB ekleme blobu hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
+Ekleme Blobları, veri bloklarından oluşur ve denetim ve günlük senaryoları için gereken veri ekleme işlemleri için en iyi duruma getirilmiştir. Tasarım, ekleme Blobları yalnızca Blobun sonuna yeni blokların eklenmesine izin verir. Değişiklik yapılarından bağımsız olarak, bir ekleme blobu içindeki mevcut blokların değiştirilmesine veya silinmesine göre temelde izin verilmez. Blob ekleme hakkında daha fazla bilgi için bkz. [BLOB ekleme blobu hakkında](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
 Yalnızca zaman tabanlı bekletme ilkeleri `allowProtectedAppendWrites` , daha fazla koruma ve uyumluluk sağlarken, ek bir bloba yeni bloklar yazmaya olanak tanıyan bir ayara sahiptir. Bu ayar etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler. Bu ayarın etkinleştirilmesi, blok Blobları veya sayfa Blobları için dengesterlebilirlik davranışını etkilemez.
 
@@ -103,7 +103,7 @@ Geçerli tutmalar için aşağıdaki sınırlar geçerlidir:
 
 ## <a name="scenarios"></a>Senaryolar
 
-Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmış BLOB depolama işlemlerinin türleri gösterilmektedir. Daha fazla bilgi için bkz. [Azure Blob hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) belgeleri.
+Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmış BLOB depolama işlemlerinin türleri gösterilmektedir. Daha fazla bilgi için bkz. [Azure Blob hizmeti REST API](/rest/api/storageservices/blob-service-rest-api) belgeleri.
 
 | Senaryo | Blob durumu | Blob işlemleri reddedildi | Kapsayıcı ve hesap koruması |
 |--|--|--|--|
@@ -116,7 +116,7 @@ Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmı�
 <sup>2</sup> Append bloğuna yalnızca özelliği etkinleştirilmiş zaman tabanlı bekletme ilkeleri için izin verilir `allowProtectedAppendWrites` . Daha fazla bilgi için, [korumalı ekleme Blobları yazmaları Izin ver](#allow-protected-append-blobs-writes) bölümüne bakın.
 
 > [!IMPORTANT]
-> [URL 'ye SQL yedeklemesi](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)gibi bazı iş yükleri bir blob oluşturup daha sonra buna ekler. Kapsayıcıda etkin bir zaman tabanlı bekletme ilkesi veya yasal tutma varsa, bu model başarılı olmaz.
+> [URL 'ye SQL yedeklemesi](/sql/relational-databases/backup-restore/sql-server-backup-to-url)gibi bazı iş yükleri bir blob oluşturup daha sonra buna ekler. Kapsayıcıda etkin bir zaman tabanlı bekletme ilkesi veya yasal tutma varsa, bu model başarılı olmaz.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -170,11 +170,11 @@ Evet. Zaman tabanlı bir bekletme ilkesi ilk oluşturulduğunda, *kilidi açılm
 
 **Sabit blob ilkeleriyle birlikte geçici silme kullanabilir miyim?**
 
-Evet, uyumluluk gereksinimleriniz geçici silmenin etkinleştirilmesini sağlar. [Azure Blob depolama Için geçici silme](storage-blob-soft-delete.md) , yasal bir saklama veya zaman tabanlı bekletme ilkesinden bağımsız olarak bir depolama hesabındaki tüm kapsayıcılar için geçerlidir. Herhangi bir sabit solucan İlkesi uygulanmadan ve onaylanmadan önce ek koruma için geçici silme özelliğinin etkinleştirilmesini öneririz.
+Evet, uyumluluk gereksinimleriniz geçici silmenin etkinleştirilmesini sağlar. [Azure Blob depolama Için geçici silme](./soft-delete-blob-overview.md) , yasal bir saklama veya zaman tabanlı bekletme ilkesinden bağımsız olarak bir depolama hesabındaki tüm kapsayıcılar için geçerlidir. Herhangi bir sabit solucan İlkesi uygulanmadan ve onaylanmadan önce ek koruma için geçici silme özelliğinin etkinleştirilmesini öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md)
 - [Yaşam döngüsü yönetimi ile blob verilerini otomatik olarak katmana ve silmeye yönelik kurallar ayarlama](storage-lifecycle-management-concepts.md)
-- [Azure Depolama blobları için geçici silme](../blobs/storage-blob-soft-delete.md)
+- [Azure Depolama blobları için geçici silme](./soft-delete-blob-overview.md)
 - [Abonelikleri, kaynak gruplarını ve kaynakları Azure Resource Manager kilitlerle koruyun](../../azure-resource-manager/management/lock-resources.md).

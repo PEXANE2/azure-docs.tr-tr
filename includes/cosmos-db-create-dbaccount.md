@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 08/19/2020
 ms.custom: include file
 ms.openlocfilehash: efdd4a065e1eab55f5af420585a44754d42a43e9
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504031"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010388"
 ---
-1. Azure portal menüsünde veya **giriş sayfasında** , **kaynak oluştur** ' u seçin.
+1. Azure portal menüsünde veya **giriş sayfasında**, **kaynak oluştur**' u seçin.
 
 1. **Yeni** sayfasında, **Azure Cosmos DB** bulun ve seçin.
 
-1. **Azure Cosmos DB** sayfasında **Oluştur** ' u seçin.
+1. **Azure Cosmos DB** sayfasında **Oluştur**' u seçin.
 
 1. **Azure Cosmos DB Hesabı Oluştur** sayfasında, yeni Azure Cosmos hesabına yönelik temel ayarları girin. 
 
@@ -45,7 +45,7 @@ ms.locfileid: "94504031"
     
     :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure Cosmos DB için yeni hesap sayfası":::
 
-1. **Gözden geçir + oluştur** ’u seçin. **Ağ** ve **Etiketler** bölümlerini atlayabilirsiniz.
+1. **Gözden geçir ve oluştur**’u seçin. **Ağ** ve **Etiketler** bölümlerini atlayabilirsiniz.
 
 1. Hesap ayarlarını gözden geçirip **Oluştur** seçeneğini belirleyin. Hesabın oluşturulması birkaç dakika sürer. Portal sayfasında **Dağıtımınız tamamlandı** iletisinin görüntülenmesini bekleyin. 
 
