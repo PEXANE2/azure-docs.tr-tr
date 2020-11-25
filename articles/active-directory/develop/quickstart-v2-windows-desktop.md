@@ -11,21 +11,21 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 25c5e6445bb5d673db1cfb755f320302a9e9c5b5
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f63dbad398afcd0a9756cc1e9d4f70f1303d00b0
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561871"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993865"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
-Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kullanıcılara nasıl oturum açıp Microsoft Graph API 'sini çağırmak için bir erişim belirteci alabileceği bir kod örneği indirip çalıştırırsınız. 
+Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kullanıcılara nasıl oturum açıp Microsoft Graph API 'sini çağırmak için bir erişim belirteci edindiğini gösteren bir kod örneği indirip çalıştırırsınız. 
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Ön koşullar
+> ## <a name="prerequisites"></a>Önkoşullar
 >
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) [Evrensel Windows platformu geliştirme](/windows/uwp/get-started/get-set-up) iş yükü yüklendi
 >
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
 > 1. Yeni [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)gidin.
-> 1. Uygulamanız için bir ad girin ve **Kaydet** 'i seçin.
+> 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
@@ -51,10 +51,10 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 > 1. **Yeni kayıt** seçeneğini belirleyin.
 >      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `Win-App-calling-MsGraph` .
 >      - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
->      - Uygulamayı kaydetmek için **Kaydet** 'i seçin.
-> 1. Uygulama sayfa listesinde **Kimlik doğrulaması** 'nı seçin.
+>      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
+> 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
 > 1. **Yeniden yönlendirme URI 'lerinde**  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümünde öğesini kullanın **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. **Kaydet** ’i seçin.
+> 1. **Kaydet**'i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
@@ -85,7 +85,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi yapılandırma
-> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples** ) ayıklayın.
+> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 > 1. Projeyi Visual Studio'da açın.
 > 1. **App.Xaml.cs** dosyasını düzenleyin ve `ClientId` ile `Tenant` alanlarının değerlerini aşağıdaki kodla değiştirin:
 >
@@ -94,7 +94,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
 >
-> Burada:
+> Konum:
 > - `Enter_the_Application_Id_here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 > - `Enter_the_Tenant_Info_Here` - aşağıdaki seçeneklerden birine ayarlanır:
 >   - Uygulamanız **Bu kuruluş dizinindeki hesapları** destekliyorsa, bu değeri **Kiracı Kimliği** veya **Kiracı adı** (örneğin, contoso.microsoft.com) ile değiştirin
@@ -102,7 +102,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 >   - Uygulamanız **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesaplarını** destekliyorsa bu değeri `common` ile değiştirin
 >
 > > [!TIP]
-> > **Uygulama (istemci) Kimliği** , **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
+> > **Uygulama (istemci) Kimliği**, **Dizin (kiracı) Kimliği** ve **Desteklenen hesap türleri** değerlerini bulmak için Azure portalında uygulamanın **Genel bakış** sayfasına gidin.
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
@@ -110,7 +110,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
-MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)), Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan kullanıcılara ve istek belirteçlerine oturum açmak için kullanılan kitaplıktır. MSAL kitaplığını Visual Studio'nun **Paket Yöneticisi Konsolu** 'nda aşağıdaki komutu çalıştırarak yükleyebilirsiniz:
+MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)), Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan kullanıcılara ve istek belirteçlerine oturum açmak için kullanılan kitaplıktır. MSAL kitaplığını Visual Studio'nun **Paket Yöneticisi Konsolu**'nda aşağıdaki komutu çalıştırarak yükleyebilirsiniz:
 
 ```powershell
 Install-Package Microsoft.Identity.Client -IncludePrerelease
@@ -134,9 +134,9 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Burada: | Description |
+> |Konum: | Description |
 > |---------|---------|
-> | `ClientId` | **Uygulama (istemci) Kimliği** , Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
+> | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
@@ -156,7 +156,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Burada:| Description |
+> |Konum:| Description |
 > |---------|---------|
 > | `_scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
@@ -171,7 +171,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Burada: | Description |
+> |Konum: | Description |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |

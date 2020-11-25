@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235833"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994001"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -29,7 +29,7 @@ Kapsam filtreleri, sağlama bağlayıcısının türüne göre farklı şekilde 
 * **Azure AD 'Den SaaS uygulamalarına giden sağlama**. Azure AD kaynak sistem olduğunda, [Kullanıcı ve Grup atamaları](../manage-apps/assign-user-or-group-access-portal.md) , hangi kullanıcıların sağlama kapsamında olduğunu belirlemek için en yaygın yöntemdir. Bu atamalar, çoklu oturum açmayı etkinleştirmek ve erişim ve sağlamayı yönetmek için tek bir yöntem sağlamak için de kullanılır. Kapsam filtreleri, kullanıcıların öznitelik değerlerine göre filtreleneceği şekilde, atamaları veya bunların yerine, isteğe bağlı olarak kullanılabilir.
 
     >[!TIP]
-    > **Tüm kullanıcıları ve grupları eşitlemek**için sağlama ayarları altındaki [kapsam](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menüsündeki ayarları değiştirerek bir kurumsal uygulama için atamaları temel alarak sağlamayı devre dışı bırakabilirsiniz. 
+    > **Tüm kullanıcıları ve grupları eşitlemek** için sağlama ayarları altındaki [kapsam](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menüsündeki ayarları değiştirerek bir kurumsal uygulama için atamaları temel alarak sağlamayı devre dışı bırakabilirsiniz. 
 
 * **HCM uygulamalarından Azure AD 'ye gelen sağlama ve Active Directory**. [Workday gibi bir HCM uygulaması](../saas-apps/workday-tutorial.md) kaynak sistem olduğunda, kapsam filtreleri hcm uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcıların sağlanması gerektiğini belirlemek için birincil yöntemdir.
 
@@ -37,7 +37,7 @@ Varsayılan olarak, Azure AD sağlama bağlayıcılarında hiçbir öznitelik ta
 
 ## <a name="scoping-filter-construction"></a>Kapsam filtresi oluşturma
 
-Kapsam filtresi bir veya daha fazla *yan tümce*içerir. Yan tümceler, her kullanıcının özniteliklerini değerlendirerek kapsam filtresinden hangi kullanıcıların geçmesine izin verileceğini belirleme. Örneğin, bir kullanıcının "durum" özniteliğinin "New York" değerine eşit olmasını gerektiren bir yan tümcesine sahip olabilirsiniz, bu nedenle yalnızca New York kullanıcıları uygulamaya sağlanabilir. 
+Kapsam filtresi bir veya daha fazla *yan tümce* içerir. Yan tümceler, her kullanıcının özniteliklerini değerlendirerek kapsam filtresinden hangi kullanıcıların geçmesine izin verileceğini belirleme. Örneğin, bir kullanıcının "durum" özniteliğinin "New York" değerine eşit olmasını gerektiren bir yan tümcesine sahip olabilirsiniz, bu nedenle yalnızca New York kullanıcıları uygulamaya sağlanabilir. 
 
 Tek bir yan tümce tek bir öznitelik değeri için tek bir koşulu tanımlar. Tek bir kapsam filtresinde birden çok yan tümce oluşturulduysa, "AND" mantığı kullanılarak birlikte değerlendirilir. Bu, bir kullanıcının sağlanması için tüm yan tümcelerinin "true" olarak değerlendirilmesi gerektiği anlamına gelir.
 
@@ -72,7 +72,7 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 
 6. **Kapsam filtresi ekle**' yi seçin.
 
-7. Bir kaynak **öznitelik adı**, bir **işleç**ve eşleştirilecek bir **öznitelik değeri** seçerek bir yan tümce tanımlayın. Aşağıdaki işleçler desteklenir:
+7. Bir kaynak **öznitelik adı**, bir **işleç** ve eşleştirilecek bir **öznitelik değeri** seçerek bir yan tümce tanımlayın. Aşağıdaki işleçler desteklenir:
 
    a. **Eşittir**. Değerlendirilen öznitelik, giriş dizesi değeri tam olarak (büyük/küçük harfe duyarlı) eşleşiyorsa "true" döndürür.
 

@@ -5,11 +5,11 @@ author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
 ms.openlocfilehash: 40f243ce0044b8e1172fb03a1366f37314a0c550
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993489"
 ---
 ## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell kullanma
 
@@ -19,7 +19,7 @@ Azure Cloud Shell’i başlatmak için:
 
 | Seçenek | Örnek/Bağlantı |
 |-----------------------------------------------|---|
-| Kod bloğunun sağ üst köşesindeki **Deneyin** ’i seçin. **Deneyin** seçeneği belirlendiğinde, kod otomatik olarak Cloud Shell’e kopyalanmaz. | ![Azure Cloud Shell için Deneyin örneği](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Kod bloğunun sağ üst köşesindeki **Deneyin**’i seçin. **Deneyin** seçeneği belirlendiğinde, kod otomatik olarak Cloud Shell’e kopyalanmaz. | ![Azure Cloud Shell için Deneyin örneği](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
 | Cloud Shell’i tarayıcınızda açmak için [https://shell.azure.com](https://shell.azure.com) bölümüne gidin veya **Cloud Shell’i Başlat** düğmesini seçin. | [![Cloud Shell’i yeni bir pencerede başlatma](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
 | [Azure portalın](https://portal.azure.com) sağ üst köşesindeki menü çubuğunda yer alan **Cloud Shell** düğmesini seçin. | ![Azure portaldaki Cloud Shell düğmesi](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 

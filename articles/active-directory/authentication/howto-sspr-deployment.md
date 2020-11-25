@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994171"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
@@ -64,7 +64,7 @@ Sürümleri ve özellikleri karşılaştırmak ve grup veya Kullanıcı tabanlı
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * En az deneme sürümü lisansı etkinleştirilmiş çalışan bir Azure AD kiracısına erişim. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -254,7 +254,7 @@ SSPR genellikle kullanıcı sorunları oluşturmadığından, oluşabilecek soru
 
 Destek takımınızın başarısını etkinleştirmek için, kullanıcılarınızın aldığınız sorulara dayalı bir SSS oluşturabilirsiniz. İşte birkaç örnek:
 
-| Senaryolar| Açıklama |
+| Senaryolar| Description |
 | - | - |
 | Kullanıcının kayıtlı bir kimlik doğrulama yöntemi yok| Kullanıcı parolasını sıfırlamaya çalışıyor ancak kaydoldukları kimlik doğrulama yöntemlerinden hiçbirine sahip değil (örnek: kendi cep telefonlarını evde ve e-postaya erişemez) |
 | Kullanıcı Office veya cep telefonunda bir metin veya çağrı almıyor| Kullanıcı, kimliğini metin veya çağrı yoluyla doğrulamaya çalışıyor ancak bir metin/çağrı almıyor. |

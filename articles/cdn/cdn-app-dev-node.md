@@ -16,11 +16,11 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-js
 ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316775"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993365"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN ile geliştirmeye başlama
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Uygulamanızı depolamak için bir klasör oluşturun.  Geçerli yolunuzda Node.
 npm init
 ```
 
-Daha sonra projenizi başlatmak için bir dizi soru sunulacaktır.  **Giriş noktası**için bu öğretici *app.js*kullanır.  Aşağıdaki örnekte diğer seçimlerimi görebilirsiniz.
+Daha sonra projenizi başlatmak için bir dizi soru sunulacaktır.  **Giriş noktası** için bu öğretici *app.js* kullanır.  Aşağıdaki örnekte diğer seçimlerimi görebilirsiniz.
 
 ![NPM init çıkışı](./media/cdn-app-dev-node/cdn-npm-init.png)
 
@@ -80,7 +80,7 @@ Paketler yüklendikten sonra, dosyadaki *package.js* bu örneğe benzer görünm
 }
 ```
 
-Son olarak, metin düzenleyicinizi kullanarak boş bir metin dosyası oluşturun ve proje klasörünüzün köküne *app.js*olarak kaydedin.  Artık kod yazmaya başlamaya hazırsınız.
+Son olarak, metin düzenleyicinizi kullanarak boş bir metin dosyası oluşturun ve proje klasörünüzün köküne *app.js* olarak kaydedin.  Artık kod yazmaya başlamaya hazırsınız.
 
 ## <a name="requires-constants-authentication-and-structure"></a>, Sabitler, kimlik doğrulaması ve yapı gerektirir
 Düzenleyicimizde *app.js* açık olduğunda programımızın temel yapısını yazalım.
@@ -91,7 +91,7 @@ Düzenleyicimizde *app.js* açık olduğunda programımızın temel yapısını 
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Yöntemlerimizin kullanacağı bazı sabitleri tanımlamanız gerekiyor.  Aşağıdakileri ekleyin.  ** &lt; Açılı ayraçlar &gt; **dahil olmak üzere yer tutucuları, gerektiğinde kendi değerlerinizle değiştirdiğinizden emin olun.
+2. Yöntemlerimizin kullanacağı bazı sabitleri tanımlamanız gerekiyor.  Aşağıdakileri ekleyin.  **&lt; Açılı ayraçlar &gt;** dahil olmak üzere yer tutucuları, gerektiğinde kendi değerlerinizle değiştirdiğinizden emin olun.
    
     ``` javascript
     //Tenant app constants
@@ -124,7 +124,7 @@ Düzenleyicimizde *app.js* açık olduğunda programımızın temel yapısını 
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    ** &lt; Açılı ayraçlar &gt; ** içindeki öğeleri doğru bilgilerle değiştirdiğinizden emin olun.  İçin `<redirect URI>` , uygulamayı Azure AD 'ye kaydettiğinizde girdiğiniz yeniden YÖNLENDIRME URI 'sini kullanın.
+    **&lt; Açılı ayraçlar &gt;** içindeki öğeleri doğru bilgilerle değiştirdiğinizden emin olun.  İçin `<redirect URI>` , uygulamayı Azure AD 'ye kaydettiğinizde girdiğiniz yeniden YÖNLENDIRME URI 'sini kullanın.
 4. Node.js konsolu uygulamamız bazı komut satırı parametreleri alacak.  En az bir parametrenin geçtiğini doğrulayalim.
    
    ```javascript

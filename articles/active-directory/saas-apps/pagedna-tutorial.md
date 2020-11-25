@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993933"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Öğretici: PageDNA ile Azure Active Directory tümleştirme
 
@@ -64,13 +64,13 @@ PageDNA 'in Azure AD 'ye tümleştirmesini yapılandırmak için, Azure Marketi 
 
     ![Yeni uygulama seçeneği](common/add-new-app.png)
 
-1. Arama kutusuna **PageDNA**yazın. Arama sonuçlarında, **PageDNA**öğesini seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
+1. Arama kutusuna **PageDNA** yazın. Arama sonuçlarında, **PageDNA** öğesini seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
     ![Sonuçlar listesinde PageDNA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre PageDNA Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz. Çoklu oturum açma için, PageDNA içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre PageDNA Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz. Çoklu oturum açma için, PageDNA içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
 
 Azure AD çoklu oturum açma 'yı PageDNA ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
@@ -154,9 +154,9 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 
     ![Kullanıcı bölmesi](common/user-properties.png)
 
-    1. **Ad** kutusuna **Brittasıon**yazın.
+    1. **Ad** kutusuna **Brittasıon** yazın.
   
-    1. **Kullanıcı adı** kutusuna **Brittasıon yazın \@ \<yourcompanydomain> . \<extension> ** Örneğin, **Brittasıon \@ contoso.com**.
+    1. **Kullanıcı adı** kutusuna **Brittasıon yazın \@ \<yourcompanydomain> . \<extension>** Örneğin, **Brittasıon \@ contoso.com**.
 
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
 
@@ -174,7 +174,7 @@ Bu bölümde, kullanıcının PageDNA 'e erişimi vererek Azure çoklu oturum a�
 
     ![Uygulamalar listesinde PageDNA](common/all-applications.png)
 
-1. Sol bölmedeki **Yönet**altında **Kullanıcılar ve gruplar**' ı seçin.
+1. Sol bölmedeki **Yönet** altında **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" seçeneği](common/users-groups-blade.png)
 

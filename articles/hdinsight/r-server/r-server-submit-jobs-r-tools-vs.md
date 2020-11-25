@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536241"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993797"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Visual Studio için R Araçları’ndan iş gönderme
 
@@ -27,7 +27,7 @@ RTVS, [R etkileşim penceresi](/visualstudio/rtvs/interactive-repl) (REPL), Inte
 
     ![Visual Studio 2017 ' de RTVS 'yi yükleme](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. *Veri bilimi ve analitik uygulamalar* iş yükünü seçin, ardından **r dil desteğini** , **r geliştirmesi için çalışma zamanı desteğini** ve **Microsoft R Client** seçenekleri seçin.
+2. *Veri bilimi ve analitik uygulamalar* iş yükünü seçin, ardından **r dil desteğini**, **r geliştirmesi için çalışma zamanı desteğini** ve **Microsoft R Client** seçenekleri seçin.
 
 3. SSH kimlik doğrulaması için ortak ve özel anahtarlara sahip olmanız gerekir.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
@@ -37,9 +37,9 @@ RTVS, [R etkileşim penceresi](/visualstudio/rtvs/interactive-repl) (REPL), Inte
 5. Yerel istemcinizdeki işlevleri HDInsight kümenize çalıştırmak için bir işlem bağlamı sağlamak üzere [Putty](https://www.putty.org/) ' i Yükle `RevoScaleR` .
 
 6. R araçları için çalışma alanınız için yeni bir düzen sağlayan Visual Studio ortamınıza Veri Bilimi Ayarları uygulama seçeneğiniz vardır.
-   1. Geçerli Visual Studio ayarlarınızı kaydetmek için **araçlar > içeri ve dışarı aktarma ayarları** komutunu kullanın, ardından **Seçili ortam ayarlarını dışarı aktar** ' ı seçin ve bir dosya adı belirtin. Bu ayarları geri yüklemek için aynı komutu kullanın ve **Seçili ortam ayarlarını Içeri aktar** ' ı seçin.
+   1. Geçerli Visual Studio ayarlarınızı kaydetmek için **araçlar > içeri ve dışarı aktarma ayarları** komutunu kullanın, ardından **Seçili ortam ayarlarını dışarı aktar** ' ı seçin ve bir dosya adı belirtin. Bu ayarları geri yüklemek için aynı komutu kullanın ve **Seçili ortam ayarlarını Içeri aktar**' ı seçin.
 
-   2. **R araçları** menü öğesine gidin ve **veri bilimi ayarları..** . seçeneğini belirleyin.
+   2. **R araçları** menü öğesine gidin ve **veri bilimi ayarları..**. seçeneğini belirleyin.
 
        ![Visual Studio Veri Bilimi Ayarları](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
@@ -121,7 +121,7 @@ PuTTY ile donatılmış bir Windows bilgisayarından Microsoft ML Server/Microso
 
         ![Azure HDInsight depolama kapsayıcıları](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir* ' i ve ardından **Newuser** ' ı seçin. `people.json`Dosya `newUser` klasöründe görüntülenmelidir.
+    4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir*' i ve ardından **Newuser**' ı seçin. `people.json`Dosya `newUser` klasöründe görüntülenmelidir.
 
         ![HDInsight dosya klasörü konumunu kopyaladı](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

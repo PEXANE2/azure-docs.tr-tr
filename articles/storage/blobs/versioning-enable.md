@@ -10,12 +10,12 @@ ms.date: 11/17/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 64ab86836989030c36ad2e8ad054c364b382af0b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95248025"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993762"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Blob sürüm oluşturmayı etkinleştirme ve yönetme
 
@@ -27,7 +27,7 @@ Bu makalede, Azure portal veya bir Azure Resource Manager şablonu kullanılarak
 
 ## <a name="enable-blob-versioning"></a>Blob sürümü oluşturmayı etkinleştirme
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal blob sürümü oluşturmayı etkinleştirmek için:
 
@@ -90,4 +90,4 @@ Aşağıdaki kod örneği, .NET için Azure Storage istemci kitaplığı, sürü
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Blob sürümü oluşturma](versioning-overview.md)
-- [Azure Depolama blobları için geçici silme](soft-delete-overview.md)
+- [Azure Depolama blobları için geçici silme](./soft-delete-blob-overview.md)

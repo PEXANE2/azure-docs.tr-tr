@@ -6,20 +6,20 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: mimart
 ms.openlocfilehash: c1628894205754c1b8f1fc954796009afbdc8ed4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84680275"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994340"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
 
 1. **Uygulama kayıtları**' yi seçin ve ardından API 'ye erişmesi gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
-1. **Yönet**altında **API izinleri**' ni seçin.
-1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
+1. **Yönet** altında **API izinleri**' ni seçin.
+1. **Yapılandırılan izinler** altında **izin Ekle**' yi seçin.
 1. **API 'Lerim** sekmesini seçin.
 1. Web uygulamasına erişim verilmesi gereken API 'yi seçin. Örneğin, *webapi1*.
-1. **İzin**altında **demo**' i genişletin ve daha önce tanımladığınız kapsamları seçin. Örneğin, *demo. Read* ve *demo. Write*.
+1. **İzin** altında **demo**' i genişletin ve daha önce tanımladığınız kapsamları seçin. Örneğin, *demo. Read* ve *demo. Write*.
 1. **Izin Ekle**' yi seçin.
 1. **Yönetici onayı ver ' i (kiracı adınız)** seçin.
 1. Bir hesap seçmeniz istenirse, şu anda oturum açmış olan yönetici hesabınızı seçin veya Azure AD B2C kiracınızda en azından *bulut uygulama Yöneticisi* rolüne atanan bir hesapla oturum açın.

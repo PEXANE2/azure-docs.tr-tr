@@ -1,19 +1,19 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 02/21/2019
-ms.author: rgarcia
-ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 7210b05566f5cd6f3c56792bce0904b3c9b645da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76694548"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993080"
 ---
 ## <a name="set-up-authentication"></a>Kimlik doğrulamasını ayarlama
 
-Hizmete erişmek için bir hesap anahtarı, erişim belirteci veya Azure Active Directory kimlik doğrulama belirteci sağlamanız gerekir. Bu konuda, [kimlik doğrulama kavramı sayfasında](/azure/spatial-anchors/concepts/authentication)daha fazla bilgi edinebilirsiniz.
+Hizmete erişmek için bir hesap anahtarı, erişim belirteci veya Azure Active Directory kimlik doğrulama belirteci sağlamanız gerekir. Bu konuda, [kimlik doğrulama kavramı sayfasında](../articles/spatial-anchors/concepts/authentication.md)daha fazla bilgi edinebilirsiniz.
 
 ### <a name="account-keys"></a>Hesap anahtarları
 

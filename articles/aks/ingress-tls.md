@@ -6,11 +6,11 @@ services: container-service
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 5032880ddc5d23f824adec28aee85c652bad29d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993159"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) üzerinde bir HTTPS giriş denetleyicisi oluşturma
 
@@ -38,7 +38,7 @@ Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olman
 
 ## <a name="create-an-ingress-controller"></a>Giriş denetleyicisi oluşturma
 
-Giriş denetleyicisini oluşturmak için `helm` komutunu kullanarak *NGINX-giriş* ' yi kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
+Giriş denetleyicisini oluşturmak için `helm` komutunu kullanarak *NGINX-giriş*' yi kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
@@ -265,7 +265,7 @@ Her iki uygulama da artık Kubernetes kümenizde çalışıyor. Ancak bunlar tü
 Aşağıdaki örnekte, *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN* *aks-HelloWorld* hizmetine yönlendirilir. *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN/Hello-World-Two* , *aks-HelloWorld-Two* Service 'e yönlendirilir. *Hello-World-ınress için trafik. MY_CUSTOM_DOMAIN/static* , statik varlıklar için *aks-HelloWorld* adlı hizmete yönlendirilir.
 
 > [!NOTE]
-> Özel bir etki alanı yerine giriş denetleyicisi IP adresi için bir FQDN yapılandırdıysanız, *Hello-World-giriş yerine FQDN 'yi kullanın. MY_CUSTOM_DOMAIN* . Örneğin, FQDN 'niz *demo-aks-ingress.eastus.cloudapp.Azure.com* ise, *Hello-i-ınress ' ı değiştirin.* *Demo-aks-ingress.eastus.cloudapp.azure.com* ile MY_CUSTOM_DOMAIN `hello-world-ingress.yaml` .
+> Özel bir etki alanı yerine giriş denetleyicisi IP adresi için bir FQDN yapılandırdıysanız, *Hello-World-giriş yerine FQDN 'yi kullanın. MY_CUSTOM_DOMAIN*. Örneğin, FQDN 'niz *demo-aks-ingress.eastus.cloudapp.Azure.com* ise, *Hello-i-ınress ' ı değiştirin.* *Demo-aks-ingress.eastus.cloudapp.azure.com* ile MY_CUSTOM_DOMAIN `hello-world-ingress.yaml` .
 
 `hello-world-ingress.yaml`Aşağıdaki örnek YAML kullanılarak adlı bir dosya oluşturun. *Ana bilgisayarları* ve *ana bilgisayarı* , önceki adımda oluşturduğunuz DNS adına güncelleştirin.
 

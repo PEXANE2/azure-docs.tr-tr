@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Öğretici: SAP HANA ile tümleştirme Azure Active Directory
 
@@ -96,7 +96,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), **SAP HANA** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **SAP HANA** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
     ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
@@ -133,9 +133,9 @@ Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki 
 
     b. **Dönüştürme** listesinden **Extractmailprefix ()** öğesini seçin.
 
-    c. **Parametre 1** listesinden **Kullanıcı. Mail** ' i seçin.
+    c. **Parametre 1** listesinden **Kullanıcı. Mail**' i seçin.
 
-    d. **Kaydet** ’e tıklayın.
+    d. **Kaydet**’e tıklayın.
 
 7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -148,7 +148,7 @@ Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki 
     > [!NOTE]
     > Varsayılan yapılandırmada URL, kimliği doğrulanmış bir SAP HANA veritabanı kullanıcısının kimlik bilgilerini gerektiren bir oturum açma ekranına yeniden yönlendirir. Oturum açan kullanıcının SAML yönetim görevlerini gerçekleştirmek için izinleri olmalıdır.
 
-2. XSA web arabiriminde **SAML Identity Provider** ' a gidin. Buradan, **+** **kimlik sağlayıcı bilgileri ekle** bölmesini göstermek için ekranın altındaki düğmeyi seçin. Ardından aşağıdaki adımları uygulayın:
+2. XSA web arabiriminde **SAML Identity Provider**' a gidin. Buradan, **+** **kimlik sağlayıcı bilgileri ekle** bölmesini göstermek için ekranın altındaki düğmeyi seçin. Ardından aşağıdaki adımları uygulayın:
 
     ![Kimlik sağlayıcısı ekle](./media/saphana-tutorial/sap1.png)
 
@@ -169,7 +169,7 @@ Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki 
 
     ![Kaydet düğmesi](./media/saphana-tutorial/sap4.png)
 
-4. HANA Studio 'da, **yapılandırma** sekmesinin sistem özellikleri içinde, ayarları **SAML** 'ye göre filtreleyin. Sonra **assertion_timeout** **10 sn** 'den **120 sn** 'ye ayarlayın.
+4. HANA Studio 'da, **yapılandırma** sekmesinin sistem özellikleri içinde, ayarları **SAML**'ye göre filtreleyin. Sonra **assertion_timeout** **10 sn** 'den **120 sn**'ye ayarlayın.
 
     ![assertion_timeout ayarı](./media/saphana-tutorial/sap7.png)
 
@@ -177,7 +177,7 @@ Azure AD çoklu oturum açmayı SAP HANA ile yapılandırmak için aşağıdaki 
 
 Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
@@ -196,13 +196,13 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur** 'a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, SAP HANA erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve **SAP HANA** ' i seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve **SAP HANA**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -210,7 +210,7 @@ Bu bölümde, SAP HANA erişim vererek Azure çoklu oturum açma özelliğini ku
 
     ![Uygulamalar listesindeki SAP HANA bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar** ' ı seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
@@ -238,11 +238,11 @@ Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, aşağıdaki adımları uy
 
     ![Kullanıcı oluştur](./media/saphana-tutorial/sap5.png)
 
-2. **SAML** 'nin solundaki görünmez onay kutusunu seçin ve ardından **Yapılandır** bağlantısını seçin.
+2. **SAML**'nin solundaki görünmez onay kutusunu seçin ve ardından **Yapılandır** bağlantısını seçin.
 
-3. SAML ıDP eklemek için **Ekle** ' yi seçin.  Uygun SAML ıDP 'yi seçip **Tamam** ' ı seçin.
+3. SAML ıDP eklemek için **Ekle** ' yi seçin.  Uygun SAML ıDP 'yi seçip **Tamam**' ı seçin.
 
-4. **Dış kimliği** ekleyin (Bu durumda, Brittasıon) veya **birini** seçin. Ardından **Tamam** ’ı seçin.
+4. **Dış kimliği** ekleyin (Bu durumda, Brittasıon) veya **birini** seçin. Ardından **Tamam**’ı seçin.
 
    > [!Note]
    > **Herhangi bir** onay kutusu seçili DEĞILSE, Hana 'daki Kullanıcı adının, etki alanı sonekinin önüne, UPN 'deki Kullanıcı adıyla tam olarak eşleşmesi gerekir. (Örneğin, BrittaSimon@contoso.com Hana 'Da Brittasıon olur.)

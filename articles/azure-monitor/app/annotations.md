@@ -4,11 +4,11 @@ description: Application Insights içinde Ölçüm Gezgini grafiklerinize dağı
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993729"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 'de ölçüm grafiklerindeki ek açıklamalar
 

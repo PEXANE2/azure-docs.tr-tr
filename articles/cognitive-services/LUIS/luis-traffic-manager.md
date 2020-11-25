@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: e37b35e3473b2da397904d01be5e65cf8cafbbe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541127"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95993831"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Anahtarlar genelinde uç nokta kotasını yönetmek için Microsoft Azure Traffic Manager kullanma
 Language Understanding (LUSıS), uç nokta istek kotasını tek bir anahtarın kotasının ötesinde artırma yeteneği sağlar. Bu, lug 'ler için daha fazla anahtar oluşturularak ve bunları **kaynak ve anahtarlar** bölümündeki **Yayımla** sayfasında halsıs uygulamasına ekleyerek yapılır.
@@ -30,12 +30,12 @@ Bu makalede, Azure [Traffic Manager][traffic-manager-marketing]ile anahtarlar ar
 
 ![PowerShell penceresi açık Azure portal ekran görüntüsü](./media/traffic-manager/azure-portal-powershell.png)
 
-Aşağıdaki bölümlerde [Traffic Manager PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager)kullanılır.
+Aşağıdaki bölümlerde [Traffic Manager PowerShell cmdlet 'leri](/powershell/module/az.trafficmanager/#traffic_manager)kullanılır.
 
 ## <a name="create-azure-resource-group-with-powershell"></a>PowerShell ile Azure Kaynak grubu oluşturma
 Azure kaynaklarını oluşturmadan önce, tüm kaynakları içeren bir kaynak grubu oluşturun. Kaynak grubunu adlandırın `luis-traffic-manager` ve bölgeyi kullanın `West US` . Kaynak grubunun bölgesi, grupla ilgili meta verileri depolar. Kaynakları başka bir bölgedeyse yavaşlatmaz.
 
-**[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)** cmdlet 'i ile kaynak grubu oluştur:
+**[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)** cmdlet 'i ile kaynak grubu oluştur:
 
 ```powerShell
 New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
@@ -56,7 +56,7 @@ Traffic Manager uç noktalarınız için yeni bir DNS erişim noktası oluşturu
 ### <a name="polling-uses-luis-endpoint"></a>Yoklama LUSıS uç noktasını kullanıyor
 Uç noktaların hala kullanılabilir olduğundan emin olmak için uç noktaları düzenli aralıklarla yoklar Traffic Manager. Traffic Manager URL 'sinin bir GET isteğiyle erişilebilir olması ve bir 200 döndürmesi gerekir. **Yayımla** sayfasındaki uç nokta URL 'si bunu yapar. Her bitiş noktası anahtarında farklı bir yol ve sorgu dizesi parametreleri olduğundan, her bitiş noktası anahtarının farklı bir yoklama yolu olması gerekir. Her Traffic Manager her yokladığında, bir kota isteği maliyetlidir. Luo uç noktası için sorgu **dizesi parametresi,** lusıs 'e gönderilen söylenişi 'dir. Bu parametre, bir utterance göndermek yerine, Traffic Manager yapılandırılmış bir hata ayıklama tekniği olarak LUıN uç nokta günlüğüne Traffic Manager yoklamayı eklemek için kullanılır.
 
-Her bir LUıN uç noktasının kendi yolu olması gerektiğinden, kendi Traffic Manager profiline ihtiyacı vardır. Profiller genelinde yönetmek için [ _iç içe_ Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) mimarisi oluşturun. Bir üst profil alt öğe profillerine işaret eder ve aralarındaki trafiği yönetir.
+Her bir LUıN uç noktasının kendi yolu olması gerektiğinden, kendi Traffic Manager profiline ihtiyacı vardır. Profiller genelinde yönetmek için [ _iç içe_ Traffic Manager](../../traffic-manager/traffic-manager-nested-profiles.md) mimarisi oluşturun. Bir üst profil alt öğe profillerine işaret eder ve aralarındaki trafiği yönetir.
 
 Traffic Manager yapılandırıldıktan sonra log = false sorgu dizesi parametresini kullanmak için yolu değiştirmeyi unutmayın. bu nedenle, günlüğeniz yoklamayla doldurulmaz.
 
@@ -66,7 +66,7 @@ Aşağıdaki bölümlerde, biri Doğu LUYA anahtarı ve Batı Luu anahtarı içi
 ### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>PowerShell ile Doğu ABD Traffic Manager profili oluşturma
 Doğu ABD Traffic Manager profili oluşturmak için birkaç adım vardır: profil oluşturma, uç nokta ekleme ve uç nokta ayarlama. Traffic Manager profilinde çok sayıda uç nokta olabilir, ancak her bitiş noktası aynı doğrulama yoluna sahiptir. Doğu ve Batı aboneliklerinin LUSıS uç nokta URL 'Leri bölge ve uç nokta anahtarı nedeniyle farklı olduğundan, her bir LUıN uç noktasının profilde tek bir uç nokta olması gerekir.
 
-1. **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)** cmdlet 'i ile profil oluştur
+1. **[New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)** cmdlet 'i ile profil oluştur
 
     Profili oluşturmak için aşağıdaki cmdlet 'i kullanın. `appIdLuis`Ve ' i değiştirdiğinizden emin olun `subscriptionKeyLuis` . SubscriptionKey, Doğu ABD LUSıS anahtarına yöneliktir. Yol doğru değilse, LUSıS uygulama KIMLIĞI ve uç nokta anahtarı da dahil olmak üzere, `degraded` trafik yönetimi 'nın lusıs uç noktasını başarıyla isteyemediği için Traffic Manager yoklama durumudur. Değerinin, `q` `traffic-manager-east` Bu değeri lusıs uç nokta günlüklerinde görebilmenizi sağlayın.
 
@@ -88,7 +88,7 @@ Doğu ABD Traffic Manager profili oluşturmak için birkaç adım vardır: profi
 
     Başarılı bir isteğin yanıtı yok.
 
-2. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)** cmdlet 'i ile Doğu ABD uç noktası ekleme
+2. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)** cmdlet 'i ile Doğu ABD uç noktası ekleme
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
@@ -123,7 +123,7 @@ Doğu ABD Traffic Manager profili oluşturmak için birkaç adım vardır: profi
     Endpoints                        : {luis-east-endpoint}
     ```
 
-3. **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)** cmdlet 'i ile Doğu ABD uç noktası ayarla
+3. **[Set-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)** cmdlet 'i ile Doğu ABD uç noktası ayarla
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $eastprofile
@@ -134,7 +134,7 @@ Doğu ABD Traffic Manager profili oluşturmak için birkaç adım vardır: profi
 ### <a name="create-the-west-us-traffic-manager-profile-with-powershell"></a>PowerShell ile Batı ABD Traffic Manager profili oluşturma
 Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin: profil oluşturma, uç nokta ekleme ve uç nokta ayarlama.
 
-1. **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** cmdlet 'i ile profil oluştur
+1. **[New-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** cmdlet 'i ile profil oluştur
 
     Profili oluşturmak için aşağıdaki cmdlet 'i kullanın. `appIdLuis`Ve ' i değiştirdiğinizden emin olun `subscriptionKeyLuis` . SubscriptionKey, Doğu ABD LUSıS anahtarına yöneliktir. Yol, LUSıS uygulama KIMLIĞI ve uç nokta anahtarı dahil doğru değilse, `degraded` trafik yönetimi 'nın lusıs uç noktasını başarıyla isteyemediği için Traffic Manager yoklama durumudur. Değerinin, `q` `traffic-manager-west` Bu değeri lusıs uç nokta günlüklerinde görebilmenizi sağlayın.
 
@@ -156,7 +156,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
 
     Başarılı bir isteğin yanıtı yok.
 
-2. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** cmdlet 'i ile Batı ABD uç noktası ekleme
+2. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** cmdlet 'i ile Batı ABD uç noktası ekleme
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
@@ -192,7 +192,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
     Endpoints                        : {luis-west-endpoint}
     ```
 
-3. **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** cmdlet 'i ile Batı ABD uç noktası ayarla
+3. **[Set-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** cmdlet 'i ile Batı ABD uç noktası ayarla
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $westprofile
@@ -203,7 +203,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
 ### <a name="create-parent-traffic-manager-profile"></a>Üst Traffic Manager profili oluştur
 Üst Traffic Manager profilini oluşturun ve iki alt Traffic Manager profilini üst öğeye bağlayın.
 
-1. **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** cmdlet 'i ile üst profil oluştur
+1. **[New-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** cmdlet 'i ile üst profil oluştur
 
     ```powerShell
     $parentprofile = New-AzTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
@@ -223,7 +223,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
 
     Başarılı bir isteğin yanıtı yok.
 
-2. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** ve **Nestedendpoints** türü ile üst öğeye Doğu ABD alt profil ekleyin
+2. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** ve **Nestedendpoints** türü ile üst öğeye Doğu ABD alt profil ekleyin
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
@@ -235,7 +235,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
     |--|--|--|
     |-EndpointName|alt uç nokta-USEast|Doğu profili|
     |-TrafficManagerProfile|$parentprofile|Bu uç noktanın atanacağı profil|
-    |-Tür|NestedEndpoints|Daha fazla bilgi için bkz. [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
+    |-Tür|NestedEndpoints|Daha fazla bilgi için bkz. [Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |-Targetresourceıd|$eastprofile. Numarasını|Alt profilin KIMLIĞI|
     |-EndpointStatus|Etkin|Üst öğeye eklendikten sonra uç nokta durumu|
     |-EndpointLocation|eastus|Kaynağın [Azure bölge adı](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -260,7 +260,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
     Endpoints                        : {child-endpoint-useast}
     ```
 
-3. **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** cmdlet ve **Nestedendpoints** türü ile üst öğeye Batı ABD alt profil ekleyin
+3. **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** cmdlet ve **Nestedendpoints** türü ile üst öğeye Batı ABD alt profil ekleyin
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
@@ -272,7 +272,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
     |--|--|--|
     |-EndpointName|alt uç nokta-usbatı|Batı profili|
     |-TrafficManagerProfile|$parentprofile|Bu uç noktanın atanacağı profil|
-    |-Tür|NestedEndpoints|Daha fazla bilgi için bkz. [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
+    |-Tür|NestedEndpoints|Daha fazla bilgi için bkz. [Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |-Targetresourceıd|$westprofile. Numarasını|Alt profilin KIMLIĞI|
     |-EndpointStatus|Etkin|Üst öğeye eklendikten sonra uç nokta durumu|
     |-EndpointLocation|westus|Kaynağın [Azure bölge adı](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -297,7 +297,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
     Endpoints                        : {child-endpoint-useast, child-endpoint-uswest}
     ```
 
-4. **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** cmdlet 'i ile uç noktaları ayarlama
+4. **[Set-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** cmdlet 'i ile uç noktaları ayarlama
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $parentprofile
@@ -306,7 +306,7 @@ Batı ABD Traffic Manager profilini oluşturmak için, aynı adımları izleyin:
     Başarılı bir yanıt, adım 3 ile aynı yanıttır.
 
 ### <a name="powershell-variables"></a>PowerShell değişkenleri
-Önceki bölümlerde üç PowerShell değişkeni oluşturulmuştur: `$eastprofile` , `$westprofile` , `$parentprofile` . Bu değişkenler Traffic Manager yapılandırmasının sonuna doğru kullanılır. Değişkenleri oluşturmamayı veya unuttum ya da PowerShell pencerenizi zaman aşımına getirmeyi seçtiyseniz, profili yeniden almak ve bir değişkene atamak için **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** PowerShell cmdlet 'ini kullanabilirsiniz.
+Önceki bölümlerde üç PowerShell değişkeni oluşturulmuştur: `$eastprofile` , `$westprofile` , `$parentprofile` . Bu değişkenler Traffic Manager yapılandırmasının sonuna doğru kullanılır. Değişkenleri oluşturmamayı veya unuttum ya da PowerShell pencerenizi zaman aşımına getirmeyi seçtiyseniz, profili yeniden almak ve bir değişkene atamak için **[Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** PowerShell cmdlet 'ini kullanabilirsiniz.
 
 Açılı ayraçlar içindeki öğeleri, `<>` ihtiyacınız olan üç profilin her biri için doğru değerlerle değiştirin.
 
@@ -371,12 +371,12 @@ Uç nokta durumunun düşürüldüğünü görmek için Traffic Manager [tanıla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu trafik yönetimi kodunun bir BotFramework bot 'a nasıl eklenebileceğini anlamak için BotFramework v4 içindeki [Ara yazılım](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) seçeneklerini inceleyin.
+Bu trafik yönetimi kodunun bir BotFramework bot 'a nasıl eklenebileceğini anlamak için BotFramework v4 içindeki [Ara yazılım](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0) seçeneklerini inceleyin.
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
-[traffic-manager-docs]: https://docs.microsoft.com/azure/traffic-manager/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+[traffic-manager-docs]: ../../traffic-manager/index.yml
+[LUIS]: ./luis-reference-regions.md#luis-website
 [azure-portal]: https://portal.azure.com/
 [azure-storage]: https://azure.microsoft.com/services/storage/
-[routing-methods]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods
-[traffic-manager-endpoints]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-endpoint-types
+[routing-methods]: ../../traffic-manager/traffic-manager-routing-methods.md
+[traffic-manager-endpoints]: ../../traffic-manager/traffic-manager-endpoint-types.md

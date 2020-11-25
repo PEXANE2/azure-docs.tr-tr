@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
 ms.openlocfilehash: f5ebe594f1f50c7b7490e5ead8cb3fe7636f0ce7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967486"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994035"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -45,7 +45,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
     * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun ve yapılandırın][create-azure-ad-ds-instance].
 * Bilgisayarınızda yüklü *LDP.exe* aracı.
-    * Gerekirse, *Active Directory Domain Services ve LDAP*için [uzak sunucu yönetim araçları (RSAT) yüklemesini][rsat] yapın.
+    * Gerekirse, *Active Directory Domain Services ve LDAP* için [uzak sunucu yönetim araçları (RSAT) yüklemesini][rsat] yapın.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -57,7 +57,7 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 
 * Bir genel sertifika yetkilisinden (CA) veya kuruluş CA 'dan bir sertifika.
     * Kuruluşunuz ortak bir CA 'dan sertifika alırsa, bu genel CA 'dan Güvenli LDAP sertifikası alın. Kuruluşunuzda kurumsal bir CA kullanıyorsanız, kurumsal CA 'dan Güvenli LDAP sertifikası alın.
-    * Ortak CA yalnızca, yönetilen etki alanınız ile özel bir DNS adı kullandığınızda işe yarar. Yönetilen etki alanının DNS etki alanı adı *. onmicrosoft.com*ile biterse, bu varsayılan etki alanı ile bağlantıyı güvenli hale getirmek için dijital bir sertifika oluşturamazsınız. Microsoft, *. onmicrosoft.com* etki alanına sahipdir, bu nedenle ortak CA bir sertifika vermez. Bu senaryoda, otomatik olarak imzalanan bir sertifika oluşturun ve bunu güvenli LDAP 'yi yapılandırmak için kullanın.
+    * Ortak CA yalnızca, yönetilen etki alanınız ile özel bir DNS adı kullandığınızda işe yarar. Yönetilen etki alanının DNS etki alanı adı *. onmicrosoft.com* ile biterse, bu varsayılan etki alanı ile bağlantıyı güvenli hale getirmek için dijital bir sertifika oluşturamazsınız. Microsoft, *. onmicrosoft.com* etki alanına sahipdir, bu nedenle ortak CA bir sertifika vermez. Bu senaryoda, otomatik olarak imzalanan bir sertifika oluşturun ve bunu güvenli LDAP 'yi yapılandırmak için kullanın.
 * Kendi oluşturduğunuz otomatik olarak imzalanan bir sertifika.
     * Bu yaklaşım, test amaçları için uygundur ve Bu öğreticinin gösterdiği şeydir.
 
@@ -65,16 +65,16 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 
 * **Güvenilir veren** -sertifika, Güvenli LDAP kullanılarak yönetilen etki alanına bağlanan bilgisayarlar tarafından güvenilen bir yetkili tarafından verilmelidir. Bu yetkili, genel bir CA veya bu bilgisayarlar tarafından güvenilen bir kuruluş CA 'sı olabilir.
 * **Yaşam süresi** -sertifika en az sonraki 3-6 ay için geçerli olmalıdır. Sertifikanın süresi dolarsa, yönetilen etki alanınız için Güvenli LDAP erişimi bozulur.
-* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *aaddscontoso.com*olarak adlandırılmışsa, sertifikanın konu adı **. aaddscontoso.com*olmalıdır.
+* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *aaddscontoso.com* olarak adlandırılmışsa, sertifikanın konu adı **. aaddscontoso.com* olmalıdır.
     * Güvenli LDAP 'nin Azure AD Domain Services ile düzgün şekilde çalıştığından emin olmak için sertifikanın DNS adı veya konu diğer adı bir joker sertifika olmalıdır. Etki alanı denetleyicileri rastgele adlar kullanır ve hizmetin kullanılabilir durumda kalmasını sağlamak için kaldırılabilir veya eklenebilir.
-* **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi*için yapılandırılmış olmalıdır.
+* **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi* için yapılandırılmış olmalıdır.
 * **Sertifika amacı** -SERTIFIKA, TLS sunucu kimlik doğrulaması için geçerli olmalıdır.
 
 OpenSSL, Keytool, MakeCert, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet vb. gibi otomatik olarak imzalanan sertifika oluşturmak için kullanabileceğiniz çeşitli araçlar vardır.
 
 Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım.
 
-**Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aaddscontoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
+**Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *aaddscontoso.com* gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -110,7 +110,7 @@ Güvenli LDAP kullanmak için ağ trafiği, ortak anahtar altyapısı (PKI) kull
 * Yönetilen etki alanına **özel** bir anahtar uygulanır.
     * Bu özel anahtar, Güvenli LDAP trafiğinin *şifresini çözmek* için kullanılır. Özel anahtar yalnızca yönetilen etki alanına uygulanmalıdır ve istemci bilgisayarlara yaygın olarak dağıtılmamalıdır.
     * Özel anahtarı içeren bir sertifika ' nı kullanır *. PFX* dosya biçimi.
-    * Sertifika için şifreleme algoritması, *TripleDES-SHA1*olmalıdır.
+    * Sertifika için şifreleme algoritması, *TripleDES-SHA1* olmalıdır.
 * İstemci bilgisayarlara **ortak** anahtar uygulanır.
     * Bu ortak anahtar, Güvenli LDAP trafiğini *şifrelemek* için kullanılır. Ortak anahtar istemci bilgisayarlara dağıtılabilir.
     * Özel anahtarı olmayan Sertifikalar ' i kullanır *. CER* dosya biçimi.
@@ -121,7 +121,7 @@ Bu öğreticide, özel anahtarla kendinden imzalı bir sertifika oluşturdunuz, 
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Azure AD DS için bir sertifika dışarı aktarma
 
-Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı kullanabilmeniz için, sertifikayı bir öğesine dışarı aktarın *. * Özel anahtarı IÇEREN PFX Sertifika dosyası.
+Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı kullanabilmeniz için, sertifikayı bir öğesine dışarı aktarın *.* Özel anahtarı IÇEREN PFX Sertifika dosyası.
 
 1. *Çalıştır* iletişim kutusunu açmak için **Windows**  +  **R** tuşlarını seçin.
 1. *Çalıştır* iletişim kutusuna **MMC** girerek Microsoft YÖNETIM konsolu 'nu (MMC) açın ve **Tamam**' ı seçin.
@@ -134,7 +134,7 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 
     ![Microsoft Yönetim Konsolu 'nda kişisel sertifikalar deposunu açın](./media/tutorial-configure-ldaps/open-personal-store.png)
 
-1. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aaddscontoso.com*gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
+1. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aaddscontoso.com* gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
 
     ![Microsoft Yönetim Konsolu 'nda sertifikayı dışarı aktarma](./media/tutorial-configure-ldaps/export-cert.png)
 
@@ -142,16 +142,16 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 1. Sertifika için özel anahtar verilmelidir. Özel anahtar, dışarıya aktarılmış sertifikaya dahil edilmediğinde, yönetilen etki alanınız için Güvenli LDAP 'yi etkinleştirme eylemi başarısız olur.
 
     **Özel anahtarı dışarı aktar** sayfasında **Evet, özel anahtarı dışarı aktar**' ı seçin ve ardından **İleri**' yi seçin.
-1. Yönetilen etki alanları yalnızca ' i destekler *. * Özel anahtarı IÇEREN PFX Sertifika dosyası biçimi. Sertifikayı olarak dışarı aktarmayın *. * Özel anahtar olmadan cer sertifika dosyası biçimi.
+1. Yönetilen etki alanları yalnızca ' i destekler *.* Özel anahtarı IÇEREN PFX Sertifika dosyası biçimi. Sertifikayı olarak dışarı aktarmayın *.* Özel anahtar olmadan cer sertifika dosyası biçimi.
 
-    **Dışarı aktarma dosyası biçimi** sayfasında **Kişisel BILGI değişimi-PKCS #12 (. PFX)** , dışarıya aktarılmış sertifikanın dosya biçimi olarak. *Mümkünse sertifika yolundaki tüm sertifikaları Ekle*onay kutusunu işaretleyin:
+    **Dışarı aktarma dosyası biçimi** sayfasında **Kişisel BILGI değişimi-PKCS #12 (. PFX)** , dışarıya aktarılmış sertifikanın dosya biçimi olarak. *Mümkünse sertifika yolundaki tüm sertifikaları Ekle* onay kutusunu işaretleyin:
 
     ![Sertifikayı PKCS 12 ' de dışarı aktarma seçeneğini belirleyin (. PFX) dosya biçimi](./media/tutorial-configure-ldaps/export-cert-to-pfx.png)
 
 1. Bu sertifika verilerin şifresini çözmek için kullanıldığından, erişimi dikkatle kontrol etmeniz gerekir. Sertifika kullanımını korumak için bir parola kullanılabilir. Doğru parola olmadan sertifika bir hizmete uygulanamaz.
 
-    **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Şifreleme algoritması *TripleDES-SHA1*olmalıdır. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
-1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*. Parolasını ve konumunu bir yere göz önünde bulundurun *. * Bu bilgilerin sonraki adımlarda kullanılması IÇIN pfx dosyası.
+    **Güvenlik** sayfasında, korumak için **parola** seçeneğini belirleyin *. PFX* sertifika dosyası. Şifreleme algoritması *TripleDES-SHA1* olmalıdır. Bir parola girin ve onaylayın, ardından **İleri**' yi seçin. Bu parola, yönetilen etki alanınız için Güvenli LDAP özelliğini etkinleştirmek üzere bir sonraki bölümde kullanılır.
+1. **Dışarı aktarılacak dosya** sayfasında, sertifikayı dışarı aktarmak istediğiniz dosya adını ve konumunu belirtin, örneğin *C:\Users\accountname\azure-AD-DS.pfx*. Parolasını ve konumunu bir yere göz önünde bulundurun *.* Bu bilgilerin sonraki adımlarda kullanılması IÇIN pfx dosyası.
 1. Gözden geçirme sayfasında, sertifikayı bir öğesine aktarmak için **son** ' u seçin *. PFX* sertifika dosyası. Sertifika başarıyla verildiğinde bir onay iletişim kutusu görüntülenir.
 1. Aşağıdaki bölümde MMC 'YI kullanılmak üzere açık bırakın.
 
@@ -161,7 +161,7 @@ Yönetilen etki alanınız ile önceki adımda oluşturulan dijital sertifikayı
 
 Bu öğreticide, kendinden imzalı bir sertifika kullanırsınız ve önceki adımda özel anahtarı içeren bir sertifika oluşturmuş olursunuz. Şimdi, otomatik olarak imzalanan sertifikayı dışarı aktarıp istemci bilgisayardaki güvenilir sertifika deposuna yükleyelim:
 
-1. *Sertifikalar (yerel bilgisayar) IÇIN MMC ' > kişisel > sertifikaları* deposu ' na geri dönün. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aaddscontoso.com*gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
+1. *Sertifikalar (yerel bilgisayar) IÇIN MMC ' > kişisel > sertifikaları* deposu ' na geri dönün. Önceki adımda oluşturulan otomatik olarak imzalanan sertifika *aaddscontoso.com* gibi gösterilir. Bu sertifikayı sağ seçin ve ardından **dışarı aktar > tüm görevler ' i seçin...**
 1. **Sertifika dışarı aktarma sihirbazında** **İleri**' yi seçin.
 1. İstemciler için özel anahtara ihtiyacınız olmadığı için, **özel anahtarı dışarı aktar** sayfasında **Hayır, özel anahtarı dışarı aktarma**' yı seçin ve ardından **İleri**' yi seçin.
 1. **Dışarı aktarma dosyası biçimi** sayfasında **Base-64 Encoded X. 509.440 (. CER)** , şu sertifika için dosya biçimi olarak:
@@ -173,14 +173,14 @@ Bu öğreticide, kendinden imzalı bir sertifika kullanırsınız ve önceki ad�
 
 *. CER* sertifika dosyası artık yönetilen etki alanı ile GÜVENLI LDAP bağlantısına güvenmesi gereken istemci bilgisayarlara dağıtılabilir. Sertifikayı yerel bilgisayara yükleyelim.
 
-1. Dosya Gezgini 'ni açın ve kaydettiğiniz konuma gidin *. * *C:\USERS\ACCOUNTNAME\AZURE-AD-DS-CLIENT.cer*gibi cer sertifika dosyası.
+1. Dosya Gezgini 'ni açın ve kaydettiğiniz konuma gidin *.* *C:\USERS\ACCOUNTNAME\AZURE-AD-DS-CLIENT.cer* gibi cer sertifika dosyası.
 1. Sağ seçin *. CER* sertifika dosyası, ardından **sertifikayı yükler**' i seçin.
-1. **Sertifika Içeri aktarma sihirbazında**, sertifikayı *Yerel makinede*depolamayı seçin ve ardından **İleri**' yi seçin:
+1. **Sertifika Içeri aktarma sihirbazında**, sertifikayı *Yerel makinede* depolamayı seçin ve ardından **İleri**' yi seçin:
 
     ![Sertifikayı yerel makine deposuna aktarma seçeneğini belirleyin](./media/tutorial-configure-ldaps/import-cer-file.png)
 
 1. İstendiğinde, bilgisayarın değişiklik yapmasına izin vermek için **Evet** ' i seçin.
-1. Sertifika **deposunu sertifika türüne göre otomatik olarak seçip**seçin ve ardından **İleri**' yi seçin.
+1. Sertifika **deposunu sertifika türüne göre otomatik olarak seçip** seçin ve ardından **İleri**' yi seçin.
 1. İnceleme sayfasında, öğesini içeri aktarmak için **son** ' u seçin *. CER* sertifikası. sertifika başarıyla içeri aktarıldığında, dosya onay iletişim kutusu görüntülenir.
 
 ## <a name="enable-secure-ldap-for-azure-ad-ds"></a>Azure AD DS için Güvenli LDAP 'yi etkinleştirme
@@ -188,12 +188,12 @@ Bu öğreticide, kendinden imzalı bir sertifika kullanırsınız ve önceki ad�
 Özel anahtarı içeren ve istemci bilgisayar bağlantıya güvenmek üzere ayarlanmış olan dijital bir sertifika oluşturulup verildikten sonra, yönetilen etki alanında güvenli LDAP özelliğini etkinleştirin. Yönetilen bir etki alanında güvenli LDAP özelliğini etkinleştirmek için aşağıdaki yapılandırma adımlarını gerçekleştirin:
 
 1. [Azure Portal](https://portal.azure.com), **kaynakları ara** kutusuna *etki alanı Hizmetleri* ' ni girin. Arama sonuçlarından **Azure AD Domain Services** seçin.
-1. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
+1. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. Azure AD DS penceresinin sol tarafında **Güvenli LDAP**' i seçin.
-1. Varsayılan olarak, yönetilen etki alanınız için Güvenli LDAP erişimi devre dışı bırakılır. **Etkinleştirmek**için **Güvenli LDAP** değiştirin.
+1. Varsayılan olarak, yönetilen etki alanınız için Güvenli LDAP erişimi devre dışı bırakılır. **Etkinleştirmek** için **Güvenli LDAP** değiştirin.
 1. Internet üzerinden yönetilen etki alanınız Güvenli LDAP erişimi varsayılan olarak devre dışıdır. Genel Güvenli LDAP erişimini etkinleştirdiğinizde, etki alanınız Internet üzerinden parola deneme yanılma saldırılarına açıktır. Bir sonraki adımda, ağ güvenlik grubu, erişimi yalnızca gerekli kaynak IP adresi aralıklarına kilitleyecek şekilde yapılandırılmıştır.
 
-    **Internet üzerinden GÜVENLI LDAP erişimine Izin ver** ' i **etkinleştirmek**için değiştirin.
+    **Internet üzerinden GÜVENLI LDAP erişimine Izin ver** ' i **etkinleştirmek** için değiştirin.
 
 1. Yanındaki klasör simgesini seçin **. Güvenli LDAP sertifikası olan PFX dosyası**. Yoluna gidin *. PFX* dosyası, ardından özel anahtarı içeren önceki bir adımda oluşturulan sertifikayı seçin.
 
@@ -202,7 +202,7 @@ Bu öğreticide, kendinden imzalı bir sertifika kullanırsınız ve önceki ad�
     >
     > Sertifikanızın uygun biçimde olduğundan emin olun. Aksi takdirde, Azure platformu, Güvenli LDAP 'yi etkinleştirdiğinizde sertifika doğrulama hataları oluşturur.
 
-1. **Şifresini çözmek Için parolayı girin. **Sertifika bir ' a aktarıldığında önceki bir adımda ayarlanan pfx dosyası *. PFX* dosyası.
+1. **Şifresini çözmek Için parolayı girin.** Sertifika bir ' a aktarıldığında önceki bir adımda ayarlanan pfx dosyası *. PFX* dosyası.
 1. Güvenli LDAP özelliğini etkinleştirmek için **Kaydet** ' i seçin.
 
     ![Azure portal yönetilen bir etki alanı için Güvenli LDAP 'yi etkinleştirme](./media/tutorial-configure-ldaps/enable-ldaps.png)
@@ -211,7 +211,7 @@ Yönetilen etki alanı için Güvenli LDAP 'nin yapılandırılmakta olduğu bir
 
 Yönetilen etki alanınız için Güvenli LDAP 'nin etkinleştirilmesi birkaç dakika sürer. Sağladığınız Güvenli LDAP sertifikası gerekli ölçütlere uymuyorsa, yönetilen etki alanı için Güvenli LDAP 'yi etkinleştirme eylemi başarısız olur.
 
-Hata için bazı yaygın nedenler, etki alanı adının hatalı olması, sertifika için şifreleme algoritmasının *üç aylık*olmaması veya sertifikanın süresi yakında sona ermesinin süresinin dolması veya zaten süresinin dolması olabilir. Sertifikayı geçerli parametrelerle yeniden oluşturabilir ve ardından bu güncelleştirilmiş sertifikayı kullanarak Güvenli LDAP 'yi etkinleştirebilirsiniz.
+Hata için bazı yaygın nedenler, etki alanı adının hatalı olması, sertifika için şifreleme algoritmasının *üç aylık* olmaması veya sertifikanın süresi yakında sona ermesinin süresinin dolması veya zaten süresinin dolması olabilir. Sertifikayı geçerli parametrelerle yeniden oluşturabilir ve ardından bu güncelleştirilmiş sertifikayı kullanarak Güvenli LDAP 'yi etkinleştirebilirsiniz.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>İnternet üzerinden güvenli LDAP erişimini kilitleme
 
@@ -220,7 +220,7 @@ Yönetilen etki alanınızı Internet üzerinden güvenli LDAP erişimini etkinl
 Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen güvenli LDAP erişimine izin vermek için bir kural oluşturalım. Varsayılan bir *denyall* kuralı, internet 'ten gelen diğer tüm trafik için geçerlidir; bu nedenle, yalnızca belirtilen adresler, Güvenli LDAP kullanarak yönetilen etki alanınız ile iletişime geçebilirler.
 
 1. Azure portal sol taraftaki gezinmede *kaynak grupları* ' nı seçin.
-1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve ardından *aaads-NSG*gibi ağ güvenlik grubunuzu seçin.
+1. Kaynak grubunuzu ( *Myresourcegroup* gibi) seçin ve ardından *aaads-NSG* gibi ağ güvenlik grubunuzu seçin.
 1. Mevcut gelen ve giden güvenlik kurallarının listesi görüntülenir. Ağ güvenlik grubu pencerelerinin sol tarafında, **ayarlar > gelen güvenlik kuralları**' nı seçin.
 1. **Ekle**' yi seçin ve *TCP* bağlantı noktası *636*' e izin vermek için bir kural oluşturun Gelişmiş güvenlik için, kaynağı *IP adresleri* olarak seçin ve ardından KURULUŞUNUZUN geçerli IP adresini veya aralığını belirtin.
 
@@ -246,9 +246,9 @@ Internet üzerinden güvenli LDAP erişimi etkinken, istemci bilgisayarlarının
 
 ![Azure portal yönetilen etki alanınız için Güvenli LDAP dış IP adresini görüntüleyin](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Dış DNS sağlayıcınızı, bu dış IP adresine çözümlemek üzere *LDAPS*gibi bir konak kaydı oluşturacak şekilde yapılandırın. Öncelikle makinenizde yerel olarak test etmek için Windows Konakları dosyasında bir giriş oluşturabilirsiniz. Yerel makinenizde konaklar dosyasını başarıyla düzenlemek için *Not defteri 'ni* yönetici olarak açın, sonra *C:\Windows\system32\drivers\etc\hosts* dosyasını açın
+Dış DNS sağlayıcınızı, bu dış IP adresine çözümlemek üzere *LDAPS* gibi bir konak kaydı oluşturacak şekilde yapılandırın. Öncelikle makinenizde yerel olarak test etmek için Windows Konakları dosyasında bir giriş oluşturabilirsiniz. Yerel makinenizde konaklar dosyasını başarıyla düzenlemek için *Not defteri 'ni* yönetici olarak açın, sonra *C:\Windows\system32\drivers\etc\hosts* dosyasını açın
 
-Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar dosyasında, *LDAPS.aaddscontoso.com* trafiğini *168.62.205.103*dış IP adresine çözümler:
+Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar dosyasında, *LDAPS.aaddscontoso.com* trafiğini *168.62.205.103* dış IP adresine çözümler:
 
 ```
 168.62.205.103    ldaps.aaddscontoso.com
@@ -259,26 +259,26 @@ Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar 
 Yönetilen etki alanınızı bağlamak ve LDAP üzerinden aramak için *LDP.exe* aracını kullanın. Bu araç Uzak Sunucu Yönetim Araçları (RSAT) paketine dahildir. Daha fazla bilgi için bkz. [ınstall uzak sunucu yönetim araçları][rsat].
 
 1. *LDP.exe* açın ve yönetilen etki alanına bağlanın. **Bağlantı**' yı ve ardından **Bağlan...** seçeneğini belirleyin.
-1. Önceki adımda oluşturulan, *LDAPS.aaddscontoso.com*gibi yönetilen etki ALANıNıN GÜVENLI LDAP DNS etki alanı adını girin. Güvenli LDAP kullanmak için, **bağlantı noktasını** *636*olarak ayarlayın ve ardından **SSL**kutusunu işaretleyin.
+1. Önceki adımda oluşturulan, *LDAPS.aaddscontoso.com* gibi yönetilen etki ALANıNıN GÜVENLI LDAP DNS etki alanı adını girin. Güvenli LDAP kullanmak için, **bağlantı noktasını** *636* olarak ayarlayın ve ardından **SSL** kutusunu işaretleyin.
 1. Yönetilen etki alanına bağlanmak için **Tamam ' ı** seçin.
 
 Ardından, yönetilen etki alanınızı bağlayın. Yönetilen etki alanında NTLM parola karması eşitlemesini devre dışı bırakmış kullanıcılar (ve hizmet hesapları) LDAP basit bağlamalar gerçekleştiremez. NTLM parola karma eşitlemesini devre dışı bırakma hakkında daha fazla bilgi için bkz. [yönetilen etki alanınızı güvenli hale getirme][secure-domain].
 
 1. **Bağlantı** menüsü seçeneğini belirleyin ve ardından **bağla...** seçeneğini belirleyin.
 1. Yönetilen etki alanına ait olan bir kullanıcı hesabının kimlik bilgilerini sağlayın. Kullanıcı hesabının parolasını girin ve etki alanınızı girin, örneğin *aaddscontoso.com*.
-1. **Bağlama türü**için, *kimlik bilgileriyle bağlama*seçeneğini belirleyin.
+1. **Bağlama türü** için, *kimlik bilgileriyle bağlama* seçeneğini belirleyin.
 1. Yönetilen etki alanınızı bağlamak için **Tamam ' ı** seçin.
 
 Yönetilen etki alanında depolanan nesneleri görmek için:
 
 1. **Görünüm** menü seçeneğini belirleyin ve ardından **ağaç**' ı seçin.
 1. *BaseDN* alanını boş bırakın ve **Tamam**' ı seçin.
-1. *Aaddc kullanıcıları*gibi bir kapsayıcı seçin, kapsayıcıyı sağ seçip **Ara**' yı seçin.
+1. *Aaddc kullanıcıları* gibi bir kapsayıcı seçin, kapsayıcıyı sağ seçip **Ara**' yı seçin.
 1. Önceden doldurulmuş alanları ayarlanmış bırakın ve **Çalıştır**' ı seçin. Sorgunun sonuçları, aşağıdaki örnek çıktıda gösterildiği gibi sağ pencerede görüntülenir:
 
     ![LDP.exe kullanarak yönetilen etki alanındaki nesneleri arayın](./media/tutorial-configure-ldaps/ldp-query.png)
 
-Belirli bir kapsayıcıyı doğrudan sorgulamak için, **görünüm > ağaç** menüsünden *OU = Aaddc kullanıcıları, DC = AADDSCONTOSO, DC = com* veya *OU = AADDC Computers, DC = AADDSCONTOSO, DC = com*gibi bir **BaseDN** belirtebilirsiniz. Sorguları biçimlendirme ve oluşturma hakkında daha fazla bilgi için bkz. [LDAP sorgusu temelleri][ldap-query-basics].
+Belirli bir kapsayıcıyı doğrudan sorgulamak için, **görünüm > ağaç** menüsünden *OU = Aaddc kullanıcıları, DC = AADDSCONTOSO, DC = com* veya *OU = AADDC Computers, DC = AADDSCONTOSO, DC = com* gibi bir **BaseDN** belirtebilirsiniz. Sorguları biçimlendirme ve oluşturma hakkında daha fazla bilgi için bkz. [LDAP sorgusu temelleri][ldap-query-basics].
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

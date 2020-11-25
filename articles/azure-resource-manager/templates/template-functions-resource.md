@@ -2,13 +2,13 @@
 title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.openlocfilehash: dd040715cc8fb1339c6054c53007dbcd08e2cbdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 0d118b80439579b0c8be45fdf1180b9a03b54c1d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816797"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95994153"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -27,6 +27,8 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda kaynak değerleri
 
 Parametrelerden, değişkenlerden veya geçerli dağıtımdan değer almak için bkz. [dağıtım değeri işlevleri](template-functions-deployment.md).
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="extensionresourceid"></a>Extensionresourceıd
 
 `extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
@@ -35,12 +37,12 @@ Parametrelerden, değişkenlerden veya geçerli dağıtımdan değer almak için
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceId |Evet |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceId |Yes |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -54,25 +56,25 @@ Bu işlev tarafından döndürülen kaynak KIMLIĞININ temel biçimi:
 
 Kapsam segmenti, genişletilmekte olan kaynağa göre değişir.
 
-Uzantı kaynağı bir **kaynağa**uygulandığında, kaynak kimliği aşağıdaki biçimde döndürülür:
+Uzantı kaynağı bir **kaynağa** uygulandığında, kaynak kimliği aşağıdaki biçimde döndürülür:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Uzantı kaynağı bir **kaynak grubuna**uygulandığında, biçim şu şekilde olur:
+Uzantı kaynağı bir **kaynak grubuna** uygulandığında, biçim şu şekilde olur:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Uzantı kaynağı bir **aboneliğe**uygulandığında, biçim şu şekilde olur:
+Uzantı kaynağı bir **aboneliğe** uygulandığında, biçim şu şekilde olur:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Uzantı kaynağı bir **yönetim grubuna**uygulandığında, biçim şu şekilde olur:
+Uzantı kaynağı bir **yönetim grubuna** uygulandığında, biçim şu şekilde olur:
 
 ```json
 /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
@@ -82,29 +84,87 @@ Uzantı kaynağı bir **yönetim grubuna**uygulandığında, biçim şu şekilde
 
 Aşağıdaki örnek, bir kaynak grubu kilidinin kaynak KIMLIĞINI döndürür.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "lockName":{
-            "type": "string"
-        }
-    },
-    "variables": {},
-    "resources": [],
-    "outputs": {
-        "lockResourceId": {
-            "type": "string",
-            "value": "[extensionResourceId(resourceGroup().Id , 'Microsoft.Authorization/locks', parameters('lockName'))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "lockName": {
+      "type": "string"
     }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "lockResourceId": {
+      "type": "string",
+      "value": "[extensionResourceId(resourceGroup().Id , 'Microsoft.Authorization/locks', parameters('lockName'))]"
+    }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param lockName string
+
+output lockResourceId string = extensionResourceId(resourceGroup().Id, 'Microsoft.Authorization/locks', lockName)
+```
+
+---
+
 Bir yönetim grubuna dağıtılan özel bir ilke tanımı uzantı kaynağı olarak uygulanır. Bir ilke oluşturup atamak için aşağıdaki şablonu bir yönetim grubuna dağıtın.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 :::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param targetMG string
+param allowedLocations array = [
+  'australiaeast'
+  'australiasoutheast'
+  'australiacentral'
+]
+
+var mgScope = tenantResourceId('Microsoft.Management/managementGroups', targetMG)
+var policyDefinition = 'LocationRestriction'
+
+resource myDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01' = {
+  name: policyDefinition
+  properties: {
+    policyType: 'Custom'
+    mode: 'All'
+    parameters: {}
+    policyRule: {
+      'if': {
+        'not': {
+          'field': 'location'
+          'in': allowedLocations
+        }
+      }
+      'then': {
+        'effect': 'deny'
+      }
+    }
+  }
+}
+
+resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+  name: 'location-lock'
+  properties: {
+    scope: mgScope
+    policyDefinitionId: extensionResourceId(mgScope, 'Microsoft.Authorization/policyDefinitions', policyDefinition)
+  }
+}
+```
+
+---
 
 Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke tanımı dağıtmaya ilişkin bir örnek için bkz. [Tenantresourceıd](#tenantresourceid).
 
@@ -119,11 +179,11 @@ Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName veya ResourceIdentifier |Evet |string |Kaynak için benzersiz tanımlayıcı. |
-| apiVersion |Evet |string |Kaynak çalışma zamanı durumunun API sürümü. Genellikle, **yyyy-aa-gg**biçiminde. |
-| functionValues |Hayır |object | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
+| resourceName veya ResourceIdentifier |Yes |string |Kaynak için benzersiz tanımlayıcı. |
+| apiVersion |Yes |string |Kaynak çalışma zamanı durumunun API sürümü. Genellikle, **yyyy-aa-gg** biçiminde. |
+| functionValues |No |object | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
@@ -272,6 +332,7 @@ Hangi kaynak türlerinin bir liste işlemine sahip olduğunu öğrenmek için a�
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
+
 * Yalnızca liste işlemlerini filtrelemek için aşağıdaki Azure CLı komutunu kullanın:
 
   ```azurecli
@@ -311,30 +372,63 @@ Koşullu olarak dağıtılan bir kaynakta bir **liste** işlevi kullanıyorsanı
 
 Aşağıdaki örnek, [dağıtım betikleri](deployment-script-template.md)için bir değer ayarlarken ListKeys kullanır.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "storageAccountSettings": {
-    "storageAccountName": "[variables('storageAccountName')]",
-    "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+  "storageAccountName": "[variables('storageAccountName')]",
+  "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
 }
 ```
 
-Sonraki örnekte bir parametre alan bir liste işlevi gösterilmektedir. Bu durumda, işlev **Listaccountsas**olur. Sona erme saati için bir nesne geçirin. Süre sonu zamanı gelecekte olmalıdır.
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+storageAccountSettings: {
+  storageAccountName: storageAccountName
+  storageAccountKey: listKeys(resourceId('Microsoft.Storage/storageAccounts', storageAccountName), '2019-06-01').keys[0].value
+}
+
+```
+
+---
+
+Sonraki örnekte bir parametre alan bir liste işlevi gösterilmektedir. Bu durumda, işlev **Listaccountsas** olur. Sona erme saati için bir nesne geçirin. Süre sonu zamanı gelecekte olmalıdır.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
-    "accountSasProperties": {
-        "type": "object",
-        "defaultValue": {
-            "signedServices": "b",
-            "signedPermission": "r",
-            "signedExpiry": "2020-08-20T11:00:00Z",
-            "signedResourceTypes": "s"
-        }
+  "accountSasProperties": {
+    "type": "object",
+    "defaultValue": {
+      "signedServices": "b",
+      "signedPermission": "r",
+      "signedExpiry": "2020-08-20T11:00:00Z",
+      "signedResourceTypes": "s"
     }
+  }
 },
 ...
 "sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param accountSasProperties object {
+  default: {
+    signedServices: 'b'
+    signedPermission: 'r'
+    signedExpiry: '2020-08-20T11:00:00Z'
+    signedResourceTypes: 's'
+  }
+}
+...
+sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accountSasToken
+```
+
+---
 
 ## <a name="pickzones"></a>pickZones
 
@@ -344,13 +438,13 @@ Bir kaynak türünün bir bölgenin bölgelerini destekleyip desteklemediğini b
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| providerNamespace | Evet | string | Bölge desteğini denetlenecek kaynak türü için kaynak sağlayıcısı ad alanı. |
-| resourceType | Evet | string | Bölge desteğini denetlenecek kaynak türü. |
-| location | Evet | string | Bölge desteğinin denetlenecek bölge. |
-| numberOfZones | Hayır | tamsayı | Döndürülecek mantıksal bölge sayısı. Varsayılan değer 1'dir. Sayı 1 ile 3 arasında pozitif bir tamsayı olmalıdır.  Tek bölge kaynakları için 1 kullanın. Çok bölgeli kaynaklar için, değer desteklenen bölge sayısından küçük veya buna eşit olmalıdır. |
-| uzaklık | Hayır | tamsayı | Başlangıç mantıksal bölgesinden gelen fark. Aralık artı numberOfZones desteklenen bölge sayısını aşarsa, işlev bir hata döndürür. |
+| providerNamespace | Yes | string | Bölge desteğini denetlenecek kaynak türü için kaynak sağlayıcısı ad alanı. |
+| resourceType | Yes | string | Bölge desteğini denetlenecek kaynak türü. |
+| location | Yes | string | Bölge desteğinin denetlenecek bölge. |
+| numberOfZones | No | tamsayı | Döndürülecek mantıksal bölge sayısı. Varsayılan değer 1'dir. Sayı 1 ile 3 arasında pozitif bir tamsayı olmalıdır.  Tek bölge kaynakları için 1 kullanın. Çok bölgeli kaynaklar için, değer desteklenen bölge sayısından küçük veya buna eşit olmalıdır. |
+| uzaklık | No | tamsayı | Başlangıç mantıksal bölgesinden gelen fark. Aralık artı numberOfZones desteklenen bölge sayısını aşarsa, işlev bir hata döndürür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -383,30 +477,42 @@ Kaynak türü veya bölgesi bölgeleri desteklemiyorsa, boş bir dizi döndürü
 
 Aşağıdaki şablonda pickZones işlevinin kullanımıyla ilgili üç sonuç gösterilmektedir.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "functions": [],
-    "variables": {},
-    "resources": [],
-    "outputs": {
-        "supported": {
-            "type": "array",
-            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')]"
-        },
-        "notSupportedRegion": {
-            "type": "array",
-            "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')]"
-        },
-        "notSupportedType": {
-            "type": "array",
-            "value": "[pickZones('Microsoft.Cdn', 'profiles', 'westus2')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "supported": {
+      "type": "array",
+      "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')]"
+    },
+    "notSupportedRegion": {
+      "type": "array",
+      "value": "[pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')]"
+    },
+    "notSupportedType": {
+      "type": "array",
+      "value": "[pickZones('Microsoft.Cdn', 'profiles', 'westus2')]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output supported array = pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')
+output notSupportedRegion array = pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')
+output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2')
+```
+
+---
 
 Yukarıdaki örneklerden alınan çıktı üç dizi döndürür.
 
@@ -418,11 +524,20 @@ Yukarıdaki örneklerden alınan çıktı üç dizi döndürür.
 
 Bölgelere yönelik null değer sağlayıp sağlamacağınızı veya farklı bölgelere sanal makineler atamanızı anlamak için pickZones 'tan gelen yanıtı kullanabilirsiniz. Aşağıdaki örnek, bölgelerin kullanılabilirliğine bağlı olarak bölge için bir değer belirler.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "zones": {
-    "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
+  "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
 },
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+> [!NOTE]
+> Döngüler ve Copyındex () henüz uygulanmadı.  Bkz. [döngüler](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md).
+
+---
 
 ## <a name="providers"></a>sağlayıcılarla
 
@@ -432,10 +547,10 @@ Kaynak sağlayıcısı ve desteklenen kaynak türleri hakkında bilgi döndürü
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Evet |string |Sağlayıcının ad alanı |
-| resourceType |Hayır |string |Belirtilen ad alanı içindeki kaynak türü. |
+| providerNamespace |Yes |string |Sağlayıcının ad alanı |
+| resourceType |No |string |Belirtilen ad alanı içindeki kaynak türü. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -443,9 +558,9 @@ Desteklenen her tür aşağıdaki biçimde döndürülür:
 
 ```json
 {
-    "resourceType": "{name of resource type}",
-    "locations": [ all supported locations ],
-    "apiVersions": [ all supported API versions ]
+  "resourceType": "{name of resource type}",
+  "locations": [ all supported locations ],
+  "apiVersions": [ all supported API versions ]
 }
 ```
 
@@ -455,27 +570,40 @@ Döndürülen değerlerin dizi sıralaması garanti edilmez.
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) , sağlayıcı işlevinin nasıl kullanılacağını gösterir:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "providerNamespace": {
-            "type": "string"
-        },
-        "resourceType": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "providerNamespace": {
+      "type": "string"
     },
-    "resources": [],
-    "outputs": {
-        "providerOutput": {
-            "value": "[providers(parameters('providerNamespace'), parameters('resourceType'))]",
-            "type" : "object"
-        }
+    "resourceType": {
+      "type": "string"
     }
+  },
+  "resources": [],
+  "outputs": {
+    "providerOutput": {
+      "type": "object",
+      "value": "[providers(parameters('providerNamespace'), parameters('resourceType'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param providerNamespace string
+param resourceType string
+
+output providerOutput array = providers(providerNamespace, resourceType)
+```
+
+---
 
 **Microsoft. Web** kaynak sağlayıcısı ve **siteleri** kaynak türü için, önceki örnek aşağıdaki biçimde bir nesne döndürür:
 
@@ -507,11 +635,11 @@ Kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName veya ResourceIdentifier |Evet |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablondaki bir kaynağa başvururken, yalnızca kaynak adını parametre olarak belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
-| apiVersion |Hayır |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
-| Tümünü |Hayır |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'` , yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
+| resourceName veya ResourceIdentifier |Yes |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablondaki bir kaynağa başvururken, yalnızca kaynak adını parametre olarak belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
+| apiVersion |No |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg** biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
+| Tümünü |No |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'` , yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -523,24 +651,39 @@ Başvuru işlevi, önceden dağıtılan bir kaynağın veya geçerli şablonda d
 
 Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesneden belirli bir değer döndürmek için **başvuru** işlevini kullanırsınız.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "outputs": {
-    "BlobUri": {
-        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]",
-        "type" : "string"
-    },
-    "FQDN": {
-        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))).dnsSettings.fqdn]",
-        "type" : "string"
-    }
+  "BlobUri": {
+    "type": "string",
+    "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]"
+  },
+  "FQDN": {
+    "type": "string",
+    "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))).dnsSettings.fqdn]"
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output BlobUri string = reference(resourceId('Microsoft.Storage/storageAccounts', storageAccountName)).primaryEndpoints.blob
+output FQDN string = reference(resourceId('Microsoft.Network/publicIPAddresses', ipAddressName)).dnsSettings.fqdn
+```
+
+---
+
 `'Full'`Özellikler şemasının parçası olmayan kaynak değerlerine ihtiyacınız olduğunda kullanın. Örneğin, Anahtar Kasası erişim ilkeleri ayarlamak için, bir sanal makine için kimlik özelliklerini alın.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
   "type": "Microsoft.KeyVault/vaults",
+  "apiVersion": "2019-09-01",
+  "name": "vaultName",
   "properties": {
     "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
@@ -560,6 +703,33 @@ Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesnede
     ...
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resource myVault 'Microsoft.KeyVault/vaults@2019-09-01' = {
+  name: 'vaultName'
+  properties: {
+    tenantId: subscription().tenantId
+    accessPolicies: [
+      {
+        'tenantId': reference(resourceId('Microsoft.Compute/virtualMachines', vmName), '2019-03-01', 'Full').identity.tenantId
+        'objectId': reference(resourceId('Microsoft.Compute/virtualMachines', vmName), '2019-03-01', 'Full').identity.principalId
+        'permissions': {
+          'keys': [
+            'all'
+          ]
+          'secrets': [
+            'all'
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+---
+
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
 Başvuru işlevi yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, `input` ifadesi Resource özelliğine atandığı için başvuru işlevini kullanabilirsiniz.
@@ -578,27 +748,57 @@ Başvuru işlevini kullanarak, başvurulan kaynak aynı şablon içinde sağland
 
 Aynı şablonda dağıtılan bir kaynağa başvururken kaynağın adını belirtin.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+value: reference(storageAccountName)
+```
+
+---
+
 Aynı şablonda dağıtılan bir kaynağa başvurulduğunda, kaynak KIMLIĞINI ve ' ı belirtin `apiVersion` .
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+value: reference(resourceId(storageResourceGroup, 'Microsoft.Storage/storageAccounts', storageAccountName), '2018-07-01')]"
+```
+
+---
+
 Hangi kaynağı başvurduğunuz hakkında belirsizliğe engel olmak için, tam nitelikli kaynak tanımlayıcısı sağlayabilirsiniz.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+value: reference(resourceId('Microsoft.Network/publicIPAddresses', ipAddressName))
+```
+
+---
+
 Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile birleştirme sırası yalnızca iki birleştirme değildir. Bunun yerine, ad alanından sonra en az belirli bir *türe/ad* çiftinden en belirgin bir dizi kullanın:
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Örneğin:
+Örnek:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt``Microsoft.Compute/virtualMachines/extensions/myVM/myExt`doğru değil
 
@@ -614,39 +814,61 @@ Bu model:
 
 Örneğin, bir sanal makineye uygulanan bir yönetilen kimliğin asıl KIMLIĞINI almak için şunu kullanın:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+reference(resourceId('Microsoft.Compute/virtualMachines', vmName),'2019-12-01', 'Full').identity.principalId
+```
+
+---
+
 Ya da bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  vmNodeType0Name), 2019-12-01, 'Full').Identity.tenantId
+```
+
+---
+
 ### <a name="reference-example"></a>Başvuru örneği
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) bir kaynak dağıtır ve bu kaynağa başvurur.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "storageAccountName": {
-          "type": "string"
-      }
+    "storageAccountName": {
+      "type": "string"
+    }
   },
   "resources": [
     {
-      "name": "[parameters('storageAccountName')]",
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2016-12-01",
+      "name": "[parameters('storageAccountName')]",
+      "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "location": "[resourceGroup().location]",
       "tags": {},
       "properties": {
       }
@@ -654,8 +876,8 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
   ],
   "outputs": {
       "referenceOutput": {
-          "type": "object",
-          "value": "[reference(parameters('storageAccountName'))]"
+        "type": "object",
+        "value": "[reference(parameters('storageAccountName'))]"
       },
       "fullReferenceOutput": {
         "type": "object",
@@ -664,6 +886,28 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
     }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param storageAccountName string
+
+resource myStorage 'Microsoft.Storage/storageAccounts@2016-12-01' = {
+  name: storageAccountName
+  location: resourceGroup().location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {}
+  properties: {}
+}
+
+output referenceOutput object = reference(storageAccountName)
+output fullReferenceOutput object = reference(storageAccountName, '2016-12-01', 'Full')
+```
+
+---
 
 Önceki örnekte iki nesne döndürülür. Properties nesnesi aşağıdaki biçimdedir:
 
@@ -722,27 +966,40 @@ Tam nesne aşağıdaki biçimdedir:
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) , bu şablonda dağıtılan bir depolama hesabına başvurur. Depolama hesabı aynı abonelikte zaten var.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageResourceGroup": {
-            "type": "string"
-        },
-        "storageAccountName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageResourceGroup": {
+      "type": "string"
     },
-    "resources": [],
-    "outputs": {
-        "ExistingStorage": {
-            "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]",
-            "type": "object"
-        }
+    "storageAccountName": {
+      "type": "string"
     }
+  },
+  "resources": [],
+  "outputs": {
+    "ExistingStorage": {
+      "type": "object",
+      "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param storageResourceGroup string
+param storageAccountName string
+
+output ExistingStorage object = reference(resourceId(storageAccountName), 'Microsoft.Storage/storageAccounts', storageAccountName), '2018-07-01')
+```
+
+---
 
 ## <a name="resourcegroup"></a>resourceGroup
 
@@ -777,14 +1034,24 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ResourceGroup işlevinin ortak kullanımı, kaynak grubuyla aynı konumda kaynak oluşturmaktır. Aşağıdaki örnek, varsayılan bir parametre değeri için kaynak grubu konumunu kullanır.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "parameters": {
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
-    }
+  "location": {
+    "type": "string",
+    "defaultValue": "[resourceGroup().location]"
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param location string = resourceGroup().location
+```
+
+---
 
 Kaynak grubundaki etiketleri bir kaynağa uygulamak için resourceGroup işlevini de kullanabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubundan etiket uygulama](../management/tag-resources.md#apply-tags-from-resource-group).
 
@@ -794,19 +1061,29 @@ Birden çok kaynak grubuna dağıtmak için iç içe geçmiş şablonlar kullan�
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) , kaynak grubunun özelliklerini döndürür.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "resourceGroupOutput": {
-            "value": "[resourceGroup()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "resourceGroupOutput": {
+      "type" : "object",
+      "value": "[resourceGroup()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output resourceGroupOutput object = resourceGroup()
+```
+
+---
 
 Yukarıdaki örnekte, aşağıdaki biçimdeki bir nesne döndürülür:
 
@@ -830,13 +1107,13 @@ Bir kaynağın benzersiz tanımlayıcısını döndürür. Bu işlevi, kaynak ad
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
-| resourceGroupName |Hayır |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
+| resourceGroupName |No |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -876,101 +1153,194 @@ Sağladığınız parametrelerin sayısı, kaynağın bir üst veya alt kaynak o
 
 Aynı abonelik ve kaynak grubundaki bir üst kaynağın kaynak KIMLIĞINI almak için kaynağın türünü ve adını belirtin.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')
+```
+
+---
+
 Bir alt kaynağın kaynak KIMLIĞINI almak için, kaynak türündeki parçaların sayısına dikkat edin. Kaynak türünün her segmenti için bir kaynak adı belirtin. Segmentin adı, hiyerarşinin o parçası için var olan kaynağa karşılık gelir.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')
+```
+
+---
+
 Aynı abonelikte ancak farklı kaynak grubunda bulunan bir kaynağın kaynak KIMLIĞINI almak için, kaynak grubu adını sağlayın.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')
+```
+
+---
+
 Farklı bir abonelik ve kaynak grubundaki bir kaynağın kaynak KIMLIĞINI almak için abonelik KIMLIĞI ve kaynak grubu adını sağlayın.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
+```
+
+---
+
 Genellikle, alternatif bir kaynak grubunda bir depolama hesabı veya sanal ağ kullanırken bu işlevi kullanmanız gerekir. Aşağıdaki örnek, bir dış kaynak grubundaki bir kaynağın nasıl kolayca kullanılabileceğini göstermektedir:
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "virtualNetworkName": {
-          "type": "string"
-      },
-      "virtualNetworkResourceGroup": {
-          "type": "string"
-      },
-      "subnet1Name": {
-          "type": "string"
-      },
-      "nicName": {
-          "type": "string"
-      }
+    "location": {
+      "type": "string"
+    },
+    "virtualNetworkName": {
+      "type": "string"
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string"
+    },
+    "subnet1Name": {
+      "type": "string"
+    },
+    "nicName": {
+      "type": "string"
+    }
   },
   "variables": {
-      "subnet1Ref": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]"
+    "subnet1Ref": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]"
   },
   "resources": [
-  {
-      "apiVersion": "2015-05-01-preview",
+    {
       "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2015-05-01-preview",
       "name": "[parameters('nicName')]",
       "location": "[parameters('location')]",
       "properties": {
-          "ipConfigurations": [{
-              "name": "ipconfig1",
-              "properties": {
-                  "privateIPAllocationMethod": "Dynamic",
-                  "subnet": {
-                      "id": "[variables('subnet1Ref')]"
-                  }
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[variables('subnet1Ref')]"
               }
-          }]
-       }
-  }]
+            }
+          }
+        ]
+      }
+    }
+  ]
 }
 ```
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param location string
+param virtualNetworkName string
+param virtualNetworkResourceGroup string
+param subnet1Name string
+param nicName string
+
+var subnet1Ref = resourceId('virtualNetworkResourceGroup', 'Microsoft.Network/virtualNetworks/subnets', 'virtualNetworkName', 'subnet1Name')
+
+resource myInterface 'Microsoft.Network/networkInterfaces@2015-05-01-preview' = {
+  name: nicName
+  location: location
+  properties: {
+    ipConfigurations: [
+      {
+        name: 'ipconfig1'
+        properties: {
+          privateIPAllocationMethod: 'Dynamic'
+          subnet: {
+            id: subnet1Ref
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+---
+
 
 ### <a name="resource-id-example"></a>Kaynak KIMLIĞI örneği
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) , kaynak grubundaki bir depolama HESABıNıN kaynak kimliğini döndürür:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "sameRGOutput": {
-            "value": "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]",
-            "type" : "string"
-        },
-        "differentRGOutput": {
-            "value": "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]",
-            "type" : "string"
-        },
-        "differentSubOutput": {
-            "value": "[resourceId('11111111-1111-1111-1111-111111111111', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]",
-            "type" : "string"
-        },
-        "nestedResourceOutput": {
-            "value": "[resourceId('Microsoft.SQL/servers/databases', 'serverName', 'databaseName')]",
-            "type" : "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "sameRGOutput": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
+    },
+    "differentRGOutput": {
+      "type": "string",
+      "value": "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+    },
+    "differentSubOutput": {
+      "type": "string",
+      "value": "[resourceId('11111111-1111-1111-1111-111111111111', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+    },
+    "nestedResourceOutput": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.SQL/servers/databases', 'serverName', 'databaseName')]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output sameRGOutput string = resourceId('Microsoft.Storage/storageAccounts','examplestorage')
+output differentRGOutput string = resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
+output differentSubOutput string = resourceId('11111111-1111-1111-1111-111111111111', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
+output nestedResourceOutput string = resourceId('Microsoft.SQL/servers/databases', 'serverName', 'databaseName')
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
@@ -993,10 +1363,10 @@ Geçerli dağıtım için abonelik hakkındaki ayrıntıları döndürür.
 
 ```json
 {
-    "id": "/subscriptions/{subscription-id}",
-    "subscriptionId": "{subscription-id}",
-    "tenantId": "{tenant-id}",
-    "displayName": "{name-of-subscription}"
+  "id": "/subscriptions/{subscription-id}",
+  "subscriptionId": "{subscription-id}",
+  "tenantId": "{tenant-id}",
+  "displayName": "{name-of-subscription}"
 }
 ```
 
@@ -1008,19 +1378,29 @@ Birden çok aboneliğe dağıtmak için iç içe geçmiş şablonlar kullanırke
 
 Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) , çıktılar bölümünde çağrılan abonelik işlevi gösterilmektedir.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "subscriptionOutput": {
-            "value": "[subscription()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "subscriptionOutput": {
+      "value": "[subscription()]",
+      "type" : "object"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output subscriptionOutput object = subscription()
+```
+
+---
 
 ## <a name="subscriptionresourceid"></a>Subscriptionresourceıd
 
@@ -1030,12 +1410,12 @@ Abonelik düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı d�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -1055,54 +1435,104 @@ Bu işlevi, bir kaynak grubu yerine [aboneliğe dağıtılan](deploy-to-subscrip
 
 Aşağıdaki şablon yerleşik bir rol atar. Bunu bir kaynak grubuna veya aboneliğe dağıtabilirsiniz. Yerleşik rollerin kaynak KIMLIĞINI almak için Subscriptionresourceıd işlevini kullanır.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "principalId": {
-            "type": "string",
-            "metadata": {
-                "description": "The principal to assign the role to"
-            }
-        },
-        "builtInRoleType": {
-            "type": "string",
-            "allowedValues": [
-                "Owner",
-                "Contributor",
-                "Reader"
-            ],
-            "metadata": {
-                "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "principalId": {
+      "type": "string",
+      "metadata": {
+        "description": "The principal to assign the role to"
+      }
     },
-    "variables": {
-        "Owner": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
-        "Contributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-        "Reader": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    "builtInRoleType": {
+      "type": "string",
+      "allowedValues": [
+        "Owner",
+        "Contributor",
+        "Reader"
+      ],
+      "metadata": {
+        "description": "Built-in role to assign"
+      }
     },
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/roleAssignments",
-            "apiVersion": "2018-09-01-preview",
-            "name": "[parameters('roleNameGuid')]",
-            "properties": {
-                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-                "principalId": "[parameters('principalId')]"
-            }
-        }
-    ]
+    "roleNameGuid": {
+      "type": "string",
+      "defaultValue": "[newGuid()]",
+      "metadata": {
+        "description": "A new GUID used to identify the role assignment"
+      }
+    }
+  },
+  "variables": {
+    "Owner": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+    "Contributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+    "Reader": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2018-09-01-preview",
+      "name": "[parameters('roleNameGuid')]",
+      "properties": {
+        "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+        "principalId": "[parameters('principalId')]"
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param principalId string {
+  metadata: {
+    'description': 'principalId'
+  }
+}
+param builtInRoleType string {
+  'allowed': [
+    'Owner'
+    'Contributor'
+    'Reader'
+  ]
+  'metadata': {
+      'description': 'Built-in role to assign'
+  }
+}
+param roleNameGuid string {
+  default: newGuid()
+  metadata: {
+    'description': 'A new GUID used to identify the role assignment'
+  }
+}
+
+var roleDefinitionId = {
+  Owner: {
+    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')
+  }
+  Contributor: {
+    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')
+  }
+  Reader: {
+    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')
+  }
+}
+
+resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-preview' = {
+  name: roleNameGuid
+  properties: {
+    roleDefinitionId: roleDefinitionId[builtInRoleType].id
+    principalId: principalId
+  }
+}
+```
+
+---
 
 ## <a name="tenantresourceid"></a>Tenantresourceıd
 
@@ -1112,11 +1542,11 @@ Kiracı düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı dö
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| resourceType |Evet |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Evet |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
+| resourceName1 |Yes |string |Kaynağın adı. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -1136,23 +1566,25 @@ Kiracıya dağıtılan bir kaynağın kaynak KIMLIĞINI almak için bu işlevi k
 
 Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke tanımına başvuruda bulunan bir ilke atamasını dağıtmak için, Tenantresourceıd işlevini kullanın.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "policyAssignmentName": {
-      "type": "string",
-      "defaultValue": "[guid(parameters('policyDefinitionID'), resourceGroup().name)]",
-      "metadata": {
-        "description": "Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides."
-      }
-    },
     "policyDefinitionID": {
       "type": "string",
       "defaultValue": "0a914e76-4921-4c19-b460-a2d36003525a",
       "metadata": {
         "description": "Specifies the ID of the policy definition or policy set definition being assigned."
+      }
+    },
+    "policyAssignmentName": {
+      "type": "string",
+      "defaultValue": "[guid(parameters('policyDefinitionID'), resourceGroup().name)]",
+      "metadata": {
+        "description": "Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides."
       }
     }
   },
@@ -1170,10 +1602,37 @@ Yerleşik ilke tanımları, kiracı düzeyi kaynaklarıdır. Yerleşik bir ilke 
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param policyDefinitionID string{
+  default: '0a914e76-4921-4c19-b460-a2d36003525a'
+  metadata: {
+    'description': 'Specifies the ID of the policy definition or policy set definition being assigned.'
+  }
+}
+
+param policyAssignmentName string {
+  default: guid(policyDefinitionID, resourceGroup().name)
+  metadata: {
+    'description': 'Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides.'
+  }
+}
+
+resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+  name: policyAssignmentName
+  properties: {
+    scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
+    policyDefinitionId: tenantResourceId('Microsoft.Authorization/policyDefinitions', policyDefinitionID)
+  }
+}
+```
+
+---
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
 * Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
 * Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 * Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
-

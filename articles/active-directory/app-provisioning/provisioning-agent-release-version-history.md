@@ -11,56 +11,15 @@ ms.date: 02/26/2020
 ms.subservice: app-provisioning
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 9e05d1a85f17800ddf4d77e4e4acba6396a8da47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a17b4422ac63f57e24f663b1dcd50e2e1e1e6b6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84781574"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95993966"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi
 
-Bu makalede, yayımlanan Azure Active Directory Connect sağlama aracısının sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, sağlama aracısını yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Yeni bir sürüm yayınlandığında sağlama Aracısı otomatik olarak güncelleştirilir. 
+[!INCLUDE [active-directory-cloud-sync-version-history.md](../../../includes/active-directory-cloud-sync-version-history.md)]
 
-Microsoft, en son aracı sürümü ve bir sürümü için doğrudan destek sağlar.
-
-## <a name="11960"></a>1.1.96.0
-
-### <a name="release-status"></a>Yayın durumu
-
-4 Aralık 2019: indirme için yayınlandı
-
-### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
-
-* Kullanıcıyı eşitlemeye yönelik [Azure AD Connect bulut sağlama](../cloud-provisioning/what-is-cloud-provisioning.md) , şirket içi Active Directory Ile Azure AD arasında iletişim kurma ve veri gruplama için destek içerir
-
-
-## <a name="11670"></a>1.1.67.0
-
-### <a name="release-status"></a>Yayın durumu
-
-9 Eylül 2019: otomatik güncelleştirme için yayınlandı
-
-### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
-
-* Hazırlama Aracısı sorunlarını gidermek için ek izleme ve günlüğe kaydetme yapılandırma olanağı
-* Yalnızca eşleme performansını geliştirmek için eşlemede yapılandırılmış Azure AD özniteliklerini getirme olanağı
-
-### <a name="fixed-issues"></a>Düzeltilen sorunlar
-
-* Azure AD bağlantı hatalarıyla ilgili sorunlar oluşursa, aracıdaki bir hata düzeltilmedi durumuna geçti
-* İkili veriler Azure Active Directory okunmadığında soruna neden olan bir hata düzeltildi
-* Aracıdaki bir hata düzeltildiğinde bulut hibrit kimlik hizmeti ile güveni yenileyemedi
-
-## <a name="11300"></a>1.1.30.0
-
-### <a name="release-status"></a>Yayın durumu
-
-23 Ocak 2019: indirilmek üzere yayınlandı
-
-### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
-
-* Daha iyi performans, kararlılık ve güvenilirlik için sağlama Aracısı ve bağlayıcı mimarisi kullanıma alınıyor 
-* UI tabanlı yükleme sihirbazını kullanarak sağlama Aracısı yapılandırması basitleşme 
-* Otomatik aracı güncelleştirmeleri için destek eklendi
 

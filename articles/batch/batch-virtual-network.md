@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86142764"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993439"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -35,14 +35,14 @@ Bir havuzdaki işlem düğümleri, farklı bir VNet gerekmeden, çok örnekli g�
 
 ## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>Azure portal VNet ile havuz oluşturma
 
-VNet 'nizi oluşturduktan ve bu ağa bir alt ağ atadıktan sonra, bu VNet ile bir Batch havuzu oluşturabilirsiniz. Azure portal bir havuz oluşturmak için aşağıdaki adımları izleyin: 
+VNet 'nizi oluşturduktan ve bu ağa bir alt ağ atadıktan sonra, bu VNet ile bir Batch havuzu oluşturabilirsiniz. Azure portal bir havuz oluşturmak için aşağıdaki adımları izleyin: 
 
 1. Azure portalında Batch hesabınıza gidin. Bu hesabın, kullanmayı düşündüğünüz VNet 'i içeren kaynak grubuyla aynı abonelikte ve bölgede olması gerekir.
 2. Soldaki **Ayarlar** penceresinde **havuzlar** menü öğesini seçin.
 3. **Havuzlar** penceresinde **Ekle**' yi seçin.
 4. **Havuz Ekle** penceresinde, **görüntü türü** açılan menüsünden kullanmayı düşündüğünüz seçeneği belirleyin.
 5. Özel görüntünüz için doğru **yayımcıyı/teklifi/SKU 'yu** seçin.
-6. **Düğüm boyutu**, **hedef adanmış düğümler**ve **düşük öncelikli düğümlerin**yanı sıra istediğiniz isteğe bağlı ayarları da kapsayan, kalan gerekli ayarları belirtin.
+6. **Düğüm boyutu**, **hedef adanmış düğümler** ve **düşük öncelikli düğümlerin** yanı sıra istediğiniz isteğe bağlı ayarları da kapsayan, kalan gerekli ayarları belirtin.
 7. **Sanal ağ**' da, kullanmak istediğiniz sanal ağı ve alt ağı seçin.
 
    ![Sanal ağ ile havuz ekleme](./media/batch-virtual-network/add-vnet-pool.png)
@@ -57,7 +57,7 @@ Havuzunuzdaki düğümlerin Zorlamalı tünel etkin olan bir VNet 'te çalışt�
 
 - Azure Storage 'a giden trafiğin (özellikle, formun URL 'Leri, `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ve `<account>.blob.core.windows.net` ) Şirket içi ağınız tarafından engellenmediğinden emin olun.
 
-Bir UDR eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet**olarak ayarlayın.
+Bir UDR eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet** olarak ayarlayın.
 
 ![Kullanıcı tanımlı yol](./media/batch-virtual-network/user-defined-route.png)
 

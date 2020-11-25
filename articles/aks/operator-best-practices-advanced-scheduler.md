@@ -6,11 +6,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125640"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993712"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) gelişmiş zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -79,13 +79,13 @@ AKS 'deki bir düğüm havuzunu yükselttiğinizde, litre ve tolerans, yeni dü�
 
 - **Sanal makine ölçek kümeleri kullanan varsayılan kümeler**
   - Yeni ölçeklendirilen düğümlerin API tarafından belirtilen düğüm Taks 'leri almasını sağlamak için AKS API 'sinden [nodepool Taint][taint-node-pool] 'i kullanabilirsiniz.
-  - İki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2* . Düğüm havuzunu yükseltirsiniz.
+  - İki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Düğüm havuzunu yükseltirsiniz.
   - İki ek düğüm oluşturulur, *Düğüm3* ve *Düğüm4* ve litre sırasıyla geçirilir.
   - Özgün *Düğüm1* ve *Düğüm2* silinir.
 
 - **Sanal makine ölçek kümesi desteği olmayan kümeler**
-  - Yine de iki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2* . Yükselttiğinizde, ek bir düğüm ( *Düğüm3* ) oluşturulur.
-  - *Düğüm1* 'in talar *Düğüm3* 'e uygulanır, sonra *Düğüm1* silinir.
+  - Yine de iki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Yükselttiğinizde, ek bir düğüm (*Düğüm3*) oluşturulur.
+  - *Düğüm1* 'in talar *Düğüm3*'e uygulanır, sonra *Düğüm1* silinir.
   - Başka bir yeni düğüm oluşturulur (önceki *Düğüm1* silindiği için *Düğüm1* adında) ve *Düğüm2* talitre yeni *Düğüm1* uygulanır. Sonra, *Düğüm2* silinir.
   - *Düğüm1* ' de *Düğüm3* olur ve *Düğüm2* *Düğüm1* olur.
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 46c27fa2073ea1178fdf01ea3cbf96fe86954a6a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993967"
 ---
 Bu makalede, yayımlanan Azure Active Directory Connect sağlama aracısının sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, sağlama aracısını yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Yeni bir sürüm yayınlandığında sağlama Aracısı otomatik olarak güncelleştirilir. 
 
@@ -14,12 +14,12 @@ Microsoft, en son aracı sürümü ve bir sürümü için doğrudan destek sağl
 
 ### <a name="release-status"></a>Yayın durumu
 
-Kasım XX, 2020: indirilmek üzere yayımlandı
+23 Kasım 2020: indirme için yayımlandı
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 
 * [GMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts) desteği
-* 1500 üyenin boyutuna kadar olan gruplar için destek (Delta eşitleme sırasında)
+* Artımlı veya Delta eşitleme çevrimi sırasında 1500 ' den az üyeye kadar olan gruplar için destek. Bu, Grup kapsamı filtresi kullanılırken geçerlidir
 * En fazla 15K 'ye üye boyutu olan büyük gruplar için destek
 * İlk eşitleme geliştirmeleri
 * Gelişmiş ayrıntılı günlük kaydı

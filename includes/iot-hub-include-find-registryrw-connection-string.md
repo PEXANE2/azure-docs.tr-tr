@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,11 +9,11 @@ ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 3386cb51a8a728576f6615002d6154d89ca662c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993225"
 ---
 <!-- This tells how to get the connection string for the registryReadWrite shared access policy of your IoT hub -->
 
@@ -25,7 +25,7 @@ ms.locfileid: "68883830"
 
 3. İlkeler listesinden **Registryreadwrite** ilkesini seçin.
 
-4. **Paylaşılan erişim anahtarları**altında, **bağlantı dizesi--birincil anahtar** için Kopyala simgesini seçin ve değeri kaydedin.
+4. **Paylaşılan erişim anahtarları** altında, **bağlantı dizesi--birincil anahtar** için Kopyala simgesini seçin ve değeri kaydedin.
 
     ![Bağlantı dizesinin nasıl alınacağını göster](./media/iot-hub-include-find-registryrw-connection-string/iot-hub-get-connection-vs2019.png)
 

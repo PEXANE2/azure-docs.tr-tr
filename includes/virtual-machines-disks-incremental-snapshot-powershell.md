@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9e7386e21442b5a76aae656a36e2858b52ecef65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 895a81df858e51a266cd87c96a161695a4bf2cc1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87103075"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95992920"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -34,7 +34,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Yüklendikten sonra PowerShell oturumunuzda ile oturum açın `Connect-AzAccount` .
 
-Azure PowerShell ile artımlı bir anlık görüntü oluşturmak için, yapılandırmayı [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) ile `-Incremental` parametresiyle ayarlayın ve ardından bu parametreyi parametresi aracılığıyla [New-azsnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) öğesine bir değişken olarak geçirin `-Snapshot` .
+Azure PowerShell ile artımlı bir anlık görüntü oluşturmak için, yapılandırmayı [New-AzSnapShotConfig](/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) ile `-Incremental` parametresiyle ayarlayın ve ardından bu parametreyi parametresi aracılığıyla [New-azsnapshot](/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) öğesine bir değişken olarak geçirin `-Snapshot` .
 
 ```PowerShell
 $diskName = "yourDiskNameHere>"

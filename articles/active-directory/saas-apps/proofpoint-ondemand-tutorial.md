@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 673856800ccb05a2b4b52511777a9a24769bcd6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516639"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Öğretici: Isteğe bağlı olarak, denetleme noktası ile tümleştirme Azure Active Directory
 
@@ -64,13 +64,13 @@ Isteğe bağlı olarak, Azure AD 'ye Istek üzerine redaksyonun tümleştirmesin
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **isteğe bağlı yazım noktası**yazın, sonuç panelinden Istek üzerine **Yazım noktası** ' nı seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **isteğe bağlı yazım noktası** yazın, sonuç panelinden Istek üzerine **Yazım noktası** ' nı seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![Sonuçlar listesinde Isteğe bağlı bir denetleme noktası](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre isteğe bağlı olarak, Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre isteğe bağlı olarak, Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Isteğe bağlı yazım noktasında ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD 'nin Isteğe bağlı olarak Redaklala çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -147,14 +147,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

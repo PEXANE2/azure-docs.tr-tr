@@ -12,11 +12,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
 ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949964"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992836"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -164,7 +164,7 @@ Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 1. Günlükleri göndermek için her bir hedefin kutusunu işaretleyin. Ayarlarını **Aşağıdaki tabloda açıklandığı gibi** belirtmek için **Yapılandır** ' ı seçin.
 1. **Log Analytics gönder**' i seçin ve daha önce oluşturduğunuz **çalışma alanının adını** ( `AzureAdB2C` ) seçin.
 1. **Auditlogs** ve **signınlogs**' u seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 > [!NOTE]
 > Bir olay, [bir Log Analytics çalışma alanında görünmesi](../azure-monitor/platform/data-ingestion-time.md)için bir olayın yayıldıktan sonra 15 dakika kadar sürebilir. Ayrıca, verilerin etkisini etkileyebilecek ve raporlama 'da önemli bir rol oynatabilen [Active Directory raporlama gecikme](../active-directory/reports-monitoring/reference-reports-latencies.md)süreleri hakkında daha fazla bilgi edinin.
@@ -203,7 +203,7 @@ Günlük sorguları, Azure Izleyici günlüklerinde toplanan verilerin değerini
     - Seçim **olarak kaydet** `query` .
     - **Kategori** -seçin `Log` .
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Ayrıca, [render](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) işlecini kullanarak verileri görselleştirmek için sorgunuzu değiştirebilirsiniz.
 
@@ -240,7 +240,7 @@ JSON Galerisi şablonu kullanarak yeni bir çalışma kitabı oluşturmak için 
 1. Çalışma kitabını düzenlemenin tamamlanması için araç çubuğundan **Düzenle** düğmesini seçin.
 1. Son olarak, çalışma kitabını araç çubuğundan **Kaydet** düğmesini kullanarak kaydedin.
 1. *Azure AD B2C panosu* gibi bir **başlık** sağlayın.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     ![Çalışma kitabını Kaydet](./media/azure-monitor/wrkb-title.png)
 

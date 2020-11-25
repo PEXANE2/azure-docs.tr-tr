@@ -13,20 +13,20 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: d50a953c9593c9ae78889be336697686e59d965f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: d732d2fd8b97ca61222accc21c9930ed8c5c5d3a
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592756"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993899"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Hızlı başlangıç: konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın
 
-Bu hızlı başlangıçta, bir .NET Core konsol uygulamasının Microsoft Graph API 'yi çağırmak ve dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek için bir erişim belirteci elde etme şeklini gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği Ayrıca bir işin veya bir Windows hizmetinin bir kullanıcı kimliği yerine bir uygulama kimliğiyle nasıl çalıştırılabileceğinizi gösterir. 
+Bu hızlı başlangıçta, bir .NET Core konsol uygulamasının Microsoft Graph API 'yi çağırmak ve dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek için bir erişim belirteci nasıl alabilirim olduğunu gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği Ayrıca bir işin veya bir Windows hizmetinin bir kullanıcı kimliği yerine bir uygulama kimliğiyle nasıl çalıştırılabileceğinizi gösterir. 
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç, [.NET Core 3,1](https://www.microsoft.com/net/download/dotnet-core)gerektirir.
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıç, [.NET Core 3,1](https://www.microsoft.com/net/download/
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
 > 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) bölmesine gidin.
-> 1. Uygulamanız için bir ad girin ve **Kaydet** 'i seçin.
+> 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
@@ -56,10 +56,10 @@ Bu hızlı başlangıç, [.NET Core 3,1](https://www.microsoft.com/net/download/
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin.
 > 1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `Daemon-console` , uygulamayı oluşturmak için **Kaydet** ' i seçin.
 > 1. Kaydolduktan sonra **sertifikalar & gizlilikler** menüsünü seçin.
-> 1. **İstemci gizli** dizileri altında **+ yeni istemci parolası** ' nı seçin. Bir ad verin ve **Ekle** ' yi seçin. Parolayı güvenli bir konuma kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacak ve portalda tekrar görüntülenmeyecektir.
-> 1. Şimdi **API izinleri** menüsünü seçin **+ izin Ekle** düğmesini seçin, **Microsoft Graph** ' yi seçin.
-> 1. **Uygulama izinleri** ' ni seçin.
-> 1. **Kullanıcı** düğümü altında **User. Read. All** ' ı seçin ve ardından **izin Ekle** ' yi seçin.
+> 1. **İstemci gizli** dizileri altında **+ yeni istemci parolası**' nı seçin. Bir ad verin ve **Ekle**' yi seçin. Parolayı güvenli bir konuma kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacak ve portalda tekrar görüntülenmeyecektir.
+> 1. Şimdi **API izinleri** menüsünü seçin **+ izin Ekle** düğmesini seçin, **Microsoft Graph**' yi seçin.
+> 1. **Uygulama izinleri**' ni seçin.
+> 1. **Kullanıcı** düğümü altında **User. Read. All**' ı seçin ve ardından **izin Ekle** ' yi seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı indirin ve yapılandırın
@@ -92,7 +92,7 @@ Bu hızlı başlangıç, [.NET Core 3,1](https://www.microsoft.com/net/download/
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi yapılandırma
 >
-> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples** ) ayıklayın.
+> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 > 1. Visual Studio- **1-Call-MSGraph\daemon-Console.sln** (isteğe bağlı) çözümünü açın.
 > 1. **Üzerindeappsettings.js** düzenleyin ve alanların değerlerini `ClientId` `Tenant` ve aşağıdaki gibi değiştirin `ClientSecret` :
 >
@@ -101,14 +101,14 @@ Bu hızlı başlangıç, [.NET Core 3,1](https://www.microsoft.com/net/download/
 >    "ClientId": "Enter_the_Application_Id_Here",
 >    "ClientSecret": "Enter_the_Client_Secret_Here"
 >    ```
->   Burada:
+>   Konum:
 >   - `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 >   - `Enter_the_Tenant_Id_Here` -Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >   - `Enter_the_Client_Secret_Here` -Bu değeri, 1. adımda oluşturulan istemci gizli anahtarı ile değiştirin.
 
 > [!div renderon="docs"]
 > > [!TIP]
-> > **Uygulama (istemci) kimliği** , **Dizin (kiracı) kimliği** değerlerini bulmak Için Azure Portal uygulamanın **genel bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **sertifikalar & gizlilikler** sayfasına gidin.
+> > **Uygulama (istemci) kimliği**, **Dizin (kiracı) kimliği** değerlerini bulmak Için Azure Portal uygulamanın **genel bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **sertifikalar & gizlilikler** sayfasına gidin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>3. Adım: yönetici onayı
@@ -137,7 +137,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Burada:
+>> Konum:
 >> * `Enter_the_Tenant_Id_Here` -Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >> * `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 
@@ -157,7 +157,7 @@ cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 
-> Burada:
+> Konum:
 > * *{ProjectFolder}* , ZIP dosyasını ayıkladığınız klasördür. Örnek **C:\Azure-Samples\active-Directory-dotnetcore-Daemon-v2**
 
 Sonuç olarak Azure AD dizininizde bulunan kullanıcıların listesini görmeniz gerekir.
@@ -198,10 +198,10 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Burada: | Description |
+> | Konum: | Description |
 > |---------|---------|
 > | `config.ClientSecret` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
-> | `config.ClientId` | **Uygulama (istemci) Kimliği** , Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
+> | `config.ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 > | `config.Authority`    | Seçim Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle `https://login.microsoftonline.com/{tenant}` {Tenant}, kiracınızın adı veya kiracı kimliğiniz olduğu genel bulut için.|
 
 Daha fazla bilgi için lütfen [başvuru belgelerine `ConfidentialClientApplication` ](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication) bakın
@@ -215,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Burada:| Description |
+> |Konum:| Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 

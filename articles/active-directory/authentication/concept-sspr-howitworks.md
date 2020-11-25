@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363683"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994273"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -120,7 +120,7 @@ Kullanıcılar, yalnızca yöneticinin etkinleştirildiği bir kimlik doğrulama
 
 ### <a name="number-of-authentication-methods-required"></a>Gereken kimlik doğrulama yöntemi sayısı
 
-Kullanıcının parolasını sıfırlamak veya kilidini açmak için sağlaması gereken kullanılabilir kimlik doğrulama yöntemlerinin sayısını yapılandırabilirsiniz. Bu değer, *bir* veya *iki*olarak ayarlanabilir.
+Kullanıcının parolasını sıfırlamak veya kilidini açmak için sağlaması gereken kullanılabilir kimlik doğrulama yöntemlerinin sayısını yapılandırabilirsiniz. Bu değer, *bir* veya *iki* olarak ayarlanabilir.
 
 Kullanıcılar, birden çok kimlik doğrulama yöntemini kaydedebilir ve bunları yapabilir. Ayrıca, kullanıcıların, ihtiyaç duydukları bir yönteme erişememesi durumunda daha fazla esneklik sağlamak için iki veya daha fazla kimlik doğrulama yöntemi kaydetmesi önemle önerilir.
 
@@ -172,17 +172,17 @@ SSPR, parola olaylarının farkında olması için hem kullanıcılar hem de kim
 
 ### <a name="notify-users-on-password-resets"></a>Parola sıfırlamayı kullanıcılara bildir
 
-Bu seçenek **Evet**olarak ayarlanırsa, parolasını sıfırlayan kullanıcılar, parolasının değiştiğini bildiren bir e-posta alır. E-posta, SSPR portalı aracılığıyla Azure AD 'de depolanan birincil ve alternatif e-posta adreslerine gönderilir. Sıfırlama olayının başka birine bildirim alınmaz.
+Bu seçenek **Evet** olarak ayarlanırsa, parolasını sıfırlayan kullanıcılar, parolasının değiştiğini bildiren bir e-posta alır. E-posta, SSPR portalı aracılığıyla Azure AD 'de depolanan birincil ve alternatif e-posta adreslerine gönderilir. Sıfırlama olayının başka birine bildirim alınmaz.
 
 ### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Diğer yöneticiler parolalarını sıfırladıktan sonra tüm yöneticilere bildir
 
-Bu seçenek **Evet**olarak ayarlanırsa, diğer tüm Azure yöneticileri, Azure AD 'de depolanan birincil e-posta adreslerine bir e-posta alır. E-posta, SSPR kullanarak başka bir yöneticinin parolalarını değiştirdiğinizi bildirir.
+Bu seçenek **Evet** olarak ayarlanırsa, diğer tüm Azure yöneticileri, Azure AD 'de depolanan birincil e-posta adreslerine bir e-posta alır. E-posta, SSPR kullanarak başka bir yöneticinin parolalarını değiştirdiğinizi bildirir.
 
 Aşağıdaki örnek senaryoyu göz önünde bulundurun:
 
 * Bir ortamda dört yönetici vardır.
 * Yönetici *A* , SSPR kullanarak parolalarını sıfırlar.
-* Yöneticiler *B*, *C*ve *D* bir e-posta göndererek parola sıfırlamasının uyarı almasını ister.
+* Yöneticiler *B*, *C* ve *D* bir e-posta göndererek parola sıfırlamasının uyarı almasını ister.
 
 ## <a name="on-premises-integration"></a>Şirket içi tümleştirme
 
@@ -208,15 +208,15 @@ SSPR geri yazma 'yı kullanmaya başlamak için aşağıdaki öğreticiyi izleyi
 
 Azure portal kullanarak parola geri yazma özelliğini etkinleştirebilirsiniz. Ayrıca, Azure AD Connect yeniden yapılandırmak zorunda kalmadan parola geri yazma 'yı geçici olarak devre dışı bırakabilirsiniz.
 
-* Seçenek **Evet**olarak ayarlanırsa, geri yazma etkinleştirilir. Federasyon, geçişli kimlik doğrulama veya parola karması eşitlenmiş kullanıcılar parolalarını sıfırlayabiliyor.
-* Seçenek **Hayır**olarak ayarlanırsa, geri yazma devre dışı bırakılır. Federasyon, geçişli kimlik doğrulama veya parola karması eşitlenmiş kullanıcılar parolalarını sıfırlayamaz.
+* Seçenek **Evet** olarak ayarlanırsa, geri yazma etkinleştirilir. Federasyon, geçişli kimlik doğrulama veya parola karması eşitlenmiş kullanıcılar parolalarını sıfırlayabiliyor.
+* Seçenek **Hayır** olarak ayarlanırsa, geri yazma devre dışı bırakılır. Federasyon, geçişli kimlik doğrulama veya parola karması eşitlenmiş kullanıcılar parolalarını sıfırlayamaz.
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Kullanıcıların, parolasını sıfırlamadan hesapların kilidini açmalarına izin ver
 
 Varsayılan olarak, Azure AD, parola sıfırlama gerçekleştirdiğinde hesapların kilidini açar. Esneklik sağlamak için kullanıcıların parolalarını sıfırlamasına gerek kalmadan şirket içi hesaplarının kilidini açmalarına izin vermeyi tercih edebilirsiniz. Bu iki işlemi ayırmak için bu ayarı kullanın.
 
-* **Evet**olarak ayarlanırsa, kullanıcılara parolasını sıfırlama ve hesabın kilidini açma veya parolayı sıfırlamak zorunda kalmadan hesabının kilidini açma seçeneği verilir.
-* **Hayır**olarak ayarlanırsa, kullanıcılar yalnızca bir birleştirilmiş parola sıfırlama ve hesap kilit açma işlemi gerçekleştirebilir.
+* **Evet** olarak ayarlanırsa, kullanıcılara parolasını sıfırlama ve hesabın kilidini açma veya parolayı sıfırlamak zorunda kalmadan hesabının kilidini açma seçeneği verilir.
+* **Hayır** olarak ayarlanırsa, kullanıcılar yalnızca bir birleştirilmiş parola sıfırlama ve hesap kilit açma işlemi gerçekleştirebilir.
 
 ### <a name="on-premises-active-directory-password-filters"></a>Şirket içi Active Directory parola filtreleri
 

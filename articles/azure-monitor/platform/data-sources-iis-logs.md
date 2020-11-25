@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
 ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993695"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics Agent ile IIS günlükleri toplama
 Internet Information Services (IIS), Log Analytics Aracısı tarafından toplanabilecek ve [Azure Izleyici günlüklerinde](data-platform.md)depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
@@ -65,7 +65,7 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 ## <a name="log-queries-with-iis-logs"></a>IIS günlükleri ile sorguları günlüğe kaydet
 Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | W3CIISLog |Tüm IIS günlük kayıtları. |
 | W3CIISLog &#124; burada scStatus = = 500 |Tüm IIS günlük kayıtları 500 dönüş durumuna sahiptir. |

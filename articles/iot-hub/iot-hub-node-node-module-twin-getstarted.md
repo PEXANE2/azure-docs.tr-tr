@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.custom: amqp, devx-track-js
 ms.openlocfilehash: 9de3f45a9d62a9d131583c133440ac8a311a468d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151419"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993303"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub modül kimliği ve modül ikizi ile çalışmaya başlama (Node.js)
 
@@ -62,7 +62,7 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve
     > [!NOTE]
     > Node_modules alt dizin adı, "bir düğüm kitaplığı" demek için Word modülünü kullanır. Buradaki terim IoT Hub modüllerle hiçbir şey yapmaz.
 
-4. Dizininizde aşağıdaki. js dosyasını oluşturun. **add.js**çağırın. Hub bağlantı dizenizi ve hub 'ınızın adını kopyalayıp yapıştırın.
+4. Dizininizde aşağıdaki. js dosyasını oluşturun. **add.js** çağırın. Hub bağlantı dizenizi ve hub 'ınızın adını kopyalayıp yapıştırın.
 
     ```javascript
     var Registry = require('azure-iothub').Registry;
@@ -119,7 +119,7 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve
 
     ```
 
-Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz**altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Bu modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan modül bilgilerini alır.) Uygulama daha sonra bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
+Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz** altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Bu modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan modül bilgilerini alır.) Uygulama daha sonra bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
 
 Bunu düğüm add.js kullanarak çalıştırın. Bu, size cihaz kimliğiniz için bir bağlantı dizesi ve modül Kimliğiniz için bir tane sağlar.
 
@@ -193,7 +193,7 @@ Bu bölümde, ikizi bildirilen özellikleri güncelleştiren, sanal cihazınızd
     });
     ```
 
-4. Şimdi, **twin.jskomut düğümünü **kullanarak çalıştırın.
+4. Şimdi, **twin.jskomut düğümünü** kullanarak çalıştırın.
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2144945647dc6b2e31e5593de3b6c8c0bf99a606
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85365254"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993279"
 ---
 Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure giriş sayfasından **+ kaynak oluştur** düğmesini seçin ve ardından **Market 'te ara** alanına *IoT Hub* girin.
 
@@ -50,7 +50,7 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
     - **IoT Hub birimler**: günlük birim başına izin verilen ileti sayısı, hub 'ın fiyatlandırma katmanına bağlıdır. Örneğin, hub 'ın 700.000 ileti girişini desteklemesini istiyorsanız iki adet S1 katmanı birimi seçersiniz.
     Diğer katman seçenekleri hakkında daha fazla bilgi için, bkz. [doğru IoT Hub katmanını seçme](../articles/iot-hub/iot-hub-scaling.md).
 
-    - **Azure Güvenlik Merkezi**: IoT ve cihazlarınıza ek bir tehdit koruması katmanı eklemek için bunu açın. Bu seçenek ücretsiz katmanda hub 'lar için kullanılamaz. Bu özellik hakkında daha fazla bilgi için bkz. [IoT Için Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/asc-for-iot/).
+    - **Azure Güvenlik Merkezi**: IoT ve cihazlarınıza ek bir tehdit koruması katmanı eklemek için bunu açın. Bu seçenek ücretsiz katmanda hub 'lar için kullanılamaz. Bu özellik hakkında daha fazla bilgi için bkz. [IoT Için Azure Güvenlik Merkezi](/azure/asc-for-iot/).
 
     - **Gelişmiş ayarlar**  >  **Cihazdan buluta bölümler**: Bu özellik cihazdan buluta iletileri, iletilerin eşzamanlı okuyucu sayısıyla ilişkilendirir. Çoğu hub 'da yalnızca dört bölüm gereklidir.
 

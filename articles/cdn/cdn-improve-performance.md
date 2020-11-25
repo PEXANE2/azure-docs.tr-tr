@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148749"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993678"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN’de dosyaları sıkıştırarak performansı geliştirme
 Dosya sıkıştırma, dosya aktarım hızını artırmak için basit ve etkili bir yöntemdir ve bir dosyanın boyutunu sunucudan gönderilmeden önce azaltarak sayfa yükleme performansını artırır. Dosya sıkıştırma, bant genişliği maliyetlerini azaltabilir ve kullanıcılarınız için daha fazla yanıt veren bir deneyim sağlayabilir.
@@ -42,7 +42,7 @@ Standart ve Premium CDN katmanları aynı sıkıştırma işlevselliğine sahipt
 
 ### <a name="standard-cdn-profiles"></a>Standart CDN profilleri 
 > [!NOTE]
-> Bu bölüm, **Microsoft 'tan Azure CDN Standart**, **Verizon 'ten standart Azure CDN**ve **Akamai profillerden Azure CDN Standart** için geçerlidir.
+> Bu bölüm, **Microsoft 'tan Azure CDN Standart**, **Verizon 'ten standart Azure CDN** ve **Akamai profillerden Azure CDN Standart** için geçerlidir.
 > 
 > 
 

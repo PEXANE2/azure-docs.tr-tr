@@ -5,42 +5,42 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: f941f67105227b3973386b015344d5fa787c3485
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8d8ffe8c1802a5cf67b7dc2b0fb071b572d76e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84317762"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994375"
 ---
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](../articles/active-directory-b2c/app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. **Uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *ROPC_Auth_app*.
 1. Diğer değerleri olduğu gibi bırakın ve **Kaydet**' i seçin.
 1. Daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
-1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 1. **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
-1. **Varsayılan istemci türü**altında, uygulamayı ortak istemci olarak değerlendirmek için **Evet** ' i seçin. Bu ayar, ROPC akışı için gereklidir.
-1. **Kaydet**’i seçin.
+1. **Varsayılan istemci türü** altında, uygulamayı ortak istemci olarak değerlendirmek için **Evet** ' i seçin. Bu ayar, ROPC akışı için gereklidir.
+1. **Kaydet**'i seçin.
 1. Sol taraftaki menüden **bildirim** ' ı seçerek bildirim düzenleyicisini açın. 
-1. **Oauth2AllowImplicitFlow** özniteliğini *true*olarak ayarlayın:
+1. **Oauth2AllowImplicitFlow** özniteliğini *true* olarak ayarlayın:
     ```json
     "oauth2AllowImplicitFlow": true,
     ```
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından **Ekle**' yi seçin.
 1. Uygulama için bir ad girin. Örneğin, *ROPC_Auth_app*.
-1. **Yerel istemci**için **Evet**' i seçin.
+1. **Yerel istemci** için **Evet**' i seçin.
 1. Diğer değerleri olduğu gibi bırakın ve ardından **Oluştur**' u seçin.
 1. Daha sonraki bir adımda kullanmak üzere **uygulama kimliğini** kaydedin.

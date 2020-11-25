@@ -12,11 +12,11 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235069"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994018"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Kullanıcı hazırlama durumunu denetleme
 
@@ -59,7 +59,7 @@ Azure AD, bir uygulamayla otomatik Kullanıcı sağlamayı kullanırken, düzenl
 
 Belirli bir kullanıcının sağlanması için gereken süre, genellikle sağlama işinizin bir başlangıç döngüsünü mi yoksa artımlı bir döngüyü mi çalıştırdığına bağlıdır.
 
-- **İlk döngüde**iş süresi, sağlama için kapsamdaki Kullanıcı ve grup sayısı ve kaynak sistemdeki Toplam Kullanıcı ve grup sayısı dahil olmak üzere birçok faktöre bağlıdır. Azure AD ve uygulama arasındaki ilk eşitleme, Azure AD dizininin boyutuna ve sağlama kapsamındaki kullanıcı sayısına bağlı olarak 20 dakikadan birkaç saate kadar sürebilir. İlk geçiş performansını etkileyen faktörlerin kapsamlı bir listesi bu bölümün ilerleyen kısımlarında özetlenir.
+- **İlk döngüde** iş süresi, sağlama için kapsamdaki Kullanıcı ve grup sayısı ve kaynak sistemdeki Toplam Kullanıcı ve grup sayısı dahil olmak üzere birçok faktöre bağlıdır. Azure AD ve uygulama arasındaki ilk eşitleme, Azure AD dizininin boyutuna ve sağlama kapsamındaki kullanıcı sayısına bağlı olarak 20 dakikadan birkaç saate kadar sürebilir. İlk geçiş performansını etkileyen faktörlerin kapsamlı bir listesi bu bölümün ilerleyen kısımlarında özetlenir.
 
 - İlk döngüden sonra **artımlı döngüler** için, iş süreleri daha hızlı (ör. 10 dakika içinde) olur, çünkü sağlama hizmeti ilk döngüden sonra her iki sistemin durumunu temsil eden filigranları depolar, sonraki eşitlemeler performansını geliştirir. İş saati, bu sağlama döngüsündeki algılanan değişiklik sayısına bağlıdır. 5.000 'den az Kullanıcı veya grup üyeliği değişikliği varsa, iş tek bir artımlı sağlama döngüsünün içinde bitebilirler. 
 
@@ -77,12 +77,12 @@ Aşağıdaki tabloda, yaygın sağlama senaryolarının eşitleme süreleri öze
 | Azure AD 'de tüm kullanıcıları eşitleme|  < 1.000  | < 30 dakika | < 30 dakika |
 | Azure AD 'de tüm kullanıcıları eşitleme | 1.000-10.000  | 43-86 dakika | < 30 dakika |
 
-**Yalnızca yapılandırma eşitlemesi atanan kullanıcı ve gruplar**için aşağıdaki formülleri kullanarak yaklaşık en düşük ve en fazla beklenen **ilk zaman döngüsünü** belirleyebilirsiniz:
+**Yalnızca yapılandırma eşitlemesi atanan kullanıcı ve gruplar** için aşağıdaki formülleri kullanarak yaklaşık en düşük ve en fazla beklenen **ilk zaman döngüsünü** belirleyebilirsiniz:
 
 - En az dakika = 0,01 x [atanan kullanıcı, Grup ve grup üyesi sayısı]
 - En fazla dakika = 0,08 x [atanan kullanıcı, Grup ve grup üyesi sayısı]
 
-Bir **Başlangıç döngüsünün**tamamlanışında geçen süreyi etkileyen faktörlerin Özeti:
+Bir **Başlangıç döngüsünün** tamamlanışında geçen süreyi etkileyen faktörlerin Özeti:
 
 - Sağlama için kapsamdaki Toplam Kullanıcı ve grup sayısı.
 

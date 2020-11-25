@@ -12,17 +12,17 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953891"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994069"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Arkoo Labs yapılandırma öğreticisi
 
 Bu öğreticide, Arkoo Labs ile Azure AD B2C kimlik doğrulamasını tümleştirmeyi öğrenin. Arkoo Labs, kuruluşlara bot saldırılarına, hesap hileli saldırıları ve sahte hesap açılışlarına karşı yardımcı olur.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -100,7 +100,7 @@ Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir UR
 
    ![Arkoo Labs kaydolma ve oturum açma](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 ### <a name="part-2--set-up-a-back-end-server"></a>Bölüm 2 – bir arka uç sunucusu ayarlama
 

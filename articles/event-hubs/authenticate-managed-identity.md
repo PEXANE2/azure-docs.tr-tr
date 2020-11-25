@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359892"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993542"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 Azure Event Hubs, [Azure kaynakları için yönetilen kimliklerle](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory (Azure AD) kimlik doğrulamasını destekler. Azure kaynakları için Yönetilen kimlikler, Azure sanal makinelerinde (VM), Işlev uygulamalarında, sanal makine ölçek kümelerinde ve diğer hizmetlerde çalışan uygulamalardan Azure AD kimlik bilgilerini kullanarak Event Hubs kaynaklarına erişim yetkisi verebilir. Azure AD kimlik doğrulamasıyla birlikte Azure kaynakları için Yönetilen kimlikler kullanarak, kimlik bilgilerini bulutta çalışan uygulamalarınızla depolamaktan kaçınabilirsiniz.
@@ -60,7 +60,7 @@ Event Hubs kaynaklara bir rol atamak için Azure portal bu kaynağa gidin. Kayna
 4.  **Rol ataması Ekle** sayfasında, atamak istediğiniz Event Hubs rolleri seçin. Ardından, rolü atamak için kaydettiğiniz hizmet kimliğini bulmak için arama yapın.
     
     ![Rol atama sayfası ekle](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  **Kaydet**’i seçin. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde, hizmet kimliğinin Event Hubs veri sahibi olduğunu gösterilmektedir.
+5.  **Kaydet**'i seçin. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde, hizmet kimliğinin Event Hubs veri sahibi olduğunu gösterilmektedir.
     
     ![Bir role atanan kimlik](./media/authenticate-managed-identity/role-assigned.png)
 
@@ -77,7 +77,7 @@ Rolü atadıktan sonra, Web uygulamasının tanımlı kapsamda Event Hubs kaynak
 #### <a name="azuremessagingeventhubs-latest"></a>[Azure. Messaging. EventHubs (en son)](#tab/latest)
 Artık Web uygulamasını başlatabilir ve tarayıcınıza örnek aspx sayfasına işaret edebilirsiniz. [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)deposunda Event Hubs kaynaklarından veri gönderen ve alan örnek Web uygulamasını bulabilirsiniz.
 
-[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)'ten en son paketi yükler ve **EventHubProducerClient** kullanarak ve **eventhubconsumerclient**kullanarak olayları alarak Event Hubs olay göndermeye başlayın. 
+[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)'ten en son paketi yükler ve **EventHubProducerClient** kullanarak ve **eventhubconsumerclient** kullanarak olayları alarak Event Hubs olay göndermeye başlayın. 
 
 > [!NOTE]
 > Olayları bir olay hub 'ına yayımlamak için yönetilen kimlik kullanan bir Java örneği için bkz. [GitHub 'Da Azure kimlik örneği ile olayları yayımlama](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs).

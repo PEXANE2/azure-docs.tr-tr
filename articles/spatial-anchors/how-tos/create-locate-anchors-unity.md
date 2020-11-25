@@ -1,20 +1,20 @@
 ---
 title: Unity 'de bağlantıları oluşturun & bulun
 description: Unity 'de Azure uzamsal bağlayıcılarını kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 08/10/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42598b6471ea29c779b1863852169c4a1025e229
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 9339b3f96c677488658713b94789069cabb1125d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097465"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95993104"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Unity 'de Azure uzamsal bağlayıcıları kullanarak bağlayıcıları oluşturma ve bulma
 
@@ -33,7 +33,7 @@ Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlant�
 - Bunları buluta yükleyin.
 - Bulut uzamsal bağlayıcılarını bulun ve silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 

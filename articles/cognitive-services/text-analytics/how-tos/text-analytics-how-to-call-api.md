@@ -8,22 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 43ee7272066dbd89e7c0053d51ba039b83fb494f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2977946b2e1f37aa356ee075d2caac237170df0f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363825"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95993340"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
-**Metin Analizi API'si** çağrıları, herhangi bir dilde formülleştirmek IÇIN http post/Get çağrılardır. Bu makalede, önemli kavramları göstermek için REST ve [Postman](https://www.postman.com/downloads/) kullanırız.
+Bu makalede, temel kavramları göstermek için Metin Analizi REST API ve [Postman](https://www.postman.com/downloads/) kullanırız. API, hizmetin özelliklerini kullanmak için birkaç zaman uyumlu ve zaman uyumsuz uç nokta sağlar. 
 
-Her isteğin erişim anahtarınızı ve bir HTTP uç noktasını içermesi gerekir. Uç nokta, kaydolma sırasında seçtiğiniz bölgeyi, hizmet URL 'sini ve istekte kullanılan bir kaynağı belirtir: `sentiment` , `keyphrases` , `languages` ve `entities` . 
+## <a name="using-the-api-asynchronously"></a>API 'YI zaman uyumsuz kullanma
 
-Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğunu hatırlayın. Metniniz karşıya yüklenir, teslim edildiğinde çözümlenir ve sonuçlar çağıran uygulamaya hemen döndürülür.
+V 3.1-Preview. 3 ' den başlayarak Metin Analizi API'si iki zaman uyumsuz uç nokta sağlar: 
+
+* `/analyze`Metin analizi uç noktası, tek BIR API çağrısında birden çok metin analizi özellikleriyle aynı metin belgelerinin aynı kümesini analiz etmenizi sağlar. Daha önce, birden çok özelliği kullanmak için her işlem için ayrı API çağrıları yapmanız gerekir. Birden fazla Metin Analizi özelliği olan büyük belge kümelerini analiz etmeniz gerektiğinde bu yeteneği göz önünde bulundurun.
+
+* `/health`Uygunluk belgelerindeki ilgili tıbbi bilgileri ayıklayabilen ve etiketleyen sistem durumu için metin analizi uç noktası.  
+
+Hangi özelliklerin zaman uyumsuz olarak kullanılabileceğini görmek için aşağıdaki tabloya bakın. Uç noktadan yalnızca birkaç özelliğin çağrılabilecek olduğunu unutmayın `/analyze` . 
+
+| Özellik | Zaman Uyumlu | Zaman uyumsuz |
+|--|--|--|
+| Dil algılama | ✔ |  |
+| Yaklaşım analizi | ✔ |  |
+| Görüşün madenciliği | ✔ |  |
+| Anahtar ifade ayıklama | ✔ | ✔* |
+| Adlandırılmış varlık tanıma (PII ve FI dahil) | ✔ | ✔* |
+| Sistem durumu için Metin Analizi (kapsayıcı) | ✔ |  |
+| Sistem durumu için Metin Analizi (API) |  | ✔  |
+
+`*` -Uç nokta aracılığıyla zaman uyumsuz olarak çağırılır `/analyze` .
+
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -31,15 +50,24 @@ Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğ
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+
+> [!NOTE]
+> Veya uç noktalarını kullanmak istiyorsanız, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) kullanarak bir metin analizi kaynağına ihtiyacınız olacaktır `/analyze` `/health` .
+
+1.  İlk olarak, [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) gidin ve henüz yoksa yeni bir metin analizi kaynağı oluşturun. `/analyze`Veya uç noktalarını kullanmak istiyorsanız, standart fiyatlandırma katmanını seçin `/health` .
+
+2.  Uç noktanızı kullanmak için kullanmak istediğiniz bölgeyi seçin.
+
+3.  Metin Analizi kaynağını oluşturun ve sayfanın solundaki "anahtarlar ve uç nokta dikey penceresine" gidin. Daha sonra API 'Leri çağırdığınızda kullanılacak anahtarı kopyalayın. Bunu daha sonra üst bilgi için bir değer olarak eklersiniz `Ocp-Apim-Subscription-Key` .
+
 
 <a name="json-schema"></a>
 
-## <a name="json-schema-definition"></a>JSON şema tanımı
+## <a name="api-request-format"></a>API istek biçimi
 
-Giriş, ham yapılandırılmamış metinde JSON olmalıdır. XML desteklenmiyor. Şema basittir ve aşağıdaki listede açıklanan öğelerden oluşur. 
+#### <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
 
-Şu anda tüm Metin Analizi işlemler için aynı belgeleri gönderebilirsiniz: yaklaşım, anahtar tümceciği, dil algılama ve varlık tanımlama. (Şema, gelecekte her analiz için farklılık gösterir.)
+API isteklerinin biçimi tüm zaman uyumlu işlemler için aynıdır. Belgeler, bir JSON nesnesinde ham yapılandırılmamış metin olarak gönderilir. XML desteklenmiyor. JSON şeması aşağıda açıklanan öğelerden oluşur.
 
 | Öğe | Geçerli değerler | Gerekli mi? | Kullanım |
 |---------|--------------|-----------|-------|
@@ -47,8 +75,7 @@ Giriş, ham yapılandırılmamış metinde JSON olmalıdır. XML desteklenmiyor.
 |`text` | Yapılandırılmamış ham metin, en fazla 5.120 karakter. | Gerekli | Dil algılama için metin herhangi bir dilde ifade edilebilir. Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanımlama için, metin [desteklenen bir dilde](../language-support.md)olmalıdır. |
 |`language` | 2 karakterlik [ıso 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) [desteklenen bir dil](../language-support.md) için kod | Değişir | Yaklaşım analizi, anahtar ifade ayıklama ve varlık bağlama için gereklidir; dil algılama için isteğe bağlı. Bunu dışladığınızda bir hata yoktur, ancak analiz bu olmadan zayıflatılmalıdır. Dil kodu, sağladığınız öğesine karşılık gelmelidir `text` . |
 
-Sınırlamalar hakkında daha fazla bilgi için bkz. [metin analizi genel bakış > veri sınırları](../overview.md#data-limits). 
-
+Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örneği verilmiştir. 
 
 ```json
 {
@@ -57,71 +84,265 @@ Sınırlamalar hakkında daha fazla bilgi için bkz. [metin analizi genel bakı�
       "language": "en",
       "id": "1",
       "text": "Sample text to be sent to the text analytics api."
-    },
-    {
-      "language": "en",
-      "id": "2",
-      "text": "It's incredibly sunny outside! I'm so happy."
-    },
-    {
-      "language": "en",
-      "id": "3",
-      "text": "Pike place market is my favorite Seattle attraction."
     }
   ]
 }
 ```
 
+#### <a name="analyze"></a>[Analiz](#tab/analyze)
 
-## <a name="set-up-a-request-in-postman"></a>Postman 'da istek ayarlama
+> [!NOTE]
+> Metin Analizi istemci kitaplığının en son sürümü, istemci nesnesini kullanarak zaman uyumsuz analiz işlemlerini çağırmanızı sağlar. GitHub 'da örnekleri bulabilirsiniz:
+* [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+* [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+* [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
 
-Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir Web API test aracı) kullanıyorsanız, uç noktasını kullanmak istediğiniz kaynağı içerecek şekilde ayarlayın ve erişim anahtarını bir istek üst bilgisine sağlayın. Her işlem için ilgili kaynağı uç noktaya eklemeniz gerekir. 
+`/analyze`Uç nokta, tek BIR API çağrısında kullanmak istediğiniz desteklenen metin analizi özelliklerinden hangisini seçmenizi sağlar. Bu uç nokta şu anda şunları destekler:
 
-1. Postman 'da:
+* anahtar tümceciği ayıklama 
+* Adlandırılmış varlık tanıma (PII ve FI dahil)
 
-   + İstek türü olarak **gönderi** ' ı seçin.
-   + Portal sayfasından kopyaladığınız uç noktaya yapıştırın.
-   + Kaynak Ekle.
+| Öğe | Geçerli değerler | Gerekli mi? | Kullanım |
+|---------|--------------|-----------|-------|
+|`displayName` | Dize | İsteğe Bağlı | İşe benzersiz tanımlayıcı için görünen ad olarak kullanılır.|
+|`analysisInput` | `documents`Aşağıdaki alanı içerir | Gerekli | Göndermek istediğiniz belgelerin bilgilerini içerir. |
+|`documents` | `id` `text` Aşağıdaki ve alanlarını içerir | Gerekli | Gönderilen her belge için bilgileri ve belgenin ham metnini içerir. |
+|`id` | Dize | Gerekli | Sağladığınız kimlikler çıktıyı yapılandırmak için kullanılır. |
+|`text` | Yapılandırılmamış ham metin, en fazla 125.000 karakter. | Gerekli | Şu anda desteklenen tek dil olan Ingilizce dilde olmalıdır. |
+|`tasks` | Aşağıdaki Metin Analizi özelliklerini içerir: `entityRecognitionTasks` , `keyPhraseExtractionTasks` veya `entityRecognitionPiiTasks` . | Gerekli | Kullanmak istediğiniz bir veya daha fazla Metin Analizi özelliği. `entityRecognitionPiiTasks` `domain` Ya da olarak ayarlanabilir isteğe bağlı bir parametreye sahip olduğunu unutmayın `pii` `phi` . Belirtilmemişse, sistem varsayılan olarak olur `pii` . |
+|`parameters` | `model-version` `stringIndexType` Aşağıdaki ve alanlarını içerir | Gerekli | Bu alan, seçtiğiniz yukarıdaki özellik görevlerine dahil edilmiştir. Bunlar, kullanmak istediğiniz model sürümü ve Dizin türü hakkında bilgiler içerir. |
+|`model-version` | Dize | Gerekli | Hangi modelin kullanmak istediğinizi çağırmakta olduğunu belirtin.  |
+|`stringIndexType` | Dize | Gerekli | Programlama ortamınızla eşleşen metin kod çözücüsünü belirtin.  Desteklenen türler `textElement_v8` (varsayılan), `unicodeCodePoint` , `utf16CodeUnit` . Daha fazla bilgi için lütfen [metin uzaklık makalesine](../concepts/text-offsets.md#offsets-in-api-version-31-preview) bakın.  |
+|`domain` | Dize | İsteğe Bağlı | Yalnızca göreve parametre olarak uygulanır `entityRecognitionPiiTasks` ve veya olarak ayarlanabilir `pii` `phi` . Belirtilmemişse, varsayılan olarak olur `pii` .  |
 
-   Kaynak uç noktaları aşağıdaki gibidir (bölgeniz farklılık gösterebilir):
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "entityRecognitionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
+        "keyPhraseExtractionTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }],
+        "entityRecognitionPiiTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }]
+    }
+}
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
+```
 
-2. Üç istek üst bilgilerini ayarlayın:
+#### <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
 
-   + `Ocp-Apim-Subscription-Key`: Azure portal adresinden alınan erişim anahtarınız.
-   + `Content-Type`: Application/JSON.
-   + `Accept`: Application/JSON.
+Durum barındırılan API için Metin Analizi API isteklerinin biçimi, kapsayıcısı için olan ile aynıdır. Belgeler, bir JSON nesnesinde ham yapılandırılmamış metin olarak gönderilir. XML desteklenmiyor. JSON şeması aşağıda açıklanan öğelerden oluşur.  Lütfen sistem durumu genel önizlemesi için Metin Analizi erişim istemek üzere bilişsel [Hizmetler istek formunu](https://aka.ms/csgate) doldurun ve iletin. Sistem durumu kullanımı için Metin Analizi faturalandırılmaz. 
 
-   İsteğiniz, **/keyPhrases** kaynağını varsayarak aşağıdaki ekran görüntüsüne benzer şekilde görünmelidir.
+| Öğe | Geçerli değerler | Gerekli mi? | Kullanım |
+|---------|--------------|-----------|-------|
+|`id` |Veri türü dizedir, ancak uygulama belge kimlikleri ' nde tam sayı olarak eğilimlidir. | Gerekli | Sistem çıktıyı yapılandırmak için sağladığınız kimlikleri kullanır. |
+|`text` | Yapılandırılmamış ham metin, en fazla 5.120 karakter. | Gerekli | Şu anda yalnızca Ingilizce metnin desteklendiğini unutmayın. |
+|`language` | 2 karakterlik [ıso 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) [desteklenen bir dil](../language-support.md) için kod | Gerekli | Yalnızca `en` Şu anda destekleniyor. |
 
-   ![Uç nokta ve üst bilgilerle ekran görüntüsü iste](../media/postman-request-keyphrase-1.png)
+Aşağıda, sistem durumu uç noktaları için Metin Analizi yönelik bir API isteği örneği verilmiştir. 
 
-4. **Gövde** ' ye tıklayın ve biçim için **RAW** ' ı seçin.
+```json
+example.json
 
-   ![Gövde ayarları ile ekran görüntüsü iste](../media/postman-request-body-raw.png)
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Subject was administered 100mg remdesivir intravenously over a period of 120 min"
+    }
+  ]
+}
+```
 
-5. Bazı JSON belgelerini amaçlanan analiz için geçerli bir biçimde yapıştırın. Belirli bir analiz hakkında daha fazla bilgi için aşağıdaki konulara bakın:
+---
 
-  + [Dil algılama](text-analytics-how-to-language-detection.md)  
-  + [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md)  
-  + [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md)  
-  + [Varlık tanıma](text-analytics-how-to-entity-linking.md)  
+>[!TIP]
+> Metin Analizi API'si veri göndermeye yönelik ücretler ve boyut limitleri hakkında bilgi için [veri ve oran limitleri](../concepts/data-limits.md) makalesine bakın.
 
 
-6. İsteği göndermek için **Gönder** ' e tıklayın. Dakika ve saniye başına gönderebilmeniz için istek sayısı hakkında genel [bakış bölümüne bakın](../overview.md#data-limits) .
+## <a name="set-up-a-request"></a>İstek ayarlama 
 
-   Postman 'da, yanıt, istekte belirtilen her belge KIMLIĞI için bir öğe olan bir sonraki pencerede, tek bir JSON belgesi olarak görüntülenir.
+Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örnek:
 
-## <a name="see-also"></a>Ayrıca bkz. 
+`https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
- [Metin Analizi genel bakış](../overview.md)  
- [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)
+#### <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
 
-## <a name="next-steps"></a>Sonraki adımlar
+| Özellik | İstek türü | Kaynak uç noktaları |
+|--|--|--|
+| Dil algılama | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
+| Yaklaşım analizi | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
+| Görüşün madenciliği | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment?opinionMining=true` |
+| Anahtar ifade ayıklama | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
+| Adlandırılmış varlık tanıma-genel | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/general` |
+| Adlandırılmış varlık tanıma-PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
+| Adlandırılmış varlık tanıma-FI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-> [!div class="nextstepaction"]
-> [Dil algılama](text-analytics-how-to-language-detection.md)
+#### <a name="analyze"></a>[Analiz](#tab/analyze)
+
+| Özellik | İstek türü | Kaynak uç noktaları |
+|--|--|--|
+| Analiz işini gönder | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
+| Çözümleme durumunu ve sonuçlarını al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
+
+#### <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
+
+| Özellik | İstek türü | Kaynak uç noktaları |
+|--|--|--|
+| Sistem durumu işi için Metin Analizi gönder  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
+| İş durumunu ve sonuçları al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| İşi iptal et | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+
+--- 
+
+Uç noktanız, Postman 'da (veya başka bir Web API test aracında) oluşturulduktan sonra:
+
+1. Kullanmak istediğiniz özelliğin istek türünü seçin.
+2. Yukarıdaki tabloda istediğiniz uygun işlemin uç noktasını yapıştırın.
+3. Üç istek üst bilgilerini ayarlayın:
+
+   + `Ocp-Apim-Subscription-Key`: Azure portal adresinden elde edilen erişim anahtarınız
+   + `Content-Type`: uygulama/JSON
+   + `Accept`: uygulama/JSON
+
+    Postman kullanıyorsanız, isteğiniz aşağıdaki ekran görüntüsüne benzer bir `/keyPhrases` uç nokta kabul etmelidir.
+    
+    ![Uç nokta ve üst bilgilerle ekran görüntüsü iste](../media/postman-request-keyphrase-1.png)
+    
+4. **Gövde** biçimi için **Ham** seçin
+    
+    ![Gövde ayarları ile ekran görüntüsü iste](../media/postman-request-body-raw.png)
+
+5. Bazı JSON belgelerini geçerli bir biçimde yapıştırın. Yukarıdaki **API istek biçimi** bölümündeki örnekleri kullanın ve daha fazla bilgi ve örnek için aşağıdaki konulara bakın:
+
+      + [Dil algılama](text-analytics-how-to-language-detection.md)
+      + [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md)
+      + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md)
+      + [Varlık tanıma](text-analytics-how-to-entity-linking.md)
+
+## <a name="send-the-request"></a>İsteği gönder
+
+API isteğini gönder. Zaman uyumlu bir uç noktaya çağrı yaptıysanız, yanıt, istekte belirtilen her belge KIMLIĞI için bir öğe olan tek bir JSON belgesi olarak hemen görüntülenir.
+
+Zaman uyumsuz `/analyze` veya `/health` uç noktalara çağrı yaptıysanız, bir 202 yanıt kodu aldığınızı kontrol edin. sonuçları görüntülemek için yanıtı almanız gerekir:
+
+1. API yanıtında, `Operation-Location` API 'ye gönderdiğiniz işi tanımlayan üst bilgiden öğesini bulun. 
+2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örnek:
+
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
+
+3. Öğesini `Operation-Location` isteğe ekleyin.
+
+4. Yanıt, istekte belirtilen her belge KIMLIĞI için bir öğe içeren tek bir JSON belgesi olacaktır.
+
+## <a name="example-api-responses"></a>Örnek API yanıtları
+ 
+# <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
+
+Zaman uyumlu uç nokta yanıtları kullandığınız uç noktaya göre değişir. Örnek yanıtlar için aşağıdaki makalelere bakın.
+
++ [Dil algılama](text-analytics-how-to-language-detection.md#step-3-view-the-results)
++ [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md#view-the-results)
++ [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
+
+# <a name="analyze"></a>[Analiz](#tab/analyze)
+
+Başarılı olursa, uç noktaya yönelik GET isteği `/analyze` atanan görevleri içeren bir nesne döndürür. Örneğin, `keyPhraseExtractionTasks`. Bu görevler, uygun Metin Analizi özelliğinden gelen yanıt nesnesini içerir. Daha fazla bilgi için aşağıdaki makalelere bakın.
+
++ [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
+
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
+}
+```
+
+# <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
+
+Durum bilgisi zaman uyumsuz API yanıtının Metin Analizi hakkında daha fazla bilgi için aşağıdaki makaleye bakın:
+
++ [Sistem durumu için Metin Analizi](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
+
+
+--- 
+
+## <a name="see-also"></a>Ayrıca bkz.
+
+* [Metin Analizine genel bakış](../overview.md)
+* [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)</br>
+* [Metin Analizi ürün sayfası](//go.microsoft.com/fwlink/?LinkID=759712)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Yenilikler](../whats-new.md)

@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630599"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993559"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Öğretici: ürün oluşturma ve yayımlama  
 
 Azure API Management, bir [*ürün*](api-management-terminology.md#term-definitions) bir veya daha fazla API ve kullanım koşulları ve kullanım koşulları içerir. Ürün yayımlandığında, geliştiriciler ürüne abone olabilir ve ürünün API'lerini kullanmaya başlayabilir.  
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ürün oluşturma ve yayımlama
@@ -38,12 +38,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 1. Sol gezinti bölmesinde, **Ürünler**  >  **+ Ekle**' yi seçin.
 1.  Ürün **Ekle** penceresinde, ürününüzü oluşturmak için aşağıdaki tabloda açıklanan değerleri girin.
 
-    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="Portalda API Management ürünleri":::
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="Portala ürün ekleme":::
 
     | Ad                     | Açıklama                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Görünen ad             | [Geliştirici Portalında](api-management-howto-developer-portal.md)görünmesini istediğiniz ad.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Açıklama              | Ürün hakkında, amacı, erişimi sağladığı API 'Ler ve diğer ayrıntılar gibi bilgiler sağlayın.                                                                                                                                               |
+    | Description              | Ürün hakkında, amacı, erişimi sağladığı API 'Ler ve diğer ayrıntılar gibi bilgiler sağlayın.                                                                                                                                               |
     | Durum                    | Ürünü yayımlamak istiyorsanız **yayımlandı** ' i seçin. Bir üründeki API'lerin çağrılabilmesi için önce ürünün yayımlanması gerekir. Varsayılan olarak, yeni ürünler yayımdan kaldırılır ve yalnızca  **Yöneticiler** grubu tarafından görülebilir.                                                                                      |
     | Abonelik gerektirir    | Ürünü kullanmak için bir kullanıcının abone olması gerekiyorsa seçin.                                                                                                                                                                                                                                   |
     | Onay gerekiyor        | Yöneticinin bu ürüne yönelik abonelik denemelerini gözden geçirmesini ve kabul etmesini ya da reddetmesini istiyorsanız seçin. Seçilmezse, abonelik girişimleri otomatik olarak onaylanır.                                                                                                                         |
@@ -77,10 +77,10 @@ Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması g
 
 1. API Management örneğinizin sol gezinti bölmesinde **Ürünler**' i seçin.
 1. Bir ürün seçin ve ardından **API 'ler**' i seçin.
-1. **+ Ekle**'yi seçin.
+1. **+ Ekle** öğesini seçin.
 1. Bir veya daha fazla API seçin ve ardından öğesini **seçin**.
 
-:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="Portalda API Management ürünleri":::
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="Mevcut ürüne API ekleme":::
 
 > [!TIP]
 > Bir kullanıcının aboneliğini, bir [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) veya PowerShell komutu aracılığıyla özel abonelik anahtarlarıyla bir ürüne oluşturabilir veya güncelleyebilirsiniz.

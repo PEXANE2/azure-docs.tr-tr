@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108108"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994120"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Tanılama değerlendirmesi ve izleme için toplu iş ölçümleri, uyarılar ve Günlükler
 
@@ -36,7 +36,7 @@ Azure portal tüm Batch hesabı ölçümlerini görüntülemek için:
 1. Azure Portal, **tüm hizmetler**  >  **Batch hesapları**' nı seçin ve ardından Batch hesabınızın adını seçin.
 2. **İzleme** seçeneğinin altından **Ölçümler**’i seçin.
 3. **Ölçüm Ekle** ' yi seçin ve ardından açılır listeden bir ölçüm seçin.
-4. Ölçüm için bir **toplama** seçeneği belirleyin. Count tabanlı ölçümler için ("adanmış çekirdek sayısı" veya "düşük öncelikli düğüm sayısı" gibi), **Ortalama** toplamayı kullanın. Olay tabanlı ölçümler ("havuz yeniden boyutlandırma tam olayları" gibi) için, "toplama" **sayısını**kullanın.
+4. Ölçüm için bir **toplama** seçeneği belirleyin. Count tabanlı ölçümler için ("adanmış çekirdek sayısı" veya "düşük öncelikli düğüm sayısı" gibi), **Ortalama** toplamayı kullanın. Olay tabanlı ölçümler ("havuz yeniden boyutlandırma tam olayları" gibi) için, "toplama" **sayısını** kullanın.
 
    > [!WARNING]
    > Grafiğin dönemi boyunca alınan tüm veri noktalarının değerlerini ekleyen "Sum" toplamasını kullanmayın.
@@ -62,11 +62,11 @@ Belirtilen bir ölçümün değeri atadığınız bir eşiği aştığında teti
 Azure portal bir ölçüm uyarısı yapılandırmak için:
 
 1. **Tüm hizmetler**  >  **Batch hesapları**' nı seçin ve ardından Batch hesabınızın adını seçin.
-2. **İzleme**altında **Uyarılar**' ı seçin ve ardından **Yeni uyarı kuralı**' nı seçin.
-3. **Koşul Seç**' e tıklayın ve ardından bir ölçüm seçin. **Grafik dönemi**, **eşik türü**, **işleç**ve **toplama türü**değerlerini onaylayın ve bir **eşik değeri**girin. Ardından **Bitti**'yi seçin.
+2. **İzleme** altında **Uyarılar**' ı seçin ve ardından **Yeni uyarı kuralı**' nı seçin.
+3. **Koşul Seç**' e tıklayın ve ardından bir ölçüm seçin. **Grafik dönemi**, **eşik türü**, **işleç** ve **toplama türü** değerlerini onaylayın ve bir **eşik değeri** girin. Ardından **Bitti**'yi seçin.
 4. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu ekleyin.
 5. **Uyarı kuralı ayrıntıları** bölümünde, bir **Uyarı kuralı adı** ve **açıklaması** girin ve **önem derecesini** seçin
-6. **Uyarı kuralı oluştur**’u seçin.
+6. **Uyarı kuralı oluşturma**’yı seçin.
 
 Ölçüm uyarıları oluşturma hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../azure-monitor/platform/alerts-metric-overview.md) ve [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-metric.md).
 
@@ -101,8 +101,8 @@ Azure portal yeni bir tanılama ayarı oluşturmak için aşağıdaki adımları
 2. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
 3. **Tanılama ayarları**' nda, **Tanılama ayarı Ekle**' yi seçin.
 4. Ayar için bir ad girin.
-5. Bir hedef seçin: **Log Analytics gönder**, **depolama hesabına Arşivle**veya **Olay Hub 'ına akış**. Bir depolama hesabı seçerseniz, isteğe bağlı olarak bir bekletme ilkesi ayarlayabilirsiniz. Bekletme için gün sayısı belirtmezseniz, depolama hesabının ömrü boyunca veriler korunur.
-6. **ServiceLog**, **allölçümlerini**veya her ikisini birden seçin.
+5. Bir hedef seçin: **Log Analytics gönder**, **depolama hesabına Arşivle** veya **Olay Hub 'ına akış**. Bir depolama hesabı seçerseniz, isteğe bağlı olarak bir bekletme ilkesi ayarlayabilirsiniz. Bekletme için gün sayısı belirtmezseniz, depolama hesabının ömrü boyunca veriler korunur.
+6. **ServiceLog**, **allölçümlerini** veya her ikisini birden seçin.
 7. Tanılama ayarını oluşturmak için **Kaydet** ' i seçin.
 
 Ayrıca, [Kaynak Yöneticisi bir şablon](../azure-monitor/samples/resource-manager-diagnostic-settings.md)kullanarak veya Azure PowerShell ya da Azure CLI ile tanılama ayarlarını yapılandırmak Için [Azure Portal Azure izleyici aracılığıyla toplamayı etkinleştirebilirsiniz](../azure-monitor/platform/diagnostic-settings.md) . Daha fazla bilgi için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
@@ -139,7 +139,7 @@ Depolama hesabındaki tanılama günlüklerinin şeması hakkında daha fazla bi
 
 ### <a name="service-log-events"></a>Hizmet günlüğü olayları
 
-Toplanırsa Azure Batch hizmet günlükleri, havuz veya görev gibi ayrı bir toplu Iş kaynağının ömrü boyunca Azure Batch hizmeti tarafından oluşturulan olayları içerir. Batch tarafından yayılan her olay JSON biçiminde günlüğe kaydedilir. Örneğin, bu örnek **Havuz oluşturma olayının**gövdesidir:
+Toplanırsa Azure Batch hizmet günlükleri, havuz veya görev gibi ayrı bir toplu Iş kaynağının ömrü boyunca Azure Batch hizmeti tarafından oluşturulan olayları içerir. Batch tarafından yayılan her olay JSON biçiminde günlüğe kaydedilir. Örneğin, bu örnek **Havuz oluşturma olayının** gövdesidir:
 
 ```json
 {

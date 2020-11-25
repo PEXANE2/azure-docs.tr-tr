@@ -6,20 +6,20 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84680329"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994339"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
 
 1. **Uygulama kayıtları**’nı seçin.
 1. **Genel bakış** sayfasını açmak için *webapi1* uygulamasını seçin.
-1. **Yönet**altında **bir API 'yi kullanıma**sunma ' yı seçin.
-1. **Uygulama kimliği URI 'sinin**yanındaki **Ayarla** bağlantısını seçin.
+1. **Yönet** altında **bir API 'yi kullanıma** sunma ' yı seçin.
+1. **Uygulama kimliği URI 'sinin** yanındaki **Ayarla** bağlantısını seçin.
 1. Varsayılan değeri (bir GUID) ile değiştirin `api` ve ardından **Kaydet**' i seçin. Tam URI gösterilir ve biçiminde olmalıdır `https://your-tenant-name.onmicrosoft.com/api` . Web uygulamanız API için bir erişim belirteci istediğinde, bu URI 'yi API için tanımladığınız her bir kapsamın ön eki olarak eklemesi gerekir.
-1. **Bu API tarafından tanımlanan kapsamlar**altında **Kapsam Ekle**' yi seçin.
+1. **Bu API tarafından tanımlanan kapsamlar** altında **Kapsam Ekle**' yi seçin.
 1. API 'ye okuma erişimini tanımlayan bir kapsam oluşturmak için aşağıdaki değerleri girin, ardından **Kapsam Ekle**' yi seçin:
     1. **Kapsam adı**: `demo.read`
     1. **Yönetici onayı görünen adı**: `Read access to demo API`
@@ -33,7 +33,7 @@ ms.locfileid: "84680329"
 
 1. **Uygulamalar (eski)** seçeneğini belirleyin.
 1. **Özellikler** sayfasını açmak için *webapi1* uygulamasını seçin.
-1. **Yayımlanan kapsamları**seçin. Yayımlanan kapsamlar, bir istemci uygulamasına, Web API 'sine belirli izinler vermek için kullanılabilir.
-1. **Kapsam**için girin `demo.read` ve **Açıklama**için girin `Read access to the web API` .
-1. **Kapsam**için girin `demo.write` ve **Açıklama**için girin `Write access to the web API` .
+1. **Yayımlanan kapsamları** seçin. Yayımlanan kapsamlar, bir istemci uygulamasına, Web API 'sine belirli izinler vermek için kullanılabilir.
+1. **Kapsam** için girin `demo.read` ve **Açıklama** için girin `Read access to the web API` .
+1. **Kapsam** için girin `demo.write` ve **Açıklama** için girin `Write access to the web API` .
 1. **Kaydet**’i seçin.

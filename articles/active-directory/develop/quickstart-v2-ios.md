@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 1b15330d368a93ac4ba176df129df212a259f3e2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3ea3c3990a9319a81c841de8a7109850fcab5179
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561905"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993916"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, yerel bir iOS veya macOS uygulamasının kullanıcıl
 
 Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımlar yalnızca iOS uygulamaları için gereklidir ve bu şekilde belirtilecektir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * XCode 10 +
@@ -47,7 +47,7 @@ Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Baz�
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek için
 > 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) bölmesine gidin.
-> 1. Uygulamanız için bir ad girin ve **Kaydet** 'i seçin.
+> 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
@@ -62,7 +62,7 @@ Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Baz�
 >      - Bu sayfadaki diğer konfigürasyonları atlayın.
 >      - `Register` öğesini seçin.
 > 1. **Yönet** bölümünde, öğesini seçin `Authentication`  >  `Add Platform`  >  `iOS` .
->      - Uygulamanız için * *_paket tanımlayıcısı_* _ ' i girin. Paket tanımlayıcısı, örneğin, uygulamanızı benzersiz bir şekilde tanımlayan benzersiz bir dizedir `com.<yourname>.identitysample.MSALMacOS` . Kullandığınız değeri bir yere getirin.
+>      - Uygulamanız için **_paket tanımlayıcısı_* _ ' i girin. Paket tanımlayıcısı, örneğin, uygulamanızı benzersiz bir şekilde tanımlayan benzersiz bir dizedir `com.<yourname>.identitysample.MSALMacOS` . Kullandığınız değeri bir yere getirin.
 >      - İOS yapılandırmasının macOS uygulamaları için de geçerli olduğunu unutmayın.
 > 1. `Configure`Bu hızlı başlangıçta daha sonra Için _*_msal yapılandırma_*_ ayrıntılarını seçin ve kaydedin.
 > [!div renderon="portal" class="sxs-lookup"]
@@ -101,7 +101,7 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `po
 >#### <a name="step-4-configure-your-project"></a>4. Adım: projenizi yapılandırma
 > Yukarıdaki 1. seçeneği belirlediyseniz, bu adımları atlayabilirsiniz.
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
-> 1. _ *ViewController. Swift* * öğesini düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. `kClientID`Uygulamanızı bu hızlı başlangıçta daha önce portala kaydettiğinizde kaydettiğiniz ClientID değeriyle güncelleştirmeyi unutmayın:
+> 1. _ *ViewController. Swift** öğesini düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. `kClientID`Uygulamanızı bu hızlı başlangıçta daha önce portala kaydettiğinizde kaydettiğiniz ClientID değeriyle güncelleştirmeyi unutmayın:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -116,8 +116,8 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `po
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
-> 1. **Info. plist** ' e sağ tıklayıp kaynak **kodu olarak aç** ' ı seçin  >  **Source Code**.
-> 1. Dict kök düğümünün altında, `Enter_the_bundle_Id_Here` portalda kullandığınız * *_paket kimliği_* _ ile değiştirin.
+> 1. **Info. plist** ' e sağ tıklayıp kaynak **kodu olarak aç**' ı seçin  >  **Source Code**.
+> 1. Dict kök düğümünün altında, `Enter_the_bundle_Id_Here` portalda kullandığınız **_paket kimliği_* _ ile değiştirin.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -177,7 +177,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Burada: | Description |
+> |Konum: | Description |
 > |---------|---------|
 > | `clientId` | _Portal. Azure. com * ' de kayıtlı uygulamadan uygulama KIMLIĞI |
 > | `authority` | Microsoft Identity platform uç noktası. Çoğu durumda bu durum `https://login.microsoftonline.com/common` |
@@ -213,7 +213,7 @@ Uygulamanızda de şunlar olmalıdır `AppDelegate` . Bu, kimlik doğrulaması y
     }
  ```
 
-Son olarak, uygulamanızda `LSApplicationQueriesSchemes` * **Info. plist** _ ' de bir giriş olmalıdır `CFBundleURLTypes` . Örnek, bu dahil edilmiştir.
+Son olarak, uygulamanızda `LSApplicationQueriesSchemes` ***Info. plist** _ ' de bir giriş olmalıdır `CFBundleURLTypes` . Örnek, bu dahil edilmiştir.
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -241,7 +241,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Burada:| Description |
+> |Konum:| Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 
@@ -261,7 +261,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Burada: | Description |
+> |Konum: | Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, kullanarak belirteç istekleri için hangi hesabın kullanılacağını belirlemek `accountsFromDeviceForParameters:completionBlock:` ve doğru geçirme yapmak için Logic tanımlamanız gerekir `accountIdentifier` |

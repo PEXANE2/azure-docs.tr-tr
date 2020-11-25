@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82612342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992936"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps'te ticari ortak sözleşmesi oluşturma ve yönetme
 
@@ -40,31 +40,31 @@ RosettaNet iletilerini değiş tokuş eden anlaşmalar oluşturmak için bkz. [E
 
 ## <a name="create-agreements"></a>Anlaşma oluşturma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna filtreniz olarak "tümleştirme" yazın. Sonuçlardan şu kaynağı seçin: **tümleştirme hesapları**
 
    ![Tümleştirme hesabınızı bulun](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. **Tümleştirme hesapları**altında, sözleşmeyi oluşturmak istediğiniz tümleştirme hesabını seçin.
+1. **Tümleştirme hesapları** altında, sözleşmeyi oluşturmak istediğiniz tümleştirme hesabını seçin.
 
    ![Anlaşmanın oluşturulacağı tümleştirme hesabını seçin](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-1. Sağ bölmedeki **Bileşenler**altında **anlaşmalar** kutucuğunu seçin.
+1. Sağ bölmedeki **Bileşenler** altında **anlaşmalar** kutucuğunu seçin.
 
    !["Anlaşmaları" seçin](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. **Sözleşmeler**altında **Ekle**' yi seçin. **Ekle** bölmesinde sözleşmeniz hakkında bilgi sağlayın, örneğin:
+1. **Sözleşmeler** altında **Ekle**' yi seçin. **Ekle** bölmesinde sözleşmeniz hakkında bilgi sağlayın, örneğin:
 
    !["Ekle" yi seçin](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Ad** | Evet | <*anlaşma-adı*> | Sözleşmenizin adı |
-   | **Anlaşma türü** | Evet | **AS2**, **x12**veya **ediolgu** | Anlaşmanızın protokol türü. Anlaşma dosyanızı oluşturduğunuzda, bu dosyadaki içeriğin anlaşma türüyle eşleşmesi gerekir. | |  
-   | **Ana bilgisayar ortağı** | Evet | <*Konak-iş ortağı-adı*> | Ana bilgisayar ortağı, sözleşmeyi belirten kuruluşu temsil eder |
-   | **Ana bilgisayar kimliği** | Evet | <*Konak-iş ortağı tanımlayıcısı*> | Ana bilgisayar ortağının tanımlayıcısı |
-   | **Konuk Iş ortağı** | Evet | <*Konuk iş ortağı adı*> | Konuk iş ortağı, ana bilgisayar ortağıyla iş yapan kuruluşu temsil eder |
-   | **Konuk kimliği** | Evet | <*Konuk iş ortağı tanımlayıcısı*> | Konuk iş ortağının tanımlayıcısı |
+   | **Ad** | Yes | <*anlaşma-adı*> | Sözleşmenizin adı |
+   | **Anlaşma türü** | Yes | **AS2**, **x12** veya **ediolgu** | Anlaşmanızın protokol türü. Anlaşma dosyanızı oluşturduğunuzda, bu dosyadaki içeriğin anlaşma türüyle eşleşmesi gerekir. | |  
+   | **Ana bilgisayar ortağı** | Yes | <*Konak-iş ortağı-adı*> | Ana bilgisayar ortağı, sözleşmeyi belirten kuruluşu temsil eder |
+   | **Ana bilgisayar kimliği** | Yes | <*Konak-iş ortağı tanımlayıcısı*> | Ana bilgisayar ortağının tanımlayıcısı |
+   | **Konuk Iş ortağı** | Yes | <*Konuk iş ortağı adı*> | Konuk iş ortağı, ana bilgisayar ortağıyla iş yapan kuruluşu temsil eder |
+   | **Konuk kimliği** | Yes | <*Konuk iş ortağı tanımlayıcısı*> | Konuk iş ortağının tanımlayıcısı |
    | **Ayarları al** | Değişir | Değişir | Bu özellikler, ana bilgisayar ortağının anlaşmada Konuk iş ortağından gelen tüm iletileri nasıl alacağını belirtir. Daha fazla bilgi için bkz. ilgili anlaşma türü: <p>- [AS2 ileti ayarları](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIOLGU ileti ayarları](logic-apps-enterprise-integration-edifact.md) <br>- [X12 ileti ayarları](logic-apps-enterprise-integration-x12.md) |
    | **Ayarları gönder** | Değişir | Değişir | Bu özellikler, ana bilgisayar ortağının tüm giden iletileri anlaşmada Konuk iş ortağına nasıl göndereceğini belirtir. Daha fazla bilgi için bkz. ilgili anlaşma türü: <p>- [AS2 ileti ayarları](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIOLGU ileti ayarları](logic-apps-enterprise-integration-edifact.md) <br>- [X12 ileti ayarları](logic-apps-enterprise-integration-x12.md) |
    |||||
@@ -87,9 +87,9 @@ Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna filtreniz ola
 
 1. Arama kutusuna filtreniz olarak "tümleştirme" yazın. Sonuçlardan şu kaynağı seçin: **tümleştirme hesapları**
 
-1. **Tümleştirme hesapları**altında, düzenlemek istediğiniz sözleşmenin bulunduğu tümleştirme hesabını seçin.
+1. **Tümleştirme hesapları** altında, düzenlemek istediğiniz sözleşmenin bulunduğu tümleştirme hesabını seçin.
 
-1. Sağ bölmedeki **Bileşenler**altında **anlaşmalar** kutucuğunu seçin.
+1. Sağ bölmedeki **Bileşenler** altında **anlaşmalar** kutucuğunu seçin.
 
 1. **Anlaşmalar**' ın altında, sözleşmenizi seçin ve **Düzenle**' yi seçin.
 
@@ -101,9 +101,9 @@ Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna filtreniz ola
 
 1. Arama kutusuna filtreniz olarak "tümleştirme" yazın. Sonuçlardan şu kaynağı seçin: **tümleştirme hesapları**
 
-1. **Tümleştirme hesapları**altında, silmek istediğiniz sözleşmenin bulunduğu tümleştirme hesabını seçin.
+1. **Tümleştirme hesapları** altında, silmek istediğiniz sözleşmenin bulunduğu tümleştirme hesabını seçin.
 
-1. Sağ bölmedeki **Bileşenler**altında **anlaşmalar** kutucuğunu seçin.
+1. Sağ bölmedeki **Bileşenler** altında **anlaşmalar** kutucuğunu seçin.
 
 1. **Anlaşmalar**' ın altında, sözleşmenizi seçin ve **Sil**' i seçin.
 

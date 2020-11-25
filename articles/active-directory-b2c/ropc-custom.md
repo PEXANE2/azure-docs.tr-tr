@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bf8fe68c28457fd01704762e537fe259a96a6bce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116239"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95994374"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Uygulamaları kaydetme
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -219,14 +219,14 @@ Azure Active Directory B2C (Azure AD B2C) ' de, kaynak sahibi parola kimlik bilg
     ```
 
 7. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-8. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
+8. Varsa **Ilkenin üzerine yazmayı** etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
 9. **Karşıya Yükle**'ye tıklayın.
 
 ## <a name="create-a-relying-party-file"></a>Bağlı olan taraf dosyası oluşturma
 
 Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf dosyasını güncelleştirin:
 
-1. Çalışma dizininizde *SignUpOrSignin.xml* dosyanın bir kopyasını oluşturun ve *ROPC_Auth.xml*olarak yeniden adlandırın.
+1. Çalışma dizininizde *SignUpOrSignin.xml* dosyanın bir kopyasını oluşturun ve *ROPC_Auth.xml* olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değere değiştirin. İlke KIMLIĞI, ilkenizin adıdır. Örneğin, **B2C_1A_ROPC_Auth**.
 3. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini olarak değiştirin `ResourceOwnerPasswordCredentials` .
 4. **Outputclaim** öğesini yalnızca aşağıdaki talepleri içerecek şekilde değiştirin:
@@ -240,14 +240,14 @@ Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf do
     ```
 
 5. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-6. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *ROPC_Auth.xml* dosyasına gidip seçin.
+6. Varsa **Ilkenin üzerine yazmayı** etkinleştirin ve sonra *ROPC_Auth.xml* dosyasına gidip seçin.
 7. **Karşıya Yükle**'ye tıklayın.
 
 ## <a name="test-the-policy"></a>İlkeyi test etme
 
 Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanızı kullanın ve ilkenizde hata ayıklama yanıtı ' nı gözden geçirin. POST isteğinin gövdesi olarak aşağıdaki bilgilerle bu örnek gibi bir çağrı oluşturun:
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - `<tenant-name>`Azure AD B2C kiracınızın adıyla değiştirin.
 - `B2C_1A_ROPC_Auth`Kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
@@ -269,7 +269,7 @@ Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanı
 Gerçek GÖNDERI isteği aşağıdaki örneğe benzer şekilde görünür:
 
 ```https
-POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1A_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -292,7 +292,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Burada gösterilenler gibi bir GÖNDERI çağrısı oluşturun. İsteğin gövdesi olarak aşağıdaki tablodaki bilgileri kullanın:
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - `<tenant-name>`Azure AD B2C kiracınızın adıyla değiştirin.
 - `B2C_1A_ROPC_Auth`Kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.

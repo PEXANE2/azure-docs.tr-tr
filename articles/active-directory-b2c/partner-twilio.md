@@ -12,17 +12,17 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259077"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994052"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio Verify uygulamasını Azure Active Directory B2C ile tümleştirme
 
 Bu kılavuzda, Azure Active Directory B2C (Azure AD B2C) ' de bir örnek çevrimiçi ödeme uygulamasını Twilio Verify API 'siyle tümleştirmeyi öğrenin. Azure AD B2C müşteriler, Twilio Verify uygulamasını kullanarak, dinamik bağlama ve güçlü müşteri kimlik doğrulaması aracılığıyla PSD2 (ödeme hizmetleri yönerge 2) işlem gereksinimleriyle uyumlu olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -88,9 +88,9 @@ Aşağıdaki bileşenler Twilio çözümünü yapar:
 
 5. [İlke dosyalarını](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy) açın ve tüm örneklerini  `contoso` kiracı adınızla değiştirin.
 
-6. Teknik profil **özel-SMS-kayıt**Twilio REST API bulun. Öğesini  `ServiceURL`   Twilio AccountSid Ile ve Kimden numarası ile satın aldığınız telefon numaranız ile güncelleştirin.
+6. Teknik profil **özel-SMS-kayıt** Twilio REST API bulun. Öğesini  `ServiceURL`   Twilio AccountSid Ile ve Kimden numarası ile satın aldığınız telefon numaranız ile güncelleştirin.
 
-7. Twilio REST API teknik profillerini bulun, **TwilioRestAPI-Verify-adım**   ve **TwilioRestAPI-Verify-Step2**ve öğesini  `ServiceURL`   Twilio accountsıd 'unuzla güncelleştirin.
+7. Twilio REST API teknik profillerini bulun, **TwilioRestAPI-Verify-adım**   ve **TwilioRestAPI-Verify-Step2** ve öğesini  `ServiceURL`   Twilio accountsıd 'unuzla güncelleştirin.
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Azure AD B2C ile tümleştirme
 
@@ -102,11 +102,11 @@ Aşağıdaki bileşenler Twilio çözümünü yapar:
 
 3. Azure portalın sol üst köşesinde **Tüm hizmetler**’i seçin ve **Azure AD B2C**’yi arayıp seçin.
 
-4. **Azure AD B2C**  >  **Identity Experience Framework**  >  **ilke anahtarlarına**gidin.
+4. **Azure AD B2C**  >  **Identity Experience Framework**  >  **ilke anahtarlarına** gidin.
 
-5. **B2cRestTwilioClientId**adlı yeni bir anahtar ekleyin.  **El ile**' yi seçin ve Twilio accountsıd değerini sağlayın.
+5. **B2cRestTwilioClientId** adlı yeni bir anahtar ekleyin.  **El ile**' yi seçin ve Twilio accountsıd değerini sağlayın.
 
-6. **B2cRestTwilioClientSecret**adlı yeni bir anahtar ekleyin.  **El ile**' yi seçin ve TWILIO auth belirtecinin değerini sağlayın.
+6. **B2cRestTwilioClientSecret** adlı yeni bir anahtar ekleyin.  **El ile**' yi seçin ve TWILIO auth belirtecinin değerini sağlayın.
 
 7. Tüm ilke dosyalarını kiracınıza yükleyin.
 

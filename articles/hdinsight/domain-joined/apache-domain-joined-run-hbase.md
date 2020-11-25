@@ -8,11 +8,11 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544962"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993644"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
 
@@ -99,7 +99,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
    ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle** ' ye tıklayın.
+2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle**' ye tıklayın.
 
     ![Apache Ranger HBase ilkeleri listesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
@@ -125,7 +125,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    >[!NOTE]
    >**Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
 
-4. **Add** ’e tıklayarak ilkeyi kaydedin.
+4. **Add**’e tıklayarak ilkeyi kaydedin.
 
 5. **Yeni Ilke Ekle** ' ye tıklayın ve ardından aşağıdaki değerleri girin:
 
@@ -141,7 +141,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
    ![Apache Ranger ilkesi pazarlama oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
-6. **Add** ’e tıklayarak ilkeyi kaydedin.
+6. **Add**’e tıklayarak ilkeyi kaydedin.
 
 ## <a name="test-the-ranger-policies"></a>Ranger ilkelerini test etme
 
@@ -239,7 +239,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase küme
 2. Üstteki **arama** kutusuna **HDInsight** yazın. 
 1. **Hizmetler** altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil** 'e tıklayın. **Evet** 'e tıklayın.
+1. **Sil**'e tıklayın. **Evet**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
