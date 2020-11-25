@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972892"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012740"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki sanal makineler
 
@@ -367,7 +367,7 @@ Yönetilen görüntüden bir sanal makine oluşturmak istiyorsanız, ImageRefere
 ],
 ```
 
-## <a name="extensions"></a>Uzantılar
+## <a name="extensions"></a>Uzantıları
 
 [Uzantılar](../extensions/features-windows.md) ayrı bir kaynak olmakla birlikte, sanal makinelere yakın bir şekilde bağlanır. Uzantılar, VM 'nin alt kaynağı veya ayrı bir kaynak olarak eklenebilir. Örnek, VM 'lere eklenen [Tanılama uzantısını](../extensions/diagnostics-template.md) gösterir:
 
@@ -447,7 +447,7 @@ Dağıtımdaki kaynakların durumunu merak ediyorsanız, Azure portal kaynak gru
 
 ![Dağıtım bilgilerini al](./media/template-description/virtual-machines-deployment-info.png)
     
-Kaynak oluşturmak veya mevcut kaynakları güncelleştirmek için aynı şablonu kullanma sorunu değildir. Şablonları dağıtmak için komutlar kullandığınızda, hangi [modu](../../azure-resource-manager/templates/deploy-powershell.md) kullanmak istediğinizi söylemeniz gerekir. Mod **tamamen** veya **artımlı**olarak ayarlanabilir. Varsayılan değer artımlı güncelleştirmeler gerçekleştirmemesidir. Kaynakları yanlışlıkla silebileceğinden, **Tüm** modunu kullanırken dikkatli olun. Modu, **tamamlanacak**şekilde ayarladığınızda, Kaynak Yöneticisi şablonda olmayan kaynak grubundaki tüm kaynakları siler.
+Kaynak oluşturmak veya mevcut kaynakları güncelleştirmek için aynı şablonu kullanma sorunu değildir. Şablonları dağıtmak için komutlar kullandığınızda, hangi [modu](../../azure-resource-manager/templates/deploy-powershell.md) kullanmak istediğinizi söylemeniz gerekir. Mod **tamamen** veya **artımlı** olarak ayarlanabilir. Varsayılan değer artımlı güncelleştirmeler gerçekleştirmemesidir. Kaynakları yanlışlıkla silebileceğinden, **Tüm** modunu kullanırken dikkatli olun. Modu, **tamamlanacak** şekilde ayarladığınızda, Kaynak Yöneticisi şablonda olmayan kaynak grubundaki tüm kaynakları siler.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

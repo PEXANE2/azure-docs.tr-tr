@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 10/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: c379d3f99628c2d3fb32ae34ca0214f608d365c7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201282"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012706"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Hızlı başlangıç: .NET Framework uygulamasına özellik bayrakları ekleme
 
@@ -51,7 +51,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)**. **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**’a tıklayın.
+1. **Yeni projenizi yapılandırma** bölümünde bir proje adı girin. **Framework** altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**'a tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 

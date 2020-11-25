@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012774"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript V12 SDK ile Blobları yönetme
 
@@ -24,7 +24,7 @@ Ek kaynaklar:
 * [API başvuru belgeleri](/javascript/api/@azure/storage-blob)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-blob)
-* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Örnekler](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +40,7 @@ Bu bölümde, bir projeyi, JavaScript için Azure Blob depolama istemci kitaplı
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-*BLOB-QuickStart-V12*adlı bir JavaScript uygulaması oluşturun.
+*BLOB-QuickStart-V12* adlı bir JavaScript uygulaması oluşturun.
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), proje için yeni bir dizin oluşturun.
 
@@ -54,7 +54,7 @@ Bu bölümde, bir projeyi, JavaScript için Azure Blob depolama istemci kitaplı
     cd blob-quickstart-v12
     ```
 
-1. *Üzerindepackage.js*adlı yeni bir metin dosyası oluşturun. Bu dosya Node.js projesi tanımlar. Bu dosyayı *BLOB-QuickStart-V12* dizinine kaydedin. Dosyanın içeriği aşağıdadır:
+1. *Üzerindepackage.js* adlı yeni bir metin dosyası oluşturun. Bu dosya Node.js projesi tanımlar. Bu dosyayı *BLOB-QuickStart-V12* dizinine kaydedin. Dosyanın içeriği aşağıdadır:
 
     ```json
     {
@@ -134,7 +134,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, JavaScript için Azure Blob depolama istemci kitaplığı ile aşağıdakilerin nasıl gerçekleştirileceğini göstermektedir:
 
 * [Bağlantı dizesini alma](#get-the-connection-string)
-* [Bir kapsayıcı oluşturma](#create-a-container)
+* [Kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Kapsayıcıdaki blobları listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
@@ -156,7 +156,7 @@ Bu kodu işlevin içine ekleyin `main` :
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir UUID değeri ekler.
 
@@ -314,6 +314,6 @@ Bu hızlı başlangıçta, JavaScript kullanarak Blobları karşıya yükleme, i
 > [!div class="nextstepaction"]
 > [JavaScript için Azure Geliştirici Merkezi](/azure/developer/javascript/)
 
-* Azure Blob depolama kullanan bir Web uygulamasını dağıtmayı öğrenmek için bkz [. Öğretici: Azure Storage ile buluta görüntü verileri yükleme](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
+* Azure Blob depolama kullanan bir Web uygulamasını dağıtmayı öğrenmek için bkz [. Öğretici: Azure Storage ile buluta görüntü verileri yükleme](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)
 * BLOB depolama örnek uygulamalarını görmek için [Azure Blob depolama istemci kitaplığı V12 JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)' ne geçin.
 * Daha fazla bilgi edinmek için bkz. [JavaScript Için Azure Blob depolama istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).

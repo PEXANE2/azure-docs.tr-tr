@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: c7a99e7e5f27f8c3503c7fa6124d27cfc4e7f4a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636774"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012842"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory saklı yordam etkinliğini kullanarak bir SSIS paketini çağırma
 Bu makalede, bir saklı yordam etkinliği kullanarak bir Azure Data Factory işlem hattından bir SSIS paketinin nasıl çağırılacağını açıklanmaktadır. 
@@ -26,7 +26,7 @@ Bu makalede, bir saklı yordam etkinliği kullanarak bir Azure Data Factory işl
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [içindeki saklı yordam kullanarak SSIS paketlerini çağırma](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
 Bu makaledeki izlenecek yol, Azure SQL veritabanı 'nı kullanır. Azure SQL yönetilen örneği de kullanabilirsiniz.
@@ -100,8 +100,8 @@ Veritabanınızdaki SSIS kataloğunu barındıran Azure SQL veritabanı 'na veri
         }
         }
     ```
-2. **Azure PowerShell** , **C:\adf\runssispackage** klasörüne geçin.
-3. **New-AzDataFactoryLinkedService** cmdlet 'ini çalıştırarak bağlı hizmeti oluşturun: **Azuressqldatabaselinkedservice** . 
+2. **Azure PowerShell**, **C:\adf\runssispackage** klasörüne geçin.
+3. **New-AzDataFactoryLinkedService** cmdlet 'ini çalıştırarak bağlı hizmeti oluşturun: **Azuressqldatabaselinkedservice**. 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"

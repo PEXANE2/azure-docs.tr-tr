@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: b30bd36dca6f866b8f3e6e8a0b133a6dd61b239b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012672"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için Gelişmiş tehdit koruması
 
@@ -32,7 +32,7 @@ Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birle�
 3. **Gelişmiş tehdit koruması (Önizleme)** yapılandırma sayfasında:
 
    - Sunucuda Gelişmiş tehdit koruması 'nı etkinleştirin.
-   - **Gelişmiş tehdit koruması ayarları** ' nda, **uyarıları gönder** metin kutusunda, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarılarını alacak e-postaların listesini belirtin.
+   - **Gelişmiş tehdit koruması ayarları**' nda, **uyarıları gönder** metin kutusunda, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarılarını alacak e-postaların listesini belirtin.
   
    :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Tehdit algılamayı ayarlama":::
 

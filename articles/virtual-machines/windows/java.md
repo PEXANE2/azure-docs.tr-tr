@@ -10,11 +10,11 @@ ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
 ms.openlocfilehash: f571dc5f4f3aee2405d4968b050bd2dd92a709db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973674"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012757"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -128,7 +128,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
     graphURL=https://graph.microsoft.com/
     ```
 
-    Abonelik ** &lt; kimliği &gt; ** , abonelik tanımlayıcıınız, uygulama ** &lt; kimliği &gt; ** Active Directory uygulama tanımlayıcısı, ** &lt; kimlik doğrulama &gt; anahtarı** ve kiracı tanımlayıcısı ile ** &lt; Kiracı kimliği &gt; ** ile değiştirin.
+    Abonelik **&lt; kimliği &gt;** , abonelik tanımlayıcıınız, uygulama **&lt; kimliği &gt;** Active Directory uygulama tanımlayıcısı, **&lt; kimlik doğrulama &gt; anahtarı** ve kiracı tanımlayıcısı ile **&lt; Kiracı kimliği &gt;** ile değiştirin.
 
 2. Dosyayı kaydedin.
 3. Kimlik doğrulama dosyasının tam yolu ile kabukta AZURE_AUTH_LOCATION adlı bir ortam değişkeni ayarlayın.

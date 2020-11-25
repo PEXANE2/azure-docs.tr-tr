@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689767"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012859"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Web tablosu kaynağından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -55,7 +55,7 @@ Bu Web tablosu bağlayıcısını kullanmak için, şirket içinde barındırıl
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -72,9 +72,9 @@ Aşağıdaki tabloda, web bağlantılı hizmetine özgü JSON öğeleri için a�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type özelliği: **Web** olarak ayarlanmalıdır |Evet |
-| Url |Web kaynağının URL 'SI |Evet |
-| authenticationType |Anonim. |Evet |
+| tür |Type özelliği: **Web** olarak ayarlanmalıdır |Yes |
+| Url |Web kaynağının URL 'SI |Yes |
+| authenticationType |Deðeri. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Anonim kimlik doğrulaması kullanma
 
@@ -100,9 +100,9 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Evet |
+| tür |veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Yes |
 | path |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
-| dizin |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Evet |
+| dizin |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Yes |
 
 **Örnek:**
 
@@ -130,7 +130,7 @@ Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, 
 
 Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
-Şu anda, Copy etkinliğinin kaynağı **Websource**türünde olduğunda ek özellikler desteklenmez.
+Şu anda, Copy etkinliğinin kaynağı **Websource** türünde olduğunda ek özellikler desteklenmez.
 
 
 ## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON örneği: Web tablosundan Azure Blob 'a veri kopyalama
@@ -233,7 +233,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1).
 
 **Kopyalama etkinliği içeren işlem hattı**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında, **kaynak** türü **websource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında, **kaynak** türü **websource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır.
 
 WebSource tarafından desteklenen özelliklerin listesi için bkz. WebSource türü özellikleri.
 
@@ -293,7 +293,7 @@ WebSource tarafından desteklenen özelliklerin listesi için bkz. WebSource tü
     ![Web iletişim kutusundan](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
     Bu örnekte kullanılan URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. **Web Içeriği erişimi** iletişim kutusu ' nu görürseniz, doğru **URL**'yi, **kimlik doğrulamasını**seçin ve **Bağlan**' a tıklayın.
+4. **Web Içeriği erişimi** iletişim kutusu ' nu görürseniz, doğru **URL**'yi, **kimlik doğrulamasını** seçin ve **Bağlan**' a tıklayın.
 
    ![Web içeriğine eriş iletişim kutusu](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5. Tablodaki içeriği görmek için ağaç görünümündeki bir **tablo** öğesine tıklayın ve ardından alt kısımdaki **Düzenle** düğmesine tıklayın.  

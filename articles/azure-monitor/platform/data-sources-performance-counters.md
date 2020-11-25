@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
 ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040883"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012621"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerini toplamaya ek olarak neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla Log Analytics aracılarından performans sayaçlarını toplayabilir.
@@ -24,7 +24,7 @@ Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim 
 ## <a name="configuring-performance-counters"></a>Performans sayaçlarını yapılandırma
 Log Analytics çalışma alanı için [Gelişmiş ayarlar 'Daki veri menüsünden](agent-data-sources.md#configuring-data-sources) performans sayaçlarını yapılandırın.
 
-Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını ilk kez yapılandırdığınızda, birkaç ortak sayacı hızlı bir şekilde oluşturma seçeneği sunulur.  Her birinin yanında bir onay kutusu görüntülenir.  Başlangıçta oluşturulmasını istediğiniz tüm sayaçların işaretli olduğundan emin olun ve ardından **Seçili performans sayaçlarını Ekle** ' ye tıklayın.
+Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını ilk kez yapılandırdığınızda, birkaç ortak sayacı hızlı bir şekilde oluşturma seçeneği sunulur.  Her birinin yanında bir onay kutusu görüntülenir.  Başlangıçta oluşturulmasını istediğiniz tüm sayaçların işaretli olduğundan emin olun ve ardından **Seçili performans sayaçlarını Ekle**' ye tıklayın.
 
 Windows performans sayaçları için her performans sayacı için belirli bir örnek seçebilirsiniz. Linux performans sayaçları için, seçtiğiniz her sayacın örneği, üst sayacın tüm alt sayaçları için geçerlidir. Aşağıdaki tabloda hem Linux hem de Windows performans sayaçları için kullanılabilen ortak örnekler gösterilmektedir.
 

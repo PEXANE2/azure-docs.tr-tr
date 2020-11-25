@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533487"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012824"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
 
@@ -98,7 +98,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
 ## <a name="cluster-properties"></a><a name="properties"></a> Küme özellikleri
 
-[Küme giriş sayfasında](#homePage), **Ayarlar** ' ın altında **Özellikler** ' i seçin.
+[Küme giriş sayfasında](#homePage), **Ayarlar** ' ın altında **Özellikler**' i seçin.
 
 |Öğe | Açıklama |
 |---|---|
@@ -109,7 +109,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 |DURUM|Bunlardan biri: durduruldu, kabul edildi, Clusterstoragesağlandı, AzureVMConfiguration, HDInsightConfiguration, Işlemsel, çalışıyor, hata, silme, silinen, Timemak, Deletekuyruklanmış, Deletetimemak, DeleteError, Patchkuyruktaki, Certrolloverkuyruklanmış, Resizekuyruklanmış veya ClusterCustomization.|
 |BÖLGE|Azure konumu. Desteklenen Azure konumlarının listesi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/)üzerinde **bölge** açılan liste kutusu.|
 |OLUŞTURMA TARİHİ|Kümenin dağıtıldığı tarih.|
-|İşletim Sistemi|**Windows** ya da **Linux** .|
+|İşletim Sistemi|**Windows** ya da **Linux**.|
 |TÜR|Hadoop, HBase, fırtınası, Spark.|
 |Sürüm|Bkz. [HDInsight sürümleri](hdinsight-component-versioning.md).|
 |En düşük TLS sürümü|TLS sürümü.|
@@ -126,7 +126,7 @@ HDInsight kümesini başka bir Azure Kaynak grubuna veya başka bir aboneliğe t
 [Küme giriş sayfasından](#homePage):
 
 1. Üstteki menüden **Taşı** ' yı seçin.
-2. **Başka bir kaynak grubuna Taşı** veya **başka bir aboneliğe taşı** ' yı seçin.
+2. **Başka bir kaynak grubuna Taşı** veya **başka bir aboneliğe taşı**' yı seçin.
 3. Yeni sayfadaki yönergeleri izleyin.
 
 ## <a name="delete-clusters"></a>Kümeleri Sil
@@ -174,12 +174,12 @@ Ambarı, tekrar eden API 'Ler tarafından desteklenen sezgisel, kullanımı kola
 
 [Küme giriş sayfasından](#homePage):
 
-1. **Küme panoları** ' nı seçin.
+1. **Küme panoları**' nı seçin.
 
     ![HDInsight Apache Hadoop küme menüsü](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. Yeni sayfadan **ambarı giriş** ' i seçin.
-1. Küme Kullanıcı adı ve parolasını girin.  Varsayılan küme Kullanıcı adı _admin_ ' dir.
+1. Küme Kullanıcı adı ve parolasını girin.  Varsayılan küme Kullanıcı adı _admin_' dir.
 
 Daha fazla bilgi için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md).
 
@@ -194,9 +194,9 @@ An HDInsight küme iki kullanıcı hesabına sahip olabilir. HDInsight kümesi K
 
 [Küme giriş sayfasından](#homePage):
 1. **Ayarlar** altında **SSH + küme oturumu açma** ' yı seçin.
-2. **Kimlik bilgilerini Sıfırla** ' yı seçin.
+2. **Kimlik bilgilerini Sıfırla**' yı seçin.
 3. Metin kutularına yeni parolayı girin ve onaylayın.
-4. **Tamam** ’ı seçin.
+4. **Tamam**’ı seçin.
 
 Parola, kümedeki tüm düğümlerde değiştirilir.
 
@@ -215,8 +215,8 @@ Parola, kümedeki tüm düğümlerde değiştirilir.
     ```
 
 2. HTTP veya HTTPS adresi kullanılarak dosyayı HDInsight 'tan erişilebilen bir depolama konumuna yükleyin. Örneğin, OneDrive veya Azure Blob depolama gibi bir ortak dosya deposu. URI 'yi (HTTP veya HTTPS adresi), bu URI bir sonraki adımda gerekli olduğundan dosyaya kaydedin.
-3. [Küme giriş sayfasında](#homePage), **Ayarlar** ' ın altında **betik eylemleri** ' ni seçin.
-4. **Betik eylemleri** sayfasında **Yeni Gönder** ' i seçin.
+3. [Küme giriş sayfasında](#homePage), **Ayarlar**' ın altında **betik eylemleri** ' ni seçin.
+4. **Betik eylemleri** sayfasında **Yeni Gönder**' i seçin.
 5. **Betik eylemini gönder** sayfasında, aşağıdaki bilgileri girin:
 
 > [!NOTE]
@@ -246,7 +246,7 @@ Azure Resource Manager modunda, her HDInsight kümesi bir Azure Resource Manager
 
 ## <a name="find-the-storage-accounts"></a>Depolama hesaplarını bulma
 
-HDInsight kümeleri, verileri depolamak için bir Azure depolama hesabı veya Azure Data Lake Storage kullanır. Her HDInsight kümesinde bir varsayılan depolama hesabı ve bir dizi bağlı depolama hesabı bulunabilir. Depolama hesaplarını listelemek için, **Ayarlar** altındaki [küme giriş sayfasından](#homePage) **depolama hesapları** ' nı seçin.
+HDInsight kümeleri, verileri depolamak için bir Azure depolama hesabı veya Azure Data Lake Storage kullanır. Her HDInsight kümesinde bir varsayılan depolama hesabı ve bir dizi bağlı depolama hesabı bulunabilir. Depolama hesaplarını listelemek için, **Ayarlar** altındaki [küme giriş sayfasından](#homePage) **depolama hesapları**' nı seçin.
 
 ## <a name="monitor-jobs"></a>İşleri izleme
 

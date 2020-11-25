@@ -3,12 +3,12 @@ title: Bağlantı sorunlarını giderme-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ile ilgili bağlantı sorunlarını giderme hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87039336"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96012689"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Bağlantı sorunlarını giderme-Azure Event Hubs
 İstemci uygulamalarının bir olay hub 'ına bağlanamamasının çeşitli nedenleri vardır. Karşılaşabileceğiniz bağlantı sorunları kalıcı veya geçici olabilir. Sorun her zaman (kalıcı) olursa, bağlantı dizesini, kuruluşunuzun güvenlik duvarı ayarlarını, IP güvenlik ayarlarını, ağ güvenlik ayarlarını (hizmet uç noktaları, Özel uç noktaları, vb.) ve daha fazlasını denetlemek isteyebilirsiniz. Geçici sorunlar için, SDK 'nın en son sürümüne yükseltme, bırakılan paketleri denetlemeye yönelik komutları çalıştırma ve ağ izlemelerini alma sorunları gidermeye yardımcı olabilir. 
@@ -26,54 +26,7 @@ Kullandığınız bağlantı dizesinin doğru olduğunu doğrulayın. Azure port
 
 Kafka istemcileri için producer.config veya consumer.config dosyalarının düzgün şekilde yapılandırıldığını doğrulayın. Daha fazla bilgi için, bkz. [Kafka ile Ileti gönderme ve alma Event Hubs](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs).
 
-### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>Event Hubs ile iletişim kurmak için gereken bağlantı noktalarının kuruluşun güvenlik duvarı tarafından engellenip engellenmediğini denetleyin
-Azure Event Hubs ile iletişim kurmak için kullanılan bağlantı noktalarının kuruluşunuzun güvenlik duvarında engellenmediğinden emin olun. Azure Event Hubs ile iletişim kurmak için açmanız gereken giden bağlantı noktaları için aşağıdaki tabloya bakın. 
-
-| Protokol | Bağlantı noktaları | Ayrıntılar | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 ve 5672 | Bkz. [AMQP protokol Kılavuzu](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Bkz. [Kafka uygulamalardan Event Hubs kullanma](event-hubs-for-kafka-ecosystem-overview.md)
-
-Aşağıda, 5671 bağlantı noktasının engellenip engellenmeyeceğini denetleyen örnek bir komut verilmiştir.
-
-```powershell
-tnc <yournamespacename>.servicebus.windows.net -port 5671
-```
-
-Linux 'ta:
-
-```shell
-telnet <yournamespacename>.servicebus.windows.net 5671
-```
-
-### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Şirket güvenlik duvarınızdaki IP adreslerine izin verildiğini doğrulayın
-Azure ile çalışırken, bazı durumlarda kurumsal güvenlik duvarınızdaki veya ara ortamınızdaki belirli IP adresi aralıklarına veya URL 'Lerine, kullanmakta olduğunuz veya kullanmaya çalıştığınız tüm Azure hizmetlerine erişim izni vermeniz gerekir. Event Hubs tarafından kullanılan IP adreslerinde trafiğe izin verildiğini doğrulayın. Azure Event Hubs tarafından kullanılan IP adresleri için: bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519).
-
-Ayrıca, ad alanınız için IP adresine izin verildiğini doğrulayın. Bağlantılarınız için izin verilecek doğru IP adreslerini bulmak için şu adımları izleyin:
-
-1. Komut isteminden aşağıdaki komutu çalıştırın: 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Aynı zamanda, ad alanını farklı bir kümeye geri yüklemeniz durumunda değişir.
-
-Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapmanız gerekir: 
-
-1. İlk olarak, ad alanında Nslookup ' ı çalıştırırsınız.
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. **Yetkili olmayan yanıt** bölümündeki adı aşağıdaki biçimlerden birinde olan bir yere göz önünde edin: 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. Üç kullanılabilirlik alanında çalışan her üç örneğin IP adresini almak için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırın. 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Ağ güvenlik gruplarında AzureEventGrid Service etiketine izin verildiğini doğrulayın
 Uygulamanız bir alt ağ içinde çalışıyorsa ve ilişkili bir ağ güvenlik grubu varsa, Internet 'e giden veya AzureEventGrid hizmet etiketine izin verilip verilmeyeceğini doğrulayın. Bkz. [sanal ağ hizmeti etiketleri](../virtual-network/service-tags-overview.md) ve arama `EventHub` .
@@ -92,22 +45,6 @@ IP güvenlik duvarı kuralları Event Hubs ad alanı düzeyinde uygulanır. Bu n
 
 Daha fazla bilgi için bkz. [Azure Event Hubs ad alanı IÇIN IP güvenlik duvarı kurallarını yapılandırma](event-hubs-ip-filtering.md). IP filtrelemesi, sanal ağ veya sertifika zinciri sorunları olup olmadığını denetlemek için bkz. [ağla ilgili sorunları giderme](#troubleshoot-network-related-issues).
 
-#### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>IP güvenlik duvarı tarafından engellenen IP adreslerini bulma
-[Tanılama günlüklerini etkinleştirme](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)' deki yönergeleri izleyerek [Event Hubs sanal ağ bağlantısı olayları](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) için tanılama günlüklerini etkinleştirin. Reddedilen bağlantı için IP adresi görüntülenir.
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Ad alanına yalnızca özel bir uç nokta kullanılarak erişilemeyeceğini denetle
 Event Hubs ad alanı yalnızca özel uç nokta aracılığıyla erişilebilir olacak şekilde yapılandırıldıysa, istemci uygulamanın özel uç nokta üzerinden ad alanına eriştiğini doğrulayın. 
 
@@ -120,13 +57,13 @@ Event Hubs ile ağla ilgili sorunları gidermek için aşağıdaki adımları iz
 
 Veya [wget](https://www.gnu.org/software/wget/) 'e gidin `https://<yournamespacename>.servicebus.windows.net/` . IP filtrelemesi veya sanal ağ ya da sertifika zinciri sorunları olup olmadığını denetlemeye yardımcı olur (Java SDK kullanırken en yaygın olarak).
 
-**Başarılı bir ileti**örneği:
+**Başarılı bir ileti** örneği:
 
 ```xml
 <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
 ```
 
-Hata **iletisi**örneği:
+Hata **iletisi** örneği:
 
 ```json
 <Error>

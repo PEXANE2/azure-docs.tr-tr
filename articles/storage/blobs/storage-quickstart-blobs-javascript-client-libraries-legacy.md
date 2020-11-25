@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 134408704d54479fbbe0dfb5094f2920fa2e74be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d212029936bcd257ef5a78eeedc98c2d6e1df514
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336216"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96012791"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, tamamen tarayıcıda çalışan JavaScript kodunu kul
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Depolama hesabı CORS kurallarını ayarlama
 
-Web uygulamanızın istemciden bir blob depolamaya erişebilmesi için, hesabınızı, [çıkış noktaları arası kaynak paylaşımı](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)veya CORS 'yi etkinleştirecek şekilde yapılandırmanız gerekir.
+Web uygulamanızın istemciden bir blob depolamaya erişebilmesi için, hesabınızı, [çıkış noktaları arası kaynak paylaşımı](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)veya CORS 'yi etkinleştirecek şekilde yapılandırmanız gerekir.
 
 Azure portalına geri dönün depolama hesabınızı seçin. Yeni bir CORS kuralı tanımlamak için, **Ayarlar** bölümüne gidin ve **CORS** bağlantısına tıklayın. Ardından, **Ekle** düğmesine tıklayarak **CORS kuralı ekle** penceresini açın. Bu hızlı başlangıçta bir açık CORS kuralı oluşturacaksınız:
 
@@ -185,7 +185,7 @@ Sonra, yer tutucu yorumunu değiştirerek, kapanış etiketinden sonra *index.ht
 
 Bu kod, betik dosyasına bir başvuru ekler ve kendi JavaScript kodunuz için bir yer sağlar. Bu hızlı başlangıç için *azure-storage-blob.js* betik dosyası kullanarak vs Code açabilir, içeriğini okuyabilir ve kesme noktaları ayarlayabilirsiniz. Üretimde, ZIP dosyasında da sağlanmış olan daha Compact *azure-storage.blob.min.js* dosyasını kullanmanız gerekir.
 
-[Başvuru belgelerindeki](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)her bir BLOB depolama işlevi hakkında daha fazla bilgi edinebilirsiniz. SDK 'daki işlevlerin bazılarının yalnızca Node.js veya tarayıcıda kullanılabilir olduğunu unutmayın.
+[Başvuru belgelerindeki](/javascript/api/%40azure/storage-blob/index)her bir BLOB depolama işlevi hakkında daha fazla bilgi edinebilirsiniz. SDK 'daki işlevlerin bazılarının yalnızca Node.js veya tarayıcıda kullanılabilir olduğunu unutmayın.
 
 *azure-storage-blob.js* kod, `azblob` BLOB depolama API 'Lerine erişmek için JavaScript kodunuzda kullanacağınız adlı genel bir değişkeni dışarı aktarır.
 
@@ -226,7 +226,7 @@ const containerURL = new azblob.ContainerURL(
     azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
 ```
 
-Bu kod, bir depolama kapsayıcısını oluşturmak ve işlemek için yararlı olan bir [Containerurl](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) örneği oluşturmak için hesap BILGILERINIZI ve SAS 'yi kullanır.
+Bu kod, bir depolama kapsayıcısını oluşturmak ve işlemek için yararlı olan bir [Containerurl](/javascript/api/@azure/storage-blob/ContainerURL) örneği oluşturmak için hesap BILGILERINIZI ve SAS 'yi kullanır.
 
 ### <a name="create-and-delete-a-storage-container"></a>Depolama kapsayıcısı oluşturma ve silme
 
@@ -257,7 +257,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Bu kod, [Aborter](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) örneği kullanmadan kapsayıcı URL 'si [oluşturma](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) ve [silme](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) işlevlerini çağırır. Bu hızlı başlangıçta şeyleri basit tutmak için, bu kod depolama hesabınızın oluşturulduğunu ve etkinleştirildiğini varsayar. Üretim kodunda, zaman aşımı işlevselliği eklemek için bir Aborter örneği kullanın.
+Bu kod, [Aborter](/javascript/api/@azure/storage-blob/aborter) örneği kullanmadan kapsayıcı URL 'si [oluşturma](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) ve [silme](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) işlevlerini çağırır. Bu hızlı başlangıçta şeyleri basit tutmak için, bu kod depolama hesabınızın oluşturulduğunu ve etkinleştirildiğini varsayar. Üretim kodunda, zaman aşımı işlevselliği eklemek için bir Aborter örneği kullanın.
 
 ### <a name="list-blobs"></a>Blobları listeleme
 
@@ -293,7 +293,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-Bu kod, tüm segmentlerin alındığından emin olmak için bir döngüde [Containerurl. Listblobyataysegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) işlevini çağırır. Her segment için, içerdiği blob öğeleri listesi üzerinde döngü yapılır ve **dosyalar** listesini güncelleştirir.
+Bu kod, tüm segmentlerin alındığından emin olmak için bir döngüde [Containerurl. Listblobyataysegment](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) işlevini çağırır. Her segment için, içerdiği blob öğeleri listesi üzerinde döngü yapılır ve **dosyalar** listesini güncelleştirir.
 
 ### <a name="upload-blobs"></a>Blobları karşıya yükleme
 
@@ -321,7 +321,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli öğesine bağlar `file-input` . Bu şekilde, düğme `click` olayı dosya girişi `click` olayını tetikler ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur ve `uploadFiles` işlev çağrılır. Bu işlev, seçtiğiniz her dosya için yalnızca Browser- [Uploadbrowserdatatoblockblob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) işlevini çağırır. Her çağrı, bir listeye eklenen bir Promise döndürür, böylece dosyalar paralel olarak karşıya yüklenmeye neden olur.
+Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli öğesine bağlar `file-input` . Bu şekilde, düğme `click` olayı dosya girişi `click` olayını tetikler ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur ve `uploadFiles` işlev çağrılır. Bu işlev, seçtiğiniz her dosya için yalnızca Browser- [Uploadbrowserdatatoblockblob](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) işlevini çağırır. Her çağrı, bir listeye eklenen bir Promise döndürür, böylece dosyalar paralel olarak karşıya yüklenmeye neden olur.
 
 ### <a name="delete-blobs"></a>Blob’ları silme
 
@@ -349,7 +349,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-Bu kod, listede seçilen her dosyayı kaldırmak için [Bloburl. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) işlevini çağırır. Daha sonra `listFiles` **Dosya** listesinin içeriğini yenilemek için daha önce gösterilen işlevi çağırır.
+Bu kod, listede seçilen her dosyayı kaldırmak için [Bloburl. Delete](/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) işlevini çağırır. Daha sonra `listFiles` **Dosya** listesinin içeriğini yenilemek için daha önce gösterilen işlevi çağırır.
 
 ### <a name="run-and-test-the-web-application"></a>Web uygulamasını çalıştırma ve test etme
 
@@ -364,4 +364,4 @@ Bu hızlı başlangıç sırasında oluşturulan kaynakları temizlemek için [A
 Bu hızlı başlangıçta, tarayıcı tabanlı JavaScript 'ten blob depolamaya erişen basit bir Web sitesi oluşturdunuz. Blob depolamada bir Web sitesinin kendisini nasıl barındırabileceğinizi öğrenmek için aşağıdaki öğreticiye geçin:
 
 > [!div class="nextstepaction"]
-> [Blob depolamada statik bir Web sitesi barındırma](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)
+> [Blob depolamada statik bir Web sitesi barındırma](./storage-blob-static-website-host.md)
